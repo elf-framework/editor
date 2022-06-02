@@ -1,0 +1,30 @@
+.object-items {
+    position: absolute;
+    left: 0px ;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+
+    > *:first-child {
+        flex: none;
+        height: 140px;
+    }
+
+    > *:last-child:not(:first-child) {
+        margin-top: auto;
+        flex: 1 1 auto;
+    }
+
+    > * {
+
+        > .elf--property {
+            margin: 0px !important; 
+
+            > .property-title {
+                margin-top: 0px !important;
+            }
+        }        
+    }
+}

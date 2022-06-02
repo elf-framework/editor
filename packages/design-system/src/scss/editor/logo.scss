@@ -1,0 +1,15 @@
+
+.logo-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    label.logo {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-image: url(./images/icon128.png);
+        background-size: contain;
+        border-radius: 2px;
+    }
+}

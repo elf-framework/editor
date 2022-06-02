@@ -1,0 +1,65 @@
+.elf--css-property-editor {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    display: grid; 
+    grid-template-columns:  1fr !important;
+
+    &.hide-title {
+      > .title {
+        display: none; 
+      }
+    }
+
+    &.hide-refresh {
+
+    }
+
+    .title {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-column-gap: 2px;
+
+        .tools {
+          text-align: right; 
+          select {
+            width: 130px !important;
+            display: inline-block;
+          }
+        }
+    }
+
+    > .title-2 {
+      display: none; 
+      text-align: right;
+    }    
+
+    .css-property-item {
+      display: grid;
+      grid-template-columns: 1fr 20px;
+      grid-column-gap: 4px;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+      margin-top: 5px;
+
+      > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }    
+
+    .input {
+      vertical-align: middle;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+
+      &.grid-1 {
+        grid-template-columns: 1fr;
+      }
+
+      &.grid-2 {
+        grid-template-columns: 3fr 1fr;
+      }        
+    }
+}

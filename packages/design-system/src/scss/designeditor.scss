@@ -1,0 +1,209 @@
+@import "open-color/open-color.scss";
+
+
+$pointer-color: #4075d6;
+$top-size: 50px;
+$tool-size: 0px;
+$left-size: 340px;
+$left-layer-panel: 70px; 
+$left-page-size: 70px;
+$toggle-left-size: 80px;
+$right-size: 260px;
+$timeline-animation-size: 200px;
+$timeline-property-size: 270px;
+$timeline-header-size: 40px;
+$timeline-size: 300px;
+$show-timeline-animation: all 0.05s linear;
+$footer-height: 30px; 
+$status-bar-height: 30px;
+// base 
+$range-thumb-width: 12px;
+$range-thumb-height: 12px;
+$range-track-height: 2px;
+$range-thumb-top: -5px; 
+$range-thumb-border-radius: 20px; 
+
+.elf-editor {
+    font-size: 11px;
+    padding:0px;
+    margin:0px;
+    // overflow: hidden;
+    box-sizing: border-box;    
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    position: absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top: 0px;
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    &.ua-window {
+        .scrollbar {
+            
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 8px;
+                background-color: #aaa;
+                /* or add it to the track */
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                background: #000;
+            }
+        
+        }
+    }
+
+    --elf--editor-ruler-size: 20px;
+
+    &[data-theme='dark'] {
+        @import './themes/editor/dark.scss'; 
+        --elf--range-thumb-color: #{$range-thumb-color};
+        --elf--range-track-color: #{$range-track-color};
+        --elf--range-thumb-border-color: #{$range-thumb-border-color};
+        --elf--input-background-color: #{$input-background-color};
+        --elf--input-inactive-color: #{$input-inactive-color};
+        --elf--input-border-color: #{$input-border-color};       
+        --elf--input-font-color: #{$input-font-color};         
+        --elf--input-sub-font-color: #{$input-sub-font-color};
+        --elf--input-height: #{$input-height};
+        --elf--input-font-size: #{$input-font-size};
+        --elf--border-color: #{$border-color};
+        --elf--selection-tool-border-color: #{$selection-tool-border-color};        
+        --elf--selected-color: #{$selected-color};
+        --elf--selected-color-2: #{$selected-color-2};        
+        --elf--selected-hover-color: #{$selected-hover-color};            
+        --elf--selected-border-color: #{$selected-border-color};
+        --elf--layout-border-color: #{$layout-border-color};
+        --elf--background-color: #{$background-color};      
+        --elf--toolbar-background-color: #{$toolbar-background-color};  
+        --elf--selected-background-color: #{$selected-background-color};
+        --elf--font-color: #{$font-color};
+        --elf--disabled-font-color: #{$disabled-font-color};
+        --elf--menu-item-title-font-color: #{$menu-item-title-font-color};
+        --elf--selected-font-color: #{$selected-font-color};
+        --elf--divider-color: #{$divider-color};
+        --elf--property-border-color: #{$property-border-color};
+        --elf--property-title-background-color: #{$property-title-background-color};
+        --elf--property-background-color: #{$property-background-color};        
+        --elf--list-item-font-color: #{$list-item-font-color};
+        --elf--list-item-selected-color: #{$list-item-selected-color};
+        --elf--list-item-disable-font-color: #{$list-item-disable-font-color};
+        --elf--popup-background-color: #{$popup-background-color};
+        --elf--popup-font-color: #{$popup-font-color};
+        --elf--window-background-color: #{$window-background-color};
+        --elf--path-background-color: #{$path-background-color};
+        --elf--path-guide-color: #{$path-guide-color};
+        --elf--path-segment-stroke-color: #{$path-segment-stroke-color};
+        --elf--timeline-gauge-background-color: #{$timeline-gauge-background-color};
+        --elf--timeline-gauge-handle-color: #{$timeline-gauge-handle-color};
+        --elf--timeline-row-selected-color: #{$timeline-row-selected-color};
+        --elf--timeline-property-add-background-color: #{$timeline-property-add-background-color};        
+        --elf--guide-line-color: #{$guide-line-color};                
+        --elf--guide-font-color: #{$guide-font-color};
+        --elf--guide-line-rect-color: #{$guide-line-rect-color};
+        --elf--canvas-background-color: #{$canvas-background-color};
+        --elf--animation-item-background-color: #{$animation-item-background-color};
+        --elf--grid-box-editor-button-background-color: #{$grid-box-editor-button-background-color};       
+        --elf--drag-area-rect-border-color: #{$drag-area-rect-border-color};
+        --elf--drag-area-rect-background-color: #{$drag-area-rect-background-color};
+        --elf--rotate-x-border-color: #{$rotate-x-border-color};
+        --elf--rotate-y-border-color: #{$rotate-y-border-color}; 
+        --elf--tooltip-background-color: #{$tooltip-background-color};
+        --elf--tooltip-font-color: #{$tooltip-font-color};     
+        --elf--tab-toolbar-background-color: #{$tab-toolbar-background-color};      
+        --elf--tab-font-color: #{$tab-font-color};            
+    }    
+
+    &[data-theme='light'] {
+        @import './themes/editor/light.scss';
+        --elf--range-thumb-color: #{$range-thumb-color};
+        --elf--range-track-color: #{$range-track-color};
+        --elf--range-thumb-border-color: #{$range-thumb-border-color};        
+        --elf--input-background-color: #{$input-background-color};
+        --elf--input-inactive-color: #{$input-inactive-color};        
+        --elf--input-border-color: #{$input-border-color};       
+        --elf--input-font-color: #{$input-font-color};         
+        --elf--input-sub-font-color: #{$input-sub-font-color}; 
+        --elf--input-height: #{$input-height};     
+        --elf--input-font-size: #{$input-font-size};                  
+        --elf--border-color: #{$border-color};
+        --elf--selection-tool-border-color: #{$selection-tool-border-color};     
+        --elf--layout-border-color: #{$layout-border-color};                   
+        --elf--selected-color: #{$selected-color};   
+        --elf--selected-color-2: #{$selected-color-2};            
+        --elf--selected-hover-color: #{$selected-hover-color};    
+        --elf--selected-border-color: #{$selected-border-color};
+        --elf--background-color: #{$background-color};      
+        --elf--toolbar-background-color: #{$toolbar-background-color};  
+        --elf--selected-background-color: #{$selected-background-color};
+        --elf--font-color: #{$font-color};
+        --elf--disabled-font-color: #{$disabled-font-color};        
+        --elf--menu-item-title-font-color: #{$menu-item-title-font-color};        
+        --elf--selected-font-color: #{$selected-font-color};
+        --elf--divider-color: #{$divider-color};
+        --elf--property-border-color: #{$property-border-color};
+        --elf--property-title-background-color: #{$property-title-background-color};        
+        --elf--property-background-color: #{$property-background-color};
+        --elf--list-item-font-color: #{$list-item-font-color};
+        --elf--list-item-selected-color: #{$list-item-selected-color};
+        --elf--list-item-disable-font-color: #{$list-item-disable-font-color};        
+        --elf--popup-background-color: #{$popup-background-color};
+        --elf--popup-font-color: #{$popup-font-color};
+        --elf--window-background-color: #{$window-background-color};
+        --elf--path-background-color: #{$path-background-color};
+        --elf--path-guide-color: #{$path-guide-color};
+        --elf--path-segment-stroke-color: #{$path-segment-stroke-color};
+        --elf--timeline-gauge-background-color: #{$timeline-gauge-background-color};
+        --elf--timeline-gauge-handle-color: #{$timeline-gauge-handle-color};
+        --elf--timeline-row-selected-color: #{$timeline-row-selected-color};
+        --elf--timeline-property-add-background-color: #{$timeline-property-add-background-color};        
+        --elf--guide-line-color: #{$guide-line-color};                
+        --elf--guide-font-color: #{$guide-font-color};
+        --elf--guide-line-rect-color: #{$guide-line-rect-color};
+        --elf--canvas-background-color: #{$canvas-background-color};
+        --elf--animation-item-background-color: #{$animation-item-background-color};
+        --elf--grid-box-editor-button-background-color: #{$grid-box-editor-button-background-color};          
+        --elf--drag-area-rect-border-color: #{$drag-area-rect-border-color};
+        --elf--drag-area-rect-background-color: #{$drag-area-rect-background-color};
+        --elf--rotate-x-border-color: #{$rotate-x-border-color};
+        --elf--rotate-y-border-color: #{$rotate-y-border-color};
+        --elf--tooltip-background-color: #{$tooltip-background-color};
+        --elf--tooltip-font-color: #{$tooltip-font-color};      
+        --elf--tab-toolbar-background-color: #{$tab-toolbar-background-color};
+        --elf--tab-font-color: #{$tab-font-color};                    
+    }    
+}
+
+.elf-editor {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    position: absolute;
+    left:0px;
+    top: 0px; 
+
+    @import './editor/component.scss';  
+
+    // @import './editor/button.scss';
+    @import './editor/range-ui.scss';
+    @import "./editor/colorpicker-ui.scss";
+    @import './editor/icons-group.scss';
+    // @import './editor/tooltip.scss';
+    
+    // timeline 
+    // @import './editor/timeline.scss';
+    
+    @import './editor/logo.scss';
+    // @import './editor/feature-control.scss';
+
+    @import './ui/Button.scss';
+    
+}
+ 

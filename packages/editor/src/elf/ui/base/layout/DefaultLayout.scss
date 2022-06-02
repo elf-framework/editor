@@ -1,0 +1,112 @@
+$top-size: 48px;
+$bottom-size: 20px;
+$tool-size: 0px;
+$left-size: 340px;
+$left-layer-panel: 70px;
+$left-page-size: 70px;
+$toggle-left-size: 80px;
+$right-size: 280px;
+$timeline-animation-size: 200px;
+$timeline-property-size: 270px;
+$timeline-header-size: 40px;
+$timeline-size: 300px;
+$show-timeline-animation: all 0.05s linear;
+$footer-height: 0px;
+$status-bar-height: 0px;
+
+
+.elf--default-layout-container {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+  .elf--default-layout {
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;    
+
+    .layout-top {
+      height: $top-size;
+      box-sizing: border-box;
+      z-index: 10000;
+      flex: none;
+      position: relative;
+    }
+
+    .layout-bottom {
+      height: $bottom-size;
+      box-sizing: border-box;
+      z-index: 10000;
+      flex: none;
+      position: relative;
+      display: flex;
+    }
+
+    .layout-middle {
+      flex: 1 1 auto;
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+
+      > .splitter {
+        position: absolute;
+        left: $left-size;
+        width: 4px;
+        top: 0px;
+        bottom: 0px;
+        cursor: ew-resize;
+        z-index: 1;
+        transition: all 0.05s linear;
+
+        &:hover,
+        &.selected {
+          background-color: var(--elf--selected-color);
+        }
+      }
+
+      .layout-left {
+        flex: none;        
+        position: relative;
+        width: $left-size;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--elf--layout-border-color);
+        box-sizing: border-box;
+        transition: width 0.05s linear;
+        overflow: hidden;
+      }
+
+      .layout-right {
+        flex: none;
+        position: relative;
+        width: $right-size;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        // transition: bottom 0.05s linear;
+        border-left: 1px solid var(--elf--layout-border-color);
+        transition: width 0.05s linear;      
+        overflow: hidden;
+        
+        &.closed {
+          width: 10px !important;
+        }
+      }
+
+      .layout-body {
+        flex: 1 1 auto;
+        position: relative;
+      }
+    }
+  }

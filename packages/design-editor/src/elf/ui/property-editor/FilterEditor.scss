@@ -1,0 +1,108 @@
+.elf--filter-editor {
+  .label {
+    height: 20px;
+    margin-top: 2px;
+
+    &.hide {
+      display: none;
+    }
+    label {
+      padding-left: 5px;
+      vertical-align: middle;
+   
+    }
+  }
+
+  .tools {
+      vertical-align: middle;
+      text-align: right;
+      float:right;
+
+      select {
+        width: 100px !important;
+        display: inline-block ;
+      }
+
+  }
+
+  .filter-list {
+    // padding: 0px 10px;
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  
+    .filter-item {
+      display: block;
+      margin-bottom: 5px;
+  
+      > .title {
+        display: grid;
+        grid-template-columns: 20px 1fr 30px;
+
+        > .sub-title {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+  
+        > label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          // padding: 5px 0px;
+          cursor: move;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          vertical-align: middle;
+          overflow: hidden;
+        }
+
+        .svg-filter-edit {
+          cursor: pointer;
+        }
+  
+        .filter-menu {
+          text-align: right;
+          padding:4px 0px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background-color: var(--elf--input-inactive-color);
+          }
+        }
+      }
+
+      .filter-ui-list {
+        padding-left: 20px;
+        pointer-events: all;
+      }
+  
+      .filter-ui {
+        vertical-align: middle;
+        // margin-bottom: 5px;
+
+        label {
+          color: var(--elf--font-color);
+        }
+
+  
+        &.drop-shadow {
+          grid-template-columns: 50px  1fr;
+          grid-column-gap: 1px;
+  
+        }
+  
+        &.drop-shadow-color {
+          grid-template-columns: 50px 1fr;
+          grid-column-gap: 2px;
+
+        }
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,21 @@
+{
+  "pipeline": {
+    "watch": {
+      "dependsOn": [
+        "design-editor#watch",
+        "^watch"
+      ],
+      "outputs": ["dist/**", ".next/**"]
+    },    
+    "build": {
+      "dependsOn": [
+        "design-editor#build",
+        "^build"
+      ],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    }
+  }
+}

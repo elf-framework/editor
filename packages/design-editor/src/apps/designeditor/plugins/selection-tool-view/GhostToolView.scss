@@ -1,0 +1,58 @@
+
+.elf--ghost-tool-view {
+    pointer-events:none;
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    // background-color: yellow;
+
+    svg {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+
+      path {
+        fill: transparent;
+        stroke: var(--elf--selected-color);
+        stroke-width: 2;
+        stroke-dasharray: 2 2;
+
+        &.target {
+          stroke-width:0;
+          // stroke: green;
+        }
+
+        &.target-rect {
+          stroke-width:0;          
+          // stroke: rgb(0, 255, 0);
+        }
+
+        &.target-parent {
+          stroke-width:0;          
+          // stroke: purple;
+        }
+
+        &.container {
+          stroke-width:0;
+          // stroke: red;
+        }
+
+        &.flex-item {
+          stroke:transparent;
+          fill: rgba(50, 50, 50, 0.1);
+          z-index: -1000;
+        }
+
+        &.flex-target {
+          stroke-width: 5;
+          stroke: var(--elf--selected-color);
+
+        }
+      }
+    } 
+  }
+  

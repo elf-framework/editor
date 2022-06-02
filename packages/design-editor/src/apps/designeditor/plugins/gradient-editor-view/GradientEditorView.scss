@@ -1,0 +1,301 @@
+.elf--gradient-editor-view {
+  display: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  &.dragging {
+    .area-line {
+      pointer-events: none !important;
+    }
+  }
+
+  .gradient-rect {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      path {
+        pointer-events: all;
+        fill: transparent;
+        stroke: white;
+        stroke-width: 1;
+      }
+    }
+  }
+
+  .center {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--elf--selected-color-2);
+    border-radius: 50%;
+    border: 2px solid white;
+    pointer-events: all;
+    filter: drop-shadow(0 0 2px rgb(43, 43, 43));      
+    cursor: grab;
+  }
+
+  .gradient-rect {
+    position: absolute;
+    pointer-events: none;
+    cursor: move;
+    // border:2px solid black;
+    filter: drop-shadow(0 0 2px rgb(43, 43, 43));      
+    box-sizing: border-box;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      path {
+        pointer-events: all;
+        fill: transparent;
+        stroke: white;
+        stroke-width: 1;
+      }
+    }
+  }
+
+  .resizer {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 1);
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--elf--selected-color);
+    border-radius: 100%;
+    filter: drop-shadow(0 0 2px rgb(43, 43, 43));      
+
+    &[data-direction="bottom-right"] {
+      left: 100%;
+      top: 100%;
+      cursor: nwse-resize;
+    }
+  }
+
+  .gradient-angle {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
+    overflow: visible;
+    filter: drop-shadow(0 0 2px rgb(43, 43, 43));      
+
+    path {
+      fill: transparent;
+      // stroke: white;
+      pointer-events: stroke;
+
+      &.stick {
+        stroke: white;
+        pointer-events: none;
+      }
+
+      &.color-stick {
+        pointer-events: none;
+      }
+
+      &.area-line {
+        stroke-width: 18;
+        stroke: transparent;
+      }
+
+      &.start-end-line {
+        stroke: white;
+        pointer-events: none;
+      }
+
+
+      &.normal-line {
+        stroke: var(--elf--selected-color-2);
+        pointer-events: none;
+      }      
+
+      &.timing {
+        // fill: black;
+        stroke: white;
+        stroke-width: 1;
+        outline: none;
+        pointer-events: none;
+        filter: drop-shadow(0 0 1px rgb(0, 0, 0));
+      }
+
+      &.step-point {
+        // fill: black;
+        stroke: white;
+        stroke-width: 1;
+        outline: none;
+      }
+
+      &.timing-path {
+        stroke: rgba(255, 255, 255, 0.5);
+        stroke-width: 2;
+        outline: none;
+        pointer-events: none;
+      }      
+    }
+
+    rect {
+      pointer-events: all;
+
+      &.colorstep {
+        // fill: black;
+        stroke: white;
+        stroke-width: 1;
+        outline: none;
+      }
+    }
+
+    circle {
+      pointer-events: all;
+      // stroke: black;
+      stroke-width: 2;
+
+      &:hover {
+        cursor: grab;
+      }
+
+      &.moved {
+        cursor: grabbing;
+      }
+
+      &.colorstep {
+        stroke-width: 1;
+        stroke: white;
+        r: 7;
+      }
+
+      &:not(.colorstep):not(.hover-colorstep) {
+        fill: white;
+      }
+
+
+      &.size {
+        fill: transparent !important;
+        stroke: white;
+        stroke-width: 1;
+        pointer-events: none;
+      }
+
+      &.area-line {
+        stroke-width: 18;
+        stroke: transparent;
+        pointer-events: stroke;
+        fill: transparent !important;
+      }      
+
+
+      &.point {
+        fill: white;
+        r: 5;
+
+        &[data-type='start'] {
+          fill: var(--elf--selected-color) !important;
+        }
+      }
+
+
+      &.hover-colorstep {
+        pointer-events: none;
+        r: 8;
+        filter: drop-shadow(0 0 1px rgb(255, 255, 255));        
+      }
+    }
+  }
+
+  .gradient-radial-line {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
+    overflow: visible;
+    filter: drop-shadow(0 0 2px rgb(43, 43, 43));          
+
+    path {
+      pointer-events: all;
+      fill: transparent;
+      stroke: white;
+
+      &.area-line {
+        stroke-width: 18;
+        stroke: transparent;
+      }      
+
+
+      &.timing {
+        // fill: black;
+        stroke: white;
+        stroke-width: 1;
+        outline: none;
+        pointer-events: none;
+        filter: drop-shadow(0 0 1px rgb(0, 0, 0));
+      }
+
+      &.step-point {
+        // fill: black;
+        stroke: white;
+        stroke-width: 1;
+        outline: none;
+      }
+
+      &.timing-path {
+        stroke: rgba(255, 255, 255, 0.5);
+        stroke-width: 2;
+        outline: none;
+        pointer-events: none;
+      }            
+    }
+
+    circle,
+    ellipse {
+
+      &.step-point {
+        fill: white;
+        pointer-events: all;        
+      }
+
+      &.point {
+        fill: white;
+        r: 5;
+        pointer-events: all;        
+        
+        &[data-type='start'] {
+          fill: var(--elf--selected-color) !important;
+        }
+      }      
+      &.size {
+        fill: transparent;
+        stroke: white;
+      }
+    }
+
+
+    rect {
+      pointer-events: all;
+
+      &.colorstep {
+        // fill: black;
+        stroke: white;
+        stroke-width: 1;
+        outline: none;
+      }
+    }
+
+  }
+}

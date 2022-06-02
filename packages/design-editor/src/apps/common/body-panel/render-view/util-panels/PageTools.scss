@@ -1,0 +1,66 @@
+
+
+.elf--page-tools {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--elf--border-color);
+    color: var(--elf--font-color);
+    background-color: var(--elf--background-color);
+    box-sizing: border-box;
+  
+    > * {
+      position: relative;
+      display: inline-block;
+    }
+  
+    >label {
+      vertical-align: middle;
+      display: inline-block;
+      height: 100%;
+      padding-top: 5px;
+    }
+  
+    button {
+      border-radius: 3px;
+      vertical-align: middle;
+      display: inline-block;
+      padding: 4px;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      border:0px;
+  
+      &.on {
+        background-color: var(--elf--selected-color);
+        color: var(--elf--selected-font-color);
+      }
+  
+      svg {
+        pointer-events: none;
+      }
+
+      &[data-path-index="0"] {
+        &:after {
+          position: absolute;
+          content: "";
+          width: 4px;
+          height: 4px;
+          background-color: var(--elf--selected-color);
+          left: 10px;
+          top: 100%;
+          border-radius: 100%;
+        }
+      }
+    }
+  
+    >.select {
+      display: inline-block;
+      width: 50px;
+      border-radius: 5px;
+      border:1px solid rgba(var(--elf--selected-color), 0.5);
+    }
+  }

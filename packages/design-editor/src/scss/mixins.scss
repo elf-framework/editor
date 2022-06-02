@@ -1,0 +1,11 @@
+@mixin transparent-background ($pixel: 11px, $pixelColor: #8b8b8b, $half: 5.5px) {
+
+    background-color: transparent;
+    background-image:
+      linear-gradient(45deg, $pixelColor 25%, transparent 25%),
+      linear-gradient(-45deg, $pixelColor 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, $pixelColor 75%),
+      linear-gradient(-45deg, transparent 75%, $pixelColor 75%);
+    background-size:$pixel $pixel;
+    background-position: 0 0, 0 $half, $half (-1 * $half), (-1 * $half) 0px;
+}

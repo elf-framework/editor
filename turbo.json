@@ -1,0 +1,37 @@
+{
+  "pipeline": {
+    "watch": {
+      "dependsOn": ["^watch"],
+      "outputs": ["dist/**", ".next/**"]
+    },    
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "dependsOn": ["watch"],
+      "cache": false
+    },
+    "blank:watch": {
+      "dependsOn": ["^blank:watch"],
+      "outputs": ["dist/**", ".next/**"]          
+    },    
+    "blank:dev": {
+      "dependsOn": ["blank:watch"],
+      "cache": false
+    },
+    "design:watch": {
+      "dependsOn": [
+        "^design:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"]      
+    },
+    "design:dev": {
+      "dependsOn": ["design:watch"],
+      "cache": false
+    }        
+  }
+}

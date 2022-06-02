@@ -1,0 +1,55 @@
+.elf--boolean-item {
+
+    // height: 24px;
+    padding: 0px 5px;
+    padding-top: 8px;   
+    padding-bottom: 10px; 
+
+    > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      grid-column-gap: 10px;
+      padding: 4px 0px;
+      height: 30px;
+      text-align: left;
+
+      &.divider {
+        height: 1px;
+        padding: 0px;
+        font-size: 0px;
+        background-color: var(--elf--property-border-color);
+        margin: 10px 0px;
+      }
+    }
+
+    button {
+        flex: 1 1 auto;
+        width: auto;
+        background-color: transparent;
+        background-image: none;
+        border:0px;
+        box-shadow: none;
+        text-align: left;
+        height: 24px;
+        font-size: 11px;
+        vertical-align: middle;
+
+        &[data-no-title="true"] {
+            .title {
+                display: none; 
+            }
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+          vertical-align: middle;
+        }
+  
+      }
+  
+      .title {
+        color: #999;
+        // display: none;
+      }
+}

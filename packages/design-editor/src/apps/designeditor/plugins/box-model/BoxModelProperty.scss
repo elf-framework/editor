@@ -1,0 +1,145 @@
+$size: 45px;
+
+.elf--box-model-item {
+  grid-template-columns: 1fr !important;
+  > div {
+    position: relative;
+    width: 100%;
+    height: 150px;
+
+    .margin {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+      padding: 10px;
+      border: 1px dashed rgb(170, 170, 170);
+
+      &:before {
+        content: attr(data-title);
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        display: inline-block;
+      }
+
+      input {
+        width: 100%;
+        appearance: none;
+      }
+
+      [data-value="top"] {
+        display: inline-block;
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: $size;
+      }
+
+      [data-value="bottom"] {
+        display: inline-block;
+        position: absolute;
+        bottom: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: $size;
+      }
+
+      [data-value="left"] {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 2px;
+        transform: translateY(-50%);
+        width: $size;
+      }
+
+      [data-value="right"] {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        right: 2px;
+        transform: translateY(-50%);
+        width: $size;
+      }
+    }
+
+    .padding {
+      position: absolute;
+      left: $size + 10;
+      top: 30px;
+      right: $size + 10;
+      bottom: 30px ;
+      padding: 20px $size;
+      border: 1px dashed rgb(170, 170, 170);
+
+      &::before {
+        content: attr(data-title);
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        display: inline-block;
+      }
+
+      input {
+        width: 100%;
+        appearance: none;
+      }
+
+      [data-value="top"] {
+        display: inline-block;
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: $size;
+      }
+
+      [data-value="bottom"] {
+        display: inline-block;
+        position: absolute;
+        bottom: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: $size;
+      }
+
+      [data-value="left"] {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 2px;
+        transform: translateY(-50%);
+        width: $size;
+      }
+
+      [data-value="right"] {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        right: 2px;
+        transform: translateY(-50%);
+        width: $size;
+      }
+    }
+
+    .content {
+      position: absolute;
+      left: 105px;
+      top: 54px;
+      right: 105px;
+      bottom: 54px;
+      padding: 10px 0px;
+      border: 1px dashed rgb(170, 170, 170);
+
+      &:before {
+        // content: attr(title);
+        padding: 5px 0px;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+}

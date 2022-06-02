@@ -1,0 +1,109 @@
+.elf--layer-list {
+    height: 100%;
+    overflow: auto;
+    padding:0px;
+    margin:0px !important;
+    .layer-item {
+        color: var(--elf--list-item-font-color);
+        padding: 5px !important; 
+        margin-bottom: 0px !important;
+        content-visibility: auto;
+        contain: size;
+        height: 30px;
+
+        &[data-is-hide="true"] {
+            display: none; 
+        }
+
+        &[data-is-group="true"] {
+            .detail {
+                .folder {
+                    display: inline-block;
+                    vertical-align: middle;
+                    transition: transform 0.1s linear ;
+                    transform: rotate(90deg);
+
+                    &.collapsed {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+        }
+
+        .detail {
+            display: grid;
+            grid-template-columns: 1fr 60px;
+            grid-column-gap: 3px;
+
+            label {
+                padding: 2px 0px;                
+                cursor: pointer;
+                pointer-events: all;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                vertical-align: middle;
+                display: grid;
+                grid-template-columns: 20px 20px 1fr;
+
+                svg {
+                    path, use {
+                        fill: currentColor;
+                    }
+                }
+            }
+
+
+            .tools {
+                text-align: right;
+                display: none;
+
+                .visible {
+                    color: var(--elf--list-item-disable-font-color);
+
+                    &[data-visible='true'] {
+                        color: var(--elf--font-color); 
+                    }
+                }
+
+                .lock {
+                    color: var(--elf--list-item-disable-font-color); 
+
+                    &[data-lock='true'] {
+                        color: var(--elf--font-color); 
+                    }
+                }
+            }
+    
+        }
+
+        &.selected{
+            background-color: var(--elf--selected-color-2);
+            color: var(--elf--selected-font-color);
+        }
+
+        &.selected-path {
+            background-color: var(--elf--selected-color-3);
+        }
+
+        &:not(.selected).hovered,
+        &:hover {
+            box-shadow: inset 0 0 0 1px var(--elf--list-item-selected-color);
+
+            .tools {
+                display: block;
+            }
+        }
+    }
+
+    .drag-start {
+        opacity: 0.3;
+    }
+
+    &+ .drag-point {
+        position: absolute;
+        border: 1px solid var(--elf--selected-color);
+        pointer-events: none;
+    }
+}
+

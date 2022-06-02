@@ -1,0 +1,96 @@
+
+// common 
+$border-color: $oc-gray-7;
+$selected-border-color: $oc-blue-7;
+$selected-color: $oc-blue-6;
+$selected-color-2: $oc-blue-9;
+$selected-hover-color: $oc-blue-3;
+
+$selection-tool-border-color: #3a89f0;
+
+$background-color: $oc-gray-8;
+$toolbar-background-color: $oc-gray-9;
+$selected-background-color: #535353; 
+$font-color: $oc-gray-0;
+$disabled-font-color: $oc-gray-2;
+$selected-font-color: $oc-gray-0;
+$menu-item-title-font-color: $oc-gray-2;
+$layout-border-color: $oc-gray-9;
+
+
+// base 
+$range-thumb-color:  $selected-color;
+$range-track-color:  rgb(97, 97, 97);
+$range-thumb-border-color: rgba(0, 0, 0, 0.8);
+
+$input-background-color: $oc-gray-8;
+$input-inactive-color: $oc-gray-7;
+$input-border-color:$oc-gray-5;
+$input-font-color: $font-color;
+$input-sub-font-color: #7a7a7a;
+$input-height: 30px;
+$input-font-size: 11px;
+
+$divider-color:  rgb(97, 97, 97); 
+
+// tab 
+$tab-background-color: $background-color; 
+$tab-toolbar-background-color: $oc-gray-9; 
+$tab-header-font-color: $font-color; 
+$tab-font-color: #949494;
+$tab-selected-color: white; 
+$tab-selected-font-color: black;
+$tab-selected-border-color: black;
+$tab-border-color: $border-color;
+
+
+// property 
+$property-border-color: #0b0b0b;
+$property-background-color: #22282c;
+$property-title-background-color: #161616;
+
+// list 
+$list-item-font-color: rgb(255, 255, 255);
+$list-item-disable-font-color: #828282;
+$list-item-selected-color: #03a9f4;
+
+
+// popup 
+$popup-background-color: $oc-gray-8; 
+$popup-font-color: $oc-gray-4;
+
+// window 
+$window-background-color: rgba(61, 61, 61, 0.5);
+
+// path guide 
+$path-background-color: rgba(255, 255, 255, 0.7);
+$path-guide-color: black;
+$path-segment-stroke-color: #00bbff;
+
+// timeline 
+$timeline-gauge-background-color: #ee4b66;
+$timeline-gauge-handle-color: lighten(#fff67c, 10%);
+$timeline-row-selected-color: rgba(#435cb5, 0.4);
+
+$timeline-property-add-background-color: #666666;
+
+// guide line 
+$guide-line-color:#ca7976;
+$guide-font-color: white;
+$guide-line-rect-color: #435cb5;
+
+
+$canvas-background-color: #d3d3d3; 
+
+$animation-item-background-color: #435cb5;
+
+$grid-box-editor-button-background-color: #435cb5;
+
+$drag-area-rect-border-color: rgba(62, 168, 255, 0.9);
+$drag-area-rect-background-color: rgba(107, 188, 255, 0.214);
+
+$rotate-x-border-color: rgb(104, 104, 247);
+$rotate-y-border-color: rgb(112, 197, 112);
+
+$tooltip-background-color: $oc-gray-9;
+$tooltip-font-color: $selected-font-color;

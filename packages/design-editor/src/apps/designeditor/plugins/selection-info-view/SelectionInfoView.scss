@@ -1,0 +1,42 @@
+
+.elf--selection-info-view {
+  pointer-events:none;
+  position:absolute;
+  left:0px;
+  top:0px;
+  right:0px;
+  bottom:0px;
+
+  .artboard-title {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    svg {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+
+      path, use {
+        fill: currentColor;
+      }
+    }
+    
+    pointer-events: all;
+    transform: translateY(-100%);
+
+    > div {
+      padding: 2px 5px;
+    }
+
+    // &[data-layout="flex"] > div {
+    //   background-color: green;
+    //   color: var(--elf--selected-font-color);
+    // }
+
+    // &[data-layout="grid"] > div {
+    //   background-color: red;
+    //   color: var(--elf--selected-font-color);
+    // }
+  }
+}
+

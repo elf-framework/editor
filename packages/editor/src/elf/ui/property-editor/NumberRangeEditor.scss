@@ -1,0 +1,128 @@
+.elf--number-range-editor {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 4px;
+    height: var(--elf--input-height);
+    border-radius: 2px;
+    border: 1px solid transparent;
+
+    &.disabled {
+        label {
+            color: var(--elf--selected-color);
+        }
+
+        > * {
+            pointer-events: none;
+        }
+
+        input {
+            color: var(--elf--input-sub-font-color);
+        }
+    }
+
+
+    &.focused {
+        border-color: var(--elf--selected-color);
+        border-width: 1px;
+        --elf--input-range-border-color: var(--elf--input-border-color);        
+    }
+
+    &.drag {
+        border-color: var(--elf--selected-color);
+        border-width: 1px;
+        --elf--input-range-border-color: var(--elf--input-border-color);        
+    }
+
+    &:hover:not(.focused):not(.drag) {
+        border-color: var(--elf--input-border-color);
+        --elf--input-range-border-color: var(--elf--input-border-color);
+    }
+
+    &.has-label {
+        grid-template-columns: 70px 1fr;
+        grid-column-gap: 2px;
+        &.is-removable {
+            grid-template-columns: 70px 1fr 12px;
+        }
+
+        &.compact {
+            grid-template-columns: 30px 1fr;
+        }
+
+
+        &.wide {
+            grid-template-columns: 1fr 1fr;
+        }               
+
+        label {
+            text-align: left;
+            vertical-align: middle;
+            padding: 0px;
+            padding-left: 2px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;     
+            line-height: 2;
+            cursor: ew-resize;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+            }            
+        }
+
+        &.block {
+            display: block;
+            height: auto;
+
+            label {
+                display: block; 
+            }
+        }
+    }
+
+    &.is-removable {
+        grid-template-columns: 1fr 12px;
+        .remove {
+            display: inline-block;
+        }
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .range--editor-type {
+        vertical-align: middle;
+        height: 100%;        
+
+        .area {
+            display: grid; 
+            grid-template-columns: 1fr;
+            grid-column-gap: 4px;
+            border-radius: 3px;
+            height: 100%;
+            
+            span {
+                padding: 1px;
+                
+                vertical-align: middle;
+            }
+
+            input {
+                width: 100%;
+                height: 100%;
+                &[type='number'] {
+                    background-color: transparent;
+                    border:0px;
+                    appearance: none;         
+                    vertical-align: middle;   
+                }
+            }
+        }
+    }
+}

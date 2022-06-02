@@ -1,0 +1,13 @@
+.elf--button {
+
+    display: inline-block;
+    background-color: var(--elf--input-inactive-color);
+    color: var(--elf--input-font-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: var(--elf--selected-color-2);
+        color: var(--elf--selected-font-color);
+    }
+} 
