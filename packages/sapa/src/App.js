@@ -8,7 +8,7 @@ import { UIElement } from "./UIElement";
  * @param {UIElement|Function} ElementClass
  * @returns {UIElement}
  */
-export const start = (ElementClass, opt) => {
+export const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
 
   const app = UIElement.createElementInstance(ElementClass, opt);

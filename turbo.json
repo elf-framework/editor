@@ -29,9 +29,20 @@
       ],
       "outputs": ["dist/**", ".next/**"]      
     },
+    "ui:watch": {
+      "dependsOn": [
+        "^ui:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"]      
+    },    
     "design:dev": {
       "dependsOn": ["design:watch"],
       "cache": false
-    }        
+    },
+    "ui:dev": {
+      "dependsOn": ["ui:watch"],
+      "cache": false
+    }                    
+
   }
 }

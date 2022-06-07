@@ -13,6 +13,7 @@ export default defineConfig({
     }
   },
   build: {
+    emptyOutDir: false,
     minify: false,
     lib: {
       entry: path.resolve(__dirname, "src/scss/index.scss"),

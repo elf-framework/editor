@@ -1,0 +1,18 @@
+{
+  "pipeline": {
+    "ui:watch": {
+      "dependsOn": [
+        "ui#ui:watch", 
+        "^watch"
+      ],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "build": {
+      "dependsOn": ["ui#build", "^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    }
+  }
+}

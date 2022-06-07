@@ -1,0 +1,57 @@
+.elf--visual-bell {
+    --elf--visual-bell-background: #222222;
+    --elf--visual-bell-hover-color: var(--color-neutral-10);
+    --elf--visual-bell-color: var(--color-neutral-0);
+    --elf--visual-bell-border-color: rgba(0, 0, 0, 0.1);
+    --elf--visual-bell-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--visual-bell-tools-border-color: rgba(255, 255, 255, 0.19);
+    --elf--visual-bell-border-radius: 5px;    
+    position: fixed;
+    display: flex;
+    border-radius: var(--elf--visual-bell-border-radius);
+    background-color: var(--elf--visual-bell-background);
+    color: var(--elf--visual-bell-color);
+    box-shadow: var(--elf--visual-bell-box-shadow);
+    padding: 10px 0px;
+    box-sizing: border-box;
+    height: 36px;
+
+
+    > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }    
+
+    .elf--visual-bell-content {
+        padding: 0px 16px;
+    }
+
+    .elf--visual-bell-tools {
+
+        > * {
+            flex: 1 1 auto;
+            border: 0px;
+            background-color: transparent;
+            box-sizing: border-box;
+            border-left: 1px solid var(--elf--visual-bell-tools-border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px;
+            box-sizing: border-box;
+            font-weight: 600;
+            font-size: 11px;            
+
+            &:hover {
+                background-color: var(--elf--visual-bell-hover-color);
+            }
+
+            &:last-child {
+                border-top-right-radius: var(--elf--visual-bell-border-radius);                   
+                border-bottom-right-radius: var(--elf--visual-bell-border-radius);   
+            }
+        }
+    }
+
+}

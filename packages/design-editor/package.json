@@ -33,6 +33,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
+    "@elf/config": "*",
     "adorable-css": "^0.5.2",
     "autoprefixer": "^9.8.6",
     "cssnano": "^5.0.13",
@@ -66,7 +67,7 @@
     "build": "npm run vite:dist",
     "test": "vitest",
     "coverage": "vitest --coverage",
-    "prepare": "husky install",
+    "//prepare": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
     "format": "prettier .  --write"
   },

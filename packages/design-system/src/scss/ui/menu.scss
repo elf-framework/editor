@@ -1,0 +1,135 @@
+.elf--menu {
+    /* menu background color */
+    --elf--menu-background-color: #222222;
+    /* menu border color */
+    --elf--menu-border-color: rgba(0, 0, 0, 0.1);
+    /* menu box-shadow */
+    --elf--menu-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    /* menu default width */
+    --elf--menu-width: 224px;
+    /* menu max height */
+    --elf--menu-max-width: 240px;
+    /* menu item height */
+    --elf--menu-item-height: 24px;
+    /* menu item section title color */
+    --elf--menu-item-section-title-color: rgba(255, 255, 255, 0.4);
+    /* menu item divider color */
+    --elf--menu-item-divider-color: rgba(255, 255, 255, 0.1);    
+    /* menu position */
+    --elf--menu-direction-left: 100%;
+
+    background: var(--elf--menu-background-color);
+    border: 0.5px solid var(--elf--menu-border-color);
+    min-width: var(--elf--menu-width);
+    max-width: var(--elf--menu-width);
+    box-shadow: var(--elf--menu-box-shadow);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding:8px 0px;
+    font-size: 12px;
+
+    &.left {
+
+        li > .elf--menu {
+            --elf--menu-direction-left: calc(-1 * var(--elf--menu-width));
+        }
+    }
+
+    &.has-state {
+        --elf--menu-width: var(--elf--menu-max-width);
+    }
+
+    li {
+        display: flex;
+        width: 100%;
+        height: var(--elf--menu-item-height);
+        box-sizing: border-box;
+        // justify-content: center;
+        border-bottom: 1px solid var(--elf--menu-border-color);
+        // margin-bottom: 16px;
+        margin-left: 0px;
+        padding: 0px 16px;
+        color: white;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+
+        &:hover:not(.divider),
+        &.hover {
+            background-color: var(--elf--primary-color);
+
+            > .elf--menu {
+                opacity: 1;
+                pointer-events: all;              
+                // transition: opacity 0.2s ease-in-out;                  
+            }
+        }
+
+        &[selected] {
+            background-color: blue;
+        }
+
+        > .state {
+            width: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        &[disabled] {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+
+        > .menu-title {
+            flex: 1 1 auto;
+        }
+
+        > .shortcut {
+            flex: none;
+            letter-spacing: 2px;
+        }
+
+        > .icon {
+            flex: none;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+            margin-bottom: 0px;
+        }
+
+        &.divider {
+
+            height: 2px;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--elf--menu-item-divider-color);
+            pointer-events: none;
+        }
+
+        &.section-title {
+            padding: 0px 16px;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+            display: flex;
+            align-items: center;
+            color: var(--elf--menu-item-section-title-color);
+            pointer-events: none;
+        }
+
+        > .elf--menu {
+            position: absolute;
+            left: var(--elf--menu-direction-left);
+            top: -8px;
+            opacity: 0;
+            pointer-events: none;
+            // transition: opacity 0.2s ease-in-out;
+        }
+    }
+}

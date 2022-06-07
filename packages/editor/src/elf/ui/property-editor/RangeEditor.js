@@ -4,7 +4,6 @@ import {
   FOCUS,
   BLUR,
   POINTERSTART,
-  SUBSCRIBE_SELF,
   createComponent,
   classnames,
 } from "@elf/sapa";
@@ -86,7 +85,9 @@ export class RangeEditor extends EditorElement {
                       key: "unit",
                       value: this.state.value.unit,
                       options: units,
-                      onchange: "changeUnit",
+                      onchange: (key, value) => {
+                        this.changeUnit(key, value);
+                      }
                     })}
                 </div>
             </div>
@@ -140,16 +141,16 @@ export class RangeEditor extends EditorElement {
   }
 
   [INPUT('$body input[type="range"]')]() {
-    this.trigger("changeRangeValue");
+    this.changeRangeValue();
   }
 
   [POINTERSTART('$body input[type="range"]') + END()]() {}
 
   end() {
-    this.trigger("changeRangeValue");
+    this.changeRangeValue();
   }
 
-  [SUBSCRIBE_SELF("changeRangeValue")]() {
+  changeRangeValue() {
     var value = +this.getRef("$property").value;
     this.refs.$propertyNumber.val(value);
 
@@ -160,7 +161,7 @@ export class RangeEditor extends EditorElement {
     });
   }
 
-  [SUBSCRIBE_SELF("changeUnit")](key, value) {
+  changeUnit(key, value) {
     this.initValue();
 
     this.updateData({

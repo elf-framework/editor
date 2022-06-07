@@ -1115,6 +1115,10 @@ class Dom {
     } while (element);
     return results;
   }
+  hasChild(child) {
+    const childNode = child.el || child;
+    return this.el === childNode ? false : this.el.contains(childNode);
+  }
   get childNodes() {
     const result = [];
     if (this.el.hasChildNodes()) {
@@ -2602,7 +2606,9 @@ const _EventMachine = class {
       this.$el = newDomElement;
       this.refs.$el = this.$el;
       if ($container) {
-        $container.append(this.$el);
+        if ($container.hasChild(this.$el) === false) {
+          $container.append(this.$el);
+        }
       }
     }
     await this.load();
@@ -3056,7 +3062,7 @@ const _UIElement = class extends EventMachine {
 };
 let UIElement = _UIElement;
 _storeInstance = new WeakMap();
-const start = (ElementClass, opt) => {
+const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
   const app = UIElement.createElementInstance(ElementClass, opt);
   app.render($container);

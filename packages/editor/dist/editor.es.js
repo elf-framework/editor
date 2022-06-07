@@ -2527,7 +2527,9 @@ class RangeEditor extends EditorElement {
       key: "unit",
       value: this.state.value.unit,
       options: units,
-      onchange: "changeUnit"
+      onchange: (key, value2) => {
+        this.changeUnit(key, value2);
+      }
     })}
                 </div>
             </div>
@@ -2566,14 +2568,14 @@ class RangeEditor extends EditorElement {
     });
   }
   [INPUT('$body input[type="range"]')]() {
-    this.trigger("changeRangeValue");
+    this.changeRangeValue();
   }
   [POINTERSTART('$body input[type="range"]') + END()]() {
   }
   end() {
-    this.trigger("changeRangeValue");
+    this.changeRangeValue();
   }
-  [SUBSCRIBE_SELF("changeRangeValue")]() {
+  changeRangeValue() {
     var value = +this.getRef("$property").value;
     this.refs.$propertyNumber.val(value);
     this.initValue();
@@ -2581,7 +2583,7 @@ class RangeEditor extends EditorElement {
       value: new Length(value, this.children.$unit.getValue())
     });
   }
-  [SUBSCRIBE_SELF("changeUnit")](key, value) {
+  changeUnit(key, value) {
     this.initValue();
     this.updateData({
       value: this.state.value.toUnit(value)
@@ -2665,7 +2667,7 @@ class SelectEditor extends EditorElement {
   }
   updateData(data) {
     this.setState(data, false);
-    this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
+    this.emit(this.props.onchange, this.props.key, this.state.value, this.props.params);
   }
 }
 var SelectIconEditor$1 = "";
@@ -3361,9 +3363,6 @@ class DropdownMenu extends EditorElement {
   }
 }
 class ToolBarRenderer extends EditorElement {
-  checkProps(props = {}) {
-    return props;
-  }
   components() {
     return {
       DropdownMenu,

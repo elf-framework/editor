@@ -286,7 +286,10 @@ export class EventMachine {
       this.refs.$el = this.$el;
 
       if ($container) {
-        $container.append(this.$el);
+        // $container 의 자식이 아닐 때만 추가
+        if ($container.hasChild(this.$el) === false) {
+          $container.append(this.$el);
+        }
       }
     }
 

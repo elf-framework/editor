@@ -1,0 +1,55 @@
+.elf--panel {
+    --elf--panel-background-color: white;
+    --elf--panel-color: black;
+
+    background-color: var(--elf--panel-background-color);
+    padding: 8px;
+
+    &[disabled] {
+        // pointer-events: none;
+        cursor: not-allowed;
+        > * {
+            pointer-events: none;
+            filter: opacity(0.5);
+            user-select: none;
+        }
+    }
+
+    > .elf--panel-title {
+        padding: 0px 8px;
+        margin: 8px 0px;
+        display: flex;
+        box-sizing: border-box;
+        // border-bottom: 1px solid var(--elf--panel-border-color);
+        align-items: center;
+
+        > .elf--panel-title-text {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            // padding-left: 16px;
+            font-weight: 600;
+            color: var(--elf--panel-color);
+
+        }
+
+        > .elf--panel-title-tools {
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 2px;
+
+            > * {
+                border: 0px;
+                padding: 0px;
+            }
+        }
+    }
+
+    > .elf--panel-content {
+        padding: 0px 8px;
+        margin: 8px 0px;
+    }
+}

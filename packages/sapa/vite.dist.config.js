@@ -1,9 +1,7 @@
-import { defineConfig } from "vite";
 import copy from "rollup-plugin-copy";
-
+import { defineConfig } from "vite";
 
 import path from "path";
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,6 +18,6 @@ export default defineConfig({
     copy({
       targets: [{ src: "index.d.ts", dest: "dist/" }],
       hook: "writeBundle",
-    })
+    }),
   ],
 });

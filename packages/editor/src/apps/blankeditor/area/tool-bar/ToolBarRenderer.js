@@ -8,13 +8,6 @@ import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { DropdownMenu } from "elf/editor/ui/view/DropdownMenu";
 
 export default class ToolBarRenderer extends EditorElement {
-  checkProps(props = {}) {
-    // console.log(props);
-    // ToolbarItemEntity.parse(props);
-
-    return props;
-  }
-
   components() {
     return {
       DropdownMenu,

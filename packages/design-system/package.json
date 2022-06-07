@@ -2,10 +2,6 @@
   "name": "@elf/design-system",
   "version": "0.0.1",
   "description": "Fantastic Design System ",
-  "files": [
-    "dist/style.css",
-    "index.d.ts"
-  ],
   "main": "./dist/design-system.umd.js",
   "module": "./dist/design-system.es.js",
   "exports": {
@@ -38,9 +34,10 @@
     "vite:dist": "vite build --config=vite.dist.config.js",
     "//watch": "vite build --config=vite.dist.config.js --watch",
     "design:watch": "vite build --config=vite.dist.config.js --watch",
+    "ui:watch": "vite build --config=vite.dist.config.js --watch",
     "release": "release-it *",
     "build": "npm run vite:dist",
-    "prepare": "husky install",
+    "//prepare": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
     "format": "prettier .  --write"
   },

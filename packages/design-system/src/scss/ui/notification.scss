@@ -1,0 +1,75 @@
+.elf--notification {
+    --elf--notification-background: #222222;
+    --elf--notification-hover-color: var(--color-neutral-10);
+    --elf--notification-color: var(--color-neutral-0);
+    --elf--notification-border-color: rgba(0, 0, 0, 0.1);
+    --elf--notification-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--notification-tools-border-color: rgba(255, 255, 255, 0.19);
+    --elf--notification-border-radius: 5px;
+
+    background-color: var(--elf--notification-background);
+    border: 0.5px solid var(--elf--notification-border-color);
+
+    box-shadow: var(--elf--notification-box-shadow);
+    border-radius: var(--elf--notification-border-radius);   
+    color: var(--elf--notification-color);
+    
+    width: 320px;
+    height: 60px;
+
+    display: flex;
+
+    .elf--notification-icon {
+        flex: none;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .elf--notification-content {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .elf--notification-tools {
+        flex: none;
+        width: 72px;
+        box-sizing: border-box;
+        border-left: 1px solid var(--elf--notification-tools-border-color);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        > * {
+            flex: 1 1 auto;
+            border: 0px;
+            background-color: transparent;
+            box-sizing: border-box;
+            border-bottom: 1px solid var(--elf--notification-tools-border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px;
+            box-sizing: border-box;
+            font-weight: 600;
+            font-size: 11px;            
+
+            &:hover {
+                background-color: var(--elf--notification-hover-color);
+            }
+
+            &:first-child {
+                border-top-right-radius: var(--elf--notification-border-radius);   
+            }
+
+            &:last-child {
+                border-bottom: 0px;
+                border-bottom-right-radius: var(--elf--notification-border-radius);   
+            }
+        }
+    }
+
+
+}

@@ -126,7 +126,7 @@ export class SelectEditor extends EditorElement {
   updateData(data) {
     this.setState(data, false);
 
-    this.parent.trigger(
+    this.emit(
       this.props.onchange,
       this.props.key,
       this.state.value,

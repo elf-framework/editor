@@ -931,6 +931,12 @@ export class Dom {
     return results;
   }
 
+  hasChild(child) {
+    const childNode = child.el || child;
+
+    return this.el === childNode ? false : this.el.contains(childNode);
+  }
+
   get childNodes() {
     const result = [];
 

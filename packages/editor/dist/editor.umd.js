@@ -2546,7 +2546,9 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
         key: "unit",
         value: this.state.value.unit,
         options: units,
-        onchange: "changeUnit"
+        onchange: (key, value2) => {
+          this.changeUnit(key, value2);
+        }
       })}
                 </div>
             </div>
@@ -2585,14 +2587,14 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
       });
     }
     [sapa.INPUT('$body input[type="range"]')]() {
-      this.trigger("changeRangeValue");
+      this.changeRangeValue();
     }
     [sapa.POINTERSTART('$body input[type="range"]') + END()]() {
     }
     end() {
-      this.trigger("changeRangeValue");
+      this.changeRangeValue();
     }
-    [sapa.SUBSCRIBE_SELF("changeRangeValue")]() {
+    changeRangeValue() {
       var value = +this.getRef("$property").value;
       this.refs.$propertyNumber.val(value);
       this.initValue();
@@ -2600,7 +2602,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
         value: new Length(value, this.children.$unit.getValue())
       });
     }
-    [sapa.SUBSCRIBE_SELF("changeUnit")](key, value) {
+    changeUnit(key, value) {
       this.initValue();
       this.updateData({
         value: this.state.value.toUnit(value)
@@ -2684,7 +2686,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     }
     updateData(data) {
       this.setState(data, false);
-      this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
+      this.emit(this.props.onchange, this.props.key, this.state.value, this.props.params);
     }
   }
   var SelectIconEditor$1 = "";
@@ -3380,9 +3382,6 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     }
   }
   class ToolBarRenderer extends EditorElement {
-    checkProps(props = {}) {
-      return props;
-    }
     components() {
       return {
         DropdownMenu,

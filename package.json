@@ -11,6 +11,7 @@
     "dev": "turbo run dev --parallel --profile",
     "blank:dev": "turbo run blank:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
+    "ui:dev": "turbo run ui:dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
