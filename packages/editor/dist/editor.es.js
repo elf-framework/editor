@@ -7852,7 +7852,7 @@ class BaseLayout extends EditorElement {
     this.$commands.emit("refreshArtboard");
   }
   [SUBSCRIBE("changed.locale")]() {
-    this.rerender();
+    this.refresh();
   }
 }
 class BlankEditor extends BaseLayout {

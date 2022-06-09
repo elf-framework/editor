@@ -88,10 +88,12 @@ function hasPassed(node1) {
 /**
  * refClass 속성을 가지고 있으면 기존 el 을 대체한다.
  *
+ * 두가지 node1, node2 중에 refClass 를 가지고 있으면 비교하지 않는다.
+ *
  */
 function hasRefClass(node1) {
   return (
-    node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refClass")
+    node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refclass")
   );
 }
 
@@ -127,15 +129,23 @@ function updateElement(parentElement, oldEl, newEl, i, options = {}) {
   } else if (hasPassed(oldEl) || hasPassed(newEl)) {
     // NOOP
     // data-domdiff-pass="true" 일 때는 아무것도 비교하지 않고 끝낸다.
-  } else if (checkAllHTML(newEl, oldEl)) {
-    // outerHTML 이 동일하면 그냥 변경하지 않는다.
-    // 자식 비교도 멈춘다.
-    // console.log("outerHTML 동일하면 그냥 변경하지 않는다.", newEl, oldEl);
-    return;
   } else if (changed(newEl, oldEl) || hasRefClass(newEl)) {
     // node 가 같지 않으면 바꾸고, refClass 속성이 있으면 바꾸고
-    oldEl.replaceWidth(newEl.cloneNode(true));
-    // parentElement.replaceChild(newEl.cloneNode(true), oldEl);
+    if (
+      oldEl.nodeType === window.Node.TEXT_NODE &&
+      newEl.nodeType !== window.Node.TEXT_NODE
+    ) {
+      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+      parentElement.removeChild(oldEl);
+    } else if (
+      oldEl.nodeType !== window.Node.TEXT_NODE &&
+      newEl.nodeType === window.Node.TEXT_NODE
+    ) {
+      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+      parentElement.removeChild(oldEl);
+    } else {
+      oldEl.replaceWith(newEl.cloneNode(true));
+    }
   } else if (
     newEl.nodeType !== window.Node.TEXT_NODE &&
     newEl.nodeType !== window.Node.COMMENT_NODE &&
@@ -196,10 +206,10 @@ const children = (el) => {
 //   }
 
 //   let oldHead = 0;
-//   let oldTail = oldLength - 1; 
+//   let oldTail = oldLength - 1;
 
 //   let newHead = 0;
-//   let newTail = newLength - 1; 
+//   let newTail = newLength - 1;
 
 //   while(oldHead < oldTail && newHead < newTail) {
 
@@ -214,12 +224,11 @@ const children = (el) => {
 
 // }
 
-
 const DefaultOption = {
   checkPassed: undefined,
   keyField: "key",
-  removedElements: []
-}
+  removedElements: [],
+};
 
 /**
  *
@@ -238,8 +247,10 @@ export function DomDiff(A, B, options = {}) {
 
   options = {
     ...DefaultOption,
-    checkPassed: isFunction(options.checkPassed) ? options.checkPassed : undefined
-  }
+    checkPassed: isFunction(options.checkPassed)
+      ? options.checkPassed
+      : undefined,
+  };
 
   A = A.el || A;
   B = B.el || B;
@@ -247,8 +258,10 @@ export function DomDiff(A, B, options = {}) {
   var childrenA = children(A);
   var childrenB = children(B);
 
-  // reconcile(A, childrenA, childrenB, options);
+  // 메인 element 속성 변경
+  updateProps(A, getProps(B.attributes), getProps(A.attributes)); // added
 
+  // 자식 element 의 속성 변경
   var len = Math.max(childrenA.length, childrenB.length);
   if (len === 0) {
     return;

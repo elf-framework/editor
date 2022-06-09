@@ -39,7 +39,9 @@ class MenuItem extends UIElement {
       shortcut,
       icon,
       items = [],
+      selectable,
       selected,
+      selectedIcon = "✓",
     } = this.props;
 
     return {
@@ -48,15 +50,35 @@ class MenuItem extends UIElement {
       shortcut,
       icon,
       items,
+      selectable,
       selected,
+      selectedIcon,
     };
   }
 
   template() {
-    const { title = "", shortcut, icon, items = [] } = this.state;
+    const {
+      title = "",
+      shortcut,
+      icon,
+      items = [],
+      hover,
+      selected,
+      selectable,
+      selectedIcon,
+    } = this.state;
 
     return (
-      <li>
+      <li
+        class={classnames({
+          hover,
+        })}
+      >
+        {selectable ? (
+          <span class="selected-icon">
+            {selected ? selectedIcon : undefined}
+          </span>
+        ) : null}
         {title ? <div class="menu-title">{title}</div> : undefined}
         {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
         {icon ? <div class="icon">{icon}</div> : undefined}
@@ -72,23 +94,15 @@ class MenuItem extends UIElement {
   }
 
   [CLICK("$el") + IF("checkClickable")](e) {
-    const { onClick, onSelect } = this.props;
+    const { selectable = false, onClick } = this.props;
 
-    if (isFunction(onSelect)) {
+    if (selectable) {
       this.setSelected(!this.selected);
-      onSelect(e, this);
-    } else if (isFunction(onClick)) {
+    }
+
+    if (isFunction(onClick)) {
       onClick(e, this);
     }
-  }
-
-  [BIND("$el")]() {
-    return {
-      class: classnames({
-        hover: this.state.hover,
-        selected: this.state.selected,
-      }),
-    };
   }
 
   setSelected(isSelected = false) {

@@ -1,5 +1,11 @@
 import { Dom } from "./functions/Dom";
-import { isFunction, keyEach, collectProps, isObject } from "./functions/func";
+import {
+  isFunction,
+  keyEach,
+  collectProps,
+  isObject,
+  isEqual,
+} from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import {
   createHandlerInstance,
@@ -13,12 +19,14 @@ import { uuid } from "./functions/uuid";
 import BindHandler from "./handler/BindHandler";
 import CallbackHandler from "./handler/CallbackHandler";
 import DomEventHandler from "./handler/DomEventHandler";
+import NativeEventHandler from "./handler/NativeEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
 import StoreHandler from "./handler/StoreHandler";
 
 registHandler({
   BindHandler,
   CallbackHandler,
+  NativeEventHandler,
   DomEventHandler,
   ObserverHandler,
   StoreHandler,
@@ -177,12 +185,13 @@ export class EventMachine {
    * @param {Object} state  새로운 state
    * @param {Boolean} isLoad  다시 로드 할 것인지 체크 , true 면 state 변경후 다시 로드
    */
-  setState(state = {}, isLoad = true) {
+  setState(state = {}, isRefresh = true) {
     this.#prevState = this.#state;
     this.#state = Object.assign({}, this.#state, state);
-
-    if (isLoad) {
-      this.load();
+    if (isRefresh) {
+      // 전체를 리프레쉬 할지
+      // load 만 할지 고민이 필요함.
+      this.refresh();
     }
   }
 
@@ -212,6 +221,10 @@ export class EventMachine {
     return spreadVariable(obj);
   }
 
+  changedProps(newProps) {
+    return !isEqual(this.#props, newProps);
+  }
+
   /**
    * 객체를 다시 그릴 때 사용한다.
    *
@@ -219,16 +232,16 @@ export class EventMachine {
    * @param {Dom} [$container=null] $container 가 존재하면 render 를 같이 한다.
    * @protected
    */
-  _reload(props, $container = null) {
-    if ($container) {
-      this.render($container);
+  _reload(props) {
+    // component 를 reload 할 때
+    // 이전 props 를 비교해서 변경된 것이 없으면 리턴하지 않는다.
+
+    if (this.changedProps(props)) {
+      this.#setProps(props);
+
+      this.#state = {};
+      this.setState(this.initState());
     }
-
-    this.#setProps(props);
-
-    this.#state = {};
-    this.setState(this.initState(), false);
-    this.refresh(true);
   }
 
   /**
@@ -277,7 +290,15 @@ export class EventMachine {
 
     const template = this.template();
 
-    const newDomElement = this.parseTemplate(template);
+    let newDomElement = this.parseMainTemplate(
+      template,
+      /** el 이 생긴 이후로는 항상 true */ !!this.$el
+    );
+
+    // console.log(
+    //   "component info list",
+    //   this.getComponentInfoList(newDomElement)
+    // );
 
     if (this.$el) {
       this.$el.htmlDiff(newDomElement);
@@ -388,21 +409,12 @@ export class EventMachine {
    * template() 함수의 결과물을 파싱해서 dom element 를 생성한다.
    *
    * @param {string} html
-   * @param {Boolean} [isLoad=false]
    */
-  parseTemplate(html, isLoad) {
+  parseLoadTemplate(html) {
     let list = Dom.makeElementList(html);
 
     for (var i = 0, len = list.length; i < len; i++) {
       const $el = list[i];
-
-      var ref = $el.attr(REFERENCE_PROPERTY);
-      if (ref) {
-        if (!isLoad) {
-          // FIXME: load 에서 정의되는건 따로 처리해야할 듯 하다.
-          this.refs[ref] = $el;
-        }
-      }
 
       var refs = $el.$$(QUERY_PROPERTY);
       var temp = {};
@@ -416,13 +428,52 @@ export class EventMachine {
 
         const name = $dom.attr(REFERENCE_PROPERTY);
         if (temp[name]) {
-          console.warn(`${ref} is duplicated. - ${this.sourceName}`, this);
+          console.warn(`${name} is duplicated. - ${this.sourceName}`, this);
         } else {
           temp[name] = true;
         }
+        // this.parseLocalMethod($dom, name);
+      }
+    }
+
+    // list 를 fragment 로 전환하기
+    TEMP_DIV.append(list);
+    return TEMP_DIV.createChildrenFragment();
+  }
+
+  /**
+   * template() 함수의 결과물을 파싱해서 dom element 를 생성한다.
+   *
+   * element 생성 후 ref 에 들어갈 element 를 찾아서 등록한다.
+   *
+   * @param {string} html
+   */
+  parseMainTemplate(html) {
+    let list = Dom.makeElementList(html);
+
+    for (var i = 0, len = list.length; i < len; i++) {
+      const $el = list[i];
+
+      var ref = $el.attr(REFERENCE_PROPERTY);
+      if (ref) {
+        if (!this.refs[ref]) {
+          this.refs[ref] = $el;
+        }
+      }
+
+      var refs = $el.$$(QUERY_PROPERTY);
+
+      for (
+        var refsIndex = 0, refsLen = refs.length;
+        refsIndex < refsLen;
+        refsIndex++
+      ) {
+        const $dom = refs[refsIndex];
+
+        const name = $dom.attr(REFERENCE_PROPERTY);
 
         // FIXME: load 에서 정의되는건 따로 처리해야할 듯 하다.
-        if (!isLoad) {
+        if (!this.refs[name]) {
           this.refs[name] = $dom;
         }
 
@@ -430,13 +481,7 @@ export class EventMachine {
       }
     }
 
-    if (!isLoad) {
-      return list[0];
-    }
-
-    // list 를 fragment 로 전환하기
-    TEMP_DIV.append(list);
-    return TEMP_DIV.createChildrenFragment();
+    return list[0];
   }
 
   /**
@@ -554,7 +599,6 @@ export class EventMachine {
         await instance.render();
       } else {
         // NOOP
-        // console.log(instance);
       }
     }
 
@@ -564,6 +608,16 @@ export class EventMachine {
       instance.$el?.appendTo(instance.renderTarget);
       $dom.remove();
     } else if (instance.$el) {
+      // 렌더링 된 이후는 항상 $el 을 가지기 때문에 instance.$el 을 그대로 유지한다.
+      // FIXME: template 기준으로 object 를 만들 기 때문에
+      // FIXME: 항상 replace 가 실행된다.
+      // FIXME: replace 되면 항상 렌더링을 다시 하게 된다.
+      // FIXME: 이걸 안하게 할려면 어떻게 해야할지
+      // FIXME: 그럴려면 DomDiff 할 때 object 태그로 안되게 구조를 맞춰야 하는데
+      // FIXME: 그럴려면 DomDiff 에 옵션을 따로 줘야할 듯 하고
+      // FIXME: DomDiff 는 적용안되고 컴포넌트만 적용되게 할려면
+      // FIXME: 그냥 패스 하면 되는건가 ?
+      // console.log($dom);
       $dom.replace(instance.$el);
     } else {
       // EventMachine 의 renderTarget 또는 $el 이 없으면
@@ -690,17 +744,11 @@ export class EventMachine {
     }
   }
 
-  // removeChild(child) {
-  //   if (this.children[child.props.ref]) {
-  //     delete this.children[child.props.ref];
-  //   }
-  // }
-
   /**
    * refresh 는 load 함수들을 실행한다.
    */
   refresh() {
-    this.load();
+    this.render();
   }
 
   async _afterLoad() {
@@ -724,10 +772,8 @@ export class EventMachine {
     if (refTarget) {
       const newTemplate = await magicMethod.execute(...args);
 
-      // console.log(newTemplate);
-
       // create fragment
-      const fragment = this.parseTemplate(newTemplate, true);
+      const fragment = this.parseLoadTemplate(newTemplate);
       if (isDomDiff) {
         refTarget.htmlDiff(fragment);
       } else {
@@ -750,12 +796,17 @@ export class EventMachine {
     const filtedLoadMethodList = this.#loadMethods.filter((it) =>
       args.length === 0 ? true : it.args[0] === args[0]
     );
-    // loop 가 비동기라 await 로 대기를 시켜줘야 나머지 html 업데이트에 대한 순서를 맞출 수 있다.
-    await Promise.all(
-      filtedLoadMethodList.map(async (magicMethod) => {
-        await this.makeLoadAction(magicMethod);
-      })
-    );
+
+    // list 가 존재할 때만 afterLoad 를 다시 생성
+    if (filtedLoadMethodList.length) {
+      // loop 가 비동기라 await 로 대기를 시켜줘야 나머지 html 업데이트에 대한 순서를 맞출 수 있다.
+      await Promise.all(
+        filtedLoadMethodList.map(async (magicMethod) => {
+          await this.makeLoadAction(magicMethod);
+        })
+      );
+    }
+
     await this._afterLoad();
   }
 
@@ -789,17 +840,11 @@ export class EventMachine {
   hmr() {
     this.created();
     this.initialize();
-    this.rerender();
+    this.refresh();
 
     this.eachChildren((child) => {
       child.hmr();
     });
-  }
-
-  rerender() {
-    var $parent = this.$el.parent();
-    this.destroy();
-    this.render($parent);
   }
 
   /**

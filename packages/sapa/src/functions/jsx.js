@@ -93,9 +93,21 @@ export function createElement(Component, props, children = []) {
   // 모든 children 을 하나로 모은다.
   children = children.flat(Infinity);
 
-  return /*html*/ `<${Component} ${OBJECT_TO_PROPERTY(props)}>${children.join(
-    " "
-  )}</${Component}>`;
+  let hasEvent = false;
+  Object.keys(props).forEach((key) => {
+    // 동적 이벤트 처리 로직
+    if (key.startsWith("on")) {
+      const callback = variable(props[key]);
+
+      props[key] = callback;
+      hasEvent = true;
+    }
+  });
+
+  return /*html*/ `<${Component} ${OBJECT_TO_PROPERTY({
+    ...props,
+    "has-event": hasEvent ? "true" : undefined,
+  })}>${children.join(" ")}</${Component}>`;
 }
 
 export function createElementJsx(Component, props = {}, ...children) {

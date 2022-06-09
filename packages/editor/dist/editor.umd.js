@@ -7871,7 +7871,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
       this.$commands.emit("refreshArtboard");
     }
     [sapa.SUBSCRIBE("changed.locale")]() {
-      this.rerender();
+      this.refresh();
     }
   }
   class BlankEditor extends BaseLayout {

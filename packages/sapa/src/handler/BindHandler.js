@@ -55,7 +55,9 @@ const applyElementAttribute = (
           .join("");
         $element.attr("style", styleText);
       } else {
-        $element.css(css);
+        if (Object.keys(css).length > 0) {
+          $element.css(css);
+        }
       }
     }
 
@@ -138,9 +140,6 @@ export default class BindHandler extends BaseHandler {
   // 어떻게 실행하는게 좋을까?
   // this.runHandle('bind', ...);
   async bindData(...args) {
-    // local 로 등록된 bind 를 모두 실행한다.
-    // await this.bindLocalValue(...args);
-
     // method 가 캐쉬되어 있어서 캐쉬된 곳에서 가지고 와야 한다.
     const list = this.getBindMethods();
 

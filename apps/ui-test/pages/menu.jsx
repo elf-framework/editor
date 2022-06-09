@@ -11,7 +11,8 @@ start(function () {
             type: "item",
             title: "Hello",
             shortcut: "⌃⌥⇧⌘A",
-            onSelect: (e, item) => {
+            selectable: true,
+            onClick: (e, item) => {
               console.log(item.selected);
             },
           },
@@ -20,7 +21,12 @@ start(function () {
             dashed: true,
           },
           { type: "group", title: "Group" },
-          { type: "item", title: "Menu Item", shortcut: "⌃⌥⇧⌘A" },
+          {
+            type: "item",
+            title: "Menu Item",
+            shortcut: "⌃⌥⇧⌘A",
+            selectable: true,
+          },
           { type: "divider" },
           { type: "group", title: "Section Title" },
           {

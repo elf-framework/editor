@@ -184,9 +184,7 @@ export class Dom {
 
   get attributes() {
     try {
-      [...this.el.attributes];
-
-      return this.el.attributes;
+      return [...this.el.attributes];
     } catch (e) {
       const length = this.el.attributes.length;
       const attributes = [];
@@ -219,6 +217,11 @@ export class Dom {
   removeStyle(key) {
     this.el.style.removeProperty(key);
     return this;
+  }
+
+  isFragment() {
+    // fragment 체크
+    return this.el.nodeType === 11;
   }
 
   is(checkElement) {

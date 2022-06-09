@@ -49,7 +49,7 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _state, _prevState, _localTimestamp, _loadMethods, _timestamp, _cachedMethodList, _props, _propsKeys, _isServer, _propsKeyList, _refreshTimestamp, refreshTimestamp_fn, _setProps, setProps_fn, _getProp, getProp_fn, _storeInstance;
+var _eventList, _eventMap, _state, _prevState, _localTimestamp, _loadMethods, _timestamp, _cachedMethodList, _props, _propsKeys, _isServer, _propsKeyList, _refreshTimestamp, refreshTimestamp_fn, _setProps, setProps_fn, _getProp, getProp_fn, _storeInstance;
 function collectProps(root, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -142,6 +142,22 @@ function isString(value) {
 }
 function isNotString(value) {
   return !isString(value);
+}
+function isEqual(obj1, obj2) {
+  const obj1Keys = Object.keys(obj1);
+  const obj2Keys = Object.keys(obj2);
+  if (obj1Keys.length !== obj2Keys.length) {
+    return false;
+  }
+  return Object.keys(obj1).every((key) => {
+    if (isArray(obj1[key]) && isArray(obj2[key])) {
+      const s = /* @__PURE__ */ new Set([...obj1[key], ...obj2[key]]);
+      return s.size === obj1[key].length && s.size === obj2[key].length;
+    } else if (isFunction(obj1[key]) && isFunction(obj2[key])) {
+      return true;
+    }
+    return obj1[key] === obj2[key];
+  });
 }
 function isArray(value) {
   return Array.isArray(value);
@@ -247,7 +263,7 @@ function hasPassed(node1) {
   return node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("data-domdiff-pass") === "true";
 }
 function hasRefClass(node1) {
-  return node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refClass");
+  return node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refclass");
 }
 function getProps(attributes) {
   var results = {};
@@ -258,12 +274,6 @@ function getProps(attributes) {
   }
   return results;
 }
-function checkAllHTML(newEl, oldEl) {
-  if (newEl.nodeType == window.Node.TEXT_NODE || oldEl.nodeType === window.Node.TEXT_NODE) {
-    return false;
-  }
-  return newEl.outerHTML == oldEl.outerHTML;
-}
 function updateElement(parentElement, oldEl, newEl, i, options = {}) {
   if (!oldEl) {
     parentElement.appendChild(newEl.cloneNode(true));
@@ -271,10 +281,16 @@ function updateElement(parentElement, oldEl, newEl, i, options = {}) {
     parentElement.removeChild(oldEl);
   } else if (hasPassed(oldEl) || hasPassed(newEl))
     ;
-  else if (checkAllHTML(newEl, oldEl)) {
-    return;
-  } else if (changed(newEl, oldEl) || hasRefClass(newEl)) {
-    oldEl.replaceWidth(newEl.cloneNode(true));
+  else if (changed(newEl, oldEl) || hasRefClass(newEl)) {
+    if (oldEl.nodeType === window.Node.TEXT_NODE && newEl.nodeType !== window.Node.TEXT_NODE) {
+      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+      parentElement.removeChild(oldEl);
+    } else if (oldEl.nodeType !== window.Node.TEXT_NODE && newEl.nodeType === window.Node.TEXT_NODE) {
+      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+      parentElement.removeChild(oldEl);
+    } else {
+      oldEl.replaceWith(newEl.cloneNode(true));
+    }
   } else if (newEl.nodeType !== window.Node.TEXT_NODE && newEl.nodeType !== window.Node.COMMENT_NODE && newEl.toString() !== "[object HTMLUnknownElement]") {
     if (options.checkPassed && options.checkPassed(oldEl, newEl))
       ;
@@ -314,6 +330,7 @@ function DomDiff(A, B, options = {}) {
   B = B.el || B;
   var childrenA = children(A);
   var childrenB = children(B);
+  updateProps(A, getProps(B.attributes), getProps(A.attributes));
   var len = Math.max(childrenA.length, childrenB.length);
   if (len === 0) {
     return;
@@ -556,8 +573,7 @@ class Dom {
   }
   get attributes() {
     try {
-      [...this.el.attributes];
-      return this.el.attributes;
+      return [...this.el.attributes];
     } catch (e) {
       const length = this.el.attributes.length;
       const attributes = [];
@@ -584,6 +600,9 @@ class Dom {
   removeStyle(key) {
     this.el.style.removeProperty(key);
     return this;
+  }
+  isFragment() {
+    return this.el.nodeType === 11;
   }
   is(checkElement) {
     if (checkElement instanceof Dom) {
@@ -1792,7 +1811,9 @@ const applyElementAttribute = ($element, key, value, hasStyleAttribute = false) 
         }).join("");
         $element.attr("style", styleText);
       } else {
-        $element.css(css);
+        if (Object.keys(css).length > 0) {
+          $element.css(css);
+        }
       }
     }
     return;
@@ -2284,6 +2305,70 @@ class DomEventHandler extends BaseHandler {
     }
   }
 }
+const NATIVE_EVENT_PREFIX = "on";
+class NativeEventHandler extends BaseHandler {
+  constructor() {
+    super(...arguments);
+    __privateAdd(this, _eventList, []);
+    __privateAdd(this, _eventMap, new window.WeakMap());
+  }
+  async initialize() {
+    var _a;
+    if (((_a = __privateGet(this, _eventList)) == null ? void 0 : _a.length) && this.context.notEventRedefine) {
+      return;
+    }
+    this.parseHasEvent();
+  }
+  loadHasEventList() {
+    const $el = this.context.$el;
+    if (!$el)
+      return;
+    let targets = $el.$$("[has-event='true']");
+    if (!targets.length) {
+      return;
+    }
+    targets.map(($dom) => {
+      if (!__privateGet(this, _eventMap).has($dom.el)) {
+        __privateGet(this, _eventMap).set($dom.el, {});
+      }
+      const results = __privateGet(this, _eventMap).get($dom.el);
+      for (var t of $dom.attributes) {
+        if (t.nodeName.startsWith(NATIVE_EVENT_PREFIX)) {
+          const eventName = t.nodeName.replace(NATIVE_EVENT_PREFIX, "");
+          if (!results[eventName]) {
+            results[eventName] = {
+              applied: false,
+              attributeName: t.nodeName,
+              $dom,
+              eventName,
+              eventHandler: recoverVariable(t.nodeValue)
+            };
+            __privateGet(this, _eventList).push(results[eventName]);
+          } else {
+            recoverVariable(t.nodeValue);
+          }
+        }
+      }
+    });
+  }
+  parseHasEvent() {
+    this.loadHasEventList();
+    __privateGet(this, _eventList).forEach((it) => {
+      if (!it.applied) {
+        it.$dom.on(it.eventName, it.eventHandler);
+        it.applied = true;
+      }
+      it.$dom.removeAttr(it.attributeName);
+      it.$dom.removeAttr("has-event");
+    });
+  }
+  destroy() {
+    __privateSet(this, _eventList, []);
+    __privateSet(this, _eventMap, new window.WeakMap());
+  }
+}
+_eventList = new WeakMap();
+_eventMap = new WeakMap();
 class ObserverHandler extends BaseHandler {
   initialize() {
     var _a, _b;
@@ -2471,6 +2556,7 @@ class StoreHandler extends BaseHandler {
 registHandler({
   BindHandler,
   CallbackHandler,
+  NativeEventHandler,
   DomEventHandler,
   ObserverHandler,
   StoreHandler
@@ -2552,11 +2638,11 @@ const _EventMachine = class {
   initState() {
     return {};
   }
-  setState(state = {}, isLoad = true) {
+  setState(state = {}, isRefresh = true) {
     __privateSet(this, _prevState, __privateGet(this, _state));
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
-    if (isLoad) {
-      this.load();
+    if (isRefresh) {
+      this.refresh();
     }
   }
   toggleState(key, isLoad = true) {
@@ -2567,14 +2653,15 @@ const _EventMachine = class {
   apply(obj) {
     return spreadVariable(obj);
   }
-  _reload(props, $container = null) {
-    if ($container) {
-      this.render($container);
+  changedProps(newProps) {
+    return !isEqual(__privateGet(this, _props), newProps);
+  }
+  _reload(props) {
+    if (this.changedProps(props)) {
+      __privateMethod(this, _setProps, setProps_fn).call(this, props);
+      __privateSet(this, _state, {});
+      this.setState(this.initState());
     }
-    __privateMethod(this, _setProps, setProps_fn).call(this, props);
-    __privateSet(this, _state, {});
-    this.setState(this.initState(), false);
-    this.refresh(true);
   }
   checkLoad($container) {
     window.requestAnimationFrame(() => {
@@ -2599,7 +2686,7 @@ const _EventMachine = class {
       return;
     }
     const template = this.template();
-    const newDomElement = this.parseTemplate(template);
+    let newDomElement = this.parseMainTemplate(template, !!this.$el);
     if (this.$el) {
       this.$el.htmlDiff(newDomElement);
     } else {
@@ -2649,36 +2736,45 @@ const _EventMachine = class {
   }
   afterComponentRendering() {
   }
-  parseTemplate(html, isLoad) {
+  parseLoadTemplate(html) {
     let list = Dom.makeElementList(html);
     for (var i = 0, len = list.length; i < len; i++) {
       const $el = list[i];
-      var ref = $el.attr(REFERENCE_PROPERTY);
-      if (ref) {
-        if (!isLoad) {
-          this.refs[ref] = $el;
-        }
-      }
       var refs = $el.$$(QUERY_PROPERTY);
       var temp = {};
       for (var refsIndex = 0, refsLen = refs.length; refsIndex < refsLen; refsIndex++) {
         const $dom = refs[refsIndex];
         const name = $dom.attr(REFERENCE_PROPERTY);
         if (temp[name]) {
-          console.warn(`${ref} is duplicated. - ${this.sourceName}`, this);
+          console.warn(`${name} is duplicated. - ${this.sourceName}`, this);
         } else {
           temp[name] = true;
         }
-        if (!isLoad) {
+      }
+    }
+    TEMP_DIV.append(list);
+    return TEMP_DIV.createChildrenFragment();
+  }
+  parseMainTemplate(html) {
+    let list = Dom.makeElementList(html);
+    for (var i = 0, len = list.length; i < len; i++) {
+      const $el = list[i];
+      var ref = $el.attr(REFERENCE_PROPERTY);
+      if (ref) {
+        if (!this.refs[ref]) {
+          this.refs[ref] = $el;
+        }
+      }
+      var refs = $el.$$(QUERY_PROPERTY);
+      for (var refsIndex = 0, refsLen = refs.length; refsIndex < refsLen; refsIndex++) {
+        const $dom = refs[refsIndex];
+        const name = $dom.attr(REFERENCE_PROPERTY);
+        if (!this.refs[name]) {
           this.refs[name] = $dom;
         }
       }
     }
-    if (!isLoad) {
-      return list[0];
-    }
-    TEMP_DIV.append(list);
-    return TEMP_DIV.createChildrenFragment();
+    return list[0];
   }
   parsePropertyInfo($dom) {
     let props = {};
@@ -2825,7 +2921,7 @@ const _EventMachine = class {
     }
   }
   refresh() {
-    this.load();
+    this.render();
   }
   async _afterLoad() {
     __privateMethod(this, _refreshTimestamp, refreshTimestamp_fn).call(this);
@@ -2839,7 +2935,7 @@ const _EventMachine = class {
     const refTarget = this.refs[elName];
     if (refTarget) {
       const newTemplate = await magicMethod.execute(...args);
-      const fragment = this.parseTemplate(newTemplate, true);
+      const fragment = this.parseLoadTemplate(newTemplate);
       if (isDomDiff) {
         refTarget.htmlDiff(fragment);
       } else {
@@ -2853,9 +2949,11 @@ const _EventMachine = class {
       __privateSet(this, _loadMethods, this.filterMethodes("load"));
     }
     const filtedLoadMethodList = __privateGet(this, _loadMethods).filter((it) => args.length === 0 ? true : it.args[0] === args[0]);
-    await Promise.all(filtedLoadMethodList.map(async (magicMethod) => {
-      await this.makeLoadAction(magicMethod);
-    }));
+    if (filtedLoadMethodList.length) {
+      await Promise.all(filtedLoadMethodList.map(async (magicMethod) => {
+        await this.makeLoadAction(magicMethod);
+      }));
+    }
     await this._afterLoad();
   }
   async runHandlers(func = "run", ...args) {
@@ -2879,15 +2977,10 @@ const _EventMachine = class {
   hmr() {
     this.created();
     this.initialize();
-    this.rerender();
+    this.refresh();
     this.eachChildren((child) => {
       child.hmr();
     });
-  }
-  rerender() {
-    var $parent = this.$el.parent();
-    this.destroy();
-    this.render($parent);
   }
   destroy() {
     this.eachChildren((childComponent) => {
@@ -3127,7 +3220,17 @@ function createComponentList(...args) {
 }
 function createElement(Component, props, children2 = []) {
   children2 = children2.flat(Infinity);
-  return `<${Component} ${OBJECT_TO_PROPERTY(props)}>${children2.join(" ")}</${Component}>`;
+  let hasEvent = false;
+  Object.keys(props).forEach((key) => {
+    if (key.startsWith("on")) {
+      const callback = variable(props[key]);
+      props[key] = callback;
+      hasEvent = true;
+    }
+  });
+  return `<${Component} ${OBJECT_TO_PROPERTY(__spreadProps(__spreadValues({}, props), {
+    "has-event": hasEvent ? "true" : void 0
+  }))}>${children2.join(" ")}</${Component}>`;
 }
 function createElementJsx(Component, props = {}, ...children2) {
   children2 = children2.flat(Infinity);
@@ -3146,4 +3249,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, WHEEL, classnames, clone, collectProps, combineKeyArray, createComponent, createComponentList, createElement, createElementJsx, createHandlerInstance, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, ifCheck, initializeGroupVariables, isArray, isBoolean, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, WHEEL, classnames, clone, collectProps, combineKeyArray, createComponent, createComponentList, createElement, createElementJsx, createHandlerInstance, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };

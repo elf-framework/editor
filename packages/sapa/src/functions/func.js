@@ -125,6 +125,26 @@ export function isNotString(value) {
   return !isString(value);
 }
 
+export function isEqual(obj1, obj2) {
+  const obj1Keys = Object.keys(obj1);
+  const obj2Keys = Object.keys(obj2);
+
+  if (obj1Keys.length !== obj2Keys.length) {
+    return false;
+  }
+
+  return Object.keys(obj1).every((key) => {
+    if (isArray(obj1[key]) && isArray(obj2[key])) {
+      const s = new Set([...obj1[key], ...obj2[key]]);
+      return s.size === obj1[key].length && s.size === obj2[key].length;
+    } else if (isFunction(obj1[key]) && isFunction(obj2[key])) {
+      return true;
+    }
+
+    return obj1[key] === obj2[key];
+  });
+}
+
 export function isArray(value) {
   return Array.isArray(value);
 }

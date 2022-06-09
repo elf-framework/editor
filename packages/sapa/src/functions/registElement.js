@@ -49,6 +49,7 @@ export function initializeGroupVariables(groupId) {
  * 참조 id 를 가지고 있는 variable 을 복구한다.
  *
  * @param {string} id
+ * @param {boolean} [removeVariable=true]
  * @returns {any}
  */
 export function recoverVariable(id, removeVariable = true) {

@@ -10,15 +10,15 @@ import {
   debounce,
   isObject,
 } from "@elf/sapa";
-
-import { getDist } from "elf/core/math";
 import {
   RESIZE_WINDOW,
   ADD_BODY_FIRST_MOUSEMOVE,
   ADD_BODY_MOUSEMOVE,
   ADD_BODY_MOUSEUP,
 } from "apps/blankeditor/types/event";
+import { getDist } from "elf/core/math";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
+
 import { Editor } from "../manager/Editor";
 
 const EMPTY_POS = { x: 0, y: 0 };
@@ -246,6 +246,6 @@ export class BaseLayout extends EditorElement {
   }
 
   [SUBSCRIBE("changed.locale")]() {
-    this.rerender();
+    this.refresh();
   }
 }

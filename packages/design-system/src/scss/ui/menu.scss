@@ -17,6 +17,9 @@
     --elf--menu-item-divider-color: rgba(255, 255, 255, 0.1);    
     /* menu position */
     --elf--menu-direction-left: 100%;
+    /* menu selected icon font size */
+    --elf--menu-selected-icon-font-size: 20px;
+
 
     background: var(--elf--menu-background-color);
     border: 0.5px solid var(--elf--menu-border-color);
@@ -68,10 +71,6 @@
             }
         }
 
-        &[selected] {
-            background-color: blue;
-        }
-
         > .state {
             width: 16px;
             display: flex;
@@ -83,6 +82,15 @@
             opacity: 0.5;
         }
 
+        > .selected-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex: none;
+            font-size: var(--elf--menu-selected-icon-font-size);
+        }
 
         > .menu-title {
             flex: 1 1 auto;

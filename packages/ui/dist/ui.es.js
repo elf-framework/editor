@@ -14,12 +14,52 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { UIElement, createElementJsx, BIND, CLICK, IF, isFunction, classnames } from "@elf/sapa";
+import { UIElement, createElementJsx, BIND, CLICK, classnames, IF, isFunction } from "@elf/sapa";
 var style = "";
+const NumberStyleKeys = {
+  width: true,
+  height: true,
+  top: true,
+  left: true,
+  right: true,
+  bottom: true,
+  maxWidth: true,
+  maxHeight: true,
+  minWidth: true,
+  minHeight: true,
+  margin: true,
+  marginTop: true,
+  marginRight: true,
+  marginBottom: true,
+  marginLeft: true,
+  padding: true,
+  paddingTop: true,
+  paddingRight: true,
+  paddingBottom: true,
+  paddingLeft: true,
+  border: true,
+  borderTop: true,
+  borderRight: true,
+  borderBottom: true,
+  borderLeft: true,
+  borderWidth: true,
+  borderTopWidth: true,
+  borderRightWidth: true,
+  borderBottomWidth: true,
+  borderLeftWidth: true
+};
+function styleMap(key, value) {
+  if (typeof value === "number") {
+    if (NumberStyleKeys[key]) {
+      value = value + "px";
+    }
+  }
+  return value;
+}
 function propertyMap(styles, mapper) {
   const styleObj = {};
   Object.keys(styles).forEach((key) => {
-    styleObj[mapper[key]] = styles[key];
+    styleObj[mapper[key]] = styleMap(key, styles[key]);
   });
   return styleObj;
 }
@@ -103,7 +143,9 @@ class MenuItem extends UIElement {
       shortcut,
       icon,
       items = [],
-      selected
+      selectable,
+      selected,
+      selectedIcon = "\u2713"
     } = this.props;
     return {
       title,
@@ -111,12 +153,29 @@ class MenuItem extends UIElement {
       shortcut,
       icon,
       items,
-      selected
+      selectable,
+      selected,
+      selectedIcon
     };
   }
   template() {
-    const { title = "", shortcut, icon, items = [] } = this.state;
-    return /* @__PURE__ */ createElementJsx("li", null, title ? /* @__PURE__ */ createElementJsx("div", {
+    const {
+      title = "",
+      shortcut,
+      icon,
+      items = [],
+      hover,
+      selected,
+      selectable,
+      selectedIcon
+    } = this.state;
+    return /* @__PURE__ */ createElementJsx("li", {
+      class: classnames({
+        hover
+      })
+    }, selectable ? /* @__PURE__ */ createElementJsx("span", {
+      class: "selected-icon"
+    }, selected ? selectedIcon : void 0) : null, title ? /* @__PURE__ */ createElementJsx("div", {
       class: "menu-title"
     }, title) : void 0, shortcut ? /* @__PURE__ */ createElementJsx("div", {
       class: "shortcut"
@@ -131,21 +190,13 @@ class MenuItem extends UIElement {
     return type === MenuItemType.ITEM && items.length === 0;
   }
   [CLICK("$el") + IF("checkClickable")](e) {
-    const { onClick, onSelect } = this.props;
-    if (isFunction(onSelect)) {
+    const { selectable = false, onClick } = this.props;
+    if (selectable) {
       this.setSelected(!this.selected);
-      onSelect(e, this);
-    } else if (isFunction(onClick)) {
+    }
+    if (isFunction(onClick)) {
       onClick(e, this);
     }
-  }
-  [BIND("$el")]() {
-    return {
-      class: classnames({
-        hover: this.state.hover,
-        selected: this.state.selected
-      })
-    };
   }
   setSelected(isSelected = false) {
     this.setState({
@@ -185,4 +236,67 @@ class Menu extends UIElement {
     };
   }
 }
-export { Button, Menu };
+class Dialog extends UIElement {
+  initState() {
+    const { visible = false, style: style2 = {} } = this.props;
+    return {
+      visible,
+      style: style2
+    };
+  }
+  template() {
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-text"
+    }, "Dialog"), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-tools"
+    }, /* @__PURE__ */ createElementJsx("button", {
+      class: "elf--button"
+    }, "Action"), /* @__PURE__ */ createElementJsx("button", {
+      class: "elf--button"
+    }, "Dismiss")), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-close",
+      ref: "$close"
+    }, "\xD7")), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-content"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-text"
+    }, "Hello, I'm a dialog"), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-content-tools"
+    }, /* @__PURE__ */ createElementJsx("button", {
+      class: "elf--button"
+    }, "Action"), /* @__PURE__ */ createElementJsx("button", {
+      class: "elf--button"
+    }, "Dismiss"))));
+  }
+  [BIND("$el")]() {
+    const { style: style2 = {}, visible } = this.state;
+    return {
+      class: classnames("elf--dialog", {
+        visible
+      }),
+      style: __spreadValues({}, propertyMap(style2, {
+        backgroundColor: "--elf--dialog-background",
+        color: "--elf--dialog-color",
+        fontSize: "--elf--dialog-font-size",
+        fontWeight: "--elf--dialog-font-weight",
+        height: "--elf--dialog-height",
+        padding: "--elf--dialog-padding",
+        borderRadius: "--elf--dialog-border-radius",
+        borderColor: "--elf--dialog-border-color",
+        boxShadow: "--elf--dialog-box-shadow",
+        width: "--elf--dialog-width"
+      }))
+    };
+  }
+  [CLICK("$close")]() {
+    const { onClose } = this.props;
+    if (isFunction(onClose)) {
+      onClose(this);
+    }
+  }
+}
+export { Button, Dialog, Menu };

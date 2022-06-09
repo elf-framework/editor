@@ -32,9 +32,11 @@ declare module "@elf/ui" {
     shortcut?: string;
     hover?: boolean;
     icon?: string;
+    selectable?: boolean;
     selected?: boolean;
-    onClick: (event: PointerEvent) => void;
-    onSelect: (event: PointerEvent, context: MenuItem) => void;
+    selectedIcon?: string;
+    onClick?: (event: PointerEvent) => void;
+    onSelect?: (event: PointerEvent, context: MenuItem) => void;
     items?: ItemType[];
   };
 
@@ -73,6 +75,10 @@ declare module "@elf/ui" {
     style: MenuStyle;
   }
 
+  export class GroupMenuItem extends UIElement {
+    props: GroupMenuItemType;
+  }
+
   export class MenuItem extends UIElement {
     props: MenuItemType;
     get selected(): boolean;
@@ -80,5 +86,26 @@ declare module "@elf/ui" {
 
   export class Menu extends UIElement {
     props: MenuProps;
+  }
+
+  interface DialogStyle {
+    backgroundColor?: string;
+    color?: string;
+    fontSize?: string;
+    fontWeight?: string;
+    height?: string;
+    width?: number | string;
+    boxShadow: string;
+    borderRadius: string;
+    borderColor: string;
+    padding: string;
+  }
+
+  interface DialogProps {
+    visible: boolean;
+    style: DialogStyle;
+  }
+  export class Dialog extends UIElement {
+    props: DialogProps;
   }
 }
