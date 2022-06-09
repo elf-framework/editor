@@ -1,6 +1,15 @@
-import { BIND, CLICK, UIElement, classnames, IF, isFunction } from "@elf/sapa";
+import {
+  BIND,
+  CLICK,
+  UIElement,
+  classnames,
+  IF,
+  isFunction,
+  LOAD,
+} from "@elf/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
+import { Button } from "../button";
 
 export class Dialog extends UIElement {
   initState() {
@@ -17,10 +26,7 @@ export class Dialog extends UIElement {
       <div class="elf--dialog">
         <div class="elf--dialog-title">
           <div class="elf--dialog-title-text">Dialog</div>
-          <div class="elf--dialog-title-tools">
-            <button class="elf--button">Action</button>
-            <button class="elf--button">Dismiss</button>
-          </div>
+          <div class="elf--dialog-title-tools" ref="$tools"></div>
           <div class="elf--dialog-title-close" ref="$close">
             &times;
           </div>
@@ -34,6 +40,29 @@ export class Dialog extends UIElement {
         </div>
       </div>
     );
+  }
+
+  [LOAD("$tools")]() {
+    return [
+      <Button
+        type="primary"
+        ref="$action"
+        onClick={() => {
+          console.log("Action");
+        }}
+      >
+        Action
+      </Button>,
+      <Button
+        ref="$outline"
+        type="outline"
+        onClick={() => {
+          console.log("Dismiss");
+        }}
+      >
+        Dismiss
+      </Button>,
+    ];
   }
 
   [BIND("$el")]() {

@@ -7,7 +7,7 @@ export default defineConfig({
   esbuild: {
     jsxFactory: "createElementJsx",
     jsxFragment: "FragmentInstance",
-    jsxInject: `import { createElementJsx } from "@elf/sapa"`,
+    jsxInject: `import { createElementJsx,FragmentInstance } from "@elf/sapa"`,
   },
   build: {
     emptyOutDir: false,

@@ -14,7 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { UIElement, createElementJsx, BIND, CLICK, classnames, IF, isFunction } from "@elf/sapa";
+import { UIElement, createElementJsx, BIND, CLICK, classnames, IF, isFunction, LOAD } from "@elf/sapa";
 var style = "";
 const NumberStyleKeys = {
   width: true,
@@ -252,12 +252,9 @@ class Dialog extends UIElement {
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-text"
     }, "Dialog"), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-tools"
-    }, /* @__PURE__ */ createElementJsx("button", {
-      class: "elf--button"
-    }, "Action"), /* @__PURE__ */ createElementJsx("button", {
-      class: "elf--button"
-    }, "Dismiss")), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-tools",
+      ref: "$tools"
+    }), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-close",
       ref: "$close"
     }, "\xD7")), /* @__PURE__ */ createElementJsx("div", {
@@ -271,6 +268,24 @@ class Dialog extends UIElement {
     }, "Action"), /* @__PURE__ */ createElementJsx("button", {
       class: "elf--button"
     }, "Dismiss"))));
+  }
+  [LOAD("$tools")]() {
+    return [
+      /* @__PURE__ */ createElementJsx(Button, {
+        type: "primary",
+        ref: "$action",
+        onClick: () => {
+          console.log("Action");
+        }
+      }, "Action"),
+      /* @__PURE__ */ createElementJsx(Button, {
+        ref: "$outline",
+        type: "outline",
+        onClick: () => {
+          console.log("Dismiss");
+        }
+      }, "Dismiss")
+    ];
   }
   [BIND("$el")]() {
     const { style: style2 = {}, visible } = this.state;

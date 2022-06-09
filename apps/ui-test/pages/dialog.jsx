@@ -38,15 +38,12 @@ start(function () {
         <span>fdsjkafldsf</span>
         <dl>
           <dt></dt>
-          <dd>fdsafdsafdsaf</dd>
+          <dd></dd>
         </dl>
       </div>
       {this.state.visible ? (
         <Dialog
           ref="$dialog"
-          style={{
-            width: 500,
-          }}
           visible={this.state.visible}
           onClose={() => {
             this.setState({

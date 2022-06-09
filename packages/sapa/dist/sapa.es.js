@@ -2906,6 +2906,7 @@ const _EventMachine = class {
     keyEach(this.children, (key, child) => {
       if (child.timestamp !== this.__timestamp) {
         child.clean();
+        delete this.children[key];
       }
     });
   }
