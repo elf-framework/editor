@@ -68,6 +68,16 @@ export class DefaultLayout extends EditorElement {
     const inner = this.getDirection(DefaultLayoutDirection.INNER);
     const outer = this.getDirection(DefaultLayoutDirection.OUTER);
 
+    let leftWidth = this.state.leftSize;
+
+    if (!this.state.showLeftPanel) {
+      leftWidth = 0;
+    }
+    let rightWidth = this.state.rightSize;
+    if (!this.state.showRightPanel) {
+      rightWidth = 0;
+    }
+
     return (
       <div class="elf--default-layout-container">
         <div class={`elf--default-layout`}>
@@ -75,80 +85,53 @@ export class DefaultLayout extends EditorElement {
             <div class="layout-top" ref="$topPanel">
               {top}
             </div>
-          ) : (
-            ""
-          )}
-
+          ) : undefined}
           <div class="layout-middle" ref="$middle">
             {left ? (
-              <div class="layout-left" ref="$leftPanel">
+              <div
+                class="layout-left"
+                style={{
+                  width: leftWidth,
+                }}
+                ref="$leftPanel"
+              >
                 {left}
               </div>
-            ) : (
-              ""
-            )}
+            ) : undefined}
             <div class="layout-body" ref="$bodyPanel">
               {body}
             </div>
             {right ? (
-              <div class="layout-right" ref="$rightPanel">
+              <div
+                class={classnames("layout-right", {
+                  closed: !this.state.showRightPanel,
+                })}
+                style={{
+                  width: rightWidth,
+                }}
+                ref="$rightPanel"
+              >
                 {right}
               </div>
-            ) : (
-              ""
-            )}
-            <div class="splitter" ref="$splitter"></div>
+            ) : undefined}
+            <div
+              class="splitter"
+              ref="$splitter"
+              style={{
+                left: leftWidth,
+              }}
+            ></div>
           </div>
           {bottom ? (
             <div class="layout-bottom" ref="$bottomPanel">
               {bottom}
             </div>
-          ) : (
-            ""
-          )}
+          ) : undefined}
           {inner}
         </div>
         {outer}
       </div>
     );
-  }
-
-  [BIND("$splitter")]() {
-    let left = this.state.leftSize;
-    if (!this.state.showLeftPanel) {
-      left = 0;
-    }
-
-    return {
-      style: {
-        left: Length.px(left),
-      },
-    };
-  }
-
-  [BIND("$leftPanel")]() {
-    let width = this.state.leftSize;
-
-    if (!this.state.showLeftPanel) {
-      width = 0;
-    }
-
-    return {
-      style: { width },
-    };
-  }
-
-  [BIND("$rightPanel")]() {
-    let width = this.state.rightSize;
-
-    if (!this.state.showRightPanel) {
-      width = 0;
-    }
-
-    return {
-      class: classnames("layout-right", { closed: !this.state.showRightPanel }),
-      style: { width },
-    };
   }
 
   setOptions(obj = {}) {
@@ -165,7 +148,7 @@ export class DefaultLayout extends EditorElement {
   moveSplitter(dx) {
     this.setState({
       leftSize: Math.max(
-        Math.min(this.leftSize + dx, this.state.maxSize),
+        Math.min(this.leftSize + Math.floor(dx), this.state.maxSize),
         this.state.minSize
       ),
     });

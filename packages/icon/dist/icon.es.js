@@ -1415,6 +1415,25 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj))
+    throw TypeError("Cannot " + msg);
+};
+var __privateGet = (obj, member, getter) => {
+  __accessCheck(obj, member, "read from private field");
+  return getter ? getter.call(obj) : member.get(obj);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj))
+    throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+var __privateSet = (obj, member, value, setter) => {
+  __accessCheck(obj, member, "write to private field");
+  setter ? setter.call(obj, value) : member.set(obj, value);
+  return value;
+};
+var _eventList, _eventMap;
 function debounce(callback, delay = 0) {
   if (delay === 0) {
     return callback;
@@ -1489,7 +1508,11 @@ const setProp = (el, name, value) => {
   if (typeof value === "boolean") {
     setBooleanProp(el, name, value);
   } else {
-    el.setAttribute(name, value);
+    if (name === "style") {
+      el.style.cssText = value;
+    } else {
+      el.setAttribute(name, value);
+    }
   }
 };
 const removeBooleanProp = (node, name) => {
@@ -1533,22 +1556,20 @@ function hasPassed(node1) {
   return node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("data-domdiff-pass") === "true";
 }
 function hasRefClass(node1) {
-  return node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refClass");
+  return node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refclass");
 }
 function getProps(attributes) {
   var results = {};
   const len = attributes.length;
   for (let i = 0; i < len; i++) {
     const t = attributes[i];
+    if (t.name === "has-event")
+      continue;
+    else if (t.name.startsWith("on"))
+      continue;
     results[t.name] = t.value;
   }
   return results;
-}
-function checkAllHTML(newEl, oldEl) {
-  if (newEl.nodeType == window.Node.TEXT_NODE || oldEl.nodeType === window.Node.TEXT_NODE) {
-    return false;
-  }
-  return newEl.outerHTML == oldEl.outerHTML;
 }
 function updateElement(parentElement, oldEl, newEl, i, options = {}) {
   if (!oldEl) {
@@ -1557,10 +1578,23 @@ function updateElement(parentElement, oldEl, newEl, i, options = {}) {
     parentElement.removeChild(oldEl);
   } else if (hasPassed(oldEl) || hasPassed(newEl))
     ;
-  else if (checkAllHTML(newEl, oldEl)) {
-    return;
-  } else if (changed(newEl, oldEl) || hasRefClass(newEl)) {
-    oldEl.replaceWidth(newEl.cloneNode(true));
+  else if (changed(newEl, oldEl) || hasRefClass(newEl)) {
+    if (oldEl.nodeType === window.Node.TEXT_NODE && newEl.nodeType !== window.Node.TEXT_NODE) {
+      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+      parentElement.removeChild(oldEl);
+    } else if (oldEl.nodeType !== window.Node.TEXT_NODE && newEl.nodeType === window.Node.TEXT_NODE) {
+      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+      parentElement.removeChild(oldEl);
+    } else {
+      if (hasRefClass(newEl)) {
+        if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newEl)) {
+          console.log("replace object refclass", oldEl, newEl);
+          oldEl.replaceWith(newEl.cloneNode(true));
+        }
+      } else {
+        oldEl.replaceWith(newEl.cloneNode(true));
+      }
+    }
   } else if (newEl.nodeType !== window.Node.TEXT_NODE && newEl.nodeType !== window.Node.COMMENT_NODE && newEl.toString() !== "[object HTMLUnknownElement]") {
     if (options.checkPassed && options.checkPassed(oldEl, newEl))
       ;
@@ -1594,18 +1628,24 @@ const DefaultOption = {
 };
 function DomDiff(A, B, options = {}) {
   options = __spreadProps(__spreadValues({}, DefaultOption), {
-    checkPassed: isFunction(options.checkPassed) ? options.checkPassed : void 0
+    checkPassed: isFunction(options.checkPassed) ? options.checkPassed : void 0,
+    checkRefClass: isFunction(options.checkRefClass) ? options.checkRefClass : void 0
   });
   A = A.el || A;
   B = B.el || B;
   var childrenA = children(A);
   var childrenB = children(B);
+  if (A.nodeType !== 11 && B.nodeType !== 11) {
+    updateProps(A, getProps(B.attributes), getProps(A.attributes));
+  }
   var len = Math.max(childrenA.length, childrenB.length);
   if (len === 0) {
     return;
   }
   if (childrenA.length === 0 && childrenB.length > 0) {
-    A.append(...childrenB);
+    var fragment = document.createDocumentFragment();
+    childrenB.forEach((it) => fragment.appendChild(it));
+    A.appendChild(fragment);
   } else if (childrenA.length > 0 && childrenB.length === 0) {
     A.textContent = "";
   } else {
@@ -1615,7 +1655,7 @@ function DomDiff(A, B, options = {}) {
   }
 }
 const __tempVariables = /* @__PURE__ */ new Map();
-function recoverVariable(id, removeVariable) {
+function recoverVariable(id, removeVariable = true) {
   if (isString(id) === false) {
     return id;
   }
@@ -1751,8 +1791,7 @@ class Dom {
   }
   get attributes() {
     try {
-      [...this.el.attributes];
-      return this.el.attributes;
+      return [...this.el.attributes];
     } catch (e) {
       const length = this.el.attributes.length;
       const attributes = [];
@@ -1779,6 +1818,9 @@ class Dom {
   removeStyle(key) {
     this.el.style.removeProperty(key);
     return this;
+  }
+  isFragment() {
+    return this.el.nodeType === 11;
   }
   is(checkElement) {
     if (checkElement instanceof Dom) {
@@ -1882,14 +1924,14 @@ class Dom {
       return this;
     }
   }
-  htmlDiff(fragment) {
-    DomDiff(this, fragment);
+  htmlDiff(fragment, options = {}) {
+    DomDiff(this, fragment, options);
   }
   updateDiff(html, rootElement = "div", options = {}) {
     DomDiff(this, Dom.create(rootElement).html(html), options);
   }
-  updateSVGDiff(html, rootElement = "div") {
-    DomDiff(this, Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild);
+  updateSVGDiff(html, rootElement = "div", options = {}) {
+    DomDiff(this, Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild, options);
   }
   getById(id) {
     return this.el.getElementById(id);
@@ -1951,6 +1993,11 @@ class Dom {
     const list2 = this.childNodes;
     var fragment = document.createDocumentFragment();
     list2.forEach(($el) => fragment.appendChild($el.el));
+    return fragment;
+  }
+  static createFragment(list2 = []) {
+    var fragment = document.createDocumentFragment();
+    list2.forEach((it) => fragment.appendChild(it));
     return fragment;
   }
   appendTo(target) {
@@ -2309,6 +2356,10 @@ class Dom {
       element = element.nextElementSibling;
     } while (element);
     return results;
+  }
+  hasChild(child) {
+    const childNode = child.el || child;
+    return this.el === childNode ? false : this.el.contains(childNode);
   }
   get childNodes() {
     const result = [];
@@ -2740,7 +2791,9 @@ const applyElementAttribute = ($element, key, value, hasStyleAttribute = false) 
         }).join("");
         $element.attr("style", styleText);
       } else {
-        $element.css(css);
+        if (Object.keys(css).length > 0) {
+          $element.css(css);
+        }
       }
     }
     return;
@@ -3232,6 +3285,73 @@ class DomEventHandler extends BaseHandler {
     }
   }
 }
+const NATIVE_EVENT_PREFIX = "on";
+class NativeEventHandler extends BaseHandler {
+  constructor() {
+    super(...arguments);
+    __privateAdd(this, _eventList, []);
+    __privateAdd(this, _eventMap, new window.WeakMap());
+  }
+  async initialize() {
+    var _a;
+    if (((_a = __privateGet(this, _eventList)) == null ? void 0 : _a.length) && this.context.notEventRedefine) {
+      return;
+    }
+    this.parseHasEvent();
+  }
+  loadHasEventList() {
+    const $el = this.context.$el;
+    if (!$el)
+      return;
+    let targets = $el.$$("[has-event='true']");
+    if ($el.attr("has-event") === "true") {
+      targets.unshift($el);
+    }
+    if (!targets.length) {
+      return;
+    }
+    targets.map(($dom) => {
+      if (!__privateGet(this, _eventMap).has($dom.el)) {
+        __privateGet(this, _eventMap).set($dom.el, {});
+      }
+      const results = __privateGet(this, _eventMap).get($dom.el);
+      for (var t of $dom.attributes) {
+        if (t.nodeName.startsWith(NATIVE_EVENT_PREFIX)) {
+          const eventName = t.nodeName.replace(NATIVE_EVENT_PREFIX, "");
+          if (!results[eventName]) {
+            results[eventName] = {
+              applied: false,
+              attributeName: t.nodeName,
+              $dom,
+              eventName,
+              eventHandler: recoverVariable(t.nodeValue)
+            };
+            __privateGet(this, _eventList).push(results[eventName]);
+          } else {
+            recoverVariable(t.nodeValue);
+          }
+        }
+      }
+    });
+  }
+  parseHasEvent() {
+    this.loadHasEventList();
+    __privateGet(this, _eventList).forEach((it) => {
+      if (!it.applied) {
+        it.$dom.on(it.eventName, it.eventHandler);
+        it.applied = true;
+      }
+      it.$dom.removeAttr(it.attributeName);
+      it.$dom.removeAttr("has-event");
+    });
+  }
+  destroy() {
+    __privateSet(this, _eventList, []);
+    __privateSet(this, _eventMap, new window.WeakMap());
+  }
+}
+_eventList = /* @__PURE__ */ new WeakMap();
+_eventMap = /* @__PURE__ */ new WeakMap();
 class ObserverHandler extends BaseHandler {
   initialize() {
     var _a, _b;
@@ -3419,6 +3539,7 @@ class StoreHandler extends BaseHandler {
 registHandler({
   BindHandler,
   CallbackHandler,
+  NativeEventHandler,
   DomEventHandler,
   ObserverHandler,
   StoreHandler

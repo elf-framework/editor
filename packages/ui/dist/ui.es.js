@@ -14,7 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { UIElement, createElementJsx, BIND, CLICK, classnames, IF, isFunction, LOAD } from "@elf/sapa";
+import { UIElement, classnames, createElementJsx, CLICK, IF, isFunction, BIND } from "@elf/sapa";
 var style = "";
 const NumberStyleKeys = {
   width: true,
@@ -65,22 +65,17 @@ function propertyMap(styles, mapper) {
 }
 class Button extends UIElement {
   template() {
-    return /* @__PURE__ */ createElementJsx("button", {
-      class: "elf--button"
-    }, this.props.content || "");
-  }
-  [BIND("$el")]() {
     const { type, disabled, style: style2 = {} } = this.props;
-    return {
-      class: [
+    const styleObject = {
+      class: classnames([
         "elf--button",
         {
           primary: type === "primary",
           secondary: type === "secondary",
           outline: type === "outline"
         }
-      ],
-      disabled: disabled ? "disabled" : null,
+      ]),
+      disabled: disabled ? "disabled" : void 0,
       style: __spreadValues({}, propertyMap(style2, {
         borderColor: "--elf--button-border-color",
         backgroundColor: "--elf--button-background",
@@ -93,6 +88,7 @@ class Button extends UIElement {
         borderRadius: "--elf--button-border-radius"
       }))
     };
+    return /* @__PURE__ */ createElementJsx("button", __spreadValues({}, styleObject), this.props.content || "");
   }
   [CLICK("$el")](e) {
     const { onClick } = this.props;
@@ -245,51 +241,8 @@ class Dialog extends UIElement {
     };
   }
   template() {
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-text"
-    }, "Dialog"), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-tools",
-      ref: "$tools"
-    }), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-close",
-      ref: "$close"
-    }, "\xD7")), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-content"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-text"
-    }, "Hello, I'm a dialog"), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-content-tools"
-    }, /* @__PURE__ */ createElementJsx("button", {
-      class: "elf--button"
-    }, "Action"), /* @__PURE__ */ createElementJsx("button", {
-      class: "elf--button"
-    }, "Dismiss"))));
-  }
-  [LOAD("$tools")]() {
-    return [
-      /* @__PURE__ */ createElementJsx(Button, {
-        type: "primary",
-        ref: "$action",
-        onClick: () => {
-          console.log("Action");
-        }
-      }, "Action"),
-      /* @__PURE__ */ createElementJsx(Button, {
-        ref: "$outline",
-        type: "outline",
-        onClick: () => {
-          console.log("Dismiss");
-        }
-      }, "Dismiss")
-    ];
-  }
-  [BIND("$el")]() {
     const { style: style2 = {}, visible } = this.state;
-    return {
+    const styleObject = {
       class: classnames("elf--dialog", {
         visible
       }),
@@ -306,6 +259,27 @@ class Dialog extends UIElement {
         width: "--elf--dialog-width"
       }))
     };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-text"
+    }, "Dialog"), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-tools",
+      ref: "$tools"
+    }, this.props.tools || void 0), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-title-close",
+      ref: "$close"
+    }, "\xD7")), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-content"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-text"
+    }, "Hello, I'm a dialog"), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-content-tools"
+    }, /* @__PURE__ */ createElementJsx("button", {
+      class: "elf--button"
+    }, "Action"), /* @__PURE__ */ createElementJsx("button", {
+      class: "elf--button"
+    }, "Dismiss"))));
   }
   [CLICK("$close")]() {
     const { onClose } = this.props;

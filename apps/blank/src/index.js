@@ -1,6 +1,6 @@
 
 
-import { createBlankEditor } from "@elf/editor";
+import { createBlankEditor, iconUse } from "@elf/editor";
 import "@elf/editor/style.css";
 
 window.elfEditor = createBlankEditor({
@@ -21,8 +21,59 @@ window.elfEditor = createBlankEditor({
                     action: () => {
                         console.log("aaaa");
                     }
-                }
+                },
+                {
+                    type: "button",
+                    title: "yellow",
+                    action: () => {
+                        console.log("aaaa");
+                    }
+                },
+                {
+                    type: "button",
+                    title: "yellow",
+                    action: () => {
+                        console.log("aaaa");
+                    }
+                },
+                {
+                    type: "button",
+                    title: "yellow",
+                    action: () => {
+                        console.log("aaaa");
+                    }
+                },
+                {
+                    type: "button",
+                    title: "yellow",
+                    action: () => {
+                        console.log("aaaa");
+                    }
+                }                                                                
             ])
+
+            editor.registerUI("layertab.tab", {
+                Layer: {
+                  title: editor.$i18n("app.tab.title.layers"),
+                  icon: iconUse("layers"),
+                  value: "layer",
+                },
+                Library: {
+                  title: editor.$i18n("app.tab.title.libraries"),
+                  icon: iconUse("auto_awesome"),
+                  value: "library",
+                },
+                Asset: {
+                  title: editor.$i18n("app.tab.title.assets"),
+                  icon: iconUse("apps"),
+                  value: "asset",
+                },
+                Component: {
+                  title: editor.$i18n("app.tab.title.components"),
+                  icon: iconUse("plugin"),
+                  value: "component",
+                },
+            });
         },
     ],
 });

@@ -355,17 +355,18 @@ export class Dom {
     }
   }
 
-  htmlDiff(fragment) {
-    DomDiff(this, fragment);
+  htmlDiff(fragment, options = {}) {
+    DomDiff(this, fragment, options);
   }
   updateDiff(html, rootElement = "div", options = {}) {
     DomDiff(this, Dom.create(rootElement).html(html), options);
   }
 
-  updateSVGDiff(html, rootElement = "div") {
+  updateSVGDiff(html, rootElement = "div", options = {}) {
     DomDiff(
       this,
-      Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild
+      Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild,
+      options
     );
   }
 
@@ -447,6 +448,18 @@ export class Dom {
     var fragment = document.createDocumentFragment();
     list.forEach(($el) => fragment.appendChild($el.el));
 
+    return fragment;
+  }
+
+  /**
+   * dom 리스트로 fragment 만들기
+   *
+   * @param {HTMLElement[]} list
+   * @returns
+   */
+  static createFragment(list = []) {
+    var fragment = document.createDocumentFragment();
+    list.forEach((it) => fragment.appendChild(it));
     return fragment;
   }
 

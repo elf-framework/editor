@@ -47,6 +47,11 @@ export default class NativeEventHandler extends BaseHandler {
     // 이렇게 하지 않으면 최상위 부모에서 모든 하위 refclass 를 컴포넌트로 생성해버리는 문제가 생긴다.
     let targets = $el.$$("[has-event='true']");
 
+    // root element 에 has-event 가 있으면 이벤트 적용하기
+    if ($el.attr("has-event") === "true") {
+      targets.unshift($el);
+    }
+
     if (!targets.length) {
       return;
     }

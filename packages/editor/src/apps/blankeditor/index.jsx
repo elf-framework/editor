@@ -5,13 +5,16 @@ import BlankInspector from "./area/BlankInspector";
 import BlankLayerTab from "./area/BlankLayerTab";
 import BlankToolBar from "./area/tool-bar/BlankToolBar";
 import "./layout.scss";
-import blankEditorPlugins from "./plugins/blank-editor-plugins";
-
-import { PopupManager } from "./view-manager/PopupManager";
-import { KeyboardManager } from "./view-manager/KeyboardManager";
-import { ContextMenuManager } from "./view-manager/ContextMenuManager";
-import { DefaultLayout, DefaultLayoutItem } from "elf/ui/base/layout/DefaultLayout";
 import { BaseLayout } from "./layout/BaseLayout";
+import blankEditorPlugins from "./plugins/blank-editor-plugins";
+import { ContextMenuManager } from "./view-manager/ContextMenuManager";
+import { KeyboardManager } from "./view-manager/KeyboardManager";
+import { PopupManager } from "./view-manager/PopupManager";
+
+import {
+  DefaultLayout,
+  DefaultLayoutItem,
+} from "elf/ui/base/layout/DefaultLayout";
 
 export class BlankEditor extends BaseLayout {
   afterRender() {
@@ -38,7 +41,7 @@ export class BlankEditor extends BaseLayout {
   getTopPanel() {
     return (
       <DefaultLayoutItem type="top">
-        <BlankToolBar />
+        <BlankToolBar ref="$blankToolbar" />
       </DefaultLayoutItem>
     );
   }
@@ -46,7 +49,7 @@ export class BlankEditor extends BaseLayout {
   getLeftPanel() {
     return (
       <DefaultLayoutItem type="left" resizable={true}>
-        <BlankLayerTab />
+        <BlankLayerTab ref="$blankLayerTab" />
       </DefaultLayoutItem>
     );
   }
@@ -54,7 +57,7 @@ export class BlankEditor extends BaseLayout {
   getRightPanel() {
     return (
       <DefaultLayoutItem type="right">
-        <BlankInspector />
+        <BlankInspector ref="$blankInspector" />
       </DefaultLayoutItem>
     );
   }
@@ -62,7 +65,7 @@ export class BlankEditor extends BaseLayout {
   getBodyPanel() {
     return (
       <DefaultLayoutItem type="body">
-        <BlankBodyPanel />
+        <BlankBodyPanel ref="$blankBodyPanel" />
       </DefaultLayoutItem>
     );
   }
@@ -70,7 +73,7 @@ export class BlankEditor extends BaseLayout {
   getInnerPanel() {
     return (
       <DefaultLayoutItem type="inner">
-        <KeyboardManager />
+        <KeyboardManager ref="$keyboardManager" />
       </DefaultLayoutItem>
     );
   }
@@ -78,8 +81,8 @@ export class BlankEditor extends BaseLayout {
   getOuterPanel() {
     return (
       <DefaultLayoutItem type="outer">
-        <PopupManager />
-        <ContextMenuManager />
+        <PopupManager ref="$popupManager" />
+        <ContextMenuManager ref="$contextManager" />
       </DefaultLayoutItem>
     );
   }

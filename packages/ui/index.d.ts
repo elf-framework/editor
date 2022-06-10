@@ -103,6 +103,7 @@ declare module "@elf/ui" {
 
   interface DialogProps {
     visible: boolean;
+    tools: any[];
     style: DialogStyle;
   }
   export class Dialog extends UIElement {

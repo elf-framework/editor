@@ -139,6 +139,8 @@ export function isEqual(obj1, obj2) {
       return s.size === obj1[key].length && s.size === obj2[key].length;
     } else if (isFunction(obj1[key]) && isFunction(obj2[key])) {
       return true;
+    } else if (isObject(obj1[key]) && isObject(obj2[key])) {
+      return isEqual(obj1[key], obj2[key]);
     }
 
     return obj1[key] === obj2[key];

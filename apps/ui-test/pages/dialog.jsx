@@ -3,15 +3,19 @@ import { Button, Dialog } from "@elf/ui";
 import "@elf/ui/style.css";
 
 start(function () {
+  const toggleVisible = this.createFunction("toggleVisible", () => {
+    this.setState({
+      visible: !this.state.visible,
+    });
+  });
+
   return (
     <div>
       <button
         style={{
           "background-color": this.state.visible ? "red" : "yellow",
         }}
-        onClick={() => {
-          this.setState({ visible: !this.state.visible });
-        }}
+        onClick={toggleVisible}
         onMouseOver={() => {
           this.setState({ visible: true });
         }}
@@ -22,15 +26,10 @@ start(function () {
         dddd
       </button>
       <Button
-        ref="$button"
         style={{
           backgroundColor: this.state.visible ? "blue" : "yellow",
         }}
-        onClick={() => {
-          this.setState({
-            visible: !this.state.visible,
-          });
-        }}
+        onClick={toggleVisible}
       >
         Hello
       </Button>
@@ -45,6 +44,30 @@ start(function () {
         <Dialog
           ref="$dialog"
           visible={this.state.visible}
+          style={{
+            width: 600,
+          }}
+          tools={[
+            <Button
+              type="primary"
+              ref="$action"
+              onClick={() => {
+                console.log("external Action");
+              }}
+            >
+              Action
+            </Button>,
+            "sample",
+            <Button
+              ref="$outline"
+              type="outline"
+              onClick={() => {
+                console.log("external Dismiss");
+              }}
+            >
+              Dismiss
+            </Button>,
+          ]}
           onClose={() => {
             this.setState({
               visible: false,

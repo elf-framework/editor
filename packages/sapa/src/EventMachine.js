@@ -61,6 +61,7 @@ export class EventMachine {
   #propsKeys = {};
   #isServer = false;
   #propsKeyList = [];
+  #functionCache = {};
   // #prefLoadTemplate = {};
 
   constructor(opt, props) {
@@ -169,6 +170,31 @@ export class EventMachine {
     return createHandlerInstance(this);
   }
 
+  createFunction(funcName, func) {
+    if (isFunction(func) && !this.#functionCache[funcName]) {
+      this.#functionCache[funcName] = func;
+    }
+
+    return this.#functionCache[funcName];
+  }
+
+  runFunction(funcName, func) {
+    const cachedFunction = this.createFunction(funcName, func);
+
+    if (cachedFunction?.running) {
+      return;
+    }
+
+    if (isFunction(cachedFunction)) {
+      if (!cachedFunction.running) {
+        cachedFunction.running = true;
+        cachedFunction.call(this);
+      }
+    }
+
+    return cachedFunction;
+  }
+
   /**
    * state 를 초기화 한것을 리턴한다.
    *
@@ -235,7 +261,6 @@ export class EventMachine {
   _reload(props) {
     // component 를 reload 할 때
     // 이전 props 를 비교해서 변경된 것이 없으면 리턴하지 않는다.
-
     if (this.changedProps(props)) {
       this.#setProps(props);
 
@@ -295,13 +320,46 @@ export class EventMachine {
       /** el 이 생긴 이후로는 항상 true */ !!this.$el
     );
 
-    // console.log(
-    //   "component info list",
-    //   this.getComponentInfoList(newDomElement)
-    // );
-
     if (this.$el) {
-      this.$el.htmlDiff(newDomElement);
+      this.$el.htmlDiff(newDomElement, {
+        checkRefClass: (oldEl, newEl) => {
+          const $newEl = Dom.create(newEl);
+
+          const newPropertyInfo = this._getComponentInfo($newEl);
+
+          if (this.children[newPropertyInfo.refName]) {
+            const instance = this.children[newPropertyInfo.refName];
+            // timestamp 저장
+            instance.timestamp = this.__timestamp;
+            instance._reload(newPropertyInfo.props);
+
+            // dom 을 바꾸지 않는다. 이미 생성된 instance 이므로
+            return false;
+          }
+
+          const targetChildId = Object.keys(this.children).find((it) =>
+            this.children[it].$el.is(oldEl)
+          );
+
+          // targetChild 가 존재하고, newEl 의 refClass 와 동일한 컴포넌트를 가지고 있다.
+          // newEl 을 다시 생성하지 않고  해당 instance 의 props 를 변경한다.
+          if (targetChildId) {
+            const instance = this.children[targetChildId];
+
+            if (instance.sourceName === newPropertyInfo.refClass) {
+              instance.timestamp = this.__timestamp;
+              instance._reload(newPropertyInfo.props);
+
+              // dom 을 바꾸지 않는다. 이미 생성된 instance 이므로
+              return false;
+            }
+          }
+
+          // 다른 예외 사항이 있으면 여기에 기록하기
+
+          return false;
+        },
+      });
     } else {
       this.$el = newDomElement;
       this.refs.$el = this.$el;
@@ -310,6 +368,7 @@ export class EventMachine {
         // $container 의 자식이 아닐 때만 추가
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
+          this.onMounted();
         }
       }
     }
@@ -572,6 +631,12 @@ export class EventMachine {
     return new EventMachineComponent(this, props);
   }
 
+  appendTo() {
+    this.$el?.appendTo(this.renderTarget);
+
+    this.onMounted();
+  }
+
   async renderComponent({ $dom, refName, component, props }) {
     var instance = null;
 
@@ -605,19 +670,9 @@ export class EventMachine {
     this.afterComponentRendering($dom, refName, instance, props);
 
     if (instance.renderTarget) {
-      instance.$el?.appendTo(instance.renderTarget);
+      instance.appendTo();
       $dom.remove();
     } else if (instance.$el) {
-      // 렌더링 된 이후는 항상 $el 을 가지기 때문에 instance.$el 을 그대로 유지한다.
-      // FIXME: template 기준으로 object 를 만들 기 때문에
-      // FIXME: 항상 replace 가 실행된다.
-      // FIXME: replace 되면 항상 렌더링을 다시 하게 된다.
-      // FIXME: 이걸 안하게 할려면 어떻게 해야할지
-      // FIXME: 그럴려면 DomDiff 할 때 object 태그로 안되게 구조를 맞춰야 하는데
-      // FIXME: 그럴려면 DomDiff 에 옵션을 따로 줘야할 듯 하고
-      // FIXME: DomDiff 는 적용안되고 컴포넌트만 적용되게 할려면
-      // FIXME: 그냥 패스 하면 되는건가 ?
-      // console.log($dom);
       $dom.replace(instance.$el);
     } else {
       // EventMachine 의 renderTarget 또는 $el 이 없으면
@@ -726,7 +781,6 @@ export class EventMachine {
     keyEach(this.children, (key, child) => {
       if (child.timestamp !== this.__timestamp) {
         child.clean();
-        delete this.children[key];
       }
     });
   }
@@ -866,6 +920,9 @@ export class EventMachine {
     this.$el = null;
     this.refs = {};
     this.children = {};
+
+    // 로컬 이벤트 함수 실행
+    this.onDestroyed();
   }
 
   /**
@@ -963,4 +1020,44 @@ export class EventMachine {
   getChild(filterCallback) {
     return this.props.contentChildren.find(filterCallback);
   }
+
+  /**
+   * 컴포넌트가 mount 된 이후에 실행된다.
+   *
+   */
+  onMounted() {
+    const mounted = this.createFunction("mounted");
+
+    if (mounted) {
+      mounted();
+    }
+  }
+
+  onDestroyed() {
+    const destroyed = this.createFunction("destroyed");
+
+    if (destroyed) {
+      destroyed();
+    }
+  }
+
+  /**
+   * Function Component 에서 mounted 된 상태 체크할 수 있음.
+   *
+   * @param {*} callback
+   * @returns
+   */
+  useMounted = (callback) => {
+    return this.createFunction("mounted", callback);
+  };
+
+  /**
+   * Function Component 에서 destroyed 된 상태 체크할 수 있음.
+   *
+   * @param {*} callback
+   * @returns
+   */
+  useDestroyed = (callback) => {
+    return this.createFunction("destroyed", callback);
+  };
 }

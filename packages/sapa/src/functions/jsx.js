@@ -9,12 +9,55 @@ import {
 } from "./func";
 import { registElement, variable } from "./registElement";
 
+const NumberStyleKeys = {
+  width: true,
+  height: true,
+  top: true,
+  left: true,
+  right: true,
+  bottom: true,
+  maxWidth: true,
+  maxHeight: true,
+  minWidth: true,
+  minHeight: true,
+  margin: true,
+  marginTop: true,
+  marginRight: true,
+  marginBottom: true,
+  marginLeft: true,
+  padding: true,
+  paddingTop: true,
+  paddingRight: true,
+  paddingBottom: true,
+  paddingLeft: true,
+  border: true,
+  borderTop: true,
+  borderRight: true,
+  borderBottom: true,
+  borderLeft: true,
+  borderWidth: true,
+  borderTopWidth: true,
+  borderRightWidth: true,
+  borderBottomWidth: true,
+  borderLeftWidth: true,
+};
+
+function styleMap(key, value) {
+  if (typeof value === "number") {
+    if (NumberStyleKeys[key]) {
+      value = value + "px";
+    }
+  }
+
+  return value;
+}
+
 function CSS_TO_STRING(style, postfix = "") {
   var newStyle = style || {};
 
   return Object.keys(newStyle)
     .filter((key) => isNotUndefined(newStyle[key]))
-    .map((key) => `${key}: ${newStyle[key]}`)
+    .map((key) => `${key}: ${styleMap(key, newStyle[key])}`)
     .join(";" + postfix);
 }
 

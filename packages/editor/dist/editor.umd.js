@@ -1083,6 +1083,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     }
     setValue(selectedValue) {
       var _a, _b;
+      console.log(this, this.$el);
       (_a = this.$el.$(`* > .tab-item[data-value="${selectedValue}"]`)) == null ? void 0 : _a.onlyOneClass("selected");
       (_b = this.$el.$(`* > .tab-content[data-value="${selectedValue}"]`)) == null ? void 0 : _b.onlyOneClass("selected");
       this.updateData({ selectedValue });
@@ -1636,6 +1637,14 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
       const body = this.getDirection(DefaultLayoutDirection.BODY);
       const inner = this.getDirection(DefaultLayoutDirection.INNER);
       const outer = this.getDirection(DefaultLayoutDirection.OUTER);
+      let leftWidth = this.state.leftSize;
+      if (!this.state.showLeftPanel) {
+        leftWidth = 0;
+      }
+      let rightWidth = this.state.rightSize;
+      if (!this.state.showRightPanel) {
+        rightWidth = 0;
+      }
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--default-layout-container"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -1643,55 +1652,36 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
       }, top ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "layout-top",
         ref: "$topPanel"
-      }, top) : "", /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, top) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "layout-middle",
         ref: "$middle"
       }, left ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "layout-left",
+        style: {
+          width: leftWidth
+        },
         ref: "$leftPanel"
-      }, left) : "", /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, left) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "layout-body",
         ref: "$bodyPanel"
       }, body), right ? /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "layout-right",
+        class: sapa.classnames("layout-right", {
+          closed: !this.state.showRightPanel
+        }),
+        style: {
+          width: rightWidth
+        },
         ref: "$rightPanel"
-      }, right) : "", /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, right) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "splitter",
-        ref: "$splitter"
+        ref: "$splitter",
+        style: {
+          left: leftWidth
+        }
       })), bottom ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "layout-bottom",
         ref: "$bottomPanel"
-      }, bottom) : "", inner), outer);
-    }
-    [sapa.BIND("$splitter")]() {
-      let left = this.state.leftSize;
-      if (!this.state.showLeftPanel) {
-        left = 0;
-      }
-      return {
-        style: {
-          left: Length.px(left)
-        }
-      };
-    }
-    [sapa.BIND("$leftPanel")]() {
-      let width = this.state.leftSize;
-      if (!this.state.showLeftPanel) {
-        width = 0;
-      }
-      return {
-        style: { width }
-      };
-    }
-    [sapa.BIND("$rightPanel")]() {
-      let width = this.state.rightSize;
-      if (!this.state.showRightPanel) {
-        width = 0;
-      }
-      return {
-        class: sapa.classnames("layout-right", { closed: !this.state.showRightPanel }),
-        style: { width }
-      };
+      }, bottom) : void 0, inner), outer);
     }
     setOptions(obj2 = {}) {
       this.setState(obj2);
@@ -1702,7 +1692,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     }
     moveSplitter(dx) {
       this.setState({
-        leftSize: Math.max(Math.min(this.leftSize + dx, this.state.maxSize), this.state.minSize)
+        leftSize: Math.max(Math.min(this.leftSize + Math.floor(dx), this.state.maxSize), this.state.minSize)
       });
     }
     moveEndSplitter() {
@@ -3491,6 +3481,1695 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     }
   }
   var layout = "";
+  var Console = {
+    command: "Console",
+    description: "do console.log()",
+    execute: (editor, ...args) => {
+      console.log(...args);
+    }
+  };
+  var __glob_0_0$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": Console
+  }, Symbol.toStringTag, { value: "Module" }));
+  var keymap_keydown = {
+    command: "keymap.keydown",
+    execute: function(editor, e) {
+      editor.context.keyboardManager.add(e.code, e.keyCode, e);
+      if (editor.context.shortcuts) {
+        editor.context.shortcuts.execute(e, "keydown");
+      }
+    }
+  };
+  var __glob_0_1$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": keymap_keydown
+  }, Symbol.toStringTag, { value: "Module" }));
+  var keymap_keyup = {
+    command: "keymap.keyup",
+    execute: function(editor, e) {
+      editor.context.keyboardManager.remove(e.key, e.keyCode);
+      if (editor.context.shortcuts) {
+        editor.context.shortcuts.execute(e, "keyup");
+      }
+    }
+  };
+  var __glob_0_2$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": keymap_keyup
+  }, Symbol.toStringTag, { value: "Module" }));
+  var moveToCenter = {
+    command: "moveToCenter",
+    description: "Move Layer to Center on Viewport",
+    execute: function(editor, areaVerties, withScale = false) {
+      if (areaVerties) {
+        editor.context.viewport.moveToCenter(areaVerties, withScale ? -0.2 : 0, withScale);
+      }
+    }
+  };
+  var __glob_0_3$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": moveToCenter
+  }, Symbol.toStringTag, { value: "Module" }));
+  var pop_mode_view = {
+    command: "pop.mode.view",
+    execute: function(editor, modeView = void 0) {
+      editor.context.modeViewManager.popMode(modeView);
+    }
+  };
+  var __glob_0_4$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": pop_mode_view
+  }, Symbol.toStringTag, { value: "Module" }));
+  var push_mode_view = {
+    command: "push.mode.view",
+    execute: function(editor, modeView = ViewModeType.CanvasView) {
+      editor.context.modeViewManager.pushMode(modeView);
+      editor.emit("updateModeView");
+    }
+  };
+  var __glob_0_5$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": push_mode_view
+  }, Symbol.toStringTag, { value: "Module" }));
+  var recoverCursor = {
+    command: "recoverCursor",
+    execute: function(editor) {
+      editor.context.config.set("editor.cursor", "auto");
+      editor.context.config.set("editor.cursor.args", []);
+    }
+  };
+  var __glob_0_6$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": recoverCursor
+  }, Symbol.toStringTag, { value: "Module" }));
+  var refreshCursor = {
+    command: "refreshCursor",
+    execute: function(editor, iconType, ...args) {
+      editor.context.config.set("editor.cursor", iconType);
+      editor.context.config.set("editor.cursor.args", args);
+    }
+  };
+  var __glob_0_7$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": refreshCursor
+  }, Symbol.toStringTag, { value: "Module" }));
+  var setLocale = {
+    command: "setLocale",
+    execute: function(editor, locale) {
+      editor.setLocale(locale);
+      editor.emit("changed.locale");
+    }
+  };
+  var __glob_0_8$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": setLocale
+  }, Symbol.toStringTag, { value: "Module" }));
+  var toggle_tool_hand = {
+    command: "toggleHandTool",
+    execute: function(editor) {
+      if (editor.context.config.is("editing.mode", EditingMode.HAND)) {
+        editor.context.config.set("editing.mode", EditingMode.SELECT);
+      } else {
+        editor.context.config.set("editing.mode", EditingMode.HAND);
+      }
+      editor.emit("hideLayerAppendView");
+    }
+  };
+  var __glob_0_9$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": toggle_tool_hand
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_default$1 = {
+    command: "zoom.default",
+    execute: function(editor) {
+      editor.context.viewport.zoomDefault();
+    }
+  };
+  var __glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_default$1
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_in$1 = {
+    command: "zoom.in",
+    execute: function(editor) {
+      editor.context.viewport.zoomIn(0.02);
+    }
+  };
+  var __glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_in$1
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_out$1 = {
+    command: "zoom.out",
+    execute: function(editor) {
+      editor.context.viewport.zoomOut(0.02);
+    }
+  };
+  var __glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_out$1
+  }, Symbol.toStringTag, { value: "Module" }));
+  const modules$2 = { "./command_list/Console.js": __glob_0_0$2, "./command_list/keymap.keydown.js": __glob_0_1$2, "./command_list/keymap.keyup.js": __glob_0_2$2, "./command_list/moveToCenter.js": __glob_0_3$2, "./command_list/pop.mode.view.js": __glob_0_4$2, "./command_list/push.mode.view.js": __glob_0_5$2, "./command_list/recoverCursor.js": __glob_0_6$1, "./command_list/refreshCursor.js": __glob_0_7$1, "./command_list/setLocale.js": __glob_0_8$1, "./command_list/toggle.tool.hand.js": __glob_0_9$1, "./command_list/zoom.default.js": __glob_0_10, "./command_list/zoom.in.js": __glob_0_11, "./command_list/zoom.out.js": __glob_0_12 };
+  const obj = {};
+  Object.entries(modules$2).forEach(([key, value]) => {
+    key = key.replace("./command_list/", "").replace(".js", "");
+    obj[key] = value.default;
+  });
+  class AssetParser {
+    static parse(datauri, enableParselocal = false) {
+      var [, data] = datauri.split("data:");
+      var [mediaType, ...content] = data.split(",");
+      var [mimeType, encoding] = mediaType.split(";");
+      content = content.join(",");
+      return {
+        mimeType,
+        local: enableParselocal && AssetParser.getLink(mimeType, encoding, content)
+      };
+    }
+    static getLink(mimeType, encoding, content) {
+      if (encoding === "base64") {
+        var binary = window.atob(content);
+        var len = binary.length;
+        var unit8Array = new window.Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+          unit8Array[i] = binary.charCodeAt(i);
+        }
+        var blob = new window.Blob([unit8Array], { type: mimeType });
+        return window.URL.createObjectURL(blob);
+      }
+      return "";
+    }
+  }
+  class AssetManager {
+    constructor(editor) {
+      this.$editor = editor;
+    }
+    get project() {
+      return this.$editor.context.selection.currentProject;
+    }
+    revokeResource(value) {
+      var json = JSON.parse(value || "[]");
+      var assets = {};
+      json.forEach((project) => {
+        project.images.forEach((it) => {
+          assets[`#${it.id}`] = it;
+        });
+      });
+      Object.keys(assets).map((idString) => {
+        var a = assets[idString];
+        var info = AssetParser.parse(a.original, true);
+        a.local = info.local;
+      });
+      json.forEach((project) => {
+        project.layers = this.applyAsset(project.layers, assets);
+      });
+      return json;
+    }
+    applyAsset(json, assets) {
+      if (Array.isArray(json)) {
+        json = json.map((it) => this.applyAsset(it, assets));
+      } else if (sapa.isObject(json)) {
+        Object.keys(json).forEach((key) => {
+          json[key] = this.applyAsset(json[key], assets);
+        });
+      } else if (sapa.isString(json)) {
+        Object.keys(assets).forEach((idString) => {
+          var a = assets[idString];
+          if (json.indexOf(`#${a.id}`) > -1) {
+            json = json.replace(new RegExp(`#${a.id}`, "g"), a.local);
+          }
+        });
+      }
+      return json;
+    }
+  }
+  class CommandMaker {
+    constructor(editor) {
+      this.editor = editor;
+      this.commands = [];
+    }
+    log() {
+      console.log(this.commands);
+    }
+    emit(...args) {
+      this.commands.push(args);
+    }
+    run() {
+      this.editor.emit(this.commands);
+    }
+    add(otherCommandMaker) {
+      this.commands = this.commands.concat(otherCommandMaker.commands);
+    }
+  }
+  class CommandManager {
+    constructor(editor) {
+      this.$editor = editor;
+      this.promiseProxy = this.localCommands = {};
+      this.loadCommands();
+      return new Proxy(this, {
+        get: (target, key) => {
+          var originMethod = target[key];
+          if (sapa.isFunction(originMethod)) {
+            return (...args) => {
+              return originMethod.apply(target, args);
+            };
+          } else {
+            return this.makePromiseEvent(key);
+          }
+        }
+      });
+    }
+    loadCommands(userCommands = {}) {
+      Object.keys(userCommands).forEach((command) => {
+        if (sapa.isFunction(userCommands[command])) {
+          this.registerCommand(command, userCommands[command]);
+        } else {
+          this.registerCommand(userCommands[command]);
+        }
+      });
+    }
+    registerCommand(command, commandCallback) {
+      if (this.localCommands[command]) {
+        throw new Error(`command ${command} is already registered`);
+      }
+      if (arguments.length === 2) {
+        const callback = (...args) => {
+          const result = commandCallback.call(this, this.$editor, ...args);
+          this.$editor.debug("command execute", this, ...args);
+          return result;
+        };
+        callback.source = command;
+        this.localCommands[command] = callback;
+      } else if (sapa.isObject(command)) {
+        const callback = (...args) => {
+          const result = command.execute.call(command, this.$editor, ...args);
+          this.$editor.debug("command execute", command, ...args);
+          return result;
+        };
+        callback.source = command.command;
+        this.localCommands[command.command] = callback;
+      }
+    }
+    getCallback(command) {
+      return this.localCommands[command];
+    }
+    makePromiseEvent(command) {
+      const callback = this.getCallback(command);
+      if (callback) {
+        return (...args) => new Promise((resolve) => {
+          resolve(callback(...args));
+        });
+      }
+    }
+    executeCommand(command, description, ...args) {
+      if (this.$editor.context.stateManager.isPointerUp) {
+        command = `history.${command}`;
+        const callback = this.getCallback(command);
+        return callback(description, ...args);
+      } else {
+        return this.emit(command, ...args);
+      }
+    }
+    emit(command, ...args) {
+      const callback = this.getCallback(command);
+      if (callback) {
+        return callback(...args);
+      }
+    }
+  }
+  class ComponentManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.components = {};
+      this.inspectors = {};
+    }
+    registerComponent(name, componentProperty) {
+      this.components[name] = componentProperty;
+    }
+    registerInspector(name, inspectorCallback) {
+      this.inspectors[name] = inspectorCallback;
+    }
+    isComponentClass(name) {
+      return !!this.getComponentClass(name);
+    }
+    getComponentClass(name) {
+      return this.components[name] || this.components["rect"];
+    }
+    getInspector(name) {
+      return this.inspectors[name];
+    }
+    createComponent(itemType, obj2 = {}) {
+      var ComponentClass = this.getComponentClass(itemType);
+      if (!ComponentClass) {
+        console.warn(`${itemType} type is not valid.`);
+        return void 0;
+      }
+      return new ComponentClass(obj2);
+    }
+    createInspector(item, name = "") {
+      const inspector = this.getInspector(name || item.itemType);
+      if (sapa.isFunction(inspector)) {
+        return inspector(item) || [];
+      }
+      if (sapa.isFunction(item.getProps)) {
+        return item.getProps() || [];
+      }
+      return [];
+    }
+  }
+  class ConfigManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.configList = [];
+      this.config = /* @__PURE__ */ new Map();
+    }
+    load() {
+      const obj2 = this.editor.loadItem("config") || {};
+      Object.keys(obj2).forEach((key) => {
+        this.config.set(key, obj2[key]);
+      });
+    }
+    get(key) {
+      var _a;
+      if (this.config.has(key) === false) {
+        this.config.set(key, (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.defaultValue);
+      }
+      return this.config.get(key);
+    }
+    set(key, value, isSave = true) {
+      const oldValue = this.config.get(key);
+      if (oldValue !== value) {
+        this.config.set(key, value);
+        this.editor.emit("config:" + key, value, oldValue);
+        if (isSave) {
+          this.save();
+        }
+      }
+    }
+    push(key, value) {
+      const list = this.get(key);
+      const lastIndex = list.length;
+      this.setIndexValue(key, lastIndex, value);
+      return lastIndex;
+    }
+    setIndexValue(key, index2, value) {
+      const list = this.get(key);
+      list[index2] = value;
+      this.set(key, [...list]);
+    }
+    getIndexValue(key, index2) {
+      const list = this.get(key);
+      return list[index2];
+    }
+    removeByIndex(key, index2) {
+      const list = this.get(key);
+      list.splice(index2, 1);
+      this.set(key, [...list]);
+    }
+    init(key, value) {
+      this.set(key, value, false);
+    }
+    save() {
+      const obj2 = {};
+      this.configList.filter((it) => it.storage !== "none").forEach((it) => {
+        obj2[it.key] = this.get(it.key);
+      });
+      this.editor.saveItem("config", obj2);
+    }
+    setAll(obj2) {
+      Object.keys(obj2).forEach((key) => {
+        this.set(key, obj2[key]);
+      });
+    }
+    getType(key) {
+      var _a;
+      return (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.type;
+    }
+    isType(key, type) {
+      return this.getType(key) === type;
+    }
+    isBoolean(key) {
+      return this.isType(key, "boolean");
+    }
+    toggle(key) {
+      this.set(key, !this.get(key));
+    }
+    toggleWith(key, firstValue, secondValue) {
+      if (this.get(key) === firstValue) {
+        this.set(key, secondValue);
+      } else {
+        this.set(key, firstValue);
+      }
+    }
+    true(key) {
+      return this.get(key) === true;
+    }
+    false(key) {
+      return this.get(key) === false;
+    }
+    is(key, value) {
+      return this.get(key) === value;
+    }
+    remove(key) {
+      this.config.delete(key);
+      this.editor.emit("config:" + key);
+    }
+    registerConfig(config) {
+      this.config.set(config.key, config.defaultValue);
+      this.configList.push(config);
+    }
+  }
+  class CursorManager {
+    async load(iconName = "default", ...args) {
+      if (icon.icons[iconName]) {
+        const iconContent = sapa.isFunction(icon.icons[iconName]) ? icon.icons[iconName].call(icon.icons[iconName], ...args) : icon.icons[iconName];
+        const blob = new window.Blob([iconContent], { type: "image/svg+xml" });
+        return new Promise((resolve) => {
+          const reader = new window.FileReader();
+          reader.onload = (e) => {
+            const datauri = e.target.result;
+            resolve(`url(${datauri}) 12 12, auto`);
+          };
+          reader.readAsDataURL(blob);
+        });
+      } else {
+        return iconName;
+      }
+    }
+  }
+  class I18nManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.locales = {};
+      this.fallbackLang = "en_US";
+    }
+    getLang(lang = void 0) {
+      return lang || this.fallbackLang;
+    }
+    setFallbackLang(lang) {
+      this.fallbackLang = lang;
+    }
+    get(key, params = {}, lang = void 0) {
+      var _a, _b;
+      const currentLang = this.getLang(lang);
+      const str = ((_a = this.locales[currentLang]) == null ? void 0 : _a[key]) || ((_b = this.locales[this.fallbackLang]) == null ? void 0 : _b[key]) || key || void 0;
+      if (sapa.isFunction(str)) {
+        return str(params);
+      } else {
+        let newValue = str;
+        if (key === newValue) {
+          return key.split(".").pop();
+        }
+        Object.entries(params).forEach(([key2, value]) => {
+          newValue = newValue.replace(new RegExp(`{${key2}}`, "ig"), value);
+        });
+        return newValue;
+      }
+    }
+    hasKey(key, lang = void 0) {
+      const currentLang = this.getLang(lang);
+      return !!(this.locales[currentLang][key] || this.locales[this.fallbackLang][key]);
+    }
+    registerI18nMessage(lang, messages) {
+      if (!this.locales[lang]) {
+        this.locales[lang] = {};
+      }
+      Object.assign(this.locales[lang], messages);
+    }
+  }
+  class IconManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.iconMap = {};
+    }
+    get(itemType, item) {
+      const icon$1 = this.iconMap[itemType];
+      if (sapa.isFunction(icon$1)) {
+        return icon$1(item);
+      }
+      return icon.iconUse(icon$1 || "rect");
+    }
+    set(itemType, value) {
+      this.iconMap[itemType] = value;
+    }
+    registerIcon(itemType, iconOrFunction) {
+      this.set(itemType, iconOrFunction);
+    }
+    registerIconList(obj2) {
+      Object.keys(obj2).forEach((key) => {
+        this.set(key, obj2[key]);
+      });
+    }
+    load() {
+      return this.iconMap;
+    }
+  }
+  class InjectManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.ui = {};
+    }
+    registerUI(target, obj2 = {}, order = 1) {
+      if (!this.ui[target]) {
+        this.ui[target] = [];
+      }
+      Object.keys(obj2).forEach((refClass) => {
+        const targetClass = this.ui[target].find((it) => it.refClass === refClass);
+        if (targetClass) {
+          targetClass.class = obj2[refClass];
+        } else {
+          this.ui[target].push({
+            refClass,
+            order,
+            class: obj2[refClass]
+          });
+        }
+      });
+    }
+    getTargetUI(target) {
+      return this.ui[target] || [];
+    }
+    generate(target, hasRef = false) {
+      const list = this.getTargetUI(target);
+      list.sort((a, b) => {
+        if (a.order === b.order)
+          return 0;
+        return a.order > b.order ? 1 : -1;
+      });
+      return list.map((it, index2) => {
+        if (sapa.isArray(it.class)) {
+          return sapa.createElementJsx(...it.class);
+        } else {
+          const props = {};
+          if (hasRef) {
+            props.ref = `$${it.refClass}-${index2}`;
+          }
+          return sapa.createComponent(it.refClass, props);
+        }
+      }).join("\n");
+    }
+  }
+  class KeyBoardManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.codeSet = /* @__PURE__ */ new Set();
+      this.keyCodeSet = /* @__PURE__ */ new Set();
+      this.event = {};
+    }
+    add(key, keyCode, e) {
+      if (this.codeSet.has(key) === false) {
+        this.codeSet.add(key);
+      }
+      if (this.keyCodeSet.has(keyCode) === false) {
+        this.keyCodeSet.add(keyCode);
+      }
+      this.event = e;
+    }
+    remove(key, keyCode) {
+      this.codeSet.delete(key);
+      this.keyCodeSet.delete(keyCode);
+    }
+    hasKey(keyOrKeyCode) {
+      return this.codeSet.has(keyOrKeyCode) || this.keyCodeSet.has(keyOrKeyCode);
+    }
+    check(...args) {
+      return args.some((keyOrKeyCode) => this.hasKey(keyOrKeyCode));
+    }
+    isShift() {
+      return Boolean(this.event.shiftKey);
+    }
+    isCtrl() {
+      return Boolean(this.event.ctrlKey);
+    }
+    isAlt() {
+      return Boolean(this.event.altKey);
+    }
+    isMeta() {
+      return Boolean(this.event.metaKey);
+    }
+  }
+  class MenuManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.menus = {};
+    }
+    registerMenu(target, obj2 = [], order = 1) {
+      if (!this.menus[target]) {
+        this.menus[target] = [];
+      }
+      if (!sapa.isArray(obj2)) {
+        obj2 = [obj2];
+      }
+      obj2.forEach((it) => {
+        this.menus[target].push(it);
+      });
+      this.editor.emit("updateMenu", target);
+    }
+    getTargetMenu(target, sort = "asc") {
+      const list = this.menus[target] || [];
+      if (sort === "desc") {
+        return list.reverse();
+      }
+      return list;
+    }
+  }
+  class ModeViewManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.modes = [ViewModeType.CanvasView];
+    }
+    pushMode(mode) {
+      if (!this.isCurrentMode(mode)) {
+        this.modes.push(mode);
+      }
+    }
+    popMode(mode = void 0) {
+      if (mode) {
+        if (this.isCurrentMode(mode)) {
+          this.modes.pop();
+        }
+      } else {
+        this.modes.pop();
+      }
+    }
+    currentMode() {
+      return this.modes[this.modes.length - 1];
+    }
+    isCurrentMode(mode) {
+      return this.currentMode() === mode;
+    }
+  }
+  class PluginManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.plugins = [];
+    }
+    registerPlugin(func) {
+      this.plugins.push(func);
+    }
+    async initializePlugin(options = {}) {
+      return await Promise.all(this.plugins.map(async (CreatePluginFunction) => {
+        return await CreatePluginFunction(this.editor, options);
+      }));
+    }
+  }
+  class RendererManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.renderers = {};
+      this.rendererTypes = {};
+    }
+    getRenderType(rendererType) {
+      if (!this.renderers[rendererType]) {
+        this.renderers[rendererType] = {};
+      }
+      return this.renderers[rendererType];
+    }
+    registerRenderer(rendererType, name, rendererInstance) {
+      const typedRenderer = this.getRenderType(rendererType);
+      typedRenderer[name] = rendererInstance;
+    }
+    registerRendererType(rendererType, rendererTypeInstance) {
+      this.rendererTypes[rendererType] = rendererTypeInstance;
+    }
+    getRenderer(rendererType) {
+      return this.rendererTypes[rendererType];
+    }
+    getRendererInstance(rendererType, name) {
+      const typedRenderer = this.getRenderType(rendererType);
+      return typedRenderer[name];
+    }
+  }
+  var clipboard_copy = {
+    category: "Edit",
+    key: "cmd+c",
+    command: "clipboard.copy",
+    description: "Copy objects",
+    when: "CanvasView"
+  };
+  var __glob_0_0$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": clipboard_copy
+  }, Symbol.toStringTag, { value: "Module" }));
+  var clipboard_paste = {
+    category: "Edit",
+    key: "cmd+v",
+    win: "ctrl+v",
+    command: "clipboard.paste",
+    description: "Paste selected objects",
+    when: "CanvasView"
+  };
+  var __glob_0_1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": clipboard_paste
+  }, Symbol.toStringTag, { value: "Module" }));
+  var show_pan = {
+    category: "Tool",
+    key: "space",
+    command: "showPan",
+    description: "Show panning area",
+    when: "CanvasView"
+  };
+  var __glob_0_2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": show_pan
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_default = {
+    category: "View",
+    key: "0",
+    command: "zoom.default",
+    description: "zoom by scale 1",
+    when: "CanvasView"
+  };
+  var __glob_0_3$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_default
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_in = {
+    category: "View",
+    key: "Equal",
+    command: "zoom.in",
+    description: "zoom in",
+    when: "CanvasView"
+  };
+  var __glob_0_4$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_in
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_out = {
+    category: "View",
+    key: "minus",
+    command: "zoom.out",
+    description: "zoom Out",
+    when: "CanvasView"
+  };
+  var __glob_0_5$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_out
+  }, Symbol.toStringTag, { value: "Module" }));
+  const modules$1 = { "./shortcuts_list/clipboard.copy.js": __glob_0_0$1, "./shortcuts_list/clipboard.paste.js": __glob_0_1$1, "./shortcuts_list/show.pan.js": __glob_0_2$1, "./shortcuts_list/zoom.default.js": __glob_0_3$1, "./shortcuts_list/zoom.in.js": __glob_0_4$1, "./shortcuts_list/zoom.out.js": __glob_0_5$1 };
+  var shortcuts = Object.values(modules$1).map((it) => it.default);
+  function joinKeys(...args) {
+    return args.filter(Boolean).join("+");
+  }
+  function generateKeyCode(code) {
+    return KEY_CODE[`${code}`.toLowerCase()] || code;
+  }
+  class ShortCutManager {
+    constructor(editor) {
+      this.$editor = editor;
+      this.loadShortCuts();
+    }
+    getGeneratedKeyCode(code) {
+      return generateKeyCode(code);
+    }
+    loadShortCuts() {
+      this.list = [];
+      this.commands = {};
+      shortcuts.forEach((shortcut) => {
+        this.registerShortCut(shortcut);
+      });
+      this.sort();
+    }
+    registerShortCut(shortcut) {
+      const OSName2 = os();
+      this.list.push(__spreadProps(__spreadValues({
+        key: "",
+        command: "",
+        args: [],
+        eventType: "keydown"
+      }, shortcut), {
+        checkKeyString: this.splitShortCut(shortcut[OSName2] || shortcut.key),
+        whenFunction: this.makeWhenFunction(shortcut.command, shortcut.when || true)
+      }));
+      this.sort();
+    }
+    makeWhenFunction(command, when) {
+      if (sapa.isBoolean(when) && when) {
+        return () => true;
+      }
+      const editor = this.$editor;
+      const whenList = when.split("|").map((it) => it.trim());
+      return () => {
+        return whenList.some((it) => editor.context.modeViewManager.isCurrentMode(it));
+      };
+    }
+    sort() {
+      this.commands = {};
+      this.list.forEach((it) => {
+        if (Array.isArray(this.commands[it.checkKeyString]) === false) {
+          this.commands[it.checkKeyString] = [];
+        }
+        this.commands[it.checkKeyString].push(it);
+      });
+    }
+    splitShortCut(key) {
+      var arr = key.toUpperCase().split("+").map((it) => it.trim()).filter(Boolean);
+      let isAlt = false;
+      let isControl = false;
+      let isShift = false;
+      let isMeta = false;
+      let restKeys = [];
+      arr.forEach((key2) => {
+        if (key2.includes("ALT"))
+          isAlt = true;
+        else if (key2.includes("CTRL"))
+          isControl = true;
+        else if (key2.includes("SHIFT"))
+          isShift = true;
+        else if (key2.includes("CMD") || key2.includes("WIN") || key2.includes("META"))
+          isMeta = true;
+        else
+          restKeys.push(key2);
+      });
+      return joinKeys(isAlt ? "ALT" : "", isControl ? "CTRL" : "", isShift ? "SHIFT" : "", isMeta ? "META" : "", generateKeyCode(restKeys.join("")));
+    }
+    makeKeyString(e) {
+      return joinKeys(e.altKey ? "ALT" : "", e.ctrlKey ? "CTRL" : "", e.shiftKey ? "SHIFT" : "", e.metaKey ? "META" : "", e.key.toUpperCase());
+    }
+    makeCodeString(e) {
+      return joinKeys(e.altKey ? "ALT" : "", e.ctrlKey ? "CTRL" : "", e.shiftKey ? "SHIFT" : "", e.metaKey ? "META" : "", e.code.toUpperCase());
+    }
+    makeKeyCodeString(e) {
+      return joinKeys(e.altKey ? "ALT" : "", e.ctrlKey ? "CTRL" : "", e.shiftKey ? "SHIFT" : "", e.metaKey ? "META" : "", e.keyCode);
+    }
+    checkShortCut(keyCodeString, keyString, codeString) {
+      return this.commands[keyCodeString] || this.commands[keyString] || this.commands[codeString];
+    }
+    checkWhen(command) {
+      return command.whenFunction();
+    }
+    execute(e, eventType = "keydown") {
+      let commands = this.checkShortCut(this.makeKeyCodeString(e), this.makeKeyString(e), this.makeCodeString(e));
+      if (commands) {
+        const filteredCommands = commands.filter((it) => it.eventType === eventType).filter((it) => this.checkWhen(it));
+        if (filteredCommands.length) {
+          filteredCommands.forEach((it) => {
+            this.$editor.context.commands.emit(it.command, ...it.args);
+          });
+        }
+      }
+    }
+  }
+  class StateManager {
+    constructor(editor) {
+      this.editor = editor;
+    }
+    get config() {
+      return this.editor.context.config;
+    }
+    get zIndex() {
+      return this.popupZIndex++;
+    }
+    get isPointerUp() {
+      const e = this.config.get("bodyEvent");
+      if (!e)
+        return true;
+      if (e.type === "pointerup")
+        return true;
+      else if (e.type === "pointermove" && e.buttons === 0)
+        return true;
+      return false;
+    }
+    get isPointerDown() {
+      return !this.isPointerUp;
+    }
+    get isPointerMove() {
+      if (!this.config.get("bodyEvent"))
+        return false;
+      return this.config.get("bodyEvent").type === "pointermove";
+    }
+  }
+  class StorageManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.customAssetKey = "custom-assets";
+    }
+    async getCustomAssetList() {
+      let isNew = false;
+      const artboards = (this.editor.loadItem(this.customAssetKey) || []).map((it) => {
+        if (!it.id) {
+          it.id = uuid();
+          isNew = true;
+        }
+        return it;
+      });
+      if (isNew) {
+        await this.setCustomAssetList(artboards);
+      }
+      return artboards;
+    }
+    async setCustomAssetList(list) {
+      this.editor.saveItem(this.customAssetKey, list);
+    }
+    async getCustomAsset(id) {
+      const assetList = await this.getCustomAssetList();
+      const it = assetList.find((it2) => it2.id === id);
+      if (it && it.component) {
+        return it.component;
+      }
+      return null;
+    }
+    async saveCustomAsset(datauri = "") {
+      const current = this.editor.context.selection.current;
+      if (current) {
+        const assetList = await this.getCustomAssetList();
+        const json = await this.editor.json.render(current);
+        json.x = 0;
+        json.y = 0;
+        await this.setCustomAssetList([
+          ...assetList,
+          {
+            id: uuid(),
+            preview: datauri,
+            component: json
+          }
+        ]);
+      }
+    }
+    async removeCustomAsset(id) {
+      const assetList = await this.getCustomAssetList();
+      await this.setCustomAssetList(assetList.filter((it) => {
+        return it.id !== id;
+      }));
+    }
+  }
+  function rectRect(rx1, ry1, rw1, rh1, rx2, ry2, rw2, rh2) {
+    return rx1 + rw1 >= rx2 && rx1 <= rx2 + rw2 && ry1 + rh1 >= ry2 && ry1 <= ry2 + rh2;
+  }
+  class Rect {
+    constructor(x, y, width, height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+    }
+    get left() {
+      return this.x;
+    }
+    get right() {
+      return this.x + this.width;
+    }
+    get top() {
+      return this.y;
+    }
+    get bottom() {
+      return this.y + this.height;
+    }
+    get centerX() {
+      return this.x + this.width / 2;
+    }
+    get centerY() {
+      return this.y + this.height / 2;
+    }
+    get center() {
+      return [this.centerX, this.centerY];
+    }
+    get topLeft() {
+      return [this.left, this.top];
+    }
+    get topRight() {
+      return [this.right, this.top];
+    }
+    get bottomLeft() {
+      return [this.left, this.bottom];
+    }
+    get bottomRight() {
+      return [this.right, this.bottom];
+    }
+    get vertices() {
+      return [this.topLeft, this.topRight, this.bottomLeft, this.bottomRight];
+    }
+    intersect(rect) {
+      return intersectRectRect(this, rect);
+    }
+  }
+  function intersectRectRect(rect1, rect2) {
+    const minRectX = Math.min(rect1.x, rect2.x);
+    const minRectY = Math.min(rect1.y, rect2.y);
+    const rect1Verties = rectToVerties(rect1.x - minRectX, rect1.y - minRectY, rect1.width, rect1.height);
+    const rect2Verties = rectToVerties(rect2.x - minRectX, rect2.y - minRectY, rect2.width, rect2.height);
+    const startPoint = [
+      Math.max(rect1Verties[0][0], rect2Verties[0][0]),
+      Math.max(rect1Verties[0][1], rect2Verties[0][1]),
+      Math.max(rect1Verties[0][2], rect2Verties[0][2])
+    ];
+    const endPoint = [
+      Math.min(rect1Verties[2][0], rect2Verties[2][0]),
+      Math.min(rect1Verties[2][1], rect2Verties[2][1]),
+      Math.min(rect1Verties[2][2], rect2Verties[2][2])
+    ];
+    const minX = Math.min(startPoint[0], endPoint[0]);
+    const minY = Math.min(startPoint[1], endPoint[1]);
+    const maxX = Math.max(startPoint[0], endPoint[0]);
+    const maxY = Math.max(startPoint[1], endPoint[1]);
+    return new Rect(minX + minRectX, minY + minRectY, maxX - minX, maxY - minY);
+  }
+  function parseStyle(transformOrigin = "50% 50% 0px") {
+    const origins = transformOrigin.trim().split(" ").filter((it) => it.trim());
+    let parsedTransformOrigin = null;
+    if (origins.length === 1) {
+      parsedTransformOrigin = [origins[0], origins[0]].map((it) => Length.parse(it));
+    } else {
+      parsedTransformOrigin = origins.map((it) => Length.parse(it));
+    }
+    return parsedTransformOrigin;
+  }
+  function transformScale(transformOrigin, width, height) {
+    let parsedTransformOrigin = parseStyle(transformOrigin);
+    if (width === 0 && height === 0) {
+      return [0, 0, 0];
+    }
+    const originX = parsedTransformOrigin[0].toPx(width).value;
+    const originY = parsedTransformOrigin[1].toPx(height).value;
+    const originZ = parsedTransformOrigin[2].value;
+    return [originX, originY, originZ];
+  }
+  function rectToVerties(x, y, width, height, origin = "50% 50% 0px") {
+    const center = transformScale(origin, width, height);
+    return [
+      [x, y, 0],
+      [x + width, y, 0],
+      [x + width, y + height, 0],
+      [x, y + height, 0],
+      [x + center[0], y + center[1], 0]
+    ];
+  }
+  function rectToVertiesForArea(x, y, width, height) {
+    return rectToVerties(x, y, width, height);
+  }
+  function vertiesToRectangle(verties) {
+    const x = verties[0][0];
+    const y = verties[0][1];
+    const width = dist(verties[0], verties[1]);
+    const height = dist(verties[0], verties[3]);
+    return new Rect(x, y, width, height);
+  }
+  class ViewportManager {
+    constructor(editor) {
+      this.editor = editor;
+      this.context = this.editor.context;
+      this.canvasSize = null;
+      this.cachedViewport = rectToVerties(0, 0, 0, 0);
+      this.mouse = create$1();
+      this.scaleMax = 1e5;
+      this.scale = 1;
+      this.translate = create$1();
+      this.transformOrigin = create$1();
+      this.maxScale = 25;
+      this.minScale = 0.02;
+      this.zoomFactor = 1;
+      this.resetWorldMatrix();
+    }
+    setTransformOrigin(originVec) {
+      this.transformOrigin = originVec;
+      this.resetWorldMatrix();
+    }
+    setTransformOriginWithTranslate(newOrigin) {
+      const oldOrigin = clone(this.transformOrigin);
+      this.setTransformOrigin(newOrigin);
+      this.setTranslate(add([], this.translate, subtract([], oldOrigin, newOrigin)));
+    }
+    setScale(scale) {
+      this.scale = Math.min(Math.max(this.minScale, scale), this.maxScale);
+      this.scaleMax = this.scale * 1e5;
+      this.resetWorldMatrix();
+    }
+    setTranslate(translate) {
+      this.translate = translate;
+      this.resetWorldMatrix();
+    }
+    resetWorldMatrix() {
+      this.translate = this.translate.map((it) => +it.toFixed(4));
+      this.transformOrigin = this.transformOrigin.map((it) => +it.toFixed(4));
+      this.scale = +this.scale.toFixed(4);
+      this.matrix = calculateMatrix(fromTranslation([], this.translate), fromTranslation([], this.transformOrigin), fromScaling([], [this.scale, this.scale, 1]), fromTranslation([], negate([], this.transformOrigin)));
+      this.matrixInverse = invert([], this.matrix);
+      this.scaleMatrix = calculateMatrix(fromScaling([], [this.scale, this.scale, 1]));
+      this.scaleMatrixInverse = invert([], this.scaleMatrix);
+      this.refresh();
+    }
+    refreshCanvasSize(rect) {
+      if (this.canvasSize) {
+        this.canvasSize = rect;
+        this.cachedViewport = rectToVerties(0, 0, this.canvasSize.width, this.canvasSize.height);
+        const newVerties = transformMat4([], [this.canvasSize.width, this.canvasSize.height, 0], this.scaleMatrixInverse);
+        const newTransformOrigin = add([], this.verties[0], [
+          newVerties[0] / 2,
+          newVerties[1] / 2,
+          0
+        ]);
+        const newTranslate = getTranslation([], calculateMatrix(this.matrix, calculateMatrixInverse(fromTranslation([], newTransformOrigin), this.scaleMatrix, invert([], fromTranslation([], newTransformOrigin)))));
+        this.setTranslate(newTranslate);
+        this.setTransformOrigin(newTransformOrigin);
+      } else {
+        this.canvasSize = rect;
+        this.cachedViewport = rectToVerties(0, 0, this.canvasSize.width, this.canvasSize.height);
+        this.setTransformOrigin([
+          this.canvasSize.width / 2,
+          this.canvasSize.height / 2,
+          0
+        ]);
+      }
+      this.editor.emit(UPDATE_VIEWPORT);
+    }
+    refresh() {
+      if (this.cachedViewport) {
+        this.verties = vertiesMap(this.cachedViewport, this.matrixInverse);
+        this.originVerties = this.verties.filter((_, index2) => index2 < 4);
+        this.originRect = vertiesToRectangle(this.originVerties);
+      }
+    }
+    getWorldPosition(e) {
+      e = e || this.context.config.get("bodyEvent");
+      if (!e) {
+        return this.createWorldPosition(0, 0);
+      }
+      return this.createWorldPosition(e.clientX, e.clientY);
+    }
+    createWorldPosition(x, y) {
+      if (!this.canvasSize) {
+        return create$1();
+      }
+      const origin = {
+        x: x - this.canvasSize.x,
+        y: y - this.canvasSize.y
+      };
+      const mouseX = this.verties[0][0] + (this.verties[2][0] - this.verties[0][0]) * (origin.x / this.canvasSize.width);
+      const mouseY = this.verties[0][1] + (this.verties[2][1] - this.verties[0][1]) * (origin.y / this.canvasSize.height);
+      return [mouseX, mouseY, 0];
+    }
+    setMousePoint(x, y) {
+      this.mouse = this.createWorldPosition(x, y);
+      this.setTransformOriginWithTranslate(lerp([], this.verties[0], this.verties[2], 0.5));
+      this.editor.emit(UPDATE_VIEWPORT);
+    }
+    zoom(zoomFactor) {
+      const oldScale = this.scale;
+      const newScale = oldScale * zoomFactor;
+      this.setScale(newScale);
+      const newZoomFactor = this.scale / oldScale;
+      this.zoomFactor = newZoomFactor;
+      if (newZoomFactor !== 1) {
+        this.setTransformOriginWithTranslate(lerp([], this.mouse, this.transformOrigin, 1 / zoomFactor));
+        this.editor.emit(UPDATE_VIEWPORT);
+      }
+    }
+    pan(x, y, z = 0) {
+      this.setTransformOriginWithTranslate(add([], this.transformOrigin, [x, y, 0]));
+      this.editor.emit(UPDATE_VIEWPORT);
+    }
+    moveToCenter(areaVerties, scaleRate = -0.2, withScale = true) {
+      if (!this.canvasSize)
+        return;
+      const areaCenter = lerp([], areaVerties[0], areaVerties[2], 0.5);
+      const width = dist(areaVerties[0], areaVerties[1]);
+      const height = dist(areaVerties[0], areaVerties[3]);
+      const viewportCenter = lerp([], this.verties[0], this.verties[2], 0.5);
+      const viewportWidth = dist(this.verties[0], this.verties[1]);
+      const viewportHeight = dist(this.verties[0], this.verties[3]);
+      const minRate = withScale ? Math.min(viewportWidth / width, viewportHeight / height) + scaleRate : 1;
+      this.setTranslate(add([], this.translate, subtract([], viewportCenter, areaCenter)));
+      this.setTransformOrigin(areaCenter);
+      this.setScale(this.scale * minRate);
+      this.editor.emit(UPDATE_VIEWPORT);
+    }
+    get pos() {
+      const mouseX = (this.mouse[0] - this.verties[0][0]) / (this.verties[2][0] - this.verties[0][0]) * 100;
+      const mouseY = (this.mouse[1] - this.verties[0][1]) / (this.verties[2][1] - this.verties[0][1]) * 100;
+      return [mouseX, mouseY, 0];
+    }
+    get minX() {
+      return this.verties[0][0];
+    }
+    get maxX() {
+      return this.verties[2][0];
+    }
+    get minY() {
+      return this.verties[0][1];
+    }
+    get maxY() {
+      return this.verties[2][1];
+    }
+    get center() {
+      return this.verties[4];
+    }
+    get height() {
+      return this.maxY - this.minY;
+    }
+    get width() {
+      return this.maxX - this.minX;
+    }
+    get pixelSize() {
+      return Math.round(this.width / this.canvasSize.width);
+    }
+    checkInViewport(pointVertex) {
+      const xInViewport = this.minX < pointVertex[0] && pointVertex[0] < this.maxX;
+      const yInViewport = this.minY < pointVertex[1] && pointVertex[1] < this.maxY;
+      return xInViewport && yInViewport;
+    }
+    checkInViewportArea(verties = []) {
+      const source = vertiesToRectangle(verties);
+      const target = this.originRect;
+      return rectRect(source.x, source.y, source.width, source.height, target.x, target.y, target.width, target.height);
+    }
+    applyVertex(vertex) {
+      return transformMat4([], vertex, this.matrix);
+    }
+    applyVertexInverse(vertex) {
+      return transformMat4([], vertex, this.matrixInverse);
+    }
+    applyScaleVertex(vertex) {
+      return transformMat4([], vertex, this.scaleMatrix);
+    }
+    applyScaleVertexInverse(vertex) {
+      return transformMat4([], vertex, this.scaleMatrixInverse);
+    }
+    applyVerties(verties) {
+      return vertiesMap(verties, this.matrix);
+    }
+    applyScaleVerties(verties) {
+      return vertiesMap(verties, this.scaleMatrix);
+    }
+    applyVertiesInverse(verties) {
+      return vertiesMap(verties, this.matrixInverse);
+    }
+    applyScaleVertiesInverse(verties) {
+      return vertiesMap(verties, this.scaleMatrixInverse);
+    }
+    createAreaVerties(x, y, width, height) {
+      return this.applyVertiesInverse(rectToVertiesForArea(x, y, width, height));
+    }
+    zoomIn(zoomFactor = 0.01) {
+      this.setScale(this.scale + zoomFactor);
+      this.editor.emit(UPDATE_VIEWPORT);
+    }
+    zoomOut(zoomFactor = 0.01) {
+      this.zoomIn(-zoomFactor);
+    }
+    zoomDefault() {
+      this.setScale(1);
+      this.editor.emit(UPDATE_VIEWPORT);
+    }
+  }
+  var dark = {
+    left_size: 250,
+    left_max_size: 400,
+    bottom_size: 150,
+    bottom_max_size: 500,
+    timeline_grid_font_color: "#ececec",
+    timeline_line_color: "red",
+    timeline_timeview_bottom_color: "black"
+  };
+  var light = {
+    left_size: 250,
+    left_max_size: 400,
+    bottom_size: 150,
+    bottom_max_size: 500,
+    timeline_grid_font_color: "black",
+    timeline_line_color: "#4778d4",
+    timeline_timeview_bottom_color: "#ececec"
+  };
+  var theme = {
+    dark,
+    light
+  };
+  class Editor {
+    constructor(opt = {}) {
+      this.EDITOR_ID = uuid();
+      this.projects = [];
+      this.popupZIndex = 1e4;
+      this.symbols = {};
+      this.images = {};
+      this.openRightPanel = true;
+      this.ignoreManagers = opt.ignoreManagers || [];
+      this.context = {};
+      this.loadManagers();
+    }
+    loadManagers() {
+      this.registerManager({
+        store: sapa.BaseStore,
+        config: ConfigManager,
+        commands: CommandManager,
+        keyboardManager: KeyBoardManager,
+        viewport: ViewportManager,
+        storageManager: StorageManager,
+        modeViewManager: ModeViewManager,
+        cursorManager: CursorManager,
+        assetManager: AssetManager,
+        injectManager: InjectManager,
+        components: ComponentManager,
+        pluginManager: PluginManager,
+        renderers: RendererManager,
+        i18n: I18nManager,
+        icon: IconManager,
+        stateManager: StateManager,
+        menuManager: MenuManager
+      });
+      if (this.ignoreManagers.includes("ShortCutManager") === false) {
+        this.registerManager({
+          shortcuts: ShortCutManager
+        });
+      }
+      this.loadCommands(obj);
+      this.initPlugins();
+      this.initStorage();
+    }
+    registerManager(obj2 = {}) {
+      Object.keys(obj2).forEach((name) => {
+        const DataManagerClass = obj2[name];
+        Object.defineProperty(this.context, name, {
+          value: new DataManagerClass(this),
+          writable: false
+        });
+      });
+    }
+    initStorage() {
+      this.locale = this.loadItem("locale") || "en_US";
+      this.layout = this.loadItem("layout") || "all";
+    }
+    getI18nMessage(key, params = {}, locale) {
+      return this.context.i18n.get(key, params, locale || this.locale);
+    }
+    $i18n(key, params = {}, locale) {
+      return this.getI18nMessage(key, params, locale);
+    }
+    hasI18nkey(key, locale) {
+      return this.context.i18n.hasKey(key, locale || this.locale);
+    }
+    initI18nMessage(root = "") {
+      return (key, params = {}, locale) => {
+        const i18nKey = `${root}.${key}`;
+        if (this.hasI18nkey(i18nKey, locale)) {
+          return this.context.i18(`${root}.${key}`, params, locale);
+        } else {
+          return this.context.i18(`${key}`, params, locale);
+        }
+      };
+    }
+    setLocale(locale = "en_US") {
+      this.locale = locale;
+      this.saveItem("locale", this.locale);
+    }
+    setUser(user) {
+      this.user = user;
+    }
+    async initPlugins(options = {}) {
+      await this.context.pluginManager.initializePlugin(options);
+    }
+    themeValue(key, defaultValue = "") {
+      return theme[this.context.config.get("editor.theme")][key] || defaultValue;
+    }
+    get zIndex() {
+      return this.popupZIndex++;
+    }
+    getFile(url) {
+      return this.images[url] || url;
+    }
+    setStore(store) {
+      this.store = store;
+    }
+    emit(...args) {
+      this.context.store.source = this.EDITOR_ID;
+      this.context.store.emit(...args);
+    }
+    on(...args) {
+      const [name, callback, context, ...rest] = args;
+      return this.context.store.on(name, callback, context || this, ...rest);
+    }
+    off(...args) {
+      this.context.store.off(...args);
+    }
+    offAll(...args) {
+      this.context.store.offAll(...args);
+    }
+    debug() {
+    }
+    command(command, message, ...args) {
+      console.warn("command", command, message, args);
+      if (this.context.stateManager.isPointerUp) {
+        return this.context.store.emit(`history.${command}`, message, ...args);
+      } else {
+        return this.context.store.emit(command, ...args);
+      }
+    }
+    nextTick(callback, delay = 0) {
+      if (this.context.store) {
+        window.setTimeout(() => {
+          this.context.store.nextTick(callback);
+        }, delay);
+      }
+    }
+    get(idOrModel) {
+      return this.context.modelManager.get((idOrModel == null ? void 0 : idOrModel.id) || idOrModel);
+    }
+    replaceLocalUrltoRealUrl(str) {
+      var project = this.context.selection.currentProject;
+      var images = {};
+      project.images.forEach((a) => {
+        if (str.indexOf(a.local) > -1) {
+          images[a.local] = a.original;
+        }
+      });
+      Object.keys(images).forEach((local) => {
+        if (str.indexOf(local) > -1) {
+          str = str.replace(new RegExp(local, "g"), images[local]);
+        }
+      });
+      return str;
+    }
+    get storeKey() {
+      return `__els__.${this.context.config.get("store.key")}`;
+    }
+    saveItem(key, value) {
+      window.localStorage.setItem(`${this.storeKey}.${key}`, JSON.stringify(value));
+    }
+    loadItem(key) {
+      return JSON.parse(window.localStorage.getItem(`${this.storeKey}.${key}`) || JSON.stringify(""));
+    }
+    createCommandMaker() {
+      return new CommandMaker(this);
+    }
+    registerElement(obj2) {
+      sapa.registElement(obj2);
+    }
+    registerAlias(obj2) {
+      Object.entries(obj2).forEach(([key, value]) => {
+        sapa.registAlias(key, value);
+      });
+    }
+    registerUI(target, obj2 = {}, order = 1) {
+      this.context.injectManager.registerUI(target, obj2, order);
+      this.registerElement(obj2);
+    }
+    isComponentClass(name) {
+      return this.context.components.isComponentClass(name);
+    }
+    registerComponent(name, component2) {
+      this.context.components.registerComponent(name, component2);
+    }
+    registerItem(name, item) {
+      this.registerComponent(name, item);
+    }
+    registerInspector(name, inspectorCallback) {
+      this.context.components.registerInspector(name, inspectorCallback);
+    }
+    registerRenderer(rendererType, name, rendererInstance) {
+      this.context.renderers.registerRenderer(rendererType, name, rendererInstance);
+    }
+    registerRendererType(rendererType, rendererTypeInstance) {
+      this.context.renderers.registerRendererType(rendererType, rendererTypeInstance);
+    }
+    getRendererInstance(rendererType, itemType) {
+      return this.context.renderers.getRendererInstance(rendererType, itemType);
+    }
+    renderer(rendererType) {
+      return this.context.renderers.getRenderer(rendererType);
+    }
+    get json() {
+      return this.renderer("json");
+    }
+    loadCommands(userCommands) {
+      return this.context.commands.loadCommands(userCommands);
+    }
+    registerCommand(commandObject) {
+      return this.context.commands.registerCommand(commandObject);
+    }
+    registerShortCut(shortcut) {
+      this.context.shortcuts.registerShortCut(shortcut);
+    }
+    registerPlugin(createPluginFunction) {
+      this.context.pluginManager.registerPlugin(createPluginFunction);
+    }
+    registerPluginList(plugins = []) {
+      plugins.forEach((p) => this.registerPlugin(p));
+    }
+    registerConfig(config) {
+      this.context.config.registerConfig(config);
+    }
+    registerI18nMessage(locale, messages) {
+      this.context.i18n.registerI18nMessage(locale, messages);
+    }
+    registerI18nMessageWithLocale(messages) {
+      Object.entries(messages).forEach(([locale, messages2]) => {
+        this.registerI18nMessage(locale, messages2);
+      });
+    }
+    registerIcon(itemType, iconOrFunction) {
+      this.context.icon.registerIcon(itemType, iconOrFunction);
+    }
+    registerIconList(obj2 = {}) {
+      this.context.icon.registerIconList(obj2);
+    }
+    registerMenu(target, menu) {
+      this.context.menuManager.registerMenu(target, menu);
+    }
+  }
+  const EMPTY_POS = { x: 0, y: 0 };
+  const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
+  const MOVE_CHECK_MS = 0;
+  class BaseLayout extends EditorElement {
+    async created() {
+      this.$editor.registerManager(this.getManagers());
+      this.$editor.registerPluginList(this.getPlugins());
+      if (Array.isArray(this.opt.plugins)) {
+        this.$editor.registerPluginList(this.opt.plugins);
+      }
+      await this.$editor.initPlugins();
+      this.$config.load();
+      if (sapa.isObject(this.opt.config)) {
+        this.$config.setAll(this.opt.config || {});
+      }
+      this._isPluginLoaded = true;
+    }
+    get isPreLoaded() {
+      return Boolean(this._isPluginLoaded);
+    }
+    get $editor() {
+      if (!this.__editorInstance) {
+        this.__editorInstance = this.createEditorInstance();
+      }
+      return this.__editorInstance;
+    }
+    createEditorInstance() {
+      return new Editor();
+    }
+    afterRender() {
+      super.afterRender();
+      this.$el.attr("data-theme", this.$config.get("editor.theme"));
+      this.$el.addClass(window.navigator.userAgent.includes("Windows") ? "ua-window" : "ua-default");
+      this.trigger("initialize");
+    }
+    initialize() {
+      super.initialize();
+      this.__initBodyMoves();
+    }
+    [sapa.CONFIG("editor.theme")]() {
+      this.$el.attr("data-theme", this.$config.get("editor.theme"));
+    }
+    getPlugins() {
+      return [];
+    }
+    getManagers() {
+      return {};
+    }
+    __initBodyMoves() {
+      this.__firstMove = /* @__PURE__ */ new Set();
+      this.__moves = /* @__PURE__ */ new Set();
+      this.__ends = /* @__PURE__ */ new Set();
+      this.__modifyBodyMoveSecond(MOVE_CHECK_MS);
+    }
+    __modifyBodyMoveSecond(ms = MOVE_CHECK_MS) {
+      this.$config.set("body.move.ms", ms);
+      const callback = ms === 0 ? this.__loopBodyMoves.bind(this) : sapa.debounce(this.__loopBodyMoves.bind(this), this.$config.get("body.move.ms"));
+      this.__funcBodyMoves = callback;
+    }
+    __loopBodyMoves() {
+      var pos = this.pos;
+      var e = this.$config.get("bodyEvent");
+      var lastPos = this.lastPos || DEFAULT_POS;
+      var isNotEqualLastPos = !(lastPos.x === pos.x && lastPos.y === pos.y);
+      if (isNotEqualLastPos && this.__firstMove.size) {
+        let i = 0;
+        this.__firstMove.forEach((v) => {
+          const dist2 = getDist(pos.x, pos.y, v.xy.x, v.xy.y);
+          if (Math.abs(dist2) > 0) {
+            var dx = pos.x - v.xy.x;
+            var dy = pos.y - v.xy.y;
+            v.func.call(v.context, dx, dy, "move", e.pressure);
+            i++;
+          }
+        });
+        if (i > 0) {
+          this.__firstMove.clear();
+        }
+      }
+      if (isNotEqualLastPos && this.__moves.size) {
+        this.__moves.forEach((v) => {
+          const dist2 = getDist(pos.x, pos.y, v.xy.x, v.xy.y);
+          if (Math.abs(dist2) > 0.5) {
+            var dx = pos.x - v.xy.x;
+            var dy = pos.y - v.xy.y;
+            v.func.call(v.context, dx, dy, "move", e.pressure);
+          }
+        });
+        this.lastPos = pos;
+      }
+      window.requestAnimationFrame(this.__funcBodyMoves);
+    }
+    __removeBodyMoves() {
+      var pos = this.lastPos;
+      var e = this.$config.get("bodyEvent");
+      if (pos) {
+        this.__ends.forEach((v) => {
+          v.func.call(v.context, pos.x - v.xy.x, pos.y - v.xy.y, "end", e.pressure);
+        });
+      }
+      this.__firstMove.clear();
+      this.__moves.clear();
+      this.__ends.clear();
+    }
+    [sapa.SUBSCRIBE_ALL(ADD_BODY_FIRST_MOUSEMOVE)](func, context, xy) {
+      this.__firstMove.add({ func, context, xy });
+    }
+    [sapa.SUBSCRIBE_ALL(ADD_BODY_MOUSEMOVE)](func, context, xy) {
+      this.__moves.add({ func, context, xy });
+    }
+    [sapa.SUBSCRIBE_ALL(ADD_BODY_MOUSEUP)](func, context, xy) {
+      this.__ends.add({ func, context, xy });
+    }
+    [sapa.POINTERSTART()](e) {
+      var newPos = e.xy || EMPTY_POS;
+      this.$config.init("bodyEvent", e);
+      this.pos = newPos;
+    }
+    [sapa.POINTERMOVE()](e) {
+      var newPos = e.xy || EMPTY_POS;
+      this.$config.init("bodyEvent", e);
+      this.$commands.emit("change.bodyEvent");
+      this.pos = newPos;
+      if (!this.__requestId) {
+        this.__requestId = window.requestAnimationFrame(this.__funcBodyMoves);
+      }
+    }
+    [sapa.POINTEREND()](e) {
+      this.$config.set("bodyEvent", e);
+      this.__removeBodyMoves();
+      window.cancelAnimationFrame(this.__requestId);
+      this.__requestId = null;
+    }
+    [sapa.RESIZE("window") + sapa.DEBOUNCE(100)]() {
+      this.emit(RESIZE_WINDOW);
+    }
+    [sapa.SUBSCRIBE("refreshAll")]() {
+      this.emit("refreshProjectList");
+      this.$commands.emit("refreshArtboard");
+    }
+    [sapa.SUBSCRIBE("changed.locale")]() {
+      this.refresh();
+    }
+  }
   var body_move_ms = {
     key: "body.move.ms",
     defaultValue: 30,
@@ -3498,7 +5177,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set delay millisecond to moving pointer in body  ",
     type: "number"
   };
-  var __glob_0_0$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": body_move_ms
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3509,7 +5188,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set debug mode to on ",
     type: "boolean"
   };
-  var __glob_0_1$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": debug_mode
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3520,7 +5199,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set editor's cursor",
     type: "string"
   };
-  var __glob_0_2$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": editor_cursor
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3531,7 +5210,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set editor's theme",
     type: "string"
   };
-  var __glob_0_3$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": editor_theme
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3542,7 +5221,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "whether doubleclick timing is in some seconds",
     type: "number"
   };
-  var __glob_0_4$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": event_doubleclick_timing
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3553,7 +5232,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "set locale for editor",
     type: "string"
   };
-  var __glob_0_5$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": language_locale
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3564,7 +5243,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set left panel visibility to on",
     type: "boolean"
   };
-  var __glob_0_6$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": show_left_panel
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3575,7 +5254,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set right panel visibility to on",
     type: "boolean"
   };
-  var __glob_0_7$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": show_right_panel
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3586,7 +5265,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set localStorage key",
     type: "string"
   };
-  var __glob_0_8$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": store_key
   }, Symbol.toStringTag, { value: "Module" }));
@@ -3597,12 +5276,12 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     description: "Set canvas background color",
     type: "color"
   };
-  var __glob_0_9$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  var __glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     "default": style_canvas_background_color
   }, Symbol.toStringTag, { value: "Module" }));
-  const modules$2 = { "./config_list/body.move.ms.js": __glob_0_0$2, "./config_list/debug.mode.js": __glob_0_1$2, "./config_list/editor.cursor.js": __glob_0_2$2, "./config_list/editor.theme.js": __glob_0_3$2, "./config_list/event.doubleclick.timing.js": __glob_0_4$2, "./config_list/language.locale.js": __glob_0_5$2, "./config_list/show.left.panel.js": __glob_0_6$1, "./config_list/show.right.panel.js": __glob_0_7$1, "./config_list/store.key.js": __glob_0_8$1, "./config_list/style.canvas.background.color.js": __glob_0_9$1 };
-  var configs$1 = Object.values(modules$2).map((it) => it.default);
+  const modules = { "./config_list/body.move.ms.js": __glob_0_0, "./config_list/debug.mode.js": __glob_0_1, "./config_list/editor.cursor.js": __glob_0_2, "./config_list/editor.theme.js": __glob_0_3, "./config_list/event.doubleclick.timing.js": __glob_0_4, "./config_list/language.locale.js": __glob_0_5, "./config_list/show.left.panel.js": __glob_0_6, "./config_list/show.right.panel.js": __glob_0_7, "./config_list/store.key.js": __glob_0_8, "./config_list/style.canvas.background.color.js": __glob_0_9 };
+  var configs$1 = Object.values(modules).map((it) => it.default);
   function configs(editor) {
     configs$1.forEach((config) => {
       editor.registerConfig(config);
@@ -5986,6 +7665,40 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     color,
     component
   ];
+  var ContextMenuManager$1 = "";
+  class ContextMenuManager extends EditorElement {
+    template() {
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--context-menu-manger"
+      }, this.$injectManager.generate("context.menu"));
+    }
+    [sapa.SUBSCRIBE(OPEN_CONTEXT_MENU)](obj2) {
+      this.$context.config.set("context.menu.open", obj2);
+    }
+  }
+  const formElements = ["TEXTAREA", "INPUT", "SELECT"];
+  class KeyboardManager extends EditorElement {
+    template() {
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "keyboard-manager",
+        style: "display: none;"
+      });
+    }
+    isNotFormElement(e) {
+      var tagName = e.target.tagName;
+      if (formElements.includes(tagName))
+        return false;
+      else if (sapa.Dom.create(e.target).attr("contenteditable") === "true")
+        return false;
+      return true;
+    }
+    [sapa.KEYDOWN("document") + sapa.IF("isNotFormElement")](e) {
+      this.$commands.emit("keymap.keydown", e);
+    }
+    [sapa.KEYUP("document") + sapa.IF("isNotFormElement")](e) {
+      this.$commands.emit("keymap.keyup", e);
+    }
+  }
   var PopupManager$1 = "";
   var NotificationView$1 = "";
   class NotificationView extends EditorElement {
@@ -6059,75 +7772,6 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     }
   }
   var ShortcutWindow$1 = "";
-  var clipboard_copy = {
-    category: "Edit",
-    key: "cmd+c",
-    command: "clipboard.copy",
-    description: "Copy objects",
-    when: "CanvasView"
-  };
-  var __glob_0_0$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": clipboard_copy
-  }, Symbol.toStringTag, { value: "Module" }));
-  var clipboard_paste = {
-    category: "Edit",
-    key: "cmd+v",
-    win: "ctrl+v",
-    command: "clipboard.paste",
-    description: "Paste selected objects",
-    when: "CanvasView"
-  };
-  var __glob_0_1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": clipboard_paste
-  }, Symbol.toStringTag, { value: "Module" }));
-  var show_pan = {
-    category: "Tool",
-    key: "space",
-    command: "showPan",
-    description: "Show panning area",
-    when: "CanvasView"
-  };
-  var __glob_0_2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": show_pan
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_default$1 = {
-    category: "View",
-    key: "0",
-    command: "zoom.default",
-    description: "zoom by scale 1",
-    when: "CanvasView"
-  };
-  var __glob_0_3$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_default$1
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_in$1 = {
-    category: "View",
-    key: "Equal",
-    command: "zoom.in",
-    description: "zoom in",
-    when: "CanvasView"
-  };
-  var __glob_0_4$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_in$1
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_out$1 = {
-    category: "View",
-    key: "minus",
-    command: "zoom.out",
-    description: "zoom Out",
-    when: "CanvasView"
-  };
-  var __glob_0_5$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_out$1
-  }, Symbol.toStringTag, { value: "Module" }));
-  const modules$1 = { "./shortcuts_list/clipboard.copy.js": __glob_0_0$1, "./shortcuts_list/clipboard.paste.js": __glob_0_1$1, "./shortcuts_list/show.pan.js": __glob_0_2$1, "./shortcuts_list/zoom.default.js": __glob_0_3$1, "./shortcuts_list/zoom.in.js": __glob_0_4$1, "./shortcuts_list/zoom.out.js": __glob_0_5$1 };
-  var shortcuts = Object.values(modules$1).map((it) => it.default);
   const categories = /* @__PURE__ */ new Set();
   shortcuts.forEach((it) => {
     categories.add(it.category);
@@ -6223,1655 +7867,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     template() {
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--popup-manager"
-      }, sapa.createComponent("ExportWindow"), sapa.createComponent("ProjectWindow"), sapa.createComponent("ShortcutWindow"), sapa.createComponent("NotificationView"), this.$injectManager.generate("popup", true));
-    }
-  }
-  const formElements = ["TEXTAREA", "INPUT", "SELECT"];
-  class KeyboardManager extends EditorElement {
-    isNotFormElement(e) {
-      var tagName = e.target.tagName;
-      if (formElements.includes(tagName))
-        return false;
-      else if (sapa.Dom.create(e.target).attr("contenteditable") === "true")
-        return false;
-      return true;
-    }
-    [sapa.KEYDOWN("document") + sapa.IF("isNotFormElement")](e) {
-      this.$commands.emit("keymap.keydown", e);
-    }
-    [sapa.KEYUP("document") + sapa.IF("isNotFormElement")](e) {
-      this.$commands.emit("keymap.keyup", e);
-    }
-  }
-  var ContextMenuManager$1 = "";
-  class ContextMenuManager extends EditorElement {
-    template() {
-      return /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--context-menu-manger"
-      }, this.$injectManager.generate("context.menu"));
-    }
-    [sapa.SUBSCRIBE(OPEN_CONTEXT_MENU)](obj2) {
-      this.$context.config.set("context.menu.open", obj2);
-    }
-  }
-  var Console = {
-    command: "Console",
-    description: "do console.log()",
-    execute: (editor, ...args) => {
-      console.log(...args);
-    }
-  };
-  var __glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": Console
-  }, Symbol.toStringTag, { value: "Module" }));
-  var keymap_keydown = {
-    command: "keymap.keydown",
-    execute: function(editor, e) {
-      editor.context.keyboardManager.add(e.code, e.keyCode, e);
-      if (editor.context.shortcuts) {
-        editor.context.shortcuts.execute(e, "keydown");
-      }
-    }
-  };
-  var __glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": keymap_keydown
-  }, Symbol.toStringTag, { value: "Module" }));
-  var keymap_keyup = {
-    command: "keymap.keyup",
-    execute: function(editor, e) {
-      editor.context.keyboardManager.remove(e.key, e.keyCode);
-      if (editor.context.shortcuts) {
-        editor.context.shortcuts.execute(e, "keyup");
-      }
-    }
-  };
-  var __glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": keymap_keyup
-  }, Symbol.toStringTag, { value: "Module" }));
-  var moveToCenter = {
-    command: "moveToCenter",
-    description: "Move Layer to Center on Viewport",
-    execute: function(editor, areaVerties, withScale = false) {
-      if (areaVerties) {
-        editor.context.viewport.moveToCenter(areaVerties, withScale ? -0.2 : 0, withScale);
-      }
-    }
-  };
-  var __glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": moveToCenter
-  }, Symbol.toStringTag, { value: "Module" }));
-  var pop_mode_view = {
-    command: "pop.mode.view",
-    execute: function(editor, modeView = void 0) {
-      editor.context.modeViewManager.popMode(modeView);
-    }
-  };
-  var __glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": pop_mode_view
-  }, Symbol.toStringTag, { value: "Module" }));
-  var push_mode_view = {
-    command: "push.mode.view",
-    execute: function(editor, modeView = ViewModeType.CanvasView) {
-      editor.context.modeViewManager.pushMode(modeView);
-      editor.emit("updateModeView");
-    }
-  };
-  var __glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": push_mode_view
-  }, Symbol.toStringTag, { value: "Module" }));
-  var recoverCursor = {
-    command: "recoverCursor",
-    execute: function(editor) {
-      editor.context.config.set("editor.cursor", "auto");
-      editor.context.config.set("editor.cursor.args", []);
-    }
-  };
-  var __glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": recoverCursor
-  }, Symbol.toStringTag, { value: "Module" }));
-  var refreshCursor = {
-    command: "refreshCursor",
-    execute: function(editor, iconType, ...args) {
-      editor.context.config.set("editor.cursor", iconType);
-      editor.context.config.set("editor.cursor.args", args);
-    }
-  };
-  var __glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": refreshCursor
-  }, Symbol.toStringTag, { value: "Module" }));
-  var setLocale = {
-    command: "setLocale",
-    execute: function(editor, locale) {
-      editor.setLocale(locale);
-      editor.emit("changed.locale");
-    }
-  };
-  var __glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": setLocale
-  }, Symbol.toStringTag, { value: "Module" }));
-  var toggle_tool_hand = {
-    command: "toggleHandTool",
-    execute: function(editor) {
-      if (editor.context.config.is("editing.mode", EditingMode.HAND)) {
-        editor.context.config.set("editing.mode", EditingMode.SELECT);
-      } else {
-        editor.context.config.set("editing.mode", EditingMode.HAND);
-      }
-      editor.emit("hideLayerAppendView");
-    }
-  };
-  var __glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": toggle_tool_hand
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_default = {
-    command: "zoom.default",
-    execute: function(editor) {
-      editor.context.viewport.zoomDefault();
-    }
-  };
-  var __glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_default
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_in = {
-    command: "zoom.in",
-    execute: function(editor) {
-      editor.context.viewport.zoomIn(0.02);
-    }
-  };
-  var __glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_in
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_out = {
-    command: "zoom.out",
-    execute: function(editor) {
-      editor.context.viewport.zoomOut(0.02);
-    }
-  };
-  var __glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_out
-  }, Symbol.toStringTag, { value: "Module" }));
-  const modules = { "./command_list/Console.js": __glob_0_0, "./command_list/keymap.keydown.js": __glob_0_1, "./command_list/keymap.keyup.js": __glob_0_2, "./command_list/moveToCenter.js": __glob_0_3, "./command_list/pop.mode.view.js": __glob_0_4, "./command_list/push.mode.view.js": __glob_0_5, "./command_list/recoverCursor.js": __glob_0_6, "./command_list/refreshCursor.js": __glob_0_7, "./command_list/setLocale.js": __glob_0_8, "./command_list/toggle.tool.hand.js": __glob_0_9, "./command_list/zoom.default.js": __glob_0_10, "./command_list/zoom.in.js": __glob_0_11, "./command_list/zoom.out.js": __glob_0_12 };
-  const obj = {};
-  Object.entries(modules).forEach(([key, value]) => {
-    key = key.replace("./command_list/", "").replace(".js", "");
-    obj[key] = value.default;
-  });
-  class AssetParser {
-    static parse(datauri, enableParselocal = false) {
-      var [, data] = datauri.split("data:");
-      var [mediaType, ...content] = data.split(",");
-      var [mimeType, encoding] = mediaType.split(";");
-      content = content.join(",");
-      return {
-        mimeType,
-        local: enableParselocal && AssetParser.getLink(mimeType, encoding, content)
-      };
-    }
-    static getLink(mimeType, encoding, content) {
-      if (encoding === "base64") {
-        var binary = window.atob(content);
-        var len = binary.length;
-        var unit8Array = new window.Uint8Array(len);
-        for (var i = 0; i < len; i++) {
-          unit8Array[i] = binary.charCodeAt(i);
-        }
-        var blob = new window.Blob([unit8Array], { type: mimeType });
-        return window.URL.createObjectURL(blob);
-      }
-      return "";
-    }
-  }
-  class AssetManager {
-    constructor(editor) {
-      this.$editor = editor;
-    }
-    get project() {
-      return this.$editor.context.selection.currentProject;
-    }
-    revokeResource(value) {
-      var json = JSON.parse(value || "[]");
-      var assets = {};
-      json.forEach((project) => {
-        project.images.forEach((it) => {
-          assets[`#${it.id}`] = it;
-        });
-      });
-      Object.keys(assets).map((idString) => {
-        var a = assets[idString];
-        var info = AssetParser.parse(a.original, true);
-        a.local = info.local;
-      });
-      json.forEach((project) => {
-        project.layers = this.applyAsset(project.layers, assets);
-      });
-      return json;
-    }
-    applyAsset(json, assets) {
-      if (Array.isArray(json)) {
-        json = json.map((it) => this.applyAsset(it, assets));
-      } else if (sapa.isObject(json)) {
-        Object.keys(json).forEach((key) => {
-          json[key] = this.applyAsset(json[key], assets);
-        });
-      } else if (sapa.isString(json)) {
-        Object.keys(assets).forEach((idString) => {
-          var a = assets[idString];
-          if (json.indexOf(`#${a.id}`) > -1) {
-            json = json.replace(new RegExp(`#${a.id}`, "g"), a.local);
-          }
-        });
-      }
-      return json;
-    }
-  }
-  class CommandMaker {
-    constructor(editor) {
-      this.editor = editor;
-      this.commands = [];
-    }
-    log() {
-      console.log(this.commands);
-    }
-    emit(...args) {
-      this.commands.push(args);
-    }
-    run() {
-      this.editor.emit(this.commands);
-    }
-    add(otherCommandMaker) {
-      this.commands = this.commands.concat(otherCommandMaker.commands);
-    }
-  }
-  class CommandManager {
-    constructor(editor) {
-      this.$editor = editor;
-      this.promiseProxy = this.localCommands = {};
-      this.loadCommands();
-      return new Proxy(this, {
-        get: (target, key) => {
-          var originMethod = target[key];
-          if (sapa.isFunction(originMethod)) {
-            return (...args) => {
-              return originMethod.apply(target, args);
-            };
-          } else {
-            return this.makePromiseEvent(key);
-          }
-        }
-      });
-    }
-    loadCommands(userCommands = {}) {
-      Object.keys(userCommands).forEach((command) => {
-        if (sapa.isFunction(userCommands[command])) {
-          this.registerCommand(command, userCommands[command]);
-        } else {
-          this.registerCommand(userCommands[command]);
-        }
-      });
-    }
-    registerCommand(command, commandCallback) {
-      if (this.localCommands[command]) {
-        throw new Error(`command ${command} is already registered`);
-      }
-      if (arguments.length === 2) {
-        const callback = (...args) => {
-          const result = commandCallback.call(this, this.$editor, ...args);
-          this.$editor.debug("command execute", this, ...args);
-          return result;
-        };
-        callback.source = command;
-        this.localCommands[command] = callback;
-      } else if (sapa.isObject(command)) {
-        const callback = (...args) => {
-          const result = command.execute.call(command, this.$editor, ...args);
-          this.$editor.debug("command execute", command, ...args);
-          return result;
-        };
-        callback.source = command.command;
-        this.localCommands[command.command] = callback;
-      }
-    }
-    getCallback(command) {
-      return this.localCommands[command];
-    }
-    makePromiseEvent(command) {
-      const callback = this.getCallback(command);
-      if (callback) {
-        return (...args) => new Promise((resolve) => {
-          resolve(callback(...args));
-        });
-      }
-    }
-    executeCommand(command, description, ...args) {
-      if (this.$editor.context.stateManager.isPointerUp) {
-        command = `history.${command}`;
-        const callback = this.getCallback(command);
-        return callback(description, ...args);
-      } else {
-        return this.emit(command, ...args);
-      }
-    }
-    emit(command, ...args) {
-      const callback = this.getCallback(command);
-      if (callback) {
-        return callback(...args);
-      }
-    }
-  }
-  class ComponentManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.components = {};
-      this.inspectors = {};
-    }
-    registerComponent(name, componentProperty) {
-      this.components[name] = componentProperty;
-    }
-    registerInspector(name, inspectorCallback) {
-      this.inspectors[name] = inspectorCallback;
-    }
-    isComponentClass(name) {
-      return !!this.getComponentClass(name);
-    }
-    getComponentClass(name) {
-      return this.components[name] || this.components["rect"];
-    }
-    getInspector(name) {
-      return this.inspectors[name];
-    }
-    createComponent(itemType, obj2 = {}) {
-      var ComponentClass = this.getComponentClass(itemType);
-      if (!ComponentClass) {
-        console.warn(`${itemType} type is not valid.`);
-        return void 0;
-      }
-      return new ComponentClass(obj2);
-    }
-    createInspector(item, name = "") {
-      const inspector = this.getInspector(name || item.itemType);
-      if (sapa.isFunction(inspector)) {
-        return inspector(item) || [];
-      }
-      if (sapa.isFunction(item.getProps)) {
-        return item.getProps() || [];
-      }
-      return [];
-    }
-  }
-  class ConfigManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.configList = [];
-      this.config = /* @__PURE__ */ new Map();
-    }
-    load() {
-      const obj2 = this.editor.loadItem("config") || {};
-      Object.keys(obj2).forEach((key) => {
-        this.config.set(key, obj2[key]);
-      });
-    }
-    get(key) {
-      var _a;
-      if (this.config.has(key) === false) {
-        this.config.set(key, (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.defaultValue);
-      }
-      return this.config.get(key);
-    }
-    set(key, value, isSave = true) {
-      const oldValue = this.config.get(key);
-      if (oldValue !== value) {
-        this.config.set(key, value);
-        this.editor.emit("config:" + key, value, oldValue);
-        if (isSave) {
-          this.save();
-        }
-      }
-    }
-    push(key, value) {
-      const list = this.get(key);
-      const lastIndex = list.length;
-      this.setIndexValue(key, lastIndex, value);
-      return lastIndex;
-    }
-    setIndexValue(key, index2, value) {
-      const list = this.get(key);
-      list[index2] = value;
-      this.set(key, [...list]);
-    }
-    getIndexValue(key, index2) {
-      const list = this.get(key);
-      return list[index2];
-    }
-    removeByIndex(key, index2) {
-      const list = this.get(key);
-      list.splice(index2, 1);
-      this.set(key, [...list]);
-    }
-    init(key, value) {
-      this.set(key, value, false);
-    }
-    save() {
-      const obj2 = {};
-      this.configList.filter((it) => it.storage !== "none").forEach((it) => {
-        obj2[it.key] = this.get(it.key);
-      });
-      this.editor.saveItem("config", obj2);
-    }
-    setAll(obj2) {
-      Object.keys(obj2).forEach((key) => {
-        this.set(key, obj2[key]);
-      });
-    }
-    getType(key) {
-      var _a;
-      return (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.type;
-    }
-    isType(key, type) {
-      return this.getType(key) === type;
-    }
-    isBoolean(key) {
-      return this.isType(key, "boolean");
-    }
-    toggle(key) {
-      this.set(key, !this.get(key));
-    }
-    toggleWith(key, firstValue, secondValue) {
-      if (this.get(key) === firstValue) {
-        this.set(key, secondValue);
-      } else {
-        this.set(key, firstValue);
-      }
-    }
-    true(key) {
-      return this.get(key) === true;
-    }
-    false(key) {
-      return this.get(key) === false;
-    }
-    is(key, value) {
-      return this.get(key) === value;
-    }
-    remove(key) {
-      this.config.delete(key);
-      this.editor.emit("config:" + key);
-    }
-    registerConfig(config) {
-      this.config.set(config.key, config.defaultValue);
-      this.configList.push(config);
-    }
-  }
-  class CursorManager {
-    async load(iconName = "default", ...args) {
-      if (icon.icons[iconName]) {
-        const iconContent = sapa.isFunction(icon.icons[iconName]) ? icon.icons[iconName].call(icon.icons[iconName], ...args) : icon.icons[iconName];
-        const blob = new window.Blob([iconContent], { type: "image/svg+xml" });
-        return new Promise((resolve) => {
-          const reader = new window.FileReader();
-          reader.onload = (e) => {
-            const datauri = e.target.result;
-            resolve(`url(${datauri}) 12 12, auto`);
-          };
-          reader.readAsDataURL(blob);
-        });
-      } else {
-        return iconName;
-      }
-    }
-  }
-  class I18nManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.locales = {};
-      this.fallbackLang = "en_US";
-    }
-    getLang(lang = void 0) {
-      return lang || this.fallbackLang;
-    }
-    setFallbackLang(lang) {
-      this.fallbackLang = lang;
-    }
-    get(key, params = {}, lang = void 0) {
-      var _a, _b;
-      const currentLang = this.getLang(lang);
-      const str = ((_a = this.locales[currentLang]) == null ? void 0 : _a[key]) || ((_b = this.locales[this.fallbackLang]) == null ? void 0 : _b[key]) || key || void 0;
-      if (sapa.isFunction(str)) {
-        return str(params);
-      } else {
-        let newValue = str;
-        if (key === newValue) {
-          return key.split(".").pop();
-        }
-        Object.entries(params).forEach(([key2, value]) => {
-          newValue = newValue.replace(new RegExp(`{${key2}}`, "ig"), value);
-        });
-        return newValue;
-      }
-    }
-    hasKey(key, lang = void 0) {
-      const currentLang = this.getLang(lang);
-      return !!(this.locales[currentLang][key] || this.locales[this.fallbackLang][key]);
-    }
-    registerI18nMessage(lang, messages) {
-      if (!this.locales[lang]) {
-        this.locales[lang] = {};
-      }
-      Object.assign(this.locales[lang], messages);
-    }
-  }
-  class IconManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.iconMap = {};
-    }
-    get(itemType, item) {
-      const icon$1 = this.iconMap[itemType];
-      if (sapa.isFunction(icon$1)) {
-        return icon$1(item);
-      }
-      return icon.iconUse(icon$1 || "rect");
-    }
-    set(itemType, value) {
-      this.iconMap[itemType] = value;
-    }
-    registerIcon(itemType, iconOrFunction) {
-      this.set(itemType, iconOrFunction);
-    }
-    registerIconList(obj2) {
-      Object.keys(obj2).forEach((key) => {
-        this.set(key, obj2[key]);
-      });
-    }
-    load() {
-      return this.iconMap;
-    }
-  }
-  class InjectManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.ui = {};
-    }
-    registerUI(target, obj2 = {}, order = 1) {
-      if (!this.ui[target]) {
-        this.ui[target] = [];
-      }
-      Object.keys(obj2).forEach((refClass) => {
-        const targetClass = this.ui[target].find((it) => it.refClass === refClass);
-        if (targetClass) {
-          targetClass.class = obj2[refClass];
-        } else {
-          this.ui[target].push({
-            refClass,
-            order,
-            class: obj2[refClass]
-          });
-        }
-      });
-    }
-    getTargetUI(target) {
-      return this.ui[target] || [];
-    }
-    generate(target, hasRef = false) {
-      const list = this.getTargetUI(target);
-      list.sort((a, b) => {
-        if (a.order === b.order)
-          return 0;
-        return a.order > b.order ? 1 : -1;
-      });
-      return list.map((it, index2) => {
-        if (sapa.isArray(it.class)) {
-          return sapa.createElementJsx(...it.class);
-        } else {
-          const props = {};
-          if (hasRef) {
-            props.ref = `$${it.refClass}-${index2}`;
-          }
-          return sapa.createComponent(it.refClass, props);
-        }
-      }).join("\n");
-    }
-  }
-  class KeyBoardManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.codeSet = /* @__PURE__ */ new Set();
-      this.keyCodeSet = /* @__PURE__ */ new Set();
-      this.event = {};
-    }
-    add(key, keyCode, e) {
-      if (this.codeSet.has(key) === false) {
-        this.codeSet.add(key);
-      }
-      if (this.keyCodeSet.has(keyCode) === false) {
-        this.keyCodeSet.add(keyCode);
-      }
-      this.event = e;
-    }
-    remove(key, keyCode) {
-      this.codeSet.delete(key);
-      this.keyCodeSet.delete(keyCode);
-    }
-    hasKey(keyOrKeyCode) {
-      return this.codeSet.has(keyOrKeyCode) || this.keyCodeSet.has(keyOrKeyCode);
-    }
-    check(...args) {
-      return args.some((keyOrKeyCode) => this.hasKey(keyOrKeyCode));
-    }
-    isShift() {
-      return Boolean(this.event.shiftKey);
-    }
-    isCtrl() {
-      return Boolean(this.event.ctrlKey);
-    }
-    isAlt() {
-      return Boolean(this.event.altKey);
-    }
-    isMeta() {
-      return Boolean(this.event.metaKey);
-    }
-  }
-  class MenuManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.menus = {};
-    }
-    registerMenu(target, obj2 = [], order = 1) {
-      if (!this.menus[target]) {
-        this.menus[target] = [];
-      }
-      if (!sapa.isArray(obj2)) {
-        obj2 = [obj2];
-      }
-      obj2.forEach((it) => {
-        this.menus[target].push(it);
-      });
-      this.editor.emit("updateMenu", target);
-    }
-    getTargetMenu(target, sort = "asc") {
-      const list = this.menus[target] || [];
-      if (sort === "desc") {
-        return list.reverse();
-      }
-      return list;
-    }
-  }
-  class ModeViewManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.modes = [ViewModeType.CanvasView];
-    }
-    pushMode(mode) {
-      if (!this.isCurrentMode(mode)) {
-        this.modes.push(mode);
-      }
-    }
-    popMode(mode = void 0) {
-      if (mode) {
-        if (this.isCurrentMode(mode)) {
-          this.modes.pop();
-        }
-      } else {
-        this.modes.pop();
-      }
-    }
-    currentMode() {
-      return this.modes[this.modes.length - 1];
-    }
-    isCurrentMode(mode) {
-      return this.currentMode() === mode;
-    }
-  }
-  class PluginManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.plugins = [];
-    }
-    registerPlugin(func) {
-      this.plugins.push(func);
-    }
-    async initializePlugin(options = {}) {
-      return await Promise.all(this.plugins.map(async (CreatePluginFunction) => {
-        return await CreatePluginFunction(this.editor, options);
-      }));
-    }
-  }
-  class RendererManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.renderers = {};
-      this.rendererTypes = {};
-    }
-    getRenderType(rendererType) {
-      if (!this.renderers[rendererType]) {
-        this.renderers[rendererType] = {};
-      }
-      return this.renderers[rendererType];
-    }
-    registerRenderer(rendererType, name, rendererInstance) {
-      const typedRenderer = this.getRenderType(rendererType);
-      typedRenderer[name] = rendererInstance;
-    }
-    registerRendererType(rendererType, rendererTypeInstance) {
-      this.rendererTypes[rendererType] = rendererTypeInstance;
-    }
-    getRenderer(rendererType) {
-      return this.rendererTypes[rendererType];
-    }
-    getRendererInstance(rendererType, name) {
-      const typedRenderer = this.getRenderType(rendererType);
-      return typedRenderer[name];
-    }
-  }
-  function joinKeys(...args) {
-    return args.filter(Boolean).join("+");
-  }
-  function generateKeyCode(code) {
-    return KEY_CODE[`${code}`.toLowerCase()] || code;
-  }
-  class ShortCutManager {
-    constructor(editor) {
-      this.$editor = editor;
-      this.loadShortCuts();
-    }
-    getGeneratedKeyCode(code) {
-      return generateKeyCode(code);
-    }
-    loadShortCuts() {
-      this.list = [];
-      this.commands = {};
-      shortcuts.forEach((shortcut) => {
-        this.registerShortCut(shortcut);
-      });
-      this.sort();
-    }
-    registerShortCut(shortcut) {
-      const OSName2 = os();
-      this.list.push(__spreadProps(__spreadValues({
-        key: "",
-        command: "",
-        args: [],
-        eventType: "keydown"
-      }, shortcut), {
-        checkKeyString: this.splitShortCut(shortcut[OSName2] || shortcut.key),
-        whenFunction: this.makeWhenFunction(shortcut.command, shortcut.when || true)
-      }));
-      this.sort();
-    }
-    makeWhenFunction(command, when) {
-      if (sapa.isBoolean(when) && when) {
-        return () => true;
-      }
-      const editor = this.$editor;
-      const whenList = when.split("|").map((it) => it.trim());
-      return () => {
-        return whenList.some((it) => editor.context.modeViewManager.isCurrentMode(it));
-      };
-    }
-    sort() {
-      this.commands = {};
-      this.list.forEach((it) => {
-        if (Array.isArray(this.commands[it.checkKeyString]) === false) {
-          this.commands[it.checkKeyString] = [];
-        }
-        this.commands[it.checkKeyString].push(it);
-      });
-    }
-    splitShortCut(key) {
-      var arr = key.toUpperCase().split("+").map((it) => it.trim()).filter(Boolean);
-      let isAlt = false;
-      let isControl = false;
-      let isShift = false;
-      let isMeta = false;
-      let restKeys = [];
-      arr.forEach((key2) => {
-        if (key2.includes("ALT"))
-          isAlt = true;
-        else if (key2.includes("CTRL"))
-          isControl = true;
-        else if (key2.includes("SHIFT"))
-          isShift = true;
-        else if (key2.includes("CMD") || key2.includes("WIN") || key2.includes("META"))
-          isMeta = true;
-        else
-          restKeys.push(key2);
-      });
-      return joinKeys(isAlt ? "ALT" : "", isControl ? "CTRL" : "", isShift ? "SHIFT" : "", isMeta ? "META" : "", generateKeyCode(restKeys.join("")));
-    }
-    makeKeyString(e) {
-      return joinKeys(e.altKey ? "ALT" : "", e.ctrlKey ? "CTRL" : "", e.shiftKey ? "SHIFT" : "", e.metaKey ? "META" : "", e.key.toUpperCase());
-    }
-    makeCodeString(e) {
-      return joinKeys(e.altKey ? "ALT" : "", e.ctrlKey ? "CTRL" : "", e.shiftKey ? "SHIFT" : "", e.metaKey ? "META" : "", e.code.toUpperCase());
-    }
-    makeKeyCodeString(e) {
-      return joinKeys(e.altKey ? "ALT" : "", e.ctrlKey ? "CTRL" : "", e.shiftKey ? "SHIFT" : "", e.metaKey ? "META" : "", e.keyCode);
-    }
-    checkShortCut(keyCodeString, keyString, codeString) {
-      return this.commands[keyCodeString] || this.commands[keyString] || this.commands[codeString];
-    }
-    checkWhen(command) {
-      return command.whenFunction();
-    }
-    execute(e, eventType = "keydown") {
-      let commands = this.checkShortCut(this.makeKeyCodeString(e), this.makeKeyString(e), this.makeCodeString(e));
-      if (commands) {
-        const filteredCommands = commands.filter((it) => it.eventType === eventType).filter((it) => this.checkWhen(it));
-        if (filteredCommands.length) {
-          filteredCommands.forEach((it) => {
-            this.$editor.context.commands.emit(it.command, ...it.args);
-          });
-        }
-      }
-    }
-  }
-  class StateManager {
-    constructor(editor) {
-      this.editor = editor;
-    }
-    get config() {
-      return this.editor.context.config;
-    }
-    get zIndex() {
-      return this.popupZIndex++;
-    }
-    get isPointerUp() {
-      const e = this.config.get("bodyEvent");
-      if (!e)
-        return true;
-      if (e.type === "pointerup")
-        return true;
-      else if (e.type === "pointermove" && e.buttons === 0)
-        return true;
-      return false;
-    }
-    get isPointerDown() {
-      return !this.isPointerUp;
-    }
-    get isPointerMove() {
-      if (!this.config.get("bodyEvent"))
-        return false;
-      return this.config.get("bodyEvent").type === "pointermove";
-    }
-  }
-  class StorageManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.customAssetKey = "custom-assets";
-    }
-    async getCustomAssetList() {
-      let isNew = false;
-      const artboards = (this.editor.loadItem(this.customAssetKey) || []).map((it) => {
-        if (!it.id) {
-          it.id = uuid();
-          isNew = true;
-        }
-        return it;
-      });
-      if (isNew) {
-        await this.setCustomAssetList(artboards);
-      }
-      return artboards;
-    }
-    async setCustomAssetList(list) {
-      this.editor.saveItem(this.customAssetKey, list);
-    }
-    async getCustomAsset(id) {
-      const assetList = await this.getCustomAssetList();
-      const it = assetList.find((it2) => it2.id === id);
-      if (it && it.component) {
-        return it.component;
-      }
-      return null;
-    }
-    async saveCustomAsset(datauri = "") {
-      const current = this.editor.context.selection.current;
-      if (current) {
-        const assetList = await this.getCustomAssetList();
-        const json = await this.editor.json.render(current);
-        json.x = 0;
-        json.y = 0;
-        await this.setCustomAssetList([
-          ...assetList,
-          {
-            id: uuid(),
-            preview: datauri,
-            component: json
-          }
-        ]);
-      }
-    }
-    async removeCustomAsset(id) {
-      const assetList = await this.getCustomAssetList();
-      await this.setCustomAssetList(assetList.filter((it) => {
-        return it.id !== id;
-      }));
-    }
-  }
-  function rectRect(rx1, ry1, rw1, rh1, rx2, ry2, rw2, rh2) {
-    return rx1 + rw1 >= rx2 && rx1 <= rx2 + rw2 && ry1 + rh1 >= ry2 && ry1 <= ry2 + rh2;
-  }
-  class Rect {
-    constructor(x, y, width, height) {
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-    }
-    get left() {
-      return this.x;
-    }
-    get right() {
-      return this.x + this.width;
-    }
-    get top() {
-      return this.y;
-    }
-    get bottom() {
-      return this.y + this.height;
-    }
-    get centerX() {
-      return this.x + this.width / 2;
-    }
-    get centerY() {
-      return this.y + this.height / 2;
-    }
-    get center() {
-      return [this.centerX, this.centerY];
-    }
-    get topLeft() {
-      return [this.left, this.top];
-    }
-    get topRight() {
-      return [this.right, this.top];
-    }
-    get bottomLeft() {
-      return [this.left, this.bottom];
-    }
-    get bottomRight() {
-      return [this.right, this.bottom];
-    }
-    get vertices() {
-      return [this.topLeft, this.topRight, this.bottomLeft, this.bottomRight];
-    }
-    intersect(rect) {
-      return intersectRectRect(this, rect);
-    }
-  }
-  function intersectRectRect(rect1, rect2) {
-    const minRectX = Math.min(rect1.x, rect2.x);
-    const minRectY = Math.min(rect1.y, rect2.y);
-    const rect1Verties = rectToVerties(rect1.x - minRectX, rect1.y - minRectY, rect1.width, rect1.height);
-    const rect2Verties = rectToVerties(rect2.x - minRectX, rect2.y - minRectY, rect2.width, rect2.height);
-    const startPoint = [
-      Math.max(rect1Verties[0][0], rect2Verties[0][0]),
-      Math.max(rect1Verties[0][1], rect2Verties[0][1]),
-      Math.max(rect1Verties[0][2], rect2Verties[0][2])
-    ];
-    const endPoint = [
-      Math.min(rect1Verties[2][0], rect2Verties[2][0]),
-      Math.min(rect1Verties[2][1], rect2Verties[2][1]),
-      Math.min(rect1Verties[2][2], rect2Verties[2][2])
-    ];
-    const minX = Math.min(startPoint[0], endPoint[0]);
-    const minY = Math.min(startPoint[1], endPoint[1]);
-    const maxX = Math.max(startPoint[0], endPoint[0]);
-    const maxY = Math.max(startPoint[1], endPoint[1]);
-    return new Rect(minX + minRectX, minY + minRectY, maxX - minX, maxY - minY);
-  }
-  function parseStyle(transformOrigin = "50% 50% 0px") {
-    const origins = transformOrigin.trim().split(" ").filter((it) => it.trim());
-    let parsedTransformOrigin = null;
-    if (origins.length === 1) {
-      parsedTransformOrigin = [origins[0], origins[0]].map((it) => Length.parse(it));
-    } else {
-      parsedTransformOrigin = origins.map((it) => Length.parse(it));
-    }
-    return parsedTransformOrigin;
-  }
-  function transformScale(transformOrigin, width, height) {
-    let parsedTransformOrigin = parseStyle(transformOrigin);
-    if (width === 0 && height === 0) {
-      return [0, 0, 0];
-    }
-    const originX = parsedTransformOrigin[0].toPx(width).value;
-    const originY = parsedTransformOrigin[1].toPx(height).value;
-    const originZ = parsedTransformOrigin[2].value;
-    return [originX, originY, originZ];
-  }
-  function rectToVerties(x, y, width, height, origin = "50% 50% 0px") {
-    const center = transformScale(origin, width, height);
-    return [
-      [x, y, 0],
-      [x + width, y, 0],
-      [x + width, y + height, 0],
-      [x, y + height, 0],
-      [x + center[0], y + center[1], 0]
-    ];
-  }
-  function rectToVertiesForArea(x, y, width, height) {
-    return rectToVerties(x, y, width, height);
-  }
-  function vertiesToRectangle(verties) {
-    const x = verties[0][0];
-    const y = verties[0][1];
-    const width = dist(verties[0], verties[1]);
-    const height = dist(verties[0], verties[3]);
-    return new Rect(x, y, width, height);
-  }
-  class ViewportManager {
-    constructor(editor) {
-      this.editor = editor;
-      this.context = this.editor.context;
-      this.canvasSize = null;
-      this.cachedViewport = rectToVerties(0, 0, 0, 0);
-      this.mouse = create$1();
-      this.scaleMax = 1e5;
-      this.scale = 1;
-      this.translate = create$1();
-      this.transformOrigin = create$1();
-      this.maxScale = 25;
-      this.minScale = 0.02;
-      this.zoomFactor = 1;
-      this.resetWorldMatrix();
-    }
-    setTransformOrigin(originVec) {
-      this.transformOrigin = originVec;
-      this.resetWorldMatrix();
-    }
-    setTransformOriginWithTranslate(newOrigin) {
-      const oldOrigin = clone(this.transformOrigin);
-      this.setTransformOrigin(newOrigin);
-      this.setTranslate(add([], this.translate, subtract([], oldOrigin, newOrigin)));
-    }
-    setScale(scale) {
-      this.scale = Math.min(Math.max(this.minScale, scale), this.maxScale);
-      this.scaleMax = this.scale * 1e5;
-      this.resetWorldMatrix();
-    }
-    setTranslate(translate) {
-      this.translate = translate;
-      this.resetWorldMatrix();
-    }
-    resetWorldMatrix() {
-      this.translate = this.translate.map((it) => +it.toFixed(4));
-      this.transformOrigin = this.transformOrigin.map((it) => +it.toFixed(4));
-      this.scale = +this.scale.toFixed(4);
-      this.matrix = calculateMatrix(fromTranslation([], this.translate), fromTranslation([], this.transformOrigin), fromScaling([], [this.scale, this.scale, 1]), fromTranslation([], negate([], this.transformOrigin)));
-      this.matrixInverse = invert([], this.matrix);
-      this.scaleMatrix = calculateMatrix(fromScaling([], [this.scale, this.scale, 1]));
-      this.scaleMatrixInverse = invert([], this.scaleMatrix);
-      this.refresh();
-    }
-    refreshCanvasSize(rect) {
-      if (this.canvasSize) {
-        this.canvasSize = rect;
-        this.cachedViewport = rectToVerties(0, 0, this.canvasSize.width, this.canvasSize.height);
-        const newVerties = transformMat4([], [this.canvasSize.width, this.canvasSize.height, 0], this.scaleMatrixInverse);
-        const newTransformOrigin = add([], this.verties[0], [
-          newVerties[0] / 2,
-          newVerties[1] / 2,
-          0
-        ]);
-        const newTranslate = getTranslation([], calculateMatrix(this.matrix, calculateMatrixInverse(fromTranslation([], newTransformOrigin), this.scaleMatrix, invert([], fromTranslation([], newTransformOrigin)))));
-        this.setTranslate(newTranslate);
-        this.setTransformOrigin(newTransformOrigin);
-      } else {
-        this.canvasSize = rect;
-        this.cachedViewport = rectToVerties(0, 0, this.canvasSize.width, this.canvasSize.height);
-        this.setTransformOrigin([
-          this.canvasSize.width / 2,
-          this.canvasSize.height / 2,
-          0
-        ]);
-      }
-      this.editor.emit(UPDATE_VIEWPORT);
-    }
-    refresh() {
-      if (this.cachedViewport) {
-        this.verties = vertiesMap(this.cachedViewport, this.matrixInverse);
-        this.originVerties = this.verties.filter((_, index2) => index2 < 4);
-        this.originRect = vertiesToRectangle(this.originVerties);
-      }
-    }
-    getWorldPosition(e) {
-      e = e || this.context.config.get("bodyEvent");
-      if (!e) {
-        return this.createWorldPosition(0, 0);
-      }
-      return this.createWorldPosition(e.clientX, e.clientY);
-    }
-    createWorldPosition(x, y) {
-      if (!this.canvasSize) {
-        return create$1();
-      }
-      const origin = {
-        x: x - this.canvasSize.x,
-        y: y - this.canvasSize.y
-      };
-      const mouseX = this.verties[0][0] + (this.verties[2][0] - this.verties[0][0]) * (origin.x / this.canvasSize.width);
-      const mouseY = this.verties[0][1] + (this.verties[2][1] - this.verties[0][1]) * (origin.y / this.canvasSize.height);
-      return [mouseX, mouseY, 0];
-    }
-    setMousePoint(x, y) {
-      this.mouse = this.createWorldPosition(x, y);
-      this.setTransformOriginWithTranslate(lerp([], this.verties[0], this.verties[2], 0.5));
-      this.editor.emit(UPDATE_VIEWPORT);
-    }
-    zoom(zoomFactor) {
-      const oldScale = this.scale;
-      const newScale = oldScale * zoomFactor;
-      this.setScale(newScale);
-      const newZoomFactor = this.scale / oldScale;
-      this.zoomFactor = newZoomFactor;
-      if (newZoomFactor !== 1) {
-        this.setTransformOriginWithTranslate(lerp([], this.mouse, this.transformOrigin, 1 / zoomFactor));
-        this.editor.emit(UPDATE_VIEWPORT);
-      }
-    }
-    pan(x, y, z = 0) {
-      this.setTransformOriginWithTranslate(add([], this.transformOrigin, [x, y, 0]));
-      this.editor.emit(UPDATE_VIEWPORT);
-    }
-    moveToCenter(areaVerties, scaleRate = -0.2, withScale = true) {
-      if (!this.canvasSize)
-        return;
-      const areaCenter = lerp([], areaVerties[0], areaVerties[2], 0.5);
-      const width = dist(areaVerties[0], areaVerties[1]);
-      const height = dist(areaVerties[0], areaVerties[3]);
-      const viewportCenter = lerp([], this.verties[0], this.verties[2], 0.5);
-      const viewportWidth = dist(this.verties[0], this.verties[1]);
-      const viewportHeight = dist(this.verties[0], this.verties[3]);
-      const minRate = withScale ? Math.min(viewportWidth / width, viewportHeight / height) + scaleRate : 1;
-      this.setTranslate(add([], this.translate, subtract([], viewportCenter, areaCenter)));
-      this.setTransformOrigin(areaCenter);
-      this.setScale(this.scale * minRate);
-      this.editor.emit(UPDATE_VIEWPORT);
-    }
-    get pos() {
-      const mouseX = (this.mouse[0] - this.verties[0][0]) / (this.verties[2][0] - this.verties[0][0]) * 100;
-      const mouseY = (this.mouse[1] - this.verties[0][1]) / (this.verties[2][1] - this.verties[0][1]) * 100;
-      return [mouseX, mouseY, 0];
-    }
-    get minX() {
-      return this.verties[0][0];
-    }
-    get maxX() {
-      return this.verties[2][0];
-    }
-    get minY() {
-      return this.verties[0][1];
-    }
-    get maxY() {
-      return this.verties[2][1];
-    }
-    get center() {
-      return this.verties[4];
-    }
-    get height() {
-      return this.maxY - this.minY;
-    }
-    get width() {
-      return this.maxX - this.minX;
-    }
-    get pixelSize() {
-      return Math.round(this.width / this.canvasSize.width);
-    }
-    checkInViewport(pointVertex) {
-      const xInViewport = this.minX < pointVertex[0] && pointVertex[0] < this.maxX;
-      const yInViewport = this.minY < pointVertex[1] && pointVertex[1] < this.maxY;
-      return xInViewport && yInViewport;
-    }
-    checkInViewportArea(verties = []) {
-      const source = vertiesToRectangle(verties);
-      const target = this.originRect;
-      return rectRect(source.x, source.y, source.width, source.height, target.x, target.y, target.width, target.height);
-    }
-    applyVertex(vertex) {
-      return transformMat4([], vertex, this.matrix);
-    }
-    applyVertexInverse(vertex) {
-      return transformMat4([], vertex, this.matrixInverse);
-    }
-    applyScaleVertex(vertex) {
-      return transformMat4([], vertex, this.scaleMatrix);
-    }
-    applyScaleVertexInverse(vertex) {
-      return transformMat4([], vertex, this.scaleMatrixInverse);
-    }
-    applyVerties(verties) {
-      return vertiesMap(verties, this.matrix);
-    }
-    applyScaleVerties(verties) {
-      return vertiesMap(verties, this.scaleMatrix);
-    }
-    applyVertiesInverse(verties) {
-      return vertiesMap(verties, this.matrixInverse);
-    }
-    applyScaleVertiesInverse(verties) {
-      return vertiesMap(verties, this.scaleMatrixInverse);
-    }
-    createAreaVerties(x, y, width, height) {
-      return this.applyVertiesInverse(rectToVertiesForArea(x, y, width, height));
-    }
-    zoomIn(zoomFactor = 0.01) {
-      this.setScale(this.scale + zoomFactor);
-      this.editor.emit(UPDATE_VIEWPORT);
-    }
-    zoomOut(zoomFactor = 0.01) {
-      this.zoomIn(-zoomFactor);
-    }
-    zoomDefault() {
-      this.setScale(1);
-      this.editor.emit(UPDATE_VIEWPORT);
-    }
-  }
-  var dark = {
-    left_size: 250,
-    left_max_size: 400,
-    bottom_size: 150,
-    bottom_max_size: 500,
-    timeline_grid_font_color: "#ececec",
-    timeline_line_color: "red",
-    timeline_timeview_bottom_color: "black"
-  };
-  var light = {
-    left_size: 250,
-    left_max_size: 400,
-    bottom_size: 150,
-    bottom_max_size: 500,
-    timeline_grid_font_color: "black",
-    timeline_line_color: "#4778d4",
-    timeline_timeview_bottom_color: "#ececec"
-  };
-  var theme = {
-    dark,
-    light
-  };
-  class Editor {
-    constructor(opt = {}) {
-      this.EDITOR_ID = uuid();
-      this.projects = [];
-      this.popupZIndex = 1e4;
-      this.symbols = {};
-      this.images = {};
-      this.openRightPanel = true;
-      this.ignoreManagers = opt.ignoreManagers || [];
-      this.context = {};
-      this.loadManagers();
-    }
-    loadManagers() {
-      this.registerManager({
-        store: sapa.BaseStore,
-        config: ConfigManager,
-        commands: CommandManager,
-        keyboardManager: KeyBoardManager,
-        viewport: ViewportManager,
-        storageManager: StorageManager,
-        modeViewManager: ModeViewManager,
-        cursorManager: CursorManager,
-        assetManager: AssetManager,
-        injectManager: InjectManager,
-        components: ComponentManager,
-        pluginManager: PluginManager,
-        renderers: RendererManager,
-        i18n: I18nManager,
-        icon: IconManager,
-        stateManager: StateManager,
-        menuManager: MenuManager
-      });
-      if (this.ignoreManagers.includes("ShortCutManager") === false) {
-        this.registerManager({
-          shortcuts: ShortCutManager
-        });
-      }
-      this.loadCommands(obj);
-      this.initPlugins();
-      this.initStorage();
-    }
-    registerManager(obj2 = {}) {
-      Object.keys(obj2).forEach((name) => {
-        const DataManagerClass = obj2[name];
-        Object.defineProperty(this.context, name, {
-          value: new DataManagerClass(this),
-          writable: false
-        });
-      });
-    }
-    initStorage() {
-      this.locale = this.loadItem("locale") || "en_US";
-      this.layout = this.loadItem("layout") || "all";
-    }
-    getI18nMessage(key, params = {}, locale) {
-      return this.context.i18n.get(key, params, locale || this.locale);
-    }
-    $i18n(key, params = {}, locale) {
-      return this.getI18nMessage(key, params, locale);
-    }
-    hasI18nkey(key, locale) {
-      return this.context.i18n.hasKey(key, locale || this.locale);
-    }
-    initI18nMessage(root = "") {
-      return (key, params = {}, locale) => {
-        const i18nKey = `${root}.${key}`;
-        if (this.hasI18nkey(i18nKey, locale)) {
-          return this.context.i18(`${root}.${key}`, params, locale);
-        } else {
-          return this.context.i18(`${key}`, params, locale);
-        }
-      };
-    }
-    setLocale(locale = "en_US") {
-      this.locale = locale;
-      this.saveItem("locale", this.locale);
-    }
-    setUser(user) {
-      this.user = user;
-    }
-    async initPlugins(options = {}) {
-      await this.context.pluginManager.initializePlugin(options);
-    }
-    themeValue(key, defaultValue = "") {
-      return theme[this.context.config.get("editor.theme")][key] || defaultValue;
-    }
-    get zIndex() {
-      return this.popupZIndex++;
-    }
-    getFile(url) {
-      return this.images[url] || url;
-    }
-    setStore(store) {
-      this.store = store;
-    }
-    emit(...args) {
-      this.context.store.source = this.EDITOR_ID;
-      this.context.store.emit(...args);
-    }
-    on(...args) {
-      const [name, callback, context, ...rest] = args;
-      return this.context.store.on(name, callback, context || this, ...rest);
-    }
-    off(...args) {
-      this.context.store.off(...args);
-    }
-    offAll(...args) {
-      this.context.store.offAll(...args);
-    }
-    debug() {
-    }
-    command(command, message, ...args) {
-      console.warn("command", command, message, args);
-      if (this.context.stateManager.isPointerUp) {
-        return this.context.store.emit(`history.${command}`, message, ...args);
-      } else {
-        return this.context.store.emit(command, ...args);
-      }
-    }
-    nextTick(callback, delay = 0) {
-      if (this.context.store) {
-        window.setTimeout(() => {
-          this.context.store.nextTick(callback);
-        }, delay);
-      }
-    }
-    get(idOrModel) {
-      return this.context.modelManager.get((idOrModel == null ? void 0 : idOrModel.id) || idOrModel);
-    }
-    replaceLocalUrltoRealUrl(str) {
-      var project = this.context.selection.currentProject;
-      var images = {};
-      project.images.forEach((a) => {
-        if (str.indexOf(a.local) > -1) {
-          images[a.local] = a.original;
-        }
-      });
-      Object.keys(images).forEach((local) => {
-        if (str.indexOf(local) > -1) {
-          str = str.replace(new RegExp(local, "g"), images[local]);
-        }
-      });
-      return str;
-    }
-    get storeKey() {
-      return `__els__.${this.context.config.get("store.key")}`;
-    }
-    saveItem(key, value) {
-      window.localStorage.setItem(`${this.storeKey}.${key}`, JSON.stringify(value));
-    }
-    loadItem(key) {
-      return JSON.parse(window.localStorage.getItem(`${this.storeKey}.${key}`) || JSON.stringify(""));
-    }
-    createCommandMaker() {
-      return new CommandMaker(this);
-    }
-    registerElement(obj2) {
-      sapa.registElement(obj2);
-    }
-    registerAlias(obj2) {
-      Object.entries(obj2).forEach(([key, value]) => {
-        sapa.registAlias(key, value);
-      });
-    }
-    registerUI(target, obj2 = {}, order = 1) {
-      this.context.injectManager.registerUI(target, obj2, order);
-      this.registerElement(obj2);
-    }
-    isComponentClass(name) {
-      return this.context.components.isComponentClass(name);
-    }
-    registerComponent(name, component2) {
-      this.context.components.registerComponent(name, component2);
-    }
-    registerItem(name, item) {
-      this.registerComponent(name, item);
-    }
-    registerInspector(name, inspectorCallback) {
-      this.context.components.registerInspector(name, inspectorCallback);
-    }
-    registerRenderer(rendererType, name, rendererInstance) {
-      this.context.renderers.registerRenderer(rendererType, name, rendererInstance);
-    }
-    registerRendererType(rendererType, rendererTypeInstance) {
-      this.context.renderers.registerRendererType(rendererType, rendererTypeInstance);
-    }
-    getRendererInstance(rendererType, itemType) {
-      return this.context.renderers.getRendererInstance(rendererType, itemType);
-    }
-    renderer(rendererType) {
-      return this.context.renderers.getRenderer(rendererType);
-    }
-    get json() {
-      return this.renderer("json");
-    }
-    loadCommands(userCommands) {
-      return this.context.commands.loadCommands(userCommands);
-    }
-    registerCommand(commandObject) {
-      return this.context.commands.registerCommand(commandObject);
-    }
-    registerShortCut(shortcut) {
-      this.context.shortcuts.registerShortCut(shortcut);
-    }
-    registerPlugin(createPluginFunction) {
-      this.context.pluginManager.registerPlugin(createPluginFunction);
-    }
-    registerPluginList(plugins = []) {
-      plugins.forEach((p) => this.registerPlugin(p));
-    }
-    registerConfig(config) {
-      this.context.config.registerConfig(config);
-    }
-    registerI18nMessage(locale, messages) {
-      this.context.i18n.registerI18nMessage(locale, messages);
-    }
-    registerI18nMessageWithLocale(messages) {
-      Object.entries(messages).forEach(([locale, messages2]) => {
-        this.registerI18nMessage(locale, messages2);
-      });
-    }
-    registerIcon(itemType, iconOrFunction) {
-      this.context.icon.registerIcon(itemType, iconOrFunction);
-    }
-    registerIconList(obj2 = {}) {
-      this.context.icon.registerIconList(obj2);
-    }
-    registerMenu(target, menu) {
-      this.context.menuManager.registerMenu(target, menu);
-    }
-  }
-  const EMPTY_POS = { x: 0, y: 0 };
-  const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
-  const MOVE_CHECK_MS = 0;
-  class BaseLayout extends EditorElement {
-    async created() {
-      this.$editor.registerManager(this.getManagers());
-      this.$editor.registerPluginList(this.getPlugins());
-      if (Array.isArray(this.opt.plugins)) {
-        this.$editor.registerPluginList(this.opt.plugins);
-      }
-      await this.$editor.initPlugins();
-      this.$config.load();
-      if (sapa.isObject(this.opt.config)) {
-        this.$config.setAll(this.opt.config || {});
-      }
-      this._isPluginLoaded = true;
-    }
-    get isPreLoaded() {
-      return Boolean(this._isPluginLoaded);
-    }
-    get $editor() {
-      if (!this.__editorInstance) {
-        this.__editorInstance = this.createEditorInstance();
-      }
-      return this.__editorInstance;
-    }
-    createEditorInstance() {
-      return new Editor();
-    }
-    afterRender() {
-      super.afterRender();
-      this.$el.attr("data-theme", this.$config.get("editor.theme"));
-      this.$el.addClass(window.navigator.userAgent.includes("Windows") ? "ua-window" : "ua-default");
-      this.trigger("initialize");
-    }
-    initialize() {
-      super.initialize();
-      this.__initBodyMoves();
-    }
-    [sapa.CONFIG("editor.theme")]() {
-      this.$el.attr("data-theme", this.$config.get("editor.theme"));
-    }
-    getPlugins() {
-      return [];
-    }
-    getManagers() {
-      return {};
-    }
-    __initBodyMoves() {
-      this.__firstMove = /* @__PURE__ */ new Set();
-      this.__moves = /* @__PURE__ */ new Set();
-      this.__ends = /* @__PURE__ */ new Set();
-      this.__modifyBodyMoveSecond(MOVE_CHECK_MS);
-    }
-    __modifyBodyMoveSecond(ms = MOVE_CHECK_MS) {
-      this.$config.set("body.move.ms", ms);
-      const callback = ms === 0 ? this.__loopBodyMoves.bind(this) : sapa.debounce(this.__loopBodyMoves.bind(this), this.$config.get("body.move.ms"));
-      this.__funcBodyMoves = callback;
-    }
-    __loopBodyMoves() {
-      var pos = this.pos;
-      var e = this.$config.get("bodyEvent");
-      var lastPos = this.lastPos || DEFAULT_POS;
-      var isNotEqualLastPos = !(lastPos.x === pos.x && lastPos.y === pos.y);
-      if (isNotEqualLastPos && this.__firstMove.size) {
-        let i = 0;
-        this.__firstMove.forEach((v) => {
-          const dist2 = getDist(pos.x, pos.y, v.xy.x, v.xy.y);
-          if (Math.abs(dist2) > 0) {
-            var dx = pos.x - v.xy.x;
-            var dy = pos.y - v.xy.y;
-            v.func.call(v.context, dx, dy, "move", e.pressure);
-            i++;
-          }
-        });
-        if (i > 0) {
-          this.__firstMove.clear();
-        }
-      }
-      if (isNotEqualLastPos && this.__moves.size) {
-        this.__moves.forEach((v) => {
-          const dist2 = getDist(pos.x, pos.y, v.xy.x, v.xy.y);
-          if (Math.abs(dist2) > 0.5) {
-            var dx = pos.x - v.xy.x;
-            var dy = pos.y - v.xy.y;
-            v.func.call(v.context, dx, dy, "move", e.pressure);
-          }
-        });
-        this.lastPos = pos;
-      }
-      window.requestAnimationFrame(this.__funcBodyMoves);
-    }
-    __removeBodyMoves() {
-      var pos = this.lastPos;
-      var e = this.$config.get("bodyEvent");
-      if (pos) {
-        this.__ends.forEach((v) => {
-          v.func.call(v.context, pos.x - v.xy.x, pos.y - v.xy.y, "end", e.pressure);
-        });
-      }
-      this.__firstMove.clear();
-      this.__moves.clear();
-      this.__ends.clear();
-    }
-    [sapa.SUBSCRIBE_ALL(ADD_BODY_FIRST_MOUSEMOVE)](func, context, xy) {
-      this.__firstMove.add({ func, context, xy });
-    }
-    [sapa.SUBSCRIBE_ALL(ADD_BODY_MOUSEMOVE)](func, context, xy) {
-      this.__moves.add({ func, context, xy });
-    }
-    [sapa.SUBSCRIBE_ALL(ADD_BODY_MOUSEUP)](func, context, xy) {
-      this.__ends.add({ func, context, xy });
-    }
-    [sapa.POINTERSTART()](e) {
-      var newPos = e.xy || EMPTY_POS;
-      this.$config.init("bodyEvent", e);
-      this.pos = newPos;
-    }
-    [sapa.POINTERMOVE()](e) {
-      var newPos = e.xy || EMPTY_POS;
-      this.$config.init("bodyEvent", e);
-      this.$commands.emit("change.bodyEvent");
-      this.pos = newPos;
-      if (!this.__requestId) {
-        this.__requestId = window.requestAnimationFrame(this.__funcBodyMoves);
-      }
-    }
-    [sapa.POINTEREND()](e) {
-      this.$config.set("bodyEvent", e);
-      this.__removeBodyMoves();
-      window.cancelAnimationFrame(this.__requestId);
-      this.__requestId = null;
-    }
-    [sapa.RESIZE("window") + sapa.DEBOUNCE(100)]() {
-      this.emit(RESIZE_WINDOW);
-    }
-    [sapa.SUBSCRIBE("refreshAll")]() {
-      this.emit("refreshProjectList");
-      this.$commands.emit("refreshArtboard");
-    }
-    [sapa.SUBSCRIBE("changed.locale")]() {
-      this.refresh();
+      }, sapa.createComponent("ShortcutWindow"), sapa.createComponent("NotificationView"), this.$injectManager.generate("popup", true));
     }
   }
   class BlankEditor extends BaseLayout {
@@ -7890,33 +7886,47 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
     getTopPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(DefaultLayoutItem, {
         type: "top"
-      }, /* @__PURE__ */ sapa.createElementJsx(BlankToolBar, null));
+      }, /* @__PURE__ */ sapa.createElementJsx(BlankToolBar, {
+        ref: "$blankToolbar"
+      }));
     }
     getLeftPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(DefaultLayoutItem, {
         type: "left",
         resizable: true
-      }, /* @__PURE__ */ sapa.createElementJsx(BlankLayerTab, null));
+      }, /* @__PURE__ */ sapa.createElementJsx(BlankLayerTab, {
+        ref: "$blankLayerTab"
+      }));
     }
     getRightPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(DefaultLayoutItem, {
         type: "right"
-      }, /* @__PURE__ */ sapa.createElementJsx(BlankInspector, null));
+      }, /* @__PURE__ */ sapa.createElementJsx(BlankInspector, {
+        ref: "$blankInspector"
+      }));
     }
     getBodyPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(DefaultLayoutItem, {
         type: "body"
-      }, /* @__PURE__ */ sapa.createElementJsx(BlankBodyPanel, null));
+      }, /* @__PURE__ */ sapa.createElementJsx(BlankBodyPanel, {
+        ref: "$blankBodyPanel"
+      }));
     }
     getInnerPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(DefaultLayoutItem, {
         type: "inner"
-      }, /* @__PURE__ */ sapa.createElementJsx(KeyboardManager, null));
+      }, /* @__PURE__ */ sapa.createElementJsx(KeyboardManager, {
+        ref: "$keyboardManager"
+      }));
     }
     getOuterPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(DefaultLayoutItem, {
         type: "outer"
-      }, /* @__PURE__ */ sapa.createElementJsx(PopupManager, null), /* @__PURE__ */ sapa.createElementJsx(ContextMenuManager, null));
+      }, /* @__PURE__ */ sapa.createElementJsx(PopupManager, {
+        ref: "$popupManager"
+      }), /* @__PURE__ */ sapa.createElementJsx(ContextMenuManager, {
+        ref: "$contextManager"
+      }));
     }
     template() {
       return /* @__PURE__ */ sapa.createElementJsx("div", {

@@ -1,25 +1,21 @@
-import { BIND, CLICK, UIElement } from "@elf/sapa";
+import { CLICK, UIElement, classnames } from "@elf/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 
 export class Button extends UIElement {
   template() {
-    return <button class="elf--button">{this.props.content || ""}</button>;
-  }
-
-  [BIND("$el")]() {
     const { type, disabled, style = {} } = this.props;
 
-    return {
-      class: [
+    const styleObject = {
+      class: classnames([
         "elf--button",
         {
           primary: type === "primary",
           secondary: type === "secondary",
           outline: type === "outline",
         },
-      ],
-      disabled: disabled ? "disabled" : null,
+      ]),
+      disabled: disabled ? "disabled" : undefined,
       style: {
         ...propertyMap(style, {
           borderColor: "--elf--button-border-color",
@@ -34,6 +30,8 @@ export class Button extends UIElement {
         }),
       },
     };
+
+    return <button {...styleObject}>{this.props.content || ""}</button>;
   }
 
   [CLICK("$el")](e) {

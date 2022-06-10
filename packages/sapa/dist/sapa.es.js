@@ -17,6 +17,10 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
 var __accessCheck = (obj, member, msg) => {
   if (!member.has(obj))
     throw TypeError("Cannot " + msg);
@@ -49,7 +53,7 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _eventList, _eventMap, _state, _prevState, _localTimestamp, _loadMethods, _timestamp, _cachedMethodList, _props, _propsKeys, _isServer, _propsKeyList, _refreshTimestamp, refreshTimestamp_fn, _setProps, setProps_fn, _getProp, getProp_fn, _storeInstance;
+var _eventList, _eventMap, _state, _prevState, _localTimestamp, _loadMethods, _timestamp, _cachedMethodList, _props, _propsKeys, _isServer, _propsKeyList, _functionCache, _refreshTimestamp, refreshTimestamp_fn, _setProps, setProps_fn, _getProp, getProp_fn, _storeInstance;
 function collectProps(root, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -155,6 +159,8 @@ function isEqual(obj1, obj2) {
       return s.size === obj1[key].length && s.size === obj2[key].length;
     } else if (isFunction(obj1[key]) && isFunction(obj2[key])) {
       return true;
+    } else if (isObject(obj1[key]) && isObject(obj2[key])) {
+      return isEqual(obj1[key], obj2[key]);
     }
     return obj1[key] === obj2[key];
   });
@@ -219,7 +225,11 @@ const setProp = (el, name, value) => {
   if (typeof value === "boolean") {
     setBooleanProp(el, name, value);
   } else {
-    el.setAttribute(name, value);
+    if (name === "style") {
+      el.style.cssText = value;
+    } else {
+      el.setAttribute(name, value);
+    }
   }
 };
 const removeBooleanProp = (node, name) => {
@@ -270,6 +280,10 @@ function getProps(attributes) {
   const len = attributes.length;
   for (let i = 0; i < len; i++) {
     const t = attributes[i];
+    if (t.name === "has-event")
+      continue;
+    else if (t.name.startsWith("on"))
+      continue;
     results[t.name] = t.value;
   }
   return results;
@@ -289,7 +303,14 @@ function updateElement(parentElement, oldEl, newEl, i, options = {}) {
       parentElement.insertBefore(newEl.cloneNode(true), oldEl);
       parentElement.removeChild(oldEl);
     } else {
-      oldEl.replaceWith(newEl.cloneNode(true));
+      if (hasRefClass(newEl)) {
+        if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newEl)) {
+          console.log("replace object refclass", oldEl, newEl);
+          oldEl.replaceWith(newEl.cloneNode(true));
+        }
+      } else {
+        oldEl.replaceWith(newEl.cloneNode(true));
+      }
     }
   } else if (newEl.nodeType !== window.Node.TEXT_NODE && newEl.nodeType !== window.Node.COMMENT_NODE && newEl.toString() !== "[object HTMLUnknownElement]") {
     if (options.checkPassed && options.checkPassed(oldEl, newEl))
@@ -324,19 +345,24 @@ const DefaultOption = {
 };
 function DomDiff(A, B, options = {}) {
   options = __spreadProps(__spreadValues({}, DefaultOption), {
-    checkPassed: isFunction(options.checkPassed) ? options.checkPassed : void 0
+    checkPassed: isFunction(options.checkPassed) ? options.checkPassed : void 0,
+    checkRefClass: isFunction(options.checkRefClass) ? options.checkRefClass : void 0
   });
   A = A.el || A;
   B = B.el || B;
   var childrenA = children(A);
   var childrenB = children(B);
-  updateProps(A, getProps(B.attributes), getProps(A.attributes));
+  if (A.nodeType !== 11 && B.nodeType !== 11) {
+    updateProps(A, getProps(B.attributes), getProps(A.attributes));
+  }
   var len = Math.max(childrenA.length, childrenB.length);
   if (len === 0) {
     return;
   }
   if (childrenA.length === 0 && childrenB.length > 0) {
-    A.append(...childrenB);
+    var fragment = document.createDocumentFragment();
+    childrenB.forEach((it) => fragment.appendChild(it));
+    A.appendChild(fragment);
   } else if (childrenA.length > 0 && childrenB.length === 0) {
     A.textContent = "";
   } else {
@@ -706,14 +732,14 @@ class Dom {
       return this;
     }
   }
-  htmlDiff(fragment) {
-    DomDiff(this, fragment);
+  htmlDiff(fragment, options = {}) {
+    DomDiff(this, fragment, options);
   }
   updateDiff(html, rootElement = "div", options = {}) {
     DomDiff(this, Dom.create(rootElement).html(html), options);
   }
-  updateSVGDiff(html, rootElement = "div") {
-    DomDiff(this, Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild);
+  updateSVGDiff(html, rootElement = "div", options = {}) {
+    DomDiff(this, Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild, options);
   }
   getById(id) {
     return this.el.getElementById(id);
@@ -775,6 +801,11 @@ class Dom {
     const list = this.childNodes;
     var fragment = document.createDocumentFragment();
     list.forEach(($el) => fragment.appendChild($el.el));
+    return fragment;
+  }
+  static createFragment(list = []) {
+    var fragment = document.createDocumentFragment();
+    list.forEach((it) => fragment.appendChild(it));
     return fragment;
   }
   appendTo(target) {
@@ -2324,6 +2355,9 @@ class NativeEventHandler extends BaseHandler {
     if (!$el)
       return;
     let targets = $el.$$("[has-event='true']");
+    if ($el.attr("has-event") === "true") {
+      targets.unshift($el);
+    }
     if (!targets.length) {
       return;
     }
@@ -2582,6 +2616,13 @@ const _EventMachine = class {
     __privateAdd(this, _propsKeys, {});
     __privateAdd(this, _isServer, false);
     __privateAdd(this, _propsKeyList, []);
+    __privateAdd(this, _functionCache, {});
+    __publicField(this, "useMounted", (callback) => {
+      return this.createFunction("mounted", callback);
+    });
+    __publicField(this, "useDestroyed", (callback) => {
+      return this.createFunction("destroyed", callback);
+    });
     this.refs = {};
     this.children = {};
     this.id = uuid();
@@ -2634,6 +2675,25 @@ const _EventMachine = class {
   }
   initializeHandler() {
     return createHandlerInstance(this);
+  }
+  createFunction(funcName, func) {
+    if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
+      __privateGet(this, _functionCache)[funcName] = func;
+    }
+    return __privateGet(this, _functionCache)[funcName];
+  }
+  runFunction(funcName, func) {
+    const cachedFunction = this.createFunction(funcName, func);
+    if (cachedFunction == null ? void 0 : cachedFunction.running) {
+      return;
+    }
+    if (isFunction(cachedFunction)) {
+      if (!cachedFunction.running) {
+        cachedFunction.running = true;
+        cachedFunction.call(this);
+      }
+    }
+    return cachedFunction;
   }
   initState() {
     return {};
@@ -2688,13 +2748,35 @@ const _EventMachine = class {
     const template = this.template();
     let newDomElement = this.parseMainTemplate(template, !!this.$el);
     if (this.$el) {
-      this.$el.htmlDiff(newDomElement);
+      this.$el.htmlDiff(newDomElement, {
+        checkRefClass: (oldEl, newEl) => {
+          const $newEl = Dom.create(newEl);
+          const newPropertyInfo = this._getComponentInfo($newEl);
+          if (this.children[newPropertyInfo.refName]) {
+            const instance = this.children[newPropertyInfo.refName];
+            instance.timestamp = this.__timestamp;
+            instance._reload(newPropertyInfo.props);
+            return false;
+          }
+          const targetChildId = Object.keys(this.children).find((it) => this.children[it].$el.is(oldEl));
+          if (targetChildId) {
+            const instance = this.children[targetChildId];
+            if (instance.sourceName === newPropertyInfo.refClass) {
+              instance.timestamp = this.__timestamp;
+              instance._reload(newPropertyInfo.props);
+              return false;
+            }
+          }
+          return false;
+        }
+      });
     } else {
       this.$el = newDomElement;
       this.refs.$el = this.$el;
       if ($container) {
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
+          this.onMounted();
         }
       }
     }
@@ -2826,8 +2908,12 @@ const _EventMachine = class {
     }
     return new EventMachineComponent(this, props);
   }
-  async renderComponent({ $dom, refName, component, props }) {
+  appendTo() {
     var _a;
+    (_a = this.$el) == null ? void 0 : _a.appendTo(this.renderTarget);
+    this.onMounted();
+  }
+  async renderComponent({ $dom, refName, component, props }) {
     var instance = null;
     if (this.children[refName]) {
       instance = this.children[refName];
@@ -2843,7 +2929,7 @@ const _EventMachine = class {
     }
     this.afterComponentRendering($dom, refName, instance, props);
     if (instance.renderTarget) {
-      (_a = instance.$el) == null ? void 0 : _a.appendTo(instance.renderTarget);
+      instance.appendTo();
       $dom.remove();
     } else if (instance.$el) {
       $dom.replace(instance.$el);
@@ -2906,7 +2992,6 @@ const _EventMachine = class {
     keyEach(this.children, (key, child) => {
       if (child.timestamp !== this.__timestamp) {
         child.clean();
-        delete this.children[key];
       }
     });
   }
@@ -2994,6 +3079,7 @@ const _EventMachine = class {
     this.$el = null;
     this.refs = {};
     this.children = {};
+    this.onDestroyed();
   }
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
@@ -3048,6 +3134,18 @@ const _EventMachine = class {
   getChild(filterCallback) {
     return this.props.contentChildren.find(filterCallback);
   }
+  onMounted() {
+    const mounted = this.createFunction("mounted");
+    if (mounted) {
+      mounted();
+    }
+  }
+  onDestroyed() {
+    const destroyed = this.createFunction("destroyed");
+    if (destroyed) {
+      destroyed();
+    }
+  }
 };
 let EventMachine = _EventMachine;
 _state = new WeakMap();
@@ -3060,6 +3158,7 @@ _props = new WeakMap();
 _propsKeys = new WeakMap();
 _isServer = new WeakMap();
 _propsKeyList = new WeakMap();
+_functionCache = new WeakMap();
 _refreshTimestamp = new WeakSet();
 refreshTimestamp_fn = function() {
   __privateWrapper(this, _localTimestamp)._++;
@@ -3169,9 +3268,49 @@ async function renderToString(ElementClass, opt) {
   const instance = await app.render();
   return instance.html;
 }
+const NumberStyleKeys = {
+  width: true,
+  height: true,
+  top: true,
+  left: true,
+  right: true,
+  bottom: true,
+  maxWidth: true,
+  maxHeight: true,
+  minWidth: true,
+  minHeight: true,
+  margin: true,
+  marginTop: true,
+  marginRight: true,
+  marginBottom: true,
+  marginLeft: true,
+  padding: true,
+  paddingTop: true,
+  paddingRight: true,
+  paddingBottom: true,
+  paddingLeft: true,
+  border: true,
+  borderTop: true,
+  borderRight: true,
+  borderBottom: true,
+  borderLeft: true,
+  borderWidth: true,
+  borderTopWidth: true,
+  borderRightWidth: true,
+  borderBottomWidth: true,
+  borderLeftWidth: true
+};
+function styleMap(key, value) {
+  if (typeof value === "number") {
+    if (NumberStyleKeys[key]) {
+      value = value + "px";
+    }
+  }
+  return value;
+}
 function CSS_TO_STRING(style, postfix = "") {
   var newStyle = style || {};
-  return Object.keys(newStyle).filter((key) => isNotUndefined(newStyle[key])).map((key) => `${key}: ${newStyle[key]}`).join(";" + postfix);
+  return Object.keys(newStyle).filter((key) => isNotUndefined(newStyle[key])).map((key) => `${key}: ${styleMap(key, newStyle[key])}`).join(";" + postfix);
 }
 function OBJECT_TO_PROPERTY(obj) {
   const target = obj || {};

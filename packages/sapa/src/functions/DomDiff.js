@@ -14,7 +14,11 @@ const setProp = (el, name, value) => {
   if (typeof value === "boolean") {
     setBooleanProp(el, name, value);
   } else {
-    el.setAttribute(name, value);
+    if (name === "style") {
+      el.style.cssText = value;
+    } else {
+      el.setAttribute(name, value);
+    }
   }
 };
 
@@ -38,6 +42,7 @@ const removeProp = (node, name, value) => {
 const updateProp = (node, name, newValue, oldValue) => {
   // 필드만 있는 것들은 value 가 없을 수 있기 때문에, 기본 value 를 채워주자.
   if (!newValue) {
+    // console.log(node, name, oldValue, newValue);
     removeProp(node, name, oldValue);
   } else if (!oldValue || newValue !== oldValue) {
     setProp(node, name, newValue);
@@ -102,26 +107,19 @@ function getProps(attributes) {
   const len = attributes.length;
   for (let i = 0; i < len; i++) {
     const t = attributes[i];
+
+    // 특수 속성 제외
+    if (t.name === "has-event") continue;
+    else if (t.name.startsWith("on")) continue;
+
     results[t.name] = t.value;
   }
 
   return results;
 }
 
-function checkAllHTML(newEl, oldEl) {
-  // text node 는 html 체크를 하지 않는다.
-  // text node 의 outerHTML 은 undefined 만 나온다.
-  if (
-    newEl.nodeType == window.Node.TEXT_NODE ||
-    oldEl.nodeType === window.Node.TEXT_NODE
-  ) {
-    return false;
-  }
-
-  return newEl.outerHTML == oldEl.outerHTML;
-}
-
 function updateElement(parentElement, oldEl, newEl, i, options = {}) {
+  // console.log("updateElement", oldEl, newEl, i);
   if (!oldEl) {
     parentElement.appendChild(newEl.cloneNode(true));
   } else if (!newEl) {
@@ -144,7 +142,18 @@ function updateElement(parentElement, oldEl, newEl, i, options = {}) {
       parentElement.insertBefore(newEl.cloneNode(true), oldEl);
       parentElement.removeChild(oldEl);
     } else {
-      oldEl.replaceWith(newEl.cloneNode(true));
+      // newEl 이 refClass이고, 바뀌어야 하는 경우 갱신을 위해서 replace 를 한다.
+      if (hasRefClass(newEl)) {
+        if (
+          isFunction(options.checkRefClass) &&
+          options.checkRefClass(oldEl, newEl)
+        ) {
+          console.log("replace object refclass", oldEl, newEl);
+          oldEl.replaceWith(newEl.cloneNode(true));
+        }
+      } else {
+        oldEl.replaceWith(newEl.cloneNode(true));
+      }
     }
   } else if (
     newEl.nodeType !== window.Node.TEXT_NODE &&
@@ -250,6 +259,9 @@ export function DomDiff(A, B, options = {}) {
     checkPassed: isFunction(options.checkPassed)
       ? options.checkPassed
       : undefined,
+    checkRefClass: isFunction(options.checkRefClass)
+      ? options.checkRefClass
+      : undefined,
   };
 
   A = A.el || A;
@@ -258,8 +270,13 @@ export function DomDiff(A, B, options = {}) {
   var childrenA = children(A);
   var childrenB = children(B);
 
-  // 메인 element 속성 변경
-  updateProps(A, getProps(B.attributes), getProps(A.attributes)); // added
+  // A, B 모두 fragment 가 아닐 때 props 처리
+  if (A.nodeType !== 11 && B.nodeType !== 11) {
+    // 메인 element 속성 변경
+    updateProps(A, getProps(B.attributes), getProps(A.attributes)); // added
+  }
+
+  // return;
 
   // 자식 element 의 속성 변경
   var len = Math.max(childrenA.length, childrenB.length);
@@ -268,9 +285,11 @@ export function DomDiff(A, B, options = {}) {
   }
 
   if (childrenA.length === 0 && childrenB.length > 0) {
+    var fragment = document.createDocumentFragment();
+    childrenB.forEach((it) => fragment.appendChild(it));
     // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
     // B 에서 모든 자식을 A 에 추가한다.
-    A.append(...childrenB);
+    A.appendChild(fragment);
   } else if (childrenA.length > 0 && childrenB.length === 0) {
     // children A 만 존재할 때는 A에 있는 것을 모두 삭제한다.
     // noop

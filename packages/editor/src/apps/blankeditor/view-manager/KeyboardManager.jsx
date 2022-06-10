@@ -1,15 +1,12 @@
 import { Dom, KEYDOWN, KEYUP, IF } from "@elf/sapa";
-
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 const formElements = ["TEXTAREA", "INPUT", "SELECT"];
 
 export class KeyboardManager extends EditorElement {
-  // template() {
-  //   return /*html*/ `
-  //     <div class="keyboard-manager"></div>
-  //   `;
-  // }
+  template() {
+    return <div class="keyboard-manager" style="display: none;"></div>;
+  }
 
   isNotFormElement(e) {
     var tagName = e.target.tagName;

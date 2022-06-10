@@ -16,11 +16,9 @@ export class PopupManager extends EditorElement {
   template() {
     return (
       <div class="elf--popup-manager">
-        {createComponent("ExportWindow")}
-        {createComponent("ProjectWindow")}
         {createComponent("ShortcutWindow")}
         {createComponent("NotificationView")}
-        {this.$injectManager.generate("popup", true)} 
+        {this.$injectManager.generate("popup", true)}
       </div>
     );
   }
