@@ -1,10 +1,10 @@
-import { CLICK, UIElement, classnames } from "@elf/sapa";
+import { UIElement, classnames } from "@elf/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 
 export class Button extends UIElement {
   template() {
-    const { type, disabled, style = {} } = this.props;
+    const { type, size, disabled, shape, style = {} } = this.props;
 
     const styleObject = {
       class: classnames([
@@ -13,6 +13,14 @@ export class Button extends UIElement {
           primary: type === "primary",
           secondary: type === "secondary",
           outline: type === "outline",
+        },
+        {
+          "elf--button-lg": size === "large",
+          "elf--button-sm": size === "small",
+        },
+        {
+          "elf--button-shape-circle": shape === "circle",
+          "elf--button-shape-round": shape === "round",
         },
       ]),
       disabled: disabled ? "disabled" : undefined,
@@ -31,14 +39,10 @@ export class Button extends UIElement {
       },
     };
 
-    return <button {...styleObject}>{this.props.content || ""}</button>;
-  }
-
-  [CLICK("$el")](e) {
-    const { onClick } = this.props;
-
-    if (onClick) {
-      onClick(e);
-    }
+    return (
+      <button {...styleObject} onClick={this.props.onClick}>
+        <span>{this.props.content || ""}</span>
+      </button>
+    );
   }
 }

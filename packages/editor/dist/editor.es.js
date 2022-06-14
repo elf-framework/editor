@@ -1064,7 +1064,6 @@ class Tabs extends UIElement {
   }
   setValue(selectedValue) {
     var _a, _b;
-    console.log(this, this.$el);
     (_a = this.$el.$(`* > .tab-item[data-value="${selectedValue}"]`)) == null ? void 0 : _a.onlyOneClass("selected");
     (_b = this.$el.$(`* > .tab-content[data-value="${selectedValue}"]`)) == null ? void 0 : _b.onlyOneClass("selected");
     this.updateData({ selectedValue });

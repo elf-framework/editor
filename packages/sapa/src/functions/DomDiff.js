@@ -53,8 +53,17 @@ const updateProp = (node, name, newValue, oldValue) => {
 
 const updateProps = (node, newProps = {}, oldProps = {}) => {
   const keyList = [];
-  keyList.push.apply(keyList, Object.keys(newProps));
-  keyList.push.apply(keyList, Object.keys(oldProps));
+
+  const newPropsKeys = Object.keys(newProps);
+  const oldPropsKeys = Object.keys(oldProps);
+
+  // props 가 없으면 비교하지 않는다.
+  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+    return;
+  }
+
+  keyList.push.apply(keyList, newPropsKeys);
+  keyList.push.apply(keyList, oldPropsKeys);
 
   const props = new Set(keyList);
 

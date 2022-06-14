@@ -10,37 +10,81 @@ import {
 import { registElement, variable } from "./registElement";
 
 const NumberStyleKeys = {
+  animationIterationCount: true,
+  borderImageOutset: true,
+  borderImageSlice: true,
+  borderImageWidth: true,
+  boxFlex: true,
+  boxFlexGroup: true,
+  boxOrdinalGroup: true,
+  columnCount: true,
+  columns: true,
+  flex: true,
+  flexGrow: true,
+  flexPositive: true,
+  flexShrink: true,
+  flexNegative: true,
+  flexOrder: true,
+  gridRow: true,
+  gridRowEnd: true,
+  gridRowSpan: true,
+  gridRowStart: true,
+  gridColumn: true,
+  gridColumnEnd: true,
+  gridColumnSpan: true,
+  gridColumnStart: true,
+  fontWeight: true,
+  lineClamp: true,
+  lineHeight: true,
+  opacity: true,
+  order: true,
+  orphans: true,
+  tabSize: true,
+  widows: true,
+  zIndex: true,
+  zoom: true,
   width: true,
   height: true,
   top: true,
   left: true,
   right: true,
   bottom: true,
-  maxWidth: true,
-  maxHeight: true,
-  minWidth: true,
-  minHeight: true,
-  margin: true,
-  marginTop: true,
-  marginRight: true,
-  marginBottom: true,
-  marginLeft: true,
-  padding: true,
-  paddingTop: true,
-  paddingRight: true,
-  paddingBottom: true,
-  paddingLeft: true,
   border: true,
-  borderTop: true,
-  borderRight: true,
-  borderBottom: true,
-  borderLeft: true,
-  borderWidth: true,
-  borderTopWidth: true,
-  borderRightWidth: true,
-  borderBottomWidth: true,
-  borderLeftWidth: true,
+
+  // SVG-related properties
+  fillOpacity: true,
+  floodOpacity: true,
+  stopOpacity: true,
+  strokeDasharray: true,
+  strokeDashoffset: true,
+  strokeMiterlimit: true,
+  strokeOpacity: true,
+  strokeWidth: true,
 };
+
+const styleKeys = {};
+const uppercasePattern = /([A-Z])/g;
+
+/**
+ * style key convert to css key
+ * 
+ * backgroundColor -> background-color 
+ * 
+ * @param {*} key 
+ * @returns 
+ */
+const convertStyleKey = (key) => {
+
+  if (styleKeys[key]) {
+    return styleKeys[key];
+  }
+
+  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+
+  styleKeys[key] = upperKey;
+
+  return upperKey;
+}
 
 function styleMap(key, value) {
   if (typeof value === "number") {
@@ -52,12 +96,16 @@ function styleMap(key, value) {
   return value;
 }
 
+function styleKeyMap(key) {
+  return convertStyleKey(key);
+}
+
 function CSS_TO_STRING(style, postfix = "") {
   var newStyle = style || {};
 
   return Object.keys(newStyle)
     .filter((key) => isNotUndefined(newStyle[key]))
-    .map((key) => `${key}: ${styleMap(key, newStyle[key])}`)
+    .map((key) => `${styleKeyMap(key)}: ${styleMap(key, newStyle[key])}`)
     .join(";" + postfix);
 }
 

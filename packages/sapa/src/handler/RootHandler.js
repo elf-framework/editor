@@ -1,9 +1,49 @@
 import BaseHandler from "./BaseHandler";
 
 /**
- * store 의 이벤트를 subscribe 하는 용도로 사용됩니다.
+ * @example 실험기능
+ * 
+ * root element 의 이벤트를 정의하는 용도로 사용된다.
+ * root 에 설정하는 이유는 글로벌 이벤트 하나만 설정하기 위함. 
+ * 
+ * messaging root 를 타기위한 설정이다. 
+ * 
+ * 여기는 정해진 영역의 이벤트를 지정한다. 
+ * 
+ * click, 
+ * dblclick,
+ * mousedown,
+ * mouseup,
+ * mousemove,
+ * 
+ * 
+ * class Ex extends UIElement {
+ *  [SUBSCRIBE("document:click")] (e) {
+ *    console.log(e);
+ *  }
+ * 
+ *  [SUBSCRIBE("document:dblclick")] (e) {
+ * 
+ *  }
+ * 
+ *  [SUBSCRIBE("document:mousedown")] (e) {
+ * 
+ *  }
+ * }
+ * <div></div>
+ * 
+ * start(function () { 
+ *  return <div></div>
+ * 
+ * }, {
+ *  events: ['click', 'dblclick', 'mousedown', 'mouseup', 'mousemove']
+ * })
+ * 
+ * 
+ * 
+ * 
  */
-export default class StoreHandler extends BaseHandler {
+export default class RootHandler extends BaseHandler {
   initialize() {
     // this.destroy();
 

@@ -178,7 +178,6 @@ export class BaseStore {
           let i = runnableFunctions.length;
           while (i--) {
             const f = runnableFunctions[i];
-
             this.runMessage(f, args);
           }
         } else {

@@ -16,6 +16,11 @@ module.exports = {
         "jsx/mark-used-vars": 1,
         "jsx/no-undef": 1,
         "no-redeclare": 0,
+        "import/resolver": {
+            "node": {
+              "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        },
         "import/order": [
             "error",
             {

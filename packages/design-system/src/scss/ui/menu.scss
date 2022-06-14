@@ -12,13 +12,19 @@
     /* menu item height */
     --elf--menu-item-height: 24px;
     /* menu item section title color */
-    --elf--menu-item-section-title-color: rgba(255, 255, 255, 0.4);
+    --elf--menu-item-section-title-color: rgba(255, 255, 255, 0.6);
     /* menu item divider color */
     --elf--menu-item-divider-color: rgba(255, 255, 255, 0.1);    
-    /* menu position */
+    /* menu direction */
     --elf--menu-direction-left: 100%;
     /* menu selected icon font size */
     --elf--menu-selected-icon-font-size: 20px;
+
+    /* menu position */
+    --elf--menu-position: absolute;
+
+    --elf--menu-left: 0px;
+    --elf--menu-top: 0px;
 
 
     background: var(--elf--menu-background-color);
@@ -32,16 +38,30 @@
     margin: 0px;
     padding:8px 0px;
     font-size: 12px;
+    position: var(--elf--menu-position);
+    display: inline-block;
+    left: var(--elf--menu-left);
+    top: var(--elf--menu-top);
 
-    &.left {
-
+    &.right {
+        left: auto;
+        right: 0px;
         li > .elf--menu {
             --elf--menu-direction-left: calc(-1 * var(--elf--menu-width));
         }
     }
 
+    &.center {
+        left: 50%;
+        transform: translateX(-50%);
+    }    
+
     &.has-state {
         --elf--menu-width: var(--elf--menu-max-width);
+    }
+
+    &.elf--menu-contextmenu {
+        --elf--menu-position: fixed;
     }
 
     li {
@@ -60,7 +80,12 @@
         position: relative;
         user-select: none;
 
-        &:hover:not(.divider),
+        &.custom {
+            height: auto;
+            min-height: var(--elf--menu-item-height);
+        }
+
+        &:hover:not(.divider):not(.custom),
         &.hover {
             background-color: var(--elf--primary-color);
 

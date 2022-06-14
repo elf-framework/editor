@@ -18,7 +18,10 @@ export class UIElement extends EventMachine {
     if (props.store) {
       this.#storeInstance = props.store;
     } else {
-      this.#storeInstance = new BaseStore();
+      // 부모에 store 가 없을 경우만 자체 생성한다.
+      if (!this.parent.$store) {
+        this.#storeInstance = new BaseStore();
+      }
     }
 
     this.created();

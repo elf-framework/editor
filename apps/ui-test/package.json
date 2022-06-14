@@ -17,7 +17,8 @@
   "license": "ISC",
   "dependecies": {
     "@elf/sapa": "*",
-    "@elf/ui": "*"
+    "@elf/ui": "*",
+    "@elf/icon": "*"
   },
   "devDependencies": {
     "vite": "^2.9.9",

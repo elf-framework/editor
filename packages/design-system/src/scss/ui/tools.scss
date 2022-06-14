@@ -1,0 +1,115 @@
+.elf--tools {
+
+    --elf--tools-background: rgba(44, 44, 44, 1);
+    --elf--tools-arrow-background: rgba(44, 44, 44, 1);
+    --elf--tools-hover-background: black;
+    --elf--tools-color: white;
+    --elf--tools-height: 48px;
+    --elf--tools-min-width: 40px;
+    --elf--tools-min-width-scale: 10px;
+
+
+    display: inline-flex;
+    flex-direction: row;
+    height: var(--elf--tools-height);
+    background-color: var(--elf--tools-background);
+    color: var(--elf--tools-color);
+
+    > .elf--tools-item {
+        display: flex;
+        min-width: var(--elf--tools-min-width);
+        background-color: var(--elf--tools-background);
+        position: relative;
+
+        &.has-items {
+            min-width: calc(var(--elf--tools-min-width) + var(--elf--tools-min-width-scale));
+        }
+
+        &.custom {
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        > .menu-area {
+            > .arrow {
+                position: absolute;
+                width: 0; 
+                height: 0; 
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                
+                border-bottom: 5px solid var(--elf--tools-arrow-background);
+                border-top: 0px;
+                left: 50%;
+                transform: translateX(-50%) translateY(0.5px);
+                top: 100%;
+                display: inline-block;
+                // background-color: var(--elf--tools-arrow-background);
+                z-index: 1;
+            }
+        }
+
+        > button {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            color: var(--elf--tools-color);
+            border: 0px;
+            pointer-events: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+
+            > .icon {
+
+                > svg {
+                    width: 20px;
+                    height: 20px;
+    
+                    path {
+                        fill: currentColor;
+                    }
+    
+                }
+            }
+
+            > .arrow {
+                pointer-events: all;
+                margin-left: 2px;
+                > svg {
+                    width: 12px;
+                    height: 12px;
+                    pointer-events: none;
+    
+                    path {
+                        fill: currentColor;
+                    }
+
+                    transition: transform 0.1s ease-in-out;
+    
+                }
+
+                &:hover,
+                &.opened {
+                    > svg {
+                        transform: translateY(2px);
+                    }
+                }
+            }
+
+        }
+
+        &:hover,
+        &.hover {
+            --elf--tools-background: var(--elf--tools-hover-background)
+        }
+            
+        &.selected {
+            --elf--tools-background: var(--elf--primary-color);
+        }
+    }
+}

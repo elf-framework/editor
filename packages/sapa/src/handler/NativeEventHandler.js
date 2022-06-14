@@ -111,6 +111,14 @@ export default class NativeEventHandler extends BaseHandler {
 
   destroy() {
     this.#eventList = [];
+
+    // 해당 이벤트 리스트를 해제합니다.
+    this.#eventList.forEach((it) => {
+      if (it.applied) {
+        it.$dom.off(it.eventName, it.eventHandler);
+      }
+    });
+
     this.#eventMap = new window.WeakMap();
   }
 }

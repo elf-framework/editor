@@ -1,7 +1,7 @@
 .elf--button {
     --elf--button-border-color: rgba(0, 0, 0, 0.1);
     --elf--button-padding: 7px 10px;
-    --elf--button-font-size: var(--elf--font-size, 11px);
+    --elf--button-font-size: var(--elf--font-size, 14px);
     --elf--button-background: transparent;
     --elf--button-color: var(--elf--border-color);
     --elf--button-border-radius: 4px;
@@ -16,6 +16,24 @@
     color: var(--elf--button-color);
     border: 1px solid var(--elf--button-border-color);
     cursor: pointer;
+
+    &.elf--button-lg {
+        --elf--button-font-size: 16px;
+        --elf--button-padding: 12px 20px;
+    }
+
+    &.elf--button-sm {
+        --elf--button-font-size: 12px;        
+        --elf--button-padding: 3px 5px;
+    }
+
+    &.elf--button-shape-round {
+        --elf--button-border-radius: 8px;
+    }
+
+    &.elf--button-shape-circle {
+        --elf--button-border-radius: 50%;
+    }
 
 
     &[disabled] {

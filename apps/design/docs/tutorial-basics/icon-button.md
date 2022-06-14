@@ -13,21 +13,21 @@ sidebar_position: 2
         columnGap: 20,
         marginBottom: 20
     }}>
-    <button class="elf--icon-button">A</button>
-    <button class="elf--icon-button hover">A</button>
-    <button class="elf--icon-button focus">A</button>
-    <button class="elf--icon-button disabled">A</button>
-    <button class="elf--icon-button active">A</button>
-    <button class="elf--icon-button active focus">A</button>
+    <button className="elf--icon-button">A</button>
+    <button className="elf--icon-button hover">A</button>
+    <button className="elf--icon-button focus">A</button>
+    <button className="elf--icon-button disabled">A</button>
+    <button className="elf--icon-button active">A</button>
+    <button className="elf--icon-button active focus">A</button>
 </div>
 
 &nbsp;
 
 ```html
-<button class="elf--icon-button">A</button>
-<button class="elf--icon-button hover">A</button>
-<button class="elf--icon-button focus">A</button>
-<button class="elf--icon-button disabled">A</button>
-<button class="elf--icon-button active">A</button>
-<button class="elf--icon-button active focus">A</button>
+<button className="elf--icon-button">A</button>
+<button className="elf--icon-button hover">A</button>
+<button className="elf--icon-button focus">A</button>
+<button className="elf--icon-button disabled">A</button>
+<button className="elf--icon-button active">A</button>
+<button className="elf--icon-button active focus">A</button>
 ```

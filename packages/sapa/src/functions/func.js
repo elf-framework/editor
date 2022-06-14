@@ -134,16 +134,19 @@ export function isEqual(obj1, obj2) {
   }
 
   return Object.keys(obj1).every((key) => {
-    if (isArray(obj1[key]) && isArray(obj2[key])) {
-      const s = new Set([...obj1[key], ...obj2[key]]);
-      return s.size === obj1[key].length && s.size === obj2[key].length;
-    } else if (isFunction(obj1[key]) && isFunction(obj2[key])) {
-      return true;
-    } else if (isObject(obj1[key]) && isObject(obj2[key])) {
-      return isEqual(obj1[key], obj2[key]);
+    const obj1Value = obj1[key];
+    const obj2Value = obj2[key];
+
+    if (isArray(obj1Value) && isArray(obj2Value)) {
+      const s = new Set([...obj1Value, ...obj2Value]);
+      return s.size === obj1Value.length && s.size === obj2Value.length;
+    } else if (isFunction(obj1Value) && isFunction(obj2Value)) {
+      // return true;
+    } else if (isObject(obj1Value) && isObject(obj2Value)) {
+      return isEqual(obj1Value, obj2Value);
     }
 
-    return obj1[key] === obj2[key];
+    return obj1Value === obj2Value;
   });
 }
 

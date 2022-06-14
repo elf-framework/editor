@@ -1,0 +1,37 @@
+.elf--toolbar {
+
+    --elf--toolbar-background: rgba(44, 44, 44, 1);
+    --elf--toolbar-color: white;
+    --elf--toolbar-height: 48px;
+    --elf--toolbar-align: space-between;
+
+    display: flex;
+    flex-direction: row;
+    height: var(--elf--toolbar-height);
+    background-color: var(--elf--toolbar-background);
+    color: var(--elf--toolbar-color);
+    justify-content: var(--elf--toolbar-align);
+
+    &.start {
+        --elf--toolbar-align: flex-start;
+    }
+
+    &.end {
+        --elf--toolbar-align: flex-end;
+    }
+
+    &.center {
+        --elf--toolbar-align: center;
+    }
+
+    &.space-around {
+        --elf--toolbar-align: space-around;
+    }
+
+    &.space-evenly {
+        --elf--toolbar-align: space-evenly;
+    }
+
+
+
+}

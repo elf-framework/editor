@@ -1,34 +1,68 @@
-import {
-  BIND,
-  CLICK,
-  UIElement,
-  classnames,
-  IF,
-  isFunction,
-  LOAD,
-} from "@elf/sapa";
+import { CLICK, UIElement, classnames, isFunction } from "@elf/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
-import { Button } from "../button";
+import { Button } from "../button/index";
 
 export class Dialog extends UIElement {
   initState() {
-    const { visible = false, style = {} } = this.props;
+    const { visible = false, style = {}, center } = this.props;
 
     return {
       visible,
       style,
+      center,
     };
   }
 
+  close() {
+    const { onClose } = this.props;
+
+    if (isFunction(onClose)) {
+      onClose(this);
+    }
+  }
+
+  ok() {
+    const { onOk } = this.props;
+
+    if (isFunction(onOk)) {
+      onOk(this);
+    }
+  }
+
+  cancel() {
+    const { onCancel } = this.props;
+
+    if (isFunction(onCancel)) {
+      onCancel(this);
+    }
+  }
+
+  makeDefaultTools() {
+    const { footer, cancelText = "Cancel", okText = "OK" } = this.props;
+
+    if (!footer) {
+      return [
+        <Button onClick={() => this.cancel()}>{cancelText}</Button>,
+        <Button type="primary" onClick={() => this.ok()}>
+          {okText}
+        </Button>,
+      ];
+    }
+
+    return "";
+  }
+
   template() {
-    const { style = {}, visible } = this.state;
+    const { style = {}, visible, center } = this.state;
     const styleObject = {
       class: classnames("elf--dialog", {
         visible,
+        center,
       }),
       style: {
         ...propertyMap(style, {
+          position: "--elf--dialog-position",
           backgroundColor: "--elf--dialog-background",
           color: "--elf--dialog-color",
           fontSize: "--elf--dialog-font-size",
@@ -55,10 +89,9 @@ export class Dialog extends UIElement {
           </div>
         </div>
         <div class="elf--dialog-content">
-          <div class="elf--dialog-text">Hello, I'm a dialog</div>
+          <div class="elf--dialog-text">{this.props.content || ""}</div>
           <div class="elf--dialog-content-tools">
-            <button class="elf--button">Action</button>
-            <button class="elf--button">Dismiss</button>
+            {this.props.footer ? this.props.footer : this.makeDefaultTools()}
           </div>
         </div>
       </div>
@@ -66,10 +99,6 @@ export class Dialog extends UIElement {
   }
 
   [CLICK("$close")]() {
-    const { onClose } = this.props;
-
-    if (isFunction(onClose)) {
-      onClose(this);
-    }
+    this.close();
   }
 }

@@ -154,15 +154,17 @@ function isEqual(obj1, obj2) {
     return false;
   }
   return Object.keys(obj1).every((key) => {
-    if (isArray(obj1[key]) && isArray(obj2[key])) {
-      const s = /* @__PURE__ */ new Set([...obj1[key], ...obj2[key]]);
-      return s.size === obj1[key].length && s.size === obj2[key].length;
-    } else if (isFunction(obj1[key]) && isFunction(obj2[key])) {
-      return true;
-    } else if (isObject(obj1[key]) && isObject(obj2[key])) {
-      return isEqual(obj1[key], obj2[key]);
+    const obj1Value = obj1[key];
+    const obj2Value = obj2[key];
+    if (isArray(obj1Value) && isArray(obj2Value)) {
+      const s = /* @__PURE__ */ new Set([...obj1Value, ...obj2Value]);
+      return s.size === obj1Value.length && s.size === obj2Value.length;
+    } else if (isFunction(obj1Value) && isFunction(obj2Value))
+      ;
+    else if (isObject(obj1Value) && isObject(obj2Value)) {
+      return isEqual(obj1Value, obj2Value);
     }
-    return obj1[key] === obj2[key];
+    return obj1Value === obj2Value;
   });
 }
 function isArray(value) {
@@ -256,8 +258,13 @@ const updateProp = (node, name, newValue, oldValue) => {
 };
 const updateProps = (node, newProps = {}, oldProps = {}) => {
   const keyList = [];
-  keyList.push.apply(keyList, Object.keys(newProps));
-  keyList.push.apply(keyList, Object.keys(oldProps));
+  const newPropsKeys = Object.keys(newProps);
+  const oldPropsKeys = Object.keys(oldProps);
+  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+    return;
+  }
+  keyList.push.apply(keyList, newPropsKeys);
+  keyList.push.apply(keyList, oldPropsKeys);
   const props = new Set(keyList);
   props.forEach((key) => {
     updateProp(node, key, newProps[key], oldProps[key]);
@@ -1721,6 +1728,7 @@ const POINTERSTART = (...args) => {
 const POINTEROVER = CUSTOM("pointerover");
 const POINTERENTER = CUSTOM("pointerenter");
 const POINTEROUT = CUSTOM("pointerout");
+const POINTERLEAVE = CUSTOM("pointerleave");
 const POINTERMOVE = CUSTOM("pointermove");
 const POINTEREND = CUSTOM("pointerup");
 const CHANGEINPUT = CUSTOM("change", "input");
@@ -2398,6 +2406,11 @@ class NativeEventHandler extends BaseHandler {
   }
   destroy() {
     __privateSet(this, _eventList, []);
+    __privateGet(this, _eventList).forEach((it) => {
+      if (it.applied) {
+        it.$dom.off(it.eventName, it.eventHandler);
+      }
+    });
     __privateSet(this, _eventMap, new window.WeakMap());
   }
 }
@@ -2505,7 +2518,6 @@ class ObserverHandler extends BaseHandler {
 class StoreHandler extends BaseHandler {
   initialize() {
     var _a, _b;
-    this.destroy();
     if (!this._callbacks) {
       this._callbacks = this.context.filterMethodes("subscribe");
     }
@@ -2517,6 +2529,7 @@ class StoreHandler extends BaseHandler {
     if (this.context.notEventRedefine)
       ;
     else {
+      console.log("destroy store", this.context, this.context.props.ref);
       this.context.$store.offAll(this.context);
     }
   }
@@ -3183,7 +3196,9 @@ const _UIElement = class extends EventMachine {
     if (props.store) {
       __privateSet(this, _storeInstance, props.store);
     } else {
-      __privateSet(this, _storeInstance, new BaseStore());
+      if (!this.parent.$store) {
+        __privateSet(this, _storeInstance, new BaseStore());
+      }
     }
     this.created();
     this.initialize();
@@ -3269,36 +3284,64 @@ async function renderToString(ElementClass, opt) {
   return instance.html;
 }
 const NumberStyleKeys = {
+  animationIterationCount: true,
+  borderImageOutset: true,
+  borderImageSlice: true,
+  borderImageWidth: true,
+  boxFlex: true,
+  boxFlexGroup: true,
+  boxOrdinalGroup: true,
+  columnCount: true,
+  columns: true,
+  flex: true,
+  flexGrow: true,
+  flexPositive: true,
+  flexShrink: true,
+  flexNegative: true,
+  flexOrder: true,
+  gridRow: true,
+  gridRowEnd: true,
+  gridRowSpan: true,
+  gridRowStart: true,
+  gridColumn: true,
+  gridColumnEnd: true,
+  gridColumnSpan: true,
+  gridColumnStart: true,
+  fontWeight: true,
+  lineClamp: true,
+  lineHeight: true,
+  opacity: true,
+  order: true,
+  orphans: true,
+  tabSize: true,
+  widows: true,
+  zIndex: true,
+  zoom: true,
   width: true,
   height: true,
   top: true,
   left: true,
   right: true,
   bottom: true,
-  maxWidth: true,
-  maxHeight: true,
-  minWidth: true,
-  minHeight: true,
-  margin: true,
-  marginTop: true,
-  marginRight: true,
-  marginBottom: true,
-  marginLeft: true,
-  padding: true,
-  paddingTop: true,
-  paddingRight: true,
-  paddingBottom: true,
-  paddingLeft: true,
   border: true,
-  borderTop: true,
-  borderRight: true,
-  borderBottom: true,
-  borderLeft: true,
-  borderWidth: true,
-  borderTopWidth: true,
-  borderRightWidth: true,
-  borderBottomWidth: true,
-  borderLeftWidth: true
+  fillOpacity: true,
+  floodOpacity: true,
+  stopOpacity: true,
+  strokeDasharray: true,
+  strokeDashoffset: true,
+  strokeMiterlimit: true,
+  strokeOpacity: true,
+  strokeWidth: true
+};
+const styleKeys = {};
+const uppercasePattern = /([A-Z])/g;
+const convertStyleKey = (key) => {
+  if (styleKeys[key]) {
+    return styleKeys[key];
+  }
+  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+  styleKeys[key] = upperKey;
+  return upperKey;
 };
 function styleMap(key, value) {
   if (typeof value === "number") {
@@ -3308,9 +3351,12 @@ function styleMap(key, value) {
   }
   return value;
 }
+function styleKeyMap(key) {
+  return convertStyleKey(key);
+}
 function CSS_TO_STRING(style, postfix = "") {
   var newStyle = style || {};
-  return Object.keys(newStyle).filter((key) => isNotUndefined(newStyle[key])).map((key) => `${key}: ${styleMap(key, newStyle[key])}`).join(";" + postfix);
+  return Object.keys(newStyle).filter((key) => isNotUndefined(newStyle[key])).map((key) => `${styleKeyMap(key)}: ${styleMap(key, newStyle[key])}`).join(";" + postfix);
 }
 function OBJECT_TO_PROPERTY(obj) {
   const target = obj || {};
@@ -3389,4 +3435,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, WHEEL, classnames, clone, collectProps, combineKeyArray, createComponent, createComponentList, createElement, createElementJsx, createHandlerInstance, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, WHEEL, classnames, clone, collectProps, combineKeyArray, createComponent, createComponentList, createElement, createElementJsx, createHandlerInstance, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };

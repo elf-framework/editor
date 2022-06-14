@@ -261,6 +261,7 @@ export class EventMachine {
   _reload(props) {
     // component 를 reload 할 때
     // 이전 props 를 비교해서 변경된 것이 없으면 리턴하지 않는다.
+
     if (this.changedProps(props)) {
       this.#setProps(props);
 
@@ -332,7 +333,6 @@ export class EventMachine {
             // timestamp 저장
             instance.timestamp = this.__timestamp;
             instance._reload(newPropertyInfo.props);
-
             // dom 을 바꾸지 않는다. 이미 생성된 instance 이므로
             return false;
           }

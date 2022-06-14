@@ -180,6 +180,7 @@ export const POINTERSTART = (...args) => {
 export const POINTEROVER = CUSTOM("pointerover");
 export const POINTERENTER = CUSTOM("pointerenter");
 export const POINTEROUT = CUSTOM("pointerout");
+export const POINTERLEAVE = CUSTOM("pointerleave");
 export const POINTERMOVE = CUSTOM("pointermove");
 export const POINTEREND = CUSTOM("pointerup");
 export const CHANGEINPUT = CUSTOM("change", "input");

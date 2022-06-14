@@ -111,6 +111,7 @@ declare module "@elf/sapa" {
   export const POINTEROVER: CallbackFunction;
   export const POINTERENTER: CallbackFunction;
   export const POINTEROUT: CallbackFunction;
+  export const POINTERLEAVE: CallbackFunction;
   export const POINTERMOVE: CallbackFunction;
   export const POINTEREND: CallbackFunction;
   export const CHANGEINPUT: CallbackFunction;

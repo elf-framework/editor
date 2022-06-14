@@ -44,7 +44,9 @@ start(function () {
         <Dialog
           ref="$dialog"
           visible={this.state.visible}
+          center={true}
           style={{
+            position: "absolute",
             width: 600,
           }}
           tools={[
@@ -68,10 +70,21 @@ start(function () {
               Dismiss
             </Button>,
           ]}
+          footer={
+            <Button type="primary" onClick={() => console.log("footer button")}>
+              단계
+            </Button>
+          }
           onClose={() => {
             this.setState({
               visible: false,
             });
+          }}
+          onCancel={(dialog) => {
+            dialog.close();
+          }}
+          onOk={() => {
+            console.log("onOk");
           }}
         />
       ) : undefined}
