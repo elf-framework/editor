@@ -3,13 +3,14 @@
 @import "./ui/variables.scss";
 @import "./ui/reset.scss";
 @import "./ui/keyframe.scss";
-@import "./ui/button.scss";
-@import "./ui/icon-button.scss";
-@import "./ui/menu.scss";
-@import "./ui/toolbar.scss";
-@import "./ui/tools.scss";
-@import "./ui/notification.scss";
+@import "./ui/button.scss";         // button
+@import "./ui/icon-button.scss";    // icon-button 
+@import "./ui/menu.scss";           // menu
+@import "./ui/toolbar.scss";        // toolbar
+@import "./ui/tools.scss";          // tools
+@import "./ui/notification.scss";   // notification
 @import "./ui/visual-bell.scss";
 @import "./ui/dialog.scss";
 @import "./ui/modal.scss";
 @import "./ui/panel.scss";
+@import "./ui/tooltip.scss";

@@ -47,7 +47,7 @@ start(function () {
           center={true}
           style={{
             position: "absolute",
-            width: 600,
+            width: 400,
           }}
           tools={[
             <Button
@@ -86,7 +86,12 @@ start(function () {
           onOk={() => {
             console.log("onOk");
           }}
-        />
+        >
+          <div>
+          The following typefaces are not available. Please either install these on your computer or in Figma. Alternatively you can replace them with other fonts.
+
+          </div>
+        </Dialog>
       ) : undefined}
     </div>
   );

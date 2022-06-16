@@ -88,6 +88,7 @@ start(function () {
             title: "Hello",
             shortcut: "⌃⌥⇧⌘A",
             selectable: true,
+            disabled: true,
             onClick: (e, item) => {
               console.log(item.selected);
             },
@@ -149,7 +150,6 @@ start(function () {
           {
             type: "item",
             title: "Menu Item",
-            icon: "&gt;",
             items: [
               {
                 type: "item",

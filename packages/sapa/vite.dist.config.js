@@ -1,6 +1,7 @@
 import copy from "rollup-plugin-copy";
 import { defineConfig } from "vite";
 
+
 import path from "path";
 
 // https://vitejs.dev/config/

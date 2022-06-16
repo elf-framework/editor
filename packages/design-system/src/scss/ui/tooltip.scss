@@ -1,0 +1,190 @@
+.elf--tooltip {
+    --elf--tooltip-background: #222222;
+    --elf--tooltip-hover-color: var(--color-neutral-10);
+    --elf--tooltip-color: var(--color-neutral-0);
+    --elf--tooltip-border-color: rgba(0, 0, 0, 0.1);
+    --elf--tooltip-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--tooltip-tools-border-color: rgba(255, 255, 255, 0.19);
+    --elf--tooltip-border-radius: 2px;    
+    --elf--tooltip-position: fixed;
+    --elf--tooltip-hgap: 10px;
+    --elf--tooltip-vgap: 10px;
+    --elf--tooltip-arrow-background: var(--elf--tooltip-background);
+    --elf--tooltip-delay: 0.5s;
+
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+
+    > .elf--tooltip-content {
+
+    }
+
+    > .elf--tooltip-message {
+        display: inline-block;
+        position: absolute;
+        border-radius: var(--elf--tooltip-border-radius);
+        background-color: var(--elf--tooltip-background);
+        color: var(--elf--tooltip-color);
+        box-shadow: var(--elf--tooltip-box-shadow);
+        padding: 8px 14px;
+        font-size: 13px;
+        box-sizing: border-box;
+        animation: fadein var(--elf--tooltip-delay) ease-in-out;
+
+        > .arrow {
+            position: absolute;
+            width: 0; 
+            height: 0; 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            
+            border-bottom: 5px solid var(--elf--tooltip-arrow-background);
+            border-top: 0px;
+            left: 50%;
+            transform: translateX(-50%) translateY(0.5px);
+            top: 100%;
+            display: inline-block;
+            // background-color: var(--elf--tools-arrow-background);
+            z-index: 1;
+        }
+
+    }
+
+    &.elf--tooltip-position-top-left {
+        > .elf--tooltip-message {
+            right: 100%;
+            bottom: calc(100% + var(--elf--tooltip-hgap));
+            transform: translateX(20px);
+    
+            > .arrow {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                
+                border-top: 5px solid var(--elf--tooltip-arrow-background);
+                border-bottom: 0px;
+                right: 5px;
+                left: auto;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    &.elf--tooltip-position-top-right {
+        > .elf--tooltip-message {
+            left: 100%;
+            bottom: calc(100% + var(--elf--tooltip-hgap));
+            transform: translateX(-20px);
+    
+            > .arrow {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                
+                border-top: 5px solid var(--elf--tooltip-arrow-background);
+                border-bottom: 0px;
+                left: 10px;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    &.elf--tooltip-position-bottom-left {
+        > .elf--tooltip-message {
+            top: calc(100% + var(--elf--tooltip-hgap));
+            right: 100%;
+            transform: translateX(25px);
+
+            > .arrow {
+                left: auto;                
+                right: 5px;
+                transform: translateX(-50%);
+                top: calc(0% - 5px);
+            }                        
+        }
+    }
+
+    &.elf--tooltip-position-bottom-right {
+        > .elf--tooltip-message {
+            top: calc(100% + var(--elf--tooltip-hgap));
+            left: 100%;
+            transform: translateX(-20px);
+
+            > .arrow {
+                left: 10px;
+                right: auto;
+                transform: translateX(-50%);
+                top: calc(0% - 5px);
+            }                        
+        }
+    }
+
+    &.elf--tooltip-position-top {
+        > .elf--tooltip-message {
+            bottom: calc(100% + var(--elf--tooltip-hgap));
+            left: 50%;
+            transform: translateX(-50%);
+            > .arrow {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                
+                border-top: 5px solid var(--elf--tooltip-arrow-background);
+                border-bottom: 0px;
+                transform: translateX(-50%) translateY(0px);
+            }
+        }
+    }
+
+    &.elf--tooltip-position-bottom {
+        > .elf--tooltip-message {
+            top: calc(100% + var(--elf--tooltip-hgap));
+            left: 50%;
+            transform: translateX(-50%);
+
+            > .arrow {
+                transform: translateX(-50%);
+                top: calc(0% - 5px);
+            }            
+        }
+    }
+
+    &.elf--tooltip-position-left {
+        > .elf--tooltip-message {
+            top: 50%;
+            right: calc(100%);
+            transform: translateY(-50%) translateX(calc(-1 * var(--elf--tooltip-vgap)));
+
+            > .arrow {
+                left: calc(100% - var(--elf--tooltip-vgap));
+                top: 50%;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                
+                border-left: 5px solid var(--elf--tooltip-arrow-background);
+                border-right: 0px;
+                transform: translateX(var(--elf--tooltip-vgap)) translateY(-50%);
+            }            
+
+        }
+    }
+
+    &.elf--tooltip-position-right {
+        > .elf--tooltip-message {
+            top: 50%;
+            left: calc(100%);
+            transform: translateY(-50%) translateX(var(--elf--tooltip-vgap));
+
+            > .arrow {
+                left: calc(0px - var(--elf--tooltip-vgap)/2);
+                top: 50%;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                
+                border-right: 5px solid var(--elf--tooltip-arrow-background);
+                border-left: 0px;
+                transform: translateX(0%) translateY(-50%);
+            }            
+        }
+    }   
+
+}

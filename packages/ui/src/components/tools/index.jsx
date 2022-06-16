@@ -96,7 +96,7 @@ export class ToolsCustomItem extends ToolsItem {
 
 export class ToolsMenuItem extends ToolsItem {
   initState() {
-    const { title = "", icon, selected, opened, items, direction } = this.props;
+    const { title = "", icon, selected, disabled, opened, items, direction, menuStyle } = this.props;
 
     return {
       title,
@@ -105,13 +105,16 @@ export class ToolsMenuItem extends ToolsItem {
       opened,
       items,
       direction,
+      disabled,
+      menuStyle,
+      rootClose: this.close.bind(this)
     };
   }
 
   template() {
-    const { title = "", icon, items = [], opened = false, direction = "left" } = this.state;
+    const { title = "", icon, disabled, items = [], opened = false, direction = "left", rect, menuStyle } = this.state;
 
-    const hasItems = items.length > 0;
+    const hasItems = items.length > 0;    
 
     return (
       <div
@@ -119,6 +122,7 @@ export class ToolsMenuItem extends ToolsItem {
           selected: this.selected ? true : undefined,
           "has-items": hasItems,
         })}
+        disabled={disabled}
       >
         <button type="button">
           {icon ? (
@@ -134,14 +138,16 @@ export class ToolsMenuItem extends ToolsItem {
             </span>
           ) : undefined}
         </button>
-        {opened ? (
+        {(opened && !disabled) ? (
           <div class="menu-area">
             <div class="arrow"></div>
             <Menu
               ref="$menu"
               items={items}
               direction={direction}
+              rootClose={this.state.rootClose}
               style={{
+                ...(menuStyle || {}),
                 top: "calc(100% + 5px)",
               }}
             />
@@ -158,7 +164,9 @@ export class ToolsMenuItem extends ToolsItem {
   }
 
   open () {
+
     this.setState({
+      rect: this.$el.rect(),
       opened: true,
     });
   }
@@ -170,6 +178,13 @@ export class ToolsMenuItem extends ToolsItem {
   }
 
   toggle () {
+
+    if (!this.state.opened) {
+      this.setState({
+        rect: this.$el.rect(),
+      }, false)
+    }
+
     this.setState({
       opened: !this.state.opened,
     });

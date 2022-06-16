@@ -1539,8 +1539,13 @@ const updateProp = (node, name, newValue, oldValue) => {
 };
 const updateProps = (node, newProps = {}, oldProps = {}) => {
   const keyList = [];
-  keyList.push.apply(keyList, Object.keys(newProps));
-  keyList.push.apply(keyList, Object.keys(oldProps));
+  const newPropsKeys = Object.keys(newProps);
+  const oldPropsKeys = Object.keys(oldProps);
+  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+    return;
+  }
+  keyList.push.apply(keyList, newPropsKeys);
+  keyList.push.apply(keyList, oldPropsKeys);
   const props = new Set(keyList);
   props.forEach((key) => {
     updateProp(node, key, newProps[key], oldProps[key]);
@@ -1676,6 +1681,7 @@ function getVariable(idOrValue) {
 }
 function registHandler(handlers) {
   Object.keys(handlers).forEach((key) => {
+    handlers[key];
   });
 }
 class Dom {
@@ -2415,72 +2421,8 @@ class Dom {
     this.el.blur();
     return this;
   }
-  context(contextType = "2d") {
-    if (!this._initContext) {
-      this._initContext = this.el.getContext(contextType);
-    }
-    return this._initContext;
-  }
-  resize({ width: width2, height: height2 }) {
-    this._initContext = null;
-    var ctx = this.context();
-    var scale = window.devicePixelRatio || 1;
-    this.px("width", +width2);
-    this.px("height", +height2);
-    this.el.width = width2 * scale;
-    this.el.height = height2 * scale;
-    ctx.scale(scale, scale);
-  }
   toDataURL(type = "image/png", quality = 1) {
     return this.el.toDataURL(type, quality);
-  }
-  clear() {
-    this.context().clearRect(0, 0, this.el.width, this.el.height);
-  }
-  update(callback) {
-    this.clear();
-    callback.call(this, this);
-  }
-  drawImage(img, dx = 0, dy = 0) {
-    var ctx = this.context();
-    var scale = window.devicePixelRatio || 1;
-    ctx.drawImage(img, dx, dy, img.width, img.height, 0, 0, this.el.width / scale, this.el.height / scale);
-  }
-  drawOption(option = {}) {
-    var ctx = this.context();
-    Object.assign(ctx, option);
-  }
-  drawLine(x1, y1, x2, y2) {
-    var ctx = this.context();
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
-  }
-  drawPath(...path) {
-    var ctx = this.context();
-    ctx.beginPath();
-    path.forEach((p, index) => {
-      if (index == 0) {
-        ctx.moveTo(p[0], p[1]);
-      } else {
-        ctx.lineTo(p[0], p[1]);
-      }
-    });
-    ctx.stroke();
-    ctx.fill();
-    ctx.closePath();
-  }
-  drawCircle(cx, cy, r) {
-    var ctx = this.context();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill();
-  }
-  drawText(x, y, text) {
-    this.context().fillText(text, x, y);
   }
   fullscreen() {
     var element = this.el;
@@ -2695,6 +2637,7 @@ DOM_EVENT_MAKE("submit");
 CUSTOM("pointerover");
 CUSTOM("pointerenter");
 CUSTOM("pointerout");
+CUSTOM("pointerleave");
 CUSTOM("pointermove");
 CUSTOM("pointerup");
 CUSTOM("change", "input");
@@ -3347,6 +3290,11 @@ class NativeEventHandler extends BaseHandler {
   }
   destroy() {
     __privateSet(this, _eventList, []);
+    __privateGet(this, _eventList).forEach((it) => {
+      if (it.applied) {
+        it.$dom.off(it.eventName, it.eventHandler);
+      }
+    });
     __privateSet(this, _eventMap, new window.WeakMap());
   }
 }
@@ -3355,7 +3303,6 @@ _eventMap = /* @__PURE__ */ new WeakMap();
 class ObserverHandler extends BaseHandler {
   initialize() {
     var _a, _b;
-    this.destroy();
     if (this._observers && this.context.notEventRedefine) {
       return;
     }
@@ -3375,7 +3322,7 @@ class ObserverHandler extends BaseHandler {
   }
   removeEventAll() {
     this.getBindings().forEach((observer) => {
-      this.removeDomEvent(observer);
+      this.disconnectObserver(observer);
     });
     this.initBindings();
   }
@@ -3454,7 +3401,6 @@ class ObserverHandler extends BaseHandler {
 class StoreHandler extends BaseHandler {
   initialize() {
     var _a, _b;
-    this.destroy();
     if (!this._callbacks) {
       this._callbacks = this.context.filterMethodes("subscribe");
     }
@@ -3466,6 +3412,7 @@ class StoreHandler extends BaseHandler {
     if (this.context.notEventRedefine)
       ;
     else {
+      console.log("destroy store", this.context, this.context.props.ref);
       this.context.$store.offAll(this.context);
     }
   }

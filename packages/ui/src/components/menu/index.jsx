@@ -7,6 +7,8 @@ import {
   PREVENT,
   STOP,
   isString,
+  OBSERVER,
+  PARAMS,
 } from "@elf/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
@@ -20,21 +22,23 @@ const MenuItemType = {
   CUSTOM: "custom",
 };
 
-function makeMenuItem(items = []) {
+function makeMenuItem(items = [], rootClose) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
 
     if (isString(it) && it === "-") {
-      return <DividerMenuItem ref={ref} />;
+      return <DividerMenuItem ref={ref} rootClose={rootClose} />;
+    } else if (isFunction(it)) {
+      return <CustomMenuItem ref={`custom${index}`} render={it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.CUSTOM) {
-      return <CustomMenuItem ref={ref} {...it} />;
+      return <CustomMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.GROUP) {
-      return <GroupMenuItem ref={ref} {...it} />;
+      return <GroupMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.DIVIDER) {
-      return <DividerMenuItem ref={ref} {...it} />;
+      return <DividerMenuItem ref={ref} {...it} rootClose={rootClose} />;
     }
 
-    return <MenuItem ref={ref} {...it} />;
+    return <MenuItem ref={ref} {...it} rootClose={rootClose} />;
   });
 }
 
@@ -43,8 +47,8 @@ function DividerMenuItem({ dashed = false }) {
   return <li class="divider" dashed={dashed} />;
 }
 
-function CustomMenuItem({ render }) {
-  return <li class="custom">{render?.(this)}</li>;
+function CustomMenuItem({ render, rootClose }) {
+  return <li class="custom">{render?.({rootClose})}</li>;
 }
 
 function GroupMenuItem({ title = "" }) {
@@ -59,9 +63,12 @@ class MenuItem extends UIElement {
       shortcut,
       icon,
       items = [],
+      disabled = false,
       selectable,
       selected,
       selectedIcon = "✓",
+      closable = true,
+      rootClose,
     } = this.props;
 
     return {
@@ -73,6 +80,9 @@ class MenuItem extends UIElement {
       selectable,
       selected,
       selectedIcon,
+      disabled,
+      closable,
+      rootClose,
     };
   }
 
@@ -80,19 +90,24 @@ class MenuItem extends UIElement {
     const {
       title = "",
       shortcut,
-      icon,
+      icon = "▶",
       items = [],
       hover,
       selected,
       selectable,
       selectedIcon,
+      disabled,
+      rootClose,
     } = this.state;
+
+    const hasItems = items.length > 0;
 
     return (
       <li
         class={classnames({
           hover,
         })}
+        disabled={disabled ? true : undefined}
       >
         {selectable ? (
           <span class="selected-icon">
@@ -101,20 +116,25 @@ class MenuItem extends UIElement {
         ) : null}
         {title ? <div class="menu-title">{title}</div> : undefined}
         {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
-        {icon ? <div class="icon">{icon}</div> : undefined}
+        {icon && hasItems ? <div class="icon">{icon}</div> : undefined}
 
-        {items.length > 0 ? <Menu items={items} /> : undefined}
+        {items.length > 0 ? <Menu items={items} rootClose={rootClose} /> : undefined}
       </li>
     );
   }
 
   checkClickable() {
+
+    if (this.state.disabled) {
+      return false;
+    }
+
     const { type = MenuItemType.ITEM, items = [] } = this.props;
     return type === MenuItemType.ITEM && items.length === 0;
   }
 
   [CLICK("$el") + IF("checkClickable") + PREVENT + STOP](e) {
-    const { selectable = false, onClick } = this.props;
+    const { selectable = false, onClick, closable = true } = this.props;
 
     if (selectable) {
       this.setSelected(!this.selected);
@@ -122,6 +142,10 @@ class MenuItem extends UIElement {
 
     if (isFunction(onClick)) {
       onClick(e, this);
+    }
+
+    if (closable) {
+      this.props.rootClose?.();
     }
   }
 
@@ -138,19 +162,24 @@ class MenuItem extends UIElement {
 
 export class Menu extends UIElement {
 
+  initState() {
+    return {
+      intersectionLeft: 0,
+    }
+  }
+
   template() {
-    const { style = {}, type = "menu", x = 0, y = 0, direction = "left" } = this.props;
+    let { style = {}, type = "menu", x = 0, y = 0, direction = "left", items = [], rootClose } = this.props;
 
     let itemStyle = { ...style };
-    if (x !== 0) itemStyle = { ...itemStyle, left: x + "px" };
-    if (y !== 0) itemStyle = { ...itemStyle, top: y + "px" };
+    if (x !== 0) itemStyle = { ...itemStyle, left: x, };
+    if (y !== 0) itemStyle = { ...itemStyle, top: y };
+
 
     const styleObject = {
+      'data-direction': direction,
       class: classnames("elf--menu", {
         "elf--menu-contextmenu": type === "contextmenu",
-        "left": direction === "left",
-        "center": direction === "center",
-        "right": direction === "right",
       }),
       style: {
         ...propertyMap(itemStyle, {
@@ -178,8 +207,33 @@ export class Menu extends UIElement {
 
     return (
       <menu {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {makeMenuItem(this.props.items || [])}
+        {makeMenuItem(items, rootClose)}
       </menu>
     );
+  }
+
+  [OBSERVER("intersection") + PARAMS({
+    root: document.body
+  })](intersects = []) {
+    const item = intersects.find(it => it.isIntersecting && it.intersectionRatio < 1);
+
+    if (item) {
+
+      const { left: bLeft, right: bRight } = item.boundingClientRect;
+      const { left: iLeft, right: iRight } = item.intersectionRect;
+
+
+      let direction = "left";
+
+      if (iRight != bRight && iLeft != bLeft) {
+        direction = "center";
+      } else if (iRight != bRight) {
+        direction = "right";
+      }
+
+      this.$el.attr("data-direction", direction);
+
+    }
+
   }
 }

@@ -53,7 +53,7 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _eventList, _eventMap, _state, _prevState, _localTimestamp, _loadMethods, _timestamp, _cachedMethodList, _props, _propsKeys, _isServer, _propsKeyList, _functionCache, _refreshTimestamp, refreshTimestamp_fn, _setProps, setProps_fn, _getProp, getProp_fn, _storeInstance;
+var _eventList, _eventMap, _state, _prevState, _localTimestamp, _loadMethods, _timestamp, _cachedMethodList, _props, _propsKeys, _isServer, _propsKeyList, _functionCache, _afterRenderCount, _refreshTimestamp, refreshTimestamp_fn, _setProps, setProps_fn, _getProp, getProp_fn, _storeInstance;
 function collectProps(root, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -147,13 +147,16 @@ function isString(value) {
 function isNotString(value) {
   return !isString(value);
 }
-function isEqual(obj1, obj2) {
+function isEqual(obj1, obj2, count = 0) {
+  if (count > 5) {
+    throw new Error("isEqual \uC744 \uC624\uB798 \uC2E4\uD589\uD558\uC600\uC2B5\uB2C8\uB2E4.");
+  }
   const obj1Keys = Object.keys(obj1);
   const obj2Keys = Object.keys(obj2);
   if (obj1Keys.length !== obj2Keys.length) {
     return false;
   }
-  return Object.keys(obj1).every((key) => {
+  return obj1Keys.every((key) => {
     const obj1Value = obj1[key];
     const obj2Value = obj2[key];
     if (isArray(obj1Value) && isArray(obj2Value)) {
@@ -162,7 +165,7 @@ function isEqual(obj1, obj2) {
     } else if (isFunction(obj1Value) && isFunction(obj2Value))
       ;
     else if (isObject(obj1Value) && isObject(obj2Value)) {
-      return isEqual(obj1Value, obj2Value);
+      return isEqual(obj1Value, obj2Value, count + 1);
     }
     return obj1Value === obj2Value;
   });
@@ -1230,72 +1233,8 @@ class Dom {
     this.el.blur();
     return this;
   }
-  context(contextType = "2d") {
-    if (!this._initContext) {
-      this._initContext = this.el.getContext(contextType);
-    }
-    return this._initContext;
-  }
-  resize({ width, height }) {
-    this._initContext = null;
-    var ctx = this.context();
-    var scale = window.devicePixelRatio || 1;
-    this.px("width", +width);
-    this.px("height", +height);
-    this.el.width = width * scale;
-    this.el.height = height * scale;
-    ctx.scale(scale, scale);
-  }
   toDataURL(type = "image/png", quality = 1) {
     return this.el.toDataURL(type, quality);
-  }
-  clear() {
-    this.context().clearRect(0, 0, this.el.width, this.el.height);
-  }
-  update(callback) {
-    this.clear();
-    callback.call(this, this);
-  }
-  drawImage(img, dx = 0, dy = 0) {
-    var ctx = this.context();
-    var scale = window.devicePixelRatio || 1;
-    ctx.drawImage(img, dx, dy, img.width, img.height, 0, 0, this.el.width / scale, this.el.height / scale);
-  }
-  drawOption(option = {}) {
-    var ctx = this.context();
-    Object.assign(ctx, option);
-  }
-  drawLine(x1, y1, x2, y2) {
-    var ctx = this.context();
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
-  }
-  drawPath(...path) {
-    var ctx = this.context();
-    ctx.beginPath();
-    path.forEach((p, index) => {
-      if (index == 0) {
-        ctx.moveTo(p[0], p[1]);
-      } else {
-        ctx.lineTo(p[0], p[1]);
-      }
-    });
-    ctx.stroke();
-    ctx.fill();
-    ctx.closePath();
-  }
-  drawCircle(cx, cy, r) {
-    var ctx = this.context();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill();
-  }
-  drawText(x, y, text) {
-    this.context().fillText(text, x, y);
   }
   fullscreen() {
     var element = this.el;
@@ -2419,7 +2358,6 @@ _eventMap = new WeakMap();
 class ObserverHandler extends BaseHandler {
   initialize() {
     var _a, _b;
-    this.destroy();
     if (this._observers && this.context.notEventRedefine) {
       return;
     }
@@ -2439,7 +2377,7 @@ class ObserverHandler extends BaseHandler {
   }
   removeEventAll() {
     this.getBindings().forEach((observer) => {
-      this.removeDomEvent(observer);
+      this.disconnectObserver(observer);
     });
     this.initBindings();
   }
@@ -2630,6 +2568,7 @@ const _EventMachine = class {
     __privateAdd(this, _isServer, false);
     __privateAdd(this, _propsKeyList, []);
     __privateAdd(this, _functionCache, {});
+    __privateAdd(this, _afterRenderCount, 0);
     __publicField(this, "useMounted", (callback) => {
       return this.createFunction("mounted", callback);
     });
@@ -2794,7 +2733,10 @@ const _EventMachine = class {
       }
     }
     await this.load();
-    this.afterRender();
+    if (__privateGet(this, _afterRenderCount) === 0) {
+      __privateSet(this, _afterRenderCount, 1);
+      this.afterRender();
+    }
     return this;
   }
   get html() {
@@ -3172,6 +3114,7 @@ _propsKeys = new WeakMap();
 _isServer = new WeakMap();
 _propsKeyList = new WeakMap();
 _functionCache = new WeakMap();
+_afterRenderCount = new WeakMap();
 _refreshTimestamp = new WeakSet();
 refreshTimestamp_fn = function() {
   __privateWrapper(this, _localTimestamp)._++;

@@ -4,7 +4,7 @@ import BaseHandler from "./BaseHandler";
 
 export default class ObserverHandler extends BaseHandler {
   initialize() {
-    this.destroy();
+    // this.destroy();
 
     // 이미 정의된 domEvents 가 있고 notEventRedefine 설정이 true 로 되어 있으면 이벤트를 한번만 설정한다.
     if (this._observers && this.context.notEventRedefine) {
@@ -31,7 +31,7 @@ export default class ObserverHandler extends BaseHandler {
 
   removeEventAll() {
     this.getBindings().forEach((observer) => {
-      this.removeDomEvent(observer);
+      this.disconnectObserver(observer);
     });
     this.initBindings();
   }

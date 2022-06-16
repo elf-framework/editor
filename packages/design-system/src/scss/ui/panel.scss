@@ -1,9 +1,25 @@
 .elf--panel {
     --elf--panel-background-color: white;
     --elf--panel-color: black;
+    --elf--panel-border-color: transparent;
+    --elf--panel-width: 240px;
+    --elf--panel-min-width: var(--elf--panel-width);
+    --elf--panel-border-radius: 0px;
+    --elf--panel-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
 
     background-color: var(--elf--panel-background-color);
-    padding: 8px;
+    color: var(--elf--panel-color);
+    border: 1px solid var(--elf--panel-border-color);
+    padding: 0px;
+    box-sizing: border-box;
+    min-width: var(--elf--panel-min-width);
+    width: var(--elf--panel-width);
+    border-radius: var(--elf--panel-border-radius);
+
+    &[data-theme="dark"] {
+        --elf--panel-background-color: black;
+        --elf--panel-color: white;
+    }
 
     &[disabled] {
         // pointer-events: none;
@@ -15,12 +31,17 @@
         }
     }
 
+    &.elf--panel-mode-stroke {
+        --elf--panel-border-color: var(--elf--border-color);        
+        --elf--panel-border-radius: 2px;
+        box-shadow: var(--elf--panel-box-shadow);
+    }
+
     > .elf--panel-title {
-        padding: 0px 8px;
-        margin: 8px 0px;
+        padding: 8px 16px;
         display: flex;
         box-sizing: border-box;
-        // border-bottom: 1px solid var(--elf--panel-border-color);
+        border-bottom: 1px solid var(--elf--panel-border-color);
         align-items: center;
 
         > .elf--panel-title-text {
@@ -49,7 +70,10 @@
     }
 
     > .elf--panel-content {
-        padding: 0px 8px;
-        margin: 8px 0px;
+        padding: 16px;
+    }
+
+    > .elf--panel-footer {
+        padding: 8px 16px;
     }
 }

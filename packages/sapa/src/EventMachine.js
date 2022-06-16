@@ -62,6 +62,7 @@ export class EventMachine {
   #isServer = false;
   #propsKeyList = [];
   #functionCache = {};
+  #afterRenderCount = 0;
   // #prefLoadTemplate = {};
 
   constructor(opt, props) {
@@ -377,7 +378,12 @@ export class EventMachine {
     await this.load();
 
     // render 이후에 실행될 콜백을 정의한다.
-    this.afterRender();
+
+    if (this.#afterRenderCount === 0) {
+      this.#afterRenderCount = 1;
+      this.afterRender();
+    }
+
 
     return this;
   }

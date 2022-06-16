@@ -47,7 +47,6 @@ start(function () {
           {
             type: "item",
             title: "Menu Item",
-            icon: "&gt;",
             items: [
               { type: "item", title: "Hello", shortcut: "⌃⌥⇧⌘A" },
               {

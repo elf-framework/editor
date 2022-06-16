@@ -20,6 +20,9 @@
     /* menu selected icon font size */
     --elf--menu-selected-icon-font-size: 20px;
 
+    /* menu item font size */
+    --elf--menu-item-font-size: 14px;
+
     /* menu position */
     --elf--menu-position: absolute;
 
@@ -37,21 +40,21 @@
     flex-direction: column;
     margin: 0px;
     padding:8px 0px;
-    font-size: 12px;
+    font-size: var(--elf--menu-item-font-size);
     position: var(--elf--menu-position);
     display: inline-block;
     left: var(--elf--menu-left);
     top: var(--elf--menu-top);
 
-    &.right {
+    &[data-direction="right"] {
         left: auto;
-        right: 0px;
+        right: 10px;
         li > .elf--menu {
             --elf--menu-direction-left: calc(-1 * var(--elf--menu-width));
         }
     }
 
-    &.center {
+    &[data-direction="center"] {
         left: 50%;
         transform: translateX(-50%);
     }    
@@ -83,9 +86,13 @@
         &.custom {
             height: auto;
             min-height: var(--elf--menu-item-height);
+
+            > * {
+                flex: 1 1 auto;
+            }
         }
 
-        &:hover:not(.divider):not(.custom),
+        &:hover:not(.divider):not(.custom):not([disabled]),
         &.hover {
             background-color: var(--elf--primary-color);
 
@@ -105,6 +112,10 @@
         &[disabled] {
             cursor: not-allowed;
             opacity: 0.5;
+
+            > * {
+                pointer-events: none;
+            }
         }
 
         > .selected-icon {
@@ -124,10 +135,15 @@
         > .shortcut {
             flex: none;
             letter-spacing: 2px;
+            --elf--menu-item-font-size: 15px;
         }
 
         > .icon {
             flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // transform: scale(1.2);
         }
 
         &:last-child {

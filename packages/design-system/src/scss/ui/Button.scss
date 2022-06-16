@@ -1,9 +1,9 @@
 .elf--button {
-    --elf--button-border-color: rgba(0, 0, 0, 0.1);
+    --elf--button-border-color: rgba(0, 0, 0, 0.8);
     --elf--button-padding: 7px 10px;
     --elf--button-font-size: var(--elf--font-size, 14px);
     --elf--button-background: transparent;
-    --elf--button-color: var(--elf--border-color);
+    --elf--button-color: rgba(0, 0, 0, 0.8);
     --elf--button-border-radius: 4px;
     --elf--button-disabled-color: var(--elf--disabled-color);
 

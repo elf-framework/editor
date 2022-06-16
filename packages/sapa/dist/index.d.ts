@@ -3,6 +3,8 @@ declare module "@elf/sapa" {
 
   // event name regular expression
   export type EVENT = (...args: string[]) => string;
+  export type OBSERVER = (...args: string[]) => string;
+  export type PARAMS = (...args: string[]) => string;
   export const COMMAND: EVENT;
   export const ON: EVENT;
 
@@ -134,6 +136,8 @@ declare module "@elf/sapa" {
    * @returns {string}
    */
   export function LOAD(refName: string): string;
+  export function OBSERVER(observerName: string): string;
+  export function PARAMS(obj: KeyValue): string;
   export function createRef(value: any): string;
   export function getRef(id: string): any;
   export function BIND(value: string, checkFieldOrCallback: string): string;

@@ -6,6 +6,9 @@
     --elf--notification-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
     --elf--notification-tools-border-color: rgba(255, 255, 255, 0.19);
     --elf--notification-border-radius: 5px;
+    --elf--notification-position: absolute;
+    --elf--notification-hgap: 10px;
+    --elf--notification-vgap: 10px;
 
     background-color: var(--elf--notification-background);
     border: 0.5px solid var(--elf--notification-border-color);
@@ -19,12 +22,75 @@
 
     display: flex;
 
+    position: var(--elf--notification-position);
+
+
+    &.elf--notification-direction-top-left {
+        top: var(--elf--notification-hgap);
+        left: var(--elf--notification-vgap);
+    }
+
+    &.elf--notification-direction-top-right {
+        top: var(--elf--notification-hgap);
+        right: var(--elf--notification-vgap);
+    }
+
+    &.elf--notification-direction-bottom-left {
+        bottom: var(--elf--notification-hgap);
+        left: var(--elf--notification-vgap);
+    }
+
+    &.elf--notification-direction-bottom-right {
+        bottom: var(--elf--notification-hgap);
+        right: var(--elf--notification-vgap);
+    }
+
+    &.elf--notification-direction-center {
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);                
+    }
+
+    &.elf--notification-direction-top {
+        top: var(--elf--notification-hgap);
+        left: 50%;
+        transform: translateX(-50%);                
+    }
+
+    &.elf--notification-direction-bottom {
+        bottom: var(--elf--notification-hgap);
+        left: 50%;
+        transform: translateX(-50%);        
+    }
+
+    &.elf--notification-direction-left {
+        left: var(--elf--notification-vgap);
+        top: 50%;
+        transform: translateY(-50%);        
+    }
+
+    &.elf--notification-direction-right {
+        right: var(--elf--notification-vgap);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     .elf--notification-icon {
         flex: none;
         width: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        > svg {
+            width: 24px;
+            height: 24px;
+
+            path {
+                fill: var(--elf--notification-color);
+            }
+            
+        }
     }
 
     .elf--notification-content {
@@ -53,8 +119,8 @@
             justify-content: center;
             border-radius: 0px;
             box-sizing: border-box;
-            font-weight: 600;
-            font-size: 11px;            
+            font-weight: 400;
+            font-size: 12px;            
 
             &:hover {
                 background-color: var(--elf--notification-hover-color);

@@ -125,7 +125,12 @@ export function isNotString(value) {
   return !isString(value);
 }
 
-export function isEqual(obj1, obj2) {
+export function isEqual(obj1, obj2, count = 0) {
+
+  if (count > 5) {
+    throw new Error("isEqual 을 오래 실행하였습니다.");
+  }
+
   const obj1Keys = Object.keys(obj1);
   const obj2Keys = Object.keys(obj2);
 
@@ -133,7 +138,7 @@ export function isEqual(obj1, obj2) {
     return false;
   }
 
-  return Object.keys(obj1).every((key) => {
+  return obj1Keys.every((key) => {
     const obj1Value = obj1[key];
     const obj2Value = obj2[key];
 
@@ -143,7 +148,7 @@ export function isEqual(obj1, obj2) {
     } else if (isFunction(obj1Value) && isFunction(obj2Value)) {
       // return true;
     } else if (isObject(obj1Value) && isObject(obj2Value)) {
-      return isEqual(obj1Value, obj2Value);
+      return isEqual(obj1Value, obj2Value, count + 1);
     }
 
     return obj1Value === obj2Value;

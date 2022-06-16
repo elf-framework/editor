@@ -60,15 +60,24 @@ start(function () {
               console.log("foo");
             },
             items: [
+
+              // 함수로 커스텀 렌더 정의 
+              ({rootClose}) => (<div onClick={(e) => {
+                  rootClose();
+                }}>Hello</div>)
+              ,
+              // 커스텀 타입 메뉴 아이템 정의 
               {
-                title: "Hello",
-                shortcut: "⌃⌥⇧⌘A",
-                selectable: true,
-                onClick: (e, item) => {
-                  console.log(item.selected);
+                type: "custom",
+                render: ({rootClose}) => {
+                  return <div onClick={(e) => {
+                    rootClose();
+                  }}>Hello</div>
                 },
               },
+              // divider 정의 
               "-",
+              // group 타입 메뉴 아이템 정의
               {
                 type: "group",
                 title: "Group",
@@ -80,6 +89,7 @@ start(function () {
                   console.log(item);
                 },
               },
+              // 기본 메뉴 아이템 정의 
               {
                 type: "item",
                 title: "Hello",
@@ -105,7 +115,6 @@ start(function () {
               {
                 type: "item",
                 title: "Menu Item",
-                icon: "&gt;",
                 items: [
                   {
                     type: "item",
