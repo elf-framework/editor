@@ -4,7 +4,7 @@ import { propertyMap } from "../../utils/propertyMap";
 
 export class Button extends UIElement {
   template() {
-    const { type, size, disabled, shape, style = {} } = this.props;
+    const { type, size, disabled, shape, destructive = false, style = {} } = this.props;
 
     const styleObject = {
       class: classnames([
@@ -14,6 +14,7 @@ export class Button extends UIElement {
           secondary: type === "secondary",
           outline: type === "outline",
         },
+        destructive ? "destructive" : "",
         {
           "elf--button-lg": size === "large",
           "elf--button-sm": size === "small",
@@ -35,6 +36,36 @@ export class Button extends UIElement {
           height: "--elf--button-height",
           padding: "--elf--button-padding",
           borderRadius: "--elf--button-border-radius",
+        }),
+      },
+    };
+
+    return (
+      <button {...styleObject} onClick={this.props.onClick}>
+        <span>{this.props.content || ""}</span>
+      </button>
+    );
+  }
+}
+
+export class LinkButton extends UIElement {
+  template() {
+    const { type, size, disabled, shape, destructive = false, style = {} } = this.props;
+
+    const styleObject = {
+      class: classnames([
+        "elf--link-button",
+      ]),
+      disabled: disabled ? "disabled" : undefined,
+      style: {
+        ...propertyMap(style, {
+          borderColor: "--elf--link-button-border-color",
+          backgroundColor: "--elf--link-button-background",
+          disabledColor: "--elf--link-button-disabled-color",
+          color: "--elf--link-button-color",
+          fontSize: "--elf--link-button-font-size",
+          fontWeight: "--elf--link-button-font-weight",
+          padding: "--elf--link-button-padding",
         }),
       },
     };

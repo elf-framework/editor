@@ -24,18 +24,38 @@ declare module "@elf/ui" {
     borderRadius?: string;
   }
 
+  interface LinkButtonStyle {
+    borderColor?: string;
+    backgroundColor?: string;
+    disabledColor?: string;
+    color?: string;
+    fontSize?: string;
+    padding?: string;
+  }
+
   interface ButtonProps {
-    type: ButtonType;
-    size: ButtonSize;
-    shape: ButtonShape;
+    type?: ButtonType;
+    size?: ButtonSize;
+    shape?: ButtonShape;
+    destructive?: boolean;
     disabled?: boolean;
-    onClick: (event: PointerEvent) => void;
-    style: ButtonStyle;
+    onClick?: (event: PointerEvent) => void;
+    style?: ButtonStyle;
+  }
+
+  interface LinkButtonProps {
+    onClick?: (event: PointerEvent) => void;
+    style?: LinkButtonStyle;
+    href?: string;
   }
 
   export class Button extends UIElement {
     props: ButtonProps;
   }
+
+  export class LinkButton extends UIElement {
+    props: LinkButtonProps;
+  }  
 
   export class IconButton extends Button {
     props: ButtonProps & {
@@ -317,6 +337,16 @@ declare module "@elf/ui" {
     padding: string;
   }
 
+  interface TabStripStyle {
+    backgroundColor: string;
+    color: string;
+    fontSize: string;
+    fontWeight: string;
+    height: string|number;
+    width: string|number;
+    padding: string;
+  }
+
   export type PanelModeType = "default" | "stroke";
 
   export interface PanelProps {
@@ -328,8 +358,33 @@ declare module "@elf/ui" {
     theme?: ThemeType;
     style?: PanelStyle;
   }
+
+  export interface TabStripProps {
+    tools?: ContentType;
+    items?: string[] | UIElement[];
+    style?: TabStripStyle;
+    onChange?: (event: PointerEvent, item: UIElement) => void;
+  }
   export class Panel extends UIElement {
     props: PanelProps;
+  }
+
+  export class TabStrip extends UIElement {
+    props: TabStripProps;
+  }
+
+  export type LayoutStyle = {
+    backgroundColor: string;
+    gap: number;
+  }
+  export interface LayoutProps {
+    stack?: boolean;
+    wrap?: boolean;
+    style?: LayoutStyle;
+  }
+
+  export class Layout extends UIElement {
+    props: LayoutProps;
   }
 }
 

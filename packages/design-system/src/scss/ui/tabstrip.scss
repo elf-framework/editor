@@ -1,0 +1,57 @@
+.elf--tabstrip {
+    --elf--tabstrip-background-color: white;
+    --elf--tabstrip-color: rgba(0, 0, 0, 0.3);
+    --elf--tabstrip-width: 240px;
+    --elf--tabstrip-font-weight: 500;
+
+    background-color: var(--elf--tabstrip-background-color);
+    color: var(--elf--tabstrip-color);
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: var(--elf--tabstrip-width);
+    font-weight: var(--elf--tabstrip-font-weight);
+    padding-left: 8px;
+
+    > .elf--tabstrip-content {
+        // padding: 16px;
+        display: flex;
+        flex-direction: row;
+
+        > .elf--tabstrip-item {
+            padding: 8px 8px;
+            color: var(--elf--tabstrip-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+
+            &.selected {
+                --elf--tabstrip-color: black;
+                --elf--tabstrip-font-weight: 600;                
+            }
+        }
+    }
+
+    > .elf--tabstrip-tools {
+        padding: 8px 16px;
+        padding-left: 0px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        > .elf--tabstrip-tool {
+            // padding: 8px;
+            color: var(--elf--tabstrip-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

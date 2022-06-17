@@ -39,6 +39,8 @@
     &[disabled] {
         cursor: not-allowed;
         --elf--button-background: var(--elf--button-disabled-color) !important;
+        --elf--button-color: white !important;
+        --elf--button-border-color: transparent !important;
     }
 
     &:hover,

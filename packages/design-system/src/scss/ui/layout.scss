@@ -1,0 +1,28 @@
+.elf--layout {
+    --elf--layout-background-color: transparent;
+    --elf--layout-gap: 0;
+    --elf--layout-margin: 0 0 10px 0;
+
+    display: flex;
+    flex-direction: row;
+    gap: var(--elf--layout-gap);
+    background-color: var(--elf--layout-background-color);
+    margin: var(--elf--layout-margin);
+
+    &.stack {
+        flex-direction: column;
+    }
+
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    > * {
+        flex: 1;
+    }
+
+}

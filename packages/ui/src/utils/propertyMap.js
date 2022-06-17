@@ -29,6 +29,7 @@ export const NumberStyleKeys = {
   borderRightWidth: true,
   borderBottomWidth: true,
   borderLeftWidth: true,
+  gap: true,
 };
 
 export function styleMap(key, value) {

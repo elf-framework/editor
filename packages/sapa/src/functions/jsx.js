@@ -50,6 +50,17 @@ const NumberStyleKeys = {
   right: true,
   bottom: true,
   border: true,
+  padding: true,
+  margin: true,
+  paddingLeft: true,
+  paddingRight: true,
+  paddingTop: true,
+  paddingBottom: true,
+  marginLeft: true,
+  marginRight: true,
+  marginTop: true,
+  marginBottom: true,
+  gap: true,
 
   // SVG-related properties
   fillOpacity: true,
