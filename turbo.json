@@ -42,7 +42,11 @@
     "ui:dev": {
       "dependsOn": ["ui:watch"],
       "cache": false
-    }                    
+    },
+    "sapa:release": {
+      "dependsOn": ["^sapa:release"],
+      "cache": false
+    }                                            
 
   }
 }

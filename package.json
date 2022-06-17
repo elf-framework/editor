@@ -12,6 +12,7 @@
     "blank:dev": "turbo run blank:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
     "ui:dev": "turbo run ui:dev --parallel",
+    "sapa:release": "turbo run sapa:release --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

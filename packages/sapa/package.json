@@ -39,6 +39,7 @@
     "ui:watch": "npm run watch",
     "//dev": "npm run vite:dist:watch",
     "release": "release-it *",
+    "sapa:release": "release-it *",
     "build": "npm run vite:dist",
     "test": "vitest",
     "coverage": "vitest --coverage",
