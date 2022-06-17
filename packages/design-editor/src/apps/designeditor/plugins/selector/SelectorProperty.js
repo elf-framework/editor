@@ -9,14 +9,14 @@ import {
   STOP,
   SUBSCRIBE,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./SelectorProperty.scss";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 // import { Selector } from "elf/editor/property-parser/Selector";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 const selectorList = [
   "", // custom

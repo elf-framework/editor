@@ -6,12 +6,12 @@ import {
   isFunction,
   isString,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ComponentProperty.scss";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class ComponentProperty extends BaseProperty {
   getClassName() {

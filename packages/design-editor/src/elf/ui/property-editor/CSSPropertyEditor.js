@@ -6,13 +6,13 @@ import {
   variable,
   createComponent,
   DOMDIFF,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./CSSPropertyEditor.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class CSSPropertyEditor extends EditorElement {
   initState() {

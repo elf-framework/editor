@@ -1,8 +1,8 @@
-import { CLICK, LOAD, SUBSCRIBE, createComponent } from "@elf/sapa";
+import { CLICK, LOAD, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import "./DirectionEditor.scss";
 
-import { iconUse, EditorElement, DirectionLength } from "@elf/editor"
+import { iconUse, EditorElement, DirectionLength } from "@elf-framework/editor"
 
 const typeList = [
   { key: "top", title: "Top" },

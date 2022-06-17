@@ -4,7 +4,7 @@ import { MovableModel } from "./MovableModel";
 
 import { ModelManager } from "apps/designeditor/managers/ModelManager";
 import { vertiesToRectangle } from "elf/core/collision";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 let modelManager;
 

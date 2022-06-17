@@ -1,7 +1,7 @@
 // import { Editor } from "elf/editor/manager/Editor";
 
-import { Length } from "@elf/editor"
-import { ObjectProperty } from "@elf/editor";
+import { Length } from "@elf-framework/editor"
+import { ObjectProperty } from "@elf-framework/editor";
 
 /**
  *

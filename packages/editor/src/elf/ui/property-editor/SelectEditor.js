@@ -1,8 +1,8 @@
-import { CHANGE, BIND } from "@elf/sapa";
+import { CHANGE, BIND } from "@elf-framework/sapa";
 
 import "./SelectEditor.scss";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export class SelectEditor extends EditorElement {

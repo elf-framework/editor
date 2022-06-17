@@ -1,7 +1,7 @@
 import { SVGModel } from "./SVGModel";
 
 import { PathParser } from "elf/core/parser/PathParser";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class SVGTextPathItem extends SVGModel {
   getDefaultObject(obj = {}) {

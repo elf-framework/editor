@@ -5,11 +5,11 @@ import {
   SUBSCRIBE,
   SUBSCRIBE_SELF,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
-import {iconUse, BaseProperty} from "@elf/editor";
+import {iconUse, BaseProperty} from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { Position } from "@elf/editor";
+import { Position } from "@elf-framework/editor";
 
 const typeList = [
   { key: "top", title: "Top" },

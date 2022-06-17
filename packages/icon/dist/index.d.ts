@@ -1,4 +1,4 @@
-declare module "@elf/icon" {
+declare module "@elf-framework/icon" {
 
 
 }

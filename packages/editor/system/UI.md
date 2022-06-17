@@ -4,7 +4,7 @@
 
 UI 는 기본적으로 [Sapa](https://sapa.easylogic.studio/) 를 사용하고 있습니다. 
 
-(한글 문서는 [여기](https://velog.io/@elf/%EA%B0%9C%EB%B0%9C%EC%9E%90-UI-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EB%A7%8C%EB%93%A4%EB%8B%A4)를 참고하세요.)
+(한글 문서는 [여기](https://velog.io/@elf-framework/%EA%B0%9C%EB%B0%9C%EC%9E%90-UI-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EB%A7%8C%EB%93%A4%EB%8B%A4)를 참고하세요.)
 
 
 # UI 정의 

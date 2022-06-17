@@ -1,5 +1,5 @@
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 import {
   customParseConvertMatches,
   customParseReverseMatches,

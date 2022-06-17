@@ -1,6 +1,6 @@
-import {InputRangeEditor} from "@elf/editor";
+import {InputRangeEditor} from "@elf-framework/editor";
 
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class IterationCountEditor extends InputRangeEditor {
   initState() {

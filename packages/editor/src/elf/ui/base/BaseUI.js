@@ -1,4 +1,4 @@
-import { isFunction, isArray, isString, UIElement } from "@elf/sapa";
+import { isFunction, isArray, isString, UIElement } from "@elf-framework/sapa";
 
 export class BaseUI extends UIElement {
   get notEventRedefine() {

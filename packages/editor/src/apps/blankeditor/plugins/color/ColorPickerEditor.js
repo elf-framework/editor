@@ -1,4 +1,4 @@
-import { SUBSCRIBE_SELF, createComponent } from "@elf/sapa";
+import { SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import ColorInformation from "./colorpicker/ColorInformation";
 import Palette from "./colorpicker/ColorPalette";

@@ -29,4 +29,4 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-@import "@elf/design-system/style.css";
+@import "@elf-framework/design-system/style.css";

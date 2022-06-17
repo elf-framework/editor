@@ -10,7 +10,7 @@ import {
   RadialGradientType,
   SpreadMethodType,
 } from "elf/editor/types/model";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 import { parseOneValue } from "elf/utils/css-function-parser";
 
 const RadialTypeList = [RadialGradientType.CIRCLE, RadialGradientType.ELLIPSE];

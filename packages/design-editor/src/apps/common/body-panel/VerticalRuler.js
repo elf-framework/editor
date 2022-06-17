@@ -10,7 +10,7 @@ import {
   DOMDIFF,
   MOUSEOVER,
   MOUSELEAVE,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./VerticalRuler.scss";
 
@@ -24,7 +24,7 @@ import {
   END,
   MOVE,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor";
+import { EditorElement } from "@elf-framework/editor";
 
 let pathString = [];
 

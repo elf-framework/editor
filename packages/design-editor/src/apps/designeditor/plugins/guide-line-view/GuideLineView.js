@@ -1,6 +1,6 @@
 import { vec3 } from "gl-matrix";
 
-import { BIND, SUBSCRIBE } from "@elf/sapa";
+import { BIND, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./GuideLineView.scss";
 
@@ -13,7 +13,7 @@ import {
   UPDATE_CANVAS,
   REFRESH_SELECTION_TOOL,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor";
+import { EditorElement } from "@elf-framework/editor";
 
 const line = (source, target, className = "base-line") => {
   return /*html*/ `<line x1="${source[0]}" y1="${source[1]}" x2="${target[0]}" y2="${target[1]}" class='${className}' />`;

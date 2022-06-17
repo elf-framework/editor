@@ -1,8 +1,8 @@
-import { createComponent } from "@elf/sapa";
+import { createComponent } from "@elf-framework/sapa";
 
 import "./ObjectItems.scss";
 
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class ObjectItems extends EditorElement {
   template() {

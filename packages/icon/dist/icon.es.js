@@ -1681,7 +1681,6 @@ function getVariable(idOrValue) {
 }
 function registHandler(handlers) {
   Object.keys(handlers).forEach((key) => {
-    handlers[key];
   });
 }
 class Dom {

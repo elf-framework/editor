@@ -1,4 +1,4 @@
-import { isFunction, DOMDIFF, LOAD } from "@elf/sapa";
+import { isFunction, DOMDIFF, LOAD } from "@elf-framework/sapa";
 
 import { DropdownMenuItem } from "./DropdownMenuItem";
 

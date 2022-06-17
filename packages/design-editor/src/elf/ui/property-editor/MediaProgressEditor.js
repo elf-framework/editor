@@ -1,10 +1,10 @@
-import { POINTERSTART, BIND, SUBSCRIBE_SELF, createComponent } from "@elf/sapa";
+import { POINTERSTART, BIND, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import "./MediaProgressEditor.scss";
 
 import { MOVE } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class MediaProgressEditor extends EditorElement {
   initState() {

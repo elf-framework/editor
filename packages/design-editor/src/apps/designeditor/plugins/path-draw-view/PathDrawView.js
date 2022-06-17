@@ -1,13 +1,13 @@
 import { vec3 } from "gl-matrix";
 
-import { POINTERSTART, BIND, KEYUP, IF, ESCAPE, ENTER, SUBSCRIBE } from "@elf/sapa";
+import { POINTERSTART, BIND, KEYUP, IF, ESCAPE, ENTER, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./PathDrawView.scss";
 
 import { PathParser } from "elf/core/parser/PathParser";
 import { SVGFill } from "elf/editor/property-parser/SVGFill";
 import { END, MOVE } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 const FIELDS = [
   "fill",

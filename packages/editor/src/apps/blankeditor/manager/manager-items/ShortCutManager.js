@@ -1,4 +1,4 @@
-import { isBoolean } from "@elf/sapa";
+import { isBoolean } from "@elf-framework/sapa";
 
 import { os } from "elf/core/detect";
 import { KEY_CODE } from "apps/blankeditor/types/key";

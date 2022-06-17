@@ -9,7 +9,7 @@ import {
   isString,
   OBSERVER,
   PARAMS,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 

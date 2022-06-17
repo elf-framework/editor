@@ -1,4 +1,4 @@
-declare module "@elf/sapa" {
+declare module "@elf-framework/sapa" {
   export function makeEventChecker(value: string, split: string): string;
 
   // event name regular expression

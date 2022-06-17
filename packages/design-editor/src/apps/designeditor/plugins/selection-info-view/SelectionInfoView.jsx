@@ -1,11 +1,11 @@
 import { vec3 } from "gl-matrix";
 
-import { DOMDIFF, LOAD, POINTERSTART, SUBSCRIBE } from "@elf/sapa";
+import { DOMDIFF, LOAD, POINTERSTART, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./SelectionInfoView.scss";
 
 import { calculateAngle360 } from "elf/core/math";
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import {
   END,
   MOVE,
@@ -14,7 +14,7 @@ import {
   FIRSTMOVE,
   REFRESH_SELECTION_TOOL,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class SelectionInfoView extends EditorElement {
   template() {

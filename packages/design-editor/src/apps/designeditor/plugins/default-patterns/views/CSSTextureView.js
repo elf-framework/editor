@@ -1,5 +1,5 @@
-import { EditorElement } from "@elf/editor";
-import { CLICK, LOAD } from "@elf/sapa";
+import { EditorElement } from "@elf-framework/editor";
+import { CLICK, LOAD } from "@elf-framework/sapa";
 
 import "./TextureView.scss";
 

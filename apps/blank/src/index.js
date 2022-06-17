@@ -1,7 +1,7 @@
 
 
-import { createBlankEditor, iconUse } from "@elf/editor";
-import "@elf/editor/style.css";
+import { createBlankEditor, iconUse } from "@elf-framework/editor";
+import "@elf-framework/editor/style.css";
 
 window.elfEditor = createBlankEditor({
     container: document.getElementById('app'),

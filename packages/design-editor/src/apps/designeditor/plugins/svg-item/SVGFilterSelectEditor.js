@@ -1,9 +1,9 @@
-import { LOAD, CHANGE, BIND, DEBOUNCE, CLICK, SUBSCRIBE } from "@elf/sapa";
+import { LOAD, CHANGE, BIND, DEBOUNCE, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./SVGFilterSelectEditor.scss";
 
-import {iconUse} from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import {iconUse} from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class SVGFilterSelectEditor extends EditorElement {
   initState() {

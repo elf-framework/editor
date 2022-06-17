@@ -1,5 +1,5 @@
 const modules = import.meta.globEager("./icon_list/*.js");
-import { isFunction } from "@elf/sapa";
+import { isFunction } from "@elf-framework/sapa";
 
 let icons = {};
 

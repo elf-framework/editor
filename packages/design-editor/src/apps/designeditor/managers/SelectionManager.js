@@ -1,6 +1,6 @@
 import { vec3 } from "gl-matrix";
 
-import { isFunction, isString, isObject } from "@elf/sapa";
+import { isFunction, isString, isObject } from "@elf-framework/sapa";
 
 import {
   itemsToRectVerties,

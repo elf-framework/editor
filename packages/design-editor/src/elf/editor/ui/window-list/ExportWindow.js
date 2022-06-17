@@ -1,4 +1,4 @@
-import { CLICK, SUBSCRIBE, registElement } from "@elf/sapa";
+import { CLICK, SUBSCRIBE, registElement } from "@elf-framework/sapa";
 
 import BaseWindow from "./BaseWindow";
 import "./ExportWindow.scss";

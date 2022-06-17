@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependecies": {
-    "@elf/design-editor": "*"
+    "@elf-framework/design-editor": "*"
   },
   "devDependencies": {
     "vite": "^2.9.9"

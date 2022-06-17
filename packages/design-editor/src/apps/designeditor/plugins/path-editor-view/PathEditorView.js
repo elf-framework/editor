@@ -17,7 +17,7 @@ import {
   Dom,
   isFunction,
   CLICK,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./PathEditorView.scss";
 
@@ -39,8 +39,8 @@ import {
   END,
   MOVE,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 /**
  * convert array[x, y] to object{x, y}

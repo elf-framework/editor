@@ -6,9 +6,9 @@ import {
   CHANGE,
   SUBSCRIBE,
   registElement,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
-import { BaseProperty, iconUse } from "@elf/editor";
+import { BaseProperty, iconUse } from "@elf-framework/editor";
 import "./VideoAssetsProperty.scss";
 
 import revokeObjectUrl from "elf/editor/util/revokeObjectUrl";

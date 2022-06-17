@@ -5,11 +5,11 @@ import {
   SUBSCRIBE_SELF,
   createComponent,
   DOMDIFF,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./BorderRadiusEditor.scss";
 
-import { EditorElement, iconUse } from "@elf/editor";
+import { EditorElement, iconUse } from "@elf-framework/editor";
 import BorderRadius from "elf/editor/property-parser/BorderRadius";
 
 const typeList = [

@@ -1,8 +1,8 @@
-import { Dom } from "@elf/sapa";
+import { Dom } from "@elf-framework/sapa";
 
 import LayerRender from "./LayerRender";
 
-import * as Color from "@elf/color";
+import * as Color from "@elf-framework/color";
 import { SVGFill } from "elf/editor/property-parser/SVGFill";
 
 export default class SVGItemRender extends LayerRender {

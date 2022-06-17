@@ -1,3 +1,3 @@
-declare module "@elf/color" {
+declare module "@elf-framework/color" {
 
 }

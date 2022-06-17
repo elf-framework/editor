@@ -1,8 +1,8 @@
-import { isUndefined } from "@elf/sapa";
+import { isUndefined } from "@elf-framework/sapa";
 
 import { PropertyItem } from "elf/editor/items/PropertyItem";
 
-import { Length, DirectionLength } from "@elf/editor"
+import { Length, DirectionLength } from "@elf-framework/editor"
 
 
 const CLIPPATH_REG =

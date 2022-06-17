@@ -1,8 +1,8 @@
-import { INPUT, SUBSCRIBE, createComponent } from "@elf/sapa";
+import { INPUT, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import "./KeyframePopup.scss";
 
-import { BasePopup } from "@elf/editor"
+import { BasePopup } from "@elf-framework/editor"
 
 export default class KeyframePopup extends BasePopup {
   getTitle() {

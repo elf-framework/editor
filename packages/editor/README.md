@@ -96,7 +96,7 @@ please refer to src/index.html, src/index.js
 
 ```js
 
-import EasyLogic from "@elf/editor";
+import EasyLogic from "@elf-framework/editor";
 
 var app = new EasyLogic.createDesignEditor({
   container: document.getElementById('app'),

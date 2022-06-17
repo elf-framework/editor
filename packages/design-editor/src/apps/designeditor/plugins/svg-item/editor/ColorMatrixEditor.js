@@ -1,10 +1,10 @@
-import { LOAD, INPUT, BIND, CLICK } from "@elf/sapa";
+import { LOAD, INPUT, BIND, CLICK } from "@elf-framework/sapa";
 
 import colormatrix from "./colormatrix";
 import "./ColorMatrixEditor.scss";
 
 import { normalize } from "elf/core/math";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 const COLUMN = 6;
 

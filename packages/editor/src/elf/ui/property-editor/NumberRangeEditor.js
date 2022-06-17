@@ -7,7 +7,7 @@ import {
   POINTERSTART,
   SUBSCRIBE_SELF,
   classnames,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./NumberRangeEditor.scss";
 

@@ -15,7 +15,7 @@ import {
   // createComponent,
   CONTEXTMENU,
   PREVENT,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import rendererHtml from "../renderer/renderer-html";
 import rendererSvg from "../renderer/renderer-svg";
@@ -32,7 +32,7 @@ import {
   REFRESH_SELECTION_TOOL,
 } from "elf/editor/types/event";
 import { KEY_CODE } from "elf/editor/types/key";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 // const cache = {};
 

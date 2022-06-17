@@ -42,7 +42,7 @@ xxx.test.js 형태로 테스트 파일을 작성하면 됩니다. ([여기](src/
 Sapa 는 에디터를 개발하기 위한 UI 시스템과  이벤트 시스템이 합쳐져 있는 라이브러리입니다. 
 
 Sapa 에 대한 간략한 소개는 [여기](https://sapa.easylogic.studio/) 를 봐주세요. 
-한글은 [개발자, UI라이브러리를 만들다](https://velog.io/@elf/%EA%B0%9C%EB%B0%9C%EC%9E%90-UI-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EB%A7%8C%EB%93%A4%EB%8B%A4)를 참고해주세요.
+한글은 [개발자, UI라이브러리를 만들다](https://velog.io/@elf-framework/%EA%B0%9C%EB%B0%9C%EC%9E%90-UI-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EB%A7%8C%EB%93%A4%EB%8B%A4)를 참고해주세요.
 
 기본적으로 에디터의 모든 UI 와 이벤트는 Sapa 를 통해서 구현되어 집니다. 
 

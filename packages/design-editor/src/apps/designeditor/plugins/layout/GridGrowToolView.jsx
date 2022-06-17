@@ -11,13 +11,13 @@ import {
   SUBSCRIBE,
   SUBSCRIBE_SELF,
   isString,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./GridGrowToolView.scss";
 
 import { rectToVerties, vertiesToRectangle } from "elf/core/collision";
 import { calculateAngle360, vertiesMap } from "elf/core/math";
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import { Grid } from "elf/editor/property-parser/Grid";
 import {
   REFRESH_SELECTION,
@@ -28,8 +28,8 @@ import {
   UPDATE_CANVAS,
 } from "elf/editor/types/event";
 import { Layout } from "elf/editor/types/model";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 class GridGrowBaseView extends EditorElement {
   updateRows(current, newRows) {

@@ -1,4 +1,4 @@
-import { BIND, CONFIG, SUBSCRIBE, createComponent } from "@elf/sapa";
+import { BIND, CONFIG, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import CanvasView from "./body-panel/CanvasView";
 import HorizontalRuler from "./body-panel/HorizontalRuler";
@@ -6,7 +6,7 @@ import PageSubEditor from "./body-panel/PageSubEditor";
 import VerticalRuler from "./body-panel/VerticalRuler";
 import "./BodyPanel.scss";
 
-import { EditorElement } from "@elf/editor";
+import { EditorElement } from "@elf-framework/editor";
 
 export default class BodyPanel extends EditorElement {
   components() {

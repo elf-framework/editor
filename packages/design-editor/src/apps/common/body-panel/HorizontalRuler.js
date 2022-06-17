@@ -9,7 +9,7 @@ import {
   POINTERSTART,
   DOMDIFF,
   MOUSEOVER,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./HorizontalRuler.scss";
 
@@ -23,7 +23,7 @@ import {
   MOVE,
 } from "elf/editor/types/event";
 
-import { EditorElement } from "@elf/editor";
+import { EditorElement } from "@elf-framework/editor";
 
 
 let pathString = [];

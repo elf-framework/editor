@@ -5,7 +5,7 @@ import {
   SUBSCRIBE_SELF,
   isFunction,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ComponentPopup.scss";
 

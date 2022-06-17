@@ -1,4 +1,4 @@
-import { CLICK, UIElement, classnames, isFunction } from "@elf/sapa";
+import { CLICK, UIElement, classnames, isFunction } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { Button } from "../button/index";

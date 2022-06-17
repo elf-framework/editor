@@ -1,6 +1,6 @@
-import { createDesignEditor } from "@elf/design-editor";
+import { createDesignEditor } from "@elf-framework/design-editor";
 
-import "@elf/design-editor/style.css";
+import "@elf-framework/design-editor/style.css";
 
 window.elfEditor = createDesignEditor({
     container: document.getElementById('app'),

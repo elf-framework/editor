@@ -1,4 +1,4 @@
-import { UIElement, classnames } from "@elf/sapa";
+import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 

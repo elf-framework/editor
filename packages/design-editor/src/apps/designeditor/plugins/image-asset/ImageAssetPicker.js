@@ -1,5 +1,5 @@
-import { EditorElement } from "@elf/editor";
-import { LOAD, DOMDIFF, CLICK, SUBSCRIBE } from "@elf/sapa";
+import { EditorElement } from "@elf-framework/editor";
+import { LOAD, DOMDIFF, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 export default class ImageAssetPicker extends EditorElement {
   initState() {

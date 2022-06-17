@@ -1,5 +1,5 @@
 {
-  "name": "@elf/color",
+  "name": "@elf-framework/color",
   "version": "0.0.1",
   "description": "Fantastic Color library",
   "types": "./index.d.ts",

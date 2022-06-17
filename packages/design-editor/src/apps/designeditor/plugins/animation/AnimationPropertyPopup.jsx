@@ -5,12 +5,12 @@ import {
   SUBSCRIBE,
   SUBSCRIBE_SELF,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./AnimationPropertyPopup.scss";
 
-import { BasePopup } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { BasePopup } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class AnimationPropertyPopup extends BasePopup {
   getTitle() {

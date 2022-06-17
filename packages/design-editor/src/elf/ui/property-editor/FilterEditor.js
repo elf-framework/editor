@@ -9,11 +9,11 @@ import {
   SUBSCRIBE_SELF,
   createComponent,
   createComponentList,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./FilterEditor.scss";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import {
   BlurFilter,
   GrayscaleFilter,
@@ -28,7 +28,7 @@ import {
   Filter,
   URLSvgFilter,
 } from "elf/editor/property-parser/Filter";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 import { filter_list } from "elf/editor/util/Resource";
 
 var specList = {

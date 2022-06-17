@@ -7,7 +7,7 @@ import {
   IF,
   SUBSCRIBE,
   clone,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./SelectionView.scss";
 
@@ -32,8 +32,8 @@ import {
   MOVE,
 } from "elf/editor/types/event";
 import { ResizingMode } from "elf/editor/types/model";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 var directionType = {
   1: "to top left",

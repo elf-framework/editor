@@ -1,8 +1,8 @@
 
 
-export * from "@elf/sapa";
-export * from "@elf/color";
-export * from "@elf/icon";
+export * from "@elf-framework/sapa";
+export * from "@elf-framework/color";
+export * from "@elf-framework/icon";
 export * from "elf/editor/ui/common/EditorElement";
 export * from "elf/editor/unit/Length";
 export * from "elf/editor/unit/DirectionLength";

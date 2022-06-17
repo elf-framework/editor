@@ -1,5 +1,5 @@
-declare module "@elf/ui" {
-  import { UIElement } from "@elf/sapa";
+declare module "@elf-framework/ui" {
+  import { UIElement } from "@elf-framework/sapa";
 
 
   /** base */

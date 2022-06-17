@@ -1,8 +1,8 @@
-import { LOAD, CLICK, DOMDIFF, SUBSCRIBE } from "@elf/sapa";
+import { LOAD, CLICK, DOMDIFF, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./ImageSelectPopup.scss";
 
-import { BasePopup } from "@elf/editor"
+import { BasePopup } from "@elf-framework/editor"
 
 export default class ImageSelectPopup extends BasePopup {
   getTitle() {

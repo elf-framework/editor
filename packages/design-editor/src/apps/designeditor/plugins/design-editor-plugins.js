@@ -1,4 +1,4 @@
-import { ContextMenuView } from "@elf/editor";
+import { ContextMenuView } from "@elf-framework/editor";
 import alignment from "./alignment";
 import animation from "./animation";
 import appearance from "./appearance";

@@ -16,7 +16,7 @@ import {
   DELETE,
   Dom,
   isFunction,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./PathEditor.scss";
 import PurePathGenerator from "./PurePathGenerator";
@@ -33,8 +33,8 @@ import { vertiesToRectangle } from "elf/core/collision";
 import { getDist } from "elf/core/math";
 import { PathParser } from "elf/core/parser/PathParser";
 import { END, MOVE } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 /**
  * convert array[x, y] to object{x, y}

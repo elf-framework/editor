@@ -1,8 +1,8 @@
-import { CLICK } from "@elf/sapa";
+import { CLICK } from "@elf-framework/sapa";
 
 import "./ExportProperty.scss";
 
-import { BaseProperty, iconUse } from "@elf/editor";
+import { BaseProperty, iconUse } from "@elf-framework/editor";
 
 export default class ExportProperty extends BaseProperty {
   getTitle() {

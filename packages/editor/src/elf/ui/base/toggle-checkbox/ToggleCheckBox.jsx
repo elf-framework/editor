@@ -1,4 +1,4 @@
-import { LOAD, CLICK, SUBSCRIBE_SELF, BIND } from "@elf/sapa";
+import { LOAD, CLICK, SUBSCRIBE_SELF, BIND } from "@elf-framework/sapa";
 
 import { BaseUI } from "../BaseUI";
 import "./ToggleCheckBox.scss";

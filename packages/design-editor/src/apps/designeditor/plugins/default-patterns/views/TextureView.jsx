@@ -1,6 +1,6 @@
 import "./TextureView.scss";
 
-import { EditorElement, Tabs, TabPanel } from "@elf/editor";
+import { EditorElement, Tabs, TabPanel } from "@elf-framework/editor";
 export default class TextureView extends EditorElement {
   template() {
     const isItemMode = this.$config.get("editor.design.mode") === "item";

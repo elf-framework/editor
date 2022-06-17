@@ -1,4 +1,4 @@
-import { clone, isFunction, isNumber, isUndefined } from "@elf/sapa";
+import { clone, isFunction, isNumber, isUndefined } from "@elf-framework/sapa";
 
 import { uuid, uuidShort } from "elf/core/math";
 

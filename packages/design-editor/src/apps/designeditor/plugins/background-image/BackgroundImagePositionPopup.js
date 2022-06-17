@@ -5,11 +5,11 @@ import {
   SUBSCRIBE_SELF,
   createComponent,
   DOMDIFF,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./BackgroundImagePositionPopup.scss";
 
-import { BasePopup } from "@elf/editor"
+import { BasePopup } from "@elf-framework/editor"
 
 export default class BackgroundImagePositionPopup extends BasePopup {
   get localeKey() {

@@ -1,4 +1,4 @@
-declare module "@elf/editor" {
+declare module "@elf-framework/editor" {
   // gl-matrix
   // prettier-ignore
   export type mat2 =

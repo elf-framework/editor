@@ -1,4 +1,4 @@
-import { createComponent, isString, isArray } from "@elf/sapa";
+import { createComponent, isString, isArray } from "@elf-framework/sapa";
 export function makeMenuItem(it, id) {
   if (it === "-") {
     return createComponent("Divider", {

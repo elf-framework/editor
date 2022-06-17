@@ -5,12 +5,12 @@ import {
   SUBSCRIBE_SELF,
   isFunction,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ComponentPopup.scss";
 
 import { SHOW_COMPONENT_POPUP } from "elf/editor/types/event";
-import { BasePopup } from "@elf/editor"
+import { BasePopup } from "@elf-framework/editor"
 
 export default class ComponentPopup extends BasePopup {
   getClassName() {

@@ -1,4 +1,4 @@
-import { UIElement, classnames, isFunction, CLICK, IF, Dom, POINTEROVER, POINTERLEAVE } from "@elf/sapa";
+import { UIElement, classnames, isFunction, CLICK, IF, Dom, POINTEROVER, POINTERLEAVE } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { Menu } from "../menu/index";

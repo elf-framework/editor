@@ -1,4 +1,4 @@
-import { isObject, isFunction } from "@elf/sapa";
+import { isObject, isFunction } from "@elf-framework/sapa";
 
 export class CommandManager {
   constructor(editor) {

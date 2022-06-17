@@ -1,11 +1,11 @@
-import { clone, LOAD, CLICK, DOMDIFF, SUBSCRIBE } from "@elf/sapa";
+import { clone, LOAD, CLICK, DOMDIFF, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./TransitionProperty.scss";
 
 import { curveToPath } from "elf/core/func";
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class TransitionProperty extends BaseProperty {
   getTitle() {

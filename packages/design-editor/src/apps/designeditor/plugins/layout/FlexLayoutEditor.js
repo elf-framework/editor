@@ -1,15 +1,15 @@
-import { CLICK, DOMDIFF, LOAD, SUBSCRIBE_SELF, createComponent } from "@elf/sapa";
+import { CLICK, DOMDIFF, LOAD, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import "./FlexLayoutEditor.scss";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import {
   AlignItems,
   FlexDirection,
   FlexWrap,
   JustifyContent,
 } from "elf/editor/types/model";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class FlexLayoutEditor extends EditorElement {
   initialize() {

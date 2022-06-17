@@ -9,12 +9,12 @@ import {
   SUBSCRIBE,
   createComponent,
   SUBSCRIBE_SELF,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./TextShadowEditor.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class TextShadowEditor extends EditorElement {
   initState() {

@@ -8,14 +8,14 @@ import {
   DEBOUNCE,
   SUBSCRIBE,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import patterns from "../../preset/patterns";
 import "./PatternEditor.scss";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import { Pattern } from "elf/editor/property-parser/Pattern";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class PatternEditor extends EditorElement {
   initState() {

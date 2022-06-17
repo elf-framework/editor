@@ -1,6 +1,6 @@
-import { start } from "@elf/sapa";
-import { Menu } from "@elf/ui";
-import "@elf/ui/style.css";
+import { start } from "@elf-framework/sapa";
+import { Menu } from "@elf-framework/ui";
+import "@elf-framework/ui/style.css";
 
 start(function () {
   console.log(this.state.e);

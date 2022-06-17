@@ -1,4 +1,4 @@
-import { CLICK, BIND } from "@elf/sapa";
+import { CLICK, BIND } from "@elf-framework/sapa";
 
 import "./ColorSingleEditor.scss";
 

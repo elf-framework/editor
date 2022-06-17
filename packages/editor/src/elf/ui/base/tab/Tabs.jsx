@@ -1,4 +1,4 @@
-import { CLICK, LOAD, UIElement } from "@elf/sapa";
+import { CLICK, LOAD, UIElement } from "@elf-framework/sapa";
 
 import { TabPanel } from "./TabPanel";
 import "./Tabs.scss";

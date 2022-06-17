@@ -1,5 +1,5 @@
 {
-  "name": "@elf/design-system",
+  "name": "@elf-framework/design-system",
   "version": "0.0.1",
   "description": "Fantastic Design System ",
   "main": "./dist/design-system.umd.js",

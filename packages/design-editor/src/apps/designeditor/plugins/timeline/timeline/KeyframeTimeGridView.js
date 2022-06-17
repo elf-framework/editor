@@ -1,7 +1,7 @@
-import { DEBOUNCE, THROTTLE, SUBSCRIBE } from "@elf/sapa";
+import { DEBOUNCE, THROTTLE, SUBSCRIBE } from "@elf-framework/sapa";
 
 import { RESIZE_WINDOW, REFRESH_SELECTION } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class KeyframeTimeGridView extends EditorElement {
   template() {

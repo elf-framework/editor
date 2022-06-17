@@ -9,12 +9,12 @@ import {
   KEYDOWN,
   ENTER,
   SUBSCRIBE,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ProjectProperty.scss";
 
-import {iconUse} from "@elf/editor";
-import { BaseProperty } from "@elf/editor"
+import {iconUse} from "@elf-framework/editor";
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class ProjectProperty extends BaseProperty {
   getTitle() {

@@ -1,4 +1,4 @@
-import { createComponent, SUBSCRIBE } from "@elf/sapa";
+import { createComponent, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./BlankToolBar.scss";
 

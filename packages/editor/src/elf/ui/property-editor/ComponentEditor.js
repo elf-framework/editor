@@ -5,11 +5,11 @@ import {
   isFunction,
   isString,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ComponentEditor.scss";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export class ComponentEditor extends EditorElement {

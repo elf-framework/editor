@@ -5,7 +5,7 @@ import {
   isNotUndefined,
   isObject,
   isUndefined,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import { getPredefinedCubicBezier } from "./bezier";
 import { randomNumber } from "./math/index";

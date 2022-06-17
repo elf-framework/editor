@@ -5,14 +5,14 @@ import {
   SUBSCRIBE_SELF,
   THROTTLE,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./PositionProperty.scss";
 
 import { round } from "elf/core/math";
 import { REFRESH_SELECTION, UPDATE_CANVAS } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 const DEFAULT_SIZE = 0;
 

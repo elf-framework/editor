@@ -6,12 +6,12 @@ import {
   LOAD,
   SUBSCRIBE,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import boxShadow from "../../preset/box-shadow";
 import "./BoxShadowProperty.scss";
 
-import {BaseProperty, iconUse} from "@elf/editor";
+import {BaseProperty, iconUse} from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 
 export default class BoxShadowProperty extends BaseProperty {

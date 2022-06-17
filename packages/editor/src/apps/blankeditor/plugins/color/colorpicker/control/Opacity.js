@@ -1,6 +1,6 @@
-import { BIND, POINTERSTART, clone } from "@elf/sapa";
+import { BIND, POINTERSTART, clone } from "@elf-framework/sapa";
 
-import * as Color from "@elf/color";
+import * as Color from "@elf-framework/color";
 import { END, MOVE } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";

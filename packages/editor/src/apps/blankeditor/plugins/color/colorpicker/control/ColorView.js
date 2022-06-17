@@ -1,4 +1,4 @@
-import { BIND } from "@elf/sapa";
+import { BIND } from "@elf-framework/sapa";
 
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 

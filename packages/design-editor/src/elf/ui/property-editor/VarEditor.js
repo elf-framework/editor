@@ -1,9 +1,9 @@
-import { INPUT, LOAD, CLICK, SUBSCRIBE } from "@elf/sapa";
+import { INPUT, LOAD, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./VarEditor.scss";
 
-import {iconUse} from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import {iconUse} from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class VarEditor extends EditorElement {
   initState() {

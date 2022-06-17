@@ -1,4 +1,4 @@
-import { POINTERSTART, BIND, isNotUndefined, classnames } from "@elf/sapa";
+import { POINTERSTART, BIND, isNotUndefined, classnames } from "@elf-framework/sapa";
 
 import "./DefaultLayout.scss";
 

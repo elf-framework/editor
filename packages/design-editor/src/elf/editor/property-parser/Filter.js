@@ -1,6 +1,6 @@
-import { convertMatches, reverseMatches } from "@elf/color";
+import { convertMatches, reverseMatches } from "@elf-framework/color";
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 const FILTER_REG =
   /((blur|grayscale|drop-shadow|hue-rotate|invert|brightness|contrast|opacity|saturate|sepia|url)\(([^)]*)\))/gi;
 export class Filter extends PropertyItem {

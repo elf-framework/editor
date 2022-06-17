@@ -1,8 +1,8 @@
-import { CLICK, BIND } from "@elf/sapa";
+import { CLICK, BIND } from "@elf-framework/sapa";
 
 import "./ColorSingleEditor.scss";
 
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class ColorSingleEditor extends EditorElement {
   initState() {

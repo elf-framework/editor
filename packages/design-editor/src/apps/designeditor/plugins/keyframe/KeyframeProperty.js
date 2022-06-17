@@ -1,9 +1,9 @@
-import { LOAD, CLICK, PREVENT, SUBSCRIBE, DOMDIFF } from "@elf/sapa";
+import { LOAD, CLICK, PREVENT, SUBSCRIBE, DOMDIFF } from "@elf-framework/sapa";
 
 import "./KeyframeProperty.scss";
 
 import { uuidShort } from "elf/core/math";
-import {BaseProperty, iconUse} from "@elf/editor";
+import {BaseProperty, iconUse} from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 
 

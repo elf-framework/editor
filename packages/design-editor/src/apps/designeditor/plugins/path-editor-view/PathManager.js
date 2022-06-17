@@ -1,9 +1,9 @@
-import { CLICK, BIND, SUBSCRIBE } from "@elf/sapa";
+import { CLICK, BIND, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./PathManager.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 const MODES = {
   "segment-move": "modify",

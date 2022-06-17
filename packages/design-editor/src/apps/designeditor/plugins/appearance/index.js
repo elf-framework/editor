@@ -1,4 +1,4 @@
-import { ObjectProperty } from "@elf/editor";
+import { ObjectProperty } from "@elf-framework/editor";
 import { Overflow, BlendMode } from "elf/editor/types/model";
 
 

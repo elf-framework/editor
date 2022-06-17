@@ -1,3 +1,3 @@
-declare module "@elf/config" {
+declare module "@elf-framework/config" {
     
 }

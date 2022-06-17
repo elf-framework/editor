@@ -1,9 +1,9 @@
-import { CONFIG, LOAD, DOMDIFF, SUBSCRIBE, IF, DEBOUNCE } from "@elf/sapa";
+import { CONFIG, LOAD, DOMDIFF, SUBSCRIBE, IF, DEBOUNCE } from "@elf-framework/sapa";
 
 import "./CodeViewProperty.scss";
 
 import { REFRESH_SELECTION, UPDATE_CANVAS } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor";
+import { BaseProperty } from "@elf-framework/editor";
 
 
 export default class CodeViewProperty extends BaseProperty {

@@ -1,6 +1,6 @@
-import { start } from "@elf/sapa";
-import "@elf/ui/style.css";
-import { Button, Tooltip } from "@elf/ui";
+import { start } from "@elf-framework/sapa";
+import "@elf-framework/ui/style.css";
+import { Button, Tooltip } from "@elf-framework/ui";
 
 start(() => {
 

@@ -1,4 +1,4 @@
-import { LOAD, CLICK, DOMDIFF } from "@elf/sapa";
+import { LOAD, CLICK, DOMDIFF } from "@elf-framework/sapa";
 
 import { BaseUI } from "../BaseUI";
 import "./Button.scss";

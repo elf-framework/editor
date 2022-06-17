@@ -1,4 +1,4 @@
-import {SelectEditor} from "@elf/editor";
+import {SelectEditor} from "@elf-framework/editor";
 
 export const font_list = [
   "",

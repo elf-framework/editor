@@ -1,8 +1,8 @@
-import { BIND, CLICK, DOMDIFF, LOAD, isFunction } from "@elf/sapa";
+import { BIND, CLICK, DOMDIFF, LOAD, isFunction } from "@elf-framework/sapa";
 
 import "./ToolbarMenuItem.scss";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 /**

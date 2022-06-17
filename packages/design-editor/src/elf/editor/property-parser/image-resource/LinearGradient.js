@@ -1,4 +1,4 @@
-import { isNumber } from "@elf/sapa";
+import { isNumber } from "@elf-framework/sapa";
 
 import { Gradient } from "./Gradient";
 

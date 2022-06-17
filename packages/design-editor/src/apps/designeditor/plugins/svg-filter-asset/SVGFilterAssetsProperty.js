@@ -1,12 +1,12 @@
-import { LOAD, CLICK, INPUT, DEBOUNCE, SUBSCRIBE } from "@elf/sapa";
+import { LOAD, CLICK, INPUT, DEBOUNCE, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./SVGFilterAssetsProperty.scss";
 
 import { uuidShort } from "elf/core/math";
-import {iconUse} from "@elf/editor";
+import {iconUse} from "@elf-framework/editor";
 import { SVGFilter } from "elf/editor/property-parser/SVGFilter";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class SVGFilterAssetsProperty extends BaseProperty {
   getTitle() {

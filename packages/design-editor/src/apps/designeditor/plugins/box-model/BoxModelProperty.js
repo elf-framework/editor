@@ -1,10 +1,10 @@
-import { DEBOUNCE, DOMDIFF, IF, INPUT, LOAD, SUBSCRIBE } from "@elf/sapa";
+import { DEBOUNCE, DOMDIFF, IF, INPUT, LOAD, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./BoxModelProperty.scss";
 
 import { REFRESH_SELECTION, UPDATE_CANVAS } from "elf/editor/types/event";
-import { Length } from "@elf/editor"
-import { BaseProperty } from "@elf/editor";
+import { Length } from "@elf-framework/editor"
+import { BaseProperty } from "@elf-framework/editor";
 
 const fields = ["margin", "padding"];
 let styleKeys = [];

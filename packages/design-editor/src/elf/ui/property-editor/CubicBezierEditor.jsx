@@ -1,4 +1,4 @@
-import { CLICK, POINTERSTART, BIND, SUBSCRIBE, isUndefined } from "@elf/sapa";
+import { CLICK, POINTERSTART, BIND, SUBSCRIBE, isUndefined } from "@elf-framework/sapa";
 
 import "./CubicBezierEditor.scss";
 
@@ -10,10 +10,10 @@ import {
 } from "elf/core/bezier";
 import { curveToPath, curveToPointLine } from "elf/core/func";
 import { div } from "elf/core/math";
-import {iconUse} from "@elf/editor";
+import {iconUse} from "@elf-framework/editor";
 import { END, MOVE } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class CubicBezierEditor extends EditorElement {
   initState() {

@@ -1,7 +1,7 @@
 import { BaseSVGFilter } from "./BaseSVGFilter";
 
 import { OBJECT_TO_PROPERTY } from "elf/core/func";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class PointLightSVGFilter extends BaseSVGFilter {
   getDefaultObject() {

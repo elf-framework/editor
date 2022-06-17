@@ -1,4 +1,4 @@
-import { SUBSCRIBE } from "@elf/sapa";
+import { SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./ContextMenuManager.scss";
 

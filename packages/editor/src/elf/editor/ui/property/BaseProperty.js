@@ -1,4 +1,4 @@
-import { BIND, isFunction } from "@elf/sapa";
+import { BIND, isFunction } from "@elf-framework/sapa";
 
 import { EditorElement } from "../common/EditorElement";
 import "./BaseProperty.scss";

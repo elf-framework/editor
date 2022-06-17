@@ -1,4 +1,4 @@
-import { createComponentList } from "@elf/sapa";
+import { createComponentList } from "@elf-framework/sapa";
 
 import "./AlignmentProperty.scss";
 
@@ -10,7 +10,7 @@ import RightAlign from "elf/editor/ui/menu-items/RightAlign";
 import SameHeight from "elf/editor/ui/menu-items/SameHeight";
 import SameWidth from "elf/editor/ui/menu-items/SameWidth";
 import TopAlign from "elf/editor/ui/menu-items/TopAlign";
-import { BaseProperty } from "@elf/editor";
+import { BaseProperty } from "@elf-framework/editor";
 
 
 export default class AlignmentProperty extends BaseProperty {

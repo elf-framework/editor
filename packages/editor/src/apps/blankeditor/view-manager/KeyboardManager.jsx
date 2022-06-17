@@ -1,4 +1,4 @@
-import { Dom, KEYDOWN, KEYUP, IF } from "@elf/sapa";
+import { Dom, KEYDOWN, KEYUP, IF } from "@elf-framework/sapa";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 const formElements = ["TEXTAREA", "INPUT", "SELECT"];

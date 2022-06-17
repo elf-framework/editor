@@ -1,4 +1,4 @@
-import { iconUse, ObjectProperty } from "@elf/editor";
+import { iconUse, ObjectProperty } from "@elf-framework/editor";
 import {
   TextAlign,
   TextClip,

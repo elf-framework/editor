@@ -1,4 +1,4 @@
-import { UIElement, LOAD, CLICK, SUBSCRIBE, createComponent } from "@elf/sapa";
+import { UIElement, LOAD, CLICK, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import "./ColorPickerPopup.scss";
 import { BasePopup } from "elf/editor/ui/popup/BasePopup";

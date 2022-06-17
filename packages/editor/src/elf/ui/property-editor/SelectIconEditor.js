@@ -5,11 +5,11 @@ import {
   isBoolean,
   isNotUndefined,
   isString,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./SelectIconEditor.scss";
 
-import { icons, iconUse, iconBlank } from "@elf/icon";
+import { icons, iconUse, iconBlank } from "@elf-framework/icon";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export function CSS_TO_STRING(style, postfix = "") {

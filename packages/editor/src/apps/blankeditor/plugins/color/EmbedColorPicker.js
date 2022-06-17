@@ -1,4 +1,4 @@
-import { SUBSCRIBE_SELF, createComponent } from "@elf/sapa";
+import { SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 

@@ -1,6 +1,6 @@
 import { BaseSVGFilter } from "./BaseSVGFilter";
 
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class CompositeSVGFilter extends BaseSVGFilter {
   getDefaultObject() {

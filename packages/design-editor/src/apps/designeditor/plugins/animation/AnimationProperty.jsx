@@ -1,12 +1,12 @@
-import { clone, LOAD, CLICK, DOMDIFF, SUBSCRIBE } from "@elf/sapa";
+import { clone, LOAD, CLICK, DOMDIFF, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./AnimationProperty.scss";
 
 import { curveToPath } from "elf/core/func";
-import { iconUse, BaseProperty } from "@elf/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
 // import { Animation } from "elf/editor/property-parser/Animation";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class AnimationProperty extends BaseProperty {
   getTitle() {

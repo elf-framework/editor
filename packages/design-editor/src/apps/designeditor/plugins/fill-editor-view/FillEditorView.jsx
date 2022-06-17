@@ -9,7 +9,7 @@ import {
   POINTERSTART,
   SUBSCRIBE,
   DEBOUNCE,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./FillEditorView.scss";
 
@@ -31,8 +31,8 @@ import {
   SpreadMethodType,
   TimingFunction,
 } from "elf/editor/types/model";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 import { parseOneValue } from "elf/utils/css-function-parser";
 
 const spreadMethodList = [

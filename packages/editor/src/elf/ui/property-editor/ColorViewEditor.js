@@ -1,8 +1,8 @@
-import { CLICK, INPUT, BIND, FOCUSIN, FOCUSOUT, isBoolean } from "@elf/sapa";
+import { CLICK, INPUT, BIND, FOCUSIN, FOCUSOUT, isBoolean } from "@elf-framework/sapa";
 
 import "./ColorViewEditor.scss";
 
-import * as Color from "@elf/color";
+import * as Color from "@elf-framework/color";
 import { round } from "elf/core/math";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 

@@ -1,8 +1,8 @@
-import { POINTERSTART, CLICK, SUBSCRIBE } from "@elf/sapa";
+import { POINTERSTART, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./BasePopup.scss";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { END, MOVE } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";

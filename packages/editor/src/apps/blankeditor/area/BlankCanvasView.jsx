@@ -12,7 +12,7 @@ import {
   SUBSCRIBE,
   WHEEL,
   Dom,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 // import "./CanvasView.scss";
 

@@ -7,7 +7,7 @@ import { DropdownMenuItem } from "./DropdownMenuItem";
 import { DropdownTextMenuItem } from "./DropdownTextMenuItem";
 import { makeMenuItem } from "./makeMenuItem";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 export class DropdownMenuList extends EditorElement {
   components() {

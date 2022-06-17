@@ -1,4 +1,4 @@
-import { Dom } from "@elf/sapa";
+import { Dom } from "@elf-framework/sapa";
 
 export default function createImagePng(img, callback, imageType = "image/png") {
   var canvas = Dom.create("canvas");

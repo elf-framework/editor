@@ -6,7 +6,7 @@ import {
   DOMDIFF,
   PREVENT,
   STOP,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import { BaseUI } from "../BaseUI";
 import "./ToggleButton.scss";

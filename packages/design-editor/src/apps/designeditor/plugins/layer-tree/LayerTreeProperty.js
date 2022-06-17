@@ -17,15 +17,15 @@ import {
   THROTTLE,
   CONFIG,
   Dom,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./LayerTreeProperty.scss";
 
-import { iconUse, iconUseForPath, Length } from "@elf/editor";
+import { iconUse, iconUseForPath, Length } from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import { KEY_CODE } from "elf/editor/types/key";
 import { TargetActionType } from "elf/editor/types/model";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 const DRAG_START_CLASS = "drag-start";
 

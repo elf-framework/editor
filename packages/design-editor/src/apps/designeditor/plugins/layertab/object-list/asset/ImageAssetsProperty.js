@@ -1,9 +1,9 @@
-import { LOAD, CLICK, DOMDIFF, DRAGSTART, CHANGE, SUBSCRIBE } from "@elf/sapa";
+import { LOAD, CLICK, DOMDIFF, DRAGSTART, CHANGE, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./ImageAssetsProperty.scss";
 
-import {iconUse} from "@elf/editor";
-import { BaseProperty } from "@elf/editor"
+import {iconUse} from "@elf-framework/editor";
+import { BaseProperty } from "@elf-framework/editor"
 import revokeObjectUrl from "elf/editor/util/revokeObjectUrl";
 
 export default class ImageAssetsProperty extends BaseProperty {

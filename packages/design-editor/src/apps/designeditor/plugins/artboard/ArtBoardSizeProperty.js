@@ -6,13 +6,13 @@ import {
   SUBSCRIBE_SELF,
   IF,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ArtBoardSizeProperty.scss";
 import artboardSize from "./preset/artboard.size";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor";
+import { BaseProperty } from "@elf-framework/editor";
 
 export default class ArtBoardSizeProperty extends BaseProperty {
   getClassName() {

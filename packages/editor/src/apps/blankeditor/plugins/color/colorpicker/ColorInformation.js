@@ -1,6 +1,6 @@
-import { CLICK, KEYUP, INPUT, IF, PASTE } from "@elf/sapa";
+import { CLICK, KEYUP, INPUT, IF, PASTE } from "@elf-framework/sapa";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export default class ColorInformation extends EditorElement {

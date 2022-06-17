@@ -10,13 +10,13 @@ import {
   DOMDIFF,
   SUBSCRIBE_SELF,
   isArray,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./BoxShadowEditor.scss";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import { BoxShadowStyle } from "elf/editor/types/model";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class BoxShadowEditor extends EditorElement {
   initState() {

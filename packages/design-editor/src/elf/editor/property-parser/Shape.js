@@ -1,9 +1,9 @@
-import { isUndefined } from "@elf/sapa";
+import { isUndefined } from "@elf-framework/sapa";
 
 import { ClipPath } from "./ClipPath";
 
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-import { Length, DirectionLength } from "@elf/editor"
+import { Length, DirectionLength } from "@elf-framework/editor"
 const CLIPPATH_REG =
   /(content-box|padding-box|border-box|margin-box|view-box|stroke-box|fill-box|none|(inset|circle|ellipse|polygon|path|svg|url)(\(([^)]*)\))?)/gi;
 export class Shape extends PropertyItem {

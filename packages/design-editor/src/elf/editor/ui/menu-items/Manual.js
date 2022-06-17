@@ -1,4 +1,4 @@
-import { registElement } from "@elf/sapa";
+import { registElement } from "@elf-framework/sapa";
 
 import MenuItem from "./MenuItem";
 

@@ -1,4 +1,4 @@
-import { isFunction } from "@elf/sapa";
+import { isFunction } from "@elf-framework/sapa";
 
 import { uuidShort } from "elf/core/math";
 

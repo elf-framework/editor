@@ -1,4 +1,4 @@
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class PerspectiveOrigin {
   /**

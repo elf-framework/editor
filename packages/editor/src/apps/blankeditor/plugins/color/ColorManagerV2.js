@@ -1,4 +1,4 @@
-import * as Color from "@elf/color";
+import * as Color from "@elf-framework/color";
 
 export default class ColorManagerV2 {
   constructor() {

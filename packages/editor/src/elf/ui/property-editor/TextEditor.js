@@ -1,4 +1,4 @@
-import { BIND, INPUT } from "@elf/sapa";
+import { BIND, INPUT } from "@elf-framework/sapa";
 
 import "./TextEditor.scss";
 

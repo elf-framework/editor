@@ -1,6 +1,6 @@
-import { CLICK } from "@elf/sapa";
+import { CLICK } from "@elf-framework/sapa";
 
-import {EditorElement, iconUse} from "@elf/editor";
+import {EditorElement, iconUse} from "@elf-framework/editor";
 
 const DEFAULT_TITLE = "";
 const DEFAULT_ICON = "";

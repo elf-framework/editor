@@ -1,4 +1,4 @@
-import { start } from "@elf/sapa";
+import { start } from "@elf-framework/sapa";
 
 import "../scss/index.scss";
 import { BlankEditor } from "./blankeditor";

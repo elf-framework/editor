@@ -13,7 +13,7 @@ import {
   classnames,
   POINTEROVER,
   POINTEROUT,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import { EditorElement } from "../common/EditorElement";
 import { Divider } from "./dropdown-menu/Divider";
@@ -27,7 +27,7 @@ import { DropdownTextMenuItem } from "./dropdown-menu/DropdownTextMenuItem";
 import { makeMenuItem } from "./dropdown-menu/makeMenuItem";
 import "./DropdownMenu.scss";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 import { Length } from "elf/editor/unit/Length";
 
 export class DropdownMenu extends EditorElement {

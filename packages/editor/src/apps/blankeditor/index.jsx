@@ -1,4 +1,4 @@
-import { SUBSCRIBE, CONFIG } from "@elf/sapa";
+import { SUBSCRIBE, CONFIG } from "@elf-framework/sapa";
 
 import BlankBodyPanel from "./area/BlankBodyPanel";
 import BlankInspector from "./area/BlankInspector";

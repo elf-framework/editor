@@ -14,7 +14,7 @@ import {
   SUBSCRIBE,
   KEYDOWN,
   Dom,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./LayerAppendView.scss";
 
@@ -23,8 +23,8 @@ import { CSS_TO_STRING } from "elf/core/func";
 import { PathParser } from "elf/core/parser/PathParser";
 import { PathStringManager } from "elf/core/parser/PathStringManager";
 import { UPDATE_VIEWPORT, END, MOVE } from "elf/editor/types/event";
-import { Length } from "@elf/editor"
-import { EditorElement } from "@elf/editor";
+import { Length } from "@elf-framework/editor"
+import { EditorElement } from "@elf-framework/editor";
 
 export default class LayerAppendView extends EditorElement {
   template() {

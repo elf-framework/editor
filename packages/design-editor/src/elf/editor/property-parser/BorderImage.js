@@ -1,4 +1,4 @@
-import { keyMap, isNumber } from "@elf/sapa";
+import { keyMap, isNumber } from "@elf-framework/sapa";
 
 import { ConicGradient } from "./image-resource/ConicGradient";
 import { Gradient } from "./image-resource/Gradient";
@@ -10,9 +10,9 @@ import { RepeatingRadialGradient } from "./image-resource/RepeatingRadialGradien
 import { StaticGradient } from "./image-resource/StaticGradient";
 import { URLImageResource } from "./image-resource/URLImageResource";
 
-import { convertMatches, reverseMatches } from "@elf/color";
+import { convertMatches, reverseMatches } from "@elf-framework/color";
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class BorderImage extends PropertyItem {
   addImageResource(imageResource) {

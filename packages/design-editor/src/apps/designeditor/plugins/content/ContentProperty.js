@@ -1,4 +1,4 @@
-import { INPUT, BIND, DEBOUNCE, SUBSCRIBE } from "@elf/sapa";
+import { INPUT, BIND, DEBOUNCE, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./ContentProperty.scss";
 
@@ -7,7 +7,7 @@ import {
   REFRESH_CONTENT,
   UPDATE_CANVAS,
 } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor";
+import { BaseProperty } from "@elf-framework/editor";
 
 
 export default class ContentProperty extends BaseProperty {

@@ -1,4 +1,4 @@
-import { isNotUndefined, isUndefined, Dom } from "@elf/sapa";
+import { isNotUndefined, isUndefined, Dom } from "@elf-framework/sapa";
 
 import { createTimingFunction } from "../interpolate/index";
 // import { createInterpolateFunction } from "../interpolate/interpolate-functions";

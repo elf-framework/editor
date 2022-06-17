@@ -8,7 +8,7 @@ import {
   IF,
   variable,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import patterns from "../../../../preset/patterns";
 import "./PatternAssetsProperty.scss";
@@ -17,7 +17,7 @@ import { CSS_TO_STRING } from "elf/core/func";
 import { Pattern } from "elf/editor/property-parser/Pattern";
 import { ViewModeType } from "elf/editor/types/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class PatternAssetsProperty extends BaseProperty {
   getTitle() {

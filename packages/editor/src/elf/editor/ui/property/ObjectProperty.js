@@ -7,7 +7,7 @@ import {
   isUndefined,
   createComponent,
   // DOMDIFF,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 import { REFRESH_SELECTION } from "apps/blankeditor/types/event";
 
 

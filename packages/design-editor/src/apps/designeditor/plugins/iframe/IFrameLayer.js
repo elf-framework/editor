@@ -1,4 +1,4 @@
-import { list as icon } from "@elf/icon";
+import { list as icon } from "@elf-framework/icon";
 import { Component } from "elf/editor/model/Component";
 
 export class IFrameLayer extends Component {

@@ -3,7 +3,7 @@ import { PatternCache } from "./PatternCache";
 
 import { STRING_TO_CSS } from "elf/core/func";
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 import { makeGroupFunction, parseValue } from "elf/utils/css-function-parser";
 
 const customFuncMap = {

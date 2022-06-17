@@ -6,12 +6,12 @@ import {
   isArray,
   Dom,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./StrokeDashArrayEditor.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 const dash_list = [
   [10, 5],

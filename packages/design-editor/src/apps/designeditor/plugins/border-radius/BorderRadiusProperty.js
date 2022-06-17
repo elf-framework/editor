@@ -1,4 +1,4 @@
-import { BaseProperty } from "@elf/editor";
+import { BaseProperty } from "@elf-framework/editor";
 import {
   DEBOUNCE,
   IF,
@@ -6,7 +6,7 @@ import {
   SUBSCRIBE,
   SUBSCRIBE_SELF,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 

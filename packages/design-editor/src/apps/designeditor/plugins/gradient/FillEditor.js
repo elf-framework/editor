@@ -9,7 +9,7 @@ import {
   KEYUP,
   isUndefined,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./FillEditor.scss";
 
@@ -18,8 +18,8 @@ import { SVGStaticGradient } from "elf/editor/property-parser/image-resource/SVG
 import { SVGFill } from "elf/editor/property-parser/SVGFill";
 import { END, MOVE } from "elf/editor/types/event";
 import { GradientType } from "elf/editor/types/model";
-import { Length } from "@elf/editor"
-import { EditorElement } from "@elf/editor";
+import { Length } from "@elf-framework/editor"
+import { EditorElement } from "@elf-framework/editor";
 
 export default class FillEditor extends EditorElement {
   initState() {

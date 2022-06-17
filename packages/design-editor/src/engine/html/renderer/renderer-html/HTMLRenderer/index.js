@@ -1,4 +1,4 @@
-import { isFunction } from "@elf/sapa";
+import { isFunction } from "@elf-framework/sapa";
 
 import { CSS_TO_STRING, TAG_TO_STRING } from "elf/core/func";
 import { uuid } from "elf/core/math";

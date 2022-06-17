@@ -1,4 +1,4 @@
-import { isArray } from "@elf/sapa";
+import { isArray } from "@elf-framework/sapa";
 
 import { UPDATE_CANVAS } from "elf/editor/types/event";
 

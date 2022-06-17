@@ -1,4 +1,4 @@
-import { isFunction } from "@elf/sapa";
+import { isFunction } from "@elf-framework/sapa";
 
 export class I18nManager {
   constructor(editor) {

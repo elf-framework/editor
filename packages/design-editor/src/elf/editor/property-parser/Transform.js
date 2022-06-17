@@ -4,7 +4,7 @@ import { TransformCache } from "./TransformCache";
 
 import { degreeToRadian } from "elf/core/math";
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 const TRANSFORM_REG =
   /((matrix|translate(X|Y|Z|3d)?|scale(X|Y|Z|3d)?|rotate(X|Y|Z|3d)?|skew(X|Y)?|matrix(3d)?|perspective)\(([^)]*)\))/gi;

@@ -1,6 +1,6 @@
-import { isFunction } from "@elf/sapa";
+import { isFunction } from "@elf-framework/sapa";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 
 export class IconManager {
   constructor(editor) {

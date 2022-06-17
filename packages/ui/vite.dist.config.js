@@ -7,7 +7,7 @@ export default defineConfig({
   esbuild: {
     jsxFactory: "createElementJsx",
     jsxFragment: "FragmentInstance",
-    jsxInject: `import { createElementJsx } from "@elf/sapa"`,
+    jsxInject: `import { createElementJsx } from "@elf-framework/sapa"`,
   },
   build: {
     emptyOutDir: false,
@@ -20,14 +20,14 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["@elf/sapa", "@elf/design-system", "@elf/color"],
+      external: ["@elf-framework/sapa", "@elf-framework/design-system", "@elf-framework/color"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          "@elf/sapa": "sapa",
-          "@elf/design-system": "designSystem",
-          "@elf/color": "color",
+          "@elf-framework/sapa": "sapa",
+          "@elf-framework/design-system": "designSystem",
+          "@elf-framework/color": "color",
         },
       },
     },

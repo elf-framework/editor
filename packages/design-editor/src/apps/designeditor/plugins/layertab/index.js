@@ -7,7 +7,7 @@ import CustomAssets from "./object-list/CustomAssets";
 import LibraryItems from "./object-list/LibraryItems";
 import ObjectItems from "./object-list/ObjectItems";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 
 export default function (editor) {
   editor.context.config.set("layertab.selectedValue", "layer");

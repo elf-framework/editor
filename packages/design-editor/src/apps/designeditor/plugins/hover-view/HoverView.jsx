@@ -1,13 +1,13 @@
 import { vec3 } from "gl-matrix";
 
-import { CONFIG, SUBSCRIBE, IF, Dom } from "@elf/sapa";
+import { CONFIG, SUBSCRIBE, IF, Dom } from "@elf-framework/sapa";
 
 import "./HoverView.scss";
 
 import { vertiesToPath } from "elf/core/collision";
 import { ViewModeType } from "elf/editor/types/editor";
 import { UPDATE_VIEWPORT, UPDATE_CANVAS } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class HoverView extends EditorElement {
   template() {

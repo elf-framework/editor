@@ -1,4 +1,4 @@
-import { BaseStore, registAlias, registElement } from "@elf/sapa";
+import { BaseStore, registAlias, registElement } from "@elf-framework/sapa";
 
 import commands from "../commands";
 import { AssetManager } from "./manager-items/AssetManager";

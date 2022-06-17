@@ -1,7 +1,7 @@
-import { iconUse } from "@elf/icon";
-import { start } from "@elf/sapa";
-import { IconButton } from "@elf/ui";
-import "@elf/ui/style.css";
+import { iconUse } from "@elf-framework/icon";
+import { start } from "@elf-framework/sapa";
+import { IconButton } from "@elf-framework/ui";
+import "@elf-framework/ui/style.css";
 
 start(function () {
   return (

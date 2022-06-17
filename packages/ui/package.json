@@ -1,5 +1,5 @@
 {
-  "name": "@elf/ui",
+  "name": "@elf-framework/ui",
   "version": "0.0.1",
   "description": "Fantastic UI library",
   "types": "./index.d.ts",
@@ -36,13 +36,13 @@
     "vitest": "0.0.107"
   },
   "peerDependencies": {
-    "@elf/sapa": "*",
-    "@elf/color": "*"    
+    "@elf-framework/sapa": "*",
+    "@elf-framework/color": "*"    
   },
   "dependencies": {
-    "@elf/sapa": "*",
-    "@elf/design-system": "*",
-    "@elf/color": "*"
+    "@elf-framework/sapa": "*",
+    "@elf-framework/design-system": "*",
+    "@elf-framework/color": "*"
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",

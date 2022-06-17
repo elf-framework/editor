@@ -1,8 +1,8 @@
-import { LOAD, SUBSCRIBE, SUBSCRIBE_SELF, createComponent } from "@elf/sapa";
+import { LOAD, SUBSCRIBE, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import "./PatternInfoPopup.scss";
 
-import { BasePopup } from "@elf/editor"
+import { BasePopup } from "@elf-framework/editor"
 
 export default class PatternInfoPopup extends BasePopup {
   getClassName() {

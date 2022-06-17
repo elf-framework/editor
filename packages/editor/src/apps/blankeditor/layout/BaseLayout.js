@@ -9,7 +9,7 @@ import {
   SUBSCRIBE_ALL,
   debounce,
   isObject,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 import {
   RESIZE_WINDOW,
   ADD_BODY_FIRST_MOUSEMOVE,

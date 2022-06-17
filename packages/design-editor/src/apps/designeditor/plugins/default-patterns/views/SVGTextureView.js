@@ -1,9 +1,9 @@
-import { CLICK, LOAD } from "@elf/sapa";
+import { CLICK, LOAD } from "@elf-framework/sapa";
 
 import "./TextureView.scss";
 
 import { PathParser } from "elf/core/parser/PathParser";
-import { EditorElement } from "@elf/editor";
+import { EditorElement } from "@elf-framework/editor";
 
 const svgPatterns = [
   {

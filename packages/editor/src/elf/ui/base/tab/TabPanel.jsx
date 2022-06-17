@@ -1,4 +1,4 @@
-import { UIElement } from "@elf/sapa";
+import { UIElement } from "@elf-framework/sapa";
 
 export class TabPanel extends UIElement {
   initState() {

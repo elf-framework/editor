@@ -1,4 +1,4 @@
-import { isNumber, isString, isFunction } from "@elf/sapa";
+import { isNumber, isString, isFunction } from "@elf-framework/sapa";
 
 export function second(fps, timecode) {
   if (isString(timecode)) {

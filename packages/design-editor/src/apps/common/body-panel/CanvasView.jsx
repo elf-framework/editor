@@ -13,7 +13,7 @@ import {
   WHEEL,
   Dom,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./CanvasView.scss";
 import DragAreaRectView from "./render-view/draw-panels/DragAreaRectView";
@@ -30,7 +30,7 @@ import {
 } from "elf/editor/types/event";
 import { KEY_CODE } from "elf/editor/types/key";
 import HTMLRenderView from "engine/html/html-render-view/HTMLRenderView";
-import { EditorElement } from "@elf/editor";
+import { EditorElement } from "@elf-framework/editor";
 
 export default class CanvasView extends EditorElement {
   components() {

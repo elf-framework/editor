@@ -6,14 +6,14 @@ import {
   POINTERSTART,
   createComponent,
   classnames,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./RangeEditor.scss";
 
 import { END } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 
 export class RangeEditor extends EditorElement {
   initState() {

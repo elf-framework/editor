@@ -1,4 +1,4 @@
-import { AFTER } from "@elf/sapa";
+import { AFTER } from "@elf-framework/sapa";
 
 /** Custom Global Event Functions */
 

@@ -1,8 +1,8 @@
-import { createComponent } from "@elf/sapa";
+import { createComponent } from "@elf-framework/sapa";
 
 import "./LibraryItems.scss";
 
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class LibraryItems extends EditorElement {
   template() {

@@ -1,4 +1,4 @@
-import { isObject, isString } from "@elf/sapa";
+import { isObject, isString } from "@elf-framework/sapa";
 
 import { AssetParser } from "elf/core/parser/AssetParser";
 

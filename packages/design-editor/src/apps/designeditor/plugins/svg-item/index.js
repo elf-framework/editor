@@ -5,7 +5,7 @@ import SVGFilterEditor from "./SVGFilterEditor";
 import SVGFilterPopup from "./SVGFilterPopup";
 import SVGFilterSelectEditor from "./SVGFilterSelectEditor";
 
-import { iconUse, ObjectProperty } from "@elf/editor";
+import { iconUse, ObjectProperty } from "@elf-framework/editor";
 import { StrokeLineCap, StrokeLineJoin } from "elf/editor/types/model";
 
 /**

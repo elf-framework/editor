@@ -14,13 +14,13 @@ import {
   isUndefined,
   Dom,
   classnames,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 // import { PathParser } from "elf/core/parser/PathParser";
 import { timecode, second } from "elf/core/time";
 import { MOVE, END, RESIZE_WINDOW } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 const PADDING = 20;
 

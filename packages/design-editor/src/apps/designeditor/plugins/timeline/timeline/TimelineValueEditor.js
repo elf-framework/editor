@@ -8,11 +8,11 @@ import {
   SUBSCRIBE,
   isUndefined,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import { second, timecode } from "elf/core/time";
-import { list as icon } from "@elf/icon";
-import { EditorElement } from "@elf/editor"
+import { list as icon } from "@elf-framework/icon";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class TimelineValueEditor extends EditorElement {
   initState() {

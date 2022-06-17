@@ -1,4 +1,4 @@
-import { createComponent } from "@elf/sapa";
+import { createComponent } from "@elf-framework/sapa";
 
 import "./DepthProperty.scss";
 
@@ -6,7 +6,7 @@ import OrderDown from "elf/editor/ui/menu-items/OrderDown";
 import OrderFirst from "elf/editor/ui/menu-items/OrderFirst";
 import OrderLast from "elf/editor/ui/menu-items/OrderLast";
 import OrderTop from "elf/editor/ui/menu-items/OrderTop";
-import { BaseProperty } from "@elf/editor";
+import { BaseProperty } from "@elf-framework/editor";
 
 export default class DepthProperty extends BaseProperty {
   components() {

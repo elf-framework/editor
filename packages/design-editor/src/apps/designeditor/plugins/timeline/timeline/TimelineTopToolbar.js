@@ -1,8 +1,8 @@
-import { createComponent } from "@elf/sapa";
+import { createComponent } from "@elf-framework/sapa";
 
 import KeyframeTimeControl from "./KeyframeTimeControl";
 
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class TimelineTopToolbar extends EditorElement {
   components() {

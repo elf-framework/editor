@@ -1,7 +1,7 @@
-import { CLICK, INPUT, BIND, SUBSCRIBE } from "@elf/sapa";
+import { CLICK, INPUT, BIND, SUBSCRIBE } from "@elf-framework/sapa";
 
-import { list as icon } from "@elf/icon";
-import { EditorElement } from "@elf/editor"
+import { list as icon } from "@elf-framework/icon";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class TimelinePlayControl extends EditorElement {
   template() {

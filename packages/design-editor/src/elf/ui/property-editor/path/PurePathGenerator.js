@@ -1,6 +1,6 @@
 import { mat4, vec3 } from "gl-matrix";
 
-import { clone, isUndefined } from "@elf/sapa";
+import { clone, isUndefined } from "@elf-framework/sapa";
 
 import { toRectVerties } from "elf/core/collision";
 import { getDist, getXYInCircle, calculateAngle360 } from "elf/core/math";

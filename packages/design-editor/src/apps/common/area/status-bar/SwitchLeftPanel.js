@@ -1,9 +1,9 @@
-import { CLICK } from "@elf/sapa";
+import { CLICK } from "@elf-framework/sapa";
 
 import "./SwitchLeftPanel.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class SwitchLeftPanel extends EditorElement {
   template() {

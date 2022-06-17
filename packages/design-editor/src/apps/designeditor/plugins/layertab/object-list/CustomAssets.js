@@ -1,9 +1,9 @@
-import { CLICK, DRAGSTART, LOAD } from "@elf/sapa";
+import { CLICK, DRAGSTART, LOAD } from "@elf-framework/sapa";
 
 import "./CustomAssets.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 export default class CustomAssets extends EditorElement {
   template() {

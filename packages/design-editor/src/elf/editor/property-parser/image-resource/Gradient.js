@@ -1,9 +1,9 @@
-import { isUndefined } from "@elf/sapa";
+import { isUndefined } from "@elf-framework/sapa";
 
 import { ColorStep } from "./ColorStep";
 import { ImageResource } from "./ImageResource";
 
-import * as Color from "@elf/color";
+import * as Color from "@elf-framework/color";
 import { PathParser } from "elf/core/parser/PathParser";
 import { createTimingFunction } from "elf/editor/interpolate";
 import { step } from "elf/editor/interpolate/timing-functions/steps";

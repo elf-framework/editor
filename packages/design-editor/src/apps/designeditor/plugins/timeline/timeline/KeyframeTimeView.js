@@ -1,4 +1,4 @@
-import { DEBOUNCE, POINTERSTART, THROTTLE, IF, SUBSCRIBE } from "@elf/sapa";
+import { DEBOUNCE, POINTERSTART, THROTTLE, IF, SUBSCRIBE } from "@elf-framework/sapa";
 
 import { second, framesToTimecode } from "elf/core/time";
 import {
@@ -7,8 +7,8 @@ import {
   END,
   RESIZE_WINDOW,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 const PADDING = 20;
 

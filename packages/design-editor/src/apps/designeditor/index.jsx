@@ -13,8 +13,8 @@ import designEditorPlugins from "./plugins/design-editor-plugins";
 
 
 import BodyPanel from "apps/common/BodyPanel";
-import { BlankEditor, DefaultLayoutItem } from "@elf/editor";
-import "@elf/editor/style.css";
+import { BlankEditor, DefaultLayoutItem } from "@elf-framework/editor";
+import "@elf-framework/editor/style.css";
 
 export class DesignEditor extends BlankEditor {
   initialize() {

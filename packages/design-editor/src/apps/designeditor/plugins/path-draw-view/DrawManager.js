@@ -1,10 +1,10 @@
-import { CLICK, SUBSCRIBE, SUBSCRIBE_SELF, createComponent } from "@elf/sapa";
+import { CLICK, SUBSCRIBE, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import "./DrawManager.scss";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class DrawManager extends EditorElement {
   initState() {

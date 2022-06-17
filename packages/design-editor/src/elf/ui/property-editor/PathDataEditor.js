@@ -1,9 +1,9 @@
-import { LOAD, INPUT, DEBOUNCE, CLICK } from "@elf/sapa";
+import { LOAD, INPUT, DEBOUNCE, CLICK } from "@elf-framework/sapa";
 
 import "./PathDataEditor.scss";
 
 import { PathParser } from "elf/core/parser/PathParser";
-import { EditorElement } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
 
 export default class PathDataEditor extends EditorElement {
   initState() {

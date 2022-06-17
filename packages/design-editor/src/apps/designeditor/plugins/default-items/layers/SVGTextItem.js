@@ -1,6 +1,6 @@
 import { SVGModel } from "./SVGModel";
 
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class SVGTextItem extends SVGModel {
   getDefaultObject(obj = {}) {

@@ -1,4 +1,4 @@
-import { createComponent } from "@elf/sapa";
+import { createComponent } from "@elf-framework/sapa";
 
 import "./BlankBodyPanel.scss";
 import BlankCanvasView from "./BlankCanvasView";

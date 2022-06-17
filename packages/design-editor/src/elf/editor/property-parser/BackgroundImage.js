@@ -1,4 +1,4 @@
-import { combineKeyArray, isString, keyEach, keyMap } from "@elf/sapa";
+import { combineKeyArray, isString, keyEach, keyMap } from "@elf-framework/sapa";
 
 import { ConicGradient } from "./image-resource/ConicGradient";
 import { Gradient } from "./image-resource/Gradient";
@@ -13,7 +13,7 @@ import { URLImageResource } from "./image-resource/URLImageResource";
 import { CSS_TO_STRING } from "elf/core/func";
 import { PropertyItem } from "elf/editor/items/PropertyItem";
 import { GradientType, VisibilityType } from "elf/editor/types/model";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 import { parseGroupValue, parseOneValue } from "elf/utils/css-function-parser";
 
 const RepeatList = [

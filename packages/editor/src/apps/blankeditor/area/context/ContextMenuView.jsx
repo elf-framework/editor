@@ -1,4 +1,4 @@
-import { LOAD, CONFIG, BIND, Dom, POINTERSTART } from "@elf/sapa";
+import { LOAD, CONFIG, BIND, Dom, POINTERSTART } from "@elf-framework/sapa";
 
 import ContextMenuRenderer from "./ContextMenuRenderer";
 import "./ContextMenuView.scss";

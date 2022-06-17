@@ -5,13 +5,13 @@ import {
   SUBSCRIBE_SELF,
   createComponent,
   DOMDIFF,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./LayoutProperty.scss";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import { Layout } from "elf/editor/types/model";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class LayoutProperty extends BaseProperty {
   getTitle() {

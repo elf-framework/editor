@@ -1,4 +1,4 @@
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import { EditingMode, Language } from "elf/editor/types/editor";
 import { KeyStringMaker } from "elf/editor/types/key";
 

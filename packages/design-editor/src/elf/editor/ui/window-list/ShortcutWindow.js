@@ -1,4 +1,4 @@
-import { registElement, SUBSCRIBE } from "@elf/sapa";
+import { registElement, SUBSCRIBE } from "@elf-framework/sapa";
 
 import shortcuts from "../../shortcuts";
 import BaseWindow from "./BaseWindow";

@@ -1,6 +1,6 @@
-import { start } from "@elf/sapa";
-import { Button, Menu } from "@elf/ui";
-import "@elf/ui/style.css";
+import { start } from "@elf-framework/sapa";
+import { Button, Menu } from "@elf-framework/ui";
+import "@elf-framework/ui/style.css";
 
 start(function () {
   return (

@@ -16,13 +16,13 @@
   "author": "",
   "license": "ISC",
   "dependecies": {
-    "@elf/sapa": "*",
-    "@elf/ui": "*",
-    "@elf/icon": "*"
+    "@elf-framework/sapa": "*",
+    "@elf-framework/ui": "*",
+    "@elf-framework/icon": "*"
   },
   "devDependencies": {
     "vite": "^2.9.9",
-    "@elf/config": "*",
+    "@elf-framework/config": "*",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",

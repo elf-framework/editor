@@ -1,7 +1,7 @@
-import { start } from "@elf/sapa";
-import "@elf/ui/style.css";
-import { Button, Layout, Panel, TabStrip } from "@elf/ui";
-import { iconUse } from "@elf/icon";
+import { start } from "@elf-framework/sapa";
+import "@elf-framework/ui/style.css";
+import { Button, Layout, Panel, TabStrip } from "@elf-framework/ui";
+import { iconUse } from "@elf-framework/icon";
 
 start(() => {
 

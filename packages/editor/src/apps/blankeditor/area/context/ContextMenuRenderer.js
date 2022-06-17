@@ -1,4 +1,4 @@
-import { LOAD, createComponent } from "@elf/sapa";
+import { LOAD, createComponent } from "@elf-framework/sapa";
 
 import { ToolbarButtonMenuItem } from "../tool-bar/ToolbarButtonMenuItem";
 import "./ContextMenuRenderer.scss";

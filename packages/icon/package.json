@@ -1,5 +1,5 @@
 {
-  "name": "@elf/icon",
+  "name": "@elf-framework/icon",
   "version": "0.0.1",
   "description": "Fantastic Icon library",
   "types": "./index.d.ts",

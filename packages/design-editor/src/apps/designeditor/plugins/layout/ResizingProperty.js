@@ -6,14 +6,14 @@ import {
   SUBSCRIBE,
   SUBSCRIBE_SELF,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./ResizingProperty.scss";
 
-import { iconUse } from "@elf/editor";
+import { iconUse } from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import { ResizingMode } from "elf/editor/types/model";
-import { BaseProperty } from "@elf/editor"
+import { BaseProperty } from "@elf-framework/editor"
 
 export default class ResizingProperty extends BaseProperty {
   getTitle() {

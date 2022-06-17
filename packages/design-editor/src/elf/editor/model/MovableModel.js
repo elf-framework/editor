@@ -1,6 +1,6 @@
 import { mat4, quat, vec3 } from "gl-matrix";
 
-import { isFunction, isNotUndefined, isUndefined } from "@elf/sapa";
+import { isFunction, isNotUndefined, isUndefined } from "@elf-framework/sapa";
 
 import { Transform } from "../property-parser/Transform";
 import { BaseAssetModel } from "./BaseAssetModel";
@@ -23,7 +23,7 @@ import {
 } from "elf/core/math";
 import { PathParser } from "elf/core/parser/PathParser";
 import { TransformOrigin } from "elf/editor/property-parser/TransformOrigin";
-import { Length } from "@elf/editor"
+import { Length } from "@elf-framework/editor"
 
 export class MovableModel extends BaseAssetModel {
   getDefaultObject(obj = {}) {

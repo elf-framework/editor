@@ -1,5 +1,5 @@
 {
-  "name": "@elf/editor",
+  "name": "@elf-framework/editor",
   "version": "0.0.1",
   "description": "Fantastic Web Design Tool ",
   "types": "./index.d.ts",
@@ -20,9 +20,9 @@
     "@entityjs/entityjs": "0.0.6",
     "gl-matrix": "^3.3.0",
     "open-color": "^1.9.1",
-    "@elf/sapa": "*",
-    "@elf/color": "*",
-    "@elf/icon": "*"
+    "@elf-framework/sapa": "*",
+    "@elf-framework/color": "*",
+    "@elf-framework/icon": "*"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.21.0",

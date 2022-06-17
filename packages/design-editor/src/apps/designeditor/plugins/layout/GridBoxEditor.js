@@ -5,12 +5,12 @@ import {
   SUBSCRIBE_SELF,
   clone,
   createComponent,
-} from "@elf/sapa";
+} from "@elf-framework/sapa";
 
 import "./GridBoxEditor.scss";
 
-import { iconUse } from "@elf/editor";
-import { EditorElement } from "@elf/editor"
+import { iconUse } from "@elf-framework/editor";
+import { EditorElement } from "@elf-framework/editor"
 
 const REG_CSS_UNIT =
   /(auto)|(repeat\([^)]*\))|(([\d.]+)(px|pt|fr|r?em|deg|vh|vw|%))/gi;

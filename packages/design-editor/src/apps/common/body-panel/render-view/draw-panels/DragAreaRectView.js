@@ -1,6 +1,6 @@
 import { vec3 } from "gl-matrix";
 
-import { SUBSCRIBE } from "@elf/sapa";
+import { SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./DragAreaView.scss";
 
@@ -8,8 +8,8 @@ import {
   toRectVerties,
   toRectVertiesWithoutTransformOrigin,
 } from "elf/core/collision";
-import { EditorElement } from "@elf/editor"
-import { Length } from "@elf/editor"
+import { EditorElement } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor"
 
 export default class DragAreaRectView extends EditorElement {
   initState() {

@@ -1,10 +1,10 @@
-import { Dom, TRANSITIONEND, CLICK, SUBSCRIBE } from "@elf/sapa";
+import { Dom, TRANSITIONEND, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 import { SHOW_NOTIFY } from "apps/blankeditor/types/event";
 import { EditorElement } from "../common/EditorElement";
 import "./NotificationView.scss";
 
-import { iconUse } from "@elf/icon";
+import { iconUse } from "@elf-framework/icon";
 
 export default class NotificationView extends EditorElement {
   template() {

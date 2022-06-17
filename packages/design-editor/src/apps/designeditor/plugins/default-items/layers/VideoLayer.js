@@ -1,4 +1,4 @@
-import { list as icon } from "@elf/icon";
+import { list as icon } from "@elf-framework/icon";
 import { LayerModel } from "elf/editor/model/LayerModel";
 
 export class VideoLayer extends LayerModel {
