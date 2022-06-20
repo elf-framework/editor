@@ -15,7 +15,6 @@ const cssProperties = makeStyleMap('--elf--input-editor', {
   borderRadius: true,
   placeholderColor: true,
   emptyColor: true,
-  height: true,
 })
 
 export class TextAreaEditor extends UIElement {
