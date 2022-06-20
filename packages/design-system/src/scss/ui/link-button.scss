@@ -2,7 +2,7 @@
     --elf--link-button-border-color: rgba(0, 0, 0, 0.8);
     --elf--link-button-padding: 7px 10px;
     --elf--link-button-font-size: var(--elf--font-size, 14px);
-    --elf--link-button-background: transparent;
+    --elf--link-button-background-color: transparent;
     --elf--link-button-color: rgba(24, 160, 251, 1);
     --elf--link-button-border-radius: 4px;
     --elf--link-button-disabled-color: var(--elf--disabled-color);
@@ -11,7 +11,7 @@
     padding: var(--elf--link-button-padding);
     line-height: 16px;
     font-size: var(--elf--link-button-font-size);
-    background-color: var(--elf--link-button-background);
+    background-color: var(--elf--link-button-background-color);
     color: var(--elf--link-button-color);
     cursor: pointer;
     box-sizing: border-box;
@@ -45,14 +45,14 @@
         --elf--link-button-color: var(--elf--primary-color);
 
         &[disabled] {
-            --elf--link-button-background: var(--elf--disabled-color);
+            --elf--link-button-background-color: var(--elf--disabled-color);
         }
 
         &.destructive {
-            --elf--link-button-background: var(--elf--primary-destructive-color);
+            --elf--link-button-background-color: var(--elf--primary-destructive-color);
 
             &[disabled] {
-                --elf--link-button-background: var(--elf--disabled-color);
+                --elf--link-button-background-color: var(--elf--disabled-color);
             }
         }
     }
@@ -61,7 +61,7 @@
         --elf--link-button-color: var(--elf--secondary-color);
 
         &[disabled] {
-            --elf--link-button-background: var(--elf--disabled-color);
+            --elf--link-button-background-color: var(--elf--disabled-color);
         }
     }
 

@@ -1,7 +1,7 @@
 .elf--icon-button {
     --elf--icon-button-border-color: rgba(0, 0, 0, 0.1);
     --elf--icon-button-font-size: var(--elf--font-size, 14px);
-    --elf--icon-button-background: transparent;
+    --elf--icon-button-background-color: transparent;
     --elf--icon-button-color: var(--elf--border-color);
     --elf--icon-button-border-radius: 4px;
     --elf--icon-button-disabled-color: var(--elf--disabled-color);
@@ -12,7 +12,7 @@
     height: var(--elf--icon-button-size);
     border-radius: var(--elf--icon-button-border-radius);
     font-size: var(--elf--icon-button-font-size);
-    background-color: var(--elf--icon-button-background);
+    background-color: var(--elf--icon-button-background-color);
     color: var(--elf--icon-button-color);
     border: 1px solid var(--elf--icon-button-border-color);
     cursor: pointer;
@@ -63,16 +63,16 @@
 
     &[disabled] {
         cursor: not-allowed;
-        --elf--icon-button-background: var(--elf--icon-button-disabled-color) !important;
+        --elf--icon-button-background-color: var(--elf--icon-button-disabled-color) !important;
     }
 
     &:hover,
     &.hover {
-        --elf--icon-button-background: rgba(0, 0, 0, 0.06);
+        --elf--icon-button-background-color: rgba(0, 0, 0, 0.06);
     }    
 
     &.primary {
-        --elf--icon-button-background: var(--elf--primary-color);
+        --elf--icon-button-background-color: var(--elf--primary-color);
         --elf--icon-button-color: white;
         border-width: 0px;
 
@@ -82,11 +82,11 @@
         }
 
         &[disabled] {
-            --elf--icon-button-background: var(--elf--disabled-color);
+            --elf--icon-button-background-color: var(--elf--disabled-color);
         }
 
         &.destructive {
-            --elf--icon-button-background: var(--elf--primary-destructive-color);
+            --elf--icon-button-background-color: var(--elf--primary-destructive-color);
 
             
             &.focus {
@@ -95,23 +95,23 @@
             }
 
             &[disabled] {
-                --elf--icon-button-background: var(--elf--disabled-color);
+                --elf--icon-button-background-color: var(--elf--disabled-color);
             }
         }
     }
     
     &.secondary {
-        --elf--icon-button-background: var(--elf--secondary-color);
+        --elf--icon-button-background-color: var(--elf--secondary-color);
         --elf--icon-button-color: white;
         border: 0px solid var(--elf--icon-button-border-color);
 
         &[disabled] {
-            --elf--icon-button-background: var(--elf--disabled-color);
+            --elf--icon-button-background-color: var(--elf--disabled-color);
         }
     }
 
     &.outline {
-        --elf--icon-button-background: transparent;
+        --elf--icon-button-background-color: transparent;
         --elf--icon-button-color: black;
         --elf--icon-button-border-color: black;
 

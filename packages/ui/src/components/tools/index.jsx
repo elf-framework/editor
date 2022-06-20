@@ -1,6 +1,7 @@
 import { UIElement, classnames, isFunction, CLICK, IF, Dom, POINTEROVER, POINTERLEAVE } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
+import { makeStyleMap } from "../../utils/styleKeys";
 import { Menu } from "../menu/index";
 
 const ToolsItemType = {
@@ -249,6 +250,12 @@ export class ToolsMenuItem extends ToolsItem {
   }
 }
 
+const cssProperties = makeStyleMap('--elf--tools', {
+  backgroundColor: true,
+  color: true,
+  height: true,
+})
+
 export class Tools extends UIElement {
   template() {
     const { style = {} } = this.props;
@@ -256,11 +263,7 @@ export class Tools extends UIElement {
     const styleObject = {
       class: classnames("elf--tools"),
       style: {
-        ...propertyMap(style, {
-          backgroundColor: "--elf--tools-background",
-          color: "--elf--tools-color",
-          height: "--elf--tools-height",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

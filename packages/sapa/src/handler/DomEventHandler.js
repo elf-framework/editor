@@ -368,6 +368,7 @@ export default class DomEventHandler extends BaseHandler {
       magicMethod,
       callback
     );
+
     this.addBinding(eventObject);
 
     var options = false;

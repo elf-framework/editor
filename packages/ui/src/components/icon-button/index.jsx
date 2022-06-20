@@ -2,6 +2,18 @@ import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 
+const cssProperties = {
+  borderColor: "--elf--icon-button-border-color",
+  backgroundColor: "--elf--icon-button-background",
+  disabledColor: "--elf--icon-button-disabled-color",
+  color: "--elf--icon-button-color",
+  fontSize: "--elf--icon-button-font-size",
+  fontWeight: "--elf--icon-button-font-weight",
+  height: "--elf--icon-button-height",
+  padding: "--elf--icon-button-padding",
+  borderRadius: "--elf--icon-button-border-radius",
+}
+
 export class IconButton extends UIElement {
   template() {
     const {
@@ -33,17 +45,7 @@ export class IconButton extends UIElement {
       ]),
       disabled: disabled ? "disabled" : undefined,
       style: {
-        ...propertyMap(style, {
-          borderColor: "--elf--icon-button-border-color",
-          backgroundColor: "--elf--icon-button-background",
-          disabledColor: "--elf--icon-button-disabled-color",
-          color: "--elf--icon-button-color",
-          fontSize: "--elf--icon-button-font-size",
-          fontWeight: "--elf--icon-button-font-weight",
-          height: "--elf--icon-button-height",
-          padding: "--elf--icon-button-padding",
-          borderRadius: "--elf--icon-button-border-radius",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

@@ -76,7 +76,7 @@ export class BaseStore {
 
     if (frame) {
       // 모든 이벤트는 requestAnimationFrame 을 통과하도록 한다.
-      callback = makeRequestAnimationFrame(callback, context);
+      callback = makeRequestAnimationFrame(callback, context, originalCallback.name);
     }
 
     this.getCallbacks(event).push({

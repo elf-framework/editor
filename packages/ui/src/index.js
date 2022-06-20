@@ -13,3 +13,5 @@ export * from "./components/tooltip";
 export * from "./components/panel";
 export * from "./components/tabstrip";
 export * from "./components/layout";
+export * from "./components/input-editor";
+export * from "./components/input-editor/TextArea";

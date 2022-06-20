@@ -1,11 +1,11 @@
 .elf--modal {
     --elf--modal-width: 240px;
-    --elf--modal-background: white;
+    --elf--modal-background-color: white;
     --elf--modal-border-color: rgba(0, 0, 0, 0.2);
     --elf--modal-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
     --elf--modal-border-radius: 2px;
 
-    background-color: var(--elf--modal-background);
+    background-color: var(--elf--modal-background-color);
     width: var(--elf--modal-width);
 
     border: 0.5px solid var(--elf--modal-border-color);

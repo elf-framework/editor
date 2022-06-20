@@ -45,7 +45,7 @@
     },
     "sapa:release": {
       "dependsOn": ["^sapa:release"],
-      "cache": false
+      "outputs": ["dist/**", ".next/**"]
     }                                            
 
   }

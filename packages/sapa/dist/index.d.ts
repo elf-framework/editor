@@ -33,6 +33,7 @@ declare module "@elf-framework/sapa" {
 
   export const FIT: string;
   export const PASSIVE: string;
+  export const FRAME: string;
 
   /**
    * LOAD 함수에서 domdiff 를 수행하는 플래그를 설정한다.
@@ -126,6 +127,8 @@ declare module "@elf-framework/sapa" {
   export const TRANSITIONRUN: CallbackFunction;
   export const TRANSITIONCANCEL: CallbackFunction;
   export const DOUBLETAB: CallbackFunction;
+  export const POPSTATE: CallbackFunction;
+  export const HASHCHANGE: CallbackFunction;
 
   // Predefined LOADER
 
@@ -191,6 +194,12 @@ declare module "@elf-framework/sapa" {
   }
 
   export class BaseStore {}
+
+  export class BaseHandler {
+    context: UIElement;
+    initialize(): void;
+    destroy(): void;
+  }
 
   export class EventMachine {
     protected opt: KeyValue;

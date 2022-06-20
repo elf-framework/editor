@@ -194,6 +194,12 @@ export const TRANSITIONRUN = DOM_EVENT_MAKE("transitionrun");
 export const TRANSITIONCANCEL = DOM_EVENT_MAKE("transitioncancel");
 export const DOUBLETAB = CUSTOM("doubletab");
 
+// events for window
+export const POPSTATE = CUSTOM("popstate");
+export const ORIENTATIONCHANGE = CUSTOM("orientationchange");
+export const HASHCHANGE = CUSTOM("hashchange");
+
+
 // Predefined LOADER
 export const LOAD = (value = "$el") => {
   return MagicMethod.make("load", value);
@@ -239,15 +245,15 @@ function limit(delta, maxDelta) {
 }
 
 export default {
-  addDomEvent(dom, eventName, callback, useCapture = false) {
-    if (dom) {
-      dom.addEventListener(eventName, callback, useCapture);
+  addDomEvent(eventTarget, eventName, callback, useCapture = false) {
+    if (eventTarget) {
+      eventTarget.addEventListener(eventName, callback, useCapture);
     }
   },
 
-  removeDomEvent(dom, eventName, callback) {
-    if (dom) {
-      dom.removeEventListener(eventName, callback);
+  removeDomEvent(eventTarget, eventName, callback) {
+    if (eventTarget) {
+      eventTarget.removeEventListener(eventName, callback);
     }
   },
 

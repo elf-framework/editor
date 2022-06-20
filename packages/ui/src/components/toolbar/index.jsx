@@ -1,6 +1,7 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
+import { makeStyleMap } from "../../utils/styleKeys";
 import { Tools } from "../tools/index";
 
 
@@ -21,6 +22,14 @@ export class ToolbarItem extends UIElement {
   }
 }
 
+
+const cssProperties = makeStyleMap('--elf--toolbar', {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  align: true,
+})
+
 export class Toolbar extends UIElement {
   template() {
     const { style = {}, align, items = [] } = this.props;
@@ -30,12 +39,7 @@ export class Toolbar extends UIElement {
         [align]: true
       }),
       style: {
-        ...propertyMap(style, {
-          backgroundColor: "--elf--toolbar-background",
-          color: "--elf--toolbar-color",
-          height: "--elf--toolbar-height",
-          align: "--elf--toolbar-align",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

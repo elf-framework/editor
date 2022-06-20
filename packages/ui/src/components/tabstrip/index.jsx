@@ -1,8 +1,20 @@
-import { UIElement, classnames, CLICK, POINTERENTER, IF, POINTERLEAVE } from "@elf-framework/sapa";
+import { UIElement, classnames  } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
+import { makeStyleMap } from "../../utils/styleKeys";
 
 
+const cssProperties = makeStyleMap('--elf--tabstrip', {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  width: true,
+  hoverColor: true,
+  borderColor: true,
+  hgap: true,
+  vgap: true,
+  delay: true,
+})
 export class TabStrip extends UIElement {
 
   initState() {
@@ -18,17 +30,7 @@ export class TabStrip extends UIElement {
     const styleObject = {
       class: classnames("elf--tabstrip"),
       style: {
-        ...propertyMap(style, {
-          backgroundColor: "--elf--tabstrip-background",
-          color: "--elf--tabstrip-color",
-          height: "--elf--tabstrip-height",
-          width: "--elf--tabstrip-width",
-          hoverColor: "--elf--tabstrip-hover-color",
-          borderColor: "--elf--tabstrip-border-color",
-          hgap: "--elf--tabstrip-hgap",
-          vgap: "--elf--tabstrip-vgap",        
-          delay: "--elf--tabstrip-delay",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

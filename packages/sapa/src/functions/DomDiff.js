@@ -262,6 +262,9 @@ const DefaultOption = {
  */
 export function DomDiff(A, B, options = {}) {
   // initialize options parameter
+  if (!A || !B) {
+    throw new Error("A and B must be defined");
+  }
 
   options = {
     ...DefaultOption,

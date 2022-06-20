@@ -219,9 +219,18 @@ export class Dom {
     return this;
   }
 
-  isFragment() {
+  get isFragment () {
     // fragment 체크
     return this.el.nodeType === 11;
+  }
+
+  get isTemplate() {
+    // fragment 체크
+    return this.el.nodeType === 1 && this.el.tagName === "TEMPLATE";
+  }  
+
+  get content() {
+    return this.isTemplate ? this.el.content : this.el;
   }
 
   is(checkElement) {
@@ -284,6 +293,10 @@ export class Dom {
 
   hasParent() {
     return !!this.el.parentNode;
+  }
+
+  get isUnlinked() {
+    return !this.el.parentNode;
   }
 
   removeClass(...args) {
@@ -374,23 +387,24 @@ export class Dom {
     return this.el.getElementById(id);
   }
 
-  find(selector) {
+  find(selector, el = this.el) {
     if (this.isTextNode) return undefined;
-    return this.el.querySelector(selector);
+    return el.querySelector(selector);
   }
 
   $(selector) {
-    var node = this.find(selector);
+    var node = this.find(selector, this.isTemplate ? this.el.content : this.el);
     return node ? Dom.create(node) : null;
   }
 
-  findAll(selector) {
+  findAll(selector, el = this.el) {
     if (this.isTextNode) return [];
-    return Array.from(this.el.querySelectorAll(selector));
+
+    return Array.from(el.querySelectorAll(selector));
   }
 
   $$(selector) {
-    var arr = this.findAll(selector);
+    var arr = this.findAll(selector, this.isTemplate ? this.el.content : this.el);
     return arr.map((node) => Dom.create(node));
   }
 
@@ -765,6 +779,10 @@ export class Dom {
 
   get value() {
     return this.el.value;
+  }
+
+  set value (v) {
+    this.el.value = v;
   }
 
   get naturalWidth() {

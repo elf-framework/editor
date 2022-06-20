@@ -8,7 +8,6 @@ import {
 } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import {
-  createHandlerInstance,
   getVariable,
   hasVariable,
   registHandler,
@@ -22,15 +21,8 @@ import DomEventHandler from "./handler/DomEventHandler";
 import NativeEventHandler from "./handler/NativeEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
 import StoreHandler from "./handler/StoreHandler";
+import { MagicHandler } from "./MagicHandler";
 
-registHandler({
-  BindHandler,
-  CallbackHandler,
-  NativeEventHandler,
-  DomEventHandler,
-  ObserverHandler,
-  StoreHandler,
-});
 
 const REFERENCE_PROPERTY = "ref";
 const TEMP_DIV = Dom.create("div");
@@ -39,7 +31,7 @@ const REF_CLASS = "refclass";
 const REF_CLASS_PROPERTY = `[${REF_CLASS}]`;
 const EMPTY_ARRAY = [];
 
-export class EventMachine {
+export class EventMachine extends MagicHandler {
   /**
    * local state
    *
@@ -66,14 +58,26 @@ export class EventMachine {
   // #prefLoadTemplate = {};
 
   constructor(opt, props) {
+
+    super();
+
     this.refs = {};
     this.children = {};
     this.id = uuid();
 
     this.initializeProperty(opt, props);
-
-    this.handlers = this.initializeHandler();
     this.initComponents();
+  }
+
+  initializeHandler() {
+    return super.initializeHandler({
+      BindHandler,
+      CallbackHandler,
+      NativeEventHandler,
+      DomEventHandler,
+      ObserverHandler,
+      StoreHandler,
+    })
   }
 
   #refreshTimestamp() {
@@ -165,10 +169,6 @@ export class EventMachine {
 
   initComponents() {
     this.childComponents = this.components();
-  }
-
-  initializeHandler() {
-    return createHandlerInstance(this);
   }
 
   createFunction(funcName, func) {
@@ -339,7 +339,7 @@ export class EventMachine {
           }
 
           const targetChildId = Object.keys(this.children).find((it) =>
-            this.children[it].$el.is(oldEl)
+            this.children[it].$el?.is(oldEl)
           );
 
           // targetChild 가 존재하고, newEl 의 refClass 와 동일한 컴포넌트를 가지고 있다.
@@ -366,11 +366,14 @@ export class EventMachine {
       this.refs.$el = this.$el;
 
       if ($container) {
+
         // $container 의 자식이 아닐 때만 추가
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
           this.onMounted();
         }
+      } else {
+        // NOOP
       }
     }
 
@@ -679,6 +682,9 @@ export class EventMachine {
       instance.appendTo();
       $dom.remove();
     } else if (instance.$el) {
+      // root 가 template 일 경우 fragment 의 컨텐츠를 추가한다.
+      // root 가 template 이 아닐 경우 기존 element 를 추가한다.
+      // frament 에 있는 자식들의 참조를 가지고 있어야할지도 모르겠다. 
       $dom.replace(instance.$el);
     } else {
       // EventMachine 의 renderTarget 또는 $el 이 없으면
@@ -869,16 +875,6 @@ export class EventMachine {
     }
 
     await this._afterLoad();
-  }
-
-  async runHandlers(func = "run", ...args) {
-    await Promise.all(
-      this.handlers
-        .filter((h) => h[func])
-        .map(async (h) => {
-          await h[func](...args);
-        })
-    );
   }
 
   async bindData(...args) {

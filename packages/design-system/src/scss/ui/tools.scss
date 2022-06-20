@@ -1,8 +1,8 @@
 .elf--tools {
 
-    --elf--tools-background: rgba(44, 44, 44, 1);
-    --elf--tools-arrow-background: rgba(44, 44, 44, 1);
-    --elf--tools-hover-background: black;
+    --elf--tools-background-color: rgba(44, 44, 44, 1);
+    --elf--tools-arrow-background-color: rgba(44, 44, 44, 1);
+    --elf--tools-hover-background-color: black;
     --elf--tools-color: white;
     --elf--tools-height: 48px;
     --elf--tools-min-width: 40px;
@@ -12,13 +12,13 @@
     display: inline-flex;
     flex-direction: row;
     height: var(--elf--tools-height);
-    background-color: var(--elf--tools-background);
+    background-color: var(--elf--tools-background-color);
     color: var(--elf--tools-color);
 
     > .elf--tools-item {
         display: flex;
         min-width: var(--elf--tools-min-width);
-        background-color: var(--elf--tools-background);
+        background-color: var(--elf--tools-background-color);
         position: relative;
 
         &.has-items {
@@ -41,7 +41,7 @@
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
                 
-                border-bottom: 5px solid var(--elf--tools-arrow-background);
+                border-bottom: 5px solid var(--elf--tools-arrow-background-color);
                 border-top: 0px;
                 left: 50%;
                 transform: translateX(-50%) translateY(0.5px);
@@ -105,11 +105,11 @@
 
         &:hover,
         &.hover {
-            --elf--tools-background: var(--elf--tools-hover-background)
+            --elf--tools-background-color: var(--elf--tools-hover-background-color)
         }
             
         &.selected {
-            --elf--tools-background: var(--elf--primary-color);
+            --elf--tools-background-color: var(--elf--primary-color);
         }
     }
 }

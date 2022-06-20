@@ -1,5 +1,5 @@
 .elf--notification {
-    --elf--notification-background: #222222;
+    --elf--notification-background-color: #222222;
     --elf--notification-hover-color: var(--color-neutral-10);
     --elf--notification-color: var(--color-neutral-0);
     --elf--notification-border-color: rgba(0, 0, 0, 0.1);
@@ -10,7 +10,7 @@
     --elf--notification-hgap: 10px;
     --elf--notification-vgap: 10px;
 
-    background-color: var(--elf--notification-background);
+    background-color: var(--elf--notification-background-color);
     border: 0.5px solid var(--elf--notification-border-color);
 
     box-shadow: var(--elf--notification-box-shadow);

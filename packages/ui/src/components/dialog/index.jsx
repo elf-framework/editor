@@ -3,6 +3,20 @@ import { CLICK, UIElement, classnames, isFunction } from "@elf-framework/sapa";
 import { propertyMap } from "../../utils/propertyMap";
 import { Button } from "../button/index";
 
+const cssProperties = {
+  position: "--elf--dialog-position",
+  backgroundColor: "--elf--dialog-background",
+  color: "--elf--dialog-color",
+  fontSize: "--elf--dialog-font-size",
+  fontWeight: "--elf--dialog-font-weight",
+  height: "--elf--dialog-height",
+  padding: "--elf--dialog-padding",
+  borderRadius: "--elf--dialog-border-radius",
+  borderColor: "--elf--dialog-border-color",
+  boxShadow: "--elf--dialog-box-shadow",
+  width: "--elf--dialog-width",
+}
+
 export class Dialog extends UIElement {
   initState() {
     const { visible = false, style = {}, center } = this.props;
@@ -61,19 +75,7 @@ export class Dialog extends UIElement {
         center,
       }),
       style: {
-        ...propertyMap(style, {
-          position: "--elf--dialog-position",
-          backgroundColor: "--elf--dialog-background",
-          color: "--elf--dialog-color",
-          fontSize: "--elf--dialog-font-size",
-          fontWeight: "--elf--dialog-font-weight",
-          height: "--elf--dialog-height",
-          padding: "--elf--dialog-padding",
-          borderRadius: "--elf--dialog-border-radius",
-          borderColor: "--elf--dialog-border-color",
-          boxShadow: "--elf--dialog-box-shadow",
-          width: "--elf--dialog-width",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

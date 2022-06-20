@@ -1,0 +1,117 @@
+.elf--input-editor {
+    --elf--input-editor-min-width: 200px;
+    --elf--input-editor-border-color: transparent;
+    --elf--input-editor-outline-color: transparent;
+    --elf--input-editor-border-radius: 1px;
+    --elf--input-editor-background-color: white;
+    --elf--input-editor-empty-color: rgba(0, 0, 0, 0.3);
+    --elf--input-editor-placeholder-color: rgba(0, 0, 0, 0.3);
+    --elf--input-editor-disabled-color: rgba(0, 0, 0, 0.3);
+
+    min-width: var(--elf--input-editor-min-width);
+    max-width: calc(100% - var(--elf--input-editor-min-width));
+    border: 1px solid var(--elf--input-editor-border-color);
+    outline: 1px solid var(--elf--input-editor-outline-color);
+    border-radius: var(--elf--input-editor-border-radius);
+    height: var(--elf--input-editor-height, 30px);
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--elf--input-editor-background-color);
+
+    &.multiline {
+        height: var(--elf--input-editor-height, 44px);
+    }
+
+    &:hover,
+    &.hover {
+
+        &:empty {
+            color: var(--elf--input-editor-empty-color);
+        }
+        --elf--input-editor-border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus,
+    &:focus-within,
+    &.focused {
+        --elf--input-editor-border-color: var(--elf--primary-color);
+        --elf--input-editor-outline-color: var(--elf--primary-color);
+    }
+
+    &.disabled {
+        --elf--input-editor-border-color: var(--elf--disabled-color);
+        // --elf--input-editor-outline-color: var(--elf--disabled-color);
+        --elf--input-editor-placeholder-color: var(--elf--disabled-color);
+        cursor: not-allowed;
+    }
+
+    > .elf--input-editor-icon {
+        flex: none;
+        width: 32px;
+        height: 32px;
+        transform: translate(-2px, -2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        svg {
+            width: 16px;
+            height: 16px;
+
+            path, use, circle, rect, polygon {
+                fill: var(--elf--input-editor-empty-color);
+            }
+        }
+    }
+
+    &.icon {
+        > .elf--input-area {
+            > .elf--input-item {
+                > input, textarea {
+                    padding-left: 0px;
+                }
+            }
+        }
+    }
+
+    > .elf--input-area {
+        display: flex;
+        height: 100%;
+        flex: 1 1 auto;
+
+        > .elf--input-item {
+            flex: 1 1 auto;
+            height: 100%;            
+
+            > input, textarea {
+                width: 100%;
+                height: 100%;
+                border: none;
+                box-sizing: border-box;
+                outline: none;
+                font-size: 12px;
+                
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.005em;
+                padding: 6px 3px 6px 7px;
+                background-color: transparent;
+
+                &:placeholder {
+                    color: --elf--input-editor-placeholder-color;
+                }
+
+                &[disabled] {
+                    pointer-events: none;
+                    user-select: none;
+
+                }
+
+                &[value=""],
+                &:empty {
+                    color: var(--elf--input-editor-empty-color);
+                }
+            }
+        }
+    }
+}

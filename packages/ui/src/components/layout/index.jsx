@@ -29,3 +29,21 @@ export class Layout extends UIElement {
     );
   }
 }
+
+/**
+ * 
+ * 
+ * <Grid columns={3}> -> <Grid columns={["1fr", "1fr", "1fr"]}>
+ * <Grid columns={["1fr", "1fr"]}>
+ *  <GridItem>
+ * 
+ *  </GridItem>
+ * </Grid>
+ * 
+ * 
+ */
+export class Grid extends UIElement {
+  template () {
+    return <div class="elf--grid">{this.props.content}</div>
+  }
+}

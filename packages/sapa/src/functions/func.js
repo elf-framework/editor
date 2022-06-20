@@ -69,7 +69,12 @@ export function ifCheck(callback, context, checkMethods) {
 
 export function makeRequestAnimationFrame(callback, context) {
   return (...args) => {
-    window.requestAnimationFrame(() => {
+
+    if (callback.requestAnimationFrameId) {
+      cancelAnimationFrame(callback.requestAnimationFrameId);
+    }
+
+    callback.requestAnimationFrameId = window.requestAnimationFrame(() => {
       callback.apply(context, args);
     });
   };

@@ -1,5 +1,5 @@
 .elf--visual-bell {
-    --elf--visual-bell-background: #222222;
+    --elf--visual-bell-background-color: #222222;
     --elf--visual-bell-hover-color: var(--color-neutral-10);
     --elf--visual-bell-color: var(--color-neutral-0);
     --elf--visual-bell-border-color: rgba(0, 0, 0, 0.1);
@@ -13,7 +13,7 @@
     position: var(--elf--visual-bell-position);
     display: flex;
     border-radius: var(--elf--visual-bell-border-radius);
-    background-color: var(--elf--visual-bell-background);
+    background-color: var(--elf--visual-bell-background-color);
     color: var(--elf--visual-bell-color);
     box-shadow: var(--elf--visual-bell-box-shadow);
     padding: 10px 0px;

@@ -146,11 +146,17 @@ export function retriveHandler(className) {
   return handlerMap[className];
 }
 
-export function createHandlerInstance(context) {
-  return Object.keys(handlerMap)
-    .filter((key) => Boolean(handlerMap[key]))
-    .map((key) => {
-      const HandlerClass = handlerMap[key];
-      return new HandlerClass(context);
-    });
+export function createHandlerInstance(context, localHanders = {}) {
+  return [
+    ...Object.keys(handlerMap)
+      .map((key) => {
+        const HandlerClass = handlerMap[key];
+        return new HandlerClass(context);
+      }),
+    ...Object.keys(localHanders)
+      .map((key) => {
+        const HandlerClass = localHanders[key];
+        return new HandlerClass(context);
+      }),
+  ]
 }

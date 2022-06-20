@@ -386,6 +386,75 @@ declare module "@elf-framework/ui" {
   export class Layout extends UIElement {
     props: LayoutProps;
   }
+
+  export type DomEventType = {
+    onFocus?: (event: KeyboardEvent) => void;
+    onBlur?: (event: KeyboardEvent) => void;
+    onKeyDown?: (event: KeyboardEvent) => void;
+    onKeyUp?: (event: KeyboardEvent) => void;
+    onKeyPress?: (event: KeyboardEvent) => void;
+    onChange?: (event: KeyboardEvent) => void;
+    onInput?: (event: KeyboardEvent) => void;
+    onPaste?: (event: KeyboardEvent) => void;
+    onCut?: (event: KeyboardEvent) => void;
+    onCopy?: (event: KeyboardEvent) => void;
+    onCompositionStart?: (event: KeyboardEvent) => void;
+    onCompositionEnd?: (event: KeyboardEvent) => void;
+    onCompositionUpdate?: (event: KeyboardEvent) => void;
+    onSelect?: (event: KeyboardEvent) => void;
+    onMouseDown?: (event: MouseEvent) => void;
+    onMouseUp?: (event: MouseEvent) => void;
+    onMouseMove?: (event: MouseEvent) => void;
+    onMouseEnter?: (event: MouseEvent) => void;
+    onMouseLeave?: (event: MouseEvent) => void;
+    onMouseOver?: (event: MouseEvent) => void;
+    onMouseOut?: (event: MouseEvent) => void;
+    onWheel?: (event: WheelEvent) => void;
+    onContextMenu?: (event: MouseEvent) => void;
+    onDragStart?: (event: DragEvent) => void;
+    onDrag?: (event: DragEvent) => void;
+    onDragEnd?: (event: DragEvent) => void;
+    onDragEnter?: (event: DragEvent) => void;
+    onDragLeave?: (event: DragEvent) => void;
+    onDragOver?: (event: DragEvent) => void;
+    onDrop?: (event: DragEvent) => void;
+    onScroll?: (event: WheelEvent) => void;
+    onTouchStart?: (event: TouchEvent) => void;
+    onTouchMove?: (event: TouchEvent) => void;
+    onTouchEnd?: (event: TouchEvent) => void;
+    onTouchCancel?: (event: TouchEvent) => void;
+    onPointerDown?: (event: PointerEvent) => void;
+    onPointerMove?: (event: PointerEvent) => void;
+    onPointerUp?: (event: PointerEvent) => void;
+    onPointerCancel?: (event: PointerEvent) => void;
+    onPointerEnter?: (event: PointerEvent) => void;
+    onPointerLeave?: (event: PointerEvent) => void;
+  }
+
+  export type InputEditorStyle = {
+    backgroundColor: string;
+    minWidth: number;
+    borderRadius: number;
+    height: number;
+  }
+
+  export type InputEditorType = "text" | "password" | "number" | "email" | "url" | "tel" | "search" | "date" | "time" | "datetime-local" | "month" | "week" | "color";
+  export interface InputEditorProps {
+    type?: InputEditorType;
+    hover: boolean;
+    focused?: boolean;
+    autoFocus?: boolean;
+    autoFocusDelay?: number;
+    placeholder?: string;
+    style?: InputEditorStyle;
+    disabled?: boolean;
+  }
+
+  export class InputEditor extends UIElement {
+    props: InputEditorProps & DomEventType;
+  }
+
+  export class TextAreaEditor extends InputEditor {}
 }
 
 

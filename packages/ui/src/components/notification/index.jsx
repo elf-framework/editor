@@ -2,6 +2,16 @@ import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 
+const cssProperties  = {
+  backgroundColor: "--elf--notification-background",
+  color: "--elf--notification-color",
+  height: "--elf--notification-height",
+  hoverColor: "--elf--notification-hover-color",
+  borderColor: "--elf--notification-border-color",
+  boxShadow: "--elf--notification-box-shadow",
+  toolsBorderColor: "--elf--notification-tools-border-color",
+  toolsBorderRadius: "--elf--notification-tools-border-radius",
+}
 
 export class Notification extends UIElement {
   template() {
@@ -10,16 +20,7 @@ export class Notification extends UIElement {
     const styleObject = {
       class: classnames("elf--notification", `elf--notification-direction-${direction}`),
       style: {
-        ...propertyMap(style, {
-          backgroundColor: "--elf--notification-background",
-          color: "--elf--notification-color",
-          height: "--elf--notification-height",
-          hoverColor: "--elf--notification-hover-color",
-          borderColor: "--elf--notification-border-color",
-          boxShadow: "--elf--notification-box-shadow",
-          toolsBorderColor: "--elf--notification-tools-border-color",
-          toolsBorderRadius: "--elf--notification-tools-border-radius",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

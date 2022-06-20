@@ -160,6 +160,26 @@ class MenuItem extends UIElement {
   }
 }
 
+const cssProperties = {
+  left: "--elf--menu-left",
+  top: "--elf--menu-top",
+  backgroundColor: "--elf--menu-background",
+  color: "--elf--menu-color",
+  fontSize: "--elf--menu-font-size",
+  fontWeight: "--elf--menu-font-weight",
+  height: "--elf--menu-height",
+  padding: "--elf--menu-padding",
+  borderRadius: "--elf--menu-border-radius",
+  borderColor: "--elf--menu-border-color",
+  boxShadow: "--elf--menu-box-shadow",
+  width: "--elf--menu-width",
+  maxWidth: "--elf--menu-max-width",
+  sectionTitleColor: "--elf--menu-section-title-color",
+  sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
+  dividerColor: "--elf--menu-divider-color",
+  directionLeft: "--elf--menu-direction-left",
+}
+
 export class Menu extends UIElement {
 
   initState() {
@@ -182,26 +202,7 @@ export class Menu extends UIElement {
         "elf--menu-contextmenu": type === "contextmenu",
       }),
       style: {
-        ...propertyMap(itemStyle, {
-          left: "--elf--menu-left",
-          top: "--elf--menu-top",
-          backgroundColor: "--elf--menu-background",
-          color: "--elf--menu-color",
-          fontSize: "--elf--menu-font-size",
-          fontWeight: "--elf--menu-font-weight",
-          height: "--elf--menu-height",
-          padding: "--elf--menu-padding",
-          borderRadius: "--elf--menu-border-radius",
-          borderColor: "--elf--menu-border-color",
-          boxShadow: "--elf--menu-box-shadow",
-          width: "--elf--menu-width",
-          maxWidth: "--elf--menu-max-width",
-          sectionTitleColor: "--elf--menu-section-title-color",
-          sectionTitleBackgroundColor:
-            "--elf--menu-section-title-background-color",
-          dividerColor: "--elf--menu-divider-color",
-          directionLeft: "--elf--menu-direction-left",
-        }),
+        ...propertyMap(itemStyle, cssProperties),
       },
     };
 

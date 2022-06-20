@@ -1,7 +1,21 @@
 import { UIElement, classnames, CLICK, POINTERENTER, IF, POINTERLEAVE } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
+import { makeStyleMap } from "../../utils/styleKeys";
 
+const cssProperties = makeStyleMap('--elf--tooltip', {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+  hgap: true,
+  vgap: true,
+  delay: true,
+})
 
 export class Tooltip extends UIElement {
 
@@ -19,19 +33,7 @@ export class Tooltip extends UIElement {
     const styleObject = {
       class: classnames("elf--tooltip", `elf--tooltip-position-${position}`),
       style: {
-        ...propertyMap(style, {
-          backgroundColor: "--elf--tooltip-background",
-          color: "--elf--tooltip-color",
-          height: "--elf--tooltip-height",
-          hoverColor: "--elf--tooltip-hover-color",
-          borderColor: "--elf--tooltip-border-color",
-          boxShadow: "--elf--tooltip-box-shadow",
-          toolsBorderColor: "--elf--tooltip-tools-border-color",
-          toolsBorderRadius: "--elf--tooltip-tools-border-radius",
-          hgap: "--elf--tooltip-hgap",
-          vgap: "--elf--tooltip-vgap",        
-          delay: "--elf--tooltip-delay",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

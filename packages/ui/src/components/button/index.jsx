@@ -2,6 +2,18 @@ import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 
+const cssProperties = {
+  borderColor: "--elf--button-border-color",
+  backgroundColor: "--elf--button-background",
+  disabledColor: "--elf--button-disabled-color",
+  color: "--elf--button-color",
+  fontSize: "--elf--button-font-size",
+  fontWeight: "--elf--button-font-weight",
+  height: "--elf--button-height",
+  padding: "--elf--button-padding",
+  borderRadius: "--elf--button-border-radius",
+}
+
 export class Button extends UIElement {
   template() {
     const { type, size, disabled, shape, destructive = false, style = {} } = this.props;
@@ -26,17 +38,7 @@ export class Button extends UIElement {
       ]),
       disabled: disabled ? "disabled" : undefined,
       style: {
-        ...propertyMap(style, {
-          borderColor: "--elf--button-border-color",
-          backgroundColor: "--elf--button-background",
-          disabledColor: "--elf--button-disabled-color",
-          color: "--elf--button-color",
-          fontSize: "--elf--button-font-size",
-          fontWeight: "--elf--button-font-weight",
-          height: "--elf--button-height",
-          padding: "--elf--button-padding",
-          borderRadius: "--elf--button-border-radius",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 

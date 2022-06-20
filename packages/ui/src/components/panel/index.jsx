@@ -3,6 +3,17 @@ import { UIElement ,classnames } from "@elf-framework/sapa";
 import { propertyMap } from "../../utils/propertyMap";
 
 
+const cssProperties = {
+  backgroundColor: "--elf--panel-background",
+  color: "--elf--panel-color",
+  height: "--elf--panel-height",
+  hoverColor: "--elf--panel-hover-color",
+  borderColor: "--elf--panel-border-color",
+  boxShadow: "--elf--panel-box-shadow",
+  padding: "--elf--panel-padding",
+  borderRadius: "--elf--panel-border-radius",
+}
+
 export class Panel extends UIElement {
 
   template() {
@@ -12,16 +23,7 @@ export class Panel extends UIElement {
       class: classnames("elf--panel", `elf--panel-mode-${mode}`),
       "data-theme": theme,
       style: {
-        ...propertyMap(style, {
-          backgroundColor: "--elf--panel-background",
-          color: "--elf--panel-color",
-          height: "--elf--panel-height",
-          hoverColor: "--elf--panel-hover-color",
-          borderColor: "--elf--panel-border-color",
-          boxShadow: "--elf--panel-box-shadow",
-          padding: "--elf--panel-padding",
-          borderRadius: "--elf--panel-border-radius",
-        }),
+        ...propertyMap(style, cssProperties),
       },
     };
 
