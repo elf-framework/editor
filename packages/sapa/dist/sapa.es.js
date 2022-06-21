@@ -150,9 +150,10 @@ function isString(value) {
 function isNotString(value) {
   return !isString(value);
 }
-function isEqual(obj1, obj2, count = 0) {
+function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
   if (count > 5) {
-    throw new Error("isEqual \uC744 \uC624\uB798 \uC2E4\uD589\uD558\uC600\uC2B5\uB2C8\uB2E4.");
+    console.error(obj1, obj2);
+    throw new Error(["isEqual \uC744 \uC624\uB798 \uC2E4\uD589\uD558\uC600\uC2B5\uB2C8\uB2E4."]);
   }
   const obj1Keys = Object.keys(obj1);
   const obj2Keys = Object.keys(obj2);
@@ -160,6 +161,9 @@ function isEqual(obj1, obj2, count = 0) {
     return false;
   }
   return obj1Keys.every((key) => {
+    if (omitKeys[key]) {
+      return true;
+    }
     const obj1Value = obj1[key];
     const obj2Value = obj2[key];
     if (isArray(obj1Value) && isArray(obj2Value)) {
@@ -168,7 +172,7 @@ function isEqual(obj1, obj2, count = 0) {
     } else if (isFunction(obj1Value) && isFunction(obj2Value))
       ;
     else if (isObject(obj1Value) && isObject(obj2Value)) {
-      return isEqual(obj1Value, obj2Value, count + 1);
+      return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
     }
     return obj1Value === obj2Value;
   });
@@ -220,17 +224,42 @@ function classnames(...args) {
   });
   return result.join(" ");
 }
+const booleanTypes = {
+  checked: true,
+  disabled: true,
+  selected: true,
+  readonly: true,
+  required: true,
+  multiple: true,
+  open: true,
+  hidden: true,
+  spellcheck: true,
+  autofocus: true,
+  autoplay: true,
+  controls: true,
+  loop: true,
+  muted: true,
+  default: true,
+  defer: true,
+  async: true,
+  allowfullscreen: true,
+  allowtransparency: true,
+  allowpaymentrequest: true
+};
+function isBooleanType(key) {
+  return booleanTypes[key];
+}
 const setBooleanProp = (el, name, value) => {
-  if (value) {
+  if (isNotUndefined(value)) {
     el.setAttribute(name, name);
     el[name] = value;
   } else {
     el.removeAttribute(name);
-    el[name] = value;
+    el[name] = void 0;
   }
 };
 const setProp = (el, name, value) => {
-  if (typeof value === "boolean") {
+  if (isBooleanType(name)) {
     setBooleanProp(el, name, value);
   } else {
     if (name === "style") {
@@ -240,23 +269,19 @@ const setProp = (el, name, value) => {
     }
   }
 };
-const removeBooleanProp = (node, name) => {
-  node.removeAttribute(name);
-  node[name] = false;
-};
-const removeUndefinedProp = (node, name) => {
-  node.removeAttribute(name);
-};
-const removeProp = (node, name, value) => {
-  if (typeof value === "boolean") {
-    removeBooleanProp(node, name);
+const removeProp = (node, name) => {
+  console.log("removeProp", node, name);
+  if (isBooleanType(name)) {
+    node.removeAttribute(name);
+    node[name] = false;
   } else if (name) {
-    removeUndefinedProp(node, name);
+    node.removeAttribute(name);
   }
 };
 const updateProp = (node, name, newValue, oldValue) => {
-  if (!newValue) {
-    removeProp(node, name, oldValue);
+  console.log(node, name, newValue, isUndefined(newValue), oldValue);
+  if (isUndefined(newValue)) {
+    removeProp(node, name);
   } else if (!oldValue || newValue !== oldValue) {
     setProp(node, name, newValue);
   } else
@@ -2705,7 +2730,12 @@ const _EventMachine = class extends MagicHandler {
     return spreadVariable(obj);
   }
   changedProps(newProps) {
-    return !isEqual(__privateGet(this, _props), newProps);
+    const obj1 = __privateGet(this, _props);
+    const obj2 = newProps;
+    return !isEqual(obj1, obj2, 0, {
+      content: true,
+      contentChildren: true
+    });
   }
   _reload(props) {
     if (this.changedProps(props)) {

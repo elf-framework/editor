@@ -67,7 +67,7 @@ function propertyMap(styles, mapper = {}) {
   });
   return styleObj;
 }
-const cssProperties$d = {
+const cssProperties$f = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background",
   disabledColor: "--elf--button-disabled-color",
@@ -100,14 +100,14 @@ class Button extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$d))
+      style: __spreadValues({}, propertyMap(style2, cssProperties$f))
     };
     return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({}, styleObject), {
       onClick: this.props.onClick
     }), /* @__PURE__ */ createElementJsx("span", null, this.props.content || ""));
   }
 }
-const cssProperties$c = {
+const cssProperties$e = {
   borderColor: "--elf--link-button-border-color",
   backgroundColor: "--elf--link-button-background",
   disabledColor: "--elf--link-button-disabled-color",
@@ -124,7 +124,7 @@ class LinkButton extends UIElement {
         "elf--link-button"
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$c))
+      style: __spreadValues({}, propertyMap(style2, cssProperties$e))
     };
     return /* @__PURE__ */ createElementJsx("a", __spreadProps(__spreadValues({}, styleObject), {
       onClick,
@@ -132,7 +132,7 @@ class LinkButton extends UIElement {
     }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$b = {
+const cssProperties$d = {
   borderColor: "--elf--icon-button-border-color",
   backgroundColor: "--elf--icon-button-background",
   disabledColor: "--elf--icon-button-disabled-color",
@@ -172,13 +172,150 @@ class IconButton extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$b))
+      style: __spreadValues({}, propertyMap(style2, cssProperties$d))
     };
     return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({
       type: "button"
     }, styleObject), {
       onClick: this.props.onClick
     }), icon || content || "");
+  }
+}
+const cssProperties$c = {
+  borderColor: "--elf--radio-border-color",
+  backgroundColor: "--elf--radio-background",
+  disabledColor: "--elf--radio-disabled-color",
+  color: "--elf--radio-color",
+  fontSize: "--elf--radio-font-size",
+  fontWeight: "--elf--radio-font-weight",
+  height: "--elf--radio-height",
+  padding: "--elf--radio-padding",
+  borderRadius: "--elf--radio-border-radius"
+};
+class Radio$1 extends UIElement {
+  template() {
+    const { disabled, style: style2 = {}, value, content, name, checked = false, onChange } = this.props;
+    const styleObject = {
+      class: classnames([
+        "elf--radio",
+        {
+          disabled
+        }
+      ]),
+      style: __spreadValues({}, propertyMap(style2, cssProperties$c))
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+      ref: "$input",
+      type: "radio"
+    }, {
+      value,
+      name,
+      disabled: disabled ? "disabled" : void 0,
+      checked: checked ? "checked" : void 0
+    }), {
+      onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+    })), content));
+  }
+}
+class RadioGroup extends UIElement {
+  template() {
+    const { disabled, style: style2 = {}, name, value, onChange, contentChildren } = this.props;
+    const styleObject = {
+      class: classnames([
+        "elf--radio-group"
+      ]),
+      disabled: disabled ? "disabled" : void 0,
+      style: __spreadValues({}, propertyMap(style2, cssProperties$c))
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), contentChildren.map((it, index) => {
+      return /* @__PURE__ */ createElementJsx(Radio$1, {
+        ref: `$${index}`,
+        name,
+        value: it.props.value,
+        onChange: (e, v) => {
+          this.setState({ value: v }, false);
+          onChange(e, v);
+        },
+        content: it.props.content,
+        checked: it.props.value === value,
+        disabled
+      });
+    }));
+  }
+  get value() {
+    return this.state.value;
+  }
+  set value(value) {
+    this.setState({ value });
+  }
+}
+const cssProperties$b = {
+  borderColor: "--elf--checkbox-border-color",
+  backgroundColor: "--elf--checkbox-background",
+  disabledColor: "--elf--checkbox-disabled-color",
+  color: "--elf--checkbox-color",
+  fontSize: "--elf--checkbox-font-size",
+  fontWeight: "--elf--checkbox-font-weight",
+  height: "--elf--checkbox-height",
+  padding: "--elf--checkbox-padding",
+  borderRadius: "--elf--checkbox-border-radius"
+};
+class Checkbox extends UIElement {
+  template() {
+    const { disabled, style: style2 = {}, value, content, name, checked = false, onChange } = this.props;
+    const styleObject = {
+      class: classnames([
+        "elf--checkbox",
+        {
+          disabled
+        }
+      ]),
+      style: __spreadValues({}, propertyMap(style2, cssProperties$b))
+    };
+    console.log(checked);
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+      ref: "$input",
+      type: "checkbox"
+    }, {
+      value,
+      name,
+      disabled: disabled ? "disabled" : void 0,
+      checked: checked ? "checked" : void 0
+    }), {
+      onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+    })), content));
+  }
+}
+class CheckboxGroup extends UIElement {
+  template() {
+    const { disabled, style: style2 = {}, name, value, onChange, contentChildren } = this.props;
+    const styleObject = {
+      class: classnames([
+        "elf--check-group"
+      ]),
+      disabled: disabled ? "disabled" : void 0,
+      style: __spreadValues({}, propertyMap(style2, cssProperties$b))
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), contentChildren.map((it, index) => {
+      return /* @__PURE__ */ createElementJsx(Radio, {
+        ref: `$${index}`,
+        name,
+        value: it.props.value,
+        onChange: (e, v) => {
+          this.setState({ value: v }, false);
+          onChange(e, v);
+        },
+        content: it.props.content,
+        checked: it.props.value === value,
+        disabled
+      });
+    }));
+  }
+  get value() {
+    return this.state.value;
+  }
+  set value(value) {
+    this.setState({ value });
   }
 }
 const MenuItemType = {
@@ -1128,10 +1265,9 @@ const cssProperties = makeStyleMap("--elf--input-editor", {
 });
 class TextAreaEditor extends UIElement {
   initState() {
-    const { style: style2 = {}, autoFocus = false, focused, hover = false, value, placeholder, disabled } = this.props;
+    const { style: style2 = {}, focused, hover = false, value, placeholder, disabled } = this.props;
     return {
       style: style2,
-      autoFocus,
       hover: hover || false,
       focused: focused || false,
       placeholder,
@@ -1211,4 +1347,4 @@ class TextAreaEditor extends UIElement {
     this.refs.$input.value = v;
   }
 }
-export { Button, Dialog, Grid, IconButton, InputEditor, Layout, LinkButton, Menu, Notification, Panel, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VisualBell };
+export { Button, Checkbox, CheckboxGroup, Dialog, Grid, IconButton, InputEditor, Layout, LinkButton, Menu, Notification, Panel, Radio$1 as Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VisualBell };

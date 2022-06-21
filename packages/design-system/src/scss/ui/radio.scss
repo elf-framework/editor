@@ -1,0 +1,33 @@
+.elf--radio {
+    --elf--radio-border-color: rgba(0, 0, 0, 0.8);
+    --elf--radio-padding: 7px 10px;
+    --elf--radio-font-size: var(--elf--font-size, 14px);
+    --elf--radio-background-color: transparent;
+    --elf--radio-color: rgba(0, 0, 0, 0.8);
+    --elf--radio-border-radius: 4px;
+    --elf--radio-disabled-color: var(--elf--disabled-color);
+
+    display: inline-block;
+    color: var(--elf--radio-color);
+
+    &.disabled {
+        cursor: not-allowed;
+        --elf--radio-background-color: var(--elf--radio-disabled-color) !important;
+        --elf--radio-color: rgba(0, 0, 0, 0.3) !important;
+        --elf--radio-border-color: transparent !important;
+
+        > * {
+            pointer-events: none;
+        }
+    }
+} 
+
+.elf--radio-group {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    
+    > .elf--radio {
+        margin-right: 10px;
+    }
+}

@@ -31,6 +31,16 @@ const REF_CLASS = "refclass";
 const REF_CLASS_PROPERTY = `[${REF_CLASS}]`;
 const EMPTY_ARRAY = [];
 
+function omitKeys (sourceObj, omitKeys = {}) {
+  const obj = {};
+  Object.keys(sourceObj).forEach((key) => {
+    if (!omitKeys[key]) {
+      obj[key] = sourceObj[key];
+    }
+  });
+  return obj;
+}
+
 export class EventMachine extends MagicHandler {
   /**
    * local state
@@ -171,6 +181,13 @@ export class EventMachine extends MagicHandler {
     this.childComponents = this.components();
   }
 
+  /**
+   * 함수 캐쉬 
+   * 
+   * @param {string} funcName 
+   * @param {function} func 
+   * @returns 
+   */
   createFunction(funcName, func) {
     if (isFunction(func) && !this.#functionCache[funcName]) {
       this.#functionCache[funcName] = func;
@@ -179,6 +196,13 @@ export class EventMachine extends MagicHandler {
     return this.#functionCache[funcName];
   }
 
+  /**
+   * 캐쉬된 함수 실행하기 
+   * 
+   * @param {string} funcName 
+   * @param {function} func 
+   * @returns 
+   */
   runFunction(funcName, func) {
     const cachedFunction = this.createFunction(funcName, func);
 
@@ -249,7 +273,13 @@ export class EventMachine extends MagicHandler {
   }
 
   changedProps(newProps) {
-    return !isEqual(this.#props, newProps);
+    const obj1 = this.#props;
+    const obj2 = newProps;
+
+    return !isEqual(obj1, obj2, 0, {
+      content: true, 
+      contentChildren: true
+    });
   }
 
   /**

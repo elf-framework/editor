@@ -1,0 +1,33 @@
+.elf--checkbox {
+    --elf--checkbox-border-color: rgba(0, 0, 0, 0.8);
+    --elf--checkbox-padding: 7px 10px;
+    --elf--checkbox-font-size: var(--elf--font-size, 14px);
+    --elf--checkbox-background-color: transparent;
+    --elf--checkbox-color: rgba(0, 0, 0, 0.8);
+    --elf--checkbox-border-radius: 4px;
+    --elf--checkbox-disabled-color: var(--elf--disabled-color);
+
+    display: inline-block;
+    color: var(--elf--checkbox-color);
+
+    &.disabled {
+        cursor: not-allowed;
+        --elf--checkbox-background-color: var(--elf--checkbox-disabled-color) !important;
+        --elf--checkbox-color: rgba(0, 0, 0, 0.3) !important;
+        --elf--checkbox-border-color: transparent !important;
+
+        > * {
+            pointer-events: none;
+        }
+    }
+} 
+
+.elf--checkbox-group {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    
+    > .elf--checkbox {
+        margin-right: 10px;
+    }
+}

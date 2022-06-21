@@ -455,6 +455,32 @@ declare module "@elf-framework/ui" {
   }
 
   export class TextAreaEditor extends InputEditor {}
+
+  export interface RadioProps {
+    checked: boolean;
+    name: string;
+    value: any;
+    onChange: (event: PointerEvent) => void;
+  }
+  export class Radio extends UIElement {
+    props: RadioProps;
+  }
+
+  export interface RadioGroupProps {
+    name: string;
+    value: any;
+    onChange: (event: PointerEvent) => void;
+  }
+
+  export class RadioGroup extends UIElement {
+    props: RadioGroupProps;
+  }
+
+  export type CheckboxProps = RadioProps;
+
+  export class Checkbox extends UIElement {
+    props: CheckboxProps;
+  }
 }
 
 

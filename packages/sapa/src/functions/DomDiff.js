@@ -1,17 +1,45 @@
-import { isFunction } from "./func";
+import { isFunction, isNotUndefined, isUndefined } from "./func";
+
+const booleanTypes = {
+  checked: true,
+  disabled: true,
+  selected: true,
+  readonly: true,
+  required: true,
+  multiple: true,
+  open: true,
+  hidden: true,
+  spellcheck: true,
+  autofocus: true,
+  autoplay: true,
+  controls: true,
+  loop: true,
+  muted: true,
+  default: true,
+  defer: true,
+  async: true,
+  allowfullscreen: true,
+  allowtransparency: true,
+  allowpaymentrequest: true,
+}
+
+
+function isBooleanType (key) {
+  return booleanTypes[key];
+}
 
 const setBooleanProp = (el, name, value) => {
-  if (value) {
+  if (isNotUndefined(value)) {
     el.setAttribute(name, name);
     el[name] = value;
   } else {
     el.removeAttribute(name);
-    el[name] = value;
+    el[name] = undefined;
   }
 };
 
 const setProp = (el, name, value) => {
-  if (typeof value === "boolean") {
+  if (isBooleanType(name)) {
     setBooleanProp(el, name, value);
   } else {
     if (name === "style") {
@@ -22,28 +50,21 @@ const setProp = (el, name, value) => {
   }
 };
 
-const removeBooleanProp = (node, name) => {
-  node.removeAttribute(name);
-  node[name] = false;
-};
-
-const removeUndefinedProp = (node, name) => {
-  node.removeAttribute(name);
-};
-
-const removeProp = (node, name, value) => {
-  if (typeof value === "boolean") {
-    removeBooleanProp(node, name);
+const removeProp = (node, name) => {
+  console.log("removeProp", node, name);
+  if (isBooleanType(name)) {
+    node.removeAttribute(name);  
+    node[name] = false;        
   } else if (name) {
-    removeUndefinedProp(node, name);
+    node.removeAttribute(name);  
   }
+
 };
 
 const updateProp = (node, name, newValue, oldValue) => {
-  // 필드만 있는 것들은 value 가 없을 수 있기 때문에, 기본 value 를 채워주자.
-  if (!newValue) {
-    // console.log(node, name, oldValue, newValue);
-    removeProp(node, name, oldValue);
+  console.log(node, name, newValue, isUndefined(newValue), oldValue);
+  if (isUndefined(newValue)) {  // newValue 이 undefined 라는 것은 name 이 없다는 것이기 때문에 name을 지운다. 
+    removeProp(node, name);
   } else if (!oldValue || newValue !== oldValue) {
     setProp(node, name, newValue);
   } else {

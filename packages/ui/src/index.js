@@ -3,6 +3,8 @@ import "@elf-framework/design-system/style.css";
 export * from "./components/button";
 export * from "./components/link-button";
 export * from "./components/icon-button";
+export * from "./components/radio";
+export * from "./components/checkbox";
 export * from "./components/menu";
 export * from "./components/dialog";
 export * from "./components/toolbar";

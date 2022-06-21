@@ -20,11 +20,10 @@ const cssProperties = makeStyleMap('--elf--input-editor', {
 export class TextAreaEditor extends UIElement {
 
   initState() {
-    const { style = {}, autoFocus = false, focused, hover = false, value, placeholder, disabled } = this.props;
+    const { style = {}, focused, hover = false, value, placeholder, disabled } = this.props;
 
     return {
       style,
-      autoFocus,
       hover: hover || false,
       focused: focused || false,
       placeholder,
