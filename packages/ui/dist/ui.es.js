@@ -192,7 +192,7 @@ const cssProperties$c = {
   padding: "--elf--radio-padding",
   borderRadius: "--elf--radio-border-radius"
 };
-class Radio$1 extends UIElement {
+class Radio extends UIElement {
   template() {
     const { disabled, style: style2 = {}, value, content, name, checked = false, onChange } = this.props;
     const styleObject = {
@@ -228,7 +228,7 @@ class RadioGroup extends UIElement {
       style: __spreadValues({}, propertyMap(style2, cssProperties$c))
     };
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), contentChildren.map((it, index) => {
-      return /* @__PURE__ */ createElementJsx(Radio$1, {
+      return /* @__PURE__ */ createElementJsx(Radio, {
         ref: `$${index}`,
         name,
         value: it.props.value,
@@ -272,7 +272,6 @@ class Checkbox extends UIElement {
       ]),
       style: __spreadValues({}, propertyMap(style2, cssProperties$b))
     };
-    console.log(checked);
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       ref: "$input",
       type: "checkbox"
@@ -285,10 +284,21 @@ class Checkbox extends UIElement {
       onChange: (e) => onChange == null ? void 0 : onChange(e, value)
     })), content));
   }
+  get checked() {
+    return this.refs.$input.checked();
+  }
+  get value() {
+    return this.props.value;
+  }
 }
 class CheckboxGroup extends UIElement {
+  initState() {
+    return {
+      value: this.props.value || []
+    };
+  }
   template() {
-    const { disabled, style: style2 = {}, name, value, onChange, contentChildren } = this.props;
+    const { disabled, style: style2 = {}, name, value, options = [], onChange, contentChildren } = this.props;
     const styleObject = {
       class: classnames([
         "elf--check-group"
@@ -296,26 +306,35 @@ class CheckboxGroup extends UIElement {
       disabled: disabled ? "disabled" : void 0,
       style: __spreadValues({}, propertyMap(style2, cssProperties$b))
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), contentChildren.map((it, index) => {
-      return /* @__PURE__ */ createElementJsx(Radio, {
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), options.map((it, index) => {
+      return /* @__PURE__ */ createElementJsx(Checkbox, {
         ref: `$${index}`,
-        name,
-        value: it.props.value,
+        value: it.value,
         onChange: (e, v) => {
-          this.setState({ value: v }, false);
-          onChange(e, v);
+          onChange(e, this.getValues());
         },
-        content: it.props.content,
-        checked: it.props.value === value,
+        checked: value.includes(it.value),
         disabled
-      });
+      }, it.label);
     }));
   }
-  get value() {
-    return this.state.value;
+  getValues() {
+    const values = [];
+    this.eachChildren((it) => {
+      if (it.checked) {
+        values.push(it.value);
+      }
+    });
+    return values;
   }
-  set value(value) {
-    this.setState({ value });
+  get disabled() {
+    return this.props.disabled;
+  }
+  get value() {
+    return this.getValues();
+  }
+  set value(values = []) {
+    this.setState({ values });
   }
 }
 const MenuItemType = {
@@ -1347,4 +1366,4 @@ class TextAreaEditor extends UIElement {
     this.refs.$input.value = v;
   }
 }
-export { Button, Checkbox, CheckboxGroup, Dialog, Grid, IconButton, InputEditor, Layout, LinkButton, Menu, Notification, Panel, Radio$1 as Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VisualBell };
+export { Button, Checkbox, CheckboxGroup, Dialog, Grid, IconButton, InputEditor, Layout, LinkButton, Menu, Notification, Panel, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VisualBell };

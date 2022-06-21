@@ -33,8 +33,6 @@ export class Checkbox extends UIElement {
       },
     };
 
-    console.log(checked);
-
     return (
       <div {...styleObject}>
         <label>
@@ -49,12 +47,26 @@ export class Checkbox extends UIElement {
       </div>
     );
   }
+
+  get checked()  {
+    return this.refs.$input.checked();
+  }
+
+  get value() {
+    return this.props.value;
+  }
 }
 
 export class CheckboxGroup extends UIElement {
 
+  initState() {
+    return {
+      value: this.props.value || [],
+    };
+  }
+
   template() {
-    const { disabled, style = {}, name, value, onChange, contentChildren } = this.props;
+    const { disabled, style = {}, name, value, options = [], onChange, contentChildren } = this.props;
 
     const styleObject = {
       class: classnames([
@@ -68,31 +80,45 @@ export class CheckboxGroup extends UIElement {
 
     return (
       <div {...styleObject}>
-        {contentChildren.map((it, index) => {
+        {options.map((it, index) => {
           return (
-            <Radio
+            <Checkbox
               ref={`$${index}`}
-              name={name}
-              value={it.props.value}
+              value={it.value}
               onChange={(e, v) => {
-                this.setState({ value: v }, false);
-                onChange(e, v);
+                onChange(e, this.getValues());
               }}
-              content={it.props.content}
-              checked={it.props.value === value}
+              checked={value.includes(it.value)}
               disabled={disabled}
-            />
+            >
+              {it.label}
+            </Checkbox>
           );
         })}
       </div>
     );
   }
 
-  get value() {
-    return this.state.value;
+  getValues() {
+    const values = []
+    this.eachChildren(it => {
+      if (it.checked) {
+        values.push(it.value);
+      }
+    })
+
+    return values;
   }
 
-  set value(value) {
-    this.setState({ value });
+  get disabled () {
+    return this.props.disabled;
+  }
+
+  get value() {
+    return this.getValues();
+  }
+
+  set value(values = []) {
+    this.setState({ values });
   }
 }

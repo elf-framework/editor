@@ -481,6 +481,22 @@ declare module "@elf-framework/ui" {
   export class Checkbox extends UIElement {
     props: CheckboxProps;
   }
+
+  interface CheckboxItem {
+    label: string;
+    value: any;
+  }
+
+  export interface CheckboxGroupProps {
+    name: string;
+    value: any;
+    options: CheckboxItem[];
+    onChange: (event: PointerEvent) => void;
+  }
+
+  export class CheckboxGroup extends UIElement {
+    props: CheckboxGroupProps;
+  }
 }
 
 
