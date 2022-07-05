@@ -3,9 +3,10 @@ import { LOAD, CLICK, PREVENT, SUBSCRIBE, DOMDIFF } from "@elf-framework/sapa";
 import "./KeyframeProperty.scss";
 
 import { uuidShort } from "elf/core/math";
-import {BaseProperty, iconUse} from "@elf-framework/editor";
-import { REFRESH_SELECTION } from "elf/editor/types/event";
 
+import { BaseProperty, iconUse } from "@elf-framework/editor";
+
+import { REFRESH_SELECTION } from "elf/editor/types/event";
 
 export default class KeyframeProperty extends BaseProperty {
   getTitle() {
@@ -17,7 +18,9 @@ export default class KeyframeProperty extends BaseProperty {
 
   getTools() {
     return /*html*/ `
-      <button type="button" ref="$add" title="add Filter">${iconUse('add')}</button>
+      <button type="button" ref="$add" title="add Filter">${iconUse(
+        "add"
+      )}</button>
     `;
   }
 
@@ -58,10 +61,10 @@ export default class KeyframeProperty extends BaseProperty {
           <div class='name'>${keyframe.name}</div>
           <div class='tools'>
             <div class='group'>
-              <button type="button" data-type='code'>${iconUse('code')}</button>
+              <button type="button" data-type='code'>${iconUse("code")}</button>
             </div>
             <button type="button" class="del" 
-            data-index="${index}">${iconUse('remove2')}</button>
+            data-index="${index}">${iconUse("remove2")}</button>
           </div>
         </div>
         <div class='offset-list'>

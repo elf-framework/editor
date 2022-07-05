@@ -1,3 +1,4 @@
+import { BaseProperty, iconUse } from "@elf-framework/editor";
 import {
   LOAD,
   CLICK,
@@ -8,9 +9,7 @@ import {
   createComponent,
 } from "@elf-framework/sapa";
 
-import { BaseProperty, iconUse } from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-
 
 const image_size = [
   "",

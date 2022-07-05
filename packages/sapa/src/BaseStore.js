@@ -22,6 +22,12 @@ export class BaseStore {
     this.editor = editor;
   }
 
+  hasCallback(event, callback) {
+    var list = this.getCachedCallbacks(event);
+
+    return list.some((f) => f.originalCallback === callback);
+  }
+
   getCallbacks(event) {
     if (!this.callbacks[event]) {
       this.callbacks[event] = [];
@@ -76,7 +82,11 @@ export class BaseStore {
 
     if (frame) {
       // 모든 이벤트는 requestAnimationFrame 을 통과하도록 한다.
-      callback = makeRequestAnimationFrame(callback, context, originalCallback.name);
+      callback = makeRequestAnimationFrame(
+        callback,
+        context,
+        originalCallback.name
+      );
     }
 
     this.getCallbacks(event).push({

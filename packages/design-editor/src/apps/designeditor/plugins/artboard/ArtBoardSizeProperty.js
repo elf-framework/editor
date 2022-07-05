@@ -12,6 +12,7 @@ import "./ArtBoardSizeProperty.scss";
 import artboardSize from "./preset/artboard.size";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
+
 import { BaseProperty } from "@elf-framework/editor";
 
 export default class ArtBoardSizeProperty extends BaseProperty {

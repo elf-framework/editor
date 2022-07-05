@@ -1,69 +1,72 @@
-import { start } from "@elf-framework/sapa";
-import "@elf-framework/ui/style.css";
-import { Button, Notification } from "@elf-framework/ui";
 import { iconUse } from "@elf-framework/icon";
+import { start } from "@elf-framework/sapa";
+import { Button, Notification } from "@elf-framework/ui";
+import "@elf-framework/ui/style.css";
+
+function Tools() {
+  return (
+    <>
+      <Button onClick={() => console.log("action")}>Action</Button>
+      <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>
+    </>
+  );
+}
 
 start(function () {
-
-  const tools = [
-    <Button onClick={() => console.log("action")}>Action</Button>,
-    <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>,
-  ]
-
   return (
     <div>
       <Notification
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="top"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="top-right"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="left"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="center"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="right"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="bottom-left"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="bottom"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
-            <Notification
+      <Notification
         direction="bottom-right"
         icon={iconUse("artboard")}
         content="Hello World"
-        tools={tools}
+        tools={<Tools />}
       />
     </div>
   );

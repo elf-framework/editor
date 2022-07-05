@@ -1,3 +1,5 @@
+import { EditorElement } from "@elf-framework/editor";
+import { list as icon } from "@elf-framework/icon";
 import {
   THROTTLE,
   IF,
@@ -9,9 +11,7 @@ import {
   SUBSCRIBE,
 } from "@elf-framework/sapa";
 
-import { list as icon } from "@elf-framework/icon";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
 
 export default class KeyframeTimeControl extends EditorElement {
   template() {

@@ -1,7 +1,12 @@
-import { DEBOUNCE, SUBSCRIBE, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
+import { BaseProperty } from "@elf-framework/editor";
+import {
+  DEBOUNCE,
+  SUBSCRIBE,
+  SUBSCRIBE_SELF,
+  createComponent,
+} from "@elf-framework/sapa";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class IFrameProperty extends BaseProperty {
   getClassName() {

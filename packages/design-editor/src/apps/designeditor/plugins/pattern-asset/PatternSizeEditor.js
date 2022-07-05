@@ -3,8 +3,8 @@ import { CLICK, BIND } from "@elf-framework/sapa";
 import "./PatternSizeEditor.scss";
 
 import { Pattern } from "elf/editor/property-parser/Pattern";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 export default class PatternSizeEditor extends EditorElement {
   initState() {

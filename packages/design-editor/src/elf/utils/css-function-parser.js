@@ -1,9 +1,8 @@
+import * as Color from "@elf-framework/color";
+import { Length } from "@elf-framework/editor";
 import { isArray } from "@elf-framework/sapa";
 
-import * as Color from "@elf-framework/color";
-
 import { FuncType, GradientType, TimingFunction } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
 
 // order is very important (number, length, 8 digit color, 6 digit color, 3 digit color, keyword, color name)
 const CSS_FUNC_REGEXP =
@@ -102,75 +101,75 @@ const makeFuncType = (type) => {
  */
 export const makeGroupFunction =
   (type) =>
-    (
-      item,
+  (
+    item,
+    allString,
+    funcStartCharacter = "(",
+    funcEndCharacter = ")"
+    // parameterSaparator = ","
+  ) => {
+    const lastIndex = findFunctionEndIndex(
       allString,
-      funcStartCharacter = "(",
-      funcEndCharacter = ")"
-      // parameterSaparator = ","
-    ) => {
-      const lastIndex = findFunctionEndIndex(
-        allString,
-        item.startIndex,
-        funcStartCharacter,
-        funcEndCharacter
-      );
+      item.startIndex,
+      funcStartCharacter,
+      funcEndCharacter
+    );
 
-      if (lastIndex === -1) {
-        return {
-          convert: true,
-          funcType: makeFuncType(type),
-          matchedString: allString,
-          type,
-          startIndex: item.startIndex,
-          endIndex: item.startIndex + allString.length,
-        };
-      }
-
-      const matchedString = allString.substring(item.startIndex, lastIndex);
-      const matchedStringIndex =
-        matchedString.indexOf(funcStartCharacter) + funcStartCharacter.length;
-      const args = allString.substring(
-        item.startIndex + matchedStringIndex,
-        item.startIndex + matchedString.lastIndexOf(funcEndCharacter)
-      );
-
-      const startIndex = item.startIndex;
-      const endIndex = item.startIndex + matchedString.length;
-
-      const newParsed = parseValue(args).map((it) => {
-        return {
-          ...it,
-
-          fullTextStartIndex:
-            item.startIndex + matchedStringIndex + it.startIndex,
-          fullTextEndIndex: item.startIndex + matchedStringIndex + it.endIndex,
-        };
-      });
-
-      let parameters = [];
-      let commaIndex = 0;
-
-      newParsed.forEach((it) => {
-        if (it.func === FuncType.COMMA) {
-          commaIndex++;
-        } else {
-          if (!parameters[commaIndex]) parameters[commaIndex] = [];
-          parameters[commaIndex].push(it);
-        }
-      });
-
+    if (lastIndex === -1) {
       return {
         convert: true,
         funcType: makeFuncType(type),
+        matchedString: allString,
         type,
-        startIndex,
-        endIndex,
-        matchedString,
-        args,
-        parameters: parameters,
+        startIndex: item.startIndex,
+        endIndex: item.startIndex + allString.length,
       };
+    }
+
+    const matchedString = allString.substring(item.startIndex, lastIndex);
+    const matchedStringIndex =
+      matchedString.indexOf(funcStartCharacter) + funcStartCharacter.length;
+    const args = allString.substring(
+      item.startIndex + matchedStringIndex,
+      item.startIndex + matchedString.lastIndexOf(funcEndCharacter)
+    );
+
+    const startIndex = item.startIndex;
+    const endIndex = item.startIndex + matchedString.length;
+
+    const newParsed = parseValue(args).map((it) => {
+      return {
+        ...it,
+
+        fullTextStartIndex:
+          item.startIndex + matchedStringIndex + it.startIndex,
+        fullTextEndIndex: item.startIndex + matchedStringIndex + it.endIndex,
+      };
+    });
+
+    let parameters = [];
+    let commaIndex = 0;
+
+    newParsed.forEach((it) => {
+      if (it.func === FuncType.COMMA) {
+        commaIndex++;
+      } else {
+        if (!parameters[commaIndex]) parameters[commaIndex] = [];
+        parameters[commaIndex].push(it);
+      }
+    });
+
+    return {
+      convert: true,
+      funcType: makeFuncType(type),
+      type,
+      startIndex,
+      endIndex,
+      matchedString,
+      args,
+      parameters: parameters,
     };
+  };
 
 const CSS_FUNC_PARSER_MAP = {
   length: (item) => Length.parse(item.matchedString),

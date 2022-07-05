@@ -1,11 +1,10 @@
 import { LOAD, createComponent } from "@elf-framework/sapa";
-
-import { ToolbarButtonMenuItem } from "../tool-bar/ToolbarButtonMenuItem";
-import "./ContextMenuRenderer.scss";
-
 import { MenuItemType } from "apps/blankeditor/types/editor";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { ContextDropdownMenu } from "elf/editor/ui/view/ContextDropdownMenu";
+
+import { ToolbarButtonMenuItem } from "../tool-bar/ToolbarButtonMenuItem";
+import "./ContextMenuRenderer.scss";
 
 export default class ContextMenuRenderer extends EditorElement {
   checkProps(props = {}) {

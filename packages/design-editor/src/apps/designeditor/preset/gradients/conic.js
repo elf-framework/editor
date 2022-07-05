@@ -1,4 +1,3 @@
-
 import { repeat } from "elf/core/func";
 import { randomNumber } from "elf/core/math";
 import { ColorStep } from "elf/editor/property-parser/image-resource/ColorStep";

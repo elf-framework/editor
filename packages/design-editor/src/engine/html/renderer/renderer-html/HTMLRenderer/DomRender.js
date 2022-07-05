@@ -1,3 +1,4 @@
+import { Length } from "@elf-framework/editor";
 import { Dom, isNotUndefined } from "@elf-framework/sapa";
 
 import ItemRender from "./ItemRender";
@@ -13,7 +14,6 @@ import {
   Layout,
   ResizingMode,
 } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
 
 const WEBKIT_ATTRIBUTE_FOR_CSS = [
   "text-fill-color",

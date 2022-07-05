@@ -61,8 +61,8 @@ var __privateSet = (obj, member, value, setter) => {
     return Object.freeze(n);
   }
   var Color__namespace = /* @__PURE__ */ _interopNamespace(Color);
-  var index = "";
-  var layout$1 = "";
+  var index = /* @__PURE__ */ (() => '.elf-editor{--elf--editor-ruler-size:20px}.elf-editor .animation-selector{grid-column-gap:5px;display:grid;grid-template-columns:100px 1fr 30px;width:100%}.elf-editor .animation-selector .timeline-object{display:inline-block}.elf-editor .animation-selector .timeline-object.selected{background-color:var(--elf--selected-color);color:var(--elf--selected-font-color)}.elf-editor .timeline-value-area{background-color:var(--elf--background-color);border-left:1px solid var(--elf--border-color);border-top:1px solid var(--elf--border-color);bottom:0;position:absolute;right:0;top:0;width:300px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content{padding:0 20px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content.padding-zero{padding-top:0}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .offset-input{padding-top:20px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .offset-input .input-area{display:inline-block;height:24px;position:relative;vertical-align:middle;width:120px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .offset-input .input-area>input{box-sizing:border-box;height:100%;padding:2px;width:100%}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .offset-input .input-area:after{bottom:100%;box-sizing:border-box;color:var(--elf--input-sub-font-color);content:"Hour:Minute:Second:Frame";left:0;padding-left:2px;position:absolute}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item>.title,.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item>.title>.tools{display:none}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item>.title-2{display:block;text-align:right}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item>.title-2 label{cursor:pointer}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item>.title-2:hover{color:var(--elf--selected-color)}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item .background-image-editor .tools button{text-align:right;width:100px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .css-property-item .background-image-editor .tools button svg{vertical-align:middle;width:16px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content .title{color:var(--elf--font-color)}.elf-editor .timeline-value-area .timeline-value-editor .value{grid-column-gap:4px;display:grid;grid-template-columns:60px 1fr;margin:0 auto;padding:5px;width:228px}.elf-editor .timeline-value-area .timeline-value-editor .value label{overflow:hidden;text-overflow:ellipsis}.elf-editor .timeline-value-area .timeline-value-editor .value .editor-area{min-height:20px}.elf-editor .timeline-value-area .timeline-value-editor .tab-content{padding-top:10px}.elf-editor .timeline-animation-area{background-color:var(--elf--background-color);border-right:1px solid var(--elf--border-color);border-top:1px solid var(--elf--border-color);bottom:0;left:0;position:absolute;top:0;width:300px}.elf-editor .timeline-animation-area .property{padding:0}.elf-editor .timeline-animation-area .property-title{height:299px!important;padding-bottom:0;padding-top:0}.elf-editor .timeline-animation-area .property-title label{padding-left:10px}.elf-editor .timeline-animation-area .property-body{padding:0!important}.elf-editor .timeline-area{bottom:0;left:300px;position:absolute;right:300px;top:0}.elf-editor .timeline-area .timeline-header{border-top:1px solid var(--elf--border-color);height:300px;left:0;position:absolute;right:0;top:0}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar{border-bottom:1px solid var(--elf--border-color);border-right:1px solid var(--elf--border-color);bottom:0;left:0;position:absolute;top:0;width:300px}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar{padding:10px 5px}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .row{grid-column-gap:5px;display:grid;grid-template-columns:50px 1fr;margin-bottom:2px}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .row label{padding:2px}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .row .input input{min-width:50px}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .play-buttons{display:flex}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .play-buttons[data-selected-speed="0.5"] [data-value="0.5"],.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .play-buttons[data-selected-speed="1"] [data-value="1"],.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .play-buttons[data-selected-speed="2"] [data-value="2"],.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .play-buttons[data-selected-speed="3"] [data-value="3"]{background-color:var(--elf--selected-color);color:var(--elf--selected-font-color)}.elf-editor .timeline-area .timeline-header .timeline-object-toolbar .timeline-top-toolbar .play-buttons button{border:1px solid var(--elf--border-color);height:auto;min-width:50px;padding:2px 10px}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar{bottom:0;left:300px;position:absolute;right:0;top:0}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view{height:100%;left:0;position:absolute;top:0;width:100%}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration{height:5px;left:0;position:absolute;right:0;top:5px}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration .duration-handle-left{background-color:var(--elf--border-color);height:100%;left:15px;position:absolute;top:0;width:5px}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration .duration-handle-right{background-color:var(--elf--border-color);height:100%;position:absolute;right:15px;top:0;width:5px}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration .duration-slider{background-color:var(--elf--border-color);height:100%;left:10px;position:absolute;right:10px;top:0}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration .duration-slider .start{background-color:var(--elf--timeline-gauge-handle-color);cursor:ew-resize;height:100%;left:0;position:absolute;top:0;transform:translateX(-100%);width:5px}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration .duration-slider .end{background-color:var(--elf--timeline-gauge-handle-color);cursor:ew-resize;height:100%;left:100%;position:absolute;top:0;width:5px}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view .time-duration .duration-slider .gauge{background-color:var(--elf--timeline-gauge-background-color);cursor:ew-resize;height:100%;left:0;position:absolute;top:0;width:100%}.elf-editor .timeline-area .timeline-header .timeline-keyframe-toolbar .keyframe-time-view canvas{height:25px;left:0;position:absolute;top:15px;width:100%}.elf-editor .timeline-area .timeline-body{bottom:0;left:0;position:absolute;right:0;top:300px}.elf-editor .timeline-area .timeline-body .timeline-object-area{border-right:1px solid var(--elf--border-color);bottom:0;left:0;overflow:auto;position:absolute;top:0;width:300px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object.collapsed .timeline-object-row.layer .icon svg{transform:rotate(0deg)}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object.collapsed .timeline-object-row.layer-property{display:none}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row{grid-column-gap:2px;border-bottom:1px solid var(--elf--border-color);color:var(--elf--font-color);display:grid;grid-template-columns:20px 1fr 50px;height:24px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row[data-selected=true]{background-color:var(--elf--timeline-row-selected-color);color:var(--elf--selected-font-color)}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .current-value{padding:5px 0;vertical-align:middle}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .current-value input{vertical-align:middle;width:100%}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .icon{padding-top:5px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .icon svg{height:16px;transform:rotate(90deg);transition:transform .2s ease;width:16px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .title{color:var(--elf--font-color);cursor:pointer;padding-top:5px;vertical-align:middle}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .tools{padding-top:3px;text-align:right}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .tools>*{margin-right:5px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row .tools .empty{margin-right:0}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row.layer-property{grid-template-columns:20px 1fr .8fr 50px;overflow:hidden}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row.layer-property .title{padding-left:10px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row.layer-property .tools button.add{background-color:var(--elf--border-color);box-shadow:0 0 0 1px var(--elf--border-color);cursor:pointer;display:inline-block;height:7px;transform:translateX(-4px) translateY(0) rotate(45deg);vertical-align:middle;width:7px}.elf-editor .timeline-area .timeline-body .timeline-object-area .timeline-object-list .timeline-object .timeline-object-row.layer-property .tools button.add:hover{background-color:var(--elf--selected-color);box-shadow:0 0 0 2px var(--elf--selected-color)}.elf-editor .timeline-area .timeline-body .keyframe-time-grid-view{bottom:0;left:300px;pointer-events:none;position:absolute;right:0;top:0}.elf-editor .timeline-area .timeline-body .keyframe-time-grid-view canvas{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area{bottom:0;left:270px;overflow:auto;position:absolute;right:0;top:0}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-container{min-height:100%;outline:none;position:relative}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-container .drag-area{background-color:rgba(53,133,189,.7);border:1px solid #7db4db;height:0;left:-10000px;pointer-events:none;position:absolute;right:-10000px;width:0}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe.collapsed .timeline-keyframe-row.layer-property{display:none}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row{border-bottom:1px solid var(--elf--border-color);height:24px;position:relative}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe{background-color:rgba(var(--elf--border-color),.5);display:inline-block;height:10px;position:absolute;top:50%;transform:translateY(-50%)}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe .offset{background-color:var(--elf--background-color);border:1px solid var(--elf--selected-color);cursor:ew-resize;display:inline-block;height:8px;pointer-events:all;position:absolute;top:50%;transform:translateY(-50%) translateX(-50%) rotate(45deg);width:8px}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe .offset[data-selected=true]{background-color:var(--elf--selected-color);box-shadow:0 0 0 1px var(--elf--selected-color)}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe-shadow{display:inline-block;height:10px;position:absolute;top:50%;transform:translateY(-50%)}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe-shadow .offset{background-color:var(--elf--background-color);border:1px solid var(--elf--selected-color);cursor:ew-resize;display:inline-block;height:8px;pointer-events:all;position:absolute;top:50%;transform:translateY(-50%) translateX(-50%) rotate(45deg);width:8px}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe-shadow .offset[data-selected=true]{background-color:var(--elf--selected-color);box-shadow:0 0 0 1px var(--elf--selected-color)}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe-back{display:inline-block;height:100%;position:absolute}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe-back .offset-line{background-color:var(--elf--selected-color);display:inline-block;height:1px;position:absolute;top:50%;transform:translateY(-52%)}.elf-editor .timeline-area .timeline-body .timeline-keyframe-area .timeline-keyframe-list .timeline-keyframe .timeline-keyframe-row .keyframe-back .sub-offset{background-color:#0bc4e4;display:inline-block;height:6px;position:absolute;top:50%;transform:translate(-50%,-50%);width:2px}.elf-editor .timeline-play-control{grid-column-gap:5px;display:grid;grid-template-columns:188px 120px 120px 1fr;text-align:left}.elf-editor .timeline-play-control .speed-number{position:relative}.elf-editor .timeline-play-control .speed-number:after{content:"X";display:inline-block;position:absolute;right:14px;top:1px}.elf-editor .timeline-play-control .speed-number input{width:100%}.elf-editor .timeline-play-control label{color:var(--elf--font-color);padding-right:10px;vertical-align:middle}.elf-editor .timeline-play-control label svg{height:16px;vertical-align:middle;width:16px}.elf-editor .timeline-play-control .input{vertical-align:middle}.elf-editor .timeline-play-control .input input{height:20px;vertical-align:middle;width:100%}.elf-editor .timeline-play-control .row{display:flex}.elf-editor .timeline-play-control .row:first-child{text-align:center}.elf-editor .timeline-play-control button{display:inline-block;height:24px;vertical-align:middle;width:24px}.elf-editor .timeline-play-control button.play{color:var(--elf--selected-color)}.elf-editor .timeline-play-control button.pause{color:#6677d8;display:none}.elf-editor .timeline-play-control .play-buttons[data-status=play] .pause{display:inline-block}.elf-editor .timeline-play-control .play-buttons[data-status=play] .play{display:none}.elf-editor .timeline-play-control .play-buttons[data-status=pause] .play{display:inline-block}.elf-editor .timeline-play-control .direction-buttons{display:flex;padding-top:2px}.elf-editor .timeline-play-control .direction-buttons[data-selected-direction=alternate-reverse] [data-value=alternate-reverse],.elf-editor .timeline-play-control .direction-buttons[data-selected-direction=alternate] [data-value=alternate],.elf-editor .timeline-play-control .direction-buttons[data-selected-direction=normal] [data-value=normal],.elf-editor .timeline-play-control .direction-buttons[data-selected-direction=reverse] [data-value=reverse]{background-color:var(--elf--selected-background-color);color:var(--elf--selected-color)}.elf-editor .timeline-play-control .direction-buttons button{border-radius:3px;height:20px;margin-right:5px;width:20px}.elf-editor .keyframe-time-control .time-manager{grid-column-gap:0;display:grid;grid-template-columns:20px 90px 70px 84px 10px}.elf-editor .keyframe-time-control .time-manager button{color:var(--elf--font-color)}.elf-editor .keyframe-time-control .time-manager button svg path{fill:currentColor}.elf-editor .keyframe-time-control .time-manager label{color:var(--elf--font-color);padding-right:0}.elf-editor .keyframe-time-control .time-manager label svg{height:16px;width:16px}.elf-editor .keyframe-time-control input[type=text]{width:80px}.elf-editor .feature-control.inspector{color:var(--elf--font-color);height:100%;position:relative}.elf-editor .feature-control.inspector>div{height:100%;position:relative}.elf-editor .feature-control.inspector>div .empty{height:100px}.elf-editor .feature-control.object-list{border-right:1px solid var(--elf--border-color);box-sizing:border-box;height:100%;position:relative}.elf-editor .feature-control.object-list .property{border:0;height:100%;margin:0;padding:0}.elf-editor .feature-control.object-list .property .property-body{padding:0}.elf-editor .feature-control .layer-tab{bottom:0;left:0;position:absolute;right:0;top:0}.elf-editor .feature-control .layer-tab .project-content>div{left:5px;position:absolute;right:5px}.elf-editor .feature-control .layer-tab .project-content>div:first-child{height:150px;top:0}.elf-editor .feature-control .layer-tab .project-content>div:not(:first-child){border-top:1px solid var(--elf--border-color)}.elf-editor .feature-control .layer-tab .project-content>div:last-child{bottom:0;height:auto!important;top:150px}.elf-editor .feature-control .layer-tab .object-items{height:100%;width:100%}.elf-editor .feature-control .layer-tab .object-items>div{height:100%;position:relative}.elf-editor .feature-control .layer-tab .assets{padding:3px}.elf-editor .feature-control .layer-tab .assets .property{height:auto}')();
+  var style = /* @__PURE__ */ (() => '.colorpicker{background-color:#fff;border:1px solid rgba(0,0,0,.2);border-radius:3px;box-shadow:0 0 10px 2px rgba(0,0,0,.12);display:inline-block;position:relative;width:224px;z-index:1000}.colorpicker>.arrow{border-bottom:10px solid rgba(0,0,0,.2);border-left:10px solid transparent;border-right:10px solid transparent;display:none;height:0;left:7px;pointer-events:none;position:absolute;top:-10px;width:0}.colorpicker>.arrow:after{border-bottom:9px solid #fff;border-left:9px solid transparent;border-right:9px solid transparent;content:"";height:0;left:-9px;position:absolute;top:1px;width:0}.colorpicker .colorpicker-body .color-tab{border:1px solid #ececec;box-sizing:border-box;display:flex;flex-direction:column;height:350px}.colorpicker .colorpicker-body .color-tab.xd{height:200px}.colorpicker .colorpicker-body .color-tab .color-tab-header{display:flex;flex:none;flex-direction:row;height:20px}.colorpicker .colorpicker-body .color-tab .color-tab-header .color-tab-item{background-color:#ececec;box-sizing:border-box;cursor:pointer;flex:1 1 auto;height:100%;padding:4px 10px;text-align:center}.colorpicker .colorpicker-body .color-tab .color-tab-header .color-tab-item.active{background-color:#fff;border-bottom-color:#fff}.colorpicker .colorpicker-body .color-tab .color-tab-body{flex:1 1 auto;position:relative}.colorpicker .colorpicker-body .color-tab .color-tab-body .color-tab-content{bottom:0;display:none;left:0;position:absolute;right:0;top:0}.colorpicker .colorpicker-body .color-tab .color-tab-body .color-tab-content.active{display:block}.colorpicker .colorpicker-body .color-panel{cursor:pointer;height:120px;overflow:hidden;position:relative}.colorpicker .colorpicker-body .color-panel>.saturation,.colorpicker .colorpicker-body .color-panel>.saturation>.value{height:100%;position:relative;width:100%}.colorpicker .colorpicker-body .color-panel>.saturation>.value>.drag-pointer{border-radius:50%;height:10px;position:absolute;transform:translateX(-50%) translateY(-50%);width:10px}.colorpicker .colorpicker-body .color-panel>.saturation{background-color:hsla(20,42%,65%,0);background-image:linear-gradient(90deg,#fff,hsla(20,42%,65%,0));background-repeat:repeat-x}.colorpicker .colorpicker-body .color-panel>.saturation>.value{background-image:linear-gradient(0deg,#000,hsla(20,42%,65%,0))}.colorpicker .colorpicker-body .color-panel>.saturation>.value>.drag-pointer{border:1px solid #fff;box-shadow:0 0 2px 0 rgba(0,0,0,.05)}.colorpicker .colorpicker-body .control{padding:10px 0;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.colorpicker .colorpicker-body .control>.color,.colorpicker .colorpicker-body .control>.empty{background-color:#fff;border-radius:50%;box-sizing:border-box;height:30px;left:12px;position:absolute;top:14px;width:30px}.colorpicker .colorpicker-body .control>.color{border:1px solid rgba(0,0,0,.1)}.colorpicker .colorpicker-body .control>.hue{box-sizing:border-box;cursor:pointer;margin:0 0 0 42px;padding:6px 16px;position:relative}.colorpicker .colorpicker-body .control>.hue>.hue-container{border-radius:3px;height:10px;position:relative;width:100%}.colorpicker .colorpicker-body .control>.opacity{box-sizing:border-box;cursor:pointer;margin:0 0 0 42px;padding:3px 16px;position:relative}.colorpicker .colorpicker-body .control>.opacity>.opacity-container{border-radius:3px;height:10px;position:relative;width:100%}.colorpicker .colorpicker-body .control .drag-bar,.colorpicker .colorpicker-body .control .drag-bar2{border-radius:50%;cursor:pointer;height:12px;left:0;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);width:12px}.colorpicker .colorpicker-body .control>.hue>.hue-container{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.colorpicker .colorpicker-body .control>.opacity>.opacity-container{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px}.colorpicker .colorpicker-body .control>.opacity>.opacity-container>.color-bar{bottom:0;content:"";display:block;left:0;position:absolute;right:0;top:0}.colorpicker .colorpicker-body .control>.empty{background-color:transparent;background-color:#fff;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px}.colorpicker .colorpicker-body .control .drag-bar,.colorpicker .colorpicker-body .control .drag-bar2{background-color:#fefefe;border:1px solid rgba(0,0,0,.05);box-shadow:2px 2px 2px 0 rgba(0,0,0,.2)}.colorpicker .colorpicker-body .information{box-sizing:border-box;position:relative}.colorpicker .colorpicker-body .information>input{bottom:20px;box-sizing:border-box;height:20px;padding:0 0 0 2px;position:absolute;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}.colorpicker .colorpicker-body .information>input[type=number]{-webkit-appearance:none;-moz-appearance:none;appearance:none}.colorpicker .colorpicker-body .information>input[type=number]::-webkit-inner-spin-button,.colorpicker .colorpicker-body .information>input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.colorpicker .colorpicker-body .information.hex>.information-item.hex,.colorpicker .colorpicker-body .information.hsl>.information-item.hsl,.colorpicker .colorpicker-body .information.rgb>.information-item.rgb{display:flex}.colorpicker .colorpicker-body .information>.information-item{box-sizing:border-box;display:none;margin-right:40px;padding:0 5px 0 9px;position:relative}.colorpicker .colorpicker-body .information>.information-item>.input-field{box-sizing:border-box;display:block;flex:1;padding:3px 1px;position:relative}.colorpicker .colorpicker-body .information>.information-item>.input-field>.title{color:#a9a9a9;padding-top:2px;text-align:center}.colorpicker .colorpicker-body .information>.information-item>.input-field input{border:1px solid #cbcbcb;border-radius:2px;box-sizing:border-box;color:#333;height:21px;padding:3px;text-align:center;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;width:100%}.colorpicker .colorpicker-body .information>.information-item>.input-field input[type=number]{-webkit-appearance:none;-moz-appearance:none;appearance:none}.colorpicker .colorpicker-body .information>.information-item>.input-field input[type=number]::-webkit-inner-spin-button,.colorpicker .colorpicker-body .information>.information-item>.input-field input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.colorpicker .colorpicker-body .information>.information-item>.input-field.hsl-l input[type=number],.colorpicker .colorpicker-body .information>.information-item>.input-field.hsl-s input[type=number]{padding-left:1px;padding-right:10px}.colorpicker .colorpicker-body .information>.information-item>.input-field .postfix{box-sizing:border-box;display:inline-block;height:21px;line-height:2;padding:2px;position:absolute;right:1px;text-align:center;top:2px}.colorpicker .colorpicker-body .information>.information-change{bottom:0;box-sizing:border-box;display:block;padding-top:5px;position:absolute;right:0;text-align:center;top:0;width:40px}.colorpicker .colorpicker-body .information>.information-change>.format-change-button{background:transparent;border:0;box-sizing:border-box;cursor:pointer;outline:none}.colorpicker .colorpicker-body .information>.title{color:#a3a3a3}.colorpicker .colorpicker-body .information>.input{color:#333}.colorpicker .colorpicker-body .colorsets{border-top:1px solid #e2e2e2}.colorpicker .colorpicker-body .colorsets>.menu{float:right;padding:10px 15px 10px 5px}.colorpicker .colorpicker-body .colorsets>.menu button{border:0;cursor:pointer;font-family:serif,sans-serif;font-weight:300;outline:none}.colorpicker .colorpicker-body .colorsets>.color-list{box-sizing:border-box;display:block;line-height:0;margin-right:30px;padding:10px 0 0 10px}.colorpicker .colorpicker-body .colorsets>.color-list .color-item{background-size:contain;border-radius:2px;box-sizing:border-box;cursor:pointer;display:inline-block;height:13px;margin-bottom:12px;margin-right:12px;overflow:hidden;position:relative;vertical-align:middle;width:13px}.colorpicker .colorpicker-body .colorsets>.color-list .color-item:hover{transform:scale(1.2)}.colorpicker .colorpicker-body .colorsets>.color-list .color-item .empty{background-color:transparent;background-color:#fff;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;height:100%;left:0;margin:0;padding:0;pointer-events:none;position:absolute;top:0;width:100%}.colorpicker .colorpicker-body .colorsets>.color-list .color-item .color-view{border:1px solid rgba(0,0,0,.1);box-sizing:border-box;height:100%;left:0;margin:0;padding:0;pointer-events:none;position:absolute;top:0;width:100%}.colorpicker .colorpicker-body .colorsets>.color-list .add-color-item{color:#8e8e8e;cursor:pointer;display:inline-block;font-family:serif,sans-serif;font-weight:400;height:13px;line-height:1;margin-bottom:12px;margin-right:12px;text-align:center;vertical-align:middle;width:13px}.colorpicker .colorpicker-body .color-chooser{background-color:rgba(0,0,0,.5);bottom:0;left:0;opacity:0;pointer-events:none;position:absolute;right:0;top:0;transition:opacity .05s ease-out}.colorpicker .colorpicker-body .color-chooser.open{opacity:1;pointer-events:all}.colorpicker .colorpicker-body .color-chooser .color-chooser-container{background-color:#fff;bottom:0;left:0;position:absolute;right:0;top:120px}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-item-header{border-bottom:1px solid rgba(0,0,0,.2);box-sizing:border-box;display:flex;height:34px;left:0;padding:3px 0;position:absolute;right:0;top:0}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-item-header .title{box-sizing:border-box;color:#000;flex:2;font-weight:700;margin:0;overflow:hidden;padding:5px 5px 5px 14px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-item-header .items{cursor:pointer;display:block;flex:1;height:100%;line-height:2;padding-right:10px;text-align:right}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list{bottom:0;left:0;overflow:auto;position:absolute;right:0;top:34px}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list .colorsets-item{border-bottom:1px solid rgba(0,0,0,.1);cursor:pointer;display:flex;padding:3px 0}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list .colorsets-item:hover{background-color:rgba(0,0,0,.05)}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list .colorsets-item .title{box-sizing:border-box;color:#000;flex:2;font-weight:400;margin:0;overflow:hidden;padding:5px 5px 5px 14px;pointer-events:none;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list .colorsets-item .items{cursor:pointer;display:block;flex:3;height:100%;line-height:1.6;pointer-events:none}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list .colorsets-item .items .color-item{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;background-size:contain;border:1px solid #ddd;border-radius:3px;box-sizing:border-box;cursor:pointer;display:inline-block;height:13px;margin-right:10px;overflow:hidden;vertical-align:middle;width:13px}.colorpicker .colorpicker-body .color-chooser .color-chooser-container .colorsets-list .colorsets-item .items .color-item .color-view{height:100%;margin:0;padding:0;pointer-events:none;width:100%}.colorpicker.sketch{border-radius:5px}.colorpicker.sketch>.colorpicker-body .color-panel{box-sizing:border-box;height:150px}.colorpicker.sketch>.colorpicker-body>.control{margin-top:5px;padding:0}.colorpicker.sketch>.colorpicker-body>.control>.color,.colorpicker.sketch>.colorpicker-body>.control>.empty{background-color:#fff;border-radius:100%;box-sizing:border-box;height:26px;left:auto;position:absolute;right:0;top:1px;width:26px}.colorpicker.sketch>.colorpicker-body>.control>.color{box-shadow:inset 0 0 1px 0 rgba(0,0,0,.5)}.colorpicker.sketch>.colorpicker-body>.control>.hue{margin:0 32px 0 0;padding:2px 2px 2px 0;position:relative}.colorpicker.sketch>.colorpicker-body>.control>.hue>.hue-container{border-radius:12px}.colorpicker.sketch>.colorpicker-body>.control>.opacity{margin:0 32px 0 0;padding:2px 2px 2px 0;position:relative}.colorpicker.sketch>.colorpicker-body>.control>.opacity>.opacity-container,.colorpicker.sketch>.colorpicker-body>.control>.opacity>.opacity-container .color-bar{border-radius:12px}.colorpicker.sketch>.colorpicker-body>.control .drag-bar,.colorpicker.sketch>.colorpicker-body>.control .drag-bar2{background-color:#fff;border:1px solid #fff;border-radius:0;border-radius:50%;bottom:1px!important;box-shadow:0 0 1px 0 rgba(0,0,0,.5);height:12px;left:0;top:50%;transform:translateX(-50%) translateY(-50%);width:12px}.colorpicker.sketch>.colorpicker-body>.information{margin-top:5px}.colorpicker.sketch>.colorpicker-body>.information .information-change{display:none}.colorpicker.sketch>.colorpicker-body>.information.rgb .information-item.rgb{display:inherit}.colorpicker.sketch>.colorpicker-body>.information.rgb .information-item.hsl{display:none!important}.colorpicker.sketch>.colorpicker-body>.information.hex .information-item.hex{display:inherit}.colorpicker.sketch>.colorpicker-body>.information.hex .information-item.hsl,.colorpicker.sketch>.colorpicker-body>.information.hsl .information-item.rgb{display:none!important}.colorpicker.sketch>.colorpicker-body>.information.hsl .information-item.hsl{display:inherit}.colorpicker.sketch>.colorpicker-body>.information .information-item{display:inline-flex!important;margin-right:0}.colorpicker.sketch>.colorpicker-body>.information .information-item>.input-field>.title{color:#000;cursor:pointer}.colorpicker.sketch>.colorpicker-body>.information .information-item>.input-field>.title:hover{font-weight:700}.colorpicker.sketch>.colorpicker-body>.information .information-item>.input-field:last-child:not(:first-child){padding-right:0}.colorpicker.sketch>.colorpicker-body>.information .information-item.hex{padding-left:0;padding-right:0;width:70px}.colorpicker.sketch>.colorpicker-body>.information .information-item.rgb{padding-left:0;padding-right:0;width:150px}.colorpicker.sketch>.colorpicker-body>.information .information-item.hsl{display:none;padding-left:0;padding-right:0;width:150px}.colorpicker.sketch>.colorpicker-body>.colorsets>.menu{display:none}.colorpicker.sketch>.colorpicker-body>.colorsets>.color-list{margin-right:0;padding-right:12px}.colorpicker.sketch>.colorpicker-body>.colorsets>.color-list .color-item{border-radius:3px;height:16px;margin-bottom:10px;margin-right:9px;width:16px}.colorsets-contextmenu{background-color:#ececec;border:1px solid #ccc;border-radius:6px;display:none;list-style:none;padding:4px 0;position:fixed}.colorsets-contextmenu.show{display:inline-block}.colorsets-contextmenu .elf--menu-item{cursor:default;padding:2px 20px}.colorsets-contextmenu .elf--menu-item:hover{background-color:#5ea3fb;color:#fff}.colorsets-contextmenu.small .elf--menu-item.small-hide{display:none}.elf-editor{--elf--editor-ruler-size:20px;bottom:0;box-sizing:border-box;font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,sans-serif;font-size:11px;margin:0;padding:0;right:0}.elf-editor *,.elf-editor :after,.elf-editor :before{-webkit-overflow-scrolling:touch;box-sizing:border-box}.elf-editor.ua-window .scrollbar::-webkit-scrollbar{background-color:#aaa;height:8px;width:5px}.elf-editor.ua-window .scrollbar::-webkit-scrollbar-thumb{background:#000}.elf-editor[data-theme=dark]{--elf--range-thumb-color:#228be6;--elf--range-track-color:#616161;--elf--range-thumb-border-color:rgba(0,0,0,.8);--elf--input-background-color:#343a40;--elf--input-inactive-color:#495057;--elf--input-border-color:#adb5bd;--elf--input-font-color:#f8f9fa;--elf--input-sub-font-color:#7a7a7a;--elf--input-height:30px;--elf--input-font-size:11px;--elf--border-color:#495057;--elf--selection-tool-border-color:#3a89f0;--elf--selected-color:#228be6;--elf--selected-color-2:#1864ab;--elf--selected-hover-color:#74c0fc;--elf--selected-border-color:#1c7ed6;--elf--layout-border-color:#212529;--elf--background-color:#343a40;--elf--toolbar-background-color:#212529;--elf--selected-background-color:#535353;--elf--font-color:#f8f9fa;--elf--disabled-font-color:#e9ecef;--elf--menu-item-title-font-color:#e9ecef;--elf--selected-font-color:#f8f9fa;--elf--divider-color:#616161;--elf--property-border-color:#0b0b0b;--elf--property-title-background-color:#161616;--elf--property-background-color:#22282c;--elf--list-item-font-color:#fff;--elf--list-item-selected-color:#03a9f4;--elf--list-item-disable-font-color:#828282;--elf--popup-background-color:#343a40;--elf--popup-font-color:#ced4da;--elf--window-background-color:rgba(61,61,61,.5);--elf--path-background-color:hsla(0,0%,100%,.7);--elf--path-guide-color:#000;--elf--path-segment-stroke-color:#0bf;--elf--timeline-gauge-background-color:#ee4b66;--elf--timeline-gauge-handle-color:#fffaaf;--elf--timeline-row-selected-color:rgba(67,92,181,.4);--elf--timeline-property-add-background-color:#666;--elf--guide-line-color:#ca7976;--elf--guide-font-color:#fff;--elf--guide-line-rect-color:#435cb5;--elf--canvas-background-color:#d3d3d3;--elf--animation-item-background-color:#435cb5;--elf--grid-box-editor-button-background-color:#435cb5;--elf--drag-area-rect-border-color:rgba(62,168,255,.9);--elf--drag-area-rect-background-color:rgba(107,188,255,.214);--elf--rotate-x-border-color:#6868f7;--elf--rotate-y-border-color:#70c570;--elf--tooltip-background-color:#212529;--elf--tooltip-font-color:#f8f9fa;--elf--tab-toolbar-background-color:#212529;--elf--tab-font-color:#949494}.elf-editor[data-theme=light]{--elf--range-thumb-color:#609de2;--elf--range-track-color:#cfcfcf;--elf--range-thumb-border-color:#609de2;--elf--input-background-color:#fff;--elf--input-inactive-color:#f1f3f5;--elf--input-border-color:#ced4da;--elf--input-font-color:#333;--elf--input-sub-font-color:#7a7a7a;--elf--input-height:30px;--elf--input-font-size:11px;--elf--border-color:#868e96;--elf--selection-tool-border-color:#3a89f0;--elf--layout-border-color:#dee2e6;--elf--selected-color:#66baff;--elf--selected-color-2:#339af0;--elf--selected-hover-color:#d0ebff;--elf--selected-border-color:#609de2;--elf--background-color:#fff;--elf--toolbar-background-color:#2c2c2c;--elf--selected-background-color:#d8d8d8;--elf--font-color:#333;--elf--disabled-font-color:#c1c1c1;--elf--menu-item-title-font-color:#f8f9fa;--elf--selected-font-color:#fff;--elf--divider-color:#cfcfcf;--elf--property-border-color:#e5e5e5;--elf--property-title-background-color:#fff;--elf--property-background-color:#fff;--elf--list-item-font-color:#000;--elf--list-item-selected-color:#609de2;--elf--list-item-disable-font-color:#a3a3a3;--elf--popup-background-color:#fff;--elf--popup-font-color:#ced4da;--elf--window-background-color:rgba(42,42,42,.478);--elf--path-background-color:hsla(0,0%,100%,.7);--elf--path-guide-color:#5c5c5c;--elf--path-segment-stroke-color:#b7b7b7;--elf--timeline-gauge-background-color:#435cb5;--elf--timeline-gauge-handle-color:#748ff1;--elf--timeline-row-selected-color:#609de2;--elf--timeline-property-add-background-color:#747474;--elf--guide-line-color:#66baff;--elf--guide-font-color:#fff;--elf--guide-line-rect-color:#36457a;--elf--canvas-background-color:hsla(0,0%,7%,.1);--elf--animation-item-background-color:#435cb5;--elf--grid-box-editor-button-background-color:#435cb5;--elf--drag-area-rect-border-color:rgba(62,168,255,.9);--elf--drag-area-rect-background-color:rgba(107,188,255,.5);--elf--rotate-x-border-color:#643ac7;--elf--rotate-y-border-color:#8bdf8b;--elf--tooltip-background-color:#212529;--elf--tooltip-font-color:#fff;--elf--tab-toolbar-background-color:#f6fafc;--elf--tab-font-color:#adadad}.elf-editor{left:0;top:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.elf-editor [contenteditable]{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}.elf-editor input[type=email],.elf-editor input[type=number],.elf-editor input[type=text],.elf-editor textarea{background-color:var(--elf--input-background-color);border:1px solid var(--elf--border-color);color:var(--elf--input-font-color);outline:none}.elf-editor select{background-color:var(--elf--input-background-color);border-radius:0;border-radius:3px;color:var(--elf--font-color);line-height:1.6;padding:0 4px}.elf-editor button,.elf-editor select{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;outline:none;vertical-align:middle}.elf-editor button{background-color:transparent;border-width:0;color:var(--elf--button-front-color);display:inline-block;padding:0}.elf-editor button svg{height:100%;width:100%}.elf-editor input[type=file].embed-file-input{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--elf--background-color);display:inline-block;height:100%;left:0;opacity:0;pointer-events:none;position:absolute;top:0;width:100%}.elf-editor .add-image-button{display:none}.elf-editor .icon svg,.elf-editor button svg,.elf-editor label svg{height:16px;width:16px}.elf-editor .icon svg circle,.elf-editor .icon svg ellipse,.elf-editor .icon svg line,.elf-editor .icon svg path,.elf-editor .icon svg polygon,.elf-editor .icon svg polyline,.elf-editor .icon svg rect,.elf-editor .icon svg text,.elf-editor .icon svg tspan,.elf-editor .icon svg use,.elf-editor button svg circle,.elf-editor button svg ellipse,.elf-editor button svg line,.elf-editor button svg path,.elf-editor button svg polygon,.elf-editor button svg polyline,.elf-editor button svg rect,.elf-editor button svg text,.elf-editor button svg tspan,.elf-editor button svg use,.elf-editor label svg circle,.elf-editor label svg ellipse,.elf-editor label svg line,.elf-editor label svg path,.elf-editor label svg polygon,.elf-editor label svg polyline,.elf-editor label svg rect,.elf-editor label svg text,.elf-editor label svg tspan,.elf-editor label svg use{fill:currentColor;stroke-width:0}.elf-editor .primary{background-color:var(--elf--selected-color);color:var(--elf--selected-text-color)}.elf-editor input[type=range]{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;margin:3px 0;width:100%}.elf-editor input[type=range]:focus{outline:none}.elf-editor input[type=range]::-moz-focus-outer{border:0}.elf-editor input[type=range]::-webkit-slider-runnable-track{background:var(--elf--range-track-color);border-radius:10px;cursor:pointer;height:2px;width:100%}.elf-editor input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;background:var(--elf--range-thumb-color);border:1px solid var(--elf--range-thumb-border-color);border-radius:100%;cursor:pointer;height:12px;margin-top:-5px;width:12px}.elf-editor input[type=range]:focus::-webkit-slider-runnable-track{background:var(--elf--range-track-color)}.elf-editor input[type=range]::-moz-range-track{background:var(--elf--range-track-color);border-radius:10px;box-shadow:inset 0 1px 3px rgba(0,0,0,.12),inset 0 1px 2px rgba(0,0,0,.12);cursor:pointer;height:2px;width:100%}.elf-editor input[type=range]::-moz-range-thumb{background:var(--elf--range-thumb-color);border:1px solid #000;border-radius:9px;border-radius:20px;cursor:pointer;height:12px;margin-top:-5px;width:12px}.elf-editor input[type=range]::-ms-track{background:var(--elf--range-track-color);border:1px solid #000;border-radius:10px;cursor:pointer;height:2px;width:100%}.elf-editor input[type=range]::-ms-fill-lower{box-shadow:0 0 0 #000,0 0 0 #0d0d0d}.elf-editor input[type=range]::-ms-fill-lower,.elf-editor input[type=range]::-ms-fill-upper{background:var(--elf--range-thumb-color);border:0 solid #010101;border-radius:0}.elf-editor input[type=range]::-ms-thumb{background:var(--elf--range-thumb-color);border-radius:9px;cursor:pointer;height:12px;margin-top:-5px;width:12px}.elf-editor input[type=range]:focus::-ms-fill-lower,.elf-editor input[type=range]:focus::-ms-fill-upper{background:var(--elf--range-thumb-color)}.elf-editor .colorpicker-layer .colorpicker{background-color:transparent;border:0;box-shadow:none;width:100%}.elf-editor .colorpicker-layer .colorpicker .colorpicker-body{width:240px}.elf-editor .colorpicker-layer .colorpicker .colorpicker-body .color-list .current-color-sets .color-item{height:20px;margin:2px!important;width:20px}.elf-editor .colorpicker-layer .colorpicker .colorpicker-body .color-list .current-color-sets .add-color-item{height:20px;margin:0!important;padding:3px;width:20px}.elf-editor .colorpicker-layer .colorpicker .colorpicker-body .wheel{background-color:transparent;border:0}.elf-editor .icons-group{grid-column-gap:2px;grid-row-gap:2px;display:grid;grid-template-columns:repeat(6,40px);max-height:200px;overflow:auto}.elf-editor .icons-group .icon-item{display:inline-block;margin-bottom:2px;margin-right:2px;width:40px}.elf-editor .icons-group .icon-item .title{word-wrap:break-word;color:var(--elf--list-item-font-color);display:block;line-height:1;margin-top:5px;text-align:left;word-break:break-all}.elf-editor .icons-group .icon-item .icon-svg{background-color:var(--elf--input-background-color);border-radius:4px;box-sizing:border-box;color:var(--elf--font-color);cursor:pointer;display:inline-block;height:40px;padding:8px;width:40px}.elf-editor .icons-group .icon-item .icon-svg>svg{height:100%;width:100%}.elf-editor .icons-group .icon-item .icon-svg:hover{background-color:var(--elf--list-item-selected-color);color:var(--elf--selected-font-color)}.elf-editor [data-tooltip]{position:relative}.elf-editor [data-tooltip]:hover:after{opacity:1}.elf-editor [data-tooltip][data-tooltip-dy]:after{top:170%}.elf-editor [data-tooltip]:after{background-color:var(--elf--tooltip-background-color);border:1px solid var(--elf--border-color);border-radius:4px;box-shadow:0 2px 5px rgba(0,0,0,.29);box-sizing:border-box;color:var(--elf--tooltip-font-color);content:attr(data-tooltip);display:inline-block;font-size:11px;font-weight:400;left:50%;line-height:1.6;opacity:0;padding:4px 5px;pointer-events:none;position:absolute;right:auto;text-align:center;top:110%;transform:translateX(-50%);transition:all .3s linear;white-space:nowrap;z-index:10000000}.elf-editor [data-tooltip][data-direction=right]:after{left:120%;position:absolute;top:50%;transform:translateY(-50%)}.elf-editor [data-tooltip][data-direction=left]:after{position:absolute;right:120%;top:50%;transform:translateY(-50%)}.elf-editor [data-tooltip][data-direction=bottom]:after{left:50%;position:absolute;right:auto;top:var(--elf--toggle-checkbox-tooltip-bottom-top,100%);transform:translateX(-50%)}.elf-editor [data-tooltip][data-direction=top]:after{left:50%;position:absolute;right:auto;top:var(----elf--toggle-checkbox-tooltip-top,0);transform:translateX(-50%) translateY(-150%)}.elf-editor [data-tooltip][data-direction="top left"]:after{left:0;position:absolute;right:auto;top:0;transform:translateY(-150%)}.elf-editor [data-tooltip][data-direction="top right"]:after{left:auto;position:absolute;right:0;top:0;transform:translateY(-150%)}.elf-editor [data-tooltip][data-direction="bottom right"]:after{left:auto;position:absolute;right:0;top:110%;transform:translateX(0)}.elf-editor .logo-item{align-items:center;display:flex;flex-direction:row;justify-content:center}.elf-editor .logo-item label.logo{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAMS2lDQ1BJQ0MgUHJvZmlsZQAASImVVwdUU8kanltSSWiBCEgJvYlSpEsJoUUQkCrYCEkgocSYEETsyrIKrl1EQF3RVREXXQsga0Vd66JgX8uLsqisrIsFGypvUkDXPe+98+acufe7//z/95c7d+4MAHq1PKk0H9UHoEBSKEuMCmNNSs9gkboACggAAFtgw+PLpeyEhFj4BIbuf2+vbwBEdb/qpuL65/h/bQYCoZwPAJIAcZZAzi+A+CAAeClfKisEgOinimJWoVSFp0BsJIMBQixV4RwNLlXhLA2uUuskJ3Ig3gMAmcbjyXIA0G2BclYRPwfy6N6C2F0iEEsA0CNDHMwX8QQQR0M8qqBghgpDPeCU9QVPzt84s4Y5ebycYazJRd3I4WK5NJ83+/8sx/9uBfmKIR8OsNNEsuhEVc6wbrfyZsSoMA3iXklWXDzEhhC/FQvU+hCjVJEiOkWjj5rz5RxYM8CE2F3AC4+B2BziSEl+XKxWnpUtjuRCDGcIWiwu5CZrbZcK5RFJWs5a2YzE+CGcLeOwtbaNPJnar0r/tCIvha3lvyUScof4X5WIktM0MWPUInFqHMS6EDPleUkxGh3MrkTEiRvSkSkSVfHbQRwglESFafixadmyyEStvqxAPpQvtlQk5sZpcXWhKDlay7OHz1PHbwJxi1DCThniEconxQ7lIhCGR2hyx64IJSnafDGltDAsUWv7QpqfoNXHqcL8KJXcBmJzeVGS1hYPLoQTUsOPx0kLE5I1ceJZubzxCZp48GIQCzggHLCAAvYsMAPkAnF7b3MvfNKMRAIekIEcIARuWsmQRZp6RAKvSaAE/AmREMiH7cLUo0JQBOUfh6WaqxvIVo8WqS3ywCOIC0AMyIfPCrWVZNhbKvgdSsT/8M6HsebDrhr7p4wNJbFaiWKIl6U3pEmMIIYTo4mRRGfcDA/GA/FYeA2F3RP3w/2Hov2sT3hE6CA8JFwnKAm3p4sXy77KhwUmACX0EKnNOevLnHEHyOqNh+FBkB9y40zcDLjhY6EnNh4CfXtDKUcbuSr7r7n/lsMXVdfqUdwpKGUEJZTi9LWlrouu9zCLqqZfVkgTa9ZwXTnDI1/753xRaQG8x3ytiS3FDmBnsZPYeewI1gxY2HGsBbuEHVXh4Vn0u3oWDXlLVMeTB3nE//DH0/pUVVLu3uDe4/5BM1YoLFatj4AzQzpbJs4RFbLYcOUXsrgS/uhRLE93D38AVP8RzTL1kqn+PyDMC59lS6gABEkGBwePfJbFvAfgoDUAVOVnmWMnXA7gWn9uNV8hK9LIcNWFAKhAD35RpsAS/qWcYD6ewAcEglAQAcaDeJAM0sE0WGURnM8yMAvMBYtAGagAq8B6UA22gG1gF/gR7AfN4Ag4CX4BF8EVcB3cgbOnGzwFfeA1GEAQhITQEQZiilgh9ogr4on4IcFIBBKLJCLpSCaSg0gQBTIXWYJUIGuQamQrUo/8hBxGTiLnkQ7kNvIA6UFeIO9RDKWhRqgF6oCOQf1QNhqDJqNT0Rx0JlqClqIr0Cq0Dt2DNqEn0YvodVSJPkX7MYDpYEzMGnPD/DAOFo9lYNmYDJuPlWOVWB3WiLXC93wVU2K92DuciDNwFu4GZ3A0noLz8Zn4fHw5Xo3vwpvw0/hV/AHeh38i0AnmBFdCAIFLmETIIcwilBEqCTsIhwhn4NfUTXhNJBKZREeiL/wa04m5xDnE5cRNxL3EE8QOYhexn0QimZJcSUGkeBKPVEgqI20k7SEdJ3WSuklvyTpkK7InOZKcQZaQF5MrybvJx8id5MfkAYo+xZ4SQImnCCizKSsp2ymtlMuUbsoA1YDqSA2iJlNzqYuoVdRG6hnqXepLHR0dGx1/nYk6Yp2FOlU6+3TO6TzQeUczpLnQOLQpNAVtBW0n7QTtNu0lnU53oIfSM+iF9BX0evop+n36W12G7mhdrq5Ad4FujW6TbqfuMz2Knr0eW2+aXolepd4Bvct6vfoUfQd9jj5Pf75+jf5h/Zv6/QYMAw+DeIMCg+UGuw3OGzwxJBk6GEYYCgxLDbcZnjLsYmAMWwaHwWcsYWxnnGF0GxGNHI24RrlGFUY/GrUb9RkbGo81TjUuNq4xPmqsZGJMByaXmc9cydzPvMF8P8JiBHuEcMSyEY0jOke8MRlpEmoiNCk32Wty3eS9Kcs0wjTPdLVps+k9M9zMxWyi2SyzzWZnzHpHGo0MHMkfWT5y/8jfzFFzF/NE8znm28wvmfdbWFpEWUgtNlqcsui1ZFqGWuZarrM8ZtljxbAKthJbrbM6bvUHy5jFZuWzqlinWX3W5tbR1grrrdbt1gM2jjYpNott9trcs6Xa+tlm266zbbPts7Oym2A3167B7jd7ir2fvch+g/1Z+zcOjg5pDt86NDs8cTRx5DqWODY43nWiO4U4zXSqc7rmTHT2c85z3uR8xQV18XYRudS4XHZFXX1cxa6bXDtGEUb5j5KMqht1043mxnYrcmtwezCaOTp29OLRzaOfjbEbkzFm9ZizYz65e7vnu293v+Nh6DHeY7FHq8cLTxdPvmeN5zUvulek1wKvFq/nY13HCsduHnvLm+E9wftb7zbvjz6+PjKfRp8eXzvfTN9a35t+Rn4Jfsv9zvkT/MP8F/gf8X8X4BNQGLA/4K9At8C8wN2BT8Y5jhOO2z6uK8gmiBe0NUgZzArODP4+WBliHcILqQt5GGobKgjdEfqY7czOZe9hPwtzD5OFHQp7wwngzOOcCMfCo8LLw9sjDCNSIqoj7kfaROZENkT2RXlHzYk6EU2IjoleHX2Ta8Hlc+u5feN9x88bfzqGFpMUUx3zMNYlVhbbOgGdMH7C2gl34+zjJHHN8SCeG782/l6CY8LMhJ8nEicmTKyZ+CjRI3Fu4tkkRtL0pN1Jr5PDklcm30lxSlGktKXqpU5JrU99kxaetiZNOWnMpHmTLqabpYvTWzJIGakZOzL6J0dMXj+5e4r3lLIpN6Y6Ti2een6a2bT8aUen603nTT+QSchMy9yd+YEXz6vj9Wdxs2qz+vgc/gb+U0GoYJ2gRxgkXCN8nB2UvSb7SU5QztqcHlGIqFLUK+aIq8XPc6Nzt+S+yYvP25k3mJ+Wv7eAXJBZcFhiKMmTnJ5hOaN4RofUVVomVc4MmLl+Zp8sRrZDjsinylsKjeCG/ZLCSfGN4kFRcFFN0dtZqbMOFBsUS4ovzXaZvWz245LIkh/m4HP4c9rmWs9dNPfBPPa8rfOR+Vnz2xbYLihd0L0wauGuRdRFeYt+Xey+eM3iV0vSlrSWWpQuLO36JuqbhjLdMlnZzW8Dv92yFF8qXtq+zGvZxmWfygXlFyrcKyorPiznL7/wncd3Vd8Nrshe0b7SZ+XmVcRVklU3Voes3rXGYE3Jmq61E9Y2rWOtK1/3av309ecrx1Zu2UDdoNigrIqtatlot3HVxg/VourrNWE1e2vNa5fVvtkk2NS5OXRz4xaLLRVb3n8v/v7W1qitTXUOdZXbiNuKtj3anrr97A9+P9TvMNtRsePjTslO5a7EXafrfevrd5vvXtmANigaevZM2XPlx/AfWxrdGrfuZe6t2Af2Kfb98VPmTzf2x+xvO+B3oPGg/cHaQ4xD5U1I0+ymvmZRs7IlvaXj8PjDba2BrYd+Hv3zziPWR2qOGh9deYx6rPTY4PGS4/0npCd6T+ac7Gqb3nbn1KRT105PPN1+JubMuV8ifzl1ln32+Lmgc0fOB5w/fMHvQvNFn4tNl7wvHfrV+9dD7T7tTZd9L7dc8b/S2jGu41hnSOfJq+FXf7nGvXbxetz1jhspN27dnHJTeUtw68nt/NvPfyv6beDOwruEu+X39O9V3je/X/cv53/tVfoojz4If3DpYdLDO138rqe/y3//0F36iP6o8rHV4/onnk+O9ET2XPlj8h/dT6VPB3rL/jT4s/aZ07ODf4X+dalvUl/3c9nzwRfLX5q+3Plq7Ku2/oT++68LXg+8KX9r+nbXO793Z9+nvX88MOsD6UPVR+ePrZ9iPt0dLBgclPJkPPVWAIMdzc4G4MVOAOjpADCuwP3DZM05T90QzdlUjcB/wpqzoLr5ANAIb6rtOucEAPtgd1gIuWFXbdWTQwHq5TXctU2e7eWp4aLBEw/h7eDgSwsASK0AfJQNDg5sGhz8uB0GexuAEzM150tVI8KzwffuKtRp1VAMvmr/Bh1jf9vM+xg/AAAACXBIWXMAABYlAAAWJQFJUiTwAAACBmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MTY3ODwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4yNDE2PC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CuU+ZkwAAAQXSURBVHgB7ZxPS1RhGMXf0cygkhYtXLRpEW6SFrnqW/RZa1ffIAnKhVSS/ccy+2NkRDN3wha98jBCMNPznrnnNyC8z6D3POecH3rB4Q4+3l4fl4uXy2BltfDySmB8uFcWvCzjNiYAADERsxkAzAqPdgEgJmI2A4BZ4dEuAMREzGYAMCs82gWAmIjZDABmhUe7ABATMZsBwKzwaBcAYiJmMwCYFR7tAkBMxGwGALPCo10AiImYzWda+l1cWy+Lq1dariClPXrxrIxe7qTu1BSApfWb5dzGrVTDymJH9+54ATBYXi4L5y8od5K622DpbKresRj3AOmRawkCgFYf6dsAQHrkWoIAoNVH+jYAkB65liAAaPWRvg0ApEeuJQgAWn2kbwMA6ZFrCQKAVh/p2wBAeuRaggCg1Uf6NgCQHrmWYNN/B88yitHBfumOvs/ykunX6g4/p2v2BoCfjzbLcGc7PcBZCnZ7b2d5uX+6Vm8AGL15UYZbm/9kmm+qCXAPULOwPAGAZe3VNADULCxPAGBZezUNADULyxMAWNZeTQNAzcLyBACWtVfTAFCzsDwBgGXt1TQA1CwsTwBgWXs1DQA1C8sTAFjWXk0DQM3C8gQAlrVX0wBQs7A89eYTQWeuXitlPJ6rEkevd0v3Pv9jYCdD6g0Ayzc2ytLa9ZPe5M8/7t8FgFm1tLByqSyszOpqOdcZCDwfiXuAnK5lVQBAtpqcxQAgJ2dZFQCQrSZnMQDIyVlWBQBkq8lZDABycpZVAQDZanIWA4CcnGVVAEC2mpzFACAnZ1kVAJCtJmcxAMjJWValN/8OHr57XUaHX2SDnrRYd/Bh0tup7/UGgD/PCNp+lBretGLdp/1pLzH1z/cGgG5/r4x2n04diNsFuAdwazz4BYAQiNsIAG6NB78AEAJxGwHArfHgFwBCIG4jALg1HvwCQAjEbQQAt8aDXwAIgbiNAODWePALACEQtxEA3BoPfgEgBOI2AoBb48EvAIRA3EYAcGs8+AWAEIjbCABujQe/ABACcRsBwK3x4Lc3nwqex+cEhi7+jt23r2X0ZOvv/D8PvQFgHp8TeFqxw1fPyxEAnBbP5Pfn8TmBk52UcvwbIOvFPUBW0qI6ACBaTNZaAJCVtKgOAIgWk7UWAGQlLaoDAKLFZK0FAFlJi+oAgGgxWWsBQFbSojoAIFpM1loAkJW0qA4AiBaTtRYAZCUtqgMAosVkrdX08wC/th6W7svnLK9zo9Md5D0/sCkAw8cPyvEXr3YJ8CegXfYSygAgUUO7JQCgXfYSygAgUUO7JQCgXfYSygAgUUO7JQCgXfYSygAgUUO7JQCgXfYSygAgUUO7JQCgXfYSygAgUUO7JQCgXfYSygAgUUO7JQCgXfYSygAgUUO7JX4DM7xriSDTbF0AAAAASUVORK5CYII=);background-size:contain;border-radius:2px;display:inline-block;height:30px;width:30px}.elf--default-layout,.elf--default-layout-container{bottom:0;left:0;position:absolute;right:0;top:0}.elf--default-layout{display:flex;flex-direction:column}.elf--default-layout .layout-top{box-sizing:border-box;flex:none;height:48px;position:relative;z-index:10000}.elf--default-layout .layout-bottom{box-sizing:border-box;display:flex;flex:none;height:20px;position:relative;z-index:10000}.elf--default-layout .layout-middle{box-sizing:border-box;display:flex;flex:1 1 auto;flex-direction:row;overflow:hidden;position:relative}.elf--default-layout .layout-middle>.splitter{bottom:0;cursor:ew-resize;left:340px;position:absolute;top:0;transition:all .05s linear;width:4px;z-index:1}.elf--default-layout .layout-middle>.splitter.selected,.elf--default-layout .layout-middle>.splitter:hover{background-color:var(--elf--selected-color)}.elf--default-layout .layout-middle .layout-left{border-right:1px solid var(--elf--layout-border-color);box-sizing:border-box;display:flex;flex:none;flex-direction:column;overflow:hidden;position:relative;transition:width .05s linear;width:340px}.elf--default-layout .layout-middle .layout-right{border-left:1px solid var(--elf--layout-border-color);display:flex;flex:none;flex-direction:column;overflow:auto;overflow:hidden;position:relative;transition:width .05s linear;width:280px;z-index:100}.elf--default-layout .layout-middle .layout-right.closed{width:10px!important}.elf--default-layout .layout-middle .layout-body{flex:1 1 auto;position:relative}.elf--body-panel,.elf--body-panel .editing-area{bottom:0;left:0;position:absolute;right:0;top:0}.elf--body-panel .editing-area>.canvas-layout{bottom:0;left:var(--elf--editor-ruler-size);overflow:hidden;position:absolute;right:0;top:var(--elf--editor-ruler-size)}.elf--body-panel:not(.ruler)>.editing-area>.canvas-layout{left:0;top:0}.elf--button{grid-column-gap:4px;display:grid;grid-template-columns:1fr;height:var(--elf--input-height)}.elf--button.has-label{grid-column-gap:2px;grid-template-columns:64px 1fr}.elf--button.has-label label{font-size:var(--elf--input-font-size);overflow:hidden;padding:7px 0 2px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--button .area{display:block;height:100%}.elf--button .area button{background-color:var(--elf--input-inactive-color);border:0;border-radius:4px;color:var(--elf--input-font-color);display:inline-block;height:100%;width:100%}.elf--button .area button:hover{background-color:var(--elf--selected-color-2);color:var(--elf--selected-font-color)}.elf--toggle-button{height:24px;width:24px}.elf--toggle-button.has-label{grid-column-gap:2px;grid-template-columns:70px 1fr}.elf--toggle-button.has-label label{overflow:hidden;padding:7px 0 2px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--toggle-button .area{background-color:var(--elf--input-inactive-color);display:block;height:100%;position:relative}.elf--toggle-button .area>div{display:none;height:100%;position:relative;width:100%}.elf--toggle-button .area>div.visible{display:inline-block}.elf--toggle-button .area>div.checked{background-color:var(--elf--selected-color-2);color:var(--elf--selected-font-color)}.elf--toggle-button .area button{align-items:center;box-sizing:border-box;color:var(--elf--input-font-color);display:flex;height:100%;justify-content:center;width:100%;z-index:1}.elf--toggle-button .area button.checked{color:var(--elf--selected-font-color);font-weight:700}.elf--toggle-button .area button svg{height:20px;width:20px}.elf--toggle-checkbox{border:1px solid transparent;border-radius:2px;display:grid;grid-template-columns:1fr;height:var(--elf--input-height);overflow:hidden}.elf--toggle-checkbox:hover,.elf--toggle-checkbox:hover .area,.elf--toggle-checkbox:hover .area>*{border-color:var(--elf--input-border-color)}.elf--toggle-checkbox.has-label{grid-column-gap:2px;grid-template-columns:70px 1fr}.elf--toggle-checkbox.has-label label{overflow:hidden;padding:7px 0 2px 2px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--toggle-checkbox .area{--selected-button-size:50%;--selected-button-position:0%;--unit-count:2;display:block;display:grid;grid-template-columns:repeat(var(--unit-count),1fr);height:100%;position:relative}.elf--toggle-checkbox .area>div{border-right:1px solid transparent;display:inline-block;position:relative;width:100%}.elf--toggle-checkbox .area>div:last-child{border-right:0}.elf--toggle-checkbox .area:before{background-color:var(--elf--selected-color-2);box-shadow:0 0 0 0 rgba(0,0,0,.1);content:"";display:block;height:100%;left:var(--selected-button-position);pointer-events:none;position:absolute;top:0;transition:all .2s ease-in-out;width:var(--selected-button-size);z-index:0}.elf--toggle-checkbox .area>*{z-index:1}.elf--toggle-checkbox .area button{box-sizing:border-box;color:var(--elf--font-color);display:inline-block;font-size:var(--elf--input-font-size);height:100%;padding:4px 8px;text-align:center;vertical-align:middle;width:100%;z-index:1}.elf--toggle-checkbox .area button:hover:not(.checked){background-color:var(--elf--input-background-color)}.elf--toggle-checkbox .area button.checked{color:var(--elf--selected-font-color);font-weight:700}.tab{bottom:0;color:var(--elf--font-color);left:0;position:absolute;right:0;top:0}.tab.number-tab.padding-5 .tab-content{padding:5px}.tab.number-tab.padding-10 .tab-content{padding:10px}.tab.number-tab.side-tab.side-tab-left>.tab-header{background-color:var(--elf--toolbar-background-color);bottom:0;box-sizing:border-box;display:flex;flex-direction:column;height:auto;left:0;overflow:visible;padding:0;position:absolute;text-align:center;top:0;width:60px}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item{align-items:center;background-color:var(--elf--toolbar-background-color)!important;border-bottom:0!important;border:0;display:flex;flex:none;height:50px;justify-content:center;margin:0 auto;position:relative;width:60px;width:100%}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item:before{border-radius:4px;content:"";display:inline-block;height:32px;left:50%;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);width:32px}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item:hover label{color:var(--elf--selected-font-color)!important}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item.selected{color:var(--elf--selected-font-color);margin-left:0}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item.selected:before{background-color:var(--elf--selected-color-2)}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item.selected label svg{color:var(--elf--selected-font-color)}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item.extra-item{flex:1 1 auto;overflow:auto}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item label{display:inline-block;height:24px;left:50%;padding:0;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);width:24px;z-index:1}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item label svg{height:24px;width:24px}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item label svg path,.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item label svg use{fill:currentColor}.tab.number-tab.side-tab.side-tab-left>.tab-header>.tab-item .title{color:var(--elf--selected-font-color);overflow:hidden;padding-bottom:5px;text-overflow:ellipsis;white-space:wrap;word-break:break-all}.tab.number-tab.side-tab.side-tab-left>.tab-body{bottom:0;left:60px;right:0;top:0}.tab.number-tab>.tab-content{display:none}.tab.number-tab>.tab-content.selected{display:block}.tab.number-tab>.tab-body{top:34px}.tab>.tab-header{box-sizing:border-box;display:flex;height:40px;left:0;padding:0 10px;position:absolute;right:0;z-index:1}.tab>.tab-header.no-border>.tab-item{border:0!important}.tab>.tab-header>.tab-item{cursor:pointer;gap:10px;height:100%;margin-right:10px;padding:0;position:relative;text-align:center}.tab>.tab-header>.tab-item.selected label,.tab>.tab-header>.tab-item:hover label{color:var(--elf--font-color)}.tab>.tab-header>.tab-item.selected label{font-weight:600}.tab>.tab-header>.tab-item label{box-sizing:border-box;color:var(--elf--tab-font-color);display:inline-block;height:100%;line-height:24px;padding:12px 0;pointer-events:none;vertical-align:middle}.tab>.tab-header>.tab-item:first-child:hover label{left:10px}.tab>.tab-header>.tab-item:last-child:hover label{left:auto;right:10px}.tab>.tab-header>.tab-item:hover label{opacity:1}.tab>.tab-body{bottom:0;left:0;position:absolute;right:0;top:40px}.tab>.tab-body.no-border{border:0}.tab>.tab-body>.tab-content{bottom:0;display:none;left:0;overflow:auto;position:absolute;right:0;top:0}.tab>.tab-body>.tab-content.selected{display:block}.tab>.tab-body>.tab-content.selected.flex{display:flex;flex-direction:column}.tab>.tab-body>.tab-content .fixed{flex:none}.tab>.tab-body>.tab-content .scroll{flex:1 1 auto;overflow:auto;position:relative}.elf--color-single-editor{height:30px;text-align:center;width:100%}.elf--color-single-editor .preview{height:100%}.elf--color-single-editor .preview .mini-view{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;border:1px solid var(--elf--input-border-color);height:100%}.elf--color-single-editor .preview .mini-view .color-view{cursor:pointer;height:100%}.elf--color-view-editor{border:1px solid transparent;box-sizing:border-box;display:grid;grid-template-columns:1fr;height:var(--elf--input-height);text-align:center}.elf--color-view-editor input{outline:none}.elf--color-view-editor.focused{border-color:var(--elf--selected-color);border-width:1px;box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--color-view-editor.focused .opacity-input{border-left:1px solid var(--elf--input-border-color)}.elf--color-view-editor:hover:not(.focused):not(.drag){border-color:var(--elf--input-border-color)}.elf--color-view-editor:hover:not(.focused):not(.drag) .opacity-input{border-left:1px solid var(--elf--input-border-color)}.elf--color-view-editor.has-label{grid-template-columns:70px 1fr}.elf--color-view-editor.has-label.compact{grid-template-columns:40px 1fr}.elf--color-view-editor.has-label.compact .color-code{grid-template-columns:26px 1fr 40px}.elf--color-view-editor.has-label label{line-height:1.6;padding:6px 4px 2px 2px;text-align:left;vertical-align:middle}.elf--color-view-editor.has-label label span{display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}.elf--color-view-editor.mini .color-input{display:none}.elf--color-view-editor.mini .color-code{grid-template-columns:26px 50px}.elf--color-view-editor .color-code{grid-column-gap:2px;border:1px solid transparent;border-radius:2px;box-sizing:border-box;display:grid;grid-template-columns:26px 1fr 50px;overflow:hidden;text-transform:uppercase;vertical-align:middle}.elf--color-view-editor .color-code .preview{align-items:center;background-color:transparent;border-radius:2px;cursor:pointer;display:flex;justify-content:flex-start;padding:2px;vertical-align:middle}.elf--color-view-editor .color-code .preview .mini-view{background-color:transparent;background-image:linear-gradient(45deg,#c7c7c7 25%,transparent 0),linear-gradient(-45deg,#c7c7c7 25%,transparent 0),linear-gradient(45deg,transparent 75%,#c7c7c7 0),linear-gradient(-45deg,transparent 75%,#c7c7c7 0);background-position:0 0,0 3px,3px -3px,-3px 0;background-size:6px 6px;border:1px solid var(--elf--input-border-color);box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr;height:20px;overflow:hidden;position:relative;vertical-align:middle;width:20px}.elf--color-view-editor .color-code .preview .mini-view .color-view{box-shadow:0 0 0 .1px var(--elf--input-border-color)}.elf--color-view-editor .color-code input{background-color:transparent;border:0;border-radius:3px;font-size:11px;height:100%;padding:0 3px;text-transform:uppercase;width:100%}.component-editor{--column-gap:2px;--row-gap:2px;padding-bottom:5px}.component-editor .component-folder.close>label>svg{transform:rotate(0deg)}.component-editor .component-folder.close>ul{display:none}.component-editor .component-folder>label{cursor:pointer}.component-editor .component-folder>label>svg{fill:var(--elf--font-color);height:16px;transform:rotate(90deg);transition:all .1s ease-in-out;vertical-align:middle;width:16px}.component-editor .component-folder>ul{list-style:none;margin:0;padding:0}.component-editor .column{grid-column-gap:var(--column-gap);grid-row-gap:2px;display:grid;grid-template-columns:1fr}.component-editor .column .column-item{align-items:stretch;display:flex;justify-content:stretch}.component-editor .column .column-item>*{width:100%}.component-editor .column .column-item>label{align-items:center;display:flex;justify-content:flex-start}.component-editor .column-1-1{grid-template-columns:1fr 1fr}.component-editor .column-1-1-1{grid-template-columns:1fr 1fr 1fr}.component-editor .column-1-2{grid-template-columns:1fr 2fr}.component-editor .column-1-2-3{grid-template-columns:1fr 3fr}.component-editor .column-1-1-1-1{grid-template-columns:1fr 1fr 1fr 1fr}.component-editor .column-2{grid-template-columns:1fr 1fr}.component-editor .column-2-1{grid-template-columns:2fr 1fr}.component-editor .column-2-1-1{grid-template-columns:2fr 1fr 1fr}.component-editor .column-3-1{grid-template-columns:3fr 1fr}.component-editor .column-3-1-1{grid-template-columns:3fr 1fr 1fr}.component-editor .column-3-2-1{grid-template-columns:3fr 2fr 1fr}.component-editor>label{align-items:center;display:flex;justify-content:flex-start}.component-editor .component-item{margin-bottom:5px}.elf--input-range-editor{border:1px solid transparent;border-radius:2px;display:grid;grid-template-columns:1fr;height:var(--elf--input-height)}.elf--input-range-editor.disabled label{color:var(--elf--selected-color)}.elf--input-range-editor.disabled>*{pointer-events:none}.elf--input-range-editor.disabled input{color:var(--elf--input-sub-font-color)}.elf--input-range-editor.focused{box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--input-range-editor.drag,.elf--input-range-editor.focused{--elf--input-range-border-color:var(--elf--input-border-color);border-color:var(--elf--selected-color);border-width:1px}.elf--input-range-editor:hover:not(.focused):not(.drag){--elf--input-range-border-color:var(--elf--input-border-color);border-color:var(--elf--input-border-color)}.elf--input-range-editor.has-label{grid-template-columns:70px 1fr}.elf--input-range-editor.has-label.compact{grid-template-columns:30px 1fr}.elf--input-range-editor.has-label.wide{grid-template-columns:1fr 1fr}.elf--input-range-editor.has-label.wide .range--editor-type .area{grid-template-columns:1fr 40px}.elf--input-range-editor.has-label.is-removable{grid-template-columns:70px 1fr 12px}.elf--input-range-editor.has-label label{align-items:center;cursor:ew-resize;display:flex;justify-content:flex-start;line-height:2;overflow:hidden;padding:0;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--input-range-editor.has-label label svg{height:24px;vertical-align:middle;width:24px}.elf--input-range-editor.has-label.block{display:block}.elf--input-range-editor.has-label.block label{color:rgba(0,0,0,.7);display:block}.elf--input-range-editor.is-removable{grid-template-columns:1fr 12px}.elf--input-range-editor.is-removable .remove{display:inline-block}.elf--input-range-editor .remove,.elf--input-range-editor .type-button{display:none}.elf--input-range-editor .range--editor-type{height:100%;vertical-align:middle}.elf--input-range-editor .range--editor-type .area{border-radius:3px;display:grid;grid-template-columns:1fr 40px;height:100%}.elf--input-range-editor .range--editor-type .area span{padding:1px;vertical-align:middle}.elf--input-range-editor .range--editor-type .area input,.elf--input-range-editor .range--editor-type .area select{font-size:11px;width:100%}.elf--input-range-editor .range--editor-type .area input[type=number]{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;padding-left:2px;vertical-align:middle;width:100%}.elf--input-range-editor .range--editor-type .area .elf--select-editor{border-left:1px solid var(--elf--input-range-border-color);height:calc(var(--elf--input-height) - 2px)}.elf--input-range-editor .range--editor-type .area .elf--select-editor:hover{border:0!important;box-shadow:none!important}.elf--input-range-editor .range--editor-type .area .elf--select-editor select{background-color:transparent;border:0;color:var(--elf--input-sub-font-color);height:24px}.elf--input-range-editor .range--editor-type .area .unit{display:inline-block;line-height:2;vertical-align:middle}.elf--number-input-editor{border:1px solid transparent;border-radius:1px;box-sizing:border-box;display:grid;grid-template-columns:1fr;height:var(--elf--input-height);padding:4px}.elf--number-input-editor.focused{border-color:var(--elf--selected-color);border-width:1px;box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--number-input-editor.drag{box-shadow:0 0 0 1px var(--elf--selected-color-2)}.elf--number-input-editor:hover:not(.focused):not(.drag){box-shadow:0 0 0 1px var(--elf--input-border-color)}.elf--number-input-editor.has-label{grid-template-columns:60px 1fr}.elf--number-input-editor.has-label.compact{grid-template-columns:30px 1fr}.elf--number-input-editor.has-label.mini{grid-template-columns:10px 1fr}.elf--number-input-editor.has-label.wide{grid-template-columns:1fr 1fr}.elf--number-input-editor.has-label.wide .range--editor-type .area{grid-template-columns:1fr}.elf--number-input-editor.has-label label{align-items:center;cursor:ew-resize;display:flex;justify-content:flex-start;overflow:hidden;padding:2px 4px 2px 0;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--number-input-editor.has-label label svg{height:20px;width:20px}.elf--number-input-editor.has-label.block,.elf--number-input-editor.has-label.block label{display:block}.elf--number-input-editor .range--editor-type{height:100%;vertical-align:middle}.elf--number-input-editor .range--editor-type .area{grid-column-gap:3px;display:grid;grid-template-columns:1fr;height:100%}.elf--number-input-editor .range--editor-type .area span{padding:1px;vertical-align:middle}.elf--number-input-editor .range--editor-type .area input{-webkit-appearance:none;appearance:none;-moz-appearance:textfield;background-color:transparent;border:0;padding-left:2px;width:100%}.elf--number-input-editor .range--editor-type .area input::-webkit-inner-spin-button,.elf--number-input-editor .range--editor-type .area input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.elf--number-range-editor{grid-column-gap:4px;border:1px solid transparent;border-radius:2px;display:grid;grid-template-columns:1fr;height:var(--elf--input-height)}.elf--number-range-editor.disabled label{color:var(--elf--selected-color)}.elf--number-range-editor.disabled>*{pointer-events:none}.elf--number-range-editor.disabled input{color:var(--elf--input-sub-font-color)}.elf--number-range-editor.drag,.elf--number-range-editor.focused{--elf--input-range-border-color:var(--elf--input-border-color);border-color:var(--elf--selected-color);border-width:1px}.elf--number-range-editor:hover:not(.focused):not(.drag){--elf--input-range-border-color:var(--elf--input-border-color);border-color:var(--elf--input-border-color)}.elf--number-range-editor.has-label{grid-column-gap:2px;grid-template-columns:70px 1fr}.elf--number-range-editor.has-label.is-removable{grid-template-columns:70px 1fr 12px}.elf--number-range-editor.has-label.compact{grid-template-columns:30px 1fr}.elf--number-range-editor.has-label.wide{grid-template-columns:1fr 1fr}.elf--number-range-editor.has-label label{align-items:center;cursor:ew-resize;display:flex;justify-content:flex-start;line-height:2;overflow:hidden;padding:0 0 0 2px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--number-range-editor.has-label label svg{height:20px;vertical-align:middle;width:20px}.elf--number-range-editor.has-label.block{display:block;height:auto}.elf--number-range-editor.has-label.block label{display:block}.elf--number-range-editor.is-removable{grid-template-columns:1fr 12px}.elf--number-range-editor.is-removable .remove{display:inline-block}.elf--number-range-editor .remove{display:none}.elf--number-range-editor .range--editor-type{height:100%;vertical-align:middle}.elf--number-range-editor .range--editor-type .area{grid-column-gap:4px;border-radius:3px;display:grid;grid-template-columns:1fr;height:100%}.elf--number-range-editor .range--editor-type .area span{padding:1px;vertical-align:middle}.elf--number-range-editor .range--editor-type .area input{height:100%;width:100%}.elf--number-range-editor .range--editor-type .area input[type=number]{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;vertical-align:middle}.elf--range--editor{grid-column-gap:4px;display:grid;grid-template-columns:1fr;height:var(--elf--input-height)}.elf--range--editor.has-label{grid-column-gap:2px;grid-template-columns:70px 1fr}.elf--range--editor.has-label.compact{grid-template-columns:30px 1fr}.elf--range--editor.has-label.is-removable{grid-template-columns:70px 1fr 12px}.elf--range--editor.has-label.block{height:auto}.elf--range--editor.has-label.block>label{display:block}.elf--range--editor.has-label label{overflow:hidden;padding:7px 0 2px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--range--editor.has-label.block{display:block}.elf--range--editor.has-label.block label{color:var(--elf--font-color);display:block}.elf--range--editor.is-removable{grid-template-columns:1fr 12px}.elf--range--editor.is-removable .remove{display:inline-block;margin-top:3px}.elf--range--editor .remove{display:none}.elf--range--editor .range--editor-type{grid-column-gap:2px;display:grid;grid-template-columns:1fr 1fr;height:100%;vertical-align:middle}.elf--range--editor .range--editor-type .area{border:1px solid transparent;border-radius:3px;display:grid;grid-template-columns:1fr 24px}.elf--range--editor .range--editor-type .area.focused{border:1px solid var(--elf--selected-color);border-radius:3px}.elf--range--editor .range--editor-type .area span{padding:1px;vertical-align:middle}.elf--range--editor .range--editor-type .area input,.elf--range--editor .range--editor-type .area select{background-color:transparent;border:0;width:100%}.elf--range--editor .range--editor-type .area input[type=range]{width:95%}.elf--range--editor .range--editor-type .area input[type=number]{background-color:var(--elf--input-background-color);border:1px solid var(--elf--input-border-color);border-bottom-left-radius:3px;border-right:0;border-top-left-radius:3px;height:100%;padding:2px;text-align:left}.elf--range--editor .range--editor-type .area .elf--select-editor{background-color:var(--elf--input-background-color);border:0!important;border-bottom-left-radius:0;border-bottom-right-radius:3px;border-top-left-radius:0;border-top-right-radius:3px;box-sizing:border-box;position:relative;text-align:right}.elf--range--editor .range--editor-type .area .elf--select-editor .selected-value{display:none}.elf--range--editor .range--editor-type .area .elf--select-editor select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:1px solid var(--elf--input-border-color);border-bottom-left-radius:0;border-bottom-right-radius:3px;border-left:0;border-top-left-radius:0;border-top-right-radius:3px;color:var(--elf--input-sub-font-color);display:inline-block;height:24px;padding:0;position:absolute;right:0;text-align:center;width:24px}.elf--select-editor{grid-column-gap:4px;border:1px solid transparent;box-sizing:border-box;display:grid;grid-template-columns:1fr;height:var(--elf--input-height);position:relative}.elf--select-editor:hover:not(.focused):not(.drag){border-color:var(--elf--input-border-color)}.elf--select-editor:hover:not(.focused):not(.drag) .selected-value{display:grid;grid-template-columns:1fr 20px}.elf--select-editor.compact select{opacity:1}.elf--select-editor select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:var(--elf--input-font-color);height:24px;opacity:0;vertical-align:middle;width:100%}.elf--select-editor .selected-value{background-color:var(--elf--input-background-color);box-sizing:border-box;color:var(--elf--input-font-color);display:flex;height:100%;left:0;line-height:2;padding:0 2px;pointer-events:none;position:absolute;right:0;top:0}.elf--select-editor .selected-value svg{fill:currentColor;height:16px;width:16px}.elf--select-editor .selected-value .expand{align-items:center;box-sizing:border-box;display:flex;justify-content:flex-start;vertical-align:middle}.elf--select-editor .selected-value .value{align-items:center;display:flex;justify-content:flex-start;overflow:hidden;padding:0;text-align:left;text-overflow:ellipsis;white-space:nowrap}.elf--select-editor.has-label{grid-column-gap:2px;grid-template-columns:70px 1fr}.elf--select-editor.has-label.compact{grid-template-columns:30px 1fr}.elf--select-editor.has-label label{align-items:center;display:flex;justify-content:flex-start;line-height:2;overflow:hidden;padding:0 4px 0 2px;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--select-editor.has-label label svg{height:20px;width:20px}.elf--select-editor.has-label .editor-view{position:relative}.elf--select-editor.has-label .selected-value{height:100%;position:absolute;text-align:left}.elf--select-editor.has-label .selected-value select{height:24px;width:100%}.elf--select-icon-editor{border:1px solid transparent;display:grid;height:24px}.elf--select-icon-editor:hover,.elf--select-icon-editor:hover .items>div{border-color:var(--elf--input-border-color)}.elf--select-icon-editor.has-label{grid-template-columns:70px 1fr}.elf--select-icon-editor.has-label label{overflow:hidden;padding:6px 4px 2px 0;text-align:left;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--select-icon-editor .items{background-color:transparent;border-radius:3px;box-sizing:border-box;cursor:pointer;display:flex;height:100%;line-height:1;outline:none}.elf--select-icon-editor .items>.select-icon-item{align-items:center;border-right:1px solid transparent;box-sizing:border-box;color:var(--elf--font-color);display:flex;flex:none;height:24px;justify-content:center;line-height:1.4;position:relative;text-transform:uppercase;white-space:pre-wrap;width:24px;word-break:break-all}.elf--select-icon-editor .items>.select-icon-item:last-child{border-right:0}.elf--select-icon-editor .items>.select-icon-item:hover{background-color:var(--elf--input-inactive-color)}.elf--select-icon-editor .items>.select-icon-item svg{stroke:currentColor;height:24px;width:24px}.elf--select-icon-editor .items>.select-icon-item.selected{background-color:var(--elf--selected-color-2);color:var(--elf--selected-font-color)}.elf--select-icon-editor .items>.select-icon-item.icon{padding:3px 2px}.elf--select-icon-editor .items>.select-icon-item[data-value=""]{max-width:20px}.elf--select-icon-editor .items>.select-icon-item[data-value=none]{text-transform:none;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=uppercase]{text-transform:uppercase;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=lowercase]{text-transform:lowercase;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=capitalize]{text-transform:capitalize;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=full-width]{text-transform:full-width;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=underline]{text-decoration:underline;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=overline]{text-decoration:overline;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=line-through]{text-decoration:line-through;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=normal]{font-style:normal;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=italic]{font-style:italic;vertical-align:middle}.elf--select-icon-editor .items>.select-icon-item[data-value=oblique]{font-style:oblique;vertical-align:middle}.elf--select-icon-editor .tools{padding:4px 0;text-align:right;vertical-align:middle}.elf--text-area-editor{grid-column-gap:4px;display:grid;grid-template-columns:1fr}.elf--text-area-editor.has-label{grid-column-gap:2px;grid-template-columns:60px 1fr}.elf--text-area-editor.has-label label{padding:2px 4px 2px 0;vertical-align:middle}.elf--text-area-editor input[type=text]{border:1px solid var(--elf--border-color);width:100%}.elf--text-editor{grid-column-gap:4px;display:grid;grid-template-columns:1fr}.elf--text-editor.has-label{grid-column-gap:2px;grid-template-columns:60px 1fr}.elf--text-editor.has-label label{padding:2px 4px 2px 0;vertical-align:middle}.elf--text-editor input[type=text]{border:1px solid var(--elf--border-color);width:100%}.elf--blank-tool-bar{background-color:var(--elf--toolbar-background-color);color:var(--elf--selected-font-color);display:flex;flex-direction:row;height:100%;justify-content:space-between}.elf--blank-tool-bar>.logo-area{flex:none;height:100%;width:60px}.elf--blank-tool-bar>.logo-area>*{height:100%}.elf--blank-tool-bar>.toolbar-area{display:flex;flex:1 1 auto;flex-direction:row;justify-content:space-between}.elf--blank-tool-bar>.toolbar-area>*{align-items:center;display:flex;justify-content:center;min-height:48px!important;min-width:48px!important;padding:0;vertical-align:middle}.elf--blank-tool-bar>.toolbar-area .dropdown-menu>button{height:48px!important;width:48px!important}.elf--blank-tool-bar>.toolbar-area .dropdown-menu>button,.elf--blank-tool-bar>.toolbar-area button{stroke:var(--elf--selected-font-color);fill:transparent!important;stroke-width:1!important;align-items:center;display:flex;justify-content:center;min-width:40px;position:relative}.elf--blank-tool-bar>.toolbar-area .dropdown-menu>button .icon svg,.elf--blank-tool-bar>.toolbar-area button .icon svg{stroke:var(--elf--selected-font-color);fill:transparent!important;stroke-width:1!important;height:20px;width:20px}.elf--blank-tool-bar>.toolbar-area .dropdown-menu>button.elf--menu-item.selected,.elf--blank-tool-bar>.toolbar-area button.elf--menu-item.selected{background-color:var(--elf--selected-color-2)}.elf--blank-tool-bar>.toolbar-area .dropdown-menu>button.elf--menu-item:hover:not(.selected):not([checked]),.elf--blank-tool-bar>.toolbar-area .elf--logo-area:hover,.elf--blank-tool-bar>.toolbar-area button.elf--menu-item:hover:not(.selected):not([checked]){background-color:#000}.dropdown-menu{--elf--dropdown-menu-width:240px;--elf--dropdown-menu-dy:0px;align-items:center;box-sizing:border-box;display:flex;justify-content:center;padding:0 4px;position:relative}.dropdown-menu .dropdown-menu-item-list{border-radius:4px;box-shadow:0 0 5px rgba(0,0,0,.05),0 25px 35px rgba(0,0,0,.03)}.dropdown-menu>.label{font-size:13px}.dropdown-menu>.icon{align-items:center;cursor:pointer;display:flex;justify-content:center;padding:0 4px 0 8px;width:34px}.dropdown-menu>.icon:empty{display:none}.dropdown-menu>.icon svg{height:24px;pointer-events:none;width:24px}.dropdown-menu .dropdown-arrow{fill:var(--elf--selected-font-color)}.dropdown-menu .dropdown-arrow:hover svg{transform:translateY(2px)}.dropdown-menu .dropdown-arrow svg{transition:all .1s ease-in-out;width:14px}.dropdown-menu[data-selected=true]{background-color:var(--elf--selected-color-2)}.dropdown-menu.opened:not([data-selected=true]),.dropdown-menu:hover:not([data-selected=true]){background-color:#000}.dropdown-menu.opened:not([data-selected=true]) .dropdown-arrow svg,.dropdown-menu:hover:not([data-selected=true]) .dropdown-arrow svg{transform:translateY(2px)}.dropdown-menu.opened>ul{display:block}.dropdown-menu.opened>.dropdown-menu-arrow{display:block;width:100%}.dropdown-menu li{align-items:center;color:var(--elf--font-color);-moz-column-gap:4px;column-gap:4px;cursor:pointer;display:flex;justify-content:space-between;padding:8px;position:relative}.dropdown-menu li .icon{flex:none}.dropdown-menu li .menu-item-text{align-items:center;display:flex;flex:1 1 auto;justify-content:space-between;vertical-align:middle}.dropdown-menu li .menu-item-text>*{line-height:1.6;vertical-align:middle}.dropdown-menu li .menu-item-text .shortcut{border:1px solid var(--elf--border-color);border-radius:2px;font-size:13px;padding:0 4px}.dropdown-menu li .menu-item-text .shortcut:empty{display:none}.dropdown-menu li>*{color:var(--elf--font-color);text-decoration:none}.dropdown-menu li[disabled]{cursor:not-allowed;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.dropdown-menu li[disabled]>*{color:var(--elf--disabled-font-color);pointer-events:none}.dropdown-menu li svg{color:var(--elf--border-color);height:20px;vertical-align:middle;width:20px}.dropdown-menu li svg path,.dropdown-menu li svg use{fill:currentColor}.dropdown-menu li.dropdown-divider{background-color:var(--elf--layout-border-color);box-sizing:border-box;display:block;height:1px;line-height:0px;margin-bottom:4px;margin-top:4px;padding:0}.dropdown-menu li.dropdown-divider>*{pointer-events:all}.dropdown-menu li.checkbox{align-items:center;display:flex}.dropdown-menu li.checkbox *{vertical-align:middle}.dropdown-menu li.custom{display:block}.dropdown-menu[data-direction=right]>ul{left:auto;right:0}.dropdown-menu[data-direction=right]>.dropdown-menu-arrow{left:auto;right:50%;transform:translateX(50%) scale(1.5)}.dropdown-menu[data-direction=right] .dropdown-menu-list>ul{left:calc(-100% - 2px)}.dropdown-menu[data-direction=center]>ul{left:50%;transform:translateX(-50%)}.dropdown-menu[data-direction=center]>.dropdown-menu-arrow{left:50%;transform:translateX(-50%) scale(1.5)}.dropdown-menu.flat{padding:0}.dropdown-menu.flat>ul{position:relative;width:100%}.dropdown-menu ul{background-color:var(--elf--background-color);border-radius:4px;box-shadow:0 0 5px rgba(0,0,0,.05),0 25px 35px rgba(0,0,0,.03);display:none;left:0;list-style-type:none;margin:0;padding:4px 0;position:absolute;top:calc(100% + 5px);width:var(--elf--dropdown-menu-width)}.dropdown-menu .dropdown-menu-list>ul{top:-11px}.dropdown-menu .dropdown-menu-arrow{background-color:transparent;box-sizing:border-box;display:none;height:12px;left:50%;position:absolute;top:calc(100% - 6px);transform:translateX(-50%) scale(1.5);width:12px}.dropdown-menu .dropdown-menu-arrow svg{height:6px;width:8px}.dropdown-menu .dropdown-menu-arrow svg path,.dropdown-menu .dropdown-menu-arrow svg use{fill:var(--elf--background-color);stroke:var(--elf--border-color)}.dropdown-menu ul ul{left:100%;position:absolute;top:0}.dropdown-menu li:hover{color:var(--elf--font-color)}.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider){background-color:var(--elf--selected-color);color:var(--elf--selected-font-color)}.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>div,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>div>*,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>div>* svg,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>label,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>label>*,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>label>* svg,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>span,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>span>*,.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>span>* svg{color:var(--elf--selected-font-color)}.dropdown-menu li:hover:not([disabled]):not(.dropdown-divider)>.menu-item-text .shortcut{border-color:var(--elf--selected-font-color)}.dropdown-menu li:hover>ul{display:block}.elf--toolbar-menu-item{align-items:center;display:flex;height:100%;justify-content:center;padding:0 10px!important;text-align:left;width:auto}.elf--toolbar-menu-item>.icon{display:inline-block;height:24px;width:24px}.elf--toolbar-menu-item>.icon svg{stroke:var(--elf--selected-font-color);height:100%;width:100%}.elf--toolbar-menu-item:hover:not([disabled=true]){background-color:#000}.elf--toolbar-menu-item[data-selected=true]{background-color:var(--elf--selected-color-2);color:var(--elf--selected-font-color)}.elf--toolbar-menu-item[disabled=true]{cursor:not-allowed;filter:invert(50%)}.elf--toolbar-menu-item[disabled=true]>*{pointer-events:none}.elf--toolbar-renderer{display:flex;height:100%}.elf--toolbar-renderer>*{align-items:center;height:100%;justify-content:center;text-align:center;width:auto}.elf-editor{background-color:var(--elf--background-color);height:100%;overflow:hidden;position:absolute;width:100%}.elf--popup{background-color:var(--elf--popup-background-color);border-radius:2px;box-shadow:0 1px 5px 0 rgba(0,0,0,.5);color:var(--elf--font-color);display:none;position:absolute;z-index:1000}.elf--popup.compact .popup-body{padding:0 0 5px}.elf--popup .popup-title{border-bottom:1px solid var(--elf--property-border-color);display:flex;font-size:12px;font-weight:700;height:32px;padding:8px;pointer-events:all}.elf--popup .popup-title>*{flex:1 1 auto}.elf--popup .popup-title .tools{align-items:center;display:flex;justify-content:flex-end}.elf--popup .popup-title .tools button{background-color:transparent;border:0;cursor:pointer;padding:0}.elf--popup .popup-title .tools button svg{fill:var(--elf--font-color);height:16px;width:16px}.elf--popup .popup-title label{cursor:move}.elf--popup .popup-body{padding:8px}.elf--popup .popup-body .popup-item{margin-bottom:5px;padding:2px 0}.elf--popup .popup-resizer{background-color:gray;bottom:0;cursor:se-resize;height:10px;position:absolute;right:0;width:10px}.elf--colorpicker-popup{padding:0 10px;width:244px}.elf--colorpicker-popup .colorpicker{background-color:transparent;border:0;border-radius:0;box-shadow:none}.elf--colorpicker-popup .colorpicker input{border:1px solid hsla(0,0%,87%,.4)!important;color:var(--elf--font-color)!important;text-transform:uppercase}.elf--colorpicker-popup .colorpicker .title{color:var(--elf--font-color)!important}.elf--colorpicker-popup .colorpicker .colorsets{border-top:1px solid var(--elf--border-color)!important}.elf--colorpicker-popup .assets{padding:0 10px}.elf--colorpicker-popup .assets .project-color-list{padding:5px 0}.elf--colorpicker-popup .assets .project-color-list .color-item{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;border-radius:3px;display:inline-block;height:16px;margin-bottom:9px;margin-right:9px;overflow:hidden;position:relative;width:16px}.elf--colorpicker-popup .assets .project-color-list .color-item .color-view{bottom:0;left:0;position:absolute;right:0;top:0}.elf--colorpicker-popup .assets .project-color-list .color-item:hover{transform:scale(1.2)}.elf--property{--property-order:1000;border-bottom:1px solid var(--elf--property-border-color);box-shadow:0 0 2px 0 hsla(0,0%,100%,.001);display:none;margin-bottom:4px;order:var(--property-order)}.elf--property:first-child{border-top:0}.elf--property.full{display:flex;flex-direction:column;height:100%}.elf--property.full.show{height:100%}.elf--property.full .property-title{flex:none}.elf--property.full .property-body{flex:1 1 auto;overflow:auto;padding-left:0;padding-right:0;position:relative}.elf--property.show{display:block}.elf--property.show>.property-title>label .icon{display:inline-block;transform:rotate(90deg)}.elf--property.show>.property-body{display:block}.elf--property>.property-title{align-items:center;box-sizing:border-box;color:var(--elf--font-color);cursor:pointer;display:flex;height:32px;justify-content:space-between;margin:8px;padding:8px;position:relative}.elf--property>.property-title.filter{grid-template-columns:1fr 110px}.elf--property>.property-title svg{height:16px;width:16px}.elf--property>.property-title label{cursor:pointer;font-size:10px;font-weight:800;letter-spacing:1px;line-height:2;overflow:hidden;padding-left:2px;text-overflow:ellipsis;text-transform:uppercase;vertical-align:middle;white-space:nowrap}.elf--property>.property-title label .icon{display:inline-block;transition:all .1s linear}.elf--property>.property-title label.has-keyframe{padding-left:0}.elf--property>.property-title>.tools{flex:none;text-align:right;vertical-align:middle;white-space:nowrap}.elf--property>.property-title>.tools>*{flex:none}.elf--property>.property-body{box-sizing:border-box;display:none;margin:0 8px;position:relative}.elf--property>.property-body:empty{display:none}.elf--property>.property-body .property-item:first-child{padding-top:0}.elf--property>.property-body .property-item:not(.has-label){background-color:hsla(0,0%,100%,.001)}.elf--property>.property-body .property-item.animation-property-item{display:grid;grid-template-columns:1fr}.elf--property>.property-body .property-item.animation-property-item.has-label{grid-template-columns:80px 1fr}.elf--property>.property-body .property-item.animation-property-item.has-label .group{padding-left:12px;padding-top:5px;vertical-align:middle}.elf--property>.property-body .property-item.animation-property-item.full{display:block}.elf--property>.property-body .property-item.animation-property-item.full .group{padding-left:14px;vertical-align:middle}.elf--property>.property-body .property-item>label.label{background-color:var(--elf--selected-color-2);border-radius:4px;box-sizing:border-box;color:var(--elf--selected-font-color);display:block;padding:5px}.elf--property>.property-footer{padding:0 6px}.elf--property>.property-footer>div{margin-bottom:5px}.elf--property>.property-footer label{cursor:pointer;display:inline-block;padding-left:2px;padding-right:5px;vertical-align:middle;width:60px}.elf--context-menu-manger{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf--context-menu-manger>*{pointer-events:auto}.elf--notification-view{display:inline-block;position:absolute;right:10px;top:10px;z-index:10000}.elf--notification-view .item{border-radius:4px;color:#fff;margin-bottom:10px;min-width:300px;opacity:1;padding:10px 20px;position:relative;transition:opacity 10s linear}.elf--notification-view .item .description{padding-top:10px}.elf--notification-view .item .icon{display:inline-block;position:absolute;right:10px;top:10px}.elf--notification-view .item .icon svg path{fill:currentColor}.elf--notification-view .item.alert{background-color:rgba(228,80,80,.87)}.elf--notification-view .item.alert .title{color:#fff;font-weight:700}.elf--notification-view .item.alert .description{color:#fff}.elf--window-background{background-color:var(--elf--window-background-color);bottom:0;display:none;left:0;position:absolute;right:0;top:0;z-index:10000}.elf--window-background .window{background-color:var(--elf--background-color);border:1px solid var(--elf--border-color);box-shadow:0 0 1px 0 var(--elf--border-color);color:var(--elf--font-color);height:200px;left:50%;padding:14px;position:absolute;top:50%;transform:translate(-50%,-50%);width:200px;z-index:1000}.elf--window-background .window .window-title{border-bottom:1px solid var(--elf--border-color);display:flex;font-size:15px;font-weight:700;height:40px;left:0;margin-bottom:10px;padding:10px;pointer-events:all;position:absolute;right:0;top:0}.elf--window-background .window .window-title>*{flex:1 1 auto}.elf--window-background .window .window-title .tools{text-align:right}.elf--window-background .window .window-title label{cursor:move}.elf--window-background .window .window-body{bottom:0;left:0;position:absolute;right:0;top:40px}.elf--shortcut-window{height:80%!important;width:600px!important}.elf--shortcut-window .window-body{overflow:auto}.elf--shortcut-window .list{padding:10px 20px}.elf--shortcut-window .list .item h2{padding-left:10px}.elf--shortcut-window .list .item .shortcut-view-item{display:grid;grid-template-columns:1fr 200px;margin-bottom:2px}.elf--shortcut-window .list .item .shortcut-view-item>*{border-bottom:1px solid var(--elf--border-color);border-right:0;padding:5px 10px;position:relative}.elf--shortcut-window .list .item .shortcut-view-item .title{padding:10px}.elf--shortcut-window .list .item .shortcut-view-item .title .description{color:var(--elf--font-color);opacity:.5}.elf--shortcut-window .list .item .shortcut-view-item .os-item{text-align:right}.elf--shortcut-window .list .item .shortcut-view-item .os-item span{border:1px solid var(--elf--font-color);box-sizing:border-box;display:inline-block;margin:0 2px;padding:4px 6px}.elf--popup-manager{bottom:0;left:0;pointer-events:none;position:fixed;right:0;top:0;z-index:99999}.elf--popup-manager>*{pointer-events:all}.elf--context-menu-renderer>*{display:block!important;width:100%}.elf--context-menu-renderer .dropdown-menu{height:100%}.elf--context-menu-renderer .elf--toolbar-menu-item:hover{background-color:var(--elf--selected-color);color:#fff!important}.elf--context-menu-view{border-radius:4px;display:none;left:0;min-width:240px;position:absolute;top:0;z-index:1000}')();
   class ClipboardManager {
     constructor(editor2) {
       this.editor = editor2;
@@ -7833,7 +7833,7 @@ var __privateSet = (obj, member, value, setter) => {
       }
     }
   }
-  var AlignmentProperty$1 = "";
+  var AlignmentProperty$1 = /* @__PURE__ */ (() => ".elf--alignment-item{grid-column-gap:2px;display:grid;grid-template-columns:repeat(8,1fr);height:24px;margin-bottom:10px;padding-top:8px}.elf--alignment-item button{background-color:transparent;background-image:none;border:0;box-shadow:none;height:10px;width:20px}.elf--alignment-item button[data-no-title=true] .title{display:none}.elf--alignment-item .title{color:#999}.elf--alignment-item .icon{color:var(--elf--selected-color)!important;height:16px;margin:0 auto;width:16px}.elf--alignment-item .icon svg{height:100%;width:100%}")();
   const DEFAULT_TITLE = "";
   const DEFAULT_ICON = "";
   const DEFAULT_CHECKED = false;
@@ -8057,7 +8057,7 @@ var __privateSet = (obj, member, value, setter) => {
       AlignmentProperty
     });
   }
-  var AnimationProperty$1 = "";
+  var AnimationProperty$1 = /* @__PURE__ */ (() => ".elf--animation-list{grid-template-columns:1fr!important}.elf--animation-list .animation-item{grid-column-gap:4px;align-items:center;display:grid;grid-template-columns:30px 1fr 20px;margin-bottom:5px;text-align:center}.elf--animation-list .animation-item.selected{background-color:var(--elf--border-color)}.elf--animation-list .animation-item .name{padding:2px 0;text-align:left;vertical-align:middle}.elf--animation-list .animation-item .name .play-state{background-color:transparent;cursor:pointer}.elf--animation-list .animation-item .name .play-state [data-play-state-value]{color:var(--elf--font-color);display:none;vertical-align:middle}.elf--animation-list .animation-item .name .play-state [data-play-state-value] svg{height:16px;width:16px}.elf--animation-list .animation-item .name .play-state [data-play-state-value=pause]{color:red}.elf--animation-list .animation-item .name .play-state[data-play-state-selected-value=paused] [data-play-state-value=paused],.elf--animation-list .animation-item .name .play-state[data-play-state-selected-value=running] [data-play-state-value=running]{display:inline-block}.elf--animation-list .animation-item .timing{background-color:var(--elf--animation-item-background-color);border-radius:3px;cursor:pointer;height:30px;vertical-align:middle;width:30px}.elf--animation-list .animation-item .timing canvas{border-radius:3px}.elf--animation-list .animation-item .labels{display:flex;justify-content:space-between}.elf--animation-list .animation-item .labels label{background-color:var(--elf--border-color);border-radius:2px;padding:1px 2px;text-transform:uppercase}.elf--animation-list .animation-item .labels label small{color:var(--elf--selected-font-color);font-size:13px;text-transform:lowercase}.elf--animation-list .animation-item .tools{text-align:right;vertical-align:middle}")();
   function randomItem(...args2) {
     return args2[randomNumber(0, args2.length - 1)];
   }
@@ -8334,7 +8334,7 @@ var __privateSet = (obj, member, value, setter) => {
       }
     }
   }
-  var AnimationPropertyPopup$1 = "";
+  var AnimationPropertyPopup$1 = /* @__PURE__ */ (() => ".elf--animation-property-popup{width:220px}.elf--animation-property-popup .box>div{margin-bottom:5px}.elf--animation-property-popup .box label{text-align:left;vertical-align:middle}.elf--animation-property-popup .box .name{display:grid;grid-template-columns:60px 1fr}.elf--animation-property-popup .box .input{display:grid;grid-template-columns:2fr 1fr 1fr;vertical-align:middle}.elf--animation-property-popup .box .input.grid-1{grid-template-columns:1fr}.elf--animation-property-popup .box .input.grid-2{grid-template-columns:3fr 1fr}")();
   class AnimationPropertyPopup extends editor.BasePopup {
     getTitle() {
       return this.$i18n("animation.property.popup.title");
@@ -8567,7 +8567,7 @@ var __privateSet = (obj, member, value, setter) => {
       })
     });
   }
-  var ArtBoardSizeProperty$1 = "";
+  var ArtBoardSizeProperty$1 = /* @__PURE__ */ (() => ".elf--artboard-size-list .property-body{padding:0!important}.elf--artboard-size-list .artboard-size-item{border-top:1px solid var(--elf--border-color)}.elf--artboard-size-list .category{border-bottom:1px solid var(--elf--border-color);height:26px;line-height:2}.elf--artboard-size-list .category .title{color:var(--elf--font-color);padding:0 10px;pointer-events:none}.elf--artboard-size-list .group-item{background-color:#ececec;border-bottom:1px solid var(--elf--border-color);height:24px;line-height:1.8}.elf--artboard-size-list .group-item .title{color:var(--elf--font-color);padding:0 10px;pointer-events:none;text-transform:uppercase}.elf--artboard-size-list .device-item{grid-column-gap:2px;border-bottom:1px solid var(--elf--border-color);cursor:pointer;display:grid;font-size:12px;grid-template-columns:1fr 1fr;height:26px;line-height:2.3}.elf--artboard-size-list .device-item .title{color:var(--elf--font-color);padding-left:20px;pointer-events:none}.elf--artboard-size-list .device-item .size{color:#bdbdbd;letter-spacing:2px;padding-right:10px;pointer-events:none;text-align:right}")();
   var artboardSize = [
     {
       category: "Web",
@@ -8729,7 +8729,7 @@ var __privateSet = (obj, member, value, setter) => {
       ArtBoardSizeProperty
     });
   }
-  var BackdropFilterProperty$1 = "";
+  var BackdropFilterProperty$1 = /* @__PURE__ */ (() => ".filter-select{border:0;font-size:11px;vertical-align:middle}")();
   const filter_list$2 = [
     "blur",
     "grayscale",
@@ -8863,7 +8863,7 @@ var __privateSet = (obj, member, value, setter) => {
       BackgroundClipProperty
     });
   }
-  var BackgroundImageEditor$1 = "";
+  var BackgroundImageEditor$1 = /* @__PURE__ */ (() => '.elf--background-image-editor .label{height:20px;margin-top:2px}.elf--background-image-editor .label.hide{display:none}.elf--background-image-editor .label label{font-size:12px;padding-left:5px;vertical-align:middle}.elf--background-image-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--background-image-editor .fill-list{display:grid;font-size:12px;grid-template-columns:1fr}.elf--background-image-editor .fill-list .fill-item{-moz-column-gap:2px;column-gap:2px;display:grid;grid-template-columns:18px 26px 26px 1fr;margin-bottom:4px}.elf--background-image-editor .fill-list .fill-item>label{align-items:center;display:flex;justify-content:flex-start}.elf--background-image-editor .fill-list .fill-item>div{align-items:center;display:flex;height:26px;justify-content:center}.elf--background-image-editor .fill-list .fill-item .gradient-info{color:var(--elf--font-color);display:grid;grid-template-columns:1fr 30px 30px 30px;width:100%}.elf--background-image-editor .fill-list .fill-item .gradient-info svg path{fill:currentColor}.elf--background-image-editor .fill-list .fill-item .gradient-info .tools{align-items:center;display:flex;justify-content:center;text-align:right}.elf--background-image-editor .fill-list .fill-item .gradient-info .tools:hover{background-color:var(--elf--input-inactive-color)}.elf--background-image-editor .fill-list .fill-item[data-fill-type=gradient] .colorcode,.elf--background-image-editor .fill-list .fill-item[data-fill-type=gradient] .opacity{display:none}.elf--background-image-editor .fill-list .fill-item[data-fill-type=gradient] .colorsteps{display:block}.elf--background-image-editor .fill-list .fill-item .pattern{background-color:var(--elf--border-color)}.elf--background-image-editor .fill-list .fill-item .preview{align-items:center;box-shadow:0 0 0 1px rgba(0,0,0,.1);cursor:pointer;display:flex;height:auto;justify-content:flex-start}.elf--background-image-editor .fill-list .fill-item .preview .mini-view{background-color:transparent;background-image:linear-gradient(45deg,#c7c7c7 25%,transparent 0),linear-gradient(-45deg,#c7c7c7 25%,transparent 0),linear-gradient(45deg,transparent 75%,#c7c7c7 0),linear-gradient(-45deg,transparent 75%,#c7c7c7 0);background-position:0 0,0 3px,3px -3px,-3px 0;background-size:6px 6px;display:block;height:26px;pointer-events:none;position:relative;width:26px}.elf--background-image-editor .fill-list .fill-item .preview .mini-view .color-view{border-radius:0;bottom:0;left:0;position:absolute;right:0;top:0}.elf--background-image-editor .fill-list .fill-item .fill-title{align-items:center;display:flex;justify-content:flex-start;padding-left:2px;pointer-events:none;position:relative;text-align:left}.elf--background-image-editor .fill-list .fill-item .fill-title svg{height:16px;vertical-align:middle;width:16px}.elf--background-image-editor .fill-list .fill-item .fill-title[data-repeat=true]{color:var(--elf--font-color);padding-left:10px}.elf--background-image-editor .fill-list .fill-item .fill-title[data-repeat=true]:after{border-right:4px double var(--elf--font-color);bottom:0;content:"";height:50%;left:2px;position:absolute;top:50%;transform:translateY(-50%);width:4px}.elf--background-image-editor .fill-list .fill-item .colorcode input{width:100%}')();
   const CSS_FUNC_REGEXP = /(([-]?[\d.]+)(px|pt|fr|r?em|deg|vh|vw|m?s|%|g?rad|turn)?)|#(?:[\da-f]{8})|(#(?:[\da-f]{3}){1,2}|([a-z_-]+)\([^()]+\)|([a-z_-]+))|(,)/gi;
   const CSS_LENGTH_REGEXP = /^[-]?([\d.]+)(px|pt|fr|r?em|deg|vh|vw|m?s|%|g?rad|turn)?$/gi;
   const CSS_KEYWORD_REGEXP = /^[a-z_-]+$/gi;
@@ -11435,7 +11435,7 @@ var __privateSet = (obj, member, value, setter) => {
       this.refresh();
     }
   }
-  var BackgroundImagePositionPopup$1 = "";
+  var BackgroundImagePositionPopup$1 = /* @__PURE__ */ (() => ".elf--background-image-position-picker{width:180!important}.elf--background-image-position-picker .background-property>div{margin-bottom:10px}.elf--background-image-position-picker .popup-item{margin-bottom:5px}.elf--background-image-position-picker .grid{display:grid;grid-template-columns:60px 1fr}.elf--background-image-position-picker .grid-2{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:1fr 1fr}.elf--background-image-position-picker .grid-2 label{padding-right:2px;text-align:left}.elf--background-image-position-picker .repeat-list{display:flex;gap:5px}.elf--background-image-position-picker .repeat-list button{background-color:#434b50;flex:1 1 auto;height:24px;width:24px}.elf--background-image-position-picker .repeat-list button[value=no-repeat]{background-image:linear-gradient(to top right,var(--elf--selected-color),#fff);background-position:50%;background-repeat:no-repeat;background-size:8px 8px}.elf--background-image-position-picker .repeat-list button[value=repeat]{background-image:linear-gradient(to top right,var(--elf--selected-color),#fff);background-position:10px 10px;background-repeat:repeat;background-size:8px 8px}.elf--background-image-position-picker .repeat-list button[value=repeat-x]{background-image:linear-gradient(to top right,var(--elf--selected-color),#fff);background-position:10px 8px;background-repeat:repeat-x;background-size:8px 8px}.elf--background-image-position-picker .repeat-list button[value=repeat-y]{background-image:linear-gradient(to top right,var(--elf--selected-color),#fff);background-position:8px 10px;background-repeat:repeat-y;background-size:8px 8px}.elf--background-image-position-picker .repeat-list button[value=space]{background-image:linear-gradient(to top right,var(--elf--selected-color),#fff);background-position:10px 10px;background-repeat:space;background-size:8px 8px}.elf--background-image-position-picker .repeat-list button[value=round]{background-image:linear-gradient(to top right,var(--elf--selected-color),#fff);background-position:0 0;background-repeat:round;background-size:8px 8px}.elf--background-image-position-picker .repeat-list[data-value=no-repeat] button[value=no-repeat],.elf--background-image-position-picker .repeat-list[data-value=repeat-x] button[value=repeat-x],.elf--background-image-position-picker .repeat-list[data-value=repeat-y] button[value=repeat-y],.elf--background-image-position-picker .repeat-list[data-value=repeat] button[value=repeat],.elf--background-image-position-picker .repeat-list[data-value=round] button[value=round],.elf--background-image-position-picker .repeat-list[data-value=space] button[value=space]{background-color:var(--elf--selected-color);box-shadow:0 0 2px 2px var(--elf--selected-color)}")();
   class BackgroundImagePositionPopup extends editor.BasePopup {
     get localeKey() {
       return "background.image.position.popup";
@@ -11570,7 +11570,7 @@ var __privateSet = (obj, member, value, setter) => {
       this.showByRect(this.makeRect(180, 310, rect2));
     }
   }
-  var BackgroundImageProperty$1 = "";
+  var BackgroundImageProperty$1 = /* @__PURE__ */ (() => ".fill{align-items:center;display:flex;height:24px!important;justify-content:center;width:24px!important}.fill:hover{background-color:var(--elf--input-inactive-color)}")();
   class BackgroundImageProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("background.image.property.title");
@@ -11635,7 +11635,7 @@ var __privateSet = (obj, member, value, setter) => {
       }));
     }
   }
-  var BackgroundPositionEditor$1 = "";
+  var BackgroundPositionEditor$1 = /* @__PURE__ */ (() => ".elf--background-position-editor{height:19px;text-align:center;width:26px}.elf--background-position-editor .preview{height:26px}.elf--background-position-editor .preview .mini-view{height:100%}.elf--background-position-editor .preview .mini-view .color-view{border-radius:3px;cursor:pointer;height:100%}")();
   class BackgroundPositionEditor extends editor.EditorElement {
     initState() {
       return {
@@ -11708,7 +11708,7 @@ var __privateSet = (obj, member, value, setter) => {
       BackgroundImagePositionPopup
     });
   }
-  var BorderEditor$1 = "";
+  var BorderEditor$1 = /* @__PURE__ */ (() => ".elf--border-editor .header{grid-column-gap:4px;display:grid;grid-template-columns:repeat(3,1fr) 24px;text-align:center;text-transform:uppercase}.elf--border-editor>.editor-area>div{margin-top:5px}.elf--border-editor>.editor-area>div:first-child{margin-top:0}.elf--border-editor>.editor-area>div>label{font-weight:700;padding:2px 0;text-shadow:0 0 2px var(--elf--border-color);text-transform:uppercase}.elf--border-editor .input-group{display:grid;grid-template-rows:repeat(3,1fr)}.elf--border-editor .input-field{grid-column-gap:4px;display:grid;grid-template-columns:1fr 3fr;vertical-align:middle}.elf--border-editor .input-field input{vertical-align:middle;width:100%}.elf--border-editor .input-field .input-ui{vertical-align:middle}")();
   var BorderStyles = {
     none: true,
     hidden: true,
@@ -11820,7 +11820,7 @@ var __privateSet = (obj, member, value, setter) => {
       this.updateData({ borders });
     }
   }
-  var BorderProperty$1 = "";
+  var BorderProperty$1 = /* @__PURE__ */ (() => "")();
   class BorderProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("border.property.title");
@@ -11850,7 +11850,7 @@ var __privateSet = (obj, member, value, setter) => {
       }));
     }
   }
-  var BorderValueEditor$1 = "";
+  var BorderValueEditor$1 = /* @__PURE__ */ (() => ".elf--border-value-editor{grid-column-gap:4px;display:grid;grid-template-columns:1fr}.elf--border-value-editor label{padding:6px 4px 2px 0;text-align:left;vertical-align:middle}.elf--border-value-editor .editor-area{-moz-column-gap:10px;column-gap:10px;display:flex;flex-direction:row}")();
   const borderStyleList = [
     BorderStyle.NONE,
     BorderStyle.HIDDEN,
@@ -12240,7 +12240,7 @@ var __privateSet = (obj, member, value, setter) => {
       BorderImageProperty
     });
   }
-  var BorderRadiusEditor$1 = "";
+  var BorderRadiusEditor$1 = /* @__PURE__ */ (() => ".elf--border-radius-editor .border-radius-item{align-items:center;display:flex}.elf--border-radius-editor .border-radius-item>*{flex:1 1 auto}.elf--border-radius-editor .border-radius-item>.button{flex:none;height:24px;width:24px}.elf--border-radius-editor .radius-selector[data-selected-value=all] button[data-value=all],.elf--border-radius-editor .radius-selector[data-selected-value=partitial] button[data-value=partitial]{background-color:var(--elf--selected-color-2);color:var(--elf--font-color)}.elf--border-radius-editor .radius-selector button{border-radius:3px;height:20px;margin:2px;width:20px}.elf--border-radius-editor .radius-setting-box{display:grid;grid-template-columns:1fr 30px;margin-bottom:5px}.elf--border-radius-editor .radius-setting-box>div{display:grid;grid-template-columns:1fr 1fr}")();
   class BorderRadius {
     static parseStyle(str = "") {
       var obj2 = {
@@ -12430,7 +12430,7 @@ var __privateSet = (obj, member, value, setter) => {
       BorderRadiusProperty
     });
   }
-  var BoxModelProperty$1 = "";
+  var BoxModelProperty$1 = /* @__PURE__ */ (() => ".elf--box-model-item{grid-template-columns:1fr!important}.elf--box-model-item>div{height:150px;position:relative;width:100%}.elf--box-model-item>div .margin{border:1px dashed #aaa;bottom:5px;left:5px;padding:10px;position:absolute;right:5px;top:5px}.elf--box-model-item>div .margin:before{content:attr(data-title);display:inline-block;left:2px;position:absolute;top:2px}.elf--box-model-item>div .margin input{-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%}.elf--box-model-item>div .margin [data-value=top]{display:inline-block;left:50%;position:absolute;top:2px;transform:translateX(-50%);width:45px}.elf--box-model-item>div .margin [data-value=bottom]{bottom:2px;display:inline-block;left:50%;position:absolute;transform:translateX(-50%);width:45px}.elf--box-model-item>div .margin [data-value=left]{display:inline-block;left:2px;position:absolute;top:50%;transform:translateY(-50%);width:45px}.elf--box-model-item>div .margin [data-value=right]{display:inline-block;position:absolute;right:2px;top:50%;transform:translateY(-50%);width:45px}.elf--box-model-item>div .padding{border:1px dashed #aaa;bottom:30px;left:55px;padding:20px 45px;position:absolute;right:55px;top:30px}.elf--box-model-item>div .padding:before{content:attr(data-title);display:inline-block;left:2px;position:absolute;top:2px}.elf--box-model-item>div .padding input{-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%}.elf--box-model-item>div .padding [data-value=top]{display:inline-block;left:50%;position:absolute;top:2px;transform:translateX(-50%);width:45px}.elf--box-model-item>div .padding [data-value=bottom]{bottom:2px;display:inline-block;left:50%;position:absolute;transform:translateX(-50%);width:45px}.elf--box-model-item>div .padding [data-value=left]{display:inline-block;left:2px;position:absolute;top:50%;transform:translateY(-50%);width:45px}.elf--box-model-item>div .padding [data-value=right]{display:inline-block;position:absolute;right:2px;top:50%;transform:translateY(-50%);width:45px}.elf--box-model-item>div .content{border:1px dashed #aaa;bottom:54px;left:105px;padding:10px 0;position:absolute;right:105px;top:54px}.elf--box-model-item>div .content:before{display:block;padding:5px 0;text-align:center}")();
   const fields = ["margin", "padding"];
   let styleKeys = [];
   fields.forEach((field) => {
@@ -12565,7 +12565,7 @@ var __privateSet = (obj, member, value, setter) => {
       ]
     }
   ];
-  var BoxShadowProperty$1 = "";
+  var BoxShadowProperty$1 = /* @__PURE__ */ (() => ".box-shadow-samples{border:0;font-size:11px}")();
   class BoxShadowProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("boxshadow.property.title");
@@ -12650,7 +12650,7 @@ var __privateSet = (obj, member, value, setter) => {
       ];
     }
   };
-  var ClipPathProperty$1 = "";
+  var ClipPathProperty$1 = /* @__PURE__ */ (() => ".elf--clip-path-list{grid-template-columns:1fr!important}.elf--clip-path-list .clippath-item{grid-column-gap:4px;cursor:pointer;display:grid;grid-template-columns:20px 1fr 30px;height:30px;margin-bottom:5px}.elf--clip-path-list .clippath-item>label{align-items:center;cursor:move;display:flex;justify-content:flex-start}.elf--clip-path-list .clippath-item .title{align-items:center;-moz-column-gap:10px;column-gap:10px;display:flex;justify-content:flex-start}.elf--clip-path-list .clippath-item .title .name{padding:2px 0}.elf--clip-path-list .clippath-item .tools{align-items:center;display:flex;justify-content:center;text-align:right;vertical-align:middle}.elf--clip-path-list .clippath-item .tools:hover{background-color:var(--elf--input-inactive-color)}.elf--clip-path-list .clippath-item .offset-list{height:30px;padding:0 10px}.elf--clip-path-list .clippath-item .offset-list .container{background-image:linear-gradient(to right,var(--elf--border-color),#000);background-position:0;background-repeat:no-repeat;background-size:100% 2px;height:100%;position:relative}.elf--clip-path-list .clippath-item .offset-list .container .offset{background-color:#000;border-radius:100%;height:10px;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);vertical-align:middle;width:10px}.elf--clip-path-list .clippath-item .offset-list .container .offset:hover:before{background-color:#4e3b3b;border-radius:3px;bottom:100%;color:#fff;content:attr(data-title);display:inline-block;left:50%;padding:1px 3px;position:absolute;text-align:center;transform:translateX(-50%);white-space:nowrap}")();
   const CLIPPATH_REG = /(content-box|padding-box|border-box|margin-box|view-box|stroke-box|fill-box|none|(inset|circle|ellipse|polygon|path|svg|url)(\(([^)]*)\))?)/gi;
   class ClipPath extends PropertyItem {
     getDefaultObject(obj2 = {}) {
@@ -12964,7 +12964,7 @@ var __privateSet = (obj, member, value, setter) => {
       ClipPathProperty
     });
   }
-  var ClippathEditorView$2 = "";
+  var ClippathEditorView$2 = /* @__PURE__ */ (() => ".elf--clippath-editor-view{bottom:0;display:none;left:0;position:absolute;right:0;top:0}.elf--clippath-editor-view .polygon .polygon-back{bottom:0;cursor:-webkit-grab;cursor:grab;left:0;position:absolute;right:0;top:0}.elf--clippath-editor-view .polygon .polygon-back svg polygon{fill:transparent;stroke-width:2;stroke:#fff;filter:drop-shadow(0 0 3px rgba(255,0,255,.7))}.elf--clippath-editor-view .polygon .polygon-pointer{fill:#fff;r:5;cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));pointer-events:all;position:absolute}.elf--clippath-editor-view .polygon .polygon-line{cursor:copy;pointer-events:all}.elf--clippath-editor-view .polygon .polygon-line:hover{stroke-width:2;stroke:red}.elf--clippath-editor-view .polygon .polygon-center{border:2px solid #fff;border-radius:50%;cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));height:20px;pointer-events:all;position:absolute;transform:translateX(-50%) translateY(-50%);width:20px}.elf--clippath-editor-view .inset .inset-back{bottom:0;cursor:-webkit-grab;cursor:grab;left:0;position:absolute;right:0;top:0}.elf--clippath-editor-view .inset .inset-back svg path{fill:transparent;stroke-width:2;stroke:#fff;filter:drop-shadow(0 0 3px rgba(255,0,255,.7))}.elf--clippath-editor-view .inset .inset-direction{background-color:#fff;height:14px;width:14px}.elf--clippath-editor-view .inset .inset-center,.elf--clippath-editor-view .inset .inset-direction{border-radius:50%;cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));pointer-events:all;position:absolute;transform:translateX(-50%) translateY(-50%)}.elf--clippath-editor-view .inset .inset-center{border:2px solid #fff;height:20px;width:20px}.elf--clippath-editor-view .circle .circle-back{left:0;pointer-events:none;top:0}.elf--clippath-editor-view .circle .circle-back,.elf--clippath-editor-view .circle .circle-center{border:2px solid #fff;border-radius:50%;cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));position:absolute;transform:translateX(-50%) translateY(-50%)}.elf--clippath-editor-view .circle .circle-center{height:20px;pointer-events:all;width:20px}.elf--clippath-editor-view .circle .circle-radius{background-color:#fff;border-radius:50%;cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));height:14px;pointer-events:all;position:absolute;transform:translateX(-50%) translateY(-50%);width:14px}.elf--clippath-editor-view .ellipse .ellipse-back{bottom:0;cursor:-webkit-grab;cursor:grab;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--clippath-editor-view .ellipse .ellipse-back svg ellipse{fill:transparent;stroke-width:2;stroke:#fff;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));pointer-events:all}.elf--clippath-editor-view .ellipse .ellipse-center{border:2px solid #fff;border-radius:50%;height:20px;width:20px}.elf--clippath-editor-view .ellipse .ellipse-center,.elf--clippath-editor-view .ellipse .ellipse-radius{cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 3px rgba(255,0,255,.7));pointer-events:all;position:absolute;transform:translateX(-50%) translateY(-50%)}.elf--clippath-editor-view .ellipse .ellipse-radius{background-color:#fff;border-radius:50%;height:14px;width:14px}")();
   class ClippathPolygonEditorView extends editor.EditorElement {
     initializePolygon() {
       const current = this.$context.selection.current;
@@ -13612,7 +13612,7 @@ var __privateSet = (obj, member, value, setter) => {
       ClippathEditorView: ClippathEditorView$1
     });
   }
-  var CodeViewProperty$1 = "";
+  var CodeViewProperty$1 = /* @__PURE__ */ (() => ".elf--code-view-item{grid-template-columns:1fr!important;width:100%}.elf--code-view-item>div{max-width:100%;width:100%}.elf--code-view-item>div label{padding-left:10px}.elf--code-view-item>div pre{line-height:1.7;margin-top:0;padding:40px 0 20px 20px;position:relative;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;white-space:pre-wrap;word-break:break-all}.elf--code-view-item>div pre:not(:last-child){border-bottom:1px solid var(--elf--border-color)}.elf--code-view-item>div pre:before{border:1px solid var(--elf--border-color);color:var(--elf--font-color);content:attr(title);display:inline-block;font-weight:700;left:0;margin-bottom:10px;padding:2px 4px;position:absolute;right:0;top:0}.elf--code-view-item>div pre .block{padding-left:20px;text-indent:-20px}.elf--code-view-item>div pre strong{color:var(--elf--font-color);font-weight:400;text-indent:-20px}.elf--code-view-item>div pre .value{color:#f16b16;text-indent:-20px}.elf--code-view-item>div pre .keyword{color:#20a471}.elf--code-view-item>div pre .char{color:#444}.elf--code-view-item>div pre .function{color:#725ee1}")();
   class CodeViewProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("code.view.property.title");
@@ -18536,6 +18536,126 @@ var __privateSet = (obj, member, value, setter) => {
   function commands(editor2) {
     editor2.loadCommands(obj);
   }
+  var ComponentPopup$1 = /* @__PURE__ */ (() => "")();
+  class ComponentPopup extends editor.BasePopup {
+    getClassName() {
+      return "component-property w(800)";
+    }
+    getTitle() {
+      return "Component";
+    }
+    initState() {
+      return {
+        title: "",
+        inspector: []
+      };
+    }
+    refresh() {
+      this.setTitle(this.state.title || this.getTitle());
+      this.load();
+    }
+    getBody() {
+      return `
+      <div ref='$body'></div>
+    `;
+    }
+    [sapa.BIND("$body")]() {
+      return {
+        style: {
+          width: this.state.width || 250
+        }
+      };
+    }
+    [sapa.LOAD("$body")]() {
+      const inspector2 = this.state.inspector;
+      return sapa.createComponent("ComponentEditor", {
+        inspector: inspector2,
+        onchange: "changeComponent"
+      });
+    }
+    [sapa.SUBSCRIBE_SELF("changeComponent")](key, value) {
+      if (sapa.isFunction(this.state.changeEvent)) {
+        this.emit(this.state.changeEvent, key, value);
+      }
+    }
+    [sapa.SUBSCRIBE(SHOW_COMPONENT_POPUP)](data) {
+      this.setState(data, false);
+      this.refresh();
+      this.show(data.width);
+    }
+  }
+  var ComponentProperty$1 = /* @__PURE__ */ (() => "")();
+  class ComponentProperty extends editor.BaseProperty {
+    getClassName() {
+      return "component-property";
+    }
+    getTitle() {
+      return "Component";
+    }
+    isShow() {
+      var _a;
+      var current = (_a = this.$context.selection) == null ? void 0 : _a.current;
+      const inspector2 = this.$context.components.createInspector(current);
+      if (current && (current.is("component") || inspector2.length > 0)) {
+        return true;
+      }
+      return false;
+    }
+    [sapa.SUBSCRIBE(REFRESH_SELECTION) + sapa.DEBOUNCE(100)]() {
+      this.refreshShow(() => {
+        const current = this.$context.selection.current;
+        const inspector2 = this.$context.components.createInspector(current);
+        return inspector2.length > 0;
+      });
+    }
+    refresh() {
+      var current = this.$context.selection.current;
+      if (current) {
+        this.setTitle(current.getDefaultTitle() || current.itemType || current.name);
+        this.load();
+      }
+    }
+    getBody() {
+      return `
+      <div ref='$body'></div>
+    `;
+    }
+    [sapa.LOAD("$body")]() {
+      var _a;
+      var current = (_a = this.$context.selection) == null ? void 0 : _a.current;
+      if (!current)
+        return "";
+      const inspector2 = this.$context.components.createInspector(current);
+      inspector2.forEach((it) => {
+        if (sapa.isString(it)) {
+          return;
+        }
+        let defaultValue = current[it.key] || it.defaultValue;
+        if (sapa.isFunction(it.convertDefaultValue)) {
+          defaultValue = it.convertDefaultValue(current, it.key);
+        }
+        it.defaultValue = defaultValue;
+      });
+      return sapa.createComponent("ComponentEditor", {
+        ref: "$comp",
+        inspector: inspector2,
+        onchange: "changeComponentProperty"
+      });
+    }
+    [sapa.SUBSCRIBE_SELF("changeComponentProperty")](key, value) {
+      this.$commands.executeCommand("setAttribute", "change component : " + key, this.$context.selection.packByValue({
+        [key]: value
+      }));
+    }
+  }
+  function component(editor2) {
+    editor2.registerUI("inspector.tab.style", {
+      ComponentProperty
+    });
+    editor2.registerUI("popup", {
+      ComponentPopup
+    });
+  }
   var area_width = {
     key: "area.width",
     defaultValue: 100,
@@ -18809,6 +18929,61 @@ var __privateSet = (obj, member, value, setter) => {
     configs$1.forEach((config) => {
       editor2.registerConfig(config);
     });
+  }
+  var ContentProperty$1 = /* @__PURE__ */ (() => ".elf--content-item{grid-template-columns:1fr!important;padding:0 4px!important}.elf--content-item textarea{border:1px solid var(--elf--border-color);border-radius:3px;height:100px;width:100%}")();
+  class ContentProperty extends editor.BaseProperty {
+    getTitle() {
+      return "Content";
+    }
+    [sapa.SUBSCRIBE(REFRESH_SELECTION, REFRESH_CONTENT) + sapa.DEBOUNCE(100)]() {
+      this.refreshShow(["text"]);
+    }
+    getBody() {
+      return `
+      <div class="property-item elf--content-item">
+        <textarea ref="$contentItem"></textarea>
+      </div>
+    `;
+    }
+    [sapa.BIND("$contentItem")]() {
+      var current = this.$context.selection.current;
+      if (!current)
+        return "";
+      return {
+        value: current.content || ""
+      };
+    }
+    [sapa.INPUT("$contentItem")]() {
+      this.setContent();
+    }
+    setContent() {
+      var current = this.$context.selection.current;
+      if (current) {
+        var data = {
+          content: this.refs.$contentItem.value
+        };
+        current.reset(data);
+        this.emit(UPDATE_CANVAS, current);
+      }
+    }
+  }
+  function content(editor2) {
+    editor2.registerElement({
+      ContentProperty
+    });
+  }
+  function defaultIcons(editor2) {
+    editor2.registerIcon("artboard", "artboard");
+    editor2.registerIcon("circle", "lens");
+    editor2.registerIcon("image", "image");
+    editor2.registerIcon("text", "title");
+    editor2.registerIcon("svg-text", "title");
+    editor2.registerIcon("boolean-path", "pentool");
+    editor2.registerIcon("svg-path", "pentool");
+    editor2.registerIcon("polygon", "polygon");
+    editor2.registerIcon("star", "star");
+    editor2.registerIcon("spline", "smooth");
+    editor2.registerIcon("rect", "rect");
   }
   class Selector extends PropertyItem {
     static parse(obj2) {
@@ -24497,12 +24672,1257 @@ ${tabString}${it.properties.map((p) => {
     editor2.registerItem("star", StarModel);
     editor2.registerItem("spline", SplineModel);
   }
+  var en_US = {
+    "app.title": "elf",
+    "app.sample": (a, b, c) => {
+      return `${a}-${b}-${c}`;
+    },
+    "app.lang.en_US": "English",
+    "app.lang.ko_KR": "\uD55C\uAD6D\uC5B4",
+    "app.lang.fr_FR": "Fran\xE7ais",
+    "app.label.lang": "Language",
+    "app.layout.all": "Layout",
+    "app.layout.css": "CSS Mode",
+    "app.layout.svg": "SVG Mode",
+    "app.label.layout": "Menu Layout",
+    "app.theme.dark": "Dark",
+    "app.theme.light": "Light",
+    "app.theme.toon": "Toon",
+    "app.theme.gray": "Gray",
+    "app.label.theme": "Theme",
+    "app.tab.title.projects": "Projects",
+    "app.tab.title.layers": "Layers",
+    "app.tab.title.libraries": "Library",
+    "app.tab.title.components": "Component",
+    "app.tab.title.artboards": "Artboard",
+    "app.tab.title.assets": "Assets",
+    "app.tab.title.keyMap": "KeyMap",
+    "app.confirm.message.artboard.items.removeArtboard": "Do you remove an artboard preview really?",
+    "app.confirm.message.custom-component.items.removeCustomComponent": "Do you remove a custom component preview really?",
+    "menu.item.download.title": "Source",
+    "menu.item.save.title": "Save",
+    "menu.item.export.title": "Export",
+    "menu.item.codepen.title": "CodePen",
+    "menu.item.fullscreen.title": "Full Screen",
+    "menu.item.shortcuts.title": "ShortCuts",
+    "menu.item.github.title": "Github",
+    "menu.item.learn.title": "Learn",
+    "menu.item.projects.title": "Projects",
+    "menu.item.language.title": "Language",
+    "project.property.title": "Project",
+    "project.information.property.title": "Project information",
+    "project.information.property.name": "Name",
+    "project.information.property.description": "Description",
+    "artboard.property.title": "ArtBoards",
+    "artboard.property.layout.title.flex": "Flex",
+    "artboard.property.layout.title.grid": "Grid",
+    "layer.tree.property.title": "Layers",
+    "layer.tree.property.layout.title.flex": "Flex",
+    "layer.tree.property.layout.title.grid": "Grid",
+    "alignment.property.title": "Alignment",
+    "position.property.title": "Position",
+    "position.property.X": "X",
+    "position.property.Y": "Y",
+    "size.property.title": "Size",
+    "position.property.width": "W",
+    "position.property.height": "H",
+    "position.property.opacity": "Opacity",
+    "position.property.rotate": "Rotate",
+    "background.color.property.title": "Appearance",
+    "background.color.property.color": "Color",
+    "background.color.property.zindex": "z-index",
+    "background.color.property.blend": "Blend",
+    "background.color.property.overflow": "Overflow",
+    "background.color.property.overflow.visible": "Visible",
+    "background.color.property.overflow.hidden": "Hidden",
+    "background.color.property.overflow.scroll": "Scroll",
+    "background.color.property.overflow.auto": "Auto",
+    "blend.normal": "normal",
+    "blend.multiply": "multiply",
+    "blend.screen": "screen",
+    "blend.overlay": "overlay",
+    "blend.darken": "darken",
+    "blend.lighten": "lighten",
+    "blend.color-dodge": "color-dodge",
+    "blend.color-burn": "color-burn",
+    "blend.hard-light": "hard-light",
+    "blend.soft-light": "soft-light",
+    "blend.difference": "difference",
+    "blend.exclusion": "exclusion",
+    "blend.hue": "hue",
+    "blend.saturation": "saturation",
+    "blend.color": "color",
+    "blend.luminosity": "luminosity",
+    "background.image.property.title": "Fill",
+    "border.property.title": "Border",
+    "border.radius.property.title": "Border Radius",
+    "boxshadow.property.title": "Box Shadows",
+    "filter.property.title": "Filter",
+    "filter.property.blur": "Blur",
+    "filter.property.grayscale": "GrayScale",
+    "filter.property.hue-rotate": "Hue Rotate",
+    "filter.property.invert": "Invert",
+    "filter.property.brightness": "Brightness",
+    "filter.property.contrast": "Contrast",
+    "filter.property.drop-shadow": "Drop Shadow",
+    "filter.property.drop-shadow.color": "Color",
+    "filter.property.drop-shadow.offsetX": "Offset X",
+    "filter.property.drop-shadow.offsetY": "Offset Y",
+    "filter.property.drop-shadow.blurRadius": "Blur",
+    "filter.property.opacity": "Opacity",
+    "filter.property.saturate": "Saturate",
+    "filter.property.sepia": "Sepia",
+    "filter.property.svg": "SVG",
+    "font.property.title": "Font",
+    "font.property.color": "Color",
+    "font.property.size": "Size",
+    "font.property.stretch": "Stretch",
+    "font.property.weight": "Weight",
+    "font.property.style": "Style",
+    "font.property.family": "Family",
+    "font.spacing.property.title": "Font spacing",
+    "font.spacing.property.lineHeight": "Line height",
+    "font.spacing.property.letterSpacing": "Letter spacing",
+    "font.spacing.property.wordSpacing": "Word spacing",
+    "font.spacing.property.indent": "Indent",
+    "backdrop.filter.property.title": "Backdrop Filter",
+    "clippath.property.title": "Clip Path",
+    "export.property.title": "Export",
+    "export.property.download": "Download",
+    "iframe.property.title": "IFrame",
+    "image.property.title": "Image",
+    "image.property.origin": "Origin",
+    "image.property.size": "Size",
+    "image.property.width": "Width",
+    "image.property.height": "height",
+    "video.property.title": "Video",
+    "video.property.play": "Play",
+    "video.property.pause": "Pause",
+    "video.property.volume": "Volume",
+    "video.property.playbackRate": "Playback Rate",
+    "video.property.currentTime": "Current Time",
+    "video.property.playTime": "Play Time Distance",
+    "motion.property.title": "Motion",
+    "text.property.title": "Text Style",
+    "text.property.align": "Align",
+    "text.property.transform": "Transform",
+    "text.property.decoration": "Decoration",
+    "text.clip.property.title": "Text Clip",
+    "text.shadow.property.title": "Text Shadows",
+    "text.fill.property.title": "Text Fill",
+    "text.fill.property.fill": "Fill",
+    "text.fill.property.stroke": "Stroke",
+    "text.fill.property.strokeWidth": "Width",
+    "transform.property.title": "Transform",
+    "transform.origin.property.title": "Transform Origin",
+    "transition.property.title": "CSS Transition",
+    "keyframe.property.title": "CSS Keyframe",
+    "selector.property.title": "Selector",
+    "selector.property.none": "None selector",
+    "path.data.property.title": "Path Information",
+    "polygon.data.property.title": "Polygon Information",
+    "perspective.property.title": "Perspective",
+    "perspective.origin.property.title": "Perspective Origin",
+    "svg.item.property.title": "Appearance",
+    "svg.item.property.isMotionPath": "Motion Path",
+    "svg.item.property.fill": "Fill",
+    "svg.item.property.fillOpacity": "Opacity",
+    "svg.item.property.path": "Path",
+    "svg.item.property.polygon": "Polygon",
+    "svg.item.property.totalLength": "Total Length",
+    "svg.item.property.fillRule": "Fill Rule",
+    "svg.item.property.stroke": "Stroke",
+    "svg.item.property.strokeWidth": "Width",
+    "svg.item.property.dashArray": "Dash Array",
+    "svg.item.property.dashOffset": "Dash Offset",
+    "svg.item.property.lineCap": "Line Cap",
+    "svg.item.property.lineJoin": "Line Join",
+    "svg.item.property.filter": "Filter",
+    "svg.item.property.blend": "Blend Mode",
+    "border.editor.all": "All",
+    "border.editor.width": "Width",
+    "border.editor.style": "Style",
+    "border.editor.color": "C",
+    "border.editor.top": "Top",
+    "border.editor.left": "Left",
+    "border.editor.right": "Right",
+    "border.editor.bottom": "Bottom",
+    "border.radius.editor.topLeft": "Top Left",
+    "border.radius.editor.topRight": "Top Right",
+    "border.radius.editor.bottomLeft": "Bottom Left",
+    "border.radius.editor.bottomRight": "Bottom Right",
+    "boxshadow.editor.blur": "Blur",
+    "boxshadow.editor.spread": "Spread",
+    "css.property.editor.properties": "Properties",
+    "offset.path.list.editor.path": "Path",
+    "offset.path.list.editor.totalLength": "Total Length",
+    "offset.path.list.editor.distance": "Distance",
+    "offset.path.list.editor.direction": "Direction",
+    "offset.path.list.editor.rotate": "Rotate",
+    "svgfilter.select.editor.message.create": "Create new svg filter",
+    "svgfilter.select.editor.message.select": "Select a filter",
+    "fill.editor.message.click.image": "Click the preview area if you want to select a image",
+    "fill.editor.message.drag.position": "Drag if you want to move center position",
+    "fill.editor.x1": "Start X",
+    "fill.editor.x2": "End X",
+    "fill.editor.y1": "Start Y",
+    "fill.editor.y2": "End Y",
+    "fill.editor.spread": "Spread",
+    "fill.editor.offset": "Offset",
+    "fill.editor.cx": "Center X",
+    "fill.editor.cy": "Center Y",
+    "fill.editor.r": "End radius",
+    "fill.editor.fx": "Start X",
+    "fill.editor.fy": "Start Y",
+    "fill.editor.fr": "Start radius",
+    "perspective.origin.editor.originX": "Origin X",
+    "perspective.origin.editor.originY": "Origin Y",
+    "path.manager.msg": "Keydown ESC or Enter key to close editing",
+    "path.manager.mode.done": "Done",
+    "path.manager.mode.modify": "Modify",
+    "path.manager.mode.path": "Path",
+    "path.manager.mode.warp": "Warp",
+    "path.manager.mode.transform": "Transform",
+    "path.manager.mode.reverse": "Reverse",
+    "path.manager.mode.flipX": "Flip X",
+    "path.manager.mode.flipY": "Flip Y",
+    "path.manager.mode.flipOrigin": "Flip Origin",
+    "colorpicker.popup.title": "ColorPicker",
+    "selector.popup.title": "Selector Property",
+    "selector.popup.selector": "Selector",
+    "background.image.position.popup.title": "Background Pattern",
+    "background.image.position.popup.size": "Size",
+    "background.image.position.popup.width": "Width",
+    "background.image.position.popup.height": "Height",
+    "background.image.position.popup.repeat": "Repeat",
+    "background.image.position.popup.blend": "Blend",
+    "background.image.position.popup.type.repeat": "repeat",
+    "background.image.position.popup.type.no-repeat": "no repeat",
+    "background.image.position.popup.type.repeat-x": "repeat-x",
+    "background.image.position.popup.type.repeat-y": "repeat-y",
+    "background.image.position.popup.type.space": "space",
+    "background.image.position.popup.type.round": "round",
+    "gradient.picker.popup.title": "Gradient & Image Picker",
+    "gradient.picker.popup.static-gradient": "Static",
+    "gradient.picker.popup.linear-gradient": "Linear",
+    "gradient.picker.popup.repeating-linear-gradient": "Repeating Linear",
+    "gradient.picker.popup.radial-gradient": "Radial",
+    "gradient.picker.popup.repeating-radial-gradient": "Repeating Radial",
+    "gradient.picker.popup.conic-gradient": "Linear",
+    "gradient.picker.popup.repeating-conic-gradient": "Repeating Conic",
+    "image.asset.property.title": "Image",
+    "video.asset.property.title": "Video",
+    "color.asset.property.title": "Color",
+    "gradient.asset.property.title": "Gradient",
+    "pattern.asset.property.title": "Pattern",
+    "svgfilter.asset.property.title": "SVG Filter",
+    "inspector.tab.title.design": "Design",
+    "inspector.tab.title.component": "Component",
+    "inspector.tab.title.transition": "Animation",
+    "inspector.tab.title.asset": "Assets",
+    "inspector.tab.title.text": "Text",
+    "inspector.tab.title.code": "Code",
+    "inspector.tab.title.history": "History",
+    "timeline.property.title": "Timeline",
+    "timeline.property.resize": "Drag if you want to resize timeline height.",
+    "timeline.animation.property.title": "Animations",
+    "timeline.play.control.play": "Play",
+    "timeline.play.control.pause": "Pause",
+    "timeline.play.control.first": "First",
+    "timeline.play.control.prev": "Previous",
+    "timeline.play.control.next": "Next",
+    "timeline.play.control.last": "Last",
+    "timeline.play.control.direction": "Direction",
+    "timeline.play.control.speed": "Speed",
+    "timeline.play.control.repeat": "Repeat",
+    "timeline.play.control.infinite": "Infinite",
+    "timeline.play.control.normal": "normal",
+    "timeline.play.control.alternate": "alternate",
+    "timeline.play.control.reverse": "reverse",
+    "timeline.play.control.alternate.reverse": "alternate reverse",
+    "timeline.value.editor.value": "Value",
+    "timeline.value.editor.time": "Time",
+    "timeline.value.editor.timing": "Timing",
+    "timeline.value.editor.offset.message": "Please input enter key to change time offset.",
+    "svgfilter.popup.title": "SVG Filter",
+    "css.item.rotate": "Rotate",
+    "css.item.rotateX": "Rotate X",
+    "css.item.rotateY": "Rotate Y",
+    "css.item.rotateZ": "Rotate Z",
+    "css.item.rotate3d": "3D Rotate",
+    "css.item.skewX": "Skew X",
+    "css.item.skewY": "Skew Y",
+    "css.item.translate": "Translate",
+    "css.item.translateX": "Translate X",
+    "css.item.translateY": "Translate Y",
+    "css.item.translateZ": "Translate Z",
+    "css.item.translate3d": "3D Translate",
+    "css.item.perspective": "Perspective",
+    "css.item.scale": "Scale",
+    "css.item.scaleX": "Scale X",
+    "css.item.scaleY": "Scale Y",
+    "css.item.scaleZ": "Scale Z",
+    "css.item.scale3d": "3D Scale",
+    "css.item.matrix": "Matrix",
+    "css.item.matrix3d": "3D Matrix",
+    "animation.property.title": "CSS Animation",
+    "animation.property.direction": "Direction",
+    "animation.property.play.state": "Play State",
+    "animation.property.fill.mode": "Fill Mode",
+    "animation.property.delay": "Delay",
+    "animation.property.duration": "Duration",
+    "animation.property.iteration.count": "Iteration Count",
+    "animation.property.Select a keyframe": "Select a keyframe",
+    "animation.property.popup.title": "Animation",
+    "animation.property.popup.timing.function": "Timing Function",
+    "animation.property.popup.keyframe": "Keyframe",
+    "animation.property.popup.direction": "Direction",
+    "animation.property.popup.play.state": "Play State",
+    "animation.property.popup.fill.mode": "Fill Mode",
+    "animation.property.popup.delay": "Delay",
+    "animation.property.popup.duration": "Duration",
+    "animation.property.popup.iteration": "Iteration",
+    "animation.property.popup.normal": "normal",
+    "animation.property.popup.reverse": "reverse",
+    "animation.property.popup.alternate": "alternate",
+    "animation.property.popup.alternate-reverse": "alternate-reverse",
+    "animation.property.popup.none": "none",
+    "animation.property.popup.forwards": "forwards",
+    "animation.property.popup.backwards": "backwards",
+    "animation.property.popup.both": "both",
+    "animation.property.popup.Select a keyframe": "Select a keyframe",
+    "keyframe.popup.title": "Keyframe",
+    "code.view.property.title": "CodeView",
+    "svg.filter.editor.tab.filter": "Filter",
+    "svg.filter.editor.tab.preset": "Preset",
+    "svg.filter.editor.tab.asset": "Assets",
+    "svg.filter.editor.GRAPHIC REFERENCES": "GRAPHIC REFERENCES",
+    "svg.filter.editor.SOURCES": "SOURCES",
+    "svg.filter.editor.MODIFIER": "MODIFIER",
+    "svg.filter.editor.LIGHTING": "LIGHTING",
+    "svg.filter.editor.COMBINERS": "COMBINERS",
+    "svg.filter.editor.Template": "Template",
+    "layout.property.title": "Layout",
+    "layout.property.flex": "Flex Box",
+    "layout.property.grid": "Grid",
+    "layout.property.default": "Default",
+    "layout.property.resizing.title": "Resizing",
+    "layout.property.resizing.self.title": "Self Resizing",
+    "default.layout.item.property.title.constraints": "Constraints",
+    "flex.layout.editor.row": "Row",
+    "flex.layout.editor.column": "column",
+    "flex.layout.editor.row-reverse": "Row Reverse",
+    "flex.layout.editor.column-reverse": "Column Reverse",
+    "flex.layout.editor.nowrap": "Nowrap",
+    "flex.layout.editor.wrap": "Wrap",
+    "flex.layout.editor.wrap-reverse": "Wrap Reverse",
+    "flex.layout.editor.flex-start": "Start",
+    "flex.layout.editor.flex-end": "End",
+    "flex.layout.editor.center": "Center",
+    "flex.layout.editor.space-between": "Between",
+    "flex.layout.editor.space-around": "Around",
+    "flex.layout.editor.baseline": "BaseLine",
+    "flex.layout.editor.stretch": "Stretch",
+    "flex.layout.editor.direction": "Direction",
+    "flex.layout.editor.justify-content": "Justify Content",
+    "flex.layout.editor.align-items": "Align Items",
+    "flex.layout.editor.align-content": "Align Content",
+    "flex.layout.item.property.title": "Flex Item Detail",
+    "flex.layout.item.property.grow": "Flex Grow",
+    "flex.layout.item.property.shrink": "Flex Shrink",
+    "flex.layout.item.property.basis": "Flex Basis",
+    "flex.layout.item.property.none": "none",
+    "flex.layout.item.property.auto": "auto",
+    "flex.layout.item.property.value": "value",
+    "grid.layout.editor.template.columns": "Columns",
+    "grid.layout.editor.column.gap": "Column Gap",
+    "grid.layout.editor.template.rows": "Rows",
+    "grid.layout.editor.row.gap": "Row Gap",
+    "grid.box.editor.box.title": "Box",
+    "grid.box.editor.type": "Type",
+    "grid.box.editor.repeat": "Repeat",
+    "grid.box.editor.length": "Length",
+    "grid.box.editor.none": "None",
+    "grid.box.editor.auto": "Auto",
+    "grid.box.editor.count": "Count",
+    "grid.box.editor.value": "Size",
+    "grid.layout.item.property.title": "Layout Item Detail",
+    "grid.layout.item.property.column": "Column",
+    "grid.layout.item.property.row": "Row",
+    "grid.layout.item.property.start": "Start",
+    "grid.layout.item.property.end": "End",
+    "grid.layout.item.property.none": "none",
+    "grid.layout.item.property.value": "value",
+    "box.model.property.title": "Box Model",
+    "box.model.property.margin": "Margin",
+    "box.model.property.padding": "Padding",
+    "component.items.canvas": "Canvas",
+    "component.items.layer": "Layer",
+    "component.items.3dlayer": "3D Layer",
+    "component.items.drawing": "Drawing",
+    "component.items.custom": "Custom Component",
+    "component.items.chart": "Chart",
+    "component.items.plugin": "Plugin",
+    "svg.text.property.title": "SVG Text Style",
+    "svg.text.property.textarea": "Text Area",
+    "svg.text.property.size": "Font Size",
+    "svg.text.property.weight": "Font Weight",
+    "svg.text.property.style": "Font Style",
+    "svg.text.property.anchor": "Text Anchor",
+    "svg.text.property.family": "Font Family",
+    "svg.text.property.length.adjust": "Length Adjust",
+    "svg.text.property.text.length": "Text Length",
+    "svg.text.property.start.offset": "Start Offset",
+    "fill.picker.popup.title": "SVG Fragment picker",
+    "gradient.editor.drag.message": "Drag if you want to move center pointer.",
+    "draw.manager.tolerance": "Tolerance",
+    "pattern.property.title": "Pattern",
+    "pattern.info.popup.title": "Pattern Info",
+    "pattern.info.popup.width": "Width",
+    "pattern.info.popup.height": "Height",
+    "pattern.info.popup.lineWidth": "Line Width",
+    "pattern.info.popup.lineHeight": "Line Height",
+    "pattern.info.popup.rotate": "Rotate",
+    "pattern.info.popup.blend": "Blend Mode",
+    "pattern.info.popup.foreColor": "Fore",
+    "pattern.info.popup.backColor": "Back",
+    "stroke.dasharray.editor.add": "Add Dash",
+    "viewport.panning.enable": "You can move the area by holding down space key and dragging the screen.",
+    "image.select.editor.button": "Select Image"
+  };
+  var fr_FR = {
+    "app.title": "elf",
+    "app.sample": (a, b, c) => {
+      return `${a}-${b}-${c}`;
+    },
+    "app.lang.en_US": "English",
+    "app.lang.ko_KR": "\uD55C\uAD6D\uC5B4",
+    "app.lang.fr_FR": "Fran\xE7ais",
+    "app.label.lang": "Langue",
+    "app.layout.all": "Layout",
+    "app.layout.css": "CSS Mode",
+    "app.layout.svg": "SVG Mode",
+    "app.label.layout": "Menu Layout",
+    "app.theme.dark": "Sombre",
+    "app.theme.light": "Clair",
+    "app.theme.gray": "Gris",
+    "app.label.theme": "Th\xE8me",
+    "app.tab.title.projects": "Projets",
+    "app.tab.title.layers": "Objets",
+    "app.tab.title.libraries": "Librarie",
+    "app.tab.title.components": "Objet",
+    "app.tab.title.artboards": "Artboard",
+    "app.tab.title.assets": "Elements",
+    "app.tab.title.keyMap": "Clavier",
+    "app.confirm.message.artboard.items.removeArtboard": "Do you remove an artboard preview really?",
+    "app.confirm.message.custom-component.items.removeCustomComponent": "Do you remove a custom component preview really?",
+    "menu.item.download.title": "T\xE9l\xE9charger",
+    "menu.item.save.title": "Enregistrer",
+    "menu.item.export.title": "Exporter",
+    "menu.item.codepen.title": "CodePen",
+    "menu.item.fullscreen.title": "Ecran",
+    "menu.item.shortcuts.title": "ShortCuts",
+    "menu.item.github.title": "Github",
+    "menu.item.learn.title": "Docs",
+    "menu.item.projects.title": "Projects",
+    "project.property.title": "Projet",
+    "project.information.property.title": "Information",
+    "project.information.property.name": "Nom",
+    "project.information.property.description": "Description",
+    "artboard.property.title": "Planche",
+    "artboard.property.layout.title.flex": "Flex",
+    "artboard.property.layout.title.grid": "Grille",
+    "layer.tree.property.title": "Objets",
+    "layer.tree.property.layout.title.flex": "Flex",
+    "layer.tree.property.layout.title.grid": "Grille",
+    "alignment.property.title": "Alignment",
+    "position.property.title": "Position",
+    "position.property.X": "X",
+    "position.property.Y": "Y",
+    "size.property.title": "Taille",
+    "position.property.width": "Largeur",
+    "position.property.height": "Hauteur",
+    "position.property.opacity": "Opacity",
+    "position.property.rotate": "Rotate",
+    "background.color.property.title": "Apparance",
+    "background.color.property.color": "Couleur",
+    "background.color.property.zindex": "z-index",
+    "background.color.property.opacity": "Opacit\xE9",
+    "background.color.property.blend": "M\xE9lange",
+    "background.color.property.overflow": "D\xE9bordement",
+    "background.color.property.overflow.visible": "Visible",
+    "background.color.property.overflow.hidden": "Cach\xE9",
+    "background.color.property.overflow.scroll": "Scroll",
+    "background.color.property.overflow.auto": "Auto",
+    "blend.normal": "normal",
+    "blend.multiply": "multiplie",
+    "blend.screen": "\xE9cran",
+    "blend.overlay": "couche",
+    "blend.darken": "sombre",
+    "blend.lighten": "clair",
+    "blend.color-dodge": "dodge",
+    "blend.color-burn": "brul\xE9",
+    "blend.hard-light": "dur",
+    "blend.soft-light": "doux",
+    "blend.difference": 'diff"rence',
+    "blend.exclusion": "exclusion",
+    "blend.hue": "teinte",
+    "blend.saturation": "saturation",
+    "blend.color": "couleur",
+    "blend.luminosity": "luminosit\xE9",
+    "background.image.property.title": "Remplissage",
+    "border.property.title": "Bordure",
+    "border.radius.property.title": "Rayon de bordure",
+    "boxshadow.property.title": "Ombres",
+    "filter.property.title": "Filtre",
+    "filter.property.blur": "Flou",
+    "filter.property.grayscale": "Echelle de gris",
+    "filter.property.hue-rotate": "Rotation teinte",
+    "filter.property.invert": "Invertir",
+    "filter.property.brightness": "Luminosit\xE9",
+    "filter.property.contrast": "Contraste",
+    "filter.property.drop-shadow": "Ombre port\xE9e",
+    "filter.property.drop-shadow.color": "Couleur",
+    "filter.property.drop-shadow.offsetX": "D\xE9calage X",
+    "filter.property.drop-shadow.offsetY": "D\xE9calage Y",
+    "filter.property.drop-shadow.blurRadius": "Flou",
+    "filter.property.opacity": "Opacit\xE9",
+    "filter.property.saturate": "Saturation",
+    "filter.property.sepia": "S\xE9pia",
+    "filter.property.svg": "SVG",
+    "font.property.title": "Police",
+    "font.property.color": "Couleur",
+    "font.property.size": "Taille",
+    "font.property.stretch": "Etirement",
+    "font.property.weight": "Poids",
+    "font.property.style": "Style",
+    "font.property.family": "Famille",
+    "font.spacing.property.title": "Espaces du texte",
+    "font.spacing.property.lineHeight": "Hauteur de ligne",
+    "font.spacing.property.letterSpacing": "Espace inter-caract\xE8res",
+    "font.spacing.property.wordSpacing": "Espace inter-mots",
+    "font.spacing.property.indent": "Identation",
+    "backdrop.filter.property.title": "Filtre Backdrop",
+    "clippath.property.title": "Chemin du Clip",
+    "export.property.title": "Exporter",
+    "export.property.download": "T\xE9l\xE9charger",
+    "iframe.property.title": "IFrame",
+    "image.property.title": "Image",
+    "image.property.origin": "Origine",
+    "image.property.size": "Taille",
+    "image.property.width": "Largeur",
+    "image.property.height": "Hauteur",
+    "video.property.title": "Video",
+    "video.property.play": "Jouer",
+    "video.property.pause": "Pause",
+    "video.property.volume": "Volume",
+    "video.property.playbackRate": "Vitesse de lecture",
+    "video.property.currentTime": "Temps actuel",
+    "video.property.playTime": "Temps de lecture",
+    "motion.property.title": "Mouvement",
+    "text.property.title": "Style Texte",
+    "text.property.align": "Alignement",
+    "text.property.transform": "Transformation",
+    "text.property.decoration": "D\xE9coration",
+    "text.clip.property.title": "Clip Texte",
+    "text.shadow.property.title": "Ombres Texte",
+    "text.fill.property.title": "Remplissage Texte",
+    "text.fill.property.fill": "Remplissage",
+    "text.fill.property.stroke": "Trait",
+    "text.fill.property.strokeWidth": "Largeur",
+    "transform.property.title": "Transformation",
+    "transform.origin.property.title": "Origine Transformation",
+    "transition.property.title": "Transition CSS",
+    "keyframe.property.title": "Image cl\xE9 CSS",
+    "selector.property.title": "S\xE9l\xE9cteur",
+    "selector.property.none": "Aucun s\xE9l\xE9cteur",
+    "path.data.property.title": "Information Chemin",
+    "polygon.data.property.title": "Information Polygone",
+    "perspective.property.title": "Perspective",
+    "perspective.origin.property.title": "Origine Perspective",
+    "svg.item.property.title": "Appearance",
+    "svg.item.property.isMotionPath": "Chemin de mouvement",
+    "svg.item.property.fill": "Remplissage",
+    "svg.item.property.fillOpacity": "Opacit\xE9",
+    "svg.item.property.path": "Chemin",
+    "svg.item.property.polygon": "Polygone",
+    "svg.item.property.totalLength": "Longueur totale",
+    "svg.item.property.fillRule": "R\xE8gle remplissage",
+    "svg.item.property.stroke": "Trait",
+    "svg.item.property.strokeWidth": "Largeur de trait",
+    "svg.item.property.dashArray": "Suite tiret",
+    "svg.item.property.dashOffset": "D\xE9calage tiret",
+    "svg.item.property.lineCap": "Chapeau Ligne",
+    "svg.item.property.lineJoin": "Jonction ligne",
+    "svg.item.property.filter": "Filtre",
+    "svg.item.property.blend": "Blend Mode",
+    "border.editor.all": "Tout",
+    "border.editor.width": "Largeur",
+    "border.editor.style": "Style",
+    "border.editor.color": "Couleur",
+    "border.editor.top": "Haut",
+    "border.editor.left": "Gauche",
+    "border.editor.right": "Droite",
+    "border.editor.bottom": "Bas",
+    "border.radius.editor.topLeft": "Haut gauche",
+    "border.radius.editor.topRight": "Haut droite",
+    "border.radius.editor.bottomLeft": "Bas gauche",
+    "border.radius.editor.bottomRight": "Bas droite",
+    "boxshadow.editor.blur": "Flou",
+    "boxshadow.editor.spread": "Etalement",
+    "css.property.editor.properties": "Propri\xE9t\xE9s",
+    "offset.path.list.editor.path": "Chemin",
+    "offset.path.list.editor.totalLength": "Longueur totale",
+    "offset.path.list.editor.distance": "Distance",
+    "offset.path.list.editor.direction": "Direction",
+    "offset.path.list.editor.rotate": "Rotation",
+    "svgfilter.select.editor.message.create": "Cr\xE9er un filtre svg",
+    "svgfilter.select.editor.message.select": "S\xE9lection filtre",
+    "fill.editor.message.click.image": "Cliquez sur aper\xE7u si vous souhaitez s\xE9lectionner une image",
+    "fill.editor.message.drag.position": "Prendre pour changer la position centrale",
+    "fill.editor.x1": "D\xE9but X",
+    "fill.editor.x2": "Fin X",
+    "fill.editor.y1": "D\xE9but Y",
+    "fill.editor.y2": "Fin Y",
+    "fill.editor.spread": "Etalement",
+    "fill.editor.offset": "D\xE9calage",
+    "fill.editor.cx": "Centre X",
+    "fill.editor.cy": "Centre Y",
+    "fill.editor.r": "Rayon de fin",
+    "fill.editor.fx": "D\xE9part X",
+    "fill.editor.fy": "D\xE9part Y",
+    "fill.editor.fr": "Rayon de d\xE9part",
+    "perspective.origin.editor.originX": "Origine X",
+    "perspective.origin.editor.originY": "Origine Y",
+    "path.manager.msg": "Appuyer ESC ou Entr\xE9z keypour fermer Edition",
+    "path.manager.mode.done": "Done",
+    "path.manager.mode.modify": "Modifier",
+    "path.manager.mode.path": "Chemin",
+    "path.manager.mode.warp": "Warp",
+    "path.manager.mode.transform": "Transformer",
+    "path.manager.mode.reverse": "Reverse",
+    "path.manager.mode.flipX": "Retouner X",
+    "path.manager.mode.flipY": "Retouner Y",
+    "path.manager.mode.flipOrigin": "Retouner Origine",
+    "colorpicker.popup.title": "Pipette",
+    "selector.popup.title": "Propi\xE9t\xE9 de S\xE9lecteur",
+    "selector.popup.selector": "S\xE9lecteur",
+    "background.image.position.popup.title": "Motif de fond",
+    "background.image.position.popup.size": "Taille",
+    "background.image.position.popup.width": "Largeur",
+    "background.image.position.popup.height": "Hauteur",
+    "background.image.position.popup.repeat": "Rep\xE8te",
+    "background.image.position.popup.blend": "M\xE9lange",
+    "background.image.position.popup.type.repeat": "rep\xE8te",
+    "background.image.position.popup.type.no-repeat": "sans rep\xE9tition",
+    "background.image.position.popup.type.repeat-x": "rep\xE8te-x",
+    "background.image.position.popup.type.repeat-y": "rep\xE8te-y",
+    "background.image.position.popup.type.space": "espace",
+    "background.image.position.popup.type.round": "rond",
+    "gradient.picker.popup.title": "S\xE9lection Gradient & Image",
+    "image.asset.property.title": "Image",
+    "video.asset.property.title": "Vid\xE9o",
+    "color.asset.property.title": "Couleur",
+    "gradient.asset.property.title": "Gradient",
+    "pattern.asset.property.title": "Motif",
+    "svgfilter.asset.property.title": "Filtre SVG",
+    "inspector.tab.title.design": "Design",
+    "inspector.tab.title.component": "Composant",
+    "inspector.tab.title.transition": "Animation",
+    "inspector.tab.title.asset": "El\xE9ments",
+    "inspector.tab.title.text": "Texte",
+    "inspector.tab.title.code": "Code",
+    "inspector.tab.title.history": "History",
+    "timeline.property.title": "Chronologie",
+    "timeline.property.resize": "Drag if you want to resize timeline height.",
+    "timeline.animation.property.title": "Animations",
+    "timeline.play.control.play": "Jouer",
+    "timeline.play.control.pause": "Pause",
+    "timeline.play.control.first": "Premier",
+    "timeline.play.control.prev": "Pr\xE9c\xE9dent",
+    "timeline.play.control.next": "Suivant",
+    "timeline.play.control.last": "Dernier",
+    "timeline.play.control.direction": "Direction",
+    "timeline.play.control.speed": "Vitesse",
+    "timeline.play.control.repeat": "R\xE9p\xE9ter",
+    "timeline.play.control.infinite": "Infini",
+    "timeline.play.control.normal": "normal",
+    "timeline.play.control.alternate": "alternatif",
+    "timeline.play.control.reverse": "inverse",
+    "timeline.play.control.alternate.reverse": "inverse alternatif",
+    "timeline.value.editor.value": "Valeur",
+    "timeline.value.editor.time": "Temps",
+    "timeline.value.editor.timing": "Calage temps",
+    "timeline.value.editor.offset.message": "Please input enter key to change time offset.",
+    "svgfilter.popup.title": "Filtre SVG",
+    "css.item.rotate": "Rotation",
+    "css.item.rotateX": "Rotation X",
+    "css.item.rotateY": "Rotation Y",
+    "css.item.rotateZ": "Rotation Z",
+    "css.item.rotate3d": "Rotation 3D",
+    "css.item.skewX": "Oblique X",
+    "css.item.skewY": "Oblique Y",
+    "css.item.translate": "Translation",
+    "css.item.translateX": "Translation X",
+    "css.item.translateY": "Translation Y",
+    "css.item.translateZ": "Translation Z",
+    "css.item.translate3d": "Translation 3D",
+    "css.item.perspective": "Persp\xE9ctive",
+    "css.item.scale": "Echelle",
+    "css.item.scaleX": "Echelle X",
+    "css.item.scaleY": "Echelle Y",
+    "css.item.scaleZ": "Echelle Z",
+    "css.item.scale3d": "Echelle 3D",
+    "css.item.matrix": "Matrice",
+    "css.item.matrix3d": "Matrice 3D",
+    "animation.property.title": "Animation CSS",
+    "animation.property.direction": "Direction",
+    "animation.property.play.state": "Etat lecture",
+    "animation.property.fill.mode": "Mode remplissage",
+    "animation.property.delay": "D\xE9lais",
+    "animation.property.duration": "Dur\xE9e",
+    "animation.property.iteration.count": "Nombre It\xE9rations",
+    "animation.property.Select a keyframe": "Selectionner une image cl\xE9",
+    "animation.property.popup.title": "Animation",
+    "animation.property.popup.timing.function": "Fonction temps",
+    "animation.property.popup.keyframe": "image cl\xE9",
+    "animation.property.popup.direction": "Direction",
+    "animation.property.popup.play.state": "Etat lecture",
+    "animation.property.popup.fill.mode": "Mode remplissage",
+    "animation.property.popup.delay": "D\xE9lais",
+    "animation.property.popup.duration": "Dur\xE9\xE9",
+    "animation.property.popup.iteration": "It\xE9ration",
+    "animation.property.popup.normal": "normal",
+    "animation.property.popup.reverse": "inverse",
+    "animation.property.popup.alternate": "alternatif",
+    "animation.property.popup.alternate-reverse": "inverse alternatif",
+    "animation.property.popup.none": "Aucun",
+    "animation.property.popup.forwards": "en avant",
+    "animation.property.popup.backwards": "en arri\xE8re",
+    "animation.property.popup.both": "les deux",
+    "animation.property.popup.Select a keyframe": "Selectionner une image cl\xE9",
+    "keyframe.popup.title": "image cl\xE9",
+    "code.view.property.title": "Vue code",
+    "svg.filter.editor.tab.filter": "Filtrer",
+    "svg.filter.editor.tab.preset": "Pre-rempli",
+    "svg.filter.editor.tab.asset": "El\xE9ments",
+    "svg.filter.editor.GRAPHIC REFERENCES": "REFERENCES GRAPHIQUES",
+    "svg.filter.editor.SOURCES": "SOURCES",
+    "svg.filter.editor.MODIFIER": "MODIFIER",
+    "svg.filter.editor.LIGHTING": "ECLAIRAGE",
+    "svg.filter.editor.COMBINERS": "COMBINER",
+    "svg.filter.editor.Template": "Mod\xE8le",
+    "layout.property.title": "Disposition",
+    "layout.property.flex": "Bo\xEEte Flex",
+    "layout.property.grid": "Grille",
+    "layout.property.default": "D\xE9faut",
+    "layout.property.resizing.title": "Resizing",
+    "layout.property.resizing.self.title": "Self Resizing",
+    "default.layout.item.property.title.constraints": "Constraints",
+    "flex.layout.editor.row": "Ligne",
+    "flex.layout.editor.column": "Colonne",
+    "flex.layout.editor.row-reverse": "Inverse ligne",
+    "flex.layout.editor.column-reverse": "Inverse Colonne",
+    "flex.layout.editor.nowrap": "Non-emball\xE9",
+    "flex.layout.editor.wrap": "Emball\xE9 (wrap)",
+    "flex.layout.editor.wrap-reverse": "Inverse emball\xE9",
+    "flex.layout.editor.flex-start": "D\xE9but",
+    "flex.layout.editor.flex-end": "Fin",
+    "flex.layout.editor.center": "Centrer",
+    "flex.layout.editor.space-between": "Entre",
+    "flex.layout.editor.space-around": "Autour",
+    "flex.layout.editor.baseline": "Base",
+    "flex.layout.editor.stretch": "Etirement",
+    "flex.layout.editor.direction": "Direction",
+    "flex.layout.editor.justify-content": "Justifier",
+    "flex.layout.editor.align-items": "Aligner objets",
+    "flex.layout.editor.align-content": "Aligner contenu",
+    "flex.layout.item.property.title": "D\xE9tail Disposition objet",
+    "flex.layout.item.property.grow": "Augmenter Flex",
+    "flex.layout.item.property.shrink": "R\xE9duire Flex",
+    "flex.layout.item.property.basis": "Base Flex",
+    "flex.layout.item.property.none": "Aucun",
+    "flex.layout.item.property.auto": "auto",
+    "flex.layout.item.property.value": "valeur",
+    "grid.layout.editor.template.columns": "Colonne",
+    "grid.layout.editor.column.gap": "Espace Colonne",
+    "grid.layout.editor.template.rows": "Lignes",
+    "grid.layout.editor.row.gap": "Espace lignes",
+    "grid.box.editor.box.title": "Bo\xEEte",
+    "grid.box.editor.type": "Type",
+    "grid.box.editor.repeat": "R\xE9p\xE9ter",
+    "grid.box.editor.length": "Longueur",
+    "grid.box.editor.none": "Aucun",
+    "grid.box.editor.auto": "Auto",
+    "grid.box.editor.count": "Compte",
+    "grid.box.editor.value": "Taille",
+    "grid.layout.item.property.title": "D\xE9tail disposition objets",
+    "grid.layout.item.property.column": "Colonne",
+    "grid.layout.item.property.row": "Ligne",
+    "grid.layout.item.property.start": "D\xE9but",
+    "grid.layout.item.property.end": "Fin",
+    "grid.layout.item.property.none": "Aucun",
+    "grid.layout.item.property.value": "valeur",
+    "box.model.property.title": "Mod\xE8le",
+    "box.model.property.margin": "Marge",
+    "box.model.property.padding": "Espace",
+    "component.items.canvas": "Toile",
+    "component.items.layer": "Objet",
+    "component.items.3dlayer": "Objet 3D",
+    "component.items.drawing": "Dessin",
+    "component.items.custom": "Composant personnalis\xE9",
+    "component.items.chart": "Chart",
+    "component.items.plugin": "Plugin",
+    "svg.text.property.title": "Style SVG Texte",
+    "svg.text.property.textarea": "Zone Texte",
+    "svg.text.property.size": "Taille",
+    "svg.text.property.weight": "Poids",
+    "svg.text.property.style": "Style",
+    "svg.text.property.anchor": "Ancre Texte",
+    "svg.text.property.family": "Famille",
+    "svg.text.property.length.adjust": "Ajusteement longueur",
+    "svg.text.property.text.length": "Ajusteement Texte",
+    "svg.text.property.start.offset": "D\xE9callage d\xE9part",
+    "fill.picker.popup.title": "S\xE9lection Fragment SVG",
+    "gradient.editor.drag.message": "Glisser pour d\xE9placer centre.",
+    "draw.manager.tolerance": "Tol\xE9rance",
+    "pattern.property.title": "Motif",
+    "pattern.info.popup.title": "Info Motif",
+    "pattern.info.popup.width": "Largeur",
+    "pattern.info.popup.height": "Hauteur",
+    "pattern.info.popup.lineWidth": "Largeur ligne",
+    "pattern.info.popup.lineHeight": "Hauteur de ligne",
+    "pattern.info.popup.rotate": "Rotatation",
+    "pattern.info.popup.blend": "M\xE9lange",
+    "pattern.info.popup.foreColor": "Avant",
+    "pattern.info.popup.backColor": "Arri\xE8re",
+    "stroke.dasharray.editor.add": "Ajout tiret",
+    "viewport.panning.enable": "You can move the area by holding down space and dragging the screen."
+  };
+  var ko_KR = {
+    "app.title": "elf",
+    "app.sample": (a, b, c) => {
+      return `${a}-${b}-${c}`;
+    },
+    "app.lang.en_US": "English",
+    "app.lang.ko_KR": "\uD55C\uAD6D\uC5B4",
+    "app.lang.fr_FR": "Fran\xE7ais",
+    "app.label.lang": "\uC5B8\uC5B4",
+    "app.layout.all": "\uB808\uC774\uC544\uC6C3",
+    "app.layout.css": "CSS \uBAA8\uB4DC",
+    "app.layout.svg": "SVG \uBAA8\uB4DC",
+    "app.label.layout": "\uBA54\uB274\uAD6C\uC131",
+    "app.theme.dark": "\uC5B4\uB450\uC6B4",
+    "app.theme.light": "\uBC1D\uC740",
+    "app.theme.toon": "\uADF8\uB9AC\uAE30",
+    "app.theme.gray": "\uD68C\uC0C9",
+    "app.label.theme": "\uD14C\uB9C8",
+    "app.tab.title.projects": "\uD504\uB85C\uC81D\uD2B8",
+    "app.tab.title.layers": "\uB808\uC774\uC5B4",
+    "app.tab.title.libraries": "\uB77C\uC774\uBE0C\uB7EC\uB9AC",
+    "app.tab.title.components": "\uCEF4\uD3EC\uB10C\uD2B8",
+    "app.tab.title.artboards": "\uC544\uD2B8\uBCF4\uB4DC",
+    "app.tab.title.assets": "\uC5D0\uC14B",
+    "app.tab.title.keyMap": "\uB2E8\uCD95\uD0A4",
+    "app.confirm.message.artboard.items.removeArtboard": "\uC544\uD2B8\uBCF4\uB4DC \uD504\uB9AC\uBDF0\uB97C \uC0AD\uC81C \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
+    "app.confirm.message.custom-component.items.removeCustomComponent": "\uCEF4\uD3EC\uB10C\uD2B8 \uD504\uB9AC\uBDF0\uB97C \uC0AD\uC81C \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
+    "menu.item.download.title": "\uB2E4\uC6B4\uB85C\uB4DC",
+    "menu.item.save.title": "\uC800\uC7A5",
+    "menu.item.export.title": "\uB0B4\uBCF4\uB0B4\uAE30",
+    "menu.item.fullscreen.title": "\uC804\uCCB4\uD654\uBA74",
+    "menu.item.shortcuts.title": "\uB2E8\uCD95\uD0A4",
+    "menu.item.github.title": "Github",
+    "menu.item.learn.title": "\uBC30\uC6B0\uAE30",
+    "menu.item.projects.title": "\uD504\uB85C\uC81D\uD2B8",
+    "project.property.title": "\uD504\uB85C\uC81D\uD2B8",
+    "project.information.property.title": "\uD504\uB85C\uC81D\uD2B8 \uC815\uBCF4",
+    "project.information.property.name": "\uC774\uB984",
+    "project.information.property.description": "\uC124\uBA85",
+    "artboard.property.title": "\uC544\uD2B8\uBCF4\uB4DC",
+    "artboard.property.layout.title.flex": "\uD50C\uB809\uC2A4",
+    "artboard.property.layout.title.grid": "\uADF8\uB9AC\uB4DC",
+    "layer.tree.property.title": "\uB808\uC774\uC5B4",
+    "layer.tree.property.layout.title.flex": "\uD50C\uB809\uC2A4",
+    "layer.tree.property.layout.title.grid": "\uADF8\uB9AC\uB4DC",
+    "alignment.property.title": "\uC815\uB82C",
+    "position.property.title": "\uC704\uCE58",
+    "position.property.X": "X",
+    "position.property.Y": "Y",
+    "size.property.title": "\uD06C\uAE30",
+    "position.property.width": "\uB113\uC774",
+    "position.property.height": "\uB192\uC774",
+    "position.property.rotate": "\uD68C\uC804",
+    "position.property.opacity": "\uD22C\uBA85",
+    "background.color.property.title": "\uD45C\uC2DC",
+    "background.color.property.color": "\uBC30\uACBD\uC0C9",
+    "background.color.property.zindex": "z-index",
+    "background.color.property.blend": "\uBE14\uB80C\uB4DC\uBAA8\uB4DC",
+    "background.color.property.overflow": "\uC624\uBC84\uD50C\uB85C\uC6B0",
+    "background.color.property.overflow.visible": "\uBCF4\uC774\uAE30",
+    "background.color.property.overflow.hidden": "\uC228\uAE30\uAE30",
+    "background.color.property.overflow.scroll": "\uC2A4\uD06C\uB864",
+    "background.color.property.overflow.auto": "\uC790\uB3D9",
+    "blend.normal": "Normal(\uD45C\uC900) \uD63C\uD569\uBAA8\uB4DC",
+    "blend.multiply": "Multiply(\uACF1\uD558\uAE30) \uBAA8\uB4DC",
+    "blend.screen": "Screen(\uC2A4\uD06C\uB9B0) \uBAA8\uB4DC ",
+    "blend.overlay": "Overlay(\uC624\uBC84\uB808\uC774) \uBAA8\uB4DC",
+    "blend.darken": "Darken(\uC5B4\uB461\uAE30) \uBAA8\uB4DC",
+    "blend.lighten": "Lighten(\uBC1D\uAE30) \uBAA8\uB4DC ",
+    "blend.color-dodge": "Color Dodge(\uCEEC\uB7EC \uB2F7\uC9C0) \uBAA8\uB4DC ",
+    "blend.color-burn": "Color Burn(\uCEEC\uB7EC \uBC88) \uBAA8\uB4DC ",
+    "blend.hard-light": "Hard Light(\uD558\uB4DC \uB77C\uC774\uD2B8) \uBAA8\uB4DC ",
+    "blend.soft-light": "Soft Light(\uC18C\uD504\uD2B8 \uB77C\uC774\uD2B8) \uBAA8\uB4DC ",
+    "blend.difference": "Difference(\uCC28\uC774) \uBAA8\uB4DC",
+    "blend.exclusion": "Exclusion(\uC81C\uC678) \uBAA8\uB4DC",
+    "blend.hue": "Hue(\uC0C9\uC870) \uBAA8\uB4DC ",
+    "blend.saturation": "Saturation(\uCC44\uB3C4) \uBAA8\uB4DC",
+    "blend.color": "Color(\uC0C9\uC0C1) \uBAA8\uB4DC",
+    "blend.luminosity": "Luminosity(\uAD11\uB3C4) \uBAA8\uB4DC ",
+    "background.image.property.title": "\uCC44\uC6B0\uAE30",
+    "border.property.title": "\uC678\uACFD\uC120",
+    "border.radius.property.title": "\uB465\uADFC \uC678\uACFD\uC120",
+    "boxshadow.property.title": "\uADF8\uB9BC\uC790",
+    "filter.property.title": "\uD544\uD130",
+    "filter.property.blur": "\uD750\uB9BC(Blur)",
+    "filter.property.grayscale": "\uD68C\uC0C9(GrayScale)",
+    "filter.property.hue-rotate": "\uC0C9\uC870(HueRotate)",
+    "filter.property.invert": "\uBC18\uC804(Invert)",
+    "filter.property.brightness": "\uBC1D\uAE30(Brightness)",
+    "filter.property.contrast": "\uB300\b\uC870(Contrast)",
+    "filter.property.drop-shadow": "\uADF8\uB9BC\uC790(Drop Shadow)",
+    "filter.property.drop-shadow.color": "\uC0C9",
+    "filter.property.drop-shadow.offsetX": "X",
+    "filter.property.drop-shadow.offsetY": "Y",
+    "filter.property.drop-shadow.blurRadius": "\uD750\uB9BC",
+    "filter.property.opacity": "\uD22C\uBA85\uB3C4(Opacity)",
+    "filter.property.saturate": "\uCC44\uB3C4(Saturate)",
+    "filter.property.sepia": "\uAC08\uC0C9\uD1A4(Sepia)",
+    "filter.property.svg": "SVG",
+    "font.property.title": "\uD3F0\uD2B8",
+    "font.property.color": "\uC0C9",
+    "font.property.size": "\uD06C\uAE30",
+    "font.property.stretch": "\uBED7\uAE30",
+    "font.property.weight": "\uAD75\uAE30",
+    "font.property.style": "\uC2A4\uD0C0\uC77C",
+    "font.property.family": "\uAE00\uAF34",
+    "font.spacing.property.title": "\uD3F0\uD2B8 \uACF5\uAC04",
+    "font.spacing.property.lineHeight": "\uC904 \uB192\uC774",
+    "font.spacing.property.letterSpacing": "\uAE00\uC790 \uAC04\uACA9",
+    "font.spacing.property.wordSpacing": "\uB2E8\uC5B4 \uAC04\uACA9",
+    "font.spacing.property.indent": "\uB4E4\uC5EC\uC4F0\uAE30",
+    "backdrop.filter.property.title": "\uD6C4\uBA74 \uD544\uD130",
+    "clippath.property.title": "\uD074\uB9BD\uD328\uC2A4",
+    "export.property.title": "\uB0B4\uBCF4\uB0B4\uAE30",
+    "export.property.download": "\uB2E4\uC6B4\uB85C\uB4DC",
+    "iframe.property.title": "\uC544\uC774\uD504\uB808\uC784",
+    "image.property.title": "\uC774\uBBF8\uC9C0",
+    "image.property.origin": "\uC6D0\uBCF8",
+    "image.property.size": "\uD06C\uAE30",
+    "image.property.width": "\uB113\uC774",
+    "image.property.height": "\uB192\uC774",
+    "video.property.title": "\uBE44\uB514\uC624",
+    "video.property.play": "\uC2DC\uC791",
+    "video.property.pause": "\uBA48\uCDA4",
+    "video.property.volume": "\uBCFC\uB968",
+    "video.property.playbackRate": "\uBE60\uB974\uAE30",
+    "video.property.currentTime": "\uD604\uC7AC \uC2DC\uAC04",
+    "video.property.playTime": "\uD50C\uB808\uC774 \uC2DC\uAC04 \uAC04\uACA9",
+    "motion.property.title": "\uBAA8\uC158",
+    "path.data.property.title": "\uD328\uC2A4 \uC815\uBCF4",
+    "polygon.data.property.title": "\uD3F4\uB9AC\uACE4 \uC815\uBCF4",
+    "text.property.title": "\uD14D\uC2A4\uD2B8 \uC2A4\uD0C0\uC77C",
+    "text.property.align": "\uC815\uB82C",
+    "text.property.transform": "\uBCC0\uD615",
+    "text.property.decoration": "\uC7A5\uC2DD",
+    "text.clip.property.title": "\uD14D\uC2A4\uD2B8 \uD074\uB9BD",
+    "text.shadow.property.title": "\uD14D\uC2A4\uD2B8 \uADF8\uB9BC\uC790",
+    "text.fill.property.title": "\uD14D\uC2A4\uD2B8 \uCC44\uC6B0\uAE30",
+    "text.fill.property.fill": "\uCC44\uC6B0\uAE30",
+    "text.fill.property.stroke": "\uC724\uACFD\uC120",
+    "text.fill.property.strokeWidth": "\uC724\uACFD\uC120 \uAD75\uAE30",
+    "transform.property.title": "\uD2B8\uB79C\uC2A4\uD3FC",
+    "transform.origin.property.title": "\uD2B8\uB79C\uC2A4\uD3FC Origin",
+    "transition.property.title": "CSS \uD2B8\uB79C\uC9C0\uC158",
+    "keyframe.property.title": "CSS \uD0A4\uD504\uB808\uC784",
+    "selector.property.title": "CSS \uC140\uB809\uD130",
+    "selector.property.none": "\uC120\uD0DD\uC790 \uC5C6\uC74C",
+    "perspective.property.title": "\uD22C\uC601(perspective)",
+    "perspective.origin.property.title": "\uD22C\uC601 \uC911\uC2EC\uC810",
+    "svg.item.property.title": "\uBCF4\uC774\uAE30",
+    "svg.item.property.isMotionPath": "\uBAA8\uC158 \uD328\uC2A4",
+    "svg.item.property.fill": "\uCC44\uC6B0\uAE30",
+    "svg.item.property.fillOpacity": "\uD22C\uBA85\uB3C4",
+    "svg.item.property.path": "\uD328\uC2A4",
+    "svg.item.property.polygon": "\uD3F4\uB9AC\uACE4",
+    "svg.item.property.totalLength": "\uC804\uCCB4 \uAE38\uC774",
+    "svg.item.property.fillRule": "\uCC44\uC6B0\uAE30 \uADDC\uCE59",
+    "svg.item.property.stroke": "\uC120",
+    "svg.item.property.strokeWidth": "\uC120 \uAD75\uAE30",
+    "svg.item.property.dashArray": "\uC810\uC120 \uAE38\uC774",
+    "svg.item.property.dashOffset": "\uC810\uC120 \uC704\uCE58",
+    "svg.item.property.lineCap": "\uC120 \uBAA8\uC591",
+    "svg.item.property.lineJoin": "\uACB9\uCE5C \uC120",
+    "svg.item.property.filter": "\uD544\uD130",
+    "svg.item.property.blend": "\uBE14\uB80C\uB4DC",
+    "border.editor.all": "\uC804\uCCB4",
+    "border.editor.width": "\uD06C\uAE30",
+    "border.editor.style": "\uC2A4\uD0C0\uC77C",
+    "border.editor.color": "\uC0C9",
+    "border.editor.top": "\uC704",
+    "border.editor.left": "\uC67C\uCABD",
+    "border.editor.right": "\uC624\uB978\uCABD",
+    "border.editor.bottom": "\uC544\uB798",
+    "border.radius.editor.topLeft": "\uC67C\uCABD \uC704",
+    "border.radius.editor.topRight": "\uC624\uB978\uCABD \uC704",
+    "border.radius.editor.bottomLeft": "\uC67C\uCABD \uC544\uB798",
+    "border.radius.editor.bottomRight": "\uC624\uB978\uCABD \uC544\uB798",
+    "boxshadow.editor.blur": "\uD750\uB9BC",
+    "boxshadow.editor.spread": "\uAE38\uC774",
+    "css.property.editor.properties": "\uC18D\uC131",
+    "offset.path.list.editor.path": "\uD328\uC2A4",
+    "offset.path.list.editor.totalLength": "\uC804\uCCB4 \uAE38\uC774",
+    "offset.path.list.editor.distance": "\uAC70\uB9AC",
+    "offset.path.list.editor.direction": "\uBC29\uD5A5",
+    "offset.path.list.editor.rotate": "\uD68C\uC804",
+    "svgfilter.select.editor.message.create": "\uC0C8\uB85C\uC6B4 SVG Filter \uB97C \uB9CC\uB4DC\uC138\uC694.",
+    "svgfilter.select.editor.message.select": "\uD544\uD130\uB97C \uC120\uD0DD\uD558\uC138\uC694.",
+    "fill.editor.message.click.image": "\uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD558\uACE0 \uC2F6\uC73C\uBA74 \uD504\uB9AC\uBDF0 \uC601\uC5ED\uC744 \uD074\uB9AD\uD558\uC138\uC694.",
+    "fill.editor.message.drag.position": "\uAC00\uC6B4\uB370 \uC704\uCE58\uB97C \uB4DC\uB798\uADF8 \uD574\uBCF4\uC138\uC694.",
+    "fill.editor.x1": "\uC2DC\uC791 X",
+    "fill.editor.x2": "\uB05D X",
+    "fill.editor.y1": "\uC2DC\uC791 Y",
+    "fill.editor.y2": "\uB05D Y",
+    "fill.editor.spread": "\uD655\uC0B0",
+    "fill.editor.offset": "\uC704\uCE58",
+    "fill.editor.cx": "\uC911\uC2EC\uC810 X",
+    "fill.editor.cy": "\uC911\uC2EC\uC810 Y",
+    "fill.editor.r": "\uB05D \uBC18\uC9C0\uB984",
+    "fill.editor.fx": "\uC2DC\uC791 X",
+    "fill.editor.fy": "\uC2DC\uC791 Y",
+    "fill.editor.fr": "\uC2DC\uC791 \uBC18\uC9C0\uB984",
+    "perspective.origin.editor.originX": "\uC911\uC2EC\uC810 X",
+    "perspective.origin.editor.originY": "\uC911\uC2EC\uC810 Y",
+    "path.manager.msg": "\uD3B8\uC9D1\uC744 \uC885\uB8CC\uD560 \uB54C\uB294 ESC \uD0A4\uB098 Enter \uD0A4\uB97C \uB204\uB974\uC138\uC694. \uB610\uB294 \uD654\uBA74\uC744 \uD074\uB9AD\uD558\uC2DC\uBA74 \uB429\uB2C8\uB2E4.",
+    "path.manager.mode.done": "\uC644\uB8CC",
+    "path.manager.mode.modify": "\uC810 \uD3B8\uC9D1",
+    "path.manager.mode.path": "\uC810 \uCD94\uAC00",
+    "path.manager.mode.warp": "\uC6CC\uD504",
+    "path.manager.mode.transform": "\uBCC0\uD615",
+    "path.manager.mode.reverse": "\uC21C\uC11C\uBCC0\uACBD",
+    "path.manager.mode.flipX": "X\uCD95 \uD68C\uC804",
+    "path.manager.mode.flipY": "Y\uCD95 \uD68C\uC804",
+    "path.manager.mode.flipOrigin": "\uC804\uCCB4 \uD68C\uC804",
+    "colorpicker.popup.title": "\uC0C9\uC0C1 \uC120\uD0DD",
+    "selector.popup.title": "\uC120\uD0DD\uC790 \uC18D\uC131",
+    "selector.popup.selector": "\uC120\uD0DD\uC790",
+    "background.image.position.popup.title": "\uBC30\uACBD \uD328\uD134",
+    "background.image.position.popup.size": "\uD06C\uAE30",
+    "background.image.position.popup.width": "\uB113\uC774",
+    "background.image.position.popup.height": "\uB192\uC774",
+    "background.image.position.popup.repeat": "\uBC18\uBCF5",
+    "background.image.position.popup.blend": "\uBE14\uB80C\uB4DC",
+    "background.image.position.popup.type.repeat": "\uBC18\uBCF5",
+    "background.image.position.popup.type.no-repeat": "\uBC18\uBCF5 \uC548\uD568",
+    "background.image.position.popup.type.repeat-x": "x\uCD95 \uBC18\uBCF5",
+    "background.image.position.popup.type.repeat-y": "y\uCD95 \uBC18\uBCF5",
+    "background.image.position.popup.type.space": "\uACF5\uBC31\uC720\uC9C0",
+    "background.image.position.popup.type.round": "\uBC18\uC62C\uB9BC",
+    "gradient.picker.popup.title": "\uADF8\uB77C\uB514\uC5B8\uD2B8\uC640 \uC774\uBBF8\uC9C0",
+    "image.asset.property.title": "\uC774\uBBF8\uC9C0",
+    "video.asset.property.title": "\uBE44\uB514\uC624",
+    "color.asset.property.title": "\uC0C9",
+    "gradient.asset.property.title": "\uADF8\uB77C\uB514\uC5B8\uD2B8",
+    "pattern.asset.property.title": "\uD328\uD134",
+    "svgfilter.asset.property.title": "SVG \uD544\uD130",
+    "inspector.tab.title.design": "\uB514\uC790\uC778",
+    "inspector.tab.title.component": "\uCEF4\uD3EC\uB10C\uD2B8 \uC18D\uC131",
+    "inspector.tab.title.transition": "\uC560\uB2C8\uBA54\uC774\uC158",
+    "inspector.tab.title.asset": "\uC5D0\uC14B \uAD00\uB9AC\uC790",
+    "inspector.tab.title.text": "\uD14D\uC2A4\uD2B8",
+    "inspector.tab.title.code": "\uCF54\uB4DC",
+    "inspector.tab.title.history": "\uAE30\uB85D",
+    "timeline.property.title": "\uD0C0\uC784\uB77C\uC778",
+    "timeline.property.resize": "\uD0C0\uC784\uB77C\uC778 \uB192\uC774\uB97C \uBCC0\uACBD\uD569\uB2C8\uB2E4. \uB4DC\uB798\uADF8 \uD574\uC8FC\uC138\uC694.",
+    "timeline.animation.property.title": "\uC560\uB2C8\uBA54\uC774\uC158",
+    "timeline.play.control.play": "\uD50C\uB808\uC774",
+    "timeline.play.control.pause": "\uBA48\uCDA4",
+    "timeline.play.control.first": "\uCC98\uC74C\uC73C\uB85C",
+    "timeline.play.control.prev": "\uC774\uC804\uC73C\uB85C",
+    "timeline.play.control.next": "\uB2E4\uC74C\uC73C\uB85C",
+    "timeline.play.control.last": "\uB9C8\uC9C0\uB9C9\uC73C\uB85C",
+    "timeline.play.control.direction": "\uBC29\uD5A5",
+    "timeline.play.control.speed": "\uC18D\uB825",
+    "timeline.play.control.repeat": "\uBC18\uBCF5",
+    "timeline.play.control.infinite": "\uBB34\uD55C",
+    "timeline.play.control.normal": "normal",
+    "timeline.play.control.alternate": "alternate",
+    "timeline.play.control.reverse": "reverse",
+    "timeline.play.control.alternate.reverse": "alternate reverse",
+    "timeline.value.editor.value": "\uAC12",
+    "timeline.value.editor.time": "\uC2DC\uAC04",
+    "timeline.value.editor.timing": "\uD0C0\uC774\uBC0D \uD568\uC218",
+    "timeline.value.editor.offset.message": "Enter\uD0A4\uB97C \uC785\uB825\uD558\uBA74 \uC801\uC6A9\uB429\uB2C8\uB2E4.",
+    "svgfilter.popup.title": "SVG \uD544\uD130",
+    "css.item.rotate": "\uD68C\uC804",
+    "css.item.rotateX": "X\uCD95 \uD68C\uC804",
+    "css.item.rotateY": "Y\uCD95 \uD68C\uC804",
+    "css.item.rotateZ": "Z\uCD95 \uD68C\uC804",
+    "css.item.rotate3d": "3D \uD68C\uC804",
+    "css.item.skewX": "X\uCD95 \uB298\uC774\uAE30",
+    "css.item.skewY": "Y\uCD95 \uB298\uC774\uAE30",
+    "css.item.translate": "\uC774\uB3D9",
+    "css.item.translateX": "X\uCD95 \uC774\uB3D9",
+    "css.item.translateY": "Y\uCD95 \uC774\uB3D9",
+    "css.item.translateZ": "Z\uCD95 \uC774\uB3D9",
+    "css.item.translate3d": "3D \uC774\uB3D9",
+    "css.item.perspective": "\uC6D0\uADFC",
+    "css.item.scale": "\uD06C\uAE30\uBCC0\uACBD",
+    "css.item.scaleX": "X\uCD95 \uD06C\uAE30\uBCC0\uACBD",
+    "css.item.scaleY": "Y\uCD95 \uD06C\uAE30\uBCC0\uACBD",
+    "css.item.scaleZ": "Z\uCD95 \uD06C\uAE30\uBCC0\uACBD",
+    "css.item.scale3d": "3D \uD06C\uAE30\uBCC0\uACBD",
+    "css.item.matrix": "\uBCC0\uD658 \uD589\uB82C",
+    "css.item.matrix3d": "3D \uBCC0\uD658 \uD589\uB82C",
+    "animation.property.title": "CSS \uC560\uB2C8\uBA54\uC774\uC158",
+    "animation.property.direction": "\uBC29\uD5A5",
+    "animation.property.play.state": "\uD50C\uB808\uC774 \uC0C1\uD0DC",
+    "animation.property.fill.mode": "\uCC44\uC6B0\uAE30 \uBAA8\uB4DC",
+    "animation.property.delay": "\uB300\uAE30\uC2DC\uAC04",
+    "animation.property.duration": "\uC2DC\uAC04",
+    "animation.property.iteration.count": "\uBC18\uBCF5 \uD69F\uC218",
+    "animation.property.select a keyframe": "\uD0A4\uD504\uB808\uC784\uC744 \uC120\uD0DD\uD574\uC8FC\uC138\uC694",
+    "animation.property.popup.title": "CSS \uC560\uB2C8\uBA54\uC774\uC158",
+    "animation.property.popup.timing.function": "\uD0C0\uC774\uBC0D \uD568\uC218",
+    "animation.property.popup.keyframe": "\uD0A4\uD504\uB808\uC784",
+    "animation.property.popup.direction": "\uBC29\uD5A5",
+    "animation.property.popup.play.state": "\uD50C\uB808\uC774 \uC0C1\uD0DC",
+    "animation.property.popup.fill.mode": "\uCC44\uC6B0\uAE30 \uBAA8\uB4DC",
+    "animation.property.popup.delay": "\uB300\uAE30\uC2DC\uAC04",
+    "animation.property.popup.duration": "\uC2DC\uAC04",
+    "animation.property.popup.iteration": "\uBC18\uBCF5 \uD69F\uC218",
+    "animation.property.popup.normal": "\uC2DC\uAC04\uC21C",
+    "animation.property.popup.reverse": "\uC5ED\uC2DC\uAC04\uC21C",
+    "animation.property.popup.alternate": "\uC655\uBCF5 \uC2DC\uAC04\uC21C",
+    "animation.property.popup.alternate-reverse": "\uC655\uBCF5 \uC5ED\uC2DC\uAC04\uC21C",
+    "animation.property.popup.none": "none",
+    "animation.property.popup.forwards": "forwards",
+    "animation.property.popup.backwards": "backwards",
+    "animation.property.popup.both": "both",
+    "animation.property.popup.Select a keyframe": "\uD0A4\uD504\uB808\uC784\uC744 \uC120\uD0DD\uD574\uC8FC\uC138\uC694.",
+    "keyframe.popup.title": "\uD0A4\uD504\uB808\uC784",
+    "code.view.property.title": "\uCF54\uB4DC\uBDF0",
+    "svg.filter.editor.tab.filter": "\uD544\uD130",
+    "svg.filter.editor.tab.preset": "\uD504\uB9AC\uC14B",
+    "svg.filter.editor.tab.asset": "\uC5D0\uC14B",
+    "svg.filter.editor.GRAPHIC REFERENCES": "\uCC38\uC870 \uADF8\uB798\uD53D",
+    "svg.filter.editor.SOURCES": "\uC6D0\uBCF8",
+    "svg.filter.editor.MODIFIER": "\uC218\uC815",
+    "svg.filter.editor.LIGHTING": "\uBE5B",
+    "svg.filter.editor.COMBINERS": "\uACB0\uD569",
+    "svg.filter.editor.Template": "\uD15C\uD50C\uB9BF",
+    "layout.property.title": "\uB808\uC774\uC544\uC6C3",
+    "layout.property.flex": "\uD50C\uB809\uC2A4 \uBC15\uC2A4",
+    "layout.property.grid": "\uADF8\uB9AC\uB4DC",
+    "layout.property.default": "\uAE30\uBCF8 \uC88C\uD45C",
+    "layout.property.resizing.title": "\uC0AC\uC774\uC988 \uC870\uC808",
+    "layout.property.resizing.self.title": "\uC544\uC774\uD15C \uC0AC\uC774\uC988 \uC870\uC808",
+    "default.layout.item.property.title.constraints": "Constraints",
+    "flex.layout.editor.row": "\uD589",
+    "flex.layout.editor.column": "\uC5F4",
+    "flex.layout.editor.row-reverse": "\uC5ED\uBC29\uD5A5 \uD589",
+    "flex.layout.editor.column-reverse": "\uC5ED\uBC29\uD5A5 \uC5F4",
+    "flex.layout.editor.nowrap": "\uAC10\uC2F8\uC9C0 \uC54A\uAE30",
+    "flex.layout.editor.wrap": "\uAC10\uC2F8\uAE30",
+    "flex.layout.editor.wrap-reverse": "\uC5ED\uBC29\uD5A5 \uAC10\uC2F8\uAE30",
+    "flex.layout.editor.flex-start": "\uC2DC\uC791",
+    "flex.layout.editor.flex-end": "\uB05D",
+    "flex.layout.editor.center": "\uC911\uAC04",
+    "flex.layout.editor.space-between": "\uACF5\uAC04 \uC911\uAC04 \uCC44\uC6C0",
+    "flex.layout.editor.space-around": "\uACF5\uAC04 \uC591\uB05D \uCC44\uC6C0",
+    "flex.layout.editor.baseline": "\uAE30\uBCF8\uC120",
+    "flex.layout.editor.stretch": "\uD3BC\uCE58\uAE30",
+    "flex.layout.editor.direction": "\uBC29\uD5A5",
+    "flex.layout.editor.justify-content": "\uCEE8\uD150\uCE20 \uC870\uC815",
+    "flex.layout.editor.align-items": "\uC544\uC774\uD15C \uC815\uB82C",
+    "flex.layout.editor.align-content": "\uCEE8\uD150\uCE20 \uC815\uB82C",
+    "flex.layout.item.property.title": "\uD50C\uB809\uC2A4 \uC544\uC774\uD15C \uC124\uC815",
+    "flex.layout.item.property.grow": "\uACF5\uAC04 \uBE44\uC728",
+    "flex.layout.item.property.shrink": "\uCD95\uC18C \uBE44\uC728",
+    "flex.layout.item.property.basis": "\uCD08\uAE30 \uD06C\uAE30",
+    "flex.layout.item.property.none": "\uC5C6\uC74C",
+    "flex.layout.item.property.auto": "\uC790\uB3D9",
+    "flex.layout.item.property.value": "\uAC12",
+    "grid.layout.editor.template.columns": "\uC5F4",
+    "grid.layout.editor.column.gap": "\uC5F4 \uAC04\uACA9",
+    "grid.layout.editor.template.rows": "\uD589",
+    "grid.layout.editor.row.gap": "\uD589 \uAC04\uACA9",
+    "grid.box.editor.box.title": "\uC601\uC5ED",
+    "grid.box.editor.type": "\uD0C0\uC785",
+    "grid.box.editor.repeat": "\uBC18\uBCF5",
+    "grid.box.editor.length": "\uAE38\uC774",
+    "grid.box.editor.none": "\uC5C6\uC74C",
+    "grid.box.editor.auto": "\uC790\uB3D9",
+    "grid.box.editor.count": "\uAC1C\uC218",
+    "grid.box.editor.value": "\uD06C\uAE30",
+    "grid.layout.item.property.title": "\uADF8\uB9AC\uB4DC \uC544\uC774\uD15C \uC124\uC815",
+    "grid.layout.item.property.column": "\uC5F4",
+    "grid.layout.item.property.row": "\uD589",
+    "grid.layout.item.property.start": "\uC2DC\uC791",
+    "grid.layout.item.property.End": "\uB05D",
+    "grid.layout.item.property.none": "\uC5C6\uC74C",
+    "grid.layout.item.property.value": "\uAC12",
+    "box.model.property.title": "\uBC15\uC2A4 \uBAA8\uB378",
+    "box.model.property.margin": "\uB9C8\uC9C4",
+    "box.model.property.padding": "\uD328\uB529",
+    "component.items.canvas": "\uCE94\uBC84\uC2A4",
+    "component.items.layer": "\uB808\uC774\uC5B4",
+    "component.items.3dlayer": "3D \uB808\uC774\uC5B4",
+    "component.items.drawing": "\uADF8\uB9AC\uAE30",
+    "component.items.custom": "\uC0AC\uC6A9\uC790 \uC815\uC758 \uCEF4\uD3EC\uB10C\uD2B8",
+    "component.items.chart": "\uCC28\uD2B8",
+    "component.items.plugin": "\uD50C\uB7EC\uADF8\uC778",
+    "svg.text.property.title": "SVG Text \uC2A4\uD0C0\uC77C",
+    "svg.text.property.textarea": "\uD14D\uC2A4\uD2B8 \uC785\uB825",
+    "svg.text.property.size": "\uD3F0\uD2B8 \uD06C\uAE30",
+    "svg.text.property.weight": "\uD3F0\uD2B8 \uAD75\uAE30",
+    "svg.text.property.style": "\uD3F0\uD2B8 \uC2A4\uD0C0\uC77C",
+    "svg.text.property.anchor": "\uD14D\uC2A4\uD2B8 \uC704\uCE58",
+    "svg.text.property.family": "\uD3F0\uD2B8 \uAE00\uAF34",
+    "svg.text.property.length.adjust": "\uAE38\uC774 \uB300\uC751",
+    "svg.text.property.text.length": "\uD14D\uC2A4\uD2B8 \uAE38\uC774",
+    "svg.text.property.start.offset": "\uC2DC\uC791 \uC9C0\uC810",
+    "fill.picker.popup.title": "\uC0C9 \uCC44\uC6B0\uAE30",
+    "gradient.editor.drag.message": "\uB4DC\uB798\uADF8 \uD558\uBA74 \uC911\uC2EC\uC810\uC744 \uC62E\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
+    "draw.manager.tolerance": "\uD3EC\uC778\uD2B8 \uD5C8\uC6A9 \uC624\uCC28",
+    "pattern.property.title": "\uD328\uD134",
+    "pattern.info.popup.title": "\uD328\uD134 \uC815\uBCF4",
+    "pattern.info.popup.width": "\uB113\uC774",
+    "pattern.info.popup.height": "\uB192\uC774",
+    "pattern.info.popup.lineWidth": "\uC120 \uB113\uC774",
+    "pattern.info.popup.lineHeight": "\uC120 \uB192\uC774",
+    "pattern.info.popup.rotate": "\uD68C\uC804",
+    "pattern.info.popup.blend": "\uBE14\uB80C\uB4DC",
+    "pattern.info.popup.foreColor": "\uD328\uD134\uC0C9",
+    "pattern.info.popup.backColor": "\uBC30\uACBD\uC0C9",
+    "stroke.dasharray.editor.add": "\uC810 \uCD94\uAC00",
+    "viewport.panning.enable": "space \uB97C \uB204\uB978\uCC44 \uD654\uBA74\uC744 \uB4DC\uB798\uADF8 \uD558\uBA74 \uC601\uC5ED\uC744 \uC6C0\uC9C1\uC77C \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  };
+  var locales = {
+    en_US,
+    fr_FR,
+    ko_KR
+  };
+  function defaultMessages(editor2) {
+    Object.keys(locales).forEach(function(locale) {
+      editor2.registerI18nMessage(locale, locales[locale]);
+    });
+  }
   var texture = `
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
     <path d="M19.51 3.08L3.08 19.51c.09.34.27.65.51.9.25.24.56.42.9.51L20.93 4.49c-.19-.69-.73-1.23-1.42-1.41zM11.88 3L3 11.88v2.83L14.71 3h-2.83zM5 3c-1.1 0-2 .9-2 2v2l4-4H5zm14 18c.55 0 1.05-.22 1.41-.59.37-.36.59-.86.59-1.41v-2l-4 4h2zm-9.71 0h2.83L21 12.12V9.29L9.29 21z"/>
 </svg>
 `;
-  var TextureView$1 = "";
+  var TextureView$1 = /* @__PURE__ */ (() => ".elf--texture .pattern-list{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:1fr 1fr 1fr;padding:10px;row-gap:10px}.elf--texture .pattern-list .pattern-item{cursor:pointer;text-align:center}.elf--texture .pattern-list .pattern-item.selected .preview{background-color:var(--elf--selected-background-color)}.elf--texture .pattern-list .pattern-item:hover .preview{background-color:var(--elf--selected-color)}.elf--texture .pattern-list .pattern-item .preview{background-color:hsla(0,0%,93%,.125);border-radius:4px;box-sizing:border-box;height:80px;padding:5px;pointer-events:none;width:80px}.elf--texture .pattern-list .pattern-item .preview svg{height:100%;width:100%}")();
   const cssPatterns = [
     {
       itemType: "circle",
@@ -24810,7 +26230,7 @@ ${tabString}${it.properties.map((p) => {
       TextureView
     });
   }
-  var DepthProperty$1 = "";
+  var DepthProperty$1 = /* @__PURE__ */ (() => ".elf--depth-item{grid-column-gap:2px;display:grid;grid-template-columns:repeat(4,1fr);height:auto;justify-items:center;padding-bottom:8px;padding-top:8px;text-align:center}.elf--depth-item button{background-color:transparent;background-image:none;border:0;box-shadow:none;height:100%;margin-bottom:10px;text-align:center;width:100%}.elf--depth-item button>*{display:inline-block}.elf--depth-item button .title{color:var(--elf--font-color);font-size:11px;margin-top:5px}.elf--depth-item button[data-no-title=true] .title{display:none}.elf--depth-item .title{color:#999}.elf--depth-item .icon{color:var(--elf--selected-color)!important;display:block;height:24px;margin:0 auto;width:24px}.elf--depth-item .icon svg{height:100%!important;width:100%!important}.elf--depth-item .icon svg .target{stroke:var(--elf--selected-color);stroke-width:1;fill:#fff}")();
   class OrderDown extends MenuItem {
     getIconString() {
       return "to_back";
@@ -24886,7 +26306,7 @@ ${tabString}${it.properties.map((p) => {
       DepthProperty
     });
   }
-  var ExportProperty$1 = "";
+  var ExportProperty$1 = /* @__PURE__ */ (() => ".elf--export-property .export-item{grid-column-gap:2px;display:grid;grid-template-columns:60px 1fr;padding:10px 6px}.elf--export-property .export-item label{vertical-align:middle}.elf--export-property .export-item button{background-color:transparent;background-image:none;border:0;box-shadow:none;text-align:left;vertical-align:middle;width:100%}.elf--export-property .export-item button svg{vertical-align:middle;width:16px}")();
   class ExportProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("export.property.title");
@@ -24921,7 +26341,7 @@ ${tabString}${it.properties.map((p) => {
       ExportProperty
     });
   }
-  var FillEditorView$1 = "";
+  var FillEditorView$1 = /* @__PURE__ */ (() => ".elf--fill-editor-view{bottom:0;display:none;left:0;position:absolute;right:0;top:0}.elf--fill-editor-view.dragging .area-line{pointer-events:none!important}.elf--fill-editor-view .gradient-editor-area{bottom:0;filter:drop-shadow(0 0 2px rgb(43,43,43));left:0;overflow:visible;pointer-events:none;position:absolute;right:0;top:0}.elf--fill-editor-view .gradient-editor-area path{fill:transparent;pointer-events:stroke}.elf--fill-editor-view .gradient-editor-area path.area-line{stroke-width:18;stroke:transparent;fill:transparent!important;pointer-events:stroke}.elf--fill-editor-view .gradient-editor-area path.start-end-line{stroke:#fff;pointer-events:none}.elf--fill-editor-view .gradient-editor-area path.normal-line{stroke:var(--elf--selected-color-2);pointer-events:none}.elf--fill-editor-view .gradient-editor-area path.timing{stroke:#fff;stroke-width:1;filter:drop-shadow(0 0 1px rgb(0,0,0));outline:none;pointer-events:none}.elf--fill-editor-view .gradient-editor-area path.step-point{stroke:#fff;stroke-width:1;outline:none}.elf--fill-editor-view .gradient-editor-area path.timing-path{stroke:hsla(0,0%,100%,.5);stroke-width:2;outline:none;pointer-events:none}.elf--fill-editor-view .gradient-editor-area rect{pointer-events:all}.elf--fill-editor-view .gradient-editor-area rect.colorstep{stroke:#fff;stroke-width:1;outline:none}.elf--fill-editor-view .gradient-editor-area circle{stroke-width:2;pointer-events:all}.elf--fill-editor-view .gradient-editor-area circle:hover{cursor:-webkit-grab;cursor:grab}.elf--fill-editor-view .gradient-editor-area circle.moved{cursor:-webkit-grabbing;cursor:grabbing}.elf--fill-editor-view .gradient-editor-area circle.colorstep{stroke-width:1;stroke:#fff;r:7}.elf--fill-editor-view .gradient-editor-area circle:not(.colorstep):not(.hover-colorstep){fill:#fff}.elf--fill-editor-view .gradient-editor-area circle.size{fill:transparent!important;stroke:#fff;stroke-width:1;filter:none;pointer-events:none}.elf--fill-editor-view .gradient-editor-area circle.point{fill:#fff;r:5}.elf--fill-editor-view .gradient-editor-area circle.point[data-type=start]{fill:var(--elf--selected-color)!important}.elf--fill-editor-view .gradient-editor-area circle.hover-colorstep{r:8;stroke:#fff;stroke-width:1;pointer-events:none}")();
   const spreadMethodList = [
     SpreadMethodType.PAD,
     SpreadMethodType.REFLECT,
@@ -25723,7 +27143,7 @@ ${tabString}${it.properties.map((p) => {
       FillEditorView
     });
   }
-  var FilterProperty$1 = "";
+  var FilterProperty$1 = /* @__PURE__ */ (() => ".filter-select{border:0;font-size:11px;vertical-align:middle}")();
   const filter_list$1 = [
     "blur",
     "grayscale",
@@ -25983,7 +27403,7 @@ ${tabString}${it.properties.map((p) => {
       ];
     });
   }
-  var FillEditor$1 = "";
+  var FillEditor$1 = /* @__PURE__ */ (() => '.elf--fill-editor{box-sizing:border-box;padding:0 4px;position:relative}.elf--fill-editor .tools{padding:4px 0}.elf--fill-editor [data-editor]{display:none}.elf--fill-editor:not([data-selected-editor*=image-resource]) [data-editor=gradient],.elf--fill-editor:not([data-selected-editor*=static-gradient]) [data-editor=gradient]{display:block}.elf--fill-editor:not([data-selected-editor*=image-resource]) [data-editor=tools],.elf--fill-editor:not([data-selected-editor*=static-gradient]) [data-editor=tools]{display:grid}.elf--fill-editor[data-selected-editor=static-gradient]{display:none}.elf--fill-editor[data-selected-editor=image-resource] [data-editor=imageHeight],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=imageWidth],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=imageX],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=imageY],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=patternHeight],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=patternUnits],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=patternWidth]{display:block}.elf--fill-editor[data-selected-editor=image-resource] .preset-position,.elf--fill-editor[data-selected-editor=image-resource] [data-editor=gradient],.elf--fill-editor[data-selected-editor=image-resource] [data-editor=tools]{display:none}.elf--fill-editor .sub-editor{padding:0}.elf--fill-editor .gradient-steps{height:24px;margin-top:30px;position:relative}.elf--fill-editor .hue,.elf--fill-editor .hue-container{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;box-shadow:0 0 0 1px var(--elf--border-color);height:14px;left:0;pointer-events:all;position:absolute;right:0;top:4px}.elf--fill-editor .hue{pointer-events:none}.elf--fill-editor .hue .step-list{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf--fill-editor .hue .step-list .step{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;border:2px solid var(--elf--border-color);display:inline-block;height:24px;pointer-events:all;position:absolute;top:calc(-100% - 2px);transform:translateX(-50%) translateY(-50%);width:24px}.elf--fill-editor .hue .step-list .step.selected{border-color:var(--elf--selected-color-2);z-index:1}.elf--fill-editor .hue .step-list .step.selected .arrow{background-color:var(--elf--selected-color-2);display:block}.elf--fill-editor .hue .step-list .step.selected .color-view{box-shadow:0 0 0 1px var(--elf--selected-color-2)}.elf--fill-editor .hue .step-list .step.selected .color-view span{display:block}.elf--fill-editor .hue .step-list .step[data-cut=true] .arrow{top:100%}.elf--fill-editor .hue .step-list .step[data-cut=true] .color-view{border-radius:0}.elf--fill-editor .hue .step-list .step .color-view{align-items:center;border:2px solid #fff;bottom:0;box-sizing:border-box;cursor:pointer;display:flex;justify-content:center;left:0;position:absolute;right:0;top:0}.elf--fill-editor .hue .step-list .step .color-view span{display:none;font-size:11px;font-weight:700;left:50%;position:absolute;top:calc(-100% - 1px);transform:translateX(-50%)}.elf--fill-editor .hue .step-list .step .arrow{background-color:var(--elf--border-color);left:50%;top:calc(100% - .3px)}.elf--fill-editor .hue .step-list .step .arrow,.elf--fill-editor .hue .step-list .step .arrow:after{-webkit-clip-path:polygon(0 0,100% 0,50% 100%,0 0);clip-path:polygon(0 0,100% 0,50% 100%,0 0);height:6px;pointer-events:none;position:absolute;transform:translateX(-50%) translateY(0);width:16px;z-index:1}.elf--fill-editor .hue .step-list .step .arrow:after{background-color:#fff;content:"";left:8px;top:-2px}')();
   class FillEditor extends editor.EditorElement {
     initState() {
       var _a;
@@ -26344,7 +27764,7 @@ ${tabString}${it.properties.map((p) => {
       this.parent.trigger(this.props.onchange, this.state.image.toString());
     }
   }
-  var GradientPickerPopup$1 = "";
+  var GradientPickerPopup$1 = /* @__PURE__ */ (() => ".elf--gradient-picker-popup{grid-column-gap:10px;display:grid;grid-template-columns:1fr;margin-bottom:5px;width:224px}.elf--gradient-picker-popup>.box:first-child{margin-bottom:4px}.elf--gradient-picker-popup>.box>.colorpicker{display:block}.elf--gradient-picker-popup>.box>.assetpicker{display:none;min-height:310px}.elf--gradient-picker-popup[data-selected-editor=url]>.box>.colorpicker{display:none}.elf--gradient-picker-popup[data-selected-editor=url]>.box>.assetpicker{display:block}.elf--gradient-picker-popup .popup-item{margin-bottom:5px}.elf--gradient-picker-popup .grid-2{display:grid;grid-template-columns:60px 1fr}.elf--gradient-picker-popup .grid-2 label{padding-right:2px;text-align:left}.elf--gradient-picker-popup .colorpicker{background-color:transparent;border:0;border-radius:0;box-shadow:none}.elf--gradient-picker-popup .colorpicker .color-panel{height:100px;margin-top:0}.elf--gradient-picker-popup .colorpicker input{border:0!important;border:1px solid hsla(0,0%,87%,.4)!important;color:var(--elf--font-color)!important;text-transform:uppercase}.elf--gradient-picker-popup .colorpicker .title{color:var(--elf--font-color)!important}.elf--gradient-picker-popup .colorpicker .colorsets{border-top:0 solid var(--elf--border-color)!important}.elf--gradient-picker-popup .color-assets-editor{padding:4px 0!important}.elf--gradient-picker-popup .assetpicker{background-color:hsla(0,0%,90%,.1);position:relative}.elf--gradient-picker-popup .assetpicker .image-asset-picker{display:block;height:200px;overflow:auto;width:100%}.elf--gradient-picker-popup .assetpicker .image-asset-picker .image-list{grid-column-gap:2px;display:grid;grid-template-columns:repeat(2,1fr)}.elf--gradient-picker-popup .assetpicker .image-asset-picker .image-list .image-item{background-color:rgba(var(--elf--font-color),.5);margin-bottom:2px}.elf--gradient-picker-popup .assetpicker .image-asset-picker .image-list .image-item .preview{border:1px solid var(--elf--border-color);border-radius:2px;cursor:pointer;height:80px;-o-object-fit:contain;object-fit:contain;position:relative;text-align:center;width:100%}.elf--gradient-picker-popup .assetpicker .image-asset-picker .image-list .image-item .preview img{border:0;max-height:100%;max-width:100%;vertical-align:middle}")();
   class GradientPickerPopup extends editor.BasePopup {
     getTitle() {
       var _a;
@@ -26688,7 +28108,7 @@ ${tabString}${it.properties.map((p) => {
       this.state.instance.trigger(this.state.changeEvent, this.getValue(), this.state.params);
     }
   }
-  var FillSingleEditor$1 = "";
+  var FillSingleEditor$1 = /* @__PURE__ */ (() => ".elf--fill-single-editor{border:1px solid transparent;box-sizing:border-box;cursor:pointer;height:var(--elf--input-height)}.elf--fill-single-editor.focused{border-color:var(--elf--selected-color);border-width:1px;box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--fill-single-editor.focused .opacity-input{border-left:1px solid var(--elf--border-color)}.elf--fill-single-editor:hover:not(.focused):not(.drag){border-color:var(--elf--input-border-color)}.elf--fill-single-editor:hover:not(.focused):not(.drag) .opacity-input{border-left:1px solid var(--elf--input-border-color)}.elf--fill-single-editor.has-label{grid-column-gap:2px;grid-template-columns:70px 1fr}.elf--fill-single-editor.has-label label{align-items:center;display:flex;justify-content:flex-start;line-height:1.6;padding:6px 4px 2px 2px;text-align:left;vertical-align:middle}.elf--fill-single-editor .area{grid-column-gap:2px;border-radius:4px;display:grid;grid-template-columns:24px 1fr;height:100%}.elf--fill-single-editor .preview{align-items:center;background-color:transparent;border-radius:2px;box-sizing:border-box;cursor:pointer;display:flex;justify-content:flex-start;padding:2px;vertical-align:middle}.elf--fill-single-editor .preview .mini-view{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 3px,3px -3px,-3px 0;background-size:6px 6px;border:1px solid var(--elf--border-color);border-radius:2px;display:inline-block;height:20px;overflow:hidden;position:relative;width:20px}.elf--fill-single-editor .preview .mini-view .color-view{height:100%;left:0;position:absolute;top:0;width:100%}.elf--fill-single-editor .colors{align-items:center;display:flex;justify-content:flex-start;line-height:2.2;margin-left:2px}.elf--fill-single-editor .colors.simple{display:none}.elf--fill-single-editor .colors .color{border:1px solid var(--elf--font-color);border-radius:100%;display:inline-block;height:14px;pointer-events:all;-webkit-user-select:all;-moz-user-select:all;-ms-user-select:all;user-select:all;vertical-align:middle;width:14px}.elf--fill-single-editor .colors .color:not(:first-child){margin-left:-2px}")();
   class FillSingleEditor extends editor.EditorElement {
     initState() {
       return {
@@ -26787,7 +28207,7 @@ ${tabString}${it.properties.map((p) => {
       this.refresh();
     }
   }
-  var GradientSingleEditor$1 = "";
+  var GradientSingleEditor$1 = /* @__PURE__ */ (() => ".elf--gradient-single-editor{height:26px!important;text-align:center;width:100%}.elf--gradient-single-editor .preview{height:26px!important;width:26px!important}.elf--gradient-single-editor .preview .mini-view{height:100%!important;width:100%!important}.elf--gradient-single-editor .preview .mini-view .color-view{background-size:cover;border-radius:3px;cursor:pointer;height:100%}")();
   class GradientSingleEditor extends editor.EditorElement {
     initState() {
       return {
@@ -26890,7 +28310,7 @@ ${tabString}${it.properties.map((p) => {
       GradientPickerPopup
     });
   }
-  var GradientEditorView$1 = "";
+  var GradientEditorView$1 = /* @__PURE__ */ (() => ".elf--gradient-editor-view{bottom:0;display:none;left:0;position:absolute;right:0;top:0}.elf--gradient-editor-view.dragging .area-line{pointer-events:none!important}.elf--gradient-editor-view .gradient-rect{bottom:0;left:0;right:0;top:0}.elf--gradient-editor-view .center{background-color:var(--elf--selected-color-2);border:2px solid #fff;border-radius:50%;cursor:-webkit-grab;cursor:grab;filter:drop-shadow(0 0 2px rgb(43,43,43));height:10px;pointer-events:all;position:absolute;transform:translateX(-50%) translateY(-50%);width:10px}.elf--gradient-editor-view .gradient-rect{box-sizing:border-box;cursor:move;filter:drop-shadow(0 0 2px rgb(43,43,43));pointer-events:none;position:absolute}.elf--gradient-editor-view .gradient-rect svg{height:100%;width:100%}.elf--gradient-editor-view .gradient-rect svg path{fill:transparent;stroke:#fff;stroke-width:1;pointer-events:all}.elf--gradient-editor-view .resizer{background-color:#fff;border:1px solid var(--elf--selected-color);border-radius:100%;box-sizing:border-box;filter:drop-shadow(0 0 2px rgb(43,43,43));height:14px;position:absolute;transform:translate(-50%,-50%);width:14px}.elf--gradient-editor-view .resizer[data-direction=bottom-right]{cursor:nwse-resize;left:100%;top:100%}.elf--gradient-editor-view .gradient-angle{bottom:0;filter:drop-shadow(0 0 2px rgb(43,43,43));left:0;overflow:visible;pointer-events:none;position:absolute;right:0;top:0}.elf--gradient-editor-view .gradient-angle path{fill:transparent;pointer-events:stroke}.elf--gradient-editor-view .gradient-angle path.stick{stroke:#fff;pointer-events:none}.elf--gradient-editor-view .gradient-angle path.color-stick{pointer-events:none}.elf--gradient-editor-view .gradient-angle path.area-line{stroke-width:18;stroke:transparent}.elf--gradient-editor-view .gradient-angle path.start-end-line{stroke:#fff;pointer-events:none}.elf--gradient-editor-view .gradient-angle path.normal-line{stroke:var(--elf--selected-color-2);pointer-events:none}.elf--gradient-editor-view .gradient-angle path.timing{stroke:#fff;stroke-width:1;filter:drop-shadow(0 0 1px rgb(0,0,0));outline:none;pointer-events:none}.elf--gradient-editor-view .gradient-angle path.step-point{stroke:#fff;stroke-width:1;outline:none}.elf--gradient-editor-view .gradient-angle path.timing-path{stroke:hsla(0,0%,100%,.5);stroke-width:2;outline:none;pointer-events:none}.elf--gradient-editor-view .gradient-angle rect{pointer-events:all}.elf--gradient-editor-view .gradient-angle rect.colorstep{stroke:#fff;stroke-width:1;outline:none}.elf--gradient-editor-view .gradient-angle circle{stroke-width:2;pointer-events:all}.elf--gradient-editor-view .gradient-angle circle:hover{cursor:-webkit-grab;cursor:grab}.elf--gradient-editor-view .gradient-angle circle.moved{cursor:-webkit-grabbing;cursor:grabbing}.elf--gradient-editor-view .gradient-angle circle.colorstep{stroke-width:1;stroke:#fff;r:7}.elf--gradient-editor-view .gradient-angle circle:not(.colorstep):not(.hover-colorstep){fill:#fff}.elf--gradient-editor-view .gradient-angle circle.size{fill:transparent!important;stroke:#fff;stroke-width:1;pointer-events:none}.elf--gradient-editor-view .gradient-angle circle.area-line{stroke-width:18;stroke:transparent;fill:transparent!important;pointer-events:stroke}.elf--gradient-editor-view .gradient-angle circle.point{fill:#fff;r:5}.elf--gradient-editor-view .gradient-angle circle.point[data-type=start]{fill:var(--elf--selected-color)!important}.elf--gradient-editor-view .gradient-angle circle.hover-colorstep{r:8;filter:drop-shadow(0 0 1px rgb(255,255,255));pointer-events:none}.elf--gradient-editor-view .gradient-radial-line{bottom:0;filter:drop-shadow(0 0 2px rgb(43,43,43));left:0;overflow:visible;pointer-events:none;position:absolute;right:0;top:0}.elf--gradient-editor-view .gradient-radial-line path{fill:transparent;stroke:#fff;pointer-events:all}.elf--gradient-editor-view .gradient-radial-line path.area-line{stroke-width:18;stroke:transparent}.elf--gradient-editor-view .gradient-radial-line path.timing{stroke:#fff;stroke-width:1;filter:drop-shadow(0 0 1px rgb(0,0,0));outline:none;pointer-events:none}.elf--gradient-editor-view .gradient-radial-line path.step-point{stroke:#fff;stroke-width:1;outline:none}.elf--gradient-editor-view .gradient-radial-line path.timing-path{stroke:hsla(0,0%,100%,.5);stroke-width:2;outline:none;pointer-events:none}.elf--gradient-editor-view .gradient-radial-line circle.step-point,.elf--gradient-editor-view .gradient-radial-line ellipse.step-point{fill:#fff;pointer-events:all}.elf--gradient-editor-view .gradient-radial-line circle.point,.elf--gradient-editor-view .gradient-radial-line ellipse.point{fill:#fff;r:5;pointer-events:all}.elf--gradient-editor-view .gradient-radial-line circle.point[data-type=start],.elf--gradient-editor-view .gradient-radial-line ellipse.point[data-type=start]{fill:var(--elf--selected-color)!important}.elf--gradient-editor-view .gradient-radial-line circle.size,.elf--gradient-editor-view .gradient-radial-line ellipse.size{fill:transparent;stroke:#fff}.elf--gradient-editor-view .gradient-radial-line rect{pointer-events:all}.elf--gradient-editor-view .gradient-radial-line rect.colorstep{stroke:#fff;stroke-width:1;outline:none}")();
   var radialTypeList = [
     "circle",
     "circle farthest-corner",
@@ -28053,7 +29473,7 @@ ${tabString}${it.properties.map((p) => {
       GradientEditorView
     });
   }
-  var GuideLineView$1 = "";
+  var GuideLineView$1 = /* @__PURE__ */ (() => ".elf--guide-line-view{height:100%;left:0;overflow:visible;pointer-events:none;position:absolute;top:0;transform:translate(.5px,.5px);width:100%}.elf--guide-line-view path{stroke:var(--elf--selected-color)}.elf--guide-line-view path.arrow{stroke-width:1;fill:none}.elf--guide-line-view path.layer-line{stroke:var(--elf--font-color)}.elf--guide-line-view path.snap-line{stroke:var(--elf--selected-color)}.elf--guide-line-view line{stroke-width:1}.elf--guide-line-view line.base-line{stroke:var(--elf--guide-line-color)}.elf--guide-line-view line.dash-line{stroke:var(--elf--guide-line-color);stroke-dasharray:2 2}.elf--guide-line-view line.base-rect{stroke:var(--elf--guide-line-rect-color)}.elf--guide-line-view text{fill:var(--elf--guide-font-color);font-weight:400}.elf--guide-line-view text.text-center{text-anchor:middle}")();
   const line = (source, target, className = "base-line") => {
     return `<line x1="${source[0]}" y1="${source[1]}" x2="${target[0]}" y2="${target[1]}" class='${className}' />`;
   };
@@ -28237,7 +29657,7 @@ ${tabString}${it.properties.map((p) => {
       GuideLineView
     });
   }
-  var HistoryProperty$1 = "";
+  var HistoryProperty$1 = /* @__PURE__ */ (() => ".elf--history-list-view .history-item{grid-column-gap:5px;display:grid;grid-template-columns:20px 1fr}.elf--history-list-view .history-item>span{color:var(--elf--font-color);vertical-align:middle}.elf--history-list-view .history-item>span svg{height:16px;width:16px}.elf--history-list-view .history-item>span svg path{fill:currentColor}")();
   class HistoryProperty extends editor.BaseProperty {
     afterRender() {
       this.show();
@@ -28272,7 +29692,7 @@ ${tabString}${it.properties.map((p) => {
       HistoryProperty
     });
   }
-  var HoverView$1 = "";
+  var HoverView$1 = /* @__PURE__ */ (() => ".elf--hover-rect,.elf--hover-view{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--hover-rect{box-sizing:border-box}.elf--hover-rect .line{stroke:var(--elf--selection-tool-border-color);fill:transparent;stroke-width:2;left:0;position:absolute;top:0}.elf--hover-rect svg{bottom:0;left:0;position:absolute;right:0;top:0}.elf--hover-rect svg .offset-line{stroke:var(--elf--selected-color-2);stroke-dasharray:2 4;fill:transparent;stroke-width:1}.elf--hover-rect svg text{fill:var(--elf--selected-font-color)}.elf--hover-rect svg rect{fill:var(--elf--selection-tool-border-color)}")();
   class HoverView extends editor.EditorElement {
     template() {
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -28538,7 +29958,7 @@ ${tabString}${it.properties.map((p) => {
       this.refreshShow(["image"]);
     }
   }
-  var ImageSelectEditor$1 = "";
+  var ImageSelectEditor$1 = /* @__PURE__ */ (() => ".elf--image-select-editor{background-color:rgba(0,0,0,.3);margin-bottom:10px;margin-top:10px;text-align:center}.elf--image-select-editor .preview-container{height:150px;position:relative;width:100%}.elf--image-select-editor .preview-container img{max-height:100%;max-width:100%}.elf--image-select-editor .preview-container input[type=file]{bottom:0;cursor:pointer;left:0;opacity:0;position:absolute;top:0;width:100%}.elf--image-select-editor .select-container{display:grid;grid-template-columns:1fr;padding:4px 0}.elf--image-select-editor .select-container button{width:100%}")();
   class ImageSelectEditor extends editor.EditorElement {
     initState() {
       return {
@@ -28602,7 +30022,7 @@ ${tabString}${it.properties.map((p) => {
       this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
     }
   }
-  var ImageSelectPopup$1 = "";
+  var ImageSelectPopup$1 = /* @__PURE__ */ (() => ".elf--image-select-popup{display:grid;grid-template-columns:1fr;min-height:450px;padding:10px;width:500px}.elf--image-select-popup>.box{grid-column-gap:4px;grid-row-gap:4px;display:grid;grid-auto-rows:110px;grid-template-columns:repeat(4,1fr);margin-bottom:10px}.elf--image-select-popup>.box .image-item{border:1px solid hsla(0,0%,100%,.5);box-sizing:border-box;display:grid;position:relative;text-align:center}.elf--image-select-popup>.box .image-item:hover{background-color:#baffb1}.elf--image-select-popup>.box .image-item img{align-self:center;cursor:pointer;justify-self:center;max-height:100%;max-width:100%;pointer-events:all;vertical-align:middle}")();
   class ImageSelectPopup extends editor.BasePopup {
     getTitle() {
       return "Select a image";
@@ -28726,7 +30146,7 @@ ${tabString}${it.properties.map((p) => {
       }
     });
   }
-  var KeyframePopup$1 = "";
+  var KeyframePopup$1 = /* @__PURE__ */ (() => '.elf--keyframe-popup{width:250px}.elf--keyframe-popup .box .name{grid-column-gap:4px;display:grid;grid-template-columns:60px 1fr;height:20px;margin-bottom:5px}.elf--keyframe-popup .box .property .title{grid-column-gap:2px;display:grid;grid-template-columns:1fr 2fr}.elf--keyframe-popup .box .property .title .tools{text-align:right}.elf--keyframe-popup .box .property .title .tools select{display:inline-block;width:100px}.elf--keyframe-popup .box .offset-editor .offset{background-image:linear-gradient(to right,var(--elf--border-color),#000);background-position:0;background-repeat:no-repeat;background-size:100% 2px;height:20px;position:relative}.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="0"] [data-offset-index="0"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="1"] [data-offset-index="1"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="10"] [data-offset-index="10"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="11"] [data-offset-index="11"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="12"] [data-offset-index="12"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="13"] [data-offset-index="13"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="14"] [data-offset-index="14"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="15"] [data-offset-index="15"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="16"] [data-offset-index="16"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="17"] [data-offset-index="17"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="18"] [data-offset-index="18"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="19"] [data-offset-index="19"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="2"] [data-offset-index="2"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="3"] [data-offset-index="3"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="4"] [data-offset-index="4"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="5"] [data-offset-index="5"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="6"] [data-offset-index="6"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="7"] [data-offset-index="7"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="8"] [data-offset-index="8"],.elf--keyframe-popup .box .offset-editor .offset[data-selected-value="9"] [data-offset-index="9"]{background-color:var(--elf--selected-color)}.elf--keyframe-popup .box .offset-editor .offset .offset-item{background-color:var(--elf--font-color);border:1px solid var(--elf--border-color);border-radius:100%;cursor:pointer;height:10px;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);vertical-align:middle;width:10px}.elf--keyframe-popup .box .offset-input{padding:5px 0}.elf--keyframe-popup .box .offset-input .title{grid-column-gap:2px;display:grid;grid-template-columns:100px 1fr}.elf--keyframe-popup .box .keyframe-property-list{max-height:300px;overflow:auto}.elf--keyframe-popup .box .keyframe-property-item{margin-top:2px;padding:4px 0}.elf--keyframe-popup .box .keyframe-property-item .title{grid-template-columns:1fr 30px}.elf--keyframe-popup .box .keyframe-property-item .value-editor{border:1px solid rgba(0,0,0,.3);padding:2px}.elf--keyframe-popup .box label{text-align:left;vertical-align:middle}.elf--keyframe-popup .box input,.elf--keyframe-popup .box select{vertical-align:middle;width:100%}.elf--keyframe-popup .box .input{display:grid;grid-template-columns:2fr 1fr 1fr;vertical-align:middle}.elf--keyframe-popup .box .input.grid-1{grid-template-columns:1fr}.elf--keyframe-popup .box .input.grid-2{grid-template-columns:3fr 1fr}')();
   class KeyframePopup extends editor.BasePopup {
     getTitle() {
       return this.$i18n("keyframe.popup.title");
@@ -28796,7 +30216,7 @@ ${tabString}${it.properties.map((p) => {
       this.$el.hide();
     }
   }
-  var KeyframeProperty$1 = "";
+  var KeyframeProperty$1 = /* @__PURE__ */ (() => ".elf--keyframe-list{display:block}.elf--keyframe-list .keyframe-item{border:1px solid var(--elf--property-border-color);cursor:pointer;margin-bottom:5px;padding:5px}.elf--keyframe-list .keyframe-item:first-child{margin-top:5px}.elf--keyframe-list .keyframe-item.selected{border-color:var(--elf--selected-color)}.elf--keyframe-list .keyframe-item[data-selected-value=list] button[data-type=list]{background-color:var(--elf--selected-color);color:var(--elf--border-color)}.elf--keyframe-list .keyframe-item[data-selected-value=list] .keyframe-code[data-type=list]{display:block}.elf--keyframe-list .keyframe-item[data-selected-value=code] button[data-type=code]{background-color:var(--elf--selected-color);color:var(--elf--border-color)}.elf--keyframe-list .keyframe-item[data-selected-value=code] .keyframe-code[data-type=code]{display:block}.elf--keyframe-list .keyframe-item .title{display:grid;grid-template-columns:1fr 60px;height:20px}.elf--keyframe-list .keyframe-item .title .name{padding:2px 0}.elf--keyframe-list .keyframe-item .title .tools{text-align:right;vertical-align:middle}.elf--keyframe-list .keyframe-item .title .tools .group{display:inline-block}.elf--keyframe-list .keyframe-item pre{margin:0;white-space:pre-wrap}.elf--keyframe-list .keyframe-item .keyframe-code{display:none}.elf--keyframe-list .keyframe-item .keyframe-code>.offset{display:grid;grid-template-columns:30px 1fr;margin-top:2px}.elf--keyframe-list .keyframe-item .keyframe-code .offset-property-item{display:grid;grid-template-columns:1fr 1fr;text-align:left}.elf--keyframe-list .keyframe-item .keyframe-code .offset-property-item label{color:var(--elf--font-color);font-weight:700;padding-left:10px}.elf--keyframe-list .keyframe-item .offset-list{height:20px;padding:0 10px}.elf--keyframe-list .keyframe-item .offset-list .container{background-image:linear-gradient(to right,var(--elf--border-color),#000);background-position:0;background-repeat:no-repeat;background-size:100% 2px;height:100%;position:relative}.elf--keyframe-list .keyframe-item .offset-list .container .offset{background-color:#fff;border:1px solid var(--elf--border-color);border-radius:100%;height:10px;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);vertical-align:middle;width:10px}")();
   class KeyframeProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("keyframe.property.title");
@@ -29178,7 +30598,7 @@ ${tabString}${it.properties.map((p) => {
       KeyframePopup
     });
   }
-  var LayerAppendView$1 = "";
+  var LayerAppendView$1 = /* @__PURE__ */ (() => ".elf--layer-append-view{background-color:transparent;bottom:0;cursor:crosshair;display:none;left:0;pointer-events:all;position:absolute;right:0;top:0}.elf--layer-append-view .area{display:inline-block;pointer-events:none;position:absolute}.elf--layer-append-view .area .draw-item{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--layer-append-view .area-pointer-view,.elf--layer-append-view .area-rect{background-color:var(--elf--selected-color);border-radius:4px;color:var(--elf--selected-font-color);display:inline-block;padding:2px 4px;position:absolute;transform:translate(5px,5px)}.elf--layer-append-view .area-pointer{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf--layer-append-view .area-pointer .layer-add-snap-pointer{stroke:var(--elf--selected-color);stroke-width:1}.elf--layer-append-view input[type=file]{display:none}")();
   class PathStringManager {
     constructor() {
       this.pathArray = [];
@@ -29664,7 +31084,7 @@ ${tabString}${it.properties.map((p) => {
       LayerAppendView
     });
   }
-  var LayerTreeProperty$1 = "";
+  var LayerTreeProperty$1 = /* @__PURE__ */ (() => ".elf--layer-list{height:100%;margin:0!important;overflow:auto;padding:0}.elf--layer-list .layer-item{content-visibility:auto;color:var(--elf--list-item-font-color);contain:size;height:30px;margin-bottom:0!important;padding:5px!important}.elf--layer-list .layer-item[data-is-hide=true]{display:none}.elf--layer-list .layer-item[data-is-group=true] .detail .folder{display:inline-block;transform:rotate(90deg);transition:transform .1s linear;vertical-align:middle}.elf--layer-list .layer-item[data-is-group=true] .detail .folder.collapsed{transform:rotate(0deg)}.elf--layer-list .layer-item .detail{grid-column-gap:3px;display:grid;grid-template-columns:1fr 60px}.elf--layer-list .layer-item .detail label{cursor:pointer;display:grid;grid-template-columns:20px 20px 1fr;overflow:hidden;padding:2px 0;pointer-events:all;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--layer-list .layer-item .detail label svg path,.elf--layer-list .layer-item .detail label svg use{fill:currentColor}.elf--layer-list .layer-item .detail .tools{display:none;text-align:right}.elf--layer-list .layer-item .detail .tools .visible{color:var(--elf--list-item-disable-font-color)}.elf--layer-list .layer-item .detail .tools .visible[data-visible=true]{color:var(--elf--font-color)}.elf--layer-list .layer-item .detail .tools .lock{color:var(--elf--list-item-disable-font-color)}.elf--layer-list .layer-item .detail .tools .lock[data-lock=true]{color:var(--elf--font-color)}.elf--layer-list .layer-item.selected{background-color:var(--elf--selected-color-2);color:var(--elf--selected-font-color)}.elf--layer-list .layer-item.selected-path{background-color:var(--elf--selected-color-3)}.elf--layer-list .layer-item:hover,.elf--layer-list .layer-item:not(.selected).hovered{box-shadow:inset 0 0 0 1px var(--elf--list-item-selected-color)}.elf--layer-list .layer-item:hover .tools,.elf--layer-list .layer-item:not(.selected).hovered .tools{display:block}.elf--layer-list .drag-start{opacity:.3}.elf--layer-list+.drag-point{border:1px solid var(--elf--selected-color);pointer-events:none;position:absolute}")();
   let osInfo = {
     name: void 0
   };
@@ -30263,7 +31683,7 @@ ${tabString}${it.properties.map((p) => {
     randomConic,
     repeatConic
   ];
-  var GradientAssetsProperty$1 = "";
+  var GradientAssetsProperty$1 = /* @__PURE__ */ (() => ".elf--gradient-assets-property .gradient-list-tools{grid-column-gap:2px;display:grid;grid-template-columns:1fr 1fr;margin-bottom:10px;text-align:left}.elf--gradient-assets-property .gradient-list-tools button{border:1px solid var(--elf--border-color);padding:2px 10px}.elf--gradient-assets-property .gradient-list-tools[data-view-mode=grid] button[data-value=grid],.elf--gradient-assets-property .gradient-list-tools[data-view-mode=list] button[data-value=list]{background-color:var(--elf--selected-border-color);background-image:none;border-color:var(--elf--selected-border-color);color:var(--elf--selected-font-color)}.elf--gradient-assets-property .gradient-list .gradient-view{pointer-events:none}.elf--gradient-assets-property .gradient-list[data-view-mode=grid]{display:block}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .add-gradient-item{border:1px solid var(--elf--selected-color);color:var(--elf--font-color);cursor:pointer;display:inline-block;height:40px;padding-top:2px;position:relative;text-align:center;vertical-align:top;width:40px}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item{display:inline-block;margin-bottom:1px;margin-right:1px;position:relative;vertical-align:middle;width:40px}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item:hover[data-custom=true] .tools{display:inline-block}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item .preview{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;cursor:pointer;height:40px;position:relative;width:100%}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item .preview .gradient-view{bottom:0;left:0;position:absolute;right:0;top:0}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item .tools{display:none;padding:2px;position:absolute;right:0;text-align:right;top:0}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item .tools button{color:var(--elf--selected-font-color);height:10px;width:10px}.elf--gradient-assets-property .gradient-list[data-view-mode=grid] .gradient-item .tools svg{height:100%;width:100%}")();
   const options = gradients.map((it) => {
     return { value: it.key, text: it.title };
   });
@@ -30356,7 +31776,7 @@ ${tabString}${it.properties.map((p) => {
       this.$commands.emit("drop.asset", { gradient: gradient2 });
     }
   }
-  var ImageAssetsProperty$1 = "";
+  var ImageAssetsProperty$1 = /* @__PURE__ */ (() => ".elf--image-assets-property .image-list-tools{grid-column-gap:2px;display:grid;grid-template-columns:1fr 1fr;margin-bottom:10px;text-align:left}.elf--image-assets-property .image-list-tools button{border:1px solid var(--elf--border-color);padding:2px 10px}.elf--image-assets-property .image-list-tools[data-view-mode=grid] button[data-value=grid],.elf--image-assets-property .image-list-tools[data-view-mode=list] button[data-value=list]{background-color:var(--elf--selected-border-color);background-image:none;border-color:var(--elf--selected-border-color);color:var(--elf--selected-font-color)}.elf--image-assets-property .image-list{padding:5px}.elf--image-assets-property .image-list .image-view{pointer-events:none}.elf--image-assets-property .image-list[data-view-mode=grid]{display:block}.elf--image-assets-property .image-list[data-view-mode=grid] .add-image-item{border:1px solid var(--elf--selected-color);border-radius:2px;color:var(--elf--font-color);cursor:pointer;display:inline-block;height:66px;padding:20px;position:relative;text-align:center;vertical-align:top;width:66px}.elf--image-assets-property .image-list[data-view-mode=grid] .add-image-item input[type=file]{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:inline-block;height:100%;left:0;opacity:0;pointer-events:all;position:absolute;top:0;width:100%}.elf--image-assets-property .image-list[data-view-mode=grid] .add-image-item button{cursor:pointer;height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf--image-assets-property .image-list[data-view-mode=grid] .add-image-item svg{cursor:pointer;height:24px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:24px}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item{display:inline-block;margin-bottom:4px;position:relative;vertical-align:middle;width:66px}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item:hover .tools{display:inline-block}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item .preview{border:1px solid #e6e6e6;border-radius:2px;cursor:pointer;height:66px;overflow:hidden;position:relative;text-align:center;width:100%}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item .preview img{border:0;max-width:100%;vertical-align:middle}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item .title{display:grid;grid-template-columns:1fr;padding:4px 0;position:relative;width:100%}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item .title input{width:100%}.elf--image-assets-property .image-list[data-view-mode=grid] .image-item .tools{background-color:transparent;color:var(--elf--selected-font-color);display:none;padding:2px;position:absolute;right:0;text-align:right;top:0}.property.image-assets-property{padding-left:0!important;padding-right:0!important}")();
   function revokeObjectUrl(url) {
     window.URL.revokeObjectURL(url);
   }
@@ -30568,7 +31988,7 @@ ${tabString}${it.properties.map((p) => {
     verticalLine,
     horizontalLine
   ];
-  var PatternAssetsProperty$1 = "";
+  var PatternAssetsProperty$1 = /* @__PURE__ */ (() => ".elf--pattern-assets-property .pattern-list{max-height:240px;overflow:auto;padding:5px}.elf--pattern-assets-property .pattern-list .pattern-view{pointer-events:none}.elf--pattern-assets-property .pattern-list[data-view-mode=grid]{display:block}.elf--pattern-assets-property .pattern-list[data-view-mode=grid] .add-pattern-item{border:1px solid var(--elf--selected-color);color:var(--elf--font-color);cursor:pointer;display:inline-block;height:54px;padding-top:2px;position:relative;text-align:center;vertical-align:top;width:54px}.elf--pattern-assets-property .pattern-list[data-view-mode=grid] .pattern-item{border:1px solid var(--elf--border-color);box-sizing:border-box;display:inline-block;margin-bottom:3px;margin-right:3px;position:relative}.elf--pattern-assets-property .pattern-list[data-view-mode=grid] .pattern-item:hover[data-custom=true] .tools{display:inline-block}.elf--pattern-assets-property .pattern-list[data-view-mode=grid] .pattern-item .preview{cursor:pointer;height:54px;position:relative;width:54px}.elf--pattern-assets-property .pattern-list[data-view-mode=grid] .pattern-item .preview .pattern-view{background-color:#fff;bottom:0;left:0;position:absolute;right:0;top:0}.elf--pattern-assets-property .pattern-list[data-view-mode=grid] .pattern-item .tools{color:var(--elf--selected-font-color);display:none;padding:2px;position:absolute;right:0;text-align:right;top:0}.property.pattern-assets-property{padding-left:0!important;padding-right:0!important}")();
   class PatternAssetsProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("pattern.asset.property.title");
@@ -30640,7 +32060,7 @@ ${tabString}${it.properties.map((p) => {
       }
     }
   }
-  var VideoAssetsProperty$1 = "";
+  var VideoAssetsProperty$1 = /* @__PURE__ */ (() => ".elf--video-assets-property .video-list-tools{grid-column-gap:2px;display:grid;grid-template-columns:1fr 1fr;margin-bottom:10px;text-align:left}.elf--video-assets-property .video-list-tools button{border:1px solid var(--elf--border-color);padding:2px 10px}.elf--video-assets-property .video-list-tools[data-view-mode=grid] button[data-value=grid],.elf--video-assets-property .video-list-tools[data-view-mode=list] button[data-value=list]{background-color:var(--elf--selected-border-color);background-image:none;border-color:var(--elf--selected-border-color);color:var(--elf--selected-font-color)}.elf--video-assets-property .video-list{padding:5px}.elf--video-assets-property .video-list .video-view{pointer-events:none}.elf--video-assets-property .video-list[data-view-mode=grid]{display:block}.elf--video-assets-property .video-list[data-view-mode=grid] .add-video-item{border:1px solid var(--elf--selected-color);border-radius:2px;color:var(--elf--font-color);cursor:pointer;display:inline-block;height:66px;padding:20px;position:relative;text-align:center;vertical-align:top;width:66px}.elf--video-assets-property .video-list[data-view-mode=grid] .add-video-item input[type=file]{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:inline-block;height:100%;left:0;opacity:0;pointer-events:all;position:absolute;top:0;width:100%}.elf--video-assets-property .video-list[data-view-mode=grid] .add-video-item button{cursor:pointer;height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf--video-assets-property .video-list[data-view-mode=grid] .add-video-item svg{cursor:pointer;height:24px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:24px}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item{display:inline-block;margin-bottom:4px;position:relative;vertical-align:middle;width:66px}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item:hover .tools{display:inline-block}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item .preview{border:1px solid #e6e6e6;border-radius:2px;cursor:pointer;height:66px;line-height:80px;overflow:hidden;position:relative;text-align:center;width:100%}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item .preview img{border:0;max-width:100%;vertical-align:middle}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item .title{display:grid;grid-template-columns:1fr;padding:4px 0;position:relative;width:100%}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item .title input{width:100%}.elf--video-assets-property .video-list[data-view-mode=grid] .video-item .tools{background-color:transparent;color:var(--elf--selected-font-color);display:none;padding:2px;position:absolute;right:0;text-align:right;top:0}.property.video-assets-property{padding-left:0!important;padding-right:0!important}")();
   class VideoAssetsProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("video.asset.property.title");
@@ -30746,7 +32166,7 @@ ${tabString}${it.properties.map((p) => {
     `;
     }
   }
-  var CustomAssets$1 = "";
+  var CustomAssets$1 = /* @__PURE__ */ (() => '.elf--custom-assets{bottom:0;left:0;position:absolute;right:0;top:0}.elf--custom-assets .custom-assets-tools{grid-column-gap:10px;box-sizing:border-box;display:grid;grid-template-columns:1fr 40px;height:20px;left:0;padding:0 10px;position:absolute;right:0;top:10px}.elf--custom-assets .custom-assets-tools .tools{text-align:right}.elf--custom-assets .elf--asset-list{bottom:0;box-sizing:border-box;-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:1fr 1fr 1fr;left:0;overflow:auto;padding:10px;position:absolute;right:0;row-gap:10px;top:30px}.elf--custom-assets .elf--asset-list .asset-preview{background-color:hsla(0,0%,93%,.125);border-radius:4px;box-sizing:border-box;height:80px;padding:5px;position:relative;width:80px}.elf--custom-assets .elf--asset-list .asset-preview .tools{background-color:transparent;bottom:0;box-sizing:border-box;left:0;opacity:1;padding:2px;position:absolute;right:0;transition:opacity .2s}.elf--custom-assets .elf--asset-list .asset-preview .tools .title{color:var(--elf--selected-font-color);display:inline-block;text-align:left;vertical-align:middle}.elf--custom-assets .elf--asset-list .asset-preview .tools .buttons{display:inline-block}.elf--custom-assets .elf--asset-list .asset-preview:hover{background-color:var(--elf--selected-color);box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--custom-assets .elf--asset-list .asset-preview:hover .tools{opacity:1}.elf--custom-assets .elf--asset-list .asset-preview img{-o-object-fit:contain;object-fit:contain;width:100%}.elf--asset-list{height:100%;margin:0!important;overflow:auto;padding:0}.elf--asset-list .asset-item{grid-column-gap:4px;border-radius:4px;color:var(--elf--list-item-font-color);display:grid;grid-template-columns:20px 1fr;margin-bottom:0!important;padding:5px 7px!important}.elf--asset-list .asset-item .detail{grid-column-gap:3px;display:grid;grid-template-columns:1fr 60px}.elf--asset-list .asset-item .detail label{padding:2px 0;vertical-align:middle}.elf--asset-list .asset-item .detail .tools{text-align:right}.elf--asset-list .asset-item.selected{background-color:var(--elf--list-item-selected-color);color:var(--elf--selected-font-color)}.elf--asset-list .asset-item.selected .tools button{color:var(--elf--selected-font-color)}.elf--asset-list .asset-item[data-layout=flex] .detail [data-layout-title]:after,.elf--asset-list .asset-item[data-layout=grid] .detail [data-layout-title]:after{border-radius:3px;content:"";display:inline-block;height:10px;margin-left:5px;vertical-align:middle;width:10px}.elf--asset-list .asset-item[data-layout=flex] .detail [data-layout-title]:after{background-color:#44a344}.elf--asset-list .asset-item[data-layout=grid] .detail [data-layout-title]:after{background-color:var(--elf--selected-color)}')();
   class CustomAssets extends editor.EditorElement {
     template() {
       return `
@@ -30796,7 +32216,7 @@ ${tabString}${it.properties.map((p) => {
       });
     }
   }
-  var LibraryItems$1 = "";
+  var LibraryItems$1 = /* @__PURE__ */ (() => ".elf--library-items{padding:10px}.elf--library-items .property{margin-bottom:10px!important;margin-top:10px!important}.elf--library-items .property-title{background-color:var(--elf--selected-color-2)!important;border-radius:4px;color:var(--elf--selected-font-color);margin-bottom:10px}.elf--library-items .property-title label{line-height:1.5}")();
   class LibraryItems extends editor.EditorElement {
     template() {
       return `
@@ -30815,7 +32235,7 @@ ${tabString}${it.properties.map((p) => {
     `;
     }
   }
-  var ObjectItems$1 = "";
+  var ObjectItems$1 = /* @__PURE__ */ (() => ".object-items{bottom:0;display:flex;flex-direction:column;left:0;position:absolute;right:0;top:0}.object-items>:first-child{flex:none;height:140px}.object-items>:last-child:not(:first-child){flex:1 1 auto;margin-top:auto}.object-items>*>.elf--property{margin:0!important}.object-items>*>.elf--property>.property-title{margin-top:0!important}")();
   class ObjectItems extends editor.EditorElement {
     template() {
       return `
@@ -30873,7 +32293,7 @@ ${tabString}${it.properties.map((p) => {
       VideoAssetsProperty
     });
   }
-  var DefaultLayoutItemProperty$1 = "";
+  var DefaultLayoutItemProperty$1 = /* @__PURE__ */ (() => '.elf--default-layout-item-property .constraints{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:100px 1fr;padding-bottom:10px}.elf--default-layout-item-property .constraints-box{border:1px solid var(--elf--input-border-color);height:70px;margin-left:10px;position:relative;width:70px}.elf--default-layout-item-property .constraints-box>.item{box-sizing:border-box;position:absolute}.elf--default-layout-item-property .constraints-box>.item:hover{background-color:var(--elf--selected-hover-color)}.elf--default-layout-item-property .constraints-box>.item[data-selected=true]{border-color:var(--elf--selected-color)!important;z-index:1}.elf--default-layout-item-property .constraints-box>.item[data-selected=true]:before{background-color:var(--elf--selected-color-2)!important}.elf--default-layout-item-property .constraints-box>.item[disabled]{display:none}.elf--default-layout-item-property .constraints-box>.rect{border:1px solid var(--elf--font-color);box-sizing:border-box;height:calc(50% - 2px);left:calc(25% + 1px);pointer-events:none;position:absolute;top:calc(25% + 1px);width:calc(50% - 2px)}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal]:before{background-color:var(--elf--input-border-color);content:"";height:2px;left:3px;pointer-events:none;position:absolute;right:5px;top:50%;transform:translateY(-50%)}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=scale]{border-left:2px solid var(--elf--font-color);border-right:2px solid var(--elf--font-color);bottom:-12px;box-sizing:border-box;height:8px;left:0;right:-1px}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=scale]:before{background-color:var(--elf--font-color);height:3px;left:0;pointer-events:none;right:0;top:50%;width:auto}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=min]{height:12px;left:0;top:50%;transform:translateY(-50%);width:20px}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=max]{height:12px;right:0;top:50%;transform:translateY(-50%);width:20px}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=max]:before{left:5px;right:3px}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=center]{height:12px;left:50%;left:calc(25% + 8px);right:calc(25% + 8px);top:50%;transform:translateY(-50%)}.elf--default-layout-item-property .constraints-box [data-key=constraints-horizontal][data-value=center]:before{left:0;right:0}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical]:before{background-color:var(--elf--input-border-color);bottom:4px;content:"";left:50%;pointer-events:none;position:absolute;top:4px;transform:translateX(-50%);width:2px}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical][data-value=scale]{border-bottom:1px solid var(--elf--font-color);border-top:1px solid var(--elf--font-color);bottom:-1px;box-sizing:border-box;right:-12px;top:0;width:8px}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical][data-value=scale]:before{background-color:var(--elf--font-color);bottom:0;height:auto;left:50%;pointer-events:none;top:0;transform:translateX(-50%);width:3px}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical][data-value=min]{height:20px;left:50%;top:0;transform:translateX(-50%);width:12px}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical][data-value=max]{bottom:0;height:20px;left:50%;transform:translateX(-50%);width:12px}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical][data-value=center]{bottom:calc(25% + 8px);left:50%;top:calc(25% + 8px);transform:translateX(-50%);width:12px}.elf--default-layout-item-property .constraints-box [data-key=constraints-vertical][data-value=center]:before{bottom:0;top:0}')();
   class DefaultLayoutItemProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("default.layout.item.property.title.constraints");
@@ -30975,7 +32395,7 @@ ${tabString}${it.properties.map((p) => {
       });
     }
   }
-  var FlexGrowToolView$1 = "";
+  var FlexGrowToolView$1 = /* @__PURE__ */ (() => ".elf--flex-grow-tool-view{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--flex-grow-tool-view .flex-grow-item{background-color:hsla(0,0%,100%,.8);border:1px solid var(--elf--font-color);border-radius:4px;display:flex;height:20px;left:0;line-height:1;overflow:hidden;pointer-events:all;position:absolute;text-align:center;top:0;transform:translate(-50%,-120%)}.elf--flex-grow-tool-view .flex-grow-item[data-parent-direction=row]{cursor:ew-resize}.elf--flex-grow-tool-view .flex-grow-item[data-parent-direction=column]{cursor:ns-resize;flex-direction:column;height:auto;overflow:hidden}.elf--flex-grow-tool-view .flex-grow-item[data-parent-direction=column]>*{padding-bottom:1px!important;padding-top:1px!important}.elf--flex-grow-tool-view .flex-grow-item .size{align-items:center;display:flex;flex:1 1 auto;justify-content:center;padding:4px}.elf--flex-grow-tool-view .flex-grow-item .grow{align-items:center;background-color:var(--elf--selected-color);color:var(--elf--selected-font-color);display:flex;flex:none;justify-content:center;padding:4px}")();
   class FlexGrowToolView extends editor.EditorElement {
     template() {
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -31108,7 +32528,7 @@ ${tabString}${it.properties.map((p) => {
       this.refresh();
     }
   }
-  var FlexLayoutEditor$1 = "";
+  var FlexLayoutEditor$1 = /* @__PURE__ */ (() => '.flex-layout-item{margin:10px auto}.flex-layout-item .grid-2{display:flex;gap:10px;justify-content:space-between}.flex-layout-item .grid-2 *{vertical-align:middle}.flex-layout-item .title{font-family:Courier New,Courier,monospace;font-weight:700;margin-bottom:3px;padding-left:2px;text-transform:uppercase}.flex-layout-editor{padding:0 10px 10px}.select-flex-direction{align-items:center;display:flex;flex-direction:row;justify-content:center;position:relative}.select-flex-direction>div{height:200px;position:relative;width:200px}.select-flex-direction .padding-top{right:0}.select-flex-direction .padding-left,.select-flex-direction .padding-top{background-color:var(--elf--border-color);display:block;left:0;position:absolute;top:0}.select-flex-direction .padding-left{bottom:0}.select-flex-direction .padding-right{top:0}.select-flex-direction .padding-bottom,.select-flex-direction .padding-right{background-color:var(--elf--border-color);bottom:0;display:block;position:absolute;right:0}.select-flex-direction .padding-bottom{left:0}.select-flex-direction .flex-group{border:1px solid var(--elf--selected-color-2);display:flex;gap:var(--flex-group-gap,2px);height:100%;position:absolute;width:100%}.select-flex-direction .flex-group:before{border:1px solid var(--elf--selected-color-2);content:"";display:inline-block;height:calc(100% - var(--flex-group-padding, 0)*2);position:absolute;width:calc(100% - var(--flex-group-padding, 0)*2)}.select-flex-direction .flex-group-tool{border:1px solid var(--elf--selected-color-2);display:flex;gap:var(--flex-group-gap,2px);height:100%;position:absolute;width:100%}.select-flex-direction .flex-group-tool .tool-area{border:1px solid var(--elf--selected-color-2);display:inline-block;height:calc(100% - var(--flex-group-padding, 0)*2);position:absolute;width:calc(100% - var(--flex-group-padding, 0)*2)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=flex-start][data-align-items=flex-start]{left:0;top:0}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=center][data-align-items=flex-start]{left:50%;top:0;transform:translate(-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=flex-end][data-align-items=flex-start]{left:100%;top:0;transform:translate(-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=flex-start][data-align-items=center]{left:0;top:50%;transform:translateY(-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=center][data-align-items=center]{left:50%;top:50%;transform:translate(-50%,-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=flex-end][data-align-items=center]{left:100%;top:50%;transform:translate(-100%,-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=flex-start][data-align-items=flex-end]{left:0;top:100%;transform:translateY(-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=center][data-align-items=flex-end]{left:50%;top:100%;transform:translate(-50%,-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=row] .tool-area-item[data-justify-content=flex-end][data-align-items=flex-end]{left:100%;top:100%;transform:translate(-100%,-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=flex-start][data-justify-content=flex-start]{left:0;top:0}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=center][data-justify-content=flex-start]{left:50%;top:0;transform:translate(-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=flex-end][data-justify-content=flex-start]{left:100%;top:0;transform:translate(-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=flex-start][data-justify-content=center]{left:0;top:50%;transform:translateY(-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=center][data-justify-content=center]{left:50%;top:50%;transform:translate(-50%,-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=flex-end][data-justify-content=center]{left:100%;top:50%;transform:translate(-100%,-50%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=flex-start][data-justify-content=flex-end]{left:0;top:100%;transform:translateY(-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=center][data-justify-content=flex-end]{left:50%;top:100%;transform:translate(-50%,-100%)}.select-flex-direction .flex-group-tool .tool-area[data-direction=column] .tool-area-item[data-align-items=flex-end][data-justify-content=flex-end]{left:100%;top:100%;transform:translate(-100%,-100%)}.select-flex-direction .flex-group-tool .tool-area[data-justify-content=center][data-align-items=center] .tool-area-item[data-index="5"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=center][data-align-items=flex-end] .tool-area-item[data-index="8"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=center][data-align-items=flex-start] .tool-area-item[data-index="2"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=flex-end][data-align-items=center] .tool-area-item[data-index="6"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=flex-end][data-align-items=flex-end] .tool-area-item[data-index="9"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=flex-end][data-align-items=flex-start] .tool-area-item[data-index="3"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=flex-start][data-align-items=center] .tool-area-item[data-index="4"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=flex-start][data-align-items=flex-end] .tool-area-item[data-index="7"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=flex-start][data-align-items=flex-start] .tool-area-item[data-index="1"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around] .tool-area-item[data-index="1"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around] .tool-area-item[data-index="3"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around] .tool-area-item[data-index="4"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around] .tool-area-item[data-index="6"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around] .tool-area-item[data-index="7"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around] .tool-area-item[data-index="9"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around][data-align-items=center] .tool-area-item[data-index="5"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around][data-align-items=flex-end] .tool-area-item[data-index="8"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-around][data-align-items=flex-start] .tool-area-item[data-index="2"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between] .tool-area-item[data-index="1"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between] .tool-area-item[data-index="3"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between] .tool-area-item[data-index="4"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between] .tool-area-item[data-index="6"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between] .tool-area-item[data-index="7"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between] .tool-area-item[data-index="9"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between][data-align-items=center] .tool-area-item[data-index="5"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between][data-align-items=flex-end] .tool-area-item[data-index="8"],.select-flex-direction .flex-group-tool .tool-area[data-justify-content=space-between][data-align-items=flex-start] .tool-area-item[data-index="2"]{display:none}.select-flex-direction .flex-group-tool .tool-area .tool-area-item{background-color:transparent;background-color:rgba(75,75,255,.05);box-sizing:border-box;cursor:pointer;height:30px;left:0;position:absolute;top:0;transition:all .2s linear;transition:all .1s linear;width:30px}.select-flex-direction .flex-group-tool .tool-area .tool-area-item:hover{background-color:rgba(75,75,255,.5)}.select-flex-direction .flex-group-padding{border:1px solid var(--elf--selected-color-2);display:block;height:100%;position:absolute;width:100%}.select-flex-direction .flex-direction{display:flex;gap:2px;height:30px;width:24px}.select-flex-direction .flex-direction[data-value=column]{height:24px;width:30px}.select-flex-direction .flex-direction[data-value=column] .flex-direction-item{height:6px!important;width:30px!important}.select-flex-direction .flex-direction[data-value=column] .flex-direction-item:first-child{width:15px!important}.select-flex-direction .flex-direction[data-value=column] .flex-direction-item:nth-child(3){width:20px!important}.select-flex-direction .flex-direction .flex-direction-item{background-color:var(--elf--selected-color-2);border-radius:2px;display:inline-block;height:30px;width:6px}.select-flex-direction .flex-direction .flex-direction-item:first-child{background-color:var(--elf--selected-color);height:15px}.select-flex-direction .flex-direction .flex-direction-item:nth-child(3){background-color:var(--elf--selected-color);height:20px}')();
   class FlexLayoutEditor extends editor.EditorElement {
     initialize() {
       super.initialize();
@@ -31331,7 +32751,7 @@ ${tabString}${it.properties.map((p) => {
       this.refresh();
     }
   }
-  var GridBoxEditor$1 = "";
+  var GridBoxEditor$1 = /* @__PURE__ */ (() => ".elf--grid-box-editor{border:1px solid var(--elf--border-color);padding:0 1px}.elf--grid-box-editor .grid-box-editor-item .item{grid-column-gap:4px;display:grid;grid-template-columns:1fr .5fr 1fr 40px;margin-bottom:4px;text-align:center}.elf--grid-box-editor .grid-box-editor-item .item.header{height:24px}.elf--grid-box-editor .grid-box-editor-item .item.header>*{border:1px solid hsla(0,0%,93%,.18);box-sizing:border-box;padding:4px 0}.elf--grid-box-editor .grid-box-editor-item .item .repeat button{background-color:var(--elf--selected-color);border-radius:3px;color:var(--elf--selected-font-color);height:16px;width:16px}.elf--grid-box-editor .grid-box-editor-item .item .repeat button svg{fill:currentColor}.elf--grid-box-editor .grid-box-editor-item .item[data-repeat-type=auto]>.count,.elf--grid-box-editor .grid-box-editor-item .item[data-repeat-type=auto]>.value,.elf--grid-box-editor .grid-box-editor-item .item[data-repeat-type=length]>.count,.elf--grid-box-editor .grid-box-editor-item .item[data-repeat-type=none]>.count,.elf--grid-box-editor .grid-box-editor-item .item[data-repeat-type=none]>.value{visibility:hidden}.elf--grid-box-editor .grid-box-editor-item .item .tools{padding:4px 0}")();
   const REG_CSS_UNIT = /(auto)|(repeat\([^)]*\))|(([\d.]+)(px|pt|fr|r?em|deg|vh|vw|%))/gi;
   class GridBoxEditor extends editor.EditorElement {
     getLayoutItemOptions() {
@@ -31537,7 +32957,7 @@ ${tabString}${it.properties.map((p) => {
       this.modifyData();
     }
   }
-  var GridGrowToolView$1 = "";
+  var GridGrowToolView$1 = /* @__PURE__ */ (() => ".elf--grid-grow-tool-view{--cell-size:20px;--cell-padding-size:6px;--cell-color:#ff424d;--cell-grid-item-color:gray;bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--grid-grow-tool-view[data-drag-target-item=true] .grid-item-tool{visibility:hidden}.elf--grid-grow-tool-view[data-grid-layout-own=false] .grid-item-tool{opacity:0;transition:opacity .2s linear}.elf--grid-grow-tool-view[data-grid-layout-own=false] .grid-item-tool.selected,.elf--grid-grow-tool-view[data-grid-layout-own=false] .grid-item-tool:hover{opacity:1}.elf--grid-grow-tool-view .layout-pointer{background-color:#000;border-radius:4px;color:#fff;display:inline-block;left:0;padding:2px 4px;position:absolute;top:0;transform:translateX(-50%)}.elf--grid-grow-tool-view .layout-rect{position:absolute}.elf--grid-grow-tool-view .layout-rect .grid-item{align-items:center;border:1px dashed var(--cell-grid-item-color);box-sizing:border-box;display:flex;justify-content:center}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column{align-items:center;box-sizing:border-box;display:flex;height:var(--cell-size);justify-content:center;left:1px;overflow:hidden;position:relative;top:calc(var(--cell-size)*-1 - var(--cell-padding-size))}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner>.item{overflow:hidden;position:relative}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner>.item>span{align-items:center;bottom:0;display:flex;justify-content:center;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner .drag-handle{height:100%;width:14px}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner .drag-handle.left{left:2px}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner .drag-handle.right{cursor:pointer;display:grid;grid-template-columns:1fr 1fr;right:2px;width:40px}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner .drag-handle.right>*{height:var(--cell-size);pointer-events:all;position:relative;width:var(--cell-size)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.column .grid-item-tool-inner .drag-handle.right>:hover{filter:drop-shadow(0 0 1px black)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row{align-items:center;box-sizing:border-box;cursor:ns-resize;display:flex;justify-content:center;left:calc(var(--cell-size)*-1 - var(--cell-padding-size));overflow:hidden;padding-bottom:1px;padding-top:1px;position:relative;width:var(--cell-size)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .item{transform:rotate(-90deg)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle{height:40px;width:100%}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle.top{top:0}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle.bottom{bottom:2px;cursor:pointer}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle.bottom>*{height:20px;position:relative}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle.bottom:hover{filter:drop-shadow(0 0 1px black)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool{color:var(--elf--selected-font-color);cursor:ew-resize;pointer-events:all}.elf--grid-grow-tool-view .layout-rect .grid-item-tool svg{height:16px!important;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:16px!important}.elf--grid-grow-tool-view .layout-rect .grid-item-tool svg path,.elf--grid-grow-tool-view .layout-rect .grid-item-tool svg use{fill:currentColor}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.append{background-color:var(--cell-color);border-radius:2px;cursor:pointer;height:var(--cell-size);position:absolute;width:var(--cell-size)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.append.column-plus{right:calc(var(--cell-size)*-1 - var(--cell-padding-size));top:calc(var(--cell-size)*-1 - var(--cell-padding-size))}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.append.row-plus{bottom:calc(var(--cell-size)*-1 - var(--cell-padding-size));left:calc(var(--cell-size)*-1 - var(--cell-padding-size))}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner{flex-direction:column}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle.bottom{display:inline-block}.elf--grid-grow-tool-view .layout-rect .grid-item-tool.row .grid-item-tool-inner .drag-handle.bottom>*{display:block}.elf--grid-grow-tool-view .layout-rect .grid-item-tool .grid-item-tool-inner{background-color:var(--cell-color);border-radius:2px;box-sizing:border-box;display:flex;height:100%;margin-left:1px;margin-right:1px;pointer-events:all;position:relative;width:100%}.elf--grid-grow-tool-view .layout-rect .grid-item-tool .grid-item-tool-inner .item{align-items:center;display:flex;flex:1 1 auto;justify-content:center}.elf--grid-grow-tool-view .layout-rect .grid-item-tool .grid-item-tool-inner .item:hover{background-color:var(--elf--selected-color)}.elf--grid-grow-tool-view .layout-rect .grid-item-tool .grid-item-tool-inner .drag-handle{align-items:center;display:flex;justify-content:center}.elf--grid-grow-tool-view .gap-tool{background-image:repeating-linear-gradient(135deg,rgba(96,108,188,0),rgba(96,108,188,0) 6px,var(--cell-color) 6px,var(--cell-color) 7px);cursor:ew-resize;opacity:0;pointer-events:all;position:absolute}.elf--grid-grow-tool-view .gap-tool.row-gap{cursor:ns-resize}.elf--grid-grow-tool-view .gap-tool:hover{opacity:1}")();
   class Grid {
     static parseStyle(value) {
       const units = [];
@@ -32239,7 +33659,7 @@ ${tabString}${it.properties.map((p) => {
       this.refresh();
     }
   }
-  var GridLayoutEditor$1 = "";
+  var GridLayoutEditor$1 = /* @__PURE__ */ (() => ".elf--grid-layout-editor{padding:0 10px 10px}.elf--grid-layout-editor .grid-layout-item{margin-bottom:5px;margin-top:5px}.elf--grid-layout-editor .grid-layout-item>.label{margin-bottom:5px;padding:4px}")();
   class GridLayoutEditor extends editor.EditorElement {
     modifyData(key, value) {
       this.parent.trigger(this.props.onchange, key, value);
@@ -32301,7 +33721,7 @@ ${tabString}${it.properties.map((p) => {
       this.modifyData(key, value, params);
     }
   }
-  var LayoutProperty$1 = "";
+  var LayoutProperty$1 = /* @__PURE__ */ (() => ".elf--layout-property .property-body{padding:0}.elf--layout-property .layout-list>[data-value]{display:none}.elf--layout-property .layout-list>[data-value].selected,.elf--layout-property .layout-list[data-selected-value=default] [data-value=default],.elf--layout-property .layout-list[data-selected-value=flex] [data-value=flex],.elf--layout-property .layout-list[data-selected-value=grid] [data-value=grid]{display:block}.elf--layout-property .layout-list .label{padding:10px 0}")();
   class LayoutProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("layout.property.title");
@@ -32392,7 +33812,7 @@ ${tabString}${it.properties.map((p) => {
       this.refresh();
     }
   }
-  var ResizingItemProperty$1 = "";
+  var ResizingItemProperty$1 = /* @__PURE__ */ (() => '.elf--resizing-item-property .resizing-mode{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:100px 1fr;padding-bottom:10px}.elf--resizing-item-property .resizing-mode-box{border:1px solid var(--elf--input-border-color);border-radius:2px;height:63px;margin-left:10px;position:relative;width:63px}.elf--resizing-item-property .resizing-mode-box .rect{height:100%;position:relative;width:100%}.elf--resizing-item-property .resizing-mode-box .rect .inner-rect{border:1px solid var(--elf--font-color);height:30px;pointer-events:none;position:absolute;width:30px}.elf--resizing-item-property .resizing-mode-box .tool{cursor:pointer;height:100%;pointer-events:all;position:absolute;width:100%}.elf--resizing-item-property .resizing-mode-box .vertical{height:100%;left:50%;position:absolute;top:0;transform:translateX(-50%);width:50%}.elf--resizing-item-property .resizing-mode-box .horizontal{height:50%;left:0;position:absolute;top:50%;transform:translateY(-50%);width:100%}.elf--resizing-item-property .resizing-mode-box .vertical-top{display:flex;height:10px;justify-content:center;left:50%;opacity:0;position:absolute;top:0;transform:translateX(-50%);width:100%}.elf--resizing-item-property .resizing-mode-box .vertical-bottom{bottom:0;display:flex;height:10px;justify-content:center;left:50%;opacity:0;position:absolute;transform:translateX(-50%);width:100%}.elf--resizing-item-property .resizing-mode-box .horizontal-left{display:flex;height:100%;justify-content:center;left:1px;opacity:0;position:absolute;top:50%;transform:translateY(-50%);width:10px}.elf--resizing-item-property .resizing-mode-box .horizontal-right{display:flex;height:100%;justify-content:center;opacity:0;position:absolute;right:1px;top:50%;transform:translateY(-50%);width:10px}.elf--resizing-item-property .resizing-mode-box:hover .horizontal-left,.elf--resizing-item-property .resizing-mode-box:hover .horizontal-right,.elf--resizing-item-property .resizing-mode-box:hover .vertical-bottom,.elf--resizing-item-property .resizing-mode-box:hover .vertical-top{background-color:var(--elf--selected-hover-color);opacity:1}.elf--resizing-item-property .resizing-mode-box:hover .horizontal-left svg,.elf--resizing-item-property .resizing-mode-box:hover .horizontal-right svg,.elf--resizing-item-property .resizing-mode-box:hover .vertical-bottom svg,.elf--resizing-item-property .resizing-mode-box:hover .vertical-top svg{color:var(--elf--font-color)}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed] .inner-rect{left:50%;top:50%;transform:translate(-50%,-50%)}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fill-container] .inner-rect{height:100%;left:50%;top:50%;transform:translate(-50%,-50%);width:50%}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fill-container] .vertical-bottom,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fill-container] .vertical-top{opacity:1}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fill-container] .vertical-bottom svg,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fill-container] .vertical-top svg{color:var(--elf--font-color)}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fixed] .inner-rect{height:50%;left:50%;top:50%;transform:translate(-50%,-50%);width:100%}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fixed] .horizontal-left,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fixed] .horizontal-right{opacity:1}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fixed] .horizontal-left svg,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fixed] .horizontal-right svg{color:var(--elf--font-color)}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .inner-rect{bottom:0;height:100%;left:0;right:0;top:0;transform:translate(0);width:100%}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .horizontal-left,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .horizontal-right,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .vertical-bottom,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .vertical-top{opacity:1}.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .horizontal-left svg,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .horizontal-right svg,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .vertical-bottom svg,.elf--resizing-item-property .resizing-mode-box[data-horizontal=fill-container][data-vertical=fill-container] .vertical-top svg{color:var(--elf--font-color)}.elf--resizing-item-property .has-label-grid{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:20px 1fr;margin-bottom:5px}.elf--resizing-item-property .has-label-grid>label{display:inline-block;position:relative;vertical-align:middle}.elf--resizing-item-property .has-label-grid>label[data-direction=vertical]{transform:rotate(-90deg)}.elf--resizing-item-property .has-label-grid>label:before{border-left:1px solid var(--elf--font-color);border-right:1px solid var(--elf--font-color);height:10px}.elf--resizing-item-property .has-label-grid>label:after,.elf--resizing-item-property .has-label-grid>label:before{content:"";display:inline-block;margin-right:4px;position:absolute;top:50%;transform:translateY(-50%);vertical-align:middle;width:16px}.elf--resizing-item-property .has-label-grid>label:after{border-top:1px solid var(--elf--font-color);height:1px}')();
   class ResizingItemProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("layout.property.resizing.self.title");
@@ -32511,7 +33931,7 @@ ${tabString}${it.properties.map((p) => {
       }
     }
   }
-  var ResizingProperty$1 = "";
+  var ResizingProperty$1 = /* @__PURE__ */ (() => '.elf--resizing-property .resizing-mode{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:70px 1fr}.elf--resizing-property .resizing-mode-box{border:1px solid var(--elf--input-border-color);border-radius:2px;height:63px;position:relative;width:63px}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content] .rect .inner-rect{border-color:var(--elf--input-border-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect .vertical,.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect>.horizontal{display:none}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect .vertical svg,.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect>.horizontal svg{color:var(--elf--input-border-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect .inner-rect{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect svg{color:var(--elf--input-border-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect:hover .horizontal,.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect:hover .vertical{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect:hover .horizontal:hover svg,.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=fixed]>.rect:hover .vertical:hover svg{color:var(--elf--font-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect{border-color:transparent}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect .inner-rect{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect .inner-vertical-rect{display:none}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect .inner-horizontal-rect{border-color:var(--elf--font-color);display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect .vertical{display:none}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect .vertical svg{color:var(--elf--input-border-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect:hover .horizontal,.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect:hover .vertical{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect:hover .horizontal:hover svg,.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=fixed]>.rect:hover .vertical:hover svg{color:var(--elf--font-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect{border-color:transparent}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect .inner-rect{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect .inner-horizontal-rect{display:none}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect .inner-vertical-rect{border-color:var(--elf--font-color);display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect .horizontal{display:none}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect .horizontal svg{color:var(--elf--input-border-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect:hover .horizontal,.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect:hover .vertical{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect:hover .horizontal:hover svg,.elf--resizing-property .resizing-mode-box[data-horizontal=fixed][data-vertical=hug-content]>.rect:hover .vertical:hover svg{color:var(--elf--font-color)}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect{border-color:transparent}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect .inner-horizontal-rect,.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect .inner-vertical-rect{display:none}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect .inner-rect{border-color:var(--elf--font-color);display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect:hover .vertical,.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect:hover>.horizontal{display:block}.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect:hover .vertical:hover svg,.elf--resizing-property .resizing-mode-box[data-horizontal=hug-content][data-vertical=hug-content]>.rect:hover>.horizontal:hover svg{color:var(--elf--font-color)}.elf--resizing-property .resizing-mode-box>.rect{border:1px solid var(--elf--font-color);box-sizing:border-box;display:flex;flex-direction:column;font-size:10px;height:42px;left:10px;position:absolute;top:10px;width:42px}.elf--resizing-property .resizing-mode-box>.rect svg{height:12px;width:12px}.elf--resizing-property .resizing-mode-box>.rect svg use{fill:currentColor}.elf--resizing-property .resizing-mode-box>.rect>.vertical{bottom:0;left:calc(50% - 9px);position:absolute;top:0;width:18px}.elf--resizing-property .resizing-mode-box>.rect>.vertical:hover{background-color:var(--elf--selected-hover-color)}.elf--resizing-property .resizing-mode-box>.rect>.vertical:hover svg{color:var(--elf--font-color)}.elf--resizing-property .resizing-mode-box>.rect>.vertical .vertical-top{display:flex;height:12px;justify-content:center;left:calc(50% - 9px);position:absolute;top:0;width:100%}.elf--resizing-property .resizing-mode-box>.rect>.vertical .vertical-bottom{bottom:0;display:flex;height:12px;justify-content:center;left:calc(50% - 9px);position:absolute;width:100%}.elf--resizing-property .resizing-mode-box>.rect>.horizontal{align-items:center;display:flex;height:16px;justify-content:center;left:0;position:absolute;right:0;top:calc(50% - 8px)}.elf--resizing-property .resizing-mode-box>.rect>.horizontal:hover{background-color:var(--elf--selected-hover-color)}.elf--resizing-property .resizing-mode-box>.rect>.horizontal:hover svg{color:var(--elf--font-color)}.elf--resizing-property .resizing-mode-box>.rect>.horizontal .horizontal-left{align-items:center;display:flex;height:20px;justify-content:center;left:0;position:absolute;top:calc(50% - 9px);width:12px}.elf--resizing-property .resizing-mode-box>.rect>.horizontal .horizontal-right{align-items:center;display:flex;height:20px;justify-content:center;position:absolute;right:0;top:calc(50% - 9px);width:12px}.elf--resizing-property .resizing-mode-box>.rect .inner-rect{background-color:var(--elf--background-color);border:1px solid transparent;box-sizing:border-box;display:none;font-size:10px;height:18px;left:11px;pointer-events:none;position:absolute;top:11px;width:18px}.elf--resizing-property .resizing-mode-box>.rect .inner-vertical-rect{height:17px;left:0;right:0;top:11px}.elf--resizing-property .resizing-mode-box>.rect .inner-horizontal-rect,.elf--resizing-property .resizing-mode-box>.rect .inner-vertical-rect{background-color:transparent;border:1px solid transparent;box-sizing:border-box;display:none;font-size:10px;pointer-events:none;position:absolute}.elf--resizing-property .resizing-mode-box>.rect .inner-horizontal-rect{height:100%;left:calc(50% - 9px);top:0;width:18px}.elf--resizing-property .has-label-grid{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:20px 1fr;margin-bottom:5px}.elf--resizing-property .has-label-grid>label{display:inline-block;position:relative;vertical-align:middle}.elf--resizing-property .has-label-grid>label[data-direction=vertical]{transform:rotate(-90deg)}.elf--resizing-property .has-label-grid>label:before{border-left:1px solid var(--elf--font-color);border-right:1px solid var(--elf--font-color);height:10px}.elf--resizing-property .has-label-grid>label:after,.elf--resizing-property .has-label-grid>label:before{content:"";display:inline-block;margin-right:4px;position:absolute;top:50%;transform:translateY(-50%);vertical-align:middle;width:16px}.elf--resizing-property .has-label-grid>label:after{border-top:1px solid var(--elf--font-color);height:1px}')();
   class ResizingProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("layout.property.resizing.title");
@@ -32615,7 +34035,7 @@ ${tabString}${it.properties.map((p) => {
       });
     }
   }
-  function layout(editor2) {
+  function layout$1(editor2) {
     editor2.registerElement({
       FlexLayoutEditor,
       GridLayoutEditor,
@@ -32633,7 +34053,7 @@ ${tabString}${it.properties.map((p) => {
       GridGrowToolView
     }, CanvasViewToolLevel.LAYOUT_TOOL);
   }
-  var LineView$1 = "";
+  var LineView$1 = /* @__PURE__ */ (() => '.elf--line-view{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--line-view .horizontal-line{bottom:0;cursor:ew-resize;left:-1px;pointer-events:all;position:absolute;top:0;width:3px}.elf--line-view .horizontal-line:before{background-color:var(--elf--selected-color);bottom:0;content:"";left:50%;pointer-events:none;position:absolute;top:0;transform:translateX(-50%);width:1px}.elf--line-view .vertical-line{cursor:ns-resize;height:3px;left:0;pointer-events:all;position:absolute;right:0;top:-1px}.elf--line-view .vertical-line:before{background-color:var(--elf--selected-color);content:"";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:50%;transform:translateY(-50%)}')();
   class LineView extends editor.EditorElement {
     template() {
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -33087,7 +34507,7 @@ ${tabString}${it.properties.map((p) => {
       }
     ]);
   }
-  var DrawManager$1 = "";
+  var DrawManager$1 = /* @__PURE__ */ (() => ".elf--draw-manager{background-color:var(--elf--background-color);border-radius:4px;color:var(--elf--font-color);display:none;height:100%;outline:none;padding:4px 10px 4px 54px;pointer-events:all;text-align:center;white-space:nowrap;width:550px}.elf--draw-manager .text{display:inline-block}.elf--draw-manager .split{border-right:1px solid hsla(0,0%,100%,.3);display:inline-block;height:20px;margin-right:2px;vertical-align:middle;width:3px}.elf--draw-manager .tools{display:inline-block;height:100%;white-space:nowrap}.elf--draw-manager .tools.left{bottom:0;left:-2px;position:absolute;top:0}.elf--draw-manager .tools.left button{border-bottom-left-radius:4px;border-top-left-radius:4px;height:100%;padding:4px 10px;text-decoration:none;text-shadow:1px 1px 2px rgba(0,0,0,.95);width:auto}.elf--draw-manager .tools>div{display:inline-block;margin-left:10px;vertical-align:middle;white-space:inherit}.elf--draw-manager .tools>div>*{display:inline-block;vertical-align:middle;width:auto}.elf--draw-manager .tools>div label{line-height:1.6;padding:3px 2px;text-align:right;vertical-align:middle}.elf--draw-manager .tools>div .number-input-editor,.elf--draw-manager .tools>div .number-input-editor .range--editor-type{display:inline-block}.elf--draw-manager .tools>div .number-input-editor .range--editor-type input[type=number]{background-color:var(--elf--border-color)}.elf--draw-manager .tools>div .fill-single-editor .preview{border:1px solid var(--elf--selected-color);height:20px;overflow:hidden;width:20px}.elf--draw-manager>*{vertical-align:middle}")();
   class DrawManager extends editor.EditorElement {
     initState() {
       return {
@@ -33210,7 +34630,7 @@ ${tabString}${it.properties.map((p) => {
       this.emit(message);
     }
   }
-  var PathDrawView$1 = "";
+  var PathDrawView$1 = /* @__PURE__ */ (() => ".elf--path-draw-view{background-color:transparent;cursor:crosshair;display:none}.elf--path-draw-view,.elf--path-draw-view .path-draw-container{bottom:0;left:0;position:absolute;right:0;top:0}")();
   const FIELDS$1 = [
     "fill",
     "fill-opacity",
@@ -33449,7 +34869,7 @@ ${tabString}${it.properties.map((p) => {
       DrawManager
     });
   }
-  var PathEditorView$1 = "";
+  var PathEditorView$1 = /* @__PURE__ */ (() => '.elf--path-editor-view{background-color:transparent;bottom:0;cursor:crosshair;display:none;left:0;position:absolute;right:0;top:0}.elf--path-editor-view .segment-box{background-color:rgba(158,136,255,.2);border:.5px solid rgba(92,63,255,.9);box-sizing:border-box;left:-10000px;pointer-events:none;position:absolute}.elf--path-editor-view .canvas{height:100%;left:0;position:absolute;top:0;width:100%}.elf--path-editor-view .path-container{bottom:0;left:0;position:absolute;right:0;top:0}.elf--path-editor-view .path-container:not(.modify) path.object,.elf--path-editor-view .path-container:not(.segment-move) path.object{stroke:#848484}.elf--path-editor-view .path-container.split-panel{pointer-events:none}.elf--path-editor-view .path-container.has-transform{background-color:var(--elf--path-background-color)}.elf--path-editor-view .path-container.path{cursor:crosshair}.elf--path-editor-view .path-container.path svg path.object{pointer-events:stroke}.elf--path-editor-view .path-container.alt svg circle,.elf--path-editor-view .path-container.segment-move{cursor:move}.elf--path-editor-view .path-container.transform svg .snap-path,.elf--path-editor-view .path-container.transform svg circle,.elf--path-editor-view .path-container.transform svg line,.elf--path-editor-view .path-container.transform svg rect,.elf--path-editor-view .path-container.transform svg text{display:none}.elf--path-editor-view .path-container.modify,.elf--path-editor-view .path-container.segment-move{cursor:default}.elf--path-editor-view .path-container.modify svg path.object,.elf--path-editor-view .path-container.segment-move svg path.object{pointer-events:stroke}.elf--path-editor-view .path-container.box svg path.object{stroke:var(--elf--border-color)}.elf--path-editor-view .path-container.has-one-stroke-width svg path.object{stroke:transparent}.elf--path-editor-view .path-container.is-control svg path.path-area{display:none}.elf--path-editor-view .path-tool{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--path-editor-view .path-tool .transform-manager{display:none;pointer-events:all;position:absolute}.elf--path-editor-view .path-tool .transform-manager[data-show=true]{display:inline-block}.elf--path-editor-view .path-tool .transform-manager[data-position="to rotate"]{box-shadow:none}.elf--path-editor-view .path-tool .transform-manager[data-position="to rotate"] .transform-tool-item:not([data-position="to rotate"]){display:none}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item{background-color:hsla(0,0%,100%,.5);box-shadow:0 0 0 1px #7b7b7b;display:inline-block;height:8px;position:absolute;transform:translate(-50%,-50%);width:8px}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to skewX"]{background-color:#fff;cursor:move;left:calc(50% - 20px);top:-20px;transform:skewX(10deg)}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to skewY"]{background-color:#fff;cursor:move;left:calc(50% + 20px);top:-20px;transform:skewY(10deg)}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to rotate"]{background-color:#fff;border-radius:100%;cursor:move;left:50%;top:-20px}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to move"]{background-color:transparent;bottom:0;box-shadow:0 0 0 1px var(--elf--selected-color);cursor:move;height:auto;left:0;right:0;top:0;transform:none;width:auto}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to top left"]{cursor:nwse-resize;left:0;top:0}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to top right"]{cursor:nesw-resize;left:100%;top:0}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to top"]{cursor:ns-resize;left:50%;top:0}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to left"]{cursor:ew-resize;left:0;top:50%}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to right"]{cursor:ew-resize;left:100%;top:50%}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to bottom"]{cursor:ns-resize;left:50%;top:100%}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to bottom left"]{cursor:nesw-resize;left:0;top:100%}.elf--path-editor-view .path-tool .transform-manager .transform-tool-item[data-position="to bottom right"]{cursor:nwse-resize;left:100%;top:100%}.elf--path-editor-view svg{height:100%;width:100%}.elf--path-editor-view svg line{stroke-width:1;content-visibility:auto}.elf--path-editor-view svg line[data-guide=true]{stroke:var(--elf--path-segment-stroke-color);pointer-events:none}.elf--path-editor-view svg line[data-distance=true]{stroke:var(--elf--selected-color);stroke-dasharray:2 2;pointer-events:none}.elf--path-editor-view svg circle{fill:#fff;stroke:var(--elf--path-guide-color);stroke-width:1;content-visibility:auto;cursor:move}.elf--path-editor-view svg circle.curve{stroke:var(--elf--path-segment-stroke-color)}.elf--path-editor-view svg circle[data-is-first=true]{fill:red!important;z-index:1}.elf--path-editor-view svg circle[data-is-second=true]{fill:blue!important;z-index:1}.elf--path-editor-view svg circle[data-is-last=true]{fill:red!important;z-index:0}.elf--path-editor-view svg circle[data-selected=true]{fill:var(--elf--selected-color);stroke:#fff;r:5;stroke-width:2}.elf--path-editor-view svg circle[data-selected=true][data-is-first=true]{fill:red!important;stroke:#fff}.elf--path-editor-view svg circle[data-selected=true][data-is-second=true]{fill:blue!important;stroke:#fff}.elf--path-editor-view svg circle[data-selected=true][data-is-last=true]{fill:red!important;stroke:#fff}.elf--path-editor-view svg circle[data-segment-point=endPoint]:not([data-selected=true]),.elf--path-editor-view svg circle[data-segment-point=reversePoint]:not([data-selected=true]){r:3}.elf--path-editor-view svg circle.split-circle{fill:var(--elf--selected-color);stroke:#fff;pointer-events:none}.elf--path-editor-view svg .svg-canvas{fill:transparent;stroke:var(--elf--selected-border-color);stroke-width:1;pointer-events:none}.elf--path-editor-view svg path{fill:transparent;content-visibility:auto}.elf--path-editor-view svg path.path-area{stroke-width:0}.elf--path-editor-view svg path.path-area.selected,.elf--path-editor-view svg path.path-area:hover{fill:url(#stripe)}.elf--path-editor-view svg path.curve{fill:#fff;stroke-width:1;stroke:var(--elf--path-segment-stroke-color);cursor:move}.elf--path-editor-view svg path.curve[data-selected=true]{fill:var(--elf--selected-color);stroke:#fff}.elf--path-editor-view svg path.guide,.elf--path-editor-view svg path.segment{fill:transparent;stroke:var(--elf--selected-color);stroke-width:1}.elf--path-editor-view svg path.object{fill:transparent;stroke-width:1}.elf--path-editor-view svg path.split-path{fill:transparent;stroke:#959595;stroke-width:2;pointer-events:stroke}.elf--path-editor-view svg path.split-path:hover{stroke:var(--elf--selected-color);stroke-width:2;cursor:copy}.elf--path-editor-view svg path.snap-path{fill:transparent;stroke:var(--elf--selected-color);stroke-width:1;filter:drop-shadow(2px 4px 6px white)}.elf--path-editor-view svg text{fill:var(--elf--selected-color);stroke:var(--elf--selected-color);stroke-width:.5;font-weight:700;pointer-events:none}')();
   class SegmentManager {
     constructor(viewport) {
       this.viewport = viewport;
@@ -35285,7 +36705,7 @@ ${tabString}${it.properties.map((p) => {
       this.$el.focus();
     }
   }
-  var PathManager$1 = "";
+  var PathManager$1 = /* @__PURE__ */ (() => ".elf--path-manager{background:#1b2124;border-radius:4px;box-shadow:0 0 5px rgba(0,0,0,.05),0 25px 35px rgba(0,0,0,.03);color:var(--elf--selected-font-color);display:none;height:100%;outline:none;padding:4px 10px 4px 54px;pointer-events:all;text-align:center;white-space:nowrap}.elf--path-manager button{box-sizing:border-box;display:inline-block;height:auto;height:34px;margin:0 2px;text-decoration:underline;vertical-align:middle;white-space:nowrap;width:auto;width:34px}.elf--path-manager button svg{height:20px;vertical-align:middle;width:20px}.elf--path-manager .text{display:inline-block}.elf--path-manager .split{border-right:1px solid hsla(0,0%,100%,.3);display:inline-block;height:20px;margin-right:2px;vertical-align:middle;width:3px}.elf--path-manager .subpath{background-color:var(--elf--background-color);border-radius:4px;display:inline-block;left:0;padding:4px 2px;position:absolute;right:0;text-align:left;top:calc(100% + 2px)}.elf--path-manager .subpath button{box-sizing:border-box;display:inline-block;margin:0 2px;text-decoration:underline;white-space:nowrap}.elf--path-manager .subpath button,.elf--path-manager .subpath button svg{height:24px;vertical-align:middle;width:24px}.elf--path-manager .tools{display:inline-block;height:100%;white-space:nowrap}.elf--path-manager .tools.left{bottom:0;left:-2px;position:absolute;top:0}.elf--path-manager .tools.left button{border-bottom-left-radius:4px;border-top-left-radius:4px;color:var(--elf--selected-font-color);height:100%;padding:4px 10px;text-decoration:none;text-shadow:1px 1px 2px rgba(0,0,0,.95);width:auto}.elf--path-manager .tools[data-selected-value=modify] button[data-value=modify],.elf--path-manager .tools[data-selected-value=path] button[data-value=path],.elf--path-manager .tools[data-selected-value=transform] button[data-value=transform],.elf--path-manager .tools[data-selected-value=warp] button[data-value=warp]{color:var(--elf--selected-color)}.elf--path-manager .tools>div{display:inline-block;height:100%;padding:5px 0;vertical-align:middle}.elf--path-manager .tools>div label{line-height:20px;padding:3px 2px;text-align:right;width:auto}.elf--path-manager .tools>div .number-input-editor,.elf--path-manager .tools>div .number-input-editor .range--editor-type{display:inline-block}.elf--path-manager .tools>div .number-input-editor .range--editor-type input[type=number]{background-color:var(--elf--border-color)}.elf--path-manager .tools>div .fill-single-editor{display:inline-block;vertical-align:middle}.elf--path-manager .tools>div .fill-single-editor label{vertical-align:middle}.elf--path-manager .tools>div .fill-single-editor .preview{border:1px solid var(--elf--selected-color);height:18px;overflow:hidden;width:18px}.elf--path-manager>*{vertical-align:middle}")();
   const MODES = {
     "segment-move": "modify",
     modify: "modify",
@@ -35390,7 +36810,7 @@ ${tabString}${it.properties.map((p) => {
       PathManager
     });
   }
-  var PathToolProperty$1 = "";
+  var PathToolProperty$1 = /* @__PURE__ */ (() => ".elf--boolean-item{padding:8px 5px 10px}.elf--boolean-item>div{grid-column-gap:10px;display:grid;grid-template-columns:1fr 1fr;height:30px;padding:4px 0;text-align:left}.elf--boolean-item>div.divider{background-color:var(--elf--property-border-color);font-size:0;height:1px;margin:10px 0;padding:0}.elf--boolean-item button{background-color:transparent;background-image:none;border:0;box-shadow:none;flex:1 1 auto;font-size:11px;height:24px;text-align:left;vertical-align:middle;width:auto}.elf--boolean-item button[data-no-title=true] .title{display:none}.elf--boolean-item button svg{height:20px;vertical-align:middle;width:20px}.elf--boolean-item .title{color:#999}")();
   class PathToolProperty extends editor.BaseProperty {
     components() {
       return {
@@ -35463,7 +36883,7 @@ ${tabString}${it.properties.map((p) => {
       PathToolProperty
     });
   }
-  var PatternEditor$1 = "";
+  var PatternEditor$1 = /* @__PURE__ */ (() => ".elf--pattern-editor .label{height:20px;margin-top:2px}.elf--pattern-editor .label.hide{display:none}.elf--pattern-editor .label label{padding-left:5px;vertical-align:middle}.elf--pattern-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--pattern-editor .pattern-list{-moz-column-gap:4px;column-gap:4px;display:flex;flex-wrap:wrap;padding-bottom:10px;row-gap:4px}.elf--pattern-editor .pattern-list:empty{display:none}.elf--pattern-editor .pattern-list .pattern-item{box-shadow:0 0 0 1px var(--elf--border-color);display:inline-block;position:relative;text-align:center}.elf--pattern-editor .pattern-list .pattern-item.selected{background-color:var(--elf--border-color)}.elf--pattern-editor .pattern-list .pattern-item:hover .tools{display:inline-block}.elf--pattern-editor .pattern-list .pattern-item .tools{background-color:hsla(0,0%,100%,.9);color:var(--elf--selected-color);display:none;position:absolute;right:0;top:0}")();
   class PatternEditor extends editor.EditorElement {
     initState() {
       return {
@@ -35581,7 +37001,7 @@ ${tabString}${it.properties.map((p) => {
       this.refresh();
     }
   }
-  var PatternInfoPopup$1 = "";
+  var PatternInfoPopup$1 = /* @__PURE__ */ (() => ".pattern-info-popup{width:240px}.pattern-info-popup .box>div{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:1fr}.pattern-info-popup .box>div.grid-2{grid-template-columns:1fr 1fr}")();
   class PatternInfoPopup extends editor.BasePopup {
     getClassName() {
       return "pattern-info-popup";
@@ -35811,7 +37231,7 @@ ${tabString}${it.properties.map((p) => {
       this.showByRect(rect2);
     }
   }
-  var PatternProperty$1 = "";
+  var PatternProperty$1 = /* @__PURE__ */ (() => ".el--pattern-property .pattern-property{display:flex}.el--pattern-property .add-tools{opacity:.3;transition:opacity .2s}.el--pattern-property .add-tools:hover{opacity:1}.el--pattern-property .add-tools svg{height:20px;width:20px}")();
   class PatternProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("pattern.property.title");
@@ -35867,7 +37287,7 @@ ${tabString}${it.properties.map((p) => {
       this.load("$patternSelect");
     }
   }
-  var PatternSizeEditor$1 = "";
+  var PatternSizeEditor$1 = /* @__PURE__ */ (() => ".elf--pattern-size-editor{height:60px;text-align:center;width:60px}.elf--pattern-size-editor .preview{height:100%}.elf--pattern-size-editor .preview .mini-view{background-color:#fff;height:100%}.elf--pattern-size-editor .preview .mini-view .color-view{cursor:pointer;height:100%}")();
   class PatternSizeEditor extends editor.EditorElement {
     initState() {
       return {
@@ -35978,7 +37398,7 @@ ${tabString}${it.properties.map((p) => {
       PatternInfoPopup
     });
   }
-  var PositionProperty$1 = "";
+  var PositionProperty$1 = /* @__PURE__ */ (() => ".grid-layout{-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-columns:1fr 1fr 20px;margin-bottom:4px}")();
   const DEFAULT_SIZE = 0;
   class PositionProperty extends editor.BaseProperty {
     getTitle() {
@@ -36122,7 +37542,7 @@ ${tabString}${it.properties.map((p) => {
       PositionProperty
     });
   }
-  var ProjectProperty$1 = "";
+  var ProjectProperty$1 = /* @__PURE__ */ (() => ".elf--project-list{margin:0!important}.elf--project-list .project-item{cursor:pointer;padding:5px 10px!important}.elf--project-list .project-item .detail{grid-column-gap:3px;display:grid;grid-template-columns:1fr 60px}.elf--project-list .project-item .detail label{cursor:pointer;padding:2px 0}.elf--project-list .project-item .detail .tools{text-align:right}.elf--project-list .project-item.selected{background-color:var(--elf--selected-color-2);color:var(--elf--selected-font-color)}")();
   class ProjectProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("project.property.title");
@@ -36202,6 +37622,5229 @@ ${tabString}${it.properties.map((p) => {
   function project(editor2) {
     editor2.registerElement({
       ProjectProperty
+    });
+  }
+  const blend_list = [
+    BlendMode.NORMAL,
+    BlendMode.MULTIPLY,
+    BlendMode.SCREEN,
+    BlendMode.OVERLAY,
+    BlendMode.DARKEN,
+    BlendMode.LIGHTEN,
+    BlendMode.COLOR_DODGE,
+    BlendMode.COLOR_BURN,
+    BlendMode.HARD_LIGHT,
+    BlendMode.SOFT_LIGHT,
+    BlendMode.DIFFERENCE,
+    BlendMode.EXCLUSION,
+    BlendMode.HUE,
+    BlendMode.SATURATION,
+    BlendMode.COLOR,
+    BlendMode.LUMINOSITY
+  ];
+  class BlendSelectEditor extends editor.SelectEditor {
+    getBlendList() {
+      return blend_list.map((it) => {
+        return { value: it, text: this.$i18n(`blend.${it}`) };
+      });
+    }
+    initState() {
+      return __spreadProps(__spreadValues({}, super.initState()), {
+        options: this.getBlendList()
+      });
+    }
+  }
+  var BoxShadowEditor$1 = /* @__PURE__ */ (() => ".elf--box-shadow-editor{grid-template-columns:1fr!important;margin-bottom:10px;margin-left:-6px}.elf--box-shadow-editor .label{height:20px;margin-top:2px}.elf--box-shadow-editor .label.hide{display:none}.elf--box-shadow-editor .label label{font-size:12px;padding-left:5px;vertical-align:middle}.elf--box-shadow-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--box-shadow-editor .tools select{display:inline-block;width:100px!important}.elf--box-shadow-editor .shadow-item{grid-column-gap:2px;border:1px solid var(--elf--property-border-color);display:grid;grid-template-columns:20px 1fr 30px;text-align:center}.elf--box-shadow-editor .shadow-item .shadow-content{display:grid;grid-template-columns:60px 1fr 1fr;grid-template-rows:auto}.elf--box-shadow-editor .shadow-item>label{align-items:center;display:flex;justify-content:flex-start}.elf--box-shadow-editor .shadow-item.desc{color:var(--elf--font-color)}.elf--box-shadow-editor .shadow-item.desc .color{visibility:hidden}.elf--box-shadow-editor .shadow-item .tools{align-items:center;display:flex;justify-content:center}.elf--box-shadow-editor .shadow-item .tools:hover{background-color:var(--elf--input-inactive-color)}")();
+  class BoxShadowEditor extends editor.EditorElement {
+    initState() {
+      return {
+        boxShadows: this.props.value || []
+      };
+    }
+    template() {
+      return `
+      <div class="elf--box-shadow-editor" >
+        <div class='box-shadow-list' ref='$shadowList'></div>
+      </div>
+    `;
+    }
+    [sapa.LOAD("$shadowList") + sapa.DOMDIFF]() {
+      var arr = this.state.boxShadows.map((shadow2, index2) => {
+        return `
+        <div class="shadow-item real" data-index="${index2}">
+            <label draggable="true" data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
+            <div class="shadow-content">
+            ${sapa.createComponent("ColorViewEditor", {
+          mini: true,
+          key: "color",
+          value: shadow2.color,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}
+            ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          key: "offsetX",
+          label: "X",
+          value: shadow2.offsetX,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}          
+            ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          key: "offsetY",
+          label: "Y",
+          value: shadow2.offsetY,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}                    
+            ${sapa.createComponent("ToggleButton", {
+          mini: true,
+          key: "inset",
+          value: shadow2.inset,
+          params: index2,
+          onChange: "changeKeyValue",
+          checkedValue: BoxShadowStyle.INSET,
+          toggleLabels: [editor.iconUse("border_style"), editor.iconUse("border_style")],
+          toggleTitles: [BoxShadowStyle.INSET, BoxShadowStyle.INSET],
+          toggleValues: [BoxShadowStyle.OUTSET, BoxShadowStyle.INSET]
+        })}            
+
+            ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          label: "B",
+          key: "blurRadius",
+          value: shadow2.blurRadius,
+          params: index2,
+          onchange: "changeKeyValue"
+        })} 
+            ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          label: "S",
+          key: "spreadRadius",
+          value: shadow2.spreadRadius,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}             
+          </div>
+          <div class="tools">
+            <button type="button" class="remove" data-index="${index2}">
+              ${editor.iconUse("remove2")}
+            </button>
+          </div>
+        </div>
+      `;
+      });
+      return arr.join("");
+    }
+    modifyBoxShadow() {
+      var value = this.state.boxShadows;
+      this.parent.trigger(this.props.onchange, this.props.key, value);
+    }
+    [sapa.SUBSCRIBE("add")](shadows = void 0) {
+      if (sapa.isArray(shadows)) {
+        this.state.boxShadows.push(...shadows);
+      } else {
+        const shadowObj = {
+          color: "black",
+          inset: BoxShadowStyle.OUTSET,
+          offsetX: 2,
+          offsetY: 2,
+          blurRadius: 3,
+          spreadRadius: 1
+        };
+        this.state.boxShadows.push(shadowObj);
+      }
+      this.refresh();
+      this.modifyBoxShadow();
+    }
+    [sapa.CLICK("$add")]() {
+      this.trigger("add");
+    }
+    [sapa.DRAGSTART("$shadowList .shadow-item > label")](e) {
+      this.startIndex = +e.$dt.attr("data-index");
+    }
+    [sapa.DRAGOVER("$shadowList .shadow-item") + sapa.PREVENT]() {
+    }
+    sortItem(arr, startIndex, targetIndex) {
+      arr.splice(targetIndex + (startIndex < targetIndex ? -1 : 0), 0, ...arr.splice(startIndex, 1));
+    }
+    sortBoxShadow(startIndex, targetIndex) {
+      this.sortItem(this.state.boxShadows, startIndex, targetIndex);
+    }
+    [sapa.DROP("$shadowList .shadow-item") + sapa.PREVENT](e) {
+      var targetIndex = +e.$dt.attr("data-index");
+      this.sortBoxShadow(this.startIndex, targetIndex);
+      this.refresh();
+      this.modifyBoxShadow();
+    }
+    [sapa.CLICK("$shadowList .remove")](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.state.boxShadows.splice(index2, 1);
+      this.refresh();
+      this.modifyBoxShadow();
+    }
+    [sapa.SUBSCRIBE_SELF("changeKeyValue")](key, value, index2) {
+      var shadow2 = this.state.boxShadows[index2];
+      this.state.boxShadows[index2] = __spreadProps(__spreadValues({}, shadow2), { [key]: value });
+      this.modifyBoxShadow();
+    }
+  }
+  const colors$k = [
+    "#FFF8E1",
+    "#FFECB3",
+    "#FFE082",
+    "#FFD54F",
+    "#FFCA28",
+    "#FFC107",
+    "#FFB300",
+    "#FFA000",
+    "#FF8F00",
+    "#FF6F00",
+    "#FFE57F",
+    "#FFD740",
+    "#FFC400",
+    "#FFAB00"
+  ].map((color) => {
+    return { color };
+  });
+  var materialAmber = {
+    title: "material amber",
+    key: "material-amber",
+    execute: function() {
+      return colors$k;
+    }
+  };
+  var __glob_0_0$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialAmber
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$j = [
+    "#e3f2fd",
+    "#bbdefb",
+    "#90caf9",
+    "#64b5f6",
+    "#42a5f5",
+    "#2196f3",
+    "#1e88e5",
+    "#1976d2",
+    "#1565c0",
+    "#0d47a1",
+    "#2196f3",
+    "#82b1ff",
+    "#448aff",
+    "#2979ff",
+    "#2962ff"
+  ].map((color) => {
+    return { color };
+  });
+  var materialBlue = {
+    title: "material blue",
+    key: "material-blue",
+    execute: function() {
+      return colors$j;
+    }
+  };
+  var __glob_0_1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialBlue
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$i = [
+    "#ECEFF1",
+    "#CFD8DC",
+    "#B0BEC5",
+    "#90A4AE",
+    "#78909C",
+    "#607D8B",
+    "#546E7A",
+    "#455A64",
+    "#37474F",
+    "#263238"
+  ].map((color) => {
+    return { color };
+  });
+  var materialBluegray = {
+    title: "material bluegray",
+    key: "material-bluegray",
+    execute: function() {
+      return colors$i;
+    }
+  };
+  var __glob_0_2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialBluegray
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$h = [
+    "#EFEBE9",
+    "#D7CCC8",
+    "#BCAAA4",
+    "#A1887F",
+    "#8D6E63",
+    "#795548",
+    "#6D4C41",
+    "#5D4037",
+    "#4E342E",
+    "#3E2723"
+  ].map((color) => {
+    return { color };
+  });
+  var materialBrown = {
+    title: "material brown",
+    key: "material-brown",
+    execute: function() {
+      return colors$h;
+    }
+  };
+  var __glob_0_3$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialBrown
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$g = [
+    "#e0f7fa",
+    "#b2ebf2",
+    "#80deea",
+    "#4dd0e1",
+    "#26c6da",
+    "#00bcd4",
+    "#00acc1",
+    "#0097a7",
+    "#00838f",
+    "#006064",
+    "#00bcd4",
+    "#84ffff",
+    "#18ffff",
+    "#00e5ff",
+    "#00b8d4"
+  ].map((color) => {
+    return { color };
+  });
+  var materialCyan = {
+    title: "material cyan",
+    key: "material-cyan",
+    execute: function() {
+      return colors$g;
+    }
+  };
+  var __glob_0_4$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialCyan
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$f = [
+    "#FBE9E7",
+    "#FFCCBC",
+    "#FFAB91",
+    "#FF8A65",
+    "#FF7043",
+    "#FF5722",
+    "#F4511E",
+    "#E64A19",
+    "#D84315",
+    "#BF360C",
+    "#FF9E80",
+    "#FF6E40",
+    "#FF3D00",
+    "#DD2C00"
+  ].map((color) => {
+    return { color };
+  });
+  var materialDeeporange = {
+    title: "material deep orange",
+    key: "material-deeporange",
+    execute: function() {
+      return colors$f;
+    }
+  };
+  var __glob_0_5$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialDeeporange
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$e = [
+    "#ede7f6",
+    "#d1c4e9",
+    "#b39ddb",
+    "#9575cd",
+    "#7e57c2",
+    "#673ab7",
+    "#5e35b1",
+    "#512da8",
+    "#4527a0",
+    "#311b92",
+    "#673ab7",
+    "#b388ff",
+    "#7c4dff",
+    "#651fff",
+    "#6200ea"
+  ].map((color) => {
+    return { color };
+  });
+  var materialDeeppurple = {
+    title: "material deep purple",
+    key: "material-deeppurple",
+    execute: function() {
+      return colors$e;
+    }
+  };
+  var __glob_0_6$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialDeeppurple
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$d = [
+    "#FAFAFA",
+    "#F5F5F5",
+    "#EEEEEE",
+    "#E0E0E0",
+    "#BDBDBD",
+    "#9E9E9E",
+    "#757575",
+    "#616161",
+    "#424242",
+    "#212121"
+  ].map((color) => {
+    return { color };
+  });
+  var materialGray = {
+    title: "material gray",
+    key: "material-gray",
+    execute: function() {
+      return colors$d;
+    }
+  };
+  var __glob_0_7$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialGray
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$c = [
+    "#E8F5E9",
+    "#C8E6C9",
+    "#A5D6A7",
+    "#81C784",
+    "#66BB6A",
+    "#4CAF50",
+    "#43A047",
+    "#388E3C",
+    "#2E7D32",
+    "#1B5E20",
+    "#B9F6CA",
+    "#69F0AE",
+    "#00E676",
+    "#00C853"
+  ].map((color) => {
+    return { color };
+  });
+  var materialGreen = {
+    title: "material green",
+    key: "material-green",
+    execute: function() {
+      return colors$c;
+    }
+  };
+  var __glob_0_8$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialGreen
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$b = [
+    "#e8eaf6",
+    "#c5cae9",
+    "#9fa8da",
+    "#7986cb",
+    "#5c6bc0",
+    "#3f51b5",
+    "#3949ab",
+    "#303f9f",
+    "#283593",
+    "#1a237e",
+    "#3f51b5",
+    "#8c9eff",
+    "#536dfe",
+    "#3d5afe",
+    "#304ffe"
+  ].map((color) => {
+    return { color };
+  });
+  var materialIndigo = {
+    title: "material indigo",
+    key: "material-indigo",
+    execute: function() {
+      return colors$b;
+    }
+  };
+  var __glob_0_9$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialIndigo
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$a = [
+    "#e1f5fe",
+    "#b3e5fc",
+    "#81d4fa",
+    "#4fc3f7",
+    "#29b6f6",
+    "#03a9f4",
+    "#039be5",
+    "#0288d1",
+    "#0277bd",
+    "#01579b",
+    "#03a9f4",
+    "#80d8ff",
+    "#40c4ff",
+    "#00b0ff",
+    "#0091ea"
+  ].map((color) => {
+    return { color };
+  });
+  var materialLightblue = {
+    title: "material light blue",
+    key: "material-lightblue",
+    execute: function() {
+      return colors$a;
+    }
+  };
+  var __glob_0_10$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialLightblue
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$9 = [
+    "#F1F8E9",
+    "#DCEDC8",
+    "#C5E1A5",
+    "#AED581",
+    "#9CCC65",
+    "#8BC34A",
+    "#7CB342",
+    "#689F38",
+    "#558B2F",
+    "#33691E",
+    "#CCFF90",
+    "#B2FF59",
+    "#76FF03",
+    "#64DD17"
+  ].map((color) => {
+    return { color };
+  });
+  var materialLightgreen = {
+    title: "material lightgreen",
+    key: "material-lightgreen",
+    execute: function() {
+      return colors$9;
+    }
+  };
+  var __glob_0_11$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialLightgreen
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$8 = [
+    "#F9FBE7",
+    "#F0F4C3",
+    "#E6EE9C",
+    "#DCE775",
+    "#D4E157",
+    "#CDDC39",
+    "#C0CA33",
+    "#AFB42B",
+    "#9E9D24",
+    "#827717",
+    "#F4FF81",
+    "#EEFF41",
+    "#C6FF00",
+    "#AEEA00"
+  ].map((color) => {
+    return { color };
+  });
+  var materialLime = {
+    title: "material lime",
+    key: "material-lime",
+    execute: function() {
+      return colors$8;
+    }
+  };
+  var __glob_0_12$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialLime
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$7 = [
+    "#FFF3E0",
+    "#FFE0B2",
+    "#FFCC80",
+    "#FFB74D",
+    "#FFA726",
+    "#FF9800",
+    "#FB8C00",
+    "#F57C00",
+    "#EF6C00",
+    "#E65100",
+    "#FFD180",
+    "#FFAB40",
+    "#FF9100",
+    "#FF6D00"
+  ].map((color) => {
+    return { color };
+  });
+  var materialOrange = {
+    title: "material orange",
+    key: "material-orange",
+    execute: function() {
+      return colors$7;
+    }
+  };
+  var __glob_0_13$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialOrange
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$6 = [
+    "#fce4ec",
+    "#f8bbd0",
+    "#f48fb1",
+    "#f06292",
+    "#ec407a",
+    "#e91e63",
+    "#d81b60",
+    "#c2185b",
+    "#ad1457",
+    "#880e4f",
+    "#e91e63",
+    "#ff80ab",
+    "#ff4081",
+    "#f50057",
+    "#c51162"
+  ].map((color) => {
+    return { color };
+  });
+  var materialPink = {
+    title: "material pink",
+    key: "material-pink",
+    execute: function() {
+      return colors$6;
+    }
+  };
+  var __glob_0_14$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialPink
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$5 = [
+    "#f3e5f5",
+    "#e1bee7",
+    "#ce93d8",
+    "#ba68c8",
+    "#ab47bc",
+    "#9c27b0",
+    "#8e24aa",
+    "#7b1fa2",
+    "#6a1b9a",
+    "#4a148c",
+    "#9c27b0",
+    "#ea80fc",
+    "#e040fb",
+    "#d500f9",
+    "#aa00ff"
+  ].map((color) => {
+    return { color };
+  });
+  var materialPurple = {
+    title: "material purple",
+    key: "material-purple",
+    execute: function() {
+      return colors$5;
+    }
+  };
+  var __glob_0_15$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialPurple
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$4 = [
+    "#ffebee",
+    "#ffcdd2",
+    "#ef9a9a",
+    "#e57373",
+    "#ef5350",
+    "#f44336",
+    "#e53935",
+    "#d32f2f",
+    "#c62828",
+    "#b71c1c",
+    "#f44336",
+    "#ff8a80",
+    "#ff5252",
+    "#ff1744",
+    "#d50000"
+  ].map((color) => {
+    return { color };
+  });
+  var materialRed = {
+    title: "material red",
+    key: "material-red",
+    execute: function() {
+      return colors$4;
+    }
+  };
+  var __glob_0_16$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialRed
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$3 = [
+    "#e0f2f1",
+    "#b2dfdb",
+    "#80cbc4",
+    "#4db6ac",
+    "#26a69a",
+    "#009688",
+    "#00897b",
+    "#00796b",
+    "#00695c",
+    "#004d40",
+    "#009688",
+    "#a7ffeb",
+    "#64ffda",
+    "#1de9b6",
+    "#00bfa5"
+  ].map((color) => {
+    return { color };
+  });
+  var materialTeal = {
+    title: "material teal",
+    key: "material-teal",
+    execute: function() {
+      return colors$3;
+    }
+  };
+  var __glob_0_17$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialTeal
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$2 = [
+    "#FFFDE7",
+    "#FFF9C4",
+    "#FFF59D",
+    "#FFF176",
+    "#FFEE58",
+    "#FFEB3B",
+    "#FDD835",
+    "#FBC02D",
+    "#F9A825",
+    "#F57F17",
+    "#FFFF8D",
+    "#FFFF00",
+    "#FFEA00",
+    "#FFD600"
+  ].map((color) => {
+    return { color };
+  });
+  var materialYellow = {
+    title: "material yellow",
+    key: "material-yellow",
+    execute: function() {
+      return colors$2;
+    }
+  };
+  var __glob_0_18$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": materialYellow
+  }, Symbol.toStringTag, { value: "Module" }));
+  const colors$1 = [
+    "#f8f9fa",
+    "#f1f3f5",
+    "#e9ecef",
+    "#dee2e6",
+    "#ced4da",
+    "#adb5bd",
+    "#868e96",
+    "#495057",
+    "#343a40",
+    "#212529"
+  ].map((color) => {
+    return { color };
+  });
+  var opencolorGray = {
+    title: "opencolor gray",
+    resource: "https://yeun.github.io/open-color/",
+    key: "opencolor-gray",
+    execute: function() {
+      return colors$1;
+    }
+  };
+  var __glob_0_19$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": opencolorGray
+  }, Symbol.toStringTag, { value: "Module" }));
+  var random = {
+    title: "random",
+    key: "random",
+    execute: function(count = 42) {
+      const colorList = Color__namespace.randomByCount(count).map((color) => {
+        return { color };
+      });
+      colorList.sort((a, b) => {
+        const localA = Color__namespace.parse(a.color);
+        const localB = Color__namespace.parse(b.color);
+        return localA.h > localB.h ? 1 : -1;
+      });
+      return colorList;
+    }
+  };
+  var __glob_0_20$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": random
+  }, Symbol.toStringTag, { value: "Module" }));
+  const modules$1 = { "./colors_list/material-amber.js": __glob_0_0$1, "./colors_list/material-blue.js": __glob_0_1$1, "./colors_list/material-bluegray.js": __glob_0_2$1, "./colors_list/material-brown.js": __glob_0_3$1, "./colors_list/material-cyan.js": __glob_0_4$1, "./colors_list/material-deeporange.js": __glob_0_5$1, "./colors_list/material-deeppurple.js": __glob_0_6$1, "./colors_list/material-gray.js": __glob_0_7$1, "./colors_list/material-green.js": __glob_0_8$1, "./colors_list/material-indigo.js": __glob_0_9$1, "./colors_list/material-lightblue.js": __glob_0_10$1, "./colors_list/material-lightgreen.js": __glob_0_11$1, "./colors_list/material-lime.js": __glob_0_12$1, "./colors_list/material-orange.js": __glob_0_13$1, "./colors_list/material-pink.js": __glob_0_14$1, "./colors_list/material-purple.js": __glob_0_15$1, "./colors_list/material-red.js": __glob_0_16$1, "./colors_list/material-teal.js": __glob_0_17$1, "./colors_list/material-yellow.js": __glob_0_18$1, "./colors_list/opencolor-gray.js": __glob_0_19$1, "./colors_list/random.js": __glob_0_20$1 };
+  var colors = Object.values(modules$1).map((it) => it.default);
+  var ColorAssetsEditor$1 = /* @__PURE__ */ (() => ".elf--color-assets-editor{margin-top:10px;padding:4px 0}.elf--color-assets-editor .color-assets-head{grid-column-gap:5px;display:grid;grid-template-columns:1fr}.elf--color-assets-editor .color-assets-head label{display:inline-block;line-height:1.5;padding:4px 0;vertical-align:middle}.elf--color-assets-editor .color-list{grid-column-gap:10px;grid-row-gap:10px;display:grid;grid-template-columns:repeat(8,1fr);margin-top:10px}.elf--color-assets-editor .color-list .color-item{border-radius:4px;box-shadow:0 0 0 1px hsla(0,0%,100%,.1);cursor:pointer;display:inline-block;height:16px;overflow:hidden;width:16px}.elf--color-assets-editor .color-list .color-item:hover{transform:scale(1.2)}.elf--color-assets-editor .color-list .color-item .preview,.elf--color-assets-editor .color-list .color-item .preview .color-view{height:100%;width:100%}")();
+  class ColorAssetsEditor extends editor.EditorElement {
+    initState() {
+      return {
+        mode: "grid",
+        preset: "random",
+        isLoaded: false,
+        colors
+      };
+    }
+    getTools() {
+      return `<div ref="$tools"></div>`;
+    }
+    [sapa.LOAD("$tools")]() {
+      const options2 = this.state.colors.map((it) => {
+        return { value: it.key, text: it.title };
+      });
+      return sapa.createComponent("SelectEditor", {
+        key: "preset",
+        value: this.state.preset,
+        options: options2,
+        onchange: "changePreset"
+      });
+    }
+    [sapa.SUBSCRIBE("changePreset")](key, value) {
+      this.setState({
+        [key]: value
+      });
+    }
+    template() {
+      return `
+      <div class='elf--color-assets-editor'>
+        <div class='color-assets-head'>
+          <div class='tools'>${this.getTools()}</div>
+        </div>
+        <div class='color-list' ref='$colorList' data-view-mode='${this.state.mode}'></div>
+      </div>
+    `;
+    }
+    [sapa.CLICK("$title")]() {
+      this.$el.toggleClass("is-open");
+    }
+    [sapa.LOAD("$colorList")]() {
+      var preset = this.state.colors.find((it) => it.key === this.state.preset);
+      if (!preset) {
+        return "";
+      }
+      var results = preset.execute().map((item, index2) => {
+        return `<div class='color-item' data-index="${index2}" data-color="${item.color}"><div class='preview' title="${item.color}" data-index="${index2}"><div class='color-view' style='background-color: ${item.color};'></div></div></div>`;
+      });
+      return results;
+    }
+    executeColor(callback, isRefresh = true, isEmit = true) {
+      var project2 = this.$context.selection.currentProject;
+      if (project2) {
+        callback && callback(project2);
+        if (isRefresh)
+          this.refresh();
+        if (isEmit)
+          this.emit("refreshColorAssets");
+      } else {
+        window.alert("Please select a project.");
+      }
+    }
+    [sapa.CLICK("$colorList .preview")](e) {
+      const color = e.$dt.$(".color-view").css("background-color");
+      this.modifyColorPicker(color);
+    }
+    modifyColorPicker(color) {
+      this.parent.trigger(this.props.onchange, this.props.key, color, this.props.params);
+    }
+  }
+  var ColorSingleEditor$1 = /* @__PURE__ */ (() => ".elf--color-single-editor{height:30px;text-align:center;width:100%}.elf--color-single-editor .preview{height:100%}.elf--color-single-editor .preview .mini-view{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;border:1px solid var(--elf--input-border-color);height:100%}.elf--color-single-editor .preview .mini-view .color-view{cursor:pointer;height:100%}")();
+  class ColorSingleEditor extends editor.EditorElement {
+    initState() {
+      return {
+        params: this.props.params,
+        color: this.props.color || "rgba(0, 0, 0, 1)"
+      };
+    }
+    updateData(opt = {}) {
+      this.setState(opt, false);
+      this.modifyColor();
+    }
+    modifyColor() {
+      this.parent.trigger(this.props.onchange, this.props.key, this.state.color, this.state.params);
+    }
+    changeColor(color) {
+      this.setState({ color });
+    }
+    setValue(color) {
+      this.changeColor(color);
+    }
+    [sapa.BIND("$miniView")]() {
+      return {
+        style: {
+          "background-color": this.state.color
+        }
+      };
+    }
+    template() {
+      return `
+            <div class='elf--color-single-editor'>
+                <div class='preview' ref='$preview'>
+                    <div class='mini-view'>
+                        <div class='color-view' style="background-color: ${this.state.color}" ref='$miniView'></div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    [sapa.CLICK("$preview")]() {
+      this.viewColorPicker();
+    }
+    viewColorPicker() {
+      this.emit("showColorPickerPopup", {
+        target: this,
+        changeEvent: (color) => {
+          this.refs.$miniView.cssText(`background-color: ${color}`);
+          this.updateData({ color });
+        },
+        color: this.state.color
+      });
+    }
+  }
+  var ColorViewEditor$1 = /* @__PURE__ */ (() => ".elf--color-view-editor{border:1px solid transparent;box-sizing:border-box;display:grid;grid-template-columns:1fr;height:var(--elf--input-height);text-align:center}.elf--color-view-editor input{outline:none}.elf--color-view-editor.focused{border-color:var(--elf--selected-color);border-width:1px;box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--color-view-editor.focused .opacity-input{border-left:1px solid var(--elf--input-border-color)}.elf--color-view-editor:hover:not(.focused):not(.drag){border-color:var(--elf--input-border-color)}.elf--color-view-editor:hover:not(.focused):not(.drag) .opacity-input{border-left:1px solid var(--elf--input-border-color)}.elf--color-view-editor.has-label{grid-template-columns:70px 1fr}.elf--color-view-editor.has-label.compact{grid-template-columns:40px 1fr}.elf--color-view-editor.has-label.compact .color-code{grid-template-columns:26px 1fr 40px}.elf--color-view-editor.has-label label{line-height:1.6;padding:6px 4px 2px 2px;text-align:left;vertical-align:middle}.elf--color-view-editor.has-label label span{display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}.elf--color-view-editor.mini .color-input{display:none}.elf--color-view-editor.mini .color-code{grid-template-columns:26px 50px}.elf--color-view-editor .color-code{grid-column-gap:2px;border:1px solid transparent;border-radius:2px;box-sizing:border-box;display:grid;grid-template-columns:26px 1fr 50px;overflow:hidden;text-transform:uppercase;vertical-align:middle}.elf--color-view-editor .color-code .preview{align-items:center;background-color:transparent;border-radius:2px;cursor:pointer;display:flex;justify-content:flex-start;padding:2px;vertical-align:middle}.elf--color-view-editor .color-code .preview .mini-view{background-color:transparent;background-image:linear-gradient(45deg,#c7c7c7 25%,transparent 0),linear-gradient(-45deg,#c7c7c7 25%,transparent 0),linear-gradient(45deg,transparent 75%,#c7c7c7 0),linear-gradient(-45deg,transparent 75%,#c7c7c7 0);background-position:0 0,0 3px,3px -3px,-3px 0;background-size:6px 6px;border:1px solid var(--elf--input-border-color);box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr;height:20px;overflow:hidden;position:relative;vertical-align:middle;width:20px}.elf--color-view-editor .color-code .preview .mini-view .color-view{box-shadow:0 0 0 .1px var(--elf--input-border-color)}.elf--color-view-editor .color-code input{background-color:transparent;border:0;border-radius:3px;font-size:11px;height:100%;padding:0 3px;text-transform:uppercase;width:100%}")();
+  class ColorViewEditor extends editor.EditorElement {
+    initState() {
+      const value = this.props.value || "rgba(0, 0, 0, 1)";
+      const compact = sapa.isBoolean(this.props.compact) ? this.props.compact : this.props.compact === "true";
+      const mini = sapa.isBoolean(this.props.mini) ? this.props.mini : this.props.mini === "true";
+      return {
+        label: this.props.label,
+        title: this.props.title,
+        value,
+        compact,
+        mini,
+        color: Color__namespace.parse(value),
+        colorFocus: false,
+        opacityFocus: false
+      };
+    }
+    updateData(opt = {}) {
+      this.setState(opt);
+      this.modifyColor();
+    }
+    updateEndData(opt = {}) {
+      this.setState(opt);
+      this.modifyEndColor();
+    }
+    getValue() {
+      return this.state.value;
+    }
+    setValue(value) {
+      this.changeColor(value);
+    }
+    modifyColor() {
+      this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
+    }
+    modifyEndColor() {
+      this.parent.trigger(this.props.onchangeend, this.props.key, this.state.value, this.props.params);
+    }
+    changeColor(value) {
+      this.setState({
+        value,
+        color: Color__namespace.parse(value)
+      });
+    }
+    get alpha() {
+      return this.state.color.a * 100;
+    }
+    get hexColor() {
+      return Color__namespace.formatWithoutAlpha(this.state.color, "hex");
+    }
+    get fullColor() {
+      return Color__namespace.format(this.state.color, this.state.color.type);
+    }
+    refresh() {
+      this.refreshColorView();
+      this.refs.$colorCode.val(this.state.value);
+      this.refs.$opacityCode.val(this.alpha);
+    }
+    refreshColorView() {
+      this.bindData("$miniView1");
+      this.bindData("$miniView2");
+    }
+    template() {
+      var { label, title } = this.state;
+      return `
+            <div class='elf--color-view-editor'>
+                ${label ? `<label data-tooltip="${title}"><span>${label}</span></label>` : ""}            
+                <div class='color-code' ref="$container">
+                    <div class='preview' ref='$preview'>
+                        <div class='mini-view'>
+                            <div class='color-view' ref='$miniView1'></div>
+                            <div class='color-view' ref='$miniView2'></div>
+                        </div>
+                    </div>                
+                    <div class="color-input">
+                        <input type="text" ref='$colorCode' value='${this.state.value}' tabIndex="1" />
+                    </div>
+                    <div class="opacity-input">                    
+                        <input type="number" ref='$opacityCode' value='${this.alpha}' tabIndex="2" max="100" min="0" step="0.1" />
+                    </div>                    
+                </div>
+            </div>
+        `;
+    }
+    [sapa.BIND("$el")]() {
+      var { label, compact, mini, colorFocus, opacityFocus } = this.state;
+      return {
+        class: [
+          "elf--color-view-editor",
+          {
+            "has-label": label,
+            compact,
+            mini
+          },
+          {
+            focused: colorFocus || opacityFocus
+          }
+        ]
+      };
+    }
+    [sapa.BIND("$miniView1")]() {
+      return {
+        style: {
+          "background-color": this.hexColor
+        }
+      };
+    }
+    [sapa.BIND("$miniView2")]() {
+      return {
+        style: {
+          "background-color": this.fullColor
+        }
+      };
+    }
+    [sapa.BIND("$colorCode")]() {
+      return {
+        value: this.props.format ? this.hexColor : this.state.value
+      };
+    }
+    [sapa.BIND("$opacityCode")]() {
+      return {
+        value: this.alpha
+      };
+    }
+    [sapa.FOCUSIN("$colorCode")]() {
+      this.setState({
+        colorFocus: true
+      });
+      this.refs.$colorCode.select();
+    }
+    [sapa.FOCUSOUT("$colorCode")]() {
+      this.setState({
+        colorFocus: false
+      });
+    }
+    [sapa.FOCUSIN("$opacityCode")]() {
+      this.setState({
+        opacityFocus: true
+      });
+      this.refs.$opacityCode.select();
+    }
+    [sapa.FOCUSOUT("$opacityCode")]() {
+      this.setState({
+        opacityFocus: false
+      });
+    }
+    [sapa.CLICK("$preview")]() {
+      this.viewColorPicker();
+    }
+    viewColorPicker() {
+      this.emit("showColorPickerPopup", {
+        target: this,
+        changeEvent: (color) => {
+          this.updateData({ value: color, color: Color__namespace.parse(color) });
+        },
+        changeEndEvent: (color) => {
+          this.updateEndData({ value: color, color: Color__namespace.parse(color) });
+        },
+        color: this.state.value
+      }, null, this.$el.rect());
+    }
+    [sapa.CLICK("$remove")]() {
+      this.updateData({ value: "" });
+    }
+    [sapa.INPUT("$el .color-input input")](e) {
+      var color = e.$dt.value;
+      this.updateData({
+        value: color,
+        color: Color__namespace.parse(color)
+      });
+      this.refreshColorView();
+    }
+    [sapa.INPUT("$el .opacity-input input")](e) {
+      var opacity = +e.$dt.value;
+      opacity = Math.max(0, Math.min(100, opacity));
+      const color = Color__namespace.parse(this.state.value);
+      color.a = round(opacity / 100, 1e3);
+      const value = Color__namespace.format(color, color.type);
+      this.updateData({
+        value,
+        color
+      });
+      this.refreshColorView();
+    }
+  }
+  var CSSPropertyEditor$1 = /* @__PURE__ */ (() => ".elf--css-property-editor{display:grid;grid-template-columns:1fr!important;margin-bottom:5px;margin-top:10px}.elf--css-property-editor.hide-title>.title{display:none}.elf--css-property-editor .title{grid-column-gap:2px;display:grid;grid-template-columns:1fr 2fr}.elf--css-property-editor .title .tools{text-align:right}.elf--css-property-editor .title .tools select{display:inline-block;width:130px!important}.elf--css-property-editor>.title-2{display:none;text-align:right}.elf--css-property-editor .css-property-item{grid-column-gap:4px;box-sizing:border-box;display:grid;grid-template-columns:1fr 20px;margin-bottom:5px;margin-top:5px}.elf--css-property-editor .css-property-item>button{align-items:center;display:flex;justify-content:center}.elf--css-property-editor .input{display:grid;grid-template-columns:2fr 1fr 1fr;vertical-align:middle}.elf--css-property-editor .input.grid-1{grid-template-columns:1fr}.elf--css-property-editor .input.grid-2{grid-template-columns:3fr 1fr}")();
+  class CSSPropertyEditor extends editor.EditorElement {
+    initState() {
+      return {
+        hideTitle: this.props["hide-title"] === "true",
+        hideRefresh: this.props["hide-refresh"] === "true",
+        properties: []
+      };
+    }
+    updateData(opt) {
+      this.setState(opt, false);
+      this.modifyProperty();
+    }
+    modifyProperty() {
+      this.parent.trigger(this.props.onchange, this.state.properties);
+    }
+    template() {
+      const hideTitleClass = this.state.hideTitle ? "hide-title" : "";
+      const hideRefreshClass = this.state.hideRefresh ? "hide-refresh" : "";
+      return `
+      <div class='elf--css-property-editor ${hideTitleClass} ${hideRefreshClass}'>
+        <div class='title'>
+          <label>${this.$i18n("css.property.editor.properties")}</label>
+          <div class='tools'>
+            ${this.makePropertySelect()}
+            <button type="button" ref='$addProperty'>${editor.iconUse("add")}</button>
+          </div>
+        </div>
+        <div class='input grid-1 css-property-list' ref='$property'></div>
+      </div>
+    `;
+    }
+    getPropertyDefaultValue(key) {
+      switch (key) {
+        case "animation-timing-function":
+        case "box-shadow":
+        case "text-shadow":
+        case "color":
+        case "background-image":
+        case "background-color":
+        case "text-fill-color":
+        case "text-stroke-color":
+        case "filter":
+        case "backdrop-filter":
+        case "var":
+        case "transform":
+        case "transform-origin":
+        case "perspective-origin":
+        case "playTime":
+          return editor.Length.string("");
+        case "offset-distance":
+          return editor.Length.percent(0);
+        case "rotate":
+          return editor.Length.deg(0);
+        case "mix-blend-mode":
+          return "normal";
+        case "clip-path":
+          return "";
+        case "opacity":
+          return 1;
+        default:
+          return 0;
+      }
+    }
+    getDefinedKey(key) {
+      switch (key) {
+        case "animation-timing-function":
+          return "animationTimingFunction";
+        case "box-shadow":
+          return "boxShadow";
+        case "text-shadow":
+          return "textShadow";
+        case "color":
+          return "color";
+        case "background-image":
+          return "backgroundImage";
+        case "background-color":
+          return "backgroundColor";
+        case "text-fill-color":
+          return "textFillColor";
+        case "text-stroke-color":
+          return "textStrokeColor";
+        case "filter":
+          return "filter";
+        case "backdrop-filter":
+          return "backdropFilter";
+        case "var":
+          return "var";
+        case "transform":
+          return "transform";
+        case "transform-origin":
+          return "transformOrigin";
+        case "perspective-origin":
+          return "perspectiveOrigin";
+        case "playTime":
+          return "playTime";
+        case "offset-distance":
+          return "offsetDistance";
+        case "rotate":
+          return "rotate";
+        case "mix-blend-mode":
+          return "mixBlendMode";
+        case "clip-path":
+          return "clipPath";
+        case "opacity":
+          return "opacity";
+        default:
+          return key;
+      }
+    }
+    [sapa.CLICK("$addProperty")]() {
+      var key = this.getRef("$propertySelect").value;
+      var searchItem = this.state.properties.find((it) => {
+        return it.key === key;
+      });
+      if (searchItem) {
+        window.alert(`${key} is already added.`);
+        return;
+      }
+      var value = this.getPropertyDefaultValue(key);
+      var current = this.$context.selection.current;
+      if (current) {
+        value = current[this.getDefinedKey(key)];
+      }
+      this.state.properties.push({ key, value });
+      this.refresh();
+      this.modifyProperty();
+    }
+    makeIndivisualPropertyColorEditor(property, index2) {
+      var key = property.key;
+      return `<div class='property-editor'>
+    ${sapa.createComponent("ColorViewEditor", {
+        ref: `${key}${index2}`,
+        label: property.key,
+        title: property.key,
+        value: property.value,
+        key: property.key,
+        onChange: "changeColorProperty"
+      })}
+  </div>`;
+    }
+    makeCustomePropertyEditor(property, index2) {
+      return `<div class='property-editor'>
+        ${sapa.createComponent(property.editor, {
+        onchange: "changeSelect",
+        ref: `$customProperty${index2}`,
+        key: property.key,
+        value: property.value
+      })}
+      </div>`;
+    }
+    makeIndivisualPropertyEditor(property, index2) {
+      if (property.key === "background-image") {
+        return `
+        <div class='property-editor'>
+          ${sapa.createComponent("BackgroundImageEditor", {
+          ref: `$backgroundImage${index2}`,
+          key: property.key,
+          "hide-title": this.state.hideTitle,
+          value: property.value,
+          onchange: "changeKeyValue"
+        })}
+        </div>
+      `;
+      } else if (property.key === "filter") {
+        return `
+        <div class='property-editor'>
+          <object refClass="FilterEditor" ref='$filter${index2}' key="${property.key}" value="${property.value}" onChange="changeKeyValue" />
+        </div>
+      `;
+      } else if (property.key === "backdrop-filter") {
+        return `
+        <div class='property-editor'>
+          <object refClass="FilterEditor" ref='$backdropFilter${index2}' key="${property.key}" value="${property.value}" onChange="changeKeyValue" />
+        </div>
+      `;
+      } else if (property.key === "box-shadow") {
+        return `
+        <div class='property-editor'>
+          <object refClass="BoxShadowEditor" ref='$boxshadow${index2}' value="${property.value}" hide-label="false" onChange="changeBoxShadowProperty" />
+        </div>
+      `;
+      } else if (property.key === "text-shadow") {
+        return `
+        <div class='property-editor'>
+          <object refClass="TextShadowEditor" ref='$textshadow${index2}' value="${property.value}" hide-label="false" onChange="changeTextShadowProperty" />
+        </div>
+      `;
+      } else if (property.key === "var") {
+        return `
+        <div class='property-editor'>
+          <object refClass="VarEditor" ref='$var${index2}' value="${property.value}" onChange="changeVar" />
+        </div>
+      `;
+      } else if (property.key === "transform") {
+        return `
+        <div class='property-editor'>
+          <object refClass="TransformEditor" ref='$transform${index2}' value="${property.value}" onChange="changeTransform" />
+        </div>
+      `;
+      } else if (property.key === "transform-origin") {
+        return `
+        <div class='property-editor'>
+          <object refClass="TransformOriginEditor" ref='$transformOrigin${index2}' value="${property.value}" onChange="changeTransformOrigin" />
+        </div>
+      `;
+      } else if (property.key === "perspective-origin") {
+        return `
+        <div class='property-editor'>
+          <object refClass="PerspectiveOriginEditor" ref='$perspectiveOrigin${index2}' value="${property.value}" onChange="changePerspectiveOrigin" />
+        </div>
+      `;
+      } else if (property.key === "fill-rule") {
+        return `
+        <div class='property-editor'>
+          <object refClass="SelectEditor"  
+          ref='$fillRule${index2}' 
+          key='fill-rule' 
+          icon="true" 
+          options=${sapa.variable(["nonzero", "evenodd"])}
+          value="${property.value}"
+          onchange="changeSelect" />
+        </div>
+      `;
+      } else if (property.key === "stroke-linecap") {
+        return `
+        <div class='property-editor'>
+          <object refClass="SelectEditor"  
+          ref='$strokeLinecap${index2}' 
+          key='stroke-linecap' 
+          icon="true" 
+          options=${sapa.variable(["butt", "round", "square"])}          
+          value="${property.value}"
+          onchange="changeSelect" />
+        </div>
+      `;
+      } else if (property.key === "stroke-linejoin") {
+        return `
+        <div class='property-editor'>
+          <object refClass="SelectEditor"  
+          ref='$strokeLinejoin${index2}' 
+          key='stroke-linejoin' 
+          icon="true" 
+          options=${sapa.variable([
+          "miter",
+          "arcs",
+          "bevel",
+          "miter-clip",
+          "round"
+        ])}                    
+          value="${property.value}"
+          onchange="changeSelect" />
+        </div>
+      `;
+      } else if (property.key === "mix-blend-mode") {
+        return `
+        <div class='property-editor'>
+          <object refClass="BlendSelectEditor" 
+          ref='$mixBlendMode${index2}' 
+          key='mix-blend-mode' 
+          icon="true" 
+          value="${property.value}"
+          onchange="changeSelect" />
+        </div>
+      `;
+      } else if (property.key === "stroke-dasharray") {
+        return `
+        <object refClass="StrokeDashArrayEditor" 
+          ref='$strokeDashArray${index2}' 
+          key='stroke-dasharray'
+          value='${property.value}' 
+          onchange='changeSelect' 
+        />
+      `;
+      } else if (property.key === "border-radius") {
+        return `
+        <object refClass="BorderRadiusEditor"
+          ref='$borderRadius${index2}' 
+          key='border-radius'
+          value='${property.value}' 
+          onchange='changeBorderRadius' 
+        />
+      `;
+      } else if (property.key === "border") {
+        return `
+        <object refClass="BorderEditor"
+          ref='$border${index2}' 
+          key='border'
+          value='${property.value}' 
+          onchange='changeKeyValue' 
+        />
+      `;
+      } else if (property.key === "clip-path") {
+        return `
+        <object refClass="ClipPathEditor"
+          ref='$clipPath${index2}' 
+          key='clip-path'
+          value='${property.value}' 
+          onchange='changeClipPath' 
+        />
+      `;
+      } else if (property.key === "d") {
+        return `
+        <object refClass="PathDataEditor" ref='$pathData${index2}' key='d' value='${property.value}' onchange='changeSelect' />
+      `;
+      } else if (property.key === "points") {
+        return `
+        <object refClass="PolygonDataEditor" ref='$polygonData${index2}' key='points' value='${property.value}' onchange='changeSelect' />
+      `;
+      } else if (property.key === "playTime") {
+        return `
+        <object refClass="MediaProgressEditor" ref='$playTime${index2}'  key='playTime' value="${property.value}" onchange="changeSelect" />      
+      `;
+      }
+      return `
+      <div class='property-editor'>
+        ???
+
+      </div>
+    `;
+    }
+    [sapa.SUBSCRIBE_SELF("changeKeyValue")](key, value) {
+      this.modifyPropertyValue(key, value);
+    }
+    [sapa.SUBSCRIBE_SELF("changeBorderRadius")](value) {
+      this.modifyPropertyValue("border-radius", value);
+    }
+    [sapa.SUBSCRIBE_SELF("changeClipPath")](value) {
+      this.modifyPropertyValue("clip-path", value);
+    }
+    [sapa.SUBSCRIBE_SELF("changeColorProperty")](key, color) {
+      this.modifyPropertyValue(key, color);
+    }
+    [sapa.SUBSCRIBE_SELF("changeBackgroundImageProperty")](key, backgroundImage2) {
+      this.modifyPropertyValue(key, backgroundImage2);
+    }
+    [sapa.SUBSCRIBE_SELF("changeFilterProperty")](filter2) {
+      this.modifyPropertyValue("filter", filter2);
+    }
+    [sapa.SUBSCRIBE_SELF("changeBackdropFilterProperty")](filter2) {
+      this.modifyPropertyValue("backdrop-filter", filter2);
+    }
+    [sapa.SUBSCRIBE_SELF("changeBoxShadowProperty")](boxshadow) {
+      this.modifyPropertyValue("box-shadow", boxshadow);
+    }
+    [sapa.SUBSCRIBE_SELF("changeTextShadowProperty")](textShadow2) {
+      this.modifyPropertyValue("text-shadow", textShadow2);
+    }
+    [sapa.SUBSCRIBE_SELF("changeVar")](value) {
+      this.modifyPropertyValue("var", value);
+    }
+    [sapa.SUBSCRIBE_SELF("changeTransform")](value) {
+      this.modifyPropertyValue("transform", value);
+    }
+    [sapa.SUBSCRIBE_SELF("changeTransformOrigin")](value) {
+      this.modifyPropertyValue("transform-origin", value);
+    }
+    [sapa.SUBSCRIBE_SELF("changePerspectiveOrigin")](value) {
+      this.modifyPropertyValue("perspective-origin", value);
+    }
+    [sapa.SUBSCRIBE_SELF("changeSelect")](key, value) {
+      this.modifyPropertyValue(key, value);
+    }
+    makePropertyEditor(property, index2) {
+      if (property.editor) {
+        return this.makeCustomePropertyEditor(property, index2);
+      }
+      switch (property.key) {
+        case "animation-timing-function":
+        case "box-shadow":
+        case "text-shadow":
+        case "background-image":
+        case "filter":
+        case "backdrop-filter":
+        case "var":
+        case "transform":
+        case "transform-origin":
+        case "perspective-origin":
+        case "mix-blend-mode":
+        case "border":
+        case "border-radius":
+        case "clip-path":
+        case "fill-rule":
+        case "stroke-linecap":
+        case "stroke-linejoin":
+        case "stroke-dasharray":
+        case "d":
+        case "points":
+        case "offset-path":
+        case "playTime":
+          return this.makeIndivisualPropertyEditor(property, index2);
+        case "color":
+        case "background-color":
+        case "text-fill-color":
+        case "text-stroke-color":
+        case "stroke":
+        case "fill":
+          return this.makeIndivisualPropertyColorEditor(property, index2);
+        case "opacity":
+        case "fill-opacity":
+        case "stroke-dashoffset":
+        case "offset-distance":
+          let min = 0;
+          let max = 1;
+          let step2 = 0.01;
+          return `
+          <div class='property-editor'>
+            ${sapa.createComponent("NumberInputEditor", {
+            ref: `$opacity${index2}`,
+            key: property.key,
+            label: property.key,
+            min,
+            max,
+            step: step2,
+            value: property.value || 1,
+            onchange: "changeRangeEditor"
+          })}
+              
+          </div>
+        `;
+        case "x":
+        case "y":
+        case "width":
+        case "height":
+          return `
+            <div class='property-editor'>
+              ${sapa.createComponent("NumberInputEditor", {
+            ref: `$opacity${index2}`,
+            key: property.key,
+            label: property.key,
+            min: -2e4,
+            max: 2e4,
+            step: 1,
+            value: property.value || 1,
+            onchange: "changeRangeEditor"
+          })}
+                
+            </div>
+          `;
+        case "rotate":
+          return `
+          <div class='property-editor'>
+            ${sapa.createComponent("InputRangeEditor", {
+            ref: `rangeEditor${index2}`,
+            key: property.key,
+            value: property.value,
+            min: -2e3,
+            max: 2e3,
+            units: ["deg"],
+            onChange: "changeRangeEditor"
+          })}
+          </div>
+        `;
+        case "margin-top":
+        case "margin-bottom":
+        case "margin-left":
+        case "margin-right":
+        case "padding-top":
+        case "padding-bottom":
+        case "padding-left":
+        case "padding-right":
+        case "perspective":
+        case "text-stroke-width":
+        default:
+          return `
+          <div class='property-editor'>
+            ${sapa.createComponent("InputRangeEditor", {
+            ref: `rangeEditor${index2}`,
+            key: property.key,
+            label: property.key,
+            value: property.value,
+            max: 1e3,
+            onChange: "changeRangeEditor"
+          })}
+          </div>
+        `;
+      }
+    }
+    [sapa.SUBSCRIBE_SELF("changeRangeEditor")](key, value) {
+      this.modifyPropertyValue(key, value + "");
+    }
+    searchKey(key, callback) {
+      this.state.properties.filter((it) => it.key === key).forEach(callback);
+    }
+    modifyPropertyValue(key, value) {
+      this.searchKey(key, (it) => {
+        it.value = value;
+      });
+      this.modifyProperty();
+    }
+    makePropertySelect() {
+      return `
+      <select class='property-select' ref='$propertySelect'>
+        <optgroup label='Position'>
+          <option value='x'>x</option>
+          <option value='y'>y</option>        
+        </optgroup>
+        <optgroup label='Size'>
+          <option value='width'>width</option>
+          <option value='height'>height</option>
+        </optgroup>      
+        <optgroup label='Box Model'>
+          <option value='margin-left'>margin-left</option>
+          <option value='margin-right'>margin-right</option>
+          <option value='margin-bottom'>margin-bottom</option>
+          <option value='margin-top'>margin-top</option>
+          <option value='padding-left'>padding-left</option>
+          <option value='padding-right'>padding-right</option>
+          <option value='padding-bottom'>padding-bottom</option>
+          <option value='padding-top'>padding-top</option>       
+        </optgroup>
+        <optgroup label='Border'>
+          <option value='border'>border</option>
+          <option value='border-radius'>border-radius</option>
+        </optgroup>        
+        <optgroup label='Style'>
+          <option value='background-color'>background-color</option>
+          <option value='background-image'>background-image</option>
+          <option value='box-shadow'>box-shadow</option>
+          <option value='text-shadow'>text-shadow</option>
+          <option value='filter'>filter</option>      
+          <option value='backdrop-filter'>backdrop-filter</option>
+          <option value='mix-blend-mode'>mix-blend-mode</option>
+        </optgroup>            
+        <optgroup label='Transform'>
+          <option value='transform'>transform</option>
+          <option value='transform-origin'>transform-origin</option>
+          <option value='perspective'>perspective</option>
+          <option value='perspective-origin'>perspective-origin</option>
+        </optgroup>
+        <optgroup label='Font'>
+          <option value='font-size'>font-size</option>
+          <option value='font-weight'>font-weight</option>          
+        </optgroup>
+        <optgroup label='Animation'>
+          <option value='animation-timing-function'>timing-function</option>
+        </optgroup>        
+      </select>
+    `;
+    }
+    [sapa.LOAD("$property") + sapa.DOMDIFF]() {
+      return this.state.properties.map((it, index2) => {
+        return `
+        <div class='css-property-item'>   
+          <div class='value-editor'>
+            ${this.makePropertyEditor(it, index2)}
+          </div>
+          <button type="button" 
+            class='remove' 
+            data-index="${index2}">${editor.iconUse("remove2")}</button>
+        </div>
+      `;
+      });
+    }
+    [sapa.SUBSCRIBE("showCSSPropertyEditor")](properties = []) {
+      this.setState({ properties });
+      this.refresh();
+    }
+    [sapa.CLICK("$property .remove")](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.state.properties.splice(index2, 1);
+      this.refresh();
+      this.modifyProperty();
+    }
+    [sapa.CLICK("$property .refresh")]() {
+      this.parent.trigger("refreshPropertyValue");
+    }
+  }
+  var CubicBezierEditor$1 = /* @__PURE__ */ (() => ".elf--cubic-bezier-editor{height:200px;margin:0 auto;position:relative;width:220px}.elf--cubic-bezier-editor .bezier{background-color:var(--elf--background-color);box-shadow:0 0 0 1px var(--elf--border-color);height:150px;left:60px;position:absolute;top:30px;width:150px}.elf--cubic-bezier-editor .bezier .bezier-canvas{pointer-events:none}.elf--cubic-bezier-editor .bezier .control{bottom:0;left:0;position:absolute;right:0;top:0}.elf--cubic-bezier-editor .bezier .control .pointer1,.elf--cubic-bezier-editor .bezier .control .pointer2{background-color:var(--elf--selected-color);border:1px solid var(--elf--selected-color);border-radius:100%;cursor:pointer;height:9px;position:absolute;transform:translateX(-50%) translateY(-50%);width:9px}.elf--cubic-bezier-editor .animation{height:20px;left:0;position:absolute;right:0;text-align:center;top:0}.elf--cubic-bezier-editor .animation .animation-canvas{cursor:pointer;height:100%;position:relative;width:100%}.elf--cubic-bezier-editor .item-list{bottom:20px;left:0;padding-right:0;position:absolute;top:30px;width:50px}.elf--cubic-bezier-editor .item-list[data-selected-value=ease-in] .item[data-bezier=ease-in],.elf--cubic-bezier-editor .item-list[data-selected-value=ease-out] .item[data-bezier=ease-out],.elf--cubic-bezier-editor .item-list[data-selected-value=ease] .item[data-bezier=ease]{background-color:var(--elf--selected-color)}.elf--cubic-bezier-editor .item-list .item{border-radius:2px;cursor:pointer;height:40px;margin-bottom:5px;overflow:hidden;position:relative;width:40px}.elf--cubic-bezier-editor .item-list .item:not(:first-child){border-top:0}.elf--cubic-bezier-editor .item-list .item.selected{background-color:#0ab}.elf--cubic-bezier-editor .item-list .item .item-canvas{background-color:#000;border-radius:2px;height:38px;left:1px;position:absolute;top:1px;width:38px}.elf--cubic-bezier-editor .predefined{bottom:0;display:grid;grid-template-columns:30px 1fr 30px;height:20px;left:0;position:absolute;right:0;text-align:center}.elf--cubic-bezier-editor .predefined .left,.elf--cubic-bezier-editor .predefined .right{color:var(--elf--font-color);cursor:pointer;font-weight:700;vertical-align:middle}.elf--cubic-bezier-editor .predefined .left svg path,.elf--cubic-bezier-editor .predefined .right svg path{fill:currentColor}.elf--cubic-bezier-editor .predefined .predefined-text{color:var(--elf--font-color);padding:4px;vertical-align:middle}")();
+  class CubicBezierEditor extends editor.EditorElement {
+    initState() {
+      return {
+        key: this.props.key,
+        currentBezier: getPredefinedCubicBezier(this.props.value || "linear"),
+        isAnimating: sapa.isUndefined(this.props.isAnimating) ? true : Boolean(this.props.isAnimating),
+        currentBezierIndex: 0,
+        selectedColor: "#609de2",
+        animatedColor: "#609de266",
+        curveColor: "#609de2",
+        baseLineColor: "rgba(117, 117, 117, 0.46)"
+      };
+    }
+    template() {
+      const linearCurve = curveToPath(this.state.currentBezier, 150, 150);
+      const linearCurvePoint = curveToPointLine(this.state.currentBezier, 150, 150);
+      const easeCurve = curveToPath("ease", 30, 30);
+      const easeCurvePoint = curveToPointLine("ease", 30, 30);
+      const easeInCurve = curveToPath("ease-in", 30, 30);
+      const easeInCurvePoint = curveToPointLine("ease-in", 30, 30);
+      const easeOutCurve = curveToPath("ease-out", 30, 30);
+      const easeOutCurvePoint = curveToPointLine("ease-out", 30, 30);
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--cubic-bezier-editor"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "predefined"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "left",
+        ref: "$left"
+      }, editor.iconUse("chevron_left")), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "predefined-text",
+        ref: "$text"
+      }), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "right",
+        ref: "$right"
+      }, editor.iconUse("chevron_right"))), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "animation",
+        ref: "$animationArea"
+      }, /* @__PURE__ */ sapa.createElementJsx("canvas", {
+        class: "animation-canvas",
+        ref: "$animationCanvas",
+        title: "Click and Replay point animation",
+        width: "230px",
+        height: "20px"
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "item-list",
+        ref: "$itemList",
+        "data-selected-value": ""
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "item",
+        "data-bezier": "ease",
+        title: "ease"
+      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
+        class: "item-canvas",
+        width: "30",
+        height: "30",
+        viewBox: "0 0 30 30"
+      }, /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: easeCurve,
+        stroke: "white",
+        "stroke-width": "1",
+        fill: "none"
+      }), /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: easeCurvePoint,
+        stroke: "gray",
+        "stroke-width": "1",
+        fill: "none"
+      }))), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "item",
+        "data-bezier": "ease-in",
+        title: "ease-in"
+      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
+        class: "item-canvas",
+        width: "30",
+        height: "30",
+        viewBox: "0 0 30 30"
+      }, /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: easeInCurve,
+        stroke: "white",
+        "stroke-width": "1",
+        fill: "none"
+      }), /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: easeInCurvePoint,
+        stroke: "gray",
+        "stroke-width": "1",
+        fill: "none"
+      }))), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "item",
+        "data-bezier": "ease-out",
+        title: "ease-out"
+      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
+        class: "item-canvas",
+        width: "30",
+        height: "30",
+        viewBox: "0 0 30 30"
+      }, /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: easeOutCurve,
+        stroke: "white",
+        "stroke-width": "1",
+        fill: "none"
+      }), /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: easeOutCurvePoint,
+        stroke: "gray",
+        "stroke-width": "1",
+        fill: "none"
+      })))), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "bezier"
+      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
+        class: "bezier-canvas",
+        width: "150",
+        height: "150",
+        viewBox: "0 0 150 150",
+        overflow: "visible"
+      }, /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: linearCurve,
+        stroke: "black",
+        "stroke-width": "1",
+        fill: "none",
+        ref: "$bezierCanvas"
+      }), /* @__PURE__ */ sapa.createElementJsx("path", {
+        d: linearCurvePoint,
+        stroke: "gray",
+        "stroke-width": "1",
+        fill: "none",
+        ref: "$bezierCanvasPoint"
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "control",
+        ref: "$control"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "pointer1",
+        ref: "$pointer1"
+      }), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "pointer2",
+        ref: "$pointer2"
+      }))));
+    }
+    [sapa.BIND("$animationArea")]() {
+      return {
+        style: {
+          display: this.state.isAnimating ? "block" : "none"
+        }
+      };
+    }
+    [sapa.BIND("$bezierCanvas")]() {
+      return {
+        d: curveToPath(this.state.currentBezier, 150, 150)
+      };
+    }
+    [sapa.BIND("$bezierCanvasPoint")]() {
+      return {
+        d: curveToPointLine(this.state.currentBezier, 150, 150)
+      };
+    }
+    updateData(opt = {}) {
+      this.setState(opt);
+      this.modifyCubicBezier();
+    }
+    modifyCubicBezier() {
+      this.parent.trigger(this.props.onchange, this.state.key, formatCubicBezier(this.state.currentBezier));
+    }
+    [sapa.CLICK("$left")]() {
+      var { currentBezier, currentBezierIndex } = this.state;
+      if (currentBezierIndex == 0) {
+        currentBezierIndex = bezierList.length - 1;
+      } else {
+        --currentBezierIndex;
+      }
+      var currentBezier = bezierList[currentBezierIndex];
+      this.updateData({ currentBezierIndex, currentBezier });
+      this.refresh();
+    }
+    [sapa.CLICK("$right")]() {
+      var { currentBezier, currentBezierIndex } = this.state;
+      currentBezierIndex = ++currentBezierIndex % bezierList.length;
+      currentBezier = bezierList[currentBezierIndex];
+      this.updateData({ currentBezierIndex, currentBezier });
+      this.refresh();
+    }
+    [sapa.CLICK("$text")]() {
+      var currentBezier = [...bezierList[this.state.currentBezierIndex]];
+      this.updateData({ currentBezier });
+      this.refresh();
+    }
+    [sapa.CLICK("$itemList .item")](e) {
+      var bezierString = e.$dt.attr("data-bezier");
+      this.refs.$itemList.attr("data-selected-value", bezierString);
+      var currentBezier = getPredefinedCubicBezier(bezierString);
+      this.updateData({
+        currentBezier
+      });
+      this.refresh();
+    }
+    refresh() {
+      this.refreshEasingText();
+      this.refreshBezierCanvas();
+    }
+    refreshBezierCanvas() {
+      this.bindData("$bezierCanvas");
+      this.bindData("$bezierCanvasPoint");
+      this.refreshPointer();
+      this.drawPoint();
+    }
+    refreshEasingText() {
+      this.refs.$text.html(this.state.currentBezier[4] || "ease");
+    }
+    refreshPointer() {
+      var currentBezier = getPredefinedCubicBezier(this.state.currentBezier);
+      var width2 = 150;
+      var height = 150;
+      var left = currentBezier[0] * width2;
+      var top = (1 - currentBezier[1]) * height;
+      this.refs.$pointer1.css({
+        left: editor.Length.px(left),
+        top: editor.Length.px(top)
+      });
+      left = currentBezier[2] * width2;
+      top = (1 - currentBezier[3]) * height;
+      this.refs.$pointer2.css({
+        left: editor.Length.px(left),
+        top: editor.Length.px(top)
+      });
+    }
+    drawPoint() {
+      if (this.state.isAnimating === false)
+        return;
+      if (this.timer)
+        window.clearTimeout(this.timer);
+      if (this.animationTimer)
+        window.clearTimeout(this.animationTimer);
+      this.timer = window.setTimeout(() => {
+        this.animationPoint();
+      }, 100);
+    }
+    start(i) {
+      var pos = this.animationCanvasData.func(i);
+      var x = 10 + (this.animationCanvasData.width - 20) * pos.y;
+      var y = 10;
+      var context = this.animationCanvasData.context;
+      context.beginPath();
+      context.arc(x, y, 5, 0, 2 * Math.PI);
+      context.fill();
+      context.stroke();
+      context.closePath();
+      if (i >= 1) {
+        return;
+      }
+      this.animationTimer = window.setTimeout(() => {
+        this.start(i + 0.05);
+      }, 50);
+    }
+    animationPoint() {
+      const currentBezier = getPredefinedCubicBezier(this.state.currentBezier);
+      var func = createBezierForPattern(formatCubicBezier(currentBezier));
+      this.refs.$animationCanvas.clear();
+      var width2 = this.refs.$animationCanvas.width();
+      var height = this.refs.$animationCanvas.height();
+      var context = this.refs.$animationCanvas.context();
+      context.fillStyle = this.state.animatedColor;
+      context.strokeStyle = this.state.selectedColor;
+      context.lineWidth = 1;
+      this.animationCanvasData = {
+        func,
+        width: width2,
+        height,
+        context
+      };
+      this.start(0);
+    }
+    setPosition(e) {
+      var width2 = this.refs.$control.width();
+      var height = this.refs.$control.height();
+      var minX = this.refs.$control.offset().left;
+      var minY = this.refs.$control.offset().top;
+      var p = e;
+      var x = p.x;
+      if (0 > x) {
+        x = 0;
+      } else if (p.x > document.body.clientWidth) {
+        x = document.body.clientWidth;
+      }
+      x -= minX;
+      if (x < 0) {
+        x = 0;
+      }
+      if (width2 < x) {
+        x = width2;
+      }
+      var y = p.y;
+      y -= minY;
+      return {
+        x: div(x, width2),
+        y: y == height ? 0 : div(height - y, height)
+      };
+    }
+    [sapa.POINTERSTART("$pointer1") + MOVE("movePointer1") + END("drawPoint")](e) {
+      this.clientX = e.clientX;
+      this.clientY = e.clientY;
+    }
+    movePointer1(dx, dy) {
+      var pos = this.setPosition({
+        x: this.clientX + dx,
+        y: this.clientY + dy
+      });
+      this.state.currentBezier[0] = pos.x;
+      this.state.currentBezier[1] = pos.y;
+      this.refreshBezierCanvas();
+      this.modifyCubicBezier();
+    }
+    [sapa.POINTERSTART("$pointer2") + MOVE("movePointer2") + END("drawPoint")](e) {
+      this.clientX = e.clientX;
+      this.clientY = e.clientY;
+    }
+    movePointer2(dx, dy) {
+      var pos = this.setPosition({
+        x: this.clientX + dx,
+        y: this.clientY + dy
+      });
+      this.state.currentBezier[2] = pos.x;
+      this.state.currentBezier[3] = pos.y;
+      this.refreshBezierCanvas();
+      this.modifyCubicBezier();
+    }
+    [sapa.SUBSCRIBE("showCubicBezierEditor")](timingFunction) {
+      var currentBezier = getPredefinedCubicBezier(timingFunction || this.state.currentBezier);
+      this.setState({ currentBezier });
+      this.refresh();
+    }
+  }
+  var DirectionEditor$1 = /* @__PURE__ */ (() => ".elf--direction-editor .direction-item{display:grid;grid-template-columns:62px 1fr}.elf--direction-editor .direction-item.full{grid-template-columns:1fr}.elf--direction-editor .radius-selector{display:grid;grid-template-columns:1fr 1fr}.elf--direction-editor .radius-selector[data-selected-value=all] button[data-value=all],.elf--direction-editor .radius-selector[data-selected-value=partitial] button[data-value=partitial]{background-color:var(--elf--selected-color);color:var(--elf--selected-font-color)}.elf--direction-editor .radius-selector button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;border-radius:3px;color:#ccc;cursor:pointer;display:inline-block;flex:none;height:20px;margin-right:2px;outline:none;padding:0;vertical-align:middle;width:20px}.elf--direction-editor .radius-selector button svg{height:100%;width:100%}")();
+  const typeList = [
+    { key: "top", title: "Top" },
+    { key: "right", title: "Right" },
+    { key: "bottom", title: "Bottom" },
+    { key: "left", title: "Left" }
+  ];
+  class DirectionEditor extends editor.EditorElement {
+    initState() {
+      var [count, top, right, bottom, left] = editor.DirectionLength.parse(this.props.value);
+      return {
+        isAll: count === 1,
+        all: top.clone(),
+        top: top.clone(),
+        right: right.clone(),
+        bottom: bottom.clone(),
+        left: left.clone()
+      };
+    }
+    template() {
+      return `<div class='elf--direction-editor' ref='$body'></div>`;
+    }
+    [sapa.SUBSCRIBE("changeBorderRadius")](key, value) {
+      if (key === "all") {
+        typeList.forEach((it) => {
+          this.state[it.key] = value.clone();
+          this.children[`$${it.key}`].setValue(value.clone());
+        });
+      }
+      this.updateData({
+        [key]: value
+      });
+    }
+    [sapa.LOAD("$body")]() {
+      var selectedValue = this.state.isAll ? "all" : "partitial";
+      var direction = this.state.all;
+      var display = selectedValue === "all" ? "display:none" : "display:block";
+      return `
+      <div class="property-item direction-item">
+        <div class="radius-selector" data-selected-value="${selectedValue}" ref="$selector">
+          <button type="button" data-value="all">${editor.iconUse("border_all")}</button>
+          <button type="button" data-value="partitial">
+            ${editor.iconUse("border_inner")}
+          </button>
+        </div>
+        <div class="radius-value">
+          ${sapa.createComponent("RangeEditor", {
+        ref: "$all",
+        key: "all",
+        value: direction,
+        onchange: "changeBorderRadius"
+      })}
+        </div>
+      </div>
+      <div
+        class="property-item full direction-item"
+        ref="$partitialSetting"
+        style="${display}"
+      >
+        <div class="radius-setting-box">
+          ${typeList.map((it) => {
+        var value = this.state[it.key];
+        return `
+              <div>
+                  ${sapa.createComponent("RangeEditor", {
+          ref: `$${it.key}`,
+          label: it.title,
+          key: it.key,
+          value,
+          onchange: "changeBorderRadius"
+        })}
+              </div>  
+            `;
+      }).join("")}
+        </div>
+      </div>
+    `;
+    }
+    updateData(opt = {}) {
+      this.setState(opt, false);
+      var value = [];
+      if (this.state.isAll) {
+        value = [
+          1,
+          this.state.all,
+          this.state.all,
+          this.state.all,
+          this.state.all
+        ];
+      } else {
+        value = [
+          4,
+          this.state.top,
+          this.state.right,
+          this.state.bottom,
+          this.state.left
+        ];
+      }
+      this.parent.trigger(this.props.onchange, value);
+    }
+    [sapa.CLICK("$selector button")](e) {
+      var type = e.$dt.attr("data-value");
+      this.refs.$selector.attr("data-selected-value", type);
+      if (type === "all") {
+        this.refs.$partitialSetting.hide();
+      } else {
+        this.refs.$partitialSetting.show("grid");
+      }
+      this.updateData({
+        isAll: type === "all"
+      });
+    }
+  }
+  var FilterEditor$1 = /* @__PURE__ */ (() => ".elf--filter-editor .label{height:20px;margin-top:2px}.elf--filter-editor .label.hide{display:none}.elf--filter-editor .label label{padding-left:5px;vertical-align:middle}.elf--filter-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--filter-editor .tools select{display:inline-block;width:100px!important}.elf--filter-editor .filter-list{display:grid!important;grid-template-columns:1fr!important;width:100%}.elf--filter-editor .filter-list .filter-item{display:block;margin-bottom:5px}.elf--filter-editor .filter-list .filter-item>.title{display:grid;grid-template-columns:20px 1fr 30px}.elf--filter-editor .filter-list .filter-item>.title>.sub-title{align-items:center;display:flex;justify-content:flex-start}.elf--filter-editor .filter-list .filter-item>.title>label{align-items:center;cursor:move;display:flex;justify-content:center;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap}.elf--filter-editor .filter-list .filter-item>.title .svg-filter-edit{cursor:pointer}.elf--filter-editor .filter-list .filter-item>.title .filter-menu{align-items:center;box-sizing:border-box;display:flex;justify-content:center;padding:4px 0;text-align:right}.elf--filter-editor .filter-list .filter-item>.title .filter-menu:hover{background-color:var(--elf--input-inactive-color)}.elf--filter-editor .filter-list .filter-item .filter-ui-list{padding-left:20px;pointer-events:all}.elf--filter-editor .filter-list .filter-item .filter-ui{vertical-align:middle}.elf--filter-editor .filter-list .filter-item .filter-ui label{color:var(--elf--font-color)}.elf--filter-editor .filter-list .filter-item .filter-ui.drop-shadow{grid-column-gap:1px;grid-template-columns:50px 1fr}.elf--filter-editor .filter-list .filter-item .filter-ui.drop-shadow-color{grid-column-gap:2px;grid-template-columns:50px 1fr}")();
+  const FILTER_REG = /((blur|grayscale|drop-shadow|hue-rotate|invert|brightness|contrast|opacity|saturate|sepia|url)\(([^)]*)\))/gi;
+  class Filter extends PropertyItem {
+    getDefaultObject(obj2 = {}) {
+      return super.getDefaultObject(__spreadValues({
+        itemType: "filter"
+      }, obj2));
+    }
+    toString() {
+      return `${this.json.type}(${this.json.value || ""})`;
+    }
+    static parse(obj2) {
+      var FilterClass = FilterClassName[obj2.type];
+      if (FilterClass) {
+        return new FilterClass(obj2);
+      } else {
+        return new URLSvgFilter({
+          value: obj2.value
+        });
+      }
+    }
+    static parseStyle(filter2) {
+      var filters = [];
+      if (!filter2)
+        return filters;
+      var results = Color.convertMatches(filter2);
+      var matches = results.str.match(FILTER_REG) || [];
+      matches.forEach((value, index2) => {
+        var [filterName, filterValue] = value.split("(");
+        filterValue = filterValue.split(")")[0];
+        if (filterName === "drop-shadow") {
+          var arr = filterValue.split(" ");
+          var colors2 = arr.filter((it) => it.includes("@")).map((it) => {
+            return Color.reverseMatches(it, results.matches);
+          });
+          var values = arr.filter((it) => !it.includes("@"));
+          filters[index2] = Filter.parse({
+            type: filterName,
+            offsetX: editor.Length.parse(values[0]),
+            offsetY: editor.Length.parse(values[1]),
+            blurRadius: editor.Length.parse(values[2]),
+            color: colors2[0] || "rgba(0, 0, 0, 1)"
+          });
+        } else {
+          filters[index2] = Filter.parse({
+            type: filterName,
+            value: editor.Length.parse(filterValue)
+          });
+        }
+      });
+      return filters;
+    }
+    static join(list) {
+      return list.map((it) => Filter.parse(it)).join(" ");
+    }
+    toJSON() {
+      return {
+        type: this.json.type,
+        value: this.json.value
+      };
+    }
+  }
+  class BlurFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "blur",
+        value: BlurFilter.spec.defaultValue
+      });
+    }
+    toCloneObject() {
+      return __spreadValues(__spreadValues({}, super.toCloneObject()), this.attrs("value"));
+    }
+  }
+  BlurFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: "px",
+    units: ["px", "em"],
+    defaultValue: "0px"
+  };
+  class URLSvgFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "svg",
+        value: URLSvgFilter.spec.defaultValue
+      });
+    }
+    toCloneObject() {
+      return __spreadValues(__spreadValues({}, super.toCloneObject()), this.attrs("value"));
+    }
+    toString() {
+      return `url(#${this.json.value || ""})`;
+    }
+  }
+  URLSvgFilter.spec = {
+    inputType: "select",
+    defaultValue: ""
+  };
+  class GrayscaleFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "grayscale",
+        value: GrayscaleFilter.spec.defaultValue
+      });
+    }
+    toCloneObject() {
+      return __spreadValues(__spreadValues({}, super.toCloneObject()), this.attrs("value"));
+    }
+  }
+  GrayscaleFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(0)
+  };
+  class HueRotateFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "hue-rotate",
+        value: HueRotateFilter.spec.defaultValue
+      });
+    }
+  }
+  HueRotateFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 360,
+    step: 1,
+    unit: "deg",
+    units: ["deg"],
+    defaultValue: editor.Length.deg(0)
+  };
+  class InvertFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "invert",
+        value: InvertFilter.spec.defaultValue
+      });
+    }
+  }
+  InvertFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(0)
+  };
+  class BrightnessFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "brightness",
+        value: BrightnessFilter.spec.defaultValue
+      });
+    }
+  }
+  BrightnessFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 200,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(100)
+  };
+  class ContrastFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "contrast",
+        value: ContrastFilter.spec.defaultValue
+      });
+    }
+  }
+  ContrastFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 200,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(100)
+  };
+  class OpacityFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "opacity",
+        value: OpacityFilter.spec.defaultValue
+      });
+    }
+  }
+  OpacityFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(100)
+  };
+  class SaturateFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "saturate",
+        value: SaturateFilter.spec.defaultValue
+      });
+    }
+  }
+  SaturateFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(100)
+  };
+  class SepiaFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "sepia",
+        value: SepiaFilter.spec.defaultValue
+      });
+    }
+  }
+  SepiaFilter.spec = {
+    inputType: "range",
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: "%",
+    units: ["%"],
+    defaultValue: editor.Length.percent(0)
+  };
+  class DropshadowFilter extends Filter {
+    getDefaultObject() {
+      return super.getDefaultObject({
+        type: "drop-shadow",
+        multi: true,
+        offsetX: DropshadowFilter.spec.offsetX.defaultValue,
+        offsetY: DropshadowFilter.spec.offsetY.defaultValue,
+        blurRadius: DropshadowFilter.spec.blurRadius.defaultValue,
+        color: DropshadowFilter.spec.color.defaultValue
+      });
+    }
+    toString() {
+      var json = this.json;
+      return `drop-shadow(${json.offsetX} ${json.offsetY} ${json.blurRadius} ${json.color})`;
+    }
+    toJSON() {
+      return {
+        type: this.json.type,
+        offsetX: this.json.offsetX,
+        offsetY: this.json.offsetY,
+        blurRadius: this.json.blurRadius,
+        color: this.json.color
+      };
+    }
+  }
+  DropshadowFilter.spec = {
+    offsetX: {
+      title: "Offset X",
+      inputType: "range",
+      min: -100,
+      max: 100,
+      step: 1,
+      defaultValue: "0px",
+      unit: "px",
+      units: ["px", "em"]
+    },
+    offsetY: {
+      title: "Offset Y",
+      inputType: "range",
+      min: -100,
+      max: 100,
+      step: 1,
+      defaultValue: "0px",
+      unit: "px",
+      units: ["px", "em"]
+    },
+    blurRadius: {
+      title: "Blur Radius",
+      inputType: "range",
+      min: 0,
+      max: 100,
+      step: 1,
+      defaultValue: "0px",
+      unit: "px",
+      units: ["px", "em", "%"]
+    },
+    color: {
+      title: "Color",
+      inputType: "color",
+      defaultValue: "rgba(0, 0, 0, 1)",
+      unit: "color"
+    }
+  };
+  const FilterClassName = {
+    blur: BlurFilter,
+    grayscale: GrayscaleFilter,
+    "hue-rotate": HueRotateFilter,
+    invert: InvertFilter,
+    brightness: BrightnessFilter,
+    contrast: ContrastFilter,
+    opacity: OpacityFilter,
+    saturate: SaturateFilter,
+    sepia: SepiaFilter,
+    "drop-shadow": DropshadowFilter,
+    svg: URLSvgFilter
+  };
+  const filter_list = [
+    "blur",
+    "grayscale",
+    "hue-rotate",
+    "invert",
+    "brightness",
+    "contrast",
+    "drop-shadow",
+    "opacity",
+    "saturate",
+    "sepia",
+    "svg"
+  ];
+  var specList = {
+    blur: BlurFilter.spec,
+    grayscale: GrayscaleFilter.spec,
+    "hue-rotate": HueRotateFilter.spec,
+    invert: InvertFilter.spec,
+    brightness: BrightnessFilter.spec,
+    contrast: ContrastFilter.spec,
+    "drop-shadow": DropshadowFilter.spec,
+    opacity: OpacityFilter.spec,
+    saturate: SaturateFilter.spec,
+    sepia: SepiaFilter.spec,
+    svg: URLSvgFilter.spec
+  };
+  class FilterEditor extends editor.EditorElement {
+    initState() {
+      return {
+        hideLabel: this.props.hideLabel === "true" ? true : false,
+        filters: this.props.value || []
+      };
+    }
+    template() {
+      return `
+      <div class='elf--filter-editor filter-list'>
+          <div class='filter-list' ref='$filterList'></div>
+      </div>`;
+    }
+    [sapa.LOAD("$filterSelect")]() {
+      var list = filter_list.map((it) => {
+        return { title: it, value: it };
+      });
+      var svgFilterList = this.getSVGFilterList();
+      var totalList = [];
+      if (svgFilterList.length) {
+        totalList = [...list, { title: "-------", value: "" }, ...svgFilterList];
+      } else {
+        totalList = [...list];
+      }
+      return totalList.map((it) => {
+        var { title, value } = it;
+        return `<option value='${value}'>${title}</option>`;
+      });
+    }
+    getSpec(filterType) {
+      return specList[filterType];
+    }
+    makeDropShadowFilterTemplate(spec, filter2, index2) {
+      return `
+      <div class="filter-item">
+        <div class="title drop-shadow">
+          <label draggable="true"  data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
+          <span class='sub-title'>${this.$i18n("filter.property.drop-shadow")}</span>
+          <div class="filter-menu">
+            <button type="button" class="del" data-index="${index2}">${editor.iconUse("remove2")}</button>
+          </div>
+        </div>
+        <div class="filter-ui-list">
+          ${sapa.createComponentList([
+        "ColorViewEditor",
+        {
+          ref: `$dropShadowColorView${index2}`,
+          params: index2,
+          compact: true,
+          value: filter2.color,
+          onchange: "changeDropShadowColor"
+        }
+      ], ...["offsetX", "offsetY", "blurRadius"].map((key) => {
+        return [
+          "InputRangeEditor",
+          {
+            ref: `$${key}${index2}`,
+            label: this.$i18n(`filter.property.drop-shadow.${key}`),
+            key: index2,
+            min: spec[key].min,
+            max: spec[key].max,
+            step: spec[key].step,
+            params: key,
+            value: filter2[key].value || spec[key].defaultValue,
+            units: spec[key].units,
+            onchange: "changeRangeEditor"
+          }
+        ];
+      }))}
+        </div>
+
+      </div>
+    `;
+    }
+    getSVGFilterList() {
+      var current = this.$context.selection.current;
+      var arr = [];
+      if (current) {
+        arr = current.svgfilters.map((it) => {
+          return {
+            title: `svg - #${it.id}`,
+            value: it.id
+          };
+        });
+      }
+      return arr;
+    }
+    makeOneFilterEditor(index2, filter2, spec) {
+      if (filter2.type === "svg") {
+        var options2 = "";
+        var current = this.$context.selection.current;
+        if (current) {
+          options2 = current.svgfilters.map((it) => {
+            return { value: it.id };
+          });
+        }
+        return sapa.createComponent("SelectEditor", {
+          ref: `$select${index2}`,
+          key: index2,
+          label: "SVG Filter",
+          value: filter2.value,
+          options: ["", ...options2],
+          onchange: "changeRangeEditor"
+        });
+      }
+      return sapa.createComponent("InputRangeEditor", {
+        ref: `$range${index2}_${filter2.type}`,
+        label: this.$i18n("filter.property." + filter2.type),
+        key: index2,
+        min: spec.min,
+        max: spec.max,
+        value: filter2.value,
+        units: spec.units,
+        onchange: "changeRangeEditor"
+      });
+    }
+    makeOneFilterTemplate(spec, filter2, index2) {
+      return `
+      <div class="filter-item" data-index="${index2}">
+        <div class="title" >
+          <label draggable="true" data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
+          ${filter2.type != "svg" ? `
+          <div class="filter-ui">
+            ${this.makeOneFilterEditor(index2, filter2, spec)}
+          </div>
+        ` : `
+          <div>
+            <span class='svg-filter-edit' data-index="${index2}">${filter2.value}</span>
+          </div>
+        `}          
+          <div class="filter-menu">
+            <button type="button" class="del" data-index="${index2}">
+              ${editor.iconUse("remove2")}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    }
+    makeFilterTemplate(filter2, index2) {
+      if (filter2.type === "drop-shadow") {
+        return this.makeDropShadowFilterTemplate(this.getSpec(filter2.type), filter2, index2);
+      } else {
+        return this.makeOneFilterTemplate(this.getSpec(filter2.type), filter2, index2);
+      }
+    }
+    [sapa.LOAD("$filterList")]() {
+      return this.state.filters.map((filter2, index2) => {
+        return this.makeFilterTemplate(filter2, index2.toString());
+      });
+    }
+    [sapa.DRAGSTART("$filterList .filter-item > .title > label")](e) {
+      this.startIndex = +e.$dt.attr("data-index");
+    }
+    [sapa.DRAGOVER("$filterList .filter-item > .title > label") + sapa.PREVENT]() {
+    }
+    sortItem(arr, startIndex, targetIndex) {
+      arr.splice(targetIndex + (startIndex < targetIndex ? -1 : 0), 0, ...arr.splice(startIndex, 1));
+    }
+    sortFilter(startIndex, targetIndex) {
+      this.sortItem(this.state.filters, startIndex, targetIndex);
+    }
+    [sapa.DROP("$filterList .filter-item") + sapa.PREVENT](e) {
+      var targetIndex = +e.$dt.attr("data-index");
+      var current = this.$context.selection.current;
+      if (!current)
+        return;
+      this.sortFilter(this.startIndex, targetIndex);
+      this.refresh();
+      this.modifyFilter();
+    }
+    modifyFilter() {
+      var value = this.state.filters;
+      this.parent.trigger(this.props.onchange, this.props.key, value, this.props.params);
+    }
+    makeFilter(type, opt = {}) {
+      return Filter.parse(__spreadProps(__spreadValues({}, opt), { type }));
+    }
+    [sapa.CLICK("$filterList .svg-filter-edit")](e) {
+      var _a, _b;
+      var index2 = +e.$dt.attr("data-index");
+      var filter2 = this.state.filters[index2];
+      var current = this.$context.selection.current;
+      if (current) {
+        var svgfilterIndex = current.getSVGFilterIndex((_b = (_a = filter2.value) == null ? void 0 : _a.value) == null ? void 0 : _b.replace("#", ""));
+        this.trigger("openSVGFilterPopup", svgfilterIndex);
+      }
+    }
+    [sapa.SUBSCRIBE("openSVGFilterPopup")](index2) {
+      const current = this.$context.selection.current || { svgfilters: [] };
+      const svgfilter = current.svgfilters[index2];
+      this.emit("showSVGFilterPopup", {
+        changeEvent: (params) => {
+          var current2 = this.$context.selection.current;
+          if (current2) {
+            current2.setSVGFilterValue(params.index, {
+              filters: params.filters
+            });
+            this.$commands.executeCommand("setAttribute", "change filter", this.$context.selection.pack("svgfilters", "filter"));
+          }
+        },
+        index: index2,
+        preview: false,
+        filters: svgfilter.filters
+      });
+    }
+    [sapa.SUBSCRIBE_SELF("add")](filterType) {
+      if (filterType === "svg") {
+        const index2 = this.$context.selection.current.createSVGFilter({
+          filters: []
+        });
+        const filter2 = this.$context.selection.current.svgfilters[index2];
+        this.state.filters.push(this.makeFilter(filterType, {
+          value: filter2.id
+        }));
+        this.refresh();
+        this.modifyFilter();
+        this.trigger("openSVGFilterPopup", index2);
+      } else {
+        this.state.filters.push(this.makeFilter(filterType));
+        this.refresh();
+        this.modifyFilter();
+      }
+    }
+    [sapa.CLICK("$add")]() {
+      var filterType = this.refs.$filterSelect.value;
+      this.trigger("add", filterType);
+    }
+    [sapa.CLICK("$filterList .filter-menu .del")](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.state.filters.splice(index2, 1);
+      this.refresh();
+      this.modifyFilter();
+    }
+    [sapa.SUBSCRIBE_SELF("changeDropShadowColor")](key, color, params) {
+      var index2 = +params;
+      this.state.filters[index2].color = color;
+      this.modifyFilter();
+    }
+    [sapa.SUBSCRIBE_SELF("changeRangeEditor")](key, value, params) {
+      if (params) {
+        this.state.filters[+key][params] = value;
+      } else {
+        this.state.filters[+key].value = value;
+      }
+      this.modifyFilter();
+    }
+  }
+  const font_list = [
+    "",
+    "Arial",
+    "Arial Black",
+    "Times New Roman",
+    "Times",
+    "Courier New",
+    "Courier",
+    "Verdana",
+    "Georgia",
+    "Palatino",
+    "Garamond",
+    "Bookman",
+    "Tahoma",
+    "Trebuchet MS",
+    "Impact",
+    "Comic Sans MS",
+    "serif",
+    "sans-serif",
+    "monospace",
+    "cursive",
+    "fantasy",
+    "system-ui"
+  ];
+  class FontSelectEditor extends editor.SelectEditor {
+    getFontList() {
+      return font_list.map((it) => {
+        return { value: it };
+      });
+    }
+    initState() {
+      return __spreadProps(__spreadValues({}, super.initState()), {
+        options: this.getFontList()
+      });
+    }
+  }
+  var GradientEditor$1 = /* @__PURE__ */ (() => '.elf--gradient-editor{box-sizing:border-box;padding:0 4px;position:relative}.elf--gradient-editor .tools{padding:4px 0}.elf--gradient-editor [data-editor],.elf--gradient-editor[data-selected-editor=static-gradient]{display:none}.elf--gradient-editor:not([data-selected-editor*=image-resource]) [data-editor=gradient],.elf--gradient-editor:not([data-selected-editor*=static-gradient]) [data-editor=gradient]{display:block}.elf--gradient-editor:not([data-selected-editor*=image-resource]) [data-editor=tools],.elf--gradient-editor:not([data-selected-editor*=static-gradient]) [data-editor=tools]{display:grid}.elf--gradient-editor[data-selected-editor=image-resource] .drag-pointer,.elf--gradient-editor[data-selected-editor=image-resource] .preset-position,.elf--gradient-editor[data-selected-editor=image-resource] .sub-editor,.elf--gradient-editor[data-selected-editor=image-resource] [data-editor=gradient],.elf--gradient-editor[data-selected-editor=image-resource] [data-editor=tools]{display:none}.elf--gradient-editor .sub-editor{padding:0}.elf--gradient-editor .gradient-steps{height:24px;margin-top:30px;position:relative}.elf--gradient-editor .hue,.elf--gradient-editor .hue-container{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;box-shadow:0 0 0 1px var(--elf--border-color);height:14px;left:0;pointer-events:all;position:absolute;right:0;top:4px}.elf--gradient-editor .hue{pointer-events:none}.elf--gradient-editor .hue .step-list{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%}.elf--gradient-editor .hue .step-list .step{background-color:transparent;background-image:linear-gradient(45deg,#8b8b8b 25%,transparent 0),linear-gradient(-45deg,#8b8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8b8b8b 0),linear-gradient(-45deg,transparent 75%,#8b8b8b 0);background-position:0 0,0 5.5px,5.5px -5.5px,-5.5px 0;background-size:11px 11px;border:2px solid var(--elf--border-color);display:inline-block;height:24px;pointer-events:all;position:absolute;top:calc(-100% - 2px);transform:translateX(-50%) translateY(-50%);width:24px}.elf--gradient-editor .hue .step-list .step.selected{border-color:var(--elf--selected-color-2);z-index:1}.elf--gradient-editor .hue .step-list .step.selected .arrow{background-color:var(--elf--selected-color-2);display:block}.elf--gradient-editor .hue .step-list .step.selected .color-view{box-shadow:0 0 0 1px var(--elf--selected-color-2)}.elf--gradient-editor .hue .step-list .step.selected .color-view span{display:block}.elf--gradient-editor .hue .step-list .step[data-cut=true] .arrow{top:calc(100% - .3px)}.elf--gradient-editor .hue .step-list .step[data-cut=true] .color-view{border-radius:0}.elf--gradient-editor .hue .step-list .step .color-view{align-items:center;border:2px solid #fff;bottom:0;box-sizing:border-box;cursor:pointer;display:flex;justify-content:center;left:0;position:absolute;right:0;top:0}.elf--gradient-editor .hue .step-list .step .color-view span{display:none;font-size:11px;font-weight:700;left:50%;position:absolute;top:calc(-100% - 1px);transform:translateX(-50%)}.elf--gradient-editor .hue .step-list .step .arrow{background-color:var(--elf--border-color);left:50%;top:calc(100% - .3px)}.elf--gradient-editor .hue .step-list .step .arrow,.elf--gradient-editor .hue .step-list .step .arrow:after{-webkit-clip-path:polygon(0 0,100% 0,50% 100%,0 0);clip-path:polygon(0 0,100% 0,50% 100%,0 0);height:6px;pointer-events:none;position:absolute;transform:translateX(-50%) translateY(0);width:16px;z-index:1}.elf--gradient-editor .hue .step-list .step .arrow:after{background-color:#fff;content:"";left:8px;top:-2px}')();
+  class GradientEditor extends editor.EditorElement {
+    initState() {
+      var _a;
+      const image2 = BackgroundImage.parseImage(this.props.value || "static-gradient(#ececec)");
+      const id = (_a = image2.colorsteps[this.props.index]) == null ? void 0 : _a.id;
+      this.$context.selection.selectColorStep(id);
+      if (id) {
+        this.currentStep = image2.colorsteps.find((it) => this.$context.selection.isSelectedColorStep(it.id));
+      }
+      return {
+        id,
+        index: +(this.props.index || 0),
+        value: this.props.value,
+        image: image2
+      };
+    }
+    setValue(value) {
+      this.setState({
+        image: BackgroundImage.parseImage(value)
+      }, false);
+      this.refresh();
+    }
+    template() {
+      return `
+        <div class='elf--gradient-editor'>
+            <div class='gradient-steps' data-editor='gradient'>
+                <div class="hue-container" ref="$back"></div>            
+                <div class="hue" ref="$steps">
+                    <div class='step-list' ref="$stepList" ></div>
+                </div>
+            </div>
+        </div>
+      `;
+    }
+    [sapa.CHANGE("$file")](e) {
+      var project2 = this.$context.selection.currentProject;
+      if (project2) {
+        [...e.target.files].forEach((item) => {
+          this.$commands.emit("updateImageAssetItem", item, (local) => {
+            this.trigger("setImageUrl", local);
+          });
+        });
+      }
+    }
+    [sapa.SUBSCRIBE_SELF("changeTabType")](type) {
+      var _a, _b;
+      const oldType = (_a = this.state.image) == null ? void 0 : _a.type;
+      const colorsteps = ((_b = this.state.image) == null ? void 0 : _b.colorsteps) || [];
+      if (oldType === GradientType.STATIC) {
+        if (colorsteps.length === 0) {
+          colorsteps.push(colorsteps[0], colorsteps[0]);
+        } else if (colorsteps.length === 1) {
+          colorsteps.push(colorsteps[0], colorsteps[0]);
+        }
+      }
+      var url = type === "image-resource" ? this.state.image.url : this.state.url;
+      this.state.image = BackgroundImage.changeImageType({
+        type,
+        url,
+        colorsteps,
+        angle: this.state.image.angle || 0,
+        radialType: this.state.image.radialType || RadialGradientType.CIRCLE,
+        radialPosition: this.state.image.radialPosition || ["50%", "50%"]
+      });
+      this.refresh();
+      this.updateData();
+    }
+    [sapa.SUBSCRIBE_SELF("changeColorStepOffset")](key, value) {
+      if (this.currentStep) {
+        this.currentStep.percent = value.value;
+        this.state.image.sortColorStep();
+        this.refresh();
+        this.updateData();
+      }
+    }
+    [sapa.CLICK("$back")](e) {
+      var rect2 = this.refs.$stepList.rect();
+      var minX = rect2.x;
+      var maxX = rect2.right;
+      var x = e.xy.x;
+      if (x < minX)
+        x = minX;
+      else if (x > maxX)
+        x = maxX;
+      var percent = (x - minX) / rect2.width * 100;
+      this.state.image.insertColorStep(percent);
+      this.state.image.sortColorStep();
+      this.refresh();
+      this.updateData();
+    }
+    [sapa.BIND("$el")]() {
+      var type = this.state.image.type;
+      if (type === "url") {
+        type = "image-resource";
+      }
+      return {
+        "data-selected-editor": type
+      };
+    }
+    [sapa.BIND("$stepList")]() {
+      return {
+        style: {
+          "background-image": this.getLinearGradient()
+        }
+      };
+    }
+    [sapa.LOAD("$stepList") + sapa.DOMDIFF]() {
+      var _a;
+      var colorsteps = ((_a = this.state.image) == null ? void 0 : _a.colorsteps) || [];
+      return colorsteps.map((it) => {
+        var selected = this.$context.selection.isSelectedColorStep(it.id) ? "selected" : "";
+        return `
+      <div class='step ${selected}' data-id='${it.id}' data-cut='${it.cut}' tabindex="-1" style='left: ${it.toLength()};'>
+        <div class='color-view' style="background-color: ${it.color}">
+          <span>${Math.floor(it.percent * 10) / 10}</span>
+        </div>      
+        <div class='arrow'></div>      
+      </div>`;
+      });
+    }
+    removeStep(id) {
+      this.state.image.removeColorStep(id);
+      this.refresh();
+      this.updateData();
+    }
+    selectStep(id) {
+      this.state.id = id;
+      this.$context.selection.selectColorStep(id);
+      if (this.state.image.colorsteps) {
+        this.currentStep = this.state.image.colorsteps.find((it) => this.$context.selection.isSelectedColorStep(it.id));
+        this.parent.trigger("selectColorStep", this.currentStep.color);
+      }
+      this.refresh();
+    }
+    [sapa.KEYUP("$el .step")](e) {
+      const id = e.$dt.data("id");
+      switch (e.code) {
+        case "Delete":
+        case "Backspace":
+          this.removeStep(id);
+          break;
+        case "BracketRight":
+          this.sortToRight(id);
+          break;
+        case "BracketLeft":
+          this.sortToLeft(id);
+          break;
+        case "Equal":
+          this.appendColorStep(id);
+          break;
+        case "Minus":
+          this.prependColorStep(id);
+          break;
+      }
+    }
+    sortToRight(id) {
+      this.state.image.sortToRight();
+      this.refresh();
+      this.updateData();
+      this.doFocus(id);
+    }
+    sortToLeft(id) {
+      this.state.image.sortToLeft();
+      this.refresh();
+      this.updateData();
+      this.doFocus(id);
+    }
+    appendColorStep(id) {
+      const currentIndex = this.state.image.colorsteps.findIndex((it) => it.id === id);
+      const nextIndex = currentIndex + 1;
+      const currentColorStep = this.state.image.colorsteps[currentIndex];
+      const nextColorStep = this.state.image.colorsteps[nextIndex];
+      if (!nextColorStep) {
+        if (currentColorStep.percent !== 100) {
+          this.state.image.insertColorStep(currentColorStep.percent + (100 - currentColorStep.percent) / 2);
+        }
+      } else {
+        this.state.image.insertColorStep(currentColorStep.percent + (nextColorStep.percent - currentColorStep.percent) / 2);
+      }
+      this.refresh();
+      this.updateData();
+      this.doFocus(id);
+    }
+    doFocus(id) {
+      this.nextTick(() => {
+        this.refs.$stepList.$(".step[data-id='" + id + "']").focus();
+      }, 100);
+    }
+    prependColorStep(id) {
+      const currentIndex = this.state.image.colorsteps.findIndex((it) => it.id === id);
+      const prevIndex = currentIndex - 1;
+      const currentColorStep = this.state.image.colorsteps[currentIndex];
+      const prevColorStep = this.state.image.colorsteps[prevIndex];
+      if (!prevColorStep) {
+        if (currentColorStep.percent !== 0) {
+          this.state.image.insertColorStep(currentColorStep.percent);
+        }
+      } else {
+        this.state.image.insertColorStep(prevColorStep.percent + (currentColorStep.percent - prevColorStep.percent) / 2);
+      }
+      this.refresh();
+      this.updateData();
+      this.doFocus(id);
+    }
+    [sapa.POINTERSTART("$stepList .step") + MOVE() + END()](e) {
+      var id = e.$dt.attr("data-id");
+      if (e.altKey) {
+        this.removeStep(id);
+        return false;
+      } else {
+        e.$dt.focus();
+        this.isSelectedColorStep = this.$context.selection.isSelectedColorStep(id);
+        this.selectStep(id);
+        this.startXY = e.xy;
+        this.cachedStepListRect = this.refs.$stepList.rect();
+      }
+    }
+    getStepListRect() {
+      return this.cachedStepListRect;
+    }
+    move(dx) {
+      var rect2 = this.getStepListRect();
+      var minX = rect2.x;
+      var maxX = rect2.right;
+      var x = this.startXY.x + dx;
+      if (x < minX)
+        x = minX;
+      else if (x > maxX)
+        x = maxX;
+      var percent = (x - minX) / rect2.width * 100;
+      if (this.$config.get("bodyEvent").shiftKey) {
+        percent = Math.floor(percent);
+      }
+      this.currentStep.setValue(percent, rect2.width);
+      this.state.image.sortColorStep();
+      this.refresh();
+      this.updateData();
+    }
+    end(dx, dy) {
+      if (dx === 0 && dy === 0) {
+        if (this.isSelectedColorStep) {
+          if (this.currentStep) {
+            this.currentStep.cut = !this.currentStep.cut;
+            this.refresh();
+            this.updateData();
+          }
+        }
+      }
+      this.doFocus(this.state.id);
+    }
+    getLinearGradient() {
+      var { image: image2 } = this.state;
+      return `linear-gradient(to right, ${Gradient.toCSSColorString(image2.colorsteps)})`;
+    }
+    [sapa.SUBSCRIBE_SELF("setColorStepColor")](color) {
+      if (this.state.image.type === "static-gradient") {
+        this.state.image.colorsteps[0].color = color;
+        this.refresh();
+        this.updateData();
+      } else {
+        if (this.currentStep) {
+          this.currentStep.color = color;
+          this.refresh();
+          this.updateData();
+        }
+      }
+    }
+    [sapa.SUBSCRIBE("setImageUrl")](url) {
+      if (this.state.image) {
+        this.state.url = url;
+        this.state.image.reset({ url });
+        this.refresh();
+        this.updateData();
+      }
+    }
+    updateData(data = {}) {
+      this.setState(data, false);
+      this.parent.trigger(this.props.onchange, this.state.image.toString());
+    }
+  }
+  var IconListViewEditor$1 = /* @__PURE__ */ (() => '.elf--list-view-editor{display:grid;grid-template-columns:repeat(1,1fr);margin-top:10px;max-height:500px;position:relative}.elf--list-view-editor[data-column="0"]{grid-template-columns:repeat(0,1fr)}.elf--list-view-editor[data-column="1"]{grid-template-columns:repeat(1,1fr)}.elf--list-view-editor[data-column="2"]{grid-template-columns:repeat(2,1fr)}.elf--list-view-editor[data-column="3"]{grid-template-columns:repeat(3,1fr)}.elf--list-view-editor[data-column="4"]{grid-template-columns:repeat(4,1fr)}.elf--list-view-editor[data-column="5"]{grid-template-columns:repeat(5,1fr)}.elf--list-view-editor[data-column="6"]{grid-template-columns:repeat(6,1fr)}.elf--list-view-editor[data-column="7"]{grid-template-columns:repeat(7,1fr)}.elf--list-view-editor[data-column="8"]{grid-template-columns:repeat(8,1fr)}.elf--list-view-editor[data-column="9"]{grid-template-columns:repeat(9,1fr)}.elf--list-view-editor .list-view-item.selected{background-color:var(--elf--selected-color)}.elf--list-view-editor .list-view-item.selected svg circle,.elf--list-view-editor .list-view-item.selected svg path,.elf--list-view-editor .list-view-item.selected svg rect{fill:var(--elf--selected-font-color)}.elf--list-view-editor .list-view-item svg{width:100%}.elf--list-view-editor .list-view-item svg circle,.elf--list-view-editor .list-view-item svg path,.elf--list-view-editor .list-view-item svg rect{fill:var(--elf--font-color)}')();
+  class IconListViewEditor extends editor.EditorElement {
+    initState() {
+      return {
+        value: this.props.value
+      };
+    }
+    template() {
+      return `<div class='select-editor elf--list-view-editor' ref='$body'></div>`;
+    }
+    [sapa.BIND("$body")]() {
+      return {
+        "data-column": this.props.column || 1
+      };
+    }
+    [sapa.LOAD("$body")]() {
+      return Object.keys(icon).map((key) => {
+        var html = editor.iconUse(key);
+        var selected = key === this.state.value ? "selected" : "";
+        return `<div class='list-view-item ${selected}'  data-key='${key}'>${html}</div>`;
+      });
+    }
+    getValue() {
+      return this.state.value;
+    }
+    setValue(value) {
+      this.state.value = value;
+      this.refresh();
+    }
+    [sapa.CLICK("$body .list-view-item")](e) {
+      var key = e.$dt.attr("data-key");
+      e.$dt.onlyOneClass("selected");
+      this.updateData({
+        value: key
+      });
+    }
+    updateData(data) {
+      this.setState(data, false);
+      this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
+    }
+  }
+  class IterationCountEditor extends editor.InputRangeEditor {
+    initState() {
+      var value = this.props.value;
+      if (value === "infinite") {
+        value = new editor.Length(0, "infinite");
+      } else {
+        value = editor.Length.number(value);
+      }
+      var units = this.props.units || ["px", "em", "%"];
+      return __spreadValues(__spreadValues({}, super.initState()), {
+        key: this.props.key,
+        params: this.props.params || "",
+        units,
+        value
+      });
+    }
+  }
+  var MediaProgressEditor$1 = /* @__PURE__ */ (() => ".elf--media-progress-editor>*{margin-bottom:2px}.elf--media-progress-editor .drag-area{background-image:linear-gradient(90deg,#2b2b2b 1px,transparent 1px 100%);background-position:0 1px;background-repeat:repeat-x;background-size:10px 8px;height:10px;margin:10px;padding:0 10px;position:relative}.elf--media-progress-editor .progress-bar{background-color:#2b2b2b;display:block;height:2px;left:0;position:absolute;top:50%;transform:translateY(-50%);width:100%}.elf--media-progress-editor .bar{height:2px;left:10%;transform:translateY(-50%);width:50%}.elf--media-progress-editor .bar,.elf--media-progress-editor .drag-item{background-color:var(--elf--selected-color);display:inline-block;position:absolute;top:50%}.elf--media-progress-editor .drag-item{border-radius:100%;cursor:pointer;height:8px;transform:translate(-50%,-50%);width:8px}.elf--media-progress-editor .drag-item.end{background-color:#ff0;box-shadow:0 0 3px 0 rgba(0,0,0,.3)}")();
+  class MediaProgressEditor extends editor.EditorElement {
+    initState() {
+      const [start, end, duration] = (this.props.value || "").split(":");
+      return {
+        start: +(start || 0),
+        end: +(end || 1),
+        duration: +(duration || 1)
+      };
+    }
+    refresh() {
+      this.load();
+      this.children.$s.setValue(this.state.start * this.state.duration);
+      this.children.$e.setValue(this.state.end * this.state.duration);
+      this.children.$s.setMax(this.state.duration);
+      this.children.$e.setMax(this.state.duration);
+    }
+    template() {
+      const { start, end, duration } = this.state;
+      return `
+            <div class='elf--media-progress-editor'>
+                <div class='drag-area'>
+                    <div class='progress-bar' ref='$progress'></div>
+                    <div class='bar' ref='$bar'></div>                
+                    <div class='drag-item start' ref='$start'></div>
+                    <div class='drag-item end' ref='$end'></div>
+                </div>
+                <div class='item'>
+                    ${sapa.createComponent("NumberRangeEditor", {
+        ref: "$s",
+        label: "Start",
+        key: "start",
+        min: 0,
+        max: duration,
+        step: 1e-3,
+        value: start * duration,
+        onchange: "changeValue"
+      })}
+                </div>
+                <div class='item'>
+                    ${sapa.createComponent("NumberRangeEditor", {
+        ref: "$e",
+        label: "End",
+        key: "end",
+        min: 0,
+        max: duration,
+        step: 1e-3,
+        value: end * duration,
+        onchange: "changeValue"
+      })}
+                </div>                
+            </div>
+        `;
+    }
+    [sapa.SUBSCRIBE_SELF("changeValue")](key, value) {
+      this.updateData({
+        [key]: value / this.state.duration
+      }, true);
+    }
+    [sapa.POINTERSTART("$start") + MOVE("moveStart")]() {
+      this.rect = this.refs.$progress.rect();
+      this.pos = editor.Length.parse(this.refs.$start.css("left")).toPx(this.rect.width);
+      this.max = editor.Length.parse(this.refs.$end.css("left")).toPx(this.rect.width);
+    }
+    moveStart(dx) {
+      var realPos = Math.min(this.max.value, Math.max(0, this.pos.value + dx));
+      this.state.start = realPos / this.rect.width;
+      this.children.$s.setValue(this.state.start * this.state.duration);
+      this.refresh();
+      this.updateData();
+    }
+    [sapa.BIND("$start")]() {
+      return {
+        "data-info": this.state.start,
+        style: {
+          left: editor.Length.percent((this.state.start || 0) * 100)
+        }
+      };
+    }
+    [sapa.POINTERSTART("$end") + MOVE("moveStartForEnd")]() {
+      this.rect = this.refs.$progress.rect();
+      this.pos = editor.Length.parse(this.refs.$end.css("left")).toPx(this.rect.width);
+      this.min = editor.Length.parse(this.refs.$start.css("left")).toPx(this.rect.width);
+      this.max = this.rect.width;
+    }
+    moveStartForEnd(dx) {
+      var realPos = Math.max(this.min.value, Math.min(this.max.value, this.pos.value + dx));
+      this.state.end = realPos / this.rect.width;
+      this.children.$e.setValue(this.state.end * this.state.duration);
+      this.refresh();
+      this.updateData();
+    }
+    [sapa.BIND("$end")]() {
+      return {
+        "data-info": this.state.end,
+        style: {
+          left: editor.Length.percent((this.state.end || 1) * 100)
+        }
+      };
+    }
+    [sapa.BIND("$bar")]() {
+      const start = this.state.start || 0;
+      const end = this.state.end || 1;
+      return {
+        style: {
+          left: editor.Length.percent(start * 100),
+          width: editor.Length.percent((end - start) * 100)
+        }
+      };
+    }
+    getValue() {
+      const { start, end, duration } = this.state;
+      return `${start}:${end}:${duration}`;
+    }
+    setValue(value) {
+      const [start, end, duration] = value.split(":");
+      this.setState({
+        start: Number(start),
+        end: Number(end),
+        duration: Number(duration)
+      });
+    }
+    updateData(data = {}, isRefresh = false) {
+      this.setState(data, isRefresh);
+      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
+    }
+  }
+  var PathEditor$1 = /* @__PURE__ */ (() => '.elf--path-editor{--line-color:var(--elf--border-color);background-color:transparent;background-image:linear-gradient(to right,var(--line-color),var(--line-color) 1px,transparent 1px,transparent),linear-gradient(to bottom,var(--line-color),var(--line-color) 1px,transparent 1px,transparent),linear-gradient(to right,var(--line-color),var(--line-color) 1px,transparent 1px,transparent),linear-gradient(to bottom,var(--line-color),var(--line-color) 1px,transparent 1px,transparent);background-position:0 0,0 0,100% 0,0 100%;background-repeat:repeat,repeat,no-repeat,no-repeat;background-size:10% 100%,100% 10%,1px 100%,100% 1px;cursor:crosshair;margin:10px;min-height:100px;min-width:100px;position:relative}.elf--path-editor .segment-box{background-color:rgba(158,136,255,.2);border:.5px solid rgba(92,63,255,.9);box-sizing:border-box;left:-10000px;pointer-events:none;position:absolute}.elf--path-editor .path-container{bottom:0;left:0;position:absolute;right:0;top:0}.elf--path-editor .path-container:not(.modify) path.object,.elf--path-editor .path-container:not(.segment-move) path.object{stroke:#848484}.elf--path-editor .path-container.split-panel{pointer-events:none}.elf--path-editor .path-container.has-transform{background-color:var(--elf--path-background-color)}.elf--path-editor .path-container.path{cursor:crosshair}.elf--path-editor .path-container.path svg path.object{pointer-events:stroke}.elf--path-editor .path-container.alt svg circle,.elf--path-editor .path-container.segment-move{cursor:move}.elf--path-editor .path-container.transform svg .snap-path,.elf--path-editor .path-container.transform svg circle,.elf--path-editor .path-container.transform svg line,.elf--path-editor .path-container.transform svg rect,.elf--path-editor .path-container.transform svg text{display:none}.elf--path-editor .path-container.modify,.elf--path-editor .path-container.segment-move{cursor:default}.elf--path-editor .path-container.modify svg path.object,.elf--path-editor .path-container.segment-move svg path.object{pointer-events:stroke}.elf--path-editor .path-container.box svg path.object{stroke:var(--elf--border-color)}.elf--path-editor .path-container.has-one-stroke-width svg path.object{stroke:transparent}.elf--path-editor .path-container.is-control svg path.path-area{display:none}.elf--path-editor .path-tool{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--path-editor .path-tool .transform-manager{display:none;pointer-events:all;position:absolute}.elf--path-editor .path-tool .transform-manager[data-show=true]{display:inline-block}.elf--path-editor .path-tool .transform-manager[data-position="to rotate"]{box-shadow:none}.elf--path-editor .path-tool .transform-manager[data-position="to rotate"] .transform-tool-item:not([data-position="to rotate"]){display:none}.elf--path-editor .path-tool .transform-manager .transform-tool-item{background-color:hsla(0,0%,100%,.5);box-shadow:0 0 0 1px #7b7b7b;display:inline-block;height:8px;position:absolute;transform:translate(-50%,-50%);width:8px}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to skewX"]{background-color:#fff;cursor:move;left:calc(50% - 20px);top:-20px;transform:skewX(10deg)}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to skewY"]{background-color:#fff;cursor:move;left:calc(50% + 20px);top:-20px;transform:skewY(10deg)}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to rotate"]{background-color:#fff;border-radius:100%;cursor:move;left:50%;top:-20px}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to move"]{background-color:transparent;bottom:0;box-shadow:0 0 0 1px var(--elf--selected-color);cursor:move;height:auto;left:0;right:0;top:0;transform:none;width:auto}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to top left"]{cursor:nwse-resize;left:0;top:0}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to top right"]{cursor:nesw-resize;left:100%;top:0}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to top"]{cursor:ns-resize;left:50%;top:0}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to left"]{cursor:ew-resize;left:0;top:50%}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to right"]{cursor:ew-resize;left:100%;top:50%}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to bottom"]{cursor:ns-resize;left:50%;top:100%}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to bottom left"]{cursor:nesw-resize;left:0;top:100%}.elf--path-editor .path-tool .transform-manager .transform-tool-item[data-position="to bottom right"]{cursor:nwse-resize;left:100%;top:100%}.elf--path-editor svg{height:100%;overflow:visible;width:100%}.elf--path-editor svg line{stroke-width:1;content-visibility:auto}.elf--path-editor svg line[data-guide=true]{stroke:var(--elf--path-segment-stroke-color);pointer-events:none}.elf--path-editor svg line[data-distance=true]{stroke:var(--elf--selected-color);stroke-dasharray:2 2;pointer-events:none}.elf--path-editor svg circle{fill:#fff;stroke:var(--elf--path-guide-color);stroke-width:1;content-visibility:auto;cursor:move}.elf--path-editor svg circle.curve{stroke:var(--elf--path-segment-stroke-color)}.elf--path-editor svg circle[data-is-first=true]{fill:red!important;z-index:1}.elf--path-editor svg circle[data-is-second=true]{fill:blue!important;z-index:1}.elf--path-editor svg circle[data-is-last=true]{fill:red!important;z-index:0}.elf--path-editor svg circle[data-selected=true]{fill:var(--elf--selected-color);stroke:var(--elf--selected-color);r:5;stroke-width:2}.elf--path-editor svg circle[data-selected=true][data-is-first=true]{fill:red!important;stroke:#fff}.elf--path-editor svg circle[data-selected=true][data-is-second=true]{fill:blue!important;stroke:#fff}.elf--path-editor svg circle[data-selected=true][data-is-last=true]{fill:red!important;stroke:#fff}.elf--path-editor svg circle[data-segment-point=endPoint]:not([data-selected=true]),.elf--path-editor svg circle[data-segment-point=reversePoint]:not([data-selected=true]){r:3}.elf--path-editor svg circle.split-circle{fill:var(--elf--selected-color);stroke:#fff;pointer-events:none}.elf--path-editor svg .svg-canvas{fill:transparent;stroke:var(--elf--selected-border-color);stroke-width:1;pointer-events:none}.elf--path-editor svg path{fill:transparent;content-visibility:auto}.elf--path-editor svg path.path-area{stroke-width:0}.elf--path-editor svg path.path-area.selected,.elf--path-editor svg path.path-area:hover{fill:url(#stripe)}.elf--path-editor svg path.curve{fill:#fff;stroke-width:1;stroke:var(--elf--path-segment-stroke-color);cursor:move}.elf--path-editor svg path.curve[data-selected=true]{fill:var(--elf--selected-color);stroke:var(--elf--selected-color)}.elf--path-editor svg path.guide,.elf--path-editor svg path.segment{fill:transparent;stroke:var(--elf--selected-color);stroke-width:1}.elf--path-editor svg path.segment{pointer-events:all}.elf--path-editor svg path.object{fill:transparent;stroke-width:1}.elf--path-editor svg path.split-path{fill:transparent;stroke:#959595;stroke-width:2;pointer-events:stroke}.elf--path-editor svg path.split-path:hover{stroke:var(--elf--selected-color);stroke-width:2;cursor:copy}.elf--path-editor svg path.snap-path{fill:transparent;stroke:var(--elf--selected-color);stroke-width:1}.elf--path-editor svg text{fill:var(--elf--selected-color);stroke:var(--elf--selected-color);stroke-width:.5;font-weight:700;pointer-events:none}')();
+  const SEGMENT_DIRECTION = ["startPoint", "endPoint", "reversePoint"];
+  function calculateSnapPoint(points, sourceKey, target, distanceValue, dist2) {
+    var checkedPointList = points.filter((p) => {
+      if (!p)
+        return false;
+      return Math.abs(p[sourceKey] - target) <= dist2;
+    }).map((p) => {
+      return { dist: Math.abs(p[sourceKey] - target), point: p };
+    });
+    checkedPointList.sort((a, b) => {
+      return a.dist < b.dist ? -1 : 1;
+    });
+    var point2 = null;
+    if (checkedPointList.length) {
+      point2 = checkedPointList[0].point;
+      distanceValue += point2[sourceKey] - target;
+    }
+    return { point: point2, distanceValue };
+  }
+  function calculateMovePointSnap(points, moveXY, dist2) {
+    var snapPointX = calculatePointDist(points, "x", moveXY.x, dist2);
+    var snapPointY = calculatePointDist(points, "y", moveXY.y, dist2);
+    var snapEndPoint = __spreadValues({}, moveXY);
+    if (snapPointX) {
+      snapEndPoint.x = snapPointX.x;
+    }
+    if (snapPointY) {
+      snapEndPoint.y = snapPointY.y;
+    }
+    var snapPointList = [];
+    if (snapPointX) {
+      snapPointList.push({ startPoint: snapPointX, endPoint: snapEndPoint });
+    }
+    if (snapPointY) {
+      snapPointList.push({ startPoint: snapPointY, endPoint: snapEndPoint });
+    }
+    return { snapPointList, moveXY: snapEndPoint };
+  }
+  function calculatePointDist(points, sourceKey, target, dist2) {
+    var checkedPointList = [];
+    var arr = SEGMENT_DIRECTION;
+    points.filter((p) => p).forEach((p) => {
+      arr.filter((key) => p[key]).forEach((key) => {
+        var point2 = p[key];
+        var tempDist = Math.abs(point2[sourceKey] - target);
+        if (tempDist <= dist2) {
+          checkedPointList.push({ dist: tempDist, point: point2 });
+        }
+      });
+    });
+    checkedPointList.sort((a, b) => {
+      return a.dist > b.dist ? 1 : -1;
+    });
+    return checkedPointList.length ? checkedPointList[0].point : null;
+  }
+  function toPath(points, minX, minY, scale2 = 1) {
+    var d = [];
+    for (var index2 = 0, len2 = points.length; index2 < len2; index2++) {
+      var currentIndex = index2;
+      var current = points[currentIndex];
+      if (!current)
+        continue;
+      if (current.command === "M") {
+        d.push({ command: "M", values: [current.startPoint] });
+      } else {
+        var prevPoint = Point.getPrevPoint(points, index2);
+        if (current.curve === false) {
+          if (prevPoint.curve === false) {
+            d.push({ command: "L", values: [current.startPoint] });
+          } else {
+            d.push({
+              command: "Q",
+              values: [prevPoint.endPoint, current.startPoint]
+            });
+          }
+        } else {
+          if (prevPoint.curve === false) {
+            if (Point.isEqual(current.reversePoint, current.startPoint)) {
+              d.push({ command: "L", values: [current.startPoint] });
+            } else {
+              d.push({
+                command: "Q",
+                values: [current.reversePoint, current.startPoint]
+              });
+            }
+          } else {
+            d.push({
+              command: "C",
+              values: [
+                prevPoint.endPoint,
+                current.reversePoint,
+                current.startPoint
+              ]
+            });
+          }
+        }
+      }
+      if (current.close) {
+        d.push({ command: "Z" });
+      }
+    }
+    var dString = d.map((segment) => {
+      return calculateRelativePosition(minX, minY, segment, scale2);
+    }).join(" ");
+    return {
+      d: dString
+    };
+  }
+  function calculateRelativePosition(minX, minY, segment, scale2 = 1) {
+    var { command, values } = segment;
+    switch (command) {
+      case "Z":
+        return "Z";
+      default:
+        var str = values.map((v) => {
+          var tx = v.x - minX === 0 ? 0 : (v.x - minX) / scale2;
+          var ty = v.y - minY === 0 ? 0 : (v.y - minY) / scale2;
+          return `${tx} ${ty}`;
+        }).join(" ");
+        return `${command} ${str}`;
+    }
+  }
+  function checkInArea(area2, point2) {
+    if (area2.x2.value < point2.x) {
+      return false;
+    }
+    if (area2.y2.value < point2.y) {
+      return false;
+    }
+    if (area2.x.value > point2.x) {
+      return false;
+    }
+    if (area2.y.value > point2.y) {
+      return false;
+    }
+    return true;
+  }
+  class PurePathGenerator {
+    generatorPathString(points, minX = 0, minY = 0, scale2 = 1) {
+      return toPath(points, minX, minY, scale2).d;
+    }
+    constructor(pathEditor) {
+      this.pathEditor = pathEditor;
+      this.pathStringManager = new PathStringManager();
+      this.guideLineManager = new PathStringManager();
+      this.segmentManager = new SegmentManager(null);
+      this.points = [];
+      this.cachedSegmentKeys = {};
+      this.initialize();
+      this.initializeSelect();
+    }
+    initialize() {
+      this.splitLines = [];
+      this.guideLineManager.reset();
+      this.segmentManager.reset();
+      this.pathStringManager.reset();
+    }
+    initializeSelect(initPointList = []) {
+      this.selectedPointKeys = {};
+      this.selectedPointList = [];
+      if (initPointList.length) {
+        this.select(...initPointList.map((p) => {
+          const checkedPoint = this.points[p.index][p.key];
+          if (!checkedPoint)
+            return void 0;
+          return {
+            x: checkedPoint.x,
+            y: checkedPoint.y,
+            key: p.key,
+            index: checkedPoint.index
+          };
+        }).filter(Boolean));
+      }
+    }
+    get state() {
+      return this.pathEditor.state;
+    }
+    get clonePoints() {
+      return [...this.points];
+    }
+    get length() {
+      return this.points.length;
+    }
+    setPoints(points = []) {
+      this.points = points;
+      this.snapPointList = [];
+      if (this.points.length === 0) {
+        this.select();
+        this.selectGroup(-1);
+      }
+    }
+    selectInBox(box, isToggle = false) {
+      var list = [];
+      this.points.forEach((point2, index2) => {
+        SEGMENT_DIRECTION.forEach((key) => {
+          const p = point2[key];
+          if (checkInArea(box, p)) {
+            list.push({ x: p.x, y: p.y, key, index: index2 });
+          }
+        });
+      });
+      if (isToggle) {
+        list = list.map((it) => {
+          const selectedKey = this.makeSegmentKey(it);
+          return __spreadProps(__spreadValues({}, it), {
+            included: Boolean(this.selectedPointKeys[selectedKey])
+          });
+        });
+        const includedList = list.filter((it) => it.included);
+        const notIncludedList = list.filter((it) => !it.included);
+        let uniqueList = [...this.selectedPointList];
+        if (includedList.length) {
+          uniqueList = this.selectedPointList.filter((it) => {
+            const oldKey = this.makeSegmentKey(it);
+            return Boolean(includedList.find((includeNode) => {
+              return oldKey === this.makeSegmentKey(includeNode);
+            })) === false;
+          });
+        }
+        this.select(...uniqueList, ...notIncludedList);
+      } else {
+        this.select(...list);
+      }
+    }
+    makeSegmentKey(p) {
+      return `${p.key}_${p.index}`;
+    }
+    select(...list) {
+      this.selectedPointKeys = {};
+      this.selectedPointList = list.map(({ x, y, key, index: index2 }) => ({
+        x,
+        y,
+        key,
+        index: +index2
+      }));
+      list.forEach((it) => {
+        var key = this.makeSegmentKey(it);
+        this.selectedPointKeys[key] = true;
+      });
+    }
+    convertPointsToSelectionList(points) {
+      var list = [];
+      points.forEach((point2) => {
+        SEGMENT_DIRECTION.forEach((key) => {
+          const { x, y } = point2[key];
+          list.push({ x, y, key, index: point2.index });
+        });
+      });
+      return list;
+    }
+    selectGroup(groupIndex) {
+      const group = this.splitedGroupList[groupIndex];
+      if (group) {
+        this.select(...this.convertPointsToSelectionList(group.points));
+      } else {
+        this.select();
+      }
+    }
+    getCacheSegmentKey(segmentKey, index2) {
+      if (!this.cachedSegmentKeys[segmentKey]) {
+        this.cachedSegmentKeys[segmentKey] = {};
+      }
+      if (!this.cachedSegmentKeys[segmentKey][index2]) {
+        this.cachedSegmentKeys[segmentKey][index2] = this.makeSegmentKey({
+          key: segmentKey,
+          index: index2
+        });
+      }
+      return this.cachedSegmentKeys[segmentKey][index2];
+    }
+    toggleSelect(key, index2) {
+      if (this.points[index2]) {
+        var point2 = this.points[index2][key];
+        if (point2 && !this.isSelectedSegment(key, index2)) {
+          this.select(...this.selectedPointList, {
+            x: point2.x,
+            y: point2.y,
+            key,
+            index: index2
+          });
+        } else {
+          this.select(...this.selectedPointList.filter((it) => {
+            return it.key !== key || it.index !== index2;
+          }));
+        }
+      }
+    }
+    selectKeyIndex(key, index2) {
+      if (this.points[index2]) {
+        var point2 = this.points[index2][key];
+        if (point2 && !this.isSelectedSegment(key, index2)) {
+          this.select({ x: point2.x, y: point2.y, key, index: index2 });
+        }
+      }
+    }
+    reselect() {
+      this.selectedPointList.filter(Boolean).forEach((it) => {
+        var _a;
+        var point2 = (_a = this.points[it.index]) == null ? void 0 : _a[it.key];
+        if (point2) {
+          it.x = point2.x;
+          it.y = point2.y;
+        }
+      });
+    }
+    isSelectedSegment(segment, index2) {
+      var key = this.getCacheSegmentKey(segment, index2);
+      return this.selectedPointKeys[key];
+    }
+    commitTransformMatrix(point2, transformMatrix) {
+      var result = transformMat4([], [point2.x, point2.y, 0], transformMatrix);
+      return { x: result[0], y: result[1] };
+    }
+    transformMat4(transformMatrix) {
+      this.transformPoints.forEach((p, index2) => {
+        var realPoint = this.points[index2];
+        Object.assign(realPoint.startPoint, this.commitTransformMatrix(p.startPoint, transformMatrix));
+        Object.assign(realPoint.endPoint, this.commitTransformMatrix(p.endPoint, transformMatrix));
+        Object.assign(realPoint.reversePoint, this.commitTransformMatrix(p.reversePoint, transformMatrix));
+      });
+    }
+    transform(type) {
+      var { x, y, width: width2, height } = this.transformRect;
+      var view = create$4();
+      translate(view, view, [x, y, 0]);
+      switch (type) {
+        case "flipX":
+          scale(view, view, [-1, 1, 1]);
+          translate(view, view, [-width2, 0, 0]);
+          break;
+        case "flipY":
+          scale(view, view, [1, -1, 1]);
+          translate(view, view, [0, -height, 0]);
+          break;
+        case "flip":
+          scale(view, view, [-1, -1, 1]);
+          translate(view, view, [-width2, -height, 0]);
+          break;
+      }
+      translate(view, view, [-x, -y, 0]);
+      this.transformMat4(view);
+    }
+    initTransform(rect2) {
+      this.transformRect = sapa.clone(rect2);
+      this.transformPoints = this.clonePoints.map((p) => {
+        return {
+          startPoint: sapa.clone(p.startPoint),
+          endPoint: sapa.clone(p.endPoint),
+          reversePoint: sapa.clone(p.reversePoint)
+        };
+      });
+    }
+    setConnectedPoint(dx, dy) {
+      var state = this.state;
+      var x = state.dragXY.x + dx;
+      var y = state.dragXY.y + dy;
+      var endPoint = { x, y };
+      var reversePoint = { x, y };
+      if (state.dragPoints) {
+        state.reversePoint = Point.getReversePoint(state.startPoint, endPoint);
+      }
+      var point2 = {
+        startPoint: state.startPoint,
+        endPoint,
+        curve: !!state.dragPoints,
+        reversePoint,
+        connected: true,
+        close: true
+      };
+      this.points.push(point2);
+    }
+    setLastPoint(startPoint) {
+      var endPoint = sapa.clone(startPoint);
+      var reversePoint = sapa.clone(startPoint);
+      var point2 = {
+        startPoint,
+        endPoint,
+        curve: false,
+        reversePoint,
+        connected: false,
+        close: false
+      };
+      this.points.push(point2);
+    }
+    getPrevPoint(index2) {
+      return Point.getPrevPoint(this.points, index2);
+    }
+    getIndexPoint(index2) {
+      return Point.getIndexPoint(this.points, index2);
+    }
+    getNextPoint(index2) {
+      return Point.getNextPoint(this.points, index2);
+    }
+    getConnectedPointList(index2) {
+      return Point.getConnectedPointList(this.points, index2);
+    }
+    isFirst(segment) {
+      return Point.isFirst(segment);
+    }
+    getLastPoint(index2) {
+      return Point.getLastPoint(this.points, index2);
+    }
+    setCachePoint(index2, segmentKey) {
+      var state = this.state;
+      this.snapPointList = [];
+      this.selectedIndex = index2;
+      state.connectedPoint = this.getPrevPoint(index2);
+      state.connectedPointList = sapa.clone(Point.getConnectedPointList(this.points, this.selectedIndex));
+      if (state.connectedPoint && !state.connectedPoint.connected) {
+        state.connectedPoint = null;
+      }
+      state.segment = this.getIndexPoint(index2);
+      if (state.segment.connected) {
+        state.connectedPoint = this.getNextPoint(index2);
+      }
+      var isFirstSegment = this.isFirst(state.segment);
+      if (isFirstSegment) {
+        var lastPoint = this.getLastPoint(index2);
+        if (lastPoint.connected) {
+          state.connectedPoint = lastPoint;
+        }
+      }
+      state.segmentKey = segmentKey;
+      state.isCurveSegment = state.segment.curve && state.segmentKey != "startPoint";
+      state.originalSegment = sapa.clone(state.segment);
+      if (state.connectedPoint) {
+        state.originalConnectedPoint = sapa.clone(state.connectedPoint);
+      }
+      state.cachedPoints = [];
+      this.points.filter((p) => p && p != state.segment).forEach((p) => {
+        state.cachedPoints.push(p.startPoint, p.reversePoint, p.endPoint);
+      });
+    }
+    clamp(value, min, max) {
+      if (sapa.isUndefined(min) || sapa.isUndefined(max)) {
+        return value;
+      }
+      return Math.max(min, Math.min(max, value));
+    }
+    moveSegment(segmentKey, dx, dy, originSegment = void 0, maxWidth = void 0, maxHeight = void 0) {
+      if (originSegment) {
+        const segment = this.points[originSegment.index][segmentKey];
+        segment.x = this.clamp(originSegment[segmentKey].x + dx, 0, maxWidth);
+        segment.y = this.clamp(originSegment[segmentKey].y + dy, 0, maxHeight);
+      } else {
+        var state = this.state;
+        var originPoint = state.originalSegment[segmentKey];
+        var targetPoint = state.segment[segmentKey];
+        if (originPoint) {
+          targetPoint.x = this.clamp(originPoint.x + dx, 0, maxWidth);
+          targetPoint.y = this.clamp(originPoint.y + dy, 0, maxHeight);
+        }
+      }
+    }
+    calculateToCurve(point2, nextPoint, prevPoint) {
+      var centerX = (nextPoint.startPoint.x + prevPoint.startPoint.x) / 2;
+      var centerY = (nextPoint.startPoint.y + prevPoint.startPoint.y) / 2;
+      var dx = (nextPoint.startPoint.x - centerX) / 2;
+      var dy = (nextPoint.startPoint.y - centerY) / 2;
+      point2.endPoint = {
+        x: point2.startPoint.x + dx,
+        y: point2.startPoint.y + dy
+      };
+      point2.reversePoint = {
+        x: point2.startPoint.x - dx,
+        y: point2.startPoint.y - dy
+      };
+      return { dx, dy };
+    }
+    convertToCurve(index2) {
+      var point2 = this.points[index2];
+      if (point2.curve) {
+        point2.curve = false;
+        point2.reversePoint = sapa.clone(point2.startPoint);
+        point2.endPoint = sapa.clone(point2.startPoint);
+        if (point2.command === "M") {
+          var lastPoint = Point.getPrevPoint(this.points, point2.index);
+          if (lastPoint.connected) {
+            lastPoint.curve = false;
+            lastPoint.reversePoint = sapa.clone(lastPoint.startPoint);
+            lastPoint.endPoint = sapa.clone(lastPoint.startPoint);
+          }
+        } else {
+          var nextPoint = this.getNextPoint(index2);
+          if (nextPoint && nextPoint.command === "M") {
+            var firstPoint = nextPoint;
+            firstPoint.curve = false;
+            firstPoint.reversePoint = sapa.clone(firstPoint.startPoint);
+            firstPoint.endPoint = sapa.clone(firstPoint.startPoint);
+          }
+        }
+      } else {
+        point2.curve = true;
+        var prevPoint = this.getPrevPoint(index2);
+        var nextPoint = this.getNextPoint(index2);
+        if (nextPoint && nextPoint.index < index2 && nextPoint.command === "M") {
+          var firstPoint = nextPoint;
+          nextPoint = this.getNextPoint(firstPoint.index);
+          this.calculateToCurve(point2, nextPoint, prevPoint);
+          firstPoint.curve = true;
+          firstPoint.endPoint = sapa.clone(point2.endPoint);
+          firstPoint.reversePoint = sapa.clone(point2.reversePoint);
+        } else if (nextPoint && nextPoint.index > index2 && nextPoint.command !== "M") {
+          this.calculateToCurve(point2, nextPoint, prevPoint);
+        } else if (!nextPoint && prevPoint) {
+          var centerX = (point2.startPoint.x - prevPoint.startPoint.x) / 3;
+          var centerY = (point2.startPoint.y - prevPoint.startPoint.y) / 3;
+          point2.endPoint = {
+            x: point2.startPoint.x + centerX,
+            y: point2.startPoint.y + centerY
+          };
+          point2.reversePoint = Point.getReversePoint(point2.startPoint, point2.endPoint);
+        } else if (!prevPoint && nextPoint) {
+          var centerX = (point2.startPoint.x - nextPoint.startPoint.x) / 3;
+          var centerY = (point2.startPoint.y - nextPoint.startPoint.y) / 3;
+          point2.endPoint = {
+            x: point2.startPoint.x + centerX,
+            y: point2.startPoint.y + centerY
+          };
+          point2.reverse = Point.getReversePoint(point2.startPoint, point2.endPoint);
+        }
+      }
+    }
+    moveCurveSegment(segmentKey, dx, dy) {
+      var state = this.state;
+      this.moveSegment(segmentKey, dx, dy);
+      var targetSegmentKey = segmentKey === "endPoint" ? "reversePoint" : "endPoint";
+      state.segment[targetSegmentKey] = Point.getReversePoint(state.segment.startPoint, state.segment[segmentKey]);
+    }
+    rotateSegmentTarget(segmentKey, target) {
+      var state = this.state;
+      if (state.originalSegment && state.segment) {
+        var { x: cx, y: cy } = state.originalSegment.startPoint;
+        var { x: rx, y: ry } = state.segment[segmentKey];
+        var { x: tx, y: ty } = state.originalSegment[target];
+        var { x, y } = getXYInCircle(calculateAngle360(rx - cx, ry - cy), getDist(tx, ty, cx, cy), cx, cy);
+        state.segment[target] = { x, y };
+      }
+    }
+    rotateSegment(segmentKey) {
+      this.rotateSegmentTarget(segmentKey, segmentKey === "endPoint" ? "reversePoint" : "endPoint");
+    }
+    calculateSnap(segmentKey, dx, dy, dist2 = 1) {
+      var state = this.state;
+      var cachedPoints = state.cachedPoints;
+      var original = state.originalSegment[segmentKey];
+      if (!segmentKey) {
+        return { dx, dy, snapPointList: [] };
+      }
+      var realX = original.x + dx;
+      var realY = original.y + dy;
+      var { point: snapPointX, distanceValue: dx } = calculateSnapPoint(cachedPoints, "x", realX, dx, dist2);
+      var { point: snapPointY, distanceValue: dy } = calculateSnapPoint(cachedPoints, "y", realY, dy, dist2);
+      var snapEndPoint = {
+        x: original.x + dx,
+        y: original.y + dy
+      };
+      var snapPointList = [];
+      if (snapPointX) {
+        snapPointList.push({ startPoint: snapPointX, endPoint: snapEndPoint });
+      }
+      if (snapPointY) {
+        snapPointList.push({ startPoint: snapPointY, endPoint: snapEndPoint });
+      }
+      return { dx, dy, snapPointList };
+    }
+    copySegment(from, to) {
+      to.startPoint = sapa.clone(from.startPoint);
+      to.endPoint = sapa.clone(from.endPoint);
+      to.reversePoint = sapa.clone(from.reversePoint);
+    }
+    get selectedLength() {
+      return this.selectedPointList.length;
+    }
+    moveSelectedSegment(dx, dy) {
+      if (this.selectedPointList.length > 0) {
+        this.selectedPointList.forEach((it) => {
+          var target = this.points[it.index][it.key];
+          target.x = it.x + dx;
+          target.y = it.y + dy;
+        });
+      } else if (this.selectedGroup) {
+        this.moveSelectedGroup(dx, dy);
+      }
+    }
+    moveSelectedGroup(dx, dy, maxWidth, maxHeight) {
+      this.selectedGroup.points.forEach((it) => {
+        const target = this.points[it.index];
+        target.startPoint.x = this.clamp(it.startPoint.x + dx, 0, maxWidth);
+        target.startPoint.y = this.clamp(it.startPoint.y + dy, 0, maxHeight);
+        target.endPoint.x = it.endPoint.x + dx;
+        target.endPoint.y = it.endPoint.y + dy;
+        target.reversePoint.x = it.reversePoint.x + dx;
+        target.reversePoint.y = it.reversePoint.y + dy;
+      });
+    }
+    get selectedGroup() {
+      return this.splitedGroupList[this.state.selectedGroupIndex];
+    }
+    get splitedGroupList() {
+      return Point.getSplitedGroupList(this.points);
+    }
+    get groupList() {
+      return Point.getGroupList(this.points);
+    }
+    getGroup(groupList, pointIndex) {
+      return Point.getGroup(groupList, pointIndex);
+    }
+    get selectedGroupIndexList() {
+      const groupIndexList = /* @__PURE__ */ new Set();
+      const groupList = this.groupList;
+      if (this.selectedPointList.length === 0 && this.state.selectedGroupIndex < 0) {
+        return groupList.map((group) => group.groupIndex);
+      }
+      const points = this.selectedPointList;
+      points.forEach((it) => {
+        const group = this.getGroup(groupList, it.index);
+        if (group) {
+          groupIndexList.add(group.groupIndex);
+        }
+      });
+      return [.../* @__PURE__ */ new Set([...groupIndexList, this.state.selectedGroupIndex])];
+    }
+    removeSelectedSegment() {
+      this.selectedPointList.forEach((it) => {
+        var target = this.points[it.index][it.key];
+        target.removed = true;
+      });
+      const pointGroup = Point.splitPoints(this.points);
+      const newPoints = Point.recoverPoints(pointGroup.map((points) => {
+        return points.filter((p) => !p.startPoint.removed).map((p) => {
+          if (p.endPoint.removed) {
+            p.endPoint = sapa.clone(p.startPoint);
+          }
+          if (p.reversePoint.removed) {
+            p.reversePoint = sapa.clone(p.startPoint);
+          }
+          if (Point.isEqual(p.endPoint, p.startPoint, p.reversePoint)) {
+            p.command = "L";
+            p.curve = false;
+          }
+          return p;
+        });
+      }));
+      this.points = newPoints;
+      this.select();
+    }
+    move(dx, dy, e, maxWidth, maxHeight) {
+      var state = this.state;
+      var { isCurveSegment, segmentKey, connectedPoint } = state;
+      if (this.selectedPointList.length > 1) {
+        this.moveSelectedSegment(dx, dy, maxWidth, maxHeight);
+      } else if (this.selectedPointList.length === 1) {
+        var { dx, dy, snapPointList } = this.calculateSnap(segmentKey, dx, dy, 3);
+        this.snapPointList = snapPointList || [];
+        if (isCurveSegment) {
+          if (e.altKey) {
+            this.moveSegment(segmentKey, dx, dy);
+            this.rotateSegment(segmentKey);
+          } else if (e.shiftKey) {
+            this.moveSegment(segmentKey, dx, dy);
+          } else {
+            this.moveSegment(segmentKey, dx, dy);
+            var targetSegmentKey = segmentKey === "endPoint" ? "reversePoint" : "endPoint";
+            state.segment[targetSegmentKey] = Point.getReversePoint(state.segment.startPoint, state.segment[segmentKey]);
+          }
+        } else {
+          this.moveSegment("startPoint", dx, dy, null, maxWidth, maxHeight);
+          this.moveSegment("endPoint", dx, dy);
+          this.moveSegment("reversePoint", dx, dy);
+          if (!e.altKey) {
+            state.connectedPointList.forEach((it) => {
+              this.moveSegment("startPoint", dx, dy, it, maxWidth, maxHeight);
+              this.moveSegment("endPoint", dx, dy, it);
+              this.moveSegment("reversePoint", dx, dy, it);
+            });
+          }
+        }
+        connectedPoint && this.copySegment(state.segment, state.connectedPoint);
+      } else if (this.state.selectedGroupIndex > -1) {
+        this.moveSelectedGroup(dx, dy, maxWidth, maxHeight);
+      }
+    }
+    moveEnd(dx, dy) {
+      var state = this.state;
+      var points = this.points;
+      var x = state.dragXY.x + dx;
+      var y = state.dragXY.y + dy;
+      var endPoint = { x, y };
+      var reversePoint = { x, y };
+      if (state.dragPoints) {
+        reversePoint = Point.getReversePoint(state.startPoint, endPoint);
+      }
+      points.push({
+        command: state.clickCount === 0 ? "M" : "",
+        startPoint: state.startPoint,
+        endPoint,
+        curve: !!state.dragPoints,
+        reversePoint
+      });
+      state.startPoint = null;
+      state.dragPoints = false;
+      state.moveXY = null;
+    }
+    setPoint(obj2) {
+      var p0 = obj2.first[0];
+      var p1 = obj2.second[obj2.second.length - 1];
+      var allPoints = this.clonePoints;
+      var firstItem = Point.getPoint(allPoints, p0);
+      var secondItem = Point.getPoint(allPoints, p1);
+      var newPoints = [
+        __spreadProps(__spreadValues({}, firstItem), { endPoint: obj2.first[1] }),
+        {
+          startPoint: obj2.first[3],
+          reversePoint: obj2.first[2],
+          curve: true,
+          endPoint: obj2.second[1]
+        },
+        __spreadProps(__spreadValues({}, secondItem), { reversePoint: obj2.second[2] })
+      ];
+      var firstIndex = Point.getIndex(allPoints, p0);
+      allPoints.splice(firstIndex, 2, ...newPoints);
+      this.points = allPoints;
+      return firstIndex + 1;
+    }
+    setPointQuard(obj2) {
+      var p0 = obj2.first[0];
+      var p1 = obj2.second[obj2.second.length - 1];
+      var allPoints = this.clonePoints;
+      var firstItem = Point.getPoint(allPoints, p0);
+      var secondItem = Point.getPoint(allPoints, p1);
+      if (firstItem.curve && secondItem.curve === false) {
+        var newPoints = [
+          __spreadProps(__spreadValues({}, firstItem), { endPoint: firstItem.startPoint }),
+          {
+            startPoint: obj2.first[2],
+            reversePoint: obj2.first[1],
+            curve: true,
+            endPoint: obj2.second[1]
+          }
+        ];
+        var firstIndex = Point.getIndex(allPoints, p0);
+        allPoints.splice(firstIndex, 1, ...newPoints);
+      } else {
+        var newPoints = [
+          __spreadValues({}, firstItem),
+          {
+            startPoint: obj2.first[2],
+            reversePoint: obj2.first[1],
+            curve: true,
+            endPoint: obj2.second[1]
+          },
+          __spreadProps(__spreadValues({}, secondItem), { reversePoint: obj2.second[1], curve: true })
+        ];
+        var firstIndex = Point.getIndex(allPoints, p0);
+        allPoints.splice(firstIndex, 2, ...newPoints);
+      }
+      this.points = allPoints;
+      return firstIndex + 1;
+    }
+    setPointLine(obj2) {
+      var p0 = obj2.first[0];
+      var allPoints = this.clonePoints;
+      var newPoints = [
+        {
+          command: "L",
+          startPoint: obj2.first[1],
+          curve: false,
+          endPoint: obj2.first[1],
+          reversePoint: obj2.first[1]
+        }
+      ];
+      var firstIndex = Point.getIndex(allPoints, p0);
+      allPoints.splice(firstIndex + 1, 0, ...newPoints);
+      this.points = allPoints;
+      return firstIndex + 1;
+    }
+    toPath(minX = 0, minY = 0, scale2 = 1) {
+      return toPath(this.clonePoints, minX, minY, scale2);
+    }
+    makeSVGPath() {
+      this.initialize();
+      this.makePointGuide(this.points);
+      this.makeMovePositionGuide();
+      return this.toSVGString();
+    }
+    makeTriangleDistancePointGuide(first, second) {
+      var minX = Math.min(first.startPoint.x, second.startPoint.x);
+      var maxX = Math.max(first.startPoint.x, second.startPoint.x);
+      var minY = Math.min(first.startPoint.y, second.startPoint.y);
+      var maxY = Math.max(first.startPoint.y, second.startPoint.y);
+      if (first.startPoint.x < second.startPoint.x && first.startPoint.y < second.startPoint.y) {
+        this.segmentManager.addDistanceLine({ x: minX, y: minY }, { x: maxX, y: minY }).addDistanceLine({ x: maxX, y: minY }, { x: maxX, y: maxY });
+        var centerX = minX;
+        var centerY = minY;
+        var angle = calculateAngle360(maxX - minX, maxY - minY) - 180;
+        var dist2 = 20;
+        var { x, y } = getXYInCircle(0, dist2, centerX, centerY);
+        var last = getXYInCircle(angle, dist2, centerX, centerY);
+        this.segmentManager.addDistanceAngle(last, dist2, dist2, angle, { x, y }, { x: x - dist2, y });
+      } else if (first.startPoint.x < second.startPoint.x && first.startPoint.y > second.startPoint.y) {
+        this.segmentManager.addDistanceLine({ x: minX, y: maxY }, { x: maxX, y: maxY }).addDistanceLine({ x: maxX, y: minY }, { x: maxX, y: maxY });
+      } else if (first.startPoint.x > second.startPoint.x && first.startPoint.y > second.startPoint.y) {
+        this.segmentManager.addDistanceLine({ x: minX, y: minY }, { x: minX, y: maxY }).addDistanceLine({ x: minX, y: maxY }, { x: maxX, y: maxY });
+      } else if (first.startPoint.x > second.startPoint.x && first.startPoint.y < second.startPoint.y) {
+        this.segmentManager.addDistanceLine({ x: minX, y: maxY }, { x: maxX, y: maxY }).addDistanceLine({ x: maxX, y: minY }, { x: maxX, y: maxY });
+      }
+    }
+    makeDistancePointGuide(prevPoint, current, nextPoint) {
+      if (current.selected) {
+        if (prevPoint) {
+          this.makeTriangleDistancePointGuide(prevPoint, current);
+        }
+        if (nextPoint) {
+          this.makeTriangleDistancePointGuide(current, nextPoint);
+        }
+      }
+    }
+    makeStartPointGuide(prevPoint, current, nextPoint, index2) {
+      current.startPoint.isFirst = true;
+      if (current.curve === false) {
+        this.segmentManager.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
+      } else {
+        this.segmentManager.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2)).addGuideLine(current.startPoint, current.endPoint);
+        if (Point.isEqual(current.startPoint, current.endPoint) === false) {
+          this.segmentManager.addCurvePoint(current.endPoint, index2, "endPoint", this.isSelectedSegment("endPoint", index2));
+        }
+      }
+    }
+    makeMiddlePointGuideSegment(prevPoint, current, nextPoint, index2) {
+      var mng = this.segmentManager;
+      if (current.curve === false) {
+        if (prevPoint.curve === false) {
+          mng.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
+        } else {
+          mng.addGuideLine(prevPoint.startPoint, prevPoint.endPoint).addCurvePoint(current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
+          if (Point.isEqual(prevPoint.startPoint, prevPoint.endPoint) === false) {
+            mng.addCurvePoint(prevPoint.endPoint, prevPoint.index, "endPoint", this.isSelectedSegment("endPoint", prevPoint.index));
+          }
+        }
+      } else {
+        if (prevPoint.curve === false) {
+          if (Point.isEqual(current.reversePoint, current.startPoint)) {
+            mng.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
+          } else {
+            mng.addGuideLine(current.startPoint, current.reversePoint).addCurvePoint(current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
+            if (Point.isEqual(current.startPoint, current.reversePoint) === false) {
+              mng.addCurvePoint(current.reversePoint, index2, "reversePoint", this.isSelectedSegment("reversePoint", index2));
+            }
+          }
+        } else {
+          if (current.connected) {
+            mng.addGuideLine(prevPoint.startPoint, prevPoint.endPoint).addGuideLine(current.startPoint, current.reversePoint);
+            if (Point.isEqual(prevPoint.startPoint, prevPoint.endPoint) === false) {
+              mng.addCurvePoint(prevPoint.endPoint, prevPoint.index, "endPoint", this.isSelectedSegment("endPoint", prevPoint.index));
+            }
+            if (Point.isEqual(current.startPoint, current.reversePoint) === false) {
+              mng.addCurvePoint(current.reversePoint, index2, "reversePoint", this.isSelectedSegment("reversePoint", index2));
+            }
+          } else {
+            mng.addGuideLine(prevPoint.startPoint, prevPoint.endPoint).addGuideLine(current.startPoint, current.reversePoint).addCurvePoint(current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
+            if (Point.isEqual(prevPoint.startPoint, prevPoint.endPoint) === false) {
+              mng.addCurvePoint(prevPoint.endPoint, prevPoint.index, "endPoint", this.isSelectedSegment("endPoint", prevPoint.index));
+            }
+            if (Point.isEqual(current.startPoint, current.reversePoint) === false) {
+              mng.addCurvePoint(current.reversePoint, index2, "reversePoint", this.isSelectedSegment("reversePoint", index2));
+            }
+          }
+        }
+      }
+    }
+    makeMiddlePointGuideSplitLine(prevPoint, current) {
+      const selected = "selected";
+      if (current.curve === false) {
+        if (prevPoint.curve === false) {
+          this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).L(current.startPoint).toString(`split-path ${selected}`));
+        } else {
+          this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).Q(prevPoint.endPoint, current.startPoint).toString(`split-path ${selected}`));
+        }
+      } else {
+        if (prevPoint.curve === false) {
+          if (Point.isEqual(current.reversePoint, current.startPoint)) {
+            this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).L(current.startPoint).toString(`split-path ${selected}`));
+          } else {
+            this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).Q(current.reversePoint, current.startPoint).toString(`split-path ${selected}`));
+          }
+        } else {
+          this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).C(prevPoint.endPoint, current.reversePoint, current.startPoint).toString(`split-path ${selected}`));
+        }
+      }
+    }
+    makePointGuide(points) {
+      for (var index2 = 0, len2 = points.length; index2 < len2; index2++) {
+        var currentIndex = index2;
+        var current = points[currentIndex];
+        if (!current)
+          continue;
+        var nextPoint = Point.getNextPoint(points, index2);
+        var prevPoint = Point.getPrevPoint(points, index2);
+        if (prevPoint && prevPoint.command === "M") {
+          if (current.startPoint) {
+            current.startPoint.isSecond = true;
+          }
+        }
+        if (current.startPoint) {
+          if (nextPoint) {
+            current.startPoint.isLast = nextPoint.command === "M";
+          } else {
+            current.startPoint.isLast = index2 === len2 - 1;
+          }
+        }
+        current.selected = this.selectedIndex === index2;
+        if (current.command === "M") {
+          this.makeStartPointGuide(prevPoint, current, nextPoint, index2);
+        } else {
+          this.makeMiddlePointGuideSplitLine(prevPoint, current, nextPoint, index2);
+          this.makeMiddlePointGuideSegment(prevPoint, current, nextPoint, index2);
+        }
+        if (current.close) {
+          this.pathStringManager.Z();
+        }
+      }
+    }
+    makeMovePositionGuide() {
+      var state = this.state;
+      var {
+        startPoint,
+        moveXY,
+        dragPoints,
+        snapPointList,
+        isGroupSegment
+      } = state;
+      var points = this.points;
+      if (moveXY) {
+        snapPointList = snapPointList || [];
+        var { snapPointList: movePointSnapPointList, moveXY: newMoveXY } = calculateMovePointSnap(points, moveXY, 3);
+        snapPointList.push.apply(snapPointList, movePointSnapPointList);
+        state.moveXY = newMoveXY;
+        moveXY = newMoveXY;
+        this.snapPointList = snapPointList;
+        var prev = points[points.length - 1];
+        if (dragPoints && !isGroupSegment) {
+          if (!prev) {
+            var { x, y } = Point.getReversePoint(startPoint, moveXY);
+            this.guideLineManager.M(moveXY).L(startPoint).L({ x, y });
+            this.segmentManager.addCurvePoint(startPoint).addCurvePoint(moveXY).addCurvePoint({ x, y });
+          } else if (prev.curve) {
+            var { x, y } = Point.getReversePoint(startPoint, moveXY);
+            this.guideLineManager.M(prev.startPoint).C(prev.endPoint, { x, y }, startPoint);
+            this.segmentManager.addGuideLine(prev.startPoint, prev.endPoint).addGuideLine(startPoint, { x, y }).addGuideLine(startPoint, moveXY).addCurvePoint(prev.endPoint).addCurvePoint({ x, y }).addCurvePoint(moveXY).addPoint(false, startPoint);
+          } else if (prev.curve === false) {
+            var { x, y } = Point.getReversePoint(startPoint, moveXY);
+            this.guideLineManager.M(prev.startPoint).Q({ x, y }, startPoint);
+            this.segmentManager.addGuideLine(moveXY, { x, y }).addPoint(false, startPoint).addCurvePoint({ x, y }).addCurvePoint(moveXY);
+          }
+        } else {
+          if (!prev)
+            ;
+          else if (prev.curve) {
+            this.guideLineManager.M(prev.startPoint).Q(prev.endPoint, moveXY);
+            this.segmentManager.addGuideLine(prev.endPoint, prev.startPoint).addCurvePoint(prev.endPoint);
+          } else {
+            if (!prev.close) {
+              this.guideLineManager.M(prev.startPoint).L(moveXY);
+              this.segmentManager.addPoint(false, prev.startPoint);
+            }
+          }
+        }
+      }
+    }
+    makeSnapLines() {
+      var snapLines = [];
+      if (this.snapPointList) {
+        var snapPath = new PathStringManager();
+        snapLines = this.snapPointList.map((snapPoint) => {
+          snapPath.reset();
+          return snapPath.M(snapPoint.startPoint).L(snapPoint.endPoint).X(snapPoint.startPoint).toString("snap-path");
+        });
+      }
+      return snapLines.join("");
+    }
+    makePathArea() {
+      const pathList = this.splitedGroupList.map(({ startPointIndex, points }, groupIndex) => {
+        const d = this.generatorPathString(points);
+        const verties = toRectVerties(PathParser.fromSVGString(d).getBBox());
+        return {
+          points,
+          startPointIndex,
+          groupIndex,
+          center: verties[4],
+          d
+        };
+      });
+      const pathCount = pathList.length;
+      return `
+            <g>
+               ${pathList.map((it) => {
+        const { center } = it;
+        const [x, y] = center;
+        const selected = this.state.selectedGroupIndex === it.groupIndex;
+        return `
+                        <path class="path-area ${selected ? "selected" : ""}" 
+                            d="${it.d}" 
+                            data-point-index="${it.startPointIndex}" 
+                            data-group-index="${it.groupIndex}" 
+                        />
+
+                        ${pathCount > 1 && `
+                            <text class="path-area-text" x="${x}" y="${y}" >${it.groupIndex + 1}</text>
+                        `}
+                    `;
+      }).join("")}
+            </g>
+        `;
+    }
+    toSVGString() {
+      return `
+        <svg width="100%" height="100%" class='svg-editor-canvas' tabIndex="-1">
+            ${this.guideLineManager.toString("guide")}
+            ${this.splitLines.join("")}
+            ${this.makeSnapLines()}
+            ${this.makePathArea()}
+            ${this.segmentManager.toString()}
+        </svg>
+        `;
+    }
+  }
+  function xy([x, y]) {
+    return { x, y };
+  }
+  function scaleLinear(source, target) {
+    function targetScale(t) {
+      if (target[0] < target[1]) {
+        return target[0] + t * (target[1] - target[0]);
+      } else if (target[0] > target[1]) {
+        return target[0] - t * (target[0] - target[1]);
+      }
+    }
+    function rate(v1, v2, current) {
+      const minValue = Math.min(v1, v2);
+      const maxValue = Math.max(v1, v2);
+      return (current - minValue) / (maxValue - minValue);
+    }
+    return (x) => {
+      if (source[0] < source[1]) {
+        return targetScale(rate(source[0], source[1], x));
+      } else if (source[0] > source[1]) {
+        return targetScale(1 - rate(source[0], source[1], x));
+      }
+    };
+  }
+  const SegmentConvertor = class extends editor.EditorElement {
+    convertToCurve(index2) {
+      this.pathGenerator.convertToCurve(index2);
+      this.renderPath();
+      this.updatePathLayer();
+    }
+    isEditableSegment() {
+      return this.state.disableCurve === false;
+    }
+    [sapa.DOUBLECLICK("$view [data-segment]") + sapa.IF("isEditableSegment") + sapa.PREVENT](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.convertToCurve(index2);
+    }
+    [sapa.DOUBLETAB("$view [data-segment]") + sapa.PREVENT + sapa.DELAY(300)](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.convertToCurve(index2);
+    }
+  };
+  const PathCutter = class extends SegmentConvertor {
+    calculatePointOnLine(d, clickPosition) {
+      var parser = new PathParser(d);
+      return parser.getClosedPoint(clickPosition);
+    }
+    [sapa.POINTERSTART("$view .split-path") + MOVE() + END()](e) {
+      this.initRect();
+      var parser = new PathParser(e.$dt.attr("d"));
+      var clickPosition = {
+        x: e.xy.x - this.state.rect.x,
+        y: e.xy.y - this.state.rect.y
+      };
+      var selectedSegmentIndex = -1;
+      if (this.isMode("path")) {
+        this.state.dragXY = clickPosition;
+        this.state.startPoint = this.state.dragXY;
+        this.pathGenerator.setLastPoint(this.state.startPoint);
+        this.state.isSplitPath = true;
+        this.renderPath();
+        if (this.state.current) {
+          this.updatePathLayer();
+        }
+        return;
+      } else {
+        if (parser.segments[1].command === "C") {
+          var points = [
+            xy(parser.segments[0].values),
+            xy(parser.segments[1].values.slice(0, 2)),
+            xy(parser.segments[1].values.slice(2, 4)),
+            xy(parser.segments[1].values.slice(4, 6))
+          ];
+          var curve = recoverBezier(...points, 20);
+          var t = curve(clickPosition.x, clickPosition.y);
+          selectedSegmentIndex = this.pathGenerator.setPoint(getBezierPoints(points, t));
+        } else if (parser.segments[1].command === "Q") {
+          var points = [
+            xy(parser.segments[0].values),
+            xy(parser.segments[1].values.slice(0, 2)),
+            xy(parser.segments[1].values.slice(2, 4))
+          ];
+          var curve = recoverBezierQuard(...points, 20);
+          var t = curve(clickPosition.x, clickPosition.y);
+          selectedSegmentIndex = this.pathGenerator.setPointQuard(getBezierPointsQuard(points, t));
+        } else if (parser.segments[1].command === "L") {
+          var points = [
+            xy(parser.segments[0].values),
+            xy(parser.segments[1].values.slice(0, 2))
+          ];
+          var curve = recoverBezierLine(...points, 20);
+          var t = curve(clickPosition.x, clickPosition.y);
+          selectedSegmentIndex = this.pathGenerator.setPointLine(getBezierPointsLine(points, t));
+          if (e.altKey) {
+            this.pathGenerator.convertToCurve(selectedSegmentIndex);
+          }
+        }
+        this.renderPath();
+        this.updatePathLayer();
+        this.changeMode("segment-move");
+        this.pathGenerator.setCachePoint(selectedSegmentIndex, "startPoint");
+        this.pathGenerator.selectKeyIndex("startPoint", selectedSegmentIndex);
+      }
+    }
+  };
+  class PathEditor extends PathCutter {
+    initialize() {
+      super.initialize();
+      this.pathParser = new PathParser();
+      this.pathGenerator = new PurePathGenerator(this);
+    }
+    initState() {
+      return {
+        domain: this.props.domain || [0, 1],
+        range: this.props.range || [1, 0],
+        isControl: false,
+        disableCurve: false,
+        points: [],
+        mode: "path",
+        clickCount: 0,
+        isSegment: false,
+        isFirstSegment: false,
+        current: null
+      };
+    }
+    template() {
+      return `
+        <div class='elf--path-editor' tabIndex="-1">
+            <style type="text/css" ref="$styleView"></style>
+            <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+                <defs>
+                    <pattern id='stripe' patternUnits='userSpaceOnUse' width='20' height='33' patternTransform='scale(1) rotate(135)'>
+                        <path d='M0 8h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
+                        <path d='M0 16h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
+                        <path d='M0 24h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
+                        <path d='M0 32h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
+                    </pattern>
+                </defs>    
+            </svg>
+            <div class='path-container' ref='$view'></div>
+            <div class='path-container split-panel'>
+                <svg width="100%" height="100%">
+                    <circle ref='$splitCircle' class='split-circle' />
+                </svg>
+            </div>
+            <div class='segment-box' ref='$segmentBox'></div>
+        </div>`;
+    }
+    [sapa.BIND("$el")]() {
+      return {
+        style: {
+          height: editor.Length.px(this.props.height) || 200
+        }
+      };
+    }
+    initRect(isForce = false) {
+      if (!this.state.rect || isForce || this.state.rect.width == 0 || this.state.rect.height == 0) {
+        this.state.rect = this.refs.$view.rect();
+      }
+    }
+    [sapa.SUBSCRIBE("PathEditorDone")]() {
+      this.updatePathLayer();
+    }
+    [sapa.KEYUP() + sapa.ENTER]() {
+      this.trigger("PathEditorDone");
+    }
+    [sapa.KEYUP() + sapa.ESCAPE]() {
+      if (this.state.current) {
+        this.updatePathLayer();
+      }
+    }
+    [sapa.KEYUP() + sapa.DELETE]() {
+      console.log("delete");
+    }
+    [sapa.KEYUP("$el .segment")](e) {
+      const index2 = +e.$dt.data("index");
+      console.log(index2);
+      switch (e.code) {
+        case "Delete":
+        case "Backspace":
+          this.trigger("deleteSegment");
+          break;
+      }
+    }
+    [sapa.SUBSCRIBE_SELF("deleteSegment")]() {
+      this.pathGenerator.reselect();
+      this.pathGenerator.removeSelectedSegment();
+      this.renderPath();
+      this.updatePathLayer();
+    }
+    [sapa.SUBSCRIBE_SELF("moveSegment")](dx, dy) {
+      this.pathGenerator.reselect();
+      this.pathGenerator.moveSelectedSegment(dx, dy);
+      this.renderPath();
+      this.updatePathLayer();
+    }
+    recoverAreaToPath(d) {
+      this.initRect(true);
+      var parser = new PathParser(d);
+      parser.scaleFunc(this.state.domainScaleInvert, this.state.rangeScaleInvert);
+      return parser.d;
+    }
+    updatePathLayer() {
+      var { d } = this.pathGenerator.toPath();
+      const value = this.recoverAreaToPath(d);
+      this.parent.trigger(this.props.onchange, this.state.key, value);
+    }
+    changeMode(mode, obj2) {
+      this.setState(__spreadValues({
+        mode,
+        clickCount: 0,
+        moveXY: null
+      }, obj2), false);
+      if (obj2 == null ? void 0 : obj2.points) {
+        this.pathGenerator.setPoints(obj2.points || []);
+      }
+    }
+    isMode(mode) {
+      return this.state.mode === mode;
+    }
+    convertPathToArea(obj2) {
+      this.initRect(true);
+      const width2 = this.state.rect.width;
+      const height = this.state.rect.height;
+      this.state.domainScale = scaleLinear([0, 1], [0, width2]);
+      this.state.rangeScale = scaleLinear([1, 0], [0, height]);
+      this.state.domainScaleInvert = scaleLinear([0, width2], [0, 1]);
+      this.state.rangeScaleInvert = scaleLinear([0, height], [1, 0]);
+      this.pathParser.reset(obj2.d).scaleFunc(this.state.domainScale, this.state.rangeScale);
+    }
+    refreshEditorView(obj2) {
+      this.convertPathToArea(obj2);
+      this.pathGenerator.setPoints(this.pathParser.convertGenerator());
+      this.renderPath();
+    }
+    afterRender() {
+      const { mode, value } = this.props;
+      const obj2 = { d: value };
+      if (mode === "move") {
+        obj2.current = null;
+        obj2.points = [];
+      }
+      this.changeMode(mode, obj2);
+      window.setTimeout(() => {
+        this.refreshEditorView(obj2, true);
+      }, 10);
+    }
+    [sapa.BIND("$view")]() {
+      var _a;
+      const path = this.pathGenerator.makeSVGPath();
+      const strokeWidth = editor.Length.parse((_a = this.state.current) == null ? void 0 : _a["stroke-width"]).value || 0;
+      return {
+        class: {
+          path: this.state.mode === "path",
+          modify: this.state.mode === "modify",
+          transform: this.state.mode === "transform",
+          "segment-move": this.state.mode === "segment-move",
+          "is-control": this.state.isControl,
+          "has-one-stroke-width": strokeWidth === 1
+        },
+        htmlDiff: path
+      };
+    }
+    [sapa.BIND("$splitCircle")]() {
+      if (this.state.splitXY) {
+        return {
+          cx: this.state.splitXY.x,
+          cy: this.state.splitXY.y,
+          r: 5
+        };
+      } else {
+        return {
+          r: 0
+        };
+      }
+    }
+    renderPath() {
+      this.bindData("$view");
+    }
+    get checkDistance() {
+      return false;
+    }
+    getPathRect() {
+      this.initRect(true);
+      const { d } = this.pathGenerator.toPath();
+      return vertiesToRectangle(PathParser.fromSVGString(d).getBBox());
+    }
+    resetTransformZone() {
+      var rect2 = this.getPathRect();
+      this.state.transformZoneRect = rect2;
+    }
+    [sapa.POINTERMOVE("$view") + sapa.PREVENT](e) {
+      this.initRect();
+      if (this.isMode("path") && this.state.rect) {
+        this.state.moveXY = {
+          x: e.xy.x - this.state.rect.x,
+          y: e.xy.y - this.state.rect.y
+        };
+        this.state.altKey = e.altKey;
+        this.renderPath();
+      } else {
+        var $target = sapa.Dom.create(e.target);
+        var isSplitPath = $target.hasClass("split-path");
+        if (isSplitPath) {
+          this.state.splitXY = this.calculatePointOnLine($target.attr("d"), {
+            x: e.xy.x - this.state.rect.x,
+            y: e.xy.y - this.state.rect.y
+          });
+        } else {
+          this.state.splitXY = null;
+        }
+        this.bindData("$splitCircle");
+        this.state.altKey = false;
+      }
+    }
+    [sapa.POINTERSTART("$view :not(.split-path)") + sapa.PREVENT + sapa.STOP + MOVE() + END()](e) {
+      this.initRect();
+      this.state.altKey = false;
+      var isPathMode = this.isMode("path");
+      this.$config.set("set.move.control.point", true);
+      this.state.dragXY = {
+        x: e.xy.x - this.state.rect.x,
+        y: e.xy.y - this.state.rect.y
+      };
+      var $target = sapa.Dom.create(e.target);
+      this.$segmentTarget = $target;
+      if ($target.hasClass("svg-editor-canvas") && !isPathMode)
+        ;
+      else {
+        this.pathGenerator.reselect();
+        this.state.isSegment = $target.attr("data-segment") === "true";
+        this.state.isFirstSegment = this.state.isSegment && $target.attr("data-is-first") === "true";
+        this.state.selectedGroupIndex = -1;
+        this.state.selectedPointIndex = -1;
+      }
+      if (isPathMode) {
+        if (this.state.isFirstSegment) {
+          var index2 = +$target.attr("data-index");
+          this.state.startPoint = this.pathGenerator.points[index2].startPoint;
+        } else {
+          this.state.startPoint = this.state.dragXY;
+        }
+        this.state.dragPoints = false;
+        this.state.endPoint = null;
+      } else {
+        if (this.state.isSegment) {
+          this.changeMode("segment-move");
+          var [index2, segmentKey] = $target.attrs("data-index", "data-segment-point");
+          const localIndex = +index2;
+          this.pathGenerator.setCachePoint(localIndex, segmentKey);
+          this.pathGenerator.selectKeyIndex(segmentKey, localIndex);
+          this.state.segmentKey = segmentKey;
+          this.renderPath();
+        }
+      }
+    }
+    move(dx, dy) {
+      const e = this.$config.get("bodyEvent");
+      if (this.state.segmentKey === "startPoint") {
+        const newXY = {
+          x: Math.max(0, Math.min(this.state.rect.width, e.xy.x - this.state.rect.x)),
+          y: Math.max(0, Math.min(this.state.rect.height, e.xy.y - this.state.rect.y))
+        };
+        dx = newXY.x - this.state.dragXY.x;
+        dy = newXY.y - this.state.dragXY.y;
+      }
+      if (this.isMode("segment-move")) {
+        this.pathGenerator.move(dx, dy, e, this.state.rect.width, this.state.rect.height);
+        this.renderPath();
+        this.updatePathLayer();
+      } else if (this.isMode("path")) {
+        const dist2 = getDist(dx, dy, 0, 0);
+        if (dist2 >= 2) {
+          this.state.dragPoints = e.altKey ? false : true;
+        }
+      }
+    }
+    renderSegment(callback) {
+      if (this.pathGenerator.selectedLength) {
+        this.pathGenerator.reselect();
+        if (sapa.isFunction(callback))
+          callback();
+        this.renderPath();
+        this.updatePathLayer();
+      }
+    }
+    end(dx, dy) {
+      this.$config.set("set.move.control.point", false);
+      if (this.isMode("modify")) {
+        this.pathGenerator.reselect();
+      } else if (this.isMode("segment-move")) {
+        this.changeMode("modify");
+        this.pathGenerator.reselect();
+        this.renderPath();
+        this.updatePathLayer();
+      } else if (this.isMode("path")) {
+        if (this.state.isFirstSegment) {
+          this.changeMode("modify");
+          this.pathGenerator.setConnectedPoint(dx, dy);
+          this.renderPath();
+          if (this.state.current) {
+            this.updatePathLayer();
+          }
+        } else {
+          if (this.state.isSplitPath)
+            ;
+          else {
+            this.pathGenerator.moveEnd(dx, dy);
+            this.state.clickCount++;
+            this.renderPath();
+            this.pathGenerator.reselect();
+          }
+        }
+        this.state.isSplitPath = false;
+      }
+    }
+  }
+  var PathDataEditor$1 = /* @__PURE__ */ (() => ".elf--path-data-editor .segment-empty{grid-column-gap:2px;display:grid;grid-template-columns:30px 1fr}.elf--path-data-editor .segment-empty .values{grid-column-gap:2px;grid-row-gap:2px;display:grid;grid-template-columns:repeat(2,1fr);text-align:center}.elf--path-data-editor .segment{grid-column-gap:2px;display:grid;grid-template-columns:50px 1fr;margin-bottom:4px}.elf--path-data-editor .segment.m{padding-top:10px}.elf--path-data-editor .segment .command{color:var(--elf--selected-color);cursor:pointer}.elf--path-data-editor .segment .command[data-toggle=false]{font-weight:700;opacity:.3}.elf--path-data-editor .segment .values{grid-column-gap:2px;grid-row-gap:2px;display:grid;grid-template-columns:repeat(2,1fr)}.elf--path-data-editor .segment .values span{text-align:center}.elf--path-data-editor .segment .values input{width:100%}")();
+  class PathDataEditor extends editor.EditorElement {
+    initState() {
+      var parser = new PathParser(this.props.value || "");
+      return {
+        parser
+      };
+    }
+    makeSegments() {
+      return this.refs.$data.$$(".segment").map(($segment) => {
+        var $command = $segment.$(".command");
+        var command = $command.attr("data-command");
+        if (command === "Z" && $command.attr("data-toggle") === "false") {
+          return null;
+        }
+        var values = $segment.$$(".values input[type=number]").map((it) => {
+          return +it.value;
+        });
+        return {
+          command,
+          values
+        };
+      }).filter((it) => it);
+    }
+    updateData() {
+      var segments = this.makeSegments();
+      this.state.parser.resetSegments(segments);
+      this.modifyPathData();
+    }
+    modifyPathData() {
+      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
+    }
+    setValue(value) {
+      this.setState({
+        parser: new PathParser(value)
+      });
+    }
+    getValue() {
+      return this.state.parser.joinPath();
+    }
+    template() {
+      return `
+            <div class='elf--path-data-editor'>
+                <div class='data' ref='$data'></div>
+            </div>
+        `;
+    }
+    [sapa.LOAD("$data")]() {
+      var segments = [];
+      this.state.parser.segments.forEach((it, index2) => {
+        var s = __spreadValues({}, it);
+        segments.push(s);
+        var next = this.state.parser.segments[index2 + 1];
+        if (next && next.command === "M") {
+          if (s.command !== "Z") {
+            segments.push({ command: "Z", toggle: false, values: [] });
+          } else {
+            s.toggle = true;
+          }
+        }
+      });
+      var last = this.state.parser.segments[this.state.parser.segments.length - 1];
+      if (last && last.command !== "Z") {
+        segments.push({ command: "Z", toggle: false, values: [] });
+      }
+      var arr = segments.map((it) => {
+        var cls = it.command === "M" ? "m" : "";
+        return `
+                <div class='segment ${cls}'>
+                    <div class='command' data-command='${it.command}' data-toggle="${it.toggle}" title='Toggle'>${it.command}</div>
+                    <div class='values'>
+                        ${it.values.map((v) => {
+          return `<input type="number" value="${v}" />`;
+        }).join("")}
+
+                        ${it.command === "Z" ? it.toggle === false ? "opened" : "closed" : ""}
+                    </div>
+                </div>
+            `;
+      });
+      arr.unshift(`
+            <div class='segment-empty'>
+                <div class='command'></div>
+                <div class='values'>
+                    <span>X</span>
+                    <span>Y</span>
+                </div>
+            </div>
+        `);
+      return arr;
+    }
+    [sapa.INPUT("$data input[type=number]") + sapa.DEBOUNCE(300)]() {
+      this.updateData();
+    }
+    [sapa.CLICK("$data .command[data-toggle]")](e) {
+      var [command, toggle] = e.$dt.attrs("data-command", "data-toggle");
+      if (command === "Z") {
+        if (toggle !== "false") {
+          toggle = "false";
+        } else {
+          toggle = "true";
+        }
+        e.$dt.attr("data-toggle", toggle);
+        this.updateData();
+      }
+    }
+  }
+  var PolygonDataEditor$1 = /* @__PURE__ */ (() => ".elf--polygon-data-editor .segment{grid-column-gap:2px;display:grid;grid-template-columns:1fr;margin-bottom:4px}.elf--polygon-data-editor .segment .values{grid-column-gap:2px;grid-row-gap:2px;display:grid;grid-template-columns:repeat(2,1fr);text-align:right}.elf--polygon-data-editor .segment .values label{color:var(--elf--selected-color)}.elf--polygon-data-editor .segment .values input{color:var(--elf--font-color);width:80px}")();
+  const splitReg = /[\b\t ,]/g;
+  class PolygonParser extends PathParser {
+    constructor(points = "") {
+      super(points);
+    }
+    reset(points = "") {
+      this.segments = [];
+      this.points = points;
+      this.parse();
+    }
+    resetSegments(segments = []) {
+      this.segments = segments;
+      this.points = this.joinPoints();
+    }
+    parse() {
+      var points = this.points;
+      if (Array.isArray(points)) {
+        points = points.join(" ");
+      }
+      var arr = points.trim().split(splitReg).filter((it) => it);
+      var segments = [];
+      for (var i = 0, len2 = arr.length; i < len2; i += 2) {
+        segments.push({ x: +arr[i], y: +arr[i + 1] });
+      }
+      this.segments = segments;
+    }
+    convertGenerator() {
+      return this.segments;
+    }
+    length() {
+      return this.segments.length;
+    }
+    toPathString() {
+      var path = new PathStringManager();
+      for (var i = 0, len2 = this.segments.length; i < len2; i++) {
+        var s = this.segments[i];
+        if (i === 0) {
+          path.M(s);
+        } else if (i === len2 - 1) {
+          path.L(s).L(this.segments[0]).Z();
+        } else {
+          path.L(s);
+        }
+      }
+      return path.d;
+    }
+    joinPath(segments) {
+      return this.joinPoints(segments);
+    }
+    joinPoints(segments) {
+      var list = segments || this.segments;
+      return list.map((it) => {
+        return `${it.x},${it.y}`;
+      }).join(" ");
+    }
+    each(callback, isReturn = false) {
+      var newSegments = this.segments.map((segment) => {
+        return callback.call(this, segment);
+      });
+      if (isReturn) {
+        return newSegments;
+      } else {
+        this.segments = newSegments;
+      }
+    }
+    _loop(m, isReturn = false) {
+      return this.each(function(segment) {
+        var [x, y] = m([segment.x, segment.y], 0);
+        segment.x = x;
+        segment.y = y;
+        return segment;
+      }, isReturn);
+    }
+    clone() {
+      return new PolygonParser(this.joinPoints());
+    }
+    toString() {
+      return this.joinPoints();
+    }
+  }
+  class PolygonDataEditor extends editor.EditorElement {
+    initState() {
+      var parser = new PolygonParser(this.props.value || "");
+      return {
+        parser
+      };
+    }
+    makeSegments() {
+      return this.refs.$data.$$(".segment").map(($segment) => {
+        var x = +$segment.$('[data-key="x"]').value;
+        var y = +$segment.$('[data-key="y"]').value;
+        return { x, y };
+      });
+    }
+    updateData() {
+      var segments = this.makeSegments();
+      this.state.parser.resetSegments(segments);
+      this.modifyPolygonData();
+    }
+    modifyPolygonData() {
+      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
+    }
+    setValue(value) {
+      this.setState({
+        parser: new PolygonParser(value || "")
+      });
+    }
+    getValue() {
+      return this.state.parser.joinPoints();
+    }
+    template() {
+      return `
+            <div class='elf--polygon-data-editor'>
+                <div class='data' ref='$data'></div>
+            </div>
+        `;
+    }
+    [sapa.LOAD("$data")]() {
+      return this.state.parser.segments.map((it) => {
+        return `
+                <div class='segment'>
+                    <div class='values'>
+                        <label>X <input type="number" data-key="x" value="${it.x}" /></label>
+                        <label>Y <input type="number" data-key="y" value="${it.y}" /></label>
+                    </div>
+                </div>
+            `;
+      });
+    }
+    [sapa.INPUT("$data input[type=number]") + sapa.DEBOUNCE(300)]() {
+      this.updateData();
+    }
+  }
+  var StrokeDashArrayEditor$1 = /* @__PURE__ */ (() => ".elf--stroke-dasharray-editor{padding:4px 0;position:relative}.elf--stroke-dasharray-editor .dasharray-item{border-bottom:1px solid var(--elf--border-color);-moz-column-gap:2px;column-gap:2px;display:flex;margin-right:4px;position:relative}.elf--stroke-dasharray-editor .dasharray-item>*{align-items:center;display:flex;height:100%;justify-content:flex-start}.elf--stroke-dasharray-editor .dasharray-item>* input{width:20px!important}.elf--stroke-dasharray-editor .dasharray-item>button svg{height:10px;width:10px}.elf--stroke-dasharray-editor .dash-list{display:flex;flex-direction:row;flex-wrap:wrap}.elf--stroke-dasharray-editor .dash-sample-list{background-color:var(--elf--input-background-color);border:1px solid var(--elf--border-color);display:none;height:100px;overflow:auto;position:absolute;top:30px;width:100px;z-index:10}.elf--stroke-dasharray-editor .dash-sample-list .dash-sample{cursor:pointer;height:20px}.elf--stroke-dasharray-editor .dash-sample-list .dash-sample:hover{background-color:var(--elf--input-inactive-color)}.elf--stroke-dasharray-editor .dash-sample-list .dash-sample svg line{stroke:var(--elf--font-color)}.elf--stroke-dasharray-editor>.tools.has-label{display:grid;grid-template-columns:70px 1fr}.elf--stroke-dasharray-editor>.tools.has-label .buttons{align-items:center;display:flex;justify-content:flex-start;padding-left:4px;text-align:left}.elf--stroke-dasharray-editor>.tools label{align-items:center;cursor:pointer;display:flex;justify-content:flex-start;text-align:left;vertical-align:middle}.elf--stroke-dasharray-editor>.tools label:hover{font-weight:700}")();
+  const dash_list = [
+    [10, 5],
+    [5, 1],
+    [1, 5],
+    [0.9],
+    [15, 10, 5],
+    [15, 10, 5, 10],
+    [15, 10, 5, 10, 15],
+    [5, 5, 1, 5]
+  ];
+  class StrokeDashArrayEditor extends editor.EditorElement {
+    initState() {
+      var value = sapa.isArray(this.props.value) ? this.props.value : this.generateValue(this.props.value || "");
+      return {
+        label: this.props.label || "",
+        value,
+        count: 1
+      };
+    }
+    template() {
+      const { label } = this.state;
+      const hasLabel = !!label;
+      return `
+      <div class='elf--stroke-dasharray-editor'>
+        <div class='tools ${hasLabel ? "has-label" : ""}'>
+          ${hasLabel ? `<label class='label'>${label}</label>` : ""}
+          <div class="buttons">
+            <label ref='$add'>${editor.iconUse("add")}</label>          
+          </div>
+        </div>      
+        <div ref='$body' class='dash-list'></div>
+        <div ref='$list' class='dash-sample-list'></div>
+      </div>
+    `;
+    }
+    [sapa.CLICK("$el .tools label")]() {
+      this.refs.$list.toggle();
+    }
+    getValue() {
+      return this.state.value;
+    }
+    generateValue(value) {
+      return value.split(" ").filter(Boolean).map((it) => +it);
+    }
+    setValue(value) {
+      if (!sapa.isArray(value)) {
+        value = this.generateValue(value);
+      }
+      this.setState({
+        value
+      });
+    }
+    [sapa.LOAD("$list")]() {
+      return dash_list.map((value, index2) => {
+        return `
+        <div class='dash-sample' data-index='${index2}'>
+          <div class='dash-sample-value'>
+            <svg width="100" height="2">
+              <line x1="5" y1="0" x2="95" y2="0" stroke-dasharray="${value.join(",")}" stroke-width="2" stroke="black" />
+            </svg>
+          </div>
+        </div>
+      `;
+      });
+    }
+    [sapa.LOAD("$body")]() {
+      this.state.count++;
+      return this.state.value.map((value, index2) => {
+        var num = index2 + 1;
+        return `
+        <div class='dasharray-item'>
+          ${sapa.createComponent("NumberInputEditor", {
+          ref: `$dash-${this.state.count}-${num}`,
+          compact: true,
+          key: index2,
+          value,
+          min: 0,
+          max: 100,
+          step: 1,
+          onchange: "changeRangeEditor"
+        })}  
+          <button type="button" data-index="${index2}" class='delete'>${editor.iconUse("close")}</button>
+        </div>
+      `;
+      });
+    }
+    [sapa.SUBSCRIBE_SELF("changeRangeEditor")](key, value) {
+      var index2 = +key;
+      this.state.value[index2] = value;
+      this.modifyStrokeDashArray();
+    }
+    [sapa.CLICK("$list .dash-sample")](e) {
+      const value = dash_list[+e.$dt.data("index")];
+      this.setState({ value }, false);
+      this.refresh();
+      this.modifyStrokeDashArray();
+      this.refs.$list.toggle();
+    }
+    [sapa.CLICK("$add")]() {
+      this.setState({
+        value: [...this.state.value, 0]
+      }, false);
+      this.refresh();
+      this.modifyStrokeDashArray();
+    }
+    [sapa.CLICK("$body .delete")](e) {
+      const index2 = +e.$dt.attr("data-index");
+      this.state.value.splice(index2, 1);
+      this.refresh();
+      this.modifyStrokeDashArray();
+    }
+    modifyStrokeDashArray() {
+      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
+    }
+    [sapa.POINTERSTART("document")](e) {
+      const $target = sapa.Dom.create(e.target);
+      const parent = $target.closest("elf--stroke-dasharray-editor");
+      if (!parent) {
+        this.refs.$list.hide();
+      }
+    }
+  }
+  var TextShadowEditor$1 = /* @__PURE__ */ (() => ".elf--text-shadow-editor{grid-template-columns:1fr!important;margin-bottom:10px;margin-left:-6px}.elf--text-shadow-editor .label{height:20px}.elf--text-shadow-editor .label.hide{display:none}.elf--text-shadow-editor .label label{padding:2px 6px 2px 0;vertical-align:middle}.elf--text-shadow-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--text-shadow-editor .tools select{display:inline-block;width:100px!important}.elf--text-shadow-editor .shadow-item{grid-column-gap:2px;display:grid;grid-template-columns:18px 1.5fr 1fr 1fr 1fr 30px;text-align:center}.elf--text-shadow-editor .shadow-item>label{align-items:center;display:flex;justify-content:flex-start}.elf--text-shadow-editor .shadow-item.desc{color:var(--elf--input-font-color)}.elf--text-shadow-editor .shadow-item.desc>*{text-align:left}.elf--text-shadow-editor .shadow-item .tools{align-items:center;display:flex;justify-content:center}.elf--text-shadow-editor .shadow-item .tools:hover{background-color:var(--elf--input-inactive-color)}")();
+  class TextShadowEditor extends editor.EditorElement {
+    initState() {
+      return {
+        textShadows: this.props.value || []
+      };
+    }
+    template() {
+      return `
+      <div class="elf--text-shadow-editor" >
+        <div class='text-shadow-list' ref='$shadowList'></div>
+      </div>
+    `;
+    }
+    [sapa.LOAD("$shadowList")]() {
+      var arr = this.state.textShadows.map((shadow2, index2) => {
+        return `
+        <div class="shadow-item real" data-index="${index2}">
+          <label draggable="true" data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
+          ${sapa.createComponent("ColorViewEditor", {
+          mini: true,
+          key: "color",
+          value: shadow2.color,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}
+          ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          key: "offsetX",
+          label: "X",
+          value: shadow2.offsetX,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}          
+          ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          key: "offsetY",
+          label: "Y",
+          value: shadow2.offsetY,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}                    
+          ${sapa.createComponent("NumberInputEditor", {
+          mini: true,
+          label: "B",
+          key: "blurRadius",
+          value: shadow2.blurRadius,
+          params: index2,
+          onchange: "changeKeyValue"
+        })}                    
+          <div class="tools">
+            <button type="button" class="remove" data-index="${index2}">
+              ${editor.iconUse("remove2")}
+            </button>
+          </div>
+        </div>
+      `;
+      });
+      return arr.join("");
+    }
+    modifyTextShadow() {
+      var value = this.state.textShadows;
+      this.parent.trigger(this.props.onchange, this.props.key, value);
+    }
+    [sapa.SUBSCRIBE("add")](shadows) {
+      if (sapa.isArray(shadows)) {
+        this.state.textShadows.push(...shadows);
+      } else {
+        this.state.textShadows.push({
+          color: "#000000",
+          offsetX: 0,
+          offsetY: 0,
+          blurRadius: 0
+        });
+      }
+      this.refresh();
+      this.modifyTextShadow();
+    }
+    [sapa.CLICK("$add")]() {
+      this.trigger("add");
+    }
+    [sapa.DRAGSTART("$shadowList .shadow-item > label")](e) {
+      this.startIndex = +e.$dt.attr("data-index");
+    }
+    [sapa.DRAGOVER("$shadowList .shadow-item") + sapa.PREVENT]() {
+    }
+    sortItem(arr, startIndex, targetIndex) {
+      arr.splice(targetIndex + (startIndex < targetIndex ? -1 : 0), 0, ...arr.splice(startIndex, 1));
+    }
+    sortTextShadow(startIndex, targetIndex) {
+      this.sortItem(this.state.textShadows, startIndex, targetIndex);
+    }
+    [sapa.DROP("$shadowList .shadow-item") + sapa.PREVENT](e) {
+      var targetIndex = +e.$dt.attr("data-index");
+      this.sortTextShadow(this.startIndex, targetIndex);
+      this.refresh();
+      this.modifyTextShadow();
+    }
+    [sapa.CLICK("$shadowList .remove")](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.state.textShadows.splice(index2, 1);
+      this.refresh();
+      this.modifyTextShadow();
+    }
+    [sapa.SUBSCRIBE_SELF("changeKeyValue")](key, value, index2) {
+      var shadow2 = this.state.textShadows[index2];
+      this.state.textShadows[index2] = __spreadProps(__spreadValues({}, shadow2), { [key]: value });
+      this.modifyTextShadow();
+    }
+  }
+  var VarEditor$1 = /* @__PURE__ */ (() => ".elf--var-editor{grid-template-columns:1fr!important}.elf--var-editor .label{height:20px;margin-top:2px}.elf--var-editor .label.hide{display:none}.elf--var-editor .label label{padding-left:5px;vertical-align:middle}.elf--var-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--var-editor .var-item{grid-column-gap:2px;display:grid;grid-template-columns:1fr 1fr 30px;height:24px;margin-bottom:5px;margin-top:5px;text-align:center}.elf--var-editor .var-item>div input{height:100%;width:100%}.elf--var-editor .var-item>div input::-moz-placeholder{color:#9e9e9e}.elf--var-editor .var-item>div input:-ms-input-placeholder{color:#9e9e9e}.elf--var-editor .var-item>div input::placeholder{color:#9e9e9e}.elf--var-editor .var-item .tools{text-align:right}")();
+  class VarEditor extends editor.EditorElement {
+    initState() {
+      var values = this.props.value.split(";").filter((it) => it.trim()).map((it) => {
+        let [key, value] = it.split(":");
+        key = key.replace("--", "");
+        return { key, value };
+      });
+      return {
+        hideLabel: this.props.hideLabel == "true" ? true : false,
+        params: this.props.params || "",
+        values
+      };
+    }
+    template() {
+      var labelClass = this.state.hideLabel ? "hide" : "";
+      return `
+        <div class='elf--var-editor var-list'>
+            <div class='label ${labelClass}' >
+                <label>${this.props.title || ""}</label>
+                <div class='tools'>
+                    <button type="button" ref="$add" title="add Var">${editor.iconUse("add")}</button>
+                </div>
+            </div>
+            <div class='var-list' ref='$varList'></div>
+        </div>`;
+    }
+    [sapa.SUBSCRIBE("add")]() {
+      this.state.values.push({
+        key: "",
+        value: ""
+      });
+      this.refresh();
+      this.updateData();
+    }
+    [sapa.CLICK("$add")]() {
+      this.trigger("add");
+    }
+    [sapa.LOAD("$varList")]() {
+      return this.state.values.map((it, index2) => {
+        return `
+                <div class='var-item' >
+                    <div>
+                        <input type="text" data-type="key" value="${it.key}" data-index="${index2}"  placeholder="variable" />
+                    </div>
+                    <div>
+                        <input type="text" data-type="value" value="${it.value}" data-index="${index2}"  placeholder="value" />
+                    </div>
+                    <div class="tools">
+                        <button type="button" class="del" data-index="${index2}">
+                        ${icon.remove2}
+                        </button>
+                    </div>
+                </div>
+            `;
+      });
+    }
+    [sapa.CLICK("$varList .del")](e) {
+      var index2 = +e.$dt.attr("data-index");
+      this.state.values.splice(index2, 1);
+      this.refresh();
+      this.updateData();
+    }
+    [sapa.INPUT("$varList input")](e) {
+      var index2 = +e.$dt.attr("data-index");
+      var type = e.$dt.attr("data-type");
+      this.state.values[index2][type] = e.$dt.value;
+      this.updateData();
+    }
+    updateData() {
+      var value = this.state.values.map((it) => {
+        return `${it.key}:${it.value}`;
+      }).join(";");
+      this.parent.trigger(this.props.onchange, value, this.props.params);
+    }
+  }
+  var propertyEditor$1 = {
+    BlendSelectEditor,
+    BoxShadowEditor,
+    ColorAssetsEditor,
+    ColorSingleEditor,
+    ColorViewEditor,
+    CSSPropertyEditor,
+    CubicBezierEditor,
+    DirectionEditor,
+    FilterEditor,
+    FontSelectEditor,
+    GradientEditor,
+    IconListViewEditor,
+    IterationCountEditor,
+    MediaProgressEditor,
+    PathEditor,
+    PathDataEditor,
+    PolygonDataEditor,
+    StrokeDashArrayEditor,
+    TextShadowEditor,
+    VarEditor
+  };
+  function propertyEditor(editor2) {
+    editor2.registerElement(propertyEditor$1);
+    editor2.registerAlias({
+      "icon-list-view": "IconListViewEditor",
+      "box-shadow": "BoxShadowEditor",
+      "text-shadow": "TextShadowEditor",
+      component: "ComponentEditor",
+      "text-area": "TextAreaEditor",
+      text: "TextEditor",
+      "color-single": "ColorSingleEditor",
+      "cubic-bezier": "CubicBezierEditor",
+      path: "PathEditor",
+      "clip-path": "ClipPathEditor",
+      "color-view": "ColorViewEditor",
+      var: "VarEditor",
+      "path-data": "PathDataEditor",
+      "polygon-data": "PolygonDataEditor",
+      "input-array": "InputArrayEditor",
+      "stroke-dash-array": "StrokeDashArrayEditor",
+      "number-input": "NumberInputEditor",
+      "number-range": "NumberRangeEditor",
+      "media-progress": "MediaProgressEditor",
+      "select-icon": "SelectIconEditor",
+      "css-property": "CSSPropertyEditor",
+      direction: "DirectionEditor",
+      "iteration-count": "IterationCountEditor",
+      gradient: "GradientEditor",
+      filter: "FilterEditor",
+      select: "SelectEditor",
+      "blend-select": "BlendSelectEditor",
+      range: "RangeEditor",
+      "input-range": "InputRangeEditor",
+      "color-assets": "ColorAssetsEditor",
+      "font-select": "FontSelectEditor"
     });
   }
   class JSONRenderer {
@@ -38574,7 +45217,7 @@ ${cssString}
       ];
     });
   }
-  var SelectionInfoView$1 = "";
+  var SelectionInfoView$1 = /* @__PURE__ */ (() => ".elf--selection-info-view{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--selection-info-view .artboard-title{display:inline-block;pointer-events:all;position:absolute;transform:translateY(-100%);vertical-align:middle}.elf--selection-info-view .artboard-title svg{height:16px;vertical-align:middle;width:16px}.elf--selection-info-view .artboard-title svg path,.elf--selection-info-view .artboard-title svg use{fill:currentColor}.elf--selection-info-view .artboard-title>div{padding:2px 5px}")();
   class SelectionInfoView extends editor.EditorElement {
     template() {
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -38703,7 +45346,7 @@ ${cssString}
       SelectionInfoView
     });
   }
-  var GhostToolView$1 = "";
+  var GhostToolView$1 = /* @__PURE__ */ (() => ".elf--ghost-tool-view{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--ghost-tool-view svg{height:100%;left:0;position:absolute;top:0;width:100%}.elf--ghost-tool-view svg path{fill:transparent;stroke:var(--elf--selected-color);stroke-width:2;stroke-dasharray:2 2}.elf--ghost-tool-view svg path.container,.elf--ghost-tool-view svg path.target,.elf--ghost-tool-view svg path.target-parent,.elf--ghost-tool-view svg path.target-rect{stroke-width:0}.elf--ghost-tool-view svg path.flex-item{stroke:transparent;fill:rgba(50,50,50,.1);z-index:-1000}.elf--ghost-tool-view svg path.flex-target{stroke-width:5;stroke:var(--elf--selected-color)}")();
   const CHECK_RATE = 0.5;
   class GhostToolView extends editor.EditorElement {
     template() {
@@ -39076,7 +45719,7 @@ ${cssString}
       this.load();
     }
   }
-  var SelectionView = "";
+  var SelectionView = /* @__PURE__ */ (() => '.elf--selection-view{bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--selection-view.editing-path,.elf--selection-view.editing-polygon{display:none!important}.elf--selection-view.empty>*{display:none}.elf--selection-view[data-has-shift=true] .pointer-rect .pointer{background-color:transparent}.elf--selection-view.one-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="1"]{border-left-width:0;border-top-width:0}.elf--selection-view.one-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="2"]{border-right-width:0;border-top-width:0}.elf--selection-view.one-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="3"]{border-bottom-width:0;border-right-width:0}.elf--selection-view.one-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="4"]{border-bottom-width:0;border-left-width:0}.elf--selection-view.group-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="1"]{border-bottom-width:0;border-right-width:0}.elf--selection-view.group-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="2"]{border-bottom-width:0;border-left-width:0}.elf--selection-view.group-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="3"]{border-left-width:0;border-top-width:0}.elf--selection-view.group-selection-view[data-has-shift=true] .pointer-rect .pointer[data-number="4"]{border-right-width:0;border-top-width:0}.pointer-rect{bottom:0;pointer-events:none;right:0}.pointer-rect,.pointer-rect .pointer{box-sizing:border-box;left:0;position:absolute;top:0}.pointer-rect .pointer{background-color:#fff;border:1px solid var(--elf--selection-tool-border-color);display:inline-block;height:10px;pointer-events:all;width:10px}.pointer-rect .pointer[data-number="5"]{background-color:var(--elf--selected-color);border-radius:100%;height:7px;pointer-events:none;width:7px}.pointer-rect .pointer[data-number="11"],.pointer-rect .pointer[data-number="12"],.pointer-rect .pointer[data-number="13"],.pointer-rect .pointer[data-number="14"]{background-color:transparent;border:0}.pointer-rect .size-pointer{background-color:var(--elf--selected-color);border-radius:4px;color:var(--elf--selected-font-color);display:inline-block;left:0;padding:2px 4px;position:absolute;top:0}.pointer-rect .size-pointer[data-layout=grid]{background-color:red}.pointer-rect .size-pointer[data-layout=flex]{background-color:green}.pointer-rect .rotate-pointer{background-color:#fff;border:1px solid orange;border-radius:100%;box-sizing:border-box;display:inline-block;height:14px;left:0;overflow:hidden;pointer-events:all;position:absolute;top:0;width:14px}.pointer-rect .rotate-pointer:before{background-color:orange;border-radius:50%;content:"";height:8px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:8px}.pointer-rect .rotate-pointer.no-fill{background-color:transparent;border:none;height:14px;width:14px}.pointer-rect .rotate-pointer.no-fill:before{display:none}.pointer-rect .line{stroke:var(--elf--selection-tool-border-color);fill:transparent;stroke-width:1;height:100%;left:0;position:absolute;top:0;width:100%}.pointer-rect .line path{stroke-width:2;transform:translate(.5px,.5px)}.selection-tool{border:.5px solid var(--elf--selection-tool-border-color);position:absolute}.selection-tool.path .selection-tool-item[data-position=path],.selection-tool.polygon .selection-tool-item[data-position=path],.selection-tool.textpath .selection-tool-item[data-position=path]{background-color:hsla(0,0%,100%,.8);border:1px solid var(--elf--border-color);bottom:auto;left:50%;opacity:1;right:auto;top:-30px;transform:translate(-50%,-50%)}.selection-tool[data-is-layout-container=true][data-layout-container=flex]{border:2px solid #4fdc4f}.selection-tool[data-is-layout-container=true][data-layout-container=grid]{border:2px solid #e46363}.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to bottom left"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to bottom right"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to bottom"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to left"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to right"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to top left"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to top right"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position="to top"],.selection-tool[data-is-layout-item=true][data-selection-length="1"][data-is-layout-container=false] [data-position=move]{display:none}.selection-tool .selection-tool-item{background-color:var(--elf--selection-tool-border-color);border:1px solid var(--elf--selection-tool-border-color);display:inline-block;height:8px;pointer-events:all;position:absolute;transform:translate(-50%,-50%);width:8px}.selection-tool .selection-tool-item:not([data-position=move]){background-color:#fff;border:1px solid var(--elf--selection-tool-border-color);box-sizing:border-box}.selection-tool .selection-tool-item:before{background-color:rgba(51,51,51,.8);border:var(--elf--border-color);border-radius:3px;color:#fff;content:attr(data-position-text);opacity:0;padding:4px 10px;pointer-events:none;position:absolute;text-align:center;transition:opacity .3s linear;white-space:nowrap}.selection-tool .selection-tool-item[data-position=move]{background-color:var(--elf--selected-color);border:1px solid var(--elf--selected-color);box-sizing:border-box;color:var(--elf--selected-font-color);cursor:move;display:inline-block;height:20px;left:0;overflow:hidden;padding-right:5px;top:-2px;transform:translateY(-100%);vertical-align:middle;width:auto}.selection-tool .selection-tool-item[data-position=move]:before{left:0;top:0;transform:translate(-100%,calc(-100% - 5px))}.selection-tool .selection-tool-item[data-position=move] svg{height:15px;width:15px}.selection-tool .selection-tool-item[data-position=move] span{color:var(--elf--selected-font-color);vertical-align:middle}.selection-tool .selection-tool-item[data-position=path]{background-color:transparent;border:0;border-radius:0;cursor:move;height:20px;left:0;opacity:0;top:0;transform:none;width:20px}.selection-tool .selection-tool-item[data-position=path]:before{left:50%;top:50%;transform:translate(-50%,-50%)}.selection-tool .selection-tool-item[data-position=path] svg{height:100%;width:100%}.selection-tool .selection-tool-item[data-position="to top"]{background-color:transparent;border:0;cursor:ns-resize;height:2px;left:0;right:0;top:-2px;transform:none;width:auto}.selection-tool .selection-tool-item[data-position="to bottom"]{background-color:transparent;border:0;bottom:-2px;cursor:ns-resize;height:2px;left:0;right:0;transform:none;width:auto}.selection-tool .selection-tool-item[data-position="to right"]{background-color:transparent;border:0;bottom:0;cursor:ew-resize;height:auto;right:-2px;top:0;transform:none;width:2px}.selection-tool .selection-tool-item[data-position="to left"]{background-color:transparent;border:0;bottom:0;cursor:ew-resize;height:auto;left:-2px;top:0;transform:none;width:2px}.selection-tool .selection-tool-item[data-position="to top left"]{cursor:nwse-resize;left:0;top:0;transform:translate(-50%,-50%)}.selection-tool .selection-tool-item[data-position="to top right"]{cursor:nesw-resize;left:100%;top:0;transform:translate(-50%,-50%)}.selection-tool .selection-tool-item[data-position="to bottom left"]{cursor:nesw-resize;left:0;top:100%;transform:translate(-50%,-50%)}.selection-tool .selection-tool-item[data-position="to bottom right"]{cursor:nwse-resize;left:100%;top:100%;transform:translate(-50%,-50%)}')();
   var directionType$1 = {
     1: "to top left",
     2: "to top right",
@@ -40173,7 +46816,7 @@ ${cssString}
       GroupSelectionToolView
     }, CanvasViewToolLevel.SELECTION_TOOL);
   }
-  var SelectorPopup$1 = "";
+  var SelectorPopup$1 = /* @__PURE__ */ (() => ".elf--selector-popup{height:auto;padding:7px;width:250px}.elf--selector-popup .box .name{grid-column-gap:2px;display:grid;grid-template-columns:1fr 2fr}.elf--selector-popup .box .name input{width:100%}")();
   class SelectorPopup extends editor.BasePopup {
     getTitle() {
       return this.$i18n("selector.popup.title");
@@ -40238,7 +46881,7 @@ ${cssString}
       this.show(250);
     }
   }
-  var SelectorProperty$1 = "";
+  var SelectorProperty$1 = /* @__PURE__ */ (() => ".elf--selector-list{grid-template-columns:1fr!important}.elf--selector-list .selector-item{grid-column-gap:4px;border:1px solid transparent;cursor:pointer;display:grid;grid-template-columns:1fr;height:30px;margin-bottom:5px;padding:5px}.elf--selector-list .selector-item:first-child{margin-top:5px}.elf--selector-list .selector-item.selected{border-color:var(--elf--property-border-color)}.elf--selector-list .selector-item .title{display:grid;grid-template-columns:1fr 20px;height:20px}.elf--selector-list .selector-item .title .name{padding:2px 0}.elf--selector-list .selector-item .title .name span{background-color:var(--elf--selected-color);border-radius:3px;color:var(--elf--selected-font-color);font-weight:700;padding:2px 4px}.elf--selector-list .selector-item .title .tools{text-align:right;vertical-align:middle}")();
   const selectorList = [
     "",
     ":hover",
@@ -40410,7 +47053,685 @@ ${cssString}
       SelectorPopup
     });
   }
-  var SVGFilterAssetsProperty$1 = "";
+  var add_artboard = {
+    category: "Tool",
+    key: "a",
+    command: "addLayerView",
+    args: ["artboard"],
+    description: "Add ArtBoard",
+    when: "CanvasView"
+  };
+  var __glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_artboard
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_artboard_pan = {
+    category: "Tool",
+    key: "a",
+    command: "addLayerView",
+    args: ["artboard"],
+    description: "Add ArtBoard",
+    when: "LayerAppendView"
+  };
+  var __glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_artboard_pan
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_brush = {
+    category: "Tool",
+    key: "b",
+    command: "addLayerView",
+    args: ["brush"],
+    description: "Draw SVG Path",
+    when: "CanvasView"
+  };
+  var __glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_brush
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_circle = {
+    category: "Tool",
+    key: "o",
+    command: "addLayerView",
+    args: ["circle"],
+    description: "Add circle layer",
+    when: "CanvasView"
+  };
+  var __glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_circle
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_circle_l = {
+    category: "Tool",
+    key: "l",
+    command: "addLayerView",
+    args: ["circle"],
+    description: "Add circle layer",
+    when: "CanvasView"
+  };
+  var __glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_circle_l
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_path = {
+    category: "Tool",
+    key: "p",
+    command: "addLayerView",
+    args: ["path"],
+    description: "Add SVG Path layer",
+    when: "CanvasView"
+  };
+  var __glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_path
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_rect = {
+    category: "Tool",
+    key: "r",
+    command: "addLayerView",
+    args: [
+      "rect",
+      {
+        backgroundColor: "gray"
+      }
+    ],
+    description: "Add rect layer",
+    when: "CanvasView"
+  };
+  var __glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_rect
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_rect_m = {
+    category: "Tool",
+    key: "m",
+    command: "addLayerView",
+    args: ["rect"],
+    description: "Add rect layer",
+    when: "CanvasView"
+  };
+  var __glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_rect_m
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_rect_pan = {
+    category: "Tool",
+    key: "r",
+    command: "addLayerView",
+    args: [
+      "rect",
+      {
+        backgroundColor: "gray"
+      }
+    ],
+    description: "Add rect layer",
+    when: "LayerAppendView"
+  };
+  var __glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_rect_pan
+  }, Symbol.toStringTag, { value: "Module" }));
+  var add_text = {
+    category: "Tool",
+    key: "t",
+    command: "addLayerView",
+    args: ["text"],
+    description: "Add text layer",
+    when: "CanvasView"
+  };
+  var __glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": add_text
+  }, Symbol.toStringTag, { value: "Module" }));
+  var clipboard_copy = {
+    category: "Edit",
+    key: "cmd+c",
+    command: "clipboard.copy",
+    description: "Copy objects",
+    when: "CanvasView"
+  };
+  var __glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": clipboard_copy
+  }, Symbol.toStringTag, { value: "Module" }));
+  var clipboard_paste = {
+    category: "Edit",
+    key: "cmd+v",
+    win: "ctrl+v",
+    command: "clipboard.paste",
+    description: "Paste selected objects",
+    when: "CanvasView"
+  };
+  var __glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": clipboard_paste
+  }, Symbol.toStringTag, { value: "Module" }));
+  var escape = {
+    category: "Tool",
+    key: "escape",
+    command: "select.none",
+    description: "None selection",
+    when: "CanvasView"
+  };
+  var __glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": escape
+  }, Symbol.toStringTag, { value: "Module" }));
+  var group_item = {
+    category: "Group",
+    key: "cmd+g",
+    win: "ctrl+g",
+    command: "group.item",
+    description: "Grouping selected items",
+    when: "CanvasView"
+  };
+  var __glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": group_item
+  }, Symbol.toStringTag, { value: "Module" }));
+  var history_redo = {
+    category: "History",
+    key: "cmd+shift+z",
+    win: "ctrl+shift+z",
+    command: "history.redo",
+    description: "redoing in history",
+    when: "CanvasView"
+  };
+  var __glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": history_redo
+  }, Symbol.toStringTag, { value: "Module" }));
+  var history_undo = {
+    category: "History",
+    key: "cmd+z",
+    win: "ctrl+z",
+    command: "history.undo",
+    description: "undoing in history",
+    when: "CanvasView"
+  };
+  var __glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": history_undo
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_alt_down = {
+    category: "Layer",
+    key: "Alt+ArrowDown",
+    command: "moveLayer",
+    description: "move 5px to down",
+    args: [0, 5],
+    when: "CanvasView"
+  };
+  var __glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_alt_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_alt_left = {
+    category: "Layer",
+    key: "Alt+ArrowLeft",
+    command: "moveLayer",
+    description: "move 5px to left",
+    args: [-5, 0],
+    when: "CanvasView"
+  };
+  var __glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_alt_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_alt_right = {
+    category: "Layer",
+    key: "Alt+ArrowRight",
+    command: "moveLayer",
+    description: "move 5px to right",
+    args: [5, 0],
+    when: "CanvasView"
+  };
+  var __glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_alt_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_alt_up = {
+    category: "Layer",
+    key: "Alt+ArrowUp",
+    command: "moveLayer",
+    description: "move 5px to up",
+    args: [0, -5],
+    when: "CanvasView"
+  };
+  var __glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_alt_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_depth_down = {
+    category: "Layer",
+    key: "[",
+    command: "history.send.backward",
+    description: "move layer to below",
+    args: ["send backward"],
+    when: "CanvasView"
+  };
+  var __glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_depth_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_depth_up = {
+    category: "Layer",
+    key: "]",
+    command: "history.bring.forward",
+    description: "move layer to above",
+    args: ["bring forward"],
+    when: "CanvasView"
+  };
+  var __glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_depth_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_key_down = {
+    category: "Layer",
+    key: "ArrowDown",
+    command: "moveLayer",
+    description: "move 1px to down",
+    args: [0, 1],
+    when: "CanvasView"
+  };
+  var __glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_key_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_key_left = {
+    category: "Layer",
+    key: "ArrowLeft",
+    command: "moveLayer",
+    description: "move 1px to left",
+    args: [-1, 0],
+    when: "CanvasView"
+  };
+  var __glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_key_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_key_right = {
+    category: "Layer",
+    key: "ArrowRight",
+    command: "moveLayer",
+    description: "move 1px to right",
+    args: [1, 0],
+    when: "CanvasView"
+  };
+  var __glob_0_24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_key_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_key_up = {
+    category: "Layer",
+    key: "ArrowUp",
+    command: "moveLayer",
+    description: "move 1px to up",
+    args: [0, -1],
+    when: "CanvasView"
+  };
+  var __glob_0_25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_key_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_shift_down = {
+    category: "Layer",
+    key: "Shift+ArrowDown",
+    command: "moveLayer",
+    description: "move 10px to down",
+    args: [0, 10],
+    when: "CanvasView"
+  };
+  var __glob_0_26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_shift_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_shift_left = {
+    category: "Layer",
+    key: "Shift+ArrowLeft",
+    command: "moveLayer",
+    description: "move 10px to left",
+    args: [-10, 0],
+    when: "CanvasView"
+  };
+  var __glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_shift_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_shift_right = {
+    category: "Layer",
+    key: "Shift+ArrowRight",
+    command: "moveLayer",
+    description: "move 10px to right",
+    args: [10, 0],
+    when: "CanvasView"
+  };
+  var __glob_0_28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_shift_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_move_shift_up = {
+    category: "Layer",
+    key: "Shift+ArrowUp",
+    command: "moveLayer",
+    description: "move 10px to up",
+    args: [0, -10],
+    when: "CanvasView"
+  };
+  var __glob_0_29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_move_shift_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_rotate_meta_left = {
+    category: "Layer",
+    key: "Meta+ArrowLeft",
+    command: "rotateLayer",
+    description: "rotate to left",
+    args: [-5],
+    when: "CanvasView"
+  };
+  var __glob_0_30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_rotate_meta_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var item_rotate_meta_right = {
+    category: "Layer",
+    key: "Meta+ArrowRight",
+    command: "rotateLayer",
+    description: "rotate to right",
+    args: [5],
+    when: "CanvasView"
+  };
+  var __glob_0_31 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": item_rotate_meta_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var removeLayer = {
+    category: "Layer",
+    key: "Backspace",
+    command: "history.removeLayer",
+    description: "Delete selected items",
+    args: ["Delete selected items"],
+    when: "CanvasView"
+  };
+  var __glob_0_32 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": removeLayer
+  }, Symbol.toStringTag, { value: "Module" }));
+  var removeLayerByDeleteKey = {
+    category: "Layer",
+    key: "Delete",
+    command: "history.removeLayer",
+    description: "Delete selected items",
+    args: ["Delete selected items"],
+    when: "CanvasView"
+  };
+  var __glob_0_33 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": removeLayerByDeleteKey
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_delete = {
+    category: "Path",
+    key: "Backspace",
+    command: "segment.delete",
+    description: "Delete selected segment",
+    when: "PathEditorView"
+  };
+  var __glob_0_34 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_delete
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_alt_down = {
+    category: "Path",
+    key: "Alt+ArrowDown",
+    command: "segment.move.down",
+    description: "move 5px to down",
+    args: [{ dy: 5 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_35 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_alt_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_alt_left = {
+    category: "Path",
+    key: "Alt+ArrowLeft",
+    command: "segment.move.left",
+    description: "move 5px to left",
+    args: [{ dx: 5 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_36 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_alt_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_alt_right = {
+    category: "Path",
+    key: "Alt+ArrowRight",
+    command: "segment.move.right",
+    description: "move 5px to right",
+    args: [{ dx: 5 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_37 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_alt_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_alt_up = {
+    category: "Path",
+    key: "Alt+ArrowUp",
+    command: "segment.move.up",
+    description: "move 5px to up ",
+    args: [{ dy: 5 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_38 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_alt_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_key_down = {
+    category: "Path",
+    key: "ArrowDown",
+    command: "segment.move.down",
+    description: "move 1px to down",
+    args: [{ dy: 1 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_39 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_key_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_key_left = {
+    category: "Path",
+    key: "ArrowLeft",
+    command: "segment.move.left",
+    description: "move 1px to left",
+    args: [{ dx: 1 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_40 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_key_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_key_right = {
+    category: "Path",
+    key: "ArrowRight",
+    command: "segment.move.right",
+    description: "move 1px to right",
+    args: [{ dx: 1 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_41 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_key_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_key_up = {
+    category: "Path",
+    key: "ArrowUp",
+    command: "segment.move.up",
+    description: "move 1px to up",
+    args: [{ dy: 1 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_42 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_key_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_shift_down = {
+    category: "Path",
+    key: "Shift+ArrowDown",
+    command: "segment.move.down",
+    description: "move 10px to down",
+    args: [{ dy: 10 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_43 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_shift_down
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_shift_left = {
+    category: "Path",
+    key: "Shift+ArrowLeft",
+    command: "segment.move.left",
+    description: "move 10px to left",
+    args: [{ dx: 10 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_44 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_shift_left
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_shift_right = {
+    category: "Path",
+    key: "Shift+ArrowRight",
+    command: "segment.move.right",
+    description: "move 10px to right",
+    args: [{ dx: 10 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_45 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_shift_right
+  }, Symbol.toStringTag, { value: "Module" }));
+  var segment_move_shift_up = {
+    category: "Path",
+    key: "Shift+ArrowUp",
+    command: "segment.move.up",
+    description: "move 10px to up",
+    args: [{ dy: 10 }],
+    when: "PathEditorView"
+  };
+  var __glob_0_46 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": segment_move_shift_up
+  }, Symbol.toStringTag, { value: "Module" }));
+  var select_all = {
+    category: "Tool",
+    key: "CMD+A",
+    win: "CTRL+A",
+    command: "select.all",
+    description: "Selection all layers"
+  };
+  var __glob_0_47 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": select_all
+  }, Symbol.toStringTag, { value: "Module" }));
+  var select_view = {
+    category: "Tool",
+    key: "v",
+    command: "addLayerView",
+    args: ["select"],
+    description: "Selection"
+  };
+  var __glob_0_48 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": select_view
+  }, Symbol.toStringTag, { value: "Module" }));
+  var set_tool_hand = {
+    category: "Tools",
+    key: "h",
+    command: "toggleHandTool",
+    description: "set hand tool on",
+    when: "CanvasView"
+  };
+  var __glob_0_49 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": set_tool_hand
+  }, Symbol.toStringTag, { value: "Module" }));
+  var set_tool_hand_m = {
+    category: "Tools",
+    key: "h",
+    command: "toggleHandTool",
+    description: "set hand tool on",
+    when: "LayerAppendView"
+  };
+  var __glob_0_50 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": set_tool_hand_m
+  }, Symbol.toStringTag, { value: "Module" }));
+  var show_pan = {
+    category: "Tool",
+    key: "space",
+    command: "showPan",
+    description: "Show panning area",
+    when: "CanvasView"
+  };
+  var __glob_0_51 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": show_pan
+  }, Symbol.toStringTag, { value: "Module" }));
+  var ungroup_item = {
+    category: "Group",
+    key: "shift+cmd+g",
+    win: "shift+ctrl+g",
+    command: "ungroup.item",
+    description: "Ungrouping selected group layer",
+    when: "CanvasView"
+  };
+  var __glob_0_52 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": ungroup_item
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_default = {
+    category: "View",
+    key: "0",
+    command: "zoom.default",
+    description: "zoom by scale 1",
+    when: "CanvasView"
+  };
+  var __glob_0_53 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_default
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_in = {
+    category: "View",
+    key: "Equal",
+    command: "zoom.in",
+    description: "zoom in",
+    when: "CanvasView"
+  };
+  var __glob_0_54 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_in
+  }, Symbol.toStringTag, { value: "Module" }));
+  var zoom_out = {
+    category: "View",
+    key: "minus",
+    command: "zoom.out",
+    description: "zoom Out",
+    when: "CanvasView"
+  };
+  var __glob_0_55 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    "default": zoom_out
+  }, Symbol.toStringTag, { value: "Module" }));
+  const modules = { "./shortcuts_list/add.artboard.js": __glob_0_0, "./shortcuts_list/add.artboard.pan.js": __glob_0_1, "./shortcuts_list/add.brush.js": __glob_0_2, "./shortcuts_list/add.circle.js": __glob_0_3, "./shortcuts_list/add.circle.l.js": __glob_0_4, "./shortcuts_list/add.path.js": __glob_0_5, "./shortcuts_list/add.rect.js": __glob_0_6, "./shortcuts_list/add.rect.m.js": __glob_0_7, "./shortcuts_list/add.rect.pan.js": __glob_0_8, "./shortcuts_list/add.text.js": __glob_0_9, "./shortcuts_list/clipboard.copy.js": __glob_0_10, "./shortcuts_list/clipboard.paste.js": __glob_0_11, "./shortcuts_list/escape.js": __glob_0_12, "./shortcuts_list/group.item.js": __glob_0_13, "./shortcuts_list/history.redo.js": __glob_0_14, "./shortcuts_list/history.undo.js": __glob_0_15, "./shortcuts_list/item.move.alt.down.js": __glob_0_16, "./shortcuts_list/item.move.alt.left.js": __glob_0_17, "./shortcuts_list/item.move.alt.right.js": __glob_0_18, "./shortcuts_list/item.move.alt.up.js": __glob_0_19, "./shortcuts_list/item.move.depth.down.js": __glob_0_20, "./shortcuts_list/item.move.depth.up.js": __glob_0_21, "./shortcuts_list/item.move.key.down.js": __glob_0_22, "./shortcuts_list/item.move.key.left.js": __glob_0_23, "./shortcuts_list/item.move.key.right.js": __glob_0_24, "./shortcuts_list/item.move.key.up.js": __glob_0_25, "./shortcuts_list/item.move.shift.down.js": __glob_0_26, "./shortcuts_list/item.move.shift.left.js": __glob_0_27, "./shortcuts_list/item.move.shift.right.js": __glob_0_28, "./shortcuts_list/item.move.shift.up.js": __glob_0_29, "./shortcuts_list/item.rotate.meta.left.js": __glob_0_30, "./shortcuts_list/item.rotate.meta.right.js": __glob_0_31, "./shortcuts_list/removeLayer.js": __glob_0_32, "./shortcuts_list/removeLayerByDeleteKey.js": __glob_0_33, "./shortcuts_list/segment.delete.js": __glob_0_34, "./shortcuts_list/segment.move.alt.down.js": __glob_0_35, "./shortcuts_list/segment.move.alt.left.js": __glob_0_36, "./shortcuts_list/segment.move.alt.right.js": __glob_0_37, "./shortcuts_list/segment.move.alt.up.js": __glob_0_38, "./shortcuts_list/segment.move.key.down.js": __glob_0_39, "./shortcuts_list/segment.move.key.left.js": __glob_0_40, "./shortcuts_list/segment.move.key.right.js": __glob_0_41, "./shortcuts_list/segment.move.key.up.js": __glob_0_42, "./shortcuts_list/segment.move.shift.down.js": __glob_0_43, "./shortcuts_list/segment.move.shift.left.js": __glob_0_44, "./shortcuts_list/segment.move.shift.right.js": __glob_0_45, "./shortcuts_list/segment.move.shift.up.js": __glob_0_46, "./shortcuts_list/select.all.js": __glob_0_47, "./shortcuts_list/select.view.js": __glob_0_48, "./shortcuts_list/set.tool.hand.js": __glob_0_49, "./shortcuts_list/set.tool.hand.m.js": __glob_0_50, "./shortcuts_list/show.pan.js": __glob_0_51, "./shortcuts_list/ungroup.item.js": __glob_0_52, "./shortcuts_list/zoom.default.js": __glob_0_53, "./shortcuts_list/zoom.in.js": __glob_0_54, "./shortcuts_list/zoom.out.js": __glob_0_55 };
+  var shortcuts$1 = Object.values(modules).map((it) => it.default);
+  function shortcuts(editor2) {
+    shortcuts$1.forEach((shortcut) => {
+      editor2.registerShortCut(shortcut);
+    });
+  }
+  var SVGFilterAssetsProperty$1 = /* @__PURE__ */ (() => ".elf--svgfilter-assets-property .svgfilter-assets{padding:5px}.elf--svgfilter-assets-property .svgfilter-list-tools{grid-column-gap:2px;display:grid;grid-template-columns:1fr 1fr;margin-bottom:10px;text-align:left}.elf--svgfilter-assets-property .svgfilter-list-tools button{border:1px solid var(--elf--border-color);padding:2px 10px}.elf--svgfilter-assets-property .svgfilter-list-tools[data-view-mode=grid] button[data-value=grid],.elf--svgfilter-assets-property .svgfilter-list-tools[data-view-mode=list] button[data-value=list]{background-color:var(--elf--selected-border-color);background-image:none;border-color:var(--elf--selected-border-color);color:var(--elf--selected-font-color)}.elf--svgfilter-assets-property .svgfilter-list{padding:5px}.elf--svgfilter-assets-property .svgfilter-list .svgfilter-view{background-image:radial-gradient(#ff0 0,red 100%);bottom:0;left:0;pointer-events:none;position:absolute;right:0;top:0}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid]{display:block}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .add-svgfilter-item{border:1px solid var(--elf--selected-color);border-radius:2px;color:var(--elf--font-color);cursor:pointer;display:inline-block;height:66px;padding:20px;position:relative;text-align:center;vertical-align:top;width:66px}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .add-svgfilter-item button svg{height:20px;width:20px}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .svgfilter-item{display:inline-block;margin-bottom:4px;margin-right:2px;position:relative;vertical-align:middle;width:66px}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .svgfilter-item:hover .tools{display:inline-block}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .svgfilter-item .preview{border:1px solid #e6e6e6;border-radius:2px;cursor:pointer;height:66px;position:relative;width:100%}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .svgfilter-item .title{grid-row-gap:4px;display:grid;grid-template-columns:1fr;padding:4px 0;position:relative;width:100%}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .svgfilter-item .title input{width:100%}.elf--svgfilter-assets-property .svgfilter-list[data-view-mode=grid] .svgfilter-item .tools{background-color:transparent;color:var(--elf--selected-font-color);display:none;padding:2px;position:absolute;right:0;text-align:right;top:0}")();
   class SVGFilterAssetsProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("svgfilter.asset.property.title");
@@ -40717,7 +48038,7 @@ ${cssString}
     RedOverlay,
     YesGreenColorizedMagenta
   };
-  var ColorMatrixEditor$1 = "";
+  var ColorMatrixEditor$1 = /* @__PURE__ */ (() => ".elf--color-matrix-editor .title{color:var(--elf--selected-color);padding:5px 0}.elf--color-matrix-editor .color-matrix-template{border:1px solid var(--elf--border-color);box-sizing:border-box;max-height:383px;overflow:auto;padding:5px 10px}.elf--color-matrix-editor .color-matrix-template input,.elf--color-matrix-editor .color-matrix-template select{width:100%}.elf--color-matrix-editor .color-matrix-template .sample-item{cursor:pointer;padding:2px 5px}.elf--color-matrix-editor .color-matrix-template .sample-item:hover{background-color:hsla(0,0%,100%,.2);color:var(--elf--selected-color)}")();
   const COLUMN = 6;
   const sampleList = Object.keys(colormatrix).map((it) => {
     return { title: it, values: colormatrix[it] };
@@ -40799,7 +48120,7 @@ ${cssString}
       this.updateData();
     }
   }
-  var FuncFilterEditor$1 = "";
+  var FuncFilterEditor$1 = /* @__PURE__ */ (() => ".elf--func-filter-editor{display:grid;grid-template-columns:1fr}.elf--func-filter-editor.focused{border-radius:3px;box-shadow:0 0 0 1px var(--elf--selected-color)}.elf--func-filter-editor.has-label{grid-template-columns:60px 1fr}.elf--func-filter-editor.has-label label{padding:2px 0;padding-left:0!important;text-align:left;vertical-align:middle}.elf--func-filter-editor>[data-type]{display:none;padding:4px 0}.elf--func-filter-editor[data-selected-type=discrete]>[data-type=table],.elf--func-filter-editor[data-selected-type=gamma]>[data-type=gamma],.elf--func-filter-editor[data-selected-type=identity]>[data-type=identity],.elf--func-filter-editor[data-selected-type=linear]>[data-type=linear],.elf--func-filter-editor[data-selected-type=table]>[data-type=table]{display:block}")();
   class FuncFilterEditor extends editor.EditorElement {
     initState() {
       return __spreadValues({
@@ -41266,7 +48587,7 @@ ${cssString}
     shadow,
     innerShadow
   };
-  var SVGFilterEditor$1 = "";
+  var SVGFilterEditor$1 = /* @__PURE__ */ (() => '.elf--svg-filter-editor{grid-column-gap:10px;color:var(--elf--font-color);display:grid;grid-template-columns:150px 1fr 200px;height:100%;position:relative}.elf--svg-filter-editor .tab>.tab-header{height:30px}.elf--svg-filter-editor .label{height:20px;margin-top:2px}.elf--svg-filter-editor .label label{padding-left:5px;vertical-align:middle}.elf--svg-filter-editor .tools{float:right;text-align:right;vertical-align:middle}.elf--svg-filter-editor .tools select{display:inline-block;width:100px!important}.elf--svg-filter-editor .left{height:100%;position:relative}.elf--svg-filter-editor .left .filter-item-list{height:100%;overflow:auto;padding:10px 5px}.elf--svg-filter-editor .left .filter-item-list .group{margin-bottom:6px}.elf--svg-filter-editor .left .filter-item-list .group:before{color:var(--elf--selected-color);content:attr(label);display:block}.elf--svg-filter-editor .left .filter-item-list .group .item{color:var(--elf--font-color);cursor:pointer;padding:2px 10px;vertical-align:middle}.elf--svg-filter-editor .left .filter-item-list .group .item svg{height:20px;width:20px}.elf--svg-filter-editor .left .filter-item-list .group .item[value=BackgroundImage],.elf--svg-filter-editor .left .filter-item-list .group .item[value=FillPaint],.elf--svg-filter-editor .left .filter-item-list .group .item[value=SourceGraphic]{color:var(--elf--selected-color)}.elf--svg-filter-editor .left .filter-item-list .group .item:hover{background-color:hsla(0,0%,100%,.3)}.elf--svg-filter-editor .center{overflow:auto;position:relative}.elf--svg-filter-editor .center .graph{border:1px solid var(--elf--selected-color);box-sizing:border-box;height:100%;overflow:auto;position:relative}.elf--svg-filter-editor .center .graph .connected-line-panel{height:1000px;left:0;position:absolute;top:0;width:1000px}.elf--svg-filter-editor .center .graph .connected-line-panel svg{height:100%;width:100%}.elf--svg-filter-editor .center .graph .connected-line-panel svg path{fill:transparent;stroke:var(--elf--selected-color);stroke-width:1;pointer-events:none}.elf--svg-filter-editor .center .graph .connected-line-panel svg path[data-source-type=graphic]{stroke:#a6a6ff}.elf--svg-filter-editor .center .graph .connected-line-panel svg path[data-source-type=source]{stroke:#9acd32}.elf--svg-filter-editor .center .graph .connected-line-panel svg path[data-source-type=modifier]{stroke:var(--elf--selected-color)}.elf--svg-filter-editor .center .graph .connected-line-panel svg path[data-source-type=lighting]{stroke:#e6ff00}.elf--svg-filter-editor .center .graph .connected-line-panel svg path[data-source-type=combiner]{stroke:#ff9bff}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle{fill:var(--elf--selected-color);r:4;stroke:rgba(var(--elf--selected-color),.5);stroke-width:0;cursor:pointer;pointer-events:all}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle[data-source-type=graphic]{fill:#a6a6ff;stroke:rgba(166,166,255,.5)}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle[data-source-type=source]{fill:#9acd32;stroke:rgba(154,205,50,.5)}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle[data-source-type=modifier]{fill:var(--elf--selected-color);stroke:rgba(var(--elf--selected-color),.5)}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle[data-source-type=lighting]{fill:#e6ff00;stroke:rgba(230,255,0,.5)}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle[data-source-type=combiner]{fill:#ff9bff;stroke:rgba(255,155,255,.5)}.elf--svg-filter-editor .center .graph .connected-line-panel svg circle:hover{stroke-width:4}.elf--svg-filter-editor .center .graph .drag-line-panel{height:1000px;left:0;position:absolute;top:0;width:1000px}.elf--svg-filter-editor .center .graph .drag-line-panel svg{height:100%;width:100%}.elf--svg-filter-editor .center .graph .drag-line-panel svg path{stroke:var(--elf--selected-color);stroke-width:1}.elf--svg-filter-editor .center .graph .graph-panel{height:1000px;pointer-events:none;position:relative;width:1000px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node{background-color:var(--elf--background-color);border-radius:10px;box-shadow:0 0 0 1.5px rgba(0,0,0,.3),0 0 0 3px #777;cursor:pointer;display:inline-block;height:40px;left:10px;pointer-events:all;position:absolute;top:10px;width:40px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=BackgroundAlpha],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=BackgroundImage],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=FillPaint],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=Flood],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=Image],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=SourceAlpha],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=SourceGraphic],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=StrokePaint],.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=Turbulence]{border-radius:0}.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=DistantLight] .out,.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=PointLight] .out,.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=SpotLight] .out{background-color:#f8e579}.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=DistantLight] .out svg,.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=PointLight] .out svg,.elf--svg-filter-editor .center .graph .graph-panel .filter-node[data-type=SpotLight] .out svg{display:none}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.label{bottom:100%;color:var(--elf--font-color);display:inline-block;left:50%;position:absolute;transform:translateX(-50%)}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove{background-color:var(--elf--selected-color);border-radius:100%;color:var(--elf--font-color);display:inline-block;height:12px;left:50%;position:absolute;top:-6px;transform:translateX(-50%);width:12px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg{height:100%;width:100%}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg circle,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg ellipse,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg line,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg path,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg polygon,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg polyline,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg rect,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg text,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.remove svg use{fill:currentColor}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview{height:100%;pointer-events:none;position:relative;width:100%}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-filter-type=Composite] svg,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-filter-type=Merge] svg{transform:translate(-50%,-50%) rotate(90deg)}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-source-type=graphic]{color:#a6a6ff}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-source-type=source]{color:#9acd32}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-source-type=modifier]{color:var(--elf--selected-color)}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-source-type=lighting]{color:#e6ff00}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-source-type=combiner]{color:#ff9bff}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview[data-source-type=lighting] svg{filter:drop-shadow(0 0 1px rgba(0,0,0,.3))}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg{display:block;height:30px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:30px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg ellipse,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg line,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg path,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg polygon,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg polyline,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg text,.elf--svg-filter-editor .center .graph .graph-panel .filter-node>.preview svg use{fill:currentColor}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .in-list{display:inline-block;left:-14px;position:absolute;top:50%;transform:translateY(-50%);width:14px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .in{background-color:#09f;border-bottom-left-radius:50%;border-top-left-radius:50%;display:block;height:12px;margin:2px 0;position:relative;width:14px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .in:before{background-color:hsla(0,0%,100%,.8);border-radius:100%;content:"";display:block;height:8px;left:3px;position:absolute;top:50%;transform:translateY(-50%);width:8px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .out{background-color:#09f;border-bottom-right-radius:50%;border-top-right-radius:50%;height:12px;position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:12px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .light{background-color:#f8e579;border-bottom-left-radius:100%;border-bottom-right-radius:100%;bottom:-15px;height:15px;left:50%;position:absolute;transform:translateX(-50%);width:30px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .in,.elf--svg-filter-editor .center .graph .graph-panel .filter-node .out{color:#fff}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .in svg,.elf--svg-filter-editor .center .graph .graph-panel .filter-node .out svg{height:24px;pointer-events:none;position:absolute;top:50%;transform:translateX(-50%) translateY(-50%);width:14px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .in svg{left:6px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node .out svg{left:7px}.elf--svg-filter-editor .center .graph .graph-panel .filter-node.selected{box-shadow:0 0 0 1.5px rgba(0,0,0,.3),0 0 0 3px var(--elf--selected-color)}.elf--svg-filter-editor .right{box-sizing:border-box;height:100%;overflow:auto}.elf--svg-filter-editor .filter-list{display:grid!important;grid-template-columns:1fr!important;width:100%}.elf--svg-filter-editor .filter-list .filter-item{display:block}.elf--svg-filter-editor .filter-list .filter-item .title{border-radius:3px;color:var(--elf--selected-color);display:grid;grid-template-columns:1fr 30px;margin:5px 0}.elf--svg-filter-editor .filter-list .filter-item .title label{padding:2px 0}.elf--svg-filter-editor .filter-list .filter-item .title .filter-menu{color:var(--elf--selected-font-color);text-align:right}.elf--svg-filter-editor .filter-list .filter-item .filter-ui{display:grid;grid-template-columns:1fr;margin-bottom:2px}.elf--svg-filter-editor .filter-list .filter-item .filter-ui>div{margin-bottom:5px}.elf--svg-filter-editor .filter-list .filter-item .filter-ui>div .elf--number-range-editor.has-label,.elf--svg-filter-editor .filter-list .filter-item .filter-ui>div .elf--select-editor.has-label,.elf--svg-filter-editor .filter-list .filter-item .filter-ui>div .elf--text-editor.has-label{grid-template-columns:100px 1fr}.elf--svg-filter-editor .filter-list .filter-item .filter-ui>div .elf--color-view-editor.has-label{grid-template-columns:100px 24px 1fr}.elf--svg-filter-editor .filter-list .filter-item .filter-ui.drop-shadow{grid-column-gap:1px;grid-template-columns:50px 1fr}.elf--svg-filter-editor .filter-list .filter-item .filter-ui.drop-shadow-color{grid-column-gap:2px;grid-template-columns:50px 1fr}.elf--svg-filter-editor .filter-list .filter-item .filter-ui input[type=range]{width:90%}')();
   const filterTypes = [
     {
       label: "GRAPHIC REFERENCES",
@@ -42039,7 +49360,7 @@ ${cssString}
       this.removeFilter(f.id);
     }
   }
-  var SVGFilterPopup$1 = "";
+  var SVGFilterPopup$1 = /* @__PURE__ */ (() => ".elf--svg-filter-popup{max-height:800px;min-height:500px;min-width:900px;position:relative}.elf--svg-filter-popup .box{bottom:0;left:0;position:absolute;right:0;top:0}.elf--svg-filter-popup .box>.editor{height:100%;position:relative}.elf--svg-filter-popup .box .property .title{grid-column-gap:2px;display:grid;grid-template-columns:1fr 2fr}.elf--svg-filter-popup .box .property .title .tools{text-align:right}.elf--svg-filter-popup .box .property .title .tools select{display:inline-block;width:100px}.elf--svg-filter-popup .box label{text-align:left;vertical-align:middle}.elf--svg-filter-popup .box input[type=number],.elf--svg-filter-popup .box input[type=range],.elf--svg-filter-popup .box input[type=text],.elf--svg-filter-popup .box select{vertical-align:middle;width:100%}")();
   class SVGFilterPopup extends editor.BasePopup {
     getTitle() {
       return this.$i18n("svgfilter.popup.title");
@@ -42092,7 +49413,7 @@ ${cssString}
       this.$el.hide();
     }
   }
-  var SVGFilterSelectEditor$1 = "";
+  var SVGFilterSelectEditor$1 = /* @__PURE__ */ (() => ".elf--svg-filter-select-editor{grid-column-gap:2px;display:grid;grid-template-columns:1fr 16px 16px;height:24px;position:relative}.elf--svg-filter-select-editor.has-label{grid-column-gap:2px;grid-template-columns:60px 1fr 16px 16px}.elf--svg-filter-select-editor.has-label label{line-height:1.6;padding:4px 0 2px;text-align:left;vertical-align:middle}.elf--svg-filter-select-editor select{height:100%;width:100%}.elf--svg-filter-select-editor button{margin-top:4px}")();
   class SVGFilterSelectEditor extends editor.EditorElement {
     initState() {
       var value = this.props.value;
@@ -42714,7 +50035,7 @@ ${cssString}
       ]
     }
   ];
-  var TextShadowProperty$1 = "";
+  var TextShadowProperty$1 = /* @__PURE__ */ (() => ".text-shadow-samples{border:0;font-size:11px}")();
   class TextShadowProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("text.shadow.property.title");
@@ -42765,7 +50086,7 @@ ${cssString}
       TextShadowProperty
     });
   }
-  var TransitionProperty$1 = "";
+  var TransitionProperty$1 = /* @__PURE__ */ (() => ".elf--transition-list{grid-template-columns:1fr!important}.elf--transition-list .transition-item{grid-column-gap:4px;display:grid;grid-template-columns:30px 1fr 20px;margin-bottom:5px}.elf--transition-list .transition-item.selected{background-color:var(--elf--border-color)}.elf--transition-list .transition-item .timing{background-color:var(--elf--animation-item-background-color);border-radius:3px;cursor:pointer;height:30px;vertical-align:middle;width:100%}.elf--transition-list .transition-item .timing canvas{border-radius:3px}.elf--transition-list .transition-item .labels{margin-top:4px;padding:5px;text-align:left;vertical-align:middle}.elf--transition-list .transition-item .labels label{background-color:var(--elf--border-color);border-radius:2px;font-weight:700;padding:1px 3px}.elf--transition-list .transition-item .labels label small{color:var(--elf--font-color)}.elf--transition-list .transition-item .labels label.property{border-bottom:0;font-weight:400}.elf--transition-list .transition-item .tools{padding-top:8px;text-align:right;vertical-align:middle}")();
   class TransitionProperty extends editor.BaseProperty {
     getTitle() {
       return this.$i18n("transition.property.title");
@@ -42898,7 +50219,7 @@ ${cssString}
       }
     }
   }
-  var TransitionPropertyPopup$1 = "";
+  var TransitionPropertyPopup$1 = /* @__PURE__ */ (() => ".elf--transition-property-popup{width:220px}.elf--transition-property-popup .box>div{margin-bottom:5px}.elf--transition-property-popup .box label{text-align:left;vertical-align:middle}.elf--transition-property-popup .box .input{display:grid;grid-template-columns:2fr 1fr 1fr;vertical-align:middle}.elf--transition-property-popup .box .input.grid-1{grid-template-columns:1fr}.elf--transition-property-popup .box .input.grid-2{grid-template-columns:3fr 1fr}")();
   const property_list = [
     "none",
     "all",
@@ -43089,7 +50410,7 @@ ${cssString}
       TransitionPropertyPopup
     });
   }
-  var VideoProperty$1 = "";
+  var VideoProperty$1 = /* @__PURE__ */ (() => ".elf--video-property .divider{background-color:var(--elf--divider-color);height:1px;margin:10px auto;width:30px}.elf--video-property .play-control{grid-column-gap:5px;display:grid;grid-template-columns:70px 1fr}.elf--video-property .play-control button[data-value]{display:none;text-align:left;vertical-align:middle;width:auto}.elf--video-property .play-control[data-selected-value=pause] button[data-value=pause],.elf--video-property .play-control[data-selected-value=play] button[data-value=play]{display:inline-block}.elf--video-property .volume-control{grid-column-gap:2px;display:grid;grid-template-columns:20px 1fr}.elf--video-property .volume-control span[data-value]{color:var(--elf--font-color);display:none;height:16px;vertical-align:middle;width:16px}.elf--video-property .volume-control span[data-value] svg{height:100%;width:100%}.elf--video-property .volume-control span[data-value] svg path{fill:currentColor}.elf--video-property .volume-control[data-selected-value=down] span[data-value=down],.elf--video-property .volume-control[data-selected-value=muted] span[data-value=muted],.elf--video-property .volume-control[data-selected-value=up] span[data-value=up]{display:inline-block}")();
   class VideoProperty extends editor.BaseProperty {
     getClassName() {
       return "item elf--video-property";
@@ -43271,7327 +50592,6 @@ ${cssString}
       VideoProperty
     });
   }
-  var ComponentPopup$1 = "";
-  class ComponentPopup extends editor.BasePopup {
-    getClassName() {
-      return "component-property w(800)";
-    }
-    getTitle() {
-      return "Component";
-    }
-    initState() {
-      return {
-        title: "",
-        inspector: []
-      };
-    }
-    refresh() {
-      this.setTitle(this.state.title || this.getTitle());
-      this.load();
-    }
-    getBody() {
-      return `
-      <div ref='$body'></div>
-    `;
-    }
-    [sapa.BIND("$body")]() {
-      return {
-        style: {
-          width: this.state.width || 250
-        }
-      };
-    }
-    [sapa.LOAD("$body")]() {
-      const inspector2 = this.state.inspector;
-      return sapa.createComponent("ComponentEditor", {
-        inspector: inspector2,
-        onchange: "changeComponent"
-      });
-    }
-    [sapa.SUBSCRIBE_SELF("changeComponent")](key, value) {
-      if (sapa.isFunction(this.state.changeEvent)) {
-        this.emit(this.state.changeEvent, key, value);
-      }
-    }
-    [sapa.SUBSCRIBE(SHOW_COMPONENT_POPUP)](data) {
-      this.setState(data, false);
-      this.refresh();
-      this.show(data.width);
-    }
-  }
-  var ComponentProperty$1 = "";
-  class ComponentProperty extends editor.BaseProperty {
-    getClassName() {
-      return "component-property";
-    }
-    getTitle() {
-      return "Component";
-    }
-    isShow() {
-      var _a;
-      var current = (_a = this.$context.selection) == null ? void 0 : _a.current;
-      const inspector2 = this.$context.components.createInspector(current);
-      if (current && (current.is("component") || inspector2.length > 0)) {
-        return true;
-      }
-      return false;
-    }
-    [sapa.SUBSCRIBE(REFRESH_SELECTION) + sapa.DEBOUNCE(100)]() {
-      this.refreshShow(() => {
-        const current = this.$context.selection.current;
-        const inspector2 = this.$context.components.createInspector(current);
-        return inspector2.length > 0;
-      });
-    }
-    refresh() {
-      var current = this.$context.selection.current;
-      if (current) {
-        this.setTitle(current.getDefaultTitle() || current.itemType || current.name);
-        this.load();
-      }
-    }
-    getBody() {
-      return `
-      <div ref='$body'></div>
-    `;
-    }
-    [sapa.LOAD("$body")]() {
-      var _a;
-      var current = (_a = this.$context.selection) == null ? void 0 : _a.current;
-      if (!current)
-        return "";
-      const inspector2 = this.$context.components.createInspector(current);
-      inspector2.forEach((it) => {
-        if (sapa.isString(it)) {
-          return;
-        }
-        let defaultValue = current[it.key] || it.defaultValue;
-        if (sapa.isFunction(it.convertDefaultValue)) {
-          defaultValue = it.convertDefaultValue(current, it.key);
-        }
-        it.defaultValue = defaultValue;
-      });
-      return sapa.createComponent("ComponentEditor", {
-        ref: "$comp",
-        inspector: inspector2,
-        onchange: "changeComponentProperty"
-      });
-    }
-    [sapa.SUBSCRIBE_SELF("changeComponentProperty")](key, value) {
-      this.$commands.executeCommand("setAttribute", "change component : " + key, this.$context.selection.packByValue({
-        [key]: value
-      }));
-    }
-  }
-  function component(editor2) {
-    editor2.registerUI("inspector.tab.style", {
-      ComponentProperty
-    });
-    editor2.registerUI("popup", {
-      ComponentPopup
-    });
-  }
-  const blend_list = [
-    BlendMode.NORMAL,
-    BlendMode.MULTIPLY,
-    BlendMode.SCREEN,
-    BlendMode.OVERLAY,
-    BlendMode.DARKEN,
-    BlendMode.LIGHTEN,
-    BlendMode.COLOR_DODGE,
-    BlendMode.COLOR_BURN,
-    BlendMode.HARD_LIGHT,
-    BlendMode.SOFT_LIGHT,
-    BlendMode.DIFFERENCE,
-    BlendMode.EXCLUSION,
-    BlendMode.HUE,
-    BlendMode.SATURATION,
-    BlendMode.COLOR,
-    BlendMode.LUMINOSITY
-  ];
-  class BlendSelectEditor extends editor.SelectEditor {
-    getBlendList() {
-      return blend_list.map((it) => {
-        return { value: it, text: this.$i18n(`blend.${it}`) };
-      });
-    }
-    initState() {
-      return __spreadProps(__spreadValues({}, super.initState()), {
-        options: this.getBlendList()
-      });
-    }
-  }
-  var BoxShadowEditor$1 = "";
-  class BoxShadowEditor extends editor.EditorElement {
-    initState() {
-      return {
-        boxShadows: this.props.value || []
-      };
-    }
-    template() {
-      return `
-      <div class="elf--box-shadow-editor" >
-        <div class='box-shadow-list' ref='$shadowList'></div>
-      </div>
-    `;
-    }
-    [sapa.LOAD("$shadowList") + sapa.DOMDIFF]() {
-      var arr = this.state.boxShadows.map((shadow2, index2) => {
-        return `
-        <div class="shadow-item real" data-index="${index2}">
-            <label draggable="true" data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
-            <div class="shadow-content">
-            ${sapa.createComponent("ColorViewEditor", {
-          mini: true,
-          key: "color",
-          value: shadow2.color,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}
-            ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          key: "offsetX",
-          label: "X",
-          value: shadow2.offsetX,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}          
-            ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          key: "offsetY",
-          label: "Y",
-          value: shadow2.offsetY,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}                    
-            ${sapa.createComponent("ToggleButton", {
-          mini: true,
-          key: "inset",
-          value: shadow2.inset,
-          params: index2,
-          onChange: "changeKeyValue",
-          checkedValue: BoxShadowStyle.INSET,
-          toggleLabels: [editor.iconUse("border_style"), editor.iconUse("border_style")],
-          toggleTitles: [BoxShadowStyle.INSET, BoxShadowStyle.INSET],
-          toggleValues: [BoxShadowStyle.OUTSET, BoxShadowStyle.INSET]
-        })}            
-
-            ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          label: "B",
-          key: "blurRadius",
-          value: shadow2.blurRadius,
-          params: index2,
-          onchange: "changeKeyValue"
-        })} 
-            ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          label: "S",
-          key: "spreadRadius",
-          value: shadow2.spreadRadius,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}             
-          </div>
-          <div class="tools">
-            <button type="button" class="remove" data-index="${index2}">
-              ${editor.iconUse("remove2")}
-            </button>
-          </div>
-        </div>
-      `;
-      });
-      return arr.join("");
-    }
-    modifyBoxShadow() {
-      var value = this.state.boxShadows;
-      this.parent.trigger(this.props.onchange, this.props.key, value);
-    }
-    [sapa.SUBSCRIBE("add")](shadows = void 0) {
-      if (sapa.isArray(shadows)) {
-        this.state.boxShadows.push(...shadows);
-      } else {
-        const shadowObj = {
-          color: "black",
-          inset: BoxShadowStyle.OUTSET,
-          offsetX: 2,
-          offsetY: 2,
-          blurRadius: 3,
-          spreadRadius: 1
-        };
-        this.state.boxShadows.push(shadowObj);
-      }
-      this.refresh();
-      this.modifyBoxShadow();
-    }
-    [sapa.CLICK("$add")]() {
-      this.trigger("add");
-    }
-    [sapa.DRAGSTART("$shadowList .shadow-item > label")](e) {
-      this.startIndex = +e.$dt.attr("data-index");
-    }
-    [sapa.DRAGOVER("$shadowList .shadow-item") + sapa.PREVENT]() {
-    }
-    sortItem(arr, startIndex, targetIndex) {
-      arr.splice(targetIndex + (startIndex < targetIndex ? -1 : 0), 0, ...arr.splice(startIndex, 1));
-    }
-    sortBoxShadow(startIndex, targetIndex) {
-      this.sortItem(this.state.boxShadows, startIndex, targetIndex);
-    }
-    [sapa.DROP("$shadowList .shadow-item") + sapa.PREVENT](e) {
-      var targetIndex = +e.$dt.attr("data-index");
-      this.sortBoxShadow(this.startIndex, targetIndex);
-      this.refresh();
-      this.modifyBoxShadow();
-    }
-    [sapa.CLICK("$shadowList .remove")](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.state.boxShadows.splice(index2, 1);
-      this.refresh();
-      this.modifyBoxShadow();
-    }
-    [sapa.SUBSCRIBE_SELF("changeKeyValue")](key, value, index2) {
-      var shadow2 = this.state.boxShadows[index2];
-      this.state.boxShadows[index2] = __spreadProps(__spreadValues({}, shadow2), { [key]: value });
-      this.modifyBoxShadow();
-    }
-  }
-  const colors$k = [
-    "#FFF8E1",
-    "#FFECB3",
-    "#FFE082",
-    "#FFD54F",
-    "#FFCA28",
-    "#FFC107",
-    "#FFB300",
-    "#FFA000",
-    "#FF8F00",
-    "#FF6F00",
-    "#FFE57F",
-    "#FFD740",
-    "#FFC400",
-    "#FFAB00"
-  ].map((color) => {
-    return { color };
-  });
-  var materialAmber = {
-    title: "material amber",
-    key: "material-amber",
-    execute: function() {
-      return colors$k;
-    }
-  };
-  var __glob_0_0$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialAmber
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$j = [
-    "#e3f2fd",
-    "#bbdefb",
-    "#90caf9",
-    "#64b5f6",
-    "#42a5f5",
-    "#2196f3",
-    "#1e88e5",
-    "#1976d2",
-    "#1565c0",
-    "#0d47a1",
-    "#2196f3",
-    "#82b1ff",
-    "#448aff",
-    "#2979ff",
-    "#2962ff"
-  ].map((color) => {
-    return { color };
-  });
-  var materialBlue = {
-    title: "material blue",
-    key: "material-blue",
-    execute: function() {
-      return colors$j;
-    }
-  };
-  var __glob_0_1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialBlue
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$i = [
-    "#ECEFF1",
-    "#CFD8DC",
-    "#B0BEC5",
-    "#90A4AE",
-    "#78909C",
-    "#607D8B",
-    "#546E7A",
-    "#455A64",
-    "#37474F",
-    "#263238"
-  ].map((color) => {
-    return { color };
-  });
-  var materialBluegray = {
-    title: "material bluegray",
-    key: "material-bluegray",
-    execute: function() {
-      return colors$i;
-    }
-  };
-  var __glob_0_2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialBluegray
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$h = [
-    "#EFEBE9",
-    "#D7CCC8",
-    "#BCAAA4",
-    "#A1887F",
-    "#8D6E63",
-    "#795548",
-    "#6D4C41",
-    "#5D4037",
-    "#4E342E",
-    "#3E2723"
-  ].map((color) => {
-    return { color };
-  });
-  var materialBrown = {
-    title: "material brown",
-    key: "material-brown",
-    execute: function() {
-      return colors$h;
-    }
-  };
-  var __glob_0_3$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialBrown
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$g = [
-    "#e0f7fa",
-    "#b2ebf2",
-    "#80deea",
-    "#4dd0e1",
-    "#26c6da",
-    "#00bcd4",
-    "#00acc1",
-    "#0097a7",
-    "#00838f",
-    "#006064",
-    "#00bcd4",
-    "#84ffff",
-    "#18ffff",
-    "#00e5ff",
-    "#00b8d4"
-  ].map((color) => {
-    return { color };
-  });
-  var materialCyan = {
-    title: "material cyan",
-    key: "material-cyan",
-    execute: function() {
-      return colors$g;
-    }
-  };
-  var __glob_0_4$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialCyan
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$f = [
-    "#FBE9E7",
-    "#FFCCBC",
-    "#FFAB91",
-    "#FF8A65",
-    "#FF7043",
-    "#FF5722",
-    "#F4511E",
-    "#E64A19",
-    "#D84315",
-    "#BF360C",
-    "#FF9E80",
-    "#FF6E40",
-    "#FF3D00",
-    "#DD2C00"
-  ].map((color) => {
-    return { color };
-  });
-  var materialDeeporange = {
-    title: "material deep orange",
-    key: "material-deeporange",
-    execute: function() {
-      return colors$f;
-    }
-  };
-  var __glob_0_5$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialDeeporange
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$e = [
-    "#ede7f6",
-    "#d1c4e9",
-    "#b39ddb",
-    "#9575cd",
-    "#7e57c2",
-    "#673ab7",
-    "#5e35b1",
-    "#512da8",
-    "#4527a0",
-    "#311b92",
-    "#673ab7",
-    "#b388ff",
-    "#7c4dff",
-    "#651fff",
-    "#6200ea"
-  ].map((color) => {
-    return { color };
-  });
-  var materialDeeppurple = {
-    title: "material deep purple",
-    key: "material-deeppurple",
-    execute: function() {
-      return colors$e;
-    }
-  };
-  var __glob_0_6$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialDeeppurple
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$d = [
-    "#FAFAFA",
-    "#F5F5F5",
-    "#EEEEEE",
-    "#E0E0E0",
-    "#BDBDBD",
-    "#9E9E9E",
-    "#757575",
-    "#616161",
-    "#424242",
-    "#212121"
-  ].map((color) => {
-    return { color };
-  });
-  var materialGray = {
-    title: "material gray",
-    key: "material-gray",
-    execute: function() {
-      return colors$d;
-    }
-  };
-  var __glob_0_7$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialGray
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$c = [
-    "#E8F5E9",
-    "#C8E6C9",
-    "#A5D6A7",
-    "#81C784",
-    "#66BB6A",
-    "#4CAF50",
-    "#43A047",
-    "#388E3C",
-    "#2E7D32",
-    "#1B5E20",
-    "#B9F6CA",
-    "#69F0AE",
-    "#00E676",
-    "#00C853"
-  ].map((color) => {
-    return { color };
-  });
-  var materialGreen = {
-    title: "material green",
-    key: "material-green",
-    execute: function() {
-      return colors$c;
-    }
-  };
-  var __glob_0_8$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialGreen
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$b = [
-    "#e8eaf6",
-    "#c5cae9",
-    "#9fa8da",
-    "#7986cb",
-    "#5c6bc0",
-    "#3f51b5",
-    "#3949ab",
-    "#303f9f",
-    "#283593",
-    "#1a237e",
-    "#3f51b5",
-    "#8c9eff",
-    "#536dfe",
-    "#3d5afe",
-    "#304ffe"
-  ].map((color) => {
-    return { color };
-  });
-  var materialIndigo = {
-    title: "material indigo",
-    key: "material-indigo",
-    execute: function() {
-      return colors$b;
-    }
-  };
-  var __glob_0_9$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialIndigo
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$a = [
-    "#e1f5fe",
-    "#b3e5fc",
-    "#81d4fa",
-    "#4fc3f7",
-    "#29b6f6",
-    "#03a9f4",
-    "#039be5",
-    "#0288d1",
-    "#0277bd",
-    "#01579b",
-    "#03a9f4",
-    "#80d8ff",
-    "#40c4ff",
-    "#00b0ff",
-    "#0091ea"
-  ].map((color) => {
-    return { color };
-  });
-  var materialLightblue = {
-    title: "material light blue",
-    key: "material-lightblue",
-    execute: function() {
-      return colors$a;
-    }
-  };
-  var __glob_0_10$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialLightblue
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$9 = [
-    "#F1F8E9",
-    "#DCEDC8",
-    "#C5E1A5",
-    "#AED581",
-    "#9CCC65",
-    "#8BC34A",
-    "#7CB342",
-    "#689F38",
-    "#558B2F",
-    "#33691E",
-    "#CCFF90",
-    "#B2FF59",
-    "#76FF03",
-    "#64DD17"
-  ].map((color) => {
-    return { color };
-  });
-  var materialLightgreen = {
-    title: "material lightgreen",
-    key: "material-lightgreen",
-    execute: function() {
-      return colors$9;
-    }
-  };
-  var __glob_0_11$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialLightgreen
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$8 = [
-    "#F9FBE7",
-    "#F0F4C3",
-    "#E6EE9C",
-    "#DCE775",
-    "#D4E157",
-    "#CDDC39",
-    "#C0CA33",
-    "#AFB42B",
-    "#9E9D24",
-    "#827717",
-    "#F4FF81",
-    "#EEFF41",
-    "#C6FF00",
-    "#AEEA00"
-  ].map((color) => {
-    return { color };
-  });
-  var materialLime = {
-    title: "material lime",
-    key: "material-lime",
-    execute: function() {
-      return colors$8;
-    }
-  };
-  var __glob_0_12$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialLime
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$7 = [
-    "#FFF3E0",
-    "#FFE0B2",
-    "#FFCC80",
-    "#FFB74D",
-    "#FFA726",
-    "#FF9800",
-    "#FB8C00",
-    "#F57C00",
-    "#EF6C00",
-    "#E65100",
-    "#FFD180",
-    "#FFAB40",
-    "#FF9100",
-    "#FF6D00"
-  ].map((color) => {
-    return { color };
-  });
-  var materialOrange = {
-    title: "material orange",
-    key: "material-orange",
-    execute: function() {
-      return colors$7;
-    }
-  };
-  var __glob_0_13$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialOrange
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$6 = [
-    "#fce4ec",
-    "#f8bbd0",
-    "#f48fb1",
-    "#f06292",
-    "#ec407a",
-    "#e91e63",
-    "#d81b60",
-    "#c2185b",
-    "#ad1457",
-    "#880e4f",
-    "#e91e63",
-    "#ff80ab",
-    "#ff4081",
-    "#f50057",
-    "#c51162"
-  ].map((color) => {
-    return { color };
-  });
-  var materialPink = {
-    title: "material pink",
-    key: "material-pink",
-    execute: function() {
-      return colors$6;
-    }
-  };
-  var __glob_0_14$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialPink
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$5 = [
-    "#f3e5f5",
-    "#e1bee7",
-    "#ce93d8",
-    "#ba68c8",
-    "#ab47bc",
-    "#9c27b0",
-    "#8e24aa",
-    "#7b1fa2",
-    "#6a1b9a",
-    "#4a148c",
-    "#9c27b0",
-    "#ea80fc",
-    "#e040fb",
-    "#d500f9",
-    "#aa00ff"
-  ].map((color) => {
-    return { color };
-  });
-  var materialPurple = {
-    title: "material purple",
-    key: "material-purple",
-    execute: function() {
-      return colors$5;
-    }
-  };
-  var __glob_0_15$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialPurple
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$4 = [
-    "#ffebee",
-    "#ffcdd2",
-    "#ef9a9a",
-    "#e57373",
-    "#ef5350",
-    "#f44336",
-    "#e53935",
-    "#d32f2f",
-    "#c62828",
-    "#b71c1c",
-    "#f44336",
-    "#ff8a80",
-    "#ff5252",
-    "#ff1744",
-    "#d50000"
-  ].map((color) => {
-    return { color };
-  });
-  var materialRed = {
-    title: "material red",
-    key: "material-red",
-    execute: function() {
-      return colors$4;
-    }
-  };
-  var __glob_0_16$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialRed
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$3 = [
-    "#e0f2f1",
-    "#b2dfdb",
-    "#80cbc4",
-    "#4db6ac",
-    "#26a69a",
-    "#009688",
-    "#00897b",
-    "#00796b",
-    "#00695c",
-    "#004d40",
-    "#009688",
-    "#a7ffeb",
-    "#64ffda",
-    "#1de9b6",
-    "#00bfa5"
-  ].map((color) => {
-    return { color };
-  });
-  var materialTeal = {
-    title: "material teal",
-    key: "material-teal",
-    execute: function() {
-      return colors$3;
-    }
-  };
-  var __glob_0_17$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialTeal
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$2 = [
-    "#FFFDE7",
-    "#FFF9C4",
-    "#FFF59D",
-    "#FFF176",
-    "#FFEE58",
-    "#FFEB3B",
-    "#FDD835",
-    "#FBC02D",
-    "#F9A825",
-    "#F57F17",
-    "#FFFF8D",
-    "#FFFF00",
-    "#FFEA00",
-    "#FFD600"
-  ].map((color) => {
-    return { color };
-  });
-  var materialYellow = {
-    title: "material yellow",
-    key: "material-yellow",
-    execute: function() {
-      return colors$2;
-    }
-  };
-  var __glob_0_18$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": materialYellow
-  }, Symbol.toStringTag, { value: "Module" }));
-  const colors$1 = [
-    "#f8f9fa",
-    "#f1f3f5",
-    "#e9ecef",
-    "#dee2e6",
-    "#ced4da",
-    "#adb5bd",
-    "#868e96",
-    "#495057",
-    "#343a40",
-    "#212529"
-  ].map((color) => {
-    return { color };
-  });
-  var opencolorGray = {
-    title: "opencolor gray",
-    resource: "https://yeun.github.io/open-color/",
-    key: "opencolor-gray",
-    execute: function() {
-      return colors$1;
-    }
-  };
-  var __glob_0_19$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": opencolorGray
-  }, Symbol.toStringTag, { value: "Module" }));
-  var random = {
-    title: "random",
-    key: "random",
-    execute: function(count = 42) {
-      const colorList = Color__namespace.randomByCount(count).map((color) => {
-        return { color };
-      });
-      colorList.sort((a, b) => {
-        const localA = Color__namespace.parse(a.color);
-        const localB = Color__namespace.parse(b.color);
-        return localA.h > localB.h ? 1 : -1;
-      });
-      return colorList;
-    }
-  };
-  var __glob_0_20$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": random
-  }, Symbol.toStringTag, { value: "Module" }));
-  const modules$1 = { "./colors_list/material-amber.js": __glob_0_0$1, "./colors_list/material-blue.js": __glob_0_1$1, "./colors_list/material-bluegray.js": __glob_0_2$1, "./colors_list/material-brown.js": __glob_0_3$1, "./colors_list/material-cyan.js": __glob_0_4$1, "./colors_list/material-deeporange.js": __glob_0_5$1, "./colors_list/material-deeppurple.js": __glob_0_6$1, "./colors_list/material-gray.js": __glob_0_7$1, "./colors_list/material-green.js": __glob_0_8$1, "./colors_list/material-indigo.js": __glob_0_9$1, "./colors_list/material-lightblue.js": __glob_0_10$1, "./colors_list/material-lightgreen.js": __glob_0_11$1, "./colors_list/material-lime.js": __glob_0_12$1, "./colors_list/material-orange.js": __glob_0_13$1, "./colors_list/material-pink.js": __glob_0_14$1, "./colors_list/material-purple.js": __glob_0_15$1, "./colors_list/material-red.js": __glob_0_16$1, "./colors_list/material-teal.js": __glob_0_17$1, "./colors_list/material-yellow.js": __glob_0_18$1, "./colors_list/opencolor-gray.js": __glob_0_19$1, "./colors_list/random.js": __glob_0_20$1 };
-  var colors = Object.values(modules$1).map((it) => it.default);
-  var ColorAssetsEditor$1 = "";
-  class ColorAssetsEditor extends editor.EditorElement {
-    initState() {
-      return {
-        mode: "grid",
-        preset: "random",
-        isLoaded: false,
-        colors
-      };
-    }
-    getTools() {
-      return `<div ref="$tools"></div>`;
-    }
-    [sapa.LOAD("$tools")]() {
-      const options2 = this.state.colors.map((it) => {
-        return { value: it.key, text: it.title };
-      });
-      return sapa.createComponent("SelectEditor", {
-        key: "preset",
-        value: this.state.preset,
-        options: options2,
-        onchange: "changePreset"
-      });
-    }
-    [sapa.SUBSCRIBE("changePreset")](key, value) {
-      this.setState({
-        [key]: value
-      });
-    }
-    template() {
-      return `
-      <div class='elf--color-assets-editor'>
-        <div class='color-assets-head'>
-          <div class='tools'>${this.getTools()}</div>
-        </div>
-        <div class='color-list' ref='$colorList' data-view-mode='${this.state.mode}'></div>
-      </div>
-    `;
-    }
-    [sapa.CLICK("$title")]() {
-      this.$el.toggleClass("is-open");
-    }
-    [sapa.LOAD("$colorList")]() {
-      var preset = this.state.colors.find((it) => it.key === this.state.preset);
-      if (!preset) {
-        return "";
-      }
-      var results = preset.execute().map((item, index2) => {
-        return `<div class='color-item' data-index="${index2}" data-color="${item.color}"><div class='preview' title="${item.color}" data-index="${index2}"><div class='color-view' style='background-color: ${item.color};'></div></div></div>`;
-      });
-      return results;
-    }
-    executeColor(callback, isRefresh = true, isEmit = true) {
-      var project2 = this.$context.selection.currentProject;
-      if (project2) {
-        callback && callback(project2);
-        if (isRefresh)
-          this.refresh();
-        if (isEmit)
-          this.emit("refreshColorAssets");
-      } else {
-        window.alert("Please select a project.");
-      }
-    }
-    [sapa.CLICK("$colorList .preview")](e) {
-      const color = e.$dt.$(".color-view").css("background-color");
-      this.modifyColorPicker(color);
-    }
-    modifyColorPicker(color) {
-      this.parent.trigger(this.props.onchange, this.props.key, color, this.props.params);
-    }
-  }
-  var ColorSingleEditor$1 = "";
-  class ColorSingleEditor extends editor.EditorElement {
-    initState() {
-      return {
-        params: this.props.params,
-        color: this.props.color || "rgba(0, 0, 0, 1)"
-      };
-    }
-    updateData(opt = {}) {
-      this.setState(opt, false);
-      this.modifyColor();
-    }
-    modifyColor() {
-      this.parent.trigger(this.props.onchange, this.props.key, this.state.color, this.state.params);
-    }
-    changeColor(color) {
-      this.setState({ color });
-    }
-    setValue(color) {
-      this.changeColor(color);
-    }
-    [sapa.BIND("$miniView")]() {
-      return {
-        style: {
-          "background-color": this.state.color
-        }
-      };
-    }
-    template() {
-      return `
-            <div class='elf--color-single-editor'>
-                <div class='preview' ref='$preview'>
-                    <div class='mini-view'>
-                        <div class='color-view' style="background-color: ${this.state.color}" ref='$miniView'></div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-    [sapa.CLICK("$preview")]() {
-      this.viewColorPicker();
-    }
-    viewColorPicker() {
-      this.emit("showColorPickerPopup", {
-        target: this,
-        changeEvent: (color) => {
-          this.refs.$miniView.cssText(`background-color: ${color}`);
-          this.updateData({ color });
-        },
-        color: this.state.color
-      });
-    }
-  }
-  var ColorViewEditor$1 = "";
-  class ColorViewEditor extends editor.EditorElement {
-    initState() {
-      const value = this.props.value || "rgba(0, 0, 0, 1)";
-      const compact = sapa.isBoolean(this.props.compact) ? this.props.compact : this.props.compact === "true";
-      const mini = sapa.isBoolean(this.props.mini) ? this.props.mini : this.props.mini === "true";
-      return {
-        label: this.props.label,
-        title: this.props.title,
-        value,
-        compact,
-        mini,
-        color: Color__namespace.parse(value),
-        colorFocus: false,
-        opacityFocus: false
-      };
-    }
-    updateData(opt = {}) {
-      this.setState(opt);
-      this.modifyColor();
-    }
-    updateEndData(opt = {}) {
-      this.setState(opt);
-      this.modifyEndColor();
-    }
-    getValue() {
-      return this.state.value;
-    }
-    setValue(value) {
-      this.changeColor(value);
-    }
-    modifyColor() {
-      this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
-    }
-    modifyEndColor() {
-      this.parent.trigger(this.props.onchangeend, this.props.key, this.state.value, this.props.params);
-    }
-    changeColor(value) {
-      this.setState({
-        value,
-        color: Color__namespace.parse(value)
-      });
-    }
-    get alpha() {
-      return this.state.color.a * 100;
-    }
-    get hexColor() {
-      return Color__namespace.formatWithoutAlpha(this.state.color, "hex");
-    }
-    get fullColor() {
-      return Color__namespace.format(this.state.color, this.state.color.type);
-    }
-    refresh() {
-      this.refreshColorView();
-      this.refs.$colorCode.val(this.state.value);
-      this.refs.$opacityCode.val(this.alpha);
-    }
-    refreshColorView() {
-      this.bindData("$miniView1");
-      this.bindData("$miniView2");
-    }
-    template() {
-      var { label, title } = this.state;
-      return `
-            <div class='elf--color-view-editor'>
-                ${label ? `<label data-tooltip="${title}"><span>${label}</span></label>` : ""}            
-                <div class='color-code' ref="$container">
-                    <div class='preview' ref='$preview'>
-                        <div class='mini-view'>
-                            <div class='color-view' ref='$miniView1'></div>
-                            <div class='color-view' ref='$miniView2'></div>
-                        </div>
-                    </div>                
-                    <div class="color-input">
-                        <input type="text" ref='$colorCode' value='${this.state.value}' tabIndex="1" />
-                    </div>
-                    <div class="opacity-input">                    
-                        <input type="number" ref='$opacityCode' value='${this.alpha}' tabIndex="2" max="100" min="0" step="0.1" />
-                    </div>                    
-                </div>
-            </div>
-        `;
-    }
-    [sapa.BIND("$el")]() {
-      var { label, compact, mini, colorFocus, opacityFocus } = this.state;
-      return {
-        class: [
-          "elf--color-view-editor",
-          {
-            "has-label": label,
-            compact,
-            mini
-          },
-          {
-            focused: colorFocus || opacityFocus
-          }
-        ]
-      };
-    }
-    [sapa.BIND("$miniView1")]() {
-      return {
-        style: {
-          "background-color": this.hexColor
-        }
-      };
-    }
-    [sapa.BIND("$miniView2")]() {
-      return {
-        style: {
-          "background-color": this.fullColor
-        }
-      };
-    }
-    [sapa.BIND("$colorCode")]() {
-      return {
-        value: this.props.format ? this.hexColor : this.state.value
-      };
-    }
-    [sapa.BIND("$opacityCode")]() {
-      return {
-        value: this.alpha
-      };
-    }
-    [sapa.FOCUSIN("$colorCode")]() {
-      this.setState({
-        colorFocus: true
-      });
-      this.refs.$colorCode.select();
-    }
-    [sapa.FOCUSOUT("$colorCode")]() {
-      this.setState({
-        colorFocus: false
-      });
-    }
-    [sapa.FOCUSIN("$opacityCode")]() {
-      this.setState({
-        opacityFocus: true
-      });
-      this.refs.$opacityCode.select();
-    }
-    [sapa.FOCUSOUT("$opacityCode")]() {
-      this.setState({
-        opacityFocus: false
-      });
-    }
-    [sapa.CLICK("$preview")]() {
-      this.viewColorPicker();
-    }
-    viewColorPicker() {
-      this.emit("showColorPickerPopup", {
-        target: this,
-        changeEvent: (color) => {
-          this.updateData({ value: color, color: Color__namespace.parse(color) });
-        },
-        changeEndEvent: (color) => {
-          this.updateEndData({ value: color, color: Color__namespace.parse(color) });
-        },
-        color: this.state.value
-      }, null, this.$el.rect());
-    }
-    [sapa.CLICK("$remove")]() {
-      this.updateData({ value: "" });
-    }
-    [sapa.INPUT("$el .color-input input")](e) {
-      var color = e.$dt.value;
-      this.updateData({
-        value: color,
-        color: Color__namespace.parse(color)
-      });
-      this.refreshColorView();
-    }
-    [sapa.INPUT("$el .opacity-input input")](e) {
-      var opacity = +e.$dt.value;
-      opacity = Math.max(0, Math.min(100, opacity));
-      const color = Color__namespace.parse(this.state.value);
-      color.a = round(opacity / 100, 1e3);
-      const value = Color__namespace.format(color, color.type);
-      this.updateData({
-        value,
-        color
-      });
-      this.refreshColorView();
-    }
-  }
-  var CSSPropertyEditor$1 = "";
-  class CSSPropertyEditor extends editor.EditorElement {
-    initState() {
-      return {
-        hideTitle: this.props["hide-title"] === "true",
-        hideRefresh: this.props["hide-refresh"] === "true",
-        properties: []
-      };
-    }
-    updateData(opt) {
-      this.setState(opt, false);
-      this.modifyProperty();
-    }
-    modifyProperty() {
-      this.parent.trigger(this.props.onchange, this.state.properties);
-    }
-    template() {
-      const hideTitleClass = this.state.hideTitle ? "hide-title" : "";
-      const hideRefreshClass = this.state.hideRefresh ? "hide-refresh" : "";
-      return `
-      <div class='elf--css-property-editor ${hideTitleClass} ${hideRefreshClass}'>
-        <div class='title'>
-          <label>${this.$i18n("css.property.editor.properties")}</label>
-          <div class='tools'>
-            ${this.makePropertySelect()}
-            <button type="button" ref='$addProperty'>${editor.iconUse("add")}</button>
-          </div>
-        </div>
-        <div class='input grid-1 css-property-list' ref='$property'></div>
-      </div>
-    `;
-    }
-    getPropertyDefaultValue(key) {
-      switch (key) {
-        case "animation-timing-function":
-        case "box-shadow":
-        case "text-shadow":
-        case "color":
-        case "background-image":
-        case "background-color":
-        case "text-fill-color":
-        case "text-stroke-color":
-        case "filter":
-        case "backdrop-filter":
-        case "var":
-        case "transform":
-        case "transform-origin":
-        case "perspective-origin":
-        case "playTime":
-          return editor.Length.string("");
-        case "offset-distance":
-          return editor.Length.percent(0);
-        case "rotate":
-          return editor.Length.deg(0);
-        case "mix-blend-mode":
-          return "normal";
-        case "clip-path":
-          return "";
-        case "opacity":
-          return 1;
-        default:
-          return 0;
-      }
-    }
-    getDefinedKey(key) {
-      switch (key) {
-        case "animation-timing-function":
-          return "animationTimingFunction";
-        case "box-shadow":
-          return "boxShadow";
-        case "text-shadow":
-          return "textShadow";
-        case "color":
-          return "color";
-        case "background-image":
-          return "backgroundImage";
-        case "background-color":
-          return "backgroundColor";
-        case "text-fill-color":
-          return "textFillColor";
-        case "text-stroke-color":
-          return "textStrokeColor";
-        case "filter":
-          return "filter";
-        case "backdrop-filter":
-          return "backdropFilter";
-        case "var":
-          return "var";
-        case "transform":
-          return "transform";
-        case "transform-origin":
-          return "transformOrigin";
-        case "perspective-origin":
-          return "perspectiveOrigin";
-        case "playTime":
-          return "playTime";
-        case "offset-distance":
-          return "offsetDistance";
-        case "rotate":
-          return "rotate";
-        case "mix-blend-mode":
-          return "mixBlendMode";
-        case "clip-path":
-          return "clipPath";
-        case "opacity":
-          return "opacity";
-        default:
-          return key;
-      }
-    }
-    [sapa.CLICK("$addProperty")]() {
-      var key = this.getRef("$propertySelect").value;
-      var searchItem = this.state.properties.find((it) => {
-        return it.key === key;
-      });
-      if (searchItem) {
-        window.alert(`${key} is already added.`);
-        return;
-      }
-      var value = this.getPropertyDefaultValue(key);
-      var current = this.$context.selection.current;
-      if (current) {
-        value = current[this.getDefinedKey(key)];
-      }
-      this.state.properties.push({ key, value });
-      this.refresh();
-      this.modifyProperty();
-    }
-    makeIndivisualPropertyColorEditor(property, index2) {
-      var key = property.key;
-      return `<div class='property-editor'>
-    ${sapa.createComponent("ColorViewEditor", {
-        ref: `${key}${index2}`,
-        label: property.key,
-        title: property.key,
-        value: property.value,
-        key: property.key,
-        onChange: "changeColorProperty"
-      })}
-  </div>`;
-    }
-    makeCustomePropertyEditor(property, index2) {
-      return `<div class='property-editor'>
-        ${sapa.createComponent(property.editor, {
-        onchange: "changeSelect",
-        ref: `$customProperty${index2}`,
-        key: property.key,
-        value: property.value
-      })}
-      </div>`;
-    }
-    makeIndivisualPropertyEditor(property, index2) {
-      if (property.key === "background-image") {
-        return `
-        <div class='property-editor'>
-          ${sapa.createComponent("BackgroundImageEditor", {
-          ref: `$backgroundImage${index2}`,
-          key: property.key,
-          "hide-title": this.state.hideTitle,
-          value: property.value,
-          onchange: "changeKeyValue"
-        })}
-        </div>
-      `;
-      } else if (property.key === "filter") {
-        return `
-        <div class='property-editor'>
-          <object refClass="FilterEditor" ref='$filter${index2}' key="${property.key}" value="${property.value}" onChange="changeKeyValue" />
-        </div>
-      `;
-      } else if (property.key === "backdrop-filter") {
-        return `
-        <div class='property-editor'>
-          <object refClass="FilterEditor" ref='$backdropFilter${index2}' key="${property.key}" value="${property.value}" onChange="changeKeyValue" />
-        </div>
-      `;
-      } else if (property.key === "box-shadow") {
-        return `
-        <div class='property-editor'>
-          <object refClass="BoxShadowEditor" ref='$boxshadow${index2}' value="${property.value}" hide-label="false" onChange="changeBoxShadowProperty" />
-        </div>
-      `;
-      } else if (property.key === "text-shadow") {
-        return `
-        <div class='property-editor'>
-          <object refClass="TextShadowEditor" ref='$textshadow${index2}' value="${property.value}" hide-label="false" onChange="changeTextShadowProperty" />
-        </div>
-      `;
-      } else if (property.key === "var") {
-        return `
-        <div class='property-editor'>
-          <object refClass="VarEditor" ref='$var${index2}' value="${property.value}" onChange="changeVar" />
-        </div>
-      `;
-      } else if (property.key === "transform") {
-        return `
-        <div class='property-editor'>
-          <object refClass="TransformEditor" ref='$transform${index2}' value="${property.value}" onChange="changeTransform" />
-        </div>
-      `;
-      } else if (property.key === "transform-origin") {
-        return `
-        <div class='property-editor'>
-          <object refClass="TransformOriginEditor" ref='$transformOrigin${index2}' value="${property.value}" onChange="changeTransformOrigin" />
-        </div>
-      `;
-      } else if (property.key === "perspective-origin") {
-        return `
-        <div class='property-editor'>
-          <object refClass="PerspectiveOriginEditor" ref='$perspectiveOrigin${index2}' value="${property.value}" onChange="changePerspectiveOrigin" />
-        </div>
-      `;
-      } else if (property.key === "fill-rule") {
-        return `
-        <div class='property-editor'>
-          <object refClass="SelectEditor"  
-          ref='$fillRule${index2}' 
-          key='fill-rule' 
-          icon="true" 
-          options=${sapa.variable(["nonzero", "evenodd"])}
-          value="${property.value}"
-          onchange="changeSelect" />
-        </div>
-      `;
-      } else if (property.key === "stroke-linecap") {
-        return `
-        <div class='property-editor'>
-          <object refClass="SelectEditor"  
-          ref='$strokeLinecap${index2}' 
-          key='stroke-linecap' 
-          icon="true" 
-          options=${sapa.variable(["butt", "round", "square"])}          
-          value="${property.value}"
-          onchange="changeSelect" />
-        </div>
-      `;
-      } else if (property.key === "stroke-linejoin") {
-        return `
-        <div class='property-editor'>
-          <object refClass="SelectEditor"  
-          ref='$strokeLinejoin${index2}' 
-          key='stroke-linejoin' 
-          icon="true" 
-          options=${sapa.variable([
-          "miter",
-          "arcs",
-          "bevel",
-          "miter-clip",
-          "round"
-        ])}                    
-          value="${property.value}"
-          onchange="changeSelect" />
-        </div>
-      `;
-      } else if (property.key === "mix-blend-mode") {
-        return `
-        <div class='property-editor'>
-          <object refClass="BlendSelectEditor" 
-          ref='$mixBlendMode${index2}' 
-          key='mix-blend-mode' 
-          icon="true" 
-          value="${property.value}"
-          onchange="changeSelect" />
-        </div>
-      `;
-      } else if (property.key === "stroke-dasharray") {
-        return `
-        <object refClass="StrokeDashArrayEditor" 
-          ref='$strokeDashArray${index2}' 
-          key='stroke-dasharray'
-          value='${property.value}' 
-          onchange='changeSelect' 
-        />
-      `;
-      } else if (property.key === "border-radius") {
-        return `
-        <object refClass="BorderRadiusEditor"
-          ref='$borderRadius${index2}' 
-          key='border-radius'
-          value='${property.value}' 
-          onchange='changeBorderRadius' 
-        />
-      `;
-      } else if (property.key === "border") {
-        return `
-        <object refClass="BorderEditor"
-          ref='$border${index2}' 
-          key='border'
-          value='${property.value}' 
-          onchange='changeKeyValue' 
-        />
-      `;
-      } else if (property.key === "clip-path") {
-        return `
-        <object refClass="ClipPathEditor"
-          ref='$clipPath${index2}' 
-          key='clip-path'
-          value='${property.value}' 
-          onchange='changeClipPath' 
-        />
-      `;
-      } else if (property.key === "d") {
-        return `
-        <object refClass="PathDataEditor" ref='$pathData${index2}' key='d' value='${property.value}' onchange='changeSelect' />
-      `;
-      } else if (property.key === "points") {
-        return `
-        <object refClass="PolygonDataEditor" ref='$polygonData${index2}' key='points' value='${property.value}' onchange='changeSelect' />
-      `;
-      } else if (property.key === "playTime") {
-        return `
-        <object refClass="MediaProgressEditor" ref='$playTime${index2}'  key='playTime' value="${property.value}" onchange="changeSelect" />      
-      `;
-      }
-      return `
-      <div class='property-editor'>
-        ???
-
-      </div>
-    `;
-    }
-    [sapa.SUBSCRIBE_SELF("changeKeyValue")](key, value) {
-      this.modifyPropertyValue(key, value);
-    }
-    [sapa.SUBSCRIBE_SELF("changeBorderRadius")](value) {
-      this.modifyPropertyValue("border-radius", value);
-    }
-    [sapa.SUBSCRIBE_SELF("changeClipPath")](value) {
-      this.modifyPropertyValue("clip-path", value);
-    }
-    [sapa.SUBSCRIBE_SELF("changeColorProperty")](key, color) {
-      this.modifyPropertyValue(key, color);
-    }
-    [sapa.SUBSCRIBE_SELF("changeBackgroundImageProperty")](key, backgroundImage2) {
-      this.modifyPropertyValue(key, backgroundImage2);
-    }
-    [sapa.SUBSCRIBE_SELF("changeFilterProperty")](filter2) {
-      this.modifyPropertyValue("filter", filter2);
-    }
-    [sapa.SUBSCRIBE_SELF("changeBackdropFilterProperty")](filter2) {
-      this.modifyPropertyValue("backdrop-filter", filter2);
-    }
-    [sapa.SUBSCRIBE_SELF("changeBoxShadowProperty")](boxshadow) {
-      this.modifyPropertyValue("box-shadow", boxshadow);
-    }
-    [sapa.SUBSCRIBE_SELF("changeTextShadowProperty")](textShadow2) {
-      this.modifyPropertyValue("text-shadow", textShadow2);
-    }
-    [sapa.SUBSCRIBE_SELF("changeVar")](value) {
-      this.modifyPropertyValue("var", value);
-    }
-    [sapa.SUBSCRIBE_SELF("changeTransform")](value) {
-      this.modifyPropertyValue("transform", value);
-    }
-    [sapa.SUBSCRIBE_SELF("changeTransformOrigin")](value) {
-      this.modifyPropertyValue("transform-origin", value);
-    }
-    [sapa.SUBSCRIBE_SELF("changePerspectiveOrigin")](value) {
-      this.modifyPropertyValue("perspective-origin", value);
-    }
-    [sapa.SUBSCRIBE_SELF("changeSelect")](key, value) {
-      this.modifyPropertyValue(key, value);
-    }
-    makePropertyEditor(property, index2) {
-      if (property.editor) {
-        return this.makeCustomePropertyEditor(property, index2);
-      }
-      switch (property.key) {
-        case "animation-timing-function":
-        case "box-shadow":
-        case "text-shadow":
-        case "background-image":
-        case "filter":
-        case "backdrop-filter":
-        case "var":
-        case "transform":
-        case "transform-origin":
-        case "perspective-origin":
-        case "mix-blend-mode":
-        case "border":
-        case "border-radius":
-        case "clip-path":
-        case "fill-rule":
-        case "stroke-linecap":
-        case "stroke-linejoin":
-        case "stroke-dasharray":
-        case "d":
-        case "points":
-        case "offset-path":
-        case "playTime":
-          return this.makeIndivisualPropertyEditor(property, index2);
-        case "color":
-        case "background-color":
-        case "text-fill-color":
-        case "text-stroke-color":
-        case "stroke":
-        case "fill":
-          return this.makeIndivisualPropertyColorEditor(property, index2);
-        case "opacity":
-        case "fill-opacity":
-        case "stroke-dashoffset":
-        case "offset-distance":
-          let min = 0;
-          let max = 1;
-          let step2 = 0.01;
-          return `
-          <div class='property-editor'>
-            ${sapa.createComponent("NumberInputEditor", {
-            ref: `$opacity${index2}`,
-            key: property.key,
-            label: property.key,
-            min,
-            max,
-            step: step2,
-            value: property.value || 1,
-            onchange: "changeRangeEditor"
-          })}
-              
-          </div>
-        `;
-        case "x":
-        case "y":
-        case "width":
-        case "height":
-          return `
-            <div class='property-editor'>
-              ${sapa.createComponent("NumberInputEditor", {
-            ref: `$opacity${index2}`,
-            key: property.key,
-            label: property.key,
-            min: -2e4,
-            max: 2e4,
-            step: 1,
-            value: property.value || 1,
-            onchange: "changeRangeEditor"
-          })}
-                
-            </div>
-          `;
-        case "rotate":
-          return `
-          <div class='property-editor'>
-            ${sapa.createComponent("InputRangeEditor", {
-            ref: `rangeEditor${index2}`,
-            key: property.key,
-            value: property.value,
-            min: -2e3,
-            max: 2e3,
-            units: ["deg"],
-            onChange: "changeRangeEditor"
-          })}
-          </div>
-        `;
-        case "margin-top":
-        case "margin-bottom":
-        case "margin-left":
-        case "margin-right":
-        case "padding-top":
-        case "padding-bottom":
-        case "padding-left":
-        case "padding-right":
-        case "perspective":
-        case "text-stroke-width":
-        default:
-          return `
-          <div class='property-editor'>
-            ${sapa.createComponent("InputRangeEditor", {
-            ref: `rangeEditor${index2}`,
-            key: property.key,
-            label: property.key,
-            value: property.value,
-            max: 1e3,
-            onChange: "changeRangeEditor"
-          })}
-          </div>
-        `;
-      }
-    }
-    [sapa.SUBSCRIBE_SELF("changeRangeEditor")](key, value) {
-      this.modifyPropertyValue(key, value + "");
-    }
-    searchKey(key, callback) {
-      this.state.properties.filter((it) => it.key === key).forEach(callback);
-    }
-    modifyPropertyValue(key, value) {
-      this.searchKey(key, (it) => {
-        it.value = value;
-      });
-      this.modifyProperty();
-    }
-    makePropertySelect() {
-      return `
-      <select class='property-select' ref='$propertySelect'>
-        <optgroup label='Position'>
-          <option value='x'>x</option>
-          <option value='y'>y</option>        
-        </optgroup>
-        <optgroup label='Size'>
-          <option value='width'>width</option>
-          <option value='height'>height</option>
-        </optgroup>      
-        <optgroup label='Box Model'>
-          <option value='margin-left'>margin-left</option>
-          <option value='margin-right'>margin-right</option>
-          <option value='margin-bottom'>margin-bottom</option>
-          <option value='margin-top'>margin-top</option>
-          <option value='padding-left'>padding-left</option>
-          <option value='padding-right'>padding-right</option>
-          <option value='padding-bottom'>padding-bottom</option>
-          <option value='padding-top'>padding-top</option>       
-        </optgroup>
-        <optgroup label='Border'>
-          <option value='border'>border</option>
-          <option value='border-radius'>border-radius</option>
-        </optgroup>        
-        <optgroup label='Style'>
-          <option value='background-color'>background-color</option>
-          <option value='background-image'>background-image</option>
-          <option value='box-shadow'>box-shadow</option>
-          <option value='text-shadow'>text-shadow</option>
-          <option value='filter'>filter</option>      
-          <option value='backdrop-filter'>backdrop-filter</option>
-          <option value='mix-blend-mode'>mix-blend-mode</option>
-        </optgroup>            
-        <optgroup label='Transform'>
-          <option value='transform'>transform</option>
-          <option value='transform-origin'>transform-origin</option>
-          <option value='perspective'>perspective</option>
-          <option value='perspective-origin'>perspective-origin</option>
-        </optgroup>
-        <optgroup label='Font'>
-          <option value='font-size'>font-size</option>
-          <option value='font-weight'>font-weight</option>          
-        </optgroup>
-        <optgroup label='Animation'>
-          <option value='animation-timing-function'>timing-function</option>
-        </optgroup>        
-      </select>
-    `;
-    }
-    [sapa.LOAD("$property") + sapa.DOMDIFF]() {
-      return this.state.properties.map((it, index2) => {
-        return `
-        <div class='css-property-item'>   
-          <div class='value-editor'>
-            ${this.makePropertyEditor(it, index2)}
-          </div>
-          <button type="button" 
-            class='remove' 
-            data-index="${index2}">${editor.iconUse("remove2")}</button>
-        </div>
-      `;
-      });
-    }
-    [sapa.SUBSCRIBE("showCSSPropertyEditor")](properties = []) {
-      this.setState({ properties });
-      this.refresh();
-    }
-    [sapa.CLICK("$property .remove")](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.state.properties.splice(index2, 1);
-      this.refresh();
-      this.modifyProperty();
-    }
-    [sapa.CLICK("$property .refresh")]() {
-      this.parent.trigger("refreshPropertyValue");
-    }
-  }
-  var CubicBezierEditor$1 = "";
-  class CubicBezierEditor extends editor.EditorElement {
-    initState() {
-      return {
-        key: this.props.key,
-        currentBezier: getPredefinedCubicBezier(this.props.value || "linear"),
-        isAnimating: sapa.isUndefined(this.props.isAnimating) ? true : Boolean(this.props.isAnimating),
-        currentBezierIndex: 0,
-        selectedColor: "#609de2",
-        animatedColor: "#609de266",
-        curveColor: "#609de2",
-        baseLineColor: "rgba(117, 117, 117, 0.46)"
-      };
-    }
-    template() {
-      const linearCurve = curveToPath(this.state.currentBezier, 150, 150);
-      const linearCurvePoint = curveToPointLine(this.state.currentBezier, 150, 150);
-      const easeCurve = curveToPath("ease", 30, 30);
-      const easeCurvePoint = curveToPointLine("ease", 30, 30);
-      const easeInCurve = curveToPath("ease-in", 30, 30);
-      const easeInCurvePoint = curveToPointLine("ease-in", 30, 30);
-      const easeOutCurve = curveToPath("ease-out", 30, 30);
-      const easeOutCurvePoint = curveToPointLine("ease-out", 30, 30);
-      return /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--cubic-bezier-editor"
-      }, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "predefined"
-      }, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "left",
-        ref: "$left"
-      }, editor.iconUse("chevron_left")), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "predefined-text",
-        ref: "$text"
-      }), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "right",
-        ref: "$right"
-      }, editor.iconUse("chevron_right"))), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "animation",
-        ref: "$animationArea"
-      }, /* @__PURE__ */ sapa.createElementJsx("canvas", {
-        class: "animation-canvas",
-        ref: "$animationCanvas",
-        title: "Click and Replay point animation",
-        width: "230px",
-        height: "20px"
-      })), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "item-list",
-        ref: "$itemList",
-        "data-selected-value": ""
-      }, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "item",
-        "data-bezier": "ease",
-        title: "ease"
-      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
-        class: "item-canvas",
-        width: "30",
-        height: "30",
-        viewBox: "0 0 30 30"
-      }, /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: easeCurve,
-        stroke: "white",
-        "stroke-width": "1",
-        fill: "none"
-      }), /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: easeCurvePoint,
-        stroke: "gray",
-        "stroke-width": "1",
-        fill: "none"
-      }))), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "item",
-        "data-bezier": "ease-in",
-        title: "ease-in"
-      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
-        class: "item-canvas",
-        width: "30",
-        height: "30",
-        viewBox: "0 0 30 30"
-      }, /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: easeInCurve,
-        stroke: "white",
-        "stroke-width": "1",
-        fill: "none"
-      }), /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: easeInCurvePoint,
-        stroke: "gray",
-        "stroke-width": "1",
-        fill: "none"
-      }))), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "item",
-        "data-bezier": "ease-out",
-        title: "ease-out"
-      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
-        class: "item-canvas",
-        width: "30",
-        height: "30",
-        viewBox: "0 0 30 30"
-      }, /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: easeOutCurve,
-        stroke: "white",
-        "stroke-width": "1",
-        fill: "none"
-      }), /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: easeOutCurvePoint,
-        stroke: "gray",
-        "stroke-width": "1",
-        fill: "none"
-      })))), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "bezier"
-      }, /* @__PURE__ */ sapa.createElementJsx("svg", {
-        class: "bezier-canvas",
-        width: "150",
-        height: "150",
-        viewBox: "0 0 150 150",
-        overflow: "visible"
-      }, /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: linearCurve,
-        stroke: "black",
-        "stroke-width": "1",
-        fill: "none",
-        ref: "$bezierCanvas"
-      }), /* @__PURE__ */ sapa.createElementJsx("path", {
-        d: linearCurvePoint,
-        stroke: "gray",
-        "stroke-width": "1",
-        fill: "none",
-        ref: "$bezierCanvasPoint"
-      })), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "control",
-        ref: "$control"
-      }, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "pointer1",
-        ref: "$pointer1"
-      }), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "pointer2",
-        ref: "$pointer2"
-      }))));
-    }
-    [sapa.BIND("$animationArea")]() {
-      return {
-        style: {
-          display: this.state.isAnimating ? "block" : "none"
-        }
-      };
-    }
-    [sapa.BIND("$bezierCanvas")]() {
-      return {
-        d: curveToPath(this.state.currentBezier, 150, 150)
-      };
-    }
-    [sapa.BIND("$bezierCanvasPoint")]() {
-      return {
-        d: curveToPointLine(this.state.currentBezier, 150, 150)
-      };
-    }
-    updateData(opt = {}) {
-      this.setState(opt);
-      this.modifyCubicBezier();
-    }
-    modifyCubicBezier() {
-      this.parent.trigger(this.props.onchange, this.state.key, formatCubicBezier(this.state.currentBezier));
-    }
-    [sapa.CLICK("$left")]() {
-      var { currentBezier, currentBezierIndex } = this.state;
-      if (currentBezierIndex == 0) {
-        currentBezierIndex = bezierList.length - 1;
-      } else {
-        --currentBezierIndex;
-      }
-      var currentBezier = bezierList[currentBezierIndex];
-      this.updateData({ currentBezierIndex, currentBezier });
-      this.refresh();
-    }
-    [sapa.CLICK("$right")]() {
-      var { currentBezier, currentBezierIndex } = this.state;
-      currentBezierIndex = ++currentBezierIndex % bezierList.length;
-      currentBezier = bezierList[currentBezierIndex];
-      this.updateData({ currentBezierIndex, currentBezier });
-      this.refresh();
-    }
-    [sapa.CLICK("$text")]() {
-      var currentBezier = [...bezierList[this.state.currentBezierIndex]];
-      this.updateData({ currentBezier });
-      this.refresh();
-    }
-    [sapa.CLICK("$itemList .item")](e) {
-      var bezierString = e.$dt.attr("data-bezier");
-      this.refs.$itemList.attr("data-selected-value", bezierString);
-      var currentBezier = getPredefinedCubicBezier(bezierString);
-      this.updateData({
-        currentBezier
-      });
-      this.refresh();
-    }
-    refresh() {
-      this.refreshEasingText();
-      this.refreshBezierCanvas();
-    }
-    refreshBezierCanvas() {
-      this.bindData("$bezierCanvas");
-      this.bindData("$bezierCanvasPoint");
-      this.refreshPointer();
-      this.drawPoint();
-    }
-    refreshEasingText() {
-      this.refs.$text.html(this.state.currentBezier[4] || "ease");
-    }
-    refreshPointer() {
-      var currentBezier = getPredefinedCubicBezier(this.state.currentBezier);
-      var width2 = 150;
-      var height = 150;
-      var left = currentBezier[0] * width2;
-      var top = (1 - currentBezier[1]) * height;
-      this.refs.$pointer1.css({
-        left: editor.Length.px(left),
-        top: editor.Length.px(top)
-      });
-      left = currentBezier[2] * width2;
-      top = (1 - currentBezier[3]) * height;
-      this.refs.$pointer2.css({
-        left: editor.Length.px(left),
-        top: editor.Length.px(top)
-      });
-    }
-    drawPoint() {
-      if (this.state.isAnimating === false)
-        return;
-      if (this.timer)
-        window.clearTimeout(this.timer);
-      if (this.animationTimer)
-        window.clearTimeout(this.animationTimer);
-      this.timer = window.setTimeout(() => {
-        this.animationPoint();
-      }, 100);
-    }
-    start(i) {
-      var pos = this.animationCanvasData.func(i);
-      var x = 10 + (this.animationCanvasData.width - 20) * pos.y;
-      var y = 10;
-      var context = this.animationCanvasData.context;
-      context.beginPath();
-      context.arc(x, y, 5, 0, 2 * Math.PI);
-      context.fill();
-      context.stroke();
-      context.closePath();
-      if (i >= 1) {
-        return;
-      }
-      this.animationTimer = window.setTimeout(() => {
-        this.start(i + 0.05);
-      }, 50);
-    }
-    animationPoint() {
-      const currentBezier = getPredefinedCubicBezier(this.state.currentBezier);
-      var func = createBezierForPattern(formatCubicBezier(currentBezier));
-      this.refs.$animationCanvas.clear();
-      var width2 = this.refs.$animationCanvas.width();
-      var height = this.refs.$animationCanvas.height();
-      var context = this.refs.$animationCanvas.context();
-      context.fillStyle = this.state.animatedColor;
-      context.strokeStyle = this.state.selectedColor;
-      context.lineWidth = 1;
-      this.animationCanvasData = {
-        func,
-        width: width2,
-        height,
-        context
-      };
-      this.start(0);
-    }
-    setPosition(e) {
-      var width2 = this.refs.$control.width();
-      var height = this.refs.$control.height();
-      var minX = this.refs.$control.offset().left;
-      var minY = this.refs.$control.offset().top;
-      var p = e;
-      var x = p.x;
-      if (0 > x) {
-        x = 0;
-      } else if (p.x > document.body.clientWidth) {
-        x = document.body.clientWidth;
-      }
-      x -= minX;
-      if (x < 0) {
-        x = 0;
-      }
-      if (width2 < x) {
-        x = width2;
-      }
-      var y = p.y;
-      y -= minY;
-      return {
-        x: div(x, width2),
-        y: y == height ? 0 : div(height - y, height)
-      };
-    }
-    [sapa.POINTERSTART("$pointer1") + MOVE("movePointer1") + END("drawPoint")](e) {
-      this.clientX = e.clientX;
-      this.clientY = e.clientY;
-    }
-    movePointer1(dx, dy) {
-      var pos = this.setPosition({
-        x: this.clientX + dx,
-        y: this.clientY + dy
-      });
-      this.state.currentBezier[0] = pos.x;
-      this.state.currentBezier[1] = pos.y;
-      this.refreshBezierCanvas();
-      this.modifyCubicBezier();
-    }
-    [sapa.POINTERSTART("$pointer2") + MOVE("movePointer2") + END("drawPoint")](e) {
-      this.clientX = e.clientX;
-      this.clientY = e.clientY;
-    }
-    movePointer2(dx, dy) {
-      var pos = this.setPosition({
-        x: this.clientX + dx,
-        y: this.clientY + dy
-      });
-      this.state.currentBezier[2] = pos.x;
-      this.state.currentBezier[3] = pos.y;
-      this.refreshBezierCanvas();
-      this.modifyCubicBezier();
-    }
-    [sapa.SUBSCRIBE("showCubicBezierEditor")](timingFunction) {
-      var currentBezier = getPredefinedCubicBezier(timingFunction || this.state.currentBezier);
-      this.setState({ currentBezier });
-      this.refresh();
-    }
-  }
-  var DirectionEditor$1 = "";
-  const typeList = [
-    { key: "top", title: "Top" },
-    { key: "right", title: "Right" },
-    { key: "bottom", title: "Bottom" },
-    { key: "left", title: "Left" }
-  ];
-  class DirectionEditor extends editor.EditorElement {
-    initState() {
-      var [count, top, right, bottom, left] = editor.DirectionLength.parse(this.props.value);
-      return {
-        isAll: count === 1,
-        all: top.clone(),
-        top: top.clone(),
-        right: right.clone(),
-        bottom: bottom.clone(),
-        left: left.clone()
-      };
-    }
-    template() {
-      return `<div class='elf--direction-editor' ref='$body'></div>`;
-    }
-    [sapa.SUBSCRIBE("changeBorderRadius")](key, value) {
-      if (key === "all") {
-        typeList.forEach((it) => {
-          this.state[it.key] = value.clone();
-          this.children[`$${it.key}`].setValue(value.clone());
-        });
-      }
-      this.updateData({
-        [key]: value
-      });
-    }
-    [sapa.LOAD("$body")]() {
-      var selectedValue = this.state.isAll ? "all" : "partitial";
-      var direction = this.state.all;
-      var display = selectedValue === "all" ? "display:none" : "display:block";
-      return `
-      <div class="property-item direction-item">
-        <div class="radius-selector" data-selected-value="${selectedValue}" ref="$selector">
-          <button type="button" data-value="all">${editor.iconUse("border_all")}</button>
-          <button type="button" data-value="partitial">
-            ${editor.iconUse("border_inner")}
-          </button>
-        </div>
-        <div class="radius-value">
-          ${sapa.createComponent("RangeEditor", {
-        ref: "$all",
-        key: "all",
-        value: direction,
-        onchange: "changeBorderRadius"
-      })}
-        </div>
-      </div>
-      <div
-        class="property-item full direction-item"
-        ref="$partitialSetting"
-        style="${display}"
-      >
-        <div class="radius-setting-box">
-          ${typeList.map((it) => {
-        var value = this.state[it.key];
-        return `
-              <div>
-                  ${sapa.createComponent("RangeEditor", {
-          ref: `$${it.key}`,
-          label: it.title,
-          key: it.key,
-          value,
-          onchange: "changeBorderRadius"
-        })}
-              </div>  
-            `;
-      }).join("")}
-        </div>
-      </div>
-    `;
-    }
-    updateData(opt = {}) {
-      this.setState(opt, false);
-      var value = [];
-      if (this.state.isAll) {
-        value = [
-          1,
-          this.state.all,
-          this.state.all,
-          this.state.all,
-          this.state.all
-        ];
-      } else {
-        value = [
-          4,
-          this.state.top,
-          this.state.right,
-          this.state.bottom,
-          this.state.left
-        ];
-      }
-      this.parent.trigger(this.props.onchange, value);
-    }
-    [sapa.CLICK("$selector button")](e) {
-      var type = e.$dt.attr("data-value");
-      this.refs.$selector.attr("data-selected-value", type);
-      if (type === "all") {
-        this.refs.$partitialSetting.hide();
-      } else {
-        this.refs.$partitialSetting.show("grid");
-      }
-      this.updateData({
-        isAll: type === "all"
-      });
-    }
-  }
-  var FilterEditor$1 = "";
-  const FILTER_REG = /((blur|grayscale|drop-shadow|hue-rotate|invert|brightness|contrast|opacity|saturate|sepia|url)\(([^)]*)\))/gi;
-  class Filter extends PropertyItem {
-    getDefaultObject(obj2 = {}) {
-      return super.getDefaultObject(__spreadValues({
-        itemType: "filter"
-      }, obj2));
-    }
-    toString() {
-      return `${this.json.type}(${this.json.value || ""})`;
-    }
-    static parse(obj2) {
-      var FilterClass = FilterClassName[obj2.type];
-      if (FilterClass) {
-        return new FilterClass(obj2);
-      } else {
-        return new URLSvgFilter({
-          value: obj2.value
-        });
-      }
-    }
-    static parseStyle(filter2) {
-      var filters = [];
-      if (!filter2)
-        return filters;
-      var results = Color.convertMatches(filter2);
-      var matches = results.str.match(FILTER_REG) || [];
-      matches.forEach((value, index2) => {
-        var [filterName, filterValue] = value.split("(");
-        filterValue = filterValue.split(")")[0];
-        if (filterName === "drop-shadow") {
-          var arr = filterValue.split(" ");
-          var colors2 = arr.filter((it) => it.includes("@")).map((it) => {
-            return Color.reverseMatches(it, results.matches);
-          });
-          var values = arr.filter((it) => !it.includes("@"));
-          filters[index2] = Filter.parse({
-            type: filterName,
-            offsetX: editor.Length.parse(values[0]),
-            offsetY: editor.Length.parse(values[1]),
-            blurRadius: editor.Length.parse(values[2]),
-            color: colors2[0] || "rgba(0, 0, 0, 1)"
-          });
-        } else {
-          filters[index2] = Filter.parse({
-            type: filterName,
-            value: editor.Length.parse(filterValue)
-          });
-        }
-      });
-      return filters;
-    }
-    static join(list) {
-      return list.map((it) => Filter.parse(it)).join(" ");
-    }
-    toJSON() {
-      return {
-        type: this.json.type,
-        value: this.json.value
-      };
-    }
-  }
-  class BlurFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "blur",
-        value: BlurFilter.spec.defaultValue
-      });
-    }
-    toCloneObject() {
-      return __spreadValues(__spreadValues({}, super.toCloneObject()), this.attrs("value"));
-    }
-  }
-  BlurFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 100,
-    step: 1,
-    unit: "px",
-    units: ["px", "em"],
-    defaultValue: "0px"
-  };
-  class URLSvgFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "svg",
-        value: URLSvgFilter.spec.defaultValue
-      });
-    }
-    toCloneObject() {
-      return __spreadValues(__spreadValues({}, super.toCloneObject()), this.attrs("value"));
-    }
-    toString() {
-      return `url(#${this.json.value || ""})`;
-    }
-  }
-  URLSvgFilter.spec = {
-    inputType: "select",
-    defaultValue: ""
-  };
-  class GrayscaleFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "grayscale",
-        value: GrayscaleFilter.spec.defaultValue
-      });
-    }
-    toCloneObject() {
-      return __spreadValues(__spreadValues({}, super.toCloneObject()), this.attrs("value"));
-    }
-  }
-  GrayscaleFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 100,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(0)
-  };
-  class HueRotateFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "hue-rotate",
-        value: HueRotateFilter.spec.defaultValue
-      });
-    }
-  }
-  HueRotateFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 360,
-    step: 1,
-    unit: "deg",
-    units: ["deg"],
-    defaultValue: editor.Length.deg(0)
-  };
-  class InvertFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "invert",
-        value: InvertFilter.spec.defaultValue
-      });
-    }
-  }
-  InvertFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 100,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(0)
-  };
-  class BrightnessFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "brightness",
-        value: BrightnessFilter.spec.defaultValue
-      });
-    }
-  }
-  BrightnessFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 200,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(100)
-  };
-  class ContrastFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "contrast",
-        value: ContrastFilter.spec.defaultValue
-      });
-    }
-  }
-  ContrastFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 200,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(100)
-  };
-  class OpacityFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "opacity",
-        value: OpacityFilter.spec.defaultValue
-      });
-    }
-  }
-  OpacityFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 100,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(100)
-  };
-  class SaturateFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "saturate",
-        value: SaturateFilter.spec.defaultValue
-      });
-    }
-  }
-  SaturateFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 100,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(100)
-  };
-  class SepiaFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "sepia",
-        value: SepiaFilter.spec.defaultValue
-      });
-    }
-  }
-  SepiaFilter.spec = {
-    inputType: "range",
-    min: 0,
-    max: 100,
-    step: 1,
-    unit: "%",
-    units: ["%"],
-    defaultValue: editor.Length.percent(0)
-  };
-  class DropshadowFilter extends Filter {
-    getDefaultObject() {
-      return super.getDefaultObject({
-        type: "drop-shadow",
-        multi: true,
-        offsetX: DropshadowFilter.spec.offsetX.defaultValue,
-        offsetY: DropshadowFilter.spec.offsetY.defaultValue,
-        blurRadius: DropshadowFilter.spec.blurRadius.defaultValue,
-        color: DropshadowFilter.spec.color.defaultValue
-      });
-    }
-    toString() {
-      var json = this.json;
-      return `drop-shadow(${json.offsetX} ${json.offsetY} ${json.blurRadius} ${json.color})`;
-    }
-    toJSON() {
-      return {
-        type: this.json.type,
-        offsetX: this.json.offsetX,
-        offsetY: this.json.offsetY,
-        blurRadius: this.json.blurRadius,
-        color: this.json.color
-      };
-    }
-  }
-  DropshadowFilter.spec = {
-    offsetX: {
-      title: "Offset X",
-      inputType: "range",
-      min: -100,
-      max: 100,
-      step: 1,
-      defaultValue: "0px",
-      unit: "px",
-      units: ["px", "em"]
-    },
-    offsetY: {
-      title: "Offset Y",
-      inputType: "range",
-      min: -100,
-      max: 100,
-      step: 1,
-      defaultValue: "0px",
-      unit: "px",
-      units: ["px", "em"]
-    },
-    blurRadius: {
-      title: "Blur Radius",
-      inputType: "range",
-      min: 0,
-      max: 100,
-      step: 1,
-      defaultValue: "0px",
-      unit: "px",
-      units: ["px", "em", "%"]
-    },
-    color: {
-      title: "Color",
-      inputType: "color",
-      defaultValue: "rgba(0, 0, 0, 1)",
-      unit: "color"
-    }
-  };
-  const FilterClassName = {
-    blur: BlurFilter,
-    grayscale: GrayscaleFilter,
-    "hue-rotate": HueRotateFilter,
-    invert: InvertFilter,
-    brightness: BrightnessFilter,
-    contrast: ContrastFilter,
-    opacity: OpacityFilter,
-    saturate: SaturateFilter,
-    sepia: SepiaFilter,
-    "drop-shadow": DropshadowFilter,
-    svg: URLSvgFilter
-  };
-  const filter_list = [
-    "blur",
-    "grayscale",
-    "hue-rotate",
-    "invert",
-    "brightness",
-    "contrast",
-    "drop-shadow",
-    "opacity",
-    "saturate",
-    "sepia",
-    "svg"
-  ];
-  var specList = {
-    blur: BlurFilter.spec,
-    grayscale: GrayscaleFilter.spec,
-    "hue-rotate": HueRotateFilter.spec,
-    invert: InvertFilter.spec,
-    brightness: BrightnessFilter.spec,
-    contrast: ContrastFilter.spec,
-    "drop-shadow": DropshadowFilter.spec,
-    opacity: OpacityFilter.spec,
-    saturate: SaturateFilter.spec,
-    sepia: SepiaFilter.spec,
-    svg: URLSvgFilter.spec
-  };
-  class FilterEditor extends editor.EditorElement {
-    initState() {
-      return {
-        hideLabel: this.props.hideLabel === "true" ? true : false,
-        filters: this.props.value || []
-      };
-    }
-    template() {
-      return `
-      <div class='elf--filter-editor filter-list'>
-          <div class='filter-list' ref='$filterList'></div>
-      </div>`;
-    }
-    [sapa.LOAD("$filterSelect")]() {
-      var list = filter_list.map((it) => {
-        return { title: it, value: it };
-      });
-      var svgFilterList = this.getSVGFilterList();
-      var totalList = [];
-      if (svgFilterList.length) {
-        totalList = [...list, { title: "-------", value: "" }, ...svgFilterList];
-      } else {
-        totalList = [...list];
-      }
-      return totalList.map((it) => {
-        var { title, value } = it;
-        return `<option value='${value}'>${title}</option>`;
-      });
-    }
-    getSpec(filterType) {
-      return specList[filterType];
-    }
-    makeDropShadowFilterTemplate(spec, filter2, index2) {
-      return `
-      <div class="filter-item">
-        <div class="title drop-shadow">
-          <label draggable="true"  data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
-          <span class='sub-title'>${this.$i18n("filter.property.drop-shadow")}</span>
-          <div class="filter-menu">
-            <button type="button" class="del" data-index="${index2}">${editor.iconUse("remove2")}</button>
-          </div>
-        </div>
-        <div class="filter-ui-list">
-          ${sapa.createComponentList([
-        "ColorViewEditor",
-        {
-          ref: `$dropShadowColorView${index2}`,
-          params: index2,
-          compact: true,
-          value: filter2.color,
-          onchange: "changeDropShadowColor"
-        }
-      ], ...["offsetX", "offsetY", "blurRadius"].map((key) => {
-        return [
-          "InputRangeEditor",
-          {
-            ref: `$${key}${index2}`,
-            label: this.$i18n(`filter.property.drop-shadow.${key}`),
-            key: index2,
-            min: spec[key].min,
-            max: spec[key].max,
-            step: spec[key].step,
-            params: key,
-            value: filter2[key].value || spec[key].defaultValue,
-            units: spec[key].units,
-            onchange: "changeRangeEditor"
-          }
-        ];
-      }))}
-        </div>
-
-      </div>
-    `;
-    }
-    getSVGFilterList() {
-      var current = this.$context.selection.current;
-      var arr = [];
-      if (current) {
-        arr = current.svgfilters.map((it) => {
-          return {
-            title: `svg - #${it.id}`,
-            value: it.id
-          };
-        });
-      }
-      return arr;
-    }
-    makeOneFilterEditor(index2, filter2, spec) {
-      if (filter2.type === "svg") {
-        var options2 = "";
-        var current = this.$context.selection.current;
-        if (current) {
-          options2 = current.svgfilters.map((it) => {
-            return { value: it.id };
-          });
-        }
-        return sapa.createComponent("SelectEditor", {
-          ref: `$select${index2}`,
-          key: index2,
-          label: "SVG Filter",
-          value: filter2.value,
-          options: ["", ...options2],
-          onchange: "changeRangeEditor"
-        });
-      }
-      return sapa.createComponent("InputRangeEditor", {
-        ref: `$range${index2}_${filter2.type}`,
-        label: this.$i18n("filter.property." + filter2.type),
-        key: index2,
-        min: spec.min,
-        max: spec.max,
-        value: filter2.value,
-        units: spec.units,
-        onchange: "changeRangeEditor"
-      });
-    }
-    makeOneFilterTemplate(spec, filter2, index2) {
-      return `
-      <div class="filter-item" data-index="${index2}">
-        <div class="title" >
-          <label draggable="true" data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
-          ${filter2.type != "svg" ? `
-          <div class="filter-ui">
-            ${this.makeOneFilterEditor(index2, filter2, spec)}
-          </div>
-        ` : `
-          <div>
-            <span class='svg-filter-edit' data-index="${index2}">${filter2.value}</span>
-          </div>
-        `}          
-          <div class="filter-menu">
-            <button type="button" class="del" data-index="${index2}">
-              ${editor.iconUse("remove2")}
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-    }
-    makeFilterTemplate(filter2, index2) {
-      if (filter2.type === "drop-shadow") {
-        return this.makeDropShadowFilterTemplate(this.getSpec(filter2.type), filter2, index2);
-      } else {
-        return this.makeOneFilterTemplate(this.getSpec(filter2.type), filter2, index2);
-      }
-    }
-    [sapa.LOAD("$filterList")]() {
-      return this.state.filters.map((filter2, index2) => {
-        return this.makeFilterTemplate(filter2, index2.toString());
-      });
-    }
-    [sapa.DRAGSTART("$filterList .filter-item > .title > label")](e) {
-      this.startIndex = +e.$dt.attr("data-index");
-    }
-    [sapa.DRAGOVER("$filterList .filter-item > .title > label") + sapa.PREVENT]() {
-    }
-    sortItem(arr, startIndex, targetIndex) {
-      arr.splice(targetIndex + (startIndex < targetIndex ? -1 : 0), 0, ...arr.splice(startIndex, 1));
-    }
-    sortFilter(startIndex, targetIndex) {
-      this.sortItem(this.state.filters, startIndex, targetIndex);
-    }
-    [sapa.DROP("$filterList .filter-item") + sapa.PREVENT](e) {
-      var targetIndex = +e.$dt.attr("data-index");
-      var current = this.$context.selection.current;
-      if (!current)
-        return;
-      this.sortFilter(this.startIndex, targetIndex);
-      this.refresh();
-      this.modifyFilter();
-    }
-    modifyFilter() {
-      var value = this.state.filters;
-      this.parent.trigger(this.props.onchange, this.props.key, value, this.props.params);
-    }
-    makeFilter(type, opt = {}) {
-      return Filter.parse(__spreadProps(__spreadValues({}, opt), { type }));
-    }
-    [sapa.CLICK("$filterList .svg-filter-edit")](e) {
-      var _a, _b;
-      var index2 = +e.$dt.attr("data-index");
-      var filter2 = this.state.filters[index2];
-      var current = this.$context.selection.current;
-      if (current) {
-        var svgfilterIndex = current.getSVGFilterIndex((_b = (_a = filter2.value) == null ? void 0 : _a.value) == null ? void 0 : _b.replace("#", ""));
-        this.trigger("openSVGFilterPopup", svgfilterIndex);
-      }
-    }
-    [sapa.SUBSCRIBE("openSVGFilterPopup")](index2) {
-      const current = this.$context.selection.current || { svgfilters: [] };
-      const svgfilter = current.svgfilters[index2];
-      this.emit("showSVGFilterPopup", {
-        changeEvent: (params) => {
-          var current2 = this.$context.selection.current;
-          if (current2) {
-            current2.setSVGFilterValue(params.index, {
-              filters: params.filters
-            });
-            this.$commands.executeCommand("setAttribute", "change filter", this.$context.selection.pack("svgfilters", "filter"));
-          }
-        },
-        index: index2,
-        preview: false,
-        filters: svgfilter.filters
-      });
-    }
-    [sapa.SUBSCRIBE_SELF("add")](filterType) {
-      if (filterType === "svg") {
-        const index2 = this.$context.selection.current.createSVGFilter({
-          filters: []
-        });
-        const filter2 = this.$context.selection.current.svgfilters[index2];
-        this.state.filters.push(this.makeFilter(filterType, {
-          value: filter2.id
-        }));
-        this.refresh();
-        this.modifyFilter();
-        this.trigger("openSVGFilterPopup", index2);
-      } else {
-        this.state.filters.push(this.makeFilter(filterType));
-        this.refresh();
-        this.modifyFilter();
-      }
-    }
-    [sapa.CLICK("$add")]() {
-      var filterType = this.refs.$filterSelect.value;
-      this.trigger("add", filterType);
-    }
-    [sapa.CLICK("$filterList .filter-menu .del")](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.state.filters.splice(index2, 1);
-      this.refresh();
-      this.modifyFilter();
-    }
-    [sapa.SUBSCRIBE_SELF("changeDropShadowColor")](key, color, params) {
-      var index2 = +params;
-      this.state.filters[index2].color = color;
-      this.modifyFilter();
-    }
-    [sapa.SUBSCRIBE_SELF("changeRangeEditor")](key, value, params) {
-      if (params) {
-        this.state.filters[+key][params] = value;
-      } else {
-        this.state.filters[+key].value = value;
-      }
-      this.modifyFilter();
-    }
-  }
-  const font_list = [
-    "",
-    "Arial",
-    "Arial Black",
-    "Times New Roman",
-    "Times",
-    "Courier New",
-    "Courier",
-    "Verdana",
-    "Georgia",
-    "Palatino",
-    "Garamond",
-    "Bookman",
-    "Tahoma",
-    "Trebuchet MS",
-    "Impact",
-    "Comic Sans MS",
-    "serif",
-    "sans-serif",
-    "monospace",
-    "cursive",
-    "fantasy",
-    "system-ui"
-  ];
-  class FontSelectEditor extends editor.SelectEditor {
-    getFontList() {
-      return font_list.map((it) => {
-        return { value: it };
-      });
-    }
-    initState() {
-      return __spreadProps(__spreadValues({}, super.initState()), {
-        options: this.getFontList()
-      });
-    }
-  }
-  var GradientEditor$1 = "";
-  class GradientEditor extends editor.EditorElement {
-    initState() {
-      var _a;
-      const image2 = BackgroundImage.parseImage(this.props.value || "static-gradient(#ececec)");
-      const id = (_a = image2.colorsteps[this.props.index]) == null ? void 0 : _a.id;
-      this.$context.selection.selectColorStep(id);
-      if (id) {
-        this.currentStep = image2.colorsteps.find((it) => this.$context.selection.isSelectedColorStep(it.id));
-      }
-      return {
-        id,
-        index: +(this.props.index || 0),
-        value: this.props.value,
-        image: image2
-      };
-    }
-    setValue(value) {
-      this.setState({
-        image: BackgroundImage.parseImage(value)
-      }, false);
-      this.refresh();
-    }
-    template() {
-      return `
-        <div class='elf--gradient-editor'>
-            <div class='gradient-steps' data-editor='gradient'>
-                <div class="hue-container" ref="$back"></div>            
-                <div class="hue" ref="$steps">
-                    <div class='step-list' ref="$stepList" ></div>
-                </div>
-            </div>
-        </div>
-      `;
-    }
-    [sapa.CHANGE("$file")](e) {
-      var project2 = this.$context.selection.currentProject;
-      if (project2) {
-        [...e.target.files].forEach((item) => {
-          this.$commands.emit("updateImageAssetItem", item, (local) => {
-            this.trigger("setImageUrl", local);
-          });
-        });
-      }
-    }
-    [sapa.SUBSCRIBE_SELF("changeTabType")](type) {
-      var _a, _b;
-      const oldType = (_a = this.state.image) == null ? void 0 : _a.type;
-      const colorsteps = ((_b = this.state.image) == null ? void 0 : _b.colorsteps) || [];
-      if (oldType === GradientType.STATIC) {
-        if (colorsteps.length === 0) {
-          colorsteps.push(colorsteps[0], colorsteps[0]);
-        } else if (colorsteps.length === 1) {
-          colorsteps.push(colorsteps[0], colorsteps[0]);
-        }
-      }
-      var url = type === "image-resource" ? this.state.image.url : this.state.url;
-      this.state.image = BackgroundImage.changeImageType({
-        type,
-        url,
-        colorsteps,
-        angle: this.state.image.angle || 0,
-        radialType: this.state.image.radialType || RadialGradientType.CIRCLE,
-        radialPosition: this.state.image.radialPosition || ["50%", "50%"]
-      });
-      this.refresh();
-      this.updateData();
-    }
-    [sapa.SUBSCRIBE_SELF("changeColorStepOffset")](key, value) {
-      if (this.currentStep) {
-        this.currentStep.percent = value.value;
-        this.state.image.sortColorStep();
-        this.refresh();
-        this.updateData();
-      }
-    }
-    [sapa.CLICK("$back")](e) {
-      var rect2 = this.refs.$stepList.rect();
-      var minX = rect2.x;
-      var maxX = rect2.right;
-      var x = e.xy.x;
-      if (x < minX)
-        x = minX;
-      else if (x > maxX)
-        x = maxX;
-      var percent = (x - minX) / rect2.width * 100;
-      this.state.image.insertColorStep(percent);
-      this.state.image.sortColorStep();
-      this.refresh();
-      this.updateData();
-    }
-    [sapa.BIND("$el")]() {
-      var type = this.state.image.type;
-      if (type === "url") {
-        type = "image-resource";
-      }
-      return {
-        "data-selected-editor": type
-      };
-    }
-    [sapa.BIND("$stepList")]() {
-      return {
-        style: {
-          "background-image": this.getLinearGradient()
-        }
-      };
-    }
-    [sapa.LOAD("$stepList") + sapa.DOMDIFF]() {
-      var _a;
-      var colorsteps = ((_a = this.state.image) == null ? void 0 : _a.colorsteps) || [];
-      return colorsteps.map((it) => {
-        var selected = this.$context.selection.isSelectedColorStep(it.id) ? "selected" : "";
-        return `
-      <div class='step ${selected}' data-id='${it.id}' data-cut='${it.cut}' tabindex="-1" style='left: ${it.toLength()};'>
-        <div class='color-view' style="background-color: ${it.color}">
-          <span>${Math.floor(it.percent * 10) / 10}</span>
-        </div>      
-        <div class='arrow'></div>      
-      </div>`;
-      });
-    }
-    removeStep(id) {
-      this.state.image.removeColorStep(id);
-      this.refresh();
-      this.updateData();
-    }
-    selectStep(id) {
-      this.state.id = id;
-      this.$context.selection.selectColorStep(id);
-      if (this.state.image.colorsteps) {
-        this.currentStep = this.state.image.colorsteps.find((it) => this.$context.selection.isSelectedColorStep(it.id));
-        this.parent.trigger("selectColorStep", this.currentStep.color);
-      }
-      this.refresh();
-    }
-    [sapa.KEYUP("$el .step")](e) {
-      const id = e.$dt.data("id");
-      switch (e.code) {
-        case "Delete":
-        case "Backspace":
-          this.removeStep(id);
-          break;
-        case "BracketRight":
-          this.sortToRight(id);
-          break;
-        case "BracketLeft":
-          this.sortToLeft(id);
-          break;
-        case "Equal":
-          this.appendColorStep(id);
-          break;
-        case "Minus":
-          this.prependColorStep(id);
-          break;
-      }
-    }
-    sortToRight(id) {
-      this.state.image.sortToRight();
-      this.refresh();
-      this.updateData();
-      this.doFocus(id);
-    }
-    sortToLeft(id) {
-      this.state.image.sortToLeft();
-      this.refresh();
-      this.updateData();
-      this.doFocus(id);
-    }
-    appendColorStep(id) {
-      const currentIndex = this.state.image.colorsteps.findIndex((it) => it.id === id);
-      const nextIndex = currentIndex + 1;
-      const currentColorStep = this.state.image.colorsteps[currentIndex];
-      const nextColorStep = this.state.image.colorsteps[nextIndex];
-      if (!nextColorStep) {
-        if (currentColorStep.percent !== 100) {
-          this.state.image.insertColorStep(currentColorStep.percent + (100 - currentColorStep.percent) / 2);
-        }
-      } else {
-        this.state.image.insertColorStep(currentColorStep.percent + (nextColorStep.percent - currentColorStep.percent) / 2);
-      }
-      this.refresh();
-      this.updateData();
-      this.doFocus(id);
-    }
-    doFocus(id) {
-      this.nextTick(() => {
-        this.refs.$stepList.$(".step[data-id='" + id + "']").focus();
-      }, 100);
-    }
-    prependColorStep(id) {
-      const currentIndex = this.state.image.colorsteps.findIndex((it) => it.id === id);
-      const prevIndex = currentIndex - 1;
-      const currentColorStep = this.state.image.colorsteps[currentIndex];
-      const prevColorStep = this.state.image.colorsteps[prevIndex];
-      if (!prevColorStep) {
-        if (currentColorStep.percent !== 0) {
-          this.state.image.insertColorStep(currentColorStep.percent);
-        }
-      } else {
-        this.state.image.insertColorStep(prevColorStep.percent + (currentColorStep.percent - prevColorStep.percent) / 2);
-      }
-      this.refresh();
-      this.updateData();
-      this.doFocus(id);
-    }
-    [sapa.POINTERSTART("$stepList .step") + MOVE() + END()](e) {
-      var id = e.$dt.attr("data-id");
-      if (e.altKey) {
-        this.removeStep(id);
-        return false;
-      } else {
-        e.$dt.focus();
-        this.isSelectedColorStep = this.$context.selection.isSelectedColorStep(id);
-        this.selectStep(id);
-        this.startXY = e.xy;
-        this.cachedStepListRect = this.refs.$stepList.rect();
-      }
-    }
-    getStepListRect() {
-      return this.cachedStepListRect;
-    }
-    move(dx) {
-      var rect2 = this.getStepListRect();
-      var minX = rect2.x;
-      var maxX = rect2.right;
-      var x = this.startXY.x + dx;
-      if (x < minX)
-        x = minX;
-      else if (x > maxX)
-        x = maxX;
-      var percent = (x - minX) / rect2.width * 100;
-      if (this.$config.get("bodyEvent").shiftKey) {
-        percent = Math.floor(percent);
-      }
-      this.currentStep.setValue(percent, rect2.width);
-      this.state.image.sortColorStep();
-      this.refresh();
-      this.updateData();
-    }
-    end(dx, dy) {
-      if (dx === 0 && dy === 0) {
-        if (this.isSelectedColorStep) {
-          if (this.currentStep) {
-            this.currentStep.cut = !this.currentStep.cut;
-            this.refresh();
-            this.updateData();
-          }
-        }
-      }
-      this.doFocus(this.state.id);
-    }
-    getLinearGradient() {
-      var { image: image2 } = this.state;
-      return `linear-gradient(to right, ${Gradient.toCSSColorString(image2.colorsteps)})`;
-    }
-    [sapa.SUBSCRIBE_SELF("setColorStepColor")](color) {
-      if (this.state.image.type === "static-gradient") {
-        this.state.image.colorsteps[0].color = color;
-        this.refresh();
-        this.updateData();
-      } else {
-        if (this.currentStep) {
-          this.currentStep.color = color;
-          this.refresh();
-          this.updateData();
-        }
-      }
-    }
-    [sapa.SUBSCRIBE("setImageUrl")](url) {
-      if (this.state.image) {
-        this.state.url = url;
-        this.state.image.reset({ url });
-        this.refresh();
-        this.updateData();
-      }
-    }
-    updateData(data = {}) {
-      this.setState(data, false);
-      this.parent.trigger(this.props.onchange, this.state.image.toString());
-    }
-  }
-  var IconListViewEditor$1 = "";
-  class IconListViewEditor extends editor.EditorElement {
-    initState() {
-      return {
-        value: this.props.value
-      };
-    }
-    template() {
-      return `<div class='select-editor elf--list-view-editor' ref='$body'></div>`;
-    }
-    [sapa.BIND("$body")]() {
-      return {
-        "data-column": this.props.column || 1
-      };
-    }
-    [sapa.LOAD("$body")]() {
-      return Object.keys(icon).map((key) => {
-        var html = editor.iconUse(key);
-        var selected = key === this.state.value ? "selected" : "";
-        return `<div class='list-view-item ${selected}'  data-key='${key}'>${html}</div>`;
-      });
-    }
-    getValue() {
-      return this.state.value;
-    }
-    setValue(value) {
-      this.state.value = value;
-      this.refresh();
-    }
-    [sapa.CLICK("$body .list-view-item")](e) {
-      var key = e.$dt.attr("data-key");
-      e.$dt.onlyOneClass("selected");
-      this.updateData({
-        value: key
-      });
-    }
-    updateData(data) {
-      this.setState(data, false);
-      this.parent.trigger(this.props.onchange, this.props.key, this.state.value, this.props.params);
-    }
-  }
-  class IterationCountEditor extends editor.InputRangeEditor {
-    initState() {
-      var value = this.props.value;
-      if (value === "infinite") {
-        value = new editor.Length(0, "infinite");
-      } else {
-        value = editor.Length.number(value);
-      }
-      var units = this.props.units || ["px", "em", "%"];
-      return __spreadValues(__spreadValues({}, super.initState()), {
-        key: this.props.key,
-        params: this.props.params || "",
-        units,
-        value
-      });
-    }
-  }
-  var MediaProgressEditor$1 = "";
-  class MediaProgressEditor extends editor.EditorElement {
-    initState() {
-      const [start, end, duration] = (this.props.value || "").split(":");
-      return {
-        start: +(start || 0),
-        end: +(end || 1),
-        duration: +(duration || 1)
-      };
-    }
-    refresh() {
-      this.load();
-      this.children.$s.setValue(this.state.start * this.state.duration);
-      this.children.$e.setValue(this.state.end * this.state.duration);
-      this.children.$s.setMax(this.state.duration);
-      this.children.$e.setMax(this.state.duration);
-    }
-    template() {
-      const { start, end, duration } = this.state;
-      return `
-            <div class='elf--media-progress-editor'>
-                <div class='drag-area'>
-                    <div class='progress-bar' ref='$progress'></div>
-                    <div class='bar' ref='$bar'></div>                
-                    <div class='drag-item start' ref='$start'></div>
-                    <div class='drag-item end' ref='$end'></div>
-                </div>
-                <div class='item'>
-                    ${sapa.createComponent("NumberRangeEditor", {
-        ref: "$s",
-        label: "Start",
-        key: "start",
-        min: 0,
-        max: duration,
-        step: 1e-3,
-        value: start * duration,
-        onchange: "changeValue"
-      })}
-                </div>
-                <div class='item'>
-                    ${sapa.createComponent("NumberRangeEditor", {
-        ref: "$e",
-        label: "End",
-        key: "end",
-        min: 0,
-        max: duration,
-        step: 1e-3,
-        value: end * duration,
-        onchange: "changeValue"
-      })}
-                </div>                
-            </div>
-        `;
-    }
-    [sapa.SUBSCRIBE_SELF("changeValue")](key, value) {
-      this.updateData({
-        [key]: value / this.state.duration
-      }, true);
-    }
-    [sapa.POINTERSTART("$start") + MOVE("moveStart")]() {
-      this.rect = this.refs.$progress.rect();
-      this.pos = editor.Length.parse(this.refs.$start.css("left")).toPx(this.rect.width);
-      this.max = editor.Length.parse(this.refs.$end.css("left")).toPx(this.rect.width);
-    }
-    moveStart(dx) {
-      var realPos = Math.min(this.max.value, Math.max(0, this.pos.value + dx));
-      this.state.start = realPos / this.rect.width;
-      this.children.$s.setValue(this.state.start * this.state.duration);
-      this.refresh();
-      this.updateData();
-    }
-    [sapa.BIND("$start")]() {
-      return {
-        "data-info": this.state.start,
-        style: {
-          left: editor.Length.percent((this.state.start || 0) * 100)
-        }
-      };
-    }
-    [sapa.POINTERSTART("$end") + MOVE("moveStartForEnd")]() {
-      this.rect = this.refs.$progress.rect();
-      this.pos = editor.Length.parse(this.refs.$end.css("left")).toPx(this.rect.width);
-      this.min = editor.Length.parse(this.refs.$start.css("left")).toPx(this.rect.width);
-      this.max = this.rect.width;
-    }
-    moveStartForEnd(dx) {
-      var realPos = Math.max(this.min.value, Math.min(this.max.value, this.pos.value + dx));
-      this.state.end = realPos / this.rect.width;
-      this.children.$e.setValue(this.state.end * this.state.duration);
-      this.refresh();
-      this.updateData();
-    }
-    [sapa.BIND("$end")]() {
-      return {
-        "data-info": this.state.end,
-        style: {
-          left: editor.Length.percent((this.state.end || 1) * 100)
-        }
-      };
-    }
-    [sapa.BIND("$bar")]() {
-      const start = this.state.start || 0;
-      const end = this.state.end || 1;
-      return {
-        style: {
-          left: editor.Length.percent(start * 100),
-          width: editor.Length.percent((end - start) * 100)
-        }
-      };
-    }
-    getValue() {
-      const { start, end, duration } = this.state;
-      return `${start}:${end}:${duration}`;
-    }
-    setValue(value) {
-      const [start, end, duration] = value.split(":");
-      this.setState({
-        start: Number(start),
-        end: Number(end),
-        duration: Number(duration)
-      });
-    }
-    updateData(data = {}, isRefresh = false) {
-      this.setState(data, isRefresh);
-      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
-    }
-  }
-  var PathEditor$1 = "";
-  const SEGMENT_DIRECTION = ["startPoint", "endPoint", "reversePoint"];
-  function calculateSnapPoint(points, sourceKey, target, distanceValue, dist2) {
-    var checkedPointList = points.filter((p) => {
-      if (!p)
-        return false;
-      return Math.abs(p[sourceKey] - target) <= dist2;
-    }).map((p) => {
-      return { dist: Math.abs(p[sourceKey] - target), point: p };
-    });
-    checkedPointList.sort((a, b) => {
-      return a.dist < b.dist ? -1 : 1;
-    });
-    var point2 = null;
-    if (checkedPointList.length) {
-      point2 = checkedPointList[0].point;
-      distanceValue += point2[sourceKey] - target;
-    }
-    return { point: point2, distanceValue };
-  }
-  function calculateMovePointSnap(points, moveXY, dist2) {
-    var snapPointX = calculatePointDist(points, "x", moveXY.x, dist2);
-    var snapPointY = calculatePointDist(points, "y", moveXY.y, dist2);
-    var snapEndPoint = __spreadValues({}, moveXY);
-    if (snapPointX) {
-      snapEndPoint.x = snapPointX.x;
-    }
-    if (snapPointY) {
-      snapEndPoint.y = snapPointY.y;
-    }
-    var snapPointList = [];
-    if (snapPointX) {
-      snapPointList.push({ startPoint: snapPointX, endPoint: snapEndPoint });
-    }
-    if (snapPointY) {
-      snapPointList.push({ startPoint: snapPointY, endPoint: snapEndPoint });
-    }
-    return { snapPointList, moveXY: snapEndPoint };
-  }
-  function calculatePointDist(points, sourceKey, target, dist2) {
-    var checkedPointList = [];
-    var arr = SEGMENT_DIRECTION;
-    points.filter((p) => p).forEach((p) => {
-      arr.filter((key) => p[key]).forEach((key) => {
-        var point2 = p[key];
-        var tempDist = Math.abs(point2[sourceKey] - target);
-        if (tempDist <= dist2) {
-          checkedPointList.push({ dist: tempDist, point: point2 });
-        }
-      });
-    });
-    checkedPointList.sort((a, b) => {
-      return a.dist > b.dist ? 1 : -1;
-    });
-    return checkedPointList.length ? checkedPointList[0].point : null;
-  }
-  function toPath(points, minX, minY, scale2 = 1) {
-    var d = [];
-    for (var index2 = 0, len2 = points.length; index2 < len2; index2++) {
-      var currentIndex = index2;
-      var current = points[currentIndex];
-      if (!current)
-        continue;
-      if (current.command === "M") {
-        d.push({ command: "M", values: [current.startPoint] });
-      } else {
-        var prevPoint = Point.getPrevPoint(points, index2);
-        if (current.curve === false) {
-          if (prevPoint.curve === false) {
-            d.push({ command: "L", values: [current.startPoint] });
-          } else {
-            d.push({
-              command: "Q",
-              values: [prevPoint.endPoint, current.startPoint]
-            });
-          }
-        } else {
-          if (prevPoint.curve === false) {
-            if (Point.isEqual(current.reversePoint, current.startPoint)) {
-              d.push({ command: "L", values: [current.startPoint] });
-            } else {
-              d.push({
-                command: "Q",
-                values: [current.reversePoint, current.startPoint]
-              });
-            }
-          } else {
-            d.push({
-              command: "C",
-              values: [
-                prevPoint.endPoint,
-                current.reversePoint,
-                current.startPoint
-              ]
-            });
-          }
-        }
-      }
-      if (current.close) {
-        d.push({ command: "Z" });
-      }
-    }
-    var dString = d.map((segment) => {
-      return calculateRelativePosition(minX, minY, segment, scale2);
-    }).join(" ");
-    return {
-      d: dString
-    };
-  }
-  function calculateRelativePosition(minX, minY, segment, scale2 = 1) {
-    var { command, values } = segment;
-    switch (command) {
-      case "Z":
-        return "Z";
-      default:
-        var str = values.map((v) => {
-          var tx = v.x - minX === 0 ? 0 : (v.x - minX) / scale2;
-          var ty = v.y - minY === 0 ? 0 : (v.y - minY) / scale2;
-          return `${tx} ${ty}`;
-        }).join(" ");
-        return `${command} ${str}`;
-    }
-  }
-  function checkInArea(area2, point2) {
-    if (area2.x2.value < point2.x) {
-      return false;
-    }
-    if (area2.y2.value < point2.y) {
-      return false;
-    }
-    if (area2.x.value > point2.x) {
-      return false;
-    }
-    if (area2.y.value > point2.y) {
-      return false;
-    }
-    return true;
-  }
-  class PurePathGenerator {
-    generatorPathString(points, minX = 0, minY = 0, scale2 = 1) {
-      return toPath(points, minX, minY, scale2).d;
-    }
-    constructor(pathEditor) {
-      this.pathEditor = pathEditor;
-      this.pathStringManager = new PathStringManager();
-      this.guideLineManager = new PathStringManager();
-      this.segmentManager = new SegmentManager(null);
-      this.points = [];
-      this.cachedSegmentKeys = {};
-      this.initialize();
-      this.initializeSelect();
-    }
-    initialize() {
-      this.splitLines = [];
-      this.guideLineManager.reset();
-      this.segmentManager.reset();
-      this.pathStringManager.reset();
-    }
-    initializeSelect(initPointList = []) {
-      this.selectedPointKeys = {};
-      this.selectedPointList = [];
-      if (initPointList.length) {
-        this.select(...initPointList.map((p) => {
-          const checkedPoint = this.points[p.index][p.key];
-          if (!checkedPoint)
-            return void 0;
-          return {
-            x: checkedPoint.x,
-            y: checkedPoint.y,
-            key: p.key,
-            index: checkedPoint.index
-          };
-        }).filter(Boolean));
-      }
-    }
-    get state() {
-      return this.pathEditor.state;
-    }
-    get clonePoints() {
-      return [...this.points];
-    }
-    get length() {
-      return this.points.length;
-    }
-    setPoints(points = []) {
-      this.points = points;
-      this.snapPointList = [];
-      if (this.points.length === 0) {
-        this.select();
-        this.selectGroup(-1);
-      }
-    }
-    selectInBox(box, isToggle = false) {
-      var list = [];
-      this.points.forEach((point2, index2) => {
-        SEGMENT_DIRECTION.forEach((key) => {
-          const p = point2[key];
-          if (checkInArea(box, p)) {
-            list.push({ x: p.x, y: p.y, key, index: index2 });
-          }
-        });
-      });
-      if (isToggle) {
-        list = list.map((it) => {
-          const selectedKey = this.makeSegmentKey(it);
-          return __spreadProps(__spreadValues({}, it), {
-            included: Boolean(this.selectedPointKeys[selectedKey])
-          });
-        });
-        const includedList = list.filter((it) => it.included);
-        const notIncludedList = list.filter((it) => !it.included);
-        let uniqueList = [...this.selectedPointList];
-        if (includedList.length) {
-          uniqueList = this.selectedPointList.filter((it) => {
-            const oldKey = this.makeSegmentKey(it);
-            return Boolean(includedList.find((includeNode) => {
-              return oldKey === this.makeSegmentKey(includeNode);
-            })) === false;
-          });
-        }
-        this.select(...uniqueList, ...notIncludedList);
-      } else {
-        this.select(...list);
-      }
-    }
-    makeSegmentKey(p) {
-      return `${p.key}_${p.index}`;
-    }
-    select(...list) {
-      this.selectedPointKeys = {};
-      this.selectedPointList = list.map(({ x, y, key, index: index2 }) => ({
-        x,
-        y,
-        key,
-        index: +index2
-      }));
-      list.forEach((it) => {
-        var key = this.makeSegmentKey(it);
-        this.selectedPointKeys[key] = true;
-      });
-    }
-    convertPointsToSelectionList(points) {
-      var list = [];
-      points.forEach((point2) => {
-        SEGMENT_DIRECTION.forEach((key) => {
-          const { x, y } = point2[key];
-          list.push({ x, y, key, index: point2.index });
-        });
-      });
-      return list;
-    }
-    selectGroup(groupIndex) {
-      const group = this.splitedGroupList[groupIndex];
-      if (group) {
-        this.select(...this.convertPointsToSelectionList(group.points));
-      } else {
-        this.select();
-      }
-    }
-    getCacheSegmentKey(segmentKey, index2) {
-      if (!this.cachedSegmentKeys[segmentKey]) {
-        this.cachedSegmentKeys[segmentKey] = {};
-      }
-      if (!this.cachedSegmentKeys[segmentKey][index2]) {
-        this.cachedSegmentKeys[segmentKey][index2] = this.makeSegmentKey({
-          key: segmentKey,
-          index: index2
-        });
-      }
-      return this.cachedSegmentKeys[segmentKey][index2];
-    }
-    toggleSelect(key, index2) {
-      if (this.points[index2]) {
-        var point2 = this.points[index2][key];
-        if (point2 && !this.isSelectedSegment(key, index2)) {
-          this.select(...this.selectedPointList, {
-            x: point2.x,
-            y: point2.y,
-            key,
-            index: index2
-          });
-        } else {
-          this.select(...this.selectedPointList.filter((it) => {
-            return it.key !== key || it.index !== index2;
-          }));
-        }
-      }
-    }
-    selectKeyIndex(key, index2) {
-      if (this.points[index2]) {
-        var point2 = this.points[index2][key];
-        if (point2 && !this.isSelectedSegment(key, index2)) {
-          this.select({ x: point2.x, y: point2.y, key, index: index2 });
-        }
-      }
-    }
-    reselect() {
-      this.selectedPointList.filter(Boolean).forEach((it) => {
-        var _a;
-        var point2 = (_a = this.points[it.index]) == null ? void 0 : _a[it.key];
-        if (point2) {
-          it.x = point2.x;
-          it.y = point2.y;
-        }
-      });
-    }
-    isSelectedSegment(segment, index2) {
-      var key = this.getCacheSegmentKey(segment, index2);
-      return this.selectedPointKeys[key];
-    }
-    commitTransformMatrix(point2, transformMatrix) {
-      var result = transformMat4([], [point2.x, point2.y, 0], transformMatrix);
-      return { x: result[0], y: result[1] };
-    }
-    transformMat4(transformMatrix) {
-      this.transformPoints.forEach((p, index2) => {
-        var realPoint = this.points[index2];
-        Object.assign(realPoint.startPoint, this.commitTransformMatrix(p.startPoint, transformMatrix));
-        Object.assign(realPoint.endPoint, this.commitTransformMatrix(p.endPoint, transformMatrix));
-        Object.assign(realPoint.reversePoint, this.commitTransformMatrix(p.reversePoint, transformMatrix));
-      });
-    }
-    transform(type) {
-      var { x, y, width: width2, height } = this.transformRect;
-      var view = create$4();
-      translate(view, view, [x, y, 0]);
-      switch (type) {
-        case "flipX":
-          scale(view, view, [-1, 1, 1]);
-          translate(view, view, [-width2, 0, 0]);
-          break;
-        case "flipY":
-          scale(view, view, [1, -1, 1]);
-          translate(view, view, [0, -height, 0]);
-          break;
-        case "flip":
-          scale(view, view, [-1, -1, 1]);
-          translate(view, view, [-width2, -height, 0]);
-          break;
-      }
-      translate(view, view, [-x, -y, 0]);
-      this.transformMat4(view);
-    }
-    initTransform(rect2) {
-      this.transformRect = sapa.clone(rect2);
-      this.transformPoints = this.clonePoints.map((p) => {
-        return {
-          startPoint: sapa.clone(p.startPoint),
-          endPoint: sapa.clone(p.endPoint),
-          reversePoint: sapa.clone(p.reversePoint)
-        };
-      });
-    }
-    setConnectedPoint(dx, dy) {
-      var state = this.state;
-      var x = state.dragXY.x + dx;
-      var y = state.dragXY.y + dy;
-      var endPoint = { x, y };
-      var reversePoint = { x, y };
-      if (state.dragPoints) {
-        state.reversePoint = Point.getReversePoint(state.startPoint, endPoint);
-      }
-      var point2 = {
-        startPoint: state.startPoint,
-        endPoint,
-        curve: !!state.dragPoints,
-        reversePoint,
-        connected: true,
-        close: true
-      };
-      this.points.push(point2);
-    }
-    setLastPoint(startPoint) {
-      var endPoint = sapa.clone(startPoint);
-      var reversePoint = sapa.clone(startPoint);
-      var point2 = {
-        startPoint,
-        endPoint,
-        curve: false,
-        reversePoint,
-        connected: false,
-        close: false
-      };
-      this.points.push(point2);
-    }
-    getPrevPoint(index2) {
-      return Point.getPrevPoint(this.points, index2);
-    }
-    getIndexPoint(index2) {
-      return Point.getIndexPoint(this.points, index2);
-    }
-    getNextPoint(index2) {
-      return Point.getNextPoint(this.points, index2);
-    }
-    getConnectedPointList(index2) {
-      return Point.getConnectedPointList(this.points, index2);
-    }
-    isFirst(segment) {
-      return Point.isFirst(segment);
-    }
-    getLastPoint(index2) {
-      return Point.getLastPoint(this.points, index2);
-    }
-    setCachePoint(index2, segmentKey) {
-      var state = this.state;
-      this.snapPointList = [];
-      this.selectedIndex = index2;
-      state.connectedPoint = this.getPrevPoint(index2);
-      state.connectedPointList = sapa.clone(Point.getConnectedPointList(this.points, this.selectedIndex));
-      if (state.connectedPoint && !state.connectedPoint.connected) {
-        state.connectedPoint = null;
-      }
-      state.segment = this.getIndexPoint(index2);
-      if (state.segment.connected) {
-        state.connectedPoint = this.getNextPoint(index2);
-      }
-      var isFirstSegment = this.isFirst(state.segment);
-      if (isFirstSegment) {
-        var lastPoint = this.getLastPoint(index2);
-        if (lastPoint.connected) {
-          state.connectedPoint = lastPoint;
-        }
-      }
-      state.segmentKey = segmentKey;
-      state.isCurveSegment = state.segment.curve && state.segmentKey != "startPoint";
-      state.originalSegment = sapa.clone(state.segment);
-      if (state.connectedPoint) {
-        state.originalConnectedPoint = sapa.clone(state.connectedPoint);
-      }
-      state.cachedPoints = [];
-      this.points.filter((p) => p && p != state.segment).forEach((p) => {
-        state.cachedPoints.push(p.startPoint, p.reversePoint, p.endPoint);
-      });
-    }
-    clamp(value, min, max) {
-      if (sapa.isUndefined(min) || sapa.isUndefined(max)) {
-        return value;
-      }
-      return Math.max(min, Math.min(max, value));
-    }
-    moveSegment(segmentKey, dx, dy, originSegment = void 0, maxWidth = void 0, maxHeight = void 0) {
-      if (originSegment) {
-        const segment = this.points[originSegment.index][segmentKey];
-        segment.x = this.clamp(originSegment[segmentKey].x + dx, 0, maxWidth);
-        segment.y = this.clamp(originSegment[segmentKey].y + dy, 0, maxHeight);
-      } else {
-        var state = this.state;
-        var originPoint = state.originalSegment[segmentKey];
-        var targetPoint = state.segment[segmentKey];
-        if (originPoint) {
-          targetPoint.x = this.clamp(originPoint.x + dx, 0, maxWidth);
-          targetPoint.y = this.clamp(originPoint.y + dy, 0, maxHeight);
-        }
-      }
-    }
-    calculateToCurve(point2, nextPoint, prevPoint) {
-      var centerX = (nextPoint.startPoint.x + prevPoint.startPoint.x) / 2;
-      var centerY = (nextPoint.startPoint.y + prevPoint.startPoint.y) / 2;
-      var dx = (nextPoint.startPoint.x - centerX) / 2;
-      var dy = (nextPoint.startPoint.y - centerY) / 2;
-      point2.endPoint = {
-        x: point2.startPoint.x + dx,
-        y: point2.startPoint.y + dy
-      };
-      point2.reversePoint = {
-        x: point2.startPoint.x - dx,
-        y: point2.startPoint.y - dy
-      };
-      return { dx, dy };
-    }
-    convertToCurve(index2) {
-      var point2 = this.points[index2];
-      if (point2.curve) {
-        point2.curve = false;
-        point2.reversePoint = sapa.clone(point2.startPoint);
-        point2.endPoint = sapa.clone(point2.startPoint);
-        if (point2.command === "M") {
-          var lastPoint = Point.getPrevPoint(this.points, point2.index);
-          if (lastPoint.connected) {
-            lastPoint.curve = false;
-            lastPoint.reversePoint = sapa.clone(lastPoint.startPoint);
-            lastPoint.endPoint = sapa.clone(lastPoint.startPoint);
-          }
-        } else {
-          var nextPoint = this.getNextPoint(index2);
-          if (nextPoint && nextPoint.command === "M") {
-            var firstPoint = nextPoint;
-            firstPoint.curve = false;
-            firstPoint.reversePoint = sapa.clone(firstPoint.startPoint);
-            firstPoint.endPoint = sapa.clone(firstPoint.startPoint);
-          }
-        }
-      } else {
-        point2.curve = true;
-        var prevPoint = this.getPrevPoint(index2);
-        var nextPoint = this.getNextPoint(index2);
-        if (nextPoint && nextPoint.index < index2 && nextPoint.command === "M") {
-          var firstPoint = nextPoint;
-          nextPoint = this.getNextPoint(firstPoint.index);
-          this.calculateToCurve(point2, nextPoint, prevPoint);
-          firstPoint.curve = true;
-          firstPoint.endPoint = sapa.clone(point2.endPoint);
-          firstPoint.reversePoint = sapa.clone(point2.reversePoint);
-        } else if (nextPoint && nextPoint.index > index2 && nextPoint.command !== "M") {
-          this.calculateToCurve(point2, nextPoint, prevPoint);
-        } else if (!nextPoint && prevPoint) {
-          var centerX = (point2.startPoint.x - prevPoint.startPoint.x) / 3;
-          var centerY = (point2.startPoint.y - prevPoint.startPoint.y) / 3;
-          point2.endPoint = {
-            x: point2.startPoint.x + centerX,
-            y: point2.startPoint.y + centerY
-          };
-          point2.reversePoint = Point.getReversePoint(point2.startPoint, point2.endPoint);
-        } else if (!prevPoint && nextPoint) {
-          var centerX = (point2.startPoint.x - nextPoint.startPoint.x) / 3;
-          var centerY = (point2.startPoint.y - nextPoint.startPoint.y) / 3;
-          point2.endPoint = {
-            x: point2.startPoint.x + centerX,
-            y: point2.startPoint.y + centerY
-          };
-          point2.reverse = Point.getReversePoint(point2.startPoint, point2.endPoint);
-        }
-      }
-    }
-    moveCurveSegment(segmentKey, dx, dy) {
-      var state = this.state;
-      this.moveSegment(segmentKey, dx, dy);
-      var targetSegmentKey = segmentKey === "endPoint" ? "reversePoint" : "endPoint";
-      state.segment[targetSegmentKey] = Point.getReversePoint(state.segment.startPoint, state.segment[segmentKey]);
-    }
-    rotateSegmentTarget(segmentKey, target) {
-      var state = this.state;
-      if (state.originalSegment && state.segment) {
-        var { x: cx, y: cy } = state.originalSegment.startPoint;
-        var { x: rx, y: ry } = state.segment[segmentKey];
-        var { x: tx, y: ty } = state.originalSegment[target];
-        var { x, y } = getXYInCircle(calculateAngle360(rx - cx, ry - cy), getDist(tx, ty, cx, cy), cx, cy);
-        state.segment[target] = { x, y };
-      }
-    }
-    rotateSegment(segmentKey) {
-      this.rotateSegmentTarget(segmentKey, segmentKey === "endPoint" ? "reversePoint" : "endPoint");
-    }
-    calculateSnap(segmentKey, dx, dy, dist2 = 1) {
-      var state = this.state;
-      var cachedPoints = state.cachedPoints;
-      var original = state.originalSegment[segmentKey];
-      if (!segmentKey) {
-        return { dx, dy, snapPointList: [] };
-      }
-      var realX = original.x + dx;
-      var realY = original.y + dy;
-      var { point: snapPointX, distanceValue: dx } = calculateSnapPoint(cachedPoints, "x", realX, dx, dist2);
-      var { point: snapPointY, distanceValue: dy } = calculateSnapPoint(cachedPoints, "y", realY, dy, dist2);
-      var snapEndPoint = {
-        x: original.x + dx,
-        y: original.y + dy
-      };
-      var snapPointList = [];
-      if (snapPointX) {
-        snapPointList.push({ startPoint: snapPointX, endPoint: snapEndPoint });
-      }
-      if (snapPointY) {
-        snapPointList.push({ startPoint: snapPointY, endPoint: snapEndPoint });
-      }
-      return { dx, dy, snapPointList };
-    }
-    copySegment(from, to) {
-      to.startPoint = sapa.clone(from.startPoint);
-      to.endPoint = sapa.clone(from.endPoint);
-      to.reversePoint = sapa.clone(from.reversePoint);
-    }
-    get selectedLength() {
-      return this.selectedPointList.length;
-    }
-    moveSelectedSegment(dx, dy) {
-      if (this.selectedPointList.length > 0) {
-        this.selectedPointList.forEach((it) => {
-          var target = this.points[it.index][it.key];
-          target.x = it.x + dx;
-          target.y = it.y + dy;
-        });
-      } else if (this.selectedGroup) {
-        this.moveSelectedGroup(dx, dy);
-      }
-    }
-    moveSelectedGroup(dx, dy, maxWidth, maxHeight) {
-      this.selectedGroup.points.forEach((it) => {
-        const target = this.points[it.index];
-        target.startPoint.x = this.clamp(it.startPoint.x + dx, 0, maxWidth);
-        target.startPoint.y = this.clamp(it.startPoint.y + dy, 0, maxHeight);
-        target.endPoint.x = it.endPoint.x + dx;
-        target.endPoint.y = it.endPoint.y + dy;
-        target.reversePoint.x = it.reversePoint.x + dx;
-        target.reversePoint.y = it.reversePoint.y + dy;
-      });
-    }
-    get selectedGroup() {
-      return this.splitedGroupList[this.state.selectedGroupIndex];
-    }
-    get splitedGroupList() {
-      return Point.getSplitedGroupList(this.points);
-    }
-    get groupList() {
-      return Point.getGroupList(this.points);
-    }
-    getGroup(groupList, pointIndex) {
-      return Point.getGroup(groupList, pointIndex);
-    }
-    get selectedGroupIndexList() {
-      const groupIndexList = /* @__PURE__ */ new Set();
-      const groupList = this.groupList;
-      if (this.selectedPointList.length === 0 && this.state.selectedGroupIndex < 0) {
-        return groupList.map((group) => group.groupIndex);
-      }
-      const points = this.selectedPointList;
-      points.forEach((it) => {
-        const group = this.getGroup(groupList, it.index);
-        if (group) {
-          groupIndexList.add(group.groupIndex);
-        }
-      });
-      return [.../* @__PURE__ */ new Set([...groupIndexList, this.state.selectedGroupIndex])];
-    }
-    removeSelectedSegment() {
-      this.selectedPointList.forEach((it) => {
-        var target = this.points[it.index][it.key];
-        target.removed = true;
-      });
-      const pointGroup = Point.splitPoints(this.points);
-      const newPoints = Point.recoverPoints(pointGroup.map((points) => {
-        return points.filter((p) => !p.startPoint.removed).map((p) => {
-          if (p.endPoint.removed) {
-            p.endPoint = sapa.clone(p.startPoint);
-          }
-          if (p.reversePoint.removed) {
-            p.reversePoint = sapa.clone(p.startPoint);
-          }
-          if (Point.isEqual(p.endPoint, p.startPoint, p.reversePoint)) {
-            p.command = "L";
-            p.curve = false;
-          }
-          return p;
-        });
-      }));
-      this.points = newPoints;
-      this.select();
-    }
-    move(dx, dy, e, maxWidth, maxHeight) {
-      var state = this.state;
-      var { isCurveSegment, segmentKey, connectedPoint } = state;
-      if (this.selectedPointList.length > 1) {
-        this.moveSelectedSegment(dx, dy, maxWidth, maxHeight);
-      } else if (this.selectedPointList.length === 1) {
-        var { dx, dy, snapPointList } = this.calculateSnap(segmentKey, dx, dy, 3);
-        this.snapPointList = snapPointList || [];
-        if (isCurveSegment) {
-          if (e.altKey) {
-            this.moveSegment(segmentKey, dx, dy);
-            this.rotateSegment(segmentKey);
-          } else if (e.shiftKey) {
-            this.moveSegment(segmentKey, dx, dy);
-          } else {
-            this.moveSegment(segmentKey, dx, dy);
-            var targetSegmentKey = segmentKey === "endPoint" ? "reversePoint" : "endPoint";
-            state.segment[targetSegmentKey] = Point.getReversePoint(state.segment.startPoint, state.segment[segmentKey]);
-          }
-        } else {
-          this.moveSegment("startPoint", dx, dy, null, maxWidth, maxHeight);
-          this.moveSegment("endPoint", dx, dy);
-          this.moveSegment("reversePoint", dx, dy);
-          if (!e.altKey) {
-            state.connectedPointList.forEach((it) => {
-              this.moveSegment("startPoint", dx, dy, it, maxWidth, maxHeight);
-              this.moveSegment("endPoint", dx, dy, it);
-              this.moveSegment("reversePoint", dx, dy, it);
-            });
-          }
-        }
-        connectedPoint && this.copySegment(state.segment, state.connectedPoint);
-      } else if (this.state.selectedGroupIndex > -1) {
-        this.moveSelectedGroup(dx, dy, maxWidth, maxHeight);
-      }
-    }
-    moveEnd(dx, dy) {
-      var state = this.state;
-      var points = this.points;
-      var x = state.dragXY.x + dx;
-      var y = state.dragXY.y + dy;
-      var endPoint = { x, y };
-      var reversePoint = { x, y };
-      if (state.dragPoints) {
-        reversePoint = Point.getReversePoint(state.startPoint, endPoint);
-      }
-      points.push({
-        command: state.clickCount === 0 ? "M" : "",
-        startPoint: state.startPoint,
-        endPoint,
-        curve: !!state.dragPoints,
-        reversePoint
-      });
-      state.startPoint = null;
-      state.dragPoints = false;
-      state.moveXY = null;
-    }
-    setPoint(obj2) {
-      var p0 = obj2.first[0];
-      var p1 = obj2.second[obj2.second.length - 1];
-      var allPoints = this.clonePoints;
-      var firstItem = Point.getPoint(allPoints, p0);
-      var secondItem = Point.getPoint(allPoints, p1);
-      var newPoints = [
-        __spreadProps(__spreadValues({}, firstItem), { endPoint: obj2.first[1] }),
-        {
-          startPoint: obj2.first[3],
-          reversePoint: obj2.first[2],
-          curve: true,
-          endPoint: obj2.second[1]
-        },
-        __spreadProps(__spreadValues({}, secondItem), { reversePoint: obj2.second[2] })
-      ];
-      var firstIndex = Point.getIndex(allPoints, p0);
-      allPoints.splice(firstIndex, 2, ...newPoints);
-      this.points = allPoints;
-      return firstIndex + 1;
-    }
-    setPointQuard(obj2) {
-      var p0 = obj2.first[0];
-      var p1 = obj2.second[obj2.second.length - 1];
-      var allPoints = this.clonePoints;
-      var firstItem = Point.getPoint(allPoints, p0);
-      var secondItem = Point.getPoint(allPoints, p1);
-      if (firstItem.curve && secondItem.curve === false) {
-        var newPoints = [
-          __spreadProps(__spreadValues({}, firstItem), { endPoint: firstItem.startPoint }),
-          {
-            startPoint: obj2.first[2],
-            reversePoint: obj2.first[1],
-            curve: true,
-            endPoint: obj2.second[1]
-          }
-        ];
-        var firstIndex = Point.getIndex(allPoints, p0);
-        allPoints.splice(firstIndex, 1, ...newPoints);
-      } else {
-        var newPoints = [
-          __spreadValues({}, firstItem),
-          {
-            startPoint: obj2.first[2],
-            reversePoint: obj2.first[1],
-            curve: true,
-            endPoint: obj2.second[1]
-          },
-          __spreadProps(__spreadValues({}, secondItem), { reversePoint: obj2.second[1], curve: true })
-        ];
-        var firstIndex = Point.getIndex(allPoints, p0);
-        allPoints.splice(firstIndex, 2, ...newPoints);
-      }
-      this.points = allPoints;
-      return firstIndex + 1;
-    }
-    setPointLine(obj2) {
-      var p0 = obj2.first[0];
-      var allPoints = this.clonePoints;
-      var newPoints = [
-        {
-          command: "L",
-          startPoint: obj2.first[1],
-          curve: false,
-          endPoint: obj2.first[1],
-          reversePoint: obj2.first[1]
-        }
-      ];
-      var firstIndex = Point.getIndex(allPoints, p0);
-      allPoints.splice(firstIndex + 1, 0, ...newPoints);
-      this.points = allPoints;
-      return firstIndex + 1;
-    }
-    toPath(minX = 0, minY = 0, scale2 = 1) {
-      return toPath(this.clonePoints, minX, minY, scale2);
-    }
-    makeSVGPath() {
-      this.initialize();
-      this.makePointGuide(this.points);
-      this.makeMovePositionGuide();
-      return this.toSVGString();
-    }
-    makeTriangleDistancePointGuide(first, second) {
-      var minX = Math.min(first.startPoint.x, second.startPoint.x);
-      var maxX = Math.max(first.startPoint.x, second.startPoint.x);
-      var minY = Math.min(first.startPoint.y, second.startPoint.y);
-      var maxY = Math.max(first.startPoint.y, second.startPoint.y);
-      if (first.startPoint.x < second.startPoint.x && first.startPoint.y < second.startPoint.y) {
-        this.segmentManager.addDistanceLine({ x: minX, y: minY }, { x: maxX, y: minY }).addDistanceLine({ x: maxX, y: minY }, { x: maxX, y: maxY });
-        var centerX = minX;
-        var centerY = minY;
-        var angle = calculateAngle360(maxX - minX, maxY - minY) - 180;
-        var dist2 = 20;
-        var { x, y } = getXYInCircle(0, dist2, centerX, centerY);
-        var last = getXYInCircle(angle, dist2, centerX, centerY);
-        this.segmentManager.addDistanceAngle(last, dist2, dist2, angle, { x, y }, { x: x - dist2, y });
-      } else if (first.startPoint.x < second.startPoint.x && first.startPoint.y > second.startPoint.y) {
-        this.segmentManager.addDistanceLine({ x: minX, y: maxY }, { x: maxX, y: maxY }).addDistanceLine({ x: maxX, y: minY }, { x: maxX, y: maxY });
-      } else if (first.startPoint.x > second.startPoint.x && first.startPoint.y > second.startPoint.y) {
-        this.segmentManager.addDistanceLine({ x: minX, y: minY }, { x: minX, y: maxY }).addDistanceLine({ x: minX, y: maxY }, { x: maxX, y: maxY });
-      } else if (first.startPoint.x > second.startPoint.x && first.startPoint.y < second.startPoint.y) {
-        this.segmentManager.addDistanceLine({ x: minX, y: maxY }, { x: maxX, y: maxY }).addDistanceLine({ x: maxX, y: minY }, { x: maxX, y: maxY });
-      }
-    }
-    makeDistancePointGuide(prevPoint, current, nextPoint) {
-      if (current.selected) {
-        if (prevPoint) {
-          this.makeTriangleDistancePointGuide(prevPoint, current);
-        }
-        if (nextPoint) {
-          this.makeTriangleDistancePointGuide(current, nextPoint);
-        }
-      }
-    }
-    makeStartPointGuide(prevPoint, current, nextPoint, index2) {
-      current.startPoint.isFirst = true;
-      if (current.curve === false) {
-        this.segmentManager.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
-      } else {
-        this.segmentManager.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2)).addGuideLine(current.startPoint, current.endPoint);
-        if (Point.isEqual(current.startPoint, current.endPoint) === false) {
-          this.segmentManager.addCurvePoint(current.endPoint, index2, "endPoint", this.isSelectedSegment("endPoint", index2));
-        }
-      }
-    }
-    makeMiddlePointGuideSegment(prevPoint, current, nextPoint, index2) {
-      var mng = this.segmentManager;
-      if (current.curve === false) {
-        if (prevPoint.curve === false) {
-          mng.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
-        } else {
-          mng.addGuideLine(prevPoint.startPoint, prevPoint.endPoint).addCurvePoint(current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
-          if (Point.isEqual(prevPoint.startPoint, prevPoint.endPoint) === false) {
-            mng.addCurvePoint(prevPoint.endPoint, prevPoint.index, "endPoint", this.isSelectedSegment("endPoint", prevPoint.index));
-          }
-        }
-      } else {
-        if (prevPoint.curve === false) {
-          if (Point.isEqual(current.reversePoint, current.startPoint)) {
-            mng.addPoint({}, current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
-          } else {
-            mng.addGuideLine(current.startPoint, current.reversePoint).addCurvePoint(current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
-            if (Point.isEqual(current.startPoint, current.reversePoint) === false) {
-              mng.addCurvePoint(current.reversePoint, index2, "reversePoint", this.isSelectedSegment("reversePoint", index2));
-            }
-          }
-        } else {
-          if (current.connected) {
-            mng.addGuideLine(prevPoint.startPoint, prevPoint.endPoint).addGuideLine(current.startPoint, current.reversePoint);
-            if (Point.isEqual(prevPoint.startPoint, prevPoint.endPoint) === false) {
-              mng.addCurvePoint(prevPoint.endPoint, prevPoint.index, "endPoint", this.isSelectedSegment("endPoint", prevPoint.index));
-            }
-            if (Point.isEqual(current.startPoint, current.reversePoint) === false) {
-              mng.addCurvePoint(current.reversePoint, index2, "reversePoint", this.isSelectedSegment("reversePoint", index2));
-            }
-          } else {
-            mng.addGuideLine(prevPoint.startPoint, prevPoint.endPoint).addGuideLine(current.startPoint, current.reversePoint).addCurvePoint(current.startPoint, index2, "startPoint", this.isSelectedSegment("startPoint", index2));
-            if (Point.isEqual(prevPoint.startPoint, prevPoint.endPoint) === false) {
-              mng.addCurvePoint(prevPoint.endPoint, prevPoint.index, "endPoint", this.isSelectedSegment("endPoint", prevPoint.index));
-            }
-            if (Point.isEqual(current.startPoint, current.reversePoint) === false) {
-              mng.addCurvePoint(current.reversePoint, index2, "reversePoint", this.isSelectedSegment("reversePoint", index2));
-            }
-          }
-        }
-      }
-    }
-    makeMiddlePointGuideSplitLine(prevPoint, current) {
-      const selected = "selected";
-      if (current.curve === false) {
-        if (prevPoint.curve === false) {
-          this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).L(current.startPoint).toString(`split-path ${selected}`));
-        } else {
-          this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).Q(prevPoint.endPoint, current.startPoint).toString(`split-path ${selected}`));
-        }
-      } else {
-        if (prevPoint.curve === false) {
-          if (Point.isEqual(current.reversePoint, current.startPoint)) {
-            this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).L(current.startPoint).toString(`split-path ${selected}`));
-          } else {
-            this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).Q(current.reversePoint, current.startPoint).toString(`split-path ${selected}`));
-          }
-        } else {
-          this.splitLines.push(new PathStringManager().M(prevPoint.startPoint).C(prevPoint.endPoint, current.reversePoint, current.startPoint).toString(`split-path ${selected}`));
-        }
-      }
-    }
-    makePointGuide(points) {
-      for (var index2 = 0, len2 = points.length; index2 < len2; index2++) {
-        var currentIndex = index2;
-        var current = points[currentIndex];
-        if (!current)
-          continue;
-        var nextPoint = Point.getNextPoint(points, index2);
-        var prevPoint = Point.getPrevPoint(points, index2);
-        if (prevPoint && prevPoint.command === "M") {
-          if (current.startPoint) {
-            current.startPoint.isSecond = true;
-          }
-        }
-        if (current.startPoint) {
-          if (nextPoint) {
-            current.startPoint.isLast = nextPoint.command === "M";
-          } else {
-            current.startPoint.isLast = index2 === len2 - 1;
-          }
-        }
-        current.selected = this.selectedIndex === index2;
-        if (current.command === "M") {
-          this.makeStartPointGuide(prevPoint, current, nextPoint, index2);
-        } else {
-          this.makeMiddlePointGuideSplitLine(prevPoint, current, nextPoint, index2);
-          this.makeMiddlePointGuideSegment(prevPoint, current, nextPoint, index2);
-        }
-        if (current.close) {
-          this.pathStringManager.Z();
-        }
-      }
-    }
-    makeMovePositionGuide() {
-      var state = this.state;
-      var {
-        startPoint,
-        moveXY,
-        dragPoints,
-        snapPointList,
-        isGroupSegment
-      } = state;
-      var points = this.points;
-      if (moveXY) {
-        snapPointList = snapPointList || [];
-        var { snapPointList: movePointSnapPointList, moveXY: newMoveXY } = calculateMovePointSnap(points, moveXY, 3);
-        snapPointList.push.apply(snapPointList, movePointSnapPointList);
-        state.moveXY = newMoveXY;
-        moveXY = newMoveXY;
-        this.snapPointList = snapPointList;
-        var prev = points[points.length - 1];
-        if (dragPoints && !isGroupSegment) {
-          if (!prev) {
-            var { x, y } = Point.getReversePoint(startPoint, moveXY);
-            this.guideLineManager.M(moveXY).L(startPoint).L({ x, y });
-            this.segmentManager.addCurvePoint(startPoint).addCurvePoint(moveXY).addCurvePoint({ x, y });
-          } else if (prev.curve) {
-            var { x, y } = Point.getReversePoint(startPoint, moveXY);
-            this.guideLineManager.M(prev.startPoint).C(prev.endPoint, { x, y }, startPoint);
-            this.segmentManager.addGuideLine(prev.startPoint, prev.endPoint).addGuideLine(startPoint, { x, y }).addGuideLine(startPoint, moveXY).addCurvePoint(prev.endPoint).addCurvePoint({ x, y }).addCurvePoint(moveXY).addPoint(false, startPoint);
-          } else if (prev.curve === false) {
-            var { x, y } = Point.getReversePoint(startPoint, moveXY);
-            this.guideLineManager.M(prev.startPoint).Q({ x, y }, startPoint);
-            this.segmentManager.addGuideLine(moveXY, { x, y }).addPoint(false, startPoint).addCurvePoint({ x, y }).addCurvePoint(moveXY);
-          }
-        } else {
-          if (!prev)
-            ;
-          else if (prev.curve) {
-            this.guideLineManager.M(prev.startPoint).Q(prev.endPoint, moveXY);
-            this.segmentManager.addGuideLine(prev.endPoint, prev.startPoint).addCurvePoint(prev.endPoint);
-          } else {
-            if (!prev.close) {
-              this.guideLineManager.M(prev.startPoint).L(moveXY);
-              this.segmentManager.addPoint(false, prev.startPoint);
-            }
-          }
-        }
-      }
-    }
-    makeSnapLines() {
-      var snapLines = [];
-      if (this.snapPointList) {
-        var snapPath = new PathStringManager();
-        snapLines = this.snapPointList.map((snapPoint) => {
-          snapPath.reset();
-          return snapPath.M(snapPoint.startPoint).L(snapPoint.endPoint).X(snapPoint.startPoint).toString("snap-path");
-        });
-      }
-      return snapLines.join("");
-    }
-    makePathArea() {
-      const pathList = this.splitedGroupList.map(({ startPointIndex, points }, groupIndex) => {
-        const d = this.generatorPathString(points);
-        const verties = toRectVerties(PathParser.fromSVGString(d).getBBox());
-        return {
-          points,
-          startPointIndex,
-          groupIndex,
-          center: verties[4],
-          d
-        };
-      });
-      const pathCount = pathList.length;
-      return `
-            <g>
-               ${pathList.map((it) => {
-        const { center } = it;
-        const [x, y] = center;
-        const selected = this.state.selectedGroupIndex === it.groupIndex;
-        return `
-                        <path class="path-area ${selected ? "selected" : ""}" 
-                            d="${it.d}" 
-                            data-point-index="${it.startPointIndex}" 
-                            data-group-index="${it.groupIndex}" 
-                        />
-
-                        ${pathCount > 1 && `
-                            <text class="path-area-text" x="${x}" y="${y}" >${it.groupIndex + 1}</text>
-                        `}
-                    `;
-      }).join("")}
-            </g>
-        `;
-    }
-    toSVGString() {
-      return `
-        <svg width="100%" height="100%" class='svg-editor-canvas' tabIndex="-1">
-            ${this.guideLineManager.toString("guide")}
-            ${this.splitLines.join("")}
-            ${this.makeSnapLines()}
-            ${this.makePathArea()}
-            ${this.segmentManager.toString()}
-        </svg>
-        `;
-    }
-  }
-  function xy([x, y]) {
-    return { x, y };
-  }
-  function scaleLinear(source, target) {
-    function targetScale(t) {
-      if (target[0] < target[1]) {
-        return target[0] + t * (target[1] - target[0]);
-      } else if (target[0] > target[1]) {
-        return target[0] - t * (target[0] - target[1]);
-      }
-    }
-    function rate(v1, v2, current) {
-      const minValue = Math.min(v1, v2);
-      const maxValue = Math.max(v1, v2);
-      return (current - minValue) / (maxValue - minValue);
-    }
-    return (x) => {
-      if (source[0] < source[1]) {
-        return targetScale(rate(source[0], source[1], x));
-      } else if (source[0] > source[1]) {
-        return targetScale(1 - rate(source[0], source[1], x));
-      }
-    };
-  }
-  const SegmentConvertor = class extends editor.EditorElement {
-    convertToCurve(index2) {
-      this.pathGenerator.convertToCurve(index2);
-      this.renderPath();
-      this.updatePathLayer();
-    }
-    isEditableSegment() {
-      return this.state.disableCurve === false;
-    }
-    [sapa.DOUBLECLICK("$view [data-segment]") + sapa.IF("isEditableSegment") + sapa.PREVENT](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.convertToCurve(index2);
-    }
-    [sapa.DOUBLETAB("$view [data-segment]") + sapa.PREVENT + sapa.DELAY(300)](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.convertToCurve(index2);
-    }
-  };
-  const PathCutter = class extends SegmentConvertor {
-    calculatePointOnLine(d, clickPosition) {
-      var parser = new PathParser(d);
-      return parser.getClosedPoint(clickPosition);
-    }
-    [sapa.POINTERSTART("$view .split-path") + MOVE() + END()](e) {
-      this.initRect();
-      var parser = new PathParser(e.$dt.attr("d"));
-      var clickPosition = {
-        x: e.xy.x - this.state.rect.x,
-        y: e.xy.y - this.state.rect.y
-      };
-      var selectedSegmentIndex = -1;
-      if (this.isMode("path")) {
-        this.state.dragXY = clickPosition;
-        this.state.startPoint = this.state.dragXY;
-        this.pathGenerator.setLastPoint(this.state.startPoint);
-        this.state.isSplitPath = true;
-        this.renderPath();
-        if (this.state.current) {
-          this.updatePathLayer();
-        }
-        return;
-      } else {
-        if (parser.segments[1].command === "C") {
-          var points = [
-            xy(parser.segments[0].values),
-            xy(parser.segments[1].values.slice(0, 2)),
-            xy(parser.segments[1].values.slice(2, 4)),
-            xy(parser.segments[1].values.slice(4, 6))
-          ];
-          var curve = recoverBezier(...points, 20);
-          var t = curve(clickPosition.x, clickPosition.y);
-          selectedSegmentIndex = this.pathGenerator.setPoint(getBezierPoints(points, t));
-        } else if (parser.segments[1].command === "Q") {
-          var points = [
-            xy(parser.segments[0].values),
-            xy(parser.segments[1].values.slice(0, 2)),
-            xy(parser.segments[1].values.slice(2, 4))
-          ];
-          var curve = recoverBezierQuard(...points, 20);
-          var t = curve(clickPosition.x, clickPosition.y);
-          selectedSegmentIndex = this.pathGenerator.setPointQuard(getBezierPointsQuard(points, t));
-        } else if (parser.segments[1].command === "L") {
-          var points = [
-            xy(parser.segments[0].values),
-            xy(parser.segments[1].values.slice(0, 2))
-          ];
-          var curve = recoverBezierLine(...points, 20);
-          var t = curve(clickPosition.x, clickPosition.y);
-          selectedSegmentIndex = this.pathGenerator.setPointLine(getBezierPointsLine(points, t));
-          if (e.altKey) {
-            this.pathGenerator.convertToCurve(selectedSegmentIndex);
-          }
-        }
-        this.renderPath();
-        this.updatePathLayer();
-        this.changeMode("segment-move");
-        this.pathGenerator.setCachePoint(selectedSegmentIndex, "startPoint");
-        this.pathGenerator.selectKeyIndex("startPoint", selectedSegmentIndex);
-      }
-    }
-  };
-  class PathEditor extends PathCutter {
-    initialize() {
-      super.initialize();
-      this.pathParser = new PathParser();
-      this.pathGenerator = new PurePathGenerator(this);
-    }
-    initState() {
-      return {
-        domain: this.props.domain || [0, 1],
-        range: this.props.range || [1, 0],
-        isControl: false,
-        disableCurve: false,
-        points: [],
-        mode: "path",
-        clickCount: 0,
-        isSegment: false,
-        isFirstSegment: false,
-        current: null
-      };
-    }
-    template() {
-      return `
-        <div class='elf--path-editor' tabIndex="-1">
-            <style type="text/css" ref="$styleView"></style>
-            <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-                <defs>
-                    <pattern id='stripe' patternUnits='userSpaceOnUse' width='20' height='33' patternTransform='scale(1) rotate(135)'>
-                        <path d='M0 8h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
-                        <path d='M0 16h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
-                        <path d='M0 24h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
-                        <path d='M0 32h20z'   stroke-width='1' stroke='#07A3FB' fill='none'/>
-                    </pattern>
-                </defs>    
-            </svg>
-            <div class='path-container' ref='$view'></div>
-            <div class='path-container split-panel'>
-                <svg width="100%" height="100%">
-                    <circle ref='$splitCircle' class='split-circle' />
-                </svg>
-            </div>
-            <div class='segment-box' ref='$segmentBox'></div>
-        </div>`;
-    }
-    [sapa.BIND("$el")]() {
-      return {
-        style: {
-          height: editor.Length.px(this.props.height) || 200
-        }
-      };
-    }
-    initRect(isForce = false) {
-      if (!this.state.rect || isForce || this.state.rect.width == 0 || this.state.rect.height == 0) {
-        this.state.rect = this.refs.$view.rect();
-      }
-    }
-    [sapa.SUBSCRIBE("PathEditorDone")]() {
-      this.updatePathLayer();
-    }
-    [sapa.KEYUP() + sapa.ENTER]() {
-      this.trigger("PathEditorDone");
-    }
-    [sapa.KEYUP() + sapa.ESCAPE]() {
-      if (this.state.current) {
-        this.updatePathLayer();
-      }
-    }
-    [sapa.KEYUP() + sapa.DELETE]() {
-      console.log("delete");
-    }
-    [sapa.KEYUP("$el .segment")](e) {
-      const index2 = +e.$dt.data("index");
-      console.log(index2);
-      switch (e.code) {
-        case "Delete":
-        case "Backspace":
-          this.trigger("deleteSegment");
-          break;
-      }
-    }
-    [sapa.SUBSCRIBE_SELF("deleteSegment")]() {
-      this.pathGenerator.reselect();
-      this.pathGenerator.removeSelectedSegment();
-      this.renderPath();
-      this.updatePathLayer();
-    }
-    [sapa.SUBSCRIBE_SELF("moveSegment")](dx, dy) {
-      this.pathGenerator.reselect();
-      this.pathGenerator.moveSelectedSegment(dx, dy);
-      this.renderPath();
-      this.updatePathLayer();
-    }
-    recoverAreaToPath(d) {
-      this.initRect(true);
-      var parser = new PathParser(d);
-      parser.scaleFunc(this.state.domainScaleInvert, this.state.rangeScaleInvert);
-      return parser.d;
-    }
-    updatePathLayer() {
-      var { d } = this.pathGenerator.toPath();
-      const value = this.recoverAreaToPath(d);
-      this.parent.trigger(this.props.onchange, this.state.key, value);
-    }
-    changeMode(mode, obj2) {
-      this.setState(__spreadValues({
-        mode,
-        clickCount: 0,
-        moveXY: null
-      }, obj2), false);
-      if (obj2 == null ? void 0 : obj2.points) {
-        this.pathGenerator.setPoints(obj2.points || []);
-      }
-    }
-    isMode(mode) {
-      return this.state.mode === mode;
-    }
-    convertPathToArea(obj2) {
-      this.initRect(true);
-      const width2 = this.state.rect.width;
-      const height = this.state.rect.height;
-      this.state.domainScale = scaleLinear([0, 1], [0, width2]);
-      this.state.rangeScale = scaleLinear([1, 0], [0, height]);
-      this.state.domainScaleInvert = scaleLinear([0, width2], [0, 1]);
-      this.state.rangeScaleInvert = scaleLinear([0, height], [1, 0]);
-      this.pathParser.reset(obj2.d).scaleFunc(this.state.domainScale, this.state.rangeScale);
-    }
-    refreshEditorView(obj2) {
-      this.convertPathToArea(obj2);
-      this.pathGenerator.setPoints(this.pathParser.convertGenerator());
-      this.renderPath();
-    }
-    afterRender() {
-      const { mode, value } = this.props;
-      const obj2 = { d: value };
-      if (mode === "move") {
-        obj2.current = null;
-        obj2.points = [];
-      }
-      this.changeMode(mode, obj2);
-      window.setTimeout(() => {
-        this.refreshEditorView(obj2, true);
-      }, 10);
-    }
-    [sapa.BIND("$view")]() {
-      var _a;
-      const path = this.pathGenerator.makeSVGPath();
-      const strokeWidth = editor.Length.parse((_a = this.state.current) == null ? void 0 : _a["stroke-width"]).value || 0;
-      return {
-        class: {
-          path: this.state.mode === "path",
-          modify: this.state.mode === "modify",
-          transform: this.state.mode === "transform",
-          "segment-move": this.state.mode === "segment-move",
-          "is-control": this.state.isControl,
-          "has-one-stroke-width": strokeWidth === 1
-        },
-        htmlDiff: path
-      };
-    }
-    [sapa.BIND("$splitCircle")]() {
-      if (this.state.splitXY) {
-        return {
-          cx: this.state.splitXY.x,
-          cy: this.state.splitXY.y,
-          r: 5
-        };
-      } else {
-        return {
-          r: 0
-        };
-      }
-    }
-    renderPath() {
-      this.bindData("$view");
-    }
-    get checkDistance() {
-      return false;
-    }
-    getPathRect() {
-      this.initRect(true);
-      const { d } = this.pathGenerator.toPath();
-      return vertiesToRectangle(PathParser.fromSVGString(d).getBBox());
-    }
-    resetTransformZone() {
-      var rect2 = this.getPathRect();
-      this.state.transformZoneRect = rect2;
-    }
-    [sapa.POINTERMOVE("$view") + sapa.PREVENT](e) {
-      this.initRect();
-      if (this.isMode("path") && this.state.rect) {
-        this.state.moveXY = {
-          x: e.xy.x - this.state.rect.x,
-          y: e.xy.y - this.state.rect.y
-        };
-        this.state.altKey = e.altKey;
-        this.renderPath();
-      } else {
-        var $target = sapa.Dom.create(e.target);
-        var isSplitPath = $target.hasClass("split-path");
-        if (isSplitPath) {
-          this.state.splitXY = this.calculatePointOnLine($target.attr("d"), {
-            x: e.xy.x - this.state.rect.x,
-            y: e.xy.y - this.state.rect.y
-          });
-        } else {
-          this.state.splitXY = null;
-        }
-        this.bindData("$splitCircle");
-        this.state.altKey = false;
-      }
-    }
-    [sapa.POINTERSTART("$view :not(.split-path)") + sapa.PREVENT + sapa.STOP + MOVE() + END()](e) {
-      this.initRect();
-      this.state.altKey = false;
-      var isPathMode = this.isMode("path");
-      this.$config.set("set.move.control.point", true);
-      this.state.dragXY = {
-        x: e.xy.x - this.state.rect.x,
-        y: e.xy.y - this.state.rect.y
-      };
-      var $target = sapa.Dom.create(e.target);
-      this.$segmentTarget = $target;
-      if ($target.hasClass("svg-editor-canvas") && !isPathMode)
-        ;
-      else {
-        this.pathGenerator.reselect();
-        this.state.isSegment = $target.attr("data-segment") === "true";
-        this.state.isFirstSegment = this.state.isSegment && $target.attr("data-is-first") === "true";
-        this.state.selectedGroupIndex = -1;
-        this.state.selectedPointIndex = -1;
-      }
-      if (isPathMode) {
-        if (this.state.isFirstSegment) {
-          var index2 = +$target.attr("data-index");
-          this.state.startPoint = this.pathGenerator.points[index2].startPoint;
-        } else {
-          this.state.startPoint = this.state.dragXY;
-        }
-        this.state.dragPoints = false;
-        this.state.endPoint = null;
-      } else {
-        if (this.state.isSegment) {
-          this.changeMode("segment-move");
-          var [index2, segmentKey] = $target.attrs("data-index", "data-segment-point");
-          const localIndex = +index2;
-          this.pathGenerator.setCachePoint(localIndex, segmentKey);
-          this.pathGenerator.selectKeyIndex(segmentKey, localIndex);
-          this.state.segmentKey = segmentKey;
-          this.renderPath();
-        }
-      }
-    }
-    move(dx, dy) {
-      const e = this.$config.get("bodyEvent");
-      if (this.state.segmentKey === "startPoint") {
-        const newXY = {
-          x: Math.max(0, Math.min(this.state.rect.width, e.xy.x - this.state.rect.x)),
-          y: Math.max(0, Math.min(this.state.rect.height, e.xy.y - this.state.rect.y))
-        };
-        dx = newXY.x - this.state.dragXY.x;
-        dy = newXY.y - this.state.dragXY.y;
-      }
-      if (this.isMode("segment-move")) {
-        this.pathGenerator.move(dx, dy, e, this.state.rect.width, this.state.rect.height);
-        this.renderPath();
-        this.updatePathLayer();
-      } else if (this.isMode("path")) {
-        const dist2 = getDist(dx, dy, 0, 0);
-        if (dist2 >= 2) {
-          this.state.dragPoints = e.altKey ? false : true;
-        }
-      }
-    }
-    renderSegment(callback) {
-      if (this.pathGenerator.selectedLength) {
-        this.pathGenerator.reselect();
-        if (sapa.isFunction(callback))
-          callback();
-        this.renderPath();
-        this.updatePathLayer();
-      }
-    }
-    end(dx, dy) {
-      this.$config.set("set.move.control.point", false);
-      if (this.isMode("modify")) {
-        this.pathGenerator.reselect();
-      } else if (this.isMode("segment-move")) {
-        this.changeMode("modify");
-        this.pathGenerator.reselect();
-        this.renderPath();
-        this.updatePathLayer();
-      } else if (this.isMode("path")) {
-        if (this.state.isFirstSegment) {
-          this.changeMode("modify");
-          this.pathGenerator.setConnectedPoint(dx, dy);
-          this.renderPath();
-          if (this.state.current) {
-            this.updatePathLayer();
-          }
-        } else {
-          if (this.state.isSplitPath)
-            ;
-          else {
-            this.pathGenerator.moveEnd(dx, dy);
-            this.state.clickCount++;
-            this.renderPath();
-            this.pathGenerator.reselect();
-          }
-        }
-        this.state.isSplitPath = false;
-      }
-    }
-  }
-  var PathDataEditor$1 = "";
-  class PathDataEditor extends editor.EditorElement {
-    initState() {
-      var parser = new PathParser(this.props.value || "");
-      return {
-        parser
-      };
-    }
-    makeSegments() {
-      return this.refs.$data.$$(".segment").map(($segment) => {
-        var $command = $segment.$(".command");
-        var command = $command.attr("data-command");
-        if (command === "Z" && $command.attr("data-toggle") === "false") {
-          return null;
-        }
-        var values = $segment.$$(".values input[type=number]").map((it) => {
-          return +it.value;
-        });
-        return {
-          command,
-          values
-        };
-      }).filter((it) => it);
-    }
-    updateData() {
-      var segments = this.makeSegments();
-      this.state.parser.resetSegments(segments);
-      this.modifyPathData();
-    }
-    modifyPathData() {
-      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
-    }
-    setValue(value) {
-      this.setState({
-        parser: new PathParser(value)
-      });
-    }
-    getValue() {
-      return this.state.parser.joinPath();
-    }
-    template() {
-      return `
-            <div class='elf--path-data-editor'>
-                <div class='data' ref='$data'></div>
-            </div>
-        `;
-    }
-    [sapa.LOAD("$data")]() {
-      var segments = [];
-      this.state.parser.segments.forEach((it, index2) => {
-        var s = __spreadValues({}, it);
-        segments.push(s);
-        var next = this.state.parser.segments[index2 + 1];
-        if (next && next.command === "M") {
-          if (s.command !== "Z") {
-            segments.push({ command: "Z", toggle: false, values: [] });
-          } else {
-            s.toggle = true;
-          }
-        }
-      });
-      var last = this.state.parser.segments[this.state.parser.segments.length - 1];
-      if (last && last.command !== "Z") {
-        segments.push({ command: "Z", toggle: false, values: [] });
-      }
-      var arr = segments.map((it) => {
-        var cls = it.command === "M" ? "m" : "";
-        return `
-                <div class='segment ${cls}'>
-                    <div class='command' data-command='${it.command}' data-toggle="${it.toggle}" title='Toggle'>${it.command}</div>
-                    <div class='values'>
-                        ${it.values.map((v) => {
-          return `<input type="number" value="${v}" />`;
-        }).join("")}
-
-                        ${it.command === "Z" ? it.toggle === false ? "opened" : "closed" : ""}
-                    </div>
-                </div>
-            `;
-      });
-      arr.unshift(`
-            <div class='segment-empty'>
-                <div class='command'></div>
-                <div class='values'>
-                    <span>X</span>
-                    <span>Y</span>
-                </div>
-            </div>
-        `);
-      return arr;
-    }
-    [sapa.INPUT("$data input[type=number]") + sapa.DEBOUNCE(300)]() {
-      this.updateData();
-    }
-    [sapa.CLICK("$data .command[data-toggle]")](e) {
-      var [command, toggle] = e.$dt.attrs("data-command", "data-toggle");
-      if (command === "Z") {
-        if (toggle !== "false") {
-          toggle = "false";
-        } else {
-          toggle = "true";
-        }
-        e.$dt.attr("data-toggle", toggle);
-        this.updateData();
-      }
-    }
-  }
-  var PolygonDataEditor$1 = "";
-  const splitReg = /[\b\t ,]/g;
-  class PolygonParser extends PathParser {
-    constructor(points = "") {
-      super(points);
-    }
-    reset(points = "") {
-      this.segments = [];
-      this.points = points;
-      this.parse();
-    }
-    resetSegments(segments = []) {
-      this.segments = segments;
-      this.points = this.joinPoints();
-    }
-    parse() {
-      var points = this.points;
-      if (Array.isArray(points)) {
-        points = points.join(" ");
-      }
-      var arr = points.trim().split(splitReg).filter((it) => it);
-      var segments = [];
-      for (var i = 0, len2 = arr.length; i < len2; i += 2) {
-        segments.push({ x: +arr[i], y: +arr[i + 1] });
-      }
-      this.segments = segments;
-    }
-    convertGenerator() {
-      return this.segments;
-    }
-    length() {
-      return this.segments.length;
-    }
-    toPathString() {
-      var path = new PathStringManager();
-      for (var i = 0, len2 = this.segments.length; i < len2; i++) {
-        var s = this.segments[i];
-        if (i === 0) {
-          path.M(s);
-        } else if (i === len2 - 1) {
-          path.L(s).L(this.segments[0]).Z();
-        } else {
-          path.L(s);
-        }
-      }
-      return path.d;
-    }
-    joinPath(segments) {
-      return this.joinPoints(segments);
-    }
-    joinPoints(segments) {
-      var list = segments || this.segments;
-      return list.map((it) => {
-        return `${it.x},${it.y}`;
-      }).join(" ");
-    }
-    each(callback, isReturn = false) {
-      var newSegments = this.segments.map((segment) => {
-        return callback.call(this, segment);
-      });
-      if (isReturn) {
-        return newSegments;
-      } else {
-        this.segments = newSegments;
-      }
-    }
-    _loop(m, isReturn = false) {
-      return this.each(function(segment) {
-        var [x, y] = m([segment.x, segment.y], 0);
-        segment.x = x;
-        segment.y = y;
-        return segment;
-      }, isReturn);
-    }
-    clone() {
-      return new PolygonParser(this.joinPoints());
-    }
-    toString() {
-      return this.joinPoints();
-    }
-  }
-  class PolygonDataEditor extends editor.EditorElement {
-    initState() {
-      var parser = new PolygonParser(this.props.value || "");
-      return {
-        parser
-      };
-    }
-    makeSegments() {
-      return this.refs.$data.$$(".segment").map(($segment) => {
-        var x = +$segment.$('[data-key="x"]').value;
-        var y = +$segment.$('[data-key="y"]').value;
-        return { x, y };
-      });
-    }
-    updateData() {
-      var segments = this.makeSegments();
-      this.state.parser.resetSegments(segments);
-      this.modifyPolygonData();
-    }
-    modifyPolygonData() {
-      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
-    }
-    setValue(value) {
-      this.setState({
-        parser: new PolygonParser(value || "")
-      });
-    }
-    getValue() {
-      return this.state.parser.joinPoints();
-    }
-    template() {
-      return `
-            <div class='elf--polygon-data-editor'>
-                <div class='data' ref='$data'></div>
-            </div>
-        `;
-    }
-    [sapa.LOAD("$data")]() {
-      return this.state.parser.segments.map((it) => {
-        return `
-                <div class='segment'>
-                    <div class='values'>
-                        <label>X <input type="number" data-key="x" value="${it.x}" /></label>
-                        <label>Y <input type="number" data-key="y" value="${it.y}" /></label>
-                    </div>
-                </div>
-            `;
-      });
-    }
-    [sapa.INPUT("$data input[type=number]") + sapa.DEBOUNCE(300)]() {
-      this.updateData();
-    }
-  }
-  var StrokeDashArrayEditor$1 = "";
-  const dash_list = [
-    [10, 5],
-    [5, 1],
-    [1, 5],
-    [0.9],
-    [15, 10, 5],
-    [15, 10, 5, 10],
-    [15, 10, 5, 10, 15],
-    [5, 5, 1, 5]
-  ];
-  class StrokeDashArrayEditor extends editor.EditorElement {
-    initState() {
-      var value = sapa.isArray(this.props.value) ? this.props.value : this.generateValue(this.props.value || "");
-      return {
-        label: this.props.label || "",
-        value,
-        count: 1
-      };
-    }
-    template() {
-      const { label } = this.state;
-      const hasLabel = !!label;
-      return `
-      <div class='elf--stroke-dasharray-editor'>
-        <div class='tools ${hasLabel ? "has-label" : ""}'>
-          ${hasLabel ? `<label class='label'>${label}</label>` : ""}
-          <div class="buttons">
-            <label ref='$add'>${editor.iconUse("add")}</label>          
-          </div>
-        </div>      
-        <div ref='$body' class='dash-list'></div>
-        <div ref='$list' class='dash-sample-list'></div>
-      </div>
-    `;
-    }
-    [sapa.CLICK("$el .tools label")]() {
-      this.refs.$list.toggle();
-    }
-    getValue() {
-      return this.state.value;
-    }
-    generateValue(value) {
-      return value.split(" ").filter(Boolean).map((it) => +it);
-    }
-    setValue(value) {
-      if (!sapa.isArray(value)) {
-        value = this.generateValue(value);
-      }
-      this.setState({
-        value
-      });
-    }
-    [sapa.LOAD("$list")]() {
-      return dash_list.map((value, index2) => {
-        return `
-        <div class='dash-sample' data-index='${index2}'>
-          <div class='dash-sample-value'>
-            <svg width="100" height="2">
-              <line x1="5" y1="0" x2="95" y2="0" stroke-dasharray="${value.join(",")}" stroke-width="2" stroke="black" />
-            </svg>
-          </div>
-        </div>
-      `;
-      });
-    }
-    [sapa.LOAD("$body")]() {
-      this.state.count++;
-      return this.state.value.map((value, index2) => {
-        var num = index2 + 1;
-        return `
-        <div class='dasharray-item'>
-          ${sapa.createComponent("NumberInputEditor", {
-          ref: `$dash-${this.state.count}-${num}`,
-          compact: true,
-          key: index2,
-          value,
-          min: 0,
-          max: 100,
-          step: 1,
-          onchange: "changeRangeEditor"
-        })}  
-          <button type="button" data-index="${index2}" class='delete'>${editor.iconUse("close")}</button>
-        </div>
-      `;
-      });
-    }
-    [sapa.SUBSCRIBE_SELF("changeRangeEditor")](key, value) {
-      var index2 = +key;
-      this.state.value[index2] = value;
-      this.modifyStrokeDashArray();
-    }
-    [sapa.CLICK("$list .dash-sample")](e) {
-      const value = dash_list[+e.$dt.data("index")];
-      this.setState({ value }, false);
-      this.refresh();
-      this.modifyStrokeDashArray();
-      this.refs.$list.toggle();
-    }
-    [sapa.CLICK("$add")]() {
-      this.setState({
-        value: [...this.state.value, 0]
-      }, false);
-      this.refresh();
-      this.modifyStrokeDashArray();
-    }
-    [sapa.CLICK("$body .delete")](e) {
-      const index2 = +e.$dt.attr("data-index");
-      this.state.value.splice(index2, 1);
-      this.refresh();
-      this.modifyStrokeDashArray();
-    }
-    modifyStrokeDashArray() {
-      this.parent.trigger(this.props.onchange, this.props.key, this.getValue(), this.props.params);
-    }
-    [sapa.POINTERSTART("document")](e) {
-      const $target = sapa.Dom.create(e.target);
-      const parent = $target.closest("elf--stroke-dasharray-editor");
-      if (!parent) {
-        this.refs.$list.hide();
-      }
-    }
-  }
-  var TextShadowEditor$1 = "";
-  class TextShadowEditor extends editor.EditorElement {
-    initState() {
-      return {
-        textShadows: this.props.value || []
-      };
-    }
-    template() {
-      return `
-      <div class="elf--text-shadow-editor" >
-        <div class='text-shadow-list' ref='$shadowList'></div>
-      </div>
-    `;
-    }
-    [sapa.LOAD("$shadowList")]() {
-      var arr = this.state.textShadows.map((shadow2, index2) => {
-        return `
-        <div class="shadow-item real" data-index="${index2}">
-          <label draggable="true" data-index="${index2}">${editor.iconUse("drag_indicator")}</label>
-          ${sapa.createComponent("ColorViewEditor", {
-          mini: true,
-          key: "color",
-          value: shadow2.color,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}
-          ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          key: "offsetX",
-          label: "X",
-          value: shadow2.offsetX,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}          
-          ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          key: "offsetY",
-          label: "Y",
-          value: shadow2.offsetY,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}                    
-          ${sapa.createComponent("NumberInputEditor", {
-          mini: true,
-          label: "B",
-          key: "blurRadius",
-          value: shadow2.blurRadius,
-          params: index2,
-          onchange: "changeKeyValue"
-        })}                    
-          <div class="tools">
-            <button type="button" class="remove" data-index="${index2}">
-              ${editor.iconUse("remove2")}
-            </button>
-          </div>
-        </div>
-      `;
-      });
-      return arr.join("");
-    }
-    modifyTextShadow() {
-      var value = this.state.textShadows;
-      this.parent.trigger(this.props.onchange, this.props.key, value);
-    }
-    [sapa.SUBSCRIBE("add")](shadows) {
-      if (sapa.isArray(shadows)) {
-        this.state.textShadows.push(...shadows);
-      } else {
-        this.state.textShadows.push({
-          color: "#000000",
-          offsetX: 0,
-          offsetY: 0,
-          blurRadius: 0
-        });
-      }
-      this.refresh();
-      this.modifyTextShadow();
-    }
-    [sapa.CLICK("$add")]() {
-      this.trigger("add");
-    }
-    [sapa.DRAGSTART("$shadowList .shadow-item > label")](e) {
-      this.startIndex = +e.$dt.attr("data-index");
-    }
-    [sapa.DRAGOVER("$shadowList .shadow-item") + sapa.PREVENT]() {
-    }
-    sortItem(arr, startIndex, targetIndex) {
-      arr.splice(targetIndex + (startIndex < targetIndex ? -1 : 0), 0, ...arr.splice(startIndex, 1));
-    }
-    sortTextShadow(startIndex, targetIndex) {
-      this.sortItem(this.state.textShadows, startIndex, targetIndex);
-    }
-    [sapa.DROP("$shadowList .shadow-item") + sapa.PREVENT](e) {
-      var targetIndex = +e.$dt.attr("data-index");
-      this.sortTextShadow(this.startIndex, targetIndex);
-      this.refresh();
-      this.modifyTextShadow();
-    }
-    [sapa.CLICK("$shadowList .remove")](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.state.textShadows.splice(index2, 1);
-      this.refresh();
-      this.modifyTextShadow();
-    }
-    [sapa.SUBSCRIBE_SELF("changeKeyValue")](key, value, index2) {
-      var shadow2 = this.state.textShadows[index2];
-      this.state.textShadows[index2] = __spreadProps(__spreadValues({}, shadow2), { [key]: value });
-      this.modifyTextShadow();
-    }
-  }
-  var VarEditor$1 = "";
-  class VarEditor extends editor.EditorElement {
-    initState() {
-      var values = this.props.value.split(";").filter((it) => it.trim()).map((it) => {
-        let [key, value] = it.split(":");
-        key = key.replace("--", "");
-        return { key, value };
-      });
-      return {
-        hideLabel: this.props.hideLabel == "true" ? true : false,
-        params: this.props.params || "",
-        values
-      };
-    }
-    template() {
-      var labelClass = this.state.hideLabel ? "hide" : "";
-      return `
-        <div class='elf--var-editor var-list'>
-            <div class='label ${labelClass}' >
-                <label>${this.props.title || ""}</label>
-                <div class='tools'>
-                    <button type="button" ref="$add" title="add Var">${editor.iconUse("add")}</button>
-                </div>
-            </div>
-            <div class='var-list' ref='$varList'></div>
-        </div>`;
-    }
-    [sapa.SUBSCRIBE("add")]() {
-      this.state.values.push({
-        key: "",
-        value: ""
-      });
-      this.refresh();
-      this.updateData();
-    }
-    [sapa.CLICK("$add")]() {
-      this.trigger("add");
-    }
-    [sapa.LOAD("$varList")]() {
-      return this.state.values.map((it, index2) => {
-        return `
-                <div class='var-item' >
-                    <div>
-                        <input type="text" data-type="key" value="${it.key}" data-index="${index2}"  placeholder="variable" />
-                    </div>
-                    <div>
-                        <input type="text" data-type="value" value="${it.value}" data-index="${index2}"  placeholder="value" />
-                    </div>
-                    <div class="tools">
-                        <button type="button" class="del" data-index="${index2}">
-                        ${icon.remove2}
-                        </button>
-                    </div>
-                </div>
-            `;
-      });
-    }
-    [sapa.CLICK("$varList .del")](e) {
-      var index2 = +e.$dt.attr("data-index");
-      this.state.values.splice(index2, 1);
-      this.refresh();
-      this.updateData();
-    }
-    [sapa.INPUT("$varList input")](e) {
-      var index2 = +e.$dt.attr("data-index");
-      var type = e.$dt.attr("data-type");
-      this.state.values[index2][type] = e.$dt.value;
-      this.updateData();
-    }
-    updateData() {
-      var value = this.state.values.map((it) => {
-        return `${it.key}:${it.value}`;
-      }).join(";");
-      this.parent.trigger(this.props.onchange, value, this.props.params);
-    }
-  }
-  var propertyEditor$1 = {
-    BlendSelectEditor,
-    BoxShadowEditor,
-    ColorAssetsEditor,
-    ColorSingleEditor,
-    ColorViewEditor,
-    CSSPropertyEditor,
-    CubicBezierEditor,
-    DirectionEditor,
-    FilterEditor,
-    FontSelectEditor,
-    GradientEditor,
-    IconListViewEditor,
-    IterationCountEditor,
-    MediaProgressEditor,
-    PathEditor,
-    PathDataEditor,
-    PolygonDataEditor,
-    StrokeDashArrayEditor,
-    TextShadowEditor,
-    VarEditor
-  };
-  function propertyEditor(editor2) {
-    editor2.registerElement(propertyEditor$1);
-    editor2.registerAlias({
-      "icon-list-view": "IconListViewEditor",
-      "box-shadow": "BoxShadowEditor",
-      "text-shadow": "TextShadowEditor",
-      component: "ComponentEditor",
-      "text-area": "TextAreaEditor",
-      text: "TextEditor",
-      "color-single": "ColorSingleEditor",
-      "cubic-bezier": "CubicBezierEditor",
-      path: "PathEditor",
-      "clip-path": "ClipPathEditor",
-      "color-view": "ColorViewEditor",
-      var: "VarEditor",
-      "path-data": "PathDataEditor",
-      "polygon-data": "PolygonDataEditor",
-      "input-array": "InputArrayEditor",
-      "stroke-dash-array": "StrokeDashArrayEditor",
-      "number-input": "NumberInputEditor",
-      "number-range": "NumberRangeEditor",
-      "media-progress": "MediaProgressEditor",
-      "select-icon": "SelectIconEditor",
-      "css-property": "CSSPropertyEditor",
-      direction: "DirectionEditor",
-      "iteration-count": "IterationCountEditor",
-      gradient: "GradientEditor",
-      filter: "FilterEditor",
-      select: "SelectEditor",
-      "blend-select": "BlendSelectEditor",
-      range: "RangeEditor",
-      "input-range": "InputRangeEditor",
-      "color-assets": "ColorAssetsEditor",
-      "font-select": "FontSelectEditor"
-    });
-  }
-  function defaultIcons(editor2) {
-    editor2.registerIcon("artboard", "artboard");
-    editor2.registerIcon("circle", "lens");
-    editor2.registerIcon("image", "image");
-    editor2.registerIcon("text", "title");
-    editor2.registerIcon("svg-text", "title");
-    editor2.registerIcon("boolean-path", "pentool");
-    editor2.registerIcon("svg-path", "pentool");
-    editor2.registerIcon("polygon", "polygon");
-    editor2.registerIcon("star", "star");
-    editor2.registerIcon("spline", "smooth");
-    editor2.registerIcon("rect", "rect");
-  }
-  var ContentProperty$1 = "";
-  class ContentProperty extends editor.BaseProperty {
-    getTitle() {
-      return "Content";
-    }
-    [sapa.SUBSCRIBE(REFRESH_SELECTION, REFRESH_CONTENT) + sapa.DEBOUNCE(100)]() {
-      this.refreshShow(["text"]);
-    }
-    getBody() {
-      return `
-      <div class="property-item elf--content-item">
-        <textarea ref="$contentItem"></textarea>
-      </div>
-    `;
-    }
-    [sapa.BIND("$contentItem")]() {
-      var current = this.$context.selection.current;
-      if (!current)
-        return "";
-      return {
-        value: current.content || ""
-      };
-    }
-    [sapa.INPUT("$contentItem")]() {
-      this.setContent();
-    }
-    setContent() {
-      var current = this.$context.selection.current;
-      if (current) {
-        var data = {
-          content: this.refs.$contentItem.value
-        };
-        current.reset(data);
-        this.emit(UPDATE_CANVAS, current);
-      }
-    }
-  }
-  function content(editor2) {
-    editor2.registerElement({
-      ContentProperty
-    });
-  }
-  var en_US = {
-    "app.title": "elf",
-    "app.sample": (a, b, c) => {
-      return `${a}-${b}-${c}`;
-    },
-    "app.lang.en_US": "English",
-    "app.lang.ko_KR": "\uD55C\uAD6D\uC5B4",
-    "app.lang.fr_FR": "Fran\xE7ais",
-    "app.label.lang": "Language",
-    "app.layout.all": "Layout",
-    "app.layout.css": "CSS Mode",
-    "app.layout.svg": "SVG Mode",
-    "app.label.layout": "Menu Layout",
-    "app.theme.dark": "Dark",
-    "app.theme.light": "Light",
-    "app.theme.toon": "Toon",
-    "app.theme.gray": "Gray",
-    "app.label.theme": "Theme",
-    "app.tab.title.projects": "Projects",
-    "app.tab.title.layers": "Layers",
-    "app.tab.title.libraries": "Library",
-    "app.tab.title.components": "Component",
-    "app.tab.title.artboards": "Artboard",
-    "app.tab.title.assets": "Assets",
-    "app.tab.title.keyMap": "KeyMap",
-    "app.confirm.message.artboard.items.removeArtboard": "Do you remove an artboard preview really?",
-    "app.confirm.message.custom-component.items.removeCustomComponent": "Do you remove a custom component preview really?",
-    "menu.item.download.title": "Source",
-    "menu.item.save.title": "Save",
-    "menu.item.export.title": "Export",
-    "menu.item.codepen.title": "CodePen",
-    "menu.item.fullscreen.title": "Full Screen",
-    "menu.item.shortcuts.title": "ShortCuts",
-    "menu.item.github.title": "Github",
-    "menu.item.learn.title": "Learn",
-    "menu.item.projects.title": "Projects",
-    "menu.item.language.title": "Language",
-    "project.property.title": "Project",
-    "project.information.property.title": "Project information",
-    "project.information.property.name": "Name",
-    "project.information.property.description": "Description",
-    "artboard.property.title": "ArtBoards",
-    "artboard.property.layout.title.flex": "Flex",
-    "artboard.property.layout.title.grid": "Grid",
-    "layer.tree.property.title": "Layers",
-    "layer.tree.property.layout.title.flex": "Flex",
-    "layer.tree.property.layout.title.grid": "Grid",
-    "alignment.property.title": "Alignment",
-    "position.property.title": "Position",
-    "position.property.X": "X",
-    "position.property.Y": "Y",
-    "size.property.title": "Size",
-    "position.property.width": "W",
-    "position.property.height": "H",
-    "position.property.opacity": "Opacity",
-    "position.property.rotate": "Rotate",
-    "background.color.property.title": "Appearance",
-    "background.color.property.color": "Color",
-    "background.color.property.zindex": "z-index",
-    "background.color.property.blend": "Blend",
-    "background.color.property.overflow": "Overflow",
-    "background.color.property.overflow.visible": "Visible",
-    "background.color.property.overflow.hidden": "Hidden",
-    "background.color.property.overflow.scroll": "Scroll",
-    "background.color.property.overflow.auto": "Auto",
-    "blend.normal": "normal",
-    "blend.multiply": "multiply",
-    "blend.screen": "screen",
-    "blend.overlay": "overlay",
-    "blend.darken": "darken",
-    "blend.lighten": "lighten",
-    "blend.color-dodge": "color-dodge",
-    "blend.color-burn": "color-burn",
-    "blend.hard-light": "hard-light",
-    "blend.soft-light": "soft-light",
-    "blend.difference": "difference",
-    "blend.exclusion": "exclusion",
-    "blend.hue": "hue",
-    "blend.saturation": "saturation",
-    "blend.color": "color",
-    "blend.luminosity": "luminosity",
-    "background.image.property.title": "Fill",
-    "border.property.title": "Border",
-    "border.radius.property.title": "Border Radius",
-    "boxshadow.property.title": "Box Shadows",
-    "filter.property.title": "Filter",
-    "filter.property.blur": "Blur",
-    "filter.property.grayscale": "GrayScale",
-    "filter.property.hue-rotate": "Hue Rotate",
-    "filter.property.invert": "Invert",
-    "filter.property.brightness": "Brightness",
-    "filter.property.contrast": "Contrast",
-    "filter.property.drop-shadow": "Drop Shadow",
-    "filter.property.drop-shadow.color": "Color",
-    "filter.property.drop-shadow.offsetX": "Offset X",
-    "filter.property.drop-shadow.offsetY": "Offset Y",
-    "filter.property.drop-shadow.blurRadius": "Blur",
-    "filter.property.opacity": "Opacity",
-    "filter.property.saturate": "Saturate",
-    "filter.property.sepia": "Sepia",
-    "filter.property.svg": "SVG",
-    "font.property.title": "Font",
-    "font.property.color": "Color",
-    "font.property.size": "Size",
-    "font.property.stretch": "Stretch",
-    "font.property.weight": "Weight",
-    "font.property.style": "Style",
-    "font.property.family": "Family",
-    "font.spacing.property.title": "Font spacing",
-    "font.spacing.property.lineHeight": "Line height",
-    "font.spacing.property.letterSpacing": "Letter spacing",
-    "font.spacing.property.wordSpacing": "Word spacing",
-    "font.spacing.property.indent": "Indent",
-    "backdrop.filter.property.title": "Backdrop Filter",
-    "clippath.property.title": "Clip Path",
-    "export.property.title": "Export",
-    "export.property.download": "Download",
-    "iframe.property.title": "IFrame",
-    "image.property.title": "Image",
-    "image.property.origin": "Origin",
-    "image.property.size": "Size",
-    "image.property.width": "Width",
-    "image.property.height": "height",
-    "video.property.title": "Video",
-    "video.property.play": "Play",
-    "video.property.pause": "Pause",
-    "video.property.volume": "Volume",
-    "video.property.playbackRate": "Playback Rate",
-    "video.property.currentTime": "Current Time",
-    "video.property.playTime": "Play Time Distance",
-    "motion.property.title": "Motion",
-    "text.property.title": "Text Style",
-    "text.property.align": "Align",
-    "text.property.transform": "Transform",
-    "text.property.decoration": "Decoration",
-    "text.clip.property.title": "Text Clip",
-    "text.shadow.property.title": "Text Shadows",
-    "text.fill.property.title": "Text Fill",
-    "text.fill.property.fill": "Fill",
-    "text.fill.property.stroke": "Stroke",
-    "text.fill.property.strokeWidth": "Width",
-    "transform.property.title": "Transform",
-    "transform.origin.property.title": "Transform Origin",
-    "transition.property.title": "CSS Transition",
-    "keyframe.property.title": "CSS Keyframe",
-    "selector.property.title": "Selector",
-    "selector.property.none": "None selector",
-    "path.data.property.title": "Path Information",
-    "polygon.data.property.title": "Polygon Information",
-    "perspective.property.title": "Perspective",
-    "perspective.origin.property.title": "Perspective Origin",
-    "svg.item.property.title": "Appearance",
-    "svg.item.property.isMotionPath": "Motion Path",
-    "svg.item.property.fill": "Fill",
-    "svg.item.property.fillOpacity": "Opacity",
-    "svg.item.property.path": "Path",
-    "svg.item.property.polygon": "Polygon",
-    "svg.item.property.totalLength": "Total Length",
-    "svg.item.property.fillRule": "Fill Rule",
-    "svg.item.property.stroke": "Stroke",
-    "svg.item.property.strokeWidth": "Width",
-    "svg.item.property.dashArray": "Dash Array",
-    "svg.item.property.dashOffset": "Dash Offset",
-    "svg.item.property.lineCap": "Line Cap",
-    "svg.item.property.lineJoin": "Line Join",
-    "svg.item.property.filter": "Filter",
-    "svg.item.property.blend": "Blend Mode",
-    "border.editor.all": "All",
-    "border.editor.width": "Width",
-    "border.editor.style": "Style",
-    "border.editor.color": "C",
-    "border.editor.top": "Top",
-    "border.editor.left": "Left",
-    "border.editor.right": "Right",
-    "border.editor.bottom": "Bottom",
-    "border.radius.editor.topLeft": "Top Left",
-    "border.radius.editor.topRight": "Top Right",
-    "border.radius.editor.bottomLeft": "Bottom Left",
-    "border.radius.editor.bottomRight": "Bottom Right",
-    "boxshadow.editor.blur": "Blur",
-    "boxshadow.editor.spread": "Spread",
-    "css.property.editor.properties": "Properties",
-    "offset.path.list.editor.path": "Path",
-    "offset.path.list.editor.totalLength": "Total Length",
-    "offset.path.list.editor.distance": "Distance",
-    "offset.path.list.editor.direction": "Direction",
-    "offset.path.list.editor.rotate": "Rotate",
-    "svgfilter.select.editor.message.create": "Create new svg filter",
-    "svgfilter.select.editor.message.select": "Select a filter",
-    "fill.editor.message.click.image": "Click the preview area if you want to select a image",
-    "fill.editor.message.drag.position": "Drag if you want to move center position",
-    "fill.editor.x1": "Start X",
-    "fill.editor.x2": "End X",
-    "fill.editor.y1": "Start Y",
-    "fill.editor.y2": "End Y",
-    "fill.editor.spread": "Spread",
-    "fill.editor.offset": "Offset",
-    "fill.editor.cx": "Center X",
-    "fill.editor.cy": "Center Y",
-    "fill.editor.r": "End radius",
-    "fill.editor.fx": "Start X",
-    "fill.editor.fy": "Start Y",
-    "fill.editor.fr": "Start radius",
-    "perspective.origin.editor.originX": "Origin X",
-    "perspective.origin.editor.originY": "Origin Y",
-    "path.manager.msg": "Keydown ESC or Enter key to close editing",
-    "path.manager.mode.done": "Done",
-    "path.manager.mode.modify": "Modify",
-    "path.manager.mode.path": "Path",
-    "path.manager.mode.warp": "Warp",
-    "path.manager.mode.transform": "Transform",
-    "path.manager.mode.reverse": "Reverse",
-    "path.manager.mode.flipX": "Flip X",
-    "path.manager.mode.flipY": "Flip Y",
-    "path.manager.mode.flipOrigin": "Flip Origin",
-    "colorpicker.popup.title": "ColorPicker",
-    "selector.popup.title": "Selector Property",
-    "selector.popup.selector": "Selector",
-    "background.image.position.popup.title": "Background Pattern",
-    "background.image.position.popup.size": "Size",
-    "background.image.position.popup.width": "Width",
-    "background.image.position.popup.height": "Height",
-    "background.image.position.popup.repeat": "Repeat",
-    "background.image.position.popup.blend": "Blend",
-    "background.image.position.popup.type.repeat": "repeat",
-    "background.image.position.popup.type.no-repeat": "no repeat",
-    "background.image.position.popup.type.repeat-x": "repeat-x",
-    "background.image.position.popup.type.repeat-y": "repeat-y",
-    "background.image.position.popup.type.space": "space",
-    "background.image.position.popup.type.round": "round",
-    "gradient.picker.popup.title": "Gradient & Image Picker",
-    "gradient.picker.popup.static-gradient": "Static",
-    "gradient.picker.popup.linear-gradient": "Linear",
-    "gradient.picker.popup.repeating-linear-gradient": "Repeating Linear",
-    "gradient.picker.popup.radial-gradient": "Radial",
-    "gradient.picker.popup.repeating-radial-gradient": "Repeating Radial",
-    "gradient.picker.popup.conic-gradient": "Linear",
-    "gradient.picker.popup.repeating-conic-gradient": "Repeating Conic",
-    "image.asset.property.title": "Image",
-    "video.asset.property.title": "Video",
-    "color.asset.property.title": "Color",
-    "gradient.asset.property.title": "Gradient",
-    "pattern.asset.property.title": "Pattern",
-    "svgfilter.asset.property.title": "SVG Filter",
-    "inspector.tab.title.design": "Design",
-    "inspector.tab.title.component": "Component",
-    "inspector.tab.title.transition": "Animation",
-    "inspector.tab.title.asset": "Assets",
-    "inspector.tab.title.text": "Text",
-    "inspector.tab.title.code": "Code",
-    "inspector.tab.title.history": "History",
-    "timeline.property.title": "Timeline",
-    "timeline.property.resize": "Drag if you want to resize timeline height.",
-    "timeline.animation.property.title": "Animations",
-    "timeline.play.control.play": "Play",
-    "timeline.play.control.pause": "Pause",
-    "timeline.play.control.first": "First",
-    "timeline.play.control.prev": "Previous",
-    "timeline.play.control.next": "Next",
-    "timeline.play.control.last": "Last",
-    "timeline.play.control.direction": "Direction",
-    "timeline.play.control.speed": "Speed",
-    "timeline.play.control.repeat": "Repeat",
-    "timeline.play.control.infinite": "Infinite",
-    "timeline.play.control.normal": "normal",
-    "timeline.play.control.alternate": "alternate",
-    "timeline.play.control.reverse": "reverse",
-    "timeline.play.control.alternate.reverse": "alternate reverse",
-    "timeline.value.editor.value": "Value",
-    "timeline.value.editor.time": "Time",
-    "timeline.value.editor.timing": "Timing",
-    "timeline.value.editor.offset.message": "Please input enter key to change time offset.",
-    "svgfilter.popup.title": "SVG Filter",
-    "css.item.rotate": "Rotate",
-    "css.item.rotateX": "Rotate X",
-    "css.item.rotateY": "Rotate Y",
-    "css.item.rotateZ": "Rotate Z",
-    "css.item.rotate3d": "3D Rotate",
-    "css.item.skewX": "Skew X",
-    "css.item.skewY": "Skew Y",
-    "css.item.translate": "Translate",
-    "css.item.translateX": "Translate X",
-    "css.item.translateY": "Translate Y",
-    "css.item.translateZ": "Translate Z",
-    "css.item.translate3d": "3D Translate",
-    "css.item.perspective": "Perspective",
-    "css.item.scale": "Scale",
-    "css.item.scaleX": "Scale X",
-    "css.item.scaleY": "Scale Y",
-    "css.item.scaleZ": "Scale Z",
-    "css.item.scale3d": "3D Scale",
-    "css.item.matrix": "Matrix",
-    "css.item.matrix3d": "3D Matrix",
-    "animation.property.title": "CSS Animation",
-    "animation.property.direction": "Direction",
-    "animation.property.play.state": "Play State",
-    "animation.property.fill.mode": "Fill Mode",
-    "animation.property.delay": "Delay",
-    "animation.property.duration": "Duration",
-    "animation.property.iteration.count": "Iteration Count",
-    "animation.property.Select a keyframe": "Select a keyframe",
-    "animation.property.popup.title": "Animation",
-    "animation.property.popup.timing.function": "Timing Function",
-    "animation.property.popup.keyframe": "Keyframe",
-    "animation.property.popup.direction": "Direction",
-    "animation.property.popup.play.state": "Play State",
-    "animation.property.popup.fill.mode": "Fill Mode",
-    "animation.property.popup.delay": "Delay",
-    "animation.property.popup.duration": "Duration",
-    "animation.property.popup.iteration": "Iteration",
-    "animation.property.popup.normal": "normal",
-    "animation.property.popup.reverse": "reverse",
-    "animation.property.popup.alternate": "alternate",
-    "animation.property.popup.alternate-reverse": "alternate-reverse",
-    "animation.property.popup.none": "none",
-    "animation.property.popup.forwards": "forwards",
-    "animation.property.popup.backwards": "backwards",
-    "animation.property.popup.both": "both",
-    "animation.property.popup.Select a keyframe": "Select a keyframe",
-    "keyframe.popup.title": "Keyframe",
-    "code.view.property.title": "CodeView",
-    "svg.filter.editor.tab.filter": "Filter",
-    "svg.filter.editor.tab.preset": "Preset",
-    "svg.filter.editor.tab.asset": "Assets",
-    "svg.filter.editor.GRAPHIC REFERENCES": "GRAPHIC REFERENCES",
-    "svg.filter.editor.SOURCES": "SOURCES",
-    "svg.filter.editor.MODIFIER": "MODIFIER",
-    "svg.filter.editor.LIGHTING": "LIGHTING",
-    "svg.filter.editor.COMBINERS": "COMBINERS",
-    "svg.filter.editor.Template": "Template",
-    "layout.property.title": "Layout",
-    "layout.property.flex": "Flex Box",
-    "layout.property.grid": "Grid",
-    "layout.property.default": "Default",
-    "layout.property.resizing.title": "Resizing",
-    "layout.property.resizing.self.title": "Self Resizing",
-    "default.layout.item.property.title.constraints": "Constraints",
-    "flex.layout.editor.row": "Row",
-    "flex.layout.editor.column": "column",
-    "flex.layout.editor.row-reverse": "Row Reverse",
-    "flex.layout.editor.column-reverse": "Column Reverse",
-    "flex.layout.editor.nowrap": "Nowrap",
-    "flex.layout.editor.wrap": "Wrap",
-    "flex.layout.editor.wrap-reverse": "Wrap Reverse",
-    "flex.layout.editor.flex-start": "Start",
-    "flex.layout.editor.flex-end": "End",
-    "flex.layout.editor.center": "Center",
-    "flex.layout.editor.space-between": "Between",
-    "flex.layout.editor.space-around": "Around",
-    "flex.layout.editor.baseline": "BaseLine",
-    "flex.layout.editor.stretch": "Stretch",
-    "flex.layout.editor.direction": "Direction",
-    "flex.layout.editor.justify-content": "Justify Content",
-    "flex.layout.editor.align-items": "Align Items",
-    "flex.layout.editor.align-content": "Align Content",
-    "flex.layout.item.property.title": "Flex Item Detail",
-    "flex.layout.item.property.grow": "Flex Grow",
-    "flex.layout.item.property.shrink": "Flex Shrink",
-    "flex.layout.item.property.basis": "Flex Basis",
-    "flex.layout.item.property.none": "none",
-    "flex.layout.item.property.auto": "auto",
-    "flex.layout.item.property.value": "value",
-    "grid.layout.editor.template.columns": "Columns",
-    "grid.layout.editor.column.gap": "Column Gap",
-    "grid.layout.editor.template.rows": "Rows",
-    "grid.layout.editor.row.gap": "Row Gap",
-    "grid.box.editor.box.title": "Box",
-    "grid.box.editor.type": "Type",
-    "grid.box.editor.repeat": "Repeat",
-    "grid.box.editor.length": "Length",
-    "grid.box.editor.none": "None",
-    "grid.box.editor.auto": "Auto",
-    "grid.box.editor.count": "Count",
-    "grid.box.editor.value": "Size",
-    "grid.layout.item.property.title": "Layout Item Detail",
-    "grid.layout.item.property.column": "Column",
-    "grid.layout.item.property.row": "Row",
-    "grid.layout.item.property.start": "Start",
-    "grid.layout.item.property.end": "End",
-    "grid.layout.item.property.none": "none",
-    "grid.layout.item.property.value": "value",
-    "box.model.property.title": "Box Model",
-    "box.model.property.margin": "Margin",
-    "box.model.property.padding": "Padding",
-    "component.items.canvas": "Canvas",
-    "component.items.layer": "Layer",
-    "component.items.3dlayer": "3D Layer",
-    "component.items.drawing": "Drawing",
-    "component.items.custom": "Custom Component",
-    "component.items.chart": "Chart",
-    "component.items.plugin": "Plugin",
-    "svg.text.property.title": "SVG Text Style",
-    "svg.text.property.textarea": "Text Area",
-    "svg.text.property.size": "Font Size",
-    "svg.text.property.weight": "Font Weight",
-    "svg.text.property.style": "Font Style",
-    "svg.text.property.anchor": "Text Anchor",
-    "svg.text.property.family": "Font Family",
-    "svg.text.property.length.adjust": "Length Adjust",
-    "svg.text.property.text.length": "Text Length",
-    "svg.text.property.start.offset": "Start Offset",
-    "fill.picker.popup.title": "SVG Fragment picker",
-    "gradient.editor.drag.message": "Drag if you want to move center pointer.",
-    "draw.manager.tolerance": "Tolerance",
-    "pattern.property.title": "Pattern",
-    "pattern.info.popup.title": "Pattern Info",
-    "pattern.info.popup.width": "Width",
-    "pattern.info.popup.height": "Height",
-    "pattern.info.popup.lineWidth": "Line Width",
-    "pattern.info.popup.lineHeight": "Line Height",
-    "pattern.info.popup.rotate": "Rotate",
-    "pattern.info.popup.blend": "Blend Mode",
-    "pattern.info.popup.foreColor": "Fore",
-    "pattern.info.popup.backColor": "Back",
-    "stroke.dasharray.editor.add": "Add Dash",
-    "viewport.panning.enable": "You can move the area by holding down space key and dragging the screen.",
-    "image.select.editor.button": "Select Image"
-  };
-  var fr_FR = {
-    "app.title": "elf",
-    "app.sample": (a, b, c) => {
-      return `${a}-${b}-${c}`;
-    },
-    "app.lang.en_US": "English",
-    "app.lang.ko_KR": "\uD55C\uAD6D\uC5B4",
-    "app.lang.fr_FR": "Fran\xE7ais",
-    "app.label.lang": "Langue",
-    "app.layout.all": "Layout",
-    "app.layout.css": "CSS Mode",
-    "app.layout.svg": "SVG Mode",
-    "app.label.layout": "Menu Layout",
-    "app.theme.dark": "Sombre",
-    "app.theme.light": "Clair",
-    "app.theme.gray": "Gris",
-    "app.label.theme": "Th\xE8me",
-    "app.tab.title.projects": "Projets",
-    "app.tab.title.layers": "Objets",
-    "app.tab.title.libraries": "Librarie",
-    "app.tab.title.components": "Objet",
-    "app.tab.title.artboards": "Artboard",
-    "app.tab.title.assets": "Elements",
-    "app.tab.title.keyMap": "Clavier",
-    "app.confirm.message.artboard.items.removeArtboard": "Do you remove an artboard preview really?",
-    "app.confirm.message.custom-component.items.removeCustomComponent": "Do you remove a custom component preview really?",
-    "menu.item.download.title": "T\xE9l\xE9charger",
-    "menu.item.save.title": "Enregistrer",
-    "menu.item.export.title": "Exporter",
-    "menu.item.codepen.title": "CodePen",
-    "menu.item.fullscreen.title": "Ecran",
-    "menu.item.shortcuts.title": "ShortCuts",
-    "menu.item.github.title": "Github",
-    "menu.item.learn.title": "Docs",
-    "menu.item.projects.title": "Projects",
-    "project.property.title": "Projet",
-    "project.information.property.title": "Information",
-    "project.information.property.name": "Nom",
-    "project.information.property.description": "Description",
-    "artboard.property.title": "Planche",
-    "artboard.property.layout.title.flex": "Flex",
-    "artboard.property.layout.title.grid": "Grille",
-    "layer.tree.property.title": "Objets",
-    "layer.tree.property.layout.title.flex": "Flex",
-    "layer.tree.property.layout.title.grid": "Grille",
-    "alignment.property.title": "Alignment",
-    "position.property.title": "Position",
-    "position.property.X": "X",
-    "position.property.Y": "Y",
-    "size.property.title": "Taille",
-    "position.property.width": "Largeur",
-    "position.property.height": "Hauteur",
-    "position.property.opacity": "Opacity",
-    "position.property.rotate": "Rotate",
-    "background.color.property.title": "Apparance",
-    "background.color.property.color": "Couleur",
-    "background.color.property.zindex": "z-index",
-    "background.color.property.opacity": "Opacit\xE9",
-    "background.color.property.blend": "M\xE9lange",
-    "background.color.property.overflow": "D\xE9bordement",
-    "background.color.property.overflow.visible": "Visible",
-    "background.color.property.overflow.hidden": "Cach\xE9",
-    "background.color.property.overflow.scroll": "Scroll",
-    "background.color.property.overflow.auto": "Auto",
-    "blend.normal": "normal",
-    "blend.multiply": "multiplie",
-    "blend.screen": "\xE9cran",
-    "blend.overlay": "couche",
-    "blend.darken": "sombre",
-    "blend.lighten": "clair",
-    "blend.color-dodge": "dodge",
-    "blend.color-burn": "brul\xE9",
-    "blend.hard-light": "dur",
-    "blend.soft-light": "doux",
-    "blend.difference": 'diff"rence',
-    "blend.exclusion": "exclusion",
-    "blend.hue": "teinte",
-    "blend.saturation": "saturation",
-    "blend.color": "couleur",
-    "blend.luminosity": "luminosit\xE9",
-    "background.image.property.title": "Remplissage",
-    "border.property.title": "Bordure",
-    "border.radius.property.title": "Rayon de bordure",
-    "boxshadow.property.title": "Ombres",
-    "filter.property.title": "Filtre",
-    "filter.property.blur": "Flou",
-    "filter.property.grayscale": "Echelle de gris",
-    "filter.property.hue-rotate": "Rotation teinte",
-    "filter.property.invert": "Invertir",
-    "filter.property.brightness": "Luminosit\xE9",
-    "filter.property.contrast": "Contraste",
-    "filter.property.drop-shadow": "Ombre port\xE9e",
-    "filter.property.drop-shadow.color": "Couleur",
-    "filter.property.drop-shadow.offsetX": "D\xE9calage X",
-    "filter.property.drop-shadow.offsetY": "D\xE9calage Y",
-    "filter.property.drop-shadow.blurRadius": "Flou",
-    "filter.property.opacity": "Opacit\xE9",
-    "filter.property.saturate": "Saturation",
-    "filter.property.sepia": "S\xE9pia",
-    "filter.property.svg": "SVG",
-    "font.property.title": "Police",
-    "font.property.color": "Couleur",
-    "font.property.size": "Taille",
-    "font.property.stretch": "Etirement",
-    "font.property.weight": "Poids",
-    "font.property.style": "Style",
-    "font.property.family": "Famille",
-    "font.spacing.property.title": "Espaces du texte",
-    "font.spacing.property.lineHeight": "Hauteur de ligne",
-    "font.spacing.property.letterSpacing": "Espace inter-caract\xE8res",
-    "font.spacing.property.wordSpacing": "Espace inter-mots",
-    "font.spacing.property.indent": "Identation",
-    "backdrop.filter.property.title": "Filtre Backdrop",
-    "clippath.property.title": "Chemin du Clip",
-    "export.property.title": "Exporter",
-    "export.property.download": "T\xE9l\xE9charger",
-    "iframe.property.title": "IFrame",
-    "image.property.title": "Image",
-    "image.property.origin": "Origine",
-    "image.property.size": "Taille",
-    "image.property.width": "Largeur",
-    "image.property.height": "Hauteur",
-    "video.property.title": "Video",
-    "video.property.play": "Jouer",
-    "video.property.pause": "Pause",
-    "video.property.volume": "Volume",
-    "video.property.playbackRate": "Vitesse de lecture",
-    "video.property.currentTime": "Temps actuel",
-    "video.property.playTime": "Temps de lecture",
-    "motion.property.title": "Mouvement",
-    "text.property.title": "Style Texte",
-    "text.property.align": "Alignement",
-    "text.property.transform": "Transformation",
-    "text.property.decoration": "D\xE9coration",
-    "text.clip.property.title": "Clip Texte",
-    "text.shadow.property.title": "Ombres Texte",
-    "text.fill.property.title": "Remplissage Texte",
-    "text.fill.property.fill": "Remplissage",
-    "text.fill.property.stroke": "Trait",
-    "text.fill.property.strokeWidth": "Largeur",
-    "transform.property.title": "Transformation",
-    "transform.origin.property.title": "Origine Transformation",
-    "transition.property.title": "Transition CSS",
-    "keyframe.property.title": "Image cl\xE9 CSS",
-    "selector.property.title": "S\xE9l\xE9cteur",
-    "selector.property.none": "Aucun s\xE9l\xE9cteur",
-    "path.data.property.title": "Information Chemin",
-    "polygon.data.property.title": "Information Polygone",
-    "perspective.property.title": "Perspective",
-    "perspective.origin.property.title": "Origine Perspective",
-    "svg.item.property.title": "Appearance",
-    "svg.item.property.isMotionPath": "Chemin de mouvement",
-    "svg.item.property.fill": "Remplissage",
-    "svg.item.property.fillOpacity": "Opacit\xE9",
-    "svg.item.property.path": "Chemin",
-    "svg.item.property.polygon": "Polygone",
-    "svg.item.property.totalLength": "Longueur totale",
-    "svg.item.property.fillRule": "R\xE8gle remplissage",
-    "svg.item.property.stroke": "Trait",
-    "svg.item.property.strokeWidth": "Largeur de trait",
-    "svg.item.property.dashArray": "Suite tiret",
-    "svg.item.property.dashOffset": "D\xE9calage tiret",
-    "svg.item.property.lineCap": "Chapeau Ligne",
-    "svg.item.property.lineJoin": "Jonction ligne",
-    "svg.item.property.filter": "Filtre",
-    "svg.item.property.blend": "Blend Mode",
-    "border.editor.all": "Tout",
-    "border.editor.width": "Largeur",
-    "border.editor.style": "Style",
-    "border.editor.color": "Couleur",
-    "border.editor.top": "Haut",
-    "border.editor.left": "Gauche",
-    "border.editor.right": "Droite",
-    "border.editor.bottom": "Bas",
-    "border.radius.editor.topLeft": "Haut gauche",
-    "border.radius.editor.topRight": "Haut droite",
-    "border.radius.editor.bottomLeft": "Bas gauche",
-    "border.radius.editor.bottomRight": "Bas droite",
-    "boxshadow.editor.blur": "Flou",
-    "boxshadow.editor.spread": "Etalement",
-    "css.property.editor.properties": "Propri\xE9t\xE9s",
-    "offset.path.list.editor.path": "Chemin",
-    "offset.path.list.editor.totalLength": "Longueur totale",
-    "offset.path.list.editor.distance": "Distance",
-    "offset.path.list.editor.direction": "Direction",
-    "offset.path.list.editor.rotate": "Rotation",
-    "svgfilter.select.editor.message.create": "Cr\xE9er un filtre svg",
-    "svgfilter.select.editor.message.select": "S\xE9lection filtre",
-    "fill.editor.message.click.image": "Cliquez sur aper\xE7u si vous souhaitez s\xE9lectionner une image",
-    "fill.editor.message.drag.position": "Prendre pour changer la position centrale",
-    "fill.editor.x1": "D\xE9but X",
-    "fill.editor.x2": "Fin X",
-    "fill.editor.y1": "D\xE9but Y",
-    "fill.editor.y2": "Fin Y",
-    "fill.editor.spread": "Etalement",
-    "fill.editor.offset": "D\xE9calage",
-    "fill.editor.cx": "Centre X",
-    "fill.editor.cy": "Centre Y",
-    "fill.editor.r": "Rayon de fin",
-    "fill.editor.fx": "D\xE9part X",
-    "fill.editor.fy": "D\xE9part Y",
-    "fill.editor.fr": "Rayon de d\xE9part",
-    "perspective.origin.editor.originX": "Origine X",
-    "perspective.origin.editor.originY": "Origine Y",
-    "path.manager.msg": "Appuyer ESC ou Entr\xE9z keypour fermer Edition",
-    "path.manager.mode.done": "Done",
-    "path.manager.mode.modify": "Modifier",
-    "path.manager.mode.path": "Chemin",
-    "path.manager.mode.warp": "Warp",
-    "path.manager.mode.transform": "Transformer",
-    "path.manager.mode.reverse": "Reverse",
-    "path.manager.mode.flipX": "Retouner X",
-    "path.manager.mode.flipY": "Retouner Y",
-    "path.manager.mode.flipOrigin": "Retouner Origine",
-    "colorpicker.popup.title": "Pipette",
-    "selector.popup.title": "Propi\xE9t\xE9 de S\xE9lecteur",
-    "selector.popup.selector": "S\xE9lecteur",
-    "background.image.position.popup.title": "Motif de fond",
-    "background.image.position.popup.size": "Taille",
-    "background.image.position.popup.width": "Largeur",
-    "background.image.position.popup.height": "Hauteur",
-    "background.image.position.popup.repeat": "Rep\xE8te",
-    "background.image.position.popup.blend": "M\xE9lange",
-    "background.image.position.popup.type.repeat": "rep\xE8te",
-    "background.image.position.popup.type.no-repeat": "sans rep\xE9tition",
-    "background.image.position.popup.type.repeat-x": "rep\xE8te-x",
-    "background.image.position.popup.type.repeat-y": "rep\xE8te-y",
-    "background.image.position.popup.type.space": "espace",
-    "background.image.position.popup.type.round": "rond",
-    "gradient.picker.popup.title": "S\xE9lection Gradient & Image",
-    "image.asset.property.title": "Image",
-    "video.asset.property.title": "Vid\xE9o",
-    "color.asset.property.title": "Couleur",
-    "gradient.asset.property.title": "Gradient",
-    "pattern.asset.property.title": "Motif",
-    "svgfilter.asset.property.title": "Filtre SVG",
-    "inspector.tab.title.design": "Design",
-    "inspector.tab.title.component": "Composant",
-    "inspector.tab.title.transition": "Animation",
-    "inspector.tab.title.asset": "El\xE9ments",
-    "inspector.tab.title.text": "Texte",
-    "inspector.tab.title.code": "Code",
-    "inspector.tab.title.history": "History",
-    "timeline.property.title": "Chronologie",
-    "timeline.property.resize": "Drag if you want to resize timeline height.",
-    "timeline.animation.property.title": "Animations",
-    "timeline.play.control.play": "Jouer",
-    "timeline.play.control.pause": "Pause",
-    "timeline.play.control.first": "Premier",
-    "timeline.play.control.prev": "Pr\xE9c\xE9dent",
-    "timeline.play.control.next": "Suivant",
-    "timeline.play.control.last": "Dernier",
-    "timeline.play.control.direction": "Direction",
-    "timeline.play.control.speed": "Vitesse",
-    "timeline.play.control.repeat": "R\xE9p\xE9ter",
-    "timeline.play.control.infinite": "Infini",
-    "timeline.play.control.normal": "normal",
-    "timeline.play.control.alternate": "alternatif",
-    "timeline.play.control.reverse": "inverse",
-    "timeline.play.control.alternate.reverse": "inverse alternatif",
-    "timeline.value.editor.value": "Valeur",
-    "timeline.value.editor.time": "Temps",
-    "timeline.value.editor.timing": "Calage temps",
-    "timeline.value.editor.offset.message": "Please input enter key to change time offset.",
-    "svgfilter.popup.title": "Filtre SVG",
-    "css.item.rotate": "Rotation",
-    "css.item.rotateX": "Rotation X",
-    "css.item.rotateY": "Rotation Y",
-    "css.item.rotateZ": "Rotation Z",
-    "css.item.rotate3d": "Rotation 3D",
-    "css.item.skewX": "Oblique X",
-    "css.item.skewY": "Oblique Y",
-    "css.item.translate": "Translation",
-    "css.item.translateX": "Translation X",
-    "css.item.translateY": "Translation Y",
-    "css.item.translateZ": "Translation Z",
-    "css.item.translate3d": "Translation 3D",
-    "css.item.perspective": "Persp\xE9ctive",
-    "css.item.scale": "Echelle",
-    "css.item.scaleX": "Echelle X",
-    "css.item.scaleY": "Echelle Y",
-    "css.item.scaleZ": "Echelle Z",
-    "css.item.scale3d": "Echelle 3D",
-    "css.item.matrix": "Matrice",
-    "css.item.matrix3d": "Matrice 3D",
-    "animation.property.title": "Animation CSS",
-    "animation.property.direction": "Direction",
-    "animation.property.play.state": "Etat lecture",
-    "animation.property.fill.mode": "Mode remplissage",
-    "animation.property.delay": "D\xE9lais",
-    "animation.property.duration": "Dur\xE9e",
-    "animation.property.iteration.count": "Nombre It\xE9rations",
-    "animation.property.Select a keyframe": "Selectionner une image cl\xE9",
-    "animation.property.popup.title": "Animation",
-    "animation.property.popup.timing.function": "Fonction temps",
-    "animation.property.popup.keyframe": "image cl\xE9",
-    "animation.property.popup.direction": "Direction",
-    "animation.property.popup.play.state": "Etat lecture",
-    "animation.property.popup.fill.mode": "Mode remplissage",
-    "animation.property.popup.delay": "D\xE9lais",
-    "animation.property.popup.duration": "Dur\xE9\xE9",
-    "animation.property.popup.iteration": "It\xE9ration",
-    "animation.property.popup.normal": "normal",
-    "animation.property.popup.reverse": "inverse",
-    "animation.property.popup.alternate": "alternatif",
-    "animation.property.popup.alternate-reverse": "inverse alternatif",
-    "animation.property.popup.none": "Aucun",
-    "animation.property.popup.forwards": "en avant",
-    "animation.property.popup.backwards": "en arri\xE8re",
-    "animation.property.popup.both": "les deux",
-    "animation.property.popup.Select a keyframe": "Selectionner une image cl\xE9",
-    "keyframe.popup.title": "image cl\xE9",
-    "code.view.property.title": "Vue code",
-    "svg.filter.editor.tab.filter": "Filtrer",
-    "svg.filter.editor.tab.preset": "Pre-rempli",
-    "svg.filter.editor.tab.asset": "El\xE9ments",
-    "svg.filter.editor.GRAPHIC REFERENCES": "REFERENCES GRAPHIQUES",
-    "svg.filter.editor.SOURCES": "SOURCES",
-    "svg.filter.editor.MODIFIER": "MODIFIER",
-    "svg.filter.editor.LIGHTING": "ECLAIRAGE",
-    "svg.filter.editor.COMBINERS": "COMBINER",
-    "svg.filter.editor.Template": "Mod\xE8le",
-    "layout.property.title": "Disposition",
-    "layout.property.flex": "Bo\xEEte Flex",
-    "layout.property.grid": "Grille",
-    "layout.property.default": "D\xE9faut",
-    "layout.property.resizing.title": "Resizing",
-    "layout.property.resizing.self.title": "Self Resizing",
-    "default.layout.item.property.title.constraints": "Constraints",
-    "flex.layout.editor.row": "Ligne",
-    "flex.layout.editor.column": "Colonne",
-    "flex.layout.editor.row-reverse": "Inverse ligne",
-    "flex.layout.editor.column-reverse": "Inverse Colonne",
-    "flex.layout.editor.nowrap": "Non-emball\xE9",
-    "flex.layout.editor.wrap": "Emball\xE9 (wrap)",
-    "flex.layout.editor.wrap-reverse": "Inverse emball\xE9",
-    "flex.layout.editor.flex-start": "D\xE9but",
-    "flex.layout.editor.flex-end": "Fin",
-    "flex.layout.editor.center": "Centrer",
-    "flex.layout.editor.space-between": "Entre",
-    "flex.layout.editor.space-around": "Autour",
-    "flex.layout.editor.baseline": "Base",
-    "flex.layout.editor.stretch": "Etirement",
-    "flex.layout.editor.direction": "Direction",
-    "flex.layout.editor.justify-content": "Justifier",
-    "flex.layout.editor.align-items": "Aligner objets",
-    "flex.layout.editor.align-content": "Aligner contenu",
-    "flex.layout.item.property.title": "D\xE9tail Disposition objet",
-    "flex.layout.item.property.grow": "Augmenter Flex",
-    "flex.layout.item.property.shrink": "R\xE9duire Flex",
-    "flex.layout.item.property.basis": "Base Flex",
-    "flex.layout.item.property.none": "Aucun",
-    "flex.layout.item.property.auto": "auto",
-    "flex.layout.item.property.value": "valeur",
-    "grid.layout.editor.template.columns": "Colonne",
-    "grid.layout.editor.column.gap": "Espace Colonne",
-    "grid.layout.editor.template.rows": "Lignes",
-    "grid.layout.editor.row.gap": "Espace lignes",
-    "grid.box.editor.box.title": "Bo\xEEte",
-    "grid.box.editor.type": "Type",
-    "grid.box.editor.repeat": "R\xE9p\xE9ter",
-    "grid.box.editor.length": "Longueur",
-    "grid.box.editor.none": "Aucun",
-    "grid.box.editor.auto": "Auto",
-    "grid.box.editor.count": "Compte",
-    "grid.box.editor.value": "Taille",
-    "grid.layout.item.property.title": "D\xE9tail disposition objets",
-    "grid.layout.item.property.column": "Colonne",
-    "grid.layout.item.property.row": "Ligne",
-    "grid.layout.item.property.start": "D\xE9but",
-    "grid.layout.item.property.end": "Fin",
-    "grid.layout.item.property.none": "Aucun",
-    "grid.layout.item.property.value": "valeur",
-    "box.model.property.title": "Mod\xE8le",
-    "box.model.property.margin": "Marge",
-    "box.model.property.padding": "Espace",
-    "component.items.canvas": "Toile",
-    "component.items.layer": "Objet",
-    "component.items.3dlayer": "Objet 3D",
-    "component.items.drawing": "Dessin",
-    "component.items.custom": "Composant personnalis\xE9",
-    "component.items.chart": "Chart",
-    "component.items.plugin": "Plugin",
-    "svg.text.property.title": "Style SVG Texte",
-    "svg.text.property.textarea": "Zone Texte",
-    "svg.text.property.size": "Taille",
-    "svg.text.property.weight": "Poids",
-    "svg.text.property.style": "Style",
-    "svg.text.property.anchor": "Ancre Texte",
-    "svg.text.property.family": "Famille",
-    "svg.text.property.length.adjust": "Ajusteement longueur",
-    "svg.text.property.text.length": "Ajusteement Texte",
-    "svg.text.property.start.offset": "D\xE9callage d\xE9part",
-    "fill.picker.popup.title": "S\xE9lection Fragment SVG",
-    "gradient.editor.drag.message": "Glisser pour d\xE9placer centre.",
-    "draw.manager.tolerance": "Tol\xE9rance",
-    "pattern.property.title": "Motif",
-    "pattern.info.popup.title": "Info Motif",
-    "pattern.info.popup.width": "Largeur",
-    "pattern.info.popup.height": "Hauteur",
-    "pattern.info.popup.lineWidth": "Largeur ligne",
-    "pattern.info.popup.lineHeight": "Hauteur de ligne",
-    "pattern.info.popup.rotate": "Rotatation",
-    "pattern.info.popup.blend": "M\xE9lange",
-    "pattern.info.popup.foreColor": "Avant",
-    "pattern.info.popup.backColor": "Arri\xE8re",
-    "stroke.dasharray.editor.add": "Ajout tiret",
-    "viewport.panning.enable": "You can move the area by holding down space and dragging the screen."
-  };
-  var ko_KR = {
-    "app.title": "elf",
-    "app.sample": (a, b, c) => {
-      return `${a}-${b}-${c}`;
-    },
-    "app.lang.en_US": "English",
-    "app.lang.ko_KR": "\uD55C\uAD6D\uC5B4",
-    "app.lang.fr_FR": "Fran\xE7ais",
-    "app.label.lang": "\uC5B8\uC5B4",
-    "app.layout.all": "\uB808\uC774\uC544\uC6C3",
-    "app.layout.css": "CSS \uBAA8\uB4DC",
-    "app.layout.svg": "SVG \uBAA8\uB4DC",
-    "app.label.layout": "\uBA54\uB274\uAD6C\uC131",
-    "app.theme.dark": "\uC5B4\uB450\uC6B4",
-    "app.theme.light": "\uBC1D\uC740",
-    "app.theme.toon": "\uADF8\uB9AC\uAE30",
-    "app.theme.gray": "\uD68C\uC0C9",
-    "app.label.theme": "\uD14C\uB9C8",
-    "app.tab.title.projects": "\uD504\uB85C\uC81D\uD2B8",
-    "app.tab.title.layers": "\uB808\uC774\uC5B4",
-    "app.tab.title.libraries": "\uB77C\uC774\uBE0C\uB7EC\uB9AC",
-    "app.tab.title.components": "\uCEF4\uD3EC\uB10C\uD2B8",
-    "app.tab.title.artboards": "\uC544\uD2B8\uBCF4\uB4DC",
-    "app.tab.title.assets": "\uC5D0\uC14B",
-    "app.tab.title.keyMap": "\uB2E8\uCD95\uD0A4",
-    "app.confirm.message.artboard.items.removeArtboard": "\uC544\uD2B8\uBCF4\uB4DC \uD504\uB9AC\uBDF0\uB97C \uC0AD\uC81C \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-    "app.confirm.message.custom-component.items.removeCustomComponent": "\uCEF4\uD3EC\uB10C\uD2B8 \uD504\uB9AC\uBDF0\uB97C \uC0AD\uC81C \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?",
-    "menu.item.download.title": "\uB2E4\uC6B4\uB85C\uB4DC",
-    "menu.item.save.title": "\uC800\uC7A5",
-    "menu.item.export.title": "\uB0B4\uBCF4\uB0B4\uAE30",
-    "menu.item.fullscreen.title": "\uC804\uCCB4\uD654\uBA74",
-    "menu.item.shortcuts.title": "\uB2E8\uCD95\uD0A4",
-    "menu.item.github.title": "Github",
-    "menu.item.learn.title": "\uBC30\uC6B0\uAE30",
-    "menu.item.projects.title": "\uD504\uB85C\uC81D\uD2B8",
-    "project.property.title": "\uD504\uB85C\uC81D\uD2B8",
-    "project.information.property.title": "\uD504\uB85C\uC81D\uD2B8 \uC815\uBCF4",
-    "project.information.property.name": "\uC774\uB984",
-    "project.information.property.description": "\uC124\uBA85",
-    "artboard.property.title": "\uC544\uD2B8\uBCF4\uB4DC",
-    "artboard.property.layout.title.flex": "\uD50C\uB809\uC2A4",
-    "artboard.property.layout.title.grid": "\uADF8\uB9AC\uB4DC",
-    "layer.tree.property.title": "\uB808\uC774\uC5B4",
-    "layer.tree.property.layout.title.flex": "\uD50C\uB809\uC2A4",
-    "layer.tree.property.layout.title.grid": "\uADF8\uB9AC\uB4DC",
-    "alignment.property.title": "\uC815\uB82C",
-    "position.property.title": "\uC704\uCE58",
-    "position.property.X": "X",
-    "position.property.Y": "Y",
-    "size.property.title": "\uD06C\uAE30",
-    "position.property.width": "\uB113\uC774",
-    "position.property.height": "\uB192\uC774",
-    "position.property.rotate": "\uD68C\uC804",
-    "position.property.opacity": "\uD22C\uBA85",
-    "background.color.property.title": "\uD45C\uC2DC",
-    "background.color.property.color": "\uBC30\uACBD\uC0C9",
-    "background.color.property.zindex": "z-index",
-    "background.color.property.blend": "\uBE14\uB80C\uB4DC\uBAA8\uB4DC",
-    "background.color.property.overflow": "\uC624\uBC84\uD50C\uB85C\uC6B0",
-    "background.color.property.overflow.visible": "\uBCF4\uC774\uAE30",
-    "background.color.property.overflow.hidden": "\uC228\uAE30\uAE30",
-    "background.color.property.overflow.scroll": "\uC2A4\uD06C\uB864",
-    "background.color.property.overflow.auto": "\uC790\uB3D9",
-    "blend.normal": "Normal(\uD45C\uC900) \uD63C\uD569\uBAA8\uB4DC",
-    "blend.multiply": "Multiply(\uACF1\uD558\uAE30) \uBAA8\uB4DC",
-    "blend.screen": "Screen(\uC2A4\uD06C\uB9B0) \uBAA8\uB4DC ",
-    "blend.overlay": "Overlay(\uC624\uBC84\uB808\uC774) \uBAA8\uB4DC",
-    "blend.darken": "Darken(\uC5B4\uB461\uAE30) \uBAA8\uB4DC",
-    "blend.lighten": "Lighten(\uBC1D\uAE30) \uBAA8\uB4DC ",
-    "blend.color-dodge": "Color Dodge(\uCEEC\uB7EC \uB2F7\uC9C0) \uBAA8\uB4DC ",
-    "blend.color-burn": "Color Burn(\uCEEC\uB7EC \uBC88) \uBAA8\uB4DC ",
-    "blend.hard-light": "Hard Light(\uD558\uB4DC \uB77C\uC774\uD2B8) \uBAA8\uB4DC ",
-    "blend.soft-light": "Soft Light(\uC18C\uD504\uD2B8 \uB77C\uC774\uD2B8) \uBAA8\uB4DC ",
-    "blend.difference": "Difference(\uCC28\uC774) \uBAA8\uB4DC",
-    "blend.exclusion": "Exclusion(\uC81C\uC678) \uBAA8\uB4DC",
-    "blend.hue": "Hue(\uC0C9\uC870) \uBAA8\uB4DC ",
-    "blend.saturation": "Saturation(\uCC44\uB3C4) \uBAA8\uB4DC",
-    "blend.color": "Color(\uC0C9\uC0C1) \uBAA8\uB4DC",
-    "blend.luminosity": "Luminosity(\uAD11\uB3C4) \uBAA8\uB4DC ",
-    "background.image.property.title": "\uCC44\uC6B0\uAE30",
-    "border.property.title": "\uC678\uACFD\uC120",
-    "border.radius.property.title": "\uB465\uADFC \uC678\uACFD\uC120",
-    "boxshadow.property.title": "\uADF8\uB9BC\uC790",
-    "filter.property.title": "\uD544\uD130",
-    "filter.property.blur": "\uD750\uB9BC(Blur)",
-    "filter.property.grayscale": "\uD68C\uC0C9(GrayScale)",
-    "filter.property.hue-rotate": "\uC0C9\uC870(HueRotate)",
-    "filter.property.invert": "\uBC18\uC804(Invert)",
-    "filter.property.brightness": "\uBC1D\uAE30(Brightness)",
-    "filter.property.contrast": "\uB300\b\uC870(Contrast)",
-    "filter.property.drop-shadow": "\uADF8\uB9BC\uC790(Drop Shadow)",
-    "filter.property.drop-shadow.color": "\uC0C9",
-    "filter.property.drop-shadow.offsetX": "X",
-    "filter.property.drop-shadow.offsetY": "Y",
-    "filter.property.drop-shadow.blurRadius": "\uD750\uB9BC",
-    "filter.property.opacity": "\uD22C\uBA85\uB3C4(Opacity)",
-    "filter.property.saturate": "\uCC44\uB3C4(Saturate)",
-    "filter.property.sepia": "\uAC08\uC0C9\uD1A4(Sepia)",
-    "filter.property.svg": "SVG",
-    "font.property.title": "\uD3F0\uD2B8",
-    "font.property.color": "\uC0C9",
-    "font.property.size": "\uD06C\uAE30",
-    "font.property.stretch": "\uBED7\uAE30",
-    "font.property.weight": "\uAD75\uAE30",
-    "font.property.style": "\uC2A4\uD0C0\uC77C",
-    "font.property.family": "\uAE00\uAF34",
-    "font.spacing.property.title": "\uD3F0\uD2B8 \uACF5\uAC04",
-    "font.spacing.property.lineHeight": "\uC904 \uB192\uC774",
-    "font.spacing.property.letterSpacing": "\uAE00\uC790 \uAC04\uACA9",
-    "font.spacing.property.wordSpacing": "\uB2E8\uC5B4 \uAC04\uACA9",
-    "font.spacing.property.indent": "\uB4E4\uC5EC\uC4F0\uAE30",
-    "backdrop.filter.property.title": "\uD6C4\uBA74 \uD544\uD130",
-    "clippath.property.title": "\uD074\uB9BD\uD328\uC2A4",
-    "export.property.title": "\uB0B4\uBCF4\uB0B4\uAE30",
-    "export.property.download": "\uB2E4\uC6B4\uB85C\uB4DC",
-    "iframe.property.title": "\uC544\uC774\uD504\uB808\uC784",
-    "image.property.title": "\uC774\uBBF8\uC9C0",
-    "image.property.origin": "\uC6D0\uBCF8",
-    "image.property.size": "\uD06C\uAE30",
-    "image.property.width": "\uB113\uC774",
-    "image.property.height": "\uB192\uC774",
-    "video.property.title": "\uBE44\uB514\uC624",
-    "video.property.play": "\uC2DC\uC791",
-    "video.property.pause": "\uBA48\uCDA4",
-    "video.property.volume": "\uBCFC\uB968",
-    "video.property.playbackRate": "\uBE60\uB974\uAE30",
-    "video.property.currentTime": "\uD604\uC7AC \uC2DC\uAC04",
-    "video.property.playTime": "\uD50C\uB808\uC774 \uC2DC\uAC04 \uAC04\uACA9",
-    "motion.property.title": "\uBAA8\uC158",
-    "path.data.property.title": "\uD328\uC2A4 \uC815\uBCF4",
-    "polygon.data.property.title": "\uD3F4\uB9AC\uACE4 \uC815\uBCF4",
-    "text.property.title": "\uD14D\uC2A4\uD2B8 \uC2A4\uD0C0\uC77C",
-    "text.property.align": "\uC815\uB82C",
-    "text.property.transform": "\uBCC0\uD615",
-    "text.property.decoration": "\uC7A5\uC2DD",
-    "text.clip.property.title": "\uD14D\uC2A4\uD2B8 \uD074\uB9BD",
-    "text.shadow.property.title": "\uD14D\uC2A4\uD2B8 \uADF8\uB9BC\uC790",
-    "text.fill.property.title": "\uD14D\uC2A4\uD2B8 \uCC44\uC6B0\uAE30",
-    "text.fill.property.fill": "\uCC44\uC6B0\uAE30",
-    "text.fill.property.stroke": "\uC724\uACFD\uC120",
-    "text.fill.property.strokeWidth": "\uC724\uACFD\uC120 \uAD75\uAE30",
-    "transform.property.title": "\uD2B8\uB79C\uC2A4\uD3FC",
-    "transform.origin.property.title": "\uD2B8\uB79C\uC2A4\uD3FC Origin",
-    "transition.property.title": "CSS \uD2B8\uB79C\uC9C0\uC158",
-    "keyframe.property.title": "CSS \uD0A4\uD504\uB808\uC784",
-    "selector.property.title": "CSS \uC140\uB809\uD130",
-    "selector.property.none": "\uC120\uD0DD\uC790 \uC5C6\uC74C",
-    "perspective.property.title": "\uD22C\uC601(perspective)",
-    "perspective.origin.property.title": "\uD22C\uC601 \uC911\uC2EC\uC810",
-    "svg.item.property.title": "\uBCF4\uC774\uAE30",
-    "svg.item.property.isMotionPath": "\uBAA8\uC158 \uD328\uC2A4",
-    "svg.item.property.fill": "\uCC44\uC6B0\uAE30",
-    "svg.item.property.fillOpacity": "\uD22C\uBA85\uB3C4",
-    "svg.item.property.path": "\uD328\uC2A4",
-    "svg.item.property.polygon": "\uD3F4\uB9AC\uACE4",
-    "svg.item.property.totalLength": "\uC804\uCCB4 \uAE38\uC774",
-    "svg.item.property.fillRule": "\uCC44\uC6B0\uAE30 \uADDC\uCE59",
-    "svg.item.property.stroke": "\uC120",
-    "svg.item.property.strokeWidth": "\uC120 \uAD75\uAE30",
-    "svg.item.property.dashArray": "\uC810\uC120 \uAE38\uC774",
-    "svg.item.property.dashOffset": "\uC810\uC120 \uC704\uCE58",
-    "svg.item.property.lineCap": "\uC120 \uBAA8\uC591",
-    "svg.item.property.lineJoin": "\uACB9\uCE5C \uC120",
-    "svg.item.property.filter": "\uD544\uD130",
-    "svg.item.property.blend": "\uBE14\uB80C\uB4DC",
-    "border.editor.all": "\uC804\uCCB4",
-    "border.editor.width": "\uD06C\uAE30",
-    "border.editor.style": "\uC2A4\uD0C0\uC77C",
-    "border.editor.color": "\uC0C9",
-    "border.editor.top": "\uC704",
-    "border.editor.left": "\uC67C\uCABD",
-    "border.editor.right": "\uC624\uB978\uCABD",
-    "border.editor.bottom": "\uC544\uB798",
-    "border.radius.editor.topLeft": "\uC67C\uCABD \uC704",
-    "border.radius.editor.topRight": "\uC624\uB978\uCABD \uC704",
-    "border.radius.editor.bottomLeft": "\uC67C\uCABD \uC544\uB798",
-    "border.radius.editor.bottomRight": "\uC624\uB978\uCABD \uC544\uB798",
-    "boxshadow.editor.blur": "\uD750\uB9BC",
-    "boxshadow.editor.spread": "\uAE38\uC774",
-    "css.property.editor.properties": "\uC18D\uC131",
-    "offset.path.list.editor.path": "\uD328\uC2A4",
-    "offset.path.list.editor.totalLength": "\uC804\uCCB4 \uAE38\uC774",
-    "offset.path.list.editor.distance": "\uAC70\uB9AC",
-    "offset.path.list.editor.direction": "\uBC29\uD5A5",
-    "offset.path.list.editor.rotate": "\uD68C\uC804",
-    "svgfilter.select.editor.message.create": "\uC0C8\uB85C\uC6B4 SVG Filter \uB97C \uB9CC\uB4DC\uC138\uC694.",
-    "svgfilter.select.editor.message.select": "\uD544\uD130\uB97C \uC120\uD0DD\uD558\uC138\uC694.",
-    "fill.editor.message.click.image": "\uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD558\uACE0 \uC2F6\uC73C\uBA74 \uD504\uB9AC\uBDF0 \uC601\uC5ED\uC744 \uD074\uB9AD\uD558\uC138\uC694.",
-    "fill.editor.message.drag.position": "\uAC00\uC6B4\uB370 \uC704\uCE58\uB97C \uB4DC\uB798\uADF8 \uD574\uBCF4\uC138\uC694.",
-    "fill.editor.x1": "\uC2DC\uC791 X",
-    "fill.editor.x2": "\uB05D X",
-    "fill.editor.y1": "\uC2DC\uC791 Y",
-    "fill.editor.y2": "\uB05D Y",
-    "fill.editor.spread": "\uD655\uC0B0",
-    "fill.editor.offset": "\uC704\uCE58",
-    "fill.editor.cx": "\uC911\uC2EC\uC810 X",
-    "fill.editor.cy": "\uC911\uC2EC\uC810 Y",
-    "fill.editor.r": "\uB05D \uBC18\uC9C0\uB984",
-    "fill.editor.fx": "\uC2DC\uC791 X",
-    "fill.editor.fy": "\uC2DC\uC791 Y",
-    "fill.editor.fr": "\uC2DC\uC791 \uBC18\uC9C0\uB984",
-    "perspective.origin.editor.originX": "\uC911\uC2EC\uC810 X",
-    "perspective.origin.editor.originY": "\uC911\uC2EC\uC810 Y",
-    "path.manager.msg": "\uD3B8\uC9D1\uC744 \uC885\uB8CC\uD560 \uB54C\uB294 ESC \uD0A4\uB098 Enter \uD0A4\uB97C \uB204\uB974\uC138\uC694. \uB610\uB294 \uD654\uBA74\uC744 \uD074\uB9AD\uD558\uC2DC\uBA74 \uB429\uB2C8\uB2E4.",
-    "path.manager.mode.done": "\uC644\uB8CC",
-    "path.manager.mode.modify": "\uC810 \uD3B8\uC9D1",
-    "path.manager.mode.path": "\uC810 \uCD94\uAC00",
-    "path.manager.mode.warp": "\uC6CC\uD504",
-    "path.manager.mode.transform": "\uBCC0\uD615",
-    "path.manager.mode.reverse": "\uC21C\uC11C\uBCC0\uACBD",
-    "path.manager.mode.flipX": "X\uCD95 \uD68C\uC804",
-    "path.manager.mode.flipY": "Y\uCD95 \uD68C\uC804",
-    "path.manager.mode.flipOrigin": "\uC804\uCCB4 \uD68C\uC804",
-    "colorpicker.popup.title": "\uC0C9\uC0C1 \uC120\uD0DD",
-    "selector.popup.title": "\uC120\uD0DD\uC790 \uC18D\uC131",
-    "selector.popup.selector": "\uC120\uD0DD\uC790",
-    "background.image.position.popup.title": "\uBC30\uACBD \uD328\uD134",
-    "background.image.position.popup.size": "\uD06C\uAE30",
-    "background.image.position.popup.width": "\uB113\uC774",
-    "background.image.position.popup.height": "\uB192\uC774",
-    "background.image.position.popup.repeat": "\uBC18\uBCF5",
-    "background.image.position.popup.blend": "\uBE14\uB80C\uB4DC",
-    "background.image.position.popup.type.repeat": "\uBC18\uBCF5",
-    "background.image.position.popup.type.no-repeat": "\uBC18\uBCF5 \uC548\uD568",
-    "background.image.position.popup.type.repeat-x": "x\uCD95 \uBC18\uBCF5",
-    "background.image.position.popup.type.repeat-y": "y\uCD95 \uBC18\uBCF5",
-    "background.image.position.popup.type.space": "\uACF5\uBC31\uC720\uC9C0",
-    "background.image.position.popup.type.round": "\uBC18\uC62C\uB9BC",
-    "gradient.picker.popup.title": "\uADF8\uB77C\uB514\uC5B8\uD2B8\uC640 \uC774\uBBF8\uC9C0",
-    "image.asset.property.title": "\uC774\uBBF8\uC9C0",
-    "video.asset.property.title": "\uBE44\uB514\uC624",
-    "color.asset.property.title": "\uC0C9",
-    "gradient.asset.property.title": "\uADF8\uB77C\uB514\uC5B8\uD2B8",
-    "pattern.asset.property.title": "\uD328\uD134",
-    "svgfilter.asset.property.title": "SVG \uD544\uD130",
-    "inspector.tab.title.design": "\uB514\uC790\uC778",
-    "inspector.tab.title.component": "\uCEF4\uD3EC\uB10C\uD2B8 \uC18D\uC131",
-    "inspector.tab.title.transition": "\uC560\uB2C8\uBA54\uC774\uC158",
-    "inspector.tab.title.asset": "\uC5D0\uC14B \uAD00\uB9AC\uC790",
-    "inspector.tab.title.text": "\uD14D\uC2A4\uD2B8",
-    "inspector.tab.title.code": "\uCF54\uB4DC",
-    "inspector.tab.title.history": "\uAE30\uB85D",
-    "timeline.property.title": "\uD0C0\uC784\uB77C\uC778",
-    "timeline.property.resize": "\uD0C0\uC784\uB77C\uC778 \uB192\uC774\uB97C \uBCC0\uACBD\uD569\uB2C8\uB2E4. \uB4DC\uB798\uADF8 \uD574\uC8FC\uC138\uC694.",
-    "timeline.animation.property.title": "\uC560\uB2C8\uBA54\uC774\uC158",
-    "timeline.play.control.play": "\uD50C\uB808\uC774",
-    "timeline.play.control.pause": "\uBA48\uCDA4",
-    "timeline.play.control.first": "\uCC98\uC74C\uC73C\uB85C",
-    "timeline.play.control.prev": "\uC774\uC804\uC73C\uB85C",
-    "timeline.play.control.next": "\uB2E4\uC74C\uC73C\uB85C",
-    "timeline.play.control.last": "\uB9C8\uC9C0\uB9C9\uC73C\uB85C",
-    "timeline.play.control.direction": "\uBC29\uD5A5",
-    "timeline.play.control.speed": "\uC18D\uB825",
-    "timeline.play.control.repeat": "\uBC18\uBCF5",
-    "timeline.play.control.infinite": "\uBB34\uD55C",
-    "timeline.play.control.normal": "normal",
-    "timeline.play.control.alternate": "alternate",
-    "timeline.play.control.reverse": "reverse",
-    "timeline.play.control.alternate.reverse": "alternate reverse",
-    "timeline.value.editor.value": "\uAC12",
-    "timeline.value.editor.time": "\uC2DC\uAC04",
-    "timeline.value.editor.timing": "\uD0C0\uC774\uBC0D \uD568\uC218",
-    "timeline.value.editor.offset.message": "Enter\uD0A4\uB97C \uC785\uB825\uD558\uBA74 \uC801\uC6A9\uB429\uB2C8\uB2E4.",
-    "svgfilter.popup.title": "SVG \uD544\uD130",
-    "css.item.rotate": "\uD68C\uC804",
-    "css.item.rotateX": "X\uCD95 \uD68C\uC804",
-    "css.item.rotateY": "Y\uCD95 \uD68C\uC804",
-    "css.item.rotateZ": "Z\uCD95 \uD68C\uC804",
-    "css.item.rotate3d": "3D \uD68C\uC804",
-    "css.item.skewX": "X\uCD95 \uB298\uC774\uAE30",
-    "css.item.skewY": "Y\uCD95 \uB298\uC774\uAE30",
-    "css.item.translate": "\uC774\uB3D9",
-    "css.item.translateX": "X\uCD95 \uC774\uB3D9",
-    "css.item.translateY": "Y\uCD95 \uC774\uB3D9",
-    "css.item.translateZ": "Z\uCD95 \uC774\uB3D9",
-    "css.item.translate3d": "3D \uC774\uB3D9",
-    "css.item.perspective": "\uC6D0\uADFC",
-    "css.item.scale": "\uD06C\uAE30\uBCC0\uACBD",
-    "css.item.scaleX": "X\uCD95 \uD06C\uAE30\uBCC0\uACBD",
-    "css.item.scaleY": "Y\uCD95 \uD06C\uAE30\uBCC0\uACBD",
-    "css.item.scaleZ": "Z\uCD95 \uD06C\uAE30\uBCC0\uACBD",
-    "css.item.scale3d": "3D \uD06C\uAE30\uBCC0\uACBD",
-    "css.item.matrix": "\uBCC0\uD658 \uD589\uB82C",
-    "css.item.matrix3d": "3D \uBCC0\uD658 \uD589\uB82C",
-    "animation.property.title": "CSS \uC560\uB2C8\uBA54\uC774\uC158",
-    "animation.property.direction": "\uBC29\uD5A5",
-    "animation.property.play.state": "\uD50C\uB808\uC774 \uC0C1\uD0DC",
-    "animation.property.fill.mode": "\uCC44\uC6B0\uAE30 \uBAA8\uB4DC",
-    "animation.property.delay": "\uB300\uAE30\uC2DC\uAC04",
-    "animation.property.duration": "\uC2DC\uAC04",
-    "animation.property.iteration.count": "\uBC18\uBCF5 \uD69F\uC218",
-    "animation.property.select a keyframe": "\uD0A4\uD504\uB808\uC784\uC744 \uC120\uD0DD\uD574\uC8FC\uC138\uC694",
-    "animation.property.popup.title": "CSS \uC560\uB2C8\uBA54\uC774\uC158",
-    "animation.property.popup.timing.function": "\uD0C0\uC774\uBC0D \uD568\uC218",
-    "animation.property.popup.keyframe": "\uD0A4\uD504\uB808\uC784",
-    "animation.property.popup.direction": "\uBC29\uD5A5",
-    "animation.property.popup.play.state": "\uD50C\uB808\uC774 \uC0C1\uD0DC",
-    "animation.property.popup.fill.mode": "\uCC44\uC6B0\uAE30 \uBAA8\uB4DC",
-    "animation.property.popup.delay": "\uB300\uAE30\uC2DC\uAC04",
-    "animation.property.popup.duration": "\uC2DC\uAC04",
-    "animation.property.popup.iteration": "\uBC18\uBCF5 \uD69F\uC218",
-    "animation.property.popup.normal": "\uC2DC\uAC04\uC21C",
-    "animation.property.popup.reverse": "\uC5ED\uC2DC\uAC04\uC21C",
-    "animation.property.popup.alternate": "\uC655\uBCF5 \uC2DC\uAC04\uC21C",
-    "animation.property.popup.alternate-reverse": "\uC655\uBCF5 \uC5ED\uC2DC\uAC04\uC21C",
-    "animation.property.popup.none": "none",
-    "animation.property.popup.forwards": "forwards",
-    "animation.property.popup.backwards": "backwards",
-    "animation.property.popup.both": "both",
-    "animation.property.popup.Select a keyframe": "\uD0A4\uD504\uB808\uC784\uC744 \uC120\uD0DD\uD574\uC8FC\uC138\uC694.",
-    "keyframe.popup.title": "\uD0A4\uD504\uB808\uC784",
-    "code.view.property.title": "\uCF54\uB4DC\uBDF0",
-    "svg.filter.editor.tab.filter": "\uD544\uD130",
-    "svg.filter.editor.tab.preset": "\uD504\uB9AC\uC14B",
-    "svg.filter.editor.tab.asset": "\uC5D0\uC14B",
-    "svg.filter.editor.GRAPHIC REFERENCES": "\uCC38\uC870 \uADF8\uB798\uD53D",
-    "svg.filter.editor.SOURCES": "\uC6D0\uBCF8",
-    "svg.filter.editor.MODIFIER": "\uC218\uC815",
-    "svg.filter.editor.LIGHTING": "\uBE5B",
-    "svg.filter.editor.COMBINERS": "\uACB0\uD569",
-    "svg.filter.editor.Template": "\uD15C\uD50C\uB9BF",
-    "layout.property.title": "\uB808\uC774\uC544\uC6C3",
-    "layout.property.flex": "\uD50C\uB809\uC2A4 \uBC15\uC2A4",
-    "layout.property.grid": "\uADF8\uB9AC\uB4DC",
-    "layout.property.default": "\uAE30\uBCF8 \uC88C\uD45C",
-    "layout.property.resizing.title": "\uC0AC\uC774\uC988 \uC870\uC808",
-    "layout.property.resizing.self.title": "\uC544\uC774\uD15C \uC0AC\uC774\uC988 \uC870\uC808",
-    "default.layout.item.property.title.constraints": "Constraints",
-    "flex.layout.editor.row": "\uD589",
-    "flex.layout.editor.column": "\uC5F4",
-    "flex.layout.editor.row-reverse": "\uC5ED\uBC29\uD5A5 \uD589",
-    "flex.layout.editor.column-reverse": "\uC5ED\uBC29\uD5A5 \uC5F4",
-    "flex.layout.editor.nowrap": "\uAC10\uC2F8\uC9C0 \uC54A\uAE30",
-    "flex.layout.editor.wrap": "\uAC10\uC2F8\uAE30",
-    "flex.layout.editor.wrap-reverse": "\uC5ED\uBC29\uD5A5 \uAC10\uC2F8\uAE30",
-    "flex.layout.editor.flex-start": "\uC2DC\uC791",
-    "flex.layout.editor.flex-end": "\uB05D",
-    "flex.layout.editor.center": "\uC911\uAC04",
-    "flex.layout.editor.space-between": "\uACF5\uAC04 \uC911\uAC04 \uCC44\uC6C0",
-    "flex.layout.editor.space-around": "\uACF5\uAC04 \uC591\uB05D \uCC44\uC6C0",
-    "flex.layout.editor.baseline": "\uAE30\uBCF8\uC120",
-    "flex.layout.editor.stretch": "\uD3BC\uCE58\uAE30",
-    "flex.layout.editor.direction": "\uBC29\uD5A5",
-    "flex.layout.editor.justify-content": "\uCEE8\uD150\uCE20 \uC870\uC815",
-    "flex.layout.editor.align-items": "\uC544\uC774\uD15C \uC815\uB82C",
-    "flex.layout.editor.align-content": "\uCEE8\uD150\uCE20 \uC815\uB82C",
-    "flex.layout.item.property.title": "\uD50C\uB809\uC2A4 \uC544\uC774\uD15C \uC124\uC815",
-    "flex.layout.item.property.grow": "\uACF5\uAC04 \uBE44\uC728",
-    "flex.layout.item.property.shrink": "\uCD95\uC18C \uBE44\uC728",
-    "flex.layout.item.property.basis": "\uCD08\uAE30 \uD06C\uAE30",
-    "flex.layout.item.property.none": "\uC5C6\uC74C",
-    "flex.layout.item.property.auto": "\uC790\uB3D9",
-    "flex.layout.item.property.value": "\uAC12",
-    "grid.layout.editor.template.columns": "\uC5F4",
-    "grid.layout.editor.column.gap": "\uC5F4 \uAC04\uACA9",
-    "grid.layout.editor.template.rows": "\uD589",
-    "grid.layout.editor.row.gap": "\uD589 \uAC04\uACA9",
-    "grid.box.editor.box.title": "\uC601\uC5ED",
-    "grid.box.editor.type": "\uD0C0\uC785",
-    "grid.box.editor.repeat": "\uBC18\uBCF5",
-    "grid.box.editor.length": "\uAE38\uC774",
-    "grid.box.editor.none": "\uC5C6\uC74C",
-    "grid.box.editor.auto": "\uC790\uB3D9",
-    "grid.box.editor.count": "\uAC1C\uC218",
-    "grid.box.editor.value": "\uD06C\uAE30",
-    "grid.layout.item.property.title": "\uADF8\uB9AC\uB4DC \uC544\uC774\uD15C \uC124\uC815",
-    "grid.layout.item.property.column": "\uC5F4",
-    "grid.layout.item.property.row": "\uD589",
-    "grid.layout.item.property.start": "\uC2DC\uC791",
-    "grid.layout.item.property.End": "\uB05D",
-    "grid.layout.item.property.none": "\uC5C6\uC74C",
-    "grid.layout.item.property.value": "\uAC12",
-    "box.model.property.title": "\uBC15\uC2A4 \uBAA8\uB378",
-    "box.model.property.margin": "\uB9C8\uC9C4",
-    "box.model.property.padding": "\uD328\uB529",
-    "component.items.canvas": "\uCE94\uBC84\uC2A4",
-    "component.items.layer": "\uB808\uC774\uC5B4",
-    "component.items.3dlayer": "3D \uB808\uC774\uC5B4",
-    "component.items.drawing": "\uADF8\uB9AC\uAE30",
-    "component.items.custom": "\uC0AC\uC6A9\uC790 \uC815\uC758 \uCEF4\uD3EC\uB10C\uD2B8",
-    "component.items.chart": "\uCC28\uD2B8",
-    "component.items.plugin": "\uD50C\uB7EC\uADF8\uC778",
-    "svg.text.property.title": "SVG Text \uC2A4\uD0C0\uC77C",
-    "svg.text.property.textarea": "\uD14D\uC2A4\uD2B8 \uC785\uB825",
-    "svg.text.property.size": "\uD3F0\uD2B8 \uD06C\uAE30",
-    "svg.text.property.weight": "\uD3F0\uD2B8 \uAD75\uAE30",
-    "svg.text.property.style": "\uD3F0\uD2B8 \uC2A4\uD0C0\uC77C",
-    "svg.text.property.anchor": "\uD14D\uC2A4\uD2B8 \uC704\uCE58",
-    "svg.text.property.family": "\uD3F0\uD2B8 \uAE00\uAF34",
-    "svg.text.property.length.adjust": "\uAE38\uC774 \uB300\uC751",
-    "svg.text.property.text.length": "\uD14D\uC2A4\uD2B8 \uAE38\uC774",
-    "svg.text.property.start.offset": "\uC2DC\uC791 \uC9C0\uC810",
-    "fill.picker.popup.title": "\uC0C9 \uCC44\uC6B0\uAE30",
-    "gradient.editor.drag.message": "\uB4DC\uB798\uADF8 \uD558\uBA74 \uC911\uC2EC\uC810\uC744 \uC62E\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
-    "draw.manager.tolerance": "\uD3EC\uC778\uD2B8 \uD5C8\uC6A9 \uC624\uCC28",
-    "pattern.property.title": "\uD328\uD134",
-    "pattern.info.popup.title": "\uD328\uD134 \uC815\uBCF4",
-    "pattern.info.popup.width": "\uB113\uC774",
-    "pattern.info.popup.height": "\uB192\uC774",
-    "pattern.info.popup.lineWidth": "\uC120 \uB113\uC774",
-    "pattern.info.popup.lineHeight": "\uC120 \uB192\uC774",
-    "pattern.info.popup.rotate": "\uD68C\uC804",
-    "pattern.info.popup.blend": "\uBE14\uB80C\uB4DC",
-    "pattern.info.popup.foreColor": "\uD328\uD134\uC0C9",
-    "pattern.info.popup.backColor": "\uBC30\uACBD\uC0C9",
-    "stroke.dasharray.editor.add": "\uC810 \uCD94\uAC00",
-    "viewport.panning.enable": "space \uB97C \uB204\uB978\uCC44 \uD654\uBA74\uC744 \uB4DC\uB798\uADF8 \uD558\uBA74 \uC601\uC5ED\uC744 \uC6C0\uC9C1\uC77C \uC218 \uC788\uC2B5\uB2C8\uB2E4."
-  };
-  var locales = {
-    en_US,
-    fr_FR,
-    ko_KR
-  };
-  function defaultMessages(editor2) {
-    Object.keys(locales).forEach(function(locale) {
-      editor2.registerI18nMessage(locale, locales[locale]);
-    });
-  }
-  var add_artboard = {
-    category: "Tool",
-    key: "a",
-    command: "addLayerView",
-    args: ["artboard"],
-    description: "Add ArtBoard",
-    when: "CanvasView"
-  };
-  var __glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_artboard
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_artboard_pan = {
-    category: "Tool",
-    key: "a",
-    command: "addLayerView",
-    args: ["artboard"],
-    description: "Add ArtBoard",
-    when: "LayerAppendView"
-  };
-  var __glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_artboard_pan
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_brush = {
-    category: "Tool",
-    key: "b",
-    command: "addLayerView",
-    args: ["brush"],
-    description: "Draw SVG Path",
-    when: "CanvasView"
-  };
-  var __glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_brush
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_circle = {
-    category: "Tool",
-    key: "o",
-    command: "addLayerView",
-    args: ["circle"],
-    description: "Add circle layer",
-    when: "CanvasView"
-  };
-  var __glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_circle
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_circle_l = {
-    category: "Tool",
-    key: "l",
-    command: "addLayerView",
-    args: ["circle"],
-    description: "Add circle layer",
-    when: "CanvasView"
-  };
-  var __glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_circle_l
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_path = {
-    category: "Tool",
-    key: "p",
-    command: "addLayerView",
-    args: ["path"],
-    description: "Add SVG Path layer",
-    when: "CanvasView"
-  };
-  var __glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_path
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_rect = {
-    category: "Tool",
-    key: "r",
-    command: "addLayerView",
-    args: [
-      "rect",
-      {
-        backgroundColor: "gray"
-      }
-    ],
-    description: "Add rect layer",
-    when: "CanvasView"
-  };
-  var __glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_rect
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_rect_m = {
-    category: "Tool",
-    key: "m",
-    command: "addLayerView",
-    args: ["rect"],
-    description: "Add rect layer",
-    when: "CanvasView"
-  };
-  var __glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_rect_m
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_rect_pan = {
-    category: "Tool",
-    key: "r",
-    command: "addLayerView",
-    args: [
-      "rect",
-      {
-        backgroundColor: "gray"
-      }
-    ],
-    description: "Add rect layer",
-    when: "LayerAppendView"
-  };
-  var __glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_rect_pan
-  }, Symbol.toStringTag, { value: "Module" }));
-  var add_text = {
-    category: "Tool",
-    key: "t",
-    command: "addLayerView",
-    args: ["text"],
-    description: "Add text layer",
-    when: "CanvasView"
-  };
-  var __glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": add_text
-  }, Symbol.toStringTag, { value: "Module" }));
-  var clipboard_copy = {
-    category: "Edit",
-    key: "cmd+c",
-    command: "clipboard.copy",
-    description: "Copy objects",
-    when: "CanvasView"
-  };
-  var __glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": clipboard_copy
-  }, Symbol.toStringTag, { value: "Module" }));
-  var clipboard_paste = {
-    category: "Edit",
-    key: "cmd+v",
-    win: "ctrl+v",
-    command: "clipboard.paste",
-    description: "Paste selected objects",
-    when: "CanvasView"
-  };
-  var __glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": clipboard_paste
-  }, Symbol.toStringTag, { value: "Module" }));
-  var escape = {
-    category: "Tool",
-    key: "escape",
-    command: "select.none",
-    description: "None selection",
-    when: "CanvasView"
-  };
-  var __glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": escape
-  }, Symbol.toStringTag, { value: "Module" }));
-  var group_item = {
-    category: "Group",
-    key: "cmd+g",
-    win: "ctrl+g",
-    command: "group.item",
-    description: "Grouping selected items",
-    when: "CanvasView"
-  };
-  var __glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": group_item
-  }, Symbol.toStringTag, { value: "Module" }));
-  var history_redo = {
-    category: "History",
-    key: "cmd+shift+z",
-    win: "ctrl+shift+z",
-    command: "history.redo",
-    description: "redoing in history",
-    when: "CanvasView"
-  };
-  var __glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": history_redo
-  }, Symbol.toStringTag, { value: "Module" }));
-  var history_undo = {
-    category: "History",
-    key: "cmd+z",
-    win: "ctrl+z",
-    command: "history.undo",
-    description: "undoing in history",
-    when: "CanvasView"
-  };
-  var __glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": history_undo
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_alt_down = {
-    category: "Layer",
-    key: "Alt+ArrowDown",
-    command: "moveLayer",
-    description: "move 5px to down",
-    args: [0, 5],
-    when: "CanvasView"
-  };
-  var __glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_alt_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_alt_left = {
-    category: "Layer",
-    key: "Alt+ArrowLeft",
-    command: "moveLayer",
-    description: "move 5px to left",
-    args: [-5, 0],
-    when: "CanvasView"
-  };
-  var __glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_alt_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_alt_right = {
-    category: "Layer",
-    key: "Alt+ArrowRight",
-    command: "moveLayer",
-    description: "move 5px to right",
-    args: [5, 0],
-    when: "CanvasView"
-  };
-  var __glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_alt_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_alt_up = {
-    category: "Layer",
-    key: "Alt+ArrowUp",
-    command: "moveLayer",
-    description: "move 5px to up",
-    args: [0, -5],
-    when: "CanvasView"
-  };
-  var __glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_alt_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_depth_down = {
-    category: "Layer",
-    key: "[",
-    command: "history.send.backward",
-    description: "move layer to below",
-    args: ["send backward"],
-    when: "CanvasView"
-  };
-  var __glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_depth_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_depth_up = {
-    category: "Layer",
-    key: "]",
-    command: "history.bring.forward",
-    description: "move layer to above",
-    args: ["bring forward"],
-    when: "CanvasView"
-  };
-  var __glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_depth_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_key_down = {
-    category: "Layer",
-    key: "ArrowDown",
-    command: "moveLayer",
-    description: "move 1px to down",
-    args: [0, 1],
-    when: "CanvasView"
-  };
-  var __glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_key_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_key_left = {
-    category: "Layer",
-    key: "ArrowLeft",
-    command: "moveLayer",
-    description: "move 1px to left",
-    args: [-1, 0],
-    when: "CanvasView"
-  };
-  var __glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_key_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_key_right = {
-    category: "Layer",
-    key: "ArrowRight",
-    command: "moveLayer",
-    description: "move 1px to right",
-    args: [1, 0],
-    when: "CanvasView"
-  };
-  var __glob_0_24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_key_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_key_up = {
-    category: "Layer",
-    key: "ArrowUp",
-    command: "moveLayer",
-    description: "move 1px to up",
-    args: [0, -1],
-    when: "CanvasView"
-  };
-  var __glob_0_25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_key_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_shift_down = {
-    category: "Layer",
-    key: "Shift+ArrowDown",
-    command: "moveLayer",
-    description: "move 10px to down",
-    args: [0, 10],
-    when: "CanvasView"
-  };
-  var __glob_0_26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_shift_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_shift_left = {
-    category: "Layer",
-    key: "Shift+ArrowLeft",
-    command: "moveLayer",
-    description: "move 10px to left",
-    args: [-10, 0],
-    when: "CanvasView"
-  };
-  var __glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_shift_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_shift_right = {
-    category: "Layer",
-    key: "Shift+ArrowRight",
-    command: "moveLayer",
-    description: "move 10px to right",
-    args: [10, 0],
-    when: "CanvasView"
-  };
-  var __glob_0_28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_shift_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_move_shift_up = {
-    category: "Layer",
-    key: "Shift+ArrowUp",
-    command: "moveLayer",
-    description: "move 10px to up",
-    args: [0, -10],
-    when: "CanvasView"
-  };
-  var __glob_0_29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_move_shift_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_rotate_meta_left = {
-    category: "Layer",
-    key: "Meta+ArrowLeft",
-    command: "rotateLayer",
-    description: "rotate to left",
-    args: [-5],
-    when: "CanvasView"
-  };
-  var __glob_0_30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_rotate_meta_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var item_rotate_meta_right = {
-    category: "Layer",
-    key: "Meta+ArrowRight",
-    command: "rotateLayer",
-    description: "rotate to right",
-    args: [5],
-    when: "CanvasView"
-  };
-  var __glob_0_31 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": item_rotate_meta_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var removeLayer = {
-    category: "Layer",
-    key: "Backspace",
-    command: "history.removeLayer",
-    description: "Delete selected items",
-    args: ["Delete selected items"],
-    when: "CanvasView"
-  };
-  var __glob_0_32 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": removeLayer
-  }, Symbol.toStringTag, { value: "Module" }));
-  var removeLayerByDeleteKey = {
-    category: "Layer",
-    key: "Delete",
-    command: "history.removeLayer",
-    description: "Delete selected items",
-    args: ["Delete selected items"],
-    when: "CanvasView"
-  };
-  var __glob_0_33 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": removeLayerByDeleteKey
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_delete = {
-    category: "Path",
-    key: "Backspace",
-    command: "segment.delete",
-    description: "Delete selected segment",
-    when: "PathEditorView"
-  };
-  var __glob_0_34 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_delete
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_alt_down = {
-    category: "Path",
-    key: "Alt+ArrowDown",
-    command: "segment.move.down",
-    description: "move 5px to down",
-    args: [{ dy: 5 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_35 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_alt_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_alt_left = {
-    category: "Path",
-    key: "Alt+ArrowLeft",
-    command: "segment.move.left",
-    description: "move 5px to left",
-    args: [{ dx: 5 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_36 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_alt_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_alt_right = {
-    category: "Path",
-    key: "Alt+ArrowRight",
-    command: "segment.move.right",
-    description: "move 5px to right",
-    args: [{ dx: 5 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_37 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_alt_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_alt_up = {
-    category: "Path",
-    key: "Alt+ArrowUp",
-    command: "segment.move.up",
-    description: "move 5px to up ",
-    args: [{ dy: 5 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_38 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_alt_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_key_down = {
-    category: "Path",
-    key: "ArrowDown",
-    command: "segment.move.down",
-    description: "move 1px to down",
-    args: [{ dy: 1 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_39 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_key_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_key_left = {
-    category: "Path",
-    key: "ArrowLeft",
-    command: "segment.move.left",
-    description: "move 1px to left",
-    args: [{ dx: 1 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_40 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_key_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_key_right = {
-    category: "Path",
-    key: "ArrowRight",
-    command: "segment.move.right",
-    description: "move 1px to right",
-    args: [{ dx: 1 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_41 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_key_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_key_up = {
-    category: "Path",
-    key: "ArrowUp",
-    command: "segment.move.up",
-    description: "move 1px to up",
-    args: [{ dy: 1 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_42 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_key_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_shift_down = {
-    category: "Path",
-    key: "Shift+ArrowDown",
-    command: "segment.move.down",
-    description: "move 10px to down",
-    args: [{ dy: 10 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_43 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_shift_down
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_shift_left = {
-    category: "Path",
-    key: "Shift+ArrowLeft",
-    command: "segment.move.left",
-    description: "move 10px to left",
-    args: [{ dx: 10 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_44 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_shift_left
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_shift_right = {
-    category: "Path",
-    key: "Shift+ArrowRight",
-    command: "segment.move.right",
-    description: "move 10px to right",
-    args: [{ dx: 10 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_45 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_shift_right
-  }, Symbol.toStringTag, { value: "Module" }));
-  var segment_move_shift_up = {
-    category: "Path",
-    key: "Shift+ArrowUp",
-    command: "segment.move.up",
-    description: "move 10px to up",
-    args: [{ dy: 10 }],
-    when: "PathEditorView"
-  };
-  var __glob_0_46 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": segment_move_shift_up
-  }, Symbol.toStringTag, { value: "Module" }));
-  var select_all = {
-    category: "Tool",
-    key: "CMD+A",
-    win: "CTRL+A",
-    command: "select.all",
-    description: "Selection all layers"
-  };
-  var __glob_0_47 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": select_all
-  }, Symbol.toStringTag, { value: "Module" }));
-  var select_view = {
-    category: "Tool",
-    key: "v",
-    command: "addLayerView",
-    args: ["select"],
-    description: "Selection"
-  };
-  var __glob_0_48 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": select_view
-  }, Symbol.toStringTag, { value: "Module" }));
-  var set_tool_hand = {
-    category: "Tools",
-    key: "h",
-    command: "toggleHandTool",
-    description: "set hand tool on",
-    when: "CanvasView"
-  };
-  var __glob_0_49 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": set_tool_hand
-  }, Symbol.toStringTag, { value: "Module" }));
-  var set_tool_hand_m = {
-    category: "Tools",
-    key: "h",
-    command: "toggleHandTool",
-    description: "set hand tool on",
-    when: "LayerAppendView"
-  };
-  var __glob_0_50 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": set_tool_hand_m
-  }, Symbol.toStringTag, { value: "Module" }));
-  var show_pan = {
-    category: "Tool",
-    key: "space",
-    command: "showPan",
-    description: "Show panning area",
-    when: "CanvasView"
-  };
-  var __glob_0_51 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": show_pan
-  }, Symbol.toStringTag, { value: "Module" }));
-  var ungroup_item = {
-    category: "Group",
-    key: "shift+cmd+g",
-    win: "shift+ctrl+g",
-    command: "ungroup.item",
-    description: "Ungrouping selected group layer",
-    when: "CanvasView"
-  };
-  var __glob_0_52 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": ungroup_item
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_default = {
-    category: "View",
-    key: "0",
-    command: "zoom.default",
-    description: "zoom by scale 1",
-    when: "CanvasView"
-  };
-  var __glob_0_53 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_default
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_in = {
-    category: "View",
-    key: "Equal",
-    command: "zoom.in",
-    description: "zoom in",
-    when: "CanvasView"
-  };
-  var __glob_0_54 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_in
-  }, Symbol.toStringTag, { value: "Module" }));
-  var zoom_out = {
-    category: "View",
-    key: "minus",
-    command: "zoom.out",
-    description: "zoom Out",
-    when: "CanvasView"
-  };
-  var __glob_0_55 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-    __proto__: null,
-    "default": zoom_out
-  }, Symbol.toStringTag, { value: "Module" }));
-  const modules = { "./shortcuts_list/add.artboard.js": __glob_0_0, "./shortcuts_list/add.artboard.pan.js": __glob_0_1, "./shortcuts_list/add.brush.js": __glob_0_2, "./shortcuts_list/add.circle.js": __glob_0_3, "./shortcuts_list/add.circle.l.js": __glob_0_4, "./shortcuts_list/add.path.js": __glob_0_5, "./shortcuts_list/add.rect.js": __glob_0_6, "./shortcuts_list/add.rect.m.js": __glob_0_7, "./shortcuts_list/add.rect.pan.js": __glob_0_8, "./shortcuts_list/add.text.js": __glob_0_9, "./shortcuts_list/clipboard.copy.js": __glob_0_10, "./shortcuts_list/clipboard.paste.js": __glob_0_11, "./shortcuts_list/escape.js": __glob_0_12, "./shortcuts_list/group.item.js": __glob_0_13, "./shortcuts_list/history.redo.js": __glob_0_14, "./shortcuts_list/history.undo.js": __glob_0_15, "./shortcuts_list/item.move.alt.down.js": __glob_0_16, "./shortcuts_list/item.move.alt.left.js": __glob_0_17, "./shortcuts_list/item.move.alt.right.js": __glob_0_18, "./shortcuts_list/item.move.alt.up.js": __glob_0_19, "./shortcuts_list/item.move.depth.down.js": __glob_0_20, "./shortcuts_list/item.move.depth.up.js": __glob_0_21, "./shortcuts_list/item.move.key.down.js": __glob_0_22, "./shortcuts_list/item.move.key.left.js": __glob_0_23, "./shortcuts_list/item.move.key.right.js": __glob_0_24, "./shortcuts_list/item.move.key.up.js": __glob_0_25, "./shortcuts_list/item.move.shift.down.js": __glob_0_26, "./shortcuts_list/item.move.shift.left.js": __glob_0_27, "./shortcuts_list/item.move.shift.right.js": __glob_0_28, "./shortcuts_list/item.move.shift.up.js": __glob_0_29, "./shortcuts_list/item.rotate.meta.left.js": __glob_0_30, "./shortcuts_list/item.rotate.meta.right.js": __glob_0_31, "./shortcuts_list/removeLayer.js": __glob_0_32, "./shortcuts_list/removeLayerByDeleteKey.js": __glob_0_33, "./shortcuts_list/segment.delete.js": __glob_0_34, "./shortcuts_list/segment.move.alt.down.js": __glob_0_35, "./shortcuts_list/segment.move.alt.left.js": __glob_0_36, "./shortcuts_list/segment.move.alt.right.js": __glob_0_37, "./shortcuts_list/segment.move.alt.up.js": __glob_0_38, "./shortcuts_list/segment.move.key.down.js": __glob_0_39, "./shortcuts_list/segment.move.key.left.js": __glob_0_40, "./shortcuts_list/segment.move.key.right.js": __glob_0_41, "./shortcuts_list/segment.move.key.up.js": __glob_0_42, "./shortcuts_list/segment.move.shift.down.js": __glob_0_43, "./shortcuts_list/segment.move.shift.left.js": __glob_0_44, "./shortcuts_list/segment.move.shift.right.js": __glob_0_45, "./shortcuts_list/segment.move.shift.up.js": __glob_0_46, "./shortcuts_list/select.all.js": __glob_0_47, "./shortcuts_list/select.view.js": __glob_0_48, "./shortcuts_list/set.tool.hand.js": __glob_0_49, "./shortcuts_list/set.tool.hand.m.js": __glob_0_50, "./shortcuts_list/show.pan.js": __glob_0_51, "./shortcuts_list/ungroup.item.js": __glob_0_52, "./shortcuts_list/zoom.default.js": __glob_0_53, "./shortcuts_list/zoom.in.js": __glob_0_54, "./shortcuts_list/zoom.out.js": __glob_0_55 };
-  var shortcuts$1 = Object.values(modules).map((it) => it.default);
-  function shortcuts(editor2) {
-    shortcuts$1.forEach((shortcut) => {
-      editor2.registerShortCut(shortcut);
-    });
-  }
   var designEditorPlugins = [
     configs,
     commands,
@@ -50609,7 +50609,7 @@ ${cssString}
     depth,
     alignment,
     position,
-    layout,
+    layout$1,
     boxModel,
     pathTool,
     artboard,
@@ -50701,8 +50701,8 @@ ${cssString}
       });
     }
   ];
-  var CanvasView$1 = "";
-  var DragAreaView$1 = "";
+  var CanvasView$1 = /* @__PURE__ */ (() => ".elf--page-container{background-color:#fff;outline:none;pointer-events:all;touch-action:pinch-zoom;z-index:1}.elf--page-container,.page-view{bottom:0;left:0;position:absolute;right:0;top:0}.page-view{background-color:var(--elf--canvas-background-color)}.page-view .page-lock{bottom:0;left:0;overflow:hidden;position:absolute;right:0;top:0}")();
+  var DragAreaView$1 = /* @__PURE__ */ (() => ".elf--drag-area-view{height:100%;left:0;position:absolute;top:0;transform-origin:left top;width:100%}.elf--drag-area-view .drag-area-rect{background-color:var(--elf--drag-area-rect-background-color);border:.5px solid var(--elf--drag-area-rect-border-color);box-sizing:border-box;left:-10000px;pointer-events:none;position:absolute}")();
   class DragAreaRectView extends editor.EditorElement {
     initState() {
       return {
@@ -50903,7 +50903,7 @@ ${cssString}
       this.$config.init("set.move.mode", false);
     }
   }
-  var PageTools$1 = "";
+  var PageTools$1 = /* @__PURE__ */ (() => '.elf--page-tools{background-color:var(--elf--background-color);border:1px solid var(--elf--border-color);border-radius:3px;bottom:10px;box-sizing:border-box;color:var(--elf--font-color);display:inline-block;left:20px;padding:5px 10px;position:absolute}.elf--page-tools>*{display:inline-block;position:relative}.elf--page-tools>label{display:inline-block;height:100%;padding-top:5px;vertical-align:middle}.elf--page-tools button{border:0;border-radius:3px;display:inline-block;height:24px;padding:4px;position:relative;vertical-align:middle;width:24px}.elf--page-tools button.on{background-color:var(--elf--selected-color);color:var(--elf--selected-font-color)}.elf--page-tools button svg{pointer-events:none}.elf--page-tools button[data-path-index="0"]:after{background-color:var(--elf--selected-color);border-radius:100%;content:"";height:4px;left:10px;position:absolute;top:100%;width:4px}.elf--page-tools>.select{border:1px solid rgba(var(--elf--selected-color),.5);border-radius:5px;display:inline-block;width:50px}')();
   class PageTools extends editor.EditorElement {
     template() {
       return `     
@@ -52650,7 +52650,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
     editor2.registerRenderer("svg", "svg-text", new SVGTextRender());
     editor2.registerRenderer("svg", "svg-textpath", new SVGTextPathRender());
   }
-  var HTMLRenderView$1 = "";
+  var HTMLRenderView$1 = /* @__PURE__ */ (() => ".player .page-container{left:0;top:0}.elf--element-view{outline:none}.canvas-view,.elf--element-view{left:0;pointer-events:none;position:absolute;top:0}.canvas-view{height:100%;transform-origin:left top;width:100%;will-change:auto}.canvas-view[data-outline=true] .element-item{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background-color:transparent!important;background-image:none!important;border:1px solid #595959!important;box-shadow:none!important;filter:none!important}.canvas-view[data-outline=true] .element-item.svg-path{border:0!important}.canvas-view[data-outline=true] .element-item.artboard{border:2px dashed #595959!important}.canvas-view[data-outline=true] .element-item svg circle,.canvas-view[data-outline=true] .element-item svg ellipse,.canvas-view[data-outline=true] .element-item svg line,.canvas-view[data-outline=true] .element-item svg path,.canvas-view[data-outline=true] .element-item svg polygon,.canvas-view[data-outline=true] .element-item svg polyline,.canvas-view[data-outline=true] .element-item svg rect,.canvas-view[data-outline=true] .element-item svg text{fill:none!important;stroke:#595959!important;stroke-width:1px!important}.canvas-view .element-item.svg-path{pointer-events:none}.canvas-view .element-item.svg-path>*,.canvas-view .element-item.svg-path>svg>path{pointer-events:stroke}.canvas-view .element-item.svg-path>svg>:not([fill=transparent]){pointer-events:visible}.canvas-view .element-item{pointer-events:all;will-change:auto}.canvas-view .element-item [contenteditable=true],.canvas-view .element-item[contenteditable=true],.canvas-view .element-item[tabIndex]{outline:none}.canvas-view .element-item[data-is-boolean-item=true]{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background-color:transparent!important;background-image:none!important;border:1px solid #595959!important;box-shadow:none!important;filter:none!important}.canvas-view .element-item[data-is-boolean-item=true].svg-path{border:0!important}.canvas-view .element-item[data-is-boolean-item=true] svg circle,.canvas-view .element-item[data-is-boolean-item=true] svg ellipse,.canvas-view .element-item[data-is-boolean-item=true] svg line,.canvas-view .element-item[data-is-boolean-item=true] svg path,.canvas-view .element-item[data-is-boolean-item=true] svg polygon,.canvas-view .element-item[data-is-boolean-item=true] svg polyline,.canvas-view .element-item[data-is-boolean-item=true] svg rect,.canvas-view .element-item[data-is-boolean-item=true] svg text{fill:none!important;stroke:transparent!important;stroke-width:1px!important}.canvas-view .element-item.artboard{box-shadow:0 1px 3px rgba(0,0,0,.102),0 1px 2px rgba(0,0,0,.059)}.canvas-view .element-item>svg circle:hover,.canvas-view .element-item>svg ellipse:hover,.canvas-view .element-item>svg line:hover,.canvas-view .element-item>svg path:hover,.canvas-view .element-item>svg polygon:hover,.canvas-view .element-item>svg polyline:hover,.canvas-view .element-item>svg rect:hover{stroke:#4040fc}.canvas-view .element-item>svg:hover>text{fill:#4040fc}")();
   class HTMLRenderView extends editor.EditorElement {
     initialize() {
       super.initialize();
@@ -53220,7 +53220,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
       this.$commands.emit("refreshCursor", "auto");
     }
   }
-  var HorizontalRuler$1 = "";
+  var HorizontalRuler$1 = /* @__PURE__ */ (() => ".elf--horizontal-ruler{background-color:var(--elf--background-color);height:var(--elf--editor-ruler-size);left:var(--elf--editor-ruler-size);position:absolute;right:0;top:0;z-index:0}.elf--horizontal-ruler .horizontal-ruler-container{height:100%;left:0;overflow:hidden;position:absolute;top:0;width:100%}.elf--horizontal-ruler .horizontal-ruler-container svg.lines path{fill:var(--elf--selected-hover-color);stroke:transparent}.elf--horizontal-ruler .horizontal-ruler-container svg.horizontal-line path{stroke:var(--elf--selected-color)}.elf--horizontal-ruler .horizontal-ruler-container .cursor{--elf--horizontal-cursor-position:0px;background-color:var(--elf--selected-color-2);height:100%;transform:translateX(var(--elf--horizontal-cursor-position)) translateZ(0) translateY(-1px);width:2px}.elf--horizontal-ruler svg{transform:translateY(2px)}.elf--horizontal-ruler svg text{text-anchor:middle;fill:var(--elf--font-color);font-size:8px}.elf--horizontal-ruler svg path{stroke:var(--elf--font-color)}.elf--horizontal-ruler svg path[data-selected=true]{stroke:transparent}.elf--horizontal-ruler svg path[data-mouse=true]{stroke:var(--elf--selected-color);stroke-width:2}")();
   let pathString$1 = [];
   class HorizontalRuler extends editor.EditorElement {
     template() {
@@ -53439,7 +53439,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
       this.load("$lines");
     }
   }
-  var PageSubEditor$1 = "";
+  var PageSubEditor$1 = /* @__PURE__ */ (() => ".elf--page-subeditor{display:inline-block;position:relative}")();
   class PageSubEditor extends editor.EditorElement {
     template() {
       return `
@@ -53449,7 +53449,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
     `;
     }
   }
-  var VerticalRuler$1 = "";
+  var VerticalRuler$1 = /* @__PURE__ */ (() => ".elf--vertical-ruler{background-color:var(--elf--background-color);bottom:0;box-sizing:border-box;left:0;position:absolute;top:var(--elf--editor-ruler-size);width:var(--elf--editor-ruler-size);z-index:0}.elf--vertical-ruler .vertical-ruler-container{height:100%;left:0;overflow:hidden;position:absolute;top:0;width:100%}.elf--vertical-ruler .vertical-ruler-container svg.lines path{fill:var(--elf--selected-hover-color);stroke:transparent}.elf--vertical-ruler .vertical-ruler-container svg.vertical-line path{stroke:var(--elf--selected-color)}.elf--vertical-ruler .vertical-ruler-container .cursor{--elf--vertical-cursor-position:0px;background-color:var(--elf--selected-color-2);height:2px;transform:translateY(var(--elf--vertical-cursor-position)) translateZ(0);width:100%}.elf--vertical-ruler svg text{text-anchor:middle;fill:var(--elf--font-color);font-size:8px}.elf--vertical-ruler svg path{stroke:var(--elf--font-color)}.elf--vertical-ruler svg path[data-selected=true]{stroke:transparent}.elf--vertical-ruler svg path[data-mouse=true]{stroke:var(--elf--selected-color);stroke-width:2}")();
   let pathString = [];
   class VerticalRuler extends editor.EditorElement {
     template() {
@@ -53664,7 +53664,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
       this.load("$lines");
     }
   }
-  var BodyPanel$1 = "";
+  var BodyPanel$1 = /* @__PURE__ */ (() => ".elf--body-panel{bottom:0;left:0;position:absolute;right:0;top:0}.elf--body-panel .submenu-area{box-sizing:border-box;display:inline-block;left:50%;position:absolute;top:40px;transform:translateX(-50%);z-index:2}.elf--body-panel .editing-area{bottom:0;left:0;position:absolute;right:0;top:0}.elf--body-panel .editing-area>.canvas-layout{bottom:0;left:var(--elf--editor-ruler-size);overflow:hidden;position:absolute;right:0;top:var(--elf--editor-ruler-size)}.elf--body-panel:not(.ruler)>.editing-area>.canvas-layout{left:0;top:0}")();
   class BodyPanel extends editor.EditorElement {
     components() {
       return {
@@ -53721,7 +53721,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
       };
     }
   }
-  var style = "";
+  var layout = /* @__PURE__ */ (() => ".design-editor{background-color:var(--elf--background-color);height:100%;overflow:hidden;position:absolute;width:100%}")();
   class DesignEditor extends editor.BlankEditor {
     initialize() {
       super.initialize();
@@ -53747,10 +53747,7 @@ ${encoding ? `<?xml version="1.0"?>` : ""}
       };
     }
     getPlugins() {
-      return [
-        ...super.getPlugins(),
-        ...designEditorPlugins
-      ];
+      return [...super.getPlugins(), ...designEditorPlugins];
     }
     getBodyPanel() {
       return /* @__PURE__ */ sapa.createElementJsx(editor.DefaultLayoutItem, {

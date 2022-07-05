@@ -1,3 +1,5 @@
+import { EditorElement } from "@elf-framework/editor";
+import { list as icon } from "@elf-framework/icon";
 import {
   CLICK,
   KEYDOWN,
@@ -11,8 +13,6 @@ import {
 } from "@elf-framework/sapa";
 
 import { second, timecode } from "elf/core/time";
-import { list as icon } from "@elf-framework/icon";
-import { EditorElement } from "@elf-framework/editor"
 
 export default class TimelineValueEditor extends EditorElement {
   initState() {

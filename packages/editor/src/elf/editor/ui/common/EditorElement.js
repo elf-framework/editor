@@ -1,5 +1,4 @@
 import { UIElement } from "@elf-framework/sapa";
-
 import { NotifyType } from "apps/blankeditor/types/editor";
 import {
   ADD_BODY_FIRST_MOUSEMOVE,

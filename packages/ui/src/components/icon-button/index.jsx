@@ -12,7 +12,7 @@ const cssProperties = {
   height: "--elf--icon-button-height",
   padding: "--elf--icon-button-padding",
   borderRadius: "--elf--icon-button-border-radius",
-}
+};
 
 export class IconButton extends UIElement {
   template() {

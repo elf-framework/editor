@@ -1,6 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { DOMDIFF, LOAD, SUBSCRIBE, clone } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./GhostToolView.scss";
 
@@ -19,7 +18,8 @@ import {
   Layout,
   TargetActionType,
 } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
+
+import { EditorElement } from "@elf-framework/editor";
 
 const CHECK_RATE = 0.5;
 

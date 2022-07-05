@@ -1,8 +1,8 @@
+import { EditorElement } from "@elf-framework/editor";
+import { list as icon } from "@elf-framework/icon";
 import { CLICK, LOAD, DEBOUNCE, DOMDIFF, SUBSCRIBE } from "@elf-framework/sapa";
 
-import { list as icon } from "@elf-framework/icon";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
 
 const PROPERTY_TITLE = {
   "stroke-dasharray": "Stroke Dash Array",

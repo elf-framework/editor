@@ -13,10 +13,10 @@ import {
 
 import "./SelectorProperty.scss";
 
-import { iconUse } from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 // import { Selector } from "elf/editor/property-parser/Selector";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 const selectorList = [
   "", // custom
@@ -46,13 +46,15 @@ export default class SelectorProperty extends BaseProperty {
     return /*html*/ `
       <div style='display:inline-block;'>
         ${createComponent("SelectEditor", {
-      ref: "$select",
-      key: "selector",
-      "none-value": "selector",
-      options: selectorList,
-    })}
+          ref: "$select",
+          key: "selector",
+          "none-value": "selector",
+          options: selectorList,
+        })}
       </div>
-      <button type="button" ref="$add" title="add Selector">${iconUse('add')}</button>
+      <button type="button" ref="$add" title="add Selector">${iconUse(
+        "add"
+      )}</button>
     `;
   }
 
@@ -62,13 +64,15 @@ export default class SelectorProperty extends BaseProperty {
       <div class='selector-item' draggable='true' ref='$selectorIndex${index}' data-index='${index}'>
         <div class='title'>
           <div class='name'>
-            <span>${selector.selector ||
-      `&lt;${this.$i18n("selector.property.none")}&gt;`
-      }</span>
+            <span>${
+              selector.selector ||
+              `&lt;${this.$i18n("selector.property.none")}&gt;`
+            }</span>
           </div>
           <div class='tools'>
-              <button type="button" class="del" data-index="${index}">${iconUse('remove2')
-      }</button>
+              <button type="button" class="del" data-index="${index}">${iconUse(
+      "remove2"
+    )}</button>
           </div>
         </div>
       </div>
@@ -134,7 +138,7 @@ export default class SelectorProperty extends BaseProperty {
   }
 
   // drop 이벤트를 걸 때 dragover 가 같이 선언되어 있어야 한다.
-  [DRAGOVER("$selectorList .selector-item") + PREVENT]() { }
+  [DRAGOVER("$selectorList .selector-item") + PREVENT]() {}
 
   [DROP("$selectorList .selector-item") + PREVENT](e) {
     var targetIndex = +e.$dt.attr("data-index");

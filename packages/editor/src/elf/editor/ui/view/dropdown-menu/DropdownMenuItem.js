@@ -1,6 +1,5 @@
-import { isFunction, CLICK, PREVENT, STOP } from "@elf-framework/sapa";
-
 import { iconUse } from "@elf-framework/icon";
+import { isFunction, CLICK, PREVENT, STOP } from "@elf-framework/sapa";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export class DropdownMenuItem extends EditorElement {

@@ -1,4 +1,3 @@
-
 import { LayerModel } from "elf/editor/model/LayerModel";
 
 export class ArtBoard extends LayerModel {

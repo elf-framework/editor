@@ -14,9 +14,9 @@ import {
 
 import "./BoxShadowEditor.scss";
 
-import { iconUse } from "@elf-framework/editor";
+import { iconUse, EditorElement } from "@elf-framework/editor";
+
 import { BoxShadowStyle } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
 
 export default class BoxShadowEditor extends EditorElement {
   initState() {

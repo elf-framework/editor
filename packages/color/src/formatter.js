@@ -33,7 +33,7 @@ export function format(obj, type, defaultColor = "rgba(0, 0, 0, 0)") {
     return hsl(obj);
   }
 
-  return obj;
+  return `${type}(${obj.r},${obj.g},${obj.b})`;
 }
 
 export function formatWithoutAlpha(

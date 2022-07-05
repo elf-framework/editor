@@ -69,6 +69,7 @@ declare module "@elf-framework/sapa" {
 
   export const SUBSCRIBE: CallbackFunction;
   export const SUBSCRIBE_ALL: CallbackFunction;
+  export const SUBSCRIBE_SELF: CallbackFunction;
   export const CUSTOM: DOM_EVENT_MAKE;
   export const CLICK: CallbackFunction;
   export const DOUBLECLICK: CallbackFunction;
@@ -145,6 +146,9 @@ declare module "@elf-framework/sapa" {
   export function getRef(id: string): any;
   export function BIND(value: string, checkFieldOrCallback: string): string;
 
+  type ClassNameType = string | object | Array<string | object>;
+  export function classnames(...args: ClassNameType[]): string;
+
   export interface KeyValue {
     [key: string]: unknown;
   }
@@ -154,6 +158,13 @@ declare module "@elf-framework/sapa" {
   }
 
   interface IComponentParams extends KeyValue {}
+
+  interface VNode {
+    tag: string | "object";
+    props: KeyValue;
+    children: VNode[];
+    component?: ElementType;
+  }
 
   export class Length {
     unit: string;
@@ -399,15 +410,15 @@ declare module "@elf-framework/sapa" {
     ComponentName: string,
     props?: KeyValue,
     children?: any[]
-  ): string;
+  ): VNode;
 
-  export function createComponentList(...args: any[]): string;
+  export function createComponentList(...args: any[]): VNode[];
 
   export function createElement(
     Component: string,
     props: KeyValue,
     children: any[]
-  ): string;
+  ): VNode;
 
   type FragmentInstanceType = any;
 

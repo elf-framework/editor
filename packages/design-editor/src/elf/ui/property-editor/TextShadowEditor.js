@@ -13,8 +13,7 @@ import {
 
 import "./TextShadowEditor.scss";
 
-import { iconUse } from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 export default class TextShadowEditor extends EditorElement {
   initState() {

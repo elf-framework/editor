@@ -11,8 +11,8 @@ import "./PositionProperty.scss";
 
 import { round } from "elf/core/math";
 import { REFRESH_SELECTION, UPDATE_CANVAS } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { BaseProperty, Length } from "@elf-framework/editor";
 
 const DEFAULT_SIZE = 0;
 

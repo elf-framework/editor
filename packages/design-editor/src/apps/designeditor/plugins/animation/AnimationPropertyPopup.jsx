@@ -9,8 +9,7 @@ import {
 
 import "./AnimationPropertyPopup.scss";
 
-import { BasePopup } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+import { BasePopup, Length } from "@elf-framework/editor";
 
 export default class AnimationPropertyPopup extends BasePopup {
   getTitle() {

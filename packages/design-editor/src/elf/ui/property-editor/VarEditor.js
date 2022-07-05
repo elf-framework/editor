@@ -2,8 +2,7 @@ import { INPUT, LOAD, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./VarEditor.scss";
 
-import {iconUse} from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 export default class VarEditor extends EditorElement {
   initState() {
@@ -30,9 +29,9 @@ export default class VarEditor extends EditorElement {
             <div class='label ${labelClass}' >
                 <label>${this.props.title || ""}</label>
                 <div class='tools'>
-                    <button type="button" ref="$add" title="add Var">${
-                      iconUse('add')
-                    }</button>
+                    <button type="button" ref="$add" title="add Var">${iconUse(
+                      "add"
+                    )}</button>
                 </div>
             </div>
             <div class='var-list' ref='$varList'></div>

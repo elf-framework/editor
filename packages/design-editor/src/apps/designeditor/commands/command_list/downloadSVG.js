@@ -1,4 +1,3 @@
-
 import ExportManager from "apps/designeditor/managers/ExportManager";
 import downloadFile from "elf/editor/util/downloadFile";
 

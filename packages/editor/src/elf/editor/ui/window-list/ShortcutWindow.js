@@ -1,10 +1,9 @@
 import { registElement, SUBSCRIBE } from "@elf-framework/sapa";
+import shortcuts from "apps/blankeditor/shortcuts";
+import { os } from "elf/core/detect";
 
 import BaseWindow from "./BaseWindow";
 import "./ShortcutWindow.scss";
-
-import { os } from "elf/core/detect";
-import shortcuts from "apps/blankeditor/shortcuts";
 
 const categories = new Set();
 

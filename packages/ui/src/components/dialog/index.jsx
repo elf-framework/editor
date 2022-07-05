@@ -15,7 +15,7 @@ const cssProperties = {
   borderColor: "--elf--dialog-border-color",
   boxShadow: "--elf--dialog-box-shadow",
   width: "--elf--dialog-width",
-}
+};
 
 export class Dialog extends UIElement {
   initState() {

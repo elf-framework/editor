@@ -1,5 +1,3 @@
-import { vec3 } from "gl-matrix";
-
 import {
   BIND,
   CONFIG,
@@ -13,9 +11,6 @@ import {
   WHEEL,
   Dom,
 } from "@elf-framework/sapa";
-
-// import "./CanvasView.scss";
-
 import { EditingMode } from "apps/blankeditor/types/editor";
 import {
   END,
@@ -25,8 +20,8 @@ import {
   RESIZE_CANVAS,
 } from "apps/blankeditor/types/event";
 import { KEY_CODE } from "apps/blankeditor/types/key";
-// import Resource from "elf/editor/util/Resource";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
+import { vec3 } from "gl-matrix";
 
 export default class BlankCanvasView extends EditorElement {
   initState() {

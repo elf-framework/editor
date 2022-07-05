@@ -5,9 +5,8 @@ import * as propertyEditor from "elf/ui/property-editor";
  * @param {Editor} editor
  */
 export default function (editor) {
-
   editor.registerElement({
-    ...propertyEditor
+    ...propertyEditor,
   });
 
   editor.registerAlias({

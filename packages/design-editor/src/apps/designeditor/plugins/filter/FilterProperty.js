@@ -14,6 +14,7 @@ import "./FilterProperty.scss";
 import { filter_list } from "./util";
 
 import { BaseProperty, iconUse } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 
 export default class FilterProperty extends BaseProperty {

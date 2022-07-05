@@ -11,10 +11,10 @@ import {
 import gradients from "../../../../preset/gradients";
 import "./GradientAssetsProperty.scss";
 
-import { iconUse } from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { Gradient } from "elf/editor/property-parser/image-resource/Gradient";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 const options = gradients.map((it) => {
   return { value: it.key, text: it.title };

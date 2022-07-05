@@ -1,5 +1,9 @@
-import { isNotUndefined, isString, isNumber, isUndefined } from "@elf-framework/sapa";
-
+import {
+  isNotUndefined,
+  isString,
+  isNumber,
+  isUndefined,
+} from "@elf-framework/sapa";
 import { degreeToRadian, radianToDegree, round } from "elf/core/math";
 
 const stringToPercent = {

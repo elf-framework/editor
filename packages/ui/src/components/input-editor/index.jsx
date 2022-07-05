@@ -1,9 +1,15 @@
-import { UIElement, classnames, FOCUSOUT, FOCUSIN, isFunction } from "@elf-framework/sapa";
+import {
+  UIElement,
+  classnames,
+  FOCUSOUT,
+  FOCUSIN,
+  isFunction,
+} from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap('--elf--input-editor', {
+const cssProperties = makeStyleMap("--elf--input-editor", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -15,12 +21,20 @@ const cssProperties = makeStyleMap('--elf--input-editor', {
   borderRadius: true,
   placeholderColor: true,
   emptyColor: true,
-})
+});
 
 export class InputEditor extends UIElement {
-
   initState() {
-    const { style = {}, type = "text", autoFocus = false, focused, hover = false, value, placeholder, disabled } = this.props;
+    const {
+      style = {},
+      type = "text",
+      autoFocus = false,
+      focused,
+      hover = false,
+      value,
+      placeholder,
+      disabled,
+    } = this.props;
 
     return {
       style,
@@ -30,23 +44,31 @@ export class InputEditor extends UIElement {
       focused: focused || false,
       placeholder,
       value,
-      disabled
-    }
+      disabled,
+    };
   }
 
   template() {
-    const { icon } = this.props;
-    const { style = {}, type = "text", focused = false, hover = false, value, placeholder, disabled } = this.state;
+    const { icon, tools } = this.props;
+    const {
+      style = {},
+      type = "text",
+      focused = false,
+      hover = false,
+      value,
+      placeholder,
+      disabled,
+    } = this.state;
 
     const styleObject = {
       class: classnames([
         "elf--input-editor",
         {
-          "focused": focused,
-          "hover": hover,
-          "disabled": disabled,
-          "icon": icon,
-        }
+          focused: focused,
+          hover: hover,
+          disabled: disabled,
+          icon: icon,
+        },
       ]),
       style: {
         ...propertyMap(style, cssProperties),
@@ -61,43 +83,37 @@ export class InputEditor extends UIElement {
       onKeyPress: this.props.onKeyPress,
       onSelect: this.props.onSelect,
       onPaste: this.props.onPaste,
-      onCut:  this.props.onCut,
+      onCut: this.props.onCut,
       onCopy: this.props.onCopy,
-    }
+    };
 
     const properties = {
       type,
       disabled,
-      placeholder,
-      value,
-    }
+      placeholder: placeholder || "",
+      value: value || "",
+    };
 
     return (
       <div {...styleObject}>
-        {icon ? (
-          <div class="elf--input-editor-icon">
-            {icon}
-          </div>
-        ) : undefined}
+        {icon ? <div class="elf--input-editor-icon">{icon}</div> : undefined}
         <div class="elf--input-area">
           <div class="elf--input-item">
             <input ref="$input" {...properties} {...inputEvents} />
           </div>
         </div>
+        {tools ? tools : undefined}
       </div>
     );
   }
 
-  afterRender() {
-
+  onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
         this.refs.$input.focus();
         this.refs.$input.select();
       }, 10);
-
     }
-
   }
 
   runCallback(callback, e) {
@@ -106,20 +122,20 @@ export class InputEditor extends UIElement {
     }
   }
 
-  [FOCUSIN("$input")] (e) {
+  [FOCUSIN("$input")](e) {
     this.setState({
       focused: true,
-    })
+    });
 
     this.runCallback(this.props.onFocus, e);
   }
 
-  [FOCUSOUT("$input")] (e) {
+  [FOCUSOUT("$input")](e) {
     this.setState({
       focused: false,
-    })
+    });
 
-    this.runCallback(this.props.onBlur, e);    
+    this.runCallback(this.props.onBlur, e);
   }
 
   get value() {
@@ -131,7 +147,6 @@ export class InputEditor extends UIElement {
   }
 
   get selectedValue() {
-    return document.getSelection().toString()
-    ;
+    return document.getSelection().toString();
   }
 }

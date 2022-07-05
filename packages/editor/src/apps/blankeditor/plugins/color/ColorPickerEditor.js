@@ -1,13 +1,12 @@
 import { SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
+import ColorManagerV2 from "./ColorManagerV2";
 import ColorInformation from "./colorpicker/ColorInformation";
 import Palette from "./colorpicker/ColorPalette";
 import ColorView from "./colorpicker/control/ColorView";
 import Hue from "./colorpicker/control/Hue";
 import Opacity from "./colorpicker/control/Opacity";
-
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
-import ColorManagerV2 from "./ColorManagerV2";
 
 export default class ColorPickerEditor extends EditorElement {
   created() {

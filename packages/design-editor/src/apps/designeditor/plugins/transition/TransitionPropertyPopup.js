@@ -1,8 +1,13 @@
-import { LOAD, SUBSCRIBE, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
+import {
+  LOAD,
+  SUBSCRIBE,
+  SUBSCRIBE_SELF,
+  createComponent,
+} from "@elf-framework/sapa";
 
 import "./TransitionPropertyPopup.scss";
 
-import { BasePopup } from "@elf-framework/editor"
+import { BasePopup } from "@elf-framework/editor";
 
 const property_list = [
   "none",

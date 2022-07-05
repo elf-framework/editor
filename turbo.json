@@ -33,7 +33,8 @@
       "dependsOn": [
         "^ui:watch"
       ],
-      "outputs": ["dist/**", ".next/**"]      
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
     },    
     "design:dev": {
       "dependsOn": ["design:watch"],

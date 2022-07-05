@@ -1,6 +1,6 @@
 import { Dom } from "./functions/Dom";
 import { registRootElementInstance } from "./functions/registElement";
-import { Router } from "./Router";
+// import { Router } from "./Router";
 import { UIElement } from "./UIElement";
 
 /**
@@ -17,7 +17,6 @@ export const start = (ElementClass, opt = {}) => {
   app.render($container);
 
   registRootElementInstance(app);
-
 
   return app;
 };

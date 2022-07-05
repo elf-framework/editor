@@ -1,7 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { Length } from "elf/editor/unit/Length";
-
+import { vec3 } from "gl-matrix";
 
 /**
  * 사각형과 사각형 충돌 체크
@@ -187,7 +185,6 @@ export function rectToVertiesForArea(x, y, width, height) {
   return rectToVerties(x, y, width, height);
 }
 
-
 /**
  * verties -> rect
  *
@@ -203,7 +200,6 @@ export function vertiesToRectangle(verties) {
 
   return new Rect(x, y, width, height);
 }
-
 
 export function toRectVerties(verties) {
   let minX = Number.MAX_SAFE_INTEGER;

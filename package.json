@@ -17,6 +17,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "eslint": "^8.18.0",
     "prettier": "latest",
     "turbo": "latest"
   },
@@ -24,5 +25,8 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.9.0"
+  "packageManager": "npm@8.9.0",
+  "dependencies": {
+    "vite-plugin-sapa": "^1.0.0"
+  }
 }

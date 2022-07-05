@@ -1,6 +1,11 @@
+import {
+  DOMDIFF,
+  IF,
+  LOAD,
+  POINTERSTART,
+  SUBSCRIBE,
+} from "@elf-framework/sapa";
 import { vec3 } from "gl-matrix";
-
-import { DOMDIFF, IF, LOAD, POINTERSTART, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./PathSegmentView.scss";
 
@@ -13,8 +18,8 @@ import {
   UPDATE_VIEWPORT,
   UPDATE_CANVAS,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 export default class PathSegmentView extends EditorElement {
   initState() {

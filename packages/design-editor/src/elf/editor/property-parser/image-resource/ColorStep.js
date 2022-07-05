@@ -1,9 +1,10 @@
-import { TimingFunction } from "../../types/model";
 import * as Color from "@elf-framework/color";
+import { Length } from "@elf-framework/editor";
+
+import { TimingFunction } from "../../types/model";
 
 import { repeat } from "elf/core/func";
 import { randomNumber, uuidShort } from "elf/core/math";
-import { Length } from "@elf-framework/editor"
 import { parseOneValue, parseValue } from "elf/utils/css-function-parser";
 
 export class ColorStep {

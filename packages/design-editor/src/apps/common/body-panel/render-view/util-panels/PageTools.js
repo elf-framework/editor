@@ -3,7 +3,9 @@ import { CLICK, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 import "./PageTools.scss";
 
 import { PathParser } from "elf/core/parser/PathParser";
+
 import { iconUse, EditorElement } from "@elf-framework/editor";
+
 import { UPDATE_VIEWPORT } from "elf/editor/types/event";
 
 export default class PageTools extends EditorElement {

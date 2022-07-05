@@ -1,9 +1,8 @@
 import { createComponent } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./BlankBodyPanel.scss";
 import BlankCanvasView from "./BlankCanvasView";
-
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export default class BlankBodyPanel extends EditorElement {
   components() {
@@ -24,5 +23,4 @@ export default class BlankBodyPanel extends EditorElement {
       </div>
     `;
   }
-
 }

@@ -32,8 +32,7 @@ export class MenuManager {
   }
 
   getTargetMenu(target, sort = "asc") {
-
-    const list = this.menus[target] || []
+    const list = this.menus[target] || [];
 
     if (sort === "desc") {
       return list.reverse();

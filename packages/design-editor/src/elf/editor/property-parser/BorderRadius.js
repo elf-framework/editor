@@ -1,4 +1,4 @@
-import { Length } from "@elf-framework/editor"
+import { Length } from "@elf-framework/editor";
 
 export default class BorderRadius {
   static parseStyle(str = "") {

@@ -2,7 +2,7 @@ import { INPUT, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import "./SelectorPopup.scss";
 
-import { BasePopup } from "@elf-framework/editor"
+import { BasePopup } from "@elf-framework/editor";
 
 export default class SelectorPopup extends BasePopup {
   getTitle() {

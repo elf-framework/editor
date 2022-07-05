@@ -12,21 +12,26 @@ const cssProperties = {
   height: "--elf--radio-height",
   padding: "--elf--radio-padding",
   borderRadius: "--elf--radio-border-radius",
-}
-
-
+};
 
 export class Radio extends UIElement {
-
   template() {
-    const { disabled, style = {}, value, content, name, checked = false, onChange } = this.props;
+    const {
+      disabled,
+      style = {},
+      value,
+      content,
+      name,
+      checked = false,
+      onChange,
+    } = this.props;
 
     const styleObject = {
       class: classnames([
         "elf--radio",
         {
-          disabled
-        }
+          disabled,
+        },
       ]),
       style: {
         ...propertyMap(style, cssProperties),
@@ -36,13 +41,18 @@ export class Radio extends UIElement {
     return (
       <div {...styleObject}>
         <label>
-          <input ref="$input" type="radio" {...{
-            value,
-            name,
-            disabled: disabled ? "disabled" : undefined,
-            checked: checked ? "checked" : undefined,
-          }} onChange={(e) => onChange?.(e, value)} />
-          {content} 
+          <input
+            ref="$input"
+            type="radio"
+            {...{
+              value,
+              name,
+              disabled: disabled ? "disabled" : undefined,
+              checked: checked ? "checked" : undefined,
+            }}
+            onChange={(e) => onChange?.(e, value)}
+          />
+          {content}
         </label>
       </div>
     );
@@ -50,14 +60,19 @@ export class Radio extends UIElement {
 }
 
 export class RadioGroup extends UIElement {
-
   template() {
-    const { disabled, style = {}, name, value, onChange, contentChildren } = this.props;
+    const {
+      disabled,
+      style = {},
+      name,
+      value,
+      onChange,
+      content,
+      contentChildren,
+    } = this.props;
 
     const styleObject = {
-      class: classnames([
-        "elf--radio-group",
-      ]),
+      class: classnames(["elf--radio-group"]),
       disabled: disabled ? "disabled" : undefined,
       style: {
         ...propertyMap(style, cssProperties),
@@ -76,10 +91,11 @@ export class RadioGroup extends UIElement {
                 this.setState({ value: v }, false);
                 onChange(e, v);
               }}
-              content={it.props.content}
               checked={it.props.value === value}
               disabled={disabled}
-            />
+            >
+              {it.props.content}
+            </Radio>
           );
         })}
       </div>
@@ -87,7 +103,7 @@ export class RadioGroup extends UIElement {
   }
 
   get value() {
-    return this.state.value;
+    return this.state.value || this.props.value;
   }
 
   set value(value) {

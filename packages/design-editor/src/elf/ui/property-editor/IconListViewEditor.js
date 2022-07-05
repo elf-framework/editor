@@ -2,8 +2,7 @@ import { LOAD, BIND, CLICK } from "@elf-framework/sapa";
 
 import "./IconListViewEditor.scss";
 
-import {iconUse} from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 export default class IconListViewEditor extends EditorElement {
   initState() {

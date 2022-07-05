@@ -1,6 +1,6 @@
-import { TransformOriginCache } from "./TransformOriginCache";
+import { Length } from "@elf-framework/editor";
 
-import { Length } from "@elf-framework/editor"
+import { TransformOriginCache } from "./TransformOriginCache";
 
 export class TransformOrigin {
   /**

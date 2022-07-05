@@ -13,7 +13,8 @@ import { Gradient } from "elf/editor/property-parser/image-resource/Gradient";
 import { SVGStaticGradient } from "elf/editor/property-parser/image-resource/SVGStaticGradient";
 import { SVGFill } from "elf/editor/property-parser/SVGFill";
 import { GradientType } from "elf/editor/types/model";
-import { BasePopup } from "@elf-framework/editor"
+
+import { BasePopup } from "@elf-framework/editor";
 
 export default class FillPickerPopup extends BasePopup {
   getTitle() {

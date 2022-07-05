@@ -1,5 +1,4 @@
-import { mat4, vec3 } from "gl-matrix";
-
+import { UPDATE_VIEWPORT } from "apps/blankeditor/types/event";
 import {
   vertiesToRectangle,
   rectRect,
@@ -11,7 +10,7 @@ import {
   calculateMatrixInverse,
   vertiesMap,
 } from "elf/core/math";
-import { UPDATE_VIEWPORT } from "apps/blankeditor/types/event";
+import { mat4, vec3 } from "gl-matrix";
 
 /**
  * editor 의 viewport 를 관리한다.

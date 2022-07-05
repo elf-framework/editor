@@ -10,7 +10,8 @@ import {
 import "./ComponentPopup.scss";
 
 import { SHOW_COMPONENT_POPUP } from "elf/editor/types/event";
-import { BasePopup } from "@elf-framework/editor"
+
+import { BasePopup } from "@elf-framework/editor";
 
 export default class ComponentPopup extends BasePopup {
   getClassName() {

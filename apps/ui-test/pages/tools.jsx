@@ -1,7 +1,7 @@
-import { start } from "@elf-framework/sapa";
-import "@elf-framework/ui/style.css";
-import { Tools } from "@elf-framework/ui";
 import { iconUse } from "@elf-framework/icon";
+import { start } from "@elf-framework/sapa";
+import { Tools } from "@elf-framework/ui";
+import "@elf-framework/ui/style.css";
 
 start(function () {
   return (
@@ -26,12 +26,18 @@ start(function () {
             },
           },
           {
-            type: "custom", 
+            type: "custom",
             render: () => {
-              return <div onClick={() => {
-                console.log("custom");
-              }}>fdsafdsafdsf</div>
-            }
+              return (
+                <div
+                  onClick={() => {
+                    console.log("custom");
+                  }}
+                >
+                  fdsafdsafdsf
+                </div>
+              );
+            },
           },
           {
             type: "item",
@@ -60,22 +66,32 @@ start(function () {
               console.log("foo");
             },
             items: [
-
-              // 함수로 커스텀 렌더 정의 
-              ({rootClose}) => (<div onClick={(e) => {
-                  rootClose();
-                }}>Hello</div>)
-              ,
-              // 커스텀 타입 메뉴 아이템 정의 
+              // 함수로 커스텀 렌더 정의
+              ({ rootClose }) => (
+                <div
+                  onClick={() => {
+                    rootClose();
+                  }}
+                >
+                  Hello
+                </div>
+              ),
+              // 커스텀 타입 메뉴 아이템 정의
               {
                 type: "custom",
-                render: ({rootClose}) => {
-                  return <div onClick={(e) => {
-                    rootClose();
-                  }}>Hello</div>
+                render: ({ rootClose }) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        rootClose();
+                      }}
+                    >
+                      Hello
+                    </div>
+                  );
                 },
               },
-              // divider 정의 
+              // divider 정의
               "-",
               // group 타입 메뉴 아이템 정의
               {
@@ -89,7 +105,7 @@ start(function () {
                   console.log(item);
                 },
               },
-              // 기본 메뉴 아이템 정의 
+              // 기본 메뉴 아이템 정의
               {
                 type: "item",
                 title: "Hello",

@@ -1,6 +1,6 @@
 import iconList from "./icon/icons_list";
 
-export function iconUse(name, transform = "", opt = { width: 24, height: 24 }) {
+export function iconUse(name) {
   if (!name) return "";
 
   if (!iconList.icons[name]) {

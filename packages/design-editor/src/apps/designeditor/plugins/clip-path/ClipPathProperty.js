@@ -1,11 +1,20 @@
-import { CLICK, LOAD, PREVENT, SUBSCRIBE, IF, createComponent } from "@elf-framework/sapa";
+import {
+  CLICK,
+  LOAD,
+  PREVENT,
+  SUBSCRIBE,
+  IF,
+  createComponent,
+} from "@elf-framework/sapa";
 
 import polygon from "../../preset/clip-path/polygon";
 import "./ClipPathProperty.scss";
 
 import { vertiesToRectangle } from "elf/core/collision";
 import { PathParser } from "elf/core/parser/PathParser";
+
 import { BaseProperty, iconUse } from "@elf-framework/editor";
+
 import { ClipPath } from "elf/editor/property-parser/ClipPath";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import { ClipPathType } from "elf/editor/types/model";
@@ -115,7 +124,7 @@ export default class ClipPathProperty extends BaseProperty {
             ${isPolygon ? polygonSelect : ""}
           </div>
           <div class='tools'>
-            <button type="button" class="del">${iconUse('remove2')}</button>
+            <button type="button" class="del">${iconUse("remove2")}</button>
           </div>        
         </div>
         ${

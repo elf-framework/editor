@@ -1,8 +1,7 @@
 import { createComponent, SUBSCRIBE } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./BlankToolBar.scss";
-
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import ToolBarRenderer from "./ToolBarRenderer";
 
 export default class BlankToolBar extends EditorElement {

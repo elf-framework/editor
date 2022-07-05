@@ -1,4 +1,10 @@
-import { CLICK, POINTERSTART, BIND, SUBSCRIBE, isUndefined } from "@elf-framework/sapa";
+import {
+  CLICK,
+  POINTERSTART,
+  BIND,
+  SUBSCRIBE,
+  isUndefined,
+} from "@elf-framework/sapa";
 
 import "./CubicBezierEditor.scss";
 
@@ -10,10 +16,10 @@ import {
 } from "elf/core/bezier";
 import { curveToPath, curveToPointLine } from "elf/core/func";
 import { div } from "elf/core/math";
-import {iconUse} from "@elf-framework/editor";
+
+import { iconUse, EditorElement, Length } from "@elf-framework/editor";
+
 import { END, MOVE } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
 
 export default class CubicBezierEditor extends EditorElement {
   initState() {
@@ -49,11 +55,11 @@ export default class CubicBezierEditor extends EditorElement {
       <div class="elf--cubic-bezier-editor">
         <div class="predefined">
           <div class="left" ref="$left">
-            {iconUse('chevron_left')}
+            {iconUse("chevron_left")}
           </div>
           <div class="predefined-text" ref="$text"></div>
           <div class="right" ref="$right">
-            {iconUse('chevron_right')}
+            {iconUse("chevron_right")}
           </div>
         </div>
         <div class="animation" ref="$animationArea">

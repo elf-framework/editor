@@ -1,3 +1,4 @@
+import { iconUse, BaseProperty, Position } from "@elf-framework/editor";
 import {
   CLICK,
   CHANGE,
@@ -7,9 +8,7 @@ import {
   createComponent,
 } from "@elf-framework/sapa";
 
-import {iconUse, BaseProperty} from "@elf-framework/editor";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { Position } from "@elf-framework/editor";
 
 const typeList = [
   { key: "top", title: "Top" },
@@ -24,11 +23,11 @@ const names = {
   image: "Image",
   "static-gradient": "Static",
   "linear-gradient": "Linear",
-  "repeating-linear-gradient": `${iconUse('repeat')} Linear`,
+  "repeating-linear-gradient": `${iconUse("repeat")} Linear`,
   "radial-gradient": "Radial",
-  "repeating-radial-gradient": `${iconUse('repeat')} Radial`,
+  "repeating-radial-gradient": `${iconUse("repeat")} Radial`,
   "conic-gradient": "Conic",
-  "repeating-conic-gradient": `${iconUse('repeat')} Conic`,
+  "repeating-conic-gradient": `${iconUse("repeat")} Conic`,
 };
 
 export default class BorderImageProperty extends BaseProperty {

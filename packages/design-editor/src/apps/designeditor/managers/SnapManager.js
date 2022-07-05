@@ -1,6 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { isNotZero } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import { toRectVertiesWithoutTransformOrigin } from "elf/core/collision";
 

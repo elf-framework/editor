@@ -1,3 +1,5 @@
+import { iconUse } from "@elf-framework/editor";
+
 import GradientAssetsProperty from "./object-list/asset/GradientAssetsProperty";
 import ImageAssetsProperty from "./object-list/asset/ImageAssetsProperty";
 import PatternAssetsProperty from "./object-list/asset/PatternAssetsProperty";
@@ -6,8 +8,6 @@ import AssetItems from "./object-list/AssetItems";
 import CustomAssets from "./object-list/CustomAssets";
 import LibraryItems from "./object-list/LibraryItems";
 import ObjectItems from "./object-list/ObjectItems";
-
-import { iconUse } from "@elf-framework/editor";
 
 export default function (editor) {
   editor.context.config.set("layertab.selectedValue", "layer");

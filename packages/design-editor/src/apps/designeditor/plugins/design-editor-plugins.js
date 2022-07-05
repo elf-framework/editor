@@ -1,4 +1,5 @@
 import { ContextMenuView } from "@elf-framework/editor";
+
 import alignment from "./alignment";
 import animation from "./animation";
 import appearance from "./appearance";
@@ -15,8 +16,12 @@ import clipPath from "./clip-path";
 import ClippathEditorView from "./clippath-editor-view";
 import codeview from "./codeview";
 import commands from "./commands";
+import component from "./component";
 import configs from "./configs";
+import content from "./content";
+import defaultIcons from "./default-icons";
 import defaultItems from "./default-items";
+import defaultMessages from "./default-messages";
 import defaultPatterns from "./default-patterns";
 import depth from "./depth";
 import exportResource from "./export-resource";
@@ -45,12 +50,14 @@ import patternAsset from "./pattern-asset";
 import position from "./position";
 import project from "./project";
 // import rendererHtml from "../../../engine/html/renderer/renderer-html";
+import propertyEditor from "./property-editor";
 import rendererJson from "./renderer-json";
 // import rendererSvg from "../../../engine/html/renderer/renderer-svg";
 import sample from "./sample";
 import selectionInfoView from "./selection-info-view";
 import selectionToolView from "./selection-tool-view";
 import selector from "./selector";
+import shortcuts from "./shortcuts";
 import svgFilterAsset from "./svg-filter-asset";
 import svgItem from "./svg-item";
 import svgText from "./svg-text";
@@ -61,13 +68,7 @@ import video from "./video";
 
 // import baseEditor from "plugins/base-editor";
 // import color from "plugins/color";
-import component from "./component";
 // import defaultConfigs from "plugins/default-configs";
-import propertyEditor from "./property-editor";
-import defaultIcons from "./default-icons";
-import content from "./content";
-import defaultMessages from "./default-messages";
-import shortcuts from "./shortcuts";
 
 export default [
   configs,
@@ -78,7 +79,7 @@ export default [
   defaultMessages,
   defaultItems,
   defaultPatterns,
-  defaultIcons,  
+  defaultIcons,
 
   // rendererHtml,
   rendererJson,

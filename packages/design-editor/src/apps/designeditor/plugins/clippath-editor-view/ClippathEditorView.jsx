@@ -1,4 +1,12 @@
-import { CLICK, DEBOUNCE, DOMDIFF, IF, LOAD, SUBSCRIBE, Dom } from "@elf-framework/sapa";
+import {
+  CLICK,
+  DEBOUNCE,
+  DOMDIFF,
+  IF,
+  LOAD,
+  SUBSCRIBE,
+  Dom,
+} from "@elf-framework/sapa";
 
 import "./ClippathEditorView.scss";
 import ClippathEllipseEditorView from "./ClippathEllipseEditorView";

@@ -1,3 +1,4 @@
+import { BaseProperty } from "@elf-framework/editor";
 import {
   LOAD,
   DEBOUNCE,
@@ -7,7 +8,6 @@ import {
 } from "@elf-framework/sapa";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor";
 
 export default class BackgroundClipProperty extends BaseProperty {
   getTitle() {

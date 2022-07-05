@@ -13,6 +13,7 @@ import "./BackdropFilterProperty.scss";
 import { filter_list } from "./util";
 
 import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 
 export default class BackdropFilterProperty extends BaseProperty {

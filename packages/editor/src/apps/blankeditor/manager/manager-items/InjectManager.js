@@ -1,4 +1,8 @@
-import { isArray, createComponent, createElementJsx } from "@elf-framework/sapa";
+import {
+  isArray,
+  createComponent,
+  createElementJsx,
+} from "@elf-framework/sapa";
 
 export class InjectManager {
   constructor(editor) {

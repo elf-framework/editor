@@ -2,7 +2,8 @@ import { CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./PathToolProperty.scss";
 
-import { iconUse } from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import BottomAlign from "elf/editor/ui/menu-items/BottomAlign";
 import CenterAlign from "elf/editor/ui/menu-items/CenterAlign";
@@ -12,7 +13,6 @@ import RightAlign from "elf/editor/ui/menu-items/RightAlign";
 import SameHeight from "elf/editor/ui/menu-items/SameHeight";
 import SameWidth from "elf/editor/ui/menu-items/SameWidth";
 import TopAlign from "elf/editor/ui/menu-items/TopAlign";
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class PathToolProperty extends BaseProperty {
   components() {

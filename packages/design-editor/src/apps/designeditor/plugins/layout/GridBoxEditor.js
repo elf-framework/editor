@@ -9,8 +9,7 @@ import {
 
 import "./GridBoxEditor.scss";
 
-import { iconUse } from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 const REG_CSS_UNIT =
   /(auto)|(repeat\([^)]*\))|(([\d.]+)(px|pt|fr|r?em|deg|vh|vw|%))/gi;
@@ -140,9 +139,9 @@ export default class GridBoxEditor extends EditorElement {
                     <div class='item header'>
                         <div class='repeat'>
                             <label>${this.state.label} </label>
-                            <button type='button' ref='$add'>${
-                              iconUse('add')
-                            }</button>
+                            <button type='button' ref='$add'>${iconUse(
+                              "add"
+                            )}</button>
                         </div>
                         <div class='count'>${this.$i18n(
                           "grid.box.editor.count"

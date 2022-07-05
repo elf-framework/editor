@@ -9,7 +9,8 @@ import {
 import "./FlexLayoutItemProperty.scss";
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
+
+import { BaseProperty } from "@elf-framework/editor";
 
 export default class FlexLayoutItemProperty extends BaseProperty {
   getTitle() {

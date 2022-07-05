@@ -1,5 +1,3 @@
-import { mat4, vec3 } from "gl-matrix";
-
 import {
   POINTERSTART,
   POINTEROUT,
@@ -9,6 +7,7 @@ import {
   SUBSCRIBE,
   clone,
 } from "@elf-framework/sapa";
+import { mat4, vec3 } from "gl-matrix";
 
 import "./SelectionView.scss";
 
@@ -32,8 +31,8 @@ import {
   END,
   MOVE,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 var directionType = {
   1: "to top left",
@@ -672,10 +671,11 @@ export default class GroupSelectionToolView extends SelectionToolEvent {
     const verties = this.verties || rectToVerties(0, 0, 0, 0);
 
     if (!this.state.groupSelectionView) {
-      this.state.groupSelectionView = this.$editor.context.modelManager.createModel(
-        { itemType: "artboard" },
-        false
-      );
+      this.state.groupSelectionView =
+        this.$editor.context.modelManager.createModel(
+          { itemType: "artboard" },
+          false
+        );
     }
 
     this.state.groupSelectionView.reset({

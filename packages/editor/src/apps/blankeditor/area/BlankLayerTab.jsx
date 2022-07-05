@@ -1,5 +1,4 @@
 import { createElement } from "@elf-framework/sapa";
-
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { TabPanel, Tabs } from "elf/ui";
 

@@ -1,9 +1,7 @@
+import { Length, DirectionLength } from "@elf-framework/editor";
 import { isUndefined } from "@elf-framework/sapa";
 
 import { PropertyItem } from "elf/editor/items/PropertyItem";
-
-import { Length, DirectionLength } from "@elf-framework/editor"
-
 
 const CLIPPATH_REG =
   /(content-box|padding-box|border-box|margin-box|view-box|stroke-box|fill-box|none|(inset|circle|ellipse|polygon|path|svg|url)(\(([^)]*)\))?)/gi;

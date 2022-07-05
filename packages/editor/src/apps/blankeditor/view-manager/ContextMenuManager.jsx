@@ -1,9 +1,8 @@
 import { SUBSCRIBE } from "@elf-framework/sapa";
-
-import "./ContextMenuManager.scss";
-
 import { OPEN_CONTEXT_MENU } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
+
+import "./ContextMenuManager.scss";
 
 export class ContextMenuManager extends EditorElement {
   template() {

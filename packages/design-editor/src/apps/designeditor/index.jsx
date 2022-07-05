@@ -1,4 +1,6 @@
-import "./layout.scss";
+import { BlankEditor, DefaultLayoutItem } from "@elf-framework/editor";
+import "@elf-framework/editor/style.css";
+
 import { ClipboardManager } from "./managers/ClipboardManager";
 import { HistoryManager } from "./managers/HistoryManager";
 import { LockManager } from "./managers/LockManager";
@@ -11,10 +13,10 @@ import { TimelineSelectionManager } from "./managers/TimelineSelectionManager";
 import { VisibleManager } from "./managers/VisibleManager";
 import designEditorPlugins from "./plugins/design-editor-plugins";
 
-
 import BodyPanel from "apps/common/BodyPanel";
-import { BlankEditor, DefaultLayoutItem } from "@elf-framework/editor";
-import "@elf-framework/editor/style.css";
+
+import "./layout.scss";
+
 
 export class DesignEditor extends BlankEditor {
   initialize() {
@@ -56,10 +58,7 @@ export class DesignEditor extends BlankEditor {
    * @returns {function[]}
    */
   getPlugins() {
-    return [
-      ...super.getPlugins(),
-      ...designEditorPlugins
-    ]; 
+    return [...super.getPlugins(), ...designEditorPlugins];
   }
 
   /**

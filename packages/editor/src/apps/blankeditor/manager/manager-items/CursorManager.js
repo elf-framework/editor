@@ -1,6 +1,5 @@
+import { icons } from "@elf-framework/icon";
 import { isFunction } from "@elf-framework/sapa";
-
-import {icons} from "@elf-framework/icon";
 
 export class CursorManager {
   async load(iconName = "default", ...args) {

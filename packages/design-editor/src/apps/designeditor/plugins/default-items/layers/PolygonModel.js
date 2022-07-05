@@ -5,7 +5,6 @@ import { SVGModel } from "./SVGModel";
 import { PathParser } from "elf/core/parser/PathParser";
 
 export class PolygonModel extends SVGModel {
-
   getDefaultObject(obj = {}) {
     return super.getDefaultObject({
       itemType: "polygon",

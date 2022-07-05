@@ -11,9 +11,9 @@ import {
 import textShadow from "../../preset/text-shadow";
 import "./TextShadowProperty.scss";
 
-import {iconUse} from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class TextShadowProperty extends BaseProperty {
   getTitle() {
@@ -37,7 +37,7 @@ export default class TextShadowProperty extends BaseProperty {
         })
         .join("")}
       </select>
-      <button type="button" ref='$add'>${iconUse('add')}</button>
+      <button type="button" ref='$add'>${iconUse("add")}</button>
     `;
   }
 

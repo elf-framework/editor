@@ -1,6 +1,6 @@
-import { BaseSVGFilter } from "./BaseSVGFilter";
+import { Length } from "@elf-framework/editor";
 
-import { Length } from "@elf-framework/editor"
+import { BaseSVGFilter } from "./BaseSVGFilter";
 
 export class RotaMatrixSVGFilter extends BaseSVGFilter {
   getDefaultObject() {

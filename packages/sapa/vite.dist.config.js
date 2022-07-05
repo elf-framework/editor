@@ -1,6 +1,4 @@
-import copy from "rollup-plugin-copy";
 import { defineConfig } from "vite";
-
 
 import path from "path";
 
@@ -15,10 +13,4 @@ export default defineConfig({
       fileName: (format) => `sapa.${format}.js`,
     },
   },
-  plugins: [
-    copy({
-      targets: [{ src: "index.d.ts", dest: "dist/" }],
-      hook: "writeBundle",
-    }),
-  ],
 });

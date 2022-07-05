@@ -2,8 +2,7 @@ import { CLICK, BIND, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./PathManager.scss";
 
-import { iconUse } from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 const MODES = {
   "segment-move": "modify",

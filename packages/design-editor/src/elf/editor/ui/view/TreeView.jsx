@@ -1,6 +1,5 @@
+import { EditorElement } from "@elf-framework/editor";
 import { LOAD, createComponent, DOMDIFF, CLICK } from "@elf-framework/sapa";
-
-import { EditorElement } from "@elf-framework/editor"
 
 export class TreeModel {
   constructor() {

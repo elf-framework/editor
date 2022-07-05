@@ -1,5 +1,3 @@
-import { vec3 } from "gl-matrix";
-
 import {
   POINTERSTART,
   BIND,
@@ -18,6 +16,7 @@ import {
   isFunction,
   CLICK,
 } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./PathEditorView.scss";
 
@@ -39,8 +38,8 @@ import {
   END,
   MOVE,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 /**
  * convert array[x, y] to object{x, y}
@@ -318,8 +317,8 @@ export default class PathEditorView extends PathTransformEditor {
     }
   }
 
-  [CLICK()] () {
-    console.log('click');
+  [CLICK()]() {
+    console.log("click");
   }
 
   [KEYUP("document") + IF("isShow") + ENTER]() {
@@ -384,7 +383,9 @@ export default class PathEditorView extends PathTransformEditor {
     // 이걸 여기다 하는게 맞는건가?
     // 이게 추가 되면  히스토리에 들어가야하기 때문에
     // history.moveLayerToTarget 으로 넘겨야 할지도 모른다.
-    layer = containerItem.appendChild(this.$editor.context.modelManager.createModel(pathItem));
+    layer = containerItem.appendChild(
+      this.$editor.context.modelManager.createModel(pathItem)
+    );
 
     this.$commands.executeCommand(
       "moveLayerToTarget",

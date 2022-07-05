@@ -3,7 +3,8 @@ import { LOAD, INPUT, DEBOUNCE } from "@elf-framework/sapa";
 import "./PolygonDataEditor.scss";
 
 import { PolygonParser } from "elf/core/parser/PolygonParser";
-import { EditorElement } from "@elf-framework/editor"
+
+import { EditorElement } from "@elf-framework/editor";
 
 export default class PolygonDataEditor extends EditorElement {
   initState() {

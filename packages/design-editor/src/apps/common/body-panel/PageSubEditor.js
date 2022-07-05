@@ -1,4 +1,5 @@
 import "./PageSubEditor.scss";
+
 import { EditorElement } from "@elf-framework/editor";
 
 export default class PageSubEditor extends EditorElement {

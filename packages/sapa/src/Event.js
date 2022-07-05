@@ -199,7 +199,6 @@ export const POPSTATE = CUSTOM("popstate");
 export const ORIENTATIONCHANGE = CUSTOM("orientationchange");
 export const HASHCHANGE = CUSTOM("hashchange");
 
-
 // Predefined LOADER
 export const LOAD = (value = "$el") => {
   return MagicMethod.make("load", value);

@@ -1,3 +1,4 @@
+import { icons, iconUse, iconBlank } from "@elf-framework/icon";
 import {
   LOAD,
   CLICK,
@@ -6,11 +7,9 @@ import {
   isNotUndefined,
   isString,
 } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./SelectIconEditor.scss";
-
-import { icons, iconUse, iconBlank } from "@elf-framework/icon";
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export function CSS_TO_STRING(style, postfix = "") {
   var newStyle = style || {};
@@ -20,7 +19,6 @@ export function CSS_TO_STRING(style, postfix = "") {
     .map((key) => `${key}: ${newStyle[key]}`)
     .join(";" + postfix);
 }
-
 
 export class SelectIconEditor extends EditorElement {
   initState() {

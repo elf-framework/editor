@@ -19,17 +19,29 @@ start(function () {
           {
             type: "custom",
             render: () => {
-              return <div style={{
-                height: 100,
-                width: "100%",
-                display: "flex",
-                columnGap: "10px",
-                padding: "2px 0px",
-              }}>
-                <Button type="primary" style={{flex: "1 1 auto"}} onClick={() => console.log("button1")}>Hello</Button>
-                <Button type="secondary" style={{flex: "1 1 auto"}}>Hello</Button>
-              </div>;
-            }
+              return (
+                <div
+                  style={{
+                    height: 100,
+                    width: "100%",
+                    display: "flex",
+                    columnGap: "10px",
+                    padding: "2px 0px",
+                  }}
+                >
+                  <Button
+                    type="primary"
+                    style={{ flex: "1 1 auto" }}
+                    onClick={() => this.refresh()}
+                  >
+                    Hello
+                  </Button>
+                  <Button type="secondary" style={{ flex: "1 1 auto" }}>
+                    Hello
+                  </Button>
+                </div>
+              );
+            },
           },
           {
             type: "divider",

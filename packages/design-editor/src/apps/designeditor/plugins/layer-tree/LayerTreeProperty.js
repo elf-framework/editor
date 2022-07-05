@@ -21,11 +21,16 @@ import {
 
 import "./LayerTreeProperty.scss";
 
-import { iconUse, iconUseForPath, Length } from "@elf-framework/editor";
+import {
+  iconUse,
+  iconUseForPath,
+  Length,
+  BaseProperty,
+} from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import { KEY_CODE } from "elf/editor/types/key";
 import { TargetActionType } from "elf/editor/types/model";
-import { BaseProperty } from "@elf-framework/editor"
 
 const DRAG_START_CLASS = "drag-start";
 
@@ -118,7 +123,6 @@ export default class LayerTreeProperty extends BaseProperty {
 
   //FIXME: 개별 객체가 아이콘을 리턴 할 수 있도록 구조를 맞춰보자.
   getIcon(item) {
-
     if (item.d) {
       return iconUseForPath(item.d, {
         width: item.screenWidth,

@@ -1,5 +1,4 @@
 import { LOAD, INPUT, BIND } from "@elf-framework/sapa";
-
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export class InputArrayEditor extends EditorElement {

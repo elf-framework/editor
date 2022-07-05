@@ -3,8 +3,8 @@ import { LOAD, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 import "./BorderEditor.scss";
 
 import { Border } from "elf/editor/property-parser/Border";
-import { EditorElement } from "@elf-framework/editor";
 
+import { EditorElement } from "@elf-framework/editor";
 
 const borderTypeList = [
   "border",

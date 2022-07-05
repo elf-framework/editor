@@ -1,6 +1,5 @@
+import { EditorElement } from "@elf-framework/editor";
 import { SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
-
-import { EditorElement } from "@elf-framework/editor"
 
 export default class LanguageSelector extends EditorElement {
   get locales() {

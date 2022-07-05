@@ -7,7 +7,7 @@
     --elf--button-border-radius: 4px;
     --elf--button-disabled-color: var(--elf--disabled-color);
 
-    // height: 30px;
+    // height: var(--elf--button-height, 30px);
     padding: var(--elf--button-padding);
     border-radius: var(--elf--button-border-radius);
     line-height: 16px;

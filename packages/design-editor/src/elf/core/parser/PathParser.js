@@ -1,8 +1,7 @@
+import { isNotUndefined, clone } from "@elf-framework/sapa";
 import fitCurve from "fit-curve";
 import { mat4, vec2, vec3 } from "gl-matrix";
 import arcToBezier from "svg-arc-to-cubic-bezier";
-
-import { isNotUndefined, clone } from "@elf-framework/sapa";
 
 import { Point } from "./Point";
 import { Segment } from "./Segment";

@@ -1,4 +1,4 @@
-import { EditorElement } from "@elf-framework/editor"
+import { EditorElement } from "@elf-framework/editor";
 
 export default class VersionView extends EditorElement {
   initState() {

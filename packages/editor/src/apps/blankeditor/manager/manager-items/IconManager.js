@@ -1,6 +1,5 @@
-import { isFunction } from "@elf-framework/sapa";
-
 import { iconUse } from "@elf-framework/icon";
+import { isFunction } from "@elf-framework/sapa";
 
 export class IconManager {
   constructor(editor) {
@@ -30,9 +29,9 @@ export class IconManager {
   }
 
   registerIconList(obj) {
-    Object.keys(obj).forEach(key => {
-      this.set(key, obj[key])
-    })
+    Object.keys(obj).forEach((key) => {
+      this.set(key, obj[key]);
+    });
   }
 
   load() {

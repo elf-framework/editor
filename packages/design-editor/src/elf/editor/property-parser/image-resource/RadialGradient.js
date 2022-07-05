@@ -1,6 +1,6 @@
-import { vec3 } from "gl-matrix";
-
+import { Length, Position } from "@elf-framework/editor";
 import { isArray } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import { Gradient } from "./Gradient";
 
@@ -10,7 +10,6 @@ import {
   RadialGradientSizeType,
   RadialGradientType,
 } from "elf/editor/types/model";
-import { Length, Position } from "@elf-framework/editor";
 import { parseOneValue } from "elf/utils/css-function-parser";
 
 const DEFINED_POSITIONS = {

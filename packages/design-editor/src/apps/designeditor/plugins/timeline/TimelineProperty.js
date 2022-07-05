@@ -1,3 +1,4 @@
+import { BaseProperty } from "@elf-framework/editor";
 import {
   DRAGOVER,
   DROP,
@@ -16,8 +17,6 @@ import TimelinePlayControl from "./timeline/TimelinePlayControl";
 import TimelineTopToolbar from "./timeline/TimelineTopToolbar";
 import TimelineValueEditor from "./timeline/TimelineValueEditor";
 import TimelineAnimationProperty from "./TimelineAnimationProperty";
-
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class TimelineProperty extends BaseProperty {
   components() {

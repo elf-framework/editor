@@ -1,7 +1,5 @@
+import { EditorElement, Length } from "@elf-framework/editor";
 import { LOAD, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
-
-
-import { EditorElement, Length } from "@elf-framework/editor"
 
 export default class GridGapEditor extends EditorElement {
   initState() {

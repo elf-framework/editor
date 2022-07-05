@@ -1,5 +1,3 @@
-import { mat4, vec3 } from "gl-matrix";
-
 import {
   POINTERSTART,
   POINTEROVER,
@@ -8,6 +6,7 @@ import {
   SUBSCRIBE,
   clone,
 } from "@elf-framework/sapa";
+import { mat4, vec3 } from "gl-matrix";
 
 import "./SelectionView.scss";
 
@@ -32,8 +31,8 @@ import {
   MOVE,
 } from "elf/editor/types/event";
 import { ResizingMode } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 var directionType = {
   1: "to top left",

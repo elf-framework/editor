@@ -7,11 +7,10 @@ import {
   isString,
   createComponent,
 } from "@elf-framework/sapa";
-
-import "./ComponentProperty.scss";
-
 import { REFRESH_SELECTION } from "apps/blankeditor/types/event";
 import { BaseProperty } from "elf/editor/ui/property/BaseProperty";
+
+import "./ComponentProperty.scss";
 
 export default class ComponentProperty extends BaseProperty {
   getClassName() {

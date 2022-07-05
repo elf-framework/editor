@@ -1,6 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { clone } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 /**
  * 상수 정리

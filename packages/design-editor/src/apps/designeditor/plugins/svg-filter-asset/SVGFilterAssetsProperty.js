@@ -3,10 +3,11 @@ import { LOAD, CLICK, INPUT, DEBOUNCE, SUBSCRIBE } from "@elf-framework/sapa";
 import "./SVGFilterAssetsProperty.scss";
 
 import { uuidShort } from "elf/core/math";
-import {iconUse} from "@elf-framework/editor";
+
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { SVGFilter } from "elf/editor/property-parser/SVGFilter";
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class SVGFilterAssetsProperty extends BaseProperty {
   getTitle() {
@@ -63,15 +64,19 @@ export default class SVGFilterAssetsProperty extends BaseProperty {
             </div>
           </div>
           <div class='tools'>
-            <button type="button" class='copy'>${iconUse('copy')}</button>          
-            <button type="button" class='remove'>${iconUse('remove')}</button>
+            <button type="button" class='copy'>${iconUse(
+              "copy"
+            )}</button>          
+            <button type="button" class='remove'>${iconUse("remove")}</button>
           </div>
         </div>
       `;
     });
 
     results.push(
-      `<div class='add-svgfilter-item'><button type="button">${iconUse('add')}</button></div>`
+      `<div class='add-svgfilter-item'><button type="button">${iconUse(
+        "add"
+      )}</button></div>`
     );
 
     return results;

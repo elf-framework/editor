@@ -9,6 +9,7 @@
 @import "./ui/radio.scss";          // radio
 @import "./ui/checkbox.scss";       // checkbox
 @import "./ui/menu.scss";           // menu
+@import "./ui/option-menu.scss";    // option menu
 @import "./ui/toolbar.scss";        // toolbar
 @import "./ui/tools.scss";          // tools
 @import "./ui/notification.scss";   // notification
@@ -19,4 +20,11 @@
 @import "./ui/tooltip.scss";
 @import "./ui/tabstrip.scss";
 @import "./ui/layout.scss";
+@import "./ui/flex.scss";           // flex layout
+@import "./ui/grid.scss";
 @import "./ui/input-editor.scss";
+@import "./ui/input-paint.scss";
+@import "./ui/virtual-scroll.scss";
+@import "./ui/layer.scss";
+@import "./ui/color-view.scss";
+@import "./ui/color-mixer.scss";

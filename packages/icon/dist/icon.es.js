@@ -1411,7 +1411,7 @@ var iconList = {
   icons: icons$1,
   registIcon: registIcon$1
 };
-function iconUse(name, transform2 = "", opt = { width: 24, height: 24 }) {
+function iconUse(name) {
   if (!name)
     return "";
   if (!iconList.icons[name]) {

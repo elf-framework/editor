@@ -1,6 +1,7 @@
 import * as Color from "@elf-framework/color";
+import { Length } from "@elf-framework/editor";
+
 import { STRING_TO_CSS } from "elf/core/func";
-import { Length } from "@elf-framework/editor"
 
 var BorderStyles = {
   none: true,

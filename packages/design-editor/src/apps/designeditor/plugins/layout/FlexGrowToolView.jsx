@@ -1,4 +1,11 @@
-import { CONFIG, DOMDIFF, LOAD, POINTERSTART, SUBSCRIBE, THROTTLE } from "@elf-framework/sapa";
+import {
+  CONFIG,
+  DOMDIFF,
+  LOAD,
+  POINTERSTART,
+  SUBSCRIBE,
+  THROTTLE,
+} from "@elf-framework/sapa";
 
 import "./FlexGrowToolView.scss";
 
@@ -10,8 +17,8 @@ import {
   UPDATE_CANVAS,
 } from "elf/editor/types/event";
 import { FlexDirection, Layout, ResizingMode } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 export default class FlexGrowToolView extends EditorElement {
   template() {

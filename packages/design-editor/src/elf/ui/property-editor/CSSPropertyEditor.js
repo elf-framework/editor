@@ -10,9 +10,7 @@ import {
 
 import "./CSSPropertyEditor.scss";
 
-import { iconUse } from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+import { iconUse, EditorElement, Length } from "@elf-framework/editor";
 
 export default class CSSPropertyEditor extends EditorElement {
   initState() {
@@ -42,7 +40,7 @@ export default class CSSPropertyEditor extends EditorElement {
           <label>${this.$i18n("css.property.editor.properties")}</label>
           <div class='tools'>
             ${this.makePropertySelect()}
-            <button type="button" ref='$addProperty'>${iconUse('add')}</button>
+            <button type="button" ref='$addProperty'>${iconUse("add")}</button>
           </div>
         </div>
         <div class='input grid-1 css-property-list' ref='$property'></div>

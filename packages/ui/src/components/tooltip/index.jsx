@@ -1,9 +1,17 @@
-import { UIElement, classnames, CLICK, POINTERENTER, IF, POINTERLEAVE } from "@elf-framework/sapa";
+import {
+  UIElement,
+  classnames,
+  CLICK,
+  POINTERENTER,
+  IF,
+  POINTERLEAVE,
+  Dom,
+} from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap('--elf--tooltip', {
+const cssProperties = makeStyleMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -15,19 +23,23 @@ const cssProperties = makeStyleMap('--elf--tooltip', {
   hgap: true,
   vgap: true,
   delay: true,
-})
+});
 
 export class Tooltip extends UIElement {
-
   initState() {
     return {
       trigger: this.props.trigger || "hover",
       show: this.props.show || false,
-    }    
+    };
   }
 
   template() {
-    const { style = {}, message = "", content, position = "bottom" } = this.props;
+    const {
+      style = {},
+      message = "",
+      content,
+      position = "bottom",
+    } = this.props;
     const { show } = this.state;
 
     const styleObject = {
@@ -39,36 +51,30 @@ export class Tooltip extends UIElement {
 
     return (
       <div class="elf--tooltip" {...styleObject}>
-        <div class="elf--tooltip-content">
-          {content}
-        </div>
-        {(show || this.props.show) ? (
+        <div class="elf--tooltip-content">{content}</div>
+        {show || this.props.show ? (
           <div class="elf--tooltip-message">
             <div class="arrow"></div>
-            <div class="elf--toolltip-message-content">
-              {message}
-            </div>
-
+            <div class="elf--toolltip-message-content">{message}</div>
           </div>
         ) : undefined}
       </div>
     );
   }
 
-  open () {
-
+  open() {
     this.setState({
       show: true,
     });
   }
 
-  close () {
+  close() {
     this.setState({
       show: false,
     });
   }
 
-  toggle () {
+  toggle() {
     this.setState({
       show: !this.state.show,
     });
@@ -83,15 +89,15 @@ export class Tooltip extends UIElement {
     return true;
   }
 
-  checkTriggerClick () {
-    return this.state.trigger === 'click';
+  checkTriggerClick() {
+    return this.state.trigger === "click";
   }
 
-  checkTriggerOver () {
-    return this.state.trigger === 'hover';
+  checkTriggerOver() {
+    return this.state.trigger === "hover";
   }
 
-  [POINTERENTER('$el') + IF('checkTriggerOver')] () {
+  [POINTERENTER("$el") + IF("checkTriggerOver")]() {
     this.open();
   }
 
@@ -101,16 +107,15 @@ export class Tooltip extends UIElement {
     // pointerout 한 최상위 target 이 현재 메뉴가 아닐 때 메뉴를 닫는다.
     if (!$menu) return true;
 
-    // 해당 객체가 아닐 때 
+    // 해당 객체가 아닐 때
     return this.$el.is($menu) === false;
   }
 
-  [POINTERLEAVE('$el') + IF('checkTriggerOver')] (e) {
+  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
     this.close();
-  }  
+  }
 
-
-  [CLICK("$el") + IF("checkClickable") + IF('checkTriggerClick')](e) {
+  [CLICK("$el") + IF("checkClickable") + IF("checkTriggerClick")]() {
     this.toggle();
   }
 }

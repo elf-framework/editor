@@ -10,7 +10,9 @@ export default {
   execute: (editor, obj = {}, center = null) => {
     var project = editor.context.selection.currentProject;
     if (!project) {
-      project = editor.add(editor.context.modelManager.createModel({ itemType: "project" }));
+      project = editor.add(
+        editor.context.modelManager.createModel({ itemType: "project" })
+      );
 
       editor.context.selection.selectProject(project);
     }

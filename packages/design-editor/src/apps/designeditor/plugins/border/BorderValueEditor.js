@@ -2,10 +2,10 @@ import { SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
 
 import "./BorderValueEditor.scss";
 
-import { iconUse, EditorElement } from "@elf-framework/editor";
+import { iconUse, EditorElement, Length } from "@elf-framework/editor";
+
 import { Border } from "elf/editor/property-parser/Border";
 import { BorderStyle } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
 
 const borderStyleList = [
   BorderStyle.NONE,

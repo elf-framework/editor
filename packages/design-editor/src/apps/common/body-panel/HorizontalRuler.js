@@ -1,5 +1,3 @@
-import { vec3 } from "gl-matrix";
-
 import {
   BIND,
   CONFIG,
@@ -10,6 +8,7 @@ import {
   DOMDIFF,
   MOUSEOVER,
 } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./HorizontalRuler.scss";
 
@@ -24,7 +23,6 @@ import {
 } from "elf/editor/types/event";
 
 import { EditorElement } from "@elf-framework/editor";
-
 
 let pathString = [];
 

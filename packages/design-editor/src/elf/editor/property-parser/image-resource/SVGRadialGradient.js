@@ -1,3 +1,4 @@
+import { Length } from "@elf-framework/editor";
 import { mat3, vec3 } from "gl-matrix";
 
 import { SVGGradient } from "./SVGGradient";
@@ -10,7 +11,6 @@ import {
   RadialGradientType,
   SpreadMethodType,
 } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
 import { parseOneValue } from "elf/utils/css-function-parser";
 
 const RadialTypeList = [RadialGradientType.CIRCLE, RadialGradientType.ELLIPSE];

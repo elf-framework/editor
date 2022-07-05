@@ -8,79 +8,93 @@ start(function () {
       <div>
         <h1>Type</h1>
         <div style="display: flex; align-items: center;">
-          <div style={{padding: 10}}>
-            <Button>Hello</Button>
-            <label>Default</label>
+          <div style={{ padding: 10 }}>
+            <Button onClick={() => this.setState({
+              value: 1
+            })}>Hello</Button>
+            <div>Default</div>
           </div>
-          <div style={{padding: 10}}>
+          <div style={{ padding: 10 }}>
             <Button type="primary">Hello</Button>
-            <label>Primary</label>
-          </div>        
-          <div style={{padding: 10}}>
-            <Button type="primary" destructive={true}>Hello</Button>
-            <label>Primary Destructive</label>
-          </div>                
-          <div style={{padding: 10}}>
+            <div>Primary</div>
+          </div>
+          <div style={{ padding: 10 }}>
+            <Button type="primary" destructive={true}>
+              Hello
+            </Button>
+            <div>Primary Destructive</div>
+          </div>
+          <div style={{ padding: 10 }}>
             <Button type="outline">Hello</Button>
-            <label>Outline</label>
-          </div>      
-          <div style={{padding: 10}}>
+            <div>Outline</div>
+          </div>
+          <div style={{ padding: 10 }}>
             <LinkButton>Link</LinkButton>
-            <label>link</label>
-          </div>      
-        </div>                  
+            <div>link</div>
+          </div>
+        </div>
       </div>
       <div>
         <h1>Size</h1>
         <div style="display: flex; align-items: center;">
-          <div style={{padding: 10}}>
-            <Button type="outline" size="large">Hello</Button>
-            <label>large</label>
-          </div>       
-          <div style={{padding: 10}}>
+          <div style={{ padding: 10 }}>
+            <Button type="outline" size="large">
+              Hello
+            </Button>
+            <div>large</div>
+          </div>
+          <div style={{ padding: 10 }}>
             <Button type="outline">medium</Button>
-            <label>medium</label>
-          </div>       
-          <div style={{padding: 10}}>
-            <Button type="outline" size="small">small</Button>
-            <label>small</label>
-          </div>                     
-        </div>          
+            <div>medium</div>
+          </div>
+          <div style={{ padding: 10 }}>
+            <Button type="outline" size="small">
+              small
+            </Button>
+            <div>small</div>
+          </div>
+        </div>
       </div>
       <div>
         <h1>Disabled</h1>
         <div style="display: flex; align-items: center;">
-          <div style={{padding: 10}}>
+          <div style={{ padding: 10 }}>
             <Button disabled={true}>Disabled</Button>
-            <label>Disabled</label>
-          </div>                   
-        </div>        
+            <div>Disabled</div>
+          </div>
+        </div>
       </div>
       <div>
         <h1>Shape</h1>
         <div style="display: flex; align-items: center;">
-          <div style={{padding: 10}}>
-            <Button type="primary" shape="round">Primary</Button>
-            <label>Round</label>
-          </div>                   
-          <div style={{padding: 10}}>
-            <Button type="primary" shape="circle">C</Button>
-            <label>Circle</label>
-          </div>                    
-        </div>               
+          <div style={{ padding: 10 }}>
+            <Button type="primary" shape="round">
+              Primary
+            </Button>
+            <div>Round</div>
+          </div>
+          <div style={{ padding: 10 }}>
+            <Button type="primary" shape="circle">
+              C
+            </Button>
+            <div>Circle</div>
+          </div>
+        </div>
       </div>
       <div>
         <h1>Style</h1>
         <div style="display:flex">
-          <div style={{padding: 10}}>
-            <Button style={{borderColor: "red"}}>Primary</Button>
-            <label>Border Color</label>
+          <div style={{ padding: 10 }}>
+            <Button style={{ borderColor: "red" }}>Primary</Button>
+            <div>Border Color</div>
           </div>
-          <div style={{padding: 10}}>
-            <Button type="primary" style={{backgroundColor: "red"}}>Primary</Button>
-            <label>Background Color</label>
-          </div>        
-        </div>        
+          <div style={{ padding: 10 }}>
+            <Button type="primary" style={{ backgroundColor: "red" }}>
+              Primary
+            </Button>
+            <div>Background Color</div>
+          </div>
+        </div>
       </div>
     </div>
   );

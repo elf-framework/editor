@@ -1,6 +1,6 @@
-import "./BlankStatusbar.scss";
-
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
+
+import "./BlankStatusbar.scss";
 
 export default class BlankStatusbar extends EditorElement {
   template() {

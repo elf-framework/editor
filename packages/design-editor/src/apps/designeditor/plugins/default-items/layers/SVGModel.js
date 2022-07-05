@@ -1,12 +1,12 @@
+import * as Color from "@elf-framework/color";
+import { Length } from "@elf-framework/editor";
 import { vec3 } from "gl-matrix";
 
 import { rectToVerties } from "elf/core/collision";
-import * as Color from "@elf-framework/color";
 import { vertiesMap } from "elf/core/math";
 import { LayerModel } from "elf/editor/model/LayerModel";
 import { SVGFill } from "elf/editor/property-parser/SVGFill";
 import { GradientType } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
 
 const expectedProperties = [
   "appearance",

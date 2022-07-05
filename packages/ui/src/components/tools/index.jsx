@@ -1,5 +1,15 @@
-import { UIElement, classnames, isFunction, CLICK, IF, Dom, POINTEROVER, POINTERLEAVE } from "@elf-framework/sapa";
+import {
+  UIElement,
+  classnames,
+  isFunction,
+  CLICK,
+  IF,
+  Dom,
+  POINTEROVER,
+  POINTERLEAVE,
+} from "@elf-framework/sapa";
 
+import { ArrowIcon } from "../../icon/arrow";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
 import { Menu } from "../menu/index";
@@ -16,8 +26,8 @@ function makeToolsItem(items = []) {
 
     if (it.type === ToolsItemType.CUSTOM) {
       return <ToolsCustomItem ref={ref} {...it} />;
-    } 
-    
+    }
+
     if (it.type === ToolsItemType.MENU) {
       return <ToolsMenuItem ref={ref} {...it} />;
     }
@@ -91,13 +101,22 @@ class ToolsItem extends UIElement {
 
 export class ToolsCustomItem extends ToolsItem {
   template() {
-    return <div class="elf--tools-item custom" >{this.props.render?.()}</div>;
+    return <div class="elf--tools-item custom">{this.props.render?.()}</div>;
   }
 }
 
 export class ToolsMenuItem extends ToolsItem {
   initState() {
-    const { title = "", icon, selected, disabled, opened, items, direction, menuStyle } = this.props;
+    const {
+      title = "",
+      icon,
+      selected,
+      disabled,
+      opened,
+      items,
+      direction,
+      menuStyle,
+    } = this.props;
 
     return {
       title,
@@ -108,14 +127,22 @@ export class ToolsMenuItem extends ToolsItem {
       direction,
       disabled,
       menuStyle,
-      rootClose: this.close.bind(this)
+      rootClose: this.close.bind(this),
     };
   }
 
   template() {
-    const { title = "", icon, disabled, items = [], opened = false, direction = "left", rect, menuStyle } = this.state;
+    const {
+      title = "",
+      icon,
+      disabled,
+      items = [],
+      opened = false,
+      direction = "left",
+      menuStyle,
+    } = this.state;
 
-    const hasItems = items.length > 0;    
+    const hasItems = items.length > 0;
 
     return (
       <div
@@ -132,14 +159,12 @@ export class ToolsMenuItem extends ToolsItem {
             <span class="menu-title">{title}</span>
           ) : undefined}
           {hasItems ? (
-            <span class={classnames("arrow", {opened: opened})}>
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-              </svg>
+            <span class={classnames("arrow", { opened: opened })}>
+              <ArrowIcon />
             </span>
           ) : undefined}
         </button>
-        {(opened && !disabled) ? (
+        {opened && !disabled ? (
           <div class="menu-area">
             <div class="arrow"></div>
             <Menu
@@ -164,26 +189,27 @@ export class ToolsMenuItem extends ToolsItem {
     }
   }
 
-  open () {
-
+  open() {
     this.setState({
       rect: this.$el.rect(),
       opened: true,
     });
   }
 
-  close () {
+  close() {
     this.setState({
       opened: false,
     });
   }
 
-  toggle () {
-
+  toggle() {
     if (!this.state.opened) {
-      this.setState({
-        rect: this.$el.rect(),
-      }, false)
+      this.setState(
+        {
+          rect: this.$el.rect(),
+        },
+        false
+      );
     }
 
     this.setState({
@@ -200,17 +226,17 @@ export class ToolsMenuItem extends ToolsItem {
     return true;
   }
 
-  checkTriggerClick () {
+  checkTriggerClick() {
     const { trigger = "click" } = this.props;
 
-    return trigger === 'click';
+    return trigger === "click";
   }
 
-  checkTriggerOver () {
-    return this.props.trigger === 'hover';
+  checkTriggerOver() {
+    return this.props.trigger === "hover";
   }
 
-  [POINTEROVER('$el') + IF('checkTriggerOver')] () {
+  [POINTEROVER("$el") + IF("checkTriggerOver")]() {
     this.open();
   }
 
@@ -220,20 +246,19 @@ export class ToolsMenuItem extends ToolsItem {
     // pointerout 한 최상위 target 이 현재 메뉴가 아닐 때 메뉴를 닫는다.
     if (!$menu) return true;
 
-    // 해당 객체가 아닐 때 
+    // 해당 객체가 아닐 때
     return this.$el.is($menu) === false;
   }
 
-  [POINTERLEAVE('$el') + IF('checkTriggerOver')] (e) {
-    this.close();
-  }  
-
-
-  [CLICK("document") + IF("checkClickable") + IF("checkNotInMenu")](e) {
+  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
     this.close();
   }
 
-  [CLICK("$el") + IF("checkClickable") + IF('checkTriggerClick')](e) {
+  [CLICK("document") + IF("checkClickable") + IF("checkNotInMenu")]() {
+    this.close();
+  }
+
+  [CLICK("$el") + IF("checkClickable") + IF("checkTriggerClick")](e) {
     if (Dom.create(e.target).hasClass("arrow")) {
       this.toggle();
 
@@ -250,11 +275,11 @@ export class ToolsMenuItem extends ToolsItem {
   }
 }
 
-const cssProperties = makeStyleMap('--elf--tools', {
+const cssProperties = makeStyleMap("--elf--tools", {
   backgroundColor: true,
   color: true,
   height: true,
-})
+});
 
 export class Tools extends UIElement {
   template() {

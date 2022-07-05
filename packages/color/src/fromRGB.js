@@ -1,7 +1,6 @@
 import { XYZtoLAB } from "./fromLAB";
 import { round } from "./utils/index";
 
-
 /**
  * @method RGBtoHSV
  *

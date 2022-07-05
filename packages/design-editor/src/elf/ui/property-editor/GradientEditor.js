@@ -16,7 +16,8 @@ import { BackgroundImage } from "elf/editor/property-parser/BackgroundImage";
 import { Gradient } from "elf/editor/property-parser/image-resource/Gradient";
 import { END, MOVE } from "elf/editor/types/event";
 import { GradientType, RadialGradientType } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
+
+import { EditorElement } from "@elf-framework/editor";
 
 export default class GradientEditor extends EditorElement {
   initState() {

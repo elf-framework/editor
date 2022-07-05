@@ -1,6 +1,6 @@
-import { mat4 } from "gl-matrix";
-
+import { Length } from "@elf-framework/editor";
 import { Dom, isNotUndefined } from "@elf-framework/sapa";
+import { mat4 } from "gl-matrix";
 
 import ItemRender from "./ItemRender";
 
@@ -9,7 +9,6 @@ import { BackgroundImage } from "elf/editor/property-parser/BackgroundImage";
 import { Border } from "elf/editor/property-parser/Border";
 import { ClipPath } from "elf/editor/property-parser/ClipPath";
 import { Pattern } from "elf/editor/property-parser/Pattern";
-import { Length } from "@elf-framework/editor"
 
 const ZERO_CONFIG = {};
 

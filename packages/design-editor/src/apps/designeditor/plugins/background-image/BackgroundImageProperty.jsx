@@ -11,6 +11,7 @@ import {
 import "./BackgroundImageProperty.scss";
 
 import { BaseProperty, iconUse } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION, UPDATE_CANVAS } from "elf/editor/types/event";
 
 export default class BackgroundImageProperty extends BaseProperty {

@@ -1,5 +1,3 @@
-import { mat4, vec3 } from "gl-matrix";
-
 import {
   DOMDIFF,
   KEYUP,
@@ -12,6 +10,7 @@ import {
   SUBSCRIBE,
   DEBOUNCE,
 } from "@elf-framework/sapa";
+import { mat4, vec3 } from "gl-matrix";
 
 import "./GradientEditorView.scss";
 
@@ -35,8 +34,9 @@ import {
   RadialGradientType,
   TimingFunction,
 } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
+
 import { parseOneValue } from "elf/utils/css-function-parser";
 
 var radialTypeList = [

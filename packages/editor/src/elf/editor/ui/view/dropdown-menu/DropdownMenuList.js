@@ -1,3 +1,6 @@
+import { iconUse } from "@elf-framework/icon";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
+
 import { Divider } from "./Divider";
 import { DropdownCheckboxMenuItem } from "./DropdownCheckboxMenuItem";
 import { DropdownCustomMenuItem } from "./DropdownCustomMenuItem";
@@ -7,8 +10,6 @@ import { DropdownMenuItem } from "./DropdownMenuItem";
 import { DropdownTextMenuItem } from "./DropdownTextMenuItem";
 import { makeMenuItem } from "./makeMenuItem";
 
-import { iconUse } from "@elf-framework/icon";
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 export class DropdownMenuList extends EditorElement {
   components() {
     return {

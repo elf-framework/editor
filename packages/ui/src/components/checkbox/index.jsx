@@ -12,21 +12,26 @@ const cssProperties = {
   height: "--elf--checkbox-height",
   padding: "--elf--checkbox-padding",
   borderRadius: "--elf--checkbox-border-radius",
-}
-
-
+};
 
 export class Checkbox extends UIElement {
-
   template() {
-    const { disabled, style = {}, value, content, name, checked = false, onChange } = this.props;
+    const {
+      disabled,
+      style = {},
+      value,
+      content,
+      name,
+      checked = false,
+      onChange,
+    } = this.props;
 
     const styleObject = {
       class: classnames([
         "elf--checkbox",
         {
-          disabled
-        }
+          disabled,
+        },
       ]),
       style: {
         ...propertyMap(style, cssProperties),
@@ -36,19 +41,24 @@ export class Checkbox extends UIElement {
     return (
       <div {...styleObject}>
         <label>
-          <input ref="$input" type="checkbox" {...{
-            value,
-            name,
-            disabled: disabled ? "disabled" : undefined,
-            checked: checked ? "checked" : undefined,
-          }} onChange={(e) => onChange?.(e, value)} />
-          {content} 
+          <input
+            ref="$input"
+            type="checkbox"
+            {...{
+              value,
+              name,
+              disabled: disabled ? "disabled" : undefined,
+              checked: checked ? "checked" : undefined,
+            }}
+            onChange={(e) => onChange?.(e, value)}
+          />
+          {content}
         </label>
       </div>
     );
   }
 
-  get checked()  {
+  get checked() {
     return this.refs.$input.checked();
   }
 
@@ -58,7 +68,6 @@ export class Checkbox extends UIElement {
 }
 
 export class CheckboxGroup extends UIElement {
-
   initState() {
     return {
       value: this.props.value || [],
@@ -66,12 +75,10 @@ export class CheckboxGroup extends UIElement {
   }
 
   template() {
-    const { disabled, style = {}, name, value, options = [], onChange, contentChildren } = this.props;
+    const { disabled, style = {}, value, options = [], onChange } = this.props;
 
     const styleObject = {
-      class: classnames([
-        "elf--check-group",
-      ]),
+      class: classnames(["elf--check-group"]),
       disabled: disabled ? "disabled" : undefined,
       style: {
         ...propertyMap(style, cssProperties),
@@ -85,7 +92,7 @@ export class CheckboxGroup extends UIElement {
             <Checkbox
               ref={`$${index}`}
               value={it.value}
-              onChange={(e, v) => {
+              onChange={(e) => {
                 onChange(e, this.getValues());
               }}
               checked={value.includes(it.value)}
@@ -100,17 +107,17 @@ export class CheckboxGroup extends UIElement {
   }
 
   getValues() {
-    const values = []
-    this.eachChildren(it => {
+    const values = [];
+    this.eachChildren((it) => {
       if (it.checked) {
         values.push(it.value);
       }
-    })
+    });
 
     return values;
   }
 
-  get disabled () {
+  get disabled() {
     return this.props.disabled;
   }
 

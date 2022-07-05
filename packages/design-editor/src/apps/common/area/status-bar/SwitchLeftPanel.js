@@ -2,8 +2,7 @@ import { CLICK } from "@elf-framework/sapa";
 
 import "./SwitchLeftPanel.scss";
 
-import { iconUse } from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 export default class SwitchLeftPanel extends EditorElement {
   template() {

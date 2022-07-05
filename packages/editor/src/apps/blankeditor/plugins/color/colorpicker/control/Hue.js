@@ -1,5 +1,4 @@
 import { BIND, POINTERSTART } from "@elf-framework/sapa";
-
 import { END, MOVE } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";

@@ -1,10 +1,9 @@
-import { UIElement, classnames  } from "@elf-framework/sapa";
+import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
 
-
-const cssProperties = makeStyleMap('--elf--tabstrip', {
+const cssProperties = makeStyleMap("--elf--tabstrip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -14,13 +13,12 @@ const cssProperties = makeStyleMap('--elf--tabstrip', {
   hgap: true,
   vgap: true,
   delay: true,
-})
+});
 export class TabStrip extends UIElement {
-
   initState() {
     return {
-      items : this.props.items || []
-    }
+      items: this.props.items || [],
+    };
   }
 
   template() {
@@ -37,9 +35,14 @@ export class TabStrip extends UIElement {
     return (
       <div class="elf--tabstrip" {...styleObject}>
         <div class="elf--tabstrip-content">
-          {items.map(it => {
+          {items.map((it) => {
             return (
-              <div class={classnames("elf--tabstrip-item", { selected: !!it.selected } )} onClick={(e) => this.setSelectedValue(e, it.value)}>
+              <div
+                class={classnames("elf--tabstrip-item", {
+                  selected: !!it.selected,
+                })}
+                onClick={(e) => this.setSelectedValue(e, it.value)}
+              >
                 {it.title}
               </div>
             );
@@ -47,12 +50,8 @@ export class TabStrip extends UIElement {
         </div>
         {this.props.tools?.length ? (
           <div class="elf--tabstrip-tools">
-            {this.props.tools.map(it => {
-              return (
-                <div class="elf--tabstrip-tool">
-                  {it}
-                </div>
-              );
+            {this.props.tools.map((it) => {
+              return <div class="elf--tabstrip-tool">{it}</div>;
             })}
           </div>
         ) : undefined}
@@ -61,24 +60,22 @@ export class TabStrip extends UIElement {
   }
 
   get selectedValue() {
-    return this.state.items.find(it => it.selected)?.value;
+    return this.state.items.find((it) => it.selected)?.value;
   }
 
   setSelectedValue(e, selectedValue) {
-
     const oldSelectedValue = this.selectedValue;
 
     this.setState({
-      items: this.state.items.map(it => {
+      items: this.state.items.map((it) => {
         it.selected = it.value === selectedValue;
 
         return it;
-      })
-    })
+      }),
+    });
 
     if (oldSelectedValue !== selectedValue) {
       this.props.onChange && this.props.onChange(e, this);
     }
   }
-
 }

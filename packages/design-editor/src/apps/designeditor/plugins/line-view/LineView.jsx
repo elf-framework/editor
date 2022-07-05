@@ -1,4 +1,10 @@
-import { CONFIG, SUBSCRIBE, LOAD, DOMDIFF, POINTERSTART } from "@elf-framework/sapa";
+import {
+  CONFIG,
+  SUBSCRIBE,
+  LOAD,
+  DOMDIFF,
+  POINTERSTART,
+} from "@elf-framework/sapa";
 
 import "./LineView.scss";
 
@@ -8,7 +14,8 @@ import {
   MOVE,
   END,
 } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
+
+import { EditorElement } from "@elf-framework/editor";
 
 export default class LineView extends EditorElement {
   template() {

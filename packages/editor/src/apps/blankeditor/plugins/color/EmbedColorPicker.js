@@ -1,5 +1,4 @@
 import { SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
-
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export default class EmbedColorPicker extends EditorElement {

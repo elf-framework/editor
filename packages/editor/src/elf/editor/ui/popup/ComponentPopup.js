@@ -6,12 +6,10 @@ import {
   isFunction,
   createComponent,
 } from "@elf-framework/sapa";
-
-import "./ComponentPopup.scss";
-
 import { SHOW_COMPONENT_POPUP } from "apps/blankeditor/types/event";
 import { BasePopup } from "elf/editor/ui/popup/BasePopup";
 
+import "./ComponentPopup.scss";
 
 export default class ComponentPopup extends BasePopup {
   getClassName() {

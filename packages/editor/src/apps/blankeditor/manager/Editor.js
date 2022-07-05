@@ -1,4 +1,6 @@
 import { BaseStore, registAlias, registElement } from "@elf-framework/sapa";
+import { uuid } from "elf/core/math";
+import theme from "elf/editor/ui/theme";
 
 import commands from "../commands";
 import { AssetManager } from "./manager-items/AssetManager";
@@ -19,9 +21,6 @@ import { ShortCutManager } from "./manager-items/ShortCutManager";
 import { StateManager } from "./manager-items/StateManager";
 import { StorageManager } from "./manager-items/StorageManager";
 import { ViewportManager } from "./manager-items/ViewportManager";
-
-import { uuid } from "elf/core/math";
-import theme from "elf/editor/ui/theme";
 
 export class Editor {
   /**
@@ -420,8 +419,8 @@ export class Editor {
   registerIcon(itemType, iconOrFunction) {
     this.context.icon.registerIcon(itemType, iconOrFunction);
   }
-  
-  registerIconList (obj = {}) {
+
+  registerIconList(obj = {}) {
     this.context.icon.registerIconList(obj);
   }
   /**

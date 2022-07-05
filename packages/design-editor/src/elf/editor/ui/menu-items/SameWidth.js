@@ -1,7 +1,5 @@
 import MenuItem from "./MenuItem";
 
-
-
 export default class SameWidth extends MenuItem {
   getIconString() {
     return "horizontal_distribute";

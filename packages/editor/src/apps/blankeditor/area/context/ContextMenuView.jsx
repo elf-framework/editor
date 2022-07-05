@@ -1,10 +1,9 @@
 import { LOAD, CONFIG, BIND, Dom, POINTERSTART } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
+import { Length } from "elf/editor/unit/Length";
 
 import ContextMenuRenderer from "./ContextMenuRenderer";
 import "./ContextMenuView.scss";
-
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
-import { Length } from "elf/editor/unit/Length";
 
 export class ContextMenuView extends EditorElement {
   template() {

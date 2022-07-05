@@ -1,7 +1,8 @@
+import * as Color from "@elf-framework/color";
+
 import { SampleLayer } from "./SampleLayer";
 import SampleRender from "./SampleRender";
 
-import * as Color from "@elf-framework/color";
 import { CSS_TO_STRING } from "elf/core/func";
 
 /**

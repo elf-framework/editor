@@ -1,3 +1,4 @@
+import { BaseProperty, iconUse } from "@elf-framework/editor";
 import {
   LOAD,
   CLICK,
@@ -8,7 +9,6 @@ import {
   registElement,
 } from "@elf-framework/sapa";
 
-import { BaseProperty, iconUse } from "@elf-framework/editor";
 import "./VideoAssetsProperty.scss";
 
 import revokeObjectUrl from "elf/editor/util/revokeObjectUrl";
@@ -52,8 +52,10 @@ export default class VideoAssetsProperty extends BaseProperty {
             <img src="${video.local}" />
           </div>
           <div class='tools'>
-            <button type="button" class='copy'>${iconUse('copy')}</button>          
-            <button type="button" class='remove'>${iconUse('remove')}</button>
+            <button type="button" class='copy'>${iconUse(
+              "copy"
+            )}</button>          
+            <button type="button" class='remove'>${iconUse("remove")}</button>
           </div>
         </div>
       `;
@@ -64,7 +66,7 @@ export default class VideoAssetsProperty extends BaseProperty {
         ${results.join("")}
         <div class='add-video-item'>
           <input type='file' accept='video/*' ref='$file' />
-          <button type="button">${iconUse('add')}</button>
+          <button type="button">${iconUse("add")}</button>
         </div>        
       </div>
 

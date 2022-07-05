@@ -2,7 +2,7 @@ import { CLICK, LOAD, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import "./DirectionEditor.scss";
 
-import { iconUse, EditorElement, DirectionLength } from "@elf-framework/editor"
+import { iconUse, EditorElement, DirectionLength } from "@elf-framework/editor";
 
 const typeList = [
   { key: "top", title: "Top" },
@@ -52,9 +52,11 @@ export default class DirectionEditor extends EditorElement {
     return /*html*/ `
       <div class="property-item direction-item">
         <div class="radius-selector" data-selected-value="${selectedValue}" ref="$selector">
-          <button type="button" data-value="all">${iconUse('border_all')}</button>
+          <button type="button" data-value="all">${iconUse(
+            "border_all"
+          )}</button>
           <button type="button" data-value="partitial">
-            ${iconUse('border_inner')}
+            ${iconUse("border_inner")}
           </button>
         </div>
         <div class="radius-value">

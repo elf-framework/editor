@@ -9,7 +9,7 @@ import {
 
 import "./BackgroundImagePositionPopup.scss";
 
-import { BasePopup } from "@elf-framework/editor"
+import { BasePopup } from "@elf-framework/editor";
 
 export default class BackgroundImagePositionPopup extends BasePopup {
   get localeKey() {

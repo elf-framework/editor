@@ -10,10 +10,10 @@ import {
 
 import "./DefaultLayoutItemProperty.scss";
 
-import { iconUse } from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 import { Constraints, ConstraintsDirection } from "elf/editor/types/model";
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class DefaultLayoutItemProperty extends BaseProperty {
   getTitle() {

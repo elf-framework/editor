@@ -1,19 +1,17 @@
 import {
   LOAD,
   INPUT,
-  CLICK,
   FOCUS,
   BLUR,
   POINTERSTART,
   SUBSCRIBE_SELF,
   classnames,
 } from "@elf-framework/sapa";
-
-import "./NumberRangeEditor.scss";
-
 import { END } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";
+
+import "./NumberRangeEditor.scss";
 
 export class NumberRangeEditor extends EditorElement {
   initState() {
@@ -39,8 +37,7 @@ export class NumberRangeEditor extends EditorElement {
   }
 
   [LOAD("$body")]() {
-    var { min, max, step, label, removable, layout, compact, wide, disabled } =
-      this.state;
+    var { min, max, step, label, layout, compact, wide, disabled } = this.state;
 
     var value = +this.state.value.value.toString();
 

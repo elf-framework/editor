@@ -1,6 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { BIND, SUBSCRIBE } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./GuideLineView.scss";
 
@@ -13,6 +12,7 @@ import {
   UPDATE_CANVAS,
   REFRESH_SELECTION_TOOL,
 } from "elf/editor/types/event";
+
 import { EditorElement } from "@elf-framework/editor";
 
 const line = (source, target, className = "base-line") => {

@@ -5,7 +5,8 @@ import "./DragAreaView.scss";
 import { EditingMode } from "elf/editor/types/editor";
 import { END, MOVE } from "elf/editor/types/event";
 import { KEY_CODE } from "elf/editor/types/key";
-import { EditorElement } from "@elf-framework/editor"
+
+import { EditorElement } from "@elf-framework/editor";
 
 export default class DragAreaView extends EditorElement {
   initState() {

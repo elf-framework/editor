@@ -1,0 +1,144 @@
+.elf--layer {
+    --elf--layer-border-color: transparent;
+    --elf--layer-padding: 7px 10px;
+    --elf--layer-font-size: var(--elf--font-size, 14px);
+    --elf--layer-background-color: transparent;
+    --elf--layer-color: rgba(0, 0, 0, 0.8);
+    --elf--layer-border-radius: 4px;
+    --elf--layer-disabled-color: var(--elf--disabled-color);
+    --elf--layer-tools-min-width: 40px;
+    --elf--layer-component-color: var(--color-violet);
+    --elf--layer-component-hidden-color: rgba(123, 97, 255, 0.4);
+    --elf--layer-font-weight: 400;
+
+    display: flex;
+    align-items: center;
+    font-weight: var(--elf--layer-font-weight);
+    color: var(--elf--layer-color);
+    box-sizing: border-box;
+        
+
+    &:hover,
+    &.hover {
+        --elf--layer-border-color: rgba(24, 160, 251, 1);
+
+
+        > .container[data-component="true"] {
+            --elf--layer-border-color: var(--color-violet) !important;        
+        }
+        
+    }    
+
+    > .container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: calc(100% - 2px);
+        flex: none;
+        border:  1px solid var(--elf--layer-border-color);            
+        box-sizing: border-box;
+    
+        &[data-selected="true"] {
+            --elf--layer-background-color: #e5f4ff;
+            background-color: var(--elf--layer-background-color);        
+        }
+    
+        &[data-top-level="true"]  {
+            --elf--layer-font-weight: 700;
+    
+        }
+    
+        &[data-hidden="true"] {
+            --elf--layer-color: var(--elf--layer-disabled-color);
+    
+            svg {
+                path, use, polygon {
+                    fill: var(--elf--layer-disabled-color);
+                }
+            }
+    
+        }
+    
+        &[data-component="true"] {
+            --elf--layer-color: var(--color-violet);
+    
+    
+            svg {
+                path, use, polygon {
+                    fill: var(--elf--layer-color);
+                }
+            }
+    
+            &[data-hidden="true"] {
+                --elf--layer-color: var(--elf--layer-component-hidden-color);
+        
+                svg {
+                    path, use, polygon {
+                        fill: var(--elf--layer-component-hidden-color);
+                    }
+                }
+            }
+        }
+    
+    
+        
+        > .group {
+            flex: none;
+            display: flex;        
+            width: 16px;
+            height: 16px;
+        }
+    
+        > .icon {
+            flex: none;
+            width: 16px;
+            height: 16px;
+            display: flex;
+    
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    
+        > .text {
+            flex: 1 1 auto;
+            padding: 0px 0px 0px 16px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            user-select: none;
+            color: var(--elf--layer-color);
+            height: 100%;
+        }
+    
+        > .tools {
+            flex: none;
+            padding-right: 8px;
+            min-width: var(--elf--layer-tools-min-width);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            column-gap: 2px;
+    
+            > .lock,
+            > .visible {
+                flex: none;
+                width: 16px;
+                height: 16px;
+                display: flex;
+                align-items: center;
+                justify-items: center;
+        
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+    
+        }
+    }
+
+} 

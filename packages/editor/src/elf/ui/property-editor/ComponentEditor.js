@@ -1,3 +1,4 @@
+import { iconUse } from "@elf-framework/icon";
 import {
   CLICK,
   LOAD,
@@ -6,11 +7,9 @@ import {
   isString,
   createComponent,
 } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./ComponentEditor.scss";
-
-import { iconUse } from "@elf-framework/icon";
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export class ComponentEditor extends EditorElement {
   initState() {

@@ -1,9 +1,15 @@
-import { DOMDIFF, LOAD, SUBSCRIBE_SELF, createComponent } from "@elf-framework/sapa";
+import {
+  DOMDIFF,
+  LOAD,
+  SUBSCRIBE_SELF,
+  createComponent,
+} from "@elf-framework/sapa";
 
 import "./GridLayoutEditor.scss";
 
 import { Layout } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
+
+import { EditorElement } from "@elf-framework/editor";
 
 export default class GridLayoutEditor extends EditorElement {
   modifyData(key, value) {

@@ -1,9 +1,15 @@
-import { LOAD, CHANGE, BIND, DEBOUNCE, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
+import {
+  LOAD,
+  CHANGE,
+  BIND,
+  DEBOUNCE,
+  CLICK,
+  SUBSCRIBE,
+} from "@elf-framework/sapa";
 
 import "./SVGFilterSelectEditor.scss";
 
-import {iconUse} from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 export default class SVGFilterSelectEditor extends EditorElement {
   initState() {
@@ -23,12 +29,12 @@ export default class SVGFilterSelectEditor extends EditorElement {
             <div class='elf--svg-filter-select-editor ${hasLabel}'>
                 ${label ? `<label>${label}</label>` : ""}
                 <select ref='$options'></select>
-                <button type='button' class='open thin' ref='$open' title='Open SVG Filter Editor'>${
-                  iconUse('fullscreen')
-                }</button>
-                <button type='button' class='remove thin' ref='$remove' title='Remove'>${
-                  iconUse('remove')
-                }</button>
+                <button type='button' class='open thin' ref='$open' title='Open SVG Filter Editor'>${iconUse(
+                  "fullscreen"
+                )}</button>
+                <button type='button' class='remove thin' ref='$remove' title='Remove'>${iconUse(
+                  "remove"
+                )}</button>
             </div>
         `;
   }

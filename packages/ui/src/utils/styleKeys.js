@@ -3,14 +3,13 @@ const uppercasePattern = /([A-Z])/g;
 
 /**
  * style key convert to css key
- * 
- * backgroundColor -> background-color 
- * 
- * @param {*} key 
- * @returns 
+ *
+ * backgroundColor -> background-color
+ *
+ * @param {*} key
+ * @returns
  */
 export const convertStyleKey = (key) => {
-
   if (styleKeys[key]) {
     return styleKeys[key];
   }
@@ -20,13 +19,12 @@ export const convertStyleKey = (key) => {
   styleKeys[key] = upperKey;
 
   return upperKey;
-}
+};
 
-export function makeStyleMap (prefix, obj = {}) {
-    const newObj = {};
+export function makeStyleMap(prefix, obj = {}) {
+  const newObj = {};
 
-    Object.keys(obj).forEach((key) => {
-        newObj[key] = prefix + '-' + convertStyleKey(key);
-    })
-
+  Object.keys(obj).forEach((key) => {
+    newObj[key] = prefix + "-" + convertStyleKey(key);
+  });
 }

@@ -10,9 +10,9 @@ import {
 
 import "./PatternProperty.scss";
 
-import { iconUse } from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 export default class PatternProperty extends BaseProperty {
   getTitle() {

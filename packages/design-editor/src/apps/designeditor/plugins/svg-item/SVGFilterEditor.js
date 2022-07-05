@@ -19,13 +19,14 @@ import "./SVGFilterEditor.scss";
 
 import { mapjoin, repeat } from "elf/core/func";
 import { PathStringManager } from "elf/core/parser/PathStringManager";
-import { iconUse } from "@elf-framework/editor";
+
+import { iconUse, EditorElement } from "@elf-framework/editor";
+
 import {
   SVGFilter,
   SVGFilterSpecList,
 } from "elf/editor/property-parser/SVGFilter";
 import { END, MOVE } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
 
 const filterTypes = [
   {

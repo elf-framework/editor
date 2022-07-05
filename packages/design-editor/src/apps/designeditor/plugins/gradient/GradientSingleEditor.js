@@ -4,6 +4,7 @@ import "./GradientSingleEditor.scss";
 
 import { BackgroundImage } from "elf/editor/property-parser/BackgroundImage";
 import { GradientType, RadialGradientType } from "elf/editor/types/model";
+
 import { EditorElement } from "@elf-framework/editor";
 
 export default class GradientSingleEditor extends EditorElement {

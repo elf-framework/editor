@@ -1,5 +1,3 @@
-import { vec3 } from "gl-matrix";
-
 import {
   BIND,
   CONFIG,
@@ -14,6 +12,7 @@ import {
   Dom,
   createComponent,
 } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./CanvasView.scss";
 import DragAreaRectView from "./render-view/draw-panels/DragAreaRectView";
@@ -30,6 +29,7 @@ import {
 } from "elf/editor/types/event";
 import { KEY_CODE } from "elf/editor/types/key";
 import HTMLRenderView from "engine/html/html-render-view/HTMLRenderView";
+
 import { EditorElement } from "@elf-framework/editor";
 
 export default class CanvasView extends EditorElement {

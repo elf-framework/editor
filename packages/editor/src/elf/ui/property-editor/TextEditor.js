@@ -1,8 +1,7 @@
 import { BIND, INPUT } from "@elf-framework/sapa";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./TextEditor.scss";
-
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export class TextEditor extends EditorElement {
   initState() {

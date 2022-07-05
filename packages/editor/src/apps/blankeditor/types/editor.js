@@ -12,7 +12,6 @@ export const EditingMode = {
   HAND: "hand",
 };
 
-
 export const NotifyType = {
   ERROR: "error",
   INFO: "info",
@@ -20,7 +19,6 @@ export const NotifyType = {
   WARNING: "warning",
   ALERT: "alert",
 };
-
 
 export const MenuItemType = {
   BUTTON: "button",

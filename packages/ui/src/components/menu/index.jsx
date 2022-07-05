@@ -13,7 +13,6 @@ import {
 
 import { propertyMap } from "../../utils/propertyMap";
 
-
 const MenuItemType = {
   DIVIDER: "divider",
   GROUP: "group",
@@ -29,7 +28,13 @@ function makeMenuItem(items = [], rootClose) {
     if (isString(it) && it === "-") {
       return <DividerMenuItem ref={ref} rootClose={rootClose} />;
     } else if (isFunction(it)) {
-      return <CustomMenuItem ref={`custom${index}`} render={it} rootClose={rootClose} />;
+      return (
+        <CustomMenuItem
+          ref={`custom${index}`}
+          render={it}
+          rootClose={rootClose}
+        />
+      );
     } else if (it.type === MenuItemType.CUSTOM) {
       return <CustomMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.GROUP) {
@@ -42,13 +47,12 @@ function makeMenuItem(items = [], rootClose) {
   });
 }
 
-
 function DividerMenuItem({ dashed = false }) {
   return <li class="divider" dashed={dashed} />;
 }
 
 function CustomMenuItem({ render, rootClose }) {
-  return <li class="custom">{render?.({rootClose})}</li>;
+  return <li class="custom">{render?.({ rootClose })}</li>;
 }
 
 function GroupMenuItem({ title = "" }) {
@@ -118,13 +122,14 @@ class MenuItem extends UIElement {
         {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
         {icon && hasItems ? <div class="icon">{icon}</div> : undefined}
 
-        {items.length > 0 ? <Menu items={items} rootClose={rootClose} /> : undefined}
+        {items.length > 0 ? (
+          <Menu items={items} rootClose={rootClose} />
+        ) : undefined}
       </li>
     );
   }
 
   checkClickable() {
-
     if (this.state.disabled) {
       return false;
     }
@@ -178,26 +183,32 @@ const cssProperties = {
   sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
   dividerColor: "--elf--menu-divider-color",
   directionLeft: "--elf--menu-direction-left",
-}
+};
 
 export class Menu extends UIElement {
-
   initState() {
     return {
       intersectionLeft: 0,
-    }
+    };
   }
 
   template() {
-    let { style = {}, type = "menu", x = 0, y = 0, direction = "left", items = [], rootClose } = this.props;
+    let {
+      style = {},
+      type = "menu",
+      x = 0,
+      y = 0,
+      direction = "left",
+      items = [],
+      rootClose,
+    } = this.props;
 
     let itemStyle = { ...style };
-    if (x !== 0) itemStyle = { ...itemStyle, left: x, };
+    if (x !== 0) itemStyle = { ...itemStyle, left: x };
     if (y !== 0) itemStyle = { ...itemStyle, top: y };
 
-
     const styleObject = {
-      'data-direction': direction,
+      "data-direction": direction,
       class: classnames("elf--menu", {
         "elf--menu-contextmenu": type === "contextmenu",
       }),
@@ -213,16 +224,17 @@ export class Menu extends UIElement {
     );
   }
 
-  [OBSERVER("intersection") + PARAMS({
-    root: document.body
-  })](intersects = []) {
-    const item = intersects.find(it => it.isIntersecting && it.intersectionRatio < 1);
+  [OBSERVER("intersection") +
+    PARAMS({
+      root: document.body,
+    })](intersects = []) {
+    const item = intersects.find(
+      (it) => it.isIntersecting && it.intersectionRatio < 1
+    );
 
     if (item) {
-
       const { left: bLeft, right: bRight } = item.boundingClientRect;
       const { left: iLeft, right: iRight } = item.intersectionRect;
-
 
       let direction = "left";
 
@@ -233,8 +245,6 @@ export class Menu extends UIElement {
       }
 
       this.$el.attr("data-direction", direction);
-
     }
-
   }
 }

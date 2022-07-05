@@ -11,9 +11,9 @@ import {
 
 import "./VideoProperty.scss";
 
-import {iconUse} from "@elf-framework/editor";
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
 
 // const video_dom_property = [
 //   // 'audioTracks',
@@ -96,12 +96,12 @@ export default class VideoProperty extends BaseProperty {
         <div ref='$tools' class='play-control' data-selected-value="${
           this.state.status
         }">
-          <button type="button" data-value="play" >${iconUse('play')} ${this.$i18n(
-      "video.property.play"
-    )}</button>
-          <button type="button" data-value="pause">${iconUse('pause')}  ${this.$i18n(
-      "video.property.pause"
-    )}</button>      
+          <button type="button" data-value="play" >${iconUse(
+            "play"
+          )} ${this.$i18n("video.property.play")}</button>
+          <button type="button" data-value="pause">${iconUse(
+            "pause"
+          )}  ${this.$i18n("video.property.pause")}</button>      
           <div>
             ${createComponent("NumberRangeEditor", {
               ref: "$currentTime",
@@ -121,9 +121,9 @@ export default class VideoProperty extends BaseProperty {
           <div ref='$volume_control' class='volume-control' data-selected-value='${
             this.volumeStatus
           }'>
-            <span data-value='muted'>${iconUse('volume_off')}</span>
-            <span data-value='down'>${iconUse('volume_down')}</span>
-            <span data-value='up'>${iconUse('volume_up')}</span>
+            <span data-value='muted'>${iconUse("volume_off")}</span>
+            <span data-value='down'>${iconUse("volume_down")}</span>
+            <span data-value='up'>${iconUse("volume_up")}</span>
             <input type="range" ref='$volume' min="0" max="1" step="0.001" value="${
               this.state.volume
             }" />

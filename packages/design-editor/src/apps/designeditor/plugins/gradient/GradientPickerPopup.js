@@ -13,7 +13,8 @@ import "./GradientPickerPopup.scss";
 import { BackgroundImage } from "elf/editor/property-parser/BackgroundImage";
 import { Gradient } from "elf/editor/property-parser/image-resource/Gradient";
 import { GradientType } from "elf/editor/types/model";
-import { BasePopup } from "@elf-framework/editor"
+
+import { BasePopup } from "@elf-framework/editor";
 
 export default class GradientPickerPopup extends BasePopup {
   getTitle() {

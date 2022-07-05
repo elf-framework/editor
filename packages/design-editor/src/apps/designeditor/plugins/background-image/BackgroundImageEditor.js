@@ -15,7 +15,9 @@ import {
 import "./BackgroundImageEditor.scss";
 
 import { CSS_TO_STRING, STRING_TO_CSS } from "elf/core/func";
+
 import { iconUse, EditorElement } from "@elf-framework/editor";
+
 import { BackgroundImage } from "elf/editor/property-parser/BackgroundImage";
 import { VisibilityType } from "elf/editor/types/model";
 

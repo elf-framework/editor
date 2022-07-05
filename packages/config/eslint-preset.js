@@ -9,6 +9,13 @@ module.exports = {
         "plugin:prettier/recommended",
         "plugin:import/recommended"
     ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+              "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
+            }
+        }
+    },
     "rules": {
         "prettier/prettier": "error",
         "jsx/uses-factory": [1, { "pragma": "JSX" }],
@@ -16,11 +23,7 @@ module.exports = {
         "jsx/mark-used-vars": 1,
         "jsx/no-undef": 1,
         "no-redeclare": 0,
-        "import/resolver": {
-            "node": {
-              "extensions": [".js", ".jsx", ".ts", ".tsx"]
-            }
-        },
+        "import/no-unresolved" : 0,
         "import/order": [
             "error",
             {
@@ -52,7 +55,10 @@ module.exports = {
         "Map": true,
         "Set": true,
         "WeakMap": true,
-        "WeakSet": true
+        "WeakSet": true,
+        "setTimeout": true,
+        "requestAnimationFrame": true,
+        "cancelAnimationFrame": true,
     },
     "overrides": [
         {

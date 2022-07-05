@@ -3,7 +3,7 @@ import { LOAD, CLICK, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 import colors from "../../../apps/designeditor/preset/colors";
 import "./ColorAssetsEditor.scss";
 
-import { EditorElement } from "@elf-framework/editor"
+import { EditorElement } from "@elf-framework/editor";
 
 export default class ColorAssetsEditor extends EditorElement {
   initState() {

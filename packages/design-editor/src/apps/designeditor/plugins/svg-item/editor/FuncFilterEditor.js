@@ -2,7 +2,7 @@ import { LOAD, SUBSCRIBE, createComponent } from "@elf-framework/sapa";
 
 import "./FuncFilterEditor.scss";
 
-import { EditorElement } from "@elf-framework/editor"
+import { EditorElement } from "@elf-framework/editor";
 
 export default class FuncFilterEditor extends EditorElement {
   initState() {

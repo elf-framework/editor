@@ -1,6 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { POINTERSTART, clone } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./ClippathEditorView.scss";
 
@@ -9,8 +8,8 @@ import { vertiesMap } from "elf/core/math";
 import { ClipPath } from "elf/editor/property-parser/ClipPath";
 import { END, MOVE } from "elf/editor/types/event";
 import { ClipPathType } from "elf/editor/types/model";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
+
+import { EditorElement, Length } from "@elf-framework/editor";
 
 export default class ClippathPolygonEditorView extends EditorElement {
   initializePolygon() {

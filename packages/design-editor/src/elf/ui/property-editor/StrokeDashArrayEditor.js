@@ -10,8 +10,7 @@ import {
 
 import "./StrokeDashArrayEditor.scss";
 
-import { iconUse } from "@elf-framework/editor";
-import { EditorElement } from "@elf-framework/editor"
+import { iconUse, EditorElement } from "@elf-framework/editor";
 
 const dash_list = [
   [10, 5],
@@ -46,7 +45,7 @@ export default class StrokeDashArrayEditor extends EditorElement {
         <div class='tools ${hasLabel ? "has-label" : ""}'>
           ${hasLabel ? `<label class='label'>${label}</label>` : ""}
           <div class="buttons">
-            <label ref='$add'>${iconUse('add')}</label>          
+            <label ref='$add'>${iconUse("add")}</label>          
           </div>
         </div>      
         <div ref='$body' class='dash-list'></div>

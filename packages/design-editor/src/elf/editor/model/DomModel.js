@@ -1,3 +1,4 @@
+import { Length } from "@elf-framework/editor";
 import { vec3 } from "gl-matrix";
 
 import { Selector } from "../property-parser/Selector";
@@ -16,7 +17,6 @@ import { Border } from "elf/editor/property-parser/Border";
 import { ClipPath } from "elf/editor/property-parser/ClipPath";
 import { Pattern } from "elf/editor/property-parser/Pattern";
 import { GradientType, VisibilityType } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
 
 const editableList = [
   "appearance",

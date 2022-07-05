@@ -1,9 +1,8 @@
+import { iconUse } from "@elf-framework/icon";
 import { CLICK } from "@elf-framework/sapa";
 
 import { EditorElement } from "../common/EditorElement";
 import "./BaseWindow.scss";
-
-import { iconUse } from "@elf-framework/icon";
 
 export default class BaseWindow extends EditorElement {
   template() {

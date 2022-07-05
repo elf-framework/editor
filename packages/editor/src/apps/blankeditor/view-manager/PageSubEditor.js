@@ -1,6 +1,6 @@
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./PageSubEditor.scss";
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 export default class PageSubEditor extends EditorElement {
   template() {

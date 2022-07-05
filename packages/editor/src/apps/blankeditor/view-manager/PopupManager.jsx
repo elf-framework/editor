@@ -1,10 +1,9 @@
 import { createComponent } from "@elf-framework/sapa";
-
-import "./PopupManager.scss";
-
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import NotificationView from "elf/editor/ui/view/NotificationView";
 import "elf/editor/ui/window-list";
+
+import "./PopupManager.scss";
 
 export class PopupManager extends EditorElement {
   components() {

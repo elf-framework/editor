@@ -88,8 +88,9 @@ start(function () {
           }}
         >
           <div>
-          The following typefaces are not available. Please either install these on your computer or in Figma. Alternatively you can replace them with other fonts.
-
+            The following typefaces are not available. Please either install
+            these on your computer or in Figma. Alternatively you can replace
+            them with other fonts.
           </div>
         </Dialog>
       ) : undefined}

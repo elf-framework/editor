@@ -4,7 +4,6 @@ import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
 import { Tools } from "../tools/index";
 
-
 function makeToolbarItem(items = []) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
@@ -15,20 +14,21 @@ function makeToolbarItem(items = []) {
 
 export class ToolbarItem extends UIElement {
   template() {
-    const {items, style} = this.props;
-    return <div class="elf--toolbar-item">
-      <Tools ref="$tools" items={items} style={style} />
-    </div>
+    const { items, style } = this.props;
+    return (
+      <div class="elf--toolbar-item">
+        <Tools ref="$tools" items={items} style={style} />
+      </div>
+    );
   }
 }
 
-
-const cssProperties = makeStyleMap('--elf--toolbar', {
+const cssProperties = makeStyleMap("--elf--toolbar", {
   backgroundColor: true,
   color: true,
   height: true,
   align: true,
-})
+});
 
 export class Toolbar extends UIElement {
   template() {
@@ -36,7 +36,7 @@ export class Toolbar extends UIElement {
 
     const styleObject = {
       class: classnames("elf--toolbar", {
-        [align]: true
+        [align]: true,
       }),
       style: {
         ...propertyMap(style, cssProperties),

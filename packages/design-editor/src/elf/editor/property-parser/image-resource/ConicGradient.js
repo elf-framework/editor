@@ -1,12 +1,11 @@
-import { vec3 } from "gl-matrix";
-
+import { Length, Position } from "@elf-framework/editor";
 import { clone, isNotUndefined } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import { Gradient } from "./Gradient";
 
 import { rectToVerties } from "elf/core/collision";
 import { FuncType } from "elf/editor/types/model";
-import { Length, Position } from "@elf-framework/editor";
 import { parseOneValue } from "elf/utils/css-function-parser";
 
 const DEFINED_POSITIONS = {

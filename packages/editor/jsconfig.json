@@ -11,6 +11,6 @@
       "plugins/*": ["./src/plugins/*"],
       "apps/common": ["src/apps/common/*"],      
       "apps/*": ["src/apps/*"]
-    },
+    }
   }
 }

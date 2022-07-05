@@ -1,11 +1,10 @@
-import { POINTERSTART, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
-
-import "./BasePopup.scss";
-
 import { iconUse } from "@elf-framework/icon";
+import { POINTERSTART, CLICK, SUBSCRIBE } from "@elf-framework/sapa";
 import { END, MOVE } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";
+
+import "./BasePopup.scss";
 
 export class BasePopup extends EditorElement {
   template() {

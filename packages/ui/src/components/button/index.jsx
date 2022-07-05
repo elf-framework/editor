@@ -12,11 +12,18 @@ const cssProperties = {
   height: "--elf--button-height",
   padding: "--elf--button-padding",
   borderRadius: "--elf--button-border-radius",
-}
+};
 
 export class Button extends UIElement {
   template() {
-    const { type, size, disabled, shape, destructive = false, style = {} } = this.props;
+    const {
+      type,
+      size,
+      disabled,
+      shape,
+      destructive = false,
+      style = {},
+    } = this.props;
 
     const styleObject = {
       class: classnames([

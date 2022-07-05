@@ -10,7 +10,6 @@ import {
 
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 
-
 export default class BorderRadiusProperty extends BaseProperty {
   getTitle() {
     return this.$i18n("border.radius.property.title");

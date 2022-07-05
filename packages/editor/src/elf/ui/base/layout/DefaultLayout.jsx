@@ -1,10 +1,8 @@
-import { POINTERSTART, BIND, isNotUndefined, classnames } from "@elf-framework/sapa";
-
-import "./DefaultLayout.scss";
-
+import { POINTERSTART, isNotUndefined, classnames } from "@elf-framework/sapa";
 import { END, MOVE } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
-import { Length } from "elf/editor/unit/Length";
+
+import "./DefaultLayout.scss";
 
 const DefaultLayoutDirection = {
   LEFT: "left",

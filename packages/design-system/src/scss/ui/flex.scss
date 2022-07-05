@@ -1,0 +1,24 @@
+.elf--flex {
+
+    --elf--flex-direction: row;
+
+    display: flex;
+    flex-direction: var(--elf--flex-direction);
+
+    &.stack {
+        --elf--flex-direction: column;
+    }
+
+    &.reverse {
+        --elf--flex-direction: row-reverse;
+    }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    
+    > * {
+        flex: 1;
+    }
+
+}

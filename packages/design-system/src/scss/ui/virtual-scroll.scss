@@ -1,0 +1,45 @@
+.elf--virtual-scroll {
+
+    --elf--virtual-scroll-item-width: 100%;
+    --elf--virtual-scroll-item-height: 32px;
+
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #a9a9a9;
+
+    > .elf--virtual-scroll-panel {
+        // background-color: yellow;
+        position: relative;
+        height: var(--elf--virtual-scroll-panel-height, fit-content);
+        contain: size;
+
+        > .elf--virtual-scroll-content-area {
+            background-color: green;
+            position: relative;
+            height: fit-content;
+
+            &[data-scrolling="true"] {
+                > * {
+                    pointer-events: none;
+                }
+            }
+
+            > * {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transform-origin: left top;
+                width: var(--elf--virtual-scroll-item-width);
+                height: var(--elf--virtual-scroll-item-height);
+                transform: translate3d(0px, var(--elf--virtual-scroll-item-top, 0px), 0px);
+                contain: size;
+            }
+        }
+    }
+}

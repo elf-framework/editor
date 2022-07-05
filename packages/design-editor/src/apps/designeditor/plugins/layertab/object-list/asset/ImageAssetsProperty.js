@@ -1,9 +1,16 @@
-import { LOAD, CLICK, DOMDIFF, DRAGSTART, CHANGE, SUBSCRIBE } from "@elf-framework/sapa";
+import {
+  LOAD,
+  CLICK,
+  DOMDIFF,
+  DRAGSTART,
+  CHANGE,
+  SUBSCRIBE,
+} from "@elf-framework/sapa";
 
 import "./ImageAssetsProperty.scss";
 
-import {iconUse} from "@elf-framework/editor";
-import { BaseProperty } from "@elf-framework/editor"
+import { iconUse, BaseProperty } from "@elf-framework/editor";
+
 import revokeObjectUrl from "elf/editor/util/revokeObjectUrl";
 
 export default class ImageAssetsProperty extends BaseProperty {
@@ -45,8 +52,10 @@ export default class ImageAssetsProperty extends BaseProperty {
             <img src="${image.local}" />
           </div>
           <div class='tools'>
-            <button type="button" class='copy'>${iconUse('copy')}</button>          
-            <button type="button" class='remove'>${iconUse('remove')}</button>
+            <button type="button" class='copy'>${iconUse(
+              "copy"
+            )}</button>          
+            <button type="button" class='remove'>${iconUse("remove")}</button>
           </div>
         </div>
       `;
@@ -57,7 +66,7 @@ export default class ImageAssetsProperty extends BaseProperty {
         ${results.join("")}
         <div class='add-image-item'>
           <input type='file' accept='image/*' ref='$file' />
-          <button type="button">${iconUse('add')}</button>
+          <button type="button">${iconUse("add")}</button>
         </div>        
       </div>
 

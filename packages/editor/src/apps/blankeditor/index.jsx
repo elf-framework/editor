@@ -1,4 +1,8 @@
-import { SUBSCRIBE, CONFIG } from "@elf-framework/sapa";
+import { CONFIG } from "@elf-framework/sapa";
+import {
+  DefaultLayout,
+  DefaultLayoutItem,
+} from "elf/ui/base/layout/DefaultLayout";
 
 import BlankBodyPanel from "./area/BlankBodyPanel";
 import BlankInspector from "./area/BlankInspector";
@@ -10,11 +14,6 @@ import blankEditorPlugins from "./plugins/blank-editor-plugins";
 import { ContextMenuManager } from "./view-manager/ContextMenuManager";
 import { KeyboardManager } from "./view-manager/KeyboardManager";
 import { PopupManager } from "./view-manager/PopupManager";
-
-import {
-  DefaultLayout,
-  DefaultLayoutItem,
-} from "elf/ui/base/layout/DefaultLayout";
 
 export class BlankEditor extends BaseLayout {
   afterRender() {

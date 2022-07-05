@@ -1,7 +1,5 @@
 import MenuItem from "./MenuItem";
 
-
-
 export default class Undo extends MenuItem {
   getIconString() {
     return "undo";

@@ -1,4 +1,5 @@
 import { iconUse } from "@elf-framework/editor";
+
 import { EditingMode, Language } from "elf/editor/types/editor";
 import { KeyStringMaker } from "elf/editor/types/key";
 
@@ -107,7 +108,7 @@ export default function (editor) {
     },
     {
       type: "dropdown",
-      trigger: 'over',
+      trigger: "over",
       icon: (editor, dropdown) => {
         return (
           dropdown.findItem(editor.context.config.get("editing.css.itemType"))

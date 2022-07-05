@@ -189,6 +189,38 @@ export class UIElement extends EventMachine {
     return id;
   }
 
+  useSubscribe(
+    id,
+    callback,
+    debounceSecond = 0,
+    throttleSecond = 0,
+    isSelf = false
+  ) {
+    const newCallback = this.createFunction(id, callback);
+
+    if (this.$store.hasCallback(id, newCallback) === false) {
+      this.$store.on(
+        id,
+        newCallback,
+        this,
+        debounceSecond,
+        throttleSecond,
+        false,
+        isSelf
+      );
+    }
+  }
+
+  useSubscribeSelf(id, callback, debounceSecond = 0, throttleSecond = 0) {
+    return this.useSubscribe(
+      id,
+      callback,
+      debounceSecond,
+      throttleSecond,
+      true
+    );
+  }
+
   /**
    * 함수형 컴포넌트 생성 함수
    *

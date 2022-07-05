@@ -1,11 +1,10 @@
 import { LOAD, createComponent } from "@elf-framework/sapa";
-
-import { ToolbarButtonMenuItem } from "./ToolbarButtonMenuItem";
-import "./ToolBarRenderer.scss";
-
 import { MenuItemType } from "apps/blankeditor/types/editor";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { DropdownMenu } from "elf/editor/ui/view/DropdownMenu";
+
+import { ToolbarButtonMenuItem } from "./ToolbarButtonMenuItem";
+import "./ToolBarRenderer.scss";
 
 export default class ToolBarRenderer extends EditorElement {
   components() {

@@ -9,8 +9,6 @@ import {
   // DOMDIFF,
 } from "@elf-framework/sapa";
 import { REFRESH_SELECTION } from "apps/blankeditor/types/event";
-
-
 import { BaseProperty } from "elf/editor/ui/property/BaseProperty";
 
 export class ObjectProperty {

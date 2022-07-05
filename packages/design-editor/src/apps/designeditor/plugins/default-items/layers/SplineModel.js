@@ -6,7 +6,6 @@ import { SVGModel } from "./SVGModel";
 import { PathParser } from "elf/core/parser/PathParser";
 
 export class SplineModel extends SVGModel {
-
   getDefaultObject(obj = {}) {
     return super.getDefaultObject({
       itemType: "spline",

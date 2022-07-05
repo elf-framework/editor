@@ -13,8 +13,7 @@ import {
 
 import "./ProjectProperty.scss";
 
-import {iconUse} from "@elf-framework/editor";
-import { BaseProperty } from "@elf-framework/editor"
+import { iconUse, BaseProperty } from "@elf-framework/editor";
 
 export default class ProjectProperty extends BaseProperty {
   getTitle() {
@@ -27,7 +26,9 @@ export default class ProjectProperty extends BaseProperty {
 
   getTools() {
     return /*html*/ `
-      <button type='button' ref='$add' data-tooltip="Add a project" data-direction="bottom right">${iconUse('add')}</button>
+      <button type='button' ref='$add' data-tooltip="Add a project" data-direction="bottom right">${iconUse(
+        "add"
+      )}</button>
     `;
   }
 
@@ -57,9 +58,9 @@ export default class ProjectProperty extends BaseProperty {
         project.name || "New Project"
       }</label>
             <div class="tools">
-              <button type="button" class="remove" data-id="${projectId}" title='Remove'>${
-        iconUse('remove2')
-      }</button>
+              <button type="button" class="remove" data-id="${projectId}" title='Remove'>${iconUse(
+        "remove2"
+      )}</button>
             </div>
           </div>
         </div>

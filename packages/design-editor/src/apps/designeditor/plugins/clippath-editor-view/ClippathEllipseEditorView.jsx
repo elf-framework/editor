@@ -1,6 +1,5 @@
-import { vec3 } from "gl-matrix";
-
 import { LEFT_BUTTON, POINTERSTART } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import ClippathCircleEditorView from "./ClippathCircleEditorView";
 import "./ClippathEditorView.scss";
@@ -9,7 +8,8 @@ import { calculateAngle, vertiesMap } from "elf/core/math";
 import { ClipPath } from "elf/editor/property-parser/ClipPath";
 import { END, MOVE } from "elf/editor/types/event";
 import { ClipPathType } from "elf/editor/types/model";
-import { Length } from "@elf-framework/editor"
+
+import { Length } from "@elf-framework/editor";
 
 export default class ClippathEllipseEditorView extends ClippathCircleEditorView {
   [POINTERSTART("$el .ellipse .ellipse-radius-x") +

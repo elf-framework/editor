@@ -1,5 +1,3 @@
-import { vec3 } from "gl-matrix";
-
 import {
   LOAD,
   SUBSCRIBE,
@@ -11,11 +9,11 @@ import {
   MOUSEOVER,
   MOUSELEAVE,
 } from "@elf-framework/sapa";
+import { vec3 } from "gl-matrix";
 
 import "./VerticalRuler.scss";
 
 import {
-
   UPDATE_VIEWPORT,
   REFRESH_SELECTION,
   RESIZE_WINDOW,
@@ -24,6 +22,7 @@ import {
   END,
   MOVE,
 } from "elf/editor/types/event";
+
 import { EditorElement } from "@elf-framework/editor";
 
 let pathString = [];

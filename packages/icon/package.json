@@ -25,7 +25,7 @@
     "eslint-plugin-jsx": "^0.1.0",
     "husky": "^7.0.4",
     "prettier": "2.6.2",
-    "release-it": "^14.6.2",
+    "release-it": "^15.1.1",
     "rollup-plugin-copy": "^3.4.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.1",
@@ -38,7 +38,7 @@
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
-    "blank:watch": "npm run watch",    
+    "blank:watch": "npm run watch",
     "//dev": "npm run vite:dist:watch",
     "release": "release-it *",
     "build": "npm run vite:dist",

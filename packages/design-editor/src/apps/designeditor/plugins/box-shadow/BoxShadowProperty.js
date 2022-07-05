@@ -11,7 +11,8 @@ import {
 import boxShadow from "../../preset/box-shadow";
 import "./BoxShadowProperty.scss";
 
-import {BaseProperty, iconUse} from "@elf-framework/editor";
+import { BaseProperty, iconUse } from "@elf-framework/editor";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
 
 export default class BoxShadowProperty extends BaseProperty {
@@ -36,7 +37,7 @@ export default class BoxShadowProperty extends BaseProperty {
         })
         .join("")}
       </select>
-      <button type="button" ref='$add'>${iconUse('add')}</button>
+      <button type="button" ref='$add'>${iconUse("add")}</button>
     `;
   }
 

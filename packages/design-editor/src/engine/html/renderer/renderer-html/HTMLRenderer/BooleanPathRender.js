@@ -1,6 +1,7 @@
+import * as Color from "@elf-framework/color";
+
 import SVGItemRender from "./SVGItemRender";
 
-import * as Color from "@elf-framework/color";
 import { SVGFill } from "elf/editor/property-parser/SVGFill";
 import { BooleanOperation } from "elf/editor/types/model";
 

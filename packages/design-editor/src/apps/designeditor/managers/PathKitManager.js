@@ -50,9 +50,8 @@ These are only needed for PathKit.FromCmds().
 
 */
 PathParser;
-import PathKitInit from "pathkit-wasm/bin/pathkit";
-
 import { isArray } from "@elf-framework/sapa";
+import PathKitInit from "pathkit-wasm/bin/pathkit";
 
 import { PathParser } from "elf/core/parser/PathParser";
 

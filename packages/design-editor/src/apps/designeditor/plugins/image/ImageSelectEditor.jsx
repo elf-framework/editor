@@ -2,7 +2,7 @@ import { LOAD, CLICK, CHANGE, SUBSCRIBE } from "@elf-framework/sapa";
 
 import "./ImageSelectEditor.scss";
 
-import { EditorElement } from "@elf-framework/editor"
+import { EditorElement } from "@elf-framework/editor";
 
 export default class ImageSelectEditor extends EditorElement {
   initState() {

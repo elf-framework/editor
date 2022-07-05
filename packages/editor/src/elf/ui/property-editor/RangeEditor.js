@@ -1,3 +1,4 @@
+import { iconUse } from "@elf-framework/icon";
 import {
   LOAD,
   INPUT,
@@ -7,13 +8,11 @@ import {
   createComponent,
   classnames,
 } from "@elf-framework/sapa";
-
-import "./RangeEditor.scss";
-
 import { END } from "apps/blankeditor/types/event";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";
-import { iconUse } from "@elf-framework/icon";
+
+import "./RangeEditor.scss";
 
 export class RangeEditor extends EditorElement {
   initState() {
@@ -87,7 +86,7 @@ export class RangeEditor extends EditorElement {
                       options: units,
                       onchange: (key, value) => {
                         this.changeUnit(key, value);
-                      }
+                      },
                     })}
                 </div>
             </div>

@@ -7,23 +7,20 @@ export function randomNumber(min, max) {
 export function randomByCount(count = 1) {
   let arr = [];
   for (var i = 0; i < count; i++) {
-    arr[arr.length] = random();
+    arr[arr.length] = Math.random();
   }
 
   return arr;
 }
-
 
 export function round(n, k) {
   k = typeof k === "undefined" ? 1 : k;
   return Math.round(n * k) / k;
 }
 
-
 export function degreeToRadian(degrees) {
   return degrees * (Math.PI / 180);
 }
-
 
 /**
  *
@@ -41,7 +38,6 @@ export function radianToDegree(radian) {
 
   return angle;
 }
-
 
 export function getDist(x, y, centerX = 0, centerY = 0) {
   return vec2.distance([x, y], [centerX, centerY]);
@@ -83,7 +79,6 @@ export function vertiesMap(verties, transformView) {
   });
 }
 
-
 export function calculateMatrix(...args) {
   const view = mat4.create();
   args.forEach((v) => {
@@ -96,7 +91,6 @@ export function calculateMatrix(...args) {
 export function calculateMatrixInverse(...args) {
   return mat4.invert([], calculateMatrix(...args));
 }
-
 
 const UUID_REG = /[xy]/g;
 

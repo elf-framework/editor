@@ -1,13 +1,9 @@
+import { iconUse } from "@elf-framework/icon";
 import { start } from "@elf-framework/sapa";
 import { Toolbar } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
-import { iconUse } from "@elf-framework/icon";
-
-
-
 
 start(function () {
-
   const item = {
     items: [
       {
@@ -28,12 +24,18 @@ start(function () {
         },
       },
       {
-        type: "custom", 
+        type: "custom",
         render: () => {
-          return <div onClick={() => {
-            console.log("custom");
-          }}>fdsafdsafdsf</div>
-        }
+          return (
+            <div
+              onClick={() => {
+                console.log("custom");
+              }}
+            >
+              fdsafdsafdsf
+            </div>
+          );
+        },
       },
       {
         type: "item",
@@ -43,8 +45,7 @@ start(function () {
         onClick: () => {
           this.setState(
             {
-              selectedItem:
-                this.state.selectedItem !== "menu" ? "menu" : "",
+              selectedItem: this.state.selectedItem !== "menu" ? "menu" : "",
             },
             false
           );
@@ -72,8 +73,8 @@ start(function () {
               console.log(item.selected);
             },
           },
-        ]
-      },      
+        ],
+      },
       {
         type: "menu",
         icon: iconUse("artboard"),
@@ -93,8 +94,8 @@ start(function () {
               console.log(item.selected);
             },
           },
-        ]
-      },            
+        ],
+      },
       {
         type: "menu",
         icon: iconUse("artboard"),
@@ -177,18 +178,13 @@ start(function () {
 
           this.emit("refreshIcon");
         },
-      },              
-    ]
+      },
+    ],
   };
 
   return (
     <div>
-      <Toolbar  
-        items={[
-          item,
-          item,
-        ]}
-      />
+      <Toolbar items={[item, item]} />
     </div>
   );
 });

@@ -1,11 +1,12 @@
 {
   "pipeline": {
-    "ui:watch": {
+    "ui:dev": {
       "dependsOn": [
         "ui#ui:watch", 
         "^watch"
       ],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", ".next/**"],
+      "cache" : false
     },
     "build": {
       "dependsOn": ["ui#build", "^build"],

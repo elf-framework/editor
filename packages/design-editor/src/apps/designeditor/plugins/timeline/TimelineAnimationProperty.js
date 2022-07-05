@@ -15,8 +15,10 @@ import {
 import "./TimelineAnimationProperty.scss";
 
 import { list as icon } from "@elf-framework/icon";
+
 import { REFRESH_SELECTION } from "elf/editor/types/event";
-import { BaseProperty } from "@elf-framework/editor"
+
+import { BaseProperty } from "@elf-framework/editor";
 
 export default class TimelineAnimationProperty extends BaseProperty {
   getTitle() {

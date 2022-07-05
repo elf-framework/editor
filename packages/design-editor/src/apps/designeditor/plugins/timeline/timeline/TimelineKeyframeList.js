@@ -1,5 +1,6 @@
 // import makeInterpolateOffset from "elf/editor/interpolate/interpolate-functions/offset-path/makeInterpolateOffset";
 
+import { EditorElement, Length } from "@elf-framework/editor";
 import {
   CLICK,
   LOAD,
@@ -19,8 +20,6 @@ import {
 // import { PathParser } from "elf/core/parser/PathParser";
 import { timecode, second } from "elf/core/time";
 import { MOVE, END, RESIZE_WINDOW } from "elf/editor/types/event";
-import { EditorElement } from "@elf-framework/editor"
-import { Length } from "@elf-framework/editor"
 
 const PADDING = 20;
 

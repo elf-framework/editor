@@ -1,3 +1,4 @@
+import { iconUse } from "@elf-framework/icon";
 import {
   LOAD,
   INPUT,
@@ -12,13 +13,11 @@ import {
   isBoolean,
   classnames,
 } from "@elf-framework/sapa";
+import { END, MOVE } from "apps/blankeditor/types/event";
+import { round } from "elf/core/math";
+import { EditorElement } from "elf/editor/ui/common/EditorElement";
 
 import "./NumberInputEditor.scss";
-
-import { round } from "elf/core/math";
-import { END, MOVE } from "apps/blankeditor/types/event";
-import { EditorElement } from "elf/editor/ui/common/EditorElement";
-import { iconUse } from "@elf-framework/icon";
 
 export class NumberInputEditor extends EditorElement {
   initState() {

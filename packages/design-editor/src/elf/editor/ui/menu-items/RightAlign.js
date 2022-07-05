@@ -1,7 +1,5 @@
 import MenuItem from "./MenuItem";
 
-
-
 export default class RightAlign extends MenuItem {
   getIconString() {
     return "align_horizontal_right";

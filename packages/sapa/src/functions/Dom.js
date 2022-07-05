@@ -1,7 +1,6 @@
 import { DomDiff } from "./DomDiff";
-import { isArray, isFunction, isString } from "./func";
+import { isArray, isFunction } from "./func";
 import { recoverVariable } from "./registElement";
-
 /**
  * Dom 유틸리티
  *
@@ -33,39 +32,13 @@ export class Dom {
     return new Dom(tag, className, attr);
   }
 
+  static createText(text) {
+    return new Dom(document.createTextNode(text));
+  }
+
   static createByHTML(htmlString) {
     var div = Dom.create("div");
     return div.html(htmlString).firstChild;
-  }
-
-  /**
-   * 항상 element 의 list 를 만들어준다.
-   *
-   * @param {string|string[]|HTMLElement|HTMLElement[]} html
-   * @returns
-   */
-  static makeElementList(html) {
-    const TEMP_DIV = Dom.create("div");
-    let list = [];
-
-    if (!isArray(html)) {
-      html = [html];
-    }
-
-    html = html.filter(Boolean);
-
-    for (let i = 0, len = html.length; i < len; i++) {
-      const item = html[i];
-      if (isString(item)) {
-        list.push(...(TEMP_DIV.html(item?.trim()).childNodes || []));
-      } else if (item) {
-        list.push(Dom.create(item));
-      } else {
-        // noop
-      }
-    }
-
-    return list;
   }
 
   static getScrollTop() {
@@ -91,6 +64,10 @@ export class Dom {
 
   static body() {
     return Dom.create(document.body);
+  }
+
+  get tagName() {
+    return this.el.tagName;
   }
 
   get exists() {
@@ -219,7 +196,7 @@ export class Dom {
     return this;
   }
 
-  get isFragment () {
+  get isFragment() {
     // fragment 체크
     return this.el.nodeType === 11;
   }
@@ -227,7 +204,7 @@ export class Dom {
   get isTemplate() {
     // fragment 체크
     return this.el.nodeType === 1 && this.el.tagName === "TEMPLATE";
-  }  
+  }
 
   get content() {
     return this.isTemplate ? this.el.content : this.el;
@@ -404,7 +381,10 @@ export class Dom {
   }
 
   $$(selector) {
-    var arr = this.findAll(selector, this.isTemplate ? this.el.content : this.el);
+    var arr = this.findAll(
+      selector,
+      this.isTemplate ? this.el.content : this.el
+    );
     return arr.map((node) => Dom.create(node));
   }
 
@@ -781,7 +761,7 @@ export class Dom {
     return this.el.value;
   }
 
-  set value (v) {
+  set value(v) {
     this.el.value = v;
   }
 
@@ -891,7 +871,7 @@ export class Dom {
     return this;
   }
 
-  scrollTop() {
+  get scrollTop() {
     if (this.el === document.body) {
       return Dom.getScrollTop();
     }
@@ -899,7 +879,7 @@ export class Dom {
     return this.el.scrollTop;
   }
 
-  scrollLeft() {
+  get scrollLeft() {
     if (this.el === document.body) {
       return Dom.getScrollLeft();
     }
@@ -907,11 +887,11 @@ export class Dom {
     return this.el.scrollLeft;
   }
 
-  scrollHeight() {
+  get scrollHeight() {
     return this.el.scrollHeight;
   }
 
-  scrollWidth() {
+  get scrollWidth() {
     return this.el.scrollWidth;
   }
 
@@ -986,7 +966,7 @@ export class Dom {
   }
 
   childLength() {
-    return this.el.children.length;
+    return this.el.childNodes.length;
   }
 
   replace(newElement) {

@@ -1,4 +1,4 @@
-import { EditorElement } from "@elf-framework/editor";
+import { EditorElement, Length } from "@elf-framework/editor";
 import {
   LOAD,
   POINTERSTART,
@@ -14,7 +14,6 @@ import {
 } from "@elf-framework/sapa";
 
 import { END, MOVE } from "elf/editor/types/event";
-import { Length } from "@elf-framework/editor"
 
 export default class OffsetEditor extends EditorElement {
   initState() {

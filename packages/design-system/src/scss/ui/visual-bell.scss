@@ -100,6 +100,9 @@
             font-weight: 600;
             font-size: 11px;            
             user-select: none;
+            /* 컴포넌트에 따라서 다르게 해석 할 수도 있음. */
+            /* 현재는 notification 에 들어와있는 상태기 때문에 강제함 */
+            color: var(--elf--visual-bell-color) !important;            
             &:hover {
                 background-color: var(--elf--visual-bell-hover-color);
             }

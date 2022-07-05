@@ -1,3 +1,4 @@
+import { iconUse } from "@elf-framework/icon";
 import {
   LOAD,
   INPUT,
@@ -11,14 +12,12 @@ import {
   isNumber,
   DOMDIFF,
 } from "@elf-framework/sapa";
-
-import "./InputRangeEditor.scss";
-
-import { round } from "elf/core/math";
 import { END, MOVE } from "apps/blankeditor/types/event";
+import { round } from "elf/core/math";
 import { EditorElement } from "elf/editor/ui/common/EditorElement";
 import { Length } from "elf/editor/unit/Length";
-import { iconUse } from "@elf-framework/icon";
+
+import "./InputRangeEditor.scss";
 
 export class InputRangeEditor extends EditorElement {
   initState() {
@@ -48,17 +47,8 @@ export class InputRangeEditor extends EditorElement {
   }
 
   [LOAD("$body") + DOMDIFF]() {
-    var {
-      min,
-      max,
-      step,
-      label,
-      title,
-      compact,
-      wide,
-      layout,
-      disabled,
-    } = this.state;
+    var { min, max, step, label, title, compact, wide, layout, disabled } =
+      this.state;
 
     label = iconUse(label);
 

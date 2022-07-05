@@ -1,3 +1,4 @@
+import { iconUse } from "@elf-framework/icon";
 import {
   CLICK,
   IF,
@@ -14,6 +15,7 @@ import {
   POINTEROVER,
   POINTEROUT,
 } from "@elf-framework/sapa";
+import { Length } from "elf/editor/unit/Length";
 
 import { EditorElement } from "../common/EditorElement";
 import { Divider } from "./dropdown-menu/Divider";
@@ -26,9 +28,6 @@ import { DropdownMenuList } from "./dropdown-menu/DropdownMenuList";
 import { DropdownTextMenuItem } from "./dropdown-menu/DropdownTextMenuItem";
 import { makeMenuItem } from "./dropdown-menu/makeMenuItem";
 import "./DropdownMenu.scss";
-
-import { iconUse } from "@elf-framework/icon";
-import { Length } from "elf/editor/unit/Length";
 
 export class DropdownMenu extends EditorElement {
   components() {
@@ -57,7 +56,7 @@ export class DropdownMenu extends EditorElement {
 
   initState() {
     return {
-      trigger: this.props.trigger || 'click',
+      trigger: this.props.trigger || "click",
       direction: this.props.direction || "left",
       opened: this.props.opened || false,
       items: this.props.items || [],
@@ -147,13 +146,13 @@ export class DropdownMenu extends EditorElement {
       false
     );
     this.$el.toggleClass("opened", this.state.opened);
-    
+
     if (this.state.opened) {
       this.emit("hideDropdownMenu");
-    }    
+    }
   }
 
-  hide () {
+  hide() {
     this.setState(
       {
         opened: false,
@@ -181,29 +180,29 @@ export class DropdownMenu extends EditorElement {
     return false;
   }
 
-  checkTriggerClick () {
-    return this.state.trigger === 'click';
+  checkTriggerClick() {
+    return this.state.trigger === "click";
   }
 
-  checkTriggerOver () {
-    return this.state.trigger === 'over';
+  checkTriggerOver() {
+    return this.state.trigger === "over";
   }
 
-  [CLICK("$arrow") + IF("checkDropdownOpen") + IF('checkTriggerClick')]() {
+  [CLICK("$arrow") + IF("checkDropdownOpen") + IF("checkTriggerClick")]() {
     this.toggle();
   }
 
-  [CLICK("$label") + IF("checkDropdownOpen") + IF('checkTriggerClick')]() {
+  [CLICK("$label") + IF("checkDropdownOpen") + IF("checkTriggerClick")]() {
     this.toggle();
   }
 
-  [POINTEROVER('$el') + IF('checkTriggerOver')] () {
+  [POINTEROVER("$el") + IF("checkTriggerOver")]() {
     this.open();
   }
 
-  [POINTEROUT('$el') + IF('checkTriggerOver')] () {
+  [POINTEROUT("$el") + IF("checkTriggerOver")]() {
     this.hide();
-  }  
+  }
 
   [CLICK("$icon")]() {
     const selectedKey = isFunction(this.props.selectedKey)

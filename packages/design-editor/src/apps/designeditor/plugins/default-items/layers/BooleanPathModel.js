@@ -4,7 +4,6 @@ import { PathParser } from "elf/core/parser/PathParser";
 import { BooleanOperation } from "elf/editor/types/model";
 
 export class BooleanPathModel extends PathModel {
-
   getDefaultObject(obj = {}) {
     return super.getDefaultObject({
       itemType: "boolean-path",

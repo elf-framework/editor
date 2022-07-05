@@ -17,12 +17,12 @@
     }
   },
   "dependencies": {
+    "@elf-framework/color": "*",
+    "@elf-framework/icon": "*",
+    "@elf-framework/sapa": "*",
     "@entityjs/entityjs": "0.0.6",
     "gl-matrix": "^3.3.0",
-    "open-color": "^1.9.1",
-    "@elf-framework/sapa": "*",
-    "@elf-framework/color": "*",
-    "@elf-framework/icon": "*"
+    "open-color": "^1.9.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.21.0",
@@ -35,12 +35,12 @@
     "eslint-import-resolver-jsconfig": "^1.1.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx": "^0.1.0",
-    "eslint-plugin-prettier": "^4.0.0",    
+    "eslint-plugin-prettier": "^4.0.0",
     "happy-dom": "^2.25.1",
     "husky": "^7.0.4",
     "postcss": "^8.4.4",
     "prettier": "2.6.2",
-    "release-it": "^14.6.2",
+    "release-it": "^15.1.1",
     "rollup-plugin-copy": "^3.4.0",
     "sass": "^1.44.0",
     "typescript": "^4.6.3",
@@ -56,7 +56,7 @@
     "vite:dev": "vite --config=vite.config.js",
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
-    "blank:watch": "npm run watch",    
+    "blank:watch": "npm run watch",
     "release": "release-it *",
     "build": "npm run vite:dist",
     "test": "vitest",
