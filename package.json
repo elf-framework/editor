@@ -27,6 +27,20 @@
   },
   "packageManager": "npm@8.9.0",
   "dependencies": {
+    "@easylogic/rectangle-1": "^0.0.1",
     "vite-plugin-sapa": "^1.0.0"
-  }
+  },
+  "description": "This is an official starter turborepo.",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elf-framework/editor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elf-framework/editor/issues"
+  },
+  "homepage": "https://github.com/elf-framework/editor#readme"
 }

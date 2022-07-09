@@ -25,12 +25,18 @@ export function makeNativeDom(name) {
 }
 
 export function makeNativeTextDom(value) {
-  const text = TEMP_TEXT.cloneNode()
+  const text = TEMP_TEXT.cloneNode();
   text.textContent = value;
   return text;
 }
 
+const expectAttributes = {
+  content: true,
+  contentChildren: true,
+};
+
 function setAttribute(el, name, value) {
+  if (expectAttributes[name]) return;
   el.setAttribute(name, value);
 }
 
@@ -173,7 +179,7 @@ export class VNode {
         : undefined;
 
       const newProps2 = {
-        refClass: this.Component.name,
+        // refClass: this.Component.name,
         ref: newProps.ref ? newProps.ref : undefined,
       };
 
@@ -182,13 +188,18 @@ export class VNode {
       }
       this.tagProps = newProps2;
     }
+
+    if (this.props.enableHtml) {
+      this.enableHtml = this.props.enableHtml;
+      delete this.props.enableHtml;
+    }
   }
 
   initializeChildren() {
     if (isArray(this.children)) {
       this.children = this.children.map((child) => {
         if (isString(child)) {
-          if (this.props.enableHtml) {
+          if (this.enableHtml) {
             // tag 문자열이 없으면 그냥 text node 로 인식한다.
             // 이때에는 tag 의 이름을 제거한다.
             if (child.indexOf(TAG_PREFIX) === -1) {
@@ -238,7 +249,7 @@ export class VNode {
           });
         } else if (isFunction(child)) {
           fragment.appendChild(child());
-        } else if (child instanceof HTMLElement) {
+        } else if (child instanceof window.HTMLElement) {
           fragment.appendChild(child);
         } else {
           fragment.appendChild(Object.prototype.toString.call(null, child));
@@ -397,7 +408,6 @@ export class VNodeComponent extends VNode {
     // 즉, 컴포넌트의 parent 가 된다.
     this.instance = options.context.createInstanceForComponent(
       Component,
-      null,
       props
     );
 
@@ -464,6 +474,11 @@ export function createVNodeText(text) {
 
 export function createVNodeElement(el) {
   return new VNodeElement(el);
+}
+
+export function htmlToVNode(html) {
+  const $dom = Dom.createByHTML(html);
+  return createVNodeByDom($dom.el);
 }
 
 export function createVNodeByDom(el) {

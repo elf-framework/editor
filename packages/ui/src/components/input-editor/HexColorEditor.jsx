@@ -115,7 +115,7 @@ export class HexColorEditor extends UIElement {
       <div {...styleObject}>
         <div class="elf--input-area">
           <div class="elf--input-item">
-            <input class="color" type="text" maxlength={6} {...properties} {...inputEvents} onKeyDown={this.keydownColor} onKeyUp={this.keyupColor} />
+            <input class="color" type="text" data-type="hex" maxlength={6} {...properties} {...inputEvents} onKeyDown={this.keydownColor} onKeyUp={this.keyupColor} />
           </div>
         </div>
         {this.state.hasOpacity && (
@@ -256,8 +256,11 @@ export class HexColorEditor extends UIElement {
   onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
-        this.refs.$input.focus();
-        this.refs.$input.select();
+
+        const $el = this.$el.$("input[data-type='hex']");
+
+        $el.focus();
+        $el.select()
       }, 10);
     }
   }

@@ -1,0 +1,29 @@
+.elf--color-grid {
+    --elf--color-grid-max-width: 240px;
+    --elf--color-grid-background-color: white;
+    --elf--color-grid-size: 16px;
+    --elf--color-grid-pattern-size: 6px;
+    --elf--color-grid-pattern-color-1: #FFFFFF;
+    --elf--color-grid-pattern-color-2: #ececec;
+
+    background-color: var(--elf--color-grid-background-color);
+    max-width: var(--elf--color-grid-max-width);
+
+    > .elf--color-grid-header {
+        padding: 8px;
+
+    }
+    > .elf--color-grid-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0px 16px 16px;
+        gap: 8px;
+        > .elf--color-grid-item {
+            width: fit-content;
+            height: fit-content;
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+}

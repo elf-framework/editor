@@ -5,8 +5,16 @@ import { Menu } from "../menu";
 
 export class OptionMenu extends UIElement {
   template() {
-    const { icon, content, items, menuStyle = {}, disabled = undefined } = this.props;
+    const {
+      icon,
+      content,
+      items,
+      menuStyle = {},
+      disabled = undefined,
+      autoPosition = false,
+    } = this.props;
     const { isOpen } = this.state;
+    const showMenu = isOpen && items;
     return (
       <div class="elf--option-menu" disabled={disabled}>
         <div
@@ -23,9 +31,10 @@ export class OptionMenu extends UIElement {
             <ArrowIcon />
           </div>
         </div>
-        {isOpen && items ? (
+        {showMenu ? (
           <div class="menu-area">
             <Menu
+              autoPosition={autoPosition}
               rootClose={() => {
                 this.close();
               }}

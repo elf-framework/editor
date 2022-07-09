@@ -263,6 +263,10 @@ export class EventMachine extends MagicHandler {
     return false;
   }
 
+  isInstanceOf(Component) {
+    return this instanceof Component;
+  }
+
   checkRefClass = (oldEl, newVNode) => {
     const props = newVNode.props;
 
@@ -277,7 +281,7 @@ export class EventMachine extends MagicHandler {
     let targetInstance = this.getTargetInstance(oldEl);
 
     if (targetInstance) {
-      if (targetInstance instanceof newVNode.Component) {
+      if (targetInstance.isInstanceOf(newVNode.Component)) {
         // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
         if (targetInstance.isForceRender(props)) {
           return true;
@@ -403,6 +407,10 @@ export class EventMachine extends MagicHandler {
     BaseClass = EventMachine
   ) {
     class FunctionElement extends BaseClass {
+      // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
+      isInstanceOf(Component) {
+        return EventMachineComponent === Component;
+      }
       template() {
         return EventMachineComponent.call(this, this.props);
       }
@@ -411,7 +419,7 @@ export class EventMachine extends MagicHandler {
     return new FunctionElement(this, props);
   }
 
-  createInstanceForComponent(EventMachineComponent, targetElement, props) {
+  createInstanceForComponent(EventMachineComponent, props) {
     if (
       EventMachineComponent.__proto__.name === "" &&
       isFunction(EventMachineComponent)
@@ -524,7 +532,7 @@ export class EventMachine extends MagicHandler {
    */
   collectMethodes(refreshCache = false) {
     if (!this.#cachedMethodList || refreshCache) {
-      this.#cachedMethodList = collectProps(this, (name) =>
+      this.#cachedMethodList = collectProps(this, EventMachine, (name) =>
         MagicMethod.check(name)
       ).map((it) => {
         return MagicMethod.parse(it, /*context*/ this);

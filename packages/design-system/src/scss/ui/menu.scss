@@ -11,6 +11,8 @@
     --elf--menu-max-width: 240px;
     /* menu item height */
     --elf--menu-item-height: 24px;
+    /* menu item padding */
+    --elf--menu-item-padding: 16px;
     /* menu item section title color */
     --elf--menu-item-section-title-color: rgba(255, 255, 255, 0.6);
     /* menu item divider color */
@@ -28,6 +30,7 @@
 
     --elf--menu-left: 0px;
     --elf--menu-top: 0px;
+    --elf--zindex: 1;
 
 
     background: var(--elf--menu-background-color);
@@ -45,6 +48,7 @@
     display: inline-block;
     left: var(--elf--menu-left);
     top: var(--elf--menu-top);
+    z-index: var(--elf--zindex);
 
     &[data-direction="right"] {
         left: auto;
@@ -76,7 +80,7 @@
         border-bottom: 1px solid var(--elf--menu-border-color);
         // margin-bottom: 16px;
         margin-left: 0px;
-        padding: 0px 16px;
+        padding: 0px var(--elf--menu-item-padding);
         color: white;
         align-items: center;
         cursor: pointer;

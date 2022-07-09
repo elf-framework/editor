@@ -9,3 +9,5 @@ export * from "./functions/func";
 export * from "./functions/uuid";
 export * from "./functions/registElement";
 export * from "./functions/MagicMethod";
+export * from "./functions/vnode";
+export * from "./constant/vnode";

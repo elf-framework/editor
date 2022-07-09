@@ -5,8 +5,6 @@ declare module "@elf-framework/sapa" {
   export type EVENT = (...args: string[]) => string;
   export type OBSERVER = (...args: string[]) => string;
   export type PARAMS = (...args: string[]) => string;
-  export const COMMAND: EVENT;
-  export const ON: EVENT;
 
   // Predefined CHECKER
   export type CHECKER = (value: string, split: string) => string;
@@ -393,7 +391,7 @@ declare module "@elf-framework/sapa" {
     off(message: string, callback: () => void): void;
   }
   type ElementFunction = () => any;
-  type ElementType = typeof UIElement | ElementFunction;
+  type ElementType = typeof UIElement | ElementFunction | VNode;
 
   export function start(
     uiElement: ElementType,
@@ -430,4 +428,6 @@ declare module "@elf-framework/sapa" {
     props: KeyValue,
     ...children: any[]
   ): string;
+
+  export function htmlToVNode(html: string): VNode;
 }

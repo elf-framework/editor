@@ -16,14 +16,13 @@ import {
   isFunction,
 } from "@elf-framework/sapa";
 
-
 import { Button } from "../button";
-import { OptionMenu } from "../option-menu";
 import { HexColorEditor } from "../input-editor/HexColorEditor";
-import { RGBColorEditor } from "../input-editor/RGBColorEditor";
 import { HSLColorEditor } from "../input-editor/HSLColorEditor";
+import { RGBColorEditor } from "../input-editor/RGBColorEditor";
+import { OptionMenu } from "../option-menu";
 
-const COLOR_TYPES = ['hex', 'rgb', 'hsl'];
+const COLOR_TYPES = ["hex", "rgb", "hsl"];
 
 function EyeDropper(props) {
   return (
@@ -148,28 +147,50 @@ class ColorInput extends UIElement {
   initState() {
     const { type } = this.props;
 
-    return {
-      type,
-    }
+    return { type };
   }
 
   makeTypedColorInput() {
-    const { r, g, b, a, h, s, l, onChange } = this.props;
+    const { r, g, b, a, onChange } = this.props;
     const { type } = this.state;
+
+    const { h, s, l } = RGBtoHSL(r, g, b);
 
     switch (type) {
       case "hex":
-        return <div><HexColorEditor value={format({r, g, b, a}, "hex")} onChange={onChange} /></div>;
+        return (
+          <div>
+            <HexColorEditor
+              autoFocus={true}
+              value={format({ r, g, b, a }, "hex")}
+              onChange={onChange}
+            />
+          </div>
+        );
       case "rgb":
-        return <div><RGBColorEditor value={format({r, g, b, a}, "rgb")} onChange={onChange} /></div>;
+        return (
+          <div>
+            <RGBColorEditor
+              autoFocus={true}
+              value={format({ r, g, b, a }, "rgb")}
+              onChange={onChange}
+            />
+          </div>
+        );
       case "hsl":
-        return <div><HSLColorEditor value={format({h, s, l, a}, "hsl")} onChange={onChange} /></div>;
+        return (
+          <div>
+            <HSLColorEditor
+              autoFocus={true}
+              value={format({ h, s, l, a }, "hsl")}
+              onChange={onChange}
+            />
+          </div>
+        );
     }
 
     return undefined;
   }
-
-
 
   template() {
     const { type } = this.state;
@@ -177,21 +198,28 @@ class ColorInput extends UIElement {
 
     return (
       <div class="color-input">
-        <OptionMenu menuStyle={{
-          width: 100
-        }} items={COLOR_TYPES.map(it => {
-          return           {
-            title: it.toUpperCase(),
-            selectable: true,
-            closable: true,
-            selected: type === it,
-            onClick: (e, item) => {
-              this.setState({
-                type: it
-              })
-            },
-          }          
-        })}>{type.toUpperCase()}</OptionMenu>
+        <OptionMenu
+          autoPosition={true}
+          menuStyle={{
+            width: 80,
+            itemPadding: "10px",
+          }}
+          items={COLOR_TYPES.map((it) => {
+            return {
+              title: it.toUpperCase(),
+              selectable: true,
+              closable: true,
+              selected: type === it,
+              onClick: () => {
+                this.setState({
+                  type: it,
+                });
+              },
+            };
+          })}
+        >
+          {type.toUpperCase()}
+        </OptionMenu>
         {input}
       </div>
     );

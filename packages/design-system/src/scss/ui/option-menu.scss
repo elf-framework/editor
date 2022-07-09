@@ -11,7 +11,7 @@
     --elf--option-menu-disabled-color: rgba(0, 0, 0, 0.1);
 
     min-width: var(--elf--option-menu-min-width);
-    max-width: calc(100% - var(--elf--option-menu-min-width));
+    // max-width: calc(100% - var(--elf--option-menu-min-width));
     border: 1px solid var(--elf--option-menu-border-color);
     outline: 1px solid var(--elf--option-menu-outline-color);
     border-radius: var(--elf--option-menu-border-radius);
@@ -82,7 +82,7 @@
             flex: none;
             width: 32px;
             height: 32px;
-            transform: translate(-2px, -2px);
+            transform: translate(-1px, -1px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -102,9 +102,11 @@
             font-size: var(--elf--option-menu-font-size);
             display: flex;
             line-height: 1.6;
-            // justify-content: start;
             align-items: center;
-            padding: 0px 4px 0px 10px;
+            overflow: hidden;
+            padding: 0 4px 0 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
 
         > .arrow {

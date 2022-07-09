@@ -1,5 +1,6 @@
 import { Dom } from "./functions/Dom";
 import { registRootElementInstance } from "./functions/registElement";
+import { VNode } from "./functions/vnode";
 // import { Router } from "./Router";
 import { UIElement } from "./UIElement";
 
@@ -11,6 +12,11 @@ import { UIElement } from "./UIElement";
  */
 export const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
+
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
 
   const app = UIElement.createElementInstance(ElementClass, opt);
 

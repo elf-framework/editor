@@ -1,10 +1,6 @@
 import { UIElement } from "@elf-framework/sapa";
 
 export class Layer extends UIElement {
-  onMounted() {
-    console.log("aaaa");
-  }
-
   template() {
     const {
       top,

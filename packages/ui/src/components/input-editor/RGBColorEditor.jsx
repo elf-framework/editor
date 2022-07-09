@@ -83,35 +83,59 @@ export class RGBColorEditor extends UIElement {
       disabled,
       placeholder: placeholder || "",
       min: 0,
-      max: 255
+      max: 255,
     };
 
-    this.setState({
-      parsedColor: {
-        r, g, b, a
-      }
-    }, false)
+    this.setState(
+      {
+        parsedColor: { r, g, b, a },
+      },
+      false
+    );
 
     return (
       <div {...styleObject}>
         <div class="elf--input-area">
           <Grid columns={3}>
             <div class="elf--input-item">
-              <input class="color" data-type="r" value={r} {...properties} onKeyDown={this.keydownColor} />
+              <input
+                class="color"
+                data-type="r"
+                tabIndex={1}
+                value={r}
+                {...properties}
+                onKeyDown={this.keydownColor}
+              />
             </div>
             <div class="elf--input-item">
-              <input class="color" data-type="g" value={g} {...properties} onKeyDown={this.keydownColor} />
+              <input
+                class="color"
+                data-type="g"
+                tabIndex={2}
+                value={g}
+                {...properties}
+                onKeyDown={this.keydownColor}
+              />
             </div>
             <div class="elf--input-item">
-              <input class="color" data-type="b" value={b} {...properties} onKeyDown={this.keydownColor} />
+              <input
+                class="color"
+                data-type="b"
+                tabIndex={3}
+                value={b}
+                {...properties}
+                onKeyDown={this.keydownColor}
+              />
             </div>
           </Grid>
         </div>
         {this.state.hasOpacity && (
           <div class="elf--input-opacity">
             <input
+              type="text"
+              tabIndex={4}
               class="opacity"
-              value={`${Math.round(a * 100 * 100)/100}%`}
+              value={`${Math.round(a * 100 * 100) / 100}%`}
               onKeyDown={this.keydown}
             />
           </div>
@@ -121,27 +145,41 @@ export class RGBColorEditor extends UIElement {
   }
 
   updateOpacity(num) {
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100)/100)) ,
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: Math.max(
+            0,
+            Math.min(
+              1,
+              Math.round((this.state.parsedColor.a + num) * 100) / 100
+            )
+          ),
+        },
       },
-    }, false);
+      false
+    );
 
-    this.runCallback(this.props.onChange);    
+    this.runCallback(this.props.onChange);
   }
 
   updateColor(type, num) {
-
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        [type]: Math.max(0, Math.min(255, this.state.parsedColor[type] + num)),
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          [type]: Math.max(
+            0,
+            Math.min(255, this.state.parsedColor[type] + num)
+          ),
+        },
       },
-    }, false);
+      false
+    );
 
     this.runCallback(this.props.onChange);
-  }  
+  }
 
   increaseColor(type) {
     this.updateColor(type, 1);
@@ -159,40 +197,51 @@ export class RGBColorEditor extends UIElement {
     this.updateOpacity(-0.01);
   }
 
-
   keydownColor = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
     switch (e.key) {
       case "ArrowUp":
-        this.increaseColor(e.target.getAttribute('data-type'));
+        e.preventDefault();
+        this.increaseColor(e.target.getAttribute("data-type"));
+        e.target.select();
         break;
       case "ArrowDown":
-        this.decreaseColor(e.target.getAttribute('data-type'));
+        e.preventDefault();
+        this.decreaseColor(e.target.getAttribute("data-type"));
+        e.target.select();
         break;
     }
-    e.target.select();    
-  }
+  };
 
   keydown = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
     switch (e.key) {
       case "ArrowUp":
+        e.preventDefault();
         this.increaseOpacity(e);
+        e.target.select();
         break;
       case "ArrowDown":
+        e.preventDefault();
         this.decreaseOpacity(e);
+        e.target.select();
+        break;
+      case "Tab":
+        e.preventDefault();
+
+        var $el = this.$el.$("input[data-type='r']");
+
+        $el.focus();
+        $el.select();
         break;
     }
-    e.target.select();    
   };
 
   onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
-        this.refs.$input.focus();
-        this.refs.$input.select();
+        const $el = this.$el.$("input[data-type='r']");
+
+        $el.focus();
+        $el.select();
       }, 10);
     }
   }
@@ -227,8 +276,8 @@ export class RGBColorEditor extends UIElement {
 
   get value() {
     const { parsedColor } = this.state;
-    const {r, g, b, a} = parsedColor;
-    return format({ r, g, b, a }, 'rgb');
+    const { r, g, b, a } = parsedColor;
+    return format({ r, g, b, a }, "rgb");
   }
 
   set value(v) {

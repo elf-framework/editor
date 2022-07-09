@@ -41,12 +41,16 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _handlerCache, _state, _cachedMethodList, _isServer, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
-function collectProps(root, filterFunction = () => true) {
+function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
   do {
     const isObject2 = p instanceof Object;
     if (isObject2 === false) {
+      break;
+    }
+    const isRootClass = p.constructor.name === rootClass.name;
+    if (isRootClass) {
       break;
     }
     const names = Object.getOwnPropertyNames(p).filter(filterFunction);
@@ -295,7 +299,7 @@ function hasPassed(node1) {
 function hasRefClass(node1) {
   return node1.nodeType !== TEXT_NODE$1 && node1.getAttribute("refclass");
 }
-function getProps$1(attributes) {
+function getProps$2(attributes) {
   var results = {};
   const len = attributes.length;
   for (let i = 0; i < len; i++) {
@@ -334,13 +338,13 @@ function updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options = {
   if (options.checkPassed && options.checkPassed(oldEl, newEl)) {
     return;
   } else {
-    updateProps$1(oldEl, getProps$1(newEl.attributes), getProps$1(oldEl.attributes));
+    updateProps$1(oldEl, getProps$2(newEl.attributes), getProps$2(oldEl.attributes));
   }
   if (!oldEl.hasChildNodes() && !newEl.hasChildNodes()) {
     return;
   }
-  var oldChildren = children$1(oldEl);
-  var newChildren = children$1(newEl);
+  var oldChildren = children$2(oldEl);
+  var newChildren = children$2(newEl);
   var max = Math.max(oldChildren.length, newChildren.length);
   for (var index = 0; index < max; index++) {
     updateElement$1(oldEl, oldChildren[index], newChildren[index], index, options);
@@ -367,7 +371,7 @@ function updateElement$1(parentElement, oldEl, newEl, i, options = {}) {
     updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options);
   }
 }
-const children$1 = (el) => {
+const children$2 = (el) => {
   var element = el.firstChild;
   if (!element) {
     return [];
@@ -391,10 +395,10 @@ function DomDiff(A, B, options = {}) {
   options = Object.assign({}, DefaultOption$1, options);
   A = A.el || A;
   B = B.el || B;
-  var childrenA = children$1(A);
-  var childrenB = children$1(B);
+  var childrenA = children$2(A);
+  var childrenB = children$2(B);
   if (A.nodeType !== 11 && B.nodeType !== 11) {
-    updateProps$1(A, getProps$1(B.attributes), getProps$1(A.attributes));
+    updateProps$1(A, getProps$2(B.attributes), getProps$2(A.attributes));
   }
   var len = Math.max(childrenA.length, childrenB.length);
   if (len === 0) {
@@ -1289,145 +1293,6 @@ class Dom {
     }
   }
 }
-class BaseStore {
-  constructor(editor) {
-    this.id = uuidShort();
-    this.cachedCallback = {};
-    this.callbacks = {};
-    this.editor = editor;
-  }
-  hasCallback(event, callback) {
-    var list = this.getCachedCallbacks(event);
-    return list.some((f) => f.originalCallback === callback);
-  }
-  getCallbacks(event) {
-    if (!this.callbacks[event]) {
-      this.callbacks[event] = [];
-    }
-    return this.callbacks[event];
-  }
-  setCallbacks(event, list = []) {
-    this.callbacks[event] = list;
-  }
-  debug(...args) {
-    if (this.editor && this.editor.context.config.get("debug.mode")) {
-      console.debug(...args);
-    }
-  }
-  on(event, originalCallback, context, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, beforeMethods = [], frame = false) {
-    var callback = originalCallback;
-    if (debounceDelay > 0)
-      callback = debounce(originalCallback, debounceDelay);
-    else if (throttleDelay > 0)
-      callback = throttle(originalCallback, throttleDelay);
-    if (beforeMethods.length) {
-      callback = ifCheck(callback, context, beforeMethods);
-    }
-    if (frame) {
-      callback = makeRequestAnimationFrame(callback, context, originalCallback.name);
-    }
-    this.getCallbacks(event).push({
-      event,
-      callback,
-      context,
-      originalCallback,
-      enableAllTrigger,
-      enableSelfTrigger
-    });
-    return () => {
-      this.off(event, originalCallback);
-    };
-  }
-  off(event, originalCallback) {
-    this.debug("off message event", event);
-    if (arguments.length == 1) {
-      this.setCallbacks(event);
-    } else if (arguments.length == 2) {
-      this.setCallbacks(event, this.getCallbacks(event).filter((f) => {
-        return f.originalCallback !== originalCallback;
-      }));
-    }
-  }
-  offAll(context) {
-    Object.keys(this.callbacks).forEach((event) => {
-      this.setCallbacks(event, this.getCallbacks(event).filter((f) => {
-        return f.context !== context;
-      }));
-    });
-    this.debug("off all message", context.sourceName);
-  }
-  getCachedCallbacks(event) {
-    return this.getCallbacks(event);
-  }
-  sendMessage(source, event, ...args) {
-    this.sendMessageList(source, [[event, ...args]]);
-  }
-  runMessage(runnableFunction, args) {
-    const result = runnableFunction.callback.apply(runnableFunction.context, args);
-    if (isNotUndefined(result)) {
-      if (result === false) {
-        return;
-      } else if (isFunction(result)) {
-        result();
-        return;
-      }
-    }
-  }
-  sendMessageList(source, messages = []) {
-    window.Promise.resolve().then(() => {
-      messages.forEach(([event, ...args]) => {
-        var list = this.getCachedCallbacks(event);
-        if (list && list.length) {
-          const runnableFunctions = list.filter((f) => !f.enableSelfTrigger).filter((f) => f.enableAllTrigger || f.originalCallback.source !== source);
-          let i = runnableFunctions.length;
-          while (i--) {
-            const f = runnableFunctions[i];
-            this.runMessage(f, args);
-          }
-        } else {
-          this.debug(`message event ${event} is not exist.`);
-        }
-      });
-    });
-  }
-  nextSendMessage(source, callback, ...args) {
-    window.Promise.resolve().then(() => {
-      callback(...args);
-    });
-  }
-  triggerMessage(source, event, ...args) {
-    window.Promise.resolve().then(() => {
-      var list = this.getCachedCallbacks(event);
-      if (list) {
-        const runnableFunctions = list.filter((f) => f.originalCallback.source === source);
-        runnableFunctions.forEach((f) => {
-          f.callback.apply(f.context, args);
-        });
-      } else {
-        this.debug(event, " is not valid event");
-      }
-    });
-  }
-  emit(event, ...args) {
-    if (isFunction(event)) {
-      event(...args);
-    } else if (isArray(event)) {
-      this.sendMessageList(this.source, event);
-    } else {
-      this.sendMessage(this.source, event, ...args);
-    }
-  }
-  nextTick(callback) {
-    this.nextSendMessage(this.source, callback);
-  }
-  trigger(event, ...args) {
-    if (isFunction(event)) {
-      event(...args);
-    } else {
-      this.triggerMessage(this.source, event, ...args);
-    }
-  }
-}
 const VNodeType = {
   NODE: 8,
   TEXT: 3,
@@ -1589,7 +1454,13 @@ function makeNativeTextDom(value) {
   text.textContent = value;
   return text;
 }
+const expectAttributes = {
+  content: true,
+  contentChildren: true
+};
 function setAttribute(el, name, value) {
+  if (expectAttributes[name])
+    return;
   el.setAttribute(name, value);
 }
 function setEventAttribute(el, name, value) {
@@ -1612,6 +1483,29 @@ function stringifyStyle(styleObject) {
     return `${key}: ${newStyle[key]};`;
   }).join(" ");
 }
+function getProps$1(attributes) {
+  var results = {};
+  const len = attributes.length;
+  for (let i = 0; i < len; i++) {
+    const t = attributes[i];
+    const name = t.name;
+    const value = t.value;
+    results[name] = value;
+  }
+  return results;
+}
+const children$1 = (el) => {
+  var element = el.firstChild;
+  if (!element) {
+    return [];
+  }
+  var results = [];
+  do {
+    results[results.length] = element;
+    element = element.nextSibling;
+  } while (element);
+  return results;
+};
 function makeOneElement(html) {
   if (cacheCount > 2e3) {
     cacheCount = 0;
@@ -1660,7 +1554,6 @@ class VNode {
     } else {
       const targetVariable = Object.keys(newProps).length ? variable(newProps) : void 0;
       const newProps2 = {
-        refClass: this.Component.name,
         ref: newProps.ref ? newProps.ref : void 0
       };
       if (targetVariable) {
@@ -1668,12 +1561,16 @@ class VNode {
       }
       this.tagProps = newProps2;
     }
+    if (this.props.enableHtml) {
+      this.enableHtml = this.props.enableHtml;
+      delete this.props.enableHtml;
+    }
   }
   initializeChildren() {
     if (isArray(this.children)) {
       this.children = this.children.map((child) => {
         if (isString(child)) {
-          if (this.props.enableHtml) {
+          if (this.enableHtml) {
             if (child.indexOf(TAG_PREFIX) === -1) {
               return createVNodeText(child);
             } else {
@@ -1711,7 +1608,7 @@ class VNode {
           });
         } else if (isFunction(child)) {
           fragment.appendChild(child());
-        } else if (child instanceof HTMLElement) {
+        } else if (child instanceof window.HTMLElement) {
           fragment.appendChild(child);
         } else {
           fragment.appendChild(Object.prototype.toString.call(null, child));
@@ -1828,7 +1725,7 @@ class VNodeComponent extends VNode {
   render(options) {
     const Component = this.Component;
     const props = this.props;
-    this.instance = options.context.createInstanceForComponent(Component, null, props);
+    this.instance = options.context.createInstanceForComponent(Component, props);
     this.instance.render();
   }
   makeElement(withChildren, options = {}) {
@@ -1869,6 +1766,161 @@ function createVNodeText(text) {
 }
 function createVNodeElement(el) {
   return new VNodeElement(el);
+}
+function htmlToVNode(html) {
+  const $dom = Dom.createByHTML(html);
+  return createVNodeByDom($dom.el);
+}
+function createVNodeByDom(el) {
+  return createVNode({
+    tag: el.tagName.toLowerCase(),
+    props: getProps$1(el.attributes),
+    children: children$1(el).map((it) => {
+      return createVNodeByDom(it);
+    })
+  });
+}
+function cloneVNode(vnode) {
+  return vnode.clone();
+}
+class BaseStore {
+  constructor(editor) {
+    this.id = uuidShort();
+    this.cachedCallback = {};
+    this.callbacks = {};
+    this.editor = editor;
+  }
+  hasCallback(event, callback) {
+    var list = this.getCachedCallbacks(event);
+    return list.some((f) => f.originalCallback === callback);
+  }
+  getCallbacks(event) {
+    if (!this.callbacks[event]) {
+      this.callbacks[event] = [];
+    }
+    return this.callbacks[event];
+  }
+  setCallbacks(event, list = []) {
+    this.callbacks[event] = list;
+  }
+  debug(...args) {
+    if (this.editor && this.editor.context.config.get("debug.mode")) {
+      console.debug(...args);
+    }
+  }
+  on(event, originalCallback, context, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, beforeMethods = [], frame = false) {
+    var callback = originalCallback;
+    if (debounceDelay > 0)
+      callback = debounce(originalCallback, debounceDelay);
+    else if (throttleDelay > 0)
+      callback = throttle(originalCallback, throttleDelay);
+    if (beforeMethods.length) {
+      callback = ifCheck(callback, context, beforeMethods);
+    }
+    if (frame) {
+      callback = makeRequestAnimationFrame(callback, context, originalCallback.name);
+    }
+    this.getCallbacks(event).push({
+      event,
+      callback,
+      context,
+      originalCallback,
+      enableAllTrigger,
+      enableSelfTrigger
+    });
+    return () => {
+      this.off(event, originalCallback);
+    };
+  }
+  off(event, originalCallback) {
+    this.debug("off message event", event);
+    if (arguments.length == 1) {
+      this.setCallbacks(event);
+    } else if (arguments.length == 2) {
+      this.setCallbacks(event, this.getCallbacks(event).filter((f) => {
+        return f.originalCallback !== originalCallback;
+      }));
+    }
+  }
+  offAll(context) {
+    Object.keys(this.callbacks).forEach((event) => {
+      this.setCallbacks(event, this.getCallbacks(event).filter((f) => {
+        return f.context !== context;
+      }));
+    });
+    this.debug("off all message", context.sourceName);
+  }
+  getCachedCallbacks(event) {
+    return this.getCallbacks(event);
+  }
+  sendMessage(source, event, ...args) {
+    this.sendMessageList(source, [[event, ...args]]);
+  }
+  runMessage(runnableFunction, args) {
+    const result = runnableFunction.callback.apply(runnableFunction.context, args);
+    if (isNotUndefined(result)) {
+      if (result === false) {
+        return;
+      } else if (isFunction(result)) {
+        result();
+        return;
+      }
+    }
+  }
+  sendMessageList(source, messages = []) {
+    window.Promise.resolve().then(() => {
+      messages.forEach(([event, ...args]) => {
+        var list = this.getCachedCallbacks(event);
+        if (list && list.length) {
+          const runnableFunctions = list.filter((f) => !f.enableSelfTrigger).filter((f) => f.enableAllTrigger || f.originalCallback.source !== source);
+          let i = runnableFunctions.length;
+          while (i--) {
+            const f = runnableFunctions[i];
+            this.runMessage(f, args);
+          }
+        } else {
+          this.debug(`message event ${event} is not exist.`);
+        }
+      });
+    });
+  }
+  nextSendMessage(source, callback, ...args) {
+    window.Promise.resolve().then(() => {
+      callback(...args);
+    });
+  }
+  triggerMessage(source, event, ...args) {
+    window.Promise.resolve().then(() => {
+      var list = this.getCachedCallbacks(event);
+      if (list) {
+        const runnableFunctions = list.filter((f) => f.originalCallback.source === source);
+        runnableFunctions.forEach((f) => {
+          f.callback.apply(f.context, args);
+        });
+      } else {
+        this.debug(event, " is not valid event");
+      }
+    });
+  }
+  emit(event, ...args) {
+    if (isFunction(event)) {
+      event(...args);
+    } else if (isArray(event)) {
+      this.sendMessageList(this.source, event);
+    } else {
+      this.sendMessage(this.source, event, ...args);
+    }
+  }
+  nextTick(callback) {
+    this.nextSendMessage(this.source, callback);
+  }
+  trigger(event, ...args) {
+    if (isFunction(event)) {
+      event(...args);
+    } else {
+      this.triggerMessage(this.source, event, ...args);
+    }
+  }
 }
 function VNodeToElement(obj, options = {}) {
   if (isString(obj)) {
@@ -1931,11 +1983,10 @@ const patch = {
     }
   },
   removeProp(el, name) {
+    el.removeAttribute(name);
     if (isBooleanType(name)) {
-      el.removeAttribute(name);
       el[name] = false;
     } else if (name) {
-      el.removeAttribute(name);
       el[name] = void 0;
     }
   },
@@ -1947,6 +1998,7 @@ const patch = {
     }
   },
   replaceWith(oldEl, newVNode, options) {
+    console.log(oldEl, newVNode);
     const objectElement = newVNode.makeElement(true, options).el;
     oldEl.replaceWith(objectElement);
     newVNode.runMounted();
@@ -1971,7 +2023,7 @@ const patch = {
 };
 const check = {
   changed(vNode, node2) {
-    return vNode.type === VNodeType.TEXT && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName;
+    return vNode.type === VNodeType.TEXT && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
   },
   hasPassed(vNode) {
     return vNode.pass;
@@ -1981,18 +2033,19 @@ const check = {
   }
 };
 const updateProps = (node, newProps = {}, oldProps = {}) => {
-  const keyList = [];
   const newPropsKeys = Object.keys(newProps);
   const oldPropsKeys = Object.keys(oldProps);
   if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
     return;
   }
-  keyList.push.apply(keyList, newPropsKeys);
-  keyList.push.apply(keyList, oldPropsKeys);
-  const props = new Set(keyList);
-  props.forEach((key) => {
+  newPropsKeys.forEach((key) => {
     if (!expectKeys[key]) {
       patch.updateProp(node, key, newProps[key], oldProps[key]);
+    }
+  });
+  oldPropsKeys.forEach((key) => {
+    if (isUndefined(newProps[key])) {
+      patch.removeProp(node, key);
     }
   });
 };
@@ -2052,18 +2105,15 @@ function updateChangedElement(parentElement, oldEl, newVNode, nodeIndex, options
         }
       }
     } else {
+      console.log("fdjksalfdsjkf", newVNode);
       patch.replaceWith(oldEl, newVNode, options);
     }
   }
   return true;
 }
 function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
-  if (options.checkPassed && options.checkPassed(oldEl, newVNode)) {
-    return;
-  } else {
-    const newVNodeProps = omitProps(newVNode);
-    updateProps(oldEl, newVNodeProps, getProps(oldEl, oldEl.attributes, newVNodeProps));
-  }
+  const newVNodeProps = omitProps(newVNode);
+  updateProps(oldEl, newVNodeProps, getProps(oldEl, oldEl.attributes, newVNodeProps));
   if (!oldEl.hasChildNodes() && !newVNode.children.length) {
     return;
   }
@@ -2127,7 +2177,7 @@ const vNodeChildren = (vnode) => {
   if (!vnode.children.length) {
     return [];
   }
-  const children2 = vnode.children.map((it) => it.type === VNodeType.FRAGMENT ? it.children : it).flat();
+  const children2 = vnode.children;
   return children2;
 };
 const DefaultOption = {
@@ -3064,7 +3114,7 @@ const _EventMachine = class extends MagicHandler {
       }
       let targetInstance = this.getTargetInstance(oldEl);
       if (targetInstance) {
-        if (targetInstance instanceof newVNode.Component) {
+        if (targetInstance.isInstanceOf(newVNode.Component)) {
           if (targetInstance.isForceRender(props)) {
             return true;
           }
@@ -3200,6 +3250,9 @@ const _EventMachine = class extends MagicHandler {
   isForceRender() {
     return false;
   }
+  isInstanceOf(Component) {
+    return this instanceof Component;
+  }
   async render($container) {
     if (!this.isPreLoaded) {
       this.checkLoad($container);
@@ -3253,13 +3306,16 @@ const _EventMachine = class extends MagicHandler {
   }
   createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine) {
     class FunctionElement extends BaseClass {
+      isInstanceOf(Component) {
+        return EventMachineComponent === Component;
+      }
       template() {
         return EventMachineComponent.call(this, this.props);
       }
     }
     return new FunctionElement(this, props);
   }
-  createInstanceForComponent(EventMachineComponent, targetElement, props) {
+  createInstanceForComponent(EventMachineComponent, props) {
     if (EventMachineComponent.__proto__.name === "" && isFunction(EventMachineComponent)) {
       return this.createFunctionComponent(EventMachineComponent, props);
     }
@@ -3290,7 +3346,7 @@ const _EventMachine = class extends MagicHandler {
   }
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
-      __privateSet(this, _cachedMethodList, collectProps(this, (name) => MagicMethod.check(name)).map((it) => {
+      __privateSet(this, _cachedMethodList, collectProps(this, _EventMachine, (name) => MagicMethod.check(name)).map((it) => {
         return MagicMethod.parse(it, this);
       }));
     }
@@ -3424,6 +3480,10 @@ let UIElement = _UIElement;
 _storeInstance = new WeakMap();
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
   const app = UIElement.createElementInstance(ElementClass, opt);
   app.render($container);
   registRootElementInstance(app);
@@ -3488,4 +3548,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, WHEEL, classnames, clone, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };

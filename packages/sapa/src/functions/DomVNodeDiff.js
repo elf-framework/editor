@@ -58,17 +58,17 @@ const patch = {
     } else if (name === KEY_STYLE) {
       el.style.cssText = value;
     } else {
-      // 속성을 정의할 때 property 와 같이 정의한다. 
+      // 속성을 정의할 때 property 와 같이 정의한다.
       el.setAttribute(name, value);
       el[name] = value;
     }
   },
   removeProp(el, name) {
+    el.removeAttribute(name);
+
     if (isBooleanType(name)) {
-      el.removeAttribute(name);
       el[name] = false;
     } else if (name) {
-      el.removeAttribute(name);
       el[name] = undefined;
     }
   },
@@ -82,6 +82,7 @@ const patch = {
   },
 
   replaceWith(oldEl, newVNode, options) {
+    console.log(oldEl, newVNode);
     const objectElement = newVNode.makeElement(true, options).el;
     oldEl.replaceWith(objectElement);
     newVNode.runMounted();
@@ -112,6 +113,7 @@ const patch = {
 const check = {
   /**
    * TEXT_NODE 일 때   둘 다 공백일 때는  비교하지 않는다.
+   * nodeName 이 다를 때는 변경 된 것으로 인지한다.
    *
    * @param {*} node1
    *
@@ -121,10 +123,16 @@ const check = {
     return (
       (vNode.type === VNodeType.TEXT &&
         vNode.textContent !== node2.textContent) ||
-      vNode.nodeName !== node2.nodeName
+      vNode.nodeName !== node2.nodeName.toUpperCase()
     );
   },
 
+  /**
+   * pass 속성이 있을 때만 비교한다.
+   *
+   * @param {VNode} vNode
+   * @returns
+   */
   hasPassed(vNode) {
     return vNode.pass;
   },
@@ -141,8 +149,6 @@ const check = {
 };
 
 const updateProps = (node, newProps = {}, oldProps = {}) => {
-  const keyList = [];
-
   const newPropsKeys = Object.keys(newProps);
   const oldPropsKeys = Object.keys(oldProps);
 
@@ -151,16 +157,31 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
     return;
   }
 
-  keyList.push.apply(keyList, newPropsKeys);
-  keyList.push.apply(keyList, oldPropsKeys);
-
-  const props = new Set(keyList);
-
-  props.forEach((key) => {
+  // newProps 를 기준으로 루프를 먼저 돌고
+  newPropsKeys.forEach((key) => {
     if (!expectKeys[key]) {
       patch.updateProp(node, key, newProps[key], oldProps[key]);
     }
   });
+  // oldProps 기준으로 newProps 에 키가 없으면 삭제한다.
+  oldPropsKeys.forEach((key) => {
+    if (isUndefined(newProps[key])) {
+      patch.removeProp(node, key);
+    }
+  });
+
+  // // FIXME: 사전에 정의할 수 있는 부분은 모두 사전에 정의한다.
+  // // FIXME: Set 을 실행하지 않고 유니크한 key 리스트를 얻을 수 있도록 한다.
+  // keyList.push.apply(keyList, newPropsKeys);
+  // keyList.push.apply(keyList, oldPropsKeys);
+
+  // const props = new Set(keyList);
+
+  // props.forEach((key) => {
+  //   if (!expectKeys[key]) {
+  //     patch.updateProp(node, key, newProps[key], oldProps[key]);
+  //   }
+  // });
 };
 
 function omitProps(vNode) {
@@ -236,7 +257,7 @@ function updateChangedElement(
   } else if (oldNodeType === TEXT_NODE && newNodeType === VNodeType.TEXT) {
     patch.replaceText(oldEl, newVNode);
   } else {
-    // newVNode 이 refClass이고, 바뀌어야 하는 경우 갱신을 위해서 replace 를 한다.
+    // newVNode 가 Component 인 경우
     if (check.hasRefClass(newVNode)) {
       if (
         isFunction(options.checkRefClass) &&
@@ -250,6 +271,7 @@ function updateChangedElement(
         }
       }
     } else {
+      console.log("fdjksalfdsjkf", newVNode);
       patch.replaceWith(oldEl, newVNode, options);
     }
   }
@@ -257,21 +279,16 @@ function updateChangedElement(
 }
 
 function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
-  if (options.checkPassed && options.checkPassed(oldEl, newVNode)) {
-    // NOOP
-    // 정상적인 노드에서 checkPassed 가 true 이면 아무것도 하지 않는다.
-    // ~~다만 자식의 속성은 변경해야한다.~~
-    return;
-  } else {
-    const newVNodeProps = omitProps(newVNode);
+  const newVNodeProps = omitProps(newVNode);
 
-    updateProps(
-      oldEl,
-      newVNodeProps,
-      getProps(oldEl, oldEl.attributes, newVNodeProps)
-    ); // added
-  }
+  // update properties
+  updateProps(
+    oldEl,
+    newVNodeProps,
+    getProps(oldEl, oldEl.attributes, newVNodeProps)
+  ); // added
 
+  // check children count
   if (!oldEl.hasChildNodes() && !newVNode.children.length) {
     return;
   }
@@ -284,6 +301,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
     return;
   }
 
+  // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
   if (oldChildren.length === 0 && newChildren.length > 0) {
     var fragment = document.createDocumentFragment();
     newChildren.forEach((it) =>
@@ -296,12 +314,20 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
     // noop
     oldEl.textContent = "";
   } else {
+    // 그 외는 다시 loop를 돌린다.
     for (var i = 0; i < max; i++) {
       updateElement(oldEl, oldChildren[i], newChildren[i], -1, options);
     }
   }
 }
 
+/**
+ * oldElement 와 newVNode 를 비교한다.
+ *
+ * 1. oldElement 가 없고, newVNode 가 있는 경우 newVNode 를 추가한다.
+ *
+ *
+ */
 function updateElement(
   parentElement,
   oldEl,
@@ -313,12 +339,13 @@ function updateElement(
     patch.appendChild(parentElement, newVNode, options);
     return;
   }
-
   if (!newVNode && oldEl) {
     patch.removeChild(parentElement, oldEl, options);
     return;
   }
 
+  // pass 옵션이 없는 경우
+  // console.log(newVNode);
   if (!newVNode.props.pass) {
     if (check.hasPassed(newVNode)) {
       // NOOP
@@ -366,9 +393,9 @@ const vNodeChildren = (vnode) => {
     return [];
   }
 
-  const children = vnode.children
-    .map((it) => (it.type === VNodeType.FRAGMENT ? it.children : it))
-    .flat();
+  const children = vnode.children;
+  // .map((it) => (it.type === VNodeType.FRAGMENT ? it.children : it))
+  // .flat();
 
   return children;
 };

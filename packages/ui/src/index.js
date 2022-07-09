@@ -27,3 +27,4 @@ export * from "./components/virtual-scroll";
 export * from "./components/layer";
 export * from "./components/color/ColorView";
 export * from "./components/color-mixer";
+export * from "./components/color-grid";

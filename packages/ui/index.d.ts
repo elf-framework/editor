@@ -1,4 +1,5 @@
 declare module "@elf-framework/ui" {
+  import type { HSL, HSV, RGB } from "@elf-framework/color";
   import { UIElement, VNode } from "@elf-framework/sapa";
 
   /** base */
@@ -547,7 +548,6 @@ declare module "@elf-framework/ui" {
     props: InputPaintProps & DomEventType;
   }
 
-
   export interface HexColorEditorProps {
     value: string;
   }
@@ -571,7 +571,6 @@ declare module "@elf-framework/ui" {
   export class HSLColorEditor extends InputPaint {
     props: HSLColorEditorProps & InputPaintProps & DomEventType;
   }
-
 
   export class TextAreaEditor extends InputEditor {}
 
@@ -681,6 +680,7 @@ declare module "@elf-framework/ui" {
   export interface OptionMenuProps {
     icon: VNode | string;
     menuStyle: MenuStyle;
+    autoPosition: boolean;
     items: OptionMenuItem[];
   }
 
@@ -695,5 +695,24 @@ declare module "@elf-framework/ui" {
   }
   export class ColorMixer extends UIElement {
     props: ColorMixerProps;
+  }
+
+  export type OpacityType = {
+    a: number;
+  };
+
+  export type ColorType = ((RGB | HSL | HSV) & OpacityType) | string | number[];
+
+  export type ColorGridItem = {
+    title: string;
+    value: string;
+    colors: ColorType[];
+  };
+  export interface ColorGridProps {
+    items: ColorGridItem[];
+    selectedValue: string;
+  }
+  export class ColorGrid extends UIElement {
+    props: ColorGridProps;
   }
 }

@@ -22,7 +22,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 import { UIElement, classnames, createElementJsx, CLICK, IF, PREVENT, STOP, isFunction, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND } from "@elf-framework/sapa";
-import { parse, format, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
+import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 const NumberStyleKeys = {
   width: true,
   height: true,
@@ -535,7 +535,8 @@ const cssProperties$f = {
   sectionTitleColor: "--elf--menu-section-title-color",
   sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
   dividerColor: "--elf--menu-divider-color",
-  directionLeft: "--elf--menu-direction-left"
+  directionLeft: "--elf--menu-direction-left",
+  itemPadding: "--elf--menu-item-padding"
 };
 class Menu extends UIElement {
   initState() {
@@ -551,13 +552,20 @@ class Menu extends UIElement {
       y = 0,
       direction = "left",
       items = [],
-      rootClose
+      rootClose,
+      autoPosition = false
     } = this.props;
     let itemStyle = __spreadValues({}, style);
     if (x !== 0)
       itemStyle = __spreadProps(__spreadValues({}, itemStyle), { left: x });
     if (y !== 0)
       itemStyle = __spreadProps(__spreadValues({}, itemStyle), { top: y });
+    if (autoPosition) {
+      const index = items.findIndex((it) => {
+        return it.selectable && it.selected;
+      });
+      itemStyle = __spreadProps(__spreadValues({}, itemStyle), { top: -1 * (index * 24 + 8) });
+    }
     const styleObject = {
       "data-direction": direction,
       class: classnames("elf--menu", {
@@ -596,8 +604,16 @@ function ArrowIcon() {
 }
 class OptionMenu extends UIElement {
   template() {
-    const { icon, content, items, menuStyle = {}, disabled = void 0 } = this.props;
+    const {
+      icon,
+      content,
+      items,
+      menuStyle = {},
+      disabled = void 0,
+      autoPosition = false
+    } = this.props;
     const { isOpen } = this.state;
+    const showMenu = isOpen && items;
     return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--option-menu",
       disabled
@@ -614,9 +630,10 @@ class OptionMenu extends UIElement {
       class: "text"
     }, content), /* @__PURE__ */ createElementJsx("div", {
       class: "arrow"
-    }, /* @__PURE__ */ createElementJsx(ArrowIcon, null))), isOpen && items ? /* @__PURE__ */ createElementJsx("div", {
+    }, /* @__PURE__ */ createElementJsx(ArrowIcon, null))), showMenu ? /* @__PURE__ */ createElementJsx("div", {
       class: "menu-area"
     }, /* @__PURE__ */ createElementJsx(Menu, {
+      autoPosition,
       rootClose: () => {
         this.close();
       },
@@ -1784,6 +1801,7 @@ class HexColorEditor extends UIElement {
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues(__spreadValues({
       class: "color",
       type: "text",
+      "data-type": "hex",
       maxlength: 6
     }, properties), inputEvents), {
       onKeyDown: this.keydownColor,
@@ -1840,8 +1858,9 @@ class HexColorEditor extends UIElement {
   onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
-        this.refs.$input.focus();
-        this.refs.$input.select();
+        const $el = this.$el.$("input[data-type='hex']");
+        $el.focus();
+        $el.select();
       }, 10);
     }
   }
@@ -1896,30 +1915,38 @@ class RGBColorEditor extends UIElement {
   constructor() {
     super(...arguments);
     __publicField(this, "keydownColor", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       switch (e.key) {
         case "ArrowUp":
+          e.preventDefault();
           this.increaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
           break;
         case "ArrowDown":
+          e.preventDefault();
           this.decreaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
           break;
       }
-      e.target.select();
     });
     __publicField(this, "keydown", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       switch (e.key) {
         case "ArrowUp":
+          e.preventDefault();
           this.increaseOpacity(e);
+          e.target.select();
           break;
         case "ArrowDown":
+          e.preventDefault();
           this.decreaseOpacity(e);
+          e.target.select();
+          break;
+        case "Tab":
+          e.preventDefault();
+          var $el = this.$el.$("input[data-type='r']");
+          $el.focus();
+          $el.select();
           break;
       }
-      e.target.select();
     });
   }
   initState() {
@@ -1971,12 +1998,7 @@ class RGBColorEditor extends UIElement {
       max: 255
     };
     this.setState({
-      parsedColor: {
-        r,
-        g,
-        b,
-        a
-      }
+      parsedColor: { r, g, b, a }
     }, false);
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
@@ -1987,6 +2009,7 @@ class RGBColorEditor extends UIElement {
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       class: "color",
       "data-type": "r",
+      tabIndex: 1,
       value: r
     }, properties), {
       onKeyDown: this.keydownColor
@@ -1995,6 +2018,7 @@ class RGBColorEditor extends UIElement {
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       class: "color",
       "data-type": "g",
+      tabIndex: 2,
       value: g
     }, properties), {
       onKeyDown: this.keydownColor
@@ -2003,12 +2027,15 @@ class RGBColorEditor extends UIElement {
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       class: "color",
       "data-type": "b",
+      tabIndex: 3,
       value: b
     }, properties), {
       onKeyDown: this.keydownColor
     }))))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
     }, /* @__PURE__ */ createElementJsx("input", {
+      type: "text",
+      tabIndex: 4,
       class: "opacity",
       value: `${Math.round(a * 100 * 100) / 100}%`,
       onKeyDown: this.keydown
@@ -2045,8 +2072,9 @@ class RGBColorEditor extends UIElement {
   onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
-        this.refs.$input.focus();
-        this.refs.$input.select();
+        const $el = this.$el.$("input[data-type='r']");
+        $el.focus();
+        $el.select();
       }, 10);
     }
   }
@@ -2328,9 +2356,6 @@ class VirtualScroll extends UIElement {
   }
 }
 class Layer extends UIElement {
-  onMounted() {
-    console.log("aaaa");
-  }
   template() {
     const {
       top,
@@ -2394,30 +2419,38 @@ class HSLColorEditor extends UIElement {
   constructor() {
     super(...arguments);
     __publicField(this, "keydownColor", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       switch (e.key) {
         case "ArrowUp":
+          e.preventDefault();
           this.increaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
           break;
         case "ArrowDown":
+          e.preventDefault();
           this.decreaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
           break;
       }
-      e.target.select();
     });
     __publicField(this, "keydown", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       switch (e.key) {
         case "ArrowUp":
+          e.preventDefault();
           this.increaseOpacity(e);
+          e.target.select();
           break;
         case "ArrowDown":
+          e.preventDefault();
           this.decreaseOpacity(e);
+          e.target.select();
+          break;
+        case "Tab":
+          e.preventDefault();
+          const $el = this.$el.$("input[data-type='h']");
+          $el.focus();
+          $el.select();
           break;
       }
-      e.target.select();
     });
   }
   initState() {
@@ -2426,34 +2459,31 @@ class HSLColorEditor extends UIElement {
       autoFocus = false,
       focused,
       hover = false,
-      value,
       placeholder,
       disabled,
       hasOpacity = true
     } = this.props;
-    const parsedColor = parse(value);
     return {
       style,
       autoFocus,
       hover: hover || false,
       focused: focused || false,
       placeholder,
-      value,
-      parsedColor,
       disabled,
       hasOpacity
     };
   }
   template() {
-    const { icon } = this.props;
+    const { icon, value } = this.props;
     const {
       style = {},
       focused = false,
       hover = false,
       placeholder,
-      disabled,
-      parsedColor
+      disabled
     } = this.state;
+    const { r, g, b, a } = parse(value);
+    const { h, s, l } = RGBtoHSL(r, g, b);
     const styleObject = {
       class: classnames([
         "elf--input-paint",
@@ -2466,13 +2496,20 @@ class HSLColorEditor extends UIElement {
       ]),
       style: __spreadValues({}, propertyMap(style, cssProperties))
     };
-    const { r, g, b } = parsedColor;
     const properties = {
       disabled,
       placeholder: placeholder || "",
       min: 0,
       max: 255
     };
+    this.setState({
+      parsedColor: {
+        h,
+        s,
+        l,
+        a
+      }
+    }, false);
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx(Grid, {
@@ -2481,31 +2518,39 @@ class HSLColorEditor extends UIElement {
       class: "elf--input-item"
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       class: "color",
-      "data-type": "r",
-      value: r
+      type: "text",
+      tabIndex: 1,
+      "data-type": "h",
+      value: h
     }, properties), {
       onKeyDown: this.keydownColor
     }))), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       class: "color",
-      "data-type": "g",
-      value: g
+      type: "text",
+      tabIndex: 2,
+      "data-type": "s",
+      value: s
     }, properties), {
       onKeyDown: this.keydownColor
     }))), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
     }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
       class: "color",
-      "data-type": "b",
-      value: b
+      type: "text",
+      tabIndex: 3,
+      "data-type": "l",
+      value: l
     }, properties), {
       onKeyDown: this.keydownColor
     }))))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
     }, /* @__PURE__ */ createElementJsx("input", {
+      type: "text",
+      tabIndex: 4,
       class: "opacity",
-      value: `${Math.round(parsedColor.a * 100 * 100) / 100}%`,
+      value: `${Math.round(a * 100 * 100) / 100}%`,
       onKeyDown: this.keydown
     })));
   }
@@ -2518,11 +2563,17 @@ class HSLColorEditor extends UIElement {
     this.runCallback(this.props.onChange);
   }
   updateColor(type, num) {
+    const data = {};
+    if (type === "h") {
+      data[type] = Math.max(0, Math.min(360, this.state.parsedColor[type] + num));
+    } else if (type === "s") {
+      data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));
+    } else if (type === "l") {
+      data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));
+    }
     this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
-        [type]: Math.max(0, Math.min(255, this.state.parsedColor[type] + num))
-      })
-    });
+      parsedColor: __spreadValues(__spreadValues({}, this.state.parsedColor), data)
+    }, false);
     this.runCallback(this.props.onChange);
   }
   increaseColor(type) {
@@ -2540,8 +2591,9 @@ class HSLColorEditor extends UIElement {
   onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
-        this.refs.$input.focus();
-        this.refs.$input.select();
+        const $el = this.$el.$("input[data-type='h']");
+        $el.focus();
+        $el.select();
       }, 10);
     }
   }
@@ -2569,8 +2621,8 @@ class HSLColorEditor extends UIElement {
   }
   get value() {
     const { parsedColor } = this.state;
-    const { r, g, b, a } = parsedColor;
-    return format({ r, g, b, a }, "rgb");
+    const { h, s, l, a } = parsedColor;
+    return format({ h, s, l, a }, "hsl");
   }
   set value(v) {
     this.refs.$input.value = v;
@@ -2670,26 +2722,28 @@ class OpacitySlide extends UIElement {
 class ColorInput extends UIElement {
   initState() {
     const { type } = this.props;
-    return {
-      type
-    };
+    return { type };
   }
   makeTypedColorInput() {
-    const { r, g, b, a, h, s, l, onChange } = this.props;
+    const { r, g, b, a, onChange } = this.props;
     const { type } = this.state;
+    const { h, s, l } = RGBtoHSL(r, g, b);
     switch (type) {
       case "hex":
         return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(HexColorEditor, {
+          autoFocus: true,
           value: format({ r, g, b, a }, "hex"),
           onChange
         }));
       case "rgb":
         return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(RGBColorEditor, {
+          autoFocus: true,
           value: format({ r, g, b, a }, "rgb"),
           onChange
         }));
       case "hsl":
         return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(HSLColorEditor, {
+          autoFocus: true,
           value: format({ h, s, l, a }, "hsl"),
           onChange
         }));
@@ -2702,8 +2756,10 @@ class ColorInput extends UIElement {
     return /* @__PURE__ */ createElementJsx("div", {
       class: "color-input"
     }, /* @__PURE__ */ createElementJsx(OptionMenu, {
+      autoPosition: true,
       menuStyle: {
-        width: 100
+        width: 80,
+        itemPadding: "10px"
       },
       items: COLOR_TYPES.map((it) => {
         return {
@@ -2711,7 +2767,7 @@ class ColorInput extends UIElement {
           selectable: true,
           closable: true,
           selected: type === it,
-          onClick: (e, item) => {
+          onClick: () => {
             this.setState({
               type: it
             });
@@ -2923,4 +2979,51 @@ class ColorMixer extends UIElement {
     this.changeColor();
   }
 }
-export { Button, Checkbox, CheckboxGroup, ColorMixer, ColorView, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, Panel, RGBColorEditor, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, VirtualScroll, VisualBell };
+class ColorGrid extends UIElement {
+  initState() {
+    return {
+      selectedValue: this.props.selectedValue
+    };
+  }
+  makeItems() {
+    const { items } = this.props;
+    const { selectedValue } = this.state;
+    return items.map((it) => {
+      return {
+        title: it.title,
+        selectable: true,
+        closable: true,
+        selected: it.value === selectedValue,
+        onClick: () => {
+          this.setState({
+            selectedValue: it.value
+          });
+        }
+      };
+    });
+  }
+  template() {
+    const { items } = this.props;
+    const { selectedValue } = this.state;
+    const colorItem = items.find((it) => it.value === selectedValue) || items[0] || { title: "" };
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid-header"
+    }, /* @__PURE__ */ createElementJsx(OptionMenu, {
+      items: this.makeItems()
+    }, colorItem.title)), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid-list"
+    }, colorItem.colors.map((color) => /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid-item",
+      onClick: () => this.selectColor(color)
+    }, /* @__PURE__ */ createElementJsx(ColorView, {
+      color
+    })))));
+  }
+  selectColor(color) {
+    this.setState({ selectedColor: color }, false);
+    this.props.onSelect && this.props.onSelect(color);
+  }
+}
+export { Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, Panel, RGBColorEditor, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, VirtualScroll, VisualBell };

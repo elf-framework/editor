@@ -6,7 +6,7 @@
  * @param {function} {filterFunction}  예외 필터
  * @returns {string[]} 나의 상위 모든 메소드를 수집해서 리턴한다.
  */
-export function collectProps(root, filterFunction = () => true) {
+export function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
   do {
@@ -16,7 +16,17 @@ export function collectProps(root, filterFunction = () => true) {
       break;
     }
 
+    const isRootClass = p.constructor.name === rootClass.name;
+    // console.log(p.name);
+    if (isRootClass) {
+      break;
+    }
+
+    // console.log(p.constructor.name, rootClass.name);
+
     const names = Object.getOwnPropertyNames(p).filter(filterFunction);
+
+    // console.log(names);
 
     results.push.apply(results, names);
   } while ((p = Object.getPrototypeOf(p)));

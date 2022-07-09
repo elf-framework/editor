@@ -183,6 +183,7 @@ const cssProperties = {
   sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
   dividerColor: "--elf--menu-divider-color",
   directionLeft: "--elf--menu-direction-left",
+  itemPadding: "--elf--menu-item-padding",
 };
 
 export class Menu extends UIElement {
@@ -201,11 +202,20 @@ export class Menu extends UIElement {
       direction = "left",
       items = [],
       rootClose,
+      autoPosition = false,
     } = this.props;
 
     let itemStyle = { ...style };
     if (x !== 0) itemStyle = { ...itemStyle, left: x };
     if (y !== 0) itemStyle = { ...itemStyle, top: y };
+
+    if (autoPosition) {
+      const index = items.findIndex((it) => {
+        return it.selectable && it.selected;
+      });
+
+      itemStyle = { ...itemStyle, top: -1 * (index * 24 + 8) };
+    }
 
     const styleObject = {
       "data-direction": direction,

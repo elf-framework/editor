@@ -1,8 +1,8 @@
 .elf--icon-button {
-    --elf--icon-button-border-color: rgba(0, 0, 0, 0.1);
+    --elf--icon-button-border-color: rgba(0, 0, 0, 1);
     --elf--icon-button-font-size: var(--elf--font-size, 14px);
     --elf--icon-button-background-color: transparent;
-    --elf--icon-button-color: var(--elf--border-color);
+    --elf--icon-button-color: var(--elf--icon-button-border-color);
     --elf--icon-button-border-radius: 4px;
     --elf--icon-button-disabled-color: var(--elf--disabled-color);
     --elf--icon-button-size: 30px;
@@ -19,11 +19,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding:0px;
+    padding:2px;
 
-    > svg {
-        width: 24px;
-        height: 24px;
+    svg {
+        width: 20px;
+        height: 20px;
         color: var(--elf--icon-button-color);
 
         path {
@@ -36,7 +36,7 @@
     &.elf--icon-button-lg {
         --elf--icon-button-size: 40px;
         --elf--icon-button-font-size: 16px;
-        > svg {
+        svg {
             width: 30px;
             height: 30px;
         }        
@@ -46,7 +46,7 @@
         --elf--icon-button-size: 20px;
         --elf--icon-button-font-size: 12px;        
 
-        > svg {
+        svg {
             width: 20px;
             height: 20px;
         }        
