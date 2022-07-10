@@ -316,7 +316,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   } else {
     // 그 외는 다시 loop를 돌린다.
     for (var i = 0; i < max; i++) {
-      updateElement(oldEl, oldChildren[i], newChildren[i], -1, options);
+      updateElement(oldEl, oldChildren[i], newChildren[i], options);
     }
   }
 }
@@ -328,13 +328,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
  *
  *
  */
-function updateElement(
-  parentElement,
-  oldEl,
-  newVNode,
-  nodeIndex,
-  options = {}
-) {
+function updateElement(parentElement, oldEl, newVNode, options = {}) {
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
     return;
@@ -420,62 +414,8 @@ const DefaultOption = {
  */
 export function DomVNodeDiff(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
-
-  // A, B 모두 fragment 가 아닐 때 props 처리
-  // root 가 존재할 때
   if (oldEl.nodeType !== 11) {
-    // console.log(oldEl, newVNode);
-    updateElement(oldEl.parentElement, oldEl, newVNode, -1, options);
-    // if (check.hasPassed(newVNode)) {
-    //   // NOOP
-    //   // element 객체 끼리는 DomDiff 를 사용해서 체크한다.
-    //   if (oldEl.outerHTML !== newVNode.outerHTML) {
-    //     DomDiff(oldEl, newVNode.el, options);
-    //   }
-    //   return;
-    // }
-
-    // if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
-    //   updateChangedElement(oldEl.parentNode, oldEl, newVNode, 0, options);
-    //   return;
-    // }
-
-    // // 메인 element 속성 변경
-    // const newVNodeProps = omitProps(newVNode);
-    // updateProps(
-    //   oldEl,
-    //   newVNodeProps,
-    //   getProps(oldEl, oldEl.attributes, newVNodeProps)
-    // ); // added
+    updateElement(oldEl.parentElement, oldEl, newVNode, options);
     return;
   }
-
-  console.warn("fdjskalfdsf", oldEl, newVNode);
-
-  // // return;
-  // var childrenA = children(oldEl);
-  // var childrenB = vNodeChildren(newVNode).filter(Boolean);
-
-  // // 자식 element 의 속성 변경
-  // var len = Math.max(childrenA.length, childrenB.length);
-  // if (len === 0) {
-  //   return;
-  // }
-
-  // if (childrenA.length === 0 && childrenB.length > 0) {
-  //   var fragment = document.createDocumentFragment();
-  //   childrenB.forEach((it) =>
-  //     fragment.appendChild(it.makeElement(true, options).el)
-  //   );
-  //   // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
-  //   // B 에서 모든 자식을 A 에 추가한다.
-  //   oldEl.appendChild(fragment);
-  // } else if (childrenA.length > 0 && childrenB.length === 0) {
-  //   // noop
-  //   oldEl.textContent = "";
-  // } else {
-  //   for (var i = 0; i < len; i++) {
-  //     updateElement(oldEl, childrenA[i], childrenB[i], i, options);
-  //   }
-  // }
 }

@@ -2131,11 +2131,11 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
     oldEl.textContent = "";
   } else {
     for (var i = 0; i < max; i++) {
-      updateElement(oldEl, oldChildren[i], newChildren[i], -1, options);
+      updateElement(oldEl, oldChildren[i], newChildren[i], options);
     }
   }
 }
-function updateElement(parentElement, oldEl, newVNode, nodeIndex, options = {}) {
+function updateElement(parentElement, oldEl, newVNode, options = {}) {
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
     return;
@@ -2188,10 +2188,9 @@ const DefaultOption = {
 function DomVNodeDiff(oldEl, newVNode, options) {
   options = Object.assign({}, DefaultOption, options);
   if (oldEl.nodeType !== 11) {
-    updateElement(oldEl.parentElement, oldEl, newVNode, -1, options);
+    updateElement(oldEl.parentElement, oldEl, newVNode, options);
     return;
   }
-  console.warn("fdjskalfdsf", oldEl, newVNode);
 }
 const MAGIC_METHOD_REG = /^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g;
 const MAGIC_METHOD = "@magic:";

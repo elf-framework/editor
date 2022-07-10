@@ -6,6 +6,7 @@ export function SvgIcon (node, props = {}){
     return <span class={`elf--icon ${node.theme}`} data-name={node.name}>
         <svg 
             {...node.icon.attributes}
+            fill="currentColor"
             {...props}
         >
             {node.icon.children.map(makeElement)}

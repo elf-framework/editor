@@ -44,7 +44,7 @@ import fs from "fs"
                     // make sure to externalize deps that shouldn't be bundled
                     // into your library
                     external: [
-                        /components\/SvgIcon/,
+                        "../components/SvgIcon",
                         "@elf-framework/sapa"
                     ],
                     output: {
@@ -52,7 +52,7 @@ import fs from "fs"
                         // Provide global variables to use in the UMD build
                         // for externalized deps
                         globals: {
-                            "componennts/SvgIcon": "SvgIcon",
+                            "../componennts/SvgIcon": "SvgIcon",
                             "@elf-framework/sapa": "sapa",
                         },
                     },

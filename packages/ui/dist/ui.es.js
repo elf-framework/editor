@@ -662,6 +662,36 @@ class OptionMenu extends UIElement {
     this.close();
   }
 }
+class OptionStrip extends UIElement {
+  initState() {
+    return {
+      value: this.props.value
+    };
+  }
+  template() {
+    const {
+      disabled,
+      style = {},
+      selectedValue,
+      options = [],
+      onChange
+    } = this.props;
+    const styleObject = {
+      class: "elf--option-strip",
+      disabled: disabled ? "disabled" : void 0,
+      style: __spreadValues({}, propertyMap(style, {}))
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), options.map((it) => {
+      return /* @__PURE__ */ createElementJsx("button", {
+        type: "button",
+        class: classnames("elf--option-strip-item", {
+          selected: selectedValue === it.value
+        }),
+        onClick: () => onChange == null ? void 0 : onChange(it.value)
+      }, it.icon);
+    }));
+  }
+}
 const cssProperties$e = {
   position: "--elf--dialog-position",
   backgroundColor: "--elf--dialog-background",
@@ -3026,4 +3056,4 @@ class ColorGrid extends UIElement {
     this.props.onSelect && this.props.onSelect(color);
   }
 }
-export { Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, Panel, RGBColorEditor, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, VirtualScroll, VisualBell };
+export { Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, VirtualScroll, VisualBell };

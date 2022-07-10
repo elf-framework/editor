@@ -1,6 +1,6 @@
 import AddChartFilled from "@elf-framework/icon/esm/AddChartFilled";
 import { start } from "@elf-framework/sapa";
-import { Flex, Grid, IconButton } from "@elf-framework/ui";
+import { Flex, IconButton } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 start(function () {

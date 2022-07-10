@@ -7,6 +7,7 @@ export * from "./components/radio";
 export * from "./components/checkbox";
 export * from "./components/menu";
 export * from "./components/option-menu";
+export * from "./components/option-strip";
 export * from "./components/dialog";
 export * from "./components/toolbar";
 export * from "./components/tools";
@@ -28,3 +29,4 @@ export * from "./components/layer";
 export * from "./components/color/ColorView";
 export * from "./components/color-mixer";
 export * from "./components/color-grid";
+

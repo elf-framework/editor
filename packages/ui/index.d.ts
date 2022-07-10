@@ -715,4 +715,18 @@ declare module "@elf-framework/ui" {
   export class ColorGrid extends UIElement {
     props: ColorGridProps;
   }
+
+  export type OptionStripItem = {
+    value: unknown;
+    icon: VNode;
+  };
+  export interface OptionStripProps {
+    options: OptionStripItem[];
+    selectedValue: unknown;
+    disabled?: boolean;
+    onChange: (event: PointerEvent) => void;
+  }
+  export class OptionStrip extends UIElement {
+    props: OptionStripProps;
+  }
 }
