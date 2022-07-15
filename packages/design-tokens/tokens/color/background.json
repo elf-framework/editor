@@ -2,7 +2,7 @@
   "color": {
     "background": {
       "primary": { "value": "{color.core.white.value}" },
-      "secondary": { "value": "{color.core.neutral.200.value}" },
+      "secondary": { "value": "{color.core.neutral.100.value}" },
       "tertiary": { "value": "{color.core.neutral.200.value}" },
 
       "interactive": { "value": "{color.brand.primary.base.value}" },

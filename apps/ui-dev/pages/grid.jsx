@@ -1,5 +1,5 @@
 import { start } from "@elf-framework/sapa";
-import { Grid } from "@elf-framework/ui";
+import { Grid, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <div>
       <h1>Grid</h1>
       <Grid
+        onClick={() => window.alert("Hello")}
         columns={[0.5, 0.5, 1, 2]}
         rows={[1, 1, 1]}
         style={{
@@ -19,6 +20,9 @@ function App() {
             {i + 1}
           </div>
         ))}
+        <View backgroundColor="black" color="white" padding="10px">
+          dsajfkdsf
+        </View>
       </Grid>
     </div>
   );

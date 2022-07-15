@@ -17,6 +17,18 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
@@ -71,9 +83,124 @@ function propertyMap(styles, mapper = {}) {
   });
   return styleObj;
 }
+const styleKeys = {};
+const uppercasePattern = /([A-Z])/g;
+const ComponentPropsToStylePropsMap = {
+  alignContent: "alignContent",
+  alignItems: "alignItems",
+  alignSelf: "alignSelf",
+  area: "gridArea",
+  autoColumns: "gridAutoColumns",
+  autoFlow: "gridAutoFlow",
+  autoRows: "gridAutoRows",
+  backgroundColor: "backgroundColor",
+  backgroundImage: "backgroundImage",
+  basis: "flexBasis",
+  border: "border",
+  borderRadius: "borderRadius",
+  bottom: "bottom",
+  boxShadow: "boxShadow",
+  color: "color",
+  column: "gridColumn",
+  columnEnd: "gridColumnEnd",
+  columnGap: "columnGap",
+  columnSpan: "gridColumn",
+  columnStart: "gridColumnStart",
+  direction: "flexDirection",
+  display: "display",
+  flex: "flex",
+  fontFamily: "fontFamily",
+  fontSize: "fontSize",
+  fontStyle: "fontStyle",
+  fontWeight: "fontWeight",
+  gap: "gap",
+  grow: "flexGrow",
+  height: "height",
+  justifyContent: "justifyContent",
+  left: "left",
+  letterSpacing: "letterSpacing",
+  lineHeight: "lineHeight",
+  margin: "margin",
+  marginBlock: "marginBlock",
+  marginBlockEnd: "marginBlockEnd",
+  marginBlockStart: "marginBlockStart",
+  marginBottom: "marginBlockEnd",
+  marginInline: "marginInline",
+  marginInlineEnd: "marginInlineEnd",
+  marginInlineStart: "marginInlineStart",
+  marginLeft: "marginInlineStart",
+  marginRight: "marginInlineEnd",
+  marginTop: "marginBlockStart",
+  maxHeight: "maxHeight",
+  maxWidth: "maxWidth",
+  minHeight: "minHeight",
+  minWidth: "minWidth",
+  objectFit: "objectFit",
+  objectPosition: "objectPosition",
+  opacity: "opacity",
+  order: "order",
+  overflow: "overflow",
+  padding: "padding",
+  paddingBlock: "paddingBlock",
+  paddingBlockEnd: "paddingBlockEnd",
+  paddingBlockStart: "paddingBlockStart",
+  paddingBottom: "paddingBlockEnd",
+  paddingInline: "paddingInline",
+  paddingInlineEnd: "paddingInlineEnd",
+  paddingInlineStart: "paddingInlineStart",
+  paddingLeft: "paddingInlineStart",
+  paddingRight: "paddingInlineEnd",
+  paddingTop: "paddingBlockStart",
+  position: "position",
+  resize: "resize",
+  right: "right",
+  row: "gridRow",
+  rowEnd: "gridRowEnd",
+  rowGap: "rowGap",
+  rowSpan: "gridRow",
+  rowStart: "gridRowStart",
+  shrink: "flexShrink",
+  templateAreas: "gridTemplateAreas",
+  templateColumns: "gridTemplateColumns",
+  templateRows: "gridTemplateRows",
+  textAlign: "textAlign",
+  textDecoration: "textDecoration",
+  textTransform: "textTransform",
+  top: "top",
+  transform: "transform",
+  transformOrigin: "transformOrigin",
+  width: "width",
+  whiteSpace: "whiteSpace",
+  wrap: "flexWrap"
+};
+const convertStyleKey = (key) => {
+  if (styleKeys[key]) {
+    return styleKeys[key];
+  }
+  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+  styleKeys[key] = upperKey;
+  return upperKey;
+};
+function makeStyleMap(prefix, obj) {
+  Object.keys(obj).forEach((key) => {
+    prefix + "-" + convertStyleKey(key);
+  });
+}
+function convertPropertyToStyleKey(properties) {
+  const style = {};
+  const noneStyle = {};
+  Object.keys(properties).forEach((key) => {
+    if (ComponentPropsToStylePropsMap[key]) {
+      style[ComponentPropsToStylePropsMap[key]] = properties[key];
+    } else {
+      noneStyle[key] = properties[key];
+    }
+  });
+  return { style, noneStyle };
+}
 const cssProperties$k = {
   borderColor: "--elf--button-border-color",
-  backgroundColor: "--elf--button-background",
+  backgroundColor: "--elf--button-background-color",
   disabledColor: "--elf--button-disabled-color",
   color: "--elf--button-color",
   fontSize: "--elf--button-font-size",
@@ -84,14 +211,26 @@ const cssProperties$k = {
 };
 class Button extends UIElement {
   template() {
-    const {
+    const _a = this.props, {
       type,
       size,
       disabled,
       shape,
       destructive = false,
-      style = {}
-    } = this.props;
+      style = {},
+      onClick,
+      content
+    } = _a, extraStyle = __objRest(_a, [
+      "type",
+      "size",
+      "disabled",
+      "shape",
+      "destructive",
+      "style",
+      "onClick",
+      "content"
+    ]);
+    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
       class: classnames([
         "elf--button",
@@ -111,11 +250,11 @@ class Button extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style, cssProperties$k))
+      style: propertyMap(__spreadValues(__spreadValues({}, style), styleProperties), cssProperties$k)
     };
     return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({}, styleObject), {
-      onClick: this.props.onClick
-    }), /* @__PURE__ */ createElementJsx("span", null, this.props.content || ""));
+      onClick
+    }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
 const cssProperties$j = {
@@ -770,21 +909,6 @@ class Dialog extends UIElement {
     this.close();
   }
 }
-const styleKeys = {};
-const uppercasePattern = /([A-Z])/g;
-const convertStyleKey = (key) => {
-  if (styleKeys[key]) {
-    return styleKeys[key];
-  }
-  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
-  styleKeys[key] = upperKey;
-  return upperKey;
-};
-function makeStyleMap(prefix, obj) {
-  Object.keys(obj).forEach((key) => {
-    prefix + "-" + convertStyleKey(key);
-  });
-}
 const ToolsItemType = {
   MENU: "menu",
   ITEM: "item",
@@ -1357,7 +1481,7 @@ function makeTemplates(arr) {
 }
 class Grid extends UIElement {
   template() {
-    const {
+    const _a = this.props, {
       style = {},
       columns = [1],
       rows = [1],
@@ -1365,8 +1489,17 @@ class Grid extends UIElement {
       columnGap,
       rowGap,
       content
-    } = this.props;
-    const styleObject = {
+    } = _a, extraStyle = __objRest(_a, [
+      "style",
+      "columns",
+      "rows",
+      "gap",
+      "columnGap",
+      "rowGap",
+      "content"
+    ]);
+    const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
+    const styleObject = __spreadValues({
       class: "elf--grid",
       style: __spreadValues({
         gridTemplateColumns: makeTemplates(columns),
@@ -1374,8 +1507,8 @@ class Grid extends UIElement {
         gap,
         columnGap,
         rowGap
-      }, propertyMap(style, {}))
-    };
+      }, propertyMap(__spreadValues(__spreadValues({}, style), styleProperties), {}))
+    }, noneStyle);
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
   }
 }
@@ -3048,4 +3181,15 @@ class ColorGrid extends UIElement {
     this.props.onSelect && this.props.onSelect(color);
   }
 }
-export { Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, VirtualScroll, VisualBell };
+class View extends UIElement {
+  template() {
+    const _a = this.props, { as = "div", style = {}, content } = _a, extraStyle = __objRest(_a, ["as", "style", "content"]);
+    const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
+    const styleObject = __spreadValues({
+      style: propertyMap(__spreadValues(__spreadValues({}, style), styleProperties), {})
+    }, noneStyle);
+    console.log(as, extraStyle, "fjdkslafjdsaklfjdsklf");
+    return createElementJsx(as, styleObject, content);
+  }
+}
+export { Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, TabStrip, TextAreaEditor, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell };
