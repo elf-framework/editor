@@ -3,6 +3,7 @@ import BaseHandler from "./BaseHandler";
 
 export default class CallbackHandler extends BaseHandler {
   initialize() {
+    console.warn("deprecated CallbackHandler");
     this.destroy();
 
     if (!this._callbacks) {

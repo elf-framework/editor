@@ -20,7 +20,7 @@ export default class StoreHandler extends BaseHandler {
     if (this.context.notEventRedefine) {
       // NOOP
     } else {
-      console.log("destroy store", this.context,  this.context.props.ref);
+      // console.log("destroy store", this.context,  this.context.props.ref);
       this.context.$store.offAll(this.context);
     }
   }

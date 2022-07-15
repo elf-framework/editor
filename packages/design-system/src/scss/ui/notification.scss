@@ -120,7 +120,10 @@
             border-radius: 0px;
             box-sizing: border-box;
             font-weight: 400;
-            font-size: 12px;            
+            font-size: 12px;         
+            /* 컴포넌트에 따라서 다르게 해석 할 수도 있음. */
+            /* 현재는 notification 에 들어와있는 상태기 때문에 강제함 */
+            color: var(--elf--notification-color) !important;
 
             &:hover {
                 background-color: var(--elf--notification-hover-color);

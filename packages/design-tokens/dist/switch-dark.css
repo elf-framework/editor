@@ -1,0 +1,18 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 15 Jul 2022 00:22:46 GMT
+ */
+
+.dark {
+  --color-background-info: var(--color-core-blue-100);
+  --color-background-success: var(--color-core-green-100);
+  --color-background-warning: var(--color-core-yellow-100);
+  --color-background-danger: var(--color-core-red-100);
+  --color-background-tertiary: var(--color-core-neutral-200);
+  --color-background-secondary: var(--color-core-neutral-100);
+  --color-background-primary: var(--color-core-neutral-1000);
+  --color-background-disabled: var(--color-background-tertiary);
+  --color-background-active: var(--color-brand-secondary-base);
+  --color-background-hover: var(--color-brand-primary-dark);
+  --color-background-interactive: var(--color-brand-primary-base);
+}

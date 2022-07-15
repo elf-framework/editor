@@ -3,50 +3,54 @@
   "version": "0.0.1",
   "description": "Fantastic Icon library",
   "types": "./index.d.ts",
+  "type": "module",
   "files": [
     "dist",
+    "src",
     "index.d.ts"
   ],
-  "main": "./dist/icon.umd.js",
-  "module": "./dist/icon.es.js",
+  "sideEffects": false,
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "exports": {
     ".": {
-      "import": "./dist/icon.es.js",
-      "require": "./dist/icon.umd.js"
-    }
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    },
+    "./esm/*": "./dist/esm/icons/*",
+    "./umd/*": "./dist/umd/icons/*"
+  },
+  "peerDependencies": {
+    "@elf-framework/sapa": "*"
+  },
+  "dependencies": {
+    "@elf-framework/sapa": "*"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
+    "@ant-design/icons": "^4.7.0",
+    "@material-design-icons/svg": "^0.11.4",
+    "@rgrove/parse-xml": "^3.0.0",
     "eslint": "^8.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-jsconfig": "^1.1.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx": "^0.1.0",
-    "husky": "^7.0.4",
-    "prettier": "2.6.2",
-    "release-it": "^14.6.2",
-    "rollup-plugin-copy": "^3.4.0",
-    "typescript": "^4.6.3",
+    "release-it": "^15.1.1",
     "vite": "^2.9.1",
-    "vite-plugin-copy": "^0.1.6",
-    "vite-plugin-dts": "^1.0.5",
-    "vite-plugin-eslint": "^1.5.2",
-    "vite-plugin-replace": "^0.1.1",
     "vitest": "0.0.107"
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
-    "blank:watch": "npm run watch",    
+    "blank:watch": "npm run watch",
     "//dev": "npm run vite:dist:watch",
     "release": "release-it *",
+    "bun:build": "bun bun --config=bunfig.toml ./src/index.js ",
     "build": "npm run vite:dist",
     "test": "vitest",
     "coverage": "vitest --coverage",
     "//prepare": "husky install",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
-    "format": "prettier .  --write"
+    "format": "prettier .  --write",
+    "clean": "rm -rf ./src/icons/* ./dist/esm/icons/* ./dist/umd/icons/* ",
+    "generate": "npm run clean && bun scripts/generator.js",
+    "build:icon": "node scripts/build-icon.js"
   },
   "repository": {
     "type": "git",

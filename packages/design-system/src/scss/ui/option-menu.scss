@@ -1,0 +1,141 @@
+.elf--option-menu {
+    --elf--option-menu-min-width: 60px;
+    --elf--option-menu-border-color: transparent;
+    --elf--option-menu-outline-color: transparent;
+    --elf--option-menu-border-radius: 1px;
+    --elf--option-menu-background-color: white;
+    --elf--option-menu-color: black;
+    --elf--option-menu-font-size: 14px;
+    --elf--option-menu-empty-color: rgba(0, 0, 0, 0.3);
+    --elf--option-menu-placeholder-color: rgba(0, 0, 0, 0.3);
+    --elf--option-menu-disabled-color: rgba(0, 0, 0, 0.1);
+
+    min-width: var(--elf--option-menu-min-width);
+    // max-width: calc(100% - var(--elf--option-menu-min-width));
+    border: 1px solid var(--elf--option-menu-border-color);
+    outline: 1px solid var(--elf--option-menu-outline-color);
+    border-radius: var(--elf--option-menu-border-radius);
+    height: var(--elf--option-menu-height, 30px);
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--elf--option-menu-background-color);
+    position: relative;
+
+    &:hover,
+    &.hover {
+
+        &:empty {
+            color: var(--elf--option-menu-empty-color);
+        }
+        --elf--option-menu-border-color: var(--elf--option-menu-disabled-color);
+
+        &:not([disabled]) {
+            > .content {
+                > .text {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+
+    }
+
+    &:focus,
+    &:focus-within,
+    &.focused {
+        --elf--option-menu-border-color: var(--elf--primary-color);
+        --elf--option-menu-outline-color: var(--elf--primary-color);
+    }
+
+    &.disabled,
+    &[disabled] {
+        --elf--option-menu-border-color: var(--elf--option-menu-disabled-color);
+        // --elf--option-menu-outline-color: var(--elf--disabled-color);
+        --elf--option-menu-placeholder-color: var(--elf--option-menu-disabled-color);
+        cursor: not-allowed;
+        > .content {
+            pointer-events: none;
+            > .text {
+                pointer-events: none;                
+                color: var(--elf--option-menu-empty-color);
+            }
+            > .arrow {
+                pointer-events: none;
+                > svg {
+                    color: var(--elf--option-menu-empty-color);
+                }
+            }
+    
+        }
+
+    }
+
+    > .content {
+        width: 100%;
+        display: flex;
+        position: relative;
+        flex: 1 1 auto;
+        justify-content: start;
+        align-items: center;
+        cursor: pointer;
+
+        > .elf--option-menu-icon {
+            flex: none;
+            width: 32px;
+            height: 32px;
+            transform: translate(-1px, -1px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            svg {
+                width: 16px;
+                height: 16px;
+    
+                path, use, circle, rect, polygon {
+                    fill: var(--elf--option-menu-empty-color);
+                }
+            }
+        }
+
+        > .text {
+            flex: none;
+            font-size: var(--elf--option-menu-font-size);
+            display: flex;
+            line-height: 1.6;
+            align-items: center;
+            overflow: hidden;
+            padding: 0 4px 0 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        > .arrow {
+            pointer-events: all;
+            margin-left: 4px;
+            flex: none;
+            display: flex;
+            align-items: center;
+            width: 20px;
+            > svg {
+                width: 12px;
+                height: 12px;
+                pointer-events: none;
+
+                path {
+                    fill: currentColor;
+                }
+
+                transition: transform 0.1s ease-in-out;
+
+            }
+
+            &:hover,
+            &.opened {
+                > svg {
+                    transform: translateY(2px);
+                }
+            }
+        }
+
+    }
+}

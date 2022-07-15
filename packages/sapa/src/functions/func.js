@@ -6,7 +6,7 @@
  * @param {function} {filterFunction}  예외 필터
  * @returns {string[]} 나의 상위 모든 메소드를 수집해서 리턴한다.
  */
-export function collectProps(root, filterFunction = () => true) {
+export function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
   do {
@@ -16,7 +16,17 @@ export function collectProps(root, filterFunction = () => true) {
       break;
     }
 
+    const isRootClass = p.constructor.name === rootClass.name;
+    // console.log(p.name);
+    if (isRootClass) {
+      break;
+    }
+
+    // console.log(p.constructor.name, rootClass.name);
+
     const names = Object.getOwnPropertyNames(p).filter(filterFunction);
+
+    // console.log(names);
 
     results.push.apply(results, names);
   } while ((p = Object.getPrototypeOf(p)));
@@ -69,12 +79,11 @@ export function ifCheck(callback, context, checkMethods) {
 
 export function makeRequestAnimationFrame(callback, context) {
   return (...args) => {
-
     if (callback.requestAnimationFrameId) {
       cancelAnimationFrame(callback.requestAnimationFrameId);
     }
 
-    callback.requestAnimationFrameId = window.requestAnimationFrame(() => {
+    callback.requestAnimationFrameId = requestAnimationFrame(() => {
       callback.apply(context, args);
     });
   };
@@ -144,7 +153,6 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
   }
 
   return obj1Keys.every((key) => {
-
     // omitKeys 에 있는 키는 비교하지 않는다.
     if (omitKeys[key]) {
       return true;
@@ -153,12 +161,7 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
     const obj1Value = obj1[key];
     const obj2Value = obj2[key];
 
-    if (isArray(obj1Value) && isArray(obj2Value)) {
-      const s = new Set([...obj1Value, ...obj2Value]);
-      return s.size === obj1Value.length && s.size === obj2Value.length;
-    } else if (isFunction(obj1Value) && isFunction(obj2Value)) {
-      // return true;
-    } else if (isObject(obj1Value) && isObject(obj2Value)) {
+    if (isObject(obj1Value) && isObject(obj2Value)) {
       return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
     }
 

@@ -1,0 +1,78 @@
+.elf--option-strip {
+    --elf--option-strip-border-color: transparent;
+    --elf--option-strip-outline-color: transparent;
+    --elf--option-strip-border-radius: 1px;
+    --elf--option-strip-background-color: white;
+    --elf--option-strip-color: black;
+    --elf--option-strip-font-size: 14px;
+    --elf--option-strip-empty-color: rgba(0, 0, 0, 0.3);
+    --elf--option-strip-disabled-color: rgba(0, 0, 0, 0.1);
+    --elf--option-strip-item-background-color: transparent;
+    --elf--option-strip-item-font-color: black;
+
+    border: 1px solid var(--elf--option-strip-border-color);
+    outline: 1px solid var(--elf--option-strip-outline-color);
+    border-radius: var(--elf--option-strip-border-radius);
+    height: fit-content;
+    box-sizing: border-box;
+    display: inline-flex;
+    background-color: var(--elf--option-strip-background-color);
+    position: relative;
+    // gap: 8px;    
+
+    &:hover,
+    &.hover {
+
+        &:empty {
+            color: var(--elf--option-strip-empty-color);
+        }
+        --elf--option-strip-border-color: var(--elf--option-strip-disabled-color);
+
+        &:not([disabled]) {
+            > .content {
+                > .text {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+
+    }
+
+    &:focus,
+    &:focus-within,
+    &.focused {
+        --elf--option-strip-border-color: var(--elf--primary-color);
+        --elf--option-strip-outline-color: var(--elf--primary-color);
+    }
+
+    &.disabled,
+    &[disabled] {
+        --elf--option-strip-border-color: transparent;
+        --elf--option-strip-item-font-color: var(--elf--option-strip-disabled-color);
+        cursor: not-allowed;
+    }
+
+    > .elf--option-strip-item {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        position: relative;
+        flex: 1 1 auto;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border:0px;
+        background-color: var(--elf--option-strip-item-background-color);
+        appearance: none;
+        color: var(--elf--option-strip-item-font-color);
+
+        &.selected {
+            --elf--option-strip-item-background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

@@ -1,0 +1,143 @@
+.elf--input-paint {
+    --elf--input-paint-border-color: transparent;
+    --elf--input-paint-outline-color: transparent;
+    --elf--input-paint-border-radius: 1px;
+    --elf--input-paint-background-color: white;
+    --elf--input-paint-color: black;
+    --elf--input-paint-font-size: 14px;
+    --elf--input-paint-empty-color: rgba(0, 0, 0, 0.3);
+    --elf--input-paint-placeholder-color: rgba(0, 0, 0, 0.3);
+    --elf--input-paint-disabled-color: rgba(0, 0, 0, 0.3);
+
+    max-width: 100%;
+    border: 1px solid var(--elf--input-paint-border-color);
+    box-shadow: 0 0 1px 0 var(--elf--input-paint-outline-color);
+    outline: 1px solid var(--elf--input-paint-outline-color);
+    border-radius: var(--elf--input-paint-border-radius);
+    height: var(--elf--input-paint-height, 30px);
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--elf--input-paint-background-color);
+
+    &.multiline {
+        height: var(--elf--input-paint-height, 44px);
+    }
+
+    &:hover,
+    &.hover {
+
+        &:empty {
+            color: var(--elf--input-paint-empty-color);
+        }
+        --elf--input-paint-border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus,
+    &:focus-within,
+    &.focused {
+        --elf--input-paint-border-color: var(--elf--primary-color);
+        --elf--input-paint-outline-color: var(--elf--primary-color);
+    }
+
+    &.disabled {
+        --elf--input-paint-border-color: var(--elf--disabled-color);
+        // --elf--input-paint-outline-color: var(--elf--disabled-color);
+        --elf--input-paint-placeholder-color: var(--elf--disabled-color);
+        cursor: not-allowed;
+    }
+
+    > .elf--input-paint-icon {
+        flex: none;
+        width: 32px;
+        height: 32px;
+        transform: translate(-2px, -2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+        svg {
+            width: 16px;
+            height: 16px;
+
+            path, use, circle, rect, polygon {
+                fill: var(--elf--input-paint-empty-color);
+            }
+        }
+    }
+
+    &.icon {
+        > .elf--input-area {
+            > .elf--input-item {
+                > input {
+                    padding-left: 0px;
+                }
+            }
+        }
+    }
+
+    > .elf--input-area {
+        display: flex;
+        height: 100%;
+        flex: 1 1 auto;
+
+        .elf--input-item {
+            flex: 1 1 auto;
+            height: 100%;    
+            
+            
+            &:last-child {
+                > input {
+                    border-right: 0px;
+                }
+            }
+
+            > input {
+                width: 100%;
+                height: 100%;
+                border: none;
+                box-sizing: border-box;
+                outline: none;
+                font-size: var(--elf--input-paint-font-size);
+                text-transform: uppercase;
+                appearance: none;
+                border-right: 1px solid var(--elf--input-paint-border-color);
+                
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.005em;
+                padding: 6px 3px 6px 6px;
+                background-color: transparent;
+                color: var(--elf--input-paint-color);
+
+                &:placeholder {
+                    --elf--input-paint-color: var(--elf--input-paint-placeholder-color);
+                }
+
+                &[disabled] {
+                    pointer-events: none;
+                    user-select: none;
+                    --elf--input-paint-color: var(--elf--input-paint-disabled-color);
+                }
+            }
+        }
+    }
+
+    > .elf--input-opacity {
+        flex: none;
+        width: 47px;
+        box-sizing: border-box;
+        border-left: 1px solid var(--elf--input-paint-border-color);
+
+        > input {
+            padding: 7px 4px 7px 7px;
+            width: 100%;
+            height: 100%;
+            appearance: none;
+            display: flex;
+            box-sizing: border-box;
+            border:0px;
+            outline: none;
+        }
+    }
+}

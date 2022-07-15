@@ -5,8 +5,7 @@ DOM 기반 UI 를 쉽게 만들 수 있게 하는 라이브러리
 
 # Features 
 
-* No compile 
-* No virtual dom 
+* Hybrid virtual dom 
 * simple event system 
 * jsx syntax support
 

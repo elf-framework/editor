@@ -12,11 +12,14 @@
     "blank:dev": "turbo run blank:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
     "ui:dev": "turbo run ui:dev --parallel",
+    "ui-react:dev": "turbo run ui-react:dev --parallel",
+    "editor:dev": "turbo run editor:dev --parallel",
     "sapa:release": "turbo run sapa:release --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "eslint": "^8.18.0",
     "prettier": "latest",
     "turbo": "latest"
   },
@@ -24,5 +27,18 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.9.0"
+  "packageManager": "npm@8.9.0",
+  "description": "This is an official starter turborepo.",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elf-framework/editor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elf-framework/editor/issues"
+  },
+  "homepage": "https://github.com/elf-framework/editor#readme"
 }

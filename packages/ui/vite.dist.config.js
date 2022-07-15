@@ -1,4 +1,6 @@
 import { defineConfig } from "vite";
+// import { sapa } from "vite-plugin-sapa";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 import path from "path";
 
@@ -11,25 +13,38 @@ export default defineConfig({
   },
   build: {
     emptyOutDir: false,
+    minify: true,
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "ui",
-      manifest: true,
       fileName: (format) => `ui.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["@elf-framework/sapa", "@elf-framework/design-system", "@elf-framework/color"],
+      external: ["@elf-framework/sapa", "@elf-framework/color"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           "@elf-framework/sapa": "sapa",
-          "@elf-framework/design-system": "designSystem",
           "@elf-framework/color": "color",
         },
       },
     },
   },
+  plugins: [
+    // sapa(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: path.resolve(
+            "../../node_modules",
+            "@elf-framework/design-system/dist/index.css"
+          ),
+          dest: ".",
+        },
+      ],
+    }),
+  ],
 });

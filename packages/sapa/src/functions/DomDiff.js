@@ -21,10 +21,13 @@ const booleanTypes = {
   allowfullscreen: true,
   allowtransparency: true,
   allowpaymentrequest: true,
-}
+};
 
+const TEXT_NODE = 3;
+// const ELEMENT_NODE = 1;
+const COMMENT_NODE = 8;
 
-function isBooleanType (key) {
+function isBooleanType(key) {
   return booleanTypes[key];
 }
 
@@ -51,19 +54,17 @@ const setProp = (el, name, value) => {
 };
 
 const removeProp = (node, name) => {
-  console.log("removeProp", node, name);
   if (isBooleanType(name)) {
-    node.removeAttribute(name);  
-    node[name] = false;        
+    node.removeAttribute(name);
+    node[name] = false;
   } else if (name) {
-    node.removeAttribute(name);  
+    node.removeAttribute(name);
   }
-
 };
 
 const updateProp = (node, name, newValue, oldValue) => {
-  console.log(node, name, newValue, isUndefined(newValue), oldValue);
-  if (isUndefined(newValue)) {  // newValue 이 undefined 라는 것은 name 이 없다는 것이기 때문에 name을 지운다. 
+  if (isUndefined(newValue)) {
+    // newValue 이 undefined 라는 것은 name 이 없다는 것이기 때문에 name을 지운다.
     removeProp(node, name);
   } else if (!oldValue || newValue !== oldValue) {
     setProp(node, name, newValue);
@@ -101,21 +102,22 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
  * @param {*} node2
  */
 function changed(node1, node2) {
+  // console.log(node1, node2);
   return (
-    (node1.nodeType === window.Node.TEXT_NODE &&
-      node1.textContent !== node2.textContent) ||
+    (node1.nodeType === TEXT_NODE && node1.textContent !== node2.textContent) ||
     node1.nodeName !== node2.nodeName
   );
 }
 
 function hasPassed(node1) {
-  // <!-- comment -->  형태의 주석일 때는 그냥 패스
-  if (node1?.nodeType === 8) {
+  // // <!-- comment -->  형태의 주석일 때는 그냥 패스
+  // console.log(node1);
+  if (node1.nodeType === COMMENT_NODE) {
     return true;
   }
 
   return (
-    node1.nodeType !== window.Node.TEXT_NODE &&
+    node1.nodeType !== TEXT_NODE &&
     node1.getAttribute("data-domdiff-pass") === "true"
   );
 }
@@ -127,9 +129,7 @@ function hasPassed(node1) {
  *
  */
 function hasRefClass(node1) {
-  return (
-    node1.nodeType !== window.Node.TEXT_NODE && node1.getAttribute("refclass")
-  );
+  return node1.nodeType !== TEXT_NODE && node1.getAttribute("refclass");
 }
 
 function getProps(attributes) {
@@ -137,84 +137,111 @@ function getProps(attributes) {
   const len = attributes.length;
   for (let i = 0; i < len; i++) {
     const t = attributes[i];
+    const name = t.name;
+    const value = t.value;
 
     // 특수 속성 제외
-    if (t.name === "has-event") continue;
-    else if (t.name.startsWith("on")) continue;
+    if (name.startsWith("on")) continue;
 
-    results[t.name] = t.value;
+    results[name] = value;
   }
 
   return results;
 }
 
-function updateElement(parentElement, oldEl, newEl, i, options = {}) {
-  // console.log("updateElement", oldEl, newEl, i);
-  if (!oldEl) {
-    parentElement.appendChild(newEl.cloneNode(true));
-  } else if (!newEl) {
+function updateChangedElement(parentElement, oldEl, newEl, i, options = {}) {
+  const oldNodeType = oldEl.nodeType;
+  const newNodeType = newEl.nodeType;
+  // node 가 같지 않으면 바꾸고, refClass 속성이 있으면 바꾸고
+  if (oldNodeType === TEXT_NODE && newNodeType !== TEXT_NODE) {
+    parentElement.insertBefore(newEl.cloneNode(true), oldEl);
     parentElement.removeChild(oldEl);
-  } else if (hasPassed(oldEl) || hasPassed(newEl)) {
-    // NOOP
-    // data-domdiff-pass="true" 일 때는 아무것도 비교하지 않고 끝낸다.
-  } else if (changed(newEl, oldEl) || hasRefClass(newEl)) {
-    // node 가 같지 않으면 바꾸고, refClass 속성이 있으면 바꾸고
-    if (
-      oldEl.nodeType === window.Node.TEXT_NODE &&
-      newEl.nodeType !== window.Node.TEXT_NODE
-    ) {
-      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
-      parentElement.removeChild(oldEl);
-    } else if (
-      oldEl.nodeType !== window.Node.TEXT_NODE &&
-      newEl.nodeType === window.Node.TEXT_NODE
-    ) {
-      parentElement.insertBefore(newEl.cloneNode(true), oldEl);
-      parentElement.removeChild(oldEl);
-    } else {
-      // newEl 이 refClass이고, 바뀌어야 하는 경우 갱신을 위해서 replace 를 한다.
-      if (hasRefClass(newEl)) {
-        if (
-          isFunction(options.checkRefClass) &&
-          options.checkRefClass(oldEl, newEl)
-        ) {
-          console.log("replace object refclass", oldEl, newEl);
-          oldEl.replaceWith(newEl.cloneNode(true));
-        }
-      } else {
+  } else if (oldNodeType !== TEXT_NODE && newNodeType === TEXT_NODE) {
+    parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+    parentElement.removeChild(oldEl);
+  } else if (oldNodeType === TEXT_NODE && newNodeType === TEXT_NODE) {
+    oldEl.textContent = newEl.textContent;
+  } else {
+    // newEl 이 refClass이고, 바뀌어야 하는 경우 갱신을 위해서 replace 를 한다.
+    if (hasRefClass(newEl)) {
+      if (
+        isFunction(options.checkRefClass) &&
+        options.checkRefClass(oldEl, newEl)
+      ) {
         oldEl.replaceWith(newEl.cloneNode(true));
       }
+    } else {
+      oldEl.replaceWith(newEl.cloneNode(true));
     }
-  } else if (
-    newEl.nodeType !== window.Node.TEXT_NODE &&
-    newEl.nodeType !== window.Node.COMMENT_NODE &&
+  }
+  return true;
+}
+
+function updatePropertyAndChildren(
+  parentElement,
+  oldEl,
+  newEl,
+  i,
+  options = {}
+) {
+  if (options.checkPassed && options.checkPassed(oldEl, newEl)) {
+    // NOOP
+    // 정상적인 노드에서 checkPassed 가 true 이면 아무것도 하지 않는다.
+    // ~~다만 자식의 속성은 변경해야한다.~~
+    return;
+  } else {
+    updateProps(oldEl, getProps(newEl.attributes), getProps(oldEl.attributes)); // added
+  }
+
+  if (!oldEl.hasChildNodes() && !newEl.hasChildNodes()) {
+    // console.log(oldEl, newEl);
+    return;
+  }
+
+  var oldChildren = children(oldEl);
+  var newChildren = children(newEl);
+  var max = Math.max(oldChildren.length, newChildren.length);
+
+  for (var index = 0; index < max; index++) {
+    updateElement(
+      oldEl,
+      oldChildren[index],
+      newChildren[index],
+      index,
+      options
+    );
+  }
+}
+
+function updateElement(parentElement, oldEl, newEl, i, options = {}) {
+  if (!oldEl) {
+    parentElement.appendChild(newEl.cloneNode(true));
+    return;
+  }
+
+  if (!newEl) {
+    parentElement.removeChild(oldEl);
+    return;
+  }
+
+  if (hasPassed(newEl) || hasPassed(oldEl)) {
+    // NOOP
+    // data-domdiff-pass="true" 일 때는 아무것도 비교하지 않고 끝낸다.
+    return;
+  }
+
+  if (changed(newEl, oldEl) || hasRefClass(newEl)) {
+    updateChangedElement(parentElement, oldEl, newEl, i, options);
+    return;
+  }
+
+  const newNodeType = newEl.nodeType;
+  if (
+    newNodeType !== TEXT_NODE &&
+    newNodeType !== COMMENT_NODE &&
     newEl.toString() !== "[object HTMLUnknownElement]"
   ) {
-    if (options.checkPassed && options.checkPassed(oldEl, newEl)) {
-      // NOOP
-      // 정상적인 노드에서 checkPassed 가 true 이면 아무것도 하지 않는다.
-      // 다만 자식의 속성은 변경해야한다.
-    } else {
-      updateProps(
-        oldEl,
-        getProps(newEl.attributes),
-        getProps(oldEl.attributes)
-      ); // added
-    }
-
-    var oldChildren = children(oldEl);
-    var newChildren = children(newEl);
-    var max = Math.max(oldChildren.length, newChildren.length);
-
-    for (var index = 0; index < max; index++) {
-      updateElement(
-        oldEl,
-        oldChildren[index],
-        newChildren[index],
-        index,
-        options
-      );
-    }
+    updatePropertyAndChildren(parentElement, oldEl, newEl, i, options);
   }
 }
 
@@ -287,15 +314,7 @@ export function DomDiff(A, B, options = {}) {
     throw new Error("A and B must be defined");
   }
 
-  options = {
-    ...DefaultOption,
-    checkPassed: isFunction(options.checkPassed)
-      ? options.checkPassed
-      : undefined,
-    checkRefClass: isFunction(options.checkRefClass)
-      ? options.checkRefClass
-      : undefined,
-  };
+  options = Object.assign({}, DefaultOption, options);
 
   A = A.el || A;
   B = B.el || B;

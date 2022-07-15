@@ -123,6 +123,7 @@ const FunctionMap = {};
 
 export default class BindHandler extends BaseHandler {
   async initialize() {
+    console.warn("deprecated BindHandler");
     // this.destroy();
 
     if (!FunctionMap[this.context.sourceName]) {
@@ -159,7 +160,6 @@ export default class BindHandler extends BaseHandler {
     await Promise.all(
       bindList?.map(async (magicMethod) => {
         let refObject = this.getRef(`${magicMethod.keywords[0]}`);
-
         // if (!refObject) return;
 
         let refCallback = BIND_CHECK_DEFAULT_FUNCTION;

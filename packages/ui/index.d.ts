@@ -1,6 +1,6 @@
 declare module "@elf-framework/ui" {
-  import { UIElement } from "@elf-framework/sapa";
-
+  import type { HSL, HSV, RGB } from "@elf-framework/color";
+  import { UIElement, VNode } from "@elf-framework/sapa";
 
   /** base */
   type ContentType = string | UIElement | string[] | UIElement[];
@@ -55,7 +55,7 @@ declare module "@elf-framework/ui" {
 
   export class LinkButton extends UIElement {
     props: LinkButtonProps;
-  }  
+  }
 
   export class IconButton extends Button {
     props: ButtonProps & {
@@ -77,28 +77,30 @@ declare module "@elf-framework/ui" {
     onSelect?: (event: PointerEvent, context: MenuItem) => void;
     items?: ItemType[];
     closable?: boolean;
-    rootClose?: () => void;    
+    rootClose?: () => void;
   };
 
   export type GroupMenuItemType = {
     type: "group";
-    rootClose?: () => void;    
+    rootClose?: () => void;
     title: string;
   };
 
   export type DividerMenuItemType = {
     type: "divider";
-    rootClose?: () => void;    
+    rootClose?: () => void;
     dashed: boolean;
   };
 
   export type CustomMenuRenderFunctionType = Function;
 
-  export type CustomMenuItemType = {
-    type: "custom";
-    rootClose?: () => void;    
-    render?: (context: MenuItem) => UIElement;
-  } | CustomMenuRenderFunctionType;
+  export type CustomMenuItemType =
+    | {
+        type: "custom";
+        rootClose?: () => void;
+        render?: (context: MenuItem) => UIElement;
+      }
+    | CustomMenuRenderFunctionType;
 
   export type ItemType =
     | MenuItemType
@@ -189,9 +191,14 @@ declare module "@elf-framework/ui" {
     color?: string;
     height?: string;
     align?: string;
-  }  
+  }
 
-  export type ToolbarAlignType = "start" | "center" | "end" | "space-around" | "space-evenly";
+  export type ToolbarAlignType =
+    | "start"
+    | "center"
+    | "end"
+    | "space-around"
+    | "space-evenly";
   export interface ToolbarProps {
     items: ToolsProps[];
     align?: ToolbarAlignType;
@@ -200,7 +207,7 @@ declare module "@elf-framework/ui" {
 
   export class Toolbar extends UIElement {
     props: ToolbarProps;
-  }  
+  }
 
   /** menu */
   export type ToolsItemType = {
@@ -229,14 +236,17 @@ declare module "@elf-framework/ui" {
   export class ToolsMenuItem extends UIElement {
     open(): void;
     close(): void;
-  } 
+  }
 
   export type ToolsCustomItemType = {
     type: "custom";
     render?: (item: ToolsCustomItemType) => UIElement;
-  }
+  };
 
-  export type ToolsType = ToolsItemType | ToolsMenuItemType | ToolsCustomItemType;
+  export type ToolsType =
+    | ToolsItemType
+    | ToolsMenuItemType
+    | ToolsCustomItemType;
 
   interface ToolsStyle {
     backgroundColor?: string;
@@ -262,19 +272,26 @@ declare module "@elf-framework/ui" {
     color?: string;
   }
 
-  export type NotificationDirectionType = "left" | "right" | "center" | "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  export type NotificationDirectionType =
+    | "left"
+    | "right"
+    | "center"
+    | "top"
+    | "bottom"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
 
   export interface NotificationProps {
     icon?: string | UIElement | UIElement[];
-    content?: string| string[] | UIElement | UIElement[];
+    content?: string | string[] | UIElement | UIElement[];
     style: NotificationStyle;
     direction?: NotificationDirectionType;
-
   }
   export class Notification extends UIElement {
     props: NotificationProps;
   }
-
 
   interface VisualBellStyle {
     backgroundColor?: string;
@@ -286,19 +303,26 @@ declare module "@elf-framework/ui" {
     color?: string;
   }
 
-  export type VisualBellDirectionType = "left" | "right" | "center" | "top" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  export type VisualBellDirectionType =
+    | "left"
+    | "right"
+    | "center"
+    | "top"
+    | "bottom"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
 
   export interface VisualBellProps {
     icon?: string | UIElement | UIElement[];
-    content?: string| string[] | UIElement | UIElement[];
+    content?: string | string[] | UIElement | UIElement[];
     style: VisualBellStyle;
     direction?: VisualBellDirectionType;
-
   }
   export class VisualBell extends UIElement {
     props: VisualBellProps;
   }
-
 
   interface TooltipStyle {
     backgroundColor?: string;
@@ -315,7 +339,15 @@ declare module "@elf-framework/ui" {
 
   export interface TooltipProps {
     content: string | UIElement | string[] | UIElement[];
-    position: "top" | "bottom" | "left" | "right" | "top-left" | "top-right" | "bottom-left" | "bottom-right";
+    position:
+      | "top"
+      | "bottom"
+      | "left"
+      | "right"
+      | "top-left"
+      | "top-right"
+      | "bottom-left"
+      | "bottom-right";
     trigger: "hover" | "click";
     show: boolean;
     style: TooltipStyle;
@@ -329,8 +361,8 @@ declare module "@elf-framework/ui" {
     color: string;
     fontSize: string;
     fontWeight: string;
-    height: string|number;
-    width: string|number;
+    height: string | number;
+    width: string | number;
     boxShadow: string;
     borderRadius: string;
     borderColor: string;
@@ -342,8 +374,8 @@ declare module "@elf-framework/ui" {
     color: string;
     fontSize: string;
     fontWeight: string;
-    height: string|number;
-    width: string|number;
+    height: string | number;
+    width: string | number;
     padding: string;
   }
 
@@ -373,18 +405,43 @@ declare module "@elf-framework/ui" {
     props: TabStripProps;
   }
 
-  export type LayoutStyle = {
+  export type FlexStyle = {
     backgroundColor: string;
     gap: number;
-  }
-  export interface LayoutProps {
+  };
+  export interface FlexProps {
     stack?: boolean;
     wrap?: boolean;
-    style?: LayoutStyle;
+    style?: FlexStyle;
   }
 
-  export class Layout extends UIElement {
-    props: LayoutProps;
+  export class Flex extends UIElement {
+    props: FlexProps;
+  }
+
+  export interface VBoxProps {
+    wrap?: boolean;
+    style?: FlexStyle;
+  }
+
+  export class VBox extends Flex {
+    props: VBoxProps;
+  }
+
+  export type GridStyle = {
+    backgroundColor: string;
+    gap: number;
+  };
+
+  export type GridTemplate = number | string;
+  export interface GridProps {
+    columns?: GridTemplate | GridTemplate[];
+    rows?: GridTemplate | GridTemplate[];
+    style?: GridStyle;
+  }
+
+  export class Grid extends UIElement {
+    props: GridProps;
   }
 
   export type DomEventType = {
@@ -429,16 +486,29 @@ declare module "@elf-framework/ui" {
     onPointerCancel?: (event: PointerEvent) => void;
     onPointerEnter?: (event: PointerEvent) => void;
     onPointerLeave?: (event: PointerEvent) => void;
-  }
+  };
 
   export type InputEditorStyle = {
     backgroundColor: string;
     minWidth: number;
     borderRadius: number;
     height: number;
-  }
+  };
 
-  export type InputEditorType = "text" | "password" | "number" | "email" | "url" | "tel" | "search" | "date" | "time" | "datetime-local" | "month" | "week" | "color";
+  export type InputEditorType =
+    | "text"
+    | "password"
+    | "number"
+    | "email"
+    | "url"
+    | "tel"
+    | "search"
+    | "date"
+    | "time"
+    | "datetime-local"
+    | "month"
+    | "week"
+    | "color";
   export interface InputEditorProps {
     type?: InputEditorType;
     hover: boolean;
@@ -452,6 +522,54 @@ declare module "@elf-framework/ui" {
 
   export class InputEditor extends UIElement {
     props: InputEditorProps & DomEventType;
+  }
+
+  export type InputPaintStyle = {
+    backgroundColor: string;
+    minWidth: number;
+    borderRadius: number;
+    height: number;
+  };
+
+  export type InputPaintType = "color" | "gradient" | "image";
+  export interface InputPaintProps {
+    type?: InputPaintType;
+    hover: boolean;
+    focused?: boolean;
+    autoFocus?: boolean;
+    autoFocusDelay?: number;
+    placeholder?: string;
+    style?: InputPaintStyle;
+    disabled?: boolean;
+    hideColorView?: boolean;
+  }
+
+  export class InputPaint extends UIElement {
+    props: InputPaintProps & DomEventType;
+  }
+
+  export interface HexColorEditorProps {
+    value: string;
+  }
+
+  export interface RGBColorEditorProps {
+    value: string;
+  }
+
+  export interface HSLColorEditorProps {
+    value: string;
+  }
+
+  export class HexColorEditor extends InputPaint {
+    props: HexColorEditorProps & InputPaintProps & DomEventType;
+  }
+
+  export class RGBColorEditor extends InputPaint {
+    props: RGBColorEditorProps & InputPaintProps & DomEventType;
+  }
+
+  export class HSLColorEditor extends InputPaint {
+    props: HSLColorEditorProps & InputPaintProps & DomEventType;
   }
 
   export class TextAreaEditor extends InputEditor {}
@@ -497,7 +615,118 @@ declare module "@elf-framework/ui" {
   export class CheckboxGroup extends UIElement {
     props: CheckboxGroupProps;
   }
+
+  export type VirtualScrollStyle = {
+    backgroundColor: string;
+    minWidth: number;
+    borderRadius: number;
+    height: number;
+  };
+
+  export interface VirtualScrollProps {
+    style: VirtualScrollStyle;
+    items: any[];
+    itemHeight: number;
+    itemRenderer: (
+      item: any,
+      top: number,
+      renderIndex: number,
+      items: any[],
+      virutalScroll: VirtualScroll
+    ) => UIElement;
+    onScroll: (event: PointerEvent) => void;
+    onScrollEnd: (event: PointerEvent) => void;
+    onScrollStart: (event: PointerEvent) => void;
+    onScrollStop: (event: PointerEvent) => void;
+    onScrollReset: (event: PointerEvent) => void;
+    onScrollResetEnd: (event: PointerEvent) => void;
+    onScrollResetStart: (event: PointerEvent) => void;
+    onScrollResetStop: (event: PointerEvent) => void;
+  }
+
+  export class VirtualScroll extends UIElement {
+    props: VirtualScrollProps;
+  }
+
+  export interface LayerProps {
+    selected?: boolean;
+    collapsed?: boolean;
+    group?: string;
+    icon?: string;
+    content?: any;
+    onClick?: (event: PointerEvent) => void;
+    onDoubleClick?: (event: PointerEvent) => void;
+    onContextMenu?: (event: PointerEvent) => void;
+    onMouseDown?: (event: MouseEvent) => void;
+    onMouseUp?: (event: MouseEvent) => void;
+    onMouseMove?: (event: MouseEvent) => void;
+    onMouseEnter?: (event: MouseEvent) => void;
+    onMouseLeave?: (event: MouseEvent) => void;
+  }
+
+  export class Layer extends UIElement {
+    props: LayerProps;
+  }
+
+  export interface ColorViewProps {
+    color: string;
+  }
+  export class ColorView extends UIElement {
+    props: ColorViewProps;
+  }
+
+  export type OptionMenuItem = ItemType;
+
+  export interface OptionMenuProps {
+    icon: VNode | string;
+    menuStyle: MenuStyle;
+    autoPosition: boolean;
+    items: OptionMenuItem[];
+  }
+
+  export class OptionMenu extends UIElement {
+    props: OptionMenuProps;
+  }
+
+  export interface ColorMixerProps {
+    color: string;
+    onChange: (color: string) => void;
+    onLastChange: (color: string) => void;
+  }
+  export class ColorMixer extends UIElement {
+    props: ColorMixerProps;
+  }
+
+  export type OpacityType = {
+    a: number;
+  };
+
+  export type ColorType = ((RGB | HSL | HSV) & OpacityType) | string | number[];
+
+  export type ColorGridItem = {
+    title: string;
+    value: string;
+    colors: ColorType[];
+  };
+  export interface ColorGridProps {
+    items: ColorGridItem[];
+    selectedValue: string;
+  }
+  export class ColorGrid extends UIElement {
+    props: ColorGridProps;
+  }
+
+  export type OptionStripItem = {
+    value: unknown;
+    icon: VNode;
+  };
+  export interface OptionStripProps {
+    options: OptionStripItem[];
+    selectedValue: unknown;
+    disabled?: boolean;
+    onChange: (event: PointerEvent) => void;
+  }
+  export class OptionStrip extends UIElement {
+    props: OptionStripProps;
+  }
 }
-
-
-

@@ -1,7 +1,6 @@
 import { RGBtoHSL } from "./fromRGB";
 import { round } from "./utils/index";
 
-
 /**
  * @method HSVtoRGB
  *

@@ -35,7 +35,7 @@ function format(obj, type, defaultColor = "rgba(0, 0, 0, 0)") {
   } else if (type == "hsl") {
     return hsl(obj);
   }
-  return obj;
+  return `${type}(${obj.r},${obj.g},${obj.b})`;
 }
 function formatWithoutAlpha(obj, type, defaultColor = "rgba(0, 0, 0, 0)") {
   const newColorObj = clone(obj);

@@ -1,0 +1,142 @@
+.elf--color-mixer {
+    --elf--color-mixer-width: 240px;
+    --elf--color-mixer-height: 240px;
+    --elf--color-mixer-background-color: white;
+    --elf--color-mixer-opacity-size: 16px;
+    --elf--color-mixer-opacity-pattern-size: 6px;
+    --elf--color-mixer-opacity-pattern-color-1: #FFFFFF;
+    --elf--color-mixer-opacity-pattern-color-2: #ececec;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--elf--color-mixer-background-color);
+
+    width: var(--elf--color-mixer-width);
+
+    > .elf--color-area {
+        display: block;
+        width: var(--elf--color-mixer-width);
+        height: var(--elf--color-mixer-height);    
+        background-color: yellow;
+
+
+        > .saturation {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(204, 154, 129, 0);
+            background-image: linear-gradient(to right, #FFF, rgba(204, 154, 129, 0));
+            background-repeat: repeat-x;             
+      
+            > .value {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              background-image: linear-gradient(to top, #000000, rgba(204, 154, 129, 0));
+      
+              > .drag-pointer {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                border: 2px solid #fff;
+                box-shadow: inset 0 0 0px 1px rgba(0, 0, 0, 0.3),0 0 1px 1px rgba(0, 0, 0, 0.3);                
+              }
+            } 
+      
+          }
+    }
+
+    > .elf--color-slide-area {
+        display: flex;
+        padding: 12px;
+
+        > .eye-dropper {
+            flex: none;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            button {
+                appearance: none;
+                border:0px;
+                display: inline-block;
+            }
+        }
+
+        > .slide {
+            flex: 1 1 auto;
+
+            > .slide-view {
+                padding: 6px;
+
+                > .slide-bg {
+                    height: 12px;
+                    width: 100%;
+                    box-shadow: inset 0 0 1px 0px rgba(0, 0, 0, 0.7);
+                    border-radius: 10px;
+                    // overflow: hidden;
+                    position: relative;
+                    box-sizing: border-box;
+
+                    --drag-point-size: 12px;
+                    --drag-point-left: 0%;
+
+                    &.hue-slide-bg {
+                        background: linear-gradient(90deg, #FF0000 0%, #FFA800 13.26%, #FFFF00 22.1%, #00FF00 33.7%, #00FFFF 50.28%, #0000FF 66.3%, #FF00FF 81.77%, #FF0000 100%);
+                    }
+
+                    &.opacity-slide-bg {
+                        background: linear-gradient(90deg, var(--start-color, rgba(51, 51, 51, 0)) 0%, var(--end-color, #333333) 100%), repeating-conic-gradient(var(--elf--color-mixer-opacity-pattern-color-1) 0% 25%,var(--elf--color-mixer-opacity-pattern-color-2) 0% 50%);
+                        background-size: 100% 100%, var(--elf--color-mixer-opacity-pattern-size) var(--elf--color-mixer-opacity-pattern-size), 100% 100%;
+                        background-repeat: no-repeat, repeat, no-repeat;
+                        background-position: left top, left top, left top;
+                    }
+
+                    > .drag-pointer {
+                        position: absolute;
+                        display: block;
+                        box-sizing: border-box;
+                        width: var(--drag-point-size);
+                        height: var(--drag-point-size);
+                        border-radius: 100%;
+                        border: 2px solid white;
+                        outline: 1px solid  rgba(0, 0, 0, 0.3);
+                        box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.3);
+                        left: calc(var(--drag-point-left) * 100% - var(--drag-point-left) * var(--drag-point-size));
+                    }
+                }
+            }
+        }
+    }
+
+    > .elf--color-input-area {
+        display: flex;
+        padding: 0px 12px 12px;
+        
+
+        > .color-input {
+            flex: 1 1 auto;
+            display: flex;
+            height: 32px;
+            > * {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                // justify-content: center;
+
+                &:first-child {
+                    width: 30px;
+                    flex: none;
+                }
+
+                &:last-child {
+                    padding-left: 1px;
+                }
+            }
+        }
+    }
+}

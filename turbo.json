@@ -33,7 +33,8 @@
       "dependsOn": [
         "^ui:watch"
       ],
-      "outputs": ["dist/**", ".next/**"]      
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
     },    
     "design:dev": {
       "dependsOn": ["design:watch"],
@@ -43,6 +44,26 @@
       "dependsOn": ["ui:watch"],
       "cache": false
     },
+    "editor:watch": {
+      "dependsOn": [
+        "^editor:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },        
+    "editor:dev": {
+      "dependsOn": ["editor:watch"]
+    },    
+    "ui-react:watch": {
+      "dependsOn": [
+        "^ui-react:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },        
+    "ui-react:dev": {
+      "dependsOn": ["ui-react:watch"]
+    },        
     "sapa:release": {
       "dependsOn": ["^sapa:release"],
       "outputs": ["dist/**", ".next/**"]

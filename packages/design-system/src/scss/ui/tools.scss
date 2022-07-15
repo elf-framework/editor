@@ -66,7 +66,7 @@
 
             > .icon {
 
-                > svg {
+                svg {
                     width: 20px;
                     height: 20px;
     
@@ -80,7 +80,7 @@
             > .arrow {
                 pointer-events: all;
                 margin-left: 2px;
-                > svg {
+                svg {
                     width: 12px;
                     height: 12px;
                     pointer-events: none;
@@ -95,7 +95,7 @@
 
                 &:hover,
                 &.opened {
-                    > svg {
+                     svg {
                         transform: translateY(2px);
                     }
                 }

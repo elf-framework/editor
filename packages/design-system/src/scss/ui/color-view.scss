@@ -1,0 +1,38 @@
+.elf--color-view {
+    --elf--color-view-size: 16px;
+    --elf--color-view-pattern-size: 6px;
+    --elf--color-view-pattern-color-1: #FFFFFF;
+    --elf--color-view-pattern-color-2: #ececec;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: var(--elf--color-view-size);
+    height: var(--elf--color-view-size);
+    // border: 1px solid black;
+    border-radius: 2px;
+    box-sizing: border-box;
+
+    > *:first-child {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+
+    > *:last-child {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    > .elf--color-view-opacity-pattern {
+        background-image: repeating-conic-gradient(var(--elf--color-view-pattern-color-1) 0% 25%,var(--elf--color-view-pattern-color-2) 0% 50%);
+        background-size: var(--elf--color-view-pattern-size) var(--elf--color-view-pattern-size);
+        background-repeat: repeat;
+        background-position: left top;
+        display: flex;
+        overflow: hidden;
+
+        > * {
+            flex: 1;
+        }
+    }
+}

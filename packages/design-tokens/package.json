@@ -1,0 +1,27 @@
+{
+  "name": "@elf-framework/design-tokens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./variables.css": "./dist/variables.css",
+    "./variables-dark.css": "./dist/variables-dark.css",
+    "./switch-dark.css": "./dist/switch-dark.css"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "npm run build && chokidar  \"tokens/**/*.js*\" -c \"npm run build\"",
+    "ui:watch": "npm run watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "easylogic",
+  "license": "MIT",
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "style-dictionary": "^3.7.1"
+  }
+}

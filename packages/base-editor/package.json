@@ -1,0 +1,74 @@
+{
+  "name": "@elf-framework/base-editor",
+  "version": "0.0.1",
+  "description": "Fantastic Editor library",
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "main": "./dist/base-editor.umd.js",
+  "module": "./dist/base-editor.es.js",
+  "exports": {
+    "./style.css": "./dist/index.css",
+    ".": {
+      "import": "./dist/base-editor.es.js",
+      "require": "./dist/base-editor.umd.js"
+    }
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^5.0.13",
+    "postcss": "^8.4.4",
+    "prettier": "2.6.2",
+    "recast": "^0.21.1",
+    "release-it": "^15.1.1",
+    "sass": "^1.44.0",
+    "vite": "^2.9.13",
+    "vitest": "0.0.107",
+    "vite-plugin-sapa": "*"
+  },
+  "peerDependencies": {
+    "@elf-framework/color": "*",
+    "@elf-framework/sapa": "*",
+    "@elf-framework/ui": "*"
+  },
+  "dependencies": {
+    "@elf-framework/color": "*",
+    "@elf-framework/sapa": "*",
+    "@elf-framework/ui": "*"
+  },
+  "scripts": {
+    "vite:dist": "vite build --config=vite.dist.config.js",
+    "watch": "vite build --config=vite.dist.config.js --watch",
+    "blank:watch": "npm run watch",
+    "editor:watch": "npm run watch",
+    "//dev": "npm run vite:dist:watch",
+    "release": "release-it *",
+    "build": "npm run vite:dist",
+    "test": "vitest",
+    "coverage": "vitest --coverage",
+    "//prepare": "husky install",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
+    "format": "prettier .  --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easylogic/editor.git"
+  },
+  "keywords": [
+    "CSS",
+    "CODE",
+    "Editor",
+    "Path",
+    "SVG"
+  ],
+  "author": "easylogic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/easylogic/editor/issues"
+  },
+  "homepage": "https://editor.easylogic.studio/"
+}

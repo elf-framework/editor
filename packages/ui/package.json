@@ -10,7 +10,7 @@
   "main": "./dist/ui.umd.js",
   "module": "./dist/ui.es.js",
   "exports": {
-    "./style.css": "./dist/style.css",
+    "./style.css": "./dist/index.css",
     ".": {
       "import": "./dist/ui.es.js",
       "require": "./dist/ui.umd.js"
@@ -19,36 +19,44 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^5.0.13",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-jsconfig": "^1.1.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx": "^0.1.0",
+    "esprima": "^4.0.1",
     "husky": "^7.0.4",
+    "postcss": "^8.4.4",
     "prettier": "2.6.2",
-    "release-it": "^14.6.2",
+    "recast": "^0.21.1",
+    "release-it": "^15.1.1",
     "rollup-plugin-copy": "^3.4.0",
+    "sass": "^1.44.0",
     "typescript": "^4.6.3",
-    "vite": "^2.9.1",
-    "vite-plugin-dts": "^1.0.5",
+    "vite": "^2.9.13",
     "vite-plugin-eslint": "^1.5.2",
     "vite-plugin-replace": "^0.1.1",
-    "vitest": "0.0.107"
+    "vite-plugin-static-copy": "^0.6.0",
+    "vitest": "0.0.107",
+    "vite-plugin-sapa": "*"
   },
   "peerDependencies": {
-    "@elf-framework/sapa": "*",
-    "@elf-framework/color": "*"    
+    "@elf-framework/color": "*",
+    "@elf-framework/sapa": "*"
   },
   "dependencies": {
-    "@elf-framework/sapa": "*",
+    "@elf-framework/color": "*",
     "@elf-framework/design-system": "*",
-    "@elf-framework/color": "*"
+    "@elf-framework/sapa": "*"
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
     "blank:watch": "npm run watch",
     "ui:watch": "npm run watch",
+    "editor:watch": "npm run watch",
     "//dev": "npm run vite:dist:watch",
     "release": "release-it *",
     "build": "npm run vite:dist",

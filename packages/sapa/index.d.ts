@@ -5,8 +5,6 @@ declare module "@elf-framework/sapa" {
   export type EVENT = (...args: string[]) => string;
   export type OBSERVER = (...args: string[]) => string;
   export type PARAMS = (...args: string[]) => string;
-  export const COMMAND: EVENT;
-  export const ON: EVENT;
 
   // Predefined CHECKER
   export type CHECKER = (value: string, split: string) => string;
@@ -69,6 +67,7 @@ declare module "@elf-framework/sapa" {
 
   export const SUBSCRIBE: CallbackFunction;
   export const SUBSCRIBE_ALL: CallbackFunction;
+  export const SUBSCRIBE_SELF: CallbackFunction;
   export const CUSTOM: DOM_EVENT_MAKE;
   export const CLICK: CallbackFunction;
   export const DOUBLECLICK: CallbackFunction;
@@ -145,6 +144,9 @@ declare module "@elf-framework/sapa" {
   export function getRef(id: string): any;
   export function BIND(value: string, checkFieldOrCallback: string): string;
 
+  type ClassNameType = string | object | Array<string | object>;
+  export function classnames(...args: ClassNameType[]): string;
+
   export interface KeyValue {
     [key: string]: unknown;
   }
@@ -154,6 +156,13 @@ declare module "@elf-framework/sapa" {
   }
 
   interface IComponentParams extends KeyValue {}
+
+  interface VNode {
+    tag: string | "object";
+    props: KeyValue;
+    children: VNode[];
+    component?: ElementType;
+  }
 
   export class Length {
     unit: string;
@@ -204,7 +213,6 @@ declare module "@elf-framework/sapa" {
   export class EventMachine {
     protected opt: KeyValue;
     protected parent: any;
-    #props: KeyValue;
     protected state: KeyValue;
     public source: string;
     public sourceName: string;
@@ -218,8 +226,7 @@ declare module "@elf-framework/sapa" {
 
     protected initializeHandler(): any[];
 
-    get propKeys(): string[];
-    get props(): KeyValue;
+    public props: KeyValue;
 
     /**
      * state 를 초기화 한것을 리턴한다.
@@ -374,17 +381,17 @@ declare module "@elf-framework/sapa" {
      * @param message
      * @param callback
      */
-    on(message: string, callback: Function): void;
+    on(message: string, callback: () => void): void;
 
     /**
      * 메세지 등록 해제
      * @param message
      * @param callback
      */
-    off(message: string, callback: Function): void;
+    off(message: string, callback: () => void): void;
   }
   type ElementFunction = () => any;
-  type ElementType = typeof UIElement | ElementFunction;
+  type ElementType = typeof UIElement | ElementFunction | VNode;
 
   export function start(
     uiElement: ElementType,
@@ -399,15 +406,15 @@ declare module "@elf-framework/sapa" {
     ComponentName: string,
     props?: KeyValue,
     children?: any[]
-  ): string;
+  ): VNode;
 
-  export function createComponentList(...args: any[]): string;
+  export function createComponentList(...args: any[]): VNode[];
 
   export function createElement(
     Component: string,
     props: KeyValue,
     children: any[]
-  ): string;
+  ): VNode;
 
   type FragmentInstanceType = any;
 
@@ -421,4 +428,6 @@ declare module "@elf-framework/sapa" {
     props: KeyValue,
     ...children: any[]
   ): string;
+
+  export function htmlToVNode(html: string): VNode;
 }
