@@ -29,7 +29,6 @@ const booleanTypes = new Map(
 
 const expectKeys = {
   content: true,
-  contentChildren: true,
 };
 
 const TEXT_NODE = 3;

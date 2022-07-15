@@ -12,6 +12,8 @@
     "blank:dev": "turbo run blank:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
     "ui:dev": "turbo run ui:dev --parallel",
+    "ui-react:dev": "turbo run ui-react:dev --parallel",
+    "editor:dev": "turbo run editor:dev --parallel",
     "sapa:release": "turbo run sapa:release --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
@@ -26,10 +28,6 @@
     "node": ">=14.0.0"
   },
   "packageManager": "npm@8.9.0",
-  "dependencies": {
-    "@easylogic/rectangle-1": "^0.0.1",
-    "vite-plugin-sapa": "^1.0.0"
-  },
   "description": "This is an official starter turborepo.",
   "main": ".eslintrc.js",
   "repository": {

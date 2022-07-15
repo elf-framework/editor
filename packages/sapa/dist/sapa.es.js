@@ -1455,8 +1455,7 @@ function makeNativeTextDom(value) {
   return text;
 }
 const expectAttributes = {
-  content: true,
-  contentChildren: true
+  content: true
 };
 function setAttribute(el, name, value) {
   if (expectAttributes[name])
@@ -1589,7 +1588,6 @@ class VNode {
         return child;
       });
       this.props.content = this.children;
-      this.props.contentChildren = this.children;
     }
   }
   makeChildren(withChildren, options) {
@@ -1725,7 +1723,7 @@ class VNodeComponent extends VNode {
   render(options) {
     const Component = this.Component;
     const props = this.props;
-    this.instance = options.context.createInstanceForComponent(Component, props);
+    this.instance = options.context.createInstanceForComponent(Component, props, options);
     this.instance.render();
   }
   makeElement(withChildren, options = {}) {
@@ -1951,8 +1949,7 @@ const booleanTypes = new Map(Object.entries({
   allowpaymentrequest: true
 }));
 const expectKeys = {
-  content: true,
-  contentChildren: true
+  content: true
 };
 const TEXT_NODE = 3;
 const KEY_STYLE = "style";
@@ -3144,7 +3141,6 @@ const _EventMachine = class extends MagicHandler {
     this.children = {};
     this.id = uuid();
     this.initializeProperty(opt, props);
-    this.initComponents();
   }
   initializeHandler() {
     return super.initializeHandler({
@@ -3172,9 +3168,6 @@ const _EventMachine = class extends MagicHandler {
   get isServer() {
     var _a;
     return ((_a = this.parent) == null ? void 0 : _a.isServer) || __privateGet(this, _isServer);
-  }
-  initComponents() {
-    this.childComponents = this.components();
   }
   createFunction(funcName, func) {
     if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
@@ -3285,14 +3278,11 @@ const _EventMachine = class extends MagicHandler {
   initialize() {
     __privateSet(this, _state, this.initState());
   }
-  components() {
-    return __spreadValues({}, this.parent.childComponents);
-  }
   getRef(...args) {
     const key = args.join("");
     return this.refs[key];
   }
-  get vNodeOptions() {
+  getVNodeOptions() {
     return {
       context: this,
       registerRef: this.registerRef,
@@ -3300,7 +3290,7 @@ const _EventMachine = class extends MagicHandler {
     };
   }
   parseMainTemplate(html) {
-    let $el = VNodeToElement(html, this.vNodeOptions);
+    let $el = VNodeToElement(html, this.getVNodeOptions());
     return $el;
   }
   createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine) {
@@ -3361,7 +3351,7 @@ const _EventMachine = class extends MagicHandler {
     return ((_a = this.getChild(filterCallback)) == null ? void 0 : _a.props.content) || defaultValue2;
   }
   getChild(filterCallback) {
-    return this.props.contentChildren.find(filterCallback);
+    return this.props.content.find(filterCallback);
   }
   onMounted() {
     const mounted = this.createFunction("mounted");

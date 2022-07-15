@@ -12,7 +12,8 @@
     }
   },
   "dependencies": {
-    "open-color": "^1.9.1"
+    "open-color": "^1.9.1",
+    "@elf-framework/design-tokens": "*"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",

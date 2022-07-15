@@ -16,12 +16,6 @@ export class EventMachine extends MagicHandler {
    * @type {any}
    */
   #state = {};
-
-  /**
-   * previous local state
-   *
-   * @type {any}
-   */
   #cachedMethodList;
   #isServer = false;
   #functionCache = {};
@@ -36,7 +30,6 @@ export class EventMachine extends MagicHandler {
     this.id = uuid();
 
     this.initializeProperty(opt, props);
-    this.initComponents();
   }
 
   initializeHandler() {
@@ -81,10 +74,6 @@ export class EventMachine extends MagicHandler {
 
   get isServer() {
     return this.parent?.isServer || this.#isServer;
-  }
-
-  initComponents() {
-    this.childComponents = this.components();
   }
 
   /**
@@ -356,18 +345,6 @@ export class EventMachine extends MagicHandler {
   }
 
   /**
-   * 하위에 연결될 객체들을 정의한다
-   *
-   * @protected
-   * @returns {Object}
-   */
-  components() {
-    return {
-      ...this.parent.childComponents,
-    };
-  }
-
-  /**
    * ref 이름을 가진 Component 를 가지고 온다.
    *
    * @param  {any[]} args
@@ -380,7 +357,7 @@ export class EventMachine extends MagicHandler {
 
   // afterComponentRendering() {}
 
-  get vNodeOptions() {
+  getVNodeOptions() {
     return {
       context: this,
       registerRef: this.registerRef,
@@ -396,7 +373,7 @@ export class EventMachine extends MagicHandler {
    * @param {string} html
    */
   parseMainTemplate(html) {
-    let $el = VNodeToElement(html, this.vNodeOptions);
+    let $el = VNodeToElement(html, this.getVNodeOptions());
 
     return $el;
   }
@@ -549,63 +526,6 @@ export class EventMachine extends MagicHandler {
   }
 
   /**
-   * 자식 컴포넌트를 찾는다.
-   *
-   * @param {EventMachine} BaseComponent
-   * @returns
-   */
-  // findChildren(BaseComponent) {
-  //   return this.props.contentChildren.filter(
-  //     (it) => it.component === BaseComponent
-  //   );
-  // }
-
-  /**
-   * unique ref 를 통해서 자식 컴포넌트를 찾는다.
-   *
-   * @param {string} ref
-   * @returns
-   */
-  // findChildByRef(ref) {
-  //   const result = [];
-
-  //   Object.keys(this.children).forEach((key) => {
-  //     const child = this.children[key];
-
-  //     if (child.ref === ref) {
-  //       result.push(child);
-  //     }
-
-  //     if (Object.keys(child.children).length) {
-  //       result.push(...child.findChildByRef(ref));
-  //     }
-  //   });
-
-  //   return result;
-  // }
-
-  // findRef(callback) {
-  //   const result = [];
-
-  //   Object.keys(this.children).forEach((key) => {
-  //     const child = this.children[key];
-  //     if (callback(child)) {
-  //       result.push(child);
-  //     }
-
-  //     if (result.length) return result;
-
-  //     if (child.children) {
-  //       result.push(...child.findNestedChildren(callback));
-  //     }
-
-  //     if (result.length) return result;
-  //   });
-
-  //   return result;
-  // }
-
-  /**
    * 자식 객체의 content 를 확인
    *
    * @param {function} filterCallback
@@ -617,7 +537,7 @@ export class EventMachine extends MagicHandler {
   }
 
   getChild(filterCallback) {
-    return this.props.contentChildren.find(filterCallback);
+    return this.props.content.find(filterCallback);
   }
 
   /**

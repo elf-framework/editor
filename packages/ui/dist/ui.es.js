@@ -236,21 +236,13 @@ class Radio extends UIElement {
 }
 class RadioGroup extends UIElement {
   template() {
-    const {
-      disabled,
-      style = {},
-      name,
-      value,
-      onChange,
-      content,
-      contentChildren
-    } = this.props;
+    const { disabled, style = {}, name, value, onChange, content } = this.props;
     const styleObject = {
       class: classnames(["elf--radio-group"]),
       disabled: disabled ? "disabled" : void 0,
       style: __spreadValues({}, propertyMap(style, cssProperties$h))
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), contentChildren.map((it, index) => {
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content.map((it, index) => {
       return /* @__PURE__ */ createElementJsx(Radio, {
         ref: `$${index}`,
         name,

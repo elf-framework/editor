@@ -48,7 +48,7 @@ declare module "@elf-framework/color" {
   };
 
   export type RGBA = RGB & {
-    a: number;
+    a?: number;
   };
 
   export type HSL = {
@@ -58,7 +58,7 @@ declare module "@elf-framework/color" {
   };
 
   export type HSLA = HSL & {
-    a: number;
+    a?: number;
   };
 
   export type HSV = {
@@ -68,7 +68,7 @@ declare module "@elf-framework/color" {
   };
 
   export type HSVA = HSV & {
-    a: number;
+    a?: number;
   };
 
   export type LAB = {
@@ -103,7 +103,7 @@ declare module "@elf-framework/color" {
   export function format(
     obj: RGBA | HSLA,
     type: ColorType,
-    defaultColor: string
+    defaultColor?: string
   ): string;
 
   export function formatWithoutAlpha(

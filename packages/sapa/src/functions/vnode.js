@@ -32,7 +32,6 @@ export function makeNativeTextDom(value) {
 
 const expectAttributes = {
   content: true,
-  contentChildren: true,
 };
 
 function setAttribute(el, name, value) {
@@ -227,7 +226,6 @@ export class VNode {
       });
 
       this.props.content = this.children;
-      this.props.contentChildren = this.children;
     }
   }
 
@@ -408,7 +406,8 @@ export class VNodeComponent extends VNode {
     // 즉, 컴포넌트의 parent 가 된다.
     this.instance = options.context.createInstanceForComponent(
       Component,
-      props
+      props,
+      options
     );
 
     // 객체를 생성 후에는 렌더링을 한다.

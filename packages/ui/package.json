@@ -56,6 +56,7 @@
     "watch": "vite build --config=vite.dist.config.js --watch",
     "blank:watch": "npm run watch",
     "ui:watch": "npm run watch",
+    "editor:watch": "npm run watch",
     "//dev": "npm run vite:dist:watch",
     "release": "release-it *",
     "build": "npm run vite:dist",
