@@ -41,8 +41,7 @@
       "cache": false
     },
     "ui:dev": {
-      "dependsOn": ["ui:watch"],
-      "cache": false
+      "dependsOn": ["ui:watch"]
     },
     "editor:watch": {
       "dependsOn": [

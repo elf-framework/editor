@@ -184,7 +184,7 @@ start(function () {
 
   return (
     <div>
-      <Toolbar items={[item, item]} />
+      <Toolbar items={[item]} />
     </div>
   );
 });

@@ -82,7 +82,7 @@ class Editor extends UIElement {
 }
 class BaseEditor extends Editor {
   template() {
-    const { sampleText } = this.$config.for("sample.text");
+    const { sampleText } = this.$editor.for("sample.text");
     return /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--base-editor", __spreadValues({
         "full-screen": this.props.fullScreen

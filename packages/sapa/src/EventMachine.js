@@ -306,7 +306,6 @@ export class EventMachine extends MagicHandler {
 
     const template = this.template();
     if (this.$el) {
-      // console.log(this.$el, template);
       DomVNodeDiff(this.$el.el, template, {
         checkRefClass: this.checkRefClass,
         context: this,
@@ -326,6 +325,7 @@ export class EventMachine extends MagicHandler {
         // $container 의 자식이 아닐 때만 추가
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
+          this.onMounted();
         }
       }
 
@@ -378,12 +378,20 @@ export class EventMachine extends MagicHandler {
     return $el;
   }
 
+  getFunctionComponent() {
+    return this;
+  }
+
   createFunctionComponent(
     EventMachineComponent,
     props,
     BaseClass = EventMachine
   ) {
     class FunctionElement extends BaseClass {
+      getFunctionComponent() {
+        return EventMachineComponent;
+      }
+
       // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
       isInstanceOf(Component) {
         return EventMachineComponent === Component;
@@ -408,41 +416,6 @@ export class EventMachine extends MagicHandler {
     return new EventMachineComponent(this, props);
   }
 
-  // /**
-  //  * 특정 html 의 자식 컴포넌트(EventMachine)의 정보를 가지고 온다.
-  //  *
-  //  * @param {string} html
-  //  * @param {string[]} filteredRefClass
-  //  * @returns {object[]}  - { refName, EventMachineComponent, props, $dom, refClass }
-  //  */
-  // parseContent(html, filteredRefClass = []) {
-  //   return Dom.create("div")
-  //     .html(html)
-  //     .children()
-  //     .map(($dom) => {
-  //       return this._getComponentInfo($dom);
-  //     })
-  //     .filter((it) =>
-  //       filteredRefClass.length === 0
-  //         ? true
-  //         : filteredRefClass.includes(it.refClass)
-  //     );
-  // }
-
-  // clean() {
-  //   if (this.$el && !this.$el.hasParent()) {
-  //     keyEach(this.children, (key, child) => {
-  //       if (isFunction(child?.clean)) {
-  //         child.clean();
-  //       }
-  //     });
-
-  //     this.destroy();
-
-  //     return true;
-  //   }
-  // }
-
   /**
    * refresh 는 load 함수들을 실행한다.
    */
@@ -450,32 +423,18 @@ export class EventMachine extends MagicHandler {
     this.render();
   }
 
+  afterRender() {}
+
   async _afterLoad() {
     this.runHandlers("initialize");
+
+    this.afterRender();
   }
 
   // 기본 템플릿 지정
   template() {
     return null;
   }
-
-  // eachChildren(callback) {
-  //   if (!isFunction(callback)) return;
-
-  //   Object.keys(this.children).forEach((key) => {
-  //     callback(this.children[key]);
-  //   });
-  // }
-
-  // hmr() {
-  //   this.created();
-  //   this.initialize();
-  //   this.refresh();
-
-  //   this.eachChildren((child) => {
-  //     child.hmr();
-  //   });
-  // }
 
   /**
    * 자원을 해제한다.
@@ -545,10 +504,19 @@ export class EventMachine extends MagicHandler {
    *
    */
   onMounted() {
+    // Mounted 이벤트 실행
     const mounted = this.createFunction("mounted");
 
     if (mounted) {
       mounted();
+    }
+
+    // root vnode의 element 와 나의 element 가 같을 때는
+    // 자식 vnode 의 mounted 를 같이 실행해준다.
+    const instance = this.getTargetInstance(this.$el.el);
+
+    if (instance) {
+      instance.onMounted();
     }
   }
 
@@ -558,6 +526,14 @@ export class EventMachine extends MagicHandler {
     if (updated) {
       updated();
     }
+
+    // root vnode의 element 와 나의 element 가 같을 때는
+    // 자식 vnode 의 updated 를 같이 실행해준다.
+    const instance = this.getTargetInstance(this.$el.el);
+
+    if (instance) {
+      instance.onUpdated();
+    }
   };
 
   onDestroyed() {
@@ -565,6 +541,14 @@ export class EventMachine extends MagicHandler {
 
     if (destroyed) {
       destroyed();
+    }
+
+    // root vnode의 element 와 나의 element 가 같을 때는
+    // 자식 vnode 의 destroyed 를 같이 실행해준다.
+    const instance = this.getTargetInstance(this.$el.el);
+
+    if (instance) {
+      instance.onDestroyed();
     }
   }
 

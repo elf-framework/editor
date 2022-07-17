@@ -145,7 +145,9 @@ export class VNode {
    *
    * @override
    */
-  // mounted() {}
+  mounted() {
+    // noop
+  }
 
   runMounted() {
     if (this.mounted) {
@@ -196,7 +198,7 @@ export class VNode {
 
   initializeChildren() {
     if (isArray(this.children)) {
-      this.children = this.children.map((child) => {
+      this.children = this.children.filter(Boolean).map((child) => {
         if (isString(child)) {
           if (this.enableHtml) {
             // tag 문자열이 없으면 그냥 text node 로 인식한다.
@@ -455,16 +457,16 @@ export class VNodeElement extends VNode {
   }
 }
 
-export function createVNode({ tag, props, children, Component }) {
-  return new VNode(VNodeType.NODE, tag, props, children, Component);
+export function createVNode({ tag, props = {}, children }) {
+  return new VNode(VNodeType.NODE, tag, props, children);
 }
 
-export function createVNodeComponent({ props, children, Component }) {
+export function createVNodeComponent({ props = {}, children, Component }) {
   return new VNodeComponent(props, children, Component);
 }
 
-export function createVNodeFragment({ props, children, Component }) {
-  return new VNodeFragment(props, children, Component);
+export function createVNodeFragment({ props = {}, children }) {
+  return new VNodeFragment(props, children);
 }
 
 export function createVNodeText(text) {
@@ -492,4 +494,62 @@ export function createVNodeByDom(el) {
 
 export function cloneVNode(vnode) {
   return vnode.clone();
+}
+
+/**
+ *
+ * jsonToVNode({
+ *    tag: "div",
+ *    props: {
+ *      id: "test",
+ *      class: "test",
+ *      style: {
+ *        color: "red"
+ *      }
+ *    },
+ *    children: [
+ *      {
+ *        tag: "span",
+ *        props: {
+ *          id: "test",
+ *          class: "test",
+ *          style: {
+ *          color: "red"
+ *        }
+ *      }
+ *    ]
+ * })
+ *
+ * @param {*} json
+ * @returns
+ */
+export function jsonToVNode(json) {
+  const { children = [], ...rest } = json;
+
+  if (typeof json === "string" || typeof json === "number") {
+    return createVNodeText(json);
+  }
+
+  if (rest.type === "text") {
+    return createVNodeText(rest.text);
+  }
+
+  if (rest.type === "fragment") {
+    return createVNodeFragment({
+      ...rest,
+      children: children.map((it) => jsonToVNode(it)),
+    });
+  }
+
+  if (rest.type === "component" || rest.Component) {
+    return createVNodeComponent({
+      ...rest,
+      children: children.map((it) => jsonToVNode(it)),
+    });
+  }
+
+  return createVNode({
+    ...rest,
+    children: children.map((it) => jsonToVNode(it)),
+  });
 }

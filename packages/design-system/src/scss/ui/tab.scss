@@ -1,0 +1,30 @@
+.elf--tab {
+    --elf--tab-background-color: white;
+    --elf--tab-font-color: rgba(0, 0, 0, 0.3);
+    --elf--tab-height: auto;
+    --elf--tab-font-weight: 500;
+    --elf--tab-border-color: rgba(0, 0, 0, 0.1);
+    --elf--tab-body-padding: 8px;
+
+    background-color: var(--elf--tab-background-color);
+    // color: var(--elf--tab-font-color);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    > .elf--tab-header {
+
+    }
+
+    > .elf--tab-body {
+        height: var(--elf--tab-height);
+
+        > .elf--tab-content-item {
+            display: none;
+
+            &.selected {
+                display: block;
+            }
+        }
+    }
+}

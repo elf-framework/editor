@@ -1,0 +1,15 @@
+.apply-color {
+    color: blue;
+
+    &:hover {
+        color: red;
+
+        > .child {
+            color: green;
+        }
+    }
+
+    > .child {
+        color: black;
+    }
+}

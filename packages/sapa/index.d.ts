@@ -430,4 +430,37 @@ declare module "@elf-framework/sapa" {
   ): string;
 
   export function htmlToVNode(html: string): VNode;
+
+  export type VNodeJSONType = {
+    tag: string;
+    props: KeyValue;
+    children: JSONType[];
+  };
+  export type VNodeTextJSONType = {
+    type: "text";
+    text: string;
+  };
+  export type VNodeFragmentJSONType = {
+    type: "fragment";
+    children: JSONType[];
+  };
+
+  export type VNodeComponentJSONType = {
+    type: "component";
+    Component: ElementType;
+    props: KeyValue;
+    children: JSONType[];
+  };
+
+  type JSONType =
+    | string
+    | number
+    | undefined
+    | null
+    | boolean
+    | VNodeJSONType
+    | VNodeTextJSONType
+    | VNodeFragmentJSONType
+    | VNodeComponentJSONType;
+  export function jsonToVNode(json: JSONType): VNode;
 }

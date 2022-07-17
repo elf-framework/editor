@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 15 Jul 2022 00:22:46 GMT
+ * Generated on Sun, 17 Jul 2022 15:40:10 GMT
  */
 
 :root {
@@ -10,12 +10,6 @@
   --size-padding-medium: 1;
   --size-padding-small: 0.5;
   --size-padding-xs: 0.25;
-  --size-font-h6: 18px;
-  --size-font-h5: 20px;
-  --size-font-h4: 22px;
-  --size-font-h3: 26px;
-  --size-font-h2: 32px;
-  --size-font-h1: 40px;
   --size-font-xxl: 3.5;
   --size-font-xl: 2.25;
   --size-font-large: 1.5;
@@ -191,7 +185,7 @@
   --color-background-warning: var(--color-core-yellow-100);
   --color-background-danger: var(--color-core-red-100);
   --color-background-tertiary: var(--color-core-neutral-200);
-  --color-background-secondary: var(--color-core-neutral-200);
+  --color-background-secondary: var(--color-core-neutral-100);
   --color-background-primary: var(--color-core-white);
   --component-button-outline-background-color: var(--color-background-primary);
   --component-button-primary-active-color: var(--color-font-inverse);

@@ -1,4 +1,6 @@
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -13,6 +15,19 @@ var __spreadValues = (a, b) => {
         __defNormalProp(a, prop, b[prop]);
     }
   return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
 };
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
@@ -1533,6 +1548,8 @@ class VNode {
   find(callback) {
     return this.props.content.find(callback);
   }
+  mounted() {
+  }
   runMounted() {
     if (this.mounted) {
       requestAnimationFrame(() => {
@@ -1567,7 +1584,7 @@ class VNode {
   }
   initializeChildren() {
     if (isArray(this.children)) {
-      this.children = this.children.map((child) => {
+      this.children = this.children.filter(Boolean).map((child) => {
         if (isString(child)) {
           if (this.enableHtml) {
             if (child.indexOf(TAG_PREFIX) === -1) {
@@ -1750,14 +1767,14 @@ class VNodeElement extends VNode {
     return this;
   }
 }
-function createVNode({ tag, props, children: children2, Component }) {
-  return new VNode(VNodeType.NODE, tag, props, children2, Component);
+function createVNode({ tag, props = {}, children: children2 }) {
+  return new VNode(VNodeType.NODE, tag, props, children2);
 }
-function createVNodeComponent({ props, children: children2, Component }) {
+function createVNodeComponent({ props = {}, children: children2, Component }) {
   return new VNodeComponent(props, children2, Component);
 }
-function createVNodeFragment({ props, children: children2, Component }) {
-  return new VNodeFragment(props, children2, Component);
+function createVNodeFragment({ props = {}, children: children2 }) {
+  return new VNodeFragment(props, children2);
 }
 function createVNodeText(text) {
   return new VNodeText(text);
@@ -1780,6 +1797,28 @@ function createVNodeByDom(el) {
 }
 function cloneVNode(vnode) {
   return vnode.clone();
+}
+function jsonToVNode(json) {
+  const _a = json, { children: children2 = [] } = _a, rest = __objRest(_a, ["children"]);
+  if (typeof json === "string" || typeof json === "number") {
+    return createVNodeText(json);
+  }
+  if (rest.type === "text") {
+    return createVNodeText(rest.text);
+  }
+  if (rest.type === "fragment") {
+    return createVNodeFragment(__spreadProps(__spreadValues({}, rest), {
+      children: children2.map((it) => jsonToVNode(it))
+    }));
+  }
+  if (rest.type === "component" || rest.Component) {
+    return createVNodeComponent(__spreadProps(__spreadValues({}, rest), {
+      children: children2.map((it) => jsonToVNode(it))
+    }));
+  }
+  return createVNode(__spreadProps(__spreadValues({}, rest), {
+    children: children2.map((it) => jsonToVNode(it))
+  }));
 }
 class BaseStore {
   constructor(editor) {
@@ -2124,6 +2163,9 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
     var fragment = document.createDocumentFragment();
     newChildren.forEach((it) => fragment.appendChild(it.makeElement(true, options).el));
     oldEl.appendChild(fragment);
+    newChildren.forEach((it) => {
+      it.runMounted();
+    });
   } else if (oldChildren.length > 0 && newChildren.length === 0) {
     oldEl.textContent = "";
   } else {
@@ -3127,6 +3169,10 @@ const _EventMachine = class extends MagicHandler {
       if (updated) {
         updated();
       }
+      const instance = this.getTargetInstance(this.$el.el);
+      if (instance) {
+        instance.onUpdated();
+      }
     });
     __publicField(this, "useMounted", (callback) => {
       return this.createFunction("mounted", callback);
@@ -3266,6 +3312,7 @@ const _EventMachine = class extends MagicHandler {
       if ($container) {
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
+          this.onMounted();
         }
       }
       await this._afterLoad();
@@ -3293,8 +3340,14 @@ const _EventMachine = class extends MagicHandler {
     let $el = VNodeToElement(html, this.getVNodeOptions());
     return $el;
   }
+  getFunctionComponent() {
+    return this;
+  }
   createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine) {
     class FunctionElement extends BaseClass {
+      getFunctionComponent() {
+        return EventMachineComponent;
+      }
       isInstanceOf(Component) {
         return EventMachineComponent === Component;
       }
@@ -3313,8 +3366,11 @@ const _EventMachine = class extends MagicHandler {
   refresh() {
     this.render();
   }
+  afterRender() {
+  }
   async _afterLoad() {
     this.runHandlers("initialize");
+    this.afterRender();
   }
   template() {
     return null;
@@ -3358,11 +3414,19 @@ const _EventMachine = class extends MagicHandler {
     if (mounted) {
       mounted();
     }
+    const instance = this.getTargetInstance(this.$el.el);
+    if (instance) {
+      instance.onMounted();
+    }
   }
   onDestroyed() {
     const destroyed = this.createFunction("destroyed");
     if (destroyed) {
       destroyed();
+    }
+    const instance = this.getTargetInstance(this.$el.el);
+    if (instance) {
+      instance.onDestroyed();
     }
   }
 };
@@ -3537,4 +3601,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };

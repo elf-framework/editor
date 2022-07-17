@@ -14,6 +14,140 @@ declare module "@elf-framework/ui" {
   type ButtonSize = "small" | "default" | "large";
   type ButtonShape = "square" | "round" | "circle";
 
+  interface CommonStyle {
+    alignContent?: string;
+    alignItems?: string;
+    alignSelf?: string;
+    area?: string;
+    autoColumns?: string;
+    autoFlow?: string;
+    autoRows?: string;
+    backgroundColor?: string;
+    backgroundImage?: string;
+    basis?: string;
+    border?: string;
+    borderRadius?: string;
+    bottom?: string;
+    boxShadow?: string;
+    color?: string;
+    column?: string;
+    columnEnd?: string;
+    columnGap?: string;
+    columnSpan?: string;
+    columnStart?: string;
+    direction?: string;
+    display?: string;
+    flex?: string;
+    fontFamily?: string;
+    fontSize?: string;
+    fontStyle?: string;
+    fontWeight?: string;
+    gap?: string;
+    grow?: string;
+    height?: string;
+    justifyContent?: string;
+    left?: string;
+    letterSpacing?: string;
+    lineHeight?: string;
+    margin?: string;
+    marginBlock?: string;
+    marginBlockEnd?: string;
+    marginBlockStart?: string;
+    marginBottom?: string;
+    marginInline?: string;
+    marginInlineEnd?: string;
+    marginInlineStart?: string;
+    marginLeft?: string;
+    marginRight?: string;
+    marginTop?: string;
+    maxHeight?: string;
+    maxWidth?: string;
+    minHeight?: string;
+    minWidth?: string;
+    objectFit?: string;
+    objectPosition?: string;
+    opacity?: string;
+    order?: string;
+    overflow?: string;
+    padding?: string;
+    paddingBlock?: string;
+    paddingBlockEnd?: string;
+    paddingBlockStart?: string;
+    paddingBottom?: string;
+    paddingInline?: string;
+    paddingInlineEnd?: string;
+    paddingInlineStart?: string;
+    paddingLeft?: string;
+    paddingRight?: string;
+    paddingTop?: string;
+    position?: string;
+    resize?: string;
+    right?: string;
+    row?: string;
+    rowEnd?: string;
+    rowGap?: string;
+    rowSpan?: string;
+    rowStart?: string;
+    shrink?: string;
+    templateAreas?: string;
+    templateColumns?: string;
+    templateRows?: string;
+    textAlign?: string;
+    textDecoration?: string;
+    textTransform?: string;
+    top?: string;
+    transform?: string;
+    transformOrigin?: string;
+    width?: string;
+    whiteSpace?: string;
+    wrap?: string;
+  }
+
+  export type DomEventType = {
+    onFocus?: (event: KeyboardEvent) => void;
+    onBlur?: (event: KeyboardEvent) => void;
+    onKeyDown?: (event: KeyboardEvent) => void;
+    onKeyUp?: (event: KeyboardEvent) => void;
+    onKeyPress?: (event: KeyboardEvent) => void;
+    onChange?: (event: KeyboardEvent) => void;
+    onInput?: (event: KeyboardEvent) => void;
+    onPaste?: (event: KeyboardEvent) => void;
+    onCut?: (event: KeyboardEvent) => void;
+    onCopy?: (event: KeyboardEvent) => void;
+    onClick?: (event: MouseEvent) => void;
+    onCompositionStart?: (event: KeyboardEvent) => void;
+    onCompositionEnd?: (event: KeyboardEvent) => void;
+    onCompositionUpdate?: (event: KeyboardEvent) => void;
+    onSelect?: (event: KeyboardEvent) => void;
+    onMouseDown?: (event: MouseEvent) => void;
+    onMouseUp?: (event: MouseEvent) => void;
+    onMouseMove?: (event: MouseEvent) => void;
+    onMouseEnter?: (event: MouseEvent) => void;
+    onMouseLeave?: (event: MouseEvent) => void;
+    onMouseOver?: (event: MouseEvent) => void;
+    onMouseOut?: (event: MouseEvent) => void;
+    onWheel?: (event: WheelEvent) => void;
+    onContextMenu?: (event: MouseEvent) => void;
+    onDragStart?: (event: DragEvent) => void;
+    onDrag?: (event: DragEvent) => void;
+    onDragEnd?: (event: DragEvent) => void;
+    onDragEnter?: (event: DragEvent) => void;
+    onDragLeave?: (event: DragEvent) => void;
+    onDragOver?: (event: DragEvent) => void;
+    onDrop?: (event: DragEvent) => void;
+    onScroll?: (event: WheelEvent) => void;
+    onTouchStart?: (event: TouchEvent) => void;
+    onTouchMove?: (event: TouchEvent) => void;
+    onTouchEnd?: (event: TouchEvent) => void;
+    onTouchCancel?: (event: TouchEvent) => void;
+    onPointerDown?: (event: PointerEvent) => void;
+    onPointerMove?: (event: PointerEvent) => void;
+    onPointerUp?: (event: PointerEvent) => void;
+    onPointerCancel?: (event: PointerEvent) => void;
+    onPointerEnter?: (event: PointerEvent) => void;
+    onPointerLeave?: (event: PointerEvent) => void;
+  };
+
   interface ButtonStyle {
     borderColor?: string;
     backgroundColor?: string;
@@ -40,27 +174,27 @@ declare module "@elf-framework/ui" {
     destructive?: boolean;
     disabled?: boolean;
     onClick?: (event: PointerEvent) => void;
-    style?: ButtonStyle;
+    style?: ButtonStyle & CommonStyle;
   }
 
   interface LinkButtonProps {
     onClick?: (event: PointerEvent) => void;
-    style?: LinkButtonStyle;
+    style?: LinkButtonStyle & CommonStyle;
     href?: string;
   }
 
   export class Button extends UIElement {
-    props: ButtonProps;
+    props: ButtonProps & CommonStyle;
   }
 
   export class LinkButton extends UIElement {
-    props: LinkButtonProps;
+    props: LinkButtonProps & CommonStyle;
   }
 
   export class IconButton extends Button {
     props: ButtonProps & {
       icon: string;
-    };
+    } & CommonStyle;
   }
 
   /** menu */
@@ -135,21 +269,21 @@ declare module "@elf-framework/ui" {
     x?: number;
     y?: number;
     direction?: MenuDirectionType;
-    style: MenuStyle;
+    style: MenuStyle & CommonStyle;
     root?: ToolsMenuItem;
   }
 
   export class GroupMenuItem extends UIElement {
-    props: GroupMenuItemType;
+    props: GroupMenuItemType & CommonStyle;
   }
 
   export class MenuItem extends UIElement {
-    props: MenuItemType;
+    props: MenuItemType & CommonStyle;
     get selected(): boolean;
   }
 
   export class Menu extends UIElement {
-    props: MenuProps;
+    props: MenuProps & CommonStyle;
   }
 
   type DialogPositionType = "relative" | "absolute" | "fixed";
@@ -179,7 +313,7 @@ declare module "@elf-framework/ui" {
     onClose: (event: Dialog) => void;
   }
   export class Dialog extends UIElement {
-    props: DialogProps;
+    props: DialogProps & CommonStyle;
 
     cancel: () => void;
     ok: () => void;
@@ -206,7 +340,7 @@ declare module "@elf-framework/ui" {
   }
 
   export class Toolbar extends UIElement {
-    props: ToolbarProps;
+    props: ToolbarProps & CommonStyle;
   }
 
   /** menu */
@@ -256,10 +390,10 @@ declare module "@elf-framework/ui" {
 
   export interface ToolsProps {
     items: ToolsType[];
-    style: ToolsStyle;
+    style: ToolsStyle & CommonStyle;
   }
   export class Tools extends UIElement {
-    props: ToolsProps;
+    props: ToolsProps & CommonStyle;
   }
 
   interface NotificationStyle {
@@ -286,11 +420,11 @@ declare module "@elf-framework/ui" {
   export interface NotificationProps {
     icon?: string | UIElement | UIElement[];
     content?: string | string[] | UIElement | UIElement[];
-    style: NotificationStyle;
+    style: NotificationStyle & CommonStyle;
     direction?: NotificationDirectionType;
   }
   export class Notification extends UIElement {
-    props: NotificationProps;
+    props: NotificationProps & CommonStyle;
   }
 
   interface VisualBellStyle {
@@ -317,11 +451,11 @@ declare module "@elf-framework/ui" {
   export interface VisualBellProps {
     icon?: string | UIElement | UIElement[];
     content?: string | string[] | UIElement | UIElement[];
-    style: VisualBellStyle;
+    style: VisualBellStyle & CommonStyle;
     direction?: VisualBellDirectionType;
   }
   export class VisualBell extends UIElement {
-    props: VisualBellProps;
+    props: VisualBellProps & CommonStyle;
   }
 
   interface TooltipStyle {
@@ -350,10 +484,10 @@ declare module "@elf-framework/ui" {
       | "bottom-right";
     trigger: "hover" | "click";
     show: boolean;
-    style: TooltipStyle;
+    style: TooltipStyle & CommonStyle;
   }
   export class Tooltip extends UIElement {
-    props: TooltipProps;
+    props: TooltipProps & CommonStyle;
   }
 
   interface PanelStyle {
@@ -393,16 +527,61 @@ declare module "@elf-framework/ui" {
 
   export interface TabStripProps {
     tools?: ContentType;
+    /**
+     * 탭을 넓은 상태로 볼지 결정합니다.
+     *
+     * @default false
+     */
+    fitted?: boolean;
+    align?: "left" | "center" | "right";
     items?: string[] | UIElement[];
-    style?: TabStripStyle;
+    style?: TabStripStyle & CommonStyle;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
+
   export class Panel extends UIElement {
-    props: PanelProps;
+    props: PanelProps & CommonStyle;
   }
 
   export class TabStrip extends UIElement {
-    props: TabStripProps;
+    props: TabStripProps & CommonStyle;
+  }
+
+  export interface TabItemProps {
+    key?: any;
+    title: ContentType;
+    icon?: ContentType;
+    disabled?: boolean;
+    selected?: boolean;
+    onClick?: (event: PointerEvent) => void;
+    content?: ContentType;
+  }
+
+  export class TabItem extends UIElement {
+    props: TabItemProps;
+  }
+
+  export interface TabStyle {
+    backgroundColor: string;
+    color: string;
+  }
+
+  export interface TabProps {
+    activeKey?: any;
+    /**
+     * 탭을 넓은 상태로 볼지 결정합니다.
+     *
+     * @default false
+     */
+    fitted?: boolean;
+    align?: "left" | "center" | "right";
+    content?: TabItem[];
+    style?: TabStyle & CommonStyle;
+    onChange?: (event: PointerEvent, item: UIElement) => void;
+  }
+
+  export class Tab extends UIElement {
+    props: TabProps & CommonStyle;
   }
 
   export type FlexStyle = {
@@ -412,20 +591,20 @@ declare module "@elf-framework/ui" {
   export interface FlexProps {
     stack?: boolean;
     wrap?: boolean;
-    style?: FlexStyle;
+    style?: FlexStyle & CommonStyle;
   }
 
   export class Flex extends UIElement {
-    props: FlexProps;
+    props: FlexProps & CommonStyle;
   }
 
   export interface VBoxProps {
     wrap?: boolean;
-    style?: FlexStyle;
+    style?: FlexStyle & CommonStyle;
   }
 
   export class VBox extends Flex {
-    props: VBoxProps;
+    props: VBoxProps & CommonStyle;
   }
 
   export type GridStyle = {
@@ -437,56 +616,20 @@ declare module "@elf-framework/ui" {
   export interface GridProps {
     columns?: GridTemplate | GridTemplate[];
     rows?: GridTemplate | GridTemplate[];
-    style?: GridStyle;
+    style?: GridStyle & CommonStyle;
   }
 
   export class Grid extends UIElement {
-    props: GridProps;
+    props: GridProps & CommonStyle & DomEventType;
   }
 
-  export type DomEventType = {
-    onFocus?: (event: KeyboardEvent) => void;
-    onBlur?: (event: KeyboardEvent) => void;
-    onKeyDown?: (event: KeyboardEvent) => void;
-    onKeyUp?: (event: KeyboardEvent) => void;
-    onKeyPress?: (event: KeyboardEvent) => void;
-    onChange?: (event: KeyboardEvent) => void;
-    onInput?: (event: KeyboardEvent) => void;
-    onPaste?: (event: KeyboardEvent) => void;
-    onCut?: (event: KeyboardEvent) => void;
-    onCopy?: (event: KeyboardEvent) => void;
-    onCompositionStart?: (event: KeyboardEvent) => void;
-    onCompositionEnd?: (event: KeyboardEvent) => void;
-    onCompositionUpdate?: (event: KeyboardEvent) => void;
-    onSelect?: (event: KeyboardEvent) => void;
-    onMouseDown?: (event: MouseEvent) => void;
-    onMouseUp?: (event: MouseEvent) => void;
-    onMouseMove?: (event: MouseEvent) => void;
-    onMouseEnter?: (event: MouseEvent) => void;
-    onMouseLeave?: (event: MouseEvent) => void;
-    onMouseOver?: (event: MouseEvent) => void;
-    onMouseOut?: (event: MouseEvent) => void;
-    onWheel?: (event: WheelEvent) => void;
-    onContextMenu?: (event: MouseEvent) => void;
-    onDragStart?: (event: DragEvent) => void;
-    onDrag?: (event: DragEvent) => void;
-    onDragEnd?: (event: DragEvent) => void;
-    onDragEnter?: (event: DragEvent) => void;
-    onDragLeave?: (event: DragEvent) => void;
-    onDragOver?: (event: DragEvent) => void;
-    onDrop?: (event: DragEvent) => void;
-    onScroll?: (event: WheelEvent) => void;
-    onTouchStart?: (event: TouchEvent) => void;
-    onTouchMove?: (event: TouchEvent) => void;
-    onTouchEnd?: (event: TouchEvent) => void;
-    onTouchCancel?: (event: TouchEvent) => void;
-    onPointerDown?: (event: PointerEvent) => void;
-    onPointerMove?: (event: PointerEvent) => void;
-    onPointerUp?: (event: PointerEvent) => void;
-    onPointerCancel?: (event: PointerEvent) => void;
-    onPointerEnter?: (event: PointerEvent) => void;
-    onPointerLeave?: (event: PointerEvent) => void;
-  };
+  export interface ViewProps {
+    as?: string;
+    style?: CommonStyle;
+  }
+  export class View extends UIElement {
+    props: ViewProps & CommonStyle & DomEventType;
+  }
 
   export type InputEditorStyle = {
     backgroundColor: string;
@@ -516,12 +659,12 @@ declare module "@elf-framework/ui" {
     autoFocus?: boolean;
     autoFocusDelay?: number;
     placeholder?: string;
-    style?: InputEditorStyle;
+    style?: InputEditorStyle & CommonStyle;
     disabled?: boolean;
   }
 
   export class InputEditor extends UIElement {
-    props: InputEditorProps & DomEventType;
+    props: InputEditorProps & DomEventType & CommonStyle;
   }
 
   export type InputPaintStyle = {
@@ -539,13 +682,13 @@ declare module "@elf-framework/ui" {
     autoFocus?: boolean;
     autoFocusDelay?: number;
     placeholder?: string;
-    style?: InputPaintStyle;
+    style?: InputPaintStyle & CommonStyle;
     disabled?: boolean;
     hideColorView?: boolean;
   }
 
   export class InputPaint extends UIElement {
-    props: InputPaintProps & DomEventType;
+    props: InputPaintProps & DomEventType & CommonStyle;
   }
 
   export interface HexColorEditorProps {
@@ -579,25 +722,27 @@ declare module "@elf-framework/ui" {
     name: string;
     value: any;
     onChange: (event: PointerEvent) => void;
+    style: CommonStyle;
   }
   export class Radio extends UIElement {
-    props: RadioProps;
+    props: RadioProps & CommonStyle;
   }
 
   export interface RadioGroupProps {
     name: string;
     value: any;
     onChange: (event: PointerEvent) => void;
+    style: CommonStyle;
   }
 
   export class RadioGroup extends UIElement {
-    props: RadioGroupProps;
+    props: RadioGroupProps & CommonStyle;
   }
 
   export type CheckboxProps = RadioProps;
 
   export class Checkbox extends UIElement {
-    props: CheckboxProps;
+    props: CheckboxProps & CommonStyle;
   }
 
   interface CheckboxItem {
@@ -610,10 +755,11 @@ declare module "@elf-framework/ui" {
     value: any;
     options: CheckboxItem[];
     onChange: (event: PointerEvent) => void;
+    style: CommonStyle;
   }
 
   export class CheckboxGroup extends UIElement {
-    props: CheckboxGroupProps;
+    props: CheckboxGroupProps & CommonStyle;
   }
 
   export type VirtualScrollStyle = {
@@ -624,7 +770,7 @@ declare module "@elf-framework/ui" {
   };
 
   export interface VirtualScrollProps {
-    style: VirtualScrollStyle;
+    style: VirtualScrollStyle & CommonStyle;
     items: any[];
     itemHeight: number;
     itemRenderer: (
@@ -645,7 +791,7 @@ declare module "@elf-framework/ui" {
   }
 
   export class VirtualScroll extends UIElement {
-    props: VirtualScrollProps;
+    props: VirtualScrollProps & CommonStyle;
   }
 
   export interface LayerProps {
@@ -662,17 +808,19 @@ declare module "@elf-framework/ui" {
     onMouseMove?: (event: MouseEvent) => void;
     onMouseEnter?: (event: MouseEvent) => void;
     onMouseLeave?: (event: MouseEvent) => void;
+    style: CommonStyle;
   }
 
   export class Layer extends UIElement {
-    props: LayerProps;
+    props: LayerProps & CommonStyle;
   }
 
   export interface ColorViewProps {
     color: string;
+    style: CommonStyle;
   }
   export class ColorView extends UIElement {
-    props: ColorViewProps;
+    props: ColorViewProps & CommonStyle;
   }
 
   export type OptionMenuItem = ItemType;
@@ -682,19 +830,21 @@ declare module "@elf-framework/ui" {
     menuStyle: MenuStyle;
     autoPosition: boolean;
     items: OptionMenuItem[];
+    style: CommonStyle;
   }
 
   export class OptionMenu extends UIElement {
-    props: OptionMenuProps;
+    props: OptionMenuProps & CommonStyle;
   }
 
   export interface ColorMixerProps {
     color: string;
     onChange: (color: string) => void;
     onLastChange: (color: string) => void;
+    style: CommonStyle;
   }
   export class ColorMixer extends UIElement {
-    props: ColorMixerProps;
+    props: ColorMixerProps & CommonStyle;
   }
 
   export type OpacityType = {
@@ -711,9 +861,10 @@ declare module "@elf-framework/ui" {
   export interface ColorGridProps {
     items: ColorGridItem[];
     selectedValue: string;
+    style: CommonStyle;
   }
   export class ColorGrid extends UIElement {
-    props: ColorGridProps;
+    props: ColorGridProps & CommonStyle;
   }
 
   export type OptionStripItem = {
@@ -725,8 +876,18 @@ declare module "@elf-framework/ui" {
     selectedValue: unknown;
     disabled?: boolean;
     onChange: (event: PointerEvent) => void;
+    style: CommonStyle;
   }
   export class OptionStrip extends UIElement {
-    props: OptionStripProps;
+    props: OptionStripProps & CommonStyle;
+  }
+
+  export type DataEditorItemType = string;
+
+  export interface DataEditorProps {
+    items: DataEditorItemType[];
+  }
+  export class DataEditor extends UIElement {
+    props: DataEditorProps;
   }
 }

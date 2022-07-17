@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 // import { sapa } from "vite-plugin-sapa";
-import { viteStaticCopy } from "vite-plugin-static-copy";
+// import { viteStaticCopy } from "vite-plugin-static-copy";
 
 import path from "path";
 
@@ -10,6 +10,11 @@ export default defineConfig({
     jsxFactory: "createElementJsx",
     jsxFragment: "FragmentInstance",
     jsxInject: `import { createElementJsx } from "@elf-framework/sapa"`,
+  },
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly",
+    },
   },
   build: {
     emptyOutDir: false,
@@ -35,16 +40,16 @@ export default defineConfig({
   },
   plugins: [
     // sapa(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: path.resolve(
-            "../../node_modules",
-            "@elf-framework/design-system/dist/index.css"
-          ),
-          dest: ".",
-        },
-      ],
-    }),
+    // viteStaticCopy({
+    //   targets: [
+    //     {
+    //       src: path.resolve(
+    //         "../../node_modules",
+    //         "@elf-framework/design-system/dist/index.css"
+    //       ),
+    //       dest: ".",
+    //     },
+    //   ],
+    // }),
   ],
 });

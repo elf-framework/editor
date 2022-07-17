@@ -10,7 +10,7 @@
   "main": "./dist/ui.umd.js",
   "module": "./dist/ui.es.js",
   "exports": {
-    "./style.css": "./dist/index.css",
+    "./style.css": "./dist/style.css",
     ".": {
       "import": "./dist/ui.es.js",
       "require": "./dist/ui.umd.js"

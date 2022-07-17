@@ -117,13 +117,20 @@ export class InputPaint extends UIElement {
 
     return (
       <div {...styleObject}>
-        {hideColorView ? undefined : (        <div class="elf--input-paint-icon">
-          <ColorView color={value} />
-        </div>)}
+        {hideColorView ? undefined : (
+          <div class="elf--input-paint-icon">
+            <ColorView color={value} />
+          </div>
+        )}
 
         <div class="elf--input-area">
           <div class="elf--input-item">
-            <input class="color" {...properties} {...inputEvents} />
+            <input
+              class="color"
+              ref="$input"
+              {...properties}
+              {...inputEvents}
+            />
           </div>
         </div>
         {this.state.hasOpacity && (
@@ -169,6 +176,8 @@ export class InputPaint extends UIElement {
   };
 
   onMounted() {
+    super.onMounted();
+
     if (this.state.autoFocus) {
       setTimeout(() => {
         this.refs.$input.focus();
@@ -191,7 +200,7 @@ export class InputPaint extends UIElement {
     this.setState({
       focused: true,
     });
-
+    e.target.select();
     this.runCallback(this.props.onFocus, e);
   }
 
