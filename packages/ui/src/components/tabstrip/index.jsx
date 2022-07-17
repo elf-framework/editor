@@ -15,35 +15,41 @@ const cssProperties = makeStyleMap("--elf--tabstrip", {
   delay: true,
 });
 export class TabStrip extends UIElement {
-  initState() {
-    return {
-      items: this.props.items || [],
-    };
-  }
-
   template() {
-    const { style = {} } = this.props;
-    const { items = [] } = this.state;
+    const { style = {}, items = [], fitted, align = "left" } = this.props;
 
     const styleObject = {
-      class: classnames("elf--tabstrip"),
+      class: classnames("elf--tabstrip", {
+        "is-fitted": fitted,
+      }),
       style: {
         ...propertyMap(style, cssProperties),
       },
     };
 
+    console.log(align);
+
     return (
-      <div class="elf--tabstrip" {...styleObject}>
-        <div class="elf--tabstrip-content">
+      <div {...styleObject}>
+        <div
+          class={classnames("elf--tabstrip-content", {
+            [`align-${align}`]: true,
+          })}
+        >
           {items.map((it) => {
+            const isSelected = !!it.selected;
+            const isDisabled = !!it.disabled;
+            const selectedStyle = it.selectedStyle || {};
+            const style = it.style || {};
             return (
               <div
                 class={classnames("elf--tabstrip-item", {
-                  selected: !!it.selected,
+                  selected: isSelected,
+                  disabled: isDisabled,
                 })}
-                onClick={(e) => this.setSelectedValue(e, it.value)}
+                style={isSelected ? selectedStyle : style}
               >
-                {it.title}
+                <div onClick={it.onClick}>{it.title}</div>
               </div>
             );
           })}
@@ -57,25 +63,5 @@ export class TabStrip extends UIElement {
         ) : undefined}
       </div>
     );
-  }
-
-  get selectedValue() {
-    return this.state.items.find((it) => it.selected)?.value;
-  }
-
-  setSelectedValue(e, selectedValue) {
-    const oldSelectedValue = this.selectedValue;
-
-    this.setState({
-      items: this.state.items.map((it) => {
-        it.selected = it.value === selectedValue;
-
-        return it;
-      }),
-    });
-
-    if (oldSelectedValue !== selectedValue) {
-      this.props.onChange && this.props.onChange(e, this);
-    }
   }
 }

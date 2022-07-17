@@ -1,0 +1,42 @@
+.elf--data-editor {
+    --elf--data-editor-background-color: white;
+    --elf--data-editor-font-color: rgba(0, 0, 0, 0.3);
+    --elf--data-editor-width: 240px;
+    --elf--data-editor-item-title-width: 80px;
+    --elf--data-editor-font-weight: 500;
+    --elf--data-editor-border-color: rgba(0, 0, 0, 0.1);
+    --elf--data-editor-body-padding: 8px;
+
+    background-color: var(--elf--data-editor-background-color);
+    // color: var(--elf--data-editor-font-color);
+    box-sizing: border-box;
+    display: block;
+    width: var(--elf--data-editor-width);
+
+    > .elf--data-editor-item {
+        display: flex;
+        flex-direction: row;
+        margin: 4px 0;
+
+        &.string {
+            > .title {
+                display: none;
+            }
+        }
+
+        > * {
+            flex: 1 1 auto;
+        } 
+
+        > .title {
+            flex: none;
+            width: var(--elf--data-editor-item-title-width);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 13px;
+            box-sizing: border-box;
+            padding-left: 2px;
+        }
+    }
+}

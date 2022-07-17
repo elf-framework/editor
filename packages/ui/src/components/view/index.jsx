@@ -15,7 +15,6 @@ export class View extends UIElement {
       ...noneStyle,
     };
 
-    console.log(as, extraStyle, "fjdkslafjdsaklfjdsklf"); 
     // eslint-disable-next-line no-undef
     return createElementJsx(as, styleObject, content);
   }

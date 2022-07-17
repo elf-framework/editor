@@ -1,8 +1,9 @@
-import "@elf-framework/design-system/style.css?raw";
+import "@elf-framework/design-system/style.css";
 
 export * from "./components/button";
 export * from "./components/link-button";
 export * from "./components/icon-button";
+export * from "./components/toggle-button";
 export * from "./components/radio";
 export * from "./components/checkbox";
 export * from "./components/menu";
@@ -15,6 +16,7 @@ export * from "./components/notification";
 export * from "./components/visual-bell";
 export * from "./components/tooltip";
 export * from "./components/panel";
+export * from "./components/tab";
 export * from "./components/tabstrip";
 export * from "./components/layout";
 export * from "./components/flex";
@@ -30,3 +32,4 @@ export * from "./components/color/ColorView";
 export * from "./components/color-mixer";
 export * from "./components/color-grid";
 export * from "./components/view";
+export * from "./components/data-editor";

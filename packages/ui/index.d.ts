@@ -527,16 +527,61 @@ declare module "@elf-framework/ui" {
 
   export interface TabStripProps {
     tools?: ContentType;
+    /**
+     * 탭을 넓은 상태로 볼지 결정합니다.
+     *
+     * @default false
+     */
+    fitted?: boolean;
+    align?: "left" | "center" | "right";
     items?: string[] | UIElement[];
     style?: TabStripStyle & CommonStyle;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
+
   export class Panel extends UIElement {
     props: PanelProps & CommonStyle;
   }
 
   export class TabStrip extends UIElement {
     props: TabStripProps & CommonStyle;
+  }
+
+  export interface TabItemProps {
+    key?: any;
+    title: ContentType;
+    icon?: ContentType;
+    disabled?: boolean;
+    selected?: boolean;
+    onClick?: (event: PointerEvent) => void;
+    content?: ContentType;
+  }
+
+  export class TabItem extends UIElement {
+    props: TabItemProps;
+  }
+
+  export interface TabStyle {
+    backgroundColor: string;
+    color: string;
+  }
+
+  export interface TabProps {
+    activeKey?: any;
+    /**
+     * 탭을 넓은 상태로 볼지 결정합니다.
+     *
+     * @default false
+     */
+    fitted?: boolean;
+    align?: "left" | "center" | "right";
+    content?: TabItem[];
+    style?: TabStyle & CommonStyle;
+    onChange?: (event: PointerEvent, item: UIElement) => void;
+  }
+
+  export class Tab extends UIElement {
+    props: TabProps & CommonStyle;
   }
 
   export type FlexStyle = {
@@ -835,5 +880,14 @@ declare module "@elf-framework/ui" {
   }
   export class OptionStrip extends UIElement {
     props: OptionStripProps & CommonStyle;
+  }
+
+  export type DataEditorItemType = string;
+
+  export interface DataEditorProps {
+    items: DataEditorItemType[];
+  }
+  export class DataEditor extends UIElement {
+    props: DataEditorProps;
   }
 }
