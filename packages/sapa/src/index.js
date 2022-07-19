@@ -1,6 +1,7 @@
 export * from "./App";
 export * from "./Event";
 export * from "./BaseStore";
+export * from "./Hook";
 export * from "./functions/Dom";
 export * from "./functions/DomDiff";
 export * from "./UIElement";

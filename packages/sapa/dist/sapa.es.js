@@ -526,6 +526,11 @@ function registRootElementInstance(instance) {
 function getRootElementInstanceList() {
   return [...__rootInstance];
 }
+function renderRootElementInstanceList() {
+  getRootElementInstanceList().forEach((instance) => {
+    instance.render();
+  });
+}
 function renderRootElementInstance(module) {
   replaceElement(module);
   getRootElementInstanceList().forEach((instance) => {
@@ -1821,11 +1826,10 @@ function jsonToVNode(json) {
   }));
 }
 class BaseStore {
-  constructor(editor) {
+  constructor() {
     this.id = uuidShort();
     this.cachedCallback = {};
     this.callbacks = {};
-    this.editor = editor;
   }
   hasCallback(event, callback) {
     var list = this.getCachedCallbacks(event);
@@ -1839,11 +1843,6 @@ class BaseStore {
   }
   setCallbacks(event, list = []) {
     this.callbacks[event] = list;
-  }
-  debug(...args) {
-    if (this.editor && this.editor.context.config.get("debug.mode")) {
-      console.debug(...args);
-    }
   }
   on(event, originalCallback, context, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, beforeMethods = [], frame = false) {
     var callback = originalCallback;
@@ -1885,7 +1884,6 @@ class BaseStore {
         return f.context !== context;
       }));
     });
-    this.debug("off all message", context.sourceName);
   }
   getCachedCallbacks(event) {
     return this.getCallbacks(event);
@@ -1930,7 +1928,7 @@ class BaseStore {
     window.Promise.resolve().then(() => {
       var list = this.getCachedCallbacks(event);
       if (list) {
-        const runnableFunctions = list.filter((f) => f.originalCallback.source === source);
+        const runnableFunctions = list.filter((f) => f.context.source === source);
         runnableFunctions.forEach((f) => {
           f.callback.apply(f.context, args);
         });
@@ -2034,7 +2032,6 @@ const patch = {
     }
   },
   replaceWith(oldEl, newVNode, options) {
-    console.log(oldEl, newVNode);
     const objectElement = newVNode.makeElement(true, options).el;
     oldEl.replaceWith(objectElement);
     newVNode.runMounted();
@@ -2123,7 +2120,7 @@ function getProps(oldEl, attributes, newProps) {
   });
   return results;
 }
-function updateChangedElement(parentElement, oldEl, newVNode, nodeIndex, options = {}) {
+function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   const oldNodeType = oldEl.nodeType;
   const newNodeType = newVNode.type;
   if (oldNodeType === TEXT_NODE && newNodeType !== VNodeType.TEXT) {
@@ -2141,7 +2138,6 @@ function updateChangedElement(parentElement, oldEl, newVNode, nodeIndex, options
         }
       }
     } else {
-      console.log("fdjksalfdsjkf", newVNode);
       patch.replaceWith(oldEl, newVNode, options);
     }
   }
@@ -2191,7 +2187,7 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
       return;
     }
     if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
-      updateChangedElement(parentElement, oldEl, newVNode, -1, options);
+      updateChangedElement(parentElement, oldEl, newVNode, options);
       return;
     }
   }
@@ -2216,8 +2212,7 @@ const vNodeChildren = (vnode) => {
   if (!vnode.children.length) {
     return [];
   }
-  const children2 = vnode.children;
-  return children2;
+  return vnode.children;
 };
 const DefaultOption = {
   checkPassed: void 0,
@@ -3103,6 +3098,50 @@ class StoreHandler extends BaseHandler {
     this.addBinding(magicMethod);
   }
 }
+const hookList = [];
+let currentHookIndex = 0;
+let currentComponent = null;
+function render() {
+  currentHookIndex = 0;
+  renderRootElementInstanceList();
+}
+function createState({ init }) {
+  let value = { value: init };
+  function getValue(v) {
+    if (typeof v === "function") {
+      return v(value.value);
+    }
+    return v;
+  }
+  const update = (newValue) => {
+    value.value = getValue(newValue);
+    render();
+  };
+  return [value, update];
+}
+function useState(initialState) {
+  if (!hookList[currentHookIndex]) {
+    hookList[currentHookIndex] = createState({
+      init: initialState
+    });
+  }
+  const [value, update] = hookList[currentHookIndex++];
+  return [value.value, update];
+}
+function useEffect(callback, deps) {
+  const hasDeps = !deps;
+  const { deps: currentDeps } = hookList[currentHookIndex] || {};
+  const hasChangedDeps = currentDeps ? !deps.every((d, i) => d === currentDeps[i]) : true;
+  if (hasDeps || hasChangedDeps) {
+    hookList[currentHookIndex] = { deps };
+    currentComponent.addHook({ callback, deps });
+  }
+  currentHookIndex++;
+}
+function resetCurrentComponent(component) {
+  currentComponent = component;
+  currentComponent.initHook();
+}
 class MagicHandler {
   constructor() {
     __privateAdd(this, _handlerCache, {});
@@ -3134,6 +3173,7 @@ const _EventMachine = class extends MagicHandler {
     __privateAdd(this, _functionCache, {});
     __privateAdd(this, _childObjectList, {});
     __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
+    __publicField(this, "__hooks", []);
     __publicField(this, "registerRef", (ref, el) => {
       this.refs[ref] = el;
     });
@@ -3145,11 +3185,6 @@ const _EventMachine = class extends MagicHandler {
     });
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
       const props = newVNode.props;
-      if (this.children[props.ref]) {
-        const instance = this.children[props.ref];
-        __privateMethod(this, _reloadInstance, reloadInstance_fn).call(this, instance, props);
-        return false;
-      }
       let targetInstance = this.getTargetInstance(oldEl);
       if (targetInstance) {
         if (targetInstance.isInstanceOf(newVNode.Component)) {
@@ -3169,22 +3204,14 @@ const _EventMachine = class extends MagicHandler {
       if (updated) {
         updated();
       }
+      this.runHooks();
       const instance = this.getTargetInstance(this.$el.el);
       if (instance) {
         instance.onUpdated();
       }
-    });
-    __publicField(this, "useMounted", (callback) => {
-      return this.createFunction("mounted", callback);
-    });
-    __publicField(this, "useUpdated", (callback) => {
-      return this.createFunction("updated", callback);
-    });
-    __publicField(this, "useDestroyed", (callback) => {
-      return this.createFunction("destroyed", callback);
+      this.clear();
     });
     this.refs = {};
-    this.children = {};
     this.id = uuid();
     this.initializeProperty(opt, props);
   }
@@ -3194,9 +3221,6 @@ const _EventMachine = class extends MagicHandler {
       ObserverHandler,
       StoreHandler
     });
-  }
-  get target() {
-    return this.$el.el;
   }
   checkProps(props = {}) {
     return props;
@@ -3270,6 +3294,11 @@ const _EventMachine = class extends MagicHandler {
   get ref() {
     return this.props.ref;
   }
+  get children() {
+    return Object.fromEntries(Object.entries(__privateGet(this, _childObjectList)).map(([_key, child]) => {
+      return [_key, __privateGet(this, _childObjectElements).get(child)];
+    }));
+  }
   get isPreLoaded() {
     return true;
   }
@@ -3278,12 +3307,7 @@ const _EventMachine = class extends MagicHandler {
     if (_target) {
       return _target;
     }
-    let targetChildId = Object.keys(this.children).find((it) => {
-      var _a;
-      return (_a = this.children[it].$el) == null ? void 0 : _a.is(oldEl);
-    });
-    const instance = this.children[targetChildId];
-    return instance;
+    return void 0;
   }
   isForceRender() {
     return false;
@@ -3296,6 +3320,7 @@ const _EventMachine = class extends MagicHandler {
       this.checkLoad($container);
       return;
     }
+    resetCurrentComponent(this);
     const template = this.template();
     if (this.$el) {
       DomVNodeDiff(this.$el.el, template, {
@@ -3318,9 +3343,6 @@ const _EventMachine = class extends MagicHandler {
       await this._afterLoad();
     }
     return this;
-  }
-  get html() {
-    return this.$el.outerHTML();
   }
   initialize() {
     __privateSet(this, _state, this.initState());
@@ -3375,19 +3397,32 @@ const _EventMachine = class extends MagicHandler {
   template() {
     return null;
   }
+  clear() {
+    Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
+      if (!child.parentNode) {
+        const childInstance = __privateGet(this, _childObjectElements).get(child);
+        if (childInstance) {
+          childInstance.destroy();
+          __privateGet(this, _childObjectElements).delete(child);
+          delete __privateGet(this, _childObjectList)[_key];
+        }
+      }
+    });
+  }
   destroy() {
-    console.warn("deprecated destory");
-    this.eachChildren((childComponent) => {
-      childComponent.destroy();
+    Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
+      const childInstance = __privateGet(this, _childObjectElements).get(child);
+      if (childInstance) {
+        childInstance.destroy();
+        __privateGet(this, _childObjectElements).delete(child);
+        delete __privateGet(this, _childObjectList)[_key];
+      }
     });
     this.runHandlers("destroy");
-    if (this.$el) {
-      this.$el.remove();
-    }
+    this.onDestroyed();
     this.$el = null;
     this.refs = {};
-    this.children = {};
-    this.onDestroyed();
+    this.__hooks = [];
   }
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
@@ -3409,11 +3444,38 @@ const _EventMachine = class extends MagicHandler {
   getChild(filterCallback) {
     return this.props.content.find(filterCallback);
   }
+  initHook() {
+    this.currentComponentHooksIndex = 0;
+  }
+  addHook(hook) {
+    const currentHook = this.__hooks[this.currentComponentHooksIndex];
+    this.__hooks[this.currentComponentHooksIndex] = __spreadProps(__spreadValues(__spreadValues({}, currentHook), hook), {
+      done: false
+    });
+    this.__hooks[this.currentComponentHooksIndex++].done = false;
+  }
+  runHooks() {
+    this.__hooks.forEach((it) => {
+      if (isFunction(it.cleanup))
+        it.cleanup();
+      it.cleanup = it.callback();
+      it.done = true;
+    });
+  }
+  cleanHooks() {
+    this.__hooks.forEach((it) => {
+      if (isFunction(it.cleanup)) {
+        it.cleanup();
+      }
+    });
+    this.__hooks = [];
+  }
   onMounted() {
     const mounted = this.createFunction("mounted");
     if (mounted) {
       mounted();
     }
+    this.runHooks();
     const instance = this.getTargetInstance(this.$el.el);
     if (instance) {
       instance.onMounted();
@@ -3424,10 +3486,20 @@ const _EventMachine = class extends MagicHandler {
     if (destroyed) {
       destroyed();
     }
+    this.cleanHooks();
     const instance = this.getTargetInstance(this.$el.el);
     if (instance) {
       instance.onDestroyed();
     }
+  }
+  useMounted(callback) {
+    return this.createFunction("mounted", callback);
+  }
+  useUpdated(callback) {
+    return this.createFunction("updated", callback);
+  }
+  useDestroyed(callback) {
+    return this.createFunction("destroyed", callback);
   }
 };
 let EventMachine = _EventMachine;
@@ -3486,11 +3558,10 @@ const _UIElement = class extends EventMachine {
     this.$store.source = this.source;
     this.$store.trigger(messageName, ...args);
   }
-  broadcast(messageName, ...args) {
-    Object.keys(this.children).forEach((key) => {
-      this.children[key].trigger(messageName, ...args);
-      this.children[key].broadcast(messageName, ...args);
-    });
+  runCallback(callback, ...args) {
+    if (this.parent) {
+      this.parent.trigger(callback, ...args);
+    }
   }
   on(message, callback, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, frame = false) {
     this.$store.on(message, callback, this.source, debounceDelay, throttleDelay, enableAllTrigger, enableSelfTrigger, [], frame);
@@ -3601,4 +3672,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderToString, replaceElement, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderRootElementInstanceList, renderToString, replaceElement, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useEffect, useState, uuid, uuidShort, variable };

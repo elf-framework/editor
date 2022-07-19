@@ -15,11 +15,10 @@ import { uuidShort } from "./functions/uuid";
  *
  */
 export class BaseStore {
-  constructor(editor) {
+  constructor() {
     this.id = uuidShort();
     this.cachedCallback = {};
     this.callbacks = {};
-    this.editor = editor;
   }
 
   hasCallback(event, callback) {
@@ -38,12 +37,6 @@ export class BaseStore {
 
   setCallbacks(event, list = []) {
     this.callbacks[event] = list;
-  }
-
-  debug(...args) {
-    if (this.editor && this.editor.context.config.get("debug.mode")) {
-      console.debug(...args);
-    }
   }
 
   /**
@@ -135,7 +128,6 @@ export class BaseStore {
         })
       );
     });
-    this.debug("off all message", context.sourceName);
   }
 
   getCachedCallbacks(event) {
@@ -209,7 +201,7 @@ export class BaseStore {
 
       if (list) {
         const runnableFunctions = list.filter(
-          (f) => f.originalCallback.source === source
+          (f) => f.context.source === source
         );
 
         runnableFunctions.forEach((f) => {

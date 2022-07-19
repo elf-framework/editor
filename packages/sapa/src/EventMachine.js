@@ -7,6 +7,7 @@ import { uuid } from "./functions/uuid";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
 import StoreHandler from "./handler/StoreHandler";
+import { resetCurrentComponent } from "./Hook";
 import { MagicHandler } from "./MagicHandler";
 
 export class EventMachine extends MagicHandler {
@@ -22,11 +23,13 @@ export class EventMachine extends MagicHandler {
   #childObjectList = {};
   #childObjectElements = new WeakMap();
 
+  // 컴포넌트 내부에서 Hook 을 관리하는 리스트
+  __hooks = [];
+
   constructor(opt, props) {
     super();
 
     this.refs = {};
-    this.children = {};
     this.id = uuid();
 
     this.initializeProperty(opt, props);
@@ -38,13 +41,6 @@ export class EventMachine extends MagicHandler {
       ObserverHandler,
       StoreHandler,
     });
-  }
-
-  /**
-   * for svelte variable
-   */
-  get target() {
-    return this.$el.el;
   }
 
   /**
@@ -202,6 +198,17 @@ export class EventMachine extends MagicHandler {
   }
 
   /**
+   * 자식 컴포넌트 리스트를 반환한다.
+   */
+  get children() {
+    return Object.fromEntries(
+      Object.entries(this.#childObjectList).map(([_key, child]) => {
+        return [_key, this.#childObjectElements.get(child)];
+      })
+    );
+  }
+
+  /**
    * render 를 할 수 있는지 체크한다.
    *
    * @override
@@ -231,13 +238,7 @@ export class EventMachine extends MagicHandler {
       return _target;
     }
 
-    let targetChildId = Object.keys(this.children).find((it) =>
-      this.children[it].$el?.is(oldEl)
-    );
-
-    const instance = this.children[targetChildId];
-
-    return instance;
+    return undefined;
   }
 
   /**
@@ -258,13 +259,6 @@ export class EventMachine extends MagicHandler {
 
   checkRefClass = (oldEl, newVNode) => {
     const props = newVNode.props;
-
-    if (this.children[props.ref]) {
-      const instance = this.children[props.ref];
-
-      this.#reloadInstance(instance, props);
-      return false;
-    }
 
     // children 에 있는지 체크
     let targetInstance = this.getTargetInstance(oldEl);
@@ -304,6 +298,8 @@ export class EventMachine extends MagicHandler {
       return;
     }
 
+    // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
+    resetCurrentComponent(this);
     const template = this.template();
     if (this.$el) {
       DomVNodeDiff(this.$el.el, template, {
@@ -334,10 +330,6 @@ export class EventMachine extends MagicHandler {
     }
 
     return this;
-  }
-
-  get html() {
-    return this.$el.outerHTML();
   }
 
   initialize() {
@@ -437,27 +429,53 @@ export class EventMachine extends MagicHandler {
   }
 
   /**
+   *
+   * 자식 컴포넌트 중에서 element 가 부모를 가지고 있지 않는 상태가 되면
+   * 메모리에서 지운다.
+   *
+   * TODO: 지우지 않고 객체를 그대로 사용할 방법이 있을까?
+   *
+   */
+  clear() {
+    Object.entries(this.#childObjectList).forEach(([_key, child]) => {
+      if (!child.parentNode) {
+        const childInstance = this.#childObjectElements.get(child);
+
+        if (childInstance) {
+          childInstance.destroy();
+
+          this.#childObjectElements.delete(child);
+          delete this.#childObjectList[_key];
+        }
+      }
+    });
+  }
+
+  /**
    * 자원을 해제한다.
-   * 이것도 역시 자식 컴포넌트까지 제어하기 때문에 가장 최상위 부모에서 한번만 호출되도 된다.
+   * 자식 컴포넌트까지 제어하기 때문에 가장 최상위 부모에서 한번만 호출되도 된다.
    *
    */
   destroy() {
-    console.warn("deprecated destory");
-    this.eachChildren((childComponent) => {
-      childComponent.destroy();
+    // 자식 컴포넌트들을 제거한다.
+    Object.entries(this.#childObjectList).forEach(([_key, child]) => {
+      const childInstance = this.#childObjectElements.get(child);
+
+      if (childInstance) {
+        childInstance.destroy();
+
+        this.#childObjectElements.delete(child);
+        delete this.#childObjectList[_key];
+      }
     });
 
     this.runHandlers("destroy");
-    if (this.$el) {
-      this.$el.remove();
-    }
+    // 로컬 이벤트 함수 실행
+    this.onDestroyed();
 
     this.$el = null;
     this.refs = {};
-    this.children = {};
-
-    // 로컬 이벤트 함수 실행
-    this.onDestroyed();
+    this.__hooks = [];
   }
 
   /**
@@ -499,6 +517,49 @@ export class EventMachine extends MagicHandler {
     return this.props.content.find(filterCallback);
   }
 
+  /** utility function for hooks */
+
+  initHook() {
+    this.currentComponentHooksIndex = 0;
+  }
+
+  addHook(hook) {
+    // 순서에 맞춰서 추가한다.
+    const currentHook = this.__hooks[this.currentComponentHooksIndex];
+    this.__hooks[this.currentComponentHooksIndex] = {
+      ...currentHook,
+      ...hook,
+      done: false,
+    };
+
+    // 실행 여부를 설정한다. done 이 false 면 실행해야함을 의미
+    this.__hooks[this.currentComponentHooksIndex++].done = false;
+  }
+
+  runHooks() {
+    // hooks
+    this.__hooks.forEach((it) => {
+      // 완료 되지 않은 useEffect 만 실행
+      // if (!it.done) {
+      if (isFunction(it.cleanup)) it.cleanup();
+      it.cleanup = it.callback();
+      it.done = true;
+      // }
+    });
+  }
+
+  cleanHooks() {
+    this.__hooks.forEach((it) => {
+      if (isFunction(it.cleanup)) {
+        it.cleanup();
+      }
+    });
+
+    this.__hooks = [];
+  }
+
+  /** utility function for hooks */
+
   /**
    * 컴포넌트가 mount 된 이후에 실행된다.
    *
@@ -510,6 +571,9 @@ export class EventMachine extends MagicHandler {
     if (mounted) {
       mounted();
     }
+
+    // hooks
+    this.runHooks();
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 mounted 를 같이 실행해준다.
@@ -527,6 +591,9 @@ export class EventMachine extends MagicHandler {
       updated();
     }
 
+    // hooks
+    this.runHooks();
+
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 updated 를 같이 실행해준다.
     const instance = this.getTargetInstance(this.$el.el);
@@ -534,6 +601,9 @@ export class EventMachine extends MagicHandler {
     if (instance) {
       instance.onUpdated();
     }
+
+    // update 이후에 컴포넌트가 삭제된 경우는 비워둔다.
+    this.clear();
   };
 
   onDestroyed() {
@@ -542,6 +612,9 @@ export class EventMachine extends MagicHandler {
     if (destroyed) {
       destroyed();
     }
+
+    // hooks
+    this.cleanHooks();
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 destroyed 를 같이 실행해준다.
@@ -558,9 +631,9 @@ export class EventMachine extends MagicHandler {
    * @param {*} callback
    * @returns
    */
-  useMounted = (callback) => {
+  useMounted(callback) {
     return this.createFunction("mounted", callback);
-  };
+  }
 
   /**
    * Function Component 에서 updated 된 상태 체크할 수 있음.
@@ -568,9 +641,9 @@ export class EventMachine extends MagicHandler {
    * @param {*} callback
    * @returns
    */
-  useUpdated = (callback) => {
+  useUpdated(callback) {
     return this.createFunction("updated", callback);
-  };
+  }
 
   /**
    * Function Component 에서 destroyed 된 상태 체크할 수 있음.
@@ -578,7 +651,7 @@ export class EventMachine extends MagicHandler {
    * @param {*} callback
    * @returns
    */
-  useDestroyed = (callback) => {
+  useDestroyed(callback) {
     return this.createFunction("destroyed", callback);
-  };
+  }
 }
