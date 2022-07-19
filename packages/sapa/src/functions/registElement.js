@@ -128,6 +128,15 @@ export function getRootElementInstanceList() {
   return [...__rootInstance];
 }
 
+/**
+ * root instance 를 모두 그린다.
+ */
+export function renderRootElementInstanceList() {
+  getRootElementInstanceList().forEach((instance) => {
+    instance.render();
+  });
+}
+
 export function renderRootElementInstance(module) {
   replaceElement(module);
 

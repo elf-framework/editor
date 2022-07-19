@@ -81,7 +81,6 @@ const patch = {
   },
 
   replaceWith(oldEl, newVNode, options) {
-    console.log(oldEl, newVNode);
     const objectElement = newVNode.makeElement(true, options).el;
     oldEl.replaceWith(objectElement);
     newVNode.runMounted();
@@ -238,13 +237,7 @@ function getProps(oldEl, attributes, newProps) {
   return results;
 }
 
-function updateChangedElement(
-  parentElement,
-  oldEl,
-  newVNode,
-  nodeIndex,
-  options = {}
-) {
+function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   const oldNodeType = oldEl.nodeType;
   const newNodeType = newVNode.type;
 
@@ -270,7 +263,6 @@ function updateChangedElement(
         }
       }
     } else {
-      console.log("fdjksalfdsjkf", newVNode);
       patch.replaceWith(oldEl, newVNode, options);
     }
   }
@@ -341,7 +333,6 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
   }
 
   // pass 옵션이 없는 경우
-  // console.log(newVNode);
   if (!newVNode.props.pass) {
     if (check.hasPassed(newVNode)) {
       // NOOP
@@ -353,7 +344,7 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     }
 
     if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
-      updateChangedElement(parentElement, oldEl, newVNode, -1, options);
+      updateChangedElement(parentElement, oldEl, newVNode, options);
       return;
     }
   } else {
@@ -389,11 +380,7 @@ const vNodeChildren = (vnode) => {
     return [];
   }
 
-  const children = vnode.children;
-  // .map((it) => (it.type === VNodeType.FRAGMENT ? it.children : it))
-  // .flat();
-
-  return children;
+  return vnode.children;
 };
 
 const DefaultOption = {

@@ -87,8 +87,8 @@ export class UIElement extends EventMachine {
 
   /**
    *
-   * UIElement 자신의 메세지를 수행한다.
-   * emit 은 나외의 객체에게 메세지를 보내고
+   * emit 은 외부 객체에게 메세지를 보내고
+   * trigger 는 자신의 내부에 메세지를 보낸다.
    *
    * @param {string} messageName
    * @param {any[]} args
@@ -99,16 +99,15 @@ export class UIElement extends EventMachine {
   }
 
   /**
-   * 자식 객체에게만 호출되는 메세지를 수행한다.
+   * 상위 객체에게만 호출되는 메세지를 수행한다.
    *
-   * @param {string} messageName
-   * @param {any[]} args
+   * @param {*} callback
+   * @param  {...any} args
    */
-  broadcast(messageName, ...args) {
-    Object.keys(this.children).forEach((key) => {
-      this.children[key].trigger(messageName, ...args);
-      this.children[key].broadcast(messageName, ...args);
-    });
+  runCallback(callback, ...args) {
+    if (this.parent) {
+      this.parent.trigger(callback, ...args);
+    }
   }
 
   /**

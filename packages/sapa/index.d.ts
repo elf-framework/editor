@@ -463,4 +463,28 @@ declare module "@elf-framework/sapa" {
     | VNodeFragmentJSONType
     | VNodeComponentJSONType;
   export function jsonToVNode(json: JSONType): VNode;
+
+  type InitValueType =
+    | string
+    | number
+    | boolean
+    | undefined
+    | null
+    | unknown[]
+    | object
+    | unknown;
+
+  type UseStateValueType = InitValueType | (() => InitValueType);
+
+  export function useState(
+    initializeValue: UseStateValueType
+  ): [value: InitValueType, setValue: (value: InitValueType) => void];
+
+  type UseEffectCleanUp = (() => void) | undefined;
+  type UseEffectCallbackType = () => UseEffectCleanUp;
+
+  export function useEffect(
+    callback: UseEffectCallbackType,
+    deps: unknown[]
+  ): void;
 }
