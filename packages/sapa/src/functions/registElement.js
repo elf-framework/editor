@@ -124,7 +124,6 @@ export function getRootElementInstanceList() {
   return [...__rootInstance];
 }
 
-
 /**
  * root instance 를 모두 그린다.
  */
