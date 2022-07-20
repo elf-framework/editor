@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
+    "vite-plugin-sapa": "*",    
     "rollup-plugin-copy": "^3.4.0",
     "vite": "^2.9.13",
     "vite-plugin-copy": "^0.1.6",

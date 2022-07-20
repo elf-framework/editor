@@ -2,7 +2,7 @@ import { VNodeType } from "../constant/vnode";
 import { css } from "./css";
 import { Dom } from "./Dom";
 import { isArray, isFunction, isNumber, isObject, isString } from "./func";
-import { variable } from "./registElement";
+import { getModule, variable } from "./registElement";
 import { isSVG } from "./svg";
 
 const TAG_PREFIX = "<";
@@ -401,15 +401,19 @@ export class VNodeComponent extends VNode {
   }
 
   render(options) {
-    const Component = this.Component;
     const props = this.props;
+
+    // 등록된 Component 중에 새로운 Component 를 가지고 온다.
+    this.Component = getModule(this.Component);
 
     // context 는 상위 Component 의 instance 를 가리킨다.
     // 즉, 컴포넌트의 parent 가 된다.
+    // props와 state 를 유지할 수 있는 방법이 있어야 할 듯 하다.
     this.instance = options.context.createInstanceForComponent(
-      Component,
+      this.Component,
       props,
-      options
+      options,
+      this.instance?.state || {}
     );
 
     // 객체를 생성 후에는 렌더링을 한다.

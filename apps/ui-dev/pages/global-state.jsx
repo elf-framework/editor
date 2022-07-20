@@ -3,48 +3,7 @@ import { start, useEffect, useState } from "@elf-framework/sapa";
 // import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-function Sample({ onClick }) {
-  const [value, setValue] = useState(1);
-  const [value2, setValue2] = useState(10);
-
-  useEffect(() => {
-    console.log("use effect");
-    // const id = window.setInterval(() => {
-    //   setValue((v) => v + 1);
-    // }, 1000);
-
-    return () => {
-      console.log("clean up");
-      // window.clearInterval(id);
-    };
-  }, []);
-
-  console.log("render", value);
-
-  return (
-    <div>
-      {value2 > 50 ? (
-        ""
-      ) : (
-        <button
-          type="button"
-          ref="$button"
-          onClick={() => {
-            this.runCallback(onClick);
-          }}
-        >
-          fdsafdsafds af {value}
-        </button>
-      )}
-      <button
-        type="button"
-        onClick={() => setValue2((prevState) => prevState + 10)}
-      >
-        Button 2 {value2}
-      </button>
-    </div>
-  );
-}
+import Sample from "./Sample";
 
 function App() {
   const [value, setValue] = useState(1);

@@ -26,13 +26,13 @@ export class EventMachine extends MagicHandler {
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
   __hooks = [];
 
-  constructor(opt, props) {
+  constructor(opt, props, state) {
     super();
 
     this.refs = {};
     this.id = uuid();
 
-    this.initializeProperty(opt, props);
+    this.initializeProperty(opt, props, state);
   }
 
   initializeHandler() {
@@ -56,12 +56,15 @@ export class EventMachine extends MagicHandler {
   /**
    * UIElement instance 에 필요한 기본 속성 설정
    */
-  initializeProperty(opt, props = {}) {
+  initializeProperty(opt, props = {}, state = {}) {
     this.opt = opt || {};
     this.parent = this.opt;
     this.source = uuid();
     this.sourceName = this.constructor.name;
     this.props = props;
+
+    // 객체 생성할 때 state 도 같이 초기화 한다.
+    this.#state = Object.assign({}, this.#state, state);
   }
 
   setServer(isServer = true) {
@@ -282,9 +285,14 @@ export class EventMachine extends MagicHandler {
     }
 
     // 다른 예외 사항이 있으면 여기에 기록하기
-
-    return false;
+    return true;
   };
+
+  async forceRender() {
+    this.cleanHooks();
+    this.clearAll();
+    this.render();
+  }
 
   /**
    * template 을 렌더링 한다.
@@ -377,7 +385,8 @@ export class EventMachine extends MagicHandler {
   createFunctionComponent(
     EventMachineComponent,
     props,
-    BaseClass = EventMachine
+    BaseClass = EventMachine,
+    state = {}
   ) {
     class FunctionElement extends BaseClass {
       getFunctionComponent() {
@@ -393,19 +402,24 @@ export class EventMachine extends MagicHandler {
       }
     }
 
-    return new FunctionElement(this, props);
+    return new FunctionElement(this, props, state);
   }
 
-  createInstanceForComponent(EventMachineComponent, props) {
+  createInstanceForComponent(EventMachineComponent, props, state) {
     if (
       EventMachineComponent.__proto__.name === "" &&
       isFunction(EventMachineComponent)
     ) {
-      return this.createFunctionComponent(EventMachineComponent, props);
+      return this.createFunctionComponent(
+        EventMachineComponent,
+        props,
+        undefined,
+        state
+      );
     }
 
     // return sapa component
-    return new EventMachineComponent(this, props);
+    return new EventMachineComponent(this, props, state);
   }
 
   /**
@@ -447,6 +461,19 @@ export class EventMachine extends MagicHandler {
           this.#childObjectElements.delete(child);
           delete this.#childObjectList[_key];
         }
+      }
+    });
+  }
+
+  clearAll() {
+    Object.entries(this.#childObjectList).forEach(([_key, child]) => {
+      const childInstance = this.#childObjectElements.get(child);
+
+      if (childInstance) {
+        childInstance.destroy();
+
+        this.#childObjectElements.delete(child);
+        delete this.#childObjectList[_key];
       }
     });
   }

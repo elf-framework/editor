@@ -14,9 +14,18 @@ const hookList = [];
 let currentHookIndex = 0;
 let currentComponent = null;
 
-function render() {
+export function initHook() {
   currentHookIndex = 0;
+}
+
+function render() {
+  initHook();
   renderRootElementInstanceList();
+}
+
+export function renderFromRoot() {
+  initHook();
+  renderRootElementInstanceList(true);
 }
 
 /**

@@ -487,4 +487,6 @@ declare module "@elf-framework/sapa" {
     callback: UseEffectCallbackType,
     deps: unknown[]
   ): void;
+
+  export function renderFromRoot(): void;
 }
