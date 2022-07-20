@@ -3,7 +3,6 @@ export * from "./Event";
 export * from "./BaseStore";
 export * from "./Hook";
 export * from "./functions/Dom";
-export * from "./functions/DomDiff";
 export * from "./UIElement";
 export * from "./functions/jsx";
 export * from "./functions/func";

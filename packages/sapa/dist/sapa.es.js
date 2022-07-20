@@ -456,6 +456,8 @@ const aliasMap = {};
 const __rootInstance = /* @__PURE__ */ new Set();
 const __tempVariables = /* @__PURE__ */ new Map();
 const __tempVariablesGroup = /* @__PURE__ */ new Map();
+const _modules = {};
+const _moduleMap = /* @__PURE__ */ new WeakMap();
 const VARIABLE_SAPARATOR = "v:";
 function variable(value, groupId = "") {
   const id = `${VARIABLE_SAPARATOR}${uuidShort()}`;
@@ -506,11 +508,6 @@ function registElement(classes = {}) {
     map[key] = classes[key];
   });
 }
-function replaceElement(module) {
-  if (map[module.name]) {
-    map[module.name] = module;
-  }
-}
 function registAlias(a, b) {
   aliasMap[a] = b;
 }
@@ -526,15 +523,13 @@ function registRootElementInstance(instance) {
 function getRootElementInstanceList() {
   return [...__rootInstance];
 }
-function renderRootElementInstanceList() {
+function renderRootElementInstanceList(isForce = false) {
   getRootElementInstanceList().forEach((instance) => {
-    instance.render();
-  });
-}
-function renderRootElementInstance(module) {
-  replaceElement(module);
-  getRootElementInstanceList().forEach((instance) => {
-    instance.hmr();
+    if (isForce) {
+      instance.forceRender();
+    } else {
+      instance.render();
+    }
   });
 }
 function registHandler(handlers) {
@@ -556,6 +551,49 @@ function createHandlerInstance(context, localHanders = {}) {
       return new HandlerClass(context);
     })
   ];
+}
+function registerModule(id, modules = {}) {
+  if (!_modules[id]) {
+    _modules[id] = { new: modules, old: modules };
+    Object.keys(modules).forEach((key) => {
+      _moduleMap.set(modules[key], id);
+    });
+  } else {
+    refreshModule(id, modules);
+  }
+}
+function refreshModule(id, newModules) {
+  _modules[id].new = newModules;
+  Object.keys(newModules).forEach((key) => {
+    _moduleMap.set(newModules[key], id);
+  });
+}
+function getModule(Component) {
+  const id = _moduleMap.get(Component);
+  if (!id) {
+    return Component;
+  }
+  const m = _modules[id];
+  if (!m) {
+    return Component;
+  }
+  const currentNewComponent = Object.values(m.new).find((it) => {
+    return it === Component;
+  });
+  if (currentNewComponent) {
+    return currentNewComponent;
+  }
+  let oldKey = "";
+  const currentOldComponent = Object.entries(m.old).find(([key, it]) => {
+    if (it === Component) {
+      oldKey = key;
+      return true;
+    }
+    return false;
+  });
+  if (currentOldComponent) {
+    return m.new[oldKey];
+  }
 }
 class Dom {
   constructor(tag, className, attr) {
@@ -1743,9 +1781,10 @@ class VNodeComponent extends VNode {
     (_a = this.instance) == null ? void 0 : _a.onMounted();
   }
   render(options) {
-    const Component = this.Component;
+    var _a;
     const props = this.props;
-    this.instance = options.context.createInstanceForComponent(Component, props, options);
+    this.Component = getModule(this.Component);
+    this.instance = options.context.createInstanceForComponent(this.Component, props, options, ((_a = this.instance) == null ? void 0 : _a.state) || {});
     this.instance.render();
   }
   makeElement(withChildren, options = {}) {
@@ -3101,9 +3140,16 @@ class StoreHandler extends BaseHandler {
 const hookList = [];
 let currentHookIndex = 0;
 let currentComponent = null;
-function render() {
+function initHook() {
   currentHookIndex = 0;
+}
+function render() {
+  initHook();
   renderRootElementInstanceList();
+}
+function renderFromRoot() {
+  initHook();
+  renderRootElementInstanceList(true);
 }
 function createState({ init }) {
   let value = { value: init };
@@ -3164,7 +3210,7 @@ class MagicHandler {
 }
 _handlerCache = new WeakMap();
 const _EventMachine = class extends MagicHandler {
-  constructor(opt, props) {
+  constructor(opt, props, state) {
     super();
     __privateAdd(this, _reloadInstance);
     __privateAdd(this, _state, {});
@@ -3197,7 +3243,7 @@ const _EventMachine = class extends MagicHandler {
           return true;
         }
       }
-      return false;
+      return true;
     });
     __publicField(this, "onUpdated", () => {
       const updated = this.createFunction("updated");
@@ -3213,7 +3259,7 @@ const _EventMachine = class extends MagicHandler {
     });
     this.refs = {};
     this.id = uuid();
-    this.initializeProperty(opt, props);
+    this.initializeProperty(opt, props, state);
   }
   initializeHandler() {
     return super.initializeHandler({
@@ -3225,12 +3271,13 @@ const _EventMachine = class extends MagicHandler {
   checkProps(props = {}) {
     return props;
   }
-  initializeProperty(opt, props = {}) {
+  initializeProperty(opt, props = {}, state = {}) {
     this.opt = opt || {};
     this.parent = this.opt;
     this.source = uuid();
     this.sourceName = this.constructor.name;
     this.props = props;
+    __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
   }
   setServer(isServer = true) {
     __privateSet(this, _isServer, isServer);
@@ -3315,6 +3362,11 @@ const _EventMachine = class extends MagicHandler {
   isInstanceOf(Component) {
     return this instanceof Component;
   }
+  async forceRender() {
+    this.cleanHooks();
+    this.clearAll();
+    this.render();
+  }
   async render($container) {
     if (!this.isPreLoaded) {
       this.checkLoad($container);
@@ -3365,7 +3417,7 @@ const _EventMachine = class extends MagicHandler {
   getFunctionComponent() {
     return this;
   }
-  createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine) {
+  createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine, state = {}) {
     class FunctionElement extends BaseClass {
       getFunctionComponent() {
         return EventMachineComponent;
@@ -3377,13 +3429,13 @@ const _EventMachine = class extends MagicHandler {
         return EventMachineComponent.call(this, this.props);
       }
     }
-    return new FunctionElement(this, props);
+    return new FunctionElement(this, props, state);
   }
-  createInstanceForComponent(EventMachineComponent, props) {
+  createInstanceForComponent(EventMachineComponent, props, state) {
     if (EventMachineComponent.__proto__.name === "" && isFunction(EventMachineComponent)) {
-      return this.createFunctionComponent(EventMachineComponent, props);
+      return this.createFunctionComponent(EventMachineComponent, props, void 0, state);
     }
-    return new EventMachineComponent(this, props);
+    return new EventMachineComponent(this, props, state);
   }
   refresh() {
     this.render();
@@ -3406,6 +3458,16 @@ const _EventMachine = class extends MagicHandler {
           __privateGet(this, _childObjectElements).delete(child);
           delete __privateGet(this, _childObjectList)[_key];
         }
+      }
+    });
+  }
+  clearAll() {
+    Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
+      const childInstance = __privateGet(this, _childObjectElements).get(child);
+      if (childInstance) {
+        childInstance.destroy();
+        __privateGet(this, _childObjectElements).delete(child);
+        delete __privateGet(this, _childObjectList)[_key];
       }
     });
   }
@@ -3672,4 +3734,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, DomDiff, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, registAlias, registElement, registHandler, registRootElementInstance, renderRootElementInstance, renderRootElementInstanceList, renderToString, replaceElement, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useEffect, useState, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initHook, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, renderFromRoot, renderRootElementInstanceList, renderToString, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useEffect, useState, uuid, uuidShort, variable };

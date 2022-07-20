@@ -1,3 +1,11 @@
+# vite-plugin-sapa
+
+## support sapa hmr 
+
+sapa is supporting hmr feature at vite;
+Use hmr(Hot Module Reloading) feature in develop environment 
+
+```js
 import { defineConfig } from "vite";
 import sapa from "vite-plugin-sapa";
 
@@ -17,18 +25,13 @@ export default defineConfig({
     jsxFragment: "FragmentInstance",
     jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
   },
-  optimizeDeps: {
-    exclude: [
-      "@elf-framework/sapa",
-      "@elf-framework/ui",
-      "@elf-framework/sapa-router",
-      "@elf-framework/icon",
-      "@elf-framework/design-system",
-    ],
-  },
   plugins: [
     sapa({
       hmr: true,
     }),
   ],
 });
+
+
+
+```
