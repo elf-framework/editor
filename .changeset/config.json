@@ -1,11 +1,13 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.1/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "changelog": ["@changesets/changelog-github", { "repo": "elf-framework/editor" }],
   "commit": false,
-  "fixed": [],
+  "fixed": [
+    ["@elf-framework/sapa"]
+  ],
   "linked": [],
-  "access": "restricted",
-  "baseBranch": "main",
+  "access": "public",
+  "baseBranch": "v-dom-3",
   "updateInternalDependencies": "patch",
   "ignore": []
 }

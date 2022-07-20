@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa-router",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Fantastic Router library",
   "types": "./index.d.ts",
   "files": [

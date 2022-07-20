@@ -1,20 +1,41 @@
-# Turborepo starter with npm
+# elf framework 
 
-This is an official starter turborepo.
+
+This is an official elf framework document. 
 
 ## What's inside?
 
-This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
+elf 프레임워크는 에디터를 만들기 위한 라이브러리가 모여있는 패키지입니다. 
+
+* @elf-framework/base-editor
+* @elf-framework/color
+* @elf-framework/design-system
+* @elf-framework/design-tokens
+* @elf-framework/icon
+* @elf-framework/sapa
+* @elf-framework/sapa-router
+* @elf-framework/ui
+* vite-plugin-sapa
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `editor-dev`: editor library test server  
+- `test`:
+- `ui-dev`:
+- `ui-react-dev`:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- `base-editor`: editor library 
+- `color`: color library 
+- `config`: config for monorepo (`eslint`, `tsconfig` , etc ...)
+- `design-system`: design system css
+- `design-tokens`: design token
+- `icon`: icon for sapa
+- `sapa`: core ui library like React 
+- `sapa-router`: sapa based router 
+- `ui`: sapa based many ui components
+- `ui-react`: react ui components for design system 
+- `vite-plugin-sapa`: sapa plugin for vite to support hmr 
+
 
 ### Utilities
 
@@ -26,24 +47,37 @@ This turborepo has some additional tools already setup for you:
 
 ## Setup
 
-This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (npm).
+```
+git clone https://github.com/elf-framework/editor
+cd editor
+npm install
+
+```
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd editor
 npm run build
 ```
 
 ### Develop
 
-To develop all apps and packages, run the following command:
+app 기준으로 테스트 하기 
+
+#### ui library test 
+```
+cd editor
+npm run ui:dev
+```
+
+#### ui react library test 
 
 ```
-cd my-turborepo
-npm run dev
+cd editor
+npm run ui-react:dev
 ```
 
 ### Remote Caching

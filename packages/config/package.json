@@ -2,6 +2,7 @@
   "name": "@elf-framework/config",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "files": [
     "eslint-preset.js",
