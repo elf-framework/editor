@@ -18,7 +18,6 @@ export class EventMachine extends MagicHandler {
    */
   #state = {};
   #cachedMethodList;
-  #isServer = false;
   #functionCache = {};
   #childObjectList = {};
   #childObjectElements = new WeakMap();
@@ -65,14 +64,6 @@ export class EventMachine extends MagicHandler {
 
     // 객체 생성할 때 state 도 같이 초기화 한다.
     this.#state = Object.assign({}, this.#state, state);
-  }
-
-  setServer(isServer = true) {
-    this.#isServer = isServer;
-  }
-
-  get isServer() {
-    return this.parent?.isServer || this.#isServer;
   }
 
   /**
@@ -298,7 +289,6 @@ export class EventMachine extends MagicHandler {
    * template 을 렌더링 한다.
    *
    * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
-   * @param {Boolean} [isServer=false]  로드 여부
    */
   async render($container) {
     if (!this.isPreLoaded) {

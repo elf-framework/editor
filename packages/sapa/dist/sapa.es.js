@@ -55,7 +55,7 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _handlerCache, _state, _cachedMethodList, _isServer, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+var _handlerCache, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -3215,7 +3215,6 @@ const _EventMachine = class extends MagicHandler {
     __privateAdd(this, _reloadInstance);
     __privateAdd(this, _state, {});
     __privateAdd(this, _cachedMethodList, void 0);
-    __privateAdd(this, _isServer, false);
     __privateAdd(this, _functionCache, {});
     __privateAdd(this, _childObjectList, {});
     __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
@@ -3278,13 +3277,6 @@ const _EventMachine = class extends MagicHandler {
     this.sourceName = this.constructor.name;
     this.props = props;
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
-  }
-  setServer(isServer = true) {
-    __privateSet(this, _isServer, isServer);
-  }
-  get isServer() {
-    var _a;
-    return ((_a = this.parent) == null ? void 0 : _a.isServer) || __privateGet(this, _isServer);
   }
   createFunction(funcName, func) {
     if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
@@ -3567,7 +3559,6 @@ const _EventMachine = class extends MagicHandler {
 let EventMachine = _EventMachine;
 _state = new WeakMap();
 _cachedMethodList = new WeakMap();
-_isServer = new WeakMap();
 _functionCache = new WeakMap();
 _childObjectList = new WeakMap();
 _childObjectElements = new WeakMap();
