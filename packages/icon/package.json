@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/icon",
-  "version": "1.0.0",
+  "version": "2.0.2",
   "description": "Fantastic Icon library",
   "types": "./index.d.ts",
   "type": "module",

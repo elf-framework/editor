@@ -1,8 +1,5 @@
 declare module "@elf-framework/sapa" {
-  export function makeEventChecker(value: string, split: string): string;
-
   // event name regular expression
-  export type EVENT = (...args: string[]) => string;
   export type OBSERVER = (...args: string[]) => string;
   export type PARAMS = (...args: string[]) => string;
 
@@ -148,14 +145,9 @@ declare module "@elf-framework/sapa" {
   export function classnames(...args: ClassNameType[]): string;
 
   export interface KeyValue {
-    [key: string]: unknown;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [index: string]: any;
   }
-
-  export interface ElementValue<T> {
-    [key: string]: T;
-  }
-
-  interface IComponentParams extends KeyValue {}
 
   interface VNode {
     tag: string | "object";
@@ -312,11 +304,6 @@ declare module "@elf-framework/sapa" {
       | null
       | undefined;
 
-    //
-    protected eachChildren(callback: Function): void;
-
-    rerender(): void;
-
     /**
      * 자원을 해제한다.
      * 이것도 역시 자식 컴포넌트까지 제어하기 때문에 가장 최상위 부모에서 한번만 호출되도 된다.
@@ -355,7 +342,7 @@ declare module "@elf-framework/sapa" {
      *
      * @param {Function} callback
      */
-    nextTick(callback: () => void);
+    nextTick(callback: () => void): void;
 
     /**
      *
@@ -393,10 +380,7 @@ declare module "@elf-framework/sapa" {
   type ElementFunction = () => any;
   type ElementType = typeof UIElement | ElementFunction | VNode;
 
-  export function start(
-    uiElement: ElementType,
-    options?: KeyValue
-  ): UIElement<KeyValue>;
+  export function start(uiElement: ElementType, options?: KeyValue): UIElement;
   export function renderToString(
     uiElement: ElementType,
     options: KeyValue

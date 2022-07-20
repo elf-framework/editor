@@ -5,7 +5,7 @@ This is an official elf framework document.
 
 ## What's inside?
 
-elf 프레임워크는 에디터를 만들기 위한 라이브러리가 모여있는 패키지입니다. 
+The elf framework is a package of libraries for creating editors.
 
 * @elf-framework/base-editor
 * @elf-framework/color
@@ -21,8 +21,8 @@ elf 프레임워크는 에디터를 만들기 위한 라이브러리가 모여�
 
 - `editor-dev`: editor library test server  
 - `test`:
-- `ui-dev`:
-- `ui-react-dev`:
+- `ui-dev`: ui library test server 
+- `ui-react-dev`: react ui library test server 
 
 - `base-editor`: editor library 
 - `color`: color library 
@@ -65,7 +65,7 @@ npm run build
 
 ### Develop
 
-app 기준으로 테스트 하기 
+Testing by app
 
 #### ui library test 
 ```
@@ -98,6 +98,10 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 ```
 npx turbo link
 ```
+
+## Deploy
+
+- [VERSION](./VERSION.md);
 
 ## Useful Links
 
