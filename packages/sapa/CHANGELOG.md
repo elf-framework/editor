@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.4
+
+### Patch Changes
+
+- support useReducer, useContext
+
 ## 2.0.3
 
 ### Patch Changes
