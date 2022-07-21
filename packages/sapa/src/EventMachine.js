@@ -11,11 +11,6 @@ import { resetCurrentComponent } from "./Hook";
 import { MagicHandler } from "./MagicHandler";
 
 export class EventMachine extends MagicHandler {
-  /**
-   * local state
-   *
-   * @type {any}
-   */
   #state = {};
   #cachedMethodList;
   #functionCache = {};
@@ -24,6 +19,7 @@ export class EventMachine extends MagicHandler {
 
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
   __hooks = [];
+  __context = {};
 
   constructor(opt, props, state) {
     super();
@@ -550,7 +546,7 @@ export class EventMachine extends MagicHandler {
     };
 
     // 실행 여부를 설정한다. done 이 false 면 실행해야함을 의미
-    this.__hooks[this.currentComponentHooksIndex++].done = false;
+    this.currentComponentHooksIndex++;
   }
 
   runHooks() {

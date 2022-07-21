@@ -13,9 +13,13 @@ import { renderRootElementInstanceList } from "./functions/registElement";
 const hookList = [];
 let currentHookIndex = 0;
 let currentComponent = null;
+let contextProviderList = {};
 
 export function initHook() {
   currentHookIndex = 0;
+  Object.values(contextProviderList).forEach((context) => {
+    context.index = -1;
+  });
 }
 
 function render() {
@@ -95,6 +99,114 @@ export function useEffect(callback, deps) {
   currentHookIndex++;
 }
 
+export function useReducer(reducer, initialState) {
+  const [state, setState] = useState(initialState);
+
+  function dispatch(action) {
+    setState((prevState) => reducer(prevState, action));
+  }
+
+  return [state, dispatch];
+}
+
+export function useMemo(callback, deps) {
+  const hasDeps = !deps;
+  const { deps: currentDeps } = hookList[currentHookIndex] || {};
+  const hasChangedDeps = currentDeps
+    ? !deps.every((d, i) => d === currentDeps[i])
+    : true;
+
+  if (hasDeps || hasChangedDeps) {
+    const newValue = callback();
+    hookList[currentHookIndex] = { deps, value: newValue };
+    // component hook 정의
+  }
+
+  const lastHookValue = hookList[currentHookIndex] || {};
+
+  currentHookIndex++;
+
+  return lastHookValue.value;
+}
+
+export function useCallback(callback, deps) {
+  return useMemo(() => callback, deps);
+}
+
+export let i = 0;
+
+function createContextProvider(context) {
+  contextProviderList[context.id] = {
+    context,
+    index: -1,
+    providers: [],
+  };
+}
+
+function addContextProvider(context, provider) {
+  const contextInfo = contextProviderList[context.id];
+  const index = ++contextInfo.index;
+  if (!contextInfo.providers[index]) {
+    // index 에 없는 경우 새로운 객체를 생성한다.
+    contextInfo.providers[index] = provider;
+  } else {
+    // index 에 있는 경우 기존 객체를 변경한다.
+    contextInfo.providers[index] = {
+      ...contextInfo.providers[index],
+      ...provider,
+    };
+  }
+}
+
+function getContextProvider(context) {
+  const contextInfo = contextProviderList[context.id];
+
+  if (contextInfo.index === -1) {
+    return { value: contextInfo.defaultValue };
+  }
+
+  return (
+    contextInfo.providers[contextInfo.index] ||
+    contextInfo.providers[contextInfo.index + 1]
+  );
+}
+
+/**
+ *
+ * Provider,Consumer 를 생성한다.
+ * Provider와 Consumer 는 둘 다 컴포넌트에서 사용할 수 있다.
+ * Provider 는 context 의 시작점과 값을 유지하고
+ * Consumer 는 context 의 값을 사용한다.
+ *
+ *
+ * @param {*} defaultValue
+ * @returns
+ */
+export function createContext(defaultValue) {
+  const context = {
+    id: "context-" + i++,
+    defaultValue,
+    Provider: function ({ value, content }) {
+      addContextProvider(context, { value, provider: this });
+
+      return content[0] || content;
+    },
+  };
+
+  context.Consumer = ({ content: [children] }) => {
+    const value = getContextProvider(context).value;
+
+    return children(value);
+  };
+
+  createContextProvider(context);
+
+  return context;
+}
+
+export function useContext(context) {
+  return getContextProvider(context)?.value || context.defaultValue;
+}
 /**
  * 함수 컴포넌트가 실행되는 시점에 현재 생성된 컴포넌트 instance 를 저장합니다.
  * currentComponent 에서 hook을 관리 할 수 있게 됩니다.

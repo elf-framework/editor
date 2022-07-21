@@ -29,7 +29,15 @@ export function VNodeToElement(obj, options = {}) {
     obj = createVNodeText(obj);
   }
 
-  return Dom.create(obj.makeElement(true, options).el);
+  if (isArray(obj) && obj.length === 1) {
+    return VNodeToElement(obj[0], options);
+  }
+
+  if (obj) {
+    return Dom.create(obj.makeElement(true, options).el);
+  }
+
+  return null;
 }
 
 /**

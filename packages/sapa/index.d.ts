@@ -472,5 +472,27 @@ declare module "@elf-framework/sapa" {
     deps: unknown[]
   ): void;
 
+  export function useReducer<T, A>(
+    reducer: (state: T, action: A) => T,
+    initialState: T
+  ): [state: T, dispatch: (action: A) => void];
+
+  export function useMemo<T>(callback: () => unknown, deps: unknown[]): T;
+
+  interface ProviderProps<T> {
+    value: T;
+    content: VNode;
+  }
+
+  interface Context<T> {
+    id: string;
+    defaultValue: unknown;
+    Provider: (props: ProviderProps<T>) => VNode;
+    Consumer: (props: KeyValue) => VNode;
+  }
+  export function createContext<T>(defaultValue: T): Context<T>;
+
+  export function useContext<T>(context: Context<T>): T;
+
   export function renderFromRoot(): void;
 }
