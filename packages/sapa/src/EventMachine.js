@@ -11,20 +11,15 @@ import { resetCurrentComponent } from "./Hook";
 import { MagicHandler } from "./MagicHandler";
 
 export class EventMachine extends MagicHandler {
-  /**
-   * local state
-   *
-   * @type {any}
-   */
   #state = {};
   #cachedMethodList;
-  #isServer = false;
   #functionCache = {};
   #childObjectList = {};
   #childObjectElements = new WeakMap();
 
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
   __hooks = [];
+  __context = {};
 
   constructor(opt, props, state) {
     super();
@@ -65,14 +60,6 @@ export class EventMachine extends MagicHandler {
 
     // 객체 생성할 때 state 도 같이 초기화 한다.
     this.#state = Object.assign({}, this.#state, state);
-  }
-
-  setServer(isServer = true) {
-    this.#isServer = isServer;
-  }
-
-  get isServer() {
-    return this.parent?.isServer || this.#isServer;
   }
 
   /**
@@ -298,7 +285,6 @@ export class EventMachine extends MagicHandler {
    * template 을 렌더링 한다.
    *
    * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
-   * @param {Boolean} [isServer=false]  로드 여부
    */
   async render($container) {
     if (!this.isPreLoaded) {
@@ -560,7 +546,7 @@ export class EventMachine extends MagicHandler {
     };
 
     // 실행 여부를 설정한다. done 이 false 면 실행해야함을 의미
-    this.__hooks[this.currentComponentHooksIndex++].done = false;
+    this.currentComponentHooksIndex++;
   }
 
   runHooks() {

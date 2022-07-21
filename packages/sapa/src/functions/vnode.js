@@ -252,7 +252,7 @@ export class VNode {
         } else if (child instanceof window.HTMLElement) {
           fragment.appendChild(child);
         } else {
-          fragment.appendChild(Object.prototype.toString.call(null, child));
+          fragment.appendChild(document.createTextNode(child));
         }
       });
 

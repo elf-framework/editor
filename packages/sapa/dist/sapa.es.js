@@ -55,7 +55,7 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _handlerCache, _state, _cachedMethodList, _isServer, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+var _handlerCache, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -317,8 +317,8 @@ function hasRefClass(node1) {
 function getProps$2(attributes) {
   var results = {};
   const len = attributes.length;
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
+  for (let i2 = 0; i2 < len; i2++) {
+    const t = attributes[i2];
     const name = t.name;
     const value = t.value;
     if (name.startsWith("on"))
@@ -327,7 +327,7 @@ function getProps$2(attributes) {
   }
   return results;
 }
-function updateChangedElement$1(parentElement, oldEl, newEl, i, options = {}) {
+function updateChangedElement$1(parentElement, oldEl, newEl, i2, options = {}) {
   const oldNodeType = oldEl.nodeType;
   const newNodeType = newEl.nodeType;
   if (oldNodeType === TEXT_NODE$1 && newNodeType !== TEXT_NODE$1) {
@@ -349,7 +349,7 @@ function updateChangedElement$1(parentElement, oldEl, newEl, i, options = {}) {
   }
   return true;
 }
-function updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options = {}) {
+function updatePropertyAndChildren$1(parentElement, oldEl, newEl, i2, options = {}) {
   if (options.checkPassed && options.checkPassed(oldEl, newEl)) {
     return;
   } else {
@@ -365,7 +365,7 @@ function updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options = {
     updateElement$1(oldEl, oldChildren[index], newChildren[index], index, options);
   }
 }
-function updateElement$1(parentElement, oldEl, newEl, i, options = {}) {
+function updateElement$1(parentElement, oldEl, newEl, i2, options = {}) {
   if (!oldEl) {
     parentElement.appendChild(newEl.cloneNode(true));
     return;
@@ -378,12 +378,12 @@ function updateElement$1(parentElement, oldEl, newEl, i, options = {}) {
     return;
   }
   if (changed(newEl, oldEl) || hasRefClass(newEl)) {
-    updateChangedElement$1(parentElement, oldEl, newEl, i, options);
+    updateChangedElement$1(parentElement, oldEl, newEl, i2, options);
     return;
   }
   const newNodeType = newEl.nodeType;
   if (newNodeType !== TEXT_NODE$1 && newNodeType !== COMMENT_NODE && newEl.toString() !== "[object HTMLUnknownElement]") {
-    updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options);
+    updatePropertyAndChildren$1(parentElement, oldEl, newEl, i2, options);
   }
 }
 const children$2 = (el) => {
@@ -426,8 +426,8 @@ function DomDiff(A, B, options = {}) {
   } else if (childrenA.length > 0 && childrenB.length === 0) {
     A.textContent = "";
   } else {
-    for (var i = 0; i < len; i++) {
-      updateElement$1(A, childrenA[i], childrenB[i], i, options);
+    for (var i2 = 0; i2 < len; i2++) {
+      updateElement$1(A, childrenA[i2], childrenB[i2], i2, options);
     }
   }
 }
@@ -700,8 +700,8 @@ class Dom {
     } catch (e) {
       const length = this.el.attributes.length;
       const attributes = [];
-      for (var i = 0; i < length; i++) {
-        attributes.push(this.el.attributes[`${i}`]);
+      for (var i2 = 0; i2 < length; i2++) {
+        attributes.push(this.el.attributes[`${i2}`]);
       }
       return attributes;
     }
@@ -976,8 +976,8 @@ class Dom {
   getStyleList(...list) {
     var style = {};
     var len = this.el.style.length;
-    for (var i = 0; i < len; i++) {
-      var key = this.el.style[i];
+    for (var i2 = 0; i2 < len; i2++) {
+      var key = this.el.style[i2];
       style[key] = this.el.style[key];
     }
     list.forEach((key2) => {
@@ -1282,8 +1282,8 @@ class Dom {
     const result = [];
     if (this.el.hasChildNodes()) {
       const childNodes = this.el.childNodes;
-      for (let i = 0; i < childNodes.length; i++) {
-        result.push(Dom.create(childNodes[i]));
+      for (let i2 = 0; i2 < childNodes.length; i2++) {
+        result.push(Dom.create(childNodes[i2]));
       }
     }
     return result;
@@ -1543,8 +1543,8 @@ function stringifyStyle(styleObject) {
 function getProps$1(attributes) {
   var results = {};
   const len = attributes.length;
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
+  for (let i2 = 0; i2 < len; i2++) {
+    const t = attributes[i2];
     const name = t.name;
     const value = t.value;
     results[name] = value;
@@ -1669,7 +1669,7 @@ class VNode {
         } else if (child instanceof window.HTMLElement) {
           fragment.appendChild(child);
         } else {
-          fragment.appendChild(Object.prototype.toString.call(null, child));
+          fragment.appendChild(document.createTextNode(child));
         }
       });
       el.appendChild(fragment);
@@ -1947,9 +1947,9 @@ class BaseStore {
         var list = this.getCachedCallbacks(event);
         if (list && list.length) {
           const runnableFunctions = list.filter((f) => !f.enableSelfTrigger).filter((f) => f.enableAllTrigger || f.originalCallback.source !== source);
-          let i = runnableFunctions.length;
-          while (i--) {
-            const f = runnableFunctions[i];
+          let i2 = runnableFunctions.length;
+          while (i2--) {
+            const f = runnableFunctions[i2];
             this.runMessage(f, args);
           }
         } else {
@@ -2000,7 +2000,13 @@ function VNodeToElement(obj, options = {}) {
   if (isString(obj)) {
     obj = createVNodeText(obj);
   }
-  return Dom.create(obj.makeElement(true, options).el);
+  if (isArray(obj) && obj.length === 1) {
+    return VNodeToElement(obj[0], options);
+  }
+  if (obj) {
+    return Dom.create(obj.makeElement(true, options).el);
+  }
+  return null;
 }
 const booleanTypes = new Map(Object.entries({
   checked: true,
@@ -2128,8 +2134,8 @@ function omitProps(vNode) {
   if (!keys.length) {
     return results;
   }
-  for (let i = 0, len = keys.length; i < len; i++) {
-    const key = keys[i];
+  for (let i2 = 0, len = keys.length; i2 < len; i2++) {
+    const key = keys[i2];
     if (key.startsWith(PREFIX_EVENT)) {
       results[key] = props[key];
     } else {
@@ -2145,8 +2151,8 @@ function omitProps(vNode) {
 function getProps(oldEl, attributes, newProps) {
   var results = {};
   const len = attributes.length;
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
+  for (let i2 = 0; i2 < len; i2++) {
+    const t = attributes[i2];
     const name = t.name;
     const value = t.value;
     results[name] = value;
@@ -2204,12 +2210,13 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   } else if (oldChildren.length > 0 && newChildren.length === 0) {
     oldEl.textContent = "";
   } else {
-    for (var i = 0; i < max; i++) {
-      updateElement(oldEl, oldChildren[i], newChildren[i], options);
+    for (var i2 = 0; i2 < max; i2++) {
+      updateElement(oldEl, oldChildren[i2], newChildren[i2], options);
     }
   }
 }
 function updateElement(parentElement, oldEl, newVNode, options = {}) {
+  var _a;
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
     return;
@@ -2218,7 +2225,7 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     patch.removeChild(parentElement, oldEl, options);
     return;
   }
-  if (!newVNode.props.pass) {
+  if (!((_a = newVNode.props) == null ? void 0 : _a.pass)) {
     if (check.hasPassed(newVNode)) {
       if (oldEl.outerHTML !== newVNode.outerHTML) {
         DomDiff(oldEl, newVNode.el, options);
@@ -2948,8 +2955,8 @@ class DomEventHandler extends BaseHandler {
     if (arr) {
       var eventNames = this.getEventNames(arr[0]);
       var callback = context[it.originalMethod].bind(context);
-      for (let i = 0, len = eventNames.length; i < len; i++) {
-        arr[0] = eventNames[i];
+      for (let i2 = 0, len = eventNames.length; i2 < len; i2++) {
+        arr[0] = eventNames[i2];
         this.bindingDomEvent(arr, it, callback);
       }
     }
@@ -3140,8 +3147,12 @@ class StoreHandler extends BaseHandler {
 const hookList = [];
 let currentHookIndex = 0;
 let currentComponent = null;
+let contextProviderList = {};
 function initHook() {
   currentHookIndex = 0;
+  Object.values(contextProviderList).forEach((context) => {
+    context.index = -1;
+  });
 }
 function render() {
   initHook();
@@ -3177,12 +3188,78 @@ function useState(initialState) {
 function useEffect(callback, deps) {
   const hasDeps = !deps;
   const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps ? !deps.every((d, i) => d === currentDeps[i]) : true;
+  const hasChangedDeps = currentDeps ? !deps.every((d, i2) => d === currentDeps[i2]) : true;
   if (hasDeps || hasChangedDeps) {
     hookList[currentHookIndex] = { deps };
     currentComponent.addHook({ callback, deps });
   }
   currentHookIndex++;
+}
+function useReducer(reducer, initialState) {
+  const [state, setState] = useState(initialState);
+  function dispatch(action) {
+    setState((prevState) => reducer(prevState, action));
+  }
+  return [state, dispatch];
+}
+function useMemo(callback, deps) {
+  const hasDeps = !deps;
+  const { deps: currentDeps } = hookList[currentHookIndex] || {};
+  const hasChangedDeps = currentDeps ? !deps.every((d, i2) => d === currentDeps[i2]) : true;
+  if (hasDeps || hasChangedDeps) {
+    const newValue = callback();
+    hookList[currentHookIndex] = { deps, value: newValue };
+  }
+  const lastHookValue = hookList[currentHookIndex] || {};
+  currentHookIndex++;
+  return lastHookValue.value;
+}
+function useCallback(callback, deps) {
+  return useMemo(() => callback, deps);
+}
+let i = 0;
+function createContextProvider(context) {
+  contextProviderList[context.id] = {
+    context,
+    index: -1,
+    providers: []
+  };
+}
+function addContextProvider(context, provider) {
+  const contextInfo = contextProviderList[context.id];
+  const index = ++contextInfo.index;
+  if (!contextInfo.providers[index]) {
+    contextInfo.providers[index] = provider;
+  } else {
+    contextInfo.providers[index] = __spreadValues(__spreadValues({}, contextInfo.providers[index]), provider);
+  }
+}
+function getContextProvider(context) {
+  const contextInfo = contextProviderList[context.id];
+  if (contextInfo.index === -1) {
+    return { value: contextInfo.defaultValue };
+  }
+  return contextInfo.providers[contextInfo.index] || contextInfo.providers[contextInfo.index + 1];
+}
+function createContext(defaultValue2) {
+  const context = {
+    id: "context-" + i++,
+    defaultValue: defaultValue2,
+    Provider: function({ value, content }) {
+      addContextProvider(context, { value, provider: this });
+      return content[0] || content;
+    }
+  };
+  context.Consumer = ({ content: [children2] }) => {
+    const value = getContextProvider(context).value;
+    return children2(value);
+  };
+  createContextProvider(context);
+  return context;
+}
+function useContext(context) {
+  var _a;
+  return ((_a = getContextProvider(context)) == null ? void 0 : _a.value) || context.defaultValue;
 }
 function resetCurrentComponent(component) {
   currentComponent = component;
@@ -3215,11 +3292,11 @@ const _EventMachine = class extends MagicHandler {
     __privateAdd(this, _reloadInstance);
     __privateAdd(this, _state, {});
     __privateAdd(this, _cachedMethodList, void 0);
-    __privateAdd(this, _isServer, false);
     __privateAdd(this, _functionCache, {});
     __privateAdd(this, _childObjectList, {});
     __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
     __publicField(this, "__hooks", []);
+    __publicField(this, "__context", {});
     __publicField(this, "registerRef", (ref, el) => {
       this.refs[ref] = el;
     });
@@ -3278,13 +3355,6 @@ const _EventMachine = class extends MagicHandler {
     this.sourceName = this.constructor.name;
     this.props = props;
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
-  }
-  setServer(isServer = true) {
-    __privateSet(this, _isServer, isServer);
-  }
-  get isServer() {
-    var _a;
-    return ((_a = this.parent) == null ? void 0 : _a.isServer) || __privateGet(this, _isServer);
   }
   createFunction(funcName, func) {
     if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
@@ -3514,7 +3584,7 @@ const _EventMachine = class extends MagicHandler {
     this.__hooks[this.currentComponentHooksIndex] = __spreadProps(__spreadValues(__spreadValues({}, currentHook), hook), {
       done: false
     });
-    this.__hooks[this.currentComponentHooksIndex++].done = false;
+    this.currentComponentHooksIndex++;
   }
   runHooks() {
     this.__hooks.forEach((it) => {
@@ -3567,7 +3637,6 @@ const _EventMachine = class extends MagicHandler {
 let EventMachine = _EventMachine;
 _state = new WeakMap();
 _cachedMethodList = new WeakMap();
-_isServer = new WeakMap();
 _functionCache = new WeakMap();
 _childObjectList = new WeakMap();
 _childObjectElements = new WeakMap();
@@ -3734,4 +3803,4 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initHook, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, renderFromRoot, renderRootElementInstanceList, renderToString, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useEffect, useState, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, i, ifCheck, initHook, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, renderFromRoot, renderRootElementInstanceList, renderToString, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useCallback, useContext, useEffect, useMemo, useReducer, useState, uuid, uuidShort, variable };

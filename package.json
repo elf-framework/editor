@@ -15,10 +15,15 @@
     "ui-react:dev": "turbo run ui-react:dev --parallel",
     "editor:dev": "turbo run editor:dev --parallel",
     "sapa:release": "turbo run sapa:release --parallel",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "npm run build && changeset publish",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@changesets/changelog-git": "^0.1.11",
+    "@changesets/changelog-github": "^0.4.5",
     "eslint": "^8.18.0",
     "prettier": "latest",
     "turbo": "latest"
@@ -40,5 +45,8 @@
   "bugs": {
     "url": "https://github.com/elf-framework/editor/issues"
   },
-  "homepage": "https://github.com/elf-framework/editor#readme"
+  "homepage": "https://github.com/elf-framework/editor#readme",
+  "dependencies": {
+    "@changesets/cli": "^2.23.2"
+  }
 }

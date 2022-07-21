@@ -1,27 +1,31 @@
-import { useEffect, useState } from "@elf-framework/sapa";
+import { useContext, useEffect, useState } from "@elf-framework/sapa";
+
+import { MyContext } from "./context";
 
 export const A = () => {};
 export function A2() {}
 const B = () => {};
 export { B };
 
-export default function Sample({ onClick }) {
-  const [value, setValue] = useState(1);
-  const [value2, setValue2] = useState(10);
+function useMyState(initialValue) {
+  const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
-    console.log("use effect 332fs2");
-    // const id = window.setInterval(() => {
-    //   setValue((v) => v + 1);
-    // }, 1000);
+    console.log("use effected value", value);
 
     return () => {
-      console.log("clean up");
-      // window.clearInterval(id);
+      console.log("unmount");
     };
   }, []);
 
-  console.log("render", value);
+  return [value, setValue];
+}
+
+export default function Sample({ onClick }) {
+  const myContextValue = useContext(MyContext);
+  // console.log({ myContextValue });
+  const [value, setValue] = useMyState(1);
+  const [value2, setValue2] = useState(10);
 
   return (
     <div>
@@ -33,9 +37,10 @@ export default function Sample({ onClick }) {
           ref="$button"
           onClick={() => {
             setValue((prevState) => prevState + 1);
+            this.runCallback(onClick);
           }}
         >
-          fdsafdsafds af {value + 10 ** 2} yello
+          fdsafdsafds af {value + 10 ** 2} yello {myContextValue.value}
         </button>
       )}
       <button

@@ -6,6 +6,7 @@ import path from "path";
 export default defineConfig({
   build: {
     emptyOutDir: false,
+    minify: true,
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "sapa",
