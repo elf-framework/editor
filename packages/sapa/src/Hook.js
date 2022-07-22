@@ -3,10 +3,21 @@ import { renderRootElementInstanceList } from "./functions/registElement";
 /**
  * 함수 컴포넌트를 위한 간단한 글로벌 Hook을 제공한다.
  *
- * - useState
- * - useEffect
+ * - [x] useState
+ * - [x] useEffect
+ * - [x] useContext
+ * - [x] useMemo
+ * - [x] useCallback
+ * - [ ] useRef
  *
  * class 컴포넌트에서는 되도록이면 사용하지 말자.
+ *
+ * ps.
+ *
+ * hook 은 연산을 안하는 것이 아니라 연산된 결과물을 동일하게 유지하는게 목적이다.
+ * 즉, template 에서 리턴되기 전까지는 모두 실행 가능 영역으로 보고
+ * 최종 vnode 의 집합이 diff 될 때 차이가 없으면 렌더링 하지 않는게 목적이다.
+ *
  *
  */
 
@@ -16,7 +27,9 @@ let currentComponent = null;
 let contextProviderList = {};
 
 export function initHook() {
+  // hook index 초기화
   currentHookIndex = 0;
+  // context index 초기화
   Object.values(contextProviderList).forEach((context) => {
     context.index = -1;
   });

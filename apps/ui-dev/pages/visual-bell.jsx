@@ -10,7 +10,9 @@ start(function () {
 
   return (
     <div>
-      <VisualBell direction="top-left" content="Hello World" tools={tools} />
+      <VisualBell direction="top-left" tools={tools}>
+        Hello World yellow 234
+      </VisualBell>
       <VisualBell direction="top" content="Hello World" tools={tools} />
       <VisualBell direction="top-right" content="Hello World" tools={tools} />
       <VisualBell direction="left" content="Hello World" tools={tools} />

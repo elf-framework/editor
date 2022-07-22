@@ -590,7 +590,7 @@ export class EventMachine extends MagicHandler {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 mounted 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
       instance.onMounted();
@@ -609,7 +609,7 @@ export class EventMachine extends MagicHandler {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 updated 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
       instance.onUpdated();
@@ -631,7 +631,7 @@ export class EventMachine extends MagicHandler {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 destroyed 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
       instance.onDestroyed();

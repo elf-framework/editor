@@ -518,7 +518,16 @@ function retriveElement(className) {
   return map[retriveAlias(className) || className];
 }
 function registRootElementInstance(instance) {
+  if (instance) {
+    const lastInstance = getRootElementInstanceList().find((it) => {
+      return it.$el.el.__component !== it;
+    });
+    removeRootElementInstance(lastInstance);
+  }
   __rootInstance.add(instance);
+}
+function removeRootElementInstance(instance) {
+  __rootInstance.delete(instance);
 }
 function getRootElementInstanceList() {
   return [...__rootInstance];
@@ -1627,6 +1636,8 @@ class VNode {
   }
   initializeChildren() {
     if (isArray(this.children)) {
+      if (this.props.content)
+        return;
       this.children = this.children.filter(Boolean).map((child) => {
         if (isString(child)) {
           if (this.enableHtml) {
@@ -3323,12 +3334,13 @@ const _EventMachine = class extends MagicHandler {
       return true;
     });
     __publicField(this, "onUpdated", () => {
+      var _a;
       const updated = this.createFunction("updated");
       if (updated) {
         updated();
       }
       this.runHooks();
-      const instance = this.getTargetInstance(this.$el.el);
+      const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
       if (instance) {
         instance.onUpdated();
       }
@@ -3603,23 +3615,25 @@ const _EventMachine = class extends MagicHandler {
     this.__hooks = [];
   }
   onMounted() {
+    var _a;
     const mounted = this.createFunction("mounted");
     if (mounted) {
       mounted();
     }
     this.runHooks();
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
     if (instance) {
       instance.onMounted();
     }
   }
   onDestroyed() {
+    var _a;
     const destroyed = this.createFunction("destroyed");
     if (destroyed) {
       destroyed();
     }
     this.cleanHooks();
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
     if (instance) {
       instance.onDestroyed();
     }
@@ -3735,12 +3749,20 @@ let UIElement = _UIElement;
 _storeInstance = new WeakMap();
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
+  const $targetElement = $container.children().find((it) => it.el.__component);
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
   const app = UIElement.createElementInstance(ElementClass, opt);
-  app.render($container);
+  if ($targetElement) {
+    app.$el = Dom.create($targetElement.el);
+    app.render();
+    app.$el.el.__component = app;
+  } else {
+    app.render($container);
+    app.$el.el.__component = app;
+  }
   registRootElementInstance(app);
   return app;
 };
@@ -3793,14 +3815,10 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
   props = props || {};
   if (typeof Component !== "string") {
-    const ComponentName = Component.name;
-    registElement({
-      [ComponentName]: Component
-    });
     return createComponent(Component, props, children2);
   } else {
     return createElement(Component, props, children2);
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, i, ifCheck, initHook, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, renderFromRoot, renderRootElementInstanceList, renderToString, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useCallback, useContext, useEffect, useMemo, useReducer, useState, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, i, ifCheck, initHook, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, renderFromRoot, renderRootElementInstanceList, renderToString, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useCallback, useContext, useEffect, useMemo, useReducer, useState, uuid, uuidShort, variable };

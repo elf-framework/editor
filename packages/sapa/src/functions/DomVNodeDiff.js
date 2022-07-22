@@ -350,7 +350,6 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
   } else {
     // newVNode.props.pass === true
     // noop
-    // console.log(newVNode);
   }
 
   const newNodeType = newVNode.type;

@@ -198,6 +198,10 @@ export class VNode {
 
   initializeChildren() {
     if (isArray(this.children)) {
+      // 하위 객체는 content 로 받는다.
+      // 다만 props 에 content 가 정의 되어 있으면 처리 하지 않는다.
+      if (this.props.content) return;
+
       this.children = this.children.filter(Boolean).map((child) => {
         if (isString(child)) {
           if (this.enableHtml) {

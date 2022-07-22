@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
-    "ui:dev": "npm run vite:dev",
+    "ui:dev": "bun run vite:dev",
     "//build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
     "copy:resource": "cp CNAME docs/",

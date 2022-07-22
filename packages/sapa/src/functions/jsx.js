@@ -1,5 +1,4 @@
 import { isArray, isString } from "./func";
-import { registElement } from "./registElement";
 import {
   createVNode,
   createVNodeComponent,
@@ -75,10 +74,6 @@ export function createElementJsx(Component, props = {}, ...children) {
   props = props || {};
 
   if (typeof Component !== "string") {
-    const ComponentName = Component.name;
-    registElement({
-      [ComponentName]: Component,
-    });
     return createComponent(Component, props, children);
   } else {
     return createElement(Component, props, children);
