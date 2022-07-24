@@ -1,6 +1,6 @@
 import { Button, CheckboxGroup } from "@elf-framework/ui-react";
 import "@elf-framework/ui-react/style.css";
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 function MyComponent() {
   const [value, setValue] = useState(1);
@@ -9,17 +9,13 @@ function MyComponent() {
 
   useEffect(() => {
     const id = setTimeout(() => {
-      console.log("fdsafdsf");
       setValue(value + 1);
     }, 1000);
 
     return () => {
-      console.log("clear", value);
       clearTimeout(id);
     };
   }, [value]);
-
-  console.log("render component");
 
   return (
     <button
@@ -36,18 +32,18 @@ function App() {
   const [value, setValue] = useState(1);
 
   useEffect(() => {
-    console.log("App.tsx");
+    console.log("4, App.tsx");
 
     return () => {
-      console.log("value clear");
+      console.log("5, value clear");
     };
   }, [value]);
 
   useEffect(() => {
-    console.log("App.tsx forever");
+    console.log("6, App.tsx forever");
 
     return () => {
-      console.log("root clear");
+      console.log("7, root clear");
     };
   });
 
@@ -62,7 +58,7 @@ function App() {
           { value: 30, label: "30" },
         ]}
       />
-      {value > 5 ? "" : <MyComponent />}
+      {/* {value > 5 ? "" : <MyComponent />} */}
       <MyComponent />
       <div onClick={() => setValue(value + 1)} style={{ padding: 10 }}>
         {value}

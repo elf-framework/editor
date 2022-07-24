@@ -1,5 +1,5 @@
 import { Dom } from "./Dom";
-import { isArray, isNumber, isString } from "./func";
+import { isArray, isString } from "./func";
 import { createVNodeText } from "./vnode";
 /**
  * element tree 의 최상위 element 를 리턴한다.
@@ -40,37 +40,39 @@ export function VNodeToElement(obj, options = {}) {
   return null;
 }
 
-/**
- * 항상 element 의 list 를 만들어준다.
- *
- * @param {string|string[]|HTMLElement|HTMLElement[]} html
- * @returns
- */
-let TEMP_DIV;
-export function makeElementList(html) {
-  if (!TEMP_DIV) {
-    TEMP_DIV = Dom.create("div");
+export async function VNodeToHtml(obj, options = {}) {
+  if (isString(obj)) {
+    return obj;
   }
 
-  let list = [];
-
-  if (!isArray(html)) {
-    html = [html];
+  if (isArray(obj) && obj.length === 1) {
+    return await VNodeToHtml(obj[0], options);
   }
 
-  for (let i = 0, len = html.length; i < len; i++) {
-    const item = html[i];
-    if (isString(item)) {
-      list.push(...(TEMP_DIV.html(item).childNodes || []));
-    } else if (isNumber(item)) {
-      list.push(Dom.createText(item));
-    } else if (item) {
-      list.push(Dom.create(item));
-    } else {
-      // noop
-      console.log("noop");
-    }
+  if (obj) {
+    return await obj.makeHtml(true, options);
   }
 
-  return list;
+  return "";
+}
+
+const VoidTags = {
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true,
+};
+
+export function isVoidTag(tag) {
+  return VoidTags[tag.toLowerCase()];
 }

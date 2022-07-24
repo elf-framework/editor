@@ -2,6 +2,15 @@ declare module "@elf-framework/ui" {
   import type { HSL, HSV, RGB } from "@elf-framework/color";
   import { UIElement, VNode } from "@elf-framework/sapa";
 
+  export const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
+  export const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
+  export const ADD_BODY_MOUSEUP = "add/body/mouseup";
+  export const BODY_MOVE_EVENT = "body/move/event";
+
+  export function FIRSTMOVE(method: string): string;
+  export function MOVE(method: string): string;
+  export function END(method: string): string;
+
   /** base */
   type ContentType = string | UIElement | string[] | UIElement[];
 
@@ -226,7 +235,7 @@ declare module "@elf-framework/ui" {
     dashed: boolean;
   };
 
-  export type CustomMenuRenderFunctionType = Function;
+  export type CustomMenuRenderFunctionType = ContentType;
 
   export type CustomMenuItemType =
     | {
@@ -889,5 +898,13 @@ declare module "@elf-framework/ui" {
   }
   export class DataEditor extends UIElement {
     props: DataEditorProps;
+  }
+
+  export class EventPanel extends UIElement {
+    props: CommonStyle;
+  }
+
+  export class EventControlPanel extends UIElement {
+    props: CommonStyle;
   }
 }

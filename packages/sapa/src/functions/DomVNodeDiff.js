@@ -32,6 +32,7 @@ const expectKeys = {
 };
 
 const TEXT_NODE = 3;
+const COMMENT_NODE = 8;
 const KEY_STYLE = "style";
 const PREFIX_EVENT = "on";
 
@@ -91,6 +92,9 @@ const patch = {
       oldEl.textContent = newVNode.textContent;
     }
   },
+  replaceComment(oldEl, newVNode) {
+    patch.replaceText(oldEl, newVNode);
+  },
 
   addNewVNode(parentElement, oldEl, newVNode, options) {
     parentElement.insertBefore(newVNode.makeElement(true, options).el, oldEl);
@@ -109,8 +113,23 @@ const patch = {
 };
 
 const check = {
+  isTextNode(node) {
+    return node.nodeType === TEXT_NODE;
+  },
+  isCommentNode(node) {
+    return node.nodeType === COMMENT_NODE;
+  },
+  isElementNode(node) {
+    return node.nodeType === 1;
+  },
+  isVNodeText(node) {
+    return node.type === VNodeType.TEXT;
+  },
+  isVNodeComment(node) {
+    return node.type === VNodeType.COMMENT;
+  },
   /**
-   * TEXT_NODE 일 때   둘 다 공백일 때는  비교하지 않는다.
+   * TEXT_NODE/COMMENT_NODE 일 때   둘 다 공백일 때는  비교하지 않는다.
    * nodeName 이 다를 때는 변경 된 것으로 인지한다.
    *
    * @param {*} node1
@@ -119,7 +138,7 @@ const check = {
    */
   changed(vNode, node2) {
     return (
-      (vNode.type === VNodeType.TEXT &&
+      ((vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) &&
         vNode.textContent !== node2.textContent) ||
       vNode.nodeName !== node2.nodeName.toUpperCase()
     );
@@ -238,16 +257,21 @@ function getProps(oldEl, attributes, newProps) {
 }
 
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
-  const oldNodeType = oldEl.nodeType;
-  const newNodeType = newVNode.type;
-
   // node 가 같지 않으면 바꾸고, refClass 속성이 있으면 바꾸고
-  if (oldNodeType === TEXT_NODE && newNodeType !== VNodeType.TEXT) {
+  if (
+    (check.isTextNode(oldEl) && !check.isVNodeText(newVNode)) ||
+    (check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode))
+  ) {
     patch.addNewVNode(parentElement, oldEl, newVNode, options);
-  } else if (oldNodeType !== TEXT_NODE && newNodeType === VNodeType.TEXT) {
+  } else if (
+    (!check.isTextNode(oldEl) && check.isVNodeText(newVNode)) ||
+    (!check.isCommentNode(oldEl) && check.isVNodeComment(newVNode))
+  ) {
     patch.addNewVNode(parentElement, oldEl, newVNode, options);
-  } else if (oldNodeType === TEXT_NODE && newNodeType === VNodeType.TEXT) {
+  } else if (check.isTextNode(oldEl) && check.isVNodeText(newVNode)) {
     patch.replaceText(oldEl, newVNode);
+  } else if (check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
+    patch.replaceComment(oldEl, newVNode);
   } else {
     // newVNode 가 Component 인 경우
     if (check.hasRefClass(newVNode)) {
@@ -259,7 +283,11 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
         patch.replaceWith(oldEl, newVNode, options);
 
         if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(newVNode.el, newVNode);
+          options.registerChildComponent(
+            newVNode.el,
+            newVNode.instance,
+            newVNode.instance.id
+          );
         }
       }
     } else {
@@ -390,19 +418,15 @@ const DefaultOption = {
 
 /**
  *
- *  DomDiff 를 수행한다.
+ *  DomVNodeDiff 를 수행한다.
  *
- *  TODO: id 기반으로 reconcile 을 할 수 있도록 맞춰야 한다.
+ * Dom 과 VNode 를 Diff 한다.
  *
- * @param {TextNode|Element|DocumentFragment} A
- * @param {VNode} B
- * @param {object} options
- * @param {function} [options.checkPassed=undefined]
- * @param {string} [options.keyField=key]
  */
 export function DomVNodeDiff(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
   if (oldEl.nodeType !== 11) {
+    // fragment 가 아니면 비교를 시작한다.
     updateElement(oldEl.parentElement, oldEl, newVNode, options);
     return;
   }

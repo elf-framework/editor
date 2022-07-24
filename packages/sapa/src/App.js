@@ -39,11 +39,14 @@ export const start = (ElementClass, opt = {}) => {
   return app;
 };
 
-export async function renderToString(ElementClass, opt) {
-  const app = UIElement.createElementInstance(ElementClass, opt);
-  // server 인지 확인
-  app.setServer(true);
-  const instance = await app.render();
+export async function renderToHtml(ElementClass, opt) {
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
 
-  return instance.html;
+  const app = UIElement.createElementInstance(ElementClass, opt);
+  const html = await app.renderToHtml();
+
+  return html;
 }

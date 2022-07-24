@@ -1,73 +1,42 @@
 import { renderRootElementInstanceList } from "./functions/registElement";
 
 /**
- * 함수 컴포넌트를 위한 간단한 글로벌 Hook을 제공한다.
+ *
+ * 함수 컴포넌트와 클래스 컴포넌트의 template 메소드 내부에서 사용할 수 있다.
  *
  * - [x] useState
  * - [x] useEffect
  * - [x] useContext
  * - [x] useMemo
  * - [x] useCallback
- * - [ ] useRef
+ * - [x] useRef
  *
- * class 컴포넌트에서는 되도록이면 사용하지 말자.
  *
  * ps.
  *
- * hook 은 연산을 안하는 것이 아니라 연산된 결과물을 동일하게 유지하는게 목적이다.
+ * Hook 은 하나의 컴포넌트에 종속적이다.
  * 즉, template 에서 리턴되기 전까지는 모두 실행 가능 영역으로 보고
  * 최종 vnode 의 집합이 diff 될 때 차이가 없으면 렌더링 하지 않는게 목적이다.
  *
  *
+ *
+ *
  */
 
-const hookList = [];
-let currentHookIndex = 0;
+// let currentHookIndex = 0;
 let currentComponent = null;
 let contextProviderList = {};
 
-export function initHook() {
-  // hook index 초기화
-  currentHookIndex = 0;
-  // context index 초기화
+export function initContext() {
   Object.values(contextProviderList).forEach((context) => {
     context.index = -1;
   });
 }
 
-function render() {
-  initHook();
-  renderRootElementInstanceList();
-}
-
 export function renderFromRoot() {
-  initHook();
+  // context index 초기화
+  initContext();
   renderRootElementInstanceList(true);
-}
-
-/**
- * 초기값 기준으로 새로운 값을 반환하는 함수를 만들어준다.
- *
- * @returns
- */
-function createState({ init }) {
-  let value = { value: init };
-
-  function getValue(v) {
-    if (typeof v === "function") {
-      return v(value.value);
-    }
-
-    return v;
-  }
-
-  const update = (newValue) => {
-    value.value = getValue(newValue);
-
-    render();
-  };
-
-  return [value, update];
 }
 
 /**
@@ -78,14 +47,7 @@ function createState({ init }) {
  * @returns
  */
 export function useState(initialState) {
-  if (!hookList[currentHookIndex]) {
-    hookList[currentHookIndex] = createState({
-      init: initialState,
-    });
-  }
-
-  const [value, update] = hookList[currentHookIndex++];
-  return [value.value, update];
+  return currentComponent.useState(initialState);
 }
 
 /**
@@ -97,53 +59,23 @@ export function useState(initialState) {
  * @param {array} deps
  */
 export function useEffect(callback, deps) {
-  const hasDeps = !deps;
-  const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps
-    ? !deps.every((d, i) => d === currentDeps[i])
-    : true;
-
-  if (hasDeps || hasChangedDeps) {
-    hookList[currentHookIndex] = { deps };
-    // component hook 정의
-    currentComponent.addHook({ callback, deps });
-  }
-
-  currentHookIndex++;
+  return currentComponent.useEffect(callback, deps);
 }
 
 export function useReducer(reducer, initialState) {
-  const [state, setState] = useState(initialState);
-
-  function dispatch(action) {
-    setState((prevState) => reducer(prevState, action));
-  }
-
-  return [state, dispatch];
+  return currentComponent.useReducer(reducer, initialState);
 }
 
 export function useMemo(callback, deps) {
-  const hasDeps = !deps;
-  const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps
-    ? !deps.every((d, i) => d === currentDeps[i])
-    : true;
-
-  if (hasDeps || hasChangedDeps) {
-    const newValue = callback();
-    hookList[currentHookIndex] = { deps, value: newValue };
-    // component hook 정의
-  }
-
-  const lastHookValue = hookList[currentHookIndex] || {};
-
-  currentHookIndex++;
-
-  return lastHookValue.value;
+  return currentComponent.useMemo(callback, deps);
 }
 
 export function useCallback(callback, deps) {
-  return useMemo(() => callback, deps);
+  return currentComponent.useCallback(callback, deps);
+}
+
+export function useRef(initialValue) {
+  return currentComponent.useRef(initialValue);
 }
 
 export let i = 0;
@@ -151,14 +83,14 @@ export let i = 0;
 function createContextProvider(context) {
   contextProviderList[context.id] = {
     context,
-    index: -1,
+    index: 0,
     providers: [],
   };
 }
 
 function addContextProvider(context, provider) {
   const contextInfo = contextProviderList[context.id];
-  const index = ++contextInfo.index;
+  const index = contextInfo.index;
   if (!contextInfo.providers[index]) {
     // index 에 없는 경우 새로운 객체를 생성한다.
     contextInfo.providers[index] = provider;
@@ -174,14 +106,7 @@ function addContextProvider(context, provider) {
 function getContextProvider(context) {
   const contextInfo = contextProviderList[context.id];
 
-  if (contextInfo.index === -1) {
-    return { value: contextInfo.defaultValue };
-  }
-
-  return (
-    contextInfo.providers[contextInfo.index] ||
-    contextInfo.providers[contextInfo.index + 1]
-  );
+  return contextInfo.providers[contextInfo.index] || contextInfo.defaultValue;
 }
 
 /**
@@ -200,7 +125,7 @@ export function createContext(defaultValue) {
     id: "context-" + i++,
     defaultValue,
     Provider: function ({ value, content }) {
-      addContextProvider(context, { value, provider: this });
+      addContextProvider(context, { value });
 
       return content[0] || content;
     },
@@ -208,7 +133,6 @@ export function createContext(defaultValue) {
 
   context.Consumer = ({ content: [children] }) => {
     const value = getContextProvider(context).value;
-
     return children(value);
   };
 
@@ -228,5 +152,4 @@ export function useContext(context) {
  */
 export function resetCurrentComponent(component) {
   currentComponent = component;
-  currentComponent.initHook();
 }

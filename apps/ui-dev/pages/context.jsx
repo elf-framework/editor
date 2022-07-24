@@ -9,7 +9,7 @@ export function MyContextProvider({ value, content }) {
   };
 
   function setValue(value) {
-    setState({ ...state, value });
+    setState((state) => ({ ...state, value }));
   }
 
   const [state, setState] = useState(initState);

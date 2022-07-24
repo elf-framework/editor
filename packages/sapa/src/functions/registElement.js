@@ -135,6 +135,7 @@ export function registRootElementInstance(instance) {
 }
 
 export function removeRootElementInstance(instance) {
+  instance?.destroy();
   __rootInstance.delete(instance);
 }
 

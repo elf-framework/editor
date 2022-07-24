@@ -51,11 +51,21 @@ var __privateSet = (obj, member, value, setter) => {
   setter ? setter.call(obj, value) : member.set(obj, value);
   return value;
 };
+var __privateWrapper = (obj, member, setter, getter) => {
+  return {
+    set _(value) {
+      __privateSet(obj, member, value, setter);
+    },
+    get _() {
+      return __privateGet(obj, member, getter);
+    }
+  };
+};
 var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _handlerCache, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+var _handlerCache, ___effectHooks, ___stateHooks, ___stateHooksIndex, ___effectHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -161,6 +171,9 @@ function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
     console.error(obj1, obj2);
     throw new Error(["isEqual \uC744 \uC624\uB798 \uC2E4\uD589\uD558\uC600\uC2B5\uB2C8\uB2E4."]);
   }
+  if (isFunction(obj1) && isFunction(obj2)) {
+    return false;
+  }
   const obj1Keys = Object.keys(obj1);
   const obj2Keys = Object.keys(obj2);
   if (obj1Keys.length !== obj2Keys.length) {
@@ -174,6 +187,10 @@ function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
     const obj2Value = obj2[key];
     if (isObject(obj1Value) && isObject(obj2Value)) {
       return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
+    } else if (isArray(obj1Value) && isArray(obj2Value)) {
+      return obj1Value.every((value, index) => {
+        return isEqual(value, obj2Value[index], count + 1, omitKeys);
+      });
     }
     return obj1Value === obj2Value;
   });
@@ -248,7 +265,7 @@ const booleanTypes$1 = {
   allowpaymentrequest: true
 };
 const TEXT_NODE$1 = 3;
-const COMMENT_NODE = 8;
+const COMMENT_NODE$1 = 8;
 function isBooleanType$1(key) {
   return booleanTypes$1[key];
 }
@@ -306,7 +323,7 @@ function changed(node1, node2) {
   return node1.nodeType === TEXT_NODE$1 && node1.textContent !== node2.textContent || node1.nodeName !== node2.nodeName;
 }
 function hasPassed(node1) {
-  if (node1.nodeType === COMMENT_NODE) {
+  if (node1.nodeType === COMMENT_NODE$1) {
     return true;
   }
   return node1.nodeType !== TEXT_NODE$1 && node1.getAttribute("data-domdiff-pass") === "true";
@@ -382,7 +399,7 @@ function updateElement$1(parentElement, oldEl, newEl, i2, options = {}) {
     return;
   }
   const newNodeType = newEl.nodeType;
-  if (newNodeType !== TEXT_NODE$1 && newNodeType !== COMMENT_NODE && newEl.toString() !== "[object HTMLUnknownElement]") {
+  if (newNodeType !== TEXT_NODE$1 && newNodeType !== COMMENT_NODE$1 && newEl.toString() !== "[object HTMLUnknownElement]") {
     updatePropertyAndChildren$1(parentElement, oldEl, newEl, i2, options);
   }
 }
@@ -527,6 +544,7 @@ function registRootElementInstance(instance) {
   __rootInstance.add(instance);
 }
 function removeRootElementInstance(instance) {
+  instance == null ? void 0 : instance.destroy();
   __rootInstance.delete(instance);
 }
 function getRootElementInstanceList() {
@@ -1461,6 +1479,49 @@ function css(style) {
   });
   return newStyles;
 }
+function VNodeToElement(obj, options = {}) {
+  if (isString(obj)) {
+    obj = createVNodeText(obj);
+  }
+  if (isArray(obj) && obj.length === 1) {
+    return VNodeToElement(obj[0], options);
+  }
+  if (obj) {
+    return Dom.create(obj.makeElement(true, options).el);
+  }
+  return null;
+}
+async function VNodeToHtml(obj, options = {}) {
+  if (isString(obj)) {
+    return obj;
+  }
+  if (isArray(obj) && obj.length === 1) {
+    return await VNodeToHtml(obj[0], options);
+  }
+  if (obj) {
+    return await obj.makeHtml(true, options);
+  }
+  return "";
+}
+const VoidTags = {
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+};
+function isVoidTag(tag) {
+  return VoidTags[tag.toLowerCase()];
+}
 const SVG_ELEMENTS = {
   svg: true,
   g: true,
@@ -1506,6 +1567,7 @@ function isSVG(tagName) {
 const TAG_PREFIX = "<";
 const TEMP_DIV = Dom.create("div");
 const TEMP_TEXT = document.createTextNode("");
+const TEMP_COMMENT = document.createComment("");
 let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
@@ -1518,6 +1580,11 @@ function makeNativeDom(name) {
 }
 function makeNativeTextDom(value) {
   const text = TEMP_TEXT.cloneNode();
+  text.textContent = value;
+  return text;
+}
+function makeNativeCommentDom(value) {
+  const text = TEMP_COMMENT.cloneNode();
   text.textContent = value;
   return text;
 }
@@ -1697,6 +1764,30 @@ class VNode {
       });
     }
   }
+  async makeChildrenHtml(withChildren, options) {
+    const tempChildren = [];
+    const children2 = this.children;
+    if (children2 && children2.length) {
+      const tempArray = await Promise.all(children2.map(async (child) => {
+        if (child instanceof VNode || child.makeHtml) {
+          return await child.makeHtml(withChildren, options);
+        } else if (isArray(child)) {
+          return await Promise.all(child.map(async (it) => {
+            if (it) {
+              return await it.makeHtml(withChildren, options);
+            }
+            return void 0;
+          })).filter((it) => typeof it !== "undefined");
+        } else if (isFunction(child)) {
+          return await child();
+        } else {
+          return await child;
+        }
+      }));
+      tempChildren.push(...tempArray);
+    }
+    return tempChildren.join("\n");
+  }
   createElement() {
     return makeNativeDom(this.tag);
   }
@@ -1738,6 +1829,46 @@ class VNode {
     this.makeChildren(withChildren, options);
     return this;
   }
+  async makeHtml(withChildren = false, options = {}) {
+    const tempProps = [];
+    const props = this.tagProps;
+    if (props) {
+      Object.keys(props).forEach((key) => {
+        const value = props[key];
+        if (key === "style") {
+          if (isString(value))
+            ;
+          else {
+            props[key] = stringifyStyle(css(value));
+          }
+        } else {
+          if (key) {
+            if (value !== void 0) {
+              if (key.startsWith("on")) {
+                return;
+              }
+            }
+          }
+        }
+        if (key === "ref") {
+          return;
+        }
+        if (value) {
+          tempProps.push(`${key}="${value}"`);
+        }
+      });
+    }
+    if (isVoidTag(this.tag)) {
+      return `
+        <${this.tag} ${tempProps.join(" ")} />
+      `;
+    } else {
+      const childrenHtml = await this.makeChildrenHtml(withChildren, options);
+      return `
+        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
+      `;
+    }
+  }
 }
 class VNodeText extends VNode {
   constructor(value) {
@@ -1761,6 +1892,35 @@ class VNodeText extends VNode {
     this.el = this.createElement();
     return this;
   }
+  makeHtml() {
+    return this.value;
+  }
+}
+class VNodeComment extends VNode {
+  constructor(value) {
+    super(VNodeType.COMMENT, null, {});
+    this.value = value;
+  }
+  clone() {
+    return new VNodeComment(this.value);
+  }
+  get textContent() {
+    return this.value;
+  }
+  runMounted() {
+  }
+  createElement() {
+    return makeNativeCommentDom(this.value);
+  }
+  makeElement() {
+    if (this.el)
+      return this;
+    this.el = this.createElement();
+    return this;
+  }
+  makeHtml() {
+    return this.value;
+  }
 }
 class VNodeFragment extends VNode {
   constructor(props = {}, children2) {
@@ -1777,6 +1937,9 @@ class VNodeFragment extends VNode {
     this.makeChildren(withChildren, options);
     return this;
   }
+  async makeHtml(withChildren = false, options = {}) {
+    return await this.makeChildrenHtml(withChildren, options);
+  }
 }
 class VNodeComponent extends VNode {
   constructor(props = {}, children2, Component) {
@@ -1791,12 +1954,20 @@ class VNodeComponent extends VNode {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onMounted();
   }
-  render(options) {
+  makeClassInstance(options) {
     var _a;
     const props = this.props;
     this.Component = getModule(this.Component);
     this.instance = options.context.createInstanceForComponent(this.Component, props, options, ((_a = this.instance) == null ? void 0 : _a.state) || {});
+    return this.instance;
+  }
+  render(options) {
+    this.makeClassInstance(options);
     this.instance.render();
+  }
+  async renderHtml(options) {
+    this.makeClassInstance(options);
+    return await this.instance.renderToHtml();
   }
   makeElement(withChildren, options = {}) {
     if (this.el)
@@ -1806,6 +1977,9 @@ class VNodeComponent extends VNode {
     const id = this.props.ref || this.instance.id;
     isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
     return this;
+  }
+  async makeHtml(withChildren, options = {}) {
+    return await this.renderHtml(options);
   }
 }
 class VNodeElement extends VNode {
@@ -1834,6 +2008,9 @@ function createVNodeFragment({ props = {}, children: children2 }) {
 function createVNodeText(text) {
   return new VNodeText(text);
 }
+function createVNodeComment(text) {
+  return new VNodeComment(text);
+}
 function createVNodeElement(el) {
   return new VNodeElement(el);
 }
@@ -1858,6 +2035,9 @@ function jsonToVNode(json) {
   if (typeof json === "string" || typeof json === "number") {
     return createVNodeText(json);
   }
+  if (rest.type === "comment") {
+    return createVNodeComment(rest.text);
+  }
   if (rest.type === "text") {
     return createVNodeText(rest.text);
   }
@@ -1880,6 +2060,45 @@ class BaseStore {
     this.id = uuidShort();
     this.cachedCallback = {};
     this.callbacks = {};
+    this.settings = /* @__PURE__ */ new Map();
+  }
+  get(key, defaultValue2 = void 0) {
+    if (this.settings.has(key) === false) {
+      return defaultValue2;
+    }
+    return this.settings.get(key);
+  }
+  set(key, value) {
+    const oldValue = this.settings.get(key);
+    if (oldValue !== value) {
+      this.settings.set(key, value);
+      this.sendMessage(this, key, value);
+    }
+  }
+  init(key, value) {
+    this.set(key, value, false);
+  }
+  toggle(key) {
+    this.set(key, !this.get(key));
+  }
+  toggleWith(key, firstValue, secondValue) {
+    if (this.get(key) === firstValue) {
+      this.set(key, secondValue);
+    } else {
+      this.set(key, firstValue);
+    }
+  }
+  true(key) {
+    return this.get(key) === true;
+  }
+  false(key) {
+    return this.get(key) === false;
+  }
+  is(key, value) {
+    return this.get(key) === value;
+  }
+  remove(key) {
+    this.settings.delete(key);
   }
   hasCallback(event, callback) {
     var list = this.getCachedCallbacks(event);
@@ -1919,7 +2138,6 @@ class BaseStore {
     };
   }
   off(event, originalCallback) {
-    this.debug("off message event", event);
     if (arguments.length == 1) {
       this.setCallbacks(event);
     } else if (arguments.length == 2) {
@@ -1963,8 +2181,6 @@ class BaseStore {
             const f = runnableFunctions[i2];
             this.runMessage(f, args);
           }
-        } else {
-          this.debug(`message event ${event} is not exist.`);
         }
       });
     });
@@ -1982,8 +2198,6 @@ class BaseStore {
         runnableFunctions.forEach((f) => {
           f.callback.apply(f.context, args);
         });
-      } else {
-        this.debug(event, " is not valid event");
       }
     });
   }
@@ -2006,18 +2220,6 @@ class BaseStore {
       this.triggerMessage(this.source, event, ...args);
     }
   }
-}
-function VNodeToElement(obj, options = {}) {
-  if (isString(obj)) {
-    obj = createVNodeText(obj);
-  }
-  if (isArray(obj) && obj.length === 1) {
-    return VNodeToElement(obj[0], options);
-  }
-  if (obj) {
-    return Dom.create(obj.makeElement(true, options).el);
-  }
-  return null;
 }
 const booleanTypes = new Map(Object.entries({
   checked: true,
@@ -2045,6 +2247,7 @@ const expectKeys = {
   content: true
 };
 const TEXT_NODE = 3;
+const COMMENT_NODE = 8;
 const KEY_STYLE = "style";
 const PREFIX_EVENT = "on";
 function isBooleanType(key) {
@@ -2097,6 +2300,9 @@ const patch = {
       oldEl.textContent = newVNode.textContent;
     }
   },
+  replaceComment(oldEl, newVNode) {
+    patch.replaceText(oldEl, newVNode);
+  },
   addNewVNode(parentElement, oldEl, newVNode, options) {
     parentElement.insertBefore(newVNode.makeElement(true, options).el, oldEl);
     parentElement.removeChild(oldEl);
@@ -2111,8 +2317,23 @@ const patch = {
   }
 };
 const check = {
+  isTextNode(node) {
+    return node.nodeType === TEXT_NODE;
+  },
+  isCommentNode(node) {
+    return node.nodeType === COMMENT_NODE;
+  },
+  isElementNode(node) {
+    return node.nodeType === 1;
+  },
+  isVNodeText(node) {
+    return node.type === VNodeType.TEXT;
+  },
+  isVNodeComment(node) {
+    return node.type === VNodeType.COMMENT;
+  },
   changed(vNode, node2) {
-    return vNode.type === VNodeType.TEXT && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
+    return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
   },
   hasPassed(vNode) {
     return vNode.pass;
@@ -2177,20 +2398,20 @@ function getProps(oldEl, attributes, newProps) {
   return results;
 }
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
-  const oldNodeType = oldEl.nodeType;
-  const newNodeType = newVNode.type;
-  if (oldNodeType === TEXT_NODE && newNodeType !== VNodeType.TEXT) {
+  if (check.isTextNode(oldEl) && !check.isVNodeText(newVNode) || check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode)) {
     patch.addNewVNode(parentElement, oldEl, newVNode, options);
-  } else if (oldNodeType !== TEXT_NODE && newNodeType === VNodeType.TEXT) {
+  } else if (!check.isTextNode(oldEl) && check.isVNodeText(newVNode) || !check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
     patch.addNewVNode(parentElement, oldEl, newVNode, options);
-  } else if (oldNodeType === TEXT_NODE && newNodeType === VNodeType.TEXT) {
+  } else if (check.isTextNode(oldEl) && check.isVNodeText(newVNode)) {
     patch.replaceText(oldEl, newVNode);
+  } else if (check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
+    patch.replaceComment(oldEl, newVNode);
   } else {
     if (check.hasRefClass(newVNode)) {
       if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
         patch.replaceWith(oldEl, newVNode, options);
         if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(newVNode.el, newVNode);
+          options.registerChildComponent(newVNode.el, newVNode.instance, newVNode.instance.id);
         }
       }
     } else {
@@ -3155,90 +3376,46 @@ class StoreHandler extends BaseHandler {
     this.addBinding(magicMethod);
   }
 }
-const hookList = [];
-let currentHookIndex = 0;
 let currentComponent = null;
 let contextProviderList = {};
-function initHook() {
-  currentHookIndex = 0;
+function initContext() {
   Object.values(contextProviderList).forEach((context) => {
     context.index = -1;
   });
 }
-function render() {
-  initHook();
-  renderRootElementInstanceList();
-}
 function renderFromRoot() {
-  initHook();
+  initContext();
   renderRootElementInstanceList(true);
 }
-function createState({ init }) {
-  let value = { value: init };
-  function getValue(v) {
-    if (typeof v === "function") {
-      return v(value.value);
-    }
-    return v;
-  }
-  const update = (newValue) => {
-    value.value = getValue(newValue);
-    render();
-  };
-  return [value, update];
-}
 function useState(initialState) {
-  if (!hookList[currentHookIndex]) {
-    hookList[currentHookIndex] = createState({
-      init: initialState
-    });
-  }
-  const [value, update] = hookList[currentHookIndex++];
-  return [value.value, update];
+  return currentComponent.useState(initialState);
 }
 function useEffect(callback, deps) {
-  const hasDeps = !deps;
-  const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps ? !deps.every((d, i2) => d === currentDeps[i2]) : true;
-  if (hasDeps || hasChangedDeps) {
-    hookList[currentHookIndex] = { deps };
-    currentComponent.addHook({ callback, deps });
-  }
-  currentHookIndex++;
+  return currentComponent.useEffect(callback, deps);
 }
 function useReducer(reducer, initialState) {
-  const [state, setState] = useState(initialState);
-  function dispatch(action) {
-    setState((prevState) => reducer(prevState, action));
-  }
-  return [state, dispatch];
+  return currentComponent.useReducer(reducer, initialState);
 }
 function useMemo(callback, deps) {
-  const hasDeps = !deps;
-  const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps ? !deps.every((d, i2) => d === currentDeps[i2]) : true;
-  if (hasDeps || hasChangedDeps) {
-    const newValue = callback();
-    hookList[currentHookIndex] = { deps, value: newValue };
-  }
-  const lastHookValue = hookList[currentHookIndex] || {};
-  currentHookIndex++;
-  return lastHookValue.value;
+  return currentComponent.useMemo(callback, deps);
 }
 function useCallback(callback, deps) {
-  return useMemo(() => callback, deps);
+  return currentComponent.useCallback(callback, deps);
+}
+function useRef(initialValue) {
+  return currentComponent.useRef(initialValue);
 }
 let i = 0;
 function createContextProvider(context) {
   contextProviderList[context.id] = {
     context,
-    index: -1,
+    index: 0,
     providers: []
   };
 }
 function addContextProvider(context, provider) {
   const contextInfo = contextProviderList[context.id];
-  const index = ++contextInfo.index;
+  const index = contextInfo.index;
   if (!contextInfo.providers[index]) {
     contextInfo.providers[index] = provider;
   } else {
@@ -3247,17 +3424,14 @@ function addContextProvider(context, provider) {
 }
 function getContextProvider(context) {
   const contextInfo = contextProviderList[context.id];
-  if (contextInfo.index === -1) {
-    return { value: contextInfo.defaultValue };
-  }
-  return contextInfo.providers[contextInfo.index] || contextInfo.providers[contextInfo.index + 1];
+  return contextInfo.providers[contextInfo.index] || contextInfo.defaultValue;
 }
 function createContext(defaultValue2) {
   const context = {
     id: "context-" + i++,
     defaultValue: defaultValue2,
     Provider: function({ value, content }) {
-      addContextProvider(context, { value, provider: this });
+      addContextProvider(context, { value });
       return content[0] || content;
     }
   };
@@ -3274,7 +3448,6 @@ function useContext(context) {
 }
 function resetCurrentComponent(component) {
   currentComponent = component;
-  currentComponent.initHook();
 }
 class MagicHandler {
   constructor() {
@@ -3297,7 +3470,123 @@ class MagicHandler {
   }
 }
 _handlerCache = new WeakMap();
-const _EventMachine = class extends MagicHandler {
+function createState({ value, component }) {
+  let localValue = { value, component };
+  function getValue(v) {
+    if (typeof v === "function") {
+      return v(localValue.value);
+    }
+    return v;
+  }
+  const update = (newValue) => {
+    const _newValue = getValue(newValue);
+    if (value.value !== _newValue) {
+      localValue.value = _newValue;
+      localValue.component.render();
+    }
+  };
+  return [localValue, update];
+}
+class HookMachine extends MagicHandler {
+  constructor() {
+    super(...arguments);
+    __privateAdd(this, ___effectHooks, []);
+    __privateAdd(this, ___stateHooks, []);
+    __privateAdd(this, ___stateHooksIndex, 0);
+    __privateAdd(this, ___effectHooksIndex, 0);
+    __publicField(this, "__context", {});
+  }
+  resetCurrentComponent() {
+    __privateSet(this, ___stateHooksIndex, 0);
+    __privateSet(this, ___effectHooksIndex, 0);
+    resetCurrentComponent(this);
+  }
+  useState(initialState) {
+    if (!__privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)]) {
+      __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] = createState({
+        value: initialState,
+        component: this
+      });
+    }
+    const [value, update] = __privateGet(this, ___stateHooks)[__privateWrapper(this, ___stateHooksIndex)._++];
+    return [value.value, update];
+  }
+  useEffect(callback, deps) {
+    const hasDeps = !deps;
+    const { deps: currentDeps } = __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] || {};
+    const hasChangedDeps = currentDeps ? !deps.every((d, i2) => d === currentDeps[i2]) : true;
+    if (hasDeps || hasChangedDeps) {
+      __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] = { deps };
+      this.addHook({ type: "useEffect", callback, deps });
+    }
+    __privateWrapper(this, ___stateHooksIndex)._++;
+  }
+  useReducer(reducer, initialState) {
+    const [state, setState] = this.useState(initialState);
+    function dispatch(action) {
+      setState((prevState) => reducer(prevState, action));
+    }
+    return [state, dispatch];
+  }
+  useMemo(callback, deps) {
+    const hasDeps = !deps;
+    const { deps: currentDeps } = __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] || {};
+    const hasChangedDeps = currentDeps ? !deps.every((d, i2) => d === currentDeps[i2]) : true;
+    if (hasDeps || hasChangedDeps) {
+      const newValue = callback();
+      __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] = { deps, value: newValue };
+    }
+    const lastHookValue = __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] || {};
+    __privateWrapper(this, ___stateHooksIndex)._++;
+    return lastHookValue.value;
+  }
+  useCallback(callback, deps) {
+    return this.useMemo(() => callback, deps);
+  }
+  useRef(initialValue) {
+    return this.useMemo(() => ({ current: initialValue }), []);
+  }
+  addHook(hook) {
+    const currentHook = __privateGet(this, ___effectHooks)[__privateGet(this, ___effectHooksIndex)];
+    __privateGet(this, ___effectHooks)[__privateGet(this, ___effectHooksIndex)] = __spreadProps(__spreadValues(__spreadValues({}, currentHook), hook), {
+      done: false
+    });
+    __privateWrapper(this, ___effectHooksIndex)._++;
+  }
+  runHooks() {
+    __privateGet(this, ___effectHooks).forEach((it) => {
+      if (isFunction(it.cleanup))
+        it.cleanup();
+      it.cleanup = it.callback();
+      it.done = true;
+    });
+  }
+  cleanHooks() {
+    __privateGet(this, ___effectHooks).forEach((it) => {
+      if (isFunction(it.cleanup)) {
+        it.cleanup();
+      }
+    });
+    __privateSet(this, ___effectHooks, []);
+    __privateSet(this, ___effectHooksIndex, 0);
+  }
+  destroy() {
+  }
+  onMounted() {
+    this.runHooks();
+  }
+  onUpdated() {
+    this.runHooks();
+  }
+  onDestroyed() {
+    this.cleanHooks();
+  }
+}
+___effectHooks = new WeakMap();
+___stateHooks = new WeakMap();
+___stateHooksIndex = new WeakMap();
+___effectHooksIndex = new WeakMap();
+const _EventMachine = class extends HookMachine {
   constructor(opt, props, state) {
     super();
     __privateAdd(this, _reloadInstance);
@@ -3306,15 +3595,13 @@ const _EventMachine = class extends MagicHandler {
     __privateAdd(this, _functionCache, {});
     __privateAdd(this, _childObjectList, {});
     __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
-    __publicField(this, "__hooks", []);
-    __publicField(this, "__context", {});
     __publicField(this, "registerRef", (ref, el) => {
       this.refs[ref] = el;
     });
-    __publicField(this, "registerChildComponent", (el, vNode, id) => {
+    __publicField(this, "registerChildComponent", (el, childComponent, id) => {
       if (!__privateGet(this, _childObjectElements).has(el)) {
         __privateGet(this, _childObjectList)[id] = el;
-        __privateGet(this, _childObjectElements).set(el, vNode);
+        __privateGet(this, _childObjectElements).set(el, childComponent);
       }
     });
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
@@ -3332,19 +3619,6 @@ const _EventMachine = class extends MagicHandler {
         }
       }
       return true;
-    });
-    __publicField(this, "onUpdated", () => {
-      var _a;
-      const updated = this.createFunction("updated");
-      if (updated) {
-        updated();
-      }
-      this.runHooks();
-      const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
-      if (instance) {
-        instance.onUpdated();
-      }
-      this.clear();
     });
     this.refs = {};
     this.id = uuid();
@@ -3454,7 +3728,7 @@ const _EventMachine = class extends MagicHandler {
       this.checkLoad($container);
       return;
     }
-    resetCurrentComponent(this);
+    this.resetCurrentComponent();
     const template = this.template();
     if (this.$el) {
       DomVNodeDiff(this.$el.el, template, {
@@ -3463,7 +3737,7 @@ const _EventMachine = class extends MagicHandler {
         registerRef: this.registerRef,
         registerChildComponent: this.registerChildComponent
       });
-      requestAnimationFrame(this.onUpdated);
+      requestAnimationFrame(this.onUpdated.bind(this));
     } else {
       const newDomElement = this.parseMainTemplate(template);
       this.$el = newDomElement;
@@ -3471,12 +3745,18 @@ const _EventMachine = class extends MagicHandler {
       if ($container) {
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
-          this.onMounted();
+          this.runMounted();
         }
       }
       await this._afterLoad();
     }
     return this;
+  }
+  async renderToHtml() {
+    this.resetCurrentComponent();
+    const template = this.template();
+    const html = await VNodeToHtml(template, this.getVNodeOptions());
+    return html;
   }
   initialize() {
     __privateSet(this, _state, this.initState());
@@ -3564,9 +3844,7 @@ const _EventMachine = class extends MagicHandler {
     });
     this.runHandlers("destroy");
     this.onDestroyed();
-    this.$el = null;
     this.refs = {};
-    this.__hooks = [];
   }
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
@@ -3588,64 +3866,33 @@ const _EventMachine = class extends MagicHandler {
   getChild(filterCallback) {
     return this.props.content.find(filterCallback);
   }
-  initHook() {
-    this.currentComponentHooksIndex = 0;
-  }
-  addHook(hook) {
-    const currentHook = this.__hooks[this.currentComponentHooksIndex];
-    this.__hooks[this.currentComponentHooksIndex] = __spreadProps(__spreadValues(__spreadValues({}, currentHook), hook), {
-      done: false
-    });
-    this.currentComponentHooksIndex++;
-  }
-  runHooks() {
-    this.__hooks.forEach((it) => {
-      if (isFunction(it.cleanup))
-        it.cleanup();
-      it.cleanup = it.callback();
-      it.done = true;
-    });
-  }
-  cleanHooks() {
-    this.__hooks.forEach((it) => {
-      if (isFunction(it.cleanup)) {
-        it.cleanup();
-      }
-    });
-    this.__hooks = [];
+  runMounted() {
+    this.onMounted();
   }
   onMounted() {
     var _a;
-    const mounted = this.createFunction("mounted");
-    if (mounted) {
-      mounted();
-    }
-    this.runHooks();
+    super.onMounted();
     const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
     if (instance) {
       instance.onMounted();
     }
   }
+  onUpdated() {
+    var _a;
+    super.onUpdated();
+    const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
+    if (instance) {
+      instance.onUpdated();
+    }
+    this.clear();
+  }
   onDestroyed() {
     var _a;
-    const destroyed = this.createFunction("destroyed");
-    if (destroyed) {
-      destroyed();
-    }
-    this.cleanHooks();
+    super.onDestroyed();
     const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
     if (instance) {
       instance.onDestroyed();
     }
-  }
-  useMounted(callback) {
-    return this.createFunction("mounted", callback);
-  }
-  useUpdated(callback) {
-    return this.createFunction("updated", callback);
-  }
-  useDestroyed(callback) {
-    return this.createFunction("destroyed", callback);
   }
 };
 let EventMachine = _EventMachine;
@@ -3766,11 +4013,14 @@ const start = (ElementClass, opt = {}) => {
   registRootElementInstance(app);
   return app;
 };
-async function renderToString(ElementClass, opt) {
+async function renderToHtml(ElementClass, opt) {
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
   const app = UIElement.createElementInstance(ElementClass, opt);
-  app.setServer(true);
-  const instance = await app.render();
-  return instance.html;
+  const html = await app.renderToHtml();
+  return html;
 }
 function createComponent(Component, props = {}, children2 = []) {
   children2 = children2.flat(Infinity);
@@ -3787,6 +4037,10 @@ function createComponentFragment(Component, props = {}, children2 = []) {
     children: children2,
     Component
   });
+}
+function createComment(children2 = []) {
+  children2 = children2.flat(Infinity);
+  return createVNodeComment(children2[0] || "");
 }
 function createComponentList(...args) {
   return args.map((it) => {
@@ -3813,6 +4067,9 @@ function createElementJsx(Component, props = {}, ...children2) {
   if (Component === FragmentInstance) {
     return createComponentFragment(Component, props, children2);
   }
+  if (Component === HTMLComment) {
+    return createComment(children2);
+  }
   props = props || {};
   if (typeof Component !== "string") {
     return createComponent(Component, props, children2);
@@ -3821,4 +4078,5 @@ function createElementJsx(Component, props = {}, ...children2) {
   }
 }
 const FragmentInstance = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, i, ifCheck, initHook, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, renderFromRoot, renderRootElementInstanceList, renderToString, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useCallback, useContext, useEffect, useMemo, useReducer, useState, uuid, uuidShort, variable };
+const HTMLComment = new Object();
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, i, ifCheck, initContext, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, spreadVariable, start, throttle, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState, uuid, uuidShort, variable };

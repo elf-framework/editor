@@ -1,6 +1,7 @@
 import { VNodeType } from "../constant/vnode";
 import { css } from "./css";
 import { Dom } from "./Dom";
+import { isVoidTag } from "./DomUtil";
 import { isArray, isFunction, isNumber, isObject, isString } from "./func";
 import { getModule, variable } from "./registElement";
 import { isSVG } from "./svg";
@@ -8,6 +9,7 @@ import { isSVG } from "./svg";
 const TAG_PREFIX = "<";
 const TEMP_DIV = Dom.create("div");
 const TEMP_TEXT = document.createTextNode("");
+const TEMP_COMMENT = document.createComment("");
 let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
@@ -26,6 +28,12 @@ export function makeNativeDom(name) {
 
 export function makeNativeTextDom(value) {
   const text = TEMP_TEXT.cloneNode();
+  text.textContent = value;
+  return text;
+}
+
+export function makeNativeCommentDom(value) {
+  const text = TEMP_COMMENT.cloneNode();
   text.textContent = value;
   return text;
 }
@@ -278,6 +286,39 @@ export class VNode {
     }
   }
 
+  async makeChildrenHtml(withChildren, options) {
+    const tempChildren = [];
+    const children = this.children;
+    if (children && children.length) {
+      // element 수집
+      const tempArray = await Promise.all(
+        children.map(async (child) => {
+          if (child instanceof VNode || child.makeHtml) {
+            return await child.makeHtml(withChildren, options);
+          } else if (isArray(child)) {
+            return await Promise.all(
+              child.map(async (it) => {
+                if (it) {
+                  return await it.makeHtml(withChildren, options);
+                }
+
+                return undefined;
+              })
+            ).filter((it) => typeof it !== "undefined");
+          } else if (isFunction(child)) {
+            return await child();
+          } else {
+            return await child;
+          }
+        })
+      );
+
+      tempChildren.push(...tempArray);
+    }
+
+    return tempChildren.join("\n");
+  }
+
   createElement() {
     return makeNativeDom(this.tag);
   }
@@ -326,6 +367,53 @@ export class VNode {
 
     return this;
   }
+
+  async makeHtml(withChildren = false, options = {}) {
+    const tempProps = [];
+    const props = this.tagProps;
+    if (props) {
+      Object.keys(props).forEach((key) => {
+        const value = props[key];
+        if (key === "style") {
+          if (isString(value)) {
+            // noop
+          } else {
+            props[key] = stringifyStyle(css(value));
+          }
+        } else {
+          if (key) {
+            if (value !== undefined) {
+              // 이벤트는 단일 속성 이벤트로 정의
+              if (key.startsWith("on")) {
+                // onXXX 이벤트는 정의하지 않는다.
+                return;
+              }
+            }
+          }
+        }
+
+        if (key === "ref") {
+          return;
+        }
+
+        if (value) {
+          tempProps.push(`${key}="${value}"`);
+        }
+      });
+    }
+
+    if (isVoidTag(this.tag)) {
+      return `
+        <${this.tag} ${tempProps.join(" ")} />
+      `;
+    } else {
+      const childrenHtml = await this.makeChildrenHtml(withChildren, options);
+
+      return `
+        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
+      `;
+    }
+  }
 }
 
 export class VNodeText extends VNode {
@@ -356,6 +444,43 @@ export class VNodeText extends VNode {
     // this.textContent = this.el.textContent;
     return this;
   }
+
+  makeHtml() {
+    return this.value;
+  }
+}
+
+export class VNodeComment extends VNode {
+  constructor(value) {
+    super(VNodeType.COMMENT, null, {});
+    this.value = value;
+  }
+
+  clone() {
+    return new VNodeComment(this.value);
+  }
+
+  get textContent() {
+    return this.value;
+  }
+
+  runMounted() {}
+
+  createElement() {
+    return makeNativeCommentDom(this.value);
+  }
+
+  makeElement() {
+    if (this.el) return this;
+
+    this.el = this.createElement();
+
+    return this;
+  }
+
+  makeHtml() {
+    return this.value;
+  }
 }
 
 export class VNodeFragment extends VNode {
@@ -383,6 +508,10 @@ export class VNodeFragment extends VNode {
     // this.textContent = this.el.textContent;
     return this;
   }
+
+  async makeHtml(withChildren = false, options = {}) {
+    return await this.makeChildrenHtml(withChildren, options);
+  }
 }
 
 export class VNodeComponent extends VNode {
@@ -404,7 +533,8 @@ export class VNodeComponent extends VNode {
     this.instance?.onMounted();
   }
 
-  render(options) {
+  // class/function instance 생성
+  makeClassInstance(options) {
     const props = this.props;
 
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
@@ -420,8 +550,21 @@ export class VNodeComponent extends VNode {
       this.instance?.state || {}
     );
 
+    return this.instance;
+  }
+
+  render(options) {
+    this.makeClassInstance(options);
+
     // 객체를 생성 후에는 렌더링을 한다.
     this.instance.render();
+  }
+
+  async renderHtml(options) {
+    this.makeClassInstance(options);
+
+    // 객체를 생성 후에는 렌더링을 한다.
+    return await this.instance.renderToHtml();
   }
 
   makeElement(withChildren, options = {}) {
@@ -440,6 +583,10 @@ export class VNodeComponent extends VNode {
       options.registerChildComponent(this.el, this.instance, id);
 
     return this;
+  }
+
+  async makeHtml(withChildren, options = {}) {
+    return await this.renderHtml(options);
   }
 }
 
@@ -479,6 +626,10 @@ export function createVNodeFragment({ props = {}, children }) {
 
 export function createVNodeText(text) {
   return new VNodeText(text);
+}
+
+export function createVNodeComment(text) {
+  return new VNodeComment(text);
 }
 
 export function createVNodeElement(el) {
@@ -536,6 +687,10 @@ export function jsonToVNode(json) {
 
   if (typeof json === "string" || typeof json === "number") {
     return createVNodeText(json);
+  }
+
+  if (rest.type === "comment") {
+    return createVNodeComment(rest.text);
   }
 
   if (rest.type === "text") {

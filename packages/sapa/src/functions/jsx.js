@@ -1,6 +1,7 @@
 import { isArray, isString } from "./func";
 import {
   createVNode,
+  createVNodeComment,
   createVNodeComponent,
   createVNodeFragment,
 } from "./vnode";
@@ -8,13 +9,6 @@ import {
 export function createComponent(Component, props = {}, children = []) {
   // 모든 children 을 하나로 모은다.
   children = children.flat(Infinity);
-
-  // return createVNode({
-  //   tag: "object",
-  //   props,
-  //   children,
-  //   Component,
-  // });
 
   return createVNodeComponent({
     props: props || {},
@@ -32,6 +26,13 @@ export function createComponentFragment(Component, props = {}, children = []) {
     children,
     Component,
   });
+}
+
+export function createComment(children = []) {
+  // 모든 children 을 하나로 모은다.
+  children = children.flat(Infinity);
+
+  return createVNodeComment(children[0] || "");
 }
 
 export function createComponentList(...args) {
@@ -70,6 +71,10 @@ export function createElementJsx(Component, props = {}, ...children) {
     return createComponentFragment(Component, props, children);
   }
 
+  if (Component === HTMLComment) {
+    return createComment(children);
+  }
+
   // props 가 null 로 넘어오는 경우가 있어서 기본값 처리를 해준다.
   props = props || {};
 
@@ -81,3 +86,4 @@ export function createElementJsx(Component, props = {}, ...children) {
 }
 
 export const FragmentInstance = new Object();
+export const HTMLComment = new Object();
