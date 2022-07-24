@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.6
+
+### Patch Changes
+
+- modify hook mechanism
+
 ## 2.0.5
 
 ### Patch Changes

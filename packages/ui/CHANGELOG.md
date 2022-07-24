@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.0.6
+
+### Patch Changes
+
+- support EventPanel, EventControlPanel
+
+- Updated dependencies []:
+  - @elf-framework/sapa@2.0.6
+
 ## 2.0.3
 
 ### Patch Changes
