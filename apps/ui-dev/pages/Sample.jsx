@@ -1,4 +1,4 @@
-import { useContext, useState } from "@elf-framework/sapa";
+import { useContext, useEmit, useState } from "@elf-framework/sapa";
 
 import { MyContext } from "./context";
 
@@ -27,7 +27,7 @@ export default function Sample({ onClick }) {
           ref="$button"
           onClick={() => {
             setValue((prevState) => prevState + 1);
-            this.runCallback(onClick);
+            this.emit(onClick);
           }}
         >
           fdsafdsafds af {value + 10 ** 2} blue 20 {myContextValue.value}

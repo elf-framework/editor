@@ -498,6 +498,13 @@ declare module "@elf-framework/sapa" {
 
   export function useMemo<T>(callback: () => unknown, deps: unknown[]): T;
 
+  interface Ref<T> {
+    current: T;
+  }
+  export function useRef<T>(initialValue: T): Ref<T>;
+  export function useEmit(name: string, ...args: unknown[]): void;
+  export function useTrigger(name: string, ...args: unknown[]): void;
+
   interface ProviderProps<T> {
     value: T;
     content: VNode;
@@ -510,10 +517,23 @@ declare module "@elf-framework/sapa" {
     Consumer: (props: KeyValue) => VNode;
   }
   export function createContext<T>(defaultValue: T): Context<T>;
-
   export function useContext<T>(context: Context<T>): T;
-
   export function useStore<T>(key: string): T;
+  export function useSubscribe(
+    name: string,
+    callback: () => void,
+    debounceSecond: number,
+    throttleSecond: number,
+    isSelf: boolean
+  ): () => void;
+  export function useSelf(
+    name: string,
+    callback: () => void,
+    debounceSecond: number,
+    throttleSecond: number
+  ): () => void;
+
+  export function getCurrentComponent(): UIElement;
 
   export function renderFromRoot(): void;
 

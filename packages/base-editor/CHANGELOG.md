@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 2.0.8
+
+### Patch Changes
+
+- Support Editor Hooks
+
+- Updated dependencies []:
+  - @elf-framework/sapa@2.0.8
+
 ## 2.0.7
 
 ### Patch Changes

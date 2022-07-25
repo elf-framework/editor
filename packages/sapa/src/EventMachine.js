@@ -53,7 +53,7 @@ export class EventMachine extends HookMachine {
   initializeProperty(opt, props = {}, state = {}) {
     this.opt = opt || {};
     this.parent = this.opt;
-    this.source = uuid();
+    this.source = this.id;
     this.sourceName = this.constructor.name;
     this.props = props;
 
@@ -385,6 +385,16 @@ export class EventMachine extends HookMachine {
     state = {}
   ) {
     class FunctionElement extends BaseClass {
+      /**
+       * UIElement instance 에 필요한 기본 속성 설정
+       */
+      initializeProperty(opt, props = {}, state = {}) {
+        super.initializeProperty(opt, props, state);
+
+        // set name for FunctionElement
+        this.sourceName = this.getFunctionComponent().name || this.sourceName;
+      }
+
       getFunctionComponent() {
         return EventMachineComponent;
       }

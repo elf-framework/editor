@@ -1,9 +1,9 @@
 import {
   start,
-  useContext,
   useMemo,
   useReducer,
   useState,
+  useSubscribe,
 } from "@elf-framework/sapa";
 // import { Tab, TabItem, View } from "@elf-framework/ui";
 // import { View } from "@elf-framework/ui";
@@ -29,8 +29,8 @@ function App() {
   }, /*initial value*/ 0);
   const lastValue = useMemo(() => value + value2, [value, value2]);
 
-  this.useSubscribeSelf("yellow", () => {
-    dispatch("INCREMENT");
+  useSubscribe("xxx", () => {
+    console.log("xxxx");
   });
 
   return (
@@ -66,7 +66,16 @@ function App() {
             Button 2 {value2}
           </button>
 
-          {value2 > 50 ? "" : <Sample onClick="yellow" />}
+          {value2 > 50 ? (
+            ""
+          ) : (
+            <Sample
+              onClick={() => {
+                console.log("click");
+                dispatch("INCREMENT");
+              }}
+            />
+          )}
         </div>
         {/* </MyContextProvider> */}
       </div>

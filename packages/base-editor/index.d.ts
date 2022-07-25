@@ -88,4 +88,8 @@ declare module "@elf-framework/base-editor" {
   }
 
   export function useEditor(): EditorContext;
+  export function useEditorOption<T>(key: string): T;
+  export function useConfig<T>(key: string): T;
+  export function useSetConfig<T>(key: string, value: T): void;
+  export function useCommand<T>(key: string, ...args: unknown[]): Promise<T>;
 }

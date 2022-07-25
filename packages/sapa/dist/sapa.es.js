@@ -3414,6 +3414,18 @@ function useContext(context) {
 function useStore(key) {
   return getCurrentComponent().useStore(key);
 }
+function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+  return getCurrentComponent().useSubscribe(name, callback, debounceSecond, throttleSecond, isSelf);
+}
+function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+  return getCurrentComponent().useSelf(name, callback, debounceSecond, throttleSecond);
+}
+function useEmit(name, ...args) {
+  return getCurrentComponent().emit(name, ...args);
+}
+function useTrigger(name, ...args) {
+  return getCurrentComponent().trigger(name, ...args);
+}
 function createContextProvider(context) {
   contextProviderList[context.id] = {
     context,
@@ -3548,6 +3560,7 @@ const USE_STATE = Symbol("useState");
 const USE_EFFECT = Symbol("useEffect");
 const USE_MEMO = Symbol("useMemo");
 const USE_CONTEXT = Symbol("useContext");
+const USE_SUBSCRIBE = Symbol("useSubscribe");
 function createState({ value, component }) {
   let localValue = { value, component };
   function getValue(v) {
@@ -3671,6 +3684,25 @@ class HookMachine extends MagicHandler {
     this.increaseHookIndex();
     return (provider == null ? void 0 : provider.value) || context.defaultValue;
   }
+  useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+    if (!this.getHook()) {
+      this.setHook(USE_SUBSCRIBE, {
+        name,
+        callback,
+        component: this,
+        unsubscribe: this.$store.on(name, callback, this, debounceSecond, throttleSecond, false, isSelf)
+      });
+    }
+    const { unsubscribe } = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return unsubscribe;
+  }
+  useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+    return this.useSubscribe(name, callback, debounceSecond, throttleSecond, true);
+  }
+  useEmit(name, ...args) {
+    return this.emit(name, ...args);
+  }
   useStore(key) {
     return this.$store.get(key);
   }
@@ -3767,7 +3799,7 @@ const _EventMachine = class extends HookMachine {
   initializeProperty(opt, props = {}, state = {}) {
     this.opt = opt || {};
     this.parent = this.opt;
-    this.source = uuid();
+    this.source = this.id;
     this.sourceName = this.constructor.name;
     this.props = props;
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
@@ -3910,6 +3942,10 @@ const _EventMachine = class extends HookMachine {
   }
   createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine, state = {}) {
     class FunctionElement extends BaseClass {
+      initializeProperty(opt, props2 = {}, state2 = {}) {
+        super.initializeProperty(opt, props2, state2);
+        this.sourceName = this.getFunctionComponent().name || this.sourceName;
+      }
       getFunctionComponent() {
         return EventMachineComponent;
       }
@@ -4096,15 +4132,6 @@ const _UIElement = class extends EventMachine {
     this.$store.on(id, newCallback, this, debounceSecond, throttleSecond, false, true);
     return id;
   }
-  useSubscribe(id, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
-    const newCallback = this.createFunction(id, callback);
-    if (this.$store.hasCallback(id, newCallback) === false) {
-      this.$store.on(id, newCallback, this, debounceSecond, throttleSecond, false, isSelf);
-    }
-  }
-  useSubscribeSelf(id, callback, debounceSecond = 0, throttleSecond = 0) {
-    return this.useSubscribe(id, callback, debounceSecond, throttleSecond, true);
-  }
   createFunctionComponent(EventMachineComponent, props, baseClass = _UIElement) {
     return super.createFunctionComponent(EventMachineComponent, props, baseClass);
   }
@@ -4208,4 +4235,4 @@ function createElementJsx(Component, props = {}, ...children2) {
 }
 const FragmentInstance = new Object();
 const HTMLComment = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState, useStore, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };

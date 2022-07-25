@@ -1,5 +1,11 @@
-import { BaseEditor, useEditor } from "@elf-framework/base-editor";
-import { start } from "@elf-framework/sapa";
+import {
+  BaseEditor,
+  useCommand,
+  useConfig,
+  useEditor,
+  useSetConfig,
+} from "@elf-framework/base-editor";
+import { start, useSubscribe } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
 function InjectView({ components }) {
@@ -33,15 +39,24 @@ function SplitLayout({ content }) {
 }
 
 start(function () {
+  useSubscribe("config:yellow", (value) => {
+    // console.log(value);
+    console.log(useConfig("yellow"));
+  });
+
   return (
     <div>
       <BaseEditor
-        editorClass={{
-          "my-editor": true,
-        }}
-        fullscreen={true}
         plugins={[
           async function (editor) {
+            editor.registerConfig({
+              key: "yellow",
+              defaultValue: "yellow",
+              title: "Yellow Title",
+              description: "Description Yellow",
+              type: "string",
+            });
+
             editor.registerCommand({
               command: "my-command",
               title: "My Command",
@@ -54,14 +69,15 @@ start(function () {
           function (editor) {
             editor.registerUI({
               view: () => {
-                const editor = useEditor();
                 return (
                   <button
                     type="button"
                     onClick={async () => {
-                      const ret = await editor.commands.emit("my-command");
+                      const ret = await useCommand("my-command");
 
                       console.log("return", ret);
+
+                      useSetConfig("yellow", "red" + Math.random());
                     }}
                   >
                     Sample

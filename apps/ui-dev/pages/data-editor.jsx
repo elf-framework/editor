@@ -1,5 +1,5 @@
 import AddFilled from "@elf-framework/icon/esm/AddFilled";
-import { start, SUBSCRIBE, UIElement } from "@elf-framework/sapa";
+import { start, SUBSCRIBE, UIElement, useSubscribe } from "@elf-framework/sapa";
 import { DataEditor, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
@@ -14,7 +14,7 @@ class Sample extends UIElement {
 }
 
 function App() {
-  this.useSubscribe("refreshIcon", () => {
+  useSubscribe("refreshIcon", () => {
     console.log("refreshIcon");
   });
 

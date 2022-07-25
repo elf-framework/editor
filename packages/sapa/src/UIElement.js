@@ -188,37 +188,37 @@ export class UIElement extends EventMachine {
     return id;
   }
 
-  useSubscribe(
-    id,
-    callback,
-    debounceSecond = 0,
-    throttleSecond = 0,
-    isSelf = false
-  ) {
-    const newCallback = this.createFunction(id, callback);
+  // useSubscribe(
+  //   id,
+  //   callback,
+  //   debounceSecond = 0,
+  //   throttleSecond = 0,
+  //   isSelf = false
+  // ) {
+  //   const newCallback = this.createFunction(id, callback);
 
-    if (this.$store.hasCallback(id, newCallback) === false) {
-      this.$store.on(
-        id,
-        newCallback,
-        this,
-        debounceSecond,
-        throttleSecond,
-        false,
-        isSelf
-      );
-    }
-  }
+  //   if (this.$store.hasCallback(id, newCallback) === false) {
+  //     this.$store.on(
+  //       id,
+  //       newCallback,
+  //       this,
+  //       debounceSecond,
+  //       throttleSecond,
+  //       false,
+  //       isSelf
+  //     );
+  //   }
+  // }
 
-  useSubscribeSelf(id, callback, debounceSecond = 0, throttleSecond = 0) {
-    return this.useSubscribe(
-      id,
-      callback,
-      debounceSecond,
-      throttleSecond,
-      true
-    );
-  }
+  // useSubscribeSelf(id, callback, debounceSecond = 0, throttleSecond = 0) {
+  //   return this.useSubscribe(
+  //     id,
+  //     callback,
+  //     debounceSecond,
+  //     throttleSecond,
+  //     true
+  //   );
+  // }
 
   /**
    * 함수형 컴포넌트 생성 함수
@@ -237,6 +237,7 @@ export class UIElement extends EventMachine {
     );
   }
 
+  // root instance 생성용 함수
   static createElementInstance(ElementClass, props) {
     if (ElementClass.__proto__.name === "") {
       class FunctionElement extends UIElement {

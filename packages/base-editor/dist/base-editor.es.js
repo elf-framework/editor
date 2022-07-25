@@ -184,6 +184,7 @@ class UIManager {
     return this.uis[key];
   }
 }
+const CONTEXT_ID = "EditorContext";
 class EditorContext {
   constructor($rootEditor, $options = {}) {
     this.$rootEditor = $rootEditor;
@@ -225,12 +226,12 @@ class EditorContext {
   }
   initializeConfigs(configs = []) {
     configs.forEach((config) => {
-      this.configs.registerPlugin(config);
+      this.configs.registerConfig(config);
     });
   }
   initializeCommands(commands = []) {
     commands.forEach((command) => {
-      this.commands.registerPlugin(command);
+      this.commands.registerCommand(command);
     });
   }
   initializePlugins(plugins = []) {
@@ -245,6 +246,7 @@ class EditorContext {
     return this.$rootEditor.$store;
   }
   emit(message, ...args) {
+    this.$store.source = CONTEXT_ID;
     this.$store.emit(message, ...args);
   }
   registerCommand(command) {
@@ -253,11 +255,18 @@ class EditorContext {
   registerUI(ui) {
     this.uis.registerUI(ui);
   }
+  registerConfig(config) {
+    this.configs.registerConfig(config);
+  }
   getUI(name) {
     return this.uis.getUI(name);
   }
+  getConfig(key) {
+    return this.configs.get(key);
+  }
 }
 const KEY_EDITOR = "editor";
+const KEY_EDITOR_OPTION = "editorOption";
 class EditorPlugin {
   constructor(editor, props = {}) {
     this.editor = editor;
@@ -275,11 +284,32 @@ class EditorPlugin {
 function useEditor() {
   return useStore(KEY_EDITOR);
 }
+function useEditorOption(key) {
+  var _a;
+  return (_a = useStore(KEY_EDITOR_OPTION)) == null ? void 0 : _a[key];
+}
+function useConfig(key) {
+  var _a, _b;
+  return (_b = (_a = useEditor()) == null ? void 0 : _a.configs) == null ? void 0 : _b.get(key);
+}
+function useSetConfig(key, value) {
+  var _a, _b;
+  return (_b = (_a = useEditor()) == null ? void 0 : _a.configs) == null ? void 0 : _b.set(key, value);
+}
+async function useCommand(key, ...args) {
+  var _a, _b;
+  return await ((_b = (_a = useEditor()) == null ? void 0 : _a.commands) == null ? void 0 : _b.emit(key, ...args));
+}
+function useI18n(key, params = {}) {
+  var _a, _b;
+  return (_b = (_a = useEditor()) == null ? void 0 : _a.i18n) == null ? void 0 : _b.get(key, params);
+}
 class Editor extends UIElement {
   initialize() {
     super.initialize();
     this.$editor = new EditorContext(this, this.props);
     this.$store.set(KEY_EDITOR, this.$editor);
+    this.$store.set(KEY_EDITOR_OPTION, this.props);
     this.activate();
   }
   async activate() {
@@ -300,4 +330,4 @@ class BaseEditor extends Editor {
     }));
   }
 }
-export { BaseEditor, Editor, EditorPlugin, useEditor };
+export { BaseEditor, Editor, EditorPlugin, useCommand, useConfig, useEditor, useEditorOption, useI18n, useSetConfig };
