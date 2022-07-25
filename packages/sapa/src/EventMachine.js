@@ -15,6 +15,7 @@ export class EventMachine extends HookMachine {
   #childObjectList = {};
   #childObjectElements = new WeakMap();
 
+  // hook 을 그대로 유지할 방법이 필요함.
   constructor(opt, props, state) {
     super();
 
@@ -22,6 +23,10 @@ export class EventMachine extends HookMachine {
     this.id = uuid();
 
     this.initializeProperty(opt, props, state);
+  }
+
+  setId(id) {
+    this.id = id;
   }
 
   initializeHandler() {
@@ -273,7 +278,7 @@ export class EventMachine extends HookMachine {
 
   async forceRender() {
     this.cleanHooks();
-    this.clearAll();
+    // this.clearAll();
     this.render();
   }
 

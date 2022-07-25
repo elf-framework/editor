@@ -1,6 +1,16 @@
 import { isFunction } from "./functions/func";
-import { resetCurrentComponent } from "./Hook";
+import {
+  addProviderSubscribe,
+  getContextProvider,
+  renderComponent,
+  resetCurrentComponent,
+} from "./Hook";
 import { MagicHandler } from "./MagicHandler";
+
+const USE_STATE = Symbol("useState");
+const USE_EFFECT = Symbol("useEffect");
+const USE_MEMO = Symbol("useMemo");
+const USE_CONTEXT = Symbol("useContext");
 
 /**
  * 초기값 기준으로 새로운 값을 반환하는 함수를 만들어준다.
@@ -25,7 +35,7 @@ function createState({ value, component }) {
       localValue.value = _newValue;
 
       // createState 를 하는 시점에 저장된 component 를 렌더링 한다.
-      localValue.component.render();
+      renderComponent(localValue.component);
     }
   };
 
@@ -34,18 +44,45 @@ function createState({ value, component }) {
 
 export class HookMachine extends MagicHandler {
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
-  #__effectHooks = [];
   #__stateHooks = [];
   #__stateHooksIndex = 0;
-  #__effectHooksIndex = 0;
-  __context = {};
 
   /***** hook ********/
 
+  copyHooks() {
+    return {
+      __stateHooks: this.#__stateHooks,
+      __stateHooksIndex: this.#__stateHooksIndex,
+    };
+  }
+
+  reloadHooks(hooks) {
+    this.#__stateHooks = hooks.__stateHooks || [];
+    this.#__stateHooksIndex = hooks.__stateHooksIndex || 0;
+  }
+
   resetCurrentComponent() {
-    this.#__stateHooksIndex = 0;
-    this.#__effectHooksIndex = 0;
+    this.resetHookIndex();
     resetCurrentComponent(this);
+  }
+
+  resetHookIndex() {
+    this.#__stateHooksIndex = 0;
+  }
+
+  increaseHookIndex() {
+    this.#__stateHooksIndex++;
+  }
+
+  getHook() {
+    return this.#__stateHooks[this.#__stateHooksIndex];
+  }
+
+  setHook(type, hookInfo) {
+    this.#__stateHooks[this.#__stateHooksIndex] = {
+      type,
+      hookInfo,
+    };
   }
 
   /**
@@ -56,32 +93,43 @@ export class HookMachine extends MagicHandler {
    * @returns
    */
   useState(initialState) {
-    if (!this.#__stateHooks[this.#__stateHooksIndex]) {
-      this.#__stateHooks[this.#__stateHooksIndex] = createState({
-        value: initialState,
-        component: this,
-      });
+    if (!this.getHook()) {
+      this.setHook(
+        USE_STATE,
+        createState({ value: initialState, component: this })
+      );
     }
 
-    const [value, update] = this.#__stateHooks[this.#__stateHooksIndex++];
+    const [value, update] = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
     return [value.value, update];
   }
 
-  useEffect(callback, deps) {
+  isChangedDeps(deps) {
     const hasDeps = !deps;
-    const { deps: currentDeps } =
-      this.#__stateHooks[this.#__stateHooksIndex] || {};
+    const {
+      hookInfo: { deps: currentDeps },
+    } = this.getHook() || { hookInfo: {} };
     const hasChangedDeps = currentDeps
       ? !deps.every((d, i) => d === currentDeps[i])
       : true;
 
-    if (hasDeps || hasChangedDeps) {
-      this.#__stateHooks[this.#__stateHooksIndex] = { deps };
-      // component hook 정의
-      this.addHook({ type: "useEffect", callback, deps });
+    return hasDeps || hasChangedDeps;
+  }
+
+  useEffect(callback, deps) {
+    const hasChangedDeps = this.isChangedDeps(deps);
+
+    if (hasChangedDeps) {
+      this.setHook(USE_EFFECT, {
+        deps,
+        callback,
+      });
     }
 
-    this.#__stateHooksIndex++;
+    this.increaseHookIndex();
   }
 
   useReducer(reducer, initialState) {
@@ -95,22 +143,18 @@ export class HookMachine extends MagicHandler {
   }
 
   useMemo(callback, deps) {
-    const hasDeps = !deps;
-    const { deps: currentDeps } =
-      this.#__stateHooks[this.#__stateHooksIndex] || {};
-    const hasChangedDeps = currentDeps
-      ? !deps.every((d, i) => d === currentDeps[i])
-      : true;
+    const hasChangedDeps = this.isChangedDeps(deps);
 
-    if (hasDeps || hasChangedDeps) {
-      const newValue = callback();
-      this.#__stateHooks[this.#__stateHooksIndex] = { deps, value: newValue };
-      // component hook 정의
+    if (hasChangedDeps) {
+      this.setHook(USE_MEMO, {
+        deps,
+        value: callback(),
+      });
     }
 
-    const lastHookValue = this.#__stateHooks[this.#__stateHooksIndex] || {};
+    const lastHookValue = this.getHook().hookInfo || {};
 
-    this.#__stateHooksIndex++;
+    this.increaseHookIndex();
 
     return lastHookValue.value;
   }
@@ -123,47 +167,69 @@ export class HookMachine extends MagicHandler {
     return this.useMemo(() => ({ current: initialValue }), []);
   }
 
+  refreshProvider(provider) {
+    const hookInfo = this.filterHooks(USE_CONTEXT).find(
+      (it) => it.provider.id === provider.id
+    );
+
+    if (hookInfo) {
+      hookInfo.provider = provider;
+    }
+  }
+
+  useContext(context) {
+    if (!this.getHook()) {
+      this.setHook(USE_CONTEXT, {
+        provider: getContextProvider(context),
+        component: this,
+      });
+    }
+    const { provider } = this.getHook().hookInfo;
+
+    // 이벤트로 처리안하고 subscribe 함수를 다이렉트로 등록해서 함수를 실행시킨다.
+    addProviderSubscribe(provider.id, this, () => {
+      renderComponent(this);
+    });
+
+    this.increaseHookIndex();
+
+    return provider?.value || context.defaultValue;
+  }
+
+  useStore(key) {
+    return this.$store.get(key);
+  }
+
   /** utility function for hooks */
 
-  // initHook(currentHookIndex) {
-  //   this.currentComponentHooksIndex = 0;
-  //   this.currentHookIndex = currentHookIndex;
-  // }
+  filterHooks(type) {
+    return this.#__stateHooks
+      .filter((it) => it.type === type)
+      .map((it) => it.hookInfo);
+  }
 
-  addHook(hook) {
-    // 순서에 맞춰서 추가한다.
-    const currentHook = this.#__effectHooks[this.#__effectHooksIndex];
-    this.#__effectHooks[this.#__effectHooksIndex] = {
-      ...currentHook,
-      ...hook,
-      done: false,
-    };
+  getUseEffects() {
+    return this.filterHooks(USE_EFFECT);
+  }
 
-    // 실행 여부를 설정한다. done 이 false 면 실행해야함을 의미
-    this.#__effectHooksIndex++;
+  getUseStates() {
+    return this.filterHooks(USE_STATE).map((it) => it.value);
   }
 
   runHooks() {
     // hooks
-    this.#__effectHooks.forEach((it) => {
-      // 완료 되지 않은 useEffect 만 실행
-      // if (!it.done) {
+    this.getUseEffects().forEach((it) => {
       if (isFunction(it.cleanup)) it.cleanup();
       it.cleanup = it.callback();
-      it.done = true;
-      // }
     });
   }
 
   cleanHooks() {
-    this.#__effectHooks.forEach((it) => {
+    this.getUseEffects().forEach((it) => {
       if (isFunction(it.cleanup)) {
         it.cleanup();
       }
     });
-
-    this.#__effectHooks = [];
-    this.#__effectHooksIndex = 0;
   }
 
   /** utility function for hooks */
@@ -175,6 +241,7 @@ export class HookMachine extends MagicHandler {
    *
    */
   onMounted() {
+    this.isMounted = true;
     this.runHooks();
   }
 
@@ -183,6 +250,7 @@ export class HookMachine extends MagicHandler {
   }
 
   onDestroyed() {
+    this.isMounted = false;
     // hooks
     this.cleanHooks();
   }

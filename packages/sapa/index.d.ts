@@ -1,4 +1,16 @@
 declare module "@elf-framework/sapa" {
+  /**
+   * Utility Functions
+   */
+  export function isFunction(obj: any): boolean;
+  export function isObject(obj: any): boolean;
+  export function isString(obj: any): boolean;
+  export function isArray(obj: any): boolean;
+  export function isNumber(obj: any): boolean;
+  export function isBoolean(obj: any): boolean;
+  export function isUndefined(obj: any): boolean;
+  export function isEqual(obj1: any, obj2: any): boolean;
+
   // event name regular expression
   export type EVENT = (...args: string[]) => string;
   export type OBSERVER = (...args: string[]) => string;
@@ -467,9 +479,9 @@ declare module "@elf-framework/sapa" {
   type UseStateValueType = InitValueType | (() => InitValueType);
 
   /** Hooks */
-  export function useState(
-    initializeValue: UseStateValueType
-  ): [value: InitValueType, setValue: (value: InitValueType) => void];
+  export function useState<T>(
+    initializeValue: T | (() => T)
+  ): [value: T, setValue: (value: T) => void];
 
   type UseEffectCleanUp = (() => void) | undefined;
   type UseEffectCallbackType = () => UseEffectCleanUp;
@@ -500,6 +512,8 @@ declare module "@elf-framework/sapa" {
   export function createContext<T>(defaultValue: T): Context<T>;
 
   export function useContext<T>(context: Context<T>): T;
+
+  export function useStore<T>(key: string): T;
 
   export function renderFromRoot(): void;
 

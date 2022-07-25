@@ -18,7 +18,87 @@
 * Inject Manager 
 
 
-## Plugin Manager 
+```js
+start(function () {
+  return (
+    <div>
+      <BaseEditor
+        editorClass={{
+          "my-editor": true,
+        }}
+        fullscreen={true}
+        plugins={[
+          async function (editor) {
+            editor.registerCommand({
+              command: "my-command",
+              title: "My Command",
+              execute: async () => {
+                return 10;
+              },
+            });
+          },
+
+          function (editor) {
+            editor.registerUI({
+              view: () => {
+                const editor = useEditor();
+                return (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const ret = await editor.commands.emit("my-command");
+
+                      console.log("return", ret);
+                    }}
+                  >
+                    Sample
+                  </button>
+                );
+              },
+            });
+          },
+        ]}
+      >
+        <SplitLayout>
+          <SplitLayoutItem direction="top">
+            <h1>Header</h1>
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="left">
+            <h1>Left</h1>
+            <InjectView key="" components={["view"]} />
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="body">
+            <h1>Body</h1>
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="right">
+            <h1>Right</h1>
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="bottom">
+            <h1>Bottom</h1>
+          </SplitLayoutItem>
+        </SplitLayout>
+      </BaseEditor>
+    </div>
+  );
+});
+
+```
+
+
+## Instroduce
+
+* useStore(), useEditor()  2가지 특수 hook 을 제공 
+* useStore(key) 는 $store.get(key) 를 수행
+* useEditor() 는 useStore('editor') 를 가리킨다. 
+* 'editor' 는 BaseEditor 를 초기화 할 때 $store 에 넣어주는 EditorContext 객체 
+
+
+## Plugin Manager
+
+플러그인 시스템 
+
+에디터는 기본적으로 플러그인 시스템을 가진다. 
+플러그인은 함수로 정의되며 EditorContext 를 이용해서 여러가지 정의를 할 수 있다. 
 
 ```js
 function MyEditor () {
@@ -313,6 +393,32 @@ function (editor) {
 // use 
 
 <InjectView key="inspector.tab.style" />
+
+```
+
+
+UI 등록하기 
+
+```js
+function (editor) {
+    editor.registerUI({
+        view: () => {
+        const editor = useEditor();
+        return (
+            <button
+                type="button"
+                onClick={async () => {
+                    const ret = await editor.commands.emit("my-command");
+
+                    console.log("return", ret);
+                }}
+                >
+                Sample
+                </button>
+            );
+        },
+    });
+},
 
 ```
 

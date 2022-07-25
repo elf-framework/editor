@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.7
+
+### Patch Changes
+
+- refactoring Hook system
+
 ## 2.0.6
 
 ### Patch Changes

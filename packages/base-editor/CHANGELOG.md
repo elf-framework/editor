@@ -1,5 +1,15 @@
 # @elf-framework/base-editor
 
+## 2.0.7
+
+### Patch Changes
+
+- Support BaseEditor
+  Support PluginManager, CommandManager, ConfigManager
+  Support useStore(), useEditor() hooks
+- Updated dependencies []:
+  - @elf-framework/sapa@2.0.7
+
 ## 1.1.1
 
 ### Patch Changes

@@ -4,7 +4,9 @@ import { Editor } from "./Editor";
 
 export class BaseEditor extends Editor {
   template() {
-    const { sampleText } = this.$editor.for("sample.text");
+    console.log("base editor render");
+    const { content } = this.props;
+    const View = this.$editor.getUI("view");
     return (
       <div
         class={classnames("elf--base-editor", {
@@ -12,8 +14,8 @@ export class BaseEditor extends Editor {
           ...this.props.editorClass,
         })}
       >
-        Base Editor2
-        {sampleText}
+        {content}
+        <View type="view" />
       </div>
     );
   }

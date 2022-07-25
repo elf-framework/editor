@@ -543,12 +543,23 @@ export class VNodeComponent extends VNode {
     // context 는 상위 Component 의 instance 를 가리킨다.
     // 즉, 컴포넌트의 parent 가 된다.
     // props와 state 를 유지할 수 있는 방법이 있어야 할 듯 하다.
+    const hooks = this.instance?.copyHooks();
+    const state = this.instance?.state;
+    const oldId = this.instance?.id;
     this.instance = options.context.createInstanceForComponent(
       this.Component,
       props,
       options,
-      this.instance?.state || {}
+      state || {}
     );
+
+    if (oldId) {
+      this.instance.setId(oldId);
+    }
+
+    if (hooks) {
+      this.instance.reloadHooks(hooks);
+    }
 
     return this.instance;
   }

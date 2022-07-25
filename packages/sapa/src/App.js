@@ -27,13 +27,13 @@ export const start = (ElementClass, opt = {}) => {
   // dom 이 살아있으면 업데이트 하는 로직을 추가 한다.
   if ($targetElement) {
     app.$el = Dom.create($targetElement.el);
+    // id 유지
+    app.id = $targetElement.el.__component.id;
     app.render();
-    app.$el.el.__component = app;
   } else {
     app.render($container);
-    app.$el.el.__component = app;
   }
-
+  app.$el.el.__component = app;
   registRootElementInstance(app);
 
   return app;

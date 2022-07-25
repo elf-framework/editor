@@ -1,6 +1,36 @@
-import { BaseEditor } from "@elf-framework/base-editor";
+import { BaseEditor, useEditor } from "@elf-framework/base-editor";
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
+
+function InjectView({ components }) {
+  const editor = useEditor();
+  return (
+    <div>
+      injectView ,{" "}
+      {components.map((c) => {
+        const View = editor.getUI(c);
+
+        return <View />;
+      })}
+    </div>
+  );
+}
+
+function SplitLayoutItem({ direction, content }) {
+  return (
+    <div
+      class="split-layout-item"
+      direction={direction}
+      style={{ backgroundColor: "yellow" }}
+    >
+      {content}
+    </div>
+  );
+}
+
+function SplitLayout({ content }) {
+  return <div class="split-layout">{content}</div>;
+}
 
 start(function () {
   return (
@@ -10,65 +40,56 @@ start(function () {
           "my-editor": true,
         }}
         fullscreen={true}
-        config={{
-          "sample.text": "Hello World",
-        }}
         plugins={[
-          function (editor) {
-            editor.registerCommand("sample.text", {
-              exec: function (editor, args) {
-                console.log(args);
+          async function (editor) {
+            editor.registerCommand({
+              command: "my-command",
+              title: "My Command",
+              execute: async () => {
+                return 10;
               },
             });
-
-            editor.addButton("sample.text", {
-              label: "Sample",
-              command: "sample.text",
-            });
-
-            editor.addMenuItem("sample.text", {
-              label: "Sample",
-              command: "sample.text",
-              icon: "sample",
-            });
-
-            editor.addContextMenuGroup("sample.text", {
-              label: "Sample",
-              icon: "sample",
-            });
-
-            editor.addContextMenuItem("sample.text", {
-              label: "Sample",
-              command: "sample.text",
-              icon: "sample",
-            });
-
-            editor.addContextMenu("sample.text", {
-              label: "Sample",
-              command: "sample.text",
-              icon: "sample",
-            });
           },
+
           function (editor) {
-            editor.registerShortCut("sample.text", "Ctrl+Shift+S", function () {
-              console.log("Sample");
-            });
+            editor.registerUI({
+              view: () => {
+                const editor = useEditor();
+                return (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const ret = await editor.commands.emit("my-command");
 
-            editor.command("sample.text");
-
-            editor.registerInspector("sample.text", {
-              label: "Sample",
-              icon: "sample",
-              render: function (editor, args) {
-                console.log(args);
+                      console.log("return", ret);
+                    }}
+                  >
+                    Sample
+                  </button>
+                );
               },
             });
           },
         ]}
       >
-        <SampleConfig value="Hello World" />
-        <HelloWorldPlugin />
-        <SamplePlugin />
+        <SplitLayout>
+          <SplitLayoutItem direction="top">
+            <h1>Header</h1>
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="left">
+            <h1>Left</h1>
+            <InjectView key="" components={["view"]} />
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="body">
+            <h1>Body</h1>
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="right">
+            <h1>Right</h1>
+          </SplitLayoutItem>
+          <SplitLayoutItem direction="bottom">
+            <h1>Bottom</h1>
+          </SplitLayoutItem>
+        </SplitLayout>
       </BaseEditor>
     </div>
   );

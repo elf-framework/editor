@@ -46,6 +46,7 @@ function App() {
           }}
         </MyContext.Consumer>
 
+        {/* <MyContextProvider value={value3}> */}
         <div>
           <MyContext.Consumer>
             {(state) => {
@@ -67,6 +68,7 @@ function App() {
 
           {value2 > 50 ? "" : <Sample onClick="yellow" />}
         </div>
+        {/* </MyContextProvider> */}
       </div>
     </MyContextProvider>
   );
