@@ -33,9 +33,22 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { UIElement, classnames, createElementJsx, CLICK, IF, PREVENT, STOP, isFunction, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND } from "@elf-framework/sapa";
+import { AFTER, UIElement, classnames, createElementJsx, CLICK, IF, PREVENT, STOP, isFunction, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 var index = "";
+const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
+const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
+const ADD_BODY_MOUSEUP = "add/body/mouseup";
+const BODY_MOVE_EVENT = "body/move/event";
+const FIRSTMOVE = (method = "move") => {
+  return AFTER(`bodyMouseFirstMove ${method}`);
+};
+const MOVE = (method = "move") => {
+  return AFTER(`bodyMouseMove ${method}`);
+};
+const END = (method = "end") => {
+  return AFTER(`bodyMouseUp ${method}`);
+};
 const NumberStyleKeys = {
   width: true,
   height: true,
@@ -3424,4 +3437,116 @@ class DataEditor extends UIElement {
     }));
   }
 }
-export { Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell };
+const EMPTY_POS = { x: 0, y: 0 };
+const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
+const MOVE_CHECK_MS = 0;
+function getDist(startPos, endPos) {
+  return Math.sqrt(Math.pow(endPos.x - startPos.x, 2) + Math.pow(endPos.y - startPos.y, 2));
+}
+class EventPanel extends UIElement {
+  initialize() {
+    super.initialize();
+    this.__initBodyMoves();
+  }
+  __initBodyMoves() {
+    this.__firstMove = /* @__PURE__ */ new Set();
+    this.__moves = /* @__PURE__ */ new Set();
+    this.__ends = /* @__PURE__ */ new Set();
+    this.__modifyBodyMoveSecond(MOVE_CHECK_MS);
+  }
+  __modifyBodyMoveSecond(ms = MOVE_CHECK_MS) {
+    const callback = ms === 0 ? this.__loopBodyMoves.bind(this) : debounce(this.__loopBodyMoves.bind(this), ms);
+    this.__funcBodyMoves = callback;
+  }
+  __loopBodyMoves() {
+    var pos = this.pos;
+    var e = this.$store.get(BODY_MOVE_EVENT);
+    var lastPos = this.lastPos || DEFAULT_POS;
+    var isNotEqualLastPos = !(lastPos.x === pos.x && lastPos.y === pos.y);
+    if (isNotEqualLastPos && this.__firstMove.size) {
+      let i = 0;
+      this.__firstMove.forEach((v) => {
+        const dist = getDist(pos, v.xy);
+        if (Math.abs(dist) > 0) {
+          var dx = pos.x - v.xy.x;
+          var dy = pos.y - v.xy.y;
+          v.func.call(v.context, dx, dy, "move", e.pressure);
+          i++;
+        }
+      });
+      if (i > 0) {
+        this.__firstMove.clear();
+      }
+    }
+    if (isNotEqualLastPos && this.__moves.size) {
+      this.__moves.forEach((v) => {
+        const dist = getDist(pos, v.xy);
+        if (Math.abs(dist) > 0.5) {
+          var dx = pos.x - v.xy.x;
+          var dy = pos.y - v.xy.y;
+          v.func.call(v.context, dx, dy, "move", e.pressure);
+        }
+      });
+      this.lastPos = pos;
+    }
+    window.requestAnimationFrame(this.__funcBodyMoves);
+  }
+  __removeBodyMoves() {
+    var pos = this.lastPos;
+    var e = this.$store.get(BODY_MOVE_EVENT);
+    if (pos) {
+      this.__ends.forEach((v) => {
+        v.func.call(v.context, pos.x - v.xy.x, pos.y - v.xy.y, "end", e.pressure);
+      });
+    }
+    this.__firstMove.clear();
+    this.__moves.clear();
+    this.__ends.clear();
+  }
+  [SUBSCRIBE_ALL(ADD_BODY_FIRST_MOUSEMOVE)](func, context, xy) {
+    this.__firstMove.add({ func, context, xy });
+  }
+  [SUBSCRIBE_ALL(ADD_BODY_MOUSEMOVE)](func, context, xy) {
+    this.__moves.add({ func, context, xy });
+  }
+  [SUBSCRIBE_ALL(ADD_BODY_MOUSEUP)](func, context, xy) {
+    this.__ends.add({ func, context, xy });
+  }
+  [POINTERSTART()](e) {
+    var newPos = e.xy || EMPTY_POS;
+    this.$store.init(BODY_MOVE_EVENT, e);
+    this.pos = newPos;
+  }
+  [POINTERMOVE()](e) {
+    var newPos = e.xy || EMPTY_POS;
+    this.$store.init(BODY_MOVE_EVENT, e);
+    this.pos = newPos;
+    if (!this.__requestId) {
+      this.__requestId = window.requestAnimationFrame(this.__funcBodyMoves);
+    }
+  }
+  [POINTEREND()](e) {
+    this.$store.set(BODY_MOVE_EVENT, e);
+    this.__removeBodyMoves();
+    window.cancelAnimationFrame(this.__requestId);
+    this.__requestId = null;
+  }
+}
+class EventControlPanel extends UIElement {
+  bodyMouseFirstMove(e, methodName) {
+    if (this[methodName]) {
+      this.emit(ADD_BODY_FIRST_MOUSEMOVE, this[methodName], this, e.xy);
+    }
+  }
+  bodyMouseMove(e, methodName) {
+    if (this[methodName]) {
+      this.emit(ADD_BODY_MOUSEMOVE, this[methodName], this, e.xy);
+    }
+  }
+  bodyMouseUp(e, methodName) {
+    if (this[methodName]) {
+      this.emit(ADD_BODY_MOUSEUP, this[methodName], this, e.xy);
+    }
+  }
+}
+export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, BODY_MOVE_EVENT, Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell };

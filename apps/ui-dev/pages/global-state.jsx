@@ -1,8 +1,6 @@
 import {
-  createContext,
   start,
   useContext,
-  useEffect,
   useMemo,
   useReducer,
   useState,
@@ -15,8 +13,7 @@ import { MyContext, MyContextProvider } from "./context";
 import Sample from "./Sample";
 
 function App() {
-  const myContextValue = useContext(MyContext);
-  const [value, setValue] = useState(1);
+  const [value] = useState(1);
   const [value2, setValue2] = useState(10);
   const [value3, dispatch] = useReducer((s, action) => {
     switch (action) {
@@ -43,35 +40,35 @@ function App() {
           {(state) => {
             return (
               <button onClick={() => state.setValue(state.value + 20)}>
-                {state.value + 100}
+                consumer {state.value + 100}
               </button>
             );
           }}
         </MyContext.Consumer>
 
-        <MyContextProvider value={2000}>
-          <div>
-            <MyContext.Consumer>
-              {(state) => {
-                return (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      state.setValue(state.value + 1);
-                    }}
-                  >
-                    {value} {lastValue} {state.value}
-                  </button>
-                );
-              }}
-            </MyContext.Consumer>
-            <button type="button" onClick={() => setValue2(value2 + 10)}>
-              Button 2 {value2}
-            </button>
+        {/* <MyContextProvider value={value3}> */}
+        <div>
+          <MyContext.Consumer>
+            {(state) => {
+              return (
+                <button
+                  type="button"
+                  onClick={() => {
+                    state.setValue(state.value + 1);
+                  }}
+                >
+                  {value} {lastValue} Provider 2번째{state.value}
+                </button>
+              );
+            }}
+          </MyContext.Consumer>
+          <button type="button" onClick={() => setValue2(value2 + 10)}>
+            Button 2 {value2}
+          </button>
 
-            {value2 > 50 ? "" : <Sample onClick="yellow" />}
-          </div>
-        </MyContextProvider>
+          {value2 > 50 ? "" : <Sample onClick="yellow" />}
+        </div>
+        {/* </MyContextProvider> */}
       </div>
     </MyContextProvider>
   );

@@ -1,60 +1,34 @@
 import { renderRootElementInstanceList } from "./functions/registElement";
 
 /**
- * 함수 컴포넌트를 위한 간단한 글로벌 Hook을 제공한다.
  *
- * - useState
- * - useEffect
+ * 함수 컴포넌트와 클래스 컴포넌트의 template 메소드 내부에서 사용할 수 있다.
  *
- * class 컴포넌트에서는 되도록이면 사용하지 말자.
+ * - [x] useState
+ * - [x] useEffect
+ * - [x] useContext
+ * - [x] useMemo
+ * - [x] useCallback
+ * - [x] useRef
+ *
+ *
+ * ps.
+ *
+ * Hook 은 하나의 컴포넌트에 종속적이다.
+ * 즉, template 에서 리턴되기 전까지는 모두 실행 가능 영역으로 보고
+ * 최종 vnode 의 집합이 diff 될 때 차이가 없으면 렌더링 하지 않는게 목적이다.
+ *
+ *
+ *
  *
  */
 
-const hookList = [];
-let currentHookIndex = 0;
+// let currentHookIndex = 0;
 let currentComponent = null;
 let contextProviderList = {};
 
-export function initHook() {
-  currentHookIndex = 0;
-  Object.values(contextProviderList).forEach((context) => {
-    context.index = -1;
-  });
-}
-
-function render() {
-  initHook();
-  renderRootElementInstanceList();
-}
-
 export function renderFromRoot() {
-  initHook();
   renderRootElementInstanceList(true);
-}
-
-/**
- * 초기값 기준으로 새로운 값을 반환하는 함수를 만들어준다.
- *
- * @returns
- */
-function createState({ init }) {
-  let value = { value: init };
-
-  function getValue(v) {
-    if (typeof v === "function") {
-      return v(value.value);
-    }
-
-    return v;
-  }
-
-  const update = (newValue) => {
-    value.value = getValue(newValue);
-
-    render();
-  };
-
-  return [value, update];
 }
 
 /**
@@ -65,14 +39,7 @@ function createState({ init }) {
  * @returns
  */
 export function useState(initialState) {
-  if (!hookList[currentHookIndex]) {
-    hookList[currentHookIndex] = createState({
-      init: initialState,
-    });
-  }
-
-  const [value, update] = hookList[currentHookIndex++];
-  return [value.value, update];
+  return getCurrentComponent().useState(initialState);
 }
 
 /**
@@ -84,91 +51,155 @@ export function useState(initialState) {
  * @param {array} deps
  */
 export function useEffect(callback, deps) {
-  const hasDeps = !deps;
-  const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps
-    ? !deps.every((d, i) => d === currentDeps[i])
-    : true;
-
-  if (hasDeps || hasChangedDeps) {
-    hookList[currentHookIndex] = { deps };
-    // component hook 정의
-    currentComponent.addHook({ callback, deps });
-  }
-
-  currentHookIndex++;
+  return getCurrentComponent().useEffect(callback, deps);
 }
 
+/**
+ * reducer 를 통해서 값을 관리합니다.
+ *
+ * @returns
+ */
 export function useReducer(reducer, initialState) {
-  const [state, setState] = useState(initialState);
-
-  function dispatch(action) {
-    setState((prevState) => reducer(prevState, action));
-  }
-
-  return [state, dispatch];
+  return getCurrentComponent().useReducer(reducer, initialState);
 }
 
+/**
+ * useMemo 를 통해서 변경 사항에 대해서만 값을 캐슁 할 수 있습니다.
+ *
+ */
 export function useMemo(callback, deps) {
-  const hasDeps = !deps;
-  const { deps: currentDeps } = hookList[currentHookIndex] || {};
-  const hasChangedDeps = currentDeps
-    ? !deps.every((d, i) => d === currentDeps[i])
-    : true;
-
-  if (hasDeps || hasChangedDeps) {
-    const newValue = callback();
-    hookList[currentHookIndex] = { deps, value: newValue };
-    // component hook 정의
-  }
-
-  const lastHookValue = hookList[currentHookIndex] || {};
-
-  currentHookIndex++;
-
-  return lastHookValue.value;
+  return getCurrentComponent().useMemo(callback, deps);
 }
 
+/**
+ * useCallback 을 통해서 변경 사항에 대해서 함수를 캐시합니다.
+ */
 export function useCallback(callback, deps) {
-  return useMemo(() => callback, deps);
+  return getCurrentComponent().useCallback(callback, deps);
 }
 
-export let i = 0;
+/**
+ * 특정 값을 유지할 때 사용합니다.
+ *
+ * @returns
+ */
+export function useRef(initialValue) {
+  return getCurrentComponent().useRef(initialValue);
+}
+
+/**
+ * context 에 있는 마지막 provider 값을 읽어옵니다.
+ *
+ * useContext 를 사용하면
+ * provider 에서 값이 변경 될 때 마다 값을 변경시켜줍니다.
+ *
+ * @param {*} context
+ * @returns
+ */
+export function useContext(context) {
+  return getCurrentComponent().useContext(context);
+}
+
+export function useStore(key) {
+  return getCurrentComponent().useStore(key);
+}
 
 function createContextProvider(context) {
   contextProviderList[context.id] = {
     context,
-    index: -1,
-    providers: [],
+    index: 0,
+    lastProvider: null,
   };
 }
 
-function addContextProvider(context, provider) {
-  const contextInfo = contextProviderList[context.id];
-  const index = ++contextInfo.index;
-  if (!contextInfo.providers[index]) {
-    // index 에 없는 경우 새로운 객체를 생성한다.
-    contextInfo.providers[index] = provider;
-  } else {
-    // index 에 있는 경우 기존 객체를 변경한다.
-    contextInfo.providers[index] = {
-      ...contextInfo.providers[index],
-      ...provider,
-    };
+/**
+ * context provider 의 value 를 저장하는 클래스
+ * provider 의 값의 참조를 유지하기 위한 클래스
+ *
+ * 초기 provider 값은 value 자체를 저장하고 있다.
+ * 다른 행위로 값이 바뀌더라도 기존의 참조가 유지되지 않기 때문에
+ * 참조 유지를 위한 값을 클래스로 생성해서 전달한다.
+ */
+class InnerProvider {
+  constructor(context, provider) {
+    this.context = context;
+    this.provider = provider;
+  }
+
+  get id() {
+    return this.provider.id;
+  }
+
+  get value() {
+    return this.provider.value;
+  }
+
+  set(provider) {
+    this.provider = provider;
   }
 }
 
-function getContextProvider(context) {
+function pushContextProvider(context, provider) {
+  const innerProvider = new InnerProvider(context, provider);
+
   const contextInfo = contextProviderList[context.id];
 
-  if (contextInfo.index === -1) {
-    return { value: contextInfo.defaultValue };
-  }
+  if (!contextInfo.lastProvider) {
+    contextInfo.prevProvider = contextInfo.lastProvider;
+    contextInfo.lastProvider = innerProvider;
+    contextInfo.lastProvider.prev = contextInfo.prevProvider;
 
-  return (
-    contextInfo.providers[contextInfo.index] ||
-    contextInfo.providers[contextInfo.index + 1]
-  );
+    // todo: mesage
+  } else {
+    const lastProvider = contextInfo.lastProvider;
+    const lastProviderValue = lastProvider.value;
+    const lastProviderId = lastProvider.id;
+
+    if (lastProviderId === innerProvider.id) {
+      // 마지막 시점의 provider Id 가 같다면 새로운 값을 저장하지 않는다.
+      contextInfo.lastProvider.set(innerProvider);
+    } else {
+      // 새로운 provider 생성
+      contextInfo.lastProvider.next = innerProvider;
+      innerProvider.prev = contextInfo.lastProvider;
+      contextInfo.lastProvider = innerProvider;
+    }
+
+    // 새로운 provider 의 value 가 이전 provider 와 다르다면 메세지를 보냄
+    if (lastProviderValue !== innerProvider.value) {
+      // component 에서 메세지 보내기
+      runProviderSubscribe(innerProvider);
+    }
+  }
+}
+
+/**
+ * provider 를 context 순서에서 제거
+ *
+ *
+ * @param {*} context
+ */
+export function popContextProvider(context) {
+  const contextInfo = contextProviderList[context.id];
+
+  if (contextInfo.lastProvider && contextInfo.lastProvider.prev) {
+    contextInfo.lastProvider = contextInfo.lastProvider.prev;
+    if (contextInfo.lastProvider) {
+      contextInfo.lastProvider.next = null;
+    }
+  }
+}
+
+/**
+ * 현재 컨텍스트의 마지막 provider 를 조회
+ *
+ * @param {*} context
+ * @returns
+ */
+export function getContextProvider(context) {
+  const contextInfo = contextProviderList[context.id];
+
+  return contextInfo.lastProvider;
 }
 
 /**
@@ -182,12 +213,22 @@ function getContextProvider(context) {
  * @param {*} defaultValue
  * @returns
  */
+let contextIndex = 0;
 export function createContext(defaultValue) {
   const context = {
-    id: "context-" + i++,
+    id: "context-" + contextIndex++,
     defaultValue,
+    lastProvider: null,
     Provider: function ({ value, content }) {
-      addContextProvider(context, { value, provider: this });
+      pushContextProvider(context, {
+        value,
+        id: this.id,
+        component: this,
+      });
+
+      useEffect(() => {
+        popContextProvider(context);
+      }, []);
 
       return content[0] || content;
     },
@@ -195,7 +236,6 @@ export function createContext(defaultValue) {
 
   context.Consumer = ({ content: [children] }) => {
     const value = getContextProvider(context).value;
-
     return children(value);
   };
 
@@ -204,9 +244,10 @@ export function createContext(defaultValue) {
   return context;
 }
 
-export function useContext(context) {
-  return getContextProvider(context)?.value || context.defaultValue;
+export function getCurrentComponent() {
+  return currentComponent;
 }
+
 /**
  * 함수 컴포넌트가 실행되는 시점에 현재 생성된 컴포넌트 instance 를 저장합니다.
  * currentComponent 에서 hook을 관리 할 수 있게 됩니다.
@@ -215,5 +256,34 @@ export function useContext(context) {
  */
 export function resetCurrentComponent(component) {
   currentComponent = component;
-  currentComponent.initHook();
+}
+
+export function renderComponent(component) {
+  if (component.isMounted) {
+    component.render();
+  }
+}
+
+const providerEvents = {};
+/**
+ * provider 가 갱신될 때 실행할 수 있는 함수 등록
+ *
+ * useContext() 를 통해서 자동으로 등록되는 개념
+ *
+ */
+export function addProviderSubscribe(providerId, component, callback) {
+  if (!providerEvents[providerId]) {
+    providerEvents[providerId] = {};
+  }
+
+  providerEvents[providerId][component.id] = callback;
+}
+
+export function runProviderSubscribe(provider) {
+  const components = providerEvents[provider.id];
+  if (components) {
+    Object.values(components).forEach((callback) => {
+      callback(provider);
+    });
+  }
 }

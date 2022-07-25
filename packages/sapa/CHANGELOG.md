@@ -1,5 +1,23 @@
 # @elf-framework/sapa
 
+## 2.0.7
+
+### Patch Changes
+
+- refactoring Hook system
+
+## 2.0.6
+
+### Patch Changes
+
+- modify hook mechanism
+
+## 2.0.5
+
+### Patch Changes
+
+- modify start function for hmr
+
 ## 2.0.4
 
 ### Patch Changes

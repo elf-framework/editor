@@ -1,39 +1,8 @@
-import { UIElement } from "@elf-framework/sapa";
+import { UIElement, useStore } from "@elf-framework/sapa";
 
-export class EditorContext {
-  constructor($root) {
-    this.$root = $root;
+import { EditorContext } from "../../managers/EditorContext";
 
-    this.initialize();
-  }
-
-  initialize() {
-    this.initializeManagers();
-    this.initializeConfigs();
-    this.initializePlugins();
-  }
-
-  initializePlugins() {
-    this.loadPlugins();
-    this.activePlugins();
-  }
-
-  initializeManagers() {
-    // CommandManager
-    // ConfigManager
-    // PluginManager
-  }
-
-  initializeConfigs() {}
-
-  get $store() {
-    return this.$root.$store;
-  }
-
-  emit(message, ...args) {
-    this.$store.emit(message, ...args);
-  }
-}
+const KEY_EDITOR = "editor";
 
 export class EditorPlugin {
   constructor(editor, props = {}) {
@@ -48,6 +17,10 @@ export class EditorPlugin {
   activate() {}
 
   deactivate() {}
+}
+
+export function useEditor() {
+  return useStore(KEY_EDITOR);
 }
 
 /**
@@ -65,31 +38,14 @@ export class Editor extends UIElement {
   initialize() {
     super.initialize();
 
-    this.context = new EditorContext(this);
-    //
-    this.setConfigs(this.props.configs);
-    this.setCommands(this.props.commands);
+    this.$editor = new EditorContext(this, this.props);
 
-    // plugin register
-    this.setPlugins([
-      ...this.props.plugins,
-      ...this.props.content
-        .filter((plugin) => plugin.Class instanceof EditorPlugin)
-        .map((plugin) => {
-          return {
-            plugin: plugin.Class,
-            props: plugin.props,
-          };
-        }),
-    ]);
+    this.$store.set(KEY_EDITOR, this.$editor);
 
     this.activate();
   }
 
-  vNodeOptions() {
-    return {
-      ...super.vNodeOptions(),
-      context: this.context,
-    };
+  async activate() {
+    await this.$editor.activate();
   }
 }

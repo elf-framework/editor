@@ -25,52 +25,56 @@ function getIdendifierName(ast) {
     return {
       name: ast.identifier.value,
     };
+  } else if (ast.type === "Identifier") {
+    return {
+      name: ast.value,
+    };
   }
 }
 
 function traverse(ast, options = {}) {
   // console.log(ast);
 
-  if (ast.type.includes("Export")) {
-    switch (ast.type) {
-      case "ExportDeclaration":
-        options.results.push({
-          type: "ExportDeclaration",
-          names: getIdendifierName(ast.declaration),
-        });
-        // console.log(ast.declaration);
-        break;
-      case "ExportNamedDeclaration":
-        options.results.push({
-          type: "ExportNamedDeclaration",
-          names: ast.specifiers?.map((it) => {
-            return getIdendifierName(it);
-          }),
-        });
-        break;
-      case "ExportDefaultDeclaration":
-        options.results.push({
-          type: "ExportDefaultDeclaration",
-          names: getIdendifierName(ast.decl),
-        });
-        break;
-      default:
-        break;
-    }
-  }
-
   switch (ast.type) {
-    // case "ExportDeclaration":
-    //   console.log(ast.declaration);
-    //   break;
-    // case "ExportDefaultDeclaration":
-    //   console.log(ast.declaration);
-    //   break;
+    case "ClassDeclaration":
+      options.results.push({
+        names: getIdendifierName(ast.identifier),
+      });
+      break;
+    case "FunctionDeclaration":
+      options.results.push({
+        names: getIdendifierName(ast.identifier),
+      });
+      break;
+    case "ExportDeclaration":
+      options.results.push({
+        type: "ExportDeclaration",
+        names: getIdendifierName(ast.declaration),
+      });
+      // console.log(ast.declaration);
+      break;
+    case "ExportNamedDeclaration":
+      options.results.push({
+        type: "ExportNamedDeclaration",
+        names: ast.specifiers?.map((it) => {
+          return getIdendifierName(it);
+        }),
+      });
+      break;
+    case "ExportDefaultDeclaration":
+      options.results.push({
+        type: "ExportDefaultDeclaration",
+        names: getIdendifierName(ast.decl),
+      });
+      break;
     case "Module":
       // console.log(ast.body);
       ast.body.forEach((it) => {
         traverse(it, options);
       });
+      break;
+    default:
+      break;
   }
 }
 

@@ -1,0 +1,9 @@
+.pointer {
+    cursor: pointer;
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: red;
+    pointer-events: none;
+}

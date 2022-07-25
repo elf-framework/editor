@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
-    "ui:dev": "npm run vite:dev",
+    "ui:dev": "bun run vite:dev",
     "//build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
     "copy:resource": "cp CNAME docs/",
@@ -24,12 +24,15 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
-    "vite-plugin-sapa": "*",    
     "rollup-plugin-copy": "^3.4.0",
     "vite": "^2.9.13",
     "vite-plugin-copy": "^0.1.6",
     "vite-plugin-eslint": "^1.5.2",
     "vite-plugin-replace": "^0.1.1",
+    "vite-plugin-sapa": "*",
     "vitest": "0.0.107"
+  },
+  "dependencies": {
+    "@kentico/kontent-delivery": "^11.13.0"
   }
 }

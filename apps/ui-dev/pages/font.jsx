@@ -5,7 +5,14 @@ import "@elf-framework/ui/style.css";
 start(function () {
   return (
     <div>
-      <h1>Flex</h1>
+      <h1
+        onClick={(e) => console.log(e)}
+        style={{
+          backgroundColor: "yellow",
+        }}
+      >
+        Flex
+      </h1>
       <Flex stack={true}>
         <div style="background-color: yellow;border: 1px solid black;">1</div>
         <div style="background-color: yellow;border: 1px solid black;">2</div>

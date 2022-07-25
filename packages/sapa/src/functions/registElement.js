@@ -116,8 +116,27 @@ export function retriveElement(className) {
   return map[retriveAlias(className) || className];
 }
 
+/**
+ * root instance 를 등록한다.
+ *
+ * @param {UIElement} instance
+ */
 export function registRootElementInstance(instance) {
+  if (instance) {
+    // 등록 전에 사용이 완료된 instance 는 리스트에서 삭제
+    const lastInstance = getRootElementInstanceList().find((it) => {
+      return it.$el.el.__component !== it;
+    });
+
+    removeRootElementInstance(lastInstance);
+  }
+
   __rootInstance.add(instance);
+}
+
+export function removeRootElementInstance(instance) {
+  instance?.destroy();
+  __rootInstance.delete(instance);
 }
 
 export function getRootElementInstanceList() {

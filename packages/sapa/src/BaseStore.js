@@ -19,6 +19,64 @@ export class BaseStore {
     this.id = uuidShort();
     this.cachedCallback = {};
     this.callbacks = {};
+    this.settings = new Map();
+  }
+
+  get(key, defaultValue = undefined) {
+    if (this.settings.has(key) === false) {
+      return defaultValue;
+    }
+
+    return this.settings.get(key);
+  }
+
+  set(key, value) {
+    const oldValue = this.settings.get(key);
+
+    if (oldValue !== value) {
+      this.settings.set(key, value);
+      this.sendMessage(this, key, value);
+    }
+  }
+
+  init(key, value) {
+    this.set(key, value, false);
+  }
+
+  toggle(key) {
+    this.set(key, !this.get(key));
+  }
+
+  toggleWith(key, firstValue, secondValue) {
+    if (this.get(key) === firstValue) {
+      this.set(key, secondValue);
+    } else {
+      this.set(key, firstValue);
+    }
+  }
+
+  true(key) {
+    return this.get(key) === true;
+  }
+
+  false(key) {
+    return this.get(key) === false;
+  }
+
+  /**
+   * key 에 해당하는 config 의 값을 비교한다.
+   *
+   *
+   * @param {string} key
+   * @param {any} value
+   * @returns {boolean}
+   */
+  is(key, value) {
+    return this.get(key) === value;
+  }
+
+  remove(key) {
+    this.settings.delete(key);
   }
 
   hasCallback(event, callback) {
@@ -105,7 +163,7 @@ export class BaseStore {
    * @param {*} originalCallback
    */
   off(event, originalCallback) {
-    this.debug("off message event", event);
+    // this.debug("off message event", event);
 
     if (arguments.length == 1) {
       this.setCallbacks(event);
@@ -183,7 +241,7 @@ export class BaseStore {
             this.runMessage(f, args);
           }
         } else {
-          this.debug(`message event ${event} is not exist.`);
+          // this.debug(`message event ${event} is not exist.`);
         }
       });
     });
@@ -208,7 +266,7 @@ export class BaseStore {
           f.callback.apply(f.context, args);
         });
       } else {
-        this.debug(event, " is not valid event");
+        // this.debug(event, " is not valid event");
       }
     });
   }

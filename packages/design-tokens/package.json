@@ -16,7 +16,7 @@
     "build:all": "node scripts/build-all.js",
     "watch": "npm run build && chokidar  \"tokens/**/*.js*\" -c \"npm run build\"",
     "watch:all": "npm run build:all && chokidar  \"tokens/**/*.js*\" -c \"npm run build:all\"",
-    "ui:watch": "npm run watch",
+    "ui:watch": "bun run watch",
     "ui:watch:all": "npm run watch:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

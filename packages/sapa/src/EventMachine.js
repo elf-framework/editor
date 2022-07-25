@@ -1,5 +1,4 @@
-// import { Dom } from "./functions/Dom";
-import { VNodeToElement } from "./functions/DomUtil";
+import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
 import { DomVNodeDiff } from "./functions/DomVNodeDiff";
 import { isFunction, collectProps, isEqual } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
@@ -7,20 +6,16 @@ import { uuid } from "./functions/uuid";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
 import StoreHandler from "./handler/StoreHandler";
-import { resetCurrentComponent } from "./Hook";
-import { MagicHandler } from "./MagicHandler";
+import { HookMachine } from "./HookMachine";
 
-export class EventMachine extends MagicHandler {
+export class EventMachine extends HookMachine {
   #state = {};
   #cachedMethodList;
   #functionCache = {};
   #childObjectList = {};
   #childObjectElements = new WeakMap();
 
-  // 컴포넌트 내부에서 Hook 을 관리하는 리스트
-  __hooks = [];
-  __context = {};
-
+  // hook 을 그대로 유지할 방법이 필요함.
   constructor(opt, props, state) {
     super();
 
@@ -28,6 +23,10 @@ export class EventMachine extends MagicHandler {
     this.id = uuid();
 
     this.initializeProperty(opt, props, state);
+  }
+
+  setId(id) {
+    this.id = id;
   }
 
   initializeHandler() {
@@ -150,6 +149,8 @@ export class EventMachine extends MagicHandler {
     const obj1 = this.props;
     const obj2 = newProps;
 
+    // props 가 원래 없으면 다시 그린다.
+
     return !isEqual(obj1, obj2, 0);
   }
 
@@ -215,10 +216,10 @@ export class EventMachine extends MagicHandler {
     this.refs[ref] = el;
   };
 
-  registerChildComponent = (el, vNode, id) => {
+  registerChildComponent = (el, childComponent, id) => {
     if (!this.#childObjectElements.has(el)) {
       this.#childObjectList[id] = el;
-      this.#childObjectElements.set(el, vNode);
+      this.#childObjectElements.set(el, childComponent);
     }
   };
 
@@ -277,7 +278,7 @@ export class EventMachine extends MagicHandler {
 
   async forceRender() {
     this.cleanHooks();
-    this.clearAll();
+    // this.clearAll();
     this.render();
   }
 
@@ -293,7 +294,7 @@ export class EventMachine extends MagicHandler {
     }
 
     // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
-    resetCurrentComponent(this);
+    this.resetCurrentComponent();
     const template = this.template();
     if (this.$el) {
       DomVNodeDiff(this.$el.el, template, {
@@ -304,7 +305,7 @@ export class EventMachine extends MagicHandler {
       });
 
       // this.prevTemplate = template;
-      requestAnimationFrame(this.onUpdated);
+      requestAnimationFrame(this.onUpdated.bind(this));
     } else {
       const newDomElement = this.parseMainTemplate(template);
       this.$el = newDomElement;
@@ -315,7 +316,7 @@ export class EventMachine extends MagicHandler {
         // $container 의 자식이 아닐 때만 추가
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
-          this.onMounted();
+          this.runMounted();
         }
       }
 
@@ -324,6 +325,15 @@ export class EventMachine extends MagicHandler {
     }
 
     return this;
+  }
+
+  async renderToHtml() {
+    // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
+    this.resetCurrentComponent();
+    const template = this.template();
+    const html = await VNodeToHtml(template, this.getVNodeOptions());
+
+    return html;
   }
 
   initialize() {
@@ -486,9 +496,8 @@ export class EventMachine extends MagicHandler {
     // 로컬 이벤트 함수 실행
     this.onDestroyed();
 
-    this.$el = null;
+    // this.$el = null;
     this.refs = {};
-    this.__hooks = [];
   }
 
   /**
@@ -530,86 +539,32 @@ export class EventMachine extends MagicHandler {
     return this.props.content.find(filterCallback);
   }
 
-  /** utility function for hooks */
-
-  initHook() {
-    this.currentComponentHooksIndex = 0;
+  runMounted() {
+    this.onMounted();
   }
-
-  addHook(hook) {
-    // 순서에 맞춰서 추가한다.
-    const currentHook = this.__hooks[this.currentComponentHooksIndex];
-    this.__hooks[this.currentComponentHooksIndex] = {
-      ...currentHook,
-      ...hook,
-      done: false,
-    };
-
-    // 실행 여부를 설정한다. done 이 false 면 실행해야함을 의미
-    this.currentComponentHooksIndex++;
-  }
-
-  runHooks() {
-    // hooks
-    this.__hooks.forEach((it) => {
-      // 완료 되지 않은 useEffect 만 실행
-      // if (!it.done) {
-      if (isFunction(it.cleanup)) it.cleanup();
-      it.cleanup = it.callback();
-      it.done = true;
-      // }
-    });
-  }
-
-  cleanHooks() {
-    this.__hooks.forEach((it) => {
-      if (isFunction(it.cleanup)) {
-        it.cleanup();
-      }
-    });
-
-    this.__hooks = [];
-  }
-
-  /** utility function for hooks */
 
   /**
    * 컴포넌트가 mount 된 이후에 실행된다.
    *
    */
   onMounted() {
-    // Mounted 이벤트 실행
-    const mounted = this.createFunction("mounted");
-
-    if (mounted) {
-      mounted();
-    }
-
-    // hooks
-    this.runHooks();
+    super.onMounted();
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 mounted 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
       instance.onMounted();
     }
   }
 
-  onUpdated = () => {
-    const updated = this.createFunction("updated");
-
-    if (updated) {
-      updated();
-    }
-
-    // hooks
-    this.runHooks();
+  onUpdated() {
+    super.onUpdated();
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 updated 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
       instance.onUpdated();
@@ -617,54 +572,17 @@ export class EventMachine extends MagicHandler {
 
     // update 이후에 컴포넌트가 삭제된 경우는 비워둔다.
     this.clear();
-  };
+  }
 
   onDestroyed() {
-    const destroyed = this.createFunction("destroyed");
-
-    if (destroyed) {
-      destroyed();
-    }
-
-    // hooks
-    this.cleanHooks();
+    super.onDestroyed();
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 destroyed 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el.el);
+    const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
       instance.onDestroyed();
     }
-  }
-
-  /**
-   * Function Component 에서 mounted 된 상태 체크할 수 있음.
-   *
-   * @param {*} callback
-   * @returns
-   */
-  useMounted(callback) {
-    return this.createFunction("mounted", callback);
-  }
-
-  /**
-   * Function Component 에서 updated 된 상태 체크할 수 있음.
-   *
-   * @param {*} callback
-   * @returns
-   */
-  useUpdated(callback) {
-    return this.createFunction("updated", callback);
-  }
-
-  /**
-   * Function Component 에서 destroyed 된 상태 체크할 수 있음.
-   *
-   * @param {*} callback
-   * @returns
-   */
-  useDestroyed(callback) {
-    return this.createFunction("destroyed", callback);
   }
 }

@@ -1,7 +1,24 @@
-import { start } from "@elf-framework/sapa";
+import { start, useEffect } from "@elf-framework/sapa";
 import { Route, Router, Switch } from "@elf-framework/sapa-router";
 
+const KontentDelivery = require("@kontent-ai/delivery-sdk");
+
 function Default(props) {
+  useEffect(async () => {
+    // initialize delivery client
+    const deliveryClient = KontentDelivery.createDeliveryClient({
+      projectId: "5c16ec47-0fb4-006f-8e56-ef3628f634d1",
+    });
+
+    // fetch items
+    const response = await deliveryClient
+      .items()
+      .type("c5837fd0-b1d8-4648-849c-ed87b77e5366")
+      .toPromise();
+
+    console.log(response);
+  }, []);
+
   return (
     <div>
       Default{" "}

@@ -1,12 +1,28 @@
 declare module "@elf-framework/sapa" {
+  /**
+   * Utility Functions
+   */
+  export function isFunction(obj: any): boolean;
+  export function isObject(obj: any): boolean;
+  export function isString(obj: any): boolean;
+  export function isArray(obj: any): boolean;
+  export function isNumber(obj: any): boolean;
+  export function isBoolean(obj: any): boolean;
+  export function isUndefined(obj: any): boolean;
+  export function isEqual(obj1: any, obj2: any): boolean;
+
   // event name regular expression
+  export type EVENT = (...args: string[]) => string;
   export type OBSERVER = (...args: string[]) => string;
   export type PARAMS = (...args: string[]) => string;
 
   // Predefined CHECKER
   export type CHECKER = (value: string, split: string) => string;
-  export type AFTER = (value: string, split: string) => string;
-  export type BEFORE = (value: string, split: string) => string;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  export function AFTER(value: string, split: string): string;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  export function BEFORE(value: string, split: string): string;
+  export function CONFIG(config: string): string;
 
   export const IF: CHECKER;
   export const KEY: CHECKER;
@@ -50,11 +66,11 @@ declare module "@elf-framework/sapa" {
   // before method
 
   // after method
-  type MoveMethod = (method: string) => string;
-  export const MOVE: MoveMethod;
+  // type MoveMethod = (method: string) => string;
+  // export const MOVE: MoveMethod;
 
-  type MoveEndMethod = (method: string) => string;
-  export const END: MoveEndMethod;
+  // type MoveEndMethod = (method: string) => string;
+  // export const END: MoveEndMethod;
 
   export const PREVENT: string;
   export const STOP: string;
@@ -377,13 +393,13 @@ declare module "@elf-framework/sapa" {
      */
     off(message: string, callback: () => void): void;
   }
-  type ElementFunction = () => any;
+  type ElementFunction = () => unknown;
   type ElementType = typeof UIElement | ElementFunction | VNode;
 
   export function start(uiElement: ElementType, options?: KeyValue): UIElement;
-  export function renderToString(
+  export function renderToHtml(
     uiElement: ElementType,
-    options: KeyValue
+    options?: KeyValue
   ): Promise<string>;
 
   export function createComponent(
@@ -401,11 +417,13 @@ declare module "@elf-framework/sapa" {
   ): VNode;
 
   type FragmentInstanceType = any;
+  type HTMLCommentType = any;
 
   /**
    * fragment 용 instance
    */
   export const FragmentInstance: FragmentInstanceType;
+  export const HTMLComment: HTMLCommentType;
 
   export function createElementJsx(
     Component: ElementType | string | FragmentInstanceType,
@@ -460,9 +478,10 @@ declare module "@elf-framework/sapa" {
 
   type UseStateValueType = InitValueType | (() => InitValueType);
 
-  export function useState(
-    initializeValue: UseStateValueType
-  ): [value: InitValueType, setValue: (value: InitValueType) => void];
+  /** Hooks */
+  export function useState<T>(
+    initializeValue: T | (() => T)
+  ): [value: T, setValue: (value: T) => void];
 
   type UseEffectCleanUp = (() => void) | undefined;
   type UseEffectCallbackType = () => UseEffectCleanUp;
@@ -494,5 +513,9 @@ declare module "@elf-framework/sapa" {
 
   export function useContext<T>(context: Context<T>): T;
 
+  export function useStore<T>(key: string): T;
+
   export function renderFromRoot(): void;
+
+  export function debounce(time: number): () => void;
 }
