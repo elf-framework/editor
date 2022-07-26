@@ -907,4 +907,33 @@ declare module "@elf-framework/ui" {
   export class EventControlPanel extends UIElement {
     props: CommonStyle;
   }
+
+  type AppLayoutItemDirectionType =
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "center";
+
+  interface AppLayoutItemProps {
+    direction: AppLayoutItemDirectionType;
+    resizable: boolean;
+    width: number;
+    height: number;
+    maxWidth: number;
+    maxHeight: number;
+    minWidth: number;
+    minHeight: number;
+    content: ContentType;
+    style: CommonStyle;
+    onResize: (width: number, height: number) => void;
+    onResizeEnd: (width: number, height: number) => void;
+  }
+  export class AppLayoutItem extends UIElement {
+    props: AppLayoutItemProps;
+  }
+
+  export class AppLayout extends UIElement {
+    props: CommonStyle;
+  }
 }

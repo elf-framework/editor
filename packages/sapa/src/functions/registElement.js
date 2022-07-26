@@ -125,18 +125,22 @@ export function registRootElementInstance(instance) {
   if (instance) {
     // 등록 전에 사용이 완료된 instance 는 리스트에서 삭제
     const lastInstance = getRootElementInstanceList().find((it) => {
+      console.log("rootInstance", this?.$el?.el?.__component, it);
       return it.$el.el.__component !== it;
     });
-
-    removeRootElementInstance(lastInstance);
+    console.log("lastInstance", lastInstance);
+    if (lastInstance) {
+      removeRootElementInstance(lastInstance);
+    }
   }
 
   __rootInstance.add(instance);
 }
 
 export function removeRootElementInstance(instance) {
-  instance?.destroy();
-  __rootInstance.delete(instance);
+  console.log("removeRootElementInstance", instance);
+  // instance?.destroy();
+  // __rootInstance.delete(instance);
 }
 
 export function getRootElementInstanceList() {

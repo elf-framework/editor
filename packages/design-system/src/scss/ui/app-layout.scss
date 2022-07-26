@@ -1,0 +1,122 @@
+.elf--app-layout {
+    --elf--app-layout-resize-bar-background-color: transparent;
+    --elf--app-layout-resize-bar-hover-color: blue;
+    --elf--app-layout-resize-bar-size: 6px;
+    --elf--app-layout-border-color: #e0e0e0;
+
+
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .elf--app-layout-item {
+        position: relative;
+        // overflow: hidden;
+    }
+
+    .elf--app-layout-resize-bar {
+        transition: background-color 0.2s ease-in-out;
+        background-color: var(--elf--app-layout-resize-bar-background-color);
+
+        &:hover {
+            --elf--app-layout-resize-bar-background-color: var(--elf--app-layout-resize-bar-hover-color);
+        }
+    }
+
+    > .elf--app-layout-body {
+        order: 1;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: row;
+
+
+        > .elf--app-layout-item[data-direction="left"] {
+            order: 1;
+            flex: none;
+            position: relative;
+            z-index: 1;            
+            border-right: 1px solid var(--elf--app-layout-border-color);
+            box-sizing: border-box;            
+
+            > .elf--app-layout-resize-bar {
+                position: absolute;
+                top: 0px;
+                left: 100%;
+                bottom: 0px;
+                width: var(--elf--app-layout-resize-bar-size);
+                cursor: col-resize;
+                z-index: 1;
+            }
+
+        }    
+
+        > .elf--app-layout-item[data-direction="center"] {
+            order: 2;
+            flex: 1 1 auto;            
+        }
+    
+        > .elf--app-layout-item[data-direction="right"] {
+            order: 3;
+            flex: none;
+            position: relative;
+            z-index: 1;
+            border-left: 1px solid var(--elf--app-layout-border-color);            
+            box-sizing: border-box;
+
+            > .elf--app-layout-resize-bar {
+                position: absolute;
+                top: 0px;
+                right: 100%;
+                bottom: 0px;
+                width: var(--elf--app-layout-resize-bar-size);
+                cursor: col-resize;
+                z-index: 1;
+            }            
+        }    
+    
+
+    }
+
+    > .elf--app-layout-item[data-direction="top"] {
+        order: 1;
+        flex: none;
+        border-bottom: 1px solid var(--elf--app-layout-border-color);            
+        box-sizing: border-box;        
+
+        > .elf--app-layout-resize-bar {
+            position: absolute;
+            right: 0px;
+            top: 100%;
+            left: 0px;
+            height: var(--elf--app-layout-resize-bar-size);
+            cursor: row-resize;
+            z-index: 1;
+        }                    
+    }
+
+    > .elf--app-layout-item[data-direction="bottom"] {
+        order: 3;
+        flex: none;        
+        border-top: 1px solid var(--elf--app-layout-border-color);            
+        box-sizing: border-box;        
+
+
+        > .elf--app-layout-resize-bar {
+            position: absolute;
+            right: 0px;
+            bottom: 100%;
+            left: 0px;
+            height: var(--elf--app-layout-resize-bar-size);
+            cursor: row-resize;
+            z-index: 1;
+        }                            
+    }    
+
+
+
+} 

@@ -1,6 +1,17 @@
 import { defineConfig } from "vite";
+import sapa from "vite-plugin-sapa";
 
 export default defineConfig({
+  server: {
+    hmr: {
+      protocol: "ws",
+      host: "localhost",
+    },
+    watch: {
+      usePolling: true,
+      ignored: ["!**/node_modules/@elf-framework/**"],
+    },
+  },
   esbuild: {
     jsxFactory: "createElementJsx",
     jsxFragment: "FragmentInstance",
@@ -16,4 +27,5 @@ export default defineConfig({
       "@elf-framework/base-editor",
     ],
   },
+  plugins: [sapa()],
 });

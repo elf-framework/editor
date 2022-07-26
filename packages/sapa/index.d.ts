@@ -165,7 +165,7 @@ declare module "@elf-framework/sapa" {
     [index: string]: any;
   }
 
-  interface VNode {
+  export class VNode {
     tag: string | "object";
     props: KeyValue;
     children: VNode[];
@@ -497,6 +497,7 @@ declare module "@elf-framework/sapa" {
   ): [state: T, dispatch: (action: A) => void];
 
   export function useMemo<T>(callback: () => unknown, deps: unknown[]): T;
+  export function useCallback<T>(callback: () => T, deps: unknown[]): () => T;
 
   interface Ref<T> {
     current: T;

@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 2.0.9
+
+### Patch Changes
+
+- Support AppLayout Pattern
+  Support InjectView
+- Updated dependencies []:
+  - @elf-framework/ui@2.0.9
+
 ## 2.0.8
 
 ### Patch Changes

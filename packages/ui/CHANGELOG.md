@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.9
+
+### Patch Changes
+
+- Support AppLayout Component
+
 ## 2.0.6
 
 ### Patch Changes

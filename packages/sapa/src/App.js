@@ -13,7 +13,11 @@ import { UIElement } from "./UIElement";
 export const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
 
+  console.log($container.children());
+
   const $targetElement = $container.children().find((it) => it.el.__component);
+
+  console.log($targetElement);
 
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;

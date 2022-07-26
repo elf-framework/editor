@@ -537,15 +537,19 @@ function retriveElement(className) {
 function registRootElementInstance(instance) {
   if (instance) {
     const lastInstance = getRootElementInstanceList().find((it) => {
+      var _a, _b;
+      console.log("rootInstance", (_b = (_a = this == null ? void 0 : this.$el) == null ? void 0 : _a.el) == null ? void 0 : _b.__component, it);
       return it.$el.el.__component !== it;
     });
-    removeRootElementInstance(lastInstance);
+    console.log("lastInstance", lastInstance);
+    if (lastInstance) {
+      removeRootElementInstance(lastInstance);
+    }
   }
   __rootInstance.add(instance);
 }
 function removeRootElementInstance(instance) {
-  instance == null ? void 0 : instance.destroy();
-  __rootInstance.delete(instance);
+  console.log("removeRootElementInstance", instance);
 }
 function getRootElementInstanceList() {
   return [...__rootInstance];
@@ -1735,11 +1739,17 @@ class VNode {
       const fragment = document.createDocumentFragment();
       children2.forEach((child) => {
         if (child instanceof VNode || child.makeElement) {
-          fragment.appendChild(child.makeElement(withChildren, options).el);
+          const el2 = child.makeElement(withChildren, options).el;
+          if (el2) {
+            fragment.appendChild(el2);
+          }
         } else if (isArray(child)) {
           child.forEach((it) => {
             if (it) {
-              fragment.appendChild(it.makeElement(withChildren, options).el);
+              const el2 = it.makeElement(withChildren, options).el;
+              if (el2) {
+                fragment.appendChild(el2);
+              }
             }
           });
         } else if (isFunction(child)) {
@@ -1972,19 +1982,26 @@ class VNodeComponent extends VNode {
   }
   render(options) {
     this.makeClassInstance(options);
-    this.instance.render();
+    try {
+      this.instance.render();
+    } catch (e) {
+      console.error(e);
+    }
   }
   async renderHtml(options) {
     this.makeClassInstance(options);
     return await this.instance.renderToHtml();
   }
   makeElement(withChildren, options = {}) {
+    var _a, _b;
     if (this.el)
       return this;
     this.render(options);
-    this.el = this.instance.$el.el;
-    const id = this.props.ref || this.instance.id;
-    isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
+    this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
+    if (this.el) {
+      const id = this.props.ref || this.instance.id;
+      isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
+    }
     return this;
   }
   async makeHtml(withChildren, options = {}) {
@@ -2009,6 +2026,9 @@ function createVNode({ tag, props = {}, children: children2 }) {
   return new VNode(VNodeType.NODE, tag, props, children2);
 }
 function createVNodeComponent({ props = {}, children: children2, Component }) {
+  if (typeof Component === "undefined") {
+    throw new Error("Component is undefined");
+  }
   return new VNodeComponent(props, children2, Component);
 }
 function createVNodeFragment({ props = {}, children: children2 }) {
@@ -3891,6 +3911,15 @@ const _EventMachine = class extends HookMachine {
     }
     this.resetCurrentComponent();
     const template = this.template();
+    if (isArray(template)) {
+      throw new Error([
+        `Error Component - ${this.sourceName}`,
+        "Template root is not must an array, however You can use Fragment instead of it",
+        "Fragment Samples: ",
+        " <>{list}</> ",
+        " <Fragment>{list}</Fragment>"
+      ].join("\n"));
+    }
     if (this.$el) {
       DomVNodeDiff(this.$el.el, template, {
         checkRefClass: this.checkRefClass,
@@ -4152,7 +4181,9 @@ let UIElement = _UIElement;
 _storeInstance = new WeakMap();
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
+  console.log($container.children());
   const $targetElement = $container.children().find((it) => it.el.__component);
+  console.log($targetElement);
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;

@@ -95,12 +95,20 @@ export class EditorContext {
     this.uis.registerUI(ui);
   }
 
+  registerGroupUI(group, ui) {
+    this.uis.registerGroupUI(group, ui);
+  }
+
   registerConfig(config) {
     this.configs.registerConfig(config);
   }
 
   getUI(name) {
     return this.uis.getUI(name);
+  }
+
+  getGroupUI(group) {
+    return this.uis.getGroupUI(group);
   }
 
   getConfig(key) {

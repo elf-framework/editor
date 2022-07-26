@@ -37,3 +37,4 @@ export * from "./components/view";
 export * from "./components/data-editor";
 export * from "./components/event-panel";
 export * from "./components/event-panel/EventControlPanel";
+export * from "./components/layout/AppLayout";

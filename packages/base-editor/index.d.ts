@@ -58,6 +58,7 @@ declare module "@elf-framework/base-editor" {
     registerManager(manager: EditorManager): void;
     registerCommand(command: CommandType): void;
     registerUI(obj: UIListType): void;
+    registerGroupUI(key: string, obj: UIListType): void;
     getCommand<T>(name: string): T | undefined;
     registerPlugin(plugin: PluginType): void;
 
@@ -92,4 +93,12 @@ declare module "@elf-framework/base-editor" {
   export function useConfig<T>(key: string): T;
   export function useSetConfig<T>(key: string, value: T): void;
   export function useCommand<T>(key: string, ...args: unknown[]): Promise<T>;
+
+  interface InjectViewProps {
+    views: string[];
+    groups: string[];
+  }
+  export class InjectView extends UIElement {
+    props: InjectViewProps;
+  }
 }

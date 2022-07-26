@@ -14,7 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { isFunction, isObject, useStore, UIElement, createElementJsx, classnames } from "@elf-framework/sapa";
+import { isFunction, isObject, VNode, isArray, createElementJsx, useStore, UIElement, classnames, FragmentInstance } from "@elf-framework/sapa";
 var style = "";
 class CommandManager {
   constructor(editorContext) {
@@ -176,12 +176,38 @@ class UIManager {
   constructor(editorContext) {
     this.editorContext = editorContext;
     this.uis = {};
+    this.groupUis = {};
   }
   registerUI(obj = {}) {
     Object.assign(this.uis, obj);
   }
+  registerGroupUI(key, obj = {}) {
+    if (!this.groupUis[key]) {
+      this.groupUis[key] = {};
+    }
+    Object.assign(this.groupUis[key], obj);
+  }
+  createUI(ui) {
+    if (ui instanceof VNode) {
+      return ui;
+    }
+    if (isArray(ui)) {
+      const [Component, props] = ui;
+      return createElementJsx(Component, props);
+    }
+    return createElementJsx(ui);
+  }
   getUI(key) {
-    return this.uis[key];
+    if (this.uis[key]) {
+      return this.createUI(this.uis[key]);
+    }
+    return void 0;
+  }
+  getGroupUI(key) {
+    const list = Object.values(this.groupUis[key]).map((uis) => {
+      return this.createUI(uis);
+    }).filter(Boolean);
+    return list;
   }
 }
 const CONTEXT_ID = "EditorContext";
@@ -255,11 +281,17 @@ class EditorContext {
   registerUI(ui) {
     this.uis.registerUI(ui);
   }
+  registerGroupUI(group, ui) {
+    this.uis.registerGroupUI(group, ui);
+  }
   registerConfig(config) {
     this.configs.registerConfig(config);
   }
   getUI(name) {
     return this.uis.getUI(name);
+  }
+  getGroupUI(group) {
+    return this.uis.getGroupUI(group);
   }
   getConfig(key) {
     return this.configs.get(key);
@@ -318,16 +350,24 @@ class Editor extends UIElement {
 }
 class BaseEditor extends Editor {
   template() {
-    console.log("base editor render");
     const { content } = this.props;
-    const View = this.$editor.getUI("view");
     return /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--base-editor", __spreadValues({
         "full-screen": this.props.fullScreen
       }, this.props.editorClass))
-    }, content, /* @__PURE__ */ createElementJsx(View, {
-      type: "view"
-    }));
+    }, content);
   }
 }
-export { BaseEditor, Editor, EditorPlugin, useCommand, useConfig, useEditor, useEditorOption, useI18n, useSetConfig };
+function InjectView({ views = [], groups = [] }) {
+  const editor = useEditor();
+  const list = [
+    ...views.map((it) => {
+      return editor.getUI(it);
+    }),
+    ...groups.map((it) => {
+      return editor.getGroupUI(it);
+    })
+  ].flat(Infinity).filter(Boolean);
+  return /* @__PURE__ */ createElementJsx(FragmentInstance, null, list);
+}
+export { BaseEditor, Editor, EditorPlugin, InjectView, useCommand, useConfig, useEditor, useEditorOption, useI18n, useSetConfig };
