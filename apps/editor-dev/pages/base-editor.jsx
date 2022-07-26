@@ -1,47 +1,27 @@
-import { BaseEditor, useEditor } from "@elf-framework/base-editor";
+import {
+  BaseEditor,
+  InjectView,
+  useCommand,
+  useSetConfig,
+} from "@elf-framework/base-editor";
 import { start } from "@elf-framework/sapa";
+import { AppLayout, AppLayoutItem } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
-
-function InjectView({ components }) {
-  const editor = useEditor();
-  return (
-    <div>
-      injectView ,{" "}
-      {components.map((c) => {
-        const View = editor.getUI(c);
-
-        return <View />;
-      })}
-    </div>
-  );
-}
-
-function SplitLayoutItem({ direction, content }) {
-  return (
-    <div
-      class="split-layout-item"
-      direction={direction}
-      style={{ backgroundColor: "yellow" }}
-    >
-      {content}
-    </div>
-  );
-}
-
-function SplitLayout({ content }) {
-  return <div class="split-layout">{content}</div>;
-}
 
 start(function () {
   return (
     <div>
       <BaseEditor
-        editorClass={{
-          "my-editor": true,
-        }}
-        fullscreen={true}
         plugins={[
           async function (editor) {
+            editor.registerConfig({
+              key: "yellow",
+              defaultValue: "yellow",
+              title: "Yellow Title",
+              description: "Description Yellow",
+              type: "string",
+            });
+
             editor.registerCommand({
               command: "my-command",
               title: "My Command",
@@ -54,14 +34,15 @@ start(function () {
           function (editor) {
             editor.registerUI({
               view: () => {
-                const editor = useEditor();
                 return (
                   <button
                     type="button"
                     onClick={async () => {
-                      const ret = await editor.commands.emit("my-command");
+                      const ret = await useCommand("my-command");
 
                       console.log("return", ret);
+
+                      useSetConfig("yellow", "red" + Math.random());
                     }}
                   >
                     Sample
@@ -69,27 +50,47 @@ start(function () {
                 );
               },
             });
+
+            editor.registerGroupUI("right-panel", {
+              view: () => {
+                return (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const ret = await useCommand("my-command");
+
+                        console.log("return", ret);
+                      }}
+                    >
+                      Sample
+                    </button>
+                  </div>
+                );
+              },
+            });
           },
         ]}
       >
-        <SplitLayout>
-          <SplitLayoutItem direction="top">
-            <h1>Header</h1>
-          </SplitLayoutItem>
-          <SplitLayoutItem direction="left">
-            <h1>Left</h1>
-            <InjectView key="" components={["view"]} />
-          </SplitLayoutItem>
-          <SplitLayoutItem direction="body">
-            <h1>Body</h1>
-          </SplitLayoutItem>
-          <SplitLayoutItem direction="right">
-            <h1>Right</h1>
-          </SplitLayoutItem>
-          <SplitLayoutItem direction="bottom">
-            <h1>Bottom</h1>
-          </SplitLayoutItem>
-        </SplitLayout>
+        <AppLayout>
+          <AppLayoutItem direction="top" height={40}>
+            <InjectView views={["top-panel"]} />
+          </AppLayoutItem>
+          <AppLayoutItem
+            direction="left"
+            width={280}
+            maxWidth={350}
+            resizable={true}
+          >
+            <InjectView views={["left-panel"]} />
+          </AppLayoutItem>
+          <AppLayoutItem direction="right" width={300}>
+            <InjectView groups={["right-panel"]} />
+          </AppLayoutItem>
+          <AppLayoutItem direction="center">
+            <InjectView views={["center-panel"]} />
+          </AppLayoutItem>
+        </AppLayout>
       </BaseEditor>
     </div>
   );

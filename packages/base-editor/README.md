@@ -85,13 +85,65 @@ start(function () {
 ```
 
 
-## Instroduce
+## Hooks for Editor
 
-* useStore(), useEditor()  2가지 특수 hook 을 제공 
-* useStore(key) 는 $store.get(key) 를 수행
-* useEditor() 는 useStore('editor') 를 가리킨다. 
-* 'editor' 는 BaseEditor 를 초기화 할 때 $store 에 넣어주는 EditorContext 객체 
+에디터를 쉽게 설정하고 조작하기 위한 몇가지 에디터 전용 훅을 제공합니다. 
 
+### useEditor 
+
+```js
+const editor = useEditor()
+
+editor.commands.emit("my-command");
+```
+
+### useEditorOption
+
+```js
+const plugins = useEditorOption("plugins");
+```
+
+### useConfig 
+
+```js
+
+const editor = useEditor();
+editor.registerConfig({
+  key: "yellow",
+  defaultValue: "yellow",
+  type: "string",
+})
+
+const value = useConfig("yellow");
+```
+
+### useSetConfig 
+
+```js
+useSubscribe("config:yellow", () => {
+  console.log("changed `yellow` config", useConfig("yellow"))
+})
+
+useSetConfig("yellow", "blue");
+
+```
+
+### useCommand
+
+```js
+
+const editor = useEditor();
+
+editor.registerCommand({
+  command: "my-command",
+  execute: () => {
+    return "my-command-return-value";    
+  }
+})
+
+const ret = useCommand("my-command");
+
+```
 
 ## Plugin Manager
 

@@ -26,9 +26,5 @@ export default defineConfig({
       "@elf-framework/design-system",
     ],
   },
-  plugins: [
-    sapa({
-      hmr: true,
-    }),
-  ],
+  plugins: [sapa()],
 });

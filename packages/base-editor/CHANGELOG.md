@@ -1,5 +1,23 @@
 # @elf-framework/base-editor
 
+## 2.0.9
+
+### Patch Changes
+
+- Support AppLayout Pattern
+  Support InjectView
+- Updated dependencies []:
+  - @elf-framework/ui@2.0.9
+
+## 2.0.8
+
+### Patch Changes
+
+- Support Editor Hooks
+
+- Updated dependencies []:
+  - @elf-framework/sapa@2.0.8
+
 ## 2.0.7
 
 ### Patch Changes

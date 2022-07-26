@@ -1,6 +1,6 @@
 {
   "name": "editor-dev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -41,6 +41,7 @@
     "vite-plugin-copy": "^0.1.6",
     "vite-plugin-eslint": "^1.5.2",
     "vite-plugin-replace": "^0.1.1",
+    "vite-plugin-sapa": "^1.1.1",
     "vitest": "0.0.107"
   }
 }

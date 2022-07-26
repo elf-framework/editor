@@ -11,6 +11,7 @@ const USE_STATE = Symbol("useState");
 const USE_EFFECT = Symbol("useEffect");
 const USE_MEMO = Symbol("useMemo");
 const USE_CONTEXT = Symbol("useContext");
+const USE_SUBSCRIBE = Symbol("useSubscribe");
 
 /**
  * 초기값 기준으로 새로운 값을 반환하는 함수를 만들어준다.
@@ -194,6 +195,51 @@ export class HookMachine extends MagicHandler {
     this.increaseHookIndex();
 
     return provider?.value || context.defaultValue;
+  }
+
+  useSubscribe(
+    name,
+    callback,
+    debounceSecond = 0,
+    throttleSecond = 0,
+    isSelf = false
+  ) {
+    if (!this.getHook()) {
+      this.setHook(USE_SUBSCRIBE, {
+        name,
+        callback,
+        component: this,
+        unsubscribe: this.$store.on(
+          name,
+          callback,
+          this,
+          debounceSecond,
+          throttleSecond,
+          false,
+          isSelf
+        ),
+      });
+    }
+
+    const { unsubscribe } = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
+    return unsubscribe;
+  }
+
+  useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+    return this.useSubscribe(
+      name,
+      callback,
+      debounceSecond,
+      throttleSecond,
+      true
+    );
+  }
+
+  useEmit(name, ...args) {
+    return this.emit(name, ...args);
   }
 
   useStore(key) {

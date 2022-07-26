@@ -1,6 +1,6 @@
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
 import { DomVNodeDiff } from "./functions/DomVNodeDiff";
-import { isFunction, collectProps, isEqual } from "./functions/func";
+import { isFunction, collectProps, isEqual, isArray } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import { uuid } from "./functions/uuid";
 import DomEventHandler from "./handler/DomEventHandler";
@@ -53,7 +53,7 @@ export class EventMachine extends HookMachine {
   initializeProperty(opt, props = {}, state = {}) {
     this.opt = opt || {};
     this.parent = this.opt;
-    this.source = uuid();
+    this.source = this.id;
     this.sourceName = this.constructor.name;
     this.props = props;
 
@@ -296,6 +296,19 @@ export class EventMachine extends HookMachine {
     // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
     this.resetCurrentComponent();
     const template = this.template();
+
+    if (isArray(template)) {
+      throw new Error(
+        [
+          `Error Component - ${this.sourceName}`,
+          "Template root is not must an array, however You can use Fragment instead of it",
+          "Fragment Samples: ",
+          " <>{list}</> ",
+          " <Fragment>{list}</Fragment>",
+        ].join("\n")
+      );
+    }
+
     if (this.$el) {
       DomVNodeDiff(this.$el.el, template, {
         checkRefClass: this.checkRefClass,
@@ -385,6 +398,16 @@ export class EventMachine extends HookMachine {
     state = {}
   ) {
     class FunctionElement extends BaseClass {
+      /**
+       * UIElement instance 에 필요한 기본 속성 설정
+       */
+      initializeProperty(opt, props = {}, state = {}) {
+        super.initializeProperty(opt, props, state);
+
+        // set name for FunctionElement
+        this.sourceName = this.getFunctionComponent().name || this.sourceName;
+      }
+
       getFunctionComponent() {
         return EventMachineComponent;
       }

@@ -252,11 +252,19 @@ export class VNode {
       // element 수집
       children.forEach((child) => {
         if (child instanceof VNode || child.makeElement) {
-          fragment.appendChild(child.makeElement(withChildren, options).el);
+          const el = child.makeElement(withChildren, options).el;
+
+          if (el) {
+            fragment.appendChild(el);
+          }
         } else if (isArray(child)) {
           child.forEach((it) => {
             if (it) {
-              fragment.appendChild(it.makeElement(withChildren, options).el);
+              const el = it.makeElement(withChildren, options).el;
+
+              if (el) {
+                fragment.appendChild(el);
+              }
             }
           });
         } else if (isFunction(child)) {
@@ -546,6 +554,7 @@ export class VNodeComponent extends VNode {
     const hooks = this.instance?.copyHooks();
     const state = this.instance?.state;
     const oldId = this.instance?.id;
+    // console.log(this.Component, this);
     this.instance = options.context.createInstanceForComponent(
       this.Component,
       props,
@@ -567,8 +576,12 @@ export class VNodeComponent extends VNode {
   render(options) {
     this.makeClassInstance(options);
 
-    // 객체를 생성 후에는 렌더링을 한다.
-    this.instance.render();
+    try {
+      // 객체를 생성 후에는 렌더링을 한다.
+      this.instance.render();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async renderHtml(options) {
@@ -584,14 +597,16 @@ export class VNodeComponent extends VNode {
     this.render(options);
 
     // 렌더링 된 객체에서 element 를 얻는다.
-    this.el = this.instance.$el.el;
+    this.el = this.instance?.$el?.el;
 
-    // props.ref 가 있으면 등록한다.
-    // 상위 컨텍스트 에서 내부 children 을 관리한다.
-    const id = this.props.ref || this.instance.id;
+    if (this.el) {
+      // props.ref 가 있으면 등록한다.
+      // 상위 컨텍스트 에서 내부 children 을 관리한다.
+      const id = this.props.ref || this.instance.id;
 
-    isFunction(options.registerChildComponent) &&
-      options.registerChildComponent(this.el, this.instance, id);
+      isFunction(options.registerChildComponent) &&
+        options.registerChildComponent(this.el, this.instance, id);
+    }
 
     return this;
   }
@@ -628,6 +643,9 @@ export function createVNode({ tag, props = {}, children }) {
 }
 
 export function createVNodeComponent({ props = {}, children, Component }) {
+  if (typeof Component === "undefined") {
+    throw new Error("Component is undefined");
+  }
   return new VNodeComponent(props, children, Component);
 }
 

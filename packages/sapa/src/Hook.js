@@ -104,6 +104,44 @@ export function useStore(key) {
   return getCurrentComponent().useStore(key);
 }
 
+export function useSubscribe(
+  name,
+  callback,
+  debounceSecond = 0,
+  throttleSecond = 0,
+  isSelf = false
+) {
+  return getCurrentComponent().useSubscribe(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond,
+    isSelf
+  );
+}
+
+export function useSelf(
+  name,
+  callback,
+  debounceSecond = 0,
+  throttleSecond = 0
+) {
+  return getCurrentComponent().useSelf(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond
+  );
+}
+
+export function useEmit(name, ...args) {
+  return getCurrentComponent().emit(name, ...args);
+}
+
+export function useTrigger(name, ...args) {
+  return getCurrentComponent().trigger(name, ...args);
+}
+
 function createContextProvider(context) {
   contextProviderList[context.id] = {
     context,
