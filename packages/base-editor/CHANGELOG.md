@@ -1,5 +1,15 @@
 # @elf-framework/base-editor
 
+## 2.0.10
+
+### Patch Changes
+
+- Support InjectView or editor.getUIList()
+
+- Updated dependencies []:
+  - @elf-framework/ui@2.0.10
+  - @elf-framework/sapa@2.0.10
+
 ## 2.0.9
 
 ### Patch Changes

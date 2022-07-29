@@ -397,6 +397,7 @@ declare module "@elf-framework/sapa" {
   type ElementType = typeof UIElement | ElementFunction | VNode;
 
   export function start(uiElement: ElementType, options?: KeyValue): UIElement;
+  export function render(uiElement: ElementType, options?: KeyValue): UIElement;
   export function renderToHtml(
     uiElement: ElementType,
     options?: KeyValue

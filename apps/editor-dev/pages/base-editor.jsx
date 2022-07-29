@@ -1,18 +1,28 @@
 import {
   BaseEditor,
-  InjectView,
   useCommand,
   useSetConfig,
 } from "@elf-framework/base-editor";
 import { start } from "@elf-framework/sapa";
-import { AppLayout, AppLayoutItem } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
+
+import { CenterPlugin } from "./plugins/CenterPlugin";
+import { LeftPlugin } from "./plugins/LeftPlugin";
+import { RenderPlugin } from "./plugins/RenderPlugin";
+import { RightPlugin } from "./plugins/RightPlugin";
+import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 start(function () {
   return (
     <div>
       <BaseEditor
         plugins={[
+          ToolbarPlugin,
+          RightPlugin,
+          LeftPlugin,
+          RenderPlugin,
+          CenterPlugin,
+
           async function (editor) {
             editor.registerConfig({
               key: "yellow",
@@ -50,48 +60,9 @@ start(function () {
                 );
               },
             });
-
-            editor.registerGroupUI("right-panel", {
-              view: () => {
-                return (
-                  <div>
-                    <button
-                      type="button"
-                      onClick={async () => {
-                        const ret = await useCommand("my-command");
-
-                        console.log("return", ret);
-                      }}
-                    >
-                      Sample
-                    </button>
-                  </div>
-                );
-              },
-            });
           },
         ]}
-      >
-        <AppLayout>
-          <AppLayoutItem direction="top" height={40}>
-            <InjectView views={["top-panel"]} />
-          </AppLayoutItem>
-          <AppLayoutItem
-            direction="left"
-            width={280}
-            maxWidth={350}
-            resizable={true}
-          >
-            <InjectView views={["left-panel"]} />
-          </AppLayoutItem>
-          <AppLayoutItem direction="right" width={300}>
-            <InjectView groups={["right-panel"]} />
-          </AppLayoutItem>
-          <AppLayoutItem direction="center">
-            <InjectView views={["center-panel"]} />
-          </AppLayoutItem>
-        </AppLayout>
-      </BaseEditor>
+      ></BaseEditor>
     </div>
   );
 });

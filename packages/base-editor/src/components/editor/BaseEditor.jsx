@@ -1,10 +1,10 @@
 import { classnames } from "@elf-framework/sapa";
 
-import { Editor } from "./Editor";
+import { Editor, useEditor } from "./Editor";
 
 export class BaseEditor extends Editor {
   template() {
-    const { content } = this.props;
+    const editor = useEditor();
     return (
       <div
         class={classnames("elf--base-editor", {
@@ -12,7 +12,8 @@ export class BaseEditor extends Editor {
           ...this.props.editorClass,
         })}
       >
-        {content}
+        {/* 렌더링 영역 중간에 보여지는 UI 는 renderView 로 지정한다. */}
+        {editor.getUIList("renderView")}
       </div>
     );
   }

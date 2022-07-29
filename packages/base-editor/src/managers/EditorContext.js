@@ -111,6 +111,14 @@ export class EditorContext {
     return this.uis.getGroupUI(group);
   }
 
+  getUIList(name) {
+    const list = [this.getUI(name), this.getGroupUI(name)]
+      .flat(Infinity)
+      .filter(Boolean);
+
+    return list;
+  }
+
   getConfig(key) {
     return this.configs.get(key);
   }

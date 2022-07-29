@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "vite:dev": "vite --port=3001 --config=vite.dev.config.js",
+    "vite:dev": "vite --port=3000 --config=vite.dev.config.js",
     "editor:dev": "npm run vite:dev",
     "//build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",

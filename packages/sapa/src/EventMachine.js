@@ -1,5 +1,6 @@
+import { VNodeType } from "./constant/vnode";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
-import { DomVNodeDiff } from "./functions/DomVNodeDiff";
+import { DomVNodeDiff, updateChildren } from "./functions/DomVNodeDiff";
 import { isFunction, collectProps, isEqual, isArray } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import { uuid } from "./functions/uuid";
@@ -282,6 +283,14 @@ export class EventMachine extends HookMachine {
     this.render();
   }
 
+  setParentElement(parentElement) {
+    this.parentElement = parentElement;
+  }
+
+  is(name, callback) {
+    return this.sourceName === name && callback(this);
+  }
+
   /**
    * template 을 렌더링 한다.
    *
@@ -310,15 +319,19 @@ export class EventMachine extends HookMachine {
     }
 
     if (this.$el) {
-      DomVNodeDiff(this.$el.el, template, {
-        checkRefClass: this.checkRefClass,
-        context: this,
-        registerRef: this.registerRef,
-        registerChildComponent: this.registerChildComponent,
-      });
+      if (template.type === VNodeType.FRAGMENT) {
+        updateChildren(this.parentElement, template);
+      } else {
+        DomVNodeDiff(this.$el.el, template, {
+          checkRefClass: this.checkRefClass,
+          context: this,
+          registerRef: this.registerRef,
+          registerChildComponent: this.registerChildComponent,
+        });
+      }
 
       // this.prevTemplate = template;
-      requestAnimationFrame(this.onUpdated.bind(this));
+      this.runUpdated();
     } else {
       const newDomElement = this.parseMainTemplate(template);
       this.$el = newDomElement;
@@ -389,56 +402,6 @@ export class EventMachine extends HookMachine {
 
   getFunctionComponent() {
     return this;
-  }
-
-  createFunctionComponent(
-    EventMachineComponent,
-    props,
-    BaseClass = EventMachine,
-    state = {}
-  ) {
-    class FunctionElement extends BaseClass {
-      /**
-       * UIElement instance 에 필요한 기본 속성 설정
-       */
-      initializeProperty(opt, props = {}, state = {}) {
-        super.initializeProperty(opt, props, state);
-
-        // set name for FunctionElement
-        this.sourceName = this.getFunctionComponent().name || this.sourceName;
-      }
-
-      getFunctionComponent() {
-        return EventMachineComponent;
-      }
-
-      // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
-      isInstanceOf(Component) {
-        return EventMachineComponent === Component;
-      }
-      template() {
-        return EventMachineComponent.call(this, this.props);
-      }
-    }
-
-    return new FunctionElement(this, props, state);
-  }
-
-  createInstanceForComponent(EventMachineComponent, props, state) {
-    if (
-      EventMachineComponent.__proto__.name === "" &&
-      isFunction(EventMachineComponent)
-    ) {
-      return this.createFunctionComponent(
-        EventMachineComponent,
-        props,
-        undefined,
-        state
-      );
-    }
-
-    // return sapa component
-    return new EventMachineComponent(this, props, state);
   }
 
   /**
@@ -564,6 +527,10 @@ export class EventMachine extends HookMachine {
 
   runMounted() {
     this.onMounted();
+  }
+
+  runUpdated() {
+    this.onUpdated();
   }
 
   /**

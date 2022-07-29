@@ -1,4 +1,5 @@
 import { VNodeType } from "../constant/vnode";
+import { createComponentInstance } from "../UIElement";
 import { css } from "./css";
 import { Dom } from "./Dom";
 import { isVoidTag } from "./DomUtil";
@@ -244,7 +245,7 @@ export class VNode {
   }
 
   makeChildren(withChildren, options) {
-    const el = this.el;
+    const parentElement = this.el;
     const children = this.children;
     if (children && children.length) {
       const fragment = document.createDocumentFragment();
@@ -252,6 +253,7 @@ export class VNode {
       // element 수집
       children.forEach((child) => {
         if (child instanceof VNode || child.makeElement) {
+          child.setParentElement(parentElement);
           const el = child.makeElement(withChildren, options).el;
 
           if (el) {
@@ -277,7 +279,7 @@ export class VNode {
       });
 
       // fragment 적용
-      el.appendChild(fragment);
+      parentElement.appendChild(fragment);
 
       // mounted 메세지 실행
       children.forEach((child) => {
@@ -292,6 +294,10 @@ export class VNode {
         }
       });
     }
+  }
+
+  setParentElement(parentElement) {
+    this.parentElement = parentElement;
   }
 
   async makeChildrenHtml(withChildren, options) {
@@ -554,12 +560,11 @@ export class VNodeComponent extends VNode {
     const hooks = this.instance?.copyHooks();
     const state = this.instance?.state;
     const oldId = this.instance?.id;
-    // console.log(this.Component, this);
-    this.instance = options.context.createInstanceForComponent(
+    this.instance = createComponentInstance(
       this.Component,
+      options.context,
       props,
-      options,
-      state || {}
+      state
     );
 
     if (oldId) {
@@ -578,7 +583,9 @@ export class VNodeComponent extends VNode {
 
     try {
       // 객체를 생성 후에는 렌더링을 한다.
-      this.instance.render();
+      // renderComponent(this.instance);
+      this.instance.setParentElement(this.parentElement);
+      this.instance.render(options.$container);
     } catch (e) {
       console.error(e);
     }

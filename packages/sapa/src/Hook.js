@@ -1,4 +1,7 @@
-import { renderRootElementInstanceList } from "./functions/registElement";
+import {
+  getCurrentComponent,
+  renderRootElementInstanceList,
+} from "./functions/registElement";
 
 /**
  *
@@ -24,7 +27,7 @@ import { renderRootElementInstanceList } from "./functions/registElement";
  */
 
 // let currentHookIndex = 0;
-let currentComponent = null;
+
 let contextProviderList = {};
 
 export function renderFromRoot() {
@@ -280,26 +283,6 @@ export function createContext(defaultValue) {
   createContextProvider(context);
 
   return context;
-}
-
-export function getCurrentComponent() {
-  return currentComponent;
-}
-
-/**
- * 함수 컴포넌트가 실행되는 시점에 현재 생성된 컴포넌트 instance 를 저장합니다.
- * currentComponent 에서 hook을 관리 할 수 있게 됩니다.
- *
- * @param {*} component
- */
-export function resetCurrentComponent(component) {
-  currentComponent = component;
-}
-
-export function renderComponent(component) {
-  if (component.isMounted) {
-    component.render();
-  }
 }
 
 const providerEvents = {};

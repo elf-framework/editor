@@ -11,13 +11,19 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    height: var(--elf--tab-height);
+
+    &.full {
+        --elf--tab-height: 100%;
+    }
 
     > .elf--tab-header {
-
+        flex: none;
     }
 
     > .elf--tab-body {
-        height: var(--elf--tab-height);
+        flex: 1 1 auto;
+        position: relative;
 
         > .elf--tab-content-item {
             display: none;

@@ -14,7 +14,8 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { isFunction, isObject, VNode, isArray, createElementJsx, useStore, UIElement, classnames, FragmentInstance } from "@elf-framework/sapa";
+import { isFunction, isObject, VNode, isArray, createElementJsx, useStore, UIElement, classnames } from "@elf-framework/sapa";
+import { View } from "@elf-framework/ui";
 var style = "";
 class CommandManager {
   constructor(editorContext) {
@@ -204,7 +205,7 @@ class UIManager {
     return void 0;
   }
   getGroupUI(key) {
-    const list = Object.values(this.groupUis[key]).map((uis) => {
+    const list = Object.values(this.groupUis[key] || {}).map((uis) => {
       return this.createUI(uis);
     }).filter(Boolean);
     return list;
@@ -293,6 +294,10 @@ class EditorContext {
   getGroupUI(group) {
     return this.uis.getGroupUI(group);
   }
+  getUIList(name) {
+    const list = [this.getUI(name), this.getGroupUI(name)].flat(Infinity).filter(Boolean);
+    return list;
+  }
   getConfig(key) {
     return this.configs.get(key);
   }
@@ -350,15 +355,20 @@ class Editor extends UIElement {
 }
 class BaseEditor extends Editor {
   template() {
-    const { content } = this.props;
+    const editor = useEditor();
     return /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--base-editor", __spreadValues({
         "full-screen": this.props.fullScreen
       }, this.props.editorClass))
-    }, content);
+    }, editor.getUIList("renderView"));
   }
 }
-function InjectView({ views = [], groups = [] }) {
+function InjectView({
+  views = [],
+  groups = [],
+  as = "div",
+  style: style2 = {}
+}) {
   const editor = useEditor();
   const list = [
     ...views.map((it) => {
@@ -368,6 +378,9 @@ function InjectView({ views = [], groups = [] }) {
       return editor.getGroupUI(it);
     })
   ].flat(Infinity).filter(Boolean);
-  return /* @__PURE__ */ createElementJsx(FragmentInstance, null, list);
+  return /* @__PURE__ */ createElementJsx(View, {
+    as,
+    style: style2
+  }, list);
 }
 export { BaseEditor, Editor, EditorPlugin, InjectView, useCommand, useConfig, useEditor, useEditorOption, useI18n, useSetConfig };

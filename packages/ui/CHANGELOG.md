@@ -1,5 +1,15 @@
 # @elf-framework/ui
 
+## 2.0.10
+
+### Patch Changes
+
+- modify base ui
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.0.10
+  - @elf-framework/sapa@2.0.10
+
 ## 2.0.9
 
 ### Patch Changes

@@ -168,10 +168,10 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
 
     if (isObject(obj1Value) && isObject(obj2Value)) {
       return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
-    } else if (isArray(obj1Value) && isArray(obj2Value)) {
-      return obj1Value.every((value, index) => {
-        return isEqual(value, obj2Value[index], count + 1, omitKeys);
-      });
+      // } else if (isArray(obj1Value) && isArray(obj2Value)) {
+      //   return obj1Value.every((value, index) => {
+      //     return isEqual(value, obj2Value[index], count + 1, omitKeys);
+      //   });
     }
 
     return obj1Value === obj2Value;

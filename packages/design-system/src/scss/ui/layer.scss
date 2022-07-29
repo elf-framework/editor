@@ -112,6 +112,9 @@
             user-select: none;
             color: var(--elf--layer-color);
             height: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     
         > .tools {

@@ -155,6 +155,12 @@ function updateChangedElement(parentElement, oldEl, newEl, i, options = {}) {
   // node 가 같지 않으면 바꾸고, refClass 속성이 있으면 바꾸고
   if (oldNodeType === TEXT_NODE && newNodeType !== TEXT_NODE) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+    console.log(
+      "--------------- 6 -----------------",
+      parentElement,
+      oldEl,
+      newEl
+    );
     parentElement.removeChild(oldEl);
   } else if (oldNodeType !== TEXT_NODE && newNodeType === TEXT_NODE) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);

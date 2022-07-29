@@ -27,8 +27,6 @@ export class TabStrip extends UIElement {
       },
     };
 
-    console.log(align);
-
     return (
       <div {...styleObject}>
         <div

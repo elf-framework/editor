@@ -583,6 +583,11 @@ declare module "@elf-framework/ui" {
      * @default false
      */
     fitted?: boolean;
+
+    /**
+     * if full is true, the tab will be full height
+     */
+    full: boolean;
     align?: "left" | "center" | "right";
     content?: TabItem[];
     style?: TabStyle & CommonStyle;
