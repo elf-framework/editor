@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.16
+
+### Patch Changes
+
+- fixed vnode function element
+
 ## 2.0.12
 
 ### Patch Changes

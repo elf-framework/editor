@@ -73,8 +73,14 @@ class ToolsItem extends UIElement {
         <button type="button">
           <Flex style={{ columnGap: 4 }}>
             {[
-              icon ? <span class="icon">{icon}</span> : undefined,
-              title ? <span class="menu-title">{title}</span> : undefined,
+              icon ? (
+                <span class="icon">{isFunction(icon) ? icon() : icon}</span>
+              ) : undefined,
+              title ? (
+                <span class="menu-title">
+                  {isFunction(title) ? title() : title}
+                </span>
+              ) : undefined,
             ].filter(Boolean)}
           </Flex>
         </button>

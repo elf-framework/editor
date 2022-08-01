@@ -1061,10 +1061,10 @@ class ToolsItem extends UIElement {
     }, [
       icon ? /* @__PURE__ */ createElementJsx("span", {
         class: "icon"
-      }, icon) : void 0,
+      }, isFunction(icon) ? icon() : icon) : void 0,
       title ? /* @__PURE__ */ createElementJsx("span", {
         class: "menu-title"
-      }, title) : void 0
+      }, isFunction(title) ? title() : title) : void 0
     ].filter(Boolean))));
   }
   setSelected(isSelected = false) {

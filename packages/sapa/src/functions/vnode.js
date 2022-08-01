@@ -270,7 +270,15 @@ export class VNode {
             }
           });
         } else if (isFunction(child)) {
-          fragment.appendChild(child());
+          const result = child();
+
+          if (result instanceof VNode) {
+            const el = result.makeElement(withChildren, options);
+
+            if (el) fragment.appendChild(el);
+          } else if (typeof result === "string") {
+            fragment.appendChild(document.createTextNode(result));
+          }
         } else if (child instanceof window.HTMLElement) {
           fragment.appendChild(child);
         } else {

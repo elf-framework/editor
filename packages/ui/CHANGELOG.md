@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.15
+
+### Patch Changes
+
+- fixed menuItem title function
+
 ## 2.0.14
 
 ### Patch Changes
