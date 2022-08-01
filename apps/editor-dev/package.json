@@ -1,14 +1,17 @@
 {
   "name": "editor-dev",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
     "vite:dev": "vite --port=3000 --config=vite.dev.config.js",
     "editor:dev": "npm run vite:dev",
-    "//build": "npm run vite:prod",
-    "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
+    "//vite:build": "npm run vite:prod",
+    "vite:prod": "vite build --config=vite.prod.config.js",
+    "editor:build": "npm run vite:prod",
+    "vite:preview": "vite preview --config=vite.prod.config.js",
+    "editor:preview": "npm run vite:preview",
     "copy:resource": "cp CNAME docs/",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",
     "format": "prettier .  --write"
@@ -32,15 +35,13 @@
     "eslint-import-resolver-jsconfig": "^1.1.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx": "^0.1.0",
+    "glob": "^8.0.3",
     "husky": "^7.0.4",
     "prettier": "2.6.2",
     "release-it": "^15.1.1",
     "rollup-plugin-copy": "^3.4.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.13",
-    "vite-plugin-copy": "^0.1.6",
-    "vite-plugin-eslint": "^1.5.2",
-    "vite-plugin-replace": "^0.1.1",
     "vite-plugin-sapa": "^1.1.1",
     "vitest": "0.0.107"
   }

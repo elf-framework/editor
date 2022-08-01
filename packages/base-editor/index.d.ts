@@ -27,7 +27,7 @@ declare module "@elf-framework/base-editor" {
     [key: string]: unknown;
   }
 
-  interface EditorCommand {
+  export interface EditorCommand {
     name: string;
     description: string;
     history?: boolean;
@@ -36,10 +36,10 @@ declare module "@elf-framework/base-editor" {
     redo: (editor: EditorContext, ...args: any[]) => void;
   }
 
-  type CommandType = EditorCommand;
-  type PluginType = (editor: EditorContext) => void;
+  export type CommandType = EditorCommand;
+  export type PluginType = (editor: EditorContext, options?: any) => void;
 
-  interface ConfigManager {
+  export interface ConfigManager {
     has: (key: string) => boolean;
     get: (key: string) => unknown;
     set: (key: string, value: unknown) => void;
@@ -51,7 +51,7 @@ declare module "@elf-framework/base-editor" {
     [key: string]: UIElement;
   }
 
-  interface EditorContext {
+  export interface EditorContext {
     configs: ConfigManager;
 
     registerConfig(config: EditorConfig): void;
@@ -62,17 +62,21 @@ declare module "@elf-framework/base-editor" {
     getCommand<T>(name: string): T | undefined;
     registerPlugin(plugin: PluginType): void;
 
-    initializeConfig(configs: EditorConfig[]): void;
+    initializeConfig(configList: EditorConfig[]): void;
+    updateConfigs(configs: EditorConfig): void;
     initializeManager(managers: EditorManager[]): void;
     initializeCommand(commands: CommandType[]): void;
     initializePlugin(plugins: PluginType[]): void;
   }
 
-  type EditorPlugin = (editor: EditorContext) => void;
+  export type EditorPlugin = (editor: EditorContext) => void;
 
   export interface BaseEditorProps {
     context: EditorContext;
-    configs: EditorConfig;
+    configList: EditorConfig[];
+    configs: {
+      [key: string]: unknown;
+    };
     managers: EditorManager;
     plugins: EditorPlugin[];
     editorClass: {

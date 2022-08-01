@@ -85,10 +85,14 @@ export class Editor extends UIElement {
     this.$store.set(KEY_EDITOR, this.$editor);
     this.$store.set(KEY_EDITOR_OPTION, this.props);
 
+    const { configs } = this.props;
+    this.$editor.updateConfigs(configs);
+
     this.activate();
   }
 
   async activate() {
     await this.$editor.activate();
+    this.trigger("editor.plugin.activated");
   }
 }

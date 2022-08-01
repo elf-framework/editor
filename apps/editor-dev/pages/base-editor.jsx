@@ -1,8 +1,4 @@
-import {
-  BaseEditor,
-  useCommand,
-  useSetConfig,
-} from "@elf-framework/base-editor";
+import { BaseEditor } from "@elf-framework/base-editor";
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
@@ -16,11 +12,13 @@ start(function () {
   return (
     <div>
       <BaseEditor
+        configs={{
+          key: "value",
+        }}
         plugins={[
           ToolbarPlugin,
           RightPlugin,
           LeftPlugin,
-          RenderPlugin,
           CenterPlugin,
 
           async function (editor) {
@@ -39,28 +37,13 @@ start(function () {
                 return 10;
               },
             });
+
+            console.log(editor.configs.get("yellow"));
+
+            
           },
 
-          function (editor) {
-            editor.registerUI({
-              view: () => {
-                return (
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      const ret = await useCommand("my-command");
-
-                      console.log("return", ret);
-
-                      useSetConfig("yellow", "red" + Math.random());
-                    }}
-                  >
-                    Sample
-                  </button>
-                );
-              },
-            });
-          },
+          RenderPlugin,
         ]}
       ></BaseEditor>
     </div>

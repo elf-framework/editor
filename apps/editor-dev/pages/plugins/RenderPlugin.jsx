@@ -1,6 +1,6 @@
 import { AppLayout, AppLayoutItem } from "@elf-framework/ui";
 
-export function RenderPlugin(editor) {
+export async function RenderPlugin(editor) {
   editor.registerGroupUI("renderView", {
     renderView: () => (
       <AppLayout>

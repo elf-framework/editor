@@ -327,9 +327,13 @@ export function updateChildren(oldEl, newVNode, options = {}) {
   // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
   if (oldChildren.length === 0 && newChildren.length > 0) {
     var fragment = document.createDocumentFragment();
-    newChildren.forEach((it) =>
-      fragment.appendChild(it.makeElement(true, options).el)
-    );
+    newChildren.forEach((it) => {
+      const retElement = it.makeElement(true, options).el;
+
+      if (retElement) {
+        fragment.appendChild(retElement);
+      }
+    });
     // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
     // B 에서 모든 자식을 A 에 추가한다.
     oldEl.appendChild(fragment);

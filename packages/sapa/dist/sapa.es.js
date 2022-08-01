@@ -1821,7 +1821,12 @@ function updateChildren(oldEl, newVNode, options = {}) {
   }
   if (oldChildren.length === 0 && newChildren.length > 0) {
     var fragment = document.createDocumentFragment();
-    newChildren.forEach((it) => fragment.appendChild(it.makeElement(true, options).el));
+    newChildren.forEach((it) => {
+      const retElement = it.makeElement(true, options).el;
+      if (retElement) {
+        fragment.appendChild(retElement);
+      }
+    });
     oldEl.appendChild(fragment);
     newChildren.forEach((it) => {
       it.runMounted();

@@ -8,19 +8,19 @@ export class EditorContext {
   constructor($rootEditor, $options = {}) {
     this.$rootEditor = $rootEditor;
     this.$options = $options;
-
+    this.isPluginActivated = false;
     this.initialize();
   }
 
   initialize() {
     const {
       managers = {},
-      configs = [],
+      configList = [],
       commands = [],
       plugins = [],
     } = this.$options;
     this.initializeManagers(managers);
-    this.initializeConfigs(configs);
+    this.initializeConfigs(configList);
     this.initializeCommands(commands);
     this.initializePlugins(plugins);
 
@@ -62,6 +62,10 @@ export class EditorContext {
     });
   }
 
+  updateConfigs(configs = {}) {
+    this.configs.updateConfig(configs);
+  }
+
   initializeCommands(commands = []) {
     commands.forEach((command) => {
       this.commands.registerCommand(command);
@@ -75,7 +79,16 @@ export class EditorContext {
   }
 
   async activate() {
-    return await this.plugins.activate();
+    // LifeCycle 이벤트 전달
+    // 1. plugin 설정
+    const ret = await this.plugins.activate();
+
+    this.isPluginActivated = true;
+
+    // 2. plugin 설정 이후 config 값 설정
+    this.updateConfigs(this.$options.configs);
+
+    return ret;
   }
 
   get $store() {

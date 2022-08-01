@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.14
+
+### Patch Changes
+
+- fixed updateChildren bug
+
 ## 2.0.10
 
 ### Patch Changes

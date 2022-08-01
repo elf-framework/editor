@@ -154,4 +154,22 @@ export class ConfigManager {
     this.config.set(config.key, config.defaultValue);
     this.configList.push(config);
   }
+
+  /**
+   * updateConfig({
+   *  key: value,
+   *  key2: value,
+   * })
+   *
+   *
+   */
+  updateConfig(config, isEmit = false) {
+    Object.entries(config).forEach(([key, value]) => {
+      if (isEmit) {
+        this.set(key, value);
+      } else {
+        this.config.set(key, value);
+      }
+    });
+  }
 }
