@@ -982,6 +982,28 @@ class Dialog extends UIElement {
     this.close();
   }
 }
+class Flex extends UIElement {
+  template() {
+    const { style: style2 = {}, content, stack, wrap = false } = this.props;
+    const styleObject = {
+      class: classnames("elf--flex", {
+        stack,
+        wrap
+      }),
+      style: __spreadValues({}, propertyMap(style2, {}))
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
+  }
+}
+class VBox extends Flex {
+  template() {
+    const { style: style2 = {}, content } = this.props;
+    return /* @__PURE__ */ createElementJsx(Flex, {
+      stack: true,
+      style: style2
+    }, content);
+  }
+}
 const ToolsItemType = {
   MENU: "menu",
   ITEM: "item",
@@ -1034,11 +1056,16 @@ class ToolsItem extends UIElement {
       onClick: this.props.onClick
     }, /* @__PURE__ */ createElementJsx("button", {
       type: "button"
-    }, icon ? /* @__PURE__ */ createElementJsx("span", {
-      class: "icon"
-    }, icon) : title ? /* @__PURE__ */ createElementJsx("span", {
-      class: "menu-title"
-    }, title) : void 0));
+    }, /* @__PURE__ */ createElementJsx(Flex, {
+      style: { columnGap: 4 }
+    }, [
+      icon ? /* @__PURE__ */ createElementJsx("span", {
+        class: "icon"
+      }, icon) : void 0,
+      title ? /* @__PURE__ */ createElementJsx("span", {
+        class: "menu-title"
+      }, title) : void 0
+    ].filter(Boolean))));
   }
   setSelected(isSelected = false) {
     this.setState({
@@ -1092,29 +1119,40 @@ class ToolsMenuItem extends ToolsItem {
       title = "",
       icon,
       disabled,
+      selected,
       items = [],
       opened = false,
       direction = "left",
       menuStyle
     } = this.state;
     const hasItems = items.length > 0;
+    const isSelected = selected ? isFunction(selected) ? selected() : selected : void 0;
     return /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--tools-item", {
-        selected: this.selected ? true : void 0,
+        selected: isSelected,
         "has-items": hasItems
       }),
       disabled
     }, /* @__PURE__ */ createElementJsx("button", {
       type: "button"
-    }, icon ? /* @__PURE__ */ createElementJsx("span", {
-      class: "icon"
-    }, icon) : title ? /* @__PURE__ */ createElementJsx("span", {
-      class: "menu-title"
-    }, title) : void 0, hasItems ? /* @__PURE__ */ createElementJsx("span", {
+    }, /* @__PURE__ */ createElementJsx(Flex, {
+      style: { columnGap: 4 }
+    }, [
+      icon ? /* @__PURE__ */ createElementJsx("span", {
+        class: "icon"
+      }, isFunction(icon) ? icon() : icon) : void 0,
+      title ? /* @__PURE__ */ createElementJsx("span", {
+        class: "menu-title"
+      }, isFunction(title) ? title() : title) : void 0
+    ].filter(Boolean)), hasItems ? /* @__PURE__ */ createElementJsx("span", {
       class: classnames("arrow", { opened })
     }, /* @__PURE__ */ createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-area"
+      class: "menu-area",
+      style: { backgroundColor: "yellow" }
     }, /* @__PURE__ */ createElementJsx("div", {
+      class: "background",
+      "data-direction": direction
+    }), /* @__PURE__ */ createElementJsx("div", {
       class: "arrow"
     }), /* @__PURE__ */ createElementJsx(Menu, {
       ref: "$menu",
@@ -1132,10 +1170,12 @@ class ToolsMenuItem extends ToolsItem {
     }
   }
   open() {
-    this.setState({
-      rect: this.$el.rect(),
-      opened: true
-    });
+    if (!this.state.opened) {
+      this.setState({
+        rect: this.$el.rect(),
+        opened: true
+      });
+    }
   }
   close() {
     this.setState({
@@ -1159,8 +1199,8 @@ class ToolsMenuItem extends ToolsItem {
     return true;
   }
   checkTriggerClick() {
-    const { trigger = "click" } = this.props;
-    return trigger === "click";
+    const { trigger = "click", onClick } = this.props;
+    return trigger === "click" || trigger === "hover" && isFunction(onClick);
   }
   checkTriggerOver() {
     return this.props.trigger === "hover";
@@ -1188,6 +1228,7 @@ class ToolsMenuItem extends ToolsItem {
       } else {
         this.runCallback(this.props.onClose, e);
       }
+      this.runCallback(this.props.onClick, e);
     } else {
       this.close();
       this.runCallback(this.props.onClick, e);
@@ -1466,7 +1507,6 @@ class TabStrip extends UIElement {
       }),
       style: __spreadValues({}, propertyMap(style2, cssProperties$a))
     };
-    console.log(align);
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--tabstrip-content", {
         [`align-${align}`]: true
@@ -1523,16 +1563,15 @@ class Tab extends UIElement {
     }
   }
   template() {
-    const { style: style2 = {}, content, fitted, align = "left" } = this.props;
+    const { style: style2 = {}, content, full, fitted, align = "left" } = this.props;
     const { activeKey } = this.state;
     const styleObject = {
-      class: classnames("elf--tab"),
+      class: classnames("elf--tab", {
+        full
+      }),
       style: propertyMap(style2, cssProperties$9)
     };
-    console.log(align);
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({
-      class: "elf--tab"
-    }, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tab-header"
     }, /* @__PURE__ */ createElementJsx(TabStrip, {
       fitted,
@@ -1578,28 +1617,6 @@ class Layout extends UIElement {
       }))
     };
     return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
-  }
-}
-class Flex extends UIElement {
-  template() {
-    const { style: style2 = {}, content, stack, wrap = false } = this.props;
-    const styleObject = {
-      class: classnames("elf--flex", {
-        stack,
-        wrap
-      }),
-      style: __spreadValues({}, propertyMap(style2, {}))
-    };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
-  }
-}
-class VBox extends Flex {
-  template() {
-    const { style: style2 = {}, content } = this.props;
-    return /* @__PURE__ */ createElementJsx(Flex, {
-      stack: true,
-      style: style2
-    }, content);
   }
 }
 function makeTemplates(arr) {
@@ -2536,7 +2553,7 @@ class VirtualScroll extends UIElement {
     const styleObject = {
       class: classnames("elf--virtual-scroll", this.props.class),
       style: __spreadProps(__spreadValues({}, propertyMap(style2, cssProperties$3)), {
-        "--elf--virtual-scroll-item-width": this.state.width ? `${this.state.width}px` : "100%",
+        "--elf--virtual-scroll-item-width": "100%",
         "--elf--virtual-scroll-item-height": `${itemHeight}px`,
         "--elf--virtual-scroll-item-count": totalCount,
         "--elf--virtual-scroll-panel-height": `${totalCount * itemHeight}px`
@@ -3559,23 +3576,33 @@ class AppResizeBar extends UIElement {
   [POINTERSTART()](e) {
     this.startXY = e.xy;
   }
-  [POINTERMOVE("document")](e) {
-    if (this.startXY) {
-      const { xy } = e;
-      const diffX = xy.x - this.startXY.x;
-      const diffY = xy.y - this.startXY.y;
-      if (diffX !== 0 || diffY !== 0) {
-        if (isFunction(this.props.onResize)) {
-          this.props.onResize(diffX, diffY);
-        }
-      }
+  isMoved(e) {
+    if (!this.startXY)
+      return false;
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+    if (diffX !== 0 || diffY !== 0) {
+      return true;
+    }
+    return false;
+  }
+  [POINTERMOVE("document") + IF("isMoved")](e) {
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+    if (isFunction(this.props.onResize)) {
+      this.props.onResize(diffX, diffY);
     }
   }
-  [POINTEREND("document")]() {
-    this.startXY = void 0;
+  [POINTEREND("document") + IF("isMoved")](e) {
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
     if (isFunction(this.props.onResizeEnd)) {
-      this.props.onResizeEnd();
+      this.props.onResizeEnd(diffX, diffY);
     }
+    this.startXY = void 0;
   }
 }
 function AppLayoutItem({

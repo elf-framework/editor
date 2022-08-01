@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/design-system",
-  "version": "1.1.1",
+  "version": "2.0.10",
   "description": "Fantastic Design System ",
   "main": "./dist/design-system.umd.js",
   "module": "./dist/design-system.es.js",
@@ -36,6 +36,7 @@
     "//watch": "vite build --config=vite.dist.config.js --watch",
     "design:watch": "vite build --config=vite.dist.config.js --watch",
     "ui:watch": "vite build --config=vite.dist.config.js --watch",
+    "editor:watch": "vite build --config=vite.dist.config.js --watch",
     "release": "release-it *",
     "build": "npm run vite:dist",
     "//prepare": "husky install",

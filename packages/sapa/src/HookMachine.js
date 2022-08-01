@@ -1,10 +1,9 @@
 import { isFunction } from "./functions/func";
 import {
-  addProviderSubscribe,
-  getContextProvider,
   renderComponent,
   resetCurrentComponent,
-} from "./Hook";
+} from "./functions/registElement";
+import { addProviderSubscribe, getContextProvider } from "./Hook";
 import { MagicHandler } from "./MagicHandler";
 
 const USE_STATE = Symbol("useState");

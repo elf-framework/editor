@@ -73,7 +73,7 @@ export class UIManager {
   }
 
   getGroupUI(key) {
-    const list = Object.values(this.groupUis[key])
+    const list = Object.values(this.groupUis[key] || {})
       .map((uis) => {
         return this.createUI(uis);
       })

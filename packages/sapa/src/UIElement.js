@@ -188,67 +188,54 @@ export class UIElement extends EventMachine {
     return id;
   }
 
-  // useSubscribe(
-  //   id,
-  //   callback,
-  //   debounceSecond = 0,
-  //   throttleSecond = 0,
-  //   isSelf = false
-  // ) {
-  //   const newCallback = this.createFunction(id, callback);
+  static createFunctionElementInstance(
+    EventMachineComponent,
+    parentInstance,
+    props,
+    state = {}
+  ) {
+    class FunctionElement extends UIElement {
+      /**
+       * UIElement instance 에 필요한 기본 속성 설정
+       */
+      initializeProperty(opt, props = {}, state = {}) {
+        super.initializeProperty(opt, props, state);
 
-  //   if (this.$store.hasCallback(id, newCallback) === false) {
-  //     this.$store.on(
-  //       id,
-  //       newCallback,
-  //       this,
-  //       debounceSecond,
-  //       throttleSecond,
-  //       false,
-  //       isSelf
-  //     );
-  //   }
-  // }
+        // set name for FunctionElement
+        this.sourceName = this.getFunctionComponent().name || this.sourceName;
+      }
 
-  // useSubscribeSelf(id, callback, debounceSecond = 0, throttleSecond = 0) {
-  //   return this.useSubscribe(
-  //     id,
-  //     callback,
-  //     debounceSecond,
-  //     throttleSecond,
-  //     true
-  //   );
-  // }
+      getFunctionComponent() {
+        return EventMachineComponent;
+      }
 
-  /**
-   * 함수형 컴포넌트 생성 함수
-   *
-   * @override
-   * @param {Function} EventMachineComponent
-   * @param {object} props
-   * @param {UIElement} [baseClass=UIElement]
-   * @returns
-   */
-  createFunctionComponent(EventMachineComponent, props, baseClass = UIElement) {
-    return super.createFunctionComponent(
-      EventMachineComponent,
-      props,
-      baseClass
-    );
+      // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
+      isInstanceOf(Component) {
+        return EventMachineComponent === Component;
+      }
+      template() {
+        return EventMachineComponent.call(this, this.props);
+      }
+    }
+
+    return new FunctionElement(parentInstance, props, state);
   }
 
   // root instance 생성용 함수
-  static createElementInstance(ElementClass, props) {
+  static createElementInstance(ElementClass, parent, props, state) {
     if (ElementClass.__proto__.name === "") {
-      class FunctionElement extends UIElement {
-        template() {
-          return ElementClass.call(this, this.props);
-        }
-      }
-
-      return new FunctionElement(props, props);
+      return UIElement.createFunctionElementInstance(
+        ElementClass,
+        parent,
+        props,
+        state
+      );
     } else {
-      return new ElementClass(props, props);
+      return new ElementClass(parent, props, state);
     }
   }
+}
+
+export function createComponentInstance(ComponentClass, parent, props, state) {
+  return UIElement.createElementInstance(ComponentClass, parent, props, state);
 }

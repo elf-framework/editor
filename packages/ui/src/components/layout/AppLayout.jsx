@@ -1,4 +1,5 @@
 import {
+  IF,
   isFunction,
   POINTEREND,
   POINTERMOVE,
@@ -24,25 +25,37 @@ export class AppResizeBar extends UIElement {
     this.startXY = e.xy;
   }
 
-  [POINTERMOVE("document")](e) {
-    if (this.startXY) {
-      const { xy } = e;
-      const diffX = xy.x - this.startXY.x;
-      const diffY = xy.y - this.startXY.y;
-      if (diffX !== 0 || diffY !== 0) {
-        if (isFunction(this.props.onResize)) {
-          this.props.onResize(diffX, diffY);
-        }
-      }
+  isMoved(e) {
+    if (!this.startXY) return false;
+
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+    if (diffX !== 0 || diffY !== 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  [POINTERMOVE("document") + IF("isMoved")](e) {
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+
+    if (isFunction(this.props.onResize)) {
+      this.props.onResize(diffX, diffY);
     }
   }
 
-  [POINTEREND("document")]() {
-    this.startXY = undefined;
-
+  [POINTEREND("document") + IF("isMoved")](e) {
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
     if (isFunction(this.props.onResizeEnd)) {
-      this.props.onResizeEnd();
+      this.props.onResizeEnd(diffX, diffY);
     }
+    this.startXY = undefined;
   }
 }
 

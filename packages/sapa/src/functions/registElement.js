@@ -5,10 +5,34 @@ const map = {};
 const handlerMap = {};
 const aliasMap = {};
 const __rootInstance = new Set();
+const __rootInstanceMap = new WeakMap();
 const __tempVariables = new Map();
 const __tempVariablesGroup = new Map();
 const _modules = {};
 const _moduleMap = new WeakMap();
+const GlobalState = {
+  currentComponent: null,
+};
+
+export function getCurrentComponent() {
+  return GlobalState.currentComponent;
+}
+
+/**
+ * 함수 컴포넌트가 실행되는 시점에 현재 생성된 컴포넌트 instance 를 저장합니다.
+ * currentComponent 에서 hook을 관리 할 수 있게 됩니다.
+ *
+ * @param {*} component
+ */
+export function resetCurrentComponent(component) {
+  GlobalState.currentComponent = component;
+}
+
+export function renderComponent(component, $container = undefined) {
+  window.requestIdleCallback(() => {
+    component.render($container);
+  });
+}
 
 export const VARIABLE_SAPARATOR = "v:";
 
@@ -121,26 +145,31 @@ export function retriveElement(className) {
  *
  * @param {UIElement} instance
  */
-export function registRootElementInstance(instance) {
-  if (instance) {
-    // 등록 전에 사용이 완료된 instance 는 리스트에서 삭제
-    const lastInstance = getRootElementInstanceList().find((it) => {
-      console.log("rootInstance", this?.$el?.el?.__component, it);
-      return it.$el.el.__component !== it;
-    });
-    console.log("lastInstance", lastInstance);
-    if (lastInstance) {
-      removeRootElementInstance(lastInstance);
-    }
-  }
+export function registRootElementInstance(instance, containerElement) {
+  // if (instance) {
+  //   // 등록 전에 사용이 완료된 instance 는 리스트에서 삭제
+  //   const lastInstance = getRootElementInstanceList().find((it) => {
+  //     console.log("rootInstance", this?.$el?.el?.__component, it);
+  //     return it.$el.el.__component !== it;
+  //   });
+  //   if (lastInstance) {
+  //     removeRootElementInstance(lastInstance);
+  //   }
+  // }
 
   __rootInstance.add(instance);
+
+  // 기존에 있던 root instance 는 지운다.
+  if (__rootInstanceMap.has(containerElement)) {
+    removeRootElementInstance(__rootInstanceMap.get(containerElement));
+  }
+
+  __rootInstanceMap.set(containerElement, instance);
 }
 
 export function removeRootElementInstance(instance) {
-  console.log("removeRootElementInstance", instance);
-  // instance?.destroy();
-  // __rootInstance.delete(instance);
+  instance?.destroy();
+  __rootInstance.delete(instance);
 }
 
 export function getRootElementInstanceList() {

@@ -49,6 +49,7 @@
     left: var(--elf--menu-left);
     top: var(--elf--menu-top);
     z-index: var(--elf--zindex);
+    user-select: none;
 
     &[data-direction="right"] {
         left: auto;

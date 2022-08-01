@@ -187,10 +187,6 @@ function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
     const obj2Value = obj2[key];
     if (isObject(obj1Value) && isObject(obj2Value)) {
       return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
-    } else if (isArray(obj1Value) && isArray(obj2Value)) {
-      return obj1Value.every((value, index) => {
-        return isEqual(value, obj2Value[index], count + 1, omitKeys);
-      });
     }
     return obj1Value === obj2Value;
   });
@@ -349,6 +345,7 @@ function updateChangedElement$1(parentElement, oldEl, newEl, i, options = {}) {
   const newNodeType = newEl.nodeType;
   if (oldNodeType === TEXT_NODE$1 && newNodeType !== TEXT_NODE$1) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
+    console.log("--------------- 6 -----------------", parentElement, oldEl, newEl);
     parentElement.removeChild(oldEl);
   } else if (oldNodeType !== TEXT_NODE$1 && newNodeType === TEXT_NODE$1) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
@@ -471,10 +468,25 @@ const map = {};
 const handlerMap = {};
 const aliasMap = {};
 const __rootInstance = /* @__PURE__ */ new Set();
+const __rootInstanceMap = /* @__PURE__ */ new WeakMap();
 const __tempVariables = /* @__PURE__ */ new Map();
 const __tempVariablesGroup = /* @__PURE__ */ new Map();
 const _modules = {};
 const _moduleMap = /* @__PURE__ */ new WeakMap();
+const GlobalState = {
+  currentComponent: null
+};
+function getCurrentComponent() {
+  return GlobalState.currentComponent;
+}
+function resetCurrentComponent(component) {
+  GlobalState.currentComponent = component;
+}
+function renderComponent(component, $container = void 0) {
+  window.requestIdleCallback(() => {
+    component.render($container);
+  });
+}
 const VARIABLE_SAPARATOR = "v:";
 function variable(value, groupId = "") {
   const id = `${VARIABLE_SAPARATOR}${uuidShort()}`;
@@ -534,22 +546,16 @@ function retriveAlias(key) {
 function retriveElement(className) {
   return map[retriveAlias(className) || className];
 }
-function registRootElementInstance(instance) {
-  if (instance) {
-    const lastInstance = getRootElementInstanceList().find((it) => {
-      var _a, _b;
-      console.log("rootInstance", (_b = (_a = this == null ? void 0 : this.$el) == null ? void 0 : _a.el) == null ? void 0 : _b.__component, it);
-      return it.$el.el.__component !== it;
-    });
-    console.log("lastInstance", lastInstance);
-    if (lastInstance) {
-      removeRootElementInstance(lastInstance);
-    }
-  }
+function registRootElementInstance(instance, containerElement) {
   __rootInstance.add(instance);
+  if (__rootInstanceMap.has(containerElement)) {
+    removeRootElementInstance(__rootInstanceMap.get(containerElement));
+  }
+  __rootInstanceMap.set(containerElement, instance);
 }
 function removeRootElementInstance(instance) {
-  console.log("removeRootElementInstance", instance);
+  instance == null ? void 0 : instance.destroy();
+  __rootInstance.delete(instance);
 }
 function getRootElementInstanceList() {
   return [...__rootInstance];
@@ -1390,700 +1396,6 @@ const VNodeType = {
   ELEMENT: 101,
   COMMENT: 102
 };
-const NumberStyleKeys = {
-  animationIterationCount: true,
-  borderImageOutset: true,
-  borderImageSlice: true,
-  borderImageWidth: true,
-  boxFlex: true,
-  boxFlexGroup: true,
-  boxOrdinalGroup: true,
-  columnCount: true,
-  columns: true,
-  flex: true,
-  flexGrow: true,
-  flexPositive: true,
-  flexShrink: true,
-  flexNegative: true,
-  flexOrder: true,
-  gridRow: true,
-  gridRowEnd: true,
-  gridRowSpan: true,
-  gridRowStart: true,
-  gridColumn: true,
-  gridColumnEnd: true,
-  gridColumnSpan: true,
-  gridColumnStart: true,
-  fontSize: true,
-  lineClamp: true,
-  lineHeight: true,
-  opacity: true,
-  order: true,
-  orphans: true,
-  tabSize: true,
-  widows: true,
-  zIndex: true,
-  zoom: true,
-  width: true,
-  maxWidth: true,
-  maxHeight: true,
-  height: true,
-  top: true,
-  left: true,
-  right: true,
-  bottom: true,
-  border: true,
-  padding: true,
-  margin: true,
-  paddingLeft: true,
-  paddingRight: true,
-  paddingTop: true,
-  paddingBottom: true,
-  marginLeft: true,
-  marginRight: true,
-  marginTop: true,
-  marginBottom: true,
-  gap: true,
-  columnGap: true,
-  rowGap: true,
-  fillOpacity: true,
-  floodOpacity: true,
-  stopOpacity: true,
-  strokeDasharray: true,
-  strokeDashoffset: true,
-  strokeMiterlimit: true,
-  strokeOpacity: true,
-  strokeWidth: true
-};
-const styleKeys = {};
-const uppercasePattern = /([A-Z])/g;
-const convertStyleKey = (key) => {
-  if (styleKeys[key]) {
-    return styleKeys[key];
-  }
-  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
-  styleKeys[key] = upperKey;
-  return upperKey;
-};
-function styleMap(key, value) {
-  if (typeof value === "number") {
-    if (NumberStyleKeys[key]) {
-      value = value + "px";
-    }
-  }
-  return value;
-}
-function styleKeyMap(key) {
-  return convertStyleKey(key);
-}
-function css(style) {
-  const newStyles = {};
-  Object.keys(style).forEach((styleKey) => {
-    newStyles[styleKeyMap(styleKey)] = styleMap(styleKey, style[styleKey]);
-  });
-  return newStyles;
-}
-function VNodeToElement(obj, options = {}) {
-  if (isString(obj)) {
-    obj = createVNodeText(obj);
-  }
-  if (isArray(obj) && obj.length === 1) {
-    return VNodeToElement(obj[0], options);
-  }
-  if (obj) {
-    return Dom.create(obj.makeElement(true, options).el);
-  }
-  return null;
-}
-async function VNodeToHtml(obj, options = {}) {
-  if (isString(obj)) {
-    return obj;
-  }
-  if (isArray(obj) && obj.length === 1) {
-    return await VNodeToHtml(obj[0], options);
-  }
-  if (obj) {
-    return await obj.makeHtml(true, options);
-  }
-  return "";
-}
-const VoidTags = {
-  area: true,
-  base: true,
-  br: true,
-  col: true,
-  embed: true,
-  hr: true,
-  img: true,
-  input: true,
-  link: true,
-  meta: true,
-  param: true,
-  source: true,
-  track: true,
-  wbr: true
-};
-function isVoidTag(tag) {
-  return VoidTags[tag.toLowerCase()];
-}
-const SVG_ELEMENTS = {
-  svg: true,
-  g: true,
-  path: true,
-  rect: true,
-  circle: true,
-  ellipse: true,
-  line: true,
-  polyline: true,
-  polygon: true,
-  text: true,
-  tspan: true,
-  textPath: true,
-  tref: true,
-  defs: true,
-  clipPath: true,
-  mask: true,
-  pattern: true,
-  image: true,
-  linearGradient: true,
-  radialGradient: true,
-  stop: true,
-  animate: true,
-  animateMotion: true,
-  animateColor: true,
-  animateTransform: true,
-  mpath: true,
-  set: true,
-  use: true,
-  desc: true,
-  metadata: true,
-  title: true,
-  marker: true,
-  symbol: true,
-  view: true,
-  foreignObject: true,
-  switch: true,
-  link: true
-};
-function isSVG(tagName) {
-  return !!SVG_ELEMENTS[tagName];
-}
-const TAG_PREFIX = "<";
-const TEMP_DIV = Dom.create("div");
-const TEMP_TEXT = document.createTextNode("");
-const TEMP_COMMENT = document.createComment("");
-let cache = {};
-let cacheCount = 0;
-let nativeDomCache = {};
-function makeNativeDom(name) {
-  if (!nativeDomCache[name]) {
-    const el = isSVG(name) ? document.createElementNS("http://www.w3.org/2000/svg", name) : document.createElement(name);
-    nativeDomCache[name] = el;
-  }
-  return nativeDomCache[name].cloneNode(false);
-}
-function makeNativeTextDom(value) {
-  const text = TEMP_TEXT.cloneNode();
-  text.textContent = value;
-  return text;
-}
-function makeNativeCommentDom(value) {
-  const text = TEMP_COMMENT.cloneNode();
-  text.textContent = value;
-  return text;
-}
-const expectAttributes = {
-  content: true
-};
-function setAttribute(el, name, value) {
-  if (expectAttributes[name])
-    return;
-  el.setAttribute(name, value);
-}
-function setEventAttribute(el, name, value) {
-  el[name.toLowerCase()] = value;
-}
-function setStyle(el, key, value) {
-  if (key.indexOf("--") === 0) {
-    if (typeof value === "undefined") {
-      el.style.removeProperty(key);
-    } else {
-      el.style.setProperty(key, value);
-    }
-  } else {
-    el.style[key] = value;
-  }
-}
-function stringifyStyle(styleObject) {
-  const newStyle = css(styleObject);
-  return Object.keys(newStyle).map((key) => {
-    return `${key}: ${newStyle[key]};`;
-  }).join(" ");
-}
-function getProps$1(attributes) {
-  var results = {};
-  const len = attributes.length;
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
-    const name = t.name;
-    const value = t.value;
-    results[name] = value;
-  }
-  return results;
-}
-const children$1 = (el) => {
-  var element = el.firstChild;
-  if (!element) {
-    return [];
-  }
-  var results = [];
-  do {
-    results[results.length] = element;
-    element = element.nextSibling;
-  } while (element);
-  return results;
-};
-function makeOneElement(html) {
-  if (cacheCount > 2e3) {
-    cacheCount = 0;
-    cache = {};
-  }
-  if (!cache[html]) {
-    cacheCount++;
-    cache[html] = TEMP_DIV.html(html).first.el;
-  }
-  return cache[html].cloneNode(true);
-}
-class VNode {
-  constructor(type, tag, props, children2, Component) {
-    this.type = type;
-    this.tag = tag;
-    this.nodeName = tag == null ? void 0 : tag.toUpperCase();
-    this.props = props;
-    this.children = children2;
-    this.Component = Component;
-    this.initializeProps();
-    this.initializeChildren();
-  }
-  clone() {
-    return new VNode(this.type, this.tag, __spreadValues({}, this.props), this.children.map((it) => it.clone()), this.Component);
-  }
-  find(callback) {
-    return this.props.content.find(callback);
-  }
-  mounted() {
-  }
-  runMounted() {
-    if (this.mounted) {
-      requestAnimationFrame(() => {
-        this.mounted();
-      }, 0);
-    }
-  }
-  get stringifyStyle() {
-    return this.tagProps.style;
-  }
-  initializeProps() {
-    const newProps = Object.assign({}, this.props);
-    if (!this.Component) {
-      if (isObject(newProps.style)) {
-        newProps.style = stringifyStyle(newProps.style);
-      }
-      this.tagProps = newProps;
-    } else {
-      const targetVariable = Object.keys(newProps).length ? variable(newProps) : void 0;
-      const newProps2 = {
-        ref: newProps.ref ? newProps.ref : void 0
-      };
-      if (targetVariable) {
-        newProps2[targetVariable] = "";
-      }
-      this.tagProps = newProps2;
-    }
-    if (this.props.enableHtml) {
-      this.enableHtml = this.props.enableHtml;
-      delete this.props.enableHtml;
-    }
-  }
-  initializeChildren() {
-    if (isArray(this.children)) {
-      if (this.props.content)
-        return;
-      this.children = this.children.filter(Boolean).map((child) => {
-        if (isString(child)) {
-          if (this.enableHtml) {
-            if (child.indexOf(TAG_PREFIX) === -1) {
-              return createVNodeText(child);
-            } else {
-              const newEl = makeOneElement(child);
-              if ((newEl == null ? void 0 : newEl.nodeType) === 3) {
-                return createVNodeText(newEl.textContent);
-              }
-              return createVNodeElement(newEl);
-            }
-          } else {
-            return createVNodeText(child);
-          }
-        } else if (isNumber(child)) {
-          return createVNodeText(child);
-        }
-        return child;
-      });
-      this.props.content = this.children;
-    }
-  }
-  makeChildren(withChildren, options) {
-    const el = this.el;
-    const children2 = this.children;
-    if (children2 && children2.length) {
-      const fragment = document.createDocumentFragment();
-      children2.forEach((child) => {
-        if (child instanceof VNode || child.makeElement) {
-          const el2 = child.makeElement(withChildren, options).el;
-          if (el2) {
-            fragment.appendChild(el2);
-          }
-        } else if (isArray(child)) {
-          child.forEach((it) => {
-            if (it) {
-              const el2 = it.makeElement(withChildren, options).el;
-              if (el2) {
-                fragment.appendChild(el2);
-              }
-            }
-          });
-        } else if (isFunction(child)) {
-          fragment.appendChild(child());
-        } else if (child instanceof window.HTMLElement) {
-          fragment.appendChild(child);
-        } else {
-          fragment.appendChild(document.createTextNode(child));
-        }
-      });
-      el.appendChild(fragment);
-      children2.forEach((child) => {
-        if (isArray(child)) {
-          child.forEach((it) => {
-            if (it) {
-              it.runMounted();
-            }
-          });
-        } else if (child) {
-          child.runMounted();
-        }
-      });
-    }
-  }
-  async makeChildrenHtml(withChildren, options) {
-    const tempChildren = [];
-    const children2 = this.children;
-    if (children2 && children2.length) {
-      const tempArray = await Promise.all(children2.map(async (child) => {
-        if (child instanceof VNode || child.makeHtml) {
-          return await child.makeHtml(withChildren, options);
-        } else if (isArray(child)) {
-          return await Promise.all(child.map(async (it) => {
-            if (it) {
-              return await it.makeHtml(withChildren, options);
-            }
-            return void 0;
-          })).filter((it) => typeof it !== "undefined");
-        } else if (isFunction(child)) {
-          return await child();
-        } else {
-          return await child;
-        }
-      }));
-      tempChildren.push(...tempArray);
-    }
-    return tempChildren.join("\n");
-  }
-  createElement() {
-    return makeNativeDom(this.tag);
-  }
-  makeElement(withChildren = false, options = {}) {
-    if (this.el)
-      return this;
-    const el = this.createElement();
-    const props = this.tagProps;
-    if (props) {
-      Object.keys(props).forEach((key) => {
-        const value = props[key];
-        if (key === "style") {
-          if (isString(value)) {
-            el.style.cssText = value;
-          } else {
-            const styleValues = css(value);
-            Object.entries(styleValues).forEach(([localKey, value2]) => {
-              setStyle(el, localKey, value2);
-            });
-          }
-        } else {
-          if (key) {
-            if (value !== void 0) {
-              if (key.startsWith("on")) {
-                setEventAttribute(el, key, value);
-              } else {
-                setAttribute(el, key, value);
-              }
-            }
-          }
-        }
-        if (key === "ref" && value) {
-          this.ref = value;
-          isFunction(options.registerRef) && options.registerRef(value, el);
-        }
-      });
-    }
-    this.el = el;
-    this.makeChildren(withChildren, options);
-    return this;
-  }
-  async makeHtml(withChildren = false, options = {}) {
-    const tempProps = [];
-    const props = this.tagProps;
-    if (props) {
-      Object.keys(props).forEach((key) => {
-        const value = props[key];
-        if (key === "style") {
-          if (isString(value))
-            ;
-          else {
-            props[key] = stringifyStyle(css(value));
-          }
-        } else {
-          if (key) {
-            if (value !== void 0) {
-              if (key.startsWith("on")) {
-                return;
-              }
-            }
-          }
-        }
-        if (key === "ref") {
-          return;
-        }
-        if (value) {
-          tempProps.push(`${key}="${value}"`);
-        }
-      });
-    }
-    if (isVoidTag(this.tag)) {
-      return `
-        <${this.tag} ${tempProps.join(" ")} />
-      `;
-    } else {
-      const childrenHtml = await this.makeChildrenHtml(withChildren, options);
-      return `
-        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
-      `;
-    }
-  }
-}
-class VNodeText extends VNode {
-  constructor(value) {
-    super(VNodeType.TEXT, null, {});
-    this.value = value;
-  }
-  clone() {
-    return new VNodeText(this.value);
-  }
-  get textContent() {
-    return this.value;
-  }
-  runMounted() {
-  }
-  createElement() {
-    return makeNativeTextDom(this.value);
-  }
-  makeElement() {
-    if (this.el)
-      return this;
-    this.el = this.createElement();
-    return this;
-  }
-  makeHtml() {
-    return this.value;
-  }
-}
-class VNodeComment extends VNode {
-  constructor(value) {
-    super(VNodeType.COMMENT, null, {});
-    this.value = value;
-  }
-  clone() {
-    return new VNodeComment(this.value);
-  }
-  get textContent() {
-    return this.value;
-  }
-  runMounted() {
-  }
-  createElement() {
-    return makeNativeCommentDom(this.value);
-  }
-  makeElement() {
-    if (this.el)
-      return this;
-    this.el = this.createElement();
-    return this;
-  }
-  makeHtml() {
-    return this.value;
-  }
-}
-class VNodeFragment extends VNode {
-  constructor(props = {}, children2) {
-    super(VNodeType.FRAGMENT, "fragment", props || {}, children2);
-  }
-  clone() {
-    return new VNodeFragment(this.props, this.children.map((it) => it.clone()));
-  }
-  makeElement(withChildren = false, options = {}) {
-    if (this.el)
-      return this;
-    const el = document.createDocumentFragment();
-    this.el = el;
-    this.makeChildren(withChildren, options);
-    return this;
-  }
-  async makeHtml(withChildren = false, options = {}) {
-    return await this.makeChildrenHtml(withChildren, options);
-  }
-}
-class VNodeComponent extends VNode {
-  constructor(props = {}, children2, Component) {
-    super(VNodeType.COMPONENT, "object", props || {}, children2);
-    this.Component = Component;
-    this.instance = null;
-  }
-  clone() {
-    return new VNodeComponent(this.props, this.children.map((it) => it.clone()), this.Component);
-  }
-  mounted() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.onMounted();
-  }
-  makeClassInstance(options) {
-    var _a, _b, _c;
-    const props = this.props;
-    this.Component = getModule(this.Component);
-    const hooks = (_a = this.instance) == null ? void 0 : _a.copyHooks();
-    const state = (_b = this.instance) == null ? void 0 : _b.state;
-    const oldId = (_c = this.instance) == null ? void 0 : _c.id;
-    this.instance = options.context.createInstanceForComponent(this.Component, props, options, state || {});
-    if (oldId) {
-      this.instance.setId(oldId);
-    }
-    if (hooks) {
-      this.instance.reloadHooks(hooks);
-    }
-    return this.instance;
-  }
-  render(options) {
-    this.makeClassInstance(options);
-    try {
-      this.instance.render();
-    } catch (e) {
-      console.error(e);
-    }
-  }
-  async renderHtml(options) {
-    this.makeClassInstance(options);
-    return await this.instance.renderToHtml();
-  }
-  makeElement(withChildren, options = {}) {
-    var _a, _b;
-    if (this.el)
-      return this;
-    this.render(options);
-    this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
-    if (this.el) {
-      const id = this.props.ref || this.instance.id;
-      isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
-    }
-    return this;
-  }
-  async makeHtml(withChildren, options = {}) {
-    return await this.renderHtml(options);
-  }
-}
-class VNodeElement extends VNode {
-  constructor(el) {
-    super(VNodeType.ELEMENT, null, {});
-    this.el = el;
-    this.outerHTML = el.outerHTML;
-    this.pass = true;
-  }
-  clone() {
-    return new VNodeElement(this.el);
-  }
-  makeElement() {
-    return this;
-  }
-}
-function createVNode({ tag, props = {}, children: children2 }) {
-  return new VNode(VNodeType.NODE, tag, props, children2);
-}
-function createVNodeComponent({ props = {}, children: children2, Component }) {
-  if (typeof Component === "undefined") {
-    throw new Error("Component is undefined");
-  }
-  return new VNodeComponent(props, children2, Component);
-}
-function createVNodeFragment({ props = {}, children: children2 }) {
-  return new VNodeFragment(props, children2);
-}
-function createVNodeText(text) {
-  return new VNodeText(text);
-}
-function createVNodeComment(text) {
-  return new VNodeComment(text);
-}
-function createVNodeElement(el) {
-  return new VNodeElement(el);
-}
-function htmlToVNode(html) {
-  const $dom = Dom.createByHTML(html);
-  return createVNodeByDom($dom.el);
-}
-function createVNodeByDom(el) {
-  return createVNode({
-    tag: el.tagName.toLowerCase(),
-    props: getProps$1(el.attributes),
-    children: children$1(el).map((it) => {
-      return createVNodeByDom(it);
-    })
-  });
-}
-function cloneVNode(vnode) {
-  return vnode.clone();
-}
-function jsonToVNode(json) {
-  const _a = json, { children: children2 = [] } = _a, rest = __objRest(_a, ["children"]);
-  if (typeof json === "string" || typeof json === "number") {
-    return createVNodeText(json);
-  }
-  if (rest.type === "comment") {
-    return createVNodeComment(rest.text);
-  }
-  if (rest.type === "text") {
-    return createVNodeText(rest.text);
-  }
-  if (rest.type === "fragment") {
-    return createVNodeFragment(__spreadProps(__spreadValues({}, rest), {
-      children: children2.map((it) => jsonToVNode(it))
-    }));
-  }
-  if (rest.type === "component" || rest.Component) {
-    return createVNodeComponent(__spreadProps(__spreadValues({}, rest), {
-      children: children2.map((it) => jsonToVNode(it))
-    }));
-  }
-  return createVNode(__spreadProps(__spreadValues({}, rest), {
-    children: children2.map((it) => jsonToVNode(it))
-  }));
-}
 class BaseStore {
   constructor() {
     this.id = uuidShort();
@@ -2250,6 +1562,49 @@ class BaseStore {
     }
   }
 }
+function VNodeToElement(obj, options = {}) {
+  if (isString(obj)) {
+    obj = createVNodeText(obj);
+  }
+  if (isArray(obj) && obj.length === 1) {
+    return VNodeToElement(obj[0], options);
+  }
+  if (obj) {
+    return Dom.create(obj.makeElement(true, options).el);
+  }
+  return null;
+}
+async function VNodeToHtml(obj, options = {}) {
+  if (isString(obj)) {
+    return obj;
+  }
+  if (isArray(obj) && obj.length === 1) {
+    return await VNodeToHtml(obj[0], options);
+  }
+  if (obj) {
+    return await obj.makeHtml(true, options);
+  }
+  return "";
+}
+const VoidTags = {
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+};
+function isVoidTag(tag) {
+  return VoidTags[tag.toLowerCase()];
+}
 const booleanTypes = new Map(Object.entries({
   checked: true,
   disabled: true,
@@ -2409,7 +1764,7 @@ function omitProps(vNode) {
   }
   return results;
 }
-function getProps(oldEl, attributes, newProps) {
+function getProps$1(oldEl, attributes, newProps) {
   var results = {};
   const len = attributes.length;
   for (let i = 0; i < len; i++) {
@@ -2451,11 +1806,14 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
 }
 function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   const newVNodeProps = omitProps(newVNode);
-  updateProps(oldEl, newVNodeProps, getProps(oldEl, oldEl.attributes, newVNodeProps));
+  updateProps(oldEl, newVNodeProps, getProps$1(oldEl, oldEl.attributes, newVNodeProps));
+  updateChildren(oldEl, newVNode, options);
+}
+function updateChildren(oldEl, newVNode, options = {}) {
   if (!oldEl.hasChildNodes() && !newVNode.children.length) {
     return;
   }
-  var oldChildren = children(oldEl);
+  var oldChildren = children$1(oldEl);
   var newChildren = vNodeChildren(newVNode);
   var max = Math.max(oldChildren.length, newChildren.length);
   if (max === 0) {
@@ -2463,7 +1821,12 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   }
   if (oldChildren.length === 0 && newChildren.length > 0) {
     var fragment = document.createDocumentFragment();
-    newChildren.forEach((it) => fragment.appendChild(it.makeElement(true, options).el));
+    newChildren.forEach((it) => {
+      const retElement = it.makeElement(true, options).el;
+      if (retElement) {
+        fragment.appendChild(retElement);
+      }
+    });
     oldEl.appendChild(fragment);
     newChildren.forEach((it) => {
       it.runMounted();
@@ -2478,6 +1841,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
 }
 function updateElement(parentElement, oldEl, newVNode, options = {}) {
   var _a;
+  parentElement = parentElement || options.context.parentElement;
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
     return;
@@ -2503,7 +1867,7 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     updatePropertyAndChildren(oldEl, newVNode, options);
   }
 }
-const children = (el) => {
+const children$1 = (el) => {
   var element = el.firstChild;
   if (!element) {
     return [];
@@ -3405,7 +2769,6 @@ class StoreHandler extends BaseHandler {
     this.addBinding(magicMethod);
   }
 }
-let currentComponent = null;
 let contextProviderList = {};
 function renderFromRoot() {
   renderRootElementInstanceList(true);
@@ -3528,17 +2891,6 @@ function createContext(defaultValue2) {
   };
   createContextProvider(context);
   return context;
-}
-function getCurrentComponent() {
-  return currentComponent;
-}
-function resetCurrentComponent(component) {
-  currentComponent = component;
-}
-function renderComponent(component) {
-  if (component.isMounted) {
-    component.render();
-  }
 }
 const providerEvents = {};
 function addProviderSubscribe(providerId, component, callback) {
@@ -3904,6 +3256,12 @@ const _EventMachine = class extends HookMachine {
     this.cleanHooks();
     this.render();
   }
+  setParentElement(parentElement) {
+    this.parentElement = parentElement;
+  }
+  is(name, callback) {
+    return this.sourceName === name && callback(this);
+  }
   async render($container) {
     if (!this.isPreLoaded) {
       this.checkLoad($container);
@@ -3921,13 +3279,17 @@ const _EventMachine = class extends HookMachine {
       ].join("\n"));
     }
     if (this.$el) {
-      DomVNodeDiff(this.$el.el, template, {
-        checkRefClass: this.checkRefClass,
-        context: this,
-        registerRef: this.registerRef,
-        registerChildComponent: this.registerChildComponent
-      });
-      requestAnimationFrame(this.onUpdated.bind(this));
+      if (template.type === VNodeType.FRAGMENT) {
+        updateChildren(this.parentElement, template);
+      } else {
+        DomVNodeDiff(this.$el.el, template, {
+          checkRefClass: this.checkRefClass,
+          context: this,
+          registerRef: this.registerRef,
+          registerChildComponent: this.registerChildComponent
+        });
+      }
+      this.runUpdated();
     } else {
       const newDomElement = this.parseMainTemplate(template);
       this.$el = newDomElement;
@@ -3968,30 +3330,6 @@ const _EventMachine = class extends HookMachine {
   }
   getFunctionComponent() {
     return this;
-  }
-  createFunctionComponent(EventMachineComponent, props, BaseClass = _EventMachine, state = {}) {
-    class FunctionElement extends BaseClass {
-      initializeProperty(opt, props2 = {}, state2 = {}) {
-        super.initializeProperty(opt, props2, state2);
-        this.sourceName = this.getFunctionComponent().name || this.sourceName;
-      }
-      getFunctionComponent() {
-        return EventMachineComponent;
-      }
-      isInstanceOf(Component) {
-        return EventMachineComponent === Component;
-      }
-      template() {
-        return EventMachineComponent.call(this, this.props);
-      }
-    }
-    return new FunctionElement(this, props, state);
-  }
-  createInstanceForComponent(EventMachineComponent, props, state) {
-    if (EventMachineComponent.__proto__.name === "" && isFunction(EventMachineComponent)) {
-      return this.createFunctionComponent(EventMachineComponent, props, void 0, state);
-    }
-    return new EventMachineComponent(this, props, state);
   }
   refresh() {
     this.render();
@@ -4062,6 +3400,9 @@ const _EventMachine = class extends HookMachine {
   }
   runMounted() {
     this.onMounted();
+  }
+  runUpdated() {
+    this.onUpdated();
   }
   onMounted() {
     var _a;
@@ -4161,34 +3502,701 @@ const _UIElement = class extends EventMachine {
     this.$store.on(id, newCallback, this, debounceSecond, throttleSecond, false, true);
     return id;
   }
-  createFunctionComponent(EventMachineComponent, props, baseClass = _UIElement) {
-    return super.createFunctionComponent(EventMachineComponent, props, baseClass);
-  }
-  static createElementInstance(ElementClass, props) {
-    if (ElementClass.__proto__.name === "") {
-      class FunctionElement extends _UIElement {
-        template() {
-          return ElementClass.call(this, this.props);
-        }
+  static createFunctionElementInstance(EventMachineComponent, parentInstance, props, state = {}) {
+    class FunctionElement extends _UIElement {
+      initializeProperty(opt, props2 = {}, state2 = {}) {
+        super.initializeProperty(opt, props2, state2);
+        this.sourceName = this.getFunctionComponent().name || this.sourceName;
       }
-      return new FunctionElement(props, props);
+      getFunctionComponent() {
+        return EventMachineComponent;
+      }
+      isInstanceOf(Component) {
+        return EventMachineComponent === Component;
+      }
+      template() {
+        return EventMachineComponent.call(this, this.props);
+      }
+    }
+    return new FunctionElement(parentInstance, props, state);
+  }
+  static createElementInstance(ElementClass, parent, props, state) {
+    if (ElementClass.__proto__.name === "") {
+      return _UIElement.createFunctionElementInstance(ElementClass, parent, props, state);
     } else {
-      return new ElementClass(props, props);
+      return new ElementClass(parent, props, state);
     }
   }
 };
 let UIElement = _UIElement;
 _storeInstance = new WeakMap();
+function createComponentInstance(ComponentClass, parent, props, state) {
+  return UIElement.createElementInstance(ComponentClass, parent, props, state);
+}
+const NumberStyleKeys = {
+  animationIterationCount: true,
+  borderImageOutset: true,
+  borderImageSlice: true,
+  borderImageWidth: true,
+  boxFlex: true,
+  boxFlexGroup: true,
+  boxOrdinalGroup: true,
+  columnCount: true,
+  columns: true,
+  flex: true,
+  flexGrow: true,
+  flexPositive: true,
+  flexShrink: true,
+  flexNegative: true,
+  flexOrder: true,
+  gridRow: true,
+  gridRowEnd: true,
+  gridRowSpan: true,
+  gridRowStart: true,
+  gridColumn: true,
+  gridColumnEnd: true,
+  gridColumnSpan: true,
+  gridColumnStart: true,
+  fontSize: true,
+  lineClamp: true,
+  lineHeight: true,
+  opacity: true,
+  order: true,
+  orphans: true,
+  tabSize: true,
+  widows: true,
+  zIndex: true,
+  zoom: true,
+  width: true,
+  maxWidth: true,
+  maxHeight: true,
+  height: true,
+  top: true,
+  left: true,
+  right: true,
+  bottom: true,
+  border: true,
+  padding: true,
+  margin: true,
+  paddingLeft: true,
+  paddingRight: true,
+  paddingTop: true,
+  paddingBottom: true,
+  marginLeft: true,
+  marginRight: true,
+  marginTop: true,
+  marginBottom: true,
+  gap: true,
+  columnGap: true,
+  rowGap: true,
+  fillOpacity: true,
+  floodOpacity: true,
+  stopOpacity: true,
+  strokeDasharray: true,
+  strokeDashoffset: true,
+  strokeMiterlimit: true,
+  strokeOpacity: true,
+  strokeWidth: true
+};
+const styleKeys = {};
+const uppercasePattern = /([A-Z])/g;
+const convertStyleKey = (key) => {
+  if (styleKeys[key]) {
+    return styleKeys[key];
+  }
+  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+  styleKeys[key] = upperKey;
+  return upperKey;
+};
+function styleMap(key, value) {
+  if (typeof value === "number") {
+    if (NumberStyleKeys[key]) {
+      value = value + "px";
+    }
+  }
+  return value;
+}
+function styleKeyMap(key) {
+  return convertStyleKey(key);
+}
+function css(style) {
+  const newStyles = {};
+  Object.keys(style).forEach((styleKey) => {
+    newStyles[styleKeyMap(styleKey)] = styleMap(styleKey, style[styleKey]);
+  });
+  return newStyles;
+}
+const SVG_ELEMENTS = {
+  svg: true,
+  g: true,
+  path: true,
+  rect: true,
+  circle: true,
+  ellipse: true,
+  line: true,
+  polyline: true,
+  polygon: true,
+  text: true,
+  tspan: true,
+  textPath: true,
+  tref: true,
+  defs: true,
+  clipPath: true,
+  mask: true,
+  pattern: true,
+  image: true,
+  linearGradient: true,
+  radialGradient: true,
+  stop: true,
+  animate: true,
+  animateMotion: true,
+  animateColor: true,
+  animateTransform: true,
+  mpath: true,
+  set: true,
+  use: true,
+  desc: true,
+  metadata: true,
+  title: true,
+  marker: true,
+  symbol: true,
+  view: true,
+  foreignObject: true,
+  switch: true,
+  link: true
+};
+function isSVG(tagName) {
+  return !!SVG_ELEMENTS[tagName];
+}
+const TAG_PREFIX = "<";
+const TEMP_DIV = Dom.create("div");
+const TEMP_TEXT = document.createTextNode("");
+const TEMP_COMMENT = document.createComment("");
+let cache = {};
+let cacheCount = 0;
+let nativeDomCache = {};
+function makeNativeDom(name) {
+  if (!nativeDomCache[name]) {
+    const el = isSVG(name) ? document.createElementNS("http://www.w3.org/2000/svg", name) : document.createElement(name);
+    nativeDomCache[name] = el;
+  }
+  return nativeDomCache[name].cloneNode(false);
+}
+function makeNativeTextDom(value) {
+  const text = TEMP_TEXT.cloneNode();
+  text.textContent = value;
+  return text;
+}
+function makeNativeCommentDom(value) {
+  const text = TEMP_COMMENT.cloneNode();
+  text.textContent = value;
+  return text;
+}
+const expectAttributes = {
+  content: true
+};
+function setAttribute(el, name, value) {
+  if (expectAttributes[name])
+    return;
+  el.setAttribute(name, value);
+}
+function setEventAttribute(el, name, value) {
+  el[name.toLowerCase()] = value;
+}
+function setStyle(el, key, value) {
+  if (key.indexOf("--") === 0) {
+    if (typeof value === "undefined") {
+      el.style.removeProperty(key);
+    } else {
+      el.style.setProperty(key, value);
+    }
+  } else {
+    el.style[key] = value;
+  }
+}
+function stringifyStyle(styleObject) {
+  const newStyle = css(styleObject);
+  return Object.keys(newStyle).map((key) => {
+    return `${key}: ${newStyle[key]};`;
+  }).join(" ");
+}
+function getProps(attributes) {
+  var results = {};
+  const len = attributes.length;
+  for (let i = 0; i < len; i++) {
+    const t = attributes[i];
+    const name = t.name;
+    const value = t.value;
+    results[name] = value;
+  }
+  return results;
+}
+const children = (el) => {
+  var element = el.firstChild;
+  if (!element) {
+    return [];
+  }
+  var results = [];
+  do {
+    results[results.length] = element;
+    element = element.nextSibling;
+  } while (element);
+  return results;
+};
+function makeOneElement(html) {
+  if (cacheCount > 2e3) {
+    cacheCount = 0;
+    cache = {};
+  }
+  if (!cache[html]) {
+    cacheCount++;
+    cache[html] = TEMP_DIV.html(html).first.el;
+  }
+  return cache[html].cloneNode(true);
+}
+class VNode {
+  constructor(type, tag, props, children2, Component) {
+    this.type = type;
+    this.tag = tag;
+    this.nodeName = tag == null ? void 0 : tag.toUpperCase();
+    this.props = props;
+    this.children = children2;
+    this.Component = Component;
+    this.initializeProps();
+    this.initializeChildren();
+  }
+  clone() {
+    return new VNode(this.type, this.tag, __spreadValues({}, this.props), this.children.map((it) => it.clone()), this.Component);
+  }
+  find(callback) {
+    return this.props.content.find(callback);
+  }
+  mounted() {
+  }
+  runMounted() {
+    if (this.mounted) {
+      requestAnimationFrame(() => {
+        this.mounted();
+      }, 0);
+    }
+  }
+  get stringifyStyle() {
+    return this.tagProps.style;
+  }
+  initializeProps() {
+    const newProps = Object.assign({}, this.props);
+    if (!this.Component) {
+      if (isObject(newProps.style)) {
+        newProps.style = stringifyStyle(newProps.style);
+      }
+      this.tagProps = newProps;
+    } else {
+      const targetVariable = Object.keys(newProps).length ? variable(newProps) : void 0;
+      const newProps2 = {
+        ref: newProps.ref ? newProps.ref : void 0
+      };
+      if (targetVariable) {
+        newProps2[targetVariable] = "";
+      }
+      this.tagProps = newProps2;
+    }
+    if (this.props.enableHtml) {
+      this.enableHtml = this.props.enableHtml;
+      delete this.props.enableHtml;
+    }
+  }
+  initializeChildren() {
+    if (isArray(this.children)) {
+      if (this.props.content)
+        return;
+      this.children = this.children.filter(Boolean).map((child) => {
+        if (isString(child)) {
+          if (this.enableHtml) {
+            if (child.indexOf(TAG_PREFIX) === -1) {
+              return createVNodeText(child);
+            } else {
+              const newEl = makeOneElement(child);
+              if ((newEl == null ? void 0 : newEl.nodeType) === 3) {
+                return createVNodeText(newEl.textContent);
+              }
+              return createVNodeElement(newEl);
+            }
+          } else {
+            return createVNodeText(child);
+          }
+        } else if (isNumber(child)) {
+          return createVNodeText(child);
+        }
+        return child;
+      });
+      this.props.content = this.children;
+    }
+  }
+  makeChildren(withChildren, options) {
+    const parentElement = this.el;
+    const children2 = this.children;
+    if (children2 && children2.length) {
+      const fragment = document.createDocumentFragment();
+      children2.forEach((child) => {
+        if (child instanceof VNode || child.makeElement) {
+          child.setParentElement(parentElement);
+          const el = child.makeElement(withChildren, options).el;
+          if (el) {
+            fragment.appendChild(el);
+          }
+        } else if (isArray(child)) {
+          child.forEach((it) => {
+            if (it) {
+              const el = it.makeElement(withChildren, options).el;
+              if (el) {
+                fragment.appendChild(el);
+              }
+            }
+          });
+        } else if (isFunction(child)) {
+          fragment.appendChild(child());
+        } else if (child instanceof window.HTMLElement) {
+          fragment.appendChild(child);
+        } else {
+          fragment.appendChild(document.createTextNode(child));
+        }
+      });
+      parentElement.appendChild(fragment);
+      children2.forEach((child) => {
+        if (isArray(child)) {
+          child.forEach((it) => {
+            if (it) {
+              it.runMounted();
+            }
+          });
+        } else if (child) {
+          child.runMounted();
+        }
+      });
+    }
+  }
+  setParentElement(parentElement) {
+    this.parentElement = parentElement;
+  }
+  async makeChildrenHtml(withChildren, options) {
+    const tempChildren = [];
+    const children2 = this.children;
+    if (children2 && children2.length) {
+      const tempArray = await Promise.all(children2.map(async (child) => {
+        if (child instanceof VNode || child.makeHtml) {
+          return await child.makeHtml(withChildren, options);
+        } else if (isArray(child)) {
+          return await Promise.all(child.map(async (it) => {
+            if (it) {
+              return await it.makeHtml(withChildren, options);
+            }
+            return void 0;
+          })).filter((it) => typeof it !== "undefined");
+        } else if (isFunction(child)) {
+          return await child();
+        } else {
+          return await child;
+        }
+      }));
+      tempChildren.push(...tempArray);
+    }
+    return tempChildren.join("\n");
+  }
+  createElement() {
+    return makeNativeDom(this.tag);
+  }
+  makeElement(withChildren = false, options = {}) {
+    if (this.el)
+      return this;
+    const el = this.createElement();
+    const props = this.tagProps;
+    if (props) {
+      Object.keys(props).forEach((key) => {
+        const value = props[key];
+        if (key === "style") {
+          if (isString(value)) {
+            el.style.cssText = value;
+          } else {
+            const styleValues = css(value);
+            Object.entries(styleValues).forEach(([localKey, value2]) => {
+              setStyle(el, localKey, value2);
+            });
+          }
+        } else {
+          if (key) {
+            if (value !== void 0) {
+              if (key.startsWith("on")) {
+                setEventAttribute(el, key, value);
+              } else {
+                setAttribute(el, key, value);
+              }
+            }
+          }
+        }
+        if (key === "ref" && value) {
+          this.ref = value;
+          isFunction(options.registerRef) && options.registerRef(value, el);
+        }
+      });
+    }
+    this.el = el;
+    this.makeChildren(withChildren, options);
+    return this;
+  }
+  async makeHtml(withChildren = false, options = {}) {
+    const tempProps = [];
+    const props = this.tagProps;
+    if (props) {
+      Object.keys(props).forEach((key) => {
+        const value = props[key];
+        if (key === "style") {
+          if (isString(value))
+            ;
+          else {
+            props[key] = stringifyStyle(css(value));
+          }
+        } else {
+          if (key) {
+            if (value !== void 0) {
+              if (key.startsWith("on")) {
+                return;
+              }
+            }
+          }
+        }
+        if (key === "ref") {
+          return;
+        }
+        if (value) {
+          tempProps.push(`${key}="${value}"`);
+        }
+      });
+    }
+    if (isVoidTag(this.tag)) {
+      return `
+        <${this.tag} ${tempProps.join(" ")} />
+      `;
+    } else {
+      const childrenHtml = await this.makeChildrenHtml(withChildren, options);
+      return `
+        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
+      `;
+    }
+  }
+}
+class VNodeText extends VNode {
+  constructor(value) {
+    super(VNodeType.TEXT, null, {});
+    this.value = value;
+  }
+  clone() {
+    return new VNodeText(this.value);
+  }
+  get textContent() {
+    return this.value;
+  }
+  runMounted() {
+  }
+  createElement() {
+    return makeNativeTextDom(this.value);
+  }
+  makeElement() {
+    if (this.el)
+      return this;
+    this.el = this.createElement();
+    return this;
+  }
+  makeHtml() {
+    return this.value;
+  }
+}
+class VNodeComment extends VNode {
+  constructor(value) {
+    super(VNodeType.COMMENT, null, {});
+    this.value = value;
+  }
+  clone() {
+    return new VNodeComment(this.value);
+  }
+  get textContent() {
+    return this.value;
+  }
+  runMounted() {
+  }
+  createElement() {
+    return makeNativeCommentDom(this.value);
+  }
+  makeElement() {
+    if (this.el)
+      return this;
+    this.el = this.createElement();
+    return this;
+  }
+  makeHtml() {
+    return this.value;
+  }
+}
+class VNodeFragment extends VNode {
+  constructor(props = {}, children2) {
+    super(VNodeType.FRAGMENT, "fragment", props || {}, children2);
+  }
+  clone() {
+    return new VNodeFragment(this.props, this.children.map((it) => it.clone()));
+  }
+  makeElement(withChildren = false, options = {}) {
+    if (this.el)
+      return this;
+    const el = document.createDocumentFragment();
+    this.el = el;
+    this.makeChildren(withChildren, options);
+    return this;
+  }
+  async makeHtml(withChildren = false, options = {}) {
+    return await this.makeChildrenHtml(withChildren, options);
+  }
+}
+class VNodeComponent extends VNode {
+  constructor(props = {}, children2, Component) {
+    super(VNodeType.COMPONENT, "object", props || {}, children2);
+    this.Component = Component;
+    this.instance = null;
+  }
+  clone() {
+    return new VNodeComponent(this.props, this.children.map((it) => it.clone()), this.Component);
+  }
+  mounted() {
+    var _a;
+    (_a = this.instance) == null ? void 0 : _a.onMounted();
+  }
+  makeClassInstance(options) {
+    var _a, _b, _c;
+    const props = this.props;
+    this.Component = getModule(this.Component);
+    const hooks = (_a = this.instance) == null ? void 0 : _a.copyHooks();
+    const state = (_b = this.instance) == null ? void 0 : _b.state;
+    const oldId = (_c = this.instance) == null ? void 0 : _c.id;
+    this.instance = createComponentInstance(this.Component, options.context, props, state);
+    if (oldId) {
+      this.instance.setId(oldId);
+    }
+    if (hooks) {
+      this.instance.reloadHooks(hooks);
+    }
+    return this.instance;
+  }
+  render(options) {
+    this.makeClassInstance(options);
+    try {
+      this.instance.setParentElement(this.parentElement);
+      this.instance.render(options.$container);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async renderHtml(options) {
+    this.makeClassInstance(options);
+    return await this.instance.renderToHtml();
+  }
+  makeElement(withChildren, options = {}) {
+    var _a, _b;
+    if (this.el)
+      return this;
+    this.render(options);
+    this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
+    if (this.el) {
+      const id = this.props.ref || this.instance.id;
+      isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
+    }
+    return this;
+  }
+  async makeHtml(withChildren, options = {}) {
+    return await this.renderHtml(options);
+  }
+}
+class VNodeElement extends VNode {
+  constructor(el) {
+    super(VNodeType.ELEMENT, null, {});
+    this.el = el;
+    this.outerHTML = el.outerHTML;
+    this.pass = true;
+  }
+  clone() {
+    return new VNodeElement(this.el);
+  }
+  makeElement() {
+    return this;
+  }
+}
+function createVNode({ tag, props = {}, children: children2 }) {
+  return new VNode(VNodeType.NODE, tag, props, children2);
+}
+function createVNodeComponent({ props = {}, children: children2, Component }) {
+  if (typeof Component === "undefined") {
+    throw new Error("Component is undefined");
+  }
+  return new VNodeComponent(props, children2, Component);
+}
+function createVNodeFragment({ props = {}, children: children2 }) {
+  return new VNodeFragment(props, children2);
+}
+function createVNodeText(text) {
+  return new VNodeText(text);
+}
+function createVNodeComment(text) {
+  return new VNodeComment(text);
+}
+function createVNodeElement(el) {
+  return new VNodeElement(el);
+}
+function htmlToVNode(html) {
+  const $dom = Dom.createByHTML(html);
+  return createVNodeByDom($dom.el);
+}
+function createVNodeByDom(el) {
+  return createVNode({
+    tag: el.tagName.toLowerCase(),
+    props: getProps(el.attributes),
+    children: children(el).map((it) => {
+      return createVNodeByDom(it);
+    })
+  });
+}
+function cloneVNode(vnode) {
+  return vnode.clone();
+}
+function jsonToVNode(json) {
+  const _a = json, { children: children2 = [] } = _a, rest = __objRest(_a, ["children"]);
+  if (typeof json === "string" || typeof json === "number") {
+    return createVNodeText(json);
+  }
+  if (rest.type === "comment") {
+    return createVNodeComment(rest.text);
+  }
+  if (rest.type === "text") {
+    return createVNodeText(rest.text);
+  }
+  if (rest.type === "fragment") {
+    return createVNodeFragment(__spreadProps(__spreadValues({}, rest), {
+      children: children2.map((it) => jsonToVNode(it))
+    }));
+  }
+  if (rest.type === "component" || rest.Component) {
+    return createVNodeComponent(__spreadProps(__spreadValues({}, rest), {
+      children: children2.map((it) => jsonToVNode(it))
+    }));
+  }
+  return createVNode(__spreadProps(__spreadValues({}, rest), {
+    children: children2.map((it) => jsonToVNode(it))
+  }));
+}
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
-  console.log($container.children());
   const $targetElement = $container.children().find((it) => it.el.__component);
-  console.log($targetElement);
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
-  const app = UIElement.createElementInstance(ElementClass, opt);
+  const app = createComponentInstance(ElementClass, null, opt);
   if ($targetElement) {
     app.$el = Dom.create($targetElement.el);
     app.id = $targetElement.el.__component.id;
@@ -4197,15 +4205,16 @@ const start = (ElementClass, opt = {}) => {
     app.render($container);
   }
   app.$el.el.__component = app;
-  registRootElementInstance(app);
+  registRootElementInstance(app, $container);
   return app;
 };
+const render = start;
 async function renderToHtml(ElementClass, opt) {
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
-  const app = UIElement.createElementInstance(ElementClass, opt);
+  const app = createComponentInstance(ElementClass, null, opt);
   const html = await app.renderToHtml();
   return html;
 }
@@ -4266,4 +4275,4 @@ function createElementJsx(Component, props = {}, ...children2) {
 }
 const FragmentInstance = new Object();
 const HTMLComment = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentInstance, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };

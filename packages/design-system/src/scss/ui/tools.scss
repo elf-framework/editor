@@ -20,6 +20,7 @@
         min-width: var(--elf--tools-min-width);
         background-color: var(--elf--tools-background-color);
         position: relative;
+        user-select: none;
 
         &.has-items {
             min-width: calc(var(--elf--tools-min-width) + var(--elf--tools-min-width-scale));
@@ -33,7 +34,31 @@
             user-select: none;
         }
 
+        // 안보이는 마우스 체크 영역 추가         
         > .menu-area {
+            > .background{
+                height: 10px;
+                width: 200px;
+                display: block;
+                position: absolute;
+                z-index: 1;
+                top: 100%;
+                right: 0px;
+
+                // 안보이는 마우스 체크 영역 추가 
+                &[data-direction="left"] {
+                    left: 0px;
+                }   
+
+                &[data-direction="right"] {
+                    right: 0px;
+                }
+
+                &[data-direction="center"] {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
             > .arrow {
                 position: absolute;
                 width: 0; 
@@ -75,6 +100,11 @@
                     }
     
                 }
+            }
+
+            .menu-title {
+                display: flex;
+                align-items: center;
             }
 
             > .arrow {

@@ -39,9 +39,7 @@ export class VirtualScroll extends UIElement {
       class: classnames("elf--virtual-scroll", this.props.class),
       style: {
         ...propertyMap(style, cssProperties),
-        "--elf--virtual-scroll-item-width": this.state.width
-          ? `${this.state.width}px`
-          : "100%",
+        "--elf--virtual-scroll-item-width": "100%",
         "--elf--virtual-scroll-item-height": `${itemHeight}px`,
         "--elf--virtual-scroll-item-count": totalCount,
         "--elf--virtual-scroll-panel-height": `${totalCount * itemHeight}px`,

@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/ui",
-  "version": "2.0.9",
+  "version": "2.0.14",
   "description": "Fantastic UI library",
   "types": "./index.d.ts",
   "files": [
@@ -68,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/easylogic/editor.git"
+    "url": "git+https://github.com/elf-framework/editor.git"
   },
   "keywords": [
     "CSS",
@@ -77,10 +77,10 @@
     "Path",
     "SVG"
   ],
-  "author": "easylogic",
+  "author": "elf-framework",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/easylogic/editor/issues"
+    "url": "https://github.com/elf-framework/editor/issues"
   },
-  "homepage": "https://editor.easylogic.studio/"
+  "homepage": "https://editor.elf-framework.com/"
 }

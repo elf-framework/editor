@@ -307,6 +307,10 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
     getProps(oldEl, oldEl.attributes, newVNodeProps)
   ); // added
 
+  updateChildren(oldEl, newVNode, options);
+}
+
+export function updateChildren(oldEl, newVNode, options = {}) {
   // check children count
   if (!oldEl.hasChildNodes() && !newVNode.children.length) {
     return;
@@ -323,9 +327,13 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
   if (oldChildren.length === 0 && newChildren.length > 0) {
     var fragment = document.createDocumentFragment();
-    newChildren.forEach((it) =>
-      fragment.appendChild(it.makeElement(true, options).el)
-    );
+    newChildren.forEach((it) => {
+      const retElement = it.makeElement(true, options).el;
+
+      if (retElement) {
+        fragment.appendChild(retElement);
+      }
+    });
     // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
     // B 에서 모든 자식을 A 에 추가한다.
     oldEl.appendChild(fragment);
@@ -338,6 +346,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   } else {
     // 그 외는 다시 loop를 돌린다.
     for (var i = 0; i < max; i++) {
+      // console.log(oldEl, newVNode, oldChildren, newChildren);
       updateElement(oldEl, oldChildren[i], newChildren[i], options);
     }
   }
@@ -351,6 +360,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
  *
  */
 function updateElement(parentElement, oldEl, newVNode, options = {}) {
+  parentElement = parentElement || options.context.parentElement;
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
     return;
@@ -425,6 +435,7 @@ const DefaultOption = {
  */
 export function DomVNodeDiff(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
+
   if (oldEl.nodeType !== 11) {
     // fragment 가 아니면 비교를 시작한다.
     updateElement(oldEl.parentElement, oldEl, newVNode, options);

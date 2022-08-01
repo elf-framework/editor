@@ -1,5 +1,12 @@
 # @elf-framework/ui-react
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.0.10
+
 ## 0.0.3
 
 ### Patch Changes

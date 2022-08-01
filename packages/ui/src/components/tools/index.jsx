@@ -12,6 +12,7 @@ import {
 import { ArrowIcon } from "../../icon/arrow";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
+import { Flex } from "../flex/index";
 import { Menu } from "../menu/index";
 
 const ToolsItemType = {
@@ -70,11 +71,12 @@ class ToolsItem extends UIElement {
         onClick={this.props.onClick}
       >
         <button type="button">
-          {icon ? (
-            <span class="icon">{icon}</span>
-          ) : title ? (
-            <span class="menu-title">{title}</span>
-          ) : undefined}
+          <Flex style={{ columnGap: 4 }}>
+            {[
+              icon ? <span class="icon">{icon}</span> : undefined,
+              title ? <span class="menu-title">{title}</span> : undefined,
+            ].filter(Boolean)}
+          </Flex>
         </button>
       </div>
     );
@@ -136,6 +138,7 @@ export class ToolsMenuItem extends ToolsItem {
       title = "",
       icon,
       disabled,
+      selected,
       items = [],
       opened = false,
       direction = "left",
@@ -143,21 +146,34 @@ export class ToolsMenuItem extends ToolsItem {
     } = this.state;
 
     const hasItems = items.length > 0;
+    const isSelected = selected
+      ? isFunction(selected)
+        ? selected()
+        : selected
+      : undefined;
 
     return (
       <div
         class={classnames("elf--tools-item", {
-          selected: this.selected ? true : undefined,
+          selected: isSelected,
           "has-items": hasItems,
         })}
         disabled={disabled}
       >
         <button type="button">
-          {icon ? (
-            <span class="icon">{icon}</span>
-          ) : title ? (
-            <span class="menu-title">{title}</span>
-          ) : undefined}
+          <Flex style={{ columnGap: 4 }}>
+            {[
+              icon ? (
+                <span class="icon">{isFunction(icon) ? icon() : icon}</span>
+              ) : undefined,
+              title ? (
+                <span class="menu-title">
+                  {isFunction(title) ? title() : title}
+                </span>
+              ) : undefined,
+            ].filter(Boolean)}
+          </Flex>
+
           {hasItems ? (
             <span class={classnames("arrow", { opened: opened })}>
               <ArrowIcon />
@@ -165,7 +181,8 @@ export class ToolsMenuItem extends ToolsItem {
           ) : undefined}
         </button>
         {opened && !disabled ? (
-          <div class="menu-area">
+          <div class="menu-area" style={{ backgroundColor: "yellow" }}>
+            <div class="background" data-direction={direction}></div>
             <div class="arrow"></div>
             <Menu
               ref="$menu"
@@ -190,10 +207,13 @@ export class ToolsMenuItem extends ToolsItem {
   }
 
   open() {
-    this.setState({
-      rect: this.$el.rect(),
-      opened: true,
-    });
+    // close 되어 있을 때만 open 을 실행한다.
+    if (!this.state.opened) {
+      this.setState({
+        rect: this.$el.rect(),
+        opened: true,
+      });
+    }
   }
 
   close() {
@@ -227,9 +247,9 @@ export class ToolsMenuItem extends ToolsItem {
   }
 
   checkTriggerClick() {
-    const { trigger = "click" } = this.props;
+    const { trigger = "click", onClick } = this.props;
 
-    return trigger === "click";
+    return trigger === "click" || (trigger === "hover" && isFunction(onClick));
   }
 
   checkTriggerOver() {
@@ -267,6 +287,7 @@ export class ToolsMenuItem extends ToolsItem {
       } else {
         this.runCallback(this.props.onClose, e);
       }
+      this.runCallback(this.props.onClick, e);
     } else {
       this.close();
 

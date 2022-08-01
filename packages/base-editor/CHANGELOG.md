@@ -1,5 +1,36 @@
 # @elf-framework/base-editor
 
+## 2.0.14
+
+### Patch Changes
+
+- modify config settings
+
+- Updated dependencies []:
+  - @elf-framework/ui@2.0.14
+
+## 2.0.13
+
+### Patch Changes
+
+- update index.d.ts
+
+## 2.0.11
+
+### Patch Changes
+
+- support initialize for editor plugin
+
+## 2.0.10
+
+### Patch Changes
+
+- Support InjectView or editor.getUIList()
+
+- Updated dependencies []:
+  - @elf-framework/ui@2.0.10
+  - @elf-framework/sapa@2.0.10
+
 ## 2.0.9
 
 ### Patch Changes

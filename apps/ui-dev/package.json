@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -8,7 +8,8 @@
     "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
     "ui:dev": "bun run vite:dev",
     "//build": "npm run vite:prod",
-    "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
+    "vite:prod": "vite build --config=vite.prod.config.js",
+    "vite:preview": "vite preview --config=vite.prod.config.js",
     "copy:resource": "cp CNAME docs/",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",
     "format": "prettier .  --write"
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
+    "glob": "^8.0.3",
     "rollup-plugin-copy": "^3.4.0",
     "vite": "^2.9.13",
     "vite-plugin-copy": "^0.1.6",

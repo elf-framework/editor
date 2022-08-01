@@ -41,17 +41,17 @@ export class Tab extends UIElement {
   }
 
   template() {
-    const { style = {}, content, fitted, align = "left" } = this.props;
+    const { style = {}, content, full, fitted, align = "left" } = this.props;
     const { activeKey } = this.state;
     const styleObject = {
-      class: classnames("elf--tab"),
+      class: classnames("elf--tab", {
+        full,
+      }),
       style: propertyMap(style, cssProperties),
     };
 
-    console.log(align);
-
     return (
-      <div class="elf--tab" {...styleObject}>
+      <div {...styleObject}>
         <div class="elf--tab-header">
           <TabStrip
             fitted={fitted}

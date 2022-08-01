@@ -1,6 +1,6 @@
 .elf--app-layout {
     --elf--app-layout-resize-bar-background-color: transparent;
-    --elf--app-layout-resize-bar-hover-color: blue;
+    --elf--app-layout-resize-bar-hover-color: var(--elf--primary-color);
     --elf--app-layout-resize-bar-size: 6px;
     --elf--app-layout-border-color: #e0e0e0;
 
@@ -22,7 +22,7 @@
     .elf--app-layout-resize-bar {
         transition: background-color 0.2s ease-in-out;
         background-color: var(--elf--app-layout-resize-bar-background-color);
-
+        z-index: 1;
         &:hover {
             --elf--app-layout-resize-bar-background-color: var(--elf--app-layout-resize-bar-hover-color);
         }
@@ -33,13 +33,13 @@
         flex: 1 1 auto;
         display: flex;
         flex-direction: row;
+        z-index: 0;
 
 
         > .elf--app-layout-item[data-direction="left"] {
             order: 1;
             flex: none;
-            position: relative;
-            z-index: 1;            
+            position: relative; 
             border-right: 1px solid var(--elf--app-layout-border-color);
             box-sizing: border-box;            
 
@@ -50,7 +50,6 @@
                 bottom: 0px;
                 width: var(--elf--app-layout-resize-bar-size);
                 cursor: col-resize;
-                z-index: 1;
             }
 
         }    
@@ -64,7 +63,6 @@
             order: 3;
             flex: none;
             position: relative;
-            z-index: 1;
             border-left: 1px solid var(--elf--app-layout-border-color);            
             box-sizing: border-box;
 
@@ -75,7 +73,6 @@
                 bottom: 0px;
                 width: var(--elf--app-layout-resize-bar-size);
                 cursor: col-resize;
-                z-index: 1;
             }            
         }    
     
@@ -85,8 +82,10 @@
     > .elf--app-layout-item[data-direction="top"] {
         order: 1;
         flex: none;
-        border-bottom: 1px solid var(--elf--app-layout-border-color);            
+        // border-bottom: 1px solid var(--elf--app-layout-border-color);            
         box-sizing: border-box;        
+
+        z-index: 1;
 
         > .elf--app-layout-resize-bar {
             position: absolute;
@@ -95,7 +94,6 @@
             left: 0px;
             height: var(--elf--app-layout-resize-bar-size);
             cursor: row-resize;
-            z-index: 1;
         }                    
     }
 
@@ -104,7 +102,7 @@
         flex: none;        
         border-top: 1px solid var(--elf--app-layout-border-color);            
         box-sizing: border-box;        
-
+        z-index: 1;
 
         > .elf--app-layout-resize-bar {
             position: absolute;
@@ -113,7 +111,6 @@
             left: 0px;
             height: var(--elf--app-layout-resize-bar-size);
             cursor: row-resize;
-            z-index: 1;
         }                            
     }    
 

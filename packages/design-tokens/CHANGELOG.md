@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.0.10
+
+### Patch Changes
+
+- modify base ui
+
 ## 1.1.1
 
 ### Patch Changes

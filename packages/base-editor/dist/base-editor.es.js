@@ -14,7 +14,8 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { isFunction, isObject, VNode, isArray, createElementJsx, useStore, UIElement, classnames, FragmentInstance } from "@elf-framework/sapa";
+import { isFunction, isObject, VNode, isArray, createElementJsx, useStore, UIElement, useSelf, classnames } from "@elf-framework/sapa";
+import { View } from "@elf-framework/ui";
 var style = "";
 class CommandManager {
   constructor(editorContext) {
@@ -149,6 +150,39 @@ class ConfigManager {
     this.config.set(config.key, config.defaultValue);
     this.configList.push(config);
   }
+  updateConfig(config, isEmit = false) {
+    Object.entries(config).forEach(([key, value]) => {
+      if (isEmit) {
+        this.set(key, value);
+      } else {
+        this.config.set(key, value);
+      }
+    });
+  }
+}
+class EditorPlugin$1 {
+  constructor(editor, callback, options) {
+    this.editor = editor;
+    this.callback = callback;
+    this.options = options;
+    this.isActivated = false;
+    this.ret = null;
+  }
+  async initialize() {
+    const ret = await this.callback(this.editor, this.options);
+    this.isActivated = true;
+    return ret;
+  }
+  async activate() {
+    if (this.isActivated) {
+      return this.ret;
+    }
+    this.ret = await this.initialize();
+    return this.ret;
+  }
+  deactivate() {
+    this.isActivated = false;
+  }
 }
 class PluginManager {
   constructor(editorContext) {
@@ -156,12 +190,12 @@ class PluginManager {
     this.plugins = [];
   }
   registerPlugin(func, options = {}) {
-    this.plugins.push([func, options]);
+    this.plugins.push(new EditorPlugin$1(this.editorContext, func, options));
   }
   async initializePlugin() {
-    return await Promise.all(this.plugins.map(async ([CreatePluginFunction, options]) => {
+    return await Promise.all(this.plugins.map(async (plugin) => {
       try {
-        return await CreatePluginFunction(this.editorContext, options);
+        return await plugin.activate();
       } catch (e) {
         console.error(e);
         return void 0;
@@ -204,7 +238,7 @@ class UIManager {
     return void 0;
   }
   getGroupUI(key) {
-    const list = Object.values(this.groupUis[key]).map((uis) => {
+    const list = Object.values(this.groupUis[key] || {}).map((uis) => {
       return this.createUI(uis);
     }).filter(Boolean);
     return list;
@@ -215,17 +249,18 @@ class EditorContext {
   constructor($rootEditor, $options = {}) {
     this.$rootEditor = $rootEditor;
     this.$options = $options;
+    this.isPluginActivated = false;
     this.initialize();
   }
   initialize() {
     const {
       managers = {},
-      configs = [],
+      configList = [],
       commands = [],
       plugins = []
     } = this.$options;
     this.initializeManagers(managers);
-    this.initializeConfigs(configs);
+    this.initializeConfigs(configList);
     this.initializeCommands(commands);
     this.initializePlugins(plugins);
     this.emit("editor.initialize", this);
@@ -255,6 +290,9 @@ class EditorContext {
       this.configs.registerConfig(config);
     });
   }
+  updateConfigs(configs = {}) {
+    this.configs.updateConfig(configs);
+  }
   initializeCommands(commands = []) {
     commands.forEach((command) => {
       this.commands.registerCommand(command);
@@ -266,7 +304,10 @@ class EditorContext {
     });
   }
   async activate() {
-    return await this.plugins.activate();
+    const ret = await this.plugins.activate();
+    this.isPluginActivated = true;
+    this.updateConfigs(this.$options.configs);
+    return ret;
   }
   get $store() {
     return this.$rootEditor.$store;
@@ -292,6 +333,10 @@ class EditorContext {
   }
   getGroupUI(group) {
     return this.uis.getGroupUI(group);
+  }
+  getUIList(name) {
+    const list = [this.getUI(name), this.getGroupUI(name)].flat(Infinity).filter(Boolean);
+    return list;
   }
   getConfig(key) {
     return this.configs.get(key);
@@ -342,23 +387,34 @@ class Editor extends UIElement {
     this.$editor = new EditorContext(this, this.props);
     this.$store.set(KEY_EDITOR, this.$editor);
     this.$store.set(KEY_EDITOR_OPTION, this.props);
+    const { configs } = this.props;
+    this.$editor.updateConfigs(configs);
     this.activate();
   }
   async activate() {
     await this.$editor.activate();
+    this.trigger("editor.plugin.activated");
   }
 }
 class BaseEditor extends Editor {
   template() {
-    const { content } = this.props;
+    const editor = useEditor();
+    useSelf("editor.plugin.activated", () => {
+      this.refresh();
+    });
     return /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--base-editor", __spreadValues({
         "full-screen": this.props.fullScreen
       }, this.props.editorClass))
-    }, content);
+    }, editor.isPluginActivated ? editor.getUIList("renderView") : void 0);
   }
 }
-function InjectView({ views = [], groups = [] }) {
+function InjectView({
+  views = [],
+  groups = [],
+  as = "div",
+  style: style2 = {}
+}) {
   const editor = useEditor();
   const list = [
     ...views.map((it) => {
@@ -368,6 +424,9 @@ function InjectView({ views = [], groups = [] }) {
       return editor.getGroupUI(it);
     })
   ].flat(Infinity).filter(Boolean);
-  return /* @__PURE__ */ createElementJsx(FragmentInstance, null, list);
+  return /* @__PURE__ */ createElementJsx(View, {
+    as,
+    style: style2
+  }, list);
 }
 export { BaseEditor, Editor, EditorPlugin, InjectView, useCommand, useConfig, useEditor, useEditorOption, useI18n, useSetConfig };
