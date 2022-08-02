@@ -293,12 +293,14 @@ export class VNode {
       children.forEach((child) => {
         if (isArray(child)) {
           child.forEach((it) => {
-            if (it) {
+            if (isFunction(it?.runMounted)) {
               it.runMounted();
             }
           });
         } else if (child) {
-          child.runMounted();
+          if (isFunction(child?.runMounted)) {
+            child.runMounted();
+          }
         }
       });
     }

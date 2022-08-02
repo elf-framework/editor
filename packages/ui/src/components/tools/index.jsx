@@ -223,9 +223,11 @@ export class ToolsMenuItem extends ToolsItem {
   }
 
   close() {
-    this.setState({
-      opened: false,
-    });
+    if (this.state.opened) {
+      this.setState({
+        opened: false,
+      });
+    }
   }
 
   toggle() {
@@ -236,11 +238,11 @@ export class ToolsMenuItem extends ToolsItem {
         },
         false
       );
-    }
 
-    this.setState({
-      opened: !this.state.opened,
-    });
+      this.open();
+    } else {
+      this.close();
+    }
   }
 
   checkClickable(e) {

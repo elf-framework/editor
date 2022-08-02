@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.20
+
+### Patch Changes
+
+- fixed vnode mounted hook bug
+
 ## 2.0.16
 
 ### Patch Changes

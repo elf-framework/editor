@@ -13,8 +13,18 @@ export function ToolbarPlugin(editor) {
         trigger: "hover",
         items: [
           { title: () => "3D fdsafjkdlsafjdkslfjdksl" },
-          { type: "item", title: "3D fdsafjkdlsafjdkslfjdksl" },
-          { type: "item", title: "3D fdsafjkdlsafjdkslfjdksl" },
+          {
+            type: "item",
+            selectable: true,
+            selected: () => false,
+            title: "3D fdsafjkdlsafjdkslfjdksl",
+          },
+          {
+            type: "item",
+            selectable: false,
+            selected: true,
+            title: "3D fdsafjkdlsafjdkslfjdksl",
+          },
         ],
       },
       {

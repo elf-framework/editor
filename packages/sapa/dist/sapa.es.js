@@ -3872,12 +3872,14 @@ class VNode {
       children2.forEach((child) => {
         if (isArray(child)) {
           child.forEach((it) => {
-            if (it) {
+            if (isFunction(it == null ? void 0 : it.runMounted)) {
               it.runMounted();
             }
           });
         } else if (child) {
-          child.runMounted();
+          if (isFunction(child == null ? void 0 : child.runMounted)) {
+            child.runMounted();
+          }
         }
       });
     }
