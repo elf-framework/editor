@@ -8,8 +8,24 @@ export function ToolbarPlugin(editor) {
         title: "3D",
       },
       {
-        type: "item",
-        title: "3D fdsafjkdlsafjdkslfjdksl",
+        type: "menu",
+        title: () => "3D fdsafjkdlsafjdkslfjdksl",
+        trigger: "hover",
+        items: [
+          { title: () => "3D fdsafjkdlsafjdkslfjdksl" },
+          {
+            type: "item",
+            selectable: true,
+            selected: () => false,
+            title: "3D fdsafjkdlsafjdkslfjdksl",
+          },
+          {
+            type: "item",
+            selectable: false,
+            selected: true,
+            title: "3D fdsafjkdlsafjdkslfjdksl",
+          },
+        ],
       },
       {
         type: "menu",

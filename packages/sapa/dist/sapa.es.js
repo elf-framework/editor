@@ -3854,7 +3854,14 @@ class VNode {
             }
           });
         } else if (isFunction(child)) {
-          fragment.appendChild(child());
+          const result = child();
+          if (result instanceof VNode) {
+            const el = result.makeElement(withChildren, options);
+            if (el)
+              fragment.appendChild(el);
+          } else if (typeof result === "string") {
+            fragment.appendChild(document.createTextNode(result));
+          }
         } else if (child instanceof window.HTMLElement) {
           fragment.appendChild(child);
         } else {
@@ -3865,12 +3872,14 @@ class VNode {
       children2.forEach((child) => {
         if (isArray(child)) {
           child.forEach((it) => {
-            if (it) {
+            if (isFunction(it == null ? void 0 : it.runMounted)) {
               it.runMounted();
             }
           });
         } else if (child) {
-          child.runMounted();
+          if (isFunction(child == null ? void 0 : child.runMounted)) {
+            child.runMounted();
+          }
         }
       });
     }

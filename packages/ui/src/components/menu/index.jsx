@@ -106,6 +106,8 @@ class MenuItem extends UIElement {
 
     const hasItems = items.length > 0;
 
+    const selectedValue = isFunction(selected) ? selected() : selected;
+
     return (
       <li
         class={classnames({
@@ -115,7 +117,7 @@ class MenuItem extends UIElement {
       >
         {selectable ? (
           <span class="selected-icon">
-            {selected ? selectedIcon : undefined}
+            {selectedValue ? selectedIcon : undefined}
           </span>
         ) : null}
         {title ? <div class="menu-title">{title}</div> : undefined}

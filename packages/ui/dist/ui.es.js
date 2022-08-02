@@ -33,7 +33,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { AFTER, UIElement, classnames, createElementJsx, CLICK, IF, PREVENT, STOP, isFunction, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, useState, useCallback } from "@elf-framework/sapa";
+import { AFTER, UIElement, classnames, createElementJsx, isFunction, CLICK, IF, PREVENT, STOP, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, useState, useCallback } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 var index = "";
 const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
@@ -675,6 +675,7 @@ class MenuItem extends UIElement {
       rootClose
     } = this.state;
     const hasItems = items.length > 0;
+    const selectedValue = isFunction(selected) ? selected() : selected;
     return /* @__PURE__ */ createElementJsx("li", {
       class: classnames({
         hover
@@ -682,7 +683,7 @@ class MenuItem extends UIElement {
       disabled: disabled ? true : void 0
     }, selectable ? /* @__PURE__ */ createElementJsx("span", {
       class: "selected-icon"
-    }, selected ? selectedIcon : void 0) : null, title ? /* @__PURE__ */ createElementJsx("div", {
+    }, selectedValue ? selectedIcon : void 0) : null, title ? /* @__PURE__ */ createElementJsx("div", {
       class: "menu-title"
     }, title) : void 0, shortcut ? /* @__PURE__ */ createElementJsx("div", {
       class: "shortcut"
@@ -1061,10 +1062,10 @@ class ToolsItem extends UIElement {
     }, [
       icon ? /* @__PURE__ */ createElementJsx("span", {
         class: "icon"
-      }, icon) : void 0,
+      }, isFunction(icon) ? icon() : icon) : void 0,
       title ? /* @__PURE__ */ createElementJsx("span", {
         class: "menu-title"
-      }, title) : void 0
+      }, isFunction(title) ? title() : title) : void 0
     ].filter(Boolean))));
   }
   setSelected(isSelected = false) {
@@ -1178,19 +1179,21 @@ class ToolsMenuItem extends ToolsItem {
     }
   }
   close() {
-    this.setState({
-      opened: false
-    });
+    if (this.state.opened) {
+      this.setState({
+        opened: false
+      });
+    }
   }
   toggle() {
     if (!this.state.opened) {
       this.setState({
         rect: this.$el.rect()
       }, false);
+      this.open();
+    } else {
+      this.close();
     }
-    this.setState({
-      opened: !this.state.opened
-    });
   }
   checkClickable(e) {
     const $menu = Dom.create(e.target).closest("menu-area");

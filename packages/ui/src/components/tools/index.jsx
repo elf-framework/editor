@@ -73,8 +73,14 @@ class ToolsItem extends UIElement {
         <button type="button">
           <Flex style={{ columnGap: 4 }}>
             {[
-              icon ? <span class="icon">{icon}</span> : undefined,
-              title ? <span class="menu-title">{title}</span> : undefined,
+              icon ? (
+                <span class="icon">{isFunction(icon) ? icon() : icon}</span>
+              ) : undefined,
+              title ? (
+                <span class="menu-title">
+                  {isFunction(title) ? title() : title}
+                </span>
+              ) : undefined,
             ].filter(Boolean)}
           </Flex>
         </button>
@@ -217,9 +223,11 @@ export class ToolsMenuItem extends ToolsItem {
   }
 
   close() {
-    this.setState({
-      opened: false,
-    });
+    if (this.state.opened) {
+      this.setState({
+        opened: false,
+      });
+    }
   }
 
   toggle() {
@@ -230,11 +238,11 @@ export class ToolsMenuItem extends ToolsItem {
         },
         false
       );
-    }
 
-    this.setState({
-      opened: !this.state.opened,
-    });
+      this.open();
+    } else {
+      this.close();
+    }
   }
 
   checkClickable(e) {

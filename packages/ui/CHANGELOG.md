@@ -1,5 +1,35 @@
 # @elf-framework/ui
 
+## 2.0.21
+
+### Patch Changes
+
+- fixed menu toggle
+
+## 2.0.19
+
+### Patch Changes
+
+- fixed menu open event
+
+## 2.0.18
+
+### Patch Changes
+
+- fixed menu click event
+
+## 2.0.17
+
+### Patch Changes
+
+- fixed menu selected function
+
+## 2.0.15
+
+### Patch Changes
+
+- fixed menuItem title function
+
 ## 2.0.14
 
 ### Patch Changes
