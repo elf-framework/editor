@@ -1,5 +1,26 @@
 # @elf-framework/design-system
 
+## 2.0.25
+
+### Patch Changes
+
+- update tool-item padding
+
+## 2.0.23
+
+### Patch Changes
+
+- Support button group
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.0.23
+
+## 2.0.22
+
+### Patch Changes
+
+- modify button align
+
 ## 2.0.10
 
 ### Patch Changes

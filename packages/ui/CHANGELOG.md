@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.0.23
+
+### Patch Changes
+
+- Support button group
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.0.23
+
 ## 2.0.21
 
 ### Patch Changes

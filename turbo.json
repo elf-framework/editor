@@ -62,11 +62,7 @@
     },        
     "ui-react:dev": {
       "dependsOn": ["ui-react:watch"]
-    },        
-    "sapa:release": {
-      "dependsOn": ["^sapa:release"],
-      "outputs": ["dist/**", ".next/**"]
-    }                                            
+    }                                   
 
   }
 }

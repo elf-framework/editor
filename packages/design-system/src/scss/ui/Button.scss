@@ -6,6 +6,9 @@
     --elf--button-color: rgba(0, 0, 0, 0.8);
     --elf--button-border-radius: 4px;
     --elf--button-disabled-color: var(--elf--disabled-color);
+    --elf--button-inner-gap: 10px;
+    --elf--button-selected-background-color: var(--color-primary-selected);
+    --elf--button-selected-border-color: var(--color-primary-selected);
 
     // height: var(--elf--button-height, 30px);
     padding: var(--elf--button-padding);
@@ -16,6 +19,19 @@
     color: var(--elf--button-color);
     border: 1px solid var(--elf--button-border-color);
     cursor: pointer;
+
+    &.selected {
+        background-color: var(--elf--button-selected-background-color);
+        // color: var(--elf--button-selected-color);
+        // border-color: var(--elf--button-selected-border-color);
+    }
+
+    > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--elf--button-inner-gap);
+    }
 
     &.elf--button-lg {
         --elf--button-font-size: 16px;

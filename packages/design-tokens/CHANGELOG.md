@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.0.23
+
+### Patch Changes
+
+- Support button group
+
 ## 2.0.10
 
 ### Patch Changes

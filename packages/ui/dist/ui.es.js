@@ -212,7 +212,7 @@ function convertPropertyToStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$o = {
+const cssProperties$p = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   disabledColor: "--elf--button-disabled-color",
@@ -229,6 +229,7 @@ class Button extends UIElement {
       type,
       size,
       disabled,
+      selected,
       shape,
       destructive = false,
       style: style2 = {},
@@ -238,6 +239,7 @@ class Button extends UIElement {
       "type",
       "size",
       "disabled",
+      "selected",
       "shape",
       "destructive",
       "style",
@@ -248,6 +250,7 @@ class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
+        { selected },
         {
           primary: type === "primary",
           secondary: type === "secondary",
@@ -264,11 +267,31 @@ class Button extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$o)
+      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$p)
     };
     return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({}, styleObject), {
       onClick
     }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
+  }
+}
+const cssProperties$o = makeStyleMap("--elf--button-group", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true
+});
+class ButtonGroup extends UIElement {
+  template() {
+    const _a = this.props, { disabled, style: style2 = {}, content } = _a, extraStyle = __objRest(_a, ["disabled", "style", "content"]);
+    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+    const styleObject = {
+      class: classnames(["elf--button-group"]),
+      disabled: disabled ? "disabled" : void 0,
+      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$o)
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
   }
 }
 const cssProperties$n = {
@@ -3689,4 +3712,4 @@ class AppLayout extends UIElement {
     }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
   }
 }
-export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell };
+export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, ButtonGroup, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell };

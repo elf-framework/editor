@@ -14,6 +14,7 @@
     --font-semi-bold: 600;
     --font-bold: 700;
     --color-primary: #18A0FB;
+    --color-primary-selected: rgba(20, 110, 245, 1);
     --elf--primary-color: var(--color-primary);
     --color-secondary: rgba(0, 0, 0, 0.3);
     --elf--secondary-color: var(--color-secondary);
@@ -21,7 +22,6 @@
     --elf--primary-destructive-color: #F24822;
     --elf--border-color: #e6e6e6;
     --color-primary-hover: #295fd6;
-    --color-primary-selected: rgba(20, 110, 245, 0.12);
     --color-primary-lightest: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
     --color-focus-outer: #ffd337;
     --color-focus-inner: var(--color-neutral-10);

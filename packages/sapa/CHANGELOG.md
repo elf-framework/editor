@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.24
+
+### Patch Changes
+
+- fixed appendChild bug
+
 ## 2.0.20
 
 ### Patch Changes
