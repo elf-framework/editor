@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 2.0.26
+
+### Patch Changes
+
+- modify tooltip message wrap
+
 ## 2.0.25
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.0.26
+
+### Patch Changes
+
+- modify tooltip message wrap
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.0.26
+
 ## 2.0.23
 
 ### Patch Changes
