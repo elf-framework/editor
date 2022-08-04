@@ -1,5 +1,5 @@
 import AddChartFilled from "@elf-framework/icon/esm/AddChartFilled";
-import { start } from "@elf-framework/sapa";
+import { start, useEffect } from "@elf-framework/sapa";
 import { Layer, VirtualScroll } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
@@ -48,6 +48,7 @@ function itemRenderer(item, top, renderIndex, items, virtualScroll) {
       lockOpenIcon={makeIconDom("lock_open", renderIndex)}
       isComponent={item.isComponent}
       onClick={() => {
+        console.log("aaa");
         if (selections.includes(item.index)) {
           selections.splice(selections.indexOf(item.index), 1);
         } else {
@@ -68,9 +69,10 @@ function MakeText(props) {
 
 function MakeButton(props) {
   const { onChange } = props;
-  this.useMounted(() => {
+
+  useEffect(() => {
     console.log(this.$el.rect());
-  });
+  }, []);
   return (
     <button
       onClick={() => {

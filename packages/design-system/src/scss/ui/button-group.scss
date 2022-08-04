@@ -1,0 +1,43 @@
+.elf--button-group {
+    --elf--button-group-border-color: rgba(0, 0, 0, 0.8);
+    --elf--button-group-font-size: var(--elf--font-size, 14px);
+    --elf--button-group-background-color: transparent;
+    --elf--button-group-color: rgba(0, 0, 0, 0.8);
+    --elf--button-group-border-radius: 6px;
+    --elf--button-group-disabled-color: var(--elf--disabled-color);
+    --elf--button-group-inner-gap: 10px;
+
+    border-radius: var(--elf--button-group-border-radius);
+    line-height: 16px;
+    font-size: var(--elf--button-group-font-size);
+    background-color: var(--elf--button-group-background-color);
+    color: var(--elf--button-group-color);
+    cursor: pointer;
+    display: inline-flex;
+
+    
+
+    > .elf--button {
+        --elf--button-group-child-border-radius: calc(var(--elf--button-group-border-radius) - 1px);
+        flex: 1 1 auto;
+        border-radius: 0 !important; 
+
+        &:not(:first-child) {
+            border-left: 0px;
+        }
+
+
+        &:first-child {
+            border-top-left-radius: var(--elf--button-group-child-border-radius) !important;
+            border-bottom-left-radius: var(--elf--button-group-child-border-radius) !important;
+        }
+
+        &:last-child {
+            border-top-right-radius: var(--elf--button-group-child-border-radius) !important;
+            border-bottom-right-radius: var(--elf--button-group-child-border-radius) !important;
+        }
+
+    }
+
+
+} 

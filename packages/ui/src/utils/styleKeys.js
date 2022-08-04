@@ -116,6 +116,8 @@ export function makeStyleMap(prefix, obj = {}) {
   Object.keys(obj).forEach((key) => {
     newObj[key] = prefix + "-" + convertStyleKey(key);
   });
+
+  return newObj;
 }
 
 export function convertPropertyToStyleKey(properties) {

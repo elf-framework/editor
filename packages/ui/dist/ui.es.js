@@ -33,7 +33,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { AFTER, UIElement, classnames, createElementJsx, isFunction, CLICK, IF, PREVENT, STOP, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, useState, useCallback } from "@elf-framework/sapa";
+import { AFTER, UIElement, classnames, createElementJsx, isFunction, CLICK, IF, PREVENT, STOP, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, useState, useCallback, useEffect, potal, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 var index = "";
 const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
@@ -90,7 +90,7 @@ function styleMap(key, value) {
   }
   return value;
 }
-function propertyMap(styles, mapper = {}) {
+function propertyMap(styles, mapper) {
   const styleObj = {};
   Object.keys(styles).forEach((key) => {
     styleObj[mapper[key] || key] = styleMap(key, styles[key]);
@@ -196,9 +196,11 @@ const convertStyleKey = (key) => {
   return upperKey;
 };
 function makeStyleMap(prefix, obj) {
+  const newObj = {};
   Object.keys(obj).forEach((key) => {
-    prefix + "-" + convertStyleKey(key);
+    newObj[key] = prefix + "-" + convertStyleKey(key);
   });
+  return newObj;
 }
 function convertPropertyToStyleKey(properties) {
   const style2 = {};
@@ -212,7 +214,7 @@ function convertPropertyToStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$o = {
+const cssProperties$p = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   disabledColor: "--elf--button-disabled-color",
@@ -229,6 +231,7 @@ class Button extends UIElement {
       type,
       size,
       disabled,
+      selected,
       shape,
       destructive = false,
       style: style2 = {},
@@ -238,6 +241,7 @@ class Button extends UIElement {
       "type",
       "size",
       "disabled",
+      "selected",
       "shape",
       "destructive",
       "style",
@@ -248,6 +252,7 @@ class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
+        { selected },
         {
           primary: type === "primary",
           secondary: type === "secondary",
@@ -264,11 +269,31 @@ class Button extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$o)
+      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$p)
     };
     return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({}, styleObject), {
       onClick
     }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
+  }
+}
+const cssProperties$o = makeStyleMap("--elf--button-group", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true
+});
+class ButtonGroup extends UIElement {
+  template() {
+    const _a = this.props, { disabled, style: style2 = {}, content } = _a, extraStyle = __objRest(_a, ["disabled", "style", "content"]);
+    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+    const styleObject = {
+      class: classnames(["elf--button-group"]),
+      disabled: disabled ? "disabled" : void 0,
+      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$o)
+    };
+    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
   }
 }
 const cssProperties$n = {
@@ -1345,15 +1370,39 @@ const cssProperties$d = makeStyleMap("--elf--visual-bell", {
 });
 class VisualBell extends UIElement {
   template() {
-    const { style: style2 = {}, content, direction = "bottom" } = this.props;
+    const { style: style2 = {}, content, delay = 0, direction = "bottom" } = this.props;
+    const [localDelay, setLocalDelay] = useState(delay);
+    const [hide, setHide] = useState(false);
+    this.state.hideCallback = useCallback((hideDelay = 0) => {
+      setLocalDelay(hideDelay);
+    }, [setLocalDelay]);
     const styleObject = {
-      class: classnames("elf--visual-bell", `elf--visual-bell-direction-${direction}`),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$d))
+      class: classnames("elf--visual-bell", `elf--visual-bell-direction-${direction}`, { hide }),
+      style: __spreadValues(__spreadValues({}, propertyMap(style2, cssProperties$d)), {
+        transition: `opacity ${localDelay}ms ease-in-out`,
+        opacity: hide ? 0 : 1
+      })
     };
+    useEffect(() => {
+      if (localDelay > 0) {
+        if (!hide) {
+          this.props.onShow && this.props.onShow();
+        }
+        setTimeout(() => {
+          if (!hide) {
+            setHide(true);
+          }
+        }, localDelay);
+      }
+    }, [localDelay, hide]);
     return /* @__PURE__ */ createElementJsx("div", __spreadProps(__spreadValues({
       class: "elf--visual-bell"
     }, styleObject), {
-      onContextMenu: (e) => e.preventDefault()
+      onContextMenu: (e) => e.preventDefault(),
+      onTransitionEnd: () => {
+        this.props.onHide && this.props.onHide();
+        this.destroy(true);
+      }
     }), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--visual-bell-content"
     }, /* @__PURE__ */ createElementJsx("div", {
@@ -1362,6 +1411,25 @@ class VisualBell extends UIElement {
       class: "elf--visual-bell-tools"
     }, this.props.tools || []));
   }
+  hide(hideDelay = 0) {
+    var _a;
+    (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+  }
+}
+function bell({
+  content = "",
+  delay = 0,
+  direction = "bottom",
+  tools = [],
+  options = {},
+  style: style2 = {}
+}) {
+  return potal(/* @__PURE__ */ createElementJsx(VisualBell, {
+    delay,
+    direction,
+    tools,
+    style: style2
+  }, content), options);
 }
 const cssProperties$c = makeStyleMap("--elf--tooltip", {
   backgroundColor: true,
@@ -2680,7 +2748,15 @@ class Layer extends UIElement {
       lockOpenIcon,
       visibleIcon,
       isComponent = false,
-      number = 10
+      number = 10,
+      onClick,
+      onDoubleClick,
+      onContextMenu,
+      onMouseDown,
+      onMouseUp,
+      onMouseMove,
+      onMouseEnter,
+      onMouseLeave
     } = this.props;
     return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-item elf--layer",
@@ -2699,10 +2775,19 @@ class Layer extends UIElement {
       class: "group"
     }, group), icon && /* @__PURE__ */ createElementJsx("div", {
       class: "icon"
-    }, icon), /* @__PURE__ */ createElementJsx("div", {
+    }, icon), /* @__PURE__ */ createElementJsx("div", __spreadValues({
       class: "text",
       ref: "$text"
-    }, content), /* @__PURE__ */ createElementJsx("div", {
+    }, {
+      onClick,
+      onDoubleClick,
+      onContextMenu,
+      onMouseDown,
+      onMouseUp,
+      onMouseMove,
+      onMouseEnter,
+      onMouseLeave
+    }), content), /* @__PURE__ */ createElementJsx("div", {
       class: "tools"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "lock"
@@ -3689,4 +3774,4 @@ class AppLayout extends UIElement {
     }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
   }
 }
-export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell };
+export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, ButtonGroup, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell, bell };

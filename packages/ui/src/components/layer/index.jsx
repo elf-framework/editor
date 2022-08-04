@@ -17,6 +17,14 @@ export class Layer extends UIElement {
       visibleIcon,
       isComponent = false,
       number = 10,
+      onClick,
+      onDoubleClick,
+      onContextMenu,
+      onMouseDown,
+      onMouseUp,
+      onMouseMove,
+      onMouseEnter,
+      onMouseLeave,
     } = this.props;
 
     return (
@@ -37,7 +45,20 @@ export class Layer extends UIElement {
         >
           <div class="group">{group}</div>
           {icon && <div class="icon">{icon}</div>}
-          <div class="text" ref="$text">
+          <div
+            class="text"
+            ref="$text"
+            {...{
+              onClick,
+              onDoubleClick,
+              onContextMenu,
+              onMouseDown,
+              onMouseUp,
+              onMouseMove,
+              onMouseEnter,
+              onMouseLeave,
+            }}
+          >
             {content}
           </div>
           <div class="tools">

@@ -103,8 +103,12 @@ const patch = {
   },
 
   appendChild(el, newVNode, options) {
-    el.appendChild(newVNode.makeElement(true, options).el);
-    newVNode.runMounted();
+    const newVNodeInstance = newVNode.makeElement(true, options);
+
+    if (newVNodeInstance?.el) {
+      el.appendChild(newVNodeInstance.el);
+      newVNode.runMounted();
+    }
   },
 
   removeChild(parentElement, oldEl) {

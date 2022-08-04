@@ -21,6 +21,7 @@ export class Button extends UIElement {
       type,
       size,
       disabled,
+      selected,
       shape,
       destructive = false,
       style = {},
@@ -34,6 +35,7 @@ export class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
+        { selected },
         {
           primary: type === "primary",
           secondary: type === "secondary",

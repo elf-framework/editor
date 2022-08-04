@@ -14,6 +14,8 @@
     "ui:dev": "turbo run ui:dev --parallel",
     "ui-react:dev": "turbo run ui-react:dev --parallel",
     "editor:dev": "turbo run editor:dev --parallel",
+    "editor:profile": "turbo run build --parallel --profile",
+    "editor:graph": "turbo run build --graph=my-graph.html",
     "sapa:release": "turbo run sapa:release --parallel",
     "changeset": "changeset",
     "version-packages": "changeset version",

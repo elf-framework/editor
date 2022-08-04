@@ -1,6 +1,4 @@
 import { defineConfig } from "vite";
-// import { sapa } from "vite-plugin-sapa";
-// import { viteStaticCopy } from "vite-plugin-static-copy";
 
 import path from "path";
 
@@ -38,18 +36,4 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    // sapa(),
-    // viteStaticCopy({
-    //   targets: [
-    //     {
-    //       src: path.resolve(
-    //         "../../node_modules",
-    //         "@elf-framework/design-system/dist/index.css"
-    //       ),
-    //       dest: ".",
-    //     },
-    //   ],
-    // }),
-  ],
 });

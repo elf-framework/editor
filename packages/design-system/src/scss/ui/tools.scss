@@ -21,6 +21,7 @@
         background-color: var(--elf--tools-background-color);
         position: relative;
         user-select: none;
+        padding: 0px 6px;
 
         &.has-items {
             min-width: calc(var(--elf--tools-min-width) + var(--elf--tools-min-width-scale));

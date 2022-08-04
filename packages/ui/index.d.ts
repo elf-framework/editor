@@ -180,6 +180,7 @@ declare module "@elf-framework/ui" {
     type?: ButtonType;
     size?: ButtonSize;
     shape?: ButtonShape;
+    selected?: boolean;
     destructive?: boolean;
     disabled?: boolean;
     onClick?: (event: PointerEvent) => void;
@@ -194,6 +195,16 @@ declare module "@elf-framework/ui" {
 
   export class Button extends UIElement {
     props: ButtonProps & CommonStyle;
+  }
+
+  interface ButtonGroupProps {
+    content?: Button[];
+    disabled?: boolean;
+    style?: ButtonStyle & CommonStyle;
+  }
+
+  export class ButtonGroup extends UIElement {
+    props: ButtonGroupProps;
   }
 
   export class LinkButton extends UIElement {
@@ -462,10 +473,27 @@ declare module "@elf-framework/ui" {
     content?: string | string[] | UIElement | UIElement[];
     style: VisualBellStyle & CommonStyle;
     direction?: VisualBellDirectionType;
+    delay?: number;
+    onShow?: () => void;
+    onHide?: () => void;
   }
   export class VisualBell extends UIElement {
     props: VisualBellProps & CommonStyle;
+    hide: () => void;
   }
+
+  /** call VisualBell with potal */
+  export function bell(arg: {
+    content: ContentType;
+    delay?: number;
+    direction?: VisualBellDirectionType;
+    tools?: ContentType[];
+    options?:
+      | {
+          container: HTMLElement | string;
+        }
+      | unknown;
+  }): VisualBell;
 
   interface TooltipStyle {
     backgroundColor?: string;
@@ -481,7 +509,8 @@ declare module "@elf-framework/ui" {
   }
 
   export interface TooltipProps {
-    content: string | UIElement | string[] | UIElement[];
+    content: ContentType;
+    message?: ContentType;
     position:
       | "top"
       | "bottom"

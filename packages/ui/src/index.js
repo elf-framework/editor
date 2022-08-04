@@ -3,6 +3,7 @@ import "@elf-framework/design-system/style.css";
 export * from "./consts/index";
 export * from "./consts/event";
 export * from "./components/button";
+export * from "./components/button/ButtonGroup";
 export * from "./components/link-button";
 export * from "./components/icon-button";
 export * from "./components/toggle-button";
