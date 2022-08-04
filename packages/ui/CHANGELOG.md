@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.31
+
+### Patch Changes
+
+- fixed style shortname apply
+
 ## 2.0.30
 
 ### Patch Changes

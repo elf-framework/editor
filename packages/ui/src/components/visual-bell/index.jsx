@@ -95,9 +95,10 @@ export function bell({
   direction = "bottom",
   tools = [],
   options = {},
+  style = {},
 }) {
   return potal(
-    <VisualBell delay={delay} direction={direction} tools={tools}>
+    <VisualBell delay={delay} direction={direction} tools={tools} style={style}>
       {content}
     </VisualBell>,
     options

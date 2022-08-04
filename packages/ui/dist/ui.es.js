@@ -90,7 +90,7 @@ function styleMap(key, value) {
   }
   return value;
 }
-function propertyMap(styles, mapper = {}) {
+function propertyMap(styles, mapper) {
   const styleObj = {};
   Object.keys(styles).forEach((key) => {
     styleObj[mapper[key] || key] = styleMap(key, styles[key]);
@@ -196,9 +196,11 @@ const convertStyleKey = (key) => {
   return upperKey;
 };
 function makeStyleMap(prefix, obj) {
+  const newObj = {};
   Object.keys(obj).forEach((key) => {
-    prefix + "-" + convertStyleKey(key);
+    newObj[key] = prefix + "-" + convertStyleKey(key);
   });
+  return newObj;
 }
 function convertPropertyToStyleKey(properties) {
   const style2 = {};
@@ -1419,12 +1421,14 @@ function bell({
   delay = 0,
   direction = "bottom",
   tools = [],
-  options = {}
+  options = {},
+  style: style2 = {}
 }) {
   return potal(/* @__PURE__ */ createElementJsx(VisualBell, {
     delay,
     direction,
-    tools
+    tools,
+    style: style2
   }, content), options);
 }
 const cssProperties$c = makeStyleMap("--elf--tooltip", {
