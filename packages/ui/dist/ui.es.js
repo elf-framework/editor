@@ -2703,7 +2703,15 @@ class Layer extends UIElement {
       lockOpenIcon,
       visibleIcon,
       isComponent = false,
-      number = 10
+      number = 10,
+      onClick,
+      onDoubleClick,
+      onContextMenu,
+      onMouseDown,
+      onMouseUp,
+      onMouseMove,
+      onMouseEnter,
+      onMouseLeave
     } = this.props;
     return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-item elf--layer",
@@ -2722,10 +2730,19 @@ class Layer extends UIElement {
       class: "group"
     }, group), icon && /* @__PURE__ */ createElementJsx("div", {
       class: "icon"
-    }, icon), /* @__PURE__ */ createElementJsx("div", {
+    }, icon), /* @__PURE__ */ createElementJsx("div", __spreadValues({
       class: "text",
       ref: "$text"
-    }, content), /* @__PURE__ */ createElementJsx("div", {
+    }, {
+      onClick,
+      onDoubleClick,
+      onContextMenu,
+      onMouseDown,
+      onMouseUp,
+      onMouseMove,
+      onMouseEnter,
+      onMouseLeave
+    }), content), /* @__PURE__ */ createElementJsx("div", {
       class: "tools"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "lock"

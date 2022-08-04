@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.27
+
+### Patch Changes
+
+- support click event for layer component
+
 ## 2.0.26
 
 ### Patch Changes
