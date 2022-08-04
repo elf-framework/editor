@@ -483,17 +483,17 @@ declare module "@elf-framework/ui" {
   }
 
   /** call VisualBell with potal */
-  export function bell(
-    content: ContentType,
-    delay?: number,
-    direction?: VisualBellDirectionType,
-    tools?: ContentType[],
+  export function bell(arg: {
+    content: ContentType;
+    delay?: number;
+    direction?: VisualBellDirectionType;
+    tools?: ContentType[];
     options?:
       | {
           container: HTMLElement | string;
         }
-      | unknown
-  ): VisualBell;
+      | unknown;
+  }): VisualBell;
 
   interface TooltipStyle {
     backgroundColor?: string;

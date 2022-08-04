@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.30
+
+### Patch Changes
+
+- modify bell arguments
+
 ## 2.0.29
 
 ### Patch Changes
