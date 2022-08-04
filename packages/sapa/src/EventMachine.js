@@ -465,7 +465,7 @@ export class EventMachine extends HookMachine {
    * 자식 컴포넌트까지 제어하기 때문에 가장 최상위 부모에서 한번만 호출되도 된다.
    *
    */
-  destroy() {
+  destroy(isRemoveElement = false) {
     // 자식 컴포넌트들을 제거한다.
     Object.entries(this.#childObjectList).forEach(([_key, child]) => {
       const childInstance = this.#childObjectElements.get(child);
@@ -481,9 +481,12 @@ export class EventMachine extends HookMachine {
     this.runHandlers("destroy");
     // 로컬 이벤트 함수 실행
     this.onDestroyed();
-
-    // this.$el = null;
     this.refs = {};
+
+    if (isRemoveElement) {
+      this.$el.remove();
+      this.$el = null;
+    }
   }
 
   /**

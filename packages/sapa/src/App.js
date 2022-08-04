@@ -1,6 +1,6 @@
 import { Dom } from "./functions/Dom";
 import { registRootElementInstance } from "./functions/registElement";
-import { VNode } from "./functions/vnode";
+import { VNode, VNodeComponent } from "./functions/vnode";
 // import { Router } from "./Router";
 import { createComponentInstance } from "./UIElement";
 
@@ -40,6 +40,34 @@ export const start = (ElementClass, opt = {}) => {
 };
 
 export const render = start;
+
+/**
+ * 특정 컴포넌트에 렌더링하기
+ *
+ */
+export const potal = (ElementClass, opt = {}) => {
+  const $container = Dom.create(opt.container || document.body);
+
+  // component 일 때는 바로 렌더링을 시작한다.
+  if (ElementClass instanceof VNodeComponent) {
+    ElementClass.render({
+      $container,
+    });
+
+    return ElementClass.instance;
+  }
+
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
+
+  const app = createComponentInstance(ElementClass, null, opt);
+
+  app.render($container);
+
+  return app;
+};
 
 export async function renderToHtml(ElementClass, opt) {
   if (ElementClass instanceof VNode) {

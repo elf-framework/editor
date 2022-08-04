@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.0.29
+
+### Patch Changes
+
+- Support visual bell action, bell() function
+
+- Updated dependencies []:
+  - @elf-framework/sapa@2.0.29
+
 ## 2.0.27
 
 ### Patch Changes

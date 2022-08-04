@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 2.0.29
+
+### Patch Changes
+
+- Support potal function
+
+## 2.0.28
+
+### Patch Changes
+
+- add number css style key - borderRadius
+
 ## 2.0.24
 
 ### Patch Changes

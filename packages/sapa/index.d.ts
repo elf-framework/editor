@@ -398,6 +398,7 @@ declare module "@elf-framework/sapa" {
 
   export function start(uiElement: ElementType, options?: KeyValue): UIElement;
   export function render(uiElement: ElementType, options?: KeyValue): UIElement;
+  export function potal(uiElement: ElementType, options?: KeyValue): UIElement;
   export function renderToHtml(
     uiElement: ElementType,
     options?: KeyValue

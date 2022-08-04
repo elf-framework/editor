@@ -473,10 +473,27 @@ declare module "@elf-framework/ui" {
     content?: string | string[] | UIElement | UIElement[];
     style: VisualBellStyle & CommonStyle;
     direction?: VisualBellDirectionType;
+    delay?: number;
+    onShow?: () => void;
+    onHide?: () => void;
   }
   export class VisualBell extends UIElement {
     props: VisualBellProps & CommonStyle;
+    hide: () => void;
   }
+
+  /** call VisualBell with potal */
+  export function bell(
+    content: ContentType,
+    delay?: number,
+    direction?: VisualBellDirectionType,
+    tools?: ContentType[],
+    options?:
+      | {
+          container: HTMLElement | string;
+        }
+      | unknown
+  ): VisualBell;
 
   interface TooltipStyle {
     backgroundColor?: string;
