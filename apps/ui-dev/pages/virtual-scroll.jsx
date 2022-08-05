@@ -3,6 +3,8 @@ import { start, useEffect } from "@elf-framework/sapa";
 import { Layer, VirtualScroll } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 const selections = [];
 
 let items = [...new Array(1000)].map((it, index) => {
@@ -92,23 +94,25 @@ start(function () {
   });
 
   return (
-    <div>
-      <div style={{ width: 300, height: 500, position: "relative" }}>
-        <VirtualScroll
-          // ref="$scroll"
-          class="my-scroll"
-          itemHeight={32}
-          overscanRowCount={30}
-          items={items}
-          itemRenderer={itemRenderer}
-        />
+    <Layout>
+      <div>
+        <div style={{ width: 300, height: 500, position: "relative" }}>
+          <VirtualScroll
+            // ref="$scroll"
+            class="my-scroll"
+            itemHeight={32}
+            overscanRowCount={30}
+            items={items}
+            itemRenderer={itemRenderer}
+          />
+        </div>
+        <MakeButton onChange={onChange} />
+        <MakeText text="Hello World" />
+        <>
+          <div>1</div>
+          <div>2</div>
+        </>
       </div>
-      <MakeButton onChange={onChange} />
-      <MakeText text="Hello World" />
-      <>
-        <div>1</div>
-        <div>2</div>
-      </>
-    </div>
+    </Layout>
   );
 });

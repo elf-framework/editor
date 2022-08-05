@@ -2,6 +2,8 @@ import { start } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 function App() {
   return (
     <div>
@@ -44,7 +46,7 @@ function App() {
 }
 
 start(
-  <div>
+  <Layout>
     <App />
-  </div>
+  </Layout>
 );

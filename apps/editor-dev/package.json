@@ -42,7 +42,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.13",
-    "vite-plugin-sapa": "^1.1.1",
+    "vite-plugin-sapa": "^2.0.32",
     "vitest": "0.0.107"
   }
 }

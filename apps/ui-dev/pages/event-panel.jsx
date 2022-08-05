@@ -7,6 +7,7 @@ import {
 } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
 import "./event-panel.scss";
 
 class Background extends EventPanel {
@@ -93,24 +94,26 @@ start(function Root() {
   console.log("start");
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        width: 300,
-        height: 300,
-        backgroundColor: "yellow",
-      }}
-    >
-      <Background>
-        <HTMLComment>123 Yellow black</HTMLComment>
-        <HTMLComment>123 Yellow blue</HTMLComment>
-        <ControlPanel>
-          <A>1234</A>
-          <div>f134</div>
-          <div>34324</div>
-          <div>4324324</div>
-        </ControlPanel>
-      </Background>
-    </div>
+    <Layout>
+      <div
+        style={{
+          position: "absolute",
+          width: 300,
+          height: 300,
+          backgroundColor: "yellow",
+        }}
+      >
+        <Background>
+          <HTMLComment>123 Yellow black</HTMLComment>
+          <HTMLComment>123 Yellow blue</HTMLComment>
+          <ControlPanel>
+            <A>1234</A>
+            <div>f134</div>
+            <div>34324</div>
+            <div>4324324</div>
+          </ControlPanel>
+        </Background>
+      </div>
+    </Layout>
   );
 });

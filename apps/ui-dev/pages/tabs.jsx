@@ -3,6 +3,8 @@ import { Tab, TabItem, View } from "@elf-framework/ui";
 // import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 function App() {
   return (
     <View width={300}>
@@ -59,7 +61,7 @@ function App() {
 }
 
 start(
-  <div>
+  <Layout>
     <App />
-  </div>
+  </Layout>
 );

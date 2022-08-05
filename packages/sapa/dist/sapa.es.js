@@ -66,6 +66,7 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+const COMPONENT_INSTANCE = "__componentInstance";
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -631,6 +632,7 @@ function getModule(Component) {
   if (currentOldComponent) {
     return m.new[oldKey];
   }
+  return Component;
 }
 class Dom {
   constructor(tag, className, attr) {
@@ -1798,7 +1800,7 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
       if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
         patch.replaceWith(oldEl, newVNode, options);
         if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(newVNode.el, newVNode.instance, newVNode.instance.id);
+          options.registerChildComponent(newVNode.el, newVNode.instance, newVNode.instance.id, oldEl);
         }
       }
     } else {
@@ -3132,17 +3134,26 @@ const _EventMachine = class extends HookMachine {
     __publicField(this, "registerRef", (ref, el) => {
       this.refs[ref] = el;
     });
-    __publicField(this, "registerChildComponent", (el, childComponent, id) => {
+    __publicField(this, "registerChildComponent", (el, childComponent, id, oldEl) => {
       if (!__privateGet(this, _childObjectElements).has(el)) {
         __privateGet(this, _childObjectList)[id] = el;
         __privateGet(this, _childObjectElements).set(el, childComponent);
       }
+      if (__privateGet(this, _childObjectElements).has(oldEl)) {
+        __privateGet(this, _childObjectElements).delete(oldEl);
+      }
     });
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
       const props = newVNode.props;
+      if (newVNode.isComponentChanged) {
+        return true;
+      }
       let targetInstance = this.getTargetInstance(oldEl);
       if (targetInstance) {
         if (targetInstance.isInstanceOf(newVNode.Component)) {
+          if (newVNode.isComponentChanged) {
+            return true;
+          }
           if (targetInstance.isForceRender(props)) {
             return true;
           }
@@ -3265,7 +3276,7 @@ const _EventMachine = class extends HookMachine {
   is(name, callback) {
     return this.sourceName === name && callback(this);
   }
-  async render($container) {
+  async render($container, isForceRender = false) {
     if (!this.isPreLoaded) {
       this.checkLoad($container);
       return;
@@ -3288,6 +3299,7 @@ const _EventMachine = class extends HookMachine {
         DomVNodeDiff(this.$el.el, template, {
           checkRefClass: this.checkRefClass,
           context: this,
+          isForceRender,
           registerRef: this.registerRef,
           registerChildComponent: this.registerChildComponent
         });
@@ -3305,6 +3317,7 @@ const _EventMachine = class extends HookMachine {
       }
       await this._afterLoad();
     }
+    this.$el.el[COMPONENT_INSTANCE] = this;
     return this;
   }
   async renderToHtml() {
@@ -3922,8 +3935,6 @@ class VNode {
     return makeNativeDom(this.tag);
   }
   makeElement(withChildren = false, options = {}) {
-    if (this.el)
-      return this;
     const el = this.createElement();
     const props = this.tagProps;
     if (props) {
@@ -4017,8 +4028,6 @@ class VNodeText extends VNode {
     return makeNativeTextDom(this.value);
   }
   makeElement() {
-    if (this.el)
-      return this;
     this.el = this.createElement();
     return this;
   }
@@ -4043,8 +4052,6 @@ class VNodeComment extends VNode {
     return makeNativeCommentDom(this.value);
   }
   makeElement() {
-    if (this.el)
-      return this;
     this.el = this.createElement();
     return this;
   }
@@ -4084,10 +4091,16 @@ class VNodeComponent extends VNode {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onMounted();
   }
+  getModule() {
+    return getModule(this.Component);
+  }
+  get isComponentChanged() {
+    return this.Component !== this.getModule();
+  }
   makeClassInstance(options) {
     var _a, _b, _c;
     const props = this.props;
-    this.Component = getModule(this.Component);
+    this.Component = this.getModule();
     const hooks = (_a = this.instance) == null ? void 0 : _a.copyHooks();
     const state = (_b = this.instance) == null ? void 0 : _b.state;
     const oldId = (_c = this.instance) == null ? void 0 : _c.id;
@@ -4115,8 +4128,6 @@ class VNodeComponent extends VNode {
   }
   makeElement(withChildren, options = {}) {
     var _a, _b;
-    if (this.el)
-      return this;
     this.render(options);
     this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
     if (this.el) {
@@ -4207,7 +4218,7 @@ function jsonToVNode(json) {
 }
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
-  const $targetElement = $container.children().find((it) => it.el.__component);
+  const $targetElement = $container.children().find((it) => it.el[COMPONENT_INSTANCE]);
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
@@ -4215,12 +4226,11 @@ const start = (ElementClass, opt = {}) => {
   const app = createComponentInstance(ElementClass, null, opt);
   if ($targetElement) {
     app.$el = Dom.create($targetElement.el);
-    app.id = $targetElement.el.__component.id;
+    app.id = $targetElement.el[COMPONENT_INSTANCE].id;
     app.render();
   } else {
     app.render($container);
   }
-  app.$el.el.__component = app;
   registRootElementInstance(app, $container);
   return app;
 };

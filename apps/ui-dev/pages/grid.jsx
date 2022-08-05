@@ -2,9 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Grid, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 function App() {
   return (
-    <div>
+    <Layout>
       <h1>Grid</h1>
       <Grid
         onClick={() => window.alert("Hello")}
@@ -24,7 +26,7 @@ function App() {
           dsajfkdsf
         </View>
       </Grid>
-    </div>
+    </Layout>
   );
 }
 

@@ -3,6 +3,8 @@ import { start } from "@elf-framework/sapa";
 import { Flex } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 const list = {};
 
 Object.keys(icons).forEach((key) => {
@@ -21,53 +23,55 @@ Object.keys(icons).forEach((key) => {
 
 start(function () {
   return (
-    <div
-      style={{
-        padding: 20,
-      }}
-    >
-      <h1>Icons</h1>
-      <Flex
-        wrap={true}
+    <Layout>
+      <div
         style={{
-          columnGap: 10,
-          rowGap: 10,
-          textAlign: "center",
-          fontSize: 12,
+          padding: 20,
         }}
       >
-        {Object.keys(list).map((key) => {
-          const { filled: Filled, outlined: Outlined } = list[key];
-          return (
-            <Flex
-              style={{
-                flex: "none",
-                border: "1px solid #ccc",
-                padding: 10,
-                width: 200,
-              }}
-            >
-              <Flex>
+        <h1>Icons</h1>
+        <Flex
+          wrap={true}
+          style={{
+            columnGap: 10,
+            rowGap: 10,
+            textAlign: "center",
+            fontSize: 12,
+          }}
+        >
+          {Object.keys(list).map((key) => {
+            const { filled: Filled, outlined: Outlined } = list[key];
+            return (
+              <Flex
+                style={{
+                  flex: "none",
+                  border: "1px solid #ccc",
+                  padding: 10,
+                  width: 200,
+                }}
+              >
                 <Flex>
-                  {Filled && (
-                    <span>
-                      <Filled />
-                    </span>
-                  )}
+                  <Flex>
+                    {Filled && (
+                      <span>
+                        <Filled />
+                      </span>
+                    )}
+                  </Flex>
+                  <Flex>
+                    {Outlined && (
+                      <span>
+                        <Outlined />
+                      </span>
+                    )}
+                  </Flex>
                 </Flex>
-                <Flex>
-                  {Outlined && (
-                    <span>
-                      <Outlined />
-                    </span>
-                  )}
-                </Flex>
+                <span>{key}</span>
               </Flex>
-              <span>{key}</span>
-            </Flex>
-          );
-        })}
-      </Flex>
-    </div>
+            );
+          })}
+        </Flex>
+      </div>
+    </Layout>
   );
 });

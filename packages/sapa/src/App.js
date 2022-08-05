@@ -1,3 +1,4 @@
+import { COMPONENT_INSTANCE } from "./constant/component";
 import { Dom } from "./functions/Dom";
 import { registRootElementInstance } from "./functions/registElement";
 import { VNode, VNodeComponent } from "./functions/vnode";
@@ -13,7 +14,9 @@ import { createComponentInstance } from "./UIElement";
 export const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
 
-  const $targetElement = $container.children().find((it) => it.el.__component);
+  const $targetElement = $container
+    .children()
+    .find((it) => it.el[COMPONENT_INSTANCE]);
 
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
@@ -28,12 +31,11 @@ export const start = (ElementClass, opt = {}) => {
   if ($targetElement) {
     app.$el = Dom.create($targetElement.el);
     // id 유지
-    app.id = $targetElement.el.__component.id;
+    app.id = $targetElement.el[COMPONENT_INSTANCE].id;
     app.render();
   } else {
     app.render($container);
   }
-  app.$el.el.__component = app;
   registRootElementInstance(app, $container);
 
   return app;

@@ -2,10 +2,12 @@ import { start } from "@elf-framework/sapa";
 import { Menu } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 start(function () {
   console.log(this.state.e);
   return (
-    <div>
+    <Layout>
       <div
         style={{
           "user-select": "none",
@@ -74,6 +76,6 @@ start(function () {
           }}
         />
       ) : undefined}
-    </div>
+    </Layout>
   );
 });

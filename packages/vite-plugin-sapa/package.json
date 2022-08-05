@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-sapa",
-  "version": "1.1.1",
+  "version": "2.0.33",
   "description": "vite plugin for sapa",
   "main": "src/index.js",
   "types": "index.d.ts",

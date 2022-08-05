@@ -3,6 +3,8 @@ import { start } from "@elf-framework/sapa";
 import { Toolbar } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 start(function () {
   const item = {
     items: [
@@ -183,8 +185,10 @@ start(function () {
   };
 
   return (
-    <div>
-      <Toolbar items={[item]} />
-    </div>
+    <Layout>
+      <div>
+        <Toolbar items={[item]} />
+      </div>
+    </Layout>
   );
 });

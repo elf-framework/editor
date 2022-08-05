@@ -1,4 +1,4 @@
-import { useContext, useEmit, useState } from "@elf-framework/sapa";
+import { useContext, useState } from "@elf-framework/sapa";
 
 import { MyContext } from "./context";
 

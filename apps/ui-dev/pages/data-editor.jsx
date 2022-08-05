@@ -3,6 +3,8 @@ import { start, SUBSCRIBE, UIElement, useSubscribe } from "@elf-framework/sapa";
 import { DataEditor, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 class Sample extends UIElement {
   template() {
     return <div>sample</div>;
@@ -19,37 +21,35 @@ function App() {
   });
 
   return (
-    <View width={300}>
-      <DataEditor
-        data={() => ({
-          title: "Data Editor",
-        })}
-        items={(data, root) => {
-          return [
-            {
-              type: "button",
-              title: "Add",
-              icon: <AddFilled />,
-              onClick: () => {
-                this.emit("config:select.change");
-                console.log("Button clicked");
+    <Layout>
+      <View width={300}>
+        <DataEditor
+          data={() => ({
+            title: "Data Editor",
+          })}
+          items={(data, root) => {
+            return [
+              {
+                type: "button",
+                title: "Add",
+                icon: <AddFilled />,
+                onClick: () => {
+                  this.emit("config:select.change");
+                  console.log("Button clicked");
+                },
               },
-            },
-            {
-              type: "color",
-              key: "color",
-              value: "#ff0000",
-            },
-          ];
-        }}
-      />
-      <Sample />
-    </View>
+              {
+                type: "color",
+                key: "color",
+                value: "#ff0000",
+              },
+            ];
+          }}
+        />
+        <Sample />
+      </View>
+    </Layout>
   );
 }
 
-start(
-  <div>
-    <App />
-  </div>
-);
+start(App);

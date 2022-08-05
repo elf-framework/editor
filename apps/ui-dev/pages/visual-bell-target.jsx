@@ -2,6 +2,8 @@ import { start, useCallback, useState } from "@elf-framework/sapa";
 import { bell, Button } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 start(function () {
   const [direction, setDirection] = useState("top-left");
 
@@ -9,6 +11,7 @@ start(function () {
     const visualBell = bell({
       content: direction,
       direction,
+      delay: 2000,
       tools: [
         <Button
           onClick={() => {
@@ -52,8 +55,10 @@ start(function () {
   }, [direction]);
 
   return (
-    <div>
-      <Button onClick={nextFunc}>{direction}</Button>
-    </div>
+    <Layout>
+      <div>
+        <Button onClick={nextFunc}>{direction}</Button>
+      </div>
+    </Layout>
   );
 });

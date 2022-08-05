@@ -2,9 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Button, LinkButton } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 start(function () {
   return (
-    <div>
+    <Layout>
       <div>
         <h1>Type</h1>
         <div style="display: flex; align-items: center;">
@@ -102,6 +104,6 @@ start(function () {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 });

@@ -3,6 +3,8 @@ import { start } from "@elf-framework/sapa";
 import { Button, Notification } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 function Tools() {
   return (
     <>
@@ -14,60 +16,62 @@ function Tools() {
 
 start(function () {
   return (
-    <div>
-      <Notification
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="top"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="top-right"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="left"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="center"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="right"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="bottom-left"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="bottom"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-      <Notification
-        direction="bottom-right"
-        icon={<AddChartFilled />}
-        content="Hello World"
-        tools={<Tools />}
-      />
-    </div>
+    <Layout>
+      <div>
+        <Notification
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="top"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="top-right"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="left"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="center"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="right"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="bottom-left"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="bottom"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+        <Notification
+          direction="bottom-right"
+          icon={<AddChartFilled />}
+          content="Hello World"
+          tools={<Tools />}
+        />
+      </div>
+    </Layout>
   );
 });

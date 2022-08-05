@@ -2,9 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Checkbox, CheckboxGroup } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { Layout } from "../component/Layout";
+
 start(function () {
   return (
-    <div>
+    <Layout>
       <div>
         <h1>Checkbox</h1>
         <div style="display: flex; flex-direction: column; align-items: center;">
@@ -39,6 +41,6 @@ start(function () {
           />
         </div>
       </div>
-    </div>
+    </Layout>
   );
 });

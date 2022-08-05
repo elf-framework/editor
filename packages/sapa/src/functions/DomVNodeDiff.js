@@ -283,14 +283,15 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
         isFunction(options.checkRefClass) &&
         options.checkRefClass(oldEl, newVNode)
       ) {
-        // object 태그를 생성해서 바꿔야 하나?
+        // oldEl 을 바꿔야함.
         patch.replaceWith(oldEl, newVNode, options);
 
         if (isFunction(options.registerChildComponent)) {
           options.registerChildComponent(
             newVNode.el,
             newVNode.instance,
-            newVNode.instance.id
+            newVNode.instance.id,
+            oldEl // 옛날 element 는 삭제하기
           );
         }
       }
@@ -350,7 +351,6 @@ export function updateChildren(oldEl, newVNode, options = {}) {
   } else {
     // 그 외는 다시 loop를 돌린다.
     for (var i = 0; i < max; i++) {
-      // console.log(oldEl, newVNode, oldChildren, newChildren);
       updateElement(oldEl, oldChildren[i], newChildren[i], options);
     }
   }

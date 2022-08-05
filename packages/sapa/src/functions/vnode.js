@@ -348,8 +348,6 @@ export class VNode {
   }
 
   makeElement(withChildren = false, options = {}) {
-    if (this.el) return this;
-
     const el = this.createElement();
 
     const props = this.tagProps;
@@ -461,11 +459,7 @@ export class VNodeText extends VNode {
   }
 
   makeElement() {
-    if (this.el) return this;
-
     this.el = this.createElement();
-    // this.nodeType = this.el.nodeType;
-    // this.textContent = this.el.textContent;
     return this;
   }
 
@@ -495,8 +489,6 @@ export class VNodeComment extends VNode {
   }
 
   makeElement() {
-    if (this.el) return this;
-
     this.el = this.createElement();
 
     return this;
@@ -528,8 +520,6 @@ export class VNodeFragment extends VNode {
 
     this.makeChildren(withChildren, options);
 
-    // this.nodeType = this.el.nodeType;
-    // this.textContent = this.el.textContent;
     return this;
   }
 
@@ -557,12 +547,20 @@ export class VNodeComponent extends VNode {
     this.instance?.onMounted();
   }
 
+  getModule() {
+    return getModule(this.Component);
+  }
+
+  get isComponentChanged() {
+    return this.Component !== this.getModule();
+  }
+
   // class/function instance 생성
   makeClassInstance(options) {
     const props = this.props;
 
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
-    this.Component = getModule(this.Component);
+    this.Component = this.getModule();
 
     // context 는 상위 Component 의 instance 를 가리킨다.
     // 즉, 컴포넌트의 parent 가 된다.
@@ -570,6 +568,7 @@ export class VNodeComponent extends VNode {
     const hooks = this.instance?.copyHooks();
     const state = this.instance?.state;
     const oldId = this.instance?.id;
+
     this.instance = createComponentInstance(
       this.Component,
       options.context,
@@ -609,8 +608,6 @@ export class VNodeComponent extends VNode {
   }
 
   makeElement(withChildren, options = {}) {
-    if (this.el) return this;
-
     this.render(options);
 
     // 렌더링 된 객체에서 element 를 얻는다.
