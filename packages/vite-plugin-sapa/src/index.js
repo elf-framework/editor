@@ -105,7 +105,8 @@ module.exports = function sapa(options = {}) {
 import { registerModule, renderFromRoot } from "@elf-framework/sapa";
 ${code};
 if (import.meta.hot) {
-  registerModule("${id}", {${names.join(", ")} });
+  const TEMP = {${names.join(", ")} }
+  registerModule("${id}", TEMP);
 
   import.meta.hot.accept((m) => {
     console.log("hot reload");

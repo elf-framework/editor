@@ -9,6 +9,7 @@ export * from "./components/icon-button";
 export * from "./components/toggle-button";
 export * from "./components/radio";
 export * from "./components/checkbox";
+export * from "./components/divider";
 export * from "./components/menu";
 export * from "./components/option-menu";
 export * from "./components/option-strip";

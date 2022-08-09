@@ -23,7 +23,6 @@ export default defineConfig({
       "@elf-framework/ui",
       "@elf-framework/color",
       "@elf-framework/design-system",
-      "@elf-framework/icon",
       "@elf-framework/base-editor",
     ],
   },

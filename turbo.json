@@ -15,20 +15,6 @@
       "dependsOn": ["watch"],
       "cache": false
     },
-    "blank:watch": {
-      "dependsOn": ["^blank:watch"],
-      "outputs": ["dist/**", ".next/**"]          
-    },    
-    "blank:dev": {
-      "dependsOn": ["blank:watch"],
-      "cache": false
-    },
-    "design:watch": {
-      "dependsOn": [
-        "^design:watch"
-      ],
-      "outputs": ["dist/**", ".next/**"]      
-    },
     "ui:watch": {
       "dependsOn": [
         "^ui:watch"
@@ -36,12 +22,9 @@
       "outputs": ["dist/**", ".next/**"],
       "cache": false
     },    
-    "design:dev": {
-      "dependsOn": ["design:watch"],
-      "cache": false
-    },
     "ui:dev": {
-      "dependsOn": ["ui:watch"]
+      "dependsOn": ["ui:watch"],
+      "cache": false
     },
     "editor:watch": {
       "dependsOn": [

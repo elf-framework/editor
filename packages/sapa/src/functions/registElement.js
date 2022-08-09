@@ -230,36 +230,20 @@ export function registerModule(id, modules = {}) {
 }
 
 export function refreshModule(id, newModules) {
-  // console.log("refrshModule");
-  // 처음 리소스 말고는
-  // 모두 new 에 업데이트 된다.
-  // old 에 해당하는 key 를 가진 New 로 대체해서 실행한다.
   _modules[id].new = newModules;
 
   Object.keys(newModules).forEach((key) => {
     _moduleMap.set(newModules[key], id);
   });
-
-  // console.log(_modules[id]);
-  // TODO: 로드된 모듈 old 에 대해서 전체를 검색 한다.
-  // TODO: 로드된 모듈 old 의 instance 가 있으면 cleanup 시킨다.
-  // TODO: 새로운 모듈 instance 로 생성한다.
-  // TODO: 새로운 모듈 instance 에 old instance 의 props 와 state 를 전달한다.
-  // TODO: 새로운 모듈 instance 의 render 를 실행한다.
-  // TODO: VNode 의 Component 영역에 Old 가 있는지 조사해서
-  // TODO: 있으면 New 로 교체한다.
-  // TODO: 그런 다음 처음부터 다시 그린다.
 }
 
 export function getModule(Component) {
   const id = _moduleMap.get(Component);
-
   if (!id) {
     return Component;
   }
 
   const m = _modules[id];
-
   if (!m) {
     return Component;
   }
@@ -287,5 +271,5 @@ export function getModule(Component) {
     return m.new[oldKey];
   }
 
-  // return Component;
+  return Component;
 }

@@ -1,3 +1,4 @@
+import { COMPONENT_INSTANCE } from "./constant/component";
 import { VNodeType } from "./constant/vnode";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
 import { DomVNodeDiff, updateChildren } from "./functions/DomVNodeDiff";
@@ -217,10 +218,14 @@ export class EventMachine extends HookMachine {
     this.refs[ref] = el;
   };
 
-  registerChildComponent = (el, childComponent, id) => {
+  registerChildComponent = (el, childComponent, id, oldEl) => {
     if (!this.#childObjectElements.has(el)) {
       this.#childObjectList[id] = el;
       this.#childObjectElements.set(el, childComponent);
+    }
+
+    if (this.#childObjectElements.has(oldEl)) {
+      this.#childObjectElements.delete(oldEl);
     }
   };
 
@@ -252,11 +257,20 @@ export class EventMachine extends HookMachine {
   checkRefClass = (oldEl, newVNode) => {
     const props = newVNode.props;
 
+    // isComponentChanged 가 있으면 새로고침한다.
+    if (newVNode.isComponentChanged) {
+      return true;
+    }
     // children 에 있는지 체크
     let targetInstance = this.getTargetInstance(oldEl);
 
     if (targetInstance) {
       if (targetInstance.isInstanceOf(newVNode.Component)) {
+        // 컴포넌트가 바뀌었을 경우 다시 그린다.
+        if (newVNode.isComponentChanged) {
+          return true;
+        }
+
         // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
         if (targetInstance.isForceRender(props)) {
           return true;
@@ -279,7 +293,6 @@ export class EventMachine extends HookMachine {
 
   async forceRender() {
     this.cleanHooks();
-    // this.clearAll();
     this.render();
   }
 
@@ -296,7 +309,7 @@ export class EventMachine extends HookMachine {
    *
    * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
    */
-  async render($container) {
+  async render($container, isForceRender = false) {
     if (!this.isPreLoaded) {
       this.checkLoad($container);
       return;
@@ -325,6 +338,7 @@ export class EventMachine extends HookMachine {
         DomVNodeDiff(this.$el.el, template, {
           checkRefClass: this.checkRefClass,
           context: this,
+          isForceRender,
           registerRef: this.registerRef,
           registerChildComponent: this.registerChildComponent,
         });
@@ -349,6 +363,9 @@ export class EventMachine extends HookMachine {
       // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
       await this._afterLoad();
     }
+
+    // element 에 component 속성 설정
+    this.$el.el[COMPONENT_INSTANCE] = this;
 
     return this;
   }

@@ -1,19 +1,70 @@
 {
   "color": {
     "background": {
-      "primary": { "value": "{color.core.white.value}" },
-      "secondary": { "value": "{color.core.neutral.100.value}" },
-      "tertiary": { "value": "{color.core.neutral.200.value}" },
-
-      "interactive": { "value": "{color.brand.primary.base.value}" },
-      "hover": { "value": "{color.brand.primary.dark.value}" },
-      "active": { "value": "{color.brand.secondary.base.value}" },
-      "disabled": { "value": "{color.background.tertiary.value}" },
-      
-      "danger": { "value": "{color.core.red.100.value}" },
-      "warning": { "value": "{color.core.yellow.100.value}" },
-      "success": { "value": "{color.core.green.100.value}" },
-      "info": { "value": "{color.core.blue.100.value}" }
+      "default": {
+        "value": "{color.core.white.value}",
+        "comment": "Background color that will match the current color scheme"
+      },
+      "primary": {
+        "base": {
+          "value": "{color.core.blue.4.value}",
+          "comment": "Base color for the primary color"
+        },
+        "weak": {
+          "value": "{color.core.blue.3.value}",
+          "comment": "Weak color for the primary color"
+        }
+      },
+      "secondary": {
+        "base": {
+          "value": "{color.core.gray.4.value}",
+          "comment": "Base color for the secondary color"
+        },
+        "weak": {
+          "value": "{color.core.gray.3.value}",
+          "comment": "Weak color for the secondary color"
+        }
+      },
+      "danger": {
+        "base": {
+          "value": "{color.core.red.4.value}",
+          "comment": "Base color for the danger color"
+        },
+        "weak": {
+          "value": "{color.core.red.3.value}",
+          "comment": "Weak color for the danger color"
+        }
+      },
+      "warning": {
+        "base": {
+          "value": "{color.core.yellow.2.value}",
+          "comment": "Base color for the warning color"
+        },
+        "weak": {
+          "value": "{color.core.yellow.1.value}",
+          "comment": "Weak color for the warning color"
+        }
+      },
+      "success": {
+        "base": {
+          "value": "{color.core.green.4.value}",
+          "comment": "Base color for the success color"
+        },
+        "weak": {
+          "value": "{color.core.green.3.value}",
+          "comment": "Weak color for the success color"
+        }
+      },
+      "info": {
+        "base": {
+          "value": "{color.core.blue.2.value}",
+          "comment": "Base color for the info color"
+        },
+        "weak": {
+          "value": "{color.core.blue.1.value}",
+          "comment": "Weak color for the info color"
+        }
+      }
     }
   }
 }

@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.0.36
+
+### Patch Changes
+
+- Add Divider Component with style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.0.36
+
 ## 2.0.31
 
 ### Patch Changes

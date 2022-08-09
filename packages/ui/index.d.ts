@@ -19,7 +19,14 @@ declare module "@elf-framework/ui" {
   type ThemeType = "dark" | "light" | string;
 
   /** button */
-  type ButtonType = "primary" | "secondary" | "outline";
+  type ButtonType =
+    | "primary"
+    | "secondary"
+    | "sucess"
+    | "info"
+    | "danger"
+    | "warning"
+    | "outline";
   type ButtonSize = "small" | "default" | "large";
   type ButtonShape = "square" | "round" | "circle";
 
@@ -181,7 +188,8 @@ declare module "@elf-framework/ui" {
     size?: ButtonSize;
     shape?: ButtonShape;
     selected?: boolean;
-    destructive?: boolean;
+    outline?: boolean;
+    quiet?: boolean;
     disabled?: boolean;
     onClick?: (event: PointerEvent) => void;
     style?: ButtonStyle & CommonStyle;
@@ -969,5 +977,24 @@ declare module "@elf-framework/ui" {
 
   export class AppLayout extends UIElement {
     props: CommonStyle;
+  }
+
+  interface DividerProps {
+    type:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "success"
+      | "danger"
+      | "warning"
+      | "info"
+      | "light"
+      | "dark";
+
+    margin?: number | string;
+    style: CommonStyle;
+  }
+  export class Divider extends UIElement {
+    props: DividerProps;
   }
 }

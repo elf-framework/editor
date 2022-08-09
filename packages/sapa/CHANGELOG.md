@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 2.0.34
+
+### Patch Changes
+
+- modify vnode comment
+
+## 2.0.32
+
+### Patch Changes
+
+- fixed sapa refresh logic
+
 ## 2.0.29
 
 ### Patch Changes

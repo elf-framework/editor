@@ -1,34 +1,5 @@
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __objRest = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
@@ -66,6 +37,7 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+const COMPONENT_INSTANCE = "__componentInstance";
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -345,7 +317,12 @@ function updateChangedElement$1(parentElement, oldEl, newEl, i, options = {}) {
   const newNodeType = newEl.nodeType;
   if (oldNodeType === TEXT_NODE$1 && newNodeType !== TEXT_NODE$1) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
-    console.log("--------------- 6 -----------------", parentElement, oldEl, newEl);
+    console.log(
+      "--------------- 6 -----------------",
+      parentElement,
+      oldEl,
+      newEl
+    );
     parentElement.removeChild(oldEl);
   } else if (oldNodeType !== TEXT_NODE$1 && newNodeType === TEXT_NODE$1) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
@@ -376,7 +353,13 @@ function updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options = {
   var newChildren = children$2(newEl);
   var max = Math.max(oldChildren.length, newChildren.length);
   for (var index = 0; index < max; index++) {
-    updateElement$1(oldEl, oldChildren[index], newChildren[index], index, options);
+    updateElement$1(
+      oldEl,
+      oldChildren[index],
+      newChildren[index],
+      index,
+      options
+    );
   }
 }
 function updateElement$1(parentElement, oldEl, newEl, i, options = {}) {
@@ -631,6 +614,7 @@ function getModule(Component) {
   if (currentOldComponent) {
     return m.new[oldKey];
   }
+  return Component;
 }
 class Dom {
   constructor(tag, className, attr) {
@@ -661,10 +645,18 @@ class Dom {
     return div.html(htmlString).firstChild;
   }
   static getScrollTop() {
-    return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
   }
   static getScrollLeft() {
-    return Math.max(window.pageXOffset, document.documentElement.scrollLeft, document.body.scrollLeft);
+    return Math.max(
+      window.pageXOffset,
+      document.documentElement.scrollLeft,
+      document.body.scrollLeft
+    );
   }
   static parse(html) {
     var parser = window.DOMParser();
@@ -882,7 +874,11 @@ class Dom {
     DomDiff(this, Dom.create(rootElement).html(html), options);
   }
   updateSVGDiff(html, rootElement = "div", options = {}) {
-    DomDiff(this, Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild, options);
+    DomDiff(
+      this,
+      Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild,
+      options
+    );
   }
   getById(id) {
     return this.el.getElementById(id);
@@ -902,7 +898,10 @@ class Dom {
     return Array.from(el.querySelectorAll(selector));
   }
   $$(selector) {
-    var arr = this.findAll(selector, this.isTemplate ? this.el.content : this.el);
+    var arr = this.findAll(
+      selector,
+      this.isTemplate ? this.el.content : this.el
+    );
     return arr.map((node) => Dom.create(node));
   }
   empty() {
@@ -1335,7 +1334,10 @@ class Dom {
     return this;
   }
   replaceChild(oldElement, newElement) {
-    this.el.replaceChild(newElement.el || newElement, oldElement.el || oldElement);
+    this.el.replaceChild(
+      newElement.el || newElement,
+      oldElement.el || oldElement
+    );
     return this;
   }
   checked(isChecked = false) {
@@ -1464,7 +1466,11 @@ class BaseStore {
       callback = ifCheck(callback, context, beforeMethods);
     }
     if (frame) {
-      callback = makeRequestAnimationFrame(callback, context, originalCallback.name);
+      callback = makeRequestAnimationFrame(
+        callback,
+        context,
+        originalCallback.name
+      );
     }
     this.getCallbacks(event).push({
       event,
@@ -1482,16 +1488,22 @@ class BaseStore {
     if (arguments.length == 1) {
       this.setCallbacks(event);
     } else if (arguments.length == 2) {
-      this.setCallbacks(event, this.getCallbacks(event).filter((f) => {
-        return f.originalCallback !== originalCallback;
-      }));
+      this.setCallbacks(
+        event,
+        this.getCallbacks(event).filter((f) => {
+          return f.originalCallback !== originalCallback;
+        })
+      );
     }
   }
   offAll(context) {
     Object.keys(this.callbacks).forEach((event) => {
-      this.setCallbacks(event, this.getCallbacks(event).filter((f) => {
-        return f.context !== context;
-      }));
+      this.setCallbacks(
+        event,
+        this.getCallbacks(event).filter((f) => {
+          return f.context !== context;
+        })
+      );
     });
   }
   getCachedCallbacks(event) {
@@ -1501,7 +1513,10 @@ class BaseStore {
     this.sendMessageList(source, [[event, ...args]]);
   }
   runMessage(runnableFunction, args) {
-    const result = runnableFunction.callback.apply(runnableFunction.context, args);
+    const result = runnableFunction.callback.apply(
+      runnableFunction.context,
+      args
+    );
     if (isNotUndefined(result)) {
       if (result === false) {
         return;
@@ -1516,7 +1531,9 @@ class BaseStore {
       messages.forEach(([event, ...args]) => {
         var list = this.getCachedCallbacks(event);
         if (list && list.length) {
-          const runnableFunctions = list.filter((f) => !f.enableSelfTrigger).filter((f) => f.enableAllTrigger || f.originalCallback.source !== source);
+          const runnableFunctions = list.filter((f) => !f.enableSelfTrigger).filter(
+            (f) => f.enableAllTrigger || f.originalCallback.source !== source
+          );
           let i = runnableFunctions.length;
           while (i--) {
             const f = runnableFunctions[i];
@@ -1535,7 +1552,9 @@ class BaseStore {
     window.Promise.resolve().then(() => {
       var list = this.getCachedCallbacks(event);
       if (list) {
-        const runnableFunctions = list.filter((f) => f.context.source === source);
+        const runnableFunctions = list.filter(
+          (f) => f.context.source === source
+        );
         runnableFunctions.forEach((f) => {
           f.callback.apply(f.context, args);
         });
@@ -1605,28 +1624,30 @@ const VoidTags = {
 function isVoidTag(tag) {
   return VoidTags[tag.toLowerCase()];
 }
-const booleanTypes = new Map(Object.entries({
-  checked: true,
-  disabled: true,
-  selected: true,
-  readonly: true,
-  required: true,
-  multiple: true,
-  open: true,
-  hidden: true,
-  spellcheck: true,
-  autofocus: true,
-  autoplay: true,
-  controls: true,
-  loop: true,
-  muted: true,
-  default: true,
-  defer: true,
-  async: true,
-  allowfullscreen: true,
-  allowtransparency: true,
-  allowpaymentrequest: true
-}));
+const booleanTypes = new Map(
+  Object.entries({
+    checked: true,
+    disabled: true,
+    selected: true,
+    readonly: true,
+    required: true,
+    multiple: true,
+    open: true,
+    hidden: true,
+    spellcheck: true,
+    autofocus: true,
+    autoplay: true,
+    controls: true,
+    loop: true,
+    muted: true,
+    default: true,
+    defer: true,
+    async: true,
+    allowfullscreen: true,
+    allowtransparency: true,
+    allowpaymentrequest: true
+  })
+);
 const expectKeys = {
   content: true
 };
@@ -1798,7 +1819,12 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
       if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
         patch.replaceWith(oldEl, newVNode, options);
         if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(newVNode.el, newVNode.instance, newVNode.instance.id);
+          options.registerChildComponent(
+            newVNode.el,
+            newVNode.instance,
+            newVNode.instance.id,
+            oldEl
+          );
         }
       }
     } else {
@@ -1809,7 +1835,11 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
 }
 function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   const newVNodeProps = omitProps(newVNode);
-  updateProps(oldEl, newVNodeProps, getProps$1(oldEl, oldEl.attributes, newVNodeProps));
+  updateProps(
+    oldEl,
+    newVNodeProps,
+    getProps$1(oldEl, oldEl.attributes, newVNodeProps)
+  );
   updateChildren(oldEl, newVNode, options);
 }
 function updateChildren(oldEl, newVNode, options = {}) {
@@ -1893,7 +1923,7 @@ const DefaultOption = {
   keyField: "key",
   removedElements: []
 };
-function DomVNodeDiff(oldEl, newVNode, options) {
+function DomVNodeDiff(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
   if (oldEl.nodeType !== 11) {
     updateElement(oldEl.parentElement, oldEl, newVNode, options);
@@ -2394,7 +2424,12 @@ class DomEventHandler extends BaseHandler {
   }
   makeDefaultCallback(eventObject, magicMethod, callback) {
     return (e) => {
-      var returnValue = this.runEventCallback(e, eventObject, magicMethod, callback);
+      var returnValue = this.runEventCallback(
+        e,
+        eventObject,
+        magicMethod,
+        callback
+      );
       if (isNotUndefined(returnValue)) {
         return returnValue;
       }
@@ -2405,7 +2440,12 @@ class DomEventHandler extends BaseHandler {
       const delegateTarget = this.hasDelegate(e, eventObject);
       if (delegateTarget) {
         e.$dt = Dom.create(delegateTarget);
-        var returnValue = this.runEventCallback(e, eventObject, magicMethod, callback);
+        var returnValue = this.runEventCallback(
+          e,
+          eventObject,
+          magicMethod,
+          callback
+        );
         if (isNotUndefined(returnValue)) {
           return returnValue;
         }
@@ -2525,7 +2565,11 @@ class DomEventHandler extends BaseHandler {
     return obj;
   }
   addDomEvent(eventObject, magicMethod, callback) {
-    eventObject.callback = this.makeCallback(eventObject, magicMethod, callback);
+    eventObject.callback = this.makeCallback(
+      eventObject,
+      magicMethod,
+      callback
+    );
     this.addBinding(eventObject);
     var options = false;
     if (magicMethod.hasKeyword("capture")) {
@@ -2538,7 +2582,12 @@ class DomEventHandler extends BaseHandler {
       };
     }
     if (eventObject.dom) {
-      Event.addDomEvent(eventObject.dom, eventObject.eventName, eventObject.callback, options);
+      Event.addDomEvent(
+        eventObject.dom,
+        eventObject.eventName,
+        eventObject.callback,
+        options
+      );
     }
   }
   makeCustomEventCallback(eventObject, magicMethod, callback) {
@@ -2565,8 +2614,18 @@ class DomEventHandler extends BaseHandler {
     return callback;
   }
   bindingDomEvent([eventName, dom, ...delegate], magicMethod, callback) {
-    let eventObject = this.getDefaultEventObject(eventName, dom, delegate, magicMethod, callback);
-    eventObject.callback = this.makeCustomEventCallback(eventObject, magicMethod, eventObject.callback);
+    let eventObject = this.getDefaultEventObject(
+      eventName,
+      dom,
+      delegate,
+      magicMethod,
+      callback
+    );
+    eventObject.callback = this.makeCustomEventCallback(
+      eventObject,
+      magicMethod,
+      eventObject.callback
+    );
     this.addDomEvent(eventObject, magicMethod, eventObject.callback);
   }
   getEventNames(eventName) {
@@ -2664,17 +2723,22 @@ class ObserverHandler extends BaseHandler {
         break;
       case "mutation":
         observer = new window.MutationObserver(callback);
-        observer.observe($target, options || {
-          attributes: true,
-          characterData: true,
-          childList: true
-        });
+        observer.observe(
+          $target,
+          options || {
+            attributes: true,
+            characterData: true,
+            childList: true
+          }
+        );
         break;
       case "performance":
         observer = new window.PerformanceObserver(callback);
-        observer.observe(options || {
-          entryTypes: ["paint"]
-        });
+        observer.observe(
+          options || {
+            entryTypes: ["paint"]
+          }
+        );
         break;
     }
     return observer;
@@ -2767,7 +2831,17 @@ class StoreHandler extends BaseHandler {
     const originalCallback = this.context[magicMethod.originalMethod];
     [...eventList, events].filter(Boolean).forEach((e) => {
       var callback = this.createLocalCallback(e, originalCallback);
-      this.context.$store.on(e, callback, this.context, debounce2, throttle2, isAllTrigger, isSelfTrigger, checkMethodList, isFrameTrigger);
+      this.context.$store.on(
+        e,
+        callback,
+        this.context,
+        debounce2,
+        throttle2,
+        isAllTrigger,
+        isSelfTrigger,
+        checkMethodList,
+        isFrameTrigger
+      );
     });
     this.addBinding(magicMethod);
   }
@@ -2801,10 +2875,21 @@ function useStore(key) {
   return getCurrentComponent().useStore(key);
 }
 function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
-  return getCurrentComponent().useSubscribe(name, callback, debounceSecond, throttleSecond, isSelf);
+  return getCurrentComponent().useSubscribe(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond,
+    isSelf
+  );
 }
 function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
-  return getCurrentComponent().useSelf(name, callback, debounceSecond, throttleSecond);
+  return getCurrentComponent().useSelf(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond
+  );
 }
 function useEmit(name, ...args) {
   return getCurrentComponent().emit(name, ...args);
@@ -2925,9 +3010,11 @@ class MagicHandler {
     return __privateGet(this, _handlerCache)[func];
   }
   async runHandlers(func = "run", ...args) {
-    await Promise.all(this.loadHandlerCache(func).map(async (h) => {
-      await h[func](...args);
-    }));
+    await Promise.all(
+      this.loadHandlerCache(func).map(async (h) => {
+        await h[func](...args);
+      })
+    );
   }
 }
 _handlerCache = new WeakMap();
@@ -2990,7 +3077,10 @@ class HookMachine extends MagicHandler {
   }
   useState(initialState) {
     if (!this.getHook()) {
-      this.setHook(USE_STATE, createState({ value: initialState, component: this }));
+      this.setHook(
+        USE_STATE,
+        createState({ value: initialState, component: this })
+      );
     }
     const [value, update] = this.getHook().hookInfo;
     this.increaseHookIndex();
@@ -3040,7 +3130,9 @@ class HookMachine extends MagicHandler {
     return this.useMemo(() => ({ current: initialValue }), []);
   }
   refreshProvider(provider) {
-    const hookInfo = this.filterHooks(USE_CONTEXT).find((it) => it.provider.id === provider.id);
+    const hookInfo = this.filterHooks(USE_CONTEXT).find(
+      (it) => it.provider.id === provider.id
+    );
     if (hookInfo) {
       hookInfo.provider = provider;
     }
@@ -3065,7 +3157,15 @@ class HookMachine extends MagicHandler {
         name,
         callback,
         component: this,
-        unsubscribe: this.$store.on(name, callback, this, debounceSecond, throttleSecond, false, isSelf)
+        unsubscribe: this.$store.on(
+          name,
+          callback,
+          this,
+          debounceSecond,
+          throttleSecond,
+          false,
+          isSelf
+        )
       });
     }
     const { unsubscribe } = this.getHook().hookInfo;
@@ -3073,7 +3173,13 @@ class HookMachine extends MagicHandler {
     return unsubscribe;
   }
   useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
-    return this.useSubscribe(name, callback, debounceSecond, throttleSecond, true);
+    return this.useSubscribe(
+      name,
+      callback,
+      debounceSecond,
+      throttleSecond,
+      true
+    );
   }
   useEmit(name, ...args) {
     return this.emit(name, ...args);
@@ -3132,17 +3238,26 @@ const _EventMachine = class extends HookMachine {
     __publicField(this, "registerRef", (ref, el) => {
       this.refs[ref] = el;
     });
-    __publicField(this, "registerChildComponent", (el, childComponent, id) => {
+    __publicField(this, "registerChildComponent", (el, childComponent, id, oldEl) => {
       if (!__privateGet(this, _childObjectElements).has(el)) {
         __privateGet(this, _childObjectList)[id] = el;
         __privateGet(this, _childObjectElements).set(el, childComponent);
       }
+      if (__privateGet(this, _childObjectElements).has(oldEl)) {
+        __privateGet(this, _childObjectElements).delete(oldEl);
+      }
     });
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
       const props = newVNode.props;
+      if (newVNode.isComponentChanged) {
+        return true;
+      }
       let targetInstance = this.getTargetInstance(oldEl);
       if (targetInstance) {
         if (targetInstance.isInstanceOf(newVNode.Component)) {
+          if (newVNode.isComponentChanged) {
+            return true;
+          }
           if (targetInstance.isForceRender(props)) {
             return true;
           }
@@ -3208,9 +3323,12 @@ const _EventMachine = class extends HookMachine {
     }
   }
   toggleState(key, isLoad = true) {
-    this.setState({
-      [key]: !__privateGet(this, _state)[key]
-    }, isLoad);
+    this.setState(
+      {
+        [key]: !__privateGet(this, _state)[key]
+      },
+      isLoad
+    );
   }
   changedProps(newProps) {
     const obj1 = this.props;
@@ -3235,9 +3353,11 @@ const _EventMachine = class extends HookMachine {
     return this.props.ref;
   }
   get children() {
-    return Object.fromEntries(Object.entries(__privateGet(this, _childObjectList)).map(([_key, child]) => {
-      return [_key, __privateGet(this, _childObjectElements).get(child)];
-    }));
+    return Object.fromEntries(
+      Object.entries(__privateGet(this, _childObjectList)).map(([_key, child]) => {
+        return [_key, __privateGet(this, _childObjectElements).get(child)];
+      })
+    );
   }
   get isPreLoaded() {
     return true;
@@ -3265,7 +3385,7 @@ const _EventMachine = class extends HookMachine {
   is(name, callback) {
     return this.sourceName === name && callback(this);
   }
-  async render($container) {
+  async render($container, isForceRender = false) {
     if (!this.isPreLoaded) {
       this.checkLoad($container);
       return;
@@ -3273,13 +3393,15 @@ const _EventMachine = class extends HookMachine {
     this.resetCurrentComponent();
     const template = this.template();
     if (isArray(template)) {
-      throw new Error([
-        `Error Component - ${this.sourceName}`,
-        "Template root is not must an array, however You can use Fragment instead of it",
-        "Fragment Samples: ",
-        " <>{list}</> ",
-        " <Fragment>{list}</Fragment>"
-      ].join("\n"));
+      throw new Error(
+        [
+          `Error Component - ${this.sourceName}`,
+          "Template root is not must an array, however You can use Fragment instead of it",
+          "Fragment Samples: ",
+          " <>{list}</> ",
+          " <Fragment>{list}</Fragment>"
+        ].join("\n")
+      );
     }
     if (this.$el) {
       if (template.type === VNodeType.FRAGMENT) {
@@ -3288,6 +3410,7 @@ const _EventMachine = class extends HookMachine {
         DomVNodeDiff(this.$el.el, template, {
           checkRefClass: this.checkRefClass,
           context: this,
+          isForceRender,
           registerRef: this.registerRef,
           registerChildComponent: this.registerChildComponent
         });
@@ -3305,6 +3428,7 @@ const _EventMachine = class extends HookMachine {
       }
       await this._afterLoad();
     }
+    this.$el.el[COMPONENT_INSTANCE] = this;
     return this;
   }
   async renderToHtml() {
@@ -3387,7 +3511,11 @@ const _EventMachine = class extends HookMachine {
   }
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
-      __privateSet(this, _cachedMethodList, collectProps(this, _EventMachine, (name) => MagicMethod.check(name)).map((it) => {
+      __privateSet(this, _cachedMethodList, collectProps(
+        this,
+        _EventMachine,
+        (name) => MagicMethod.check(name)
+      ).map((it) => {
         return MagicMethod.parse(it, this);
       }));
     }
@@ -3498,7 +3626,17 @@ const _UIElement = class extends EventMachine {
     }
   }
   on(message, callback, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, frame = false) {
-    this.$store.on(message, callback, this.source, debounceDelay, throttleDelay, enableAllTrigger, enableSelfTrigger, [], frame);
+    this.$store.on(
+      message,
+      callback,
+      this.source,
+      debounceDelay,
+      throttleDelay,
+      enableAllTrigger,
+      enableSelfTrigger,
+      [],
+      frame
+    );
   }
   off(message, callback) {
     this.$store.off(message, callback, this.source);
@@ -3506,7 +3644,15 @@ const _UIElement = class extends EventMachine {
   subscribe(callback, debounceSecond = 0, throttleSecond = 0) {
     const id = `subscribe.${uuidShort()}`;
     const newCallback = this.createLocalCallback(id, callback);
-    this.$store.on(id, newCallback, this, debounceSecond, throttleSecond, false, true);
+    this.$store.on(
+      id,
+      newCallback,
+      this,
+      debounceSecond,
+      throttleSecond,
+      false,
+      true
+    );
     return id;
   }
   static createFunctionElementInstance(EventMachineComponent, parentInstance, props, state = {}) {
@@ -3529,7 +3675,12 @@ const _UIElement = class extends EventMachine {
   }
   static createElementInstance(ElementClass, parent, props, state) {
     if (ElementClass.__proto__.name === "") {
-      return _UIElement.createFunctionElementInstance(ElementClass, parent, props, state);
+      return _UIElement.createFunctionElementInstance(
+        ElementClass,
+        parent,
+        props,
+        state
+      );
     } else {
       return new ElementClass(parent, props, state);
     }
@@ -3773,7 +3924,13 @@ class VNode {
     this.initializeChildren();
   }
   clone() {
-    return new VNode(this.type, this.tag, __spreadValues({}, this.props), this.children.map((it) => it.clone()), this.Component);
+    return new VNode(
+      this.type,
+      this.tag,
+      { ...this.props },
+      this.children.map((it) => it.clone()),
+      this.Component
+    );
   }
   find(callback) {
     return this.props.content.find(callback);
@@ -3898,22 +4055,26 @@ class VNode {
     const tempChildren = [];
     const children2 = this.children;
     if (children2 && children2.length) {
-      const tempArray = await Promise.all(children2.map(async (child) => {
-        if (child instanceof VNode || child.makeHtml) {
-          return await child.makeHtml(withChildren, options);
-        } else if (isArray(child)) {
-          return await Promise.all(child.map(async (it) => {
-            if (it) {
-              return await it.makeHtml(withChildren, options);
-            }
-            return void 0;
-          })).filter((it) => typeof it !== "undefined");
-        } else if (isFunction(child)) {
-          return await child();
-        } else {
-          return await child;
-        }
-      }));
+      const tempArray = await Promise.all(
+        children2.map(async (child) => {
+          if (child instanceof VNode || child.makeHtml) {
+            return await child.makeHtml(withChildren, options);
+          } else if (isArray(child)) {
+            return await Promise.all(
+              child.map(async (it) => {
+                if (it) {
+                  return await it.makeHtml(withChildren, options);
+                }
+                return void 0;
+              })
+            ).filter((it) => typeof it !== "undefined");
+          } else if (isFunction(child)) {
+            return await child();
+          } else {
+            return await child;
+          }
+        })
+      );
       tempChildren.push(...tempArray);
     }
     return tempChildren.join("\n");
@@ -3922,8 +4083,6 @@ class VNode {
     return makeNativeDom(this.tag);
   }
   makeElement(withChildren = false, options = {}) {
-    if (this.el)
-      return this;
     const el = this.createElement();
     const props = this.tagProps;
     if (props) {
@@ -4017,8 +4176,6 @@ class VNodeText extends VNode {
     return makeNativeTextDom(this.value);
   }
   makeElement() {
-    if (this.el)
-      return this;
     this.el = this.createElement();
     return this;
   }
@@ -4043,8 +4200,6 @@ class VNodeComment extends VNode {
     return makeNativeCommentDom(this.value);
   }
   makeElement() {
-    if (this.el)
-      return this;
     this.el = this.createElement();
     return this;
   }
@@ -4057,7 +4212,10 @@ class VNodeFragment extends VNode {
     super(VNodeType.FRAGMENT, "fragment", props || {}, children2);
   }
   clone() {
-    return new VNodeFragment(this.props, this.children.map((it) => it.clone()));
+    return new VNodeFragment(
+      this.props,
+      this.children.map((it) => it.clone())
+    );
   }
   makeElement(withChildren = false, options = {}) {
     if (this.el)
@@ -4078,20 +4236,35 @@ class VNodeComponent extends VNode {
     this.instance = null;
   }
   clone() {
-    return new VNodeComponent(this.props, this.children.map((it) => it.clone()), this.Component);
+    return new VNodeComponent(
+      this.props,
+      this.children.map((it) => it.clone()),
+      this.Component
+    );
   }
   mounted() {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onMounted();
   }
+  getModule() {
+    return getModule(this.Component);
+  }
+  get isComponentChanged() {
+    return this.Component !== this.getModule();
+  }
   makeClassInstance(options) {
     var _a, _b, _c;
     const props = this.props;
-    this.Component = getModule(this.Component);
+    this.Component = this.getModule();
     const hooks = (_a = this.instance) == null ? void 0 : _a.copyHooks();
     const state = (_b = this.instance) == null ? void 0 : _b.state;
     const oldId = (_c = this.instance) == null ? void 0 : _c.id;
-    this.instance = createComponentInstance(this.Component, options.context, props, state);
+    this.instance = createComponentInstance(
+      this.Component,
+      options.context,
+      props,
+      state
+    );
     if (oldId) {
       this.instance.setId(oldId);
     }
@@ -4115,8 +4288,6 @@ class VNodeComponent extends VNode {
   }
   makeElement(withChildren, options = {}) {
     var _a, _b;
-    if (this.el)
-      return this;
     this.render(options);
     this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
     if (this.el) {
@@ -4181,7 +4352,7 @@ function cloneVNode(vnode) {
   return vnode.clone();
 }
 function jsonToVNode(json) {
-  const _a = json, { children: children2 = [] } = _a, rest = __objRest(_a, ["children"]);
+  const { children: children2 = [], ...rest } = json;
   if (typeof json === "string" || typeof json === "number") {
     return createVNodeText(json);
   }
@@ -4192,22 +4363,25 @@ function jsonToVNode(json) {
     return createVNodeText(rest.text);
   }
   if (rest.type === "fragment") {
-    return createVNodeFragment(__spreadProps(__spreadValues({}, rest), {
+    return createVNodeFragment({
+      ...rest,
       children: children2.map((it) => jsonToVNode(it))
-    }));
+    });
   }
   if (rest.type === "component" || rest.Component) {
-    return createVNodeComponent(__spreadProps(__spreadValues({}, rest), {
+    return createVNodeComponent({
+      ...rest,
       children: children2.map((it) => jsonToVNode(it))
-    }));
+    });
   }
-  return createVNode(__spreadProps(__spreadValues({}, rest), {
+  return createVNode({
+    ...rest,
     children: children2.map((it) => jsonToVNode(it))
-  }));
+  });
 }
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
-  const $targetElement = $container.children().find((it) => it.el.__component);
+  const $targetElement = $container.children().find((it) => it.el[COMPONENT_INSTANCE]);
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
@@ -4215,12 +4389,11 @@ const start = (ElementClass, opt = {}) => {
   const app = createComponentInstance(ElementClass, null, opt);
   if ($targetElement) {
     app.$el = Dom.create($targetElement.el);
-    app.id = $targetElement.el.__component.id;
+    app.id = $targetElement.el[COMPONENT_INSTANCE].id;
     app.render();
   } else {
     app.render($container);
   }
-  app.$el.el.__component = app;
   registRootElementInstance(app, $container);
   return app;
 };
@@ -4281,7 +4454,11 @@ function createComponentList(...args) {
       [ComponentName, props = {}, children2 = []] = it;
     }
     if (children2.length) {
-      return createComponent(ComponentName, props || {}, createComponentList(children2));
+      return createComponent(
+        ComponentName,
+        props || {},
+        createComponentList(children2)
+      );
     }
     return createComponent(ComponentName, props);
   });

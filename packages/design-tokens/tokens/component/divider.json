@@ -1,0 +1,33 @@
+{
+    "component": {
+      "divider": {
+        "color": {
+            "border": {
+                "default": {
+                  "value": "{color.core.gray.1.value}"
+                },
+                "primary": {
+                  "value": "{color.background.primary.base.value}"
+                },
+                "secondary": {
+                  "value": "{color.background.secondary.base.value}"
+                },
+                "success": {
+                  "value": "{color.background.success.base.value}"
+                },
+                "info": {
+                  "value": "{color.background.info.base.value}"
+                },
+                "warning": {
+                  "value": "{color.background.warning.base.value}"
+                },
+                "danger": {
+                  "value": "{color.background.danger.base.value}"
+                }
+              }
+        }
+      }
+    }
+}
+
+  

@@ -41,8 +41,8 @@ export class ToggleButton extends UIElement {
         },
         destructive ? "destructive" : "",
         {
-          "elf--button-lg": size === "large",
-          "elf--button-sm": size === "small",
+          "large": size === "large",
+          "small": size === "small",
         },
         {
           "elf--button-shape-circle": shape === "circle",

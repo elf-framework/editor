@@ -82,7 +82,7 @@
     > .elf--app-layout-item[data-direction="top"] {
         order: 1;
         flex: none;
-        // border-bottom: 1px solid var(--elf--app-layout-border-color);            
+        border-bottom: 1px solid var(--elf--app-layout-border-color);            
         box-sizing: border-box;        
 
         z-index: 1;

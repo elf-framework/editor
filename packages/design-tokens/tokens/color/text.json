@@ -1,0 +1,43 @@
+{
+  "color": {
+    "text": {
+      "default": {
+        "value": "{color.core.black.value}",
+        "comment": "Default text color"
+      },
+      "primary": {
+        "value": "{color.core.blue.4.value}",
+        "comment": "Text color to indicate primary"
+      },
+      "secondary": {
+        "value": "{color.core.gray.4.value}",
+        "comment": "Text color to indicate secondary"
+      },
+      "danger": {
+        "value": "{color.core.red.4.value}",
+        "comment": "Text color to indicate danger"
+      },
+      "warning": {
+        "value": "{color.core.yellow.4.value}",
+        "comment": "Text color to indicate warning"
+      },
+      "success": {
+        "value": "{color.core.green.4.value}",
+        "comment": "Text color to indicate success"
+      },
+      "info": {
+        "value": "{color.core.blue.2.value}",
+        "comment": "Text color to indicate info"
+      },
+      "inverse": {
+        "value": "{color.core.white.value}",
+        "comment": "Text color to indicate inverse"
+      },
+      "link": {
+        "value": "{color.core.blue.4.value}",
+        "comment": "Text color to indicate link"
+      }
+
+    }
+  }
+}

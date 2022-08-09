@@ -6,6 +6,7 @@ import { convertPropertyToStyleKey } from "../../utils/styleKeys";
 const cssProperties = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
+  selectedBackgroundColor: "--elf--button-selected-background-color",
   disabledColor: "--elf--button-disabled-color",
   color: "--elf--button-color",
   fontSize: "--elf--button-font-size",
@@ -23,7 +24,8 @@ export class Button extends UIElement {
       disabled,
       selected,
       shape,
-      destructive = false,
+      quiet = undefined,
+      outline = undefined,
       style = {},
       onClick,
       content,
@@ -35,16 +37,10 @@ export class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
-        { selected },
+        { selected, outline, quiet, [type]: true },
         {
-          primary: type === "primary",
-          secondary: type === "secondary",
-          outline: type === "outline",
-        },
-        destructive ? "destructive" : "",
-        {
-          "elf--button-lg": size === "large",
-          "elf--button-sm": size === "small",
+          large: size === "large",
+          small: size === "small",
         },
         {
           "elf--button-shape-circle": shape === "circle",
