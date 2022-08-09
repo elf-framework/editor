@@ -7,6 +7,7 @@ const transforms = [
   "color/css",
 ];
 const StyleDictionary = require("style-dictionary");
+const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
 
 function makeFontWeightStyle(prop) {
   return `
@@ -47,24 +48,25 @@ StyleDictionary.extend({
   source: [`tokens/**/!(*.${modes.join(`|*.`)}).js*`],
   ignore: [`*component*`],
   format: {
-    "css/style": ({ dictionary }) => {
+    "css/style": ({ dictionary, file, options }) => {
       return `
-    ${dictionary.allProperties
-      .map((prop) => {
-        switch (prop.attributes.category) {
-          case "image":
-            break;
-          case "weight":
-            return makeFontWeightStyle(prop);
+${fileHeader({ file })}
+${dictionary.allProperties
+  .map((prop) => {
+    switch (prop.attributes.category) {
+      case "image":
+        break;
+      case "weight":
+        return makeFontWeightStyle(prop);
 
-          case "color":
-            return makeColorStyle(prop);
-          default:
-            break;
-        }
-      })
-      .filter(Boolean)
-      .join("\n")}
+      case "color":
+        return makeColorStyle(prop);
+      default:
+        break;
+    }
+  })
+  .filter(Boolean)
+  .join("\n")}
     `;
     },
   },
