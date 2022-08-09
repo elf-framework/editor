@@ -1,130 +1,205 @@
 .elf--button {
-    --elf--button-border-color: rgba(0, 0, 0, 0.8);
-    --elf--button-padding: 7px 10px;
-    --elf--button-font-size: var(--elf--font-size, 14px);
-    --elf--button-background-color: transparent;
-    --elf--button-color: rgba(0, 0, 0, 0.8);
-    --elf--button-border-radius: 4px;
-    --elf--button-disabled-color: var(--elf--disabled-color);
-    --elf--button-inner-gap: 10px;
-    --elf--button-selected-background-color: var(--color-primary-selected);
-    --elf--button-selected-border-color: var(--color-primary-selected);
+  --elf--button-border-color: var(--component-button-color-border-default);
+  --elf--button-padding: var(--component-button-size-padding-medium);
+  --elf--button-font-size: var(--elf--font-size, 14px);
+  --elf--button-background-color: var(
+    --component-button-color-background-default
+  );
+  --elf--button-color: rgba(0, 0, 0, 0.8);
+  --elf--button-border-radius: 4px;
+  --elf--button-disabled-color: var(--elf--disabled-color);
+  --elf--button-inner-gap: 10px;
+  --elf--button-selected-background-color: var(--component-button-selected-background-default);
+  --elf--button-selected-border-color: var(--component-button-selected-background-default);
 
-    // height: var(--elf--button-height, 30px);
-    padding: var(--elf--button-padding);
-    border-radius: var(--elf--button-border-radius);
-    line-height: 16px;
-    font-size: var(--elf--button-font-size);
-    background-color: var(--elf--button-background-color);
-    color: var(--elf--button-color);
-    border: 1px solid var(--elf--button-border-color);
-    cursor: pointer;
+  // height: var(--elf--button-height, 30px);
+  padding: var(--elf--button-padding);
+  border-radius: var(--elf--button-border-radius);
+  line-height: 16px;
+  font-size: var(--elf--button-font-size);
+  background-color: var(--elf--button-background-color);
+  color: var(--elf--button-color);
+  border: 1px solid var(--elf--button-border-color);
+  cursor: pointer;
 
-    &.selected {
-        background-color: var(--elf--button-selected-background-color);
-        // color: var(--elf--button-selected-color);
-        // border-color: var(--elf--button-selected-border-color);
-    }
-
-    > span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--elf--button-inner-gap);
-    }
-
-    &.elf--button-lg {
-        --elf--button-font-size: 16px;
-        --elf--button-padding: 12px 20px;
-    }
-
-    &.elf--button-sm {
-        --elf--button-font-size: 12px;        
-        --elf--button-padding: 3px 5px;
-    }
-
-    &.elf--button-shape-round {
-        --elf--button-border-radius: 8px;
-    }
-
-    &.elf--button-shape-circle {
-        --elf--button-border-radius: 50%;
-    }
-
-
-    &[disabled] {
-        cursor: not-allowed;
-        --elf--button-background-color: var(--elf--button-disabled-color) !important;
-        --elf--button-color: white !important;
-        --elf--button-border-color: transparent !important;
-    }
-
-    &:hover,
-    &.hover {
-        --elf--button-background-color: rgba(0, 0, 0, 0.06);
-    }    
+  &.selected {
+    background-color: var(--elf--button-selected-background-color);
 
     &.primary {
-        --elf--button-background-color: var(--elf--primary-color);
-        --elf--button-color: white;
-        border-width: 0px;
-
-        &.focus {
-            --elf--button-border-color: rgba(0, 0, 0, 0.3);
-            border-width: 2px;
-        }
-
-        &[disabled] {
-            --elf--button-background-color: var(--elf--disabled-color);
-        }
-
-        &.destructive {
-            --elf--button-background-color: var(--elf--primary-destructive-color);
-
-            
-            &.focus {
-                --elf--button-border-color: rgba(0, 0, 0, 0.3);
-                border-width: 2px;
-            }
-
-            &[disabled] {
-                --elf--button-background-color: var(--elf--disabled-color);
-            }
-        }
+        --elf--button-selected-background-color: var(--component-button-color-background-primary);
     }
-    
+
     &.secondary {
-        --elf--button-background-color: var(--elf--secondary-color);
-        --elf--button-color: white;
-        border: 0px solid var(--elf--button-border-color);
-
-        &[disabled] {
-            --elf--button-background-color: var(--elf--disabled-color);
-        }
+        --elf--button-selected-background-color: var(--component-button-color-background-secondary);
     }
 
-    &.outline {
-        --elf--button-background-color: transparent;
-        --elf--button-color: black;
-        --elf--button-border-color: black;
-
-        &.focus {
-            --elf--button-border-color: var(--elf--primary-color);
-            border-width: 2px;
-        }
-
-
-        &[disabled] {
-            --elf--button-border-color: var(--elf--disabled-color);
-            --elf--button-color: var(--elf--disabled-color);
-        }
-
-
-        &.destructive {
-            --elf--button-border-color: var(--elf--primary-destructive-color);
-
-            color: var(--elf--primary-destructive-color);
-        }        
-
+    &.danger {
+        --elf--button-selected-background-color: var(--component-button-color-background-destructive);
     }
-} 
+
+    &.success {
+        --elf--button-selected-background-color: var(--component-button-color-background-success);
+    }
+
+    &.info {
+        --elf--button-selected-background-color: var(--component-button-color-background-info);
+    }
+
+    &.warning {
+        --elf--button-selected-background-color: var(--component-button-color-background-warning);
+    }
+
+    // color: var(--elf--button-selected-color);
+    // border-color: var(--elf--button-selected-border-color);
+  }
+
+  > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--elf--button-inner-gap);
+  }
+
+  &.large {
+    --elf--button-font-size: 16px;
+    --elf--button-padding: var(--component-button-size-padding-large);
+  }
+
+  &.small {
+    --elf--button-font-size: 12px;
+    --elf--button-padding: var(--component-button-size-padding-small);
+  }
+
+  &.elf--button-shape-round {
+    --elf--button-border-radius: 8px;
+  }
+
+  &.elf--button-shape-circle {
+    --elf--button-border-radius: 50%;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    --elf--button-background-color: var(
+      --component-button-disabled-background-default
+    ) !important;
+    --elf--button-color: var(--component-button-disabled-text-default) !important;
+    --elf--button-border-color: transparent !important;
+
+    &.quiet {
+        --elf--button-background-color: transparent !important;
+    }
+  }
+
+  &:hover,
+  &.hover {
+    --elf--button-background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  &.primary {
+    --elf--button-background-color: var(
+      --component-button-color-background-primary
+    );
+    --elf--button-color: white;
+    border-width: 0px;
+
+    &.focus {
+      --elf--button-border-color: rgba(0, 0, 0, 0.3);
+      border-width: 2px;
+    }
+
+    &[disabled] {
+      --elf--button-background-color: var(--elf--disabled-color);
+    }
+  }
+
+  &.secondary {
+    --elf--button-background-color: var(
+      --component-button-color-background-secondary
+    );
+    --elf--button-color: white;
+    border: 0px solid var(--elf--button-border-color);
+
+    &[disabled] {
+      --elf--button-background-color: var(--elf--disabled-color);
+    }
+  }
+
+  &.success {
+    --elf--button-background-color: var(
+      --component-button-color-background-success
+    );
+    --elf--button-color: white;
+    border-width: 0px;
+  }
+
+  &.danger {
+    --elf--button-background-color: var(
+      --component-button-color-background-danger
+    );
+    --elf--button-color: white;
+    border-width: 0px;
+  }
+
+  &.info {
+    --elf--button-background-color: var(
+      --component-button-color-background-info
+    );
+    --elf--button-color: white;
+    border-width: 0px;
+  }
+
+  &.warning {
+    --elf--button-background-color: var(
+      --component-button-color-background-warning
+    );
+    --elf--button-color: white;
+    border-width: 0px;
+  }
+
+  &.outline {
+    --elf--button-background-color: var(
+      --component-button-color-background-default
+    );
+    border-width: 1px;
+
+    &.primary {
+      --elf--button-border-color: var(--component-button-color-border-primary);
+      --elf--button-color: var(
+        --component-button-color-background-primary
+      );
+    }
+
+    &.secondary {
+      --elf--button-border-color: var(
+        --component-button-color-border-secondary
+      );
+      --elf--button-color: var(--component-button-color-background-secondary);
+    }
+
+    &.success {
+      --elf--button-border-color: var(--component-button-color-border-success);
+      --elf--button-color: var(--component-button-color-background-success);
+    }
+
+    &.danger {
+      --elf--button-border-color: var(--component-button-color-border-danger);
+      --elf--button-color: var(--component-button-color-background-danger);
+    }
+
+    &.info {
+      --elf--button-border-color: var(--component-button-color-border-info);
+      --elf--button-color: var(--component-button-color-background-info);
+    }
+
+    &.warning {
+      --elf--button-border-color: var(--component-button-color-border-warning);
+      --elf--button-color: var(--component-button-color-background-warning);
+    }
+  }
+
+  &.quiet {
+    --elf--button-background-color: transparent;
+    border-width: 0px;
+  }
+}

@@ -1,19 +1,3 @@
-var __defProp = Object.defineProperty;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
 import { isFunction, isObject, VNode, isArray, createElementJsx, useStore, UIElement, useSelf, classnames } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 var style = "";
@@ -48,7 +32,11 @@ class CommandManager {
       if (!command.execute)
         throw new Error("callback is required", command);
       const callback = (...args) => {
-        const result = command.execute.call(command, this.editorContext, ...args);
+        const result = command.execute.call(
+          command,
+          this.editorContext,
+          ...args
+        );
         return result;
       };
       callback.source = command.command;
@@ -74,7 +62,10 @@ class ConfigManager {
   get(key) {
     var _a;
     if (this.config.has(key) === false) {
-      this.config.set(key, (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.defaultValue);
+      this.config.set(
+        key,
+        (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.defaultValue
+      );
     }
     return this.config.get(key);
   }
@@ -193,14 +184,16 @@ class PluginManager {
     this.plugins.push(new EditorPlugin$1(this.editorContext, func, options));
   }
   async initializePlugin() {
-    return await Promise.all(this.plugins.map(async (plugin) => {
-      try {
-        return await plugin.activate();
-      } catch (e) {
-        console.error(e);
-        return void 0;
-      }
-    }));
+    return await Promise.all(
+      this.plugins.map(async (plugin) => {
+        try {
+          return await plugin.activate();
+        } catch (e) {
+          console.error(e);
+          return void 0;
+        }
+      })
+    );
   }
   async activate() {
     await this.initializePlugin();
@@ -266,12 +259,13 @@ class EditorContext {
     this.emit("editor.initialize", this);
   }
   initializeManagers(managers = {}) {
-    managers = __spreadValues({
+    managers = {
       configs: ConfigManager,
       commands: CommandManager,
       plugins: PluginManager,
-      uis: UIManager
-    }, managers);
+      uis: UIManager,
+      ...managers
+    };
     Object.entries(managers).forEach(([key, Manager]) => {
       if (Object.hasOwnProperty.call(this, key)) {
         console.warn(`[EditorContext] ${key} manager is already exists.`);
@@ -403,9 +397,10 @@ class BaseEditor extends Editor {
       this.refresh();
     });
     return /* @__PURE__ */ createElementJsx("div", {
-      class: classnames("elf--base-editor", __spreadValues({
-        "full-screen": this.props.fullScreen
-      }, this.props.editorClass))
+      class: classnames("elf--base-editor", {
+        "full-screen": this.props.fullScreen,
+        ...this.props.editorClass
+      })
     }, editor.isPluginActivated ? editor.getUIList("renderView") : void 0);
   }
 }

@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 2.0.36
+
+### Patch Changes
+
+- Add Divider Component with style
+
 ## 2.0.26
 
 ### Patch Changes

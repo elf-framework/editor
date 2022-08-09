@@ -1,4 +1,4 @@
-import "@elf-framework/design-tokens/variables.css";
+import "@elf-framework/design-tokens/tokens.css";
 
 import "./scss/index.scss";
 

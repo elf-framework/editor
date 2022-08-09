@@ -1,39 +1,10 @@
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __objRest = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { AFTER, UIElement, classnames, createElementJsx, isFunction, CLICK, IF, PREVENT, STOP, isString, OBSERVER, PARAMS, Dom, POINTEROVER, POINTERLEAVE, useState, useCallback, useEffect, potal, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
+import { AFTER, UIElement, classnames, createElementJsx, isFunction, CLICK, IF, PREVENT, STOP, OBSERVER, PARAMS, isString, Dom, POINTEROVER, POINTERLEAVE, useState, useCallback, useEffect, potal, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 var index = "";
 const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
@@ -90,7 +61,7 @@ function styleMap(key, value) {
   }
   return value;
 }
-function propertyMap(styles, mapper) {
+function propertyMap(styles, mapper = {}) {
   const styleObj = {};
   Object.keys(styles).forEach((key) => {
     styleObj[mapper[key] || key] = styleMap(key, styles[key]);
@@ -195,7 +166,7 @@ const convertStyleKey = (key) => {
   styleKeys[key] = upperKey;
   return upperKey;
 };
-function makeStyleMap(prefix, obj) {
+function makeStyleMap(prefix, obj = {}) {
   const newObj = {};
   Object.keys(obj).forEach((key) => {
     newObj[key] = prefix + "-" + convertStyleKey(key);
@@ -214,9 +185,10 @@ function convertPropertyToStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$p = {
+const cssProperties$q = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
+  selectedBackgroundColor: "--elf--button-selected-background-color",
   disabledColor: "--elf--button-disabled-color",
   color: "--elf--button-color",
   fontSize: "--elf--button-font-size",
@@ -227,41 +199,27 @@ const cssProperties$p = {
 };
 class Button extends UIElement {
   template() {
-    const _a = this.props, {
+    const {
       type,
       size,
       disabled,
       selected,
       shape,
-      destructive = false,
+      quiet = void 0,
+      outline = void 0,
       style: style2 = {},
       onClick,
-      content
-    } = _a, extraStyle = __objRest(_a, [
-      "type",
-      "size",
-      "disabled",
-      "selected",
-      "shape",
-      "destructive",
-      "style",
-      "onClick",
-      "content"
-    ]);
+      content,
+      ...extraStyle
+    } = this.props;
     const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
       class: classnames([
         "elf--button",
-        { selected },
+        { selected, outline, quiet, [type]: true },
         {
-          primary: type === "primary",
-          secondary: type === "secondary",
-          outline: type === "outline"
-        },
-        destructive ? "destructive" : "",
-        {
-          "elf--button-lg": size === "large",
-          "elf--button-sm": size === "small"
+          large: size === "large",
+          small: size === "small"
         },
         {
           "elf--button-shape-circle": shape === "circle",
@@ -269,14 +227,21 @@ class Button extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$p)
+      style: propertyMap(
+        {
+          ...style2,
+          ...styleProperties
+        },
+        cssProperties$q
+      )
     };
-    return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("button", {
+      ...styleObject,
       onClick
-    }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
+    }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$o = makeStyleMap("--elf--button-group", {
+const cssProperties$p = makeStyleMap("--elf--button-group", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -286,17 +251,25 @@ const cssProperties$o = makeStyleMap("--elf--button-group", {
 });
 class ButtonGroup extends UIElement {
   template() {
-    const _a = this.props, { disabled, style: style2 = {}, content } = _a, extraStyle = __objRest(_a, ["disabled", "style", "content"]);
+    const { disabled, style: style2 = {}, content, ...extraStyle } = this.props;
     const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
       class: classnames(["elf--button-group"]),
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$o)
+      style: propertyMap(
+        {
+          ...style2,
+          ...styleProperties
+        },
+        cssProperties$p
+      )
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
-const cssProperties$n = {
+const cssProperties$o = {
   borderColor: "--elf--link-button-border-color",
   backgroundColor: "--elf--link-button-background",
   disabledColor: "--elf--link-button-disabled-color",
@@ -311,15 +284,18 @@ class LinkButton extends UIElement {
     const styleObject = {
       class: classnames(["elf--link-button"]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$n))
+      style: {
+        ...propertyMap(style2, cssProperties$o)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("a", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("a", {
+      ...styleObject,
       onClick,
       href: href || "#"
-    }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
+    }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$m = {
+const cssProperties$n = {
   borderColor: "--elf--icon-button-border-color",
   backgroundColor: "--elf--icon-button-background",
   disabledColor: "--elf--icon-button-disabled-color",
@@ -359,16 +335,18 @@ class IconButton extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$m))
+      style: {
+        ...propertyMap(style2, cssProperties$n)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({
-      type: "button"
-    }, styleObject), {
+    return /* @__PURE__ */ createElementJsx("button", {
+      type: "button",
+      ...styleObject,
       onClick: this.props.onClick
-    }), icon || content || "");
+    }, icon || content || "");
   }
 }
-const cssProperties$l = {
+const cssProperties$m = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   disabledColor: "--elf--button-disabled-color",
@@ -381,7 +359,7 @@ const cssProperties$l = {
 };
 class ToggleButton extends UIElement {
   template() {
-    const _a = this.props, {
+    const {
       type,
       size,
       disabled,
@@ -389,17 +367,9 @@ class ToggleButton extends UIElement {
       destructive = false,
       style: style2 = {},
       onClick,
-      content
-    } = _a, extraStyle = __objRest(_a, [
-      "type",
-      "size",
-      "disabled",
-      "shape",
-      "destructive",
-      "style",
-      "onClick",
-      "content"
-    ]);
+      content,
+      ...extraStyle
+    } = this.props;
     const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
       class: classnames([
@@ -411,8 +381,8 @@ class ToggleButton extends UIElement {
         },
         destructive ? "destructive" : "",
         {
-          "elf--button-lg": size === "large",
-          "elf--button-sm": size === "small"
+          "large": size === "large",
+          "small": size === "small"
         },
         {
           "elf--button-shape-circle": shape === "circle",
@@ -420,14 +390,21 @@ class ToggleButton extends UIElement {
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), cssProperties$l)
+      style: propertyMap(
+        {
+          ...style2,
+          ...styleProperties
+        },
+        cssProperties$m
+      )
     };
-    return /* @__PURE__ */ createElementJsx("button", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("button", {
+      ...styleObject,
       onClick
-    }), /* @__PURE__ */ createElementJsx("span", null, content || ""));
+    }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$k = {
+const cssProperties$l = {
   borderColor: "--elf--radio-border-color",
   backgroundColor: "--elf--radio-background",
   disabledColor: "--elf--radio-disabled-color",
@@ -456,19 +433,23 @@ class Radio extends UIElement {
           disabled
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$k))
+      style: {
+        ...propertyMap(style2, cssProperties$l)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", {
       ref: "$input",
-      type: "radio"
-    }, {
-      value,
-      name,
-      disabled: disabled ? "disabled" : void 0,
-      checked: checked ? "checked" : void 0
-    }), {
+      type: "radio",
+      ...{
+        value,
+        name,
+        disabled: disabled ? "disabled" : void 0,
+        checked: checked ? "checked" : void 0
+      },
       onChange: (e) => onChange == null ? void 0 : onChange(e, value)
-    })), content));
+    }), content));
   }
 }
 class RadioGroup extends UIElement {
@@ -477,9 +458,13 @@ class RadioGroup extends UIElement {
     const styleObject = {
       class: classnames(["elf--radio-group"]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$k))
+      style: {
+        ...propertyMap(style2, cssProperties$l)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content.map((it, index2) => {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content.map((it, index2) => {
       return /* @__PURE__ */ createElementJsx(Radio, {
         ref: `$${index2}`,
         name,
@@ -500,7 +485,7 @@ class RadioGroup extends UIElement {
     this.setState({ value });
   }
 }
-const cssProperties$j = {
+const cssProperties$k = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -529,19 +514,23 @@ class Checkbox extends UIElement {
           disabled
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$j))
+      style: {
+        ...propertyMap(style2, cssProperties$k)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", {
       ref: "$input",
-      type: "checkbox"
-    }, {
-      value,
-      name,
-      disabled: disabled ? "disabled" : void 0,
-      checked: checked ? "checked" : void 0
-    }), {
+      type: "checkbox",
+      ...{
+        value,
+        name,
+        disabled: disabled ? "disabled" : void 0,
+        checked: checked ? "checked" : void 0
+      },
       onChange: (e) => onChange == null ? void 0 : onChange(e, value)
-    })), content));
+    }), content));
   }
   get checked() {
     return this.refs.$input.checked();
@@ -561,9 +550,13 @@ class CheckboxGroup extends UIElement {
     const styleObject = {
       class: classnames(["elf--check-group"]),
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$j))
+      style: {
+        ...propertyMap(style2, cssProperties$k)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), options.map((it, index2) => {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, options.map((it, index2) => {
       return /* @__PURE__ */ createElementJsx(Checkbox, {
         ref: `$${index2}`,
         value: it.value,
@@ -594,6 +587,34 @@ class CheckboxGroup extends UIElement {
     this.setState({ values });
   }
 }
+const cssProperties$j = {
+  color: "--elf--divider-color",
+  margin: "--elf--divider-margin"
+};
+class Divider extends UIElement {
+  template() {
+    const { style: style2 = {}, type = "default", margin = "10px 0" } = this.props;
+    const styleObject = {
+      class: classnames("elf--divider", {
+        [type]: true
+      }),
+      style: {
+        ...propertyMap(
+          {
+            ...style2,
+            margin
+          },
+          cssProperties$j
+        )
+      }
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      className: "elf--divider-inner"
+    }));
+  }
+}
 const MenuItemType = {
   DIVIDER: "divider",
   GROUP: "group",
@@ -616,29 +637,29 @@ function makeMenuItem(items = [], rootClose) {
         rootClose
       });
     } else if (it.type === MenuItemType.CUSTOM) {
-      return /* @__PURE__ */ createElementJsx(CustomMenuItem, __spreadProps(__spreadValues({
-        ref
-      }, it), {
+      return /* @__PURE__ */ createElementJsx(CustomMenuItem, {
+        ref,
+        ...it,
         rootClose
-      }));
+      });
     } else if (it.type === MenuItemType.GROUP) {
-      return /* @__PURE__ */ createElementJsx(GroupMenuItem, __spreadProps(__spreadValues({
-        ref
-      }, it), {
+      return /* @__PURE__ */ createElementJsx(GroupMenuItem, {
+        ref,
+        ...it,
         rootClose
-      }));
+      });
     } else if (it.type === MenuItemType.DIVIDER) {
-      return /* @__PURE__ */ createElementJsx(DividerMenuItem, __spreadProps(__spreadValues({
-        ref
-      }, it), {
+      return /* @__PURE__ */ createElementJsx(DividerMenuItem, {
+        ref,
+        ...it,
         rootClose
-      }));
+      });
     }
-    return /* @__PURE__ */ createElementJsx(MenuItem, __spreadProps(__spreadValues({
-      ref
-    }, it), {
+    return /* @__PURE__ */ createElementJsx(MenuItem, {
+      ref,
+      ...it,
       rootClose
-    }));
+    });
   });
 }
 function DividerMenuItem({ dashed = false }) {
@@ -785,32 +806,37 @@ class Menu extends UIElement {
       rootClose,
       autoPosition = false
     } = this.props;
-    let itemStyle = __spreadValues({}, style2);
+    let itemStyle = { ...style2 };
     if (x !== 0)
-      itemStyle = __spreadProps(__spreadValues({}, itemStyle), { left: x });
+      itemStyle = { ...itemStyle, left: x };
     if (y !== 0)
-      itemStyle = __spreadProps(__spreadValues({}, itemStyle), { top: y });
+      itemStyle = { ...itemStyle, top: y };
     if (autoPosition) {
       const index2 = items.findIndex((it) => {
         return it.selectable && it.selected;
       });
-      itemStyle = __spreadProps(__spreadValues({}, itemStyle), { top: -1 * (index2 * 24 + 8) });
+      itemStyle = { ...itemStyle, top: -1 * (index2 * 24 + 8) };
     }
     const styleObject = {
       "data-direction": direction,
       class: classnames("elf--menu", {
         "elf--menu-contextmenu": type === "contextmenu"
       }),
-      style: __spreadValues({}, propertyMap(itemStyle, cssProperties$i))
+      style: {
+        ...propertyMap(itemStyle, cssProperties$i)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("menu", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("menu", {
+      ...styleObject,
       onContextMenu: (e) => e.preventDefault()
-    }), makeMenuItem(items, rootClose));
+    }, makeMenuItem(items, rootClose));
   }
   [OBSERVER("intersection") + PARAMS({
     root: document.body
   })](intersects = []) {
-    const item = intersects.find((it) => it.isIntersecting && it.intersectionRatio < 1);
+    const item = intersects.find(
+      (it) => it.isIntersecting && it.intersectionRatio < 1
+    );
     if (item) {
       const { left: bLeft, right: bRight } = item.boundingClientRect;
       const { left: iLeft, right: iRight } = item.intersectionRect;
@@ -909,9 +935,13 @@ class OptionStrip extends UIElement {
     const styleObject = {
       class: "elf--option-strip",
       disabled: disabled ? "disabled" : void 0,
-      style: __spreadValues({}, propertyMap(style2, {}))
+      style: {
+        ...propertyMap(style2, {})
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), options.map((it) => {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, options.map((it) => {
       return /* @__PURE__ */ createElementJsx("button", {
         type: "button",
         class: classnames("elf--option-strip-item", {
@@ -984,9 +1014,13 @@ class Dialog extends UIElement {
         visible,
         center
       }),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$h))
+      style: {
+        ...propertyMap(style2, cssProperties$h)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-text"
@@ -1016,9 +1050,13 @@ class Flex extends UIElement {
         stack,
         wrap
       }),
-      style: __spreadValues({}, propertyMap(style2, {}))
+      style: {
+        ...propertyMap(style2, {})
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
 class VBox extends Flex {
@@ -1039,18 +1077,21 @@ function makeToolsItem(items = []) {
   return items.map((it, index2) => {
     const ref = `${it.type}-${index2}`;
     if (it.type === ToolsItemType.CUSTOM) {
-      return /* @__PURE__ */ createElementJsx(ToolsCustomItem, __spreadValues({
-        ref
-      }, it));
+      return /* @__PURE__ */ createElementJsx(ToolsCustomItem, {
+        ref,
+        ...it
+      });
     }
     if (it.type === ToolsItemType.MENU) {
-      return /* @__PURE__ */ createElementJsx(ToolsMenuItem, __spreadValues({
-        ref
-      }, it));
+      return /* @__PURE__ */ createElementJsx(ToolsMenuItem, {
+        ref,
+        ...it
+      });
     }
-    return /* @__PURE__ */ createElementJsx(ToolsItem, __spreadValues({
-      ref
-    }, it));
+    return /* @__PURE__ */ createElementJsx(ToolsItem, {
+      ref,
+      ...it
+    });
   });
 }
 class ToolsItem extends UIElement {
@@ -1185,9 +1226,10 @@ class ToolsMenuItem extends ToolsItem {
       items,
       direction,
       rootClose: this.state.rootClose,
-      style: __spreadProps(__spreadValues({}, menuStyle || {}), {
+      style: {
+        ...menuStyle || {},
         top: "calc(100% + 5px)"
-      })
+      }
     })) : void 0);
   }
   runCallback(callback, e) {
@@ -1212,9 +1254,12 @@ class ToolsMenuItem extends ToolsItem {
   }
   toggle() {
     if (!this.state.opened) {
-      this.setState({
-        rect: this.$el.rect()
-      }, false);
+      this.setState(
+        {
+          rect: this.$el.rect()
+        },
+        false
+      );
       this.open();
     } else {
       this.close();
@@ -1273,19 +1318,23 @@ class Tools extends UIElement {
     const { style: style2 = {} } = this.props;
     const styleObject = {
       class: classnames("elf--tools"),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$g))
+      style: {
+        ...propertyMap(style2, cssProperties$g)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
       onContextMenu: (e) => e.preventDefault()
-    }), makeToolsItem(this.props.items));
+    }, makeToolsItem(this.props.items));
   }
 }
 function makeToolbarItem(items = []) {
   return items.map((it, index2) => {
     const ref = `${it.type || "item"}${index2}`;
-    return /* @__PURE__ */ createElementJsx(ToolbarItem, __spreadValues({
-      ref
-    }, it));
+    return /* @__PURE__ */ createElementJsx(ToolbarItem, {
+      ref,
+      ...it
+    });
   });
 }
 class ToolbarItem extends UIElement {
@@ -1313,11 +1362,14 @@ class Toolbar extends UIElement {
       class: classnames("elf--toolbar", {
         [align]: true
       }),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$f))
+      style: {
+        ...propertyMap(style2, cssProperties$f)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
       onContextMenu: (e) => e.preventDefault()
-    }), makeToolbarItem(items));
+    }, makeToolbarItem(items));
   }
 }
 const cssProperties$e = {
@@ -1340,12 +1392,18 @@ class Notification extends UIElement {
       direction = "top-left"
     } = this.props;
     const styleObject = {
-      class: classnames("elf--notification", `elf--notification-direction-${direction}`),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$e))
+      class: classnames(
+        "elf--notification",
+        `elf--notification-direction-${direction}`
+      ),
+      style: {
+        ...propertyMap(style2, cssProperties$e)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadProps(__spreadValues({}, styleObject), {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
       onContextMenu: (e) => e.preventDefault()
-    }), icon ? /* @__PURE__ */ createElementJsx("div", {
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--notification-icon"
     }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--notification-content"
@@ -1373,15 +1431,25 @@ class VisualBell extends UIElement {
     const { style: style2 = {}, content, delay = 0, direction = "bottom" } = this.props;
     const [localDelay, setLocalDelay] = useState(delay);
     const [hide, setHide] = useState(false);
-    this.state.hideCallback = useCallback((hideDelay = 0) => {
-      setLocalDelay(hideDelay);
-    }, [setLocalDelay]);
+    this.state.hideCallback = useCallback(
+      (hideDelay = 0) => {
+        setLocalDelay(hideDelay);
+      },
+      [setLocalDelay]
+    );
     const styleObject = {
-      class: classnames("elf--visual-bell", `elf--visual-bell-direction-${direction}`, { hide }),
-      style: __spreadValues(__spreadValues({}, propertyMap(style2, cssProperties$d)), {
-        transition: `opacity ${localDelay}ms ease-in-out`,
-        opacity: hide ? 0 : 1
-      })
+      class: classnames(
+        "elf--visual-bell",
+        `elf--visual-bell-direction-${direction}`,
+        { hide }
+      ),
+      style: {
+        ...propertyMap(style2, cssProperties$d),
+        ...{
+          transition: `opacity ${localDelay}ms ease-in-out`,
+          opacity: hide ? 0 : 1
+        }
+      }
     };
     useEffect(() => {
       if (localDelay > 0) {
@@ -1395,15 +1463,15 @@ class VisualBell extends UIElement {
         }, localDelay);
       }
     }, [localDelay, hide]);
-    return /* @__PURE__ */ createElementJsx("div", __spreadProps(__spreadValues({
-      class: "elf--visual-bell"
-    }, styleObject), {
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--visual-bell",
+      ...styleObject,
       onContextMenu: (e) => e.preventDefault(),
       onTransitionEnd: () => {
         this.props.onHide && this.props.onHide();
         this.destroy(true);
       }
-    }), /* @__PURE__ */ createElementJsx("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--visual-bell-content"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--visual-bell-text"
@@ -1424,12 +1492,15 @@ function bell({
   options = {},
   style: style2 = {}
 }) {
-  return potal(/* @__PURE__ */ createElementJsx(VisualBell, {
-    delay,
-    direction,
-    tools,
-    style: style2
-  }, content), options);
+  return potal(
+    /* @__PURE__ */ createElementJsx(VisualBell, {
+      delay,
+      direction,
+      tools,
+      style: style2
+    }, content),
+    options
+  );
 }
 const cssProperties$c = makeStyleMap("--elf--tooltip", {
   backgroundColor: true,
@@ -1461,11 +1532,14 @@ class Tooltip extends UIElement {
     const { show } = this.state;
     const styleObject = {
       class: classnames("elf--tooltip", `elf--tooltip-position-${position}`),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$c))
+      style: {
+        ...propertyMap(style2, cssProperties$c)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({
-      class: "elf--tooltip"
-    }, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--tooltip",
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tooltip-content"
     }, content), show || this.props.show ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tooltip-message"
@@ -1542,9 +1616,13 @@ class Panel extends UIElement {
     const styleObject = {
       class: classnames("elf--panel", `elf--panel-mode-${mode}`),
       "data-theme": theme,
-      style: __spreadValues({}, propertyMap(style2, cssProperties$b))
+      style: {
+        ...propertyMap(style2, cssProperties$b)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), title ? /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, title ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-title"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-title-text"
@@ -1576,9 +1654,13 @@ class TabStrip extends UIElement {
       class: classnames("elf--tabstrip", {
         "is-fitted": fitted
       }),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$a))
+      style: {
+        ...propertyMap(style2, cssProperties$a)
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: classnames("elf--tabstrip-content", {
         [`align-${align}`]: true
       })
@@ -1642,7 +1724,9 @@ class Tab extends UIElement {
       }),
       style: propertyMap(style2, cssProperties$9)
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tab-header"
     }, /* @__PURE__ */ createElementJsx(TabStrip, {
       fitted,
@@ -1682,12 +1766,16 @@ class Layout extends UIElement {
         stack: this.props.stack,
         wrap
       }),
-      style: __spreadValues({}, propertyMap(style2, {
-        backgroundColor: "--elf--layout-background-color",
-        gap: "--elf--layout-gap"
-      }))
+      style: {
+        ...propertyMap(style2, {
+          backgroundColor: "--elf--layout-background-color",
+          gap: "--elf--layout-gap"
+        })
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
 function makeTemplates(arr) {
@@ -1700,35 +1788,32 @@ function makeTemplates(arr) {
 }
 class Grid extends UIElement {
   template() {
-    const _a = this.props, {
+    const {
       style: style2 = {},
       columns = [1],
       rows = [1],
       gap,
       columnGap,
       rowGap,
-      content
-    } = _a, extraStyle = __objRest(_a, [
-      "style",
-      "columns",
-      "rows",
-      "gap",
-      "columnGap",
-      "rowGap",
-      "content"
-    ]);
+      content,
+      ...extraStyle
+    } = this.props;
     const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
-    const styleObject = __spreadValues({
+    const styleObject = {
       class: "elf--grid",
-      style: __spreadValues({
+      style: {
         gridTemplateColumns: makeTemplates(columns),
         gridTemplateRows: makeTemplates(rows),
         gap,
         columnGap,
-        rowGap
-      }, propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), {}))
-    }, noneStyle);
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), content);
+        rowGap,
+        ...propertyMap({ ...style2, ...styleProperties }, {})
+      },
+      ...noneStyle
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
 const cssProperties$8 = makeStyleMap("--elf--input-editor", {
@@ -1788,7 +1873,9 @@ class InputEditor extends UIElement {
           icon
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$8))
+      style: {
+        ...propertyMap(style2, cssProperties$8)
+      }
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -1807,15 +1894,19 @@ class InputEditor extends UIElement {
       placeholder: placeholder || "",
       value: value || ""
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), icon ? /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-editor-icon"
     }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadValues(__spreadValues({
-      ref: "$input"
-    }, properties), inputEvents)))), tools ? tools : void 0);
+    }, /* @__PURE__ */ createElementJsx("input", {
+      ref: "$input",
+      ...properties,
+      ...inputEvents
+    }))), tools ? tools : void 0);
   }
   onMounted() {
     if (this.state.autoFocus) {
@@ -1940,7 +2031,9 @@ class InputPaint extends UIElement {
           icon
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$7))
+      style: {
+        ...propertyMap(style2, cssProperties$7)
+      }
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -1959,7 +2052,9 @@ class InputPaint extends UIElement {
       placeholder: placeholder || "",
       value: format({ r, g, b }, "hex")
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), hideColorView ? void 0 : /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, hideColorView ? void 0 : /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-paint-icon"
     }, /* @__PURE__ */ createElementJsx(ColorView, {
       color: value
@@ -1967,10 +2062,12 @@ class InputPaint extends UIElement {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadValues(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
-      ref: "$input"
-    }, properties), inputEvents)))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
+      ref: "$input",
+      ...properties,
+      ...inputEvents
+    }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
     }, /* @__PURE__ */ createElementJsx("input", {
       class: "opacity",
@@ -1980,9 +2077,10 @@ class InputPaint extends UIElement {
   }
   updateOpacity(num) {
     this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
+      parsedColor: {
+        ...this.state.parsedColor,
         a: this.state.parsedColor.a + num
-      })
+      }
     });
   }
   increaseOpacity() {
@@ -2145,7 +2243,9 @@ class HexColorEditor extends UIElement {
           invalid: this.isInvalidColor({ r, g, b, a })
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$6))
+      style: {
+        ...propertyMap(style2, cssProperties$6)
+      }
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -2171,19 +2271,22 @@ class HexColorEditor extends UIElement {
         a
       }
     }, false);
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       "data-type": "hex",
-      maxlength: 6
-    }, properties), inputEvents), {
+      maxlength: 6,
+      ...properties,
+      ...inputEvents,
       onKeyDown: this.keydownColor,
       onKeyUp: this.keyupColor
-    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
+    }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
     }, /* @__PURE__ */ createElementJsx("input", {
       class: "opacity",
@@ -2193,9 +2296,10 @@ class HexColorEditor extends UIElement {
   }
   updateOpacity(num) {
     this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
+      parsedColor: {
+        ...this.state.parsedColor,
         a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100))
-      })
+      }
     }, false);
     this.runCallback(this.props.onChange);
   }
@@ -2211,9 +2315,10 @@ class HexColorEditor extends UIElement {
       return;
     }
     this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
+      parsedColor: {
+        ...this.state.parsedColor,
         [type]: Math.max(0, Math.min(255, this.state.parsedColor[type] + num))
-      })
+      }
     }, false);
     this.runCallback(this.props.onChange);
   }
@@ -2365,7 +2470,9 @@ class RGBColorEditor extends UIElement {
           icon
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$5))
+      style: {
+        ...propertyMap(style2, cssProperties$5)
+      }
     };
     const { r, g, b, a } = parse(value);
     const properties = {
@@ -2374,41 +2481,46 @@ class RGBColorEditor extends UIElement {
       min: 0,
       max: 255
     };
-    this.setState({
-      parsedColor: { r, g, b, a }
-    }, false);
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    this.setState(
+      {
+        parsedColor: { r, g, b, a }
+      },
+      false
+    );
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx(Grid, {
       columns: 3
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       "data-type": "r",
       tabIndex: 1,
-      value: r
-    }, properties), {
+      value: r,
+      ...properties,
       onKeyDown: this.keydownColor
-    }))), /* @__PURE__ */ createElementJsx("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       "data-type": "g",
       tabIndex: 2,
-      value: g
-    }, properties), {
+      value: g,
+      ...properties,
       onKeyDown: this.keydownColor
-    }))), /* @__PURE__ */ createElementJsx("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       "data-type": "b",
       tabIndex: 3,
-      value: b
-    }, properties), {
+      value: b,
+      ...properties,
       onKeyDown: this.keydownColor
-    }))))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
+    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
     }, /* @__PURE__ */ createElementJsx("input", {
       type: "text",
@@ -2419,19 +2531,36 @@ class RGBColorEditor extends UIElement {
     })));
   }
   updateOpacity(num) {
-    this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
-        a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100))
-      })
-    }, false);
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: Math.max(
+            0,
+            Math.min(
+              1,
+              Math.round((this.state.parsedColor.a + num) * 100) / 100
+            )
+          )
+        }
+      },
+      false
+    );
     this.runCallback(this.props.onChange);
   }
   updateColor(type, num) {
-    this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
-        [type]: Math.max(0, Math.min(255, this.state.parsedColor[type] + num))
-      })
-    }, false);
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          [type]: Math.max(
+            0,
+            Math.min(255, this.state.parsedColor[type] + num)
+          )
+        }
+      },
+      false
+    );
     this.runCallback(this.props.onChange);
   }
   increaseColor(type) {
@@ -2542,7 +2671,9 @@ class TextAreaEditor extends UIElement {
           icon
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$4))
+      style: {
+        ...propertyMap(style2, cssProperties$4)
+      }
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -2560,13 +2691,17 @@ class TextAreaEditor extends UIElement {
       placeholder,
       value
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("textarea", __spreadValues(__spreadValues({
-      ref: "$input"
-    }, properties), inputEvents), value))));
+    }, /* @__PURE__ */ createElementJsx("textarea", {
+      ref: "$input",
+      ...properties,
+      ...inputEvents
+    }, value))));
   }
   onMounted() {
     if (this.state.autoFocus) {
@@ -2623,14 +2758,17 @@ class VirtualScroll extends UIElement {
     const totalCount = items.length;
     const styleObject = {
       class: classnames("elf--virtual-scroll", this.props.class),
-      style: __spreadProps(__spreadValues({}, propertyMap(style2, cssProperties$3)), {
+      style: {
+        ...propertyMap(style2, cssProperties$3),
         "--elf--virtual-scroll-item-width": "100%",
         "--elf--virtual-scroll-item-height": `${itemHeight}px`,
         "--elf--virtual-scroll-item-count": totalCount,
         "--elf--virtual-scroll-panel-height": `${totalCount * itemHeight}px`
-      })
+      }
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-panel"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-content-area",
@@ -2641,10 +2779,13 @@ class VirtualScroll extends UIElement {
     var _a;
     const rect = (_a = this.$el) == null ? void 0 : _a.offsetRect();
     if (rect) {
-      this.setState({
-        width: rect.width,
-        height: rect.height
-      }, false);
+      this.setState(
+        {
+          width: rect.width,
+          height: rect.height
+        },
+        false
+      );
     }
   }
   onMounted() {
@@ -2670,24 +2811,43 @@ class VirtualScroll extends UIElement {
       const scrollHeight = items.length * itemHeight;
       const itemCount = Math.floor(height / itemHeight);
       const totalCount = items.length;
-      this.setState({
-        scrollHeight,
-        itemCount
-      }, false);
-      const startIndex = Math.max(Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount, 0);
-      const endIndex = Math.min(Math.floor(startIndex + itemCount + 2 * overscanRowCount), totalCount - 1);
+      this.setState(
+        {
+          scrollHeight,
+          itemCount
+        },
+        false
+      );
+      const startIndex = Math.max(
+        Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount,
+        0
+      );
+      const endIndex = Math.min(
+        Math.floor(startIndex + itemCount + 2 * overscanRowCount),
+        totalCount - 1
+      );
       this.state.renderItems = this.filterItems(items, startIndex, endIndex);
     }
     return this.state.renderItems.map((item, index2) => {
       var _a, _b;
-      return (_b = (_a = this.props).itemRenderer) == null ? void 0 : _b.call(_a, item, item.index * itemHeight, index2, items, this);
+      return (_b = (_a = this.props).itemRenderer) == null ? void 0 : _b.call(
+        _a,
+        item,
+        item.index * itemHeight,
+        index2,
+        items,
+        this
+      );
     });
   }
   checkScrollTop() {
     const { scrollTop, height, scrollHeight } = this.state;
-    this.setState({
-      scrollTop: this.$el.scrollTop
-    }, false);
+    this.setState(
+      {
+        scrollTop: this.$el.scrollTop
+      },
+      false
+    );
     if (scrollTop > scrollHeight - height) {
       this.setState({
         scrolling: false
@@ -2711,24 +2871,33 @@ class VirtualScroll extends UIElement {
     this.trigger("checkScrolling");
   }
   refresh() {
-    this.setState({
-      isRenderingItems: false
-    }, false);
+    this.setState(
+      {
+        isRenderingItems: false
+      },
+      false
+    );
     this.render();
   }
   refreshItems() {
-    this.setState({
-      isRenderingItems: true
-    }, false);
+    this.setState(
+      {
+        isRenderingItems: true
+      },
+      false
+    );
     this.render();
   }
   scrollIntoView(index2) {
     const { itemHeight } = this.props;
     const scrollTop = index2 * itemHeight;
     this.$el.scrollTop = scrollTop;
-    this.setState({
-      scrollTop: this.$el.scrollTop
-    }, false);
+    this.setState(
+      {
+        scrollTop: this.$el.scrollTop
+      },
+      false
+    );
     this.refreshItems();
   }
 }
@@ -2775,19 +2944,20 @@ class Layer extends UIElement {
       class: "group"
     }, group), icon && /* @__PURE__ */ createElementJsx("div", {
       class: "icon"
-    }, icon), /* @__PURE__ */ createElementJsx("div", __spreadValues({
+    }, icon), /* @__PURE__ */ createElementJsx("div", {
       class: "text",
-      ref: "$text"
-    }, {
-      onClick,
-      onDoubleClick,
-      onContextMenu,
-      onMouseDown,
-      onMouseUp,
-      onMouseMove,
-      onMouseEnter,
-      onMouseLeave
-    }), content), /* @__PURE__ */ createElementJsx("div", {
+      ref: "$text",
+      ...{
+        onClick,
+        onDoubleClick,
+        onContextMenu,
+        onMouseDown,
+        onMouseUp,
+        onMouseMove,
+        onMouseEnter,
+        onMouseLeave
+      }
+    }, content), /* @__PURE__ */ createElementJsx("div", {
       class: "tools"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "lock"
@@ -2888,7 +3058,9 @@ class HSLColorEditor extends UIElement {
           icon
         }
       ]),
-      style: __spreadValues({}, propertyMap(style2, cssProperties$2))
+      style: {
+        ...propertyMap(style2, cssProperties$2)
+      }
     };
     const properties = {
       disabled,
@@ -2904,41 +3076,43 @@ class HSLColorEditor extends UIElement {
         a
       }
     }, false);
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx(Grid, {
       columns: 3
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       tabIndex: 1,
       "data-type": "h",
-      value: h
-    }, properties), {
+      value: h,
+      ...properties,
       onKeyDown: this.keydownColor
-    }))), /* @__PURE__ */ createElementJsx("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       tabIndex: 2,
       "data-type": "s",
-      value: s
-    }, properties), {
+      value: s,
+      ...properties,
       onKeyDown: this.keydownColor
-    }))), /* @__PURE__ */ createElementJsx("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", __spreadProps(__spreadValues({
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       tabIndex: 3,
       "data-type": "l",
-      value: l
-    }, properties), {
+      value: l,
+      ...properties,
       onKeyDown: this.keydownColor
-    }))))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
+    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
     }, /* @__PURE__ */ createElementJsx("input", {
       type: "text",
@@ -2950,9 +3124,10 @@ class HSLColorEditor extends UIElement {
   }
   updateOpacity(num) {
     this.setState({
-      parsedColor: __spreadProps(__spreadValues({}, this.state.parsedColor), {
+      parsedColor: {
+        ...this.state.parsedColor,
         a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100))
-      })
+      }
     });
     this.runCallback(this.props.onChange);
   }
@@ -2966,7 +3141,10 @@ class HSLColorEditor extends UIElement {
       data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));
     }
     this.setState({
-      parsedColor: __spreadValues(__spreadValues({}, this.state.parsedColor), data)
+      parsedColor: {
+        ...this.state.parsedColor,
+        ...data
+      }
     }, false);
     this.runCallback(this.props.onChange);
   }
@@ -3066,10 +3244,13 @@ class BaseSlide extends UIElement {
     })));
   }
   [POINTERSTART("$el .slide-bg")]() {
-    this.setState({
-      clicked: true,
-      rect: this.$el.$(".slide-bg").rect()
-    }, false);
+    this.setState(
+      {
+        clicked: true,
+        rect: this.$el.$(".slide-bg").rect()
+      },
+      false
+    );
   }
   checkClicked() {
     return this.state.clicked;
@@ -3086,9 +3267,12 @@ class BaseSlide extends UIElement {
     }
   }
   [POINTEREND("document") + IF("checkClicked")]() {
-    this.setState({
-      clicked: false
-    }, false);
+    this.setState(
+      {
+        clicked: false
+      },
+      false
+    );
   }
 }
 class HueSlide extends UIElement {
@@ -3274,18 +3458,19 @@ class ColorMixer extends UIElement {
       onChange: this.updateOpacity
     }))), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--color-input-area"
-    }, /* @__PURE__ */ createElementJsx(ColorInput, __spreadProps(__spreadValues({}, {
-      type,
-      h,
-      s,
-      v,
-      r,
-      g,
-      b,
-      a
-    }), {
+    }, /* @__PURE__ */ createElementJsx(ColorInput, {
+      ...{
+        type,
+        h,
+        s,
+        v,
+        r,
+        g,
+        b,
+        a
+      },
       onChange: this.updateColor
-    }))));
+    })));
   }
   formatedColor() {
     const { type, r, g, b, h, s, v, a } = this.state;
@@ -3329,12 +3514,15 @@ class ColorMixer extends UIElement {
     }
   }
   [POINTERSTART("$el .elf--color-area")](e) {
-    this.setState({
-      clicked: true,
-      rect: this.$el.$(".elf--color-area").rect(),
-      clientX: e.clientX,
-      clientY: e.clientY
-    }, false);
+    this.setState(
+      {
+        clicked: true,
+        rect: this.$el.$(".elf--color-area").rect(),
+        clientX: e.clientX,
+        clientY: e.clientY
+      },
+      false
+    );
   }
   checkClicked() {
     return this.state.clicked;
@@ -3352,9 +3540,12 @@ class ColorMixer extends UIElement {
     this.updateSaturationValue(s, v);
   }
   [POINTEREND("document") + IF("checkClicked")](e) {
-    this.setState({
-      clicked: false
-    }, false);
+    this.setState(
+      {
+        clicked: false
+      },
+      false
+    );
     if (this.state.clientX === e.clientX && this.state.clientY === e.clientY) {
       return;
     }
@@ -3422,11 +3613,12 @@ class ColorGrid extends UIElement {
 }
 class View extends UIElement {
   template() {
-    const _a = this.props, { as = "div", style: style2 = {}, content } = _a, extraStyle = __objRest(_a, ["as", "style", "content"]);
+    const { as = "div", style: style2 = {}, content, ...extraStyle } = this.props;
     const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
-    const styleObject = __spreadValues({
-      style: propertyMap(__spreadValues(__spreadValues({}, style2), styleProperties), {})
-    }, noneStyle);
+    const styleObject = {
+      style: propertyMap({ ...style2, ...styleProperties }, {}),
+      ...noneStyle
+    };
     return createElementJsx(as, styleObject, content);
   }
 }
@@ -3498,7 +3690,10 @@ class DataEditor extends UIElement {
     const { data = () => ({}), items = () => [], plugins = {} } = this.props;
     const currentData = data();
     return {
-      plugins: __spreadValues(__spreadValues({}, predefinedPlugins), plugins),
+      plugins: {
+        ...predefinedPlugins,
+        ...plugins
+      },
       data: currentData,
       items: items(currentData)
     };
@@ -3530,7 +3725,9 @@ class DataEditor extends UIElement {
       class: classnames("elf--data-editor"),
       style: propertyMap(style2, cssProperties$1)
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), items.map((item, index2) => {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, items.map((item, index2) => {
       const isString2 = typeof item === "string";
       return /* @__PURE__ */ createElementJsx("div", {
         class: classnames("elf--data-editor-item", { string: isString2 })
@@ -3546,7 +3743,9 @@ const EMPTY_POS = { x: 0, y: 0 };
 const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
 const MOVE_CHECK_MS = 0;
 function getDist(startPos, endPos) {
-  return Math.sqrt(Math.pow(endPos.x - startPos.x, 2) + Math.pow(endPos.y - startPos.y, 2));
+  return Math.sqrt(
+    Math.pow(endPos.x - startPos.x, 2) + Math.pow(endPos.y - startPos.y, 2)
+  );
 }
 class EventPanel extends UIElement {
   initialize() {
@@ -3601,7 +3800,13 @@ class EventPanel extends UIElement {
     var e = this.$store.get(BODY_MOVE_EVENT);
     if (pos) {
       this.__ends.forEach((v) => {
-        v.func.call(v.context, pos.x - v.xy.x, pos.y - v.xy.y, "end", e.pressure);
+        v.func.call(
+          v.context,
+          pos.x - v.xy.x,
+          pos.y - v.xy.y,
+          "end",
+          e.pressure
+        );
       });
     }
     this.__firstMove.clear();
@@ -3659,7 +3864,9 @@ class AppResizeBar extends UIElement {
     const styleObject = {
       class: "elf--app-layout-resize-bar"
     };
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject));
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    });
   }
   [POINTERSTART()](e) {
     this.startXY = e.xy;
@@ -3711,28 +3918,34 @@ function AppLayoutItem({
   const [initHeight, setHeight] = useState(height);
   const [itemWidth, setLastWidth] = useState(initWidth);
   const [itemHeight, setLastHeight] = useState(initHeight);
-  const setSize = useCallback((size) => {
-    if (direction === "left" || direction === "right") {
-      const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
-      setLastWidth(lastWidth);
-      if (itemWidth != lastWidth) {
-        isFunction(onResize) && onResize(lastWidth, itemHeight);
+  const setSize = useCallback(
+    (size) => {
+      if (direction === "left" || direction === "right") {
+        const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
+        setLastWidth(lastWidth);
+        if (itemWidth != lastWidth) {
+          isFunction(onResize) && onResize(lastWidth, itemHeight);
+        }
+      } else if (direction === "top" || direction === "bottom") {
+        const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
+        setLastHeight(lastHeight);
+        if (itemHeight != lastHeight) {
+          isFunction(onResize) && onResize(itemWidth, lastHeight);
+        }
       }
-    } else if (direction === "top" || direction === "bottom") {
-      const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
-      setLastHeight(lastHeight);
-      if (itemHeight != lastHeight) {
-        isFunction(onResize) && onResize(itemWidth, lastHeight);
+    },
+    [itemWidth, itemHeight]
+  );
+  const onResizeCallback = useCallback(
+    (diffX, diffY) => {
+      if (direction === "left" || direction === "right") {
+        setSize(direction === "left" ? initWidth + diffX : initWidth - diffX);
+      } else {
+        setSize(direction === "top" ? initHeight + diffY : initHeight - diffY);
       }
-    }
-  }, [itemWidth, itemHeight]);
-  const onResizeCallback = useCallback((diffX, diffY) => {
-    if (direction === "left" || direction === "right") {
-      setSize(direction === "left" ? initWidth + diffX : initWidth - diffX);
-    } else {
-      setSize(direction === "top" ? initHeight + diffY : initHeight - diffY);
-    }
-  }, [direction, initWidth, initHeight, setSize]);
+    },
+    [direction, initWidth, initHeight, setSize]
+  );
   const onResizeEndCallback = useCallback(() => {
     setWidth(itemWidth);
     setHeight(itemHeight);
@@ -3742,7 +3955,7 @@ function AppLayoutItem({
     class: "elf--app-layout-item",
     "data-direction": direction,
     "data-resizable": resizable,
-    style: __spreadProps(__spreadValues({}, style2), { width: itemWidth, height: itemHeight })
+    style: { ...style2, width: itemWidth, height: itemHeight }
   }, content, resizable ? /* @__PURE__ */ createElementJsx(AppResizeBar, {
     onResize: onResizeCallback,
     onResizeEnd: onResizeEndCallback
@@ -3769,9 +3982,11 @@ class AppLayout extends UIElement {
     const leftLayoutItem = this.getItem("left");
     const rightLayoutItem = this.getItem("right");
     const centerLayoutItem = this.getItem("center");
-    return /* @__PURE__ */ createElementJsx("div", __spreadValues({}, styleObject), topLayoutItem ? topLayoutItem : void 0, /* @__PURE__ */ createElementJsx("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, topLayoutItem ? topLayoutItem : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--app-layout-body"
     }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
   }
 }
-export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, ButtonGroup, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell, bell };
+export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, ButtonGroup, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, Divider, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell, bell };

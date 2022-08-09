@@ -1,19 +1,3 @@
-var __defProp = Object.defineProperty;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
 const CLONE_FUNCTION = (obj) => JSON.parse(JSON.stringify(obj));
 function clone(obj) {
   if (typeof obj === "undefined")
@@ -608,7 +592,10 @@ function convertMatchesArray(str, splitStr = ",") {
   return ret.str.split(splitStr).map((it, index) => {
     it = trim(it);
     if (ret.matches[index]) {
-      it = it.replace(getColorIndexString(ret.matches[index]), ret.matches[index].color);
+      it = it.replace(
+        getColorIndexString(ret.matches[index]),
+        ret.matches[index].color
+      );
     }
     return it;
   });
@@ -634,7 +621,7 @@ function parse(str) {
         arr[i] = parseInt(trim(arr[i]), 10);
       }
       var obj = { type: "rgb", r: arr[0], g: arr[1], b: arr[2], a: 1 };
-      obj = __spreadValues(__spreadValues({}, obj), RGBtoHSL(obj));
+      obj = { ...obj, ...RGBtoHSL(obj) };
       return obj;
     } else if (str.indexOf("rgba(") > -1) {
       var arr = str.replace("rgba(", "").replace(")", "").split(",");
@@ -646,7 +633,7 @@ function parse(str) {
         }
       }
       var obj = { type: "rgb", r: arr[0], g: arr[1], b: arr[2], a: arr[3] };
-      obj = __spreadValues(__spreadValues({}, obj), RGBtoHSL(obj));
+      obj = { ...obj, ...RGBtoHSL(obj) };
       return obj;
     } else if (str.indexOf("hsl(") > -1) {
       var arr = str.replace("hsl(", "").replace(")", "").split(",");
@@ -654,7 +641,7 @@ function parse(str) {
         arr[i] = parseFloat(trim(arr[i]));
       }
       var obj = { type: "hsl", h: arr[0], s: arr[1], l: arr[2], a: 1 };
-      obj = __spreadValues(__spreadValues({}, obj), HSLtoRGB(obj));
+      obj = { ...obj, ...HSLtoRGB(obj) };
       return obj;
     } else if (str.indexOf("hsla(") > -1) {
       var arr = str.replace("hsla(", "").replace(")", "").split(",");
@@ -666,7 +653,7 @@ function parse(str) {
         }
       }
       var obj = { type: "hsl", h: arr[0], s: arr[1], l: arr[2], a: arr[3] };
-      obj = __spreadValues(__spreadValues({}, obj), HSLtoRGB(obj));
+      obj = { ...obj, ...HSLtoRGB(obj) };
       return obj;
     } else if (str.indexOf("#") == 0) {
       str = str.replace("#", "");
@@ -688,7 +675,7 @@ function parse(str) {
         }
       }
       var obj = { type: "hex", r: arr[0], g: arr[1], b: arr[2], a };
-      obj = __spreadValues(__spreadValues({}, obj), RGBtoHSL(obj));
+      obj = { ...obj, ...RGBtoHSL(obj) };
       return obj;
     }
   } else if (typeof str === "number") {
@@ -697,7 +684,7 @@ function parse(str) {
       const g = (str & 65280) >> 8;
       const b = (str & 255) >> 0;
       var obj = { type: "hex", r, g, b, a: 1 };
-      obj = __spreadValues(__spreadValues({}, obj), RGBtoHSL(obj));
+      obj = { ...obj, ...RGBtoHSL(obj) };
       return obj;
     } else if (0 <= str && str <= 4294967295) {
       const r = (str & 4278190080) >> 24;
@@ -705,7 +692,7 @@ function parse(str) {
       const b = (str & 65280) >> 8;
       const a2 = (str & 255) / 255;
       var obj = { type: "hex", r, g, b, a: a2 };
-      obj = __spreadValues(__spreadValues({}, obj), RGBtoHSL(obj));
+      obj = { ...obj, ...RGBtoHSL(obj) };
       return obj;
     }
   }
@@ -851,26 +838,32 @@ scale.parula = function(count) {
   return scale(["#352a87", "#0f5cdd", "#00b5a6", "#ffc337", "#fdff00"], count);
 };
 scale.jet = function(count) {
-  return scale([
-    "#00008f",
-    "#0020ff",
-    "#00ffff",
-    "#51ff77",
-    "#fdff00",
-    "#ff0000",
-    "#800000"
-  ], count);
+  return scale(
+    [
+      "#00008f",
+      "#0020ff",
+      "#00ffff",
+      "#51ff77",
+      "#fdff00",
+      "#ff0000",
+      "#800000"
+    ],
+    count
+  );
 };
 scale.hsv = function(count) {
-  return scale([
-    "#ff0000",
-    "#ffff00",
-    "#00ff00",
-    "#00ffff",
-    "#0000ff",
-    "#ff00ff",
-    "#ff0000"
-  ], count);
+  return scale(
+    [
+      "#ff0000",
+      "#ffff00",
+      "#00ff00",
+      "#00ffff",
+      "#0000ff",
+      "#ff00ff",
+      "#ff0000"
+    ],
+    count
+  );
 };
 scale.hot = function(count) {
   return scale(["#0b0000", "#ff0000", "#ffff00", "#ffffff"], count);
@@ -903,7 +896,11 @@ function checkHueColor(p) {
     }
   }
   if (startColor && endColor) {
-    return mix(startColor, endColor, (p - startColor.start) / (endColor.start - startColor.start));
+    return mix(
+      startColor,
+      endColor,
+      (p - startColor.start) / (endColor.start - startColor.start)
+    );
   }
   return hue_color[0].rgb;
 }

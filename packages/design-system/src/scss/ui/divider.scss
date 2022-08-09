@@ -1,0 +1,42 @@
+.elf--divider {
+
+    --elf--divider-color: var(--component-divider-color-border-default);
+    --elf--divider-margin: 10px 0;
+
+    border-top: 1px solid;
+    border-top-color: var(--elf--divider-color);
+    margin: var(--elf--divider-margin);
+
+    &.primary {
+        --elf--divider-color: var(--component-divider-color-border-primary);
+    }
+
+    &.secondary {
+        --elf--divider-color: var(--component-divider-color-border-secondary);
+    }
+
+    &.success {
+        --elf--divider-color: var(--component-divider-color-border-success);
+    }
+
+    &.warning {
+        --elf--divider-color: var(--component-divider-color-border-warning);
+    }
+
+    &.danger {
+        --elf--divider-color: var(--component-divider-color-border-danger);
+    }
+
+    &.info {
+        --elf--divider-color: var(--component-divider-color-border-info);
+    }
+
+
+    > .elf--divider-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+}

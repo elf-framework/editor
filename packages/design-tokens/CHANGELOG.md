@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.0.35
+
+### Patch Changes
+
+- modify build type (css/style)
+
 ## 2.0.23
 
 ### Patch Changes

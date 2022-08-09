@@ -15,8 +15,6 @@
     cursor: pointer;
     display: inline-flex;
 
-    
-
     > .elf--button {
         --elf--button-group-child-border-radius: calc(var(--elf--button-group-border-radius) - 1px);
         flex: 1 1 auto;

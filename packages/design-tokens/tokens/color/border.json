@@ -1,19 +1,34 @@
 {
-    "color": {
-      "border": {
-        "primary": { "value": "{color.core.neutral.400.value}" },
-        "secondary": { "value": "{color.core.neutral.200.value}" },
-        "tertiary": { "value": "{color.core.neutral.100.value}" },
-        
-        "interactive": { "value": "{color.brand.primary.base.value}" },
-        "hover": { "value": "{color.brand.primary.dark.value}" },
-        "active": { "value": "{color.brand.secondary.base.value}" },
-        "disabled": { "value": "{color.border.tertiary.value}" },
-        
-        "danger": { "value": "{color.core.red.600.value}" },
-        "warning": { "value": "{color.core.yellow.600.value}" },
-        "success": { "value": "{color.core.green.600.value}" },
-        "info": { "value": "{color.core.blue.600.value}" }
+  "color": {
+    "border": {
+      "default": {
+        "value": "{color.core.black.value}",
+        "comment": "Border color that will match the current color scheme"
+      },
+      "primary": {
+        "value": "{color.core.blue.4.value}",
+        "comment": "Base color for the primary color"
+      },
+      "secondary": {
+        "value": "{color.core.gray.4.value}",
+        "comment": "Base color for the secondary color"
+      },
+      "danger": {
+        "value": "{color.core.red.4.value}",
+        "comment": "Base color for the danger color"
+      },
+      "warning": {
+        "value": "{color.core.yellow.4.value}",
+        "comment": "Base color for the warning color"
+      },
+      "success": {
+        "value": "{color.core.green.4.value}",
+        "comment": "Base color for the success color"
+      },
+      "info": {
+        "value": "{color.core.blue.2.value}",
+        "comment": "Base color for the info color"
       }
     }
+  }
 }
