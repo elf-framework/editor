@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 09 Aug 2022 05:08:21 GMT
+ * Generated on Tue, 09 Aug 2022 15:27:05 GMT
  */
 
 export default tokens;
@@ -30,29 +30,20 @@ declare const tokens: {
   "color": {
     "background": {
       "default": DesignToken,
-      "primary": {
-        "base": DesignToken,
-        "weak": DesignToken
-      },
-      "secondary": {
-        "base": DesignToken,
-        "weak": DesignToken
-      },
-      "danger": {
-        "base": DesignToken,
-        "weak": DesignToken
-      },
-      "warning": {
-        "base": DesignToken,
-        "weak": DesignToken
-      },
-      "success": {
-        "base": DesignToken,
-        "weak": DesignToken
-      },
-      "info": {
-        "base": DesignToken,
-        "weak": DesignToken
+      "primary": DesignToken,
+      "secondary": DesignToken,
+      "danger": DesignToken,
+      "warning": DesignToken,
+      "success": DesignToken,
+      "info": DesignToken,
+      "weak": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "danger": DesignToken,
+        "warning": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken
       }
     },
     "border": {
@@ -197,6 +188,37 @@ declare const tokens: {
     }
   },
   "component": {
+    "alert": {
+      "color": {
+        "title": {
+          "default": DesignToken,
+          "primary": DesignToken,
+          "secondary": DesignToken,
+          "danger": DesignToken,
+          "warning": DesignToken,
+          "success": DesignToken,
+          "info": DesignToken
+        },
+        "content": {
+          "default": DesignToken,
+          "primary": DesignToken,
+          "secondary": DesignToken,
+          "danger": DesignToken,
+          "warning": DesignToken,
+          "success": DesignToken,
+          "info": DesignToken
+        },
+        "background": {
+          "default": DesignToken,
+          "primary": DesignToken,
+          "secondary": DesignToken,
+          "success": DesignToken,
+          "info": DesignToken,
+          "warning": DesignToken,
+          "danger": DesignToken
+        }
+      }
+    },
     "button": {
       "selected": {
         "background": {

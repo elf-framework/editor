@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.0.37
+
+### Patch Changes
+
+- modify createVNodeByDom with textNode
+
 ## 2.0.34
 
 ### Patch Changes

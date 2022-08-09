@@ -1,5 +1,15 @@
 # @elf-framework/ui
 
+## 2.0.37
+
+### Patch Changes
+
+- Support Alert component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.0.37
+  - @elf-framework/sapa@2.0.37
+
 ## 2.0.36
 
 ### Patch Changes

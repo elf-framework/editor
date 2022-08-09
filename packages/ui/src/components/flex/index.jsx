@@ -4,10 +4,16 @@ import { propertyMap } from "../../utils/propertyMap";
 
 export class Flex extends UIElement {
   template() {
-    const { style = {}, content, stack, wrap = false } = this.props;
+    const {
+      style = {},
+      class: className = "",
+      content,
+      stack,
+      wrap = false,
+    } = this.props;
 
     const styleObject = {
-      class: classnames("elf--flex", {
+      class: classnames("elf--flex", className, {
         stack: stack,
         wrap: wrap,
       }),

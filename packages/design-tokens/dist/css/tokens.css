@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 09 Aug 2022 05:08:21 GMT
+ * Generated on Tue, 09 Aug 2022 15:27:05 GMT
  */
 
 :root {
@@ -177,6 +177,21 @@
   --component-button-disabled-text-default: var(--color-core-gray-3);
   --component-button-disabled-background-default: var(--color-core-gray-1);
   --component-button-selected-background-default: var(--color-core-gray-2);
+  --component-alert-color-background-default: var(--color-core-gray-1);
+  --component-alert-color-content-info: var(--color-core-white); /* Base color for the info color */
+  --component-alert-color-content-success: var(--color-core-white); /* Base color for the success color */
+  --component-alert-color-content-warning: var(--color-core-white); /* Base color for the warning color */
+  --component-alert-color-content-danger: var(--color-core-red-1); /* Base color for the danger color */
+  --component-alert-color-content-secondary: var(--color-core-gray-1);
+  --component-alert-color-content-primary: var(--color-core-blue-1);
+  --component-alert-color-content-default: var(--color-core-gray-6);
+  --component-alert-color-title-info: var(--color-core-blue-5); /* Base color for the info color */
+  --component-alert-color-title-success: var(--color-core-green-7); /* Base color for the success color */
+  --component-alert-color-title-warning: var(--color-core-yellow-5); /* Base color for the warning color */
+  --component-alert-color-title-danger: var(--color-core-red-7); /* Base color for the danger color */
+  --component-alert-color-title-secondary: var(--color-core-gray-8);
+  --component-alert-color-title-primary: var(--color-core-blue-8);
+  --component-alert-color-title-default: var(--color-core-gray-9);
   --color-text-link: var(--color-core-blue-4); /* Text color to indicate link */
   --color-text-inverse: var(--color-core-white); /* Text color to indicate inverse */
   --color-text-info: var(--color-core-blue-2); /* Text color to indicate info */
@@ -199,36 +214,43 @@
   --color-border-secondary: var(--color-core-gray-4); /* Base color for the secondary color */
   --color-border-primary: var(--color-core-blue-4); /* Base color for the primary color */
   --color-border-default: var(--color-core-black); /* Border color that will match the current color scheme */
-  --color-background-info-weak: var(--color-core-blue-1); /* Weak color for the info color */
-  --color-background-info-base: var(--color-core-blue-2); /* Base color for the info color */
-  --color-background-success-weak: var(--color-core-green-3); /* Weak color for the success color */
-  --color-background-success-base: var(--color-core-green-4); /* Base color for the success color */
-  --color-background-warning-weak: var(--color-core-yellow-1); /* Weak color for the warning color */
-  --color-background-warning-base: var(--color-core-yellow-2); /* Base color for the warning color */
-  --color-background-danger-weak: var(--color-core-red-3); /* Weak color for the danger color */
-  --color-background-danger-base: var(--color-core-red-4); /* Base color for the danger color */
-  --color-background-secondary-weak: var(--color-core-gray-3); /* Weak color for the secondary color */
-  --color-background-secondary-base: var(--color-core-gray-4); /* Base color for the secondary color */
-  --color-background-primary-weak: var(--color-core-blue-3); /* Weak color for the primary color */
-  --color-background-primary-base: var(--color-core-blue-4); /* Base color for the primary color */
+  --color-background-weak-info: var(--color-core-blue-1); /* Weak color for the info color */
+  --color-background-weak-success: var(--color-core-green-3); /* Weak color for the success color */
+  --color-background-weak-warning: var(--color-core-yellow-1); /* Weak color for the warning color */
+  --color-background-weak-danger: var(--color-core-red-3); /* Weak color for the danger color */
+  --color-background-weak-secondary: var(--color-core-gray-3); /* Weak color for the secondary color */
+  --color-background-weak-primary: var(--color-core-blue-3); /* Weak color for the primary color */
+  --color-background-weak-default: var(--color-core-white); /* Background color that will match the current color scheme */
+  --color-background-info: var(--color-core-blue-2); /* Base color for the info color */
+  --color-background-success: var(--color-core-green-4); /* Base color for the success color */
+  --color-background-warning: var(--color-core-yellow-2); /* Base color for the warning color */
+  --color-background-danger: var(--color-core-red-4); /* Base color for the danger color */
+  --color-background-secondary: var(--color-core-gray-4); /* Base color for the secondary color */
+  --color-background-primary: var(--color-core-blue-4); /* Base color for the primary color */
   --color-background-default: var(--color-core-white); /* Background color that will match the current color scheme */
-  --component-divider-color-border-danger: var(--color-background-danger-base);
-  --component-divider-color-border-warning: var(--color-background-warning-base);
-  --component-divider-color-border-info: var(--color-background-info-base);
-  --component-divider-color-border-success: var(--color-background-success-base);
-  --component-divider-color-border-secondary: var(--color-background-secondary-base);
-  --component-divider-color-border-primary: var(--color-background-primary-base);
-  --component-button-color-border-danger: var(--color-background-danger-base);
-  --component-button-color-border-warning: var(--color-background-warning-base);
-  --component-button-color-border-info: var(--color-background-info-base);
-  --component-button-color-border-success: var(--color-background-success-base);
-  --component-button-color-border-secondary: var(--color-background-secondary-base);
-  --component-button-color-border-primary: var(--color-background-primary-base);
-  --component-button-color-background-danger: var(--color-background-danger-base);
-  --component-button-color-background-warning: var(--color-background-warning-base);
-  --component-button-color-background-info: var(--color-background-info-base);
-  --component-button-color-background-success: var(--color-background-success-base);
-  --component-button-color-background-secondary: var(--color-background-secondary-base);
-  --component-button-color-background-primary: var(--color-background-primary-base);
+  --component-divider-color-border-danger: var(--color-background-danger);
+  --component-divider-color-border-warning: var(--color-background-warning);
+  --component-divider-color-border-info: var(--color-background-info);
+  --component-divider-color-border-success: var(--color-background-success);
+  --component-divider-color-border-secondary: var(--color-background-secondary);
+  --component-divider-color-border-primary: var(--color-background-primary);
+  --component-button-color-border-danger: var(--color-background-danger);
+  --component-button-color-border-warning: var(--color-background-warning);
+  --component-button-color-border-info: var(--color-background-info);
+  --component-button-color-border-success: var(--color-background-success);
+  --component-button-color-border-secondary: var(--color-background-secondary);
+  --component-button-color-border-primary: var(--color-background-primary);
+  --component-button-color-background-danger: var(--color-background-danger);
+  --component-button-color-background-warning: var(--color-background-warning);
+  --component-button-color-background-info: var(--color-background-info);
+  --component-button-color-background-success: var(--color-background-success);
+  --component-button-color-background-secondary: var(--color-background-secondary);
+  --component-button-color-background-primary: var(--color-background-primary);
   --component-button-color-background-default: var(--color-background-default);
+  --component-alert-color-background-danger: var(--color-background-danger);
+  --component-alert-color-background-warning: var(--color-background-warning);
+  --component-alert-color-background-info: var(--color-background-info);
+  --component-alert-color-background-success: var(--color-background-success);
+  --component-alert-color-background-secondary: var(--color-background-secondary);
+  --component-alert-color-background-primary: var(--color-background-primary);
 }

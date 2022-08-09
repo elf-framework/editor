@@ -1,4 +1,4 @@
-import { UIElement, isNumber } from "@elf-framework/sapa";
+import { UIElement, isNumber, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { convertPropertyToStyleKey } from "../../utils/styleKeys";
@@ -10,15 +10,20 @@ function makeTemplates(arr) {
     arr = [arr];
   }
 
+  if (arr.length === 0) {
+    return undefined;
+  }
+
   return arr.map((it) => (isNumber(it) ? `${it}fr` : it)).join(" ");
 }
 
 export class Grid extends UIElement {
   template() {
     const {
+      class: className = "",
       style = {},
-      columns = [1],
-      rows = [1],
+      columns = [],
+      rows = [],
       gap,
       columnGap,
       rowGap,
@@ -30,7 +35,7 @@ export class Grid extends UIElement {
       convertPropertyToStyleKey(extraStyle);
 
     const styleObject = {
-      class: "elf--grid",
+      class: classnames("elf--grid", className),
 
       style: {
         gridTemplateColumns: makeTemplates(columns),

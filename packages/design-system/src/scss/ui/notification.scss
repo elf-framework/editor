@@ -1,7 +1,7 @@
 .elf--notification {
     --elf--notification-background-color: #222222;
-    --elf--notification-hover-color: var(--color-neutral-10);
-    --elf--notification-color: var(--color-neutral-0);
+    --elf--notification-hover-color: var(--color-core-newtral-9);
+    --elf--notification-color: var(--color-core-newtral-0);
     --elf--notification-border-color: rgba(0, 0, 0, 0.1);
     --elf--notification-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
     --elf--notification-tools-border-color: rgba(255, 255, 255, 0.19);
@@ -102,6 +102,7 @@
     .elf--notification-tools {
         flex: none;
         width: 72px;
+        height: 100%;
         box-sizing: border-box;
         border-left: 1px solid var(--elf--notification-tools-border-color);
         display: flex;
@@ -120,7 +121,8 @@
             border-radius: 0px;
             box-sizing: border-box;
             font-weight: 400;
-            font-size: 12px;         
+            font-size: 12px; 
+            padding: 0;        
             /* 컴포넌트에 따라서 다르게 해석 할 수도 있음. */
             /* 현재는 notification 에 들어와있는 상태기 때문에 강제함 */
             color: var(--elf--notification-color) !important;

@@ -1,24 +1,25 @@
 /**
  * Do not edit directly
- * Generated on Tue, 09 Aug 2022 05:08:21 GMT
+ * Generated on Tue, 09 Aug 2022 15:27:05 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
 export const ImageEmpty = "assets/svg/empty.svg";
 export const ImageFiles = "assets/svg/files.svg";
 export const ColorBackgroundDefault = "#ffffff"; // Background color that will match the current color scheme
-export const ColorBackgroundPrimaryBase = "#218bff"; // Base color for the primary color
-export const ColorBackgroundPrimaryWeak = "#54aeff"; // Weak color for the primary color
-export const ColorBackgroundSecondaryBase = "#8c959f"; // Base color for the secondary color
-export const ColorBackgroundSecondaryWeak = "#afb8c1"; // Weak color for the secondary color
-export const ColorBackgroundDangerBase = "#fa4549"; // Base color for the danger color
-export const ColorBackgroundDangerWeak = "#ff8182"; // Weak color for the danger color
-export const ColorBackgroundWarningBase = "#eac54f"; // Base color for the warning color
-export const ColorBackgroundWarningWeak = "#fae17d"; // Weak color for the warning color
-export const ColorBackgroundSuccessBase = "#2da44e"; // Base color for the success color
-export const ColorBackgroundSuccessWeak = "#4ac26b"; // Weak color for the success color
-export const ColorBackgroundInfoBase = "#80ccff"; // Base color for the info color
-export const ColorBackgroundInfoWeak = "#b6e3ff"; // Weak color for the info color
+export const ColorBackgroundPrimary = "#218bff"; // Base color for the primary color
+export const ColorBackgroundSecondary = "#8c959f"; // Base color for the secondary color
+export const ColorBackgroundDanger = "#fa4549"; // Base color for the danger color
+export const ColorBackgroundWarning = "#eac54f"; // Base color for the warning color
+export const ColorBackgroundSuccess = "#2da44e"; // Base color for the success color
+export const ColorBackgroundInfo = "#80ccff"; // Base color for the info color
+export const ColorBackgroundWeakDefault = "#ffffff"; // Background color that will match the current color scheme
+export const ColorBackgroundWeakPrimary = "#54aeff"; // Weak color for the primary color
+export const ColorBackgroundWeakSecondary = "#afb8c1"; // Weak color for the secondary color
+export const ColorBackgroundWeakDanger = "#ff8182"; // Weak color for the danger color
+export const ColorBackgroundWeakWarning = "#fae17d"; // Weak color for the warning color
+export const ColorBackgroundWeakSuccess = "#4ac26b"; // Weak color for the success color
+export const ColorBackgroundWeakInfo = "#b6e3ff"; // Weak color for the info color
 export const ColorBorderDefault = "#1b1f24"; // Border color that will match the current color scheme
 export const ColorBorderPrimary = "#218bff"; // Base color for the primary color
 export const ColorBorderSecondary = "#8c959f"; // Base color for the secondary color
@@ -133,6 +134,27 @@ export const ColorTextSuccess = "#2da44e"; // Text color to indicate success
 export const ColorTextInfo = "#80ccff"; // Text color to indicate info
 export const ColorTextInverse = "#ffffff"; // Text color to indicate inverse
 export const ColorTextLink = "#218bff"; // Text color to indicate link
+export const ComponentAlertColorTitleDefault = "#24292f";
+export const ComponentAlertColorTitlePrimary = "#0a3069";
+export const ComponentAlertColorTitleSecondary = "#32383f";
+export const ComponentAlertColorTitleDanger = "#82071e"; // Base color for the danger color
+export const ComponentAlertColorTitleWarning = "#9a6700"; // Base color for the warning color
+export const ComponentAlertColorTitleSuccess = "#044f1e"; // Base color for the success color
+export const ComponentAlertColorTitleInfo = "#0969da"; // Base color for the info color
+export const ComponentAlertColorContentDefault = "#57606a";
+export const ComponentAlertColorContentPrimary = "#b6e3ff";
+export const ComponentAlertColorContentSecondary = "#eaeef2";
+export const ComponentAlertColorContentDanger = "#ffcecb"; // Base color for the danger color
+export const ComponentAlertColorContentWarning = "#ffffff"; // Base color for the warning color
+export const ComponentAlertColorContentSuccess = "#ffffff"; // Base color for the success color
+export const ComponentAlertColorContentInfo = "#ffffff"; // Base color for the info color
+export const ComponentAlertColorBackgroundDefault = "#eaeef2";
+export const ComponentAlertColorBackgroundPrimary = "#218bff";
+export const ComponentAlertColorBackgroundSecondary = "#8c959f";
+export const ComponentAlertColorBackgroundSuccess = "#2da44e";
+export const ComponentAlertColorBackgroundInfo = "#80ccff";
+export const ComponentAlertColorBackgroundWarning = "#eac54f";
+export const ComponentAlertColorBackgroundDanger = "#fa4549";
 export const ComponentButtonSelectedBackgroundDefault = "#d0d7de";
 export const ComponentButtonDisabledBackgroundDefault = "#eaeef2";
 export const ComponentButtonDisabledTextDefault = "#afb8c1";

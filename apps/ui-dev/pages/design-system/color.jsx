@@ -37,7 +37,16 @@ function ColorSingleView({ color, text, css, style }) {
           {color.toUpperCase()}
         </div>
       </Flex>
-      <View padding={5}>{css}</View>
+      <View
+        padding={5}
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {css}
+      </View>
     </VBox>
   );
 }
@@ -91,7 +100,11 @@ function ColorStatus({ title, colors, columns = 1, cssKey, renderView }) {
       <h2>{title} </h2>
       <Grid columns={columns} gap={20}>
         {Object.keys(colors).map((color) => {
-          const mainColor = colors[color].base || colors[color];
+          const mainColor = colors[color];
+
+          if (typeof mainColor !== "string") {
+            return "";
+          }
           return (
             <div
               style={{
@@ -119,11 +132,38 @@ function ColorStatus({ title, colors, columns = 1, cssKey, renderView }) {
 
 function ColorStatusList() {
   return (
-    <Grid columns={3} gap={20}>
+    <Grid columns={4} gap={20}>
       <ColorStatus
         title="Background"
         colors={tokens.color.background}
         cssKey="--color-background"
+        renderView={(color) => {
+          return (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 20,
+              }}
+            >
+              <div
+                style={{
+                  width: 50,
+                  height: 50,
+                  backgroundColor: color,
+                  borderRadius: 2,
+                  boxSizing: "border-box",
+                }}
+              ></div>
+            </div>
+          );
+        }}
+      />
+      <ColorStatus
+        title="Bg Weak"
+        colors={tokens.color.background.weak}
+        cssKey="--color-background-weak"
         renderView={(color) => {
           return (
             <div
@@ -209,11 +249,11 @@ function ColorStatusList() {
 
 function Main() {
   return (
-    <Layout>
+    <Layout maxWidth={1200}>
       <div
         style={{
           padding: 20,
-          maxWidth: 1000,
+          maxWidth: 1200,
         }}
       >
         <h1>Color</h1>
@@ -249,36 +289,6 @@ function Main() {
             );
           })}
         </Grid>
-        {/* 
-        <ColorStatus
-          title="Function"
-          colors={tokens.color.function}
-          columns={3}
-          cssKey="--color-function"
-          renderView={(color) => {
-            return (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: 20,
-                }}
-              >
-                <div
-                  style={{
-                    width: 50,
-                    height: 50,
-                    backgroundColor: color,
-                    borderRadius: 2,
-                    boxSizing: "border-box",
-                  }}
-                ></div>
-              </div>
-            );
-          }}
-        /> */}
-
         <Divider margin={100} />
 
         <h1>Functions</h1>

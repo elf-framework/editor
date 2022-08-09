@@ -1,0 +1,87 @@
+{
+  "component": {
+    "alert": {
+      "color": {
+        "title": {
+          "default": {
+            "value": "{color.core.gray.9.value}"
+          },
+          "primary": {
+            "value": "{color.core.blue.8.value}"
+          },
+          "secondary": {
+            "value": "{color.core.gray.8.value}"
+          },
+
+          "danger": {
+            "value": "{color.core.red.7.value}",
+            "comment": "Base color for the danger color"
+          },
+          "warning": {
+            "value": "{color.core.yellow.5.value}",
+            "comment": "Base color for the warning color"
+          },
+          "success": {
+            "value": "{color.core.green.7.value}",
+            "comment": "Base color for the success color"
+          },
+          "info": {
+            "value": "{color.core.blue.5.value}",
+            "comment": "Base color for the info color"
+          }
+        },   
+        "content": {
+          "default": {
+            "value": "{color.core.gray.6.value}"
+          },
+          "primary": {
+            "value": "{color.core.blue.1.value}"
+          },
+          "secondary": {
+            "value": "{color.core.gray.1.value}"
+          },
+
+          "danger": {
+            "value": "{color.core.red.1.value}",
+            "comment": "Base color for the danger color"
+          },
+          "warning": {
+            "value": "{color.core.white.value}",
+            "comment": "Base color for the warning color"
+          },
+          "success": {
+            "value": "{color.core.white.value}",
+            "comment": "Base color for the success color"
+          },
+          "info": {
+            "value": "{color.core.white.value}",
+            "comment": "Base color for the info color"
+          }
+        },                
+        "background": {
+          "default": {
+            "value": "{color.core.gray.1.value}"
+          },
+          "primary": {
+            "value": "{color.background.primary.value}"
+          },
+          "secondary": {
+            "value": "{color.background.secondary.value}"
+          },
+          "success": {
+            "value": "{color.background.success.value}"
+          },
+          "info": {
+            "value": "{color.background.info.value}"
+          },
+          "warning": {
+            "value": "{color.background.warning.value}"
+          },
+          "danger": {
+            "value": "{color.background.danger.value}"
+          }
+        }
+      }
+    }
+  }
+}

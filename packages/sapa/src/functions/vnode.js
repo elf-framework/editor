@@ -685,6 +685,14 @@ export function htmlToVNode(html) {
 }
 
 export function createVNodeByDom(el) {
+  if (typeof el === "string") {
+    return createVNodeText(el);
+  }
+
+  if (el.nodeType === 3) {
+    return createVNodeText(el.textContent);
+  }
+
   return createVNode({
     tag: el.tagName.toLowerCase(),
     props: getProps(el.attributes),

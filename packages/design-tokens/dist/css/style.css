@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 09 Aug 2022 05:08:22 GMT
+ * Generated on Tue, 09 Aug 2022 15:27:06 GMT
  */
 
 
@@ -10,51 +10,55 @@
   background-color: #ffffff;
 };
 
-.color-background-primary-base {
+.color-background-primary {
   background-color: #218bff;
 };
 
-.color-background-primary-weak {
-  background-color: #54aeff;
-};
-
-.color-background-secondary-base {
+.color-background-secondary {
   background-color: #8c959f;
 };
 
-.color-background-secondary-weak {
-  background-color: #afb8c1;
-};
-
-.color-background-danger-base {
+.color-background-danger {
   background-color: #fa4549;
 };
 
-.color-background-danger-weak {
-  background-color: #ff8182;
-};
-
-.color-background-warning-base {
+.color-background-warning {
   background-color: #eac54f;
 };
 
-.color-background-warning-weak {
-  background-color: #fae17d;
-};
-
-.color-background-success-base {
+.color-background-success {
   background-color: #2da44e;
 };
 
-.color-background-success-weak {
-  background-color: #4ac26b;
-};
-
-.color-background-info-base {
+.color-background-info {
   background-color: #80ccff;
 };
 
-.color-background-info-weak {
+.color-background-weak-default {
+  background-color: #ffffff;
+};
+
+.color-background-weak-primary {
+  background-color: #54aeff;
+};
+
+.color-background-weak-secondary {
+  background-color: #afb8c1;
+};
+
+.color-background-weak-danger {
+  background-color: #ff8182;
+};
+
+.color-background-weak-warning {
+  background-color: #fae17d;
+};
+
+.color-background-weak-success {
+  background-color: #4ac26b;
+};
+
+.color-background-weak-info {
   background-color: #b6e3ff;
 };
 
