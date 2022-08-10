@@ -1,0 +1,6 @@
+class A extends UIElement {
+  template () {
+    const { key: value } = this.props;
+    return <div>{value}</div>
+  }
+}           

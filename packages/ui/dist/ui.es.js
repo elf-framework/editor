@@ -3711,9 +3711,18 @@ class ColorGrid extends UIElement {
 }
 class View extends UIElement {
   template() {
-    const { as = "div", style: style2 = {}, content, ...extraStyle } = this.props;
+    const {
+      as = "div",
+      id,
+      class: className = "",
+      style: style2 = {},
+      content,
+      ...extraStyle
+    } = this.props;
     const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
+      class: classnames(className),
+      id,
       style: propertyMap({ ...style2, ...styleProperties }, {}),
       ...noneStyle
     };

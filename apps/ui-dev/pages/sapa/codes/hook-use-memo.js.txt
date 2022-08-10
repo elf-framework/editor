@@ -1,0 +1,10 @@
+function Main() {
+
+    const [text, setText] = useState("title");
+
+    const newText = useMemo(() => {
+        return `a-` + text
+    }, [text])
+
+    return <div >{text}: {newText}</div>
+}

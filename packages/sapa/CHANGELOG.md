@@ -1,5 +1,14 @@
 # @elf-framework/sapa
 
+## 2.0.39
+
+### Patch Changes
+
+- modify DomVNodeDiff to Reconcile
+  support debounce function for renderComponent
+  update isSVG function
+  support onUnmounted callback
+
 ## 2.0.37
 
 ### Patch Changes

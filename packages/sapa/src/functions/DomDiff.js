@@ -268,34 +268,6 @@ const children = (el) => {
   return results;
 };
 
-// function reconcile(parentEl, oldChildren = [], newChildren = [], options = {}) {
-//   const oldLength = oldChildren.length;
-//   const newLength = newChildren.length;
-
-//   //  둘다 존재해야 진행
-//   if (oldLength < 1 || newLength < 1) {
-//     return;
-//   }
-
-//   let oldHead = 0;
-//   let oldTail = oldLength - 1;
-
-//   let newHead = 0;
-//   let newTail = newLength - 1;
-
-//   while(oldHead < oldTail && newHead < newTail) {
-
-//     const oldHeadEl = oldChildren[oldHead];
-//     const oldTailEl = oldChildren[oldTail];
-//     const newHeadEl = newChildren[newHead];
-//     const newTailEl = newChildren[newTail];
-
-//     const oldHeadKey = oldHeadEl.getAttribute(options.keyField);
-
-//   }
-
-// }
-
 const DefaultOption = {
   checkPassed: undefined,
   keyField: "key",

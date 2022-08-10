@@ -8,14 +8,48 @@ export const pages = [
     link: "/pages/introduction/install.html",
     title: "Install",
   },
-  "Sapa",
+  "Sapa Basics",
   {
     link: "/pages/sapa/basic.html",
     title: "Sapa Basic",
   },
   {
-    link: "/pages/sapa/feature-vnode.html",
-    title: "Feature: VNode",
+    link: "/pages/sapa/feature-jsx.html",
+    title: "Jsx",
+  },
+  {
+    link: "/pages/sapa/feature-component.html",
+    title: "Component",
+  },
+  {
+    link: "/pages/sapa/feature-hook.html",
+    title: "Hook",
+  },
+  {
+    link: "/pages/sapa/feature-dom.html",
+    title: "DOM",
+  },
+  {
+    link: "/pages/sapa/feature-store-message.html",
+    title: "Store & Message",
+  },
+
+  "Sapa Extensions",
+  {
+    link: "/pages/sapa/feature-handler.html",
+    title: "Handler",
+  },
+  {
+    link: "/pages/sapa/feature-custom-hook.html",
+    title: "Custom Hook",
+  },
+  {
+    link: "/pages/sapa/feature-router.html",
+    title: "Router",
+  },
+  {
+    link: "/pages/sapa/feature-api.html",
+    title: "API",
   },
   "Design System",
   { link: "/pages/design-system/color.html", title: "Color" },

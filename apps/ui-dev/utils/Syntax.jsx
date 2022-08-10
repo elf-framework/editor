@@ -20,6 +20,7 @@ export function Syntax(code, language = "javascript") {
         color: "white",
       }}
     >
+      <div class="language">{language}</div>
       {htmlToVNode(`<pre>${html}</pre>`)}
     </div>
   );

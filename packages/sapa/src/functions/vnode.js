@@ -694,7 +694,7 @@ export function createVNodeByDom(el) {
   }
 
   return createVNode({
-    tag: el.tagName.toLowerCase(),
+    tag: el.tagName, // tag 이름 그대로 넣어야함. 예를들어 <div> 이면 div 를 넣어야 함.
     props: getProps(el.attributes),
     children: children(el).map((it) => {
       return createVNodeByDom(it);

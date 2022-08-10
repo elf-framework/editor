@@ -1,0 +1,10 @@
+function Main() {
+
+    const [text, setText] = useState("title");
+
+    useEffect(() => {
+        console.log("rendering", text);
+    }, [text])
+
+    return <div>{text}</div>
+}

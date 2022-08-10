@@ -299,4 +299,6 @@ export class HookMachine extends MagicHandler {
     // hooks
     this.cleanHooks();
   }
+
+  onUnmounted() {}
 }

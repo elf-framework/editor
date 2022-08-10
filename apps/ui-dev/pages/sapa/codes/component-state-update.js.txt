@@ -1,0 +1,16 @@
+class A extends UIElement {
+    initState() {
+        return {
+            value: 10
+        }
+    }
+
+    template () {
+        const { value } = this.state;
+        return <div onClick={() => {
+            this.setState({
+                value: 20
+            })
+        }}>{value}</div>
+    }
+}

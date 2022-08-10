@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.0.40
+
+### Patch Changes
+
+- update alert style
+
 ## 2.0.37
 
 ### Patch Changes

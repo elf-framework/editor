@@ -1,0 +1,12 @@
+class A extends UIElement {
+    initState() {
+        return {
+            value: 10
+        }
+    }
+
+    template () {
+        const { value } = this.state;
+        return <div>{value}</div>
+    }
+}

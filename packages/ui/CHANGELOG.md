@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.38
+
+### Patch Changes
+
+- update View Component attribute
+
 ## 2.0.37
 
 ### Patch Changes

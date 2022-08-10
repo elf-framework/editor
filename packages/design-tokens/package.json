@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/design-tokens",
-  "version": "2.0.37",
+  "version": "2.0.40",
   "description": "",
   "main": "./src/index.js",
   "files": [

@@ -1,0 +1,12 @@
+
+// Class Component 
+class A extends UIElement {
+    template () {
+        return <div>Hello, World</div>
+    }
+}
+
+// Function Component 
+function A () {
+    return <div>Hello, World</div>
+}

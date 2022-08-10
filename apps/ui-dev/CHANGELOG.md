@@ -1,5 +1,14 @@
 # ui-dev
 
+## 1.0.5
+
+### Patch Changes
+
+- update document sapa basic
+
+- Updated dependencies []:
+  - @elf-framework/ui@2.0.38
+
 ## 1.0.4
 
 ### Patch Changes

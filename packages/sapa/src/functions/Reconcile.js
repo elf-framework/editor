@@ -432,12 +432,12 @@ const DefaultOption = {
 
 /**
  *
- *  DomVNodeDiff 를 수행한다.
+ *  Reconcile 를 수행한다.
  *
  * Dom 과 VNode 를 Diff 한다.
  *
  */
-export function DomVNodeDiff(oldEl, newVNode, options = {}) {
+export function Reconcile(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
 
   if (oldEl.nodeType !== 11) {
