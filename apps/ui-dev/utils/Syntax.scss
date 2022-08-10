@@ -1,0 +1,36 @@
+.syntax {
+
+    border-radius: 10px;
+    background-color: black;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+    position: relative;
+
+    > .language {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        display: inline-block;
+        color: rgb(233, 233, 233);
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    > pre {
+        overflow: auto;
+        line-height: 24px;
+        letter-spacing: 1px;
+
+        .token.comment {
+            color: #8e98ff;
+            font-weight: 500;
+        }
+
+        .token.function {
+            color: rgb(240, 252, 0);
+            font-weight: 700;
+        }
+    }
+}

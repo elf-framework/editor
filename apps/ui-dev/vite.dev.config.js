@@ -17,6 +17,7 @@ files.forEach((it) => {
 });
 
 export default defineConfig({
+  appType: "mpa",
   server: {
     hmr: {
       protocol: "ws",

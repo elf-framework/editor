@@ -1,4 +1,4 @@
-import { isString } from "./func";
+import { debounce, isString } from "./func";
 import { uuidShort } from "./uuid";
 
 const map = {};
@@ -10,6 +10,7 @@ const __tempVariables = new Map();
 const __tempVariablesGroup = new Map();
 const _modules = {};
 const _moduleMap = new WeakMap();
+const RenderCallbackList = new WeakMap();
 const GlobalState = {
   currentComponent: null,
 };
@@ -28,9 +29,28 @@ export function resetCurrentComponent(component) {
   GlobalState.currentComponent = component;
 }
 
+function createRenderCallback(component, delay = 1) {
+  if (!RenderCallbackList.has(component)) {
+    RenderCallbackList.set(
+      component,
+      debounce(($container = undefined) => {
+        component.render($container);
+      }, delay)
+    );
+  }
+
+  return RenderCallbackList.get(component);
+}
+
+export function removeRenderCallback(component) {
+  if (RenderCallbackList.has(component)) {
+    RenderCallbackList.delete(component);
+  }
+}
+
 export function renderComponent(component, $container = undefined) {
   window.requestIdleCallback(() => {
-    component.render($container);
+    createRenderCallback(component)?.($container);
   });
 }
 

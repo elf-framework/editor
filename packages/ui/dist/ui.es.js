@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { AFTER, UIElement, classnames, createElementJsx, isFunction, CLICK, IF, PREVENT, STOP, OBSERVER, PARAMS, isString, Dom, POINTEROVER, POINTERLEAVE, useState, useCallback, useEffect, potal, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
+import { AFTER, UIElement, useState, useCallback, classnames, createElementJsx, potal, isFunction, CLICK, IF, PREVENT, STOP, OBSERVER, PARAMS, isString, Dom, POINTEROVER, POINTERLEAVE, useEffect, POINTERENTER, isNumber, FOCUSIN, FOCUSOUT, isUndefined, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERSTART, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 var index = "";
 const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
@@ -67,6 +67,94 @@ function propertyMap(styles, mapper = {}) {
     styleObj[mapper[key] || key] = styleMap(key, styles[key]);
   });
   return styleObj;
+}
+const cssProperties$r = {
+  borderColor: "--elf--alert-border-color",
+  backgroundColor: "--elf--alert-background-color",
+  selectedBackgroundColor: "--elf--alert-selected-background-color",
+  disabledColor: "--elf--alert-disabled-color",
+  color: "--elf--alert-color",
+  fontSize: "--elf--alert-font-size",
+  fontWeight: "--elf--alert-font-weight",
+  height: "--elf--alert-height",
+  padding: "--elf--alert-padding",
+  borderRadius: "--elf--alert-border-radius"
+};
+class Alert extends UIElement {
+  template() {
+    const {
+      type = "default",
+      title = "",
+      content = "",
+      style: style2 = {},
+      closable = false,
+      onClose = void 0,
+      delay = 0,
+      ...extrProps
+    } = this.props;
+    const [localDelay, setLocalDelay] = useState(delay);
+    const [hide, setHide] = useState(false);
+    this.state.hideCallback = useCallback(
+      (hideDelay = 0) => {
+        setLocalDelay(hideDelay);
+      },
+      [setLocalDelay]
+    );
+    const styleObject = {
+      class: classnames(["elf--alert", { [type]: true }, { hide }]),
+      style: {
+        ...propertyMap(style2, cssProperties$r),
+        ...{
+          transition: `opacity ${localDelay}ms ease-in-out`,
+          opacity: hide ? 0 : 1
+        }
+      },
+      ...extrProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault(),
+      onTransitionEnd: () => {
+        this.props.onHide && this.props.onHide();
+        this.destroy(true);
+      }
+    }, title ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-title"
+    }, title) : null, content ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-content"
+    }, content) : null, closable ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-close",
+      onClick: () => {
+        setHide(true);
+        if (localDelay === 0) {
+          this.props.onHide && this.props.onHide();
+          this.destroy(true);
+        }
+      }
+    }, "\xD7") : null);
+  }
+  hide(hideDelay = 0) {
+    var _a;
+    (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+  }
+}
+function alert({
+  content = void 0,
+  delay = 0,
+  title = void 0,
+  closable = false,
+  options = {},
+  style: style2 = {}
+}) {
+  return potal(
+    /* @__PURE__ */ createElementJsx(Alert, {
+      title,
+      delay,
+      closable,
+      style: style2
+    }, content),
+    options
+  );
 }
 const styleKeys = {};
 const uppercasePattern = /([A-Z])/g;
@@ -1044,9 +1132,15 @@ class Dialog extends UIElement {
 }
 class Flex extends UIElement {
   template() {
-    const { style: style2 = {}, content, stack, wrap = false } = this.props;
+    const {
+      style: style2 = {},
+      class: className = "",
+      content,
+      stack,
+      wrap = false
+    } = this.props;
     const styleObject = {
-      class: classnames("elf--flex", {
+      class: classnames("elf--flex", className, {
         stack,
         wrap
       }),
@@ -1784,14 +1878,18 @@ function makeTemplates(arr) {
   } else if (Array.isArray(arr) === false) {
     arr = [arr];
   }
+  if (arr.length === 0) {
+    return void 0;
+  }
   return arr.map((it) => isNumber(it) ? `${it}fr` : it).join(" ");
 }
 class Grid extends UIElement {
   template() {
     const {
+      class: className = "",
       style: style2 = {},
-      columns = [1],
-      rows = [1],
+      columns = [],
+      rows = [],
       gap,
       columnGap,
       rowGap,
@@ -1800,7 +1898,7 @@ class Grid extends UIElement {
     } = this.props;
     const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
-      class: "elf--grid",
+      class: classnames("elf--grid", className),
       style: {
         gridTemplateColumns: makeTemplates(columns),
         gridTemplateRows: makeTemplates(rows),
@@ -3613,9 +3711,18 @@ class ColorGrid extends UIElement {
 }
 class View extends UIElement {
   template() {
-    const { as = "div", style: style2 = {}, content, ...extraStyle } = this.props;
+    const {
+      as = "div",
+      id,
+      class: className = "",
+      style: style2 = {},
+      content,
+      ...extraStyle
+    } = this.props;
     const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
     const styleObject = {
+      class: classnames(className),
+      id,
       style: propertyMap({ ...style2, ...styleProperties }, {}),
       ...noneStyle
     };
@@ -3989,4 +4096,4 @@ class AppLayout extends UIElement {
     }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
   }
 }
-export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, ButtonGroup, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, Divider, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell, bell };
+export { ADD_BODY_FIRST_MOUSEMOVE, ADD_BODY_MOUSEMOVE, ADD_BODY_MOUSEUP, Alert, AppLayout, AppLayoutItem, AppResizeBar, BODY_MOVE_EVENT, Button, ButtonGroup, Checkbox, CheckboxGroup, ColorGrid, ColorMixer, ColorView, DataEditor, Dialog, Divider, END, EventControlPanel, EventPanel, FIRSTMOVE, Flex, Grid, HexColorEditor, IconButton, InputEditor, InputPaint, Layer, Layout, LinkButton, MOVE, Menu, Notification, OptionMenu, OptionStrip, Panel, RGBColorEditor, Radio, RadioGroup, Tab, TabItem, TabStrip, TextAreaEditor, ToggleButton, Toolbar, ToolbarItem, Tools, ToolsCustomItem, ToolsMenuItem, Tooltip, VBox, View, VirtualScroll, VisualBell, alert, bell };

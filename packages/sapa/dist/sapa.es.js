@@ -456,6 +456,7 @@ const __tempVariables = /* @__PURE__ */ new Map();
 const __tempVariablesGroup = /* @__PURE__ */ new Map();
 const _modules = {};
 const _moduleMap = /* @__PURE__ */ new WeakMap();
+const RenderCallbackList = /* @__PURE__ */ new WeakMap();
 const GlobalState = {
   currentComponent: null
 };
@@ -465,9 +466,26 @@ function getCurrentComponent() {
 function resetCurrentComponent(component) {
   GlobalState.currentComponent = component;
 }
+function createRenderCallback(component, delay = 1) {
+  if (!RenderCallbackList.has(component)) {
+    RenderCallbackList.set(
+      component,
+      debounce(($container = void 0) => {
+        component.render($container);
+      }, delay)
+    );
+  }
+  return RenderCallbackList.get(component);
+}
+function removeRenderCallback(component) {
+  if (RenderCallbackList.has(component)) {
+    RenderCallbackList.delete(component);
+  }
+}
 function renderComponent(component, $container = void 0) {
   window.requestIdleCallback(() => {
-    component.render($container);
+    var _a;
+    (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
   });
 }
 const VARIABLE_SAPARATOR = "v:";
@@ -1624,6 +1642,150 @@ const VoidTags = {
 function isVoidTag(tag) {
   return VoidTags[tag.toLowerCase()];
 }
+const MAGIC_METHOD_REG = /^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g;
+const MAGIC_METHOD = "@magic:";
+const SPLITTER = "|";
+const FUNC_REGEXP = /(([\$a-z_\-]+)\([^\(\)]*\)|([a-z_\-]+))/gi;
+const FUNC_START_CHARACTER = "(";
+const FUNC_END_CHARACTER = ")";
+const MAGICMETHOD_EXTRA = {
+  KEYWORD: "keyword",
+  FUNCTION: "function",
+  VALUE: "value"
+};
+class MagicMethod {
+  constructor(obj) {
+    this.context = obj.context;
+    this.originalMethod = obj.originalMethod;
+    this.method = obj.method;
+    this.args = obj.args;
+    this.pipes = obj.pipes;
+    this.keys = obj.keys;
+    this.__cache = /* @__PURE__ */ new Map();
+  }
+  setCache(key, value) {
+    this.__cache.set(key, value);
+  }
+  hasCache(key) {
+    return this.__cache.has(key);
+  }
+  getCache(key) {
+    return this.__cache.get(key);
+  }
+  hasKeyword(keyword) {
+    if (this.hasCache(keyword)) {
+      return this.getCache(keyword);
+    }
+    let exists = false;
+    this.pipes.forEach((pipe) => {
+      switch (pipe.type) {
+        case MAGICMETHOD_EXTRA.KEYWORD:
+          if (pipe.value === keyword) {
+            exists = true;
+          }
+          break;
+      }
+    });
+    this.setCache(keyword, exists);
+    return exists;
+  }
+  hasFunction(funcName) {
+    if (this.hasCache(funcName)) {
+      return this.getCache(funcName);
+    }
+    let exists = !!this.getFunction(funcName);
+    this.setCache(funcName, exists);
+    return exists;
+  }
+  getFunction(funcName) {
+    return this.functions.find((pipe) => pipe.func === funcName);
+  }
+  getFunctionList(funcName) {
+    return this.functions.filter((pipe) => pipe.func === funcName);
+  }
+  get originalCallback() {
+    return this.context[this.originalMethod];
+  }
+  get keywords() {
+    return this.keys[MAGICMETHOD_EXTRA.KEYWORD].map((pipe) => pipe.value);
+  }
+  get functions() {
+    return this.keys[MAGICMETHOD_EXTRA.FUNCTION];
+  }
+  get values() {
+    return this.keys[MAGICMETHOD_EXTRA.VALUE].map((pipe) => pipe.value);
+  }
+  execute(...args) {
+    return this.originalCallback.call(this.context, ...args);
+  }
+  executeWithContext(context, ...args) {
+    return this.originalCallback.call(context, ...args);
+  }
+  static make(str, ...args) {
+    return `${MAGIC_METHOD}${str} ${args.join(SPLITTER)}`;
+  }
+  static check(str) {
+    return str.match(MAGIC_METHOD_REG) !== null;
+  }
+  static parse(str, context = {}) {
+    const matches = str.match(MAGIC_METHOD_REG);
+    if (!matches) {
+      return void 0;
+    }
+    const result = matches[0].split(MAGIC_METHOD)[1].split(SPLITTER).map((item) => item.trim());
+    let [initializer, ...pipes] = result;
+    const [method, ...args] = initializer.split(" ");
+    const pipeList = pipes.map((it) => {
+      return this.parsePipe(it);
+    }).filter((it) => it.value);
+    const pipeObjects = {
+      function: [],
+      keyword: [],
+      value: []
+    };
+    pipeList.forEach((pipe) => {
+      if (pipe.type === "function") {
+        pipeObjects.function.push(pipe);
+      } else if (pipe.type === "keyword") {
+        pipeObjects.keyword.push(pipe);
+      } else {
+        pipeObjects.value.push(pipe);
+      }
+    });
+    return new MagicMethod({
+      context,
+      originalMethod: str,
+      method,
+      args,
+      pipes: pipeList,
+      keys: pipeObjects
+    });
+  }
+  static parsePipe(it) {
+    const result = it.match(FUNC_REGEXP);
+    if (!result) {
+      return {
+        type: "value",
+        value: it
+      };
+    }
+    const [value] = result;
+    if (value.includes(FUNC_START_CHARACTER)) {
+      const [func, rest] = value.split(FUNC_START_CHARACTER);
+      const [args] = rest.split(FUNC_END_CHARACTER);
+      return {
+        type: "function",
+        value,
+        func,
+        args: args.split(",").map((it2) => it2.trim()).filter(Boolean)
+      };
+    }
+    return {
+      type: "keyword",
+      value: result[0]
+    };
+  }
+}
 const booleanTypes = new Map(
   Object.entries({
     checked: true,
@@ -1923,155 +2085,11 @@ const DefaultOption = {
   keyField: "key",
   removedElements: []
 };
-function DomVNodeDiff(oldEl, newVNode, options = {}) {
+function Reconcile(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
   if (oldEl.nodeType !== 11) {
     updateElement(oldEl.parentElement, oldEl, newVNode, options);
     return;
-  }
-}
-const MAGIC_METHOD_REG = /^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g;
-const MAGIC_METHOD = "@magic:";
-const SPLITTER = "|";
-const FUNC_REGEXP = /(([\$a-z_\-]+)\([^\(\)]*\)|([a-z_\-]+))/gi;
-const FUNC_START_CHARACTER = "(";
-const FUNC_END_CHARACTER = ")";
-const MAGICMETHOD_EXTRA = {
-  KEYWORD: "keyword",
-  FUNCTION: "function",
-  VALUE: "value"
-};
-class MagicMethod {
-  constructor(obj) {
-    this.context = obj.context;
-    this.originalMethod = obj.originalMethod;
-    this.method = obj.method;
-    this.args = obj.args;
-    this.pipes = obj.pipes;
-    this.keys = obj.keys;
-    this.__cache = /* @__PURE__ */ new Map();
-  }
-  setCache(key, value) {
-    this.__cache.set(key, value);
-  }
-  hasCache(key) {
-    return this.__cache.has(key);
-  }
-  getCache(key) {
-    return this.__cache.get(key);
-  }
-  hasKeyword(keyword) {
-    if (this.hasCache(keyword)) {
-      return this.getCache(keyword);
-    }
-    let exists = false;
-    this.pipes.forEach((pipe) => {
-      switch (pipe.type) {
-        case MAGICMETHOD_EXTRA.KEYWORD:
-          if (pipe.value === keyword) {
-            exists = true;
-          }
-          break;
-      }
-    });
-    this.setCache(keyword, exists);
-    return exists;
-  }
-  hasFunction(funcName) {
-    if (this.hasCache(funcName)) {
-      return this.getCache(funcName);
-    }
-    let exists = !!this.getFunction(funcName);
-    this.setCache(funcName, exists);
-    return exists;
-  }
-  getFunction(funcName) {
-    return this.functions.find((pipe) => pipe.func === funcName);
-  }
-  getFunctionList(funcName) {
-    return this.functions.filter((pipe) => pipe.func === funcName);
-  }
-  get originalCallback() {
-    return this.context[this.originalMethod];
-  }
-  get keywords() {
-    return this.keys[MAGICMETHOD_EXTRA.KEYWORD].map((pipe) => pipe.value);
-  }
-  get functions() {
-    return this.keys[MAGICMETHOD_EXTRA.FUNCTION];
-  }
-  get values() {
-    return this.keys[MAGICMETHOD_EXTRA.VALUE].map((pipe) => pipe.value);
-  }
-  execute(...args) {
-    return this.originalCallback.call(this.context, ...args);
-  }
-  executeWithContext(context, ...args) {
-    return this.originalCallback.call(context, ...args);
-  }
-  static make(str, ...args) {
-    return `${MAGIC_METHOD}${str} ${args.join(SPLITTER)}`;
-  }
-  static check(str) {
-    return str.match(MAGIC_METHOD_REG) !== null;
-  }
-  static parse(str, context = {}) {
-    const matches = str.match(MAGIC_METHOD_REG);
-    if (!matches) {
-      return void 0;
-    }
-    const result = matches[0].split(MAGIC_METHOD)[1].split(SPLITTER).map((item) => item.trim());
-    let [initializer, ...pipes] = result;
-    const [method, ...args] = initializer.split(" ");
-    const pipeList = pipes.map((it) => {
-      return this.parsePipe(it);
-    }).filter((it) => it.value);
-    const pipeObjects = {
-      function: [],
-      keyword: [],
-      value: []
-    };
-    pipeList.forEach((pipe) => {
-      if (pipe.type === "function") {
-        pipeObjects.function.push(pipe);
-      } else if (pipe.type === "keyword") {
-        pipeObjects.keyword.push(pipe);
-      } else {
-        pipeObjects.value.push(pipe);
-      }
-    });
-    return new MagicMethod({
-      context,
-      originalMethod: str,
-      method,
-      args,
-      pipes: pipeList,
-      keys: pipeObjects
-    });
-  }
-  static parsePipe(it) {
-    const result = it.match(FUNC_REGEXP);
-    if (!result) {
-      return {
-        type: "value",
-        value: it
-      };
-    }
-    const [value] = result;
-    if (value.includes(FUNC_START_CHARACTER)) {
-      const [func, rest] = value.split(FUNC_START_CHARACTER);
-      const [args] = rest.split(FUNC_END_CHARACTER);
-      return {
-        type: "function",
-        value,
-        func,
-        args: args.split(",").map((it2) => it2.trim()).filter(Boolean)
-      };
-    }
-    return {
-      type: "keyword",
-      value: result[0]
-    };
   }
 }
 const makeEventChecker = (value, split = SPLITTER) => {
@@ -3223,6 +3241,8 @@ class HookMachine extends MagicHandler {
     this.isMounted = false;
     this.cleanHooks();
   }
+  onUnmounted() {
+  }
 }
 ___stateHooks = new WeakMap();
 ___stateHooksIndex = new WeakMap();
@@ -3407,7 +3427,7 @@ const _EventMachine = class extends HookMachine {
       if (template.type === VNodeType.FRAGMENT) {
         updateChildren(this.parentElement, template);
       } else {
-        DomVNodeDiff(this.$el.el, template, {
+        Reconcile(this.$el.el, template, {
           checkRefClass: this.checkRefClass,
           context: this,
           isForceRender,
@@ -3493,6 +3513,7 @@ const _EventMachine = class extends HookMachine {
     });
   }
   destroy(isRemoveElement = false) {
+    removeRenderCallback(this);
     Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
       const childInstance = __privateGet(this, _childObjectElements).get(child);
       if (childInstance) {
@@ -3502,12 +3523,13 @@ const _EventMachine = class extends HookMachine {
       }
     });
     this.runHandlers("destroy");
-    this.onDestroyed();
-    this.refs = {};
     if (isRemoveElement) {
       this.$el.remove();
       this.$el = null;
+      this.onUnmounted();
     }
+    this.onDestroyed();
+    this.refs = {};
   }
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
@@ -3562,6 +3584,14 @@ const _EventMachine = class extends HookMachine {
     const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
     if (instance) {
       instance.onDestroyed();
+    }
+  }
+  onUnmounted() {
+    var _a;
+    super.onUnmounted();
+    const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
+    if (instance) {
+      instance.onUnmounted();
     }
   }
 };
@@ -3823,6 +3853,11 @@ const SVG_ELEMENTS = {
   switch: true,
   link: true
 };
+const SVG_ELEMENTS_LIST = {};
+Object.keys(SVG_ELEMENTS).forEach((key) => {
+  SVG_ELEMENTS_LIST[key.toLowerCase()] = true;
+  SVG_ELEMENTS_LIST[key.toUpperCase()] = true;
+});
 function isSVG(tagName) {
   return !!SVG_ELEMENTS[tagName];
 }
@@ -4340,8 +4375,14 @@ function htmlToVNode(html) {
   return createVNodeByDom($dom.el);
 }
 function createVNodeByDom(el) {
+  if (typeof el === "string") {
+    return createVNodeText(el);
+  }
+  if (el.nodeType === 3) {
+    return createVNodeText(el.textContent);
+  }
   return createVNode({
-    tag: el.tagName.toLowerCase(),
+    tag: el.tagName,
     props: getProps(el.attributes),
     children: children(el).map((it) => {
       return createVNodeByDom(it);
@@ -4484,4 +4525,4 @@ function createElementJsx(Component, props = {}, ...children2) {
 }
 const FragmentInstance = new Object();
 const HTMLComment = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentInstance, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, potal, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentInstance, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, potal, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRenderCallback, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };

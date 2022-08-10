@@ -1,0 +1,104 @@
+.layout {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .layout-menu {
+        border-right: 1px solid #ececec;
+        position: fixed;
+        left: 0px;
+        width: 300px;
+        bottom: 0px;
+        top: 40px;
+        overflow: auto;
+        z-index: 1;
+    }
+
+    .layout-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background-color: #fff;
+        border-bottom: 1px solid #ececec;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+
+        &.fixed {
+            position: fixed;
+            z-index: 1;
+        }
+    }
+
+    .layout-content {
+        position: relative;
+        padding-left: 300px;
+        padding-top: 40px;
+
+        > div {
+            padding: 20px;
+        }
+    }
+}
+
+.page-menu {
+    padding: 7px 20px;
+    // border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    &.selected {
+        background-color: var(--color-core-blue-0);
+        border-right: 5px solid var(--color-core-blue-2);
+    }
+
+    a {
+        flex: 1 1 auto;
+        text-decoration: none;
+        color: var(--color-core-black);
+    }
+}
+
+.page-title {
+    font-size: var(--size-font-200);
+    color: var(--color-core-gray-8);
+    padding: 7px 15px;
+    background-color: var(--color-core-gray-0);
+    border-bottom: 1px solid #ececec;
+    border-top: 1px solid #ececec;
+}
+
+
+@media (max-width: 800px) { 
+    .layout {
+        position: static;
+        display: block;
+        .layout-logo {
+            display: none;
+        }
+
+        .layout-header {
+            display: flex;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            right:0;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            height: 40px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .layout-menu {
+            display: none;
+        }
+
+        .layout-content {
+            padding: 20px;
+        }
+    }
+}

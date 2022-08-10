@@ -1,9 +1,10 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { VNodeType } from "./constant/vnode";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
-import { DomVNodeDiff, updateChildren } from "./functions/DomVNodeDiff";
 import { isFunction, collectProps, isEqual, isArray } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
+import { Reconcile, updateChildren } from "./functions/Reconcile";
+import { removeRenderCallback } from "./functions/registElement";
 import { uuid } from "./functions/uuid";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
@@ -335,7 +336,7 @@ export class EventMachine extends HookMachine {
       if (template.type === VNodeType.FRAGMENT) {
         updateChildren(this.parentElement, template);
       } else {
-        DomVNodeDiff(this.$el.el, template, {
+        Reconcile(this.$el.el, template, {
           checkRefClass: this.checkRefClass,
           context: this,
           isForceRender,
@@ -483,6 +484,8 @@ export class EventMachine extends HookMachine {
    *
    */
   destroy(isRemoveElement = false) {
+    removeRenderCallback(this);
+
     // 자식 컴포넌트들을 제거한다.
     Object.entries(this.#childObjectList).forEach(([_key, child]) => {
       const childInstance = this.#childObjectElements.get(child);
@@ -496,14 +499,16 @@ export class EventMachine extends HookMachine {
     });
 
     this.runHandlers("destroy");
-    // 로컬 이벤트 함수 실행
-    this.onDestroyed();
-    this.refs = {};
 
     if (isRemoveElement) {
       this.$el.remove();
       this.$el = null;
+      this.onUnmounted();
     }
+
+    // 로컬 이벤트 함수 실행
+    this.onDestroyed();
+    this.refs = {};
   }
 
   /**
@@ -593,6 +598,18 @@ export class EventMachine extends HookMachine {
 
     if (instance) {
       instance.onDestroyed();
+    }
+  }
+
+  onUnmounted() {
+    super.onUnmounted();
+
+    // root vnode의 element 와 나의 element 가 같을 때는
+    // 자식 vnode 의 destroyed 를 같이 실행해준다.
+    const instance = this.getTargetInstance(this.$el?.el);
+
+    if (instance) {
+      instance.onUnmounted();
     }
   }
 }

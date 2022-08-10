@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -23,13 +23,14 @@
     "@elf-framework/icon": "^2.0.50",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
-    "@elf-framework/ui": "*"
+    "@elf-framework/ui": "*",
+    "mermaid": "^9.1.4"
   },
   "devDependencies": {
     "@elf-framework/config": "*",
-    "@mdx-js/mdx": "^2.0.0-rc.2",
     "glob": "^8.0.3",
     "vite": "^2.9.13",
+    "vite-plugin-mdx": "^3.5.10",
     "vite-plugin-sapa": "*",
     "vitest": "0.0.107"
   }

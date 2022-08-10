@@ -1,5 +1,23 @@
 # @elf-framework/design-system
 
+## 2.0.40
+
+### Patch Changes
+
+- update alert style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.0.40
+
+## 2.0.37
+
+### Patch Changes
+
+- Support Syntax, media query
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.0.37
+
 ## 2.0.36
 
 ### Patch Changes

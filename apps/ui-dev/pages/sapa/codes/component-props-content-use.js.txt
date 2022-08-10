@@ -1,0 +1,13 @@
+class School extends UIElement {
+  template () {
+    const { key: value, content } = this.props;
+    return (
+      <div data-key={value}>
+        {content}
+        <div>
+            This is a sample text.
+        </div>
+      </div>
+    )
+  }
+}           

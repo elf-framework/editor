@@ -1,0 +1,99 @@
+.elf--alert {
+  --elf--alert-border-color: var(--component-alert-color-border-default);
+  --elf--alert-padding: 10px 20px;
+  --elf--alert-font-size: var(--elf--font-size, 14px);
+  --elf--alert-background-color: var(
+    --component-alert-color-background-default
+  );
+  --elf--alert-title-color: var(--component-alert-color-title-default);
+  --elf--alert-content-color: var(--component-alert-color-content-default);
+  --elf--alert-border-radius: 4px;
+
+  // height: var(--elf--alert-height, 30px);
+  padding: var(--elf--alert-padding);
+  border-radius: var(--elf--alert-border-radius);
+  background-color: var(--elf--alert-background-color);
+  color: var(--elf--alert-color);
+  border: 1px solid var(--elf--alert-border-color);
+  position: relative;
+
+  > .elf--alert-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: scale(1.5);
+    cursor: pointer;
+    color: var(--elf--alert-title-color);    
+  }
+
+  > .elf--alert-title {
+    color: var(--elf--alert-title-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  > .elf--alert-content {
+    color: var(--elf--alert-content-color);
+
+    > *:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
+
+  &.primary {
+    --elf--alert-background-color: var(
+      --component-alert-color-background-primary
+    );
+    --elf--alert-title-color: var(--component-alert-color-title-primary);
+    --elf--alert-content-color: var(--component-alert-color-content-primary);
+    border-width: 0px;
+  }
+
+  &.secondary {
+    --elf--alert-background-color: var(
+      --component-alert-color-background-secondary
+    );
+    --elf--alert-title-color: var(--component-alert-color-title-secondary);
+    --elf--alert-content-color: var(--component-alert-color-content-secondary);
+
+    --elf--alert-color: white;
+  }
+
+  &.success {
+    --elf--alert-background-color: var(
+      --component-alert-color-background-success
+    );
+    --elf--alert-title-color: var(--component-alert-color-title-success);    
+    --elf--alert-content-color: var(--component-alert-color-content-success);
+    border-width: 0px;
+  }
+
+  &.danger {
+    --elf--alert-background-color: var(
+      --component-alert-color-background-danger
+    );
+    --elf--alert-title-color: var(--component-alert-color-title-danger);     
+    --elf--alert-content-color: var(--component-alert-color-content-danger);
+    border-width: 0px;
+  }
+
+  &.info {
+    --elf--alert-background-color: var(
+      --component-alert-color-background-info
+    );
+    --elf--alert-title-color: var(--component-alert-color-title-info);      
+    --elf--alert-content-color: var(--component-alert-color-content-info);
+    border-width: 0px;
+  }
+
+  &.warning {
+    --elf--alert-background-color: var(
+      --component-alert-color-background-warning
+    );
+    --elf--alert-title-color: var(--component-alert-color-title-warning);   
+    --elf--alert-content-color: var(--component-alert-color-content-warning); 
+    --elf--alert-color: white;
+    border-width: 0px;
+  }
+}

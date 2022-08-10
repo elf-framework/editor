@@ -1,5 +1,17 @@
 # @elf-framework/design-tokens
 
+## 2.0.40
+
+### Patch Changes
+
+- update alert style
+
+## 2.0.37
+
+### Patch Changes
+
+- Support component token (divider, alert, button)
+
 ## 2.0.35
 
 ### Patch Changes

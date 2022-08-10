@@ -325,7 +325,7 @@ declare module "@elf-framework/sapa" {
      * 이것도 역시 자식 컴포넌트까지 제어하기 때문에 가장 최상위 부모에서 한번만 호출되도 된다.
      *
      */
-    destroy(): void;
+    destroy(isRemoveElement: boolean): void;
   }
 
   export class UIElement extends EventMachine {

@@ -1,24 +1,25 @@
 /**
  * Do not edit directly
- * Generated on Tue, 09 Aug 2022 05:08:21 GMT
+ * Generated on Wed, 10 Aug 2022 12:21:57 GMT
  */
 
 export const ImageLogo : string;
 export const ImageEmpty : string;
 export const ImageFiles : string;
 export const ColorBackgroundDefault : string; // Background color that will match the current color scheme
-export const ColorBackgroundPrimaryBase : string; // Base color for the primary color
-export const ColorBackgroundPrimaryWeak : string; // Weak color for the primary color
-export const ColorBackgroundSecondaryBase : string; // Base color for the secondary color
-export const ColorBackgroundSecondaryWeak : string; // Weak color for the secondary color
-export const ColorBackgroundDangerBase : string; // Base color for the danger color
-export const ColorBackgroundDangerWeak : string; // Weak color for the danger color
-export const ColorBackgroundWarningBase : string; // Base color for the warning color
-export const ColorBackgroundWarningWeak : string; // Weak color for the warning color
-export const ColorBackgroundSuccessBase : string; // Base color for the success color
-export const ColorBackgroundSuccessWeak : string; // Weak color for the success color
-export const ColorBackgroundInfoBase : string; // Base color for the info color
-export const ColorBackgroundInfoWeak : string; // Weak color for the info color
+export const ColorBackgroundPrimary : string; // Base color for the primary color
+export const ColorBackgroundSecondary : string; // Base color for the secondary color
+export const ColorBackgroundDanger : string; // Base color for the danger color
+export const ColorBackgroundWarning : string; // Base color for the warning color
+export const ColorBackgroundSuccess : string; // Base color for the success color
+export const ColorBackgroundInfo : string; // Base color for the info color
+export const ColorBackgroundWeakDefault : string; // Background color that will match the current color scheme
+export const ColorBackgroundWeakPrimary : string; // Weak color for the primary color
+export const ColorBackgroundWeakSecondary : string; // Weak color for the secondary color
+export const ColorBackgroundWeakDanger : string; // Weak color for the danger color
+export const ColorBackgroundWeakWarning : string; // Weak color for the warning color
+export const ColorBackgroundWeakSuccess : string; // Weak color for the success color
+export const ColorBackgroundWeakInfo : string; // Weak color for the info color
 export const ColorBorderDefault : string; // Border color that will match the current color scheme
 export const ColorBorderPrimary : string; // Base color for the primary color
 export const ColorBorderSecondary : string; // Base color for the secondary color
@@ -133,6 +134,27 @@ export const ColorTextSuccess : string; // Text color to indicate success
 export const ColorTextInfo : string; // Text color to indicate info
 export const ColorTextInverse : string; // Text color to indicate inverse
 export const ColorTextLink : string; // Text color to indicate link
+export const ComponentAlertColorTitleDefault : string;
+export const ComponentAlertColorTitlePrimary : string;
+export const ComponentAlertColorTitleSecondary : string;
+export const ComponentAlertColorTitleDanger : string; // Base color for the danger color
+export const ComponentAlertColorTitleWarning : string; // Base color for the warning color
+export const ComponentAlertColorTitleSuccess : string; // Base color for the success color
+export const ComponentAlertColorTitleInfo : string; // Base color for the info color
+export const ComponentAlertColorContentDefault : string;
+export const ComponentAlertColorContentPrimary : string;
+export const ComponentAlertColorContentSecondary : string;
+export const ComponentAlertColorContentDanger : string; // Base color for the danger color
+export const ComponentAlertColorContentWarning : string; // Base color for the warning color
+export const ComponentAlertColorContentSuccess : string; // Base color for the success color
+export const ComponentAlertColorContentInfo : string; // Base color for the info color
+export const ComponentAlertColorBackgroundDefault : string;
+export const ComponentAlertColorBackgroundPrimary : string;
+export const ComponentAlertColorBackgroundSecondary : string;
+export const ComponentAlertColorBackgroundSuccess : string;
+export const ComponentAlertColorBackgroundInfo : string;
+export const ComponentAlertColorBackgroundWarning : string;
+export const ComponentAlertColorBackgroundDanger : string;
 export const ComponentButtonSelectedBackgroundDefault : string;
 export const ComponentButtonDisabledBackgroundDefault : string;
 export const ComponentButtonDisabledTextDefault : string;

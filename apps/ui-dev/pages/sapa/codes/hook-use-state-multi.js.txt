@@ -1,0 +1,11 @@
+function Main() {
+
+    const [text, setText] = useState("title");
+    const [content, setContent] = useState("content");
+    const [show, setShow] = useState(true)
+
+    return <div class={`${show ? "show" : ""}`}>
+        <span class="title">{text}</span>
+        <span class="content">{content}</span>
+    </div>
+}

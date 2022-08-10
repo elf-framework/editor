@@ -119,6 +119,26 @@ declare module "@elf-framework/ui" {
     wrap?: string;
   }
 
+  export type InputPropsType = {
+    type?: string;
+    value?: string;
+    placeholder?: string;
+    selected?: boolean;
+    checked?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+    required?: boolean;
+    maxLength?: number;
+    minLength?: number;
+    max?: number;
+    min?: number;
+    step?: number;
+    pattern?: string;
+    size?: number;
+    rows?: number;
+    cols?: number;
+  };
+
   export type DomEventType = {
     onFocus?: (event: KeyboardEvent) => void;
     onBlur?: (event: KeyboardEvent) => void;
@@ -640,6 +660,7 @@ declare module "@elf-framework/ui" {
     gap: number;
   };
   export interface FlexProps {
+    class?: string;
     stack?: boolean;
     wrap?: boolean;
     style?: FlexStyle & CommonStyle;
@@ -665,6 +686,7 @@ declare module "@elf-framework/ui" {
 
   export type GridTemplate = number | string;
   export interface GridProps {
+    class: string;
     columns?: GridTemplate | GridTemplate[];
     rows?: GridTemplate | GridTemplate[];
     style?: GridStyle & CommonStyle;
@@ -676,10 +698,12 @@ declare module "@elf-framework/ui" {
 
   export interface ViewProps {
     as?: string;
+    id?: string;
+    class?: string;
     style?: CommonStyle;
   }
   export class View extends UIElement {
-    props: ViewProps & CommonStyle & DomEventType;
+    props: ViewProps & CommonStyle & DomEventType & InputPropsType;
   }
 
   export type InputEditorStyle = {
@@ -997,4 +1021,35 @@ declare module "@elf-framework/ui" {
   export class Divider extends UIElement {
     props: DividerProps;
   }
+
+  interface AlertProps {
+    type: "default" | "primary" | "success" | "info" | "warning" | "danger";
+    title: ContentType;
+    content: ContentType;
+    style: CommonStyle;
+    closable: boolean;
+    delay?: number;
+    onShow?: () => void;
+    onHide?: () => void;
+  }
+  export class Alert extends UIElement {
+    props: AlertProps & DomEventType;
+    hide(): void;
+  }
+
+  /** call Alert with potal */
+  export function alert(arg: {
+    content?: ContentType;
+    title?: ContentType;
+    delay?: number;
+    style?: CommonStyle;
+    closable?: boolean;
+    onShow?: () => void;
+    onHide?: () => void;
+    options?:
+      | {
+          container: HTMLElement | string;
+        }
+      | unknown;
+  }): Alert;
 }

@@ -1,0 +1,1 @@
+<A key="value" key={value} />

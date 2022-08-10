@@ -38,6 +38,12 @@ const SVG_ELEMENTS = {
   link: true,
 };
 
+const SVG_ELEMENTS_LIST = {};
+Object.keys(SVG_ELEMENTS).forEach((key) => {
+  SVG_ELEMENTS_LIST[key.toLowerCase()] = true;
+  SVG_ELEMENTS_LIST[key.toUpperCase()] = true;
+});
+
 export function isSVG(tagName) {
   return !!SVG_ELEMENTS[tagName];
 }

@@ -72,29 +72,149 @@
         }
       },
       "primary": {
-        "base": {
+        "value": "{color.core.blue.4}",
+        "comment": "Base color for the primary color",
+        "filePath": "tokens/color/background.json",
+        "isSource": true,
+        "original": {
           "value": "{color.core.blue.4}",
-          "comment": "Base color for the primary color",
+          "comment": "Base color for the primary color"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "background",
+          "item": "primary"
+        },
+        "path": {
+          "0": "color",
+          "1": "background",
+          "2": "primary"
+        }
+      },
+      "secondary": {
+        "value": "{color.core.gray.4}",
+        "comment": "Base color for the secondary color",
+        "filePath": "tokens/color/background.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.core.gray.4}",
+          "comment": "Base color for the secondary color"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "background",
+          "item": "secondary"
+        },
+        "path": {
+          "0": "color",
+          "1": "background",
+          "2": "secondary"
+        }
+      },
+      "danger": {
+        "value": "{color.core.red.4}",
+        "comment": "Base color for the danger color",
+        "filePath": "tokens/color/background.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.core.red.4}",
+          "comment": "Base color for the danger color"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "background",
+          "item": "danger"
+        },
+        "path": {
+          "0": "color",
+          "1": "background",
+          "2": "danger"
+        }
+      },
+      "warning": {
+        "value": "{color.core.yellow.2}",
+        "comment": "Base color for the warning color",
+        "filePath": "tokens/color/background.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.core.yellow.2}",
+          "comment": "Base color for the warning color"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "background",
+          "item": "warning"
+        },
+        "path": {
+          "0": "color",
+          "1": "background",
+          "2": "warning"
+        }
+      },
+      "success": {
+        "value": "{color.core.green.4}",
+        "comment": "Base color for the success color",
+        "filePath": "tokens/color/background.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.core.green.4}",
+          "comment": "Base color for the success color"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "background",
+          "item": "success"
+        },
+        "path": {
+          "0": "color",
+          "1": "background",
+          "2": "success"
+        }
+      },
+      "info": {
+        "value": "{color.core.blue.2}",
+        "comment": "Base color for the info color",
+        "filePath": "tokens/color/background.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.core.blue.2}",
+          "comment": "Base color for the info color"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "background",
+          "item": "info"
+        },
+        "path": {
+          "0": "color",
+          "1": "background",
+          "2": "info"
+        }
+      },
+      "weak": {
+        "default": {
+          "value": "{color.core.white}",
+          "comment": "Background color that will match the current color scheme",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.blue.4}",
-            "comment": "Base color for the primary color"
+            "value": "{color.core.white}",
+            "comment": "Background color that will match the current color scheme"
           },
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "primary",
-            "subitem": "base"
+            "item": "weak",
+            "subitem": "default"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "primary",
-            "3": "base"
+            "2": "weak",
+            "3": "default"
           }
         },
-        "weak": {
+        "primary": {
           "value": "{color.core.blue.3}",
           "comment": "Weak color for the primary color",
           "filePath": "tokens/color/background.json",
@@ -106,41 +226,17 @@
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "primary",
-            "subitem": "weak"
+            "item": "weak",
+            "subitem": "primary"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "primary",
-            "3": "weak"
-          }
-        }
-      },
-      "secondary": {
-        "base": {
-          "value": "{color.core.gray.4}",
-          "comment": "Base color for the secondary color",
-          "filePath": "tokens/color/background.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.core.gray.4}",
-            "comment": "Base color for the secondary color"
-          },
-          "attributes": {
-            "category": "color",
-            "type": "background",
-            "item": "secondary",
-            "subitem": "base"
-          },
-          "path": {
-            "0": "color",
-            "1": "background",
-            "2": "secondary",
-            "3": "base"
+            "2": "weak",
+            "3": "primary"
           }
         },
-        "weak": {
+        "secondary": {
           "value": "{color.core.gray.3}",
           "comment": "Weak color for the secondary color",
           "filePath": "tokens/color/background.json",
@@ -152,41 +248,17 @@
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "secondary",
-            "subitem": "weak"
+            "item": "weak",
+            "subitem": "secondary"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "secondary",
-            "3": "weak"
-          }
-        }
-      },
-      "danger": {
-        "base": {
-          "value": "{color.core.red.4}",
-          "comment": "Base color for the danger color",
-          "filePath": "tokens/color/background.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.core.red.4}",
-            "comment": "Base color for the danger color"
-          },
-          "attributes": {
-            "category": "color",
-            "type": "background",
-            "item": "danger",
-            "subitem": "base"
-          },
-          "path": {
-            "0": "color",
-            "1": "background",
-            "2": "danger",
-            "3": "base"
+            "2": "weak",
+            "3": "secondary"
           }
         },
-        "weak": {
+        "danger": {
           "value": "{color.core.red.3}",
           "comment": "Weak color for the danger color",
           "filePath": "tokens/color/background.json",
@@ -198,41 +270,17 @@
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "danger",
-            "subitem": "weak"
+            "item": "weak",
+            "subitem": "danger"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "danger",
-            "3": "weak"
-          }
-        }
-      },
-      "warning": {
-        "base": {
-          "value": "{color.core.yellow.2}",
-          "comment": "Base color for the warning color",
-          "filePath": "tokens/color/background.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.core.yellow.2}",
-            "comment": "Base color for the warning color"
-          },
-          "attributes": {
-            "category": "color",
-            "type": "background",
-            "item": "warning",
-            "subitem": "base"
-          },
-          "path": {
-            "0": "color",
-            "1": "background",
-            "2": "warning",
-            "3": "base"
+            "2": "weak",
+            "3": "danger"
           }
         },
-        "weak": {
+        "warning": {
           "value": "{color.core.yellow.1}",
           "comment": "Weak color for the warning color",
           "filePath": "tokens/color/background.json",
@@ -244,41 +292,17 @@
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "warning",
-            "subitem": "weak"
+            "item": "weak",
+            "subitem": "warning"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "warning",
-            "3": "weak"
-          }
-        }
-      },
-      "success": {
-        "base": {
-          "value": "{color.core.green.4}",
-          "comment": "Base color for the success color",
-          "filePath": "tokens/color/background.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.core.green.4}",
-            "comment": "Base color for the success color"
-          },
-          "attributes": {
-            "category": "color",
-            "type": "background",
-            "item": "success",
-            "subitem": "base"
-          },
-          "path": {
-            "0": "color",
-            "1": "background",
-            "2": "success",
-            "3": "base"
+            "2": "weak",
+            "3": "warning"
           }
         },
-        "weak": {
+        "success": {
           "value": "{color.core.green.3}",
           "comment": "Weak color for the success color",
           "filePath": "tokens/color/background.json",
@@ -290,41 +314,17 @@
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "success",
-            "subitem": "weak"
+            "item": "weak",
+            "subitem": "success"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "success",
-            "3": "weak"
-          }
-        }
-      },
-      "info": {
-        "base": {
-          "value": "{color.core.blue.2}",
-          "comment": "Base color for the info color",
-          "filePath": "tokens/color/background.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.core.blue.2}",
-            "comment": "Base color for the info color"
-          },
-          "attributes": {
-            "category": "color",
-            "type": "background",
-            "item": "info",
-            "subitem": "base"
-          },
-          "path": {
-            "0": "color",
-            "1": "background",
-            "2": "info",
-            "3": "base"
+            "2": "weak",
+            "3": "success"
           }
         },
-        "weak": {
+        "info": {
           "value": "{color.core.blue.1}",
           "comment": "Weak color for the info color",
           "filePath": "tokens/color/background.json",
@@ -336,14 +336,14 @@
           "attributes": {
             "category": "color",
             "type": "background",
-            "item": "info",
-            "subitem": "weak"
+            "item": "weak",
+            "subitem": "info"
           },
           "path": {
             "0": "color",
             "1": "background",
-            "2": "info",
-            "3": "weak"
+            "2": "weak",
+            "3": "info"
           }
         }
       }
@@ -2640,6 +2640,494 @@
     }
   },
   "component": {
+    "alert": {
+      "color": {
+        "title": {
+          "default": {
+            "value": "{color.core.gray.9}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.9}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "default"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "default"
+            }
+          },
+          "primary": {
+            "value": "{color.core.blue.8}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.8}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "primary"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "primary"
+            }
+          },
+          "secondary": {
+            "value": "{color.core.gray.8}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.8}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "secondary"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "secondary"
+            }
+          },
+          "danger": {
+            "value": "{color.core.red.7}",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.red.7}",
+              "comment": "Base color for the danger color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "danger"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "danger"
+            }
+          },
+          "warning": {
+            "value": "{color.core.yellow.5}",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.yellow.5}",
+              "comment": "Base color for the warning color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "warning"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "warning"
+            }
+          },
+          "success": {
+            "value": "{color.core.green.7}",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.green.7}",
+              "comment": "Base color for the success color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "success"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "success"
+            }
+          },
+          "info": {
+            "value": "{color.core.blue.5}",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.5}",
+              "comment": "Base color for the info color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "title",
+              "state": "info"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "title",
+              "4": "info"
+            }
+          }
+        },
+        "content": {
+          "default": {
+            "value": "{color.core.gray.6}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.6}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "default"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "default"
+            }
+          },
+          "primary": {
+            "value": "{color.core.blue.1}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.1}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "primary"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "primary"
+            }
+          },
+          "secondary": {
+            "value": "{color.core.gray.1}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.1}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "secondary"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "secondary"
+            }
+          },
+          "danger": {
+            "value": "{color.core.red.1}",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.red.1}",
+              "comment": "Base color for the danger color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "danger"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "danger"
+            }
+          },
+          "warning": {
+            "value": "{color.core.white}",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.white}",
+              "comment": "Base color for the warning color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "warning"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "warning"
+            }
+          },
+          "success": {
+            "value": "{color.core.white}",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.white}",
+              "comment": "Base color for the success color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "success"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "success"
+            }
+          },
+          "info": {
+            "value": "{color.core.white}",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.white}",
+              "comment": "Base color for the info color"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "content",
+              "state": "info"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "content",
+              "4": "info"
+            }
+          }
+        },
+        "background": {
+          "default": {
+            "value": "{color.core.gray.1}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.1}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "default"
+            }
+          },
+          "primary": {
+            "value": "{color.background.primary}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.primary}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "primary"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "primary"
+            }
+          },
+          "secondary": {
+            "value": "{color.background.secondary}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.secondary}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "secondary"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "secondary"
+            }
+          },
+          "success": {
+            "value": "{color.background.success}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.success}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "success"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "success"
+            }
+          },
+          "info": {
+            "value": "{color.background.info}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.info}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "info"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "info"
+            }
+          },
+          "warning": {
+            "value": "{color.background.warning}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.warning}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "warning"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "warning"
+            }
+          },
+          "danger": {
+            "value": "{color.background.danger}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.danger}"
+            },
+            "attributes": {
+              "category": "component",
+              "type": "alert",
+              "item": "color",
+              "subitem": "background",
+              "state": "danger"
+            },
+            "path": {
+              "0": "component",
+              "1": "alert",
+              "2": "color",
+              "3": "background",
+              "4": "danger"
+            }
+          }
+        }
+      }
+    },
     "button": {
       "selected": {
         "background": {
@@ -2742,11 +3230,11 @@
             }
           },
           "primary": {
-            "value": "{color.background.primary.base}",
+            "value": "{color.background.primary}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.primary.base}"
+              "value": "{color.background.primary}"
             },
             "attributes": {
               "category": "component",
@@ -2764,11 +3252,11 @@
             }
           },
           "secondary": {
-            "value": "{color.background.secondary.base}",
+            "value": "{color.background.secondary}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.secondary.base}"
+              "value": "{color.background.secondary}"
             },
             "attributes": {
               "category": "component",
@@ -2786,11 +3274,11 @@
             }
           },
           "success": {
-            "value": "{color.background.success.base}",
+            "value": "{color.background.success}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.success.base}"
+              "value": "{color.background.success}"
             },
             "attributes": {
               "category": "component",
@@ -2808,11 +3296,11 @@
             }
           },
           "info": {
-            "value": "{color.background.info.base}",
+            "value": "{color.background.info}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.info.base}"
+              "value": "{color.background.info}"
             },
             "attributes": {
               "category": "component",
@@ -2830,11 +3318,11 @@
             }
           },
           "warning": {
-            "value": "{color.background.warning.base}",
+            "value": "{color.background.warning}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.warning.base}"
+              "value": "{color.background.warning}"
             },
             "attributes": {
               "category": "component",
@@ -2852,11 +3340,11 @@
             }
           },
           "danger": {
-            "value": "{color.background.danger.base}",
+            "value": "{color.background.danger}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.danger.base}"
+              "value": "{color.background.danger}"
             },
             "attributes": {
               "category": "component",
@@ -2898,11 +3386,11 @@
             }
           },
           "primary": {
-            "value": "{color.background.primary.base}",
+            "value": "{color.background.primary}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.primary.base}"
+              "value": "{color.background.primary}"
             },
             "attributes": {
               "category": "component",
@@ -2920,11 +3408,11 @@
             }
           },
           "secondary": {
-            "value": "{color.background.secondary.base}",
+            "value": "{color.background.secondary}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.secondary.base}"
+              "value": "{color.background.secondary}"
             },
             "attributes": {
               "category": "component",
@@ -2942,11 +3430,11 @@
             }
           },
           "success": {
-            "value": "{color.background.success.base}",
+            "value": "{color.background.success}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.success.base}"
+              "value": "{color.background.success}"
             },
             "attributes": {
               "category": "component",
@@ -2964,11 +3452,11 @@
             }
           },
           "info": {
-            "value": "{color.background.info.base}",
+            "value": "{color.background.info}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.info.base}"
+              "value": "{color.background.info}"
             },
             "attributes": {
               "category": "component",
@@ -2986,11 +3474,11 @@
             }
           },
           "warning": {
-            "value": "{color.background.warning.base}",
+            "value": "{color.background.warning}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.warning.base}"
+              "value": "{color.background.warning}"
             },
             "attributes": {
               "category": "component",
@@ -3008,11 +3496,11 @@
             }
           },
           "danger": {
-            "value": "{color.background.danger.base}",
+            "value": "{color.background.danger}",
             "filePath": "tokens/component/button.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.danger.base}"
+              "value": "{color.background.danger}"
             },
             "attributes": {
               "category": "component",
@@ -3128,11 +3616,11 @@
             }
           },
           "primary": {
-            "value": "{color.background.primary.base}",
+            "value": "{color.background.primary}",
             "filePath": "tokens/component/divider.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.primary.base}"
+              "value": "{color.background.primary}"
             },
             "attributes": {
               "category": "component",
@@ -3150,11 +3638,11 @@
             }
           },
           "secondary": {
-            "value": "{color.background.secondary.base}",
+            "value": "{color.background.secondary}",
             "filePath": "tokens/component/divider.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.secondary.base}"
+              "value": "{color.background.secondary}"
             },
             "attributes": {
               "category": "component",
@@ -3172,11 +3660,11 @@
             }
           },
           "success": {
-            "value": "{color.background.success.base}",
+            "value": "{color.background.success}",
             "filePath": "tokens/component/divider.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.success.base}"
+              "value": "{color.background.success}"
             },
             "attributes": {
               "category": "component",
@@ -3194,11 +3682,11 @@
             }
           },
           "info": {
-            "value": "{color.background.info.base}",
+            "value": "{color.background.info}",
             "filePath": "tokens/component/divider.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.info.base}"
+              "value": "{color.background.info}"
             },
             "attributes": {
               "category": "component",
@@ -3216,11 +3704,11 @@
             }
           },
           "warning": {
-            "value": "{color.background.warning.base}",
+            "value": "{color.background.warning}",
             "filePath": "tokens/component/divider.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.warning.base}"
+              "value": "{color.background.warning}"
             },
             "attributes": {
               "category": "component",
@@ -3238,11 +3726,11 @@
             }
           },
           "danger": {
-            "value": "{color.background.danger.base}",
+            "value": "{color.background.danger}",
             "filePath": "tokens/component/divider.json",
             "isSource": true,
             "original": {
-              "value": "{color.background.danger.base}"
+              "value": "{color.background.danger}"
             },
             "attributes": {
               "category": "component",
