@@ -1,5 +1,5 @@
 import { classnames, useEffect, useState } from "@elf-framework/sapa";
-import { Flex, View } from "@elf-framework/ui";
+import { Flex, Grid, VBox, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { pages } from "../constants/pages";
@@ -92,6 +92,24 @@ export function Layout(props) {
       </View>
       <View class="layout-content">
         <div style={{ margin: "0 auto", width, maxWidth }}>{content}</div>
+        <div class="layout-footer">
+          <Grid columns={[1, 1, 1]}>
+            <div>
+              <a href="https://elf-framework.com">ELF</a>
+            </div>
+
+            <div>
+              <VBox>
+                <a href="https://elf-framework.org/pages">Docs</a>
+                <a href="https://elf-framework.org/pages/sapa">Sapa</a>
+                <a href="https://elf-framework.org/pages/api">UI</a>
+                <a href="https://elf-framework.org/pages/api">Router</a>
+                <a href="https://elf-framework.org/pages/api">Icon</a>
+                <a href="https://elf-framework.org/pages/api">Design System</a>
+              </VBox>
+            </div>
+          </Grid>
+        </div>
       </View>
     </div>
   );

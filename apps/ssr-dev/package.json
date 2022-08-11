@@ -1,12 +1,13 @@
 {
-  "name": "ui-dev",
-  "version": "1.0.5",
+  "name": "ssr-dev",
+  "version": "1.0.6",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
     "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
-    "ui:dev": "bun run vite:dev",
+    "//ui:dev": "npm run vite:dev",
+    "ssr:dev": "npm run vite:dev",
     "//build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js",
     "vite:preview": "vite preview --config=vite.prod.config.js",

@@ -1,5 +1,19 @@
 # @elf-framework/sapa
 
+## 2.0.42
+
+### Patch Changes
+
+- support useRootContext for ssr
+
+## 2.0.41
+
+### Patch Changes
+
+- support hydrate for ssr
+  support context by root props
+  remove document object for ssr
+
 ## 2.0.39
 
 ### Patch Changes

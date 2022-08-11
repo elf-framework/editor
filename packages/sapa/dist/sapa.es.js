@@ -38,6 +38,7 @@ var __privateMethod = (obj, member, method) => {
 };
 var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
 const COMPONENT_INSTANCE = "__componentInstance";
+const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -1429,11 +1430,13 @@ class BaseStore {
     }
     return this.settings.get(key);
   }
-  set(key, value) {
+  set(key, value, hasChangeMessage = true) {
     const oldValue = this.settings.get(key);
     if (oldValue !== value) {
       this.settings.set(key, value);
-      this.sendMessage(this, key, value);
+      if (hasChangeMessage) {
+        this.sendMessage(this, key, value);
+      }
     }
   }
   init(key, value) {
@@ -2889,32 +2892,6 @@ function useRef(initialValue) {
 function useContext(context) {
   return getCurrentComponent().useContext(context);
 }
-function useStore(key) {
-  return getCurrentComponent().useStore(key);
-}
-function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
-  return getCurrentComponent().useSubscribe(
-    name,
-    callback,
-    debounceSecond,
-    throttleSecond,
-    isSelf
-  );
-}
-function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
-  return getCurrentComponent().useSelf(
-    name,
-    callback,
-    debounceSecond,
-    throttleSecond
-  );
-}
-function useEmit(name, ...args) {
-  return getCurrentComponent().emit(name, ...args);
-}
-function useTrigger(name, ...args) {
-  return getCurrentComponent().trigger(name, ...args);
-}
 function createContextProvider(context) {
   contextProviderList[context.id] = {
     context,
@@ -3012,6 +2989,35 @@ function runProviderSubscribe(provider) {
       callback(provider);
     });
   }
+}
+function useStore(key) {
+  return getCurrentComponent().useStore(key);
+}
+function useRootContext(key) {
+  return useStore(COMPONENT_ROOT_CONTEXT)[key];
+}
+function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+  return getCurrentComponent().useSubscribe(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond,
+    isSelf
+  );
+}
+function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+  return getCurrentComponent().useSelf(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond
+  );
+}
+function useEmit(name, ...args) {
+  return getCurrentComponent().emit(name, ...args);
+}
+function useTrigger(name, ...args) {
+  return getCurrentComponent().trigger(name, ...args);
 }
 class MagicHandler {
   constructor() {
@@ -3606,8 +3612,8 @@ reloadInstance_fn = function(instance, props) {
   instance._reload(props);
 };
 const _UIElement = class extends EventMachine {
-  constructor(opt, props = {}) {
-    super(opt, props);
+  constructor(opt, props = {}, state = {}) {
+    super(opt, props, state);
     __privateAdd(this, _storeInstance, void 0);
     if (props.store) {
       __privateSet(this, _storeInstance, props.store);
@@ -3618,6 +3624,12 @@ const _UIElement = class extends EventMachine {
     }
     this.created();
     this.initialize();
+    this.initializeContext(opt, props, state);
+  }
+  initializeContext(opt, props = {}) {
+    if (!opt) {
+      this.$store.init(COMPONENT_ROOT_CONTEXT, props);
+    }
   }
   currentContext() {
     return this.contexts[this.contexts.length - 1];
@@ -3862,12 +3874,30 @@ function isSVG(tagName) {
   return !!SVG_ELEMENTS[tagName];
 }
 const TAG_PREFIX = "<";
-const TEMP_DIV = Dom.create("div");
-const TEMP_TEXT = document.createTextNode("");
-const TEMP_COMMENT = document.createComment("");
+let TEMP_DIV;
+let TEMP_TEXT;
+let TEMP_COMMENT;
 let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
+function makeTempDiv() {
+  if (!TEMP_DIV) {
+    TEMP_DIV = Dom.create("div");
+  }
+  return TEMP_DIV;
+}
+function makeTempText() {
+  if (!TEMP_TEXT) {
+    TEMP_TEXT = document.createTextNode("");
+  }
+  return TEMP_TEXT;
+}
+function makeTempComment() {
+  if (!TEMP_COMMENT) {
+    TEMP_COMMENT = document.createComment("");
+  }
+  return TEMP_COMMENT;
+}
 function makeNativeDom(name) {
   if (!nativeDomCache[name]) {
     const el = isSVG(name) ? document.createElementNS("http://www.w3.org/2000/svg", name) : document.createElement(name);
@@ -3876,12 +3906,12 @@ function makeNativeDom(name) {
   return nativeDomCache[name].cloneNode(false);
 }
 function makeNativeTextDom(value) {
-  const text = TEMP_TEXT.cloneNode();
+  const text = makeTempText().cloneNode();
   text.textContent = value;
   return text;
 }
 function makeNativeCommentDom(value) {
-  const text = TEMP_COMMENT.cloneNode();
+  const text = makeTempComment().cloneNode();
   text.textContent = value;
   return text;
 }
@@ -3943,7 +3973,7 @@ function makeOneElement(html) {
   }
   if (!cache[html]) {
     cacheCount++;
-    cache[html] = TEMP_DIV.html(html).first.el;
+    cache[html] = makeTempDiv().html(html).first.el;
   }
   return cache[html].cloneNode(true);
 }
@@ -4439,6 +4469,23 @@ const start = (ElementClass, opt = {}) => {
   return app;
 };
 const render = start;
+const hydrate = (ElementClass, opt = {}) => {
+  const $container = Dom.create(opt.container || document.body);
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
+  const app = createComponentInstance(ElementClass, null, opt);
+  const $targetElement = $container.firstChild;
+  if ($targetElement) {
+    app.$el = Dom.create($targetElement.el);
+    app.render();
+  } else {
+    app.render($container);
+  }
+  registRootElementInstance(app, $container);
+  return app;
+};
 const potal = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
   if (ElementClass instanceof VNodeComponent) {
@@ -4525,4 +4572,4 @@ function createElementJsx(Component, props = {}, ...children2) {
 }
 const FragmentInstance = new Object();
 const HTMLComment = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentInstance, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, potal, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRenderCallback, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentInstance, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, hydrate, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, potal, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRenderCallback, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useRootContext, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };

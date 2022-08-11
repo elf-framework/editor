@@ -44,6 +44,33 @@ export const start = (ElementClass, opt = {}) => {
 export const render = start;
 
 /**
+ * hydrates the app with the given state
+ *
+ */
+export const hydrate = (ElementClass, opt = {}) => {
+  const $container = Dom.create(opt.container || document.body);
+
+  if (ElementClass instanceof VNode) {
+    const rootVNode = ElementClass;
+    ElementClass = () => rootVNode;
+  }
+
+  const app = createComponentInstance(ElementClass, null, opt);
+
+  const $targetElement = $container.firstChild;
+
+  if ($targetElement) {
+    app.$el = Dom.create($targetElement.el);
+    app.render();
+  } else {
+    app.render($container);
+  }
+  registRootElementInstance(app, $container);
+
+  return app;
+};
+
+/**
  * 특정 컴포넌트에 렌더링하기
  *
  */

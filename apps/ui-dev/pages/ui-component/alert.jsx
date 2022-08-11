@@ -56,6 +56,28 @@ function Main() {
           <Alert title={"여기서 잠깐! danger"} type="danger">
             Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
           </Alert>
+          <Alert title={"여기서 잠깐! weak-primary"} type="primary" weak={true}>
+            Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
+          </Alert>
+          <Alert
+            title={"여기서 잠깐! weak-secondary"}
+            type="secondary"
+            weak={true}
+          >
+            Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
+          </Alert>
+          <Alert title={"여기서 잠깐! weak-success"} type="success" weak={true}>
+            Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
+          </Alert>
+          <Alert title={"여기서 잠깐! weak-warning"} type="warning" weak={true}>
+            Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
+          </Alert>
+          <Alert title={"여기서 잠깐! weak-info"} type="info" weak={true}>
+            Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
+          </Alert>
+          <Alert title={"여기서 잠깐! weak-danger"} type="danger" weak={true}>
+            Sapa 는 리액트와 비슷하지만 html 태그의 기본 문법으로 작성합니다.
+          </Alert>
         </Flex>
       </View>
     </Layout>

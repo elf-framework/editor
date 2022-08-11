@@ -166,17 +166,6 @@ export function retriveElement(className) {
  * @param {UIElement} instance
  */
 export function registRootElementInstance(instance, containerElement) {
-  // if (instance) {
-  //   // 등록 전에 사용이 완료된 instance 는 리스트에서 삭제
-  //   const lastInstance = getRootElementInstanceList().find((it) => {
-  //     console.log("rootInstance", this?.$el?.el?.__component, it);
-  //     return it.$el.el.__component !== it;
-  //   });
-  //   if (lastInstance) {
-  //     removeRootElementInstance(lastInstance);
-  //   }
-  // }
-
   __rootInstance.add(instance);
 
   // 기존에 있던 root instance 는 지운다.

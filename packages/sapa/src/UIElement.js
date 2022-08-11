@@ -1,4 +1,5 @@
 import { BaseStore } from "./BaseStore";
+import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
 import { EventMachine } from "./EventMachine";
 import { uuidShort } from "./functions/uuid";
 
@@ -11,8 +12,8 @@ import { uuidShort } from "./functions/uuid";
 export class UIElement extends EventMachine {
   #storeInstance;
 
-  constructor(opt, props = {}) {
-    super(opt, props);
+  constructor(opt, props = {}, state = {}) {
+    super(opt, props, state);
 
     // messaging store 설정
     if (props.store) {
@@ -27,8 +28,15 @@ export class UIElement extends EventMachine {
     this.created();
 
     this.initialize();
-  }
 
+    this.initializeContext(opt, props, state);
+  }
+  initializeContext(opt, props = {}) {
+    if (!opt) {
+      // context 객체 설정, root 의 옵션을 context 로 설정
+      this.$store.init(COMPONENT_ROOT_CONTEXT, props);
+    }
+  }
   currentContext() {
     return this.contexts[this.contexts.length - 1];
   }

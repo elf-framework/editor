@@ -9,14 +9,13 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel --profile",
-    "blank:dev": "turbo run blank:dev --parallel",
+    "ssr:dev": "turbo run ssr:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
     "ui:dev": "turbo run ui:dev --parallel",
     "ui-react:dev": "turbo run ui-react:dev --parallel",
     "editor:dev": "turbo run editor:dev --parallel",
     "editor:profile": "turbo run build --parallel --profile",
     "editor:graph": "turbo run build --graph=my-graph.html",
-    "sapa:release": "turbo run sapa:release --parallel",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "npm run build && changeset publish",
@@ -27,6 +26,7 @@
     "@changesets/changelog-git": "^0.1.11",
     "@changesets/changelog-github": "^0.4.5",
     "eslint": "^8.18.0",
+    "part-regex": "^0.1.2",
     "prettier": "latest",
     "turbo": "latest"
   },

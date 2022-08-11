@@ -1028,6 +1028,7 @@ declare module "@elf-framework/ui" {
     content: ContentType;
     style: CommonStyle;
     closable: boolean;
+    weak?: boolean;
     delay?: number;
     onShow?: () => void;
     onHide?: () => void;

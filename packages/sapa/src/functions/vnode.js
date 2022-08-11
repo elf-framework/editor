@@ -8,12 +8,36 @@ import { getModule, variable } from "./registElement";
 import { isSVG } from "./svg";
 
 const TAG_PREFIX = "<";
-const TEMP_DIV = Dom.create("div");
-const TEMP_TEXT = document.createTextNode("");
-const TEMP_COMMENT = document.createComment("");
+let TEMP_DIV;
+let TEMP_TEXT;
+let TEMP_COMMENT;
 let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
+
+function makeTempDiv() {
+  if (!TEMP_DIV) {
+    TEMP_DIV = Dom.create("div");
+  }
+
+  return TEMP_DIV;
+}
+
+function makeTempText() {
+  if (!TEMP_TEXT) {
+    TEMP_TEXT = document.createTextNode("");
+  }
+
+  return TEMP_TEXT;
+}
+
+function makeTempComment() {
+  if (!TEMP_COMMENT) {
+    TEMP_COMMENT = document.createComment("");
+  }
+
+  return TEMP_COMMENT;
+}
 
 export function makeNativeDom(name) {
   if (!nativeDomCache[name]) {
@@ -28,13 +52,13 @@ export function makeNativeDom(name) {
 }
 
 export function makeNativeTextDom(value) {
-  const text = TEMP_TEXT.cloneNode();
+  const text = makeTempText().cloneNode();
   text.textContent = value;
   return text;
 }
 
 export function makeNativeCommentDom(value) {
-  const text = TEMP_COMMENT.cloneNode();
+  const text = makeTempComment().cloneNode();
   text.textContent = value;
   return text;
 }
@@ -116,7 +140,7 @@ export function makeOneElement(html) {
 
   if (!cache[html]) {
     cacheCount++;
-    cache[html] = TEMP_DIV.html(html).first.el;
+    cache[html] = makeTempDiv().html(html).first.el;
   }
 
   return cache[html].cloneNode(true);

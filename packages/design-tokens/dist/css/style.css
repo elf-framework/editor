@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Wed, 10 Aug 2022 12:21:59 GMT
+ * Generated on Thu, 11 Aug 2022 12:56:28 GMT
  */
 
 
@@ -27,7 +27,7 @@
 };
 
 .color-background-success {
-  background-color: #2da44e;
+  background-color: #5cb33b;
 };
 
 .color-background-info {
@@ -55,7 +55,7 @@
 };
 
 .color-background-weak-success {
-  background-color: #4ac26b;
+  background-color: #8cc760;
 };
 
 .color-background-weak-info {
@@ -83,7 +83,7 @@
 };
 
 .color-border-success {
-  border-color: #2da44e;
+  border-color: #5cb33b;
 };
 
 .color-border-info {
@@ -111,7 +111,7 @@
 };
 
 .color-text-success {
-  color: #2da44e;
+  color: #5cb33b;
 };
 
 .color-text-info {

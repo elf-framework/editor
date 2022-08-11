@@ -1,6 +1,6 @@
 .elf--divider {
 
-    --elf--divider-color: var(--component-divider-color-border-default);
+    --elf--divider-color: var(--divider-color-border-default);
     --elf--divider-margin: 10px 0;
 
     border-top: 1px solid;
@@ -8,27 +8,27 @@
     margin: var(--elf--divider-margin);
 
     &.primary {
-        --elf--divider-color: var(--component-divider-color-border-primary);
+        --elf--divider-color: var(--divider-color-border-primary);
     }
 
     &.secondary {
-        --elf--divider-color: var(--component-divider-color-border-secondary);
+        --elf--divider-color: var(--divider-color-border-secondary);
     }
 
     &.success {
-        --elf--divider-color: var(--component-divider-color-border-success);
+        --elf--divider-color: var(--divider-color-border-success);
     }
 
     &.warning {
-        --elf--divider-color: var(--component-divider-color-border-warning);
+        --elf--divider-color: var(--divider-color-border-warning);
     }
 
     &.danger {
-        --elf--divider-color: var(--component-divider-color-border-danger);
+        --elf--divider-color: var(--divider-color-border-danger);
     }
 
     &.info {
-        --elf--divider-color: var(--component-divider-color-border-info);
+        --elf--divider-color: var(--divider-color-border-info);
     }
 
 

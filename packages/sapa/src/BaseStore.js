@@ -30,12 +30,15 @@ export class BaseStore {
     return this.settings.get(key);
   }
 
-  set(key, value) {
+  set(key, value, hasChangeMessage = true) {
     const oldValue = this.settings.get(key);
 
     if (oldValue !== value) {
       this.settings.set(key, value);
-      this.sendMessage(this, key, value);
+
+      if (hasChangeMessage) {
+        this.sendMessage(this, key, value);
+      }
     }
   }
 

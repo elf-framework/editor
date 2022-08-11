@@ -88,7 +88,7 @@ class Alert extends UIElement {
       content = "",
       style: style2 = {},
       closable = false,
-      onClose = void 0,
+      weak = false,
       delay = 0,
       ...extrProps
     } = this.props;
@@ -101,7 +101,7 @@ class Alert extends UIElement {
       [setLocalDelay]
     );
     const styleObject = {
-      class: classnames(["elf--alert", { [type]: true }, { hide }]),
+      class: classnames(["elf--alert", { [type]: true, weak }, { hide }]),
       style: {
         ...propertyMap(style2, cssProperties$r),
         ...{

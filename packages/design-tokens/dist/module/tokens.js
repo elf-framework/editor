@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 10 Aug 2022 12:21:57 GMT
+ * Generated on Thu, 11 Aug 2022 12:56:26 GMT
  */
 
 module.exports = {
@@ -165,7 +165,7 @@ module.exports = {
         ]
       },
       "success": {
-        "value": "#2da44e",
+        "value": "#5cb33b",
         "comment": "Base color for the success color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
@@ -323,7 +323,7 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#4ac26b",
+          "value": "#8cc760",
           "comment": "Weak color for the success color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
@@ -477,7 +477,7 @@ module.exports = {
         ]
       },
       "success": {
-        "value": "#2da44e",
+        "value": "#5cb33b",
         "comment": "Base color for the success color",
         "filePath": "tokens/color/border.json",
         "isSource": true,
@@ -597,7 +597,7 @@ module.exports = {
         ]
       },
       "success": {
-        "value": "#2da44e",
+        "value": "#5cb33b",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
@@ -1274,11 +1274,11 @@ module.exports = {
       },
       "green": {
         "0": {
-          "value": "#dafbe1",
+          "value": "#f0ffd9",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#dafbe1"
+            "value": "#f0ffd9"
           },
           "name": "ColorCoreGreen0",
           "attributes": {
@@ -1295,11 +1295,11 @@ module.exports = {
           ]
         },
         "1": {
-          "value": "#aceebb",
+          "value": "#d9e9c0",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#aceebb"
+            "value": "#d9e9c0"
           },
           "name": "ColorCoreGreen1",
           "attributes": {
@@ -1316,11 +1316,11 @@ module.exports = {
           ]
         },
         "2": {
-          "value": "#6fdd8b",
+          "value": "#b8d991",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#6fdd8b"
+            "value": "#b8d991"
           },
           "name": "ColorCoreGreen2",
           "attributes": {
@@ -1337,11 +1337,11 @@ module.exports = {
           ]
         },
         "3": {
-          "value": "#4ac26b",
+          "value": "#8cc760",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#4ac26b"
+            "value": "#8cc760"
           },
           "name": "ColorCoreGreen3",
           "attributes": {
@@ -1358,11 +1358,11 @@ module.exports = {
           ]
         },
         "4": {
-          "value": "#2da44e",
+          "value": "#5cb33b",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#2da44e"
+            "value": "#5cb33b"
           },
           "name": "ColorCoreGreen4",
           "attributes": {
@@ -1379,11 +1379,11 @@ module.exports = {
           ]
         },
         "5": {
-          "value": "#1a7f37",
+          "value": "#3a9f1f",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#1a7f37"
+            "value": "#3a9f1f"
           },
           "name": "ColorCoreGreen5",
           "attributes": {
@@ -1400,11 +1400,11 @@ module.exports = {
           ]
         },
         "6": {
-          "value": "#116329",
+          "value": "#1a7c0d",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#116329"
+            "value": "#1a7c0d"
           },
           "name": "ColorCoreGreen6",
           "attributes": {
@@ -1421,11 +1421,11 @@ module.exports = {
           ]
         },
         "7": {
-          "value": "#044f1e",
+          "value": "#0a5a0a",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#044f1e"
+            "value": "#0a5a0a"
           },
           "name": "ColorCoreGreen7",
           "attributes": {
@@ -1442,11 +1442,11 @@ module.exports = {
           ]
         },
         "8": {
-          "value": "#003d16",
+          "value": "#004c04",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#003d16"
+            "value": "#004c04"
           },
           "name": "ColorCoreGreen8",
           "attributes": {
@@ -1463,11 +1463,11 @@ module.exports = {
           ]
         },
         "9": {
-          "value": "#002d11",
+          "value": "#003a02",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#002d11"
+            "value": "#003a02"
           },
           "name": "ColorCoreGreen9",
           "attributes": {
@@ -2690,7 +2690,7 @@ module.exports = {
         ]
       },
       "success": {
-        "value": "#2da44e",
+        "value": "#5cb33b",
         "comment": "Text color to indicate success",
         "filePath": "tokens/color/text.json",
         "isSource": true,
@@ -2775,151 +2775,634 @@ module.exports = {
       }
     }
   },
-  "component": {
-    "alert": {
-      "color": {
-        "title": {
+  "alert": {
+    "color": {
+      "title": {
+        "default": {
+          "value": "#24292f",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.9.value}"
+          },
+          "name": "AlertColorTitleDefault",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "default"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#0a3069",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.blue.8.value}"
+          },
+          "name": "AlertColorTitlePrimary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "primary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#32383f",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.8.value}"
+          },
+          "name": "AlertColorTitleSecondary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "secondary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "secondary"
+          ]
+        },
+        "danger": {
+          "value": "#82071e",
+          "comment": "Base color for the danger color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.red.7.value}",
+            "comment": "Base color for the danger color"
+          },
+          "name": "AlertColorTitleDanger",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "danger"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "danger"
+          ]
+        },
+        "warning": {
+          "value": "#9a6700",
+          "comment": "Base color for the warning color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.yellow.5.value}",
+            "comment": "Base color for the warning color"
+          },
+          "name": "AlertColorTitleWarning",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "warning"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "warning"
+          ]
+        },
+        "success": {
+          "value": "#0a5a0a",
+          "comment": "Base color for the success color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.green.7.value}",
+            "comment": "Base color for the success color"
+          },
+          "name": "AlertColorTitleSuccess",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "success"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#0969da",
+          "comment": "Base color for the info color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.blue.5.value}",
+            "comment": "Base color for the info color"
+          },
+          "name": "AlertColorTitleInfo",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "info"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "info"
+          ]
+        },
+        "weak": {
           "default": {
-            "value": "#24292f",
+            "value": "#8c959f",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.9.value}"
+              "value": "{color.core.gray.4.value}"
             },
-            "name": "ComponentAlertColorTitleDefault",
+            "name": "AlertColorTitleWeakDefault",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "default"
             },
             "path": [
-              "component",
               "alert",
               "color",
               "title",
+              "weak",
               "default"
             ]
           },
           "primary": {
-            "value": "#0a3069",
+            "value": "#218bff",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.8.value}"
+              "value": "{color.core.blue.4.value}"
             },
-            "name": "ComponentAlertColorTitlePrimary",
+            "name": "AlertColorTitleWeakPrimary",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "primary"
             },
             "path": [
-              "component",
               "alert",
               "color",
               "title",
+              "weak",
               "primary"
             ]
           },
           "secondary": {
-            "value": "#32383f",
+            "value": "#8c959f",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.8.value}"
+              "value": "{color.core.gray.4.value}"
             },
-            "name": "ComponentAlertColorTitleSecondary",
+            "name": "AlertColorTitleWeakSecondary",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "secondary"
             },
             "path": [
-              "component",
               "alert",
               "color",
               "title",
+              "weak",
               "secondary"
             ]
           },
           "danger": {
-            "value": "#82071e",
+            "value": "#fa4549",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.red.7.value}",
+              "value": "{color.core.red.4.value}",
               "comment": "Base color for the danger color"
             },
-            "name": "ComponentAlertColorTitleDanger",
+            "name": "AlertColorTitleWeakDanger",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "danger"
             },
             "path": [
-              "component",
               "alert",
               "color",
               "title",
+              "weak",
               "danger"
             ]
           },
           "warning": {
-            "value": "#9a6700",
+            "value": "#e16f24",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.yellow.5.value}",
+              "value": "{color.core.orange.4.value}",
               "comment": "Base color for the warning color"
             },
-            "name": "ComponentAlertColorTitleWarning",
+            "name": "AlertColorTitleWeakWarning",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "warning"
             },
             "path": [
-              "component",
               "alert",
               "color",
               "title",
+              "weak",
               "warning"
             ]
           },
           "success": {
-            "value": "#044f1e",
+            "value": "#5cb33b",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.green.7.value}",
+              "value": "{color.core.green.4.value}",
               "comment": "Base color for the success color"
             },
-            "name": "ComponentAlertColorTitleSuccess",
+            "name": "AlertColorTitleWeakSuccess",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "success"
             },
             "path": [
-              "component",
               "alert",
               "color",
               "title",
+              "weak",
+              "success"
+            ]
+          },
+          "info": {
+            "value": "#218bff",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.4.value}",
+              "comment": "Base color for the info color"
+            },
+            "name": "AlertColorTitleWeakInfo",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "info"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "info"
+            ]
+          }
+        }
+      },
+      "content": {
+        "default": {
+          "value": "#57606a",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.6.value}"
+          },
+          "name": "AlertColorContentDefault",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "default"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#b6e3ff",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.blue.1.value}"
+          },
+          "name": "AlertColorContentPrimary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "primary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#eaeef2",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1.value}"
+          },
+          "name": "AlertColorContentSecondary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "secondary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "secondary"
+          ]
+        },
+        "danger": {
+          "value": "#ffcecb",
+          "comment": "Base color for the danger color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.red.1.value}",
+            "comment": "Base color for the danger color"
+          },
+          "name": "AlertColorContentDanger",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "danger"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "danger"
+          ]
+        },
+        "warning": {
+          "value": "#ffffff",
+          "comment": "Base color for the warning color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.white.value}",
+            "comment": "Base color for the warning color"
+          },
+          "name": "AlertColorContentWarning",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "warning"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "warning"
+          ]
+        },
+        "success": {
+          "value": "#ffffff",
+          "comment": "Base color for the success color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.white.value}",
+            "comment": "Base color for the success color"
+          },
+          "name": "AlertColorContentSuccess",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "success"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#ffffff",
+          "comment": "Base color for the info color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.white.value}",
+            "comment": "Base color for the info color"
+          },
+          "name": "AlertColorContentInfo",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "info"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "info"
+          ]
+        },
+        "weak": {
+          "default": {
+            "value": "#afb8c1",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.3.value}"
+            },
+            "name": "AlertColorContentWeakDefault",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "default"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "default"
+            ]
+          },
+          "primary": {
+            "value": "#54aeff",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.3.value}"
+            },
+            "name": "AlertColorContentWeakPrimary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "primary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "primary"
+            ]
+          },
+          "secondary": {
+            "value": "#afb8c1",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.3.value}"
+            },
+            "name": "AlertColorContentWeakSecondary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "secondary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "secondary"
+            ]
+          },
+          "danger": {
+            "value": "#ff8182",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.red.3.value}",
+              "comment": "Base color for the danger color"
+            },
+            "name": "AlertColorContentWeakDanger",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "danger"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "danger"
+            ]
+          },
+          "warning": {
+            "value": "#fb8f44",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.orange.3.value}",
+              "comment": "Base color for the warning color"
+            },
+            "name": "AlertColorContentWeakWarning",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "warning"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "warning"
+            ]
+          },
+          "success": {
+            "value": "#8cc760",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.green.3.value}",
+              "comment": "Base color for the success color"
+            },
+            "name": "AlertColorContentWeakSuccess",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "success"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
               "success"
             ]
           },
@@ -2932,44 +3415,193 @@ module.exports = {
               "value": "{color.core.blue.5.value}",
               "comment": "Base color for the info color"
             },
-            "name": "ComponentAlertColorTitleInfo",
+            "name": "AlertColorContentWeakInfo",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
               "state": "info"
             },
             "path": [
-              "component",
-              "alert",
-              "color",
-              "title",
-              "info"
-            ]
-          }
-        },
-        "content": {
-          "default": {
-            "value": "#57606a",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.6.value}"
-            },
-            "name": "ComponentAlertColorContentDefault",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
-              "state": "default"
-            },
-            "path": [
-              "component",
               "alert",
               "color",
               "content",
+              "weak",
+              "info"
+            ]
+          }
+        }
+      },
+      "background": {
+        "default": {
+          "value": "#eaeef2",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1.value}"
+          },
+          "name": "AlertColorBackgroundDefault",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#218bff",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary.value}"
+          },
+          "name": "AlertColorBackgroundPrimary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#8c959f",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary.value}"
+          },
+          "name": "AlertColorBackgroundSecondary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#5cb33b",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success.value}"
+          },
+          "name": "AlertColorBackgroundSuccess",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#80ccff",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info.value}"
+          },
+          "name": "AlertColorBackgroundInfo",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "info"
+          ]
+        },
+        "warning": {
+          "value": "#eac54f",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning.value}"
+          },
+          "name": "AlertColorBackgroundWarning",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "warning"
+          ]
+        },
+        "danger": {
+          "value": "#fa4549",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger.value}"
+          },
+          "name": "AlertColorBackgroundDanger",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "danger"
+          ]
+        },
+        "weak": {
+          "default": {
+            "value": "#eaeef2",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.1.value}"
+            },
+            "name": "AlertColorBackgroundWeakDefault",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "default"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
               "default"
             ]
           },
@@ -2980,19 +3612,19 @@ module.exports = {
             "original": {
               "value": "{color.core.blue.1.value}"
             },
-            "name": "ComponentAlertColorContentPrimary",
+            "name": "AlertColorBackgroundWeakPrimary",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "primary"
             },
             "path": [
-              "component",
               "alert",
               "color",
-              "content",
+              "background",
+              "weak",
               "primary"
             ]
           },
@@ -3003,19 +3635,19 @@ module.exports = {
             "original": {
               "value": "{color.core.gray.1.value}"
             },
-            "name": "ComponentAlertColorContentSecondary",
+            "name": "AlertColorBackgroundWeakSecondary",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "secondary"
             },
             "path": [
-              "component",
               "alert",
               "color",
-              "content",
+              "background",
+              "weak",
               "secondary"
             ]
           },
@@ -3028,909 +3660,692 @@ module.exports = {
               "value": "{color.core.red.1.value}",
               "comment": "Base color for the danger color"
             },
-            "name": "ComponentAlertColorContentDanger",
+            "name": "AlertColorBackgroundWeakDanger",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "danger"
             },
             "path": [
-              "component",
               "alert",
               "color",
-              "content",
+              "background",
+              "weak",
               "danger"
             ]
           },
           "warning": {
-            "value": "#ffffff",
+            "value": "#ffd8b5",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.white.value}",
+              "value": "{color.core.orange.1.value}",
               "comment": "Base color for the warning color"
             },
-            "name": "ComponentAlertColorContentWarning",
+            "name": "AlertColorBackgroundWeakWarning",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "warning"
             },
             "path": [
-              "component",
               "alert",
               "color",
-              "content",
+              "background",
+              "weak",
               "warning"
             ]
           },
           "success": {
-            "value": "#ffffff",
+            "value": "#d9e9c0",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.white.value}",
+              "value": "{color.core.green.1.value}",
               "comment": "Base color for the success color"
             },
-            "name": "ComponentAlertColorContentSuccess",
+            "name": "AlertColorBackgroundWeakSuccess",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "success"
             },
             "path": [
-              "component",
               "alert",
               "color",
-              "content",
+              "background",
+              "weak",
               "success"
             ]
           },
           "info": {
-            "value": "#ffffff",
+            "value": "#b6e3ff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.white.value}",
+              "value": "{color.core.blue.1.value}",
               "comment": "Base color for the info color"
             },
-            "name": "ComponentAlertColorContentInfo",
+            "name": "AlertColorBackgroundWeakInfo",
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "info"
             },
             "path": [
-              "component",
               "alert",
               "color",
-              "content",
+              "background",
+              "weak",
               "info"
-            ]
-          }
-        },
-        "background": {
-          "default": {
-            "value": "#eaeef2",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.1.value}"
-            },
-            "name": "ComponentAlertColorBackgroundDefault",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "default"
-            ]
-          },
-          "primary": {
-            "value": "#218bff",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary.value}"
-            },
-            "name": "ComponentAlertColorBackgroundPrimary",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "primary"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "primary"
-            ]
-          },
-          "secondary": {
-            "value": "#8c959f",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary.value}"
-            },
-            "name": "ComponentAlertColorBackgroundSecondary",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "secondary"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "secondary"
-            ]
-          },
-          "success": {
-            "value": "#2da44e",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success.value}"
-            },
-            "name": "ComponentAlertColorBackgroundSuccess",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "success"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "success"
-            ]
-          },
-          "info": {
-            "value": "#80ccff",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info.value}"
-            },
-            "name": "ComponentAlertColorBackgroundInfo",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "info"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "info"
-            ]
-          },
-          "warning": {
-            "value": "#eac54f",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning.value}"
-            },
-            "name": "ComponentAlertColorBackgroundWarning",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "warning"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "warning"
-            ]
-          },
-          "danger": {
-            "value": "#fa4549",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger.value}"
-            },
-            "name": "ComponentAlertColorBackgroundDanger",
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "danger"
-            },
-            "path": [
-              "component",
-              "alert",
-              "color",
-              "background",
-              "danger"
             ]
           }
         }
       }
-    },
-    "button": {
-      "selected": {
-        "background": {
-          "default": {
-            "value": "#d0d7de",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.2.value}"
-            },
-            "name": "ComponentButtonSelectedBackgroundDefault",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "selected",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "button",
-              "selected",
-              "background",
-              "default"
-            ]
-          }
-        }
-      },
-      "disabled": {
-        "background": {
-          "default": {
-            "value": "#eaeef2",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.1.value}"
-            },
-            "name": "ComponentButtonDisabledBackgroundDefault",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "disabled",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "button",
-              "disabled",
-              "background",
-              "default"
-            ]
-          }
-        },
-        "text": {
-          "default": {
-            "value": "#afb8c1",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.3.value}"
-            },
-            "name": "ComponentButtonDisabledTextDefault",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "disabled",
-              "subitem": "text",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "button",
-              "disabled",
-              "text",
-              "default"
-            ]
-          }
-        }
-      },
-      "color": {
-        "background": {
-          "default": {
-            "value": "#ffffff",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.default.value}"
-            },
-            "name": "ComponentButtonColorBackgroundDefault",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "default"
-            ]
+    }
+  },
+  "button": {
+    "selected": {
+      "background": {
+        "default": {
+          "value": "#d0d7de",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.2.value}"
           },
-          "primary": {
-            "value": "#218bff",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary.value}"
-            },
-            "name": "ComponentButtonColorBackgroundPrimary",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "primary"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "primary"
-            ]
+          "name": "ButtonSelectedBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "default"
           },
-          "secondary": {
-            "value": "#8c959f",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary.value}"
-            },
-            "name": "ComponentButtonColorBackgroundSecondary",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "secondary"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "secondary"
-            ]
-          },
-          "success": {
-            "value": "#2da44e",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success.value}"
-            },
-            "name": "ComponentButtonColorBackgroundSuccess",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "success"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "success"
-            ]
-          },
-          "info": {
-            "value": "#80ccff",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info.value}"
-            },
-            "name": "ComponentButtonColorBackgroundInfo",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "info"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "info"
-            ]
-          },
-          "warning": {
-            "value": "#eac54f",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning.value}"
-            },
-            "name": "ComponentButtonColorBackgroundWarning",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "warning"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "warning"
-            ]
-          },
-          "danger": {
-            "value": "#fa4549",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger.value}"
-            },
-            "name": "ComponentButtonColorBackgroundDanger",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "danger"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "background",
-              "danger"
-            ]
-          }
-        },
-        "border": {
-          "default": {
-            "value": "#1b1f24",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.black.value}"
-            },
-            "name": "ComponentButtonColorBorderDefault",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "default"
-            ]
-          },
-          "primary": {
-            "value": "#218bff",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary.value}"
-            },
-            "name": "ComponentButtonColorBorderPrimary",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "primary"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "primary"
-            ]
-          },
-          "secondary": {
-            "value": "#8c959f",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary.value}"
-            },
-            "name": "ComponentButtonColorBorderSecondary",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "secondary"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "secondary"
-            ]
-          },
-          "success": {
-            "value": "#2da44e",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success.value}"
-            },
-            "name": "ComponentButtonColorBorderSuccess",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "success"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "success"
-            ]
-          },
-          "info": {
-            "value": "#80ccff",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info.value}"
-            },
-            "name": "ComponentButtonColorBorderInfo",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "info"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "info"
-            ]
-          },
-          "warning": {
-            "value": "#eac54f",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning.value}"
-            },
-            "name": "ComponentButtonColorBorderWarning",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "warning"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "warning"
-            ]
-          },
-          "danger": {
-            "value": "#fa4549",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger.value}"
-            },
-            "name": "ComponentButtonColorBorderDanger",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "danger"
-            },
-            "path": [
-              "component",
-              "button",
-              "color",
-              "border",
-              "danger"
-            ]
-          }
-        }
-      },
-      "size": {
-        "padding": {
-          "small": {
-            "value": "5rem 6rem",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{size.base.65.value} {size.base.75.value}"
-            },
-            "name": "ComponentButtonSizePaddingSmall",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "size",
-              "subitem": "padding",
-              "state": "small"
-            },
-            "path": [
-              "component",
-              "button",
-              "size",
-              "padding",
-              "small"
-            ]
-          },
-          "medium": {
-            "value": "8rem 10rem",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{size.base.100.value} {size.base.125.value}"
-            },
-            "name": "ComponentButtonSizePaddingMedium",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "size",
-              "subitem": "padding",
-              "state": "medium"
-            },
-            "path": [
-              "component",
-              "button",
-              "size",
-              "padding",
-              "medium"
-            ]
-          },
-          "large": {
-            "value": "14rem 20rem",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{size.base.175.value} {size.base.250.value}"
-            },
-            "name": "ComponentButtonSizePaddingLarge",
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "size",
-              "subitem": "padding",
-              "state": "large"
-            },
-            "path": [
-              "component",
-              "button",
-              "size",
-              "padding",
-              "large"
-            ]
-          }
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "default"
+          ]
         }
       }
     },
-    "divider": {
-      "color": {
-        "border": {
-          "default": {
-            "value": "#eaeef2",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.1.value}"
-            },
-            "name": "ComponentDividerColorBorderDefault",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "default"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "default"
-            ]
+    "disabled": {
+      "background": {
+        "default": {
+          "value": "#eaeef2",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1.value}"
           },
-          "primary": {
-            "value": "#218bff",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary.value}"
-            },
-            "name": "ComponentDividerColorBorderPrimary",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "primary"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "primary"
-            ]
+          "name": "ButtonDisabledBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "background",
+            "subitem": "default"
           },
-          "secondary": {
-            "value": "#8c959f",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary.value}"
-            },
-            "name": "ComponentDividerColorBorderSecondary",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "secondary"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "secondary"
-            ]
+          "path": [
+            "button",
+            "disabled",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#afb8c1",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.3.value}"
           },
-          "success": {
-            "value": "#2da44e",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success.value}"
-            },
-            "name": "ComponentDividerColorBorderSuccess",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "success"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "success"
-            ]
+          "name": "ButtonDisabledTextDefault",
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "text",
+            "subitem": "default"
           },
-          "info": {
-            "value": "#80ccff",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info.value}"
-            },
-            "name": "ComponentDividerColorBorderInfo",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "info"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "info"
-            ]
+          "path": [
+            "button",
+            "disabled",
+            "text",
+            "default"
+          ]
+        }
+      }
+    },
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
           },
-          "warning": {
-            "value": "#eac54f",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning.value}"
-            },
-            "name": "ComponentDividerColorBorderWarning",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "warning"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "warning"
-            ]
+          "name": "ButtonColorBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
           },
-          "danger": {
-            "value": "#fa4549",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger.value}"
-            },
-            "name": "ComponentDividerColorBorderDanger",
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "danger"
-            },
-            "path": [
-              "component",
-              "divider",
-              "color",
-              "border",
-              "danger"
-            ]
-          }
+          "path": [
+            "button",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#218bff",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary.value}"
+          },
+          "name": "ButtonColorBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#8c959f",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary.value}"
+          },
+          "name": "ButtonColorBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#5cb33b",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success.value}"
+          },
+          "name": "ButtonColorBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#80ccff",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info.value}"
+          },
+          "name": "ButtonColorBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "info"
+          ]
+        },
+        "warning": {
+          "value": "#eac54f",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning.value}"
+          },
+          "name": "ButtonColorBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "warning"
+          ]
+        },
+        "danger": {
+          "value": "#fa4549",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger.value}"
+          },
+          "name": "ButtonColorBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "danger"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#1b1f24",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.black.value}"
+          },
+          "name": "ButtonColorBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#218bff",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary.value}"
+          },
+          "name": "ButtonColorBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#8c959f",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary.value}"
+          },
+          "name": "ButtonColorBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#5cb33b",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success.value}"
+          },
+          "name": "ButtonColorBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#80ccff",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info.value}"
+          },
+          "name": "ButtonColorBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "info"
+          ]
+        },
+        "warning": {
+          "value": "#eac54f",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning.value}"
+          },
+          "name": "ButtonColorBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "warning"
+          ]
+        },
+        "danger": {
+          "value": "#fa4549",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger.value}"
+          },
+          "name": "ButtonColorBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "danger"
+          ]
+        }
+      }
+    },
+    "size": {
+      "padding": {
+        "small": {
+          "value": "5rem 6rem",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{size.base.65.value} {size.base.75.value}"
+          },
+          "name": "ButtonSizePaddingSmall",
+          "attributes": {
+            "category": "button",
+            "type": "size",
+            "item": "padding",
+            "subitem": "small"
+          },
+          "path": [
+            "button",
+            "size",
+            "padding",
+            "small"
+          ]
+        },
+        "medium": {
+          "value": "8rem 10rem",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{size.base.100.value} {size.base.125.value}"
+          },
+          "name": "ButtonSizePaddingMedium",
+          "attributes": {
+            "category": "button",
+            "type": "size",
+            "item": "padding",
+            "subitem": "medium"
+          },
+          "path": [
+            "button",
+            "size",
+            "padding",
+            "medium"
+          ]
+        },
+        "large": {
+          "value": "14rem 20rem",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{size.base.175.value} {size.base.250.value}"
+          },
+          "name": "ButtonSizePaddingLarge",
+          "attributes": {
+            "category": "button",
+            "type": "size",
+            "item": "padding",
+            "subitem": "large"
+          },
+          "path": [
+            "button",
+            "size",
+            "padding",
+            "large"
+          ]
+        }
+      }
+    }
+  },
+  "divider": {
+    "color": {
+      "border": {
+        "default": {
+          "value": "#eaeef2",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1.value}"
+          },
+          "name": "DividerColorBorderDefault",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#218bff",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary.value}"
+          },
+          "name": "DividerColorBorderPrimary",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#8c959f",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary.value}"
+          },
+          "name": "DividerColorBorderSecondary",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#5cb33b",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success.value}"
+          },
+          "name": "DividerColorBorderSuccess",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#80ccff",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info.value}"
+          },
+          "name": "DividerColorBorderInfo",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "info"
+          ]
+        },
+        "warning": {
+          "value": "#eac54f",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning.value}"
+          },
+          "name": "DividerColorBorderWarning",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "warning"
+          ]
+        },
+        "danger": {
+          "value": "#fa4549",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger.value}"
+          },
+          "name": "DividerColorBorderDanger",
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "divider",
+            "color",
+            "border",
+            "danger"
+          ]
         }
       }
     }

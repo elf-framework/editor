@@ -1,12 +1,12 @@
 .elf--alert {
-  --elf--alert-border-color: var(--component-alert-color-border-default);
+  --elf--alert-border-color: var(--alert-color-border-default);
   --elf--alert-padding: 10px 20px;
   --elf--alert-font-size: var(--elf--font-size, 14px);
   --elf--alert-background-color: var(
-    --component-alert-color-background-default
+    --alert-color-background-default
   );
-  --elf--alert-title-color: var(--component-alert-color-title-default);
-  --elf--alert-content-color: var(--component-alert-color-content-default);
+  --elf--alert-title-color: var(--alert-color-title-default);
+  --elf--alert-content-color: var(--alert-color-content-default);
   --elf--alert-border-radius: 4px;
 
   // height: var(--elf--alert-height, 30px);
@@ -43,57 +43,117 @@
 
   &.primary {
     --elf--alert-background-color: var(
-      --component-alert-color-background-primary
+      --alert-color-background-primary
     );
-    --elf--alert-title-color: var(--component-alert-color-title-primary);
-    --elf--alert-content-color: var(--component-alert-color-content-primary);
+    --elf--alert-title-color: var(--alert-color-title-primary);
+    --elf--alert-content-color: var(--alert-color-content-primary);
     border-width: 0px;
+
+    &.weak {
+      --elf--alert-background-color: var(
+        --alert-color-background-weak-primary
+      );
+      --elf--alert-title-color: var(--alert-color-title-weak-primary);
+      --elf--alert-content-color: var(--alert-color-content-weak-primary);
+      border-width: 1px;
+      --elf--alert-border-color: var(--alert-color-title-weak-primary);
+    }
   }
 
   &.secondary {
     --elf--alert-background-color: var(
-      --component-alert-color-background-secondary
+      --alert-color-background-secondary
     );
-    --elf--alert-title-color: var(--component-alert-color-title-secondary);
-    --elf--alert-content-color: var(--component-alert-color-content-secondary);
+    --elf--alert-title-color: var(--alert-color-title-secondary);
+    --elf--alert-content-color: var(--alert-color-content-secondary);
 
     --elf--alert-color: white;
+
+    &.weak {
+      --elf--alert-background-color: var(
+        --alert-color-background-weak-secondary
+      );
+      --elf--alert-title-color: var(--alert-color-title-weak-secondary);
+      --elf--alert-content-color: var(--alert-color-content-weak-secondary);
+      border-width: 1px;
+      --elf--alert-border-color: var(--alert-color-title-weak-secondary);
+    }
   }
 
   &.success {
     --elf--alert-background-color: var(
-      --component-alert-color-background-success
+      --alert-color-background-success
     );
-    --elf--alert-title-color: var(--component-alert-color-title-success);    
-    --elf--alert-content-color: var(--component-alert-color-content-success);
+    --elf--alert-title-color: var(--alert-color-title-success);    
+    --elf--alert-content-color: var(--alert-color-content-success);
     border-width: 0px;
+
+    &.weak {
+      --elf--alert-background-color: var(
+        --alert-color-background-weak-success
+      );
+      --elf--alert-title-color: var(--alert-color-title-weak-success);
+      --elf--alert-content-color: var(--alert-color-content-weak-success);
+      border-width: 1px;
+      --elf--alert-border-color: var(--alert-color-title-weak-success);
+    }
   }
 
   &.danger {
     --elf--alert-background-color: var(
-      --component-alert-color-background-danger
+      --alert-color-background-danger
     );
-    --elf--alert-title-color: var(--component-alert-color-title-danger);     
-    --elf--alert-content-color: var(--component-alert-color-content-danger);
+    --elf--alert-title-color: var(--alert-color-title-danger);     
+    --elf--alert-content-color: var(--alert-color-content-danger);
     border-width: 0px;
+
+    &.weak {
+      --elf--alert-background-color: var(
+        --alert-color-background-weak-danger
+      );
+      --elf--alert-title-color: var(--alert-color-title-weak-danger);
+      --elf--alert-content-color: var(--alert-color-content-weak-danger);
+      border-width: 1px;
+      --elf--alert-border-color: var(--alert-color-title-weak-danger);
+    }
   }
 
   &.info {
     --elf--alert-background-color: var(
-      --component-alert-color-background-info
+      --alert-color-background-info
     );
-    --elf--alert-title-color: var(--component-alert-color-title-info);      
-    --elf--alert-content-color: var(--component-alert-color-content-info);
+    --elf--alert-title-color: var(--alert-color-title-info);      
+    --elf--alert-content-color: var(--alert-color-content-info);
     border-width: 0px;
+
+    &.weak {
+      --elf--alert-background-color: var(
+        --alert-color-background-weak-info
+      );
+      --elf--alert-title-color: var(--alert-color-title-weak-info);
+      --elf--alert-content-color: var(--alert-color-content-weak-info);
+      border-width: 1px;
+      --elf--alert-border-color: var(--alert-color-title-weak-info);
+    }
   }
 
   &.warning {
     --elf--alert-background-color: var(
-      --component-alert-color-background-warning
+      --alert-color-background-warning
     );
-    --elf--alert-title-color: var(--component-alert-color-title-warning);   
-    --elf--alert-content-color: var(--component-alert-color-content-warning); 
+    --elf--alert-title-color: var(--alert-color-title-warning);   
+    --elf--alert-content-color: var(--alert-color-content-warning); 
     --elf--alert-color: white;
     border-width: 0px;
+
+    &.weak {
+      --elf--alert-background-color: var(
+        --alert-color-background-weak-warning
+      );
+      --elf--alert-title-color: var(--alert-color-title-weak-warning);
+      --elf--alert-content-color: var(--alert-color-content-weak-warning);
+      border-width: 1px;
+      --elf--alert-border-color: var(--alert-color-title-weak-warning);
+    }
   }
 }
