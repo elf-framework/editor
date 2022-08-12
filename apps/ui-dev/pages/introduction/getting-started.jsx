@@ -1,12 +1,12 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { MainLayout } from "../../component/MainLayout";
 import "./getting-started.scss";
 
 function Main() {
   return (
-    <Layout maxWidth={1200}>
+    <MainLayout maxWidth={1200}>
       <div class="getting-started" style={{ padding: 20 }}>
         <h1>Getting Started</h1>
 
@@ -67,7 +67,7 @@ function Main() {
           </p>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 }
 

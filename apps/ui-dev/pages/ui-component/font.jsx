@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Flex } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <h1
         onClick={(e) => console.log(e)}
         style={{
@@ -26,6 +26,6 @@ start(function () {
         <div style="background-color: yellow;border: 1px solid black;">2</div>
         <div style="background-color: yellow;border: 1px solid black;">3</div>
       </Flex>
-    </Layout>
+    </UILayout>
   );
 });

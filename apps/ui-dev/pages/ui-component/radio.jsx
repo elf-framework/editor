@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Radio, RadioGroup } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   // this.state.value = 10;
@@ -14,7 +14,7 @@ start(function () {
   };
 
   return (
-    <Layout>
+    <UILayout>
       <div>
         <h1>Radio</h1>
         <div style="display: flex; flex-direction: column; align-items: center;">
@@ -120,6 +120,6 @@ start(function () {
           </RadioGroup>
         </div>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

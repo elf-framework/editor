@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function App() {
 }
 
 start(
-  <Layout>
+  <UILayout>
     <App />
-  </Layout>
+  </UILayout>
 );

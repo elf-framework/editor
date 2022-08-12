@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Flex, Grid, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { DesignLayout } from "../../component/DesignLayout";
 
 start(function () {
   return (
-    <Layout maxWidth={1200}>
+    <DesignLayout maxWidth={1200}>
       <div>
         <h1>Typography</h1>
         <Grid columns={1} gap={50} style={{ padding: "0px 50px" }}>
@@ -371,6 +371,6 @@ start(function () {
           </div>
         </Grid>
       </div>
-    </Layout>
+    </DesignLayout>
   );
 });

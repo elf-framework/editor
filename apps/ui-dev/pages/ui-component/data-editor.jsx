@@ -3,7 +3,7 @@ import { start, SUBSCRIBE, UIElement, useSubscribe } from "@elf-framework/sapa";
 import { DataEditor, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 class Sample extends UIElement {
   template() {
@@ -21,7 +21,7 @@ function App() {
   });
 
   return (
-    <Layout>
+    <UILayout>
       <View width={300}>
         <DataEditor
           data={() => ({
@@ -48,7 +48,7 @@ function App() {
         />
         <Sample />
       </View>
-    </Layout>
+    </UILayout>
   );
 }
 

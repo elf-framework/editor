@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 2.0.47
+
+### Patch Changes
+
+- fixed to call clear function from onUpdated event
+
+## 2.0.46
+
+### Patch Changes
+
+- remove comment
+
 ## 2.0.43
 
 ### Patch Changes

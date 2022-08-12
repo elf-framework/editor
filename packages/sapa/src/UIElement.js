@@ -160,19 +160,6 @@ export class UIElement extends EventMachine {
    *
    * 함수 내부에서 context 를 유지하기 때문에 this 로 instance 에 접근 할 수 있습니다.
    *
-   * @example
-   *
-   * ```js
-   * html`
-   *     <div onClick=${this.subscribe(() => {
-   *        console.log('click is fired');
-   *        console.log(this.source);
-   *     })}>
-   *        눌러주세요.
-   *     </div>
-   * `
-   * ```
-   *
    * @param {Function} callback subscribe 함수로 지정할 callback
    * @param {number} [debounceSecond=0] debounce 시간(ms)
    * @param {number} [throttleSecond=0] throttle 시간(ms)

@@ -1,7 +1,8 @@
 import { start } from "@elf-framework/sapa";
+import { Alert } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { SapaLayout } from "../../component/SapaLayout";
 import { Syntax } from "../../utils/Syntax";
 import appJsText from "./codes/app.js.txt?raw";
 import classJsText from "./codes/class.js.txt?raw";
@@ -11,7 +12,7 @@ import vnodeJsText from "./codes/vnode.js.txt?raw";
 
 function Main() {
   return (
-    <Layout>
+    <SapaLayout>
       <h1>Basic</h1>
       <p>Let's learn the basics of Sapa.</p>
       <p>Sapa was created to make UI creation with JavaScript easy.</p>
@@ -31,7 +32,7 @@ function Main() {
 
         <h2>2. Start</h2>
         <p>
-          Start the library.
+          Start to rendering.
           <pre>
             <code>{Syntax(startJsText)}</code>
           </pre>
@@ -52,6 +53,10 @@ function Main() {
           <pre>
             <code>{Syntax(startJsText)}</code>
           </pre>
+          <Alert type="info" weak={true}>
+            You can use <strong>render</strong> function instead of{" "}
+            <strong>start</strong>.
+          </Alert>
           <p>
             start is a function that takes a Sapa component as a parameter.
             <h3>VNode</h3>
@@ -80,7 +85,7 @@ function Main() {
 
         <p>이제 Sapa 를 시작 할 수 있게 되었어요.</p>
       </p>
-    </Layout>
+    </SapaLayout>
   );
 }
 

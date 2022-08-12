@@ -4,7 +4,7 @@ import { start } from "@elf-framework/sapa";
 import { Divider, Flex, Grid, VBox, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { DesignLayout } from "../../component/DesignLayout";
 
 function ColorSingleView({ color, text, css, style }) {
   return (
@@ -249,7 +249,7 @@ function ColorStatusList() {
 
 function Main() {
   return (
-    <Layout maxWidth={1200}>
+    <DesignLayout maxWidth={1200}>
       <div
         style={{
           padding: 20,
@@ -294,7 +294,7 @@ function Main() {
         <h1>Functions</h1>
         <ColorStatusList />
       </div>
-    </Layout>
+    </DesignLayout>
   );
 }
 

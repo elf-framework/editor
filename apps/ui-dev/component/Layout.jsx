@@ -1,15 +1,16 @@
 import { classnames, useEffect, useState } from "@elf-framework/sapa";
-import { Flex, Grid, VBox, View } from "@elf-framework/ui";
+import { Flex, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { pages } from "../constants/pages";
+import { Footer } from "./Footer";
 import "./Layout.scss";
+import { PageTools } from "./PageTools";
 
 function pageId(url) {
   return "link-" + url.replace(/\//g, "-");
 }
 
-function PageMenu() {
+function PageMenu({ menu = [] }) {
   const href = window.location.href;
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function PageMenu() {
 
   return (
     <View>
-      {pages.map((page) => {
+      {menu.map((page) => {
         if (typeof page === "string") {
           return <h1 class={classnames("page-title")}>{page}</h1>;
         } else {
@@ -44,7 +45,14 @@ function PageMenu() {
 }
 
 export function Layout(props) {
-  const { content, width, maxWidth = 900 } = props;
+  const {
+    content,
+    width,
+    maxWidth = 900,
+    menu = [],
+    version = "",
+    title = "",
+  } = props;
   const [scrollTop, setScrollTop] = useState(0);
 
   useEffect(() => {
@@ -72,44 +80,28 @@ export function Layout(props) {
           fixed: scrollTop > 100,
         })}
       >
-        <Flex
-          class="layout-logo"
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            borderRight: "1px solid #ececec",
-            borderBottom: "1px solid #ececec",
-            fontSize: 20,
-            fontWeight: 900,
-          }}
-        >
-          ELF
+        <Flex class="layout-logo">
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            {title}
+            <div class="version">
+              <small>{version}</small>
+            </div>
+          </div>
         </Flex>
-        <Flex class="layout-toolsr">Menus</Flex>
+        <Flex class="layout-tools">
+          <PageTools menu={menu} />
+        </Flex>
       </div>
       <View class="layout-menu">
-        <PageMenu />
+        <PageMenu menu={menu} />
       </View>
       <View class="layout-content">
         <div style={{ margin: "0 auto", width, maxWidth }}>{content}</div>
-        <div class="layout-footer">
-          <Grid columns={[1, 1, 1]}>
-            <div>
-              <a href="https://elf-framework.com">ELF</a>
-            </div>
-
-            <div>
-              <VBox>
-                <a href="https://elf-framework.org/pages">Docs</a>
-                <a href="https://elf-framework.org/pages/sapa">Sapa</a>
-                <a href="https://elf-framework.org/pages/api">UI</a>
-                <a href="https://elf-framework.org/pages/api">Router</a>
-                <a href="https://elf-framework.org/pages/api">Icon</a>
-                <a href="https://elf-framework.org/pages/api">Design System</a>
-              </VBox>
-            </div>
-          </Grid>
-        </div>
+        <Footer />
       </View>
     </div>
   );

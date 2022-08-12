@@ -3,10 +3,7 @@ const swcCore = require("@swc/core");
 const PLUGIN_NAME = "vite-plugin-sapa";
 const jsxRE = /\.[tj]sx$/;
 
-// console.log(swcCore);
-
 function getIdendifierName(ast) {
-  // console.log(ast);
   if (ast.type === "VariableDeclaration") {
     return ast.declarations?.map((it) => getIdendifierName(it));
   } else if (ast.type === "VariableDeclarator") {
@@ -51,7 +48,6 @@ function traverse(ast, options = {}) {
         type: "ExportDeclaration",
         names: getIdendifierName(ast.declaration),
       });
-      // console.log(ast.declaration);
       break;
     case "ExportNamedDeclaration":
       options.results.push({
@@ -68,7 +64,6 @@ function traverse(ast, options = {}) {
       });
       break;
     case "Module":
-      // console.log(ast.body);
       ast.body.forEach((it) => {
         traverse(it, options);
       });

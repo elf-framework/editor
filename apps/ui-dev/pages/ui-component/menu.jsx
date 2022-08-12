@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Button, Menu } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div>
         <Menu
           items={[
@@ -78,6 +78,6 @@ start(function () {
           }}
         />
       </div>
-    </Layout>
+    </UILayout>
   );
 });

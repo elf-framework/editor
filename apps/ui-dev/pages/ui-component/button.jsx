@@ -3,7 +3,7 @@ import { start } from "@elf-framework/sapa";
 import { Button, Flex, Grid, LinkButton } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 function ButtonOption({ title, description, renderer }) {
   return (
@@ -43,7 +43,7 @@ function ButtonView({ renderer, text }) {
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div
         style={{
           maxWidth: 900,
@@ -410,6 +410,6 @@ start(function () {
           />
         </div>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

@@ -190,7 +190,6 @@ export function getRootElementInstanceList() {
 export function renderRootElementInstanceList(isForce = false) {
   getRootElementInstanceList().forEach((instance) => {
     if (isForce) {
-      console.log("force render");
       instance.forceRender();
     } else {
       instance.render();
@@ -222,12 +221,7 @@ export function createHandlerInstance(context, localHanders = {}) {
 }
 
 export function registerModule(id, modules = {}) {
-  // console.log("registerModule", id, modules);
   if (!_modules[id]) {
-    // 처음 로드 된 것은 변하지 않는다.
-    // 개별 파일에서 import 를 직접적으로 한 것이기 때문에
-    // template 을 매번 생성 할 때마다 이전 함수 또는 클래스를 그대로 재활용 한다.
-    // 그 말은 신규 리소스와 이전 리소스가 하나 밖에 존재하지 않는 다는 이야기다.
     _modules[id] = { new: modules, old: modules };
 
     Object.keys(modules).forEach((key) => {
@@ -243,8 +237,6 @@ export function refreshModule(id, newModules) {
 
   Object.keys(newModules).forEach((key) => {
     _moduleMap.set(newModules[key], id);
-
-    console.log(newModules[key], newModules[key].__timestamp, id);
   });
 }
 

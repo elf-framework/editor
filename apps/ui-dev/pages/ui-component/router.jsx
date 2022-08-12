@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import { Route, Router, Switch } from "@elf-framework/sapa-router";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 function Default(props) {
   return (
@@ -44,7 +44,7 @@ start(function () {
   });
 
   return (
-    <Layout>
+    <UILayout>
       <Router target={this.state.target || "/"} forceUpdate={true}>
         <Switch>
           <Route path="/">
@@ -58,6 +58,6 @@ start(function () {
           </Route>
         </Switch>
       </Router>
-    </Layout>
+    </UILayout>
   );
 });

@@ -708,7 +708,8 @@ const MenuItemType = {
   GROUP: "group",
   MENU: "menu",
   ITEM: "item",
-  CUSTOM: "custom"
+  CUSTOM: "custom",
+  LINK: "link"
 };
 function makeMenuItem(items = [], rootClose) {
   return items.map((it, index2) => {
@@ -726,6 +727,12 @@ function makeMenuItem(items = [], rootClose) {
       });
     } else if (it.type === MenuItemType.CUSTOM) {
       return /* @__PURE__ */ createElementJsx(CustomMenuItem, {
+        ref,
+        ...it,
+        rootClose
+      });
+    } else if (it.type === MenuItemType.LINK) {
+      return /* @__PURE__ */ createElementJsx(LinkMenuItem, {
         ref,
         ...it,
         rootClose
@@ -752,7 +759,7 @@ function makeMenuItem(items = [], rootClose) {
 }
 function DividerMenuItem({ dashed = false }) {
   return /* @__PURE__ */ createElementJsx("li", {
-    class: "divider",
+    class: "elf--divider",
     dashed
   });
 }
@@ -760,6 +767,14 @@ function CustomMenuItem({ render, rootClose }) {
   return /* @__PURE__ */ createElementJsx("li", {
     class: "custom"
   }, render == null ? void 0 : render({ rootClose }));
+}
+function LinkMenuItem({ rootClose, title, link }) {
+  return /* @__PURE__ */ createElementJsx("li", {
+    class: "link"
+  }, /* @__PURE__ */ createElementJsx("a", {
+    href: link,
+    onClick: rootClose
+  }, title));
 }
 function GroupMenuItem({ title = "" }) {
   return /* @__PURE__ */ createElementJsx("li", {

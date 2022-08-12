@@ -9,7 +9,7 @@ import {
 // import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 import { MyContext, MyContextProvider } from "./context";
 import Sample from "./Sample";
 
@@ -35,7 +35,7 @@ function App() {
   });
 
   return (
-    <Layout>
+    <UILayout>
       <MyContextProvider value={value3}>
         <div>
           <MyContext.Consumer>
@@ -82,7 +82,7 @@ function App() {
           {/* </MyContextProvider> */}
         </div>
       </MyContextProvider>
-    </Layout>
+    </UILayout>
   );
 }
 

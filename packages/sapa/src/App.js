@@ -33,20 +33,8 @@ export const start = (ElementClass, opt = {}) => {
     // id 유지
     app.id = $targetElement.el[COMPONENT_INSTANCE].id;
     app.render();
-    console.log(
-      "update render",
-      app.$el.el,
-      app.id,
-      app.$el.el[COMPONENT_INSTANCE].id
-    );
   } else {
     app.render($container);
-    console.log(
-      "render",
-      app.$el.el,
-      app.id,
-      app.$el.el[COMPONENT_INSTANCE].id
-    );
   }
   registRootElementInstance(app, $container);
 

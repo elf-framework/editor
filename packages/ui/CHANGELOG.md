@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.0.48
+
+### Patch Changes
+
+- add link menu item for menu
+
 ## 2.0.38
 
 ### Patch Changes

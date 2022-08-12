@@ -261,7 +261,6 @@ export class EventMachine extends HookMachine {
 
     // isComponentChanged 가 있으면 새로고침한다.
     if (newVNode.isComponentChanged) {
-      console.log("new Component");
       return true;
     }
     // children 에 있는지 체크
@@ -321,7 +320,6 @@ export class EventMachine extends HookMachine {
     // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
     this.resetCurrentComponent();
     const template = this.template();
-
     if (isArray(template)) {
       throw new Error(
         [
@@ -333,7 +331,6 @@ export class EventMachine extends HookMachine {
         ].join("\n")
       );
     }
-
     if (this.$el) {
       if (template.type === VNodeType.FRAGMENT) {
         updateChildren(this.parentElement, template);
@@ -365,7 +362,6 @@ export class EventMachine extends HookMachine {
           this.runMounted();
         }
       }
-
       // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
       await this._afterLoad();
     }
@@ -587,8 +583,7 @@ export class EventMachine extends HookMachine {
       instance.onUpdated();
     }
 
-    // update 이후에 컴포넌트가 삭제된 경우는 비워둔다.
-    this.clear();
+    // TODO: 업데이트 할 때 이벤트를 다시 제어해야할까?
   }
 
   onDestroyed() {

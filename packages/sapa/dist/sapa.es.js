@@ -318,12 +318,6 @@ function updateChangedElement$1(parentElement, oldEl, newEl, i, options = {}) {
   const newNodeType = newEl.nodeType;
   if (oldNodeType === TEXT_NODE$1 && newNodeType !== TEXT_NODE$1) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
-    console.log(
-      "--------------- 6 -----------------",
-      parentElement,
-      oldEl,
-      newEl
-    );
     parentElement.removeChild(oldEl);
   } else if (oldNodeType !== TEXT_NODE$1 && newNodeType === TEXT_NODE$1) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
@@ -565,7 +559,6 @@ function getRootElementInstanceList() {
 function renderRootElementInstanceList(isForce = false) {
   getRootElementInstanceList().forEach((instance) => {
     if (isForce) {
-      console.log("force render");
       instance.forceRender();
     } else {
       instance.render();
@@ -606,7 +599,6 @@ function refreshModule(id, newModules) {
   _modules[id].new = newModules;
   Object.keys(newModules).forEach((key) => {
     _moduleMap.set(newModules[key], id);
-    console.log(newModules[key], newModules[key].__timestamp, id);
   });
 }
 function getModule(Component) {
@@ -2392,7 +2384,6 @@ const selfCheckMethods = {
 class DomEventHandler extends BaseHandler {
   initialize() {
     var _a, _b;
-    this.destroy();
     if (this._domEvents && this.context.notEventRedefine) {
       return;
     }
@@ -3286,7 +3277,6 @@ const _EventMachine = class extends HookMachine {
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
       const props = newVNode.props;
       if (newVNode.isComponentChanged) {
-        console.log("new Component");
         return true;
       }
       let targetInstance = this.getTargetInstance(oldEl);
@@ -3594,7 +3584,6 @@ const _EventMachine = class extends HookMachine {
     if (instance) {
       instance.onUpdated();
     }
-    this.clear();
   }
   onDestroyed() {
     var _a;
@@ -4474,20 +4463,8 @@ const start = (ElementClass, opt = {}) => {
     app.$el = Dom.create($targetElement.el);
     app.id = $targetElement.el[COMPONENT_INSTANCE].id;
     app.render();
-    console.log(
-      "update render",
-      app.$el.el,
-      app.id,
-      app.$el.el[COMPONENT_INSTANCE].id
-    );
   } else {
     app.render($container);
-    console.log(
-      "render",
-      app.$el.el,
-      app.id,
-      app.$el.el[COMPONENT_INSTANCE].id
-    );
   }
   registRootElementInstance(app, $container);
   return app;

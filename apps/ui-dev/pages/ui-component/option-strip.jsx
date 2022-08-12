@@ -3,11 +3,11 @@ import { start } from "@elf-framework/sapa";
 import { OptionStrip } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div>
         <div>
           <h2>Option Strip</h2>
@@ -39,6 +39,6 @@ start(function () {
           />
         </div>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

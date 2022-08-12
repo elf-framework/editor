@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/base-editor",
-  "version": "2.0.14",
+  "version": "2.0.45",
   "description": "Fantastic Editor library",
   "types": "./index.d.ts",
   "files": [
@@ -10,6 +10,7 @@
   "main": "./dist/base-editor.umd.js",
   "module": "./dist/base-editor.es.js",
   "exports": {
+    "./package.json": "./package.json",
     "./style.css": "./dist/index.css",
     ".": {
       "import": "./dist/base-editor.es.js",
@@ -59,11 +60,10 @@
     "url": "git+https://github.com/easylogic/editor.git"
   },
   "keywords": [
-    "CSS",
-    "CODE",
-    "Editor",
-    "Path",
-    "SVG"
+    "elf",
+    "framework",
+    "sapa",
+    "editor"
   ],
   "author": "easylogic",
   "license": "MIT",

@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 2.0.45
+
+### Patch Changes
+
+- update package.json
+
 ## 2.0.14
 
 ### Patch Changes

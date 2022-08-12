@@ -102,7 +102,6 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
  * @param {*} node2
  */
 function changed(node1, node2) {
-  // console.log(node1, node2);
   return (
     (node1.nodeType === TEXT_NODE && node1.textContent !== node2.textContent) ||
     node1.nodeName !== node2.nodeName
@@ -111,7 +110,6 @@ function changed(node1, node2) {
 
 function hasPassed(node1) {
   // // <!-- comment -->  형태의 주석일 때는 그냥 패스
-  // console.log(node1);
   if (node1.nodeType === COMMENT_NODE) {
     return true;
   }
@@ -155,12 +153,6 @@ function updateChangedElement(parentElement, oldEl, newEl, i, options = {}) {
   // node 가 같지 않으면 바꾸고, refClass 속성이 있으면 바꾸고
   if (oldNodeType === TEXT_NODE && newNodeType !== TEXT_NODE) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
-    console.log(
-      "--------------- 6 -----------------",
-      parentElement,
-      oldEl,
-      newEl
-    );
     parentElement.removeChild(oldEl);
   } else if (oldNodeType !== TEXT_NODE && newNodeType === TEXT_NODE) {
     parentElement.insertBefore(newEl.cloneNode(true), oldEl);
@@ -200,7 +192,6 @@ function updatePropertyAndChildren(
   }
 
   if (!oldEl.hasChildNodes() && !newEl.hasChildNodes()) {
-    // console.log(oldEl, newEl);
     return;
   }
 

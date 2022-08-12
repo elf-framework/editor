@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Button, VisualBell } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   const tools = [
@@ -11,7 +11,7 @@ start(function () {
   ];
 
   return (
-    <Layout>
+    <UILayout>
       <div>
         <VisualBell direction="top-left" tools={tools}>
           Hello World yellow 234
@@ -33,6 +33,6 @@ start(function () {
           tools={tools}
         />
       </div>
-    </Layout>
+    </UILayout>
   );
 });

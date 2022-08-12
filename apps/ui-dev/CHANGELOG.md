@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.6
+
+### Patch Changes
+
+- Support category layout
+
 ## 1.0.5
 
 ### Patch Changes

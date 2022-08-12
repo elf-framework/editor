@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Button, Dialog } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   const toggleVisible = this.createFunction("toggleVisible", () => {
@@ -12,7 +12,7 @@ start(function () {
   });
 
   return (
-    <Layout>
+    <UILayout>
       <button
         style={{
           "background-color": this.state.visible ? "red" : "yellow",
@@ -96,6 +96,6 @@ start(function () {
           </div>
         </Dialog>
       ) : undefined}
-    </Layout>
+    </UILayout>
   );
 });

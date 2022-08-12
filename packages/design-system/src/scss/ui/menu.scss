@@ -50,6 +50,7 @@
     top: var(--elf--menu-top);
     z-index: var(--elf--zindex);
     user-select: none;
+    text-align: left;
 
     &[data-direction="right"] {
         left: auto;
@@ -88,6 +89,10 @@
         position: relative;
         user-select: none;
 
+        > a {
+            color: white;
+        }
+
         &.custom {
             height: auto;
             min-height: var(--elf--menu-item-height);
@@ -97,7 +102,15 @@
             }
         }
 
-        &:hover:not(.divider):not(.custom):not([disabled]),
+        &.link {
+            display: block;
+            a {
+                display: block;
+                text-align: left;
+            }
+        }
+
+        &:hover:not(.elf--divider):not(.custom):not([disabled]),
         &.hover {
             background-color: var(--elf--primary-color);
 
@@ -156,7 +169,7 @@
             margin-bottom: 0px;
         }
 
-        &.divider {
+        &.elf--divider {
 
             height: 2px;
 

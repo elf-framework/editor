@@ -1,11 +1,11 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div
         style={{
           position: "absolute",
@@ -16,6 +16,6 @@ start(function () {
       >
         <PanZoom>Hello World yellow 234</PanZoom>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

@@ -3,7 +3,7 @@ import { start } from "@elf-framework/sapa";
 import { Button, Notification } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 function Tools() {
   return (
@@ -16,7 +16,7 @@ function Tools() {
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div>
         <Notification
           icon={<AddChartFilled />}
@@ -72,6 +72,6 @@ start(function () {
           tools={<Tools />}
         />
       </div>
-    </Layout>
+    </UILayout>
   );
 });

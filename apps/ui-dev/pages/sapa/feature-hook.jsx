@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { SapaLayout } from "../../component/SapaLayout";
 import { Syntax } from "../../utils/Syntax";
 import hookUseCallbackText from "./codes/hook-use-callback.js.txt?raw";
 import hookUseEffectDepNoneText from "./codes/hook-use-effect-dep-none.js.txt?raw";
@@ -12,7 +12,7 @@ import hookUseStateText from "./codes/hook-use-state.js.txt?raw";
 
 function Main() {
   return (
-    <Layout>
+    <SapaLayout>
       <h1>Hook</h1>
       <p>Sapa 는 React 와 비슷한 Hook 을 지원합니다.</p>
       <p>Hook 은 컴포넌트의 상태를 저장하고 사용하는 방법입니다.</p>
@@ -68,7 +68,7 @@ function Main() {
       <p>
         <code>{Syntax(hookUseMemoText)}</code>
       </p>
-    </Layout>
+    </SapaLayout>
   );
 }
 

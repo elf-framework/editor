@@ -19,6 +19,7 @@ const MenuItemType = {
   MENU: "menu",
   ITEM: "item",
   CUSTOM: "custom",
+  LINK: "link",
 };
 
 function makeMenuItem(items = [], rootClose) {
@@ -37,6 +38,8 @@ function makeMenuItem(items = [], rootClose) {
       );
     } else if (it.type === MenuItemType.CUSTOM) {
       return <CustomMenuItem ref={ref} {...it} rootClose={rootClose} />;
+    } else if (it.type === MenuItemType.LINK) {
+      return <LinkMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.GROUP) {
       return <GroupMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.DIVIDER) {
@@ -48,11 +51,21 @@ function makeMenuItem(items = [], rootClose) {
 }
 
 function DividerMenuItem({ dashed = false }) {
-  return <li class="divider" dashed={dashed} />;
+  return <li class="elf--divider" dashed={dashed} />;
 }
 
 function CustomMenuItem({ render, rootClose }) {
   return <li class="custom">{render?.({ rootClose })}</li>;
+}
+
+function LinkMenuItem({ rootClose, title, link }) {
+  return (
+    <li class="link">
+      <a href={link} onClick={rootClose}>
+        {title}
+      </a>
+    </li>
+  );
 }
 
 function GroupMenuItem({ title = "" }) {

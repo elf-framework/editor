@@ -284,11 +284,19 @@ declare module "@elf-framework/ui" {
       }
     | CustomMenuRenderFunctionType;
 
+  export type LinkMenuItemType = {
+    type: "link";
+    title: string;
+    link: string;
+    rootClose?: () => void;
+  };
+
   export type ItemType =
     | MenuItemType
     | GroupMenuItemType
     | DividerMenuItemType
     | CustomMenuItemType
+    | LinkMenuItemType
     | "-";
 
   interface MenuStyle {

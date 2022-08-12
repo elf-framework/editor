@@ -1,4 +1,13 @@
+html,body {
+    padding: 0px;
+    margin: 0px;
+}
+
 .layout {
+
+    --layout-menu-width: 300px;
+    --layout-header-height: 60px;
+
     display: block;
     position: absolute;
     top: 0;
@@ -10,11 +19,12 @@
         border-right: 1px solid #ececec;
         position: fixed;
         left: 0px;
-        width: 300px;
+        width: var(--layout-menu-width);
         bottom: 0px;
-        top: 40px;
+        top: var(--layout-header-height);
         overflow: auto;
         z-index: 1;
+        box-sizing: border-box;
     }
 
     .layout-header {
@@ -22,11 +32,12 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 40px;
+        height: var(--layout-header-height);
         background-color: #fff;
         border-bottom: 1px solid #ececec;
         display: grid;
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: var(--layout-menu-width) 1fr;
+        z-index: 1;
 
         &.fixed {
             position: fixed;
@@ -36,12 +47,19 @@
 
     .layout-content {
         position: relative;
-        padding-left: 300px;
-        padding-top: 40px;
+        padding-left: var(--layout-menu-width);
+        padding-top: var(--layout-header-height);
 
         > div {
             padding: 20px;
         }
+    }
+
+    .layout-logo {
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 900;
     }
 }
 
@@ -71,9 +89,17 @@
     border-top: 1px solid #ececec;
 }
 
+.version {
+    flex: none;
+    display: block;
+    font-size: 12px;
+    color: gray;
+}
+
 
 @media (max-width: 800px) { 
     .layout {
+        --layout-header-height: 48px;
         position: static;
         display: block;
         .layout-logo {
@@ -88,9 +114,9 @@
             right:0;
             top: 0;
             background-color: rgba(255, 255, 255, 0.5);
-            height: 40px;
+            height: var(--layout-header-height);
             align-items: center;
-            justify-content: flex-end;
+            // justify-content: flex-end;
         }
 
         .layout-menu {
@@ -99,6 +125,34 @@
 
         .layout-content {
             padding: 20px;
+            padding-top: var(--layout-header-height);
+        }
+    }
+}
+
+
+@media (max-width: 600px) {
+    .layout {
+        .layout-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 10px;
+            padding-right: 0px;
+            .layout-logo {
+                flex: none;
+
+                height: 100%;
+                display: inline-block;
+            }
+
+            .layout-tools {
+                flex: none; 
+                justify-content: flex-end;
+                width: 40px;
+                height: 100%;
+                text-align: right;
+            }
+
         }
     }
 }

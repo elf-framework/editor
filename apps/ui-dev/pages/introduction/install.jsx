@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Divider } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { MainLayout } from "../../component/MainLayout";
 import { Syntax } from "../../utils/Syntax";
 import npmText from "./codes/npm.txt?raw";
 import viteText from "./codes/vite.txt?raw";
@@ -11,7 +11,7 @@ import "./install.scss";
 
 function Main() {
   return (
-    <Layout maxWidth={1200}>
+    <MainLayout maxWidth={1200}>
       <div class="install" style={{ padding: 20 }}>
         <h1>Install</h1>
 
@@ -71,7 +71,7 @@ start(App);
           </code>
         </div>
       </div>
-    </Layout>
+    </MainLayout>
   );
 }
 

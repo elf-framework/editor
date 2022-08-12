@@ -3,7 +3,7 @@ import { start, useEffect } from "@elf-framework/sapa";
 import { Layer, VirtualScroll } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../component/UILayout";
 
 const selections = [];
 
@@ -94,7 +94,7 @@ start(function () {
   });
 
   return (
-    <Layout>
+    <UILayout>
       <div>
         <div style={{ width: 300, height: 500, position: "relative" }}>
           <VirtualScroll
@@ -113,6 +113,6 @@ start(function () {
           <div>2</div>
         </>
       </div>
-    </Layout>
+    </UILayout>
   );
 });
