@@ -106,6 +106,12 @@ import { registerModule, renderFromRoot } from "@elf-framework/sapa";
 ${code};
 if (import.meta.hot) {
   const TEMP = {${names.join(", ")} }
+
+  Object.keys(TEMP).forEach((key) => {
+    // unique key string
+    TEMP[key].__timestamp = Date.now();
+  })
+
   registerModule("${id}", TEMP);
 
   import.meta.hot.accept((m) => {

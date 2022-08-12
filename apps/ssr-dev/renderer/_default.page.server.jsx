@@ -6,10 +6,11 @@ export { render };
 export const passToClient = ["pageProps", "urlPathname", "routeParams"];
 
 async function render(pageContext) {
-  const { Page, pageProps } = pageContext;
+  const { Page, pageProps, routeParams } = pageContext;
 
   const pageHtml = await renderToHtml(<Page {...pageProps} />, {
     pageContext,
+    routeParams,
   });
 
   // See https://vite-plugin-ssr.com/head

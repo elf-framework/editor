@@ -212,6 +212,7 @@ export class EventMachine extends HookMachine {
   }
 
   #reloadInstance(instance, props) {
+    // 리로드 하기
     instance._reload(props);
   }
 
@@ -260,6 +261,7 @@ export class EventMachine extends HookMachine {
 
     // isComponentChanged 가 있으면 새로고침한다.
     if (newVNode.isComponentChanged) {
+      console.log("new Component");
       return true;
     }
     // children 에 있는지 체크
@@ -294,7 +296,7 @@ export class EventMachine extends HookMachine {
 
   async forceRender() {
     this.cleanHooks();
-    this.render();
+    this.render(null, true);
   }
 
   setParentElement(parentElement) {
@@ -345,6 +347,8 @@ export class EventMachine extends HookMachine {
         });
       }
 
+      // element 에 component 속성 설정
+      this.$el.el[COMPONENT_INSTANCE] = this;
       // this.prevTemplate = template;
       this.runUpdated();
     } else {
@@ -352,7 +356,8 @@ export class EventMachine extends HookMachine {
       this.$el = newDomElement;
       this.refs.$el = this.$el;
       // this.prevTemplate = template;
-
+      // element 에 component 속성 설정
+      this.$el.el[COMPONENT_INSTANCE] = this;
       if ($container) {
         // $container 의 자식이 아닐 때만 추가
         if ($container.hasChild(this.$el) === false) {
@@ -364,9 +369,6 @@ export class EventMachine extends HookMachine {
       // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
       await this._afterLoad();
     }
-
-    // element 에 component 속성 설정
-    this.$el.el[COMPONENT_INSTANCE] = this;
 
     return this;
   }

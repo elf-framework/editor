@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import sapa from "vite-plugin-sapa";
 import ssr from "vite-plugin-ssr/plugin";
 export default defineConfig({
   server: {
@@ -11,12 +12,11 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: [
-      "@elf-framework/design-tokens",
       "@elf-framework/sapa",
       "@elf-framework/ui",
       "@elf-framework/sapa-router",
       "@elf-framework/design-system",
     ],
   },
-  plugins: [ssr()],
+  plugins: [sapa(), ssr()],
 });

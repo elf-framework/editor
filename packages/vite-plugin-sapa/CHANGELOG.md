@@ -1,5 +1,11 @@
 # vite-plugin-sapa
 
+## 2.0.44
+
+### Patch Changes
+
+- fixed component refresh for hmr
+
 ## 2.0.33
 
 ### Patch Changes

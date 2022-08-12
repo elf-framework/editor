@@ -172,7 +172,6 @@ export function registRootElementInstance(instance, containerElement) {
   if (__rootInstanceMap.has(containerElement)) {
     removeRootElementInstance(__rootInstanceMap.get(containerElement));
   }
-
   __rootInstanceMap.set(containerElement, instance);
 }
 
@@ -191,6 +190,7 @@ export function getRootElementInstanceList() {
 export function renderRootElementInstanceList(isForce = false) {
   getRootElementInstanceList().forEach((instance) => {
     if (isForce) {
+      console.log("force render");
       instance.forceRender();
     } else {
       instance.render();
@@ -243,6 +243,8 @@ export function refreshModule(id, newModules) {
 
   Object.keys(newModules).forEach((key) => {
     _moduleMap.set(newModules[key], id);
+
+    console.log(newModules[key], newModules[key].__timestamp, id);
   });
 }
 
@@ -251,10 +253,20 @@ export function getModule(Component) {
   if (!id) {
     return Component;
   }
-
   const m = _modules[id];
   if (!m) {
     return Component;
+  }
+
+  // FIXED: function name is always same
+  const newModule = m.new[Component.name];
+
+  // Choose  new __timestamp than old __timestamp
+  if (
+    Component.__timestamp === newModule.__timestamp ||
+    Component.__timestamp !== newModule.__timestamp
+  ) {
+    return newModule;
   }
 
   // 새로운 모듈로 변경된 경우

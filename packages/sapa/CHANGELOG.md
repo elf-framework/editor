@@ -1,5 +1,12 @@
 # @elf-framework/sapa
 
+## 2.0.43
+
+### Patch Changes
+
+- fixed root Component element bug
+  fixed component refresh for hmr
+
 ## 2.0.42
 
 ### Patch Changes

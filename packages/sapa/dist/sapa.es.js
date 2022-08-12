@@ -565,6 +565,7 @@ function getRootElementInstanceList() {
 function renderRootElementInstanceList(isForce = false) {
   getRootElementInstanceList().forEach((instance) => {
     if (isForce) {
+      console.log("force render");
       instance.forceRender();
     } else {
       instance.render();
@@ -605,6 +606,7 @@ function refreshModule(id, newModules) {
   _modules[id].new = newModules;
   Object.keys(newModules).forEach((key) => {
     _moduleMap.set(newModules[key], id);
+    console.log(newModules[key], newModules[key].__timestamp, id);
   });
 }
 function getModule(Component) {
@@ -615,6 +617,10 @@ function getModule(Component) {
   const m = _modules[id];
   if (!m) {
     return Component;
+  }
+  const newModule = m.new[Component.name];
+  if (Component.__timestamp === newModule.__timestamp || Component.__timestamp !== newModule.__timestamp) {
+    return newModule;
   }
   const currentNewComponent = Object.values(m.new).find((it) => {
     return it === Component;
@@ -1861,7 +1867,11 @@ const patch = {
     }
   },
   replaceWith(oldEl, newVNode, options) {
+    const isRootElement = options.context.$el.el === oldEl;
     const objectElement = newVNode.makeElement(true, options).el;
+    if (isRootElement) {
+      options.context.$el.el = objectElement;
+    }
     oldEl.replaceWith(objectElement);
     newVNode.runMounted();
   },
@@ -3276,6 +3286,7 @@ const _EventMachine = class extends HookMachine {
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
       const props = newVNode.props;
       if (newVNode.isComponentChanged) {
+        console.log("new Component");
         return true;
       }
       let targetInstance = this.getTargetInstance(oldEl);
@@ -3403,7 +3414,7 @@ const _EventMachine = class extends HookMachine {
   }
   async forceRender() {
     this.cleanHooks();
-    this.render();
+    this.render(null, true);
   }
   setParentElement(parentElement) {
     this.parentElement = parentElement;
@@ -3441,11 +3452,13 @@ const _EventMachine = class extends HookMachine {
           registerChildComponent: this.registerChildComponent
         });
       }
+      this.$el.el[COMPONENT_INSTANCE] = this;
       this.runUpdated();
     } else {
       const newDomElement = this.parseMainTemplate(template);
       this.$el = newDomElement;
       this.refs.$el = this.$el;
+      this.$el.el[COMPONENT_INSTANCE] = this;
       if ($container) {
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);
@@ -3454,7 +3467,6 @@ const _EventMachine = class extends HookMachine {
       }
       await this._afterLoad();
     }
-    this.$el.el[COMPONENT_INSTANCE] = this;
     return this;
   }
   async renderToHtml() {
@@ -4462,8 +4474,20 @@ const start = (ElementClass, opt = {}) => {
     app.$el = Dom.create($targetElement.el);
     app.id = $targetElement.el[COMPONENT_INSTANCE].id;
     app.render();
+    console.log(
+      "update render",
+      app.$el.el,
+      app.id,
+      app.$el.el[COMPONENT_INSTANCE].id
+    );
   } else {
     app.render($container);
+    console.log(
+      "render",
+      app.$el.el,
+      app.id,
+      app.$el.el[COMPONENT_INSTANCE].id
+    );
   }
   registRootElementInstance(app, $container);
   return app;
@@ -4478,7 +4502,7 @@ const hydrate = (ElementClass, opt = {}) => {
   const app = createComponentInstance(ElementClass, null, opt);
   const $targetElement = $container.firstChild;
   if ($targetElement) {
-    app.$el = Dom.create($targetElement.el);
+    app.$el = $targetElement;
     app.render();
   } else {
     app.render($container);

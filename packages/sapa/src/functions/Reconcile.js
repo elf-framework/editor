@@ -82,7 +82,12 @@ const patch = {
   },
 
   replaceWith(oldEl, newVNode, options) {
+    const isRootElement = options.context.$el.el === oldEl;
     const objectElement = newVNode.makeElement(true, options).el;
+
+    if (isRootElement) {
+      options.context.$el.el = objectElement;
+    }
     oldEl.replaceWith(objectElement);
     newVNode.runMounted();
   },
