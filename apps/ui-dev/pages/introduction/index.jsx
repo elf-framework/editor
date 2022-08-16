@@ -9,7 +9,7 @@ function Main() {
   const CurrentLayout = LayoutManager.get(layout || "MainLayout");
 
   return (
-    <CurrentLayout maxWidth={1200}>
+    <CurrentLayout maxWidth={900}>
       <Index title={"blue"} />
     </CurrentLayout>
   );

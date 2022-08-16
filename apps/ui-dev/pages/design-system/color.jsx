@@ -249,7 +249,7 @@ function ColorStatusList() {
 
 function Main() {
   return (
-    <DesignLayout maxWidth={1200}>
+    <DesignLayout maxWidth={900}>
       <div
         style={{
           padding: 20,

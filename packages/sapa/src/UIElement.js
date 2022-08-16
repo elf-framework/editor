@@ -184,7 +184,7 @@ export class UIElement extends EventMachine {
   }
 
   static createFunctionElementInstance(
-    EventMachineComponent,
+    NewFunctionComponent,
     parentInstance,
     props,
     state = {}
@@ -201,15 +201,15 @@ export class UIElement extends EventMachine {
       }
 
       getFunctionComponent() {
-        return EventMachineComponent;
+        return NewFunctionComponent;
       }
 
       // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
       isInstanceOf(Component) {
-        return EventMachineComponent === Component;
+        return NewFunctionComponent === Component;
       }
       template() {
-        return EventMachineComponent.call(this, this.props);
+        return NewFunctionComponent.call(this, this.props);
       }
     }
 

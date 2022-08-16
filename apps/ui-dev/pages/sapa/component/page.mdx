@@ -1,0 +1,97 @@
+---
+title: Component
+layout: SapaLayout
+filename: pages/sapa/component/page.mdx
+---
+
+import { Grid } from "@elf-framework/ui";
+import { Diagram } from "../../../utils/Diagram";
+
+
+# {title}
+
+Sapa provides two types of components.
+
+`Class`, `Function`
+
+The two differ only in the format of the notation, but everything is the same.
+
+`Function` is also treated as a `Class` component at the end.
+
+<Grid columns={[1, 1]} gap={20}>
+  <div>
+
+## Class Component 
+
+A class component can be defined as follows.
+
+```jsx
+import { UIElement } from "@elf-framework/sapa";
+
+class A extends UIElement {}
+
+// jsx
+<A>Class Component</A>
+```
+  
+  </div>
+  <div>
+
+## Function Component 
+
+A function component can be defined as follows.
+
+```jsx
+function A () {}
+
+// jsx
+<A>Function Component</A>
+```
+  </div>
+</Grid>
+
+## Deep Dive Function Component 
+
+See the `createFunctionElementInstance` function.
+
+`Function` is used as a template for `Class` component.
+
+```js
+class UIElement {
+  ...
+  static createFunctionElementInstance(
+    NewFunctionComponent,
+    parentInstance,
+    props,
+    state = {}
+  ) {
+    class FunctionElement extends UIElement {
+      ...
+
+      template() {
+        return NewFunctionComponent.call(this, this.props);
+      }
+    }
+
+    return new FunctionElement(parentInstance, props, state);
+  }
+  ...
+}
+```
+
+## Create a component instance 
+
+A component instance can be created directly.
+
+```js
+
+function A ({ title }) {
+  return <div>Simple Text {title} </div>
+}
+
+const instance = createComponentInstance(A, parentInstance, {title: "background"});
+
+// render to container 
+instance.render(document.getElementById('root'))
+
+```

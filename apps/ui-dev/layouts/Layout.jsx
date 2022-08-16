@@ -9,8 +9,8 @@ import { Flex, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { Footer } from "../component/Footer";
-import "./Layout.scss";
 import { PageTools } from "../component/PageTools";
+import "./Layout.scss";
 
 function pageId(url) {
   return "link-" + url.replace(/\//g, "-");
@@ -124,7 +124,6 @@ export function Layout(props) {
     </div>
   );
 }
-
 
 export function DefaultLayout(props) {
   const {

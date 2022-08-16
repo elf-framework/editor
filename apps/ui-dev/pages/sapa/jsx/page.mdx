@@ -1,0 +1,235 @@
+---
+title: JSX
+layout: SapaLayout
+filename: pages/sapa/jsx/page.mdx
+---
+
+import { Grid } from "@elf-framework/ui";
+import { Diagram } from "../../../utils/Diagram";
+
+
+# {title}
+
+JSX is a template engine to make vnode.
+
+```jsx
+<div class="background">Background Area</div>
+```
+
+<Grid columns={[1, 1]} gap={20}>
+  <div>
+
+## Class Component 
+
+A class component can be defined as follows.
+
+```jsx
+import { UIElement } from "@elf-framework/sapa";
+
+class A extends UIElement {}
+
+// jsx
+<A>Class Component</A>
+```
+  
+  </div>
+  <div>
+
+## Function Component 
+
+A function component can be defined as follows.
+
+```jsx
+function A () {}
+
+// jsx
+<A>Function Component</A>
+```
+  </div>
+</Grid>
+
+## Props 
+
+`JSX` can pass data through props.
+
+
+```jsx
+
+function A (props) {
+  return <div>{props.title}</div>
+}
+
+// through string 
+<A title="The title" />
+
+// through primitive
+<A title={10} />
+
+// through boolean 
+<A title />
+
+```
+
+## props with content 
+
+Children elements are passed as the content attribute.
+
+```jsx
+function A (props) {
+  return <div>{props.content}</div>
+}
+
+<A>
+  <B>Simple Text</B>
+</A>
+```
+
+`content` property is awalys an array.
+
+### Content Props Types 
+
+```jsx
+
+// content: [ VNodeText ]
+<div>Text</div>
+
+// content: [ VNode ]
+const B = <span>Simple Text</span>
+<div>{B}</div>
+
+// content: [ VNodeText ]
+<div>{["Text"]}</div>
+
+// content: [ VNodeText, VNodeText ]
+<div>
+  Text 
+  Text
+</div>
+
+// content: [ ...VNode ]
+<div>
+  {array.map(it => {
+    return it;
+  })}
+</div>
+```
+
+## assign JSX 
+
+`JSX` can be assigned to a variable.
+
+```jsx
+const A = <div>A</div>
+
+<B>{A}</B>
+
+```
+
+## Fragment 
+
+Combine using DocumentFragment.
+
+```jsx
+<A>
+  <>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </>
+</A>
+```
+
+Similar to using an array
+
+```jsx
+<A>
+  {[
+    <div>1<div>,
+    <div>2<div>,
+    <div>3<div>,
+    <div>4<div>,
+  ]}
+</A>
+```
+
+## HTMLComment
+
+```jsx
+import { HTMLComment } from "@elf-framework/sapa";
+
+<HTMLComment>Comment Text</HTMLComment>
+
+// output : <!-- Comment Text -->
+```
+
+## Reconcile
+
+There are two ways to reconcile.
+
+Dom vs VNode Diff 
+Component Props Diff 
+
+### Step 1: DOM vs VNode 
+
+VNode is utilized to create DOM. At this time, the change is applied by comparing the props of VNode and the attribute of DOM.
+
+### Step 2: Component Props Diff
+
+While reconcile is being performed, it is compared whether the component is changed or not through props.
+If changes inside props are found, the component is redrawn. 
+
+Repeat step 1 when redrawing the component.
+
+## Utilities 
+
+### JSON to VNode 
+
+```jsx
+ jsonToVNode({
+    tag: "div",
+    props: {
+      id: "test",
+      class: "test",
+      style: {
+        color: "red"
+      }
+    },
+    children: [
+      {
+        tag: "span",
+        props: {
+          id: "test",
+          class: "test",
+          style: {
+            color: "red"
+          }
+        }
+      }
+    ]
+ })
+
+```
+
+### htmlToVNode
+
+```jsx
+const div = htmlToVNode('<div>Simple Text</div>')
+```
+
+is same to 
+
+```jsx
+const div = <div>Simple Text</div>
+```
+
+This makes it easy to create SVG icons as Component .
+
+```jsx
+const svgIcon = "<svg><path d='M 0 0 L 10 10' /></svg>";
+
+const SvgComponent = htmlToVNode(svgIcon);
+
+// output 
+<svg><path d="M 0 0 L 10 10" /></svg>
+```

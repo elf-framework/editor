@@ -12,8 +12,13 @@ export default [
   },
   {
     type: "link",
+    link: "/pages/sapa/lifecycle/",
+    title: "Life Cycle",
+  },
+  {
+    type: "link",
     link: "/pages/sapa/jsx/",
-    title: "Jsx",
+    title: "JSX",
   },
   {
     type: "link",
@@ -39,7 +44,7 @@ export default [
     type: "link",
     link: "/pages/sapa/message/",
     title: "Message",
-  },  
+  },
 
   "Extensions",
   {

@@ -47,7 +47,7 @@ function makeTempComment() {
   return TEMP_COMMENT;
 }
 
-export function makeNativeDom(name) {
+function makeNativeDom(name) {
   if (!nativeDomCache[name]) {
     const el = isSVG(name)
       ? document.createElementNS("http://www.w3.org/2000/svg", name)
@@ -59,13 +59,13 @@ export function makeNativeDom(name) {
   return nativeDomCache[name].cloneNode(false);
 }
 
-export function makeNativeTextDom(value) {
+function makeNativeTextDom(value) {
   const text = makeTempText().cloneNode();
   text.textContent = value;
   return text;
 }
 
-export function makeNativeCommentDom(value) {
+function makeNativeCommentDom(value) {
   const text = makeTempComment().cloneNode();
   text.textContent = value;
   return text;

@@ -1,8 +1,9 @@
+import github from "../constants/github";
 import "./EditArea.scss";
 
 function EditLink ({ filename }) {
     return <div class="edit-link">
-        <a href={`https://github.com/elf-framework/editor/apps/ui-dev/${filename}`} target={filename}>[Edit]</a>
+        <a href={`${github.DOCUMENT_ROOT}/${filename}`} target={filename}>[Edit]</a>
     </div>
 }
 

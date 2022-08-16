@@ -1,5 +1,6 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { VNodeType } from "./constant/vnode";
+import { Dom } from "./functions/Dom";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
 import { isFunction, collectProps, isArray } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
@@ -353,6 +354,10 @@ export class EventMachine extends HookMachine {
       // element 에 component 속성 설정
       this.$el.el[COMPONENT_INSTANCE] = this;
       if ($container) {
+        if (!($container instanceof Dom)) {
+          $container = Dom.create($container);
+        }
+
         // $container 의 자식이 아닐 때만 추가
         if ($container.hasChild(this.$el) === false) {
           $container.append(this.$el);

@@ -8,7 +8,7 @@ import { Syntax } from "../../utils/Syntax";
 function Main() {
   return (
     <UILayout>
-      <View maxWidth={1200}>
+      <View maxWidth={900}>
         <h1>Alert</h1>
 
         <Flex
