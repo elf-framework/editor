@@ -3,7 +3,7 @@ import { start, SUBSCRIBE, UIElement, useSubscribe } from "@elf-framework/sapa";
 import { DataEditor, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { UILayout } from "../../component/UILayout";
+import { UILayout } from "../../layouts/UILayout";
 
 class Sample extends UIElement {
   template() {

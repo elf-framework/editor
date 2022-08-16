@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Alert, Flex, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { UILayout } from "../../component/UILayout";
+import { UILayout } from "../../layouts/UILayout";
 import { Syntax } from "../../utils/Syntax";
 
 function Main() {

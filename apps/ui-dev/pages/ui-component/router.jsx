@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import { Route, Router, Switch } from "@elf-framework/sapa-router";
 
-import { UILayout } from "../../component/UILayout";
+import { UILayout } from "../../layouts/UILayout";
 
 function Default(props) {
   return (

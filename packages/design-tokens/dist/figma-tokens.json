@@ -3550,12 +3550,12 @@
             }
           },
           "info": {
-            "value": "{color.core.blue.1}",
+            "value": "#e2f4ff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.1}",
+              "value": "#e2f4ff",
               "comment": "Base color for the info color"
             },
             "attributes": {

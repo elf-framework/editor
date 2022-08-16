@@ -1,13 +1,32 @@
 
 @import "github-markdown-css/github-markdown.css";
-@import "./utils/prism/themes/prism-vsc-dark-plus.css";
-@import "./utils/prism/rehype-prism-plus/prism-plus.css";
+@import "../component/utils/prism/themes/prism-vsc-dark-plus.css";
+@import "../component/utils/prism/rehype-prism-plus/prism-plus.css";
 
 
 
 html,body {
     padding: 0px;
     margin: 0px;
+}
+
+.default-layout {
+
+    .layout-logo {
+        display: none;
+    }
+
+    .layout-content > div {
+        padding: 50px 10px;
+        min-height: 800px;
+    }
+
+    .layout-tools {
+        padding: 20px;
+        .page-tools {
+            justify-content: center;
+        }
+    }
 }
 
 .layout {
@@ -32,6 +51,7 @@ html,body {
         overflow: auto;
         z-index: 1;
         box-sizing: border-box;
+        padding: 10px 0px;
     }
 
     .layout-header {
@@ -71,7 +91,7 @@ html,body {
 }
 
 .page-menu {
-    padding: 7px 20px;
+    padding: 10px 20px;
     // border-radius: 5px;
     box-sizing: border-box;
     display: flex;

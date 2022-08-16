@@ -9,7 +9,7 @@ import {
 // import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { UILayout } from "../../component/UILayout";
+import { UILayout } from "../../layouts/UILayout";
 import { MyContext, MyContextProvider } from "./context";
 import Sample from "./Sample";
 

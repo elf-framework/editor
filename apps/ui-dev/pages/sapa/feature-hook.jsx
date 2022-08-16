@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { SapaLayout } from "../../component/SapaLayout";
+import { SapaLayout } from "../../layouts/SapaLayout";
 import { Syntax } from "../../utils/Syntax";
 import hookUseCallbackText from "./codes/hook-use-callback.js.txt?raw";
 import hookUseEffectDepNoneText from "./codes/hook-use-effect-dep-none.js.txt?raw";

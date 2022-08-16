@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 16 Aug 2022 02:05:10 GMT
+ * Generated on Tue, 16 Aug 2022 06:53:45 GMT
  */
 
 export const ImageLogo : string;

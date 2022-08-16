@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Button, VisualBell } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { UILayout } from "../../component/UILayout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   const tools = [

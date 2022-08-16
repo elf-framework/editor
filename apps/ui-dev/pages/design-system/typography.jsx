@@ -1,8 +1,8 @@
 import { start } from "@elf-framework/sapa";
 import { Flex, Grid, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
+import { DesignLayout } from "../../layouts/DesignLayout";
 
-import { DesignLayout } from "../../component/DesignLayout";
 
 start(function () {
   return (

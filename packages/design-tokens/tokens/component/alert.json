@@ -160,7 +160,7 @@
             "comment": "Base color for the success color"
           },
           "info": {
-            "value": "{color.core.blue.1.value}",
+            "value": "#e2f4ff",
             "comment": "Base color for the info color"
           }
         }

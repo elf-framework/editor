@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { SapaLayout } from "../../component/SapaLayout";
+import { SapaLayout } from "../../layouts/SapaLayout";
 import { Syntax } from "../../utils/Syntax";
 import vnodeJsText from "./codes/vnode.js.txt?raw";
 

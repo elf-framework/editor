@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Alert } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { SapaLayout } from "../../component/SapaLayout";
+import { SapaLayout } from "../../layouts/SapaLayout";
 import { Diagram } from "../../utils/Diagram";
 import { Syntax } from "../../utils/Syntax";
 import componentBasicText from "./codes/component-basic.js.txt?raw";

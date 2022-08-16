@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import LayoutManager from "../../component/LayoutManager";
+import LayoutManager from "../../layouts/LayoutManager";
 import Index, { layout } from "./index.mdx";
 import "./index.scss";
 

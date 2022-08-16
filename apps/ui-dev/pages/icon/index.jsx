@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { IconLayout } from "../../component/IconLayout";
+import { IconLayout } from "../../layouts/IconLayout";
 
 function Main() {
   return (

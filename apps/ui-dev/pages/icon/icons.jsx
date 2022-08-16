@@ -3,7 +3,7 @@ import { start } from "@elf-framework/sapa";
 import { Flex, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { IconLayout } from "../../component/IconLayout";
+import { IconLayout } from "../../layouts/IconLayout";
 
 const list = {};
 

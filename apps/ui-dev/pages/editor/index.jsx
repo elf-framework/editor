@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { EditorLayout } from "../../component/EditorLayout";
+import { EditorLayout } from "../../layouts/EditorLayout";
 
 function Main() {
   return (

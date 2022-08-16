@@ -8,9 +8,9 @@ import {
 import { Flex, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Footer } from "./Footer";
+import { Footer } from "../component/Footer";
 import "./Layout.scss";
-import { PageTools } from "./PageTools";
+import { PageTools } from "../component/PageTools";
 
 function pageId(url) {
   return "link-" + url.replace(/\//g, "-");
@@ -112,6 +112,72 @@ export function Layout(props) {
       <View class="layout-menu">
         <PageMenu menu={menu} />
       </View>
+      <View class="layout-content">
+        <div
+          style={{ margin: "0 auto", width, maxWidth }}
+          class="markdown-body"
+        >
+          {content}
+        </div>
+        <Footer />
+      </View>
+    </div>
+  );
+}
+
+
+export function DefaultLayout(props) {
+  const {
+    content,
+    width,
+    maxWidth = 900,
+    menu = [],
+    version = "",
+    title = "",
+  } = props;
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const onScroll = useCallback(() => {
+    const localScrollTop =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    setScrollTop(localScrollTop);
+  }, [setScrollTop]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [onScroll]);
+
+  return (
+    <div class="default-layout">
+      <div
+        class={classnames("layout-header", {
+          fixed: scrollTop > 100,
+        })}
+      >
+        <Flex class="layout-logo">
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            {title}
+            <div class="version">
+              <small>{version}</small>
+            </div>
+          </div>
+        </Flex>
+        <Flex class="layout-tools">
+          <PageTools menu={menu} />
+        </Flex>
+      </div>
       <View class="layout-content">
         <div
           style={{ margin: "0 auto", width, maxWidth }}

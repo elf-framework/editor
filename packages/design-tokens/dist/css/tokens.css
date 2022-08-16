@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 16 Aug 2022 02:05:10 GMT
+ * Generated on Tue, 16 Aug 2022 06:53:45 GMT
  */
 
 :root {
@@ -74,6 +74,7 @@
   --size-base-25: 2px;
   --size-base-10: 1px;
   --size-base-0: 0px;
+  --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-core-white: #ffffff;
   --color-core-black: #1b1f24;
   --color-core-newtral-9: #4d4d4d;
@@ -177,7 +178,6 @@
   --button-disabled-text-default: var(--color-core-gray-3);
   --button-disabled-background-default: var(--color-core-gray-1);
   --button-selected-background-default: var(--color-core-gray-2);
-  --alert-color-background-weak-info: var(--color-core-blue-1); /* Base color for the info color */
   --alert-color-background-weak-success: var(--color-core-green-1); /* Base color for the success color */
   --alert-color-background-weak-warning: var(--color-core-orange-1); /* Base color for the warning color */
   --alert-color-background-weak-danger: var(--color-core-red-1); /* Base color for the danger color */
