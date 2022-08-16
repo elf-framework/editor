@@ -1,11 +1,12 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { VNodeType } from "./constant/vnode";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
-import { isFunction, collectProps, isEqual, isArray } from "./functions/func";
+import { isFunction, collectProps, isArray } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import { Reconcile, updateChildren } from "./functions/Reconcile";
 import { removeRenderCallback } from "./functions/registElement";
 import { uuid } from "./functions/uuid";
+import { vnodePropsDiff } from "./functions/vnode";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
 import StoreHandler from "./handler/StoreHandler";
@@ -149,12 +150,8 @@ export class EventMachine extends HookMachine {
   }
 
   changedProps(newProps) {
-    const obj1 = this.props;
-    const obj2 = newProps;
-
     // props 가 원래 없으면 다시 그린다.
-
-    return !isEqual(obj1, obj2, 0);
+    return !vnodePropsDiff(this.props, newProps);
   }
 
   /**

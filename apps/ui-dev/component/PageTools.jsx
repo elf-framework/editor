@@ -19,7 +19,7 @@ export function PageTools({ menu }) {
                     { type: "group", title: "Docs" },
                     {
                       type: "link",
-                      title: "Getting Started",
+                      title: "Introduction",
                       link: "/pages/introduction/",
                     },
                     {
@@ -29,7 +29,7 @@ export function PageTools({ menu }) {
                     },
                     {
                       type: "link",
-                      title: "Design System & Tokens",
+                      title: "Design",
                       link: "/pages/design-system/",
                     },
                     {
@@ -54,8 +54,10 @@ export function PageTools({ menu }) {
                   if (typeof it === "string") {
                     return { type: "group", title: it };
                   }
-                  it.type = "link";
-                  return it;
+                  return {
+                    type: "link",
+                    ...it,
+                  };
                 }),
               ],
             },
@@ -63,11 +65,14 @@ export function PageTools({ menu }) {
         />
       </div>
       <div class="lg">
-        <a href="/pages/introduction/">Getting Started</a>
+        <a href="/pages/introduction/">Introduction</a>
+        <span class="divider"></span>
         <a href="/pages/sapa/">Sapa</a>
         <span class="divider"></span>
-        <a href="/pages/design-system/">Design Tokens &amp; System</a>
+        <a href="/pages/design-system/">Design</a>
+        <span class="divider"></span>
         <a href="/pages/ui-component/">UI Component</a>
+        <span class="divider"></span>
         <a href="/pages/icon/">Icon</a>
         <span class="divider"></span>
         <a href="/pages/editor/">Editor</a>

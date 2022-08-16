@@ -24,6 +24,12 @@ export class View extends UIElement {
       ...noneStyle,
     };
 
+    Object.keys(styleObject).forEach((key) => {
+      if (styleObject[key] === undefined) {
+        delete styleObject[key];
+      }
+    });
+
     // eslint-disable-next-line no-undef
     return createElementJsx(as, styleObject, content);
   }

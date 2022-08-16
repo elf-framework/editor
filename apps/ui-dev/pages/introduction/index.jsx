@@ -1,14 +1,17 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { MainLayout } from "../../component/MainLayout";
-import "./getting-started.scss";
+import LayoutManager from "../../component/LayoutManager";
+import Index, { layout } from "./index.mdx";
+import "./index.scss";
 
 function Main() {
+  const CurrentLayout = LayoutManager.get(layout || "MainLayout");
+
   return (
-    <MainLayout maxWidth={1200}>
-      <div style={{ padding: "20px 10px" }}>My Content</div>
-    </MainLayout>
+    <CurrentLayout maxWidth={1200}>
+      <Index title={"blue"} />
+    </CurrentLayout>
   );
 }
 

@@ -1,5 +1,12 @@
 # @elf-framework/sapa
 
+## 2.0.49
+
+### Patch Changes
+
+- fixed props diff algorithm
+  support default export for jsx
+
 ## 2.0.47
 
 ### Patch Changes

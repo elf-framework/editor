@@ -14,6 +14,14 @@ let TEMP_COMMENT;
 let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
+const EXPECT_ATTRIBUTES = {
+  tagProps: true,
+  parentElement: true,
+  el: true,
+  children: true,
+  Component: true,
+  instance: true,
+};
 
 function makeTempDiv() {
   if (!TEMP_DIV) {
@@ -146,6 +154,63 @@ export function makeOneElement(html) {
   return cache[html].cloneNode(true);
 }
 
+export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
+  // 함수는 무조건 새로고침이 되도록 한다.
+  if (isFunction(obj1) && isFunction(obj2)) {
+    return false;
+  }
+
+  const obj1Keys = Object.keys(obj1).filter(
+    (key) => omitKeys[key] === undefined
+  );
+  const obj2Keys = Object.keys(obj2).filter(
+    (key) => omitKeys[key] === undefined
+  );
+
+  if (obj1Keys.length !== obj2Keys.length) {
+    return false;
+  }
+
+  // 1, 2 둘 다 key 가 없을 때는 같은 걸로 체크한다.
+  if (obj1Keys.length === 0 && obj2Keys.length === 0) {
+    return true;
+  }
+
+  return obj1Keys.every((key) => {
+    // omitKeys 에 있는 키는 비교하지 않는다.
+    if (omitKeys[key]) {
+      return true;
+    }
+
+    const obj1Value = obj1[key];
+    const obj2Value = obj2[key];
+
+    if (isArray(obj1Value) && isArray(obj2Value)) {
+      if (obj1Value.length !== obj2Value.length) {
+        return false;
+      }
+
+      if (obj1Value.length === 0 && obj2Value.length === 0) {
+        return true;
+      }
+
+      const isTrue = obj1Value.every((value, index) => {
+        return isEqual(value, obj2Value[index], count + 1, omitKeys);
+      });
+
+      return isTrue;
+    } else if (isObject(obj1Value) && isObject(obj2Value)) {
+      return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
+    }
+
+    return obj1Value === obj2Value;
+  });
+}
+
+export function vnodePropsDiff(oldProps, newProps) {
+  return isEqual(oldProps, newProps, 0, EXPECT_ATTRIBUTES);
+}
+
 export class VNode {
   constructor(type, tag, props, children, Component) {
     this.type = type;
@@ -201,6 +266,11 @@ export class VNode {
     if (!this.Component) {
       if (isObject(newProps.style)) {
         newProps.style = stringifyStyle(newProps.style);
+      }
+
+      if (newProps.className) {
+        newProps.class = newProps.className;
+        delete newProps.className;
       }
 
       this.tagProps = newProps;
@@ -519,7 +589,7 @@ export class VNodeComment extends VNode {
   }
 
   makeHtml() {
-    return this.value;
+    return `<!-- ${this.value} -->`;
   }
 }
 

@@ -550,4 +550,12 @@ declare module "@elf-framework/sapa" {
   export function renderFromRoot(): void;
 
   export function debounce(time: number): () => void;
+
+  type sapa = {
+    createElementJsx: typeof createElementJsx;
+    FragmentInstance: typeof FragmentInstance;
+    HTMLComment: typeof HTMLComment;
+  };
+
+  export default sapa;
 }

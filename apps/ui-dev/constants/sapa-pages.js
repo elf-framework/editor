@@ -1,9 +1,14 @@
 export default [
-  "Sapa Basics",
+  {
+    type: "link",
+    link: "/pages/sapa/getting-started/",
+    title: "Getting Started",
+  },
+  { type: "group", title: "Sapa Basics" },
   {
     type: "link",
     link: "/pages/sapa/basic.html",
-    title: "Sapa Basic",
+    title: "Basic",
   },
   {
     type: "link",

@@ -1,3 +1,10 @@
+
+@import "github-markdown-css/github-markdown.css";
+@import "./utils/prism/themes/prism-vsc-dark-plus.css";
+@import "./utils/prism/rehype-prism-plus/prism-plus.css";
+
+
+
 html,body {
     padding: 0px;
     margin: 0px;

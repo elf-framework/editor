@@ -12,43 +12,66 @@ const files = glob.sync("pages/**/*.html", {
 });
 
 files.forEach((it) => {
-  const file = path.basename(it, ".html");
+  const file = it;
   entries[file] = path.resolve(__dirname, it);
 });
 
-export default defineConfig({
-  // appType: "mpa",
-  server: {
-    hmr: {
-      protocol: "ws",
-      host: "localhost",
-    },
-    watch: {
-      usePolling: true,
-      ignored: ["!**/node_modules/@elf-framework/**"],
-    },
-  },
-  esbuild: {
-    jsxFactory: "createElementJsx",
-    jsxFragment: "FragmentInstance",
-    jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
-  },
-  build: {
-    rollupOptions: {
-      input: {
-        ui: path.resolve(__dirname, "index.html"),
-        ...entries,
+export default defineConfig(async () => {
+  const mdx = (await import("@mdx-js/rollup")).default;
+  const remarkFrontmatter = (await import("remark-frontmatter")).default;
+  const remarkGfm = (await import("remark-gfm")).default;
+  const remarkMdxFrontmatter = (await import("remark-mdx-frontmatter")).default;
+  // const remarkCodeMeta = (await import("remark-code-meta")).default;
+  const rehypePrism = (await import("mdx-prism")).default;
+  const rehypePrismPlus = (await import("rehype-prism-plus")).default;
+
+  return {
+    // appType: "mpa",
+    server: {
+      hmr: {
+        protocol: "ws",
+        host: "localhost",
+      },
+      watch: {
+        usePolling: true,
+        ignored: ["!**/node_modules/@elf-framework/**"],
       },
     },
-  },
-  optimizeDeps: {
-    exclude: [
-      "@elf-framework/design-tokens",
-      "@elf-framework/sapa",
-      "@elf-framework/ui",
-      "@elf-framework/sapa-router",
-      "@elf-framework/design-system",
+    esbuild: {
+      jsxFactory: "createElementJsx",
+      jsxFragment: "FragmentInstance",
+      jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
+    },
+    build: {
+      rollupOptions: {
+        input: {
+          ui: path.resolve(__dirname, "index.html"),
+          ...entries,
+        },
+      },
+    },
+    resolve: {
+      extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", "md", "mdx"],
+    },
+    optimizeDeps: {
+      exclude: [
+        "@elf-framework/design-tokens",
+        "@elf-framework/sapa",
+        "@elf-framework/ui",
+        "@elf-framework/sapa-router",
+        "@elf-framework/design-system",
+      ],
+    },
+    plugins: [
+      sapa(),
+      mdx({
+        jsxRuntime: "classic",
+        pragma: "sapa.createElementJsx",
+        pragmaFrag: "sapa.FragmentInstance",
+        pragmaImportSource: "@elf-framework/sapa",
+        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+        rehypePlugins: [rehypePrism, rehypePrismPlus],
+      }),
     ],
-  },
-  plugins: [sapa()],
+  };
 });

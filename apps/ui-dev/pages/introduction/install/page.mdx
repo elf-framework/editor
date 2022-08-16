@@ -1,0 +1,59 @@
+---
+title: Install
+layout: MainLayout
+---
+
+import {Diagram} from "../../../utils/Diagram";
+
+# Install
+
+It can install it with the npm(or yarn) command.
+
+## npm 
+
+```shell
+npm install @elf-framework/sapa --save
+```
+
+## yarn 
+
+```shell
+yarn add @elf-framework/sapa 
+```
+
+# Template - JSX
+
+Sapa is using [JSX](https://ko.reactjs.org/docs/introducing-jsx.html) template.
+
+
+## Vite config 
+
+```js {3-5} showLineNumbers 
+export default defineConfig({
+  esbuild: {
+    jsxFactory: "createElementJsx",
+    jsxFragment: "FragmentInstance",
+    jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`
+  }
+});
+```
+
+# How to use @elf-framework/sapa
+
+## import
+
+It can be rendering from `start` function. Please check about [@elf-framework/sapa](/pages/sapa) for details.
+
+
+```jsx
+import { start } from "@elf-framework/sapa";
+
+function App() {
+  return (
+    <div class="layout">
+      <h1>Elf Framework</h1>
+    </div>
+  );
+}
+start(App);
+```

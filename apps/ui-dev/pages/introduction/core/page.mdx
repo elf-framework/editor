@@ -1,0 +1,52 @@
+---
+title: Core Concept
+layout: MainLayout
+---
+
+import {Diagram} from "../../../utils/Diagram";
+
+# Core Concept
+
+* Design Tokens: Color, Size, Font, etc 
+* Design System: Typography, Grid, Space, Color Status, etc 
+* Sapa : frontend library like React 
+* UI : Design System and Sapa 
+* Icon : icons for Sapa  
+* Router : Sapa client router 
+* MDX : Markdown for Sapa
+* MPA : Multple page application for sapa
+* vite-plugin-sapa : Sapa Hot Module Reload 
+* BaseEditor : base editor library for sapa
+* EditorContext:  editor store 
+* Register System :  Editor item register system 
+* I18n : Internalization 
+* Shortcut : Keyboard Event Manager 
+* Config : Editor config 
+
+<Diagram graph={`
+flowchart TD;
+  subgraph sapa
+    DesignTokens-->DesignSystem;
+    DesignSystem-->UI
+    Sapa-->UI & Icon & Router
+  end
+  subgraph "vite bundler"
+    Sapa-->vite-plugin-sapa & MDX & MPA
+    Vite-->vite-plugin-sapa & MDX & MPA
+    Vite-->Sapa
+  end
+  subgraph Editor
+    UI & Icon &  Router & MDX & MPA --> BaseEditor
+    vite-plugin-sapa--HMR-->BaseEditor
+    BaseEditor-->EditorContext
+  end
+  subgraph Manager    
+    EditorContext--RegisterSystem-->Manager
+    Manager-->Config & Command & UISystem & Plugin & Shortcut & I18n & Inspector
+  end
+  subgraph System
+    Plugin-->registerPlugin
+    registerPlugin-->registerConfig & registerCommand & registerUI & registerShortcut & registerI18n & registerInspector
+  end
+    registerConfig & registerCommand & registerUI & registerShortcut & registerI18n & registerInspector-->YourEditor
+`} />

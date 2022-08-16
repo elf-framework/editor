@@ -102,13 +102,13 @@ function makeRequestAnimationFrame(callback, context) {
   };
 }
 function keyEach(obj, callback) {
-  Object.keys(obj).forEach((key, index) => {
-    callback(key, obj[key], index);
+  Object.keys(obj).forEach((key, index2) => {
+    callback(key, obj[key], index2);
   });
 }
 function keyMap(obj, callback) {
-  return Object.keys(obj).map((key, index) => {
-    return callback(key, obj[key], index);
+  return Object.keys(obj).map((key, index2) => {
+    return callback(key, obj[key], index2);
   });
 }
 function keyMapJoin(obj, callback, joinString = "") {
@@ -138,31 +138,6 @@ function isString(value) {
 }
 function isNotString(value) {
   return !isString(value);
-}
-function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
-  if (count > 5) {
-    console.error(obj1, obj2);
-    throw new Error(["isEqual \uC744 \uC624\uB798 \uC2E4\uD589\uD558\uC600\uC2B5\uB2C8\uB2E4."]);
-  }
-  if (isFunction(obj1) && isFunction(obj2)) {
-    return false;
-  }
-  const obj1Keys = Object.keys(obj1);
-  const obj2Keys = Object.keys(obj2);
-  if (obj1Keys.length !== obj2Keys.length) {
-    return false;
-  }
-  return obj1Keys.every((key) => {
-    if (omitKeys[key]) {
-      return true;
-    }
-    const obj1Value = obj1[key];
-    const obj2Value = obj2[key];
-    if (isObject(obj1Value) && isObject(obj2Value)) {
-      return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
-    }
-    return obj1Value === obj2Value;
-  });
 }
 function isArray(value) {
   return Array.isArray(value);
@@ -347,12 +322,12 @@ function updatePropertyAndChildren$1(parentElement, oldEl, newEl, i, options = {
   var oldChildren = children$2(oldEl);
   var newChildren = children$2(newEl);
   var max = Math.max(oldChildren.length, newChildren.length);
-  for (var index = 0; index < max; index++) {
+  for (var index2 = 0; index2 < max; index2++) {
     updateElement$1(
       oldEl,
-      oldChildren[index],
-      newChildren[index],
-      index,
+      oldChildren[index2],
+      newChildren[index2],
+      index2,
       options
     );
   }
@@ -3358,9 +3333,7 @@ const _EventMachine = class extends HookMachine {
     );
   }
   changedProps(newProps) {
-    const obj1 = this.props;
-    const obj2 = newProps;
-    return !isEqual(obj1, obj2, 0);
+    return !vnodePropsDiff(this.props, newProps);
   }
   _reload(props) {
     if (this.changedProps(props)) {
@@ -3881,6 +3854,14 @@ let TEMP_COMMENT;
 let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
+const EXPECT_ATTRIBUTES = {
+  tagProps: true,
+  parentElement: true,
+  el: true,
+  children: true,
+  Component: true,
+  instance: true
+};
 function makeTempDiv() {
   if (!TEMP_DIV) {
     TEMP_DIV = Dom.create("div");
@@ -3978,6 +3959,48 @@ function makeOneElement(html) {
   }
   return cache[html].cloneNode(true);
 }
+function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
+  if (isFunction(obj1) && isFunction(obj2)) {
+    return false;
+  }
+  const obj1Keys = Object.keys(obj1).filter(
+    (key) => omitKeys[key] === void 0
+  );
+  const obj2Keys = Object.keys(obj2).filter(
+    (key) => omitKeys[key] === void 0
+  );
+  if (obj1Keys.length !== obj2Keys.length) {
+    return false;
+  }
+  if (obj1Keys.length === 0 && obj2Keys.length === 0) {
+    return true;
+  }
+  return obj1Keys.every((key) => {
+    if (omitKeys[key]) {
+      return true;
+    }
+    const obj1Value = obj1[key];
+    const obj2Value = obj2[key];
+    if (isArray(obj1Value) && isArray(obj2Value)) {
+      if (obj1Value.length !== obj2Value.length) {
+        return false;
+      }
+      if (obj1Value.length === 0 && obj2Value.length === 0) {
+        return true;
+      }
+      const isTrue = obj1Value.every((value, index2) => {
+        return isEqual(value, obj2Value[index2], count + 1, omitKeys);
+      });
+      return isTrue;
+    } else if (isObject(obj1Value) && isObject(obj2Value)) {
+      return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
+    }
+    return obj1Value === obj2Value;
+  });
+}
+function vnodePropsDiff(oldProps, newProps) {
+  return isEqual(oldProps, newProps, 0, EXPECT_ATTRIBUTES);
+}
 class VNode {
   constructor(type, tag, props, children2, Component) {
     this.type = type;
@@ -4018,6 +4041,10 @@ class VNode {
     if (!this.Component) {
       if (isObject(newProps.style)) {
         newProps.style = stringifyStyle(newProps.style);
+      }
+      if (newProps.className) {
+        newProps.class = newProps.className;
+        delete newProps.className;
       }
       this.tagProps = newProps;
     } else {
@@ -4270,7 +4297,7 @@ class VNodeComment extends VNode {
     return this;
   }
   makeHtml() {
-    return this.value;
+    return `<!-- ${this.value} -->`;
   }
 }
 class VNodeFragment extends VNode {
@@ -4556,12 +4583,12 @@ function createElement(Component, props, children2 = []) {
   children2 = children2.flat(Infinity);
   return createVNode({ tag: Component, props, children: children2 });
 }
-function createElementJsx(Component, props = {}, ...children2) {
+function createElementJsx$1(Component, props = {}, ...children2) {
   children2 = children2.filter(Boolean);
-  if (Component === FragmentInstance) {
+  if (Component === FragmentInstance$1) {
     return createComponentFragment(Component, props, children2);
   }
-  if (Component === HTMLComment) {
+  if (Component === HTMLComment$1) {
     return createComment(children2);
   }
   props = props || {};
@@ -4571,6 +4598,23 @@ function createElementJsx(Component, props = {}, ...children2) {
     return createElement(Component, props, children2);
   }
 }
-const FragmentInstance = new Object();
-const HTMLComment = new Object();
-export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComment, createComponent, createComponentFragment, createComponentInstance, createComponentList, createContext, createElement, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, hydrate, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, potal, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRenderCallback, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useRootContext, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable };
+const FragmentInstance$1 = new Object();
+const HTMLComment$1 = new Object();
+var jsx = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  createComponent,
+  createComponentFragment,
+  createComment,
+  createComponentList,
+  createElement,
+  createElementJsx: createElementJsx$1,
+  FragmentInstance: FragmentInstance$1,
+  HTMLComment: HTMLComment$1
+}, Symbol.toStringTag, { value: "Module" }));
+const FragmentInstance = FragmentInstance$1;
+const createElementJsx = createElementJsx$1;
+const HTMLComment = HTMLComment$1;
+var index = {
+  ...jsx
+};
+export { AFTER, ALL_TRIGGER, ALT, ANIMATIONEND, ANIMATIONITERATION, ANIMATIONSTART, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, BACKSPACE, BEFORE, BIND, BIND_CHECK_DEFAULT_FUNCTION, BIND_CHECK_FUNCTION, BLUR, BRACKET_LEFT, BRACKET_RIGHT, BaseStore, CALLBACK, CAPTURE, CHANGE, CHANGEINPUT, CHECKER, CLICK, COMMAND, CONFIG, CONTEXTMENU, CONTROL, CUSTOM, D1000, DEBOUNCE, DELAY, DELETE, DOMDIFF, DOUBLECLICK, DOUBLETAB, DRAG, DRAGEND, DRAGENTER, DRAGEXIT, DRAGLEAVE, DRAGOUT, DRAGOVER, DRAGSTART, DROP, Dom, ENTER, EQUAL, ESCAPE, EVENT, FIT, FOCUS, FOCUSIN, FOCUSOUT, FRAME, FUNC_END_CHARACTER, FUNC_REGEXP, FUNC_START_CHARACTER, FragmentInstance, HASHCHANGE, HTMLComment, IF, INPUT, KEY, KEYDOWN, KEYPRESS, KEYUP, LEFT_BUTTON, LOAD, MAGIC_METHOD, MAGIC_METHOD_REG, META, MINUS, MOUSE, MOUSEDOWN, MOUSEENTER, MOUSELEAVE, MOUSEMOVE, MOUSEOUT, MOUSEOVER, MOUSEUP, MagicMethod, NAME_SAPARATOR, OBSERVER, ON, ORIENTATIONCHANGE, PARAMS, PASSIVE, PASTE, PEN, PIPE, POINTEREND, POINTERENTER, POINTERLEAVE, POINTERMOVE, POINTEROUT, POINTEROVER, POINTERSTART, POPSTATE, PREVENT, RAF, RESIZE, RIGHT_BUTTON, SAPARATOR, SCROLL, SELF, SELF_TRIGGER, SHIFT, SPACE, SPLITTER, STOP, SUBMIT, SUBSCRIBE, SUBSCRIBE_ALL, SUBSCRIBE_SELF, THROTTLE, TOUCH, TOUCHEND, TOUCHMOVE, TOUCHSTART, TRANSITIONCANCEL, TRANSITIONEND, TRANSITIONRUN, TRANSITIONSTART, UIElement, VARIABLE_SAPARATOR, VNode, VNodeComment, VNodeComponent, VNodeElement, VNodeFragment, VNodeText, VNodeType, WHEEL, addProviderSubscribe, classnames, clone, cloneVNode, collectProps, combineKeyArray, createComponentInstance, createContext, createElementJsx, createHandlerInstance, createVNode, createVNodeByDom, createVNodeComment, createVNodeComponent, createVNodeElement, createVNodeFragment, createVNodeText, debounce, index as default, defaultValue, get, getContextProvider, getCurrentComponent, getModule, getRef, getRootElementInstanceList, getVariable, hasVariable, htmlToVNode, hydrate, ifCheck, initializeGroupVariables, isArray, isBoolean, isEqual, isFunction, isNotString, isNotUndefined, isNotZero, isNumber, isObject, isString, isUndefined, isZero, jsonToVNode, keyEach, keyMap, keyMapJoin, makeEventChecker, makeNativeCommentDom, makeNativeDom, makeNativeTextDom, makeOneElement, makeRequestAnimationFrame, normalizeWheelEvent, popContextProvider, potal, recoverVariable, refreshModule, registAlias, registElement, registHandler, registRootElementInstance, registerModule, removeRenderCallback, removeRootElementInstance, render, renderComponent, renderFromRoot, renderRootElementInstanceList, renderToHtml, resetCurrentComponent, retriveAlias, retriveElement, retriveHandler, runProviderSubscribe, spreadVariable, start, throttle, useCallback, useContext, useEffect, useEmit, useMemo, useReducer, useRef, useRootContext, useSelf, useState, useStore, useSubscribe, useTrigger, uuid, uuidShort, variable, vnodePropsDiff };

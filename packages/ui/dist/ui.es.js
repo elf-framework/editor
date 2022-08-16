@@ -3741,6 +3741,11 @@ class View extends UIElement {
       style: propertyMap({ ...style2, ...styleProperties }, {}),
       ...noneStyle
     };
+    Object.keys(styleObject).forEach((key) => {
+      if (styleObject[key] === void 0) {
+        delete styleObject[key];
+      }
+    });
     return createElementJsx(as, styleObject, content);
   }
 }

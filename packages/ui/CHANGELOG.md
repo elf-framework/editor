@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.0.49
+
+### Patch Changes
+
+- fixed View id property
+
+- Updated dependencies []:
+  - @elf-framework/sapa@2.0.49
+
 ## 2.0.48
 
 ### Patch Changes

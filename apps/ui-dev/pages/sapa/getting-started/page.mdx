@@ -1,0 +1,101 @@
+---
+title: Getting Started
+layout: SapaLayout
+---
+
+import { Alert } from "@elf-framework/ui";
+
+
+# {title}
+
+Let's learn the basics of Sapa.
+Sapa was created to make UI creation with JavaScript easy.
+
+To use the JS library, you need a few things. Let's find out one by one.
+
+## 1. Import
+
+Import the library into your project.
+
+```js
+import { start } from "@elf-framework/sapa";
+```
+
+## 2. Start
+
+
+Start to rendering.
+
+```js
+start(App);
+
+// or 
+
+render(App);
+
+```
+
+### App
+
+The App is the root component of your application.
+
+```js
+function App() {
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
+}
+```
+
+## 3. Render
+
+Render the component. 
+```jsx
+start(App);
+```
+<Alert type="info" weak={true}>
+You can use <strong>render</strong> function instead of{" "}
+<strong>start</strong>.
+</Alert>
+
+    start is a function that takes a Sapa component as a parameter.
+
+### VNode
+
+A VNode is a virtual DOM node.
+
+```js
+start(<App key="value" />)
+```
+
+### Class Component
+A class component is a component that is defined in a class.
+
+```js
+class App extends UIElement {
+  template() {
+    return (
+      <div>
+        <h1>Hello World</h1>
+      </div>
+    );
+  }
+}
+```
+
+### Function Component
+
+A function component is a component that is defined in a function.
+
+```js
+function App() {
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
+}
+
+```
