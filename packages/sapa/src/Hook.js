@@ -276,6 +276,10 @@ export function useStore(key) {
   return getCurrentComponent().useStore(key);
 }
 
+export function useStoreSet(key, value) {
+  return getCurrentComponent().useStoreSet(key, value);
+}
+
 export function useRootContext(key) {
   return useStore(COMPONENT_ROOT_CONTEXT)[key];
 }

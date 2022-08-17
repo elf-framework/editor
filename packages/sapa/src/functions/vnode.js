@@ -19,7 +19,6 @@ const EXPECT_ATTRIBUTES = {
   parentElement: true,
   el: true,
   children: true,
-  Component: true,
   instance: true,
 };
 
@@ -184,6 +183,16 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
 
     const obj1Value = obj1[key];
     const obj2Value = obj2[key];
+
+    // Class/Function component 의 경우 새로운 컴포넌트를 만들어서 비교한다.
+    if (
+      key === "Component" &&
+      obj1Value &&
+      obj2Value &&
+      obj1Value?.__timestamp
+    ) {
+      return false;
+    }
 
     if (isArray(obj1Value) && isArray(obj2Value)) {
       if (obj1Value.length !== obj2Value.length) {
@@ -654,7 +663,7 @@ export class VNodeComponent extends VNode {
     const props = this.props;
 
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
-    this.Component = this.getModule();
+    const newComponent = this.getModule();
 
     // context 는 상위 Component 의 instance 를 가리킨다.
     // 즉, 컴포넌트의 parent 가 된다.
@@ -664,7 +673,7 @@ export class VNodeComponent extends VNode {
     const oldId = this.instance?.id;
 
     this.instance = createComponentInstance(
-      this.Component,
+      newComponent,
       options.context,
       props,
       state

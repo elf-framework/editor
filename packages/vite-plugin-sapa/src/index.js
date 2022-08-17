@@ -97,14 +97,14 @@ module.exports = function sapa(options = {}) {
           .map((it) => it.name);
         transformedCode = `
 
-import { registerModule, renderFromRoot } from "@elf-framework/sapa";
+import { registerModule, renderFromRoot, uuidShort } from "@elf-framework/sapa";
 ${code};
 if (import.meta.hot) {
   const TEMP = {${names.join(", ")} }
 
   Object.keys(TEMP).forEach((key) => {
     // unique key string
-    TEMP[key].__timestamp = Date.now();
+    TEMP[key].__timestamp = [Date.now(), uuidShort()].join("-");
   })
 
   registerModule("${id}", TEMP);

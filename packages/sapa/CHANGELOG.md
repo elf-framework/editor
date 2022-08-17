@@ -1,5 +1,14 @@
 # @elf-framework/sapa
 
+## 2.1.0
+
+### Minor Changes
+
+- - fixed to return newModule by Component
+  - fixed isEquals for Component, Component property is always return false
+  - modify to get dom reference
+  - add useStoreSet hook
+
 ## 2.0.49
 
 ### Patch Changes

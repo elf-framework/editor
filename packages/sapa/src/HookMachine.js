@@ -245,6 +245,10 @@ export class HookMachine extends MagicHandler {
     return this.$store.get(key);
   }
 
+  useStoreSet(key, value) {
+    this.$store.set(key, value);
+  }
+
   /** utility function for hooks */
 
   filterHooks(type) {

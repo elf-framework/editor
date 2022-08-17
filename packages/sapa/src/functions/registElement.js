@@ -166,13 +166,14 @@ export function retriveElement(className) {
  * @param {UIElement} instance
  */
 export function registRootElementInstance(instance, containerElement) {
+  const rootContainerElement = containerElement.el || containerElement;
   __rootInstance.add(instance);
 
   // 기존에 있던 root instance 는 지운다.
-  if (__rootInstanceMap.has(containerElement)) {
-    removeRootElementInstance(__rootInstanceMap.get(containerElement));
+  if (__rootInstanceMap.has(rootContainerElement)) {
+    removeRootElementInstance(__rootInstanceMap.get(rootContainerElement));
   }
-  __rootInstanceMap.set(containerElement, instance);
+  __rootInstanceMap.set(rootContainerElement, instance);
 }
 
 export function removeRootElementInstance(instance) {
@@ -253,11 +254,7 @@ export function getModule(Component) {
   // FIXED: function name is always same
   const newModule = m.new[Component.name];
 
-  // Choose  new __timestamp than old __timestamp
-  if (
-    Component.__timestamp === newModule.__timestamp ||
-    Component.__timestamp !== newModule.__timestamp
-  ) {
+  if (newModule) {
     return newModule;
   }
 

@@ -530,6 +530,11 @@ declare module "@elf-framework/sapa" {
   export function createContext<T>(defaultValue: T): Context<T>;
   export function useContext<T>(context: Context<T>): T;
   export function useStore<T>(key: string): T;
+
+  /**
+   * store 의 상태를 변경한다.
+   */
+  export function useStoreSet<T>(key: string, value: T): T;
   export function useRootContext<T>(key: string): T;
   export function useSubscribe(
     name: string,

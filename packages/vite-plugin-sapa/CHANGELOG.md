@@ -1,5 +1,11 @@
 # vite-plugin-sapa
 
+## 2.0.50
+
+### Patch Changes
+
+- modify unique_key for module
+
 ## 2.0.44
 
 ### Patch Changes

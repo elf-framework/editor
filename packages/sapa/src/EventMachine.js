@@ -2,7 +2,7 @@ import { COMPONENT_INSTANCE } from "./constant/component";
 import { VNodeType } from "./constant/vnode";
 import { Dom } from "./functions/Dom";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
-import { isFunction, collectProps, isArray } from "./functions/func";
+import { isFunction, collectProps, isArray, isObject } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import { Reconcile, updateChildren } from "./functions/Reconcile";
 import { removeRenderCallback } from "./functions/registElement";
@@ -165,7 +165,6 @@ export class EventMachine extends HookMachine {
   _reload(props) {
     if (this.changedProps(props)) {
       this.props = props;
-
       this.refresh();
     }
   }
@@ -214,8 +213,17 @@ export class EventMachine extends HookMachine {
     instance._reload(props);
   }
 
+  /**
+   * dom ref 등록하기
+   */
   registerRef = (ref, el) => {
-    this.refs[ref] = el;
+    if (typeof ref === "function") {
+      ref(el);
+    } else if (isObject(ref)) {
+      ref.value = el;
+    } else {
+      this.refs[ref] = el;
+    }
   };
 
   registerChildComponent = (el, childComponent, id, oldEl) => {
@@ -293,7 +301,7 @@ export class EventMachine extends HookMachine {
 
   async forceRender() {
     this.cleanHooks();
-    this.render(null, true);
+    await this.render(null, true);
   }
 
   setParentElement(parentElement) {
