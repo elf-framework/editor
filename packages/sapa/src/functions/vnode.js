@@ -4,7 +4,7 @@ import { css } from "./css";
 import { Dom } from "./Dom";
 import { isVoidTag } from "./DomUtil";
 import { isArray, isFunction, isNumber, isObject, isString } from "./func";
-import { getModule, variable } from "./registElement";
+import { getModule, isGlobalForceRender, variable } from "./registElement";
 import { isSVG } from "./svg";
 
 const TAG_PREFIX = "<";
@@ -185,12 +185,7 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
     const obj2Value = obj2[key];
 
     // Class/Function component 의 경우 새로운 컴포넌트를 만들어서 비교한다.
-    if (
-      key === "Component" &&
-      obj1Value &&
-      obj2Value &&
-      obj1Value?.__timestamp
-    ) {
+    if (isGlobalForceRender() && key === "Component") {
       return false;
     }
 

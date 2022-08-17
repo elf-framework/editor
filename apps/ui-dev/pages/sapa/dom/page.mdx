@@ -1,0 +1,63 @@
+---
+title: DOM
+layout: SapaLayout
+filename: pages/sapa/dom/page.mdx
+---
+
+import { Grid } from "@elf-framework/ui";
+import { Diagram } from "../../../utils/Diagram";
+
+
+# {title}
+
+Sapa provides several functions to easily manipulate the dom used in the component.
+
+## Root Element - $el
+
+After the component is rendered, the $el field becomes active.
+
+
+```jsx
+class A extends UIElement {
+  template() {
+    return <div class="root-element" onClick={() => {
+      if (this.$el.hasClass('root-element')) {
+        console.log("check root element");
+      }
+    }}>Simple Text</div>
+  }
+}
+```
+
+## ref
+
+A specific element can be directly referenced through the `ref` attribute.
+
+Elements defined as ref can be brought to `this.refs`.
+
+```jsx
+class A extends UIElement {
+  template() {
+    return <div class="root-element" onClick={() => {
+      if (this.refs.$sender) {
+        console.log("It has send button element");
+      }
+    }}>
+      <button ref="$sender">Simple Button</button>
+    </div>
+  }
+}
+```
+
+## Dom Class
+
+유틸리티 기본 정리 
+
+나머지는 API 쪽에서 하는것으로 하자.
+
+## DOM Event 
+
+### attribute 
+
+### magic method 
+

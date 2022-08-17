@@ -97,7 +97,7 @@ module.exports = function sapa(options = {}) {
           .map((it) => it.name);
         transformedCode = `
 
-import { registerModule, renderFromRoot, uuidShort } from "@elf-framework/sapa";
+import { registerModule, renderFromRoot, uuidShort, setGlobalForceRender } from "@elf-framework/sapa";
 ${code};
 if (import.meta.hot) {
   const TEMP = {${names.join(", ")} }
@@ -111,6 +111,7 @@ if (import.meta.hot) {
 
   import.meta.hot.accept((m) => {
     console.log("hot reload");
+    setGlobalForceRender(true);
     renderFromRoot();
   });
 }

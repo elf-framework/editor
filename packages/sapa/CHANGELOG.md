@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.2
+
+### Patch Changes
+
+- modify global force render
+
 ## 2.1.0
 
 ### Minor Changes

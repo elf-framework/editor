@@ -49,22 +49,52 @@ export default [
   "Extensions",
   {
     type: "link",
-    link: "/pages/sapa/feature-handler.html",
+    link: "/pages/sapa/handler/",
     title: "Handler",
   },
   {
     type: "link",
-    link: "/pages/sapa/feature-custom-hook.html",
+    link: "/pages/sapa/custom-hook/",
     title: "Custom Hook",
   },
   {
     type: "link",
-    link: "/pages/sapa/feature-router.html",
+    link: "/pages/sapa/router/",
     title: "Router",
   },
   {
     type: "link",
-    link: "/pages/sapa/feature-api.html",
+    link: "/pages/sapa/api/",
     title: "API",
+
+    items: [
+      {
+        type: "link",
+        link: "/pages/sapa/api/rendering/",
+        title: "Redering",
+      },
+      {
+        type: "link",
+        link: "/pages/sapa/api/hook/",
+        title: "Hooks",
+      },
+      {
+        type: "link",
+        link: "/pages/sapa/api/dom/",
+        title: "Dom",
+      },
+      {
+        type: "link",
+        link: "/pages/sapa/api/vnode/",
+        title: "Virtual Node",
+        items: [
+          {
+            type: "link",
+            link: "/pages/sapa/api/vnode/",
+            title: "Virtual Node",
+          },
+        ],
+      },
+    ],
   },
 ];

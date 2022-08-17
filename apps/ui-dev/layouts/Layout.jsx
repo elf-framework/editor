@@ -1,6 +1,5 @@
 import {
   classnames,
-  debounce,
   useCallback,
   useEffect,
   useState,
@@ -16,8 +15,8 @@ function pageId(url) {
   return "link-" + url.replace(/\//g, "-");
 }
 
-function PageMenu({ menu = [] }) {
-  const href = window.location.href;
+function PageMenu({ menu = [], depth = 0 }) {
+  const { href, pathname } = location;
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,25 +31,33 @@ function PageMenu({ menu = [] }) {
     <View>
       {menu.map((page) => {
         if (typeof page === "string") {
-          return <h1 class={classnames("page-title")}>{page}</h1>;
+          return (
+            <h1 data-depth={depth} class={classnames("page-title")}>
+              {page}
+            </h1>
+          );
         } else if (page.type === "group") {
           return (
             <div>
-              <h1 class={classnames("page-title")}>{page.title}</h1>
-              <PageMenu menu={page.items || []} />
+              <h1 data-depth={depth} class={classnames("page-title")}>
+                {page.title}
+              </h1>
+              <PageMenu menu={page.items || []} data-depth={depth + 1} />
             </div>
           );
         } else {
-          return (
+          return [
             <div
               class={classnames("page-menu", {
-                selected: href.includes(page.link),
+                selected: pathname === page.link,
               })}
+              data-depth={depth}
               id={pageId(page.link)}
             >
               <a href={page.link}>{page.title}</a>
-            </div>
-          );
+            </div>,
+            page.items && <PageMenu menu={page.items} depth={depth + 1} />,
+          ];
         }
       })}
     </View>

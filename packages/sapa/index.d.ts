@@ -553,6 +553,7 @@ declare module "@elf-framework/sapa" {
   export function getCurrentComponent(): UIElement;
 
   export function renderFromRoot(): void;
+  export function setGlobalForceRender(forceRender: boolean): void;
 
   export function debounce(time: number): () => void;
 

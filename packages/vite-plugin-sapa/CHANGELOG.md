@@ -1,5 +1,11 @@
 # vite-plugin-sapa
 
+## 2.1.1
+
+### Patch Changes
+
+- modify global force render
+
 ## 2.0.50
 
 ### Patch Changes

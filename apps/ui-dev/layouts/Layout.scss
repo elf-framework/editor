@@ -94,7 +94,7 @@ html,body {
     padding: 10px 20px;
     // border-radius: 5px;
     box-sizing: border-box;
-    display: flex;
+    display: block;
     &.selected {
         background-color: var(--color-core-blue-0);
         border-right: 5px solid var(--color-core-blue-2);
@@ -104,6 +104,18 @@ html,body {
         flex: 1 1 auto;
         text-decoration: none;
         color: var(--color-core-black);
+    }
+
+    &[data-depth="1"] {
+        padding-left: 30px;
+    }
+
+    &[data-depth="2"] {
+        padding-left: 50px;
+    }
+
+    &[data-depth="3"] {
+        padding-left: 70px;
     }
 }
 

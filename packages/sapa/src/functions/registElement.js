@@ -185,6 +185,17 @@ export function getRootElementInstanceList() {
   return [...__rootInstance];
 }
 
+let globalForceRender = undefined;
+
+export function isGlobalForceRender() {
+  return globalForceRender;
+}
+
+export function setGlobalForceRender(isForceRender = false) {
+  if (typeof globalForceRender === "undefined") {
+    globalForceRender = isForceRender;
+  }
+}
 /**
  * root instance 를 모두 그린다.
  */
