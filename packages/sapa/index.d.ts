@@ -46,11 +46,6 @@ declare module "@elf-framework/sapa" {
   export const PASSIVE: string;
   export const FRAME: string;
 
-  /**
-   * LOAD 함수에서 domdiff 를 수행하는 플래그를 설정한다.
-   */
-  export const DOMDIFF: string;
-
   // event config method
   export type TimeFunction = (time: number) => string;
 

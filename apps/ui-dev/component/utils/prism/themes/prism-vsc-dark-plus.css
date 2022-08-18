@@ -272,11 +272,11 @@ code[class*="language-html"] {
 */
 pre[class*="language-"] > code[class*="language-"] {
 	position: relative;
-	z-index: 1;
+	/* z-index: 1; */
 }
 
 .line-highlight.line-highlight {
 	background: #f7ebc6;
 	box-shadow: inset 5px 0 0 #f7d87c;
-	z-index: 0;
+	/* z-index: 0; */
 }

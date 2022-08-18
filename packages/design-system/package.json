@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/design-system",
-  "version": "2.0.40",
+  "version": "2.1.5",
   "description": "Fantastic Design System ",
   "main": "./dist/design-system.umd.js",
   "module": "./dist/design-system.es.js",
@@ -17,48 +17,36 @@
     "open-color": "^1.9.1"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "cssnano": "^5.0.13",
-    "husky": "^7.0.4",
-    "postcss": "^8.4.4",
+    "autoprefixer": "^10.4.8",
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.16",
     "postcss-sorting": "^7.0.1",
-    "prettier": "2.6.2",
-    "release-it": "^15.1.1",
-    "sass": "^1.44.0",
-    "vite": "^2.9.13",
-    "vite-plugin-copy": "^0.1.6",
-    "vite-plugin-eslint": "^1.5.2",
-    "vite-plugin-replace": "^0.1.1",
-    "vitest": "0.0.107"
+    "sass": "^1.54.4",
+    "vite": "^3.0.8",
+    "vitest": "0.22.1"
   },
   "scripts": {
     "vite:dev": "vite --config=vite.config.js",
     "vite:dist": "vite build --config=vite.dist.config.js",
-    "//watch": "vite build --config=vite.dist.config.js --watch",
     "design:watch": "vite build --config=vite.dist.config.js --watch",
     "ui:watch": "vite build --config=vite.dist.config.js --watch",
     "editor:watch": "vite build --config=vite.dist.config.js --watch",
-    "release": "release-it *",
-    "build": "npm run vite:dist",
-    "//prepare": "husky install",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
-    "format": "prettier .  --write"
+    "build": "npm run vite:dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/easylogic/editor.git"
+    "url": "git+https://github.com/elf-framework/editor.git"
   },
   "keywords": [
-    "CSS",
-    "CODE",
-    "Editor",
-    "Path",
-    "SVG"
+    "elf",
+    "framework",
+    "design",
+    "system"
   ],
   "author": "easylogic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/easylogic/editor/issues"
+    "url": "https://github.com/elf-framework/editor/issues"
   },
-  "homepage": "https://editor.easylogic.studio/"
+  "homepage": "https://docs.elf-framework.studio/"
 }

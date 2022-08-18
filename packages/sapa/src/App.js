@@ -1,7 +1,7 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { Dom } from "./functions/Dom";
 import { registRootElementInstance } from "./functions/registElement";
-import { VNode, VNodeComponent } from "./functions/vnode";
+import { VNode, VNodeComponent } from "./functions/vnode/index";
 // import { Router } from "./Router";
 import { createComponentInstance } from "./UIElement";
 

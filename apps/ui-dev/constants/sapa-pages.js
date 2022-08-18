@@ -37,6 +37,11 @@ export default [
   },
   {
     type: "link",
+    link: "/pages/sapa/magic-method/",
+    title: "Magic Method",
+  },
+  {
+    type: "link",
     link: "/pages/sapa/store/",
     title: "Store",
   },

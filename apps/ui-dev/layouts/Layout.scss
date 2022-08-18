@@ -19,6 +19,7 @@ html,body {
     .layout-content > div {
         padding: 50px 10px;
         min-height: 800px;
+        max-width: 800px;
     }
 
     .layout-tools {
@@ -60,11 +61,11 @@ html,body {
         left: 0;
         right: 0;
         height: var(--layout-header-height);
-        background-color: #fff;
+        background-color: rgb(255, 255, 255);
         border-bottom: 1px solid #ececec;
         display: grid;
         grid-template-columns: var(--layout-menu-width) 1fr;
-        z-index: 1;
+        z-index: 10;
 
         &.fixed {
             position: fixed;
@@ -76,10 +77,7 @@ html,body {
         position: relative;
         padding-left: var(--layout-menu-width);
         padding-top: var(--layout-header-height);
-
-        > div {
-            padding: 20px;
-        }
+        padding-right: 100px;
     }
 
     .layout-logo {
@@ -96,14 +94,19 @@ html,body {
     box-sizing: border-box;
     display: block;
     &.selected {
-        background-color: var(--color-core-blue-0);
+        background-color: var(--color-core-blue-0) !important;
         border-right: 5px solid var(--color-core-blue-2);
+    }
+
+    &:hover {
+        background-color: rgba(199, 238, 255, 0.269);
     }
 
     a {
         flex: 1 1 auto;
         text-decoration: none;
         color: var(--color-core-black);
+        display: block;
     }
 
     &[data-depth="1"] {

@@ -1,0 +1,138 @@
+---
+title: Magic Method
+layout: SapaLayout
+filename: pages/sapa/dom/page.mdx
+---
+
+import { Grid } from "@elf-framework/ui";
+import { Diagram } from "../../../utils/Diagram";
+
+
+# {title}
+
+How to specify using magic methods.
+
+Magic methods can be used under class components. To be made available for use in perfume functional types.
+
+Magic methods extend method functionality similar to decorators.
+
+```jsx
+class A extends UIElement {
+  template () {
+    return <div>Simple Text</div>
+  }
+
+  [CLICK('$el')] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+}
+
+```
+
+If you use a magic method, you can create a template more easily.
+
+## Checker
+
+Magic methods have some special features.
+
+##### How to use Checkers
+```jsx
+
+import {CLICK, ALT, SHIFT, CONTROL, META} from "@elf-framework/sapa";
+
+class A extends UIElement {
+  [CLICK('$el') + ALT] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+
+  [CLICK('$el') + SHIFT] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+
+  [CLICK('$el') + CONTROL] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+
+  [CLICK('$el') + META] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+}
+  
+```
+
+#### How to sum Checkers 
+
+```jsx
+class A extends UIElement {
+  [CLICK('$el') + ALT + SHIFT] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+
+  [CLICK('$el') + SHIFT + META] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+}
+  
+```
+
+#### How to run by `IF`
+
+```jsx
+class A extends UIElement {
+
+  // check whether control key is pressed
+  checkEvent(nativeDomEvent) {
+    return nativeDomEvent.ctrlKey;
+  }
+
+  [CLICK('$el') + ALT + IF("checkEvent")] (nativeDomEvent) {
+    // run if ctrlKey and altKey are pressed
+    console.log(nativeDomEvent);
+  }
+
+}
+  
+```
+
+#### Checker List 
+
+key event checker 
+
+| Checker  | Description | Usage | 
+| ------------- | ------------- | ----- |
+| ALT  | if `alt` key is pressed  |       |
+| SHIFT  | if `shift` key is pressed  |       |
+| CONTROL  | if `control` key is pressed  |       |
+| META  | if `meta` key is pressed  |       |
+| MOUSE | if event device is `mouse` |  |
+| TOUCH | if event device is `touch` |  |
+| PEN |  if event device is `pen` |  |
+| ARROW_UP |  if `ArrowUp` key is pressed  |       |
+| ARROW_DOWN |  if `ArrowDown` key is pressed  |       |
+| ARROW_LEFT |  if `ArrowLeft` key is pressed  |       |
+| ARROW_RIGHT |  if `ArrowRight` key is pressed  |       |
+| ENTER |  if `Enter` key is pressed  |       |
+| SPACE |  if `Space` key is pressed  |       |
+| ESCAPE |  if `Escape` key is pressed  |       |
+| BACKSPACE |  if `Backspace` key is pressed  |       |
+| DELETE |  if `Delete` key is pressed  |       |
+| EQUAL |  if `Equal` key is pressed  |       |
+| MINUS |  if `Minus` key is pressed  |       |
+| BRACKET_RIGHT |  if `BracketRight` key is pressed  |       | 
+| BRACKET_LEFT | if `BracketLeft` key is pressed  |       | 
+
+event checker 
+
+| Checker  | Description | Usage | 
+| ------------- | ------------- | ----- |
+| CAPTURE  | if `alt` key is pressed  |       |
+| PREVENT  | if `alt` key is pressed  |       |
+| STOP  | if `alt` key is pressed  |       |
+
+control checker 
+
+| Checker  | Description | Usage | 
+| ------------- | ------------- | ----- |
+| IF  | if `alt` key is pressed  |       |
+| DEBOUNCE  | if `alt` key is pressed  |       |
+| THROTTLE  | if `alt` key is pressed  |       |

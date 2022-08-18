@@ -86,7 +86,6 @@ export const RIGHT_BUTTON = CHECKER("isMouseRightButton");
 
 export const FIT = CHECKER("fit");
 export const PASSIVE = CHECKER("passive");
-export const DOMDIFF = CHECKER("domdiff");
 
 // event config method
 export const DEBOUNCE = (t = 100) => {

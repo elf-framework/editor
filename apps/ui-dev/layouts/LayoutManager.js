@@ -1,19 +1,15 @@
-import { DesignLayout } from "./DesignLayout";
-import { EditorLayout } from "./EditorLayout";
-import { IconLayout } from "./IconLayout";
-import { MainLayout } from "./MainLayout";
-import { SapaLayout } from "./SapaLayout";
-import { UILayout } from "./UILayout";
+const items = {};
+
+const list = import.meta.glob("./items/*.jsx", {
+  eager: true,
+});
+
+Object.values(list).forEach((module) => {
+  Object.assign(items, module);
+});
 
 export default {
-  items: {
-    MainLayout,
-    IconLayout,
-    UILayout,
-    SapaLayout,
-    DesignLayout,
-    EditorLayout,
-  },
+  items,
   get(layout) {
     return this.items[layout];
   },

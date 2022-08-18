@@ -1,5 +1,4 @@
 import { VNodeType } from "../constant/vnode";
-import { DomDiff } from "./DomDiff";
 import { isFunction, isNotUndefined, isUndefined } from "./func";
 
 const booleanTypes = new Map(
@@ -382,11 +381,6 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
   // pass 옵션이 없는 경우
   if (!newVNode.props?.pass) {
     if (check.hasPassed(newVNode)) {
-      // NOOP
-      // element 객체 끼리는 DomDiff 를 사용해서 체크한다.
-      if (oldEl.outerHTML !== newVNode.outerHTML) {
-        DomDiff(oldEl, newVNode.el, options);
-      }
       return;
     }
 

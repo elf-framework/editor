@@ -1,4 +1,3 @@
-import { DomDiff } from "./DomDiff";
 import { isArray, isFunction } from "./func";
 import { recoverVariable } from "./registElement";
 /**
@@ -343,21 +342,6 @@ export class Dom {
       console.log(e, html);
       return this;
     }
-  }
-
-  htmlDiff(fragment, options = {}) {
-    DomDiff(this, fragment, options);
-  }
-  updateDiff(html, rootElement = "div", options = {}) {
-    DomDiff(this, Dom.create(rootElement).html(html), options);
-  }
-
-  updateSVGDiff(html, rootElement = "div", options = {}) {
-    DomDiff(
-      this,
-      Dom.create(rootElement).html(`<svg>${html}</svg>`).firstChild.firstChild,
-      options
-    );
   }
 
   getById(id) {
@@ -1032,24 +1016,5 @@ export class Dom {
   // canvas functions
   toDataURL(type = "image/png", quality = 1) {
     return this.el.toDataURL(type, quality);
-  }
-
-  /* utility */
-  fullscreen() {
-    var element = this.el;
-
-    if (element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if (element.wekitRequestFullscreen) {
-      element.wekitRequestFullscreen();
-    }
-  }
-
-  toggleFullscreen() {
-    if (this.el === document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      this.fullscreen();
-    }
   }
 }

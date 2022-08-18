@@ -1,5 +1,11 @@
 # vite-plugin-sapa
 
+## 2.1.5
+
+### Patch Changes
+
+- refactoring file structure
+
 ## 2.1.1
 
 ### Patch Changes

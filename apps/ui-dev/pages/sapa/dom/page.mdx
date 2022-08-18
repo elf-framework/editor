@@ -57,7 +57,39 @@ class A extends UIElement {
 
 ## DOM Event 
 
-### attribute 
+A dom event can be specified in two ways.
+
+### event attribute 
+
+How to directly specify an event with the onXXXX attribute
+
+```jsx
+function A() {
+  return <div onClick={(nativeDomEvent) => {
+    console.log(nativeDomEvent);
+  }}>Simple Text</div>
+}
+```
 
 ### magic method 
 
+How to specify using magic methods.
+
+The magic methods can be used under class components. To be made available for use in perfume functional types.
+
+```jsx
+class A extends UIElement {
+  template () {
+    return <div>Simple Text</div>
+  }
+
+  [CLICK('$el')] (nativeDomEvent) {
+    console.log(nativeDomEvent);
+  }
+}
+
+```
+
+If you use a magic method, you can create a template more easily.
+
+Please refer to [Magic Method](../magic-method/) about details.

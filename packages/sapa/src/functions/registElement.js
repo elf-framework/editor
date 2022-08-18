@@ -128,20 +128,6 @@ export function hasVariable(id) {
   return __tempVariables.has(id);
 }
 
-/**
- * 객체를 key=value 문자열 리스트로 변환한다.
- *
- * @param {object} obj
- * @returns {string}
- */
-export function spreadVariable(obj) {
-  return Object.entries(obj)
-    .map(([key, value]) => {
-      return `${key}=${variable(value)}`;
-    })
-    .join(" ");
-}
-
 export function registElement(classes = {}) {
   Object.keys(classes).forEach((key) => {
     map[key] = classes[key];

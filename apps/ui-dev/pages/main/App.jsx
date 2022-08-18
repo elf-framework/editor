@@ -1,6 +1,6 @@
 import { start } from "@elf-framework/sapa";
 
-import { DefaultLayout } from "../../layouts/Layout";
+import { DefaultLayout } from "../../layouts/DefaultLayout";
 import Page from "./page.mdx";
 import "./page.scss";
 

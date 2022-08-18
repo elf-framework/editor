@@ -1,11 +1,11 @@
-import { VNodeType } from "../constant/vnode";
-import { createComponentInstance } from "../UIElement";
-import { css } from "./css";
-import { Dom } from "./Dom";
-import { isVoidTag } from "./DomUtil";
-import { isArray, isFunction, isNumber, isObject, isString } from "./func";
-import { getModule, isGlobalForceRender, variable } from "./registElement";
-import { isSVG } from "./svg";
+import { VNodeType } from "../../constant/vnode";
+import { createComponentInstance } from "../../UIElement";
+import { css } from "../css";
+import { Dom } from "../Dom";
+import { isVoidTag } from "../DomUtil";
+import { isArray, isFunction, isNumber, isObject, isString } from "../func";
+import { getModule, isGlobalForceRender, variable } from "../registElement";
+import { isSVG } from "../svg";
 
 const TAG_PREFIX = "<";
 let TEMP_DIV;
@@ -106,7 +106,7 @@ function stringifyStyle(styleObject) {
     .join(" ");
 }
 
-function getProps(attributes) {
+export function getProps(attributes) {
   var results = {};
   const len = attributes.length;
 
@@ -123,7 +123,7 @@ function getProps(attributes) {
   return results;
 }
 
-const children = (el) => {
+export const children = (el) => {
   var element = el.firstChild;
 
   if (!element) {
@@ -325,8 +325,7 @@ export class VNode {
                 return createVNodeText(newEl.textContent);
               }
 
-              // TODO: element 생성을 자동으로 해줄지 고민이 필요함.
-              return createVNodeElement(newEl);
+              return createVNodeText(newEl);
             }
           } else {
             return createVNodeText(child);
@@ -534,6 +533,14 @@ export class VNode {
       `;
     }
   }
+
+  makeText(divider = "") {
+    const arr = this.children
+      .map((child) => child.makeText(divider))
+      .flat(Infinity);
+
+    return arr.join(divider);
+  }
 }
 
 export class VNodeText extends VNode {
@@ -562,6 +569,10 @@ export class VNodeText extends VNode {
   }
 
   makeHtml() {
+    return this.value;
+  }
+
+  makeText() {
     return this.value;
   }
 }
@@ -594,6 +605,10 @@ export class VNodeComment extends VNode {
 
   makeHtml() {
     return `<!-- ${this.value} -->`;
+  }
+
+  makeText() {
+    return "";
   }
 }
 
@@ -726,27 +741,9 @@ export class VNodeComponent extends VNode {
   async makeHtml(withChildren, options = {}) {
     return await this.renderHtml(options);
   }
-}
 
-export class VNodeElement extends VNode {
-  constructor(el) {
-    super(VNodeType.ELEMENT, null, {});
-    this.el = el;
-    this.outerHTML = el.outerHTML;
-
-    // static 형태로 만들어진 element 는 diff 를 하지 않는다.
-    // this.el.setAttribute("data-domdiff-path", "true");
-    this.pass = true;
-  }
-
-  clone() {
-    return new VNodeElement(this.el);
-  }
-
-  makeElement() {
-    // this.nodeType = this.el.nodeType;
-    // this.nodeName = this.el.nodeName;
-    return this;
+  makeText() {
+    return "";
   }
 }
 
@@ -773,95 +770,6 @@ export function createVNodeComment(text) {
   return new VNodeComment(text);
 }
 
-export function createVNodeElement(el) {
-  return new VNodeElement(el);
-}
-
-export function htmlToVNode(html) {
-  const $dom = Dom.createByHTML(html);
-  return createVNodeByDom($dom.el);
-}
-
-export function createVNodeByDom(el) {
-  if (typeof el === "string") {
-    return createVNodeText(el);
-  }
-
-  if (el.nodeType === 3) {
-    return createVNodeText(el.textContent);
-  }
-
-  return createVNode({
-    tag: el.tagName, // tag 이름 그대로 넣어야함. 예를들어 <div> 이면 div 를 넣어야 함.
-    props: getProps(el.attributes),
-    children: children(el).map((it) => {
-      return createVNodeByDom(it);
-    }),
-  });
-}
-
 export function cloneVNode(vnode) {
   return vnode.clone();
-}
-
-/**
- *
- * jsonToVNode({
- *    tag: "div",
- *    props: {
- *      id: "test",
- *      class: "test",
- *      style: {
- *        color: "red"
- *      }
- *    },
- *    children: [
- *      {
- *        tag: "span",
- *        props: {
- *          id: "test",
- *          class: "test",
- *          style: {
- *          color: "red"
- *        }
- *      }
- *    ]
- * })
- *
- * @param {*} json
- * @returns
- */
-export function jsonToVNode(json) {
-  const { children = [], ...rest } = json;
-
-  if (typeof json === "string" || typeof json === "number") {
-    return createVNodeText(json);
-  }
-
-  if (rest.type === "comment") {
-    return createVNodeComment(rest.text);
-  }
-
-  if (rest.type === "text") {
-    return createVNodeText(rest.text);
-  }
-
-  if (rest.type === "fragment") {
-    return createVNodeFragment({
-      ...rest,
-      children: children.map((it) => jsonToVNode(it)),
-    });
-  }
-
-  if (rest.type === "component" || rest.Component) {
-    return createVNodeComponent({
-      ...rest,
-      children: children.map((it) => jsonToVNode(it)),
-    });
-  }
-
-  return createVNode({
-    ...rest,
-    children: children.map((it) => jsonToVNode(it)),
-  });
 }

@@ -247,7 +247,6 @@ export class EventMachine extends HookMachine {
   }
 
   /**
-   * DomVDomDiff 에서 활용하는 함수
    *
    * 특정 클래스 참조를 바로 diff 형태로 렌더링 하지 않고
    * 강제로 다시 그리기를 원할때 사용할 수 있다.
@@ -260,6 +259,47 @@ export class EventMachine extends HookMachine {
 
   isInstanceOf(Component) {
     return this instanceof Component;
+  }
+
+  async runningUpdate(template, isForceRender) {
+    if (template.type === VNodeType.FRAGMENT) {
+      updateChildren(this.parentElement, template);
+    } else {
+      Reconcile(this.$el.el, template, {
+        checkRefClass: this.checkRefClass,
+        context: this,
+        isForceRender,
+        registerRef: this.registerRef,
+        registerChildComponent: this.registerChildComponent,
+      });
+    }
+
+    // element 에 component 속성 설정
+    this.$el.el[COMPONENT_INSTANCE] = this;
+    // this.prevTemplate = template;
+    this.runUpdated();
+  }
+
+  async runningMount(template, $container) {
+    const newDomElement = this.parseMainTemplate(template);
+    this.$el = newDomElement;
+    this.refs.$el = this.$el;
+    // this.prevTemplate = template;
+    // element 에 component 속성 설정
+    this.$el.el[COMPONENT_INSTANCE] = this;
+    if ($container) {
+      if (!($container instanceof Dom)) {
+        $container = Dom.create($container);
+      }
+
+      // $container 의 자식이 아닐 때만 추가
+      if ($container.hasChild(this.$el) === false) {
+        $container.append(this.$el);
+        this.runMounted();
+      }
+    }
+    // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
+    await this._afterLoad();
   }
 
   checkRefClass = (oldEl, newVNode) => {
@@ -338,42 +378,9 @@ export class EventMachine extends HookMachine {
       );
     }
     if (this.$el) {
-      if (template.type === VNodeType.FRAGMENT) {
-        updateChildren(this.parentElement, template);
-      } else {
-        Reconcile(this.$el.el, template, {
-          checkRefClass: this.checkRefClass,
-          context: this,
-          isForceRender,
-          registerRef: this.registerRef,
-          registerChildComponent: this.registerChildComponent,
-        });
-      }
-
-      // element 에 component 속성 설정
-      this.$el.el[COMPONENT_INSTANCE] = this;
-      // this.prevTemplate = template;
-      this.runUpdated();
+      await this.runningUpdate(template, isForceRender);
     } else {
-      const newDomElement = this.parseMainTemplate(template);
-      this.$el = newDomElement;
-      this.refs.$el = this.$el;
-      // this.prevTemplate = template;
-      // element 에 component 속성 설정
-      this.$el.el[COMPONENT_INSTANCE] = this;
-      if ($container) {
-        if (!($container instanceof Dom)) {
-          $container = Dom.create($container);
-        }
-
-        // $container 의 자식이 아닐 때만 추가
-        if ($container.hasChild(this.$el) === false) {
-          $container.append(this.$el);
-          this.runMounted();
-        }
-      }
-      // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
-      await this._afterLoad();
+      await this.runningMount(template, $container);
     }
 
     return this;

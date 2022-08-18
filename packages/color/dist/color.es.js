@@ -1,395 +1,241 @@
-const CLONE_FUNCTION = (obj) => JSON.parse(JSON.stringify(obj));
-function clone(obj) {
-  if (typeof obj === "undefined")
-    return void 0;
-  return CLONE_FUNCTION(obj);
+const E = (r) => JSON.parse(JSON.stringify(r));
+function V(r) {
+  if (!(typeof r > "u"))
+    return E(r);
 }
-function round(n, k) {
-  k = typeof k === "undefined" ? 1 : k;
-  return Math.round(n * k) / k;
+function s(r, n) {
+  return n = typeof n > "u" ? 1 : n, Math.round(r * n) / n;
 }
-function format(obj, type, defaultColor = "rgba(0, 0, 0, 0)") {
-  if (Array.isArray(obj)) {
-    obj = { r: obj[0], g: obj[1], b: obj[2], a: obj[3] };
-  }
-  if (type == "hex") {
-    return hex(obj);
-  } else if (type == "rgb") {
-    return rgb(obj, defaultColor);
-  } else if (type == "hsl") {
-    return hsl(obj);
-  }
-  return `${type}(${obj.r},${obj.g},${obj.b})`;
+function G(r, n, e = "rgba(0, 0, 0, 0)") {
+  return Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), n == "hex" ? z(r) : n == "rgb" ? R(r, e) : n == "hsl" ? F(r) : `${n}(${r.r},${r.g},${r.b})`;
 }
-function formatWithoutAlpha(obj, type, defaultColor = "rgba(0, 0, 0, 0)") {
-  const newColorObj = clone(obj);
-  newColorObj.a = 1;
-  return format(newColorObj, type, defaultColor);
+function gr(r, n, e = "rgba(0, 0, 0, 0)") {
+  const t = V(r);
+  return t.a = 1, G(t, n, e);
 }
-function hex(obj) {
-  if (Array.isArray(obj)) {
-    obj = { r: obj[0], g: obj[1], b: obj[2], a: obj[3] };
-  }
-  var r = obj.r.toString(16);
-  if (obj.r < 16)
-    r = "0" + r;
-  var g = obj.g.toString(16);
-  if (obj.g < 16)
-    g = "0" + g;
-  var b = obj.b.toString(16);
-  if (obj.b < 16)
-    b = "0" + b;
-  if (obj.a == 1 || typeof obj.a === "undefined") {
-    return `#${r}${g}${b}`;
-  } else {
-    const alpha = Math.ceil(obj.a * 255);
-    var a = alpha.toString(16);
-    if (alpha < 16)
-      a = "0" + a;
-    return `#${r}${g}${b}${a}`;
+function z(r) {
+  Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] });
+  var n = r.r.toString(16);
+  r.r < 16 && (n = "0" + n);
+  var e = r.g.toString(16);
+  r.g < 16 && (e = "0" + e);
+  var t = r.b.toString(16);
+  if (r.b < 16 && (t = "0" + t), r.a == 1 || typeof r.a > "u")
+    return `#${n}${e}${t}`;
+  {
+    const g = Math.ceil(r.a * 255);
+    var a = g.toString(16);
+    return g < 16 && (a = "0" + a), `#${n}${e}${t}${a}`;
   }
 }
-function rgb(obj, defaultColor = "rgba(0, 0, 0, 0)") {
-  if (Array.isArray(obj)) {
-    obj = { r: obj[0], g: obj[1], b: obj[2], a: obj[3] };
-  }
-  if (typeof obj === "undefined") {
-    return void 0;
-  }
-  if (obj.a == 1 || typeof obj.a === "undefined") {
-    if (isNaN(obj.r)) {
-      return defaultColor;
-    }
-    return `rgb(${obj.r},${obj.g},${obj.b})`;
-  } else {
-    return `rgba(${obj.r},${obj.g},${obj.b},${obj.a})`;
-  }
+function R(r, n = "rgba(0, 0, 0, 0)") {
+  if (Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), !(typeof r > "u"))
+    return r.a == 1 || typeof r.a > "u" ? isNaN(r.r) ? n : `rgb(${r.r},${r.g},${r.b})` : `rgba(${r.r},${r.g},${r.b},${r.a})`;
 }
-function hsl(obj) {
-  if (Array.isArray(obj)) {
-    obj = { r: obj[0], g: obj[1], b: obj[2], a: obj[3] };
-  }
-  if (obj.a == 1 || typeof obj.a === "undefined") {
-    return `hsl(${obj.h},${obj.s}%,${obj.l}%)`;
-  } else {
-    return `hsla(${obj.h},${obj.s}%,${obj.l}%,${obj.a})`;
-  }
+function F(r) {
+  return Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), r.a == 1 || typeof r.a > "u" ? `hsl(${r.h},${r.s}%,${r.l}%)` : `hsla(${r.h},${r.s}%,${r.l}%,${r.a})`;
 }
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function m(r, n) {
+  return Math.floor(Math.random() * (n - r + 1)) + r;
 }
-function randomByCount(count = 1) {
-  let arr = [];
-  for (var i = 0; i < count; i++) {
-    arr[arr.length] = random();
-  }
-  return arr;
+function fr(r = 1) {
+  let n = [];
+  for (var e = 0; e < r; e++)
+    n[n.length] = Z();
+  return n;
 }
-function random() {
-  return rgb({
-    r: randomNumber(0, 255),
-    g: randomNumber(0, 255),
-    b: randomNumber(0, 255)
+function Z() {
+  return R({
+    r: m(0, 255),
+    g: m(0, 255),
+    b: m(0, 255)
   });
 }
-function randomRGBA() {
-  return rgb({
-    r: randomNumber(0, 255),
-    g: randomNumber(0, 255),
-    b: randomNumber(0, 255),
-    a: randomNumber(0, 1e3) / 1e3
+function ur() {
+  return R({
+    r: m(0, 255),
+    g: m(0, 255),
+    b: m(0, 255),
+    a: m(0, 1e3) / 1e3
   });
 }
-function CMYKtoRGB(c2, m, y, k) {
-  if (arguments.length == 1) {
-    var { c: c2, m, y, k } = arguments[0];
-  }
-  const R = 255 * (1 - c2) * (1 - k);
-  const G = 255 * (1 - m) * (1 - k);
-  const B = 255 * (1 - y) * (1 - k);
-  return { r: R, g: G, b: B };
+function lr(r, n, e, t) {
+  if (arguments.length == 1)
+    var { c: r, m: n, y: e, k: t } = arguments[0];
+  const a = 255 * (1 - r) * (1 - t), g = 255 * (1 - n) * (1 - t), f = 255 * (1 - e) * (1 - t);
+  return { r: a, g, b: f };
 }
-function ReverseXyz(n) {
-  return Math.pow(n, 3) > 8856e-6 ? Math.pow(n, 3) : (n - 16 / 116) / 7.787;
+function y(r) {
+  return Math.pow(r, 3) > 8856e-6 ? Math.pow(r, 3) : (r - 16 / 116) / 7.787;
 }
-function ReverseRGB(n) {
-  return n > 31308e-7 ? 1.055 * Math.pow(n, 1 / 2.4) - 0.055 : 12.92 * n;
+function x(r) {
+  return r > 31308e-7 ? 1.055 * Math.pow(r, 1 / 2.4) - 0.055 : 12.92 * r;
 }
-function XYZtoRGB(x, y, z) {
-  if (arguments.length == 1) {
-    var { x, y, z } = arguments[0];
-  }
-  let X = x / 100;
-  let Y = y / 100;
-  let Z = z / 100;
-  let R = X * 3.2406 + Y * -1.5372 + Z * -0.4986;
-  let G = X * -0.9689 + Y * 1.8758 + Z * 0.0415;
-  let B = X * 0.0557 + Y * -0.204 + Z * 1.057;
-  R = ReverseRGB(R);
-  G = ReverseRGB(G);
-  B = ReverseRGB(B);
-  const r = round(R * 255);
-  const g = round(G * 255);
-  const b = round(B * 255);
-  return { r, g, b };
+function _(r, n, e) {
+  if (arguments.length == 1)
+    var { x: r, y: n, z: e } = arguments[0];
+  let t = r / 100, a = n / 100, g = e / 100, f = t * 3.2406 + a * -1.5372 + g * -0.4986, u = t * -0.9689 + a * 1.8758 + g * 0.0415, l = t * 0.0557 + a * -0.204 + g * 1.057;
+  f = x(f), u = x(u), l = x(l);
+  const i = s(f * 255), b = s(u * 255), h = s(l * 255);
+  return { r: i, g: b, b: h };
 }
-function LABtoXYZ(l, a, b) {
-  if (arguments.length == 1) {
-    var { l, a, b } = arguments[0];
-  }
-  let Y = (l + 16) / 116;
-  let X = a / 500 + Y;
-  let Z = Y - b / 200;
-  Y = ReverseXyz(Y);
-  X = ReverseXyz(X);
-  Z = ReverseXyz(Z);
-  const x = X * 95.047;
-  const y = Y * 100;
-  const z = Z * 108.883;
-  return { x, y, z };
+function q(r, n, e) {
+  if (arguments.length == 1)
+    var { l: r, a: n, b: e } = arguments[0];
+  let t = (r + 16) / 116, a = n / 500 + t, g = t - e / 200;
+  t = y(t), a = y(a), g = y(g);
+  const f = a * 95.047, u = t * 100, l = g * 108.883;
+  return { x: f, y: u, z: l };
 }
-function PivotXyz(n) {
-  return n > 8856e-6 ? Math.pow(n, 1 / 3) : (7.787 * n + 16) / 116;
+function k(r) {
+  return r > 8856e-6 ? Math.pow(r, 1 / 3) : (7.787 * r + 16) / 116;
 }
-function XYZtoLAB(x, y, z) {
-  if (arguments.length == 1) {
-    var { x, y, z } = arguments[0];
-  }
-  let X = x / 95.047;
-  let Y = y / 100;
-  let Z = z / 108.883;
-  X = PivotXyz(X);
-  Y = PivotXyz(Y);
-  Z = PivotXyz(Z);
-  const l = 116 * Y - 16;
-  const a = 500 * (X - Y);
-  const b = 200 * (Y - Z);
-  return { l, a, b };
+function K(r, n, e) {
+  if (arguments.length == 1)
+    var { x: r, y: n, z: e } = arguments[0];
+  let t = r / 95.047, a = n / 100, g = e / 108.883;
+  t = k(t), a = k(a), g = k(g);
+  const f = 116 * a - 16, u = 500 * (t - a), l = 200 * (a - g);
+  return { l: f, a: u, b: l };
 }
-function LABtoRGB(l, a, b) {
-  if (arguments.length == 1) {
-    var { l, a, b } = arguments[0];
-  }
-  return XYZtoRGB(LABtoXYZ(l, a, b));
+function ir(r, n, e) {
+  if (arguments.length == 1)
+    var { l: r, a: n, b: e } = arguments[0];
+  return _(q(r, n, e));
 }
-function RGBtoHSV(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  const R1 = r / 255;
-  const G1 = g / 255;
-  const B1 = b / 255;
-  const MaxC = Math.max(R1, G1, B1);
-  const MinC = Math.min(R1, G1, B1);
-  const DeltaC = MaxC - MinC;
-  var H = 0;
-  if (DeltaC == 0) {
-    H = 0;
-  } else if (MaxC == R1) {
-    H = 60 * ((G1 - B1) / DeltaC % 6);
-  } else if (MaxC == G1) {
-    H = 60 * ((B1 - R1) / DeltaC + 2);
-  } else if (MaxC == B1) {
-    H = 60 * ((R1 - G1) / DeltaC + 4);
-  }
-  if (H < 0) {
-    H = 360 + H;
-  }
-  var S = 0;
-  if (MaxC == 0)
-    S = 0;
-  else
-    S = DeltaC / MaxC;
-  var V = MaxC;
-  return { h: H, s: S, v: V };
+function A(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  const t = r / 255, a = n / 255, g = e / 255, f = Math.max(t, a, g), u = Math.min(t, a, g), l = f - u;
+  var i = 0;
+  l == 0 ? i = 0 : f == t ? i = 60 * ((a - g) / l % 6) : f == a ? i = 60 * ((g - t) / l + 2) : f == g && (i = 60 * ((t - a) / l + 4)), i < 0 && (i = 360 + i);
+  var b = 0;
+  f == 0 ? b = 0 : b = l / f;
+  var h = f;
+  return { h: i, s: b, v: h };
 }
-function RGBtoCMYK(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  const R1 = r / 255;
-  const G1 = g / 255;
-  const B1 = b / 255;
-  const K = 1 - Math.max(R1, G1, B1);
-  const C = (1 - R1 - K) / (1 - K);
-  const M = (1 - G1 - K) / (1 - K);
-  const Y = (1 - B1 - K) / (1 - K);
-  return { c: C, m: M, y: Y, k: K };
+function sr(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  const t = r / 255, a = n / 255, g = e / 255, f = 1 - Math.max(t, a, g), u = (1 - t - f) / (1 - f), l = (1 - a - f) / (1 - f), i = (1 - g - f) / (1 - f);
+  return { c: u, m: l, y: i, k: f };
 }
-function RGBtoHSL(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  r /= 255, g /= 255, b /= 255;
-  var max = Math.max(r, g, b), min = Math.min(r, g, b);
-  var h, s, l = (max + min) / 2;
-  if (max == min) {
-    h = s = 0;
-  } else {
-    var d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
+function v(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  r /= 255, n /= 255, e /= 255;
+  var t = Math.max(r, n, e), a = Math.min(r, n, e), g, f, u = (t + a) / 2;
+  if (t == a)
+    g = f = 0;
+  else {
+    var l = t - a;
+    switch (f = u > 0.5 ? l / (2 - t - a) : l / (t + a), t) {
       case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
+        g = (n - e) / l + (n < e ? 6 : 0);
         break;
-      case g:
-        h = (b - r) / d + 2;
+      case n:
+        g = (e - r) / l + 2;
         break;
-      case b:
-        h = (r - g) / d + 4;
+      case e:
+        g = (r - n) / l + 4;
         break;
     }
-    h /= 6;
+    g /= 6;
   }
-  return { h: round(h * 360), s: round(s * 100), l: round(l * 100) };
+  return { h: s(g * 360), s: s(f * 100), l: s(u * 100) };
 }
-function c(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
+function or(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  return $((r + n + e) / 3 > 90 ? 0 : 255);
+}
+function $(r) {
+  return { r, g: r, b: r };
+}
+function br(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  return $(Math.ceil((r + n + e) / 3));
+}
+function cr(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  return $(P(r, n, e).y);
+}
+function J(r, n, e) {
+  return Math.ceil(r * 0.2126 + n * 0.7152 + e * 0.0722);
+}
+function P(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  const t = J(r, n, e), a = 0.564 * (e - t), g = 0.713 * (r - t);
+  return { y: t, cr: g, cb: a };
+}
+function M(r) {
+  return (r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92) * 100;
+}
+function T(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  let t = r / 255, a = n / 255, g = e / 255;
+  t = M(t), a = M(a), g = M(g);
+  const f = t * 0.4124 + a * 0.3576 + g * 0.1805, u = t * 0.2126 + a * 0.7152 + g * 0.0722, l = t * 0.0193 + a * 0.1192 + g * 0.9505;
+  return { x: f, y: u, z: l };
+}
+function hr(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  return K(T(r, n, e));
+}
+function w(r, n, e) {
+  return e < 0 && (e += 1), e > 1 && (e -= 1), e < 1 / 6 ? r + (n - r) * 6 * e : e < 1 / 2 ? n : e < 2 / 3 ? r + (n - r) * (2 / 3 - e) * 6 : r;
+}
+function dr(r, n, e) {
+  if (arguments.length == 1)
+    var { h: r, s: n, l: e } = arguments[0];
+  const t = B(r, n, e);
+  return A(t.r, t.g, t.b);
+}
+function B(r, n, e) {
+  if (arguments.length == 1)
+    var { h: r, s: n, l: e } = arguments[0];
+  var t, a, g;
+  if (r /= 360, n /= 100, e /= 100, n == 0)
+    t = a = g = e;
+  else {
+    var f = e < 0.5 ? e * (1 + n) : e + n - e * n, u = 2 * e - f;
+    t = w(u, f, r + 1 / 3), a = w(u, f, r), g = w(u, f, r - 1 / 3);
   }
-  return gray((r + g + b) / 3 > 90 ? 0 : 255);
+  return { r: s(t * 255), g: s(a * 255), b: s(g * 255) };
 }
-function gray(gray2) {
-  return { r: gray2, g: gray2, b: gray2 };
-}
-function RGBtoSimpleGray(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  return gray(Math.ceil((r + g + b) / 3));
-}
-function RGBtoGray(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  return gray(RGBtoYCrCb(r, g, b).y);
-}
-function brightness(r, g, b) {
-  return Math.ceil(r * 0.2126 + g * 0.7152 + b * 0.0722);
-}
-function RGBtoYCrCb(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  const Y = brightness(r, g, b);
-  const Cb = 0.564 * (b - Y);
-  const Cr = 0.713 * (r - Y);
-  return { y: Y, cr: Cr, cb: Cb };
-}
-function PivotRGB(n) {
-  return (n > 0.04045 ? Math.pow((n + 0.055) / 1.055, 2.4) : n / 12.92) * 100;
-}
-function RGBtoXYZ(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  let R = r / 255;
-  let G = g / 255;
-  let B = b / 255;
-  R = PivotRGB(R);
-  G = PivotRGB(G);
-  B = PivotRGB(B);
-  const x = R * 0.4124 + G * 0.3576 + B * 0.1805;
-  const y = R * 0.2126 + G * 0.7152 + B * 0.0722;
-  const z = R * 0.0193 + G * 0.1192 + B * 0.9505;
-  return { x, y, z };
-}
-function RGBtoLAB(r, g, b) {
-  if (arguments.length == 1) {
-    var { r, g, b } = arguments[0];
-  }
-  return XYZtoLAB(RGBtoXYZ(r, g, b));
-}
-function HUEtoRGB(p, q, t) {
-  if (t < 0)
-    t += 1;
-  if (t > 1)
-    t -= 1;
-  if (t < 1 / 6)
-    return p + (q - p) * 6 * t;
-  if (t < 1 / 2)
-    return q;
-  if (t < 2 / 3)
-    return p + (q - p) * (2 / 3 - t) * 6;
-  return p;
-}
-function HSLtoHSV(h, s, l) {
-  if (arguments.length == 1) {
-    var { h, s, l } = arguments[0];
-  }
-  const rgb2 = HSLtoRGB(h, s, l);
-  return RGBtoHSV(rgb2.r, rgb2.g, rgb2.b);
-}
-function HSLtoRGB(h, s, l) {
-  if (arguments.length == 1) {
-    var { h, s, l } = arguments[0];
-  }
-  var r, g, b;
-  h /= 360;
-  s /= 100;
-  l /= 100;
-  if (s == 0) {
-    r = g = b = l;
-  } else {
-    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    var p = 2 * l - q;
-    r = HUEtoRGB(p, q, h + 1 / 3);
-    g = HUEtoRGB(p, q, h);
-    b = HUEtoRGB(p, q, h - 1 / 3);
-  }
-  return { r: round(r * 255), g: round(g * 255), b: round(b * 255) };
-}
-function HSVtoRGB(h, s, v) {
-  if (arguments.length == 1) {
-    var { h, s, v } = arguments[0];
-  }
-  var H = h;
-  var S = s;
-  var V = v;
-  if (H >= 360) {
-    H = 0;
-  }
-  const C = S * V;
-  const X = C * (1 - Math.abs(H / 60 % 2 - 1));
-  const m = V - C;
-  let temp = [];
-  if (0 <= H && H < 60) {
-    temp = [C, X, 0];
-  } else if (60 <= H && H < 120) {
-    temp = [X, C, 0];
-  } else if (120 <= H && H < 180) {
-    temp = [0, C, X];
-  } else if (180 <= H && H < 240) {
-    temp = [0, X, C];
-  } else if (240 <= H && H < 300) {
-    temp = [X, 0, C];
-  } else if (300 <= H && H < 360) {
-    temp = [C, 0, X];
-  }
-  return {
-    r: round((temp[0] + m) * 255),
-    g: round((temp[1] + m) * 255),
-    b: round((temp[2] + m) * 255)
+function O(r, n, e) {
+  if (arguments.length == 1)
+    var { h: r, s: n, v: e } = arguments[0];
+  var t = r, a = n, g = e;
+  t >= 360 && (t = 0);
+  const f = a * g, u = f * (1 - Math.abs(t / 60 % 2 - 1)), l = g - f;
+  let i = [];
+  return 0 <= t && t < 60 ? i = [f, u, 0] : 60 <= t && t < 120 ? i = [u, f, 0] : 120 <= t && t < 180 ? i = [0, f, u] : 180 <= t && t < 240 ? i = [0, u, f] : 240 <= t && t < 300 ? i = [u, 0, f] : 300 <= t && t < 360 && (i = [f, 0, u]), {
+    r: s((i[0] + l) * 255),
+    g: s((i[1] + l) * 255),
+    b: s((i[2] + l) * 255)
   };
 }
-function HSVtoHSL(h, s, v) {
-  if (arguments.length == 1) {
-    var { h, s, v } = arguments[0];
-  }
-  const rgb2 = HSVtoRGB(h, s, v);
-  return RGBtoHSL(rgb2.r, rgb2.g, rgb2.b);
+function mr(r, n, e) {
+  if (arguments.length == 1)
+    var { h: r, s: n, v: e } = arguments[0];
+  const t = O(r, n, e);
+  return v(t.r, t.g, t.b);
 }
-function YCrCbtoRGB(y, cr, cb, bit) {
+function vr(r, n, e, t) {
   if (arguments.length == 1) {
-    var { y, cr, cb, bit } = arguments[0];
-    bit = bit || 0;
+    var { y: r, cr: n, cb: e, bit: t } = arguments[0];
+    t = t || 0;
   }
-  const R = y + 1.402 * (cr - bit);
-  const G = y - 0.344 * (cb - bit) - 0.714 * (cr - bit);
-  const B = y + 1.772 * (cb - bit);
-  return { r: Math.ceil(R), g: Math.ceil(G), b: Math.ceil(B) };
+  const a = r + 1.402 * (n - t), g = r - 0.344 * (e - t) - 0.714 * (n - t), f = r + 1.772 * (e - t);
+  return { r: Math.ceil(a), g: Math.ceil(g), b: Math.ceil(f) };
 }
-const color_names = {
+const H = {
   aliceblue: "rgb(240, 248, 255)",
   antiquewhite: "rgb(250, 235, 215)",
   aqua: "rgb(0, 255, 255)",
@@ -541,304 +387,195 @@ const color_names = {
   transparent: "rgba(0, 0, 0, 0)",
   currentColor: "currentColor"
 };
-function isColorName(name) {
-  return !!color_names[name];
+function U(r) {
+  return !!H[r];
 }
-function getColorByName(name) {
-  return color_names[name];
+function I(r) {
+  return H[r];
 }
-const color_regexp = /(#(?:[\da-f]{3}){1,2}|#(?:[\da-f]{8})|rgb\((?:\s*\d{1,3},\s*){2}\d{1,3}\s*\)|rgba\((?:\s*\d{1,3},\s*){3}\d*\.?\d+\s*\)|hsl\(\s*\d{1,3}(?:,\s*\d{1,3}%){2}\s*\)|hsla\(\s*\d{1,3}(?:,\s*\d{1,3}%){2},\s*\d*\.?\d+\s*\)|([\w_-]+))/gi;
-function getColorIndexString(it, prefix = "@") {
-  return `${prefix}${it.startIndex}`.padEnd(10, "0");
+const D = /(#(?:[\da-f]{3}){1,2}|#(?:[\da-f]{8})|rgb\((?:\s*\d{1,3},\s*){2}\d{1,3}\s*\)|rgba\((?:\s*\d{1,3},\s*){3}\d*\.?\d+\s*\)|hsl\(\s*\d{1,3}(?:,\s*\d{1,3}%){2}\s*\)|hsla\(\s*\d{1,3}(?:,\s*\d{1,3}%){2},\s*\d*\.?\d+\s*\)|([\w_-]+))/gi;
+function C(r, n = "@") {
+  return `${n}${r.startIndex}`.padEnd(10, "0");
 }
-function isColor(str) {
-  const results = matches(str);
-  return !!results.length;
+function pr(r) {
+  return !!Y(r).length;
 }
-function matches(str) {
-  const matches2 = str.match(color_regexp);
-  let result = [];
-  if (!matches2) {
-    return result;
-  }
-  for (var i = 0, len = matches2.length; i < len; i++) {
-    if (matches2[i].indexOf("#") > -1 || matches2[i].indexOf("rgb") > -1 || matches2[i].indexOf("hsl") > -1) {
-      result.push({ color: matches2[i] });
-    } else {
-      var nameColor = getColorByName(matches2[i]);
-      if (nameColor) {
-        result.push({ color: matches2[i], nameColor });
-      }
+function Y(r) {
+  const n = r.match(D);
+  let e = [];
+  if (!n)
+    return e;
+  for (var t = 0, a = n.length; t < a; t++)
+    if (n[t].indexOf("#") > -1 || n[t].indexOf("rgb") > -1 || n[t].indexOf("hsl") > -1)
+      e.push({ color: n[t] });
+    else {
+      var g = I(n[t]);
+      g && e.push({ color: n[t], nameColor: g });
+    }
+  var f = { next: 0 };
+  return e.forEach((u) => {
+    const l = r.indexOf(u.color, f.next);
+    u.startIndex = l, u.endIndex = l + u.color.length, f.next = u.endIndex;
+  }), e;
+}
+function N(r, n = "@") {
+  const e = Y(r);
+  return e.forEach((t) => {
+    r = r.replace(t.color, C(t, n));
+  }), { str: r, matches: e };
+}
+function X(r, n = ",") {
+  const e = N(r);
+  return e.str.split(n).map((t, a) => (t = c(t), e.matches[a] && (t = t.replace(
+    C(e.matches[a]),
+    e.matches[a].color
+  )), t));
+}
+function W(r, n) {
+  return n.forEach((e) => {
+    r = r.replace(C(e), e.color);
+  }), r;
+}
+const Q = /^\s+|\s+$/g;
+function c(r) {
+  return r.replace(Q, "");
+}
+function p(r) {
+  if (typeof r == "string") {
+    if (U(r) && (r = I(r)), r.indexOf("rgb(") > -1) {
+      for (var n = r.replace("rgb(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
+        n[e] = parseInt(c(n[e]), 10);
+      var a = { type: "rgb", r: n[0], g: n[1], b: n[2], a: 1 };
+      return a = { ...a, ...v(a) }, a;
+    } else if (r.indexOf("rgba(") > -1) {
+      for (var n = r.replace("rgba(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
+        t - 1 == e ? n[e] = parseFloat(c(n[e])) : n[e] = parseInt(c(n[e]), 10);
+      var a = { type: "rgb", r: n[0], g: n[1], b: n[2], a: n[3] };
+      return a = { ...a, ...v(a) }, a;
+    } else if (r.indexOf("hsl(") > -1) {
+      for (var n = r.replace("hsl(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
+        n[e] = parseFloat(c(n[e]));
+      var a = { type: "hsl", h: n[0], s: n[1], l: n[2], a: 1 };
+      return a = { ...a, ...B(a) }, a;
+    } else if (r.indexOf("hsla(") > -1) {
+      for (var n = r.replace("hsla(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
+        t - 1 == e ? n[e] = parseFloat(c(n[e])) : n[e] = parseInt(c(n[e]), 10);
+      var a = { type: "hsl", h: n[0], s: n[1], l: n[2], a: n[3] };
+      return a = { ...a, ...B(a) }, a;
+    } else if (r.indexOf("#") == 0) {
+      r = r.replace("#", "");
+      var n = [], g = 1;
+      if (r.length == 3)
+        for (var e = 0, t = r.length; e < t; e++) {
+          var f = r.substr(e, 1);
+          n.push(parseInt(f + f, 16));
+        }
+      else if (r.length === 8) {
+        for (var e = 0, t = r.length; e < t; e += 2)
+          n.push(parseInt(r.substr(e, 2), 16));
+        g = n.pop() / 255;
+      } else
+        for (var e = 0, t = r.length; e < t; e += 2)
+          n.push(parseInt(r.substr(e, 2), 16));
+      var a = { type: "hex", r: n[0], g: n[1], b: n[2], a: g };
+      return a = { ...a, ...v(a) }, a;
+    }
+  } else if (typeof r == "number") {
+    if (0 <= r && r <= 16777215) {
+      const u = (r & 16711680) >> 16, l = (r & 65280) >> 8, i = (r & 255) >> 0;
+      var a = { type: "hex", r: u, g: l, b: i, a: 1 };
+      return a = { ...a, ...v(a) }, a;
+    } else if (0 <= r && r <= 4294967295) {
+      const u = (r & 4278190080) >> 24, l = (r & 16711680) >> 16, i = (r & 65280) >> 8, b = (r & 255) / 255;
+      var a = { type: "hex", r: u, g: l, b: i, a: b };
+      return a = { ...a, ...v(a) }, a;
     }
   }
-  var pos = { next: 0 };
-  result.forEach((item) => {
-    const startIndex = str.indexOf(item.color, pos.next);
-    item.startIndex = startIndex;
-    item.endIndex = startIndex + item.color.length;
-    pos.next = item.endIndex;
+  return r;
+}
+function j(r) {
+  typeof r == "string" && (r = X(r)), r = r.map((e) => {
+    if (typeof e == "string") {
+      const t = N(e);
+      let a = c(t.str).split(" ");
+      return a[1] ? a[1].indexOf("%") > -1 ? a[1] = parseFloat(a[1].replace(/%/, "")) / 100 : a[1] = parseFloat(a[1]) : a[1] = "*", a[0] = W(a[0], t.matches), a;
+    } else if (Array.isArray(e))
+      return e[1] ? typeof e[1] == "string" && (e[1].indexOf("%") > -1 ? e[1] = parseFloat(e[1].replace(/%/, "")) / 100 : e[1] = +e[1]) : e[1] = "*", [...e];
   });
-  return result;
-}
-function convertMatches(str, prefix = "@") {
-  const m = matches(str);
-  m.forEach((it) => {
-    str = str.replace(it.color, getColorIndexString(it, prefix));
-  });
-  return { str, matches: m };
-}
-function convertMatchesArray(str, splitStr = ",") {
-  const ret = convertMatches(str);
-  return ret.str.split(splitStr).map((it, index) => {
-    it = trim(it);
-    if (ret.matches[index]) {
-      it = it.replace(
-        getColorIndexString(ret.matches[index]),
-        ret.matches[index].color
-      );
-    }
-    return it;
-  });
-}
-function reverseMatches(str, matches2) {
-  matches2.forEach((it) => {
-    str = str.replace(getColorIndexString(it), it.color);
-  });
-  return str;
-}
-const REG_TRIM = /^\s+|\s+$/g;
-function trim(str) {
-  return str.replace(REG_TRIM, "");
-}
-function parse(str) {
-  if (typeof str === "string") {
-    if (isColorName(str)) {
-      str = getColorByName(str);
-    }
-    if (str.indexOf("rgb(") > -1) {
-      var arr = str.replace("rgb(", "").replace(")", "").split(",");
-      for (var i = 0, len = arr.length; i < len; i++) {
-        arr[i] = parseInt(trim(arr[i]), 10);
-      }
-      var obj = { type: "rgb", r: arr[0], g: arr[1], b: arr[2], a: 1 };
-      obj = { ...obj, ...RGBtoHSL(obj) };
-      return obj;
-    } else if (str.indexOf("rgba(") > -1) {
-      var arr = str.replace("rgba(", "").replace(")", "").split(",");
-      for (var i = 0, len = arr.length; i < len; i++) {
-        if (len - 1 == i) {
-          arr[i] = parseFloat(trim(arr[i]));
-        } else {
-          arr[i] = parseInt(trim(arr[i]), 10);
-        }
-      }
-      var obj = { type: "rgb", r: arr[0], g: arr[1], b: arr[2], a: arr[3] };
-      obj = { ...obj, ...RGBtoHSL(obj) };
-      return obj;
-    } else if (str.indexOf("hsl(") > -1) {
-      var arr = str.replace("hsl(", "").replace(")", "").split(",");
-      for (var i = 0, len = arr.length; i < len; i++) {
-        arr[i] = parseFloat(trim(arr[i]));
-      }
-      var obj = { type: "hsl", h: arr[0], s: arr[1], l: arr[2], a: 1 };
-      obj = { ...obj, ...HSLtoRGB(obj) };
-      return obj;
-    } else if (str.indexOf("hsla(") > -1) {
-      var arr = str.replace("hsla(", "").replace(")", "").split(",");
-      for (var i = 0, len = arr.length; i < len; i++) {
-        if (len - 1 == i) {
-          arr[i] = parseFloat(trim(arr[i]));
-        } else {
-          arr[i] = parseInt(trim(arr[i]), 10);
-        }
-      }
-      var obj = { type: "hsl", h: arr[0], s: arr[1], l: arr[2], a: arr[3] };
-      obj = { ...obj, ...HSLtoRGB(obj) };
-      return obj;
-    } else if (str.indexOf("#") == 0) {
-      str = str.replace("#", "");
-      var arr = [];
-      var a = 1;
-      if (str.length == 3) {
-        for (var i = 0, len = str.length; i < len; i++) {
-          var char = str.substr(i, 1);
-          arr.push(parseInt(char + char, 16));
-        }
-      } else if (str.length === 8) {
-        for (var i = 0, len = str.length; i < len; i += 2) {
-          arr.push(parseInt(str.substr(i, 2), 16));
-        }
-        a = arr.pop() / 255;
-      } else {
-        for (var i = 0, len = str.length; i < len; i += 2) {
-          arr.push(parseInt(str.substr(i, 2), 16));
-        }
-      }
-      var obj = { type: "hex", r: arr[0], g: arr[1], b: arr[2], a };
-      obj = { ...obj, ...RGBtoHSL(obj) };
-      return obj;
-    }
-  } else if (typeof str === "number") {
-    if (0 <= str && str <= 16777215) {
-      const r = (str & 16711680) >> 16;
-      const g = (str & 65280) >> 8;
-      const b = (str & 255) >> 0;
-      var obj = { type: "hex", r, g, b, a: 1 };
-      obj = { ...obj, ...RGBtoHSL(obj) };
-      return obj;
-    } else if (0 <= str && str <= 4294967295) {
-      const r = (str & 4278190080) >> 24;
-      const g = (str & 16711680) >> 16;
-      const b = (str & 65280) >> 8;
-      const a2 = (str & 255) / 255;
-      var obj = { type: "hex", r, g, b, a: a2 };
-      obj = { ...obj, ...RGBtoHSL(obj) };
-      return obj;
-    }
-  }
-  return str;
-}
-function parseGradient(colors) {
-  if (typeof colors === "string") {
-    colors = convertMatchesArray(colors);
-  }
-  colors = colors.map((it) => {
-    if (typeof it === "string") {
-      const ret = convertMatches(it);
-      let arr = trim(ret.str).split(" ");
-      if (arr[1]) {
-        if (arr[1].indexOf("%") > -1) {
-          arr[1] = parseFloat(arr[1].replace(/%/, "")) / 100;
-        } else {
-          arr[1] = parseFloat(arr[1]);
-        }
-      } else {
-        arr[1] = "*";
-      }
-      arr[0] = reverseMatches(arr[0], ret.matches);
-      return arr;
-    } else if (Array.isArray(it)) {
-      if (!it[1]) {
-        it[1] = "*";
-      } else if (typeof it[1] === "string") {
-        if (it[1].indexOf("%") > -1) {
-          it[1] = parseFloat(it[1].replace(/%/, "")) / 100;
-        } else {
-          it[1] = +it[1];
-        }
-      }
-      return [...it];
-    }
-  });
-  const count = colors.filter((it) => {
-    return it[1] === "*";
-  }).length;
-  if (count > 0) {
-    const sum = colors.filter((it) => {
-      return it[1] != "*" && it[1] != 1;
-    }).map((it) => it[1]).reduce((total, cur) => {
-      return total + cur;
-    }, 0);
-    const dist = (1 - sum) / count;
-    colors.forEach((it, index) => {
-      if (it[1] == "*" && index > 0) {
-        if (colors.length - 1 == index)
-          ;
-        else {
-          it[1] = dist;
-        }
-      }
+  const n = r.filter((e) => e[1] === "*").length;
+  if (n > 0) {
+    const e = r.filter((a) => a[1] != "*" && a[1] != 1).map((a) => a[1]).reduce((a, g) => a + g, 0), t = (1 - e) / n;
+    r.forEach((a, g) => {
+      a[1] == "*" && g > 0 && (r.length - 1 == g || (a[1] = t));
     });
   }
-  return colors;
+  return r;
 }
-function interpolateRGB(startColor, endColor, t = 0.5, exportFormat = "hex") {
-  var obj = interpolateRGBObject(startColor, endColor, t);
-  return format(obj, exportFormat);
+function rr(r, n, e = 0.5, t = "hex") {
+  var a = er(r, n, e);
+  return G(a, t);
 }
-function interpolateRGBObject(startColor, endColor, t = 0.5) {
-  const startColorAlpha = typeof startColor.a === "undefined" ? 1 : startColor.a;
-  const endColorAlpha = typeof endColor.a === "undefined" ? 1 : endColor.a;
+function er(r, n, e = 0.5) {
+  const t = typeof r.a > "u" ? 1 : r.a, a = typeof n.a > "u" ? 1 : n.a;
   return {
-    r: round(startColor.r + (endColor.r - startColor.r) * t),
-    g: round(startColor.g + (endColor.g - startColor.g) * t),
-    b: round(startColor.b + (endColor.b - startColor.b) * t),
-    a: round(startColorAlpha + (endColorAlpha - startColorAlpha) * t, 100)
+    r: s(r.r + (n.r - r.r) * e),
+    g: s(r.g + (n.g - r.g) * e),
+    b: s(r.b + (n.b - r.b) * e),
+    a: s(t + (a - t) * e, 100)
   };
 }
-function scale(scale2, count = 5) {
-  if (!scale2)
+function o(r, n = 5) {
+  if (!r)
     return [];
-  if (typeof scale2 === "string") {
-    scale2 = convertMatchesArray(scale2);
+  typeof r == "string" && (r = X(r)), r = r || [];
+  for (var e = r.length, t = [], a = 0; a < e - 1; a++)
+    for (var g = 0; g < n; g++)
+      t.push(L(r[a], r[a + 1], g / n));
+  return t;
+}
+function L(r, n, e = 0.5, t = "hex") {
+  var a = p(r), g = p(n);
+  return rr(a, g, e, t);
+}
+function nr(r, n, e = 0.5, t = "hex") {
+  return L(r, n, e, t);
+}
+function tr(r) {
+  return r = p(r), (Math.round(r.r * 299) + Math.round(r.g * 587) + Math.round(r.b * 114)) / 1e3;
+}
+function yr(r) {
+  return tr(r) >= 128 ? "black" : "white";
+}
+function xr(r, n = 10) {
+  r = j(r);
+  let e = [], t = n - (r.length - 1), a = t;
+  for (var g = 1, f = r.length; g < f; g++) {
+    var u = r[g - 1][0], l = r[g][0], i = g == 1 ? r[g][1] : r[g][1] - r[g - 1][1], b = g == r.length - 1 ? a : Math.floor(i * t);
+    e = e.concat(o([u, l], b), [
+      l
+    ]), a -= b;
   }
-  scale2 = scale2 || [];
-  var len = scale2.length;
-  var colors = [];
-  for (var i = 0; i < len - 1; i++) {
-    for (var index = 0; index < count; index++) {
-      colors.push(blend(scale2[i], scale2[i + 1], index / count));
-    }
-  }
-  return colors;
+  return e;
 }
-function blend(startColor, endColor, ratio = 0.5, format2 = "hex") {
-  var s = parse(startColor);
-  var e = parse(endColor);
-  return interpolateRGB(s, e, ratio, format2);
+function S(r, n = "h", e = 9, t = "rgb", a = 0, g = 1, f = 100) {
+  for (var u = p(r), l = A(u), i = (g - a) * f / e, b = [], h = 1; h <= e; h++)
+    l[n] = Math.abs((f - i * h) / f), b.push(G(O(l), t));
+  return b;
 }
-function mix(startcolor, endColor, ratio = 0.5, format2 = "hex") {
-  return blend(startcolor, endColor, ratio, format2);
+function kr(r, n = 9, e = "rgb", t = 0, a = 360) {
+  return S(r, "h", n, e, t, a, 1);
 }
-function contrast(c2) {
-  c2 = parse(c2);
-  return (Math.round(c2.r * 299) + Math.round(c2.g * 587) + Math.round(c2.b * 114)) / 1e3;
+function Mr(r, n = 9, e = "rgb", t = 0, a = 1) {
+  return S(r, "s", n, e, t, a, 100);
 }
-function contrastColor(c2) {
-  return contrast(c2) >= 128 ? "black" : "white";
+function wr(r, n = 9, e = "rgb", t = 0, a = 1) {
+  return S(r, "v", n, e, t, a, 100);
 }
-function gradient(colors, count = 10) {
-  colors = parseGradient(colors);
-  let newColors = [];
-  let maxCount = count - (colors.length - 1);
-  let allCount = maxCount;
-  for (var i = 1, len = colors.length; i < len; i++) {
-    var startColor = colors[i - 1][0];
-    var endColor = colors[i][0];
-    var rate = i == 1 ? colors[i][1] : colors[i][1] - colors[i - 1][1];
-    var colorCount = i == colors.length - 1 ? allCount : Math.floor(rate * maxCount);
-    newColors = newColors.concat(scale([startColor, endColor], colorCount), [
-      endColor
-    ]);
-    allCount -= colorCount;
-  }
-  return newColors;
-}
-function scaleHSV(color, target = "h", count = 9, exportFormat = "rgb", min = 0, max = 1, dist = 100) {
-  var colorObj = parse(color);
-  var hsv = RGBtoHSV(colorObj);
-  var unit = (max - min) * dist / count;
-  var results = [];
-  for (var i = 1; i <= count; i++) {
-    hsv[target] = Math.abs((dist - unit * i) / dist);
-    results.push(format(HSVtoRGB(hsv), exportFormat));
-  }
-  return results;
-}
-function scaleH(color, count = 9, exportFormat = "rgb", min = 0, max = 360) {
-  return scaleHSV(color, "h", count, exportFormat, min, max, 1);
-}
-function scaleS(color, count = 9, exportFormat = "rgb", min = 0, max = 1) {
-  return scaleHSV(color, "s", count, exportFormat, min, max, 100);
-}
-function scaleV(color, count = 9, exportFormat = "rgb", min = 0, max = 1) {
-  return scaleHSV(color, "v", count, exportFormat, min, max, 100);
-}
-scale.parula = function(count) {
-  return scale(["#352a87", "#0f5cdd", "#00b5a6", "#ffc337", "#fdff00"], count);
+o.parula = function(r) {
+  return o(["#352a87", "#0f5cdd", "#00b5a6", "#ffc337", "#fdff00"], r);
 };
-scale.jet = function(count) {
-  return scale(
+o.jet = function(r) {
+  return o(
     [
       "#00008f",
       "#0020ff",
@@ -848,11 +585,11 @@ scale.jet = function(count) {
       "#ff0000",
       "#800000"
     ],
-    count
+    r
   );
 };
-scale.hsv = function(count) {
-  return scale(
+o.hsv = function(r) {
+  return o(
     [
       "#ff0000",
       "#ffff00",
@@ -862,22 +599,22 @@ scale.hsv = function(count) {
       "#ff00ff",
       "#ff0000"
     ],
-    count
+    r
   );
 };
-scale.hot = function(count) {
-  return scale(["#0b0000", "#ff0000", "#ffff00", "#ffffff"], count);
+o.hot = function(r) {
+  return o(["#0b0000", "#ff0000", "#ffff00", "#ffffff"], r);
 };
-scale.pink = function(count) {
-  return scale(["#1e0000", "#bd7b7b", "#e7e5b2", "#ffffff"], count);
+o.pink = function(r) {
+  return o(["#1e0000", "#bd7b7b", "#e7e5b2", "#ffffff"], r);
 };
-scale.bone = function(count) {
-  return scale(["#000000", "#4a4a68", "#a6c6c6", "#ffffff"], count);
+o.bone = function(r) {
+  return o(["#000000", "#4a4a68", "#a6c6c6", "#ffffff"], r);
 };
-scale.copper = function(count) {
-  return scale(["#000000", "#3d2618", "#9d623e", "#ffa167", "#ffc77f"], count);
+o.copper = function(r) {
+  return o(["#000000", "#3d2618", "#9d623e", "#ffa167", "#ffc77f"], r);
 };
-const hue_color = [
+const d = [
   { rgb: "#ff0000", start: 0 },
   { rgb: "#ffff00", start: 0.17 },
   { rgb: "#00ff00", start: 0.33 },
@@ -886,32 +623,84 @@ const hue_color = [
   { rgb: "#ff00ff", start: 0.83 },
   { rgb: "#ff0000", start: 1 }
 ];
-function checkHueColor(p) {
-  var startColor, endColor;
-  for (var i = 0; i < hue_color.length; i++) {
-    if (hue_color[i].start >= p) {
-      startColor = hue_color[i - 1];
-      endColor = hue_color[i];
+function Br(r) {
+  for (var n, e, t = 0; t < d.length; t++)
+    if (d[t].start >= r) {
+      n = d[t - 1], e = d[t];
       break;
     }
-  }
-  if (startColor && endColor) {
-    return mix(
-      startColor,
-      endColor,
-      (p - startColor.start) / (endColor.start - startColor.start)
-    );
-  }
-  return hue_color[0].rgb;
+  return n && e ? nr(
+    n,
+    e,
+    (r - n.start) / (e.start - n.start)
+  ) : d[0].rgb;
 }
-function initHueColors() {
-  for (var i = 0, len = hue_color.length; i < len; i++) {
-    var hue = hue_color[i];
-    var obj = parse(hue.rgb);
-    hue.r = obj.r;
-    hue.g = obj.g;
-    hue.b = obj.b;
+function ar() {
+  for (var r = 0, n = d.length; r < n; r++) {
+    var e = d[r], t = p(e.rgb);
+    e.r = t.r, e.g = t.g, e.b = t.b;
   }
 }
-initHueColors();
-export { CMYKtoRGB, HSLtoHSV, HSLtoRGB, HSVtoHSL, HSVtoRGB, HUEtoRGB, LABtoRGB, LABtoXYZ, PivotRGB, PivotXyz, RGBtoCMYK, RGBtoGray, RGBtoHSL, RGBtoHSV, RGBtoLAB, RGBtoSimpleGray, RGBtoXYZ, RGBtoYCrCb, ReverseRGB, ReverseXyz, XYZtoLAB, XYZtoRGB, YCrCbtoRGB, blend, brightness, c, checkHueColor, color_names, contrast, contrastColor, convertMatches, convertMatchesArray, format, formatWithoutAlpha, getColorByName, getColorIndexString, gradient, gray, hex, hsl, hue_color, interpolateRGB, interpolateRGBObject, isColor, isColorName, matches, mix, parse, parseGradient, random, randomByCount, randomRGBA, reverseMatches, rgb, scale, scaleH, scaleHSV, scaleS, scaleV, trim };
+ar();
+export {
+  lr as CMYKtoRGB,
+  dr as HSLtoHSV,
+  B as HSLtoRGB,
+  mr as HSVtoHSL,
+  O as HSVtoRGB,
+  w as HUEtoRGB,
+  ir as LABtoRGB,
+  q as LABtoXYZ,
+  M as PivotRGB,
+  k as PivotXyz,
+  sr as RGBtoCMYK,
+  cr as RGBtoGray,
+  v as RGBtoHSL,
+  A as RGBtoHSV,
+  hr as RGBtoLAB,
+  br as RGBtoSimpleGray,
+  T as RGBtoXYZ,
+  P as RGBtoYCrCb,
+  x as ReverseRGB,
+  y as ReverseXyz,
+  K as XYZtoLAB,
+  _ as XYZtoRGB,
+  vr as YCrCbtoRGB,
+  L as blend,
+  J as brightness,
+  or as c,
+  Br as checkHueColor,
+  H as color_names,
+  tr as contrast,
+  yr as contrastColor,
+  N as convertMatches,
+  X as convertMatchesArray,
+  G as format,
+  gr as formatWithoutAlpha,
+  I as getColorByName,
+  C as getColorIndexString,
+  xr as gradient,
+  $ as gray,
+  z as hex,
+  F as hsl,
+  d as hue_color,
+  rr as interpolateRGB,
+  er as interpolateRGBObject,
+  pr as isColor,
+  U as isColorName,
+  Y as matches,
+  nr as mix,
+  p as parse,
+  j as parseGradient,
+  Z as random,
+  fr as randomByCount,
+  ur as randomRGBA,
+  W as reverseMatches,
+  R as rgb,
+  o as scale,
+  kr as scaleH,
+  S as scaleHSV,
+  Mr as scaleS,
+  wr as scaleV,
+  c as trim
+};

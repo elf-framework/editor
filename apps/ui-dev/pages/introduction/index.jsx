@@ -1,8 +1,9 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
+import { MarkdownPage } from "../../component/MarkdownPage";
 import LayoutManager from "../../layouts/LayoutManager";
-import Index, { layout } from "./index.mdx";
+import Page, { layout } from "./index.mdx";
 import "./index.scss";
 
 function Main() {
@@ -10,7 +11,7 @@ function Main() {
 
   return (
     <CurrentLayout maxWidth={900}>
-      <Index title={"blue"} />
+      <MarkdownPage page={Page} />
     </CurrentLayout>
   );
 }

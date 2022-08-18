@@ -5,7 +5,7 @@ function EditLink({ filename }) {
   return (
     <div class="edit-link">
       <a href={`${github.DOCUMENT_ROOT}/${filename}`} target={filename}>
-        [Edit]
+        [Edit this page on GitHub]
       </a>
     </div>
   );

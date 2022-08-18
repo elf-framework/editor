@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [
@@ -19,20 +19,9 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "husky": "^7.0.4",
-    "prettier": "2.6.2",
-    "release-it": "^15.1.1",
-    "rollup-plugin-copy": "^3.4.0",
-    "typescript": "^4.6.3",
-    "vite": "^2.9.13",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-copy": "^0.1.6",
-    "vite-plugin-dts": "^1.0.5",
-    "vite-plugin-eslint": "^1.5.2",
+    "vite": "^3.0.8",
     "vite-plugin-replace": "^0.1.1",
-    "vitest": "0.0.107"
+    "vitest": "0.22.1"
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
@@ -40,29 +29,24 @@
     "ssr:watch": "npm run watch",
     "ui:watch": "npm run watch",
     "editor:watch": "npm run watch",
-    "release": "release-it *",
-    "sapa:release": "release-it *",
     "build": "npm run vite:dist",
     "test": "vitest",
-    "coverage": "vitest --coverage",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
-    "format": "prettier .  --write"
+    "coverage": "vitest --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/easylogic/editor.git"
+    "url": "git+https://github.com/elf-framework/editor.git"
   },
   "keywords": [
-    "CSS",
-    "CODE",
-    "Editor",
-    "Path",
-    "SVG"
+    "ELF",
+    "Sapa",
+    "UI",
+    "Library"
   ],
   "author": "easylogic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/easylogic/editor/issues"
+    "url": "https://github.com/elf-framework/editor/issues"
   },
-  "homepage": "https://editor.easylogic.studio/"
+  "homepage": "https://docs.elf-framework.com/"
 }

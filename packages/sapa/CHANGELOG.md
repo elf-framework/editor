@@ -1,5 +1,19 @@
 # @elf-framework/sapa
 
+## 2.1.4
+
+### Patch Changes
+
+- refactoring file structure
+  add makeText method for vnode
+  optimize file size
+
+## 2.1.3
+
+### Patch Changes
+
+- update file structure
+
 ## 2.1.2
 
 ### Patch Changes

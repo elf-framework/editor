@@ -1,5 +1,12 @@
 # ui-dev
 
+## 1.0.8
+
+### Patch Changes
+
+- Support Markdown Page
+  Support TableOfContent Component for markdown
+
 ## 1.0.7
 
 ### Patch Changes

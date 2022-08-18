@@ -8,7 +8,7 @@ import { Dom } from "./functions/Dom";
  * @param {UIElement} CustomUIElement
  * @returns {HTMLElement}
  */
-export default function WebComponent(CustomUIElement) {
+export function WebComponent(CustomUIElement) {
   // eslint-disable-next-line no-undef
   return class extends HTMLElement {
     constructor() {

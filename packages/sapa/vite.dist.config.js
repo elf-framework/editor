@@ -13,5 +13,10 @@ export default defineConfig({
       manifest: true,
       fileName: (format) => `sapa.${format}.js`,
     },
+    rollupOptions: {
+      output: {
+        exports: "named",
+      },
+    },
   },
 });

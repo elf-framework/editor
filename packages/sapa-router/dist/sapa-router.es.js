@@ -1,37 +1,35 @@
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-import { UIElement } from "@elf-framework/sapa";
-class Route extends UIElement {
+var c = Object.defineProperty;
+var i = (e, r, t) => r in e ? c(e, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[r] = t;
+var o = (e, r, t) => (i(e, typeof r != "symbol" ? r + "" : r, t), t);
+import { UIElement as n } from "@elf-framework/sapa";
+class u extends n {
 }
-class Switch extends UIElement {
+class h extends n {
 }
-class Router extends UIElement {
+class d extends n {
   constructor() {
     super(...arguments);
-    __publicField(this, "matchRoute", (route) => {
-      const { target } = this.props;
-      return route.props.path === target;
+    o(this, "matchRoute", (t) => {
+      const { target: s } = this.props;
+      return t.props.path === s;
     });
   }
   template() {
     return this.getLastRoute();
   }
-  isForceRender(props) {
-    return props.forceUpdate && this.props.target !== props.target;
+  isForceRender(t) {
+    return t.forceUpdate && this.props.target !== t.target;
   }
   getLastRoute() {
-    const switchObject = this.findSwitch();
-    const route = switchObject.find(this.matchRoute);
-    if (!route)
-      return "";
-    return route.props.content[0];
+    const s = this.findSwitch().find(this.matchRoute);
+    return s ? s.props.content[0] : "";
   }
   findSwitch() {
-    return this.props.content.find((it) => it.Component === Switch);
+    return this.props.content.find((t) => t.Component === h);
   }
 }
-export { Route, Router, Switch };
+export {
+  u as Route,
+  d as Router,
+  h as Switch
+};

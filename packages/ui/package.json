@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/ui",
-  "version": "2.0.49",
+  "version": "2.1.5",
   "description": "Fantastic UI library",
   "types": "./index.d.ts",
   "files": [
@@ -18,26 +18,13 @@
     }
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "autoprefixer": "^9.8.6",
-    "cssnano": "^5.0.13",
-    "eslint": "^8.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-jsconfig": "^1.1.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx": "^0.1.0",
-    "esprima": "^4.0.1",
-    "husky": "^7.0.4",
-    "postcss": "^8.4.4",
-    "prettier": "2.6.2",
-    "recast": "^0.21.1",
-    "release-it": "^15.1.1",
-    "rollup-plugin-copy": "^3.4.0",
-    "sass": "^1.44.0",
-    "typescript": "^4.6.3",
-    "vite": "^2.9.13",
-    "vitest": "0.0.107"
+    "autoprefixer": "^10.4.8",
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.16",
+    "recast": "^0.21.2",
+    "sass": "^1.54.4",
+    "vite": "^3.0.8",
+    "vitest": "0.22.1"
   },
   "dependencies": {
     "@elf-framework/color": "*",
@@ -47,33 +34,27 @@
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
-    "blank:watch": "npm run watch",
     "ui:watch": "npm run watch",
     "editor:watch": "npm run watch",
-    "//dev": "npm run vite:dist:watch",
-    "release": "release-it *",
     "build": "npm run vite:dist",
     "test": "vitest",
-    "coverage": "vitest --coverage",
-    "//prepare": "husky install",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix src",
-    "format": "prettier .  --write"
+    "coverage": "vitest --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elf-framework/editor.git"
   },
   "keywords": [
+    "ELF",
     "CSS",
     "CODE",
     "Editor",
-    "Path",
-    "SVG"
+    "UI"
   ],
   "author": "elf-framework",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/elf-framework/editor/issues"
   },
-  "homepage": "https://editor.elf-framework.com/"
+  "homepage": "https://docs.elf-framework.com/"
 }
