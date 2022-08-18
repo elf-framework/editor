@@ -1,1 +1,5 @@
 start(App);
+
+// or 
+
+render(App);

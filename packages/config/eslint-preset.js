@@ -52,6 +52,7 @@ module.exports = {
     __dirname: true,
     Map: true,
     Set: true,
+    location: true,
     WeakMap: true,
     WeakSet: true,
     setTimeout: true,

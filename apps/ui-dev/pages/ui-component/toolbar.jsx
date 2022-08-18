@@ -3,7 +3,7 @@ import { start } from "@elf-framework/sapa";
 import { Toolbar } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   const item = {
@@ -185,10 +185,10 @@ start(function () {
   };
 
   return (
-    <Layout>
+    <UILayout>
       <div>
         <Toolbar items={[item]} />
       </div>
-    </Layout>
+    </UILayout>
   );
 });

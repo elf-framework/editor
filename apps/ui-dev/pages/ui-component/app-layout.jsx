@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { AppLayout, AppLayoutItem, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 function Main() {
   return (
-    <Layout>
+    <UILayout>
       <h1>App Layout(top, left, right, bottom, center) with resizable</h1>
       <View
         position="relative"
@@ -38,7 +38,7 @@ function Main() {
           <AppLayoutItem direction="center"></AppLayoutItem>
         </AppLayout>
       </View>
-    </Layout>
+    </UILayout>
   );
 }
 

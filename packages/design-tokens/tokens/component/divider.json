@@ -1,33 +1,29 @@
 {
-    "component": {
-      "divider": {
-        "color": {
-            "border": {
-                "default": {
-                  "value": "{color.core.gray.1.value}"
-                },
-                "primary": {
-                  "value": "{color.background.primary.value}"
-                },
-                "secondary": {
-                  "value": "{color.background.secondary.value}"
-                },
-                "success": {
-                  "value": "{color.background.success.value}"
-                },
-                "info": {
-                  "value": "{color.background.info.value}"
-                },
-                "warning": {
-                  "value": "{color.background.warning.value}"
-                },
-                "danger": {
-                  "value": "{color.background.danger.value}"
-                }
-              }
+  "divider": {
+    "color": {
+      "border": {
+        "default": {
+          "value": "{color.core.gray.1.value}"
+        },
+        "primary": {
+          "value": "{color.background.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.background.secondary.value}"
+        },
+        "success": {
+          "value": "{color.background.success.value}"
+        },
+        "info": {
+          "value": "{color.background.info.value}"
+        },
+        "warning": {
+          "value": "{color.background.warning.value}"
+        },
+        "danger": {
+          "value": "{color.background.danger.value}"
         }
       }
     }
+  }
 }
-
-  

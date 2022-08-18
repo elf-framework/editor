@@ -1,0 +1,200 @@
+
+@import "github-markdown-css/github-markdown.css";
+@import "../component/utils/prism/themes/prism-vsc-dark-plus.css";
+@import "../component/utils/prism/rehype-prism-plus/prism-plus.css";
+
+
+
+html,body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.default-layout {
+
+    .layout-logo {
+        display: none;
+    }
+
+    .layout-content > div {
+        padding: 50px 10px;
+        min-height: 800px;
+        max-width: 800px;
+    }
+
+    .layout-tools {
+        padding: 20px;
+        .page-tools {
+            justify-content: center;
+        }
+    }
+}
+
+.layout {
+
+    --layout-menu-width: 300px;
+    --layout-header-height: 60px;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .layout-menu {
+        border-right: 1px solid #ececec;
+        position: fixed;
+        left: 0px;
+        width: var(--layout-menu-width);
+        bottom: 0px;
+        top: var(--layout-header-height);
+        overflow: auto;
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 10px 0px;
+    }
+
+    .layout-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--layout-header-height);
+        background-color: rgb(255, 255, 255);
+        border-bottom: 1px solid #ececec;
+        display: grid;
+        grid-template-columns: var(--layout-menu-width) 1fr;
+        z-index: 10;
+
+        &.fixed {
+            position: fixed;
+            z-index: 1;
+        }
+    }
+
+    .layout-content {
+        position: relative;
+        padding-left: var(--layout-menu-width);
+        padding-top: var(--layout-header-height);
+        padding-right: 100px;
+    }
+
+    .layout-logo {
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 900;
+    }
+}
+
+.page-menu {
+    padding: 10px 20px;
+    // border-radius: 5px;
+    box-sizing: border-box;
+    display: block;
+    &.selected {
+        background-color: var(--color-core-blue-0) !important;
+        border-right: 5px solid var(--color-core-blue-2);
+    }
+
+    &:hover {
+        background-color: rgba(199, 238, 255, 0.269);
+    }
+
+    a {
+        flex: 1 1 auto;
+        text-decoration: none;
+        color: var(--color-core-black);
+        display: block;
+    }
+
+    &[data-depth="1"] {
+        padding-left: 30px;
+    }
+
+    &[data-depth="2"] {
+        padding-left: 50px;
+    }
+
+    &[data-depth="3"] {
+        padding-left: 70px;
+    }
+}
+
+.page-title {
+    font-size: var(--size-font-200);
+    color: var(--color-core-gray-8);
+    padding: 7px 15px;
+    background-color: var(--color-core-gray-0);
+    border-bottom: 1px solid #ececec;
+    border-top: 1px solid #ececec;
+}
+
+.version {
+    flex: none;
+    display: block;
+    font-size: 12px;
+    color: gray;
+}
+
+
+@media (max-width: 800px) { 
+    .layout {
+        --layout-header-height: 48px;
+        position: static;
+        display: block;
+        .layout-logo {
+            display: none;
+        }
+
+        .layout-header {
+            display: flex;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            right:0;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            height: var(--layout-header-height);
+            align-items: center;
+            // justify-content: flex-end;
+        }
+
+        .layout-menu {
+            display: none;
+        }
+
+        .layout-content {
+            padding: 20px;
+            padding-top: var(--layout-header-height);
+        }
+    }
+}
+
+
+@media (max-width: 600px) {
+    .layout {
+        .layout-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 10px;
+            padding-right: 0px;
+            .layout-logo {
+                flex: none;
+
+                height: 100%;
+                display: inline-block;
+            }
+
+            .layout-tools {
+                flex: none; 
+                justify-content: flex-end;
+                width: 40px;
+                height: 100%;
+                text-align: right;
+            }
+
+        }
+    }
+}

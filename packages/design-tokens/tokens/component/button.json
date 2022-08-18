@@ -1,86 +1,84 @@
 {
-  "component": {
-    "button": {
-      "selected": {
-        "background": {
-          "default": {
-            "value": "{color.core.gray.2.value}"
-          }
+  "button": {
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.core.gray.2.value}"
+        }
+      }
+    },
+    "disabled": {
+      "background": {
+        "default": {
+          "value": "{color.core.gray.1.value}"
         }
       },
-      "disabled": {
-        "background": {
+      "text": {
           "default": {
-            "value": "{color.core.gray.1.value}"
+              "value": "{color.core.gray.3.value}"
           }
-        },
-        "text": {
-            "default": {
-                "value": "{color.core.gray.3.value}"
-            }
-        }
+      }
 
-      },
-      "color": {
-        "background": {
-          "default": {
-            "value": "{color.background.default.value}"
-          },
-          "primary": {
-            "value": "{color.background.primary.value}"
-          },
-          "secondary": {
-            "value": "{color.background.secondary.value}"
-          },
-          "success": {
-            "value": "{color.background.success.value}"
-          },
-          "info": {
-            "value": "{color.background.info.value}"
-          },
-          "warning": {
-            "value": "{color.background.warning.value}"
-          },
-          "danger": {
-            "value": "{color.background.danger.value}"
-          }
+    },
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default.value}"
         },
-
-        "border": {
-          "default": {
-            "value": "{color.core.black.value}"
-          },
-          "primary": {
-            "value": "{color.background.primary.value}"
-          },
-          "secondary": {
-            "value": "{color.background.secondary.value}"
-          },
-          "success": {
-            "value": "{color.background.success.value}"
-          },
-          "info": {
-            "value": "{color.background.info.value}"
-          },
-          "warning": {
-            "value": "{color.background.warning.value}"
-          },
-          "danger": {
-            "value": "{color.background.danger.value}"
-          }
+        "primary": {
+          "value": "{color.background.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.background.secondary.value}"
+        },
+        "success": {
+          "value": "{color.background.success.value}"
+        },
+        "info": {
+          "value": "{color.background.info.value}"
+        },
+        "warning": {
+          "value": "{color.background.warning.value}"
+        },
+        "danger": {
+          "value": "{color.background.danger.value}"
         }
       },
-      "size": {
-        "padding": {
-          "small": {
-            "value": "{size.base.65.value} {size.base.75.value}"
-          },
-          "medium": {
-            "value": "{size.base.100.value} {size.base.125.value}"
-          },
-          "large": {
-            "value": "{size.base.175.value} {size.base.250.value}"
-          }
+
+      "border": {
+        "default": {
+          "value": "{color.core.black.value}"
+        },
+        "primary": {
+          "value": "{color.background.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.background.secondary.value}"
+        },
+        "success": {
+          "value": "{color.background.success.value}"
+        },
+        "info": {
+          "value": "{color.background.info.value}"
+        },
+        "warning": {
+          "value": "{color.background.warning.value}"
+        },
+        "danger": {
+          "value": "{color.background.danger.value}"
+        }
+      }
+    },
+    "size": {
+      "padding": {
+        "small": {
+          "value": "{size.base.65.value} {size.base.75.value}"
+        },
+        "medium": {
+          "value": "{size.base.100.value} {size.base.125.value}"
+        },
+        "large": {
+          "value": "{size.base.175.value} {size.base.250.value}"
         }
       }
     }

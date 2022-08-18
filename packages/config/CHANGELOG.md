@@ -1,5 +1,11 @@
 # @elf-framework/config
 
+## 1.1.2
+
+### Patch Changes
+
+- refactoring file structure
+
 ## 1.1.1
 
 ### Patch Changes

@@ -7,7 +7,7 @@ import {
 } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 import "./event-panel.scss";
 
 class Background extends EventPanel {
@@ -94,7 +94,7 @@ start(function Root() {
   console.log("start");
 
   return (
-    <Layout>
+    <UILayout>
       <div
         style={{
           position: "absolute",
@@ -114,6 +114,6 @@ start(function Root() {
           </ControlPanel>
         </Background>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

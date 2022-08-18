@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/base-editor",
-  "version": "2.0.14",
+  "version": "2.1.5",
   "description": "Fantastic Editor library",
   "types": "./index.d.ts",
   "files": [
@@ -10,6 +10,7 @@
   "main": "./dist/base-editor.umd.js",
   "module": "./dist/base-editor.es.js",
   "exports": {
+    "./package.json": "./package.json",
     "./style.css": "./dist/index.css",
     ".": {
       "import": "./dist/base-editor.es.js",
@@ -17,18 +18,15 @@
     }
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "autoprefixer": "^9.8.6",
-    "cssnano": "^5.0.13",
-    "postcss": "^8.4.4",
-    "prettier": "2.6.2",
-    "recast": "^0.21.1",
-    "release-it": "^15.1.1",
-    "sass": "^1.44.0",
-    "vite": "^2.9.13",
-    "vitest": "0.0.107",
-    "vite-plugin-sapa": "*"
+    "autoprefixer": "^10.4.8",
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.16",
+    "prettier": "2.7.1",
+    "recast": "^0.21.2",
+    "sass": "^1.54.4",
+    "vite": "^3.0.8",
+    "vite-plugin-sapa": "*",
+    "vitest": "0.22.1"
   },
   "peerDependencies": {
     "@elf-framework/color": "*",
@@ -59,11 +57,10 @@
     "url": "git+https://github.com/easylogic/editor.git"
   },
   "keywords": [
-    "CSS",
-    "CODE",
-    "Editor",
-    "Path",
-    "SVG"
+    "elf",
+    "framework",
+    "sapa",
+    "editor"
   ],
   "author": "easylogic",
   "license": "MIT",

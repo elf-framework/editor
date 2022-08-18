@@ -3,7 +3,7 @@ import { start } from "@elf-framework/sapa";
 import { Flex, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 const list = {};
 
@@ -64,7 +64,7 @@ function IconView({ Filled, Outlined, key }) {
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div
         style={{
           padding: 20,
@@ -86,6 +86,6 @@ start(function () {
           })}
         </Flex>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

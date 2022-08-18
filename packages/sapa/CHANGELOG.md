@@ -1,5 +1,74 @@
 # @elf-framework/sapa
 
+## 2.1.4
+
+### Patch Changes
+
+- refactoring file structure
+  add makeText method for vnode
+  optimize file size
+
+## 2.1.3
+
+### Patch Changes
+
+- update file structure
+
+## 2.1.2
+
+### Patch Changes
+
+- modify global force render
+
+## 2.1.0
+
+### Minor Changes
+
+- - fixed to return newModule by Component
+  - fixed isEquals for Component, Component property is always return false
+  - modify to get dom reference
+  - add useStoreSet hook
+
+## 2.0.49
+
+### Patch Changes
+
+- fixed props diff algorithm
+  support default export for jsx
+
+## 2.0.47
+
+### Patch Changes
+
+- fixed to call clear function from onUpdated event
+
+## 2.0.46
+
+### Patch Changes
+
+- remove comment
+
+## 2.0.43
+
+### Patch Changes
+
+- fixed root Component element bug
+  fixed component refresh for hmr
+
+## 2.0.42
+
+### Patch Changes
+
+- support useRootContext for ssr
+
+## 2.0.41
+
+### Patch Changes
+
+- support hydrate for ssr
+  support context by root props
+  remove document object for ssr
+
 ## 2.0.39
 
 ### Patch Changes

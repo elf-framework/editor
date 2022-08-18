@@ -1209,11 +1209,11 @@
       },
       "green": {
         "0": {
-          "value": "#dafbe1",
+          "value": "#f0ffd9",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#dafbe1"
+            "value": "#f0ffd9"
           },
           "attributes": {
             "category": "color",
@@ -1229,11 +1229,11 @@
           }
         },
         "1": {
-          "value": "#aceebb",
+          "value": "#d9e9c0",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#aceebb"
+            "value": "#d9e9c0"
           },
           "attributes": {
             "category": "color",
@@ -1249,11 +1249,11 @@
           }
         },
         "2": {
-          "value": "#6fdd8b",
+          "value": "#b8d991",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#6fdd8b"
+            "value": "#b8d991"
           },
           "attributes": {
             "category": "color",
@@ -1269,11 +1269,11 @@
           }
         },
         "3": {
-          "value": "#4ac26b",
+          "value": "#8cc760",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#4ac26b"
+            "value": "#8cc760"
           },
           "attributes": {
             "category": "color",
@@ -1289,11 +1289,11 @@
           }
         },
         "4": {
-          "value": "#2da44e",
+          "value": "#5cb33b",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#2da44e"
+            "value": "#5cb33b"
           },
           "attributes": {
             "category": "color",
@@ -1309,11 +1309,11 @@
           }
         },
         "5": {
-          "value": "#1a7f37",
+          "value": "#3a9f1f",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#1a7f37"
+            "value": "#3a9f1f"
           },
           "attributes": {
             "category": "color",
@@ -1329,11 +1329,11 @@
           }
         },
         "6": {
-          "value": "#116329",
+          "value": "#1a7c0d",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#116329"
+            "value": "#1a7c0d"
           },
           "attributes": {
             "category": "color",
@@ -1349,11 +1349,11 @@
           }
         },
         "7": {
-          "value": "#044f1e",
+          "value": "#0a5a0a",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#044f1e"
+            "value": "#0a5a0a"
           },
           "attributes": {
             "category": "color",
@@ -1369,11 +1369,11 @@
           }
         },
         "8": {
-          "value": "#003d16",
+          "value": "#004c04",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#003d16"
+            "value": "#004c04"
           },
           "attributes": {
             "category": "color",
@@ -1389,11 +1389,11 @@
           }
         },
         "9": {
-          "value": "#002d11",
+          "value": "#003a02",
           "filePath": "tokens/color/core.json",
           "isSource": true,
           "original": {
-            "value": "#002d11"
+            "value": "#003a02"
           },
           "attributes": {
             "category": "color",
@@ -2639,145 +2639,607 @@
       }
     }
   },
-  "component": {
-    "alert": {
-      "color": {
-        "title": {
+  "alert": {
+    "color": {
+      "title": {
+        "default": {
+          "value": "{color.core.gray.9}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.9}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.core.blue.8}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.blue.8}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.core.gray.8}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.8}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "secondary"
+          }
+        },
+        "danger": {
+          "value": "{color.core.red.7}",
+          "comment": "Base color for the danger color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.red.7}",
+            "comment": "Base color for the danger color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "danger"
+          }
+        },
+        "warning": {
+          "value": "{color.core.yellow.5}",
+          "comment": "Base color for the warning color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.yellow.5}",
+            "comment": "Base color for the warning color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "warning"
+          }
+        },
+        "success": {
+          "value": "{color.core.green.7}",
+          "comment": "Base color for the success color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.green.7}",
+            "comment": "Base color for the success color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.core.blue.5}",
+          "comment": "Base color for the info color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.blue.5}",
+            "comment": "Base color for the info color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "title",
+            "3": "info"
+          }
+        },
+        "weak": {
           "default": {
-            "value": "{color.core.gray.9}",
+            "value": "{color.core.gray.4}",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.9}"
+              "value": "{color.core.gray.4}"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "default"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
               "4": "default"
             }
           },
           "primary": {
-            "value": "{color.core.blue.8}",
+            "value": "{color.core.blue.4}",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.8}"
+              "value": "{color.core.blue.4}"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "primary"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
               "4": "primary"
             }
           },
           "secondary": {
-            "value": "{color.core.gray.8}",
+            "value": "{color.core.gray.4}",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.8}"
+              "value": "{color.core.gray.4}"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "secondary"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
               "4": "secondary"
             }
           },
           "danger": {
-            "value": "{color.core.red.7}",
+            "value": "{color.core.red.4}",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.red.7}",
+              "value": "{color.core.red.4}",
               "comment": "Base color for the danger color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "danger"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
               "4": "danger"
             }
           },
           "warning": {
-            "value": "{color.core.yellow.5}",
+            "value": "{color.core.orange.4}",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.yellow.5}",
+              "value": "{color.core.orange.4}",
               "comment": "Base color for the warning color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "warning"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
               "4": "warning"
             }
           },
           "success": {
-            "value": "{color.core.green.7}",
+            "value": "{color.core.green.4}",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.green.7}",
+              "value": "{color.core.green.4}",
               "comment": "Base color for the success color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
               "state": "success"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
+              "4": "success"
+            }
+          },
+          "info": {
+            "value": "{color.core.blue.4}",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.4}",
+              "comment": "Base color for the info color"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "info"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "title",
+              "3": "weak",
+              "4": "info"
+            }
+          }
+        }
+      },
+      "content": {
+        "default": {
+          "value": "{color.core.gray.6}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.6}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.core.blue.1}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.blue.1}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.core.gray.1}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "secondary"
+          }
+        },
+        "danger": {
+          "value": "{color.core.red.1}",
+          "comment": "Base color for the danger color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.red.1}",
+            "comment": "Base color for the danger color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "danger"
+          }
+        },
+        "warning": {
+          "value": "{color.core.white}",
+          "comment": "Base color for the warning color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.white}",
+            "comment": "Base color for the warning color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "warning"
+          }
+        },
+        "success": {
+          "value": "{color.core.white}",
+          "comment": "Base color for the success color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.white}",
+            "comment": "Base color for the success color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.core.white}",
+          "comment": "Base color for the info color",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.white}",
+            "comment": "Base color for the info color"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "content",
+            "3": "info"
+          }
+        },
+        "weak": {
+          "default": {
+            "value": "{color.core.gray.3}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.3}"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "default"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
+              "4": "default"
+            }
+          },
+          "primary": {
+            "value": "{color.core.blue.3}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.blue.3}"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "primary"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
+              "4": "primary"
+            }
+          },
+          "secondary": {
+            "value": "{color.core.gray.3}",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.gray.3}"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "secondary"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
+              "4": "secondary"
+            }
+          },
+          "danger": {
+            "value": "{color.core.red.3}",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.red.3}",
+              "comment": "Base color for the danger color"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "danger"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
+              "4": "danger"
+            }
+          },
+          "warning": {
+            "value": "{color.core.orange.3}",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.orange.3}",
+              "comment": "Base color for the warning color"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "warning"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
+              "4": "warning"
+            }
+          },
+          "success": {
+            "value": "{color.core.green.3}",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.core.green.3}",
+              "comment": "Base color for the success color"
+            },
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "success"
+            },
+            "path": {
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
               "4": "success"
             }
           },
@@ -2791,41 +3253,183 @@
               "comment": "Base color for the info color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "title",
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
               "state": "info"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "title",
+              "0": "alert",
+              "1": "color",
+              "2": "content",
+              "3": "weak",
               "4": "info"
             }
           }
+        }
+      },
+      "background": {
+        "default": {
+          "value": "{color.core.gray.1}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
         },
-        "content": {
+        "primary": {
+          "value": "{color.background.primary}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.background.secondary}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "secondary"
+          }
+        },
+        "success": {
+          "value": "{color.background.success}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.background.info}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "info"
+          }
+        },
+        "warning": {
+          "value": "{color.background.warning}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "warning"
+          }
+        },
+        "danger": {
+          "value": "{color.background.danger}",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger}"
+          },
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "alert",
+            "1": "color",
+            "2": "background",
+            "3": "danger"
+          }
+        },
+        "weak": {
           "default": {
-            "value": "{color.core.gray.6}",
+            "value": "{color.core.gray.1}",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.6}"
+              "value": "{color.core.gray.1}"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "default"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "default"
             }
           },
@@ -2837,17 +3441,17 @@
               "value": "{color.core.blue.1}"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "primary"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "primary"
             }
           },
@@ -2859,17 +3463,17 @@
               "value": "{color.core.gray.1}"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "secondary"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "secondary"
             }
           },
@@ -2883,869 +3487,659 @@
               "comment": "Base color for the danger color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "danger"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "danger"
             }
           },
           "warning": {
-            "value": "{color.core.white}",
+            "value": "{color.core.orange.1}",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.white}",
+              "value": "{color.core.orange.1}",
               "comment": "Base color for the warning color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "warning"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "warning"
             }
           },
           "success": {
-            "value": "{color.core.white}",
+            "value": "{color.core.green.1}",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.white}",
+              "value": "{color.core.green.1}",
               "comment": "Base color for the success color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "success"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "success"
             }
           },
           "info": {
-            "value": "{color.core.white}",
+            "value": "#e2f4ff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.white}",
+              "value": "#e2f4ff",
               "comment": "Base color for the info color"
             },
             "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "content",
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
               "state": "info"
             },
             "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "content",
+              "0": "alert",
+              "1": "color",
+              "2": "background",
+              "3": "weak",
               "4": "info"
-            }
-          }
-        },
-        "background": {
-          "default": {
-            "value": "{color.core.gray.1}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.1}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "default"
-            }
-          },
-          "primary": {
-            "value": "{color.background.primary}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "primary"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "primary"
-            }
-          },
-          "secondary": {
-            "value": "{color.background.secondary}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "secondary"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "secondary"
-            }
-          },
-          "success": {
-            "value": "{color.background.success}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "success"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "success"
-            }
-          },
-          "info": {
-            "value": "{color.background.info}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "info"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "info"
-            }
-          },
-          "warning": {
-            "value": "{color.background.warning}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "warning"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "warning"
-            }
-          },
-          "danger": {
-            "value": "{color.background.danger}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "alert",
-              "item": "color",
-              "subitem": "background",
-              "state": "danger"
-            },
-            "path": {
-              "0": "component",
-              "1": "alert",
-              "2": "color",
-              "3": "background",
-              "4": "danger"
             }
           }
         }
       }
-    },
-    "button": {
-      "selected": {
-        "background": {
-          "default": {
-            "value": "{color.core.gray.2}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.2}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "selected",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "selected",
-              "3": "background",
-              "4": "default"
-            }
-          }
-        }
-      },
-      "disabled": {
-        "background": {
-          "default": {
-            "value": "{color.core.gray.1}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.1}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "disabled",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "disabled",
-              "3": "background",
-              "4": "default"
-            }
-          }
-        },
-        "text": {
-          "default": {
-            "value": "{color.core.gray.3}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.3}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "disabled",
-              "subitem": "text",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "disabled",
-              "3": "text",
-              "4": "default"
-            }
-          }
-        }
-      },
-      "color": {
-        "background": {
-          "default": {
-            "value": "{color.background.default}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.default}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "default"
-            }
+    }
+  },
+  "button": {
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.core.gray.2}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.2}"
           },
-          "primary": {
-            "value": "{color.background.primary}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "primary"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "primary"
-            }
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "default"
           },
-          "secondary": {
-            "value": "{color.background.secondary}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "secondary"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "secondary"
-            }
-          },
-          "success": {
-            "value": "{color.background.success}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "success"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "success"
-            }
-          },
-          "info": {
-            "value": "{color.background.info}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "info"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "info"
-            }
-          },
-          "warning": {
-            "value": "{color.background.warning}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "warning"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "warning"
-            }
-          },
-          "danger": {
-            "value": "{color.background.danger}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "background",
-              "state": "danger"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "background",
-              "4": "danger"
-            }
-          }
-        },
-        "border": {
-          "default": {
-            "value": "{color.core.black}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.black}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "default"
-            }
-          },
-          "primary": {
-            "value": "{color.background.primary}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "primary"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "primary"
-            }
-          },
-          "secondary": {
-            "value": "{color.background.secondary}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "secondary"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "secondary"
-            }
-          },
-          "success": {
-            "value": "{color.background.success}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "success"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "success"
-            }
-          },
-          "info": {
-            "value": "{color.background.info}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "info"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "info"
-            }
-          },
-          "warning": {
-            "value": "{color.background.warning}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "warning"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "warning"
-            }
-          },
-          "danger": {
-            "value": "{color.background.danger}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "color",
-              "subitem": "border",
-              "state": "danger"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "color",
-              "3": "border",
-              "4": "danger"
-            }
-          }
-        }
-      },
-      "size": {
-        "padding": {
-          "small": {
-            "value": "{size.base.65} {size.base.75.value}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{size.base.65} {size.base.75.value}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "size",
-              "subitem": "padding",
-              "state": "small"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "size",
-              "3": "padding",
-              "4": "small"
-            }
-          },
-          "medium": {
-            "value": "{size.base.100} {size.base.125.value}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{size.base.100} {size.base.125.value}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "size",
-              "subitem": "padding",
-              "state": "medium"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "size",
-              "3": "padding",
-              "4": "medium"
-            }
-          },
-          "large": {
-            "value": "{size.base.175} {size.base.250.value}",
-            "filePath": "tokens/component/button.json",
-            "isSource": true,
-            "original": {
-              "value": "{size.base.175} {size.base.250.value}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "button",
-              "item": "size",
-              "subitem": "padding",
-              "state": "large"
-            },
-            "path": {
-              "0": "component",
-              "1": "button",
-              "2": "size",
-              "3": "padding",
-              "4": "large"
-            }
+          "path": {
+            "0": "button",
+            "1": "selected",
+            "2": "background",
+            "3": "default"
           }
         }
       }
     },
-    "divider": {
-      "color": {
-        "border": {
-          "default": {
-            "value": "{color.core.gray.1}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.core.gray.1}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "default"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "default"
-            }
+    "disabled": {
+      "background": {
+        "default": {
+          "value": "{color.core.gray.1}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1}"
           },
-          "primary": {
-            "value": "{color.background.primary}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.primary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "primary"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "primary"
-            }
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "background",
+            "subitem": "default"
           },
-          "secondary": {
-            "value": "{color.background.secondary}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.secondary}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "secondary"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "secondary"
-            }
+          "path": {
+            "0": "button",
+            "1": "disabled",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.core.gray.3}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.3}"
           },
-          "success": {
-            "value": "{color.background.success}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.success}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "success"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "success"
-            }
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "text",
+            "subitem": "default"
           },
-          "info": {
-            "value": "{color.background.info}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.info}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "info"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "info"
-            }
+          "path": {
+            "0": "button",
+            "1": "disabled",
+            "2": "text",
+            "3": "default"
+          }
+        }
+      }
+    },
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
           },
-          "warning": {
-            "value": "{color.background.warning}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.warning}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "warning"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "warning"
-            }
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
           },
-          "danger": {
-            "value": "{color.background.danger}",
-            "filePath": "tokens/component/divider.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.background.danger}"
-            },
-            "attributes": {
-              "category": "component",
-              "type": "divider",
-              "item": "color",
-              "subitem": "border",
-              "state": "danger"
-            },
-            "path": {
-              "0": "component",
-              "1": "divider",
-              "2": "color",
-              "3": "border",
-              "4": "danger"
-            }
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.background.primary}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.background.secondary}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "secondary"
+          }
+        },
+        "success": {
+          "value": "{color.background.success}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.background.info}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "info"
+          }
+        },
+        "warning": {
+          "value": "{color.background.warning}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "warning"
+          }
+        },
+        "danger": {
+          "value": "{color.background.danger}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "danger"
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.core.black}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.black}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.background.primary}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.background.secondary}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "secondary"
+          }
+        },
+        "success": {
+          "value": "{color.background.success}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.background.info}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "info"
+          }
+        },
+        "warning": {
+          "value": "{color.background.warning}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "warning"
+          }
+        },
+        "danger": {
+          "value": "{color.background.danger}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "danger"
+          }
+        }
+      }
+    },
+    "size": {
+      "padding": {
+        "small": {
+          "value": "{size.base.65} {size.base.75.value}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{size.base.65} {size.base.75.value}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "size",
+            "item": "padding",
+            "subitem": "small"
+          },
+          "path": {
+            "0": "button",
+            "1": "size",
+            "2": "padding",
+            "3": "small"
+          }
+        },
+        "medium": {
+          "value": "{size.base.100} {size.base.125.value}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{size.base.100} {size.base.125.value}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "size",
+            "item": "padding",
+            "subitem": "medium"
+          },
+          "path": {
+            "0": "button",
+            "1": "size",
+            "2": "padding",
+            "3": "medium"
+          }
+        },
+        "large": {
+          "value": "{size.base.175} {size.base.250.value}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{size.base.175} {size.base.250.value}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "size",
+            "item": "padding",
+            "subitem": "large"
+          },
+          "path": {
+            "0": "button",
+            "1": "size",
+            "2": "padding",
+            "3": "large"
+          }
+        }
+      }
+    }
+  },
+  "divider": {
+    "color": {
+      "border": {
+        "default": {
+          "value": "{color.core.gray.1}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.core.gray.1}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.background.primary}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.primary}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.background.secondary}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.secondary}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "secondary"
+          }
+        },
+        "success": {
+          "value": "{color.background.success}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.success}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.background.info}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.info}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "info"
+          }
+        },
+        "warning": {
+          "value": "{color.background.warning}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.warning}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "warning"
+          }
+        },
+        "danger": {
+          "value": "{color.background.danger}",
+          "filePath": "tokens/component/divider.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.danger}"
+          },
+          "attributes": {
+            "category": "divider",
+            "type": "color",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "divider",
+            "1": "color",
+            "2": "border",
+            "3": "danger"
           }
         }
       }

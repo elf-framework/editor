@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Grid, InputPaint, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <Grid
         columns={3}
         style={{ gap: 10, backgroundColor: "#ececec", height: "100vh" }}
@@ -24,6 +24,6 @@ start(function () {
           <h3>Placeholder</h3>
         </VBox>
       </Grid>
-    </Layout>
+    </UILayout>
   );
 });

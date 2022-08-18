@@ -1,11 +1,13 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { VNodeType } from "./constant/vnode";
+import { Dom } from "./functions/Dom";
 import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
-import { isFunction, collectProps, isEqual, isArray } from "./functions/func";
+import { isFunction, collectProps, isArray, isObject } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import { Reconcile, updateChildren } from "./functions/Reconcile";
 import { removeRenderCallback } from "./functions/registElement";
 import { uuid } from "./functions/uuid";
+import { vnodePropsDiff } from "./functions/vnode";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
 import StoreHandler from "./handler/StoreHandler";
@@ -149,12 +151,8 @@ export class EventMachine extends HookMachine {
   }
 
   changedProps(newProps) {
-    const obj1 = this.props;
-    const obj2 = newProps;
-
     // props 가 원래 없으면 다시 그린다.
-
-    return !isEqual(obj1, obj2, 0);
+    return !vnodePropsDiff(this.props, newProps);
   }
 
   /**
@@ -167,7 +165,6 @@ export class EventMachine extends HookMachine {
   _reload(props) {
     if (this.changedProps(props)) {
       this.props = props;
-
       this.refresh();
     }
   }
@@ -212,11 +209,21 @@ export class EventMachine extends HookMachine {
   }
 
   #reloadInstance(instance, props) {
+    // 리로드 하기
     instance._reload(props);
   }
 
+  /**
+   * dom ref 등록하기
+   */
   registerRef = (ref, el) => {
-    this.refs[ref] = el;
+    if (typeof ref === "function") {
+      ref(el);
+    } else if (isObject(ref)) {
+      ref.value = el;
+    } else {
+      this.refs[ref] = el;
+    }
   };
 
   registerChildComponent = (el, childComponent, id, oldEl) => {
@@ -240,7 +247,6 @@ export class EventMachine extends HookMachine {
   }
 
   /**
-   * DomVDomDiff 에서 활용하는 함수
    *
    * 특정 클래스 참조를 바로 diff 형태로 렌더링 하지 않고
    * 강제로 다시 그리기를 원할때 사용할 수 있다.
@@ -253,6 +259,47 @@ export class EventMachine extends HookMachine {
 
   isInstanceOf(Component) {
     return this instanceof Component;
+  }
+
+  async runningUpdate(template, isForceRender) {
+    if (template.type === VNodeType.FRAGMENT) {
+      updateChildren(this.parentElement, template);
+    } else {
+      Reconcile(this.$el.el, template, {
+        checkRefClass: this.checkRefClass,
+        context: this,
+        isForceRender,
+        registerRef: this.registerRef,
+        registerChildComponent: this.registerChildComponent,
+      });
+    }
+
+    // element 에 component 속성 설정
+    this.$el.el[COMPONENT_INSTANCE] = this;
+    // this.prevTemplate = template;
+    this.runUpdated();
+  }
+
+  async runningMount(template, $container) {
+    const newDomElement = this.parseMainTemplate(template);
+    this.$el = newDomElement;
+    this.refs.$el = this.$el;
+    // this.prevTemplate = template;
+    // element 에 component 속성 설정
+    this.$el.el[COMPONENT_INSTANCE] = this;
+    if ($container) {
+      if (!($container instanceof Dom)) {
+        $container = Dom.create($container);
+      }
+
+      // $container 의 자식이 아닐 때만 추가
+      if ($container.hasChild(this.$el) === false) {
+        $container.append(this.$el);
+        this.runMounted();
+      }
+    }
+    // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
+    await this._afterLoad();
   }
 
   checkRefClass = (oldEl, newVNode) => {
@@ -294,7 +341,7 @@ export class EventMachine extends HookMachine {
 
   async forceRender() {
     this.cleanHooks();
-    this.render();
+    await this.render(null, true);
   }
 
   setParentElement(parentElement) {
@@ -319,7 +366,6 @@ export class EventMachine extends HookMachine {
     // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
     this.resetCurrentComponent();
     const template = this.template();
-
     if (isArray(template)) {
       throw new Error(
         [
@@ -331,42 +377,11 @@ export class EventMachine extends HookMachine {
         ].join("\n")
       );
     }
-
     if (this.$el) {
-      if (template.type === VNodeType.FRAGMENT) {
-        updateChildren(this.parentElement, template);
-      } else {
-        Reconcile(this.$el.el, template, {
-          checkRefClass: this.checkRefClass,
-          context: this,
-          isForceRender,
-          registerRef: this.registerRef,
-          registerChildComponent: this.registerChildComponent,
-        });
-      }
-
-      // this.prevTemplate = template;
-      this.runUpdated();
+      await this.runningUpdate(template, isForceRender);
     } else {
-      const newDomElement = this.parseMainTemplate(template);
-      this.$el = newDomElement;
-      this.refs.$el = this.$el;
-      // this.prevTemplate = template;
-
-      if ($container) {
-        // $container 의 자식이 아닐 때만 추가
-        if ($container.hasChild(this.$el) === false) {
-          $container.append(this.$el);
-          this.runMounted();
-        }
-      }
-
-      // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
-      await this._afterLoad();
+      await this.runningMount(template, $container);
     }
-
-    // element 에 component 속성 설정
-    this.$el.el[COMPONENT_INSTANCE] = this;
 
     return this;
   }
@@ -585,8 +600,7 @@ export class EventMachine extends HookMachine {
       instance.onUpdated();
     }
 
-    // update 이후에 컴포넌트가 삭제된 경우는 비워둔다.
-    this.clear();
+    // TODO: 업데이트 할 때 이벤트를 다시 제어해야할까?
   }
 
   onDestroyed() {

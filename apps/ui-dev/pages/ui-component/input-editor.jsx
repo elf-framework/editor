@@ -3,11 +3,11 @@ import { start } from "@elf-framework/sapa";
 import { InputEditor, TextAreaEditor } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div
         style={{
           padding: 50,
@@ -88,6 +88,6 @@ I am a text area,
           </div>
         </div>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

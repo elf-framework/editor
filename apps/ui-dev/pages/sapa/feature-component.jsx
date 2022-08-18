@@ -2,7 +2,7 @@ import { start } from "@elf-framework/sapa";
 import { Alert } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { SapaLayout } from "../../layouts/SapaLayout";
 import { Diagram } from "../../utils/Diagram";
 import { Syntax } from "../../utils/Syntax";
 import componentBasicText from "./codes/component-basic.js.txt?raw";
@@ -17,7 +17,7 @@ import lifeCycleText from "./codes/lifecycle.mmd?raw";
 
 function Main() {
   return (
-    <Layout>
+    <SapaLayout>
       <h1>Component</h1>
       <p>Sapa 는 Class Component 와 Function Component 를 지원합니다.</p>
       <p>하지만 두개가 다른 것이 아닙니다. 둘은 완전히 동일합니다.</p>
@@ -133,7 +133,7 @@ function Main() {
           initState 로 초기화 한 이후 setState() 로 값을 설정할 수 있다.
         </p>
       </p>
-    </Layout>
+    </SapaLayout>
   );
 }
 

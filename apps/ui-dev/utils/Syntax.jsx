@@ -10,16 +10,7 @@ export function Syntax(code, language = "javascript") {
   );
 
   return (
-    <div
-      class="syntax"
-      style={{
-        borderRadius: 4,
-        backgroundColor: "black",
-        padding: 20,
-        boxSizing: "border-box",
-        color: "white",
-      }}
-    >
+    <div class="syntax">
       <div class="language">{language}</div>
       {htmlToVNode(`<pre>${html}</pre>`)}
     </div>

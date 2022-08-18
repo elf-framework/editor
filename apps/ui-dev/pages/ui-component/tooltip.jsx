@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { Button, Tooltip } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(() => {
   return (
-    <Layout>
+    <UILayout>
       <div style="display: flex; align-items: center; justify-content: center; width:100vw;height:100vh;">
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 50px; row-gap: 50px;text-align:center;align-items: end;justify-content: center;align-self: center;">
           {[
@@ -39,6 +39,6 @@ start(() => {
           })}
         </div>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

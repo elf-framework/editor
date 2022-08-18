@@ -1,4 +1,5 @@
 import { BaseStore } from "./BaseStore";
+import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
 import { EventMachine } from "./EventMachine";
 import { uuidShort } from "./functions/uuid";
 
@@ -11,8 +12,8 @@ import { uuidShort } from "./functions/uuid";
 export class UIElement extends EventMachine {
   #storeInstance;
 
-  constructor(opt, props = {}) {
-    super(opt, props);
+  constructor(opt, props = {}, state = {}) {
+    super(opt, props, state);
 
     // messaging store 설정
     if (props.store) {
@@ -27,8 +28,15 @@ export class UIElement extends EventMachine {
     this.created();
 
     this.initialize();
-  }
 
+    this.initializeContext(opt, props, state);
+  }
+  initializeContext(opt, props = {}) {
+    if (!opt) {
+      // context 객체 설정, root 의 옵션을 context 로 설정
+      this.$store.init(COMPONENT_ROOT_CONTEXT, props);
+    }
+  }
   currentContext() {
     return this.contexts[this.contexts.length - 1];
   }
@@ -152,19 +160,6 @@ export class UIElement extends EventMachine {
    *
    * 함수 내부에서 context 를 유지하기 때문에 this 로 instance 에 접근 할 수 있습니다.
    *
-   * @example
-   *
-   * ```js
-   * html`
-   *     <div onClick=${this.subscribe(() => {
-   *        console.log('click is fired');
-   *        console.log(this.source);
-   *     })}>
-   *        눌러주세요.
-   *     </div>
-   * `
-   * ```
-   *
    * @param {Function} callback subscribe 함수로 지정할 callback
    * @param {number} [debounceSecond=0] debounce 시간(ms)
    * @param {number} [throttleSecond=0] throttle 시간(ms)
@@ -189,7 +184,7 @@ export class UIElement extends EventMachine {
   }
 
   static createFunctionElementInstance(
-    EventMachineComponent,
+    NewFunctionComponent,
     parentInstance,
     props,
     state = {}
@@ -206,15 +201,15 @@ export class UIElement extends EventMachine {
       }
 
       getFunctionComponent() {
-        return EventMachineComponent;
+        return NewFunctionComponent;
       }
 
       // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
       isInstanceOf(Component) {
-        return EventMachineComponent === Component;
+        return NewFunctionComponent === Component;
       }
       template() {
-        return EventMachineComponent.call(this, this.props);
+        return NewFunctionComponent.call(this, this.props);
       }
     }
 

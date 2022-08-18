@@ -4,7 +4,7 @@ import {
   createVNodeComment,
   createVNodeComponent,
   createVNodeFragment,
-} from "./vnode";
+} from "./vnode/index";
 
 export function createComponent(Component, props = {}, children = []) {
   // 모든 children 을 하나로 모은다.

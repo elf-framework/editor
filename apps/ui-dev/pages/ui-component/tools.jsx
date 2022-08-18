@@ -3,11 +3,11 @@ import { start } from "@elf-framework/sapa";
 import { Tools } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div>
         <Tools
           items={[
@@ -165,6 +165,6 @@ start(function () {
           ]}
         />
       </div>
-    </Layout>
+    </UILayout>
   );
 });

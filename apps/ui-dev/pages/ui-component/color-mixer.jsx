@@ -2,11 +2,11 @@ import { start } from "@elf-framework/sapa";
 import { ColorMixer, Grid, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <Grid
         columns={3}
         style={{
@@ -44,6 +44,6 @@ start(function () {
           <h3>Placeholder</h3>
         </VBox>
       </Grid>
-    </Layout>
+    </UILayout>
   );
 });

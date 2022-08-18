@@ -1,7 +1,7 @@
 .syntax {
 
     border-radius: 10px;
-    background-color: black;
+    background-color: #292d3e;
     padding: 20px;
     box-sizing: border-box;
     color: white;
@@ -22,6 +22,7 @@
         overflow: auto;
         line-height: 24px;
         letter-spacing: 1px;
+        font-size: 14px;
 
         .token.comment {
             color: #8e98ff;

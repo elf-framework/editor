@@ -3,11 +3,11 @@ import { start } from "@elf-framework/sapa";
 import { Flex, IconButton } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <Flex style={{ alignItems: "flex-start", gap: 10 }}>
         <IconButton style={{ flex: "none" }}>
           <AddChartFilled />
@@ -40,6 +40,6 @@ start(function () {
           {<AddChartFilled />}
         </IconButton>
       </Flex>
-    </Layout>
+    </UILayout>
   );
 });

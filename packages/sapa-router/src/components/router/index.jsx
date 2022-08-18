@@ -25,8 +25,6 @@ export class Router extends UIElement {
 
     if (!route) return "";
 
-    // console.log("last", route);
-
     return route.props.content[0];
   }
 

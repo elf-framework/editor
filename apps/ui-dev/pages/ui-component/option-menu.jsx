@@ -3,11 +3,11 @@ import { start } from "@elf-framework/sapa";
 import { OptionMenu, VBox } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   return (
-    <Layout>
+    <UILayout>
       <div>
         <VBox>
           <h1>Option Menu</h1>
@@ -127,6 +127,6 @@ start(function () {
           </div>
         </VBox>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

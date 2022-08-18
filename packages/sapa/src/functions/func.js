@@ -139,45 +139,6 @@ export function isNotString(value) {
   return !isString(value);
 }
 
-export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
-  if (count > 5) {
-    console.error(obj1, obj2);
-    throw new Error(["isEqual 을 오래 실행하였습니다."]);
-  }
-
-  // 함수는 무조건 새로고침이 되도록 한다.
-  if (isFunction(obj1) && isFunction(obj2)) {
-    return false;
-  }
-
-  const obj1Keys = Object.keys(obj1);
-  const obj2Keys = Object.keys(obj2);
-
-  if (obj1Keys.length !== obj2Keys.length) {
-    return false;
-  }
-
-  return obj1Keys.every((key) => {
-    // omitKeys 에 있는 키는 비교하지 않는다.
-    if (omitKeys[key]) {
-      return true;
-    }
-
-    const obj1Value = obj1[key];
-    const obj2Value = obj2[key];
-
-    if (isObject(obj1Value) && isObject(obj2Value)) {
-      return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
-      // } else if (isArray(obj1Value) && isArray(obj2Value)) {
-      //   return obj1Value.every((value, index) => {
-      //     return isEqual(value, obj2Value[index], count + 1, omitKeys);
-      //   });
-    }
-
-    return obj1Value === obj2Value;
-  });
-}
-
 export function isArray(value) {
   return Array.isArray(value);
 }

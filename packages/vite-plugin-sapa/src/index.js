@@ -3,10 +3,7 @@ const swcCore = require("@swc/core");
 const PLUGIN_NAME = "vite-plugin-sapa";
 const jsxRE = /\.[tj]sx$/;
 
-// console.log(swcCore);
-
 function getIdendifierName(ast) {
-  // console.log(ast);
   if (ast.type === "VariableDeclaration") {
     return ast.declarations?.map((it) => getIdendifierName(it));
   } else if (ast.type === "VariableDeclarator") {
@@ -51,7 +48,6 @@ function traverse(ast, options = {}) {
         type: "ExportDeclaration",
         names: getIdendifierName(ast.declaration),
       });
-      // console.log(ast.declaration);
       break;
     case "ExportNamedDeclaration":
       options.results.push({
@@ -68,7 +64,6 @@ function traverse(ast, options = {}) {
       });
       break;
     case "Module":
-      // console.log(ast.body);
       ast.body.forEach((it) => {
         traverse(it, options);
       });
@@ -102,14 +97,21 @@ module.exports = function sapa(options = {}) {
           .map((it) => it.name);
         transformedCode = `
 
-import { registerModule, renderFromRoot } from "@elf-framework/sapa";
+import { registerModule, renderFromRoot, uuidShort, setGlobalForceRender } from "@elf-framework/sapa";
 ${code};
 if (import.meta.hot) {
   const TEMP = {${names.join(", ")} }
+
+  Object.keys(TEMP).forEach((key) => {
+    // unique key string
+    TEMP[key].__timestamp = [Date.now(), uuidShort()].join("-");
+  })
+
   registerModule("${id}", TEMP);
 
   import.meta.hot.accept((m) => {
     console.log("hot reload");
+    setGlobalForceRender(true);
     renderFromRoot();
   });
 }

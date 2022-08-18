@@ -41,6 +41,7 @@ const NumberStyleKeys = {
   right: true,
   bottom: true,
   border: true,
+  borderWidth: true,
   borderRadius: true,
   padding: true,
   margin: true,
@@ -90,6 +91,12 @@ const convertStyleKey = (key) => {
   return upperKey;
 };
 
+/**
+ *
+ * styleMap("width", 10) -> "width: 10px"
+ * styleMap("borderWidth", 10) -> "border-width: 10px"
+ *
+ */
 function styleMap(key, value) {
   if (typeof value === "number") {
     if (NumberStyleKeys[key]) {

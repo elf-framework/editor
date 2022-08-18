@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 10 Aug 2022 12:21:57 GMT
+ * Generated on Thu, 18 Aug 2022 13:00:11 GMT
  */
 
 export default tokens;
@@ -187,10 +187,17 @@ declare const tokens: {
       "link": DesignToken
     }
   },
-  "component": {
-    "alert": {
-      "color": {
-        "title": {
+  "alert": {
+    "color": {
+      "title": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "danger": DesignToken,
+        "warning": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "weak": {
           "default": DesignToken,
           "primary": DesignToken,
           "secondary": DesignToken,
@@ -198,8 +205,17 @@ declare const tokens: {
           "warning": DesignToken,
           "success": DesignToken,
           "info": DesignToken
-        },
-        "content": {
+        }
+      },
+      "content": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "danger": DesignToken,
+        "warning": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "weak": {
           "default": DesignToken,
           "primary": DesignToken,
           "secondary": DesignToken,
@@ -207,71 +223,80 @@ declare const tokens: {
           "warning": DesignToken,
           "success": DesignToken,
           "info": DesignToken
-        },
-        "background": {
+        }
+      },
+      "background": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "warning": DesignToken,
+        "danger": DesignToken,
+        "weak": {
           "default": DesignToken,
           "primary": DesignToken,
           "secondary": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken,
+          "danger": DesignToken,
           "warning": DesignToken,
-          "danger": DesignToken
+          "success": DesignToken,
+          "info": DesignToken
         }
       }
-    },
-    "button": {
-      "selected": {
-        "background": {
-          "default": DesignToken
-        }
-      },
-      "disabled": {
-        "background": {
-          "default": DesignToken
-        },
-        "text": {
-          "default": DesignToken
-        }
-      },
-      "color": {
-        "background": {
-          "default": DesignToken,
-          "primary": DesignToken,
-          "secondary": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken,
-          "warning": DesignToken,
-          "danger": DesignToken
-        },
-        "border": {
-          "default": DesignToken,
-          "primary": DesignToken,
-          "secondary": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken,
-          "warning": DesignToken,
-          "danger": DesignToken
-        }
-      },
-      "size": {
-        "padding": {
-          "small": DesignToken,
-          "medium": DesignToken,
-          "large": DesignToken
-        }
+    }
+  },
+  "button": {
+    "selected": {
+      "background": {
+        "default": DesignToken
       }
     },
-    "divider": {
-      "color": {
-        "border": {
-          "default": DesignToken,
-          "primary": DesignToken,
-          "secondary": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken,
-          "warning": DesignToken,
-          "danger": DesignToken
-        }
+    "disabled": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      }
+    },
+    "color": {
+      "background": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "warning": DesignToken,
+        "danger": DesignToken
+      },
+      "border": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "warning": DesignToken,
+        "danger": DesignToken
+      }
+    },
+    "size": {
+      "padding": {
+        "small": DesignToken,
+        "medium": DesignToken,
+        "large": DesignToken
+      }
+    }
+  },
+  "divider": {
+    "color": {
+      "border": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "warning": DesignToken,
+        "danger": DesignToken
       }
     }
   },

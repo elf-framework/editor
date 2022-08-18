@@ -1,0 +1,26 @@
+.markdown-page {
+
+    margin: 0 auto;
+    width: 100%;
+
+    padding: 32px 48px;
+
+    > .markdown-page-content {
+        display: flex;
+
+        .content-container {
+            margin: 0 auto;
+            max-width: 688px;
+        }
+
+        > *:first-child {
+            flex: 1 1 auto;
+        }
+    
+        > *:last-child {
+            flex: none;
+        }
+    }
+
+
+}

@@ -1,0 +1,39 @@
+{
+  "name": "ssr-dev",
+  "version": "1.0.6",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
+    "//ui:dev": "npm run vite:dev",
+    "ssr:dev": "npm run vite:dev",
+    "//build": "npm run vite:prod",
+    "vite:prod": "vite build --config=vite.prod.config.js",
+    "vite:preview": "vite preview --config=vite.prod.config.js",
+    "copy:resource": "cp CNAME docs/",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",
+    "format": "prettier .  --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elf-framework/color": "*",
+    "@elf-framework/design-tokens": "*",
+    "@elf-framework/icon": "^2.0.50",
+    "@elf-framework/sapa": "*",
+    "@elf-framework/sapa-router": "*",
+    "@elf-framework/ui": "*",
+    "mermaid": "^9.1.4"
+  },
+  "devDependencies": {
+    "@elf-framework/config": "*",
+    "glob": "^8.0.3",
+    "vite": "^2.9.13",
+    "vite-plugin-mdx": "^3.5.10",
+    "vite-plugin-sapa": "*",
+    "vite-plugin-ssr": "^0.4.19",
+    "vitest": "0.0.107"
+  }
+}

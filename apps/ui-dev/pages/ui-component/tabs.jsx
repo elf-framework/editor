@@ -3,7 +3,7 @@ import { Tab, TabItem, View } from "@elf-framework/ui";
 // import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 function App() {
   return (
@@ -61,7 +61,7 @@ function App() {
 }
 
 start(
-  <Layout>
+  <UILayout>
     <App />
-  </Layout>
+  </UILayout>
 );

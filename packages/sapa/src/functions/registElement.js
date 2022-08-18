@@ -128,20 +128,6 @@ export function hasVariable(id) {
   return __tempVariables.has(id);
 }
 
-/**
- * 객체를 key=value 문자열 리스트로 변환한다.
- *
- * @param {object} obj
- * @returns {string}
- */
-export function spreadVariable(obj) {
-  return Object.entries(obj)
-    .map(([key, value]) => {
-      return `${key}=${variable(value)}`;
-    })
-    .join(" ");
-}
-
 export function registElement(classes = {}) {
   Object.keys(classes).forEach((key) => {
     map[key] = classes[key];
@@ -166,25 +152,14 @@ export function retriveElement(className) {
  * @param {UIElement} instance
  */
 export function registRootElementInstance(instance, containerElement) {
-  // if (instance) {
-  //   // 등록 전에 사용이 완료된 instance 는 리스트에서 삭제
-  //   const lastInstance = getRootElementInstanceList().find((it) => {
-  //     console.log("rootInstance", this?.$el?.el?.__component, it);
-  //     return it.$el.el.__component !== it;
-  //   });
-  //   if (lastInstance) {
-  //     removeRootElementInstance(lastInstance);
-  //   }
-  // }
-
+  const rootContainerElement = containerElement.el || containerElement;
   __rootInstance.add(instance);
 
   // 기존에 있던 root instance 는 지운다.
-  if (__rootInstanceMap.has(containerElement)) {
-    removeRootElementInstance(__rootInstanceMap.get(containerElement));
+  if (__rootInstanceMap.has(rootContainerElement)) {
+    removeRootElementInstance(__rootInstanceMap.get(rootContainerElement));
   }
-
-  __rootInstanceMap.set(containerElement, instance);
+  __rootInstanceMap.set(rootContainerElement, instance);
 }
 
 export function removeRootElementInstance(instance) {
@@ -196,6 +171,17 @@ export function getRootElementInstanceList() {
   return [...__rootInstance];
 }
 
+let globalForceRender = undefined;
+
+export function isGlobalForceRender() {
+  return globalForceRender;
+}
+
+export function setGlobalForceRender(isForceRender = false) {
+  if (typeof globalForceRender === "undefined") {
+    globalForceRender = isForceRender;
+  }
+}
 /**
  * root instance 를 모두 그린다.
  */
@@ -233,12 +219,7 @@ export function createHandlerInstance(context, localHanders = {}) {
 }
 
 export function registerModule(id, modules = {}) {
-  // console.log("registerModule", id, modules);
   if (!_modules[id]) {
-    // 처음 로드 된 것은 변하지 않는다.
-    // 개별 파일에서 import 를 직접적으로 한 것이기 때문에
-    // template 을 매번 생성 할 때마다 이전 함수 또는 클래스를 그대로 재활용 한다.
-    // 그 말은 신규 리소스와 이전 리소스가 하나 밖에 존재하지 않는 다는 이야기다.
     _modules[id] = { new: modules, old: modules };
 
     Object.keys(modules).forEach((key) => {
@@ -262,10 +243,16 @@ export function getModule(Component) {
   if (!id) {
     return Component;
   }
-
   const m = _modules[id];
   if (!m) {
     return Component;
+  }
+
+  // FIXED: function name is always same
+  const newModule = m.new[Component.name];
+
+  if (newModule) {
+    return newModule;
   }
 
   // 새로운 모듈로 변경된 경우

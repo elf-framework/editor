@@ -29,7 +29,7 @@ export class Alert extends UIElement {
       content = "",
       style = {},
       closable = false,
-      onClose = undefined,
+      weak = false,
       delay = 0,
       ...extrProps
     } = this.props;
@@ -44,7 +44,7 @@ export class Alert extends UIElement {
     );
 
     const styleObject = {
-      class: classnames(["elf--alert", { [type]: true }, { hide }]),
+      class: classnames(["elf--alert", { [type]: true, weak }, { hide }]),
       style: {
         ...propertyMap(style, cssProperties),
         ...{

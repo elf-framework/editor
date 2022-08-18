@@ -2,13 +2,13 @@ import { start, useState } from "@elf-framework/sapa";
 import { Button, ButtonGroup } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(function () {
   const [selectedValue, setSelectedValue] = useState(0);
 
   return (
-    <Layout>
+    <UILayout>
       <div>
         <h1>Button Group</h1>
         <ButtonGroup>
@@ -52,6 +52,6 @@ start(function () {
           <Button>1</Button>
         </ButtonGroup>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

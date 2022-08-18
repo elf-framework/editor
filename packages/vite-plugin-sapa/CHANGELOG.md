@@ -1,5 +1,29 @@
 # vite-plugin-sapa
 
+## 2.1.5
+
+### Patch Changes
+
+- refactoring file structure
+
+## 2.1.1
+
+### Patch Changes
+
+- modify global force render
+
+## 2.0.50
+
+### Patch Changes
+
+- modify unique_key for module
+
+## 2.0.44
+
+### Patch Changes
+
+- fixed component refresh for hmr
+
 ## 2.0.33
 
 ### Patch Changes

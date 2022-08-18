@@ -26,6 +26,17 @@
       "dependsOn": ["ui:watch"],
       "cache": false
     },
+    "ssr:watch": {
+      "dependsOn": [
+        "^ssr:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },    
+    "ssr:dev": {
+      "dependsOn": ["ssr:watch"],
+      "cache": false
+    },    
     "editor:watch": {
       "dependsOn": [
         "^editor:watch"

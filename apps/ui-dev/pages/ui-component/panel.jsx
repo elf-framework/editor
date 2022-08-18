@@ -3,11 +3,11 @@ import { start } from "@elf-framework/sapa";
 import { Button, Panel, TabStrip } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { Layout } from "../../component/Layout";
+import { UILayout } from "../../layouts/UILayout";
 
 start(() => {
   return (
-    <Layout>
+    <UILayout>
       <div style="display: flex;">
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width:100vw;height:100vh;background-color: #f5f5f5">
           <Panel
@@ -104,6 +104,6 @@ start(() => {
           </Panel>
         </div>
       </div>
-    </Layout>
+    </UILayout>
   );
 });

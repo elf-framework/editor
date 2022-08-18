@@ -46,11 +46,6 @@ declare module "@elf-framework/sapa" {
   export const PASSIVE: string;
   export const FRAME: string;
 
-  /**
-   * LOAD 함수에서 domdiff 를 수행하는 플래그를 설정한다.
-   */
-  export const DOMDIFF: string;
-
   // event config method
   export type TimeFunction = (time: number) => string;
 
@@ -396,8 +391,16 @@ declare module "@elf-framework/sapa" {
   type ElementFunction = () => unknown;
   type ElementType = typeof UIElement | ElementFunction | VNode;
 
+  interface HydrateOptions {
+    target: Dom | string | HTMLElement;
+  }
+
   export function start(uiElement: ElementType, options?: KeyValue): UIElement;
   export function render(uiElement: ElementType, options?: KeyValue): UIElement;
+  export function hydrate(
+    uiElement: ElementType,
+    options?: HydrateOptions
+  ): UIElement;
   export function potal(uiElement: ElementType, options?: KeyValue): UIElement;
   export function renderToHtml(
     uiElement: ElementType,
@@ -522,6 +525,12 @@ declare module "@elf-framework/sapa" {
   export function createContext<T>(defaultValue: T): Context<T>;
   export function useContext<T>(context: Context<T>): T;
   export function useStore<T>(key: string): T;
+
+  /**
+   * store 의 상태를 변경한다.
+   */
+  export function useStoreSet<T>(key: string, value: T): T;
+  export function useRootContext<T>(key: string): T;
   export function useSubscribe(
     name: string,
     callback: () => void,
@@ -539,6 +548,15 @@ declare module "@elf-framework/sapa" {
   export function getCurrentComponent(): UIElement;
 
   export function renderFromRoot(): void;
+  export function setGlobalForceRender(forceRender: boolean): void;
 
   export function debounce(time: number): () => void;
+
+  type sapa = {
+    createElementJsx: typeof createElementJsx;
+    FragmentInstance: typeof FragmentInstance;
+    HTMLComment: typeof HTMLComment;
+  };
+
+  export default sapa;
 }

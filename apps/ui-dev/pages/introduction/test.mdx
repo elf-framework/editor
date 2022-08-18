@@ -1,0 +1,31 @@
+---
+title: The Title
+layout: MainLayout
+---
+
+import  { Test } from './Test';
+import { Alert } from "@elf-framework/ui";
+
+# hi {title} {title}
+
+<Test />
+
+<div>
+    # yellow
+</div>
+
+<div>
+    # red {props.title}
+</div>
+
+<Alert>fdsafdsf</Alert>
+
+```jsx
+import { Test } from './Test';
+import { Alert } from "@elf-framework/ui";
+
+export function MyAlert () {
+    return <Alert type="primary">fdsafd</Alert>
+}
+
+```

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 10 Aug 2022 12:21:57 GMT
+ * Generated on Thu, 18 Aug 2022 13:00:11 GMT
  */
 
 :root {
@@ -74,6 +74,7 @@
   --size-base-25: 2px;
   --size-base-10: 1px;
   --size-base-0: 0px;
+  --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-core-white: #ffffff;
   --color-core-black: #1b1f24;
   --color-core-newtral-9: #4d4d4d;
@@ -126,16 +127,16 @@
   --color-core-blue-2: #80ccff;
   --color-core-blue-1: #b6e3ff;
   --color-core-blue-0: #ddf4ff;
-  --color-core-green-9: #002d11;
-  --color-core-green-8: #003d16;
-  --color-core-green-7: #044f1e;
-  --color-core-green-6: #116329;
-  --color-core-green-5: #1a7f37;
-  --color-core-green-4: #2da44e;
-  --color-core-green-3: #4ac26b;
-  --color-core-green-2: #6fdd8b;
-  --color-core-green-1: #aceebb;
-  --color-core-green-0: #dafbe1;
+  --color-core-green-9: #003a02;
+  --color-core-green-8: #004c04;
+  --color-core-green-7: #0a5a0a;
+  --color-core-green-6: #1a7c0d;
+  --color-core-green-5: #3a9f1f;
+  --color-core-green-4: #5cb33b;
+  --color-core-green-3: #8cc760;
+  --color-core-green-2: #b8d991;
+  --color-core-green-1: #d9e9c0;
+  --color-core-green-0: #f0ffd9;
   --color-core-yellow-9: #3b2300;
   --color-core-yellow-8: #4d2d00;
   --color-core-yellow-7: #633c01;
@@ -169,29 +170,49 @@
   --image-files: assets/svg/files.svg;
   --image-empty: assets/svg/empty.svg;
   --image-logo: assets/svg/logo.svg;
-  --component-divider-color-border-default: var(--color-core-gray-1);
-  --component-button-size-padding-large: var(--size-base-175) var(--size-base-250);
-  --component-button-size-padding-medium: var(--size-base-100) var(--size-base-125);
-  --component-button-size-padding-small: var(--size-base-65) var(--size-base-75);
-  --component-button-color-border-default: var(--color-core-black);
-  --component-button-disabled-text-default: var(--color-core-gray-3);
-  --component-button-disabled-background-default: var(--color-core-gray-1);
-  --component-button-selected-background-default: var(--color-core-gray-2);
-  --component-alert-color-background-default: var(--color-core-gray-1);
-  --component-alert-color-content-info: var(--color-core-white); /* Base color for the info color */
-  --component-alert-color-content-success: var(--color-core-white); /* Base color for the success color */
-  --component-alert-color-content-warning: var(--color-core-white); /* Base color for the warning color */
-  --component-alert-color-content-danger: var(--color-core-red-1); /* Base color for the danger color */
-  --component-alert-color-content-secondary: var(--color-core-gray-1);
-  --component-alert-color-content-primary: var(--color-core-blue-1);
-  --component-alert-color-content-default: var(--color-core-gray-6);
-  --component-alert-color-title-info: var(--color-core-blue-5); /* Base color for the info color */
-  --component-alert-color-title-success: var(--color-core-green-7); /* Base color for the success color */
-  --component-alert-color-title-warning: var(--color-core-yellow-5); /* Base color for the warning color */
-  --component-alert-color-title-danger: var(--color-core-red-7); /* Base color for the danger color */
-  --component-alert-color-title-secondary: var(--color-core-gray-8);
-  --component-alert-color-title-primary: var(--color-core-blue-8);
-  --component-alert-color-title-default: var(--color-core-gray-9);
+  --divider-color-border-default: var(--color-core-gray-1);
+  --button-size-padding-large: var(--size-base-175) var(--size-base-250);
+  --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
+  --button-size-padding-small: var(--size-base-65) var(--size-base-75);
+  --button-color-border-default: var(--color-core-black);
+  --button-disabled-text-default: var(--color-core-gray-3);
+  --button-disabled-background-default: var(--color-core-gray-1);
+  --button-selected-background-default: var(--color-core-gray-2);
+  --alert-color-background-weak-success: var(--color-core-green-1); /* Base color for the success color */
+  --alert-color-background-weak-warning: var(--color-core-orange-1); /* Base color for the warning color */
+  --alert-color-background-weak-danger: var(--color-core-red-1); /* Base color for the danger color */
+  --alert-color-background-weak-secondary: var(--color-core-gray-1);
+  --alert-color-background-weak-primary: var(--color-core-blue-1);
+  --alert-color-background-weak-default: var(--color-core-gray-1);
+  --alert-color-background-default: var(--color-core-gray-1);
+  --alert-color-content-weak-info: var(--color-core-blue-5); /* Base color for the info color */
+  --alert-color-content-weak-success: var(--color-core-green-3); /* Base color for the success color */
+  --alert-color-content-weak-warning: var(--color-core-orange-3); /* Base color for the warning color */
+  --alert-color-content-weak-danger: var(--color-core-red-3); /* Base color for the danger color */
+  --alert-color-content-weak-secondary: var(--color-core-gray-3);
+  --alert-color-content-weak-primary: var(--color-core-blue-3);
+  --alert-color-content-weak-default: var(--color-core-gray-3);
+  --alert-color-content-info: var(--color-core-white); /* Base color for the info color */
+  --alert-color-content-success: var(--color-core-white); /* Base color for the success color */
+  --alert-color-content-warning: var(--color-core-white); /* Base color for the warning color */
+  --alert-color-content-danger: var(--color-core-red-1); /* Base color for the danger color */
+  --alert-color-content-secondary: var(--color-core-gray-1);
+  --alert-color-content-primary: var(--color-core-blue-1);
+  --alert-color-content-default: var(--color-core-gray-6);
+  --alert-color-title-weak-info: var(--color-core-blue-4); /* Base color for the info color */
+  --alert-color-title-weak-success: var(--color-core-green-4); /* Base color for the success color */
+  --alert-color-title-weak-warning: var(--color-core-orange-4); /* Base color for the warning color */
+  --alert-color-title-weak-danger: var(--color-core-red-4); /* Base color for the danger color */
+  --alert-color-title-weak-secondary: var(--color-core-gray-4);
+  --alert-color-title-weak-primary: var(--color-core-blue-4);
+  --alert-color-title-weak-default: var(--color-core-gray-4);
+  --alert-color-title-info: var(--color-core-blue-5); /* Base color for the info color */
+  --alert-color-title-success: var(--color-core-green-7); /* Base color for the success color */
+  --alert-color-title-warning: var(--color-core-yellow-5); /* Base color for the warning color */
+  --alert-color-title-danger: var(--color-core-red-7); /* Base color for the danger color */
+  --alert-color-title-secondary: var(--color-core-gray-8);
+  --alert-color-title-primary: var(--color-core-blue-8);
+  --alert-color-title-default: var(--color-core-gray-9);
   --color-text-link: var(--color-core-blue-4); /* Text color to indicate link */
   --color-text-inverse: var(--color-core-white); /* Text color to indicate inverse */
   --color-text-info: var(--color-core-blue-2); /* Text color to indicate info */
@@ -228,29 +249,29 @@
   --color-background-secondary: var(--color-core-gray-4); /* Base color for the secondary color */
   --color-background-primary: var(--color-core-blue-4); /* Base color for the primary color */
   --color-background-default: var(--color-core-white); /* Background color that will match the current color scheme */
-  --component-divider-color-border-danger: var(--color-background-danger);
-  --component-divider-color-border-warning: var(--color-background-warning);
-  --component-divider-color-border-info: var(--color-background-info);
-  --component-divider-color-border-success: var(--color-background-success);
-  --component-divider-color-border-secondary: var(--color-background-secondary);
-  --component-divider-color-border-primary: var(--color-background-primary);
-  --component-button-color-border-danger: var(--color-background-danger);
-  --component-button-color-border-warning: var(--color-background-warning);
-  --component-button-color-border-info: var(--color-background-info);
-  --component-button-color-border-success: var(--color-background-success);
-  --component-button-color-border-secondary: var(--color-background-secondary);
-  --component-button-color-border-primary: var(--color-background-primary);
-  --component-button-color-background-danger: var(--color-background-danger);
-  --component-button-color-background-warning: var(--color-background-warning);
-  --component-button-color-background-info: var(--color-background-info);
-  --component-button-color-background-success: var(--color-background-success);
-  --component-button-color-background-secondary: var(--color-background-secondary);
-  --component-button-color-background-primary: var(--color-background-primary);
-  --component-button-color-background-default: var(--color-background-default);
-  --component-alert-color-background-danger: var(--color-background-danger);
-  --component-alert-color-background-warning: var(--color-background-warning);
-  --component-alert-color-background-info: var(--color-background-info);
-  --component-alert-color-background-success: var(--color-background-success);
-  --component-alert-color-background-secondary: var(--color-background-secondary);
-  --component-alert-color-background-primary: var(--color-background-primary);
+  --divider-color-border-danger: var(--color-background-danger);
+  --divider-color-border-warning: var(--color-background-warning);
+  --divider-color-border-info: var(--color-background-info);
+  --divider-color-border-success: var(--color-background-success);
+  --divider-color-border-secondary: var(--color-background-secondary);
+  --divider-color-border-primary: var(--color-background-primary);
+  --button-color-border-danger: var(--color-background-danger);
+  --button-color-border-warning: var(--color-background-warning);
+  --button-color-border-info: var(--color-background-info);
+  --button-color-border-success: var(--color-background-success);
+  --button-color-border-secondary: var(--color-background-secondary);
+  --button-color-border-primary: var(--color-background-primary);
+  --button-color-background-danger: var(--color-background-danger);
+  --button-color-background-warning: var(--color-background-warning);
+  --button-color-background-info: var(--color-background-info);
+  --button-color-background-success: var(--color-background-success);
+  --button-color-background-secondary: var(--color-background-secondary);
+  --button-color-background-primary: var(--color-background-primary);
+  --button-color-background-default: var(--color-background-default);
+  --alert-color-background-danger: var(--color-background-danger);
+  --alert-color-background-warning: var(--color-background-warning);
+  --alert-color-background-info: var(--color-background-info);
+  --alert-color-background-success: var(--color-background-success);
+  --alert-color-background-secondary: var(--color-background-secondary);
+  --alert-color-background-primary: var(--color-background-primary);
 }
