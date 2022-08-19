@@ -17,6 +17,8 @@ Magic methods can be used under class components. To be made available for use i
 Magic methods extend method functionality similar to decorators.
 
 ```jsx
+import { CLICK } from "@elf-framework/sapa";
+
 class A extends UIElement {
   template () {
     return <div>Simple Text</div>
@@ -35,7 +37,7 @@ If you use a magic method, you can create a template more easily.
 
 Magic methods have some special features.
 
-##### How to use Checkers
+### How to use Checkers
 ```jsx
 
 import {CLICK, ALT, SHIFT, CONTROL, META} from "@elf-framework/sapa";
@@ -60,7 +62,7 @@ class A extends UIElement {
   
 ```
 
-#### How to sum Checkers 
+### How to sum Checkers 
 
 ```jsx
 class A extends UIElement {
@@ -75,7 +77,7 @@ class A extends UIElement {
   
 ```
 
-#### How to run by `IF`
+### How to run by `IF`
 
 ```jsx
 class A extends UIElement {
@@ -94,9 +96,148 @@ class A extends UIElement {
   
 ```
 
-#### Checker List 
+### DOM Event MagicMethod 
 
-key event checker 
+Magic methods for some DOM Events are defined.
+
+| Magic Method  | DOM Event  | 
+| ------------- | ------------- |
+| CLICK | click | 
+| DOUBLECLICK | dblclick | 
+| MOUSEDOWN | mousedown | 
+| MOUSEUP | mouseup | 
+| MOUSEMOVE | mousemove | 
+| MOUSEOVER | mouseover | 
+| MOUSEOUT | mouseout | 
+| MOUSEENTER | mouseenter | 
+| MOUSELEAVE | mouseleave | 
+| TOUCHSTART | touchstart | 
+| TOUCHMOVE | touchmove | 
+| TOUCHEND | touchend | 
+| KEYDOWN | keydown | 
+| KEYUP | keyup | 
+| KEYPRESS | keypress | 
+| DRAG | drag | 
+| DRAGSTART | dragstart | 
+| DROP | drop | 
+| DRAGOVER | dragover | 
+| DRAGENTER | dragenter | 
+| DRAGLEAVE | dragleave | 
+| DRAGEXIT | dragexit | 
+| DRAGOUT | dragout | 
+| DRAGEND | dragend | 
+| CONTEXTMENU | contextmenu | 
+| CHANGE | change | 
+| INPUT | input | 
+| FOCUS | focus | 
+| FOCUSIN | focusin | 
+| FOCUSOUT | focusout | 
+| BLUR | blur | 
+| PASTE | paste | 
+| RESIZE | resize | 
+| SCROLL | scroll | 
+| SUBMIT | submit | 
+| POINTERSTART | pointdown + LEFT_BUTTON | 
+| POINTEROVER  |  pointerover | 
+| POINTERENTER  |  pointerenter | 
+| POINTEROUT  |  pointerout | 
+| POINTERLEAVE  |  pointerleave | 
+| POINTERMOVE  |  pointermove | 
+| POINTEREND  |  pointerup | 
+| CHANGEINPUT | change, input | 
+| WHEEL | wheel, mousewheel, DOMMouseScroll | 
+| ANIMATIONSTART | animationstart | 
+| ANIMATIONEND | animationend | 
+| ANIMATIONITERATION | animationiteration | 
+| TRANSITIONSTART | transitionstart | 
+| TRANSITIONEND | transitionend | 
+| TRANSITIONRUN | transitionrun | 
+| TRANSITIONCANCEL | transitioncancel | 
+| DOUBLETAB | doubletab | 
+
+#### DOM Event Usage 
+
+```js
+class A extends UIElement {
+
+  template () {
+    return (
+      <div>
+        <div class="test">Test Code</div>
+      </div>
+    )
+  }
+
+  [CLICK()] (e) {
+    console.log("root element this.$el is clicked", e);
+  }
+
+  // It can use a selector 
+  [CLICK("$el .test")] (e)  {
+    console.log(".test element is clicked");
+  }
+
+  [CLICK("$el .test") + ALT] (e) {
+    console.log(".test element is clicked with altKey.");
+  }
+
+  [CLICK("$el .test") + ALT + SHIFT] (e) {
+    console.log(".test element is clicked with altKey and shiftKey.");
+  }
+
+  isElementType (e) {
+    return e.target.nodeType === 1; // ndoeType 1 is ELEMENT_TYPE
+  }
+
+  [CLICK("$el .test") + ALT + SHIFT + IF("isElementType")] (e) {
+    console.log(".test element is clicked with altKey and shiftKey.");
+  }
+
+  [CLICK("$el") + PREVENT] (e) {
+    console.log("e.preventDefault is fired with click event").
+  }
+}
+
+```
+
+### Window Event Magic Method
+
+| Magic Method  | Window Event | 
+| ------------- | ------------- | 
+| POPSTATE  |  popstate | 
+| ORIENTATIONCHANGE  |  orientationchange | 
+| HASHCHANGE  |  hashchange | 
+
+#### Using window event 
+
+```js
+import { HASHCHANGE } from "@elf-framework/sapa";
+
+class A extends UIElement {
+  [HASHCHANGE("window")] (e) {
+    console.log("hashchange event is fired");
+  }
+}
+```
+
+## Custom MagicMethod 
+
+```jsx
+import { CUSTOM } from "@elf-framework/sapa";
+class A extends UIElement {
+  [CUSTOM("click")("$el .test")] (e) {
+    console.log(e.target, " is clicked");
+  }
+}
+```
+
+Through the `CUSTOM` function, it is possible to designate an event other than the predetermined event.
+
+## Checker List 
+
+A magic method extends the method through several Checkers.
+
+### key event checker 
 
 | Checker  | Description | Usage | 
 | ------------- | ------------- | ----- |
@@ -121,18 +262,18 @@ key event checker
 | BRACKET_RIGHT |  if `BracketRight` key is pressed  |       | 
 | BRACKET_LEFT | if `BracketLeft` key is pressed  |       | 
 
-event checker 
+### event checker 
 
 | Checker  | Description | Usage | 
 | ------------- | ------------- | ----- |
-| CAPTURE  | if `alt` key is pressed  |       |
-| PREVENT  | if `alt` key is pressed  |       |
-| STOP  | if `alt` key is pressed  |       |
+| CAPTURE  | `capture` options for addEventListener   |       |
+| PREVENT  | Execute `e.preventDefault()`   |       |
+| STOP  | Execute `e.stopPropagation()`  |       |
 
-control checker 
+### control checker 
 
 | Checker  | Description | Usage | 
 | ------------- | ------------- | ----- |
-| IF  | if `alt` key is pressed  |       |
-| DEBOUNCE  | if `alt` key is pressed  |       |
-| THROTTLE  | if `alt` key is pressed  |       |
+| IF  | Executed when check function is true  |  [CLICK('$el') + IF('checkTargetElement')] () \{\}      |
+| DEBOUNCE  | Apply debounce to a function  |  [CLICK() + DEBOUNCE(100)] () \{\}      |
+| THROTTLE  | Apply throttle to a function  | [CLICK() + THROTTLE(100)] () \{\}      |

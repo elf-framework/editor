@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.6
+
+### Patch Changes
+
+- remove unused function
+
 ## 2.1.4
 
 ### Patch Changes

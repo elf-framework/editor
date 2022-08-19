@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.9
+
+### Patch Changes
+
+- add magic method page
+
 ## 1.0.8
 
 ### Patch Changes

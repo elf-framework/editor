@@ -49,6 +49,7 @@ function PageMenu({ menu = [], depth = 0 }) {
             <div
               class={classnames("page-menu", {
                 selected: pathname === page.link,
+                disabled: page.disabled,
               })}
               data-depth={depth}
               id={pageId(page.link)}
@@ -65,33 +66,10 @@ function PageMenu({ menu = [], depth = 0 }) {
 
 export function Layout(props) {
   const { content, width, menu = [], version = "", title = "" } = props;
-  const [scrollTop, setScrollTop] = useState(0);
-
-  const onScroll = useCallback(() => {
-    const localScrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0;
-
-    setScrollTop(localScrollTop);
-  }, [setScrollTop]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [onScroll]);
 
   return (
     <div class="layout">
-      <div
-        class={classnames("layout-header", {
-          fixed: scrollTop > 100,
-        })}
-      >
+      <div class={classnames("layout-header")}>
         <Flex class="layout-logo">
           <div
             style={{

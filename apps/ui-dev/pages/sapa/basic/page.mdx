@@ -186,12 +186,67 @@ function MyApp () {
 
 Sapa focuses on how to store data, how to send messages, and how to render DOM through JSX.
 
-# start, hydrate, renderToHtml
+# start to render 
 
-# Hot Module Reloader 
+## start(Function|Class|VNode, RootOptions)
 
+The start function is for dom rendering.
 
 ```jsx
-setGlobalForceRender(true);
-renderFromRoot();
+import {start} from "@elf-framework/sapa";
+
+start(<div >Simple Text</div>, {
+  container: document.body
+})
 ```
+
+By default, the component is rendered through the container property. 
+It can be used in the browser or environment where the DOM api operates.
+
+The container property defaults to `document.body` . 
+
+If you want to draw in other areas, you can designate a different dom element.
+
+```jsx
+import {start} from "@elf-framework/sapa";
+
+start(<div >Simple Text</div>, {
+  container: document.getElementById('root')
+})
+```
+
+## hydrate 
+
+Basically similar to start . It can be made into components in the state that the html structure has already been output.
+
+```jsx
+hydrate(<div >Simple Text</div>, {
+  container: document.getElementById("page-view"),
+  routeParams,
+  pageContext,
+});
+```
+
+It is good to use after SSR (Server Side Rendering).
+
+## renderToHtml
+
+The usage is similar to `start` function . This function converts the component to HTML.
+
+```jsx
+(async () => {
+
+  const pageHtml = await renderToHtml(<Page {...pageProps} />, {
+    pageContext,
+    routeParams,
+  });
+
+})();
+```
+
+It can be used when expressing a component purely in HTML. 
+Usually used in SSR(Server Side Rendering).
+
+# Hot Module Reload
+
+See [vite-plugin-sapa](/pages/sapa/vite-plugin-sapa/).

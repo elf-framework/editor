@@ -7,6 +7,12 @@ import {Diagram} from "../../../utils/Diagram";
 
 # Core Concept
 
+`ELF` is a framework designed to easily create editors. `ELF` was created with the hope that various technologies could be flexibly combined.
+
+The goal is to provide a structure that can be easily implemented when creating a large-scale application.
+
+So, we plan to combine all of the various technologies below.
+
 * Design Tokens: Color, Size, Font, etc 
 * Design System: Typography, Grid, Space, Color Status, etc 
 * Sapa : frontend library like React 
@@ -22,6 +28,8 @@ import {Diagram} from "../../../utils/Diagram";
 * I18n : Internalization 
 * Shortcut : Keyboard Event Manager 
 * Config : Editor config 
+
+# Architecture 
 
 <Diagram graph={`
 flowchart TD;
@@ -50,3 +58,7 @@ flowchart TD;
   end
     registerConfig & registerCommand & registerUI & registerShortcut & registerI18n & registerInspector-->YourEditor
 `} />
+
+# Getting started 
+
+Let's go try the `ELF` framework. [Here](/pages/introduction/getting-started/)

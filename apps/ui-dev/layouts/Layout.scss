@@ -8,6 +8,7 @@
 html,body {
     padding: 0px;
     margin: 0px;
+    scroll-behavior: smooth;
 }
 
 .default-layout {
@@ -96,6 +97,13 @@ html,body {
     &.selected {
         background-color: var(--color-core-blue-0) !important;
         border-right: 5px solid var(--color-core-blue-2);
+    }
+
+    &.disabled {
+        > * {
+            color: gray !important;
+        }
+
     }
 
     &:hover {

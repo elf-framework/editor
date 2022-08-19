@@ -1,0 +1,122 @@
+---
+title: Vite
+layout: MainLayout
+---
+
+import {Diagram} from "../../../../utils/Diagram";
+
+# {title}
+
+Let's use Vite as a bundler.
+
+## create a project 
+
+```shell
+mkdir my-project
+cd my-project 
+npm init -y
+```
+
+## npm 
+
+After creating the project, let's install vite.
+
+```shell
+npm install -D vite 
+```
+
+## package.json
+
+Write the execution script in package.json .
+
+```js
+{
+  "scripts": {
+    "dev": "vite dev"
+  }
+}
+
+```
+
+## vite.config.js 
+
+Now we need to configure the structure to run sapa on vite.
+
+Create a file called `vite.config.dev.js` and do it as follows.
+
+```js {6-8, 13}
+import { defineConfig } from "vite";
+import path from "path";
+
+export default defineConfig({
+  esbuild: {
+    jsxFactory: "createElementJsx",
+    jsxFragment: "FragmentInstance",
+    jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        ui: path.resolve(__dirname, "index.html"),
+      },
+    },
+  }
+});
+
+```
+
+## ESBuild
+
+Since vite uses a compiler called esbuild by default, keywords are specified for jsx processing.
+
+## Running Dev Server 
+
+The basic setup to run is complete. You need to specify the config you set last.
+
+First, change the command in package.json as follows.
+
+```js {3}
+{
+  "scripts": {
+    "dev": "vite dev --config=vite.config.dev.js"
+  }
+}
+
+```
+
+# Make a `index.html` 
+
+Let's create index.html in the input specified in rollupOption. This will be the starting point for everything.
+
+```html {8}
+<!DOCTYPE html>
+<html>
+    <head>    
+        <meta charset="utf-8" />
+        <title>Fantastic UI Library</title>
+    </head>
+    <body>
+        <script type="module" src="./page.jsx"></script>
+    </body>
+</html>
+
+```
+
+Use `script type="module"` to specify a script to be started as a module.
+
+Since jsx was also processed, it is okay to directly specify the jsx file.
+
+# Make a `page.jsx`
+
+Define the component and render it on the screen using the start function.
+
+```jsx {1,7}
+import { start } from "@elf-framework/sapa";
+
+function Main() {
+  return <div>Hello, World!! This is a Sapa </div>
+}
+
+start(Main);
+```
+

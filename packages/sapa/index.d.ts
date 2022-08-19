@@ -137,20 +137,8 @@ declare module "@elf-framework/sapa" {
   export const POPSTATE: CallbackFunction;
   export const HASHCHANGE: CallbackFunction;
 
-  // Predefined LOADER
-
-  /**
-   * 특정 영역의 html 을 만들기 위한 함수
-   *
-   * @param [refName=$el] 업데이트 되기 위한 refName
-   * @returns {string}
-   */
-  export function LOAD(refName: string): string;
   export function OBSERVER(observerName: string): string;
   export function PARAMS(obj: KeyValue): string;
-  export function createRef(value: any): string;
-  export function getRef(id: string): any;
-  export function BIND(value: string, checkFieldOrCallback: string): string;
 
   type ClassNameType = string | object | Array<string | object>;
   export function classnames(...args: ClassNameType[]): string;
