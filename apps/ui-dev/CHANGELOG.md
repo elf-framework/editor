@@ -1,5 +1,12 @@
 # ui-dev
 
+## 1.0.11
+
+### Patch Changes
+
+- add github file link
+  add store, message pages
+
 ## 1.0.10
 
 ### Patch Changes

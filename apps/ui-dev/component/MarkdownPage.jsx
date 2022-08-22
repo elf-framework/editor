@@ -1,7 +1,7 @@
 import "./MarkdownPage.scss";
 import { TableOfContents } from "./TableOfContents";
 
-export function MarkdownPage({ page }) {
+export function MarkdownPage({ page, filename }) {
   const template = page();
 
   const items = [];
@@ -20,7 +20,27 @@ export function MarkdownPage({ page }) {
   return (
     <div class="markdown-page">
       <div class="markdown-page-content">
-        <div class="content-container">{template}</div>
+        <div class="content-container">
+          {filename && (
+            <div class="filename">
+              <a
+                href={`https://github.com/elf-framework/editor/tree/develop/apps/ui-dev/${filename}`}
+              >
+                [Edit on the github]
+              </a>
+            </div>
+          )}
+          {template}
+          {filename && (
+            <div class="filename">
+              <a
+                href={`https://github.com/elf-framework/editor/tree/develop/apps/ui-dev/${filename}`}
+              >
+                [Edit on the github]
+              </a>
+            </div>
+          )}
+        </div>
 
         <TableOfContents items={items} />
       </div>

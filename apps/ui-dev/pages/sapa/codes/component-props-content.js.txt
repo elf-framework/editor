@@ -1,3 +1,0 @@
-<School key="value" key={value} >
-    <Friends />
-</School>

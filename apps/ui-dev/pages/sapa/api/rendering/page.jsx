@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { EditArea } from "../../../../component/EditArea";
+import { MarkdownPage } from "../../../../component/MarkdownPage";
 import LayoutManager from "../../../../layouts/LayoutManager";
 import Page, { layout, filename } from "./page.mdx";
 import "./page.scss";
@@ -11,9 +11,7 @@ function Main() {
 
   return (
     <CurrentLayout maxWidth={900}>
-      <EditArea filename={filename}>
-        <Page />
-      </EditArea>
+      <MarkdownPage page={Page} filename={filename} />
     </CurrentLayout>
   );
 }

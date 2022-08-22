@@ -1,63 +1,228 @@
 ---
-title: DOM
+title: Message
 layout: SapaLayout
-filename: pages/sapa/dom/page.mdx
+filename: pages/sapa/message/page.mdx
 ---
-
-import { Grid } from "@elf-framework/ui";
-import { Diagram } from "../../../utils/Diagram";
 
 
 # {title}
 
-Sapa provides several functions to easily manipulate the dom used in the component.
+Sapa provides a way to send messages to multiple components.
 
-## Root Element - $el
+Basically, Message supports two types.
 
-After the component is rendered, the $el field becomes active.
+* subscribe - Send messages to other components
+* subscribe_self - Send messages to own component
 
+## SUBSCRIBE 
 
-```jsx
+`SUBSCRIBE` to the point to the point to the message. 
+
+You can send a message to another component through `emit`.
+
+```jsx {7-9, 18}
+import { UIElement, SUBSCRIBE, CLICK } from "@elf-framework/sapa";
+
 class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.$el.hasClass('root-element')) {
-        console.log("check root element");
-      }
-    }}>Simple Text</div>
+  template () {
+    return <div>Simple Text A</div>
+  }
+  [SUBSCRIBE('message')] (param) {
+    console.log('message is called with', { param });
   }
 }
-```
 
-## ref
+class B extends UIElement {
+  template () {
+    return <div>Simple Text B</div>
+  }
 
-A specific element can be directly referenced through the `ref` attribute.
-
-Elements defined as ref can be brought to `this.refs`.
-
-```jsx
-class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.refs.$sender) {
-        console.log("It has send button element");
-      }
-    }}>
-      <button ref="$sender">Simple Button</button>
-    </div>
+  [CLICK()] () {
+    this.emit("message", 10);
   }
 }
+
 ```
 
-## Dom Class
+## SUBSCRIBE_SELF
 
-유틸리티 기본 정리 
+You can send a message to my own component through `trigger`.
 
-나머지는 API 쪽에서 하는것으로 하자.
+```jsx {11, 14-16}
 
-## DOM Event 
+import {UIElement, SUBSCRIBE_SELF} from "@elf-framework/sapa";
 
-### attribute 
+class A  extends UIElement {
 
-### magic method 
+  template (){
+    return <div>Simple Text</div>
+  }
+
+  [CLICK()] () {
+    this.trigger("message", 10);
+  }
+
+  [SUBSCRIBE_SELF('message')] (...params) {
+    console.log('message is called with', { params });
+  }
+
+}
+
+```
+
+## with Checker 
+
+Some messages may have to be run lazy. At this time, use some checkers to control.
+
+```jsx {4-6, 8-10, 16}
+import { DEBOUNCE, TROTTLE, SUBSCRIBE, UIElement } from "@elf-framewor/sapa";
+
+class A extends UIElement {
+  [SUBSCRIBE('message') + DEBOUNCE(100)] () {
+    console.log("message is called lazy");
+  }
+
+  [SUBSCRIBE('message') + TROTTLE100)] () {
+    console.log("message is called lazy");
+  }
+
+  checkParams(param) {
+    return param > 10;
+  }
+
+  [SUBSCRIBE('message') + DEBOUNCE(100) + IF("checkParams")] () {
+    console.log("message is called lazy");
+  }
+}
+
+```
+
+These checkers can prevent continuous message execution.
+
+* DEBOUNCE
+* TROTTLE 
+* IF 
+
+## Subscribe message Hook
+
+Messages can also be used as Hooks. 
+
+```jsx {3-9, 12, 18}
+function A () {
+
+  useSubscribe("message-2", () => {
+    console.log("message-2 is called with param");
+  })
+
+  useSelf("message", (...params) => {
+    console.log("message is called with param", ...params);
+  })
+
+  return <div onClick={() => {
+    this.trigger("message", 10);
+  }}>Simple Text</div>
+}
+
+function B () {
+  return <div onClick={() => {
+    this.emit("message-2");
+  }}>Simple B</div>
+}
+
+```
+
+## Send message with Hook
+
+You can send messages more easily through `useEmit` and `useTrigger` .
+
+```jsx
+
+// useEmit 
+function A () {
+  return <div onClick={() => {
+    useEmit("message", 10);
+  }}>Simple A</div>
+}
+
+// useTrigger
+function B() {
+
+  useSelf("message", () => {
+    console.log("message is triggered.");
+  })
+
+  return <div onClick={() => {
+    useTrigger("message");
+  }}>Simple Text</div>
+}
+
+```
+
+# How to use `useMagicMethod` 
+
+Using the `useMagicMethod` hook can be written in the same way.
+
+```jsx
+import {useMagicMethod, SUBSCRIBE_SELF, DEBOUNCE } from "@elf-framework/sapa";
+function A () {
+
+  useMagicMethod(SUBSCRIBE_SELF("message") + DEBOUNCE(100), () => {
+    console.log("message is called with trigger");
+  })
+
+  return <div onClick={() => {
+    useTrigger("message");
+  }}>Simple Text</div>
+}
+
+```
+
+# Passing messages between parent and child components
+
+```jsx
+
+function ChildComponent ({ onChange }) {
+  return <div onClick={() => {
+    this.parent.trigger(onChange)
+  }}> Simple Text </div>
+}
+
+function ParentComponent () {
+
+  useSelf("message", () => {
+    console.log("message is triggered");
+  })
+
+  return <div>
+      <ChildComponent onChange="message" />
+  </div>
+}
+
+```
+
+# `emit` and `trigger`
+
+`callback` can be used in place of the message name.
+
+```jsx
+
+function ChildComponent ({ onChange }) {
+  return <div onClick={() => {
+    this.parent.trigger(onChange)
+  }}> Simple Text </div>
+}
+
+function ParentComponent () {
+
+  return <div>
+      <ChildComponent onChange={() => {
+        console.log("message is triggered");
+      }} />
+  </div>
+}
+
+```
+
+
+
 

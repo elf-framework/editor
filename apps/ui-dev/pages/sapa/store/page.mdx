@@ -1,5 +1,5 @@
 ---
-title: Store
+title: Store Basic
 layout: SapaLayout
 filename: pages/sapa/store/page.mdx
 ---
@@ -12,9 +12,9 @@ import { Diagram } from "../../../utils/Diagram";
 
 Sapa provides storage that can be used in three forms.
 
-* `useState`
-* `state`
-* `$store`
+* `useState` - having order store 
+* `state` - key-value store 
+* `$store` - hierarchy store 
 
 
 ## useState 
@@ -25,7 +25,7 @@ See [Hook](/pages/sapa/hook/) for details.
 
 ## state 
 
-`state` is a local storage where objects can be stored.
+`state` is a local key-value store.
 
 Since it is a class variable, the initial value is specified with `initState()` and can be used in the template function or other areas inside the class.
 
@@ -92,7 +92,7 @@ class Main extends UIElement {
 }
 ```
 
-In the class component, you can access it using this.$store. Of course, since the basic structure is similar, you can use this.$store as it is in the function component.
+In the class component, you can access it using this.`$store`. Of course, since the basic structure is similar, you can use this.`$store` as it is in the function component.
 
 The `SUBSCRIBE` magic method receives a specific event and executes it.
 
@@ -117,7 +117,7 @@ function A () {
 }
 
 ```
-You can use this.$store as it is in the function component, but it can be used more appropriately for the function component by providing useStore and useStoreSet hooks.
+You can use this.`$store` as it is in the function component, but it can be used more appropriately for the function component by providing useStore and useStoreSet hooks.
 
 ### Store Message 
 
@@ -128,7 +128,6 @@ function A() {
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
   useSubscribe('key', () => {
-    
     this.render();
   })
 
@@ -140,13 +139,12 @@ function A() {
 
 ### Receiving messages from other components
 
-```jsx
+```jsx {2,6-9}
 function A() {
   return <div onClick={() => useStoreSet(useStore('key') + 1)}>Simple Text</div>
 }
 
 function B () {
-
   useSubscribe('key', () => {
     // Re-render when key is changed.
     this.render();
@@ -163,42 +161,6 @@ function Main() {
 }
 ```
 
-$store is useful when dealing with public data.
+`$store` is useful when dealing with public data.
 
-Like React, it supports the Provider and Consumer concepts of context, but $store is easier to use.
-
-
-
-
-## ref
-
-A specific element can be directly referenced through the `ref` attribute.
-
-Elements defined as ref can be brought to `this.refs`.
-
-```jsx
-class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.refs.$sender) {
-        console.log("It has send button element");
-      }
-    }}>
-      <button ref="$sender">Simple Button</button>
-    </div>
-  }
-}
-```
-
-## Dom Class
-
-유틸리티 기본 정리 
-
-나머지는 API 쪽에서 하는것으로 하자.
-
-## DOM Event 
-
-### attribute 
-
-### magic method 
-
+Like React, it supports the Provider and Consumer concepts of context, but `$store` is easier to use.

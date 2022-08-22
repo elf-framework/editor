@@ -1,6 +1,0 @@
-function Main() {
-
-    const [text, setText] = useState("title");
-
-    return <div>{text}</div>
-}
