@@ -1,63 +1,128 @@
 ---
-title: DOM
+title: Rendering
 layout: SapaLayout
-filename: pages/sapa/dom/page.mdx
+filename: pages/sapa/api/rendering/page.mdx
 ---
-
-import { Grid } from "@elf-framework/ui";
-import { Diagram } from "../../../../utils/Diagram";
 
 
 # {title}
 
-Sapa provides several functions to easily manipulate the dom used in the component.
+At some point, I want to control the rendering at the point I want it to.
 
-## Root Element - $el
+These are the APIs that can be used at this time.
 
-After the component is rendered, the $el field becomes active.
+Basically, all Class/Function components work in the same way.
 
 
-```jsx
-class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.$el.hasClass('root-element')) {
-        console.log("check root element");
-      }
-    }}>Simple Text</div>
-  }
+## Rendering Root
+
+### `start` function 
+
+```jsx {3}
+import {start} from "@elf-framework/sapa";
+
+start(<div>Simple Text</div>, {
+  container: document.getElementById('root')
+})
+```
+
+### `hydrate` function 
+
+It is similar to `start` function.
+
+But rendering the component in the specified place is different.
+
+```jsx {3}
+import { hydrate } from "@elf-framework/sapa";
+
+hydrate(<div>Simple Text</div>, {
+  container: document.getElementById('root')
+})
+
+```
+
+### `renderToHtml` function 
+
+It is similar to `start` function.
+
+``renderToHtml`` converts the given `vnode` to `html` string.
+
+Used in Server Side Rendering (SSR).
+
+renderToHtml works in async/await format.
+
+```jsx {4}
+import { renderToHtml } from "@elf-framework/sapa";
+
+(async () => {
+  const html = await renderToHtml(<div>Simple Text</div>, {
+    some: value
+  });
+
+  console.log(html);
+})()
+
+```
+
+
+
+
+## Rendering Component
+
+### `setState` method 
+
+The `setState` method calls `render`() function again while changing a specific value.
+
+In this case, the values ​​are not compared.
+
+Just call the `render`() function.
+
+```jsx {3-5}
+function A () {
+  return <div onClick={() => {
+    this.setState({
+      value: (this.state?.value || 0) + 1
+    })
+  }}>Simple Text{this.state.value}</div>
 }
 ```
 
-## ref
+Change the state value and give options when not rendering.
 
-A specific element can be directly referenced through the `ref` attribute.
-
-Elements defined as ref can be brought to `this.refs`.
-
-```jsx
-class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.refs.$sender) {
-        console.log("It has send button element");
-      }
-    }}>
-      <button ref="$sender">Simple Button</button>
-    </div>
-  }
+```jsx {5}
+function A () {
+  return <div onClick={() => {
+    this.setState({
+      value: (this.state?.value || 0) + 1
+    }, false)   // do not render
+  }}>Simple Text{this.state.value}</div>
 }
 ```
 
-## Dom Class
+### `render` method 
 
-유틸리티 기본 정리 
+`render` method allows you to perform rendering at any point in time.
 
-나머지는 API 쪽에서 하는것으로 하자.
+When used with `subscribe` , you can control the desired rendering time.
 
-## DOM Event 
+```jsx {4, 10, 13}
+function A () {
+  // render when message is received.
+  useSubscribe("message", () => {
+    this.render();
+  })
 
-### attribute 
+  return <div onClick={() => {
+    this.setValue({
+      value: 10
+    }, false)
 
-### magic method 
+    this.render();
+  }}>Simple text {this.state.value} </div>
+}
 
+```
+
+By this time, you would have noticed.
+
+Because the rendering can be adjusted at any time, it can do quite a lot with messages.
