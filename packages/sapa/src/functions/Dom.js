@@ -58,7 +58,7 @@ export class Dom {
 
   static parse(html) {
     var parser = window.DOMParser();
-    return parser.parseFromString(html, "text/htmll");
+    return parser.parseFromString(html, "text/html");
   }
 
   static body() {
@@ -134,19 +134,6 @@ export class Dom {
     // 동일한 속성 값이 있다면 변경하지 않는다.
     if (this.el.getAttribute(args[0]) != args[1]) {
       this.el.setAttribute(args[0], args[1]);
-    }
-
-    return this;
-  }
-
-  attrNS(key, value, namespace = "http://www.w3.org/2000/svg") {
-    if (arguments.length == 1) {
-      return this.el.getAttributeNS(namespace, key);
-    }
-
-    // 동일한 속성 값이 있다면 변경하지 않는다.
-    if (this.el.getAttributeNS(namespace, key) != value) {
-      this.el.setAttributeNS(namespace, key, value);
     }
 
     return this;

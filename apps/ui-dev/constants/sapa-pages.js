@@ -76,11 +76,6 @@ export default [
   },
   {
     type: "link",
-    link: "/pages/sapa/api/hook/",
-    title: "Hooks",
-  },
-  {
-    type: "link",
     link: "/pages/sapa/api/dom/",
     title: "Dom",
   },
