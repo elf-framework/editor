@@ -26,4 +26,10 @@ export class MagicHandler {
       })
     );
   }
+
+  filterFunction(func, ...args) {
+    return this.loadHandlerCache(func).map((h) => {
+      return h[func](...args);
+    });
+  }
 }

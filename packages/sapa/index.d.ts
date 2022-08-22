@@ -72,7 +72,9 @@ declare module "@elf-framework/sapa" {
 
   type CallbackFunction = (...args: string[]) => string;
   type DOM_EVENT_MAKE = (...keys: string[]) => CallbackFunction;
+  type PROPS_MAKE = (ref: string, ...args: string[]) => CallbackFunction;
 
+  export const PROPS: PROPS_MAKE;
   export const SUBSCRIBE: CallbackFunction;
   export const SUBSCRIBE_ALL: CallbackFunction;
   export const SUBSCRIBE_SELF: CallbackFunction;
@@ -187,6 +189,7 @@ declare module "@elf-framework/sapa" {
     focus(): Dom;
     select(): Dom;
     blur(): Dom;
+    dispatchEvent(event: string, data: KeyValue): Dom;
 
     /* utility */
     fullscreen(): void;
@@ -498,6 +501,12 @@ declare module "@elf-framework/sapa" {
   export function useRef<T>(initialValue: T): Ref<T>;
   export function useEmit(name: string, ...args: unknown[]): void;
   export function useTrigger(name: string, ...args: unknown[]): void;
+
+  type MagicMethodString = string;
+  export function useMagicMethod(
+    methodName: MagicMethodString,
+    callback: () => unknown
+  ): void;
 
   interface ProviderProps<T> {
     value: T;

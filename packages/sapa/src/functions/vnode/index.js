@@ -4,7 +4,7 @@ import { css } from "../css";
 import { Dom } from "../Dom";
 import { isVoidTag } from "../DomUtil";
 import { isArray, isFunction, isNumber, isObject, isString } from "../func";
-import { getModule, isGlobalForceRender, variable } from "../registElement";
+import { getModule, isGlobalForceRender } from "../registElement";
 import { isSVG } from "../svg";
 
 const TAG_PREFIX = "<";
@@ -279,22 +279,21 @@ export class VNode {
 
       this.tagProps = newProps;
     } else {
-      // 컴포넌트 방식에서는
-      // object 태그를 만들 때 사용할 props 를 미리 만들는데
-      // 파싱 용량을 줄일기 위해서 variable 로 감싼 리스트를 설정
-      const targetVariable = Object.keys(newProps).length
-        ? variable(newProps)
-        : undefined;
-
-      const newProps2 = {
-        // refClass: this.Component.name,
-        ref: newProps.ref ? newProps.ref : undefined,
-      };
-
-      if (targetVariable) {
-        newProps2[targetVariable] = "";
-      }
-      this.tagProps = newProps2;
+      // console.log("aaaa");
+      // // 컴포넌트 방식에서는
+      // // object 태그를 만들 때 사용할 props 를 미리 만들는데
+      // // 파싱 용량을 줄일기 위해서 variable 로 감싼 리스트를 설정
+      // const targetVariable = Object.keys(newProps).length
+      //   ? variable(newProps)
+      //   : undefined;
+      // const newProps2 = {
+      //   // refClass: this.Component.name,
+      //   ref: newProps.ref ? newProps.ref : undefined,
+      // };
+      // if (targetVariable) {
+      //   newProps2[targetVariable] = "";
+      // }
+      // this.tagProps = newProps2;
     }
 
     if (this.props.enableHtml) {
@@ -444,11 +443,35 @@ export class VNode {
     return makeNativeDom(this.tag);
   }
 
+  /**
+   * context 에서 사용할 수 있는 속성을 추출한다.
+   */
+  getContextProps(context, props) {
+    const newProps = context.filterFunction("getProps").flat(Infinity);
+    const newPropList = newProps.filter((it) => {
+      return it.ref === props.ref;
+    });
+
+    newPropList.forEach((it) => {
+      if (isObject(it.props)) {
+        Object.assign(props, it.props);
+      }
+    });
+  }
+
   makeElement(withChildren = false, options = {}) {
     const el = this.createElement();
 
-    const props = this.tagProps;
+    let props = this.tagProps;
     if (props) {
+      // props 에 ref 속성이 있으면 context 에 추가한다.
+      if (props.ref) {
+        this.getContextProps(options.context, props);
+
+        this.ref = props.ref;
+        isFunction(options.registerRef) && options.registerRef(props.ref, el);
+      }
+
       Object.keys(props).forEach((key) => {
         const value = props[key];
         if (key === "style") {
@@ -472,12 +495,6 @@ export class VNode {
             }
           }
         }
-
-        if (key === "ref" && value) {
-          this.ref = value;
-
-          isFunction(options.registerRef) && options.registerRef(value, el);
-        }
       });
     }
 
@@ -491,6 +508,11 @@ export class VNode {
     const tempProps = [];
     const props = this.tagProps;
     if (props) {
+      if (props.ref) {
+        // ref 가 있을 때는 context 에서 props 를 가지고 온다.
+        this.getContextProps(options.context, props);
+      }
+
       Object.keys(props).forEach((key) => {
         const value = props[key];
         if (key === "style") {
@@ -670,7 +692,12 @@ export class VNodeComponent extends VNode {
 
   // class/function instance 생성
   makeClassInstance(options) {
-    const props = this.props;
+    const props = { ...this.props };
+
+    // ref 가 있을 때는 context 에서 props 를 가지고 온다.
+    if (props.ref) {
+      this.getContextProps(options.context, props);
+    }
 
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
     const newComponent = this.getModule();

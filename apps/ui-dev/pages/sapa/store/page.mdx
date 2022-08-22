@@ -1,7 +1,7 @@
 ---
-title: DOM
+title: Store
 layout: SapaLayout
-filename: pages/sapa/dom/page.mdx
+filename: pages/sapa/store/page.mdx
 ---
 
 import { Grid } from "@elf-framework/ui";
@@ -10,24 +10,165 @@ import { Diagram } from "../../../utils/Diagram";
 
 # {title}
 
-Sapa provides several functions to easily manipulate the dom used in the component.
+Sapa provides storage that can be used in three forms.
 
-## Root Element - $el
+* `useState`
+* `state`
+* `$store`
 
-After the component is rendered, the $el field becomes active.
 
+## useState 
+
+useState is an ordered storage using Hooks.
+
+See [Hook](/pages/sapa/hook/) for details.
+
+## state 
+
+`state` is a local storage where objects can be stored.
+
+Since it is a class variable, the initial value is specified with `initState()` and can be used in the template function or other areas inside the class.
 
 ```jsx
+import { UIElement } from "@elf-framework/sapa";
+
 class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.$el.hasClass('root-element')) {
-        console.log("check root element");
-      }
-    }}>Simple Text</div>
+
+  initState() {
+    return {
+      value: 10
+    }
+  }
+
+  template () {
+    return <div>{this.state.value}</div>
   }
 }
 ```
+
+## store 
+
+`$store` is the storage structure used in the hierachy structure.
+
+Components connected by hierachy all share one `$store`.
+
+First, let's see how to use it in class components.
+
+```jsx
+import {UIElement, SUBSCRIBE} from "@elf-framework/sapa";
+
+
+class B extends UIElement {
+  template () {
+
+    return <div>{this.$store.get('key')}</div>
+  }
+
+  // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
+  [SUBSCRIBE('key')] () {
+    this.render();
+  }
+}
+
+class A extends UIElement {
+  template () {
+
+    return <div onClick={() => {
+      this.$store.set("key", "value")
+    }}>
+      {this.$store.get('key')}
+      <B />
+    </div>
+  }
+}
+
+class Main extends UIElement {
+  template () {
+    return <div>
+      <A />
+      <B />
+    </div>
+  }
+}
+```
+
+In the class component, you can access it using this.$store. Of course, since the basic structure is similar, you can use this.$store as it is in the function component.
+
+The `SUBSCRIBE` magic method receives a specific event and executes it.
+
+For details of `SUBSCRIBE`, check [Magic Method](/pages/sapa/magic-method/#SUBSCRIBE).
+
+
+Let's see how to use it in function component.
+
+```jsx
+function B () {
+  return <div>{useStore('key')}</div>
+}
+
+function A () {
+
+  useStoreSet('key', 'value');
+
+  return <dv>
+    {useStore('key')}
+    <B />
+  </div>
+}
+
+```
+You can use this.$store as it is in the function component, but it can be used more appropriately for the function component by providing useStore and useStoreSet hooks.
+
+### Store Message 
+
+When the value of the store is changed, a message is delivered to the key value of the store.
+
+```jsx
+function A() {
+
+  // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
+  useSubscribe('key', () => {
+    
+    this.render();
+  })
+
+  return <div onClick={() => {
+    useStoreSet('key', e.target);
+  }}>Simple Text</div>
+}
+```
+
+### Receiving messages from other components
+
+```jsx
+function A() {
+  return <div onClick={() => useStoreSet(useStore('key') + 1)}>Simple Text</div>
+}
+
+function B () {
+
+  useSubscribe('key', () => {
+    // Re-render when key is changed.
+    this.render();
+  })
+
+  return <div>{useStore('key')}</div>
+}
+
+function Main() {
+  return <div>
+    <A />
+    <B />
+  </div>
+}
+```
+
+$store is useful when dealing with public data.
+
+Like React, it supports the Provider and Consumer concepts of context, but $store is easier to use.
+
+
+
 
 ## ref
 

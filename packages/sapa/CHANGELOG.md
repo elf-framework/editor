@@ -1,5 +1,18 @@
 # @elf-framework/sapa
 
+## 2.1.8
+
+### Patch Changes
+
+- support useMagicMethod hook
+  support PROPS MagicMethod
+
+## 2.1.7
+
+### Patch Changes
+
+- update version
+
 ## 2.1.6
 
 ### Patch Changes

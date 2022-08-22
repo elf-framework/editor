@@ -1,5 +1,14 @@
 # @elf-framework/sapa-router
 
+## 2.1.7
+
+### Patch Changes
+
+- update version
+
+- Updated dependencies []:
+  - @elf-framework/sapa@2.1.7
+
 ## 2.1.5
 
 ### Patch Changes

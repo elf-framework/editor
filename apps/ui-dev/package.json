@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elf-framework/base-editor": "^2.0.45",
+    "@elf-framework/base-editor": "^2.1.7",
     "@elf-framework/color": "*",
     "@elf-framework/design-tokens": "*",
     "@elf-framework/icon": "^2.0.51",

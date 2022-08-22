@@ -407,6 +407,10 @@ function App() {
 }
 ```
 
+## useMagicMethod 
+
+For instructions on how to use [useMagicMethod](/pages/sapa/magic-method/#Use%20-MagicMethod-%20with%20Hook120).
+
 # How to make custom hook
 
 Let's make a custom hook. It is very easy.
@@ -432,4 +436,31 @@ function App () {
   return <div>{value}</div>
 }
 
+```
+
+## useRootContext 
+
+In addition to the container, other data can also be set.
+
+Sapa calls this the rootContext.
+
+```jsx
+start(<Page {...pageProps} />, {
+  pageContext,
+  routeParams,
+});
+
+```
+
+To use it, do the following:
+
+```jsx
+import { useRootContext } from "@elf-framework/sapa";
+
+function OtherComponent () {
+  const pageContext = useRootContext('pageContext');
+  const routeParams = useRootContext('routeParams');
+
+  return <div>Other Component</div>
+}
 ```

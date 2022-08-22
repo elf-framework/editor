@@ -58,6 +58,7 @@ module.exports = {
     setTimeout: true,
     requestAnimationFrame: true,
     cancelAnimationFrame: true,
+    CustomEvent: true,
   },
   overrides: [
     {

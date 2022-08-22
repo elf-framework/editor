@@ -321,3 +321,7 @@ export function useEmit(name, ...args) {
 export function useTrigger(name, ...args) {
   return getCurrentComponent().trigger(name, ...args);
 }
+
+export function useMagicMethod(methodName, callback) {
+  return getCurrentComponent().initMagicMethod(methodName, callback);
+}

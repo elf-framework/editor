@@ -10,6 +10,7 @@ import { uuid } from "./functions/uuid";
 import { vnodePropsDiff } from "./functions/vnode";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
+import PropsHandler from "./handler/PropsHandler";
 import StoreHandler from "./handler/StoreHandler";
 import { HookMachine } from "./HookMachine";
 
@@ -39,6 +40,7 @@ export class EventMachine extends HookMachine {
       DomEventHandler,
       ObserverHandler,
       StoreHandler,
+      PropsHandler,
     });
   }
 
@@ -278,6 +280,9 @@ export class EventMachine extends HookMachine {
     this.$el.el[COMPONENT_INSTANCE] = this;
     // this.prevTemplate = template;
     this.runUpdated();
+
+    // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
+    await this.runHandlers("update");
   }
 
   async runningMount(template, $container) {
@@ -286,7 +291,10 @@ export class EventMachine extends HookMachine {
     this.refs.$el = this.$el;
     // this.prevTemplate = template;
     // element 에 component 속성 설정
-    this.$el.el[COMPONENT_INSTANCE] = this;
+    if (this.$el) {
+      this.$el.el[COMPONENT_INSTANCE] = this;
+    }
+
     if ($container) {
       if (!($container instanceof Dom)) {
         $container = Dom.create($container);
@@ -299,7 +307,9 @@ export class EventMachine extends HookMachine {
       }
     }
     // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
-    await this._afterLoad();
+    await this.runHandlers("initialize");
+
+    await this.afterRender();
   }
 
   checkRefClass = (oldEl, newVNode) => {
@@ -411,7 +421,6 @@ export class EventMachine extends HookMachine {
   }
 
   // afterComponentRendering() {}
-
   getVNodeOptions() {
     return {
       context: this,
@@ -445,12 +454,6 @@ export class EventMachine extends HookMachine {
   }
 
   afterRender() {}
-
-  async _afterLoad() {
-    this.runHandlers("initialize");
-
-    this.afterRender();
-  }
 
   // 기본 템플릿 지정
   template() {
@@ -625,5 +628,12 @@ export class EventMachine extends HookMachine {
     if (instance) {
       instance.onUnmounted();
     }
+  }
+
+  /**
+   * Initialize Magic Method
+   */
+  initMagicMethod(methodName, callback) {
+    this[methodName] = callback;
   }
 }

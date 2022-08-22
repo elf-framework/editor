@@ -41,6 +41,10 @@ const OBSERVER_EVENT_MAKE = (...args) => {
   return MagicMethod.make("observer", ...args);
 };
 
+const PROPS_MAKE = (ref, ...args) => {
+  return MagicMethod.make("props", ref, ...args);
+};
+
 // Predefined CHECKER
 export const CHECKER = (value, split = SPLITTER) => {
   return makeEventChecker(value, split);
@@ -55,7 +59,6 @@ export const BEFORE = (value, split = SPLITTER) => {
 };
 
 export const IF = CHECKER;
-export const KEY = CHECKER;
 
 export const ARROW_UP = CHECKER("ArrowUp");
 export const ARROW_DOWN = CHECKER("ArrowDown");
@@ -129,6 +132,7 @@ export const CALLBACK = CALLBACK_EVENT_MAKE;
 export const RAF = CALLBACK("requestAnimationFrame");
 
 export const OBSERVER = OBSERVER_EVENT_MAKE;
+export const PROPS = PROPS_MAKE;
 
 export const CUSTOM = DOM_EVENT_MAKE;
 export const CLICK = DOM_EVENT_MAKE("click");

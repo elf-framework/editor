@@ -13,7 +13,7 @@ Sapa was created to make UI creation with JavaScript easy.
 
 To use the JS library, you need a few things. Let's find out one by one.
 
-## 1. Import
+## Import (ESM)
 
 Import the library into your project.
 
@@ -21,21 +21,25 @@ Import the library into your project.
 import { start } from "@elf-framework/sapa";
 ```
 
-## 2. Start
+### UMD (Using CDN Service)
 
+It can also be used in umd mode.
 
-Start to rendering.
+Let's load the script first.
 
-```js
-start(App);
-
-// or 
-
-render(App);
-
+```html
+<script src="https://cdn.jsdelivr.net/npm/@elf-framework/sapa@2.1.7/dist/sapa.umd.min.js"></script>
 ```
 
-### App
+Then use the desired function with the sapa object.
+
+```html
+<script>
+const { start } = sapa;
+</script>
+```
+
+# App
 
 The App is the root component of your application.
 
@@ -49,7 +53,7 @@ function App() {
 }
 ```
 
-## 3. Render
+## Render
 
 Render the component. 
 ```jsx
@@ -60,9 +64,9 @@ You can use <strong>render</strong> function instead of{" "}
 <strong>start</strong>.
 </Alert>
 
-    start is a function that takes a Sapa component as a parameter.
+`start` is a function that takes a Sapa component as a parameter.
 
-### VNode
+## VNode
 
 A VNode is a virtual DOM node.
 
@@ -70,10 +74,12 @@ A VNode is a virtual DOM node.
 start(<App key="value" />)
 ```
 
-### Class Component
+## Class Component
 A class component is a component that is defined in a class.
 
 ```js
+import { UIElement } from "@elf-framework/sapa";
+
 class App extends UIElement {
   template() {
     return (
@@ -85,7 +91,7 @@ class App extends UIElement {
 }
 ```
 
-### Function Component
+## Function Component
 
 A function component is a component that is defined in a function.
 
@@ -97,10 +103,9 @@ function App() {
     </div>
   );
 }
-
 ```
 
-# 4. RootContext Options 
+# RootContext Options 
 
 The `RootContext` is special data that is transmitted only to the root element.
 
@@ -141,19 +146,20 @@ start(Main, {
 
 ## using RootContext
 
-You can specify data in rootContext .
+`RootContext` is an option given when running start .
 
-```jsx
+To use RootContext inside component, refer [here](/pages/sapa/hook/#useRootContext154).
+
+```jsx {3}
 start(<Page {...pageProps} />, {
   pageContext,
   routeParams,
 });
-
 ```
 
 To use it, do the following:
 
-```jsx
+```jsx {3}
 function OtherComponent () {
   const pageContext = useRootContext('pageContext');
   const routeParams = useRootContext('routeParams');

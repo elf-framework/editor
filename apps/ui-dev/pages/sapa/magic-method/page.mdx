@@ -10,11 +10,13 @@ import { Diagram } from "../../../utils/Diagram";
 
 # {title}
 
-How to specify using magic methods.
+What is `MagicMethod`?
 
-Magic methods can be used under class components. To be made available for use in perfume functional types.
+`MagicMethod` can be used under class components. To be made available for use in perfume functional types.
 
-Magic methods extend method functionality similar to decorators.
+`MagicMethod` extend method functionality similar to decorators.
+
+`MagicMethod` makes it possible to keep the template as pure as possible by defining the template and the event separately.
 
 ```jsx
 import { CLICK } from "@elf-framework/sapa";
@@ -35,7 +37,7 @@ If you use a magic method, you can create a template more easily.
 
 ## Checker
 
-Magic methods have some special features.
+`MagicMethod` have some special features.
 
 ### How to use Checkers
 ```jsx
@@ -79,6 +81,10 @@ class A extends UIElement {
 
 ### How to run by `IF`
 
+`IF` is one of the control checkers.
+
+If a method is defined in `IF`, the function can be executed only when the method is true.
+
 ```jsx
 class A extends UIElement {
 
@@ -88,7 +94,7 @@ class A extends UIElement {
   }
 
   [CLICK('$el') + ALT + IF("checkEvent")] (nativeDomEvent) {
-    // run if ctrlKey and altKey are pressed
+    // run if altKey are pressed and checkEvent function is trust
     console.log(nativeDomEvent);
   }
 
@@ -96,9 +102,9 @@ class A extends UIElement {
   
 ```
 
-### DOM Event MagicMethod 
+## DOM Event MagicMethod 
 
-Magic methods for some DOM Events are defined.
+`MagicMethod` for some DOM Events are defined.
 
 | Magic Method  | DOM Event  | 
 | ------------- | ------------- |
@@ -155,7 +161,7 @@ Magic methods for some DOM Events are defined.
 | TRANSITIONCANCEL | transitioncancel | 
 | DOUBLETAB | doubletab | 
 
-#### DOM Event Usage 
+### DOM Event Usage 
 
 ```js
 class A extends UIElement {
@@ -200,7 +206,82 @@ class A extends UIElement {
 
 ```
 
-### Window Event Magic Method
+### Delegate (for dom event) 
+
+In Sapa, when using dom event through magic method, selector can also be used.
+
+A delegate has a root element and makes it easier to handle events from child elements.
+
+```jsx
+import { UIElement } from "@elf-framework/sapa";
+class A extends UIElement {
+  template() {
+    return (
+      <div class="list">
+        <div class="item" data-item-index="1">1</div>
+        <div class="item" data-item-index="2">2</div>
+        <div class="item" data-item-index="3">3</div>
+        <div class="item" data-item-index="4">4</div>
+      </div>
+    )
+  }
+
+  [CLICK('$el .item')] (e) {
+    console.log(e.$dt.data('item-index'))
+  }
+}
+
+```
+
+`e.$dt` is a delegated `Dom` object.
+
+### global event 
+
+Some events in sapa act like global objects.
+
+Since it can be used while maintaining the context as a component, there is a function to automatically delete the event when the component is deleted.
+
+```jsx
+import { UIElement, RESIZE } from "@elf-framework/sapa";
+
+class A extends UIElement {
+  template () {
+    return <div>Simple Text</div>
+  }
+
+  [RESIZE('window')] () {
+    console.log('When window is resized');
+  }
+}
+```
+
+In this situation, it is possible to apply several checkers together.
+
+
+```jsx
+import { UIElement, RESIZE, DEBOUNCE, IF } from "@elf-framework/sapa";
+
+class A extends UIElement {
+  template () {
+    return <div class="yellow">Simple Text</div>
+  }
+
+  [RESIZE('window') + DEBOUNCE(100)] () {
+    console.log('When window is resized with debouncing');
+  }
+
+  checkTarget (e) {
+    return this.$el.hasClass("yellow");
+  }
+
+  [RESIZE('window') + DEBOUNCE(100) + IF("checkTarget")] (e) {
+    console.log('When window is resized with debouncing and checkTarget is true ', e);
+  }
+}
+```
+
+
+## Window Event Magic Method
 
 | Magic Method  | Window Event | 
 | ------------- | ------------- | 
@@ -208,7 +289,7 @@ class A extends UIElement {
 | ORIENTATIONCHANGE  |  orientationchange | 
 | HASHCHANGE  |  hashchange | 
 
-#### Using window event 
+### Using window event 
 
 ```js
 import { HASHCHANGE } from "@elf-framework/sapa";
@@ -220,13 +301,125 @@ class A extends UIElement {
 }
 ```
 
-## Custom MagicMethod 
+## Store Message MagicMethod
+
+### SUBSCRIBE
+
+Subscribe to messages with `SUBSCRIBE` and deliver messages to components other than the current component through this.emit.
+
+```jsx
+import {UIElement, SUBSCRIBE} from "@elf-framework/sapa";
+
+class A extends UIElement {
+
+  template () {
+    return <div>Simple Text</div>
+  }
+
+  [SUBSCRIBE('message')] (...args) {
+    console.log("received message", ...args)
+  }
+}
+
+
+class B extends UIElement {
+  template () {
+    return <div onClick={() => {
+      this.emit("message", 1, 2, 3);
+    }}> Simple B</div>
+  }
+}
+
+class Main extends UIElement {
+  template () {
+    return <div>
+      <A />
+      <B />
+    </div>
+  }
+}
+
+```
+
+### SUBSCRIBE_SELF 
+
+`SUBSCRIBE_SELF` is used when the message is delivered only within the class.
+
+```jsx
+import {UIElement, SUBSCRIBE_SELF} from "@elf-framework/sapa";
+
+
+class A extends UIElement {
+  template () {
+    return <div>Simple Text</div>
+  }
+
+  [CLICK()] () {
+    this.trigger("message", 1, 2, 3);
+  }
+
+  [SUBSCRIBE_SELF('message')] (...args) { 
+    console.log('received message', ...args);
+  }
+}
+
+```
+
+### SUBSCRIBE and Checker 
+
+`SUBSCRIBE` can also use several Checkers.
+
+```jsx
+class A extends UIElement {
+
+  checkMessage(a, b, c) {
+    return a > 10;
+  }
+
+  // run if checkMessage is trust
+  [SUBSCRIBE('message') + IF("checkMessage")] (a, b, c)  {
+    console.log("received message", a, b, c);
+  }
+}
+```
+
+`DEBOUNCE` can also be used to slow the execution time of messages.
+
+```jsx
+import {UIElement, IF, DEBOUNCE} from "@elf-framework/sapa";
+class A extends UIElement {
+
+  checkMessage(a, b, c) {
+    return a > 10;
+  }
+
+  // run if checkMessage is trust
+  [SUBSCRIBE('message') + IF("checkMessage") + DEBOUNCE(100)] (a, b, c)  {
+    console.log("received message", a, b, c);
+  }
+}
+```
+
+
+
+## Custom DomEvent MagicMethod 
 
 ```jsx
 import { CUSTOM } from "@elf-framework/sapa";
+
+const MY_EVENT = CUSTOM("myevent");
 class A extends UIElement {
-  [CUSTOM("click")("$el .test")] (e) {
-    console.log(e.target, " is clicked");
+
+  template () {
+    return <div>Simple Text</div>
+  }
+
+  [CLICK()] () {
+    this.$el.dispatchEvent("myevent", { value: 10 })
+  }
+
+  [MY_EVENT()] (e) {
+    console.log("myevent is fired, value is ", e.detail.value);
   }
 }
 ```
@@ -277,3 +470,28 @@ A magic method extends the method through several Checkers.
 | IF  | Executed when check function is true  |  [CLICK('$el') + IF('checkTargetElement')] () \{\}      |
 | DEBOUNCE  | Apply debounce to a function  |  [CLICK() + DEBOUNCE(100)] () \{\}      |
 | THROTTLE  | Apply throttle to a function  | [CLICK() + THROTTLE(100)] () \{\}      |
+
+
+# Use `MagicMethod` with Hook 
+
+Hook is defined so that the magic method can be easily used in function components.
+
+The usage method is the same as the class component.
+
+Please refer to the usage below.
+
+## useMagicMethod
+
+```jsx
+import { useMagicMethod, CLICK, DEBOUNCE } from "@elf-framework/sapa";
+
+function A () {
+
+  useMagicMethod(CLICK() + DEBOUNCE(100), (e) => {
+    console.log("magic method", e.target);
+  })
+
+  return <div>Simple Text</div>
+}
+
+```

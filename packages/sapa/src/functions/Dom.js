@@ -992,6 +992,13 @@ export class Dom {
     return this;
   }
 
+  dispatchEvent(event, data) {
+    const evt = new CustomEvent(event, { detail: data });
+    this.el.dispatchEvent(evt);
+
+    return this;
+  }
+
   select() {
     // contenteditable 의 경우 selection api 를 사용해서 select() 를 수행한다.
     if (this.attr("contenteditable") === "true") {
