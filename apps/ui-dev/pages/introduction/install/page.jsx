@@ -1,19 +1,8 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { MarkdownPage } from "../../../component/MarkdownPage";
-import LayoutManager from "../../../layouts/LayoutManager";
+import { PageBoard } from "../../../layouts/PageBoard";
 import Page, { layout, filename } from "./page.mdx";
 import "./page.scss";
 
-function Main() {
-  const CurrentLayout = LayoutManager.get(layout || "MainLayout");
-
-  return (
-    <CurrentLayout maxWidth={900}>
-      <MarkdownPage page={Page} filename={filename} />
-    </CurrentLayout>
-  );
-}
-
-start(Main);
+start(<PageBoard layout={layout} filename={filename} page={Page} />);

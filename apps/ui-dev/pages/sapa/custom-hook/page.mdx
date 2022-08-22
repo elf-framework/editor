@@ -1,0 +1,60 @@
+---
+title: Custom Hook
+layout: SapaLayout
+filename: pages/sapa/custom-hook/page.mdx
+---
+
+# {title}
+
+You can extend some of the hooks you already have.
+
+There are two types of Hooks: ordered Hooks and unordered Hooks.
+
+* Ordered Hooks 
+  * useState
+  * useEffect
+  * useCallback
+  * useMemo
+  * useRef
+  * useReducer
+* Unordered Hooks (Sapa Hooks)
+  * useSubscribe
+  * useSelf
+  * useStore
+  * useStoreSet
+  * useRootContext
+  * useEmit
+  * useTrigger
+  * useMagicMethod
+
+Unordered hooks can be used in any method, not just the template function.
+
+# How to redefine Hook
+
+It is convenient to think of a Hook as a function executed within a template.
+
+In other words, you can create a function continuously by combining several hooks (functions).
+
+```jsx
+
+function useMyState(defaultValue) {
+  const text = useRootContext('text');
+  const [value, setValue] = useState(text);
+
+  return [value, (v) => {
+    setValue((value) => v + value)
+  }];
+}
+
+function A () {
+  const [value, setValue] = useMyState(0);
+  return <div>Simple Text {value} </div>
+}
+
+start(A, {
+  text: "Simple Text 2"
+})
+
+```
+
+For more details, it is good to learn while continuing to make hooks.
