@@ -1,0 +1,163 @@
+---
+title: Virtual Node API
+layout: SapaLayout
+filename: pages/sapa/api/vnode/page.mdx
+---
+
+
+# {title}
+
+What is `VNode`?
+
+`VNode` is one way to represent `jsx` in memory.
+
+Since it exists in a form similar to the DOM element, comparison can be made based on the DOM.
+
+
+## createElementJsx 
+
+The `jsx` syntax is replaced by the `createElementJsx` function.
+
+```jsx
+<div title="yellow" />
+```
+
+```jsx
+import {createElementJsx} from "@elf-framework/sapa"; 
+
+createElementJsx("div", { title: "yellow" })
+```
+
+## VNode types
+
+VNode has the following types.
+
+* VNode 
+* VNodeComponent
+* VNodeComment
+* VNodeFragment
+* VNodeText
+
+Except for VNode, the rest are implemented by inheriting VNode.
+
+## Creation function for each VNode type
+
+* createVNode(): VNode 
+* createVNodeComponent(): VNodeComponent
+* createVNodeText(): VNodeText
+* createVNodeComment(): VNodeComment
+* createVNodeFragment(): VNodeFragment
+
+```jsx
+
+// create VNode
+createVNode({
+  tag: 'div',
+  props: {
+    title: "yellow",
+  },
+  children: [
+    "text",
+    "text",
+    createVNode({
+      tag: 'span',
+      props: {
+        title: "blue"
+      }
+    })
+  ]
+})
+
+// create VNodeComponent
+createVNodeComponent({
+  Component: function A () { return createVNode('div') },
+  props: {
+    title: "yellow"
+  },
+  children: [
+    "text"
+  ]
+})
+
+// create VNodeText
+createVNodeText("Simple text");
+
+// create VNodeComment
+createVNodeComment("Simple Comment");
+
+// create VNodeFragment
+createVNodeFragment({
+  children: [
+    "text",
+    createVNodeComment("simple comment"),
+    createVNode({
+      tag: "div",
+      props: {
+        title: 'yellow'
+      },
+      children: [
+        1, 
+        2, 
+        3
+      ]
+    })
+  ]
+})
+
+```
+
+## makeElement(withChildren, options);
+
+```jsx
+const vnode = createVNode({
+  tag: 'div', 
+  props: {
+    title: "yellow"
+  }
+})
+const element = vnode.makeElement(true, {
+  context: parentComponentInstance
+}).el
+```
+
+To create all elements defined below, set `withChildren` to true.
+
+
+
+
+## async makeHtml(withChildren, options)
+
+`makeHtml` always works as async .
+
+```jsx
+const vnode = createVNode({
+  tag: 'div', 
+  props: {
+    title: "yellow"
+  }
+})
+
+(async () => {
+  const htmlString = await vnode.makeHtml(true, {
+    context: parentComponentInstance
+  });
+})()
+```
+
+## Options 
+
+```jsx
+{
+  checkRefClass: this.checkRefClass,
+  context: this,
+  registerRef: this.registerRef,
+  registerChildComponent: this.registerChildComponent,      
+}
+```
+
+| Variable  | Description |
+| ------------- | ------------- |
+| context  | Parent component instance  |
+| checkRefClass  | Check if there is a created component   |
+| registerRef  | Register vnode with ref attribute  |
+| registerChildComponent  | Register the created child component  |

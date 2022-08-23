@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 22 Aug 2022 08:51:56 GMT
+ * Generated on Tue, 23 Aug 2022 06:53:35 GMT
  */
 
 (function(root, factory) {
@@ -3118,11 +3118,11 @@
       },
       "content": {
         "default": {
-          "value": "#57606a",
+          "value": "#24292f",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.6.value}"
+            "value": "{color.core.gray.9.value}"
           },
           "name": "AlertColorContentDefault",
           "attributes": {

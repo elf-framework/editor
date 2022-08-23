@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.9
+
+### Patch Changes
+
+- remove unused function for Dom object
+
 ## 2.1.8
 
 ### Patch Changes

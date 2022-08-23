@@ -1,11 +1,13 @@
 .table-of-contents {
     display: block;
     position: relative;
-    width: 200px;
     flex-grow: 1;
     padding-left: 32px;
     width: 100%;
-    max-width: 256px;    
+    max-width: 256px;  
+    height: 100%;
+    overflow: auto;  
+
 
     > .items {
         position: sticky;

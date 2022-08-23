@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 22 Aug 2022 08:51:56 GMT
+ * Generated on Tue, 23 Aug 2022 06:53:35 GMT
  */
 
 :root {
@@ -198,7 +198,7 @@
   --alert-color-content-danger: var(--color-core-red-1); /* Base color for the danger color */
   --alert-color-content-secondary: var(--color-core-gray-1);
   --alert-color-content-primary: var(--color-core-blue-1);
-  --alert-color-content-default: var(--color-core-gray-6);
+  --alert-color-content-default: var(--color-core-gray-9);
   --alert-color-title-weak-info: var(--color-core-blue-4); /* Base color for the info color */
   --alert-color-title-weak-success: var(--color-core-green-4); /* Base color for the success color */
   --alert-color-title-weak-warning: var(--color-core-orange-4); /* Base color for the warning color */

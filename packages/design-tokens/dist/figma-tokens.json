@@ -2957,11 +2957,11 @@
       },
       "content": {
         "default": {
-          "value": "{color.core.gray.6}",
+          "value": "{color.core.gray.9}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.6}"
+            "value": "{color.core.gray.9}"
           },
           "attributes": {
             "category": "alert",

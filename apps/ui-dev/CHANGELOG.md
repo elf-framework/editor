@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.12
+
+### Patch Changes
+
+- add api/vnode documentation
+
 ## 1.0.11
 
 ### Patch Changes

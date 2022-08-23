@@ -59,7 +59,7 @@
       },
       "content": {
         "default": {
-          "value": "{color.core.gray.6.value}"
+          "value": "{color.core.gray.9.value}"
         },
         "primary": {
           "value": "{color.core.blue.1.value}"

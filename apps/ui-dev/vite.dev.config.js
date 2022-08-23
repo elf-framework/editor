@@ -55,10 +55,10 @@ export default defineConfig(async () => {
     },
     optimizeDeps: {
       exclude: [
-        "@elf-framework/design-tokens",
         "@elf-framework/sapa",
         "@elf-framework/ui",
         "@elf-framework/sapa-router",
+        "@elf-framework/design-tokens",
         "@elf-framework/design-system",
       ],
     },

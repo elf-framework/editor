@@ -1,12 +1,12 @@
 {
   "name": "ui-dev",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
     "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
-    "ui:dev": "bun run vite:dev",
+    "ui:dev": "npm run vite:dev",
     "//build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js",
     "vite:preview": "vite preview --config=vite.prod.config.js",
@@ -21,6 +21,7 @@
     "@elf-framework/base-editor": "^2.1.7",
     "@elf-framework/color": "*",
     "@elf-framework/design-tokens": "*",
+    "@elf-framework/design-system": "*",
     "@elf-framework/icon": "^2.0.51",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",

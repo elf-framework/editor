@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 2.1.10
+
+### Patch Changes
+
+- modify vite build config
+
 ## 2.1.7
 
 ### Patch Changes

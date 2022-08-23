@@ -1,12 +1,12 @@
 {
   "name": "@elf-framework/design-system",
-  "version": "2.1.7",
+  "version": "2.1.10",
   "description": "Fantastic Design System ",
   "main": "./dist/design-system.umd.js",
   "module": "./dist/design-system.es.js",
   "exports": {
     "./package.json": "./package.json",
-    "./style.css": "./dist/index.css",
+    "./style.css": "./dist/style.css",
     ".": {
       "import": "./dist/design-system.es.js",
       "require": "./dist/design-system.umd.js"

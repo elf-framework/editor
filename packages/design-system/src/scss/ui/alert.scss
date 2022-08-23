@@ -74,8 +74,8 @@
       --elf--alert-background-color: var(
         --alert-color-background-weak-secondary
       );
-      --elf--alert-title-color: var(--alert-color-title-weak-secondary);
-      --elf--alert-content-color: var(--alert-color-content-weak-secondary);
+      // --elf--alert-title-color: var(--alert-color-title-weak-secondary);
+      // --elf--alert-content-color: var(--alert-color-content-weak-secondary);
       
       --elf--alert-border-color: var(--alert-color-title-weak-secondary);
     }
@@ -131,8 +131,8 @@
       --elf--alert-background-color: var(
         --alert-color-background-weak-info
       );
-      --elf--alert-title-color: var(--alert-color-title-weak-info);
-      --elf--alert-content-color: var(--alert-color-content-weak-info);
+      --elf--alert-title-color: var(--alert-color-title-default);
+      --elf--alert-content-color: var(--alert-color-content-default);
       
       --elf--alert-border-color: var(--alert-color-title-weak-info);
     }
