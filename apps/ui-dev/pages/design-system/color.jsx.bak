@@ -4,7 +4,7 @@ import { start } from "@elf-framework/sapa";
 import { Divider, Flex, Grid, VBox, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
-import { DesignLayout } from "../../layouts/DesignLayout";
+DesignLayout
 
 function ColorSingleView({ color, text, css, style }) {
   return (
