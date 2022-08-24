@@ -4,8 +4,9 @@
     box-sizing: border-box;
     display: block;
     &.selected {
-        background-color: var(--color-blue-0) !important;
-        border-right: 5px solid var(--color-blue-2);
+        background-color: var(--color-blue-1) !important;
+        border-right: 5px solid var(--color-blue-5);
+        font-weight: bold;
     }
 
     &.disabled {
