@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.12
+
+### Patch Changes
+
+- update spacing token
+
 ## 2.1.11
 
 ### Patch Changes
