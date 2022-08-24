@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 12:12:26 GMT
+ * Generated on Wed, 24 Aug 2022 16:56:16 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -209,6 +209,24 @@ export const DividerColorBorderSuccess = "#52d9ac";
 export const DividerColorBorderInfo = "#cce3ff";
 export const DividerColorBorderWarning = "#ffe75c";
 export const DividerColorBorderDanger = "#ff858b";
+export const Spacing0 = "2px";
+export const Spacing1 = "4px";
+export const Spacing2 = "8px";
+export const Spacing3 = "12px";
+export const Spacing4 = "16px"; // base size
+export const Spacing5 = "20px";
+export const Spacing6 = "24px"; // base size
+export const Spacing7 = "32px";
+export const Spacing8 = "40px";
+export const SpacingSizeXxxs = "2px";
+export const SpacingSizeXxs = "4px";
+export const SpacingSizeXs = "8px";
+export const SpacingSizeSm = "12px";
+export const SpacingSizeMd = "16px";
+export const SpacingSizeLg = "20px";
+export const SpacingSizeXl = "24px";
+export const SpacingSizeXxl = "32px";
+export const SpacingSizeXxxl = "40px";
 export const SizeBase0 = "0rem";
 export const SizeBase10 = "1rem";
 export const SizeBase25 = "2rem";
@@ -254,18 +272,6 @@ export const SizePaddingMedium = "1rem";
 export const SizePaddingLarge = "1.5rem";
 export const SizePaddingXl = "2rem";
 export const SizePaddingXxl = "4rem";
-export const SizeSpacing50 = "2rem";
-export const SizeSpacing75 = "4rem";
-export const SizeSpacing100 = "8rem";
-export const SizeSpacing200 = "12rem";
-export const SizeSpacing300 = "16rem";
-export const SizeSpacing400 = "24rem";
-export const SizeSpacing500 = "32rem";
-export const SizeSpacing600 = "40rem";
-export const SizeSpacing700 = "48rem";
-export const SizeSpacing800 = "64rem";
-export const SizeSpacing900 = "80rem";
-export const SizeSpacing1000 = "96rem";
 export const TimeDuration100 = "130ms";
 export const TimeDuration200 = "160ms";
 export const TimeDuration300 = "190ms";

@@ -16,6 +16,32 @@ function makeFontWeightStyle(prop) {
 };`;
 }
 
+function makeSpacingStyle(prop) {
+  const { item, type } = prop.attributes;
+
+  if (item) {
+    return `
+.padding-${item} {
+  padding: ${prop.value};
+}
+
+.margin-${item} {
+  margin: ${prop.value};
+}      
+    
+    `;
+  }
+
+  return `
+.padding-${type} {
+    padding: ${prop.value};
+}
+.margin-${type} {
+  margin: ${prop.value};
+}
+`;
+}
+
 function makeColorStyle(prop) {
   let cssField = "";
   switch (prop.attributes.type) {
@@ -35,7 +61,15 @@ function makeColorStyle(prop) {
       cssField = "stroke";
       break;
     default:
-      return "";
+      return `
+.${prop.name} {
+  color: ${prop.value};
+}
+
+.background-${prop.name} {
+  background-color: ${prop.value};
+}
+`;
   }
 
   return `
@@ -54,6 +88,8 @@ ${fileHeader({ file })}
 ${dictionary.allProperties
   .map((prop) => {
     switch (prop.attributes.category) {
+      case "spacing":
+        return makeSpacingStyle(prop);
       case "image":
         break;
       case "weight":

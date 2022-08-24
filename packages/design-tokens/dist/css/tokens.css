@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 12:12:26 GMT
+ * Generated on Wed, 24 Aug 2022 16:56:16 GMT
  */
 
 :root {
@@ -17,18 +17,6 @@
   --time-duration-300: 0.19s;
   --time-duration-200: 0.16s;
   --time-duration-100: 0.13s;
-  --size-spacing-1000: 96px;
-  --size-spacing-900: 80px;
-  --size-spacing-800: 64px;
-  --size-spacing-700: 48px;
-  --size-spacing-600: 40px;
-  --size-spacing-500: 32px;
-  --size-spacing-400: 24px;
-  --size-spacing-300: 16px;
-  --size-spacing-200: 12px;
-  --size-spacing-100: 8px;
-  --size-spacing-75: 4px;
-  --size-spacing-50: 2px;
   --size-padding-xxl: 4;
   --size-padding-xl: 2;
   --size-padding-large: 1.5;
@@ -74,6 +62,15 @@
   --size-base-25: 2px;
   --size-base-10: 1px;
   --size-base-0: 0px;
+  --spacing-8: 40px;
+  --spacing-7: 32px;
+  --spacing-6: 24px; /* base size */
+  --spacing-5: 20px;
+  --spacing-4: 16px; /* base size */
+  --spacing-3: 12px;
+  --spacing-2: 8px;
+  --spacing-1: 4px;
+  --spacing-0: 2px;
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-white: #ffffff;
   --color-teal-9: #223a3b;
@@ -169,6 +166,15 @@
   --image-files: assets/svg/files.svg;
   --image-empty: assets/svg/empty.svg;
   --image-logo: assets/svg/logo.svg;
+  --spacing-size-xxxl: var(--spacing-8);
+  --spacing-size-xxl: var(--spacing-7);
+  --spacing-size-xl: var(--spacing-6);
+  --spacing-size-lg: var(--spacing-5);
+  --spacing-size-md: var(--spacing-4);
+  --spacing-size-sm: var(--spacing-3);
+  --spacing-size-xs: var(--spacing-2);
+  --spacing-size-xxs: var(--spacing-1);
+  --spacing-size-xxxs: var(--spacing-0);
   --divider-color-border-default: var(--color-gray-1);
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);

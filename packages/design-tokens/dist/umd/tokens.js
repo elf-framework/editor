@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 12:12:26 GMT
+ * Generated on Wed, 24 Aug 2022 16:56:16 GMT
  */
 
 (function(root, factory) {
@@ -4345,6 +4345,338 @@
       }
     }
   },
+  "spacing": {
+    "0": {
+      "value": "2px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "2px"
+      },
+      "name": "Spacing0",
+      "attributes": {
+        "category": "spacing",
+        "type": "0"
+      },
+      "path": [
+        "spacing",
+        "0"
+      ]
+    },
+    "1": {
+      "value": "4px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "4px"
+      },
+      "name": "Spacing1",
+      "attributes": {
+        "category": "spacing",
+        "type": "1"
+      },
+      "path": [
+        "spacing",
+        "1"
+      ]
+    },
+    "2": {
+      "value": "8px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "8px"
+      },
+      "name": "Spacing2",
+      "attributes": {
+        "category": "spacing",
+        "type": "2"
+      },
+      "path": [
+        "spacing",
+        "2"
+      ]
+    },
+    "3": {
+      "value": "12px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "12px"
+      },
+      "name": "Spacing3",
+      "attributes": {
+        "category": "spacing",
+        "type": "3"
+      },
+      "path": [
+        "spacing",
+        "3"
+      ]
+    },
+    "4": {
+      "value": "16px",
+      "comment": "base size",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "16px",
+        "comment": "base size"
+      },
+      "name": "Spacing4",
+      "attributes": {
+        "category": "spacing",
+        "type": "4"
+      },
+      "path": [
+        "spacing",
+        "4"
+      ]
+    },
+    "5": {
+      "value": "20px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "20px"
+      },
+      "name": "Spacing5",
+      "attributes": {
+        "category": "spacing",
+        "type": "5"
+      },
+      "path": [
+        "spacing",
+        "5"
+      ]
+    },
+    "6": {
+      "value": "24px",
+      "comment": "base size",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "24px",
+        "comment": "base size"
+      },
+      "name": "Spacing6",
+      "attributes": {
+        "category": "spacing",
+        "type": "6"
+      },
+      "path": [
+        "spacing",
+        "6"
+      ]
+    },
+    "7": {
+      "value": "32px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "32px"
+      },
+      "name": "Spacing7",
+      "attributes": {
+        "category": "spacing",
+        "type": "7"
+      },
+      "path": [
+        "spacing",
+        "7"
+      ]
+    },
+    "8": {
+      "value": "40px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "40px"
+      },
+      "name": "Spacing8",
+      "attributes": {
+        "category": "spacing",
+        "type": "8"
+      },
+      "path": [
+        "spacing",
+        "8"
+      ]
+    },
+    "size": {
+      "xxxs": {
+        "value": "2px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.0.value}"
+        },
+        "name": "SpacingSizeXxxs",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxxs"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxxs"
+        ]
+      },
+      "xxs": {
+        "value": "4px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.1.value}"
+        },
+        "name": "SpacingSizeXxs",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxs"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxs"
+        ]
+      },
+      "xs": {
+        "value": "8px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.2.value}"
+        },
+        "name": "SpacingSizeXs",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xs"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xs"
+        ]
+      },
+      "sm": {
+        "value": "12px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.3.value}"
+        },
+        "name": "SpacingSizeSm",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "sm"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "sm"
+        ]
+      },
+      "md": {
+        "value": "16px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.4.value}"
+        },
+        "name": "SpacingSizeMd",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "md"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "md"
+        ]
+      },
+      "lg": {
+        "value": "20px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.5.value}"
+        },
+        "name": "SpacingSizeLg",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "lg"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "lg"
+        ]
+      },
+      "xl": {
+        "value": "24px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.6.value}"
+        },
+        "name": "SpacingSizeXl",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xl"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xl"
+        ]
+      },
+      "xxl": {
+        "value": "32px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.7.value}"
+        },
+        "name": "SpacingSizeXxl",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxl"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxl"
+        ]
+      },
+      "xxxl": {
+        "value": "40px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.8.value}"
+        },
+        "name": "SpacingSizeXxxl",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxxl"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxxl"
+        ]
+      }
+    }
+  },
   "size": {
     "base": {
       "0": {
@@ -5226,236 +5558,6 @@
           "size",
           "padding",
           "xxl"
-        ]
-      }
-    },
-    "spacing": {
-      "50": {
-        "value": "2px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "2px"
-        },
-        "name": "SizeSpacing50",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "50"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "50"
-        ]
-      },
-      "75": {
-        "value": "4px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "4px"
-        },
-        "name": "SizeSpacing75",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "75"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "75"
-        ]
-      },
-      "100": {
-        "value": "8px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "8px"
-        },
-        "name": "SizeSpacing100",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "100"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "100"
-        ]
-      },
-      "200": {
-        "value": "12px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "12px"
-        },
-        "name": "SizeSpacing200",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "200"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "200"
-        ]
-      },
-      "300": {
-        "value": "16px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "16px"
-        },
-        "name": "SizeSpacing300",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "300"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "300"
-        ]
-      },
-      "400": {
-        "value": "24px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "24px"
-        },
-        "name": "SizeSpacing400",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "400"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "400"
-        ]
-      },
-      "500": {
-        "value": "32px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "32px"
-        },
-        "name": "SizeSpacing500",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "500"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "500"
-        ]
-      },
-      "600": {
-        "value": "40px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "40px"
-        },
-        "name": "SizeSpacing600",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "600"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "600"
-        ]
-      },
-      "700": {
-        "value": "48px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "48px"
-        },
-        "name": "SizeSpacing700",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "700"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "700"
-        ]
-      },
-      "800": {
-        "value": "64px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "64px"
-        },
-        "name": "SizeSpacing800",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "800"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "800"
-        ]
-      },
-      "900": {
-        "value": "80px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "80px"
-        },
-        "name": "SizeSpacing900",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "900"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "900"
-        ]
-      },
-      "1000": {
-        "value": "96px",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "96px"
-        },
-        "name": "SizeSpacing1000",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "1000"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "1000"
         ]
       }
     }

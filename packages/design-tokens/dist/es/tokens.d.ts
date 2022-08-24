@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 12:12:26 GMT
+ * Generated on Wed, 24 Aug 2022 16:56:16 GMT
  */
 
 export const ImageLogo : string;
@@ -209,6 +209,24 @@ export const DividerColorBorderSuccess : string;
 export const DividerColorBorderInfo : string;
 export const DividerColorBorderWarning : string;
 export const DividerColorBorderDanger : string;
+export const Spacing0 : string;
+export const Spacing1 : string;
+export const Spacing2 : string;
+export const Spacing3 : string;
+export const Spacing4 : string; // base size
+export const Spacing5 : string;
+export const Spacing6 : string; // base size
+export const Spacing7 : string;
+export const Spacing8 : string;
+export const SpacingSizeXxxs : string;
+export const SpacingSizeXxs : string;
+export const SpacingSizeXs : string;
+export const SpacingSizeSm : string;
+export const SpacingSizeMd : string;
+export const SpacingSizeLg : string;
+export const SpacingSizeXl : string;
+export const SpacingSizeXxl : string;
+export const SpacingSizeXxxl : string;
 export const SizeBase0 : string;
 export const SizeBase10 : string;
 export const SizeBase25 : string;
@@ -254,18 +272,6 @@ export const SizePaddingMedium : string;
 export const SizePaddingLarge : string;
 export const SizePaddingXl : string;
 export const SizePaddingXxl : string;
-export const SizeSpacing50 : string;
-export const SizeSpacing75 : string;
-export const SizeSpacing100 : string;
-export const SizeSpacing200 : string;
-export const SizeSpacing300 : string;
-export const SizeSpacing400 : string;
-export const SizeSpacing500 : string;
-export const SizeSpacing600 : string;
-export const SizeSpacing700 : string;
-export const SizeSpacing800 : string;
-export const SizeSpacing900 : string;
-export const SizeSpacing1000 : string;
 export const TimeDuration100 : string;
 export const TimeDuration200 : string;
 export const TimeDuration300 : string;

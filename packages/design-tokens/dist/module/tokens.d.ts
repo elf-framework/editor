@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 12:12:26 GMT
+ * Generated on Wed, 24 Aug 2022 16:56:16 GMT
  */
 
 export default tokens;
@@ -304,6 +304,28 @@ declare const tokens: {
       }
     }
   },
+  "spacing": {
+    "0": DesignToken,
+    "1": DesignToken,
+    "2": DesignToken,
+    "3": DesignToken,
+    "4": DesignToken,
+    "5": DesignToken,
+    "6": DesignToken,
+    "7": DesignToken,
+    "8": DesignToken,
+    "size": {
+      "xxxs": DesignToken,
+      "xxs": DesignToken,
+      "xs": DesignToken,
+      "sm": DesignToken,
+      "md": DesignToken,
+      "lg": DesignToken,
+      "xl": DesignToken,
+      "xxl": DesignToken,
+      "xxxl": DesignToken
+    }
+  },
   "size": {
     "base": {
       "0": DesignToken,
@@ -361,20 +383,6 @@ declare const tokens: {
       "large": DesignToken,
       "xl": DesignToken,
       "xxl": DesignToken
-    },
-    "spacing": {
-      "50": DesignToken,
-      "75": DesignToken,
-      "100": DesignToken,
-      "200": DesignToken,
-      "300": DesignToken,
-      "400": DesignToken,
-      "500": DesignToken,
-      "600": DesignToken,
-      "700": DesignToken,
-      "800": DesignToken,
-      "900": DesignToken,
-      "1000": DesignToken
     }
   },
   "time": {
