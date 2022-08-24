@@ -3,19 +3,19 @@
     "selected": {
       "background": {
         "default": {
-          "value": "{color.core.gray.2.value}"
+          "value": "{color.gray.2.value}"
         }
       }
     },
     "disabled": {
       "background": {
         "default": {
-          "value": "{color.core.gray.1.value}"
+          "value": "{color.gray.1.value}"
         }
       },
       "text": {
           "default": {
-              "value": "{color.core.gray.3.value}"
+              "value": "{color.gray.3.value}"
           }
       }
 
@@ -47,7 +47,7 @@
 
       "border": {
         "default": {
-          "value": "{color.core.black.value}"
+          "value": "{color.black.value}"
         },
         "primary": {
           "value": "{color.background.primary.value}"

@@ -165,7 +165,10 @@ declare module "@elf-framework/color" {
 
   export function contrast(color: string): number;
   export function contrastColor(color: string): number;
-
+  export function contrastRatio(color1: RGB, color2: RGB): number;
+  export function contrastScore(
+    contrast: number
+  ): "AA" | "AAA" | "AA Large" | "Fail";
   export function isColor(str: string): boolean;
 
   export function parse(

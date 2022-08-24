@@ -59,6 +59,7 @@ module.exports = {
     requestAnimationFrame: true,
     cancelAnimationFrame: true,
     CustomEvent: true,
+    navigator: true,
   },
   overrides: [
     {

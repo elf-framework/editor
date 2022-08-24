@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 23 Aug 2022 11:35:09 GMT
+ * Generated on Wed, 24 Aug 2022 12:06:31 GMT
  */
 
 export default tokens;
@@ -46,15 +46,7 @@ declare const tokens: {
         "info": DesignToken
       }
     },
-    "border": {
-      "default": DesignToken,
-      "primary": DesignToken,
-      "secondary": DesignToken,
-      "danger": DesignToken,
-      "warning": DesignToken,
-      "success": DesignToken,
-      "info": DesignToken
-    },
+    "border": DesignToken,
     "brand": {
       "primary": DesignToken,
       "secondary": DesignToken,
@@ -63,117 +55,129 @@ declare const tokens: {
       "success": DesignToken,
       "info": DesignToken
     },
-    "core": {
-      "red": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "orange": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "yellow": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "green": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "blue": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "purple": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "pink": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "gray": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "newtral": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "black": DesignToken,
-      "white": DesignToken
+    "red": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "orange": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "yellow": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "green": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "blue": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "purple": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "pink": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "gray": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "teal": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "black": DesignToken,
+    "white": DesignToken,
+    "primary": DesignToken,
+    "secondary": DesignToken,
+    "success": DesignToken,
+    "danger": DesignToken,
+    "warning": DesignToken,
+    "info": DesignToken,
+    "action": {
+      "primary": DesignToken,
+      "secondary": DesignToken,
+      "success": DesignToken,
+      "danger": DesignToken,
+      "warning": DesignToken,
+      "info": DesignToken
     },
     "text": {
       "default": DesignToken,

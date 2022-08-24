@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 23 Aug 2022 11:35:10 GMT
+ * Generated on Wed, 24 Aug 2022 12:06:31 GMT
  */
 
 :root {
@@ -75,180 +75,184 @@
   --size-base-10: 1px;
   --size-base-0: 0px;
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
-  --color-core-white: #ffffff;
-  --color-core-black: #1b1f24;
-  --color-core-newtral-9: #4d4d4d;
-  --color-core-newtral-8: #666666;
-  --color-core-newtral-7: #7f7f7f;
-  --color-core-newtral-6: #999999;
-  --color-core-newtral-5: #b3b3b3;
-  --color-core-newtral-4: #cccccc;
-  --color-core-newtral-3: #e6e6e6;
-  --color-core-newtral-2: #f0f0f0;
-  --color-core-newtral-1: #f5f5f5;
-  --color-core-newtral-0: #fafafa;
-  --color-core-gray-9: #24292f;
-  --color-core-gray-8: #32383f;
-  --color-core-gray-7: #424a53;
-  --color-core-gray-6: #57606a;
-  --color-core-gray-5: #6e7781;
-  --color-core-gray-4: #8c959f;
-  --color-core-gray-3: #afb8c1;
-  --color-core-gray-2: #d0d7de;
-  --color-core-gray-1: #eaeef2;
-  --color-core-gray-0: #f6f8fa;
-  --color-core-pink-9: #4d0336;
-  --color-core-pink-8: #611347;
-  --color-core-pink-7: #772057;
-  --color-core-pink-6: #99286e;
-  --color-core-pink-5: #bf3989;
-  --color-core-pink-4: #e85aad;
-  --color-core-pink-3: #ff80c8;
-  --color-core-pink-2: #ffadda;
-  --color-core-pink-1: #ffd3eb;
-  --color-core-pink-0: #ffeff7;
-  --color-core-purple-9: #2e1461;
-  --color-core-purple-8: #3e1f79;
-  --color-core-purple-7: #512a97;
-  --color-core-purple-6: #6639ba;
-  --color-core-purple-5: #8250df;
-  --color-core-purple-4: #a475f9;
-  --color-core-purple-3: #c297ff;
-  --color-core-purple-2: #d8b9ff;
-  --color-core-purple-1: #ecd8ff;
-  --color-core-purple-0: #fbefff;
-  --color-core-blue-9: #002155;
-  --color-core-blue-8: #0a3069;
-  --color-core-blue-7: #033d8b;
-  --color-core-blue-6: #0550ae;
-  --color-core-blue-5: #0969da;
-  --color-core-blue-4: #218bff;
-  --color-core-blue-3: #54aeff;
-  --color-core-blue-2: #80ccff;
-  --color-core-blue-1: #b6e3ff;
-  --color-core-blue-0: #ddf4ff;
-  --color-core-green-9: #003a02;
-  --color-core-green-8: #004c04;
-  --color-core-green-7: #0a5a0a;
-  --color-core-green-6: #1a7c0d;
-  --color-core-green-5: #3a9f1f;
-  --color-core-green-4: #5cb33b;
-  --color-core-green-3: #8cc760;
-  --color-core-green-2: #b8d991;
-  --color-core-green-1: #d9e9c0;
-  --color-core-green-0: #f0ffd9;
-  --color-core-yellow-9: #3b2300;
-  --color-core-yellow-8: #4d2d00;
-  --color-core-yellow-7: #633c01;
-  --color-core-yellow-6: #7d4e00;
-  --color-core-yellow-5: #9a6700;
-  --color-core-yellow-4: #bf8700;
-  --color-core-yellow-3: #d4a72c;
-  --color-core-yellow-2: #eac54f;
-  --color-core-yellow-1: #fae17d;
-  --color-core-yellow-0: #fff8c5;
-  --color-core-orange-9: #471700;
-  --color-core-orange-8: #5c2200;
-  --color-core-orange-7: #762c00;
-  --color-core-orange-6: #953800;
-  --color-core-orange-5: #bc4c00;
-  --color-core-orange-4: #e16f24;
-  --color-core-orange-3: #fb8f44;
-  --color-core-orange-2: #ffb77c;
-  --color-core-orange-1: #ffd8b5;
-  --color-core-orange-0: #fff1e5;
-  --color-core-red-9: #4c0014;
-  --color-core-red-8: #660018;
-  --color-core-red-7: #82071e;
-  --color-core-red-6: #a40e26;
-  --color-core-red-5: #cf222e;
-  --color-core-red-4: #fa4549;
-  --color-core-red-3: #ff8182;
-  --color-core-red-2: #ffaba8;
-  --color-core-red-1: #ffcecb;
-  --color-core-red-0: #ffebe9;
+  --color-white: #ffffff;
+  --color-teal-9: #223a3b;
+  --color-teal-8: #274c4d;
+  --color-teal-7: #226363;
+  --color-teal-6: #199091;
+  --color-teal-5: #13bebf;
+  --color-teal-4: #37e4e6;
+  --color-teal-3: #6ef4f5;
+  --color-teal-2: #96feff;
+  --color-teal-1: #ccffff;
+  --color-teal-0: #e3ffff;
+  --color-gray-9: #2c353d;
+  --color-gray-8: #39444d;
+  --color-gray-7: #46525c;
+  --color-gray-6: #626f7a;
+  --color-gray-5: #818e9a;
+  --color-gray-4: #a2adb8;
+  --color-gray-3: #c5ced6;
+  --color-gray-2: #d9e0e6;
+  --color-gray-1: #ebf0f5;
+  --color-gray-0: #f5f8fa;
+  --color-pink-9: #522338;
+  --color-pink-8: #782449;
+  --color-pink-7: #992659;
+  --color-pink-6: #d1347a;
+  --color-pink-5: #f0549a;
+  --color-pink-4: #ff7db7;
+  --color-pink-3: #ffb0d3;
+  --color-pink-2: #ffcce3;
+  --color-pink-1: #ffe8f2;
+  --color-pink-0: #fff2f8;
+  --color-purple-9: #352e4a;
+  --color-purple-8: #4c2e87;
+  --color-purple-7: #7122e3;
+  --color-purple-6: #8c40ff;
+  --color-purple-5: #a469ff;
+  --color-purple-4: #bd91ff;
+  --color-purple-3: #d7bdff;
+  --color-purple-2: #e5d4ff;
+  --color-purple-1: #f3ebff;
+  --color-purple-0: #f9f5ff;
+  --color-blue-9: #203752;
+  --color-blue-8: #1a497d;
+  --color-blue-7: #0060cc;
+  --color-blue-6: #1273e6;
+  --color-blue-5: #429bff;
+  --color-blue-4: #78b6ff;
+  --color-blue-3: #abd2ff;
+  --color-blue-2: #cce3ff;
+  --color-blue-1: #e8f3ff;
+  --color-blue-0: #f2f8ff;
+  --color-green-9: #233b33;
+  --color-green-8: #1b5441;
+  --color-green-7: #067852;
+  --color-green-6: #009f6a;
+  --color-green-5: #28bd8b;
+  --color-green-4: #52d9ac;
+  --color-green-3: #8debcb;
+  --color-green-2: #b5f5e0;
+  --color-green-1: #d6fff1;
+  --color-green-0: #e8fff7;
+  --color-yellow-9: #3d3121;
+  --color-yellow-8: #523e21;
+  --color-yellow-7: #614d27;
+  --color-yellow-6: #876a2f;
+  --color-yellow-5: #b58c12;
+  --color-yellow-4: #e3ad0b;
+  --color-yellow-3: #ffda00;
+  --color-yellow-2: #ffe75c;
+  --color-yellow-1: #fff4b5;
+  --color-yellow-0: #fffadb;
+  --color-orange-9: #471700;
+  --color-orange-8: #5c2200;
+  --color-orange-7: #762c00;
+  --color-orange-6: #953800;
+  --color-orange-5: #bc4c00;
+  --color-orange-4: #e16f24;
+  --color-orange-3: #fb8f44;
+  --color-orange-2: #ffb77c;
+  --color-orange-1: #ffd8b5;
+  --color-orange-0: #fff1e5;
+  --color-red-9: #5c2121;
+  --color-red-8: #80252a;
+  --color-red-7: #a12b2b;
+  --color-red-6: #d9363e;
+  --color-red-5: #ff5760;
+  --color-red-4: #ff858b;
+  --color-red-3: #ffb5b9;
+  --color-red-2: #ffcfd1;
+  --color-red-1: #ffebec;
+  --color-red-0: #fff2f3;
   --image-files: assets/svg/files.svg;
   --image-empty: assets/svg/empty.svg;
   --image-logo: assets/svg/logo.svg;
-  --divider-color-border-default: var(--color-core-gray-1);
+  --divider-color-border-default: var(--color-gray-1);
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
-  --button-color-border-default: var(--color-core-black);
-  --button-disabled-text-default: var(--color-core-gray-3);
-  --button-disabled-background-default: var(--color-core-gray-1);
-  --button-selected-background-default: var(--color-core-gray-2);
-  --alert-color-background-weak-success: var(--color-core-green-1); /* Base color for the success color */
-  --alert-color-background-weak-warning: var(--color-core-orange-1); /* Base color for the warning color */
-  --alert-color-background-weak-danger: var(--color-core-red-1); /* Base color for the danger color */
-  --alert-color-background-weak-secondary: var(--color-core-gray-1);
-  --alert-color-background-weak-primary: var(--color-core-blue-1);
-  --alert-color-background-weak-default: var(--color-core-gray-1);
-  --alert-color-background-default: var(--color-core-gray-1);
-  --alert-color-content-weak-info: var(--color-core-blue-5); /* Base color for the info color */
-  --alert-color-content-weak-success: var(--color-core-green-3); /* Base color for the success color */
-  --alert-color-content-weak-warning: var(--color-core-orange-3); /* Base color for the warning color */
-  --alert-color-content-weak-danger: var(--color-core-red-3); /* Base color for the danger color */
-  --alert-color-content-weak-secondary: var(--color-core-gray-3);
-  --alert-color-content-weak-primary: var(--color-core-blue-3);
-  --alert-color-content-weak-default: var(--color-core-gray-3);
-  --alert-color-content-info: var(--color-core-white); /* Base color for the info color */
-  --alert-color-content-success: var(--color-core-white); /* Base color for the success color */
-  --alert-color-content-warning: var(--color-core-white); /* Base color for the warning color */
-  --alert-color-content-danger: var(--color-core-red-1); /* Base color for the danger color */
-  --alert-color-content-secondary: var(--color-core-gray-1);
-  --alert-color-content-primary: var(--color-core-blue-1);
-  --alert-color-content-default: var(--color-core-gray-9);
-  --alert-color-title-weak-info: var(--color-core-blue-4); /* Base color for the info color */
-  --alert-color-title-weak-success: var(--color-core-green-4); /* Base color for the success color */
-  --alert-color-title-weak-warning: var(--color-core-orange-4); /* Base color for the warning color */
-  --alert-color-title-weak-danger: var(--color-core-red-4); /* Base color for the danger color */
-  --alert-color-title-weak-secondary: var(--color-core-gray-4);
-  --alert-color-title-weak-primary: var(--color-core-blue-4);
-  --alert-color-title-weak-default: var(--color-core-gray-4);
-  --alert-color-title-info: var(--color-core-blue-5); /* Base color for the info color */
-  --alert-color-title-success: var(--color-core-green-7); /* Base color for the success color */
-  --alert-color-title-warning: var(--color-core-yellow-5); /* Base color for the warning color */
-  --alert-color-title-danger: var(--color-core-red-7); /* Base color for the danger color */
-  --alert-color-title-secondary: var(--color-core-gray-8);
-  --alert-color-title-primary: var(--color-core-blue-8);
-  --alert-color-title-default: var(--color-core-gray-9);
-  --color-text-link: var(--color-core-blue-4); /* Text color to indicate link */
-  --color-text-inverse: var(--color-core-white); /* Text color to indicate inverse */
-  --color-text-info: var(--color-core-blue-2); /* Text color to indicate info */
-  --color-text-success: var(--color-core-green-4); /* Text color to indicate success */
-  --color-text-warning: var(--color-core-yellow-4); /* Text color to indicate warning */
-  --color-text-danger: var(--color-core-red-4); /* Text color to indicate danger */
-  --color-text-secondary: var(--color-core-gray-4); /* Text color to indicate secondary */
-  --color-text-primary: var(--color-core-blue-4); /* Text color to indicate primary */
-  --color-text-default: var(--color-core-black); /* Default text color */
-  --color-brand-info: var(--color-core-blue-2);
-  --color-brand-success: var(--color-core-green-4);
-  --color-brand-warning: var(--color-core-yellow-4);
-  --color-brand-danger: var(--color-core-red-4);
-  --color-brand-secondary: var(--color-core-gray-4);
-  --color-brand-primary: var(--color-core-blue-4);
-  --color-border-info: var(--color-core-blue-2); /* Base color for the info color */
-  --color-border-success: var(--color-core-green-4); /* Base color for the success color */
-  --color-border-warning: var(--color-core-yellow-4); /* Base color for the warning color */
-  --color-border-danger: var(--color-core-red-4); /* Base color for the danger color */
-  --color-border-secondary: var(--color-core-gray-4); /* Base color for the secondary color */
-  --color-border-primary: var(--color-core-blue-4); /* Base color for the primary color */
-  --color-border-default: var(--color-core-black); /* Border color that will match the current color scheme */
-  --color-background-weak-info: var(--color-core-blue-1); /* Weak color for the info color */
-  --color-background-weak-success: var(--color-core-green-3); /* Weak color for the success color */
-  --color-background-weak-warning: var(--color-core-yellow-1); /* Weak color for the warning color */
-  --color-background-weak-danger: var(--color-core-red-3); /* Weak color for the danger color */
-  --color-background-weak-secondary: var(--color-core-gray-3); /* Weak color for the secondary color */
-  --color-background-weak-primary: var(--color-core-blue-3); /* Weak color for the primary color */
-  --color-background-weak-default: var(--color-core-white); /* Background color that will match the current color scheme */
-  --color-background-info: var(--color-core-blue-2); /* Base color for the info color */
-  --color-background-success: var(--color-core-green-4); /* Base color for the success color */
-  --color-background-warning: var(--color-core-yellow-2); /* Base color for the warning color */
-  --color-background-danger: var(--color-core-red-4); /* Base color for the danger color */
-  --color-background-secondary: var(--color-core-gray-4); /* Base color for the secondary color */
-  --color-background-primary: var(--color-core-blue-4); /* Base color for the primary color */
-  --color-background-default: var(--color-core-white); /* Background color that will match the current color scheme */
+  --button-disabled-text-default: var(--color-gray-3);
+  --button-disabled-background-default: var(--color-gray-1);
+  --button-selected-background-default: var(--color-gray-2);
+  --alert-color-background-weak-success: var(--color-green-1); /* Base color for the success color */
+  --alert-color-background-weak-warning: var(--color-orange-1); /* Base color for the warning color */
+  --alert-color-background-weak-danger: var(--color-red-1); /* Base color for the danger color */
+  --alert-color-background-weak-secondary: var(--color-gray-1);
+  --alert-color-background-weak-primary: var(--color-blue-1);
+  --alert-color-background-weak-default: var(--color-gray-1);
+  --alert-color-background-default: var(--color-gray-1);
+  --alert-color-content-weak-info: var(--color-blue-5); /* Base color for the info color */
+  --alert-color-content-weak-success: var(--color-green-3); /* Base color for the success color */
+  --alert-color-content-weak-warning: var(--color-orange-3); /* Base color for the warning color */
+  --alert-color-content-weak-danger: var(--color-red-3); /* Base color for the danger color */
+  --alert-color-content-weak-secondary: var(--color-gray-3);
+  --alert-color-content-weak-primary: var(--color-blue-3);
+  --alert-color-content-weak-default: var(--color-gray-3);
+  --alert-color-content-info: var(--color-white); /* Base color for the info color */
+  --alert-color-content-success: var(--color-white); /* Base color for the success color */
+  --alert-color-content-warning: var(--color-white); /* Base color for the warning color */
+  --alert-color-content-danger: var(--color-red-1); /* Base color for the danger color */
+  --alert-color-content-secondary: var(--color-gray-1);
+  --alert-color-content-primary: var(--color-blue-1);
+  --alert-color-content-default: var(--color-gray-9);
+  --alert-color-title-weak-info: var(--color-blue-4); /* Base color for the info color */
+  --alert-color-title-weak-success: var(--color-green-4); /* Base color for the success color */
+  --alert-color-title-weak-warning: var(--color-orange-4); /* Base color for the warning color */
+  --alert-color-title-weak-danger: var(--color-red-4); /* Base color for the danger color */
+  --alert-color-title-weak-secondary: var(--color-gray-4);
+  --alert-color-title-weak-primary: var(--color-blue-4);
+  --alert-color-title-weak-default: var(--color-gray-4);
+  --alert-color-title-info: var(--color-blue-5); /* Base color for the info color */
+  --alert-color-title-success: var(--color-green-7); /* Base color for the success color */
+  --alert-color-title-warning: var(--color-yellow-5); /* Base color for the warning color */
+  --alert-color-title-danger: var(--color-red-7); /* Base color for the danger color */
+  --alert-color-title-secondary: var(--color-gray-8);
+  --alert-color-title-primary: var(--color-blue-8);
+  --alert-color-title-default: var(--color-gray-9);
+  --color-text-link: var(--color-blue-4); /* Text color to indicate link */
+  --color-text-inverse: var(--color-white); /* Text color to indicate inverse */
+  --color-text-info: var(--color-blue-2); /* Text color to indicate info */
+  --color-text-success: var(--color-green-4); /* Text color to indicate success */
+  --color-text-warning: var(--color-yellow-4); /* Text color to indicate warning */
+  --color-text-danger: var(--color-red-4); /* Text color to indicate danger */
+  --color-text-secondary: var(--color-gray-4); /* Text color to indicate secondary */
+  --color-text-primary: var(--color-blue-4); /* Text color to indicate primary */
+  --color-action-info: var(--color-blue-4);
+  --color-action-warning: var(--color-orange-4);
+  --color-action-danger: var(--color-red-7);
+  --color-action-success: var(--color-green-7);
+  --color-action-secondary: var(--color-gray-7);
+  --color-action-primary: var(--color-blue-7);
+  --color-info: var(--color-blue-3);
+  --color-warning: var(--color-orange-2);
+  --color-danger: var(--color-red-6);
+  --color-success: var(--color-green-6);
+  --color-secondary: var(--color-gray-6);
+  --color-primary: var(--color-blue-6);
+  --color-black: var(--color-gray-8);
+  --color-brand-info: var(--color-blue-2);
+  --color-brand-success: var(--color-green-4);
+  --color-brand-warning: var(--color-yellow-4);
+  --color-brand-danger: var(--color-red-4);
+  --color-brand-secondary: var(--color-gray-4);
+  --color-brand-primary: var(--color-blue-4);
+  --color-border: var(--color-gray-2);
+  --color-background-weak-info: var(--color-blue-1); /* Weak color for the info color */
+  --color-background-weak-success: var(--color-green-3); /* Weak color for the success color */
+  --color-background-weak-warning: var(--color-yellow-1); /* Weak color for the warning color */
+  --color-background-weak-danger: var(--color-red-3); /* Weak color for the danger color */
+  --color-background-weak-secondary: var(--color-gray-3); /* Weak color for the secondary color */
+  --color-background-weak-primary: var(--color-blue-3); /* Weak color for the primary color */
+  --color-background-weak-default: var(--color-white); /* Background color that will match the current color scheme */
+  --color-background-info: var(--color-blue-2); /* Base color for the info color */
+  --color-background-success: var(--color-green-4); /* Base color for the success color */
+  --color-background-warning: var(--color-yellow-2); /* Base color for the warning color */
+  --color-background-danger: var(--color-red-4); /* Base color for the danger color */
+  --color-background-secondary: var(--color-gray-4); /* Base color for the secondary color */
+  --color-background-primary: var(--color-blue-4); /* Base color for the primary color */
+  --color-background-default: var(--color-white); /* Background color that will match the current color scheme */
   --divider-color-border-danger: var(--color-background-danger);
   --divider-color-border-warning: var(--color-background-warning);
   --divider-color-border-info: var(--color-background-info);
@@ -261,6 +265,7 @@
   --button-color-border-success: var(--color-background-success);
   --button-color-border-secondary: var(--color-background-secondary);
   --button-color-border-primary: var(--color-background-primary);
+  --button-color-border-default: var(--color-black);
   --button-color-background-danger: var(--color-background-danger);
   --button-color-background-warning: var(--color-background-warning);
   --button-color-background-info: var(--color-background-info);
@@ -274,4 +279,5 @@
   --alert-color-background-success: var(--color-background-success);
   --alert-color-background-secondary: var(--color-background-secondary);
   --alert-color-background-primary: var(--color-background-primary);
+  --color-text-default: var(--color-black); /* Default text color */
 }

@@ -344,8 +344,8 @@ start(function () {
   <Button
   selected={true}
   style={{
-    borderColor: "var(--color-core-blue-4)",
-    selectedBackgroundColor: "var(--color-core-blue-4)",
+    borderColor: "var(--color-blue-4)",
+    selectedBackgroundColor: "var(--color-blue-4)",
   }}
 >
   Hello
@@ -361,9 +361,9 @@ start(function () {
                   <Button
                     selected={true}
                     style={{
-                      borderColor: "var(--color-core-blue-5)",
-                      selectedBackgroundColor: "var(--color-core-blue-5)",
-                      color: "var(--color-core-white)",
+                      borderColor: "var(--color-blue-5)",
+                      selectedBackgroundColor: "var(--color-blue-5)",
+                      color: "var(--color-white)",
                     }}
                   >
                     Hello

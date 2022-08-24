@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 23 Aug 2022 11:35:12 GMT
+ * Generated on Wed, 24 Aug 2022 12:06:33 GMT
  */
 
 
@@ -11,27 +11,27 @@
 };
 
 .color-background-primary {
-  background-color: #218bff;
+  background-color: #78b6ff;
 };
 
 .color-background-secondary {
-  background-color: #8c959f;
+  background-color: #a2adb8;
 };
 
 .color-background-danger {
-  background-color: #fa4549;
+  background-color: #ff858b;
 };
 
 .color-background-warning {
-  background-color: #eac54f;
+  background-color: #ffe75c;
 };
 
 .color-background-success {
-  background-color: #5cb33b;
+  background-color: #52d9ac;
 };
 
 .color-background-info {
-  background-color: #80ccff;
+  background-color: #cce3ff;
 };
 
 .color-background-weak-default {
@@ -39,83 +39,59 @@
 };
 
 .color-background-weak-primary {
-  background-color: #54aeff;
+  background-color: #abd2ff;
 };
 
 .color-background-weak-secondary {
-  background-color: #afb8c1;
+  background-color: #c5ced6;
 };
 
 .color-background-weak-danger {
-  background-color: #ff8182;
+  background-color: #ffb5b9;
 };
 
 .color-background-weak-warning {
-  background-color: #fae17d;
+  background-color: #fff4b5;
 };
 
 .color-background-weak-success {
-  background-color: #8cc760;
+  background-color: #8debcb;
 };
 
 .color-background-weak-info {
-  background-color: #b6e3ff;
+  background-color: #e8f3ff;
 };
 
-.color-border-default {
-  border-color: #1b1f24;
-};
-
-.color-border-primary {
-  border-color: #218bff;
-};
-
-.color-border-secondary {
-  border-color: #8c959f;
-};
-
-.color-border-danger {
-  border-color: #fa4549;
-};
-
-.color-border-warning {
-  border-color: #bf8700;
-};
-
-.color-border-success {
-  border-color: #5cb33b;
-};
-
-.color-border-info {
-  border-color: #80ccff;
+.color-border {
+  border-color: #d9e0e6;
 };
 
 .color-text-default {
-  color: #1b1f24;
+  color: #39444d;
 };
 
 .color-text-primary {
-  color: #218bff;
+  color: #78b6ff;
 };
 
 .color-text-secondary {
-  color: #8c959f;
+  color: #a2adb8;
 };
 
 .color-text-danger {
-  color: #fa4549;
+  color: #ff858b;
 };
 
 .color-text-warning {
-  color: #bf8700;
+  color: #e3ad0b;
 };
 
 .color-text-success {
-  color: #5cb33b;
+  color: #52d9ac;
 };
 
 .color-text-info {
-  color: #80ccff;
+  color: #cce3ff;
 };
 
 .color-text-inverse {
@@ -123,7 +99,7 @@
 };
 
 .color-text-link {
-  color: #218bff;
+  color: #78b6ff;
 };
 
 .font-weight-400 {

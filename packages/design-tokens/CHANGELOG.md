@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.11
+
+### Patch Changes
+
+- rename color.core.xxx -> color.xxxx
+
 ## 2.1.7
 
 ### Patch Changes

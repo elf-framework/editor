@@ -1,12 +1,12 @@
 {
     "color": {
       "brand": {
-        "primary": { "value": "{color.core.blue.4.value}" },
-        "secondary": { "value": "{color.core.gray.4.value}" },
-        "danger": { "value": "{color.core.red.4.value}" },
-        "warning": { "value": "{color.core.yellow.4.value}" },
-        "success": { "value": "{color.core.green.4.value}" },
-        "info": { "value": "{color.core.blue.2.value}" }
+        "primary": { "value": "{color.blue.4.value}" },
+        "secondary": { "value": "{color.gray.4.value}" },
+        "danger": { "value": "{color.red.4.value}" },
+        "warning": { "value": "{color.yellow.4.value}" },
+        "success": { "value": "{color.green.4.value}" },
+        "info": { "value": "{color.blue.2.value}" }
       }
     }
 }

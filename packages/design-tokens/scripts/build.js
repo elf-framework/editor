@@ -77,8 +77,8 @@ StyleDictionary.extend({
       ],
     },
     js: {
-      transformGroup: "js",
       buildPath: "dist/",
+      transforms: ["attribute/cti", "name/cti/pascal", "color/hex"],
       files: [
         {
           destination: "tokens.json",
