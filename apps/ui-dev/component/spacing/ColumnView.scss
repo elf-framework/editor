@@ -1,0 +1,109 @@
+.column-view {
+
+    .description {
+        line-height: 1.6;
+        padding: 10px 0px;
+
+        p {
+            padding-top: 20px;
+        }
+    }
+
+    .fluid {
+        background-color: var(--color-blue-1);
+        .grid-item {
+            background-color: var(--color-blue-3);
+        }
+    
+    }
+
+    .fixed {
+        margin: 0 auto;
+        background-color: var(--color-green-1);
+        .grid-item {
+            background-color: var(--color-green-3);
+        }
+    
+    }
+
+
+    .margin {
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 8px;            
+            background-color: var(--color-green-7);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 8px;
+            background-color: var(--color-green-7);
+        }
+
+        background-color: var(--color-green-1);
+        .grid-item {
+            background-color: var(--color-green-3);
+        }
+
+    }
+
+
+    .grid-area-margin {
+        position: relative;
+
+        background-color: var(--color-green-3);
+        .grid-item {
+            background-color: var(--color-green-5);
+        }
+
+    }    
+
+    .grid-area {
+        // position: relative;
+        background-color: rgba(255, 255, 255, 0.6);
+        .grid-item {
+            background-color: #00bd7c94;
+        }
+
+    }
+
+    .gutter {
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 8px;            
+            background-color: var(--color-purple-1);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 8px;
+            background-color: var(--color-purple-1);
+        }
+
+
+        background-color: var(--color-purple-8);
+        .grid-item {
+            background-color: var(--color-purple-2);
+        }
+    }
+}

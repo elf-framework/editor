@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 16:58:17 GMT
+ * Generated on Thu, 25 Aug 2022 12:32:28 GMT
  */
 
 export default tokens;
@@ -303,6 +303,28 @@ declare const tokens: {
         "danger": DesignToken
       }
     }
+  },
+  "column": {
+    "1": DesignToken,
+    "2": DesignToken,
+    "3": DesignToken,
+    "4": DesignToken,
+    "5": DesignToken,
+    "6": DesignToken,
+    "7": DesignToken,
+    "8": DesignToken,
+    "9": DesignToken,
+    "10": DesignToken,
+    "11": DesignToken,
+    "12": DesignToken
+  },
+  "gap": {
+    "8": DesignToken,
+    "16": DesignToken,
+    "24": DesignToken,
+    "32": DesignToken,
+    "40": DesignToken,
+    "48": DesignToken
   },
   "spacing": {
     "0": DesignToken,

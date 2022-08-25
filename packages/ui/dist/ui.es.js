@@ -1257,15 +1257,17 @@ const pe = x("--elf--tools", {
 });
 class he extends h {
   template() {
-    const { style: e = {} } = this.props, t = {
-      class: f("elf--tools"),
+    const { style: e = {}, vertical: t = !1 } = this.props, s = {
+      class: f("elf--tools", {
+        vertical: t
+      }),
       style: {
         ...b(e, pe)
       }
     };
     return /* @__PURE__ */ o("div", {
-      ...t,
-      onContextMenu: (s) => s.preventDefault()
+      ...s,
+      onContextMenu: (l) => l.preventDefault()
     }, ce(this.props.items));
   }
 }

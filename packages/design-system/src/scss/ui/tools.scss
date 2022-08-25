@@ -1,6 +1,6 @@
 .elf--tools {
 
-    --elf--tools-background-color: rgba(44, 44, 44, 1);
+    --elf--tools-background-color: transparent;
     --elf--tools-arrow-background-color: rgba(44, 44, 44, 1);
     --elf--tools-hover-background-color: black;
     --elf--tools-color: white;
@@ -14,6 +14,37 @@
     height: var(--elf--tools-height);
     background-color: var(--elf--tools-background-color);
     color: var(--elf--tools-color);
+
+    &.vertical {
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        padding-top: 10px;
+        gap: var(--gap-16);
+
+        > .elf--tools-item {
+            height: 30px;
+            width: 30px;
+            min-width: auto;
+            padding: 5px;
+            --elf--tools-color: var(--color-gray-9);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover,
+            &.hover {
+                background-color: var(--color-action-primary);
+                --elf--tools-color: var(--color-white);
+            }
+
+            &.selected {
+                --elf--tools-background-color: var(--color-primary);
+                --elf--tools-color: var(--color-white);                
+            }
+        }
+    }
 
     > .elf--tools-item {
         display: flex;

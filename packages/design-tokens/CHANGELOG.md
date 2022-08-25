@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.14
+
+### Patch Changes
+
+- support gap, column size
+
 ## 2.1.12
 
 ### Patch Changes

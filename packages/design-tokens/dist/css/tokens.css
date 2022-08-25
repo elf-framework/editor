@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 16:58:17 GMT
+ * Generated on Thu, 25 Aug 2022 12:32:28 GMT
  */
 
 :root {
@@ -71,6 +71,24 @@
   --spacing-2: 8px;
   --spacing-1: 4px;
   --spacing-0: 2px;
+  --gap-48: 48px;
+  --gap-40: 40px;
+  --gap-32: 32px;
+  --gap-24: 24px;
+  --gap-16: 16px;
+  --gap-8: 8px;
+  --column-12: repeat(12, 1fr);
+  --column-11: repeat(11, 1fr);
+  --column-10: repeat(10, 1fr);
+  --column-9: repeat(9, 1fr);
+  --column-8: repeat(8, 1fr);
+  --column-7: repeat(7, 1fr);
+  --column-6: repeat(6, 1fr);
+  --column-5: repeat(5, 1fr);
+  --column-4: repeat(4, 1fr);
+  --column-3: repeat(3, 1fr);
+  --column-2: repeat(2, 1fr);
+  --column-1: repeat(1, 1fr);
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-white: #ffffff;
   --color-teal-9: #223a3b;

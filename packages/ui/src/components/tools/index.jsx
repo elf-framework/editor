@@ -312,10 +312,12 @@ const cssProperties = makeStyleMap("--elf--tools", {
 
 export class Tools extends UIElement {
   template() {
-    const { style = {} } = this.props;
+    const { style = {}, vertical = false } = this.props;
 
     const styleObject = {
-      class: classnames("elf--tools"),
+      class: classnames("elf--tools", {
+        vertical,
+      }),
       style: {
         ...propertyMap(style, cssProperties),
       },

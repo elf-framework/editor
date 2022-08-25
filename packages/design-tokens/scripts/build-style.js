@@ -42,6 +42,14 @@ function makeSpacingStyle(prop) {
 `;
 }
 
+function makeGapStyle(prop) {
+  return `.${prop.name} { gap: ${prop.value}; }`;
+}
+
+function makeColumnStyle(prop) {
+  return `.${prop.name} { grid-template-columns: ${prop.value}; }`;
+}
+
 function makeColorStyle(prop) {
   let cssField = "";
   switch (prop.attributes.type) {
@@ -88,6 +96,10 @@ ${fileHeader({ file })}
 ${dictionary.allProperties
   .map((prop) => {
     switch (prop.attributes.category) {
+      case "gap":
+        return makeGapStyle(prop);
+      case "column":
+        return makeColumnStyle(prop);
       case "spacing":
         return makeSpacingStyle(prop);
       case "image":

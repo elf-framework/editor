@@ -1,11 +1,15 @@
 ---
 title: Spacing
 layout: DesignLayout
-filename: pages/design/page.mdx
+filename: pages/design-system/page.mdx
 ---
 
 import { SpacingView } from "../../../component/spacing/SpacingView.jsx";
 import { GridView } from "../../../component/spacing/GridView.jsx";
+import { ColumnView } from "../../../component/spacing/ColumnView.jsx";
+import { ColumnTypeView } from "../../../component/spacing/ColumnTypeView.jsx";
+import { GridColumnListView } from "../../../component/spacing/GridColumnListView.jsx";
+import { GridGapListView } from "../../../component/spacing/GridGapListView.jsx";
 
 # {title}
 
@@ -13,7 +17,33 @@ import { GridView } from "../../../component/spacing/GridView.jsx";
 
 <GridView />
 
+Space is set to 8px by default.
+
 ## Size Unit
 
 <SpacingView />
 
+## Grid 
+
+## Column
+
+A column can be divided into a total of 12 levels and allows you to position yourself within it.
+
+<GridColumnListView />
+
+## Column Gap
+
+The gap between columns is defined in 5 ways based on 8px.
+
+<GridGapListView />
+
+## Grid Column
+
+The column structure is defined as follows.
+
+<ColumnView />
+
+
+## Grid Types
+
+<ColumnTypeView />

@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.13
+
+### Patch Changes
+
+- support vertical mode for tools
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.13
+
 ## 2.1.7
 
 ### Patch Changes

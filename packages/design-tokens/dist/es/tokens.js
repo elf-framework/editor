@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Aug 2022 16:58:17 GMT
+ * Generated on Thu, 25 Aug 2022 12:32:28 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -209,6 +209,24 @@ export const DividerColorBorderSuccess = "#52d9ac";
 export const DividerColorBorderInfo = "#cce3ff";
 export const DividerColorBorderWarning = "#ffe75c";
 export const DividerColorBorderDanger = "#ff858b";
+export const Column1 = "repeat(1, 1fr)";
+export const Column2 = "repeat(2, 1fr)";
+export const Column3 = "repeat(3, 1fr)";
+export const Column4 = "repeat(4, 1fr)";
+export const Column5 = "repeat(5, 1fr)";
+export const Column6 = "repeat(6, 1fr)";
+export const Column7 = "repeat(7, 1fr)";
+export const Column8 = "repeat(8, 1fr)";
+export const Column9 = "repeat(9, 1fr)";
+export const Column10 = "repeat(10, 1fr)";
+export const Column11 = "repeat(11, 1fr)";
+export const Column12 = "repeat(12, 1fr)";
+export const Gap8 = "8px";
+export const Gap16 = "16px";
+export const Gap24 = "24px";
+export const Gap32 = "32px";
+export const Gap40 = "40px";
+export const Gap48 = "48px";
 export const Spacing0 = "2px";
 export const Spacing1 = "4px";
 export const Spacing2 = "8px";

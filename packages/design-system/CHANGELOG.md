@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 2.1.13
+
+### Patch Changes
+
+- support vertical mode for tools
+
 ## 2.1.10
 
 ### Patch Changes

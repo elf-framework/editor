@@ -447,6 +447,7 @@ declare module "@elf-framework/ui" {
   export interface ToolsProps {
     items: ToolsType[];
     style: ToolsStyle & CommonStyle;
+    vertical?: boolean;
   }
   export class Tools extends UIElement {
     props: ToolsProps & CommonStyle;

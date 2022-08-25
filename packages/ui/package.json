@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/ui",
-  "version": "2.1.7",
+  "version": "2.1.13",
   "description": "Fantastic UI library",
   "types": "./index.d.ts",
   "files": [

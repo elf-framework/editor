@@ -24,15 +24,27 @@ npm install @elf-framework/design-tokens @elf-framework/design-system
 ```jsx
 // json 
 import tokens from "@elf-framework/design-tokens/tokens.json";
+
+console.log(tokens.spacing.size.lg);
 ```
 
-### CSS 
+### CSS variable
 
 ```css
 @import "@elf-framework/design-tokens/tokens.css";
+
+background-color: var(--color-gray-0);
 ```
 
+### CSS Class  
 
+```css
+@import "@elf-framework/design-tokens/style.css";
+```
+
+```html
+<div class="gap-16">Simple Text</div>
+```
 
 
 
