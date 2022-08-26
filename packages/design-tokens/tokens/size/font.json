@@ -1,6 +1,6 @@
 {
-  "size": {
-    "font": {
+  "font": {
+    "size": {
       "50": { "value": "11px" },
       "75": { "value": "12px" },
       "100": { "value": "14px", "comment": "base size" },
@@ -15,7 +15,23 @@
       "1000": { "value": "40px" },
       "1100": { "value": "45px" },
       "1200": { "value": "50px" },
-      "1300": { "value": "60px" }
+      "1300": { "value": "60px" },
+      "h1": { "value": "{font.size.800.value}" },
+      "h2": { "value": "{font.size.700.value}" },
+      "h3": { "value": "{font.size.600.value}" },
+      "h4": { "value": "{font.size.500.value}" },
+      "h5": { "value": "{font.size.400.value}" },
+      "h6": { "value": "{font.size.300.value}" }
+    },
+    "weight": {
+      "thin": { "value": "100" },
+      "light": { "value": "300" },
+      "regular": { "value": "400" },
+      "medium": { "value": "500" },
+      "semibold": { "value": "600" },
+      "bold": { "value": "700" },
+      "extrabold": { "value": "800" },
+      "black": { "value": "900" }
     }
   }
 }

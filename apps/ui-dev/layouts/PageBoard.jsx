@@ -5,7 +5,7 @@ export function PageBoard({ layout, page, filename }) {
   const CurrentLayout = LayoutManager.get(layout || "SapaLayout");
 
   return (
-    <CurrentLayout maxWidth={900}>
+    <CurrentLayout>
       <MarkdownPage page={page} filename={filename} />
     </CurrentLayout>
   );

@@ -20,21 +20,6 @@ StyleDictionary.extend({
       // Turn the object into JSON, the "2" third param is used to format indents with 2 spaces
       return JSON.stringify(parsedTokens, null, 2);
     },
-    "css/classFormat": ({ dictionary }) => {
-      return `
-    ${dictionary.allProperties
-      .map((prop) => {
-        return `
-    .${prop.name} {
-        font-family: ${prop.value.fontFamily},
-        font-size: ${prop.value.fontSize},
-        font-weight: ${prop.value.fontWeight},
-        line-height: ${prop.value.lineHeight}
-    };`;
-      })
-      .join("\n")}
-    `;
-    },
   },
   platforms: {
     ts: {

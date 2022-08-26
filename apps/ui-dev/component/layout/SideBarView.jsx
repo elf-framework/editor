@@ -51,7 +51,23 @@ export function SideBarView() {
                 style={{ transform: "translateX(100px) translateY(-50px);" }}
               >
                 <div class="header-bar" style={{ justifyContent: "end" }}></div>
-                <div class="side-bar"></div>
+                <div class="side-bar">
+                  <div class="side-bar-item"></div>
+                  <div class="side-bar-item">
+                    <Tools
+                      vertical={true}
+                      items={[
+                        {
+                          type: "button",
+                          title: "B",
+                          selected: true,
+                          selectedType: "secondary",
+                        },
+                        { type: "button", title: "B2" },
+                      ]}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

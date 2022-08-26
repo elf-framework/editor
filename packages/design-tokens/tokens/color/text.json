@@ -2,42 +2,39 @@
   "color": {
     "text": {
       "default": {
-        "value": "{color.black.value}",
-        "comment": "Default text color"
+        "value": "{color.gray.8.value}"
       },
       "primary": {
-        "value": "{color.blue.4.value}",
-        "comment": "Text color to indicate primary"
+        "value": "{color.gray.8.value}"
       },
       "secondary": {
-        "value": "{color.gray.4.value}",
-        "comment": "Text color to indicate secondary"
-      },
-      "danger": {
-        "value": "{color.red.4.value}",
-        "comment": "Text color to indicate danger"
-      },
-      "warning": {
-        "value": "{color.yellow.4.value}",
-        "comment": "Text color to indicate warning"
+        "value": "{color.gray.8.value}"
       },
       "success": {
-        "value": "{color.green.4.value}",
-        "comment": "Text color to indicate success"
+        "value": "{color.green.8.value}"
+      },
+      "danger": {
+        "value": "{color.red.8.value}"
+      },
+      "warning": {
+        "value": "{color.orange.8.value}"
       },
       "info": {
-        "value": "{color.blue.2.value}",
-        "comment": "Text color to indicate info"
+        "value": "{color.blue.8.value}"
       },
-      "inverse": {
-        "value": "{color.white.value}",
-        "comment": "Text color to indicate inverse"
+      "title": {
+        "value": "{color.black.value}"
+      },
+      "subtitle": {
+        "value": "{color.gray.6.value}"
       },
       "link": {
-        "value": "{color.blue.4.value}",
-        "comment": "Text color to indicate link"
-      }
+        "value": "{color.blue.8.value}"
+      },
 
+      "disabled": {
+        "value": "{color.gray.5.value}"
+      }
     }
   }
 }

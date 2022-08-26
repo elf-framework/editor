@@ -73,11 +73,13 @@ cd editor
 npm run ui:dev
 ```
 
-#### ui react library test 
 
-```
-cd editor
-npm run ui-react:dev
+### Update npm packages 
+
+```sh
+cd apps/xxxx 
+npx npm-check-updates -u
+npm install
 ```
 
 ### Remote Caching

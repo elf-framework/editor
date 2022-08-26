@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.15
+
+### Patch Changes
+
+- update icongraphy documentation
+
 ## 1.0.14
 
 ### Patch Changes

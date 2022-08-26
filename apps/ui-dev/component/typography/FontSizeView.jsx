@@ -20,20 +20,20 @@ export function FontSizeView() {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(tokens.size.font).map((key) => {
+          {Object.keys(tokens.font.size).map((key) => {
             return (
               <tr>
                 <td>
-                  <CopyText text={`--size-font-${key}`} />
+                  <CopyText text={`--font-size-${key}`} />
                 </td>
                 <td>
-                  <CopyText text={`$size-font-${key}`} />
+                  <CopyText text={`$font-size-${key}`} />
                 </td>
                 <td>
-                  <CopyText text={tokens.size.font[key]} />
+                  <CopyText text={tokens.font.size[key]} />
                 </td>
                 <td>
-                  <span style={{ fontSize: `var(--size-font-${key})` }}>
+                  <span style={{ fontSize: `var(--font-size-${key})` }}>
                     I can do it.
                   </span>
                 </td>

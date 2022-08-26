@@ -57,6 +57,7 @@ export default defineConfig(async () => {
       exclude: [
         "@elf-framework/sapa",
         "@elf-framework/ui",
+        "@elf-framework/icon",
         "@elf-framework/sapa-router",
         "@elf-framework/design-tokens",
         "@elf-framework/design-system",

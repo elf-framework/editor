@@ -35,14 +35,25 @@
 
             &:hover,
             &.hover {
-                background-color: var(--color-action-primary);
+                --elf--tools-background-color: var(--color-hover-primary);
                 --elf--tools-color: var(--color-white);
+
+                &[data-selected-type="secondary"] {
+                    --elf--tools-background-color: var(--color-secondary);
+                    --elf--tools-color: var(--color-black);
+                }                
             }
 
             &.selected {
                 --elf--tools-background-color: var(--color-primary);
                 --elf--tools-color: var(--color-white);                
+
+                &[data-selected-type="secondary"] {
+                    --elf--tools-background-color: var(--color-secondary);
+                    --elf--tools-color: var(--color-black);
+                }
             }
+
         }
     }
 

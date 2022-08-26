@@ -25,9 +25,24 @@ export function BaseView() {
       />
 
       <ColorDetailView
-        color={tokens.color.black}
+        color={tokens.color.text.default}
         title={"Body Text"}
         message={"Color Gray 8"}
+      />
+      <ColorDetailView
+        color={tokens.color.text.title}
+        title={"Title Text"}
+        message={"Color Gray 9"}
+      />
+      <ColorDetailView
+        color={tokens.color.text.subtitle}
+        title={"Subtitle Text"}
+        message={"Color Gray 6"}
+      />
+      <ColorDetailView
+        color={tokens.color.text.link}
+        title={"Link Text"}
+        message={"Color Blue 7"}
       />
     </Grid>
   );

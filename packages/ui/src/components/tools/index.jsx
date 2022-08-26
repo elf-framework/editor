@@ -52,12 +52,13 @@ class ToolsItem extends UIElement {
   }
 
   initState() {
-    const { title = "", icon, selected } = this.props;
+    const { title = "", icon, selected, selectedType } = this.props;
 
     return {
       title,
       icon,
       selected,
+      selectedType,
     };
   }
 
@@ -66,8 +67,9 @@ class ToolsItem extends UIElement {
     return (
       <div
         class={classnames("elf--tools-item", {
-          selected: this.selected ? true : undefined,
+          selected: this.state.selected ? true : undefined,
         })}
+        data-selected-type={this.state.selectedType}
         onClick={this.props.onClick}
       >
         <button type="button">

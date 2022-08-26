@@ -207,7 +207,16 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
       return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
     }
 
-    return obj1Value === obj2Value;
+    const result = obj1Value === obj2Value;
+
+    if (result) {
+      // 두개의 값이 동일하고, 함수일 경우는 다시 그린다.
+      if (isGlobalForceRender() && isFunction(obj1Value)) {
+        return false;
+      }
+    }
+
+    return result;
   });
 }
 

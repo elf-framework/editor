@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -20,14 +20,14 @@
   "dependencies": {
     "@elf-framework/base-editor": "^2.1.7",
     "@elf-framework/color": "*",
-    "@elf-framework/design-tokens": "*",
     "@elf-framework/design-system": "*",
-    "@elf-framework/icon": "^2.0.51",
+    "@elf-framework/design-tokens": "*",
+    "@elf-framework/icon": "^2.0.57",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",
     "github-markdown-css": "^5.1.0",
-    "mermaid": "^9.1.5"
+    "mermaid": "^9.1.6"
   },
   "devDependencies": {
     "@elf-framework/config": "*",
@@ -35,13 +35,13 @@
     "glob": "^8.0.3",
     "mdx-mermaid": "^2.0.0-rc1",
     "mdx-prism": "^0.3.4",
-    "rehype-prism-plus": "^1.4.2",
+    "rehype-prism-plus": "^1.5.0",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-frontmatter": "^2.0.3",
-    "vite": "^3.0.8",
+    "vite": "^3.0.9",
     "vite-plugin-sapa": "*",
-    "vite-plugin-ssr": "^0.4.20",
+    "vite-plugin-ssr": "^0.4.26",
     "vitest": "0.22.1"
   }
 }

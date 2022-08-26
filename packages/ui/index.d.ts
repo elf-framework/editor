@@ -405,6 +405,7 @@ declare module "@elf-framework/ui" {
     title: string;
     icon?: string;
     selected?: boolean;
+    selectedType?: "primary" | "secondary";
     events?: string[];
     onClick?: (event: PointerEvent) => void;
   };

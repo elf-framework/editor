@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 25 Aug 2022 12:32:28 GMT
+ * Generated on Fri, 26 Aug 2022 12:28:53 GMT
  */
 
 export default tokens;
@@ -47,12 +47,30 @@ declare const tokens: {
       }
     },
     "border": DesignToken,
-    "brand": {
+    "default": DesignToken,
+    "primary": DesignToken,
+    "secondary": DesignToken,
+    "success": DesignToken,
+    "danger": DesignToken,
+    "warning": DesignToken,
+    "info": DesignToken,
+    "disabled": DesignToken,
+    "hover": {
+      "default": DesignToken,
       "primary": DesignToken,
       "secondary": DesignToken,
+      "success": DesignToken,
       "danger": DesignToken,
       "warning": DesignToken,
+      "info": DesignToken
+    },
+    "down": {
+      "default": DesignToken,
+      "primary": DesignToken,
+      "secondary": DesignToken,
       "success": DesignToken,
+      "danger": DesignToken,
+      "warning": DesignToken,
       "info": DesignToken
     },
     "red": {
@@ -165,30 +183,18 @@ declare const tokens: {
     },
     "black": DesignToken,
     "white": DesignToken,
-    "primary": DesignToken,
-    "secondary": DesignToken,
-    "success": DesignToken,
-    "danger": DesignToken,
-    "warning": DesignToken,
-    "info": DesignToken,
-    "action": {
-      "primary": DesignToken,
-      "secondary": DesignToken,
-      "success": DesignToken,
-      "danger": DesignToken,
-      "warning": DesignToken,
-      "info": DesignToken
-    },
     "text": {
       "default": DesignToken,
       "primary": DesignToken,
       "secondary": DesignToken,
+      "success": DesignToken,
       "danger": DesignToken,
       "warning": DesignToken,
-      "success": DesignToken,
       "info": DesignToken,
-      "inverse": DesignToken,
-      "link": DesignToken
+      "title": DesignToken,
+      "subtitle": DesignToken,
+      "link": DesignToken,
+      "disabled": DesignToken
     }
   },
   "alert": {
@@ -380,8 +386,10 @@ declare const tokens: {
         "medium": DesignToken,
         "large": DesignToken
       }
-    },
-    "font": {
+    }
+  },
+  "font": {
+    "size": {
       "50": DesignToken,
       "75": DesignToken,
       "100": DesignToken,
@@ -396,9 +404,27 @@ declare const tokens: {
       "1000": DesignToken,
       "1100": DesignToken,
       "1200": DesignToken,
-      "1300": DesignToken
+      "1300": DesignToken,
+      "h1": DesignToken,
+      "h2": DesignToken,
+      "h3": DesignToken,
+      "h4": DesignToken,
+      "h5": DesignToken,
+      "h6": DesignToken
     },
-    "padding": {
+    "weight": {
+      "thin": DesignToken,
+      "light": DesignToken,
+      "regular": DesignToken,
+      "medium": DesignToken,
+      "semibold": DesignToken,
+      "bold": DesignToken,
+      "extrabold": DesignToken,
+      "black": DesignToken
+    }
+  },
+  "padding": {
+    "size": {
       "xs": DesignToken,
       "small": DesignToken,
       "medium": DesignToken,

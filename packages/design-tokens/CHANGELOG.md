@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.17
+
+### Patch Changes
+
+- update color list
+
 ## 2.1.14
 
 ### Patch Changes

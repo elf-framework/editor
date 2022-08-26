@@ -350,44 +350,37 @@
     },
     "border": {
       "default": {
-        "value": "#39444d",
-        "comment": "Border color that will match the current color scheme",
+        "value": "#2c353d",
         "filePath": "tokens/color/border.json",
         "isSource": true
       },
       "primary": {
-        "value": "#78b6ff",
-        "comment": "Base color for the primary color",
+        "value": "#1273e6",
         "filePath": "tokens/color/border.json",
         "isSource": true
       },
       "secondary": {
-        "value": "#a2adb8",
-        "comment": "Base color for the secondary color",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "danger": {
-        "value": "#ff858b",
-        "comment": "Base color for the danger color",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "warning": {
-        "value": "#e3ad0b",
-        "comment": "Base color for the warning color",
+        "value": "#d9e0e6",
         "filePath": "tokens/color/border.json",
         "isSource": true
       },
       "success": {
-        "value": "#52d9ac",
-        "comment": "Base color for the success color",
+        "value": "#009f6a",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "danger": {
+        "value": "#d9363e",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "warning": {
+        "value": "#ffb77c",
         "filePath": "tokens/color/border.json",
         "isSource": true
       },
       "info": {
-        "value": "#cce3ff",
-        "comment": "Base color for the info color",
+        "value": "#abd2ff",
         "filePath": "tokens/color/border.json",
         "isSource": true
       },
@@ -397,43 +390,36 @@
       "original": {
         "default": {
           "value": "{color.black}",
-          "comment": "Border color that will match the current color scheme",
           "filePath": "tokens/color/border.json",
           "isSource": true
         },
         "primary": {
-          "value": "{color.blue.4}",
-          "comment": "Base color for the primary color",
+          "value": "{color.blue.6}",
           "filePath": "tokens/color/border.json",
           "isSource": true
         },
         "secondary": {
-          "value": "{color.gray.4}",
-          "comment": "Base color for the secondary color",
-          "filePath": "tokens/color/border.json",
-          "isSource": true
-        },
-        "danger": {
-          "value": "{color.red.4}",
-          "comment": "Base color for the danger color",
-          "filePath": "tokens/color/border.json",
-          "isSource": true
-        },
-        "warning": {
-          "value": "{color.yellow.4}",
-          "comment": "Base color for the warning color",
+          "value": "{color.gray.2}",
           "filePath": "tokens/color/border.json",
           "isSource": true
         },
         "success": {
-          "value": "{color.green.4}",
-          "comment": "Base color for the success color",
+          "value": "{color.green.6}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "danger": {
+          "value": "{color.red.6}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "warning": {
+          "value": "{color.orange.2}",
           "filePath": "tokens/color/border.json",
           "isSource": true
         },
         "info": {
-          "value": "{color.blue.2}",
-          "comment": "Base color for the info color",
+          "value": "{color.blue.3}",
           "filePath": "tokens/color/border.json",
           "isSource": true
         },
@@ -448,8 +434,244 @@
         "1": "border"
       }
     },
-    "brand": {
+    "default": {
+      "value": "{color.white}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.white}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "default"
+      },
+      "path": {
+        "0": "color",
+        "1": "default"
+      }
+    },
+    "primary": {
+      "value": "{color.blue.6}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.blue.6}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "primary"
+      },
+      "path": {
+        "0": "color",
+        "1": "primary"
+      }
+    },
+    "secondary": {
+      "value": "{color.gray.2}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.gray.2}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "secondary"
+      },
+      "path": {
+        "0": "color",
+        "1": "secondary"
+      }
+    },
+    "success": {
+      "value": "{color.green.6}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.green.6}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "success"
+      },
+      "path": {
+        "0": "color",
+        "1": "success"
+      }
+    },
+    "danger": {
+      "value": "{color.red.6}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.red.6}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "danger"
+      },
+      "path": {
+        "0": "color",
+        "1": "danger"
+      }
+    },
+    "warning": {
+      "value": "{color.orange.2}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.orange.2}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "warning"
+      },
+      "path": {
+        "0": "color",
+        "1": "warning"
+      }
+    },
+    "info": {
+      "value": "{color.blue.3}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.blue.3}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "info"
+      },
+      "path": {
+        "0": "color",
+        "1": "info"
+      }
+    },
+    "disabled": {
+      "value": "{color.gray.2}",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.gray.2}"
+      },
+      "attributes": {
+        "category": "color",
+        "type": "disabled"
+      },
+      "path": {
+        "0": "color",
+        "1": "disabled"
+      }
+    },
+    "hover": {
+      "default": {
+        "value": "{color.gray.0}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.0}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "default"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "default"
+        }
+      },
       "primary": {
+        "value": "{color.blue.7}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.7}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "primary"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "primary"
+        }
+      },
+      "secondary": {
+        "value": "{color.gray.7}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.7}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "secondary"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "secondary"
+        }
+      },
+      "success": {
+        "value": "{color.green.7}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.7}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "success"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "success"
+        }
+      },
+      "danger": {
+        "value": "{color.red.7}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.7}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "danger"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "danger"
+        }
+      },
+      "warning": {
+        "value": "{color.orange.4}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.orange.4}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "warning"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "warning"
+        }
+      },
+      "info": {
         "value": "{color.blue.4}",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
@@ -458,102 +680,140 @@
         },
         "attributes": {
           "category": "color",
-          "type": "brand",
-          "item": "primary"
-        },
-        "path": {
-          "0": "color",
-          "1": "brand",
-          "2": "primary"
-        }
-      },
-      "secondary": {
-        "value": "{color.gray.4}",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.gray.4}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "secondary"
-        },
-        "path": {
-          "0": "color",
-          "1": "brand",
-          "2": "secondary"
-        }
-      },
-      "danger": {
-        "value": "{color.red.4}",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.red.4}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "danger"
-        },
-        "path": {
-          "0": "color",
-          "1": "brand",
-          "2": "danger"
-        }
-      },
-      "warning": {
-        "value": "{color.yellow.4}",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.yellow.4}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "warning"
-        },
-        "path": {
-          "0": "color",
-          "1": "brand",
-          "2": "warning"
-        }
-      },
-      "success": {
-        "value": "{color.green.4}",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.green.4}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "success"
-        },
-        "path": {
-          "0": "color",
-          "1": "brand",
-          "2": "success"
-        }
-      },
-      "info": {
-        "value": "{color.blue.2}",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.blue.2}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "brand",
+          "type": "hover",
           "item": "info"
         },
         "path": {
           "0": "color",
-          "1": "brand",
+          "1": "hover",
+          "2": "info"
+        }
+      }
+    },
+    "down": {
+      "default": {
+        "value": "{color.gray.2}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.2}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "default"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
+          "2": "default"
+        }
+      },
+      "primary": {
+        "value": "{color.blue.8}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.8}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "primary"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
+          "2": "primary"
+        }
+      },
+      "secondary": {
+        "value": "{color.gray.8}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.8}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "secondary"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
+          "2": "secondary"
+        }
+      },
+      "success": {
+        "value": "{color.green.8}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.8}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "success"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
+          "2": "success"
+        }
+      },
+      "danger": {
+        "value": "{color.red.8}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.8}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "danger"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
+          "2": "danger"
+        }
+      },
+      "warning": {
+        "value": "{color.orange.8}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.orange.8}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "warning"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
+          "2": "warning"
+        }
+      },
+      "info": {
+        "value": "{color.blue.7}",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.7}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "info"
+        },
+        "path": {
+          "0": "color",
+          "1": "down",
           "2": "info"
         }
       }
@@ -2197,11 +2457,11 @@
       }
     },
     "black": {
-      "value": "{color.gray.8}",
+      "value": "{color.gray.9}",
       "filePath": "tokens/color/core.json",
       "isSource": true,
       "original": {
-        "value": "{color.gray.8}"
+        "value": "{color.gray.9}"
       },
       "attributes": {
         "category": "color",
@@ -2228,221 +2488,13 @@
         "1": "white"
       }
     },
-    "primary": {
-      "value": "{color.blue.6}",
-      "filePath": "tokens/color/core.json",
-      "isSource": true,
-      "original": {
-        "value": "{color.blue.6}"
-      },
-      "attributes": {
-        "category": "color",
-        "type": "primary"
-      },
-      "path": {
-        "0": "color",
-        "1": "primary"
-      }
-    },
-    "secondary": {
-      "value": "{color.gray.6}",
-      "filePath": "tokens/color/core.json",
-      "isSource": true,
-      "original": {
-        "value": "{color.gray.6}"
-      },
-      "attributes": {
-        "category": "color",
-        "type": "secondary"
-      },
-      "path": {
-        "0": "color",
-        "1": "secondary"
-      }
-    },
-    "success": {
-      "value": "{color.green.6}",
-      "filePath": "tokens/color/core.json",
-      "isSource": true,
-      "original": {
-        "value": "{color.green.6}"
-      },
-      "attributes": {
-        "category": "color",
-        "type": "success"
-      },
-      "path": {
-        "0": "color",
-        "1": "success"
-      }
-    },
-    "danger": {
-      "value": "{color.red.6}",
-      "filePath": "tokens/color/core.json",
-      "isSource": true,
-      "original": {
-        "value": "{color.red.6}"
-      },
-      "attributes": {
-        "category": "color",
-        "type": "danger"
-      },
-      "path": {
-        "0": "color",
-        "1": "danger"
-      }
-    },
-    "warning": {
-      "value": "{color.orange.2}",
-      "filePath": "tokens/color/core.json",
-      "isSource": true,
-      "original": {
-        "value": "{color.orange.2}"
-      },
-      "attributes": {
-        "category": "color",
-        "type": "warning"
-      },
-      "path": {
-        "0": "color",
-        "1": "warning"
-      }
-    },
-    "info": {
-      "value": "{color.blue.3}",
-      "filePath": "tokens/color/core.json",
-      "isSource": true,
-      "original": {
-        "value": "{color.blue.3}"
-      },
-      "attributes": {
-        "category": "color",
-        "type": "info"
-      },
-      "path": {
-        "0": "color",
-        "1": "info"
-      }
-    },
-    "action": {
-      "primary": {
-        "value": "{color.blue.7}",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.blue.7}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "action",
-          "item": "primary"
-        },
-        "path": {
-          "0": "color",
-          "1": "action",
-          "2": "primary"
-        }
-      },
-      "secondary": {
-        "value": "{color.gray.7}",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.gray.7}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "action",
-          "item": "secondary"
-        },
-        "path": {
-          "0": "color",
-          "1": "action",
-          "2": "secondary"
-        }
-      },
-      "success": {
-        "value": "{color.green.7}",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.green.7}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "action",
-          "item": "success"
-        },
-        "path": {
-          "0": "color",
-          "1": "action",
-          "2": "success"
-        }
-      },
-      "danger": {
-        "value": "{color.red.7}",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.red.7}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "action",
-          "item": "danger"
-        },
-        "path": {
-          "0": "color",
-          "1": "action",
-          "2": "danger"
-        }
-      },
-      "warning": {
-        "value": "{color.orange.4}",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.orange.4}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "action",
-          "item": "warning"
-        },
-        "path": {
-          "0": "color",
-          "1": "action",
-          "2": "warning"
-        }
-      },
-      "info": {
-        "value": "{color.blue.4}",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.blue.4}"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "action",
-          "item": "info"
-        },
-        "path": {
-          "0": "color",
-          "1": "action",
-          "2": "info"
-        }
-      }
-    },
     "text": {
       "default": {
-        "value": "{color.black}",
-        "comment": "Default text color",
+        "value": "{color.gray.8}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.black}",
-          "comment": "Default text color"
+          "value": "{color.gray.8}"
         },
         "attributes": {
           "category": "color",
@@ -2456,13 +2508,11 @@
         }
       },
       "primary": {
-        "value": "{color.blue.4}",
-        "comment": "Text color to indicate primary",
+        "value": "{color.gray.8}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.4}",
-          "comment": "Text color to indicate primary"
+          "value": "{color.gray.8}"
         },
         "attributes": {
           "category": "color",
@@ -2476,13 +2526,11 @@
         }
       },
       "secondary": {
-        "value": "{color.gray.4}",
-        "comment": "Text color to indicate secondary",
+        "value": "{color.gray.8}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.4}",
-          "comment": "Text color to indicate secondary"
+          "value": "{color.gray.8}"
         },
         "attributes": {
           "category": "color",
@@ -2495,14 +2543,30 @@
           "2": "secondary"
         }
       },
-      "danger": {
-        "value": "{color.red.4}",
-        "comment": "Text color to indicate danger",
+      "success": {
+        "value": "{color.green.8}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.red.4}",
-          "comment": "Text color to indicate danger"
+          "value": "{color.green.8}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "text",
+          "item": "success"
+        },
+        "path": {
+          "0": "color",
+          "1": "text",
+          "2": "success"
+        }
+      },
+      "danger": {
+        "value": "{color.red.8}",
+        "filePath": "tokens/color/text.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.8}"
         },
         "attributes": {
           "category": "color",
@@ -2516,13 +2580,11 @@
         }
       },
       "warning": {
-        "value": "{color.yellow.4}",
-        "comment": "Text color to indicate warning",
+        "value": "{color.orange.8}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.yellow.4}",
-          "comment": "Text color to indicate warning"
+          "value": "{color.orange.8}"
         },
         "attributes": {
           "category": "color",
@@ -2535,34 +2597,12 @@
           "2": "warning"
         }
       },
-      "success": {
-        "value": "{color.green.4}",
-        "comment": "Text color to indicate success",
-        "filePath": "tokens/color/text.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.green.4}",
-          "comment": "Text color to indicate success"
-        },
-        "attributes": {
-          "category": "color",
-          "type": "text",
-          "item": "success"
-        },
-        "path": {
-          "0": "color",
-          "1": "text",
-          "2": "success"
-        }
-      },
       "info": {
-        "value": "{color.blue.2}",
-        "comment": "Text color to indicate info",
+        "value": "{color.blue.8}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.2}",
-          "comment": "Text color to indicate info"
+          "value": "{color.blue.8}"
         },
         "attributes": {
           "category": "color",
@@ -2575,34 +2615,48 @@
           "2": "info"
         }
       },
-      "inverse": {
-        "value": "{color.white}",
-        "comment": "Text color to indicate inverse",
+      "title": {
+        "value": "{color.black}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.white}",
-          "comment": "Text color to indicate inverse"
+          "value": "{color.black}"
         },
         "attributes": {
           "category": "color",
           "type": "text",
-          "item": "inverse"
+          "item": "title"
         },
         "path": {
           "0": "color",
           "1": "text",
-          "2": "inverse"
+          "2": "title"
         }
       },
-      "link": {
-        "value": "{color.blue.4}",
-        "comment": "Text color to indicate link",
+      "subtitle": {
+        "value": "{color.gray.6}",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.4}",
-          "comment": "Text color to indicate link"
+          "value": "{color.gray.6}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "text",
+          "item": "subtitle"
+        },
+        "path": {
+          "0": "color",
+          "1": "text",
+          "2": "subtitle"
+        }
+      },
+      "link": {
+        "value": "{color.blue.8}",
+        "filePath": "tokens/color/text.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.8}"
         },
         "attributes": {
           "category": "color",
@@ -2613,6 +2667,24 @@
           "0": "color",
           "1": "text",
           "2": "link"
+        }
+      },
+      "disabled": {
+        "value": "{color.gray.5}",
+        "filePath": "tokens/color/text.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.5}"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "text",
+          "item": "disabled"
+        },
+        "path": {
+          "0": "color",
+          "1": "text",
+          "2": "disabled"
         }
       }
     }
@@ -3269,11 +3341,11 @@
           }
         },
         "primary": {
-          "value": "{color.background.primary}",
+          "value": "{color.primary}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary}"
+            "value": "{color.primary}"
           },
           "attributes": {
             "category": "alert",
@@ -3289,11 +3361,11 @@
           }
         },
         "secondary": {
-          "value": "{color.background.secondary}",
+          "value": "{color.secondary}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary}"
+            "value": "{color.secondary}"
           },
           "attributes": {
             "category": "alert",
@@ -3309,11 +3381,11 @@
           }
         },
         "success": {
-          "value": "{color.background.success}",
+          "value": "{color.success}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success}"
+            "value": "{color.success}"
           },
           "attributes": {
             "category": "alert",
@@ -3329,11 +3401,11 @@
           }
         },
         "info": {
-          "value": "{color.background.info}",
+          "value": "{color.info}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info}"
+            "value": "{color.info}"
           },
           "attributes": {
             "category": "alert",
@@ -3349,11 +3421,11 @@
           }
         },
         "warning": {
-          "value": "{color.background.warning}",
+          "value": "{color.warning}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning}"
+            "value": "{color.warning}"
           },
           "attributes": {
             "category": "alert",
@@ -3369,11 +3441,11 @@
           }
         },
         "danger": {
-          "value": "{color.background.danger}",
+          "value": "{color.danger}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger}"
+            "value": "{color.danger}"
           },
           "attributes": {
             "category": "alert",
@@ -3629,11 +3701,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.background.default}",
+          "value": "{color.default}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.default}"
+            "value": "{color.default}"
           },
           "attributes": {
             "category": "button",
@@ -3649,11 +3721,11 @@
           }
         },
         "primary": {
-          "value": "{color.background.primary}",
+          "value": "{color.primary}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary}"
+            "value": "{color.primary}"
           },
           "attributes": {
             "category": "button",
@@ -3669,11 +3741,11 @@
           }
         },
         "secondary": {
-          "value": "{color.background.secondary}",
+          "value": "{color.secondary}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary}"
+            "value": "{color.secondary}"
           },
           "attributes": {
             "category": "button",
@@ -3689,11 +3761,11 @@
           }
         },
         "success": {
-          "value": "{color.background.success}",
+          "value": "{color.success}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success}"
+            "value": "{color.success}"
           },
           "attributes": {
             "category": "button",
@@ -3709,11 +3781,11 @@
           }
         },
         "info": {
-          "value": "{color.background.info}",
+          "value": "{color.info}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info}"
+            "value": "{color.info}"
           },
           "attributes": {
             "category": "button",
@@ -3729,11 +3801,11 @@
           }
         },
         "warning": {
-          "value": "{color.background.warning}",
+          "value": "{color.warning}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning}"
+            "value": "{color.warning}"
           },
           "attributes": {
             "category": "button",
@@ -3749,11 +3821,11 @@
           }
         },
         "danger": {
-          "value": "{color.background.danger}",
+          "value": "{color.danger}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger}"
+            "value": "{color.danger}"
           },
           "attributes": {
             "category": "button",
@@ -3791,11 +3863,11 @@
           }
         },
         "primary": {
-          "value": "{color.background.primary}",
+          "value": "{color.primary}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary}"
+            "value": "{color.primary}"
           },
           "attributes": {
             "category": "button",
@@ -3811,11 +3883,11 @@
           }
         },
         "secondary": {
-          "value": "{color.background.secondary}",
+          "value": "{color.secondary}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary}"
+            "value": "{color.secondary}"
           },
           "attributes": {
             "category": "button",
@@ -3831,11 +3903,11 @@
           }
         },
         "success": {
-          "value": "{color.background.success}",
+          "value": "{color.success}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success}"
+            "value": "{color.success}"
           },
           "attributes": {
             "category": "button",
@@ -3851,11 +3923,11 @@
           }
         },
         "info": {
-          "value": "{color.background.info}",
+          "value": "{color.info}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info}"
+            "value": "{color.info}"
           },
           "attributes": {
             "category": "button",
@@ -3871,11 +3943,11 @@
           }
         },
         "warning": {
-          "value": "{color.background.warning}",
+          "value": "{color.warning}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning}"
+            "value": "{color.warning}"
           },
           "attributes": {
             "category": "button",
@@ -3891,11 +3963,11 @@
           }
         },
         "danger": {
-          "value": "{color.background.danger}",
+          "value": "{color.danger}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger}"
+            "value": "{color.danger}"
           },
           "attributes": {
             "category": "button",
@@ -4001,11 +4073,11 @@
           }
         },
         "primary": {
-          "value": "{color.background.primary}",
+          "value": "{color.primary}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary}"
+            "value": "{color.primary}"
           },
           "attributes": {
             "category": "divider",
@@ -4021,11 +4093,11 @@
           }
         },
         "secondary": {
-          "value": "{color.background.secondary}",
+          "value": "{color.secondary}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary}"
+            "value": "{color.secondary}"
           },
           "attributes": {
             "category": "divider",
@@ -4041,11 +4113,11 @@
           }
         },
         "success": {
-          "value": "{color.background.success}",
+          "value": "{color.success}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success}"
+            "value": "{color.success}"
           },
           "attributes": {
             "category": "divider",
@@ -4061,11 +4133,11 @@
           }
         },
         "info": {
-          "value": "{color.background.info}",
+          "value": "{color.info}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info}"
+            "value": "{color.info}"
           },
           "attributes": {
             "category": "divider",
@@ -4081,11 +4153,11 @@
           }
         },
         "warning": {
-          "value": "{color.background.warning}",
+          "value": "{color.warning}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning}"
+            "value": "{color.warning}"
           },
           "attributes": {
             "category": "divider",
@@ -4101,11 +4173,11 @@
           }
         },
         "danger": {
-          "value": "{color.background.danger}",
+          "value": "{color.danger}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger}"
+            "value": "{color.danger}"
           },
           "attributes": {
             "category": "divider",
@@ -5183,46 +5255,48 @@
           }
         }
       }
-    },
-    "font": {
+    }
+  },
+  "font": {
+    "size": {
       "50": {
-        "value": "11rem",
+        "value": "11px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "11px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "50"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "50"
         }
       },
       "75": {
-        "value": "12rem",
+        "value": "12px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "12px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "75"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "75"
         }
       },
       "100": {
-        "value": "14rem",
+        "value": "14px",
         "comment": "base size",
         "filePath": "tokens/size/font.json",
         "isSource": true,
@@ -5231,339 +5305,595 @@
           "comment": "base size"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "100"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "100"
         }
       },
       "200": {
-        "value": "16rem",
+        "value": "16px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "16px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "200"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "200"
         }
       },
       "300": {
-        "value": "18rem",
+        "value": "18px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "18px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "300"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "300"
         }
       },
       "400": {
-        "value": "20rem",
+        "value": "20px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "20px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "400"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "400"
         }
       },
       "500": {
-        "value": "22rem",
+        "value": "22px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "22px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "500"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "500"
         }
       },
       "600": {
-        "value": "25rem",
+        "value": "25px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "25px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "600"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "600"
         }
       },
       "700": {
-        "value": "28rem",
+        "value": "28px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "28px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "700"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "700"
         }
       },
       "800": {
-        "value": "32rem",
+        "value": "32px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "32px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "800"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "800"
         }
       },
       "900": {
-        "value": "36rem",
+        "value": "36px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "36px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "900"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "900"
         }
       },
       "1000": {
-        "value": "40rem",
+        "value": "40px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "40px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1000"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "1000"
         }
       },
       "1100": {
-        "value": "45rem",
+        "value": "45px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "45px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1100"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "1100"
         }
       },
       "1200": {
-        "value": "50rem",
+        "value": "50px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "50px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1200"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "1200"
         }
       },
       "1300": {
-        "value": "60rem",
+        "value": "60px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "60px"
         },
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1300"
         },
         "path": {
-          "0": "size",
-          "1": "font",
+          "0": "font",
+          "1": "size",
           "2": "1300"
+        }
+      },
+      "h1": {
+        "value": "{font.size.800}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.800}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h1"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "h1"
+        }
+      },
+      "h2": {
+        "value": "{font.size.700}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.700}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h2"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "h2"
+        }
+      },
+      "h3": {
+        "value": "{font.size.600}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.600}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h3"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "h3"
+        }
+      },
+      "h4": {
+        "value": "{font.size.500}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.500}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h4"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "h4"
+        }
+      },
+      "h5": {
+        "value": "{font.size.400}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.400}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h5"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "h5"
+        }
+      },
+      "h6": {
+        "value": "{font.size.300}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.300}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h6"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "h6"
         }
       }
     },
-    "padding": {
+    "weight": {
+      "thin": {
+        "value": "100",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "100"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "thin"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "thin"
+        }
+      },
+      "light": {
+        "value": "300",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "300"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "light"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "light"
+        }
+      },
+      "regular": {
+        "value": "400",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "400"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "regular"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "regular"
+        }
+      },
+      "medium": {
+        "value": "500",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "500"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "medium"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "medium"
+        }
+      },
+      "semibold": {
+        "value": "600",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "600"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "semibold"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "semibold"
+        }
+      },
+      "bold": {
+        "value": "700",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "700"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "bold"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "bold"
+        }
+      },
+      "extrabold": {
+        "value": "800",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "800"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "extrabold"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "extrabold"
+        }
+      },
+      "black": {
+        "value": "900",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "900"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "black"
+        },
+        "path": {
+          "0": "font",
+          "1": "weight",
+          "2": "black"
+        }
+      }
+    }
+  },
+  "padding": {
+    "size": {
       "xs": {
-        "value": "0.25rem",
+        "value": "{spacing.size.xs}",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 0.25
+          "value": "{spacing.size.xs}"
         },
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "xs"
         },
         "path": {
-          "0": "size",
-          "1": "padding",
+          "0": "padding",
+          "1": "size",
           "2": "xs"
         }
       },
       "small": {
-        "value": "0.5rem",
+        "value": "{spacing.size.sm}",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 0.5
+          "value": "{spacing.size.sm}"
         },
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "small"
         },
         "path": {
-          "0": "size",
-          "1": "padding",
+          "0": "padding",
+          "1": "size",
           "2": "small"
         }
       },
       "medium": {
-        "value": "1rem",
+        "value": "{spacing.size.md}",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 1
+          "value": "{spacing.size.md}"
         },
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "medium"
         },
         "path": {
-          "0": "size",
-          "1": "padding",
+          "0": "padding",
+          "1": "size",
           "2": "medium"
         }
       },
       "large": {
-        "value": "1.5rem",
+        "value": "{spacing.size.lg}",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 1.5
+          "value": "{spacing.size.lg}"
         },
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "large"
         },
         "path": {
-          "0": "size",
-          "1": "padding",
+          "0": "padding",
+          "1": "size",
           "2": "large"
         }
       },
       "xl": {
-        "value": "2rem",
+        "value": "{spacing.size.xl}",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 2
+          "value": "{spacing.size.xl}"
         },
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "xl"
         },
         "path": {
-          "0": "size",
-          "1": "padding",
+          "0": "padding",
+          "1": "size",
           "2": "xl"
         }
       },
       "xxl": {
-        "value": "4rem",
+        "value": "{spacing.size.xxl}",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 4
+          "value": "{spacing.size.xxl}"
         },
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "xxl"
         },
         "path": {
-          "0": "size",
-          "1": "padding",
+          "0": "padding",
+          "1": "size",
           "2": "xxl"
         }
       }

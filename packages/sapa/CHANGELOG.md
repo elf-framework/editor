@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.15
+
+### Patch Changes
+
+- fixed isEqual for hmr
+
 ## 2.1.9
 
 ### Patch Changes

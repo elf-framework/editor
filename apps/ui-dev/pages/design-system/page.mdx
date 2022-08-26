@@ -6,15 +6,18 @@ filename: pages/design/page.mdx
 
 # {title}
 
-ELF 는 UI 를 만들기 위해서 기본적으로 2가지 형태로 디자인을 관리한다. 
+ELF basically manages design in two forms to make UI.
 
-* design tokens 
-* design system 
+* Design Tokens 
+* Design System 
+
+
+# Design Tokens
 
 ## Install 
 
 ```shell
-npm install @elf-framework/design-tokens @elf-framework/design-system
+npm install @elf-framework/design-tokens
 ```
 
 
@@ -46,7 +49,20 @@ background-color: var(--color-gray-0);
 <div class="gap-16">Simple Text</div>
 ```
 
+# Design System
 
+## Install 
+
+```shell
+npm install @elf-framework/design-system
+```
+
+## Import 
+
+### ESM Mode
+```jsx
+import "@elf-framework/design-system/style.css";
+```
 
 
 

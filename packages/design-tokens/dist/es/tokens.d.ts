@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 25 Aug 2022 12:32:28 GMT
+ * Generated on Fri, 26 Aug 2022 12:28:53 GMT
  */
 
 export const ImageLogo : string;
@@ -21,12 +21,28 @@ export const ColorBackgroundWeakWarning : string; // Weak color for the warning 
 export const ColorBackgroundWeakSuccess : string; // Weak color for the success color
 export const ColorBackgroundWeakInfo : string; // Weak color for the info color
 export const ColorBorder : string;
-export const ColorBrandPrimary : string;
-export const ColorBrandSecondary : string;
-export const ColorBrandDanger : string;
-export const ColorBrandWarning : string;
-export const ColorBrandSuccess : string;
-export const ColorBrandInfo : string;
+export const ColorDefault : string;
+export const ColorPrimary : string;
+export const ColorSecondary : string;
+export const ColorSuccess : string;
+export const ColorDanger : string;
+export const ColorWarning : string;
+export const ColorInfo : string;
+export const ColorDisabled : string;
+export const ColorHoverDefault : string;
+export const ColorHoverPrimary : string;
+export const ColorHoverSecondary : string;
+export const ColorHoverSuccess : string;
+export const ColorHoverDanger : string;
+export const ColorHoverWarning : string;
+export const ColorHoverInfo : string;
+export const ColorDownDefault : string;
+export const ColorDownPrimary : string;
+export const ColorDownSecondary : string;
+export const ColorDownSuccess : string;
+export const ColorDownDanger : string;
+export const ColorDownWarning : string;
+export const ColorDownInfo : string;
 export const ColorRed0 : string;
 export const ColorRed1 : string;
 export const ColorRed2 : string;
@@ -119,27 +135,17 @@ export const ColorTeal8 : string;
 export const ColorTeal9 : string;
 export const ColorBlack : string;
 export const ColorWhite : string;
-export const ColorPrimary : string;
-export const ColorSecondary : string;
-export const ColorSuccess : string;
-export const ColorDanger : string;
-export const ColorWarning : string;
-export const ColorInfo : string;
-export const ColorActionPrimary : string;
-export const ColorActionSecondary : string;
-export const ColorActionSuccess : string;
-export const ColorActionDanger : string;
-export const ColorActionWarning : string;
-export const ColorActionInfo : string;
-export const ColorTextDefault : string; // Default text color
-export const ColorTextPrimary : string; // Text color to indicate primary
-export const ColorTextSecondary : string; // Text color to indicate secondary
-export const ColorTextDanger : string; // Text color to indicate danger
-export const ColorTextWarning : string; // Text color to indicate warning
-export const ColorTextSuccess : string; // Text color to indicate success
-export const ColorTextInfo : string; // Text color to indicate info
-export const ColorTextInverse : string; // Text color to indicate inverse
-export const ColorTextLink : string; // Text color to indicate link
+export const ColorTextDefault : string;
+export const ColorTextPrimary : string;
+export const ColorTextSecondary : string;
+export const ColorTextSuccess : string;
+export const ColorTextDanger : string;
+export const ColorTextWarning : string;
+export const ColorTextInfo : string;
+export const ColorTextTitle : string;
+export const ColorTextSubtitle : string;
+export const ColorTextLink : string;
+export const ColorTextDisabled : string;
 export const AlertColorTitleDefault : string;
 export const AlertColorTitlePrimary : string;
 export const AlertColorTitleSecondary : string;
@@ -269,27 +275,41 @@ export const SizeBorderWidthLarge : string;
 export const SizeBorderRadiusSmall : string;
 export const SizeBorderRadiusMedium : string;
 export const SizeBorderRadiusLarge : string;
-export const SizeFont50 : string;
-export const SizeFont75 : string;
-export const SizeFont100 : string; // base size
-export const SizeFont200 : string;
-export const SizeFont300 : string;
-export const SizeFont400 : string;
-export const SizeFont500 : string;
-export const SizeFont600 : string;
-export const SizeFont700 : string;
-export const SizeFont800 : string;
-export const SizeFont900 : string;
-export const SizeFont1000 : string;
-export const SizeFont1100 : string;
-export const SizeFont1200 : string;
-export const SizeFont1300 : string;
-export const SizePaddingXs : string;
-export const SizePaddingSmall : string;
-export const SizePaddingMedium : string;
-export const SizePaddingLarge : string;
-export const SizePaddingXl : string;
-export const SizePaddingXxl : string;
+export const FontSize50 : string;
+export const FontSize75 : string;
+export const FontSize100 : string; // base size
+export const FontSize200 : string;
+export const FontSize300 : string;
+export const FontSize400 : string;
+export const FontSize500 : string;
+export const FontSize600 : string;
+export const FontSize700 : string;
+export const FontSize800 : string;
+export const FontSize900 : string;
+export const FontSize1000 : string;
+export const FontSize1100 : string;
+export const FontSize1200 : string;
+export const FontSize1300 : string;
+export const FontSizeH1 : string;
+export const FontSizeH2 : string;
+export const FontSizeH3 : string;
+export const FontSizeH4 : string;
+export const FontSizeH5 : string;
+export const FontSizeH6 : string;
+export const FontWeightThin : string;
+export const FontWeightLight : string;
+export const FontWeightRegular : string;
+export const FontWeightMedium : string;
+export const FontWeightSemibold : string;
+export const FontWeightBold : string;
+export const FontWeightExtrabold : string;
+export const FontWeightBlack : string;
+export const PaddingSizeXs : string;
+export const PaddingSizeSmall : string;
+export const PaddingSizeMedium : string;
+export const PaddingSizeLarge : string;
+export const PaddingSizeXl : string;
+export const PaddingSizeXxl : string;
 export const TimeDuration100 : string;
 export const TimeDuration200 : string;
 export const TimeDuration300 : string;

@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.1.16
+
+### Patch Changes
+
+- support selectedType for vertical tools
+
 ## 2.1.13
 
 ### Patch Changes
