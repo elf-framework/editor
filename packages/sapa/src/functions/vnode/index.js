@@ -1,4 +1,5 @@
 import { VNodeType } from "../../constant/vnode";
+import { EventMachine } from "../../EventMachine";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
 import { Dom } from "../Dom";
@@ -204,6 +205,10 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
 
       return isTrue;
     } else if (isObject(obj1Value) && isObject(obj2Value)) {
+      if (obj1Value instanceof EventMachine) {
+        return obj1Value === obj2Value;
+      }
+
       return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
     }
 

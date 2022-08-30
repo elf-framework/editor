@@ -1,11 +1,177 @@
+const BASE_URL = "/pages/design-system/";
+
+const GETTING_STARTED_URL = BASE_URL + "getting-started/";
+const FOUNDATION_URL = BASE_URL + "foundation/";
+const COMPONENTS_URL = BASE_URL + "components/";
+
 export default [
-  { link: "/pages/design-system/", title: "Getting Started" },
-  "Design Tokens",
-  { link: "/pages/design-system/color/", title: "Color" },
-  { link: "/pages/design-system/states/", title: "States" },
-  { link: "/pages/design-system/icongraphy/", title: "Icongraphy" },
-  { link: "/pages/design-system/typography/", title: "Typography" },
-  { link: "/pages/design-system/spacing/", title: "Spacing" },
-  { link: "/pages/design-system/layout/", title: "Layout" },
-  "Design System",
+  { link: GETTING_STARTED_URL, title: "Getting Started" },
+  "Foundation",
+  { link: FOUNDATION_URL + "color/", title: "Color" },
+  { link: FOUNDATION_URL + "states/", title: "States" },
+  { link: FOUNDATION_URL + "icongraphy/", title: "Icongraphy" },
+  { link: FOUNDATION_URL + "typography/", title: "Typography" },
+  { link: FOUNDATION_URL + "spacing/", title: "Spacing" },
+  { link: FOUNDATION_URL + "layout/", title: "Layout" },
+  "Components",
+  {
+    title: "Actions",
+    items: [
+      {
+        link: COMPONENTS_URL + "actions/toolbar/",
+        title: "Toolbar",
+      },
+      {
+        link: COMPONENTS_URL + "actions/actiongroup/",
+        title: "Action Group",
+      },
+      {
+        link: COMPONENTS_URL + "actions/menu/",
+        title: "Menu",
+      },
+    ],
+  },
+  {
+    link: COMPONENTS_URL + "containers/",
+    title: "Containers",
+    items: [
+      {
+        link: COMPONENTS_URL + "containers/divider/",
+        title: "Divider",
+      },
+      {
+        link: COMPONENTS_URL + "containers/popover/",
+        title: "Popover",
+      },
+    ],
+  },
+  {
+    link: COMPONENTS_URL + "feedback/",
+    title: "Feed Backs",
+    items: [
+      {
+        link: COMPONENTS_URL + "feedback/alert/",
+        title: "Alert",
+      },
+      {
+        link: COMPONENTS_URL + "feedback/dialog/",
+        title: "Dialog",
+      },
+      {
+        link: COMPONENTS_URL + "feedback/contextual-help/",
+        title: "Contextual Help",
+      },
+      {
+        link: COMPONENTS_URL + "feedback/toast/",
+        title: "Toast",
+      },
+      {
+        link: COMPONENTS_URL + "feedback/tooltip/",
+        title: "Tooltip",
+      },
+    ],
+  },
+  {
+    link: COMPONENTS_URL + "inputs/",
+    title: "Inputs",
+    items: [
+      {
+        link: COMPONENTS_URL + "inputs/checkbox/",
+        title: "Checkbox",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/colorarea/",
+        title: "Color Area",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/field-label/",
+        title: "Field Label",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/help-text/",
+        title: "Help text",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/picker/",
+        title: "Picker",
+      },
+      { link: COMPONENTS_URL + "inputs/radio/", title: "Radio" },
+      {
+        link: COMPONENTS_URL + "inputs/slider/",
+        title: "Slider",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/switch/",
+        title: "Switch",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/textarea/",
+        title: "Text area",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/textfield/",
+        title: "Text field",
+      },
+    ],
+  },
+  {
+    link: COMPONENTS_URL + "navigations/",
+    title: "Navigations",
+    items: [
+      {
+        link: COMPONENTS_URL + "navigations/breadcrumb/",
+        title: "Breadcrumb",
+      },
+      {
+        link: COMPONENTS_URL + "navigations/avatar/",
+        title: "Avatar",
+      },
+      {
+        link: COMPONENTS_URL + "navigations/sidebar/",
+        title: "Sidebar",
+      },
+      {
+        link: COMPONENTS_URL + "navigations/tabs/",
+        title: "Tabs",
+      },
+      {
+        link: COMPONENTS_URL + "navigations/tag/",
+        title: "Tag",
+      },
+      {
+        link: COMPONENTS_URL + "navigations/treeview/",
+        title: "Tree view",
+      },
+    ],
+  },
+  {
+    link: COMPONENTS_URL + "status/",
+    title: "Status",
+    items: [
+      { link: COMPONENTS_URL + "status/badge/", title: "Badge" },
+      {
+        link: COMPONENTS_URL + "status/progress/",
+        title: "Progress",
+      },
+      {
+        link: COMPONENTS_URL + "status/status-light/",
+        title: "Status light",
+      },
+    ],
+  },
+  {
+    link: COMPONENTS_URL + "pattern/",
+    title: "Pattern",
+    items: [
+      { link: COMPONENTS_URL + "pattern/card/", title: "Card" },
+      {
+        link: COMPONENTS_URL + "pattern/form-errors/",
+        title: "Form errors",
+      },
+      {
+        link: COMPONENTS_URL + "pattern/table/",
+        title: "Table",
+      },
+    ],
+  },
 ];

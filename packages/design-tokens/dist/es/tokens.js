@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 26 Aug 2022 12:28:53 GMT
+ * Generated on Tue, 30 Aug 2022 11:57:29 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -29,7 +29,7 @@ export const ColorDanger = "#d9363e";
 export const ColorWarning = "#ffb77c";
 export const ColorInfo = "#abd2ff";
 export const ColorDisabled = "#d9e0e6";
-export const ColorHoverDefault = "#f5f8fa";
+export const ColorHoverDefault = "#f8f8f8";
 export const ColorHoverPrimary = "#0060cc";
 export const ColorHoverSecondary = "#46525c";
 export const ColorHoverSuccess = "#067852";
@@ -113,7 +113,7 @@ export const ColorPink6 = "#d1347a";
 export const ColorPink7 = "#992659";
 export const ColorPink8 = "#782449";
 export const ColorPink9 = "#522338";
-export const ColorGray0 = "#f5f8fa";
+export const ColorGray0 = "#f8f8f8";
 export const ColorGray1 = "#ebf0f5";
 export const ColorGray2 = "#d9e0e6";
 export const ColorGray3 = "#c5ced6";
@@ -189,8 +189,8 @@ export const AlertColorBackgroundWeakWarning = "#ffd8b5"; // Base color for the 
 export const AlertColorBackgroundWeakSuccess = "#d6fff1"; // Base color for the success color
 export const AlertColorBackgroundWeakInfo = "#e2f4ff"; // Base color for the info color
 export const ButtonSelectedBackgroundDefault = "#d9e0e6";
-export const ButtonDisabledBackgroundDefault = "#ebf0f5";
-export const ButtonDisabledTextDefault = "#c5ced6";
+export const ButtonDisabledBackgroundDefault = "#e6e6e6";
+export const ButtonDisabledTextDefault = "#b1b1b1";
 export const ButtonColorBackgroundDefault = "#ffffff";
 export const ButtonColorBackgroundPrimary = "#1273e6";
 export const ButtonColorBackgroundSecondary = "#d9e0e6";
@@ -198,7 +198,7 @@ export const ButtonColorBackgroundSuccess = "#009f6a";
 export const ButtonColorBackgroundInfo = "#abd2ff";
 export const ButtonColorBackgroundWarning = "#ffb77c";
 export const ButtonColorBackgroundDanger = "#d9363e";
-export const ButtonColorBorderDefault = "#2c353d";
+export const ButtonColorBorderDefault = "#c5ced6";
 export const ButtonColorBorderPrimary = "#1273e6";
 export const ButtonColorBorderSecondary = "#d9e0e6";
 export const ButtonColorBorderSuccess = "#009f6a";
@@ -208,13 +208,20 @@ export const ButtonColorBorderDanger = "#d9363e";
 export const ButtonSizePaddingSmall = "5rem 6rem";
 export const ButtonSizePaddingMedium = "8rem 10rem";
 export const ButtonSizePaddingLarge = "14rem 20rem";
-export const DividerColorBorderDefault = "#ebf0f5";
+export const DividerColorBorderDefault = "#818e9a";
 export const DividerColorBorderPrimary = "#1273e6";
 export const DividerColorBorderSecondary = "#d9e0e6";
 export const DividerColorBorderSuccess = "#009f6a";
 export const DividerColorBorderInfo = "#abd2ff";
 export const DividerColorBorderWarning = "#ffb77c";
 export const DividerColorBorderDanger = "#d9363e";
+export const Shadow1 = "0 1px 4px 0 rgba(0, 0, 0, 0.5)";
+export const Shadow2 = "0 4px 8px 0 rgba(0, 0, 0, 0.5)";
+export const Shadow3 = "0 8px 16px 0 rgba(0, 0, 0, 0.5)";
+export const Shadow4 = "0 12px 24px 0 rgba(0, 0, 0, 0.5)";
+export const Shadow5 = "0 16px 32px 0 rgba(0, 0, 0, 0.5)";
+export const ShadowNone = "none";
+export const ShadowColor = "rgba(0, 0, 0, 0.5)";
 export const Column1 = "repeat(1, 1fr)";
 export const Column2 = "repeat(2, 1fr)";
 export const Column3 = "repeat(3, 1fr)";
@@ -320,6 +327,3 @@ export const TimeDuration700 = "350ms";
 export const TimeDuration800 = "400ms";
 export const TimeDuration900 = "450ms";
 export const TimeDuration1000 = "500ms";
-export const WeightFontNormal = 400;
-export const WeightFontSemibold = 600;
-export const WeightFontBold = 700;

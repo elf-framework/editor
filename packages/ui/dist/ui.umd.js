@@ -1,1 +1,4444 @@
-(function(h,t){typeof exports=="object"&&typeof module<"u"?t(exports,require("@elf-framework/sapa"),require("@elf-framework/color")):typeof define=="function"&&define.amd?define(["exports","@elf-framework/sapa","@elf-framework/color"],t):(h=typeof globalThis<"u"?globalThis:h||self,t(h.ui={},h.sapa,h.color))})(this,function(h,t,f){"use strict";var Gt=Object.defineProperty;var Wt=(h,t,f)=>t in h?Gt(h,t,{enumerable:!0,configurable:!0,writable:!0,value:f}):h[t]=f;var E=(h,t,f)=>(Wt(h,typeof t!="symbol"?t+"":t,f),f);const Yt="",F="add/body/first/mousemove",B="add/body/mousemove",P="add/body/mouseup",J="body/move/event",Ce=(i="move")=>t.AFTER(`bodyMouseFirstMove ${i}`),xe=(i="move")=>t.AFTER(`bodyMouseMove ${i}`),Ee=(i="end")=>t.AFTER(`bodyMouseUp ${i}`),ke={width:!0,height:!0,top:!0,left:!0,right:!0,bottom:!0,maxWidth:!0,maxHeight:!0,minWidth:!0,minHeight:!0,margin:!0,marginTop:!0,marginRight:!0,marginBottom:!0,marginLeft:!0,padding:!0,paddingTop:!0,paddingRight:!0,paddingBottom:!0,paddingLeft:!0,border:!0,borderTop:!0,borderRight:!0,borderBottom:!0,borderLeft:!0,borderWidth:!0,borderTopWidth:!0,borderRightWidth:!0,borderBottomWidth:!0,borderLeftWidth:!0,gap:!0};function Se(i,s){return typeof s=="number"&&ke[i]&&(s=s+"px"),s}function g(i,s={}){const e={};return Object.keys(i).forEach(o=>{e[s[o]||o]=Se(o,i[o])}),e}const Ie={borderColor:"--elf--alert-border-color",backgroundColor:"--elf--alert-background-color",selectedBackgroundColor:"--elf--alert-selected-background-color",disabledColor:"--elf--alert-disabled-color",color:"--elf--alert-color",fontSize:"--elf--alert-font-size",fontWeight:"--elf--alert-font-weight",height:"--elf--alert-height",padding:"--elf--alert-padding",borderRadius:"--elf--alert-border-radius"};class H extends t.UIElement{template(){const{type:s="default",title:e="",content:o="",style:l={},closable:n=!1,weak:r=!1,delay:c=0,...a}=this.props,[d,u]=t.useState(c),[m,p]=t.useState(!1);this.state.hideCallback=t.useCallback((b=0)=>{u(b)},[u]);const y={class:t.classnames(["elf--alert",{[s]:!0,weak:r},{hide:m}]),style:{...g(l,Ie),transition:`opacity ${d}ms ease-in-out`,opacity:m?0:1},...a};return t.createElementJsx("div",{...y,onContextMenu:b=>b.preventDefault(),onTransitionEnd:()=>{this.props.onHide&&this.props.onHide(),this.destroy(!0)}},e?t.createElementJsx("div",{class:"elf--alert-title"},e):null,o?t.createElementJsx("div",{class:"elf--alert-content"},o):null,n?t.createElementJsx("div",{class:"elf--alert-close",onClick:()=>{p(!0),d===0&&(this.props.onHide&&this.props.onHide(),this.destroy(!0))}},"\xD7"):null)}hide(s=0){var e;(e=this.state)==null||e.hideCallback(s)}}function Je({content:i=void 0,delay:s=0,title:e=void 0,closable:o=!1,options:l={},style:n={}}){return t.potal(t.createElementJsx(H,{title:e,delay:s,closable:o,style:n},i),l)}const _={},we=/([A-Z])/g,z={alignContent:"alignContent",alignItems:"alignItems",alignSelf:"alignSelf",area:"gridArea",autoColumns:"gridAutoColumns",autoFlow:"gridAutoFlow",autoRows:"gridAutoRows",backgroundColor:"backgroundColor",backgroundImage:"backgroundImage",basis:"flexBasis",border:"border",borderRadius:"borderRadius",bottom:"bottom",boxShadow:"boxShadow",color:"color",column:"gridColumn",columnEnd:"gridColumnEnd",columnGap:"columnGap",columnSpan:"gridColumn",columnStart:"gridColumnStart",direction:"flexDirection",display:"display",flex:"flex",fontFamily:"fontFamily",fontSize:"fontSize",fontStyle:"fontStyle",fontWeight:"fontWeight",gap:"gap",grow:"flexGrow",height:"height",justifyContent:"justifyContent",left:"left",letterSpacing:"letterSpacing",lineHeight:"lineHeight",margin:"margin",marginBlock:"marginBlock",marginBlockEnd:"marginBlockEnd",marginBlockStart:"marginBlockStart",marginBottom:"marginBlockEnd",marginInline:"marginInline",marginInlineEnd:"marginInlineEnd",marginInlineStart:"marginInlineStart",marginLeft:"marginInlineStart",marginRight:"marginInlineEnd",marginTop:"marginBlockStart",maxHeight:"maxHeight",maxWidth:"maxWidth",minHeight:"minHeight",minWidth:"minWidth",objectFit:"objectFit",objectPosition:"objectPosition",opacity:"opacity",order:"order",overflow:"overflow",padding:"padding",paddingBlock:"paddingBlock",paddingBlockEnd:"paddingBlockEnd",paddingBlockStart:"paddingBlockStart",paddingBottom:"paddingBlockEnd",paddingInline:"paddingInline",paddingInlineEnd:"paddingInlineEnd",paddingInlineStart:"paddingInlineStart",paddingLeft:"paddingInlineStart",paddingRight:"paddingInlineEnd",paddingTop:"paddingBlockStart",position:"position",resize:"resize",right:"right",row:"gridRow",rowEnd:"gridRowEnd",rowGap:"rowGap",rowSpan:"gridRow",rowStart:"gridRowStart",shrink:"flexShrink",templateAreas:"gridTemplateAreas",templateColumns:"gridTemplateColumns",templateRows:"gridTemplateRows",textAlign:"textAlign",textDecoration:"textDecoration",textTransform:"textTransform",top:"top",transform:"transform",transformOrigin:"transformOrigin",width:"width",whiteSpace:"whiteSpace",wrap:"flexWrap"},Oe=i=>{if(_[i])return _[i];const s=i.replace(we,"-$1").toLowerCase();return _[i]=s,s};function v(i,s={}){const e={};return Object.keys(s).forEach(o=>{e[o]=i+"-"+Oe(o)}),e}function O(i){const s={},e={};return Object.keys(i).forEach(o=>{z[o]?s[z[o]]=i[o]:e[o]=i[o]}),{style:s,noneStyle:e}}const Me={borderColor:"--elf--button-border-color",backgroundColor:"--elf--button-background-color",selectedBackgroundColor:"--elf--button-selected-background-color",disabledColor:"--elf--button-disabled-color",color:"--elf--button-color",fontSize:"--elf--button-font-size",fontWeight:"--elf--button-font-weight",height:"--elf--button-height",padding:"--elf--button-padding",borderRadius:"--elf--button-border-radius"};class M extends t.UIElement{template(){const{type:s,size:e,disabled:o,selected:l,shape:n,quiet:r=void 0,outline:c=void 0,style:a={},onClick:d,content:u,...m}=this.props,{style:p}=O(m),y={class:t.classnames(["elf--button",{selected:l,outline:c,quiet:r,[s]:!0},{large:e==="large",small:e==="small"},{"elf--button-shape-circle":n==="circle","elf--button-shape-round":n==="round"}]),disabled:o?"disabled":void 0,style:g({...a,...p},Me)};return t.createElementJsx("button",{...y,onClick:d},t.createElementJsx("span",null,u||""))}}const $e=v("--elf--button-group",{backgroundColor:!0,color:!0,height:!0,hoverColor:!0,borderColor:!0,boxShadow:!0});class Te extends t.UIElement{template(){const{disabled:s,style:e={},content:o,...l}=this.props,{style:n}=O(l),r={class:t.classnames(["elf--button-group"]),disabled:s?"disabled":void 0,style:g({...e,...n},$e)};return t.createElementJsx("div",{...r},o)}}const Ue={borderColor:"--elf--link-button-border-color",backgroundColor:"--elf--link-button-background",disabledColor:"--elf--link-button-disabled-color",color:"--elf--link-button-color",fontSize:"--elf--link-button-font-size",fontWeight:"--elf--link-button-font-weight",padding:"--elf--link-button-padding"};class Re extends t.UIElement{template(){const{disabled:s,style:e={},content:o,onClick:l,href:n}=this.props,r={class:t.classnames(["elf--link-button"]),disabled:s?"disabled":void 0,style:{...g(e,Ue)}};return t.createElementJsx("a",{...r,onClick:l,href:n||"#"},t.createElementJsx("span",null,o||""))}}const De={borderColor:"--elf--icon-button-border-color",backgroundColor:"--elf--icon-button-background",disabledColor:"--elf--icon-button-disabled-color",color:"--elf--icon-button-color",fontSize:"--elf--icon-button-font-size",fontWeight:"--elf--icon-button-font-weight",height:"--elf--icon-button-height",padding:"--elf--icon-button-padding",borderRadius:"--elf--icon-button-border-radius"};class G extends t.UIElement{template(){const{type:s,icon:e,content:o="",size:l,disabled:n,shape:r,style:c={}}=this.props,a={class:t.classnames(["elf--icon-button",{primary:s==="primary",secondary:s==="secondary",outline:s==="outline"},{"elf--icon-button-lg":l==="large","elf--icon-button-sm":l==="small"},{"elf--icon-button-shape-circle":r==="circle","elf--icon-button-shape-round":r==="round"}]),disabled:n?"disabled":void 0,style:{...g(c,De)}};return t.createElementJsx("button",{type:"button",...a,onClick:this.props.onClick},e||o||"")}}const Fe={borderColor:"--elf--button-border-color",backgroundColor:"--elf--button-background-color",disabledColor:"--elf--button-disabled-color",color:"--elf--button-color",fontSize:"--elf--button-font-size",fontWeight:"--elf--button-font-weight",height:"--elf--button-height",padding:"--elf--button-padding",borderRadius:"--elf--button-border-radius"};class Be extends t.UIElement{template(){const{type:s,size:e,disabled:o,shape:l,destructive:n=!1,style:r={},onClick:c,content:a,...d}=this.props,{style:u}=O(d),m={class:t.classnames(["elf--button",{primary:s==="primary",secondary:s==="secondary",outline:s==="outline"},n?"destructive":"",{large:e==="large",small:e==="small"},{"elf--button-shape-circle":l==="circle","elf--button-shape-round":l==="round"}]),disabled:o?"disabled":void 0,style:g({...r,...u},Fe)};return t.createElementJsx("button",{...m,onClick:c},t.createElementJsx("span",null,a||""))}}const W={borderColor:"--elf--radio-border-color",backgroundColor:"--elf--radio-background",disabledColor:"--elf--radio-disabled-color",color:"--elf--radio-color",fontSize:"--elf--radio-font-size",fontWeight:"--elf--radio-font-weight",height:"--elf--radio-height",padding:"--elf--radio-padding",borderRadius:"--elf--radio-border-radius"};class Y extends t.UIElement{template(){const{disabled:s,style:e={},value:o,content:l,name:n,checked:r=!1,onChange:c}=this.props,a={class:t.classnames(["elf--radio",{disabled:s}]),style:{...g(e,W)}};return t.createElementJsx("div",{...a},t.createElementJsx("label",null,t.createElementJsx("input",{ref:"$input",type:"radio",value:o,name:n,disabled:s?"disabled":void 0,checked:r?"checked":void 0,onChange:d=>c==null?void 0:c(d,o)}),l))}}class Pe extends t.UIElement{template(){const{disabled:s,style:e={},name:o,value:l,onChange:n,content:r}=this.props,c={class:t.classnames(["elf--radio-group"]),disabled:s?"disabled":void 0,style:{...g(e,W)}};return t.createElementJsx("div",{...c},r.map((a,d)=>t.createElementJsx(Y,{ref:`$${d}`,name:o,value:a.props.value,onChange:(u,m)=>{this.setState({value:m},!1),n(u,m)},checked:a.props.value===l,disabled:s},a.props.content)))}get value(){return this.state.value||this.props.value}set value(s){this.setState({value:s})}}const X={borderColor:"--elf--checkbox-border-color",backgroundColor:"--elf--checkbox-background",disabledColor:"--elf--checkbox-disabled-color",color:"--elf--checkbox-color",fontSize:"--elf--checkbox-font-size",fontWeight:"--elf--checkbox-font-weight",height:"--elf--checkbox-height",padding:"--elf--checkbox-padding",borderRadius:"--elf--checkbox-border-radius"};class q extends t.UIElement{template(){const{disabled:s,style:e={},value:o,content:l,name:n,checked:r=!1,onChange:c}=this.props,a={class:t.classnames(["elf--checkbox",{disabled:s}]),style:{...g(e,X)}};return t.createElementJsx("div",{...a},t.createElementJsx("label",null,t.createElementJsx("input",{ref:"$input",type:"checkbox",value:o,name:n,disabled:s?"disabled":void 0,checked:r?"checked":void 0,onChange:d=>c==null?void 0:c(d,o)}),l))}get checked(){return this.refs.$input.checked()}get value(){return this.props.value}}class _e extends t.UIElement{initState(){return{value:this.props.value||[]}}template(){const{disabled:s,style:e={},value:o,options:l=[],onChange:n}=this.props,r={class:t.classnames(["elf--check-group"]),disabled:s?"disabled":void 0,style:{...g(e,X)}};return t.createElementJsx("div",{...r},l.map((c,a)=>t.createElementJsx(q,{ref:`$${a}`,value:c.value,onChange:d=>{n(d,this.getValues())},checked:o.includes(c.value),disabled:s},c.label)))}getValues(){const s=[];return this.eachChildren(e=>{e.checked&&s.push(e.value)}),s}get disabled(){return this.props.disabled}get value(){return this.getValues()}set value(s=[]){this.setState({values:s})}}const Le={color:"--elf--divider-color",margin:"--elf--divider-margin"};class Ae extends t.UIElement{template(){const{style:s={},type:e="default",margin:o="10px 0"}=this.props,l={class:t.classnames("elf--divider",{[e]:!0}),style:{...g({...s,margin:o},Le)}};return t.createElementJsx("div",{...l},t.createElementJsx("div",{className:"elf--divider-inner"}))}}const w={DIVIDER:"divider",GROUP:"group",MENU:"menu",ITEM:"item",CUSTOM:"custom",LINK:"link"};function Ve(i=[],s){return i.map((e,o)=>{const l=`${e.type||"item"}${o}`;return t.isString(e)&&e==="-"?t.createElementJsx(Z,{ref:l,rootClose:s}):t.isFunction(e)?t.createElementJsx(Q,{ref:`custom${o}`,render:e,rootClose:s}):e.type===w.CUSTOM?t.createElementJsx(Q,{ref:l,...e,rootClose:s}):e.type===w.LINK?t.createElementJsx(Ke,{ref:l,...e,rootClose:s}):e.type===w.GROUP?t.createElementJsx(Ne,{ref:l,...e,rootClose:s}):e.type===w.DIVIDER?t.createElementJsx(Z,{ref:l,...e,rootClose:s}):t.createElementJsx(je,{ref:l,...e,rootClose:s})})}function Z({dashed:i=!1}){return t.createElementJsx("li",{class:"elf--divider",dashed:i})}function Q({render:i,rootClose:s}){return t.createElementJsx("li",{class:"custom"},i==null?void 0:i({rootClose:s}))}function Ke({rootClose:i,title:s,link:e}){return t.createElementJsx("li",{class:"link"},t.createElementJsx("a",{href:e,onClick:i},s))}function Ne({title:i=""}){return t.createElementJsx("li",{class:"section-title"},i)}class je extends t.UIElement{initState(){const{title:s="",hover:e=!1,shortcut:o,icon:l,items:n=[],disabled:r=!1,selectable:c,selected:a,selectedIcon:d="\u2713",closable:u=!0,rootClose:m}=this.props;return{title:s,hover:e,shortcut:o,icon:l,items:n,selectable:c,selected:a,selectedIcon:d,disabled:r,closable:u,rootClose:m}}template(){const{title:s="",shortcut:e,icon:o="\u25B6",items:l=[],hover:n,selected:r,selectable:c,selectedIcon:a,disabled:d,rootClose:u}=this.state,m=l.length>0,p=t.isFunction(r)?r():r;return t.createElementJsx("li",{class:t.classnames({hover:n}),disabled:d?!0:void 0},c?t.createElementJsx("span",{class:"selected-icon"},p?a:void 0):null,s?t.createElementJsx("div",{class:"menu-title"},s):void 0,e?t.createElementJsx("div",{class:"shortcut"},e):void 0,o&&m?t.createElementJsx("div",{class:"icon"},o):void 0,l.length>0?t.createElementJsx(R,{items:l,rootClose:u}):void 0)}checkClickable(){if(this.state.disabled)return!1;const{type:s=w.ITEM,items:e=[]}=this.props;return s===w.ITEM&&e.length===0}[t.CLICK("$el")+t.IF("checkClickable")+t.PREVENT+t.STOP](s){var n,r;const{selectable:e=!1,onClick:o,closable:l=!0}=this.props;e&&this.setSelected(!this.selected),t.isFunction(o)&&o(s,this),l&&((r=(n=this.props).rootClose)==null||r.call(n))}setSelected(s=!1){this.setState({selected:s})}get selected(){return this.state.selected}}const He={left:"--elf--menu-left",top:"--elf--menu-top",backgroundColor:"--elf--menu-background",color:"--elf--menu-color",fontSize:"--elf--menu-font-size",fontWeight:"--elf--menu-font-weight",height:"--elf--menu-height",padding:"--elf--menu-padding",borderRadius:"--elf--menu-border-radius",borderColor:"--elf--menu-border-color",boxShadow:"--elf--menu-box-shadow",width:"--elf--menu-width",maxWidth:"--elf--menu-max-width",sectionTitleColor:"--elf--menu-section-title-color",sectionTitleBackgroundColor:"--elf--menu-section-title-background-color",dividerColor:"--elf--menu-divider-color",directionLeft:"--elf--menu-direction-left",itemPadding:"--elf--menu-item-padding"};class R extends t.UIElement{initState(){return{intersectionLeft:0}}template(){let{style:s={},type:e="menu",x:o=0,y:l=0,direction:n="left",items:r=[],rootClose:c,autoPosition:a=!1}=this.props,d={...s};if(o!==0&&(d={...d,left:o}),l!==0&&(d={...d,top:l}),a){const m=r.findIndex(p=>p.selectable&&p.selected);d={...d,top:-1*(m*24+8)}}const u={"data-direction":n,class:t.classnames("elf--menu",{"elf--menu-contextmenu":e==="contextmenu"}),style:{...g(d,He)}};return t.createElementJsx("menu",{...u,onContextMenu:m=>m.preventDefault()},Ve(r,c))}[t.OBSERVER("intersection")+t.PARAMS({root:document.body})](s=[]){const e=s.find(o=>o.isIntersecting&&o.intersectionRatio<1);if(e){const{left:o,right:l}=e.boundingClientRect,{left:n,right:r}=e.intersectionRect;let c="left";r!=l&&n!=o?c="center":r!=l&&(c="right"),this.$el.attr("data-direction",c)}}}function ee(){return t.createElementJsx("svg",{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},t.createElementJsx("path",{d:"M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"}))}class L extends t.UIElement{template(){const{icon:s,content:e,items:o,menuStyle:l={},disabled:n=void 0,autoPosition:r=!1}=this.props,{isOpen:c}=this.state,a=c&&o;return t.createElementJsx("div",{class:"elf--option-menu",disabled:n},t.createElementJsx("div",{class:"content",onClick:()=>{this.setState({isOpen:!this.state.isOpen})}},s?t.createElementJsx("div",{class:"elf--option-menu-icon"},s):void 0,t.createElementJsx("div",{class:"text"},e),t.createElementJsx("div",{class:"arrow"},t.createElementJsx(ee,null))),a?t.createElementJsx("div",{class:"menu-area"},t.createElementJsx(R,{autoPosition:r,rootClose:()=>{this.close()},style:l,items:o})):void 0)}close(){this.setState({isOpen:!1})}checkClickable(s){return!t.Dom.create(s.target).closest("menu-area")}checkNotInMenu(s){const e=t.Dom.create(s.target).closest("elf--option-menu");return e?this.$el.is(e)===!1:!0}[t.CLICK("document")+t.IF("checkClickable")+t.IF("checkNotInMenu")](){this.close()}}class ze extends t.UIElement{initState(){return{value:this.props.value}}template(){const{disabled:s,style:e={},selectedValue:o,options:l=[],onChange:n}=this.props,r={class:"elf--option-strip",disabled:s?"disabled":void 0,style:{...g(e,{})}};return t.createElementJsx("div",{...r},l.map(c=>t.createElementJsx("button",{type:"button",class:t.classnames("elf--option-strip-item",{selected:o===c.value}),onClick:()=>n==null?void 0:n(c.value)},c.icon)))}}const Ge={position:"--elf--dialog-position",backgroundColor:"--elf--dialog-background",color:"--elf--dialog-color",fontSize:"--elf--dialog-font-size",fontWeight:"--elf--dialog-font-weight",height:"--elf--dialog-height",padding:"--elf--dialog-padding",borderRadius:"--elf--dialog-border-radius",borderColor:"--elf--dialog-border-color",boxShadow:"--elf--dialog-box-shadow",width:"--elf--dialog-width"};class We extends t.UIElement{initState(){const{visible:s=!1,style:e={},center:o}=this.props;return{visible:s,style:e,center:o}}close(){const{onClose:s}=this.props;t.isFunction(s)&&s(this)}ok(){const{onOk:s}=this.props;t.isFunction(s)&&s(this)}cancel(){const{onCancel:s}=this.props;t.isFunction(s)&&s(this)}makeDefaultTools(){const{footer:s,cancelText:e="Cancel",okText:o="OK"}=this.props;return s?"":[t.createElementJsx(M,{onClick:()=>this.cancel()},e),t.createElementJsx(M,{type:"primary",onClick:()=>this.ok()},o)]}template(){const{style:s={},visible:e,center:o}=this.state,l={class:t.classnames("elf--dialog",{visible:e,center:o}),style:{...g(s,Ge)}};return t.createElementJsx("div",{...l},t.createElementJsx("div",{class:"elf--dialog-title"},t.createElementJsx("div",{class:"elf--dialog-title-text"},"Dialog"),t.createElementJsx("div",{class:"elf--dialog-title-tools",ref:"$tools"},this.props.tools||void 0),t.createElementJsx("div",{class:"elf--dialog-title-close",ref:"$close"},"\xD7")),t.createElementJsx("div",{class:"elf--dialog-content"},t.createElementJsx("div",{class:"elf--dialog-text"},this.props.content||""),t.createElementJsx("div",{class:"elf--dialog-content-tools"},this.props.footer?this.props.footer:this.makeDefaultTools())))}[t.CLICK("$close")](){this.close()}}class $ extends t.UIElement{template(){const{style:s={},class:e="",content:o,stack:l,wrap:n=!1}=this.props,r={class:t.classnames("elf--flex",e,{stack:l,wrap:n}),style:{...g(s,{})}};return t.createElementJsx("div",{...r},o)}}class Ye extends ${template(){const{style:s={},content:e}=this.props;return t.createElementJsx($,{stack:!0,style:s},e)}}const te={MENU:"menu",ITEM:"item",CUSTOM:"custom"};function Xe(i=[]){return i.map((s,e)=>{const o=`${s.type}-${e}`;return s.type===te.CUSTOM?t.createElementJsx(se,{ref:o,...s}):s.type===te.MENU?t.createElementJsx(oe,{ref:o,...s}):t.createElementJsx(A,{ref:o,...s})})}class A extends t.UIElement{initialize(){super.initialize();const s=this.props.events||[];s.length&&s.forEach(e=>{this.on(e,()=>{this.refresh()})})}initState(){const{title:s="",icon:e,selected:o,selectedType:l}=this.props;return{title:s,icon:e,selected:o,selectedType:l}}template(){const{title:s="",icon:e}=this.state;return t.createElementJsx("div",{class:t.classnames("elf--tools-item",{selected:this.state.selected?!0:void 0}),"data-selected-type":this.state.selectedType,onClick:this.props.onClick},t.createElementJsx("button",{type:"button"},t.createElementJsx($,{style:{columnGap:4}},[e?t.createElementJsx("span",{class:"icon"},t.isFunction(e)?e():e):void 0,s?t.createElementJsx("span",{class:"menu-title"},t.isFunction(s)?s():s):void 0].filter(Boolean))))}setSelected(s=!1){this.setState({selected:s})}get selected(){return t.isFunction(this.state.selected)?this.state.selected():this.state.selected}set selected(s){this.setSelected(s)}}class se extends A{template(){var s,e;return t.createElementJsx("div",{class:"elf--tools-item custom"},(e=(s=this.props).render)==null?void 0:e.call(s))}}class oe extends A{initState(){const{title:s="",icon:e,selected:o,disabled:l,opened:n,items:r,direction:c,menuStyle:a}=this.props;return{title:s,icon:e,selected:o,opened:n,items:r,direction:c,disabled:l,menuStyle:a,rootClose:this.close.bind(this)}}template(){const{title:s="",icon:e,disabled:o,selected:l,items:n=[],opened:r=!1,direction:c="left",menuStyle:a}=this.state,d=n.length>0,u=l?t.isFunction(l)?l():l:void 0;return t.createElementJsx("div",{class:t.classnames("elf--tools-item",{selected:u,"has-items":d}),disabled:o},t.createElementJsx("button",{type:"button"},t.createElementJsx($,{style:{columnGap:4}},[e?t.createElementJsx("span",{class:"icon"},t.isFunction(e)?e():e):void 0,s?t.createElementJsx("span",{class:"menu-title"},t.isFunction(s)?s():s):void 0].filter(Boolean)),d?t.createElementJsx("span",{class:t.classnames("arrow",{opened:r})},t.createElementJsx(ee,null)):void 0),r&&!o?t.createElementJsx("div",{class:"menu-area",style:{backgroundColor:"yellow"}},t.createElementJsx("div",{class:"background","data-direction":c}),t.createElementJsx("div",{class:"arrow"}),t.createElementJsx(R,{ref:"$menu",items:n,direction:c,rootClose:this.state.rootClose,style:{...a||{},top:"calc(100% + 5px)"}})):void 0)}runCallback(s,e){t.isFunction(s)&&s(e,this)}open(){this.state.opened||this.setState({rect:this.$el.rect(),opened:!0})}close(){this.state.opened&&this.setState({opened:!1})}toggle(){this.state.opened?this.close():(this.setState({rect:this.$el.rect()},!1),this.open())}checkClickable(s){return!t.Dom.create(s.target).closest("menu-area")}checkTriggerClick(){const{trigger:s="click",onClick:e}=this.props;return s==="click"||s==="hover"&&t.isFunction(e)}checkTriggerOver(){return this.props.trigger==="hover"}[t.POINTEROVER("$el")+t.IF("checkTriggerOver")](){this.open()}checkNotInMenu(s){const e=t.Dom.create(s.target).closest("elf--tools-item");return e?this.$el.is(e)===!1:!0}[t.POINTERLEAVE("$el")+t.IF("checkTriggerOver")](){this.close()}[t.CLICK("document")+t.IF("checkClickable")+t.IF("checkNotInMenu")](){this.close()}[t.CLICK("$el")+t.IF("checkClickable")+t.IF("checkTriggerClick")](s){t.Dom.create(s.target).hasClass("arrow")?(this.toggle(),this.state.opened?this.runCallback(this.props.onOpen,s):this.runCallback(this.props.onClose,s),this.runCallback(this.props.onClick,s)):(this.close(),this.runCallback(this.props.onClick,s))}}const qe=v("--elf--tools",{backgroundColor:!0,color:!0,height:!0});class le extends t.UIElement{template(){const{style:s={},vertical:e=!1}=this.props,o={class:t.classnames("elf--tools",{vertical:e}),style:{...g(s,qe)}};return t.createElementJsx("div",{...o,onContextMenu:l=>l.preventDefault()},Xe(this.props.items))}}function Ze(i=[]){return i.map((s,e)=>{const o=`${s.type||"item"}${e}`;return t.createElementJsx(ne,{ref:o,...s})})}class ne extends t.UIElement{template(){const{items:s,style:e}=this.props;return t.createElementJsx("div",{class:"elf--toolbar-item"},t.createElementJsx(le,{ref:"$tools",items:s,style:e}))}}const Qe=v("--elf--toolbar",{backgroundColor:!0,color:!0,height:!0,align:!0});class et extends t.UIElement{template(){const{style:s={},align:e,items:o=[]}=this.props,l={class:t.classnames("elf--toolbar",{[e]:!0}),style:{...g(s,Qe)}};return t.createElementJsx("div",{...l,onContextMenu:n=>n.preventDefault()},Ze(o))}}const tt={backgroundColor:"--elf--notification-background",color:"--elf--notification-color",height:"--elf--notification-height",hoverColor:"--elf--notification-hover-color",borderColor:"--elf--notification-border-color",boxShadow:"--elf--notification-box-shadow",toolsBorderColor:"--elf--notification-tools-border-color",toolsBorderRadius:"--elf--notification-tools-border-radius"};class st extends t.UIElement{template(){const{style:s={},icon:e,content:o,tools:l,direction:n="top-left"}=this.props,r={class:t.classnames("elf--notification",`elf--notification-direction-${n}`),style:{...g(s,tt)}};return t.createElementJsx("div",{...r,onContextMenu:c=>c.preventDefault()},e?t.createElementJsx("div",{class:"elf--notification-icon"},e):void 0,t.createElementJsx("div",{class:"elf--notification-content"},t.createElementJsx("div",{class:"elf--notification-text"},o)),t.createElementJsx("div",{class:"elf--notification-tools"},l||[]))}}const ot=v("--elf--visual-bell",{backgroundColor:!0,color:!0,height:!0,hoverColor:!0,borderColor:!0,boxShadow:!0,toolsBorderColor:!0,toolsBorderRadius:!0,hgap:!0,vgap:!0});class re extends t.UIElement{template(){const{style:s={},content:e,delay:o=0,direction:l="bottom"}=this.props,[n,r]=t.useState(o),[c,a]=t.useState(!1);this.state.hideCallback=t.useCallback((u=0)=>{r(u)},[r]);const d={class:t.classnames("elf--visual-bell",`elf--visual-bell-direction-${l}`,{hide:c}),style:{...g(s,ot),transition:`opacity ${n}ms ease-in-out`,opacity:c?0:1}};return t.useEffect(()=>{n>0&&(c||this.props.onShow&&this.props.onShow(),setTimeout(()=>{c||a(!0)},n))},[n,c]),t.createElementJsx("div",{class:"elf--visual-bell",...d,onContextMenu:u=>u.preventDefault(),onTransitionEnd:()=>{this.props.onHide&&this.props.onHide(),this.destroy(!0)}},t.createElementJsx("div",{class:"elf--visual-bell-content"},t.createElementJsx("div",{class:"elf--visual-bell-text"},e)),t.createElementJsx("div",{class:"elf--visual-bell-tools"},this.props.tools||[]))}hide(s=0){var e;(e=this.state)==null||e.hideCallback(s)}}function lt({content:i="",delay:s=0,direction:e="bottom",tools:o=[],options:l={},style:n={}}){return t.potal(t.createElementJsx(re,{delay:s,direction:e,tools:o,style:n},i),l)}const nt=v("--elf--tooltip",{backgroundColor:!0,color:!0,height:!0,hoverColor:!0,borderColor:!0,boxShadow:!0,toolsBorderColor:!0,toolsBorderRadius:!0,hgap:!0,vgap:!0,delay:!0});class rt extends t.UIElement{initState(){return{trigger:this.props.trigger||"hover",show:this.props.show||!1}}template(){const{style:s={},message:e="",content:o,position:l="bottom"}=this.props,{show:n}=this.state,r={class:t.classnames("elf--tooltip",`elf--tooltip-position-${l}`),style:{...g(s,nt)}};return t.createElementJsx("div",{class:"elf--tooltip",...r},t.createElementJsx("div",{class:"elf--tooltip-content"},o),n||this.props.show?t.createElementJsx("div",{class:"elf--tooltip-message"},t.createElementJsx("div",{class:"arrow"}),t.createElementJsx("div",{class:"elf--toolltip-message-content"},e)):void 0)}open(){this.setState({show:!0})}close(){this.setState({show:!1})}toggle(){this.setState({show:!this.state.show})}checkClickable(s){return!t.Dom.create(s.target).closest("elf--tooltip")}checkTriggerClick(){return this.state.trigger==="click"}checkTriggerOver(){return this.state.trigger==="hover"}[t.POINTERENTER("$el")+t.IF("checkTriggerOver")](){this.open()}checkNotInTooltip(s){const e=t.Dom.create(s.target).closest("elf--tooltip");return e?this.$el.is(e)===!1:!0}[t.POINTERLEAVE("$el")+t.IF("checkTriggerOver")](){this.close()}[t.CLICK("$el")+t.IF("checkClickable")+t.IF("checkTriggerClick")](){this.toggle()}}const it={backgroundColor:"--elf--panel-background",color:"--elf--panel-color",height:"--elf--panel-height",hoverColor:"--elf--panel-hover-color",borderColor:"--elf--panel-border-color",boxShadow:"--elf--panel-box-shadow",padding:"--elf--panel-padding",borderRadius:"--elf--panel-border-radius"};class ct extends t.UIElement{template(){const{style:s={},content:e,theme:o,title:l="",tools:n=[],mode:r,footer:c}=this.props,a={class:t.classnames("elf--panel",`elf--panel-mode-${r}`),"data-theme":o,style:{...g(s,it)}};return t.createElementJsx("div",{...a},l?t.createElementJsx("div",{class:"elf--panel-title"},t.createElementJsx("div",{class:"elf--panel-title-text"},l),n?t.createElementJsx("div",{class:"elf--panel-title-tools"},n||[]):void 0):void 0,t.createElementJsx("div",{class:"elf--panel-content"},e),c?t.createElementJsx("div",{class:"elf--panel-footer"},c):void 0)}}const at=v("--elf--tabstrip",{backgroundColor:!0,color:!0,height:!0,width:!0,hoverColor:!0,borderColor:!0,hgap:!0,vgap:!0,delay:!0});class ie extends t.UIElement{template(){var r;const{style:s={},items:e=[],fitted:o,align:l="left"}=this.props,n={class:t.classnames("elf--tabstrip",{"is-fitted":o}),style:{...g(s,at)}};return t.createElementJsx("div",{...n},t.createElementJsx("div",{class:t.classnames("elf--tabstrip-content",{[`align-${l}`]:!0})},e.map(c=>{const a=!!c.selected,d=!!c.disabled,u=c.selectedStyle||{},m=c.style||{};return t.createElementJsx("div",{class:t.classnames("elf--tabstrip-item",{selected:a,disabled:d}),style:a?u:m},t.createElementJsx("div",{onClick:c.onClick},c.title))})),(r=this.props.tools)!=null&&r.length?t.createElementJsx("div",{class:"elf--tabstrip-tools"},this.props.tools.map(c=>t.createElementJsx("div",{class:"elf--tabstrip-tool"},c))):void 0)}}const dt=v("--elf--tab",{backgroundColor:!0,color:!0,height:!0,width:!0,hoverColor:!0,borderColor:!0});function ce({selected:i,content:s}){return t.createElementJsx("div",{class:t.classnames("elf--tab-content-item",{selected:i})},s)}class ut extends t.UIElement{initState(){return{activeKey:this.props.activeKey}}changeActiveKey(s){const{onChange:e}=this.props;this.setState({activeKey:s}),t.isFunction(e)&&e(s)}template(){const{style:s={},content:e,full:o,fitted:l,align:n="left"}=this.props,{activeKey:r}=this.state,c={class:t.classnames("elf--tab",{full:o}),style:g(s,dt)};return t.createElementJsx("div",{...c},t.createElementJsx("div",{class:"elf--tab-header"},t.createElementJsx(ie,{fitted:l,align:n,items:e.map(a=>{const{title:d,key:u,onClick:m,disabled:p,style:y,selectedStyle:b}=a.props;return{title:d,style:y,disabled:p,selectedStyle:b,selected:u===r,onClick:()=>{this.changeActiveKey(u),m&&m()}}})})),t.createElementJsx("div",{class:"elf--tab-body"},e.map(a=>{const{key:d,content:u,disabled:m}=a.props,p=d===r;return t.createElementJsx(ce,{key:d,selected:p,disabled:m},u)})))}}class ht extends t.UIElement{template(){const{style:s={},content:e,wrap:o=!1}=this.props,l={class:t.classnames("elf--layout",{stack:this.props.stack,wrap:o}),style:{...g(s,{backgroundColor:"--elf--layout-background-color",gap:"--elf--layout-gap"})}};return t.createElementJsx("div",{...l},e)}}function ae(i){if(typeof i=="number"?i=Array.from({length:i},()=>1):Array.isArray(i)===!1&&(i=[i]),i.length!==0)return i.map(s=>t.isNumber(s)?`${s}fr`:s).join(" ")}class D extends t.UIElement{template(){const{class:s="",style:e={},columns:o=[],rows:l=[],gap:n,columnGap:r,rowGap:c,content:a,...d}=this.props,{style:u,noneStyle:m}=O(d),p={class:t.classnames("elf--grid",s),style:{gridTemplateColumns:ae(o),gridTemplateRows:ae(l),gap:n,columnGap:r,rowGap:c,...g({...e,...u},{})},...m};return t.createElementJsx("div",{...p},a)}}const mt=v("--elf--input-editor",{borderColor:!0,backgroundColor:!0,disabledColor:!0,color:!0,fontSize:!0,fontWeight:!0,height:!0,padding:!0,borderRadius:!0,placeholderColor:!0,emptyColor:!0});class de extends t.UIElement{initState(){const{style:s={},type:e="text",autoFocus:o=!1,focused:l,hover:n=!1,value:r,placeholder:c,disabled:a}=this.props;return{style:s,type:e,autoFocus:o,hover:n||!1,focused:l||!1,placeholder:c,value:r,disabled:a}}template(){const{icon:s,tools:e}=this.props,{style:o={},type:l="text",focused:n=!1,hover:r=!1,value:c,placeholder:a,disabled:d}=this.state,u={class:t.classnames(["elf--input-editor",{focused:n,hover:r,disabled:d,icon:s}]),style:{...g(o,mt)}},m={onInput:this.props.onInput,onChange:this.props.onChange,onKeyDown:this.props.onKeyDown,onKeyUp:this.props.onKeyUp,onKeyPress:this.props.onKeyPress,onSelect:this.props.onSelect,onPaste:this.props.onPaste,onCut:this.props.onCut,onCopy:this.props.onCopy},p={type:l,disabled:d,placeholder:a||"",value:c||""};return t.createElementJsx("div",{...u},s?t.createElementJsx("div",{class:"elf--input-editor-icon"},s):void 0,t.createElementJsx("div",{class:"elf--input-area"},t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{ref:"$input",...p,...m}))),e||void 0)}onMounted(){this.state.autoFocus&&setTimeout(()=>{this.refs.$input.focus(),this.refs.$input.select()},10)}runCallback(s,e){t.isFunction(s)&&s(e,this)}[t.FOCUSIN("$input")](s){this.setState({focused:!0}),this.runCallback(this.props.onFocus,s)}[t.FOCUSOUT("$input")](s){this.setState({focused:!1}),this.runCallback(this.props.onBlur,s)}get value(){return this.refs.$input.value}set value(s){this.refs.$input.value=s}get selectedValue(){return document.getSelection().toString()}}function V({color:i}){const s=f.parse(i),{r:e,g:o,b:l}=s;return t.createElementJsx("div",{class:"elf--color-view"},t.createElementJsx("div",{class:"elf--color-view-color",style:{backgroundColor:f.format({r:e,g:o,b:l},"rgb")}}),t.createElementJsx("div",{class:"elf--color-view-opacity-pattern"},t.createElementJsx("div",{class:"elf--color-view-opacity",style:{backgroundColor:f.format(s,"rgb")}})))}const ft=v("--elf--input-paint",{borderColor:!0,backgroundColor:!0,disabledColor:!0,color:!0,fontSize:!0,fontWeight:!0,height:!0,padding:!0,borderRadius:!0,placeholderColor:!0,emptyColor:!0});class ue extends t.UIElement{constructor(){super(...arguments);E(this,"keyup",e=>{switch(e.preventDefault(),e.key){case"ArrowUp":this.increaseOpacity(e);break;case"ArrowDown":this.decreaseOpacity(e);break}})}initState(){const{style:e={},autoFocus:o=!1,focused:l,hover:n=!1,value:r,placeholder:c,disabled:a,hasOpacity:d=!0}=this.props,u=f.parse(r);return{style:e,autoFocus:o,hover:n||!1,focused:l||!1,placeholder:c,value:r,parsedColor:u,disabled:a,hasOpacity:d}}template(){const{icon:e,hideColorView:o=!1}=this.props,{style:l={},focused:n=!1,hover:r=!1,value:c,placeholder:a,disabled:d,parsedColor:u}=this.state,m={class:t.classnames(["elf--input-paint",{focused:n,hover:r,disabled:d,icon:e}]),style:{...g(l,ft)}},p={onInput:this.props.onInput,onChange:this.props.onChange,onKeyDown:this.props.onKeyDown,onKeyUp:this.props.onKeyUp,onKeyPress:this.props.onKeyPress,onSelect:this.props.onSelect,onPaste:this.props.onPaste,onCut:this.props.onCut,onCopy:this.props.onCopy},{r:y,g:b,b:C}=u,x={disabled:d,placeholder:a||"",value:f.format({r:y,g:b,b:C},"hex")};return t.createElementJsx("div",{...m},o?void 0:t.createElementJsx("div",{class:"elf--input-paint-icon"},t.createElementJsx(V,{color:c})),t.createElementJsx("div",{class:"elf--input-area"},t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color",ref:"$input",...x,...p}))),this.state.hasOpacity&&t.createElementJsx("div",{class:"elf--input-opacity"},t.createElementJsx("input",{class:"opacity",value:`${u.a*100}%`,onKeyUp:this.keyup})))}updateOpacity(e){this.setState({parsedColor:{...this.state.parsedColor,a:this.state.parsedColor.a+e}})}increaseOpacity(){this.updateOpacity(.01)}decreaseOpacity(){this.updateOpacity(-.01)}onMounted(){super.onMounted(),this.state.autoFocus&&setTimeout(()=>{this.refs.$input.focus(),this.refs.$input.select()},10)}runCallback(e,o){t.isFunction(e)&&e(o,this)}[t.CLICK("$el .elf--input-paint-icon")](e){var o,l;(l=(o=this.props).onClickColorView)==null||l.call(o,e)}[t.FOCUSIN("$el input")](e){this.setState({focused:!0}),e.target.select(),this.runCallback(this.props.onFocus,e)}[t.FOCUSOUT("$el input")](e){this.setState({focused:!1}),this.runCallback(this.props.onBlur,e)}get value(){return this.refs.$input.value}set value(e){this.refs.$input.value=e}get selectedValue(){return document.getSelection().toString()}}const pt=v("--elf--input-paint",{borderColor:!0,backgroundColor:!0,disabledColor:!0,color:!0,fontSize:!0,fontWeight:!0,height:!0,padding:!0,borderRadius:!0,placeholderColor:!0,emptyColor:!0});class he extends t.UIElement{constructor(){super(...arguments);E(this,"keydownColor",e=>{const o=Math.floor(e.target.selectionStart/2)*2;let l="";switch(o<2?l="r":o<4?l="g":l="b",e.key){case"ArrowUp":e.preventDefault(),this.increaseColor(l),e.target.setSelectionRange(o,o+2);break;case"ArrowDown":e.preventDefault(),this.decreaseColor(l),e.target.setSelectionRange(o,o+2);break}});E(this,"keyupColor",e=>{if(!(e.key==="ArrowUp"||e.key==="ArrowDown")){if(e.target.value.length===3||e.target.value.length===6){const o=f.parse("#"+e.target.value);o.type==="hex"&&this.isInvalidColor(o)===!1&&this.updateFullColor(o)}}});E(this,"keydown",e=>{switch(e.preventDefault(),e.stopPropagation(),e.key){case"ArrowUp":this.increaseOpacity(e),e.target.select();break;case"ArrowDown":this.decreaseOpacity(e),e.target.select();break}})}initState(){const{style:e={},autoFocus:o=!1,focused:l,hover:n=!1,value:r,placeholder:c,disabled:a,hasOpacity:d=!0}=this.props,u=f.parse(r);return{style:e,autoFocus:o,hover:n||!1,focused:l||!1,placeholder:c,value:r,parsedColor:u,disabled:a,hasOpacity:d}}template(){const{icon:e,value:o}=this.props,{style:l={},focused:n=!1,hover:r=!1,placeholder:c,disabled:a}=this.state,{r:d,g:u,b:m,a:p}=f.parse(o),y={class:t.classnames(["elf--input-paint",{focused:n,hover:r,disabled:a,icon:e,invalid:this.isInvalidColor({r:d,g:u,b:m,a:p})}]),style:{...g(l,pt)}},b={onInput:this.props.onInput,onChange:this.props.onChange,onKeyDown:this.props.onKeyDown,onKeyUp:this.props.onKeyUp,onKeyPress:this.props.onKeyPress,onSelect:this.props.onSelect,onPaste:this.props.onPaste,onCut:this.props.onCut,onCopy:this.props.onCopy},C={disabled:a,placeholder:c||"",value:f.format({r:d,g:u,b:m},"hex").replace("#","")};return this.setState({parsedColor:{r:d,g:u,b:m,a:p}},!1),t.createElementJsx("div",{...y},t.createElementJsx("div",{class:"elf--input-area"},t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color",type:"text","data-type":"hex",maxlength:6,...C,...b,onKeyDown:this.keydownColor,onKeyUp:this.keyupColor}))),this.state.hasOpacity&&t.createElementJsx("div",{class:"elf--input-opacity"},t.createElementJsx("input",{class:"opacity",value:`${Math.round(p*100*100)/100}%`,onKeyDown:this.keydown})))}updateOpacity(e){this.setState({parsedColor:{...this.state.parsedColor,a:Math.max(0,Math.min(1,Math.round((this.state.parsedColor.a+e)*100)/100))}},!1),this.runCallback(this.props.onChange)}updateFullColor(e){this.setState({parsedColor:e},!1),this.runCallback(this.props.onChange)}updateColor(e,o){const l=Math.max(0,Math.min(255,this.state.parsedColor[e]+o));this.state.parsedColor[e]!==l&&(this.setState({parsedColor:{...this.state.parsedColor,[e]:Math.max(0,Math.min(255,this.state.parsedColor[e]+o))}},!1),this.runCallback(this.props.onChange))}increaseColor(e){this.updateColor(e,1)}decreaseColor(e){this.updateColor(e,-1)}increaseOpacity(){this.updateOpacity(.01)}decreaseOpacity(){this.updateOpacity(-.01)}isInvalidColor(e){return isNaN(e.r)||isNaN(e.g)||isNaN(e.b)||isNaN(e.a)||t.isUndefined(e.r)||t.isUndefined(e.g)||t.isUndefined(e.b)||t.isUndefined(e.a)}onMounted(){this.state.autoFocus&&setTimeout(()=>{const e=this.$el.$("input[data-type='hex']");e.focus(),e.select()},10)}runCallback(e,o){t.isFunction(e)&&e(this.value,this)}[t.CLICK("$el .elf--input-paint-icon")](e){var o,l;(l=(o=this.props).onClickColorView)==null||l.call(o,e)}[t.FOCUSIN("$el input")](e){this.setState({focused:!0}),e.target.select(),this.runCallback(this.props.onFocus,e)}[t.FOCUSOUT("$el input")](e){this.setState({focused:!1}),this.runCallback(this.props.onBlur,e)}get value(){const{parsedColor:e}=this.state,{r:o,g:l,b:n,a:r}=e;return f.format({r:o,g:l,b:n,a:r},"hex")}set value(e){this.refs.$input.value=e}get selectedValue(){return document.getSelection().toString()}}const gt=v("--elf--input-paint",{borderColor:!0,backgroundColor:!0,disabledColor:!0,color:!0,fontSize:!0,fontWeight:!0,height:!0,padding:!0,borderRadius:!0,placeholderColor:!0,emptyColor:!0});class me extends t.UIElement{constructor(){super(...arguments);E(this,"keydownColor",e=>{switch(e.key){case"ArrowUp":e.preventDefault(),this.increaseColor(e.target.getAttribute("data-type")),e.target.select();break;case"ArrowDown":e.preventDefault(),this.decreaseColor(e.target.getAttribute("data-type")),e.target.select();break}});E(this,"keydown",e=>{switch(e.key){case"ArrowUp":e.preventDefault(),this.increaseOpacity(e),e.target.select();break;case"ArrowDown":e.preventDefault(),this.decreaseOpacity(e),e.target.select();break;case"Tab":e.preventDefault();var o=this.$el.$("input[data-type='r']");o.focus(),o.select();break}})}initState(){const{style:e={},autoFocus:o=!1,focused:l,hover:n=!1,placeholder:r,disabled:c,hasOpacity:a=!0}=this.props;return{style:e,autoFocus:o,hover:n||!1,focused:l||!1,placeholder:r,disabled:c,hasOpacity:a}}template(){const{icon:e,value:o}=this.props,{style:l={},focused:n=!1,hover:r=!1,placeholder:c,disabled:a}=this.state,d={class:t.classnames(["elf--input-paint",{focused:n,hover:r,disabled:a,icon:e}]),style:{...g(l,gt)}},{r:u,g:m,b:p,a:y}=f.parse(o),b={disabled:a,placeholder:c||"",min:0,max:255};return this.setState({parsedColor:{r:u,g:m,b:p,a:y}},!1),t.createElementJsx("div",{...d},t.createElementJsx("div",{class:"elf--input-area"},t.createElementJsx(D,{columns:3},t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color","data-type":"r",tabIndex:1,value:u,...b,onKeyDown:this.keydownColor})),t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color","data-type":"g",tabIndex:2,value:m,...b,onKeyDown:this.keydownColor})),t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color","data-type":"b",tabIndex:3,value:p,...b,onKeyDown:this.keydownColor})))),this.state.hasOpacity&&t.createElementJsx("div",{class:"elf--input-opacity"},t.createElementJsx("input",{type:"text",tabIndex:4,class:"opacity",value:`${Math.round(y*100*100)/100}%`,onKeyDown:this.keydown})))}updateOpacity(e){this.setState({parsedColor:{...this.state.parsedColor,a:Math.max(0,Math.min(1,Math.round((this.state.parsedColor.a+e)*100)/100))}},!1),this.runCallback(this.props.onChange)}updateColor(e,o){this.setState({parsedColor:{...this.state.parsedColor,[e]:Math.max(0,Math.min(255,this.state.parsedColor[e]+o))}},!1),this.runCallback(this.props.onChange)}increaseColor(e){this.updateColor(e,1)}decreaseColor(e){this.updateColor(e,-1)}increaseOpacity(){this.updateOpacity(.01)}decreaseOpacity(){this.updateOpacity(-.01)}onMounted(){this.state.autoFocus&&setTimeout(()=>{const e=this.$el.$("input[data-type='r']");e.focus(),e.select()},10)}runCallback(e){t.isFunction(e)&&e(this.value,this)}[t.CLICK("$el .elf--input-paint-icon")](e){var o,l;(l=(o=this.props).onClickColorView)==null||l.call(o,e)}[t.FOCUSIN("$el input")](e){this.setState({focused:!0}),e.target.select(),this.runCallback(this.props.onFocus,e)}[t.FOCUSOUT("$el input")](e){this.setState({focused:!1}),this.runCallback(this.props.onBlur,e)}get value(){const{parsedColor:e}=this.state,{r:o,g:l,b:n,a:r}=e;return f.format({r:o,g:l,b:n,a:r},"rgb")}set value(e){this.refs.$input.value=e}get selectedValue(){return document.getSelection().toString()}}const bt=v("--elf--input-editor",{borderColor:!0,backgroundColor:!0,disabledColor:!0,color:!0,fontSize:!0,fontWeight:!0,height:!0,padding:!0,borderRadius:!0,placeholderColor:!0,emptyColor:!0});class yt extends t.UIElement{initState(){const{style:s={},focused:e,hover:o=!1,value:l,placeholder:n,disabled:r}=this.props;return{style:s,hover:o||!1,focused:e||!1,placeholder:n,value:l,disabled:r}}template(){const{icon:s}=this.props,{style:e={},focused:o=!1,hover:l=!1,value:n,placeholder:r,disabled:c}=this.state,a={class:t.classnames(["elf--input-editor","multiline",{focused:o,hover:l,disabled:c,icon:s}]),style:{...g(e,bt)}},d={onInput:this.props.onInput,onChange:this.props.onChange,onKeyDown:this.props.onKeyDown,onKeyUp:this.props.onKeyUp,onKeyPress:this.props.onKeyPress,onSelect:this.props.onSelect,onPaste:this.props.onPaste,onCut:this.props.onCut,onCopy:this.props.onCopy},u={disabled:c,placeholder:r,value:n};return t.createElementJsx("div",{...a},t.createElementJsx("div",{class:"elf--input-area"},t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("textarea",{ref:"$input",...u,...d},n))))}onMounted(){this.state.autoFocus&&setTimeout(()=>{this.refs.$input.focus(),this.refs.$input.select()},10)}runCallback(s,e){t.isFunction(s)&&s(e,this)}[t.FOCUSIN("$input")](s){this.setState({focused:!0}),this.runCallback(this.props.onFocus,s)}[t.FOCUSOUT("$input")](s){this.setState({focused:!1}),this.runCallback(this.props.onBlur,s)}get value(){return this.refs.$input.value}set value(s){this.refs.$input.value=s}}const vt=v("--elf--virtual-scroll",{backgroundColor:!0,color:!0,height:!0,hoverColor:!0,borderColor:!0,boxShadow:!0,toolsBorderColor:!0,toolsBorderRadius:!0,hgap:!0,vgap:!0});class Ct extends t.UIElement{initState(){return{scrollHeight:32}}template(){const{style:s={},itemHeight:e=32,items:o=[]}=this.props,l=o.length,n={class:t.classnames("elf--virtual-scroll",this.props.class),style:{...g(s,vt),"--elf--virtual-scroll-item-width":"100%","--elf--virtual-scroll-item-height":`${e}px`,"--elf--virtual-scroll-item-count":l,"--elf--virtual-scroll-panel-height":`${l*e}px`}};return t.createElementJsx("div",{...n},t.createElementJsx("div",{class:"elf--virtual-scroll-panel"},t.createElementJsx("div",{class:"elf--virtual-scroll-content-area","data-scrolling":this.state.scrolling?"true":"false"},this.makeItemView())))}refreshSize(){var e;const s=(e=this.$el)==null?void 0:e.offsetRect();s&&this.setState({width:s.width,height:s.height},!1)}onMounted(){window.setTimeout(()=>{const s=this.$el.offsetRect();this.setState({width:s.width,height:s.height})},20)}filterItems(s,e,o){return s.filter((l,n)=>n>=e&&n<=o)}makeItemView(){const{itemHeight:s,items:e,overscanRowCount:o=10}=this.props,{width:l,height:n,isRenderingItems:r}=this.state;if(!r){if(!l)return[];const c=e.length*s,a=Math.floor(n/s),d=e.length;this.setState({scrollHeight:c,itemCount:a},!1);const u=Math.max(Math.floor((this.state.scrollTop||0)/32)-o,0),m=Math.min(Math.floor(u+a+2*o),d-1);this.state.renderItems=this.filterItems(e,u,m)}return this.state.renderItems.map((c,a)=>{var d,u;return(u=(d=this.props).itemRenderer)==null?void 0:u.call(d,c,c.index*s,a,e,this)})}checkScrollTop(){const{scrollTop:s,height:e,scrollHeight:o}=this.state;return this.setState({scrollTop:this.$el.scrollTop},!1),s>o-e?(this.setState({scrolling:!1}),!1):!0}[t.SCROLL("$el")+t.IF("checkScrollTop")](){this.trigger("reloadItems")}[t.SUBSCRIBE_SELF("checkScrolling")+t.DEBOUNCE(100)](){this.setState({scrolling:!1})}[t.SUBSCRIBE_SELF("reloadItems")+t.FRAME](){this.setState({scrolling:!0}),this.trigger("checkScrolling")}refresh(){this.setState({isRenderingItems:!1},!1),this.render()}refreshItems(){this.setState({isRenderingItems:!0},!1),this.render()}scrollIntoView(s){const{itemHeight:e}=this.props,o=s*e;this.$el.scrollTop=o,this.setState({scrollTop:this.$el.scrollTop},!1),this.refreshItems()}}class xt extends t.UIElement{template(){const{top:s,id:e,topLevel:o,group:l,selected:n,icon:r,content:c,lock:a,visible:d,lockIcon:u,lockOpenIcon:m,visibleIcon:p,isComponent:y=!1,number:b=10,onClick:C,onDoubleClick:x,onContextMenu:I,onMouseDown:S,onMouseUp:K,onMouseMove:T,onMouseEnter:N,onMouseLeave:j}=this.props;return t.createElementJsx("div",{class:"elf--virtual-scroll-item elf--layer",style:{"--elf--virtual-scroll-item-top":`${s}px`},"data-id":e,"data-number":b},t.createElementJsx("div",{class:"container","data-top-level":o?"true":void 0,"data-hidden":d?void 0:"true","data-component":y?"true":void 0,"data-selected":n?"true":void 0},t.createElementJsx("div",{class:"group"},l),r&&t.createElementJsx("div",{class:"icon"},r),t.createElementJsx("div",{class:"text",ref:"$text",onClick:C,onDoubleClick:x,onContextMenu:I,onMouseDown:S,onMouseUp:K,onMouseMove:T,onMouseEnter:N,onMouseLeave:j},c),t.createElementJsx("div",{class:"tools"},t.createElementJsx("div",{class:"lock"},a?u:m),t.createElementJsx("div",{class:"visible"},p))))}}const Et=v("--elf--input-paint",{borderColor:!0,backgroundColor:!0,disabledColor:!0,color:!0,fontSize:!0,fontWeight:!0,height:!0,padding:!0,borderRadius:!0,placeholderColor:!0,emptyColor:!0});class kt extends t.UIElement{constructor(){super(...arguments);E(this,"keydownColor",e=>{switch(e.key){case"ArrowUp":e.preventDefault(),this.increaseColor(e.target.getAttribute("data-type")),e.target.select();break;case"ArrowDown":e.preventDefault(),this.decreaseColor(e.target.getAttribute("data-type")),e.target.select();break}});E(this,"keydown",e=>{switch(e.key){case"ArrowUp":e.preventDefault(),this.increaseOpacity(e),e.target.select();break;case"ArrowDown":e.preventDefault(),this.decreaseOpacity(e),e.target.select();break;case"Tab":e.preventDefault();const o=this.$el.$("input[data-type='h']");o.focus(),o.select();break}})}initState(){const{style:e={},autoFocus:o=!1,focused:l,hover:n=!1,placeholder:r,disabled:c,hasOpacity:a=!0}=this.props;return{style:e,autoFocus:o,hover:n||!1,focused:l||!1,placeholder:r,disabled:c,hasOpacity:a}}template(){const{icon:e,value:o}=this.props,{style:l={},focused:n=!1,hover:r=!1,placeholder:c,disabled:a}=this.state,{r:d,g:u,b:m,a:p}=f.parse(o),{h:y,s:b,l:C}=f.RGBtoHSL(d,u,m),x={class:t.classnames(["elf--input-paint",{focused:n,hover:r,disabled:a,icon:e}]),style:{...g(l,Et)}},I={disabled:a,placeholder:c||"",min:0,max:255};return this.setState({parsedColor:{h:y,s:b,l:C,a:p}},!1),t.createElementJsx("div",{...x},t.createElementJsx("div",{class:"elf--input-area"},t.createElementJsx(D,{columns:3},t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color",type:"text",tabIndex:1,"data-type":"h",value:y,...I,onKeyDown:this.keydownColor})),t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color",type:"text",tabIndex:2,"data-type":"s",value:b,...I,onKeyDown:this.keydownColor})),t.createElementJsx("div",{class:"elf--input-item"},t.createElementJsx("input",{class:"color",type:"text",tabIndex:3,"data-type":"l",value:C,...I,onKeyDown:this.keydownColor})))),this.state.hasOpacity&&t.createElementJsx("div",{class:"elf--input-opacity"},t.createElementJsx("input",{type:"text",tabIndex:4,class:"opacity",value:`${Math.round(p*100*100)/100}%`,onKeyDown:this.keydown})))}updateOpacity(e){this.setState({parsedColor:{...this.state.parsedColor,a:Math.max(0,Math.min(1,Math.round((this.state.parsedColor.a+e)*100)/100))}}),this.runCallback(this.props.onChange)}updateColor(e,o){const l={};e==="h"?l[e]=Math.max(0,Math.min(360,this.state.parsedColor[e]+o)):e==="s"?l[e]=Math.max(0,Math.min(100,this.state.parsedColor[e]+o)):e==="l"&&(l[e]=Math.max(0,Math.min(100,this.state.parsedColor[e]+o))),this.setState({parsedColor:{...this.state.parsedColor,...l}},!1),this.runCallback(this.props.onChange)}increaseColor(e){this.updateColor(e,1)}decreaseColor(e){this.updateColor(e,-1)}increaseOpacity(){this.updateOpacity(.01)}decreaseOpacity(){this.updateOpacity(-.01)}onMounted(){this.state.autoFocus&&setTimeout(()=>{const e=this.$el.$("input[data-type='h']");e.focus(),e.select()},10)}runCallback(e){t.isFunction(e)&&e(this.value,this)}[t.CLICK("$el .elf--input-paint-icon")](e){var o,l;(l=(o=this.props).onClickColorView)==null||l.call(o,e)}[t.FOCUSIN("$el input")](e){this.setState({focused:!0}),e.target.select(),this.runCallback(this.props.onFocus,e)}[t.FOCUSOUT("$el input")](e){this.setState({focused:!1}),this.runCallback(this.props.onBlur,e)}get value(){const{parsedColor:e}=this.state,{h:o,s:l,l:n,a:r}=e;return f.format({h:o,s:l,l:n,a:r},"hsl")}set value(e){this.refs.$input.value=e}get selectedValue(){return document.getSelection().toString()}}const St=["hex","rgb","hsl"];function It(i){return t.createElementJsx("div",{class:"eye-dropper"},t.createElementJsx(M,{onClick:async()=>{const s=new window.EyeDropper;try{const e=await s.open();t.isFunction(i.onChange)&&i.onChange(e.sRGBHex)}catch(e){console.warn(e)}}},t.createElementJsx("svg",{width:"15",height:"15",viewBox:"0 0 15 15",fill:"none",xmlns:"http://www.w3.org/2000/svg"},t.createElementJsx("path",{d:"M13.4473 0.6C12.6473 -0.2 11.4473 -0.2 10.6473 0.6L7.84725 3.4L7.04725 2.7C6.64725 2.3 6.04725 2.3 5.64725 2.7C5.24725 3.1 5.24725 3.7 5.64725 4.1L6.34725 4.8L0.547255 10.6C0.147255 11 -0.452745 12.5 0.547255 13.5C1.54725 14.5 3.04725 13.9 3.44725 13.5L9.24725 7.7L9.94725 8.4C10.3473 8.8 10.9473 8.8 11.3473 8.4C11.7473 8 11.7473 7.4 11.3473 7L10.6473 6.3L13.4473 3.5C14.2473 2.6 14.2473 1.4 13.4473 0.6ZM2.54725 12.5H1.54725V11.5L7.34725 5.7L8.34725 6.7C8.24725 6.7 2.54725 12.5 2.54725 12.5Z",fill:"black","fill-opacity":"0.8"}))))}class fe extends t.UIElement{template(){const{value:s,containerClass:e,slideClass:o}=this.props;return t.createElementJsx("div",{class:`${e} slide-view`},t.createElementJsx("div",{class:`${o} slide-bg`},t.createElementJsx("div",{class:"drag-pointer",style:{"--drag-point-left":s}})))}[t.POINTERSTART("$el .slide-bg")](){this.setState({clicked:!0,rect:this.$el.$(".slide-bg").rect()},!1)}checkClicked(){return this.state.clicked}[t.POINTERMOVE("document")+t.IF("checkClicked")](s){const{onChange:e}=this.props,{x:o,width:l}=this.state.rect,n=o,r=n+l,a=(Math.min(Math.max(n,s.clientX),r)-n)/l;t.isFunction(e)&&e(a)}[t.POINTEREND("document")+t.IF("checkClicked")](){this.setState({clicked:!1},!1)}}class Jt extends t.UIElement{template(){const{value:s,onChange:e}=this.props;return t.createElementJsx(fe,{value:s,containerClass:"hue-slide",slideClass:"hue-slide-bg",onChange:e})}}class wt extends t.UIElement{template(){const{value:s,onChange:e}=this.props;return t.createElementJsx(fe,{value:s,containerClass:"opacity-slide",slideClass:"opacity-slide-bg",onChange:e})}}class Ot extends t.UIElement{initState(){const{type:s}=this.props;return{type:s}}makeTypedColorInput(){const{r:s,g:e,b:o,a:l,onChange:n}=this.props,{type:r}=this.state,{h:c,s:a,l:d}=f.RGBtoHSL(s,e,o);switch(r){case"hex":return t.createElementJsx("div",null,t.createElementJsx(he,{autoFocus:!0,value:f.format({r:s,g:e,b:o,a:l},"hex"),onChange:n}));case"rgb":return t.createElementJsx("div",null,t.createElementJsx(me,{autoFocus:!0,value:f.format({r:s,g:e,b:o,a:l},"rgb"),onChange:n}));case"hsl":return t.createElementJsx("div",null,t.createElementJsx(kt,{autoFocus:!0,value:f.format({h:c,s:a,l:d,a:l},"hsl"),onChange:n}))}}template(){const{type:s}=this.state,e=this.makeTypedColorInput();return t.createElementJsx("div",{class:"color-input"},t.createElementJsx(L,{autoPosition:!0,menuStyle:{width:80,itemPadding:"10px"},items:St.map(o=>({title:o.toUpperCase(),selectable:!0,closable:!0,selected:s===o,onClick:()=>{this.setState({type:o})}}))},s.toUpperCase()),e)}}class Mt extends t.UIElement{constructor(){super(...arguments);E(this,"updateOpacity",e=>{this.setState({a:e}),this.changeColor()});E(this,"updateHueColor",e=>{e=e*360;const{s:o,v:l,a:n}=this.state,{r,g:c,b:a}=f.HSVtoRGB(e,o,l);this.setState({color:f.format({r,g:c,b:a},"rgb"),r,g:c,b:a,a:n,hueColor:f.checkHueColor(e/360),h:e,s:o,v:l}),this.changeColor()});E(this,"updateColor",e=>{const o=f.parse(e),{r:l,g:n,b:r,a:c}=o,{h:a,s:d,v:u}=f.RGBtoHSV(l,n,r);this.setState({color:f.format({r:l,g:n,b:r},"rgb"),r:l,g:n,b:r,a:c,hueColor:f.checkHueColor(a/360),h:a,s:d,v:u}),this.changeColor()})}initState(){const{color:e}=this.props,o=f.parse(e),{r:l,g:n,b:r,a:c}=o,{h:a,s:d,v:u}=f.RGBtoHSV(l,n,r);return{type:o.type,color:f.format({r:l,g:n,b:r},"rgb"),width:240,height:240,r:l,g:n,b:r,a:c,hueColor:f.checkHueColor(a),h:a,s:d,v:u}}template(){const{type:e,h:o,s:l,v:n,width:r,height:c,r:a,g:d,b:u,a:m,hueColor:p,color:y}=this.state,b=r*l,C=c*(1-n);return t.createElementJsx("div",{class:"elf--color-mixer"},t.createElementJsx("div",{class:"elf--color-area",style:{backgroundColor:p}},t.createElementJsx("div",{class:"saturation"},t.createElementJsx("div",{class:"value"},t.createElementJsx("div",{class:"drag-pointer",style:{backgroundColor:y,left:b,top:C}})))),t.createElementJsx("div",{class:"elf--color-slide-area"},window.EyeDropper?t.createElementJsx(It,{onChange:this.updateColor}):void 0,t.createElementJsx("div",{class:"slide"},t.createElementJsx(Jt,{value:o/360,onChange:this.updateHueColor}),t.createElementJsx(wt,{r:a,g:d,b:u,value:m,onChange:this.updateOpacity}))),t.createElementJsx("div",{class:"elf--color-input-area"},t.createElementJsx(Ot,{type:e,h:o,s:l,v:n,r:a,g:d,b:u,a:m,onChange:this.updateColor})))}formatedColor(){const{type:e,r:o,g:l,b:n,h:r,s:c,v:a,a:d}=this.state;let u="";switch(e){case"hex":case"rgb":u=f.format({r:o,g:l,b:n,a:d},e);break;case"hsl":var{h:m,s:p,l:y}=f.HSVtoHSL(r,c,a);u=f.format({h:m,s:p,l:y,a:d},e);break;case"hsv":u=f.format({h:r,s:c,v:a,a:d},e);break}return u}changeColor(){const{onChange:e}=this.props;let o=this.formatedColor();t.isFunction(e)&&e(o)}lastChangeColor(){const{onLastChange:e}=this.props;let o=this.formatedColor();t.isFunction(e)&&e(o)}async openEyeDropper(){const e=new window.EyeDropper;try{const o=await e.open();this.updateColor(o.sRGBHex)}catch(o){console.warn(o)}}[t.POINTERSTART("$el .elf--color-area")](e){this.setState({clicked:!0,rect:this.$el.$(".elf--color-area").rect(),clientX:e.clientX,clientY:e.clientY},!1)}checkClicked(){return this.state.clicked}[t.POINTERMOVE("document")+t.IF("checkClicked")](e){const{x:o,y:l,width:n,height:r}=this.state.rect,c=o,a=c+n,d=l,u=d+r,m=Math.min(Math.max(c,e.clientX),a),p=Math.min(Math.max(d,e.clientY),u),y=(m-c)/n,b=1-(p-d)/r;this.updateSaturationValue(y,b)}[t.POINTEREND("document")+t.IF("checkClicked")](e){this.setState({clicked:!1},!1),!(this.state.clientX===e.clientX&&this.state.clientY===e.clientY)&&this.lastChangeColor()}updateSaturationValue(e,o){const{r:l,g:n,b:r}=f.HSVtoRGB(this.state.h,e,o);this.setState({r:l,g:n,b:r,s:e,v:o,color:f.format({r:l,g:n,b:r},"rgb")}),this.changeColor()}}class $t extends t.UIElement{initState(){return{selectedValue:this.props.selectedValue}}makeItems(){const{items:s}=this.props,{selectedValue:e}=this.state;return s.map(o=>({title:o.title,selectable:!0,closable:!0,selected:o.value===e,onClick:()=>{this.setState({selectedValue:o.value})}}))}template(){const{items:s}=this.props,{selectedValue:e}=this.state,o=s.find(l=>l.value===e)||s[0]||{title:""};return t.createElementJsx("div",{class:"elf--color-grid"},t.createElementJsx("div",{class:"elf--color-grid-header"},t.createElementJsx(L,{items:this.makeItems()},o.title)),t.createElementJsx("div",{class:"elf--color-grid-list"},o.colors.map(l=>t.createElementJsx("div",{class:"elf--color-grid-item",onClick:()=>this.selectColor(l)},t.createElementJsx(V,{color:l})))))}selectColor(s){this.setState({selectedColor:s},!1),this.props.onSelect&&this.props.onSelect(s)}}class pe extends t.UIElement{template(){const{as:s="div",id:e,class:o="",style:l={},content:n,...r}=this.props,{style:c,noneStyle:a}=O(r),d={class:t.classnames(o),id:e,style:g({...l,...c},{}),...a};return Object.keys(d).forEach(u=>{d[u]===void 0&&delete d[u]}),t.createElementJsx(s,d,n)}}const Tt={boxSizing:"border-box"};function Ut({item:{value:i}}){return t.createElementJsx(de,{type:"text",value:i,width:"100%",display:"block",style:Tt})}function Rt({item:{value:i,key:s}}){return t.createElementJsx(pe,{as:"div",key:s},i)}function Dt({item:{gap:i,rowGap:s,columnGap:e,style:o,columns:l=[],items:n=[]},root:r}){return t.createElementJsx(D,{columns:l,gap:i,rowGap:s,columnGap:e,style:o},n.map((c,a)=>r.makeEditorItem(c,a)))}const Xt="";function Ft({item:i}){return t.createElementJsx(M,{onClick:i.onClick},i.title)}function Bt({item:{value:i,autoFocus:s}}){return t.createElementJsx(ue,{value:i,autoFocus:s})}function Pt({item:i}){return t.createElementJsx(G,{onChange:i.onChange},i.icon)}const _t=v("--elf--data-editor",{backgroundColor:!0,color:!0,height:!0,width:!0,hoverColor:!0,borderColor:!0}),Lt={title:Rt,text:Ut,grid:Dt,button:Ft,color:Bt,"toggle-button":Pt};class At extends t.UIElement{initState(){const{data:s=()=>({}),items:e=()=>[],plugins:o={}}=this.props,l=s();return{plugins:{...Lt,...o},data:l,items:e(l)}}makeEditorItem(s,e){const{plugins:o}=this.state;if(typeof s=="string"){const l=o.title;return t.createElementJsx(l,{key:e,item:{value:s}})}else{const l=o[s.type];if(l)return t.createElementJsx(l,{key:s.key||e,item:s,root:this})}}template(){const{style:s={}}=this.props,{items:e}=this.state,o={class:t.classnames("elf--data-editor"),style:g(s,_t)};return t.createElementJsx("div",{...o},e.map((l,n)=>{const r=typeof l=="string";return t.createElementJsx("div",{class:t.classnames("elf--data-editor-item",{string:r})},l.title?t.createElementJsx("div",{class:"title"},l.title):null,t.createElementJsx("div",{class:"editor"},this.makeEditorItem(l,n)))}))}}const ge={x:0,y:0},Vt={x:Number.MAX_SAFE_INTEGER,y:Number.MAX_SAFE_INTEGER},be=0;function ye(i,s){return Math.sqrt(Math.pow(s.x-i.x,2)+Math.pow(s.y-i.y,2))}class Kt extends t.UIElement{initialize(){super.initialize(),this.__initBodyMoves()}__initBodyMoves(){this.__firstMove=new Set,this.__moves=new Set,this.__ends=new Set,this.__modifyBodyMoveSecond(be)}__modifyBodyMoveSecond(s=be){const e=s===0?this.__loopBodyMoves.bind(this):t.debounce(this.__loopBodyMoves.bind(this),s);this.__funcBodyMoves=e}__loopBodyMoves(){var s=this.pos,e=this.$store.get(J),o=this.lastPos||Vt,l=!(o.x===s.x&&o.y===s.y);if(l&&this.__firstMove.size){let n=0;this.__firstMove.forEach(r=>{const c=ye(s,r.xy);if(Math.abs(c)>0){var a=s.x-r.xy.x,d=s.y-r.xy.y;r.func.call(r.context,a,d,"move",e.pressure),n++}}),n>0&&this.__firstMove.clear()}l&&this.__moves.size&&(this.__moves.forEach(n=>{const r=ye(s,n.xy);if(Math.abs(r)>.5){var c=s.x-n.xy.x,a=s.y-n.xy.y;n.func.call(n.context,c,a,"move",e.pressure)}}),this.lastPos=s),window.requestAnimationFrame(this.__funcBodyMoves)}__removeBodyMoves(){var s=this.lastPos,e=this.$store.get(J);s&&this.__ends.forEach(o=>{o.func.call(o.context,s.x-o.xy.x,s.y-o.xy.y,"end",e.pressure)}),this.__firstMove.clear(),this.__moves.clear(),this.__ends.clear()}[t.SUBSCRIBE_ALL(F)](s,e,o){this.__firstMove.add({func:s,context:e,xy:o})}[t.SUBSCRIBE_ALL(B)](s,e,o){this.__moves.add({func:s,context:e,xy:o})}[t.SUBSCRIBE_ALL(P)](s,e,o){this.__ends.add({func:s,context:e,xy:o})}[t.POINTERSTART()](s){var e=s.xy||ge;this.$store.init(J,s),this.pos=e}[t.POINTERMOVE()](s){var e=s.xy||ge;this.$store.init(J,s),this.pos=e,this.__requestId||(this.__requestId=window.requestAnimationFrame(this.__funcBodyMoves))}[t.POINTEREND()](s){this.$store.set(J,s),this.__removeBodyMoves(),window.cancelAnimationFrame(this.__requestId),this.__requestId=null}}class Nt extends t.UIElement{bodyMouseFirstMove(s,e){this[e]&&this.emit(F,this[e],this,s.xy)}bodyMouseMove(s,e){this[e]&&this.emit(B,this[e],this,s.xy)}bodyMouseUp(s,e){this[e]&&this.emit(P,this[e],this,s.xy)}}class ve extends t.UIElement{template(){const s={class:"elf--app-layout-resize-bar"};return t.createElementJsx("div",{...s})}[t.POINTERSTART()](s){this.startXY=s.xy}isMoved(s){if(!this.startXY)return!1;const{xy:e}=s,o=e.x-this.startXY.x,l=e.y-this.startXY.y;return o!==0||l!==0}[t.POINTERMOVE("document")+t.IF("isMoved")](s){const{xy:e}=s,o=e.x-this.startXY.x,l=e.y-this.startXY.y;t.isFunction(this.props.onResize)&&this.props.onResize(o,l)}[t.POINTEREND("document")+t.IF("isMoved")](s){const{xy:e}=s,o=e.x-this.startXY.x,l=e.y-this.startXY.y;t.isFunction(this.props.onResizeEnd)&&this.props.onResizeEnd(o,l),this.startXY=void 0}}function jt({direction:i,content:s,width:e="auto",height:o="auto",maxWidth:l=500,minWidth:n=0,maxHeight:r=500,minHeight:c=0,resizable:a=!1,style:d,onResize:u,onResizeEnd:m}){const[p,y]=t.useState(e),[b,C]=t.useState(o),[x,I]=t.useState(p),[S,K]=t.useState(b),T=t.useCallback(U=>{if(i==="left"||i==="right"){const k=Math.min(Math.max(n,U),l);I(k),x!=k&&t.isFunction(u)&&u(k,S)}else if(i==="top"||i==="bottom"){const k=Math.min(Math.max(c,U),r);K(k),S!=k&&t.isFunction(u)&&u(x,k)}},[x,S]),N=t.useCallback((U,k)=>{T(i==="left"||i==="right"?i==="left"?p+U:p-U:i==="top"?b+k:b-k)},[i,p,b,T]),j=t.useCallback(()=>{y(x),C(S),t.isFunction(m)&&m(x,S)},[x,S,y,C]);return t.createElementJsx("div",{class:"elf--app-layout-item","data-direction":i,"data-resizable":a,style:{...d,width:x,height:S}},s,a?t.createElementJsx(ve,{onResize:N,onResizeEnd:j}):void 0)}const Ht=v("--elf--toolbar",{backgroundColor:!0,color:!0,height:!0,align:!0});class zt extends t.UIElement{getItem(s){return this.props.content.find(e=>e.props.direction===s)}template(){const{style:s={}}=this.props,e={class:"elf--app-layout",style:g(s,Ht)},o=this.getItem("top"),l=this.getItem("bottom"),n=this.getItem("left"),r=this.getItem("right"),c=this.getItem("center");return t.createElementJsx("div",{...e},o||void 0,t.createElementJsx("div",{class:"elf--app-layout-body"},n||void 0,c||void 0,r||void 0),l||void 0)}}h.ADD_BODY_FIRST_MOUSEMOVE=F,h.ADD_BODY_MOUSEMOVE=B,h.ADD_BODY_MOUSEUP=P,h.Alert=H,h.AppLayout=zt,h.AppLayoutItem=jt,h.AppResizeBar=ve,h.BODY_MOVE_EVENT=J,h.Button=M,h.ButtonGroup=Te,h.Checkbox=q,h.CheckboxGroup=_e,h.ColorGrid=$t,h.ColorMixer=Mt,h.ColorView=V,h.DataEditor=At,h.Dialog=We,h.Divider=Ae,h.END=Ee,h.EventControlPanel=Nt,h.EventPanel=Kt,h.FIRSTMOVE=Ce,h.Flex=$,h.Grid=D,h.HexColorEditor=he,h.IconButton=G,h.InputEditor=de,h.InputPaint=ue,h.Layer=xt,h.Layout=ht,h.LinkButton=Re,h.MOVE=xe,h.Menu=R,h.Notification=st,h.OptionMenu=L,h.OptionStrip=ze,h.Panel=ct,h.RGBColorEditor=me,h.Radio=Y,h.RadioGroup=Pe,h.Tab=ut,h.TabItem=ce,h.TabStrip=ie,h.TextAreaEditor=yt,h.ToggleButton=Be,h.Toolbar=et,h.ToolbarItem=ne,h.Tools=le,h.ToolsCustomItem=se,h.ToolsMenuItem=oe,h.Tooltip=rt,h.VBox=Ye,h.View=pe,h.VirtualScroll=Ct,h.VisualBell=re,h.alert=Je,h.bell=lt,Object.defineProperties(h,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("@elf-framework/sapa"), require("@elf-framework/color")) : typeof define === "function" && define.amd ? define(["exports", "@elf-framework/sapa", "@elf-framework/color"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global.sapa, global.color));
+})(this, function(exports2, sapa, color) {
+  "use strict";
+  const style$1 = "";
+  const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
+  const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
+  const ADD_BODY_MOUSEUP = "add/body/mouseup";
+  const BODY_MOVE_EVENT = "body/move/event";
+  const FIRSTMOVE = (method = "move") => {
+    return sapa.AFTER(`bodyMouseFirstMove ${method}`);
+  };
+  const MOVE = (method = "move") => {
+    return sapa.AFTER(`bodyMouseMove ${method}`);
+  };
+  const END = (method = "end") => {
+    return sapa.AFTER(`bodyMouseUp ${method}`);
+  };
+  const NumberStyleKeys = {
+    width: true,
+    height: true,
+    top: true,
+    left: true,
+    right: true,
+    bottom: true,
+    maxWidth: true,
+    maxHeight: true,
+    minWidth: true,
+    minHeight: true,
+    margin: true,
+    marginTop: true,
+    marginRight: true,
+    marginBottom: true,
+    marginLeft: true,
+    padding: true,
+    paddingTop: true,
+    paddingRight: true,
+    paddingBottom: true,
+    paddingLeft: true,
+    border: true,
+    borderTop: true,
+    borderRight: true,
+    borderBottom: true,
+    borderLeft: true,
+    borderWidth: true,
+    borderTopWidth: true,
+    borderRightWidth: true,
+    borderBottomWidth: true,
+    borderLeftWidth: true,
+    gap: true
+  };
+  function styleMap(key, value) {
+    if (typeof value === "number") {
+      if (NumberStyleKeys[key]) {
+        value = value + "px";
+      }
+    }
+    return value;
+  }
+  function propertyMap(styles, mapper = {}) {
+    const styleObj = {};
+    Object.keys(styles).forEach((key) => {
+      styleObj[mapper[key] || key] = styleMap(key, styles[key]);
+    });
+    return styleObj;
+  }
+  const cssProperties$s = {
+    borderColor: "--elf--alert-border-color",
+    backgroundColor: "--elf--alert-background-color",
+    selectedBackgroundColor: "--elf--alert-selected-background-color",
+    disabledColor: "--elf--alert-disabled-color",
+    color: "--elf--alert-color",
+    fontSize: "--elf--alert-font-size",
+    fontWeight: "--elf--alert-font-weight",
+    height: "--elf--alert-height",
+    padding: "--elf--alert-padding",
+    borderRadius: "--elf--alert-border-radius"
+  };
+  class Alert extends sapa.UIElement {
+    template() {
+      const {
+        type = "default",
+        title = "",
+        content = "",
+        style: style2 = {},
+        closable = false,
+        weak = false,
+        delay = 0,
+        ...extrProps
+      } = this.props;
+      const [localDelay, setLocalDelay] = sapa.useState(delay);
+      const [hide, setHide] = sapa.useState(false);
+      this.state.hideCallback = sapa.useCallback(
+        (hideDelay = 0) => {
+          setLocalDelay(hideDelay);
+        },
+        [setLocalDelay]
+      );
+      const styleObject = {
+        class: sapa.classnames(["elf--alert", { [type]: true, weak }, { hide }]),
+        style: {
+          ...propertyMap(style2, cssProperties$s),
+          ...{
+            transition: `opacity ${localDelay}ms ease-in-out`,
+            opacity: hide ? 0 : 1
+          }
+        },
+        ...extrProps
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault(),
+        onTransitionEnd: () => {
+          this.props.onHide && this.props.onHide();
+          this.destroy(true);
+        }
+      }, title ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--alert-title"
+      }, title) : null, content ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--alert-content"
+      }, content) : null, closable ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--alert-close",
+        onClick: () => {
+          setHide(true);
+          if (localDelay === 0) {
+            this.props.onHide && this.props.onHide();
+            this.destroy(true);
+          }
+        }
+      }, "\xD7") : null);
+    }
+    hide(hideDelay = 0) {
+      var _a;
+      (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+    }
+  }
+  function alert({
+    content = void 0,
+    delay = 0,
+    title = void 0,
+    closable = false,
+    options = {},
+    style: style2 = {}
+  }) {
+    return sapa.potal(
+      /* @__PURE__ */ sapa.createElementJsx(Alert, {
+        title,
+        delay,
+        closable,
+        style: style2
+      }, content),
+      options
+    );
+  }
+  const styleKeys = {};
+  const uppercasePattern = /([A-Z])/g;
+  const ComponentPropsToStylePropsMap = {
+    alignContent: "alignContent",
+    alignItems: "alignItems",
+    alignSelf: "alignSelf",
+    area: "gridArea",
+    autoColumns: "gridAutoColumns",
+    autoFlow: "gridAutoFlow",
+    autoRows: "gridAutoRows",
+    backgroundColor: "backgroundColor",
+    backgroundImage: "backgroundImage",
+    basis: "flexBasis",
+    border: "border",
+    borderRadius: "borderRadius",
+    bottom: "bottom",
+    boxShadow: "boxShadow",
+    color: "color",
+    column: "gridColumn",
+    columnEnd: "gridColumnEnd",
+    columnGap: "columnGap",
+    columnSpan: "gridColumn",
+    columnStart: "gridColumnStart",
+    direction: "flexDirection",
+    display: "display",
+    flex: "flex",
+    fontFamily: "fontFamily",
+    fontSize: "fontSize",
+    fontStyle: "fontStyle",
+    fontWeight: "fontWeight",
+    gap: "gap",
+    grow: "flexGrow",
+    height: "height",
+    justifyContent: "justifyContent",
+    left: "left",
+    letterSpacing: "letterSpacing",
+    lineHeight: "lineHeight",
+    margin: "margin",
+    marginBlock: "marginBlock",
+    marginBlockEnd: "marginBlockEnd",
+    marginBlockStart: "marginBlockStart",
+    marginBottom: "marginBlockEnd",
+    marginInline: "marginInline",
+    marginInlineEnd: "marginInlineEnd",
+    marginInlineStart: "marginInlineStart",
+    marginLeft: "marginInlineStart",
+    marginRight: "marginInlineEnd",
+    marginTop: "marginBlockStart",
+    maxHeight: "maxHeight",
+    maxWidth: "maxWidth",
+    minHeight: "minHeight",
+    minWidth: "minWidth",
+    objectFit: "objectFit",
+    objectPosition: "objectPosition",
+    opacity: "opacity",
+    order: "order",
+    overflow: "overflow",
+    padding: "padding",
+    paddingBlock: "paddingBlock",
+    paddingBlockEnd: "paddingBlockEnd",
+    paddingBlockStart: "paddingBlockStart",
+    paddingBottom: "paddingBlockEnd",
+    paddingInline: "paddingInline",
+    paddingInlineEnd: "paddingInlineEnd",
+    paddingInlineStart: "paddingInlineStart",
+    paddingLeft: "paddingInlineStart",
+    paddingRight: "paddingInlineEnd",
+    paddingTop: "paddingBlockStart",
+    position: "position",
+    resize: "resize",
+    right: "right",
+    row: "gridRow",
+    rowEnd: "gridRowEnd",
+    rowGap: "rowGap",
+    rowSpan: "gridRow",
+    rowStart: "gridRowStart",
+    shrink: "flexShrink",
+    templateAreas: "gridTemplateAreas",
+    templateColumns: "gridTemplateColumns",
+    templateRows: "gridTemplateRows",
+    textAlign: "textAlign",
+    textDecoration: "textDecoration",
+    textTransform: "textTransform",
+    top: "top",
+    transform: "transform",
+    transformOrigin: "transformOrigin",
+    width: "width",
+    whiteSpace: "whiteSpace",
+    wrap: "flexWrap"
+  };
+  const convertStyleKey = (key) => {
+    if (styleKeys[key]) {
+      return styleKeys[key];
+    }
+    const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+    styleKeys[key] = upperKey;
+    return upperKey;
+  };
+  function makeStyleMap(prefix, obj = {}) {
+    const newObj = {};
+    Object.keys(obj).forEach((key) => {
+      newObj[key] = prefix + "-" + convertStyleKey(key);
+    });
+    return newObj;
+  }
+  function convertPropertyToStyleKey(properties) {
+    const style2 = {};
+    const noneStyle = {};
+    Object.keys(properties).forEach((key) => {
+      if (ComponentPropsToStylePropsMap[key]) {
+        style2[ComponentPropsToStylePropsMap[key]] = properties[key];
+      } else {
+        noneStyle[key] = properties[key];
+      }
+    });
+    return { style: style2, noneStyle };
+  }
+  const cssProperties$r = {
+    borderColor: "--elf--button-border-color",
+    backgroundColor: "--elf--button-background-color",
+    selectedBackgroundColor: "--elf--button-selected-background-color",
+    disabledColor: "--elf--button-disabled-color",
+    color: "--elf--button-color",
+    fontSize: "--elf--button-font-size",
+    fontWeight: "--elf--button-font-weight",
+    height: "--elf--button-height",
+    padding: "--elf--button-padding",
+    borderRadius: "--elf--button-border-radius"
+  };
+  class Button extends sapa.UIElement {
+    template() {
+      const {
+        variant = "default",
+        size,
+        disabled,
+        selected,
+        shape,
+        quiet = false,
+        outline = false,
+        style: style2 = {},
+        onClick,
+        content,
+        ...extraStyle
+      } = this.props;
+      const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--button",
+          { selected, outline, quiet, [variant]: true, [size]: true },
+          {
+            "elf--button-shape-circle": shape === "circle",
+            "elf--button-shape-round": shape === "round"
+          }
+        ]),
+        disabled: disabled ? "disabled" : void 0,
+        style: propertyMap(
+          {
+            ...style2,
+            ...styleProperties
+          },
+          cssProperties$r
+        )
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("button", {
+        ...styleObject,
+        onClick
+      }, /* @__PURE__ */ sapa.createElementJsx("span", null, content || ""));
+    }
+  }
+  const cssProperties$q = makeStyleMap("--elf--button-group", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    hoverColor: true,
+    borderColor: true,
+    boxShadow: true
+  });
+  class ButtonGroup extends sapa.UIElement {
+    template() {
+      const { disabled, style: style2 = {}, content, ...extraStyle } = this.props;
+      const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+      const styleObject = {
+        class: sapa.classnames(["elf--button-group"]),
+        disabled: disabled ? "disabled" : void 0,
+        style: propertyMap(
+          {
+            ...style2,
+            ...styleProperties
+          },
+          cssProperties$q
+        )
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, content);
+    }
+  }
+  const cssProperties$p = makeStyleMap("--elf--tooltip", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    hoverColor: true,
+    borderColor: true,
+    boxShadow: true,
+    toolsBorderColor: true,
+    toolsBorderRadius: true,
+    hgap: true,
+    vgap: true,
+    delay: true,
+    contentPadding: true
+  });
+  const TooltipPosition = {
+    TOP: "top",
+    BOTTOM: "bottom",
+    LEFT: "left",
+    RIGHT: "right",
+    BOTTOM_LEFT: "bottom-left",
+    BOTTOM_RIGHT: "bottom-right",
+    TOP_LEFT: "top-left",
+    TOP_RIGHT: "top-right"
+  };
+  class Tooltip extends sapa.UIElement {
+    initState() {
+      return {
+        trigger: this.props.trigger || "hover",
+        delay: 1e3,
+        show: this.props.show || false
+      };
+    }
+    template() {
+      const {
+        style: style2 = {},
+        message = "",
+        content,
+        deplay = 1e3,
+        position = "bottom",
+        hideArrow = false
+      } = this.props;
+      const { show } = this.state;
+      const styleObject = {
+        class: sapa.classnames("elf--tooltip", { [position]: true }),
+        style: {
+          ...propertyMap(style2, cssProperties$p)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--tooltip-content"
+      }, content), show || this.props.show ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--tooltip-message"
+      }, hideArrow ? void 0 : /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "arrow"
+      }), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--toolltip-message-content"
+      }, message)) : void 0);
+    }
+    open() {
+      this.setState({
+        show: true
+      });
+    }
+    close() {
+      setTimeout(() => {
+        this.setState({
+          show: false
+        });
+      }, this.props.hideDelay);
+    }
+    toggle() {
+      this.setState({
+        show: !this.state.show
+      });
+    }
+    checkClickable(e) {
+      const $menu = sapa.Dom.create(e.target).closest("elf--tooltip-content");
+      if ($menu)
+        return false;
+      return true;
+    }
+    checkTriggerClick() {
+      return this.state.trigger === "click";
+    }
+    checkTriggerOver() {
+      return this.state.trigger === "hover";
+    }
+    [sapa.POINTERENTER("$el") + sapa.IF("checkTriggerOver")]() {
+      this.open();
+    }
+    checkNotInTooltip(e) {
+      const $menu = sapa.Dom.create(e.target).closest("elf--tooltip");
+      if (!$menu)
+        return true;
+      return this.$el.is($menu) === false;
+    }
+    [sapa.POINTERLEAVE("$el") + sapa.IF("checkTriggerOver")]() {
+      this.close();
+    }
+    [sapa.CLICK("$el") + sapa.IF("checkTriggerClick")]() {
+      this.toggle();
+    }
+  }
+  const cssProperties$o = makeStyleMap("--elf--action-group", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    hoverColor: true,
+    borderColor: true,
+    boxShadow: true
+  });
+  class ActionGroup extends sapa.UIElement {
+    template() {
+      const {
+        direction = "horizontal",
+        quiet = false,
+        compact = false,
+        justified = false,
+        collapsed = false,
+        moreIcon = null,
+        boundary = 50,
+        style: style2 = {},
+        content,
+        onMoreClick,
+        ...extraStyle
+      } = this.props;
+      const [visibleTargetList, setVisibilityTargetList] = sapa.useState([]);
+      const [rootRect, setRootRect] = sapa.useState(null);
+      const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+      sapa.useEffect(() => {
+        if (!collapsed)
+          return;
+        const list = [];
+        let totalWidth = 0;
+        const localRect = this.$el.rect();
+        this.$el.children().forEach((child, index) => {
+          if (child.hasClass("hidden-tools"))
+            return;
+          const rect = child.rect();
+          let isVisible = rect.right + boundary < localRect.right;
+          if (isVisible) {
+            totalWidth += rect.width;
+            if (totalWidth + boundary > localRect.width) {
+              totalWidth = localRect.width - boundary;
+              isVisible = false;
+            }
+          }
+          list[index] = isVisible;
+        });
+        setVisibilityTargetList(list);
+      }, [collapsed, rootRect]);
+      sapa.useEffect(() => {
+        let resizeObserver;
+        if (collapsed) {
+          resizeObserver = new ResizeObserver((entries) => {
+            entries.forEach((entry) => {
+              setRootRect(sapa.Dom.create(entry.target).rect());
+            });
+          });
+          resizeObserver.observe(this.$el.el);
+        }
+        return () => {
+          resizeObserver == null ? void 0 : resizeObserver.disconnect();
+        };
+      }, [collapsed]);
+      const styleObject = {
+        class: sapa.classnames("elf--action-group", {
+          [direction]: true,
+          quiet,
+          compact,
+          collapsed,
+          justified
+        }),
+        style: propertyMap(
+          {
+            ...style2,
+            ...styleProperties
+          },
+          cssProperties$o
+        )
+      };
+      const items = collapsed ? content.filter((item, index) => {
+        return visibleTargetList[index];
+      }) : content;
+      const hiddenItems = collapsed ? content.filter((item, index) => {
+        return !visibleTargetList[index];
+      }) : [];
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, items, hiddenItems.length ? /* @__PURE__ */ sapa.createElementJsx(Tooltip, {
+        message: hiddenItems,
+        trigger: "click",
+        hideArrow: true,
+        position: TooltipPosition.BOTTOM_LEFT,
+        style: { contentPadding: "0px" }
+      }, /* @__PURE__ */ sapa.createElementJsx(Button, null, moreIcon)) : void 0);
+    }
+  }
+  const cssProperties$n = {
+    borderColor: "--elf--link-button-border-color",
+    backgroundColor: "--elf--link-button-background",
+    disabledColor: "--elf--link-button-disabled-color",
+    color: "--elf--link-button-color",
+    fontSize: "--elf--link-button-font-size",
+    fontWeight: "--elf--link-button-font-weight",
+    padding: "--elf--link-button-padding"
+  };
+  class LinkButton extends sapa.UIElement {
+    template() {
+      const { disabled, style: style2 = {}, content, onClick, href } = this.props;
+      const styleObject = {
+        class: sapa.classnames(["elf--link-button"]),
+        disabled: disabled ? "disabled" : void 0,
+        style: {
+          ...propertyMap(style2, cssProperties$n)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("a", {
+        ...styleObject,
+        onClick,
+        href: href || "#"
+      }, /* @__PURE__ */ sapa.createElementJsx("span", null, content || ""));
+    }
+  }
+  const cssProperties$m = {
+    borderColor: "--elf--icon-button-border-color",
+    backgroundColor: "--elf--icon-button-background",
+    disabledColor: "--elf--icon-button-disabled-color",
+    color: "--elf--icon-button-color",
+    fontSize: "--elf--icon-button-font-size",
+    fontWeight: "--elf--icon-button-font-weight",
+    height: "--elf--icon-button-height",
+    padding: "--elf--icon-button-padding",
+    borderRadius: "--elf--icon-button-border-radius"
+  };
+  class IconButton extends sapa.UIElement {
+    template() {
+      const {
+        type,
+        icon,
+        content = "",
+        size,
+        disabled,
+        shape,
+        style: style2 = {}
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--icon-button",
+          {
+            primary: type === "primary",
+            secondary: type === "secondary",
+            outline: type === "outline"
+          },
+          {
+            "elf--icon-button-lg": size === "large",
+            "elf--icon-button-sm": size === "small"
+          },
+          {
+            "elf--icon-button-shape-circle": shape === "circle",
+            "elf--icon-button-shape-round": shape === "round"
+          }
+        ]),
+        disabled: disabled ? "disabled" : void 0,
+        style: {
+          ...propertyMap(style2, cssProperties$m)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("button", {
+        type: "button",
+        ...styleObject,
+        onClick: this.props.onClick
+      }, icon || content || "");
+    }
+  }
+  const cssProperties$l = {
+    borderColor: "--elf--button-border-color",
+    backgroundColor: "--elf--button-background-color",
+    disabledColor: "--elf--button-disabled-color",
+    color: "--elf--button-color",
+    fontSize: "--elf--button-font-size",
+    fontWeight: "--elf--button-font-weight",
+    height: "--elf--button-height",
+    padding: "--elf--button-padding",
+    borderRadius: "--elf--button-border-radius"
+  };
+  class ToggleButton extends sapa.UIElement {
+    template() {
+      const {
+        type,
+        size,
+        disabled,
+        shape,
+        destructive = false,
+        style: style2 = {},
+        onClick,
+        content,
+        ...extraStyle
+      } = this.props;
+      const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--button",
+          {
+            primary: type === "primary",
+            secondary: type === "secondary",
+            outline: type === "outline"
+          },
+          destructive ? "destructive" : "",
+          {
+            "large": size === "large",
+            "small": size === "small"
+          },
+          {
+            "elf--button-shape-circle": shape === "circle",
+            "elf--button-shape-round": shape === "round"
+          }
+        ]),
+        disabled: disabled ? "disabled" : void 0,
+        style: propertyMap(
+          {
+            ...style2,
+            ...styleProperties
+          },
+          cssProperties$l
+        )
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("button", {
+        ...styleObject,
+        onClick
+      }, /* @__PURE__ */ sapa.createElementJsx("span", null, content || ""));
+    }
+  }
+  const cssProperties$k = {
+    borderColor: "--elf--radio-border-color",
+    backgroundColor: "--elf--radio-background",
+    disabledColor: "--elf--radio-disabled-color",
+    color: "--elf--radio-color",
+    fontSize: "--elf--radio-font-size",
+    fontWeight: "--elf--radio-font-weight",
+    height: "--elf--radio-height",
+    padding: "--elf--radio-padding",
+    borderRadius: "--elf--radio-border-radius"
+  };
+  class Radio extends sapa.UIElement {
+    template() {
+      const {
+        disabled,
+        style: style2 = {},
+        value,
+        content,
+        name,
+        checked = false,
+        onChange
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--radio",
+          {
+            disabled
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$k)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("label", null, /* @__PURE__ */ sapa.createElementJsx("input", {
+        ref: "$input",
+        type: "radio",
+        ...{
+          value,
+          name,
+          disabled: disabled ? "disabled" : void 0,
+          checked: checked ? "checked" : void 0
+        },
+        onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+      }), content));
+    }
+  }
+  class RadioGroup extends sapa.UIElement {
+    template() {
+      const { disabled, style: style2 = {}, name, value, onChange, content } = this.props;
+      const styleObject = {
+        class: sapa.classnames(["elf--radio-group"]),
+        disabled: disabled ? "disabled" : void 0,
+        style: {
+          ...propertyMap(style2, cssProperties$k)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, content.map((it, index) => {
+        return /* @__PURE__ */ sapa.createElementJsx(Radio, {
+          ref: `$${index}`,
+          name,
+          value: it.props.value,
+          onChange: (e, v) => {
+            this.setState({ value: v }, false);
+            onChange(e, v);
+          },
+          checked: it.props.value === value,
+          disabled
+        }, it.props.content);
+      }));
+    }
+    get value() {
+      return this.state.value || this.props.value;
+    }
+    set value(value) {
+      this.setState({ value });
+    }
+  }
+  const cssProperties$j = {
+    borderColor: "--elf--checkbox-border-color",
+    backgroundColor: "--elf--checkbox-background",
+    disabledColor: "--elf--checkbox-disabled-color",
+    color: "--elf--checkbox-color",
+    fontSize: "--elf--checkbox-font-size",
+    fontWeight: "--elf--checkbox-font-weight",
+    height: "--elf--checkbox-height",
+    padding: "--elf--checkbox-padding",
+    borderRadius: "--elf--checkbox-border-radius"
+  };
+  class Checkbox extends sapa.UIElement {
+    template() {
+      const {
+        disabled,
+        style: style2 = {},
+        value,
+        content,
+        name,
+        checked = false,
+        onChange
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--checkbox",
+          {
+            disabled
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$j)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("label", null, /* @__PURE__ */ sapa.createElementJsx("input", {
+        ref: "$input",
+        type: "checkbox",
+        ...{
+          value,
+          name,
+          disabled: disabled ? "disabled" : void 0,
+          checked: checked ? "checked" : void 0
+        },
+        onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+      }), content));
+    }
+    get checked() {
+      return this.refs.$input.checked();
+    }
+    get value() {
+      return this.props.value;
+    }
+  }
+  class CheckboxGroup extends sapa.UIElement {
+    initState() {
+      return {
+        value: this.props.value || []
+      };
+    }
+    template() {
+      const { disabled, style: style2 = {}, value, options = [], onChange } = this.props;
+      const styleObject = {
+        class: sapa.classnames(["elf--check-group"]),
+        disabled: disabled ? "disabled" : void 0,
+        style: {
+          ...propertyMap(style2, cssProperties$j)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, options.map((it, index) => {
+        return /* @__PURE__ */ sapa.createElementJsx(Checkbox, {
+          ref: `$${index}`,
+          value: it.value,
+          onChange: (e) => {
+            onChange(e, this.getValues());
+          },
+          checked: value.includes(it.value),
+          disabled
+        }, it.label);
+      }));
+    }
+    getValues() {
+      const values = [];
+      this.eachChildren((it) => {
+        if (it.checked) {
+          values.push(it.value);
+        }
+      });
+      return values;
+    }
+    get disabled() {
+      return this.props.disabled;
+    }
+    get value() {
+      return this.getValues();
+    }
+    set value(values = []) {
+      this.setState({ values });
+    }
+  }
+  const cssProperties$i = {
+    color: "--elf--divider-color",
+    margin: "--elf--divider-margin"
+  };
+  class Divider extends sapa.UIElement {
+    template() {
+      const {
+        style: style2 = {},
+        variant = "default",
+        size = "small",
+        margin = "10px 0",
+        orientation = "horizontal"
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames("elf--divider", {
+          [size]: true,
+          [variant]: true,
+          [orientation]: true
+        }),
+        style: {
+          ...propertyMap(
+            {
+              ...style2,
+              margin
+            },
+            cssProperties$i
+          )
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        className: "elf--divider-inner"
+      }));
+    }
+  }
+  const MenuItemType = {
+    DIVIDER: "divider",
+    SECTION: "section",
+    MENU: "menu",
+    ITEM: "item",
+    CUSTOM: "custom",
+    LINK: "link"
+  };
+  function makeMenuItem(items = [], rootClose) {
+    return items.map((it, index) => {
+      const ref = `${it.type || "item"}${index}`;
+      if (sapa.isString(it) && it === "-") {
+        return /* @__PURE__ */ sapa.createElementJsx(DividerMenuItem, {
+          ref,
+          rootClose
+        });
+      } else if (sapa.isFunction(it)) {
+        return /* @__PURE__ */ sapa.createElementJsx(CustomMenuItem, {
+          ref: `custom${index}`,
+          render: it,
+          rootClose
+        });
+      } else if (it.type === MenuItemType.CUSTOM) {
+        return /* @__PURE__ */ sapa.createElementJsx(CustomMenuItem, {
+          ref,
+          ...it,
+          rootClose
+        });
+      } else if (it.type === MenuItemType.LINK) {
+        return /* @__PURE__ */ sapa.createElementJsx(LinkMenuItem, {
+          ref,
+          ...it,
+          rootClose
+        });
+      } else if (it.type === MenuItemType.SECTION) {
+        return /* @__PURE__ */ sapa.createElementJsx(SectionMenuItem, {
+          ref,
+          ...it,
+          rootClose
+        });
+      } else if (it.type === MenuItemType.DIVIDER) {
+        return /* @__PURE__ */ sapa.createElementJsx(DividerMenuItem, {
+          ref,
+          ...it,
+          rootClose
+        });
+      }
+      return /* @__PURE__ */ sapa.createElementJsx(MenuItem, {
+        ref,
+        ...it,
+        rootClose
+      });
+    });
+  }
+  function DividerMenuItem({ dashed = false }) {
+    return /* @__PURE__ */ sapa.createElementJsx("li", {
+      class: "elf--divider",
+      dashed
+    });
+  }
+  function CustomMenuItem({ render, rootClose }) {
+    return /* @__PURE__ */ sapa.createElementJsx("li", {
+      class: "custom"
+    }, render == null ? void 0 : render({ rootClose }));
+  }
+  function LinkMenuItem({ rootClose, title, link }) {
+    return /* @__PURE__ */ sapa.createElementJsx("li", {
+      class: "link"
+    }, /* @__PURE__ */ sapa.createElementJsx("a", {
+      href: link,
+      onClick: rootClose
+    }, title));
+  }
+  function SectionMenuItem({ title = "" }) {
+    return /* @__PURE__ */ sapa.createElementJsx("li", {
+      class: "section-title"
+    }, title);
+  }
+  class MenuItem extends sapa.UIElement {
+    initState() {
+      const {
+        title = "",
+        hover = false,
+        shortcut,
+        icon,
+        items = [],
+        disabled = false,
+        selectable,
+        selected,
+        selectedIcon = "\u2713",
+        closable = true,
+        rootClose,
+        description
+      } = this.props;
+      return {
+        title,
+        hover,
+        shortcut,
+        icon,
+        items,
+        selectable,
+        selected,
+        selectedIcon,
+        disabled,
+        closable,
+        rootClose,
+        description
+      };
+    }
+    template() {
+      const {
+        title = "",
+        shortcut,
+        icon,
+        expandIcon = "\u25B6",
+        items = [],
+        hover,
+        selected,
+        selectable,
+        selectedIcon,
+        disabled,
+        rootClose,
+        description,
+        show = false
+      } = this.state;
+      const hasItems = items.length > 0;
+      const selectedValue = sapa.isFunction(selected) ? selected() : selected;
+      return /* @__PURE__ */ sapa.createElementJsx("li", {
+        class: sapa.classnames({
+          hover
+        }),
+        disabled: disabled ? true : void 0
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "menu-item-content"
+      }, selectable ? /* @__PURE__ */ sapa.createElementJsx("span", {
+        class: "selected-icon"
+      }, selectedValue ? selectedIcon : void 0) : null, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "icon"
+      }, icon) : void 0, title ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "menu-title"
+      }, title) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "value-area"
+      }, shortcut ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "shortcut"
+      }, shortcut) : void 0, hasItems ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "icon"
+      }, expandIcon) : void 0)), description ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "menu-item-description"
+      }, description) : void 0, items.length > 0 || show ? /* @__PURE__ */ sapa.createElementJsx(Menu, {
+        items,
+        rootClose
+      }) : void 0);
+    }
+    checkClickable() {
+      if (this.state.disabled) {
+        return false;
+      }
+      const { type = MenuItemType.ITEM, items = [] } = this.props;
+      return type === MenuItemType.ITEM && items.length === 0;
+    }
+    [sapa.CLICK("$el") + sapa.IF("checkClickable") + sapa.PREVENT + sapa.STOP](e) {
+      var _a, _b;
+      const { selectable = false, onClick, closable = true } = this.props;
+      if (selectable) {
+        this.setSelected(!this.selected);
+      }
+      if (sapa.isFunction(onClick)) {
+        onClick(e, this);
+      }
+      if (closable) {
+        (_b = (_a = this.props).rootClose) == null ? void 0 : _b.call(_a);
+      }
+    }
+    setSelected(isSelected = false) {
+      this.setState({
+        selected: isSelected
+      });
+    }
+    get selected() {
+      return this.state.selected;
+    }
+  }
+  const cssProperties$h = {
+    left: "--elf--menu-left",
+    top: "--elf--menu-top",
+    backgroundColor: "--elf--menu-background",
+    color: "--elf--menu-color",
+    fontSize: "--elf--menu-font-size",
+    fontWeight: "--elf--menu-font-weight",
+    height: "--elf--menu-height",
+    padding: "--elf--menu-padding",
+    borderRadius: "--elf--menu-border-radius",
+    borderColor: "--elf--menu-border-color",
+    boxShadow: "--elf--menu-box-shadow",
+    width: "--elf--menu-width",
+    maxWidth: "--elf--menu-max-width",
+    sectionTitleColor: "--elf--menu-section-title-color",
+    sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
+    dividerColor: "--elf--menu-divider-color",
+    directionLeft: "--elf--menu-direction-left",
+    itemPadding: "--elf--menu-item-padding"
+  };
+  class Menu extends sapa.UIElement {
+    initState() {
+      return {
+        intersectionLeft: 0
+      };
+    }
+    template() {
+      let {
+        style: style2 = {},
+        type = "menu",
+        x = 0,
+        y = 0,
+        direction = "left",
+        items = [],
+        rootClose,
+        autoPosition = false
+      } = this.props;
+      let itemStyle = { ...style2 };
+      if (x !== 0)
+        itemStyle = { ...itemStyle, left: x };
+      if (y !== 0)
+        itemStyle = { ...itemStyle, top: y };
+      if (autoPosition) {
+        const index = items.findIndex((it) => {
+          return it.selectable && it.selected;
+        });
+        itemStyle = { ...itemStyle, top: -1 * (index * 24 + 8) };
+      }
+      const styleObject = {
+        "data-direction": direction,
+        class: sapa.classnames("elf--menu", {
+          "elf--menu-contextmenu": type === "contextmenu"
+        }),
+        style: {
+          ...propertyMap(itemStyle, cssProperties$h)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("menu", {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault()
+      }, makeMenuItem(items, rootClose));
+    }
+    [sapa.OBSERVER("intersection") + sapa.PARAMS({
+      root: document.body
+    })](intersects = []) {
+      const item = intersects.find(
+        (it) => it.isIntersecting && it.intersectionRatio < 1
+      );
+      if (item) {
+        const { left: bLeft, right: bRight } = item.boundingClientRect;
+        const { left: iLeft, right: iRight } = item.intersectionRect;
+        let direction = "left";
+        if (iRight != bRight && iLeft != bLeft) {
+          direction = "center";
+        } else if (iRight != bRight) {
+          direction = "right";
+        }
+        this.$el.attr("data-direction", direction);
+      }
+    }
+  }
+  function ArrowIcon() {
+    return /* @__PURE__ */ sapa.createElementJsx("svg", {
+      viewBox: "0 0 24 24",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /* @__PURE__ */ sapa.createElementJsx("path", {
+      d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+    }));
+  }
+  class OptionMenu extends sapa.UIElement {
+    template() {
+      const {
+        icon,
+        content,
+        items,
+        menuStyle = {},
+        disabled = void 0,
+        autoPosition = false
+      } = this.props;
+      const { isOpen } = this.state;
+      const showMenu = isOpen && items;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--option-menu",
+        disabled
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "content",
+        onClick: () => {
+          this.setState({
+            isOpen: !this.state.isOpen
+          });
+        }
+      }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--option-menu-icon"
+      }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "text"
+      }, content), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "arrow"
+      }, /* @__PURE__ */ sapa.createElementJsx(ArrowIcon, null))), showMenu ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "menu-area"
+      }, /* @__PURE__ */ sapa.createElementJsx(Menu, {
+        autoPosition,
+        rootClose: () => {
+          this.close();
+        },
+        style: menuStyle,
+        items
+      })) : void 0);
+    }
+    close() {
+      this.setState({
+        isOpen: false
+      });
+    }
+    checkClickable(e) {
+      const $menu = sapa.Dom.create(e.target).closest("menu-area");
+      if ($menu)
+        return false;
+      return true;
+    }
+    checkNotInMenu(e) {
+      const $menu = sapa.Dom.create(e.target).closest("elf--option-menu");
+      if (!$menu)
+        return true;
+      return this.$el.is($menu) === false;
+    }
+    [sapa.CLICK("document") + sapa.IF("checkClickable") + sapa.IF("checkNotInMenu")]() {
+      this.close();
+    }
+  }
+  class OptionStrip extends sapa.UIElement {
+    initState() {
+      return {
+        value: this.props.value
+      };
+    }
+    template() {
+      const {
+        disabled,
+        style: style2 = {},
+        selectedValue,
+        options = [],
+        onChange
+      } = this.props;
+      const styleObject = {
+        class: "elf--option-strip",
+        disabled: disabled ? "disabled" : void 0,
+        style: {
+          ...propertyMap(style2, {})
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, options.map((it) => {
+        return /* @__PURE__ */ sapa.createElementJsx("button", {
+          type: "button",
+          class: sapa.classnames("elf--option-strip-item", {
+            selected: selectedValue === it.value
+          }),
+          onClick: () => onChange == null ? void 0 : onChange(it.value)
+        }, it.icon);
+      }));
+    }
+  }
+  const cssProperties$g = {
+    position: "--elf--dialog-position",
+    backgroundColor: "--elf--dialog-background",
+    color: "--elf--dialog-color",
+    fontSize: "--elf--dialog-font-size",
+    fontWeight: "--elf--dialog-font-weight",
+    height: "--elf--dialog-height",
+    padding: "--elf--dialog-padding",
+    borderRadius: "--elf--dialog-border-radius",
+    borderColor: "--elf--dialog-border-color",
+    boxShadow: "--elf--dialog-box-shadow",
+    width: "--elf--dialog-width"
+  };
+  class Dialog extends sapa.UIElement {
+    initState() {
+      const { visible = false, style: style2 = {}, center } = this.props;
+      return {
+        visible,
+        style: style2,
+        center
+      };
+    }
+    close() {
+      const { onClose } = this.props;
+      if (sapa.isFunction(onClose)) {
+        onClose(this);
+      }
+    }
+    ok() {
+      const { onOk } = this.props;
+      if (sapa.isFunction(onOk)) {
+        onOk(this);
+      }
+    }
+    cancel() {
+      const { onCancel } = this.props;
+      if (sapa.isFunction(onCancel)) {
+        onCancel(this);
+      }
+    }
+    makeDefaultTools() {
+      const { footer, cancelText = "Cancel", okText = "OK" } = this.props;
+      if (!footer) {
+        return [
+          /* @__PURE__ */ sapa.createElementJsx(Button, {
+            onClick: () => this.cancel()
+          }, cancelText),
+          /* @__PURE__ */ sapa.createElementJsx(Button, {
+            type: "primary",
+            onClick: () => this.ok()
+          }, okText)
+        ];
+      }
+      return "";
+    }
+    template() {
+      const { style: style2 = {}, visible, center } = this.state;
+      const styleObject = {
+        class: sapa.classnames("elf--dialog", {
+          visible,
+          center
+        }),
+        style: {
+          ...propertyMap(style2, cssProperties$g)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-title"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-title-text"
+      }, "Dialog"), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-title-tools",
+        ref: "$tools"
+      }, this.props.tools || void 0), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-title-close",
+        ref: "$close"
+      }, "\xD7")), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-content"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-text"
+      }, this.props.content || ""), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-content-tools"
+      }, this.props.footer ? this.props.footer : this.makeDefaultTools())));
+    }
+    [sapa.CLICK("$close")]() {
+      this.close();
+    }
+  }
+  class Flex extends sapa.UIElement {
+    template() {
+      const {
+        style: style2 = {},
+        class: className = "",
+        content,
+        stack,
+        wrap = false
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames("elf--flex", className, {
+          stack,
+          wrap
+        }),
+        style: {
+          ...propertyMap(style2, {})
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, content);
+    }
+  }
+  class ToolsItem extends sapa.UIElement {
+    initialize() {
+      super.initialize();
+      const events = this.props.events || [];
+      if (events.length) {
+        events.forEach((event) => {
+          this.on(event, () => {
+            this.refresh();
+          });
+        });
+      }
+    }
+    initState() {
+      const { title = "", icon, selected, selectedType } = this.props;
+      return {
+        title,
+        icon,
+        selected,
+        selectedType
+      };
+    }
+    template() {
+      const { title = "", icon } = this.state;
+      const { style: style2 = {} } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: sapa.classnames("elf--tools-item", {
+          selected: this.state.selected ? true : void 0
+        }),
+        "data-selected-type": this.state.selectedType,
+        onClick: this.props.onClick,
+        style: style2
+      }, /* @__PURE__ */ sapa.createElementJsx("button", {
+        type: "button"
+      }, /* @__PURE__ */ sapa.createElementJsx(Flex, {
+        style: { gap: 10 }
+      }, [
+        icon ? /* @__PURE__ */ sapa.createElementJsx("span", {
+          class: "icon"
+        }, sapa.isFunction(icon) ? icon() : icon) : void 0,
+        title ? /* @__PURE__ */ sapa.createElementJsx("span", {
+          class: "menu-title"
+        }, sapa.isFunction(title) ? title() : title) : void 0
+      ].filter(Boolean))));
+    }
+    setSelected(isSelected = false) {
+      this.setState({
+        selected: isSelected
+      });
+    }
+    get selected() {
+      if (sapa.isFunction(this.state.selected)) {
+        return this.state.selected();
+      }
+      return this.state.selected;
+    }
+    set selected(value) {
+      this.setSelected(value);
+    }
+  }
+  class ToolsCustomItem extends ToolsItem {
+    template() {
+      var _a, _b;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--tools-item custom"
+      }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
+    }
+  }
+  class ToolsMenuItem extends ToolsItem {
+    initState() {
+      const {
+        title = "",
+        icon,
+        selected,
+        disabled,
+        opened,
+        direction,
+        menuStyle,
+        noArrow = false
+      } = this.props;
+      return {
+        title,
+        icon,
+        selected,
+        opened,
+        direction,
+        disabled,
+        menuStyle,
+        noArrow,
+        rootClose: this.close.bind(this)
+      };
+    }
+    template() {
+      const {
+        title = "",
+        icon,
+        disabled,
+        selected,
+        opened = false,
+        direction = "left",
+        menuStyle,
+        noArrow = false
+      } = this.state;
+      const { style: style2 = {}, items, class: className } = this.props;
+      const hasItems = items.length > 0;
+      const isSelected = selected ? sapa.isFunction(selected) ? selected() : selected : void 0;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: sapa.classnames(
+          "elf--tools-item",
+          {
+            selected: isSelected,
+            "has-items": hasItems
+          },
+          className
+        ),
+        disabled,
+        style: style2
+      }, /* @__PURE__ */ sapa.createElementJsx("button", {
+        type: "button"
+      }, /* @__PURE__ */ sapa.createElementJsx(Flex, {
+        style: { columnGap: 4 }
+      }, [
+        icon ? /* @__PURE__ */ sapa.createElementJsx("span", {
+          class: "icon"
+        }, sapa.isFunction(icon) ? icon() : icon) : void 0,
+        title ? /* @__PURE__ */ sapa.createElementJsx("span", {
+          class: "menu-title"
+        }, sapa.isFunction(title) ? title() : title) : void 0
+      ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ sapa.createElementJsx("span", {
+        class: sapa.classnames("arrow", { opened })
+      }, /* @__PURE__ */ sapa.createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "menu-area",
+        style: { backgroundColor: "yellow" }
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "background",
+        "data-direction": direction
+      }), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "arrow"
+      }), /* @__PURE__ */ sapa.createElementJsx(Menu, {
+        ref: "$menu",
+        items,
+        direction,
+        rootClose: this.state.rootClose,
+        style: {
+          ...menuStyle || {},
+          top: "calc(100% + 5px)"
+        }
+      })) : void 0);
+    }
+    runCallback(callback, e) {
+      if (sapa.isFunction(callback)) {
+        callback(e, this);
+      }
+    }
+    open() {
+      if (!this.state.opened) {
+        this.setState({
+          rect: this.$el.rect(),
+          opened: true
+        });
+      }
+    }
+    close() {
+      if (this.state.opened) {
+        this.setState({
+          opened: false
+        });
+      }
+    }
+    toggle() {
+      if (!this.state.opened) {
+        this.setState(
+          {
+            rect: this.$el.rect()
+          },
+          false
+        );
+        this.open();
+      } else {
+        this.close();
+      }
+    }
+    checkClickable(e) {
+      const $menu = sapa.Dom.create(e.target).closest("menu-area");
+      if ($menu)
+        return false;
+      return true;
+    }
+    checkTriggerClick() {
+      const { trigger = "click", onClick } = this.props;
+      return trigger === "click" || trigger === "hover" && sapa.isFunction(onClick);
+    }
+    checkTriggerOver() {
+      return this.props.trigger === "hover";
+    }
+    [sapa.POINTEROVER("$el") + sapa.IF("checkTriggerOver")]() {
+      this.open();
+    }
+    checkNotInMenu(e) {
+      const $menu = sapa.Dom.create(e.target).closest("elf--tools-item");
+      if (!$menu)
+        return true;
+      return this.$el.is($menu) === false;
+    }
+    [sapa.POINTERLEAVE("$el") + sapa.IF("checkTriggerOver")]() {
+      this.close();
+    }
+    [sapa.CLICK("document") + sapa.IF("checkClickable") + sapa.IF("checkNotInMenu")]() {
+      this.close();
+    }
+    [sapa.CLICK("$el") + sapa.IF("checkClickable") + sapa.IF("checkTriggerClick")](e) {
+      if (sapa.Dom.create(e.target).hasClass("arrow") && !this.state.noArrow || this.state.noArrow) {
+        this.toggle();
+        if (this.state.opened) {
+          this.runCallback(this.props.onOpen, e);
+        } else {
+          this.runCallback(this.props.onClose, e);
+        }
+        this.runCallback(this.props.onClick, e);
+      } else {
+        this.close();
+        this.runCallback(this.props.onClick, e);
+      }
+    }
+  }
+  const ToolsItemType = {
+    MENU: "menu",
+    ITEM: "item",
+    CUSTOM: "custom"
+  };
+  function makeToolsItem(items = [], options = {}) {
+    return items.map((it, index) => {
+      const ref = `${it.type}-${index}`;
+      let visibility = options.emphasized ? options.visibleTargetList[index] ? "visible" : "hidden" : "visible";
+      if (options.visibility) {
+        visibility = "visible";
+      }
+      if (it.type === ToolsItemType.CUSTOM) {
+        return /* @__PURE__ */ sapa.createElementJsx(ToolsCustomItem, {
+          ref,
+          ...it,
+          style: { visibility }
+        });
+      }
+      if (it.type === ToolsItemType.MENU) {
+        return /* @__PURE__ */ sapa.createElementJsx(ToolsMenuItem, {
+          ref,
+          ...it,
+          style: { visibility }
+        });
+      }
+      return /* @__PURE__ */ sapa.createElementJsx(ToolsItem, {
+        ref,
+        ...it,
+        style: { visibility }
+      });
+    });
+  }
+  function makeHiddenToolsItem(items = [], options = {}) {
+    return items.filter((it, index) => {
+      let visibility = options.emphasized ? options.visibleTargetList[index] ? "visible" : "hidden" : "visible";
+      if (options.visibility) {
+        visibility = "visible";
+      }
+      return visibility === "hidden";
+    });
+  }
+  const cssProperties$f = makeStyleMap("--elf--tools", {
+    backgroundColor: true,
+    color: true,
+    height: true
+  });
+  class Tools extends sapa.UIElement {
+    template() {
+      const {
+        style: style2 = {},
+        vertical = false,
+        emphasized = false,
+        moreIcon
+      } = this.props;
+      const [visibleTargetList, setVisibilityTargetList] = sapa.useState([]);
+      const [lastLeft, setLastLeft] = sapa.useState(0);
+      const [visibility, setVisibility] = sapa.useState(true);
+      const [rootRect, setRootRect] = sapa.useState(null);
+      sapa.useEffect(() => {
+        let observer, resizeObserver;
+        if (emphasized) {
+          const options = {
+            root: this.parent.parent.$el.el,
+            threshold: 1
+          };
+          observer = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+              if (e.intersectionRatio < 1) {
+                setVisibility(false);
+              } else {
+                setVisibility(true);
+              }
+              setRootRect(e.intersectionRect);
+            });
+          }, options);
+          observer.observe(this.$el.el);
+          resizeObserver = new ResizeObserver((entries) => {
+            entries.forEach((entry) => {
+              setRootRect(sapa.Dom.create(entry.target).rect());
+            });
+          });
+          resizeObserver.observe(this.parent.parent.$el.el);
+        }
+        return () => {
+          observer == null ? void 0 : observer.disconnect();
+          resizeObserver == null ? void 0 : resizeObserver.disconnect();
+        };
+      }, [emphasized]);
+      sapa.useEffect(() => {
+        if (emphasized && !visibility) {
+          const list = [];
+          let totalWidth = 0;
+          const localRect = this.$el.rect();
+          this.$el.children().forEach((child, index) => {
+            if (child.hasClass("hidden-tools"))
+              return;
+            const rect = child.rect();
+            let isVisible = rect.right + 50 < rootRect.right;
+            if (isVisible) {
+              totalWidth += rect.width;
+              if (totalWidth + 50 > rootRect.width) {
+                totalWidth = rootRect.width - 50;
+                isVisible = false;
+              }
+            }
+            list[index] = isVisible;
+          });
+          setVisibilityTargetList(list);
+          setLastLeft(localRect.width - (localRect.right - rootRect.right) - 50);
+        }
+      }, [emphasized, visibility, rootRect]);
+      const styleObject = {
+        class: sapa.classnames("elf--tools", {
+          vertical,
+          emphasized
+        }),
+        style: {
+          ...propertyMap(style2, cssProperties$f)
+        }
+      };
+      const items = makeToolsItem(this.props.items, {
+        visibleTargetList,
+        rootRect,
+        visibility,
+        emphasized
+      });
+      const hiddenItems = makeHiddenToolsItem(this.props.items, {
+        visibleTargetList,
+        rootRect,
+        visibility,
+        emphasized
+      });
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault()
+      }, items, hiddenItems.length ? /* @__PURE__ */ sapa.createElementJsx(ToolsMenuItem, {
+        class: "hidden-tools",
+        items: hiddenItems,
+        icon: moreIcon,
+        direction: "right",
+        noArrow: true,
+        style: {
+          position: "absolute",
+          height: "100%",
+          left: lastLeft
+        }
+      }) : void 0);
+    }
+  }
+  function makeToolbarItem(items = [], options = {}) {
+    return items.map((it, index) => {
+      const ref = `${it.type || "item"}${index}`;
+      return /* @__PURE__ */ sapa.createElementJsx(ToolbarItem, {
+        ref,
+        ...it,
+        ...options
+      });
+    });
+  }
+  class ToolbarItem extends sapa.UIElement {
+    template() {
+      const { items, style: style2, emphasized, moreIcon } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--toolbar-item"
+      }, /* @__PURE__ */ sapa.createElementJsx(Tools, {
+        items,
+        style: style2,
+        emphasized,
+        moreIcon
+      }));
+    }
+  }
+  const cssProperties$e = makeStyleMap("--elf--toolbar", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    align: true
+  });
+  class Toolbar extends sapa.UIElement {
+    template() {
+      const {
+        style: style2 = {},
+        align = "space-between",
+        type = "default",
+        rounded = false,
+        emphasized = false,
+        items = [],
+        class: className
+      } = this.props;
+      const styleObject = {
+        id: "toolbar-" + this.id,
+        class: sapa.classnames(
+          "elf--toolbar",
+          {
+            [align]: true,
+            rounded,
+            emphasized,
+            [type]: true
+          },
+          className
+        ),
+        style: {
+          ...propertyMap(style2, cssProperties$e)
+        }
+      };
+      if (Object.keys(styleObject.style).length === 0) {
+        delete styleObject.style;
+      }
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault()
+      }, makeToolbarItem(items, {
+        emphasized,
+        toolbarId: "toolbar-" + this.id
+      }));
+    }
+  }
+  const cssProperties$d = {
+    backgroundColor: "--elf--notification-background",
+    color: "--elf--notification-color",
+    height: "--elf--notification-height",
+    hoverColor: "--elf--notification-hover-color",
+    borderColor: "--elf--notification-border-color",
+    boxShadow: "--elf--notification-box-shadow",
+    toolsBorderColor: "--elf--notification-tools-border-color",
+    toolsBorderRadius: "--elf--notification-tools-border-radius"
+  };
+  class Notification extends sapa.UIElement {
+    template() {
+      const {
+        style: style2 = {},
+        icon,
+        content,
+        tools,
+        direction = "top-left"
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames(
+          "elf--notification",
+          `elf--notification-direction-${direction}`
+        ),
+        style: {
+          ...propertyMap(style2, cssProperties$d)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault()
+      }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--notification-icon"
+      }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--notification-content"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--notification-text"
+      }, content)), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--notification-tools"
+      }, tools || []));
+    }
+  }
+  const cssProperties$c = makeStyleMap("--elf--visual-bell", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    hoverColor: true,
+    borderColor: true,
+    boxShadow: true,
+    toolsBorderColor: true,
+    toolsBorderRadius: true,
+    hgap: true,
+    vgap: true
+  });
+  class VisualBell extends sapa.UIElement {
+    template() {
+      const { style: style2 = {}, content, delay = 0, direction = "bottom" } = this.props;
+      const [localDelay, setLocalDelay] = sapa.useState(delay);
+      const [hide, setHide] = sapa.useState(false);
+      this.state.hideCallback = sapa.useCallback(
+        (hideDelay = 0) => {
+          setLocalDelay(hideDelay);
+        },
+        [setLocalDelay]
+      );
+      const styleObject = {
+        class: sapa.classnames(
+          "elf--visual-bell",
+          `elf--visual-bell-direction-${direction}`,
+          { hide }
+        ),
+        style: {
+          ...propertyMap(style2, cssProperties$c),
+          ...{
+            transition: `opacity ${localDelay}ms ease-in-out`,
+            opacity: hide ? 0 : 1
+          }
+        }
+      };
+      sapa.useEffect(() => {
+        if (localDelay > 0) {
+          if (!hide) {
+            this.props.onShow && this.props.onShow();
+          }
+          setTimeout(() => {
+            if (!hide) {
+              setHide(true);
+            }
+          }, localDelay);
+        }
+      }, [localDelay, hide]);
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--visual-bell",
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault(),
+        onTransitionEnd: () => {
+          this.props.onHide && this.props.onHide();
+          this.destroy(true);
+        }
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--visual-bell-content"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--visual-bell-text"
+      }, content)), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--visual-bell-tools"
+      }, this.props.tools || []));
+    }
+    hide(hideDelay = 0) {
+      var _a;
+      (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+    }
+  }
+  function bell({
+    content = "",
+    delay = 0,
+    direction = "bottom",
+    tools = [],
+    options = {},
+    style: style2 = {}
+  }) {
+    return sapa.potal(
+      /* @__PURE__ */ sapa.createElementJsx(VisualBell, {
+        delay,
+        direction,
+        tools,
+        style: style2
+      }, content),
+      options
+    );
+  }
+  const cssProperties$b = {
+    backgroundColor: "--elf--panel-background",
+    color: "--elf--panel-color",
+    height: "--elf--panel-height",
+    hoverColor: "--elf--panel-hover-color",
+    borderColor: "--elf--panel-border-color",
+    boxShadow: "--elf--panel-box-shadow",
+    padding: "--elf--panel-padding",
+    borderRadius: "--elf--panel-border-radius"
+  };
+  class Panel extends sapa.UIElement {
+    template() {
+      const {
+        style: style2 = {},
+        content,
+        theme,
+        title = "",
+        tools = [],
+        mode,
+        footer
+      } = this.props;
+      const styleObject = {
+        class: sapa.classnames("elf--panel", `elf--panel-mode-${mode}`),
+        "data-theme": theme,
+        style: {
+          ...propertyMap(style2, cssProperties$b)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, title ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--panel-title"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--panel-title-text"
+      }, title), tools ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--panel-title-tools"
+      }, tools || []) : void 0) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--panel-content"
+      }, content), footer ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--panel-footer"
+      }, footer) : void 0);
+    }
+  }
+  const cssProperties$a = makeStyleMap("--elf--tabstrip", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    width: true,
+    hoverColor: true,
+    borderColor: true,
+    hgap: true,
+    vgap: true,
+    delay: true
+  });
+  class TabStrip extends sapa.UIElement {
+    template() {
+      var _a;
+      const { style: style2 = {}, items = [], fitted, align = "left" } = this.props;
+      const styleObject = {
+        class: sapa.classnames("elf--tabstrip", {
+          "is-fitted": fitted
+        }),
+        style: {
+          ...propertyMap(style2, cssProperties$a)
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: sapa.classnames("elf--tabstrip-content", {
+          [`align-${align}`]: true
+        })
+      }, items.map((it) => {
+        const isSelected = !!it.selected;
+        const isDisabled = !!it.disabled;
+        const selectedStyle = it.selectedStyle || {};
+        const style22 = it.style || {};
+        return /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: sapa.classnames("elf--tabstrip-item", {
+            selected: isSelected,
+            disabled: isDisabled
+          }),
+          style: isSelected ? selectedStyle : style22
+        }, /* @__PURE__ */ sapa.createElementJsx("div", {
+          onClick: it.onClick
+        }, it.title));
+      })), ((_a = this.props.tools) == null ? void 0 : _a.length) ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--tabstrip-tools"
+      }, this.props.tools.map((it) => {
+        return /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "elf--tabstrip-tool"
+        }, it);
+      })) : void 0);
+    }
+  }
+  const cssProperties$9 = makeStyleMap("--elf--tab", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    width: true,
+    hoverColor: true,
+    borderColor: true
+  });
+  function TabItem({ selected, content }) {
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: sapa.classnames("elf--tab-content-item", {
+        selected
+      })
+    }, content);
+  }
+  class Tab extends sapa.UIElement {
+    initState() {
+      return {
+        activeKey: this.props.activeKey
+      };
+    }
+    changeActiveKey(key) {
+      const { onChange } = this.props;
+      this.setState({ activeKey: key });
+      if (sapa.isFunction(onChange)) {
+        onChange(key);
+      }
+    }
+    template() {
+      const { style: style2 = {}, content, full, fitted, align = "left" } = this.props;
+      const { activeKey } = this.state;
+      const styleObject = {
+        class: sapa.classnames("elf--tab", {
+          full
+        }),
+        style: propertyMap(style2, cssProperties$9)
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--tab-header"
+      }, /* @__PURE__ */ sapa.createElementJsx(TabStrip, {
+        fitted,
+        align,
+        items: content.map((it) => {
+          const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
+          return {
+            title,
+            style: style22,
+            disabled,
+            selectedStyle,
+            selected: key === activeKey,
+            onClick: () => {
+              this.changeActiveKey(key);
+              onClick && onClick();
+            }
+          };
+        })
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--tab-body"
+      }, content.map((it) => {
+        const { key, content: content2, disabled } = it.props;
+        const selected = key === activeKey;
+        return /* @__PURE__ */ sapa.createElementJsx(TabItem, {
+          key,
+          selected,
+          disabled
+        }, content2);
+      })));
+    }
+  }
+  class Layout extends sapa.UIElement {
+    template() {
+      const { style: style2 = {}, content, wrap = false } = this.props;
+      const styleObject = {
+        class: sapa.classnames("elf--layout", {
+          stack: this.props.stack,
+          wrap
+        }),
+        style: {
+          ...propertyMap(style2, {
+            backgroundColor: "--elf--layout-background-color",
+            gap: "--elf--layout-gap"
+          })
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, content);
+    }
+  }
+  class VBox extends Flex {
+    template() {
+      const { style: style2 = {}, content } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx(Flex, {
+        stack: true,
+        style: style2
+      }, content);
+    }
+  }
+  function makeTemplates(arr) {
+    if (typeof arr === "number") {
+      arr = Array.from({ length: arr }, () => 1);
+    } else if (Array.isArray(arr) === false) {
+      arr = [arr];
+    }
+    if (arr.length === 0) {
+      return void 0;
+    }
+    return arr.map((it) => sapa.isNumber(it) ? `${it}fr` : it).join(" ");
+  }
+  class Grid extends sapa.UIElement {
+    template() {
+      const {
+        class: className = "",
+        style: style2 = {},
+        columns = [],
+        rows = [],
+        gap,
+        columnGap,
+        rowGap,
+        content,
+        ...extraStyle
+      } = this.props;
+      const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
+      const styleObject = {
+        class: sapa.classnames("elf--grid", className),
+        style: {
+          gridTemplateColumns: makeTemplates(columns),
+          gridTemplateRows: makeTemplates(rows),
+          gap,
+          columnGap,
+          rowGap,
+          ...propertyMap({ ...style2, ...styleProperties }, {})
+        },
+        ...noneStyle
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, content);
+    }
+  }
+  const cssProperties$8 = makeStyleMap("--elf--input-editor", {
+    borderColor: true,
+    backgroundColor: true,
+    disabledColor: true,
+    color: true,
+    fontSize: true,
+    fontWeight: true,
+    height: true,
+    padding: true,
+    borderRadius: true,
+    placeholderColor: true,
+    emptyColor: true
+  });
+  class InputEditor extends sapa.UIElement {
+    initState() {
+      const {
+        style: style2 = {},
+        type = "text",
+        autoFocus = false,
+        focused,
+        hover = false,
+        value,
+        placeholder,
+        disabled
+      } = this.props;
+      return {
+        style: style2,
+        type,
+        autoFocus,
+        hover: hover || false,
+        focused: focused || false,
+        placeholder,
+        value,
+        disabled
+      };
+    }
+    template() {
+      const { icon, tools } = this.props;
+      const {
+        style: style2 = {},
+        type = "text",
+        focused = false,
+        hover = false,
+        value,
+        placeholder,
+        disabled
+      } = this.state;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--input-editor",
+          {
+            focused,
+            hover,
+            disabled,
+            icon
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$8)
+        }
+      };
+      const inputEvents = {
+        onInput: this.props.onInput,
+        onChange: this.props.onChange,
+        onKeyDown: this.props.onKeyDown,
+        onKeyUp: this.props.onKeyUp,
+        onKeyPress: this.props.onKeyPress,
+        onSelect: this.props.onSelect,
+        onPaste: this.props.onPaste,
+        onCut: this.props.onCut,
+        onCopy: this.props.onCopy
+      };
+      const properties = {
+        type,
+        disabled,
+        placeholder: placeholder || "",
+        value: value || ""
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-editor-icon"
+      }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        ref: "$input",
+        ...properties,
+        ...inputEvents
+      }))), tools ? tools : void 0);
+    }
+    onMounted() {
+      if (this.state.autoFocus) {
+        setTimeout(() => {
+          this.refs.$input.focus();
+          this.refs.$input.select();
+        }, 10);
+      }
+    }
+    runCallback(callback, e) {
+      if (sapa.isFunction(callback)) {
+        callback(e, this);
+      }
+    }
+    [sapa.FOCUSIN("$input")](e) {
+      this.setState({
+        focused: true
+      });
+      this.runCallback(this.props.onFocus, e);
+    }
+    [sapa.FOCUSOUT("$input")](e) {
+      this.setState({
+        focused: false
+      });
+      this.runCallback(this.props.onBlur, e);
+    }
+    get value() {
+      return this.refs.$input.value;
+    }
+    set value(v) {
+      this.refs.$input.value = v;
+    }
+    get selectedValue() {
+      return document.getSelection().toString();
+    }
+  }
+  function ColorView({ color: color$1 }) {
+    const parsedColor = color.parse(color$1);
+    const { r, g, b } = parsedColor;
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--color-view"
+    }, /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--color-view-color",
+      style: { backgroundColor: color.format({ r, g, b }, "rgb") }
+    }), /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--color-view-opacity-pattern"
+    }, /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--color-view-opacity",
+      style: { backgroundColor: color.format(parsedColor, "rgb") }
+    })));
+  }
+  const cssProperties$7 = makeStyleMap("--elf--input-paint", {
+    borderColor: true,
+    backgroundColor: true,
+    disabledColor: true,
+    color: true,
+    fontSize: true,
+    fontWeight: true,
+    height: true,
+    padding: true,
+    borderRadius: true,
+    placeholderColor: true,
+    emptyColor: true
+  });
+  class InputPaint extends sapa.UIElement {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "keyup", (e) => {
+        e.preventDefault();
+        switch (e.key) {
+          case "ArrowUp":
+            this.increaseOpacity(e);
+            break;
+          case "ArrowDown":
+            this.decreaseOpacity(e);
+            break;
+        }
+      });
+    }
+    initState() {
+      const {
+        style: style2 = {},
+        autoFocus = false,
+        focused,
+        hover = false,
+        value,
+        placeholder,
+        disabled,
+        hasOpacity = true
+      } = this.props;
+      const parsedColor = color.parse(value);
+      return {
+        style: style2,
+        autoFocus,
+        hover: hover || false,
+        focused: focused || false,
+        placeholder,
+        value,
+        parsedColor,
+        disabled,
+        hasOpacity
+      };
+    }
+    template() {
+      const { icon, hideColorView = false } = this.props;
+      const {
+        style: style2 = {},
+        focused = false,
+        hover = false,
+        value,
+        placeholder,
+        disabled,
+        parsedColor
+      } = this.state;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--input-paint",
+          {
+            focused,
+            hover,
+            disabled,
+            icon
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$7)
+        }
+      };
+      const inputEvents = {
+        onInput: this.props.onInput,
+        onChange: this.props.onChange,
+        onKeyDown: this.props.onKeyDown,
+        onKeyUp: this.props.onKeyUp,
+        onKeyPress: this.props.onKeyPress,
+        onSelect: this.props.onSelect,
+        onPaste: this.props.onPaste,
+        onCut: this.props.onCut,
+        onCopy: this.props.onCopy
+      };
+      const { r, g, b } = parsedColor;
+      const properties = {
+        disabled,
+        placeholder: placeholder || "",
+        value: color.format({ r, g, b }, "hex")
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, hideColorView ? void 0 : /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-paint-icon"
+      }, /* @__PURE__ */ sapa.createElementJsx(ColorView, {
+        color: value
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        ref: "$input",
+        ...properties,
+        ...inputEvents
+      }))), this.state.hasOpacity && /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-opacity"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "opacity",
+        value: `${parsedColor.a * 100}%`,
+        onKeyUp: this.keyup
+      })));
+    }
+    updateOpacity(num) {
+      this.setState({
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: this.state.parsedColor.a + num
+        }
+      });
+    }
+    increaseOpacity() {
+      this.updateOpacity(0.01);
+    }
+    decreaseOpacity() {
+      this.updateOpacity(-0.01);
+    }
+    onMounted() {
+      super.onMounted();
+      if (this.state.autoFocus) {
+        setTimeout(() => {
+          this.refs.$input.focus();
+          this.refs.$input.select();
+        }, 10);
+      }
+    }
+    runCallback(callback, e) {
+      if (sapa.isFunction(callback)) {
+        callback(e, this);
+      }
+    }
+    [sapa.CLICK("$el .elf--input-paint-icon")](e) {
+      var _a, _b;
+      (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
+    }
+    [sapa.FOCUSIN("$el input")](e) {
+      this.setState({
+        focused: true
+      });
+      e.target.select();
+      this.runCallback(this.props.onFocus, e);
+    }
+    [sapa.FOCUSOUT("$el input")](e) {
+      this.setState({
+        focused: false
+      });
+      this.runCallback(this.props.onBlur, e);
+    }
+    get value() {
+      return this.refs.$input.value;
+    }
+    set value(v) {
+      this.refs.$input.value = v;
+    }
+    get selectedValue() {
+      return document.getSelection().toString();
+    }
+  }
+  const cssProperties$6 = makeStyleMap("--elf--input-paint", {
+    borderColor: true,
+    backgroundColor: true,
+    disabledColor: true,
+    color: true,
+    fontSize: true,
+    fontWeight: true,
+    height: true,
+    padding: true,
+    borderRadius: true,
+    placeholderColor: true,
+    emptyColor: true
+  });
+  class HexColorEditor extends sapa.UIElement {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "keydownColor", (e) => {
+        const startIndex = Math.floor(e.target.selectionStart / 2) * 2;
+        let type = "";
+        if (startIndex < 2) {
+          type = "r";
+        } else if (startIndex < 4) {
+          type = "g";
+        } else {
+          type = "b";
+        }
+        switch (e.key) {
+          case "ArrowUp":
+            e.preventDefault();
+            this.increaseColor(type);
+            e.target.setSelectionRange(startIndex, startIndex + 2);
+            break;
+          case "ArrowDown":
+            e.preventDefault();
+            this.decreaseColor(type);
+            e.target.setSelectionRange(startIndex, startIndex + 2);
+            break;
+        }
+      });
+      __publicField(this, "keyupColor", (e) => {
+        if (e.key === "ArrowUp" || e.key === "ArrowDown")
+          ;
+        else {
+          if (e.target.value.length === 3 || e.target.value.length === 6) {
+            const color$1 = color.parse("#" + e.target.value);
+            if (color$1.type === "hex") {
+              if (this.isInvalidColor(color$1) === false) {
+                this.updateFullColor(color$1);
+              }
+            }
+          }
+        }
+      });
+      __publicField(this, "keydown", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        switch (e.key) {
+          case "ArrowUp":
+            this.increaseOpacity(e);
+            e.target.select();
+            break;
+          case "ArrowDown":
+            this.decreaseOpacity(e);
+            e.target.select();
+            break;
+        }
+      });
+    }
+    initState() {
+      const {
+        style: style2 = {},
+        autoFocus = false,
+        focused,
+        hover = false,
+        value,
+        placeholder,
+        disabled,
+        hasOpacity = true
+      } = this.props;
+      const parsedColor = color.parse(value);
+      return {
+        style: style2,
+        autoFocus,
+        hover: hover || false,
+        focused: focused || false,
+        placeholder,
+        value,
+        parsedColor,
+        disabled,
+        hasOpacity
+      };
+    }
+    template() {
+      const { icon, value } = this.props;
+      const {
+        style: style2 = {},
+        focused = false,
+        hover = false,
+        placeholder,
+        disabled
+      } = this.state;
+      const { r, g, b, a } = color.parse(value);
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--input-paint",
+          {
+            focused,
+            hover,
+            disabled,
+            icon,
+            invalid: this.isInvalidColor({ r, g, b, a })
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$6)
+        }
+      };
+      const inputEvents = {
+        onInput: this.props.onInput,
+        onChange: this.props.onChange,
+        onKeyDown: this.props.onKeyDown,
+        onKeyUp: this.props.onKeyUp,
+        onKeyPress: this.props.onKeyPress,
+        onSelect: this.props.onSelect,
+        onPaste: this.props.onPaste,
+        onCut: this.props.onCut,
+        onCopy: this.props.onCopy
+      };
+      const properties = {
+        disabled,
+        placeholder: placeholder || "",
+        value: color.format({ r, g, b }, "hex").replace("#", "")
+      };
+      this.setState({
+        parsedColor: {
+          r,
+          g,
+          b,
+          a
+        }
+      }, false);
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        type: "text",
+        "data-type": "hex",
+        maxlength: 6,
+        ...properties,
+        ...inputEvents,
+        onKeyDown: this.keydownColor,
+        onKeyUp: this.keyupColor
+      }))), this.state.hasOpacity && /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-opacity"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "opacity",
+        value: `${Math.round(a * 100 * 100) / 100}%`,
+        onKeyDown: this.keydown
+      })));
+    }
+    updateOpacity(num) {
+      this.setState({
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100))
+        }
+      }, false);
+      this.runCallback(this.props.onChange);
+    }
+    updateFullColor(parsedColor) {
+      this.setState({
+        parsedColor
+      }, false);
+      this.runCallback(this.props.onChange);
+    }
+    updateColor(type, num) {
+      const lastValue = Math.max(0, Math.min(255, this.state.parsedColor[type] + num));
+      if (this.state.parsedColor[type] === lastValue) {
+        return;
+      }
+      this.setState({
+        parsedColor: {
+          ...this.state.parsedColor,
+          [type]: Math.max(0, Math.min(255, this.state.parsedColor[type] + num))
+        }
+      }, false);
+      this.runCallback(this.props.onChange);
+    }
+    increaseColor(type) {
+      this.updateColor(type, 1);
+    }
+    decreaseColor(type) {
+      this.updateColor(type, -1);
+    }
+    increaseOpacity() {
+      this.updateOpacity(0.01);
+    }
+    decreaseOpacity() {
+      this.updateOpacity(-0.01);
+    }
+    isInvalidColor(color2) {
+      return isNaN(color2.r) || isNaN(color2.g) || isNaN(color2.b) || isNaN(color2.a) || sapa.isUndefined(color2.r) || sapa.isUndefined(color2.g) || sapa.isUndefined(color2.b) || sapa.isUndefined(color2.a);
+    }
+    onMounted() {
+      if (this.state.autoFocus) {
+        setTimeout(() => {
+          const $el = this.$el.$("input[data-type='hex']");
+          $el.focus();
+          $el.select();
+        }, 10);
+      }
+    }
+    runCallback(callback, e) {
+      if (sapa.isFunction(callback)) {
+        callback(this.value, this);
+      }
+    }
+    [sapa.CLICK("$el .elf--input-paint-icon")](e) {
+      var _a, _b;
+      (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
+    }
+    [sapa.FOCUSIN("$el input")](e) {
+      this.setState({
+        focused: true
+      });
+      e.target.select();
+      this.runCallback(this.props.onFocus, e);
+    }
+    [sapa.FOCUSOUT("$el input")](e) {
+      this.setState({
+        focused: false
+      });
+      this.runCallback(this.props.onBlur, e);
+    }
+    get value() {
+      const { parsedColor } = this.state;
+      const { r, g, b, a } = parsedColor;
+      return color.format({ r, g, b, a }, "hex");
+    }
+    set value(v) {
+      this.refs.$input.value = v;
+    }
+    get selectedValue() {
+      return document.getSelection().toString();
+    }
+  }
+  const cssProperties$5 = makeStyleMap("--elf--input-paint", {
+    borderColor: true,
+    backgroundColor: true,
+    disabledColor: true,
+    color: true,
+    fontSize: true,
+    fontWeight: true,
+    height: true,
+    padding: true,
+    borderRadius: true,
+    placeholderColor: true,
+    emptyColor: true
+  });
+  class RGBColorEditor extends sapa.UIElement {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "keydownColor", (e) => {
+        switch (e.key) {
+          case "ArrowUp":
+            e.preventDefault();
+            this.increaseColor(e.target.getAttribute("data-type"));
+            e.target.select();
+            break;
+          case "ArrowDown":
+            e.preventDefault();
+            this.decreaseColor(e.target.getAttribute("data-type"));
+            e.target.select();
+            break;
+        }
+      });
+      __publicField(this, "keydown", (e) => {
+        switch (e.key) {
+          case "ArrowUp":
+            e.preventDefault();
+            this.increaseOpacity(e);
+            e.target.select();
+            break;
+          case "ArrowDown":
+            e.preventDefault();
+            this.decreaseOpacity(e);
+            e.target.select();
+            break;
+          case "Tab":
+            e.preventDefault();
+            var $el = this.$el.$("input[data-type='r']");
+            $el.focus();
+            $el.select();
+            break;
+        }
+      });
+    }
+    initState() {
+      const {
+        style: style2 = {},
+        autoFocus = false,
+        focused,
+        hover = false,
+        placeholder,
+        disabled,
+        hasOpacity = true
+      } = this.props;
+      return {
+        style: style2,
+        autoFocus,
+        hover: hover || false,
+        focused: focused || false,
+        placeholder,
+        disabled,
+        hasOpacity
+      };
+    }
+    template() {
+      const { icon, value } = this.props;
+      const {
+        style: style2 = {},
+        focused = false,
+        hover = false,
+        placeholder,
+        disabled
+      } = this.state;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--input-paint",
+          {
+            focused,
+            hover,
+            disabled,
+            icon
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$5)
+        }
+      };
+      const { r, g, b, a } = color.parse(value);
+      const properties = {
+        disabled,
+        placeholder: placeholder || "",
+        min: 0,
+        max: 255
+      };
+      this.setState(
+        {
+          parsedColor: { r, g, b, a }
+        },
+        false
+      );
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx(Grid, {
+        columns: 3
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        "data-type": "r",
+        tabIndex: 1,
+        value: r,
+        ...properties,
+        onKeyDown: this.keydownColor
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        "data-type": "g",
+        tabIndex: 2,
+        value: g,
+        ...properties,
+        onKeyDown: this.keydownColor
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        "data-type": "b",
+        tabIndex: 3,
+        value: b,
+        ...properties,
+        onKeyDown: this.keydownColor
+      })))), this.state.hasOpacity && /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-opacity"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        type: "text",
+        tabIndex: 4,
+        class: "opacity",
+        value: `${Math.round(a * 100 * 100) / 100}%`,
+        onKeyDown: this.keydown
+      })));
+    }
+    updateOpacity(num) {
+      this.setState(
+        {
+          parsedColor: {
+            ...this.state.parsedColor,
+            a: Math.max(
+              0,
+              Math.min(
+                1,
+                Math.round((this.state.parsedColor.a + num) * 100) / 100
+              )
+            )
+          }
+        },
+        false
+      );
+      this.runCallback(this.props.onChange);
+    }
+    updateColor(type, num) {
+      this.setState(
+        {
+          parsedColor: {
+            ...this.state.parsedColor,
+            [type]: Math.max(
+              0,
+              Math.min(255, this.state.parsedColor[type] + num)
+            )
+          }
+        },
+        false
+      );
+      this.runCallback(this.props.onChange);
+    }
+    increaseColor(type) {
+      this.updateColor(type, 1);
+    }
+    decreaseColor(type) {
+      this.updateColor(type, -1);
+    }
+    increaseOpacity() {
+      this.updateOpacity(0.01);
+    }
+    decreaseOpacity() {
+      this.updateOpacity(-0.01);
+    }
+    onMounted() {
+      if (this.state.autoFocus) {
+        setTimeout(() => {
+          const $el = this.$el.$("input[data-type='r']");
+          $el.focus();
+          $el.select();
+        }, 10);
+      }
+    }
+    runCallback(callback) {
+      if (sapa.isFunction(callback)) {
+        callback(this.value, this);
+      }
+    }
+    [sapa.CLICK("$el .elf--input-paint-icon")](e) {
+      var _a, _b;
+      (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
+    }
+    [sapa.FOCUSIN("$el input")](e) {
+      this.setState({
+        focused: true
+      });
+      e.target.select();
+      this.runCallback(this.props.onFocus, e);
+    }
+    [sapa.FOCUSOUT("$el input")](e) {
+      this.setState({
+        focused: false
+      });
+      this.runCallback(this.props.onBlur, e);
+    }
+    get value() {
+      const { parsedColor } = this.state;
+      const { r, g, b, a } = parsedColor;
+      return color.format({ r, g, b, a }, "rgb");
+    }
+    set value(v) {
+      this.refs.$input.value = v;
+    }
+    get selectedValue() {
+      return document.getSelection().toString();
+    }
+  }
+  const cssProperties$4 = makeStyleMap("--elf--input-editor", {
+    borderColor: true,
+    backgroundColor: true,
+    disabledColor: true,
+    color: true,
+    fontSize: true,
+    fontWeight: true,
+    height: true,
+    padding: true,
+    borderRadius: true,
+    placeholderColor: true,
+    emptyColor: true
+  });
+  class TextAreaEditor extends sapa.UIElement {
+    initState() {
+      const {
+        style: style2 = {},
+        focused,
+        hover = false,
+        value,
+        placeholder,
+        disabled
+      } = this.props;
+      return {
+        style: style2,
+        hover: hover || false,
+        focused: focused || false,
+        placeholder,
+        value,
+        disabled
+      };
+    }
+    template() {
+      const { icon } = this.props;
+      const {
+        style: style2 = {},
+        focused = false,
+        hover = false,
+        value,
+        placeholder,
+        disabled
+      } = this.state;
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--input-editor",
+          "multiline",
+          {
+            focused,
+            hover,
+            disabled,
+            icon
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$4)
+        }
+      };
+      const inputEvents = {
+        onInput: this.props.onInput,
+        onChange: this.props.onChange,
+        onKeyDown: this.props.onKeyDown,
+        onKeyUp: this.props.onKeyUp,
+        onKeyPress: this.props.onKeyPress,
+        onSelect: this.props.onSelect,
+        onPaste: this.props.onPaste,
+        onCut: this.props.onCut,
+        onCopy: this.props.onCopy
+      };
+      const properties = {
+        disabled,
+        placeholder,
+        value
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("textarea", {
+        ref: "$input",
+        ...properties,
+        ...inputEvents
+      }, value))));
+    }
+    onMounted() {
+      if (this.state.autoFocus) {
+        setTimeout(() => {
+          this.refs.$input.focus();
+          this.refs.$input.select();
+        }, 10);
+      }
+    }
+    runCallback(callback, e) {
+      if (sapa.isFunction(callback)) {
+        callback(e, this);
+      }
+    }
+    [sapa.FOCUSIN("$input")](e) {
+      this.setState({
+        focused: true
+      });
+      this.runCallback(this.props.onFocus, e);
+    }
+    [sapa.FOCUSOUT("$input")](e) {
+      this.setState({
+        focused: false
+      });
+      this.runCallback(this.props.onBlur, e);
+    }
+    get value() {
+      return this.refs.$input.value;
+    }
+    set value(v) {
+      this.refs.$input.value = v;
+    }
+  }
+  const cssProperties$3 = makeStyleMap("--elf--virtual-scroll", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    hoverColor: true,
+    borderColor: true,
+    boxShadow: true,
+    toolsBorderColor: true,
+    toolsBorderRadius: true,
+    hgap: true,
+    vgap: true
+  });
+  class VirtualScroll extends sapa.UIElement {
+    initState() {
+      return {
+        scrollHeight: 32
+      };
+    }
+    template() {
+      const { style: style2 = {}, itemHeight = 32, items = [] } = this.props;
+      const totalCount = items.length;
+      const styleObject = {
+        class: sapa.classnames("elf--virtual-scroll", this.props.class),
+        style: {
+          ...propertyMap(style2, cssProperties$3),
+          "--elf--virtual-scroll-item-width": "100%",
+          "--elf--virtual-scroll-item-height": `${itemHeight}px`,
+          "--elf--virtual-scroll-item-count": totalCount,
+          "--elf--virtual-scroll-panel-height": `${totalCount * itemHeight}px`
+        }
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--virtual-scroll-panel"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--virtual-scroll-content-area",
+        "data-scrolling": this.state.scrolling ? "true" : "false"
+      }, this.makeItemView())));
+    }
+    refreshSize() {
+      var _a;
+      const rect = (_a = this.$el) == null ? void 0 : _a.offsetRect();
+      if (rect) {
+        this.setState(
+          {
+            width: rect.width,
+            height: rect.height
+          },
+          false
+        );
+      }
+    }
+    onMounted() {
+      window.setTimeout(() => {
+        const rect = this.$el.offsetRect();
+        this.setState({
+          width: rect.width,
+          height: rect.height
+        });
+      }, 20);
+    }
+    filterItems(items, startIndex, endIndex) {
+      return items.filter((it, index) => {
+        return index >= startIndex && index <= endIndex;
+      });
+    }
+    makeItemView() {
+      const { itemHeight, items, overscanRowCount = 10 } = this.props;
+      const { width, height, isRenderingItems } = this.state;
+      if (!isRenderingItems) {
+        if (!width)
+          return [];
+        const scrollHeight = items.length * itemHeight;
+        const itemCount = Math.floor(height / itemHeight);
+        const totalCount = items.length;
+        this.setState(
+          {
+            scrollHeight,
+            itemCount
+          },
+          false
+        );
+        const startIndex = Math.max(
+          Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount,
+          0
+        );
+        const endIndex = Math.min(
+          Math.floor(startIndex + itemCount + 2 * overscanRowCount),
+          totalCount - 1
+        );
+        this.state.renderItems = this.filterItems(items, startIndex, endIndex);
+      }
+      return this.state.renderItems.map((item, index) => {
+        var _a, _b;
+        return (_b = (_a = this.props).itemRenderer) == null ? void 0 : _b.call(
+          _a,
+          item,
+          item.index * itemHeight,
+          index,
+          items,
+          this
+        );
+      });
+    }
+    checkScrollTop() {
+      const { scrollTop, height, scrollHeight } = this.state;
+      this.setState(
+        {
+          scrollTop: this.$el.scrollTop
+        },
+        false
+      );
+      if (scrollTop > scrollHeight - height) {
+        this.setState({
+          scrolling: false
+        });
+        return false;
+      }
+      return true;
+    }
+    [sapa.SCROLL("$el") + sapa.IF("checkScrollTop")]() {
+      this.trigger("reloadItems");
+    }
+    [sapa.SUBSCRIBE_SELF("checkScrolling") + sapa.DEBOUNCE(100)]() {
+      this.setState({
+        scrolling: false
+      });
+    }
+    [sapa.SUBSCRIBE_SELF("reloadItems") + sapa.FRAME]() {
+      this.setState({
+        scrolling: true
+      });
+      this.trigger("checkScrolling");
+    }
+    refresh() {
+      this.setState(
+        {
+          isRenderingItems: false
+        },
+        false
+      );
+      this.render();
+    }
+    refreshItems() {
+      this.setState(
+        {
+          isRenderingItems: true
+        },
+        false
+      );
+      this.render();
+    }
+    scrollIntoView(index) {
+      const { itemHeight } = this.props;
+      const scrollTop = index * itemHeight;
+      this.$el.scrollTop = scrollTop;
+      this.setState(
+        {
+          scrollTop: this.$el.scrollTop
+        },
+        false
+      );
+      this.refreshItems();
+    }
+  }
+  class Layer extends sapa.UIElement {
+    template() {
+      const {
+        top,
+        id,
+        topLevel,
+        group,
+        selected,
+        icon,
+        content,
+        lock,
+        visible,
+        lockIcon,
+        lockOpenIcon,
+        visibleIcon,
+        isComponent = false,
+        number = 10,
+        onClick,
+        onDoubleClick,
+        onContextMenu,
+        onMouseDown,
+        onMouseUp,
+        onMouseMove,
+        onMouseEnter,
+        onMouseLeave
+      } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--virtual-scroll-item elf--layer",
+        style: {
+          "--elf--virtual-scroll-item-top": `${top}px`
+        },
+        "data-id": id,
+        "data-number": number
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "container",
+        "data-top-level": topLevel ? "true" : void 0,
+        "data-hidden": !visible ? "true" : void 0,
+        "data-component": isComponent ? "true" : void 0,
+        "data-selected": selected ? "true" : void 0
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "group"
+      }, group), icon && /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "icon"
+      }, icon), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "text",
+        ref: "$text",
+        ...{
+          onClick,
+          onDoubleClick,
+          onContextMenu,
+          onMouseDown,
+          onMouseUp,
+          onMouseMove,
+          onMouseEnter,
+          onMouseLeave
+        }
+      }, content), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "tools"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "lock"
+      }, lock ? lockIcon : lockOpenIcon), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "visible"
+      }, visibleIcon))));
+    }
+  }
+  const cssProperties$2 = makeStyleMap("--elf--input-paint", {
+    borderColor: true,
+    backgroundColor: true,
+    disabledColor: true,
+    color: true,
+    fontSize: true,
+    fontWeight: true,
+    height: true,
+    padding: true,
+    borderRadius: true,
+    placeholderColor: true,
+    emptyColor: true
+  });
+  class HSLColorEditor extends sapa.UIElement {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "keydownColor", (e) => {
+        switch (e.key) {
+          case "ArrowUp":
+            e.preventDefault();
+            this.increaseColor(e.target.getAttribute("data-type"));
+            e.target.select();
+            break;
+          case "ArrowDown":
+            e.preventDefault();
+            this.decreaseColor(e.target.getAttribute("data-type"));
+            e.target.select();
+            break;
+        }
+      });
+      __publicField(this, "keydown", (e) => {
+        switch (e.key) {
+          case "ArrowUp":
+            e.preventDefault();
+            this.increaseOpacity(e);
+            e.target.select();
+            break;
+          case "ArrowDown":
+            e.preventDefault();
+            this.decreaseOpacity(e);
+            e.target.select();
+            break;
+          case "Tab":
+            e.preventDefault();
+            const $el = this.$el.$("input[data-type='h']");
+            $el.focus();
+            $el.select();
+            break;
+        }
+      });
+    }
+    initState() {
+      const {
+        style: style2 = {},
+        autoFocus = false,
+        focused,
+        hover = false,
+        placeholder,
+        disabled,
+        hasOpacity = true
+      } = this.props;
+      return {
+        style: style2,
+        autoFocus,
+        hover: hover || false,
+        focused: focused || false,
+        placeholder,
+        disabled,
+        hasOpacity
+      };
+    }
+    template() {
+      const { icon, value } = this.props;
+      const {
+        style: style2 = {},
+        focused = false,
+        hover = false,
+        placeholder,
+        disabled
+      } = this.state;
+      const { r, g, b, a } = color.parse(value);
+      const { h, s, l } = color.RGBtoHSL(r, g, b);
+      const styleObject = {
+        class: sapa.classnames([
+          "elf--input-paint",
+          {
+            focused,
+            hover,
+            disabled,
+            icon
+          }
+        ]),
+        style: {
+          ...propertyMap(style2, cssProperties$2)
+        }
+      };
+      const properties = {
+        disabled,
+        placeholder: placeholder || "",
+        min: 0,
+        max: 255
+      };
+      this.setState({
+        parsedColor: {
+          h,
+          s,
+          l,
+          a
+        }
+      }, false);
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx(Grid, {
+        columns: 3
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        type: "text",
+        tabIndex: 1,
+        "data-type": "h",
+        value: h,
+        ...properties,
+        onKeyDown: this.keydownColor
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        type: "text",
+        tabIndex: 2,
+        "data-type": "s",
+        value: s,
+        ...properties,
+        onKeyDown: this.keydownColor
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-item"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        class: "color",
+        type: "text",
+        tabIndex: 3,
+        "data-type": "l",
+        value: l,
+        ...properties,
+        onKeyDown: this.keydownColor
+      })))), this.state.hasOpacity && /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-opacity"
+      }, /* @__PURE__ */ sapa.createElementJsx("input", {
+        type: "text",
+        tabIndex: 4,
+        class: "opacity",
+        value: `${Math.round(a * 100 * 100) / 100}%`,
+        onKeyDown: this.keydown
+      })));
+    }
+    updateOpacity(num) {
+      this.setState({
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100))
+        }
+      });
+      this.runCallback(this.props.onChange);
+    }
+    updateColor(type, num) {
+      const data = {};
+      if (type === "h") {
+        data[type] = Math.max(0, Math.min(360, this.state.parsedColor[type] + num));
+      } else if (type === "s") {
+        data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));
+      } else if (type === "l") {
+        data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));
+      }
+      this.setState({
+        parsedColor: {
+          ...this.state.parsedColor,
+          ...data
+        }
+      }, false);
+      this.runCallback(this.props.onChange);
+    }
+    increaseColor(type) {
+      this.updateColor(type, 1);
+    }
+    decreaseColor(type) {
+      this.updateColor(type, -1);
+    }
+    increaseOpacity() {
+      this.updateOpacity(0.01);
+    }
+    decreaseOpacity() {
+      this.updateOpacity(-0.01);
+    }
+    onMounted() {
+      if (this.state.autoFocus) {
+        setTimeout(() => {
+          const $el = this.$el.$("input[data-type='h']");
+          $el.focus();
+          $el.select();
+        }, 10);
+      }
+    }
+    runCallback(callback) {
+      if (sapa.isFunction(callback)) {
+        callback(this.value, this);
+      }
+    }
+    [sapa.CLICK("$el .elf--input-paint-icon")](e) {
+      var _a, _b;
+      (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
+    }
+    [sapa.FOCUSIN("$el input")](e) {
+      this.setState({
+        focused: true
+      });
+      e.target.select();
+      this.runCallback(this.props.onFocus, e);
+    }
+    [sapa.FOCUSOUT("$el input")](e) {
+      this.setState({
+        focused: false
+      });
+      this.runCallback(this.props.onBlur, e);
+    }
+    get value() {
+      const { parsedColor } = this.state;
+      const { h, s, l, a } = parsedColor;
+      return color.format({ h, s, l, a }, "hsl");
+    }
+    set value(v) {
+      this.refs.$input.value = v;
+    }
+    get selectedValue() {
+      return document.getSelection().toString();
+    }
+  }
+  const COLOR_TYPES = ["hex", "rgb", "hsl"];
+  function EyeDropper(props) {
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "eye-dropper"
+    }, /* @__PURE__ */ sapa.createElementJsx(Button, {
+      onClick: async () => {
+        const eyeDropper = new window.EyeDropper();
+        try {
+          const result = await eyeDropper.open();
+          sapa.isFunction(props.onChange) && props.onChange(result.sRGBHex);
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+    }, /* @__PURE__ */ sapa.createElementJsx("svg", {
+      width: "15",
+      height: "15",
+      viewBox: "0 0 15 15",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /* @__PURE__ */ sapa.createElementJsx("path", {
+      d: "M13.4473 0.6C12.6473 -0.2 11.4473 -0.2 10.6473 0.6L7.84725 3.4L7.04725 2.7C6.64725 2.3 6.04725 2.3 5.64725 2.7C5.24725 3.1 5.24725 3.7 5.64725 4.1L6.34725 4.8L0.547255 10.6C0.147255 11 -0.452745 12.5 0.547255 13.5C1.54725 14.5 3.04725 13.9 3.44725 13.5L9.24725 7.7L9.94725 8.4C10.3473 8.8 10.9473 8.8 11.3473 8.4C11.7473 8 11.7473 7.4 11.3473 7L10.6473 6.3L13.4473 3.5C14.2473 2.6 14.2473 1.4 13.4473 0.6ZM2.54725 12.5H1.54725V11.5L7.34725 5.7L8.34725 6.7C8.24725 6.7 2.54725 12.5 2.54725 12.5Z",
+      fill: "black",
+      "fill-opacity": "0.8"
+    }))));
+  }
+  class BaseSlide extends sapa.UIElement {
+    template() {
+      const { value, containerClass, slideClass } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: `${containerClass} slide-view`
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: `${slideClass} slide-bg`
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "drag-pointer",
+        style: {
+          "--drag-point-left": value
+        }
+      })));
+    }
+    [sapa.POINTERSTART("$el .slide-bg")]() {
+      this.setState(
+        {
+          clicked: true,
+          rect: this.$el.$(".slide-bg").rect()
+        },
+        false
+      );
+    }
+    checkClicked() {
+      return this.state.clicked;
+    }
+    [sapa.POINTERMOVE("document") + sapa.IF("checkClicked")](e) {
+      const { onChange } = this.props;
+      const { x, width } = this.state.rect;
+      const minX = x;
+      const maxX = minX + width;
+      const targetX = Math.min(Math.max(minX, e.clientX), maxX);
+      const value = (targetX - minX) / width;
+      if (sapa.isFunction(onChange)) {
+        onChange(value);
+      }
+    }
+    [sapa.POINTEREND("document") + sapa.IF("checkClicked")]() {
+      this.setState(
+        {
+          clicked: false
+        },
+        false
+      );
+    }
+  }
+  class HueSlide extends sapa.UIElement {
+    template() {
+      const { value, onChange } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx(BaseSlide, {
+        value,
+        containerClass: "hue-slide",
+        slideClass: "hue-slide-bg",
+        onChange
+      });
+    }
+  }
+  class OpacitySlide extends sapa.UIElement {
+    template() {
+      const { value, onChange } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx(BaseSlide, {
+        value,
+        containerClass: "opacity-slide",
+        slideClass: "opacity-slide-bg",
+        onChange
+      });
+    }
+  }
+  class ColorInput extends sapa.UIElement {
+    initState() {
+      const { type } = this.props;
+      return { type };
+    }
+    makeTypedColorInput() {
+      const { r, g, b, a, onChange } = this.props;
+      const { type } = this.state;
+      const { h, s, l } = color.RGBtoHSL(r, g, b);
+      switch (type) {
+        case "hex":
+          return /* @__PURE__ */ sapa.createElementJsx("div", null, /* @__PURE__ */ sapa.createElementJsx(HexColorEditor, {
+            autoFocus: true,
+            value: color.format({ r, g, b, a }, "hex"),
+            onChange
+          }));
+        case "rgb":
+          return /* @__PURE__ */ sapa.createElementJsx("div", null, /* @__PURE__ */ sapa.createElementJsx(RGBColorEditor, {
+            autoFocus: true,
+            value: color.format({ r, g, b, a }, "rgb"),
+            onChange
+          }));
+        case "hsl":
+          return /* @__PURE__ */ sapa.createElementJsx("div", null, /* @__PURE__ */ sapa.createElementJsx(HSLColorEditor, {
+            autoFocus: true,
+            value: color.format({ h, s, l, a }, "hsl"),
+            onChange
+          }));
+      }
+      return void 0;
+    }
+    template() {
+      const { type } = this.state;
+      const input = this.makeTypedColorInput();
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "color-input"
+      }, /* @__PURE__ */ sapa.createElementJsx(OptionMenu, {
+        autoPosition: true,
+        menuStyle: {
+          width: 80,
+          itemPadding: "10px"
+        },
+        items: COLOR_TYPES.map((it) => {
+          return {
+            title: it.toUpperCase(),
+            selectable: true,
+            closable: true,
+            selected: type === it,
+            onClick: () => {
+              this.setState({
+                type: it
+              });
+            }
+          };
+        })
+      }, type.toUpperCase()), input);
+    }
+  }
+  class ColorMixer extends sapa.UIElement {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "updateOpacity", (a) => {
+        this.setState({
+          a
+        });
+        this.changeColor();
+      });
+      __publicField(this, "updateHueColor", (h) => {
+        h = h * 360;
+        const { s, v, a } = this.state;
+        const { r, g, b } = color.HSVtoRGB(h, s, v);
+        this.setState({
+          color: color.format({ r, g, b }, "rgb"),
+          r,
+          g,
+          b,
+          a,
+          hueColor: color.checkHueColor(h / 360),
+          h,
+          s,
+          v
+        });
+        this.changeColor();
+      });
+      __publicField(this, "updateColor", (color$1) => {
+        const parsedColor = color.parse(color$1);
+        const { r, g, b, a } = parsedColor;
+        const { h, s, v } = color.RGBtoHSV(r, g, b);
+        this.setState({
+          color: color.format({ r, g, b }, "rgb"),
+          r,
+          g,
+          b,
+          a,
+          hueColor: color.checkHueColor(h / 360),
+          h,
+          s,
+          v
+        });
+        this.changeColor();
+      });
+    }
+    initState() {
+      const { color: color$1 } = this.props;
+      const parsedColor = color.parse(color$1);
+      const { r, g, b, a } = parsedColor;
+      const { h, s, v } = color.RGBtoHSV(r, g, b);
+      return {
+        type: parsedColor.type,
+        color: color.format({ r, g, b }, "rgb"),
+        width: 240,
+        height: 240,
+        r,
+        g,
+        b,
+        a,
+        hueColor: color.checkHueColor(h),
+        h,
+        s,
+        v
+      };
+    }
+    template() {
+      const { type, h, s, v, width, height, r, g, b, a, hueColor, color: color2 } = this.state;
+      const x = width * s;
+      const y = height * (1 - v);
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-mixer"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-area",
+        style: {
+          backgroundColor: hueColor
+        }
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "saturation"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "value"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "drag-pointer",
+        style: {
+          backgroundColor: color2,
+          left: x,
+          top: y
+        }
+      })))), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-slide-area"
+      }, window.EyeDropper ? /* @__PURE__ */ sapa.createElementJsx(EyeDropper, {
+        onChange: this.updateColor
+      }) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "slide"
+      }, /* @__PURE__ */ sapa.createElementJsx(HueSlide, {
+        value: h / 360,
+        onChange: this.updateHueColor
+      }), /* @__PURE__ */ sapa.createElementJsx(OpacitySlide, {
+        r,
+        g,
+        b,
+        value: a,
+        onChange: this.updateOpacity
+      }))), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-input-area"
+      }, /* @__PURE__ */ sapa.createElementJsx(ColorInput, {
+        ...{
+          type,
+          h,
+          s,
+          v,
+          r,
+          g,
+          b,
+          a
+        },
+        onChange: this.updateColor
+      })));
+    }
+    formatedColor() {
+      const { type, r, g, b, h, s, v, a } = this.state;
+      let color$1 = "";
+      switch (type) {
+        case "hex":
+        case "rgb":
+          color$1 = color.format({ r, g, b, a }, type);
+          break;
+        case "hsl":
+          var { h: hslH, s: hslS, l: hslL } = color.HSVtoHSL(h, s, v);
+          color$1 = color.format({ h: hslH, s: hslS, l: hslL, a }, type);
+          break;
+        case "hsv":
+          color$1 = color.format({ h, s, v, a }, type);
+          break;
+      }
+      return color$1;
+    }
+    changeColor() {
+      const { onChange } = this.props;
+      let color2 = this.formatedColor();
+      if (sapa.isFunction(onChange)) {
+        onChange(color2);
+      }
+    }
+    lastChangeColor() {
+      const { onLastChange } = this.props;
+      let color2 = this.formatedColor();
+      if (sapa.isFunction(onLastChange)) {
+        onLastChange(color2);
+      }
+    }
+    async openEyeDropper() {
+      const eyeDropper = new window.EyeDropper();
+      try {
+        const result = await eyeDropper.open();
+        this.updateColor(result.sRGBHex);
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+    [sapa.POINTERSTART("$el .elf--color-area")](e) {
+      this.setState(
+        {
+          clicked: true,
+          rect: this.$el.$(".elf--color-area").rect(),
+          clientX: e.clientX,
+          clientY: e.clientY
+        },
+        false
+      );
+    }
+    checkClicked() {
+      return this.state.clicked;
+    }
+    [sapa.POINTERMOVE("document") + sapa.IF("checkClicked")](e) {
+      const { x, y, width, height } = this.state.rect;
+      const minX = x;
+      const maxX = minX + width;
+      const minY = y;
+      const maxY = minY + height;
+      const targetX = Math.min(Math.max(minX, e.clientX), maxX);
+      const targetY = Math.min(Math.max(minY, e.clientY), maxY);
+      const s = (targetX - minX) / width;
+      const v = 1 - (targetY - minY) / height;
+      this.updateSaturationValue(s, v);
+    }
+    [sapa.POINTEREND("document") + sapa.IF("checkClicked")](e) {
+      this.setState(
+        {
+          clicked: false
+        },
+        false
+      );
+      if (this.state.clientX === e.clientX && this.state.clientY === e.clientY) {
+        return;
+      }
+      this.lastChangeColor();
+    }
+    updateSaturationValue(s, v) {
+      const { r, g, b } = color.HSVtoRGB(this.state.h, s, v);
+      this.setState({
+        r,
+        g,
+        b,
+        s,
+        v,
+        color: color.format({ r, g, b }, "rgb")
+      });
+      this.changeColor();
+    }
+  }
+  class ColorGrid extends sapa.UIElement {
+    initState() {
+      return {
+        selectedValue: this.props.selectedValue
+      };
+    }
+    makeItems() {
+      const { items } = this.props;
+      const { selectedValue } = this.state;
+      return items.map((it) => {
+        return {
+          title: it.title,
+          selectable: true,
+          closable: true,
+          selected: it.value === selectedValue,
+          onClick: () => {
+            this.setState({
+              selectedValue: it.value
+            });
+          }
+        };
+      });
+    }
+    template() {
+      const { items } = this.props;
+      const { selectedValue } = this.state;
+      const colorItem = items.find((it) => it.value === selectedValue) || items[0] || { title: "" };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-grid"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-grid-header"
+      }, /* @__PURE__ */ sapa.createElementJsx(OptionMenu, {
+        items: this.makeItems()
+      }, colorItem.title)), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-grid-list"
+      }, colorItem.colors.map((color2) => /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--color-grid-item",
+        onClick: () => this.selectColor(color2)
+      }, /* @__PURE__ */ sapa.createElementJsx(ColorView, {
+        color: color2
+      })))));
+    }
+    selectColor(color2) {
+      this.setState({ selectedColor: color2 }, false);
+      this.props.onSelect && this.props.onSelect(color2);
+    }
+  }
+  class View extends sapa.UIElement {
+    template() {
+      const {
+        as = "div",
+        id,
+        class: className = "",
+        style: style2 = {},
+        content,
+        ...extraStyle
+      } = this.props;
+      const { style: styleProperties, noneStyle } = convertPropertyToStyleKey(extraStyle);
+      const styleObject = {
+        class: sapa.classnames(className),
+        id,
+        style: propertyMap({ ...style2, ...styleProperties }, {}),
+        ...noneStyle
+      };
+      Object.keys(styleObject).forEach((key) => {
+        if (styleObject[key] === void 0) {
+          delete styleObject[key];
+        }
+      });
+      return sapa.createElementJsx(as, styleObject, content);
+    }
+  }
+  const style = {
+    boxSizing: "border-box"
+  };
+  function TextInputItem({ item: { value } }) {
+    return /* @__PURE__ */ sapa.createElementJsx(InputEditor, {
+      type: "text",
+      value,
+      width: "100%",
+      display: "block",
+      style
+    });
+  }
+  function TitleItem({ item: { value, key } }) {
+    return /* @__PURE__ */ sapa.createElementJsx(View, {
+      as: "div",
+      key
+    }, value);
+  }
+  function GridItem({
+    item: { gap, rowGap, columnGap, style: style2, columns = [], items = [] },
+    root
+  }) {
+    return /* @__PURE__ */ sapa.createElementJsx(Grid, {
+      columns,
+      gap,
+      rowGap,
+      columnGap,
+      style: style2
+    }, items.map((item, index) => root.makeEditorItem(item, index)));
+  }
+  const ButtonItem$1 = "";
+  function ButtonItem({ item }) {
+    return /* @__PURE__ */ sapa.createElementJsx(Button, {
+      onClick: item.onClick
+    }, item.title);
+  }
+  function ColorItem({ item: { value, autoFocus } }) {
+    return /* @__PURE__ */ sapa.createElementJsx(InputPaint, {
+      value,
+      autoFocus
+    });
+  }
+  function ToggleButtonItem({ item }) {
+    return /* @__PURE__ */ sapa.createElementJsx(IconButton, {
+      onChange: item.onChange
+    }, item.icon);
+  }
+  const cssProperties$1 = makeStyleMap("--elf--data-editor", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    width: true,
+    hoverColor: true,
+    borderColor: true
+  });
+  const predefinedPlugins = {
+    title: TitleItem,
+    text: TextInputItem,
+    grid: GridItem,
+    button: ButtonItem,
+    color: ColorItem,
+    "toggle-button": ToggleButtonItem
+  };
+  class DataEditor extends sapa.UIElement {
+    initState() {
+      const { data = () => ({}), items = () => [], plugins = {} } = this.props;
+      const currentData = data();
+      return {
+        plugins: {
+          ...predefinedPlugins,
+          ...plugins
+        },
+        data: currentData,
+        items: items(currentData)
+      };
+    }
+    makeEditorItem(item, index) {
+      const { plugins } = this.state;
+      if (typeof item === "string") {
+        const TitleItem2 = plugins["title"];
+        return /* @__PURE__ */ sapa.createElementJsx(TitleItem2, {
+          key: index,
+          item: { value: item }
+        });
+      } else {
+        const TypedItem = plugins[item.type];
+        if (TypedItem) {
+          return /* @__PURE__ */ sapa.createElementJsx(TypedItem, {
+            key: item.key || index,
+            item,
+            root: this
+          });
+        }
+      }
+      return void 0;
+    }
+    template() {
+      const { style: style2 = {} } = this.props;
+      const { items } = this.state;
+      const styleObject = {
+        class: sapa.classnames("elf--data-editor"),
+        style: propertyMap(style2, cssProperties$1)
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, items.map((item, index) => {
+        const isString = typeof item === "string";
+        return /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: sapa.classnames("elf--data-editor-item", { string: isString })
+        }, item.title ? /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "title"
+        }, item.title) : null, /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "editor"
+        }, this.makeEditorItem(item, index)));
+      }));
+    }
+  }
+  const EMPTY_POS = { x: 0, y: 0 };
+  const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
+  const MOVE_CHECK_MS = 0;
+  function getDist(startPos, endPos) {
+    return Math.sqrt(
+      Math.pow(endPos.x - startPos.x, 2) + Math.pow(endPos.y - startPos.y, 2)
+    );
+  }
+  class EventPanel extends sapa.UIElement {
+    initialize() {
+      super.initialize();
+      this.__initBodyMoves();
+    }
+    __initBodyMoves() {
+      this.__firstMove = /* @__PURE__ */ new Set();
+      this.__moves = /* @__PURE__ */ new Set();
+      this.__ends = /* @__PURE__ */ new Set();
+      this.__modifyBodyMoveSecond(MOVE_CHECK_MS);
+    }
+    __modifyBodyMoveSecond(ms = MOVE_CHECK_MS) {
+      const callback = ms === 0 ? this.__loopBodyMoves.bind(this) : sapa.debounce(this.__loopBodyMoves.bind(this), ms);
+      this.__funcBodyMoves = callback;
+    }
+    __loopBodyMoves() {
+      var pos = this.pos;
+      var e = this.$store.get(BODY_MOVE_EVENT);
+      var lastPos = this.lastPos || DEFAULT_POS;
+      var isNotEqualLastPos = !(lastPos.x === pos.x && lastPos.y === pos.y);
+      if (isNotEqualLastPos && this.__firstMove.size) {
+        let i = 0;
+        this.__firstMove.forEach((v) => {
+          const dist = getDist(pos, v.xy);
+          if (Math.abs(dist) > 0) {
+            var dx = pos.x - v.xy.x;
+            var dy = pos.y - v.xy.y;
+            v.func.call(v.context, dx, dy, "move", e.pressure);
+            i++;
+          }
+        });
+        if (i > 0) {
+          this.__firstMove.clear();
+        }
+      }
+      if (isNotEqualLastPos && this.__moves.size) {
+        this.__moves.forEach((v) => {
+          const dist = getDist(pos, v.xy);
+          if (Math.abs(dist) > 0.5) {
+            var dx = pos.x - v.xy.x;
+            var dy = pos.y - v.xy.y;
+            v.func.call(v.context, dx, dy, "move", e.pressure);
+          }
+        });
+        this.lastPos = pos;
+      }
+      window.requestAnimationFrame(this.__funcBodyMoves);
+    }
+    __removeBodyMoves() {
+      var pos = this.lastPos;
+      var e = this.$store.get(BODY_MOVE_EVENT);
+      if (pos) {
+        this.__ends.forEach((v) => {
+          v.func.call(
+            v.context,
+            pos.x - v.xy.x,
+            pos.y - v.xy.y,
+            "end",
+            e.pressure
+          );
+        });
+      }
+      this.__firstMove.clear();
+      this.__moves.clear();
+      this.__ends.clear();
+    }
+    [sapa.SUBSCRIBE_ALL(ADD_BODY_FIRST_MOUSEMOVE)](func, context, xy) {
+      this.__firstMove.add({ func, context, xy });
+    }
+    [sapa.SUBSCRIBE_ALL(ADD_BODY_MOUSEMOVE)](func, context, xy) {
+      this.__moves.add({ func, context, xy });
+    }
+    [sapa.SUBSCRIBE_ALL(ADD_BODY_MOUSEUP)](func, context, xy) {
+      this.__ends.add({ func, context, xy });
+    }
+    [sapa.POINTERSTART()](e) {
+      var newPos = e.xy || EMPTY_POS;
+      this.$store.init(BODY_MOVE_EVENT, e);
+      this.pos = newPos;
+    }
+    [sapa.POINTERMOVE()](e) {
+      var newPos = e.xy || EMPTY_POS;
+      this.$store.init(BODY_MOVE_EVENT, e);
+      this.pos = newPos;
+      if (!this.__requestId) {
+        this.__requestId = window.requestAnimationFrame(this.__funcBodyMoves);
+      }
+    }
+    [sapa.POINTEREND()](e) {
+      this.$store.set(BODY_MOVE_EVENT, e);
+      this.__removeBodyMoves();
+      window.cancelAnimationFrame(this.__requestId);
+      this.__requestId = null;
+    }
+  }
+  class EventControlPanel extends sapa.UIElement {
+    bodyMouseFirstMove(e, methodName) {
+      if (this[methodName]) {
+        this.emit(ADD_BODY_FIRST_MOUSEMOVE, this[methodName], this, e.xy);
+      }
+    }
+    bodyMouseMove(e, methodName) {
+      if (this[methodName]) {
+        this.emit(ADD_BODY_MOUSEMOVE, this[methodName], this, e.xy);
+      }
+    }
+    bodyMouseUp(e, methodName) {
+      if (this[methodName]) {
+        this.emit(ADD_BODY_MOUSEUP, this[methodName], this, e.xy);
+      }
+    }
+  }
+  class AppResizeBar extends sapa.UIElement {
+    template() {
+      const styleObject = {
+        class: "elf--app-layout-resize-bar"
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      });
+    }
+    [sapa.POINTERSTART()](e) {
+      this.startXY = e.xy;
+    }
+    isMoved(e) {
+      if (!this.startXY)
+        return false;
+      const { xy } = e;
+      const diffX = xy.x - this.startXY.x;
+      const diffY = xy.y - this.startXY.y;
+      if (diffX !== 0 || diffY !== 0) {
+        return true;
+      }
+      return false;
+    }
+    [sapa.POINTERMOVE("document") + sapa.IF("isMoved")](e) {
+      const { xy } = e;
+      const diffX = xy.x - this.startXY.x;
+      const diffY = xy.y - this.startXY.y;
+      if (sapa.isFunction(this.props.onResize)) {
+        this.props.onResize(diffX, diffY);
+      }
+    }
+    [sapa.POINTEREND("document") + sapa.IF("isMoved")](e) {
+      const { xy } = e;
+      const diffX = xy.x - this.startXY.x;
+      const diffY = xy.y - this.startXY.y;
+      if (sapa.isFunction(this.props.onResizeEnd)) {
+        this.props.onResizeEnd(diffX, diffY);
+      }
+      this.startXY = void 0;
+    }
+  }
+  function AppLayoutItem({
+    direction,
+    content,
+    width = "auto",
+    height = "auto",
+    maxWidth = 500,
+    minWidth = 0,
+    maxHeight = 500,
+    minHeight = 0,
+    resizable = false,
+    style: style2,
+    onResize,
+    onResizeEnd
+  }) {
+    const [initWidth, setWidth] = sapa.useState(width);
+    const [initHeight, setHeight] = sapa.useState(height);
+    const [itemWidth, setLastWidth] = sapa.useState(initWidth);
+    const [itemHeight, setLastHeight] = sapa.useState(initHeight);
+    const setSize = sapa.useCallback(
+      (size) => {
+        if (direction === "left" || direction === "right") {
+          const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
+          setLastWidth(lastWidth);
+          if (itemWidth != lastWidth) {
+            sapa.isFunction(onResize) && onResize(lastWidth, itemHeight);
+          }
+        } else if (direction === "top" || direction === "bottom") {
+          const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
+          setLastHeight(lastHeight);
+          if (itemHeight != lastHeight) {
+            sapa.isFunction(onResize) && onResize(itemWidth, lastHeight);
+          }
+        }
+      },
+      [itemWidth, itemHeight]
+    );
+    const onResizeCallback = sapa.useCallback(
+      (diffX, diffY) => {
+        if (direction === "left" || direction === "right") {
+          setSize(direction === "left" ? initWidth + diffX : initWidth - diffX);
+        } else {
+          setSize(direction === "top" ? initHeight + diffY : initHeight - diffY);
+        }
+      },
+      [direction, initWidth, initHeight, setSize]
+    );
+    const onResizeEndCallback = sapa.useCallback(() => {
+      setWidth(itemWidth);
+      setHeight(itemHeight);
+      sapa.isFunction(onResizeEnd) && onResizeEnd(itemWidth, itemHeight);
+    }, [itemWidth, itemHeight, setWidth, setHeight]);
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--app-layout-item",
+      "data-direction": direction,
+      "data-resizable": resizable,
+      style: { ...style2, width: itemWidth, height: itemHeight }
+    }, content, resizable ? /* @__PURE__ */ sapa.createElementJsx(AppResizeBar, {
+      onResize: onResizeCallback,
+      onResizeEnd: onResizeEndCallback
+    }) : void 0);
+  }
+  const cssProperties = makeStyleMap("--elf--toolbar", {
+    backgroundColor: true,
+    color: true,
+    height: true,
+    align: true
+  });
+  class AppLayout extends sapa.UIElement {
+    getItem(direction) {
+      return this.props.content.find((it) => it.props.direction === direction);
+    }
+    template() {
+      const { style: style2 = {} } = this.props;
+      const styleObject = {
+        class: "elf--app-layout",
+        style: propertyMap(style2, cssProperties)
+      };
+      const topLayoutItem = this.getItem("top");
+      const bottomLayoutItem = this.getItem("bottom");
+      const leftLayoutItem = this.getItem("left");
+      const rightLayoutItem = this.getItem("right");
+      const centerLayoutItem = this.getItem("center");
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, topLayoutItem ? topLayoutItem : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--app-layout-body"
+      }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
+    }
+  }
+  exports2.ADD_BODY_FIRST_MOUSEMOVE = ADD_BODY_FIRST_MOUSEMOVE;
+  exports2.ADD_BODY_MOUSEMOVE = ADD_BODY_MOUSEMOVE;
+  exports2.ADD_BODY_MOUSEUP = ADD_BODY_MOUSEUP;
+  exports2.ActionGroup = ActionGroup;
+  exports2.Alert = Alert;
+  exports2.AppLayout = AppLayout;
+  exports2.AppLayoutItem = AppLayoutItem;
+  exports2.AppResizeBar = AppResizeBar;
+  exports2.BODY_MOVE_EVENT = BODY_MOVE_EVENT;
+  exports2.Button = Button;
+  exports2.ButtonGroup = ButtonGroup;
+  exports2.Checkbox = Checkbox;
+  exports2.CheckboxGroup = CheckboxGroup;
+  exports2.ColorGrid = ColorGrid;
+  exports2.ColorMixer = ColorMixer;
+  exports2.ColorView = ColorView;
+  exports2.DataEditor = DataEditor;
+  exports2.Dialog = Dialog;
+  exports2.Divider = Divider;
+  exports2.END = END;
+  exports2.EventControlPanel = EventControlPanel;
+  exports2.EventPanel = EventPanel;
+  exports2.FIRSTMOVE = FIRSTMOVE;
+  exports2.Flex = Flex;
+  exports2.Grid = Grid;
+  exports2.HexColorEditor = HexColorEditor;
+  exports2.IconButton = IconButton;
+  exports2.InputEditor = InputEditor;
+  exports2.InputPaint = InputPaint;
+  exports2.Layer = Layer;
+  exports2.Layout = Layout;
+  exports2.LinkButton = LinkButton;
+  exports2.MOVE = MOVE;
+  exports2.Menu = Menu;
+  exports2.Notification = Notification;
+  exports2.OptionMenu = OptionMenu;
+  exports2.OptionStrip = OptionStrip;
+  exports2.Panel = Panel;
+  exports2.RGBColorEditor = RGBColorEditor;
+  exports2.Radio = Radio;
+  exports2.RadioGroup = RadioGroup;
+  exports2.Tab = Tab;
+  exports2.TabItem = TabItem;
+  exports2.TabStrip = TabStrip;
+  exports2.TextAreaEditor = TextAreaEditor;
+  exports2.ToggleButton = ToggleButton;
+  exports2.Toolbar = Toolbar;
+  exports2.ToolbarItem = ToolbarItem;
+  exports2.Tools = Tools;
+  exports2.Tooltip = Tooltip;
+  exports2.TooltipPosition = TooltipPosition;
+  exports2.VBox = VBox;
+  exports2.View = View;
+  exports2.VirtualScroll = VirtualScroll;
+  exports2.VisualBell = VisualBell;
+  exports2.alert = alert;
+  exports2.bell = bell;
+  Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+});

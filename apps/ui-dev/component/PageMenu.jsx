@@ -5,6 +5,8 @@ import "@elf-framework/ui/style.css";
 import "./PageMenu.scss";
 
 function pageId(url) {
+  if (!url) return "";
+
   return "link-" + url.replace(/\//g, "-");
 }
 
@@ -46,7 +48,7 @@ export function PageMenu({ menu = [], depth = 0 }) {
                 disabled: page.disabled,
               })}
               data-depth={depth}
-              id={pageId(page.link)}
+              id={pageId(page?.link)}
             >
               <a href={page.link}>{page.title}</a>
             </div>,

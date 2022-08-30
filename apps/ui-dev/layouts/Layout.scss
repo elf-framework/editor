@@ -9,6 +9,7 @@ html,body {
     padding: 0px;
     margin: 0px;
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 .default-layout {
@@ -50,7 +51,8 @@ html,body {
         width: var(--layout-menu-width);
         bottom: 0px;
         top: var(--layout-header-height);
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: none;
         z-index: 1;
         box-sizing: border-box;
         padding: 10px 0px;
@@ -97,7 +99,7 @@ html,body {
 }
 
 
-@media (max-width: 800px) { 
+@media (max-width: 900px) { 
     .layout {
         --layout-header-height: 48px;
         position: static;

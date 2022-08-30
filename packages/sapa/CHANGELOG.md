@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.19
+
+### Patch Changes
+
+- fixed useEffect bug
+
 ## 2.1.15
 
 ### Patch Changes

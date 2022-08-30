@@ -10,12 +10,12 @@
     "disabled": {
       "background": {
         "default": {
-          "value": "{color.gray.1.value}"
+          "value": "#e6e6e6"
         }
       },
       "text": {
           "default": {
-              "value": "{color.gray.3.value}"
+              "value": "#b1b1b1"
           }
       }
 
@@ -47,7 +47,7 @@
 
       "border": {
         "default": {
-          "value": "{color.black.value}"
+          "value": "{color.gray.3.value}"
         },
         "primary": {
           "value": "{color.primary.value}"

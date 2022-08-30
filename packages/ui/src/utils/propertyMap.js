@@ -32,6 +32,9 @@ export const NumberStyleKeys = {
   gap: true,
 };
 
+/**
+ * styleMap("width", 10) => "10px"
+ */
 export function styleMap(key, value) {
   if (typeof value === "number") {
     if (NumberStyleKeys[key]) {

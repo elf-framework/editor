@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 26 Aug 2022 12:28:53 GMT
+ * Generated on Tue, 30 Aug 2022 11:57:29 GMT
  */
 
 export default tokens;
@@ -310,6 +310,15 @@ declare const tokens: {
       }
     }
   },
+  "shadow": {
+    "1": DesignToken,
+    "2": DesignToken,
+    "3": DesignToken,
+    "4": DesignToken,
+    "5": DesignToken,
+    "none": DesignToken,
+    "color": DesignToken
+  },
   "column": {
     "1": DesignToken,
     "2": DesignToken,
@@ -445,13 +454,6 @@ declare const tokens: {
       "800": DesignToken,
       "900": DesignToken,
       "1000": DesignToken
-    }
-  },
-  "weight": {
-    "font": {
-      "normal": DesignToken,
-      "semibold": DesignToken,
-      "bold": DesignToken
     }
   }
 }

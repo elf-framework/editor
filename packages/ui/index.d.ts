@@ -19,7 +19,7 @@ declare module "@elf-framework/ui" {
   type ThemeType = "dark" | "light" | string;
 
   /** button */
-  type ButtonType =
+  type ButtonVariant =
     | "primary"
     | "secondary"
     | "sucess"
@@ -204,7 +204,7 @@ declare module "@elf-framework/ui" {
   }
 
   interface ButtonProps {
-    type?: ButtonType;
+    variant?: ButtonVariant;
     size?: ButtonSize;
     shape?: ButtonShape;
     selected?: boolean;
@@ -235,6 +235,23 @@ declare module "@elf-framework/ui" {
     props: ButtonGroupProps;
   }
 
+  interface ActionGroupProps {
+    content?: Button[];
+    direction?: "horizontal" | "vertical";
+    moreIcon?: ContentType;
+    quiet?: boolean;
+    compact?: boolean;
+    justified?: boolean;
+    collapsed?: boolean;
+    disabled?: boolean;
+    onMoreClick?: (event: PointerEvent, items: ContentType[]) => void;
+    style?: ButtonStyle & CommonStyle;
+  }
+
+  export class ActionGroup extends UIElement {
+    props: ActionGroupProps;
+  }
+
   export class LinkButton extends UIElement {
     props: LinkButtonProps & CommonStyle;
   }
@@ -248,22 +265,24 @@ declare module "@elf-framework/ui" {
   /** menu */
   export type MenuItemType = {
     type: "item";
-    title: string;
-    shortcut?: string;
+    title: ContentType;
+    shortcut?: ContentType;
     hover?: boolean;
-    icon?: string;
+    icon?: ContentType;
+    description?: ContentType;
     selectable?: boolean;
     selected?: boolean;
-    selectedIcon?: string;
+    selectedIcon?: ContentType;
     onClick?: (event: PointerEvent) => void;
     onSelect?: (event: PointerEvent, context: MenuItem) => void;
     items?: ItemType[];
     closable?: boolean;
     rootClose?: () => void;
+    disabled?: boolean;
   };
 
-  export type GroupMenuItemType = {
-    type: "group";
+  export type SectionMenuItemType = {
+    type: "section";
     rootClose?: () => void;
     title: string;
   };
@@ -293,11 +312,12 @@ declare module "@elf-framework/ui" {
 
   export type ItemType =
     | MenuItemType
-    | GroupMenuItemType
+    | SectionMenuItemType
     | DividerMenuItemType
     | CustomMenuItemType
     | LinkMenuItemType
-    | "-";
+    | "-"
+    | string;
 
   interface MenuStyle {
     backgroundColor?: string;
@@ -329,8 +349,8 @@ declare module "@elf-framework/ui" {
     root?: ToolsMenuItem;
   }
 
-  export class GroupMenuItem extends UIElement {
-    props: GroupMenuItemType & CommonStyle;
+  export class SectionMenuItem extends UIElement {
+    props: SectionMenuItemType & CommonStyle;
   }
 
   export class MenuItem extends UIElement {
@@ -381,6 +401,17 @@ declare module "@elf-framework/ui" {
     color?: string;
     height?: string;
     align?: string;
+    rounded?: boolean;
+    class?: string;
+    emphasized?: boolean;
+    type?:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "success"
+      | "info"
+      | "warning"
+      | "danger";
   }
 
   export type ToolbarAlignType =
@@ -413,8 +444,8 @@ declare module "@elf-framework/ui" {
   export type ToolsMenuItemType = {
     type: "menu";
     items?: ItemType[];
-    title: string;
-    icon?: string;
+    title: ContentType;
+    icon?: ContentType;
     selected?: boolean;
     events?: string[];
     opened?: boolean;
@@ -449,6 +480,8 @@ declare module "@elf-framework/ui" {
     items: ToolsType[];
     style: ToolsStyle & CommonStyle;
     vertical?: boolean;
+    emphasized?: boolean;
+    moreIcon?: ContentType;
   }
   export class Tools extends UIElement {
     props: ToolsProps & CommonStyle;
@@ -561,6 +594,7 @@ declare module "@elf-framework/ui" {
     trigger: "hover" | "click";
     show: boolean;
     style: TooltipStyle & CommonStyle;
+    hideArrow: boolean;
   }
   export class Tooltip extends UIElement {
     props: TooltipProps & CommonStyle;
@@ -1014,7 +1048,8 @@ declare module "@elf-framework/ui" {
   }
 
   interface DividerProps {
-    type:
+    size: "small" | "medium" | "large";
+    variant:
       | "default"
       | "primary"
       | "secondary"
@@ -1024,7 +1059,7 @@ declare module "@elf-framework/ui" {
       | "info"
       | "light"
       | "dark";
-
+    orientation: "horizontal" | "vertical";
     margin?: number | string;
     style: CommonStyle;
   }

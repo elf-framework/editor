@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 26 Aug 2022 12:28:53 GMT
+ * Generated on Tue, 30 Aug 2022 11:57:30 GMT
  */
 
 (function(root, factory) {
@@ -606,7 +606,7 @@
     },
     "hover": {
       "default": {
-        "value": "#f5f8fa",
+        "value": "#f8f8f8",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
@@ -2220,11 +2220,11 @@
     },
     "gray": {
       "0": {
-        "value": "#f5f8fa",
+        "value": "#f8f8f8",
         "filePath": "tokens/color/core.json",
         "isSource": true,
         "original": {
-          "value": "#F5F8FA"
+          "value": "#f8f8f8"
         },
         "name": "ColorGray0",
         "attributes": {
@@ -3857,11 +3857,11 @@
     "disabled": {
       "background": {
         "default": {
-          "value": "#ebf0f5",
+          "value": "#e6e6e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1.value}"
+            "value": "#e6e6e6"
           },
           "name": "ButtonDisabledBackgroundDefault",
           "attributes": {
@@ -3880,11 +3880,11 @@
       },
       "text": {
         "default": {
-          "value": "#c5ced6",
+          "value": "#b1b1b1",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.3.value}"
+            "value": "#b1b1b1"
           },
           "name": "ButtonDisabledTextDefault",
           "attributes": {
@@ -4054,11 +4054,11 @@
       },
       "border": {
         "default": {
-          "value": "#2c353d",
+          "value": "#c5ced6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.black.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonColorBorderDefault",
           "attributes": {
@@ -4274,11 +4274,11 @@
     "color": {
       "border": {
         "default": {
-          "value": "#ebf0f5",
+          "value": "#818e9a",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1.value}"
+            "value": "{color.gray.5.value}"
           },
           "name": "DividerColorBorderDefault",
           "attributes": {
@@ -4421,6 +4421,127 @@
           ]
         }
       }
+    }
+  },
+  "shadow": {
+    "1": {
+      "value": "0 1px 4px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 1px 4px 0 {shadow.color.value}"
+      },
+      "name": "Shadow1",
+      "attributes": {
+        "category": "shadow",
+        "type": "1"
+      },
+      "path": [
+        "shadow",
+        "1"
+      ]
+    },
+    "2": {
+      "value": "0 4px 8px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 4px 8px 0 {shadow.color.value}"
+      },
+      "name": "Shadow2",
+      "attributes": {
+        "category": "shadow",
+        "type": "2"
+      },
+      "path": [
+        "shadow",
+        "2"
+      ]
+    },
+    "3": {
+      "value": "0 8px 16px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 8px 16px 0 {shadow.color.value}"
+      },
+      "name": "Shadow3",
+      "attributes": {
+        "category": "shadow",
+        "type": "3"
+      },
+      "path": [
+        "shadow",
+        "3"
+      ]
+    },
+    "4": {
+      "value": "0 12px 24px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 12px 24px 0 {shadow.color.value}"
+      },
+      "name": "Shadow4",
+      "attributes": {
+        "category": "shadow",
+        "type": "4"
+      },
+      "path": [
+        "shadow",
+        "4"
+      ]
+    },
+    "5": {
+      "value": "0 16px 32px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 16px 32px 0 {shadow.color.value}"
+      },
+      "name": "Shadow5",
+      "attributes": {
+        "category": "shadow",
+        "type": "5"
+      },
+      "path": [
+        "shadow",
+        "5"
+      ]
+    },
+    "none": {
+      "value": "none",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "none"
+      },
+      "name": "ShadowNone",
+      "attributes": {
+        "category": "shadow",
+        "type": "none"
+      },
+      "path": [
+        "shadow",
+        "none"
+      ]
+    },
+    "color": {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "rgba(0, 0, 0, 0.5)"
+      },
+      "name": "ShadowColor",
+      "attributes": {
+        "category": "shadow",
+        "type": "color"
+      },
+      "path": [
+        "shadow",
+        "color"
+      ]
     }
   },
   "column": {
@@ -6412,67 +6533,6 @@
           "time",
           "duration",
           "1000"
-        ]
-      }
-    }
-  },
-  "weight": {
-    "font": {
-      "normal": {
-        "value": 400,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 400
-        },
-        "name": "WeightFontNormal",
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "normal"
-        },
-        "path": [
-          "weight",
-          "font",
-          "normal"
-        ]
-      },
-      "semibold": {
-        "value": 600,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 600
-        },
-        "name": "WeightFontSemibold",
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "semibold"
-        },
-        "path": [
-          "weight",
-          "font",
-          "semibold"
-        ]
-      },
-      "bold": {
-        "value": 700,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 700
-        },
-        "name": "WeightFontBold",
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "bold"
-        },
-        "path": [
-          "weight",
-          "font",
-          "bold"
         ]
       }
     }

@@ -1,0 +1,48 @@
+.component-link {
+    border: 1px solid var(--color-gray-3);
+
+    display: flex;
+
+    width: 224px;
+    height: 64px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none !important;
+    .component-link-icon {
+        width: 64px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        font-weight: 700;
+        color: var(--color-blue-7);
+        font-size: var(--font-size-small);
+        background-color: var(--color-blue-2);
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .component-link-title {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;        
+        padding: 0px 12px;
+
+        .title {
+            margin: 0px;
+            font-size: 14px;
+
+        }
+
+        .description {
+            color: var(--color-gray-6);
+            font-size: 12px;
+        }
+    }
+}

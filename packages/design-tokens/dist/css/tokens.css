@@ -1,12 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Fri, 26 Aug 2022 12:28:53 GMT
+ * Generated on Tue, 30 Aug 2022 11:57:30 GMT
  */
 
 :root {
-  --weight-font-bold: 700;
-  --weight-font-semibold: 600;
-  --weight-font-normal: 400;
   --time-duration-1000: 0.50s;
   --time-duration-900: 0.45s;
   --time-duration-800: 0.40s;
@@ -91,6 +88,10 @@
   --column-3: repeat(3, 1fr);
   --column-2: repeat(2, 1fr);
   --column-1: repeat(1, 1fr);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-none: none;
+  --button-disabled-text-default: #b1b1b1;
+  --button-disabled-background-default: #e6e6e6;
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-white: #ffffff;
   --color-teal-9: #223a3b;
@@ -112,7 +113,7 @@
   --color-gray-3: #c5ced6;
   --color-gray-2: #d9e0e6;
   --color-gray-1: #ebf0f5;
-  --color-gray-0: #f5f8fa;
+  --color-gray-0: #f8f8f8;
   --color-pink-9: #522338;
   --color-pink-8: #782449;
   --color-pink-7: #992659;
@@ -201,12 +202,16 @@
   --spacing-size-xs: var(--spacing-2);
   --spacing-size-xxs: var(--spacing-1);
   --spacing-size-xxxs: var(--spacing-0);
-  --divider-color-border-default: var(--color-gray-1);
+  --shadow-5: 0 16px 32px 0 var(--shadow-color);
+  --shadow-4: 0 12px 24px 0 var(--shadow-color);
+  --shadow-3: 0 8px 16px 0 var(--shadow-color);
+  --shadow-2: 0 4px 8px 0 var(--shadow-color);
+  --shadow-1: 0 1px 4px 0 var(--shadow-color);
+  --divider-color-border-default: var(--color-gray-5);
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
-  --button-disabled-text-default: var(--color-gray-3);
-  --button-disabled-background-default: var(--color-gray-1);
+  --button-color-border-default: var(--color-gray-3);
   --button-selected-background-default: var(--color-gray-2);
   --alert-color-background-weak-success: var(--color-green-1); /* Base color for the success color */
   --alert-color-background-weak-warning: var(--color-orange-1); /* Base color for the warning color */
@@ -309,7 +314,6 @@
   --button-color-border-success: var(--color-success);
   --button-color-border-secondary: var(--color-secondary);
   --button-color-border-primary: var(--color-primary);
-  --button-color-border-default: var(--color-black);
   --button-color-background-danger: var(--color-danger);
   --button-color-background-warning: var(--color-warning);
   --button-color-background-info: var(--color-info);

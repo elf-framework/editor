@@ -1,188 +1,199 @@
 .elf--tools {
+  --elf--tools-background-color: transparent;
+  --elf--tools-arrow-background-color: rgba(44, 44, 44, 1);
+  --elf--tools-hover-background-color: rgba(0, 0, 0, 0.1);
+  --elf--tools-active-background-color: rgba(0, 0, 0, 0.2);
+  // --elf--tools-color: white;
+  --elf--tools-height: 48px;
+  --elf--tools-min-width: 40px;
+  --elf--tools-min-width-scale: 10px;
 
-    --elf--tools-background-color: transparent;
-    --elf--tools-arrow-background-color: rgba(44, 44, 44, 1);
-    --elf--tools-hover-background-color: black;
-    --elf--tools-color: white;
-    --elf--tools-height: 48px;
-    --elf--tools-min-width: 40px;
-    --elf--tools-min-width-scale: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  height: var(--elf--tools-height);
+  background-color: var(--elf--tools-background-color);
+  // color: var(--elf--tools-color);
+  position: relative;
 
-
-    display: inline-flex;
-    flex-direction: row;
-    height: var(--elf--tools-height);
-    background-color: var(--elf--tools-background-color);
-    color: var(--elf--tools-color);
-
-    &.vertical {
-        flex-direction: column;
-        height: auto;
-        justify-content: center;
-        padding-top: 10px;
-        gap: var(--gap-16);
-
-        > .elf--tools-item {
-            height: 30px;
-            width: 30px;
-            min-width: auto;
-            padding: 5px;
-            --elf--tools-color: var(--color-gray-9);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &:hover,
-            &.hover {
-                --elf--tools-background-color: var(--color-hover-primary);
-                --elf--tools-color: var(--color-white);
-
-                &[data-selected-type="secondary"] {
-                    --elf--tools-background-color: var(--color-secondary);
-                    --elf--tools-color: var(--color-black);
-                }                
-            }
-
-            &.selected {
-                --elf--tools-background-color: var(--color-primary);
-                --elf--tools-color: var(--color-white);                
-
-                &[data-selected-type="secondary"] {
-                    --elf--tools-background-color: var(--color-secondary);
-                    --elf--tools-color: var(--color-black);
-                }
-            }
-
-        }
-    }
+  &.vertical {
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    padding-top: 10px;
+    gap: var(--gap-16);
 
     > .elf--tools-item {
+      height: 30px;
+      width: 30px;
+      min-width: auto;
+      padding: 5px;
+      --elf--tools-color: var(--color-gray-9);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover,
+      &.hover {
+        --elf--tools-background-color: var(--color-hover-primary);
+        --elf--tools-color: var(--color-white);
+
+        &[data-selected-type="secondary"] {
+          --elf--tools-background-color: var(--color-secondary);
+          --elf--tools-color: var(--color-black);
+        }
+      }
+
+      &.selected {
+        --elf--tools-background-color: var(--color-primary);
+        --elf--tools-color: var(--color-white);
+
+        &[data-selected-type="secondary"] {
+          --elf--tools-background-color: var(--color-secondary);
+          --elf--tools-color: var(--color-black);
+        }
+      }
+    }
+  }
+
+  > .elf--tools-item {
+    display: flex;
+    min-width: var(--elf--tools-min-width);
+    background-color: var(--elf--tools-background-color);
+    position: relative;
+    user-select: none;
+    padding: 0px 6px;
+    cursor: pointer;
+
+    &.hidden-tools {
+        padding: 0px;
+        
+    }
+
+    &.has-items {
+      min-width: calc(
+        var(--elf--tools-min-width) + var(--elf--tools-min-width-scale)
+      );
+    }
+
+    &.custom {
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    // 안보이는 마우스 체크 영역 추가
+    > .menu-area {
+      > .background {
+        height: 10px;
+        width: 200px;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        right: 0px;
+
+        // 안보이는 마우스 체크 영역 추가
+        &[data-direction="left"] {
+          left: 0px;
+        }
+
+        &[data-direction="right"] {
+          right: 0px;
+        }
+
+        &[data-direction="center"] {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      > .arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+
+        border-bottom: 5px solid var(--elf--tools-arrow-background-color);
+        border-top: 0px;
+        left: 50%;
+        transform: translateX(-50%) translateY(0.5px);
+        top: 100%;
+        display: inline-block;
+        // background-color: var(--elf--tools-arrow-background);
+        z-index: 1;
+      }
+    }
+
+    > button {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: var(--elf--tools-color);
+      border: 0px;
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .icon {
+        svg {
+          width: 20px;
+          height: 20px;
+
+          path {
+            fill: currentColor;
+          }
+        }
+      }
+
+      .menu-title {
         display: flex;
-        min-width: var(--elf--tools-min-width);
-        background-color: var(--elf--tools-background-color);
-        position: relative;
-        user-select: none;
-        padding: 0px 6px;
+        align-items: center;
+        white-space: nowrap;
+      }
 
-        &.has-items {
-            min-width: calc(var(--elf--tools-min-width) + var(--elf--tools-min-width-scale));
-        }
+      > .arrow {
+        pointer-events: all;
+        margin-left: 2px;
+        svg {
+          width: 12px;
+          height: 12px;
+          pointer-events: none;
 
-        &.custom {
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            cursor: pointer;
-            user-select: none;
-        }
+          path {
+            fill: currentColor;
+          }
 
-        // 안보이는 마우스 체크 영역 추가         
-        > .menu-area {
-            > .background{
-                height: 10px;
-                width: 200px;
-                display: block;
-                position: absolute;
-                z-index: 1;
-                top: 100%;
-                right: 0px;
-
-                // 안보이는 마우스 체크 영역 추가 
-                &[data-direction="left"] {
-                    left: 0px;
-                }   
-
-                &[data-direction="right"] {
-                    right: 0px;
-                }
-
-                &[data-direction="center"] {
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-            }
-            > .arrow {
-                position: absolute;
-                width: 0; 
-                height: 0; 
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                
-                border-bottom: 5px solid var(--elf--tools-arrow-background-color);
-                border-top: 0px;
-                left: 50%;
-                transform: translateX(-50%) translateY(0.5px);
-                top: 100%;
-                display: inline-block;
-                // background-color: var(--elf--tools-arrow-background);
-                z-index: 1;
-            }
-        }
-
-        > button {
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            color: var(--elf--tools-color);
-            border: 0px;
-            pointer-events: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-
-            > .icon {
-
-                svg {
-                    width: 20px;
-                    height: 20px;
-    
-                    path {
-                        fill: currentColor;
-                    }
-    
-                }
-            }
-
-            .menu-title {
-                display: flex;
-                align-items: center;
-            }
-
-            > .arrow {
-                pointer-events: all;
-                margin-left: 2px;
-                svg {
-                    width: 12px;
-                    height: 12px;
-                    pointer-events: none;
-    
-                    path {
-                        fill: currentColor;
-                    }
-
-                    transition: transform 0.1s ease-in-out;
-    
-                }
-
-                &:hover,
-                &.opened {
-                     svg {
-                        transform: translateY(2px);
-                    }
-                }
-            }
-
+          transition: transform 0.1s ease-in-out;
         }
 
         &:hover,
-        &.hover {
-            --elf--tools-background-color: var(--elf--tools-hover-background-color)
+        &.opened {
+          svg {
+            transform: translateY(2px);
+          }
         }
-            
-        &.selected {
-            --elf--tools-background-color: var(--elf--primary-color);
-        }
+      }
     }
+
+    &:hover,
+    &.hover {
+      --elf--tools-background-color: var(--elf--tools-hover-background-color);
+    }
+
+    &:active,
+    &.active {
+      --elf--tools-background-color: var(--elf--tools-active-background-color);
+    }    
+
+    &.selected {
+      --elf--tools-background-color: var(--elf--primary-color);
+    }
+
+
+  }
 }

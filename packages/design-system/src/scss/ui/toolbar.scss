@@ -1,7 +1,7 @@
 .elf--toolbar {
 
-    --elf--toolbar-background-color: rgba(44, 44, 44, 1);
-    --elf--toolbar-color: white;
+    --elf--toolbar-background-color: var(--color-white);
+    --elf--toolbar-color: var(--color-black);
     --elf--toolbar-height: 48px;
     --elf--toolbar-align: space-between;
 
@@ -11,6 +11,31 @@
     background-color: var(--elf--toolbar-background-color);
     color: var(--elf--toolbar-color);
     justify-content: var(--elf--toolbar-align);
+    gap: 24px;
+
+    &.primary {
+        --elf--toolbar-background-color: var(--color-blue-7);
+        --elf--toolbar-color: var(--color-white);
+    }
+
+    &.secondary {
+        --elf--toolbar-background-color: var(--color-gray-9);
+        --elf--toolbar-color: var(--color-white);
+    }
+
+    &.success {
+        --elf--toolbar-background-color: var(--color-green-7);
+        --elf--toolbar-color: var(--color-white);
+    }    
+
+    &.rounded {
+        border-radius: 4px;
+    }
+
+    &.emphasized {
+        white-space: nowrap;
+        // overflow: hidden;
+    }
 
     &.start {
         --elf--toolbar-align: flex-start;

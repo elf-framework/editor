@@ -1,6 +1,6 @@
 .elf--button {
   --elf--button-border-color: var(--button-color-border-default);
-  --elf--button-padding: var(--button-size-padding-medium);
+  --elf--button-padding: 6px 6px;
   --elf--button-font-size: var(--elf--font-size, 14px);
   --elf--button-background-color: var(
     --button-color-background-default
@@ -8,7 +8,7 @@
   --elf--button-color: rgba(0, 0, 0, 0.8);
   --elf--button-border-radius: 4px;
   --elf--button-disabled-color: var(--elf--disabled-color);
-  --elf--button-inner-gap: 10px;
+  --elf--button-inner-gap: 6px;
   --elf--button-selected-background-color: var(--button-selected-background-default);
   --elf--button-selected-border-color: var(--button-selected-background-default);
 
@@ -22,6 +22,11 @@
   border: 1px solid var(--elf--button-border-color);
   cursor: pointer;
   white-space: nowrap;
+
+  .elf--icon {
+    width: 20px;
+    height: 20px;
+  }
 
   &.selected {
     background-color: var(--elf--button-selected-background-color);
@@ -63,12 +68,19 @@
 
   &.large {
     --elf--button-font-size: 16px;
-    --elf--button-padding: var(--button-size-padding-large);
+    --elf--button-padding: 8px 12px;
   }
+
+  &.xlarge {
+    --elf--button-font-size: 20px;
+    --elf--button-padding: 14px 16px;
+  }
+
 
   &.small {
     --elf--button-font-size: 12px;
-    --elf--button-padding: var(--button-size-padding-small);
+    --elf--button-padding: 3px 3px;
+    --elf--button-inner-gap: 4px;
   }
 
   &.elf--button-shape-round {
@@ -96,6 +108,11 @@
   &.hover {
     --elf--button-background-color: rgba(0, 0, 0, 0.06);
   }
+
+  &:active,
+  &.active {
+    --elf--button-background-color: rgba(0, 0, 0, 0.1);
+  }  
 
   &.primary {
     --elf--button-background-color: var(

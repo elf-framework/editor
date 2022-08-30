@@ -15,7 +15,7 @@ import { propertyMap } from "../../utils/propertyMap";
 
 const MenuItemType = {
   DIVIDER: "divider",
-  GROUP: "group",
+  SECTION: "section",
   MENU: "menu",
   ITEM: "item",
   CUSTOM: "custom",
@@ -40,8 +40,8 @@ function makeMenuItem(items = [], rootClose) {
       return <CustomMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.LINK) {
       return <LinkMenuItem ref={ref} {...it} rootClose={rootClose} />;
-    } else if (it.type === MenuItemType.GROUP) {
-      return <GroupMenuItem ref={ref} {...it} rootClose={rootClose} />;
+    } else if (it.type === MenuItemType.SECTION) {
+      return <SectionMenuItem ref={ref} {...it} rootClose={rootClose} />;
     } else if (it.type === MenuItemType.DIVIDER) {
       return <DividerMenuItem ref={ref} {...it} rootClose={rootClose} />;
     }
@@ -68,7 +68,7 @@ function LinkMenuItem({ rootClose, title, link }) {
   );
 }
 
-function GroupMenuItem({ title = "" }) {
+function SectionMenuItem({ title = "" }) {
   return <li class="section-title">{title}</li>;
 }
 
@@ -86,6 +86,7 @@ class MenuItem extends UIElement {
       selectedIcon = "✓",
       closable = true,
       rootClose,
+      description,
     } = this.props;
 
     return {
@@ -100,6 +101,7 @@ class MenuItem extends UIElement {
       disabled,
       closable,
       rootClose,
+      description,
     };
   }
 
@@ -107,7 +109,8 @@ class MenuItem extends UIElement {
     const {
       title = "",
       shortcut,
-      icon = "▶",
+      icon,
+      expandIcon = "▶",
       items = [],
       hover,
       selected,
@@ -115,6 +118,8 @@ class MenuItem extends UIElement {
       selectedIcon,
       disabled,
       rootClose,
+      description,
+      show = false,
     } = this.state;
 
     const hasItems = items.length > 0;
@@ -128,16 +133,25 @@ class MenuItem extends UIElement {
         })}
         disabled={disabled ? true : undefined}
       >
-        {selectable ? (
-          <span class="selected-icon">
-            {selectedValue ? selectedIcon : undefined}
-          </span>
-        ) : null}
-        {title ? <div class="menu-title">{title}</div> : undefined}
-        {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
-        {icon && hasItems ? <div class="icon">{icon}</div> : undefined}
+        <div class="menu-item-content">
+          {selectable ? (
+            <span class="selected-icon">
+              {selectedValue ? selectedIcon : undefined}
+            </span>
+          ) : null}
 
-        {items.length > 0 ? (
+          {icon ? <div class="icon">{icon}</div> : undefined}
+          {title ? <div class="menu-title">{title}</div> : undefined}
+          <div class="value-area">
+            {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
+            {hasItems ? <div class="icon">{expandIcon}</div> : undefined}
+          </div>
+        </div>
+        {description ? (
+          <div class="menu-item-description">{description}</div>
+        ) : undefined}
+
+        {items.length > 0 || show ? (
           <Menu items={items} rootClose={rootClose} />
         ) : undefined}
       </li>

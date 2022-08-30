@@ -4,9 +4,21 @@
     width: 100%;
 
     padding: 32px 48px;
+    box-sizing: border-box;
 
     > .markdown-page-content {
         display: flex;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            .table-of-contents {
+                display: none;
+            }
+
+            .content-container {
+                width: 100%;
+            }
+        }
 
         .content-container {
             margin: 0 auto;

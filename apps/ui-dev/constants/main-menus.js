@@ -12,7 +12,7 @@ export default [
   {
     type: "link",
     title: "Design",
-    link: "/pages/design-system/",
+    link: "/pages/design-system/getting-started/",
   },
   {
     type: "link",

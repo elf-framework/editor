@@ -1,5 +1,12 @@
 # @elf-framework/design-tokens
 
+## 2.1.20
+
+### Patch Changes
+
+- Support ActionGroup
+  Modify Divider, VBox, Menu, Toolbar, Tooltip style
+
 ## 2.1.17
 
 ### Patch Changes

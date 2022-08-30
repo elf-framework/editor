@@ -19,13 +19,13 @@ const cssProperties = {
 export class Button extends UIElement {
   template() {
     const {
-      type,
+      variant = "default",
       size,
       disabled,
       selected,
       shape,
-      quiet = undefined,
-      outline = undefined,
+      quiet = false,
+      outline = false,
       style = {},
       onClick,
       content,
@@ -37,11 +37,7 @@ export class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
-        { selected, outline, quiet, [type]: true },
-        {
-          large: size === "large",
-          small: size === "small",
-        },
+        { selected, outline, quiet, [variant]: true, [size]: true },
         {
           "elf--button-shape-circle": shape === "circle",
           "elf--button-shape-round": shape === "round",

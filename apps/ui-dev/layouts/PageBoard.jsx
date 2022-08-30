@@ -6,7 +6,9 @@ export function PageBoard({ layout, page, filename }) {
 
   return (
     <CurrentLayout>
-      <MarkdownPage page={page} filename={filename} />
+      {(menu) => {
+        return <MarkdownPage page={page} filename={filename} menu={menu} />;
+      }}
     </CurrentLayout>
   );
 }

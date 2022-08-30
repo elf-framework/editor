@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -22,7 +22,7 @@
     "@elf-framework/color": "*",
     "@elf-framework/design-system": "*",
     "@elf-framework/design-tokens": "*",
-    "@elf-framework/icon": "^2.0.57",
+    "@elf-framework/icon": "^2.0.59",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",
@@ -41,7 +41,7 @@
     "remark-mdx-frontmatter": "^2.0.3",
     "vite": "^3.0.9",
     "vite-plugin-sapa": "*",
-    "vite-plugin-ssr": "^0.4.26",
+    "vite-plugin-ssr": "^0.4.27",
     "vitest": "0.22.1"
   }
 }

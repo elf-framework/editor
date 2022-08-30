@@ -6,6 +6,24 @@
     border-top: 1px solid;
     border-top-color: var(--elf--divider-color);
     margin: var(--elf--divider-margin);
+    width: 100%;
+    height: auto;
+
+    &.medium {
+        border-top-width: 3px;
+    }
+
+    &.large {
+        border-top-width: 5px;
+        --elf--divider-color: var(--color-gray-9);
+    }
+
+    &.vertical {
+        width: auto;
+        border-top-width: 0px;
+        border-left: 1px solid var(--elf--divider-color); 
+        height: 100%;
+    }
 
     &.primary {
         --elf--divider-color: var(--divider-color-border-primary);

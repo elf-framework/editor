@@ -23,12 +23,25 @@ const cssProperties = makeStyleMap("--elf--tooltip", {
   hgap: true,
   vgap: true,
   delay: true,
+  contentPadding: true,
 });
+
+export const TooltipPosition = {
+  TOP: "top",
+  BOTTOM: "bottom",
+  LEFT: "left",
+  RIGHT: "right",
+  BOTTOM_LEFT: "bottom-left",
+  BOTTOM_RIGHT: "bottom-right",
+  TOP_LEFT: "top-left",
+  TOP_RIGHT: "top-right",
+}
 
 export class Tooltip extends UIElement {
   initState() {
     return {
       trigger: this.props.trigger || "hover",
+      delay: 1000,
       show: this.props.show || false,
     };
   }
@@ -38,23 +51,25 @@ export class Tooltip extends UIElement {
       style = {},
       message = "",
       content,
+      deplay = 1000,
       position = "bottom",
+      hideArrow = false,
     } = this.props;
     const { show } = this.state;
 
     const styleObject = {
-      class: classnames("elf--tooltip", `elf--tooltip-position-${position}`),
+      class: classnames("elf--tooltip", {[position]: true}),
       style: {
         ...propertyMap(style, cssProperties),
       },
     };
 
     return (
-      <div class="elf--tooltip" {...styleObject}>
+      <div {...styleObject}>
         <div class="elf--tooltip-content">{content}</div>
         {show || this.props.show ? (
           <div class="elf--tooltip-message">
-            <div class="arrow"></div>
+            {hideArrow ? undefined : <div class="arrow"></div> }
             <div class="elf--toolltip-message-content">{message}</div>
           </div>
         ) : undefined}
@@ -69,9 +84,12 @@ export class Tooltip extends UIElement {
   }
 
   close() {
-    this.setState({
-      show: false,
-    });
+    setTimeout(() => {
+      this.setState({
+        show: false,
+      });
+    }, this.props.hideDelay)
+
   }
 
   toggle() {
@@ -81,7 +99,7 @@ export class Tooltip extends UIElement {
   }
 
   checkClickable(e) {
-    const $menu = Dom.create(e.target).closest("elf--tooltip");
+    const $menu = Dom.create(e.target).closest("elf--tooltip-content");
 
     // 메뉴가 클릭 될 때는 버튼 클릭으로 인식하지 않음.
     if ($menu) return false;
@@ -115,7 +133,7 @@ export class Tooltip extends UIElement {
     this.close();
   }
 
-  [CLICK("$el") + IF("checkClickable") + IF("checkTriggerClick")]() {
+  [CLICK("$el") + IF("checkTriggerClick")]() {
     this.toggle();
   }
 }

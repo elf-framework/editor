@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 26 Aug 2022 12:28:53 GMT
+ * Generated on Tue, 30 Aug 2022 11:57:29 GMT
  */
 
 export const ImageLogo : string;
@@ -215,6 +215,13 @@ export const DividerColorBorderSuccess : string;
 export const DividerColorBorderInfo : string;
 export const DividerColorBorderWarning : string;
 export const DividerColorBorderDanger : string;
+export const Shadow1 : string;
+export const Shadow2 : string;
+export const Shadow3 : string;
+export const Shadow4 : string;
+export const Shadow5 : string;
+export const ShadowNone : string;
+export const ShadowColor : string;
 export const Column1 : string;
 export const Column2 : string;
 export const Column3 : string;
@@ -320,6 +327,3 @@ export const TimeDuration700 : string;
 export const TimeDuration800 : string;
 export const TimeDuration900 : string;
 export const TimeDuration1000 : string;
-export const WeightFontNormal : number;
-export const WeightFontSemibold : number;
-export const WeightFontBold : number;

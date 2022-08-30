@@ -18,7 +18,7 @@ export function StatusView() {
         message={"Color Blue 6"}
       />
       <ColorDetailView
-        color={tokens.color.action.primary}
+        color={tokens.color.hover.primary}
         title={"Primary Action Background"}
         message={"Color Blue 7"}
       />
@@ -28,7 +28,7 @@ export function StatusView() {
         message={"Color Gray 6"}
       />
       <ColorDetailView
-        color={tokens.color.action.secondary}
+        color={tokens.color.hover.secondary}
         title={"Secondary Action Background"}
         message={"Color Gray 7"}
       />
@@ -38,7 +38,7 @@ export function StatusView() {
         message={"Color Green 6"}
       />
       <ColorDetailView
-        color={tokens.color.action.success}
+        color={tokens.color.hover.success}
         title={"Success Action Background"}
         message={"Color Green 7"}
       />
@@ -48,7 +48,7 @@ export function StatusView() {
         message={"Color Red 6"}
       />
       <ColorDetailView
-        color={tokens.color.action.danger}
+        color={tokens.color.hover.danger}
         title={"Danger Action Background"}
         message={"Color Red 7"}
       />
@@ -58,7 +58,7 @@ export function StatusView() {
         message={"Color Orange 3"}
       />
       <ColorDetailView
-        color={tokens.color.action.warning}
+        color={tokens.color.hover.warning}
         title={"Warning Action Background"}
         message={"Color Orange 4"}
       />
@@ -68,7 +68,7 @@ export function StatusView() {
         message={"Color Blue 4"}
       />
       <ColorDetailView
-        color={tokens.color.action.info}
+        color={tokens.color.hover.info}
         title={"Info Action Background"}
         message={"Color Blue 5"}
       />

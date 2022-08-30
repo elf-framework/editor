@@ -1,6 +1,7 @@
 .elf--menu {
     /* menu background color */
-    --elf--menu-background-color: #222222;
+    --elf--menu-background-color: var(--color-white);
+    --elf--menu-font-color: var(--color-black);
     /* menu border color */
     --elf--menu-border-color: rgba(0, 0, 0, 0.1);
     /* menu box-shadow */
@@ -10,16 +11,17 @@
     /* menu max height */
     --elf--menu-max-width: 240px;
     /* menu item height */
-    --elf--menu-item-height: 24px;
+    --elf--menu-item-height: 30px;
     /* menu item padding */
     --elf--menu-item-padding: 16px;
     /* menu item section title color */
-    --elf--menu-item-section-title-color: rgba(255, 255, 255, 0.6);
+    --elf--menu-item-section-title-color: var(--color-black);
     /* menu item divider color */
-    --elf--menu-item-divider-color: rgba(255, 255, 255, 0.1);    
+    --elf--menu-item-divider-color: var(--color-border);    
     /* menu direction */
     --elf--menu-direction-left: 100%;
     /* menu selected icon font size */
+    --elf--menu-selected-icon-font-color: var(--color-blue-6);
     --elf--menu-selected-icon-font-size: 20px;
 
     /* menu item font size */
@@ -31,7 +33,6 @@
     --elf--menu-left: 0px;
     --elf--menu-top: 0px;
     --elf--zindex: 1;
-
 
     background: var(--elf--menu-background-color);
     border: 0.5px solid var(--elf--menu-border-color);
@@ -75,23 +76,83 @@
 
     li {
         display: flex;
+        flex-direction: column;
         width: 100%;
-        height: var(--elf--menu-item-height);
         box-sizing: border-box;
         // justify-content: center;
-        border-bottom: 1px solid var(--elf--menu-border-color);
+        // border-bottom: 1px solid var(--elf--menu-border-color);
         // margin-bottom: 16px;
         margin-left: 0px;
-        padding: 0px var(--elf--menu-item-padding);
-        color: white;
-        align-items: center;
+        padding: 5px var(--elf--menu-item-padding);
+        color: var(--elf--menu-font-color);
         cursor: pointer;
         position: relative;
         user-select: none;
 
-        > a {
-            color: white;
+        > .menu-item-description {
+            font-size: 12px;
+            color: var(--color-gray-6);
         }
+
+        > .menu-item-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            height: var(--elf--menu-item-height);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            gap: 5px;
+
+            > .value-area {
+                display: flex;
+                gap: 5px;
+            }
+
+            > a {
+                color: var(--elf--menu-font-color);
+            }
+
+            > .menu-title {
+                flex: 1 1 auto;
+            }
+    
+            > .selected-icon {
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex: none;
+                font-weight: 700;
+                color: var(--elf--menu-selected-icon-font-color);
+                font-size: var(--elf--menu-selected-icon-font-size);
+            }
+    
+    
+            > .shortcut {
+                flex: none;
+                letter-spacing: 2px;
+                --elf--menu-item-font-size: 15px;
+            }
+    
+            > .icon {
+                flex: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                // transform: scale(1.2);
+                color: var(--color-gray-6);
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+    
+        }
+
 
         &.custom {
             height: auto;
@@ -112,7 +173,7 @@
 
         &:hover:not(.elf--divider):not(.custom):not([disabled]),
         &.hover {
-            background-color: var(--elf--primary-color);
+            background-color: var(--color-gray-2);
 
             > .elf--menu {
                 opacity: 1;
@@ -120,6 +181,18 @@
                 // transition: opacity 0.2s ease-in-out;                  
             }
         }
+      
+        &:active:not(.elf--divider):not(.custom):not([disabled]),
+        &.active {
+            background-color: var(--color-gray-2);
+
+            > .elf--menu {
+                opacity: 1;
+                pointer-events: all;              
+                // transition: opacity 0.2s ease-in-out;                  
+            }          
+        }  
+      
 
         > .state {
             width: 16px;
@@ -136,33 +209,7 @@
             }
         }
 
-        > .selected-icon {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex: none;
-            font-size: var(--elf--menu-selected-icon-font-size);
-        }
 
-        > .menu-title {
-            flex: 1 1 auto;
-        }
-
-        > .shortcut {
-            flex: none;
-            letter-spacing: 2px;
-            --elf--menu-item-font-size: 15px;
-        }
-
-        > .icon {
-            flex: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            // transform: scale(1.2);
-        }
 
         &:last-child {
             border-bottom: 0;
@@ -171,23 +218,30 @@
 
         &.elf--divider {
 
-            height: 2px;
-
+            height: 1px;
+            display: block;
             margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--elf--menu-item-divider-color);
+            margin-bottom: 0px;
+            border-top: 1px solid var(--elf--menu-item-divider-color);
             pointer-events: none;
+            padding-bottom:3px;
         }
 
         &.section-title {
-            padding: 0px 16px;
-            font-size: 12px;
-            font-weight: 400;
+            padding: 5px 16px;
+            font-size: 14px;
+            font-weight: 700;
             line-height: 16px;
             display: flex;
-            align-items: center;
+            width: 100%;
+            box-sizing: content-box;
+            height: var(--elf--menu-item-height);
+            align-items: flex-start;
+            justify-content: center;
             color: var(--elf--menu-item-section-title-color);
             pointer-events: none;
+            padding-bottom: 0px;
+            // border-top: 1px solid var(--elf--menu-item-divider-color);
         }
 
         > .elf--menu {

@@ -20,30 +20,29 @@ function makeSpacingStyle(prop) {
   const { item, type } = prop.attributes;
 
   if (item) {
-    return `
-.padding-${item} {
+    return `.padding-${item} {
   padding: ${prop.value};
 }
 
 .margin-${item} {
   margin: ${prop.value};
-}      
-    
-    `;
+}`;
   }
 
-  return `
-.padding-${type} {
+  return `.padding-${type} {
     padding: ${prop.value};
 }
 .margin-${type} {
   margin: ${prop.value};
-}
-`;
+}`;
 }
 
 function makeGapStyle(prop) {
   return `.${prop.name} { gap: ${prop.value}; }`;
+}
+
+function makeShadowStyle(prop) {
+  return `.${prop.name} { box-shadow: ${prop.value}; }`;
 }
 
 function makeColumnStyle(prop) {
@@ -70,20 +69,12 @@ function makeColorStyle(prop) {
       break;
     default:
       return `
-.${prop.name} {
-  color: ${prop.value};
-}
-
-.background-${prop.name} {
-  background-color: ${prop.value};
-}
-`;
+.${prop.name} { color: ${prop.value}; }
+.background-${prop.name} { background-color: ${prop.value}; }`;
   }
 
   return `
-.${prop.name} {
-  ${cssField}: ${prop.value};
-};`;
+.${prop.name} { ${cssField}: ${prop.value}; }`;
 }
 
 StyleDictionary.extend({
@@ -96,6 +87,8 @@ ${fileHeader({ file })}
 ${dictionary.allProperties
   .map((prop) => {
     switch (prop.attributes.category) {
+      case "shadow":
+        return makeShadowStyle(prop);
       case "gap":
         return makeGapStyle(prop);
       case "column":

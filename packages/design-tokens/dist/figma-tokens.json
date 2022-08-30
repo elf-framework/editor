@@ -2094,11 +2094,11 @@
     },
     "gray": {
       "0": {
-        "value": "#f5f8fa",
+        "value": "#f8f8f8",
         "filePath": "tokens/color/core.json",
         "isSource": true,
         "original": {
-          "value": "#F5F8FA"
+          "value": "#f8f8f8"
         },
         "attributes": {
           "category": "color",
@@ -3655,11 +3655,11 @@
     "disabled": {
       "background": {
         "default": {
-          "value": "{color.gray.1}",
+          "value": "#e6e6e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1}"
+            "value": "#e6e6e6"
           },
           "attributes": {
             "category": "button",
@@ -3677,11 +3677,11 @@
       },
       "text": {
         "default": {
-          "value": "{color.gray.3}",
+          "value": "#b1b1b1",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.3}"
+            "value": "#b1b1b1"
           },
           "attributes": {
             "category": "button",
@@ -3843,11 +3843,11 @@
       },
       "border": {
         "default": {
-          "value": "{color.black}",
+          "value": "{color.gray.3}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.black}"
+            "value": "{color.gray.3}"
           },
           "attributes": {
             "category": "button",
@@ -4053,11 +4053,11 @@
     "color": {
       "border": {
         "default": {
-          "value": "{color.gray.1}",
+          "value": "{color.gray.5}",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1}"
+            "value": "{color.gray.5}"
           },
           "attributes": {
             "category": "divider",
@@ -4192,6 +4192,120 @@
             "3": "danger"
           }
         }
+      }
+    }
+  },
+  "shadow": {
+    "1": {
+      "value": "0 1px 4px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 1px 4px 0 {shadow.color.value}"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "1"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "1"
+      }
+    },
+    "2": {
+      "value": "0 4px 8px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 4px 8px 0 {shadow.color.value}"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "2"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "2"
+      }
+    },
+    "3": {
+      "value": "0 8px 16px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 8px 16px 0 {shadow.color.value}"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "3"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "3"
+      }
+    },
+    "4": {
+      "value": "0 12px 24px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 12px 24px 0 {shadow.color.value}"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "4"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "4"
+      }
+    },
+    "5": {
+      "value": "0 16px 32px 0 rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 16px 32px 0 {shadow.color.value}"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "5"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "5"
+      }
+    },
+    "none": {
+      "value": "none",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "none"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "none"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "none"
+      }
+    },
+    "color": {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "rgba(0, 0, 0, 0.5)"
+      },
+      "attributes": {
+        "category": "shadow",
+        "type": "color"
+      },
+      "path": {
+        "0": "shadow",
+        "1": "color"
       }
     }
   },
@@ -6079,64 +6193,6 @@
           "0": "time",
           "1": "duration",
           "2": "1000"
-        }
-      }
-    }
-  },
-  "weight": {
-    "font": {
-      "normal": {
-        "value": 400,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 400
-        },
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "normal"
-        },
-        "path": {
-          "0": "weight",
-          "1": "font",
-          "2": "normal"
-        }
-      },
-      "semibold": {
-        "value": 600,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 600
-        },
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "semibold"
-        },
-        "path": {
-          "0": "weight",
-          "1": "font",
-          "2": "semibold"
-        }
-      },
-      "bold": {
-        "value": 700,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 700
-        },
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "bold"
-        },
-        "path": {
-          "0": "weight",
-          "1": "font",
-          "2": "bold"
         }
       }
     }

@@ -31,7 +31,7 @@ function createState({ value, component }) {
   const update = (newValue) => {
     const _newValue = getValue(newValue);
 
-    if (value.value !== _newValue) {
+    if (localValue.value !== _newValue) {
       localValue.value = _newValue;
 
       // createState 를 하는 시점에 저장된 component 를 렌더링 한다.
@@ -116,18 +116,21 @@ export class HookMachine extends MagicHandler {
       ? !deps.every((d, i) => d === currentDeps[i])
       : true;
 
+    if (deps?.length === 0 && currentDeps?.length === 0) {
+      return false;
+    }
+
     return hasDeps || hasChangedDeps;
   }
 
   useEffect(callback, deps) {
     const hasChangedDeps = this.isChangedDeps(deps);
 
-    if (hasChangedDeps) {
-      this.setHook(USE_EFFECT, {
-        deps,
-        callback,
-      });
-    }
+    this.setHook(USE_EFFECT, {
+      deps,
+      hasChangedDeps,
+      callback,
+    });
 
     this.increaseHookIndex();
   }
@@ -268,8 +271,11 @@ export class HookMachine extends MagicHandler {
   runHooks() {
     // hooks
     this.getUseEffects().forEach((it) => {
-      if (isFunction(it.cleanup)) it.cleanup();
-      it.cleanup = it.callback();
+      // FIXME: hook을 실행하기 전에 cleanup 을 수행해야할까?
+      if (it.hasChangedDeps) {
+        // deps: [] 는 한번만 실행하도록 해야한다.
+        it.cleanup = it.callback();
+      }
     });
   }
 

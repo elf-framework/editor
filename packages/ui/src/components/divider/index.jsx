@@ -9,10 +9,18 @@ const cssProperties = {
 
 export class Divider extends UIElement {
   template() {
-    const { style = {}, type = "default", margin = "10px 0" } = this.props;
+    const {
+      style = {},
+      variant = "default",
+      size = "small",
+      margin = "10px 0",
+      orientation = "horizontal",
+    } = this.props;
     const styleObject = {
       class: classnames("elf--divider", {
-        [type]: true,
+        [size]: true,
+        [variant]: true,
+        [orientation]: true,
       }),
       style: {
         ...propertyMap(

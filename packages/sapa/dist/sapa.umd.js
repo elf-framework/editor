@@ -1,7 +1,4619 @@
-var eo=Object.defineProperty;var to=(s,g,p)=>g in s?eo(s,g,{enumerable:!0,configurable:!0,writable:!0,value:p}):s[g]=p;var Ae=(s,g,p)=>(to(s,typeof g!="symbol"?g+"":g,p),p),it=(s,g,p)=>{if(!g.has(s))throw TypeError("Cannot "+p)};var h=(s,g,p)=>(it(s,g,"read from private field"),p?p.call(s):g.get(s)),w=(s,g,p)=>{if(g.has(s))throw TypeError("Cannot add the same private member more than once");g instanceof WeakSet?g.add(s):g.set(s,p)},k=(s,g,p,K)=>(it(s,g,"write to private field"),K?K.call(s,p):g.set(s,p),p),mn=(s,g,p,K)=>({set _(j){k(s,g,j,p)},get _(){return h(s,g,K)}}),pn=(s,g,p)=>(it(s,g,"access private method"),p);(function(s,g){typeof exports=="object"&&typeof module<"u"?g(exports):typeof define=="function"&&define.amd?define(["exports"],g):(s=typeof globalThis<"u"?globalThis:s||self,g(s.sapa={}))})(this,function(s){var Y,$,F,L,Z,J,I,y,ve,En,x;"use strict";const g="__componentInstance",p="__componentRootContext";function K(n,e,t=()=>!0){let r=n,i=[];do{if(r instanceof Object===!1||r.constructor.name===e.name)break;const u=Object.getOwnPropertyNames(r).filter(t);i.push.apply(i,u)}while(r=Object.getPrototypeOf(r));return i}function j(n,e=0){if(e===0)return n;var t=void 0;return function(r,i,o,a,u){t&&window.clearTimeout(t),t=window.setTimeout(function(){n(r,i,o,a,u)},e||300)}}function ke(n,e){var t=void 0;return function(r,i,o,a,u){t||(t=window.setTimeout(function(){n(r,i,o,a,u),t=null},e||300))}}function ot(n,e,t){return(...r)=>{t.every(o=>e[o].apply(e,r))&&n.apply(e,r)}}function at(n,e){return(...t)=>{n.requestAnimationFrameId&&cancelAnimationFrame(n.requestAnimationFrameId),n.requestAnimationFrameId=requestAnimationFrame(()=>{n.apply(e,t)})}}function Cn(n,e){Object.keys(n).forEach((t,r)=>{e(t,n[t],r)})}function ut(n,e){return Object.keys(n).map((t,r)=>e(t,n[t],r))}function Tn(n,e,t=""){return ut(n,e).join(t)}function bn(n,e,t){var r=ct(n[e],e);return E(t)?t(r):r}function ct(n,e){return typeof n>"u"?e:n}function ee(n){return typeof n>"u"}function z(n){return!ee(n)}function vn(n){return typeof n=="boolean"}function S(n){return typeof n=="string"}function Rn(n){return!S(n)}function O(n){return Array.isArray(n)}function W(n){return typeof n=="object"&&!Array.isArray(n)&&!Se(n)&&!S(n)&&n!==null}function E(n){return typeof n=="function"}function Se(n){return typeof n=="number"}function lt(n){return n===0}function yn(n){return!lt(n)}const On=n=>JSON.parse(JSON.stringify(n));function Nn(n){if(!ee(n))return On(n)}function An(n){return Object.keys(n).forEach(e=>{Array.isArray(n[e])&&(n[e]=n[e].join(", "))}),n}function ht(...n){const e=[];return n.filter(Boolean).forEach(t=>{O(t)?e.push(ht(...t)):W(t)?Object.keys(t).filter(r=>Boolean(t[r])).forEach(r=>{e.push(r)}):S(t)&&e.push(t)}),e.join(" ")}const ft=/[xy]/g;function dt(){var n=new Date().getTime(),e="xxx12-xx-34xx".replace(ft,function(t){var r=(n+Math.random()*16)%16|0;return n=Math.floor(n/16),(t=="x"?r:r&3|8).toString(16)});return e}function re(){var n=new Date().getTime(),e="idxxxxxxx".replace(ft,function(t){var r=(n+Math.random()*16)%16|0;return n=Math.floor(n/16),(t=="x"?r:r&3|8).toString(16)});return e}const gt={},se={},mt={},Me=new Set,Pe=new WeakMap,D=new Map,X=new Map,ie={},Ie=new WeakMap,te=new WeakMap,pt={currentComponent:null};function v(){return pt.currentComponent}function Et(n){pt.currentComponent=n}function kn(n,e=1){return te.has(n)||te.set(n,j((t=void 0)=>{n.render(t)},e)),te.get(n)}function Ct(n){te.has(n)&&te.delete(n)}function we(n,e=void 0){window.requestIdleCallback(()=>{var t;(t=kn(n))==null||t(e)})}const Tt="v:";function bt(n,e=""){const t=`${Tt}${re()}`;return D.set(t,n),e&&(X.has(e)||X.set(e,new Set),X.get(e).add(t)),t}function Sn(n){X.has(n)&&(X.get(n).forEach(e=>{D.delete(e)}),X.delete(n))}function vt(n,e=!0){if(S(n)===!1)return n;let t=n;return D.has(n)&&(t=D.get(n),e&&D.delete(n)),t}function Rt(n){return D.has(n)?D.get(n):n}function Mn(n){return D.has(n)}function Pn(n={}){Object.keys(n).forEach(e=>{gt[e]=n[e]})}function In(n,e){mt[n]=e}function yt(n){return mt[n]}function wn(n){return gt[yt(n)||n]}function He(n,e){const t=e.el||e;Me.add(n),Pe.has(t)&&Ot(Pe.get(t)),Pe.set(t,n)}function Ot(n){n==null||n.destroy(),Me.delete(n)}function Nt(){return[...Me]}let Le;function _e(){return Le}function Hn(n=!1){typeof Le>"u"&&(Le=n)}function At(n=!1){Nt().forEach(e=>{n?e.forceRender():e.render()})}function Ln(n){Object.keys(n).forEach(e=>{se[e]=n[e]})}function _n(n){return se[n]}function kt(n,e={}){return[...Object.keys(se).map(t=>{const r=se[t];return new r(n)}),...Object.keys(e).map(t=>{const r=e[t];return new r(n)})]}function Fn(n,e={}){ie[n]?St(n,e):(ie[n]={new:e,old:e},Object.keys(e).forEach(t=>{Ie.set(e[t],n)}))}function St(n,e){ie[n].new=e,Object.keys(e).forEach(t=>{Ie.set(e[t],n)})}function Mt(n){const e=Ie.get(n);if(!e)return n;const t=ie[e];if(!t)return n;const r=t.new[n.name];if(r)return r;const i=Object.values(t.new).find(u=>u===n);if(i)return i;let o="";return Object.entries(t.old).find(([u,c])=>c===n?(o=u,!0):!1)?t.new[o]:n}class d{constructor(e,t,r){if(typeof e!="string")e instanceof d?this.el=e.el:this.el=e;else{var i=document.createElement(e);t&&(i.className=t),r=r||{},Object.assign(i,r),this.el=i}}static create(e,t,r){return new d(e,t,r)}static createText(e){return new d(document.createTextNode(e))}static createByHTML(e){var t=d.create("div");return t.html(e).firstChild}static getScrollTop(){return Math.max(window.pageYOffset,document.documentElement.scrollTop,document.body.scrollTop)}static getScrollLeft(){return Math.max(window.pageXOffset,document.documentElement.scrollLeft,document.body.scrollLeft)}static parse(e){var t=window.DOMParser();return t.parseFromString(e,"text/html")}static body(){return d.create(document.body)}get tagName(){return this.el.tagName}get exists(){return Boolean(this.el)}setAttr(e){return Object.keys(e).forEach(t=>{this.attr(t,e[t])}),this}setAttrNS(e,t="http://www.w3.org/2000/svg"){return Object.keys(e).forEach(r=>{this.attr(r,e[r],t)}),this}setProp(e){return Object.keys(e).forEach(t=>{this.el[t]!=e[t]&&(this.el[t]=e[t])}),this}data(e,t){if(arguments.length===1){const r=this.attr("data-"+e);return vt(r,!1)}else if(arguments.length===2)return this.attr("data-"+e,t);return this}attr(...e){return e.length==1?E(this.el.getAttribute)&&this.el.getAttribute(e[0]):(this.el.getAttribute(e[0])!=e[1]&&this.el.setAttribute(e[0],e[1]),this)}attrKeyValue(e){return{[this.el.getAttribute(e)]:this.val()}}get attributes(){try{return[...this.el.attributes]}catch{const r=this.el.attributes.length,i=[];for(var e=0;e<r;e++)i.push(this.el.attributes[`${e}`]);return i}}attrs(...e){return e.map(t=>this.el.getAttribute(t))}styles(...e){return e.map(t=>this.el.style[t])}removeAttr(e){return this.el.removeAttribute(e),this}removeStyle(e){return this.el.style.removeProperty(e),this}get isFragment(){return this.el.nodeType===11}get isTemplate(){return this.el.nodeType===1&&this.el.tagName==="TEMPLATE"}get content(){return this.isTemplate?this.el.content:this.el}is(e){return e instanceof d?this.el===e.el:this.el===e}isTag(e){return this.el.tagName.toLowerCase()===e.toLowerCase()}closest(e){for(var t=this,r=!1;!(r=t.hasClass(e));)if(t.el.parentNode)t=d.create(t.el.parentNode);else return null;return r?t:null}path(){if(!this.el)return[];let e=[this],t=this.parent();if(!t.el)return e;for(;t&&(e.unshift(t),t=t.parent(),!!t.el););return e}get $parent(){return this.parent()}parent(){return d.create(this.el.parentNode)}hasParent(){return!!this.el.parentNode}get isUnlinked(){return!this.el.parentNode}removeClass(...e){return this.el.classList.remove(...e),this}updateClass(e){return this.el.className=e,this}replaceClass(e,t){return this.el.classList.replace(e,t),this}hasClass(e){return this.el.classList?this.el.classList.contains(e):!1}addClass(...e){return this.el.classList.add(...e),this}onlyOneClass(e){var t=this.parent();t.children().forEach(r=>{r.removeClass(e)}),this.addClass(e)}toggleClass(e,t){return this.el.classList.toggle(e,t),this}outerHTML(){return this.isTextNode?this.text():this.el.outerHTML}html(e){try{return typeof e>"u"?this.el.innerHTML:(typeof e=="string"?Object.assign(this.el,{innerHTML:e}):this.empty().append(e),this)}catch(t){return console.log(t,e),this}}find(e,t=this.el){if(!this.isTextNode)return t.querySelector(e)}$(e){var t=this.find(e,this.isTemplate?this.el.content:this.el);return t?d.create(t):null}findAll(e,t=this.el){return this.isTextNode?[]:Array.from(t.querySelectorAll(e))}$$(e){var t=this.findAll(e,this.isTemplate?this.el.content:this.el);return t.map(r=>d.create(r))}empty(){for(;this.el.firstChild;)this.el.removeChild(this.el.firstChild);return this}append(e){return e?(O(e)?this.el.append(...e.map(t=>t.el||t)):typeof e=="string"?this.el.appendChild(document.createTextNode(e)):this.el.appendChild(e.el||e),this):this}appendHTML(e){var t=d.create("div").html(e);return this.append(t.createChildrenFragment()),t}createChildrenFragment(){const e=this.childNodes;var t=document.createDocumentFragment();return e.forEach(r=>t.appendChild(r.el)),t}static createFragment(e=[]){var t=document.createDocumentFragment();return e.forEach(r=>t.appendChild(r)),t}appendTo(e){var t=e.el?e.el:e;return t.appendChild(this.el),this}remove(){return this.el.parentNode&&this.el.parentNode.removeChild(this.el),this}removeChild(e){return this.el.removeChild(e.el||e),this}text(e){if(typeof e>"u")return this.el.textContent;var t=e;return e instanceof d&&(t=e.text()),this.el.textContent!==t&&(this.el.textContent=t),this}css(e,t){if(typeof e<"u"&&typeof t<"u")e.indexOf("--")===0&&typeof t<"u"?this.el.style.setProperty(e,t):this.el.style[e]=t;else if(typeof e<"u"){if(typeof e=="string")return window.getComputedStyle(this.el)[e];Object.entries(e).forEach(([r,i])=>{r.indexOf("--")===0&&typeof i<"u"?this.el.style.setProperty(r,i):this.el.style[r]=i})}return this}cssText(e){return typeof e>"u"?this.el.style.cssText:(e!=this.el.tempCssText&&(this.el.style.cssText=e,this.el.tempCssText=e),this)}cssFloat(e){return parseFloat(this.css(e))}rect(){return this.el.getBoundingClientRect()}isSVG(){return this.el._cachedIsSVG||(this.el._cachedIsSVG={value:this.el.tagName.toLowerCase()==="svg"}),this.el._cachedIsSVG.value}offsetRect(){if(this.isSVG()){const t=this.parent().rect(),r=this.rect();return{x:r.x-t.x,y:r.y-t.y,width:r.width,height:r.height}}const e=this.el;return{x:e.offsetLeft,y:e.offsetTop,width:e.offsetWidth,height:e.offsetHeight}}offsetClientRect(){if(this.isSVG()){const r=this.parent().rect(),i=this.rect();return{x:i.x-r.x,y:i.y-r.y,width:i.width,height:i.height}}const e=this.parent().rect(),t=this.rect();return{x:t.x-e.x,y:t.y-e.y,width:t.width,height:t.height}}offset(){var e=this.rect(),t=d.getScrollTop(),r=d.getScrollLeft();return{top:e.top+t,left:e.left+r}}offsetLeft(){return this.offset().left}offsetTop(){return this.offset().top}position(){return this.el.style.top?{top:parseFloat(this.css("top")),left:parseFloat(this.css("left"))}:this.rect()}size(){return[this.width(),this.height()]}width(){return this.el.offsetWidth||this.rect().width}contentWidth(){return this.width()-this.cssFloat("padding-left")-this.cssFloat("padding-right")}height(){return this.el.offsetHeight||this.rect().height}contentHeight(){return this.height()-this.cssFloat("padding-top")-this.cssFloat("padding-bottom")}val(e){if(typeof e>"u")return this.el.value;if(typeof e<"u"){var t=e;e instanceof d&&(t=e.val()),this.el.value=t}return this}matches(e){return this.el&&this.el.matches?this.el.matches(e)?this:this.parent().matches(e):null}get value(){return this.el.value}set value(e){this.el.value=e}get naturalWidth(){return this.el.naturalWidth}get naturalHeight(){return this.el.naturalHeight}get files(){return this.el.files?[...this.el.files]:[]}get isTextNode(){return this.el.nodeType===3}show(e="block"){return this.el.style.display=e!="none"?e:"block",this}hide(){return this.el.style.display="none",this}isHide(){return this.el.style.display==="none"}isShow(){return!this.isHide()}toggle(e){var t=this.isHide();return arguments.length==1?e?this.show():this.hide():t?this.show():this.hide()}scrollIntoView(){this.el.scrollIntoView()}get scrollTop(){return this.el===document.body?d.getScrollTop():this.el.scrollTop}get scrollLeft(){return this.el===document.body?d.getScrollLeft():this.el.scrollLeft}get scrollHeight(){return this.el.scrollHeight}get scrollWidth(){return this.el.scrollWidth}on(e,t,r,i){return this.el.addEventListener(e,t,r,i),this}off(e,t){return this.el.removeEventListener(e,t),this}getElement(){return this.el}get firstChild(){return d.create(this.el.firstElementChild)}get first(){return d.create(this.el.firstChild)}children(){var e=this.el.firstElementChild;if(!e)return[];var t=[];do t.push(d.create(e)),e=e.nextElementSibling;while(e);return t}hasChild(e){const t=e.el||e;return this.el===t?!1:this.el.contains(t)}get childNodes(){const e=[];if(this.el.hasChildNodes()){const t=this.el.childNodes;for(let r=0;r<t.length;r++)e.push(d.create(t[r]))}return e}childLength(){return this.el.childNodes.length}replace(e){return this.el.parentNode&&this.el.parentNode.replaceChild(e.el||e,this.el),this}replaceChild(e,t){return this.el.replaceChild(t.el||t,e.el||e),this}checked(e=!1){return arguments.length==0?!!this.el.checked:(this.el.checked=!!e,this)}click(){return this.el.click(),this}focus(){return this.el.focus(),this}dispatchEvent(e,t){const r=new CustomEvent(e,{detail:t});return this.el.dispatchEvent(r),this}select(){if(this.attr("contenteditable")==="true"){var e=document.createRange();e.selectNodeContents(this.el);var t=window.getSelection();t.removeAllRanges(),t.addRange(e)}else this.el.select();return this}blur(){return this.el.blur(),this}}const A={NODE:8,TEXT:3,FRAGMENT:11,COMPONENT:100,ELEMENT:101,COMMENT:102};class Pt{constructor(){this.id=re(),this.cachedCallback={},this.callbacks={},this.settings=new Map}get(e,t=void 0){return this.settings.has(e)===!1?t:this.settings.get(e)}set(e,t,r=!0){this.settings.get(e)!==t&&(this.settings.set(e,t),r&&this.sendMessage(this,e,t))}init(e,t){this.set(e,t,!1)}toggle(e){this.set(e,!this.get(e))}toggleWith(e,t,r){this.get(e)===t?this.set(e,r):this.set(e,t)}true(e){return this.get(e)===!0}false(e){return this.get(e)===!1}is(e,t){return this.get(e)===t}remove(e){this.settings.delete(e)}hasCallback(e,t){var r=this.getCachedCallbacks(e);return r.some(i=>i.originalCallback===t)}getCallbacks(e){return this.callbacks[e]||(this.callbacks[e]=[]),this.callbacks[e]}setCallbacks(e,t=[]){this.callbacks[e]=t}on(e,t,r,i=0,o=0,a=!1,u=!1,c=[],m=!1){var C=t;return i>0?C=j(t,i):o>0&&(C=ke(t,o)),c.length&&(C=ot(C,r,c)),m&&(C=at(C,r,t.name)),this.getCallbacks(e).push({event:e,callback:C,context:r,originalCallback:t,enableAllTrigger:a,enableSelfTrigger:u}),()=>{this.off(e,t)}}off(e,t){arguments.length==1?this.setCallbacks(e):arguments.length==2&&this.setCallbacks(e,this.getCallbacks(e).filter(r=>r.originalCallback!==t))}offAll(e){Object.keys(this.callbacks).forEach(t=>{this.setCallbacks(t,this.getCallbacks(t).filter(r=>r.context!==e))})}getCachedCallbacks(e){return this.getCallbacks(e)}sendMessage(e,t,...r){this.sendMessageList(e,[[t,...r]])}runMessage(e,t){const r=e.callback.apply(e.context,t);if(z(r)){if(r===!1)return;if(E(r)){r();return}}}sendMessageList(e,t=[]){window.Promise.resolve().then(()=>{t.forEach(([r,...i])=>{var o=this.getCachedCallbacks(r);if(o&&o.length){const a=o.filter(c=>!c.enableSelfTrigger).filter(c=>c.enableAllTrigger||c.originalCallback.source!==e);let u=a.length;for(;u--;){const c=a[u];this.runMessage(c,i)}}})})}nextSendMessage(e,t,...r){window.Promise.resolve().then(()=>{t(...r)})}triggerMessage(e,t,...r){window.Promise.resolve().then(()=>{var i=this.getCachedCallbacks(t);i&&i.filter(a=>a.context.source===e).forEach(a=>{a.callback.apply(a.context,r)})})}emit(e,...t){E(e)?e(...t):O(e)?this.sendMessageList(this.source,e):this.sendMessage(this.source,e,...t)}nextTick(e){this.nextSendMessage(this.source,e)}trigger(e,...t){E(e)?e(...t):this.triggerMessage(this.source,e,...t)}}function It(n,e={}){return S(n)&&(n=P(n)),O(n)&&n.length===1?It(n[0],e):n?d.create(n.makeElement(!0,e).el):null}async function wt(n,e={}){return S(n)?n:O(n)&&n.length===1?await wt(n[0],e):n?await n.makeHtml(!0,e):""}const Un={area:!0,base:!0,br:!0,col:!0,embed:!0,hr:!0,img:!0,input:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0};function Dn(n){return Un[n.toLowerCase()]}const Fe=/^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g,Ue="@magic:",B="|",Ht=/(([\$a-z_\-]+)\([^\(\)]*\)|([a-z_\-]+))/gi,De="(",Lt=")",oe={KEYWORD:"keyword",FUNCTION:"function",VALUE:"value"};class H{constructor(e){this.context=e.context,this.originalMethod=e.originalMethod,this.method=e.method,this.args=e.args,this.pipes=e.pipes,this.keys=e.keys,this.__cache=new Map}setCache(e,t){this.__cache.set(e,t)}hasCache(e){return this.__cache.has(e)}getCache(e){return this.__cache.get(e)}hasKeyword(e){if(this.hasCache(e))return this.getCache(e);let t=!1;return this.pipes.forEach(r=>{switch(r.type){case oe.KEYWORD:r.value===e&&(t=!0);break}}),this.setCache(e,t),t}hasFunction(e){if(this.hasCache(e))return this.getCache(e);let t=!!this.getFunction(e);return this.setCache(e,t),t}getFunction(e){return this.functions.find(t=>t.func===e)}getFunctionList(e){return this.functions.filter(t=>t.func===e)}get originalCallback(){return this.context[this.originalMethod]}get keywords(){return this.keys[oe.KEYWORD].map(e=>e.value)}get functions(){return this.keys[oe.FUNCTION]}get values(){return this.keys[oe.VALUE].map(e=>e.value)}execute(...e){return this.originalCallback.call(this.context,...e)}executeWithContext(e,...t){return this.originalCallback.call(e,...t)}static make(e,...t){return`${Ue}${e} ${t.join(B)}`}static check(e){return e.match(Fe)!==null}static parse(e,t={}){const r=e.match(Fe);if(!r)return;const i=r[0].split(Ue)[1].split(B).map(T=>T.trim());let[o,...a]=i;const[u,...c]=o.split(" "),m=a.map(T=>this.parsePipe(T)).filter(T=>T.value),C={function:[],keyword:[],value:[]};return m.forEach(T=>{T.type==="function"?C.function.push(T):T.type==="keyword"?C.keyword.push(T):C.value.push(T)}),new H({context:t,originalMethod:e,method:u,args:c,pipes:m,keys:C})}static parsePipe(e){const t=e.match(Ht);if(!t)return{type:"value",value:e};const[r]=t;if(r.includes(De)){const[i,o]=r.split(De),[a]=o.split(Lt);return{type:"function",value:r,func:i,args:a.split(",").map(u=>u.trim()).filter(Boolean)}}return{type:"keyword",value:t[0]}}}const Bn=new Map(Object.entries({checked:!0,disabled:!0,selected:!0,readonly:!0,required:!0,multiple:!0,open:!0,hidden:!0,spellcheck:!0,autofocus:!0,autoplay:!0,controls:!0,loop:!0,muted:!0,default:!0,defer:!0,async:!0,allowfullscreen:!0,allowtransparency:!0,allowpaymentrequest:!0})),$n={content:!0},Gn=3,Vn=8,_t="style",Be="on";function Ft(n){return Bn.has(n)}const M={setBooleanProp(n,e,t){z(t)?(n.setAttribute(e,e),n[e]=t):(n.removeAttribute(e),n[e]=void 0)},setProp(n,e,t){Ft(e)?this.setBooleanProp(n,e,t):e.startsWith(Be)?n[e.toLowerCase()]=t:e===_t?n.style.cssText=t:(n.setAttribute(e,t),n[e]=t)},removeProp(n,e){n.removeAttribute(e),Ft(e)?n[e]=!1:e&&(n[e]=void 0)},updateProp(n,e,t,r){ee(t)?this.removeProp(n,e):(!r||t!=r)&&this.setProp(n,e,t)},replaceWith(n,e,t){const r=t.context.$el.el===n,i=e.makeElement(!0,t).el;r&&(t.context.$el.el=i),n.replaceWith(i),e.runMounted()},replaceText(n,e){n.textContent!=e.textContent&&(n.textContent=e.textContent)},replaceComment(n,e){M.replaceText(n,e)},addNewVNode(n,e,t,r){n.insertBefore(t.makeElement(!0,r).el,e),n.removeChild(e),t.runMounted()},appendChild(n,e,t){const r=e.makeElement(!0,t);r!=null&&r.el&&(n.appendChild(r.el),e.runMounted())},removeChild(n,e){n.removeChild(e)}},b={isTextNode(n){return n.nodeType===Gn},isCommentNode(n){return n.nodeType===Vn},isElementNode(n){return n.nodeType===1},isVNodeText(n){return n.type===A.TEXT},isVNodeComment(n){return n.type===A.COMMENT},changed(n,e){return(n.type===A.TEXT||n.type===A.COMMENT)&&n.textContent!==e.textContent||n.nodeName!==e.nodeName.toUpperCase()},hasPassed(n){return n.pass},hasRefClass(n){return n.Component}},Kn=(n,e={},t={})=>{const r=Object.keys(e),i=Object.keys(t);r.length===0&&i.length===0||(r.forEach(o=>{$n[o]||M.updateProp(n,o,e[o],t[o])}),i.forEach(o=>{ee(e[o])&&M.removeProp(n,o)}))};function Wn(n){const e=n.props||{},t={},r=Object.keys(e);if(!r.length)return t;for(let i=0,o=r.length;i<o;i++){const a=r[i];a.startsWith(Be)?t[a]=e[a]:a===_t?t[a]=n.stringifyStyle:t[a]=e[a]}return t}function xn(n,e,t){var r={};const i=e.length;for(let o=0;o<i;o++){const a=e[o],u=a.name,c=a.value;r[u]=c}return Object.keys(t).forEach(o=>{const a=o.startsWith(Be)?o.toLowerCase():o;r[a]||(r[o]=n[a])}),r}function jn(n,e,t,r={}){return b.isTextNode(e)&&!b.isVNodeText(t)||b.isCommentNode(e)&&!b.isVNodeComment(t)||!b.isTextNode(e)&&b.isVNodeText(t)||!b.isCommentNode(e)&&b.isVNodeComment(t)?M.addNewVNode(n,e,t,r):b.isTextNode(e)&&b.isVNodeText(t)?M.replaceText(e,t):b.isCommentNode(e)&&b.isVNodeComment(t)?M.replaceComment(e,t):b.hasRefClass(t)?E(r.checkRefClass)&&r.checkRefClass(e,t)&&(M.replaceWith(e,t,r),E(r.registerChildComponent)&&r.registerChildComponent(t.el,t.instance,t.instance.id,e)):M.replaceWith(e,t,r),!0}function zn(n,e,t={}){const r=Wn(e);Kn(n,r,xn(n,n.attributes,r)),Ut(n,e,t)}function Ut(n,e,t={}){if(!(!n.hasChildNodes()&&!e.children.length)){var r=Xn(n),i=qn(e),o=Math.max(r.length,i.length);if(o!==0)if(r.length===0&&i.length>0){var a=document.createDocumentFragment();i.forEach(c=>{const m=c.makeElement(!0,t).el;m&&a.appendChild(m)}),n.appendChild(a),i.forEach(c=>{c.runMounted()})}else if(r.length>0&&i.length===0)n.textContent="";else for(var u=0;u<o;u++)Dt(n,r[u],i[u],t)}}function Dt(n,e,t,r={}){var o;if(n=n||r.context.parentElement,!e&&t){M.appendChild(n,t,r);return}if(!t&&e){M.removeChild(n,e,r);return}if(!((o=t.props)!=null&&o.pass)){if(b.hasPassed(t))return;if(b.changed(t,e)||b.hasRefClass(t)){jn(n,e,t,r);return}}const i=t.type;i!==A.TEXT&&i!==A.COMMENT&&zn(e,t,r)}const Xn=n=>{var e=n.firstChild;if(!e)return[];var t=[];do t[t.length]=e,e=e.nextSibling;while(e);return t},qn=n=>n.children.length?n.children:[],Yn={checkPassed:void 0,keyField:"key",removedElements:[]};function Zn(n,e,t={}){if(t=Object.assign({},Yn,t),n.nodeType!==11){Dt(n.parentElement,n,e,t);return}}const Bt=(n,e=B)=>` ${e} ${n}`,Jn="ME@",$t=(...n)=>n.join(B),$e=(...n)=>Jn+$t(...n),Qn=$e,er=$e,ae=":",Gt=" ",l=(...n)=>{var e=n.join(ae);return(...t)=>{const[r,...i]=t;return H.make("domevent",[e,r].join(" "),...i)}},ue=(...n)=>H.make("subscribe",...n),tr=(...n)=>H.make("callback",...n),nr=(...n)=>H.make("observer",...n),rr=(n,...e)=>H.make("props",n,...e),f=(n,e=B)=>Bt(n,e),Ge=(n,e=B)=>f(`after(${n})`,e),sr=(n,e=B)=>f(`before(${n})`,e),ir=f,or=f("ArrowUp"),ar=f("ArrowDown"),ur=f("ArrowLeft"),cr=f("ArrowRight"),lr=f("Enter"),hr=f("Space"),fr=f("Escape"),dr=f("Backspace"),gr=f("Delete"),mr=f("Equal"),pr=f("Minus"),Er=f("BracketRight"),Cr=f("BracketLeft"),Tr=f("isAltKey"),br=f("isShiftKey"),vr=f("isMetaKey"),Rr=f("isCtrlKey"),yr=f("hasMouse"),Or=f("hasTouch"),Nr=f("hasPen"),Ar=f("self"),Vt=f("isMouseLeftButton"),kr=f("isMouseRightButton"),Sr=f("fit"),Mr=f("passive"),Kt=(n=100)=>f(`debounce(${n})`),Pr=(n=300)=>f(`delay(${n})`),Ir=Kt(1e3),wr=(n=100)=>f(`throttle(${n})`),Wt=f("allTrigger()"),xt=f("selfTrigger()"),Hr=f("frame()"),Lr=n=>f(`params(${bt(n)})`),_r=f("capture()"),Fr=Ge("preventDefault"),Ur=Ge("stopPropagation"),Dr=ue,Br=(...n)=>ue(...n,Wt),$r=(...n)=>ue(...n,xt),Gr=(n,...e)=>ue(`config:${n}`,...e),jt=tr,Vr=jt("requestAnimationFrame"),Kr=nr,Wr=rr,N=l,xr=l("click"),jr=l("dblclick"),zr=l("mousedown"),Xr=l("mouseup"),qr=l("mousemove"),Yr=l("mouseover"),Zr=l("mouseout"),Jr=l("mouseenter"),Qr=l("mouseleave"),es=l("touchstart"),ts=l("touchmove"),ns=l("touchend"),rs=l("keydown"),ss=l("keyup"),is=l("keypress"),os=l("drag"),as=l("dragstart"),us=l("drop"),cs=l("dragover"),ls=l("dragenter"),hs=l("dragleave"),fs=l("dragexit"),ds=l("dragout"),gs=l("dragend"),ms=l("contextmenu"),ps=l("change"),Es=l("input"),Cs=l("focus"),Ts=l("focusin"),bs=l("focusout"),vs=l("blur"),Rs=l("paste"),ys=l("resize"),Os=l("scroll"),Ns=l("submit"),As=(...n)=>N("pointerdown")(...n)+Vt,ks=N("pointerover"),Ss=N("pointerenter"),Ms=N("pointerout"),Ps=N("pointerleave"),Is=N("pointermove"),ws=N("pointerup"),Hs=N("change","input"),Ls=N("wheel","mousewheel","DOMMouseScroll"),_s=l("animationstart"),Fs=l("animationend"),Us=l("animationiteration"),Ds=l("transitionstart"),Bs=l("transitionend"),$s=l("transitionrun"),Gs=l("transitioncancel"),Vs=N("doubletab"),Ks=N("popstate"),Ws=N("orientationchange"),xs=N("hashchange"),Ve={addDomEvent(n,e,t,r=!1){n&&n.addEventListener(e,t,r)},removeDomEvent(n,e,t){n&&n.removeEventListener(e,t)},pos(n){return n.touches&&n.touches[0]?n.touches[0]:n},posXY(n){var e=this.pos(n);return{x:e.pageX,y:e.pageY}}};class ce{constructor(e,t={}){this.context=e,this.options=t}initialize(){}load(){}refresh(){}render(){}getRef(e){return this.context.getRef(e)}run(){}destroy(){}}const js={touchstart:!0,touchmove:!0,mousedown:!0,mouseup:!0,mousemove:!0},zs={doubletab:"touchend"},Xs={doubletab:!0},qs={self(n){return n&&n.$dt&&n.$dt.is(n.target)},isAltKey(n){return n.altKey},isCtrlKey(n){return n.ctrlKey},isShiftKey(n){return n.shiftKey},isMetaKey(n){return n.metaKey||n.key=="Meta"||n.code.indexOf("Meta")>-1},isMouseLeftButton(n){return n.buttons===1},isMouseRightButton(n){return n.buttons===2},hasMouse(n){return n.pointerType==="mouse"},hasTouch(n){return n.pointerType==="touch"},hasPen(n){return n.pointerType==="pen"},preventDefault(n){return n.preventDefault(),!0},stopPropagation(n){return n.stopPropagation(),!0}};class Ys extends ce{initialize(){var e,t;this.destroy(),!(this._domEvents&&this.context.notEventRedefine)&&((!this._domEvents||this._domEvents.length===0||this._bindings.length===0)&&(this._domEvents=this.context.filterMethodes("domevent")),!((e=this._bindings)!=null&&e.length)&&((t=this._domEvents)==null?void 0:t.length)&&this._domEvents.forEach(r=>this.parseDomEvent(r)))}update(){this.initialize()}destroy(){this.context.notEventRedefine||this.removeEventAll()}getCallback(e){return this.context[e]||qs[e]}removeEventAll(){this.getBindings().forEach(e=>{this.removeDomEvent(e)}),this.initBindings()}removeDomEvent({eventName:e,dom:t,callback:r}){Ve.removeDomEvent(t,e,r)}getBindings(){return this._bindings||this.initBindings(),this._bindings}addBinding(e){this.getBindings().push(e)}initBindings(){this._bindings=[]}matchPath(e,t){return e?e.matches(t)?e:this.matchPath(e.parentElement,t):null}hasDelegate(e,t){return this.matchPath(e.target||e.srcElement,t.delegate)}makeCallback(e,t,r){return e.delegate?this.makeDelegateCallback(e,t,r):this.makeDefaultCallback(e,t,r)}makeDefaultCallback(e,t,r){return i=>{var o=this.runEventCallback(i,e,t,r);if(z(o))return o}}makeDelegateCallback(e,t,r){return i=>{const o=this.hasDelegate(i,e);if(o){i.$dt=d.create(o);var a=this.runEventCallback(i,e,t,r);if(z(a))return a}}}runEventCallback(e,t,r,i){const o=this.context;if(e.xy=Ve.posXY(e),t.beforeMethods.length&&t.beforeMethods.every(u=>this.getCallback(u.target).call(o,e,u.param)),this.checkEventType(e,t)){var a=i(e,e.$dt,e.xy);return a!==!1&&t.afterMethods.length&&t.afterMethods.forEach(u=>this.getCallback(u.target).call(o,e,u.param)),a}}checkEventType(e,t){const r=this.context;var i=!0;t.codes.length&&(i=(e.code?t.codes.indexOf(e.code.toLowerCase())>-1:!1)||(e.key?t.codes.indexOf(e.key.toLowerCase())>-1:!1));var o=!0;return t.checkMethodList.length&&(o=t.checkMethodList.every(a=>{var u=this.getCallback(a);return E(u)&&u?u.call(r,e):z(u)?!!u:!0})),i&&o}getDefaultDomElement(e){const t=this.context;let r;return e?r=t.refs[e]||t[e]||window[e]:r=t.el||t.$el||t.$root,r instanceof d?r.getElement():r}getRealEventName(e){return zs[e]||e}getCustomEventName(e){return Xs[e]?e:""}getDefaultEventObject(e,t,r,i,o){var Oe,Ne;const a={eventName:this.getRealEventName(e),customEventName:this.getCustomEventName(e),callback:o},[,,...u]=i.args;a.dom=this.getDefaultDomElement(t),a.delegate=u.join(Gt),a.beforeMethods=[],a.afterMethods=[],a.codes=[],a.checkMethodList=[];const c=i.getFunction("debounce"),m=i.getFunction("throttle");if(c){var C=+(((Oe=c.args)==null?void 0:Oe[0])||0);a.callback=j(o,C)}else if(m){var T=+(((Ne=m.args)==null?void 0:Ne[0])||0);a.callback=ke(o,T)}const Q=i.getFunctionList("after"),ye=i.getFunctionList("before");return Q.length&&Q.forEach(G=>{var _=G.args[0].split(" "),[V,U]=_;a.afterMethods.push({target:V,param:U})}),ye.length&&ye.forEach(G=>{var _=G.args[0].split(" "),[V,U]=_;a.beforeMethods.push({target:V,param:U})}),i.keywords.forEach(G=>{const _=G;this.getCallback(_)?a.checkMethodList.push(_):a.codes.push(_.toLowerCase())}),a}addDomEvent(e,t,r){e.callback=this.makeCallback(e,t,r),this.addBinding(e);var i=!1;t.hasKeyword("capture")&&(i=!0),js[e.eventName]&&(i={passive:!0,capture:i}),e.dom&&Ve.addDomEvent(e.dom,e.eventName,e.callback,i)}makeCustomEventCallback(e,t,r){var a;if(e.customEventName==="doubletab"){var i=300,o=t.getFunction("delay");return o&&(i=+(((a=o.args)==null?void 0:a[0])||0)),(...u)=>{this.doubleTab?(window.performance.now()-this.doubleTab.time<i&&r(...u),this.doubleTab=null):this.doubleTab={time:window.performance.now()}}}return r}bindingDomEvent([e,t,...r],i,o){let a=this.getDefaultEventObject(e,t,r,i,o);a.callback=this.makeCustomEventCallback(a,i,a.callback),this.addDomEvent(a,i,a.callback)}getEventNames(e){let t=[];return e.split(ae).forEach(r=>{var i=r.split(ae);t.push.apply(t,i)}),t}parseDomEvent(e){const t=this.context;var r=e.args;if(r){var i=this.getEventNames(r[0]),o=t[e.originalMethod].bind(t);for(let a=0,u=i.length;a<u;a++)r[0]=i[a],this.bindingDomEvent(r,e,o)}}}class Zs extends ce{initialize(){var e,t;this._observers&&this.context.notEventRedefine||((!this._observers||this._observers.length===0)&&(this._observers=this.context.filterMethodes("observer")),!((e=this._bindings)!=null&&e.length)&&((t=this._observers)==null?void 0:t.length)&&this._observers.forEach(r=>this.parseObserver(r)))}destroy(){this.context.notEventRedefine||this.removeEventAll()}removeEventAll(){this.getBindings().forEach(e=>{this.disconnectObserver(e)}),this.initBindings()}disconnectObserver(e){e==null||e.disconnect()}getBindings(){return this._bindings||this.initBindings(),this._bindings}addBinding(e){this.getBindings().push(e)}initBindings(){this._bindings=[]}addObserver(e){this.addBinding(e)}getDefaultDomElement(e){const t=this.context;let r;return e?r=t.refs[e]||t[e]||window[e]:r=t.el||t.$el||t.$root,r instanceof d?r.getElement():r}createObserver(e,t){var m;const[r,i]=e.args||["intersection"],o=this.getDefaultDomElement(i),a=e.getFunction("params"),u=Rt((m=a==null?void 0:a.args)==null?void 0:m[0]);let c;switch(r){case"intersection":u.root&&(u.root=this.getDefaultDomElement(u.root)),c=new window.IntersectionObserver(t,u||{}),c.observe(o);break;case"mutation":c=new window.MutationObserver(t),c.observe(o,u||{attributes:!0,characterData:!0,childList:!0});break;case"performance":c=new window.PerformanceObserver(t),c.observe(u||{entryTypes:["paint"]});break}return c}bindingObserver(e,t){this.addObserver(this.createObserver(e,t))}parseObserver(e){const t=this.context;var r=t[e.originalMethod].bind(t);this.bindingObserver(e,r)}}class Js extends ce{getProps(){var e,t;return this._props||(this._props=this.context.filterMethodes("props")),!((e=this._bindings)!=null&&e.length)&&((t=this._props)==null?void 0:t.length)&&this._props.forEach(r=>this.parseProps(r)),this.getBindings()}destroy(){this.removeAll()}getCallback(e){return this.context[e]}removeAll(){this.initBindings()}getBindings(){return this._bindings||this.initBindings(),this._bindings}addBinding(e){this.getBindings().push(e)}initBindings(){this._bindings=[]}bindingProps(e){this.addBinding(e)}createProps(e,t){const[r]=e.args||[];if(!!r)return{ref:r,props:t()}}parseProps(e){const t=this.context;var r=this.getCallback(e.originalMethod).bind(t);this.bindingProps(this.createProps(e,r))}}class Qs extends ce{initialize(){var e,t;this._callbacks||(this._callbacks=this.context.filterMethodes("subscribe")),!((e=this._bindings)!=null&&e.length)&&((t=this._callbacks)==null?void 0:t.length)&&this._callbacks.forEach(r=>this.parseSubscribe(r))}destroy(){this.context.notEventRedefine||this.context.$store.offAll(this.context)}getCallback(e){return this.context[e]}getBindings(){return this._bindings||this.initBindings(),this._bindings}addBinding(e){this.getBindings().push(e)}initBindings(){this._bindings=[]}createLocalCallback(e,t){var r=t.bind(this.context);return r.displayName=`${this.context.sourceName}.${e}`,r.source=this.context.source,r}parseSubscribe(e){var G,_;const t=e.args.join(" "),r=[],i=[];let o=0,a=0,u=!1,c=!1,m=!1;const C=e.getFunction("debounce"),T=e.getFunction("throttle"),Q=e.getFunction("allTrigger"),ye=e.getFunction("selfTrigger"),Oe=e.getFunction("frame");C&&(o=+(((G=C.args)==null?void 0:G[0])||0)),T&&(a=+(((_=T.args)==null?void 0:_[0])||0)),Q&&(u=!0),ye&&(c=!0),Oe&&(m=!0),e.keywords.forEach(V=>{const U=V;this.context[U]?r.push(U):i.push(U)});const Ne=this.context[e.originalMethod];[...i,t].filter(Boolean).forEach(V=>{var U=this.createLocalCallback(V,Ne);this.context.$store.on(V,U,this.context,o,a,u,c,r,m)}),this.addBinding(e)}}let le={};function ei(){At(!0)}function ti(n){return v().useState(n)}function zt(n,e){return v().useEffect(n,e)}function ni(n,e){return v().useReducer(n,e)}function ri(n,e){return v().useMemo(n,e)}function si(n,e){return v().useCallback(n,e)}function ii(n){return v().useRef(n)}function oi(n){return v().useContext(n)}function ai(n){le[n.id]={context:n,index:0,lastProvider:null}}class ui{constructor(e,t){this.context=e,this.provider=t}get id(){return this.provider.id}get value(){return this.provider.value}set(e){this.provider=e}}function ci(n,e){const t=new ui(n,e),r=le[n.id];if(!r.lastProvider)r.prevProvider=r.lastProvider,r.lastProvider=t,r.lastProvider.prev=r.prevProvider;else{const i=r.lastProvider,o=i.value;i.id===t.id?r.lastProvider.set(t):(r.lastProvider.next=t,t.prev=r.lastProvider,r.lastProvider=t),o!==t.value&&Yt(t)}}function Xt(n){const e=le[n.id];e.lastProvider&&e.lastProvider.prev&&(e.lastProvider=e.lastProvider.prev,e.lastProvider&&(e.lastProvider.next=null))}function Ke(n){return le[n.id].lastProvider}let li=0;function hi(n){const e={id:"context-"+li++,defaultValue:n,lastProvider:null,Provider:function({value:t,content:r}){return ci(e,{value:t,id:this.id,component:this}),zt(()=>{Xt(e)},[]),r[0]||r}};return e.Consumer=({content:[t]})=>{const r=Ke(e).value;return t(r)},ai(e),e}const he={};function qt(n,e,t){he[n]||(he[n]={}),he[n][e.id]=t}function Yt(n){const e=he[n.id];e&&Object.values(e).forEach(t=>{t(n)})}function Zt(n){return v().useStore(n)}function fi(n,e){return v().useStoreSet(n,e)}function di(n){return Zt(p)[n]}function gi(n,e,t=0,r=0,i=!1){return v().useSubscribe(n,e,t,r,i)}function mi(n,e,t=0,r=0){return v().useSelf(n,e,t,r)}function pi(n,...e){return v().emit(n,...e)}function Ei(n,...e){return v().trigger(n,...e)}function Ci(n,e){return v().initMagicMethod(n,e)}class Ti{constructor(){w(this,Y,{});this.handlers=this.initializeHandler()}initializeHandler(e={}){return kt(this,e)}loadHandlerCache(e){return h(this,Y)[e]||(h(this,Y)[e]=this.handlers.filter(t=>t[e])),h(this,Y)[e]}async runHandlers(e="run",...t){await Promise.all(this.loadHandlerCache(e).map(async r=>{await r[e](...t)}))}filterFunction(e,...t){return this.loadHandlerCache(e).map(r=>r[e](...t))}}Y=new WeakMap;const Jt=Symbol("useState"),Qt=Symbol("useEffect"),bi=Symbol("useMemo"),en=Symbol("useContext"),vi=Symbol("useSubscribe");function Ri({value:n,component:e}){let t={value:n,component:e};function r(o){return typeof o=="function"?o(t.value):o}return[t,o=>{const a=r(o);n.value!==a&&(t.value=a,we(t.component))}]}class yi extends Ti{constructor(){super(...arguments);w(this,$,[]);w(this,F,0)}copyHooks(){return{__stateHooks:h(this,$),__stateHooksIndex:h(this,F)}}reloadHooks(t){k(this,$,t.__stateHooks||[]),k(this,F,t.__stateHooksIndex||0)}resetCurrentComponent(){this.resetHookIndex(),Et(this)}resetHookIndex(){k(this,F,0)}increaseHookIndex(){mn(this,F)._++}getHook(){return h(this,$)[h(this,F)]}setHook(t,r){h(this,$)[h(this,F)]={type:t,hookInfo:r}}useState(t){this.getHook()||this.setHook(Jt,Ri({value:t,component:this}));const[r,i]=this.getHook().hookInfo;return this.increaseHookIndex(),[r.value,i]}isChangedDeps(t){const r=!t,{hookInfo:{deps:i}}=this.getHook()||{hookInfo:{}},o=i?!t.every((a,u)=>a===i[u]):!0;return r||o}useEffect(t,r){this.isChangedDeps(r)&&this.setHook(Qt,{deps:r,callback:t}),this.increaseHookIndex()}useReducer(t,r){const[i,o]=this.useState(r);function a(u){o(c=>t(c,u))}return[i,a]}useMemo(t,r){this.isChangedDeps(r)&&this.setHook(bi,{deps:r,value:t()});const o=this.getHook().hookInfo||{};return this.increaseHookIndex(),o.value}useCallback(t,r){return this.useMemo(()=>t,r)}useRef(t){return this.useMemo(()=>({current:t}),[])}refreshProvider(t){const r=this.filterHooks(en).find(i=>i.provider.id===t.id);r&&(r.provider=t)}useContext(t){this.getHook()||this.setHook(en,{provider:Ke(t),component:this});const{provider:r}=this.getHook().hookInfo;return qt(r.id,this,()=>{we(this)}),this.increaseHookIndex(),(r==null?void 0:r.value)||t.defaultValue}useSubscribe(t,r,i=0,o=0,a=!1){this.getHook()||this.setHook(vi,{name:t,callback:r,component:this,unsubscribe:this.$store.on(t,r,this,i,o,!1,a)});const{unsubscribe:u}=this.getHook().hookInfo;return this.increaseHookIndex(),u}useSelf(t,r,i=0,o=0){return this.useSubscribe(t,r,i,o,!0)}useEmit(t,...r){return this.emit(t,...r)}useStore(t){return this.$store.get(t)}useStoreSet(t,r){this.$store.set(t,r)}filterHooks(t){return h(this,$).filter(r=>r.type===t).map(r=>r.hookInfo)}getUseEffects(){return this.filterHooks(Qt)}getUseStates(){return this.filterHooks(Jt).map(t=>t.value)}runHooks(){this.getUseEffects().forEach(t=>{E(t.cleanup)&&t.cleanup(),t.cleanup=t.callback()})}cleanHooks(){this.getUseEffects().forEach(t=>{E(t.cleanup)&&t.cleanup()})}destroy(){}onMounted(){this.isMounted=!0,this.runHooks()}onUpdated(){this.runHooks()}onDestroyed(){this.isMounted=!1,this.cleanHooks()}onUnmounted(){}}$=new WeakMap,F=new WeakMap;const st=class extends yi{constructor(t,r,i){super();w(this,ve);w(this,L,{});w(this,Z,void 0);w(this,J,{});w(this,I,{});w(this,y,new WeakMap);Ae(this,"registerRef",(t,r)=>{typeof t=="function"?t(r):W(t)?t.value=r:this.refs[t]=r});Ae(this,"registerChildComponent",(t,r,i,o)=>{h(this,y).has(t)||(h(this,I)[i]=t,h(this,y).set(t,r)),h(this,y).has(o)&&h(this,y).delete(o)});Ae(this,"checkRefClass",(t,r)=>{const i=r.props;if(r.isComponentChanged)return!0;let o=this.getTargetInstance(t);return o&&o.isInstanceOf(r.Component)?r.isComponentChanged||o.isForceRender(i)?!0:(pn(this,ve,En).call(this,o,i),!1):!0});this.refs={},this.id=dt(),this.initializeProperty(t,r,i)}setId(t){this.id=t}initializeHandler(){return super.initializeHandler({DomEventHandler:Ys,ObserverHandler:Zs,StoreHandler:Qs,PropsHandler:Js})}checkProps(t={}){return t}initializeProperty(t,r={},i={}){this.opt=t||{},this.parent=this.opt,this.source=this.id,this.sourceName=this.constructor.name,this.props=r,k(this,L,Object.assign({},h(this,L),i))}createFunction(t,r){return E(r)&&!h(this,J)[t]&&(h(this,J)[t]=r),h(this,J)[t]}runFunction(t,r){const i=this.createFunction(t,r);if(!(i!=null&&i.running))return E(i)&&(i.running||(i.running=!0,i.call(this))),i}initState(){return{}}setState(t={},r=!0){k(this,L,Object.assign({},h(this,L),t)),r&&this.refresh()}toggleState(t,r=!0){this.setState({[t]:!h(this,L)[t]},r)}changedProps(t){return!un(this.props,t)}_reload(t){this.changedProps(t)&&(this.props=t,this.refresh())}checkLoad(t){window.requestAnimationFrame(()=>{this.render(t)})}get state(){return h(this,L)}get ref(){return this.props.ref}get children(){return Object.fromEntries(Object.entries(h(this,I)).map(([t,r])=>[t,h(this,y).get(r)]))}get isPreLoaded(){return!0}getTargetInstance(t){const r=h(this,y).get(t);if(r)return r}isForceRender(){return!1}isInstanceOf(t){return this instanceof t}async runningUpdate(t,r){t.type===A.FRAGMENT?Ut(this.parentElement,t):Zn(this.$el.el,t,{checkRefClass:this.checkRefClass,context:this,isForceRender:r,registerRef:this.registerRef,registerChildComponent:this.registerChildComponent}),this.$el.el[g]=this,this.runUpdated(),await this.runHandlers("update")}async runningMount(t,r){const i=this.parseMainTemplate(t);this.$el=i,this.refs.$el=this.$el,this.$el&&(this.$el.el[g]=this),r&&(r instanceof d||(r=d.create(r)),r.hasChild(this.$el)===!1&&(r.append(this.$el),this.runMounted())),await this.runHandlers("initialize"),await this.afterRender()}async forceRender(){this.cleanHooks(),await this.render(null,!0)}setParentElement(t){this.parentElement=t}is(t,r){return this.sourceName===t&&r(this)}async render(t,r=!1){if(!this.isPreLoaded){this.checkLoad(t);return}this.resetCurrentComponent();const i=this.template();if(O(i))throw new Error([`Error Component - ${this.sourceName}`,"Template root is not must an array, however You can use Fragment instead of it","Fragment Samples: "," <>{list}</> "," <Fragment>{list}</Fragment>"].join(`
-`));return this.$el?await this.runningUpdate(i,r):await this.runningMount(i,t),this}async renderToHtml(){this.resetCurrentComponent();const t=this.template();return await wt(t,this.getVNodeOptions())}initialize(){k(this,L,this.initState())}getRef(...t){const r=t.join("");return this.refs[r]}getVNodeOptions(){return{context:this,registerRef:this.registerRef,registerChildComponent:this.registerChildComponent}}parseMainTemplate(t){return It(t,this.getVNodeOptions())}getFunctionComponent(){return this}refresh(){this.render()}afterRender(){}template(){return null}clear(){Object.entries(h(this,I)).forEach(([t,r])=>{if(!r.parentNode){const i=h(this,y).get(r);i&&(i.destroy(),h(this,y).delete(r),delete h(this,I)[t])}})}clearAll(){Object.entries(h(this,I)).forEach(([t,r])=>{const i=h(this,y).get(r);i&&(i.destroy(),h(this,y).delete(r),delete h(this,I)[t])})}destroy(t=!1){Ct(this),Object.entries(h(this,I)).forEach(([r,i])=>{const o=h(this,y).get(i);o&&(o.destroy(),h(this,y).delete(i),delete h(this,I)[r])}),this.runHandlers("destroy"),t&&(this.$el.remove(),this.$el=null,this.onUnmounted()),this.onDestroyed(),this.refs={}}collectMethodes(t=!1){return(!h(this,Z)||t)&&k(this,Z,K(this,st,r=>H.check(r)).map(r=>H.parse(r,this))),h(this,Z)}filterMethodes(t,r=!1){return this.collectMethodes(r).filter(i=>i.method===t)}getChildContent(t,r=""){var i;return((i=this.getChild(t))==null?void 0:i.props.content)||r}getChild(t){return this.props.content.find(t)}runMounted(){this.onMounted()}runUpdated(){this.onUpdated()}onMounted(){var r;super.onMounted();const t=this.getTargetInstance((r=this.$el)==null?void 0:r.el);t&&t.onMounted()}onUpdated(){var r;super.onUpdated();const t=this.getTargetInstance((r=this.$el)==null?void 0:r.el);t&&t.onUpdated()}onDestroyed(){var r;super.onDestroyed();const t=this.getTargetInstance((r=this.$el)==null?void 0:r.el);t&&t.onDestroyed()}onUnmounted(){var r;super.onUnmounted();const t=this.getTargetInstance((r=this.$el)==null?void 0:r.el);t&&t.onUnmounted()}initMagicMethod(t,r){this[t]=r}};let We=st;L=new WeakMap,Z=new WeakMap,J=new WeakMap,I=new WeakMap,y=new WeakMap,ve=new WeakSet,En=function(t,r){t._reload(r)};const Re=class extends We{constructor(t,r={},i={}){super(t,r,i);w(this,x,void 0);r.store?k(this,x,r.store):this.parent.$store||k(this,x,new Pt),this.created(),this.initialize(),this.initializeContext(t,r,i)}initializeContext(t,r={}){t||this.$store.init(p,r)}currentContext(){return this.contexts[this.contexts.length-1]}setStore(t){k(this,x,t)}get $store(){return h(this,x)||this.parent.$store}async created(){}createLocalCallback(t,r){var i=r.bind(this);return i.displayName=`${this.sourceName}.${t}`,i.source=this.source,i}emit(t,...r){this.$store.source=this.source,this.$store.sourceContext=this,this.$store.emit(t,...r)}nextTick(t,r=0){window.setTimeout(()=>{this.$store.nextTick(t)},r)}trigger(t,...r){this.$store.source=this.source,this.$store.trigger(t,...r)}runCallback(t,...r){this.parent&&this.parent.trigger(t,...r)}on(t,r,i=0,o=0,a=!1,u=!1,c=!1){this.$store.on(t,r,this.source,i,o,a,u,[],c)}off(t,r){this.$store.off(t,r,this.source)}subscribe(t,r=0,i=0){const o=`subscribe.${re()}`,a=this.createLocalCallback(o,t);return this.$store.on(o,a,this,r,i,!1,!0),o}static createFunctionElementInstance(t,r,i,o={}){class a extends Re{initializeProperty(c,m={},C={}){super.initializeProperty(c,m,C),this.sourceName=this.getFunctionComponent().name||this.sourceName}getFunctionComponent(){return t}isInstanceOf(c){return t===c}template(){return t.call(this,this.props)}}return new a(r,i,o)}static createElementInstance(t,r,i,o){return t.__proto__.name===""?Re.createFunctionElementInstance(t,r,i,o):new t(r,i,o)}};let fe=Re;x=new WeakMap;function q(n,e,t,r){return fe.createElementInstance(n,e,t,r)}const Oi={animationIterationCount:!0,borderImageOutset:!0,borderImageSlice:!0,borderImageWidth:!0,boxFlex:!0,boxFlexGroup:!0,boxOrdinalGroup:!0,columnCount:!0,columns:!0,flex:!0,flexGrow:!0,flexPositive:!0,flexShrink:!0,flexNegative:!0,flexOrder:!0,gridRow:!0,gridRowEnd:!0,gridRowSpan:!0,gridRowStart:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnSpan:!0,gridColumnStart:!0,fontSize:!0,lineClamp:!0,lineHeight:!0,order:!0,orphans:!0,tabSize:!0,widows:!0,zIndex:!0,zoom:!0,width:!0,maxWidth:!0,maxHeight:!0,height:!0,top:!0,left:!0,right:!0,bottom:!0,border:!0,borderWidth:!0,borderRadius:!0,padding:!0,margin:!0,paddingLeft:!0,paddingRight:!0,paddingTop:!0,paddingBottom:!0,marginLeft:!0,marginRight:!0,marginTop:!0,marginBottom:!0,gap:!0,columnGap:!0,rowGap:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeDasharray:!0,strokeDashoffset:!0,strokeMiterlimit:!0,strokeOpacity:!0,strokeWidth:!0},xe={},Ni=/([A-Z])/g,Ai=n=>{if(xe[n])return xe[n];const e=n.replace(Ni,"-$1").toLowerCase();return xe[n]=e,e};function ki(n,e){return typeof e=="number"&&Oi[n]&&(e=e+"px"),e}function Si(n){return Ai(n)}function je(n){const e={};return Object.keys(n).forEach(t=>{e[Si(t)]=ki(t,n[t])}),e}const tn={svg:!0,g:!0,path:!0,rect:!0,circle:!0,ellipse:!0,line:!0,polyline:!0,polygon:!0,text:!0,tspan:!0,textPath:!0,tref:!0,defs:!0,clipPath:!0,mask:!0,pattern:!0,image:!0,linearGradient:!0,radialGradient:!0,stop:!0,animate:!0,animateMotion:!0,animateColor:!0,animateTransform:!0,mpath:!0,set:!0,use:!0,desc:!0,metadata:!0,title:!0,marker:!0,symbol:!0,view:!0,foreignObject:!0,switch:!0,link:!0},nn={};Object.keys(tn).forEach(n=>{nn[n.toLowerCase()]=!0,nn[n.toUpperCase()]=!0});function Mi(n){return!!tn[n]}const Pi="<";let ze,Xe,qe,de={},Ye=0,Ze={};const Ii={tagProps:!0,parentElement:!0,el:!0,children:!0,instance:!0};function wi(){return ze||(ze=d.create("div")),ze}function Hi(){return Xe||(Xe=document.createTextNode("")),Xe}function Li(){return qe||(qe=document.createComment("")),qe}function _i(n){if(!Ze[n]){const e=Mi(n)?document.createElementNS("http://www.w3.org/2000/svg",n):document.createElement(n);Ze[n]=e}return Ze[n].cloneNode(!1)}function Fi(n){const e=Hi().cloneNode();return e.textContent=n,e}function Ui(n){const e=Li().cloneNode();return e.textContent=n,e}const Di={content:!0};function Bi(n,e,t){Di[e]||n.setAttribute(e,t)}function $i(n,e,t){n[e.toLowerCase()]=t}function Gi(n,e,t){e.indexOf("--")===0?typeof t>"u"?n.style.removeProperty(e):n.style.setProperty(e,t):n.style[e]=t}function rn(n){const e=je(n);return Object.keys(e).map(t=>`${t}: ${e[t]};`).join(" ")}function sn(n){var e={};const t=n.length;for(let r=0;r<t;r++){const i=n[r],o=i.name,a=i.value;e[o]=a}return e}const on=n=>{var e=n.firstChild;if(!e)return[];var t=[];do t[t.length]=e,e=e.nextSibling;while(e);return t};function an(n){return Ye>2e3&&(Ye=0,de={}),de[n]||(Ye++,de[n]=wi().html(n).first.el),de[n].cloneNode(!0)}function ge(n,e,t=0,r={}){if(E(n)&&E(e))return!1;const i=Object.keys(n).filter(a=>r[a]===void 0),o=Object.keys(e).filter(a=>r[a]===void 0);return i.length!==o.length?!1:i.length===0&&o.length===0?!0:i.every(a=>{if(r[a])return!0;const u=n[a],c=e[a];if(_e()&&a==="Component")return!1;if(O(u)&&O(c))return u.length!==c.length?!1:u.length===0&&c.length===0?!0:u.every((T,Q)=>ge(T,c[Q],t+1,r));if(W(u)&&W(c))return ge(u,c,t+1,r);const m=u===c;return m&&_e()&&E(u)?!1:m})}function un(n,e){return ge(n,e,0,Ii)}class R{constructor(e,t,r,i,o){this.type=e,this.tag=t,this.nodeName=t==null?void 0:t.toUpperCase(),this.props=r,this.children=i,this.Component=o,this.initializeProps(),this.initializeChildren()}clone(){return new R(this.type,this.tag,{...this.props},this.children.map(e=>e.clone()),this.Component)}find(e){return this.props.content.find(e)}mounted(){}runMounted(){this.mounted&&requestAnimationFrame(()=>{this.mounted()},0)}get stringifyStyle(){return this.tagProps.style}initializeProps(){const e=Object.assign({},this.props);this.Component||(W(e.style)&&(e.style=rn(e.style)),e.className&&(e.class=e.className,delete e.className),this.tagProps=e),this.props.enableHtml&&(this.enableHtml=this.props.enableHtml,delete this.props.enableHtml)}initializeChildren(){if(O(this.children)){if(this.props.content)return;this.children=this.children.filter(Boolean).map(e=>{if(S(e))if(this.enableHtml){if(e.indexOf(Pi)===-1)return P(e);{const t=an(e);return(t==null?void 0:t.nodeType)===3?P(t.textContent):P(t)}}else return P(e);else if(Se(e))return P(e);return e}),this.props.content=this.children}}makeChildren(e,t){const r=this.el,i=this.children;if(i&&i.length){const o=document.createDocumentFragment();i.forEach(a=>{if(a instanceof R||a.makeElement){a.setParentElement(r);const u=a.makeElement(e,t).el;u&&o.appendChild(u)}else if(O(a))a.forEach(u=>{if(u){const c=u.makeElement(e,t).el;c&&o.appendChild(c)}});else if(E(a)){const u=a();if(u instanceof R){const c=u.makeElement(e,t);c&&o.appendChild(c)}else typeof u=="string"&&o.appendChild(document.createTextNode(u))}else a instanceof window.HTMLElement?o.appendChild(a):o.appendChild(document.createTextNode(a))}),r.appendChild(o),i.forEach(a=>{O(a)?a.forEach(u=>{E(u==null?void 0:u.runMounted)&&u.runMounted()}):a&&E(a==null?void 0:a.runMounted)&&a.runMounted()})}}setParentElement(e){this.parentElement=e}async makeChildrenHtml(e,t){const r=[],i=this.children;if(i&&i.length){const o=await Promise.all(i.map(async a=>a instanceof R||a.makeHtml?await a.makeHtml(e,t):O(a)?await Promise.all(a.map(async u=>{if(u)return await u.makeHtml(e,t)})).filter(u=>typeof u<"u"):E(a)?await a():await a));r.push(...o)}return r.join(`
-`)}createElement(){return _i(this.tag)}getContextProps(e,t){e.filterFunction("getProps").flat(1/0).filter(o=>o.ref===t.ref).forEach(o=>{W(o.props)&&Object.assign(t,o.props)})}makeElement(e=!1,t={}){const r=this.createElement();let i=this.tagProps;return i&&(i.ref&&(this.getContextProps(t.context,i),this.ref=i.ref,E(t.registerRef)&&t.registerRef(i.ref,r)),Object.keys(i).forEach(o=>{const a=i[o];if(o==="style")if(S(a))r.style.cssText=a;else{const u=je(a);Object.entries(u).forEach(([c,m])=>{Gi(r,c,m)})}else o&&a!==void 0&&(o.startsWith("on")?$i(r,o,a):Bi(r,o,a))})),this.el=r,this.makeChildren(e,t),this}async makeHtml(e=!1,t={}){const r=[],i=this.tagProps;if(i&&(i.ref&&this.getContextProps(t.context,i),Object.keys(i).forEach(o=>{const a=i[o];if(o==="style")S(a)||(i[o]=rn(je(a)));else if(o&&a!==void 0&&o.startsWith("on"))return;o!=="ref"&&a&&r.push(`${o}="${a}"`)})),Dn(this.tag))return`
-        <${this.tag} ${r.join(" ")} />
-      `;{const o=await this.makeChildrenHtml(e,t);return`
-        <${this.tag} ${r.join(" ")}>${o}</${this.tag}>
-      `}}makeText(e=""){return this.children.map(r=>r.makeText(e)).flat(1/0).join(e)}}class me extends R{constructor(e){super(A.TEXT,null,{}),this.value=e}clone(){return new me(this.value)}get textContent(){return this.value}runMounted(){}createElement(){return Fi(this.value)}makeElement(){return this.el=this.createElement(),this}makeHtml(){return this.value}makeText(){return this.value}}class pe extends R{constructor(e){super(A.COMMENT,null,{}),this.value=e}clone(){return new pe(this.value)}get textContent(){return this.value}runMounted(){}createElement(){return Ui(this.value)}makeElement(){return this.el=this.createElement(),this}makeHtml(){return`<!-- ${this.value} -->`}makeText(){return""}}class Ee extends R{constructor(e={},t){super(A.FRAGMENT,"fragment",e||{},t)}clone(){return new Ee(this.props,this.children.map(e=>e.clone()))}makeElement(e=!1,t={}){if(this.el)return this;const r=document.createDocumentFragment();return this.el=r,this.makeChildren(e,t),this}async makeHtml(e=!1,t={}){return await this.makeChildrenHtml(e,t)}}class ne extends R{constructor(e={},t,r){super(A.COMPONENT,"object",e||{},t),this.Component=r,this.instance=null}clone(){return new ne(this.props,this.children.map(e=>e.clone()),this.Component)}mounted(){var e;(e=this.instance)==null||e.onMounted()}getModule(){return Mt(this.Component)}get isComponentChanged(){return this.Component!==this.getModule()}makeClassInstance(e){var u,c,m;const t={...this.props};t.ref&&this.getContextProps(e.context,t);const r=this.getModule(),i=(u=this.instance)==null?void 0:u.copyHooks(),o=(c=this.instance)==null?void 0:c.state,a=(m=this.instance)==null?void 0:m.id;return this.instance=q(r,e.context,t,o),a&&this.instance.setId(a),i&&this.instance.reloadHooks(i),this.instance}render(e){this.makeClassInstance(e);try{this.instance.setParentElement(this.parentElement),this.instance.render(e.$container)}catch(t){console.error(t)}}async renderHtml(e){return this.makeClassInstance(e),await this.instance.renderToHtml()}makeElement(e,t={}){var r,i;if(this.render(t),this.el=(i=(r=this.instance)==null?void 0:r.$el)==null?void 0:i.el,this.el){const o=this.props.ref||this.instance.id;E(t.registerChildComponent)&&t.registerChildComponent(this.el,this.instance,o)}return this}async makeHtml(e,t={}){return await this.renderHtml(t)}makeText(){return""}}function Ce({tag:n,props:e={},children:t}){return new R(A.NODE,n,e,t)}function Je({props:n={},children:e,Component:t}){if(typeof t>"u")throw new Error("Component is undefined");return new ne(n,e,t)}function Qe({props:n={},children:e}){return new Ee(n,e)}function P(n){return new me(n)}function et(n){return new pe(n)}function Vi(n){return n.clone()}const cn=(n,e={})=>{const t=d.create(e.container||document.body),r=t.children().find(o=>o.el[g]);if(n instanceof R){const o=n;n=()=>o}const i=q(n,null,e);return r?(i.$el=d.create(r.el),i.id=r.el[g].id,i.render()):i.render(t),He(i,t),i},Ki=cn,Wi=(n,e={})=>{const t=d.create(e.container||document.body);if(n instanceof R){const o=n;n=()=>o}const r=q(n,null,e),i=t.firstChild;return i?(r.$el=i,r.render()):r.render(t),He(r,t),r},xi=(n,e={})=>{const t=d.create(e.container||document.body);if(n instanceof ne)return n.render({$container:t}),n.instance;if(n instanceof R){const i=n;n=()=>i}const r=q(n,null,e);return r.render(t),r};async function ji(n,e){if(n instanceof R){const i=n;n=()=>i}return await q(n,null,e).renderToHtml()}function zi(n){return class extends HTMLElement{constructor(){super(),this._shadow=this.attachShadow({mode:"open"}),this._$container=d.create(this._shadow),this._comp=new n,this._comp.on("customEvent",(e,...t)=>{this.dispatchEvent(new CustomEvent(e,{bubbles:!0,detail:t}))})}static get observedAttributes(){return n.attributes||[]}connectedCallback(){const e=this.attributes,t={};for(let r=e.length-1;r>=0;r--)t[e[r].name]=e[r].value;this._comp._reload(t,this._$container)}disconnectedCallback(){this._comp.destroy(),this._comp=null}adoptedCallback(){console.log("Custom square element moved to new page.")}attributeChangedCallback(e,t,r){this._comp._reload({...this._comp.props,[e]:r})}}}function tt(n){return typeof n=="string"?P(n):n.nodeType===3?P(n.textContent):Ce({tag:n.tagName,props:sn(n.attributes),children:on(n).map(e=>tt(e))})}function Xi(n){const e=d.createByHTML(n);return tt(e.el)}function Te(n){const{children:e=[],...t}=n;return typeof n=="string"||typeof n=="number"?P(n):t.type==="comment"?et(t.text):t.type==="text"?P(t.text):t.type==="fragment"?Qe({...t,children:e.map(r=>Te(r))}):t.type==="component"||t.Component?Je({...t,children:e.map(r=>Te(r))}):Ce({...t,children:e.map(r=>Te(r))})}function be(n,e={},t=[]){return t=t.flat(1/0),Je({props:e||{},children:t,Component:n})}function ln(n,e={},t=[]){return t=t.flat(1/0),Qe({props:e||{},children:t,Component:n})}function hn(n=[]){return n=n.flat(1/0),et(n[0]||"")}function fn(...n){return n.map(e=>{let t,r={},i=[];return S(e)?t=e:O(e)&&([t,r={},i=[]]=e),i.length?be(t,r||{},fn(i)):be(t,r)})}function dn(n,e,t=[]){return t=t.flat(1/0),Ce({tag:n,props:e,children:t})}function gn(n,e={},...t){return t=t.filter(Boolean),n===nt?ln(n,e,t):n===rt?hn(t):(e=e||{},typeof n!="string"?be(n,e,t):dn(n,e,t))}const nt=new Object,rt=new Object,qi=Object.freeze(Object.defineProperty({__proto__:null,createComponent:be,createComponentFragment:ln,createComment:hn,createComponentList:fn,createElement:dn,createElementJsx:gn,FragmentInstance:nt,HTMLComment:rt},Symbol.toStringTag,{value:"Module"})),Yi=nt,Zi=gn,Ji=rt,Qi={...qi};s.AFTER=Ge,s.ALL_TRIGGER=Wt,s.ALT=Tr,s.ANIMATIONEND=Fs,s.ANIMATIONITERATION=Us,s.ANIMATIONSTART=_s,s.ARROW_DOWN=ar,s.ARROW_LEFT=ur,s.ARROW_RIGHT=cr,s.ARROW_UP=or,s.BACKSPACE=dr,s.BEFORE=sr,s.BLUR=vs,s.BRACKET_LEFT=Cr,s.BRACKET_RIGHT=Er,s.BaseStore=Pt,s.CALLBACK=jt,s.CAPTURE=_r,s.CHANGE=ps,s.CHANGEINPUT=Hs,s.CHECKER=f,s.CLICK=xr,s.COMMAND=Qn,s.CONFIG=Gr,s.CONTEXTMENU=ms,s.CONTROL=Rr,s.CUSTOM=N,s.D1000=Ir,s.DEBOUNCE=Kt,s.DELAY=Pr,s.DELETE=gr,s.DOUBLECLICK=jr,s.DOUBLETAB=Vs,s.DRAG=os,s.DRAGEND=gs,s.DRAGENTER=ls,s.DRAGEXIT=fs,s.DRAGLEAVE=hs,s.DRAGOUT=ds,s.DRAGOVER=cs,s.DRAGSTART=as,s.DROP=us,s.Dom=d,s.ENTER=lr,s.EQUAL=mr,s.ESCAPE=fr,s.EVENT=$e,s.FIT=Sr,s.FOCUS=Cs,s.FOCUSIN=Ts,s.FOCUSOUT=bs,s.FRAME=Hr,s.FUNC_END_CHARACTER=Lt,s.FUNC_REGEXP=Ht,s.FUNC_START_CHARACTER=De,s.FragmentInstance=Yi,s.HASHCHANGE=xs,s.HTMLComment=Ji,s.IF=ir,s.INPUT=Es,s.KEYDOWN=rs,s.KEYPRESS=is,s.KEYUP=ss,s.LEFT_BUTTON=Vt,s.MAGIC_METHOD=Ue,s.MAGIC_METHOD_REG=Fe,s.META=vr,s.MINUS=pr,s.MOUSE=yr,s.MOUSEDOWN=zr,s.MOUSEENTER=Jr,s.MOUSELEAVE=Qr,s.MOUSEMOVE=qr,s.MOUSEOUT=Zr,s.MOUSEOVER=Yr,s.MOUSEUP=Xr,s.MagicMethod=H,s.NAME_SAPARATOR=ae,s.OBSERVER=Kr,s.ON=er,s.ORIENTATIONCHANGE=Ws,s.PARAMS=Lr,s.PASSIVE=Mr,s.PASTE=Rs,s.PEN=Nr,s.PIPE=$t,s.POINTEREND=ws,s.POINTERENTER=Ss,s.POINTERLEAVE=Ps,s.POINTERMOVE=Is,s.POINTEROUT=Ms,s.POINTEROVER=ks,s.POINTERSTART=As,s.POPSTATE=Ks,s.PREVENT=Fr,s.PROPS=Wr,s.RAF=Vr,s.RESIZE=ys,s.RIGHT_BUTTON=kr,s.SAPARATOR=Gt,s.SCROLL=Os,s.SELF=Ar,s.SELF_TRIGGER=xt,s.SHIFT=br,s.SPACE=hr,s.SPLITTER=B,s.STOP=Ur,s.SUBMIT=Ns,s.SUBSCRIBE=Dr,s.SUBSCRIBE_ALL=Br,s.SUBSCRIBE_SELF=$r,s.THROTTLE=wr,s.TOUCH=Or,s.TOUCHEND=ns,s.TOUCHMOVE=ts,s.TOUCHSTART=es,s.TRANSITIONCANCEL=Gs,s.TRANSITIONEND=Bs,s.TRANSITIONRUN=$s,s.TRANSITIONSTART=Ds,s.UIElement=fe,s.VARIABLE_SAPARATOR=Tt,s.VNode=R,s.VNodeComment=pe,s.VNodeComponent=ne,s.VNodeFragment=Ee,s.VNodeText=me,s.VNodeType=A,s.WHEEL=Ls,s.WebComponent=zi,s.addProviderSubscribe=qt,s.children=on,s.classnames=ht,s.clone=Nn,s.cloneVNode=Vi,s.collectProps=K,s.combineKeyArray=An,s.createComponentInstance=q,s.createContext=hi,s.createElementJsx=Zi,s.createHandlerInstance=kt,s.createVNode=Ce,s.createVNodeByDom=tt,s.createVNodeComment=et,s.createVNodeComponent=Je,s.createVNodeFragment=Qe,s.createVNodeText=P,s.debounce=j,s.default=Qi,s.defaultValue=ct,s.get=bn,s.getContextProvider=Ke,s.getCurrentComponent=v,s.getModule=Mt,s.getProps=sn,s.getRootElementInstanceList=Nt,s.getVariable=Rt,s.hasVariable=Mn,s.htmlToVNode=Xi,s.hydrate=Wi,s.ifCheck=ot,s.initializeGroupVariables=Sn,s.isArray=O,s.isBoolean=vn,s.isEqual=ge,s.isFunction=E,s.isGlobalForceRender=_e,s.isNotString=Rn,s.isNotUndefined=z,s.isNotZero=yn,s.isNumber=Se,s.isObject=W,s.isString=S,s.isUndefined=ee,s.isZero=lt,s.jsonToVNode=Te,s.keyEach=Cn,s.keyMap=ut,s.keyMapJoin=Tn,s.makeEventChecker=Bt,s.makeOneElement=an,s.makeRequestAnimationFrame=at,s.popContextProvider=Xt,s.potal=xi,s.recoverVariable=vt,s.refreshModule=St,s.registAlias=In,s.registElement=Pn,s.registHandler=Ln,s.registRootElementInstance=He,s.registerModule=Fn,s.removeRenderCallback=Ct,s.removeRootElementInstance=Ot,s.render=Ki,s.renderComponent=we,s.renderFromRoot=ei,s.renderRootElementInstanceList=At,s.renderToHtml=ji,s.resetCurrentComponent=Et,s.retriveAlias=yt,s.retriveElement=wn,s.retriveHandler=_n,s.runProviderSubscribe=Yt,s.setGlobalForceRender=Hn,s.start=cn,s.throttle=ke,s.useCallback=si,s.useContext=oi,s.useEffect=zt,s.useEmit=pi,s.useMagicMethod=Ci,s.useMemo=ri,s.useReducer=ni,s.useRef=ii,s.useRootContext=di,s.useSelf=mi,s.useState=ti,s.useStore=Zt,s.useStoreSet=fi,s.useSubscribe=gi,s.useTrigger=Ei,s.uuid=dt,s.uuidShort=re,s.variable=bt,s.vnodePropsDiff=un,Object.defineProperties(s,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
+};
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj))
+    throw TypeError("Cannot " + msg);
+};
+var __privateGet = (obj, member, getter) => {
+  __accessCheck(obj, member, "read from private field");
+  return getter ? getter.call(obj) : member.get(obj);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj))
+    throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+var __privateSet = (obj, member, value, setter) => {
+  __accessCheck(obj, member, "write to private field");
+  setter ? setter.call(obj, value) : member.set(obj, value);
+  return value;
+};
+var __privateWrapper = (obj, member, setter, getter) => {
+  return {
+    set _(value) {
+      __privateSet(obj, member, value, setter);
+    },
+    get _() {
+      return __privateGet(obj, member, getter);
+    }
+  };
+};
+var __privateMethod = (obj, member, method) => {
+  __accessCheck(obj, member, "access private method");
+  return method;
+};
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.sapa = {}));
+})(this, function(exports2) {
+  var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+  "use strict";
+  const COMPONENT_INSTANCE = "__componentInstance";
+  const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
+  function collectProps(root, rootClass, filterFunction = () => true) {
+    let p = root;
+    let results = [];
+    do {
+      const isObject2 = p instanceof Object;
+      if (isObject2 === false) {
+        break;
+      }
+      const isRootClass = p.constructor.name === rootClass.name;
+      if (isRootClass) {
+        break;
+      }
+      const names = Object.getOwnPropertyNames(p).filter(filterFunction);
+      results.push.apply(results, names);
+    } while (p = Object.getPrototypeOf(p));
+    return results;
+  }
+  function debounce(callback, delay = 0) {
+    if (delay === 0) {
+      return callback;
+    }
+    var t = void 0;
+    return function($1, $2, $3, $4, $5) {
+      if (t) {
+        window.clearTimeout(t);
+      }
+      t = window.setTimeout(function() {
+        callback($1, $2, $3, $4, $5);
+      }, delay || 300);
+    };
+  }
+  function throttle(callback, delay) {
+    var t = void 0;
+    return function($1, $2, $3, $4, $5) {
+      if (!t) {
+        t = window.setTimeout(function() {
+          callback($1, $2, $3, $4, $5);
+          t = null;
+        }, delay || 300);
+      }
+    };
+  }
+  function ifCheck(callback, context, checkMethods) {
+    return (...args) => {
+      const ifResult = checkMethods.every((check2) => {
+        return context[check2].apply(context, args);
+      });
+      if (ifResult) {
+        callback.apply(context, args);
+      }
+    };
+  }
+  function makeRequestAnimationFrame(callback, context) {
+    return (...args) => {
+      if (callback.requestAnimationFrameId) {
+        cancelAnimationFrame(callback.requestAnimationFrameId);
+      }
+      callback.requestAnimationFrameId = requestAnimationFrame(() => {
+        callback.apply(context, args);
+      });
+    };
+  }
+  function keyEach(obj, callback) {
+    Object.keys(obj).forEach((key, index2) => {
+      callback(key, obj[key], index2);
+    });
+  }
+  function keyMap(obj, callback) {
+    return Object.keys(obj).map((key, index2) => {
+      return callback(key, obj[key], index2);
+    });
+  }
+  function keyMapJoin(obj, callback, joinString = "") {
+    return keyMap(obj, callback).join(joinString);
+  }
+  function get(obj, key, callback) {
+    var returnValue = defaultValue(obj[key], key);
+    if (isFunction(callback)) {
+      return callback(returnValue);
+    }
+    return returnValue;
+  }
+  function defaultValue(value, defaultValue2) {
+    return typeof value == "undefined" ? defaultValue2 : value;
+  }
+  function isUndefined(value) {
+    return typeof value == "undefined";
+  }
+  function isNotUndefined(value) {
+    return !isUndefined(value);
+  }
+  function isBoolean(value) {
+    return typeof value == "boolean";
+  }
+  function isString(value) {
+    return typeof value == "string";
+  }
+  function isNotString(value) {
+    return !isString(value);
+  }
+  function isArray(value) {
+    return Array.isArray(value);
+  }
+  function isObject(value) {
+    return typeof value == "object" && !Array.isArray(value) && !isNumber(value) && !isString(value) && value !== null;
+  }
+  function isFunction(value) {
+    return typeof value == "function";
+  }
+  function isNumber(value) {
+    return typeof value == "number";
+  }
+  function isZero(num) {
+    return num === 0;
+  }
+  function isNotZero(num) {
+    return !isZero(num);
+  }
+  const CLONE_FUNCTION = (obj) => JSON.parse(JSON.stringify(obj));
+  function clone(obj) {
+    if (isUndefined(obj))
+      return void 0;
+    return CLONE_FUNCTION(obj);
+  }
+  function combineKeyArray(obj) {
+    Object.keys(obj).forEach((key) => {
+      if (Array.isArray(obj[key])) {
+        obj[key] = obj[key].join(", ");
+      }
+    });
+    return obj;
+  }
+  function classnames(...args) {
+    const result = [];
+    args.filter(Boolean).forEach((it) => {
+      if (isArray(it)) {
+        result.push(classnames(...it));
+      } else if (isObject(it)) {
+        Object.keys(it).filter((k) => Boolean(it[k])).forEach((key) => {
+          result.push(key);
+        });
+      } else if (isString(it)) {
+        result.push(it);
+      }
+    });
+    return result.join(" ");
+  }
+  const UUID_REG = /[xy]/g;
+  function uuid() {
+    var dt = new Date().getTime();
+    var uuid2 = "xxx12-xx-34xx".replace(UUID_REG, function(c) {
+      var r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c == "x" ? r : r & 3 | 8).toString(16);
+    });
+    return uuid2;
+  }
+  function uuidShort() {
+    var dt = new Date().getTime();
+    var uuid2 = "idxxxxxxx".replace(UUID_REG, function(c) {
+      var r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c == "x" ? r : r & 3 | 8).toString(16);
+    });
+    return uuid2;
+  }
+  const map = {};
+  const handlerMap = {};
+  const aliasMap = {};
+  const __rootInstance = /* @__PURE__ */ new Set();
+  const __rootInstanceMap = /* @__PURE__ */ new WeakMap();
+  const __tempVariables = /* @__PURE__ */ new Map();
+  const __tempVariablesGroup = /* @__PURE__ */ new Map();
+  const _modules = {};
+  const _moduleMap = /* @__PURE__ */ new WeakMap();
+  const RenderCallbackList = /* @__PURE__ */ new WeakMap();
+  const GlobalState = {
+    currentComponent: null
+  };
+  function getCurrentComponent() {
+    return GlobalState.currentComponent;
+  }
+  function resetCurrentComponent(component) {
+    GlobalState.currentComponent = component;
+  }
+  function createRenderCallback(component, delay = 1) {
+    if (!RenderCallbackList.has(component)) {
+      RenderCallbackList.set(
+        component,
+        debounce(($container = void 0) => {
+          component.render($container);
+        }, delay)
+      );
+    }
+    return RenderCallbackList.get(component);
+  }
+  function removeRenderCallback(component) {
+    if (RenderCallbackList.has(component)) {
+      RenderCallbackList.delete(component);
+    }
+  }
+  function renderComponent(component, $container = void 0) {
+    window.requestIdleCallback(() => {
+      var _a;
+      (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
+    });
+  }
+  const VARIABLE_SAPARATOR = "v:";
+  function variable(value, groupId = "") {
+    const id = `${VARIABLE_SAPARATOR}${uuidShort()}`;
+    __tempVariables.set(id, value);
+    if (groupId) {
+      __tempVariablesGroup.has(groupId) || __tempVariablesGroup.set(groupId, /* @__PURE__ */ new Set());
+      __tempVariablesGroup.get(groupId).add(id);
+    }
+    return id;
+  }
+  function initializeGroupVariables(groupId) {
+    if (__tempVariablesGroup.has(groupId)) {
+      __tempVariablesGroup.get(groupId).forEach((id) => {
+        __tempVariables.delete(id);
+      });
+      __tempVariablesGroup.delete(groupId);
+    }
+  }
+  function recoverVariable(id, removeVariable = true) {
+    if (isString(id) === false) {
+      return id;
+    }
+    let value = id;
+    if (__tempVariables.has(id)) {
+      value = __tempVariables.get(id);
+      if (removeVariable) {
+        __tempVariables.delete(id);
+      }
+    }
+    return value;
+  }
+  function getVariable(idOrValue) {
+    if (__tempVariables.has(idOrValue)) {
+      return __tempVariables.get(idOrValue);
+    }
+    return idOrValue;
+  }
+  function hasVariable(id) {
+    return __tempVariables.has(id);
+  }
+  function registElement(classes = {}) {
+    Object.keys(classes).forEach((key) => {
+      map[key] = classes[key];
+    });
+  }
+  function registAlias(a, b) {
+    aliasMap[a] = b;
+  }
+  function retriveAlias(key) {
+    return aliasMap[key];
+  }
+  function retriveElement(className) {
+    return map[retriveAlias(className) || className];
+  }
+  function registRootElementInstance(instance, containerElement) {
+    const rootContainerElement = containerElement.el || containerElement;
+    __rootInstance.add(instance);
+    if (__rootInstanceMap.has(rootContainerElement)) {
+      removeRootElementInstance(__rootInstanceMap.get(rootContainerElement));
+    }
+    __rootInstanceMap.set(rootContainerElement, instance);
+  }
+  function removeRootElementInstance(instance) {
+    instance == null ? void 0 : instance.destroy();
+    __rootInstance.delete(instance);
+  }
+  function getRootElementInstanceList() {
+    return [...__rootInstance];
+  }
+  let globalForceRender = void 0;
+  function isGlobalForceRender() {
+    return globalForceRender;
+  }
+  function setGlobalForceRender(isForceRender = false) {
+    if (typeof globalForceRender === "undefined") {
+      globalForceRender = isForceRender;
+    }
+  }
+  function renderRootElementInstanceList(isForce = false) {
+    getRootElementInstanceList().forEach((instance) => {
+      if (isForce) {
+        instance.forceRender();
+      } else {
+        instance.render();
+      }
+    });
+  }
+  function registHandler(handlers) {
+    Object.keys(handlers).forEach((key) => {
+      handlerMap[key] = handlers[key];
+    });
+  }
+  function retriveHandler(className) {
+    return handlerMap[className];
+  }
+  function createHandlerInstance(context, localHanders = {}) {
+    return [
+      ...Object.keys(handlerMap).map((key) => {
+        const HandlerClass = handlerMap[key];
+        return new HandlerClass(context);
+      }),
+      ...Object.keys(localHanders).map((key) => {
+        const HandlerClass = localHanders[key];
+        return new HandlerClass(context);
+      })
+    ];
+  }
+  function registerModule(id, modules = {}) {
+    if (!_modules[id]) {
+      _modules[id] = { new: modules, old: modules };
+      Object.keys(modules).forEach((key) => {
+        _moduleMap.set(modules[key], id);
+      });
+    } else {
+      refreshModule(id, modules);
+    }
+  }
+  function refreshModule(id, newModules) {
+    _modules[id].new = newModules;
+    Object.keys(newModules).forEach((key) => {
+      _moduleMap.set(newModules[key], id);
+    });
+  }
+  function getModule(Component) {
+    const id = _moduleMap.get(Component);
+    if (!id) {
+      return Component;
+    }
+    const m = _modules[id];
+    if (!m) {
+      return Component;
+    }
+    const newModule = m.new[Component.name];
+    if (newModule) {
+      return newModule;
+    }
+    const currentNewComponent = Object.values(m.new).find((it) => {
+      return it === Component;
+    });
+    if (currentNewComponent) {
+      return currentNewComponent;
+    }
+    let oldKey = "";
+    const currentOldComponent = Object.entries(m.old).find(([key, it]) => {
+      if (it === Component) {
+        oldKey = key;
+        return true;
+      }
+      return false;
+    });
+    if (currentOldComponent) {
+      return m.new[oldKey];
+    }
+    return Component;
+  }
+  class Dom {
+    constructor(tag, className, attr) {
+      if (typeof tag !== "string") {
+        if (tag instanceof Dom) {
+          this.el = tag.el;
+        } else {
+          this.el = tag;
+        }
+      } else {
+        var el = document.createElement(tag);
+        if (className) {
+          el.className = className;
+        }
+        attr = attr || {};
+        Object.assign(el, attr);
+        this.el = el;
+      }
+    }
+    static create(tag, className, attr) {
+      return new Dom(tag, className, attr);
+    }
+    static createText(text) {
+      return new Dom(document.createTextNode(text));
+    }
+    static createByHTML(htmlString) {
+      var div = Dom.create("div");
+      return div.html(htmlString).firstChild;
+    }
+    static getScrollTop() {
+      return Math.max(
+        window.pageYOffset,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      );
+    }
+    static getScrollLeft() {
+      return Math.max(
+        window.pageXOffset,
+        document.documentElement.scrollLeft,
+        document.body.scrollLeft
+      );
+    }
+    static parse(html) {
+      var parser = window.DOMParser();
+      return parser.parseFromString(html, "text/html");
+    }
+    static body() {
+      return Dom.create(document.body);
+    }
+    get tagName() {
+      return this.el.tagName;
+    }
+    get exists() {
+      return Boolean(this.el);
+    }
+    setAttr(obj) {
+      Object.keys(obj).forEach((key) => {
+        this.attr(key, obj[key]);
+      });
+      return this;
+    }
+    setAttrNS(obj, namespace = "http://www.w3.org/2000/svg") {
+      Object.keys(obj).forEach((key) => {
+        this.attr(key, obj[key], namespace);
+      });
+      return this;
+    }
+    setProp(obj) {
+      Object.keys(obj).forEach((key) => {
+        if (this.el[key] != obj[key]) {
+          this.el[key] = obj[key];
+        }
+      });
+      return this;
+    }
+    data(key, value) {
+      if (arguments.length === 1) {
+        const value2 = this.attr("data-" + key);
+        return recoverVariable(value2, false);
+      } else if (arguments.length === 2) {
+        return this.attr("data-" + key, value);
+      }
+      return this;
+    }
+    attr(...args) {
+      if (args.length == 1) {
+        return isFunction(this.el.getAttribute) && this.el.getAttribute(args[0]);
+      }
+      if (this.el.getAttribute(args[0]) != args[1]) {
+        this.el.setAttribute(args[0], args[1]);
+      }
+      return this;
+    }
+    attrKeyValue(keyField) {
+      return {
+        [this.el.getAttribute(keyField)]: this.val()
+      };
+    }
+    get attributes() {
+      try {
+        return [...this.el.attributes];
+      } catch (e) {
+        const length = this.el.attributes.length;
+        const attributes = [];
+        for (var i = 0; i < length; i++) {
+          attributes.push(this.el.attributes[`${i}`]);
+        }
+        return attributes;
+      }
+    }
+    attrs(...args) {
+      return args.map((key) => {
+        return this.el.getAttribute(key);
+      });
+    }
+    styles(...args) {
+      return args.map((key) => {
+        return this.el.style[key];
+      });
+    }
+    removeAttr(key) {
+      this.el.removeAttribute(key);
+      return this;
+    }
+    removeStyle(key) {
+      this.el.style.removeProperty(key);
+      return this;
+    }
+    get isFragment() {
+      return this.el.nodeType === 11;
+    }
+    get isTemplate() {
+      return this.el.nodeType === 1 && this.el.tagName === "TEMPLATE";
+    }
+    get content() {
+      return this.isTemplate ? this.el.content : this.el;
+    }
+    is(checkElement) {
+      if (checkElement instanceof Dom) {
+        return this.el === checkElement.el;
+      }
+      return this.el === checkElement;
+    }
+    isTag(tag) {
+      return this.el.tagName.toLowerCase() === tag.toLowerCase();
+    }
+    closest(cls) {
+      var temp = this;
+      var checkCls = false;
+      while (!(checkCls = temp.hasClass(cls))) {
+        if (temp.el.parentNode) {
+          temp = Dom.create(temp.el.parentNode);
+        } else {
+          return null;
+        }
+      }
+      if (checkCls) {
+        return temp;
+      }
+      return null;
+    }
+    path() {
+      if (!this.el)
+        return [];
+      let pathList = [this];
+      let $parentNode = this.parent();
+      if (!$parentNode.el)
+        return pathList;
+      while ($parentNode) {
+        pathList.unshift($parentNode);
+        $parentNode = $parentNode.parent();
+        if (!$parentNode.el)
+          break;
+      }
+      return pathList;
+    }
+    get $parent() {
+      return this.parent();
+    }
+    parent() {
+      return Dom.create(this.el.parentNode);
+    }
+    hasParent() {
+      return !!this.el.parentNode;
+    }
+    get isUnlinked() {
+      return !this.el.parentNode;
+    }
+    removeClass(...args) {
+      this.el.classList.remove(...args);
+      return this;
+    }
+    updateClass(className) {
+      this.el.className = className;
+      return this;
+    }
+    replaceClass(oldClass, newClass) {
+      this.el.classList.replace(oldClass, newClass);
+      return this;
+    }
+    hasClass(cls) {
+      if (!this.el.classList)
+        return false;
+      return this.el.classList.contains(cls);
+    }
+    addClass(...args) {
+      this.el.classList.add(...args);
+      return this;
+    }
+    onlyOneClass(cls) {
+      var parent = this.parent();
+      parent.children().forEach((it) => {
+        it.removeClass(cls);
+      });
+      this.addClass(cls);
+    }
+    toggleClass(cls, isForce) {
+      this.el.classList.toggle(cls, isForce);
+      return this;
+    }
+    outerHTML() {
+      if (this.isTextNode) {
+        return this.text();
+      }
+      return this.el.outerHTML;
+    }
+    html(html) {
+      try {
+        if (typeof html === "undefined") {
+          return this.el.innerHTML;
+        }
+        if (typeof html === "string") {
+          Object.assign(this.el, { innerHTML: html });
+        } else {
+          this.empty().append(html);
+        }
+        return this;
+      } catch (e) {
+        console.log(e, html);
+        return this;
+      }
+    }
+    find(selector, el = this.el) {
+      if (this.isTextNode)
+        return void 0;
+      return el.querySelector(selector);
+    }
+    $(selector) {
+      var node = this.find(selector, this.isTemplate ? this.el.content : this.el);
+      return node ? Dom.create(node) : null;
+    }
+    findAll(selector, el = this.el) {
+      if (this.isTextNode)
+        return [];
+      return Array.from(el.querySelectorAll(selector));
+    }
+    $$(selector) {
+      var arr = this.findAll(
+        selector,
+        this.isTemplate ? this.el.content : this.el
+      );
+      return arr.map((node) => Dom.create(node));
+    }
+    empty() {
+      while (this.el.firstChild)
+        this.el.removeChild(this.el.firstChild);
+      return this;
+    }
+    append(el) {
+      if (!el)
+        return this;
+      if (isArray(el)) {
+        this.el.append(...el.map((it) => it.el || it));
+      } else if (typeof el === "string") {
+        this.el.appendChild(document.createTextNode(el));
+      } else {
+        this.el.appendChild(el.el || el);
+      }
+      return this;
+    }
+    appendHTML(html) {
+      var $dom = Dom.create("div").html(html);
+      this.append($dom.createChildrenFragment());
+      return $dom;
+    }
+    createChildrenFragment() {
+      const list = this.childNodes;
+      var fragment = document.createDocumentFragment();
+      list.forEach(($el) => fragment.appendChild($el.el));
+      return fragment;
+    }
+    static createFragment(list = []) {
+      var fragment = document.createDocumentFragment();
+      list.forEach((it) => fragment.appendChild(it));
+      return fragment;
+    }
+    appendTo(target) {
+      var t = target.el ? target.el : target;
+      t.appendChild(this.el);
+      return this;
+    }
+    remove() {
+      if (this.el.parentNode) {
+        this.el.parentNode.removeChild(this.el);
+      }
+      return this;
+    }
+    removeChild(el) {
+      this.el.removeChild(el.el || el);
+      return this;
+    }
+    text(value) {
+      if (typeof value === "undefined") {
+        return this.el.textContent;
+      } else {
+        var tempText = value;
+        if (value instanceof Dom) {
+          tempText = value.text();
+        }
+        if (this.el.textContent !== tempText) {
+          this.el.textContent = tempText;
+        }
+        return this;
+      }
+    }
+    css(key, value) {
+      if (typeof key !== "undefined" && typeof value !== "undefined") {
+        if (key.indexOf("--") === 0 && typeof value !== "undefined") {
+          this.el.style.setProperty(key, value);
+        } else {
+          this.el.style[key] = value;
+        }
+      } else if (typeof key !== "undefined") {
+        if (typeof key === "string") {
+          return window.getComputedStyle(this.el)[key];
+        } else {
+          Object.entries(key).forEach(([localKey, value2]) => {
+            if (localKey.indexOf("--") === 0 && typeof value2 !== "undefined") {
+              this.el.style.setProperty(localKey, value2);
+            } else {
+              this.el.style[localKey] = value2;
+            }
+          });
+        }
+      }
+      return this;
+    }
+    cssText(value) {
+      if (typeof value === "undefined") {
+        return this.el.style.cssText;
+      }
+      if (value != this.el.tempCssText) {
+        this.el.style.cssText = value;
+        this.el.tempCssText = value;
+      }
+      return this;
+    }
+    cssFloat(key) {
+      return parseFloat(this.css(key));
+    }
+    rect() {
+      return this.el.getBoundingClientRect();
+    }
+    isSVG() {
+      if (!this.el._cachedIsSVG) {
+        this.el._cachedIsSVG = { value: this.el.tagName.toLowerCase() === "svg" };
+      }
+      return this.el._cachedIsSVG.value;
+    }
+    offsetRect() {
+      if (this.isSVG()) {
+        const parentBox = this.parent().rect();
+        const box = this.rect();
+        return {
+          x: box.x - parentBox.x,
+          y: box.y - parentBox.y,
+          width: box.width,
+          height: box.height
+        };
+      }
+      const el = this.el;
+      return {
+        x: el.offsetLeft,
+        y: el.offsetTop,
+        width: el.offsetWidth,
+        height: el.offsetHeight
+      };
+    }
+    offsetClientRect() {
+      if (this.isSVG()) {
+        const parentBox2 = this.parent().rect();
+        const box2 = this.rect();
+        return {
+          x: box2.x - parentBox2.x,
+          y: box2.y - parentBox2.y,
+          width: box2.width,
+          height: box2.height
+        };
+      }
+      const parentBox = this.parent().rect();
+      const box = this.rect();
+      return {
+        x: box.x - parentBox.x,
+        y: box.y - parentBox.y,
+        width: box.width,
+        height: box.height
+      };
+    }
+    offset() {
+      var rect = this.rect();
+      var scrollTop = Dom.getScrollTop();
+      var scrollLeft = Dom.getScrollLeft();
+      return {
+        top: rect.top + scrollTop,
+        left: rect.left + scrollLeft
+      };
+    }
+    offsetLeft() {
+      return this.offset().left;
+    }
+    offsetTop() {
+      return this.offset().top;
+    }
+    position() {
+      if (this.el.style.top) {
+        return {
+          top: parseFloat(this.css("top")),
+          left: parseFloat(this.css("left"))
+        };
+      } else {
+        return this.rect();
+      }
+    }
+    size() {
+      return [this.width(), this.height()];
+    }
+    width() {
+      return this.el.offsetWidth || this.rect().width;
+    }
+    contentWidth() {
+      return this.width() - this.cssFloat("padding-left") - this.cssFloat("padding-right");
+    }
+    height() {
+      return this.el.offsetHeight || this.rect().height;
+    }
+    contentHeight() {
+      return this.height() - this.cssFloat("padding-top") - this.cssFloat("padding-bottom");
+    }
+    val(value) {
+      if (typeof value === "undefined") {
+        return this.el.value;
+      } else if (typeof value !== "undefined") {
+        var tempValue = value;
+        if (value instanceof Dom) {
+          tempValue = value.val();
+        }
+        this.el.value = tempValue;
+      }
+      return this;
+    }
+    matches(selector) {
+      if (this.el) {
+        if (!this.el.matches)
+          return null;
+        if (this.el.matches(selector)) {
+          return this;
+        }
+        return this.parent().matches(selector);
+      }
+      return null;
+    }
+    get value() {
+      return this.el.value;
+    }
+    set value(v) {
+      this.el.value = v;
+    }
+    get naturalWidth() {
+      return this.el.naturalWidth;
+    }
+    get naturalHeight() {
+      return this.el.naturalHeight;
+    }
+    get files() {
+      return this.el.files ? [...this.el.files] : [];
+    }
+    get isTextNode() {
+      return this.el.nodeType === 3;
+    }
+    show(displayType = "block") {
+      this.el.style.display = displayType != "none" ? displayType : "block";
+      return this;
+    }
+    hide() {
+      this.el.style.display = "none";
+      return this;
+    }
+    isHide() {
+      return this.el.style.display === "none";
+    }
+    isShow() {
+      return !this.isHide();
+    }
+    toggle(isForce) {
+      var currentHide = this.isHide();
+      if (arguments.length == 1) {
+        if (isForce) {
+          return this.show();
+        } else {
+          return this.hide();
+        }
+      } else {
+        if (currentHide) {
+          return this.show();
+        } else {
+          return this.hide();
+        }
+      }
+    }
+    scrollIntoView() {
+      this.el.scrollIntoView();
+    }
+    get scrollTop() {
+      if (this.el === document.body) {
+        return Dom.getScrollTop();
+      }
+      return this.el.scrollTop;
+    }
+    get scrollLeft() {
+      if (this.el === document.body) {
+        return Dom.getScrollLeft();
+      }
+      return this.el.scrollLeft;
+    }
+    get scrollHeight() {
+      return this.el.scrollHeight;
+    }
+    get scrollWidth() {
+      return this.el.scrollWidth;
+    }
+    on(eventName, callback, opt1, opt2) {
+      this.el.addEventListener(eventName, callback, opt1, opt2);
+      return this;
+    }
+    off(eventName, callback) {
+      this.el.removeEventListener(eventName, callback);
+      return this;
+    }
+    getElement() {
+      return this.el;
+    }
+    get firstChild() {
+      return Dom.create(this.el.firstElementChild);
+    }
+    get first() {
+      return Dom.create(this.el.firstChild);
+    }
+    children() {
+      var element = this.el.firstElementChild;
+      if (!element) {
+        return [];
+      }
+      var results = [];
+      do {
+        results.push(Dom.create(element));
+        element = element.nextElementSibling;
+      } while (element);
+      return results;
+    }
+    hasChild(child) {
+      const childNode = child.el || child;
+      return this.el === childNode ? false : this.el.contains(childNode);
+    }
+    get childNodes() {
+      const result = [];
+      if (this.el.hasChildNodes()) {
+        const childNodes = this.el.childNodes;
+        for (let i = 0; i < childNodes.length; i++) {
+          result.push(Dom.create(childNodes[i]));
+        }
+      }
+      return result;
+    }
+    childLength() {
+      return this.el.childNodes.length;
+    }
+    replace(newElement) {
+      if (this.el.parentNode) {
+        this.el.parentNode.replaceChild(newElement.el || newElement, this.el);
+      }
+      return this;
+    }
+    replaceChild(oldElement, newElement) {
+      this.el.replaceChild(
+        newElement.el || newElement,
+        oldElement.el || oldElement
+      );
+      return this;
+    }
+    checked(isChecked = false) {
+      if (arguments.length == 0) {
+        return !!this.el.checked;
+      }
+      this.el.checked = !!isChecked;
+      return this;
+    }
+    click() {
+      this.el.click();
+      return this;
+    }
+    focus() {
+      this.el.focus();
+      return this;
+    }
+    dispatchEvent(event, data) {
+      const evt = new CustomEvent(event, { detail: data });
+      this.el.dispatchEvent(evt);
+      return this;
+    }
+    select() {
+      if (this.attr("contenteditable") === "true") {
+        var range = document.createRange();
+        range.selectNodeContents(this.el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else {
+        this.el.select();
+      }
+      return this;
+    }
+    blur() {
+      this.el.blur();
+      return this;
+    }
+  }
+  const VNodeType = {
+    NODE: 8,
+    TEXT: 3,
+    FRAGMENT: 11,
+    COMPONENT: 100,
+    ELEMENT: 101,
+    COMMENT: 102
+  };
+  function VNodeToElement(obj, options = {}) {
+    if (isString(obj)) {
+      obj = createVNodeText(obj);
+    }
+    if (isArray(obj) && obj.length === 1) {
+      return VNodeToElement(obj[0], options);
+    }
+    if (obj) {
+      return Dom.create(obj.makeElement(true, options).el);
+    }
+    return null;
+  }
+  async function VNodeToHtml(obj, options = {}) {
+    if (isString(obj)) {
+      return obj;
+    }
+    if (isArray(obj) && obj.length === 1) {
+      return await VNodeToHtml(obj[0], options);
+    }
+    if (obj) {
+      return await obj.makeHtml(true, options);
+    }
+    return "";
+  }
+  const VoidTags = {
+    area: true,
+    base: true,
+    br: true,
+    col: true,
+    embed: true,
+    hr: true,
+    img: true,
+    input: true,
+    link: true,
+    meta: true,
+    param: true,
+    source: true,
+    track: true,
+    wbr: true
+  };
+  function isVoidTag(tag) {
+    return VoidTags[tag.toLowerCase()];
+  }
+  const MAGIC_METHOD_REG = /^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g;
+  const MAGIC_METHOD = "@magic:";
+  const SPLITTER = "|";
+  const FUNC_REGEXP = /(([\$a-z_\-]+)\([^\(\)]*\)|([a-z_\-]+))/gi;
+  const FUNC_START_CHARACTER = "(";
+  const FUNC_END_CHARACTER = ")";
+  const MAGICMETHOD_EXTRA = {
+    KEYWORD: "keyword",
+    FUNCTION: "function",
+    VALUE: "value"
+  };
+  class MagicMethod {
+    constructor(obj) {
+      this.context = obj.context;
+      this.originalMethod = obj.originalMethod;
+      this.method = obj.method;
+      this.args = obj.args;
+      this.pipes = obj.pipes;
+      this.keys = obj.keys;
+      this.__cache = /* @__PURE__ */ new Map();
+    }
+    setCache(key, value) {
+      this.__cache.set(key, value);
+    }
+    hasCache(key) {
+      return this.__cache.has(key);
+    }
+    getCache(key) {
+      return this.__cache.get(key);
+    }
+    hasKeyword(keyword) {
+      if (this.hasCache(keyword)) {
+        return this.getCache(keyword);
+      }
+      let exists = false;
+      this.pipes.forEach((pipe) => {
+        switch (pipe.type) {
+          case MAGICMETHOD_EXTRA.KEYWORD:
+            if (pipe.value === keyword) {
+              exists = true;
+            }
+            break;
+        }
+      });
+      this.setCache(keyword, exists);
+      return exists;
+    }
+    hasFunction(funcName) {
+      if (this.hasCache(funcName)) {
+        return this.getCache(funcName);
+      }
+      let exists = !!this.getFunction(funcName);
+      this.setCache(funcName, exists);
+      return exists;
+    }
+    getFunction(funcName) {
+      return this.functions.find((pipe) => pipe.func === funcName);
+    }
+    getFunctionList(funcName) {
+      return this.functions.filter((pipe) => pipe.func === funcName);
+    }
+    get originalCallback() {
+      return this.context[this.originalMethod];
+    }
+    get keywords() {
+      return this.keys[MAGICMETHOD_EXTRA.KEYWORD].map((pipe) => pipe.value);
+    }
+    get functions() {
+      return this.keys[MAGICMETHOD_EXTRA.FUNCTION];
+    }
+    get values() {
+      return this.keys[MAGICMETHOD_EXTRA.VALUE].map((pipe) => pipe.value);
+    }
+    execute(...args) {
+      return this.originalCallback.call(this.context, ...args);
+    }
+    executeWithContext(context, ...args) {
+      return this.originalCallback.call(context, ...args);
+    }
+    static make(str, ...args) {
+      return `${MAGIC_METHOD}${str} ${args.join(SPLITTER)}`;
+    }
+    static check(str) {
+      return str.match(MAGIC_METHOD_REG) !== null;
+    }
+    static parse(str, context = {}) {
+      const matches = str.match(MAGIC_METHOD_REG);
+      if (!matches) {
+        return void 0;
+      }
+      const result = matches[0].split(MAGIC_METHOD)[1].split(SPLITTER).map((item) => item.trim());
+      let [initializer, ...pipes] = result;
+      const [method, ...args] = initializer.split(" ");
+      const pipeList = pipes.map((it) => {
+        return this.parsePipe(it);
+      }).filter((it) => it.value);
+      const pipeObjects = {
+        function: [],
+        keyword: [],
+        value: []
+      };
+      pipeList.forEach((pipe) => {
+        if (pipe.type === "function") {
+          pipeObjects.function.push(pipe);
+        } else if (pipe.type === "keyword") {
+          pipeObjects.keyword.push(pipe);
+        } else {
+          pipeObjects.value.push(pipe);
+        }
+      });
+      return new MagicMethod({
+        context,
+        originalMethod: str,
+        method,
+        args,
+        pipes: pipeList,
+        keys: pipeObjects
+      });
+    }
+    static parsePipe(it) {
+      const result = it.match(FUNC_REGEXP);
+      if (!result) {
+        return {
+          type: "value",
+          value: it
+        };
+      }
+      const [value] = result;
+      if (value.includes(FUNC_START_CHARACTER)) {
+        const [func, rest] = value.split(FUNC_START_CHARACTER);
+        const [args] = rest.split(FUNC_END_CHARACTER);
+        return {
+          type: "function",
+          value,
+          func,
+          args: args.split(",").map((it2) => it2.trim()).filter(Boolean)
+        };
+      }
+      return {
+        type: "keyword",
+        value: result[0]
+      };
+    }
+  }
+  const booleanTypes = new Map(
+    Object.entries({
+      checked: true,
+      disabled: true,
+      selected: true,
+      readonly: true,
+      required: true,
+      multiple: true,
+      open: true,
+      hidden: true,
+      spellcheck: true,
+      autofocus: true,
+      autoplay: true,
+      controls: true,
+      loop: true,
+      muted: true,
+      default: true,
+      defer: true,
+      async: true,
+      allowfullscreen: true,
+      allowtransparency: true,
+      allowpaymentrequest: true
+    })
+  );
+  const expectKeys = {
+    content: true
+  };
+  const TEXT_NODE = 3;
+  const COMMENT_NODE = 8;
+  const KEY_STYLE = "style";
+  const PREFIX_EVENT = "on";
+  function isBooleanType(key) {
+    return booleanTypes.has(key);
+  }
+  const patch = {
+    setBooleanProp(el, name, value) {
+      if (isNotUndefined(value)) {
+        el.setAttribute(name, name);
+        el[name] = value;
+      } else {
+        el.removeAttribute(name);
+        el[name] = void 0;
+      }
+    },
+    setProp(el, name, value) {
+      if (isBooleanType(name)) {
+        this.setBooleanProp(el, name, value);
+      } else if (name.startsWith(PREFIX_EVENT)) {
+        el[name.toLowerCase()] = value;
+      } else if (name === KEY_STYLE) {
+        el.style.cssText = value;
+      } else {
+        el.setAttribute(name, value);
+        el[name] = value;
+      }
+    },
+    removeProp(el, name) {
+      el.removeAttribute(name);
+      if (isBooleanType(name)) {
+        el[name] = false;
+      } else if (name) {
+        el[name] = void 0;
+      }
+    },
+    updateProp(node, name, newValue, oldValue) {
+      if (isUndefined(newValue)) {
+        this.removeProp(node, name);
+      } else if (!oldValue || newValue != oldValue) {
+        this.setProp(node, name, newValue);
+      }
+    },
+    replaceWith(oldEl, newVNode, options) {
+      const isRootElement = options.context.$el.el === oldEl;
+      const objectElement = newVNode.makeElement(true, options).el;
+      if (isRootElement) {
+        options.context.$el.el = objectElement;
+      }
+      oldEl.replaceWith(objectElement);
+      newVNode.runMounted();
+    },
+    replaceText(oldEl, newVNode) {
+      if (oldEl.textContent != newVNode.textContent) {
+        oldEl.textContent = newVNode.textContent;
+      }
+    },
+    replaceComment(oldEl, newVNode) {
+      patch.replaceText(oldEl, newVNode);
+    },
+    addNewVNode(parentElement, oldEl, newVNode, options) {
+      parentElement.insertBefore(newVNode.makeElement(true, options).el, oldEl);
+      parentElement.removeChild(oldEl);
+      newVNode.runMounted();
+    },
+    appendChild(el, newVNode, options) {
+      const newVNodeInstance = newVNode.makeElement(true, options);
+      if (newVNodeInstance == null ? void 0 : newVNodeInstance.el) {
+        el.appendChild(newVNodeInstance.el);
+        newVNode.runMounted();
+      }
+    },
+    removeChild(parentElement, oldEl) {
+      parentElement.removeChild(oldEl);
+    }
+  };
+  const check = {
+    isTextNode(node) {
+      return node.nodeType === TEXT_NODE;
+    },
+    isCommentNode(node) {
+      return node.nodeType === COMMENT_NODE;
+    },
+    isElementNode(node) {
+      return node.nodeType === 1;
+    },
+    isVNodeText(node) {
+      return node.type === VNodeType.TEXT;
+    },
+    isVNodeComment(node) {
+      return node.type === VNodeType.COMMENT;
+    },
+    changed(vNode, node2) {
+      return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
+    },
+    hasPassed(vNode) {
+      return vNode.pass;
+    },
+    hasRefClass(vNode) {
+      return vNode.Component;
+    }
+  };
+  const updateProps = (node, newProps = {}, oldProps = {}) => {
+    const newPropsKeys = Object.keys(newProps);
+    const oldPropsKeys = Object.keys(oldProps);
+    if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+      return;
+    }
+    newPropsKeys.forEach((key) => {
+      if (!expectKeys[key]) {
+        patch.updateProp(node, key, newProps[key], oldProps[key]);
+      }
+    });
+    oldPropsKeys.forEach((key) => {
+      if (isUndefined(newProps[key])) {
+        patch.removeProp(node, key);
+      }
+    });
+  };
+  function omitProps(vNode) {
+    const props = vNode.props || {};
+    const results = {};
+    const keys = Object.keys(props);
+    if (!keys.length) {
+      return results;
+    }
+    for (let i = 0, len = keys.length; i < len; i++) {
+      const key = keys[i];
+      if (key.startsWith(PREFIX_EVENT)) {
+        results[key] = props[key];
+      } else {
+        if (key === KEY_STYLE) {
+          results[key] = vNode.stringifyStyle;
+        } else {
+          results[key] = props[key];
+        }
+      }
+    }
+    return results;
+  }
+  function getProps$1(oldEl, attributes, newProps) {
+    var results = {};
+    const len = attributes.length;
+    for (let i = 0; i < len; i++) {
+      const t = attributes[i];
+      const name = t.name;
+      const value = t.value;
+      results[name] = value;
+    }
+    Object.keys(newProps).forEach((key) => {
+      const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
+      if (!results[checkKey]) {
+        results[key] = oldEl[checkKey];
+      }
+    });
+    return results;
+  }
+  function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
+    if (check.isTextNode(oldEl) && !check.isVNodeText(newVNode) || check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode)) {
+      patch.addNewVNode(parentElement, oldEl, newVNode, options);
+    } else if (!check.isTextNode(oldEl) && check.isVNodeText(newVNode) || !check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
+      patch.addNewVNode(parentElement, oldEl, newVNode, options);
+    } else if (check.isTextNode(oldEl) && check.isVNodeText(newVNode)) {
+      patch.replaceText(oldEl, newVNode);
+    } else if (check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
+      patch.replaceComment(oldEl, newVNode);
+    } else {
+      if (check.hasRefClass(newVNode)) {
+        if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
+          patch.replaceWith(oldEl, newVNode, options);
+          if (isFunction(options.registerChildComponent)) {
+            options.registerChildComponent(
+              newVNode.el,
+              newVNode.instance,
+              newVNode.instance.id,
+              oldEl
+            );
+          }
+        }
+      } else {
+        patch.replaceWith(oldEl, newVNode, options);
+      }
+    }
+    return true;
+  }
+  function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
+    const newVNodeProps = omitProps(newVNode);
+    updateProps(
+      oldEl,
+      newVNodeProps,
+      getProps$1(oldEl, oldEl.attributes, newVNodeProps)
+    );
+    updateChildren(oldEl, newVNode, options);
+  }
+  function updateChildren(oldEl, newVNode, options = {}) {
+    if (!oldEl.hasChildNodes() && !newVNode.children.length) {
+      return;
+    }
+    var oldChildren = children$1(oldEl);
+    var newChildren = vNodeChildren(newVNode);
+    var max = Math.max(oldChildren.length, newChildren.length);
+    if (max === 0) {
+      return;
+    }
+    if (oldChildren.length === 0 && newChildren.length > 0) {
+      var fragment = document.createDocumentFragment();
+      newChildren.forEach((it) => {
+        const retElement = it.makeElement(true, options).el;
+        if (retElement) {
+          fragment.appendChild(retElement);
+        }
+      });
+      oldEl.appendChild(fragment);
+      newChildren.forEach((it) => {
+        it.runMounted();
+      });
+    } else if (oldChildren.length > 0 && newChildren.length === 0) {
+      oldEl.textContent = "";
+    } else {
+      for (var i = 0; i < max; i++) {
+        updateElement(oldEl, oldChildren[i], newChildren[i], options);
+      }
+    }
+  }
+  function updateElement(parentElement, oldEl, newVNode, options = {}) {
+    var _a;
+    parentElement = parentElement || options.context.parentElement;
+    if (!oldEl && newVNode) {
+      patch.appendChild(parentElement, newVNode, options);
+      return;
+    }
+    if (!newVNode && oldEl) {
+      patch.removeChild(parentElement, oldEl, options);
+      return;
+    }
+    if (!((_a = newVNode.props) == null ? void 0 : _a.pass)) {
+      if (check.hasPassed(newVNode)) {
+        return;
+      }
+      if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
+        updateChangedElement(parentElement, oldEl, newVNode, options);
+        return;
+      }
+    }
+    const newNodeType = newVNode.type;
+    if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
+      updatePropertyAndChildren(oldEl, newVNode, options);
+    }
+  }
+  const children$1 = (el) => {
+    var element = el.firstChild;
+    if (!element) {
+      return [];
+    }
+    var results = [];
+    do {
+      results[results.length] = element;
+      element = element.nextSibling;
+    } while (element);
+    return results;
+  };
+  const vNodeChildren = (vnode) => {
+    if (!vnode.children.length) {
+      return [];
+    }
+    return vnode.children;
+  };
+  const DefaultOption = {
+    checkPassed: void 0,
+    keyField: "key",
+    removedElements: []
+  };
+  function Reconcile(oldEl, newVNode, options = {}) {
+    options = Object.assign({}, DefaultOption, options);
+    if (oldEl.nodeType !== 11) {
+      updateElement(oldEl.parentElement, oldEl, newVNode, options);
+      return;
+    }
+  }
+  const makeEventChecker = (value, split = SPLITTER) => {
+    return ` ${split} ${value}`;
+  };
+  const MULTI_PREFIX = "ME@";
+  const PIPE = (...args) => {
+    return args.join(SPLITTER);
+  };
+  const EVENT = (...args) => {
+    return MULTI_PREFIX + PIPE(...args);
+  };
+  const COMMAND = EVENT;
+  const ON = EVENT;
+  const NAME_SAPARATOR = ":";
+  const SAPARATOR = " ";
+  const DOM_EVENT_MAKE = (...keys) => {
+    var key = keys.join(NAME_SAPARATOR);
+    return (...args) => {
+      const [selector, ...result] = args;
+      return MagicMethod.make("domevent", [key, selector].join(" "), ...result);
+    };
+  };
+  const SUBSCRIBE_EVENT_MAKE = (...args) => {
+    return MagicMethod.make("subscribe", ...args);
+  };
+  const CALLBACK_EVENT_MAKE = (...args) => {
+    return MagicMethod.make("callback", ...args);
+  };
+  const OBSERVER_EVENT_MAKE = (...args) => {
+    return MagicMethod.make("observer", ...args);
+  };
+  const PROPS_MAKE = (ref, ...args) => {
+    return MagicMethod.make("props", ref, ...args);
+  };
+  const CHECKER = (value, split = SPLITTER) => {
+    return makeEventChecker(value, split);
+  };
+  const AFTER = (value, split = SPLITTER) => {
+    return CHECKER(`after(${value})`, split);
+  };
+  const BEFORE = (value, split = SPLITTER) => {
+    return CHECKER(`before(${value})`, split);
+  };
+  const IF = CHECKER;
+  const ARROW_UP = CHECKER("ArrowUp");
+  const ARROW_DOWN = CHECKER("ArrowDown");
+  const ARROW_LEFT = CHECKER("ArrowLeft");
+  const ARROW_RIGHT = CHECKER("ArrowRight");
+  const ENTER = CHECKER("Enter");
+  const SPACE = CHECKER("Space");
+  const ESCAPE = CHECKER("Escape");
+  const BACKSPACE = CHECKER("Backspace");
+  const DELETE = CHECKER("Delete");
+  const EQUAL = CHECKER("Equal");
+  const MINUS = CHECKER("Minus");
+  const BRACKET_RIGHT = CHECKER("BracketRight");
+  const BRACKET_LEFT = CHECKER("BracketLeft");
+  const ALT = CHECKER("isAltKey");
+  const SHIFT = CHECKER("isShiftKey");
+  const META = CHECKER("isMetaKey");
+  const CONTROL = CHECKER("isCtrlKey");
+  const MOUSE = CHECKER("hasMouse");
+  const TOUCH = CHECKER("hasTouch");
+  const PEN = CHECKER("hasPen");
+  const SELF = CHECKER("self");
+  const LEFT_BUTTON = CHECKER("isMouseLeftButton");
+  const RIGHT_BUTTON = CHECKER("isMouseRightButton");
+  const FIT = CHECKER("fit");
+  const PASSIVE = CHECKER("passive");
+  const DEBOUNCE = (t = 100) => {
+    return CHECKER(`debounce(${t})`);
+  };
+  const DELAY = (t = 300) => {
+    return CHECKER(`delay(${t})`);
+  };
+  const D1000 = DEBOUNCE(1e3);
+  const THROTTLE = (t = 100) => {
+    return CHECKER(`throttle(${t})`);
+  };
+  const ALL_TRIGGER = CHECKER("allTrigger()");
+  const SELF_TRIGGER = CHECKER("selfTrigger()");
+  const FRAME = CHECKER("frame()");
+  const PARAMS = (obj) => {
+    return CHECKER(`params(${variable(obj)})`);
+  };
+  const CAPTURE = CHECKER("capture()");
+  const PREVENT = AFTER(`preventDefault`);
+  const STOP = AFTER(`stopPropagation`);
+  const SUBSCRIBE = SUBSCRIBE_EVENT_MAKE;
+  const SUBSCRIBE_ALL = (...args) => SUBSCRIBE_EVENT_MAKE(...args, ALL_TRIGGER);
+  const SUBSCRIBE_SELF = (...args) => SUBSCRIBE_EVENT_MAKE(...args, SELF_TRIGGER);
+  const CONFIG = (config, ...args) => SUBSCRIBE_EVENT_MAKE(`config:${config}`, ...args);
+  const CALLBACK = CALLBACK_EVENT_MAKE;
+  const RAF = CALLBACK("requestAnimationFrame");
+  const OBSERVER = OBSERVER_EVENT_MAKE;
+  const PROPS = PROPS_MAKE;
+  const CUSTOM = DOM_EVENT_MAKE;
+  const CLICK = DOM_EVENT_MAKE("click");
+  const DOUBLECLICK = DOM_EVENT_MAKE("dblclick");
+  const MOUSEDOWN = DOM_EVENT_MAKE("mousedown");
+  const MOUSEUP = DOM_EVENT_MAKE("mouseup");
+  const MOUSEMOVE = DOM_EVENT_MAKE("mousemove");
+  const MOUSEOVER = DOM_EVENT_MAKE("mouseover");
+  const MOUSEOUT = DOM_EVENT_MAKE("mouseout");
+  const MOUSEENTER = DOM_EVENT_MAKE("mouseenter");
+  const MOUSELEAVE = DOM_EVENT_MAKE("mouseleave");
+  const TOUCHSTART = DOM_EVENT_MAKE("touchstart");
+  const TOUCHMOVE = DOM_EVENT_MAKE("touchmove");
+  const TOUCHEND = DOM_EVENT_MAKE("touchend");
+  const KEYDOWN = DOM_EVENT_MAKE("keydown");
+  const KEYUP = DOM_EVENT_MAKE("keyup");
+  const KEYPRESS = DOM_EVENT_MAKE("keypress");
+  const DRAG = DOM_EVENT_MAKE("drag");
+  const DRAGSTART = DOM_EVENT_MAKE("dragstart");
+  const DROP = DOM_EVENT_MAKE("drop");
+  const DRAGOVER = DOM_EVENT_MAKE("dragover");
+  const DRAGENTER = DOM_EVENT_MAKE("dragenter");
+  const DRAGLEAVE = DOM_EVENT_MAKE("dragleave");
+  const DRAGEXIT = DOM_EVENT_MAKE("dragexit");
+  const DRAGOUT = DOM_EVENT_MAKE("dragout");
+  const DRAGEND = DOM_EVENT_MAKE("dragend");
+  const CONTEXTMENU = DOM_EVENT_MAKE("contextmenu");
+  const CHANGE = DOM_EVENT_MAKE("change");
+  const INPUT = DOM_EVENT_MAKE("input");
+  const FOCUS = DOM_EVENT_MAKE("focus");
+  const FOCUSIN = DOM_EVENT_MAKE("focusin");
+  const FOCUSOUT = DOM_EVENT_MAKE("focusout");
+  const BLUR = DOM_EVENT_MAKE("blur");
+  const PASTE = DOM_EVENT_MAKE("paste");
+  const RESIZE = DOM_EVENT_MAKE("resize");
+  const SCROLL = DOM_EVENT_MAKE("scroll");
+  const SUBMIT = DOM_EVENT_MAKE("submit");
+  const POINTERSTART = (...args) => {
+    return CUSTOM("pointerdown")(...args) + LEFT_BUTTON;
+  };
+  const POINTEROVER = CUSTOM("pointerover");
+  const POINTERENTER = CUSTOM("pointerenter");
+  const POINTEROUT = CUSTOM("pointerout");
+  const POINTERLEAVE = CUSTOM("pointerleave");
+  const POINTERMOVE = CUSTOM("pointermove");
+  const POINTEREND = CUSTOM("pointerup");
+  const CHANGEINPUT = CUSTOM("change", "input");
+  const WHEEL = CUSTOM("wheel", "mousewheel", "DOMMouseScroll");
+  const ANIMATIONSTART = DOM_EVENT_MAKE("animationstart");
+  const ANIMATIONEND = DOM_EVENT_MAKE("animationend");
+  const ANIMATIONITERATION = DOM_EVENT_MAKE("animationiteration");
+  const TRANSITIONSTART = DOM_EVENT_MAKE("transitionstart");
+  const TRANSITIONEND = DOM_EVENT_MAKE("transitionend");
+  const TRANSITIONRUN = DOM_EVENT_MAKE("transitionrun");
+  const TRANSITIONCANCEL = DOM_EVENT_MAKE("transitioncancel");
+  const DOUBLETAB = CUSTOM("doubletab");
+  const POPSTATE = CUSTOM("popstate");
+  const ORIENTATIONCHANGE = CUSTOM("orientationchange");
+  const HASHCHANGE = CUSTOM("hashchange");
+  const Event = {
+    addDomEvent(eventTarget, eventName, callback, useCapture = false) {
+      if (eventTarget) {
+        eventTarget.addEventListener(eventName, callback, useCapture);
+      }
+    },
+    removeDomEvent(eventTarget, eventName, callback) {
+      if (eventTarget) {
+        eventTarget.removeEventListener(eventName, callback);
+      }
+    },
+    pos(e) {
+      if (e.touches && e.touches[0]) {
+        return e.touches[0];
+      }
+      return e;
+    },
+    posXY(e) {
+      var pos = this.pos(e);
+      return {
+        x: pos.pageX,
+        y: pos.pageY
+      };
+    }
+  };
+  class BaseHandler {
+    constructor(context, options = {}) {
+      this.context = context;
+      this.options = options;
+    }
+    initialize() {
+    }
+    load() {
+    }
+    refresh() {
+    }
+    render() {
+    }
+    getRef(id) {
+      return this.context.getRef(id);
+    }
+    run() {
+    }
+    destroy() {
+    }
+  }
+  const scrollBlockingEvents = {
+    touchstart: true,
+    touchmove: true,
+    mousedown: true,
+    mouseup: true,
+    mousemove: true
+  };
+  const eventConverts = {
+    doubletab: "touchend"
+  };
+  const customEventNames = {
+    doubletab: true
+  };
+  const selfCheckMethods = {
+    self(e) {
+      return e && e.$dt && e.$dt.is(e.target);
+    },
+    isAltKey(e) {
+      return e.altKey;
+    },
+    isCtrlKey(e) {
+      return e.ctrlKey;
+    },
+    isShiftKey(e) {
+      return e.shiftKey;
+    },
+    isMetaKey(e) {
+      return e.metaKey || e.key == "Meta" || e.code.indexOf("Meta") > -1;
+    },
+    isMouseLeftButton(e) {
+      return e.buttons === 1;
+    },
+    isMouseRightButton(e) {
+      return e.buttons === 2;
+    },
+    hasMouse(e) {
+      return e.pointerType === "mouse";
+    },
+    hasTouch(e) {
+      return e.pointerType === "touch";
+    },
+    hasPen(e) {
+      return e.pointerType === "pen";
+    },
+    preventDefault(e) {
+      e.preventDefault();
+      return true;
+    },
+    stopPropagation(e) {
+      e.stopPropagation();
+      return true;
+    }
+  };
+  class DomEventHandler extends BaseHandler {
+    initialize() {
+      var _a, _b;
+      this.destroy();
+      if (this._domEvents && this.context.notEventRedefine) {
+        return;
+      }
+      if (!this._domEvents || this._domEvents.length === 0 || this._bindings.length === 0) {
+        this._domEvents = this.context.filterMethodes("domevent");
+      }
+      if (!((_a = this._bindings) == null ? void 0 : _a.length) && ((_b = this._domEvents) == null ? void 0 : _b.length)) {
+        this._domEvents.forEach((it) => this.parseDomEvent(it));
+      }
+    }
+    update() {
+      this.initialize();
+    }
+    destroy() {
+      if (this.context.notEventRedefine)
+        ;
+      else {
+        this.removeEventAll();
+      }
+    }
+    getCallback(field) {
+      return this.context[field] || selfCheckMethods[field];
+    }
+    removeEventAll() {
+      this.getBindings().forEach((obj) => {
+        this.removeDomEvent(obj);
+      });
+      this.initBindings();
+    }
+    removeDomEvent({ eventName, dom, callback }) {
+      Event.removeDomEvent(dom, eventName, callback);
+    }
+    getBindings() {
+      if (!this._bindings) {
+        this.initBindings();
+      }
+      return this._bindings;
+    }
+    addBinding(obj) {
+      this.getBindings().push(obj);
+    }
+    initBindings() {
+      this._bindings = [];
+    }
+    matchPath(el, selector) {
+      if (el) {
+        if (el.matches(selector)) {
+          return el;
+        }
+        return this.matchPath(el.parentElement, selector);
+      }
+      return null;
+    }
+    hasDelegate(e, eventObject) {
+      return this.matchPath(e.target || e.srcElement, eventObject.delegate);
+    }
+    makeCallback(eventObject, magicMethod, callback) {
+      if (eventObject.delegate) {
+        return this.makeDelegateCallback(eventObject, magicMethod, callback);
+      } else {
+        return this.makeDefaultCallback(eventObject, magicMethod, callback);
+      }
+    }
+    makeDefaultCallback(eventObject, magicMethod, callback) {
+      return (e) => {
+        var returnValue = this.runEventCallback(
+          e,
+          eventObject,
+          magicMethod,
+          callback
+        );
+        if (isNotUndefined(returnValue)) {
+          return returnValue;
+        }
+      };
+    }
+    makeDelegateCallback(eventObject, magicMethod, callback) {
+      return (e) => {
+        const delegateTarget = this.hasDelegate(e, eventObject);
+        if (delegateTarget) {
+          e.$dt = Dom.create(delegateTarget);
+          var returnValue = this.runEventCallback(
+            e,
+            eventObject,
+            magicMethod,
+            callback
+          );
+          if (isNotUndefined(returnValue)) {
+            return returnValue;
+          }
+        }
+      };
+    }
+    runEventCallback(e, eventObject, magicMethod, callback) {
+      const context = this.context;
+      e.xy = Event.posXY(e);
+      if (eventObject.beforeMethods.length) {
+        eventObject.beforeMethods.every((before) => {
+          return this.getCallback(before.target).call(context, e, before.param);
+        });
+      }
+      if (this.checkEventType(e, eventObject)) {
+        var returnValue = callback(e, e.$dt, e.xy);
+        if (returnValue !== false && eventObject.afterMethods.length) {
+          eventObject.afterMethods.forEach((after) => {
+            return this.getCallback(after.target).call(context, e, after.param);
+          });
+        }
+        return returnValue;
+      }
+    }
+    checkEventType(e, eventObject) {
+      const context = this.context;
+      var hasKeyCode = true;
+      if (eventObject.codes.length) {
+        hasKeyCode = (e.code ? eventObject.codes.indexOf(e.code.toLowerCase()) > -1 : false) || (e.key ? eventObject.codes.indexOf(e.key.toLowerCase()) > -1 : false);
+      }
+      var isAllCheck = true;
+      if (eventObject.checkMethodList.length) {
+        isAllCheck = eventObject.checkMethodList.every((field) => {
+          var fieldValue = this.getCallback(field);
+          if (isFunction(fieldValue) && fieldValue) {
+            return fieldValue.call(context, e);
+          } else if (isNotUndefined(fieldValue)) {
+            return !!fieldValue;
+          }
+          return true;
+        });
+      }
+      return hasKeyCode && isAllCheck;
+    }
+    getDefaultDomElement(dom) {
+      const context = this.context;
+      let el;
+      if (dom) {
+        el = context.refs[dom] || context[dom] || window[dom];
+      } else {
+        el = context.el || context.$el || context.$root;
+      }
+      if (el instanceof Dom) {
+        return el.getElement();
+      }
+      return el;
+    }
+    getRealEventName(eventName) {
+      return eventConverts[eventName] || eventName;
+    }
+    getCustomEventName(eventName) {
+      return customEventNames[eventName] ? eventName : "";
+    }
+    getDefaultEventObject(eventName, dom, delegate, magicMethod, callback) {
+      var _a, _b;
+      const obj = {
+        eventName: this.getRealEventName(eventName),
+        customEventName: this.getCustomEventName(eventName),
+        callback
+      };
+      const [, , ...delegates] = magicMethod.args;
+      obj.dom = this.getDefaultDomElement(dom);
+      obj.delegate = delegates.join(SAPARATOR);
+      obj.beforeMethods = [];
+      obj.afterMethods = [];
+      obj.codes = [];
+      obj.checkMethodList = [];
+      const debounceFunction = magicMethod.getFunction("debounce");
+      const throttleFunction = magicMethod.getFunction("throttle");
+      if (debounceFunction) {
+        var debounceTime = +(((_a = debounceFunction.args) == null ? void 0 : _a[0]) || 0);
+        obj.callback = debounce(callback, debounceTime);
+      } else if (throttleFunction) {
+        var throttleTime = +(((_b = throttleFunction.args) == null ? void 0 : _b[0]) || 0);
+        obj.callback = throttle(callback, throttleTime);
+      }
+      const afterFunctionList = magicMethod.getFunctionList("after");
+      const beforeFunctionList = magicMethod.getFunctionList("before");
+      if (afterFunctionList.length) {
+        afterFunctionList.forEach((afterFunction) => {
+          var r = afterFunction.args[0].split(" ");
+          var [target, param] = r;
+          obj.afterMethods.push({
+            target,
+            param
+          });
+        });
+      }
+      if (beforeFunctionList.length) {
+        beforeFunctionList.forEach((beforeFunction) => {
+          var r = beforeFunction.args[0].split(" ");
+          var [target, param] = r;
+          obj.beforeMethods.push({
+            target,
+            param
+          });
+        });
+      }
+      magicMethod.keywords.forEach((keyword) => {
+        const method = keyword;
+        if (this.getCallback(method)) {
+          obj.checkMethodList.push(method);
+        } else {
+          obj.codes.push(method.toLowerCase());
+        }
+      });
+      return obj;
+    }
+    addDomEvent(eventObject, magicMethod, callback) {
+      eventObject.callback = this.makeCallback(
+        eventObject,
+        magicMethod,
+        callback
+      );
+      this.addBinding(eventObject);
+      var options = false;
+      if (magicMethod.hasKeyword("capture")) {
+        options = true;
+      }
+      if (scrollBlockingEvents[eventObject.eventName]) {
+        options = {
+          passive: true,
+          capture: options
+        };
+      }
+      if (eventObject.dom) {
+        Event.addDomEvent(
+          eventObject.dom,
+          eventObject.eventName,
+          eventObject.callback,
+          options
+        );
+      }
+    }
+    makeCustomEventCallback(eventObject, magicMethod, callback) {
+      var _a;
+      if (eventObject.customEventName === "doubletab") {
+        var delay = 300;
+        var delayFunction = magicMethod.getFunction("delay");
+        if (delayFunction) {
+          delay = +(((_a = delayFunction.args) == null ? void 0 : _a[0]) || 0);
+        }
+        return (...args) => {
+          if (!this.doubleTab) {
+            this.doubleTab = {
+              time: window.performance.now()
+            };
+          } else {
+            if (window.performance.now() - this.doubleTab.time < delay) {
+              callback(...args);
+            }
+            this.doubleTab = null;
+          }
+        };
+      }
+      return callback;
+    }
+    bindingDomEvent([eventName, dom, ...delegate], magicMethod, callback) {
+      let eventObject = this.getDefaultEventObject(
+        eventName,
+        dom,
+        delegate,
+        magicMethod,
+        callback
+      );
+      eventObject.callback = this.makeCustomEventCallback(
+        eventObject,
+        magicMethod,
+        eventObject.callback
+      );
+      this.addDomEvent(eventObject, magicMethod, eventObject.callback);
+    }
+    getEventNames(eventName) {
+      let results = [];
+      eventName.split(NAME_SAPARATOR).forEach((e) => {
+        var arr = e.split(NAME_SAPARATOR);
+        results.push.apply(results, arr);
+      });
+      return results;
+    }
+    parseDomEvent(it) {
+      const context = this.context;
+      var arr = it.args;
+      if (arr) {
+        var eventNames = this.getEventNames(arr[0]);
+        var callback = context[it.originalMethod].bind(context);
+        for (let i = 0, len = eventNames.length; i < len; i++) {
+          arr[0] = eventNames[i];
+          this.bindingDomEvent(arr, it, callback);
+        }
+      }
+    }
+  }
+  class ObserverHandler extends BaseHandler {
+    initialize() {
+      var _a, _b;
+      if (this._observers && this.context.notEventRedefine) {
+        return;
+      }
+      if (!this._observers || this._observers.length === 0) {
+        this._observers = this.context.filterMethodes("observer");
+      }
+      if (!((_a = this._bindings) == null ? void 0 : _a.length) && ((_b = this._observers) == null ? void 0 : _b.length)) {
+        this._observers.forEach((it) => this.parseObserver(it));
+      }
+    }
+    destroy() {
+      if (this.context.notEventRedefine)
+        ;
+      else {
+        this.removeEventAll();
+      }
+    }
+    removeEventAll() {
+      this.getBindings().forEach((observer) => {
+        this.disconnectObserver(observer);
+      });
+      this.initBindings();
+    }
+    disconnectObserver(observer) {
+      observer == null ? void 0 : observer.disconnect();
+    }
+    getBindings() {
+      if (!this._bindings) {
+        this.initBindings();
+      }
+      return this._bindings;
+    }
+    addBinding(obj) {
+      this.getBindings().push(obj);
+    }
+    initBindings() {
+      this._bindings = [];
+    }
+    addObserver(observer) {
+      this.addBinding(observer);
+    }
+    getDefaultDomElement(dom) {
+      const context = this.context;
+      let el;
+      if (dom) {
+        el = context.refs[dom] || context[dom] || window[dom];
+      } else {
+        el = context.el || context.$el || context.$root;
+      }
+      if (el instanceof Dom) {
+        return el.getElement();
+      }
+      return el;
+    }
+    createObserver(magicMethod, callback) {
+      var _a;
+      const [observerType, observerTarget] = magicMethod.args || ["intersection"];
+      const $target = this.getDefaultDomElement(observerTarget);
+      const params = magicMethod.getFunction("params");
+      const options = getVariable((_a = params == null ? void 0 : params.args) == null ? void 0 : _a[0]);
+      let observer;
+      switch (observerType) {
+        case "intersection":
+          if (options.root) {
+            options.root = this.getDefaultDomElement(options.root);
+          }
+          observer = new window.IntersectionObserver(callback, options || {});
+          observer.observe($target);
+          break;
+        case "mutation":
+          observer = new window.MutationObserver(callback);
+          observer.observe(
+            $target,
+            options || {
+              attributes: true,
+              characterData: true,
+              childList: true
+            }
+          );
+          break;
+        case "performance":
+          observer = new window.PerformanceObserver(callback);
+          observer.observe(
+            options || {
+              entryTypes: ["paint"]
+            }
+          );
+          break;
+      }
+      return observer;
+    }
+    bindingObserver(magicMethod, callback) {
+      this.addObserver(this.createObserver(magicMethod, callback));
+    }
+    parseObserver(it) {
+      const context = this.context;
+      var originalCallback = context[it.originalMethod].bind(context);
+      this.bindingObserver(it, originalCallback);
+    }
+  }
+  class PropsHandler extends BaseHandler {
+    getProps() {
+      var _a, _b;
+      if (!this._props) {
+        this._props = this.context.filterMethodes("props");
+      }
+      if (!((_a = this._bindings) == null ? void 0 : _a.length) && ((_b = this._props) == null ? void 0 : _b.length)) {
+        this._props.forEach((it) => this.parseProps(it));
+      }
+      return this.getBindings();
+    }
+    destroy() {
+      this.removeAll();
+    }
+    getCallback(field) {
+      return this.context[field];
+    }
+    removeAll() {
+      this.initBindings();
+    }
+    getBindings() {
+      if (!this._bindings) {
+        this.initBindings();
+      }
+      return this._bindings;
+    }
+    addBinding(obj) {
+      this.getBindings().push(obj);
+    }
+    initBindings() {
+      this._bindings = [];
+    }
+    bindingProps(propsObject) {
+      this.addBinding(propsObject);
+    }
+    createProps(magicMethod, originalCallback) {
+      const [refKey] = magicMethod.args || [];
+      if (!refKey) {
+        return void 0;
+      }
+      return {
+        ref: refKey,
+        props: originalCallback()
+      };
+    }
+    parseProps(it) {
+      const context = this.context;
+      var originalCallback = this.getCallback(it.originalMethod).bind(context);
+      this.bindingProps(this.createProps(it, originalCallback));
+    }
+  }
+  class StoreHandler extends BaseHandler {
+    initialize() {
+      var _a, _b;
+      if (!this._callbacks) {
+        this._callbacks = this.context.filterMethodes("subscribe");
+      }
+      if (!((_a = this._bindings) == null ? void 0 : _a.length) && ((_b = this._callbacks) == null ? void 0 : _b.length)) {
+        this._callbacks.forEach((key) => this.parseSubscribe(key));
+      }
+    }
+    destroy() {
+      if (this.context.notEventRedefine)
+        ;
+      else {
+        this.context.$store.offAll(this.context);
+      }
+    }
+    getCallback(field) {
+      return this.context[field];
+    }
+    getBindings() {
+      if (!this._bindings) {
+        this.initBindings();
+      }
+      return this._bindings;
+    }
+    addBinding(obj) {
+      this.getBindings().push(obj);
+    }
+    initBindings() {
+      this._bindings = [];
+    }
+    createLocalCallback(event, callback) {
+      var newCallback = callback.bind(this.context);
+      newCallback.displayName = `${this.context.sourceName}.${event}`;
+      newCallback.source = this.context.source;
+      return newCallback;
+    }
+    parseSubscribe(magicMethod) {
+      var _a, _b;
+      const events = magicMethod.args.join(" ");
+      const checkMethodList = [];
+      const eventList = [];
+      let debounce2 = 0;
+      let throttle2 = 0;
+      let isAllTrigger = false;
+      let isSelfTrigger = false;
+      let isFrameTrigger = false;
+      const debounceFunction = magicMethod.getFunction("debounce");
+      const throttleFunction = magicMethod.getFunction("throttle");
+      const allTriggerFunction = magicMethod.getFunction("allTrigger");
+      const selfTriggerFunction = magicMethod.getFunction("selfTrigger");
+      const frameFunction = magicMethod.getFunction("frame");
+      if (debounceFunction) {
+        debounce2 = +(((_a = debounceFunction.args) == null ? void 0 : _a[0]) || 0);
+      }
+      if (throttleFunction) {
+        throttle2 = +(((_b = throttleFunction.args) == null ? void 0 : _b[0]) || 0);
+      }
+      if (allTriggerFunction) {
+        isAllTrigger = true;
+      }
+      if (selfTriggerFunction) {
+        isSelfTrigger = true;
+      }
+      if (frameFunction) {
+        isFrameTrigger = true;
+      }
+      magicMethod.keywords.forEach((keyword) => {
+        const method = keyword;
+        if (this.context[method]) {
+          checkMethodList.push(method);
+        } else {
+          eventList.push(method);
+        }
+      });
+      const originalCallback = this.context[magicMethod.originalMethod];
+      [...eventList, events].filter(Boolean).forEach((e) => {
+        var callback = this.createLocalCallback(e, originalCallback);
+        this.context.$store.on(
+          e,
+          callback,
+          this.context,
+          debounce2,
+          throttle2,
+          isAllTrigger,
+          isSelfTrigger,
+          checkMethodList,
+          isFrameTrigger
+        );
+      });
+      this.addBinding(magicMethod);
+    }
+  }
+  let contextProviderList = {};
+  function renderFromRoot() {
+    renderRootElementInstanceList(true);
+  }
+  function useState(initialState) {
+    return getCurrentComponent().useState(initialState);
+  }
+  function useEffect(callback, deps) {
+    return getCurrentComponent().useEffect(callback, deps);
+  }
+  function useReducer(reducer, initialState) {
+    return getCurrentComponent().useReducer(reducer, initialState);
+  }
+  function useMemo(callback, deps) {
+    return getCurrentComponent().useMemo(callback, deps);
+  }
+  function useCallback(callback, deps) {
+    return getCurrentComponent().useCallback(callback, deps);
+  }
+  function useRef(initialValue) {
+    return getCurrentComponent().useRef(initialValue);
+  }
+  function useContext(context) {
+    return getCurrentComponent().useContext(context);
+  }
+  function createContextProvider(context) {
+    contextProviderList[context.id] = {
+      context,
+      index: 0,
+      lastProvider: null
+    };
+  }
+  class InnerProvider {
+    constructor(context, provider) {
+      this.context = context;
+      this.provider = provider;
+    }
+    get id() {
+      return this.provider.id;
+    }
+    get value() {
+      return this.provider.value;
+    }
+    set(provider) {
+      this.provider = provider;
+    }
+  }
+  function pushContextProvider(context, provider) {
+    const innerProvider = new InnerProvider(context, provider);
+    const contextInfo = contextProviderList[context.id];
+    if (!contextInfo.lastProvider) {
+      contextInfo.prevProvider = contextInfo.lastProvider;
+      contextInfo.lastProvider = innerProvider;
+      contextInfo.lastProvider.prev = contextInfo.prevProvider;
+    } else {
+      const lastProvider = contextInfo.lastProvider;
+      const lastProviderValue = lastProvider.value;
+      const lastProviderId = lastProvider.id;
+      if (lastProviderId === innerProvider.id) {
+        contextInfo.lastProvider.set(innerProvider);
+      } else {
+        contextInfo.lastProvider.next = innerProvider;
+        innerProvider.prev = contextInfo.lastProvider;
+        contextInfo.lastProvider = innerProvider;
+      }
+      if (lastProviderValue !== innerProvider.value) {
+        runProviderSubscribe(innerProvider);
+      }
+    }
+  }
+  function popContextProvider(context) {
+    const contextInfo = contextProviderList[context.id];
+    if (contextInfo.lastProvider && contextInfo.lastProvider.prev) {
+      contextInfo.lastProvider = contextInfo.lastProvider.prev;
+      if (contextInfo.lastProvider) {
+        contextInfo.lastProvider.next = null;
+      }
+    }
+  }
+  function getContextProvider(context) {
+    const contextInfo = contextProviderList[context.id];
+    return contextInfo.lastProvider;
+  }
+  let contextIndex = 0;
+  function createContext(defaultValue2) {
+    const context = {
+      id: "context-" + contextIndex++,
+      defaultValue: defaultValue2,
+      lastProvider: null,
+      Provider: function({ value, content }) {
+        pushContextProvider(context, {
+          value,
+          id: this.id,
+          component: this
+        });
+        useEffect(() => {
+          popContextProvider(context);
+        }, []);
+        return content[0] || content;
+      }
+    };
+    context.Consumer = ({ content: [children2] }) => {
+      const value = getContextProvider(context).value;
+      return children2(value);
+    };
+    createContextProvider(context);
+    return context;
+  }
+  const providerEvents = {};
+  function addProviderSubscribe(providerId, component, callback) {
+    if (!providerEvents[providerId]) {
+      providerEvents[providerId] = {};
+    }
+    providerEvents[providerId][component.id] = callback;
+  }
+  function runProviderSubscribe(provider) {
+    const components = providerEvents[provider.id];
+    if (components) {
+      Object.values(components).forEach((callback) => {
+        callback(provider);
+      });
+    }
+  }
+  function useStore(key) {
+    return getCurrentComponent().useStore(key);
+  }
+  function useStoreSet(key, value) {
+    return getCurrentComponent().useStoreSet(key, value);
+  }
+  function useRootContext(key) {
+    return useStore(COMPONENT_ROOT_CONTEXT)[key];
+  }
+  function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+    return getCurrentComponent().useSubscribe(
+      name,
+      callback,
+      debounceSecond,
+      throttleSecond,
+      isSelf
+    );
+  }
+  function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+    return getCurrentComponent().useSelf(
+      name,
+      callback,
+      debounceSecond,
+      throttleSecond
+    );
+  }
+  function useEmit(name, ...args) {
+    return getCurrentComponent().emit(name, ...args);
+  }
+  function useTrigger(name, ...args) {
+    return getCurrentComponent().trigger(name, ...args);
+  }
+  function useMagicMethod(methodName, callback) {
+    return getCurrentComponent().initMagicMethod(methodName, callback);
+  }
+  class MagicHandler {
+    constructor() {
+      __privateAdd(this, _handlerCache, {});
+      this.handlers = this.initializeHandler();
+    }
+    initializeHandler(localHandlers = {}) {
+      return createHandlerInstance(this, localHandlers);
+    }
+    loadHandlerCache(func) {
+      if (!__privateGet(this, _handlerCache)[func]) {
+        __privateGet(this, _handlerCache)[func] = this.handlers.filter((h) => h[func]);
+      }
+      return __privateGet(this, _handlerCache)[func];
+    }
+    async runHandlers(func = "run", ...args) {
+      await Promise.all(
+        this.loadHandlerCache(func).map(async (h) => {
+          await h[func](...args);
+        })
+      );
+    }
+    filterFunction(func, ...args) {
+      return this.loadHandlerCache(func).map((h) => {
+        return h[func](...args);
+      });
+    }
+  }
+  _handlerCache = new WeakMap();
+  const USE_STATE = Symbol("useState");
+  const USE_EFFECT = Symbol("useEffect");
+  const USE_MEMO = Symbol("useMemo");
+  const USE_CONTEXT = Symbol("useContext");
+  const USE_SUBSCRIBE = Symbol("useSubscribe");
+  function createState({ value, component }) {
+    let localValue = { value, component };
+    function getValue(v) {
+      if (typeof v === "function") {
+        return v(localValue.value);
+      }
+      return v;
+    }
+    const update = (newValue) => {
+      const _newValue = getValue(newValue);
+      if (localValue.value !== _newValue) {
+        localValue.value = _newValue;
+        renderComponent(localValue.component);
+      }
+    };
+    return [localValue, update];
+  }
+  class HookMachine extends MagicHandler {
+    constructor() {
+      super(...arguments);
+      __privateAdd(this, ___stateHooks, []);
+      __privateAdd(this, ___stateHooksIndex, 0);
+    }
+    copyHooks() {
+      return {
+        __stateHooks: __privateGet(this, ___stateHooks),
+        __stateHooksIndex: __privateGet(this, ___stateHooksIndex)
+      };
+    }
+    reloadHooks(hooks) {
+      __privateSet(this, ___stateHooks, hooks.__stateHooks || []);
+      __privateSet(this, ___stateHooksIndex, hooks.__stateHooksIndex || 0);
+    }
+    resetCurrentComponent() {
+      this.resetHookIndex();
+      resetCurrentComponent(this);
+    }
+    resetHookIndex() {
+      __privateSet(this, ___stateHooksIndex, 0);
+    }
+    increaseHookIndex() {
+      __privateWrapper(this, ___stateHooksIndex)._++;
+    }
+    getHook() {
+      return __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)];
+    }
+    setHook(type, hookInfo) {
+      __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] = {
+        type,
+        hookInfo
+      };
+    }
+    useState(initialState) {
+      if (!this.getHook()) {
+        this.setHook(
+          USE_STATE,
+          createState({ value: initialState, component: this })
+        );
+      }
+      const [value, update] = this.getHook().hookInfo;
+      this.increaseHookIndex();
+      return [value.value, update];
+    }
+    isChangedDeps(deps) {
+      const hasDeps = !deps;
+      const {
+        hookInfo: { deps: currentDeps }
+      } = this.getHook() || { hookInfo: {} };
+      const hasChangedDeps = currentDeps ? !deps.every((d, i) => d === currentDeps[i]) : true;
+      if ((deps == null ? void 0 : deps.length) === 0 && (currentDeps == null ? void 0 : currentDeps.length) === 0) {
+        return false;
+      }
+      return hasDeps || hasChangedDeps;
+    }
+    useEffect(callback, deps) {
+      const hasChangedDeps = this.isChangedDeps(deps);
+      this.setHook(USE_EFFECT, {
+        deps,
+        hasChangedDeps,
+        callback
+      });
+      this.increaseHookIndex();
+    }
+    useReducer(reducer, initialState) {
+      const [state, setState] = this.useState(initialState);
+      function dispatch(action) {
+        setState((prevState) => reducer(prevState, action));
+      }
+      return [state, dispatch];
+    }
+    useMemo(callback, deps) {
+      const hasChangedDeps = this.isChangedDeps(deps);
+      if (hasChangedDeps) {
+        this.setHook(USE_MEMO, {
+          deps,
+          value: callback()
+        });
+      }
+      const lastHookValue = this.getHook().hookInfo || {};
+      this.increaseHookIndex();
+      return lastHookValue.value;
+    }
+    useCallback(callback, deps) {
+      return this.useMemo(() => callback, deps);
+    }
+    useRef(initialValue) {
+      return this.useMemo(() => ({ current: initialValue }), []);
+    }
+    refreshProvider(provider) {
+      const hookInfo = this.filterHooks(USE_CONTEXT).find(
+        (it) => it.provider.id === provider.id
+      );
+      if (hookInfo) {
+        hookInfo.provider = provider;
+      }
+    }
+    useContext(context) {
+      if (!this.getHook()) {
+        this.setHook(USE_CONTEXT, {
+          provider: getContextProvider(context),
+          component: this
+        });
+      }
+      const { provider } = this.getHook().hookInfo;
+      addProviderSubscribe(provider.id, this, () => {
+        renderComponent(this);
+      });
+      this.increaseHookIndex();
+      return (provider == null ? void 0 : provider.value) || context.defaultValue;
+    }
+    useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+      if (!this.getHook()) {
+        this.setHook(USE_SUBSCRIBE, {
+          name,
+          callback,
+          component: this,
+          unsubscribe: this.$store.on(
+            name,
+            callback,
+            this,
+            debounceSecond,
+            throttleSecond,
+            false,
+            isSelf
+          )
+        });
+      }
+      const { unsubscribe } = this.getHook().hookInfo;
+      this.increaseHookIndex();
+      return unsubscribe;
+    }
+    useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+      return this.useSubscribe(
+        name,
+        callback,
+        debounceSecond,
+        throttleSecond,
+        true
+      );
+    }
+    useEmit(name, ...args) {
+      return this.emit(name, ...args);
+    }
+    useStore(key) {
+      return this.$store.get(key);
+    }
+    useStoreSet(key, value) {
+      this.$store.set(key, value);
+    }
+    filterHooks(type) {
+      return __privateGet(this, ___stateHooks).filter((it) => it.type === type).map((it) => it.hookInfo);
+    }
+    getUseEffects() {
+      return this.filterHooks(USE_EFFECT);
+    }
+    getUseStates() {
+      return this.filterHooks(USE_STATE).map((it) => it.value);
+    }
+    runHooks() {
+      this.getUseEffects().forEach((it) => {
+        if (it.hasChangedDeps) {
+          it.cleanup = it.callback();
+        }
+      });
+    }
+    cleanHooks() {
+      this.getUseEffects().forEach((it) => {
+        if (isFunction(it.cleanup)) {
+          it.cleanup();
+        }
+      });
+    }
+    destroy() {
+    }
+    onMounted() {
+      this.isMounted = true;
+      this.runHooks();
+    }
+    onUpdated() {
+      this.runHooks();
+    }
+    onDestroyed() {
+      this.isMounted = false;
+      this.cleanHooks();
+    }
+    onUnmounted() {
+    }
+  }
+  ___stateHooks = new WeakMap();
+  ___stateHooksIndex = new WeakMap();
+  const _EventMachine = class extends HookMachine {
+    constructor(opt, props, state) {
+      super();
+      __privateAdd(this, _reloadInstance);
+      __privateAdd(this, _state, {});
+      __privateAdd(this, _cachedMethodList, void 0);
+      __privateAdd(this, _functionCache, {});
+      __privateAdd(this, _childObjectList, {});
+      __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
+      __publicField(this, "registerRef", (ref, el) => {
+        if (typeof ref === "function") {
+          ref(el);
+        } else if (isObject(ref)) {
+          ref.value = el;
+        } else {
+          this.refs[ref] = el;
+        }
+      });
+      __publicField(this, "registerChildComponent", (el, childComponent, id, oldEl) => {
+        if (!__privateGet(this, _childObjectElements).has(el)) {
+          __privateGet(this, _childObjectList)[id] = el;
+          __privateGet(this, _childObjectElements).set(el, childComponent);
+        }
+        if (__privateGet(this, _childObjectElements).has(oldEl)) {
+          __privateGet(this, _childObjectElements).delete(oldEl);
+        }
+      });
+      __publicField(this, "checkRefClass", (oldEl, newVNode) => {
+        const props = newVNode.props;
+        if (newVNode.isComponentChanged) {
+          return true;
+        }
+        let targetInstance = this.getTargetInstance(oldEl);
+        if (targetInstance) {
+          if (targetInstance.isInstanceOf(newVNode.Component)) {
+            if (newVNode.isComponentChanged) {
+              return true;
+            }
+            if (targetInstance.isForceRender(props)) {
+              return true;
+            }
+            __privateMethod(this, _reloadInstance, reloadInstance_fn).call(this, targetInstance, props);
+            return false;
+          } else {
+            return true;
+          }
+        }
+        return true;
+      });
+      this.refs = {};
+      this.id = uuid();
+      this.initializeProperty(opt, props, state);
+    }
+    setId(id) {
+      this.id = id;
+    }
+    initializeHandler() {
+      return super.initializeHandler({
+        DomEventHandler,
+        ObserverHandler,
+        StoreHandler,
+        PropsHandler
+      });
+    }
+    checkProps(props = {}) {
+      return props;
+    }
+    initializeProperty(opt, props = {}, state = {}) {
+      this.opt = opt || {};
+      this.parent = this.opt;
+      this.source = this.id;
+      this.sourceName = this.constructor.name;
+      this.props = props;
+      __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
+    }
+    createFunction(funcName, func) {
+      if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
+        __privateGet(this, _functionCache)[funcName] = func;
+      }
+      return __privateGet(this, _functionCache)[funcName];
+    }
+    runFunction(funcName, func) {
+      const cachedFunction = this.createFunction(funcName, func);
+      if (cachedFunction == null ? void 0 : cachedFunction.running) {
+        return;
+      }
+      if (isFunction(cachedFunction)) {
+        if (!cachedFunction.running) {
+          cachedFunction.running = true;
+          cachedFunction.call(this);
+        }
+      }
+      return cachedFunction;
+    }
+    initState() {
+      return {};
+    }
+    setState(state = {}, isRefresh = true) {
+      __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
+      if (isRefresh) {
+        this.refresh();
+      }
+    }
+    toggleState(key, isLoad = true) {
+      this.setState(
+        {
+          [key]: !__privateGet(this, _state)[key]
+        },
+        isLoad
+      );
+    }
+    changedProps(newProps) {
+      return !vnodePropsDiff(this.props, newProps);
+    }
+    _reload(props) {
+      if (this.changedProps(props)) {
+        this.props = props;
+        this.refresh();
+      }
+    }
+    checkLoad($container) {
+      window.requestAnimationFrame(() => {
+        this.render($container);
+      });
+    }
+    get state() {
+      return __privateGet(this, _state);
+    }
+    get ref() {
+      return this.props.ref;
+    }
+    get children() {
+      return Object.fromEntries(
+        Object.entries(__privateGet(this, _childObjectList)).map(([_key, child]) => {
+          return [_key, __privateGet(this, _childObjectElements).get(child)];
+        })
+      );
+    }
+    get isPreLoaded() {
+      return true;
+    }
+    getTargetInstance(oldEl) {
+      const _target = __privateGet(this, _childObjectElements).get(oldEl);
+      if (_target) {
+        return _target;
+      }
+      return void 0;
+    }
+    isForceRender() {
+      return false;
+    }
+    isInstanceOf(Component) {
+      return this instanceof Component;
+    }
+    async runningUpdate(template, isForceRender) {
+      if (template.type === VNodeType.FRAGMENT) {
+        updateChildren(this.parentElement, template);
+      } else {
+        Reconcile(this.$el.el, template, {
+          checkRefClass: this.checkRefClass,
+          context: this,
+          isForceRender,
+          registerRef: this.registerRef,
+          registerChildComponent: this.registerChildComponent
+        });
+      }
+      this.$el.el[COMPONENT_INSTANCE] = this;
+      this.runUpdated();
+      await this.runHandlers("update");
+    }
+    async runningMount(template, $container) {
+      const newDomElement = this.parseMainTemplate(template);
+      this.$el = newDomElement;
+      this.refs.$el = this.$el;
+      if (this.$el) {
+        this.$el.el[COMPONENT_INSTANCE] = this;
+      }
+      if ($container) {
+        if (!($container instanceof Dom)) {
+          $container = Dom.create($container);
+        }
+        if ($container.hasChild(this.$el) === false) {
+          $container.append(this.$el);
+          this.runMounted();
+        }
+      }
+      await this.runHandlers("initialize");
+      await this.afterRender();
+    }
+    async forceRender() {
+      this.cleanHooks();
+      await this.render(null, true);
+    }
+    setParentElement(parentElement) {
+      this.parentElement = parentElement;
+    }
+    is(name, callback) {
+      return this.sourceName === name && callback(this);
+    }
+    async render($container, isForceRender = false) {
+      if (!this.isPreLoaded) {
+        this.checkLoad($container);
+        return;
+      }
+      this.resetCurrentComponent();
+      const template = this.template();
+      if (isArray(template)) {
+        throw new Error(
+          [
+            `Error Component - ${this.sourceName}`,
+            "Template root is not must an array, however You can use Fragment instead of it",
+            "Fragment Samples: ",
+            " <>{list}</> ",
+            " <Fragment>{list}</Fragment>"
+          ].join("\n")
+        );
+      }
+      if (this.$el) {
+        await this.runningUpdate(template, isForceRender);
+      } else {
+        await this.runningMount(template, $container);
+      }
+      return this;
+    }
+    async renderToHtml() {
+      this.resetCurrentComponent();
+      const template = this.template();
+      const html = await VNodeToHtml(template, this.getVNodeOptions());
+      return html;
+    }
+    initialize() {
+      __privateSet(this, _state, this.initState());
+    }
+    getRef(...args) {
+      const key = args.join("");
+      return this.refs[key];
+    }
+    getVNodeOptions() {
+      return {
+        context: this,
+        registerRef: this.registerRef,
+        registerChildComponent: this.registerChildComponent
+      };
+    }
+    parseMainTemplate(html) {
+      let $el = VNodeToElement(html, this.getVNodeOptions());
+      return $el;
+    }
+    getFunctionComponent() {
+      return this;
+    }
+    refresh() {
+      this.render();
+    }
+    afterRender() {
+    }
+    template() {
+      return null;
+    }
+    clear() {
+      Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
+        if (!child.parentNode) {
+          const childInstance = __privateGet(this, _childObjectElements).get(child);
+          if (childInstance) {
+            childInstance.destroy();
+            __privateGet(this, _childObjectElements).delete(child);
+            delete __privateGet(this, _childObjectList)[_key];
+          }
+        }
+      });
+    }
+    clearAll() {
+      Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
+        const childInstance = __privateGet(this, _childObjectElements).get(child);
+        if (childInstance) {
+          childInstance.destroy();
+          __privateGet(this, _childObjectElements).delete(child);
+          delete __privateGet(this, _childObjectList)[_key];
+        }
+      });
+    }
+    destroy(isRemoveElement = false) {
+      removeRenderCallback(this);
+      Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
+        const childInstance = __privateGet(this, _childObjectElements).get(child);
+        if (childInstance) {
+          childInstance.destroy();
+          __privateGet(this, _childObjectElements).delete(child);
+          delete __privateGet(this, _childObjectList)[_key];
+        }
+      });
+      this.runHandlers("destroy");
+      if (isRemoveElement) {
+        this.$el.remove();
+        this.$el = null;
+        this.onUnmounted();
+      }
+      this.onDestroyed();
+      this.refs = {};
+    }
+    collectMethodes(refreshCache = false) {
+      if (!__privateGet(this, _cachedMethodList) || refreshCache) {
+        __privateSet(this, _cachedMethodList, collectProps(
+          this,
+          _EventMachine,
+          (name) => MagicMethod.check(name)
+        ).map((it) => {
+          return MagicMethod.parse(it, this);
+        }));
+      }
+      return __privateGet(this, _cachedMethodList);
+    }
+    filterMethodes(methodKey, refreshCache = false) {
+      return this.collectMethodes(refreshCache).filter((it) => {
+        return it.method === methodKey;
+      });
+    }
+    getChildContent(filterCallback, defaultValue2 = "") {
+      var _a;
+      return ((_a = this.getChild(filterCallback)) == null ? void 0 : _a.props.content) || defaultValue2;
+    }
+    getChild(filterCallback) {
+      return this.props.content.find(filterCallback);
+    }
+    runMounted() {
+      this.onMounted();
+    }
+    runUpdated() {
+      this.onUpdated();
+    }
+    onMounted() {
+      var _a;
+      super.onMounted();
+      const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
+      if (instance) {
+        instance.onMounted();
+      }
+    }
+    onUpdated() {
+      var _a;
+      super.onUpdated();
+      const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
+      if (instance) {
+        instance.onUpdated();
+      }
+    }
+    onDestroyed() {
+      var _a;
+      super.onDestroyed();
+      const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
+      if (instance) {
+        instance.onDestroyed();
+      }
+    }
+    onUnmounted() {
+      var _a;
+      super.onUnmounted();
+      const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
+      if (instance) {
+        instance.onUnmounted();
+      }
+    }
+    initMagicMethod(methodName, callback) {
+      this[methodName] = callback;
+    }
+  };
+  let EventMachine = _EventMachine;
+  _state = new WeakMap();
+  _cachedMethodList = new WeakMap();
+  _functionCache = new WeakMap();
+  _childObjectList = new WeakMap();
+  _childObjectElements = new WeakMap();
+  _reloadInstance = new WeakSet();
+  reloadInstance_fn = function(instance, props) {
+    instance._reload(props);
+  };
+  class BaseStore {
+    constructor() {
+      this.id = uuidShort();
+      this.cachedCallback = {};
+      this.callbacks = {};
+      this.settings = /* @__PURE__ */ new Map();
+    }
+    get(key, defaultValue2 = void 0) {
+      if (this.settings.has(key) === false) {
+        return defaultValue2;
+      }
+      return this.settings.get(key);
+    }
+    set(key, value, hasChangeMessage = true) {
+      const oldValue = this.settings.get(key);
+      if (oldValue !== value) {
+        this.settings.set(key, value);
+        if (hasChangeMessage) {
+          this.sendMessage(this, key, value);
+        }
+      }
+    }
+    init(key, value) {
+      this.set(key, value, false);
+    }
+    toggle(key) {
+      this.set(key, !this.get(key));
+    }
+    toggleWith(key, firstValue, secondValue) {
+      if (this.get(key) === firstValue) {
+        this.set(key, secondValue);
+      } else {
+        this.set(key, firstValue);
+      }
+    }
+    true(key) {
+      return this.get(key) === true;
+    }
+    false(key) {
+      return this.get(key) === false;
+    }
+    is(key, value) {
+      return this.get(key) === value;
+    }
+    remove(key) {
+      this.settings.delete(key);
+    }
+    hasCallback(event, callback) {
+      var list = this.getCachedCallbacks(event);
+      return list.some((f) => f.originalCallback === callback);
+    }
+    getCallbacks(event) {
+      if (!this.callbacks[event]) {
+        this.callbacks[event] = [];
+      }
+      return this.callbacks[event];
+    }
+    setCallbacks(event, list = []) {
+      this.callbacks[event] = list;
+    }
+    on(event, originalCallback, context, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, beforeMethods = [], frame = false) {
+      var callback = originalCallback;
+      if (debounceDelay > 0)
+        callback = debounce(originalCallback, debounceDelay);
+      else if (throttleDelay > 0)
+        callback = throttle(originalCallback, throttleDelay);
+      if (beforeMethods.length) {
+        callback = ifCheck(callback, context, beforeMethods);
+      }
+      if (frame) {
+        callback = makeRequestAnimationFrame(
+          callback,
+          context,
+          originalCallback.name
+        );
+      }
+      this.getCallbacks(event).push({
+        event,
+        callback,
+        context,
+        originalCallback,
+        enableAllTrigger,
+        enableSelfTrigger
+      });
+      return () => {
+        this.off(event, originalCallback);
+      };
+    }
+    off(event, originalCallback) {
+      if (arguments.length == 1) {
+        this.setCallbacks(event);
+      } else if (arguments.length == 2) {
+        this.setCallbacks(
+          event,
+          this.getCallbacks(event).filter((f) => {
+            return f.originalCallback !== originalCallback;
+          })
+        );
+      }
+    }
+    offAll(context) {
+      Object.keys(this.callbacks).forEach((event) => {
+        this.setCallbacks(
+          event,
+          this.getCallbacks(event).filter((f) => {
+            return f.context !== context;
+          })
+        );
+      });
+    }
+    getCachedCallbacks(event) {
+      return this.getCallbacks(event);
+    }
+    sendMessage(source, event, ...args) {
+      this.sendMessageList(source, [[event, ...args]]);
+    }
+    runMessage(runnableFunction, args) {
+      const result = runnableFunction.callback.apply(
+        runnableFunction.context,
+        args
+      );
+      if (isNotUndefined(result)) {
+        if (result === false) {
+          return;
+        } else if (isFunction(result)) {
+          result();
+          return;
+        }
+      }
+    }
+    sendMessageList(source, messages = []) {
+      window.Promise.resolve().then(() => {
+        messages.forEach(([event, ...args]) => {
+          var list = this.getCachedCallbacks(event);
+          if (list && list.length) {
+            const runnableFunctions = list.filter((f) => !f.enableSelfTrigger).filter(
+              (f) => f.enableAllTrigger || f.originalCallback.source !== source
+            );
+            let i = runnableFunctions.length;
+            while (i--) {
+              const f = runnableFunctions[i];
+              this.runMessage(f, args);
+            }
+          }
+        });
+      });
+    }
+    nextSendMessage(source, callback, ...args) {
+      window.Promise.resolve().then(() => {
+        callback(...args);
+      });
+    }
+    triggerMessage(source, event, ...args) {
+      window.Promise.resolve().then(() => {
+        var list = this.getCachedCallbacks(event);
+        if (list) {
+          const runnableFunctions = list.filter(
+            (f) => f.context.source === source
+          );
+          runnableFunctions.forEach((f) => {
+            f.callback.apply(f.context, args);
+          });
+        }
+      });
+    }
+    emit(event, ...args) {
+      if (isFunction(event)) {
+        event(...args);
+      } else if (isArray(event)) {
+        this.sendMessageList(this.source, event);
+      } else {
+        this.sendMessage(this.source, event, ...args);
+      }
+    }
+    nextTick(callback) {
+      this.nextSendMessage(this.source, callback);
+    }
+    trigger(event, ...args) {
+      if (isFunction(event)) {
+        event(...args);
+      } else {
+        this.triggerMessage(this.source, event, ...args);
+      }
+    }
+  }
+  const _UIElement = class extends EventMachine {
+    constructor(opt, props = {}, state = {}) {
+      super(opt, props, state);
+      __privateAdd(this, _storeInstance, void 0);
+      if (props.store) {
+        __privateSet(this, _storeInstance, props.store);
+      } else {
+        if (!this.parent.$store) {
+          __privateSet(this, _storeInstance, new BaseStore());
+        }
+      }
+      this.created();
+      this.initialize();
+      this.initializeContext(opt, props, state);
+    }
+    initializeContext(opt, props = {}) {
+      if (!opt) {
+        this.$store.init(COMPONENT_ROOT_CONTEXT, props);
+      }
+    }
+    currentContext() {
+      return this.contexts[this.contexts.length - 1];
+    }
+    setStore(storeInstance) {
+      __privateSet(this, _storeInstance, storeInstance);
+    }
+    get $store() {
+      return __privateGet(this, _storeInstance) || this.parent.$store;
+    }
+    async created() {
+    }
+    createLocalCallback(event, callback) {
+      var newCallback = callback.bind(this);
+      newCallback.displayName = `${this.sourceName}.${event}`;
+      newCallback.source = this.source;
+      return newCallback;
+    }
+    emit(messageName, ...args) {
+      this.$store.source = this.source;
+      this.$store.sourceContext = this;
+      this.$store.emit(messageName, ...args);
+    }
+    nextTick(callback, delay = 0) {
+      window.setTimeout(() => {
+        this.$store.nextTick(callback);
+      }, delay);
+    }
+    trigger(messageName, ...args) {
+      this.$store.source = this.source;
+      this.$store.trigger(messageName, ...args);
+    }
+    runCallback(callback, ...args) {
+      if (this.parent) {
+        this.parent.trigger(callback, ...args);
+      }
+    }
+    on(message, callback, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, frame = false) {
+      this.$store.on(
+        message,
+        callback,
+        this.source,
+        debounceDelay,
+        throttleDelay,
+        enableAllTrigger,
+        enableSelfTrigger,
+        [],
+        frame
+      );
+    }
+    off(message, callback) {
+      this.$store.off(message, callback, this.source);
+    }
+    subscribe(callback, debounceSecond = 0, throttleSecond = 0) {
+      const id = `subscribe.${uuidShort()}`;
+      const newCallback = this.createLocalCallback(id, callback);
+      this.$store.on(
+        id,
+        newCallback,
+        this,
+        debounceSecond,
+        throttleSecond,
+        false,
+        true
+      );
+      return id;
+    }
+    static createFunctionElementInstance(NewFunctionComponent, parentInstance, props, state = {}) {
+      class FunctionElement extends _UIElement {
+        initializeProperty(opt, props2 = {}, state2 = {}) {
+          super.initializeProperty(opt, props2, state2);
+          this.sourceName = this.getFunctionComponent().name || this.sourceName;
+        }
+        getFunctionComponent() {
+          return NewFunctionComponent;
+        }
+        isInstanceOf(Component) {
+          return NewFunctionComponent === Component;
+        }
+        template() {
+          return NewFunctionComponent.call(this, this.props);
+        }
+      }
+      return new FunctionElement(parentInstance, props, state);
+    }
+    static createElementInstance(ElementClass, parent, props, state) {
+      if (ElementClass.__proto__.name === "") {
+        return _UIElement.createFunctionElementInstance(
+          ElementClass,
+          parent,
+          props,
+          state
+        );
+      } else {
+        return new ElementClass(parent, props, state);
+      }
+    }
+  };
+  let UIElement = _UIElement;
+  _storeInstance = new WeakMap();
+  function createComponentInstance(ComponentClass, parent, props, state) {
+    return UIElement.createElementInstance(ComponentClass, parent, props, state);
+  }
+  const NumberStyleKeys = {
+    animationIterationCount: true,
+    borderImageOutset: true,
+    borderImageSlice: true,
+    borderImageWidth: true,
+    boxFlex: true,
+    boxFlexGroup: true,
+    boxOrdinalGroup: true,
+    columnCount: true,
+    columns: true,
+    flex: true,
+    flexGrow: true,
+    flexPositive: true,
+    flexShrink: true,
+    flexNegative: true,
+    flexOrder: true,
+    gridRow: true,
+    gridRowEnd: true,
+    gridRowSpan: true,
+    gridRowStart: true,
+    gridColumn: true,
+    gridColumnEnd: true,
+    gridColumnSpan: true,
+    gridColumnStart: true,
+    fontSize: true,
+    lineClamp: true,
+    lineHeight: true,
+    order: true,
+    orphans: true,
+    tabSize: true,
+    widows: true,
+    zIndex: true,
+    zoom: true,
+    width: true,
+    maxWidth: true,
+    maxHeight: true,
+    height: true,
+    top: true,
+    left: true,
+    right: true,
+    bottom: true,
+    border: true,
+    borderWidth: true,
+    borderRadius: true,
+    padding: true,
+    margin: true,
+    paddingLeft: true,
+    paddingRight: true,
+    paddingTop: true,
+    paddingBottom: true,
+    marginLeft: true,
+    marginRight: true,
+    marginTop: true,
+    marginBottom: true,
+    gap: true,
+    columnGap: true,
+    rowGap: true,
+    fillOpacity: true,
+    floodOpacity: true,
+    stopOpacity: true,
+    strokeDasharray: true,
+    strokeDashoffset: true,
+    strokeMiterlimit: true,
+    strokeOpacity: true,
+    strokeWidth: true
+  };
+  const styleKeys = {};
+  const uppercasePattern = /([A-Z])/g;
+  const convertStyleKey = (key) => {
+    if (styleKeys[key]) {
+      return styleKeys[key];
+    }
+    const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+    styleKeys[key] = upperKey;
+    return upperKey;
+  };
+  function styleMap(key, value) {
+    if (typeof value === "number") {
+      if (NumberStyleKeys[key]) {
+        value = value + "px";
+      }
+    }
+    return value;
+  }
+  function styleKeyMap(key) {
+    return convertStyleKey(key);
+  }
+  function css(style) {
+    const newStyles = {};
+    Object.keys(style).forEach((styleKey) => {
+      newStyles[styleKeyMap(styleKey)] = styleMap(styleKey, style[styleKey]);
+    });
+    return newStyles;
+  }
+  const SVG_ELEMENTS = {
+    svg: true,
+    g: true,
+    path: true,
+    rect: true,
+    circle: true,
+    ellipse: true,
+    line: true,
+    polyline: true,
+    polygon: true,
+    text: true,
+    tspan: true,
+    textPath: true,
+    tref: true,
+    defs: true,
+    clipPath: true,
+    mask: true,
+    pattern: true,
+    image: true,
+    linearGradient: true,
+    radialGradient: true,
+    stop: true,
+    animate: true,
+    animateMotion: true,
+    animateColor: true,
+    animateTransform: true,
+    mpath: true,
+    set: true,
+    use: true,
+    desc: true,
+    metadata: true,
+    title: true,
+    marker: true,
+    symbol: true,
+    view: true,
+    foreignObject: true,
+    switch: true,
+    link: true
+  };
+  const SVG_ELEMENTS_LIST = {};
+  Object.keys(SVG_ELEMENTS).forEach((key) => {
+    SVG_ELEMENTS_LIST[key.toLowerCase()] = true;
+    SVG_ELEMENTS_LIST[key.toUpperCase()] = true;
+  });
+  function isSVG(tagName) {
+    return !!SVG_ELEMENTS[tagName];
+  }
+  const TAG_PREFIX = "<";
+  let TEMP_DIV;
+  let TEMP_TEXT;
+  let TEMP_COMMENT;
+  let cache = {};
+  let cacheCount = 0;
+  let nativeDomCache = {};
+  const EXPECT_ATTRIBUTES = {
+    tagProps: true,
+    parentElement: true,
+    el: true,
+    children: true,
+    instance: true
+  };
+  function makeTempDiv() {
+    if (!TEMP_DIV) {
+      TEMP_DIV = Dom.create("div");
+    }
+    return TEMP_DIV;
+  }
+  function makeTempText() {
+    if (!TEMP_TEXT) {
+      TEMP_TEXT = document.createTextNode("");
+    }
+    return TEMP_TEXT;
+  }
+  function makeTempComment() {
+    if (!TEMP_COMMENT) {
+      TEMP_COMMENT = document.createComment("");
+    }
+    return TEMP_COMMENT;
+  }
+  function makeNativeDom(name) {
+    if (!nativeDomCache[name]) {
+      const el = isSVG(name) ? document.createElementNS("http://www.w3.org/2000/svg", name) : document.createElement(name);
+      nativeDomCache[name] = el;
+    }
+    return nativeDomCache[name].cloneNode(false);
+  }
+  function makeNativeTextDom(value) {
+    const text = makeTempText().cloneNode();
+    text.textContent = value;
+    return text;
+  }
+  function makeNativeCommentDom(value) {
+    const text = makeTempComment().cloneNode();
+    text.textContent = value;
+    return text;
+  }
+  const expectAttributes = {
+    content: true
+  };
+  function setAttribute(el, name, value) {
+    if (expectAttributes[name])
+      return;
+    el.setAttribute(name, value);
+  }
+  function setEventAttribute(el, name, value) {
+    el[name.toLowerCase()] = value;
+  }
+  function setStyle(el, key, value) {
+    if (key.indexOf("--") === 0) {
+      if (typeof value === "undefined") {
+        el.style.removeProperty(key);
+      } else {
+        el.style.setProperty(key, value);
+      }
+    } else {
+      el.style[key] = value;
+    }
+  }
+  function stringifyStyle(styleObject) {
+    const newStyle = css(styleObject);
+    return Object.keys(newStyle).map((key) => {
+      return `${key}: ${newStyle[key]};`;
+    }).join(" ");
+  }
+  function getProps(attributes) {
+    var results = {};
+    const len = attributes.length;
+    for (let i = 0; i < len; i++) {
+      const t = attributes[i];
+      const name = t.name;
+      const value = t.value;
+      results[name] = value;
+    }
+    return results;
+  }
+  const children = (el) => {
+    var element = el.firstChild;
+    if (!element) {
+      return [];
+    }
+    var results = [];
+    do {
+      results[results.length] = element;
+      element = element.nextSibling;
+    } while (element);
+    return results;
+  };
+  function makeOneElement(html) {
+    if (cacheCount > 2e3) {
+      cacheCount = 0;
+      cache = {};
+    }
+    if (!cache[html]) {
+      cacheCount++;
+      cache[html] = makeTempDiv().html(html).first.el;
+    }
+    return cache[html].cloneNode(true);
+  }
+  function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
+    if (isFunction(obj1) && isFunction(obj2)) {
+      return false;
+    }
+    const obj1Keys = Object.keys(obj1).filter(
+      (key) => omitKeys[key] === void 0
+    );
+    const obj2Keys = Object.keys(obj2).filter(
+      (key) => omitKeys[key] === void 0
+    );
+    if (obj1Keys.length !== obj2Keys.length) {
+      return false;
+    }
+    if (obj1Keys.length === 0 && obj2Keys.length === 0) {
+      return true;
+    }
+    return obj1Keys.every((key) => {
+      if (omitKeys[key]) {
+        return true;
+      }
+      const obj1Value = obj1[key];
+      const obj2Value = obj2[key];
+      if (isGlobalForceRender() && key === "Component") {
+        return false;
+      }
+      if (isArray(obj1Value) && isArray(obj2Value)) {
+        if (obj1Value.length !== obj2Value.length) {
+          return false;
+        }
+        if (obj1Value.length === 0 && obj2Value.length === 0) {
+          return true;
+        }
+        const isTrue = obj1Value.every((value, index2) => {
+          return isEqual(value, obj2Value[index2], count + 1, omitKeys);
+        });
+        return isTrue;
+      } else if (isObject(obj1Value) && isObject(obj2Value)) {
+        if (obj1Value instanceof EventMachine) {
+          return obj1Value === obj2Value;
+        }
+        return isEqual(obj1Value, obj2Value, count + 1, omitKeys);
+      }
+      const result = obj1Value === obj2Value;
+      if (result) {
+        if (isGlobalForceRender() && isFunction(obj1Value)) {
+          return false;
+        }
+      }
+      return result;
+    });
+  }
+  function vnodePropsDiff(oldProps, newProps) {
+    return isEqual(oldProps, newProps, 0, EXPECT_ATTRIBUTES);
+  }
+  class VNode {
+    constructor(type, tag, props, children2, Component) {
+      this.type = type;
+      this.tag = tag;
+      this.nodeName = tag == null ? void 0 : tag.toUpperCase();
+      this.props = props;
+      this.children = children2;
+      this.Component = Component;
+      this.initializeProps();
+      this.initializeChildren();
+    }
+    clone() {
+      return new VNode(
+        this.type,
+        this.tag,
+        { ...this.props },
+        this.children.map((it) => it.clone()),
+        this.Component
+      );
+    }
+    find(callback) {
+      return this.props.content.find(callback);
+    }
+    mounted() {
+    }
+    runMounted() {
+      if (this.mounted) {
+        requestAnimationFrame(() => {
+          this.mounted();
+        }, 0);
+      }
+    }
+    get stringifyStyle() {
+      return this.tagProps.style;
+    }
+    initializeProps() {
+      const newProps = Object.assign({}, this.props);
+      if (!this.Component) {
+        if (isObject(newProps.style)) {
+          newProps.style = stringifyStyle(newProps.style);
+        }
+        if (newProps.className) {
+          newProps.class = newProps.className;
+          delete newProps.className;
+        }
+        this.tagProps = newProps;
+      }
+      if (this.props.enableHtml) {
+        this.enableHtml = this.props.enableHtml;
+        delete this.props.enableHtml;
+      }
+    }
+    initializeChildren() {
+      if (isArray(this.children)) {
+        if (this.props.content)
+          return;
+        this.children = this.children.filter(Boolean).map((child) => {
+          if (isString(child)) {
+            if (this.enableHtml) {
+              if (child.indexOf(TAG_PREFIX) === -1) {
+                return createVNodeText(child);
+              } else {
+                const newEl = makeOneElement(child);
+                if ((newEl == null ? void 0 : newEl.nodeType) === 3) {
+                  return createVNodeText(newEl.textContent);
+                }
+                return createVNodeText(newEl);
+              }
+            } else {
+              return createVNodeText(child);
+            }
+          } else if (isNumber(child)) {
+            return createVNodeText(child);
+          }
+          return child;
+        });
+        this.props.content = this.children;
+      }
+    }
+    makeChildren(withChildren, options) {
+      const parentElement = this.el;
+      const children2 = this.children;
+      if (children2 && children2.length) {
+        const fragment = document.createDocumentFragment();
+        children2.forEach((child) => {
+          if (child instanceof VNode || child.makeElement) {
+            child.setParentElement(parentElement);
+            const el = child.makeElement(withChildren, options).el;
+            if (el) {
+              fragment.appendChild(el);
+            }
+          } else if (isArray(child)) {
+            child.forEach((it) => {
+              if (it) {
+                const el = it.makeElement(withChildren, options).el;
+                if (el) {
+                  fragment.appendChild(el);
+                }
+              }
+            });
+          } else if (isFunction(child)) {
+            const result = child();
+            if (result instanceof VNode) {
+              const el = result.makeElement(withChildren, options);
+              if (el)
+                fragment.appendChild(el);
+            } else if (typeof result === "string") {
+              fragment.appendChild(document.createTextNode(result));
+            }
+          } else if (child instanceof window.HTMLElement) {
+            fragment.appendChild(child);
+          } else {
+            fragment.appendChild(document.createTextNode(child));
+          }
+        });
+        parentElement.appendChild(fragment);
+        children2.forEach((child) => {
+          if (isArray(child)) {
+            child.forEach((it) => {
+              if (isFunction(it == null ? void 0 : it.runMounted)) {
+                it.runMounted();
+              }
+            });
+          } else if (child) {
+            if (isFunction(child == null ? void 0 : child.runMounted)) {
+              child.runMounted();
+            }
+          }
+        });
+      }
+    }
+    setParentElement(parentElement) {
+      this.parentElement = parentElement;
+    }
+    async makeChildrenHtml(withChildren, options) {
+      const tempChildren = [];
+      const children2 = this.children;
+      if (children2 && children2.length) {
+        const tempArray = await Promise.all(
+          children2.map(async (child) => {
+            if (child instanceof VNode || child.makeHtml) {
+              return await child.makeHtml(withChildren, options);
+            } else if (isArray(child)) {
+              return await Promise.all(
+                child.map(async (it) => {
+                  if (it) {
+                    return await it.makeHtml(withChildren, options);
+                  }
+                  return void 0;
+                })
+              ).filter((it) => typeof it !== "undefined");
+            } else if (isFunction(child)) {
+              return await child();
+            } else {
+              return await child;
+            }
+          })
+        );
+        tempChildren.push(...tempArray);
+      }
+      return tempChildren.join("\n");
+    }
+    createElement() {
+      return makeNativeDom(this.tag);
+    }
+    getContextProps(context, props) {
+      const newProps = context.filterFunction("getProps").flat(Infinity);
+      const newPropList = newProps.filter((it) => {
+        return it.ref === props.ref;
+      });
+      newPropList.forEach((it) => {
+        if (isObject(it.props)) {
+          Object.assign(props, it.props);
+        }
+      });
+    }
+    makeElement(withChildren = false, options = {}) {
+      const el = this.createElement();
+      let props = this.tagProps;
+      if (props) {
+        if (props.ref) {
+          this.getContextProps(options.context, props);
+          this.ref = props.ref;
+          isFunction(options.registerRef) && options.registerRef(props.ref, el);
+        }
+        Object.keys(props).forEach((key) => {
+          const value = props[key];
+          if (key === "style") {
+            if (isString(value)) {
+              el.style.cssText = value;
+            } else {
+              const styleValues = css(value);
+              Object.entries(styleValues).forEach(([localKey, value2]) => {
+                setStyle(el, localKey, value2);
+              });
+            }
+          } else {
+            if (key) {
+              if (value !== void 0) {
+                if (key.startsWith("on")) {
+                  setEventAttribute(el, key, value);
+                } else {
+                  setAttribute(el, key, value);
+                }
+              }
+            }
+          }
+        });
+      }
+      this.el = el;
+      this.makeChildren(withChildren, options);
+      return this;
+    }
+    async makeHtml(withChildren = false, options = {}) {
+      const tempProps = [];
+      const props = this.tagProps;
+      if (props) {
+        if (props.ref) {
+          this.getContextProps(options.context, props);
+        }
+        Object.keys(props).forEach((key) => {
+          const value = props[key];
+          if (key === "style") {
+            if (isString(value))
+              ;
+            else {
+              props[key] = stringifyStyle(css(value));
+            }
+          } else {
+            if (key) {
+              if (value !== void 0) {
+                if (key.startsWith("on")) {
+                  return;
+                }
+              }
+            }
+          }
+          if (key === "ref") {
+            return;
+          }
+          if (value) {
+            tempProps.push(`${key}="${value}"`);
+          }
+        });
+      }
+      if (isVoidTag(this.tag)) {
+        return `
+        <${this.tag} ${tempProps.join(" ")} />
+      `;
+      } else {
+        const childrenHtml = await this.makeChildrenHtml(withChildren, options);
+        return `
+        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
+      `;
+      }
+    }
+    makeText(divider = "") {
+      const arr = this.children.map((child) => child.makeText(divider)).flat(Infinity);
+      return arr.join(divider);
+    }
+  }
+  class VNodeText extends VNode {
+    constructor(value) {
+      super(VNodeType.TEXT, null, {});
+      this.value = value;
+    }
+    clone() {
+      return new VNodeText(this.value);
+    }
+    get textContent() {
+      return this.value;
+    }
+    runMounted() {
+    }
+    createElement() {
+      return makeNativeTextDom(this.value);
+    }
+    makeElement() {
+      this.el = this.createElement();
+      return this;
+    }
+    makeHtml() {
+      return this.value;
+    }
+    makeText() {
+      return this.value;
+    }
+  }
+  class VNodeComment extends VNode {
+    constructor(value) {
+      super(VNodeType.COMMENT, null, {});
+      this.value = value;
+    }
+    clone() {
+      return new VNodeComment(this.value);
+    }
+    get textContent() {
+      return this.value;
+    }
+    runMounted() {
+    }
+    createElement() {
+      return makeNativeCommentDom(this.value);
+    }
+    makeElement() {
+      this.el = this.createElement();
+      return this;
+    }
+    makeHtml() {
+      return `<!-- ${this.value} -->`;
+    }
+    makeText() {
+      return "";
+    }
+  }
+  class VNodeFragment extends VNode {
+    constructor(props = {}, children2) {
+      super(VNodeType.FRAGMENT, "fragment", props || {}, children2);
+    }
+    clone() {
+      return new VNodeFragment(
+        this.props,
+        this.children.map((it) => it.clone())
+      );
+    }
+    makeElement(withChildren = false, options = {}) {
+      if (this.el)
+        return this;
+      const el = document.createDocumentFragment();
+      this.el = el;
+      this.makeChildren(withChildren, options);
+      return this;
+    }
+    async makeHtml(withChildren = false, options = {}) {
+      return await this.makeChildrenHtml(withChildren, options);
+    }
+  }
+  class VNodeComponent extends VNode {
+    constructor(props = {}, children2, Component) {
+      super(VNodeType.COMPONENT, "object", props || {}, children2);
+      this.Component = Component;
+      this.instance = null;
+    }
+    clone() {
+      return new VNodeComponent(
+        this.props,
+        this.children.map((it) => it.clone()),
+        this.Component
+      );
+    }
+    mounted() {
+      var _a;
+      (_a = this.instance) == null ? void 0 : _a.onMounted();
+    }
+    getModule() {
+      return getModule(this.Component);
+    }
+    get isComponentChanged() {
+      return this.Component !== this.getModule();
+    }
+    makeClassInstance(options) {
+      var _a, _b, _c;
+      const props = { ...this.props };
+      if (props.ref) {
+        this.getContextProps(options.context, props);
+      }
+      const newComponent = this.getModule();
+      const hooks = (_a = this.instance) == null ? void 0 : _a.copyHooks();
+      const state = (_b = this.instance) == null ? void 0 : _b.state;
+      const oldId = (_c = this.instance) == null ? void 0 : _c.id;
+      this.instance = createComponentInstance(
+        newComponent,
+        options.context,
+        props,
+        state
+      );
+      if (oldId) {
+        this.instance.setId(oldId);
+      }
+      if (hooks) {
+        this.instance.reloadHooks(hooks);
+      }
+      return this.instance;
+    }
+    render(options) {
+      this.makeClassInstance(options);
+      try {
+        this.instance.setParentElement(this.parentElement);
+        this.instance.render(options.$container);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    async renderHtml(options) {
+      this.makeClassInstance(options);
+      return await this.instance.renderToHtml();
+    }
+    makeElement(withChildren, options = {}) {
+      var _a, _b;
+      this.render(options);
+      this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
+      if (this.el) {
+        const id = this.props.ref || this.instance.id;
+        isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
+      }
+      return this;
+    }
+    async makeHtml(withChildren, options = {}) {
+      return await this.renderHtml(options);
+    }
+    makeText() {
+      return "";
+    }
+  }
+  function createVNode({ tag, props = {}, children: children2 }) {
+    return new VNode(VNodeType.NODE, tag, props, children2);
+  }
+  function createVNodeComponent({ props = {}, children: children2, Component }) {
+    if (typeof Component === "undefined") {
+      throw new Error("Component is undefined");
+    }
+    return new VNodeComponent(props, children2, Component);
+  }
+  function createVNodeFragment({ props = {}, children: children2 }) {
+    return new VNodeFragment(props, children2);
+  }
+  function createVNodeText(text) {
+    return new VNodeText(text);
+  }
+  function createVNodeComment(text) {
+    return new VNodeComment(text);
+  }
+  function cloneVNode(vnode) {
+    return vnode.clone();
+  }
+  const start = (ElementClass, opt = {}) => {
+    const $container = Dom.create(opt.container || document.body);
+    const $targetElement = $container.children().find((it) => it.el[COMPONENT_INSTANCE]);
+    if (ElementClass instanceof VNode) {
+      const rootVNode = ElementClass;
+      ElementClass = () => rootVNode;
+    }
+    const app = createComponentInstance(ElementClass, null, opt);
+    if ($targetElement) {
+      app.$el = Dom.create($targetElement.el);
+      app.id = $targetElement.el[COMPONENT_INSTANCE].id;
+      app.render();
+    } else {
+      app.render($container);
+    }
+    registRootElementInstance(app, $container);
+    return app;
+  };
+  const render = start;
+  const hydrate = (ElementClass, opt = {}) => {
+    const $container = Dom.create(opt.container || document.body);
+    if (ElementClass instanceof VNode) {
+      const rootVNode = ElementClass;
+      ElementClass = () => rootVNode;
+    }
+    const app = createComponentInstance(ElementClass, null, opt);
+    const $targetElement = $container.firstChild;
+    if ($targetElement) {
+      app.$el = $targetElement;
+      app.render();
+    } else {
+      app.render($container);
+    }
+    registRootElementInstance(app, $container);
+    return app;
+  };
+  const potal = (ElementClass, opt = {}) => {
+    const $container = Dom.create(opt.container || document.body);
+    if (ElementClass instanceof VNodeComponent) {
+      ElementClass.render({
+        $container
+      });
+      return ElementClass.instance;
+    }
+    if (ElementClass instanceof VNode) {
+      const rootVNode = ElementClass;
+      ElementClass = () => rootVNode;
+    }
+    const app = createComponentInstance(ElementClass, null, opt);
+    app.render($container);
+    return app;
+  };
+  async function renderToHtml(ElementClass, opt) {
+    if (ElementClass instanceof VNode) {
+      const rootVNode = ElementClass;
+      ElementClass = () => rootVNode;
+    }
+    const app = createComponentInstance(ElementClass, null, opt);
+    const html = await app.renderToHtml();
+    return html;
+  }
+  function WebComponent(CustomUIElement) {
+    return class extends HTMLElement {
+      constructor() {
+        super();
+        this._shadow = this.attachShadow({ mode: "open" });
+        this._$container = Dom.create(this._shadow);
+        this._comp = new CustomUIElement();
+        this._comp.on("customEvent", (eventName, ...args) => {
+          this.dispatchEvent(
+            new CustomEvent(eventName, {
+              bubbles: true,
+              detail: args
+            })
+          );
+        });
+      }
+      static get observedAttributes() {
+        return CustomUIElement.attributes || [];
+      }
+      connectedCallback() {
+        const attrs = this.attributes;
+        const props = {};
+        for (let i = attrs.length - 1; i >= 0; i--) {
+          props[attrs[i].name] = attrs[i].value;
+        }
+        this._comp._reload(props, this._$container);
+      }
+      disconnectedCallback() {
+        this._comp.destroy();
+        this._comp = null;
+      }
+      adoptedCallback() {
+        console.log("Custom square element moved to new page.");
+      }
+      attributeChangedCallback(name, oldValue, newValue) {
+        this._comp._reload({
+          ...this._comp.props,
+          [name]: newValue
+        });
+      }
+    };
+  }
+  function createVNodeByDom(el) {
+    if (typeof el === "string") {
+      return createVNodeText(el);
+    }
+    if (el.nodeType === 3) {
+      return createVNodeText(el.textContent);
+    }
+    return createVNode({
+      tag: el.tagName,
+      props: getProps(el.attributes),
+      children: children(el).map((it) => {
+        return createVNodeByDom(it);
+      })
+    });
+  }
+  function htmlToVNode(html) {
+    const $dom = Dom.createByHTML(html);
+    return createVNodeByDom($dom.el);
+  }
+  function jsonToVNode(json) {
+    const { children: children2 = [], ...rest } = json;
+    if (typeof json === "string" || typeof json === "number") {
+      return createVNodeText(json);
+    }
+    if (rest.type === "comment") {
+      return createVNodeComment(rest.text);
+    }
+    if (rest.type === "text") {
+      return createVNodeText(rest.text);
+    }
+    if (rest.type === "fragment") {
+      return createVNodeFragment({
+        ...rest,
+        children: children2.map((it) => jsonToVNode(it))
+      });
+    }
+    if (rest.type === "component" || rest.Component) {
+      return createVNodeComponent({
+        ...rest,
+        children: children2.map((it) => jsonToVNode(it))
+      });
+    }
+    return createVNode({
+      ...rest,
+      children: children2.map((it) => jsonToVNode(it))
+    });
+  }
+  function createComponent(Component, props = {}, children2 = []) {
+    children2 = children2.flat(Infinity);
+    return createVNodeComponent({
+      props: props || {},
+      children: children2,
+      Component
+    });
+  }
+  function createComponentFragment(Component, props = {}, children2 = []) {
+    children2 = children2.flat(Infinity);
+    return createVNodeFragment({
+      props: props || {},
+      children: children2,
+      Component
+    });
+  }
+  function createComment(children2 = []) {
+    children2 = children2.flat(Infinity);
+    return createVNodeComment(children2[0] || "");
+  }
+  function createComponentList(...args) {
+    return args.map((it) => {
+      let ComponentName;
+      let props = {};
+      let children2 = [];
+      if (isString(it)) {
+        ComponentName = it;
+      } else if (isArray(it)) {
+        [ComponentName, props = {}, children2 = []] = it;
+      }
+      if (children2.length) {
+        return createComponent(
+          ComponentName,
+          props || {},
+          createComponentList(children2)
+        );
+      }
+      return createComponent(ComponentName, props);
+    });
+  }
+  function createElement(Component, props, children2 = []) {
+    children2 = children2.flat(Infinity);
+    return createVNode({ tag: Component, props, children: children2 });
+  }
+  function createElementJsx$1(Component, props = {}, ...children2) {
+    children2 = children2.filter(Boolean);
+    if (Component === FragmentInstance$1) {
+      return createComponentFragment(Component, props, children2);
+    }
+    if (Component === HTMLComment$1) {
+      return createComment(children2);
+    }
+    props = props || {};
+    if (typeof Component !== "string") {
+      return createComponent(Component, props, children2);
+    } else {
+      return createElement(Component, props, children2);
+    }
+  }
+  const FragmentInstance$1 = new Object();
+  const HTMLComment$1 = new Object();
+  const jsx = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    __proto__: null,
+    createComponent,
+    createComponentFragment,
+    createComment,
+    createComponentList,
+    createElement,
+    createElementJsx: createElementJsx$1,
+    FragmentInstance: FragmentInstance$1,
+    HTMLComment: HTMLComment$1
+  }, Symbol.toStringTag, { value: "Module" }));
+  const FragmentInstance = FragmentInstance$1;
+  const createElementJsx = createElementJsx$1;
+  const HTMLComment = HTMLComment$1;
+  const index = {
+    ...jsx
+  };
+  exports2.AFTER = AFTER;
+  exports2.ALL_TRIGGER = ALL_TRIGGER;
+  exports2.ALT = ALT;
+  exports2.ANIMATIONEND = ANIMATIONEND;
+  exports2.ANIMATIONITERATION = ANIMATIONITERATION;
+  exports2.ANIMATIONSTART = ANIMATIONSTART;
+  exports2.ARROW_DOWN = ARROW_DOWN;
+  exports2.ARROW_LEFT = ARROW_LEFT;
+  exports2.ARROW_RIGHT = ARROW_RIGHT;
+  exports2.ARROW_UP = ARROW_UP;
+  exports2.BACKSPACE = BACKSPACE;
+  exports2.BEFORE = BEFORE;
+  exports2.BLUR = BLUR;
+  exports2.BRACKET_LEFT = BRACKET_LEFT;
+  exports2.BRACKET_RIGHT = BRACKET_RIGHT;
+  exports2.BaseStore = BaseStore;
+  exports2.CALLBACK = CALLBACK;
+  exports2.CAPTURE = CAPTURE;
+  exports2.CHANGE = CHANGE;
+  exports2.CHANGEINPUT = CHANGEINPUT;
+  exports2.CHECKER = CHECKER;
+  exports2.CLICK = CLICK;
+  exports2.COMMAND = COMMAND;
+  exports2.CONFIG = CONFIG;
+  exports2.CONTEXTMENU = CONTEXTMENU;
+  exports2.CONTROL = CONTROL;
+  exports2.CUSTOM = CUSTOM;
+  exports2.D1000 = D1000;
+  exports2.DEBOUNCE = DEBOUNCE;
+  exports2.DELAY = DELAY;
+  exports2.DELETE = DELETE;
+  exports2.DOUBLECLICK = DOUBLECLICK;
+  exports2.DOUBLETAB = DOUBLETAB;
+  exports2.DRAG = DRAG;
+  exports2.DRAGEND = DRAGEND;
+  exports2.DRAGENTER = DRAGENTER;
+  exports2.DRAGEXIT = DRAGEXIT;
+  exports2.DRAGLEAVE = DRAGLEAVE;
+  exports2.DRAGOUT = DRAGOUT;
+  exports2.DRAGOVER = DRAGOVER;
+  exports2.DRAGSTART = DRAGSTART;
+  exports2.DROP = DROP;
+  exports2.Dom = Dom;
+  exports2.ENTER = ENTER;
+  exports2.EQUAL = EQUAL;
+  exports2.ESCAPE = ESCAPE;
+  exports2.EVENT = EVENT;
+  exports2.FIT = FIT;
+  exports2.FOCUS = FOCUS;
+  exports2.FOCUSIN = FOCUSIN;
+  exports2.FOCUSOUT = FOCUSOUT;
+  exports2.FRAME = FRAME;
+  exports2.FUNC_END_CHARACTER = FUNC_END_CHARACTER;
+  exports2.FUNC_REGEXP = FUNC_REGEXP;
+  exports2.FUNC_START_CHARACTER = FUNC_START_CHARACTER;
+  exports2.FragmentInstance = FragmentInstance;
+  exports2.HASHCHANGE = HASHCHANGE;
+  exports2.HTMLComment = HTMLComment;
+  exports2.IF = IF;
+  exports2.INPUT = INPUT;
+  exports2.KEYDOWN = KEYDOWN;
+  exports2.KEYPRESS = KEYPRESS;
+  exports2.KEYUP = KEYUP;
+  exports2.LEFT_BUTTON = LEFT_BUTTON;
+  exports2.MAGIC_METHOD = MAGIC_METHOD;
+  exports2.MAGIC_METHOD_REG = MAGIC_METHOD_REG;
+  exports2.META = META;
+  exports2.MINUS = MINUS;
+  exports2.MOUSE = MOUSE;
+  exports2.MOUSEDOWN = MOUSEDOWN;
+  exports2.MOUSEENTER = MOUSEENTER;
+  exports2.MOUSELEAVE = MOUSELEAVE;
+  exports2.MOUSEMOVE = MOUSEMOVE;
+  exports2.MOUSEOUT = MOUSEOUT;
+  exports2.MOUSEOVER = MOUSEOVER;
+  exports2.MOUSEUP = MOUSEUP;
+  exports2.MagicMethod = MagicMethod;
+  exports2.NAME_SAPARATOR = NAME_SAPARATOR;
+  exports2.OBSERVER = OBSERVER;
+  exports2.ON = ON;
+  exports2.ORIENTATIONCHANGE = ORIENTATIONCHANGE;
+  exports2.PARAMS = PARAMS;
+  exports2.PASSIVE = PASSIVE;
+  exports2.PASTE = PASTE;
+  exports2.PEN = PEN;
+  exports2.PIPE = PIPE;
+  exports2.POINTEREND = POINTEREND;
+  exports2.POINTERENTER = POINTERENTER;
+  exports2.POINTERLEAVE = POINTERLEAVE;
+  exports2.POINTERMOVE = POINTERMOVE;
+  exports2.POINTEROUT = POINTEROUT;
+  exports2.POINTEROVER = POINTEROVER;
+  exports2.POINTERSTART = POINTERSTART;
+  exports2.POPSTATE = POPSTATE;
+  exports2.PREVENT = PREVENT;
+  exports2.PROPS = PROPS;
+  exports2.RAF = RAF;
+  exports2.RESIZE = RESIZE;
+  exports2.RIGHT_BUTTON = RIGHT_BUTTON;
+  exports2.SAPARATOR = SAPARATOR;
+  exports2.SCROLL = SCROLL;
+  exports2.SELF = SELF;
+  exports2.SELF_TRIGGER = SELF_TRIGGER;
+  exports2.SHIFT = SHIFT;
+  exports2.SPACE = SPACE;
+  exports2.SPLITTER = SPLITTER;
+  exports2.STOP = STOP;
+  exports2.SUBMIT = SUBMIT;
+  exports2.SUBSCRIBE = SUBSCRIBE;
+  exports2.SUBSCRIBE_ALL = SUBSCRIBE_ALL;
+  exports2.SUBSCRIBE_SELF = SUBSCRIBE_SELF;
+  exports2.THROTTLE = THROTTLE;
+  exports2.TOUCH = TOUCH;
+  exports2.TOUCHEND = TOUCHEND;
+  exports2.TOUCHMOVE = TOUCHMOVE;
+  exports2.TOUCHSTART = TOUCHSTART;
+  exports2.TRANSITIONCANCEL = TRANSITIONCANCEL;
+  exports2.TRANSITIONEND = TRANSITIONEND;
+  exports2.TRANSITIONRUN = TRANSITIONRUN;
+  exports2.TRANSITIONSTART = TRANSITIONSTART;
+  exports2.UIElement = UIElement;
+  exports2.VARIABLE_SAPARATOR = VARIABLE_SAPARATOR;
+  exports2.VNode = VNode;
+  exports2.VNodeComment = VNodeComment;
+  exports2.VNodeComponent = VNodeComponent;
+  exports2.VNodeFragment = VNodeFragment;
+  exports2.VNodeText = VNodeText;
+  exports2.VNodeType = VNodeType;
+  exports2.WHEEL = WHEEL;
+  exports2.WebComponent = WebComponent;
+  exports2.addProviderSubscribe = addProviderSubscribe;
+  exports2.children = children;
+  exports2.classnames = classnames;
+  exports2.clone = clone;
+  exports2.cloneVNode = cloneVNode;
+  exports2.collectProps = collectProps;
+  exports2.combineKeyArray = combineKeyArray;
+  exports2.createComponentInstance = createComponentInstance;
+  exports2.createContext = createContext;
+  exports2.createElementJsx = createElementJsx;
+  exports2.createHandlerInstance = createHandlerInstance;
+  exports2.createVNode = createVNode;
+  exports2.createVNodeByDom = createVNodeByDom;
+  exports2.createVNodeComment = createVNodeComment;
+  exports2.createVNodeComponent = createVNodeComponent;
+  exports2.createVNodeFragment = createVNodeFragment;
+  exports2.createVNodeText = createVNodeText;
+  exports2.debounce = debounce;
+  exports2.default = index;
+  exports2.defaultValue = defaultValue;
+  exports2.get = get;
+  exports2.getContextProvider = getContextProvider;
+  exports2.getCurrentComponent = getCurrentComponent;
+  exports2.getModule = getModule;
+  exports2.getProps = getProps;
+  exports2.getRootElementInstanceList = getRootElementInstanceList;
+  exports2.getVariable = getVariable;
+  exports2.hasVariable = hasVariable;
+  exports2.htmlToVNode = htmlToVNode;
+  exports2.hydrate = hydrate;
+  exports2.ifCheck = ifCheck;
+  exports2.initializeGroupVariables = initializeGroupVariables;
+  exports2.isArray = isArray;
+  exports2.isBoolean = isBoolean;
+  exports2.isEqual = isEqual;
+  exports2.isFunction = isFunction;
+  exports2.isGlobalForceRender = isGlobalForceRender;
+  exports2.isNotString = isNotString;
+  exports2.isNotUndefined = isNotUndefined;
+  exports2.isNotZero = isNotZero;
+  exports2.isNumber = isNumber;
+  exports2.isObject = isObject;
+  exports2.isString = isString;
+  exports2.isUndefined = isUndefined;
+  exports2.isZero = isZero;
+  exports2.jsonToVNode = jsonToVNode;
+  exports2.keyEach = keyEach;
+  exports2.keyMap = keyMap;
+  exports2.keyMapJoin = keyMapJoin;
+  exports2.makeEventChecker = makeEventChecker;
+  exports2.makeOneElement = makeOneElement;
+  exports2.makeRequestAnimationFrame = makeRequestAnimationFrame;
+  exports2.popContextProvider = popContextProvider;
+  exports2.potal = potal;
+  exports2.recoverVariable = recoverVariable;
+  exports2.refreshModule = refreshModule;
+  exports2.registAlias = registAlias;
+  exports2.registElement = registElement;
+  exports2.registHandler = registHandler;
+  exports2.registRootElementInstance = registRootElementInstance;
+  exports2.registerModule = registerModule;
+  exports2.removeRenderCallback = removeRenderCallback;
+  exports2.removeRootElementInstance = removeRootElementInstance;
+  exports2.render = render;
+  exports2.renderComponent = renderComponent;
+  exports2.renderFromRoot = renderFromRoot;
+  exports2.renderRootElementInstanceList = renderRootElementInstanceList;
+  exports2.renderToHtml = renderToHtml;
+  exports2.resetCurrentComponent = resetCurrentComponent;
+  exports2.retriveAlias = retriveAlias;
+  exports2.retriveElement = retriveElement;
+  exports2.retriveHandler = retriveHandler;
+  exports2.runProviderSubscribe = runProviderSubscribe;
+  exports2.setGlobalForceRender = setGlobalForceRender;
+  exports2.start = start;
+  exports2.throttle = throttle;
+  exports2.useCallback = useCallback;
+  exports2.useContext = useContext;
+  exports2.useEffect = useEffect;
+  exports2.useEmit = useEmit;
+  exports2.useMagicMethod = useMagicMethod;
+  exports2.useMemo = useMemo;
+  exports2.useReducer = useReducer;
+  exports2.useRef = useRef;
+  exports2.useRootContext = useRootContext;
+  exports2.useSelf = useSelf;
+  exports2.useState = useState;
+  exports2.useStore = useStore;
+  exports2.useStoreSet = useStoreSet;
+  exports2.useSubscribe = useSubscribe;
+  exports2.useTrigger = useTrigger;
+  exports2.uuid = uuid;
+  exports2.uuidShort = uuidShort;
+  exports2.variable = variable;
+  exports2.vnodePropsDiff = vnodePropsDiff;
+  Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+});
