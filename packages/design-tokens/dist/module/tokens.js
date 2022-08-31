@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 30 Aug 2022 11:57:29 GMT
+ * Generated on Wed, 31 Aug 2022 09:49:33 GMT
  */
 
 module.exports = {
@@ -749,11 +749,11 @@ module.exports = {
         ]
       },
       "primary": {
-        "value": "#1a497d",
+        "value": "#0060cc",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.8.value}"
+          "value": "{color.blue.7.value}"
         },
         "name": "ColorDownPrimary",
         "attributes": {
@@ -3189,6 +3189,27 @@ module.exports = {
             "default"
           ]
         },
+        "dark": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "AlertColorContentDark",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "dark"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "dark"
+          ]
+        },
         "primary": {
           "value": "#e8f3ff",
           "filePath": "tokens/component/alert.json",
@@ -3515,6 +3536,27 @@ module.exports = {
             "color",
             "background",
             "default"
+          ]
+        },
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.9.value}"
+          },
+          "name": "AlertColorBackgroundDark",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "dark"
           ]
         },
         "primary": {

@@ -27,7 +27,14 @@ declare module "@elf-framework/ui" {
     | "danger"
     | "warning"
     | "outline";
-  type ButtonSize = "small" | "default" | "large";
+  type ButtonSize =
+    | "extra-small"
+    | "xsmall"
+    | "small"
+    | "default"
+    | "large"
+    | "extra-large"
+    | "xlarge";
   type ButtonShape = "square" | "round" | "circle";
 
   interface CommonStyle {
@@ -341,12 +348,13 @@ declare module "@elf-framework/ui" {
 
   export interface MenuProps {
     items: ItemType[];
-    type: "menu" | "contextmenu";
+    type: "menu" | "dropdown" | "contextmenu";
     x?: number;
     y?: number;
     direction?: MenuDirectionType;
     style: MenuStyle & CommonStyle;
     root?: ToolsMenuItem;
+    compact?: boolean;
   }
 
   export class SectionMenuItem extends UIElement {
@@ -380,10 +388,15 @@ declare module "@elf-framework/ui" {
 
   interface DialogProps {
     visible: boolean;
-    tools: any[];
-    footer: any[] | any;
+    tools: ContentType;
+    footer: ContentType;
     center?: boolean;
+    noBorder?: boolean;
     style: DialogStyle;
+    okText?: ContentType;
+    cancelText?: ContentType;
+    okProps?: ButtonProps;
+    cancelProps?: ButtonProps;
     onOk: (event: Dialog) => void;
     onCancel: (event: Dialog) => void;
     onClose: (event: Dialog) => void;
@@ -598,6 +611,47 @@ declare module "@elf-framework/ui" {
   }
   export class Tooltip extends UIElement {
     props: TooltipProps & CommonStyle;
+  }
+
+  interface PopoverStyle {
+    backgroundColor?: string;
+    hoverColor?: string;
+    borderColor?: string;
+    boxShadow?: string;
+    toolsBorderColor?: string;
+    toolsBorderRadius?: string;
+    color?: string;
+    hgap?: number;
+    vgap?: number;
+    delay?: string;
+  }
+
+  type PopoverPlacementType =
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right"
+    | "left-top"
+    | "left-bottom"
+    | "right-top"
+    | "right-bottom";
+
+  export interface PopoverProps {
+    content: ContentType;
+    body?: ContentType;
+    placement: PopoverPlacementType;
+    trigger: "hover" | "click";
+    animated?: boolean;
+    show: boolean;
+    style: TooltipStyle & CommonStyle;
+    showTip: boolean;
+  }
+  export class Popover extends UIElement {
+    props: PopoverProps & CommonStyle;
   }
 
   interface PanelStyle {
@@ -1068,7 +1122,7 @@ declare module "@elf-framework/ui" {
   }
 
   interface AlertProps {
-    type: "default" | "primary" | "success" | "info" | "warning" | "danger";
+    variant: "default" | "primary" | "success" | "info" | "warning" | "danger";
     title: ContentType;
     content: ContentType;
     style: CommonStyle;

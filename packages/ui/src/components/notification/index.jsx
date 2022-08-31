@@ -5,6 +5,7 @@ import { propertyMap } from "../../utils/propertyMap";
 const cssProperties = {
   backgroundColor: "--elf--notification-background",
   color: "--elf--notification-color",
+  width: "--elf--notification-width",
   height: "--elf--notification-height",
   hoverColor: "--elf--notification-hover-color",
   borderColor: "--elf--notification-border-color",

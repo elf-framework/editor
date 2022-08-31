@@ -28,14 +28,14 @@
     }
 
     &[data-depth="0"] {
-        // padding-left: 30px;
+        padding-left: 30px;
         font-weight: bold;
         font-size: 15px;
     }
 
 
     &[data-depth="1"] {
-        padding-left: 30px;
+        padding-left: 50px;
         font-size: 14px;
     }
 
@@ -54,9 +54,9 @@
 
 .page-title {
     font-size: var(--size-font-200);
-    color: var(--color-gray-8);
+    color: var(--color-blue-6);
     padding: 7px 15px;
-    background-color: var(--color-gray-0);
-    border-bottom: 1px solid #ececec;
-    border-top: 1px solid #ececec;
+    // background-color: var(--color-gray-0);
+    // border-bottom: 1px solid #ececec;
+    // border-top: 1px solid #ececec;
 }

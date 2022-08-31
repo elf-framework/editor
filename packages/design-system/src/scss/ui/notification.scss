@@ -1,7 +1,7 @@
 .elf--notification {
-    --elf--notification-background-color: #222222;
-    --elf--notification-hover-color: var(--color-newtral-9);
-    --elf--notification-color: var(--color-newtral-0);
+    --elf--notification-background-color: #000000;
+    --elf--notification-hover-color: var(--color-gray-9);
+    --elf--notification-color: var(--color-white);
     --elf--notification-border-color: rgba(0, 0, 0, 0.1);
     --elf--notification-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
     --elf--notification-tools-border-color: rgba(255, 255, 255, 0.19);
@@ -9,6 +9,8 @@
     --elf--notification-position: absolute;
     --elf--notification-hgap: 10px;
     --elf--notification-vgap: 10px;
+    --elf--notification-width: 320px;
+    --elf--notification-height: 60px;
 
     background-color: var(--elf--notification-background-color);
     border: 0.5px solid var(--elf--notification-border-color);
@@ -17,12 +19,17 @@
     border-radius: var(--elf--notification-border-radius);   
     color: var(--elf--notification-color);
     
-    width: 320px;
-    height: 60px;
+    width: var(--elf--notification-width);
+    height: var(--elf--notification-height);
+    
 
     display: flex;
 
     position: var(--elf--notification-position);
+
+    .elf--notification-text {
+        line-height: 1.2;
+    }
 
 
     &.elf--notification-direction-top-left {

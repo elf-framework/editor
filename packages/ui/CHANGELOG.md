@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.21
+
+### Patch Changes
+
+- update Button, dialog, icon, menu, notification, panel, popover, alert style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.21
+
 ## 2.1.20
 
 ### Patch Changes

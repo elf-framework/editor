@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 30 Aug 2022 11:57:30 GMT
+ * Generated on Wed, 31 Aug 2022 09:49:33 GMT
  */
 
 :root {
@@ -219,6 +219,7 @@
   --alert-color-background-weak-secondary: var(--color-gray-1);
   --alert-color-background-weak-primary: var(--color-blue-1);
   --alert-color-background-weak-default: var(--color-gray-1);
+  --alert-color-background-dark: var(--color-gray-9);
   --alert-color-background-default: var(--color-gray-1);
   --alert-color-content-weak-info: var(--color-blue-5); /* Base color for the info color */
   --alert-color-content-weak-success: var(--color-green-3); /* Base color for the success color */
@@ -233,6 +234,7 @@
   --alert-color-content-danger: var(--color-red-1); /* Base color for the danger color */
   --alert-color-content-secondary: var(--color-gray-1);
   --alert-color-content-primary: var(--color-blue-1);
+  --alert-color-content-dark: var(--color-white);
   --alert-color-content-default: var(--color-gray-9);
   --alert-color-title-weak-info: var(--color-blue-4); /* Base color for the info color */
   --alert-color-title-weak-success: var(--color-green-4); /* Base color for the success color */
@@ -264,7 +266,7 @@
   --color-down-danger: var(--color-red-8);
   --color-down-success: var(--color-green-8);
   --color-down-secondary: var(--color-gray-8);
-  --color-down-primary: var(--color-blue-8);
+  --color-down-primary: var(--color-blue-7);
   --color-down-default: var(--color-gray-2);
   --color-hover-info: var(--color-blue-4);
   --color-hover-warning: var(--color-orange-4);

@@ -36,7 +36,7 @@
 
     background: var(--elf--menu-background-color);
     border: 0.5px solid var(--elf--menu-border-color);
-    min-width: var(--elf--menu-width);
+    width: var(--elf--menu-width);
     max-width: var(--elf--menu-width);
     box-shadow: var(--elf--menu-box-shadow);
     border-radius: 2px;
@@ -66,11 +66,34 @@
         transform: translateX(-50%);
     }    
 
+    &.dropdown {
+        // box-shadow: none;
+        box-shadow: none;
+        border-radius: 4px;
+    }
+
+    &.compact {
+        padding: 0px;
+        min-width: auto;
+        border: 0px;
+        box-shadow: none;
+        border-radius: 4px;
+
+        li {
+            padding: 2px 5px;
+
+            > .menu-item-content {
+                gap: 2px;
+            }
+            
+        }
+    }
+
     &.has-state {
         --elf--menu-width: var(--elf--menu-max-width);
     }
 
-    &.elf--menu-contextmenu {
+    &.contextmenu {
         --elf--menu-position: fixed;
     }
 

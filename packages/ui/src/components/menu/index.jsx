@@ -232,6 +232,7 @@ export class Menu extends UIElement {
       items = [],
       rootClose,
       autoPosition = false,
+      compact = false,
     } = this.props;
 
     let itemStyle = { ...style };
@@ -249,7 +250,8 @@ export class Menu extends UIElement {
     const styleObject = {
       "data-direction": direction,
       class: classnames("elf--menu", {
-        "elf--menu-contextmenu": type === "contextmenu",
+        [type]: true,
+        compact,
       }),
       style: {
         ...propertyMap(itemStyle, cssProperties),

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 30 Aug 2022 11:57:29 GMT
+ * Generated on Wed, 31 Aug 2022 09:49:33 GMT
  */
 
 export default tokens;
@@ -219,6 +219,7 @@ declare const tokens: {
       },
       "content": {
         "default": DesignToken,
+        "dark": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
         "danger": DesignToken,
@@ -237,6 +238,7 @@ declare const tokens: {
       },
       "background": {
         "default": DesignToken,
+        "dark": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,

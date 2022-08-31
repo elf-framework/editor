@@ -35,7 +35,7 @@ export const TooltipPosition = {
   BOTTOM_RIGHT: "bottom-right",
   TOP_LEFT: "top-left",
   TOP_RIGHT: "top-right",
-}
+};
 
 export class Tooltip extends UIElement {
   initState() {
@@ -51,14 +51,13 @@ export class Tooltip extends UIElement {
       style = {},
       message = "",
       content,
-      deplay = 1000,
       position = "bottom",
       hideArrow = false,
     } = this.props;
     const { show } = this.state;
 
     const styleObject = {
-      class: classnames("elf--tooltip", {[position]: true}),
+      class: classnames("elf--tooltip", { [position]: true }),
       style: {
         ...propertyMap(style, cssProperties),
       },
@@ -69,7 +68,7 @@ export class Tooltip extends UIElement {
         <div class="elf--tooltip-content">{content}</div>
         {show || this.props.show ? (
           <div class="elf--tooltip-message">
-            {hideArrow ? undefined : <div class="arrow"></div> }
+            {hideArrow ? undefined : <div class="arrow"></div>}
             <div class="elf--toolltip-message-content">{message}</div>
           </div>
         ) : undefined}
@@ -88,8 +87,7 @@ export class Tooltip extends UIElement {
       this.setState({
         show: false,
       });
-    }, this.props.hideDelay)
-
+    }, this.props.hideDelay);
   }
 
   toggle() {

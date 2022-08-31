@@ -21,6 +21,7 @@ export * from "./components/tools";
 export * from "./components/notification";
 export * from "./components/visual-bell";
 export * from "./components/tooltip";
+export * from "./components/popover";
 export * from "./components/panel";
 export * from "./components/tab";
 export * from "./components/tabstrip";

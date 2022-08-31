@@ -37,10 +37,13 @@ export class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
-        { selected, outline, quiet, [variant]: true, [size]: true },
         {
-          "elf--button-shape-circle": shape === "circle",
-          "elf--button-shape-round": shape === "round",
+          selected,
+          outline,
+          quiet,
+          [variant]: true,
+          [size]: true,
+          [shape]: true,
         },
       ]),
       disabled: disabled ? "disabled" : undefined,

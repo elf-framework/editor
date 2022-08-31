@@ -21,12 +21,12 @@ export class Panel extends UIElement {
       theme,
       title = "",
       tools = [],
-      mode,
+      mode = "default",
       footer,
     } = this.props;
 
     const styleObject = {
-      class: classnames("elf--panel", `elf--panel-mode-${mode}`),
+      class: classnames("elf--panel", { [mode]: true }),
       "data-theme": theme,
       style: {
         ...propertyMap(style, cssProperties),

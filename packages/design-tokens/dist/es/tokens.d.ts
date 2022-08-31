@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 30 Aug 2022 11:57:29 GMT
+ * Generated on Wed, 31 Aug 2022 09:49:33 GMT
  */
 
 export const ImageLogo : string;
@@ -161,6 +161,7 @@ export const AlertColorTitleWeakWarning : string; // Base color for the warning 
 export const AlertColorTitleWeakSuccess : string; // Base color for the success color
 export const AlertColorTitleWeakInfo : string; // Base color for the info color
 export const AlertColorContentDefault : string;
+export const AlertColorContentDark : string;
 export const AlertColorContentPrimary : string;
 export const AlertColorContentSecondary : string;
 export const AlertColorContentDanger : string; // Base color for the danger color
@@ -175,6 +176,7 @@ export const AlertColorContentWeakWarning : string; // Base color for the warnin
 export const AlertColorContentWeakSuccess : string; // Base color for the success color
 export const AlertColorContentWeakInfo : string; // Base color for the info color
 export const AlertColorBackgroundDefault : string;
+export const AlertColorBackgroundDark : string;
 export const AlertColorBackgroundPrimary : string;
 export const AlertColorBackgroundSecondary : string;
 export const AlertColorBackgroundSuccess : string;

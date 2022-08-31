@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.17
+
+### Patch Changes
+
+- update alert, contextual-help, dialog, notification, popover documentation
+
 ## 1.0.16
 
 ### Patch Changes

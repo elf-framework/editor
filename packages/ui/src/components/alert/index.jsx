@@ -24,7 +24,7 @@ const cssProperties = {
 export class Alert extends UIElement {
   template() {
     const {
-      type = "default",
+      variant = "default",
       title = "",
       content = "",
       style = {},
@@ -44,7 +44,11 @@ export class Alert extends UIElement {
     );
 
     const styleObject = {
-      class: classnames(["elf--alert", { [type]: true, weak }, { hide }]),
+      class: classnames([
+        "elf--alert",
+        { [variant]: true, weak },
+        { hide, closable },
+      ]),
       style: {
         ...propertyMap(style, cssProperties),
         ...{

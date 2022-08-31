@@ -68,7 +68,7 @@ function propertyMap(styles, mapper = {}) {
   });
   return styleObj;
 }
-const cssProperties$s = {
+const cssProperties$t = {
   borderColor: "--elf--alert-border-color",
   backgroundColor: "--elf--alert-background-color",
   selectedBackgroundColor: "--elf--alert-selected-background-color",
@@ -83,7 +83,7 @@ const cssProperties$s = {
 class Alert extends UIElement {
   template() {
     const {
-      type = "default",
+      variant = "default",
       title = "",
       content = "",
       style: style2 = {},
@@ -101,9 +101,13 @@ class Alert extends UIElement {
       [setLocalDelay]
     );
     const styleObject = {
-      class: classnames(["elf--alert", { [type]: true, weak }, { hide }]),
+      class: classnames([
+        "elf--alert",
+        { [variant]: true, weak },
+        { hide, closable }
+      ]),
       style: {
-        ...propertyMap(style2, cssProperties$s),
+        ...propertyMap(style2, cssProperties$t),
         ...{
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
@@ -273,7 +277,7 @@ function convertPropertyToStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$r = {
+const cssProperties$s = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   selectedBackgroundColor: "--elf--button-selected-background-color",
@@ -304,10 +308,13 @@ class Button extends UIElement {
     const styleObject = {
       class: classnames([
         "elf--button",
-        { selected, outline, quiet, [variant]: true, [size]: true },
         {
-          "elf--button-shape-circle": shape === "circle",
-          "elf--button-shape-round": shape === "round"
+          selected,
+          outline,
+          quiet,
+          [variant]: true,
+          [size]: true,
+          [shape]: true
         }
       ]),
       disabled: disabled ? "disabled" : void 0,
@@ -316,7 +323,7 @@ class Button extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$r
+        cssProperties$s
       )
     };
     return /* @__PURE__ */ createElementJsx("button", {
@@ -325,7 +332,7 @@ class Button extends UIElement {
     }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$q = makeStyleMap("--elf--button-group", {
+const cssProperties$r = makeStyleMap("--elf--button-group", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -345,7 +352,7 @@ class ButtonGroup extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$q
+        cssProperties$r
       )
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -353,7 +360,7 @@ class ButtonGroup extends UIElement {
     }, content);
   }
 }
-const cssProperties$p = makeStyleMap("--elf--tooltip", {
+const cssProperties$q = makeStyleMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -390,7 +397,6 @@ class Tooltip extends UIElement {
       style: style2 = {},
       message = "",
       content,
-      deplay = 1e3,
       position = "bottom",
       hideArrow = false
     } = this.props;
@@ -398,7 +404,7 @@ class Tooltip extends UIElement {
     const styleObject = {
       class: classnames("elf--tooltip", { [position]: true }),
       style: {
-        ...propertyMap(style2, cssProperties$p)
+        ...propertyMap(style2, cssProperties$q)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -458,7 +464,7 @@ class Tooltip extends UIElement {
     this.toggle();
   }
 }
-const cssProperties$o = makeStyleMap("--elf--action-group", {
+const cssProperties$p = makeStyleMap("--elf--action-group", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -533,7 +539,7 @@ class ActionGroup extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$o
+        cssProperties$p
       )
     };
     const items = collapsed ? content.filter((item, index) => {
@@ -553,7 +559,7 @@ class ActionGroup extends UIElement {
     }, /* @__PURE__ */ createElementJsx(Button, null, moreIcon)) : void 0);
   }
 }
-const cssProperties$n = {
+const cssProperties$o = {
   borderColor: "--elf--link-button-border-color",
   backgroundColor: "--elf--link-button-background",
   disabledColor: "--elf--link-button-disabled-color",
@@ -569,7 +575,7 @@ class LinkButton extends UIElement {
       class: classnames(["elf--link-button"]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$n)
+        ...propertyMap(style2, cssProperties$o)
       }
     };
     return /* @__PURE__ */ createElementJsx("a", {
@@ -579,7 +585,7 @@ class LinkButton extends UIElement {
     }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$m = {
+const cssProperties$n = {
   borderColor: "--elf--icon-button-border-color",
   backgroundColor: "--elf--icon-button-background",
   disabledColor: "--elf--icon-button-disabled-color",
@@ -620,7 +626,7 @@ class IconButton extends UIElement {
       ]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$m)
+        ...propertyMap(style2, cssProperties$n)
       }
     };
     return /* @__PURE__ */ createElementJsx("button", {
@@ -630,7 +636,7 @@ class IconButton extends UIElement {
     }, icon || content || "");
   }
 }
-const cssProperties$l = {
+const cssProperties$m = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   disabledColor: "--elf--button-disabled-color",
@@ -679,7 +685,7 @@ class ToggleButton extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$l
+        cssProperties$m
       )
     };
     return /* @__PURE__ */ createElementJsx("button", {
@@ -688,7 +694,7 @@ class ToggleButton extends UIElement {
     }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$k = {
+const cssProperties$l = {
   borderColor: "--elf--radio-border-color",
   backgroundColor: "--elf--radio-background",
   disabledColor: "--elf--radio-disabled-color",
@@ -718,7 +724,7 @@ class Radio extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$k)
+        ...propertyMap(style2, cssProperties$l)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -743,7 +749,7 @@ class RadioGroup extends UIElement {
       class: classnames(["elf--radio-group"]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$k)
+        ...propertyMap(style2, cssProperties$l)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -769,7 +775,7 @@ class RadioGroup extends UIElement {
     this.setState({ value });
   }
 }
-const cssProperties$j = {
+const cssProperties$k = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -799,7 +805,7 @@ class Checkbox extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$j)
+        ...propertyMap(style2, cssProperties$k)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -835,7 +841,7 @@ class CheckboxGroup extends UIElement {
       class: classnames(["elf--check-group"]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$j)
+        ...propertyMap(style2, cssProperties$k)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -871,7 +877,7 @@ class CheckboxGroup extends UIElement {
     this.setState({ values });
   }
 }
-const cssProperties$i = {
+const cssProperties$j = {
   color: "--elf--divider-color",
   margin: "--elf--divider-margin"
 };
@@ -896,7 +902,7 @@ class Divider extends UIElement {
             ...style2,
             margin
           },
-          cssProperties$i
+          cssProperties$j
         )
       }
     };
@@ -1089,7 +1095,7 @@ class MenuItem extends UIElement {
     return this.state.selected;
   }
 }
-const cssProperties$h = {
+const cssProperties$i = {
   left: "--elf--menu-left",
   top: "--elf--menu-top",
   backgroundColor: "--elf--menu-background",
@@ -1124,7 +1130,8 @@ class Menu extends UIElement {
       direction = "left",
       items = [],
       rootClose,
-      autoPosition = false
+      autoPosition = false,
+      compact = false
     } = this.props;
     let itemStyle = { ...style2 };
     if (x !== 0)
@@ -1140,10 +1147,11 @@ class Menu extends UIElement {
     const styleObject = {
       "data-direction": direction,
       class: classnames("elf--menu", {
-        "elf--menu-contextmenu": type === "contextmenu"
+        [type]: true,
+        compact
       }),
       style: {
-        ...propertyMap(itemStyle, cssProperties$h)
+        ...propertyMap(itemStyle, cssProperties$i)
       }
     };
     return /* @__PURE__ */ createElementJsx("menu", {
@@ -1272,7 +1280,7 @@ class OptionStrip extends UIElement {
     }));
   }
 }
-const cssProperties$g = {
+const cssProperties$h = {
   position: "--elf--dialog-position",
   backgroundColor: "--elf--dialog-background",
   color: "--elf--dialog-color",
@@ -1313,14 +1321,22 @@ class Dialog extends UIElement {
     }
   }
   makeDefaultTools() {
-    const { footer, cancelText = "Cancel", okText = "OK" } = this.props;
+    const {
+      footer,
+      cancelText = "Cancel",
+      okText = "OK",
+      okProps = {},
+      cancelProps = {}
+    } = this.props;
     if (!footer) {
       return [
         /* @__PURE__ */ createElementJsx(Button, {
+          ...cancelProps,
           onClick: () => this.cancel()
         }, cancelText),
         /* @__PURE__ */ createElementJsx(Button, {
-          type: "primary",
+          variant: "primary",
+          ...okProps,
           onClick: () => this.ok()
         }, okText)
       ];
@@ -1329,13 +1345,15 @@ class Dialog extends UIElement {
   }
   template() {
     const { style: style2 = {}, visible, center } = this.state;
+    const { noBorder } = this.props;
     const styleObject = {
       class: classnames("elf--dialog", {
         visible,
-        center
+        center,
+        "no-border": noBorder
       }),
       style: {
-        ...propertyMap(style2, cssProperties$g)
+        ...propertyMap(style2, cssProperties$h)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1349,7 +1367,8 @@ class Dialog extends UIElement {
       ref: "$tools"
     }, this.props.tools || void 0), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-close",
-      ref: "$close"
+      ref: "$close",
+      onClick: () => this.close()
     }, "\xD7")), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-content"
     }, /* @__PURE__ */ createElementJsx("div", {
@@ -1357,9 +1376,6 @@ class Dialog extends UIElement {
     }, this.props.content || ""), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-content-tools"
     }, this.props.footer ? this.props.footer : this.makeDefaultTools())));
-  }
-  [CLICK("$close")]() {
-    this.close();
   }
 }
 class Flex extends UIElement {
@@ -1651,7 +1667,7 @@ function makeHiddenToolsItem(items = [], options = {}) {
     return visibility === "hidden";
   });
 }
-const cssProperties$f = makeStyleMap("--elf--tools", {
+const cssProperties$g = makeStyleMap("--elf--tools", {
   backgroundColor: true,
   color: true,
   height: true
@@ -1727,7 +1743,7 @@ class Tools extends UIElement {
         emphasized
       }),
       style: {
-        ...propertyMap(style2, cssProperties$f)
+        ...propertyMap(style2, cssProperties$g)
       }
     };
     const items = makeToolsItem(this.props.items, {
@@ -1782,7 +1798,7 @@ class ToolbarItem extends UIElement {
     }));
   }
 }
-const cssProperties$e = makeStyleMap("--elf--toolbar", {
+const cssProperties$f = makeStyleMap("--elf--toolbar", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -1812,7 +1828,7 @@ class Toolbar extends UIElement {
         className
       ),
       style: {
-        ...propertyMap(style2, cssProperties$e)
+        ...propertyMap(style2, cssProperties$f)
       }
     };
     if (Object.keys(styleObject.style).length === 0) {
@@ -1827,9 +1843,10 @@ class Toolbar extends UIElement {
     }));
   }
 }
-const cssProperties$d = {
+const cssProperties$e = {
   backgroundColor: "--elf--notification-background",
   color: "--elf--notification-color",
+  width: "--elf--notification-width",
   height: "--elf--notification-height",
   hoverColor: "--elf--notification-hover-color",
   borderColor: "--elf--notification-border-color",
@@ -1852,7 +1869,7 @@ class Notification extends UIElement {
         `elf--notification-direction-${direction}`
       ),
       style: {
-        ...propertyMap(style2, cssProperties$d)
+        ...propertyMap(style2, cssProperties$e)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1869,7 +1886,7 @@ class Notification extends UIElement {
     }, tools || []));
   }
 }
-const cssProperties$c = makeStyleMap("--elf--visual-bell", {
+const cssProperties$d = makeStyleMap("--elf--visual-bell", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -1899,7 +1916,7 @@ class VisualBell extends UIElement {
         { hide }
       ),
       style: {
-        ...propertyMap(style2, cssProperties$c),
+        ...propertyMap(style2, cssProperties$d),
         ...{
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
@@ -1957,6 +1974,105 @@ function bell({
     options
   );
 }
+const cssProperties$c = makeStyleMap("--elf--popover", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+  hgap: true,
+  vgap: true,
+  delay: true,
+  contentPadding: true
+});
+class Popover extends UIElement {
+  initState() {
+    return {
+      trigger: this.props.trigger || "hover",
+      delay: 1e3,
+      show: this.props.show || false
+    };
+  }
+  template() {
+    const {
+      style: style2 = {},
+      body = "",
+      content,
+      placement = "bottom",
+      showTip = false,
+      animated = false
+    } = this.props;
+    const { show } = this.state;
+    const styleObject = {
+      class: classnames("elf--popover", { [placement]: true, animated }),
+      style: {
+        ...propertyMap(style2, cssProperties$c)
+      }
+    };
+    const isPopoverShow = show || this.props.show;
+    const isShowTip = isPopoverShow && showTip;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--popover-content"
+    }, content, isShowTip ? /* @__PURE__ */ createElementJsx("div", {
+      class: "tip"
+    }) : void 0), isPopoverShow ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--popover-message"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--toolltip-message-content"
+    }, body), /* @__PURE__ */ createElementJsx("div", {
+      class: "event-panel"
+    })) : void 0);
+  }
+  open() {
+    this.setState({
+      show: true
+    });
+  }
+  close() {
+    setTimeout(() => {
+      this.setState({
+        show: false
+      });
+    }, this.props.hideDelay);
+  }
+  toggle() {
+    this.setState({
+      show: !this.state.show
+    });
+  }
+  checkClickable(e) {
+    const $menu = Dom.create(e.target).closest("elf--popover-content");
+    if ($menu)
+      return false;
+    return true;
+  }
+  checkTriggerClick() {
+    return this.state.trigger === "click";
+  }
+  checkTriggerOver() {
+    return this.state.trigger === "hover";
+  }
+  [POINTERENTER("$el") + IF("checkTriggerOver")]() {
+    this.open();
+  }
+  checkNotInpopover(e) {
+    const $menu = Dom.create(e.target).closest("elf--popover");
+    if (!$menu)
+      return true;
+    return this.$el.is($menu) === false;
+  }
+  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
+    this.close();
+  }
+  [CLICK("$el") + IF("checkTriggerClick")]() {
+    this.toggle();
+  }
+}
 const cssProperties$b = {
   backgroundColor: "--elf--panel-background",
   color: "--elf--panel-color",
@@ -1975,11 +2091,11 @@ class Panel extends UIElement {
       theme,
       title = "",
       tools = [],
-      mode,
+      mode = "default",
       footer
     } = this.props;
     const styleObject = {
-      class: classnames("elf--panel", `elf--panel-mode-${mode}`),
+      class: classnames("elf--panel", { [mode]: true }),
       "data-theme": theme,
       style: {
         ...propertyMap(style2, cssProperties$b)
@@ -4420,6 +4536,7 @@ export {
   OptionMenu,
   OptionStrip,
   Panel,
+  Popover,
   RGBColorEditor,
   Radio,
   RadioGroup,

@@ -61,6 +61,9 @@
         "default": {
           "value": "{color.gray.9.value}"
         },
+        "dark": {
+          "value": "{color.white.value}"
+        },        
         "primary": {
           "value": "{color.blue.1.value}"
         },
@@ -117,6 +120,9 @@
         "default": {
           "value": "{color.gray.1.value}"
         },
+        "dark": {
+          "value": "{color.gray.9.value}"
+        },        
         "primary": {
           "value": "{color.primary.value}"
         },

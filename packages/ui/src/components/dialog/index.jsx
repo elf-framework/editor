@@ -1,4 +1,4 @@
-import { CLICK, UIElement, classnames, isFunction } from "@elf-framework/sapa";
+import { UIElement, classnames, isFunction } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { Button } from "../button/index";
@@ -53,12 +53,20 @@ export class Dialog extends UIElement {
   }
 
   makeDefaultTools() {
-    const { footer, cancelText = "Cancel", okText = "OK" } = this.props;
+    const {
+      footer,
+      cancelText = "Cancel",
+      okText = "OK",
+      okProps = {},
+      cancelProps = {},
+    } = this.props;
 
     if (!footer) {
       return [
-        <Button onClick={() => this.cancel()}>{cancelText}</Button>,
-        <Button type="primary" onClick={() => this.ok()}>
+        <Button {...cancelProps} onClick={() => this.cancel()}>
+          {cancelText}
+        </Button>,
+        <Button variant="primary" {...okProps} onClick={() => this.ok()}>
           {okText}
         </Button>,
       ];
@@ -69,10 +77,12 @@ export class Dialog extends UIElement {
 
   template() {
     const { style = {}, visible, center } = this.state;
+    const { noBorder } = this.props;
     const styleObject = {
       class: classnames("elf--dialog", {
         visible,
         center,
+        "no-border": noBorder,
       }),
       style: {
         ...propertyMap(style, cssProperties),
@@ -86,7 +96,11 @@ export class Dialog extends UIElement {
           <div class="elf--dialog-title-tools" ref="$tools">
             {this.props.tools || undefined}
           </div>
-          <div class="elf--dialog-title-close" ref="$close">
+          <div
+            class="elf--dialog-title-close"
+            ref="$close"
+            onClick={() => this.close()}
+          >
             &times;
           </div>
         </div>
@@ -98,9 +112,5 @@ export class Dialog extends UIElement {
         </div>
       </div>
     );
-  }
-
-  [CLICK("$close")]() {
-    this.close();
   }
 }

@@ -5,6 +5,7 @@
     --elf--dialog-border-color: rgba(0, 0, 0, 0.2);
     --elf--dialog-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
     --elf--dialog-border-radius: 2px;
+    --elf--dialog-padding: 20px;
 
     position: var(--elf--dialog-position);
     display: block;
@@ -17,6 +18,10 @@
 
     opacity: 0;
     transition: all 0.2s ease-in-out;
+
+    &.no-border {
+        --elf--dialog-border-color: transparent;
+    }
 
     &.visible {
         opacity: 1;
@@ -41,7 +46,7 @@
             display: flex;
             align-items: center;
             // justify-content: center;
-            padding-left: 16px;
+            padding-left: var(--elf--dialog-padding);
             font-weight: 600;
         }
 
@@ -67,7 +72,7 @@
     }
 
     > .elf--dialog-content {
-        padding: 16px;
+        padding: var(--elf--dialog-padding);
 
         > * {
 
@@ -79,10 +84,10 @@
 
         > .elf--dialog-content-tools {
             display: flex;
-            margin-top: 16px;
+            margin-top: var(--elf--dialog-padding);
             align-items: center;
             justify-content: flex-end;
-            column-gap: 8px;
+            gap: 10px;
             position: relative;
 
             > .panel {
@@ -96,6 +101,10 @@
                     justify-content: flex-start;
                 }
             }            
+
+            > * {
+                min-width: 100px;
+            }
         }
     }
 }

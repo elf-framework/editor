@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.21
+
+### Patch Changes
+
+- update Button, dialog, icon, menu, notification, panel, popover, alert style
+
 ## 2.1.20
 
 ### Patch Changes

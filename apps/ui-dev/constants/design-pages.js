@@ -54,6 +54,10 @@ export default [
         title: "Alert",
       },
       {
+        link: COMPONENTS_URL + "feedback/notification/",
+        title: "Notification",
+      },
+      {
         link: COMPONENTS_URL + "feedback/dialog/",
         title: "Dialog",
       },

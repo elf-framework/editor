@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 30 Aug 2022 11:57:29 GMT
+ * Generated on Wed, 31 Aug 2022 09:49:33 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -37,7 +37,7 @@ export const ColorHoverDanger = "#a12b2b";
 export const ColorHoverWarning = "#e16f24";
 export const ColorHoverInfo = "#78b6ff";
 export const ColorDownDefault = "#d9e0e6";
-export const ColorDownPrimary = "#1a497d";
+export const ColorDownPrimary = "#0060cc";
 export const ColorDownSecondary = "#39444d";
 export const ColorDownSuccess = "#1b5441";
 export const ColorDownDanger = "#80252a";
@@ -161,6 +161,7 @@ export const AlertColorTitleWeakWarning = "#e16f24"; // Base color for the warni
 export const AlertColorTitleWeakSuccess = "#52d9ac"; // Base color for the success color
 export const AlertColorTitleWeakInfo = "#78b6ff"; // Base color for the info color
 export const AlertColorContentDefault = "#2c353d";
+export const AlertColorContentDark = "#ffffff";
 export const AlertColorContentPrimary = "#e8f3ff";
 export const AlertColorContentSecondary = "#ebf0f5";
 export const AlertColorContentDanger = "#ffebec"; // Base color for the danger color
@@ -175,6 +176,7 @@ export const AlertColorContentWeakWarning = "#fb8f44"; // Base color for the war
 export const AlertColorContentWeakSuccess = "#8debcb"; // Base color for the success color
 export const AlertColorContentWeakInfo = "#429bff"; // Base color for the info color
 export const AlertColorBackgroundDefault = "#ebf0f5";
+export const AlertColorBackgroundDark = "#2c353d";
 export const AlertColorBackgroundPrimary = "#1273e6";
 export const AlertColorBackgroundSecondary = "#d9e0e6";
 export const AlertColorBackgroundSuccess = "#009f6a";
