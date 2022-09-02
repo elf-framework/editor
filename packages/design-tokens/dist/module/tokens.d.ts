@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 31 Aug 2022 09:49:33 GMT
+ * Generated on Fri, 02 Sep 2022 02:17:51 GMT
  */
 
 export default tokens;
@@ -57,6 +57,7 @@ declare const tokens: {
     "disabled": DesignToken,
     "hover": {
       "default": DesignToken,
+      "dark": DesignToken,
       "primary": DesignToken,
       "secondary": DesignToken,
       "success": DesignToken,
@@ -421,7 +422,11 @@ declare const tokens: {
       "h3": DesignToken,
       "h4": DesignToken,
       "h5": DesignToken,
-      "h6": DesignToken
+      "h6": DesignToken,
+      "small": DesignToken,
+      "medium": DesignToken,
+      "large": DesignToken,
+      "extra-large": DesignToken
     },
     "weight": {
       "thin": DesignToken,

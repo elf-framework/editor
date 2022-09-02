@@ -1,3 +1,5 @@
+import { isArray } from "./func";
+
 const NumberStyleKeys = {
   animationIterationCount: true,
   borderImageOutset: true,
@@ -91,6 +93,10 @@ const convertStyleKey = (key) => {
   return upperKey;
 };
 
+const ArrayNumberStyleKeys = {
+  padding: true,
+};
+
 /**
  *
  * styleMap("width", 10) -> "width: 10px"
@@ -101,6 +107,10 @@ function styleMap(key, value) {
   if (typeof value === "number") {
     if (NumberStyleKeys[key]) {
       value = value + "px";
+    }
+  } else if (isArray(value)) {
+    if (ArrayNumberStyleKeys[key]) {
+      value = value.map((v) => styleMap(key, v)).join(" ");
     }
   }
 

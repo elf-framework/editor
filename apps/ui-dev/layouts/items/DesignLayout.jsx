@@ -8,7 +8,7 @@ export function DesignLayout({ content, ...extraProps }) {
   return (
     <Layout
       {...extraProps}
-      title="ELF Design"
+      title="Design"
       version={packageJSON.version}
       menu={menu}
     >

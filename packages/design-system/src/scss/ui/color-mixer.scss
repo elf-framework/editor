@@ -1,23 +1,50 @@
 .elf--color-mixer {
     --elf--color-mixer-width: 240px;
     --elf--color-mixer-height: 240px;
-    --elf--color-mixer-background-color: white;
+    --elf--color-mixer-background-color: var(--color-white);
     --elf--color-mixer-opacity-size: 16px;
     --elf--color-mixer-opacity-pattern-size: 6px;
     --elf--color-mixer-opacity-pattern-color-1: #FFFFFF;
     --elf--color-mixer-opacity-pattern-color-2: #ececec;
+    --elf--color-mixer-disabled-color: var(--color-gray-4);
 
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     background-color: var(--elf--color-mixer-background-color);
 
     width: var(--elf--color-mixer-width);
+
+    &.shadow {
+        box-shadow: var(--shadow-1);
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        > .elf--color-area {
+            background-color: var(--elf--color-mixer-disabled-color) !important;            
+            background-image: none !important;            
+            pointer-events: none;
+            > * {
+                background-color: var(--elf--color-mixer-disabled-color) !important;
+                background-image: none !important;
+
+                > * {
+                    background-color: var(--elf--color-mixer-disabled-color) !important;
+                    background-image: none !important;
+                    > * {
+                        background-color: var(--elf--color-mixer-disabled-color) !important;
+                        background-image: none !important;
+                    }                    
+                }
+
+
+            }
+        }
+    }
 
     > .elf--color-area {
         display: block;
         width: var(--elf--color-mixer-width);
         height: var(--elf--color-mixer-height);    
-        background-color: yellow;
 
 
         > .saturation {
@@ -115,6 +142,10 @@
     > .elf--color-input-area {
         display: flex;
         padding: 0px 12px 12px;
+
+        &:nth-child(2) {
+            padding: 12px;
+        }
         
 
         > .color-input {

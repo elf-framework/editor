@@ -1,0 +1,16 @@
+.elf--checkbox-group {
+    --elf--checkbox-group-gap: 10px;
+
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    gap: var(--elf--checkbox-group-gap);
+    
+    > .elf--checkbox {
+        margin-right: 10px;
+    }
+
+    &.vertical {
+        flex-direction: column;
+    }
+}

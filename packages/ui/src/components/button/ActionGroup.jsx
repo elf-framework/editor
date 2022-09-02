@@ -8,7 +8,7 @@ import {
 
 import { propertyMap } from "../../utils/propertyMap";
 import { convertPropertyToStyleKey, makeStyleMap } from "../../utils/styleKeys";
-import { Tooltip, TooltipPosition } from "../tooltip";
+import { Tooltip, TooltipPlacement } from "../tooltip";
 
 import { Button } from ".";
 
@@ -127,7 +127,7 @@ export class ActionGroup extends UIElement {
             message={hiddenItems}
             trigger="click"
             hideArrow={true}
-            position={TooltipPosition.BOTTOM_LEFT}
+            position={TooltipPlacement.BOTTOM_LEFT}
             style={{ contentPadding: "0px" }}
           >
             <Button>{moreIcon}</Button>

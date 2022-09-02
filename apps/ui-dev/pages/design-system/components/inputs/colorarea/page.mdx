@@ -1,0 +1,57 @@
+---
+title: Color area
+layout: DesignLayout
+filename: pages/design-system/inputs/radio/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/inputs/colorarea/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/inputs/colorarea/OptionsView.jsx"; 
+import { SelectionView } from "../../../../../component/inputs/colorarea/SelectionView.jsx"; 
+import { SizeView } from "../../../../../component/inputs/colorarea/SizeView.jsx"; 
+import { EmphasisView } from "../../../../../component/inputs/colorarea/EmphasisView.jsx"; 
+import { DisabledView } from "../../../../../component/inputs/colorarea/DisabledView.jsx"; 
+import { ErrorView } from "../../../../../component/inputs/colorarea/ErrorView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+A color area allows users to visually select two properties of a color simultaneously. It's commonly used together with a color slider or color wheel.
+
+<MainView />
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/colorarea/" />
+</div>
+
+## Options 
+
+### Label
+
+
+### Hide slide, inputs
+
+<SelectionView />
+
+
+
+### Size
+
+<SizeView />
+
+
+
+### Emphasis
+
+
+
+
+### Disabled
+
+<DisabledView />
+
+### Error
+
+<ErrorView />
+
+

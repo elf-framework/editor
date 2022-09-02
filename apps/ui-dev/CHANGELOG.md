@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.18
+
+### Patch Changes
+
+- update tooltip, checkbox, checkbox-group, toast, colorarea, help-text, option-menu documentation
+
 ## 1.0.17
 
 ### Patch Changes

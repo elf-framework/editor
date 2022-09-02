@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 31 Aug 2022 09:49:33 GMT
+ * Generated on Fri, 02 Sep 2022 02:17:51 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -30,6 +30,7 @@ export const ColorWarning = "#ffb77c";
 export const ColorInfo = "#abd2ff";
 export const ColorDisabled = "#d9e0e6";
 export const ColorHoverDefault = "#f8f8f8";
+export const ColorHoverDark = "#000000";
 export const ColorHoverPrimary = "#0060cc";
 export const ColorHoverSecondary = "#46525c";
 export const ColorHoverSuccess = "#067852";
@@ -305,6 +306,10 @@ export const FontSizeH3 = "25px";
 export const FontSizeH4 = "22px";
 export const FontSizeH5 = "20px";
 export const FontSizeH6 = "18px";
+export const FontSizeSmall = "11px";
+export const FontSizeMedium = "14px";
+export const FontSizeLarge = "18px";
+export const FontSizeExtraLarge = "22px";
 export const FontWeightThin = "100";
 export const FontWeightLight = "300";
 export const FontWeightRegular = "400";

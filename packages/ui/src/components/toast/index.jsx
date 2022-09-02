@@ -10,7 +10,7 @@ import {
 import { propertyMap } from "../../utils/propertyMap";
 import { makeStyleMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--visual-bell", {
+const cssProperties = makeStyleMap("--elf--toast", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -23,9 +23,17 @@ const cssProperties = makeStyleMap("--elf--visual-bell", {
   vgap: true,
 });
 
-export class VisualBell extends UIElement {
+export class Toast extends UIElement {
   template() {
-    const { style = {}, content, delay = 0, direction = "bottom" } = this.props;
+    const {
+      style = {},
+      content,
+      delay = 0,
+      icon,
+      direction = "bottom",
+      closable,
+      variant = undefined,
+    } = this.props;
     const [localDelay, setLocalDelay] = useState(delay);
     const [hide, setHide] = useState(false);
 
@@ -37,11 +45,11 @@ export class VisualBell extends UIElement {
     );
 
     const styleObject = {
-      class: classnames(
-        "elf--visual-bell",
-        `elf--visual-bell-direction-${direction}`,
-        { hide }
-      ),
+      class: classnames("elf--toast", {
+        hide,
+        [direction]: true,
+        [variant]: true,
+      }),
       style: {
         ...propertyMap(style, cssProperties),
         ...{
@@ -68,7 +76,6 @@ export class VisualBell extends UIElement {
 
     return (
       <div
-        class="elf--visual-bell"
         {...styleObject}
         onContextMenu={(e) => e.preventDefault()}
         onTransitionEnd={() => {
@@ -76,10 +83,16 @@ export class VisualBell extends UIElement {
           this.destroy(true);
         }}
       >
-        <div class="elf--visual-bell-content">
-          <div class="elf--visual-bell-text">{content}</div>
+        {icon ? <div class="icon">{icon}</div> : undefined}
+        <div class="content">
+          <div class="elf--toast-text">{content}</div>
         </div>
-        <div class="elf--visual-bell-tools">{this.props.tools || []}</div>
+        <div class="tools">{this.props.tools || []}</div>
+        {closable ? (
+          <div class="close" onClick={() => this.hide()}>
+            &times;
+          </div>
+        ) : undefined}
       </div>
     );
   }
@@ -93,14 +106,23 @@ export function bell({
   content = "",
   delay = 0,
   direction = "bottom",
+  cloasable = false,
+  onClose,
   tools = [],
   options = {},
   style = {},
 }) {
   return potal(
-    <VisualBell delay={delay} direction={direction} tools={tools} style={style}>
+    <Toast
+      delay={delay}
+      direction={direction}
+      tools={tools}
+      style={style}
+      cloasable={cloasable}
+      onClose={onClose}
+    >
       {content}
-    </VisualBell>,
+    </Toast>,
     options
   );
 }

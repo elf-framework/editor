@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 31 Aug 2022 09:49:33 GMT
+ * Generated on Fri, 02 Sep 2022 02:17:51 GMT
  */
 
 export const ImageLogo : string;
@@ -30,6 +30,7 @@ export const ColorWarning : string;
 export const ColorInfo : string;
 export const ColorDisabled : string;
 export const ColorHoverDefault : string;
+export const ColorHoverDark : string;
 export const ColorHoverPrimary : string;
 export const ColorHoverSecondary : string;
 export const ColorHoverSuccess : string;
@@ -305,6 +306,10 @@ export const FontSizeH3 : string;
 export const FontSizeH4 : string;
 export const FontSizeH5 : string;
 export const FontSizeH6 : string;
+export const FontSizeSmall : string;
+export const FontSizeMedium : string;
+export const FontSizeLarge : string;
+export const FontSizeExtraLarge : string;
 export const FontWeightThin : string;
 export const FontWeightLight : string;
 export const FontWeightRegular : string;

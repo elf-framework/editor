@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.23
+
+### Patch Changes
+
+- support indeterminate property for input
+
 ## 2.1.19
 
 ### Patch Changes

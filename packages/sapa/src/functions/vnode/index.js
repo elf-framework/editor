@@ -23,6 +23,10 @@ const EXPECT_ATTRIBUTES = {
   instance: true,
 };
 
+const ENABLE_PROPERTY = {
+  indeterminate: true,
+};
+
 function makeTempDiv() {
   if (!TEMP_DIV) {
     TEMP_DIV = Dom.create("div");
@@ -77,7 +81,11 @@ const expectAttributes = {
 
 function setAttribute(el, name, value) {
   if (expectAttributes[name]) return;
-  el.setAttribute(name, value);
+  if (ENABLE_PROPERTY[name]) {
+    el[name] = value;
+  } else {
+    el.setAttribute(name, value);
+  }
 }
 
 function setEventAttribute(el, name, value) {

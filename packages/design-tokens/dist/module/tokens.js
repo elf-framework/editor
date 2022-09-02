@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 31 Aug 2022 09:49:33 GMT
+ * Generated on Fri, 02 Sep 2022 02:17:51 GMT
  */
 
 module.exports = {
@@ -611,6 +611,25 @@ module.exports = {
           "color",
           "hover",
           "default"
+        ]
+      },
+      "dark": {
+        "value": "#000000",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "#000000"
+        },
+        "name": "ColorHoverDark",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "dark"
+        },
+        "path": [
+          "color",
+          "hover",
+          "dark"
         ]
       },
       "primary": {
@@ -6098,6 +6117,82 @@ module.exports = {
           "font",
           "size",
           "h6"
+        ]
+      },
+      "small": {
+        "value": "11px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.50.value}"
+        },
+        "name": "FontSizeSmall",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "small"
+        },
+        "path": [
+          "font",
+          "size",
+          "small"
+        ]
+      },
+      "medium": {
+        "value": "14px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.100.value}"
+        },
+        "name": "FontSizeMedium",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "medium"
+        },
+        "path": [
+          "font",
+          "size",
+          "medium"
+        ]
+      },
+      "large": {
+        "value": "18px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.300.value}"
+        },
+        "name": "FontSizeLarge",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "large"
+        },
+        "path": [
+          "font",
+          "size",
+          "large"
+        ]
+      },
+      "extra-large": {
+        "value": "22px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.500.value}"
+        },
+        "name": "FontSizeExtraLarge",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "extra-large"
+        },
+        "path": [
+          "font",
+          "size",
+          "extra-large"
         ]
       }
     },

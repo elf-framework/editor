@@ -1,15 +1,16 @@
 .elf--option-menu {
     --elf--option-menu-min-width: 60px;
     --elf--option-menu-border-color: transparent;
+    --elf--option-menu-hover-border-color: var(--color-gray-3);
     --elf--option-menu-outline-color: transparent;
     --elf--option-menu-border-radius: 1px;
-    --elf--option-menu-background-color: white;
+    --elf--option-menu-background-color: var(--color-white);
     --elf--option-menu-color: black;
     --elf--option-menu-font-size: 14px;
-    --elf--option-menu-empty-color: rgba(0, 0, 0, 0.3);
+    --elf--option-menu-empty-color: var(--color-gray-7);
     --elf--option-menu-placeholder-color: rgba(0, 0, 0, 0.3);
-    --elf--option-menu-disabled-color: rgba(0, 0, 0, 0.1);
-
+    --elf--option-menu-disabled-color: var(--color-gray-6);
+    --elf--option-menu-offset: 10px;
     min-width: var(--elf--option-menu-min-width);
     // max-width: calc(100% - var(--elf--option-menu-min-width));
     border: 1px solid var(--elf--option-menu-border-color);
@@ -27,7 +28,7 @@
         &:empty {
             color: var(--elf--option-menu-empty-color);
         }
-        --elf--option-menu-border-color: var(--elf--option-menu-disabled-color);
+        --elf--option-menu-border-color: var(--elf--option-menu-hover-border-color);
 
         &:not([disabled]) {
             > .content {
@@ -67,6 +68,11 @@
     
         }
 
+    }
+
+    > .menu-area {
+        position: absolute;
+        top: calc(100% + var(--elf--option-menu-offset));
     }
 
     > .content {

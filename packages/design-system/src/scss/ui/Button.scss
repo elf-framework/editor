@@ -193,10 +193,9 @@
   }
 
   &.outline {
-    --elf--button-background-color: var(
-      --button-color-background-default
-    );
+    --elf--button-background-color: inherit;
     border-width: 1px;
+    color: inherit;
 
     &.primary {
       --elf--button-border-color: var(--button-color-border-primary);

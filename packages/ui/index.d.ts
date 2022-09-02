@@ -531,7 +531,7 @@ declare module "@elf-framework/ui" {
     props: NotificationProps & CommonStyle;
   }
 
-  interface VisualBellStyle {
+  interface ToastStyle {
     backgroundColor?: string;
     hoverColor?: string;
     borderColor?: string;
@@ -541,7 +541,7 @@ declare module "@elf-framework/ui" {
     color?: string;
   }
 
-  export type VisualBellDirectionType =
+  export type ToastDirectionType =
     | "left"
     | "right"
     | "center"
@@ -552,32 +552,41 @@ declare module "@elf-framework/ui" {
     | "bottom-left"
     | "bottom-right";
 
-  export interface VisualBellProps {
-    icon?: string | UIElement | UIElement[];
-    content?: string | string[] | UIElement | UIElement[];
-    style: VisualBellStyle & CommonStyle;
-    direction?: VisualBellDirectionType;
+  export interface ToastProps {
+    icon?: ContentType;
+    content?: ContentType;
+    style: ToastStyle & CommonStyle;
+    direction?: ToastDirectionType;
+    closable?: boolean;
     delay?: number;
+    variant?:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "success"
+      | "info"
+      | "warning"
+      | "danger";
     onShow?: () => void;
     onHide?: () => void;
   }
-  export class VisualBell extends UIElement {
-    props: VisualBellProps & CommonStyle;
+  export class Toast extends UIElement {
+    props: ToastProps & CommonStyle;
     hide: () => void;
   }
 
-  /** call VisualBell with potal */
-  export function bell(arg: {
+  /** call Toast with potal */
+  export function toast(arg: {
     content: ContentType;
     delay?: number;
-    direction?: VisualBellDirectionType;
+    direction?: ToastDirectionType;
     tools?: ContentType[];
     options?:
       | {
           container: HTMLElement | string;
         }
       | unknown;
-  }): VisualBell;
+  }): Toast;
 
   interface TooltipStyle {
     backgroundColor?: string;
@@ -590,12 +599,13 @@ declare module "@elf-framework/ui" {
     hgap?: number;
     vgap?: number;
     delay?: string;
+    maxWidth?: number | string;
   }
 
   export interface TooltipProps {
     content: ContentType;
     message?: ContentType;
-    position:
+    placement:
       | "top"
       | "bottom"
       | "left"
@@ -605,7 +615,9 @@ declare module "@elf-framework/ui" {
       | "bottom-left"
       | "bottom-right";
     trigger: "hover" | "click";
+    icon: ContentType;
     show: boolean;
+    animated?: boolean;
     style: TooltipStyle & CommonStyle;
     hideArrow: boolean;
   }
@@ -834,6 +846,7 @@ declare module "@elf-framework/ui" {
     placeholder?: string;
     style?: InputEditorStyle & CommonStyle;
     disabled?: boolean;
+    value?: string;
   }
 
   export class InputEditor extends UIElement {
@@ -896,6 +909,10 @@ declare module "@elf-framework/ui" {
     value: any;
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
+    indeterminate?: boolean;
+    variant?: "default" | "dark" | "danger";
+    size?: "small" | "medium" | "large" | "extra-large";
+    disabled?: boolean;
   }
   export class Radio extends UIElement {
     props: RadioProps & CommonStyle;
@@ -926,9 +943,13 @@ declare module "@elf-framework/ui" {
   export interface CheckboxGroupProps {
     name: string;
     value: any;
+    direction?: "vertical" | "horizontal";
     options: CheckboxItem[];
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
+    size: "small" | "medium" | "large" | "extra-large";
+    variant: "default" | "dark" | "danger";
+    disabled?: boolean;
   }
 
   export class CheckboxGroup extends UIElement {
@@ -1015,6 +1036,10 @@ declare module "@elf-framework/ui" {
     onChange: (color: string) => void;
     onLastChange: (color: string) => void;
     style: CommonStyle;
+    hideSlide?: boolean;
+    hideInput?: boolean;
+    shadow?: boolean;
+    disabled?: boolean;
   }
   export class ColorMixer extends UIElement {
     props: ColorMixerProps & CommonStyle;
@@ -1152,4 +1177,16 @@ declare module "@elf-framework/ui" {
         }
       | unknown;
   }): Alert;
+
+  interface HelpTextProps {
+    content: ContentType;
+    style: CommonStyle;
+    variant: "default" | "primary" | "success" | "info" | "warning" | "danger";
+    size: "small" | "medium" | "large" | "extra-large";
+    icon?: ContentType;
+    disabled?: boolean;
+  }
+  export class HelpText extends UIElement {
+    props: HelpTextProps & DomEventType;
+  }
 }

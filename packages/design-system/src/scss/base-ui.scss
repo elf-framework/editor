@@ -11,13 +11,14 @@
 @import "./ui/action-group.scss";   // action group
 @import "./ui/radio.scss";          // radio
 @import "./ui/checkbox.scss";       // checkbox
+@import "./ui/checkbox-group.scss"; // checkbox group
 @import "./ui/divider.scss";        // divider
 @import "./ui/menu.scss";           // menu
 @import "./ui/option-menu.scss";    // option menu
 @import "./ui/toolbar.scss";        // toolbar
 @import "./ui/tools.scss";          // tools
 @import "./ui/notification.scss";   // notification
-@import "./ui/visual-bell.scss";
+@import "./ui/toast.scss";
 @import "./ui/dialog.scss";
 @import "./ui/modal.scss";
 @import "./ui/panel.scss";
@@ -39,3 +40,4 @@
 @import "./ui/option-strip.scss";
 @import "./ui/data-editor.scss";
 @import "./ui/app-layout.scss";
+@import "./ui/help-text.scss";

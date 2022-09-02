@@ -581,6 +581,24 @@
           "2": "default"
         }
       },
+      "dark": {
+        "value": "#000000",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "#000000"
+        },
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "dark"
+        },
+        "path": {
+          "0": "color",
+          "1": "hover",
+          "2": "dark"
+        }
+      },
       "primary": {
         "value": "{color.blue.7}",
         "filePath": "tokens/color/brand.json",
@@ -5791,6 +5809,78 @@
           "0": "font",
           "1": "size",
           "2": "h6"
+        }
+      },
+      "small": {
+        "value": "{font.size.50}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.50}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "small"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "small"
+        }
+      },
+      "medium": {
+        "value": "{font.size.100}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.100}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "medium"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "medium"
+        }
+      },
+      "large": {
+        "value": "{font.size.300}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.300}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "large"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "large"
+        }
+      },
+      "extra-large": {
+        "value": "{font.size.500}",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.500}"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "extra-large"
+        },
+        "path": {
+          "0": "font",
+          "1": "size",
+          "2": "extra-large"
         }
       }
     },

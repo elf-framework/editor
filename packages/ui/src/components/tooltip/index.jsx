@@ -24,9 +24,10 @@ const cssProperties = makeStyleMap("--elf--tooltip", {
   vgap: true,
   delay: true,
   contentPadding: true,
+  maxWidth: true,
 });
 
-export const TooltipPosition = {
+export const TooltipPlacement = {
   TOP: "top",
   BOTTOM: "bottom",
   LEFT: "left",
@@ -51,13 +52,20 @@ export class Tooltip extends UIElement {
       style = {},
       message = "",
       content,
-      position = "bottom",
+      placement = "bottom",
+      animated = false,
       hideArrow = false,
+      variant = "default",
+      icon,
     } = this.props;
     const { show } = this.state;
 
     const styleObject = {
-      class: classnames("elf--tooltip", { [position]: true }),
+      class: classnames("elf--tooltip", {
+        [placement]: true,
+        animated,
+        [variant]: true,
+      }),
       style: {
         ...propertyMap(style, cssProperties),
       },
@@ -65,11 +73,14 @@ export class Tooltip extends UIElement {
 
     return (
       <div {...styleObject}>
-        <div class="elf--tooltip-content">{content}</div>
+        <div class="content">{content}</div>
         {show || this.props.show ? (
-          <div class="elf--tooltip-message">
+          <div class="message">
             {hideArrow ? undefined : <div class="arrow"></div>}
-            <div class="elf--toolltip-message-content">{message}</div>
+            {icon ? <div class="icon">{icon}</div> : undefined}
+            <div class="message-content">
+              <div>{message}</div>
+            </div>
           </div>
         ) : undefined}
       </div>

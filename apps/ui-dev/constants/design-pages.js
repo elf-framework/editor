@@ -84,8 +84,16 @@ export default [
         title: "Checkbox",
       },
       {
+        link: COMPONENTS_URL + "inputs/checkbox-group/",
+        title: "Checkbox Group",
+      },
+      {
         link: COMPONENTS_URL + "inputs/colorarea/",
         title: "Color Area",
+      },
+      {
+        link: COMPONENTS_URL + "inputs/option-menu/",
+        title: "Option Menu",
       },
       {
         link: COMPONENTS_URL + "inputs/field-label/",

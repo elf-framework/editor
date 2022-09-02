@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 31 Aug 2022 09:49:33 GMT
+ * Generated on Fri, 02 Sep 2022 02:17:51 GMT
  */
 
 :root {
@@ -184,9 +184,14 @@
   --color-red-2: #ffcfd1;
   --color-red-1: #ffebec;
   --color-red-0: #fff2f3;
+  --color-hover-dark: #000000;
   --image-files: assets/svg/files.svg;
   --image-empty: assets/svg/empty.svg;
   --image-logo: assets/svg/logo.svg;
+  --font-size-extra-large: var(--font-size-500);
+  --font-size-large: var(--font-size-300);
+  --font-size-medium: var(--font-size-100);
+  --font-size-small: var(--font-size-50);
   --font-size-h6: var(--font-size-300);
   --font-size-h5: var(--font-size-400);
   --font-size-h4: var(--font-size-500);

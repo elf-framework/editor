@@ -1,7 +1,4 @@
-import EditFilled from "@elf-framework/icon/EditFilled";
-import HelpOutlineOutlined from "@elf-framework/icon/HelpOutlineOutlined";
-import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, Grid, VBox } from "@elf-framework/ui";
+import { Grid, Toast, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {
   return (
@@ -13,38 +10,16 @@ export function OptionsView() {
           padding: "40px 40px",
         }}
       >
-        <Grid columns={2}>
-          <div>
-            <em style={{ marginBottom: 10 }}>Information</em>
-            <div>
-              <Button>
-                <EditFilled /> Edit
-              </Button>
-              &nbsp;
-              <Button quiet size="extra-small">
-                <InfoOutlined />
-              </Button>
-            </div>
-          </div>
-          <div>
-            <em style={{ marginBottom: 10 }}>Help</em>
-            <div>
-              <Button>
-                <EditFilled /> Edit
-              </Button>
-              &nbsp;
-              <Button quiet size="extra-small">
-                <HelpOutlineOutlined />
-              </Button>
-            </div>
-          </div>
-        </Grid>
+        <div>
+          <Toast direction="bottom-right">Hello World yellow 234</Toast>
+        </div>
       </VBox>
       <div>
         <p>
-          Contextual help can be used to display two types of supplementary
-          content in an experience: in-line information (the info icon) or help
-          and resources to learn more (the help icon).
+          Toasts must include text to communicate a message. Write the text as
+          concisely as possible while still being clear about what has happened
+          or is happening. View the toast content standards for writing
+          guidelines.
         </p>
       </div>
     </Grid>

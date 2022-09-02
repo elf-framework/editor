@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 2.1.22
+
+### Patch Changes
+
+- update ActionGroup, CheckboxGroup, HelpText, OptionMenu, Toast, Tooltip
+  replace `visual-bell` to `toast`
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.1.22
+
 ## 2.1.21
 
 ### Patch Changes

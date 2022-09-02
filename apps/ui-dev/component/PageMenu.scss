@@ -28,14 +28,14 @@
     }
 
     &[data-depth="0"] {
-        padding-left: 30px;
+        padding-left: 15px;
         font-weight: bold;
         font-size: 15px;
     }
 
 
     &[data-depth="1"] {
-        padding-left: 50px;
+        padding-left: 30px;
         font-size: 14px;
     }
 

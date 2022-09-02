@@ -3497,10 +3497,17 @@ var __privateMethod = (obj, member, method) => {
     styleKeys[key] = upperKey;
     return upperKey;
   };
+  const ArrayNumberStyleKeys = {
+    padding: true
+  };
   function styleMap(key, value) {
     if (typeof value === "number") {
       if (NumberStyleKeys[key]) {
         value = value + "px";
+      }
+    } else if (isArray(value)) {
+      if (ArrayNumberStyleKeys[key]) {
+        value = value.map((v) => styleMap(key, v)).join(" ");
       }
     }
     return value;
@@ -3576,6 +3583,9 @@ var __privateMethod = (obj, member, method) => {
     children: true,
     instance: true
   };
+  const ENABLE_PROPERTY = {
+    indeterminate: true
+  };
   function makeTempDiv() {
     if (!TEMP_DIV) {
       TEMP_DIV = Dom.create("div");
@@ -3617,7 +3627,11 @@ var __privateMethod = (obj, member, method) => {
   function setAttribute(el, name, value) {
     if (expectAttributes[name])
       return;
-    el.setAttribute(name, value);
+    if (ENABLE_PROPERTY[name]) {
+      el[name] = value;
+    } else {
+      el.setAttribute(name, value);
+    }
   }
   function setEventAttribute(el, name, value) {
     el[name.toLowerCase()] = value;

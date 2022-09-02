@@ -34,6 +34,7 @@ export class OptionMenu extends UIElement {
         {showMenu ? (
           <div class="menu-area">
             <Menu
+              type="dropdown"
               autoPosition={autoPosition}
               rootClose={() => {
                 this.close();

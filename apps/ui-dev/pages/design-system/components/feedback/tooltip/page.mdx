@@ -1,0 +1,45 @@
+---
+title: Tooltip
+layout: DesignLayout
+filename: pages/design-system/components/feedback/notification/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/feedback/tooltip/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/feedback/tooltip/OptionsView.jsx"; 
+import { IconView } from "../../../../../component/feedback/tooltip/IconView.jsx"; 
+import { PlacementView } from "../../../../../component/feedback/tooltip/PlacementView.jsx"; 
+import { ClosableView } from "../../../../../component/feedback/tooltip/ClosableView.jsx"; 
+import { VariantView } from "../../../../../component/feedback/tooltip/VariantView.jsx"; 
+import { MaxWidthView } from "../../../../../component/feedback/tooltip/MaxWidthView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Tooltips show contextual help or information about specific components when a user hovers or focuses on them.
+
+
+<MainView />
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/tooltip/" />
+</div>
+
+## Options 
+
+
+### Label
+<OptionsView />
+
+### Variants
+<VariantView />
+
+
+### Icon
+<IconView />
+
+### Maximum width
+<MaxWidthView />
+
+### Placement
+<PlacementView />

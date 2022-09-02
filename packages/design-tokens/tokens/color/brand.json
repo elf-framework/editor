@@ -28,6 +28,9 @@
       "default": {
         "value": "{color.gray.0.value}"
       },
+      "dark": {
+        "value": "#000000"
+      },
       "primary": {
         "value": "{color.blue.7.value}"
       },

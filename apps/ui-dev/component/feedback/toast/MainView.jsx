@@ -1,5 +1,5 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, Panel, Popover, VBox } from "@elf-framework/ui";
+import { Button, VBox, Toast } from "@elf-framework/ui";
 
 export function MainView() {
   return (
@@ -22,23 +22,34 @@ export function MainView() {
           gap: 10,
         }}
       >
-        <Button disabled shape="round">
-          Create segment
-        </Button>
-        <Popover
-          show
-          body={
-            <Panel title={"Permission required"}>
-              <p>Your admin must grant you permission to create segments.</p>
-              <a href="#">Learn about permissions</a>
-            </Panel>
-          }
-          placement="right-bottom"
+        <div
+          style={{
+            height: 300,
+            position: "relative",
+            width: "100%",
+            backgroundColor: "white",
+          }}
         >
-          <Button quiet size="extra-small" selected>
-            <InfoOutlined />
-          </Button>
-        </Popover>
+          <Toast
+            direction="bottom-right"
+            icon={<InfoOutlined />}
+            style={{
+              position: "absolute",
+            }}
+            tools={[
+              <Button
+                variant="outline"
+                shape="round"
+                onClick={() => console.log("action")}
+              >
+                Action
+              </Button>,
+            ]}
+            closable
+          >
+            Hello World yellow 234
+          </Toast>
+        </div>
       </div>
     </VBox>
   );

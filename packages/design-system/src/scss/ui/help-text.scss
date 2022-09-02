@@ -1,0 +1,84 @@
+.elf--help-text {
+  --elf--help-text-color: var(--color-gray-6);
+  --elf--help-text-base-font-size: 12px;
+  --elf--help-text-font-size: var(--elf--help-text-base-font-size);
+
+  color: var(--elf--help-text-color);
+  box-sizing: border-box;
+  position: relative;
+  font-size: var(--elf--help-text-font-size);
+  padding: 5px 0px;
+  display: flex;
+  gap: 10px;
+
+  > .icon {
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  > .content {
+    color: var(--elf--help-text-color);
+    display: inline-block;
+
+
+    > *:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
+  &.small {
+    --elf--help-text-font-size: calc(var(--elf--help-text-base-font-size) - 2px);
+  }
+  &.medium {
+    --elf--help-text-font-size: calc(var(--elf--help-text-base-font-size));
+  }
+
+  &.large {
+    --elf--help-text-font-size: calc(var(--elf--help-text-base-font-size) + 2px);
+  }
+
+  &.extra-large {
+    --elf--help-text-font-size: calc(var(--elf--help-text-base-font-size) + 4px);
+  }
+
+  &.disabled {
+    --elf--help-text-color: var(--color-gray-4) !important;
+    cursor: not-allowed;
+
+    > .content {
+      pointer-events: none;
+    }
+
+  }
+
+  &.dark {
+    --elf--help-text-color: var(--color-gray-9);
+  }
+
+  &.primary {
+    --elf--help-text-color: var(--color-primary);
+  }
+
+  &.secondary {
+    --elf--help-text-color: var(--color-secondary);
+  }
+
+  &.success {
+    --elf--help-text-color: var(--color-blue);
+  }
+
+  &.danger {
+    --elf--help-text-color: var(--color-danger);
+  }
+
+  &.info {
+    --elf--help-text-color: var(--color-info);
+  }
+
+  &.warning {
+    --elf--help-text-color: var(--color-warning);
+  }
+}
