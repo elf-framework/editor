@@ -923,6 +923,10 @@ declare module "@elf-framework/ui" {
     value: any;
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
+    size: "small" | "medium" | "large" | "extra-large";
+    variant: "default" | "dark" | "danger";
+    disabled?: boolean;
+    options?: RadioProps[];
   }
 
   export class RadioGroup extends UIElement {
@@ -1154,6 +1158,7 @@ declare module "@elf-framework/ui" {
     closable: boolean;
     weak?: boolean;
     delay?: number;
+    icon?: ContentType;
     onShow?: () => void;
     onHide?: () => void;
   }
@@ -1188,5 +1193,37 @@ declare module "@elf-framework/ui" {
   }
   export class HelpText extends UIElement {
     props: HelpTextProps & DomEventType;
+  }
+
+  interface FieldProps {
+    help: ContentType;
+    label: ContentType;
+    size: "small" | "medium" | "large" | "extra-large";
+    style: CommonStyle;
+    disabled?: boolean;
+    required?: boolean;
+    optional?: boolean;
+    invalid?: boolean;
+    invalidMessage?: ContentType;
+    content?: ContentType;
+  }
+  export class Field extends UIElement {
+    props: FieldProps & CommonStyle;
+  }
+
+  interface TextFieldProps {
+    label: ContentType;
+    placeholder: ContentType;
+    value: string;
+    onChange: (value: string) => void;
+    style: CommonStyle;
+    disabled?: boolean;
+    required?: boolean;
+    invalid?: boolean;
+    invalidMessage?: ContentType;
+  }
+
+  export class TextField extends UIElement {
+    props: TextFieldProps & CommonStyle;
   }
 }

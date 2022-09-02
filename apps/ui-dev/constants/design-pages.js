@@ -92,11 +92,7 @@ export default [
         title: "Color Area",
       },
       {
-        link: COMPONENTS_URL + "inputs/option-menu/",
-        title: "Option Menu",
-      },
-      {
-        link: COMPONENTS_URL + "inputs/field-label/",
+        link: COMPONENTS_URL + "inputs/field/",
         title: "Field Label",
       },
       {
@@ -104,25 +100,25 @@ export default [
         title: "Help text",
       },
       {
-        link: COMPONENTS_URL + "inputs/picker/",
-        title: "Picker",
+        link: COMPONENTS_URL + "inputs/option-menu/",
+        title: "Option Menu",
       },
       { link: COMPONENTS_URL + "inputs/radio/", title: "Radio" },
       {
         link: COMPONENTS_URL + "inputs/slider/",
-        title: "Slider",
+        title: "Slider * ",
       },
       {
         link: COMPONENTS_URL + "inputs/switch/",
-        title: "Switch",
+        title: "Switch * ",
       },
       {
         link: COMPONENTS_URL + "inputs/textarea/",
-        title: "Text area",
+        title: "Text area * ",
       },
       {
         link: COMPONENTS_URL + "inputs/textfield/",
-        title: "Text field",
+        title: "Text field * ",
       },
     ],
   },
@@ -132,27 +128,27 @@ export default [
     items: [
       {
         link: COMPONENTS_URL + "navigations/breadcrumb/",
-        title: "Breadcrumb",
+        title: "Breadcrumb * ",
       },
       {
         link: COMPONENTS_URL + "navigations/avatar/",
-        title: "Avatar",
+        title: "Avatar * ",
       },
       {
         link: COMPONENTS_URL + "navigations/sidebar/",
-        title: "Sidebar",
+        title: "Sidebar * ",
       },
       {
         link: COMPONENTS_URL + "navigations/tabs/",
-        title: "Tabs",
+        title: "Tabs * ",
       },
       {
         link: COMPONENTS_URL + "navigations/tag/",
-        title: "Tag",
+        title: "Tag * ",
       },
       {
         link: COMPONENTS_URL + "navigations/treeview/",
-        title: "Tree view",
+        title: "Tree view * ",
       },
     ],
   },
@@ -160,14 +156,14 @@ export default [
     link: COMPONENTS_URL + "status/",
     title: "Status",
     items: [
-      { link: COMPONENTS_URL + "status/badge/", title: "Badge" },
+      { link: COMPONENTS_URL + "status/badge/", title: "Badge * " },
       {
         link: COMPONENTS_URL + "status/progress/",
-        title: "Progress",
+        title: "Progress * ",
       },
       {
         link: COMPONENTS_URL + "status/status-light/",
-        title: "Status light",
+        title: "Status light * ",
       },
     ],
   },
@@ -175,14 +171,14 @@ export default [
     link: COMPONENTS_URL + "pattern/",
     title: "Pattern",
     items: [
-      { link: COMPONENTS_URL + "pattern/card/", title: "Card" },
+      { link: COMPONENTS_URL + "pattern/card/", title: "Card *" },
       {
         link: COMPONENTS_URL + "pattern/form-errors/",
-        title: "Form errors",
+        title: "Form errors *",
       },
       {
         link: COMPONENTS_URL + "pattern/table/",
-        title: "Table",
+        title: "Table *",
       },
     ],
   },

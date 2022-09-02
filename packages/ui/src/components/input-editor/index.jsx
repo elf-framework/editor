@@ -64,10 +64,10 @@ export class InputEditor extends UIElement {
       class: classnames([
         "elf--input-editor",
         {
-          focused: focused,
-          hover: hover,
-          disabled: disabled,
-          icon: icon,
+          focused,
+          hover,
+          disabled,
+          icon,
         },
       ]),
       style: {

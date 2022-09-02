@@ -24,6 +24,8 @@ export class Radio extends UIElement {
       name,
       checked = false,
       onChange,
+      size = "medium",
+      variant = "default",
     } = this.props;
 
     const styleObject = {
@@ -31,6 +33,8 @@ export class Radio extends UIElement {
         "elf--radio",
         {
           disabled,
+          [size]: true,
+          [variant]: true,
         },
       ]),
       style: {
@@ -56,49 +60,5 @@ export class Radio extends UIElement {
         </label>
       </div>
     );
-  }
-}
-
-export class RadioGroup extends UIElement {
-  template() {
-    const { disabled, style = {}, name, value, onChange, content } = this.props;
-
-    const styleObject = {
-      class: classnames(["elf--radio-group"]),
-      disabled: disabled ? "disabled" : undefined,
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
-    };
-
-    return (
-      <div {...styleObject}>
-        {content.map((it, index) => {
-          return (
-            <Radio
-              ref={`$${index}`}
-              name={name}
-              value={it.props.value}
-              onChange={(e, v) => {
-                this.setState({ value: v }, false);
-                onChange(e, v);
-              }}
-              checked={it.props.value === value}
-              disabled={disabled}
-            >
-              {it.props.content}
-            </Radio>
-          );
-        })}
-      </div>
-    );
-  }
-
-  get value() {
-    return this.state.value || this.props.value;
-  }
-
-  set value(value) {
-    this.setState({ value });
   }
 }

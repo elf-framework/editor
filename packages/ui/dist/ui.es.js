@@ -68,98 +68,6 @@ function propertyMap(styles, mapper = {}) {
   });
   return styleObj;
 }
-const cssProperties$w = {
-  borderColor: "--elf--alert-border-color",
-  backgroundColor: "--elf--alert-background-color",
-  selectedBackgroundColor: "--elf--alert-selected-background-color",
-  disabledColor: "--elf--alert-disabled-color",
-  color: "--elf--alert-color",
-  fontSize: "--elf--alert-font-size",
-  fontWeight: "--elf--alert-font-weight",
-  height: "--elf--alert-height",
-  padding: "--elf--alert-padding",
-  borderRadius: "--elf--alert-border-radius"
-};
-class Alert extends UIElement {
-  template() {
-    const {
-      variant = "default",
-      title = "",
-      content = "",
-      style: style2 = {},
-      closable = false,
-      weak = false,
-      delay = 0,
-      ...extrProps
-    } = this.props;
-    const [localDelay, setLocalDelay] = useState(delay);
-    const [hide, setHide] = useState(false);
-    this.state.hideCallback = useCallback(
-      (hideDelay = 0) => {
-        setLocalDelay(hideDelay);
-      },
-      [setLocalDelay]
-    );
-    const styleObject = {
-      class: classnames([
-        "elf--alert",
-        { [variant]: true, weak },
-        { hide, closable }
-      ]),
-      style: {
-        ...propertyMap(style2, cssProperties$w),
-        ...{
-          transition: `opacity ${localDelay}ms ease-in-out`,
-          opacity: hide ? 0 : 1
-        }
-      },
-      ...extrProps
-    };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault(),
-      onTransitionEnd: () => {
-        this.props.onHide && this.props.onHide();
-        this.destroy(true);
-      }
-    }, title ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-title"
-    }, title) : null, content ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-content"
-    }, content) : null, closable ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-close",
-      onClick: () => {
-        setHide(true);
-        if (localDelay === 0) {
-          this.props.onHide && this.props.onHide();
-          this.destroy(true);
-        }
-      }
-    }, "\xD7") : null);
-  }
-  hide(hideDelay = 0) {
-    var _a;
-    (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
-  }
-}
-function alert({
-  content = void 0,
-  delay = 0,
-  title = void 0,
-  closable = false,
-  options = {},
-  style: style2 = {}
-}) {
-  return potal(
-    /* @__PURE__ */ createElementJsx(Alert, {
-      title,
-      delay,
-      closable,
-      style: style2
-    }, content),
-    options
-  );
-}
 const styleKeys = {};
 const uppercasePattern = /([A-Z])/g;
 const ComponentPropsToStylePropsMap = {
@@ -277,7 +185,102 @@ function convertPropertyToStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$v = {
+const cssProperties$y = makeStyleMap("--elf--alert", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true
+});
+class Alert extends UIElement {
+  template() {
+    const {
+      variant = "default",
+      title = "",
+      content = "",
+      style: style2 = {},
+      closable = false,
+      weak = false,
+      delay = 0,
+      icon,
+      ...extrProps
+    } = this.props;
+    const [localDelay, setLocalDelay] = useState(delay);
+    const [hide, setHide] = useState(false);
+    this.state.hideCallback = useCallback(
+      (hideDelay = 0) => {
+        setLocalDelay(hideDelay);
+      },
+      [setLocalDelay]
+    );
+    const styleObject = {
+      class: classnames([
+        "elf--alert",
+        { [variant]: true, weak },
+        { hide, closable }
+      ]),
+      style: {
+        ...propertyMap(style2, cssProperties$y),
+        ...{
+          transition: `opacity ${localDelay}ms ease-in-out`,
+          opacity: hide ? 0 : 1
+        }
+      },
+      ...extrProps
+    };
+    const titleIcon = title && icon ? icon : void 0;
+    const contentIcon = content && icon && !title ? icon : void 0;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault(),
+      onTransitionEnd: () => {
+        this.props.onHide && this.props.onHide();
+        this.destroy(true);
+      }
+    }, title ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-title"
+    }, titleIcon, " ", title) : null, content ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-content"
+    }, contentIcon, " ", content) : null, closable ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-close",
+      onClick: () => {
+        setHide(true);
+        if (localDelay === 0) {
+          this.props.onHide && this.props.onHide();
+          this.destroy(true);
+        }
+      }
+    }, "\xD7") : null);
+  }
+  hide(hideDelay = 0) {
+    var _a;
+    (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+  }
+}
+function alert({
+  content = void 0,
+  delay = 0,
+  title = void 0,
+  closable = false,
+  options = {},
+  style: style2 = {}
+}) {
+  return potal(
+    /* @__PURE__ */ createElementJsx(Alert, {
+      title,
+      delay,
+      closable,
+      style: style2
+    }, content),
+    options
+  );
+}
+const cssProperties$x = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   selectedBackgroundColor: "--elf--button-selected-background-color",
@@ -323,7 +326,7 @@ class Button extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$v
+        cssProperties$x
       )
     };
     return /* @__PURE__ */ createElementJsx("button", {
@@ -332,7 +335,7 @@ class Button extends UIElement {
     }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$u = makeStyleMap("--elf--button-group", {
+const cssProperties$w = makeStyleMap("--elf--button-group", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -352,7 +355,7 @@ class ButtonGroup extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$u
+        cssProperties$w
       )
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -360,7 +363,7 @@ class ButtonGroup extends UIElement {
     }, content);
   }
 }
-const cssProperties$t = makeStyleMap("--elf--tooltip", {
+const cssProperties$v = makeStyleMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -412,7 +415,7 @@ class Tooltip extends UIElement {
         [variant]: true
       }),
       style: {
-        ...propertyMap(style2, cssProperties$t)
+        ...propertyMap(style2, cssProperties$v)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -474,7 +477,7 @@ class Tooltip extends UIElement {
     this.toggle();
   }
 }
-const cssProperties$s = makeStyleMap("--elf--action-group", {
+const cssProperties$u = makeStyleMap("--elf--action-group", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -549,7 +552,7 @@ class ActionGroup extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$s
+        cssProperties$u
       )
     };
     const items = collapsed ? content.filter((item, index) => {
@@ -569,7 +572,7 @@ class ActionGroup extends UIElement {
     }, /* @__PURE__ */ createElementJsx(Button, null, moreIcon)) : void 0);
   }
 }
-const cssProperties$r = {
+const cssProperties$t = {
   borderColor: "--elf--link-button-border-color",
   backgroundColor: "--elf--link-button-background",
   disabledColor: "--elf--link-button-disabled-color",
@@ -585,7 +588,7 @@ class LinkButton extends UIElement {
       class: classnames(["elf--link-button"]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$r)
+        ...propertyMap(style2, cssProperties$t)
       }
     };
     return /* @__PURE__ */ createElementJsx("a", {
@@ -595,7 +598,7 @@ class LinkButton extends UIElement {
     }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$q = {
+const cssProperties$s = {
   borderColor: "--elf--icon-button-border-color",
   backgroundColor: "--elf--icon-button-background",
   disabledColor: "--elf--icon-button-disabled-color",
@@ -636,7 +639,7 @@ class IconButton extends UIElement {
       ]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$q)
+        ...propertyMap(style2, cssProperties$s)
       }
     };
     return /* @__PURE__ */ createElementJsx("button", {
@@ -646,7 +649,7 @@ class IconButton extends UIElement {
     }, icon || content || "");
   }
 }
-const cssProperties$p = {
+const cssProperties$r = {
   borderColor: "--elf--button-border-color",
   backgroundColor: "--elf--button-background-color",
   disabledColor: "--elf--button-disabled-color",
@@ -695,7 +698,7 @@ class ToggleButton extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$p
+        cssProperties$r
       )
     };
     return /* @__PURE__ */ createElementJsx("button", {
@@ -704,7 +707,7 @@ class ToggleButton extends UIElement {
     }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
-const cssProperties$o = {
+const cssProperties$q = {
   borderColor: "--elf--radio-border-color",
   backgroundColor: "--elf--radio-background",
   disabledColor: "--elf--radio-disabled-color",
@@ -724,17 +727,21 @@ class Radio extends UIElement {
       content,
       name,
       checked = false,
-      onChange
+      onChange,
+      size = "medium",
+      variant = "default"
     } = this.props;
     const styleObject = {
       class: classnames([
         "elf--radio",
         {
-          disabled
+          disabled,
+          [size]: true,
+          [variant]: true
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$o)
+        ...propertyMap(style2, cssProperties$q)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -752,30 +759,57 @@ class Radio extends UIElement {
     }), content));
   }
 }
+const cssProperties$p = {
+  borderColor: "--elf--radio-border-color",
+  backgroundColor: "--elf--radio-background",
+  disabledColor: "--elf--radio-disabled-color",
+  color: "--elf--radio-color",
+  fontSize: "--elf--radio-font-size",
+  fontWeight: "--elf--radio-font-weight",
+  height: "--elf--radio-height",
+  padding: "--elf--radio-padding",
+  borderRadius: "--elf--radio-border-radius"
+};
 class RadioGroup extends UIElement {
   template() {
-    const { disabled, style: style2 = {}, name, value, onChange, content } = this.props;
+    const {
+      disabled,
+      style: style2 = {},
+      name,
+      value,
+      options = [],
+      onChange,
+      direction = "horizontal",
+      size = "medium",
+      variant = "default"
+    } = this.props;
     const styleObject = {
-      class: classnames(["elf--radio-group"]),
+      class: classnames("elf--radio-group", {
+        [direction]: true
+      }),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$o)
+        ...propertyMap(style2, cssProperties$p)
       }
     };
+    const radioName = name || "name-" + this.id;
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
-    }, content.map((it, index) => {
+    }, options.map((it, index) => {
+      const checked = it.value === value;
       return /* @__PURE__ */ createElementJsx(Radio, {
         ref: `$${index}`,
-        name,
-        value: it.props.value,
+        name: radioName,
+        value: it.value,
         onChange: (e, v) => {
           this.setState({ value: v }, false);
           onChange(e, v);
         },
-        checked: it.props.value === value,
-        disabled
-      }, it.props.content);
+        checked,
+        disabled,
+        size,
+        variant
+      }, it.label);
     }));
   }
   get value() {
@@ -785,7 +819,7 @@ class RadioGroup extends UIElement {
     this.setState({ value });
   }
 }
-const cssProperties$n = {
+const cssProperties$o = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -820,7 +854,7 @@ class Checkbox extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$n)
+        ...propertyMap(style2, cssProperties$o)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -845,7 +879,7 @@ class Checkbox extends UIElement {
     return this.props.value;
   }
 }
-const cssProperties$m = {
+const cssProperties$n = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -882,7 +916,7 @@ class CheckboxGroup extends UIElement {
       ]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$m)
+        ...propertyMap(style2, cssProperties$n)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -922,7 +956,7 @@ class CheckboxGroup extends UIElement {
     this.setState({ values });
   }
 }
-const cssProperties$l = {
+const cssProperties$m = {
   color: "--elf--divider-color",
   margin: "--elf--divider-margin"
 };
@@ -947,7 +981,7 @@ class Divider extends UIElement {
             ...style2,
             margin
           },
-          cssProperties$l
+          cssProperties$m
         )
       }
     };
@@ -1140,7 +1174,7 @@ class MenuItem extends UIElement {
     return this.state.selected;
   }
 }
-const cssProperties$k = {
+const cssProperties$l = {
   left: "--elf--menu-left",
   top: "--elf--menu-top",
   backgroundColor: "--elf--menu-background",
@@ -1196,7 +1230,7 @@ class Menu extends UIElement {
         compact
       }),
       style: {
-        ...propertyMap(itemStyle, cssProperties$k)
+        ...propertyMap(itemStyle, cssProperties$l)
       }
     };
     return /* @__PURE__ */ createElementJsx("menu", {
@@ -1326,7 +1360,7 @@ class OptionStrip extends UIElement {
     }));
   }
 }
-const cssProperties$j = {
+const cssProperties$k = {
   position: "--elf--dialog-position",
   backgroundColor: "--elf--dialog-background",
   color: "--elf--dialog-color",
@@ -1399,7 +1433,7 @@ class Dialog extends UIElement {
         "no-border": noBorder
       }),
       style: {
-        ...propertyMap(style2, cssProperties$j)
+        ...propertyMap(style2, cssProperties$k)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1713,7 +1747,7 @@ function makeHiddenToolsItem(items = [], options = {}) {
     return visibility === "hidden";
   });
 }
-const cssProperties$i = makeStyleMap("--elf--tools", {
+const cssProperties$j = makeStyleMap("--elf--tools", {
   backgroundColor: true,
   color: true,
   height: true
@@ -1789,7 +1823,7 @@ class Tools extends UIElement {
         emphasized
       }),
       style: {
-        ...propertyMap(style2, cssProperties$i)
+        ...propertyMap(style2, cssProperties$j)
       }
     };
     const items = makeToolsItem(this.props.items, {
@@ -1844,7 +1878,7 @@ class ToolbarItem extends UIElement {
     }));
   }
 }
-const cssProperties$h = makeStyleMap("--elf--toolbar", {
+const cssProperties$i = makeStyleMap("--elf--toolbar", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -1874,7 +1908,7 @@ class Toolbar extends UIElement {
         className
       ),
       style: {
-        ...propertyMap(style2, cssProperties$h)
+        ...propertyMap(style2, cssProperties$i)
       }
     };
     if (Object.keys(styleObject.style).length === 0) {
@@ -1889,7 +1923,7 @@ class Toolbar extends UIElement {
     }));
   }
 }
-const cssProperties$g = {
+const cssProperties$h = {
   backgroundColor: "--elf--notification-background",
   color: "--elf--notification-color",
   width: "--elf--notification-width",
@@ -1915,7 +1949,7 @@ class Notification extends UIElement {
         `elf--notification-direction-${direction}`
       ),
       style: {
-        ...propertyMap(style2, cssProperties$g)
+        ...propertyMap(style2, cssProperties$h)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1932,7 +1966,7 @@ class Notification extends UIElement {
     }, tools || []));
   }
 }
-const cssProperties$f = makeStyleMap("--elf--toast", {
+const cssProperties$g = makeStyleMap("--elf--toast", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -1970,7 +2004,7 @@ class Toast extends UIElement {
         [variant]: true
       }),
       style: {
-        ...propertyMap(style2, cssProperties$f),
+        ...propertyMap(style2, cssProperties$g),
         ...{
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
@@ -2036,7 +2070,7 @@ function bell({
     options
   );
 }
-const cssProperties$e = makeStyleMap("--elf--popover", {
+const cssProperties$f = makeStyleMap("--elf--popover", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2071,7 +2105,7 @@ class Popover extends UIElement {
     const styleObject = {
       class: classnames("elf--popover", { [placement]: true, animated }),
       style: {
-        ...propertyMap(style2, cssProperties$e)
+        ...propertyMap(style2, cssProperties$f)
       }
     };
     const isPopoverShow = show || this.props.show;
@@ -2135,7 +2169,7 @@ class Popover extends UIElement {
     this.toggle();
   }
 }
-const cssProperties$d = {
+const cssProperties$e = {
   backgroundColor: "--elf--panel-background",
   color: "--elf--panel-color",
   height: "--elf--panel-height",
@@ -2160,7 +2194,7 @@ class Panel extends UIElement {
       class: classnames("elf--panel", { [mode]: true }),
       "data-theme": theme,
       style: {
-        ...propertyMap(style2, cssProperties$d)
+        ...propertyMap(style2, cssProperties$e)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -2178,7 +2212,7 @@ class Panel extends UIElement {
     }, footer) : void 0);
   }
 }
-const cssProperties$c = makeStyleMap("--elf--tabstrip", {
+const cssProperties$d = makeStyleMap("--elf--tabstrip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2198,7 +2232,7 @@ class TabStrip extends UIElement {
         "is-fitted": fitted
       }),
       style: {
-        ...propertyMap(style2, cssProperties$c)
+        ...propertyMap(style2, cssProperties$d)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -2230,7 +2264,7 @@ class TabStrip extends UIElement {
     })) : void 0);
   }
 }
-const cssProperties$b = makeStyleMap("--elf--tab", {
+const cssProperties$c = makeStyleMap("--elf--tab", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2265,7 +2299,7 @@ class Tab extends UIElement {
       class: classnames("elf--tab", {
         full
       }),
-      style: propertyMap(style2, cssProperties$b)
+      style: propertyMap(style2, cssProperties$c)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -2372,7 +2406,7 @@ class Grid extends UIElement {
     }, content);
   }
 }
-const cssProperties$a = makeStyleMap("--elf--input-editor", {
+const cssProperties$b = makeStyleMap("--elf--input-editor", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -2430,7 +2464,7 @@ class InputEditor extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$a)
+        ...propertyMap(style2, cssProperties$b)
       }
     };
     const inputEvents = {
@@ -2514,7 +2548,7 @@ function ColorView({ color }) {
     style: { backgroundColor: format(parsedColor, "rgb") }
   })));
 }
-const cssProperties$9 = makeStyleMap("--elf--input-paint", {
+const cssProperties$a = makeStyleMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -2588,7 +2622,7 @@ class InputPaint extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$9)
+        ...propertyMap(style2, cssProperties$a)
       }
     };
     const inputEvents = {
@@ -2686,7 +2720,7 @@ class InputPaint extends UIElement {
     return document.getSelection().toString();
   }
 }
-const cssProperties$8 = makeStyleMap("--elf--input-paint", {
+const cssProperties$9 = makeStyleMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -2800,7 +2834,7 @@ class HexColorEditor extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$8)
+        ...propertyMap(style2, cssProperties$9)
       }
     };
     const inputEvents = {
@@ -2960,7 +2994,7 @@ class HexColorEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
-const cssProperties$7 = makeStyleMap("--elf--input-paint", {
+const cssProperties$8 = makeStyleMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -3051,7 +3085,7 @@ class RGBColorEditor extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$7)
+        ...propertyMap(style2, cssProperties$8)
       }
     };
     const { r, g, b, a } = parse(value);
@@ -3198,7 +3232,7 @@ class RGBColorEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
-const cssProperties$6 = makeStyleMap("--elf--input-editor", {
+const cssProperties$7 = makeStyleMap("--elf--input-editor", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -3252,7 +3286,7 @@ class TextAreaEditor extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$6)
+        ...propertyMap(style2, cssProperties$7)
       }
     };
     const inputEvents = {
@@ -3314,6 +3348,53 @@ class TextAreaEditor extends UIElement {
   set value(v) {
     this.refs.$input.value = v;
   }
+}
+const cssProperties$6 = {
+  width: "--elf--field-width"
+};
+function Field({
+  label,
+  content,
+  help,
+  position,
+  required = false,
+  optional = false,
+  size,
+  disabled,
+  style: style2 = {}
+}) {
+  const styleObject = {
+    class: classnames("elf--field", {
+      [position]: true,
+      [size]: true,
+      disabled
+    }),
+    style: {
+      ...propertyMap(style2, cssProperties$6)
+    }
+  };
+  return /* @__PURE__ */ createElementJsx("div", {
+    ...styleObject
+  }, label ? /* @__PURE__ */ createElementJsx("label", {
+    class: "label"
+  }, label, required ? /* @__PURE__ */ createElementJsx("span", {
+    class: "required"
+  }, "*") : null, optional ? /* @__PURE__ */ createElementJsx("span", {
+    class: "optional"
+  }, "(optional)") : null) : void 0, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", {
+    class: "field-area"
+  }, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", null, content) : void 0, help ? /* @__PURE__ */ createElementJsx("div", {
+    class: "help"
+  }, help) : void 0) : void 0);
+}
+function TextField({ label, help, position, value }) {
+  return /* @__PURE__ */ createElementJsx(Field, {
+    label,
+    help,
+    position
+  }, /* @__PURE__ */ createElementJsx(InputEditor, {
+    value
+  }));
 }
 const cssProperties$5 = makeStyleMap("--elf--virtual-scroll", {
   backgroundColor: true,
@@ -4666,6 +4747,7 @@ export {
   EventControlPanel,
   EventPanel,
   FIRSTMOVE,
+  Field,
   Flex,
   Grid,
   HelpText,
@@ -4690,6 +4772,7 @@ export {
   TabItem,
   TabStrip,
   TextAreaEditor,
+  TextField,
   Toast,
   ToggleButton,
   Toolbar,

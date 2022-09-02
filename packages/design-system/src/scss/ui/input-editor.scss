@@ -1,10 +1,10 @@
 .elf--input-editor {
     --elf--input-editor-min-width: 50px;
-    --elf--input-editor-border-color: transparent;
+    --elf--input-editor-border-color: var(--color-gray-2);
     --elf--input-editor-outline-color: transparent;
     --elf--input-editor-border-radius: 1px;
-    --elf--input-editor-background-color: white;
-    --elf--input-editor-color: black;
+    --elf--input-editor-background-color: var(--color-white);
+    --elf--input-editor-color: var(--color-black);
     --elf--input-editor-font-size: 13px;
     --elf--input-editor-empty-color: rgba(0, 0, 0, 0.3);
     --elf--input-editor-placeholder-color: rgba(0, 0, 0, 0.3);
@@ -20,6 +20,7 @@
     box-sizing: border-box;
     display: flex;
     background-color: var(--elf--input-editor-background-color);
+    border-radius: 2px;
 
     &.multiline {
         height: var(--elf--input-editor-height, 44px);
@@ -31,14 +32,14 @@
         &:empty {
             color: var(--elf--input-editor-empty-color);
         }
-        --elf--input-editor-border-color: rgba(0, 0, 0, 0.1);
+        --elf--input-editor-border-color: var(--color-gray-3);
     }
 
     &:focus,
     &:focus-within,
     &.focused {
-        --elf--input-editor-border-color: var(--elf--primary-color);
-        --elf--input-editor-outline-color: var(--elf--primary-color);
+        --elf--input-editor-border-color: var(--color-primary);
+        --elf--input-editor-outline-color: var(--color-primary);
     }
 
     &.disabled {
@@ -46,6 +47,7 @@
         // --elf--input-editor-outline-color: var(--elf--disabled-color);
         --elf--input-editor-placeholder-color: var(--elf--disabled-color);
         cursor: not-allowed;
+        --elf--input-editor-background-color: var(--elf--disabled-color);
     }
 
     > .elf--input-editor-icon {

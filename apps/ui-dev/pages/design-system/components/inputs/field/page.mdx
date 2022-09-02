@@ -1,0 +1,47 @@
+---
+title: Field label
+layout: DesignLayout
+filename: pages/design-system/inputs/radio/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/inputs/field/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/inputs/field/OptionsView.jsx"; 
+import { LabelPositionView } from "../../../../../component/inputs/field/LabelPositionView.jsx"; 
+import { SizeView } from "../../../../../component/inputs/field/SizeView.jsx"; 
+import { DisabledView } from "../../../../../component/inputs/field/DisabledView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Help text provides either an informative description or an error message that gives more context about what a user needs to input. It’s commonly used in forms.
+
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/field/" />
+</div>
+
+## Options 
+
+### Label
+
+<OptionsView />
+
+### Label position
+
+<LabelPositionView />
+
+
+### Size
+
+<SizeView />
+
+
+
+### Disabled
+
+<DisabledView />
+

@@ -7,19 +7,20 @@ import {
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
+import { makeStyleMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  borderColor: "--elf--alert-border-color",
-  backgroundColor: "--elf--alert-background-color",
-  selectedBackgroundColor: "--elf--alert-selected-background-color",
-  disabledColor: "--elf--alert-disabled-color",
-  color: "--elf--alert-color",
-  fontSize: "--elf--alert-font-size",
-  fontWeight: "--elf--alert-font-weight",
-  height: "--elf--alert-height",
-  padding: "--elf--alert-padding",
-  borderRadius: "--elf--alert-border-radius",
-};
+const cssProperties = makeStyleMap("--elf--alert", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class Alert extends UIElement {
   template() {
@@ -31,6 +32,7 @@ export class Alert extends UIElement {
       closable = false,
       weak = false,
       delay = 0,
+      icon,
       ...extrProps
     } = this.props;
     const [localDelay, setLocalDelay] = useState(delay);
@@ -59,6 +61,9 @@ export class Alert extends UIElement {
       ...extrProps,
     };
 
+    const titleIcon = title && icon ? icon : undefined;
+    const contentIcon = content && icon && !title ? icon : undefined;
+
     return (
       <div
         {...styleObject}
@@ -68,8 +73,16 @@ export class Alert extends UIElement {
           this.destroy(true);
         }}
       >
-        {title ? <div class="elf--alert-title">{title}</div> : null}
-        {content ? <div class="elf--alert-content">{content}</div> : null}
+        {title ? (
+          <div class="elf--alert-title">
+            {titleIcon} {title}
+          </div>
+        ) : null}
+        {content ? (
+          <div class="elf--alert-content">
+            {contentIcon} {content}
+          </div>
+        ) : null}
         {closable ? (
           <div
             class="elf--alert-close"

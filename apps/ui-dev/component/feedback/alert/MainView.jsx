@@ -13,11 +13,11 @@ export function MainView() {
       }}
     >
       <Flex style={{ flexDirection: "column", gap: 10, position: "relative" }}>
-        <Alert icon={<EditFilled />}>
+        <Alert icon={<EditFilled />} title={"title"}>
           Your trial has expired. Please purchase to continue.
         </Alert>
-        <Alert variant="primary" closable={true}>
-          <InfoOutlined /> Your trial has expired. Please purchase to continue.
+        <Alert variant="primary" closable={true} title={"title"}>
+          Your trial has expired. Please purchase to continue.
         </Alert>
         <Alert variant="secondary" closable={true}>
           Your trial has expired. Please purchase to continue.

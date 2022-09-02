@@ -24,7 +24,9 @@ export function SizeView() {
           </div>
 
           <div>
-            <em>192 x 192</em>
+            <div>
+              <em>192 x 192</em>
+            </div>
             <ColorMixer
               color="red"
               hideSlide

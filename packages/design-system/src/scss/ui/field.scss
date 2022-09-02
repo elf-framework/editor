@@ -1,0 +1,58 @@
+.elf--field {
+    --elf--field-width: 200px;
+    --elf--field-label-color: var(--color-gray-6);
+    --elf--field-label-font-size: 12px;
+
+    display: flex;
+    flex-direction: column;
+    width: var(--elf--field-width);
+    gap: 4px;
+
+    > * {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    &.disabled {
+        > label {
+            --elf--field-label-color: var(--color-gray-4);
+        }
+    }
+
+    &.small {
+        --elf--field-label-font-size: 12px;
+    }
+
+    &.medium {
+        --elf--field-label-font-size: 13px;
+    }
+
+    &.large {
+        --elf--field-label-font-size: 16px;
+    }
+
+    &.extra-large {
+        --elf--field-label-font-size: 20px;
+    }
+
+
+
+    > label {
+        font-size: var(--elf--field-label-font-size);
+        color: var(--elf--field-label-color);
+        vertical-align: middle;
+    }
+
+    &.horizontal {
+        flex-direction: row;
+
+        > * {
+            flex: 2;
+        }
+
+        > label {
+            flex: 2;
+        }
+
+    }
+}

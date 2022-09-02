@@ -7,7 +7,7 @@
   );
   --elf--alert-title-color: var(--alert-color-title-default);
   --elf--alert-content-color: var(--alert-color-content-default);
-  --elf--alert-border-radius: 4px;
+  --elf--alert-border-radius: 0px;
 
   // height: var(--elf--alert-height, 30px);
   padding: var(--elf--alert-padding);
@@ -43,6 +43,13 @@
       width: 1px;
       bottom: 6px;
       background-color: rgba(155, 155, 155, 0.3);
+    }
+  }
+
+  .elf--icon {
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 
