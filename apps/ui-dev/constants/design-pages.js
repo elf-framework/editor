@@ -129,11 +129,11 @@ export default [
       },
       {
         link: COMPONENTS_URL + "inputs/textarea/",
-        title: "Text area * ",
+        title: "Text area",
       },
       {
         link: COMPONENTS_URL + "inputs/textfield/",
-        title: "Text field - ",
+        title: "Text field",
       },
     ],
     category: "Components",
@@ -143,8 +143,8 @@ export default [
     title: "Navigations",
     items: [
       {
-        link: COMPONENTS_URL + "navigations/breadcrumb/",
-        title: "Breadcrumb * ",
+        link: COMPONENTS_URL + "navigations/breadcrumbs/",
+        title: "Breadcrumbs",
       },
       {
         link: COMPONENTS_URL + "navigations/avatar/",

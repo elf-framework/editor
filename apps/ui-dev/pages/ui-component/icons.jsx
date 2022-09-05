@@ -15,8 +15,10 @@ Object.keys(icons).forEach((key) => {
   }
 
   if (key.includes("Filled")) {
+    // eslint-disable-next-line import/namespace
     list[name].filled = icons[key];
   } else if (key.includes("Outlined")) {
+    // eslint-disable-next-line import/namespace
     list[name].outlined = icons[key];
   }
 });

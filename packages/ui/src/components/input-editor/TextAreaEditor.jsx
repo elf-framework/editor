@@ -4,6 +4,7 @@ import {
   FOCUSOUT,
   FOCUSIN,
   isFunction,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -22,12 +23,13 @@ const cssProperties = makeCssVariablePrefixMap("--elf--input-editor", {
   borderRadius: true,
   placeholderColor: true,
   emptyColor: true,
+  paddingRight: true,
 });
 
 export class TextAreaEditor extends UIElement {
   initState() {
     const {
-      style = {},
+      autoFocus = false,
       focused,
       hover = false,
       value,
@@ -36,7 +38,7 @@ export class TextAreaEditor extends UIElement {
     } = this.props;
 
     return {
-      style,
+      autoFocus,
       hover: hover || false,
       focused: focused || false,
       placeholder,
@@ -46,9 +48,17 @@ export class TextAreaEditor extends UIElement {
   }
 
   template() {
-    const { icon } = this.props;
     const {
-      style = {},
+      icon,
+      tools,
+      size = "medium",
+      readOnly = false,
+      invalid,
+      rows,
+      style,
+      resizable,
+    } = this.props;
+    const {
       focused = false,
       hover = false,
       value,
@@ -56,20 +66,25 @@ export class TextAreaEditor extends UIElement {
       disabled,
     } = this.state;
 
-    const styleObject = {
-      class: classnames([
-        "elf--input-editor",
-        "multiline",
+    const localClass = useMemo(() => {
+      return classnames([
+        "elf--input-editor textarea",
         {
-          focused: focused,
-          hover: hover,
-          disabled: disabled,
-          icon: icon,
+          focused,
+          hover,
+          disabled,
+          icon,
+          invalid,
+          resizable,
+          [size]: true,
+          readonly: readOnly,
         },
-      ]),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      ]);
+    }, [focused, hover, disabled, icon, invalid, size, readOnly, resizable]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     const inputEvents = {
@@ -86,12 +101,15 @@ export class TextAreaEditor extends UIElement {
 
     const properties = {
       disabled,
-      placeholder,
-      value,
+      rows,
+      readonly: readOnly ? "readonly" : undefined,
+      placeholder: placeholder || "",
+      value: value || "",
     };
 
     return (
       <div {...styleObject}>
+        {icon ? <div class="elf--input-editor-icon">{icon}</div> : undefined}
         <div class="elf--input-area">
           <div class="elf--input-item">
             <textarea ref="$input" {...properties} {...inputEvents}>
@@ -99,6 +117,7 @@ export class TextAreaEditor extends UIElement {
             </textarea>
           </div>
         </div>
+        {tools ? tools : undefined}
       </div>
     );
   }
@@ -140,6 +159,10 @@ export class TextAreaEditor extends UIElement {
 
   set value(v) {
     this.refs.$input.value = v;
+  }
+
+  get selectedValue() {
+    return document.getSelection().toString();
   }
 }
 

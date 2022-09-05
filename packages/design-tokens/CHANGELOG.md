@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.29
+
+### Patch Changes
+
+- add breadcrumbs component
+
 ## 2.1.27
 
 ### Patch Changes

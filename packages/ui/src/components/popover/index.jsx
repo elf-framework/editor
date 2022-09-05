@@ -84,7 +84,7 @@ export class Popover extends UIElement {
         </div>
         {isPopoverShow ? (
           <div class="elf--popover-message">
-            <div class="elf--toolltip-message-content">{body}</div>
+            <div class="elf--popover-message-content">{body}</div>
             {/* 이벤트 발생시 이벤트 발생 위치를 표시하기 위한 용도 */}
             <div class="event-panel"></div>
           </div>

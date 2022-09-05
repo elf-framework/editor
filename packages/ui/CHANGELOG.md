@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.29
+
+### Patch Changes
+
+- add breadcrumbs component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.29
+
 ## 2.1.26
 
 ### Patch Changes

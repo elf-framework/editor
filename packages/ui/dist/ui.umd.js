@@ -165,7 +165,7 @@ var __publicField = (obj, key, value) => {
     }
     return value;
   }
-  function propertyMap(styles, mapper = {}) {
+  function propertyMap(styles = {}, mapper = {}) {
     const styleObj = {};
     Object.keys(styles).forEach((key) => {
       styleObj[mapper[key] || key] = convertNumberStyleValue(key, styles[key]);
@@ -203,7 +203,7 @@ var __publicField = (obj, key, value) => {
     });
     return { style: style2, noneStyle };
   }
-  const cssProperties$y = makeCssVariablePrefixMap("--elf--alert", {
+  const cssProperties$z = makeCssVariablePrefixMap("--elf--alert", {
     borderColor: true,
     backgroundColor: true,
     selectedBackgroundColor: true,
@@ -243,7 +243,7 @@ var __publicField = (obj, key, value) => {
           { hide, closable }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$y),
+          ...propertyMap(style2, cssProperties$z),
           ...{
             transition: `opacity ${localDelay}ms ease-in-out`,
             opacity: hide ? 0 : 1
@@ -300,7 +300,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("Alert", Alert);
   registerComponent("alert", Alert);
-  const cssProperties$x = makeCssVariablePrefixMap("--elf--button", {
+  const cssProperties$y = makeCssVariablePrefixMap("--elf--button", {
     borderColor: true,
     backgroundColor: true,
     selectedBackgroundColor: true,
@@ -346,7 +346,7 @@ var __publicField = (obj, key, value) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$x
+          cssProperties$y
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -358,7 +358,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("button", Button);
   registerComponent("btn", Button);
   registerComponent("Button", Button);
-  const cssProperties$w = makeCssVariablePrefixMap("--elf--button-group", {
+  const cssProperties$x = makeCssVariablePrefixMap("--elf--button-group", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -378,7 +378,7 @@ var __publicField = (obj, key, value) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$w
+          cssProperties$x
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -389,7 +389,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("button-group", ButtonGroup);
   registerComponent("btn-group", ButtonGroup);
   registerComponent("ButtonGroup", ButtonGroup);
-  const cssProperties$v = makeCssVariablePrefixMap("--elf--tooltip", {
+  const cssProperties$w = makeCssVariablePrefixMap("--elf--tooltip", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -416,8 +416,9 @@ var __publicField = (obj, key, value) => {
   };
   class Tooltip extends sapa.UIElement {
     initState() {
+      const trigger = this.props.trigger || "hover";
       return {
-        trigger: this.props.trigger || "hover",
+        trigger: sapa.isString(trigger) ? [trigger] : trigger,
         delay: 1e3,
         show: this.props.show || false
       };
@@ -443,7 +444,7 @@ var __publicField = (obj, key, value) => {
       }, [placement, animated, variant]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$v)
+        style: propertyMap(style2, cssProperties$w)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -458,6 +459,12 @@ var __publicField = (obj, key, value) => {
       }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "message-content"
       }, /* @__PURE__ */ sapa.createElementJsx("div", null, message))) : void 0);
+    }
+    show() {
+      this.open();
+    }
+    hide() {
+      this.close();
     }
     open() {
       this.setState({
@@ -483,10 +490,13 @@ var __publicField = (obj, key, value) => {
       return true;
     }
     checkTriggerClick() {
-      return this.state.trigger === "click";
+      return this.state.trigger.includes("click");
     }
     checkTriggerOver() {
-      return this.state.trigger === "hover";
+      return this.state.trigger.includes("hover");
+    }
+    checkTriggerFocus() {
+      return this.state.trigger.includes("focus");
     }
     [sapa.POINTERENTER("$el") + sapa.IF("checkTriggerOver")]() {
       this.open();
@@ -503,8 +513,12 @@ var __publicField = (obj, key, value) => {
     [sapa.CLICK("$el") + sapa.IF("checkTriggerClick")]() {
       this.toggle();
     }
+    [sapa.FOCUS("$el") + sapa.IF("checkTriggerFocus")](e) {
+      console.log(this.$el, e);
+      this.open();
+    }
   }
-  const cssProperties$u = makeCssVariablePrefixMap("--elf--action-group", {
+  const cssProperties$v = makeCssVariablePrefixMap("--elf--action-group", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -578,7 +592,7 @@ var __publicField = (obj, key, value) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$u
+          cssProperties$v
         )
       };
       const items = collapsed ? content.filter((item, index) => {
@@ -600,7 +614,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("action-group", ActionGroup);
   registerComponent("ActionGroup", ActionGroup);
-  const cssProperties$t = makeCssVariablePrefixMap("--elf--link-button", {
+  const cssProperties$u = makeCssVariablePrefixMap("--elf--link-button", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -616,7 +630,7 @@ var __publicField = (obj, key, value) => {
         class: "elf--link-button",
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$t)
+          ...propertyMap(style2, cssProperties$u)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("a", {
@@ -629,7 +643,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("link-button", LinkButton);
   registerComponent("linkbutton", LinkButton);
   registerComponent("LinkButton", LinkButton);
-  const cssProperties$s = {
+  const cssProperties$t = {
     borderColor: "--elf--icon-button-border-color",
     backgroundColor: "--elf--icon-button-background",
     disabledColor: "--elf--icon-button-disabled-color",
@@ -671,7 +685,7 @@ var __publicField = (obj, key, value) => {
         ]),
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$s)
+          ...propertyMap(style2, cssProperties$t)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -681,7 +695,7 @@ var __publicField = (obj, key, value) => {
       }, icon || content || "");
     }
   }
-  const cssProperties$r = {
+  const cssProperties$s = {
     borderColor: "--elf--button-border-color",
     backgroundColor: "--elf--button-background-color",
     disabledColor: "--elf--button-disabled-color",
@@ -731,7 +745,7 @@ var __publicField = (obj, key, value) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$r
+          cssProperties$s
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -740,7 +754,7 @@ var __publicField = (obj, key, value) => {
       }, /* @__PURE__ */ sapa.createElementJsx("span", null, content || ""));
     }
   }
-  const cssProperties$q = makeCssVariablePrefixMap("--elf--radio", {
+  const cssProperties$r = makeCssVariablePrefixMap("--elf--radio", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -776,7 +790,7 @@ var __publicField = (obj, key, value) => {
       }, [disabled, size, variant]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$q)
+        style: propertyMap(style2, cssProperties$r)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -795,7 +809,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("radio", Radio);
   registerComponent("Radio", Radio);
-  const cssProperties$p = makeCssVariablePrefixMap("--elf--radio", {
+  const cssProperties$q = makeCssVariablePrefixMap("--elf--radio", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -827,7 +841,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: localClass,
         disabled: disabled ? "disabled" : void 0,
-        style: propertyMap(style2, cssProperties$p)
+        style: propertyMap(style2, cssProperties$q)
       };
       const radioName = name || "name-" + this.id;
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -859,7 +873,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("RadioGroup", RadioGroup);
   registerComponent("radio-group", RadioGroup);
   registerComponent("radiogroup", RadioGroup);
-  const cssProperties$o = {
+  const cssProperties$p = {
     borderColor: "--elf--checkbox-border-color",
     backgroundColor: "--elf--checkbox-background",
     disabledColor: "--elf--checkbox-disabled-color",
@@ -894,7 +908,7 @@ var __publicField = (obj, key, value) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$o)
+          ...propertyMap(style2, cssProperties$p)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -921,7 +935,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("Checkbox", Checkbox);
   registerComponent("checkbox", Checkbox);
-  const cssProperties$n = {
+  const cssProperties$o = {
     borderColor: "--elf--checkbox-border-color",
     backgroundColor: "--elf--checkbox-background",
     disabledColor: "--elf--checkbox-disabled-color",
@@ -958,7 +972,7 @@ var __publicField = (obj, key, value) => {
         ]),
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$n)
+          ...propertyMap(style2, cssProperties$o)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -1000,7 +1014,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("checkbox-group", CheckboxGroup);
   registerComponent("CheckboxGroup", CheckboxGroup);
-  const cssProperties$m = makeCssVariablePrefixMap("--elf--divider", {
+  const cssProperties$n = makeCssVariablePrefixMap("--elf--divider", {
     color: true,
     margin: true
   });
@@ -1025,7 +1039,7 @@ var __publicField = (obj, key, value) => {
               ...style2,
               margin
             },
-            cssProperties$m
+            cssProperties$n
           )
         }
       };
@@ -1220,7 +1234,7 @@ var __publicField = (obj, key, value) => {
       return this.state.selected;
     }
   }
-  const cssProperties$l = makeCssVariablePrefixMap("--elf--menu", {
+  const cssProperties$m = makeCssVariablePrefixMap("--elf--menu", {
     left: true,
     top: true,
     backgroundColor: true,
@@ -1275,7 +1289,7 @@ var __publicField = (obj, key, value) => {
           [type]: true,
           compact
         }),
-        style: propertyMap(itemStyle, cssProperties$l)
+        style: propertyMap(itemStyle, cssProperties$m)
       };
       return /* @__PURE__ */ sapa.createElementJsx("menu", {
         ...styleObject,
@@ -1421,7 +1435,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("option-strip", OptionStrip);
   registerComponent("optionstrip", OptionStrip);
   registerComponent("OptionStrip", OptionStrip);
-  const cssProperties$k = makeCssVariablePrefixMap("--elf--dialog", {
+  const cssProperties$l = makeCssVariablePrefixMap("--elf--dialog", {
     position: true,
     backgroundColor: true,
     color: true,
@@ -1494,7 +1508,7 @@ var __publicField = (obj, key, value) => {
           "no-border": noBorder
         }),
         style: {
-          ...propertyMap(style2, cssProperties$k)
+          ...propertyMap(style2, cssProperties$l)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -1827,7 +1841,7 @@ var __publicField = (obj, key, value) => {
       return visibility === "hidden";
     });
   }
-  const cssProperties$j = makeCssVariablePrefixMap("--elf--tools", {
+  const cssProperties$k = makeCssVariablePrefixMap("--elf--tools", {
     backgroundColor: true,
     color: true,
     height: true
@@ -1905,7 +1919,7 @@ var __publicField = (obj, key, value) => {
       }, [vertical, emphasized]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$j)
+        style: propertyMap(style2, cssProperties$k)
       };
       const items = makeToolsItem(this.props.items, {
         visibleTargetList,
@@ -1961,7 +1975,7 @@ var __publicField = (obj, key, value) => {
       }));
     }
   }
-  const cssProperties$i = makeCssVariablePrefixMap("--elf--toolbar", {
+  const cssProperties$j = makeCssVariablePrefixMap("--elf--toolbar", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -1993,7 +2007,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         id: "toolbar-" + this.id,
         class: localClass,
-        style: propertyMap(style2, cssProperties$i)
+        style: propertyMap(style2, cssProperties$j)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject,
@@ -2004,7 +2018,7 @@ var __publicField = (obj, key, value) => {
       }));
     }
   }
-  const cssProperties$h = makeCssVariablePrefixMap("--elf--notification", {
+  const cssProperties$i = makeCssVariablePrefixMap("--elf--notification", {
     backgroundColor: true,
     color: true,
     width: true,
@@ -2030,7 +2044,7 @@ var __publicField = (obj, key, value) => {
           `elf--notification-direction-${direction}`
         ),
         style: {
-          ...propertyMap(style2, cssProperties$h)
+          ...propertyMap(style2, cssProperties$i)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -2048,7 +2062,7 @@ var __publicField = (obj, key, value) => {
     }
   }
   registerComponent("notification", Notification);
-  const cssProperties$g = makeCssVariablePrefixMap("--elf--toast", {
+  const cssProperties$h = makeCssVariablePrefixMap("--elf--toast", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2089,7 +2103,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$g),
+          ...propertyMap(style2, cssProperties$h),
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
         }
@@ -2155,7 +2169,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("toast", Toast);
   registerComponent("Toast", Toast);
-  const cssProperties$f = makeCssVariablePrefixMap("--elf--popover", {
+  const cssProperties$g = makeCssVariablePrefixMap("--elf--popover", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2190,7 +2204,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: sapa.classnames("elf--popover", { [placement]: true, animated }),
         style: {
-          ...propertyMap(style2, cssProperties$f)
+          ...propertyMap(style2, cssProperties$g)
         }
       };
       const isPopoverShow = show || this.props.show;
@@ -2204,7 +2218,7 @@ var __publicField = (obj, key, value) => {
       }) : void 0), isPopoverShow ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--popover-message"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--toolltip-message-content"
+        class: "elf--popover-message-content"
       }, body), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "event-panel"
       })) : void 0);
@@ -2256,7 +2270,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("popover", Popover);
   registerComponent("Popover", Popover);
-  const cssProperties$e = makeCssVariablePrefixMap("--elf--panel", {
+  const cssProperties$f = makeCssVariablePrefixMap("--elf--panel", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2283,7 +2297,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: localClass,
         "data-theme": theme,
-        style: propertyMap(style2, cssProperties$e)
+        style: propertyMap(style2, cssProperties$f)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -2302,7 +2316,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("panel", Panel);
   registerComponent("Panel", Panel);
-  const cssProperties$d = makeCssVariablePrefixMap("--elf--tabstrip", {
+  const cssProperties$e = makeCssVariablePrefixMap("--elf--tabstrip", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2324,7 +2338,7 @@ var __publicField = (obj, key, value) => {
       }, [fitted]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$d)
+        style: propertyMap(style2, cssProperties$e)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -2358,7 +2372,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("tabstrip", TabStrip);
   registerComponent("TabStrip", TabStrip);
   registerComponent("tab-strip", TabStrip);
-  const cssProperties$c = makeCssVariablePrefixMap("--elf--tab", {
+  const cssProperties$d = makeCssVariablePrefixMap("--elf--tab", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2396,7 +2410,7 @@ var __publicField = (obj, key, value) => {
       }, [full]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$c)
+        style: propertyMap(style2, cssProperties$d)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -2514,7 +2528,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("grid", Grid);
   registerComponent("Grid", Grid);
-  const cssProperties$b = makeCssVariablePrefixMap("--elf--input-editor", {
+  const cssProperties$c = makeCssVariablePrefixMap("--elf--input-editor", {
     width: true,
     borderColor: true,
     backgroundColor: true,
@@ -2526,12 +2540,12 @@ var __publicField = (obj, key, value) => {
     padding: true,
     borderRadius: true,
     placeholderColor: true,
-    emptyColor: true
+    emptyColor: true,
+    paddingRight: true
   });
   class InputEditor extends sapa.UIElement {
     initState() {
       const {
-        style: style2 = {},
         type = "text",
         autoFocus = false,
         focused,
@@ -2541,7 +2555,6 @@ var __publicField = (obj, key, value) => {
         disabled
       } = this.props;
       return {
-        style: style2,
         type,
         autoFocus,
         hover: hover || false,
@@ -2557,10 +2570,10 @@ var __publicField = (obj, key, value) => {
         tools,
         size = "medium",
         readOnly = false,
-        invalid
+        invalid,
+        style: style2
       } = this.props;
       const {
-        style: style2 = {},
         type = "text",
         focused = false,
         hover = false,
@@ -2568,8 +2581,8 @@ var __publicField = (obj, key, value) => {
         placeholder,
         disabled
       } = this.state;
-      const styleObject = {
-        class: sapa.classnames([
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames([
           "elf--input-editor",
           {
             focused,
@@ -2580,10 +2593,11 @@ var __publicField = (obj, key, value) => {
             [size]: true,
             readonly: readOnly
           }
-        ]),
-        style: {
-          ...propertyMap(style2, cssProperties$b)
-        }
+        ]);
+      }, [focused, hover, disabled, icon, invalid, size, readOnly]);
+      const styleObject = {
+        class: localClass,
+        style: propertyMap(style2, cssProperties$c)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -2673,7 +2687,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("color-view", ColorView);
   registerComponent("ColorView", ColorView);
   registerComponent("colorview", ColorView);
-  const cssProperties$a = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$b = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -2747,7 +2761,7 @@ var __publicField = (obj, key, value) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$a)
+          ...propertyMap(style2, cssProperties$b)
         }
       };
       const inputEvents = {
@@ -2848,7 +2862,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("InputPaint", InputPaint);
   registerComponent("input-paint", InputPaint);
   registerComponent("inputpaint", InputPaint);
-  const cssProperties$9 = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$a = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -2965,7 +2979,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$9)
+          ...propertyMap(style2, cssProperties$a)
         }
       };
       const inputEvents = {
@@ -3128,7 +3142,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("HexColorEditor", HexColorEditor);
   registerComponent("hex-color-editor", HexColorEditor);
   registerComponent("hexcoloreditor", HexColorEditor);
-  const cssProperties$8 = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$9 = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3219,7 +3233,7 @@ var __publicField = (obj, key, value) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$8)
+          ...propertyMap(style2, cssProperties$9)
         }
       };
       const { r, g, b, a } = color.parse(value);
@@ -3369,7 +3383,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("RGBColorEditor", RGBColorEditor);
   registerComponent("rgb-color-editor", RGBColorEditor);
   registerComponent("rgbcoloreditor", RGBColorEditor);
-  const cssProperties$7 = makeCssVariablePrefixMap("--elf--input-editor", {
+  const cssProperties$8 = makeCssVariablePrefixMap("--elf--input-editor", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3380,12 +3394,13 @@ var __publicField = (obj, key, value) => {
     padding: true,
     borderRadius: true,
     placeholderColor: true,
-    emptyColor: true
+    emptyColor: true,
+    paddingRight: true
   });
   class TextAreaEditor extends sapa.UIElement {
     initState() {
       const {
-        style: style2 = {},
+        autoFocus = false,
         focused,
         hover = false,
         value,
@@ -3393,7 +3408,7 @@ var __publicField = (obj, key, value) => {
         disabled
       } = this.props;
       return {
-        style: style2,
+        autoFocus,
         hover: hover || false,
         focused: focused || false,
         placeholder,
@@ -3402,29 +3417,41 @@ var __publicField = (obj, key, value) => {
       };
     }
     template() {
-      const { icon } = this.props;
       const {
-        style: style2 = {},
+        icon,
+        tools,
+        size = "medium",
+        readOnly = false,
+        invalid,
+        rows,
+        style: style2,
+        resizable
+      } = this.props;
+      const {
         focused = false,
         hover = false,
         value,
         placeholder,
         disabled
       } = this.state;
-      const styleObject = {
-        class: sapa.classnames([
-          "elf--input-editor",
-          "multiline",
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames([
+          "elf--input-editor textarea",
           {
             focused,
             hover,
             disabled,
-            icon
+            icon,
+            invalid,
+            resizable,
+            [size]: true,
+            readonly: readOnly
           }
-        ]),
-        style: {
-          ...propertyMap(style2, cssProperties$7)
-        }
+        ]);
+      }, [focused, hover, disabled, icon, invalid, size, readOnly, resizable]);
+      const styleObject = {
+        class: localClass,
+        style: propertyMap(style2, cssProperties$8)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -3439,12 +3466,16 @@ var __publicField = (obj, key, value) => {
       };
       const properties = {
         disabled,
-        placeholder,
-        value
+        rows,
+        readonly: readOnly ? "readonly" : void 0,
+        placeholder: placeholder || "",
+        value: value || ""
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
-      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--input-editor-icon"
+      }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--input-area"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--input-item"
@@ -3452,7 +3483,7 @@ var __publicField = (obj, key, value) => {
         ref: "$input",
         ...properties,
         ...inputEvents
-      }, value))));
+      }, value))), tools ? tools : void 0);
     }
     onMounted() {
       if (this.state.autoFocus) {
@@ -3485,11 +3516,14 @@ var __publicField = (obj, key, value) => {
     set value(v) {
       this.refs.$input.value = v;
     }
+    get selectedValue() {
+      return document.getSelection().toString();
+    }
   }
   registerComponent("TextAreaEditor", TextAreaEditor);
   registerComponent("textareaeditor", TextAreaEditor);
   registerComponent("text-area-editor", TextAreaEditor);
-  const cssProperties$6 = makeCssVariablePrefixMap("--elf--field", {
+  const cssProperties$7 = makeCssVariablePrefixMap("--elf--field", {
     width: true
   });
   function Field({
@@ -3519,7 +3553,7 @@ var __publicField = (obj, key, value) => {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$6)
+        ...propertyMap(style2, cssProperties$7)
       }
     };
     return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -3544,6 +3578,60 @@ var __publicField = (obj, key, value) => {
       class: "invalid"
     }, invalidMessage) : void 0) : void 0);
   }
+  function TextArea({
+    help,
+    label,
+    size,
+    style: style2,
+    disabled,
+    required,
+    requiredText,
+    position,
+    optional,
+    optionalText,
+    validIcon,
+    invalid,
+    invalidIcon,
+    invalidMessage,
+    inputStyle,
+    resizable,
+    ...extraProps
+  }) {
+    const FieldProps = {
+      label,
+      help,
+      size,
+      style: style2,
+      disabled,
+      required,
+      requiredText,
+      position,
+      optional,
+      optionalText,
+      invalid,
+      validIcon,
+      invalidIcon,
+      invalidMessage
+    };
+    const hasIcon = !invalid && validIcon || invalid && invalidIcon;
+    return /* @__PURE__ */ sapa.createElementJsx(Field, {
+      ...FieldProps
+    }, /* @__PURE__ */ sapa.createElementJsx(TextAreaEditor, {
+      ...extraProps,
+      disabled,
+      required,
+      size,
+      invalid,
+      resizable,
+      style: {
+        ...inputStyle,
+        paddingRight: hasIcon ? "2.6em" : void 0
+      }
+    }));
+  }
+  registerComponent("text-area", TextArea);
+  registerComponent("TextArea", TextArea);
+  registerComponent("textarea", TextArea);
   function TextField({
     help,
     label,
@@ -3578,6 +3666,7 @@ var __publicField = (obj, key, value) => {
       invalidIcon,
       invalidMessage
     };
+    const hasIcon = !invalid && validIcon || invalid && invalidIcon;
     return /* @__PURE__ */ sapa.createElementJsx(Field, {
       ...FieldProps
     }, /* @__PURE__ */ sapa.createElementJsx(InputEditor, {
@@ -3586,13 +3675,16 @@ var __publicField = (obj, key, value) => {
       required,
       size,
       invalid,
-      style: inputStyle
+      style: {
+        ...inputStyle,
+        paddingRight: hasIcon ? "2.6em" : void 0
+      }
     }));
   }
   registerComponent("text-field", TextField);
   registerComponent("TextField", TextField);
   registerComponent("textfield", TextField);
-  const cssProperties$5 = makeCssVariablePrefixMap("--elf--virtual-scroll", {
+  const cssProperties$6 = makeCssVariablePrefixMap("--elf--virtual-scroll", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -3616,7 +3708,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: sapa.classnames("elf--virtual-scroll", this.props.class),
         style: {
-          ...propertyMap(style2, cssProperties$5),
+          ...propertyMap(style2, cssProperties$6),
           "--elf--virtual-scroll-item-width": "100%",
           "--elf--virtual-scroll-item-height": `${itemHeight}px`,
           "--elf--virtual-scroll-item-count": totalCount,
@@ -3828,7 +3920,7 @@ var __publicField = (obj, key, value) => {
   }
   registerComponent("layer", Layer);
   registerComponent("Layer", Layer);
-  const cssProperties$4 = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$5 = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3924,7 +4016,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$4)
+          ...propertyMap(style2, cssProperties$5)
         }
       };
       const properties = {
@@ -4250,7 +4342,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("OpacitySlide", OpacitySlide);
   registerComponent("opacity-slide", OpacitySlide);
   registerComponent("opacityslide", OpacitySlide);
-  const cssProperties$3 = {
+  const cssProperties$4 = {
     height: "--elf--color-mixer-height",
     width: "--elf--color-mixer-width"
   };
@@ -4341,7 +4433,7 @@ var __publicField = (obj, key, value) => {
               width,
               height
             },
-            cssProperties$3
+            cssProperties$4
           )
         }
       };
@@ -4616,7 +4708,7 @@ var __publicField = (obj, key, value) => {
       onChange: item.onChange
     }, item.icon);
   }
-  const cssProperties$2 = makeCssVariablePrefixMap("--elf--data-editor", {
+  const cssProperties$3 = makeCssVariablePrefixMap("--elf--data-editor", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -4670,7 +4762,7 @@ var __publicField = (obj, key, value) => {
       const { items } = this.state;
       const styleObject = {
         class: sapa.classnames("elf--data-editor"),
-        style: propertyMap(style2, cssProperties$2)
+        style: propertyMap(style2, cssProperties$3)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -4812,7 +4904,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("event-control-panel", EventControlPanel);
   registerComponent("EventControlPanel", EventControlPanel);
   registerComponent("eventcontrolpanel", EventControlPanel);
-  const cssProperties$1 = makeCssVariablePrefixMap("--elf--app-layout", {
+  const cssProperties$2 = makeCssVariablePrefixMap("--elf--app-layout", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -4826,7 +4918,7 @@ var __publicField = (obj, key, value) => {
       const { style: style2 = {} } = this.props;
       const styleObject = {
         class: "elf--app-layout",
-        style: propertyMap(style2, cssProperties$1)
+        style: propertyMap(style2, cssProperties$2)
       };
       const topLayoutItem = this.getItem("top");
       const bottomLayoutItem = this.getItem("bottom");
@@ -4951,7 +5043,7 @@ var __publicField = (obj, key, value) => {
   registerComponent("AppLayoutItem", AppLayoutItem);
   registerComponent("app-layout-item", AppLayoutItem);
   registerComponent("applayoutitem", AppLayoutItem);
-  const cssProperties = makeCssVariablePrefixMap("--elf--help-text", {
+  const cssProperties$1 = makeCssVariablePrefixMap("--elf--help-text", {
     color: true
   });
   class HelpText extends sapa.UIElement {
@@ -4975,7 +5067,7 @@ var __publicField = (obj, key, value) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties)
+          ...propertyMap(style2, cssProperties$1)
         },
         ...extrProps
       };
@@ -4991,6 +5083,92 @@ var __publicField = (obj, key, value) => {
   registerComponent("help-text", HelpText);
   registerComponent("HelpText", HelpText);
   registerComponent("helptext", HelpText);
+  const cssProperties = makeCssVariablePrefixMap("--elf--breadcrumbs", {});
+  const itemCssProperties = makeCssVariablePrefixMap("--elf--breadcrumbs-item", {
+    color: true
+  });
+  function BreadcrumbsItem({
+    title,
+    selected = false,
+    multiline,
+    style: style2 = {},
+    href = "#",
+    onClick,
+    tooltip
+  }) {
+    if (tooltip) {
+      if (sapa.isString(tooltip)) {
+        tooltip = {
+          message: tooltip,
+          placement: "top",
+          trigger: "hover"
+        };
+      }
+    }
+    return /* @__PURE__ */ sapa.createElementJsx("span", {
+      class: sapa.classnames("elf--breadcrumbs-item", { selected, multiline }),
+      style: propertyMap(style2, itemCssProperties)
+    }, tooltip ? /* @__PURE__ */ sapa.createElementJsx(Tooltip, {
+      ref: "$tooltip",
+      ...tooltip
+    }, /* @__PURE__ */ sapa.createElementJsx("a", {
+      href,
+      onClick,
+      onFocus: () => {
+        this.children.$tooltip.show();
+      },
+      onBlur: () => {
+        this.children.$tooltip.hide();
+      }
+    }, title)) : /* @__PURE__ */ sapa.createElementJsx("a", {
+      href,
+      onClick
+    }, title));
+  }
+  function BreadcrumbsTitleItem({ title, style: style2 = {} }) {
+    return /* @__PURE__ */ sapa.createElementJsx("span", {
+      class: "elf--breadcrumbs-title-item",
+      style: style2
+    }, title);
+  }
+  class Breadcrumbs extends sapa.UIElement {
+    template() {
+      const { style: style2 = {}, items = [], separator = "\u3009" } = this.props;
+      const styleObject = {
+        class: "elf--breadcrumbs",
+        style: propertyMap(style2, cssProperties)
+      };
+      const renderItems = items.filter((it) => !((it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)));
+      const renderMultiItems = items.filter(
+        (it) => (it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)
+      );
+      const length = renderItems.length;
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--breadcrumbs-items"
+      }, renderItems.map((it, index) => {
+        if (typeof it === "string") {
+          it = { title: it };
+        }
+        const item = /* @__PURE__ */ sapa.createElementJsx(BreadcrumbsItem, {
+          ...it
+        });
+        if (index < length - 1 || renderMultiItems.length) {
+          return [item, /* @__PURE__ */ sapa.createElementJsx("span", {
+            class: "separator"
+          }, separator)];
+        }
+        return item;
+      })), renderMultiItems.length ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--breadcrumbs-content"
+      }, renderMultiItems.map((it) => {
+        return /* @__PURE__ */ sapa.createElementJsx(BreadcrumbsTitleItem, {
+          ...it
+        });
+      })) : void 0);
+    }
+  }
   exports2.ADD_BODY_FIRST_MOUSEMOVE = ADD_BODY_FIRST_MOUSEMOVE;
   exports2.ADD_BODY_MOUSEMOVE = ADD_BODY_MOUSEMOVE;
   exports2.ADD_BODY_MOUSEUP = ADD_BODY_MOUSEUP;
@@ -5000,6 +5178,7 @@ var __publicField = (obj, key, value) => {
   exports2.AppLayoutItem = AppLayoutItem;
   exports2.AppResizeBar = AppResizeBar;
   exports2.BODY_MOVE_EVENT = BODY_MOVE_EVENT;
+  exports2.Breadcrumbs = Breadcrumbs;
   exports2.Button = Button;
   exports2.ButtonGroup = ButtonGroup;
   exports2.Checkbox = Checkbox;
@@ -5038,6 +5217,7 @@ var __publicField = (obj, key, value) => {
   exports2.Tab = Tab;
   exports2.TabItem = TabItem;
   exports2.TabStrip = TabStrip;
+  exports2.TextArea = TextArea;
   exports2.TextAreaEditor = TextAreaEditor;
   exports2.TextField = TextField;
   exports2.Toast = Toast;

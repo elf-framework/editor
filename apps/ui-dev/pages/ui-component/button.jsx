@@ -1,6 +1,6 @@
 import { AddCommentFilled } from "@elf-framework/icon";
 import { start } from "@elf-framework/sapa";
-import { Button, Flex, Grid, LinkButton } from "@elf-framework/ui";
+import { Button, Flex, Grid } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { UILayout } from "../../layouts/UILayout";

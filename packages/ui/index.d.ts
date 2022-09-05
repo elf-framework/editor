@@ -604,6 +604,7 @@ declare module "@elf-framework/ui" {
     maxWidth?: number | string;
   }
 
+  type TooltipTriggerType = "hover" | "click" | "focus" | "manual";
   export interface TooltipProps {
     content: ContentType;
     message?: ContentType;
@@ -616,7 +617,7 @@ declare module "@elf-framework/ui" {
       | "top-right"
       | "bottom-left"
       | "bottom-right";
-    trigger: "hover" | "click";
+    trigger: TooltipTriggerType[] | TooltipTriggerType;
     icon: ContentType;
     show: boolean;
     animated?: boolean;
@@ -904,7 +905,13 @@ declare module "@elf-framework/ui" {
     props: HSLColorEditorProps & InputPaintProps & DomEventType;
   }
 
-  export class TextAreaEditor extends InputEditor {}
+  interface TextAreaEditorProps {
+    rows?: number;
+    resizable?: boolean;
+  }
+  export class TextAreaEditor extends InputEditor {
+    props: TextAreaEditorProps & InputEditorProps & DomEventType;
+  }
 
   export interface RadioProps {
     checked: boolean;
@@ -1228,5 +1235,30 @@ declare module "@elf-framework/ui" {
       InputEditorProps &
       CommonStyle &
       DomEventType;
+  }
+
+  export class TextArea extends TextField {
+    props: TextFieldProps &
+      FieldProps &
+      InputEditorProps &
+      TextAreaEditorProps &
+      CommonStyle &
+      DomEventType;
+  }
+
+  interface BreadcrumbsItem {
+    title: ContentType;
+    selected?: boolean;
+    multiline?: boolean;
+    style?: CommonStyle;
+    tooltip?: TooltipProps;
+  }
+
+  interface BreadcrumbsProps {
+    items: (string | BreadcrumbsItem)[];
+    separator?: ContentType;
+  }
+  export class Breadcrumbs extends UIElement {
+    props: BreadcrumbsProps & CommonStyle & DomEventType;
   }
 }

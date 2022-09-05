@@ -4,6 +4,7 @@ import {
   FOCUSOUT,
   FOCUSIN,
   isFunction,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -23,12 +24,12 @@ const cssProperties = makeCssVariablePrefixMap("--elf--input-editor", {
   borderRadius: true,
   placeholderColor: true,
   emptyColor: true,
+  paddingRight: true,
 });
 
 export class InputEditor extends UIElement {
   initState() {
     const {
-      style = {},
       type = "text",
       autoFocus = false,
       focused,
@@ -39,7 +40,6 @@ export class InputEditor extends UIElement {
     } = this.props;
 
     return {
-      style,
       type,
       autoFocus,
       hover: hover || false,
@@ -57,9 +57,9 @@ export class InputEditor extends UIElement {
       size = "medium",
       readOnly = false,
       invalid,
+      style,
     } = this.props;
     const {
-      style = {},
       type = "text",
       focused = false,
       hover = false,
@@ -68,8 +68,8 @@ export class InputEditor extends UIElement {
       disabled,
     } = this.state;
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-editor",
         {
           focused,
@@ -80,10 +80,12 @@ export class InputEditor extends UIElement {
           [size]: true,
           readonly: readOnly,
         },
-      ]),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      ]);
+    }, [focused, hover, disabled, icon, invalid, size, readOnly]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     const inputEvents = {

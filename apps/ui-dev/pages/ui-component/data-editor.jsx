@@ -27,7 +27,7 @@ function App() {
           data={() => ({
             title: "Data Editor",
           })}
-          items={(data, root) => {
+          items={() => {
             return [
               {
                 type: "button",

@@ -3,7 +3,7 @@
     --elf--tooltip-hover-color: var(--color-neutral-10);
     --elf--tooltip-color: var(--color-black);
     --elf--tooltip-border-color: var(--color-gray-5);
-    --elf--tooltip-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--tooltip-box-shadow: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.15));
     --elf--tooltip-tools-border-color: rgba(255, 255, 255, 0.19);
     --elf--tooltip-border-radius: 4px;    
     --elf--tooltip-position: fixed;
@@ -81,15 +81,15 @@
         border-radius: var(--elf--tooltip-border-radius);
         background-color: var(--elf--tooltip-background-color);
         color: var(--elf--tooltip-color);
-        box-shadow: var(--elf--tooltip-box-shadow);
         padding: var(--elf--tooltip-content-padding);
         font-size: 13px;
         box-sizing: border-box;
-        filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.15));
+        filter: var(--elf--tooltip-box-shadow);
         width: auto;
         min-width: var(--elf--tooltip-max-width);
         max-width: var(--elf--tooltip-max-width);        
         white-space: nowrap;
+        font-weight: normal;
 
         .elf--icon {
             width: 20px;

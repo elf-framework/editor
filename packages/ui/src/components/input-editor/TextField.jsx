@@ -38,6 +38,8 @@ export function TextField({
     invalidMessage,
   };
 
+  const hasIcon = (!invalid && validIcon) || (invalid && invalidIcon);
+
   return (
     <Field {...FieldProps}>
       <InputEditor
@@ -46,7 +48,10 @@ export function TextField({
         required={required}
         size={size}
         invalid={invalid}
-        style={inputStyle}
+        style={{
+          ...inputStyle,
+          paddingRight: hasIcon ? "2.6em" : undefined,
+        }}
       />
     </Field>
   );

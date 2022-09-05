@@ -18,7 +18,8 @@
     "editor:graph": "turbo run build --graph=my-graph.html",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "npm run build && changeset publish",
+    "prerelease": "npm run build",
+    "release": "changeset publish",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

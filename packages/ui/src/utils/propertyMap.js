@@ -13,7 +13,7 @@ export function convertNumberStyleValue(key, value) {
   return value;
 }
 
-export function propertyMap(styles, mapper = {}) {
+export function propertyMap(styles = {}, mapper = {}) {
   const styleObj = {};
   Object.keys(styles).forEach((key) => {
     styleObj[mapper[key] || key] = convertNumberStyleValue(key, styles[key]);

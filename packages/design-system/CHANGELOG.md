@@ -1,5 +1,20 @@
 # @elf-framework/design-system
 
+## 2.1.29
+
+### Patch Changes
+
+- add breadcrumbs component
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.1.29
+
+## 2.1.28
+
+### Patch Changes
+
+- update README.md
+
 ## 2.1.27
 
 ### Patch Changes

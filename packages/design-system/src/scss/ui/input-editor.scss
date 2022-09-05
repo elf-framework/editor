@@ -12,14 +12,13 @@
     --elf--input-editor-placeholder-color: rgba(0, 0, 0, 0.3);
     --elf--input-editor-disabled-color: var(--color-gray-4);
     --elf--input-editor-padding: 6px 3px 6px 7px;
+    --elf--input-editor-padding-right: 3px;
 
     min-width: var(--elf--input-editor-min-width);
-    // max-width: calc(100% - var(--elf--input-editor-min-width));
-    // max-width: var(--elf--input-editor-max-width);
+
     border: 1px solid var(--elf--input-editor-border-color);
     outline: 1px solid var(--elf--input-editor-outline-color);
     border-radius: var(--elf--input-editor-border-radius);
-    height: var(--elf--input-editor-height, 32px);
     box-sizing: border-box;
     display: flex;
     background-color: var(--elf--input-editor-background-color);
@@ -65,6 +64,17 @@
         // --elf--input-editor-color: var(--elf--input-editor-disabled-color);        
     }
 
+    &.textarea{
+        textarea {
+            resize: none;
+        }        
+        &.resizable {
+            textarea {
+                resize: both;
+            }
+        }
+    }
+
     > .elf--input-editor-icon {
         flex: none;
         width: 32px;
@@ -97,7 +107,6 @@
     &.small {
         --elf--input-editor-font-size: 11px;
         --elf--input-editor-padding: 5px 10px;
-        height: 30px;
     }
 
     &.medium {
@@ -107,13 +116,11 @@
     &.large {
         --elf--input-editor-font-size: 14px;
         --elf--input-editor-padding: 5px 12px;        
-        height: 40px;
     }
 
     &.extra-large {
         --elf--input-editor-font-size: 16px;
-        --elf--input-editor-padding: 5px 20px;        
-        height: 44px;        
+        --elf--input-editor-padding: 5px 15px;        
     }
 
 
@@ -138,6 +145,7 @@
                 align-items: center;
                 letter-spacing: 0.005em;
                 padding: var(--elf--input-editor-padding);
+                padding-right: var(--elf--input-editor-padding-right);
                 background-color: transparent;
                 color: var(--elf--input-editor-color);
 

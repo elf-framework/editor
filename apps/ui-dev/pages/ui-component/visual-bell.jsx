@@ -21,17 +21,9 @@ start(function () {
         <Toast direction="left" content="Hello World" tools={tools} />
         <Toast direction="center" content="Hello World" tools={tools} />
         <Toast direction="right" content="Hello World" tools={tools} />
-        <Toast
-          direction="bottom-left"
-          content="Hello World"
-          tools={tools}
-        />
+        <Toast direction="bottom-left" content="Hello World" tools={tools} />
         <Toast direction="bottom" content="Hello World" tools={tools} />
-        <Toast
-          direction="bottom-right"
-          content="Hello World"
-          tools={tools}
-        />
+        <Toast direction="bottom-right" content="Hello World" tools={tools} />
       </div>
     </UILayout>
   );

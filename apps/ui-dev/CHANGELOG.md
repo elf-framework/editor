@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.21
+
+### Patch Changes
+
+- add breadcrumbs documentation
+
 ## 1.0.20
 
 ### Patch Changes

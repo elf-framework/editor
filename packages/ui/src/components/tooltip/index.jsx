@@ -7,6 +7,9 @@ import {
   POINTERLEAVE,
   Dom,
   useMemo,
+  FOCUSIN,
+  FOCUS,
+  isString,
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
@@ -41,8 +44,10 @@ export const TooltipPlacement = {
 
 export class Tooltip extends UIElement {
   initState() {
+    const trigger = this.props.trigger || "hover";
+
     return {
-      trigger: this.props.trigger || "hover",
+      trigger: isString(trigger) ? [trigger] : trigger,
       delay: 1000,
       show: this.props.show || false,
     };
@@ -90,6 +95,14 @@ export class Tooltip extends UIElement {
     );
   }
 
+  show() {
+    this.open();
+  }
+
+  hide() {
+    this.close();
+  }
+
   open() {
     this.setState({
       show: true,
@@ -120,11 +133,15 @@ export class Tooltip extends UIElement {
   }
 
   checkTriggerClick() {
-    return this.state.trigger === "click";
+    return this.state.trigger.includes("click");
   }
 
   checkTriggerOver() {
-    return this.state.trigger === "hover";
+    return this.state.trigger.includes("hover");
+  }
+
+  checkTriggerFocus() {
+    return this.state.trigger.includes("focus");
   }
 
   [POINTERENTER("$el") + IF("checkTriggerOver")]() {
@@ -147,5 +164,10 @@ export class Tooltip extends UIElement {
 
   [CLICK("$el") + IF("checkTriggerClick")]() {
     this.toggle();
+  }
+
+  [FOCUS("$el") + IF("checkTriggerFocus")](e) {
+    console.log(this.$el, e);
+    this.open();
   }
 }
