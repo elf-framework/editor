@@ -460,19 +460,11 @@ declare module "@elf-framework/sapa" {
     | VNodeTextJSONType
     | VNodeFragmentJSONType
     | VNodeComponentJSONType;
-  export function jsonToVNode(json: JSONType): VNode;
 
-  type InitValueType =
-    | string
-    | number
-    | boolean
-    | undefined
-    | null
-    | unknown[]
-    | object
-    | unknown;
-
-  type UseStateValueType = InitValueType | (() => InitValueType);
+  interface ConvertOptions {
+    retrieveComponent: (component: ElementType, rest: JSONType) => ElementType;
+  }
+  export function jsonToVNode(json: JSONType, options?: ConvertOptions): VNode;
 
   /** Hooks */
   export function useState<T>(

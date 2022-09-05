@@ -1,3 +1,5 @@
+import { registerComponent } from "../../utils/component";
+
 import { Flex } from ".";
 
 export class VBox extends Flex {
@@ -11,3 +13,6 @@ export class VBox extends Flex {
     );
   }
 }
+
+registerComponent("vbox", VBox);
+registerComponent("VBox", VBox);

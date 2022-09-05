@@ -14,8 +14,10 @@ const cssProperties = {
   borderRadius: "--elf--icon-button-border-radius",
 };
 
+// @depreacted
 export class IconButton extends UIElement {
   template() {
+    console.warn("deprecated: use Button instead");
     const {
       type,
       icon,

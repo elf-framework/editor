@@ -8,10 +8,11 @@ import {
   Dom,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--popover", {
+const cssProperties = makeCssVariablePrefixMap("--elf--popover", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -151,3 +152,6 @@ export class Popover extends UIElement {
     this.toggle();
   }
 }
+
+registerComponent("popover", Popover);
+registerComponent("Popover", Popover);

@@ -1,5 +1,6 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 
 import { Checkbox } from ".";
@@ -97,3 +98,6 @@ export class CheckboxGroup extends UIElement {
     this.setState({ values });
   }
 }
+
+registerComponent("checkbox-group", CheckboxGroup);
+registerComponent("CheckboxGroup", CheckboxGroup);

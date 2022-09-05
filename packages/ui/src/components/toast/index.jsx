@@ -5,12 +5,14 @@ import {
   useState,
   useCallback,
   potal,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--toast", {
+const cssProperties = makeCssVariablePrefixMap("--elf--toast", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -44,18 +46,20 @@ export class Toast extends UIElement {
       [setLocalDelay]
     );
 
-    const styleObject = {
-      class: classnames("elf--toast", {
+    const localClass = useMemo(() => {
+      return classnames("elf--toast", {
         hide,
         [direction]: true,
         [variant]: true,
-      }),
+      });
+    }, [hide, direction, variant]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
-        ...{
-          transition: `opacity ${localDelay}ms ease-in-out`,
-          opacity: hide ? 0 : 1,
-        },
+        transition: `opacity ${localDelay}ms ease-in-out`,
+        opacity: hide ? 0 : 1,
       },
     };
 
@@ -102,7 +106,7 @@ export class Toast extends UIElement {
   }
 }
 
-export function bell({
+export function toast({
   content = "",
   delay = 0,
   direction = "bottom",
@@ -126,3 +130,6 @@ export function bell({
     options
   );
 }
+
+registerComponent("toast", Toast);
+registerComponent("Toast", Toast);

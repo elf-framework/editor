@@ -1,5 +1,6 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 
 const cssProperties = {
@@ -72,3 +73,6 @@ export class Checkbox extends UIElement {
     return this.props.value;
   }
 }
+
+registerComponent("Checkbox", Checkbox);
+registerComponent("checkbox", Checkbox);

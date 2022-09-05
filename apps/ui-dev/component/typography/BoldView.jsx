@@ -26,7 +26,6 @@ export function BoldView() {
               type="button"
               style={{
                 backgroundColor: "var(--color-action-primary)",
-                color: "white",
                 border: 0,
                 borderRadius: 25,
                 padding: "10px 20px",

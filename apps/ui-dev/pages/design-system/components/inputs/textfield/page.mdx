@@ -1,0 +1,71 @@
+---
+title: Text Field
+layout: DesignLayout
+filename: pages/design-system/inputs/textfield/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/inputs/textfield/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/inputs/textfield/OptionsView.jsx"; 
+import { LabelPositionView } from "../../../../../component/inputs/textfield/LabelPositionView.jsx"; 
+import { ValueView } from "../../../../../component/inputs/textfield/ValueView.jsx"; 
+import { WidthView } from "../../../../../component/inputs/textfield/WidthView.jsx"; 
+import { SizeView } from "../../../../../component/inputs/textfield/SizeView.jsx"; 
+import { RequiredOptionalView } from "../../../../../component/inputs/textfield/RequiredOptionalView.jsx"; 
+import { DisabledView } from "../../../../../component/inputs/textfield/DisabledView.jsx"; 
+import { ReadOnlyView } from "../../../../../component/inputs/textfield/ReadOnlyView.jsx"; 
+import { HelpTextView } from "../../../../../component/inputs/textfield/HelpTextView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Help text provides either an informative description or an error message that gives more context about what a user needs to input. It’s commonly used in forms.
+
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/textfield/" />
+</div>
+
+## Options 
+
+### Label
+
+<OptionsView />
+
+### Label position
+
+<LabelPositionView />
+
+### Value
+
+<ValueView />
+
+### Width
+
+<WidthView />
+
+
+### Size
+
+<SizeView />
+
+### Required or Optional 
+
+<RequiredOptionalView />
+
+
+
+### Disabled
+
+<DisabledView />
+
+### Read only
+
+<ReadOnlyView />
+
+### Help text(description and error message)
+
+<HelpTextView />

@@ -1,5 +1,7 @@
 .elf--input-editor {
     --elf--input-editor-min-width: 50px;
+    --elf--input-editor-max-width: 100%;
+    --elf--input-editor-width: 100%;
     --elf--input-editor-border-color: var(--color-gray-2);
     --elf--input-editor-outline-color: transparent;
     --elf--input-editor-border-radius: 1px;
@@ -8,11 +10,12 @@
     --elf--input-editor-font-size: 13px;
     --elf--input-editor-empty-color: rgba(0, 0, 0, 0.3);
     --elf--input-editor-placeholder-color: rgba(0, 0, 0, 0.3);
-    --elf--input-editor-disabled-color: rgba(0, 0, 0, 0.3);
+    --elf--input-editor-disabled-color: var(--color-gray-4);
+    --elf--input-editor-padding: 6px 3px 6px 7px;
 
     min-width: var(--elf--input-editor-min-width);
     // max-width: calc(100% - var(--elf--input-editor-min-width));
-    max-width: 100%;
+    // max-width: var(--elf--input-editor-max-width);
     border: 1px solid var(--elf--input-editor-border-color);
     outline: 1px solid var(--elf--input-editor-outline-color);
     border-radius: var(--elf--input-editor-border-radius);
@@ -21,6 +24,7 @@
     display: flex;
     background-color: var(--elf--input-editor-background-color);
     border-radius: 2px;
+    width: var(--elf--input-editor-width);
 
     &.multiline {
         height: var(--elf--input-editor-height, 44px);
@@ -35,19 +39,30 @@
         --elf--input-editor-border-color: var(--color-gray-3);
     }
 
-    &:focus,
-    &:focus-within,
-    &.focused {
+    &:focus:not(.readonly):not(.disabled):not(.invalid),
+    &:focus-within:not(.readonly):not(.disabled):not(.invalid),
+    &.focused:not(.readonly):not(.disabled):not(.invalid) {
         --elf--input-editor-border-color: var(--color-primary);
         --elf--input-editor-outline-color: var(--color-primary);
     }
 
     &.disabled {
-        --elf--input-editor-border-color: var(--elf--disabled-color);
-        // --elf--input-editor-outline-color: var(--elf--disabled-color);
-        --elf--input-editor-placeholder-color: var(--elf--disabled-color);
+        --elf--input-editor-border-color: var(--color-gray-2);
+        --elf--input-editor-placeholder-color: var(--color-gray-4);
         cursor: not-allowed;
-        --elf--input-editor-background-color: var(--elf--disabled-color);
+        --elf--input-editor-background-color: var(--color-gray-1);
+        --elf--input-editor-color: var(--elf--input-editor-disabled-color);        
+    }
+
+    &.invalid:not(.disabled) {
+        --elf--input-editor-border-color: var(--color-red-5);
+        border-width: 2px;
+    }
+
+    &.readonly {
+        --elf--input-editor-background-color: transparent !important;
+        --elf--input-editor-border-color: transparent !important;
+        // --elf--input-editor-color: var(--elf--input-editor-disabled-color);        
     }
 
     > .elf--input-editor-icon {
@@ -79,6 +94,29 @@
         }
     }
 
+    &.small {
+        --elf--input-editor-font-size: 11px;
+        --elf--input-editor-padding: 5px 10px;
+        height: 30px;
+    }
+
+    &.medium {
+        --elf--input-editor-font-size: 12px;
+    }
+
+    &.large {
+        --elf--input-editor-font-size: 14px;
+        --elf--input-editor-padding: 5px 12px;        
+        height: 40px;
+    }
+
+    &.extra-large {
+        --elf--input-editor-font-size: 16px;
+        --elf--input-editor-padding: 5px 20px;        
+        height: 44px;        
+    }
+
+
     > .elf--input-area {
         display: flex;
         height: 100%;
@@ -89,7 +127,7 @@
             height: 100%;            
 
             > input, textarea {
-                width: 100%;
+                width: var(--elf--input-editor-width);
                 height: 100%;
                 border: none;
                 box-sizing: border-box;
@@ -99,7 +137,7 @@
                 display: flex;
                 align-items: center;
                 letter-spacing: 0.005em;
-                padding: 6px 3px 6px 7px;
+                padding: var(--elf--input-editor-padding);
                 background-color: transparent;
                 color: var(--elf--input-editor-color);
 
@@ -110,7 +148,7 @@
                 &[disabled] {
                     pointer-events: none;
                     user-select: none;
-                    --elf--input-editor-color: var(--elf--input-editor-disabled-color);
+
                 }
             }
         }

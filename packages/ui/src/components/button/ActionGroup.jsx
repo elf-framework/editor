@@ -6,13 +6,17 @@ import {
   useState,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { convertPropertyToStyleKey, makeStyleMap } from "../../utils/styleKeys";
+import {
+  splitStyleKeyAndNoneStyleKey,
+  makeCssVariablePrefixMap,
+} from "../../utils/styleKeys";
 import { Tooltip, TooltipPlacement } from "../tooltip";
 
 import { Button } from ".";
 
-const cssProperties = makeStyleMap("--elf--action-group", {
+const cssProperties = makeCssVariablePrefixMap("--elf--action-group", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -33,14 +37,13 @@ export class ActionGroup extends UIElement {
       boundary = 50,
       style = {},
       content,
-      onMoreClick,
       ...extraStyle
     } = this.props;
 
     const [visibleTargetList, setVisibilityTargetList] = useState([]);
     const [rootRect, setRootRect] = useState(null);
 
-    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
 
     useEffect(() => {
       if (!collapsed) return;
@@ -137,3 +140,6 @@ export class ActionGroup extends UIElement {
     );
   }
 }
+
+registerComponent("action-group", ActionGroup);
+registerComponent("ActionGroup", ActionGroup);

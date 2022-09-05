@@ -1,5 +1,6 @@
 import { UIElement } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { ColorView } from "../color/ColorView";
 import { OptionMenu } from "../option-menu/index";
 
@@ -59,3 +60,7 @@ export class ColorGrid extends UIElement {
     this.props.onSelect && this.props.onSelect(color);
   }
 }
+
+registerComponent("ColorGrid", ColorGrid);
+registerComponent("color-grid", ColorGrid);
+registerComponent("colorgrid", ColorGrid);

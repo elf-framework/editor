@@ -6,12 +6,13 @@ import {
   IF,
   POINTERLEAVE,
   Dom,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--tooltip", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -60,15 +61,17 @@ export class Tooltip extends UIElement {
     } = this.props;
     const { show } = this.state;
 
-    const styleObject = {
-      class: classnames("elf--tooltip", {
+    const localClass = useMemo(() => {
+      return classnames("elf--tooltip", {
         [placement]: true,
         animated,
         [variant]: true,
-      }),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      });
+    }, [placement, animated, variant]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (

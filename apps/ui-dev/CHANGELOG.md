@@ -1,5 +1,13 @@
 # ui-dev
 
+## 1.0.20
+
+### Patch Changes
+
+- add textfield documentation
+  support scroll spy in markdown page
+  update version npm link
+
 ## 1.0.19
 
 ### Patch Changes

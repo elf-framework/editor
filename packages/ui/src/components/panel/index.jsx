@@ -1,17 +1,19 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  backgroundColor: "--elf--panel-background",
-  color: "--elf--panel-color",
-  height: "--elf--panel-height",
-  hoverColor: "--elf--panel-hover-color",
-  borderColor: "--elf--panel-border-color",
-  boxShadow: "--elf--panel-box-shadow",
-  padding: "--elf--panel-padding",
-  borderRadius: "--elf--panel-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--panel", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class Panel extends UIElement {
   template() {
@@ -25,12 +27,14 @@ export class Panel extends UIElement {
       footer,
     } = this.props;
 
+    const localClass = useMemo(() => {
+      return classnames("elf--panel", { [mode]: true });
+    }, [mode]);
+
     const styleObject = {
-      class: classnames("elf--panel", { [mode]: true }),
+      class: localClass,
       "data-theme": theme,
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      style: propertyMap(style, cssProperties),
     };
 
     return (
@@ -49,3 +53,6 @@ export class Panel extends UIElement {
     );
   }
 }
+
+registerComponent("panel", Panel);
+registerComponent("Panel", Panel);

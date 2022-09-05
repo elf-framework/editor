@@ -1,5 +1,6 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 
 export class Flex extends UIElement {
@@ -26,3 +27,6 @@ export class Flex extends UIElement {
     return <div {...styleObject}>{content}</div>;
   }
 }
+
+registerComponent("flex", Flex);
+registerComponent("Flex", Flex);

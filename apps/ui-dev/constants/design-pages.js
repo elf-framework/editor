@@ -5,14 +5,26 @@ const FOUNDATION_URL = BASE_URL + "foundation/";
 const COMPONENTS_URL = BASE_URL + "components/";
 
 export default [
-  { link: GETTING_STARTED_URL, title: "Getting Started" },
+  { link: GETTING_STARTED_URL, title: "Getting Started", category: "_" },
   "Foundation",
-  { link: FOUNDATION_URL + "color/", title: "Color" },
-  { link: FOUNDATION_URL + "states/", title: "States" },
-  { link: FOUNDATION_URL + "icongraphy/", title: "Icongraphy" },
-  { link: FOUNDATION_URL + "typography/", title: "Typography" },
-  { link: FOUNDATION_URL + "spacing/", title: "Spacing" },
-  { link: FOUNDATION_URL + "layout/", title: "Layout" },
+  { link: FOUNDATION_URL + "color/", title: "Color", category: "Foundation" },
+  { link: FOUNDATION_URL + "states/", title: "States", category: "Foundation" },
+  {
+    link: FOUNDATION_URL + "icongraphy/",
+    title: "Icongraphy",
+    category: "Foundation",
+  },
+  {
+    link: FOUNDATION_URL + "typography/",
+    title: "Typography",
+    category: "Foundation",
+  },
+  {
+    link: FOUNDATION_URL + "spacing/",
+    title: "Spacing",
+    category: "Foundation",
+  },
+  { link: FOUNDATION_URL + "layout/", title: "Layout", category: "Foundation" },
   "Components",
   {
     title: "Actions",
@@ -30,6 +42,7 @@ export default [
         title: "Menu",
       },
     ],
+    category: "Components",
   },
   {
     link: COMPONENTS_URL + "containers/",
@@ -44,6 +57,7 @@ export default [
         title: "Popover",
       },
     ],
+    category: "Components",
   },
   {
     link: COMPONENTS_URL + "feedback/",
@@ -74,6 +88,7 @@ export default [
         title: "Tooltip",
       },
     ],
+    category: "Components",
   },
   {
     link: COMPONENTS_URL + "inputs/",
@@ -118,9 +133,10 @@ export default [
       },
       {
         link: COMPONENTS_URL + "inputs/textfield/",
-        title: "Text field * ",
+        title: "Text field - ",
       },
     ],
+    category: "Components",
   },
   {
     link: COMPONENTS_URL + "navigations/",
@@ -151,6 +167,7 @@ export default [
         title: "Tree view * ",
       },
     ],
+    category: "Components",
   },
   {
     link: COMPONENTS_URL + "status/",
@@ -166,6 +183,7 @@ export default [
         title: "Status light * ",
       },
     ],
+    category: "Components",
   },
   {
     link: COMPONENTS_URL + "pattern/",
@@ -181,5 +199,6 @@ export default [
         title: "Table *",
       },
     ],
+    category: "Components",
   },
 ];

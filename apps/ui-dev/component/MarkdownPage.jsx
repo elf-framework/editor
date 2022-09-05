@@ -1,4 +1,9 @@
-import { classnames, isString } from "@elf-framework/sapa";
+import {
+  classnames,
+  isString,
+  useEffect,
+  useStoreSet,
+} from "@elf-framework/sapa";
 import { Divider, Flex } from "@elf-framework/ui";
 
 import { traverseTree } from "../utils/traverseTree";
@@ -66,7 +71,7 @@ function PrevNextLink({ prev, next }) {
           class="prev"
           link={prev.item.link}
           title={prev.item.title}
-          category={prev.parent?.title}
+          category={prev.parent?.title || prev.item.category}
         />
       ) : (
         <div />
@@ -76,7 +81,7 @@ function PrevNextLink({ prev, next }) {
           class="next"
           link={next.item.link}
           title={next.item.title}
-          category={next.parent?.title}
+          category={next.parent?.title || next.item.category}
         />
       ) : (
         <div />
@@ -101,8 +106,8 @@ function LinkedPage({ menu }) {
   return <PrevNextLink prev={prev} next={next} />;
 }
 
-export function MarkdownPage({ page, filename, menu }) {
-  const template = page();
+export function MarkdownPage({ page: Page, filename, menu }) {
+  const template = Page();
 
   const items = [];
   template.children.forEach((child, index) => {
@@ -118,12 +123,38 @@ export function MarkdownPage({ page, filename, menu }) {
     }
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries)
+          if (entry.isIntersecting) {
+            useStoreSet("scrollTarget", decodeURIComponent(entry.target.id));
+          }
+      },
+      {
+        rootMargin: "-50% 0px",
+      }
+    );
+
+    this.refs.$inner
+      .querySelectorAll("h1, h2, h3, h4, h5, h6")
+      .forEach((it) => {
+        observer.observe(it);
+      });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div class="markdown-page">
       <div class="markdown-page-content">
         <div class="content-container">
           <FileEditorLink filename={filename} />
-          {template}
+          <div class="content-inner" ref="$inner">
+            <Page />
+          </div>
           <Divider margin={100} />
           <LinkedPage menu={menu} />
 

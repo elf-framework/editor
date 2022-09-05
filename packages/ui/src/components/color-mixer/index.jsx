@@ -16,6 +16,7 @@ import {
   classnames,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 import { ColorInput } from "./ColorInput";
 import { EyeDropper } from "./EyeDropper";
@@ -306,3 +307,7 @@ export class ColorMixer extends UIElement {
     this.changeColor();
   }
 }
+
+registerComponent("ColorMixer", ColorMixer);
+registerComponent("color-mixer", ColorMixer);
+registerComponent("colormixer", ColorMixer);

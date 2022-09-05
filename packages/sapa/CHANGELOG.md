@@ -1,5 +1,12 @@
 # @elf-framework/sapa
 
+## 2.1.25
+
+### Patch Changes
+
+- remove registerElement function
+  remove style attribute if style value is empty object in vnode
+
 ## 2.1.23
 
 ### Patch Changes

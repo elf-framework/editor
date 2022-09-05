@@ -6,9 +6,11 @@ import {
   Dom,
   POINTEROVER,
   POINTERLEAVE,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { ArrowIcon } from "../../../icon/arrow";
+import { registerComponent } from "../../../utils/component";
 import { Flex } from "../../flex";
 import { Menu } from "../../menu/index";
 import { ToolsItem } from "./ToolsItem";
@@ -59,19 +61,19 @@ export class ToolsMenuItem extends ToolsItem {
         : selected
       : undefined;
 
+    const localClass = useMemo(() => {
+      return classnames(
+        "elf--tools-item",
+        {
+          selected: isSelected,
+          "has-items": hasItems,
+        },
+        className
+      );
+    }, [isSelected, hasItems, className]);
+
     return (
-      <div
-        class={classnames(
-          "elf--tools-item",
-          {
-            selected: isSelected,
-            "has-items": hasItems,
-          },
-          className
-        )}
-        disabled={disabled}
-        style={style}
-      >
+      <div class={localClass} disabled={disabled} style={style}>
         <button type="button">
           <Flex style={{ columnGap: 4 }}>
             {[
@@ -212,3 +214,7 @@ export class ToolsMenuItem extends ToolsItem {
     }
   }
 }
+
+registerComponent("ToolsMenuItem", ToolsMenuItem);
+registerComponent("tools-menu-item", ToolsMenuItem);
+registerComponent("toolsmenuitem", ToolsMenuItem);

@@ -88,6 +88,14 @@ function setAttribute(el, name, value) {
   }
 }
 
+function removeAttribute(el, name) {
+  if (ENABLE_PROPERTY[name]) {
+    el[name] = false;
+  } else {
+    el.removeAttribute(name);
+  }
+}
+
 function setEventAttribute(el, name, value) {
   el[name.toLowerCase()] = value;
 
@@ -301,21 +309,7 @@ export class VNode {
 
       this.tagProps = newProps;
     } else {
-      // console.log("aaaa");
-      // // 컴포넌트 방식에서는
-      // // object 태그를 만들 때 사용할 props 를 미리 만들는데
-      // // 파싱 용량을 줄일기 위해서 variable 로 감싼 리스트를 설정
-      // const targetVariable = Object.keys(newProps).length
-      //   ? variable(newProps)
-      //   : undefined;
-      // const newProps2 = {
-      //   // refClass: this.Component.name,
-      //   ref: newProps.ref ? newProps.ref : undefined,
-      // };
-      // if (targetVariable) {
-      //   newProps2[targetVariable] = "";
-      // }
-      // this.tagProps = newProps2;
+      // NOOP
     }
 
     if (this.props.enableHtml) {
@@ -500,10 +494,15 @@ export class VNode {
           if (isString(value)) {
             el.style.cssText = value;
           } else {
-            const styleValues = css(value);
-            Object.entries(styleValues).forEach(([localKey, value]) => {
-              setStyle(el, localKey, value);
-            });
+            if (Object.key(value).length) {
+              const styleValues = css(value);
+              Object.entries(styleValues).forEach(([localKey, value]) => {
+                setStyle(el, localKey, value);
+              });
+            } else {
+              // style 속성이 없는 경우 style 요소 삭제
+              removeAttribute(el, "style");
+            }
           }
         } else {
           if (key) {

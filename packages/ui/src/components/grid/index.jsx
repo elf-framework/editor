@@ -1,7 +1,8 @@
 import { UIElement, isNumber, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { convertPropertyToStyleKey } from "../../utils/styleKeys";
+import { splitStyleKeyAndNoneStyleKey } from "../../utils/styleKeys";
 
 function makeTemplates(arr) {
   if (typeof arr === "number") {
@@ -32,7 +33,7 @@ export class Grid extends UIElement {
     } = this.props;
 
     const { style: styleProperties, noneStyle } =
-      convertPropertyToStyleKey(extraStyle);
+      splitStyleKeyAndNoneStyleKey(extraStyle);
 
     const styleObject = {
       class: classnames("elf--grid", className),
@@ -51,3 +52,6 @@ export class Grid extends UIElement {
     return <div {...styleObject}>{content}</div>;
   }
 }
+
+registerComponent("grid", Grid);
+registerComponent("Grid", Grid);

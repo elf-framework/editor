@@ -6,10 +6,11 @@ import {
   isFunction,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--input-editor", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-editor", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -141,3 +142,7 @@ export class TextAreaEditor extends UIElement {
     this.refs.$input.value = v;
   }
 }
+
+registerComponent("TextAreaEditor", TextAreaEditor);
+registerComponent("textareaeditor", TextAreaEditor);
+registerComponent("text-area-editor", TextAreaEditor);

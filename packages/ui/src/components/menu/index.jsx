@@ -11,7 +11,9 @@ import {
   PARAMS,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
 const MenuItemType = {
   DIVIDER: "divider",
@@ -194,26 +196,26 @@ class MenuItem extends UIElement {
   }
 }
 
-const cssProperties = {
-  left: "--elf--menu-left",
-  top: "--elf--menu-top",
-  backgroundColor: "--elf--menu-background",
-  color: "--elf--menu-color",
-  fontSize: "--elf--menu-font-size",
-  fontWeight: "--elf--menu-font-weight",
-  height: "--elf--menu-height",
-  padding: "--elf--menu-padding",
-  borderRadius: "--elf--menu-border-radius",
-  borderColor: "--elf--menu-border-color",
-  boxShadow: "--elf--menu-box-shadow",
-  width: "--elf--menu-width",
-  maxWidth: "--elf--menu-max-width",
-  sectionTitleColor: "--elf--menu-section-title-color",
-  sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
-  dividerColor: "--elf--menu-divider-color",
-  directionLeft: "--elf--menu-direction-left",
-  itemPadding: "--elf--menu-item-padding",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--menu", {
+  left: true,
+  top: true,
+  backgroundColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  borderColor: true,
+  boxShadow: true,
+  width: true,
+  maxWidth: true,
+  sectionTitleColor: true,
+  sectionTitleBackgroundColor: true,
+  dividerColor: true,
+  directionLeft: true,
+  itemPadding: true,
+});
 
 export class Menu extends UIElement {
   initState() {
@@ -253,9 +255,7 @@ export class Menu extends UIElement {
         [type]: true,
         compact,
       }),
-      style: {
-        ...propertyMap(itemStyle, cssProperties),
-      },
+      style: propertyMap(itemStyle, cssProperties),
     };
 
     return (
@@ -289,3 +289,17 @@ export class Menu extends UIElement {
     }
   }
 }
+
+registerComponent("Menu", Menu);
+registerComponent("MenuItem", MenuItem);
+registerComponent("SectionMenuItem", SectionMenuItem);
+registerComponent("DividerMenuItem", DividerMenuItem);
+
+registerComponent("menu", Menu);
+registerComponent("menuitem", MenuItem);
+registerComponent("sectionmenuitem", SectionMenuItem);
+registerComponent("dividermenuitem", DividerMenuItem);
+
+registerComponent("menu-item", MenuItem);
+registerComponent("section-menu-item", SectionMenuItem);
+registerComponent("divider-menu-item", DividerMenuItem);

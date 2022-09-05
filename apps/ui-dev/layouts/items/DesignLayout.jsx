@@ -1,6 +1,6 @@
-import packageJSON from "@elf-framework/design-system/package.json";
 import { isFunction } from "@elf-framework/sapa";
 
+import { DesignSystemVersion } from "../../component/Version";
 import menu from "../../constants/design-pages";
 import { Layout } from "../Layout";
 
@@ -9,7 +9,7 @@ export function DesignLayout({ content, ...extraProps }) {
     <Layout
       {...extraProps}
       title="Design"
-      version={packageJSON.version}
+      version={<DesignSystemVersion />}
       menu={menu}
     >
       {content.map((it) => {

@@ -1,20 +1,22 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
 import { Radio } from ".";
 
-const cssProperties = {
-  borderColor: "--elf--radio-border-color",
-  backgroundColor: "--elf--radio-background",
-  disabledColor: "--elf--radio-disabled-color",
-  color: "--elf--radio-color",
-  fontSize: "--elf--radio-font-size",
-  fontWeight: "--elf--radio-font-weight",
-  height: "--elf--radio-height",
-  padding: "--elf--radio-padding",
-  borderRadius: "--elf--radio-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--radio", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class RadioGroup extends UIElement {
   template() {
@@ -30,14 +32,16 @@ export class RadioGroup extends UIElement {
       variant = "default",
     } = this.props;
 
-    const styleObject = {
-      class: classnames("elf--radio-group", {
+    const localClass = useMemo(() => {
+      return classnames("elf--radio-group", {
         [direction]: true,
-      }),
+      });
+    }, [direction]);
+
+    const styleObject = {
+      class: localClass,
       disabled: disabled ? "disabled" : undefined,
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      style: propertyMap(style, cssProperties),
     };
 
     const radioName = name || "name-" + this.id;
@@ -76,3 +80,7 @@ export class RadioGroup extends UIElement {
     this.setState({ value });
   }
 }
+
+registerComponent("RadioGroup", RadioGroup);
+registerComponent("radio-group", RadioGroup);
+registerComponent("radiogroup", RadioGroup);

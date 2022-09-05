@@ -8,10 +8,11 @@ import {
   classnames,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--virtual-scroll", {
+const cssProperties = makeCssVariablePrefixMap("--elf--virtual-scroll", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -208,3 +209,7 @@ export class VirtualScroll extends UIElement {
     this.refreshItems();
   }
 }
+
+registerComponent("VirtualScroll", VirtualScroll);
+registerComponent("virtual-scroll", VirtualScroll);
+registerComponent("virtualscroll", VirtualScroll);

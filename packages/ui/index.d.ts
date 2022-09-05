@@ -11,6 +11,8 @@ declare module "@elf-framework/ui" {
   export function MOVE(method: string): string;
   export function END(method: string): string;
 
+  export function registerComponent(key: string, component: ContentType): void;
+
   /** base */
   type ContentType = string | UIElement | string[] | UIElement[];
 
@@ -847,6 +849,7 @@ declare module "@elf-framework/ui" {
     style?: InputEditorStyle & CommonStyle;
     disabled?: boolean;
     value?: string;
+    readOnly?: boolean;
   }
 
   export class InputEditor extends UIElement {
@@ -1202,8 +1205,12 @@ declare module "@elf-framework/ui" {
     style: CommonStyle;
     disabled?: boolean;
     required?: boolean;
+    requiredText?: ContentType;
     optional?: boolean;
+    optionalText?: ContentType;
+    validIcon?: ContentType;
     invalid?: boolean;
+    invalidIcon?: ContentType;
     invalidMessage?: ContentType;
     content?: ContentType;
   }
@@ -1212,18 +1219,14 @@ declare module "@elf-framework/ui" {
   }
 
   interface TextFieldProps {
-    label: ContentType;
-    placeholder: ContentType;
-    value: string;
-    onChange: (value: string) => void;
-    style: CommonStyle;
-    disabled?: boolean;
-    required?: boolean;
-    invalid?: boolean;
-    invalidMessage?: ContentType;
+    inputStyle?: InputEditorStyle;
   }
 
   export class TextField extends UIElement {
-    props: TextFieldProps & CommonStyle;
+    props: TextFieldProps &
+      FieldProps &
+      InputEditorProps &
+      CommonStyle &
+      DomEventType;
   }
 }

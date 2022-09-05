@@ -5,6 +5,7 @@ import {
   ADD_BODY_MOUSEMOVE,
   ADD_BODY_MOUSEUP,
 } from "../../consts";
+import { registerComponent } from "../../utils/component";
 
 export class EventControlPanel extends UIElement {
   bodyMouseFirstMove(e, methodName) {
@@ -25,3 +26,7 @@ export class EventControlPanel extends UIElement {
     }
   }
 }
+
+registerComponent("event-control-panel", EventControlPanel);
+registerComponent("EventControlPanel", EventControlPanel);
+registerComponent("eventcontrolpanel", EventControlPanel);

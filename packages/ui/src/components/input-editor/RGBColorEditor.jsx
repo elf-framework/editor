@@ -8,11 +8,12 @@ import {
   CLICK,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Grid } from "../grid";
 
-const cssProperties = makeStyleMap("--elf--input-paint", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -288,3 +289,7 @@ export class RGBColorEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
+
+registerComponent("RGBColorEditor", RGBColorEditor);
+registerComponent("rgb-color-editor", RGBColorEditor);
+registerComponent("rgbcoloreditor", RGBColorEditor);

@@ -7,6 +7,8 @@ import {
   UIElement,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
+
 export class BaseSlide extends UIElement {
   template() {
     const { value, containerClass, slideClass } = this.props;
@@ -63,3 +65,6 @@ export class BaseSlide extends UIElement {
     // TODO: lastChanged 이벤트를 발생시켜야함.
   }
 }
+
+registerComponent("base-slide", BaseSlide);
+registerComponent("baseslide", BaseSlide);

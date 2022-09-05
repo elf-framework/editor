@@ -1,5 +1,6 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 
 export class Layout extends UIElement {
@@ -23,3 +24,6 @@ export class Layout extends UIElement {
     return <div {...styleObject}>{content}</div>;
   }
 }
+
+registerComponent("layout", Layout);
+registerComponent("Layout", Layout);

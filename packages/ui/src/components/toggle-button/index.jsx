@@ -1,7 +1,7 @@
 import { classnames, UIElement } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
-import { convertPropertyToStyleKey } from "../../utils/styleKeys";
+import { splitStyleKeyAndNoneStyleKey } from "../../utils/styleKeys";
 
 const cssProperties = {
   borderColor: "--elf--button-border-color",
@@ -28,8 +28,9 @@ export class ToggleButton extends UIElement {
       content,
       ...extraStyle
     } = this.props;
+    console.warn("ToggleButton is deprecated. Use Button instead.");
 
-    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
 
     const styleObject = {
       class: classnames([
@@ -41,8 +42,8 @@ export class ToggleButton extends UIElement {
         },
         destructive ? "destructive" : "",
         {
-          "large": size === "large",
-          "small": size === "small",
+          large: size === "large",
+          small: size === "small",
         },
         {
           "elf--button-shape-circle": shape === "circle",

@@ -1,6 +1,7 @@
 import { format, RGBtoHSL } from "@elf-framework/color";
 import { UIElement } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { HexColorEditor } from "../input-editor/HexColorEditor";
 import { HSLColorEditor } from "../input-editor/HSLColorEditor";
 import { RGBColorEditor } from "../input-editor/RGBColorEditor";
@@ -90,3 +91,7 @@ export class ColorInput extends UIElement {
     );
   }
 }
+
+registerComponent("ColorInput", ColorInput);
+registerComponent("color-input", ColorInput);
+registerComponent("colorinput", ColorInput);

@@ -8,11 +8,12 @@ import {
   CLICK,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { ColorView } from "../color/ColorView";
 
-const cssProperties = makeStyleMap("--elf--input-paint", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -224,3 +225,7 @@ export class InputPaint extends UIElement {
     return document.getSelection().toString();
   }
 }
+
+registerComponent("InputPaint", InputPaint);
+registerComponent("input-paint", InputPaint);
+registerComponent("inputpaint", InputPaint);

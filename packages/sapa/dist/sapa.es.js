@@ -205,9 +205,7 @@ function uuidShort() {
   });
   return uuid2;
 }
-const map = {};
 const handlerMap = {};
-const aliasMap = {};
 const __rootInstance = /* @__PURE__ */ new Set();
 const __rootInstanceMap = /* @__PURE__ */ new WeakMap();
 const __tempVariables = /* @__PURE__ */ new Map();
@@ -285,20 +283,6 @@ function getVariable(idOrValue) {
 }
 function hasVariable(id) {
   return __tempVariables.has(id);
-}
-function registElement(classes = {}) {
-  Object.keys(classes).forEach((key) => {
-    map[key] = classes[key];
-  });
-}
-function registAlias(a, b) {
-  aliasMap[a] = b;
-}
-function retriveAlias(key) {
-  return aliasMap[key];
-}
-function retriveElement(className) {
-  return map[retriveAlias(className) || className];
 }
 function registRootElementInstance(instance, containerElement) {
   const rootContainerElement = containerElement.el || containerElement;
@@ -3496,14 +3480,14 @@ const convertStyleKey = (key) => {
 const ArrayNumberStyleKeys = {
   padding: true
 };
-function styleMap(key, value) {
+function convertNumberStyleValue(key, value) {
   if (typeof value === "number") {
     if (NumberStyleKeys[key]) {
       value = value + "px";
     }
   } else if (isArray(value)) {
     if (ArrayNumberStyleKeys[key]) {
-      value = value.map((v) => styleMap(key, v)).join(" ");
+      value = value.map((v) => convertNumberStyleValue(key, v)).join(" ");
     }
   }
   return value;
@@ -3514,7 +3498,7 @@ function styleKeyMap(key) {
 function css(style) {
   const newStyles = {};
   Object.keys(style).forEach((styleKey) => {
-    newStyles[styleKeyMap(styleKey)] = styleMap(styleKey, style[styleKey]);
+    newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(styleKey, style[styleKey]);
   });
   return newStyles;
 }
@@ -3627,6 +3611,13 @@ function setAttribute(el, name, value) {
     el[name] = value;
   } else {
     el.setAttribute(name, value);
+  }
+}
+function removeAttribute(el, name) {
+  if (ENABLE_PROPERTY[name]) {
+    el[name] = false;
+  } else {
+    el.removeAttribute(name);
   }
 }
 function setEventAttribute(el, name, value) {
@@ -3928,10 +3919,14 @@ class VNode {
           if (isString(value)) {
             el.style.cssText = value;
           } else {
-            const styleValues = css(value);
-            Object.entries(styleValues).forEach(([localKey, value2]) => {
-              setStyle(el, localKey, value2);
-            });
+            if (Object.key(value).length) {
+              const styleValues = css(value);
+              Object.entries(styleValues).forEach(([localKey, value2]) => {
+                setStyle(el, localKey, value2);
+              });
+            } else {
+              removeAttribute(el, "style");
+            }
           }
         } else {
           if (key) {
@@ -4294,7 +4289,8 @@ function htmlToVNode(html) {
   const $dom = Dom.createByHTML(html);
   return createVNodeByDom($dom.el);
 }
-function jsonToVNode(json) {
+function jsonToVNode(json, options = {}) {
+  var _a;
   const { children: children2 = [], ...rest } = json;
   if (typeof json === "string" || typeof json === "number") {
     return createVNodeText(json);
@@ -4312,8 +4308,10 @@ function jsonToVNode(json) {
     });
   }
   if (rest.type === "component" || rest.Component) {
+    const realCompoent = ((_a = options == null ? void 0 : options.retrieveComponent) == null ? void 0 : _a.call(options, rest.Component, rest)) || rest.Component;
     return createVNodeComponent({
       ...rest,
+      Component: realCompoent,
       children: children2.map((it) => jsonToVNode(it))
     });
   }
@@ -4587,8 +4585,6 @@ export {
   potal,
   recoverVariable,
   refreshModule,
-  registAlias,
-  registElement,
   registHandler,
   registRootElementInstance,
   registerModule,
@@ -4600,8 +4596,6 @@ export {
   renderRootElementInstanceList,
   renderToHtml,
   resetCurrentComponent,
-  retriveAlias,
-  retriveElement,
   retriveHandler,
   runProviderSubscribe,
   setGlobalForceRender,

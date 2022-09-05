@@ -1,5 +1,12 @@
 # @elf-framework/ui
 
+## 2.1.26
+
+### Patch Changes
+
+- support registerComponent for component alias
+  refactoring...
+
 ## 2.1.24
 
 ### Patch Changes

@@ -7,12 +7,14 @@ import {
   isFunction,
   CLICK,
   isUndefined,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--input-paint", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -69,8 +71,8 @@ export class HexColorEditor extends UIElement {
 
     const { r, g, b, a } = parse(value);
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
           focused: focused,
@@ -79,7 +81,11 @@ export class HexColorEditor extends UIElement {
           icon: icon,
           invalid: this.isInvalidColor({ r, g, b, a }),
         },
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon, r, g, b, a]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
       },
@@ -299,7 +305,7 @@ export class HexColorEditor extends UIElement {
     }
   }
 
-  runCallback(callback, e) {
+  runCallback(callback) {
     if (isFunction(callback)) {
       callback(this.value, this);
     }
@@ -341,3 +347,7 @@ export class HexColorEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
+
+registerComponent("HexColorEditor", HexColorEditor);
+registerComponent("hex-color-editor", HexColorEditor);
+registerComponent("hexcoloreditor", HexColorEditor);

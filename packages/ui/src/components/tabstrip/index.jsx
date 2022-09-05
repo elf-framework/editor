@@ -1,9 +1,10 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--tabstrip", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tabstrip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -18,13 +19,15 @@ export class TabStrip extends UIElement {
   template() {
     const { style = {}, items = [], fitted, align = "left" } = this.props;
 
-    const styleObject = {
-      class: classnames("elf--tabstrip", {
+    const localClass = useMemo(() => {
+      return classnames("elf--tabstrip", {
         "is-fitted": fitted,
-      }),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      });
+    }, [fitted]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
@@ -63,3 +66,7 @@ export class TabStrip extends UIElement {
     );
   }
 }
+
+registerComponent("tabstrip", TabStrip);
+registerComponent("TabStrip", TabStrip);
+registerComponent("tab-strip", TabStrip);

@@ -99,18 +99,18 @@ const ArrayNumberStyleKeys = {
 
 /**
  *
- * styleMap("width", 10) -> "width: 10px"
- * styleMap("borderWidth", 10) -> "border-width: 10px"
+ * convertNumberStyleValue("width", 10) -> "width: 10px"
+ * convertNumberStyleValue("borderWidth", 10) -> "border-width: 10px"
  *
  */
-function styleMap(key, value) {
+function convertNumberStyleValue(key, value) {
   if (typeof value === "number") {
     if (NumberStyleKeys[key]) {
       value = value + "px";
     }
   } else if (isArray(value)) {
     if (ArrayNumberStyleKeys[key]) {
-      value = value.map((v) => styleMap(key, v)).join(" ");
+      value = value.map((v) => convertNumberStyleValue(key, v)).join(" ");
     }
   }
 
@@ -124,7 +124,7 @@ function styleKeyMap(key) {
 export function css(style) {
   const newStyles = {};
   Object.keys(style).forEach((styleKey) => {
-    newStyles[styleKeyMap(styleKey)] = styleMap(styleKey, style[styleKey]);
+    newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(styleKey, style[styleKey]);
   });
 
   return newStyles;

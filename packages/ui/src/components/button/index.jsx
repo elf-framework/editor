@@ -1,20 +1,24 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { convertPropertyToStyleKey } from "../../utils/styleKeys";
+import {
+  makeCssVariablePrefixMap,
+  splitStyleKeyAndNoneStyleKey,
+} from "../../utils/styleKeys";
 
-const cssProperties = {
-  borderColor: "--elf--button-border-color",
-  backgroundColor: "--elf--button-background-color",
-  selectedBackgroundColor: "--elf--button-selected-background-color",
-  disabledColor: "--elf--button-disabled-color",
-  color: "--elf--button-color",
-  fontSize: "--elf--button-font-size",
-  fontWeight: "--elf--button-font-weight",
-  height: "--elf--button-height",
-  padding: "--elf--button-padding",
-  borderRadius: "--elf--button-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--button", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class Button extends UIElement {
   template() {
@@ -32,7 +36,7 @@ export class Button extends UIElement {
       ...extraStyle
     } = this.props;
 
-    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
 
     const styleObject = {
       class: classnames([
@@ -63,3 +67,7 @@ export class Button extends UIElement {
     );
   }
 }
+
+registerComponent("button", Button);
+registerComponent("btn", Button);
+registerComponent("Button", Button);

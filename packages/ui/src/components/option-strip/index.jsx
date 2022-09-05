@@ -1,5 +1,6 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 
 export class OptionStrip extends UIElement {
@@ -45,3 +46,7 @@ export class OptionStrip extends UIElement {
     );
   }
 }
+
+registerComponent("option-strip", OptionStrip);
+registerComponent("optionstrip", OptionStrip);
+registerComponent("OptionStrip", OptionStrip);

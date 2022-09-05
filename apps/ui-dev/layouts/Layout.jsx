@@ -19,9 +19,7 @@ function LogoView({ title, version }) {
       </Flex>
       <VBox>
         <div>ELF {title}</div>
-        <div style={{ fontSize: 12, color: "rgb(170 170 170)" }}>
-          v{version}
-        </div>
+        <div style={{ fontSize: 12, color: "rgb(170 170 170)" }}>{version}</div>
       </VBox>
     </Grid>
   );

@@ -1,18 +1,20 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  backgroundColor: "--elf--notification-background",
-  color: "--elf--notification-color",
-  width: "--elf--notification-width",
-  height: "--elf--notification-height",
-  hoverColor: "--elf--notification-hover-color",
-  borderColor: "--elf--notification-border-color",
-  boxShadow: "--elf--notification-box-shadow",
-  toolsBorderColor: "--elf--notification-tools-border-color",
-  toolsBorderRadius: "--elf--notification-tools-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--notification", {
+  backgroundColor: true,
+  color: true,
+  width: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+});
 
 export class Notification extends UIElement {
   template() {
@@ -45,3 +47,5 @@ export class Notification extends UIElement {
     );
   }
 }
+
+registerComponent("notification", Notification);

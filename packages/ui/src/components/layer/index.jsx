@@ -1,5 +1,7 @@
 import { UIElement } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
+
 export class Layer extends UIElement {
   template() {
     const {
@@ -70,3 +72,6 @@ export class Layer extends UIElement {
     );
   }
 }
+
+registerComponent("layer", Layer);
+registerComponent("Layer", Layer);

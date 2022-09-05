@@ -1,5 +1,11 @@
-import { UIElement, classnames, isFunction } from "@elf-framework/sapa";
+import {
+  UIElement,
+  classnames,
+  isFunction,
+  useMemo,
+} from "@elf-framework/sapa";
 
+import { registerComponent } from "../../../utils/component";
 import { Flex } from "../../flex";
 
 export class ToolsItem extends UIElement {
@@ -30,11 +36,16 @@ export class ToolsItem extends UIElement {
   template() {
     const { title = "", icon } = this.state;
     const { style = {} } = this.props;
+
+    const localClass = useMemo(() => {
+      return classnames("elf--tools-item", {
+        selected: this.state.selected ? true : undefined,
+      });
+    }, [this.state.selected]);
+
     return (
       <div
-        class={classnames("elf--tools-item", {
-          selected: this.state.selected ? true : undefined,
-        })}
+        class={localClass}
         data-selected-type={this.state.selectedType}
         onClick={this.props.onClick}
         style={style}
@@ -75,3 +86,7 @@ export class ToolsItem extends UIElement {
     this.setSelected(value);
   }
 }
+
+registerComponent("tools-item", ToolsItem);
+registerComponent("toolsitem", ToolsItem);
+registerComponent("ToolsItem", ToolsItem);

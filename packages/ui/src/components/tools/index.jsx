@@ -4,10 +4,12 @@ import {
   Dom,
   useEffect,
   useState,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { ToolsCustomItem } from "./items/ToolsCustomItem";
 import { ToolsItem } from "./items/ToolsItem";
 import { ToolsMenuItem } from "./items/ToolsMenuItem";
@@ -60,7 +62,7 @@ function makeHiddenToolsItem(items = [], options = {}) {
   });
 }
 
-const cssProperties = makeStyleMap("--elf--tools", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tools", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -151,14 +153,16 @@ export class Tools extends UIElement {
       }
     }, [emphasized, visibility, rootRect]);
 
-    const styleObject = {
-      class: classnames("elf--tools", {
+    const localClass = useMemo(() => {
+      return classnames("elf--tools", {
         vertical,
         emphasized,
-      }),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      });
+    }, [vertical, emphasized]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     const items = makeToolsItem(this.props.items, {
@@ -196,3 +200,6 @@ export class Tools extends UIElement {
     );
   }
 }
+
+registerComponent("Tools", Tools);
+registerComponent("tools", Tools);

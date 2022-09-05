@@ -54,6 +54,11 @@
         > [data-level="6"] {
             padding-left: calc(var(--data-level) * 5);
         }
+
+        > .selected {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
         
 
     }

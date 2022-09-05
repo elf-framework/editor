@@ -1,104 +1,17 @@
+import { ComponentPropsToStylePropsMap } from "../consts/style";
+
+// cache style keys
 const styleKeys = {};
 const uppercasePattern = /([A-Z])/g;
 
-export const ComponentPropsToStylePropsMap = {
-  alignContent: "alignContent",
-  alignItems: "alignItems",
-  alignSelf: "alignSelf",
-  area: "gridArea",
-  autoColumns: "gridAutoColumns",
-  autoFlow: "gridAutoFlow",
-  autoRows: "gridAutoRows",
-  backgroundColor: "backgroundColor",
-  backgroundImage: "backgroundImage",
-  basis: "flexBasis",
-  border: "border",
-  borderRadius: "borderRadius",
-  bottom: "bottom",
-  boxShadow: "boxShadow",
-  color: "color",
-  column: "gridColumn",
-  columnEnd: "gridColumnEnd",
-  columnGap: "columnGap",
-  columnSpan: "gridColumn", // Will set gridColumn if no `row` prop given
-  columnStart: "gridColumnStart",
-  direction: "flexDirection",
-  display: "display",
-  flex: "flex",
-  fontFamily: "fontFamily",
-  fontSize: "fontSize",
-  fontStyle: "fontStyle",
-  fontWeight: "fontWeight",
-  gap: "gap",
-  grow: "flexGrow",
-  height: "height",
-  justifyContent: "justifyContent",
-  left: "left",
-  letterSpacing: "letterSpacing",
-  lineHeight: "lineHeight",
-  margin: "margin",
-  marginBlock: "marginBlock",
-  marginBlockEnd: "marginBlockEnd",
-  marginBlockStart: "marginBlockStart",
-  marginBottom: "marginBlockEnd",
-  marginInline: "marginInline",
-  marginInlineEnd: "marginInlineEnd",
-  marginInlineStart: "marginInlineStart",
-  marginLeft: "marginInlineStart",
-  marginRight: "marginInlineEnd",
-  marginTop: "marginBlockStart",
-  maxHeight: "maxHeight",
-  maxWidth: "maxWidth",
-  minHeight: "minHeight",
-  minWidth: "minWidth",
-  objectFit: "objectFit",
-  objectPosition: "objectPosition",
-  opacity: "opacity",
-  order: "order",
-  overflow: "overflow",
-  padding: "padding",
-  paddingBlock: "paddingBlock",
-  paddingBlockEnd: "paddingBlockEnd",
-  paddingBlockStart: "paddingBlockStart",
-  paddingBottom: "paddingBlockEnd",
-  paddingInline: "paddingInline",
-  paddingInlineEnd: "paddingInlineEnd",
-  paddingInlineStart: "paddingInlineStart",
-  paddingLeft: "paddingInlineStart",
-  paddingRight: "paddingInlineEnd",
-  paddingTop: "paddingBlockStart",
-  position: "position",
-  resize: "resize",
-  right: "right",
-  row: "gridRow",
-  rowEnd: "gridRowEnd",
-  rowGap: "rowGap",
-  rowSpan: "gridRow", // Will set gridRow if no `row` prop given
-  rowStart: "gridRowStart",
-  shrink: "flexShrink",
-  templateAreas: "gridTemplateAreas",
-  templateColumns: "gridTemplateColumns",
-  templateRows: "gridTemplateRows",
-  textAlign: "textAlign",
-  textDecoration: "textDecoration",
-  textTransform: "textTransform",
-  top: "top",
-  transform: "transform",
-  transformOrigin: "transformOrigin",
-  width: "width",
-  whiteSpace: "whiteSpace",
-  wrap: "flexWrap",
-};
-
 /**
- * style key convert to css key
+ * convert style key to css key (camelCase to kebab-case)
  *
  * backgroundColor -> background-color
  *
- * @param {*} key
- * @returns
  */
 export const convertStyleKey = (key) => {
+  // check cache
   if (styleKeys[key]) {
     return styleKeys[key];
   }
@@ -110,7 +23,17 @@ export const convertStyleKey = (key) => {
   return upperKey;
 };
 
-export function makeStyleMap(prefix, obj = {}) {
+/**
+ * prefixed style key
+ *
+ * makeCssVariablePrefixMap("--elf--ui", { backgroundColor: true });
+ * =>
+ * {
+ *  backgroundColor: "--elf--ui-background-color",
+ * }
+ *
+ */
+export function makeCssVariablePrefixMap(prefix, obj = {}) {
   const newObj = {};
 
   Object.keys(obj).forEach((key) => {
@@ -120,15 +43,22 @@ export function makeStyleMap(prefix, obj = {}) {
   return newObj;
 }
 
-export function convertPropertyToStyleKey(properties) {
+/**
+ * properties key 중에 style key가 있는지 확인
+ * style key 와 none style key 를 분리해서 반환
+ *
+ */
+export function splitStyleKeyAndNoneStyleKey(properties) {
   const style = {};
   const noneStyle = {};
 
   Object.keys(properties).forEach((key) => {
-    if (ComponentPropsToStylePropsMap[key]) {
-      style[ComponentPropsToStylePropsMap[key]] = properties[key];
+    const value = properties[key];
+    const styleKey = ComponentPropsToStylePropsMap[key];
+    if (styleKey) {
+      style[styleKey] = value;
     } else {
-      noneStyle[key] = properties[key];
+      noneStyle[key] = value;
     }
   });
 

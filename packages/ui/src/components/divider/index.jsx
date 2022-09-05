@@ -1,11 +1,13 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  color: "--elf--divider-color",
-  margin: "--elf--divider-margin",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--divider", {
+  color: true,
+  margin: true,
+});
 
 export class Divider extends UIElement {
   template() {
@@ -40,3 +42,6 @@ export class Divider extends UIElement {
     );
   }
 }
+
+registerComponent("divider", Divider);
+registerComponent("Divider", Divider);

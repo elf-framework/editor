@@ -9,7 +9,7 @@ import {
 /**
  *
  * jsonToVNode({
- *    tag: "div",
+ *    type: "div",
  *    props: {
  *      id: "test",
  *      class: "test",
@@ -19,7 +19,7 @@ import {
  *    },
  *    children: [
  *      {
- *        tag: "span",
+ *        type: "span",
  *        props: {
  *          id: "test",
  *          class: "test",
@@ -33,7 +33,7 @@ import {
  * @param {*} json
  * @returns
  */
-export function jsonToVNode(json) {
+export function jsonToVNode(json, options = {}) {
   const { children = [], ...rest } = json;
 
   if (typeof json === "string" || typeof json === "number") {
@@ -56,8 +56,12 @@ export function jsonToVNode(json) {
   }
 
   if (rest.type === "component" || rest.Component) {
+    const realCompoent =
+      options?.retrieveComponent?.(rest.Component, rest) || rest.Component;
+
     return createVNodeComponent({
       ...rest,
+      Component: realCompoent,
       children: children.map((it) => jsonToVNode(it)),
     });
   }

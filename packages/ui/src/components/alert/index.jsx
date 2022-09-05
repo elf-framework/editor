@@ -6,10 +6,11 @@ import {
   potal,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--alert", {
+const cssProperties = makeCssVariablePrefixMap("--elf--alert", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -121,3 +122,6 @@ export function alert({
     options
   );
 }
+
+registerComponent("Alert", Alert);
+registerComponent("alert", Alert);

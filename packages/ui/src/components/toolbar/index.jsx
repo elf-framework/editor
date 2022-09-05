@@ -1,7 +1,7 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Tools } from "../tools/index";
 
 function makeToolbarItem(items = [], options = {}) {
@@ -29,7 +29,7 @@ export class ToolbarItem extends UIElement {
   }
 }
 
-const cssProperties = makeStyleMap("--elf--toolbar", {
+const cssProperties = makeCssVariablePrefixMap("--elf--toolbar", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -48,9 +48,8 @@ export class Toolbar extends UIElement {
       class: className,
     } = this.props;
 
-    const styleObject = {
-      id: "toolbar-" + this.id,
-      class: classnames(
+    const localClass = useMemo(() => {
+      classnames(
         "elf--toolbar",
         {
           [align]: true,
@@ -59,15 +58,14 @@ export class Toolbar extends UIElement {
           [type]: true,
         },
         className
-      ),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
-    };
+      );
+    }, [align, type, rounded, emphasized, className]);
 
-    if (Object.keys(styleObject.style).length === 0) {
-      delete styleObject.style;
-    }
+    const styleObject = {
+      id: "toolbar-" + this.id,
+      class: localClass,
+      style: propertyMap(style, cssProperties),
+    };
 
     return (
       <div {...styleObject} onContextMenu={(e) => e.preventDefault()}>

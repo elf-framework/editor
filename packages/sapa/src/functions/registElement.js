@@ -1,9 +1,7 @@
 import { debounce, isString } from "./func";
 import { uuidShort } from "./uuid";
 
-const map = {};
 const handlerMap = {};
-const aliasMap = {};
 const __rootInstance = new Set();
 const __rootInstanceMap = new WeakMap();
 const __tempVariables = new Map();
@@ -126,24 +124,6 @@ export function getVariable(idOrValue) {
 
 export function hasVariable(id) {
   return __tempVariables.has(id);
-}
-
-export function registElement(classes = {}) {
-  Object.keys(classes).forEach((key) => {
-    map[key] = classes[key];
-  });
-}
-
-export function registAlias(a, b) {
-  aliasMap[a] = b;
-}
-
-export function retriveAlias(key) {
-  return aliasMap[key];
-}
-
-export function retriveElement(className) {
-  return map[retriveAlias(className) || className];
 }
 
 /**

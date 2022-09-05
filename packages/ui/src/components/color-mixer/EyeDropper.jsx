@@ -1,5 +1,6 @@
 import { isFunction } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { Button } from "../button";
 
 export function EyeDropper(props) {
@@ -36,3 +37,7 @@ export function EyeDropper(props) {
     </div>
   );
 }
+
+registerComponent("eye-dropper", EyeDropper);
+registerComponent("eyedropper", EyeDropper);
+registerComponent("EyeDropper", EyeDropper);

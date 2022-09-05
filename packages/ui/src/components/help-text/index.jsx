@@ -1,10 +1,12 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  color: "--elf--help-text-color",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--help-text", {
+  color: true,
+});
 
 export class HelpText extends UIElement {
   template() {
@@ -18,12 +20,16 @@ export class HelpText extends UIElement {
       ...extrProps
     } = this.props;
 
-    const styleObject = {
-      class: classnames("elf--help-text", {
+    const localClass = useMemo(() => {
+      return classnames("elf--help-text", {
         [variant]: true,
         [size]: true,
         disabled,
-      }),
+      });
+    }, [variant, size, disabled]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
       },
@@ -38,3 +44,7 @@ export class HelpText extends UIElement {
     );
   }
 }
+
+registerComponent("help-text", HelpText);
+registerComponent("HelpText", HelpText);
+registerComponent("helptext", HelpText);

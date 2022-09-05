@@ -1,7 +1,8 @@
 import { classnames, UIElement } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { convertPropertyToStyleKey } from "../../utils/styleKeys";
+import { splitStyleKeyAndNoneStyleKey } from "../../utils/styleKeys";
 
 export class View extends UIElement {
   template() {
@@ -15,7 +16,7 @@ export class View extends UIElement {
     } = this.props;
 
     const { style: styleProperties, noneStyle } =
-      convertPropertyToStyleKey(extraStyle);
+      splitStyleKeyAndNoneStyleKey(extraStyle);
 
     const styleObject = {
       class: classnames(className),
@@ -34,3 +35,6 @@ export class View extends UIElement {
     return createElementJsx(as, styleObject, content);
   }
 }
+
+registerComponent("view", View);
+registerComponent("View", View);

@@ -15,7 +15,7 @@ export function ComponentLink({
         {icon ? icon : <VerifiedOutlined />}
       </div>
       <div class="component-link-title">
-        <h3 class="title">{title}</h3>
+        <strong class="title">{title}</strong>
         <p class="description">{description}</p>
       </div>
     </a>

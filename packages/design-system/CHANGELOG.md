@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 2.1.27
+
+### Patch Changes
+
+- update style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.1.27
+
 ## 2.1.24
 
 ### Patch Changes

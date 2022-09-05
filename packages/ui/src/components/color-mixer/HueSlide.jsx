@@ -1,3 +1,4 @@
+import { registerComponent } from "../../utils/component";
 import { BaseSlide } from "./BaseSlide";
 
 export function HueSlide({ value, onChange }) {
@@ -10,3 +11,7 @@ export function HueSlide({ value, onChange }) {
     />
   );
 }
+
+registerComponent("HueSlide", HueSlide);
+registerComponent("hue-slide", HueSlide);
+registerComponent("hueslide", HueSlide);

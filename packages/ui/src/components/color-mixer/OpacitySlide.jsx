@@ -1,3 +1,4 @@
+import { registerComponent } from "../../utils/component";
 import { BaseSlide } from "./BaseSlide";
 
 export function OpacitySlide({ value, onChange }) {
@@ -10,3 +11,7 @@ export function OpacitySlide({ value, onChange }) {
     />
   );
 }
+
+registerComponent("OpacitySlide", OpacitySlide);
+registerComponent("opacity-slide", OpacitySlide);
+registerComponent("opacityslide", OpacitySlide);
