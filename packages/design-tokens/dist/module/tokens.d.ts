@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 00:16:28 GMT
+ * Generated on Tue, 06 Sep 2022 12:27:51 GMT
  */
 
 export default tokens;
@@ -256,6 +256,18 @@ declare const tokens: {
           "info": DesignToken
         }
       }
+    }
+  },
+  "avatar": {
+    "size": {
+      "50": DesignToken,
+      "100": DesignToken,
+      "200": DesignToken,
+      "300": DesignToken,
+      "400": DesignToken,
+      "500": DesignToken,
+      "600": DesignToken,
+      "700": DesignToken
     }
   },
   "button": {

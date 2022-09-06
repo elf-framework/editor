@@ -47,7 +47,18 @@ export class Tab extends UIElement {
   }
 
   template() {
-    const { style = {}, content, full, fitted, align = "left" } = this.props;
+    const {
+      style = {},
+      content,
+      full,
+      fitted,
+      align = "left",
+      orientation = "horizontal",
+      showIndicator = false,
+      size = "medium",
+      variant = "default",
+      quiet = false,
+    } = this.props;
     const { activeKey } = this.state;
 
     const localClass = useMemo(() => {
@@ -67,6 +78,12 @@ export class Tab extends UIElement {
           <TabStrip
             fitted={fitted}
             align={align}
+            orientation={orientation}
+            activeKey={activeKey}
+            showIndicator={showIndicator}
+            size={size}
+            variant={variant}
+            quiet={quiet}
             items={content.map((it) => {
               const { title, key, onClick, disabled, style, selectedStyle } =
                 it.props;
@@ -75,6 +92,7 @@ export class Tab extends UIElement {
                 style,
                 disabled,
                 selectedStyle,
+                key,
                 selected: key === activeKey,
                 onClick: () => {
                   this.changeActiveKey(key);

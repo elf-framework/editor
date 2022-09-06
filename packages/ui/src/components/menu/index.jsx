@@ -9,6 +9,7 @@ import {
   isString,
   OBSERVER,
   PARAMS,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -24,31 +25,64 @@ const MenuItemType = {
   LINK: "link",
 };
 
-function makeMenuItem(items = [], rootClose) {
+function makeMenuItem(items = [], variant, rootClose) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
 
     if (isString(it) && it === "-") {
-      return <DividerMenuItem ref={ref} rootClose={rootClose} />;
+      return (
+        <DividerMenuItem ref={ref} variant={variant} rootClose={rootClose} />
+      );
     } else if (isFunction(it)) {
       return (
         <CustomMenuItem
+          variant={variant}
           ref={`custom${index}`}
           render={it}
           rootClose={rootClose}
         />
       );
     } else if (it.type === MenuItemType.CUSTOM) {
-      return <CustomMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <CustomMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     } else if (it.type === MenuItemType.LINK) {
-      return <LinkMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <LinkMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     } else if (it.type === MenuItemType.SECTION) {
-      return <SectionMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <SectionMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     } else if (it.type === MenuItemType.DIVIDER) {
-      return <DividerMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <DividerMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     }
 
-    return <MenuItem ref={ref} {...it} rootClose={rootClose} />;
+    return (
+      <MenuItem ref={ref} variant={variant} {...it} rootClose={rootClose} />
+    );
   });
 }
 
@@ -89,6 +123,7 @@ class MenuItem extends UIElement {
       closable = true,
       rootClose,
       description,
+      variant,
     } = this.props;
 
     return {
@@ -104,6 +139,7 @@ class MenuItem extends UIElement {
       closable,
       rootClose,
       description,
+      variant,
     };
   }
 
@@ -121,6 +157,7 @@ class MenuItem extends UIElement {
       disabled,
       rootClose,
       description,
+      variant,
       show = false,
     } = this.state;
 
@@ -154,7 +191,7 @@ class MenuItem extends UIElement {
         ) : undefined}
 
         {items.length > 0 || show ? (
-          <Menu items={items} rootClose={rootClose} />
+          <Menu items={items} variant={variant} rootClose={rootClose} />
         ) : undefined}
       </li>
     );
@@ -234,6 +271,7 @@ export class Menu extends UIElement {
       items = [],
       rootClose,
       autoPosition = false,
+      variant = "light",
       compact = false,
     } = this.props;
 
@@ -249,18 +287,23 @@ export class Menu extends UIElement {
       itemStyle = { ...itemStyle, top: -1 * (index * 24 + 8) };
     }
 
+    const localClass = useMemo(() => {
+      return classnames("elf--menu", {
+        [type]: true,
+        [variant]: true,
+        compact,
+      });
+    }, [type, variant, compact]);
+
     const styleObject = {
       "data-direction": direction,
-      class: classnames("elf--menu", {
-        [type]: true,
-        compact,
-      }),
+      class: localClass,
       style: propertyMap(itemStyle, cssProperties),
     };
 
     return (
       <menu {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {makeMenuItem(items, rootClose)}
+        {makeMenuItem(items, variant, rootClose)}
       </menu>
     );
   }

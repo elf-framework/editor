@@ -53,3 +53,4 @@ export * from "./components/layout/AppLayoutItem";
 export * from "./components/layout/AppResizeBar";
 export * from "./components/help-text";
 export * from "./components/breadcrumbs";
+export * from "./components/avatar";

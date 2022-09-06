@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 00:16:29 GMT
+ * Generated on Tue, 06 Sep 2022 12:27:52 GMT
  */
 
 :root {
@@ -92,6 +92,14 @@
   --shadow-none: none;
   --button-disabled-text-default: #b1b1b1;
   --button-disabled-background-default: #e6e6e6;
+  --avatar-size-700: 60px;
+  --avatar-size-600: 55px;
+  --avatar-size-500: 50px;
+  --avatar-size-400: 45px;
+  --avatar-size-300: 40px;
+  --avatar-size-200: 35px;
+  --avatar-size-100: 30px;
+  --avatar-size-50: 20px;
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-white: #ffffff;
   --color-teal-9: #223a3b;

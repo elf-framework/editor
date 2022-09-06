@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.31
+
+### Patch Changes
+
+- add avatar component
+  update menu, tab, tabstrip component
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.31
+
 ## 2.1.30
 
 ### Patch Changes

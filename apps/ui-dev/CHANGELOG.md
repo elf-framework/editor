@@ -1,5 +1,12 @@
 # ui-dev
 
+## 1.0.22
+
+### Patch Changes
+
+- add avatar, tab documentation
+  update menu, breadcrumbs documentation
+
 ## 1.0.21
 
 ### Patch Changes

@@ -3685,6 +3685,154 @@
       }
     }
   },
+  "avatar": {
+    "size": {
+      "50": {
+        "value": "20px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "20px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "50"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "50"
+        }
+      },
+      "100": {
+        "value": "30px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "30px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "100"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "100"
+        }
+      },
+      "200": {
+        "value": "35px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "35px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "200"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "200"
+        }
+      },
+      "300": {
+        "value": "40px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "40px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "300"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "300"
+        }
+      },
+      "400": {
+        "value": "45px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "45px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "400"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "400"
+        }
+      },
+      "500": {
+        "value": "50px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "50px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "500"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "500"
+        }
+      },
+      "600": {
+        "value": "55px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "55px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "600"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "600"
+        }
+      },
+      "700": {
+        "value": "60px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "60px"
+        },
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "700"
+        },
+        "path": {
+          "0": "avatar",
+          "1": "size",
+          "2": "700"
+        }
+      }
+    }
+  },
   "button": {
     "selected": {
       "background": {

@@ -1,5 +1,12 @@
 # @elf-framework/design-tokens
 
+## 2.1.31
+
+### Patch Changes
+
+- add avatar component
+  update menu, tab, tabstrip component
+
 ## 2.1.29
 
 ### Patch Changes

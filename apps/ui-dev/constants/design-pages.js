@@ -148,7 +148,7 @@ export default [
       },
       {
         link: COMPONENTS_URL + "navigations/avatar/",
-        title: "Avatar * ",
+        title: "Avatar",
       },
       {
         link: COMPONENTS_URL + "navigations/sidebar/",
@@ -156,7 +156,7 @@ export default [
       },
       {
         link: COMPONENTS_URL + "navigations/tabs/",
-        title: "Tabs * ",
+        title: "Tabs",
       },
       {
         link: COMPONENTS_URL + "navigations/tag/",

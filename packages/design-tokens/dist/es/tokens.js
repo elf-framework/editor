@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 00:16:28 GMT
+ * Generated on Tue, 06 Sep 2022 12:27:51 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -191,6 +191,14 @@ export const AlertColorBackgroundWeakDanger = "#ffebec"; // Base color for the d
 export const AlertColorBackgroundWeakWarning = "#ffd8b5"; // Base color for the warning color
 export const AlertColorBackgroundWeakSuccess = "#d6fff1"; // Base color for the success color
 export const AlertColorBackgroundWeakInfo = "#e2f4ff"; // Base color for the info color
+export const AvatarSize50 = "20px";
+export const AvatarSize100 = "30px";
+export const AvatarSize200 = "35px";
+export const AvatarSize300 = "40px";
+export const AvatarSize400 = "45px";
+export const AvatarSize500 = "50px";
+export const AvatarSize600 = "55px";
+export const AvatarSize700 = "60px";
 export const ButtonSelectedBackgroundDefault = "#d9e0e6";
 export const ButtonDisabledBackgroundDefault = "#e6e6e6";
 export const ButtonDisabledTextDefault = "#b1b1b1";

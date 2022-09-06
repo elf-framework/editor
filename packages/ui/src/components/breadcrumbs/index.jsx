@@ -80,7 +80,10 @@ export class Breadcrumbs extends UIElement {
       style: propertyMap(style, cssProperties),
     };
 
+    // single line items
     const renderItems = items.filter((it) => !(it?.selected && it?.multiline));
+
+    // multi line items
     const renderMultiItems = items.filter(
       (it) => it?.selected && it?.multiline
     );

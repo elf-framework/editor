@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 00:16:28 GMT
+ * Generated on Tue, 06 Sep 2022 12:27:51 GMT
  */
 
 export const ImageLogo : string;
@@ -191,6 +191,14 @@ export const AlertColorBackgroundWeakDanger : string; // Base color for the dang
 export const AlertColorBackgroundWeakWarning : string; // Base color for the warning color
 export const AlertColorBackgroundWeakSuccess : string; // Base color for the success color
 export const AlertColorBackgroundWeakInfo : string; // Base color for the info color
+export const AvatarSize50 : string;
+export const AvatarSize100 : string;
+export const AvatarSize200 : string;
+export const AvatarSize300 : string;
+export const AvatarSize400 : string;
+export const AvatarSize500 : string;
+export const AvatarSize600 : string;
+export const AvatarSize700 : string;
 export const ButtonSelectedBackgroundDefault : string;
 export const ButtonDisabledBackgroundDefault : string;
 export const ButtonDisabledTextDefault : string;

@@ -1,5 +1,5 @@
-import { CheckFilled } from "@elf-framework/icon";
-import { Breadcrumbs, Grid, Tooltip, VBox } from "@elf-framework/ui";
+import CheckFilled from "@elf-framework/icon/CheckFilled";
+import { Breadcrumbs, Grid, VBox } from "@elf-framework/ui";
 
 export function TooltipView() {
   return (
@@ -44,6 +44,7 @@ export function TooltipView() {
                   trigger: ["focus", "hover"],
                   placement: "top",
                   message: "New line menu",
+                  show: true,
                 },
                 href: "/pages/design-system/components/navigations/avatar/",
               },

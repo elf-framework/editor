@@ -1,8 +1,17 @@
 .elf--tabstrip {
     --elf--tabstrip-background-color: transparent;
-    --elf--tabstrip-color: rgba(0, 0, 0, 0.3);
-    // --elf--tabstrip-width: 240px;
-    --elf--tabstrip-font-weight: 500;
+    --elf--tabstrip-color: var(--color-gray-6);
+    --elf--tabstrip-font-weight: 400;
+    --elf--tabstrip-font-size: 14px;
+    --elf--tabstrip-gap: 0.7em;
+    --elf--tabstrip-border-color: transparent;
+    --elf--tabstrip-offset: 0.5em;
+    --elf--tabstrip-indicator-background-color: var(--color-gray-2);
+    --elf--tabstrip-indicator-color: var(--color-black);
+    --elf--tabstrip-indicator-size: 3px;
+    --elf--tabstrip-indicator-transition: all 0.2s ease;
+    --elf--tabstrip-selected-color: var(--color-black);
+    --elf--tabstrip-disabled-color: var(--color-gray-3);
 
     background-color: var(--elf--tabstrip-background-color);
     color: var(--elf--tabstrip-color);
@@ -12,9 +21,117 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    // width: var(--elf--tabstrip-width);
     font-weight: var(--elf--tabstrip-font-weight);
-    padding-left: 8px;
+    font-size: var(--elf--tabstrip-font-size);
+
+    /** size **/
+    &.small {
+        --elf--tabstrip-font-size: var(--font-size-small);
+    }
+
+    &.medium {
+        --elf--tabstrip-font-size: var(--font-size-medium);
+    }
+
+    &.large {
+        --elf--tabstrip-font-size: var(--font-size-large);
+    }
+
+    &.extra-large {
+        --elf--tabstrip-font-size: var(--font-size-extra-large);
+    }
+
+    /** variant **/
+    &.primary {
+        --elf--tabstrip-selected-color: var(--color-primary);
+        --elf--tabstrip-indicator-color: var(--color-primary);
+    }
+
+    &.secondary {
+        --elf--tabstrip-selected-color: var(--color-secondary);
+        --elf--tabstrip-indicator-color: var(--color-secondary);
+    }
+
+    &.success {
+        --elf--tabstrip-selected-color: var(--color-success);
+        --elf--tabstrip-indicator-color: var(--color-success);
+    }
+
+    &.warning {
+        --elf--tabstrip-selected-color: var(--color-warning);
+        --elf--tabstrip-indicator-color: var(--color-warning);
+    }
+
+    &.danger {
+        --elf--tabstrip-selected-color: var(--color-danger);
+        --elf--tabstrip-indicator-color: var(--color-danger);
+    }
+
+    &.info {
+        --elf--tabstrip-selected-color: var(--color-info);
+        --elf--tabstrip-indicator-color: var(--color-info);
+    }
+
+    &.dark {
+        // --elf--tabstrip-background-color: var(--color-black);
+        --elf--tabstrip-color: var(--color-white);
+        --elf--tabstrip-selected-color: var(--color-white);
+        --elf--tabstrip-indicator-color: var(--color-white);
+        --elf--tabstrip-indicator-background-color: var(--color-gray-5);
+    }
+
+    /** quiet **/
+    &.quiet {
+        --elf--tabstrip-indicator-background-color: transparent;
+    }
+
+    /** orientation **/
+    &.vertical {
+
+        > .elf--tabstrip-content {
+            flex-direction: column;
+            justify-content: flex-start;
+            --elf--tabstrip-gap: 0px;
+            --elf--tabstrip-offset: 0px;
+
+            > .elf--tabstrip-item {
+                padding: 0px 20px;
+            }
+
+            > .indicator {
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                height: auto;
+                width: var(--elf--tabstrip-indicator-size);;
+    
+                .indicator-inner {
+                    height: auto;
+                    width: var(--elf--tabstrip-indicator-size);;
+                    top: 0px;
+                    left: 0px;
+                }
+            }
+
+            &.align-left {            
+                justify-content: center;
+                align-items: flex-start;
+            }
+        
+            &.align-right {
+                justify-content: center;
+                align-items: flex-end;
+            }
+        
+            &.align-center {
+    
+                justify-content: center;
+                align-items: center;
+            }        
+        }
+
+    }
 
     &.is-fitted {
         width: 100%;
@@ -32,6 +149,26 @@
         display: flex;
         flex-direction: row;
         flex: auto;
+        gap: var(--elf--tabstrip-gap);
+        position: relative;
+        padding-bottom: var(--elf--tabstrip-offset);
+
+        > .indicator {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: var(--elf--tabstrip-indicator-size);
+            background-color: var(--elf--tabstrip-indicator-background-color);
+
+            .indicator-inner {
+                position: absolute;
+                background-color: var(--elf--tabstrip-indicator-color);
+                height: var(--elf--tabstrip-indicator-size);
+                left: 0px;
+                transition: var(--elf--tabstrip-indicator-transition);
+            }
+        }
 
         &.align-left {            
             justify-content: flex-start;
@@ -52,8 +189,14 @@
             display: flex;
             align-items: center;
 
+            .elf--icon {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+            }
+
             > * {
-                padding: 8px 8px;                
+                padding: 8px 0px;                
                 flex: auto;
                 display: flex;
                 align-items: center;
@@ -62,13 +205,13 @@
 
 
             &.selected {
-                --elf--tabstrip-color: black;
-                --elf--tabstrip-font-weight: 600;                
+                --elf--tabstrip-color: var(--elf--tabstrip-selected-color);
+                font-weight: 600;     
             }
 
             &.disabled {
                 cursor: not-allowed;                
-                --elf--tabstrip-color: rgba(0, 0, 0, 0.3);
+                --elf--tabstrip-color: var(--elf--tabstrip-disabled-color);
                 > * {
                     pointer-events: none;
                     user-select: none;

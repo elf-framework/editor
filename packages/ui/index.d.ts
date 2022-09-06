@@ -20,6 +20,21 @@ declare module "@elf-framework/ui" {
 
   type ThemeType = "dark" | "light" | string;
 
+  type VariantType =
+    | "default"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"
+    | "light"
+    | "dark";
+
+  type SizeType = "small" | "medium" | "large" | "extra-large";
+
+  type OrientationType = "horizontal" | "vertical";
+
   /** button */
   type ButtonVariant =
     | "primary"
@@ -37,6 +52,7 @@ declare module "@elf-framework/ui" {
     | "large"
     | "extra-large"
     | "xlarge";
+
   type ButtonShape = "square" | "round" | "circle";
 
   interface CommonStyle {
@@ -246,7 +262,7 @@ declare module "@elf-framework/ui" {
 
   interface ActionGroupProps {
     content?: Button[];
-    direction?: "horizontal" | "vertical";
+    direction?: OrientationType;
     moreIcon?: ContentType;
     quiet?: boolean;
     compact?: boolean;
@@ -357,6 +373,7 @@ declare module "@elf-framework/ui" {
     style: MenuStyle & CommonStyle;
     root?: ToolsMenuItem;
     compact?: boolean;
+    variant?: "light" | "dark";
   }
 
   export class SectionMenuItem extends UIElement {
@@ -561,14 +578,7 @@ declare module "@elf-framework/ui" {
     direction?: ToastDirectionType;
     closable?: boolean;
     delay?: number;
-    variant?:
-      | "default"
-      | "primary"
-      | "secondary"
-      | "success"
-      | "info"
-      | "warning"
-      | "danger";
+    variant?: VariantType;
     onShow?: () => void;
     onHide?: () => void;
   }
@@ -715,6 +725,11 @@ declare module "@elf-framework/ui" {
     align?: "left" | "center" | "right";
     items?: string[] | UIElement[];
     style?: TabStripStyle & CommonStyle;
+    orientation?: OrientationType;
+    showIndicator?: boolean;
+    size: SizeType;
+    variant?: VariantType;
+    quiet?: boolean;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 
@@ -761,6 +776,11 @@ declare module "@elf-framework/ui" {
     align?: "left" | "center" | "right";
     content?: TabItem[];
     style?: TabStyle & CommonStyle;
+    orientation: OrientationType;
+    showIndicator?: boolean;
+    size?: SizeType;
+    variant?: VariantType;
+    quiet?: boolean;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 
@@ -921,7 +941,7 @@ declare module "@elf-framework/ui" {
     style: CommonStyle;
     indeterminate?: boolean;
     variant?: "default" | "dark" | "danger";
-    size?: "small" | "medium" | "large" | "extra-large";
+    size?: SizeType;
     disabled?: boolean;
   }
   export class Radio extends UIElement {
@@ -933,7 +953,7 @@ declare module "@elf-framework/ui" {
     value: any;
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
-    size: "small" | "medium" | "large" | "extra-large";
+    size: SizeType;
     variant: "default" | "dark" | "danger";
     disabled?: boolean;
     options?: RadioProps[];
@@ -957,11 +977,11 @@ declare module "@elf-framework/ui" {
   export interface CheckboxGroupProps {
     name: string;
     value: any;
-    direction?: "vertical" | "horizontal";
+    direction?: OrientationType;
     options: CheckboxItem[];
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
-    size: "small" | "medium" | "large" | "extra-large";
+    size: SizeType;
     variant: "default" | "dark" | "danger";
     disabled?: boolean;
   }
@@ -1141,18 +1161,9 @@ declare module "@elf-framework/ui" {
   }
 
   interface DividerProps {
-    size: "small" | "medium" | "large";
-    variant:
-      | "default"
-      | "primary"
-      | "secondary"
-      | "success"
-      | "danger"
-      | "warning"
-      | "info"
-      | "light"
-      | "dark";
-    orientation: "horizontal" | "vertical";
+    size: SizeType;
+    variant: VariantType;
+    orientation: OrientationType;
     margin?: number | string;
     style: CommonStyle;
   }
@@ -1161,7 +1172,7 @@ declare module "@elf-framework/ui" {
   }
 
   interface AlertProps {
-    variant: "default" | "primary" | "success" | "info" | "warning" | "danger";
+    variant: VariantType;
     title: ContentType;
     content: ContentType;
     style: CommonStyle;
@@ -1196,8 +1207,8 @@ declare module "@elf-framework/ui" {
   interface HelpTextProps {
     content: ContentType;
     style: CommonStyle;
-    variant: "default" | "primary" | "success" | "info" | "warning" | "danger";
-    size: "small" | "medium" | "large" | "extra-large";
+    variant: VariantType;
+    size: SizeType;
     icon?: ContentType;
     disabled?: boolean;
   }
@@ -1208,7 +1219,7 @@ declare module "@elf-framework/ui" {
   interface FieldProps {
     help: ContentType;
     label: ContentType;
-    size: "small" | "medium" | "large" | "extra-large";
+    size: SizeType;
     style: CommonStyle;
     disabled?: boolean;
     required?: boolean;
@@ -1260,5 +1271,18 @@ declare module "@elf-framework/ui" {
   }
   export class Breadcrumbs extends UIElement {
     props: BreadcrumbsProps & CommonStyle & DomEventType;
+  }
+
+  interface AvatarProps {
+    content?: ContentType;
+    size: "50" | "100" | "200" | "300" | "400" | "500" | "600" | "700";
+    variant: VariantType;
+    shape: "circle" | "square";
+    style: CommonStyle;
+    disabled?: boolean;
+  }
+
+  export class Avatar extends UIElement {
+    props: AvatarProps & DomEventType;
   }
 }

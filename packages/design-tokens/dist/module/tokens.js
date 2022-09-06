@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 00:16:28 GMT
+ * Generated on Tue, 06 Sep 2022 12:27:51 GMT
  */
 
 module.exports = {
@@ -3875,6 +3875,162 @@ module.exports = {
             ]
           }
         }
+      }
+    }
+  },
+  "avatar": {
+    "size": {
+      "50": {
+        "value": "20px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "20px"
+        },
+        "name": "AvatarSize50",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "50"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "50"
+        ]
+      },
+      "100": {
+        "value": "30px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "30px"
+        },
+        "name": "AvatarSize100",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "100"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "100"
+        ]
+      },
+      "200": {
+        "value": "35px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "35px"
+        },
+        "name": "AvatarSize200",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "200"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "200"
+        ]
+      },
+      "300": {
+        "value": "40px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "40px"
+        },
+        "name": "AvatarSize300",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "300"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "300"
+        ]
+      },
+      "400": {
+        "value": "45px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "45px"
+        },
+        "name": "AvatarSize400",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "400"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "400"
+        ]
+      },
+      "500": {
+        "value": "50px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "50px"
+        },
+        "name": "AvatarSize500",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "500"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "500"
+        ]
+      },
+      "600": {
+        "value": "55px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "55px"
+        },
+        "name": "AvatarSize600",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "600"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "600"
+        ]
+      },
+      "700": {
+        "value": "60px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "60px"
+        },
+        "name": "AvatarSize700",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "700"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "700"
+        ]
       }
     }
   },
