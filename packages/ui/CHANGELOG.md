@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.1.30
+
+### Patch Changes
+
+- support breadcrumbs component
+
 ## 2.1.29
 
 ### Patch Changes

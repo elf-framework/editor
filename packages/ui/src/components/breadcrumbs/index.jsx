@@ -1,4 +1,4 @@
-import { classnames, isString, UIElement } from "@elf-framework/sapa";
+import { classnames, isString, UIElement, useMemo } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
@@ -29,21 +29,26 @@ function BreadcrumbsItem({
     }
   }
 
+  const localClass = useMemo(() => {
+    return classnames("elf--breadcrumbs-item", { selected, multiline });
+  }, [selected, multiline]);
+
   return (
-    <span
-      class={classnames("elf--breadcrumbs-item", { selected, multiline })}
-      style={propertyMap(style, itemCssProperties)}
-    >
+    <span class={localClass} style={propertyMap(style, itemCssProperties)}>
       {tooltip ? (
         <Tooltip ref="$tooltip" {...tooltip}>
           <a
             href={href}
             onClick={onClick}
             onFocus={() => {
-              this.children.$tooltip.show();
+              if (tooltip.trigger.includes("focus")) {
+                this.children.$tooltip.show();
+              }
             }}
             onBlur={() => {
-              this.children.$tooltip.hide();
+              if (tooltip.trigger.includes("focus")) {
+                this.children.$tooltip.hide();
+              }
             }}
           >
             {title}

@@ -5105,8 +5105,11 @@ var __publicField = (obj, key, value) => {
         };
       }
     }
+    const localClass = sapa.useMemo(() => {
+      return sapa.classnames("elf--breadcrumbs-item", { selected, multiline });
+    }, [selected, multiline]);
     return /* @__PURE__ */ sapa.createElementJsx("span", {
-      class: sapa.classnames("elf--breadcrumbs-item", { selected, multiline }),
+      class: localClass,
       style: propertyMap(style2, itemCssProperties)
     }, tooltip ? /* @__PURE__ */ sapa.createElementJsx(Tooltip, {
       ref: "$tooltip",
@@ -5115,10 +5118,14 @@ var __publicField = (obj, key, value) => {
       href,
       onClick,
       onFocus: () => {
-        this.children.$tooltip.show();
+        if (tooltip.trigger.includes("focus")) {
+          this.children.$tooltip.show();
+        }
       },
       onBlur: () => {
-        this.children.$tooltip.hide();
+        if (tooltip.trigger.includes("focus")) {
+          this.children.$tooltip.hide();
+        }
       }
     }, title)) : /* @__PURE__ */ sapa.createElementJsx("a", {
       href,

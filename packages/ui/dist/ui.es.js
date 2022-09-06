@@ -5103,8 +5103,11 @@ function BreadcrumbsItem({
       };
     }
   }
+  const localClass = useMemo(() => {
+    return classnames("elf--breadcrumbs-item", { selected, multiline });
+  }, [selected, multiline]);
   return /* @__PURE__ */ createElementJsx("span", {
-    class: classnames("elf--breadcrumbs-item", { selected, multiline }),
+    class: localClass,
     style: propertyMap(style2, itemCssProperties)
   }, tooltip ? /* @__PURE__ */ createElementJsx(Tooltip, {
     ref: "$tooltip",
@@ -5113,10 +5116,14 @@ function BreadcrumbsItem({
     href,
     onClick,
     onFocus: () => {
-      this.children.$tooltip.show();
+      if (tooltip.trigger.includes("focus")) {
+        this.children.$tooltip.show();
+      }
     },
     onBlur: () => {
-      this.children.$tooltip.hide();
+      if (tooltip.trigger.includes("focus")) {
+        this.children.$tooltip.hide();
+      }
     }
   }, title)) : /* @__PURE__ */ createElementJsx("a", {
     href,
