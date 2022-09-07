@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 12:27:51 GMT
+ * Generated on Wed, 07 Sep 2022 12:54:37 GMT
  */
 
 export const ImageLogo : string;
@@ -44,6 +44,18 @@ export const ColorDownSuccess : string;
 export const ColorDownDanger : string;
 export const ColorDownWarning : string;
 export const ColorDownInfo : string;
+export const ColorStatusInformative : string; // e.g., active, in use, live, published
+export const ColorStatusNeutral : string; // e.g., archived, deleted, paused, draft, not started, ended
+export const ColorStatusPositive : string; // e.g., completed, finished, success, approved, verified, active, in use, live, published
+export const ColorStatusNotice : string; // e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing
+export const ColorStatusNegative : string; // e.g., error, failed, denied, blocked, inactive, not in use, unpublished
+export const ColorStatusIndigo : string;
+export const ColorStatusCelery : string;
+export const ColorStatusYellow : string;
+export const ColorStatusMagenta : string;
+export const ColorStatusFuchsia : string;
+export const ColorStatusPurple : string;
+export const ColorStatusSeafoam : string;
 export const ColorRed0 : string;
 export const ColorRed1 : string;
 export const ColorRed2 : string;
@@ -191,6 +203,7 @@ export const AlertColorBackgroundWeakDanger : string; // Base color for the dang
 export const AlertColorBackgroundWeakWarning : string; // Base color for the warning color
 export const AlertColorBackgroundWeakSuccess : string; // Base color for the success color
 export const AlertColorBackgroundWeakInfo : string; // Base color for the info color
+export const AvatarSize30 : string;
 export const AvatarSize50 : string;
 export const AvatarSize100 : string;
 export const AvatarSize200 : string;

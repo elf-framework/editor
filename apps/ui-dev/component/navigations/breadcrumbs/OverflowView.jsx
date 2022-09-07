@@ -1,4 +1,4 @@
-import { CheckFilled } from "@elf-framework/icon";
+import CheckFilled from "@elf-framework/icon/CheckFilled";
 import {
   Breadcrumbs,
   Button,

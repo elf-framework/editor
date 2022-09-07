@@ -1,0 +1,58 @@
+---
+title: Tag
+layout: DesignLayout
+filename: pages/design-system/navigations/tag/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/navigations/tag/MainView.jsx"; 
+import { AvatarView } from "../../../../../component/navigations/tag/AvatarView.jsx"; 
+import { DisabledView } from "../../../../../component/navigations/tag/DisabledView.jsx"; 
+import { LabelView } from "../../../../../component/navigations/tag/LabelView.jsx"; 
+import { RemovableView } from "../../../../../component/navigations/tag/RemovableView.jsx"; 
+import { SizeView } from "../../../../../component/navigations/tag/SizeView.jsx"; 
+import { VariantView } from "../../../../../component/navigations/tag/VariantView.jsx"; 
+import { ReadOnlyView } from "../../../../../component/navigations/tag/ReadOnlyView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Tags allow users to categorize content. They can represent keywords or people, and are grouped to describe an item or a search request.
+
+
+
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/tag/" />
+</div>
+
+## Options 
+
+### Label
+
+<LabelView />
+
+### Avatar
+
+<AvatarView />
+
+
+### Removable
+
+<RemovableView />
+
+### Emphasis 
+
+<VariantView />
+
+### Disabled
+
+<DisabledView />
+
+
+### Read Only
+
+<ReadOnlyView />

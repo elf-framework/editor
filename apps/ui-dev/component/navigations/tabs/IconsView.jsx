@@ -1,4 +1,4 @@
-import { PaidOutlined } from "@elf-framework/icon";
+import PaidOutlined from "@elf-framework/icon/PaidOutlined";
 import { Grid, Tab, TabItem, VBox } from "@elf-framework/ui";
 
 export function IconsView() {

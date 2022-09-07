@@ -1,7 +1,7 @@
 .elf--tabstrip {
     --elf--tabstrip-background-color: transparent;
     --elf--tabstrip-color: var(--color-gray-6);
-    --elf--tabstrip-font-weight: 400;
+    --elf--tabstrip-font-weight: 500;
     --elf--tabstrip-font-size: 14px;
     --elf--tabstrip-gap: 0.7em;
     --elf--tabstrip-border-color: transparent;
@@ -206,7 +206,6 @@
 
             &.selected {
                 --elf--tabstrip-color: var(--elf--tabstrip-selected-color);
-                font-weight: 600;     
             }
 
             &.disabled {

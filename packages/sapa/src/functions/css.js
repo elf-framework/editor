@@ -95,12 +95,16 @@ const convertStyleKey = (key) => {
 
 const ArrayNumberStyleKeys = {
   padding: true,
+  border: true,
+  margin: true,
+  boxShadow: true,
 };
 
 /**
  *
  * convertNumberStyleValue("width", 10) -> "width: 10px"
  * convertNumberStyleValue("borderWidth", 10) -> "border-width: 10px"
+ * convertNumberStyleValue("padding", [10, 10]) -> "padding: 10px 10px"
  *
  */
 function convertNumberStyleValue(key, value) {
@@ -124,7 +128,10 @@ function styleKeyMap(key) {
 export function css(style) {
   const newStyles = {};
   Object.keys(style).forEach((styleKey) => {
-    newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(styleKey, style[styleKey]);
+    newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(
+      styleKey,
+      style[styleKey]
+    );
   });
 
   return newStyles;

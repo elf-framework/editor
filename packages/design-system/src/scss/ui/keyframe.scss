@@ -167,3 +167,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+@keyframes indeterminate {
+  0% {
+    left: -100%;
+    transform: scaleX(0.5);
+  }
+
+  50% {
+    transform: scaleX(1.5);
+  }
+
+  100% {
+    left: 100%;
+    transform: scaleX(0.5);
+  }
+}

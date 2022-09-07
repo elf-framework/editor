@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 12:27:51 GMT
+ * Generated on Wed, 07 Sep 2022 12:54:37 GMT
  */
 
 export default tokens;
@@ -73,6 +73,20 @@ declare const tokens: {
       "danger": DesignToken,
       "warning": DesignToken,
       "info": DesignToken
+    },
+    "status": {
+      "informative": DesignToken,
+      "neutral": DesignToken,
+      "positive": DesignToken,
+      "notice": DesignToken,
+      "negative": DesignToken,
+      "indigo": DesignToken,
+      "celery": DesignToken,
+      "yellow": DesignToken,
+      "magenta": DesignToken,
+      "fuchsia": DesignToken,
+      "purple": DesignToken,
+      "seafoam": DesignToken
     },
     "red": {
       "0": DesignToken,
@@ -260,6 +274,7 @@ declare const tokens: {
   },
   "avatar": {
     "size": {
+      "30": DesignToken,
       "50": DesignToken,
       "100": DesignToken,
       "200": DesignToken,

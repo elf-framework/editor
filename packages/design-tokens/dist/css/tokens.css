@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 12:27:52 GMT
+ * Generated on Wed, 07 Sep 2022 12:54:37 GMT
  */
 
 :root {
@@ -100,6 +100,7 @@
   --avatar-size-200: 35px;
   --avatar-size-100: 30px;
   --avatar-size-50: 20px;
+  --avatar-size-30: 16px;
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
   --color-white: #ffffff;
   --color-teal-9: #223a3b;
@@ -274,6 +275,18 @@
   --color-text-primary: var(--color-gray-8);
   --color-text-default: var(--color-gray-8);
   --color-black: var(--color-gray-9);
+  --color-status-seafoam: var(--color-teal-6);
+  --color-status-purple: var(--color-purple-5);
+  --color-status-fuchsia: var(--color-pink-6);
+  --color-status-magenta: var(--color-purple-5);
+  --color-status-yellow: var(--color-yellow-3);
+  --color-status-celery: var(--color-green-7);
+  --color-status-indigo: var(--color-orange-7);
+  --color-status-negative: var(--color-red-7); /* e.g., error, failed, denied, blocked, inactive, not in use, unpublished */
+  --color-status-notice: var(--color-purple-6); /* e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing */
+  --color-status-positive: var(--color-green-7); /* e.g., completed, finished, success, approved, verified, active, in use, live, published */
+  --color-status-neutral: var(--color-gray-8); /* e.g., archived, deleted, paused, draft, not started, ended */
+  --color-status-informative: var(--color-blue-7); /* e.g., active, in use, live, published */
   --color-down-info: var(--color-blue-7);
   --color-down-warning: var(--color-orange-8);
   --color-down-danger: var(--color-red-8);

@@ -3,9 +3,10 @@
     // border-radius: 5px;
     box-sizing: border-box;
     display: block;
+    border-radius: 5px;
     &.selected {
         background-color: var(--color-blue-1) !important;
-        border-right: 5px solid var(--color-blue-5);
+        // border-right: 5px solid var(--color-blue-5);
         font-weight: bold;
     }
 

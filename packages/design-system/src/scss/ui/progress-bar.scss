@@ -1,0 +1,104 @@
+
+.elf--progressbar {
+  --elf--progressbar-width: 200px;
+  --elf--progressbar-font-size: var(--font-size-medium);
+  --elf--progressbar-bar-height: 4px;
+  --elf--progressbar-background-color: var(--color-gray-2);
+  --elf--progressbar-active-color: var(--color-black);
+  --elf--progressbar-color: var(--color-black);
+  --elf--progressbar-duration: 1.5s;
+  --elf--progressbar-border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: var(--elf--progressbar-width);
+  color: var(--elf--progressbar-color);
+
+  > .title-area {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--elf--progressbar-font-size);
+  }
+
+  /** size **/
+  &.small {
+    --elf--progressbar-font-size: var(--font-size-small);
+    --elf--progressbar-bar-height: 2px;
+  }
+
+  &.medium {
+    --elf--progressbar-font-size: var(--font-size-medium);
+  }
+
+  &.large {
+    --elf--progressbar-font-size: var(--font-size-large);
+    --elf--progressbar-bar-height: 6px;
+  }
+
+  &.extra-large {
+    --elf--progressbar-font-size: var(--font-size-extra-large);
+    --elf--progressbar-bar-height: 8px;
+  }
+
+  /** variant **/
+  &.primary {
+    --elf--progressbar-active-color: var(--color-primary);
+  }
+
+  &.secondary {
+    --elf--progressbar-active-color: var(--color-secondary);
+  }
+
+  &.success {
+    --elf--progressbar-active-color: var(--color-success);
+  }
+
+  &.warning {
+    --elf--progressbar-active-color: var(--color-warning);
+  }
+
+  &.danger {
+    --elf--progressbar-active-color: var(--color-danger);
+  }
+
+  &.info {
+    --elf--progressbar-active-color: var(--color-info);
+  }
+
+  &.dark {
+    --elf--progressbar-active-color: var(--color-white);
+    --elf--progressbar-background-color: rgba(255, 255, 255, 0.3);
+    --elf--progressbar-color: var(--color-white);
+  }
+
+  &.indeterminate {
+    > .progress-area {
+      > .progress {
+        position: absolute;
+        width: 30% !important;
+        left: 0px;
+        animation: indeterminate var(--elf--progressbar-duration) infinite linear;
+      }
+    }
+  }
+
+  /** **/
+  &.rect {
+    --elf--progressbar-border-radius: 0px;
+  }
+
+  > .progress-area {
+    width: 100%;
+    border-radius: var(--elf--progressbar-border-radius);
+    overflow: hidden;
+    height: var(--elf--progressbar-bar-height);
+    background-color: var(--elf--progressbar-background-color);
+    position: relative;
+
+    > .progress {
+      height: 100%;
+      background-color: var(--elf--progressbar-active-color);
+    }
+  }
+}

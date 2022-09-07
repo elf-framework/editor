@@ -33,6 +33,7 @@
         --elf--avatar-size: var(--avatar-size-700);
     }
 
+    &.size-30 { --elf--avatar-size: var(--avatar-size-30); }
     &.size-50 { --elf--avatar-size: var(--avatar-size-50); }
     &.size-100 { --elf--avatar-size: var(--avatar-size-100); }
     &.size-200 { --elf--avatar-size: var(--avatar-size-200); }

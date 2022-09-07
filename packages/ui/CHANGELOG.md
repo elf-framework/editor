@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.32
+
+### Patch Changes
+
+- add badge, progress-bar, tag component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.32
+
 ## 2.1.31
 
 ### Patch Changes

@@ -1,4 +1,4 @@
-import { CheckFilled } from "@elf-framework/icon";
+import CheckFilled from "@elf-framework/icon/CheckFilled";
 import { Breadcrumbs, Grid, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {

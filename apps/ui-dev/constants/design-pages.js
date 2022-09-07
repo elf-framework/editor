@@ -160,7 +160,7 @@ export default [
       },
       {
         link: COMPONENTS_URL + "navigations/tag/",
-        title: "Tag * ",
+        title: "Tag",
       },
       {
         link: COMPONENTS_URL + "navigations/treeview/",
@@ -173,10 +173,10 @@ export default [
     link: COMPONENTS_URL + "status/",
     title: "Status",
     items: [
-      { link: COMPONENTS_URL + "status/badge/", title: "Badge * " },
+      { link: COMPONENTS_URL + "status/badge/", title: "Badge " },
       {
-        link: COMPONENTS_URL + "status/progress/",
-        title: "Progress * ",
+        link: COMPONENTS_URL + "status/progressbar/",
+        title: "Progress bar * ",
       },
       {
         link: COMPONENTS_URL + "status/status-light/",

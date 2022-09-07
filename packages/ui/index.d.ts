@@ -1285,4 +1285,69 @@ declare module "@elf-framework/ui" {
   export class Avatar extends UIElement {
     props: AvatarProps & DomEventType;
   }
+
+  interface TagProps {
+    content: ContentType;
+    style: CommonStyle;
+    removable: boolean;
+    onClose: () => void;
+    variant: VariantType;
+    filled?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+  }
+  export class Tag extends UIElement {
+    props: TagProps & DomEventType;
+  }
+
+  interface TagGroupProps {
+    content: ContentType;
+    gap?: number;
+  }
+  export class TagGroup extends UIElement {
+    props: TagGroupProps;
+  }
+
+  interface BadgeProps {
+    content: ContentType;
+    style: CommonStyle;
+    onClose: () => void;
+    disabled?: boolean;
+    size: SizeType;
+    variant:
+      | "informative"
+      | "neutral"
+      | "positive"
+      | "notice"
+      | "negative"
+      | "indigo"
+      | "celery"
+      | "chartreuse"
+      | "yellow"
+      | "magenta"
+      | "fuchsia"
+      | "purple"
+      | "seafoam";
+    fixed?: boolean;
+    placement?: "none" | "top" | "bottom" | "left" | "right";
+  }
+  export class Badge extends UIElement {
+    props: BadgeProps & DomEventType;
+  }
+
+  interface ProgressBarProps {
+    value: number;
+    showValue?: boolean;
+    valueFunc: (value: number) => ContentType;
+    variant: VariantType;
+    size: SizeType;
+    style: CommonStyle;
+    max: number;
+    min: number;
+    indeterminate?: boolean;
+    shape: "round" | "rect";
+  }
+  export class ProgressBar extends UIElement {
+    props: ProgressBarProps & DomEventType;
+  }
 }

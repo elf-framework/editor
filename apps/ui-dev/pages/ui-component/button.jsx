@@ -1,4 +1,4 @@
-import { AddCommentFilled } from "@elf-framework/icon";
+import AddCommentFilled from "@elf-framework/icon/AddCommentFilled";
 import { start } from "@elf-framework/sapa";
 import { Button, Flex, Grid } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";

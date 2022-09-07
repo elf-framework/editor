@@ -54,3 +54,6 @@ export * from "./components/layout/AppResizeBar";
 export * from "./components/help-text";
 export * from "./components/breadcrumbs";
 export * from "./components/avatar";
+export * from "./components/tag";
+export * from "./components/badge";
+export * from "./components/progress-bar";

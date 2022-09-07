@@ -72,6 +72,49 @@
       "info": {
         "value": "{color.blue.7.value}"
       }
+    },
+    "status": {
+      "informative": {
+        "value": "{color.blue.7.value}",
+        "comment": "e.g., active, in use, live, published"
+      },
+      "neutral": {
+        "value": "{color.gray.8.value}",
+        "comment": "e.g., archived, deleted, paused, draft, not started, ended"
+      },
+      "positive": {
+        "value": "{color.green.7.value}",
+        "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published"
+      },
+      "notice": {
+        "value": "{color.purple.6.value}",
+        "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing"
+      },
+      "negative": {
+        "value": "{color.red.7.value}",
+        "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished"
+      },
+      "indigo": {
+        "value": "{color.orange.7.value}"
+      },
+      "celery": {
+        "value": "{color.green.7.value}"
+      },
+      "yellow": {
+        "value": "{color.yellow.3.value}"
+      },
+      "magenta": {
+        "value": "{color.purple.5.value}"
+      },
+      "fuchsia": {
+        "value": "{color.pink.6.value}"
+      },
+      "purple": {
+        "value": "{color.purple.5.value}"
+      },
+      "seafoam": {
+        "value": "{color.teal.6.value}"
+      }
     }
   }
 }

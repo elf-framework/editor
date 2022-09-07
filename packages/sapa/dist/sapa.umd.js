@@ -3482,7 +3482,10 @@ var __privateMethod = (obj, member, method) => {
     return upperKey;
   };
   const ArrayNumberStyleKeys = {
-    padding: true
+    padding: true,
+    border: true,
+    margin: true,
+    boxShadow: true
   };
   function convertNumberStyleValue(key, value) {
     if (typeof value === "number") {
@@ -3502,7 +3505,10 @@ var __privateMethod = (obj, member, method) => {
   function css(style) {
     const newStyles = {};
     Object.keys(style).forEach((styleKey) => {
-      newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(styleKey, style[styleKey]);
+      newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(
+        styleKey,
+        style[styleKey]
+      );
     });
     return newStyles;
   }

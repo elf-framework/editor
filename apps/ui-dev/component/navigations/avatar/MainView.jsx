@@ -21,7 +21,7 @@ export function MainView() {
         }}
       >
         <div>
-          <Avatar>
+          <Avatar size="300">
             <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
           </Avatar>
         </div>

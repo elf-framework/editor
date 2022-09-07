@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 12:27:51 GMT
+ * Generated on Wed, 07 Sep 2022 12:54:37 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -44,6 +44,18 @@ export const ColorDownSuccess = "#1b5441";
 export const ColorDownDanger = "#80252a";
 export const ColorDownWarning = "#5c2200";
 export const ColorDownInfo = "#0060cc";
+export const ColorStatusInformative = "#0060cc"; // e.g., active, in use, live, published
+export const ColorStatusNeutral = "#39444d"; // e.g., archived, deleted, paused, draft, not started, ended
+export const ColorStatusPositive = "#067852"; // e.g., completed, finished, success, approved, verified, active, in use, live, published
+export const ColorStatusNotice = "#8c40ff"; // e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing
+export const ColorStatusNegative = "#a12b2b"; // e.g., error, failed, denied, blocked, inactive, not in use, unpublished
+export const ColorStatusIndigo = "#762c00";
+export const ColorStatusCelery = "#067852";
+export const ColorStatusYellow = "#ffda00";
+export const ColorStatusMagenta = "#a469ff";
+export const ColorStatusFuchsia = "#d1347a";
+export const ColorStatusPurple = "#a469ff";
+export const ColorStatusSeafoam = "#199091";
 export const ColorRed0 = "#fff2f3";
 export const ColorRed1 = "#ffebec";
 export const ColorRed2 = "#ffcfd1";
@@ -191,6 +203,7 @@ export const AlertColorBackgroundWeakDanger = "#ffebec"; // Base color for the d
 export const AlertColorBackgroundWeakWarning = "#ffd8b5"; // Base color for the warning color
 export const AlertColorBackgroundWeakSuccess = "#d6fff1"; // Base color for the success color
 export const AlertColorBackgroundWeakInfo = "#e2f4ff"; // Base color for the info color
+export const AvatarSize30 = "16px";
 export const AvatarSize50 = "20px";
 export const AvatarSize100 = "30px";
 export const AvatarSize200 = "35px";

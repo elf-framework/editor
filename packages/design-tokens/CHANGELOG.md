@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.32
+
+### Patch Changes
+
+- add badge, progress-bar, tag component
+
 ## 2.1.31
 
 ### Patch Changes

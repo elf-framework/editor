@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Sep 2022 12:27:51 GMT
+ * Generated on Wed, 07 Sep 2022 12:54:37 GMT
  */
 
 (function(root, factory) {
@@ -890,6 +890,246 @@
           "color",
           "down",
           "info"
+        ]
+      }
+    },
+    "status": {
+      "informative": {
+        "value": "#0060cc",
+        "comment": "e.g., active, in use, live, published",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.7.value}",
+          "comment": "e.g., active, in use, live, published"
+        },
+        "name": "ColorStatusInformative",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "informative"
+        },
+        "path": [
+          "color",
+          "status",
+          "informative"
+        ]
+      },
+      "neutral": {
+        "value": "#39444d",
+        "comment": "e.g., archived, deleted, paused, draft, not started, ended",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.8.value}",
+          "comment": "e.g., archived, deleted, paused, draft, not started, ended"
+        },
+        "name": "ColorStatusNeutral",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "neutral"
+        },
+        "path": [
+          "color",
+          "status",
+          "neutral"
+        ]
+      },
+      "positive": {
+        "value": "#067852",
+        "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.7.value}",
+          "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published"
+        },
+        "name": "ColorStatusPositive",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "positive"
+        },
+        "path": [
+          "color",
+          "status",
+          "positive"
+        ]
+      },
+      "notice": {
+        "value": "#8c40ff",
+        "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.purple.6.value}",
+          "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing"
+        },
+        "name": "ColorStatusNotice",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "notice"
+        },
+        "path": [
+          "color",
+          "status",
+          "notice"
+        ]
+      },
+      "negative": {
+        "value": "#a12b2b",
+        "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.7.value}",
+          "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished"
+        },
+        "name": "ColorStatusNegative",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "negative"
+        },
+        "path": [
+          "color",
+          "status",
+          "negative"
+        ]
+      },
+      "indigo": {
+        "value": "#762c00",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.orange.7.value}"
+        },
+        "name": "ColorStatusIndigo",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "indigo"
+        },
+        "path": [
+          "color",
+          "status",
+          "indigo"
+        ]
+      },
+      "celery": {
+        "value": "#067852",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.7.value}"
+        },
+        "name": "ColorStatusCelery",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "celery"
+        },
+        "path": [
+          "color",
+          "status",
+          "celery"
+        ]
+      },
+      "yellow": {
+        "value": "#ffda00",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.yellow.3.value}"
+        },
+        "name": "ColorStatusYellow",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "yellow"
+        },
+        "path": [
+          "color",
+          "status",
+          "yellow"
+        ]
+      },
+      "magenta": {
+        "value": "#a469ff",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.purple.5.value}"
+        },
+        "name": "ColorStatusMagenta",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "magenta"
+        },
+        "path": [
+          "color",
+          "status",
+          "magenta"
+        ]
+      },
+      "fuchsia": {
+        "value": "#d1347a",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.pink.6.value}"
+        },
+        "name": "ColorStatusFuchsia",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "fuchsia"
+        },
+        "path": [
+          "color",
+          "status",
+          "fuchsia"
+        ]
+      },
+      "purple": {
+        "value": "#a469ff",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.purple.5.value}"
+        },
+        "name": "ColorStatusPurple",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "purple"
+        },
+        "path": [
+          "color",
+          "status",
+          "purple"
+        ]
+      },
+      "seafoam": {
+        "value": "#199091",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.teal.6.value}"
+        },
+        "name": "ColorStatusSeafoam",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "seafoam"
+        },
+        "path": [
+          "color",
+          "status",
+          "seafoam"
         ]
       }
     },
@@ -3891,6 +4131,25 @@
   },
   "avatar": {
     "size": {
+      "30": {
+        "value": "16px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "16px"
+        },
+        "name": "AvatarSize30",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "30"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "30"
+        ]
+      },
       "50": {
         "value": "20px",
         "filePath": "tokens/component/avatar.json",

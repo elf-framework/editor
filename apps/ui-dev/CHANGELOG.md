@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.23
+
+### Patch Changes
+
+- add tag, badge, progressbar documentation
+
 ## 1.0.22
 
 ### Patch Changes

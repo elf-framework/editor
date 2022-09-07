@@ -1,6 +1,9 @@
 {
     "avatar": {
         "size": {
+            "30": {
+                "value": "16px"
+            },            
             "50": {
                 "value": "20px"
             },
