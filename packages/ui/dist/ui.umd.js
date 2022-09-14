@@ -350,10 +350,10 @@ var __publicField = (obj, key, value) => {
     template() {
       const {
         variant = "default",
-        size,
+        size = "medium",
         disabled,
         selected,
-        shape,
+        shape = "round",
         quiet = false,
         outline = false,
         style: style2 = {},
@@ -5759,7 +5759,7 @@ var __publicField = (obj, key, value) => {
         selected: data.selected && selectionStyle === "highlight"
       }),
       "data-depth": depth,
-      key: renderIndex,
+      key: data.id,
       draggable: draggable ? true : void 0,
       style: {
         "--elf--virtual-scroll-item-top": `${top}px`,
@@ -5774,7 +5774,7 @@ var __publicField = (obj, key, value) => {
       ...{
         checked: data.selected ? "checked" : void 0
       },
-      onClick: () => onSelect(item)
+      onClick: () => onSelect(item, "checkbox")
     })) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
       class: "depth-area"
     }), data.children ? /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -5786,12 +5786,14 @@ var __publicField = (obj, key, value) => {
       class: sapa.classnames({
         collapsed: data.collapsed
       })
-    }, arrow || /* @__PURE__ */ sapa.createElementJsx("span", null, "\u203A"))) : void 0, contextView ? /* @__PURE__ */ sapa.createElementJsx("div", {
+    }, arrow || /* @__PURE__ */ sapa.createElementJsx("span", null, "\u203A"))) : /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "collapse-area"
+    }, "\xA0"), contextView ? /* @__PURE__ */ sapa.createElementJsx("div", {
       class: "context-area"
     }, contextView) : void 0, /* @__PURE__ */ sapa.createElementJsx("label", {
       class: "label-area",
-      onClick: () => onSelect(item)
-    }, data.label), actions ? /* @__PURE__ */ sapa.createElementJsx("div", {
+      onClick: () => onSelect(item, "highlight")
+    }, data.title), actions ? /* @__PURE__ */ sapa.createElementJsx("div", {
       class: "actions-area"
     }, actions) : void 0);
   }
@@ -5815,7 +5817,7 @@ var __publicField = (obj, key, value) => {
         isInDraggable: false
       };
     }
-    updateItems(items = this.state.originalItems) {
+    updateItems(items = []) {
       return treeToList(items, 0, {
         index: 0,
         up() {
@@ -5834,9 +5836,11 @@ var __publicField = (obj, key, value) => {
         renderArrow,
         draggable = false,
         onClickNode,
-        onToggleNode
+        onToggleNode,
+        onDropNode,
+        items: originalItems
       } = this.props;
-      const { items } = this.state;
+      const items = this.updateItems(originalItems);
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--treeview", {});
       }, []);
@@ -5846,20 +5850,16 @@ var __publicField = (obj, key, value) => {
       };
       const itemRendererProps = {
         onSelect: sapa.useCallback(
-          (item) => {
-            onClickNode(item);
-            this.setState({
-              items: this.updateItems()
-            });
+          (item, style22) => {
+            if (style22 === selectionStyle) {
+              onClickNode(item);
+            }
           },
           [onClickNode]
         ),
         onToggle: sapa.useCallback(
           (item) => {
             onToggleNode(item);
-            this.setState({
-              items: this.updateItems()
-            });
           },
           [onToggleNode]
         ),
@@ -5877,7 +5877,7 @@ var __publicField = (obj, key, value) => {
         const ghost = $item.clone(true).el;
         ghost.style.position = "absolute";
         ghost.style.top = "auto";
-        ghost.style.left = "0";
+        ghost.style.left = "-100000px";
         ghost.style.width = `${itemRect.width}px`;
         ghost.style.height = `${itemRect.height}px`;
         ghost.style.opacity = 1;
@@ -5885,9 +5885,9 @@ var __publicField = (obj, key, value) => {
         ghost.style.zIndex = 9999;
         ghost.classList.add("ghost");
         const ghostLeft = e.clientX - itemRect.left;
-        const ghostTop = e.clientY - itemRect.top;
+        e.clientY - itemRect.top;
         document.body.appendChild(ghost);
-        e.dataTransfer.setDragImage(ghost, ghostLeft, ghostTop);
+        e.dataTransfer.setDragImage(ghost, ghostLeft, -10);
         this.setState(
           {
             isInDraggable: true,
@@ -5897,7 +5897,6 @@ var __publicField = (obj, key, value) => {
           },
           false
         );
-        console.log("drag start", this.state.startId);
         e.target.style.opacity = 0.5;
         this.$el.addClass("dragging");
       }, []);
@@ -5905,55 +5904,83 @@ var __publicField = (obj, key, value) => {
         sapa.Dom.create(this.state.ghost).remove();
         e.target.style.opacity = 1;
         this.$el.removeClass("dragging");
+        this.$el.removeClass("dragovered");
       }, []);
       const onDragEnter = sapa.useCallback(() => {
       }, []);
       const onDragOver = sapa.useCallback((e) => {
         e.preventDefault();
+        this.$el.addClass("dragovered");
         const $item = sapa.Dom.create(e.target).closest("elf--treeview-item");
+        if (!$item) {
+          return;
+        }
+        const $depthArea = $item == null ? void 0 : $item.$(".depth-area");
         this.setState(
           {
             endId: $item.attr("key")
           },
           false
         );
-        const rect = $item.rect();
-        const rate = (e.clientY - rect.top) / (rect.bottom - rect.top);
-        let top = rect.top;
-        if (rate > 0.66) {
-          top = rect.bottom;
-        } else if (rate > 0.33) {
-          top = rect.top + (rect.bottom - rect.top) / 2;
+        if (this.state.endId === this.state.startId) {
+          return;
         }
-        sapa.Dom.create(this.refs.$dragline).css({
-          top: `${top - this.state.rect.top}px`
-        });
-        console.log(
-          "dragover",
-          $item.rect(),
-          this.state.isInDraggable,
-          this.state.startId,
-          this.state.endId
-        );
-      }, []);
-      const onDragLeave = sapa.useCallback(() => {
-      }, []);
-      const onDrop = sapa.useCallback((e) => {
-        e.preventDefault();
+        const rect = $item.rect();
+        const depthRect = $depthArea.rect();
+        const left = depthRect.right - rect.left;
+        const rate = (e.clientY - rect.top) / (rect.bottom - rect.top);
         this.setState(
           {
-            isInDraggable: false,
-            endId: sapa.Dom.create(e.target).closest("elf--treeview-item").attr("key")
+            rate
           },
           false
         );
-        console.log(
-          "drop",
-          this.state.isInDraggable,
-          this.state.startId,
-          this.state.endId
-        );
+        let top = rect.top;
+        if (0.33 < rate && rate < 0.66) {
+          this.$el.removeClass("line");
+          this.$el.addClass("area");
+          sapa.Dom.create(this.refs.$dragArea).css({
+            top: `${rect.top - this.state.rect.top}px`,
+            left: `${left}px`,
+            width: `${rect.width - left}px`,
+            height: `${rect.height}px`
+          });
+        } else {
+          this.$el.removeClass("area");
+          this.$el.addClass("line");
+          if (rate > 0.66) {
+            top = rect.bottom;
+          }
+          sapa.Dom.create(this.refs.$dragline).css({
+            top: `${top - this.state.rect.top}px`,
+            left: `${left}px`
+          });
+        }
       }, []);
+      const onDragLeave = sapa.useCallback(() => {
+      }, []);
+      const onDrop = sapa.useCallback(
+        (e) => {
+          e.preventDefault();
+          this.setState(
+            {
+              isInDraggable: false,
+              endId: sapa.Dom.create(e.target).closest("elf--treeview-item").attr("key")
+            },
+            false
+          );
+          if (this.state.startId === this.state.endId) {
+            return;
+          }
+          onDropNode({
+            startId: this.state.startId,
+            endId: this.state.endId,
+            rate: this.state.rate,
+            targetPosition: this.targetPosition
+          });
+        },
+        [onDropNode]
+      );
       const events = {
         droppable: true,
         onDrag,
@@ -5964,7 +5991,6 @@ var __publicField = (obj, key, value) => {
         onDragLeave,
         onDrop
       };
-      console.log("aaaaaaa");
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject,
         ...events
@@ -5982,7 +6008,19 @@ var __publicField = (obj, key, value) => {
         class: "drag-line-inner left"
       }), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "drag-line-inner right"
-      })));
+      })), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "drag-inner-area",
+        ref: "$dragArea"
+      }));
+    }
+    get targetPosition() {
+      if (this.state.rate < 0.33) {
+        return "top";
+      } else if (this.state.rate < 0.66) {
+        return "middle";
+      } else {
+        return "bottom";
+      }
     }
   }
   registerComponent("treeview", TreeView);

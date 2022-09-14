@@ -2734,6 +2734,452 @@
         "1": "white"
       }
     },
+    "transparent": {
+      "black": {
+        "0": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "0"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "0"
+          }
+        },
+        "1": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.1)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "1"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "1"
+          }
+        },
+        "2": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.2)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "2"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "2"
+          }
+        },
+        "3": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.3)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "3"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "3"
+          }
+        },
+        "4": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.4)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "4"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "4"
+          }
+        },
+        "5": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.5)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "5"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "5"
+          }
+        },
+        "6": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.6)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "6"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "6"
+          }
+        },
+        "7": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.7)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "7"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "7"
+          }
+        },
+        "8": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.8)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "8"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "8"
+          }
+        },
+        "9": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.9)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "9"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "9"
+          }
+        },
+        "10": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 1)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "10"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "black",
+            "3": "10"
+          }
+        }
+      },
+      "white": {
+        "0": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "0"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "0"
+          }
+        },
+        "1": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.1)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "1"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "1"
+          }
+        },
+        "2": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.2)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "2"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "2"
+          }
+        },
+        "3": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.3)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "3"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "3"
+          }
+        },
+        "4": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.4)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "4"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "4"
+          }
+        },
+        "5": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.5)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "5"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "5"
+          }
+        },
+        "6": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.6)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "6"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "6"
+          }
+        },
+        "7": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.7)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "7"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "7"
+          }
+        },
+        "8": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.8)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "8"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "8"
+          }
+        },
+        "9": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.9)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "9"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "9"
+          }
+        },
+        "10": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 1)"
+          },
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "10"
+          },
+          "path": {
+            "0": "color",
+            "1": "transparent",
+            "2": "white",
+            "3": "10"
+          }
+        }
+      }
+    },
     "text": {
       "default": {
         "value": "{color.gray.8}",
@@ -4080,7 +4526,7 @@
     }
   },
   "button": {
-    "selected": {
+    "hover": {
       "background": {
         "default": {
           "value": "{color.gray.2}",
@@ -4088,6 +4534,30 @@
           "isSource": true,
           "original": {
             "value": "{color.gray.2}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "button",
+            "1": "hover",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      }
+    },
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.gray.3}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.3}"
           },
           "attributes": {
             "category": "button",

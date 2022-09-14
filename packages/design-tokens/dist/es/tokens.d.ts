@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 05:21:48 GMT
+ * Generated on Wed, 14 Sep 2022 12:40:20 GMT
  */
 
 export const ImageLogo : string;
@@ -148,6 +148,28 @@ export const ColorTeal8 : string;
 export const ColorTeal9 : string;
 export const ColorBlack : string;
 export const ColorWhite : string;
+export const ColorTransparentBlack0 : string;
+export const ColorTransparentBlack1 : string;
+export const ColorTransparentBlack2 : string;
+export const ColorTransparentBlack3 : string;
+export const ColorTransparentBlack4 : string;
+export const ColorTransparentBlack5 : string;
+export const ColorTransparentBlack6 : string;
+export const ColorTransparentBlack7 : string;
+export const ColorTransparentBlack8 : string;
+export const ColorTransparentBlack9 : string;
+export const ColorTransparentBlack10 : string;
+export const ColorTransparentWhite0 : string;
+export const ColorTransparentWhite1 : string;
+export const ColorTransparentWhite2 : string;
+export const ColorTransparentWhite3 : string;
+export const ColorTransparentWhite4 : string;
+export const ColorTransparentWhite5 : string;
+export const ColorTransparentWhite6 : string;
+export const ColorTransparentWhite7 : string;
+export const ColorTransparentWhite8 : string;
+export const ColorTransparentWhite9 : string;
+export const ColorTransparentWhite10 : string;
 export const ColorTextDefault : string;
 export const ColorTextPrimary : string;
 export const ColorTextSecondary : string;
@@ -212,6 +234,7 @@ export const AvatarSize400 : string;
 export const AvatarSize500 : string;
 export const AvatarSize600 : string;
 export const AvatarSize700 : string;
+export const ButtonHoverBackgroundDefault : string;
 export const ButtonSelectedBackgroundDefault : string;
 export const ButtonDisabledBackgroundDefault : string;
 export const ButtonDisabledTextDefault : string;

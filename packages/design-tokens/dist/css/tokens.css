@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 05:21:48 GMT
+ * Generated on Wed, 14 Sep 2022 12:40:20 GMT
  */
 
 :root {
@@ -102,6 +102,28 @@
   --avatar-size-50: 20px;
   --avatar-size-30: 16px;
   --alert-color-background-weak-info: #e2f4ff; /* Base color for the info color */
+  --color-transparent-white-10: #ffffff;
+  --color-transparent-white-9: rgba(255, 255, 255, 0.9);
+  --color-transparent-white-8: rgba(255, 255, 255, 0.8);
+  --color-transparent-white-7: rgba(255, 255, 255, 0.7);
+  --color-transparent-white-6: rgba(255, 255, 255, 0.6);
+  --color-transparent-white-5: rgba(255, 255, 255, 0.5);
+  --color-transparent-white-4: rgba(255, 255, 255, 0.4);
+  --color-transparent-white-3: rgba(255, 255, 255, 0.3);
+  --color-transparent-white-2: rgba(255, 255, 255, 0.2);
+  --color-transparent-white-1: rgba(255, 255, 255, 0.1);
+  --color-transparent-white-0: rgba(255, 255, 255, 0);
+  --color-transparent-black-10: #000000;
+  --color-transparent-black-9: rgba(0, 0, 0, 0.9);
+  --color-transparent-black-8: rgba(0, 0, 0, 0.8);
+  --color-transparent-black-7: rgba(0, 0, 0, 0.7);
+  --color-transparent-black-6: rgba(0, 0, 0, 0.6);
+  --color-transparent-black-5: rgba(0, 0, 0, 0.5);
+  --color-transparent-black-4: rgba(0, 0, 0, 0.4);
+  --color-transparent-black-3: rgba(0, 0, 0, 0.3);
+  --color-transparent-black-2: rgba(0, 0, 0, 0.2);
+  --color-transparent-black-1: rgba(0, 0, 0, 0.1);
+  --color-transparent-black-0: rgba(0, 0, 0, 0);
   --color-white: #ffffff;
   --color-teal-9: #223a3b;
   --color-teal-8: #274c4d;
@@ -226,7 +248,8 @@
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
   --button-color-border-default: var(--color-gray-3);
-  --button-selected-background-default: var(--color-gray-2);
+  --button-selected-background-default: var(--color-gray-3);
+  --button-hover-background-default: var(--color-gray-2);
   --alert-color-background-weak-success: var(--color-green-1); /* Base color for the success color */
   --alert-color-background-weak-warning: var(--color-orange-1); /* Base color for the warning color */
   --alert-color-background-weak-danger: var(--color-red-1); /* Base color for the danger color */

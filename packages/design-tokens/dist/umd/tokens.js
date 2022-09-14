@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 05:21:48 GMT
+ * Generated on Wed, 14 Sep 2022 12:40:20 GMT
  */
 
 (function(root, factory) {
@@ -2895,6 +2895,474 @@
         "white"
       ]
     },
+    "transparent": {
+      "black": {
+        "0": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0)"
+          },
+          "name": "ColorTransparentBlack0",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "0"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "0"
+          ]
+        },
+        "1": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.1)"
+          },
+          "name": "ColorTransparentBlack1",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "1"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "1"
+          ]
+        },
+        "2": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.2)"
+          },
+          "name": "ColorTransparentBlack2",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "2"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "2"
+          ]
+        },
+        "3": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.3)"
+          },
+          "name": "ColorTransparentBlack3",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "3"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "3"
+          ]
+        },
+        "4": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.4)"
+          },
+          "name": "ColorTransparentBlack4",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "4"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "4"
+          ]
+        },
+        "5": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.5)"
+          },
+          "name": "ColorTransparentBlack5",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "5"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "5"
+          ]
+        },
+        "6": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.6)"
+          },
+          "name": "ColorTransparentBlack6",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "6"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "6"
+          ]
+        },
+        "7": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.7)"
+          },
+          "name": "ColorTransparentBlack7",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "7"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "7"
+          ]
+        },
+        "8": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.8)"
+          },
+          "name": "ColorTransparentBlack8",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "8"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "8"
+          ]
+        },
+        "9": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.9)"
+          },
+          "name": "ColorTransparentBlack9",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "9"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "9"
+          ]
+        },
+        "10": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 1)"
+          },
+          "name": "ColorTransparentBlack10",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "10"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "10"
+          ]
+        }
+      },
+      "white": {
+        "0": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0)"
+          },
+          "name": "ColorTransparentWhite0",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "0"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "0"
+          ]
+        },
+        "1": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.1)"
+          },
+          "name": "ColorTransparentWhite1",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "1"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "1"
+          ]
+        },
+        "2": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.2)"
+          },
+          "name": "ColorTransparentWhite2",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "2"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "2"
+          ]
+        },
+        "3": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.3)"
+          },
+          "name": "ColorTransparentWhite3",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "3"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "3"
+          ]
+        },
+        "4": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.4)"
+          },
+          "name": "ColorTransparentWhite4",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "4"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "4"
+          ]
+        },
+        "5": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.5)"
+          },
+          "name": "ColorTransparentWhite5",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "5"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "5"
+          ]
+        },
+        "6": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.6)"
+          },
+          "name": "ColorTransparentWhite6",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "6"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "6"
+          ]
+        },
+        "7": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.7)"
+          },
+          "name": "ColorTransparentWhite7",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "7"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "7"
+          ]
+        },
+        "8": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.8)"
+          },
+          "name": "ColorTransparentWhite8",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "8"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "8"
+          ]
+        },
+        "9": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.9)"
+          },
+          "name": "ColorTransparentWhite9",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "9"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "9"
+          ]
+        },
+        "10": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 1)"
+          },
+          "name": "ColorTransparentWhite10",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "10"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "10"
+          ]
+        }
+      }
+    },
     "text": {
       "default": {
         "value": "#39444d",
@@ -4305,7 +4773,7 @@
     }
   },
   "button": {
-    "selected": {
+    "hover": {
       "background": {
         "default": {
           "value": "#d9e0e6",
@@ -4313,6 +4781,31 @@
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonHoverBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "default"
+          ]
+        }
+      }
+    },
+    "selected": {
+      "background": {
+        "default": {
+          "value": "#c5ced6",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonSelectedBackgroundDefault",
           "attributes": {

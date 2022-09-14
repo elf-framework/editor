@@ -1,9 +1,16 @@
 {
   "button": {
-    "selected": {
+    "hover": {
       "background": {
         "default": {
           "value": "{color.gray.2.value}"
+        }
+      }
+    },    
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.gray.3.value}"
         }
       }
     },

@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 05:21:51 GMT
+ * Generated on Wed, 14 Sep 2022 12:40:20 GMT
  */
 
 
@@ -416,6 +416,72 @@
 
 .color-white { color: #ffffff; }
 .background-color-white { background-color: #ffffff; }
+
+.color-transparent-black-0 { color: rgba(0, 0, 0, 0); }
+.background-color-transparent-black-0 { background-color: rgba(0, 0, 0, 0); }
+
+.color-transparent-black-1 { color: rgba(0, 0, 0, 0.1); }
+.background-color-transparent-black-1 { background-color: rgba(0, 0, 0, 0.1); }
+
+.color-transparent-black-2 { color: rgba(0, 0, 0, 0.2); }
+.background-color-transparent-black-2 { background-color: rgba(0, 0, 0, 0.2); }
+
+.color-transparent-black-3 { color: rgba(0, 0, 0, 0.3); }
+.background-color-transparent-black-3 { background-color: rgba(0, 0, 0, 0.3); }
+
+.color-transparent-black-4 { color: rgba(0, 0, 0, 0.4); }
+.background-color-transparent-black-4 { background-color: rgba(0, 0, 0, 0.4); }
+
+.color-transparent-black-5 { color: rgba(0, 0, 0, 0.5); }
+.background-color-transparent-black-5 { background-color: rgba(0, 0, 0, 0.5); }
+
+.color-transparent-black-6 { color: rgba(0, 0, 0, 0.6); }
+.background-color-transparent-black-6 { background-color: rgba(0, 0, 0, 0.6); }
+
+.color-transparent-black-7 { color: rgba(0, 0, 0, 0.7); }
+.background-color-transparent-black-7 { background-color: rgba(0, 0, 0, 0.7); }
+
+.color-transparent-black-8 { color: rgba(0, 0, 0, 0.8); }
+.background-color-transparent-black-8 { background-color: rgba(0, 0, 0, 0.8); }
+
+.color-transparent-black-9 { color: rgba(0, 0, 0, 0.9); }
+.background-color-transparent-black-9 { background-color: rgba(0, 0, 0, 0.9); }
+
+.color-transparent-black-10 { color: #000000; }
+.background-color-transparent-black-10 { background-color: #000000; }
+
+.color-transparent-white-0 { color: rgba(255, 255, 255, 0); }
+.background-color-transparent-white-0 { background-color: rgba(255, 255, 255, 0); }
+
+.color-transparent-white-1 { color: rgba(255, 255, 255, 0.1); }
+.background-color-transparent-white-1 { background-color: rgba(255, 255, 255, 0.1); }
+
+.color-transparent-white-2 { color: rgba(255, 255, 255, 0.2); }
+.background-color-transparent-white-2 { background-color: rgba(255, 255, 255, 0.2); }
+
+.color-transparent-white-3 { color: rgba(255, 255, 255, 0.3); }
+.background-color-transparent-white-3 { background-color: rgba(255, 255, 255, 0.3); }
+
+.color-transparent-white-4 { color: rgba(255, 255, 255, 0.4); }
+.background-color-transparent-white-4 { background-color: rgba(255, 255, 255, 0.4); }
+
+.color-transparent-white-5 { color: rgba(255, 255, 255, 0.5); }
+.background-color-transparent-white-5 { background-color: rgba(255, 255, 255, 0.5); }
+
+.color-transparent-white-6 { color: rgba(255, 255, 255, 0.6); }
+.background-color-transparent-white-6 { background-color: rgba(255, 255, 255, 0.6); }
+
+.color-transparent-white-7 { color: rgba(255, 255, 255, 0.7); }
+.background-color-transparent-white-7 { background-color: rgba(255, 255, 255, 0.7); }
+
+.color-transparent-white-8 { color: rgba(255, 255, 255, 0.8); }
+.background-color-transparent-white-8 { background-color: rgba(255, 255, 255, 0.8); }
+
+.color-transparent-white-9 { color: rgba(255, 255, 255, 0.9); }
+.background-color-transparent-white-9 { background-color: rgba(255, 255, 255, 0.9); }
+
+.color-transparent-white-10 { color: #ffffff; }
+.background-color-transparent-white-10 { background-color: #ffffff; }
 
 .color-text-default { color: #39444d; }
 

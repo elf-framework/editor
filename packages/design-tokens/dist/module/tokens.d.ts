@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 05:21:48 GMT
+ * Generated on Wed, 14 Sep 2022 12:40:20 GMT
  */
 
 export default tokens;
@@ -198,6 +198,34 @@ declare const tokens: {
     },
     "black": DesignToken,
     "white": DesignToken,
+    "transparent": {
+      "black": {
+        "0": DesignToken,
+        "1": DesignToken,
+        "2": DesignToken,
+        "3": DesignToken,
+        "4": DesignToken,
+        "5": DesignToken,
+        "6": DesignToken,
+        "7": DesignToken,
+        "8": DesignToken,
+        "9": DesignToken,
+        "10": DesignToken
+      },
+      "white": {
+        "0": DesignToken,
+        "1": DesignToken,
+        "2": DesignToken,
+        "3": DesignToken,
+        "4": DesignToken,
+        "5": DesignToken,
+        "6": DesignToken,
+        "7": DesignToken,
+        "8": DesignToken,
+        "9": DesignToken,
+        "10": DesignToken
+      }
+    },
     "text": {
       "default": DesignToken,
       "primary": DesignToken,
@@ -286,6 +314,11 @@ declare const tokens: {
     }
   },
   "button": {
+    "hover": {
+      "background": {
+        "default": DesignToken
+      }
+    },
     "selected": {
       "background": {
         "default": DesignToken

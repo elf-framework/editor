@@ -1416,6 +1416,13 @@ declare module "@elf-framework/ui" {
     tooltip?: TooltipProps;
   }
 
+  interface TreeDropItemType {
+    startId: unknown;
+    endId: unknown;
+    rate: number;
+    targetPosition: "top" | "middle" | "bottom";
+  }
+
   interface TreeViewProps {
     items: TreeViewItemType[];
     draggable?: boolean;
@@ -1428,6 +1435,7 @@ declare module "@elf-framework/ui" {
     renderArrow?: (item: TreeViewItemType) => ContentType;
     onClickNode?: (item: TreeViewItemType) => void;
     onToggleNode?: (item: TreeViewItemType) => void;
+    onDropNode?: (obj: TreeDropItemType) => void;
   }
 
   export class TreeView extends UIElement {

@@ -11,6 +11,7 @@
   --elf--button-inner-gap: 6px;
   --elf--button-selected-background-color: var(--button-selected-background-default);
   --elf--button-selected-border-color: var(--button-selected-background-default);
+  --elf--button-hover-background-color: var(--button-hover-background-default);
 
   // height: var(--elf--button-height, 30px);
   padding: var(--elf--button-padding);
@@ -124,7 +125,7 @@
 
   &:hover,
   &.hover {
-    --elf--button-background-color: rgba(0, 0, 0, 0.5) !important;
+    --elf--button-background-color: var(--elf--button-hover-background-color) !important;
   }
 
   &:active,

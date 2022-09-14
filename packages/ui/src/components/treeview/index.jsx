@@ -50,7 +50,7 @@ function itemRenderer(
         selected: data.selected && selectionStyle === "highlight",
       })}
       data-depth={depth}
-      key={renderIndex}
+      key={data.id}
       draggable={draggable ? true : undefined}
       style={{
         "--elf--virtual-scroll-item-top": `${top}px`,
@@ -65,7 +65,7 @@ function itemRenderer(
             {...{
               checked: data.selected ? "checked" : undefined,
             }}
-            onClick={() => onSelect(item)}
+            onClick={() => onSelect(item, "checkbox")}
           />
         </div>
       ) : undefined}
@@ -85,10 +85,12 @@ function itemRenderer(
             {arrow || <span>&rsaquo;</span>}
           </div>
         </div>
-      ) : undefined}
+      ) : (
+        <div class="collapse-area">&nbsp;</div>
+      )}
       {contextView ? <div class="context-area">{contextView}</div> : undefined}
-      <label class="label-area" onClick={() => onSelect(item)}>
-        {data.label}
+      <label class="label-area" onClick={() => onSelect(item, "highlight")}>
+        {data.title}
       </label>
       {actions ? <div class="actions-area">{actions}</div> : undefined}
     </div>
@@ -120,7 +122,7 @@ export class TreeView extends UIElement {
     };
   }
 
-  updateItems(items = this.state.originalItems) {
+  updateItems(items = []) {
     return treeToList(items, 0, {
       index: 0,
       up() {
@@ -141,8 +143,10 @@ export class TreeView extends UIElement {
       draggable = false,
       onClickNode,
       onToggleNode,
+      onDropNode,
+      items: originalItems,
     } = this.props;
-    const { items } = this.state;
+    const items = this.updateItems(originalItems);
 
     const localClass = useMemo(() => {
       return classnames("elf--treeview", {});
@@ -155,20 +159,18 @@ export class TreeView extends UIElement {
 
     const itemRendererProps = {
       onSelect: useCallback(
-        (item) => {
-          onClickNode(item);
-          this.setState({
-            items: this.updateItems(),
-          });
+        (item, style) => {
+          // highlight 모드 일 때는 item 전체를 클릭하고 선택
+          // checkbox 모드 일 때는 checkbox 영역을 클릭하고 선택
+          if (style === selectionStyle) {
+            onClickNode(item);
+          }
         },
         [onClickNode]
       ),
       onToggle: useCallback(
         (item) => {
           onToggleNode(item);
-          this.setState({
-            items: this.updateItems(),
-          });
         },
         [onToggleNode]
       ),
@@ -191,7 +193,7 @@ export class TreeView extends UIElement {
       const ghost = $item.clone(true).el;
       ghost.style.position = "absolute";
       ghost.style.top = "auto";
-      ghost.style.left = "0";
+      ghost.style.left = "-100000px";
       ghost.style.width = `${itemRect.width}px`;
       ghost.style.height = `${itemRect.height}px`;
       ghost.style.opacity = 1;
@@ -204,7 +206,7 @@ export class TreeView extends UIElement {
 
       document.body.appendChild(ghost);
 
-      e.dataTransfer.setDragImage(ghost, ghostLeft, ghostTop);
+      e.dataTransfer.setDragImage(ghost, ghostLeft, -10);
 
       this.setState(
         {
@@ -216,7 +218,6 @@ export class TreeView extends UIElement {
         false
       );
 
-      console.log("drag start", this.state.startId);
       e.target.style.opacity = 0.5;
       this.$el.addClass("dragging");
     }, []);
@@ -226,6 +227,7 @@ export class TreeView extends UIElement {
       Dom.create(this.state.ghost).remove();
       e.target.style.opacity = 1;
       this.$el.removeClass("dragging");
+      this.$el.removeClass("dragovered");
     }, []);
 
     const onDragEnter = useCallback(() => {
@@ -234,7 +236,14 @@ export class TreeView extends UIElement {
 
     const onDragOver = useCallback((e) => {
       e.preventDefault();
+      this.$el.addClass("dragovered");
       const $item = Dom.create(e.target).closest("elf--treeview-item");
+
+      if (!$item) {
+        return;
+      }
+
+      const $depthArea = $item?.$(".depth-area");
       this.setState(
         {
           endId: $item.attr("key"),
@@ -242,50 +251,81 @@ export class TreeView extends UIElement {
         false
       );
 
-      const rect = $item.rect();
-
-      const rate = (e.clientY - rect.top) / (rect.bottom - rect.top);
-      let top = rect.top;
-
-      if (rate > 0.66) {
-        top = rect.bottom;
-      } else if (rate > 0.33) {
-        top = rect.top + (rect.bottom - rect.top) / 2;
+      // key 가 같으면 아무것도 변경하지 않는다.
+      if (this.state.endId === this.state.startId) {
+        return;
       }
 
-      Dom.create(this.refs.$dragline).css({
-        top: `${top - this.state.rect.top}px`,
-      });
+      const rect = $item.rect();
+      const depthRect = $depthArea.rect();
+      const left = depthRect.right - rect.left;
 
-      console.log(
-        "dragover",
-        $item.rect(),
-        this.state.isInDraggable,
-        this.state.startId,
-        this.state.endId
+      const rate = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      this.setState(
+        {
+          rate,
+        },
+        false
       );
+
+      let top = rect.top;
+
+      if (0.33 < rate && rate < 0.66) {
+        this.$el.removeClass("line");
+        this.$el.addClass("area");
+
+        Dom.create(this.refs.$dragArea).css({
+          top: `${rect.top - this.state.rect.top}px`,
+          left: `${left}px`,
+          width: `${rect.width - left}px`,
+          height: `${rect.height}px`,
+        });
+      } else {
+        this.$el.removeClass("area");
+        this.$el.addClass("line");
+        if (rate > 0.66) {
+          top = rect.bottom;
+        }
+
+        Dom.create(this.refs.$dragline).css({
+          top: `${top - this.state.rect.top}px`,
+          left: `${left}px`,
+        });
+      }
     }, []);
 
     const onDragLeave = useCallback(() => {
       // console.log("drag leave", e);
     }, []);
 
-    const onDrop = useCallback((e) => {
-      e.preventDefault();
-      this.setState(
-        {
-          isInDraggable: false,
-          endId: Dom.create(e.target).closest("elf--treeview-item").attr("key"),
-        },
-        false
-      );
-      console.log(
-        "drop",
-        this.state.isInDraggable,
-        this.state.startId,
-        this.state.endId
-      );
-    }, []);
+    const onDrop = useCallback(
+      (e) => {
+        e.preventDefault();
+        this.setState(
+          {
+            isInDraggable: false,
+            endId: Dom.create(e.target)
+              .closest("elf--treeview-item")
+              .attr("key"),
+          },
+          false
+        );
+
+        // 위치가 같으면 drop 동작 하지 않는다.
+        if (this.state.startId === this.state.endId) {
+          return;
+        }
+
+        onDropNode({
+          startId: this.state.startId,
+          endId: this.state.endId,
+          rate: this.state.rate,
+          targetPosition: this.targetPosition,
+        });
+      },
+      [onDropNode]
+    );
 
     const events = {
       droppable: true,
@@ -297,8 +337,6 @@ export class TreeView extends UIElement {
       onDragLeave,
       onDrop,
     };
-
-    console.log("aaaaaaa");
 
     return (
       <div {...styleObject} {...events}>
@@ -314,8 +352,19 @@ export class TreeView extends UIElement {
           <div class="drag-line-inner left"></div>
           <div class="drag-line-inner right"></div>
         </div>
+        <div class="drag-inner-area" ref="$dragArea"></div>
       </div>
     );
+  }
+
+  get targetPosition() {
+    if (this.state.rate < 0.33) {
+      return "top";
+    } else if (this.state.rate < 0.66) {
+      return "middle";
+    } else {
+      return "bottom";
+    }
   }
 }
 

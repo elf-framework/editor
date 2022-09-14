@@ -24,10 +24,10 @@ export class Button extends UIElement {
   template() {
     const {
       variant = "default",
-      size,
+      size = "medium",
       disabled,
       selected,
-      shape,
+      shape = "round",
       quiet = false,
       outline = false,
       style = {},

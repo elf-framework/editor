@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 05:21:48 GMT
+ * Generated on Wed, 14 Sep 2022 12:40:20 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -148,6 +148,28 @@ export const ColorTeal8 = "#274c4d";
 export const ColorTeal9 = "#223a3b";
 export const ColorBlack = "#2c353d";
 export const ColorWhite = "#ffffff";
+export const ColorTransparentBlack0 = "#000000";
+export const ColorTransparentBlack1 = "#000000";
+export const ColorTransparentBlack2 = "#000000";
+export const ColorTransparentBlack3 = "#000000";
+export const ColorTransparentBlack4 = "#000000";
+export const ColorTransparentBlack5 = "#000000";
+export const ColorTransparentBlack6 = "#000000";
+export const ColorTransparentBlack7 = "#000000";
+export const ColorTransparentBlack8 = "#000000";
+export const ColorTransparentBlack9 = "#000000";
+export const ColorTransparentBlack10 = "#000000";
+export const ColorTransparentWhite0 = "#ffffff";
+export const ColorTransparentWhite1 = "#ffffff";
+export const ColorTransparentWhite2 = "#ffffff";
+export const ColorTransparentWhite3 = "#ffffff";
+export const ColorTransparentWhite4 = "#ffffff";
+export const ColorTransparentWhite5 = "#ffffff";
+export const ColorTransparentWhite6 = "#ffffff";
+export const ColorTransparentWhite7 = "#ffffff";
+export const ColorTransparentWhite8 = "#ffffff";
+export const ColorTransparentWhite9 = "#ffffff";
+export const ColorTransparentWhite10 = "#ffffff";
 export const ColorTextDefault = "#39444d";
 export const ColorTextPrimary = "#39444d";
 export const ColorTextSecondary = "#39444d";
@@ -212,7 +234,8 @@ export const AvatarSize400 = "45px";
 export const AvatarSize500 = "50px";
 export const AvatarSize600 = "55px";
 export const AvatarSize700 = "60px";
-export const ButtonSelectedBackgroundDefault = "#d9e0e6";
+export const ButtonHoverBackgroundDefault = "#d9e0e6";
+export const ButtonSelectedBackgroundDefault = "#c5ced6";
 export const ButtonDisabledBackgroundDefault = "#e6e6e6";
 export const ButtonDisabledTextDefault = "#b1b1b1";
 export const ButtonColorBackgroundDefault = "#ffffff";
