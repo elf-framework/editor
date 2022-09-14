@@ -1,5 +1,18 @@
 # @elf-framework/design-tokens
 
+## 2.1.37
+
+### Patch Changes
+
+- add slide, switch, treeview component
+  support usePointerStart hook
+
+## 2.1.34
+
+### Patch Changes
+
+- add Switch component
+
 ## 2.1.32
 
 ### Patch Changes

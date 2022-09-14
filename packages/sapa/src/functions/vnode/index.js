@@ -4,7 +4,14 @@ import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
 import { Dom } from "../Dom";
 import { isVoidTag } from "../DomUtil";
-import { isArray, isFunction, isNumber, isObject, isString } from "../func";
+import {
+  isArray,
+  isFunction,
+  isNumber,
+  isObject,
+  isString,
+  isValue,
+} from "../func";
 import { getModule, isGlobalForceRender } from "../registElement";
 import { isSVG } from "../svg";
 
@@ -324,7 +331,7 @@ export class VNode {
       // 다만 props 에 content 가 정의 되어 있으면 처리 하지 않는다.
       if (this.props.content) return;
 
-      this.children = this.children.filter(Boolean).map((child) => {
+      this.children = this.children.filter(isValue).map((child) => {
         if (isString(child)) {
           if (this.enableHtml) {
             // tag 문자열이 없으면 그냥 text node 로 인식한다.
@@ -494,7 +501,7 @@ export class VNode {
           if (isString(value)) {
             el.style.cssText = value;
           } else {
-            if (Object.key(value).length) {
+            if (isObject(value) && Object.keys(value).length) {
               const styleValues = css(value);
               Object.entries(styleValues).forEach(([localKey, value]) => {
                 setStyle(el, localKey, value);

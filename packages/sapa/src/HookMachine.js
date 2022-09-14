@@ -1,8 +1,11 @@
 import { isFunction } from "./functions/func";
 import {
+  pendingComponent,
+  removePendingComponent,
   renderComponent,
   resetCurrentComponent,
 } from "./functions/registElement";
+import { uuid } from "./functions/uuid";
 import { addProviderSubscribe, getContextProvider } from "./Hook";
 import { MagicHandler } from "./MagicHandler";
 
@@ -11,6 +14,8 @@ const USE_EFFECT = Symbol("useEffect");
 const USE_MEMO = Symbol("useMemo");
 const USE_CONTEXT = Symbol("useContext");
 const USE_SUBSCRIBE = Symbol("useSubscribe");
+const USE_ID = Symbol("useId");
+const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
 
 /**
  * 초기값 기준으로 새로운 값을 반환하는 함수를 만들어준다.
@@ -40,6 +45,34 @@ function createState({ value, component }) {
   };
 
   return [localValue, update];
+}
+
+function createExternalStore({ subscribe, getSnapshot, isEqual, component }) {
+  let localValue = {
+    value: getSnapshot(),
+    subscribe,
+    unsubscribe: null,
+    component,
+  };
+
+  const update = () => {
+    const _newValue = getSnapshot();
+
+    const isDiff = isFunction(isEqual)
+      ? isEqual(localValue, _newValue) === false
+      : localValue.value !== _newValue;
+    if (isDiff) {
+      localValue.value = _newValue;
+
+      // createState 를 하는 시점에 저장된 component 를 렌더링 한다.
+      renderComponent(localValue.component);
+    }
+  };
+
+  // subscribe 를 해야지만 update 가 실행된다.
+  localValue.unsubscribe = subscribe(update);
+
+  return localValue;
 }
 
 export class HookMachine extends MagicHandler {
@@ -83,6 +116,57 @@ export class HookMachine extends MagicHandler {
       type,
       hookInfo,
     };
+  }
+
+  /**
+   * useState 의 updater 를 모아서 수행한다.
+   *
+   * useBatch(() => {
+   *   setState1(1);
+   *   setState2(2);
+   * })
+   */
+  useBatch(calback) {
+    pendingComponent(this);
+    calback();
+    removePendingComponent(this);
+    renderComponent(this);
+  }
+
+  /**
+   *
+   * useId is a hook for generating unique IDs
+   */
+  useId() {
+    if (!this.getHook()) {
+      this.setHook(USE_ID, { value: uuid(), component: this });
+    }
+
+    const { value } = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
+    return value;
+  }
+
+  useSyncExternalStore(subscribe, getSnapshot, isEqual) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_SYNC_EXTERNAL_STORE,
+        createExternalStore({
+          subscribe,
+          getSnapshot,
+          isEqual,
+          component: this,
+        })
+      );
+    }
+
+    const { value } = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
+    return value;
   }
 
   /**
@@ -264,6 +348,10 @@ export class HookMachine extends MagicHandler {
     return this.filterHooks(USE_EFFECT);
   }
 
+  getUseSyncExternalStore() {
+    return this.filterHooks(USE_SYNC_EXTERNAL_STORE);
+  }
+
   getUseStates() {
     return this.filterHooks(USE_STATE).map((it) => it.value);
   }
@@ -283,6 +371,13 @@ export class HookMachine extends MagicHandler {
     this.getUseEffects().forEach((it) => {
       if (isFunction(it.cleanup)) {
         it.cleanup();
+      }
+    });
+
+    /** unscribe external store  */
+    this.getUseSyncExternalStore().forEach((it) => {
+      if (isFunction(it.unsubscribe)) {
+        it.unsubscribe();
       }
     });
   }

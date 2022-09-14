@@ -24,8 +24,6 @@ export function IndeterminateView() {
         >
           <ProgressBar
             indeterminate
-            size="extra-large"
-            shape="rect"
             title="Loading data..."
             style={{ width: 400 }}
           />

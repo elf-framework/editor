@@ -208,6 +208,10 @@ export class Dom {
     return this.el.tagName.toLowerCase() === tag.toLowerCase();
   }
 
+  clone(withChildren = true) {
+    return Dom.create(this.el.cloneNode(withChildren));
+  }
+
   closest(cls) {
     var temp = this;
     var checkCls = false;

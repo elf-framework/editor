@@ -1,11 +1,11 @@
 .elf--divider {
 
     --elf--divider-color: var(--divider-color-border-default);
-    --elf--divider-margin: 10px 0;
+    --elf--divider-margin: 10px;
 
     border-top: 1px solid;
     border-top-color: var(--elf--divider-color);
-    margin: var(--elf--divider-margin);
+    margin: var(--elf--divider-margin) auto;
     width: 100%;
     height: auto;
 

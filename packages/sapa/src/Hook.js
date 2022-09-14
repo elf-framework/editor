@@ -35,6 +35,17 @@ export function renderFromRoot() {
   renderRootElementInstanceList(true);
 }
 
+export function useBatch(callback) {
+  getCurrentComponent().useBatch(callback);
+}
+
+export function useId() {
+  return getCurrentComponent().useId();
+}
+
+export function useSyncExternalStore(subscribe, getSnapshot) {
+  return getCurrentComponent().useSyncExternalStore(subscribe, getSnapshot);
+}
 /**
  * 글로벌 상태값을 저장하고 관리합니다.
  * hook을 사용하는 순서대로 값을 저장하고 있습니다.

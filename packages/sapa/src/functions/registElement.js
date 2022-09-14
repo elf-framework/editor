@@ -9,6 +9,7 @@ const __tempVariablesGroup = new Map();
 const _modules = {};
 const _moduleMap = new WeakMap();
 const RenderCallbackList = new WeakMap();
+const PendingComponentList = new WeakMap();
 const GlobalState = {
   currentComponent: null,
 };
@@ -47,9 +48,31 @@ export function removeRenderCallback(component) {
 }
 
 export function renderComponent(component, $container = undefined) {
+  // pending 상태에서는 component 를 렌더링 하지 않습니다.
+  if (isPendingComponent(component)) {
+    return;
+  }
+
   window.requestIdleCallback(() => {
     createRenderCallback(component)?.($container);
   });
+}
+
+/**
+ * Component 의 pending 상태를 관리합니다.
+ *
+ * pending 상태가 되면 render 가 실행되지 않습니다.
+ */
+export function pendingComponent(component) {
+  PendingComponentList.set(component, true);
+}
+
+export function isPendingComponent(component) {
+  return PendingComponentList.has(component);
+}
+
+export function removePendingComponent(component) {
+  PendingComponentList.delete(component);
 }
 
 export const VARIABLE_SAPARATOR = "v:";

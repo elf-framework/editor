@@ -220,7 +220,76 @@ function App() {
 }
 ```
 
+## useId 
 
+`useId` is used to generate a unique id.
+
+```jsx
+function App() {
+  const id = useId();
+
+  return (
+    <div id={id}>
+      <label for={id + '-label'}>Simple Label</label>
+      <input type="text" id={id + '-label'} />
+    </div>
+  );
+}
+```
+
+## useSyncExternalStore 
+
+`useSyncExternalStore` is used to synchronize external data.
+
+```jsx
+
+import { useSyncExternalStore } from "@elf-framework/ui";
+
+function subscribe(callback) {
+  window.addEventListener("online", callback);
+  window.addEventListener("offline", callback);
+  return () => {
+    window.removeEventListener("online", callback);
+    window.removeEventListener("offline", callback);
+  };
+}
+
+function useOnlineStatus() {
+  return useSyncExternalStore(subscribe, () => navigator.onLine);
+}
+
+function App() {
+  const isOnline = useOnlineStatus();
+
+  return <div>online : {isOnline ? "true" : "false" }</div>
+}
+
+```
+
+## useBatch 
+
+`useBatch` is used to batch update.
+
+```jsx
+function App() {
+  const [value, setValue] = useState(0);
+
+  function onClick() {
+    useBatch(() => {
+      setValue(value + 1);
+      setValue(value + 1);
+      setValue(value + 1);
+    });
+  }
+
+  return (
+    <div>
+      <div>{value}</div>
+      <button onClick={onClick}>Batch</button>
+    </div>
+  );
+}
+```
 
 # Class Component Hook 
 

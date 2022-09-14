@@ -26,8 +26,13 @@ const booleanTypes = new Map(
   })
 );
 
+/**
+ * vnode 에서 사용되는 props 는 비교 대상에서 제외한다.
+ *
+ */
 const expectKeys = {
   content: true,
+  ref: true,
 };
 
 const TEXT_NODE = 3;
@@ -73,7 +78,13 @@ const patch = {
   },
   updateProp(node, name, newValue, oldValue) {
     if (isUndefined(newValue)) {
-      this.removeProp(node, name);
+      if (oldValue) {
+        console.log(node, newValue, oldValue);
+        this.removeProp(node, name);
+      } else {
+        // noop
+        // 값디 둘다 존재하지 않을 때는 아무것도 하지 않는다.
+      }
     } else if (!oldValue || newValue != oldValue) {
       /* != 연산자를 사용하면서 element의 value 가 문자열 일때도 같이 비교를 해줄 수 있다. */
       this.setProp(node, name, newValue);
@@ -183,17 +194,39 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
   }
 
   // newProps 를 기준으로 루프를 먼저 돌고
-  newPropsKeys.forEach((key) => {
-    if (!expectKeys[key]) {
-      patch.updateProp(node, key, newProps[key], oldProps[key]);
-    }
-  });
+  newPropsKeys
+    .filter((key) => !expectKeys[key])
+    .forEach((key) => {
+      const newValue = newProps[key];
+      let oldValue;
+
+      if (key === "style") {
+        // style 값은 cssText 로 대체한다.
+        oldValue = node.style.cssText;
+      } else {
+        oldValue = oldProps[key];
+      }
+
+      patch.updateProp(node, key, newValue, oldValue);
+    });
   // oldProps 기준으로 newProps 에 키가 없으면 삭제한다.
-  oldPropsKeys.forEach((key) => {
-    if (isUndefined(newProps[key])) {
-      patch.removeProp(node, key);
-    }
-  });
+  oldPropsKeys
+    .filter((key) => !expectKeys[key])
+    .forEach((key) => {
+      if (isUndefined(newProps[key])) {
+        let oldValue;
+        if (key === "style") {
+          // style 값은 cssText 로 대체한다.
+          oldValue = node.style.cssText;
+        } else {
+          oldValue = oldProps[key];
+        }
+
+        if (oldValue) {
+          patch.removeProp(node, key);
+        }
+      }
+    });
 
   // // FIXME: 사전에 정의할 수 있는 부분은 모두 사전에 정의한다.
   // // FIXME: Set 을 실행하지 않고 유니크한 key 리스트를 얻을 수 있도록 한다.

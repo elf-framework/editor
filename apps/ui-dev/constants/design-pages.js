@@ -121,11 +121,11 @@ export default [
       { link: COMPONENTS_URL + "inputs/radio/", title: "Radio" },
       {
         link: COMPONENTS_URL + "inputs/slider/",
-        title: "Slider * ",
+        title: "Slider ",
       },
       {
         link: COMPONENTS_URL + "inputs/switch/",
-        title: "Switch * ",
+        title: "Switch",
       },
       {
         link: COMPONENTS_URL + "inputs/textarea/",
@@ -176,7 +176,7 @@ export default [
       { link: COMPONENTS_URL + "status/badge/", title: "Badge " },
       {
         link: COMPONENTS_URL + "status/progressbar/",
-        title: "Progress bar * ",
+        title: "Progress Bar",
       },
       {
         link: COMPONENTS_URL + "status/status-light/",

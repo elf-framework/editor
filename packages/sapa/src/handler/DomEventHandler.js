@@ -215,7 +215,7 @@ export default class DomEventHandler extends BaseHandler {
 
     if (eventObject.beforeMethods.length) {
       eventObject.beforeMethods.every((before) => {
-        return this.getCallback(before.target).call(context, e, before.param);
+        return this.getCallback(before.target)?.call(context, e, before.param);
       });
     }
 
@@ -224,7 +224,7 @@ export default class DomEventHandler extends BaseHandler {
 
       if (returnValue !== false && eventObject.afterMethods.length) {
         eventObject.afterMethods.forEach((after) => {
-          return this.getCallback(after.target).call(context, e, after.param);
+          return this.getCallback(after.target)?.call(context, e, after.param);
         });
       }
 

@@ -1,0 +1,66 @@
+---
+title: Tree view
+layout: DesignLayout
+filename: pages/design-system/navigations/treeview/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/navigations/treeview/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/navigations/treeview/OptionsView.jsx"; 
+import { LabelPositionView } from "../../../../../component/navigations/treeview/LabelPositionView.jsx"; 
+import { MinMaxView } from "../../../../../component/navigations/treeview/MinMaxView.jsx"; 
+import { ValueFormatView } from "../../../../../component/navigations/treeview/ValueFormatView.jsx"; 
+import { FillView } from "../../../../../component/navigations/treeview/FillView.jsx"; 
+import { FillStartView } from "../../../../../component/navigations/treeview/FillStartView.jsx"; 
+import { DisabledView } from "../../../../../component/navigations/treeview/DisabledView.jsx"; 
+import { GradientView } from "../../../../../component/navigations/treeview/GradientView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+A tree view provides users with a way to navigate nested hierarchical information.
+
+
+<MainView />
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/slider/" />
+</div>
+
+## Options 
+
+### Label
+
+<OptionsView />
+
+### Label Position
+
+<LabelPositionView />
+
+### Value, min value, max value and step 
+
+<MinMaxView />
+
+### Value format
+
+<ValueFormatView />
+
+
+### Fill
+
+<FillView />
+
+### Fill start
+
+<FillStartView />
+
+### Gradient
+
+<GradientView />
+
+
+### Disabled
+
+<DisabledView />
+
+

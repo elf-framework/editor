@@ -1,5 +1,19 @@
 # @elf-framework/sapa
 
+## 2.1.36
+
+### Patch Changes
+
+- add clone function in Dom
+
+## 2.1.35
+
+### Patch Changes
+
+- support useId, useBatch, useSyncExternalStore hooks
+  modify style attribute diff algorithm
+  fixed children value type in jsx
+
 ## 2.1.33
 
 ### Patch Changes

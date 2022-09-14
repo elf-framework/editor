@@ -13,6 +13,21 @@ declare module "@elf-framework/ui" {
 
   export function registerComponent(key: string, component: ContentType): void;
 
+  /** hooks  */
+
+  export function usePointerStart(
+    selector: string,
+    downAction: () => unknown,
+    moveAction: () => unknown,
+    upAction: () => unknown
+  ): void;
+
+  export function usePointerStart(
+    downAction: () => unknown,
+    moveAction: () => unknown,
+    upAction: () => unknown
+  ): void;
+
   /** base */
   type ContentType = string | UIElement | string[] | UIElement[];
 
@@ -1349,5 +1364,73 @@ declare module "@elf-framework/ui" {
   }
   export class ProgressBar extends UIElement {
     props: ProgressBarProps & DomEventType;
+  }
+
+  interface SwitchProps {
+    checked: boolean;
+    disabled?: boolean;
+    size: SizeType;
+    variant: VariantType;
+    style: CommonStyle;
+    onChange: (checked: boolean) => void;
+    content: ContentType;
+    readOnly?: boolean;
+  }
+  export class Switch extends UIElement {
+    props: SwitchProps & DomEventType;
+  }
+
+  interface SliderProps {
+    type: "range" | "single";
+    label: ContentType;
+    labelPosition: "top" | "side";
+    value: number | [number, number];
+    fill?: boolean;
+    fillOffset?: number;
+    disabled?: boolean;
+    size: SizeType;
+    variant: VariantType;
+    style: CommonStyle;
+    onChange: (value: number) => void;
+    min: number;
+    max: number;
+    step: number;
+    showValue?: boolean;
+    valuePlacement?: "none" | "top" | "bottom";
+    showTrigger?: "always" | "hover" | "none";
+    valueFunc: (value: number) => ContentType;
+    readOnly?: boolean;
+  }
+  export class Slider extends UIElement {
+    props: SliderProps & DomEventType;
+  }
+
+  interface TreeViewItemType {
+    id: string;
+    title: ContentType;
+    children?: TreeViewItemType[];
+    selected?: boolean;
+    collapsed?: boolean;
+    disabled?: boolean;
+    style?: CommonStyle;
+    tooltip?: TooltipProps;
+  }
+
+  interface TreeViewProps {
+    items: TreeViewItemType[];
+    draggable?: boolean;
+    itemHeight?: number;
+    overscanRowCount?: number;
+    selectionStyle: "checkbox" | "highlight";
+    selectionType: "single" | "multiple";
+    renderContext?: (item: TreeViewItemType) => ContentType;
+    renderActions?: (item: TreeViewItemType) => ContentType;
+    renderArrow?: (item: TreeViewItemType) => ContentType;
+    onClickNode?: (item: TreeViewItemType) => void;
+    onToggleNode?: (item: TreeViewItemType) => void;
+  }
+
+  export class TreeView extends UIElement {
+    props: TreeViewProps & DomEventType;
   }
 }

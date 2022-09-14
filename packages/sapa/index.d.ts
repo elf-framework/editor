@@ -10,6 +10,7 @@ declare module "@elf-framework/sapa" {
   export function isBoolean(obj: any): boolean;
   export function isUndefined(obj: any): boolean;
   export function isEqual(obj1: any, obj2: any): boolean;
+  export function isValue(value: any): boolean;
 
   // event name regular expression
   export type EVENT = (...args: string[]) => string;
@@ -467,6 +468,13 @@ declare module "@elf-framework/sapa" {
   export function jsonToVNode(json: JSONType, options?: ConvertOptions): VNode;
 
   /** Hooks */
+  export function useId(): string;
+  export function useBatch(callback: () => void): void;
+  export function useSyncExternalStore<T>(
+    subscribe: (callback: () => void) => () => void,
+    getSnapshot: () => T,
+    isEqual?: (a: T, b: T) => boolean
+  ): T;
   export function useState<T>(
     initializeValue: T | (() => T)
   ): [value: T, setValue: (value: T) => void];

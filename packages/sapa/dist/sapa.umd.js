@@ -152,6 +152,9 @@ var __privateMethod = (obj, member, method) => {
   function isFunction(value) {
     return typeof value == "function";
   }
+  function isValue(value) {
+    return value !== void 0 && value !== null;
+  }
   function isNumber(value) {
     return typeof value == "number";
   }
@@ -217,6 +220,7 @@ var __privateMethod = (obj, member, method) => {
   const _modules = {};
   const _moduleMap = /* @__PURE__ */ new WeakMap();
   const RenderCallbackList = /* @__PURE__ */ new WeakMap();
+  const PendingComponentList = /* @__PURE__ */ new WeakMap();
   const GlobalState = {
     currentComponent: null
   };
@@ -243,10 +247,22 @@ var __privateMethod = (obj, member, method) => {
     }
   }
   function renderComponent(component, $container = void 0) {
+    if (isPendingComponent(component)) {
+      return;
+    }
     window.requestIdleCallback(() => {
       var _a;
       (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
     });
+  }
+  function pendingComponent(component) {
+    PendingComponentList.set(component, true);
+  }
+  function isPendingComponent(component) {
+    return PendingComponentList.has(component);
+  }
+  function removePendingComponent(component) {
+    PendingComponentList.delete(component);
   }
   const VARIABLE_SAPARATOR = "v:";
   function variable(value, groupId = "") {
@@ -534,6 +550,9 @@ var __privateMethod = (obj, member, method) => {
     }
     isTag(tag) {
       return this.el.tagName.toLowerCase() === tag.toLowerCase();
+    }
+    clone(withChildren = true) {
+      return Dom.create(this.el.cloneNode(withChildren));
     }
     closest(cls) {
       var temp = this;
@@ -1245,7 +1264,8 @@ var __privateMethod = (obj, member, method) => {
     })
   );
   const expectKeys = {
-    content: true
+    content: true,
+    ref: true
   };
   const TEXT_NODE = 3;
   const COMMENT_NODE = 8;
@@ -1286,7 +1306,10 @@ var __privateMethod = (obj, member, method) => {
     },
     updateProp(node, name, newValue, oldValue) {
       if (isUndefined(newValue)) {
-        this.removeProp(node, name);
+        if (oldValue) {
+          console.log(node, newValue, oldValue);
+          this.removeProp(node, name);
+        }
       } else if (!oldValue || newValue != oldValue) {
         this.setProp(node, name, newValue);
       }
@@ -1356,14 +1379,27 @@ var __privateMethod = (obj, member, method) => {
     if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
       return;
     }
-    newPropsKeys.forEach((key) => {
-      if (!expectKeys[key]) {
-        patch.updateProp(node, key, newProps[key], oldProps[key]);
+    newPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
+      const newValue = newProps[key];
+      let oldValue;
+      if (key === "style") {
+        oldValue = node.style.cssText;
+      } else {
+        oldValue = oldProps[key];
       }
+      patch.updateProp(node, key, newValue, oldValue);
     });
-    oldPropsKeys.forEach((key) => {
+    oldPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
       if (isUndefined(newProps[key])) {
-        patch.removeProp(node, key);
+        let oldValue;
+        if (key === "style") {
+          oldValue = node.style.cssText;
+        } else {
+          oldValue = oldProps[key];
+        }
+        if (oldValue) {
+          patch.removeProp(node, key);
+        }
       }
     });
   };
@@ -1881,14 +1917,16 @@ var __privateMethod = (obj, member, method) => {
       e.xy = Event.posXY(e);
       if (eventObject.beforeMethods.length) {
         eventObject.beforeMethods.every((before) => {
-          return this.getCallback(before.target).call(context, e, before.param);
+          var _a;
+          return (_a = this.getCallback(before.target)) == null ? void 0 : _a.call(context, e, before.param);
         });
       }
       if (this.checkEventType(e, eventObject)) {
         var returnValue = callback(e, e.$dt, e.xy);
         if (returnValue !== false && eventObject.afterMethods.length) {
           eventObject.afterMethods.forEach((after) => {
-            return this.getCallback(after.target).call(context, e, after.param);
+            var _a;
+            return (_a = this.getCallback(after.target)) == null ? void 0 : _a.call(context, e, after.param);
           });
         }
         return returnValue;
@@ -2325,6 +2363,15 @@ var __privateMethod = (obj, member, method) => {
   function renderFromRoot() {
     renderRootElementInstanceList(true);
   }
+  function useBatch(callback) {
+    getCurrentComponent().useBatch(callback);
+  }
+  function useId() {
+    return getCurrentComponent().useId();
+  }
+  function useSyncExternalStore(subscribe, getSnapshot) {
+    return getCurrentComponent().useSyncExternalStore(subscribe, getSnapshot);
+  }
   function useState(initialState) {
     return getCurrentComponent().useState(initialState);
   }
@@ -2512,6 +2559,8 @@ var __privateMethod = (obj, member, method) => {
   const USE_MEMO = Symbol("useMemo");
   const USE_CONTEXT = Symbol("useContext");
   const USE_SUBSCRIBE = Symbol("useSubscribe");
+  const USE_ID = Symbol("useId");
+  const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
   function createState({ value, component }) {
     let localValue = { value, component };
     function getValue(v) {
@@ -2528,6 +2577,24 @@ var __privateMethod = (obj, member, method) => {
       }
     };
     return [localValue, update];
+  }
+  function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, component }) {
+    let localValue = {
+      value: getSnapshot(),
+      subscribe,
+      unsubscribe: null,
+      component
+    };
+    const update = () => {
+      const _newValue = getSnapshot();
+      const isDiff = isFunction(isEqual2) ? isEqual2(localValue, _newValue) === false : localValue.value !== _newValue;
+      if (isDiff) {
+        localValue.value = _newValue;
+        renderComponent(localValue.component);
+      }
+    };
+    localValue.unsubscribe = subscribe(update);
+    return localValue;
   }
   class HookMachine extends MagicHandler {
     constructor() {
@@ -2563,6 +2630,36 @@ var __privateMethod = (obj, member, method) => {
         type,
         hookInfo
       };
+    }
+    useBatch(calback) {
+      pendingComponent(this);
+      calback();
+      removePendingComponent(this);
+      renderComponent(this);
+    }
+    useId() {
+      if (!this.getHook()) {
+        this.setHook(USE_ID, { value: uuid(), component: this });
+      }
+      const { value } = this.getHook().hookInfo;
+      this.increaseHookIndex();
+      return value;
+    }
+    useSyncExternalStore(subscribe, getSnapshot, isEqual2) {
+      if (!this.getHook()) {
+        this.setHook(
+          USE_SYNC_EXTERNAL_STORE,
+          createExternalStore({
+            subscribe,
+            getSnapshot,
+            isEqual: isEqual2,
+            component: this
+          })
+        );
+      }
+      const { value } = this.getHook().hookInfo;
+      this.increaseHookIndex();
+      return value;
     }
     useState(initialState) {
       if (!this.getHook()) {
@@ -2687,6 +2784,9 @@ var __privateMethod = (obj, member, method) => {
     getUseEffects() {
       return this.filterHooks(USE_EFFECT);
     }
+    getUseSyncExternalStore() {
+      return this.filterHooks(USE_SYNC_EXTERNAL_STORE);
+    }
     getUseStates() {
       return this.filterHooks(USE_STATE).map((it) => it.value);
     }
@@ -2701,6 +2801,11 @@ var __privateMethod = (obj, member, method) => {
       this.getUseEffects().forEach((it) => {
         if (isFunction(it.cleanup)) {
           it.cleanup();
+        }
+      });
+      this.getUseSyncExternalStore().forEach((it) => {
+        if (isFunction(it.unsubscribe)) {
+          it.unsubscribe();
         }
       });
     }
@@ -3085,7 +3190,9 @@ var __privateMethod = (obj, member, method) => {
       }
     }
     initMagicMethod(methodName, callback) {
-      this[methodName] = callback;
+      if (!this[methodName]) {
+        this[methodName] = callback;
+      }
     }
   };
   let EventMachine = _EventMachine;
@@ -3794,7 +3901,7 @@ var __privateMethod = (obj, member, method) => {
       if (isArray(this.children)) {
         if (this.props.content)
           return;
-        this.children = this.children.filter(Boolean).map((child) => {
+        this.children = this.children.filter(isValue).map((child) => {
           if (isString(child)) {
             if (this.enableHtml) {
               if (child.indexOf(TAG_PREFIX) === -1) {
@@ -3929,7 +4036,7 @@ var __privateMethod = (obj, member, method) => {
             if (isString(value)) {
               el.style.cssText = value;
             } else {
-              if (Object.key(value).length) {
+              if (isObject(value) && Object.keys(value).length) {
                 const styleValues = css(value);
                 Object.entries(styleValues).forEach(([localKey, value2]) => {
                   setStyle(el, localKey, value2);
@@ -4375,7 +4482,7 @@ var __privateMethod = (obj, member, method) => {
     return createVNode({ tag: Component, props, children: children2 });
   }
   function createElementJsx$1(Component, props = {}, ...children2) {
-    children2 = children2.filter(Boolean);
+    children2 = children2.filter(isValue);
     if (Component === FragmentInstance$1) {
       return createComponentFragment(Component, props, children2);
     }
@@ -4580,8 +4687,10 @@ var __privateMethod = (obj, member, method) => {
   exports2.isNotZero = isNotZero;
   exports2.isNumber = isNumber;
   exports2.isObject = isObject;
+  exports2.isPendingComponent = isPendingComponent;
   exports2.isString = isString;
   exports2.isUndefined = isUndefined;
+  exports2.isValue = isValue;
   exports2.isZero = isZero;
   exports2.jsonToVNode = jsonToVNode;
   exports2.keyEach = keyEach;
@@ -4590,6 +4699,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.makeEventChecker = makeEventChecker;
   exports2.makeOneElement = makeOneElement;
   exports2.makeRequestAnimationFrame = makeRequestAnimationFrame;
+  exports2.pendingComponent = pendingComponent;
   exports2.popContextProvider = popContextProvider;
   exports2.potal = potal;
   exports2.recoverVariable = recoverVariable;
@@ -4597,6 +4707,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.registHandler = registHandler;
   exports2.registRootElementInstance = registRootElementInstance;
   exports2.registerModule = registerModule;
+  exports2.removePendingComponent = removePendingComponent;
   exports2.removeRenderCallback = removeRenderCallback;
   exports2.removeRootElementInstance = removeRootElementInstance;
   exports2.render = render;
@@ -4610,10 +4721,12 @@ var __privateMethod = (obj, member, method) => {
   exports2.setGlobalForceRender = setGlobalForceRender;
   exports2.start = start;
   exports2.throttle = throttle;
+  exports2.useBatch = useBatch;
   exports2.useCallback = useCallback;
   exports2.useContext = useContext;
   exports2.useEffect = useEffect;
   exports2.useEmit = useEmit;
+  exports2.useId = useId;
   exports2.useMagicMethod = useMagicMethod;
   exports2.useMemo = useMemo;
   exports2.useReducer = useReducer;
@@ -4624,6 +4737,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.useStore = useStore;
   exports2.useStoreSet = useStoreSet;
   exports2.useSubscribe = useSubscribe;
+  exports2.useSyncExternalStore = useSyncExternalStore;
   exports2.useTrigger = useTrigger;
   exports2.uuid = uuid;
   exports2.uuidShort = uuidShort;

@@ -634,6 +634,8 @@ export class EventMachine extends HookMachine {
    * Initialize Magic Method
    */
   initMagicMethod(methodName, callback) {
-    this[methodName] = callback;
+    if (!this[methodName]) {
+      this[methodName] = callback;
+    }
   }
 }

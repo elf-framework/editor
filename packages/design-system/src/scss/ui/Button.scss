@@ -94,6 +94,11 @@
     }
   }
 
+  &.square,
+  &.rect {
+    --elf--button-border-radius: 0px;
+  }
+
   &.round {
     padding-left: 10px;
     padding-right: 10px;
@@ -119,7 +124,7 @@
 
   &:hover,
   &.hover {
-    --elf--button-background-color: rgba(0, 0, 0, 0.06);
+    --elf--button-background-color: rgba(0, 0, 0, 0.5) !important;
   }
 
   &:active,

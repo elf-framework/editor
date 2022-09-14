@@ -20,5 +20,5 @@ export function propertyMap(styles = {}, mapper = {}) {
       styleObj[mapper[key] || key] = convertNumberStyleValue(key, styles[key]);
     }
   });
-  return styleObj;
+  return Object.keys(styleObj).length ? styleObj : undefined;
 }

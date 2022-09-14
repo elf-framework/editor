@@ -54,12 +54,14 @@ export class ProgressBar extends UIElement {
 
     return (
       <div {...styleObject}>
-        <div class="title-area">
-          <label>{title}</label>
-          {showValue && !indeterminate ? (
-            <span> {valueFunction(percentValue)} </span>
-          ) : undefined}
-        </div>
+        {title ? (
+          <div class="title-area">
+            <label>{title}</label>
+            {showValue && !indeterminate ? (
+              <span> {valueFunction(percentValue)} </span>
+            ) : undefined}
+          </div>
+        ) : undefined}
         <div class="progress-area">
           <div class="progress" style={{ width: `${percentValue}%` }}></div>
         </div>

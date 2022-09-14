@@ -1,0 +1,48 @@
+---
+title: Switch
+layout: DesignLayout
+filename: pages/design-system/inputs/switch/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/inputs/switch/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/inputs/switch/OptionsView.jsx"; 
+import { SizeView } from "../../../../../component/inputs/switch/SizeView.jsx"; 
+import { EmphasisView } from "../../../../../component/inputs/switch/EmphasisView.jsx"; 
+import { DisabledView } from "../../../../../component/inputs/switch/DisabledView.jsx"; 
+import { ReadOnlyView } from "../../../../../component/inputs/switch/ReadOnlyView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Switches allow users to turn an individual option on or off. They are usually used to activate or deactivate a specific setting.
+
+<MainView />
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/switch/" />
+</div>
+
+## Options 
+
+### Label
+
+<OptionsView />
+
+### Size
+
+<SizeView />
+
+### Emphasis
+
+<EmphasisView />
+
+
+### Disabled
+
+<DisabledView />
+
+### Read only
+
+<ReadOnlyView />
+

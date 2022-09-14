@@ -1,0 +1,164 @@
+.elf--treeview {
+  --elf--treeview-height: 100%;
+  --elf--treeview-item-indent: 20px;
+  --elf--treeview-font-size: var(--font-size-medium);
+  --elf--treeview-drag-line-color: var(--color-primary);
+  --elf--treeview-drag-line-circle-size: 12px;
+  --elf--treeview-drag-line-background-color: var(--color-white);
+
+  --elf--treeview-item-border-radius: 0px;
+  --elf--treeview-drag-line-display: none;
+
+  height: var(--elf--treeview-height);
+  font-size: var(--elf--treeview-font-size);
+  position: relative;
+
+  &.dragging {
+    --elf--treeview-drag-line-display: block;
+  }
+
+  > .drag-line {
+    position: absolute;
+    left: calc(var(--elf--treeview-drag-line-circle-size) / 2);
+    right: calc(var(--elf--treeview-drag-line-circle-size) / 2);
+    pointer-events: none;
+    top: 0px;
+    height: 2px;
+    background-color: var(--elf--treeview-drag-line-color);
+    display: var(--elf--treeview-drag-line-display);
+
+    &.show {
+      display: block;
+    }
+
+    > .drag-line-inner {
+      position: absolute;
+      width: var(--elf--treeview-drag-line-circle-size);
+      height: var(--elf--treeview-drag-line-circle-size);
+      border: 2px solid var(--elf--treeview-drag-line-color);
+      box-sizing: border-box;
+      transform: translate(-50%, -50%);
+      background-color: var(--elf--treeview-drag-line-background-color);      
+      border-radius: 50%;
+    }
+
+    > .left {
+      left: 0px;
+      top: 50%;
+    }
+
+    > .right {
+      left: 100%;
+      top: 50%;
+    }    
+  }
+}
+
+
+.elf--treeview-item {
+
+  --elf--treeview-item-drag-handler-width: 20px;
+  --elf--treeview-item-checkbox-area-width: 20px;
+  --elf--treeview-item-collapse-area-width: 32px;
+  --elf--treeview-item-hover-background-color: var(--color-gray-1);
+  --elf--treeview-item-selected-background-color: var(--color-gray-2);
+
+  box-sizing: border-box;
+  // border: 1px solid black;
+  padding-right: 2px;
+  user-select: none;
+  border-radius: var(--elf--treeview-item-border-radius);    
+  display: flex;
+
+  &.ghost {
+    background-color: var(--elf--treeview-item-hover-background-color);
+    box-shadow: var(--shadow-1);
+  }
+
+  &.hover,
+  &:hover {
+    background-color: var(--elf--treeview-item-hover-background-color);
+  }
+
+  &.selected {
+    background-color: var(--elf--treeview-item-selected-background-color);
+    // --elf--treeview-item-border-radius: 5px;
+  }    
+
+  .depth-area{
+    --elf--treeview-item-left-padding: calc(var(--elf--treeview-item-depth) * var(--elf--treeview-item-indent));
+    width: var(--elf--treeview-item-left-padding);
+    // background-color: pink;
+  }
+
+  > * {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  > .drag-handle {
+    width: var(--elf--treeview-item-drag-handler-width);
+    // background-color: red;
+    cursor: move;
+  }
+
+  > .checkbox-area {
+    width: var(--elf--treeview-item-checkbox-area-width);
+    // background-color: blue;
+  }
+
+
+  > .collapse-area {
+    min-width: var(--elf--treeview-item-collapse-area-width);
+    cursor: pointer;
+    // background-color: green;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .collapsed {
+      transform: rotate(90deg);
+    }
+
+    > * {
+      transform-origin: 50% 50%;
+      height: 20px;
+      width: 20px;
+      transition: all 0.2s linear;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  > .context-area {
+    width: var(--elf--treeview-item-context-area-width);
+    padding:0px 2px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  > .label-area{
+    flex: 1;
+    // background-color: yellow;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  > .action-area {
+    width: fit-content;
+    // background-color: purple;
+
+    > * {
+      width: 30px;
+    }
+  }
+}
