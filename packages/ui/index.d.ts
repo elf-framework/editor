@@ -648,6 +648,7 @@ declare module "@elf-framework/ui" {
     animated?: boolean;
     style: TooltipStyle & CommonStyle;
     hideArrow: boolean;
+    position?: "relative" | "absolute" | "fixed";
   }
   export class Tooltip extends UIElement {
     props: TooltipProps & CommonStyle;
@@ -1366,6 +1367,21 @@ declare module "@elf-framework/ui" {
     props: ProgressBarProps & DomEventType;
   }
 
+  interface ProgressCircleProps {
+    value: number;
+    showValue?: boolean;
+    variant: VariantType;
+    size: SizeType;
+    style: CommonStyle;
+    max: number;
+    min: number;
+    indeterminate?: boolean;
+    animated?: boolean;
+  }
+  export class ProgressCircle extends UIElement {
+    props: ProgressCircleProps & DomEventType;
+  }
+
   interface SwitchProps {
     checked: boolean;
     disabled?: boolean;
@@ -1413,7 +1429,6 @@ declare module "@elf-framework/ui" {
     collapsed?: boolean;
     disabled?: boolean;
     style?: CommonStyle;
-    tooltip?: TooltipProps;
   }
 
   interface TreeDropItemType {
@@ -1430,15 +1445,48 @@ declare module "@elf-framework/ui" {
     overscanRowCount?: number;
     selectionStyle: "checkbox" | "highlight";
     selectionType: "single" | "multiple";
+    variant?: VariantType;
+    showTooltip?: boolean;
+    renderLabel?: (item: TreeViewItemType) => ContentType;
     renderContext?: (item: TreeViewItemType) => ContentType;
     renderActions?: (item: TreeViewItemType) => ContentType;
     renderArrow?: (item: TreeViewItemType) => ContentType;
-    onClickNode?: (item: TreeViewItemType) => void;
-    onToggleNode?: (item: TreeViewItemType) => void;
-    onDropNode?: (obj: TreeDropItemType) => void;
+    renderLoading?: (item: TreeViewItemType) => ContentType;
+    onClickNode?: (item: TreeViewItemType, e: MouseEvent) => void;
+    onToggleNode?: (item: TreeViewItemType, e: MouseEvent) => void;
+    onDropNode?: (obj: TreeDropItemType, e: DragEvent) => void;
   }
 
   export class TreeView extends UIElement {
     props: TreeViewProps & DomEventType;
   }
+
+  type TreeViewItemInsertType = "before" | "after" | "append";
+
+  class BaseTreeViewProvider {
+    get items(): TreeViewItemType[];
+    get ids(): string[];
+    has(id: string): boolean;
+    get(id: string): TreeViewItemType;
+    set(id: string, item: TreeViewItemType): void;
+    remove(id: string): void;
+    setParent(id: string, parentId: string): void;
+    removeParent(id: string): void;
+    appendChild(parentId: string, item: TreeViewItemType): void;
+    getParent(id: string): string;
+    deleteInfo(item: TreeViewItemType): void;
+    removeChild(parentId: string, id: string): void;
+    insertChild(parentId: string, index: number, item: TreeViewItemType): void;
+    findIndex(list: TreeViewItemType[], id: string): number;
+    insertItem(
+      targetId: string,
+      currentId: string,
+      type: TreeViewItemInsertType
+    ): void;
+    insertBefore(targetId: string, currentId: string): void;
+    insertAfter(targetId: string, currentId: string): void;
+    insertLast(targetId: string, currentId: string): void;
+  }
+
+  export class TreeViewProvider extends BaseTreeViewProvider {}
 }

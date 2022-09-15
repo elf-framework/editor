@@ -1,5 +1,13 @@
 # ui-dev
 
+## 1.0.26
+
+### Patch Changes
+
+- fixed badge link
+  update progress-circle documentation
+  update treeview documentation
+
 ## 1.0.25
 
 ### Patch Changes

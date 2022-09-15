@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 12:40:20 GMT
+ * Generated on Thu, 15 Sep 2022 12:36:19 GMT
  */
 
 export const ImageLogo : string;
@@ -305,6 +305,28 @@ export const SpacingSizeLg : string;
 export const SpacingSizeXl : string;
 export const SpacingSizeXxl : string;
 export const SpacingSizeXxxl : string;
+export const ZIndex0 : string;
+export const ZIndex10 : string;
+export const ZIndex20 : string;
+export const ZIndex30 : string;
+export const ZIndex40 : string;
+export const ZIndex50 : string;
+export const ZIndex100 : string;
+export const ZIndex200 : string;
+export const ZIndex300 : string;
+export const ZIndex400 : string;
+export const ZIndex500 : string;
+export const ZIndex1000 : string;
+export const ZIndex2000 : string;
+export const ZIndex3000 : string;
+export const ZIndex4000 : string;
+export const ZIndex5000 : string;
+export const ZIndex10000 : string;
+export const ZIndex20000 : string;
+export const ZIndex30000 : string;
+export const ZIndex40000 : string;
+export const ZIndex50000 : string;
+export const ZIndexTooltip : string;
 export const SizeBase0 : string;
 export const SizeBase10 : string;
 export const SizeBase25 : string;

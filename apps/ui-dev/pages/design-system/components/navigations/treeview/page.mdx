@@ -7,13 +7,15 @@ filename: pages/design-system/navigations/treeview/page.mdx
 import { VBox, Flex } from "@elf-framework/ui";
 import { MainView } from "../../../../../component/navigations/treeview/MainView.jsx"; 
 import { OptionsView } from "../../../../../component/navigations/treeview/OptionsView.jsx"; 
-import { LabelPositionView } from "../../../../../component/navigations/treeview/LabelPositionView.jsx"; 
-import { MinMaxView } from "../../../../../component/navigations/treeview/MinMaxView.jsx"; 
-import { ValueFormatView } from "../../../../../component/navigations/treeview/ValueFormatView.jsx"; 
-import { FillView } from "../../../../../component/navigations/treeview/FillView.jsx"; 
-import { FillStartView } from "../../../../../component/navigations/treeview/FillStartView.jsx"; 
-import { DisabledView } from "../../../../../component/navigations/treeview/DisabledView.jsx"; 
-import { GradientView } from "../../../../../component/navigations/treeview/GradientView.jsx"; 
+import { IconsView } from "../../../../../component/navigations/treeview/IconsView.jsx"; 
+import { ThumbnailsView } from "../../../../../component/navigations/treeview/ThumbnailsView.jsx"; 
+import { EmphasisView } from "../../../../../component/navigations/treeview/EmphasisView.jsx"; 
+import { SelectionView } from "../../../../../component/navigations/treeview/SelectionView.jsx"; 
+import { SelectionStyleView } from "../../../../../component/navigations/treeview/SelectionStyleView.jsx"; 
+import { ActionsAreaView } from "../../../../../component/navigations/treeview/ActionsAreaView.jsx"; 
+import { TextOverflowView } from "../../../../../component/navigations/treeview/TextOverflowView.jsx"; 
+import { TooltipView } from "../../../../../component/navigations/treeview/TooltipView.jsx"; 
+import { LoadingView } from "../../../../../component/navigations/treeview/LoadingView.jsx"; 
 import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
 
 # {title}
@@ -29,38 +31,43 @@ A tree view provides users with a way to navigate nested hierarchical informatio
 
 ## Options 
 
-### Label
+### Text only
 
 <OptionsView />
 
-### Label Position
+### Icons
 
-<LabelPositionView />
+<IconsView />
 
-### Value, min value, max value and step 
+### Thumbnails
 
-<MinMaxView />
+<ThumbnailsView />
 
-### Value format
+### Emphasis
 
-<ValueFormatView />
+<EmphasisView />
 
+### Selection
 
-### Fill
+<SelectionView />
 
-<FillView />
+### Checkbox or highlight selection style
 
-### Fill start
-
-<FillStartView />
-
-### Gradient
-
-<GradientView />
+<SelectionStyleView />
 
 
-### Disabled
+### Actions area 
 
-<DisabledView />
+<ActionsAreaView />
 
+### Text overflow
 
+<TextOverflowView />
+
+### Loading
+
+<LoadingView />
+
+### Show truncated labels in tooltip
+
+<TooltipView />

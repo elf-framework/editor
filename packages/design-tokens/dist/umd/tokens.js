@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 12:40:20 GMT
+ * Generated on Thu, 15 Sep 2022 12:36:19 GMT
  */
 
 (function(root, factory) {
@@ -4776,11 +4776,11 @@
     "hover": {
       "background": {
         "default": {
-          "value": "#d9e0e6",
+          "value": "#c5ced6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonHoverBackgroundDefault",
           "attributes": {
@@ -4801,11 +4801,11 @@
     "selected": {
       "background": {
         "default": {
-          "value": "#c5ced6",
+          "value": "#a2adb8",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.3.value}"
+            "value": "{color.gray.4.value}"
           },
           "name": "ButtonSelectedBackgroundDefault",
           "attributes": {
@@ -6153,6 +6153,382 @@
           "xxxl"
         ]
       }
+    }
+  },
+  "z-index": {
+    "0": {
+      "value": "0",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "0"
+      },
+      "name": "ZIndex0",
+      "attributes": {
+        "category": "z-index",
+        "type": "0"
+      },
+      "path": [
+        "z-index",
+        "0"
+      ]
+    },
+    "10": {
+      "value": "10",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "10"
+      },
+      "name": "ZIndex10",
+      "attributes": {
+        "category": "z-index",
+        "type": "10"
+      },
+      "path": [
+        "z-index",
+        "10"
+      ]
+    },
+    "20": {
+      "value": "20",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "20"
+      },
+      "name": "ZIndex20",
+      "attributes": {
+        "category": "z-index",
+        "type": "20"
+      },
+      "path": [
+        "z-index",
+        "20"
+      ]
+    },
+    "30": {
+      "value": "30",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "30"
+      },
+      "name": "ZIndex30",
+      "attributes": {
+        "category": "z-index",
+        "type": "30"
+      },
+      "path": [
+        "z-index",
+        "30"
+      ]
+    },
+    "40": {
+      "value": "40",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "40"
+      },
+      "name": "ZIndex40",
+      "attributes": {
+        "category": "z-index",
+        "type": "40"
+      },
+      "path": [
+        "z-index",
+        "40"
+      ]
+    },
+    "50": {
+      "value": "50",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "50"
+      },
+      "name": "ZIndex50",
+      "attributes": {
+        "category": "z-index",
+        "type": "50"
+      },
+      "path": [
+        "z-index",
+        "50"
+      ]
+    },
+    "100": {
+      "value": "100",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "100"
+      },
+      "name": "ZIndex100",
+      "attributes": {
+        "category": "z-index",
+        "type": "100"
+      },
+      "path": [
+        "z-index",
+        "100"
+      ]
+    },
+    "200": {
+      "value": "200",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "200"
+      },
+      "name": "ZIndex200",
+      "attributes": {
+        "category": "z-index",
+        "type": "200"
+      },
+      "path": [
+        "z-index",
+        "200"
+      ]
+    },
+    "300": {
+      "value": "300",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "300"
+      },
+      "name": "ZIndex300",
+      "attributes": {
+        "category": "z-index",
+        "type": "300"
+      },
+      "path": [
+        "z-index",
+        "300"
+      ]
+    },
+    "400": {
+      "value": "400",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "400"
+      },
+      "name": "ZIndex400",
+      "attributes": {
+        "category": "z-index",
+        "type": "400"
+      },
+      "path": [
+        "z-index",
+        "400"
+      ]
+    },
+    "500": {
+      "value": "500",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "500"
+      },
+      "name": "ZIndex500",
+      "attributes": {
+        "category": "z-index",
+        "type": "500"
+      },
+      "path": [
+        "z-index",
+        "500"
+      ]
+    },
+    "1000": {
+      "value": "1000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "1000"
+      },
+      "name": "ZIndex1000",
+      "attributes": {
+        "category": "z-index",
+        "type": "1000"
+      },
+      "path": [
+        "z-index",
+        "1000"
+      ]
+    },
+    "2000": {
+      "value": "2000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "2000"
+      },
+      "name": "ZIndex2000",
+      "attributes": {
+        "category": "z-index",
+        "type": "2000"
+      },
+      "path": [
+        "z-index",
+        "2000"
+      ]
+    },
+    "3000": {
+      "value": "3000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "3000"
+      },
+      "name": "ZIndex3000",
+      "attributes": {
+        "category": "z-index",
+        "type": "3000"
+      },
+      "path": [
+        "z-index",
+        "3000"
+      ]
+    },
+    "4000": {
+      "value": "4000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "4000"
+      },
+      "name": "ZIndex4000",
+      "attributes": {
+        "category": "z-index",
+        "type": "4000"
+      },
+      "path": [
+        "z-index",
+        "4000"
+      ]
+    },
+    "5000": {
+      "value": "5000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "5000"
+      },
+      "name": "ZIndex5000",
+      "attributes": {
+        "category": "z-index",
+        "type": "5000"
+      },
+      "path": [
+        "z-index",
+        "5000"
+      ]
+    },
+    "10000": {
+      "value": "10000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "10000"
+      },
+      "name": "ZIndex10000",
+      "attributes": {
+        "category": "z-index",
+        "type": "10000"
+      },
+      "path": [
+        "z-index",
+        "10000"
+      ]
+    },
+    "20000": {
+      "value": "20000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "20000"
+      },
+      "name": "ZIndex20000",
+      "attributes": {
+        "category": "z-index",
+        "type": "20000"
+      },
+      "path": [
+        "z-index",
+        "20000"
+      ]
+    },
+    "30000": {
+      "value": "30000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "30000"
+      },
+      "name": "ZIndex30000",
+      "attributes": {
+        "category": "z-index",
+        "type": "30000"
+      },
+      "path": [
+        "z-index",
+        "30000"
+      ]
+    },
+    "40000": {
+      "value": "40000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "40000"
+      },
+      "name": "ZIndex40000",
+      "attributes": {
+        "category": "z-index",
+        "type": "40000"
+      },
+      "path": [
+        "z-index",
+        "40000"
+      ]
+    },
+    "50000": {
+      "value": "50000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "50000"
+      },
+      "name": "ZIndex50000",
+      "attributes": {
+        "category": "z-index",
+        "type": "50000"
+      },
+      "path": [
+        "z-index",
+        "50000"
+      ]
+    },
+    "tooltip": {
+      "value": "50000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.50000.value}"
+      },
+      "name": "ZIndexTooltip",
+      "attributes": {
+        "category": "z-index",
+        "type": "tooltip"
+      },
+      "path": [
+        "z-index",
+        "tooltip"
+      ]
     }
   },
   "size": {

@@ -169,6 +169,22 @@
 }
 
 
+@keyframes spin-2 {
+
+  0% {
+    transform: rotate(0deg);
+  } 
+  
+  50% {
+    transform: rotate(720deg);
+  } 
+  
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+
 @keyframes indeterminate {
   0% {
     left: -100%;
@@ -182,5 +198,28 @@
   100% {
     left: 100%;
     transform: scaleX(0.5);
+  }
+}
+
+
+
+@keyframes progress-circle {
+  0% {
+    stroke-dasharray: 0,250;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89,250;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89,250;
+    stroke-dashoffset: -200;
+  }
+}
+
+@keyframes progress-circle-one {
+  100% {
+    stroke-dasharray: var(--progress-total-length);
   }
 }

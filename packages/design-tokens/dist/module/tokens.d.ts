@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 12:40:20 GMT
+ * Generated on Thu, 15 Sep 2022 12:36:19 GMT
  */
 
 export default tokens;
@@ -425,6 +425,30 @@ declare const tokens: {
       "xxl": DesignToken,
       "xxxl": DesignToken
     }
+  },
+  "z-index": {
+    "0": DesignToken,
+    "10": DesignToken,
+    "20": DesignToken,
+    "30": DesignToken,
+    "40": DesignToken,
+    "50": DesignToken,
+    "100": DesignToken,
+    "200": DesignToken,
+    "300": DesignToken,
+    "400": DesignToken,
+    "500": DesignToken,
+    "1000": DesignToken,
+    "2000": DesignToken,
+    "3000": DesignToken,
+    "4000": DesignToken,
+    "5000": DesignToken,
+    "10000": DesignToken,
+    "20000": DesignToken,
+    "30000": DesignToken,
+    "40000": DesignToken,
+    "50000": DesignToken,
+    "tooltip": DesignToken
   },
   "size": {
     "base": {

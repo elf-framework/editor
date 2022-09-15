@@ -9,6 +9,7 @@ import {
   useMemo,
   FOCUS,
   isString,
+  potal,
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
@@ -28,6 +29,7 @@ const cssProperties = makeCssVariablePrefixMap("--elf--tooltip", {
   delay: true,
   contentPadding: true,
   maxWidth: true,
+  position: true,
 });
 
 export const TooltipPlacement = {
@@ -61,6 +63,7 @@ export class Tooltip extends UIElement {
       animated = false,
       hideArrow = false,
       variant = "default",
+      position = "relative",
       icon,
     } = this.props;
     const { show } = this.state;
@@ -70,8 +73,9 @@ export class Tooltip extends UIElement {
         [placement]: true,
         animated,
         [variant]: true,
+        [position]: true,
       });
-    }, [placement, animated, variant]);
+    }, [placement, animated, variant, position]);
 
     const styleObject = {
       class: localClass,
@@ -165,8 +169,35 @@ export class Tooltip extends UIElement {
     this.toggle();
   }
 
-  [FOCUS("$el") + IF("checkTriggerFocus")](e) {
-    console.log(this.$el, e);
+  [FOCUS("$el") + IF("checkTriggerFocus")]() {
     this.open();
   }
+
+  remove() {
+    this.$el.remove();
+  }
+}
+
+export function tooltip({
+  content,
+  message = "",
+  delay = 0,
+  position = "fixed",
+  placement = "top",
+  options = {},
+  style,
+}) {
+  return potal(
+    <Tooltip
+      delay={delay}
+      position={position}
+      placement={placement}
+      message={message}
+      style={style}
+      show={true}
+    >
+      {content || <span>&nbsp;</span>}
+    </Tooltip>,
+    options
+  );
 }

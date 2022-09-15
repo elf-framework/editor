@@ -1,6 +1,7 @@
 import "@elf-framework/design-system/style.css";
 
 export * from "./hooks/usePointerStart";
+export * from "./utils/TreeViewProvider";
 
 export * from "./consts/index";
 export * from "./consts/event";
@@ -59,6 +60,7 @@ export * from "./components/avatar";
 export * from "./components/tag";
 export * from "./components/badge";
 export * from "./components/progress-bar";
+export * from "./components/progress-circle";
 export * from "./components/switch";
 export * from "./components/slider";
 export * from "./components/treeview";

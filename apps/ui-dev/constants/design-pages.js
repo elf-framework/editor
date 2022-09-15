@@ -179,6 +179,10 @@ export default [
         title: "Progress Bar",
       },
       {
+        link: COMPONENTS_URL + "status/progress-circle/",
+        title: "Progress Circle",
+      },
+      {
         link: COMPONENTS_URL + "status/status-light/",
         title: "Status light * ",
       },

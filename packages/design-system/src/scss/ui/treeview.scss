@@ -91,30 +91,64 @@
 .elf--treeview-item {
 
   --elf--treeview-item-drag-handler-width: 20px;
-  --elf--treeview-item-checkbox-area-width: 20px;
-  --elf--treeview-item-collapse-area-width: 32px;
-  --elf--treeview-item-hover-background-color: var(--color-gray-1);
+  --elf--treeview-item-checkbox-area-width: 32px;
+  --elf--treeview-item-collapse-area-width: 20px;
+  --elf--treeview-item-hover-background-color: transparent;
   --elf--treeview-item-selected-background-color: var(--color-gray-2);
+  --elf--treeview-item-hover-border-color: var(--color-black);
+  --elf--treeview-item-border-color: transparent;
+  --elf--treeview-item-background-color: transparent;
+  --elf--treeview-item-ghost-background-color: var(--color-gray-1);
+  --elf--treeview-item-font-color: var(--color-black);
 
   box-sizing: border-box;
-  // border: 1px solid black;
+  border: 1px solid var(--elf--treeview-item-border-color);
   padding-right: 2px;
   user-select: none;
   border-radius: var(--elf--treeview-item-border-radius);    
   display: flex;
+  background-color: var(--elf--treeview-item-background-color);
+  color: var(--elf--treeview-item-font-color);
+  justify-content: space-between;
+
+
+
+  &.selected {
+    &.primary {
+      --elf--treeview-item-selected-background-color: var(--color-blue-2);
+    }
+  
+    &.secondary {
+      --elf--treeview-item-selected-background-color: var(--color-gray-2);
+    }
+  
+    &.dark {
+      --elf--treeview-item-selected-background-color: var(--color-gray-9);
+      --elf--treeview-item-font-color: var(--color-white);
+    }
+
+    .actions-area {
+      display: flex;
+    }    
+  }
 
   &.ghost {
-    background-color: var(--elf--treeview-item-hover-background-color);
+    --elf--treeview-item-background-color: var(--elf--treeview-item-ghost-background-color);
     box-shadow: var(--shadow-1);
   }
 
   &.hover,
   &:hover {
-    background-color: var(--elf--treeview-item-hover-background-color);
+    --elf--treeview-item-background-color: var(--elf--treeview-item-hover-background-color);
+    --elf--treeview-item-border-color: var(--elf--treeview-item-hover-border-color);
+
+    .actions-area {
+      display: flex;
+    }
   }
 
   &.selected {
-    background-color: var(--elf--treeview-item-selected-background-color);
+    --elf--treeview-item-background-color: var(--elf--treeview-item-selected-background-color);
     // --elf--treeview-item-border-radius: 5px;
   }    
 
@@ -173,6 +207,9 @@
   > .context-area {
     width: var(--elf--treeview-item-context-area-width);
     padding:0px 2px;
+    padding-right: 4px;
+    display: flex;
+    gap: 2px;
 
     svg {
       width: 20px;
@@ -180,19 +217,43 @@
     }
   }
 
-  > .label-area{
-    flex: 1;
+  > .label-area,
+  > .loading-area{
+    flex: 1 1 auto;
     // background-color: yellow;
     text-align: left;
     justify-content: flex-start;
+    display: flex;
+    min-width: 0;   /* min-width: 0; to set overflow of sub text This must be set. */
+    padding-right: 5px;
+    box-sizing: border-box;
+
+    .label {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      pointer-events: none;
+    }
+
   }
 
-  > .action-area {
+  > .loading-area {
+    pointer-events: none;
+  }
+
+  > .actions-area {
     width: fit-content;
+    display: none;
     // background-color: purple;
 
     > * {
       width: 30px;
     }
+  }
+
+  > .tail-area {
+    flex: 0;
+    min-width: 0px;
   }
 }

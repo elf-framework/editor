@@ -9,6 +9,8 @@ import {
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
+import { Checkbox } from "../checkbox";
+import { tooltip } from "../tooltip";
 import { VirtualScroll } from "../virtual-scroll";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--treeview", {
@@ -24,6 +26,44 @@ const cssProperties = makeCssVariablePrefixMap("--elf--treeview", {
   gap: true,
 });
 
+const tooltipMap = new WeakMap();
+
+const isEllipsisActive = (el) => {
+  return el.offsetWidth < el.scrollWidth;
+};
+
+function displayTooltip(label, target) {
+  const $label = Dom.create(target).$(".label");
+
+  if (isEllipsisActive($label.el)) {
+    const labelRect = $label.rect();
+    const { left, top, width, height, right, bottom } = labelRect;
+    const $tooltip = tooltip({
+      message: label,
+      placement: "top",
+      style: {
+        left,
+        top,
+        width,
+        height,
+        right,
+        bottom,
+      },
+    });
+
+    tooltipMap.set(target, $tooltip);
+  }
+}
+
+function hideTooltip(target) {
+  const $tooltip = tooltipMap.get(target);
+  if ($tooltip) {
+    $tooltip.close();
+    $tooltip.remove();
+    tooltipMap.delete(target);
+  }
+}
+
 function itemRenderer(
   item,
   top,
@@ -31,11 +71,15 @@ function itemRenderer(
   {
     onSelect,
     selectionStyle,
+    variant,
     renderActions,
     renderArrow,
+    renderLabel,
+    renderLoading,
     onToggle,
     renderContext,
     draggable,
+    showTooltip,
   }
 ) {
   const { data, depth } = item;
@@ -43,11 +87,15 @@ function itemRenderer(
   const arrow = renderArrow?.(item);
   const contextView = renderContext?.(item);
   const actions = renderActions?.(item);
+  const label = renderLabel?.(item) || data.title;
+  const loadingText = renderLoading?.(item) || "Loading....";
 
   return (
     <div
       class={classnames("elf--treeview-item", {
-        selected: data.selected && selectionStyle === "highlight",
+        selected: data.selected,
+        [variant]: true,
+        loading: data.loading,
       })}
       data-depth={depth}
       key={data.id}
@@ -60,12 +108,11 @@ function itemRenderer(
       {draggable ? <div class="drag-handle">{"\u22EE"}</div> : undefined}
       {selectionStyle === "checkbox" ? (
         <div class="checkbox-area">
-          <input
-            type="checkbox"
+          <Checkbox
             {...{
               checked: data.selected ? "checked" : undefined,
             }}
-            onClick={() => onSelect(item, "checkbox")}
+            onClick={(e) => onSelect(item, "checkbox", e)}
           />
         </div>
       ) : undefined}
@@ -73,8 +120,8 @@ function itemRenderer(
       {data.children ? (
         <div
           class="collapse-area"
-          onClick={() => {
-            onToggle(item);
+          onClick={(e) => {
+            onToggle(item, e);
           }}
         >
           <div
@@ -89,10 +136,27 @@ function itemRenderer(
         <div class="collapse-area">&nbsp;</div>
       )}
       {contextView ? <div class="context-area">{contextView}</div> : undefined}
-      <label class="label-area" onClick={() => onSelect(item, "highlight")}>
-        {data.title}
-      </label>
+      {data?.loading ? (
+        <div class="loading-area">{loadingText}</div>
+      ) : (
+        <label
+          class="label-area"
+          onClick={(e) => onSelect(item, "highlight", e)}
+          onMouseEnter={(e) => {
+            if (label) {
+              showTooltip && displayTooltip(label, e.target);
+            }
+          }}
+          onMouseLeave={(e) => {
+            showTooltip && hideTooltip(e.target);
+          }}
+        >
+          <div class="label">{label}</div>
+        </label>
+      )}
+
       {actions ? <div class="actions-area">{actions}</div> : undefined}
+      <div class="tail-area"></div>
     </div>
   );
 }
@@ -134,12 +198,15 @@ export class TreeView extends UIElement {
   template() {
     const {
       style,
+      variant = "default",
       itemHeight = 32,
       overscanRowCount = 30,
       renderContext,
       selectionStyle = "highlight",
+      showTooltip = false,
       renderActions,
       renderArrow,
+      renderLoading,
       draggable = false,
       onClickNode,
       onToggleNode,
@@ -159,26 +226,29 @@ export class TreeView extends UIElement {
 
     const itemRendererProps = {
       onSelect: useCallback(
-        (item, style) => {
+        (item, style, e) => {
           // highlight 모드 일 때는 item 전체를 클릭하고 선택
           // checkbox 모드 일 때는 checkbox 영역을 클릭하고 선택
           if (style === selectionStyle) {
-            onClickNode(item);
+            onClickNode?.(item, e);
           }
         },
         [onClickNode]
       ),
       onToggle: useCallback(
-        (item) => {
-          onToggleNode(item);
+        (item, e) => {
+          onToggleNode?.(item, e);
         },
         [onToggleNode]
       ),
+      variant,
       draggable,
+      showTooltip,
       renderContext,
       selectionStyle,
       renderActions,
       renderArrow,
+      renderLoading,
     };
 
     const onDrag = useCallback(() => {
@@ -188,25 +258,7 @@ export class TreeView extends UIElement {
     const onDragStart = useCallback((e) => {
       const $item = Dom.create(e.target).closest("elf--treeview-item");
 
-      const itemRect = $item.rect();
-
-      const ghost = $item.clone(true).el;
-      ghost.style.position = "absolute";
-      ghost.style.top = "auto";
-      ghost.style.left = "-100000px";
-      ghost.style.width = `${itemRect.width}px`;
-      ghost.style.height = `${itemRect.height}px`;
-      ghost.style.opacity = 1;
-      ghost.style.pointerEvents = "none";
-      ghost.style.zIndex = 9999;
-      ghost.classList.add("ghost");
-
-      const ghostLeft = e.clientX - itemRect.left;
-      const ghostTop = e.clientY - itemRect.top;
-
-      document.body.appendChild(ghost);
-
-      e.dataTransfer.setDragImage(ghost, ghostLeft, -10);
+      const ghost = this.setGhost($item, e);
 
       this.setState(
         {
@@ -317,16 +369,18 @@ export class TreeView extends UIElement {
           return;
         }
 
-        onDropNode({
-          startId: this.state.startId,
-          endId: this.state.endId,
-          rate: this.state.rate,
-          targetPosition: this.targetPosition,
-        });
+        onDropNode(
+          {
+            startId: this.state.startId,
+            endId: this.state.endId,
+            rate: this.state.rate,
+            targetPosition: this.targetPosition,
+          },
+          e
+        );
       },
       [onDropNode]
     );
-
     const events = {
       droppable: true,
       onDrag,
@@ -365,6 +419,30 @@ export class TreeView extends UIElement {
     } else {
       return "bottom";
     }
+  }
+
+  setGhost($item, e) {
+    const itemRect = $item.rect();
+
+    const ghost = $item.clone(true).el;
+    ghost.style.position = "absolute";
+    ghost.style.top = "auto";
+    ghost.style.left = "-100000px";
+    ghost.style.width = `${itemRect.width}px`;
+    ghost.style.height = `${itemRect.height}px`;
+    ghost.style.opacity = 1;
+    ghost.style.pointerEvents = "none";
+    ghost.style.zIndex = 9999;
+    ghost.classList.add("ghost");
+
+    const ghostLeft = e.clientX - itemRect.left;
+    // const ghostTop = e.clientY - itemRect.top;
+
+    document.body.appendChild(ghost);
+
+    e.dataTransfer.setDragImage(ghost, ghostLeft, -10);
+
+    return ghost;
   }
 }
 

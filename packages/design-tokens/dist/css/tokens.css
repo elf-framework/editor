@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 12:40:20 GMT
+ * Generated on Thu, 15 Sep 2022 12:36:19 GMT
  */
 
 :root {
@@ -61,6 +61,27 @@
   --size-base-25: 2px;
   --size-base-10: 1px;
   --size-base-0: 0px;
+  --z-index-50000: 50000;
+  --z-index-40000: 40000;
+  --z-index-30000: 30000;
+  --z-index-20000: 20000;
+  --z-index-10000: 10000;
+  --z-index-5000: 5000;
+  --z-index-4000: 4000;
+  --z-index-3000: 3000;
+  --z-index-2000: 2000;
+  --z-index-1000: 1000;
+  --z-index-500: 500;
+  --z-index-400: 400;
+  --z-index-300: 300;
+  --z-index-200: 200;
+  --z-index-100: 100;
+  --z-index-50: 50;
+  --z-index-40: 40;
+  --z-index-30: 30;
+  --z-index-20: 20;
+  --z-index-10: 10;
+  --z-index-0: 0;
   --spacing-8: 40px;
   --spacing-7: 32px;
   --spacing-6: 24px; /* base size */
@@ -229,6 +250,7 @@
   --font-size-h3: var(--font-size-600);
   --font-size-h2: var(--font-size-700);
   --font-size-h1: var(--font-size-800);
+  --z-index-tooltip: var(--z-index-50000);
   --spacing-size-xxxl: var(--spacing-8);
   --spacing-size-xxl: var(--spacing-7);
   --spacing-size-xl: var(--spacing-6);
@@ -248,8 +270,8 @@
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
   --button-color-border-default: var(--color-gray-3);
-  --button-selected-background-default: var(--color-gray-3);
-  --button-hover-background-default: var(--color-gray-2);
+  --button-selected-background-default: var(--color-gray-4);
+  --button-hover-background-default: var(--color-gray-3);
   --alert-color-background-weak-success: var(--color-green-1); /* Base color for the success color */
   --alert-color-background-weak-warning: var(--color-orange-1); /* Base color for the warning color */
   --alert-color-background-weak-danger: var(--color-red-1); /* Base color for the danger color */

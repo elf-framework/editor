@@ -5,7 +5,7 @@
   --elf--button-background-color: var(
     --button-color-background-default
   );
-  --elf--button-color: rgba(0, 0, 0, 0.8);
+  --elf--button-color: var(--color-transparent-black-8);
   --elf--button-border-radius: 4px;
   --elf--button-disabled-color: var(--elf--disabled-color);
   --elf--button-inner-gap: 6px;

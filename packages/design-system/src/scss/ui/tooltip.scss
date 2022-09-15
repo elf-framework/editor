@@ -14,11 +14,21 @@
     --elf--tooltip-content-padding: 4px 10px;
     --elf--tooltip-animation: fadein var(--elf--tooltip-delay) ease-in-out;
     --elf--tooltip-max-width: 160;
-
-    position: relative;
+    --elf--tooltip-position: relative;
+    position: var(--elf--tooltip-position);
     width: fit-content;
     height: fit-content;
     display: inline-block;
+    z-index: var(--z-index-tooltip);
+
+    &.fixed {
+        --elf--tooltip-position: fixed;
+        pointer-events: none;
+
+        > .message {
+            pointer-events: auto;
+        }
+    }
 
 
     &.primary {

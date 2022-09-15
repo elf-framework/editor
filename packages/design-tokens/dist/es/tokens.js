@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 14 Sep 2022 12:40:20 GMT
+ * Generated on Thu, 15 Sep 2022 12:36:19 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -234,8 +234,8 @@ export const AvatarSize400 = "45px";
 export const AvatarSize500 = "50px";
 export const AvatarSize600 = "55px";
 export const AvatarSize700 = "60px";
-export const ButtonHoverBackgroundDefault = "#d9e0e6";
-export const ButtonSelectedBackgroundDefault = "#c5ced6";
+export const ButtonHoverBackgroundDefault = "#c5ced6";
+export const ButtonSelectedBackgroundDefault = "#a2adb8";
 export const ButtonDisabledBackgroundDefault = "#e6e6e6";
 export const ButtonDisabledTextDefault = "#b1b1b1";
 export const ButtonColorBackgroundDefault = "#ffffff";
@@ -305,6 +305,28 @@ export const SpacingSizeLg = "20px";
 export const SpacingSizeXl = "24px";
 export const SpacingSizeXxl = "32px";
 export const SpacingSizeXxxl = "40px";
+export const ZIndex0 = "0";
+export const ZIndex10 = "10";
+export const ZIndex20 = "20";
+export const ZIndex30 = "30";
+export const ZIndex40 = "40";
+export const ZIndex50 = "50";
+export const ZIndex100 = "100";
+export const ZIndex200 = "200";
+export const ZIndex300 = "300";
+export const ZIndex400 = "400";
+export const ZIndex500 = "500";
+export const ZIndex1000 = "1000";
+export const ZIndex2000 = "2000";
+export const ZIndex3000 = "3000";
+export const ZIndex4000 = "4000";
+export const ZIndex5000 = "5000";
+export const ZIndex10000 = "10000";
+export const ZIndex20000 = "20000";
+export const ZIndex30000 = "30000";
+export const ZIndex40000 = "40000";
+export const ZIndex50000 = "50000";
+export const ZIndexTooltip = "50000";
 export const SizeBase0 = "0rem";
 export const SizeBase10 = "1rem";
 export const SizeBase25 = "2rem";

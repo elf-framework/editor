@@ -18,11 +18,12 @@
     --elf--checkbox-error-hover-color: var(--color-hover-danger);
     --elf--checkbox-error-down-color: var(--color-down-danger);    
 
-    display: inline-block;
+    display: flex;
     color: var(--elf--checkbox-color);
     vertical-align: middle;
     accent-color: var(--elf--checkbox-active-color);
     font-size: var(--elf--checkbox-font-size);
+    justify-content: center;
 
     &.small {
         --elf--checkbox-font-size: var(--font-size-small);
@@ -81,9 +82,10 @@
 
     label {
         vertical-align: middle;
+        text-align: center;
         input[type="checkbox"] {
             vertical-align: middle;        
-            margin-right: calc(1em);
+            // margin-right: calc(1em);
             width: 1em;
             height: 1em;
 
@@ -119,6 +121,7 @@
         > *:not(input) {
             pointer-events: none;
             vertical-align: middle;
+            margin-left: 1em;
         }
     }
 
