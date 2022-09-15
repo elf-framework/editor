@@ -5672,7 +5672,7 @@ var __privateMethod = (obj, member, method) => {
     fontSize: true,
     duration: true
   });
-  const PERCENT_NUMBER$1 = 100;
+  const PERCENT_NUMBER = 100;
   function converValueToPercent(value) {
     return value + "%";
   }
@@ -5680,7 +5680,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         min = 0,
-        max = PERCENT_NUMBER$1,
+        max = PERCENT_NUMBER,
         value = min,
         showValue = true,
         valueFunction = converValueToPercent,
@@ -5704,7 +5704,7 @@ var __privateMethod = (obj, member, method) => {
         style: propertyMap(style2, cssProperties$4)
       };
       const localValue = (value - min) / (max - min);
-      const percentValue = Math.round(localValue * PERCENT_NUMBER$1);
+      const percentValue = Math.round(localValue * PERCENT_NUMBER);
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
       }, title ? /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -5727,12 +5727,11 @@ var __privateMethod = (obj, member, method) => {
     offset: true,
     width: true
   });
-  const PERCENT_NUMBER = 100;
   class ProgressCircle extends sapa.UIElement {
     template() {
       const {
         min = 0,
-        max = PERCENT_NUMBER,
+        max = 100,
         value = min,
         variant = "default",
         size = "medium",
@@ -5748,8 +5747,8 @@ var __privateMethod = (obj, member, method) => {
           indeterminate
         });
       }, [variant, size, indeterminate, animated]);
-      const localValue = (value - min) / (max - min);
-      const percentValue = localValue;
+      const percentValue = (value - min) / (max - min);
+      console.log(percentValue, value, min, max);
       const styleObject = {
         class: localClass,
         style: propertyMap(

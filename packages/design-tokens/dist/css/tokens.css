@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Sep 2022 12:36:19 GMT
+ * Generated on Thu, 15 Sep 2022 15:55:03 GMT
  */
 
 :root {
@@ -61,6 +61,7 @@
   --size-base-25: 2px;
   --size-base-10: 1px;
   --size-base-0: 0px;
+  --math-pi: 3.141592653589793;
   --z-index-50000: 50000;
   --z-index-40000: 40000;
   --z-index-30000: 30000;

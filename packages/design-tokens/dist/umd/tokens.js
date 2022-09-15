@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Sep 2022 12:36:19 GMT
+ * Generated on Thu, 15 Sep 2022 15:55:03 GMT
  */
 
 (function(root, factory) {
@@ -6528,6 +6528,25 @@
       "path": [
         "z-index",
         "tooltip"
+      ]
+    }
+  },
+  "math": {
+    "pi": {
+      "value": 3.141592653589793,
+      "filePath": "tokens/math/math.json",
+      "isSource": true,
+      "original": {
+        "value": 3.141592653589793
+      },
+      "name": "MathPi",
+      "attributes": {
+        "category": "math",
+        "type": "pi"
+      },
+      "path": [
+        "math",
+        "pi"
       ]
     }
   },

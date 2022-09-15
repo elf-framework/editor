@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Sep 2022 12:36:19 GMT
+ * Generated on Thu, 15 Sep 2022 15:55:03 GMT
  */
 
 export const ImageLogo : string;
@@ -327,6 +327,7 @@ export const ZIndex30000 : string;
 export const ZIndex40000 : string;
 export const ZIndex50000 : string;
 export const ZIndexTooltip : string;
+export const MathPi : number;
 export const SizeBase0 : string;
 export const SizeBase10 : string;
 export const SizeBase25 : string;

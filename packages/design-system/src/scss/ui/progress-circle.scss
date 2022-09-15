@@ -85,7 +85,9 @@
 
   &:not(.indeterminate) {
 
-    --progress-total-length: calc(var(--elf--progress-circle-width) * 3.14);
+    // calculate svg circle size  (width - bar-height) is circle raidus
+    --progress-circle-size: calc(var(--elf--progress-circle-width) - var(--elf--progress-circle-bar-height));
+    --progress-total-length: calc(var(--progress-circle-size) * var(--math-pi));
     --progress-gauge: calc(var(--progress-total-length) * var(--elf--progress-circle-offset));          
     &.animated {
       --elf--progress-circle-animation: var(--elf--progress-circle-determinate-animation);

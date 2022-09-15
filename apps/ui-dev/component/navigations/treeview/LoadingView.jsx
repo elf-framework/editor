@@ -42,7 +42,7 @@ export function LoadingView() {
                 return (
                   <div>
                     <em>
-                      <ProgressCircle indeterminate size="small" /> Loading...
+                      <ProgressCircle animated size="small" /> Loading...
                     </em>
                   </div>
                 );

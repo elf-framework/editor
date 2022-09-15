@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.1.40
+
+### Patch Changes
+
+- fixed stroke width for progress circle
+
 ## 2.1.39
 
 ### Patch Changes

@@ -6191,6 +6191,24 @@
       }
     }
   },
+  "math": {
+    "pi": {
+      "value": 3.141592653589793,
+      "filePath": "tokens/math/math.json",
+      "isSource": true,
+      "original": {
+        "value": 3.141592653589793
+      },
+      "attributes": {
+        "category": "math",
+        "type": "pi"
+      },
+      "path": {
+        "0": "math",
+        "1": "pi"
+      }
+    }
+  },
   "size": {
     "base": {
       "0": {

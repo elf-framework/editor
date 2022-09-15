@@ -12,13 +12,11 @@ const cssProperties = makeCssVariablePrefixMap("--elf--progress-circle", {
   width: true,
 });
 
-const PERCENT_NUMBER = 100;
-
 export class ProgressCircle extends UIElement {
   template() {
     const {
       min = 0,
-      max = PERCENT_NUMBER,
+      max = 100,
       value = min,
 
       variant = "default",
@@ -37,8 +35,10 @@ export class ProgressCircle extends UIElement {
         indeterminate,
       });
     }, [variant, size, indeterminate, animated]);
-    const localValue = (value - min) / (max - min);
-    const percentValue = localValue;
+    const percentValue = (value - min) / (max - min);
+
+    console.log(percentValue, value, min, max);
+
     const styleObject = {
       class: localClass,
       style: propertyMap(

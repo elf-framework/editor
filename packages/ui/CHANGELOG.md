@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.40
+
+### Patch Changes
+
+- fixed stroke width for progress circle
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.40
+
 ## 2.1.39
 
 ### Patch Changes

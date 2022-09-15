@@ -34,7 +34,7 @@ export function MinMaxValueView() {
                 </div>
 
                 <div>
-                  <ProgressCircle value={15} size="large" />
+                  <ProgressCircle value={15} max={18} size="large" />
                 </div>
               </Grid>
             </div>

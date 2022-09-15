@@ -11,10 +11,14 @@ const files = glob.sync("pages/**/*.html", {
   ignore: ["node_modules/**"],
 });
 
-files.forEach((it) => {
-  const file = it;
-  entries[file] = path.resolve(__dirname, it);
-});
+files
+  .filter((file) => {
+    return file.includes("ui-component") === false;
+  })
+  .forEach((it) => {
+    const file = it;
+    entries[file] = path.resolve(__dirname, it);
+  });
 
 export default defineConfig(async () => {
   const mdx = (await import("@mdx-js/rollup")).default;

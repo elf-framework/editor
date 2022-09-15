@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Sep 2022 12:36:19 GMT
+ * Generated on Thu, 15 Sep 2022 15:55:03 GMT
  */
 
 export default tokens;
@@ -449,6 +449,9 @@ declare const tokens: {
     "40000": DesignToken,
     "50000": DesignToken,
     "tooltip": DesignToken
+  },
+  "math": {
+    "pi": DesignToken
   },
   "size": {
     "base": {
