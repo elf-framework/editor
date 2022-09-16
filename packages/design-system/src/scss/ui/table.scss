@@ -1,0 +1,98 @@
+.elf--table {
+  --elf--table-width: 100%;
+  --elf--table-font-size: var(--font-size-medium);
+  --elf--table-border-color: var(--color-gray-2);
+
+  --elf--table-thead-background-color: transparent;
+
+  --elf--table-head-cell-padding: 6px 13px;
+  --elf--table-tbody-background-color: var(--color-white);
+
+
+  --elf--table-cell-padding: 10px 12px;
+  --elf--table-cell-text-align: "left";
+  --elf--table-cell-side-border-color: var(--elf--table-border-color);
+
+
+  font-size: var(--elf--table-font-size);
+  border: 0px !important;
+  width: var(--elf--table-width) !important;
+  min-width: var(--elf--table-width);
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: table;
+  position: relative;
+
+  &.quiet {
+    --elf--table-tbody-background-color: transparent;
+    --elf--table-cell-side-border-color: transparent;
+  }
+
+  > thead > tr {
+    background-color: var(--elf--table-thead-background-color) !important;
+    border: 0px !important;
+     
+    > th {
+      --elf--table-head-cell-align: flex-start;
+
+      padding: var(--elf--table-head-cell-padding);
+      border:0px;
+      font-weight: 500;
+      text-align: var(--elf--table-cell-text-align);
+      border:0px;
+
+      > .head-content {
+        display: flex;
+        justify-content: var(--elf--table-head-cell-align);
+        gap: 5px;
+
+        > label {
+          > * {
+            vertical-align: middle;
+          }
+        }
+
+        > * {
+          flex: 1 1 auto;
+          vertical-align: middle;
+
+          &:last-child:not(:first-child) {
+            flex: none;
+          }
+        }
+      }
+    }
+  }
+
+  > tbody > tr {
+    background-color: var(--elf--table-tbody-background-color) !important;
+
+    &.selected {
+      --elf--table-tbody-background-color: var(--color-gray-1);
+    }
+
+    &:last-child {
+      > td {
+        border-bottom: 1px solid var(--elf--table-border-color);
+      }
+    }
+
+    td {
+      text-align: var(--elf--table-cell-text-align);
+      padding: var(--elf--table-cell-padding);      
+      border: 0px;
+      border-top: 1px solid var(--elf--table-border-color);
+
+      &.divider {
+        border-left: 1px solid var(--elf--table-border-color);
+      }
+
+      &:first-child {
+        border-left: 1px solid var(--elf--table-cell-side-border-color);
+      }
+      &:last-child {
+        border-right: 1px solid var(--elf--table-cell-side-border-color);
+      }
+    }
+  }
+}

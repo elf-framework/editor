@@ -1,0 +1,18 @@
+.elf--animation {
+    --elf--animation-name: spin;
+    --elf--animation-duration: 1s;
+    --elf--animation-delay: 0s;
+    --elf--animation-timing-function: linear;
+    --elf--animation-iteration-count: infinite;
+
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+
+    animation-name: var(--elf--animation-name);
+    animation-duration: var(--elf--animation-duration); 
+    animation-delay: var(--elf--animation-delay);
+    animation-timing-function: var(--elf--animation-timing-function);
+    animation-iteration-count: var(--elf--animation-iteration-count);
+
+}

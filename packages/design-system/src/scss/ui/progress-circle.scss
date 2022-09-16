@@ -9,6 +9,7 @@
   --elf--progress-circle-bar-height: 3px;
   --elf--progress-circle-animation: none;
   --elf--progress-circle-determinate-animation: progress-circle-one var(--elf--progress-circle-duration) ease-in-out infinite;
+  --elf--progress-circle-spin-animation: spin var(--elf--progress-circle-duration) linear infinite;
   --elf--progress-circle-indeterminate-animation: progress-circle var(--elf--progress-circle-duration) ease-in-out infinite, spin var(--elf--progress-circle-duration) ease-in-out infinite;
   --elf--progress-circle-offset: 0%;
 
@@ -91,6 +92,11 @@
     --progress-gauge: calc(var(--progress-total-length) * var(--elf--progress-circle-offset));          
     &.animated {
       --elf--progress-circle-animation: var(--elf--progress-circle-determinate-animation);
+
+      &.spin {
+        --elf--progress-circle-animation: var(--elf--progress-circle-spin-animation);
+      }
+
       > .progress-area{
         .fill {
           animation: var(--elf--progress-circle-animation);

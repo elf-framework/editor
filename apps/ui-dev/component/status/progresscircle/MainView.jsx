@@ -27,6 +27,14 @@ export function MainView() {
           <ProgressCircle size="large" value={50} variant="primary" />
           <ProgressCircle animated />
           <ProgressCircle size="small" value={30} />
+          <ProgressCircle
+            animated
+            animationType="spin"
+            value={30}
+            style={{
+              duration: "1s",
+            }}
+          />
         </div>
       </div>
     </VBox>

@@ -27,7 +27,7 @@ export class Button extends UIElement {
       size = "medium",
       disabled,
       selected,
-      shape = "round",
+      shape = "rect",
       quiet = false,
       outline = false,
       style = {},

@@ -1,5 +1,6 @@
 import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Tools } from "../tools/index";
@@ -49,7 +50,7 @@ export class Toolbar extends UIElement {
     } = this.props;
 
     const localClass = useMemo(() => {
-      classnames(
+      return classnames(
         "elf--toolbar",
         {
           [align]: true,
@@ -77,3 +78,6 @@ export class Toolbar extends UIElement {
     );
   }
 }
+
+registerComponent("toolbar", Toolbar);
+registerComponent("Toolbar", Toolbar);

@@ -164,7 +164,7 @@ export default [
       },
       {
         link: COMPONENTS_URL + "navigations/treeview/",
-        title: "Tree view * ",
+        title: "Tree view",
       },
     ],
     category: "Components",
@@ -173,6 +173,7 @@ export default [
     link: COMPONENTS_URL + "status/",
     title: "Status",
     items: [
+      { link: COMPONENTS_URL + "status/animation/", title: "Animation" },
       { link: COMPONENTS_URL + "status/badge/", title: "Badge " },
       {
         link: COMPONENTS_URL + "status/progressbar/",
@@ -190,16 +191,16 @@ export default [
     category: "Components",
   },
   {
-    link: COMPONENTS_URL + "pattern/",
+    link: COMPONENTS_URL + "patterns/",
     title: "Pattern",
     items: [
-      { link: COMPONENTS_URL + "pattern/card/", title: "Card *" },
+      { link: COMPONENTS_URL + "patterns/card/", title: "Card *" },
       {
-        link: COMPONENTS_URL + "pattern/form-errors/",
+        link: COMPONENTS_URL + "patterns/form-errors/",
         title: "Form errors *",
       },
       {
-        link: COMPONENTS_URL + "pattern/table/",
+        link: COMPONENTS_URL + "patterns/table/",
         title: "Table *",
       },
     ],

@@ -64,3 +64,5 @@ export * from "./components/progress-circle";
 export * from "./components/switch";
 export * from "./components/slider";
 export * from "./components/treeview";
+export * from "./components/animation";
+export * from "./components/table";

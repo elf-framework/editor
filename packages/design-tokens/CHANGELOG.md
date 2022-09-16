@@ -1,5 +1,13 @@
 # @elf-framework/design-tokens
 
+## 2.1.41
+
+### Patch Changes
+
+- support Animation component
+  modify button, toolbar style
+  support table component
+
 ## 2.1.40
 
 ### Patch Changes

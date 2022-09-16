@@ -93,9 +93,9 @@
   --elf--treeview-item-drag-handler-width: 20px;
   --elf--treeview-item-checkbox-area-width: 32px;
   --elf--treeview-item-collapse-area-width: 20px;
-  --elf--treeview-item-hover-background-color: transparent;
+  --elf--treeview-item-hover-background-color: var(--color-gray-1);
   --elf--treeview-item-selected-background-color: var(--color-gray-2);
-  --elf--treeview-item-hover-border-color: var(--color-black);
+  --elf--treeview-item-hover-border-color: transparent;
   --elf--treeview-item-border-color: transparent;
   --elf--treeview-item-background-color: transparent;
   --elf--treeview-item-ghost-background-color: var(--color-gray-1);

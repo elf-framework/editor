@@ -1,0 +1,35 @@
+---
+title: Table
+layout: DesignLayout
+filename: pages/design-system/patterns/table/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/patterns/table/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/patterns/table/OptionsView.jsx"; 
+import { SelectionView } from "../../../../../component/patterns/table/SelectionView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Progress circles show the progression of a system operation such as downloading, uploading, processing, etc. in a visual way. They can represent determinate or indeterminate progress.
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/animation/" />
+</div>
+
+## Options 
+
+
+### Standard or quiet
+
+<OptionsView />
+
+### Selection
+
+<SelectionView />
+
+

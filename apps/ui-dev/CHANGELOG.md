@@ -1,5 +1,12 @@
 # ui-dev
 
+## 1.0.27
+
+### Patch Changes
+
+- add table, animation documentation
+  update progress circle documentation
+
 ## 1.0.26
 
 ### Patch Changes

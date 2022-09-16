@@ -1377,6 +1377,7 @@ declare module "@elf-framework/ui" {
     min: number;
     indeterminate?: boolean;
     animated?: boolean;
+    animationType?: "normal" | "spin";
   }
   export class ProgressCircle extends UIElement {
     props: ProgressCircleProps & DomEventType;
@@ -1489,4 +1490,79 @@ declare module "@elf-framework/ui" {
   }
 
   export class TreeViewProvider extends BaseTreeViewProvider {}
+
+  interface AnimationProps {
+    name?: string;
+    duration?: number;
+    delay?: number;
+    iterationCount?: string;
+    timingFunction?: string;
+    content?: ContentType;
+    onEnd?: (e: AnimationEvent) => void;
+    onIteration?: (e: AnimationEvent) => void;
+    onStart?: (e: AnimationEvent) => void;
+  }
+
+  export type AnimationType =
+    | "spin"
+    | "ping"
+    | "fade"
+    | "scaledown"
+    | "bounce"
+    | "flash"
+    | "pulse"
+    | "rubberBand"
+    | "shake"
+    | "headShake"
+    | "swing"
+    | "tada"
+    | "wobble"
+    | "jello"
+    | "heartBeat";
+
+  export class Animation extends UIElement {
+    props: AnimationProps;
+    static spin: Animation;
+    static fade: Animation;
+    static bounce: Animation;
+    static flash: Animation;
+    static pulse: Animation;
+    static rubberBand: Animation;
+    static shake: Animation;
+    static headShake: Animation;
+    static swing: Animation;
+    static tada: Animation;
+    static wobble: Animation;
+    static jello: Animation;
+    static heartBeat: Animation;
+  }
+
+  interface TableColumn {
+    title: ContentType;
+    key: string;
+    showDivider?: boolean;
+    style: {
+      cellPadding?: number | string;
+      cellAlign: "space-between" | "flex-start" | "flex-end";
+      textAlign: "left" | "right" | "center" | "justify";
+      width?: number;
+    };
+  }
+
+  interface TableData {
+    [key: string]: unknown;
+    selected?: boolean;
+  }
+
+  interface TableProps<T> {
+    columns: TableColumn[];
+    data: (TableData & T)[];
+    quiet?: boolean;
+    selectionStyle: "checkbox" | "highlight";
+    selectionType: "single" | "multiple";
+  }
+
+  export class Table<T> extends UIElement {
+    props: TableProps<T> & DomEventType;
+  }
 }

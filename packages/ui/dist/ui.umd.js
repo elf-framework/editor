@@ -443,7 +443,7 @@ var __privateMethod = (obj, member, method) => {
     });
     return { style: style2, noneStyle };
   }
-  const cssProperties$H = makeCssVariablePrefixMap("--elf--alert", {
+  const cssProperties$J = makeCssVariablePrefixMap("--elf--alert", {
     borderColor: true,
     backgroundColor: true,
     selectedBackgroundColor: true,
@@ -483,7 +483,7 @@ var __privateMethod = (obj, member, method) => {
           { hide, closable }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$H),
+          ...propertyMap(style2, cssProperties$J),
           ...{
             transition: `opacity ${localDelay}ms ease-in-out`,
             opacity: hide ? 0 : 1
@@ -540,7 +540,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("Alert", Alert);
   registerComponent("alert", Alert);
-  const cssProperties$G = makeCssVariablePrefixMap("--elf--button", {
+  const cssProperties$I = makeCssVariablePrefixMap("--elf--button", {
     borderColor: true,
     backgroundColor: true,
     selectedBackgroundColor: true,
@@ -559,7 +559,7 @@ var __privateMethod = (obj, member, method) => {
         size = "medium",
         disabled,
         selected,
-        shape = "round",
+        shape = "rect",
         quiet = false,
         outline = false,
         style: style2 = {},
@@ -586,7 +586,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$G
+          cssProperties$I
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -598,7 +598,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("button", Button);
   registerComponent("btn", Button);
   registerComponent("Button", Button);
-  const cssProperties$F = makeCssVariablePrefixMap("--elf--button-group", {
+  const cssProperties$H = makeCssVariablePrefixMap("--elf--button-group", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -618,7 +618,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$F
+          cssProperties$H
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -629,7 +629,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("button-group", ButtonGroup);
   registerComponent("btn-group", ButtonGroup);
   registerComponent("ButtonGroup", ButtonGroup);
-  const cssProperties$E = makeCssVariablePrefixMap("--elf--tooltip", {
+  const cssProperties$G = makeCssVariablePrefixMap("--elf--tooltip", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -687,7 +687,7 @@ var __privateMethod = (obj, member, method) => {
       }, [placement, animated, variant, position]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$E)
+        style: propertyMap(style2, cssProperties$G)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -784,7 +784,7 @@ var __privateMethod = (obj, member, method) => {
       options
     );
   }
-  const cssProperties$D = makeCssVariablePrefixMap("--elf--action-group", {
+  const cssProperties$F = makeCssVariablePrefixMap("--elf--action-group", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -858,7 +858,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$D
+          cssProperties$F
         )
       };
       const items = collapsed ? content.filter((item, index) => {
@@ -880,7 +880,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("action-group", ActionGroup);
   registerComponent("ActionGroup", ActionGroup);
-  const cssProperties$C = makeCssVariablePrefixMap("--elf--link-button", {
+  const cssProperties$E = makeCssVariablePrefixMap("--elf--link-button", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -896,7 +896,7 @@ var __privateMethod = (obj, member, method) => {
         class: "elf--link-button",
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$C)
+          ...propertyMap(style2, cssProperties$E)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("a", {
@@ -909,7 +909,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("link-button", LinkButton);
   registerComponent("linkbutton", LinkButton);
   registerComponent("LinkButton", LinkButton);
-  const cssProperties$B = {
+  const cssProperties$D = {
     borderColor: "--elf--icon-button-border-color",
     backgroundColor: "--elf--icon-button-background",
     disabledColor: "--elf--icon-button-disabled-color",
@@ -951,7 +951,7 @@ var __privateMethod = (obj, member, method) => {
         ]),
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$B)
+          ...propertyMap(style2, cssProperties$D)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -961,7 +961,7 @@ var __privateMethod = (obj, member, method) => {
       }, icon || content || "");
     }
   }
-  const cssProperties$A = {
+  const cssProperties$C = {
     borderColor: "--elf--button-border-color",
     backgroundColor: "--elf--button-background-color",
     disabledColor: "--elf--button-disabled-color",
@@ -1011,7 +1011,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$A
+          cssProperties$C
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -1020,7 +1020,7 @@ var __privateMethod = (obj, member, method) => {
       }, /* @__PURE__ */ sapa.createElementJsx("span", null, content || ""));
     }
   }
-  const cssProperties$z = makeCssVariablePrefixMap("--elf--radio", {
+  const cssProperties$B = makeCssVariablePrefixMap("--elf--radio", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -1056,7 +1056,7 @@ var __privateMethod = (obj, member, method) => {
       }, [disabled, size, variant]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$z)
+        style: propertyMap(style2, cssProperties$B)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -1075,7 +1075,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("radio", Radio);
   registerComponent("Radio", Radio);
-  const cssProperties$y = makeCssVariablePrefixMap("--elf--radio", {
+  const cssProperties$A = makeCssVariablePrefixMap("--elf--radio", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -1107,7 +1107,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         disabled: disabled ? "disabled" : void 0,
-        style: propertyMap(style2, cssProperties$y)
+        style: propertyMap(style2, cssProperties$A)
       };
       const radioName = name || "name-" + this.id;
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -1139,7 +1139,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("RadioGroup", RadioGroup);
   registerComponent("radio-group", RadioGroup);
   registerComponent("radiogroup", RadioGroup);
-  const cssProperties$x = {
+  const cssProperties$z = {
     borderColor: "--elf--checkbox-border-color",
     backgroundColor: "--elf--checkbox-background",
     disabledColor: "--elf--checkbox-disabled-color",
@@ -1174,7 +1174,7 @@ var __privateMethod = (obj, member, method) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$x)
+          ...propertyMap(style2, cssProperties$z)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -1201,7 +1201,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("Checkbox", Checkbox);
   registerComponent("checkbox", Checkbox);
-  const cssProperties$w = {
+  const cssProperties$y = {
     borderColor: "--elf--checkbox-border-color",
     backgroundColor: "--elf--checkbox-background",
     disabledColor: "--elf--checkbox-disabled-color",
@@ -1238,7 +1238,7 @@ var __privateMethod = (obj, member, method) => {
         ]),
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$w)
+          ...propertyMap(style2, cssProperties$y)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -1280,7 +1280,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("checkbox-group", CheckboxGroup);
   registerComponent("CheckboxGroup", CheckboxGroup);
-  const cssProperties$v = makeCssVariablePrefixMap("--elf--divider", {
+  const cssProperties$x = makeCssVariablePrefixMap("--elf--divider", {
     color: true,
     margin: true
   });
@@ -1305,7 +1305,7 @@ var __privateMethod = (obj, member, method) => {
               ...style2,
               margin
             },
-            cssProperties$v
+            cssProperties$x
           )
         }
       };
@@ -1511,7 +1511,7 @@ var __privateMethod = (obj, member, method) => {
       return this.state.selected;
     }
   }
-  const cssProperties$u = makeCssVariablePrefixMap("--elf--menu", {
+  const cssProperties$w = makeCssVariablePrefixMap("--elf--menu", {
     left: true,
     top: true,
     backgroundColor: true,
@@ -1571,7 +1571,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         "data-direction": direction,
         class: localClass,
-        style: propertyMap(itemStyle, cssProperties$u)
+        style: propertyMap(itemStyle, cssProperties$w)
       };
       return /* @__PURE__ */ sapa.createElementJsx("menu", {
         ...styleObject,
@@ -1717,7 +1717,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("option-strip", OptionStrip);
   registerComponent("optionstrip", OptionStrip);
   registerComponent("OptionStrip", OptionStrip);
-  const cssProperties$t = makeCssVariablePrefixMap("--elf--dialog", {
+  const cssProperties$v = makeCssVariablePrefixMap("--elf--dialog", {
     position: true,
     backgroundColor: true,
     color: true,
@@ -1790,7 +1790,7 @@ var __privateMethod = (obj, member, method) => {
           "no-border": noBorder
         }),
         style: {
-          ...propertyMap(style2, cssProperties$t)
+          ...propertyMap(style2, cssProperties$v)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -2123,7 +2123,7 @@ var __privateMethod = (obj, member, method) => {
       return visibility === "hidden";
     });
   }
-  const cssProperties$s = makeCssVariablePrefixMap("--elf--tools", {
+  const cssProperties$u = makeCssVariablePrefixMap("--elf--tools", {
     backgroundColor: true,
     color: true,
     height: true
@@ -2201,7 +2201,7 @@ var __privateMethod = (obj, member, method) => {
       }, [vertical, emphasized]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$s)
+        style: propertyMap(style2, cssProperties$u)
       };
       const items = makeToolsItem(this.props.items, {
         visibleTargetList,
@@ -2257,7 +2257,7 @@ var __privateMethod = (obj, member, method) => {
       }));
     }
   }
-  const cssProperties$r = makeCssVariablePrefixMap("--elf--toolbar", {
+  const cssProperties$t = makeCssVariablePrefixMap("--elf--toolbar", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2275,7 +2275,7 @@ var __privateMethod = (obj, member, method) => {
         class: className
       } = this.props;
       const localClass = sapa.useMemo(() => {
-        sapa.classnames(
+        return sapa.classnames(
           "elf--toolbar",
           {
             [align]: true,
@@ -2289,7 +2289,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         id: "toolbar-" + this.id,
         class: localClass,
-        style: propertyMap(style2, cssProperties$r)
+        style: propertyMap(style2, cssProperties$t)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject,
@@ -2300,7 +2300,9 @@ var __privateMethod = (obj, member, method) => {
       }));
     }
   }
-  const cssProperties$q = makeCssVariablePrefixMap("--elf--notification", {
+  registerComponent("toolbar", Toolbar);
+  registerComponent("Toolbar", Toolbar);
+  const cssProperties$s = makeCssVariablePrefixMap("--elf--notification", {
     backgroundColor: true,
     color: true,
     width: true,
@@ -2326,7 +2328,7 @@ var __privateMethod = (obj, member, method) => {
           `elf--notification-direction-${direction}`
         ),
         style: {
-          ...propertyMap(style2, cssProperties$q)
+          ...propertyMap(style2, cssProperties$s)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -2344,7 +2346,7 @@ var __privateMethod = (obj, member, method) => {
     }
   }
   registerComponent("notification", Notification);
-  const cssProperties$p = makeCssVariablePrefixMap("--elf--toast", {
+  const cssProperties$r = makeCssVariablePrefixMap("--elf--toast", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2385,7 +2387,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$p),
+          ...propertyMap(style2, cssProperties$r),
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
         }
@@ -2451,7 +2453,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("toast", Toast);
   registerComponent("Toast", Toast);
-  const cssProperties$o = makeCssVariablePrefixMap("--elf--popover", {
+  const cssProperties$q = makeCssVariablePrefixMap("--elf--popover", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2486,7 +2488,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: sapa.classnames("elf--popover", { [placement]: true, animated }),
         style: {
-          ...propertyMap(style2, cssProperties$o)
+          ...propertyMap(style2, cssProperties$q)
         }
       };
       const isPopoverShow = show || this.props.show;
@@ -2552,7 +2554,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("popover", Popover);
   registerComponent("Popover", Popover);
-  const cssProperties$n = makeCssVariablePrefixMap("--elf--panel", {
+  const cssProperties$p = makeCssVariablePrefixMap("--elf--panel", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2579,7 +2581,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         "data-theme": theme,
-        style: propertyMap(style2, cssProperties$n)
+        style: propertyMap(style2, cssProperties$p)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -2598,7 +2600,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("panel", Panel);
   registerComponent("Panel", Panel);
-  const cssProperties$m = makeCssVariablePrefixMap("--elf--tabstrip", {
+  const cssProperties$o = makeCssVariablePrefixMap("--elf--tabstrip", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2653,7 +2655,7 @@ var __privateMethod = (obj, member, method) => {
       }, [activeKey, setIndicatorInfo, orientation, showIndicator]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$m)
+        style: propertyMap(style2, cssProperties$o)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -2695,7 +2697,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("tabstrip", TabStrip);
   registerComponent("TabStrip", TabStrip);
   registerComponent("tab-strip", TabStrip);
-  const cssProperties$l = makeCssVariablePrefixMap("--elf--tab", {
+  const cssProperties$n = makeCssVariablePrefixMap("--elf--tab", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -2744,7 +2746,7 @@ var __privateMethod = (obj, member, method) => {
       }, [full]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$l)
+        style: propertyMap(style2, cssProperties$n)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -2869,7 +2871,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("grid", Grid);
   registerComponent("Grid", Grid);
-  const cssProperties$k = makeCssVariablePrefixMap("--elf--input-editor", {
+  const cssProperties$m = makeCssVariablePrefixMap("--elf--input-editor", {
     width: true,
     borderColor: true,
     backgroundColor: true,
@@ -2938,7 +2940,7 @@ var __privateMethod = (obj, member, method) => {
       }, [focused, hover, disabled, icon, invalid, size, readOnly]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$k)
+        style: propertyMap(style2, cssProperties$m)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -3028,7 +3030,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("color-view", ColorView);
   registerComponent("ColorView", ColorView);
   registerComponent("colorview", ColorView);
-  const cssProperties$j = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$l = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3102,7 +3104,7 @@ var __privateMethod = (obj, member, method) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$j)
+          ...propertyMap(style2, cssProperties$l)
         }
       };
       const inputEvents = {
@@ -3203,7 +3205,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("InputPaint", InputPaint);
   registerComponent("input-paint", InputPaint);
   registerComponent("inputpaint", InputPaint);
-  const cssProperties$i = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$k = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3320,7 +3322,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$i)
+          ...propertyMap(style2, cssProperties$k)
         }
       };
       const inputEvents = {
@@ -3483,7 +3485,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("HexColorEditor", HexColorEditor);
   registerComponent("hex-color-editor", HexColorEditor);
   registerComponent("hexcoloreditor", HexColorEditor);
-  const cssProperties$h = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$j = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3574,7 +3576,7 @@ var __privateMethod = (obj, member, method) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$h)
+          ...propertyMap(style2, cssProperties$j)
         }
       };
       const { r, g, b, a } = color.parse(value);
@@ -3724,7 +3726,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("RGBColorEditor", RGBColorEditor);
   registerComponent("rgb-color-editor", RGBColorEditor);
   registerComponent("rgbcoloreditor", RGBColorEditor);
-  const cssProperties$g = makeCssVariablePrefixMap("--elf--input-editor", {
+  const cssProperties$i = makeCssVariablePrefixMap("--elf--input-editor", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -3792,7 +3794,7 @@ var __privateMethod = (obj, member, method) => {
       }, [focused, hover, disabled, icon, invalid, size, readOnly, resizable]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$g)
+        style: propertyMap(style2, cssProperties$i)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -3864,7 +3866,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("TextAreaEditor", TextAreaEditor);
   registerComponent("textareaeditor", TextAreaEditor);
   registerComponent("text-area-editor", TextAreaEditor);
-  const cssProperties$f = makeCssVariablePrefixMap("--elf--field", {
+  const cssProperties$h = makeCssVariablePrefixMap("--elf--field", {
     width: true
   });
   function Field({
@@ -3894,7 +3896,7 @@ var __privateMethod = (obj, member, method) => {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$f)
+        ...propertyMap(style2, cssProperties$h)
       }
     };
     return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -4025,7 +4027,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("text-field", TextField);
   registerComponent("TextField", TextField);
   registerComponent("textfield", TextField);
-  const cssProperties$e = makeCssVariablePrefixMap("--elf--virtual-scroll", {
+  const cssProperties$g = makeCssVariablePrefixMap("--elf--virtual-scroll", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -4049,7 +4051,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: sapa.classnames("elf--virtual-scroll", this.props.class),
         style: {
-          ...propertyMap(style2, cssProperties$e),
+          ...propertyMap(style2, cssProperties$g),
           "--elf--virtual-scroll-item-width": "100%",
           "--elf--virtual-scroll-item-height": `${itemHeight}px`,
           "--elf--virtual-scroll-item-count": totalCount,
@@ -4261,7 +4263,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("layer", Layer);
   registerComponent("Layer", Layer);
-  const cssProperties$d = makeCssVariablePrefixMap("--elf--input-paint", {
+  const cssProperties$f = makeCssVariablePrefixMap("--elf--input-paint", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -4357,7 +4359,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$d)
+          ...propertyMap(style2, cssProperties$f)
         }
       };
       const properties = {
@@ -4683,7 +4685,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("OpacitySlide", OpacitySlide);
   registerComponent("opacity-slide", OpacitySlide);
   registerComponent("opacityslide", OpacitySlide);
-  const cssProperties$c = {
+  const cssProperties$e = {
     height: "--elf--color-mixer-height",
     width: "--elf--color-mixer-width"
   };
@@ -4774,7 +4776,7 @@ var __privateMethod = (obj, member, method) => {
               width,
               height
             },
-            cssProperties$c
+            cssProperties$e
           )
         }
       };
@@ -5049,7 +5051,7 @@ var __privateMethod = (obj, member, method) => {
       onChange: item.onChange
     }, item.icon);
   }
-  const cssProperties$b = makeCssVariablePrefixMap("--elf--data-editor", {
+  const cssProperties$d = makeCssVariablePrefixMap("--elf--data-editor", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -5103,7 +5105,7 @@ var __privateMethod = (obj, member, method) => {
       const { items } = this.state;
       const styleObject = {
         class: sapa.classnames("elf--data-editor"),
-        style: propertyMap(style2, cssProperties$b)
+        style: propertyMap(style2, cssProperties$d)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -5245,7 +5247,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("event-control-panel", EventControlPanel);
   registerComponent("EventControlPanel", EventControlPanel);
   registerComponent("eventcontrolpanel", EventControlPanel);
-  const cssProperties$a = makeCssVariablePrefixMap("--elf--app-layout", {
+  const cssProperties$c = makeCssVariablePrefixMap("--elf--app-layout", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -5259,7 +5261,7 @@ var __privateMethod = (obj, member, method) => {
       const { style: style2 = {} } = this.props;
       const styleObject = {
         class: "elf--app-layout",
-        style: propertyMap(style2, cssProperties$a)
+        style: propertyMap(style2, cssProperties$c)
       };
       const topLayoutItem = this.getItem("top");
       const bottomLayoutItem = this.getItem("bottom");
@@ -5384,7 +5386,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("AppLayoutItem", AppLayoutItem);
   registerComponent("app-layout-item", AppLayoutItem);
   registerComponent("applayoutitem", AppLayoutItem);
-  const cssProperties$9 = makeCssVariablePrefixMap("--elf--help-text", {
+  const cssProperties$b = makeCssVariablePrefixMap("--elf--help-text", {
     color: true
   });
   class HelpText extends sapa.UIElement {
@@ -5408,7 +5410,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$9)
+          ...propertyMap(style2, cssProperties$b)
         },
         ...extrProps
       };
@@ -5424,7 +5426,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("help-text", HelpText);
   registerComponent("HelpText", HelpText);
   registerComponent("helptext", HelpText);
-  const cssProperties$8 = makeCssVariablePrefixMap("--elf--breadcrumbs", {});
+  const cssProperties$a = makeCssVariablePrefixMap("--elf--breadcrumbs", {});
   const itemCssProperties = makeCssVariablePrefixMap("--elf--breadcrumbs-item", {
     color: true
   });
@@ -5484,7 +5486,7 @@ var __privateMethod = (obj, member, method) => {
       const { style: style2 = {}, items = [], separator = "\u3009" } = this.props;
       const styleObject = {
         class: "elf--breadcrumbs",
-        style: propertyMap(style2, cssProperties$8)
+        style: propertyMap(style2, cssProperties$a)
       };
       const renderItems = items.filter((it) => !((it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)));
       const renderMultiItems = items.filter(
@@ -5517,7 +5519,7 @@ var __privateMethod = (obj, member, method) => {
       })) : void 0);
     }
   }
-  const cssProperties$7 = makeCssVariablePrefixMap("--elf--avatar", {
+  const cssProperties$9 = makeCssVariablePrefixMap("--elf--avatar", {
     backgroundColor: true,
     backgroundImage: true
   });
@@ -5542,7 +5544,7 @@ var __privateMethod = (obj, member, method) => {
       }, [shape, size, variant, disabled]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$7),
+        style: propertyMap(style2, cssProperties$9),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -5552,7 +5554,7 @@ var __privateMethod = (obj, member, method) => {
       }, content));
     }
   }
-  const cssProperties$6 = makeCssVariablePrefixMap("--elf--tag", {
+  const cssProperties$8 = makeCssVariablePrefixMap("--elf--tag", {
     backgroundColor: true,
     color: true,
     borderColor: true,
@@ -5584,7 +5586,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, filled, disabled, readOnly]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$6)
+        style: propertyMap(style2, cssProperties$8)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -5618,7 +5620,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("tag", Tag);
   registerComponent("Tag", Tag);
-  const cssProperties$5 = makeCssVariablePrefixMap("--elf--badge", {
+  const cssProperties$7 = makeCssVariablePrefixMap("--elf--badge", {
     backgroundColor: true,
     color: true,
     borderColor: true,
@@ -5656,7 +5658,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, filled, disabled, readOnly, size, fixed, placement]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$5)
+        style: propertyMap(style2, cssProperties$7)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -5665,7 +5667,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("badge", Badge);
   registerComponent("Badge", Badge);
-  const cssProperties$4 = makeCssVariablePrefixMap("--elf--progressbar", {
+  const cssProperties$6 = makeCssVariablePrefixMap("--elf--progressbar", {
     backgroundColor: true,
     color: true,
     borderRadius: true,
@@ -5701,7 +5703,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, size, indeterminate, shape]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$4)
+        style: propertyMap(style2, cssProperties$6)
       };
       const localValue = (value - min) / (max - min);
       const percentValue = Math.round(localValue * PERCENT_NUMBER);
@@ -5720,7 +5722,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("progressbar", ProgressBar);
   registerComponent("ProgressBar", ProgressBar);
   registerComponent("progress-bar", ProgressBar);
-  const cssProperties$3 = makeCssVariablePrefixMap("--elf--progress-circle", {
+  const cssProperties$5 = makeCssVariablePrefixMap("--elf--progress-circle", {
     backgroundColor: true,
     color: true,
     duration: true,
@@ -5737,18 +5739,19 @@ var __privateMethod = (obj, member, method) => {
         size = "medium",
         style: style2 = {},
         indeterminate = false,
-        animated = false
+        animated = false,
+        animationType = "normal"
       } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--progress-circle", {
           [variant]: true,
           [size]: true,
           animated,
-          indeterminate
+          indeterminate,
+          [animationType]: true
         });
-      }, [variant, size, indeterminate, animated]);
+      }, [variant, size, indeterminate, animated, animationType]);
       const percentValue = (value - min) / (max - min);
-      console.log(percentValue, value, min, max);
       const styleObject = {
         class: localClass,
         style: propertyMap(
@@ -5756,7 +5759,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             offset: percentValue
           },
-          cssProperties$3
+          cssProperties$5
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -5779,7 +5782,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("progress-circle", ProgressCircle);
   registerComponent("progresscircle", ProgressCircle);
   registerComponent("ProgressCircle", ProgressCircle);
-  const cssProperties$2 = makeCssVariablePrefixMap("--elf--switch", {
+  const cssProperties$4 = makeCssVariablePrefixMap("--elf--switch", {
     backgroundColor: true,
     borderRadius: true,
     fontSize: true,
@@ -5812,7 +5815,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, size, disabled, readOnly]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$2)
+        style: propertyMap(style2, cssProperties$4)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -5841,7 +5844,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("switch", Switch);
   registerComponent("Switch", Switch);
-  const cssProperties$1 = makeCssVariablePrefixMap("--elf--slider", {
+  const cssProperties$3 = makeCssVariablePrefixMap("--elf--slider", {
     backgroundColor: true,
     backgroundImage: true,
     borderRadius: true,
@@ -5963,7 +5966,7 @@ var __privateMethod = (obj, member, method) => {
       ]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$1)
+        style: propertyMap(style2, cssProperties$3)
       };
       const currentValue = Math.max(min, Math.min(max, value));
       const currenValueOffset = (currentValue - min) / (max - min) * 100;
@@ -6020,7 +6023,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("slider", Slider);
   registerComponent("Slider", Slider);
-  const cssProperties = makeCssVariablePrefixMap("--elf--treeview", {
+  const cssProperties$2 = makeCssVariablePrefixMap("--elf--treeview", {
     backgroundColor: true,
     backgroundImage: true,
     borderRadius: true,
@@ -6193,7 +6196,7 @@ var __privateMethod = (obj, member, method) => {
       }, []);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties)
+        style: propertyMap(style2, cssProperties$2)
       };
       const itemRendererProps = {
         onSelect: sapa.useCallback(
@@ -6382,11 +6385,178 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("treeview", TreeView);
   registerComponent("tree-view", TreeView);
   registerComponent("TreeView", TreeView);
+  const cssProperties$1 = makeCssVariablePrefixMap("--elf--animation", {
+    name: true,
+    iterationCount: true,
+    timingFunction: true,
+    duration: true,
+    delay: true
+  });
+  class Animation extends sapa.UIElement {
+    template() {
+      const {
+        name = "spin",
+        delay = "0s",
+        iterationCount,
+        timingFunction,
+        duration = "1s",
+        style: style2 = {},
+        content,
+        onEnd: onAnimationEnd,
+        onIteration: onAnimationIteration,
+        onStart: onAnimationStart,
+        onCancel: onAnimationCancel
+      } = this.props;
+      const styleObject = {
+        class: "elf--animation",
+        style: propertyMap(
+          {
+            ...style2,
+            duration,
+            name,
+            iterationCount,
+            timingFunction,
+            delay
+          },
+          cssProperties$1
+        ),
+        onAnimationStart,
+        onAnimationEnd,
+        onAnimationIteration,
+        onAnimationCancel
+      };
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        ...styleObject
+      }, content);
+    }
+  }
+  [
+    "spin",
+    "ping",
+    "fade",
+    "scaledown",
+    "bounce",
+    "flash",
+    "pulse",
+    "rubberBand",
+    "shake",
+    "headShake",
+    "swing",
+    "tada",
+    "wobble",
+    "jello",
+    "heartBeat"
+  ].forEach((name) => {
+    Animation[name] = (props) => {
+      return /* @__PURE__ */ sapa.createElementJsx(Animation, {
+        ...props,
+        name
+      });
+    };
+  });
+  registerComponent("animation", Animation);
+  registerComponent("Animation", Animation);
+  const cssProperties = makeCssVariablePrefixMap("--elf--table", {
+    backgroundColor: true,
+    color: true,
+    duration: true,
+    offset: true,
+    width: true,
+    cellTextAlign: true
+  });
+  const headCssProperties = makeCssVariablePrefixMap("--elf--table-head", {
+    cellAlign: true,
+    cellPadding: true
+  });
+  class Table extends sapa.UIElement {
+    template() {
+      const {
+        quiet = false,
+        columns = [],
+        data = [],
+        style: style2 = {},
+        selectionStyle = "highlight",
+        selectionType = "multiple"
+      } = this.props;
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf--table", {
+          quiet,
+          [selectionStyle]: true,
+          [selectionType]: true
+        });
+      }, [quiet, selectionStyle, selectionType]);
+      const styleObject = {
+        class: localClass,
+        style: propertyMap(style2, cssProperties)
+      };
+      let allChecked = false;
+      let indeterminate = false;
+      if (selectionStyle === "checkbox") {
+        const filterData = data.filter((item) => item.selected);
+        if (filterData.length === data.length) {
+          allChecked = true;
+        } else if (filterData.length > 0 && filterData.length < data.length) {
+          indeterminate = true;
+        }
+      }
+      return /* @__PURE__ */ sapa.createElementJsx("table", {
+        ...styleObject
+      }, /* @__PURE__ */ sapa.createElementJsx("thead", null, /* @__PURE__ */ sapa.createElementJsx("tr", null, selectionStyle === "checkbox" ? /* @__PURE__ */ sapa.createElementJsx("th", {
+        class: "elf--table-head-cell"
+      }, /* @__PURE__ */ sapa.createElementJsx(Checkbox, {
+        checked: allChecked,
+        indeterminate
+      })) : void 0, columns.map((column) => {
+        var _a;
+        if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
+          return void 0;
+        }
+        return /* @__PURE__ */ sapa.createElementJsx("th", {
+          class: sapa.classnames({
+            divider: column.showDivider
+          }),
+          style: propertyMap(column == null ? void 0 : column.style, headCssProperties)
+        }, /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "head-content"
+        }, /* @__PURE__ */ sapa.createElementJsx("label", null, column.title), column.tools ? /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "tools"
+        }, column.tools) : void 0));
+      }))), /* @__PURE__ */ sapa.createElementJsx("tbody", null, data.map((row) => {
+        return /* @__PURE__ */ sapa.createElementJsx("tr", {
+          class: sapa.classnames({
+            selected: row.selected
+          })
+        }, selectionStyle === "checkbox" ? /* @__PURE__ */ sapa.createElementJsx("td", {
+          class: "elf--table-cell"
+        }, /* @__PURE__ */ sapa.createElementJsx(Checkbox, {
+          checked: row.selected,
+          indeterminate: row.indeterminate
+        })) : void 0, columns.map((column) => {
+          var _a, _b, _c;
+          if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
+            return void 0;
+          }
+          return /* @__PURE__ */ sapa.createElementJsx("td", {
+            class: sapa.classnames({
+              divider: column.showDivider
+            }),
+            style: {
+              textAlign: (_b = column.style) == null ? void 0 : _b.textAlign,
+              display: (_c = column.style) == null ? void 0 : _c.display
+            }
+          }, column.render ? column.render(column.key, row[column.key], row, data) : row[column.key]);
+        }));
+      })));
+    }
+  }
+  registerComponent("table", Table);
+  registerComponent("Table", Table);
   exports2.ADD_BODY_FIRST_MOUSEMOVE = ADD_BODY_FIRST_MOUSEMOVE;
   exports2.ADD_BODY_MOUSEMOVE = ADD_BODY_MOUSEMOVE;
   exports2.ADD_BODY_MOUSEUP = ADD_BODY_MOUSEUP;
   exports2.ActionGroup = ActionGroup;
   exports2.Alert = Alert;
+  exports2.Animation = Animation;
   exports2.AppLayout = AppLayout;
   exports2.AppLayoutItem = AppLayoutItem;
   exports2.AppResizeBar = AppResizeBar;
@@ -6437,6 +6607,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.Tab = Tab;
   exports2.TabItem = TabItem;
   exports2.TabStrip = TabStrip;
+  exports2.Table = Table;
   exports2.Tag = Tag;
   exports2.TagGroup = TagGroup;
   exports2.TextArea = TextArea;

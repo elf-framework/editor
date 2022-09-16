@@ -25,6 +25,7 @@ export class ProgressCircle extends UIElement {
 
       indeterminate = false,
       animated = false,
+      animationType = "normal",
     } = this.props;
 
     const localClass = useMemo(() => {
@@ -33,11 +34,10 @@ export class ProgressCircle extends UIElement {
         [size]: true,
         animated,
         indeterminate,
+        [animationType]: true,
       });
-    }, [variant, size, indeterminate, animated]);
+    }, [variant, size, indeterminate, animated, animationType]);
     const percentValue = (value - min) / (max - min);
-
-    console.log(percentValue, value, min, max);
 
     const styleObject = {
       class: localClass,
