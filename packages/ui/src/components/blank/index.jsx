@@ -7,19 +7,33 @@ import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 const cssProperties = makeCssVariablePrefixMap("--elf--blank", {
   width: true,
   height: true,
+  backgroundColor: true,
 });
 
 export class Blank extends UIElement {
   template() {
-    const { style = {}, ...extraProps } = this.props;
+    const {
+      style = {},
+      stripe = "none",
+      color = "transparent",
+      ...extraProps
+    } = this.props;
 
     const localClass = useMemo(() => {
-      return classnames("elf--blank", {});
-    }, []);
+      return classnames("elf--blank", {
+        [stripe]: true,
+      });
+    }, [stripe]);
 
     const styleObject = {
       class: localClass,
-      style: propertyMap(style, cssProperties),
+      style: propertyMap(
+        {
+          ...style,
+          backgroundColor: color,
+        },
+        cssProperties
+      ),
       ...extraProps,
     };
 

@@ -40,12 +40,15 @@ export class CardHeader extends UIElement {
       ...extraProps,
     };
 
-    console.log(ghost, nowrap);
+    console.log(ghost, nowrap, actions);
 
     return (
       <div {...styleObject}>
         {ghost
-          ? [<Ghost animated />, <Ghost animated />]
+          ? [
+              <Ghost animated />,
+              actions.length ? <Ghost animated /> : undefined,
+            ]
           : [
               title ? <div class="title">{title}</div> : null,
               actions.length ? <div class="actions">{actions}</div> : null,

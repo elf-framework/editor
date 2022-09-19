@@ -6712,14 +6712,17 @@ var __privateMethod = (obj, member, method) => {
         ),
         ...extraProps
       };
-      console.log(ghost, nowrap);
+      console.log(ghost, nowrap, actions);
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
-      }, ghost ? [/* @__PURE__ */ sapa.createElementJsx(Ghost, {
-        animated: true
-      }), /* @__PURE__ */ sapa.createElementJsx(Ghost, {
-        animated: true
-      })] : [
+      }, ghost ? [
+        /* @__PURE__ */ sapa.createElementJsx(Ghost, {
+          animated: true
+        }),
+        actions.length ? /* @__PURE__ */ sapa.createElementJsx(Ghost, {
+          animated: true
+        }) : void 0
+      ] : [
         title ? /* @__PURE__ */ sapa.createElementJsx("div", {
           class: "title"
         }, title) : null,
@@ -6878,17 +6881,31 @@ var __privateMethod = (obj, member, method) => {
   }
   const cssProperties = makeCssVariablePrefixMap("--elf--blank", {
     width: true,
-    height: true
+    height: true,
+    backgroundColor: true
   });
   class Blank extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, ...extraProps } = this.props;
+      const {
+        style: style2 = {},
+        stripe = "none",
+        color: color2 = "transparent",
+        ...extraProps
+      } = this.props;
       const localClass = sapa.useMemo(() => {
-        return sapa.classnames("elf--blank", {});
-      }, []);
+        return sapa.classnames("elf--blank", {
+          [stripe]: true
+        });
+      }, [stripe]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties),
+        style: propertyMap(
+          {
+            ...style2,
+            backgroundColor: color2
+          },
+          cssProperties
+        ),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {

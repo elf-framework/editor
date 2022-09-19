@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "2.1.36",
+  "version": "2.1.43",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [

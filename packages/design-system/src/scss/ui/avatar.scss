@@ -17,19 +17,19 @@
         --elf--avatar-border-radius: 4px;
     }
 
-    &.small {
+    &.size-small {
         --elf--avatar-size: var(--avatar-size-200);
     }
 
-    &.medium {
+    &.size-medium {
         --elf--avatar-size: var(--avatar-size-400);
     }
 
-    &.large {
+    &.size-large {
         --elf--avatar-size: var(--avatar-size-600);
     }
 
-    &.extra-large {
+    &.size-extra-large {
         --elf--avatar-size: var(--avatar-size-700);
     }
 

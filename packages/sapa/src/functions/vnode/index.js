@@ -363,47 +363,64 @@ export class VNode {
     }
   }
 
+  insertElement(child, fragment, parentElement, withChildren, options) {
+    // element 수집
+    // children 은 fragment 로 만들어서 추가한다.
+
+    if (child instanceof VNode || child?.makeElement) {
+      child.setParentElement(parentElement);
+      const el = child.makeElement(withChildren, options).el;
+
+      if (el) {
+        fragment.appendChild(el);
+      }
+    } else if (isArray(child)) {
+      child.forEach((it) => {
+        if (it) {
+          this.insertElement(
+            it,
+            fragment,
+            parentElement,
+            withChildren,
+            options
+          );
+        }
+      });
+    } else if (isFunction(child)) {
+      const result = child();
+
+      if (result) {
+        this.insertElement(
+          result,
+          fragment,
+          parentElement,
+          withChildren,
+          options
+        );
+      }
+    } else if (child instanceof window.HTMLElement) {
+      fragment.appendChild(child);
+    } else if (isValue(child)) {
+      fragment.appendChild(document.createTextNode(child));
+    } else {
+      // NOOP
+      // undefined, null 은 표시하지 않는다.
+    }
+  }
+
   makeChildren(withChildren, options) {
     const parentElement = this.el;
     const children = this.children;
     if (children && children.length) {
       const fragment = document.createDocumentFragment();
 
-      // element 수집
-      children.forEach((child) => {
-        if (child instanceof VNode || child.makeElement) {
-          child.setParentElement(parentElement);
-          const el = child.makeElement(withChildren, options).el;
-
-          if (el) {
-            fragment.appendChild(el);
-          }
-        } else if (isArray(child)) {
-          child.forEach((it) => {
-            if (it) {
-              const el = it.makeElement(withChildren, options).el;
-
-              if (el) {
-                fragment.appendChild(el);
-              }
-            }
-          });
-        } else if (isFunction(child)) {
-          const result = child();
-
-          if (result instanceof VNode) {
-            const el = result.makeElement(withChildren, options);
-
-            if (el) fragment.appendChild(el);
-          } else if (typeof result === "string") {
-            fragment.appendChild(document.createTextNode(result));
-          }
-        } else if (child instanceof window.HTMLElement) {
-          fragment.appendChild(child);
-        } else {
-          fragment.appendChild(document.createTextNode(child));
-        }
-      });
+      this.insertElement(
+        children,
+        fragment,
+        parentElement,
+        withChildren,
+        options
+      );
 
       // fragment 적용
       parentElement.appendChild(fragment);

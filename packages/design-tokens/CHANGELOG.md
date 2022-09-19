@@ -1,5 +1,12 @@
 # @elf-framework/design-tokens
 
+## 2.1.44
+
+### Patch Changes
+
+- modify CardHeader component
+  modify blank props
+
 ## 2.1.42
 
 ### Patch Changes

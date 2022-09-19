@@ -8,6 +8,9 @@
     --elf--card-background-color: var(--color-white);
     --elf--card-offset: 16px;
     --elf--card-shadow: none;
+    --elf--card-selected-border-color: var(--color-primary);
+    --elf--card-selected-background-color: var(--color-blue-0);
+
 
     position: var(--elf--card-position);
     display: grid;
@@ -20,6 +23,13 @@
     background-color: var(--elf--card-background-color);
     box-shadow: var(--elf--card-shadow);
     // overflow: hidden;
+
+    &.selectable {
+        &.selected {
+            --elf--card-border-color: var(--elf--card-selected-border-color);
+            --elf--card-background-color: var(--elf--card-selected-background-color);
+        }
+    }
 
     &.as-link {
         background-color: var(--elf--card-background-color);
@@ -115,6 +125,10 @@
 
     &:not(:first-child) {
         margin-top: var(--elf--card-offset);
+    }
+
+    &:last-child {
+        margin-bottom: var(--elf--card-offset);
     }
 
     padding: var(--elf--card-header-padding);

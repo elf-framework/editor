@@ -174,6 +174,8 @@ export default [
     title: "Status",
     items: [
       { link: COMPONENTS_URL + "status/animation/", title: "Animation" },
+      { link: COMPONENTS_URL + "status/ghost/", title: "Ghost" },
+      { link: COMPONENTS_URL + "status/blank/", title: "Blank" },
       { link: COMPONENTS_URL + "status/badge/", title: "Badge " },
       {
         link: COMPONENTS_URL + "status/progressbar/",

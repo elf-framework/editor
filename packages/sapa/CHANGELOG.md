@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.1.43
+
+### Patch Changes
+
+- modify makeElement in vnode
+
 ## 2.1.36
 
 ### Patch Changes

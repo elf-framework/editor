@@ -6710,14 +6710,17 @@ class CardHeader extends UIElement {
       ),
       ...extraProps
     };
-    console.log(ghost, nowrap);
+    console.log(ghost, nowrap, actions);
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
-    }, ghost ? [/* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    }), /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    })] : [
+    }, ghost ? [
+      /* @__PURE__ */ createElementJsx(Ghost, {
+        animated: true
+      }),
+      actions.length ? /* @__PURE__ */ createElementJsx(Ghost, {
+        animated: true
+      }) : void 0
+    ] : [
       title ? /* @__PURE__ */ createElementJsx("div", {
         class: "title"
       }, title) : null,
@@ -6876,17 +6879,31 @@ class CardActions extends UIElement {
 }
 const cssProperties = makeCssVariablePrefixMap("--elf--blank", {
   width: true,
-  height: true
+  height: true,
+  backgroundColor: true
 });
 class Blank extends UIElement {
   template() {
-    const { style: style2 = {}, ...extraProps } = this.props;
+    const {
+      style: style2 = {},
+      stripe = "none",
+      color = "transparent",
+      ...extraProps
+    } = this.props;
     const localClass = useMemo(() => {
-      return classnames("elf--blank", {});
-    }, []);
+      return classnames("elf--blank", {
+        [stripe]: true
+      });
+    }, [stripe]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties),
+      style: propertyMap(
+        {
+          ...style2,
+          backgroundColor: color
+        },
+        cssProperties
+      ),
       ...extraProps
     };
     return /* @__PURE__ */ createElementJsx("div", {

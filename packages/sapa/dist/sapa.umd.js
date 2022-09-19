@@ -3924,42 +3924,55 @@ var __privateMethod = (obj, member, method) => {
         this.props.content = this.children;
       }
     }
+    insertElement(child, fragment, parentElement, withChildren, options) {
+      if (child instanceof VNode || (child == null ? void 0 : child.makeElement)) {
+        child.setParentElement(parentElement);
+        const el = child.makeElement(withChildren, options).el;
+        if (el) {
+          fragment.appendChild(el);
+        }
+      } else if (isArray(child)) {
+        child.forEach((it) => {
+          if (it) {
+            this.insertElement(
+              it,
+              fragment,
+              parentElement,
+              withChildren,
+              options
+            );
+          }
+        });
+      } else if (isFunction(child)) {
+        const result = child();
+        if (result) {
+          this.insertElement(
+            result,
+            fragment,
+            parentElement,
+            withChildren,
+            options
+          );
+        }
+      } else if (child instanceof window.HTMLElement) {
+        fragment.appendChild(child);
+      } else if (isValue(child)) {
+        fragment.appendChild(document.createTextNode(child));
+      } else
+        ;
+    }
     makeChildren(withChildren, options) {
       const parentElement = this.el;
       const children2 = this.children;
       if (children2 && children2.length) {
         const fragment = document.createDocumentFragment();
-        children2.forEach((child) => {
-          if (child instanceof VNode || child.makeElement) {
-            child.setParentElement(parentElement);
-            const el = child.makeElement(withChildren, options).el;
-            if (el) {
-              fragment.appendChild(el);
-            }
-          } else if (isArray(child)) {
-            child.forEach((it) => {
-              if (it) {
-                const el = it.makeElement(withChildren, options).el;
-                if (el) {
-                  fragment.appendChild(el);
-                }
-              }
-            });
-          } else if (isFunction(child)) {
-            const result = child();
-            if (result instanceof VNode) {
-              const el = result.makeElement(withChildren, options);
-              if (el)
-                fragment.appendChild(el);
-            } else if (typeof result === "string") {
-              fragment.appendChild(document.createTextNode(result));
-            }
-          } else if (child instanceof window.HTMLElement) {
-            fragment.appendChild(child);
-          } else {
-            fragment.appendChild(document.createTextNode(child));
-          }
-        });
+        this.insertElement(
+          children2,
+          fragment,
+          parentElement,
+          withChildren,
+          options
+        );
         parentElement.appendChild(fragment);
         children2.forEach((child) => {
           if (isArray(child)) {

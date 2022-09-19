@@ -1644,22 +1644,6 @@ declare module "@elf-framework/ui" {
     props: CardBodyProps & DomEventType;
   }
 
-  interface GhostProps {
-    animated?: boolean;
-  }
-
-  export class Ghost extends UIElement {
-    props: GhostProps & DomEventType;
-  }
-
-  interface BlankProps {
-    style?: CommonStyle;
-  }
-
-  export class Blank extends UIElement {
-    props: BlankProps & DomEventType;
-  }
-
   interface CardAvatarProps {
     content?: ContentType;
     style?: CommonStyle;
@@ -1677,5 +1661,22 @@ declare module "@elf-framework/ui" {
 
   export class CardActions extends UIElement {
     props: CardActionsProps & DomEventType;
+  }
+
+  interface GhostProps {
+    animated?: boolean;
+  }
+
+  export class Ghost extends UIElement {
+    props: GhostProps & DomEventType;
+  }
+
+  interface BlankProps {
+    style?: CommonStyle;
+    stripe?: "default";
+  }
+
+  export class Blank extends UIElement {
+    props: BlankProps & DomEventType;
   }
 }

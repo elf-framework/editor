@@ -106,6 +106,8 @@ export function MainView() {
           style={{
             width: 200,
           }}
+          selectable
+          selected
         >
           <CardPreview
             ghost
