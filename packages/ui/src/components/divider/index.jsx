@@ -15,7 +15,7 @@ export class Divider extends UIElement {
       style = {},
       variant = "default",
       size = "small",
-      margin = "10px 0",
+      margin = "10px",
       orientation = "horizontal",
     } = this.props;
     const styleObject = {

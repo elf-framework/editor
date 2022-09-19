@@ -1,5 +1,15 @@
 # @elf-framework/ui
 
+## 2.1.42
+
+### Patch Changes
+
+- support card component(action, avatar, body, container, header, preview, footer)
+  modify divider component
+  add ghost, blank component
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.42
+
 ## 2.1.41
 
 ### Patch Changes

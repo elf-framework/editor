@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 16 Sep 2022 12:41:48 GMT
+ * Generated on Mon, 19 Sep 2022 08:53:14 GMT
  */
 
 :root {
@@ -110,7 +110,7 @@
   --column-3: repeat(3, 1fr);
   --column-2: repeat(2, 1fr);
   --column-1: repeat(1, 1fr);
-  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-color: rgba(170, 170, 170, 0.5);
   --shadow-none: none;
   --button-disabled-text-default: #b1b1b1;
   --button-disabled-background-default: #e6e6e6;
@@ -266,13 +266,13 @@
   --shadow-3: 0 8px 16px 0 var(--shadow-color);
   --shadow-2: 0 4px 8px 0 var(--shadow-color);
   --shadow-1: 0 1px 4px 0 var(--shadow-color);
-  --divider-color-border-default: var(--color-gray-5);
+  --divider-color-border-default: var(--color-gray-2);
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
   --button-color-border-default: var(--color-gray-3);
-  --button-selected-background-default: var(--color-gray-4);
-  --button-hover-background-default: var(--color-gray-3);
+  --button-selected-background-default: var(--color-gray-2);
+  --button-hover-background-default: var(--color-gray-1);
   --alert-color-background-weak-success: var(--color-green-1); /* Base color for the success color */
   --alert-color-background-weak-warning: var(--color-orange-1); /* Base color for the warning color */
   --alert-color-background-weak-danger: var(--color-red-1); /* Base color for the danger color */

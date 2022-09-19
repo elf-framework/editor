@@ -3,17 +3,18 @@
     --elf--popover-hover-color: var(--color-neutral-10);
     --elf--popover-color: var(--color-black);
     --elf--popover-border-color: var(--color-gray-5);
-    --elf--popover-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--popover-box-shadow: var(--shadow-1);
     --elf--popover-tools-border-color: rgba(255, 255, 255, 0.19);
     --elf--popover-border-radius: 2px;    
     --elf--popover-position: fixed;
-    --elf--popover-hgap: 10px;
-    --elf--popover-vgap: 10px;
+    --elf--popover-hgap: 6px;
+    --elf--popover-vgap: 6px;
     --elf--popover-tip-background-color: var(--elf--popover-background-color);
     --elf--popover-delay: 0.5s;
     --elf--popover-content-padding: 8px 14px;
     --elf--popover-animation: fadein var(--elf--popover-delay) ease-in-out;
     --elf--popover-tip-size: 8px;
+    --elf--popover-tip-z-index: var(--z-index-10000);
     position: relative;
     width: fit-content;
     height: fit-content;
@@ -41,6 +42,7 @@
     }
 
     > .elf--popover-content {
+        z-index: calc(var(--elf--popover-tip-z-index) + 2px);
         > .tip {
             pointer-events: none;
             position: absolute;
@@ -52,12 +54,14 @@
             border-bottom: var(--elf--popover-tip-size) solid var(--elf--popover-tip-background-color);
             border-top: 0px;
             // left: 50%;
-            transform: translateX(-50%) translateY(1px);
+            transform: translateX(-50%) translateY(2px);
             // top: 100%;
             display: inline-block;
             // background-color: var(--elf--tools-tip-background);
-            z-index: 10;
-        
+            z-index: calc(var(--elf--popover-tip-z-index) + 2);
+            // filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.15));
+            box-shadow: inset 0 0 0 1px var(--elf--popover-border-color);
+
         }
 
 
@@ -70,6 +74,7 @@
         width: fit-content;
         height: fit-content;
         filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.15));
+        z-index: var(--elf--popover-tip-z-index);
 
         /** for event capture **/ 
         .event-panel {
@@ -99,7 +104,7 @@
             > .tip {
                 left: 50%;                
                 transform: translateX(-50%);
-                top: calc(100% + var(--elf--popover-hgap) - var(--elf--popover-tip-size) + 1px);
+                top: calc(100% + var(--elf--popover-hgap)  - var(--elf--popover-tip-size) + 1px);
 
             }                        
         }

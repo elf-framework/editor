@@ -1,5 +1,12 @@
 # ui-dev
 
+## 1.0.28
+
+### Patch Changes
+
+- update card documentation
+  add sapa version text
+
 ## 1.0.27
 
 ### Patch Changes

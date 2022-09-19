@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 16 Sep 2022 12:41:48 GMT
+ * Generated on Mon, 19 Sep 2022 08:53:14 GMT
  */
 
 module.exports = {
@@ -4765,11 +4765,11 @@ module.exports = {
     "hover": {
       "background": {
         "default": {
-          "value": "#c5ced6",
+          "value": "#ebf0f5",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.3.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "ButtonHoverBackgroundDefault",
           "attributes": {
@@ -4790,11 +4790,11 @@ module.exports = {
     "selected": {
       "background": {
         "default": {
-          "value": "#a2adb8",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.4.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonSelectedBackgroundDefault",
           "attributes": {
@@ -5232,11 +5232,11 @@ module.exports = {
     "color": {
       "border": {
         "default": {
-          "value": "#818e9a",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.5.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "DividerColorBorderDefault",
           "attributes": {
@@ -5383,7 +5383,7 @@ module.exports = {
   },
   "shadow": {
     "1": {
-      "value": "0 1px 4px 0 rgba(0, 0, 0, 0.5)",
+      "value": "0 1px 4px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
       "isSource": true,
       "original": {
@@ -5400,7 +5400,7 @@ module.exports = {
       ]
     },
     "2": {
-      "value": "0 4px 8px 0 rgba(0, 0, 0, 0.5)",
+      "value": "0 4px 8px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
       "isSource": true,
       "original": {
@@ -5417,7 +5417,7 @@ module.exports = {
       ]
     },
     "3": {
-      "value": "0 8px 16px 0 rgba(0, 0, 0, 0.5)",
+      "value": "0 8px 16px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
       "isSource": true,
       "original": {
@@ -5434,7 +5434,7 @@ module.exports = {
       ]
     },
     "4": {
-      "value": "0 12px 24px 0 rgba(0, 0, 0, 0.5)",
+      "value": "0 12px 24px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
       "isSource": true,
       "original": {
@@ -5451,7 +5451,7 @@ module.exports = {
       ]
     },
     "5": {
-      "value": "0 16px 32px 0 rgba(0, 0, 0, 0.5)",
+      "value": "0 16px 32px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
       "isSource": true,
       "original": {
@@ -5485,11 +5485,11 @@ module.exports = {
       ]
     },
     "color": {
-      "value": "rgba(0, 0, 0, 0.5)",
+      "value": "rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
       "isSource": true,
       "original": {
-        "value": "rgba(0, 0, 0, 0.5)"
+        "value": "rgba(170, 170, 170, 0.5)"
       },
       "name": "ShadowColor",
       "attributes": {

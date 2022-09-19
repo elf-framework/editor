@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Fri, 16 Sep 2022 12:41:49 GMT
+ * Generated on Mon, 19 Sep 2022 08:53:16 GMT
  */
 
 
@@ -504,13 +504,13 @@
 .color-text-link { color: #1a497d; }
 
 .color-text-disabled { color: #818e9a; }
-.shadow-1 { box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5); }
-.shadow-2 { box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5); }
-.shadow-3 { box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5); }
-.shadow-4 { box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.5); }
-.shadow-5 { box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.5); }
+.shadow-1 { box-shadow: 0 1px 4px 0 rgba(170, 170, 170, 0.5); }
+.shadow-2 { box-shadow: 0 4px 8px 0 rgba(170, 170, 170, 0.5); }
+.shadow-3 { box-shadow: 0 8px 16px 0 rgba(170, 170, 170, 0.5); }
+.shadow-4 { box-shadow: 0 12px 24px 0 rgba(170, 170, 170, 0.5); }
+.shadow-5 { box-shadow: 0 16px 32px 0 rgba(170, 170, 170, 0.5); }
 .shadow-none { box-shadow: none; }
-.shadow-color { box-shadow: rgba(0, 0, 0, 0.5); }
+.shadow-color { box-shadow: rgba(170, 170, 170, 0.5); }
 .column-1 { grid-template-columns: repeat(1, 1fr); }
 .column-2 { grid-template-columns: repeat(2, 1fr); }
 .column-3 { grid-template-columns: repeat(3, 1fr); }

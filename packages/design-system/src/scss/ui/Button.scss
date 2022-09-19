@@ -200,8 +200,9 @@
 
   &.outline {
     --elf--button-background-color: inherit;
-    border-width: 1px;
-    color: inherit;
+    border-width: 2px;
+    font-weight: bold;
+    // color: inherit;
 
     &.primary {
       --elf--button-border-color: var(--button-color-border-primary);

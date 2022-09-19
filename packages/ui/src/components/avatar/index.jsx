@@ -2,6 +2,7 @@ import { classnames, UIElement, useMemo } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
+import { Ghost } from "../ghost";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--avatar", {
   backgroundColor: true,
@@ -17,6 +18,7 @@ export class Avatar extends UIElement {
       shape = "circle",
       variant = "default",
       disabled = false,
+      ghost = false,
       ...extraProps
     } = this.props;
 
@@ -37,7 +39,9 @@ export class Avatar extends UIElement {
 
     return (
       <div {...styleObject}>
-        <div class="elf--avatar-inner">{content}</div>
+        <div class="elf--avatar-inner">
+          {ghost ? <Ghost animated /> : content}
+        </div>
       </div>
     );
   }

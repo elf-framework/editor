@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 16 Sep 2022 12:41:48 GMT
+ * Generated on Mon, 19 Sep 2022 08:53:14 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -234,8 +234,8 @@ export const AvatarSize400 = "45px";
 export const AvatarSize500 = "50px";
 export const AvatarSize600 = "55px";
 export const AvatarSize700 = "60px";
-export const ButtonHoverBackgroundDefault = "#c5ced6";
-export const ButtonSelectedBackgroundDefault = "#a2adb8";
+export const ButtonHoverBackgroundDefault = "#ebf0f5";
+export const ButtonSelectedBackgroundDefault = "#d9e0e6";
 export const ButtonDisabledBackgroundDefault = "#e6e6e6";
 export const ButtonDisabledTextDefault = "#b1b1b1";
 export const ButtonColorBackgroundDefault = "#ffffff";
@@ -255,20 +255,20 @@ export const ButtonColorBorderDanger = "#d9363e";
 export const ButtonSizePaddingSmall = "5rem 6rem";
 export const ButtonSizePaddingMedium = "8rem 10rem";
 export const ButtonSizePaddingLarge = "14rem 20rem";
-export const DividerColorBorderDefault = "#818e9a";
+export const DividerColorBorderDefault = "#d9e0e6";
 export const DividerColorBorderPrimary = "#1273e6";
 export const DividerColorBorderSecondary = "#d9e0e6";
 export const DividerColorBorderSuccess = "#009f6a";
 export const DividerColorBorderInfo = "#abd2ff";
 export const DividerColorBorderWarning = "#ffb77c";
 export const DividerColorBorderDanger = "#d9363e";
-export const Shadow1 = "0 1px 4px 0 rgba(0, 0, 0, 0.5)";
-export const Shadow2 = "0 4px 8px 0 rgba(0, 0, 0, 0.5)";
-export const Shadow3 = "0 8px 16px 0 rgba(0, 0, 0, 0.5)";
-export const Shadow4 = "0 12px 24px 0 rgba(0, 0, 0, 0.5)";
-export const Shadow5 = "0 16px 32px 0 rgba(0, 0, 0, 0.5)";
+export const Shadow1 = "0 1px 4px 0 rgba(170, 170, 170, 0.5)";
+export const Shadow2 = "0 4px 8px 0 rgba(170, 170, 170, 0.5)";
+export const Shadow3 = "0 8px 16px 0 rgba(170, 170, 170, 0.5)";
+export const Shadow4 = "0 12px 24px 0 rgba(170, 170, 170, 0.5)";
+export const Shadow5 = "0 16px 32px 0 rgba(170, 170, 170, 0.5)";
 export const ShadowNone = "none";
-export const ShadowColor = "rgba(0, 0, 0, 0.5)";
+export const ShadowColor = "rgba(170, 170, 170, 0.5)";
 export const Column1 = "repeat(1, 1fr)";
 export const Column2 = "repeat(2, 1fr)";
 export const Column3 = "repeat(3, 1fr)";

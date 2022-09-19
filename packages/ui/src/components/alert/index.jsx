@@ -4,6 +4,7 @@ import {
   useState,
   useCallback,
   potal,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -29,6 +30,7 @@ export class Alert extends UIElement {
       variant = "default",
       title = "",
       content = "",
+      shape = "rect",
       style = {},
       closable = false,
       weak = false,
@@ -46,12 +48,18 @@ export class Alert extends UIElement {
       [setLocalDelay]
     );
 
+    const localClass = useMemo(() => {
+      return classnames("elf--alert", {
+        [variant]: true,
+        weak,
+        hide,
+        closable,
+        [shape]: true,
+      });
+    }, [variant, weak, hide, closable, shape]);
+
     const styleObject = {
-      class: classnames([
-        "elf--alert",
-        { [variant]: true, weak },
-        { hide, closable },
-      ]),
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
         ...{

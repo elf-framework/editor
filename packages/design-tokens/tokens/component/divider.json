@@ -3,7 +3,7 @@
     "color": {
       "border": {
         "default": {
-          "value": "{color.gray.5.value}"
+          "value": "{color.gray.2.value}"
         },
         "primary": {
           "value": "{color.primary.value}"

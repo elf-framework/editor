@@ -18,6 +18,10 @@
   box-sizing: border-box;
   position: relative;
 
+  &.round {
+    --elf--alert-border-radius: 6px;
+  }
+
   > .elf--alert-close {
     position: absolute;
     right: 0px;

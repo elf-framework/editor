@@ -1,0 +1,11 @@
+.elf--blank {
+
+    --elf--blank-width: 100%;
+    --elf--blank-height: 30px;
+
+    display: block;
+    position: relative;
+
+    width: var(--elf--blank-width);
+    height: var(--elf--blank-height);
+}

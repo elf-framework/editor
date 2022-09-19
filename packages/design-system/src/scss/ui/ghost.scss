@@ -1,0 +1,34 @@
+.elf--ghost {
+
+    --elf--ghost-width: 100%;
+    --elf--ghost-height: 100%;
+    --elf--ghost-background-color: var(--color-gray-1);
+    --elf--ghost-border-radius: 5px;
+    --elf--ghost-animation-name: ghost;
+    --elf--ghost-animation-duration: 1.5s;
+    --elf--ghost-background-color-1: var(--color-transparent-white-0);
+    --elf--ghost-background-color-2: var(--color-transparent-white-5);
+
+    display: block;
+    position: relative;
+    width: var(--elf--ghost-width);
+    height: var(--elf--ghost-height);
+    border-radius: var(--elf--ghost-border-radius);
+    background-color: var(--elf--ghost-background-color);
+    background-image: linear-gradient(100deg, var(--elf--ghost-background-color-1) 40%,
+            var(--elf--ghost-background-color-2) 50%,
+            var(--elf--ghost-background-color-1) 60%);
+    background-size: 200% 100%;
+    background-position-x: 180%;
+
+    &.quiet {
+        --elf--ghost-border-radius: 0px;
+    }
+
+    &.animated {
+        animation-name: var(--elf--ghost-animation-name);
+        animation-duration: var(--elf--ghost-animation-duration);
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+    }
+}

@@ -201,7 +201,7 @@ export default [
       },
       {
         link: COMPONENTS_URL + "patterns/table/",
-        title: "Table *",
+        title: "Table",
       },
     ],
     category: "Components",

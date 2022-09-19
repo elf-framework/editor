@@ -1196,6 +1196,7 @@ declare module "@elf-framework/ui" {
     weak?: boolean;
     delay?: number;
     icon?: ContentType;
+    shape?: "rect" | "round";
     onShow?: () => void;
     onHide?: () => void;
   }
@@ -1296,6 +1297,7 @@ declare module "@elf-framework/ui" {
     shape: "circle" | "square";
     style: CommonStyle;
     disabled?: boolean;
+    ghost?: boolean;
   }
 
   export class Avatar extends UIElement {
@@ -1564,5 +1566,116 @@ declare module "@elf-framework/ui" {
 
   export class Table<T> extends UIElement {
     props: TableProps<T> & DomEventType;
+  }
+
+  interface CardProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    shape?: "round" | "square";
+    orientation: "horizontal" | "vertical";
+    quiet?: boolean;
+    ghost?: boolean;
+    selectable?: boolean;
+    selected?: boolean;
+    as?: "div" | "link";
+    href?: string;
+  }
+
+  export class Card extends UIElement {
+    props: CardProps & DomEventType;
+  }
+
+  interface CardPreviewProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    ratio?:
+      | "1:1"
+      | "2:1"
+      | "3:1"
+      | "4:1"
+      | "4:3"
+      | "3:4"
+      | "1:2"
+      | "1:3"
+      | "1:4";
+  }
+
+  export class CardPreview extends UIElement {
+    props: CardPreviewProps & DomEventType;
+  }
+
+  interface CardContainerProps {
+    content?: ContentType;
+    style?: CommonStyle;
+  }
+
+  export class CardContainer extends UIElement {
+    props: CardContainerProps & DomEventType;
+  }
+
+  interface CardHeaderProps {
+    title?: ContentType;
+    actions?: ContentType[];
+    style?: CommonStyle;
+    nowrap?: boolean;
+    ghost?: boolean;
+  }
+
+  export class CardHeader extends UIElement {
+    props: CardHeaderProps & DomEventType;
+  }
+
+  interface CardFooterProps {
+    content?: ContentType;
+    style?: CommonStyle;
+  }
+
+  export class CardFooter extends UIElement {
+    props: CardFooterProps & DomEventType;
+  }
+
+  interface CardBodyProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    ghost?: boolean;
+  }
+
+  export class CardBody extends UIElement {
+    props: CardBodyProps & DomEventType;
+  }
+
+  interface GhostProps {
+    animated?: boolean;
+  }
+
+  export class Ghost extends UIElement {
+    props: GhostProps & DomEventType;
+  }
+
+  interface BlankProps {
+    style?: CommonStyle;
+  }
+
+  export class Blank extends UIElement {
+    props: BlankProps & DomEventType;
+  }
+
+  interface CardAvatarProps {
+    content?: ContentType;
+    style?: CommonStyle;
+  }
+
+  export class CardAvatar extends UIElement {
+    props: CardAvatarProps & DomEventType;
+  }
+
+  interface CardActionsProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    align?: "left" | "right" | "center";
+  }
+
+  export class CardActions extends UIElement {
+    props: CardActionsProps & DomEventType;
   }
 }

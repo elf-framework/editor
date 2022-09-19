@@ -19,7 +19,7 @@
     /* menu item divider color */
     --elf--menu-item-divider-color: var(--color-border);    
 
-    --elf--menu-item-hover-color: var(--color-gray-2);
+    --elf--menu-item-hover-color: var(--color-gray-1);
     /* menu direction */
     --elf--menu-direction-left: 100%;
     /* menu selected icon font size */
@@ -85,6 +85,7 @@
         // box-shadow: none;
         box-shadow: none;
         border-radius: 4px;
+        --elf--menu-position: relative;
         
         li {
             padding: 0px 10px;

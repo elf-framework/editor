@@ -57,6 +57,9 @@
     font-size: var(--size-font-200);
     color: var(--color-blue-6);
     padding: 7px 15px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-style: wavy;
     // background-color: var(--color-gray-0);
     // border-bottom: 1px solid #ececec;
     // border-top: 1px solid #ececec;

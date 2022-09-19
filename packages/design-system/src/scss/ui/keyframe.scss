@@ -245,7 +245,7 @@
   from {
     transform-origin: top center;
   }
-  
+
   20% {
     transform: rotate3d(0, 0, 1, 15deg);
   }
@@ -436,3 +436,15 @@
     stroke-dasharray: var(--progress-total-length);
   }
 }
+
+@keyframes ghost {
+
+  0% {
+    background-position-x: 180%;
+  }
+
+  100% {
+    background-position-x: -20%;
+  }
+}
+

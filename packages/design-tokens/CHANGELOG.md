@@ -1,5 +1,13 @@
 # @elf-framework/design-tokens
 
+## 2.1.42
+
+### Patch Changes
+
+- support card component(action, avatar, body, container, header, preview, footer)
+  modify divider component
+  add ghost, blank component
+
 ## 2.1.41
 
 ### Patch Changes

@@ -5,6 +5,7 @@ filename: pages/sapa/getting-started/page.mdx
 ---
 
 import { Alert } from "@elf-framework/ui";
+import packageJSON from "@elf-framework/sapa/package.json";
 
 
 # {title}
@@ -28,9 +29,10 @@ It can also be used in umd mode.
 
 Let's load the script first.
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/@elf-framework/sapa@2.1.23/dist/sapa.umd.min.js"></script>
-```
+<Alert variant="dark" shape="round">
+&lt;script src={`https://cdn.jsdelivr.net/npm/@elf-framework/sapa@${packageJSON.version}/dist/sapa.umd.min.js`}>&lt;/script>
+</Alert>
+
 
 Then use the desired function with the sapa object.
 
