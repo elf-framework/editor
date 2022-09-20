@@ -7,7 +7,7 @@ export function SizeView() {
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: [60, 80],
+          padding: [60, 40],
           fontSize: 13,
         }}
       >

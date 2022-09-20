@@ -1193,10 +1193,11 @@ declare module "@elf-framework/ui" {
     content: ContentType;
     style: CommonStyle;
     closable: boolean;
-    weak?: boolean;
+    dismissable: boolean;
     delay?: number;
     icon?: ContentType;
     shape?: "rect" | "round";
+    actions?: ContentType;
     onShow?: () => void;
     onHide?: () => void;
   }

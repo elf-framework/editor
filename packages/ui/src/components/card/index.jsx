@@ -18,6 +18,7 @@ export class Card extends UIElement {
     const {
       orientation = "vertical",
       style = {},
+      size = "medium",
       shape = "round",
       content,
       quiet = false,
@@ -37,9 +38,10 @@ export class Card extends UIElement {
         ghost,
         selectable,
         selected,
+        [size]: true,
         "as-link": as === "link",
       });
-    }, [shape, orientation, quiet, ghost, selectable, selected, as]);
+    }, [shape, orientation, quiet, ghost, selectable, selected, as, size]);
 
     const styleObject = {
       class: localClass,

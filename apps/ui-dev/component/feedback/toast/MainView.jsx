@@ -38,8 +38,10 @@ export function MainView() {
             }}
             tools={[
               <Button
-                variant="outline"
+                outline
+                // variant="danger"
                 shape="round"
+                in="toast"
                 onClick={() => console.log("action")}
               >
                 Action

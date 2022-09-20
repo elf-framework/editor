@@ -1,5 +1,19 @@
 # @elf-framework/design-tokens
 
+## 2.1.48
+
+### Patch Changes
+
+- update alert component
+
+## 2.1.46
+
+### Patch Changes
+
+- support card size
+  remove console.log in CardHeader
+  support ghost in CardFooter
+
 ## 2.1.44
 
 ### Patch Changes

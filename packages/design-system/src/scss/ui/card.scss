@@ -6,7 +6,8 @@
     --elf--card-border-color: var(--color-gray-2);
     --elf--card-border-radius: 4px;
     --elf--card-background-color: var(--color-white);
-    --elf--card-offset: 16px;
+    --elf--card-offset: 10px;
+    --elf--card-side-offset: 16px;
     --elf--card-shadow: none;
     --elf--card-selected-border-color: var(--color-primary);
     --elf--card-selected-background-color: var(--color-blue-0);
@@ -23,6 +24,26 @@
     background-color: var(--elf--card-background-color);
     box-shadow: var(--elf--card-shadow);
     // overflow: hidden;
+
+    > *:last-child:not(:first-child) {
+        margin-bottom: var(--elf--card-offset);
+    }
+
+    &.small {
+        --elf--card-width: 160px;
+    }
+
+    &.medium {
+        --elf--card-width: 200px;
+    }
+
+    &.large {
+        --elf--card-width: 240px;
+    }
+    
+    &.extra-large {
+        --elf--card-width: 300px;
+    }
 
     &.selectable {
         &.selected {
@@ -103,6 +124,12 @@
         }
     }
 
+    > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
 }
 
 .elf--card-container {
@@ -111,10 +138,11 @@
     display: flex;
     flex-direction: column;
     padding: var(--elf--card-container-padding);
+    margin-top: calc(var(--elf--card-offset) + 10px);
 }
 
 .elf--card-header {
-    --elf--card-header-padding: var(--elf--card-offset);
+    --elf--card-header-padding: var(--elf--card-offset) var(--elf--card-side-offset);
     --elf--card-header-font-size: 16px;
     --elf--card-header-font-weight: 600;
     --elf--card-header-font-color: var(--color-gray-9);
@@ -161,7 +189,7 @@
     >.actions {
         display: flex;
         justify-content: center;
-        align-items: flex-end;
+        align-items: flex-start;
         flex: none;
         margin-top: -5px;
     }
@@ -180,25 +208,26 @@
 }
 
 .elf--card-footer {
-    --elf--card-footer-padding: var(--elf--card-offset);
+    --elf--card-footer-padding: var(--elf--card-offset) var(--elf--card-side-offset);
     --elf--card-footer-font-size: 14px;
     --elf--card-footer-font-weight: 400;
     --elf--card-footer-font-color: var(--color-gray-7);
     --elf--card-footer-text-align: left;
 
     padding: var(--elf--card-footer-padding);
+    padding-bottom: var(--elf--card-side-offset);
     font-size: var(--elf--card-footer-font-size);
     font-weight: var(--elf--card-footer-font-weight);
     color: var(--elf--card-footer-font-color);
     text-align: var(--elf--card-footer-text-align);
 
     > .content-area {
-        padding-top: var(--elf--card-offset);
+        padding-top: var(--elf--card-side-offset);
     }
 }
 
 .elf--card-body {
-    --elf--card-body-padding: var(--elf--card-offset);
+    --elf--card-body-padding: var(--elf--card-offset) var(--elf--card-side-offset);
     --elf--card-body-font-size: 14px;
     --elf--card-body-font-weight: 400;
     --elf--card-body-font-color: var(--color-gray-7);
@@ -210,30 +239,32 @@
     font-weight: var(--elf--card-body-font-weight);
     color: var(--elf--card-body-font-color);
     text-align: var(--elf--card-body-text-align);
-
-    > .content-area {
-        padding-top: var(--elf--card-offset);
-    }
 }
 
 .elf--card-avatar {
     --elf--card-avatar-position: relative;
-    --elf--card-avatar-padding: var(--elf--card-offset);
+    --elf--card-avatar-padding: var(--elf--card-offset) var(--elf--card-side-offset);
 
     position: var(--elf--card-avatar-position);
     width: fit-content;
-    height: 1px;
-    transform: translate(var(--elf--card-avatar-padding), -50%);
+    height: 0px;
+    transform: translate(var(--elf--card-side-offset), -50%);
+    
 
     > .elf--card-avatar-inner {
         display: inline-block;
         position: relative;
         transform: translate(0px, -50%);
+
+        > img {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 
 .elf--card-actions {
-    --elf--card-actions-padding: var(--elf--card-offset);
+    --elf--card-actions-padding: var(--elf--card-offset) var(--elf--card-side-offset);
     --elf--card-actions-gap: 10px;
     --elf--card-actions-background-color: var(--color-transparent-white-8);
     --elf--card-actions-shadow: var(--shadow-3);

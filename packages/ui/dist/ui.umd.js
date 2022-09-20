@@ -464,8 +464,10 @@ var __privateMethod = (obj, member, method) => {
         shape = "rect",
         style: style2 = {},
         closable = false,
-        weak = false,
+        dismissable = false,
         delay = 0,
+        actions,
+        weak,
         icon,
         ...extrProps
       } = this.props;
@@ -483,9 +485,10 @@ var __privateMethod = (obj, member, method) => {
           weak,
           hide,
           closable,
-          [shape]: true
+          [shape]: true,
+          dismissable
         });
-      }, [variant, weak, hide, closable, shape]);
+      }, [variant, weak, hide, closable, shape, dismissable]);
       const styleObject = {
         class: localClass,
         style: {
@@ -499,6 +502,8 @@ var __privateMethod = (obj, member, method) => {
       };
       const titleIcon = title && icon ? icon : void 0;
       const contentIcon = content && icon && !title ? icon : void 0;
+      const titleActions = title && actions ? actions : void 0;
+      const contentActions = content && actions && !title ? actions : void 0;
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject,
         onContextMenu: (e) => e.preventDefault(),
@@ -508,9 +513,13 @@ var __privateMethod = (obj, member, method) => {
         }
       }, title ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--alert-title"
-      }, titleIcon, " ", title) : null, content ? /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, titleIcon, " ", /* @__PURE__ */ sapa.createElementJsx("span", null, title), " ", titleActions ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--alert-actions"
+      }, titleActions) : void 0) : null, content ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--alert-content"
-      }, contentIcon, " ", content) : null, closable ? /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, contentIcon, " ", /* @__PURE__ */ sapa.createElementJsx("span", null, content), " ", contentActions ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--alert-actions"
+      }, contentActions) : void 0) : null, closable ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--alert-close",
         onClick: () => {
           setHide(true);
@@ -568,14 +577,15 @@ var __privateMethod = (obj, member, method) => {
         shape = "rect",
         quiet = false,
         outline = false,
+        place = "",
         style: style2 = {},
         onClick,
         content,
         ...extraStyle
       } = this.props;
       const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
-      const styleObject = {
-        class: sapa.classnames([
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames([
           "elf--button",
           {
             selected,
@@ -583,9 +593,13 @@ var __privateMethod = (obj, member, method) => {
             quiet,
             [variant]: true,
             [size]: true,
-            [shape]: true
+            [shape]: true,
+            [place]: true
           }
-        ]),
+        ]);
+      }, [variant, size, selected, shape, quiet, outline, place]);
+      const styleObject = {
+        class: localClass,
         disabled: disabled ? "disabled" : void 0,
         style: propertyMap(
           {
@@ -1196,7 +1210,9 @@ var __privateMethod = (obj, member, method) => {
           checked: checked ? "checked" : void 0
         },
         onChange: (e) => onChange == null ? void 0 : onChange(e, value)
-      }), content));
+      }), (content == null ? void 0 : content.length) ? /* @__PURE__ */ sapa.createElementJsx("span", {
+        class: "text"
+      }, content) : void 0));
     }
     get checked() {
       return this.refs.$input.checked;
@@ -6606,6 +6622,7 @@ var __privateMethod = (obj, member, method) => {
       const {
         orientation = "vertical",
         style: style2 = {},
+        size = "medium",
         shape = "round",
         content,
         quiet = false,
@@ -6624,9 +6641,10 @@ var __privateMethod = (obj, member, method) => {
           ghost,
           selectable,
           selected,
+          [size]: true,
           "as-link": as === "link"
         });
-      }, [shape, orientation, quiet, ghost, selectable, selected, as]);
+      }, [shape, orientation, quiet, ghost, selectable, selected, as, size]);
       const styleObject = {
         class: localClass,
         style: {
@@ -6694,7 +6712,6 @@ var __privateMethod = (obj, member, method) => {
         ghost = false,
         ...extraProps
       } = this.props;
-      console.log(this.props);
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--card-header", {
           nowrap,
@@ -6712,7 +6729,6 @@ var __privateMethod = (obj, member, method) => {
         ),
         ...extraProps
       };
-      console.log(ghost, nowrap, actions);
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
       }, ghost ? [
@@ -6763,14 +6779,12 @@ var __privateMethod = (obj, member, method) => {
   });
   class CardFooter extends sapa.UIElement {
     template() {
-      const {
-        style: style2 = {},
-        content,
-        ...extraProps
-      } = this.props;
+      const { style: style2 = {}, ghost = false, content, ...extraProps } = this.props;
       const localClass = sapa.useMemo(() => {
-        return sapa.classnames("elf--card-footer");
-      }, []);
+        return sapa.classnames("elf--card-footer", {
+          ghost
+        });
+      }, [ghost]);
       const styleObject = {
         class: localClass,
         style: propertyMap(
@@ -6787,7 +6801,13 @@ var __privateMethod = (obj, member, method) => {
         margin: 0
       }), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "content-area"
-      }, content));
+      }, ghost ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        style: { display: "flex", gap: 10 }
+      }, /* @__PURE__ */ sapa.createElementJsx(Ghost, {
+        animated: true
+      }), /* @__PURE__ */ sapa.createElementJsx(Ghost, {
+        animated: true
+      })) : content));
     }
   }
   const cssProperties$3 = makeCssVariablePrefixMap("--elf--card-body", {

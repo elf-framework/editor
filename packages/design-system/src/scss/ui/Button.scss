@@ -16,13 +16,15 @@
   // height: var(--elf--button-height, 30px);
   padding: var(--elf--button-padding);
   border-radius: var(--elf--button-border-radius);
-  line-height: 16px;
   font-size: var(--elf--button-font-size);
   background-color: var(--elf--button-background-color);
   color: var(--elf--button-color);
   border: 1px solid var(--elf--button-border-color);
   cursor: pointer;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   .elf--icon {
     width: 20px;
@@ -141,7 +143,7 @@
     --elf--button-background-color: var(
       --button-color-background-primary
     );
-    --elf--button-color: white;
+    --elf--button-color: var(--color-white);
     border-width: 0px;
 
     &.focus {
@@ -158,7 +160,7 @@
     --elf--button-background-color: var(
       --button-color-background-secondary
     );
-    --elf--button-color: white;
+    --elf--button-color: var(--color-white);
     border: 0px solid var(--elf--button-border-color);
 
     &[disabled] {
@@ -170,7 +172,7 @@
     --elf--button-background-color: var(
       --button-color-background-success
     );
-    --elf--button-color: white;
+    --elf--button-color: var(--color-white);
     border-width: 0px;
   }
 
@@ -178,7 +180,7 @@
     --elf--button-background-color: var(
       --button-color-background-danger
     );
-    --elf--button-color: white;
+    --elf--button-color: var(--color-white);
     border-width: 0px;
   }
 
@@ -186,7 +188,7 @@
     --elf--button-background-color: var(
       --button-color-background-info
     );
-    --elf--button-color: white;
+    --elf--button-color: var(--color-white);
     border-width: 0px;
   }
 
@@ -194,7 +196,7 @@
     --elf--button-background-color: var(
       --button-color-background-warning
     );
-    --elf--button-color: white;
+    --elf--button-color: var(--color-white);
     border-width: 0px;
   }
 
@@ -204,11 +206,24 @@
     font-weight: bold;
     // color: inherit;
 
+
+    &.toast {
+      --elf--button-color: var(--color-white) !important;
+      --elf--button-background-color: inherit !important;
+    }
+
     &.primary {
       --elf--button-border-color: var(--button-color-border-primary);
       --elf--button-color: var(
         --button-color-background-primary
       );
+
+      &:hover {
+        --elf--button-background-color: var(
+          --button-color-background-primary
+        ) !important;
+        --elf--button-color: var(--color-white);
+      }
     }
 
     &.secondary {
@@ -237,6 +252,7 @@
       --elf--button-border-color: var(--button-color-border-warning);
       --elf--button-color: var(--button-color-background-warning);
     }
+
   }
 
   &.quiet {

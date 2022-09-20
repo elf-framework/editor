@@ -1,5 +1,6 @@
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
+import { RefClass } from "../../HookMachine";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
 import { Dom } from "../Dom";
@@ -23,7 +24,7 @@ let cache = {};
 let cacheCount = 0;
 let nativeDomCache = {};
 const EXPECT_ATTRIBUTES = {
-  tagProps: true,
+  memoizedProps: true,
   parentElement: true,
   el: true,
   children: true,
@@ -298,7 +299,7 @@ export class VNode {
   }
 
   get stringifyStyle() {
-    return this.tagProps.style;
+    return this.memoizedProps.style;
   }
 
   initializeProps() {
@@ -314,7 +315,7 @@ export class VNode {
         delete newProps.className;
       }
 
-      this.tagProps = newProps;
+      this.memoizedProps = newProps;
     } else {
       // NOOP
     }
@@ -502,13 +503,17 @@ export class VNode {
   makeElement(withChildren = false, options = {}) {
     const el = this.createElement();
 
-    let props = this.tagProps;
+    let props = this.memoizedProps;
     if (props) {
       // props 에 ref 속성이 있으면 context 에 추가한다.
       if (props.ref) {
         this.getContextProps(options.context, props);
 
         this.ref = props.ref;
+
+        if (this.ref instanceof RefClass) {
+          this.ref.setCurrent(el);
+        }
         isFunction(options.registerRef) && options.registerRef(props.ref, el);
       }
 
@@ -551,7 +556,7 @@ export class VNode {
 
   async makeHtml(withChildren = false, options = {}) {
     const tempProps = [];
-    const props = this.tagProps;
+    const props = this.memoizedProps;
     if (props) {
       if (props.ref) {
         // ref 가 있을 때는 context 에서 props 를 가지고 온다.
@@ -800,9 +805,14 @@ export class VNodeComponent extends VNode {
 
     if (this.el) {
       // props.ref 가 있으면 등록한다.
-      // 상위 컨텍스트 에서 내부 children 을 관리한다.
-      const id = this.props.ref || this.instance.id;
+      const id = isString(this.props.ref) ? this.props.ref : this.instance.id;
 
+      if (this.props.ref instanceof RefClass) {
+        // ref 가 있으면 component 의 instance 를 등록한다.
+        this.props.ref.setCurrent(this.instance);
+      }
+
+      // 상위 컨텍스트 에서 내부 children 을 관리한다.
       isFunction(options.registerChildComponent) &&
         options.registerChildComponent(this.el, this.instance, id);
     }

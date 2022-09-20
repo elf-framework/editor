@@ -1,6 +1,6 @@
 import { Alert, Grid, VBox } from "@elf-framework/ui";
 
-export function OptionsView() {
+export function TextView() {
   return (
     <Grid columns={["50%", "50%"]} gap={30}>
       <VBox
@@ -8,7 +8,6 @@ export function OptionsView() {
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
           padding: "20px 40px",
-          height: 280,
         }}
       >
         <div
@@ -18,13 +17,15 @@ export function OptionsView() {
             flexDirection: "column",
           }}
         >
-          <Alert>Your trial has expired. Please purchase to continue.</Alert>
+          <Alert variant="dark" closable>
+            Your trial has expired. Please purchase to continue.
+          </Alert>
         </div>
       </VBox>
       <div>
         <p>
-          A popover’s width and height can be customized appropriately for its
-          context.
+          Text is required for all alert banners. The message should be concise
+          and, if applicable, describe the next step that a user can take.
         </p>
       </div>
     </Grid>

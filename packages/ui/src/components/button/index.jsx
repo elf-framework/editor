@@ -1,4 +1,4 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
@@ -30,6 +30,7 @@ export class Button extends UIElement {
       shape = "rect",
       quiet = false,
       outline = false,
+      place = "",
       style = {},
       onClick,
       content,
@@ -38,8 +39,8 @@ export class Button extends UIElement {
 
     const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--button",
         {
           selected,
@@ -48,8 +49,13 @@ export class Button extends UIElement {
           [variant]: true,
           [size]: true,
           [shape]: true,
+          [place]: true,
         },
-      ]),
+      ]);
+    }, [variant, size, selected, shape, quiet, outline, place]);
+
+    const styleObject = {
+      class: localClass,
       disabled: disabled ? "disabled" : undefined,
       style: propertyMap(
         {

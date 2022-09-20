@@ -1,5 +1,24 @@
 # @elf-framework/ui
 
+## 2.1.48
+
+### Patch Changes
+
+- update alert component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.48
+
+## 2.1.46
+
+### Patch Changes
+
+- support card size
+  remove console.log in CardHeader
+  support ghost in CardFooter
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.46
+
 ## 2.1.44
 
 ### Patch Changes

@@ -6,6 +6,11 @@ filename: pages/design-system/feedback/alert/page.mdx
 
 import { VBox, Flex } from "@elf-framework/ui";
 import { MainView } from "../../../../../component/feedback/alert/MainView.jsx"; 
+import { TextView } from "../../../../../component/feedback/alert/TextView.jsx"; 
+import { VariantView } from "../../../../../component/feedback/alert/VariantView.jsx"; 
+import { ActionableView } from "../../../../../component/feedback/alert/ActionableView.jsx"; 
+import { DismissableView } from "../../../../../component/feedback/alert/DismissableView.jsx"; 
+import { TextOverflowView } from "../../../../../component/feedback/alert/TextOverflowView.jsx"; 
 import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
 
 # {title}
@@ -22,10 +27,24 @@ Alert banners show pressing and high-signal messages, such as system alerts. The
 ## Options 
 
 
-### Size
+### Text
+
+<TextView />
+
+### Variant
+
+<VariantView />
 
 
 
+### Actionable
 
-### Orientation
+<ActionableView />
 
+### Dismissable 
+
+<DismissableView />
+
+### Text overflow
+
+<TextOverflowView />

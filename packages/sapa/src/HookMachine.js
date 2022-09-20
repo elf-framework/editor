@@ -12,10 +12,26 @@ import { MagicHandler } from "./MagicHandler";
 const USE_STATE = Symbol("useState");
 const USE_EFFECT = Symbol("useEffect");
 const USE_MEMO = Symbol("useMemo");
+const USE_CALLBACK = Symbol("useCallback");
+const USE_REF = Symbol("useRef");
 const USE_CONTEXT = Symbol("useContext");
 const USE_SUBSCRIBE = Symbol("useSubscribe");
 const USE_ID = Symbol("useId");
 const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
+
+export class RefClass {
+  constructor(current) {
+    this.current = current;
+  }
+
+  setCurrent(current) {
+    this.current = current;
+  }
+}
+
+function createRef(current = undefined) {
+  return new RefClass(current);
+}
 
 /**
  * 초기값 기준으로 새로운 값을 반환하는 함수를 만들어준다.
@@ -229,11 +245,11 @@ export class HookMachine extends MagicHandler {
     return [state, dispatch];
   }
 
-  useMemo(callback, deps) {
+  useMemo(callback, deps, useType = USE_MEMO) {
     const hasChangedDeps = this.isChangedDeps(deps);
 
     if (hasChangedDeps) {
-      this.setHook(USE_MEMO, {
+      this.setHook(useType, {
         deps,
         value: callback(),
       });
@@ -247,11 +263,11 @@ export class HookMachine extends MagicHandler {
   }
 
   useCallback(callback, deps) {
-    return this.useMemo(() => callback, deps);
+    return this.useMemo(() => callback, deps, USE_CALLBACK);
   }
 
   useRef(initialValue) {
-    return this.useMemo(() => ({ current: initialValue }), []);
+    return this.useMemo(() => createRef(initialValue), [], USE_REF);
   }
 
   refreshProvider(provider) {

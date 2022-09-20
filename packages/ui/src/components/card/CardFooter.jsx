@@ -3,6 +3,7 @@ import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Divider } from "../divider";
+import { Ghost } from "../ghost";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--card-footer", {
   textAlign: true,
@@ -10,16 +11,13 @@ const cssProperties = makeCssVariablePrefixMap("--elf--card-footer", {
 
 export class CardFooter extends UIElement {
   template() {
-    const {
-      style = {},
-
-      content,
-      ...extraProps
-    } = this.props;
+    const { style = {}, ghost = false, content, ...extraProps } = this.props;
 
     const localClass = useMemo(() => {
-      return classnames("elf--card-footer");
-    }, []);
+      return classnames("elf--card-footer", {
+        ghost,
+      });
+    }, [ghost]);
 
     const styleObject = {
       class: localClass,
@@ -35,7 +33,16 @@ export class CardFooter extends UIElement {
     return (
       <div {...styleObject}>
         <Divider margin={0} />
-        <div class="content-area">{content}</div>
+        <div class="content-area">
+          {ghost ? (
+            <div style={{ display: "flex", gap: 10 }}>
+              <Ghost animated />
+              <Ghost animated />
+            </div>
+          ) : (
+            content
+          )}
+        </div>
       </div>
     );
   }

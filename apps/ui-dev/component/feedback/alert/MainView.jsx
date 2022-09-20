@@ -1,5 +1,4 @@
 import EditFilled from "@elf-framework/icon/EditFilled";
-import InfoOutlined from "@elf-framework/icon/InfoOutlined";
 import { Alert, Flex, VBox } from "@elf-framework/ui";
 
 export function MainView() {

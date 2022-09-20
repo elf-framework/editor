@@ -23,7 +23,7 @@
     vertical-align: middle;
     accent-color: var(--elf--checkbox-active-color);
     font-size: var(--elf--checkbox-font-size);
-    justify-content: center;
+    justify-content: flex-start;
 
     &.small {
         --elf--checkbox-font-size: var(--font-size-small);

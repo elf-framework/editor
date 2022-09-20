@@ -114,8 +114,9 @@ export function MarkdownPage({ page: Page, filename, menu }) {
     if (child.nodeName?.startsWith("H")) {
       const text = child.makeText(" ");
       const id = child.makeText("-") + index;
-      child.props.id = encodeURIComponent(id);
-      child.tagProps.id = encodeURIComponent(id);
+      
+      // element 에 적용이 되기 위해서 memoizedProps 를 변경
+      child.memoizedProps.id = encodeURIComponent(id);
 
       const level = child.nodeName.replace("H", "");
 
@@ -153,7 +154,7 @@ export function MarkdownPage({ page: Page, filename, menu }) {
         <div class="content-container">
           <FileEditorLink filename={filename} />
           <div class="content-inner" ref="$inner">
-            <Page />
+            {template.children}
           </div>
           <Divider margin={100} />
           <LinkedPage menu={menu} />

@@ -33,8 +33,10 @@ export class Alert extends UIElement {
       shape = "rect",
       style = {},
       closable = false,
-      weak = false,
+      dismissable = false,
       delay = 0,
+      actions,
+      weak,
       icon,
       ...extrProps
     } = this.props;
@@ -55,8 +57,9 @@ export class Alert extends UIElement {
         hide,
         closable,
         [shape]: true,
+        dismissable,
       });
-    }, [variant, weak, hide, closable, shape]);
+    }, [variant, weak, hide, closable, shape, dismissable]);
 
     const styleObject = {
       class: localClass,
@@ -73,6 +76,9 @@ export class Alert extends UIElement {
     const titleIcon = title && icon ? icon : undefined;
     const contentIcon = content && icon && !title ? icon : undefined;
 
+    const titleActions = title && actions ? actions : undefined;
+    const contentActions = content && actions && !title ? actions : undefined;
+
     return (
       <div
         {...styleObject}
@@ -84,12 +90,18 @@ export class Alert extends UIElement {
       >
         {title ? (
           <div class="elf--alert-title">
-            {titleIcon} {title}
+            {titleIcon} <span>{title}</span>{" "}
+            {titleActions ? (
+              <div class="elf--alert-actions">{titleActions}</div>
+            ) : undefined}
           </div>
         ) : null}
         {content ? (
           <div class="elf--alert-content">
-            {contentIcon} {content}
+            {contentIcon} <span>{content}</span>{" "}
+            {contentActions ? (
+              <div class="elf--alert-actions">{contentActions}</div>
+            ) : undefined}
           </div>
         ) : null}
         {closable ? (

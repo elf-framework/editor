@@ -3,6 +3,8 @@
     --elf--avatar-background-image: none;
     --elf--avatar-border-radius: 50%;
     --elf--avatar-size: var(--avatar-size-400);
+    --elf--avatar-border-color: var(--elf--avatar-background-color);
+    --elf--avatar-border-size: 0px;
 
     background-color: var(--elf--avatar-background-color);
     background-image: var(--elf--avatar-background-image);
@@ -12,6 +14,8 @@
     height: var(--elf--avatar-size);
     border-radius: var(--elf--avatar-border-radius);
     overflow: hidden;
+    box-sizing: border-box;
+    border: var(--elf--avatar-border-size) solid var(--elf--avatar-border-color);
 
     &.square {
         --elf--avatar-border-radius: 4px;

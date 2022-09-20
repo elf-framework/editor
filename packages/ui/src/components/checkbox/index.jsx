@@ -59,7 +59,7 @@ export class Checkbox extends UIElement {
             }}
             onChange={(e) => onChange?.(e, value)}
           />
-          {content}
+          {content?.length ? <span class="text">{content}</span> : undefined}
         </label>
       </div>
     );

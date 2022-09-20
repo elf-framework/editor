@@ -19,8 +19,6 @@ export class CardHeader extends UIElement {
       ...extraProps
     } = this.props;
 
-    console.log(this.props);
-
     const localClass = useMemo(() => {
       return classnames("elf--card-header", {
         nowrap,
@@ -39,8 +37,6 @@ export class CardHeader extends UIElement {
       ),
       ...extraProps,
     };
-
-    console.log(ghost, nowrap, actions);
 
     return (
       <div {...styleObject}>

@@ -2557,10 +2557,23 @@ var __privateMethod = (obj, member, method) => {
   const USE_STATE = Symbol("useState");
   const USE_EFFECT = Symbol("useEffect");
   const USE_MEMO = Symbol("useMemo");
+  const USE_CALLBACK = Symbol("useCallback");
+  const USE_REF = Symbol("useRef");
   const USE_CONTEXT = Symbol("useContext");
   const USE_SUBSCRIBE = Symbol("useSubscribe");
   const USE_ID = Symbol("useId");
   const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
+  class RefClass {
+    constructor(current) {
+      this.current = current;
+    }
+    setCurrent(current) {
+      this.current = current;
+    }
+  }
+  function createRef(current = void 0) {
+    return new RefClass(current);
+  }
   function createState({ value, component }) {
     let localValue = { value, component };
     function getValue(v) {
@@ -2699,10 +2712,10 @@ var __privateMethod = (obj, member, method) => {
       }
       return [state, dispatch];
     }
-    useMemo(callback, deps) {
+    useMemo(callback, deps, useType = USE_MEMO) {
       const hasChangedDeps = this.isChangedDeps(deps);
       if (hasChangedDeps) {
-        this.setHook(USE_MEMO, {
+        this.setHook(useType, {
           deps,
           value: callback()
         });
@@ -2712,10 +2725,10 @@ var __privateMethod = (obj, member, method) => {
       return lastHookValue.value;
     }
     useCallback(callback, deps) {
-      return this.useMemo(() => callback, deps);
+      return this.useMemo(() => callback, deps, USE_CALLBACK);
     }
     useRef(initialValue) {
-      return this.useMemo(() => ({ current: initialValue }), []);
+      return this.useMemo(() => createRef(initialValue), [], USE_REF);
     }
     refreshProvider(provider) {
       const hookInfo = this.filterHooks(USE_CONTEXT).find(
@@ -3674,7 +3687,7 @@ var __privateMethod = (obj, member, method) => {
   let cacheCount = 0;
   let nativeDomCache = {};
   const EXPECT_ATTRIBUTES = {
-    tagProps: true,
+    memoizedProps: true,
     parentElement: true,
     el: true,
     children: true,
@@ -3878,7 +3891,7 @@ var __privateMethod = (obj, member, method) => {
       }
     }
     get stringifyStyle() {
-      return this.tagProps.style;
+      return this.memoizedProps.style;
     }
     initializeProps() {
       const newProps = Object.assign({}, this.props);
@@ -3890,7 +3903,7 @@ var __privateMethod = (obj, member, method) => {
           newProps.class = newProps.className;
           delete newProps.className;
         }
-        this.tagProps = newProps;
+        this.memoizedProps = newProps;
       }
       if (this.props.enableHtml) {
         this.enableHtml = this.props.enableHtml;
@@ -4036,11 +4049,14 @@ var __privateMethod = (obj, member, method) => {
     }
     makeElement(withChildren = false, options = {}) {
       const el = this.createElement();
-      let props = this.tagProps;
+      let props = this.memoizedProps;
       if (props) {
         if (props.ref) {
           this.getContextProps(options.context, props);
           this.ref = props.ref;
+          if (this.ref instanceof RefClass) {
+            this.ref.setCurrent(el);
+          }
           isFunction(options.registerRef) && options.registerRef(props.ref, el);
         }
         Object.keys(props).forEach((key) => {
@@ -4077,7 +4093,7 @@ var __privateMethod = (obj, member, method) => {
     }
     async makeHtml(withChildren = false, options = {}) {
       const tempProps = [];
-      const props = this.tagProps;
+      const props = this.memoizedProps;
       if (props) {
         if (props.ref) {
           this.getContextProps(options.context, props);
@@ -4264,7 +4280,10 @@ var __privateMethod = (obj, member, method) => {
       this.render(options);
       this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
       if (this.el) {
-        const id = this.props.ref || this.instance.id;
+        const id = isString(this.props.ref) ? this.props.ref : this.instance.id;
+        if (this.props.ref instanceof RefClass) {
+          this.props.ref.setCurrent(this.instance);
+        }
         isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
       }
       return this;

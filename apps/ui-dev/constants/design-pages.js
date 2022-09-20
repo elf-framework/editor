@@ -196,7 +196,7 @@ export default [
     link: COMPONENTS_URL + "patterns/",
     title: "Pattern",
     items: [
-      { link: COMPONENTS_URL + "patterns/card/", title: "Card *" },
+      { link: COMPONENTS_URL + "patterns/card/", title: "Card" },
       {
         link: COMPONENTS_URL + "patterns/form-errors/",
         title: "Form errors *",

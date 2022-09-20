@@ -1,5 +1,18 @@
 # ui-dev
 
+## 1.0.31
+
+### Patch Changes
+
+- update alert documentation
+
+## 1.0.30
+
+### Patch Changes
+
+- add card documentation
+  fixed table of content list
+
 ## 1.0.29
 
 ### Patch Changes

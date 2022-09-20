@@ -468,6 +468,8 @@ declare module "@elf-framework/sapa" {
   export function jsonToVNode(json: JSONType, options?: ConvertOptions): VNode;
 
   /** Hooks */
+  export function createRef<T>(initializeValue: T): RefObject<T>;
+
   export function useId(): string;
   export function useBatch(callback: () => void): void;
   export function useSyncExternalStore<T>(
@@ -495,10 +497,15 @@ declare module "@elf-framework/sapa" {
   export function useMemo<T>(callback: () => unknown, deps: unknown[]): T;
   export function useCallback<T>(callback: () => T, deps: unknown[]): () => T;
 
-  interface Ref<T> {
+  interface RefObject<T> {
     current: T;
   }
-  export function useRef<T>(initialValue: T): Ref<T>;
+  interface MutableRefObject<T> {
+    current: T;
+  }
+  export function useRef<T>(initialValue: T): MutableRefObject<T>;
+  export function useRef<T>(initialValue: T | null): RefObject<T>;
+  export function useRef<T = undefined>(): MutableRefObject<T | undefined>;
   export function useEmit(name: string, ...args: unknown[]): void;
   export function useTrigger(name: string, ...args: unknown[]): void;
 

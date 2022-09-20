@@ -8,6 +8,7 @@
   --elf--alert-title-color: var(--alert-color-title-default);
   --elf--alert-content-color: var(--alert-color-content-default);
   --elf--alert-border-radius: 0px;
+  --elf--alert-dismissable-color: var(--color-gray-4);
 
   // height: var(--elf--alert-height, 30px);
   padding: var(--elf--alert-padding);
@@ -20,6 +21,13 @@
 
   &.round {
     --elf--alert-border-radius: 6px;
+  }
+
+  &.dismissable {
+
+    --elf--alert-color: var(--elf--alert-dismissable-color) !important;
+    --elf--alert-title-color: var(--elf--alert-dismissable-color) !important;
+    --elf--alert-content-color: var(--elf--alert-dismissable-color) !important;
   }
 
   > .elf--alert-close {
@@ -52,8 +60,8 @@
 
   .elf--icon {
     svg {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -61,6 +69,28 @@
     color: var(--elf--alert-title-color);
     margin-bottom: 10px;
     font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    > * {
+      flex: 1 1 auto;
+    }
+
+
+    > .elf--icon {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      margin-right: 0.5em;
+    }
+
+    > .elf--alert-actions {
+      flex: none;
+    }
   }
 
   &.closable {
@@ -69,7 +99,24 @@
 
   > .elf--alert-content {
     color: var(--elf--alert-content-color);
-    display: block;
+    display: flex;
+
+    > * {
+      flex: 1 1 auto;
+    }
+
+    > .elf--icon {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;    
+      margin-right: 0.5em;        
+    }
+
+    > .elf--alert-actions {
+      flex: none;
+    }
 
     > *:last-child {
       margin-bottom: 0px;
