@@ -467,11 +467,11 @@
       }
     },
     "secondary": {
-      "value": "{color.gray.2}",
+      "value": "{color.gray.5}",
       "filePath": "tokens/color/brand.json",
       "isSource": true,
       "original": {
-        "value": "{color.gray.2}"
+        "value": "{color.gray.5}"
       },
       "attributes": {
         "category": "color",
@@ -838,12 +838,12 @@
     },
     "status": {
       "informative": {
-        "value": "{color.blue.7}",
+        "value": "{color.blue.6}",
         "comment": "e.g., active, in use, live, published",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.7}",
+          "value": "{color.blue.6}",
           "comment": "e.g., active, in use, live, published"
         },
         "attributes": {
@@ -4526,6 +4526,34 @@
     }
   },
   "button": {
+    "closable": {
+      "hover": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.white.1}",
+            "filePath": "tokens/component/button.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.transparent.white.1}"
+            },
+            "attributes": {
+              "category": "button",
+              "type": "closable",
+              "item": "hover",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": {
+              "0": "button",
+              "1": "closable",
+              "2": "hover",
+              "3": "background",
+              "4": "default"
+            }
+          }
+        }
+      }
+    },
     "hover": {
       "background": {
         "default": {
@@ -4761,15 +4789,35 @@
             "2": "background",
             "3": "danger"
           }
+        },
+        "dark": {
+          "value": "{color.black}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "dark"
+          }
         }
       },
       "border": {
         "default": {
-          "value": "{color.gray.3}",
+          "value": "{color.gray.2}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.3}"
+            "value": "{color.gray.2}"
           },
           "attributes": {
             "category": "button",

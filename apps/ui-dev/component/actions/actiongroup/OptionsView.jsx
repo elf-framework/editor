@@ -36,17 +36,13 @@ export function OptionsView() {
           <em>Vertical</em>
           <Grid columns={2} gap={20}>
             <ActionGroup direction="vertical" style={{ gap: 10, margin: 10 }}>
-              <div>
-                <Button>
-                  <DescriptionFilled />
-                  Document Setup
-                </Button>
-              </div>
-              <div>
-                <Button>
-                  <SettingsFilled /> Settings
-                </Button>
-              </div>
+              <Button>
+                <DescriptionFilled />
+                Document Setup
+              </Button>
+              <Button>
+                <SettingsFilled /> Settings
+              </Button>
             </ActionGroup>
             <ActionGroup
               direction="vertical"

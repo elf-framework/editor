@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 20 Sep 2022 12:32:30 GMT
+ * Generated on Wed, 21 Sep 2022 12:37:21 GMT
  */
 
 :root {
@@ -270,9 +270,10 @@
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
-  --button-color-border-default: var(--color-gray-3);
+  --button-color-border-default: var(--color-gray-2);
   --button-selected-background-default: var(--color-gray-2);
   --button-hover-background-default: var(--color-gray-1);
+  --button-closable-hover-background-default: var(--color-transparent-white-1);
   --alert-color-background-weak-success: var(--color-green-1); /* Base color for the success color */
   --alert-color-background-weak-warning: var(--color-orange-1); /* Base color for the warning color */
   --alert-color-background-weak-danger: var(--color-red-1); /* Base color for the danger color */
@@ -332,7 +333,7 @@
   --color-status-notice: var(--color-purple-6); /* e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing */
   --color-status-positive: var(--color-green-7); /* e.g., completed, finished, success, approved, verified, active, in use, live, published */
   --color-status-neutral: var(--color-gray-8); /* e.g., archived, deleted, paused, draft, not started, ended */
-  --color-status-informative: var(--color-blue-7); /* e.g., active, in use, live, published */
+  --color-status-informative: var(--color-blue-6); /* e.g., active, in use, live, published */
   --color-down-info: var(--color-blue-7);
   --color-down-warning: var(--color-orange-8);
   --color-down-danger: var(--color-red-8);
@@ -352,7 +353,7 @@
   --color-warning: var(--color-orange-2);
   --color-danger: var(--color-red-6);
   --color-success: var(--color-green-6);
-  --color-secondary: var(--color-gray-2);
+  --color-secondary: var(--color-gray-5);
   --color-primary: var(--color-blue-6);
   --color-default: var(--color-white);
   --color-border: var(--color-gray-2);
@@ -388,6 +389,7 @@
   --button-color-border-success: var(--color-success);
   --button-color-border-secondary: var(--color-secondary);
   --button-color-border-primary: var(--color-primary);
+  --button-color-background-dark: var(--color-black);
   --button-color-background-danger: var(--color-danger);
   --button-color-background-warning: var(--color-warning);
   --button-color-background-info: var(--color-info);

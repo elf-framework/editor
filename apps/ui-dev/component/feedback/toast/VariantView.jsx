@@ -1,5 +1,5 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, Grid, Toast, VBox } from "@elf-framework/ui";
+import { Grid, RoundButton, Toast, VBox } from "@elf-framework/ui";
 
 function Item({ variant }) {
   return (
@@ -8,13 +8,13 @@ function Item({ variant }) {
       direction="bottom-right"
       icon={<InfoOutlined />}
       tools={[
-        <Button
+        <RoundButton
+          place="toast"
           variant="outline"
-          shape="round"
           onClick={() => console.log("action")}
         >
           Action
-        </Button>,
+        </RoundButton>,
       ]}
       closable
     >

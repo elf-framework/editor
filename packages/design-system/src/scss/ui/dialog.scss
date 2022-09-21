@@ -2,9 +2,9 @@
     --elf--dialog-position: relative;
     --elf--dialog-width: 240px;
     --elf--dialog-background-color: white;
-    --elf--dialog-border-color: rgba(0, 0, 0, 0.2);
+    --elf--dialog-border-color: var(--color-gray-1);
     --elf--dialog-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
-    --elf--dialog-border-radius: 2px;
+    --elf--dialog-border-radius: 4px;
     --elf--dialog-padding: 20px;
 
     position: var(--elf--dialog-position);
@@ -18,9 +18,17 @@
 
     opacity: 0;
     transition: all 0.2s ease-in-out;
+    padding: 10px 0px;
 
     &.no-border {
         --elf--dialog-border-color: transparent;
+    }
+
+    > .elf--dialog-divider {
+        display: block;
+        height: 1px;
+        background-color: var(--elf--dialog-border-color);
+        margin: 10px var(--elf--dialog-padding);
     }
 
     &.visible {
@@ -34,19 +42,20 @@
     }
 
     > .elf--dialog-title {
-        height: 40px;
+        // height: 40px;
         display: flex;
         box-sizing: border-box;
-        border-bottom: 1px solid var(--elf--dialog-border-color);
+        // border-bottom: 1px solid var(--elf--dialog-border-color);
         // padding: 0px 16px 0px 16px;
         align-items: center;
+        padding: 10px var(--elf--dialog-padding);
+        // padding-bottom: 0px;
 
         > .elf--dialog-title-text {
             flex: 1 1 auto;
             display: flex;
             align-items: center;
             // justify-content: center;
-            padding-left: var(--elf--dialog-padding);
             font-weight: 600;
         }
 
@@ -72,7 +81,8 @@
     }
 
     > .elf--dialog-content {
-        padding: var(--elf--dialog-padding);
+        padding: 10px var(--elf--dialog-padding);
+        text-align: left;
 
         > * {
 
@@ -103,7 +113,7 @@
             }            
 
             > * {
-                min-width: 100px;
+                min-width: 60px;
             }
         }
     }

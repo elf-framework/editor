@@ -18,6 +18,7 @@ import {
   Grid,
   Menu,
   Popover,
+  RoundButton,
   VBox,
 } from "@elf-framework/ui";
 
@@ -273,9 +274,9 @@ export function OptionsView() {
             >
               <div>Created by</div>
               <div>
-                <Button shape="round" outline variant="primary">
+                <RoundButton outline variant="primary">
                   Open Tools
-                </Button>
+                </RoundButton>
               </div>
             </div>
           </CardFooter>

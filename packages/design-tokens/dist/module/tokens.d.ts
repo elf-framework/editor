@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 20 Sep 2022 12:32:30 GMT
+ * Generated on Wed, 21 Sep 2022 12:37:21 GMT
  */
 
 export default tokens;
@@ -314,6 +314,13 @@ declare const tokens: {
     }
   },
   "button": {
+    "closable": {
+      "hover": {
+        "background": {
+          "default": DesignToken
+        }
+      }
+    },
     "hover": {
       "background": {
         "default": DesignToken
@@ -340,7 +347,8 @@ declare const tokens: {
         "success": DesignToken,
         "info": DesignToken,
         "warning": DesignToken,
-        "danger": DesignToken
+        "danger": DesignToken,
+        "dark": DesignToken
       },
       "border": {
         "default": DesignToken,

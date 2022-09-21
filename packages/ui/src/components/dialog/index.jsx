@@ -65,10 +65,15 @@ export class Dialog extends UIElement {
 
     if (!footer) {
       return [
-        <Button {...cancelProps} onClick={() => this.cancel()}>
+        <Button shape="round" {...cancelProps} onClick={() => this.cancel()}>
           {cancelText}
         </Button>,
-        <Button variant="primary" {...okProps} onClick={() => this.ok()}>
+        <Button
+          shape="round"
+          variant="primary"
+          {...okProps}
+          onClick={() => this.ok()}
+        >
           {okText}
         </Button>,
       ];
@@ -79,7 +84,7 @@ export class Dialog extends UIElement {
 
   template() {
     const { style = {}, visible, center } = this.state;
-    const { noBorder } = this.props;
+    const { noBorder, title, closable = true, footer } = this.props;
     const styleObject = {
       class: classnames("elf--dialog", {
         visible,
@@ -94,22 +99,27 @@ export class Dialog extends UIElement {
     return (
       <div {...styleObject}>
         <div class="elf--dialog-title">
-          <div class="elf--dialog-title-text">Dialog</div>
-          <div class="elf--dialog-title-tools" ref="$tools">
-            {this.props.tools || undefined}
-          </div>
-          <div
-            class="elf--dialog-title-close"
-            ref="$close"
-            onClick={() => this.close()}
-          >
-            &times;
-          </div>
+          <div class="elf--dialog-title-text">{title}</div>
+          {this.props.tools ? (
+            <div class="elf--dialog-title-tools" ref="$tools">
+              {this.props.tools}
+            </div>
+          ) : undefined}
+          {closable ? (
+            <div
+              class="elf--dialog-title-close"
+              ref="$close"
+              onClick={() => this.close()}
+            >
+              &times;
+            </div>
+          ) : undefined}
         </div>
+        {noBorder ? undefined : <div class="elf--dialog-divider" />}
         <div class="elf--dialog-content">
           <div class="elf--dialog-text">{this.props.content || ""}</div>
           <div class="elf--dialog-content-tools">
-            {this.props.footer ? this.props.footer : this.makeDefaultTools()}
+            {footer ? footer : this.makeDefaultTools()}
           </div>
         </div>
       </div>

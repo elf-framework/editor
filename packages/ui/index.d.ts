@@ -265,6 +265,18 @@ declare module "@elf-framework/ui" {
     props: ButtonProps & CommonStyle;
   }
 
+  export class RoundButton extends UIElement {
+    props: ButtonProps & CommonStyle;
+  }
+
+  export class IconButton extends UIElement {
+    props: ButtonProps & CommonStyle;
+  }
+
+  export class OutlineButton extends UIElement {
+    props: ButtonProps & CommonStyle;
+  }
+
   interface ButtonGroupProps {
     content?: Button[];
     disabled?: boolean;
@@ -294,12 +306,6 @@ declare module "@elf-framework/ui" {
 
   export class LinkButton extends UIElement {
     props: LinkButtonProps & CommonStyle;
-  }
-
-  export class IconButton extends Button {
-    props: ButtonProps & {
-      icon: string;
-    } & CommonStyle;
   }
 
   /** menu */
@@ -431,6 +437,8 @@ declare module "@elf-framework/ui" {
     cancelText?: ContentType;
     okProps?: ButtonProps;
     cancelProps?: ButtonProps;
+    title?: ContentType;
+    closable?: boolean;
     onOk: (event: Dialog) => void;
     onCancel: (event: Dialog) => void;
     onClose: (event: Dialog) => void;

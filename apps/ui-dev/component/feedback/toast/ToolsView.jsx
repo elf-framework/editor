@@ -1,4 +1,4 @@
-import { Button, Grid, Toast, VBox } from "@elf-framework/ui";
+import { Grid, RoundButton, Toast, VBox } from "@elf-framework/ui";
 
 export function ToolsView() {
   return (
@@ -14,9 +14,9 @@ export function ToolsView() {
           <Toast
             direction="bottom-right"
             tools={[
-              <Button variant="outline" shape="round">
+              <RoundButton place="toast" variant="outline">
                 Action
-              </Button>,
+              </RoundButton>,
             ]}
           >
             Hello World yellow 234

@@ -1,4 +1,4 @@
-import { Alert, Button, Grid, VBox } from "@elf-framework/ui";
+import { Alert, Button, Grid, RoundButton, VBox } from "@elf-framework/ui";
 
 export function TextOverflowView() {
   return (
@@ -20,9 +20,9 @@ export function TextOverflowView() {
           <Alert variant="dark" closable>
             Your trial has expired. Please purchase to continue.
             <div style={{ textAlign: "right" }}>
-              <Button outline variant="dark" shape="round" place="toast">
+              <RoundButton outline variant="dark" place="toast">
                 Update
-              </Button>
+              </RoundButton>
             </div>
           </Alert>
         </div>

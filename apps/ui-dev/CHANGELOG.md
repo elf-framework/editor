@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.32
+
+### Patch Changes
+
+- add Dialog, Button documentation
+
 ## 1.0.31
 
 ### Patch Changes

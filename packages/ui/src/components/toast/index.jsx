@@ -11,6 +11,7 @@ import {
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
+import { Button } from "../button";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--toast", {
   backgroundColor: true,
@@ -93,8 +94,21 @@ export class Toast extends UIElement {
         </div>
         <div class="tools">{this.props.tools || []}</div>
         {closable ? (
-          <div class="close" onClick={() => this.hide()}>
-            &times;
+          <div class="close-area">
+            <Button
+              size="small"
+              style={{
+                // border: "1px solid white",
+                // width: 42,
+                color: "var(--color-white)",
+                fontSize: "20px !important",
+              }}
+              quiet
+              closable
+              onClick={() => this.hide()}
+            >
+              &times;
+            </Button>
           </div>
         ) : undefined}
       </div>

@@ -30,10 +30,13 @@ export class Button extends UIElement {
       shape = "rect",
       quiet = false,
       outline = false,
+      closable = false,
       place = "",
       style = {},
       onClick,
       content,
+      class: className,
+      iconOnly = false,
       ...extraStyle
     } = this.props;
 
@@ -46,13 +49,27 @@ export class Button extends UIElement {
           selected,
           outline,
           quiet,
+          closable,
           [variant]: true,
           [size]: true,
           [shape]: true,
           [place]: true,
+          "icon-only": iconOnly,
         },
+        className,
       ]);
-    }, [variant, size, selected, shape, quiet, outline, place]);
+    }, [
+      variant,
+      size,
+      selected,
+      shape,
+      quiet,
+      outline,
+      place,
+      closable,
+      iconOnly,
+      className,
+    ]);
 
     const styleObject = {
       class: localClass,

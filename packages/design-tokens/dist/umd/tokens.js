@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 20 Sep 2022 12:32:30 GMT
+ * Generated on Wed, 21 Sep 2022 12:37:21 GMT
  */
 
 (function(root, factory) {
@@ -503,11 +503,11 @@
       ]
     },
     "secondary": {
-      "value": "#d9e0e6",
+      "value": "#818e9a",
       "filePath": "tokens/color/brand.json",
       "isSource": true,
       "original": {
-        "value": "{color.gray.2.value}"
+        "value": "{color.gray.5.value}"
       },
       "name": "ColorSecondary",
       "attributes": {
@@ -895,12 +895,12 @@
     },
     "status": {
       "informative": {
-        "value": "#0060cc",
+        "value": "#1273e6",
         "comment": "e.g., active, in use, live, published",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.7.value}",
+          "value": "{color.blue.6.value}",
           "comment": "e.g., active, in use, live, published"
         },
         "name": "ColorStatusInformative",
@@ -4319,7 +4319,7 @@
           ]
         },
         "secondary": {
-          "value": "#d9e0e6",
+          "value": "#818e9a",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
@@ -4773,6 +4773,35 @@
     }
   },
   "button": {
+    "closable": {
+      "hover": {
+        "background": {
+          "default": {
+            "value": "#ffffff",
+            "filePath": "tokens/component/button.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.transparent.white.1.value}"
+            },
+            "name": "ButtonClosableHoverBackgroundDefault",
+            "attributes": {
+              "category": "button",
+              "type": "closable",
+              "item": "hover",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "button",
+              "closable",
+              "hover",
+              "background",
+              "default"
+            ]
+          }
+        }
+      }
+    },
     "hover": {
       "background": {
         "default": {
@@ -4916,7 +4945,7 @@
           ]
         },
         "secondary": {
-          "value": "#d9e0e6",
+          "value": "#818e9a",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
@@ -5019,15 +5048,36 @@
             "background",
             "danger"
           ]
+        },
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonColorBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "dark"
+          ]
         }
       },
       "border": {
         "default": {
-          "value": "#c5ced6",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.3.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonColorBorderDefault",
           "attributes": {
@@ -5065,7 +5115,7 @@
           ]
         },
         "secondary": {
-          "value": "#d9e0e6",
+          "value": "#818e9a",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
@@ -5285,7 +5335,7 @@
           ]
         },
         "secondary": {
-          "value": "#d9e0e6",
+          "value": "#818e9a",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {

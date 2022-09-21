@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 20 Sep 2022 12:32:31 GMT
+ * Generated on Wed, 21 Sep 2022 12:37:22 GMT
  */
 
 
@@ -42,8 +42,8 @@
 .color-primary { color: #1273e6; }
 .background-color-primary { background-color: #1273e6; }
 
-.color-secondary { color: #d9e0e6; }
-.background-color-secondary { background-color: #d9e0e6; }
+.color-secondary { color: #818e9a; }
+.background-color-secondary { background-color: #818e9a; }
 
 .color-success { color: #009f6a; }
 .background-color-success { background-color: #009f6a; }
@@ -105,8 +105,8 @@
 .color-down-info { color: #0060cc; }
 .background-color-down-info { background-color: #0060cc; }
 
-.color-status-informative { color: #0060cc; }
-.background-color-status-informative { background-color: #0060cc; }
+.color-status-informative { color: #1273e6; }
+.background-color-status-informative { background-color: #1273e6; }
 
 .color-status-neutral { color: #39444d; }
 .background-color-status-neutral { background-color: #39444d; }

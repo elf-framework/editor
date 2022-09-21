@@ -443,7 +443,7 @@ var __privateMethod = (obj, member, method) => {
     });
     return { style: style2, noneStyle };
   }
-  const cssProperties$T = makeCssVariablePrefixMap("--elf--alert", {
+  const cssProperties$S = makeCssVariablePrefixMap("--elf--alert", {
     borderColor: true,
     backgroundColor: true,
     selectedBackgroundColor: true,
@@ -492,7 +492,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$T),
+          ...propertyMap(style2, cssProperties$S),
           ...{
             transition: `opacity ${localDelay}ms ease-in-out`,
             opacity: hide ? 0 : 1
@@ -555,7 +555,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("Alert", Alert);
   registerComponent("alert", Alert);
-  const cssProperties$S = makeCssVariablePrefixMap("--elf--button", {
+  const cssProperties$R = makeCssVariablePrefixMap("--elf--button", {
     borderColor: true,
     backgroundColor: true,
     selectedBackgroundColor: true,
@@ -577,10 +577,13 @@ var __privateMethod = (obj, member, method) => {
         shape = "rect",
         quiet = false,
         outline = false,
+        closable = false,
         place = "",
         style: style2 = {},
         onClick,
         content,
+        class: className,
+        iconOnly = false,
         ...extraStyle
       } = this.props;
       const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
@@ -591,13 +594,27 @@ var __privateMethod = (obj, member, method) => {
             selected,
             outline,
             quiet,
+            closable,
             [variant]: true,
             [size]: true,
             [shape]: true,
-            [place]: true
-          }
+            [place]: true,
+            "icon-only": iconOnly
+          },
+          className
         ]);
-      }, [variant, size, selected, shape, quiet, outline, place]);
+      }, [
+        variant,
+        size,
+        selected,
+        shape,
+        quiet,
+        outline,
+        place,
+        closable,
+        iconOnly,
+        className
+      ]);
       const styleObject = {
         class: localClass,
         disabled: disabled ? "disabled" : void 0,
@@ -606,7 +623,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$S
+          cssProperties$R
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("button", {
@@ -618,7 +635,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("button", Button);
   registerComponent("btn", Button);
   registerComponent("Button", Button);
-  const cssProperties$R = makeCssVariablePrefixMap("--elf--button-group", {
+  const cssProperties$Q = makeCssVariablePrefixMap("--elf--button-group", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -638,7 +655,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$R
+          cssProperties$Q
         )
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
@@ -649,7 +666,7 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("button-group", ButtonGroup);
   registerComponent("btn-group", ButtonGroup);
   registerComponent("ButtonGroup", ButtonGroup);
-  const cssProperties$Q = makeCssVariablePrefixMap("--elf--tooltip", {
+  const cssProperties$P = makeCssVariablePrefixMap("--elf--tooltip", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -707,7 +724,7 @@ var __privateMethod = (obj, member, method) => {
       }, [placement, animated, variant, position]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$Q)
+        style: propertyMap(style2, cssProperties$P)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
@@ -804,13 +821,9 @@ var __privateMethod = (obj, member, method) => {
       options
     );
   }
-  const cssProperties$P = makeCssVariablePrefixMap("--elf--action-group", {
-    backgroundColor: true,
-    color: true,
-    height: true,
-    hoverColor: true,
-    borderColor: true,
-    boxShadow: true
+  const cssProperties$O = makeCssVariablePrefixMap("--elf--action-group", {
+    alignItems: true,
+    gap: true
   });
   class ActionGroup extends sapa.UIElement {
     template() {
@@ -878,7 +891,7 @@ var __privateMethod = (obj, member, method) => {
             ...style2,
             ...styleProperties
           },
-          cssProperties$P
+          cssProperties$O
         )
       };
       const items = collapsed ? content.filter((item, index) => {
@@ -900,7 +913,28 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("action-group", ActionGroup);
   registerComponent("ActionGroup", ActionGroup);
-  const cssProperties$O = makeCssVariablePrefixMap("--elf--link-button", {
+  function RoundButton({ content, ...props }) {
+    return /* @__PURE__ */ sapa.createElementJsx(Button, {
+      ...props,
+      shape: "round"
+    }, content);
+  }
+  function OutlineButton({ content, ...props }) {
+    return /* @__PURE__ */ sapa.createElementJsx(Button, {
+      ...props,
+      outline: true
+    }, content);
+  }
+  function IconButton({ content, ...props }) {
+    return /* @__PURE__ */ sapa.createElementJsx(RoundButton, {
+      ...props,
+      iconOnly: true
+    }, content);
+  }
+  registerComponent("icon-button", IconButton);
+  registerComponent("iconbutton", IconButton);
+  registerComponent("IconButton", IconButton);
+  const cssProperties$N = makeCssVariablePrefixMap("--elf--link-button", {
     borderColor: true,
     backgroundColor: true,
     disabledColor: true,
@@ -916,7 +950,7 @@ var __privateMethod = (obj, member, method) => {
         class: "elf--link-button",
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$O)
+          ...propertyMap(style2, cssProperties$N)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("a", {
@@ -929,58 +963,6 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("link-button", LinkButton);
   registerComponent("linkbutton", LinkButton);
   registerComponent("LinkButton", LinkButton);
-  const cssProperties$N = {
-    borderColor: "--elf--icon-button-border-color",
-    backgroundColor: "--elf--icon-button-background",
-    disabledColor: "--elf--icon-button-disabled-color",
-    color: "--elf--icon-button-color",
-    fontSize: "--elf--icon-button-font-size",
-    fontWeight: "--elf--icon-button-font-weight",
-    height: "--elf--icon-button-height",
-    padding: "--elf--icon-button-padding",
-    borderRadius: "--elf--icon-button-border-radius"
-  };
-  class IconButton extends sapa.UIElement {
-    template() {
-      console.warn("deprecated: use Button instead");
-      const {
-        type,
-        icon,
-        content = "",
-        size,
-        disabled,
-        shape,
-        style: style2 = {}
-      } = this.props;
-      const styleObject = {
-        class: sapa.classnames([
-          "elf--icon-button",
-          {
-            primary: type === "primary",
-            secondary: type === "secondary",
-            outline: type === "outline"
-          },
-          {
-            "elf--icon-button-lg": size === "large",
-            "elf--icon-button-sm": size === "small"
-          },
-          {
-            "elf--icon-button-shape-circle": shape === "circle",
-            "elf--icon-button-shape-round": shape === "round"
-          }
-        ]),
-        disabled: disabled ? "disabled" : void 0,
-        style: {
-          ...propertyMap(style2, cssProperties$N)
-        }
-      };
-      return /* @__PURE__ */ sapa.createElementJsx("button", {
-        type: "button",
-        ...styleObject,
-        onClick: this.props.onClick
-      }, icon || content || "");
-    }
-  }
   const cssProperties$M = {
     borderColor: "--elf--button-border-color",
     backgroundColor: "--elf--button-background-color",
@@ -1790,10 +1772,12 @@ var __privateMethod = (obj, member, method) => {
       if (!footer) {
         return [
           /* @__PURE__ */ sapa.createElementJsx(Button, {
+            shape: "round",
             ...cancelProps,
             onClick: () => this.cancel()
           }, cancelText),
           /* @__PURE__ */ sapa.createElementJsx(Button, {
+            shape: "round",
             variant: "primary",
             ...okProps,
             onClick: () => this.ok()
@@ -1804,7 +1788,7 @@ var __privateMethod = (obj, member, method) => {
     }
     template() {
       const { style: style2 = {}, visible, center } = this.state;
-      const { noBorder } = this.props;
+      const { noBorder, title, closable = true, footer } = this.props;
       const styleObject = {
         class: sapa.classnames("elf--dialog", {
           visible,
@@ -1821,20 +1805,22 @@ var __privateMethod = (obj, member, method) => {
         class: "elf--dialog-title"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--dialog-title-text"
-      }, "Dialog"), /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, title), this.props.tools ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--dialog-title-tools",
         ref: "$tools"
-      }, this.props.tools || void 0), /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, this.props.tools) : void 0, closable ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--dialog-title-close",
         ref: "$close",
         onClick: () => this.close()
-      }, "\xD7")), /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, "\xD7") : void 0), noBorder ? void 0 : /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "elf--dialog-divider"
+      }), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--dialog-content"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--dialog-text"
       }, this.props.content || ""), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "elf--dialog-content-tools"
-      }, this.props.footer ? this.props.footer : this.makeDefaultTools())));
+      }, footer ? footer : this.makeDefaultTools())));
     }
   }
   registerComponent("dialog", Dialog);
@@ -2442,9 +2428,17 @@ var __privateMethod = (obj, member, method) => {
       }, content)), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "tools"
       }, this.props.tools || []), closable ? /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "close",
+        class: "close-area"
+      }, /* @__PURE__ */ sapa.createElementJsx(Button, {
+        size: "small",
+        style: {
+          color: "var(--color-white)",
+          fontSize: "20px !important"
+        },
+        quiet: true,
+        closable: true,
         onClick: () => this.hide()
-      }, "\xD7") : void 0);
+      }, "\xD7")) : void 0);
     }
     hide(hideDelay = 0) {
       var _a;
@@ -5068,11 +5062,6 @@ var __privateMethod = (obj, member, method) => {
       autoFocus
     });
   }
-  function ToggleButtonItem({ item }) {
-    return /* @__PURE__ */ sapa.createElementJsx(IconButton, {
-      onChange: item.onChange
-    }, item.icon);
-  }
   const cssProperties$n = makeCssVariablePrefixMap("--elf--data-editor", {
     backgroundColor: true,
     color: true,
@@ -5086,8 +5075,7 @@ var __privateMethod = (obj, member, method) => {
     text: TextInputItem,
     grid: GridItem,
     button: ButtonItem,
-    color: ColorItem,
-    "toggle-button": ToggleButtonItem
+    color: ColorItem
   };
   class DataEditor extends sapa.UIElement {
     initState() {
@@ -6989,6 +6977,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.Notification = Notification;
   exports2.OptionMenu = OptionMenu;
   exports2.OptionStrip = OptionStrip;
+  exports2.OutlineButton = OutlineButton;
   exports2.Panel = Panel;
   exports2.Popover = Popover;
   exports2.ProgressBar = ProgressBar;
@@ -6996,6 +6985,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.RGBColorEditor = RGBColorEditor;
   exports2.Radio = Radio;
   exports2.RadioGroup = RadioGroup;
+  exports2.RoundButton = RoundButton;
   exports2.Slider = Slider;
   exports2.Switch = Switch;
   exports2.Tab = Tab;

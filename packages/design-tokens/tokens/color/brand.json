@@ -7,7 +7,7 @@
       "value": "{color.blue.6.value}"
     },
     "secondary": {
-      "value": "{color.gray.2.value}"
+      "value": "{color.gray.5.value}"
     },
     "success": {
       "value": "{color.green.6.value}"
@@ -75,7 +75,7 @@
     },
     "status": {
       "informative": {
-        "value": "{color.blue.7.value}",
+        "value": "{color.blue.6.value}",
         "comment": "e.g., active, in use, live, published"
       },
       "neutral": {

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 20 Sep 2022 12:32:30 GMT
+ * Generated on Wed, 21 Sep 2022 12:37:21 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -23,7 +23,7 @@ export const ColorBackgroundWeakInfo = "#e8f3ff"; // Weak color for the info col
 export const ColorBorder = "#d9e0e6";
 export const ColorDefault = "#ffffff";
 export const ColorPrimary = "#1273e6";
-export const ColorSecondary = "#d9e0e6";
+export const ColorSecondary = "#818e9a";
 export const ColorSuccess = "#009f6a";
 export const ColorDanger = "#d9363e";
 export const ColorWarning = "#ffb77c";
@@ -44,7 +44,7 @@ export const ColorDownSuccess = "#1b5441";
 export const ColorDownDanger = "#80252a";
 export const ColorDownWarning = "#5c2200";
 export const ColorDownInfo = "#0060cc";
-export const ColorStatusInformative = "#0060cc"; // e.g., active, in use, live, published
+export const ColorStatusInformative = "#1273e6"; // e.g., active, in use, live, published
 export const ColorStatusNeutral = "#39444d"; // e.g., archived, deleted, paused, draft, not started, ended
 export const ColorStatusPositive = "#067852"; // e.g., completed, finished, success, approved, verified, active, in use, live, published
 export const ColorStatusNotice = "#8c40ff"; // e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing
@@ -213,7 +213,7 @@ export const AlertColorContentWeakInfo = "#429bff"; // Base color for the info c
 export const AlertColorBackgroundDefault = "#ebf0f5";
 export const AlertColorBackgroundDark = "#2c353d";
 export const AlertColorBackgroundPrimary = "#1273e6";
-export const AlertColorBackgroundSecondary = "#d9e0e6";
+export const AlertColorBackgroundSecondary = "#818e9a";
 export const AlertColorBackgroundSuccess = "#009f6a";
 export const AlertColorBackgroundInfo = "#abd2ff";
 export const AlertColorBackgroundWarning = "#ffb77c";
@@ -234,20 +234,22 @@ export const AvatarSize400 = "45px";
 export const AvatarSize500 = "50px";
 export const AvatarSize600 = "55px";
 export const AvatarSize700 = "60px";
+export const ButtonClosableHoverBackgroundDefault = "#ffffff";
 export const ButtonHoverBackgroundDefault = "#ebf0f5";
 export const ButtonSelectedBackgroundDefault = "#d9e0e6";
 export const ButtonDisabledBackgroundDefault = "#e6e6e6";
 export const ButtonDisabledTextDefault = "#b1b1b1";
 export const ButtonColorBackgroundDefault = "#ffffff";
 export const ButtonColorBackgroundPrimary = "#1273e6";
-export const ButtonColorBackgroundSecondary = "#d9e0e6";
+export const ButtonColorBackgroundSecondary = "#818e9a";
 export const ButtonColorBackgroundSuccess = "#009f6a";
 export const ButtonColorBackgroundInfo = "#abd2ff";
 export const ButtonColorBackgroundWarning = "#ffb77c";
 export const ButtonColorBackgroundDanger = "#d9363e";
-export const ButtonColorBorderDefault = "#c5ced6";
+export const ButtonColorBackgroundDark = "#2c353d";
+export const ButtonColorBorderDefault = "#d9e0e6";
 export const ButtonColorBorderPrimary = "#1273e6";
-export const ButtonColorBorderSecondary = "#d9e0e6";
+export const ButtonColorBorderSecondary = "#818e9a";
 export const ButtonColorBorderSuccess = "#009f6a";
 export const ButtonColorBorderInfo = "#abd2ff";
 export const ButtonColorBorderWarning = "#ffb77c";
@@ -257,7 +259,7 @@ export const ButtonSizePaddingMedium = "8rem 10rem";
 export const ButtonSizePaddingLarge = "14rem 20rem";
 export const DividerColorBorderDefault = "#d9e0e6";
 export const DividerColorBorderPrimary = "#1273e6";
-export const DividerColorBorderSecondary = "#d9e0e6";
+export const DividerColorBorderSecondary = "#818e9a";
 export const DividerColorBorderSuccess = "#009f6a";
 export const DividerColorBorderInfo = "#abd2ff";
 export const DividerColorBorderWarning = "#ffb77c";

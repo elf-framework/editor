@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 20 Sep 2022 12:32:30 GMT
+ * Generated on Wed, 21 Sep 2022 12:37:21 GMT
  */
 
 export const ImageLogo : string;
@@ -234,6 +234,7 @@ export const AvatarSize400 : string;
 export const AvatarSize500 : string;
 export const AvatarSize600 : string;
 export const AvatarSize700 : string;
+export const ButtonClosableHoverBackgroundDefault : string;
 export const ButtonHoverBackgroundDefault : string;
 export const ButtonSelectedBackgroundDefault : string;
 export const ButtonDisabledBackgroundDefault : string;
@@ -245,6 +246,7 @@ export const ButtonColorBackgroundSuccess : string;
 export const ButtonColorBackgroundInfo : string;
 export const ButtonColorBackgroundWarning : string;
 export const ButtonColorBackgroundDanger : string;
+export const ButtonColorBackgroundDark : string;
 export const ButtonColorBorderDefault : string;
 export const ButtonColorBorderPrimary : string;
 export const ButtonColorBorderSecondary : string;

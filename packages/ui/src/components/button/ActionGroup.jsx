@@ -17,12 +17,8 @@ import { Tooltip, TooltipPlacement } from "../tooltip";
 import { Button } from ".";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--action-group", {
-  backgroundColor: true,
-  color: true,
-  height: true,
-  hoverColor: true,
-  borderColor: true,
-  boxShadow: true,
+  alignItems: true,
+  gap: true,
 });
 
 export class ActionGroup extends UIElement {

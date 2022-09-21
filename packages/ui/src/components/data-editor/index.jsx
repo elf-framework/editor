@@ -8,7 +8,6 @@ import {
   GridItem,
   TextInputItem,
   TitleItem,
-  ToggleButtonItem,
 } from "./editor-items";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--data-editor", {
@@ -26,7 +25,6 @@ const predefinedPlugins = {
   grid: GridItem,
   button: ButtonItem,
   color: ColorItem,
-  "toggle-button": ToggleButtonItem,
 };
 
 export class DataEditor extends UIElement {

@@ -1,9 +1,5 @@
 import { Dialog, VBox } from "@elf-framework/ui";
 
-function AlertDialog(props) {
-  return <Dialog {...props} noBorder />;
-}
-
 export function MainView() {
   return (
     <VBox
@@ -21,18 +17,20 @@ export function MainView() {
           position: "relative",
         }}
       >
-        <AlertDialog
+        <Dialog
           visible={true}
           style={{
             width: 400,
           }}
+          noBorder
+          title="Dialog"
         >
           <div>
             The following typefaces are not available. Please either install
             these on your computer or in Figma. Alternatively you can replace
             them with other fonts.
           </div>
-        </AlertDialog>
+        </Dialog>
       </div>
     </VBox>
   );

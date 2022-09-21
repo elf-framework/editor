@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.1.49
+
+### Patch Changes
+
+- add RoundButton, IconButton, OutlineButton component
+  update Dialog component
+- Updated dependencies []:
+  - @elf-framework/design-system@2.1.49
+
 ## 2.1.48
 
 ### Patch Changes

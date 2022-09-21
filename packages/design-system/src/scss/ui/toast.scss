@@ -21,6 +21,7 @@
     padding: var(--elf--toast-padding);
     box-sizing: border-box;
     height: var(--elf--toast-height);
+    justify-content: flex-start;
 
     &.primary {
         --elf--toast-background-color: var(--color-primary);
@@ -138,7 +139,7 @@
 
     }
 
-    > .close {
+    > .close-area {
         flex: none;
         display: flex;
         align-items: center;
@@ -148,6 +149,7 @@
         cursor: pointer;
         margin-left: 10px;
         border-left: 1px solid var(--elf--toast-tools-border-color);    
+
     }
 
     > .icon {

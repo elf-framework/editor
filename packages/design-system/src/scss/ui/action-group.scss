@@ -1,7 +1,11 @@
 .elf--action-group {
+    --elf--action-group-gap: 10px;
+    --elf--action-group-align-items: flex-start;
+
     display: flex;
 
     flex-wrap: wrap;
+    gap: var(--elf--action-group-gap);
 
     &.collapsed {
         flex-wrap: nowrap;
@@ -13,6 +17,7 @@
 
     &.vertical {
         flex-direction: column;
+        align-items: var(--elf--action-group-align-items);
     }
 
     &.compact {

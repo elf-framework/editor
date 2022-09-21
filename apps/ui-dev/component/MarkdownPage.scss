@@ -64,4 +64,45 @@
 
     }
 
+    .link {
+        background-color: var(--color-white);
+        padding: var(--padding-size-medium);
+        text-align: left;
+
+        .category {
+            color: var(--color-gray-6);
+            display: block;
+        }
+
+        .title {
+            color: var(--color-blue-7);
+        }
+
+        &.prev {
+
+            .title {
+                &::before {
+                    content: "« ";
+                }
+            }
+
+        }
+
+        &.next {
+            text-align: right;
+
+
+            .title {
+                &::after{
+                    content: " »";
+                }
+            }
+
+        }
+
+        border: 2px solid var(--color-blue-5);
+        border-Radius: 4px;
+        box-Sizing: border-box;
+    }
+
 }

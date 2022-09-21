@@ -26,33 +26,12 @@ function FileEditorLink({ filename }) {
 
 function LinkView({ class: className, link, title, category }) {
   return (
-    <a
-      href={link}
-      class={classnames("link", className)}
-      style={{
-        backgroundColor: `var(--color-white)`,
-        padding: `var(--padding-size-large)`,
-        textAlign: className === "next" ? "right" : "left",
-        alignItems: "center",
-        justifyContent: className === "next" ? "flex-end" : "flex-start",
-        border: `2px solid var(--color-blue-5)`,
-        borderRadius: "4px",
-        boxSizing: "border-box",
-      }}
-    >
+    <a href={link} class={classnames("link", className)}>
       {category ? (
-        <small style={{ display: "block", color: `var(--color-gray-5)` }}>
-          {category || <span>&nbsp;</span>}
-        </small>
+        <small class="category">{category || <span>&nbsp;</span>}</small>
       ) : undefined}
 
-      <span
-        style={{
-          color: `var(--color-blue-7)`,
-        }}
-      >
-        {title}
-      </span>
+      <span class="title">{title}</span>
     </a>
   );
 }
@@ -114,7 +93,7 @@ export function MarkdownPage({ page: Page, filename, menu }) {
     if (child.nodeName?.startsWith("H")) {
       const text = child.makeText(" ");
       const id = child.makeText("-") + index;
-      
+
       // element 에 적용이 되기 위해서 memoizedProps 를 변경
       child.memoizedProps.id = encodeURIComponent(id);
 

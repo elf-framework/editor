@@ -30,12 +30,16 @@ export default [
     title: "Actions",
     items: [
       {
-        link: COMPONENTS_URL + "actions/toolbar/",
-        title: "Toolbar",
+        link: COMPONENTS_URL + "actions/button/",
+        title: "Button",
       },
       {
         link: COMPONENTS_URL + "actions/actiongroup/",
         title: "Action Group",
+      },
+      {
+        link: COMPONENTS_URL + "actions/toolbar/",
+        title: "Toolbar",
       },
       {
         link: COMPONENTS_URL + "actions/menu/",

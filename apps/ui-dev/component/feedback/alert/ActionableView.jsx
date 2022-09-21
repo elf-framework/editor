@@ -1,4 +1,4 @@
-import { Alert, Grid, VBox, Button } from "@elf-framework/ui";
+import { Alert, Grid, VBox, Button, RoundButton } from "@elf-framework/ui";
 
 export function ActionableView() {
   return (
@@ -21,9 +21,9 @@ export function ActionableView() {
             variant="dark"
             closable
             actions={
-              <Button outline shape="round" place="toast">
+              <RoundButton outline place="toast">
                 open
-              </Button>
+              </RoundButton>
             }
           >
             Your trial has expired. Please purchase to continue.
@@ -33,9 +33,9 @@ export function ActionableView() {
             variant="dark"
             closable
             actions={
-              <Button outline shape="round" place="toast">
+              <RoundButton outline place="toast">
                 open
-              </Button>
+              </RoundButton>
             }
             title="Title"
           >

@@ -1,5 +1,5 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, VBox, Toast } from "@elf-framework/ui";
+import { VBox, Toast, RoundButton } from "@elf-framework/ui";
 
 export function MainView() {
   return (
@@ -37,15 +37,14 @@ export function MainView() {
               position: "absolute",
             }}
             tools={[
-              <Button
+              <RoundButton
                 outline
                 // variant="danger"
-                shape="round"
-                in="toast"
+                place="toast"
                 onClick={() => console.log("action")}
               >
                 Action
-              </Button>,
+              </RoundButton>,
             ]}
             closable
           >

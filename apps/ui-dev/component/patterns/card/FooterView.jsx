@@ -1,14 +1,11 @@
-import MoreHorizFilled from "@elf-framework/icon/MoreHorizFilled";
-import SettingsFilled from "@elf-framework/icon/SettingsFilled";
 import {
-  Button,
   Card,
-  CardActions,
   CardContainer,
   CardFooter,
   CardHeader,
   CardPreview,
   Grid,
+  RoundButton,
 } from "@elf-framework/ui";
 
 export function FooterView() {
@@ -46,9 +43,9 @@ export function FooterView() {
           <CardFooter>
             <Grid columns={2}>
               <span>Footer</span>
-              <Button outline shape="round" variant="primary">
+              <RoundButton outline variant="primary">
                 Open
-              </Button>
+              </RoundButton>
             </Grid>
           </CardFooter>
         </Card>

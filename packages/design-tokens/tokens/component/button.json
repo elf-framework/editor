@@ -1,5 +1,15 @@
 {
   "button": {
+    "closable" : {
+      "hover": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.white.1.value}"
+          }
+        }
+      }
+    }
+,
     "hover": {
       "background": {
         "default": {
@@ -49,12 +59,15 @@
         },
         "danger": {
           "value": "{color.danger.value}"
+        },
+        "dark": {
+          "value": "{color.black.value}"
         }
       },
 
       "border": {
         "default": {
-          "value": "{color.gray.3.value}"
+          "value": "{color.gray.2.value}"
         },
         "primary": {
           "value": "{color.primary.value}"

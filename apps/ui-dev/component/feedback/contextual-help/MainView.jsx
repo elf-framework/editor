@@ -1,5 +1,5 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, Panel, Popover, VBox } from "@elf-framework/ui";
+import { Button, Panel, Popover, RoundButton, VBox } from "@elf-framework/ui";
 
 export function MainView() {
   return (
@@ -22,9 +22,7 @@ export function MainView() {
           gap: 10,
         }}
       >
-        <Button disabled shape="round">
-          Create segment
-        </Button>
+        <RoundButton disabled>Create segment</RoundButton>
         <Popover
           show
           body={
