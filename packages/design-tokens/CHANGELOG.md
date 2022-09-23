@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.2.1
+
+### Patch Changes
+
+- update button, action group documentation
+
 ## 2.1.49
 
 ### Patch Changes

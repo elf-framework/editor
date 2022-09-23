@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.2.0
+
+### Minor Changes
+
+- split renderer in sapa (dom, html)
+
 ## 2.1.47
 
 ### Patch Changes

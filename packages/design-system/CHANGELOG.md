@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 2.2.1
+
+### Patch Changes
+
+- update button, action group documentation
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.2.1
+
 ## 2.1.49
 
 ### Patch Changes

@@ -4191,23 +4191,6 @@ async function makeHtml$4(vNodeInstance) {
 async function VNodeCommentRender(vNodeInstance) {
   return await makeHtml$4(vNodeInstance);
 }
-async function renderVNodeComponentToHtml(componentInstance, options = {}) {
-  componentInstance.resetCurrentComponent();
-  const template = componentInstance.template();
-  const html = await HtmlRenderer(template, options);
-  return html;
-}
-async function renderHtml(vNodeInstance, parentOptions) {
-  vNodeInstance.makeClassInstance(parentOptions);
-  const instance = vNodeInstance.instance;
-  return await renderVNodeComponentToHtml(instance, instance.getVNodeOptions());
-}
-async function makeHtml$3(vNodeInstance, withChildren, options = {}) {
-  return await renderHtml(vNodeInstance, options);
-}
-async function VNodeComponentRender(vNodeInstance, withChildren, options) {
-  return await makeHtml$3(vNodeInstance, withChildren, options);
-}
 const VoidTags = {
   area: true,
   base: true,
@@ -4272,7 +4255,7 @@ function stringifyStyle(styleObject) {
     return `${key}: ${newStyle[key]};`;
   }).join(" ");
 }
-async function makeHtml$2(vNodeInstance, withChildren = false, options = {}) {
+async function makeHtml$3(vNodeInstance, withChildren = false, options = {}) {
   const tempProps = [];
   const props = vNodeInstance.memoizedProps;
   if (props) {
@@ -4321,19 +4304,19 @@ async function makeHtml$2(vNodeInstance, withChildren = false, options = {}) {
   }
 }
 async function VNodeElementRender(vNodeInstance, withChildren, options) {
-  return await makeHtml$2(vNodeInstance, withChildren, options);
+  return await makeHtml$3(vNodeInstance, withChildren, options);
 }
-async function makeHtml$1(vNodeInstance, withChildren = false, options = {}) {
+async function makeHtml$2(vNodeInstance, withChildren = false, options = {}) {
   return await makeChildrenHtml(vNodeInstance, withChildren, options);
 }
 function VNodeFragmentRender(obj, withChildren, options) {
-  return makeHtml$1(obj, withChildren, options);
+  return makeHtml$2(obj, withChildren, options);
 }
-function makeHtml(vNodeInstance) {
+function makeHtml$1(vNodeInstance) {
   return vNodeInstance.value;
 }
 function VNodeTextRender(vNodeInstance) {
-  return makeHtml(vNodeInstance);
+  return makeHtml$1(vNodeInstance);
 }
 const RendererList = {
   [VNodeType.TEXT]: VNodeTextRender,
@@ -4359,6 +4342,23 @@ async function HtmlRenderer(obj, options = {}) {
     return html;
   }
   return await obj;
+}
+async function renderVNodeComponentToHtml(componentInstance, options = {}) {
+  componentInstance.resetCurrentComponent();
+  const template = componentInstance.template();
+  const html = await HtmlRenderer(template, options);
+  return html;
+}
+async function renderHtml(vNodeInstance, parentOptions) {
+  vNodeInstance.makeClassInstance(parentOptions);
+  const instance = vNodeInstance.instance;
+  return await renderVNodeComponentToHtml(instance, instance.getVNodeOptions());
+}
+async function makeHtml(vNodeInstance, withChildren, options = {}) {
+  return await renderHtml(vNodeInstance, options);
+}
+async function VNodeComponentRender(vNodeInstance, withChildren, options) {
+  return await makeHtml(vNodeInstance, withChildren, options);
 }
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
