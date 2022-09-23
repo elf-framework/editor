@@ -10,31 +10,27 @@ import {ProjectItem} from "../../component/project/ProjectItem.jsx";
 
 <div style={{fontSize: 20}}>An easy and customizable set of developers</div>
 
-<Grid columns={3} style={{gap: 20, marginTop: 30}}>
-    <ProjectItem quiet title={"With elf-framework"} description={[
-        <div>Open source developers,</div>,
-        <div>&nbsp;</div>,
-        <p>Let's get together in one place, study together, play together, and build together.</p>
-        ]} docLink="https://www.elf-framework.com/" codeLinkText="Github" codeLink="https://github.com/elf-framework" />
-    <Column span={2} class="striped" style={{display: "flex", justifyContent: "center", alignItems: "center", fontSize: 70}}>
-        It's your space.
-    </Column>
+<Grid class="project-item-list" columns={3} style={{gap: 20, marginTop: 30}}>
+
 </Grid>
 
 <Divider margin={50}/>
 
-<Grid columns={3} style={{gap: 20}}>
-    <ProjectItem  title={"@elf-framework/base-editor"} npm="@elf-framework/base-editor" description={"sapa based editor framework"} docLink="../pages/editor/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/base-editor" />    
-    <div>
-    </div>
-        <div>
-    </div>
+<Grid class="project-item-list" columns={3} rows={1} style={{gap: 20}}>
+    <ProjectItem title={"With elf-framework"} description={[
+    <div>Open source developers,</div>,
+    <div>&nbsp;</div>,
+    <p>Let's get together in one place, study together, play together, and build together.</p>
+    ]} docLink="https://www.elf-framework.com/" codeLinkText="Github" codeLink="https://github.com/elf-framework" />
+    <ProjectItem full  title={"@elf-framework/base-editor"} npm="@elf-framework/base-editor" description={"sapa based editor framework"} docLink="../pages/editor/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/base-editor" />    
+    <ProjectItem full title={"@elf-framework/color"} npm="@elf-framework/color" description={"Elf color library"} docLink="https://www.elf-framework.com" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/color" />
     <ProjectItem  title={"@elf-framework/ui"} npm="@elf-framework/ui" description={"Sapa based UI Component library"} docLink="../pages/ui-component/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/ui" />
-    <ProjectItem  title={"vite-plugin-sapa"} npm="vite-plugin-sapa" description={"Vite plugin to support HMR for sapa"} docLink="https://www.elf-framework.com" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/vite-plugin-sapa" />
-    <ProjectItem  title={"@elf-framework/color"} npm="@elf-framework/color" description={"Elf color library"} docLink="https://www.elf-framework.com" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/color" />
-    <ProjectItem selected title={"@elf-framework/sapa"} npm="@elf-framework/sapa" description={"UI framework"} docLink="../pages/sapa/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/sapa" />
+
     <ProjectItem  title={"@elf-framework/design-tokens"} npm="@elf-framework/design-tokens" description={"Elf Design Tokens"} docLink="../pages/design-system/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/design-tokens" />
     <ProjectItem  title={"@elf-framework/design-system"} npm="@elf-framework/design-system" description={"Elf Design System"} docLink="../pages/design-system/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/design-system" />
+    <ProjectItem selected title={"@elf-framework/sapa"} npm="@elf-framework/sapa" description={"UI framework"} docLink="../pages/sapa/getting-started/index.html" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/sapa" />
+    <ProjectItem  title={"vite-plugin-sapa"} npm="vite-plugin-sapa" description={"Vite plugin to support HMR for sapa"} docLink="https://www.elf-framework.com" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/vite-plugin-sapa" />
+    <ProjectItem  title={"@elf-framework/sapa-router"} npm="@elf-framework/sapa-router" description={"Client router for sapa"} docLink="https://www.elf-framework.com" codeLink="https://github.com/elf-framework/editor/tree/develop/packages/sapa-router" />        
 </Grid>
 
 

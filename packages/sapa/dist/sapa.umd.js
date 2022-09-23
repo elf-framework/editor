@@ -3099,7 +3099,7 @@ var __privateMethod = (obj, member, method) => {
       return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
     },
     hasPassed(vNode) {
-      return vNode.pass;
+      return vNode == null ? void 0 : vNode.pass;
     },
     hasRefClass(vNode) {
       return vNode.Component;
@@ -3221,6 +3221,9 @@ var __privateMethod = (obj, member, method) => {
   }
   function updateElement(parentElement, oldEl, newVNode, options = {}) {
     var _a;
+    if (!newVNode && !oldEl) {
+      return;
+    }
     parentElement = parentElement || options.context.parentElement;
     if (!oldEl && newVNode) {
       patch.appendChild(parentElement, newVNode, options);
@@ -3230,7 +3233,7 @@ var __privateMethod = (obj, member, method) => {
       patch.removeChild(parentElement, oldEl, options);
       return;
     }
-    if (!((_a = newVNode.props) == null ? void 0 : _a.pass)) {
+    if (!((_a = newVNode == null ? void 0 : newVNode.props) == null ? void 0 : _a.pass)) {
       if (check.hasPassed(newVNode)) {
         return;
       }

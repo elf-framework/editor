@@ -36,17 +36,17 @@ export class Button extends UIElement {
       closable = false,
       place = "",
       style = {},
-      onClick,
+      href = "",
+      target = "_blank",
       content,
       class: className,
       iconOnly = false,
       justified = false,
       pending = false,
       play = false,
-      ...extraStyle
+      as = "button",
+      ...extraProps
     } = this.props;
-
-    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
 
     const localClass = useMemo(() => {
       return classnames([
@@ -84,28 +84,31 @@ export class Button extends UIElement {
     const styleObject = {
       class: localClass,
       disabled: disabled ? "disabled" : undefined,
-      style: propertyMap(
-        {
-          ...style,
-          ...styleProperties,
-        },
-        cssProperties
-      ),
+      style: propertyMap(style, cssProperties),
+      ...extraProps,
     };
 
-    return (
-      <button {...styleObject} onClick={onClick}>
-        <span>
-          {pending ? (
-            <Animation.spin play={play}>
-              <ProgressCircle value={50} size={size} variant={variant} />
-            </Animation.spin>
-          ) : (
-            content || ""
-          )}
-        </span>
-      </button>
+    const buttonContent = (
+      <span>
+        {pending ? (
+          <Animation.spin play={play}>
+            <ProgressCircle value={50} size={size} variant={variant} />
+          </Animation.spin>
+        ) : (
+          content || ""
+        )}
+      </span>
     );
+
+    if (as === "link") {
+      return (
+        <a {...styleObject} href={href} target={target}>
+          {buttonContent}
+        </a>
+      );
+    } else {
+      return <button {...styleObject}>{buttonContent}</button>;
+    }
   }
 }
 

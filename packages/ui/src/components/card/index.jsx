@@ -27,6 +27,7 @@ export class Card extends UIElement {
       selected = false,
       as = "div",
       href = "#",
+      full = false,
       ...extraProps
     } = this.props;
 
@@ -38,10 +39,21 @@ export class Card extends UIElement {
         ghost,
         selectable,
         selected,
+        full,
         [size]: true,
         "as-link": as === "link",
       });
-    }, [shape, orientation, quiet, ghost, selectable, selected, as, size]);
+    }, [
+      shape,
+      orientation,
+      quiet,
+      ghost,
+      selectable,
+      selected,
+      as,
+      size,
+      full,
+    ]);
 
     const styleObject = {
       class: localClass,

@@ -715,16 +715,17 @@ var __privateMethod = (obj, member, method) => {
         closable = false,
         place = "",
         style: style2 = {},
-        onClick,
+        href = "",
+        target = "_blank",
         content,
         class: className,
         iconOnly = false,
         justified = false,
         pending = false,
         play = false,
-        ...extraStyle
+        as = "button",
+        ...extraProps
       } = this.props;
-      const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
       const localClass = sapa.useMemo(() => {
         return sapa.classnames([
           "elf--button",
@@ -760,24 +761,27 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         disabled: disabled ? "disabled" : void 0,
-        style: propertyMap(
-          {
-            ...style2,
-            ...styleProperties
-          },
-          cssProperties$O
-        )
+        style: propertyMap(style2, cssProperties$O),
+        ...extraProps
       };
-      return /* @__PURE__ */ sapa.createElementJsx("button", {
-        ...styleObject,
-        onClick
-      }, /* @__PURE__ */ sapa.createElementJsx("span", null, pending ? /* @__PURE__ */ sapa.createElementJsx(Animation.spin, {
+      const buttonContent = /* @__PURE__ */ sapa.createElementJsx("span", null, pending ? /* @__PURE__ */ sapa.createElementJsx(Animation.spin, {
         play
       }, /* @__PURE__ */ sapa.createElementJsx(ProgressCircle, {
         value: 50,
         size,
         variant
-      })) : content || ""));
+      })) : content || "");
+      if (as === "link") {
+        return /* @__PURE__ */ sapa.createElementJsx("a", {
+          ...styleObject,
+          href,
+          target
+        }, buttonContent);
+      } else {
+        return /* @__PURE__ */ sapa.createElementJsx("button", {
+          ...styleObject
+        }, buttonContent);
+      }
     }
   }
   registerComponent("button", Button);
@@ -6596,6 +6600,7 @@ var __privateMethod = (obj, member, method) => {
         selected = false,
         as = "div",
         href = "#",
+        full = false,
         ...extraProps
       } = this.props;
       const localClass = sapa.useMemo(() => {
@@ -6606,10 +6611,21 @@ var __privateMethod = (obj, member, method) => {
           ghost,
           selectable,
           selected,
+          full,
           [size]: true,
           "as-link": as === "link"
         });
-      }, [shape, orientation, quiet, ghost, selectable, selected, as, size]);
+      }, [
+        shape,
+        orientation,
+        quiet,
+        ghost,
+        selectable,
+        selected,
+        as,
+        size,
+        full
+      ]);
       const styleObject = {
         class: localClass,
         style: {
@@ -6740,31 +6756,33 @@ var __privateMethod = (obj, member, method) => {
     }
   }
   const cssProperties$4 = makeCssVariablePrefixMap("--elf--card-footer", {
-    textAlign: true
+    textAlign: true,
+    sideOffset: true
   });
   class CardFooter extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, ghost = false, content, ...extraProps } = this.props;
+      const {
+        style: style2 = {},
+        ghost = false,
+        noDivider = false,
+        content,
+        compact = false,
+        ...extraProps
+      } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--card-footer", {
-          ghost
+          ghost,
+          compact
         });
-      }, [ghost]);
+      }, [ghost, compact]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(
-          {
-            ...style2
-          },
-          cssProperties$4
-        ),
+        style: propertyMap(style2, cssProperties$4),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
-      }, /* @__PURE__ */ sapa.createElementJsx(Divider, {
-        margin: 0
-      }), /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, noDivider ? void 0 : /* @__PURE__ */ sapa.createElementJsx(Divider, null), /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "content-area"
       }, ghost ? /* @__PURE__ */ sapa.createElementJsx("div", {
         style: { display: "flex", gap: 10 }

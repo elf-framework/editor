@@ -9,3 +9,17 @@
     #dedede var(--striped-dist),
     #dedede calc(var(--striped-dist) * 2));
 }
+
+@media (max-width: 900px) { 
+    .project-item-list {
+        grid-template-columns: 1fr 1fr !important; 
+    }    
+}
+
+
+@media (max-width: 600px) { 
+    .project-item-list {
+        grid-template-columns: 1fr !important; 
+    }    
+}
+

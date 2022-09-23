@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/ui",
-  "version": "2.2.1",
+  "version": "2.2.3",
   "description": "ELF - An easy and customizable set of developers",
   "types": "./index.d.ts",
   "files": [

@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.2.2
+
+### Patch Changes
+
+- fixed domdiff bug
+
 ## 2.2.0
 
 ### Minor Changes

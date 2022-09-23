@@ -1605,6 +1605,7 @@ declare module "@elf-framework/ui" {
     selected?: boolean;
     as?: "div" | "link";
     href?: string;
+    full?: boolean;
   }
 
   export class Card extends UIElement {
@@ -1654,6 +1655,7 @@ declare module "@elf-framework/ui" {
   interface CardFooterProps {
     content?: ContentType;
     style?: CommonStyle;
+    noDivider?: boolean;
   }
 
   export class CardFooter extends UIElement {

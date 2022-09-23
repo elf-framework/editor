@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.2.3
+
+### Patch Changes
+
+- update documentation
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.2.3
+
 ## 2.2.1
 
 ### Patch Changes

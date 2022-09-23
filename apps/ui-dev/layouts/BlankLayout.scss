@@ -1,0 +1,147 @@
+
+@import "github-markdown-css/github-markdown.css";
+@import "../component/utils/prism/themes/prism-vsc-dark-plus.css";
+@import "../component/utils/prism/rehype-prism-plus/prism-plus.css";
+
+
+
+html,body {
+    padding: 0px;
+    margin: 0px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+        padding: 0px 3em;
+}
+
+.default-layout {
+
+    .layout-logo {
+        display: none;
+    }
+
+    .layout-content > div {
+        padding: 50px 10px;
+        min-height: 800px;
+        max-width: 800px;
+    }
+
+    .layout-tools {
+        padding: 20px;
+        .page-tools {
+            justify-content: center;
+        }
+    }
+}
+
+.layout {
+
+    --layout-menu-width: 300px;
+    --layout-header-height: 80px;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .layout-menu {
+        border-right: 1px solid #ececec;
+        position: fixed;
+        left: 0px;
+        width: var(--layout-menu-width);
+        bottom: 0px;
+        top: var(--layout-header-height);
+        overflow-y: auto;
+        overflow-x: none;
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 20px 20px;
+        background-color: var(--color-white);
+    }
+
+    .layout-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--layout-header-height);
+        background-color: rgb(255, 255, 255);
+        border-bottom: 1px solid #ececec;
+        display: grid;
+        grid-template-columns: var(--layout-menu-width) 1fr;
+        z-index: 10;
+
+        &.fixed {
+            position: fixed;
+            z-index: 1;
+        }
+    }
+
+    .layout-content {
+        position: relative;
+        padding-left: var(--layout-menu-width);
+        padding-top: var(--layout-header-height);
+        padding-right: 100px;
+    }
+
+    .layout-logo {
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 900;
+    }
+}
+
+.version {
+    flex: none;
+    display: block;
+    font-size: 12px;
+    color: gray;
+}
+
+
+@media (max-width: 900px) { 
+
+    body {
+        // background-color: yellow;
+        padding: 0px 2em;
+    }
+
+
+        .layout-content {
+            padding: 20px;
+            padding-top: var(--layout-header-height);
+        }
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 0px 1em;
+    }
+
+    .layout {
+        .layout-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 10px;
+            padding-right: 0px;
+            .layout-logo {
+                flex: none;
+
+                height: 100%;
+                display: inline-block;
+            }
+
+            .layout-tools {
+                flex: none; 
+                justify-content: flex-end;
+                width: 40px;
+                height: 100%;
+                text-align: right;
+            }
+
+        }
+    }
+}

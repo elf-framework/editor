@@ -184,7 +184,7 @@ const check = {
    * @returns
    */
   hasPassed(vNode) {
-    return vNode.pass;
+    return vNode?.pass;
   },
 
   /**
@@ -382,6 +382,10 @@ export function updateChildren(oldEl, newVNode, options = {}) {
  *
  */
 function updateElement(parentElement, oldEl, newVNode, options = {}) {
+  if (!newVNode && !oldEl) {
+    return;
+  }
+
   parentElement = parentElement || options.context.parentElement;
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
@@ -393,7 +397,7 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
   }
 
   // pass 옵션이 없는 경우
-  if (!newVNode.props?.pass) {
+  if (!newVNode?.props?.pass) {
     if (check.hasPassed(newVNode)) {
       return;
     }

@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardPreview,
   Grid,
+  IconButton,
 } from "@elf-framework/ui";
 
 export function QuickActionsView() {
@@ -41,12 +42,12 @@ export function QuickActionsView() {
             <img src="https://pbs.twimg.com/profile_banners/52672213/1398217635/1500x500" />
           </CardPreview>
           <CardActions align="right">
-            <Button quiet>
+            <IconButton quiet>
               <SettingsFilled />
-            </Button>
-            <Button quiet>
+            </IconButton>
+            <IconButton quiet>
               <MoreHorizFilled />
-            </Button>
+            </IconButton>
           </CardActions>
           <CardContainer>
             <CardHeader title={<span>Prototypes in XXXX</span>} />
@@ -67,12 +68,12 @@ export function QuickActionsView() {
             <img src="https://pbs.twimg.com/profile_banners/52672213/1398217635/1500x500" />
           </CardPreview>
           <CardActions align="left">
-            <Button quiet>
+            <IconButton quiet>
               <SettingsFilled />
-            </Button>
-            <Button quiet>
+            </IconButton>
+            <IconButton quiet>
               <MoreHorizFilled />
-            </Button>
+            </IconButton>
           </CardActions>
           <CardContainer>
             <CardHeader title={<span>Prototypes in XXXX</span>} />

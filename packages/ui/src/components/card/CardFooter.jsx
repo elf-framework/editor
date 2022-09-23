@@ -7,32 +7,37 @@ import { Ghost } from "../ghost";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--card-footer", {
   textAlign: true,
+  sideOffset: true,
 });
 
 export class CardFooter extends UIElement {
   template() {
-    const { style = {}, ghost = false, content, ...extraProps } = this.props;
+    const {
+      style = {},
+      ghost = false,
+      noDivider = false,
+      content,
+      compact = false,
+      ...extraProps
+    } = this.props;
 
     const localClass = useMemo(() => {
       return classnames("elf--card-footer", {
         ghost,
+        compact,
       });
-    }, [ghost]);
+    }, [ghost, compact]);
 
     const styleObject = {
       class: localClass,
-      style: propertyMap(
-        {
-          ...style,
-        },
-        cssProperties
-      ),
+      style: propertyMap(style, cssProperties),
       ...extraProps,
     };
 
     return (
       <div {...styleObject}>
-        <Divider margin={0} />
+        {noDivider ? undefined : <Divider />}
+
         <div class="content-area">
           {ghost ? (
             <div style={{ display: "flex", gap: 10 }}>

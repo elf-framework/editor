@@ -1,11 +1,12 @@
 import {
+  ActionGroup,
   Blank,
+  Button,
   Card,
   CardBody,
   CardContainer,
   CardFooter,
   CardHeader,
-  Grid,
 } from "@elf-framework/ui";
 
 import { Version } from "../Version";
@@ -21,11 +22,13 @@ export function ProjectItem({
   style = {},
   docLinkText = "documentation",
   codeLinkText = "code",
+  full = false,
 }) {
   const cardProps = {
     selectable: true,
     selected,
     quiet,
+    full,
   };
 
   return (
@@ -43,21 +46,29 @@ export function ProjectItem({
             {description}
           </CardBody>
         </CardContainer>
-        <CardFooter>
-          <Grid
-            columns={2}
+        <CardFooter
+          compact
+          style={{
+            padding: 0,
+            sideOffset: 0,
+          }}
+          noDivider
+        >
+          <ActionGroup
+            justified
+            compact
             style={{
               gap: 10,
               textAlign: "center",
             }}
           >
-            <a href={docLink} target="_blank">
+            <Button as="link" href={docLink} size="large">
               {docLinkText}
-            </a>
-            <a href={codeLink} target="_blank">
+            </Button>
+            <Button as="link" href={codeLink} size="large">
               {codeLinkText}
-            </a>
-          </Grid>
+            </Button>
+          </ActionGroup>
         </CardFooter>
       </Card>
     </div>
