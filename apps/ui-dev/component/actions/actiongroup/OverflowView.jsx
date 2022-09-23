@@ -63,7 +63,6 @@ export function OverflowView() {
         </div>
       </VBox>
       <div>
-        <strong>Overflow mode</strong>
         <p>
           When space is limited in an action group, there are 2 options for the
           group's overflow behavior: wrap or collapse. By default, an action

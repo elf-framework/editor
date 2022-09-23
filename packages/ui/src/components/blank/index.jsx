@@ -16,6 +16,7 @@ export class Blank extends UIElement {
       style = {},
       stripe = "none",
       color = "transparent",
+      content,
       ...extraProps
     } = this.props;
 
@@ -37,7 +38,7 @@ export class Blank extends UIElement {
       ...extraProps,
     };
 
-    return <div {...styleObject}>&nbsp;</div>;
+    return <div {...styleObject}>{content || <span>&nbsp;</span>}</div>;
   }
 }
 

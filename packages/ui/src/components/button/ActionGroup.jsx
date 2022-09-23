@@ -12,7 +12,7 @@ import {
   splitStyleKeyAndNoneStyleKey,
   makeCssVariablePrefixMap,
 } from "../../utils/styleKeys";
-import { Tooltip, TooltipPlacement } from "../tooltip";
+import { Tooltip } from "../tooltip";
 
 import { Button } from ".";
 
@@ -45,7 +45,10 @@ export class ActionGroup extends UIElement {
       if (!collapsed) return;
       const list = [];
       let totalWidth = 0;
-      const localRect = this.$el.rect();
+      const localRect = this.$el?.rect();
+
+      if (!localRect) return;
+
       // console.log(localRect);
       this.$el.children().forEach((child, index) => {
         if (child.hasClass("hidden-tools")) return;
@@ -80,6 +83,8 @@ export class ActionGroup extends UIElement {
             setRootRect(Dom.create(entry.target).rect());
           });
         });
+
+        if (!this.$el) return;
 
         resizeObserver.observe(this.$el.el);
       }
@@ -126,10 +131,10 @@ export class ActionGroup extends UIElement {
             message={hiddenItems}
             trigger="click"
             hideArrow={true}
-            position={TooltipPlacement.BOTTOM_LEFT}
+            position={"bottom-left"}
             style={{ contentPadding: "0px" }}
           >
-            <Button>{moreIcon}</Button>
+            <Button iconOnly>{moreIcon}</Button>
           </Tooltip>
         ) : undefined}
       </div>

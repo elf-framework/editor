@@ -19,7 +19,7 @@ Sapa provides storage that can be used in three forms.
 
 ## useState 
 
-useState is an ordered storage using Hooks.
+`useState` is an ordered storage using Hooks.
 
 See [Hook](/pages/sapa/hook/) for details.
 
@@ -46,7 +46,7 @@ class A extends UIElement {
 }
 ```
 
-## store 
+## $store 
 
 `$store` is the storage structure used in the hierachy structure.
 
@@ -57,7 +57,6 @@ First, let's see how to use it in class components.
 ```jsx
 import {UIElement, SUBSCRIBE} from "@elf-framework/sapa";
 
-
 class B extends UIElement {
   template () {
 
@@ -66,7 +65,7 @@ class B extends UIElement {
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
   [SUBSCRIBE('key')] () {
-    this.render();
+    useRender();
   }
 }
 
@@ -92,6 +91,8 @@ class Main extends UIElement {
 }
 ```
 
+&nbsp;
+
 In the class component, you can access it using this.`$store`. Of course, since the basic structure is similar, you can use this.`$store` as it is in the function component.
 
 The `SUBSCRIBE` magic method receives a specific event and executes it.
@@ -107,7 +108,6 @@ function B () {
 }
 
 function A () {
-
   useStoreSet('key', 'value');
 
   return <dv>
@@ -128,7 +128,7 @@ function A() {
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
   useSubscribe('key', () => {
-    this.render();
+    useRender();
   })
 
   return <div onClick={() => {
@@ -141,13 +141,13 @@ function A() {
 
 ```jsx {2,6-9}
 function A() {
-  return <div onClick={() => useStoreSet(useStore('key') + 1)}>Simple Text</div>
+  return <div onClick={() => useStoreSet('key', useStore('key') + 1)}>Simple Text</div>
 }
 
 function B () {
   useSubscribe('key', () => {
     // Re-render when key is changed.
-    this.render();
+    useRender();
   })
 
   return <div>{useStore('key')}</div>

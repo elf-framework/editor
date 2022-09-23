@@ -3,6 +3,7 @@ import "@elf-framework/ui/style.css";
 
 import { PageMenu } from "../component/PageMenu";
 import { PageTools } from "../component/PageTools";
+import { useScrollStatus } from "../hooks/useScrollStatus";
 import "./Layout.scss";
 
 function LogoView({ title, version }) {
@@ -15,7 +16,9 @@ function LogoView({ title, version }) {
           fontSize: 40,
         }}
       >
-        🏝
+        <a href="/" style={{ textDecoration: "none", textAlign: "center" }}>
+          🏝
+        </a>
       </Flex>
       <VBox>
         <div>ELF {title}</div>

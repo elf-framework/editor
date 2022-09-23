@@ -36,7 +36,7 @@ function MyApp() {
 
 &nbsp;
 
-<Alert type="info" weak={true}>
+<Alert shape="round">
 You can also use the `className` attribute as is. If you use the `className` attribute, it is automatically linked to the `class` attribute.
 </Alert>
 
@@ -73,13 +73,15 @@ function MyApp() {
 
 You can use a Hook similar to React.
 
-* useState
-* useCallback
-* useMemo 
-* useReducer 
-* useContext
-* useRef
-* useEffect 
+* [useState](/pages/sapa/hook/#useState)
+* [useCallback](/pages/sapa/hook/#useCallback)
+* [useMemo](/pages/sapa/hook/#useMemo) 
+* [useReducer](/pages/sapa/hook/#useReducer) 
+* [useContext](/pages/sapa/hook/#useContext)
+* [useRef](/pages/sapa/hook/#useRef)
+* [useEffect](/pages/sapa/hook/#useEffect) 
+* [useId](/pages/sapa/hook/#useId)
+* [useSyncExternalStore](/pages/sapa/hook/#useSyncExternalStore)
 
 ## DOM 
 
@@ -152,7 +154,7 @@ class MyApp extends UIElement {
 
     // subscribe event for $store
     useSubscribe("myVariable", () => {
-      this.render();
+      useRender();
     })
 
     return <div onClick={() => {
@@ -173,7 +175,7 @@ Sapa provides a way to send messages from an internal component hierarchy.
 function MyApp () {
 
   useSubscribe("refreshComponent", () => {
-    this.render();
+    useRender();;
   })
 
   return <div onClick={() => {

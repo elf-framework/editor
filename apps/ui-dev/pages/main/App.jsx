@@ -1,14 +1,15 @@
 import { start } from "@elf-framework/sapa";
+import "@elf-framework/ui/style.css";
 
-import { DefaultLayout } from "../../layouts/DefaultLayout";
+import { BlankLayout } from "../../layouts/BlankLayout";
 import Page from "./page.mdx";
 import "./page.scss";
 
 function App() {
   return (
-    <DefaultLayout>
+    <BlankLayout>
       <Page />
-    </DefaultLayout>
+    </BlankLayout>
   );
 }
 

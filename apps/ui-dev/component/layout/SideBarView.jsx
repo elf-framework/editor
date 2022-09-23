@@ -63,7 +63,11 @@ export function SideBarView() {
                           selected: true,
                           selectedType: "secondary",
                         },
-                        { type: "button", title: "B2" },
+                        {
+                          type: "button",
+                          title: "B2",
+                          selectedType: "secondary",
+                        },
                       ]}
                     />
                   </div>

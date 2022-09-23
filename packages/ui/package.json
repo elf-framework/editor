@@ -1,7 +1,7 @@
 {
   "name": "@elf-framework/ui",
   "version": "2.1.49",
-  "description": "Fantastic UI library",
+  "description": "ELF - An easy and customizable set of developers",
   "types": "./index.d.ts",
   "files": [
     "dist",

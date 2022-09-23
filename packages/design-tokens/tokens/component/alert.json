@@ -118,7 +118,7 @@
       },
       "background": {
         "default": {
-          "value": "{color.gray.1.value}"
+          "value": "{color.gray.0.value}"
         },
         "dark": {
           "value": "{color.gray.9.value}"

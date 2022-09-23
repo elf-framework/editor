@@ -56,7 +56,6 @@ export function EnableSelectionView() {
         </div>
       </VBox>
       <div>
-        <strong>Enable selection</strong>
         <p>
           By default, selection is not enabled in an action group. This is used
           for action groups that offer direct actions, rather than toggling.

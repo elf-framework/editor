@@ -76,8 +76,14 @@ export function WorkflowView() {
               gap: 20,
             }}
           >
-            <Flex
-              style={{ gap: 10, justifyContent: "center", margin: "0 auto" }}
+            <div
+              style={{
+                display: "flex",
+                gap: 10,
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "0 auto",
+              }}
             >
               <Button>
                 <span
@@ -109,7 +115,7 @@ export function WorkflowView() {
                 </span>
                 Settings
               </Button>
-            </Flex>
+            </div>
 
             <VBox style={{ gap: 10, margin: "0 auto" }}>
               <MenuItem

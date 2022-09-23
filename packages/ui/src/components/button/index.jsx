@@ -6,6 +6,8 @@ import {
   makeCssVariablePrefixMap,
   splitStyleKeyAndNoneStyleKey,
 } from "../../utils/styleKeys";
+import { Animation } from "../animation";
+import { ProgressCircle } from "../progress-circle";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--button", {
   borderColor: true,
@@ -27,6 +29,7 @@ export class Button extends UIElement {
       size = "medium",
       disabled,
       selected,
+      focused,
       shape = "rect",
       quiet = false,
       outline = false,
@@ -37,6 +40,9 @@ export class Button extends UIElement {
       content,
       class: className,
       iconOnly = false,
+      justified = false,
+      pending = false,
+      play = false,
       ...extraStyle
     } = this.props;
 
@@ -48,8 +54,10 @@ export class Button extends UIElement {
         {
           selected,
           outline,
+          focused,
           quiet,
           closable,
+          justified,
           [variant]: true,
           [size]: true,
           [shape]: true,
@@ -69,6 +77,8 @@ export class Button extends UIElement {
       closable,
       iconOnly,
       className,
+      justified,
+      focused,
     ]);
 
     const styleObject = {
@@ -85,7 +95,15 @@ export class Button extends UIElement {
 
     return (
       <button {...styleObject} onClick={onClick}>
-        <span>{content || ""}</span>
+        <span>
+          {pending ? (
+            <Animation.spin play={play}>
+              <ProgressCircle value={50} size={size} variant={variant} />
+            </Animation.spin>
+          ) : (
+            content || ""
+          )}
+        </span>
       </button>
     );
   }

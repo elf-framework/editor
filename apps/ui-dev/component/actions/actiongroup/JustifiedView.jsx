@@ -86,7 +86,6 @@ export function JustifiedView() {
         </VBox>
       </VBox>
       <div>
-        <strong>Density</strong>
         <p>
           Action groups come in 2 densities: regular and compact. The compact
           density retains the same font and icon sizes, but has tighter spacing.

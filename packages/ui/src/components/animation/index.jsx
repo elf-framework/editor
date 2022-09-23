@@ -10,6 +10,7 @@ const cssProperties = makeCssVariablePrefixMap("--elf--animation", {
   timingFunction: true,
   duration: true,
   delay: true,
+  playState: true,
 });
 
 export class Animation extends UIElement {
@@ -22,6 +23,7 @@ export class Animation extends UIElement {
       duration = "1s",
       style = {},
       content,
+      play = false,
       onEnd: onAnimationEnd,
       onIteration: onAnimationIteration,
       onStart: onAnimationStart,
@@ -38,6 +40,7 @@ export class Animation extends UIElement {
           iterationCount,
           timingFunction,
           delay,
+          playState: play ? "running" : "paused",
         },
         cssProperties
       ),

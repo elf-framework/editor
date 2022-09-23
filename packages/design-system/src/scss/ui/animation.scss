@@ -4,6 +4,7 @@
     --elf--animation-delay: 0s;
     --elf--animation-timing-function: linear;
     --elf--animation-iteration-count: infinite;
+    --elf--animation-play-state: running;
 
     display: inline-block;
     width: fit-content;
@@ -14,5 +15,5 @@
     animation-delay: var(--elf--animation-delay);
     animation-timing-function: var(--elf--animation-timing-function);
     animation-iteration-count: var(--elf--animation-iteration-count);
-
+    animation-play-state: var(--elf--animation-play-state);
 }

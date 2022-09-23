@@ -1,4 +1,5 @@
-import { debounce, isString } from "./func";
+import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
+import { isString } from "./func";
 import { uuidShort } from "./uuid";
 
 const handlerMap = {};
@@ -28,14 +29,15 @@ export function resetCurrentComponent(component) {
   GlobalState.currentComponent = component;
 }
 
-function createRenderCallback(component, delay = 1) {
+function createRenderCallback(component) {
   if (!RenderCallbackList.has(component)) {
-    RenderCallbackList.set(
-      component,
-      debounce(($container = undefined) => {
-        component.render($container);
-      }, delay)
-    );
+    RenderCallbackList.set(component, ($container = undefined) => {
+      const Renderer = component.renderer;
+
+      if (Renderer) {
+        return Renderer(component, $container);
+      }
+    });
   }
 
   return RenderCallbackList.get(component);
@@ -193,7 +195,7 @@ export function renderRootElementInstanceList(isForce = false) {
     if (isForce) {
       instance.forceRender();
     } else {
-      instance.render();
+      renderVNodeComponent(instance);
     }
   });
 }

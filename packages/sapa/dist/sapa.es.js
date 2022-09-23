@@ -189,857 +189,6 @@ function classnames(...args) {
   });
   return result.join(" ");
 }
-const UUID_REG = /[xy]/g;
-function uuid() {
-  var dt = new Date().getTime();
-  var uuid2 = "xxx12-xx-34xx".replace(UUID_REG, function(c) {
-    var r = (dt + Math.random() * 16) % 16 | 0;
-    dt = Math.floor(dt / 16);
-    return (c == "x" ? r : r & 3 | 8).toString(16);
-  });
-  return uuid2;
-}
-function uuidShort() {
-  var dt = new Date().getTime();
-  var uuid2 = "idxxxxxxx".replace(UUID_REG, function(c) {
-    var r = (dt + Math.random() * 16) % 16 | 0;
-    dt = Math.floor(dt / 16);
-    return (c == "x" ? r : r & 3 | 8).toString(16);
-  });
-  return uuid2;
-}
-const handlerMap = {};
-const __rootInstance = /* @__PURE__ */ new Set();
-const __rootInstanceMap = /* @__PURE__ */ new WeakMap();
-const __tempVariables = /* @__PURE__ */ new Map();
-const __tempVariablesGroup = /* @__PURE__ */ new Map();
-const _modules = {};
-const _moduleMap = /* @__PURE__ */ new WeakMap();
-const RenderCallbackList = /* @__PURE__ */ new WeakMap();
-const PendingComponentList = /* @__PURE__ */ new WeakMap();
-const GlobalState = {
-  currentComponent: null
-};
-function getCurrentComponent() {
-  return GlobalState.currentComponent;
-}
-function resetCurrentComponent(component) {
-  GlobalState.currentComponent = component;
-}
-function createRenderCallback(component, delay = 1) {
-  if (!RenderCallbackList.has(component)) {
-    RenderCallbackList.set(
-      component,
-      debounce(($container = void 0) => {
-        component.render($container);
-      }, delay)
-    );
-  }
-  return RenderCallbackList.get(component);
-}
-function removeRenderCallback(component) {
-  if (RenderCallbackList.has(component)) {
-    RenderCallbackList.delete(component);
-  }
-}
-function renderComponent(component, $container = void 0) {
-  if (isPendingComponent(component)) {
-    return;
-  }
-  window.requestIdleCallback(() => {
-    var _a;
-    (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
-  });
-}
-function pendingComponent(component) {
-  PendingComponentList.set(component, true);
-}
-function isPendingComponent(component) {
-  return PendingComponentList.has(component);
-}
-function removePendingComponent(component) {
-  PendingComponentList.delete(component);
-}
-const VARIABLE_SAPARATOR = "v:";
-function variable(value, groupId = "") {
-  const id = `${VARIABLE_SAPARATOR}${uuidShort()}`;
-  __tempVariables.set(id, value);
-  if (groupId) {
-    __tempVariablesGroup.has(groupId) || __tempVariablesGroup.set(groupId, /* @__PURE__ */ new Set());
-    __tempVariablesGroup.get(groupId).add(id);
-  }
-  return id;
-}
-function initializeGroupVariables(groupId) {
-  if (__tempVariablesGroup.has(groupId)) {
-    __tempVariablesGroup.get(groupId).forEach((id) => {
-      __tempVariables.delete(id);
-    });
-    __tempVariablesGroup.delete(groupId);
-  }
-}
-function recoverVariable(id, removeVariable = true) {
-  if (isString(id) === false) {
-    return id;
-  }
-  let value = id;
-  if (__tempVariables.has(id)) {
-    value = __tempVariables.get(id);
-    if (removeVariable) {
-      __tempVariables.delete(id);
-    }
-  }
-  return value;
-}
-function getVariable(idOrValue) {
-  if (__tempVariables.has(idOrValue)) {
-    return __tempVariables.get(idOrValue);
-  }
-  return idOrValue;
-}
-function hasVariable(id) {
-  return __tempVariables.has(id);
-}
-function registRootElementInstance(instance, containerElement) {
-  const rootContainerElement = containerElement.el || containerElement;
-  __rootInstance.add(instance);
-  if (__rootInstanceMap.has(rootContainerElement)) {
-    removeRootElementInstance(__rootInstanceMap.get(rootContainerElement));
-  }
-  __rootInstanceMap.set(rootContainerElement, instance);
-}
-function removeRootElementInstance(instance) {
-  instance == null ? void 0 : instance.destroy();
-  __rootInstance.delete(instance);
-}
-function getRootElementInstanceList() {
-  return [...__rootInstance];
-}
-let globalForceRender = void 0;
-function isGlobalForceRender() {
-  return globalForceRender;
-}
-function setGlobalForceRender(isForceRender = false) {
-  if (typeof globalForceRender === "undefined") {
-    globalForceRender = isForceRender;
-  }
-}
-function renderRootElementInstanceList(isForce = false) {
-  getRootElementInstanceList().forEach((instance) => {
-    if (isForce) {
-      instance.forceRender();
-    } else {
-      instance.render();
-    }
-  });
-}
-function registHandler(handlers) {
-  Object.keys(handlers).forEach((key) => {
-    handlerMap[key] = handlers[key];
-  });
-}
-function retriveHandler(className) {
-  return handlerMap[className];
-}
-function createHandlerInstance(context, localHanders = {}) {
-  return [
-    ...Object.keys(handlerMap).map((key) => {
-      const HandlerClass = handlerMap[key];
-      return new HandlerClass(context);
-    }),
-    ...Object.keys(localHanders).map((key) => {
-      const HandlerClass = localHanders[key];
-      return new HandlerClass(context);
-    })
-  ];
-}
-function registerModule(id, modules = {}) {
-  if (!_modules[id]) {
-    _modules[id] = { new: modules, old: modules };
-    Object.keys(modules).forEach((key) => {
-      _moduleMap.set(modules[key], id);
-    });
-  } else {
-    refreshModule(id, modules);
-  }
-}
-function refreshModule(id, newModules) {
-  _modules[id].new = newModules;
-  Object.keys(newModules).forEach((key) => {
-    _moduleMap.set(newModules[key], id);
-  });
-}
-function getModule(Component) {
-  const id = _moduleMap.get(Component);
-  if (!id) {
-    return Component;
-  }
-  const m = _modules[id];
-  if (!m) {
-    return Component;
-  }
-  const newModule = m.new[Component.name];
-  if (newModule) {
-    return newModule;
-  }
-  const currentNewComponent = Object.values(m.new).find((it) => {
-    return it === Component;
-  });
-  if (currentNewComponent) {
-    return currentNewComponent;
-  }
-  let oldKey = "";
-  const currentOldComponent = Object.entries(m.old).find(([key, it]) => {
-    if (it === Component) {
-      oldKey = key;
-      return true;
-    }
-    return false;
-  });
-  if (currentOldComponent) {
-    return m.new[oldKey];
-  }
-  return Component;
-}
-class Dom {
-  constructor(tag, className, attr) {
-    if (typeof tag !== "string") {
-      if (tag instanceof Dom) {
-        this.el = tag.el;
-      } else {
-        this.el = tag;
-      }
-    } else {
-      var el = document.createElement(tag);
-      if (className) {
-        el.className = className;
-      }
-      attr = attr || {};
-      Object.assign(el, attr);
-      this.el = el;
-    }
-  }
-  static create(tag, className, attr) {
-    return new Dom(tag, className, attr);
-  }
-  static createText(text) {
-    return new Dom(document.createTextNode(text));
-  }
-  static createByHTML(htmlString) {
-    var div = Dom.create("div");
-    return div.html(htmlString).firstChild;
-  }
-  static getScrollTop() {
-    return Math.max(
-      window.pageYOffset,
-      document.documentElement.scrollTop,
-      document.body.scrollTop
-    );
-  }
-  static getScrollLeft() {
-    return Math.max(
-      window.pageXOffset,
-      document.documentElement.scrollLeft,
-      document.body.scrollLeft
-    );
-  }
-  static parse(html) {
-    var parser = window.DOMParser();
-    return parser.parseFromString(html, "text/html");
-  }
-  static body() {
-    return Dom.create(document.body);
-  }
-  get tagName() {
-    return this.el.tagName;
-  }
-  get exists() {
-    return Boolean(this.el);
-  }
-  setAttr(obj) {
-    Object.keys(obj).forEach((key) => {
-      this.attr(key, obj[key]);
-    });
-    return this;
-  }
-  setAttrNS(obj, namespace = "http://www.w3.org/2000/svg") {
-    Object.keys(obj).forEach((key) => {
-      this.attr(key, obj[key], namespace);
-    });
-    return this;
-  }
-  setProp(obj) {
-    Object.keys(obj).forEach((key) => {
-      if (this.el[key] != obj[key]) {
-        this.el[key] = obj[key];
-      }
-    });
-    return this;
-  }
-  data(key, value) {
-    if (arguments.length === 1) {
-      const value2 = this.attr("data-" + key);
-      return recoverVariable(value2, false);
-    } else if (arguments.length === 2) {
-      return this.attr("data-" + key, value);
-    }
-    return this;
-  }
-  attr(...args) {
-    if (args.length == 1) {
-      return isFunction(this.el.getAttribute) && this.el.getAttribute(args[0]);
-    }
-    if (this.el.getAttribute(args[0]) != args[1]) {
-      this.el.setAttribute(args[0], args[1]);
-    }
-    return this;
-  }
-  attrKeyValue(keyField) {
-    return {
-      [this.el.getAttribute(keyField)]: this.val()
-    };
-  }
-  get attributes() {
-    try {
-      return [...this.el.attributes];
-    } catch (e) {
-      const length = this.el.attributes.length;
-      const attributes = [];
-      for (var i = 0; i < length; i++) {
-        attributes.push(this.el.attributes[`${i}`]);
-      }
-      return attributes;
-    }
-  }
-  attrs(...args) {
-    return args.map((key) => {
-      return this.el.getAttribute(key);
-    });
-  }
-  styles(...args) {
-    return args.map((key) => {
-      return this.el.style[key];
-    });
-  }
-  removeAttr(key) {
-    this.el.removeAttribute(key);
-    return this;
-  }
-  removeStyle(key) {
-    this.el.style.removeProperty(key);
-    return this;
-  }
-  get isFragment() {
-    return this.el.nodeType === 11;
-  }
-  get isTemplate() {
-    return this.el.nodeType === 1 && this.el.tagName === "TEMPLATE";
-  }
-  get content() {
-    return this.isTemplate ? this.el.content : this.el;
-  }
-  is(checkElement) {
-    if (checkElement instanceof Dom) {
-      return this.el === checkElement.el;
-    }
-    return this.el === checkElement;
-  }
-  isTag(tag) {
-    return this.el.tagName.toLowerCase() === tag.toLowerCase();
-  }
-  clone(withChildren = true) {
-    return Dom.create(this.el.cloneNode(withChildren));
-  }
-  closest(cls) {
-    var temp = this;
-    var checkCls = false;
-    while (!(checkCls = temp.hasClass(cls))) {
-      if (temp.el.parentNode) {
-        temp = Dom.create(temp.el.parentNode);
-      } else {
-        return null;
-      }
-    }
-    if (checkCls) {
-      return temp;
-    }
-    return null;
-  }
-  path() {
-    if (!this.el)
-      return [];
-    let pathList = [this];
-    let $parentNode = this.parent();
-    if (!$parentNode.el)
-      return pathList;
-    while ($parentNode) {
-      pathList.unshift($parentNode);
-      $parentNode = $parentNode.parent();
-      if (!$parentNode.el)
-        break;
-    }
-    return pathList;
-  }
-  get $parent() {
-    return this.parent();
-  }
-  parent() {
-    return Dom.create(this.el.parentNode);
-  }
-  hasParent() {
-    return !!this.el.parentNode;
-  }
-  get isUnlinked() {
-    return !this.el.parentNode;
-  }
-  removeClass(...args) {
-    this.el.classList.remove(...args);
-    return this;
-  }
-  updateClass(className) {
-    this.el.className = className;
-    return this;
-  }
-  replaceClass(oldClass, newClass) {
-    this.el.classList.replace(oldClass, newClass);
-    return this;
-  }
-  hasClass(cls) {
-    if (!this.el.classList)
-      return false;
-    return this.el.classList.contains(cls);
-  }
-  addClass(...args) {
-    this.el.classList.add(...args);
-    return this;
-  }
-  onlyOneClass(cls) {
-    var parent = this.parent();
-    parent.children().forEach((it) => {
-      it.removeClass(cls);
-    });
-    this.addClass(cls);
-  }
-  toggleClass(cls, isForce) {
-    this.el.classList.toggle(cls, isForce);
-    return this;
-  }
-  outerHTML() {
-    if (this.isTextNode) {
-      return this.text();
-    }
-    return this.el.outerHTML;
-  }
-  html(html) {
-    try {
-      if (typeof html === "undefined") {
-        return this.el.innerHTML;
-      }
-      if (typeof html === "string") {
-        Object.assign(this.el, { innerHTML: html });
-      } else {
-        this.empty().append(html);
-      }
-      return this;
-    } catch (e) {
-      console.log(e, html);
-      return this;
-    }
-  }
-  find(selector, el = this.el) {
-    if (this.isTextNode)
-      return void 0;
-    return el.querySelector(selector);
-  }
-  $(selector) {
-    var node = this.find(selector, this.isTemplate ? this.el.content : this.el);
-    return node ? Dom.create(node) : null;
-  }
-  findAll(selector, el = this.el) {
-    if (this.isTextNode)
-      return [];
-    return Array.from(el.querySelectorAll(selector));
-  }
-  $$(selector) {
-    var arr = this.findAll(
-      selector,
-      this.isTemplate ? this.el.content : this.el
-    );
-    return arr.map((node) => Dom.create(node));
-  }
-  empty() {
-    while (this.el.firstChild)
-      this.el.removeChild(this.el.firstChild);
-    return this;
-  }
-  append(el) {
-    if (!el)
-      return this;
-    if (isArray(el)) {
-      this.el.append(...el.map((it) => it.el || it));
-    } else if (typeof el === "string") {
-      this.el.appendChild(document.createTextNode(el));
-    } else {
-      this.el.appendChild(el.el || el);
-    }
-    return this;
-  }
-  appendHTML(html) {
-    var $dom = Dom.create("div").html(html);
-    this.append($dom.createChildrenFragment());
-    return $dom;
-  }
-  createChildrenFragment() {
-    const list = this.childNodes;
-    var fragment = document.createDocumentFragment();
-    list.forEach(($el) => fragment.appendChild($el.el));
-    return fragment;
-  }
-  static createFragment(list = []) {
-    var fragment = document.createDocumentFragment();
-    list.forEach((it) => fragment.appendChild(it));
-    return fragment;
-  }
-  appendTo(target) {
-    var t = target.el ? target.el : target;
-    t.appendChild(this.el);
-    return this;
-  }
-  remove() {
-    if (this.el.parentNode) {
-      this.el.parentNode.removeChild(this.el);
-    }
-    return this;
-  }
-  removeChild(el) {
-    this.el.removeChild(el.el || el);
-    return this;
-  }
-  text(value) {
-    if (typeof value === "undefined") {
-      return this.el.textContent;
-    } else {
-      var tempText = value;
-      if (value instanceof Dom) {
-        tempText = value.text();
-      }
-      if (this.el.textContent !== tempText) {
-        this.el.textContent = tempText;
-      }
-      return this;
-    }
-  }
-  css(key, value) {
-    if (typeof key !== "undefined" && typeof value !== "undefined") {
-      if (key.indexOf("--") === 0 && typeof value !== "undefined") {
-        this.el.style.setProperty(key, value);
-      } else {
-        this.el.style[key] = value;
-      }
-    } else if (typeof key !== "undefined") {
-      if (typeof key === "string") {
-        return window.getComputedStyle(this.el)[key];
-      } else {
-        Object.entries(key).forEach(([localKey, value2]) => {
-          if (localKey.indexOf("--") === 0 && typeof value2 !== "undefined") {
-            this.el.style.setProperty(localKey, value2);
-          } else {
-            this.el.style[localKey] = value2;
-          }
-        });
-      }
-    }
-    return this;
-  }
-  cssText(value) {
-    if (typeof value === "undefined") {
-      return this.el.style.cssText;
-    }
-    if (value != this.el.tempCssText) {
-      this.el.style.cssText = value;
-      this.el.tempCssText = value;
-    }
-    return this;
-  }
-  cssFloat(key) {
-    return parseFloat(this.css(key));
-  }
-  rect() {
-    return this.el.getBoundingClientRect();
-  }
-  isSVG() {
-    if (!this.el._cachedIsSVG) {
-      this.el._cachedIsSVG = { value: this.el.tagName.toLowerCase() === "svg" };
-    }
-    return this.el._cachedIsSVG.value;
-  }
-  offsetRect() {
-    if (this.isSVG()) {
-      const parentBox = this.parent().rect();
-      const box = this.rect();
-      return {
-        x: box.x - parentBox.x,
-        y: box.y - parentBox.y,
-        width: box.width,
-        height: box.height
-      };
-    }
-    const el = this.el;
-    return {
-      x: el.offsetLeft,
-      y: el.offsetTop,
-      width: el.offsetWidth,
-      height: el.offsetHeight
-    };
-  }
-  offsetClientRect() {
-    if (this.isSVG()) {
-      const parentBox2 = this.parent().rect();
-      const box2 = this.rect();
-      return {
-        x: box2.x - parentBox2.x,
-        y: box2.y - parentBox2.y,
-        width: box2.width,
-        height: box2.height
-      };
-    }
-    const parentBox = this.parent().rect();
-    const box = this.rect();
-    return {
-      x: box.x - parentBox.x,
-      y: box.y - parentBox.y,
-      width: box.width,
-      height: box.height
-    };
-  }
-  offset() {
-    var rect = this.rect();
-    var scrollTop = Dom.getScrollTop();
-    var scrollLeft = Dom.getScrollLeft();
-    return {
-      top: rect.top + scrollTop,
-      left: rect.left + scrollLeft
-    };
-  }
-  offsetLeft() {
-    return this.offset().left;
-  }
-  offsetTop() {
-    return this.offset().top;
-  }
-  position() {
-    if (this.el.style.top) {
-      return {
-        top: parseFloat(this.css("top")),
-        left: parseFloat(this.css("left"))
-      };
-    } else {
-      return this.rect();
-    }
-  }
-  size() {
-    return [this.width(), this.height()];
-  }
-  width() {
-    return this.el.offsetWidth || this.rect().width;
-  }
-  contentWidth() {
-    return this.width() - this.cssFloat("padding-left") - this.cssFloat("padding-right");
-  }
-  height() {
-    return this.el.offsetHeight || this.rect().height;
-  }
-  contentHeight() {
-    return this.height() - this.cssFloat("padding-top") - this.cssFloat("padding-bottom");
-  }
-  val(value) {
-    if (typeof value === "undefined") {
-      return this.el.value;
-    } else if (typeof value !== "undefined") {
-      var tempValue = value;
-      if (value instanceof Dom) {
-        tempValue = value.val();
-      }
-      this.el.value = tempValue;
-    }
-    return this;
-  }
-  matches(selector) {
-    if (this.el) {
-      if (!this.el.matches)
-        return null;
-      if (this.el.matches(selector)) {
-        return this;
-      }
-      return this.parent().matches(selector);
-    }
-    return null;
-  }
-  get value() {
-    return this.el.value;
-  }
-  set value(v) {
-    this.el.value = v;
-  }
-  get naturalWidth() {
-    return this.el.naturalWidth;
-  }
-  get naturalHeight() {
-    return this.el.naturalHeight;
-  }
-  get files() {
-    return this.el.files ? [...this.el.files] : [];
-  }
-  get isTextNode() {
-    return this.el.nodeType === 3;
-  }
-  show(displayType = "block") {
-    this.el.style.display = displayType != "none" ? displayType : "block";
-    return this;
-  }
-  hide() {
-    this.el.style.display = "none";
-    return this;
-  }
-  isHide() {
-    return this.el.style.display === "none";
-  }
-  isShow() {
-    return !this.isHide();
-  }
-  toggle(isForce) {
-    var currentHide = this.isHide();
-    if (arguments.length == 1) {
-      if (isForce) {
-        return this.show();
-      } else {
-        return this.hide();
-      }
-    } else {
-      if (currentHide) {
-        return this.show();
-      } else {
-        return this.hide();
-      }
-    }
-  }
-  scrollIntoView() {
-    this.el.scrollIntoView();
-  }
-  get scrollTop() {
-    if (this.el === document.body) {
-      return Dom.getScrollTop();
-    }
-    return this.el.scrollTop;
-  }
-  get scrollLeft() {
-    if (this.el === document.body) {
-      return Dom.getScrollLeft();
-    }
-    return this.el.scrollLeft;
-  }
-  get scrollHeight() {
-    return this.el.scrollHeight;
-  }
-  get scrollWidth() {
-    return this.el.scrollWidth;
-  }
-  on(eventName, callback, opt1, opt2) {
-    this.el.addEventListener(eventName, callback, opt1, opt2);
-    return this;
-  }
-  off(eventName, callback) {
-    this.el.removeEventListener(eventName, callback);
-    return this;
-  }
-  getElement() {
-    return this.el;
-  }
-  get firstChild() {
-    return Dom.create(this.el.firstElementChild);
-  }
-  get first() {
-    return Dom.create(this.el.firstChild);
-  }
-  children() {
-    var element = this.el.firstElementChild;
-    if (!element) {
-      return [];
-    }
-    var results = [];
-    do {
-      results.push(Dom.create(element));
-      element = element.nextElementSibling;
-    } while (element);
-    return results;
-  }
-  hasChild(child) {
-    const childNode = child.el || child;
-    return this.el === childNode ? false : this.el.contains(childNode);
-  }
-  get childNodes() {
-    const result = [];
-    if (this.el.hasChildNodes()) {
-      const childNodes = this.el.childNodes;
-      for (let i = 0; i < childNodes.length; i++) {
-        result.push(Dom.create(childNodes[i]));
-      }
-    }
-    return result;
-  }
-  childLength() {
-    return this.el.childNodes.length;
-  }
-  replace(newElement) {
-    if (this.el.parentNode) {
-      this.el.parentNode.replaceChild(newElement.el || newElement, this.el);
-    }
-    return this;
-  }
-  replaceChild(oldElement, newElement) {
-    this.el.replaceChild(
-      newElement.el || newElement,
-      oldElement.el || oldElement
-    );
-    return this;
-  }
-  checked(isChecked = false) {
-    if (arguments.length == 0) {
-      return !!this.el.checked;
-    }
-    this.el.checked = !!isChecked;
-    return this;
-  }
-  click() {
-    this.el.click();
-    return this;
-  }
-  focus() {
-    this.el.focus();
-    return this;
-  }
-  dispatchEvent(event, data) {
-    const evt = new CustomEvent(event, { detail: data });
-    this.el.dispatchEvent(evt);
-    return this;
-  }
-  select() {
-    if (this.attr("contenteditable") === "true") {
-      var range = document.createRange();
-      range.selectNodeContents(this.el);
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-    } else {
-      this.el.select();
-    }
-    return this;
-  }
-  blur() {
-    this.el.blur();
-    return this;
-  }
-}
 const VNodeType = {
   NODE: 8,
   TEXT: 3,
@@ -1048,49 +197,6 @@ const VNodeType = {
   ELEMENT: 101,
   COMMENT: 102
 };
-function VNodeToElement(obj, options = {}) {
-  if (isString(obj)) {
-    obj = createVNodeText(obj);
-  }
-  if (isArray(obj) && obj.length === 1) {
-    return VNodeToElement(obj[0], options);
-  }
-  if (obj) {
-    return Dom.create(obj.makeElement(true, options).el);
-  }
-  return null;
-}
-async function VNodeToHtml(obj, options = {}) {
-  if (isString(obj)) {
-    return obj;
-  }
-  if (isArray(obj) && obj.length === 1) {
-    return await VNodeToHtml(obj[0], options);
-  }
-  if (obj) {
-    return await obj.makeHtml(true, options);
-  }
-  return "";
-}
-const VoidTags = {
-  area: true,
-  base: true,
-  br: true,
-  col: true,
-  embed: true,
-  hr: true,
-  img: true,
-  input: true,
-  link: true,
-  meta: true,
-  param: true,
-  source: true,
-  track: true,
-  wbr: true
-};
-function isVoidTag(tag) {
-  return VoidTags[tag.toLowerCase()];
-}
 const MAGIC_METHOD_REG = /^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g;
 const MAGIC_METHOD = "@magic:";
 const SPLITTER = "|";
@@ -1235,329 +341,24 @@ class MagicMethod {
     };
   }
 }
-const booleanTypes = new Map(
-  Object.entries({
-    checked: true,
-    disabled: true,
-    selected: true,
-    readonly: true,
-    required: true,
-    multiple: true,
-    open: true,
-    hidden: true,
-    spellcheck: true,
-    autofocus: true,
-    autoplay: true,
-    controls: true,
-    loop: true,
-    muted: true,
-    default: true,
-    defer: true,
-    async: true,
-    allowfullscreen: true,
-    allowtransparency: true,
-    allowpaymentrequest: true
-  })
-);
-const expectKeys = {
-  content: true,
-  ref: true
-};
-const TEXT_NODE = 3;
-const COMMENT_NODE = 8;
-const KEY_STYLE = "style";
-const PREFIX_EVENT = "on";
-function isBooleanType(key) {
-  return booleanTypes.has(key);
-}
-const patch = {
-  setBooleanProp(el, name, value) {
-    if (isNotUndefined(value)) {
-      el.setAttribute(name, name);
-      el[name] = value;
-    } else {
-      el.removeAttribute(name);
-      el[name] = void 0;
-    }
-  },
-  setProp(el, name, value) {
-    if (isBooleanType(name)) {
-      this.setBooleanProp(el, name, value);
-    } else if (name.startsWith(PREFIX_EVENT)) {
-      el[name.toLowerCase()] = value;
-    } else if (name === KEY_STYLE) {
-      el.style.cssText = value;
-    } else {
-      el.setAttribute(name, value);
-      el[name] = value;
-    }
-  },
-  removeProp(el, name) {
-    el.removeAttribute(name);
-    if (isBooleanType(name)) {
-      el[name] = false;
-    } else if (name) {
-      el[name] = void 0;
-    }
-  },
-  updateProp(node, name, newValue, oldValue) {
-    if (isUndefined(newValue)) {
-      if (oldValue) {
-        console.log(node, newValue, oldValue);
-        this.removeProp(node, name);
-      }
-    } else if (!oldValue || newValue != oldValue) {
-      this.setProp(node, name, newValue);
-    }
-  },
-  replaceWith(oldEl, newVNode, options) {
-    const isRootElement = options.context.$el.el === oldEl;
-    const objectElement = newVNode.makeElement(true, options).el;
-    if (isRootElement) {
-      options.context.$el.el = objectElement;
-    }
-    oldEl.replaceWith(objectElement);
-    newVNode.runMounted();
-  },
-  replaceText(oldEl, newVNode) {
-    if (oldEl.textContent != newVNode.textContent) {
-      oldEl.textContent = newVNode.textContent;
-    }
-  },
-  replaceComment(oldEl, newVNode) {
-    patch.replaceText(oldEl, newVNode);
-  },
-  addNewVNode(parentElement, oldEl, newVNode, options) {
-    parentElement.insertBefore(newVNode.makeElement(true, options).el, oldEl);
-    parentElement.removeChild(oldEl);
-    newVNode.runMounted();
-  },
-  appendChild(el, newVNode, options) {
-    const newVNodeInstance = newVNode.makeElement(true, options);
-    if (newVNodeInstance == null ? void 0 : newVNodeInstance.el) {
-      el.appendChild(newVNodeInstance.el);
-      newVNode.runMounted();
-    }
-  },
-  removeChild(parentElement, oldEl) {
-    parentElement.removeChild(oldEl);
-  }
-};
-const check = {
-  isTextNode(node) {
-    return node.nodeType === TEXT_NODE;
-  },
-  isCommentNode(node) {
-    return node.nodeType === COMMENT_NODE;
-  },
-  isElementNode(node) {
-    return node.nodeType === 1;
-  },
-  isVNodeText(node) {
-    return node.type === VNodeType.TEXT;
-  },
-  isVNodeComment(node) {
-    return node.type === VNodeType.COMMENT;
-  },
-  changed(vNode, node2) {
-    return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
-  },
-  hasPassed(vNode) {
-    return vNode.pass;
-  },
-  hasRefClass(vNode) {
-    return vNode.Component;
-  }
-};
-const updateProps = (node, newProps = {}, oldProps = {}) => {
-  const newPropsKeys = Object.keys(newProps);
-  const oldPropsKeys = Object.keys(oldProps);
-  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
-    return;
-  }
-  newPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
-    const newValue = newProps[key];
-    let oldValue;
-    if (key === "style") {
-      oldValue = node.style.cssText;
-    } else {
-      oldValue = oldProps[key];
-    }
-    patch.updateProp(node, key, newValue, oldValue);
+const UUID_REG = /[xy]/g;
+function uuid() {
+  var dt = new Date().getTime();
+  var uuid2 = "xxx12-xx-34xx".replace(UUID_REG, function(c) {
+    var r = (dt + Math.random() * 16) % 16 | 0;
+    dt = Math.floor(dt / 16);
+    return (c == "x" ? r : r & 3 | 8).toString(16);
   });
-  oldPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
-    if (isUndefined(newProps[key])) {
-      let oldValue;
-      if (key === "style") {
-        oldValue = node.style.cssText;
-      } else {
-        oldValue = oldProps[key];
-      }
-      if (oldValue) {
-        patch.removeProp(node, key);
-      }
-    }
+  return uuid2;
+}
+function uuidShort() {
+  var dt = new Date().getTime();
+  var uuid2 = "idxxxxxxx".replace(UUID_REG, function(c) {
+    var r = (dt + Math.random() * 16) % 16 | 0;
+    dt = Math.floor(dt / 16);
+    return (c == "x" ? r : r & 3 | 8).toString(16);
   });
-};
-function omitProps(vNode) {
-  const props = vNode.props || {};
-  const results = {};
-  const keys = Object.keys(props);
-  if (!keys.length) {
-    return results;
-  }
-  for (let i = 0, len = keys.length; i < len; i++) {
-    const key = keys[i];
-    if (key.startsWith(PREFIX_EVENT)) {
-      results[key] = props[key];
-    } else {
-      if (key === KEY_STYLE) {
-        results[key] = vNode.stringifyStyle;
-      } else {
-        results[key] = props[key];
-      }
-    }
-  }
-  return results;
-}
-function getProps$1(oldEl, attributes, newProps) {
-  var results = {};
-  const len = attributes.length;
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
-    const name = t.name;
-    const value = t.value;
-    results[name] = value;
-  }
-  Object.keys(newProps).forEach((key) => {
-    const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
-    if (!results[checkKey]) {
-      results[key] = oldEl[checkKey];
-    }
-  });
-  return results;
-}
-function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
-  if (check.isTextNode(oldEl) && !check.isVNodeText(newVNode) || check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode)) {
-    patch.addNewVNode(parentElement, oldEl, newVNode, options);
-  } else if (!check.isTextNode(oldEl) && check.isVNodeText(newVNode) || !check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
-    patch.addNewVNode(parentElement, oldEl, newVNode, options);
-  } else if (check.isTextNode(oldEl) && check.isVNodeText(newVNode)) {
-    patch.replaceText(oldEl, newVNode);
-  } else if (check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
-    patch.replaceComment(oldEl, newVNode);
-  } else {
-    if (check.hasRefClass(newVNode)) {
-      if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
-        patch.replaceWith(oldEl, newVNode, options);
-        if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(
-            newVNode.el,
-            newVNode.instance,
-            newVNode.instance.id,
-            oldEl
-          );
-        }
-      }
-    } else {
-      patch.replaceWith(oldEl, newVNode, options);
-    }
-  }
-  return true;
-}
-function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
-  const newVNodeProps = omitProps(newVNode);
-  updateProps(
-    oldEl,
-    newVNodeProps,
-    getProps$1(oldEl, oldEl.attributes, newVNodeProps)
-  );
-  updateChildren(oldEl, newVNode, options);
-}
-function updateChildren(oldEl, newVNode, options = {}) {
-  if (!oldEl.hasChildNodes() && !newVNode.children.length) {
-    return;
-  }
-  var oldChildren = children$1(oldEl);
-  var newChildren = vNodeChildren(newVNode);
-  var max = Math.max(oldChildren.length, newChildren.length);
-  if (max === 0) {
-    return;
-  }
-  if (oldChildren.length === 0 && newChildren.length > 0) {
-    var fragment = document.createDocumentFragment();
-    newChildren.forEach((it) => {
-      const retElement = it.makeElement(true, options).el;
-      if (retElement) {
-        fragment.appendChild(retElement);
-      }
-    });
-    oldEl.appendChild(fragment);
-    newChildren.forEach((it) => {
-      it.runMounted();
-    });
-  } else if (oldChildren.length > 0 && newChildren.length === 0) {
-    oldEl.textContent = "";
-  } else {
-    for (var i = 0; i < max; i++) {
-      updateElement(oldEl, oldChildren[i], newChildren[i], options);
-    }
-  }
-}
-function updateElement(parentElement, oldEl, newVNode, options = {}) {
-  var _a;
-  parentElement = parentElement || options.context.parentElement;
-  if (!oldEl && newVNode) {
-    patch.appendChild(parentElement, newVNode, options);
-    return;
-  }
-  if (!newVNode && oldEl) {
-    patch.removeChild(parentElement, oldEl, options);
-    return;
-  }
-  if (!((_a = newVNode.props) == null ? void 0 : _a.pass)) {
-    if (check.hasPassed(newVNode)) {
-      return;
-    }
-    if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
-      updateChangedElement(parentElement, oldEl, newVNode, options);
-      return;
-    }
-  }
-  const newNodeType = newVNode.type;
-  if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
-    updatePropertyAndChildren(oldEl, newVNode, options);
-  }
-}
-const children$1 = (el) => {
-  var element = el.firstChild;
-  if (!element) {
-    return [];
-  }
-  var results = [];
-  do {
-    results[results.length] = element;
-    element = element.nextSibling;
-  } while (element);
-  return results;
-};
-const vNodeChildren = (vnode) => {
-  if (!vnode.children.length) {
-    return [];
-  }
-  return vnode.children;
-};
-const DefaultOption = {
-  checkPassed: void 0,
-  keyField: "key",
-  removedElements: []
-};
-function Reconcile(oldEl, newVNode, options = {}) {
-  options = Object.assign({}, DefaultOption, options);
-  if (oldEl.nodeType !== 11) {
-    updateElement(oldEl.parentElement, oldEl, newVNode, options);
-    return;
-  }
+  return uuid2;
 }
 const makeEventChecker = (value, split = SPLITTER) => {
   return ` ${split} ${value}`;
@@ -2362,6 +1163,9 @@ function renderFromRoot() {
 function useBatch(callback) {
   getCurrentComponent().useBatch(callback);
 }
+function useRender() {
+  useBatch(null);
+}
 function useId() {
   return getCurrentComponent().useId();
 }
@@ -2640,9 +1444,9 @@ class HookMachine extends MagicHandler {
       hookInfo
     };
   }
-  useBatch(calback) {
+  useBatch(callback) {
     pendingComponent(this);
-    calback();
+    callback && callback();
     removePendingComponent(this);
     renderComponent(this);
   }
@@ -2855,6 +1659,7 @@ const _EventMachine = class extends HookMachine {
       }
     });
     __publicField(this, "registerChildComponent", (el, childComponent, id, oldEl) => {
+      el = el || oldEl;
       if (!__privateGet(this, _childObjectElements).has(el)) {
         __privateGet(this, _childObjectList)[id] = el;
         __privateGet(this, _childObjectElements).set(el, childComponent);
@@ -2888,6 +1693,9 @@ const _EventMachine = class extends HookMachine {
     this.refs = {};
     this.id = uuid();
     this.initializeProperty(opt, props, state);
+  }
+  get renderer() {
+    return this.$store.get(COMPONENT_ROOT_CONTEXT).renderer;
   }
   setId(id) {
     this.id = id;
@@ -2936,7 +1744,7 @@ const _EventMachine = class extends HookMachine {
   setState(state = {}, isRefresh = true) {
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
     if (isRefresh) {
-      this.refresh();
+      renderComponent(this);
     }
   }
   toggleState(key, isLoad = true) {
@@ -2953,12 +1761,12 @@ const _EventMachine = class extends HookMachine {
   _reload(props) {
     if (this.changedProps(props)) {
       this.props = props;
-      this.refresh();
+      renderComponent(this);
     }
   }
   checkLoad($container) {
     window.requestAnimationFrame(() => {
-      this.render($container);
+      renderComponent(this, $container);
     });
   }
   get state() {
@@ -2990,44 +1798,9 @@ const _EventMachine = class extends HookMachine {
   isInstanceOf(Component) {
     return this instanceof Component;
   }
-  async runningUpdate(template, isForceRender) {
-    if (template.type === VNodeType.FRAGMENT) {
-      updateChildren(this.parentElement, template);
-    } else {
-      Reconcile(this.$el.el, template, {
-        checkRefClass: this.checkRefClass,
-        context: this,
-        isForceRender,
-        registerRef: this.registerRef,
-        registerChildComponent: this.registerChildComponent
-      });
-    }
-    this.$el.el[COMPONENT_INSTANCE] = this;
-    this.runUpdated();
-    await this.runHandlers("update");
-  }
-  async runningMount(template, $container) {
-    const newDomElement = this.parseMainTemplate(template);
-    this.$el = newDomElement;
-    this.refs.$el = this.$el;
-    if (this.$el) {
-      this.$el.el[COMPONENT_INSTANCE] = this;
-    }
-    if ($container) {
-      if (!($container instanceof Dom)) {
-        $container = Dom.create($container);
-      }
-      if ($container.hasChild(this.$el) === false) {
-        $container.append(this.$el);
-        this.runMounted();
-      }
-    }
-    await this.runHandlers("initialize");
-    await this.afterRender();
-  }
   async forceRender() {
     this.cleanHooks();
-    await this.render(null, true);
+    await renderComponent(this);
   }
   setParentElement(parentElement) {
     this.parentElement = parentElement;
@@ -3036,35 +1809,7 @@ const _EventMachine = class extends HookMachine {
     return this.sourceName === name && callback(this);
   }
   async render($container, isForceRender = false) {
-    if (!this.isPreLoaded) {
-      this.checkLoad($container);
-      return;
-    }
-    this.resetCurrentComponent();
-    const template = this.template();
-    if (isArray(template)) {
-      throw new Error(
-        [
-          `Error Component - ${this.sourceName}`,
-          "Template root is not must an array, however You can use Fragment instead of it",
-          "Fragment Samples: ",
-          " <>{list}</> ",
-          " <Fragment>{list}</Fragment>"
-        ].join("\n")
-      );
-    }
-    if (this.$el) {
-      await this.runningUpdate(template, isForceRender);
-    } else {
-      await this.runningMount(template, $container);
-    }
-    return this;
-  }
-  async renderToHtml() {
-    this.resetCurrentComponent();
-    const template = this.template();
-    const html = await VNodeToHtml(template, this.getVNodeOptions());
-    return html;
+    renderComponent(this, $container);
   }
   initialize() {
     __privateSet(this, _state, this.initState());
@@ -3077,18 +1822,15 @@ const _EventMachine = class extends HookMachine {
     return {
       context: this,
       registerRef: this.registerRef,
-      registerChildComponent: this.registerChildComponent
+      registerChildComponent: this.registerChildComponent,
+      checkRefClass: this.checkRefClass
     };
-  }
-  parseMainTemplate(html) {
-    let $el = VNodeToElement(html, this.getVNodeOptions());
-    return $el;
   }
   getFunctionComponent() {
     return this;
   }
   refresh() {
-    this.render();
+    renderComponent(this);
   }
   afterRender() {
   }
@@ -3628,60 +2370,6 @@ function css(style) {
   });
   return newStyles;
 }
-const SVG_ELEMENTS = {
-  svg: true,
-  g: true,
-  path: true,
-  rect: true,
-  circle: true,
-  ellipse: true,
-  line: true,
-  polyline: true,
-  polygon: true,
-  text: true,
-  tspan: true,
-  textPath: true,
-  tref: true,
-  defs: true,
-  clipPath: true,
-  mask: true,
-  pattern: true,
-  image: true,
-  linearGradient: true,
-  radialGradient: true,
-  stop: true,
-  animate: true,
-  animateMotion: true,
-  animateColor: true,
-  animateTransform: true,
-  mpath: true,
-  set: true,
-  use: true,
-  desc: true,
-  metadata: true,
-  title: true,
-  marker: true,
-  symbol: true,
-  view: true,
-  foreignObject: true,
-  switch: true,
-  link: true
-};
-const SVG_ELEMENTS_LIST = {};
-Object.keys(SVG_ELEMENTS).forEach((key) => {
-  SVG_ELEMENTS_LIST[key.toLowerCase()] = true;
-  SVG_ELEMENTS_LIST[key.toUpperCase()] = true;
-});
-function isSVG(tagName) {
-  return !!SVG_ELEMENTS[tagName];
-}
-const TAG_PREFIX = "<";
-let TEMP_DIV;
-let TEMP_TEXT;
-let TEMP_COMMENT;
-let cache = {};
-let cacheCount = 0;
-let nativeDomCache = {};
 const EXPECT_ATTRIBUTES = {
   memoizedProps: true,
   parentElement: true,
@@ -3689,95 +2377,13 @@ const EXPECT_ATTRIBUTES = {
   children: true,
   instance: true
 };
-const ENABLE_PROPERTY = {
-  indeterminate: true
-};
-function makeTempDiv() {
-  if (!TEMP_DIV) {
-    TEMP_DIV = Dom.create("div");
-  }
-  return TEMP_DIV;
-}
-function makeTempText() {
-  if (!TEMP_TEXT) {
-    TEMP_TEXT = document.createTextNode("");
-  }
-  return TEMP_TEXT;
-}
-function makeTempComment() {
-  if (!TEMP_COMMENT) {
-    TEMP_COMMENT = document.createComment("");
-  }
-  return TEMP_COMMENT;
-}
-function makeNativeDom(name) {
-  if (!nativeDomCache[name]) {
-    const el = isSVG(name) ? document.createElementNS("http://www.w3.org/2000/svg", name) : document.createElement(name);
-    nativeDomCache[name] = el;
-  }
-  return nativeDomCache[name].cloneNode(false);
-}
-function makeNativeTextDom(value) {
-  const text = makeTempText().cloneNode();
-  text.textContent = value;
-  return text;
-}
-function makeNativeCommentDom(value) {
-  const text = makeTempComment().cloneNode();
-  text.textContent = value;
-  return text;
-}
-const expectAttributes = {
-  content: true
-};
-function setAttribute(el, name, value) {
-  if (expectAttributes[name])
-    return;
-  if (ENABLE_PROPERTY[name]) {
-    el[name] = value;
-  } else {
-    el.setAttribute(name, value);
-  }
-}
-function removeAttribute(el, name) {
-  if (ENABLE_PROPERTY[name]) {
-    el[name] = false;
-  } else {
-    el.removeAttribute(name);
-  }
-}
-function setEventAttribute(el, name, value) {
-  el[name.toLowerCase()] = value;
-}
-function setStyle(el, key, value) {
-  if (key.indexOf("--") === 0) {
-    if (typeof value === "undefined") {
-      el.style.removeProperty(key);
-    } else {
-      el.style.setProperty(key, value);
-    }
-  } else {
-    el.style[key] = value;
-  }
-}
-function stringifyStyle(styleObject) {
+function stringifyStyle$1(styleObject) {
   const newStyle = css(styleObject);
   return Object.keys(newStyle).map((key) => {
     return `${key}: ${newStyle[key]};`;
   }).join(" ");
 }
-function getProps(attributes) {
-  var results = {};
-  const len = attributes.length;
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
-    const name = t.name;
-    const value = t.value;
-    results[name] = value;
-  }
-  return results;
-}
-const children = (el) => {
+const children$1 = (el) => {
   var element = el.firstChild;
   if (!element) {
     return [];
@@ -3789,17 +2395,6 @@ const children = (el) => {
   } while (element);
   return results;
 };
-function makeOneElement(html) {
-  if (cacheCount > 2e3) {
-    cacheCount = 0;
-    cache = {};
-  }
-  if (!cache[html]) {
-    cacheCount++;
-    cache[html] = makeTempDiv().html(html).first.el;
-  }
-  return cache[html].cloneNode(true);
-}
 function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
   if (isFunction(obj1) && isFunction(obj2)) {
     return false;
@@ -3886,6 +2481,13 @@ class VNode {
       }, 0);
     }
   }
+  runUpdated() {
+    if (this.updated) {
+      requestAnimationFrame(() => {
+        this.updated();
+      }, 0);
+    }
+  }
   get stringifyStyle() {
     return this.memoizedProps.style;
   }
@@ -3893,7 +2495,7 @@ class VNode {
     const newProps = Object.assign({}, this.props);
     if (!this.Component) {
       if (isObject(newProps.style)) {
-        newProps.style = stringifyStyle(newProps.style);
+        newProps.style = stringifyStyle$1(newProps.style);
       }
       if (newProps.className) {
         newProps.class = newProps.className;
@@ -3912,19 +2514,7 @@ class VNode {
         return;
       this.children = this.children.filter(isValue).map((child) => {
         if (isString(child)) {
-          if (this.enableHtml) {
-            if (child.indexOf(TAG_PREFIX) === -1) {
-              return createVNodeText(child);
-            } else {
-              const newEl = makeOneElement(child);
-              if ((newEl == null ? void 0 : newEl.nodeType) === 3) {
-                return createVNodeText(newEl.textContent);
-              }
-              return createVNodeText(newEl);
-            }
-          } else {
-            return createVNodeText(child);
-          }
+          return createVNodeText(child);
         } else if (isNumber(child)) {
           return createVNodeText(child);
         }
@@ -3933,104 +2523,8 @@ class VNode {
       this.props.content = this.children;
     }
   }
-  insertElement(child, fragment, parentElement, withChildren, options) {
-    if (child instanceof VNode || (child == null ? void 0 : child.makeElement)) {
-      child.setParentElement(parentElement);
-      const el = child.makeElement(withChildren, options).el;
-      if (el) {
-        fragment.appendChild(el);
-      }
-    } else if (isArray(child)) {
-      child.forEach((it) => {
-        if (it) {
-          this.insertElement(
-            it,
-            fragment,
-            parentElement,
-            withChildren,
-            options
-          );
-        }
-      });
-    } else if (isFunction(child)) {
-      const result = child();
-      if (result) {
-        this.insertElement(
-          result,
-          fragment,
-          parentElement,
-          withChildren,
-          options
-        );
-      }
-    } else if (child instanceof window.HTMLElement) {
-      fragment.appendChild(child);
-    } else if (isValue(child)) {
-      fragment.appendChild(document.createTextNode(child));
-    } else
-      ;
-  }
-  makeChildren(withChildren, options) {
-    const parentElement = this.el;
-    const children2 = this.children;
-    if (children2 && children2.length) {
-      const fragment = document.createDocumentFragment();
-      this.insertElement(
-        children2,
-        fragment,
-        parentElement,
-        withChildren,
-        options
-      );
-      parentElement.appendChild(fragment);
-      children2.forEach((child) => {
-        if (isArray(child)) {
-          child.forEach((it) => {
-            if (isFunction(it == null ? void 0 : it.runMounted)) {
-              it.runMounted();
-            }
-          });
-        } else if (child) {
-          if (isFunction(child == null ? void 0 : child.runMounted)) {
-            child.runMounted();
-          }
-        }
-      });
-    }
-  }
   setParentElement(parentElement) {
     this.parentElement = parentElement;
-  }
-  async makeChildrenHtml(withChildren, options) {
-    const tempChildren = [];
-    const children2 = this.children;
-    if (children2 && children2.length) {
-      const tempArray = await Promise.all(
-        children2.map(async (child) => {
-          if (child instanceof VNode || child.makeHtml) {
-            return await child.makeHtml(withChildren, options);
-          } else if (isArray(child)) {
-            return await Promise.all(
-              child.map(async (it) => {
-                if (it) {
-                  return await it.makeHtml(withChildren, options);
-                }
-                return void 0;
-              })
-            ).filter((it) => typeof it !== "undefined");
-          } else if (isFunction(child)) {
-            return await child();
-          } else {
-            return await child;
-          }
-        })
-      );
-      tempChildren.push(...tempArray);
-    }
-    return tempChildren.join("\n");
-  }
-  createElement() {
-    return makeNativeDom(this.tag);
   }
   getContextProps(context, props) {
     const newProps = context.filterFunction("getProps").flat(Infinity);
@@ -4043,96 +2537,12 @@ class VNode {
       }
     });
   }
-  makeElement(withChildren = false, options = {}) {
-    const el = this.createElement();
-    let props = this.memoizedProps;
-    if (props) {
-      if (props.ref) {
-        this.getContextProps(options.context, props);
-        this.ref = props.ref;
-        if (this.ref instanceof RefClass) {
-          this.ref.setCurrent(el);
-        }
-        isFunction(options.registerRef) && options.registerRef(props.ref, el);
-      }
-      Object.keys(props).forEach((key) => {
-        const value = props[key];
-        if (key === "style") {
-          if (isString(value)) {
-            el.style.cssText = value;
-          } else {
-            if (isObject(value) && Object.keys(value).length) {
-              const styleValues = css(value);
-              Object.entries(styleValues).forEach(([localKey, value2]) => {
-                setStyle(el, localKey, value2);
-              });
-            } else {
-              removeAttribute(el, "style");
-            }
-          }
-        } else {
-          if (key) {
-            if (value !== void 0) {
-              if (key.startsWith("on")) {
-                setEventAttribute(el, key, value);
-              } else {
-                setAttribute(el, key, value);
-              }
-            }
-          }
-        }
-      });
-    }
-    this.el = el;
-    this.makeChildren(withChildren, options);
-    return this;
-  }
-  async makeHtml(withChildren = false, options = {}) {
-    const tempProps = [];
-    const props = this.memoizedProps;
-    if (props) {
-      if (props.ref) {
-        this.getContextProps(options.context, props);
-      }
-      Object.keys(props).forEach((key) => {
-        const value = props[key];
-        if (key === "style") {
-          if (isString(value))
-            ;
-          else {
-            props[key] = stringifyStyle(css(value));
-          }
-        } else {
-          if (key) {
-            if (value !== void 0) {
-              if (key.startsWith("on")) {
-                return;
-              }
-            }
-          }
-        }
-        if (key === "ref") {
-          return;
-        }
-        if (value) {
-          tempProps.push(`${key}="${value}"`);
-        }
-      });
-    }
-    if (isVoidTag(this.tag)) {
-      return `
-        <${this.tag} ${tempProps.join(" ")} />
-      `;
-    } else {
-      const childrenHtml = await this.makeChildrenHtml(withChildren, options);
-      return `
-        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
-      `;
-    }
-  }
   makeText(divider = "") {
     const arr = this.children.map((child) => child.makeText(divider)).flat(Infinity);
     return arr.join(divider);
+  }
+  isType(type) {
+    return this.type === type;
   }
 }
 class VNodeText extends VNode {
@@ -4148,15 +2558,7 @@ class VNodeText extends VNode {
   }
   runMounted() {
   }
-  createElement() {
-    return makeNativeTextDom(this.value);
-  }
-  makeElement() {
-    this.el = this.createElement();
-    return this;
-  }
-  makeHtml() {
-    return this.value;
+  runUpdated() {
   }
   makeText() {
     return this.value;
@@ -4175,15 +2577,7 @@ class VNodeComment extends VNode {
   }
   runMounted() {
   }
-  createElement() {
-    return makeNativeCommentDom(this.value);
-  }
-  makeElement() {
-    this.el = this.createElement();
-    return this;
-  }
-  makeHtml() {
-    return `<!-- ${this.value} -->`;
+  runUpdated() {
   }
   makeText() {
     return "";
@@ -4199,22 +2593,12 @@ class VNodeFragment extends VNode {
       this.children.map((it) => it.clone())
     );
   }
-  makeElement(withChildren = false, options = {}) {
-    if (this.el)
-      return this;
-    const el = document.createDocumentFragment();
-    this.el = el;
-    this.makeChildren(withChildren, options);
-    return this;
-  }
-  async makeHtml(withChildren = false, options = {}) {
-    return await this.makeChildrenHtml(withChildren, options);
-  }
 }
 class VNodeComponent extends VNode {
   constructor(props = {}, children2, Component) {
     super(VNodeType.COMPONENT, "object", props || {}, children2);
     this.Component = Component;
+    this.LastComponent = Component;
     this.instance = null;
   }
   clone() {
@@ -4228,11 +2612,15 @@ class VNodeComponent extends VNode {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onMounted();
   }
+  updated() {
+    var _a;
+    (_a = this.instance) == null ? void 0 : _a.onUpdated();
+  }
   getModule() {
     return getModule(this.Component);
   }
   get isComponentChanged() {
-    return this.Component !== this.getModule();
+    return this.LastComponent !== this.getModule();
   }
   makeClassInstance(options) {
     var _a, _b, _c;
@@ -4258,34 +2646,9 @@ class VNodeComponent extends VNode {
     }
     return this.instance;
   }
-  render(options) {
-    this.makeClassInstance(options);
-    try {
-      this.instance.setParentElement(this.parentElement);
-      this.instance.render(options.$container);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-  async renderHtml(options) {
-    this.makeClassInstance(options);
-    return await this.instance.renderToHtml();
-  }
-  makeElement(withChildren, options = {}) {
-    var _a, _b;
-    this.render(options);
-    this.el = (_b = (_a = this.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
-    if (this.el) {
-      const id = isString(this.props.ref) ? this.props.ref : this.instance.id;
-      if (this.props.ref instanceof RefClass) {
-        this.props.ref.setCurrent(this.instance);
-      }
-      isFunction(options.registerChildComponent) && options.registerChildComponent(this.el, this.instance, id);
-    }
-    return this;
-  }
-  async makeHtml(withChildren, options = {}) {
-    return await this.renderHtml(options);
+  template() {
+    var _a;
+    return (_a = this.instance) == null ? void 0 : _a.template();
   }
   makeText() {
     return "";
@@ -4312,6 +2675,1691 @@ function createVNodeComment(text) {
 function cloneVNode(vnode) {
   return vnode.clone();
 }
+let TEMP_COMMENT;
+function makeTempComment() {
+  if (!TEMP_COMMENT) {
+    TEMP_COMMENT = document.createComment("");
+  }
+  return TEMP_COMMENT;
+}
+function makeNativeCommentDom(value) {
+  const text = makeTempComment().cloneNode();
+  text.textContent = value;
+  return text;
+}
+function createElement$3(vNodeInstance) {
+  return makeNativeCommentDom(vNodeInstance.value);
+}
+function makeElement$4(vNodeInstance) {
+  vNodeInstance.el = createElement$3(vNodeInstance);
+  return vNodeInstance;
+}
+function VNodeCommentRender$1(vNodeInstance, withChildren, options) {
+  return makeElement$4(vNodeInstance);
+}
+const SVG_ELEMENTS = {
+  svg: true,
+  g: true,
+  path: true,
+  rect: true,
+  circle: true,
+  ellipse: true,
+  line: true,
+  polyline: true,
+  polygon: true,
+  text: true,
+  tspan: true,
+  textPath: true,
+  tref: true,
+  defs: true,
+  clipPath: true,
+  mask: true,
+  pattern: true,
+  image: true,
+  linearGradient: true,
+  radialGradient: true,
+  stop: true,
+  animate: true,
+  animateMotion: true,
+  animateColor: true,
+  animateTransform: true,
+  mpath: true,
+  set: true,
+  use: true,
+  desc: true,
+  metadata: true,
+  title: true,
+  marker: true,
+  symbol: true,
+  view: true,
+  foreignObject: true,
+  switch: true,
+  link: true
+};
+const SVG_ELEMENTS_LIST = {};
+Object.keys(SVG_ELEMENTS).forEach((key) => {
+  SVG_ELEMENTS_LIST[key.toLowerCase()] = true;
+  SVG_ELEMENTS_LIST[key.toUpperCase()] = true;
+});
+function isSVG(tagName) {
+  return !!SVG_ELEMENTS[tagName];
+}
+function insertElement(child, fragment, parentElement, withChildren, options = {}) {
+  if (child instanceof VNode || (child == null ? void 0 : child.makeElement)) {
+    child.setParentElement(parentElement);
+    const el = DomRenderer(child, options).el;
+    if (el) {
+      fragment.appendChild(el);
+    }
+  } else if (isArray(child)) {
+    child.forEach((it) => {
+      if (it) {
+        insertElement(it, fragment, parentElement, withChildren, options);
+      }
+    });
+  } else if (isFunction(child)) {
+    const result = child();
+    if (result) {
+      insertElement(result, fragment, parentElement, withChildren, options);
+    }
+  } else if (child instanceof window.HTMLElement) {
+    fragment.appendChild(child);
+  } else if (isValue(child)) {
+    fragment.appendChild(document.createTextNode(child));
+  } else
+    ;
+}
+function makeChildren(obj, withChildren, options) {
+  const parentElement = obj.el;
+  const children2 = obj.children;
+  if (children2 && children2.length) {
+    const fragment = document.createDocumentFragment();
+    insertElement(children2, fragment, parentElement, withChildren, options);
+    parentElement.appendChild(fragment);
+    children2.forEach((child) => {
+      if (isArray(child)) {
+        child.forEach((it) => {
+          if (isFunction(it == null ? void 0 : it.runMounted)) {
+            it.runMounted();
+          }
+        });
+      } else if (child) {
+        if (isFunction(child == null ? void 0 : child.runMounted)) {
+          child.runMounted();
+        }
+      }
+    });
+  }
+}
+let nativeDomCache = {};
+const expectAttributes = {
+  content: true
+};
+const ENABLE_PROPERTY = {
+  indeterminate: true
+};
+function setAttribute(el, name, value) {
+  if (expectAttributes[name])
+    return;
+  if (ENABLE_PROPERTY[name]) {
+    el[name] = value;
+  } else {
+    el.setAttribute(name, value);
+  }
+}
+function removeAttribute(el, name) {
+  if (ENABLE_PROPERTY[name]) {
+    el[name] = false;
+  } else {
+    el.removeAttribute(name);
+  }
+}
+function setEventAttribute(el, name, value) {
+  el[name.toLowerCase()] = value;
+}
+function setStyle(el, key, value) {
+  if (key.indexOf("--") === 0) {
+    if (typeof value === "undefined") {
+      el.style.removeProperty(key);
+    } else {
+      el.style.setProperty(key, value);
+    }
+  } else {
+    el.style[key] = value;
+  }
+}
+function makeNativeDom(name) {
+  if (!nativeDomCache[name]) {
+    const el = isSVG(name) ? document.createElementNS("http://www.w3.org/2000/svg", name) : document.createElement(name);
+    nativeDomCache[name] = el;
+  }
+  return nativeDomCache[name].cloneNode(false);
+}
+function createElement$2(vNodeInstance) {
+  return makeNativeDom(vNodeInstance.tag);
+}
+function getContextProps$1(context, props) {
+  const newProps = context.filterFunction("getProps").flat(Infinity);
+  const newPropList = newProps.filter((it) => {
+    return it.ref === props.ref;
+  });
+  newPropList.forEach((it) => {
+    if (isObject(it.props)) {
+      Object.assign(props, it.props);
+    }
+  });
+}
+function makeElement$3(vNodeInstance, withChildren, options) {
+  const el = createElement$2(vNodeInstance);
+  let props = vNodeInstance.memoizedProps;
+  if (props) {
+    if (props.ref) {
+      getContextProps$1(options.context, props);
+      vNodeInstance.ref = props.ref;
+      if (vNodeInstance.ref instanceof RefClass) {
+        vNodeInstance.ref.setCurrent(el);
+      }
+      isFunction(options.registerRef) && options.registerRef(props.ref, el);
+    }
+    Object.keys(props).forEach((key) => {
+      const value = props[key];
+      if (key === "style") {
+        if (isString(value)) {
+          el.style.cssText = value;
+        } else {
+          if (isObject(value) && Object.keys(value).length) {
+            const styleValues = css(value);
+            Object.entries(styleValues).forEach(([localKey, value2]) => {
+              setStyle(el, localKey, value2);
+            });
+          } else {
+            removeAttribute(el, "style");
+          }
+        }
+      } else {
+        if (key) {
+          if (value !== void 0) {
+            if (key.startsWith("on")) {
+              setEventAttribute(el, key, value);
+            } else {
+              setAttribute(el, key, value);
+            }
+          }
+        }
+      }
+    });
+  }
+  vNodeInstance.el = el;
+  makeChildren(vNodeInstance, withChildren, options);
+  return vNodeInstance;
+}
+function VNodeElementRender$1(vNodeInstance, withChildren, options) {
+  return makeElement$3(vNodeInstance, withChildren, options);
+}
+function makeElement$2(obj, withChildren, options) {
+  if (obj.el)
+    return this;
+  const el = document.createDocumentFragment();
+  obj.el = el;
+  makeChildren(obj, withChildren, options);
+  return obj;
+}
+function VNodeFragmentRender$1(obj, withChildren, options) {
+  return makeElement$2(obj, withChildren, options);
+}
+let TEMP_TEXT;
+function makeTempText() {
+  if (!TEMP_TEXT) {
+    TEMP_TEXT = document.createTextNode("");
+  }
+  return TEMP_TEXT;
+}
+function makeNativeTextDom(value) {
+  const text = makeTempText().cloneNode();
+  text.textContent = value;
+  return text;
+}
+function createElement$1(obj) {
+  return makeNativeTextDom(obj.value);
+}
+function makeElement$1(obj) {
+  obj.el = createElement$1(obj);
+  return obj;
+}
+function VNodeTextRender$1(obj) {
+  return makeElement$1(obj);
+}
+const RendererList$1 = {
+  [VNodeType.TEXT]: VNodeTextRender$1,
+  [VNodeType.NODE]: VNodeElementRender$1,
+  [VNodeType.FRAGMENT]: VNodeFragmentRender$1,
+  [VNodeType.COMPONENT]: VNodeComponentRender$1,
+  [VNodeType.COMMENT]: VNodeCommentRender$1
+};
+function VNodeRender$1(vNodeInstance, withChildren, options) {
+  if (isBoolean(options)) {
+    throw new Error("options is boolean");
+  }
+  const CurrentRenderer = RendererList$1[vNodeInstance.type];
+  if (CurrentRenderer) {
+    return CurrentRenderer(vNodeInstance, withChildren, options);
+  }
+  return null;
+}
+function DomRenderer(obj, options = {}) {
+  var _a;
+  if (isString(obj)) {
+    obj = createVNodeText(obj);
+  }
+  if (isArray(obj) && obj.length === 1) {
+    return DomRenderer(obj[0], options);
+  }
+  if (obj) {
+    return Dom.create((_a = VNodeRender$1(obj, true, options)) == null ? void 0 : _a.el);
+  }
+  return obj;
+}
+const booleanTypes = new Map(
+  Object.entries({
+    checked: true,
+    disabled: true,
+    selected: true,
+    readonly: true,
+    required: true,
+    multiple: true,
+    open: true,
+    hidden: true,
+    spellcheck: true,
+    autofocus: true,
+    autoplay: true,
+    controls: true,
+    loop: true,
+    muted: true,
+    default: true,
+    defer: true,
+    async: true,
+    allowfullscreen: true,
+    allowtransparency: true,
+    allowpaymentrequest: true
+  })
+);
+const expectKeys = {
+  content: true,
+  ref: true
+};
+const TEXT_NODE = 3;
+const COMMENT_NODE = 8;
+const KEY_STYLE = "style";
+const PREFIX_EVENT = "on";
+function isBooleanType(key) {
+  return booleanTypes.has(key);
+}
+const patch = {
+  setBooleanProp(el, name, value) {
+    if (isNotUndefined(value)) {
+      el.setAttribute(name, name);
+      el[name] = value;
+    } else {
+      el.removeAttribute(name);
+      el[name] = void 0;
+    }
+  },
+  setProp(el, name, value) {
+    if (isBooleanType(name)) {
+      this.setBooleanProp(el, name, value);
+    } else if (name.startsWith(PREFIX_EVENT)) {
+      el[name.toLowerCase()] = value;
+    } else if (name === KEY_STYLE) {
+      el.style.cssText = value;
+    } else {
+      el.setAttribute(name, value);
+      el[name] = value;
+    }
+  },
+  removeProp(el, name) {
+    el.removeAttribute(name);
+    if (isBooleanType(name)) {
+      el[name] = false;
+    } else if (name) {
+      el[name] = void 0;
+    }
+  },
+  updateProp(node, name, newValue, oldValue) {
+    if (isUndefined(newValue)) {
+      if (oldValue) {
+        this.removeProp(node, name);
+      }
+    } else if (!oldValue || newValue != oldValue) {
+      this.setProp(node, name, newValue);
+    }
+  },
+  reconcile(oldEl, newVNode, options) {
+    const isRootElement = options.context.$el.el === oldEl;
+    newVNode.makeClassInstance(options);
+    Reconcile(oldEl, newVNode.template(), options);
+    if (isRootElement) {
+      options.context.$el.el = oldEl;
+    }
+    newVNode.runUpdated();
+  },
+  replaceWith(oldEl, newVNode, options) {
+    const isRootElement = options.context.$el.el === oldEl;
+    const objectElement = DomRenderer(newVNode, options).el;
+    if (isRootElement) {
+      options.context.$el.el = objectElement;
+    }
+    oldEl.replaceWith(objectElement);
+    newVNode.runMounted();
+  },
+  replaceText(oldEl, newVNode) {
+    if (oldEl.textContent != newVNode.textContent) {
+      oldEl.textContent = newVNode.textContent;
+    }
+  },
+  replaceComment(oldEl, newVNode) {
+    patch.replaceText(oldEl, newVNode);
+  },
+  addNewVNode(parentElement, oldEl, newVNode, options) {
+    parentElement.insertBefore(DomRenderer(newVNode, options).el, oldEl);
+    parentElement.removeChild(oldEl);
+    newVNode.runMounted();
+  },
+  appendChild(el, newVNode, options) {
+    const newVNodeInstance = DomRenderer(newVNode, options);
+    if (newVNodeInstance == null ? void 0 : newVNodeInstance.el) {
+      el.appendChild(newVNodeInstance.el);
+      newVNode.runMounted();
+    }
+  },
+  removeChild(parentElement, oldEl) {
+    parentElement.removeChild(oldEl);
+  }
+};
+const check = {
+  isTextNode(node) {
+    return node.nodeType === TEXT_NODE;
+  },
+  isCommentNode(node) {
+    return node.nodeType === COMMENT_NODE;
+  },
+  isElementNode(node) {
+    return node.nodeType === 1;
+  },
+  isVNodeText(node) {
+    return node.type === VNodeType.TEXT;
+  },
+  isVNodeComment(node) {
+    return node.type === VNodeType.COMMENT;
+  },
+  changed(vNode, node2) {
+    return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
+  },
+  hasPassed(vNode) {
+    return vNode.pass;
+  },
+  hasRefClass(vNode) {
+    return vNode.Component;
+  }
+};
+const updateProps = (node, newProps = {}, oldProps = {}) => {
+  const newPropsKeys = Object.keys(newProps);
+  const oldPropsKeys = Object.keys(oldProps);
+  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+    return;
+  }
+  newPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
+    const newValue = newProps[key];
+    let oldValue;
+    if (key === "style") {
+      oldValue = node.style.cssText;
+    } else {
+      oldValue = oldProps[key];
+    }
+    patch.updateProp(node, key, newValue, oldValue);
+  });
+  oldPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
+    if (isUndefined(newProps[key])) {
+      let oldValue;
+      if (key === "style") {
+        oldValue = node.style.cssText;
+      } else {
+        oldValue = oldProps[key];
+      }
+      if (oldValue) {
+        patch.removeProp(node, key);
+      }
+    }
+  });
+};
+function getProps$1(oldEl, attributes, newProps) {
+  var results = {};
+  const len = attributes.length;
+  for (let i = 0; i < len; i++) {
+    const t = attributes[i];
+    const name = t.name;
+    const value = t.value;
+    results[name] = value;
+  }
+  Object.keys(newProps).forEach((key) => {
+    const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
+    if (!results[checkKey]) {
+      results[key] = oldEl[checkKey];
+    }
+  });
+  return results;
+}
+function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
+  if (check.isTextNode(oldEl) && !check.isVNodeText(newVNode) || check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode)) {
+    patch.addNewVNode(parentElement, oldEl, newVNode, options);
+  } else if (!check.isTextNode(oldEl) && check.isVNodeText(newVNode) || !check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
+    patch.addNewVNode(parentElement, oldEl, newVNode, options);
+  } else if (check.isTextNode(oldEl) && check.isVNodeText(newVNode)) {
+    patch.replaceText(oldEl, newVNode);
+  } else if (check.isCommentNode(oldEl) && check.isVNodeComment(newVNode)) {
+    patch.replaceComment(oldEl, newVNode);
+  } else {
+    if (check.hasRefClass(newVNode)) {
+      if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
+        patch.reconcile(oldEl, newVNode, options);
+        if (isFunction(options.registerChildComponent)) {
+          options.registerChildComponent(
+            newVNode.el,
+            newVNode.instance,
+            newVNode.instance.id,
+            oldEl
+          );
+        }
+      }
+    } else {
+      patch.replaceWith(oldEl, newVNode, options);
+    }
+  }
+  return true;
+}
+function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
+  const newVNodeProps = newVNode.memoizedProps;
+  updateProps(
+    oldEl,
+    newVNodeProps,
+    getProps$1(oldEl, oldEl.attributes, newVNodeProps)
+  );
+  updateChildren(oldEl, newVNode, options);
+}
+function updateChildren(oldEl, newVNode, options = {}) {
+  if (!oldEl.hasChildNodes() && !newVNode.children.length) {
+    return;
+  }
+  var oldChildren = children(oldEl);
+  var newChildren = vNodeChildren(newVNode);
+  var max = Math.max(oldChildren.length, newChildren.length);
+  if (max === 0) {
+    return;
+  }
+  if (oldChildren.length === 0 && newChildren.length > 0) {
+    var fragment = document.createDocumentFragment();
+    newChildren.forEach((it) => {
+      const retElement = DomRenderer(it, options).el;
+      if (retElement) {
+        fragment.appendChild(retElement);
+      }
+    });
+    oldEl.appendChild(fragment);
+    newChildren.forEach((it) => {
+      it.runMounted();
+    });
+  } else if (oldChildren.length > 0 && newChildren.length === 0) {
+    oldEl.textContent = "";
+  } else {
+    for (var i = 0; i < max; i++) {
+      updateElement(oldEl, oldChildren[i], newChildren[i], options);
+    }
+  }
+}
+function updateElement(parentElement, oldEl, newVNode, options = {}) {
+  var _a;
+  parentElement = parentElement || options.context.parentElement;
+  if (!oldEl && newVNode) {
+    patch.appendChild(parentElement, newVNode, options);
+    return;
+  }
+  if (!newVNode && oldEl) {
+    patch.removeChild(parentElement, oldEl, options);
+    return;
+  }
+  if (!((_a = newVNode.props) == null ? void 0 : _a.pass)) {
+    if (check.hasPassed(newVNode)) {
+      return;
+    }
+    if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
+      updateChangedElement(parentElement, oldEl, newVNode, options);
+      return;
+    }
+  }
+  const newNodeType = newVNode.type;
+  if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
+    updatePropertyAndChildren(oldEl, newVNode, options);
+  }
+}
+const children = (el) => {
+  var element = el.firstChild;
+  if (!element) {
+    return [];
+  }
+  var results = [];
+  do {
+    results[results.length] = element;
+    element = element.nextSibling;
+  } while (element);
+  return results;
+};
+const vNodeChildren = (vnode) => {
+  if (!vnode.children.length) {
+    return [];
+  }
+  return vnode.children;
+};
+const DefaultOption = {
+  checkPassed: void 0,
+  keyField: "key",
+  removedElements: []
+};
+function Reconcile(oldEl, newVNode, options = {}) {
+  options = Object.assign({}, DefaultOption, options);
+  if (oldEl.nodeType !== 11) {
+    updateElement(oldEl.parentElement, oldEl, newVNode, options);
+    return;
+  }
+}
+async function runningUpdate(componentInstance, template) {
+  if (template.isType(VNodeType.FRAGMENT)) {
+    updateChildren(componentInstance.parentElement, template);
+  } else {
+    Reconcile(
+      componentInstance.$el.el,
+      template,
+      componentInstance.getVNodeOptions()
+    );
+  }
+  componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+  componentInstance.runUpdated();
+  await componentInstance.runHandlers("update");
+}
+async function runningMount(componentInstance, template, $container) {
+  const newDomElement = DomRenderer(
+    template,
+    componentInstance.getVNodeOptions()
+  );
+  componentInstance.$el = newDomElement;
+  componentInstance.refs.$el = componentInstance.$el;
+  if (componentInstance.$el) {
+    componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+  }
+  if ($container) {
+    if (!($container instanceof Dom)) {
+      $container = Dom.create($container);
+    }
+    if ($container.hasChild(componentInstance.$el) === false) {
+      $container.append(componentInstance.$el);
+      componentInstance.runMounted();
+    }
+  }
+  await componentInstance.runHandlers("initialize");
+  await componentInstance.afterRender();
+}
+async function renderVNodeComponent(componentInstance, $container) {
+  componentInstance.resetCurrentComponent();
+  const template = componentInstance.template();
+  if (isArray(template)) {
+    throw new Error(
+      [
+        `Error Component - ${componentInstance.sourceName}`,
+        "Template root is not must an array, however You can use Fragment instead of it",
+        "Fragment Samples: ",
+        " <>{list}</> ",
+        " <Fragment>{list}</Fragment>"
+      ].join("\n")
+    );
+  }
+  if (componentInstance.$el) {
+    await runningUpdate(componentInstance, template);
+  } else {
+    await runningMount(componentInstance, template, $container);
+  }
+  return componentInstance;
+}
+function render$1(vNodeInstance, options) {
+  vNodeInstance.makeClassInstance(options);
+  try {
+    vNodeInstance.instance.setParentElement(vNodeInstance.parentElement);
+    renderVNodeComponent(vNodeInstance.instance, options.$container);
+  } catch (e) {
+    console.error(e);
+  }
+}
+function makeElement(vNodeInstance, withChildren, options = {}) {
+  var _a, _b;
+  const node = vNodeInstance;
+  render$1(node, options);
+  node.el = (_b = (_a = node.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
+  if (node.el) {
+    const id = isString(node.props.ref) ? node.props.ref : node.instance.id;
+    if (node.props.ref instanceof RefClass) {
+      node.props.ref.setCurrent(node.instance);
+    }
+    isFunction(options.registerChildComponent) && options.registerChildComponent(node.el, node.instance, id);
+  }
+  return node;
+}
+function VNodeComponentRender$1(vNodeInstance, withChildren, options) {
+  return makeElement(vNodeInstance, withChildren, options);
+}
+const handlerMap = {};
+const __rootInstance = /* @__PURE__ */ new Set();
+const __rootInstanceMap = /* @__PURE__ */ new WeakMap();
+const __tempVariables = /* @__PURE__ */ new Map();
+const __tempVariablesGroup = /* @__PURE__ */ new Map();
+const _modules = {};
+const _moduleMap = /* @__PURE__ */ new WeakMap();
+const RenderCallbackList = /* @__PURE__ */ new WeakMap();
+const PendingComponentList = /* @__PURE__ */ new WeakMap();
+const GlobalState = {
+  currentComponent: null
+};
+function getCurrentComponent() {
+  return GlobalState.currentComponent;
+}
+function resetCurrentComponent(component) {
+  GlobalState.currentComponent = component;
+}
+function createRenderCallback(component) {
+  if (!RenderCallbackList.has(component)) {
+    RenderCallbackList.set(component, ($container = void 0) => {
+      const Renderer = component.renderer;
+      if (Renderer) {
+        return Renderer(component, $container);
+      }
+    });
+  }
+  return RenderCallbackList.get(component);
+}
+function removeRenderCallback(component) {
+  if (RenderCallbackList.has(component)) {
+    RenderCallbackList.delete(component);
+  }
+}
+function renderComponent(component, $container = void 0) {
+  if (isPendingComponent(component)) {
+    return;
+  }
+  window.requestIdleCallback(() => {
+    var _a;
+    (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
+  });
+}
+function pendingComponent(component) {
+  PendingComponentList.set(component, true);
+}
+function isPendingComponent(component) {
+  return PendingComponentList.has(component);
+}
+function removePendingComponent(component) {
+  PendingComponentList.delete(component);
+}
+const VARIABLE_SAPARATOR = "v:";
+function variable(value, groupId = "") {
+  const id = `${VARIABLE_SAPARATOR}${uuidShort()}`;
+  __tempVariables.set(id, value);
+  if (groupId) {
+    __tempVariablesGroup.has(groupId) || __tempVariablesGroup.set(groupId, /* @__PURE__ */ new Set());
+    __tempVariablesGroup.get(groupId).add(id);
+  }
+  return id;
+}
+function initializeGroupVariables(groupId) {
+  if (__tempVariablesGroup.has(groupId)) {
+    __tempVariablesGroup.get(groupId).forEach((id) => {
+      __tempVariables.delete(id);
+    });
+    __tempVariablesGroup.delete(groupId);
+  }
+}
+function recoverVariable(id, removeVariable = true) {
+  if (isString(id) === false) {
+    return id;
+  }
+  let value = id;
+  if (__tempVariables.has(id)) {
+    value = __tempVariables.get(id);
+    if (removeVariable) {
+      __tempVariables.delete(id);
+    }
+  }
+  return value;
+}
+function getVariable(idOrValue) {
+  if (__tempVariables.has(idOrValue)) {
+    return __tempVariables.get(idOrValue);
+  }
+  return idOrValue;
+}
+function hasVariable(id) {
+  return __tempVariables.has(id);
+}
+function registRootElementInstance(instance, containerElement) {
+  const rootContainerElement = containerElement.el || containerElement;
+  __rootInstance.add(instance);
+  if (__rootInstanceMap.has(rootContainerElement)) {
+    removeRootElementInstance(__rootInstanceMap.get(rootContainerElement));
+  }
+  __rootInstanceMap.set(rootContainerElement, instance);
+}
+function removeRootElementInstance(instance) {
+  instance == null ? void 0 : instance.destroy();
+  __rootInstance.delete(instance);
+}
+function getRootElementInstanceList() {
+  return [...__rootInstance];
+}
+let globalForceRender = void 0;
+function isGlobalForceRender() {
+  return globalForceRender;
+}
+function setGlobalForceRender(isForceRender = false) {
+  if (typeof globalForceRender === "undefined") {
+    globalForceRender = isForceRender;
+  }
+}
+function renderRootElementInstanceList(isForce = false) {
+  getRootElementInstanceList().forEach((instance) => {
+    if (isForce) {
+      instance.forceRender();
+    } else {
+      renderVNodeComponent(instance);
+    }
+  });
+}
+function registHandler(handlers) {
+  Object.keys(handlers).forEach((key) => {
+    handlerMap[key] = handlers[key];
+  });
+}
+function retriveHandler(className) {
+  return handlerMap[className];
+}
+function createHandlerInstance(context, localHanders = {}) {
+  return [
+    ...Object.keys(handlerMap).map((key) => {
+      const HandlerClass = handlerMap[key];
+      return new HandlerClass(context);
+    }),
+    ...Object.keys(localHanders).map((key) => {
+      const HandlerClass = localHanders[key];
+      return new HandlerClass(context);
+    })
+  ];
+}
+function registerModule(id, modules = {}) {
+  if (!_modules[id]) {
+    _modules[id] = { new: modules, old: modules };
+    Object.keys(modules).forEach((key) => {
+      _moduleMap.set(modules[key], id);
+    });
+  } else {
+    refreshModule(id, modules);
+  }
+}
+function refreshModule(id, newModules) {
+  _modules[id].new = newModules;
+  Object.keys(newModules).forEach((key) => {
+    _moduleMap.set(newModules[key], id);
+  });
+}
+function getModule(Component) {
+  const id = _moduleMap.get(Component);
+  if (!id) {
+    return Component;
+  }
+  const m = _modules[id];
+  if (!m) {
+    return Component;
+  }
+  const newModule = m.new[Component.name];
+  if (newModule) {
+    return newModule;
+  }
+  const currentNewComponent = Object.values(m.new).find((it) => {
+    return it === Component;
+  });
+  if (currentNewComponent) {
+    return currentNewComponent;
+  }
+  let oldKey = "";
+  const currentOldComponent = Object.entries(m.old).find(([key, it]) => {
+    if (it === Component) {
+      oldKey = key;
+      return true;
+    }
+    return false;
+  });
+  if (currentOldComponent) {
+    return m.new[oldKey];
+  }
+  return Component;
+}
+class Dom {
+  constructor(tag, className, attr) {
+    if (typeof tag !== "string") {
+      if (tag instanceof Dom) {
+        this.el = tag.el;
+      } else {
+        this.el = tag;
+      }
+    } else {
+      var el = document.createElement(tag);
+      if (className) {
+        el.className = className;
+      }
+      attr = attr || {};
+      Object.assign(el, attr);
+      this.el = el;
+    }
+  }
+  static create(tag, className, attr) {
+    return new Dom(tag, className, attr);
+  }
+  static createText(text) {
+    return new Dom(document.createTextNode(text));
+  }
+  static createByHTML(htmlString) {
+    var div = Dom.create("div");
+    return div.html(htmlString).firstChild;
+  }
+  static getScrollTop() {
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+  }
+  static getScrollLeft() {
+    return Math.max(
+      window.pageXOffset,
+      document.documentElement.scrollLeft,
+      document.body.scrollLeft
+    );
+  }
+  static parse(html) {
+    var parser = window.DOMParser();
+    return parser.parseFromString(html, "text/html");
+  }
+  static body() {
+    return Dom.create(document.body);
+  }
+  get tagName() {
+    return this.el.tagName;
+  }
+  get exists() {
+    return Boolean(this.el);
+  }
+  setAttr(obj) {
+    Object.keys(obj).forEach((key) => {
+      this.attr(key, obj[key]);
+    });
+    return this;
+  }
+  setAttrNS(obj, namespace = "http://www.w3.org/2000/svg") {
+    Object.keys(obj).forEach((key) => {
+      this.attr(key, obj[key], namespace);
+    });
+    return this;
+  }
+  setProp(obj) {
+    Object.keys(obj).forEach((key) => {
+      if (this.el[key] != obj[key]) {
+        this.el[key] = obj[key];
+      }
+    });
+    return this;
+  }
+  data(key, value) {
+    if (arguments.length === 1) {
+      const value2 = this.attr("data-" + key);
+      return recoverVariable(value2, false);
+    } else if (arguments.length === 2) {
+      return this.attr("data-" + key, value);
+    }
+    return this;
+  }
+  attr(...args) {
+    if (args.length == 1) {
+      return isFunction(this.el.getAttribute) && this.el.getAttribute(args[0]);
+    }
+    if (this.el.getAttribute(args[0]) != args[1]) {
+      this.el.setAttribute(args[0], args[1]);
+    }
+    return this;
+  }
+  attrKeyValue(keyField) {
+    return {
+      [this.el.getAttribute(keyField)]: this.val()
+    };
+  }
+  get attributes() {
+    try {
+      return [...this.el.attributes];
+    } catch (e) {
+      const length = this.el.attributes.length;
+      const attributes = [];
+      for (var i = 0; i < length; i++) {
+        attributes.push(this.el.attributes[`${i}`]);
+      }
+      return attributes;
+    }
+  }
+  attrs(...args) {
+    return args.map((key) => {
+      return this.el.getAttribute(key);
+    });
+  }
+  styles(...args) {
+    return args.map((key) => {
+      return this.el.style[key];
+    });
+  }
+  removeAttr(key) {
+    this.el.removeAttribute(key);
+    return this;
+  }
+  removeStyle(key) {
+    this.el.style.removeProperty(key);
+    return this;
+  }
+  get isFragment() {
+    return this.el.nodeType === 11;
+  }
+  get isTemplate() {
+    return this.el.nodeType === 1 && this.el.tagName === "TEMPLATE";
+  }
+  get content() {
+    return this.isTemplate ? this.el.content : this.el;
+  }
+  is(checkElement) {
+    if (checkElement instanceof Dom) {
+      return this.el === checkElement.el;
+    }
+    return this.el === checkElement;
+  }
+  isTag(tag) {
+    return this.el.tagName.toLowerCase() === tag.toLowerCase();
+  }
+  clone(withChildren = true) {
+    return Dom.create(this.el.cloneNode(withChildren));
+  }
+  closest(cls) {
+    var temp = this;
+    var checkCls = false;
+    while (!(checkCls = temp.hasClass(cls))) {
+      if (temp.el.parentNode) {
+        temp = Dom.create(temp.el.parentNode);
+      } else {
+        return null;
+      }
+    }
+    if (checkCls) {
+      return temp;
+    }
+    return null;
+  }
+  path() {
+    if (!this.el)
+      return [];
+    let pathList = [this];
+    let $parentNode = this.parent();
+    if (!$parentNode.el)
+      return pathList;
+    while ($parentNode) {
+      pathList.unshift($parentNode);
+      $parentNode = $parentNode.parent();
+      if (!$parentNode.el)
+        break;
+    }
+    return pathList;
+  }
+  get $parent() {
+    return this.parent();
+  }
+  parent() {
+    return Dom.create(this.el.parentNode);
+  }
+  hasParent() {
+    return !!this.el.parentNode;
+  }
+  get isUnlinked() {
+    return !this.el.parentNode;
+  }
+  removeClass(...args) {
+    this.el.classList.remove(...args);
+    return this;
+  }
+  updateClass(className) {
+    this.el.className = className;
+    return this;
+  }
+  replaceClass(oldClass, newClass) {
+    this.el.classList.replace(oldClass, newClass);
+    return this;
+  }
+  hasClass(cls) {
+    if (!this.el.classList)
+      return false;
+    return this.el.classList.contains(cls);
+  }
+  addClass(...args) {
+    this.el.classList.add(...args);
+    return this;
+  }
+  onlyOneClass(cls) {
+    var parent = this.parent();
+    parent.children().forEach((it) => {
+      it.removeClass(cls);
+    });
+    this.addClass(cls);
+  }
+  toggleClass(cls, isForce) {
+    this.el.classList.toggle(cls, isForce);
+    return this;
+  }
+  outerHTML() {
+    if (this.isTextNode) {
+      return this.text();
+    }
+    return this.el.outerHTML;
+  }
+  html(html) {
+    try {
+      if (typeof html === "undefined") {
+        return this.el.innerHTML;
+      }
+      if (typeof html === "string") {
+        Object.assign(this.el, { innerHTML: html });
+      } else {
+        this.empty().append(html);
+      }
+      return this;
+    } catch (e) {
+      console.log(e, html);
+      return this;
+    }
+  }
+  find(selector, el = this.el) {
+    if (this.isTextNode)
+      return void 0;
+    return el.querySelector(selector);
+  }
+  $(selector) {
+    var node = this.find(selector, this.isTemplate ? this.el.content : this.el);
+    return node ? Dom.create(node) : null;
+  }
+  findAll(selector, el = this.el) {
+    if (this.isTextNode)
+      return [];
+    return Array.from(el.querySelectorAll(selector));
+  }
+  $$(selector) {
+    var arr = this.findAll(
+      selector,
+      this.isTemplate ? this.el.content : this.el
+    );
+    return arr.map((node) => Dom.create(node));
+  }
+  empty() {
+    while (this.el.firstChild)
+      this.el.removeChild(this.el.firstChild);
+    return this;
+  }
+  append(el) {
+    if (!el)
+      return this;
+    if (isArray(el)) {
+      this.el.append(...el.map((it) => it.el || it));
+    } else if (typeof el === "string") {
+      this.el.appendChild(document.createTextNode(el));
+    } else {
+      this.el.appendChild(el.el || el);
+    }
+    return this;
+  }
+  appendHTML(html) {
+    var $dom = Dom.create("div").html(html);
+    this.append($dom.createChildrenFragment());
+    return $dom;
+  }
+  createChildrenFragment() {
+    const list = this.childNodes;
+    var fragment = document.createDocumentFragment();
+    list.forEach(($el) => fragment.appendChild($el.el));
+    return fragment;
+  }
+  static createFragment(list = []) {
+    var fragment = document.createDocumentFragment();
+    list.forEach((it) => fragment.appendChild(it));
+    return fragment;
+  }
+  appendTo(target) {
+    var t = target.el ? target.el : target;
+    t.appendChild(this.el);
+    return this;
+  }
+  remove() {
+    if (this.el.parentNode) {
+      this.el.parentNode.removeChild(this.el);
+    }
+    return this;
+  }
+  removeChild(el) {
+    this.el.removeChild(el.el || el);
+    return this;
+  }
+  text(value) {
+    if (typeof value === "undefined") {
+      return this.el.textContent;
+    } else {
+      var tempText = value;
+      if (value instanceof Dom) {
+        tempText = value.text();
+      }
+      if (this.el.textContent !== tempText) {
+        this.el.textContent = tempText;
+      }
+      return this;
+    }
+  }
+  css(key, value) {
+    if (typeof key !== "undefined" && typeof value !== "undefined") {
+      if (key.indexOf("--") === 0 && typeof value !== "undefined") {
+        this.el.style.setProperty(key, value);
+      } else {
+        this.el.style[key] = value;
+      }
+    } else if (typeof key !== "undefined") {
+      if (typeof key === "string") {
+        return window.getComputedStyle(this.el)[key];
+      } else {
+        Object.entries(key).forEach(([localKey, value2]) => {
+          if (localKey.indexOf("--") === 0 && typeof value2 !== "undefined") {
+            this.el.style.setProperty(localKey, value2);
+          } else {
+            this.el.style[localKey] = value2;
+          }
+        });
+      }
+    }
+    return this;
+  }
+  cssText(value) {
+    if (typeof value === "undefined") {
+      return this.el.style.cssText;
+    }
+    if (value != this.el.tempCssText) {
+      this.el.style.cssText = value;
+      this.el.tempCssText = value;
+    }
+    return this;
+  }
+  cssFloat(key) {
+    return parseFloat(this.css(key));
+  }
+  rect() {
+    return this.el.getBoundingClientRect();
+  }
+  isSVG() {
+    if (!this.el._cachedIsSVG) {
+      this.el._cachedIsSVG = { value: this.el.tagName.toLowerCase() === "svg" };
+    }
+    return this.el._cachedIsSVG.value;
+  }
+  offsetRect() {
+    if (this.isSVG()) {
+      const parentBox = this.parent().rect();
+      const box = this.rect();
+      return {
+        x: box.x - parentBox.x,
+        y: box.y - parentBox.y,
+        width: box.width,
+        height: box.height
+      };
+    }
+    const el = this.el;
+    return {
+      x: el.offsetLeft,
+      y: el.offsetTop,
+      width: el.offsetWidth,
+      height: el.offsetHeight
+    };
+  }
+  offsetClientRect() {
+    if (this.isSVG()) {
+      const parentBox2 = this.parent().rect();
+      const box2 = this.rect();
+      return {
+        x: box2.x - parentBox2.x,
+        y: box2.y - parentBox2.y,
+        width: box2.width,
+        height: box2.height
+      };
+    }
+    const parentBox = this.parent().rect();
+    const box = this.rect();
+    return {
+      x: box.x - parentBox.x,
+      y: box.y - parentBox.y,
+      width: box.width,
+      height: box.height
+    };
+  }
+  offset() {
+    var rect = this.rect();
+    var scrollTop = Dom.getScrollTop();
+    var scrollLeft = Dom.getScrollLeft();
+    return {
+      top: rect.top + scrollTop,
+      left: rect.left + scrollLeft
+    };
+  }
+  offsetLeft() {
+    return this.offset().left;
+  }
+  offsetTop() {
+    return this.offset().top;
+  }
+  position() {
+    if (this.el.style.top) {
+      return {
+        top: parseFloat(this.css("top")),
+        left: parseFloat(this.css("left"))
+      };
+    } else {
+      return this.rect();
+    }
+  }
+  size() {
+    return [this.width(), this.height()];
+  }
+  width() {
+    return this.el.offsetWidth || this.rect().width;
+  }
+  contentWidth() {
+    return this.width() - this.cssFloat("padding-left") - this.cssFloat("padding-right");
+  }
+  height() {
+    return this.el.offsetHeight || this.rect().height;
+  }
+  contentHeight() {
+    return this.height() - this.cssFloat("padding-top") - this.cssFloat("padding-bottom");
+  }
+  val(value) {
+    if (typeof value === "undefined") {
+      return this.el.value;
+    } else if (typeof value !== "undefined") {
+      var tempValue = value;
+      if (value instanceof Dom) {
+        tempValue = value.val();
+      }
+      this.el.value = tempValue;
+    }
+    return this;
+  }
+  matches(selector) {
+    if (this.el) {
+      if (!this.el.matches)
+        return null;
+      if (this.el.matches(selector)) {
+        return this;
+      }
+      return this.parent().matches(selector);
+    }
+    return null;
+  }
+  get value() {
+    return this.el.value;
+  }
+  set value(v) {
+    this.el.value = v;
+  }
+  get naturalWidth() {
+    return this.el.naturalWidth;
+  }
+  get naturalHeight() {
+    return this.el.naturalHeight;
+  }
+  get files() {
+    return this.el.files ? [...this.el.files] : [];
+  }
+  get isTextNode() {
+    return this.el.nodeType === 3;
+  }
+  show(displayType = "block") {
+    this.el.style.display = displayType != "none" ? displayType : "block";
+    return this;
+  }
+  hide() {
+    this.el.style.display = "none";
+    return this;
+  }
+  isHide() {
+    return this.el.style.display === "none";
+  }
+  isShow() {
+    return !this.isHide();
+  }
+  toggle(isForce) {
+    var currentHide = this.isHide();
+    if (arguments.length == 1) {
+      if (isForce) {
+        return this.show();
+      } else {
+        return this.hide();
+      }
+    } else {
+      if (currentHide) {
+        return this.show();
+      } else {
+        return this.hide();
+      }
+    }
+  }
+  scrollIntoView() {
+    this.el.scrollIntoView();
+  }
+  get scrollTop() {
+    if (this.el === document.body) {
+      return Dom.getScrollTop();
+    }
+    return this.el.scrollTop;
+  }
+  get scrollLeft() {
+    if (this.el === document.body) {
+      return Dom.getScrollLeft();
+    }
+    return this.el.scrollLeft;
+  }
+  get scrollHeight() {
+    return this.el.scrollHeight;
+  }
+  get scrollWidth() {
+    return this.el.scrollWidth;
+  }
+  on(eventName, callback, opt1, opt2) {
+    this.el.addEventListener(eventName, callback, opt1, opt2);
+    return this;
+  }
+  off(eventName, callback) {
+    this.el.removeEventListener(eventName, callback);
+    return this;
+  }
+  getElement() {
+    return this.el;
+  }
+  get firstChild() {
+    return Dom.create(this.el.firstElementChild);
+  }
+  get first() {
+    return Dom.create(this.el.firstChild);
+  }
+  children() {
+    var element = this.el.firstElementChild;
+    if (!element) {
+      return [];
+    }
+    var results = [];
+    do {
+      results.push(Dom.create(element));
+      element = element.nextElementSibling;
+    } while (element);
+    return results;
+  }
+  hasChild(child) {
+    const childNode = child.el || child;
+    return this.el === childNode ? false : this.el.contains(childNode);
+  }
+  get childNodes() {
+    const result = [];
+    if (this.el.hasChildNodes()) {
+      const childNodes = this.el.childNodes;
+      for (let i = 0; i < childNodes.length; i++) {
+        result.push(Dom.create(childNodes[i]));
+      }
+    }
+    return result;
+  }
+  childLength() {
+    return this.el.childNodes.length;
+  }
+  replace(newElement) {
+    if (this.el.parentNode) {
+      this.el.parentNode.replaceChild(newElement.el || newElement, this.el);
+    }
+    return this;
+  }
+  replaceChild(oldElement, newElement) {
+    this.el.replaceChild(
+      newElement.el || newElement,
+      oldElement.el || oldElement
+    );
+    return this;
+  }
+  checked(isChecked = false) {
+    if (arguments.length == 0) {
+      return !!this.el.checked;
+    }
+    this.el.checked = !!isChecked;
+    return this;
+  }
+  click() {
+    this.el.click();
+    return this;
+  }
+  focus() {
+    this.el.focus();
+    return this;
+  }
+  dispatchEvent(event, data) {
+    const evt = new CustomEvent(event, { detail: data });
+    this.el.dispatchEvent(evt);
+    return this;
+  }
+  select() {
+    if (this.attr("contenteditable") === "true") {
+      var range = document.createRange();
+      range.selectNodeContents(this.el);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } else {
+      this.el.select();
+    }
+    return this;
+  }
+  blur() {
+    this.el.blur();
+    return this;
+  }
+}
+async function makeHtml$4(vNodeInstance) {
+  return `<!-- ${vNodeInstance.value} -->`;
+}
+async function VNodeCommentRender(vNodeInstance) {
+  return await makeHtml$4(vNodeInstance);
+}
+async function renderVNodeComponentToHtml(componentInstance, options = {}) {
+  componentInstance.resetCurrentComponent();
+  const template = componentInstance.template();
+  const html = await HtmlRenderer(template, options);
+  return html;
+}
+async function renderHtml(vNodeInstance, parentOptions) {
+  vNodeInstance.makeClassInstance(parentOptions);
+  const instance = vNodeInstance.instance;
+  return await renderVNodeComponentToHtml(instance, instance.getVNodeOptions());
+}
+async function makeHtml$3(vNodeInstance, withChildren, options = {}) {
+  return await renderHtml(vNodeInstance, options);
+}
+async function VNodeComponentRender(vNodeInstance, withChildren, options) {
+  return await makeHtml$3(vNodeInstance, withChildren, options);
+}
+const VoidTags = {
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+};
+function isVoidTag(tag) {
+  return VoidTags[tag.toLowerCase()];
+}
+async function makeChildrenHtml(vNodeInstance, withChildren, options) {
+  const tempChildren = [];
+  const children2 = vNodeInstance.children;
+  if (children2 && children2.length) {
+    const tempArray = await Promise.all(
+      children2.map(async (child) => {
+        if (child instanceof VNode || child.makeHtml) {
+          return await HtmlRenderer(child, options);
+        } else if (isArray(child)) {
+          return await Promise.all(
+            child.map(async (it) => {
+              if (it) {
+                return await HtmlRenderer(it, options);
+              }
+              return void 0;
+            })
+          ).filter((it) => typeof it !== "undefined");
+        } else if (isFunction(child)) {
+          return await child();
+        } else {
+          return await child;
+        }
+      })
+    );
+    tempChildren.push(...tempArray);
+  }
+  return tempChildren.join("\n");
+}
+function getContextProps(context, props) {
+  const newProps = context.filterFunction("getProps").flat(Infinity);
+  const newPropList = newProps.filter((it) => {
+    return it.ref === props.ref;
+  });
+  newPropList.forEach((it) => {
+    if (isObject(it.props)) {
+      Object.assign(props, it.props);
+    }
+  });
+}
+function stringifyStyle(styleObject) {
+  const newStyle = css(styleObject);
+  return Object.keys(newStyle).map((key) => {
+    return `${key}: ${newStyle[key]};`;
+  }).join(" ");
+}
+async function makeHtml$2(vNodeInstance, withChildren = false, options = {}) {
+  const tempProps = [];
+  const props = vNodeInstance.memoizedProps;
+  if (props) {
+    if (props.ref) {
+      getContextProps(vNodeInstance, options.context);
+    }
+    Object.keys(props).forEach((key) => {
+      const value = props[key];
+      if (key === "style") {
+        if (isString(value))
+          ;
+        else {
+          props[key] = stringifyStyle(css(value));
+        }
+      } else {
+        if (key) {
+          if (value !== void 0) {
+            if (key.startsWith("on")) {
+              return;
+            }
+          }
+        }
+      }
+      if (key === "ref") {
+        return;
+      }
+      if (value) {
+        tempProps.push(`${key}="${value}"`);
+      }
+    });
+  }
+  const tag = vNodeInstance.tag;
+  if (isVoidTag(tag)) {
+    return `
+      <${tag} ${tempProps.join(" ")} />
+    `;
+  } else {
+    const childrenHtml = await makeChildrenHtml(
+      vNodeInstance,
+      withChildren,
+      options
+    );
+    return `
+      <${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>
+    `;
+  }
+}
+async function VNodeElementRender(vNodeInstance, withChildren, options) {
+  return await makeHtml$2(vNodeInstance, withChildren, options);
+}
+async function makeHtml$1(vNodeInstance, withChildren = false, options = {}) {
+  return await makeChildrenHtml(vNodeInstance, withChildren, options);
+}
+function VNodeFragmentRender(obj, withChildren, options) {
+  return makeHtml$1(obj, withChildren, options);
+}
+function makeHtml(vNodeInstance) {
+  return vNodeInstance.value;
+}
+function VNodeTextRender(vNodeInstance) {
+  return makeHtml(vNodeInstance);
+}
+const RendererList = {
+  [VNodeType.TEXT]: VNodeTextRender,
+  [VNodeType.NODE]: VNodeElementRender,
+  [VNodeType.FRAGMENT]: VNodeFragmentRender,
+  [VNodeType.COMPONENT]: VNodeComponentRender,
+  [VNodeType.COMMENT]: VNodeCommentRender
+};
+async function VNodeRender(vNodeInstance, withChildren, options) {
+  const CurrentRenderer = RendererList[vNodeInstance.type];
+  if (CurrentRenderer) {
+    const result = CurrentRenderer(vNodeInstance, withChildren, options);
+    return await result;
+  }
+  return null;
+}
+async function HtmlRenderer(obj, options = {}) {
+  if (isArray(obj) && obj.length === 1) {
+    return await HtmlRenderer(obj[0], options);
+  }
+  if (obj) {
+    const html = await VNodeRender(obj, true, options);
+    return html;
+  }
+  return await obj;
+}
 const start = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
   const $targetElement = $container.children().find((it) => it.el[COMPONENT_INSTANCE]);
@@ -4319,13 +4367,16 @@ const start = (ElementClass, opt = {}) => {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
-  const app = createComponentInstance(ElementClass, null, opt);
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponent
+  });
   if ($targetElement) {
     app.$el = Dom.create($targetElement.el);
     app.id = $targetElement.el[COMPONENT_INSTANCE].id;
-    app.render();
+    renderComponent(app);
   } else {
-    app.render($container);
+    renderComponent(app, $container);
   }
   registRootElementInstance(app, $container);
   return app;
@@ -4337,13 +4388,17 @@ const hydrate = (ElementClass, opt = {}) => {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
-  const app = createComponentInstance(ElementClass, null, opt);
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponent
+  });
   const $targetElement = $container.firstChild;
   if ($targetElement) {
     app.$el = $targetElement;
-    app.render();
+    app.$el.el[COMPONENT_INSTANCE] = app;
+    renderComponent(app);
   } else {
-    app.render($container);
+    renderComponent(app, $container);
   }
   registRootElementInstance(app, $container);
   return app;
@@ -4351,17 +4406,18 @@ const hydrate = (ElementClass, opt = {}) => {
 const potal = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
   if (ElementClass instanceof VNodeComponent) {
-    ElementClass.render({
-      $container
-    });
+    DomRenderer(ElementClass, $container);
     return ElementClass.instance;
   }
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
-  const app = createComponentInstance(ElementClass, null, opt);
-  app.render($container);
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponent
+  });
+  renderComponent(app, $container);
   return app;
 };
 async function renderToHtml(ElementClass, opt) {
@@ -4369,8 +4425,11 @@ async function renderToHtml(ElementClass, opt) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;
   }
-  const app = createComponentInstance(ElementClass, null, opt);
-  const html = await app.renderToHtml();
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponentToHtml
+  });
+  const html = await renderVNodeComponentToHtml(app);
   return html;
 }
 function WebComponent(CustomUIElement) {
@@ -4415,6 +4474,17 @@ function WebComponent(CustomUIElement) {
     }
   };
 }
+function getProps(attributes) {
+  var results = {};
+  const len = attributes.length;
+  for (let i = 0; i < len; i++) {
+    const t = attributes[i];
+    const name = t.name;
+    const value = t.value;
+    results[name] = value;
+  }
+  return results;
+}
 function createVNodeByDom(el) {
   if (typeof el === "string") {
     return createVNodeText(el);
@@ -4425,7 +4495,7 @@ function createVNodeByDom(el) {
   return createVNode({
     tag: el.tagName,
     props: getProps(el.attributes),
-    children: children(el).map((it) => {
+    children: children$1(el).map((it) => {
       return createVNodeByDom(it);
     })
   });
@@ -4675,7 +4745,7 @@ export {
   WHEEL,
   WebComponent,
   addProviderSubscribe,
-  children,
+  children$1 as children,
   classnames,
   clone,
   cloneVNode,
@@ -4698,7 +4768,6 @@ export {
   getContextProvider,
   getCurrentComponent,
   getModule,
-  getProps,
   getRootElementInstanceList,
   getVariable,
   hasVariable,
@@ -4726,7 +4795,6 @@ export {
   keyMap,
   keyMapJoin,
   makeEventChecker,
-  makeOneElement,
   makeRequestAnimationFrame,
   pendingComponent,
   popContextProvider,
@@ -4760,6 +4828,7 @@ export {
   useMemo,
   useReducer,
   useRef,
+  useRender,
   useRootContext,
   useSelf,
   useState,

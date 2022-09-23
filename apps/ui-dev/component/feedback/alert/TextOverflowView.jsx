@@ -1,4 +1,4 @@
-import { Alert, Button, Grid, RoundButton, VBox } from "@elf-framework/ui";
+import { Alert, Grid, RoundButton, VBox } from "@elf-framework/ui";
 
 export function TextOverflowView() {
   return (

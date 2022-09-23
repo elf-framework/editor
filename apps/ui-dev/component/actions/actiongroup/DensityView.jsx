@@ -1,7 +1,7 @@
 import DescriptionFilled from "@elf-framework/icon/DescriptionFilled";
 import EditFilled from "@elf-framework/icon/EditFilled";
 import SettingsFilled from "@elf-framework/icon/SettingsFilled";
-import { ActionGroup, Button, Grid, VBox } from "@elf-framework/ui";
+import { ActionGroup, Button, Grid, IconButton, VBox } from "@elf-framework/ui";
 
 export function DensityView() {
   return (
@@ -21,26 +21,26 @@ export function DensityView() {
             </Button>
           </ActionGroup>
           <ActionGroup style={{ gap: 10, margin: "10px 10px" }}>
-            <Button>
+            <IconButton>
               <EditFilled />
-            </Button>
-            <Button>
+            </IconButton>
+            <IconButton>
               <DescriptionFilled />
-            </Button>
-            <Button>
+            </IconButton>
+            <IconButton>
               <SettingsFilled />
-            </Button>
+            </IconButton>
           </ActionGroup>
           <ActionGroup style={{ gap: 10, margin: "10px 10px" }}>
-            <Button quiet={true}>
+            <IconButton quiet={true}>
               <EditFilled />
-            </Button>
-            <Button quiet={true}>
+            </IconButton>
+            <IconButton quiet={true}>
               <DescriptionFilled />
-            </Button>
-            <Button quiet={true}>
+            </IconButton>
+            <IconButton quiet={true}>
               <SettingsFilled />
-            </Button>
+            </IconButton>
           </ActionGroup>
         </VBox>
         <VBox>
@@ -55,31 +55,30 @@ export function DensityView() {
             </Button>
           </ActionGroup>
           <ActionGroup compact={true} style={{ gap: 10, margin: "10px 10px" }}>
-            <Button>
+            <IconButton>
               <EditFilled />
-            </Button>
-            <Button>
+            </IconButton>
+            <IconButton>
               <DescriptionFilled />
-            </Button>
-            <Button>
+            </IconButton>
+            <IconButton>
               <SettingsFilled />
-            </Button>
+            </IconButton>
           </ActionGroup>
           <ActionGroup compact={true} style={{ gap: 10, margin: "10px 10px" }}>
-            <Button quiet={true}>
+            <IconButton quiet={true}>
               <EditFilled />
-            </Button>
-            <Button quiet={true}>
+            </IconButton>
+            <IconButton quiet={true}>
               <DescriptionFilled />
-            </Button>
-            <Button quiet={true}>
+            </IconButton>
+            <IconButton quiet={true}>
               <SettingsFilled />
-            </Button>
+            </IconButton>
           </ActionGroup>
         </VBox>
       </VBox>
       <div>
-        <strong>Density</strong>
         <p>
           Action groups come in 2 densities: regular and compact. The compact
           density retains the same font and icon sizes, but has tighter spacing.

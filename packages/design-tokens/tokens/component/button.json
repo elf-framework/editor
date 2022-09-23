@@ -27,12 +27,17 @@
     "disabled": {
       "background": {
         "default": {
-          "value": "#e6e6e6"
+          "value": "{color.gray.2.value}"
         }
       },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },      
       "text": {
           "default": {
-              "value": "#b1b1b1"
+              "value": "{color.gray.5.value}"
           }
       }
 
@@ -86,6 +91,9 @@
         },
         "danger": {
           "value": "{color.danger.value}"
+        },
+        "dark": {
+          "value": "{color.black.value}"
         }
       }
     },

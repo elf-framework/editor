@@ -48,18 +48,17 @@ export function SizeView() {
         <VBox>
           <em>Extra Large</em>
           <ActionGroup style={{ gap: 10, margin: 10 }}>
-            <Button size="xlarge">
+            <Button size="extra-large">
               <DescriptionFilled />
               Document Setup
             </Button>
-            <Button size="xlarge">
+            <Button size="extra-large">
               <SettingsFilled /> Settings
             </Button>
           </ActionGroup>
         </VBox>
       </VBox>
       <div>
-        <strong>Size</strong>
         <p>
           Action groups come in four different sizes: small, medium, large, and
           extra-large. The medium size is the default and most frequently used

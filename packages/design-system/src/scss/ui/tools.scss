@@ -40,7 +40,7 @@
 
         &[data-selected-type="secondary"] {
           --elf--tools-background-color: var(--color-secondary);
-          --elf--tools-color: var(--color-black);
+          --elf--tools-color: var(--color-white);
         }
       }
 
@@ -49,8 +49,8 @@
         --elf--tools-color: var(--color-white);
 
         &[data-selected-type="secondary"] {
-          --elf--tools-background-color: var(--color-secondary);
-          --elf--tools-color: var(--color-black);
+          --elf--tools-background-color: var(--color-gray-4);
+          --elf--tools-color: var(--color-white);
         }
       }
     }

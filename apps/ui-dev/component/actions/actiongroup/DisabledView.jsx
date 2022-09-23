@@ -28,7 +28,6 @@ export function DisabledView() {
         </div>
       </VBox>
       <div>
-        <strong> Disabled</strong>
         <p>
           A action group in a disabled state shows that the action buttons
           within the group exist, but are not available in that circumstance.

@@ -472,6 +472,7 @@ declare module "@elf-framework/sapa" {
 
   export function useId(): string;
   export function useBatch(callback: () => void): void;
+  export function useRender(): void;
   export function useSyncExternalStore<T>(
     subscribe: (callback: () => void) => () => void,
     getSnapshot: () => T,

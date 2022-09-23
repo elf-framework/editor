@@ -7,8 +7,8 @@ export function HoverView() {
         <div>
           <strong>Hover</strong>
           <div style={{ padding: 10 }}>
-            A hover state is initiated by the user and appears when the user
-            places their cursor over an interactive item.
+            The hover state is initiated by the user and appears when the user
+            places the cursor over the interactive item.
           </div>
         </div>
         <div>

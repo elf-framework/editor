@@ -45,7 +45,6 @@ export function MultiSelectionView() {
         </div>
       </VBox>
       <div>
-        <strong>Selection mode</strong>
         <p>
           When selection is enabled, an action group can allow for single or
           multiple selection of action buttons.

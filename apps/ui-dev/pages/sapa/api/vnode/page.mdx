@@ -106,7 +106,9 @@ createVNodeFragment({
 
 ```
 
-## makeElement(withChildren, options);
+## DomRenderer
+
+`DomRenderer` is a function that renders VNode to DOM.
 
 ```jsx
 const vnode = createVNode({
@@ -115,19 +117,16 @@ const vnode = createVNode({
     title: "yellow"
   }
 })
-const element = vnode.makeElement(true, {
+const element = DomRenderer(vnode, {
   context: parentComponentInstance
 }).el
 ```
 
-To create all elements defined below, set `withChildren` to true.
 
 
+## renderToHtml
 
-
-## async makeHtml(withChildren, options)
-
-`makeHtml` always works as async .
+`renderToHtml` always works as async .
 
 ```jsx
 const vnode = createVNode({
@@ -138,13 +137,13 @@ const vnode = createVNode({
 })
 
 (async () => {
-  const htmlString = await vnode.makeHtml(true, {
-    context: parentComponentInstance
-  });
+  const htmlString = await renderToHtml(vnode);
 })()
 ```
 
 ## Options 
+
+`options` sends meta information needed when the renderer draws the vnode.
 
 ```jsx
 {

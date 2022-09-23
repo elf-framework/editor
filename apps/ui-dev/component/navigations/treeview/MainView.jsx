@@ -1,7 +1,7 @@
 import ChevronRightFilled from "@elf-framework/icon/ChevronRightFilled";
 import DescriptionFilled from "@elf-framework/icon/DescriptionFilled";
 import FolderFilled from "@elf-framework/icon/FolderFilled";
-import { useState } from "@elf-framework/sapa";
+import { useRender, useState } from "@elf-framework/sapa";
 import { Button, TreeView, TreeViewProvider, VBox } from "@elf-framework/ui";
 
 import treeData from "./data/base.json";
@@ -45,25 +45,25 @@ export function MainView() {
           items={provider.items}
           onClickNode={(item) => {
             item.data.selected = !item.data.selected;
-            this.render();
+            this.refresh();
           }}
           onToggleNode={(item) => {
             item.data.collapsed = !item.data.collapsed;
-            this.render();
+            useRender();
           }}
           onDropNode={({ startId, endId, targetPosition }) => {
             switch (targetPosition) {
               case "top":
                 provider.insertBefore(endId, startId);
-                this.render();
+                useRender();
                 break;
               case "bottom":
                 provider.insertAfter(endId, startId);
-                this.render();
+                useRender();
                 break;
               case "middle":
                 provider.insertLast(endId, startId);
-                this.render();
+                useRender();
                 break;
             }
           }}

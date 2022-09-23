@@ -139,6 +139,10 @@
     flex-direction: column;
     padding: var(--elf--card-container-padding);
     margin-top: calc(var(--elf--card-offset) + 10px);
+
+    &:first-child {
+        margin-top: 0px;
+    }
 }
 
 .elf--card-header {
@@ -191,7 +195,7 @@
         justify-content: center;
         align-items: flex-start;
         flex: none;
-        margin-top: -5px;
+        // margin-top: -5px;
     }
 
     &.nowrap {

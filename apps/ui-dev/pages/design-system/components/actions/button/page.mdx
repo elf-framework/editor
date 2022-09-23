@@ -8,13 +8,12 @@ import { VBox } from "@elf-framework/ui";
 import { MainView } from "../../../../../component/actions/button/MainView.jsx"; 
 import { OptionsView } from "../../../../../component/actions/button/OptionsView.jsx"; 
 import { SizeView } from "../../../../../component/actions/button/SizeView.jsx"; 
-import { DensityView } from "../../../../../component/actions/button/DensityView.jsx"; 
+import { StyleView } from "../../../../../component/actions/button/StyleView.jsx"; 
 import { JustifiedView } from "../../../../../component/actions/button/JustifiedView.jsx"; 
-import { QuietView } from "../../../../../component/actions/button/QuietView.jsx"; 
-import { EnableSelectionView } from "../../../../../component/actions/button/EnableSelectionView.jsx"; 
-import { MultiSelectionView } from "../../../../../component/actions/button/MultiSelectionView.jsx"; 
-import { OverflowView } from "../../../../../component/actions/button/OverflowView.jsx"; 
+import { PendingView } from "../../../../../component/actions/button/PendingView.jsx"; 
 import { DisabledView } from "../../../../../component/actions/button/DisabledView.jsx"; 
+import { FocusedView } from "../../../../../component/actions/button/FocusedView.jsx"; 
+import { TooltipView } from "../../../../../component/actions/button/TooltipView.jsx"; 
 import { VariantView } from "../../../../../component/actions/button/VariantView.jsx"; 
 
 # {title}
@@ -28,21 +27,32 @@ Buttons allow users to perform an action or to navigate to another page. They ha
 ## Options 
 
 ### Label and icon
-    <OptionsView />
+<OptionsView />
 
 ### Variant
-    <VariantView />
-    <SizeView />
-    <DensityView />
-    <JustifiedView />
-    <QuietView />
-    <EnableSelectionView />
-    <MultiSelectionView />
-    <OverflowView />
-    <DisabledView />
+<VariantView />
+
+### Size
+<SizeView />
+
+### Style 
+<StyleView />
+
+### Justified 
+<JustifiedView />
+
+### Pending
+<PendingView />
+
+### Disabled
+<DisabledView />
+
+### Focus 
+
+<FocusedView />
 
 
+### Tooltip when the label is hidden
 
-
-
+<TooltipView />
 

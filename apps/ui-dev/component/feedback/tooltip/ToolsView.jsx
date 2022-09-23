@@ -1,4 +1,4 @@
-import { Button, Grid, RoundButton, Toast, VBox } from "@elf-framework/ui";
+import { Grid, RoundButton, Toast, VBox } from "@elf-framework/ui";
 
 export function ToolsView() {
   return (

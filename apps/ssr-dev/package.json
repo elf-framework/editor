@@ -21,19 +21,19 @@
   "dependencies": {
     "@elf-framework/color": "*",
     "@elf-framework/design-tokens": "*",
-    "@elf-framework/icon": "^2.0.50",
+    "@elf-framework/icon": "^2.0.62",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",
-    "mermaid": "^9.1.4"
+    "mermaid": "^9.1.7"
   },
   "devDependencies": {
     "@elf-framework/config": "*",
     "glob": "^8.0.3",
-    "vite": "^2.9.13",
-    "vite-plugin-mdx": "^3.5.10",
+    "vite": "^3.1.3",
+    "vite-plugin-mdx": "^3.5.11",
     "vite-plugin-sapa": "*",
-    "vite-plugin-ssr": "^0.4.19",
-    "vitest": "0.0.107"
+    "vite-plugin-ssr": "^0.4.36",
+    "vitest": "0.23.4"
   }
 }

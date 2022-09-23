@@ -179,7 +179,7 @@ export class VirtualScroll extends UIElement {
       false
     );
 
-    this.render();
+    this.refresh();
   }
 
   refreshItems() {
@@ -190,7 +190,7 @@ export class VirtualScroll extends UIElement {
       false
     );
 
-    this.render();
+    this.refresh();
   }
 
   scrollIntoView(index) {

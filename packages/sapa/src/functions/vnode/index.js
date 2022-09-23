@@ -1,10 +1,7 @@
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
-import { RefClass } from "../../HookMachine";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
-import { Dom } from "../Dom";
-import { isVoidTag } from "../DomUtil";
 import {
   isArray,
   isFunction,
@@ -14,15 +11,7 @@ import {
   isValue,
 } from "../func";
 import { getModule, isGlobalForceRender } from "../registElement";
-import { isSVG } from "../svg";
 
-const TAG_PREFIX = "<";
-let TEMP_DIV;
-let TEMP_TEXT;
-let TEMP_COMMENT;
-let cache = {};
-let cacheCount = 0;
-let nativeDomCache = {};
 const EXPECT_ATTRIBUTES = {
   memoizedProps: true,
   parentElement: true,
@@ -31,97 +20,6 @@ const EXPECT_ATTRIBUTES = {
   instance: true,
 };
 
-const ENABLE_PROPERTY = {
-  indeterminate: true,
-};
-
-function makeTempDiv() {
-  if (!TEMP_DIV) {
-    TEMP_DIV = Dom.create("div");
-  }
-
-  return TEMP_DIV;
-}
-
-function makeTempText() {
-  if (!TEMP_TEXT) {
-    TEMP_TEXT = document.createTextNode("");
-  }
-
-  return TEMP_TEXT;
-}
-
-function makeTempComment() {
-  if (!TEMP_COMMENT) {
-    TEMP_COMMENT = document.createComment("");
-  }
-
-  return TEMP_COMMENT;
-}
-
-function makeNativeDom(name) {
-  if (!nativeDomCache[name]) {
-    const el = isSVG(name)
-      ? document.createElementNS("http://www.w3.org/2000/svg", name)
-      : document.createElement(name);
-
-    nativeDomCache[name] = el;
-  }
-
-  return nativeDomCache[name].cloneNode(false);
-}
-
-function makeNativeTextDom(value) {
-  const text = makeTempText().cloneNode();
-  text.textContent = value;
-  return text;
-}
-
-function makeNativeCommentDom(value) {
-  const text = makeTempComment().cloneNode();
-  text.textContent = value;
-  return text;
-}
-
-const expectAttributes = {
-  content: true,
-};
-
-function setAttribute(el, name, value) {
-  if (expectAttributes[name]) return;
-  if (ENABLE_PROPERTY[name]) {
-    el[name] = value;
-  } else {
-    el.setAttribute(name, value);
-  }
-}
-
-function removeAttribute(el, name) {
-  if (ENABLE_PROPERTY[name]) {
-    el[name] = false;
-  } else {
-    el.removeAttribute(name);
-  }
-}
-
-function setEventAttribute(el, name, value) {
-  el[name.toLowerCase()] = value;
-
-  // or  el.addEventListener(name.replace(/on/, "").toLowerCase(), value);
-}
-
-function setStyle(el, key, value) {
-  if (key.indexOf("--") === 0) {
-    if (typeof value === "undefined") {
-      el.style.removeProperty(key);
-    } else {
-      el.style.setProperty(key, value);
-    }
-  } else {
-    el.style[key] = value;
-  }
-}
-
 function stringifyStyle(styleObject) {
   const newStyle = css(styleObject);
   return Object.keys(newStyle)
@@ -129,23 +27,6 @@ function stringifyStyle(styleObject) {
       return `${key}: ${newStyle[key]};`;
     })
     .join(" ");
-}
-
-export function getProps(attributes) {
-  var results = {};
-  const len = attributes.length;
-
-  // 일단 attribute 에는 없음
-  // properties 에 있는지 봐야함.
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
-    const name = t.name;
-    const value = t.value;
-
-    results[name] = value;
-  }
-
-  return results;
 }
 
 export const children = (el) => {
@@ -163,20 +44,6 @@ export const children = (el) => {
 
   return results;
 };
-
-export function makeOneElement(html) {
-  if (cacheCount > 2000) {
-    cacheCount = 0;
-    cache = {};
-  }
-
-  if (!cache[html]) {
-    cacheCount++;
-    cache[html] = makeTempDiv().html(html).first.el;
-  }
-
-  return cache[html].cloneNode(true);
-}
 
 export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
   // 함수는 무조건 새로고침이 되도록 한다.
@@ -253,6 +120,10 @@ export function vnodePropsDiff(oldProps, newProps) {
   return isEqual(oldProps, newProps, 0, EXPECT_ATTRIBUTES);
 }
 
+/**
+ * VirtualNode class
+ *
+ */
 export class VNode {
   constructor(type, tag, props, children, Component) {
     this.type = type;
@@ -298,6 +169,15 @@ export class VNode {
     }
   }
 
+  runUpdated() {
+    if (this.updated) {
+      // element 가 추가 된 이후에 rendering 을 바로 하지 않기 때문에 시간차를 둔다.
+      requestAnimationFrame(() => {
+        this.updated();
+      }, 0);
+    }
+  }
+
   get stringifyStyle() {
     return this.memoizedProps.style;
   }
@@ -334,25 +214,7 @@ export class VNode {
 
       this.children = this.children.filter(isValue).map((child) => {
         if (isString(child)) {
-          if (this.enableHtml) {
-            // tag 문자열이 없으면 그냥 text node 로 인식한다.
-            // 이때에는 tag 의 이름을 제거한다.
-            if (child.indexOf(TAG_PREFIX) === -1) {
-              return createVNodeText(child);
-            } else {
-              // tag 문자열이 있으면 파싱해서 결과물을 vNode 로 만든다.
-              // html 을 입력할지 말지 여기서 결정해야할 듯
-              const newEl = makeOneElement(child);
-
-              if (newEl?.nodeType === 3) {
-                return createVNodeText(newEl.textContent);
-              }
-
-              return createVNodeText(newEl);
-            }
-          } else {
-            return createVNodeText(child);
-          }
+          return createVNodeText(child);
         } else if (isNumber(child)) {
           return createVNodeText(child);
         }
@@ -364,124 +226,8 @@ export class VNode {
     }
   }
 
-  insertElement(child, fragment, parentElement, withChildren, options) {
-    // element 수집
-    // children 은 fragment 로 만들어서 추가한다.
-
-    if (child instanceof VNode || child?.makeElement) {
-      child.setParentElement(parentElement);
-      const el = child.makeElement(withChildren, options).el;
-
-      if (el) {
-        fragment.appendChild(el);
-      }
-    } else if (isArray(child)) {
-      child.forEach((it) => {
-        if (it) {
-          this.insertElement(
-            it,
-            fragment,
-            parentElement,
-            withChildren,
-            options
-          );
-        }
-      });
-    } else if (isFunction(child)) {
-      const result = child();
-
-      if (result) {
-        this.insertElement(
-          result,
-          fragment,
-          parentElement,
-          withChildren,
-          options
-        );
-      }
-    } else if (child instanceof window.HTMLElement) {
-      fragment.appendChild(child);
-    } else if (isValue(child)) {
-      fragment.appendChild(document.createTextNode(child));
-    } else {
-      // NOOP
-      // undefined, null 은 표시하지 않는다.
-    }
-  }
-
-  makeChildren(withChildren, options) {
-    const parentElement = this.el;
-    const children = this.children;
-    if (children && children.length) {
-      const fragment = document.createDocumentFragment();
-
-      this.insertElement(
-        children,
-        fragment,
-        parentElement,
-        withChildren,
-        options
-      );
-
-      // fragment 적용
-      parentElement.appendChild(fragment);
-
-      // mounted 메세지 실행
-      children.forEach((child) => {
-        if (isArray(child)) {
-          child.forEach((it) => {
-            if (isFunction(it?.runMounted)) {
-              it.runMounted();
-            }
-          });
-        } else if (child) {
-          if (isFunction(child?.runMounted)) {
-            child.runMounted();
-          }
-        }
-      });
-    }
-  }
-
   setParentElement(parentElement) {
     this.parentElement = parentElement;
-  }
-
-  async makeChildrenHtml(withChildren, options) {
-    const tempChildren = [];
-    const children = this.children;
-    if (children && children.length) {
-      // element 수집
-      const tempArray = await Promise.all(
-        children.map(async (child) => {
-          if (child instanceof VNode || child.makeHtml) {
-            return await child.makeHtml(withChildren, options);
-          } else if (isArray(child)) {
-            return await Promise.all(
-              child.map(async (it) => {
-                if (it) {
-                  return await it.makeHtml(withChildren, options);
-                }
-
-                return undefined;
-              })
-            ).filter((it) => typeof it !== "undefined");
-          } else if (isFunction(child)) {
-            return await child();
-          } else {
-            return await child;
-          }
-        })
-      );
-
-      tempChildren.push(...tempArray);
-    }
-
-    return tempChildren.join("\n");
-  }
-
-  createElement() {
-    return makeNativeDom(this.tag);
   }
 
   /**
@@ -500,118 +246,16 @@ export class VNode {
     });
   }
 
-  makeElement(withChildren = false, options = {}) {
-    const el = this.createElement();
-
-    let props = this.memoizedProps;
-    if (props) {
-      // props 에 ref 속성이 있으면 context 에 추가한다.
-      if (props.ref) {
-        this.getContextProps(options.context, props);
-
-        this.ref = props.ref;
-
-        if (this.ref instanceof RefClass) {
-          this.ref.setCurrent(el);
-        }
-        isFunction(options.registerRef) && options.registerRef(props.ref, el);
-      }
-
-      Object.keys(props).forEach((key) => {
-        const value = props[key];
-        if (key === "style") {
-          if (isString(value)) {
-            el.style.cssText = value;
-          } else {
-            if (isObject(value) && Object.keys(value).length) {
-              const styleValues = css(value);
-              Object.entries(styleValues).forEach(([localKey, value]) => {
-                setStyle(el, localKey, value);
-              });
-            } else {
-              // style 속성이 없는 경우 style 요소 삭제
-              removeAttribute(el, "style");
-            }
-          }
-        } else {
-          if (key) {
-            if (value !== undefined) {
-              // 이벤트는 단일 속성 이벤트로 정의
-              if (key.startsWith("on")) {
-                setEventAttribute(el, key, value);
-              } else {
-                setAttribute(el, key, value);
-              }
-            }
-          }
-        }
-      });
-    }
-
-    this.el = el;
-    this.makeChildren(withChildren, options);
-
-    return this;
-  }
-
-  async makeHtml(withChildren = false, options = {}) {
-    const tempProps = [];
-    const props = this.memoizedProps;
-    if (props) {
-      if (props.ref) {
-        // ref 가 있을 때는 context 에서 props 를 가지고 온다.
-        this.getContextProps(options.context, props);
-      }
-
-      Object.keys(props).forEach((key) => {
-        const value = props[key];
-        if (key === "style") {
-          if (isString(value)) {
-            // noop
-          } else {
-            props[key] = stringifyStyle(css(value));
-          }
-        } else {
-          if (key) {
-            if (value !== undefined) {
-              // 이벤트는 단일 속성 이벤트로 정의
-              if (key.startsWith("on")) {
-                // onXXX 이벤트는 정의하지 않는다.
-                return;
-              }
-            }
-          }
-        }
-
-        if (key === "ref") {
-          return;
-        }
-
-        if (value) {
-          tempProps.push(`${key}="${value}"`);
-        }
-      });
-    }
-
-    if (isVoidTag(this.tag)) {
-      return `
-        <${this.tag} ${tempProps.join(" ")} />
-      `;
-    } else {
-      const childrenHtml = await this.makeChildrenHtml(withChildren, options);
-
-      return `
-        <${this.tag} ${tempProps.join(" ")}>${childrenHtml}</${this.tag}>
-      `;
-    }
-  }
-
   makeText(divider = "") {
     const arr = this.children
       .map((child) => child.makeText(divider))
       .flat(Infinity);
 
     return arr.join(divider);
+  }
+
+  isType(type) {
+    return this.type === type;
   }
 }
 
@@ -631,18 +275,7 @@ export class VNodeText extends VNode {
 
   runMounted() {}
 
-  createElement() {
-    return makeNativeTextDom(this.value);
-  }
-
-  makeElement() {
-    this.el = this.createElement();
-    return this;
-  }
-
-  makeHtml() {
-    return this.value;
-  }
+  runUpdated() {}
 
   makeText() {
     return this.value;
@@ -665,19 +298,7 @@ export class VNodeComment extends VNode {
 
   runMounted() {}
 
-  createElement() {
-    return makeNativeCommentDom(this.value);
-  }
-
-  makeElement() {
-    this.el = this.createElement();
-
-    return this;
-  }
-
-  makeHtml() {
-    return `<!-- ${this.value} -->`;
-  }
+  runUpdated() {}
 
   makeText() {
     return "";
@@ -695,28 +316,13 @@ export class VNodeFragment extends VNode {
       this.children.map((it) => it.clone())
     );
   }
-
-  makeElement(withChildren = false, options = {}) {
-    if (this.el) return this;
-
-    const el = document.createDocumentFragment();
-
-    this.el = el;
-
-    this.makeChildren(withChildren, options);
-
-    return this;
-  }
-
-  async makeHtml(withChildren = false, options = {}) {
-    return await this.makeChildrenHtml(withChildren, options);
-  }
 }
 
 export class VNodeComponent extends VNode {
   constructor(props = {}, children, Component) {
     super(VNodeType.COMPONENT, "object", props || {}, children);
     this.Component = Component;
+    this.LastComponent = Component;
     this.instance = null;
   }
 
@@ -732,12 +338,16 @@ export class VNodeComponent extends VNode {
     this.instance?.onMounted();
   }
 
+  updated() {
+    this.instance?.onUpdated();
+  }
+
   getModule() {
     return getModule(this.Component);
   }
 
   get isComponentChanged() {
-    return this.Component !== this.getModule();
+    return this.LastComponent !== this.getModule();
   }
 
   // class/function instance 생성
@@ -777,51 +387,8 @@ export class VNodeComponent extends VNode {
     return this.instance;
   }
 
-  render(options) {
-    this.makeClassInstance(options);
-
-    try {
-      // 객체를 생성 후에는 렌더링을 한다.
-      // renderComponent(this.instance);
-      this.instance.setParentElement(this.parentElement);
-      this.instance.render(options.$container);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  async renderHtml(options) {
-    this.makeClassInstance(options);
-
-    // 객체를 생성 후에는 렌더링을 한다.
-    return await this.instance.renderToHtml();
-  }
-
-  makeElement(withChildren, options = {}) {
-    this.render(options);
-
-    // 렌더링 된 객체에서 element 를 얻는다.
-    this.el = this.instance?.$el?.el;
-
-    if (this.el) {
-      // props.ref 가 있으면 등록한다.
-      const id = isString(this.props.ref) ? this.props.ref : this.instance.id;
-
-      if (this.props.ref instanceof RefClass) {
-        // ref 가 있으면 component 의 instance 를 등록한다.
-        this.props.ref.setCurrent(this.instance);
-      }
-
-      // 상위 컨텍스트 에서 내부 children 을 관리한다.
-      isFunction(options.registerChildComponent) &&
-        options.registerChildComponent(this.el, this.instance, id);
-    }
-
-    return this;
-  }
-
-  async makeHtml(withChildren, options = {}) {
-    return await this.renderHtml(options);
+  template() {
+    return this.instance?.template();
   }
 
   makeText() {

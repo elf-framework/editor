@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 21 Sep 2022 12:37:21 GMT
+ * Generated on Fri, 23 Sep 2022 11:25:56 GMT
  */
 
 :root {
@@ -112,8 +112,6 @@
   --column-1: repeat(1, 1fr);
   --shadow-color: rgba(170, 170, 170, 0.5);
   --shadow-none: none;
-  --button-disabled-text-default: #b1b1b1;
-  --button-disabled-background-default: #e6e6e6;
   --avatar-size-700: 60px;
   --avatar-size-600: 55px;
   --avatar-size-500: 50px;
@@ -196,7 +194,7 @@
   --color-blue-3: #abd2ff;
   --color-blue-2: #cce3ff;
   --color-blue-1: #e8f3ff;
-  --color-blue-0: #f2f8ff;
+  --color-blue-0: #f6faff;
   --color-green-9: #233b33;
   --color-green-8: #1b5441;
   --color-green-7: #067852;
@@ -271,6 +269,9 @@
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
   --button-color-border-default: var(--color-gray-2);
+  --button-disabled-text-default: var(--color-gray-5);
+  --button-disabled-border-default: var(--color-gray-2);
+  --button-disabled-background-default: var(--color-gray-2);
   --button-selected-background-default: var(--color-gray-2);
   --button-hover-background-default: var(--color-gray-1);
   --button-closable-hover-background-default: var(--color-transparent-white-1);
@@ -281,7 +282,7 @@
   --alert-color-background-weak-primary: var(--color-blue-1);
   --alert-color-background-weak-default: var(--color-gray-1);
   --alert-color-background-dark: var(--color-gray-9);
-  --alert-color-background-default: var(--color-gray-1);
+  --alert-color-background-default: var(--color-gray-0);
   --alert-color-content-weak-info: var(--color-blue-5); /* Base color for the info color */
   --alert-color-content-weak-success: var(--color-green-3); /* Base color for the success color */
   --alert-color-content-weak-warning: var(--color-orange-3); /* Base color for the warning color */
@@ -383,6 +384,7 @@
   --divider-color-border-success: var(--color-success);
   --divider-color-border-secondary: var(--color-secondary);
   --divider-color-border-primary: var(--color-primary);
+  --button-color-border-dark: var(--color-black);
   --button-color-border-danger: var(--color-danger);
   --button-color-border-warning: var(--color-warning);
   --button-color-border-info: var(--color-info);

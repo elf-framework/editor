@@ -14,6 +14,10 @@ import {
  * - [x] useMemo
  * - [x] useCallback
  * - [x] useRef
+ * - [x] useSubscribe
+ * - [x] useId
+ * - [x] useSyncExternalStore
+ * - [x] useBatch
  *
  *
  * ps.
@@ -37,6 +41,10 @@ export function renderFromRoot() {
 
 export function useBatch(callback) {
   getCurrentComponent().useBatch(callback);
+}
+
+export function useRender() {
+  useBatch(null);
 }
 
 export function useId() {

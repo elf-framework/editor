@@ -23,7 +23,7 @@ export function MainView() {
             <DeleteFilled />
             Delete
           </Button>
-          <Button>
+          <Button iconOnly>
             <MoreHorizOutlined />
           </Button>
         </div>

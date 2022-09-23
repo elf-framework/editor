@@ -92,10 +92,12 @@ export function MarkdownPage({ page: Page, filename, menu }) {
   template.children.forEach((child, index) => {
     if (child.nodeName?.startsWith("H")) {
       const text = child.makeText(" ");
-      const id = child.makeText("-") + index;
+      const id = child.makeText("-");
 
       // element 에 적용이 되기 위해서 memoizedProps 를 변경
-      child.memoizedProps.id = encodeURIComponent(id);
+      const targetId = encodeURIComponent(id);
+      child.props.id = targetId;
+      child.memoizedProps.id = targetId;
 
       const level = child.nodeName.replace("H", "");
 
@@ -106,10 +108,11 @@ export function MarkdownPage({ page: Page, filename, menu }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries)
+        for (const entry of entries) {
           if (entry.isIntersecting) {
             useStoreSet("scrollTarget", decodeURIComponent(entry.target.id));
           }
+        }
       },
       {
         rootMargin: "-50% 0px",
@@ -117,7 +120,7 @@ export function MarkdownPage({ page: Page, filename, menu }) {
     );
 
     this.refs.$inner
-      .querySelectorAll("h1, h2, h3, h4, h5, h6")
+      ?.querySelectorAll("h1, h2, h3, h4, h5, h6")
       .forEach((it) => {
         observer.observe(it);
       });

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 21 Sep 2022 12:37:21 GMT
+ * Generated on Fri, 23 Sep 2022 11:25:55 GMT
  */
 
 export const ImageLogo : string;
@@ -238,6 +238,7 @@ export const ButtonClosableHoverBackgroundDefault : string;
 export const ButtonHoverBackgroundDefault : string;
 export const ButtonSelectedBackgroundDefault : string;
 export const ButtonDisabledBackgroundDefault : string;
+export const ButtonDisabledBorderDefault : string;
 export const ButtonDisabledTextDefault : string;
 export const ButtonColorBackgroundDefault : string;
 export const ButtonColorBackgroundPrimary : string;
@@ -254,6 +255,7 @@ export const ButtonColorBorderSuccess : string;
 export const ButtonColorBorderInfo : string;
 export const ButtonColorBorderWarning : string;
 export const ButtonColorBorderDanger : string;
+export const ButtonColorBorderDark : string;
 export const ButtonSizePaddingSmall : string;
 export const ButtonSizePaddingMedium : string;
 export const ButtonSizePaddingLarge : string;

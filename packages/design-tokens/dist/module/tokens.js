@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 21 Sep 2022 12:37:21 GMT
+ * Generated on Fri, 23 Sep 2022 11:25:55 GMT
  */
 
 module.exports = {
@@ -1892,11 +1892,11 @@ module.exports = {
     },
     "blue": {
       "0": {
-        "value": "#f2f8ff",
+        "value": "#f6faff",
         "filePath": "tokens/color/core.json",
         "isSource": true,
         "original": {
-          "value": "#F2F8FF"
+          "value": "#F6FAFF"
         },
         "name": "ColorBlue0",
         "attributes": {
@@ -4245,11 +4245,11 @@ module.exports = {
       },
       "background": {
         "default": {
-          "value": "#ebf0f5",
+          "value": "#f8f8f8",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1.value}"
+            "value": "{color.gray.0.value}"
           },
           "name": "AlertColorBackgroundDefault",
           "attributes": {
@@ -4844,11 +4844,11 @@ module.exports = {
     "disabled": {
       "background": {
         "default": {
-          "value": "#e6e6e6",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "#e6e6e6"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonDisabledBackgroundDefault",
           "attributes": {
@@ -4865,13 +4865,36 @@ module.exports = {
           ]
         }
       },
-      "text": {
+      "border": {
         "default": {
-          "value": "#b1b1b1",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "#b1b1b1"
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonDisabledBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "disabled",
+            "border",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.5.value}"
           },
           "name": "ButtonDisabledTextDefault",
           "attributes": {
@@ -5206,6 +5229,27 @@ module.exports = {
             "color",
             "border",
             "danger"
+          ]
+        },
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonColorBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "dark"
           ]
         }
       }

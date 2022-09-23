@@ -251,6 +251,13 @@ declare module "@elf-framework/ui" {
     outline?: boolean;
     quiet?: boolean;
     disabled?: boolean;
+    onlyIcon?: boolean;
+    class: string;
+    iconOnly: boolean;
+    place?: string;
+    justified?: boolean;
+    play?: boolean;
+    focused?: boolean;
     onClick?: (event: PointerEvent) => void;
     style?: ButtonStyle & CommonStyle;
   }
@@ -851,6 +858,15 @@ declare module "@elf-framework/ui" {
 
   export class Grid extends UIElement {
     props: GridProps & CommonStyle & DomEventType;
+  }
+
+  export interface ColumnProps {
+    span?: number;
+    style?: CommonStyle;
+  }
+
+  export class Column extends UIElement {
+    props: ColumnProps & DomEventType;
   }
 
   export interface ViewProps {
@@ -1509,6 +1525,7 @@ declare module "@elf-framework/ui" {
     iterationCount?: string;
     timingFunction?: string;
     content?: ContentType;
+    play?: boolean;
     onEnd?: (e: AnimationEvent) => void;
     onIteration?: (e: AnimationEvent) => void;
     onStart?: (e: AnimationEvent) => void;

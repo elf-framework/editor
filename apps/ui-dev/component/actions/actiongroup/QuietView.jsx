@@ -38,7 +38,6 @@ export function QuietView() {
         </div>
       </VBox>
       <div>
-        <strong>Quiet</strong>
         <p>
           By default, an action group uses not-quiet action buttons. This style
           works best in a dense array of controls where the background helps to

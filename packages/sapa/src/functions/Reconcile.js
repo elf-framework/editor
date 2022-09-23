@@ -1,4 +1,5 @@
 import { VNodeType } from "../constant/vnode";
+import { DomRenderer } from "../renderer/dom/DomRenderer";
 import { isFunction, isNotUndefined, isUndefined } from "./func";
 
 const booleanTypes = new Map(
@@ -79,7 +80,6 @@ const patch = {
   updateProp(node, name, newValue, oldValue) {
     if (isUndefined(newValue)) {
       if (oldValue) {
-        console.log(node, newValue, oldValue);
         this.removeProp(node, name);
       } else {
         // noop
@@ -91,9 +91,23 @@ const patch = {
     }
   },
 
+  reconcile(oldEl, newVNode, options) {
+    const isRootElement = options.context.$el.el === oldEl;
+
+    newVNode.makeClassInstance(options);
+
+    Reconcile(oldEl, newVNode.template(), options);
+
+    if (isRootElement) {
+      options.context.$el.el = oldEl;
+    }
+
+    newVNode.runUpdated();
+  },
+
   replaceWith(oldEl, newVNode, options) {
     const isRootElement = options.context.$el.el === oldEl;
-    const objectElement = newVNode.makeElement(true, options).el;
+    const objectElement = DomRenderer(newVNode, options).el;
 
     if (isRootElement) {
       options.context.$el.el = objectElement;
@@ -112,13 +126,13 @@ const patch = {
   },
 
   addNewVNode(parentElement, oldEl, newVNode, options) {
-    parentElement.insertBefore(newVNode.makeElement(true, options).el, oldEl);
+    parentElement.insertBefore(DomRenderer(newVNode, options).el, oldEl);
     parentElement.removeChild(oldEl);
     newVNode.runMounted();
   },
 
   appendChild(el, newVNode, options) {
-    const newVNodeInstance = newVNode.makeElement(true, options);
+    const newVNodeInstance = DomRenderer(newVNode, options);
 
     if (newVNodeInstance?.el) {
       el.appendChild(newVNodeInstance.el);
@@ -227,47 +241,7 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
         }
       }
     });
-
-  // // FIXME: 사전에 정의할 수 있는 부분은 모두 사전에 정의한다.
-  // // FIXME: Set 을 실행하지 않고 유니크한 key 리스트를 얻을 수 있도록 한다.
-  // keyList.push.apply(keyList, newPropsKeys);
-  // keyList.push.apply(keyList, oldPropsKeys);
-
-  // const props = new Set(keyList);
-
-  // props.forEach((key) => {
-  //   if (!expectKeys[key]) {
-  //     patch.updateProp(node, key, newProps[key], oldProps[key]);
-  //   }
-  // });
 };
-
-function omitProps(vNode) {
-  const props = vNode.props || {};
-  const results = {};
-  const keys = Object.keys(props);
-
-  if (!keys.length) {
-    return results;
-  }
-
-  for (let i = 0, len = keys.length; i < len; i++) {
-    const key = keys[i];
-
-    // 특수 속성 제외
-    if (key.startsWith(PREFIX_EVENT)) {
-      results[key] = props[key];
-    } else {
-      if (key === KEY_STYLE) {
-        // style 의 경우 element 와 직접적으로 비교할 것이기 때문에 string 으로 변환한 값으로 비교한다.
-        results[key] = vNode.stringifyStyle;
-      } else {
-        results[key] = props[key];
-      }
-    }
-  }
-  return results;
-}
 
 function getProps(oldEl, attributes, newProps) {
   var results = {};
@@ -320,8 +294,12 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
         isFunction(options.checkRefClass) &&
         options.checkRefClass(oldEl, newVNode)
       ) {
-        // oldEl 을 바꿔야함.
-        patch.replaceWith(oldEl, newVNode, options);
+        // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
+        patch.reconcile(oldEl, newVNode, options);
+
+        // 기존의 replaceWith 는 element 통으로 바꾸기 때문에 화면 렌더링을 많이 해야함.
+        // patch.replaceWith(oldEl, newVNode, options);
+        // 이건 안 쓰는 걸로>
 
         if (isFunction(options.registerChildComponent)) {
           options.registerChildComponent(
@@ -331,6 +309,8 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
             oldEl // 옛날 element 는 삭제하기
           );
         }
+      } else {
+        // noop
       }
     } else {
       patch.replaceWith(oldEl, newVNode, options);
@@ -340,7 +320,8 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
 }
 
 function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
-  const newVNodeProps = omitProps(newVNode);
+  // props 가 설정 될 때 비교될 props 를 사전에 정의해서 가지고 오는 것이 좋다.
+  const newVNodeProps = newVNode.memoizedProps;
 
   // update properties
   updateProps(
@@ -370,7 +351,7 @@ export function updateChildren(oldEl, newVNode, options = {}) {
   if (oldChildren.length === 0 && newChildren.length > 0) {
     var fragment = document.createDocumentFragment();
     newChildren.forEach((it) => {
-      const retElement = it.makeElement(true, options).el;
+      const retElement = DomRenderer(it, options).el;
 
       if (retElement) {
         fragment.appendChild(retElement);
@@ -471,7 +452,6 @@ const DefaultOption = {
  */
 export function Reconcile(oldEl, newVNode, options = {}) {
   options = Object.assign({}, DefaultOption, options);
-
   if (oldEl.nodeType !== 11) {
     // fragment 가 아니면 비교를 시작한다.
     updateElement(oldEl.parentElement, oldEl, newVNode, options);

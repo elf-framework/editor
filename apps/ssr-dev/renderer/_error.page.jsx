@@ -1,10 +1,10 @@
-import { start } from "@elf-framework/sapa";
 import { escapeInject } from "vite-plugin-ssr";
 
 export { render };
 
 async function render(pageContext) {
-  const {is404} = pageContext;
+  const { is404 } = pageContext;
+
   return escapeInject`
 <!DOCTYPE html>
 <html lang="en">

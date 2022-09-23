@@ -1,7 +1,7 @@
 import DescriptionFilled from "@elf-framework/icon/DescriptionFilled";
 import EditFilled from "@elf-framework/icon/EditFilled";
 import SettingsFilled from "@elf-framework/icon/SettingsFilled";
-import { ActionGroup, Button, Grid, VBox } from "@elf-framework/ui";
+import { ActionGroup, Button, Grid, IconButton, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {
   return (
@@ -21,15 +21,15 @@ export function OptionsView() {
             </Button>
           </ActionGroup>
           <ActionGroup style={{ gap: 10, margin: "10px 10px" }}>
-            <Button quiet={true}>
+            <IconButton quiet={true}>
               <EditFilled />
-            </Button>
-            <Button quiet={true}>
+            </IconButton>
+            <IconButton quiet={true}>
               <DescriptionFilled />
-            </Button>
-            <Button quiet={true}>
+            </IconButton>
+            <IconButton quiet={true}>
               <SettingsFilled />
-            </Button>
+            </IconButton>
           </ActionGroup>
         </div>
         <div>
@@ -48,15 +48,15 @@ export function OptionsView() {
               direction="vertical"
               style={{ gap: 10, margin: "10px 10px" }}
             >
-              <Button quiet={true}>
+              <IconButton quiet={true}>
                 <EditFilled />
-              </Button>
-              <Button quiet={true}>
+              </IconButton>
+              <IconButton quiet={true}>
                 <DescriptionFilled />
-              </Button>
-              <Button quiet={true}>
+              </IconButton>
+              <IconButton quiet={true}>
                 <SettingsFilled />
-              </Button>
+              </IconButton>
             </ActionGroup>
           </Grid>
         </div>

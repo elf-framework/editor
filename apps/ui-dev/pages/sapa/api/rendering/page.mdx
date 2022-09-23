@@ -69,7 +69,7 @@ import { renderToHtml } from "@elf-framework/sapa";
 
 ## Rendering Component
 
-### `setState` method 
+### setState 
 
 The `setState` method calls `render`() function again while changing a specific value.
 
@@ -99,25 +99,25 @@ function A () {
 }
 ```
 
-### `render` method 
+### useRender 
 
-`render` method allows you to perform rendering at any point in time.
+`useRender` method allows you to perform rendering at any point in time.
 
-When used with `subscribe` , you can control the desired rendering time.
+When used with `useSubscribe` , you can control the desired rendering time.
 
 ```jsx {4, 10, 13}
 function A () {
   // render when message is received.
   useSubscribe("message", () => {
-    this.render();
+    useRender();
   })
 
   return <div onClick={() => {
-    this.setValue({
+    this.setState({
       value: 10
     }, false)
 
-    this.render();
+    useRender();
   }}>Simple text {this.state.value} </div>
 }
 
@@ -126,3 +126,26 @@ function A () {
 By this time, you would have noticed.
 
 Because the rendering can be adjusted at any time, it can do quite a lot with messages.
+
+### useBatch
+
+When the values ​​of `useState` are modified at the same time, it is rendered only once.
+
+```jsx
+function A () {
+  const [value, setValue] = useState(0);
+  const [value2, setValue2] = useState(0);
+  const [value3, setValue3] = useState(0);
+
+  // only one rendering
+  function handleClick() {
+    useBatch(() => {
+      setValue(10);
+      setValue2(20);
+      setValue3(30);
+    })
+  }
+
+  return <div onClick={handleClick}>Simple text {this.state.value} </div>
+}
+````

@@ -128,7 +128,10 @@ export class Tools extends UIElement {
         const list = [];
 
         let totalWidth = 0;
-        const localRect = this.$el.rect();
+        const localRect = this.$el?.rect();
+
+        if (!localRect) return;
+
         this.$el.children().forEach((child, index) => {
           if (child.hasClass("hidden-tools")) return;
 

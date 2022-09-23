@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 21 Sep 2022 12:37:21 GMT
+ * Generated on Fri, 23 Sep 2022 11:25:55 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -96,7 +96,7 @@ export const ColorGreen6 = "#009f6a";
 export const ColorGreen7 = "#067852";
 export const ColorGreen8 = "#1b5441";
 export const ColorGreen9 = "#233b33";
-export const ColorBlue0 = "#f2f8ff";
+export const ColorBlue0 = "#f6faff";
 export const ColorBlue1 = "#e8f3ff";
 export const ColorBlue2 = "#cce3ff";
 export const ColorBlue3 = "#abd2ff";
@@ -210,7 +210,7 @@ export const AlertColorContentWeakDanger = "#ffb5b9"; // Base color for the dang
 export const AlertColorContentWeakWarning = "#fb8f44"; // Base color for the warning color
 export const AlertColorContentWeakSuccess = "#8debcb"; // Base color for the success color
 export const AlertColorContentWeakInfo = "#429bff"; // Base color for the info color
-export const AlertColorBackgroundDefault = "#ebf0f5";
+export const AlertColorBackgroundDefault = "#f8f8f8";
 export const AlertColorBackgroundDark = "#2c353d";
 export const AlertColorBackgroundPrimary = "#1273e6";
 export const AlertColorBackgroundSecondary = "#818e9a";
@@ -237,8 +237,9 @@ export const AvatarSize700 = "60px";
 export const ButtonClosableHoverBackgroundDefault = "#ffffff";
 export const ButtonHoverBackgroundDefault = "#ebf0f5";
 export const ButtonSelectedBackgroundDefault = "#d9e0e6";
-export const ButtonDisabledBackgroundDefault = "#e6e6e6";
-export const ButtonDisabledTextDefault = "#b1b1b1";
+export const ButtonDisabledBackgroundDefault = "#d9e0e6";
+export const ButtonDisabledBorderDefault = "#d9e0e6";
+export const ButtonDisabledTextDefault = "#818e9a";
 export const ButtonColorBackgroundDefault = "#ffffff";
 export const ButtonColorBackgroundPrimary = "#1273e6";
 export const ButtonColorBackgroundSecondary = "#818e9a";
@@ -254,6 +255,7 @@ export const ButtonColorBorderSuccess = "#009f6a";
 export const ButtonColorBorderInfo = "#abd2ff";
 export const ButtonColorBorderWarning = "#ffb77c";
 export const ButtonColorBorderDanger = "#d9363e";
+export const ButtonColorBorderDark = "#2c353d";
 export const ButtonSizePaddingSmall = "5rem 6rem";
 export const ButtonSizePaddingMedium = "8rem 10rem";
 export const ButtonSizePaddingLarge = "14rem 20rem";

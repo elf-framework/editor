@@ -1794,11 +1794,11 @@
     },
     "blue": {
       "0": {
-        "value": "#f2f8ff",
+        "value": "#f6faff",
         "filePath": "tokens/color/core.json",
         "isSource": true,
         "original": {
-          "value": "#F2F8FF"
+          "value": "#F6FAFF"
         },
         "attributes": {
           "category": "color",
@@ -4033,11 +4033,11 @@
       },
       "background": {
         "default": {
-          "value": "{color.gray.1}",
+          "value": "{color.gray.0}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1}"
+            "value": "{color.gray.0}"
           },
           "attributes": {
             "category": "alert",
@@ -4605,11 +4605,11 @@
     "disabled": {
       "background": {
         "default": {
-          "value": "#e6e6e6",
+          "value": "{color.gray.2}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "#e6e6e6"
+            "value": "{color.gray.2}"
           },
           "attributes": {
             "category": "button",
@@ -4625,13 +4625,35 @@
           }
         }
       },
-      "text": {
+      "border": {
         "default": {
-          "value": "#b1b1b1",
+          "value": "{color.gray.2}",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "#b1b1b1"
+            "value": "{color.gray.2}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "button",
+            "1": "disabled",
+            "2": "border",
+            "3": "default"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.gray.5}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.5}"
           },
           "attributes": {
             "category": "button",
@@ -4950,6 +4972,26 @@
             "1": "color",
             "2": "border",
             "3": "danger"
+          }
+        },
+        "dark": {
+          "value": "{color.black}",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "dark"
           }
         }
       }

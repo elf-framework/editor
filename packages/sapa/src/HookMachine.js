@@ -142,9 +142,9 @@ export class HookMachine extends MagicHandler {
    *   setState2(2);
    * })
    */
-  useBatch(calback) {
+  useBatch(callback) {
     pendingComponent(this);
-    calback();
+    callback && callback();
     removePendingComponent(this);
     renderComponent(this);
   }

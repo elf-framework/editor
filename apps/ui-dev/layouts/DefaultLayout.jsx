@@ -1,12 +1,8 @@
-import {
-  classnames,
-  useCallback,
-  useEffect,
-  useState,
-} from "@elf-framework/sapa";
+import { classnames } from "@elf-framework/sapa";
 import { Flex, View } from "@elf-framework/ui";
 
 import { PageTools } from "../component/PageTools";
+import { useScrollStatus } from "../hooks/useScrollStatus";
 import "./Layout.scss";
 
 export function DefaultLayout(props) {
@@ -18,25 +14,10 @@ export function DefaultLayout(props) {
     version = "",
     title = "",
   } = props;
-  const [scrollTop, setScrollTop] = useState(0);
 
-  const onScroll = useCallback(() => {
-    const localScrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0;
+  const scrollTop = useScrollStatus();
 
-    setScrollTop(localScrollTop);
-  }, [setScrollTop]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [onScroll]);
+  console.log(scrollTop);
 
   return (
     <div class="default-layout">

@@ -8,10 +8,10 @@ filename: pages/sapa/handler/page.mdx
 
 Sapa provides Handler as a technology to extend components.
 
-* StoreHandler - Handler to deal with MagicMethod for store
-* DomEventHandler - Handler to deal with MagicMethod for dom event
-* PropsHandler - Handler to deal with MagicMethod for props
-* ObserverHandler - Handler to deal with MagicMethod for dom observer
+* `StoreHandler` - Handler to deal with MagicMethod for store
+* `DomEventHandler` - Handler to deal with MagicMethod for dom event
+* `PropsHandler` - Handler to deal with MagicMethod for props
+* `ObserverHandler` - Handler to deal with MagicMethod for dom observer
 
 # How to make my own handler 
 
@@ -27,10 +27,8 @@ import { BaseHandler } from "@elf-framework/sapa";
 
 registHandler({
   myHandler: class MyHandler extends BaseHandler {
-
     // mounted
     initialize () {
-
       // context is a component instance.
       // $el is <div>Simple Text</div>
       console.log(this.context.$el);
