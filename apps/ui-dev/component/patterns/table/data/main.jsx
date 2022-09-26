@@ -40,7 +40,7 @@ export const columns = [
     key: "tools",
     title: "Tools",
     style: {
-      width: 100,
+      width: 130,
     },
   },
 ];

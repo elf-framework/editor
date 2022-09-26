@@ -1,5 +1,6 @@
 import {
   ActionGroup,
+  Badge,
   Blank,
   Button,
   Card,
@@ -20,9 +21,10 @@ export function ProjectItem({
   selected = false,
   quiet = false,
   style = {},
-  docLinkText = "documentation",
-  codeLinkText = "code",
+  docLinkText = "Documentation",
+  codeLinkText = "Code",
   full = false,
+  type = "real",
 }) {
   const cardProps = {
     selectable: true,
@@ -35,7 +37,10 @@ export function ProjectItem({
     <div class="project-item" style={style}>
       <Card style={{ width: "100%" }} {...cardProps}>
         <CardContainer>
-          <CardHeader title={title} />
+          <CardHeader
+            title={title}
+            actions={[type === "beta" && <Badge variant="yellow">Beta</Badge>]}
+          />
           <CardBody>
             {npm ? (
               <div>
@@ -57,6 +62,7 @@ export function ProjectItem({
           <ActionGroup
             justified
             compact
+            shape="rect"
             style={{
               gap: 10,
               textAlign: "center",

@@ -1,13 +1,20 @@
 import { isFunction } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
-import { Button } from "../button";
+import { IconButton } from "../button/IconButton";
 
 export function EyeDropper(props) {
   return (
     <div class="eye-dropper">
-      <Button
+      <IconButton
         size="large"
+        shape="rect"
+        quiet
+        style={{
+          width: 50,
+          paddingLeft: 6,
+          paddingRight: 6,
+        }}
         onClick={async () => {
           const eyeDropper = new window.EyeDropper();
 
@@ -33,7 +40,7 @@ export function EyeDropper(props) {
             fill-opacity="0.8"
           />
         </svg>
-      </Button>
+      </IconButton>
     </div>
   );
 }

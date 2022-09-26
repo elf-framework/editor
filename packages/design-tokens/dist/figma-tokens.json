@@ -3425,11 +3425,11 @@
           }
         },
         "secondary": {
-          "value": "{color.gray.8}",
+          "value": "{color.white}",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.8}"
+            "value": "{color.white}"
           },
           "attributes": {
             "category": "alert",

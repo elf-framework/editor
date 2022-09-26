@@ -2,10 +2,7 @@ import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import {
-  makeCssVariablePrefixMap,
-  splitStyleKeyAndNoneStyleKey,
-} from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Animation } from "../animation";
 import { ProgressCircle } from "../progress-circle";
 
@@ -45,6 +42,7 @@ export class Button extends UIElement {
       pending = false,
       play = false,
       as = "button",
+      hasMinWidth = false,
       ...extraProps
     } = this.props;
 
@@ -63,6 +61,7 @@ export class Button extends UIElement {
           [shape]: true,
           [place]: true,
           "icon-only": iconOnly,
+          "has-min-width": hasMinWidth,
         },
         className,
       ]);
@@ -79,6 +78,7 @@ export class Button extends UIElement {
       className,
       justified,
       focused,
+      hasMinWidth,
     ]);
 
     const styleObject = {

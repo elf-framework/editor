@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.2.5
+
+### Patch Changes
+
+- modify alert, button, card, color-mixer, notification, tag, toast style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.2.5
+
 ## 2.2.3
 
 ### Patch Changes

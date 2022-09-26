@@ -35,3 +35,8 @@ export default defineConfig({
 
 
 ```
+
+
+## ToDo
+
+* Support import list for reload (ex: data json, data js file)

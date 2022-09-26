@@ -1,4 +1,4 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
@@ -26,23 +26,24 @@ export class Notification extends UIElement {
       direction = "top-left",
     } = this.props;
 
+    const localClass = useMemo(() => {
+      return classnames("elf--notification", {
+        [direction]: true,
+      });
+    }, [direction]);
+
     const styleObject = {
-      class: classnames(
-        "elf--notification",
-        `elf--notification-direction-${direction}`
-      ),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
       <div {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {icon ? <div class="elf--notification-icon">{icon}</div> : undefined}
-        <div class="elf--notification-content">
-          <div class="elf--notification-text">{content}</div>
+        {icon ? <div class="icon">{icon}</div> : undefined}
+        <div class="content">
+          <div class="text">{content}</div>
         </div>
-        <div class="elf--notification-tools">{tools || []}</div>
+        <div class="tools">{tools || []}</div>
       </div>
     );
   }

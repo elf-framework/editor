@@ -16,9 +16,12 @@
     gap: 10px;
     white-space: nowrap;
 
-    > .elf--button {
-        padding:0px;
-        font-size: calc(var(--elf--tag-font-size) + 5px);
+    
+    > .close {
+        cursor: pointer;
+
+        font-size: 15px;
+        line-height: 1;
     }
 
     .elf--icon {

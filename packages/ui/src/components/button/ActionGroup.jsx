@@ -3,6 +3,7 @@ import {
   Dom,
   UIElement,
   useEffect,
+  useMemo,
   useState,
 } from "@elf-framework/sapa";
 
@@ -33,6 +34,7 @@ export class ActionGroup extends UIElement {
       boundary = 50,
       style = {},
       content,
+      shape = "normal",
       ...extraStyle
     } = this.props;
 
@@ -49,7 +51,6 @@ export class ActionGroup extends UIElement {
 
       if (!localRect) return;
 
-      // console.log(localRect);
       this.$el.children().forEach((child, index) => {
         if (child.hasClass("hidden-tools")) return;
 
@@ -94,14 +95,19 @@ export class ActionGroup extends UIElement {
       };
     }, [collapsed]);
 
-    const styleObject = {
-      class: classnames("elf--action-group", {
+    const localClass = useMemo(() => {
+      return classnames("elf--action-group", {
         [direction]: true,
         quiet,
         compact,
         collapsed,
         justified,
-      }),
+        [shape]: true,
+      });
+    }, [direction, quiet, compact, collapsed, justified, shape]);
+
+    const styleObject = {
+      class: localClass,
       style: propertyMap(
         {
           ...style,

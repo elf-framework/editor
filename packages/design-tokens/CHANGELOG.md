@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.2.5
+
+### Patch Changes
+
+- modify alert, button, card, color-mixer, notification, tag, toast style
+
 ## 2.2.3
 
 ### Patch Changes

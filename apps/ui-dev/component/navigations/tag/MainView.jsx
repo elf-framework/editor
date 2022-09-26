@@ -19,7 +19,7 @@ export function MainView() {
         <TagGroup style={{ width: 300 }}>
           <Tag>
             <Avatar size="30">
-              <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+              <img src="https://avatars.githubusercontent.com/u/591983?s=96&v=4" />
             </Avatar>
             &nbsp; Tag 1
           </Tag>

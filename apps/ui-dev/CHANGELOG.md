@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.33
+
+### Patch Changes
+
+- modify projectItem, table and notification component style
+
 ## 1.0.32
 
 ### Patch Changes

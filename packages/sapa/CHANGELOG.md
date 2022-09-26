@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.2.4
+
+### Patch Changes
+
+- modify initializing time in DomEventHandler
+
 ## 2.2.2
 
 ### Patch Changes

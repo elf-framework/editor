@@ -724,6 +724,7 @@ var __privateMethod = (obj, member, method) => {
         pending = false,
         play = false,
         as = "button",
+        hasMinWidth = false,
         ...extraProps
       } = this.props;
       const localClass = sapa.useMemo(() => {
@@ -740,7 +741,8 @@ var __privateMethod = (obj, member, method) => {
             [size]: true,
             [shape]: true,
             [place]: true,
-            "icon-only": iconOnly
+            "icon-only": iconOnly,
+            "has-min-width": hasMinWidth
           },
           className
         ]);
@@ -756,7 +758,8 @@ var __privateMethod = (obj, member, method) => {
         iconOnly,
         className,
         justified,
-        focused
+        focused,
+        hasMinWidth
       ]);
       const styleObject = {
         class: localClass,
@@ -989,6 +992,7 @@ var __privateMethod = (obj, member, method) => {
         boundary = 50,
         style: style2 = {},
         content,
+        shape = "normal",
         ...extraStyle
       } = this.props;
       const [visibleTargetList, setVisibilityTargetList] = sapa.useState([]);
@@ -1035,14 +1039,18 @@ var __privateMethod = (obj, member, method) => {
           resizeObserver == null ? void 0 : resizeObserver.disconnect();
         };
       }, [collapsed]);
-      const styleObject = {
-        class: sapa.classnames("elf--action-group", {
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf--action-group", {
           [direction]: true,
           quiet,
           compact,
           collapsed,
-          justified
-        }),
+          justified,
+          [shape]: true
+        });
+      }, [direction, quiet, compact, collapsed, justified, shape]);
+      const styleObject = {
+        class: localClass,
         style: propertyMap(
           {
             ...style2,
@@ -2433,26 +2441,26 @@ var __privateMethod = (obj, member, method) => {
         tools,
         direction = "top-left"
       } = this.props;
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf--notification", {
+          [direction]: true
+        });
+      }, [direction]);
       const styleObject = {
-        class: sapa.classnames(
-          "elf--notification",
-          `elf--notification-direction-${direction}`
-        ),
-        style: {
-          ...propertyMap(style2, cssProperties$A)
-        }
+        class: localClass,
+        style: propertyMap(style2, cssProperties$A)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject,
         onContextMenu: (e) => e.preventDefault()
       }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--notification-icon"
+        class: "icon"
       }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--notification-content"
+        class: "content"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--notification-text"
+        class: "text"
       }, content)), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "elf--notification-tools"
+        class: "tools"
       }, tools || []));
     }
   }
@@ -4717,8 +4725,15 @@ var __privateMethod = (obj, member, method) => {
   function EyeDropper(props) {
     return /* @__PURE__ */ sapa.createElementJsx("div", {
       class: "eye-dropper"
-    }, /* @__PURE__ */ sapa.createElementJsx(Button, {
+    }, /* @__PURE__ */ sapa.createElementJsx(IconButton, {
       size: "large",
+      shape: "rect",
+      quiet: true,
+      style: {
+        width: 50,
+        paddingLeft: 6,
+        paddingRight: 6
+      },
       onClick: async () => {
         const eyeDropper = new window.EyeDropper();
         try {
@@ -5747,13 +5762,10 @@ var __privateMethod = (obj, member, method) => {
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
-      }, /* @__PURE__ */ sapa.createElementJsx("label", null, content), removable && /* @__PURE__ */ sapa.createElementJsx(Button, {
-        size: "small",
-        quiet: true,
+      }, /* @__PURE__ */ sapa.createElementJsx("label", null, content), removable && /* @__PURE__ */ sapa.createElementJsx("span", {
         class: "close",
-        onClick: (e) => {
-          this.props.onClose && this.props.onClose(e);
-        }
+        title: "Close",
+        onClick: this.props.onClose
       }, "\xD7"));
     }
   }

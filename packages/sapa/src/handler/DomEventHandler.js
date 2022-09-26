@@ -87,7 +87,7 @@ const selfCheckMethods = {
 
 export default class DomEventHandler extends BaseHandler {
   initialize() {
-    this.destroy();
+    // this.destroy();
 
     // 이미 정의된 domEvents 가 있고 notEventRedefine 설정이 true 로 되어 있으면 이벤트를 한번만 설정한다.
     if (this._domEvents && this.context.notEventRedefine) {
@@ -103,13 +103,19 @@ export default class DomEventHandler extends BaseHandler {
     }
 
     // binding 되어 있지 않고, domEvents 에 정의된 것만 있는 경우
-    if (!this._bindings?.length && this._domEvents?.length) {
+    if (
+      !this._initialized &&
+      !this._bindings?.length &&
+      this._domEvents?.length
+    ) {
       this._domEvents.forEach((it) => this.parseDomEvent(it));
+      this._initialized = true;
     }
   }
 
   update() {
-    this.initialize();
+    // FIXME: 이벤트를 다시 설정해야 한다.
+    // this.initialize();
   }
 
   destroy() {

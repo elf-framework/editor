@@ -9,7 +9,7 @@
           "value": "{color.blue.8.value}"
         },
         "secondary": {
-          "value": "{color.gray.8.value}"
+          "value": "{color.white.value}"
         },
 
         "danger": {

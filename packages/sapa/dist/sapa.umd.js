@@ -619,19 +619,18 @@ var __privateMethod = (obj, member, method) => {
   class DomEventHandler extends BaseHandler {
     initialize() {
       var _a, _b;
-      this.destroy();
       if (this._domEvents && this.context.notEventRedefine) {
         return;
       }
       if (!this._domEvents || this._domEvents.length === 0 || this._bindings.length === 0) {
         this._domEvents = this.context.filterMethodes("domevent");
       }
-      if (!((_a = this._bindings) == null ? void 0 : _a.length) && ((_b = this._domEvents) == null ? void 0 : _b.length)) {
+      if (!this._initialized && !((_a = this._bindings) == null ? void 0 : _a.length) && ((_b = this._domEvents) == null ? void 0 : _b.length)) {
         this._domEvents.forEach((it) => this.parseDomEvent(it));
+        this._initialized = true;
       }
     }
     update() {
-      this.initialize();
     }
     destroy() {
       if (this.context.notEventRedefine)

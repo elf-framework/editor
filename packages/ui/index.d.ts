@@ -258,6 +258,7 @@ declare module "@elf-framework/ui" {
     justified?: boolean;
     play?: boolean;
     focused?: boolean;
+    hasMinWidth?: boolean;
     onClick?: (event: PointerEvent) => void;
     style?: ButtonStyle & CommonStyle;
   }
@@ -303,6 +304,7 @@ declare module "@elf-framework/ui" {
     justified?: boolean;
     collapsed?: boolean;
     disabled?: boolean;
+    shape?: "rect" | "normal";
     onMoreClick?: (event: PointerEvent, items: ContentType[]) => void;
     style?: ButtonStyle & CommonStyle;
   }

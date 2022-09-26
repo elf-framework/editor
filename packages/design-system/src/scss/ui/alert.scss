@@ -154,6 +154,8 @@
     --elf--alert-background-color: var(
       --alert-color-background-secondary
     );
+    --elf--alert-title-color: var(--alert-color-title-secondary);
+    --elf--alert-content-color: var(--alert-color-content-secondary);
 
     &.weak {
       --elf--alert-background-color: var(

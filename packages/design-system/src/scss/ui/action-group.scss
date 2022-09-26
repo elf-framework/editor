@@ -42,6 +42,18 @@
                 border-radius: 0px;
             }
         }
+
+        &.rect {
+            .elf--button {
+                &:first-child {
+                    border-radius: 0px !important;
+                }
+    
+                &:last-child {
+                    border-radius: 0px !important;
+                }
+            }
+        }
     }
 
     &.justified {

@@ -722,6 +722,7 @@ class Button extends UIElement {
       pending = false,
       play = false,
       as = "button",
+      hasMinWidth = false,
       ...extraProps
     } = this.props;
     const localClass = useMemo(() => {
@@ -738,7 +739,8 @@ class Button extends UIElement {
           [size]: true,
           [shape]: true,
           [place]: true,
-          "icon-only": iconOnly
+          "icon-only": iconOnly,
+          "has-min-width": hasMinWidth
         },
         className
       ]);
@@ -754,7 +756,8 @@ class Button extends UIElement {
       iconOnly,
       className,
       justified,
-      focused
+      focused,
+      hasMinWidth
     ]);
     const styleObject = {
       class: localClass,
@@ -987,6 +990,7 @@ class ActionGroup extends UIElement {
       boundary = 50,
       style: style2 = {},
       content,
+      shape = "normal",
       ...extraStyle
     } = this.props;
     const [visibleTargetList, setVisibilityTargetList] = useState([]);
@@ -1033,14 +1037,18 @@ class ActionGroup extends UIElement {
         resizeObserver == null ? void 0 : resizeObserver.disconnect();
       };
     }, [collapsed]);
-    const styleObject = {
-      class: classnames("elf--action-group", {
+    const localClass = useMemo(() => {
+      return classnames("elf--action-group", {
         [direction]: true,
         quiet,
         compact,
         collapsed,
-        justified
-      }),
+        justified,
+        [shape]: true
+      });
+    }, [direction, quiet, compact, collapsed, justified, shape]);
+    const styleObject = {
+      class: localClass,
       style: propertyMap(
         {
           ...style2,
@@ -2431,26 +2439,26 @@ class Notification extends UIElement {
       tools,
       direction = "top-left"
     } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--notification", {
+        [direction]: true
+      });
+    }, [direction]);
     const styleObject = {
-      class: classnames(
-        "elf--notification",
-        `elf--notification-direction-${direction}`
-      ),
-      style: {
-        ...propertyMap(style2, cssProperties$A)
-      }
+      class: localClass,
+      style: propertyMap(style2, cssProperties$A)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject,
       onContextMenu: (e) => e.preventDefault()
     }, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--notification-icon"
+      class: "icon"
     }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--notification-content"
+      class: "content"
     }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--notification-text"
+      class: "text"
     }, content)), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--notification-tools"
+      class: "tools"
     }, tools || []));
   }
 }
@@ -4715,8 +4723,15 @@ registerComponent("colorinput", ColorInput);
 function EyeDropper(props) {
   return /* @__PURE__ */ createElementJsx("div", {
     class: "eye-dropper"
-  }, /* @__PURE__ */ createElementJsx(Button, {
+  }, /* @__PURE__ */ createElementJsx(IconButton, {
     size: "large",
+    shape: "rect",
+    quiet: true,
+    style: {
+      width: 50,
+      paddingLeft: 6,
+      paddingRight: 6
+    },
     onClick: async () => {
       const eyeDropper = new window.EyeDropper();
       try {
@@ -5745,13 +5760,10 @@ class Tag extends UIElement {
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
-    }, /* @__PURE__ */ createElementJsx("label", null, content), removable && /* @__PURE__ */ createElementJsx(Button, {
-      size: "small",
-      quiet: true,
+    }, /* @__PURE__ */ createElementJsx("label", null, content), removable && /* @__PURE__ */ createElementJsx("span", {
       class: "close",
-      onClick: (e) => {
-        this.props.onClose && this.props.onClose(e);
-      }
+      title: "Close",
+      onClick: this.props.onClose
     }, "\xD7"));
   }
 }

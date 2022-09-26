@@ -3,7 +3,6 @@ import { classnames, UIElement, useMemo } from "@elf-framework/sapa";
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
-import { Button } from "../button";
 
 const cssProperties = makeCssVariablePrefixMap("--elf--tag", {
   backgroundColor: true,
@@ -48,16 +47,9 @@ export class Tag extends UIElement {
       <div {...styleObject}>
         <label>{content}</label>
         {removable && (
-          <Button
-            size="small"
-            quiet
-            class="close"
-            onClick={(e) => {
-              this.props.onClose && this.props.onClose(e);
-            }}
-          >
+          <span class="close" title="Close" onClick={this.props.onClose}>
             &times;
-          </Button>
+          </span>
         )}
       </div>
     );

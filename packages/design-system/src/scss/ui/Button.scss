@@ -32,7 +32,12 @@
   justify-content: center;
   box-sizing: border-box;
   height: var(--elf--button-height);
-  min-width: calc(var(--elf--button-height) * 2.25);
+
+
+  &.has-min-width {
+    min-width: calc(var(--elf--button-height) * 2.25);
+  }
+
 
   .elf--icon {
     width: 20px;
@@ -147,7 +152,7 @@
 
   &.square,
   &.rect {
-    // --elf--button-border-radius: 0px;
+    --elf--button-border-radius: 0px;
   }
 
   &.icon-only {
@@ -209,7 +214,6 @@
 
   &:active,
   &.active {
-
     &.primary {
         --elf--button-background-color: var(--color-down-primary);
     }

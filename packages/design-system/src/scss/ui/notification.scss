@@ -27,64 +27,61 @@
 
     position: var(--elf--notification-position);
 
-    .elf--notification-text {
-        line-height: 1.2;
-    }
 
 
-    &.elf--notification-direction-top-left {
+    &.top-left {
         top: var(--elf--notification-hgap);
         left: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-top-right {
+    &.top-right {
         top: var(--elf--notification-hgap);
         right: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-bottom-left {
+    &.bottom-left {
         bottom: var(--elf--notification-hgap);
         left: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-bottom-right {
+    &.bottom-right {
         bottom: var(--elf--notification-hgap);
         right: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-center {
+    &.center {
         left: 50%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);                
     }
 
-    &.elf--notification-direction-top {
+    &.top {
         top: var(--elf--notification-hgap);
         left: 50%;
         transform: translateX(-50%);                
     }
 
-    &.elf--notification-direction-bottom {
+    &.bottom {
         bottom: var(--elf--notification-hgap);
         left: 50%;
         transform: translateX(-50%);        
     }
 
-    &.elf--notification-direction-left {
+    &.left {
         left: var(--elf--notification-vgap);
         top: 50%;
         transform: translateY(-50%);        
     }
 
-    &.elf--notification-direction-right {
+    &.right {
         right: var(--elf--notification-vgap);
         top: 50%;
         transform: translateY(-50%);
     }
 
-    .elf--notification-icon {
+    > .icon {
         flex: none;
-        width: 48px;
+        width: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -100,13 +97,18 @@
         }
     }
 
-    .elf--notification-content {
+    > .content {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
+
+        > .text {
+            line-height: 1.2;
+        }
+    
     }
 
-    .elf--notification-tools {
+    > .tools {
         flex: none;
         width: 72px;
         height: 100%;
@@ -130,6 +132,7 @@
             font-weight: 400;
             font-size: 12px; 
             padding: 0;        
+            min-width: 0;
             /* 컴포넌트에 따라서 다르게 해석 할 수도 있음. */
             /* 현재는 notification 에 들어와있는 상태기 때문에 강제함 */
             color: var(--elf--notification-color) !important;

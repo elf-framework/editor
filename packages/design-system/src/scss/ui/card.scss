@@ -139,11 +139,12 @@
 
 .elf--card-container {
     --elf--card-container-padding: 0px 0px;
+    --elf--card-container-margin: 10px;
 
     display: flex;
     flex-direction: column;
     padding: var(--elf--card-container-padding);
-    margin-top: calc(var(--elf--card-offset) + 10px);
+    margin-top: calc(var(--elf--card-container-margin));
 
     &:first-child {
         margin-top: 0px;

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 23 Sep 2022 16:09:20 GMT
+ * Generated on Mon, 26 Sep 2022 09:21:20 GMT
  */
 
 (function(root, factory) {
@@ -3621,11 +3621,11 @@
           ]
         },
         "secondary": {
-          "value": "#39444d",
+          "value": "#ffffff",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.8.value}"
+            "value": "{color.white.value}"
           },
           "name": "AlertColorTitleSecondary",
           "attributes": {
