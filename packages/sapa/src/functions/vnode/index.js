@@ -346,6 +346,12 @@ export class VNodeComponent extends VNode {
     return getModule(this.Component);
   }
 
+  // 임의의 instance 를 설정한다.
+  // 임의의 instance 의 state, hook, id 등을 얻기 위해서 사용한다.
+  setInstance(instance) {
+    this.instance = instance;
+  }
+
   get isComponentChanged() {
     return this.LastComponent !== this.getModule();
   }

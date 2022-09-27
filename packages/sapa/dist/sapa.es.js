@@ -197,6 +197,509 @@ const VNodeType = {
   ELEMENT: 101,
   COMMENT: 102
 };
+const UUID_REG = /[xy]/g;
+function uuid() {
+  var dt = new Date().getTime();
+  var uuid2 = "xxx12-xx-34xx".replace(UUID_REG, function(c) {
+    var r = (dt + Math.random() * 16) % 16 | 0;
+    dt = Math.floor(dt / 16);
+    return (c == "x" ? r : r & 3 | 8).toString(16);
+  });
+  return uuid2;
+}
+function uuidShort() {
+  var dt = new Date().getTime();
+  var uuid2 = "idxxxxxxx".replace(UUID_REG, function(c) {
+    var r = (dt + Math.random() * 16) % 16 | 0;
+    dt = Math.floor(dt / 16);
+    return (c == "x" ? r : r & 3 | 8).toString(16);
+  });
+  return uuid2;
+}
+let contextProviderList = {};
+function renderFromRoot() {
+  renderRootElementInstanceList(true);
+}
+function useBatch(callback) {
+  getCurrentComponent().useBatch(callback);
+}
+function useRender() {
+  useBatch(null);
+}
+function useId() {
+  return getCurrentComponent().useId();
+}
+function useSyncExternalStore(subscribe, getSnapshot) {
+  return getCurrentComponent().useSyncExternalStore(subscribe, getSnapshot);
+}
+function useState(initialState) {
+  return getCurrentComponent().useState(initialState);
+}
+function useEffect(callback, deps) {
+  return getCurrentComponent().useEffect(callback, deps);
+}
+function useReducer(reducer, initialState) {
+  return getCurrentComponent().useReducer(reducer, initialState);
+}
+function useMemo(callback, deps) {
+  return getCurrentComponent().useMemo(callback, deps);
+}
+function useCallback(callback, deps) {
+  return getCurrentComponent().useCallback(callback, deps);
+}
+function useRef(initialValue) {
+  return getCurrentComponent().useRef(initialValue);
+}
+function useContext(context) {
+  return getCurrentComponent().useContext(context);
+}
+function createContextProvider(context) {
+  contextProviderList[context.id] = {
+    context,
+    index: 0,
+    lastProvider: null
+  };
+}
+class InnerProvider {
+  constructor(context, provider) {
+    this.context = context;
+    this.provider = provider;
+  }
+  get id() {
+    return this.provider.id;
+  }
+  get value() {
+    return this.provider.value;
+  }
+  set(provider) {
+    this.provider = provider;
+  }
+}
+function pushContextProvider(context, provider) {
+  const innerProvider = new InnerProvider(context, provider);
+  const contextInfo = contextProviderList[context.id];
+  if (!contextInfo.lastProvider) {
+    contextInfo.prevProvider = contextInfo.lastProvider;
+    contextInfo.lastProvider = innerProvider;
+    contextInfo.lastProvider.prev = contextInfo.prevProvider;
+  } else {
+    const lastProvider = contextInfo.lastProvider;
+    const lastProviderValue = lastProvider.value;
+    const lastProviderId = lastProvider.id;
+    if (lastProviderId === innerProvider.id) {
+      contextInfo.lastProvider.set(innerProvider);
+    } else {
+      contextInfo.lastProvider.next = innerProvider;
+      innerProvider.prev = contextInfo.lastProvider;
+      contextInfo.lastProvider = innerProvider;
+    }
+    if (lastProviderValue !== innerProvider.value) {
+      runProviderSubscribe(innerProvider);
+    }
+  }
+}
+function popContextProvider(context) {
+  const contextInfo = contextProviderList[context.id];
+  if (contextInfo.lastProvider && contextInfo.lastProvider.prev) {
+    contextInfo.lastProvider = contextInfo.lastProvider.prev;
+    if (contextInfo.lastProvider) {
+      contextInfo.lastProvider.next = null;
+    }
+  }
+}
+function getContextProvider(context) {
+  const contextInfo = contextProviderList[context.id];
+  return contextInfo.lastProvider;
+}
+let contextIndex = 0;
+function createContext(defaultValue2) {
+  const context = {
+    id: "context-" + contextIndex++,
+    defaultValue: defaultValue2,
+    lastProvider: null,
+    Provider: function({ value, content }) {
+      pushContextProvider(context, {
+        value,
+        id: this.id,
+        component: this
+      });
+      useEffect(() => {
+        popContextProvider(context);
+      }, []);
+      return content[0] || content;
+    }
+  };
+  context.Consumer = ({ content: [children2] }) => {
+    const value = getContextProvider(context).value;
+    return children2(value);
+  };
+  createContextProvider(context);
+  return context;
+}
+const providerEvents = {};
+function addProviderSubscribe(providerId, component, callback) {
+  if (!providerEvents[providerId]) {
+    providerEvents[providerId] = {};
+  }
+  providerEvents[providerId][component.id] = callback;
+}
+function runProviderSubscribe(provider) {
+  const components = providerEvents[provider.id];
+  if (components) {
+    Object.values(components).forEach((callback) => {
+      callback(provider);
+    });
+  }
+}
+function useStore(key) {
+  return getCurrentComponent().useStore(key);
+}
+function useStoreSet(key, value) {
+  return getCurrentComponent().useStoreSet(key, value);
+}
+function useRootContext(key) {
+  return useStore(COMPONENT_ROOT_CONTEXT)[key];
+}
+function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+  return getCurrentComponent().useSubscribe(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond,
+    isSelf
+  );
+}
+function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+  return getCurrentComponent().useSelf(
+    name,
+    callback,
+    debounceSecond,
+    throttleSecond
+  );
+}
+function useEmit(name, ...args) {
+  return getCurrentComponent().emit(name, ...args);
+}
+function useTrigger(name, ...args) {
+  return getCurrentComponent().trigger(name, ...args);
+}
+function useMagicMethod(methodName, callback) {
+  return getCurrentComponent().initMagicMethod(methodName, callback);
+}
+class MagicHandler {
+  constructor() {
+    __privateAdd(this, _handlerCache, {});
+    this.handlers = this.initializeHandler();
+  }
+  initializeHandler(localHandlers = {}) {
+    return createHandlerInstance(this, localHandlers);
+  }
+  loadHandlerCache(func) {
+    if (!__privateGet(this, _handlerCache)[func]) {
+      __privateGet(this, _handlerCache)[func] = this.handlers.filter((h) => h[func]);
+    }
+    return __privateGet(this, _handlerCache)[func];
+  }
+  async runHandlers(func = "run", ...args) {
+    await Promise.all(
+      this.loadHandlerCache(func).map(async (h) => {
+        await h[func](...args);
+      })
+    );
+  }
+  filterFunction(func, ...args) {
+    return this.loadHandlerCache(func).map((h) => {
+      return h[func](...args);
+    });
+  }
+}
+_handlerCache = new WeakMap();
+const USE_STATE = Symbol("useState");
+const USE_EFFECT = Symbol("useEffect");
+const USE_MEMO = Symbol("useMemo");
+const USE_CALLBACK = Symbol("useCallback");
+const USE_REF = Symbol("useRef");
+const USE_CONTEXT = Symbol("useContext");
+const USE_SUBSCRIBE = Symbol("useSubscribe");
+const USE_ID = Symbol("useId");
+const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
+class RefClass {
+  constructor(current) {
+    this.current = current;
+  }
+  setCurrent(current) {
+    this.current = current;
+  }
+}
+function createRef(current = void 0) {
+  return new RefClass(current);
+}
+function createState({ value, component }) {
+  let localValue = { value, component };
+  function getValue(v) {
+    if (typeof v === "function") {
+      return v(localValue.value);
+    }
+    return v;
+  }
+  const update = (newValue) => {
+    const _newValue = getValue(newValue);
+    if (localValue.value !== _newValue) {
+      localValue.value = _newValue;
+      renderComponent(localValue.component);
+    }
+  };
+  return [localValue, update];
+}
+function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, component }) {
+  let localValue = {
+    value: getSnapshot(),
+    subscribe,
+    unsubscribe: null,
+    component
+  };
+  const update = () => {
+    const _newValue = getSnapshot();
+    const isDiff = isFunction(isEqual2) ? isEqual2(localValue, _newValue) === false : localValue.value !== _newValue;
+    if (isDiff) {
+      localValue.value = _newValue;
+      renderComponent(localValue.component);
+    }
+  };
+  localValue.unsubscribe = subscribe(update);
+  return localValue;
+}
+class HookMachine extends MagicHandler {
+  constructor() {
+    super(...arguments);
+    __privateAdd(this, ___stateHooks, []);
+    __privateAdd(this, ___stateHooksIndex, 0);
+  }
+  copyHooks() {
+    return {
+      __stateHooks: __privateGet(this, ___stateHooks),
+      __stateHooksIndex: __privateGet(this, ___stateHooksIndex)
+    };
+  }
+  reloadHooks(hooks) {
+    __privateSet(this, ___stateHooks, hooks.__stateHooks || []);
+    __privateSet(this, ___stateHooksIndex, hooks.__stateHooksIndex || 0);
+  }
+  resetCurrentComponent() {
+    this.resetHookIndex();
+    resetCurrentComponent(this);
+  }
+  resetHookIndex() {
+    __privateSet(this, ___stateHooksIndex, 0);
+  }
+  increaseHookIndex() {
+    __privateWrapper(this, ___stateHooksIndex)._++;
+  }
+  getHook() {
+    return __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)];
+  }
+  setHook(type, hookInfo) {
+    __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] = {
+      type,
+      hookInfo
+    };
+  }
+  useBatch(callback) {
+    pendingComponent(this);
+    callback && callback();
+    removePendingComponent(this);
+    renderComponent(this);
+  }
+  useId() {
+    if (!this.getHook()) {
+      this.setHook(USE_ID, { value: uuid(), component: this });
+    }
+    const { value } = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return value;
+  }
+  useSyncExternalStore(subscribe, getSnapshot, isEqual2) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_SYNC_EXTERNAL_STORE,
+        createExternalStore({
+          subscribe,
+          getSnapshot,
+          isEqual: isEqual2,
+          component: this
+        })
+      );
+    }
+    const { value } = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return value;
+  }
+  useState(initialState) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_STATE,
+        createState({ value: initialState, component: this })
+      );
+    }
+    const [value, update] = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return [value.value, update];
+  }
+  isChangedDeps(deps) {
+    const hasDeps = !deps;
+    const {
+      hookInfo: { deps: currentDeps }
+    } = this.getHook() || { hookInfo: {} };
+    const hasChangedDeps = currentDeps ? !deps.every((d, i) => d === currentDeps[i]) : true;
+    if ((deps == null ? void 0 : deps.length) === 0 && (currentDeps == null ? void 0 : currentDeps.length) === 0) {
+      return false;
+    }
+    return hasDeps || hasChangedDeps;
+  }
+  useEffect(callback, deps) {
+    const hasChangedDeps = this.isChangedDeps(deps);
+    this.setHook(USE_EFFECT, {
+      deps,
+      hasChangedDeps,
+      callback
+    });
+    this.increaseHookIndex();
+  }
+  useReducer(reducer, initialState) {
+    const [state, setState] = this.useState(initialState);
+    function dispatch(action) {
+      setState((prevState) => reducer(prevState, action));
+    }
+    return [state, dispatch];
+  }
+  useMemo(callback, deps, useType = USE_MEMO) {
+    const hasChangedDeps = this.isChangedDeps(deps);
+    if (hasChangedDeps) {
+      this.setHook(useType, {
+        deps,
+        value: callback()
+      });
+    }
+    const lastHookValue = this.getHook().hookInfo || {};
+    this.increaseHookIndex();
+    return lastHookValue.value;
+  }
+  useCallback(callback, deps) {
+    return this.useMemo(() => callback, deps, USE_CALLBACK);
+  }
+  useRef(initialValue) {
+    return this.useMemo(() => createRef(initialValue), [], USE_REF);
+  }
+  refreshProvider(provider) {
+    const hookInfo = this.filterHooks(USE_CONTEXT).find(
+      (it) => it.provider.id === provider.id
+    );
+    if (hookInfo) {
+      hookInfo.provider = provider;
+    }
+  }
+  useContext(context) {
+    if (!this.getHook()) {
+      this.setHook(USE_CONTEXT, {
+        provider: getContextProvider(context),
+        component: this
+      });
+    }
+    const { provider } = this.getHook().hookInfo;
+    addProviderSubscribe(provider.id, this, () => {
+      renderComponent(this);
+    });
+    this.increaseHookIndex();
+    return (provider == null ? void 0 : provider.value) || context.defaultValue;
+  }
+  useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
+    if (!this.getHook()) {
+      this.setHook(USE_SUBSCRIBE, {
+        name,
+        callback,
+        component: this,
+        unsubscribe: this.$store.on(
+          name,
+          callback,
+          this,
+          debounceSecond,
+          throttleSecond,
+          false,
+          isSelf
+        )
+      });
+    }
+    const { unsubscribe } = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return unsubscribe;
+  }
+  useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
+    return this.useSubscribe(
+      name,
+      callback,
+      debounceSecond,
+      throttleSecond,
+      true
+    );
+  }
+  useEmit(name, ...args) {
+    return this.emit(name, ...args);
+  }
+  useStore(key) {
+    return this.$store.get(key);
+  }
+  useStoreSet(key, value) {
+    this.$store.set(key, value);
+  }
+  filterHooks(type) {
+    return __privateGet(this, ___stateHooks).filter((it) => it.type === type).map((it) => it.hookInfo);
+  }
+  getUseEffects() {
+    return this.filterHooks(USE_EFFECT);
+  }
+  getUseSyncExternalStore() {
+    return this.filterHooks(USE_SYNC_EXTERNAL_STORE);
+  }
+  getUseStates() {
+    return this.filterHooks(USE_STATE).map((it) => it.value);
+  }
+  runHooks() {
+    this.getUseEffects().forEach((it) => {
+      if (it.hasChangedDeps) {
+        it.cleanup = it.callback();
+      }
+    });
+  }
+  cleanHooks() {
+    this.getUseEffects().forEach((it) => {
+      if (isFunction(it.cleanup)) {
+        it.cleanup();
+      }
+    });
+    this.getUseSyncExternalStore().forEach((it) => {
+      if (isFunction(it.unsubscribe)) {
+        it.unsubscribe();
+      }
+    });
+  }
+  destroy() {
+  }
+  onMounted() {
+    this.isMounted = true;
+    this.runHooks();
+  }
+  onUpdated() {
+    this.runHooks();
+  }
+  onDestroyed() {
+    this.isMounted = false;
+    this.cleanHooks();
+  }
+  onUnmounted() {
+  }
+}
+___stateHooks = new WeakMap();
+___stateHooksIndex = new WeakMap();
 const MAGIC_METHOD_REG = /^@magic:([a-zA-Z][a-zA-Z0-9]*)[\W]{1}(.*)*$/g;
 const MAGIC_METHOD = "@magic:";
 const SPLITTER = "|";
@@ -340,25 +843,6 @@ class MagicMethod {
       value: result[0]
     };
   }
-}
-const UUID_REG = /[xy]/g;
-function uuid() {
-  var dt = new Date().getTime();
-  var uuid2 = "xxx12-xx-34xx".replace(UUID_REG, function(c) {
-    var r = (dt + Math.random() * 16) % 16 | 0;
-    dt = Math.floor(dt / 16);
-    return (c == "x" ? r : r & 3 | 8).toString(16);
-  });
-  return uuid2;
-}
-function uuidShort() {
-  var dt = new Date().getTime();
-  var uuid2 = "idxxxxxxx".replace(UUID_REG, function(c) {
-    var r = (dt + Math.random() * 16) % 16 | 0;
-    dt = Math.floor(dt / 16);
-    return (c == "x" ? r : r & 3 | 8).toString(16);
-  });
-  return uuid2;
 }
 const makeEventChecker = (value, split = SPLITTER) => {
   return ` ${split} ${value}`;
@@ -615,7 +1099,7 @@ const selfCheckMethods = {
 class DomEventHandler extends BaseHandler {
   initialize() {
     var _a, _b;
-    if (this._domEvents && this.context.notEventRedefine) {
+    if (!isGlobalForceRender() && this._domEvents && this.context.notEventRedefine) {
       return;
     }
     if (!this._domEvents || this._domEvents.length === 0 || this._bindings.length === 0) {
@@ -627,6 +1111,7 @@ class DomEventHandler extends BaseHandler {
     }
   }
   update() {
+    this.initialize();
   }
   destroy() {
     if (this.context.notEventRedefine)
@@ -1155,490 +1640,6 @@ class StoreHandler extends BaseHandler {
     this.addBinding(magicMethod);
   }
 }
-let contextProviderList = {};
-function renderFromRoot() {
-  renderRootElementInstanceList(true);
-}
-function useBatch(callback) {
-  getCurrentComponent().useBatch(callback);
-}
-function useRender() {
-  useBatch(null);
-}
-function useId() {
-  return getCurrentComponent().useId();
-}
-function useSyncExternalStore(subscribe, getSnapshot) {
-  return getCurrentComponent().useSyncExternalStore(subscribe, getSnapshot);
-}
-function useState(initialState) {
-  return getCurrentComponent().useState(initialState);
-}
-function useEffect(callback, deps) {
-  return getCurrentComponent().useEffect(callback, deps);
-}
-function useReducer(reducer, initialState) {
-  return getCurrentComponent().useReducer(reducer, initialState);
-}
-function useMemo(callback, deps) {
-  return getCurrentComponent().useMemo(callback, deps);
-}
-function useCallback(callback, deps) {
-  return getCurrentComponent().useCallback(callback, deps);
-}
-function useRef(initialValue) {
-  return getCurrentComponent().useRef(initialValue);
-}
-function useContext(context) {
-  return getCurrentComponent().useContext(context);
-}
-function createContextProvider(context) {
-  contextProviderList[context.id] = {
-    context,
-    index: 0,
-    lastProvider: null
-  };
-}
-class InnerProvider {
-  constructor(context, provider) {
-    this.context = context;
-    this.provider = provider;
-  }
-  get id() {
-    return this.provider.id;
-  }
-  get value() {
-    return this.provider.value;
-  }
-  set(provider) {
-    this.provider = provider;
-  }
-}
-function pushContextProvider(context, provider) {
-  const innerProvider = new InnerProvider(context, provider);
-  const contextInfo = contextProviderList[context.id];
-  if (!contextInfo.lastProvider) {
-    contextInfo.prevProvider = contextInfo.lastProvider;
-    contextInfo.lastProvider = innerProvider;
-    contextInfo.lastProvider.prev = contextInfo.prevProvider;
-  } else {
-    const lastProvider = contextInfo.lastProvider;
-    const lastProviderValue = lastProvider.value;
-    const lastProviderId = lastProvider.id;
-    if (lastProviderId === innerProvider.id) {
-      contextInfo.lastProvider.set(innerProvider);
-    } else {
-      contextInfo.lastProvider.next = innerProvider;
-      innerProvider.prev = contextInfo.lastProvider;
-      contextInfo.lastProvider = innerProvider;
-    }
-    if (lastProviderValue !== innerProvider.value) {
-      runProviderSubscribe(innerProvider);
-    }
-  }
-}
-function popContextProvider(context) {
-  const contextInfo = contextProviderList[context.id];
-  if (contextInfo.lastProvider && contextInfo.lastProvider.prev) {
-    contextInfo.lastProvider = contextInfo.lastProvider.prev;
-    if (contextInfo.lastProvider) {
-      contextInfo.lastProvider.next = null;
-    }
-  }
-}
-function getContextProvider(context) {
-  const contextInfo = contextProviderList[context.id];
-  return contextInfo.lastProvider;
-}
-let contextIndex = 0;
-function createContext(defaultValue2) {
-  const context = {
-    id: "context-" + contextIndex++,
-    defaultValue: defaultValue2,
-    lastProvider: null,
-    Provider: function({ value, content }) {
-      pushContextProvider(context, {
-        value,
-        id: this.id,
-        component: this
-      });
-      useEffect(() => {
-        popContextProvider(context);
-      }, []);
-      return content[0] || content;
-    }
-  };
-  context.Consumer = ({ content: [children2] }) => {
-    const value = getContextProvider(context).value;
-    return children2(value);
-  };
-  createContextProvider(context);
-  return context;
-}
-const providerEvents = {};
-function addProviderSubscribe(providerId, component, callback) {
-  if (!providerEvents[providerId]) {
-    providerEvents[providerId] = {};
-  }
-  providerEvents[providerId][component.id] = callback;
-}
-function runProviderSubscribe(provider) {
-  const components = providerEvents[provider.id];
-  if (components) {
-    Object.values(components).forEach((callback) => {
-      callback(provider);
-    });
-  }
-}
-function useStore(key) {
-  return getCurrentComponent().useStore(key);
-}
-function useStoreSet(key, value) {
-  return getCurrentComponent().useStoreSet(key, value);
-}
-function useRootContext(key) {
-  return useStore(COMPONENT_ROOT_CONTEXT)[key];
-}
-function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
-  return getCurrentComponent().useSubscribe(
-    name,
-    callback,
-    debounceSecond,
-    throttleSecond,
-    isSelf
-  );
-}
-function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
-  return getCurrentComponent().useSelf(
-    name,
-    callback,
-    debounceSecond,
-    throttleSecond
-  );
-}
-function useEmit(name, ...args) {
-  return getCurrentComponent().emit(name, ...args);
-}
-function useTrigger(name, ...args) {
-  return getCurrentComponent().trigger(name, ...args);
-}
-function useMagicMethod(methodName, callback) {
-  return getCurrentComponent().initMagicMethod(methodName, callback);
-}
-class MagicHandler {
-  constructor() {
-    __privateAdd(this, _handlerCache, {});
-    this.handlers = this.initializeHandler();
-  }
-  initializeHandler(localHandlers = {}) {
-    return createHandlerInstance(this, localHandlers);
-  }
-  loadHandlerCache(func) {
-    if (!__privateGet(this, _handlerCache)[func]) {
-      __privateGet(this, _handlerCache)[func] = this.handlers.filter((h) => h[func]);
-    }
-    return __privateGet(this, _handlerCache)[func];
-  }
-  async runHandlers(func = "run", ...args) {
-    await Promise.all(
-      this.loadHandlerCache(func).map(async (h) => {
-        await h[func](...args);
-      })
-    );
-  }
-  filterFunction(func, ...args) {
-    return this.loadHandlerCache(func).map((h) => {
-      return h[func](...args);
-    });
-  }
-}
-_handlerCache = new WeakMap();
-const USE_STATE = Symbol("useState");
-const USE_EFFECT = Symbol("useEffect");
-const USE_MEMO = Symbol("useMemo");
-const USE_CALLBACK = Symbol("useCallback");
-const USE_REF = Symbol("useRef");
-const USE_CONTEXT = Symbol("useContext");
-const USE_SUBSCRIBE = Symbol("useSubscribe");
-const USE_ID = Symbol("useId");
-const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
-class RefClass {
-  constructor(current) {
-    this.current = current;
-  }
-  setCurrent(current) {
-    this.current = current;
-  }
-}
-function createRef(current = void 0) {
-  return new RefClass(current);
-}
-function createState({ value, component }) {
-  let localValue = { value, component };
-  function getValue(v) {
-    if (typeof v === "function") {
-      return v(localValue.value);
-    }
-    return v;
-  }
-  const update = (newValue) => {
-    const _newValue = getValue(newValue);
-    if (localValue.value !== _newValue) {
-      localValue.value = _newValue;
-      renderComponent(localValue.component);
-    }
-  };
-  return [localValue, update];
-}
-function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, component }) {
-  let localValue = {
-    value: getSnapshot(),
-    subscribe,
-    unsubscribe: null,
-    component
-  };
-  const update = () => {
-    const _newValue = getSnapshot();
-    const isDiff = isFunction(isEqual2) ? isEqual2(localValue, _newValue) === false : localValue.value !== _newValue;
-    if (isDiff) {
-      localValue.value = _newValue;
-      renderComponent(localValue.component);
-    }
-  };
-  localValue.unsubscribe = subscribe(update);
-  return localValue;
-}
-class HookMachine extends MagicHandler {
-  constructor() {
-    super(...arguments);
-    __privateAdd(this, ___stateHooks, []);
-    __privateAdd(this, ___stateHooksIndex, 0);
-  }
-  copyHooks() {
-    return {
-      __stateHooks: __privateGet(this, ___stateHooks),
-      __stateHooksIndex: __privateGet(this, ___stateHooksIndex)
-    };
-  }
-  reloadHooks(hooks) {
-    __privateSet(this, ___stateHooks, hooks.__stateHooks || []);
-    __privateSet(this, ___stateHooksIndex, hooks.__stateHooksIndex || 0);
-  }
-  resetCurrentComponent() {
-    this.resetHookIndex();
-    resetCurrentComponent(this);
-  }
-  resetHookIndex() {
-    __privateSet(this, ___stateHooksIndex, 0);
-  }
-  increaseHookIndex() {
-    __privateWrapper(this, ___stateHooksIndex)._++;
-  }
-  getHook() {
-    return __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)];
-  }
-  setHook(type, hookInfo) {
-    __privateGet(this, ___stateHooks)[__privateGet(this, ___stateHooksIndex)] = {
-      type,
-      hookInfo
-    };
-  }
-  useBatch(callback) {
-    pendingComponent(this);
-    callback && callback();
-    removePendingComponent(this);
-    renderComponent(this);
-  }
-  useId() {
-    if (!this.getHook()) {
-      this.setHook(USE_ID, { value: uuid(), component: this });
-    }
-    const { value } = this.getHook().hookInfo;
-    this.increaseHookIndex();
-    return value;
-  }
-  useSyncExternalStore(subscribe, getSnapshot, isEqual2) {
-    if (!this.getHook()) {
-      this.setHook(
-        USE_SYNC_EXTERNAL_STORE,
-        createExternalStore({
-          subscribe,
-          getSnapshot,
-          isEqual: isEqual2,
-          component: this
-        })
-      );
-    }
-    const { value } = this.getHook().hookInfo;
-    this.increaseHookIndex();
-    return value;
-  }
-  useState(initialState) {
-    if (!this.getHook()) {
-      this.setHook(
-        USE_STATE,
-        createState({ value: initialState, component: this })
-      );
-    }
-    const [value, update] = this.getHook().hookInfo;
-    this.increaseHookIndex();
-    return [value.value, update];
-  }
-  isChangedDeps(deps) {
-    const hasDeps = !deps;
-    const {
-      hookInfo: { deps: currentDeps }
-    } = this.getHook() || { hookInfo: {} };
-    const hasChangedDeps = currentDeps ? !deps.every((d, i) => d === currentDeps[i]) : true;
-    if ((deps == null ? void 0 : deps.length) === 0 && (currentDeps == null ? void 0 : currentDeps.length) === 0) {
-      return false;
-    }
-    return hasDeps || hasChangedDeps;
-  }
-  useEffect(callback, deps) {
-    const hasChangedDeps = this.isChangedDeps(deps);
-    this.setHook(USE_EFFECT, {
-      deps,
-      hasChangedDeps,
-      callback
-    });
-    this.increaseHookIndex();
-  }
-  useReducer(reducer, initialState) {
-    const [state, setState] = this.useState(initialState);
-    function dispatch(action) {
-      setState((prevState) => reducer(prevState, action));
-    }
-    return [state, dispatch];
-  }
-  useMemo(callback, deps, useType = USE_MEMO) {
-    const hasChangedDeps = this.isChangedDeps(deps);
-    if (hasChangedDeps) {
-      this.setHook(useType, {
-        deps,
-        value: callback()
-      });
-    }
-    const lastHookValue = this.getHook().hookInfo || {};
-    this.increaseHookIndex();
-    return lastHookValue.value;
-  }
-  useCallback(callback, deps) {
-    return this.useMemo(() => callback, deps, USE_CALLBACK);
-  }
-  useRef(initialValue) {
-    return this.useMemo(() => createRef(initialValue), [], USE_REF);
-  }
-  refreshProvider(provider) {
-    const hookInfo = this.filterHooks(USE_CONTEXT).find(
-      (it) => it.provider.id === provider.id
-    );
-    if (hookInfo) {
-      hookInfo.provider = provider;
-    }
-  }
-  useContext(context) {
-    if (!this.getHook()) {
-      this.setHook(USE_CONTEXT, {
-        provider: getContextProvider(context),
-        component: this
-      });
-    }
-    const { provider } = this.getHook().hookInfo;
-    addProviderSubscribe(provider.id, this, () => {
-      renderComponent(this);
-    });
-    this.increaseHookIndex();
-    return (provider == null ? void 0 : provider.value) || context.defaultValue;
-  }
-  useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
-    if (!this.getHook()) {
-      this.setHook(USE_SUBSCRIBE, {
-        name,
-        callback,
-        component: this,
-        unsubscribe: this.$store.on(
-          name,
-          callback,
-          this,
-          debounceSecond,
-          throttleSecond,
-          false,
-          isSelf
-        )
-      });
-    }
-    const { unsubscribe } = this.getHook().hookInfo;
-    this.increaseHookIndex();
-    return unsubscribe;
-  }
-  useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
-    return this.useSubscribe(
-      name,
-      callback,
-      debounceSecond,
-      throttleSecond,
-      true
-    );
-  }
-  useEmit(name, ...args) {
-    return this.emit(name, ...args);
-  }
-  useStore(key) {
-    return this.$store.get(key);
-  }
-  useStoreSet(key, value) {
-    this.$store.set(key, value);
-  }
-  filterHooks(type) {
-    return __privateGet(this, ___stateHooks).filter((it) => it.type === type).map((it) => it.hookInfo);
-  }
-  getUseEffects() {
-    return this.filterHooks(USE_EFFECT);
-  }
-  getUseSyncExternalStore() {
-    return this.filterHooks(USE_SYNC_EXTERNAL_STORE);
-  }
-  getUseStates() {
-    return this.filterHooks(USE_STATE).map((it) => it.value);
-  }
-  runHooks() {
-    this.getUseEffects().forEach((it) => {
-      if (it.hasChangedDeps) {
-        it.cleanup = it.callback();
-      }
-    });
-  }
-  cleanHooks() {
-    this.getUseEffects().forEach((it) => {
-      if (isFunction(it.cleanup)) {
-        it.cleanup();
-      }
-    });
-    this.getUseSyncExternalStore().forEach((it) => {
-      if (isFunction(it.unsubscribe)) {
-        it.unsubscribe();
-      }
-    });
-  }
-  destroy() {
-  }
-  onMounted() {
-    this.isMounted = true;
-    this.runHooks();
-  }
-  onUpdated() {
-    this.runHooks();
-  }
-  onDestroyed() {
-    this.isMounted = false;
-    this.cleanHooks();
-  }
-  onUnmounted() {
-  }
-}
-___stateHooks = new WeakMap();
-___stateHooksIndex = new WeakMap();
 const _EventMachine = class extends HookMachine {
   constructor(opt, props, state) {
     super();
@@ -1658,13 +1659,20 @@ const _EventMachine = class extends HookMachine {
       }
     });
     __publicField(this, "registerChildComponent", (el, childComponent, id, oldEl) => {
+      let isEq = false;
+      if (el === oldEl) {
+        isEq = true;
+      }
       el = el || oldEl;
       if (!__privateGet(this, _childObjectElements).has(el)) {
         __privateGet(this, _childObjectList)[id] = el;
         __privateGet(this, _childObjectElements).set(el, childComponent);
       }
-      if (__privateGet(this, _childObjectElements).has(oldEl)) {
+      if (__privateGet(this, _childObjectElements).has(oldEl) && !isEq) {
         __privateGet(this, _childObjectElements).delete(oldEl);
+      } else {
+        __privateGet(this, _childObjectList)[id] = el;
+        __privateGet(this, _childObjectElements).set(el, childComponent);
       }
     });
     __publicField(this, "checkRefClass", (oldEl, newVNode) => {
@@ -1717,6 +1725,9 @@ const _EventMachine = class extends HookMachine {
     this.sourceName = this.constructor.name;
     this.props = props;
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
+  }
+  setProps(props) {
+    this.props = props;
   }
   createFunction(funcName, func) {
     if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
@@ -2618,6 +2629,9 @@ class VNodeComponent extends VNode {
   getModule() {
     return getModule(this.Component);
   }
+  setInstance(instance) {
+    this.instance = instance;
+  }
   get isComponentChanged() {
     return this.LastComponent !== this.getModule();
   }
@@ -3032,14 +3046,27 @@ const patch = {
       this.setProp(node, name, newValue);
     }
   },
-  reconcile(oldEl, newVNode, options) {
-    const isRootElement = options.context.$el.el === oldEl;
+  makeComponent(oldEl, newVNode, options) {
+    var _a;
+    const isRootElement = ((_a = options.context.$el) == null ? void 0 : _a.el) === oldEl;
     newVNode.makeClassInstance(options);
-    Reconcile(oldEl, newVNode.template(), options);
+    if (oldEl[COMPONENT_INSTANCE]) {
+      newVNode.instance.setState(oldEl[COMPONENT_INSTANCE].state);
+    }
+    const instance = newVNode.instance;
+    instance.$el = Dom.create(oldEl);
+    renderVNodeComponent(instance);
     if (isRootElement) {
       options.context.$el.el = oldEl;
     }
-    newVNode.runUpdated();
+    if (isFunction(options.registerChildComponent)) {
+      options.registerChildComponent(
+        instance.$el.el,
+        instance,
+        instance.id,
+        oldEl
+      );
+    }
   },
   replaceWith(oldEl, newVNode, options) {
     const isRootElement = options.context.$el.el === oldEl;
@@ -3100,11 +3127,17 @@ const check = {
     return vNode.Component;
   }
 };
-const updateProps = (node, newProps = {}, oldProps = {}) => {
+const updateProps = (node, newProps = {}, oldProps = {}, options = {}, newVNode) => {
   const newPropsKeys = Object.keys(newProps);
   const oldPropsKeys = Object.keys(oldProps);
   if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
     return;
+  }
+  if (newProps.ref) {
+    if (newVNode.ref instanceof RefClass) {
+      newVNode.ref.setCurrent(node);
+    }
+    isFunction(options.registerRef) && options.registerRef(newProps.ref, node);
   }
   newPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
     const newValue = newProps[key];
@@ -3159,15 +3192,7 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   } else {
     if (check.hasRefClass(newVNode)) {
       if (isFunction(options.checkRefClass) && options.checkRefClass(oldEl, newVNode)) {
-        patch.reconcile(oldEl, newVNode, options);
-        if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(
-            newVNode.el,
-            newVNode.instance,
-            newVNode.instance.id,
-            oldEl
-          );
-        }
+        patch.makeComponent(oldEl, newVNode, options);
       }
     } else {
       patch.replaceWith(oldEl, newVNode, options);
@@ -3180,7 +3205,9 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   updateProps(
     oldEl,
     newVNodeProps,
-    getProps$1(oldEl, oldEl.attributes, newVNodeProps)
+    getProps$1(oldEl, oldEl.attributes, newVNodeProps),
+    options,
+    newVNode
   );
   updateChildren(oldEl, newVNode, options);
 }
@@ -3329,31 +3356,30 @@ async function renderVNodeComponent(componentInstance, $container) {
   }
   return componentInstance;
 }
-function render$1(vNodeInstance, options) {
-  vNodeInstance.makeClassInstance(options);
+function render$1(vNode, options) {
+  vNode.makeClassInstance(options);
   try {
-    vNodeInstance.instance.setParentElement(vNodeInstance.parentElement);
-    renderVNodeComponent(vNodeInstance.instance, options.$container);
+    vNode.instance.setParentElement(vNode.parentElement);
+    renderVNodeComponent(vNode.instance, options.$container);
   } catch (e) {
     console.error(e);
   }
 }
-function makeElement(vNodeInstance, withChildren, options = {}) {
+function makeElement(vNode, withChildren, options = {}) {
   var _a, _b;
-  const node = vNodeInstance;
-  render$1(node, options);
-  node.el = (_b = (_a = node.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
-  if (node.el) {
-    const id = isString(node.props.ref) ? node.props.ref : node.instance.id;
-    if (node.props.ref instanceof RefClass) {
-      node.props.ref.setCurrent(node.instance);
+  render$1(vNode, options);
+  vNode.el = (_b = (_a = vNode.instance) == null ? void 0 : _a.$el) == null ? void 0 : _b.el;
+  if (vNode.el) {
+    const id = isString(vNode.props.ref) ? vNode.props.ref : vNode.instance.id;
+    if (vNode.props.ref instanceof RefClass) {
+      vNode.props.ref.setCurrent(vNode.instance);
     }
-    isFunction(options.registerChildComponent) && options.registerChildComponent(node.el, node.instance, id);
+    isFunction(options.registerChildComponent) && options.registerChildComponent(vNode.el, vNode.instance, id);
   }
-  return node;
+  return vNode;
 }
-function VNodeComponentRender$1(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+function VNodeComponentRender$1(vNode, withChildren, options) {
+  return makeElement(vNode, withChildren, options);
 }
 const handlerMap = {};
 const __rootInstance = /* @__PURE__ */ new Set();

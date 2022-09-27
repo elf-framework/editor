@@ -2,9 +2,9 @@ import { COMPONENT_INSTANCE } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
 import { isArray, isFunction, isString } from "../../functions/func";
-import { Reconcile, updateChildren } from "../../functions/Reconcile";
 import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
+import { Reconcile, updateChildren } from "./Reconcile";
 
 async function runningUpdate(componentInstance, template) {
   if (template.isType(VNodeType.FRAGMENT)) {
@@ -91,42 +91,40 @@ export async function renderVNodeComponent(componentInstance, $container) {
   return componentInstance;
 }
 
-function render(vNodeInstance, options) {
-  vNodeInstance.makeClassInstance(options);
+function render(vNode, options) {
+  vNode.makeClassInstance(options);
   try {
     // 객체를 생성 후에는 렌더링을 한다.
-    vNodeInstance.instance.setParentElement(vNodeInstance.parentElement);
-    renderVNodeComponent(vNodeInstance.instance, options.$container);
+    vNode.instance.setParentElement(vNode.parentElement);
+    renderVNodeComponent(vNode.instance, options.$container);
   } catch (e) {
     console.error(e);
   }
 }
 
-function makeElement(vNodeInstance, withChildren, options = {}) {
-  const node = vNodeInstance;
-
-  render(node, options);
+function makeElement(vNode, withChildren, options = {}) {
+  render(vNode, options);
 
   // 렌더링 된 객체에서 element 를 얻는다.
-  node.el = node.instance?.$el?.el;
+  vNode.el = vNode.instance?.$el?.el;
 
-  if (node.el) {
+  if (vNode.el) {
     // props.ref 가 있으면 등록한다.
-    const id = isString(node.props.ref) ? node.props.ref : node.instance.id;
+    const id = isString(vNode.props.ref) ? vNode.props.ref : vNode.instance.id;
 
-    if (node.props.ref instanceof RefClass) {
+    if (vNode.props.ref instanceof RefClass) {
       // ref 가 있으면 component 의 instance 를 등록한다.
-      node.props.ref.setCurrent(node.instance);
+      vNode.props.ref.setCurrent(vNode.instance);
     }
 
     // 상위 컨텍스트 에서 내부 children 을 관리한다.
     isFunction(options.registerChildComponent) &&
-      options.registerChildComponent(node.el, node.instance, id);
+      options.registerChildComponent(vNode.el, vNode.instance, id);
   }
 
-  return node;
+  return vNode;
 }
 
-export function VNodeComponentRender(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+export function VNodeComponentRender(vNode, withChildren, options) {
+  return makeElement(vNode, withChildren, options);
 }

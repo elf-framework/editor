@@ -1,6 +1,10 @@
-import { VNodeType } from "../constant/vnode";
-import { DomRenderer } from "../renderer/dom/DomRenderer";
-import { isFunction, isNotUndefined, isUndefined } from "./func";
+import { COMPONENT_INSTANCE } from "../../constant/component";
+import { VNodeType } from "../../constant/vnode";
+import { Dom } from "../../functions/Dom";
+import { isFunction, isNotUndefined, isUndefined } from "../../functions/func";
+import { RefClass } from "../../HookMachine";
+import { DomRenderer } from "./DomRenderer";
+import { renderVNodeComponent } from "./VNodeComponentRender";
 
 const booleanTypes = new Map(
   Object.entries({
@@ -91,18 +95,48 @@ const patch = {
     }
   },
 
-  reconcile(oldEl, newVNode, options) {
-    const isRootElement = options.context.$el.el === oldEl;
+  /**
+   * 이 함수는 Component 의 클래스/함수 자체가 변경되었을 때 호출한다. (HMR)
+   *
+   * 기본 컨셉은 oldEl 에 적용된 component instance 를 newVNode 의 instance 로 교체한다.
+   * 이 때 component instance 가 가지고 있던 몇가지 정보들은 유지해야 한다.
+   *
+   *
+   */
+  makeComponent(oldEl, newVNode, options) {
+    // console.log(options.context.id);
+    const isRootElement = options.context.$el?.el === oldEl;
 
+    // component instance 를  생성
     newVNode.makeClassInstance(options);
 
-    Reconcile(oldEl, newVNode.template(), options);
+    // hook 은 새로 생성하고, state 는 넣어준다.
+    if (oldEl[COMPONENT_INSTANCE]) {
+      newVNode.instance.setState(oldEl[COMPONENT_INSTANCE].state);
+    }
 
+    // 기존의 $el 을 대입
+    const instance = newVNode.instance;
+    instance.$el = Dom.create(oldEl);
+
+    // component 를 다시 렌더링
+    // $el 이 존재하면 Reconcile 을 수행함
+    renderVNodeComponent(instance);
+
+    // root element 등록
     if (isRootElement) {
       options.context.$el.el = oldEl;
     }
 
-    newVNode.runUpdated();
+    // 새로운 컴포넌트를 부모의 child 로 등록한다.
+    if (isFunction(options.registerChildComponent)) {
+      options.registerChildComponent(
+        instance.$el.el,
+        instance,
+        instance.id,
+        oldEl // 옛날 element 는 삭제하기
+      );
+    }
   },
 
   replaceWith(oldEl, newVNode, options) {
@@ -198,7 +232,13 @@ const check = {
   },
 };
 
-const updateProps = (node, newProps = {}, oldProps = {}) => {
+const updateProps = (
+  node,
+  newProps = {},
+  oldProps = {},
+  options = {},
+  newVNode
+) => {
   const newPropsKeys = Object.keys(newProps);
   const oldPropsKeys = Object.keys(oldProps);
 
@@ -207,6 +247,13 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
     return;
   }
 
+  // set child's ref element to parent
+  if (newProps.ref) {
+    if (newVNode.ref instanceof RefClass) {
+      newVNode.ref.setCurrent(node);
+    }
+    isFunction(options.registerRef) && options.registerRef(newProps.ref, node);
+  }
   // newProps 를 기준으로 루프를 먼저 돌고
   newPropsKeys
     .filter((key) => !expectKeys[key])
@@ -223,6 +270,7 @@ const updateProps = (node, newProps = {}, oldProps = {}) => {
 
       patch.updateProp(node, key, newValue, oldValue);
     });
+
   // oldProps 기준으로 newProps 에 키가 없으면 삭제한다.
   oldPropsKeys
     .filter((key) => !expectKeys[key])
@@ -295,20 +343,7 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
         options.checkRefClass(oldEl, newVNode)
       ) {
         // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
-        patch.reconcile(oldEl, newVNode, options);
-
-        // 기존의 replaceWith 는 element 통으로 바꾸기 때문에 화면 렌더링을 많이 해야함.
-        // patch.replaceWith(oldEl, newVNode, options);
-        // 이건 안 쓰는 걸로>
-
-        if (isFunction(options.registerChildComponent)) {
-          options.registerChildComponent(
-            newVNode.el,
-            newVNode.instance,
-            newVNode.instance.id,
-            oldEl // 옛날 element 는 삭제하기
-          );
-        }
+        patch.makeComponent(oldEl, newVNode, options);
       } else {
         // noop
       }
@@ -327,7 +362,9 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   updateProps(
     oldEl,
     newVNodeProps,
-    getProps(oldEl, oldEl.attributes, newVNodeProps)
+    getProps(oldEl, oldEl.attributes, newVNodeProps),
+    options,
+    newVNode
   ); // added
 
   updateChildren(oldEl, newVNode, options);

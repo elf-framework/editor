@@ -15,6 +15,7 @@ import { DisabledView } from "../../../../../component/actions/button/DisabledVi
 import { FocusedView } from "../../../../../component/actions/button/FocusedView.jsx"; 
 import { TooltipView } from "../../../../../component/actions/button/TooltipView.jsx"; 
 import { VariantView } from "../../../../../component/actions/button/VariantView.jsx"; 
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -22,6 +23,30 @@ Buttons allow users to perform an action or to navigate to another page. They ha
 
 
 <MainView />
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {5-7} showLineNumbers
+    import { RoundButton } from "@elf-framework/ui";
+
+    function App() { 
+        return (
+            <RoundButton size="extra-large" variant="primary">
+                    Getting started
+            </RoundButton>
+        )
+    }
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+    ```html
+    <button class="elf--button primary extra-large round ">
+        <span>Getting started</span>
+    </button>
+    ```
+    </CodeViewItem>
+
+</CodeView>
 
 
 ## Options 
@@ -29,30 +54,369 @@ Buttons allow users to perform an action or to navigate to another page. They ha
 ### Label and icon
 <OptionsView />
 
+<CodeView>
+
+<CodeViewItem title="Sapa">
+```jsx {5-7} showLineNumbers
+import { RoundButton } from "@elf-framework/ui";
+
+function App() { 
+    return <Grid columns={[2, 1]} gap={20}>
+        <label>With label and icon</label>
+        <div>
+            <RoundButton variant="primary">
+                <FilePresentFilled /> Share
+            </RoundButton>
+        </div>
+        <label>Without icon</label>
+        <div>
+            <RoundButton variant="primary">
+                Share
+            </RoundButton>
+        </div>
+        <label>With icon and label hidden</label>
+        <div>
+            <IconButton variant="primary">
+                <FilePresentFilled />
+            </IconButton>
+
+            {/* RoundButton like IconButton */}
+            <RoundButton variant="primary" iconOnly>
+                <FilePresentFilled />
+            </RoundButton>
+        </div>
+        </Grid>
+    
+}
+```
+</CodeViewItem>
+    <CodeViewItem title="Html">
+    ```html
+        <!-- with label and icon -->
+        <button class="elf--button primary medium round ">
+            <span>{icon} Share</span>
+        </button>
+
+        <!-- without icon -->
+        <button class="elf--button primary medium round ">
+            <span>Share</span>
+        </button>
+
+        <!-- with icon and label hidden -->
+        <button class="elf--button primary medium round  icon-only">
+            <span>{icon}</span>
+        </button>
+    ```
+    </CodeViewItem>
+
+</CodeView>
+
 ### Variant
 <VariantView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {5-7} showLineNumbers
+    import { RoundButton } from "@elf-framework/ui";
+
+    function App() { 
+        return (
+          <Grid columns={[1, 2]} gap={20}>
+            {[
+              "default",
+              "primary",
+              "secondary",
+              "danger",
+              "warning",
+              "success",
+              "info",
+              "dark",
+            ].map((variant) => [
+              <label>{variant}</label>,
+              <div>
+                <RoundButton variant={variant}>Action</RoundButton>
+                &nbsp; &nbsp;
+                <RoundButton outline variant={variant}>
+                  Action
+                </RoundButton>
+              </div>,
+            ])}
+          </Grid>
+        )
+    }
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+    ```html
+<div class="elf--grid" style="grid-template-columns: 1fr 2fr; gap: 20px;">
+    <label>default</label>
+    <div>
+        <!-- default style -->
+        <button class="elf--button default medium round ">
+            <span>Action</span>
+        </button>
+
+        <!-- default outline style -->
+        <button class="elf--button outline default medium round ">
+            <span>Action</span>
+        </button>
+    </div>
+    <label>primary</label>
+    <div>
+        <!-- primary style -->
+        <button class="elf--button primary medium round ">
+            <span>Action</span>
+        </button>
+        <!-- primary style -->
+        <button class="elf--button outline primary medium round ">
+            <span>Action</span>
+        </button>
+    </div>
+    ....
+</div>
+    ```
+    </CodeViewItem>
+
+</CodeView>
 
 ### Size
 <SizeView />
 
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6, 18} showLineNumbers
+import { Grid, RoundButton } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <div>
+        {["small", "medium", "large", "extra-large"].map((size) => (
+            <Grid columns={[1, 2]} gap={20}>
+                <div
+                style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                }}
+                >
+                <label>{size}</label>
+                </div>
+                <div>
+                <RoundButton size={size} variant="primary">
+                    <SettingsFilled /> Share
+                </RoundButton>
+                </div>
+            </Grid>
+            ))}
+        </div>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+    ```html
+
+        <button class="elf--button primary small round ">
+            <span> Small</span>
+        </button>
+
+        <button class="elf--button primary medium round ">
+            <span> Medium</span>
+        </button>
+
+        <button class="elf--button primary large round ">
+            <span> Large</span>
+        </button>
+
+        <button class="elf--button primary extra-large round ">
+            <span> Extra large</span>
+        </button>
+    ```
+    </CodeViewItem>
+
+</CodeView>
+
 ### Style 
 <StyleView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6, 18} showLineNumbers
+// default style 
+<RoundButton variant={variant}>Action</RoundButton>
+
+// outline style
+<RoundButton outline variant={variant}>Action</RoundButton>
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+    ```html
+<button class="elf--button primary medium round ">
+    <span> Fill style</span>
+</button>
+
+<button class="elf--button primary medium round outline ">
+    <span> Outline Style</span>
+</button>
+    ```
+    </CodeViewItem>
+
+</CodeView>
 
 ### Justified 
 <JustifiedView />
 
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<RoundButton justified variant="primary">
+    Render
+</RoundButton>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {1}
+<button class="elf--button justified primary medium round ">
+    <span>Render</span>
+</button>
+```
+    </CodeViewItem>
+
+</CodeView>
+
 ### Pending
 <PendingView />
 
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<RoundButton size={size} pending play>
+    <SettingsFilled /> Share
+</RoundButton>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {3-10} showLineNumbers
+<button class="elf--button default medium round ">
+    <span>
+        <div class="elf--animation" style="--elf--animation-duration: 1s; --elf--animation-name: spin; --elf--animation-delay: 0s; --elf--animation-play-state: running;">
+            <div class="elf--progress-circle default medium normal" style="--elf--progress-circle-offset: 0.5;">
+                <div class="progress-area">
+                    <svg>
+                        <circle class="progress-circle track" r="50%" cx="50%" cy="50%"></circle>
+                        <circle class="progress-circle fill" r="50%" cx="50%" cy="50%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </span>
+</button>
+```
+    </CodeViewItem>
+
+</CodeView>
+
 ### Disabled
 <DisabledView />
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+```jsx {1, 3} showLineNumbers
+<RoundButton disabled>Share</RoundButton>
+
+<RoundButton disabled outline>
+    Share
+</RoundButton>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {1, 5} showLineNumbers
+<button class="elf--button default medium round " disabled="disabled">
+    <span>Share</span>
+</button>
+
+<button class="elf--button outline default medium round " disabled="disabled">
+    <span>Share</span>
+</button>
+```
+    </CodeViewItem>
+
+</CodeView>
 
 ### Focus 
 
 <FocusedView />
 
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<RoundButton focused variant="primary">
+    Action
+</RoundButton>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {1}
+<button class="elf--button focused primary medium round ">
+    <span>Action</span>
+</button>
+```
+    </CodeViewItem>
+
+</CodeView>
+
 
 ### Tooltip when the label is hidden
 
 <TooltipView />
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+```jsx {1, 5, 9} showLineNumbers
+import {Tooltip, RoundButton} from "@elf-framework/ui";
+
+function App() {
+    return (
+        <Tooltip message={"Share"} show placement="top" variant="dark">
+            <RoundButton iconOnly variant="primary">
+                <SettingsFilled />
+            </RoundButton>
+        </Tooltip>
+    )
+}
+
+
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {1}
+<div class="elf--tooltip top dark relative">
+    <div class="content">
+        <button class="elf--button primary medium round  icon-only">
+            <span>{icon}</span>
+        </button>
+    </div>
+    <div class="message">
+        <div class="arrow"></div>
+        <div class="message-content">
+            <div>Share</div>
+        </div>
+    </div>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
 

@@ -87,13 +87,14 @@ export class Tab extends UIElement {
             items={content.map((it) => {
               const { title, key, onClick, disabled, style, selectedStyle } =
                 it.props;
+              const selected = activeKey === key;
               return {
                 title: title,
                 style,
                 disabled,
                 selectedStyle,
                 key,
-                selected: key === activeKey,
+                selected,
                 onClick: () => {
                   this.changeActiveKey(key);
                   onClick && onClick();

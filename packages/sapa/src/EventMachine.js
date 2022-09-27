@@ -71,6 +71,10 @@ export class EventMachine extends HookMachine {
     this.#state = Object.assign({}, this.#state, state);
   }
 
+  setProps(props) {
+    this.props = props;
+  }
+
   /**
    * 함수 캐쉬
    *
@@ -232,14 +236,22 @@ export class EventMachine extends HookMachine {
   };
 
   registerChildComponent = (el, childComponent, id, oldEl) => {
+    let isEq = false;
+    if (el === oldEl) {
+      isEq = true;
+    }
+
     el = el || oldEl;
     if (!this.#childObjectElements.has(el)) {
       this.#childObjectList[id] = el;
       this.#childObjectElements.set(el, childComponent);
     }
 
-    if (this.#childObjectElements.has(oldEl)) {
+    if (this.#childObjectElements.has(oldEl) && !isEq) {
       this.#childObjectElements.delete(oldEl);
+    } else {
+      this.#childObjectList[id] = el;
+      this.#childObjectElements.set(el, childComponent);
     }
   };
 

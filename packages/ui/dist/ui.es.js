@@ -2801,9 +2801,7 @@ class TabStrip extends UIElement {
         style: isSelected ? selectedStyle : style22
       }, /* @__PURE__ */ createElementJsx("div", {
         ref: `tab-${it.key}`,
-        onClick: (e) => {
-          it.onClick(e);
-        }
+        onClick: it.onClick
       }, it.title));
     }), showIndicator ? /* @__PURE__ */ createElementJsx("div", {
       class: "indicator"
@@ -2888,13 +2886,14 @@ class Tab extends UIElement {
       quiet,
       items: content.map((it) => {
         const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
+        const selected = activeKey === key;
         return {
           title,
           style: style22,
           disabled,
           selectedStyle,
           key,
-          selected: key === activeKey,
+          selected,
           onClick: () => {
             this.changeActiveKey(key);
             onClick && onClick();

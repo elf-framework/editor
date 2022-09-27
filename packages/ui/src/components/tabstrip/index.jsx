@@ -88,12 +88,7 @@ export class TabStrip extends UIElement {
                 })}
                 style={isSelected ? selectedStyle : style}
               >
-                <div
-                  ref={`tab-${it.key}`}
-                  onClick={(e) => {
-                    it.onClick(e);
-                  }}
-                >
+                <div ref={`tab-${it.key}`} onClick={it.onClick}>
                   {it.title}
                 </div>
               </div>
