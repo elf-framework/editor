@@ -35,7 +35,7 @@ export default defineConfig(async () => {
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
     },
     build: {
-      outDir: path.join(__dirname, "./docs"),
+      outDir: path.join(__dirname, "../../docs"),
       rollupOptions: {
         input: {
           ui: path.resolve(__dirname, "index.html"),

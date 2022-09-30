@@ -43,9 +43,9 @@ export const start = (ElementClass, opt = {}) => {
     app.id = $targetElement.el[COMPONENT_INSTANCE].id;
 
     // dom render 를 위해서 추가
-    renderComponent(app);
+    renderComponent(app, null, true);
   } else {
-    renderComponent(app, $container);
+    renderComponent(app, $container, true);
   }
   registRootElementInstance(app, $container);
 

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 26 Sep 2022 09:31:58 GMT
+ * Generated on Fri, 30 Sep 2022 06:58:07 GMT
  */
 
 module.exports = {
@@ -6611,6 +6611,23 @@ module.exports = {
       "path": [
         "z-index",
         "tooltip"
+      ]
+    },
+    "menu": {
+      "value": "100",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.100.value}"
+      },
+      "name": "ZIndexMenu",
+      "attributes": {
+        "category": "z-index",
+        "type": "menu"
+      },
+      "path": [
+        "z-index",
+        "menu"
       ]
     }
   },

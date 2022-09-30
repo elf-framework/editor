@@ -14,7 +14,7 @@ import {
 
 export function GhostLoadingView() {
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <div
         style={{
           display: "flex",

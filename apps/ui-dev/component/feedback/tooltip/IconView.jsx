@@ -19,7 +19,7 @@ function Item({ variant, icon }) {
 
 export function IconView() {
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <VBox
         style={{
           gap: 30,

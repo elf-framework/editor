@@ -1,0 +1,2 @@
+import{i as e,s as r,c as a}from"../../../../Version.10c83006.js";import{L as s,M as c}from"../../../../LayoutManager.fca90247.js";const m="create-sapa-app",u="MainLayout";function o(t){const n=Object.assign({h1:"h1",p:"p"},t.components);return e.createElementJsx(e.FragmentInstance,null,e.createElementJsx(n.h1,null,m),`
+`,e.createElementJsx(n.p,null,"Comming soon..."))}function l(t={}){const{wrapper:n}=t.components||{};return n?e.createElementJsx(n,t,e.createElementJsx(o,t)):o(t)}function i(){const t=s.get(u);return a(t,{maxWidth:900},a(c,{page:l}))}r(i);

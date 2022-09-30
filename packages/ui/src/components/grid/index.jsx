@@ -49,6 +49,13 @@ export class Grid extends UIElement {
       ...noneStyle,
     };
 
+    // 필요없는 스타일 삭제
+    Object.keys(styleObject.style).forEach((key) => {
+      if (styleObject.style[key] === undefined) {
+        delete styleObject.style[key];
+      }
+    });
+
     return <div {...styleObject}>{content}</div>;
   }
 }

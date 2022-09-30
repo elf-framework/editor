@@ -4,8 +4,8 @@ function Page() {
   return (
     <div>
       <h1>Welcome</h1>
-      This page is:
-      <ul>
+      This page is: fdsafdsfdsafdsafdsafdsf
+      <ul> fdsafdsfd
         <li>Rendered to HTML.</li>
         <li>
           <a href="/about">about</a>

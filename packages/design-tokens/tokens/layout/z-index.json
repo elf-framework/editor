@@ -23,6 +23,9 @@
     "50000": { "value": "50000" },
     "tooltip": {
       "value": "{z-index.50000.value}"
+    },
+    "menu": {
+      "value": "{z-index.100.value}"
     }
   }
 }

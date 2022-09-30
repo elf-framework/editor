@@ -1,4 +1,5 @@
 import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
+import { debounce } from "./functions/func";
 import {
   getCurrentComponent,
   renderRootElementInstanceList,
@@ -35,8 +36,12 @@ import {
 
 let contextProviderList = {};
 
-export function renderFromRoot() {
+const renderFromRootCallback = debounce(() => {
   renderRootElementInstanceList(true);
+}, 10);
+
+export function renderFromRoot() {
+  renderFromRootCallback();
 }
 
 export function useBatch(callback) {

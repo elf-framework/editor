@@ -8,9 +8,9 @@
     "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
     "ui:dev": "npm run vite:dev",
     "//build": "npm run vite:prod",
-    "vite:prod": "vite build --config=vite.prod.config.js",
+    "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
     "vite:preview": "vite preview --config=vite.prod.config.js",
-    "copy:resource": "cp CNAME docs/",
+    "copy:resource": "cp CNAME ../../docs/",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",
     "format": "prettier .  --write"
   },

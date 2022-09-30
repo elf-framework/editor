@@ -2,6 +2,7 @@ import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
 import { isFunction, collectProps, isObject } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import {
+  isGlobalForceRender,
   removeRenderCallback,
   renderComponent,
 } from "./functions/registElement";
@@ -172,7 +173,7 @@ export class EventMachine extends HookMachine {
    * @protected
    */
   _reload(props) {
-    if (this.changedProps(props)) {
+    if (isGlobalForceRender() || this.changedProps(props)) {
       this.props = props;
       renderComponent(this);
     }
@@ -206,6 +207,13 @@ export class EventMachine extends HookMachine {
         return [_key, this.#childObjectElements.get(child)];
       })
     );
+  }
+
+  setChildren(children) {
+    Object.entries(children).forEach(([id, instance]) => {
+      this.#childObjectList[id] = instance.$el.el;
+      this.#childObjectElements.set(instance.$el.el, instance);
+    });
   }
 
   /**
@@ -256,9 +264,12 @@ export class EventMachine extends HookMachine {
   };
 
   getTargetInstance(oldEl) {
-    const _target = this.#childObjectElements.get(oldEl);
-    if (_target) {
-      return _target;
+    const targetList = Object.values(this.children).filter((instance) => {
+      return instance.$el.el === oldEl;
+    });
+
+    if (targetList.length) {
+      return targetList[0];
     }
 
     return undefined;
@@ -275,8 +286,14 @@ export class EventMachine extends HookMachine {
     return false;
   }
 
-  isInstanceOf(Component) {
-    return this instanceof Component;
+  isInstanceOf(...args) {
+    return args.includes(this);
+  }
+
+  getChildrenInstanceOf(localClass) {
+    return Object.values(this.children).filter((child) => {
+      return child.isInstanceOf(localClass);
+    });
   }
 
   checkRefClass = (oldEl, newVNode) => {
@@ -311,7 +328,6 @@ export class EventMachine extends HookMachine {
         return true;
       }
     }
-
     // 다른 예외 사항이 있으면 여기에 기록하기
     return true;
   };

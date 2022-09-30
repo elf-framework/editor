@@ -488,10 +488,11 @@ declare module "@elf-framework/ui" {
     items: ToolsProps[];
     align?: ToolbarAlignType;
     style: ToolbarStyle;
+    variant?: VariantType;
   }
 
   export class Toolbar extends UIElement {
-    props: ToolbarProps & CommonStyle;
+    props: ToolbarProps & DomEventType;
   }
 
   /** menu */

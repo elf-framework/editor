@@ -6,6 +6,7 @@ filename: pages/design-system/actions/toolbar/page.mdx
 
 import { MainView } from "../../../../../component/actions/toolbar/MainView.jsx"; 
 import { OptionsView } from "../../../../../component/actions/toolbar/OptionsView.jsx"; 
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -14,11 +15,271 @@ Toolbar is used for single and bulk selection patterns, when a user needs to per
 <MainView />
 
 
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {9, 10} showLineNumbers
+import { Toolbar } from "@elf-framework/ui";
+
+function App() { 
+    return (
+
+      <div>
+        <Toolbar
+          class="shadow-1"
+          rounded={true}
+          items={[
+            {
+              items: [
+                {
+                  type: "button",
+                  icon: <AddCardFilled />,
+                  title: "Add Card",
+                },
+              ],
+            },
+            {
+              items: [
+                {
+                  type: "button",
+                  icon: <EditFilled />,
+                  title: "Edit",
+                },
+                {
+                  type: "button",
+                  icon: <ContentCopyFilled />,
+                  title: "Copy",
+                },
+                {
+                  type: "button",
+                  icon: <DeleteFilled />,
+                  title: "Delete",
+                },
+              ],
+            },
+          ]}
+        />
+      </div>
+
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {2-12} showLineNumbers
+<div id="toolbar-90812-9a-34bf" class="elf--toolbar space-between rounded default shadow-1">
+    <div class="elf--toolbar-item">
+        <div class="elf--tools">
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Add Card</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="elf--toolbar-item">
+        <div class="elf--tools">
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Edit</span>
+                    </div>
+                </button>
+            </div>
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Copy</span>
+                    </div>
+                </button>
+            </div>
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Delete</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+    </CodeViewItem>
+
+    <CodeViewItem title="Typescript">
+```typescript {6, 24-30} showLineNumbers
+  export class Toolbar extends UIElement {
+    props: ToolbarProps & DomEventType;
+  }
+
+  export interface ToolbarProps {
+    items: ToolsProps[];
+    align?: ToolbarAlignType;
+    style: ToolbarStyle;
+  }
+
+  export type ToolbarAlignType =
+    | "start"
+    | "center"
+    | "end"
+    | "space-around"
+    | "space-evenly";
+
+  interface ToolsStyle {
+    backgroundColor?: string;
+    color?: string;
+    height?: string;
+  }    
+
+  export interface ToolsProps {
+    items: ToolsType[];
+    style: ToolsStyle & CommonStyle;
+    vertical?: boolean;
+    emphasized?: boolean;
+    moreIcon?: ContentType;
+  }
+
+  export type ToolsType =
+    | ToolsItemType
+    | ToolsMenuItemType
+    | ToolsCustomItemType;
+
+  export type ToolsItemType = {
+    type: "item";
+    title: string;
+    icon?: string;
+    selected?: boolean;
+    selectedType?: "primary" | "secondary";
+    events?: string[];
+    onClick?: (event: PointerEvent) => void;
+  };
+  
+  export type ToolsMenuItemType = {
+    type: "menu";
+    items?: ItemType[];
+    title: ContentType;
+    icon?: ContentType;
+    selected?: boolean;
+    events?: string[];
+    opened?: boolean;
+    trigger: "click" | "hover";
+    direction?: MenuDirectionType;
+    onOpen?: (event: PointerEvent, item: ToolsMenuItemType) => void;
+    onClick?: (event: PointerEvent, item: ToolsMenuItemType) => void;
+  };
+
+```
+
+    </CodeViewItem>
+
+</CodeView>
+
+
 ## Options 
+
+
+### Emphasis
 
 <OptionsView />
 
+<CodeView>
 
+    <CodeViewItem title="Sapa">
+    ```jsx {9, 10} showLineNumbers
+import { Toolbar } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <div>
+            <Toolbar
+                type="primary"
+                rounded
+                emphasized
+                items={[
+                {
+                    items: [
+                    {
+                        type: "button",
+                        icon: <AddCardFilled />,
+                        title: "Add Card",
+                    },
+                    ],
+                },
+                {
+                    moreIcon: <MoreHorizOutlined />,
+                    items: [
+                    {
+                        type: "button",
+                        icon: <EditFilled />,
+                        title: "Edit",
+                    },
+                    {
+                        type: "button",
+                        icon: <ContentCopyFilled />,
+                        title: "Copy",
+                    },
+                    {
+                        type: "button",
+                        icon: <DeleteFilled />,
+                        title: "Delete",
+                    },
+                    ],
+                },
+                ]}
+            />
+        </div>
+
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {2-12} showLineNumbers
+<div id="toolbar-90812-9a-34bf" class="elf--toolbar space-between rounded default shadow-1">
+    <div class="elf--toolbar-item">
+        <div class="elf--tools">
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Add Card</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="elf--toolbar-item">
+        <div class="elf--tools">
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Edit</span>
+                    </div>
+                </button>
+            </div>
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Copy</span>
+                    </div>
+                </button>
+            </div>
+            <div class="elf--tools-item" style="visibility: visible;">
+                <button type="button">
+                    <div class="elf--flex" style="gap: 10px;">
+                        <span class="menu-title">Delete</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+    </CodeViewItem>
+
+</CodeView>
 
 
 

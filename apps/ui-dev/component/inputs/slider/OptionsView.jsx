@@ -4,7 +4,7 @@ import { Grid, VBox, Slider } from "@elf-framework/ui";
 export function OptionsView() {
   const [value, setValue] = useState(0);
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <VBox
         style={{
           gap: 30,

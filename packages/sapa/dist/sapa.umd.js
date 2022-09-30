@@ -43,6 +43,9 @@ var __privateMethod = (obj, member, method) => {
   "use strict";
   const COMPONENT_INSTANCE = "__componentInstance";
   const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
+  const IS_FRAGMENT_ITEM = "__is_fragment_item";
+  const CHILD_ITEM_TYPE_FRAGMENT = "fragment";
+  const CHILD_ITEM_TYPE_ELEMENT = "element";
   function collectProps(root, rootClass, filterFunction = () => true) {
     let p = root;
     let results = [];
@@ -221,8 +224,11 @@ var __privateMethod = (obj, member, method) => {
     return uuid2;
   }
   let contextProviderList = {};
-  function renderFromRoot() {
+  const renderFromRootCallback = debounce(() => {
     renderRootElementInstanceList(true);
+  }, 10);
+  function renderFromRoot() {
+    renderFromRootCallback();
   }
   function useBatch(callback) {
     getCurrentComponent().useBatch(callback);
@@ -488,6 +494,16 @@ var __privateMethod = (obj, member, method) => {
     reloadHooks(hooks) {
       __privateSet(this, ___stateHooks, hooks.__stateHooks || []);
       __privateSet(this, ___stateHooksIndex, hooks.__stateHooksIndex || 0);
+      __privateGet(this, ___stateHooks).forEach((hook, index2) => {
+        if ((hook == null ? void 0 : hook.type) === USE_STATE) {
+          hook.hookInfo = createState({
+            value: hook.hookInfo[0].value,
+            component: this
+          });
+        } else {
+          __privateGet(this, ___stateHooks)[index2] = void 0;
+        }
+      });
     }
     resetCurrentComponent() {
       this.resetHookIndex();
@@ -656,7 +672,7 @@ var __privateMethod = (obj, member, method) => {
       this.$store.set(key, value);
     }
     filterHooks(type) {
-      return __privateGet(this, ___stateHooks).filter((it) => it.type === type).map((it) => it.hookInfo);
+      return __privateGet(this, ___stateHooks).filter((it) => (it == null ? void 0 : it.type) === type).map((it) => it.hookInfo);
     }
     getUseEffects() {
       return this.filterHooks(USE_EFFECT);
@@ -1773,7 +1789,7 @@ var __privateMethod = (obj, member, method) => {
       return !vnodePropsDiff(this.props, newProps);
     }
     _reload(props) {
-      if (this.changedProps(props)) {
+      if (isGlobalForceRender() || this.changedProps(props)) {
         this.props = props;
         renderComponent(this);
       }
@@ -1796,21 +1812,34 @@ var __privateMethod = (obj, member, method) => {
         })
       );
     }
+    setChildren(children2) {
+      Object.entries(children2).forEach(([id, instance]) => {
+        __privateGet(this, _childObjectList)[id] = instance.$el.el;
+        __privateGet(this, _childObjectElements).set(instance.$el.el, instance);
+      });
+    }
     get isPreLoaded() {
       return true;
     }
     getTargetInstance(oldEl) {
-      const _target = __privateGet(this, _childObjectElements).get(oldEl);
-      if (_target) {
-        return _target;
+      const targetList = Object.values(this.children).filter((instance) => {
+        return instance.$el.el === oldEl;
+      });
+      if (targetList.length) {
+        return targetList[0];
       }
       return void 0;
     }
     isForceRender() {
       return false;
     }
-    isInstanceOf(Component) {
-      return this instanceof Component;
+    isInstanceOf(...args) {
+      return args.includes(this);
+    }
+    getChildrenInstanceOf(localClass) {
+      return Object.values(this.children).filter((child) => {
+        return child.isInstanceOf(localClass);
+      });
     }
     async forceRender() {
       this.cleanHooks();
@@ -2250,8 +2279,8 @@ var __privateMethod = (obj, member, method) => {
         getFunctionComponent() {
           return NewFunctionComponent;
         }
-        isInstanceOf(Component) {
-          return NewFunctionComponent === Component;
+        isInstanceOf(...args) {
+          return args.includes(NewFunctionComponent);
         }
         template() {
           return NewFunctionComponent.call(this, this.props);
@@ -2397,7 +2426,7 @@ var __privateMethod = (obj, member, method) => {
       return `${key}: ${newStyle[key]};`;
     }).join(" ");
   }
-  const children$1 = (el) => {
+  const children$2 = (el) => {
     var element = el.firstChild;
     if (!element) {
       return [];
@@ -2523,13 +2552,12 @@ var __privateMethod = (obj, member, method) => {
       }
     }
     initializeChildren() {
+      var _a;
       if (isArray(this.children)) {
-        if (this.props.content)
+        if ((_a = this.props.content) == null ? void 0 : _a.length)
           return;
         this.children = this.children.filter(isValue).map((child) => {
-          if (isString(child)) {
-            return createVNodeText(child);
-          } else if (isNumber(child)) {
+          if (isString(child) || isNumber(child)) {
             return createVNodeText(child);
           }
           return child;
@@ -2557,6 +2585,18 @@ var __privateMethod = (obj, member, method) => {
     }
     isType(type) {
       return this.type === type;
+    }
+    hasComponent() {
+      return this.children.length === 1 && this.children[0].type === VNodeType.COMPONENT;
+    }
+    hasFragment() {
+      return this.children.length === 1 && this.children[0].type === VNodeType.FRAGMENT;
+    }
+    get firstChild() {
+      return this.children[0];
+    }
+    get lastChild() {
+      return this.children[this.children.length - 1];
     }
   }
   class VNodeText extends VNode {
@@ -2637,18 +2677,24 @@ var __privateMethod = (obj, member, method) => {
       this.instance = instance;
     }
     get isComponentChanged() {
+      const localComponent = this.getModule();
+      if (!localComponent)
+        return false;
       return this.LastComponent !== this.getModule();
     }
     makeClassInstance(options) {
-      var _a, _b, _c;
+      var _a;
       const props = { ...this.props };
       if (props.ref) {
         this.getContextProps(options.context, props);
       }
-      const newComponent = this.getModule();
-      const hooks = (_a = this.instance) == null ? void 0 : _a.copyHooks();
-      const state = (_b = this.instance) == null ? void 0 : _b.state;
-      const oldId = (_c = this.instance) == null ? void 0 : _c.id;
+      const newComponent = this.getModule() || this.Component;
+      this.LastComponent = newComponent;
+      const oldInstance = this.instance;
+      const hooks = oldInstance == null ? void 0 : oldInstance.copyHooks();
+      const state = oldInstance == null ? void 0 : oldInstance.state;
+      const oldId = oldInstance == null ? void 0 : oldInstance.id;
+      const children2 = (oldInstance == null ? void 0 : oldInstance.children) || {};
       this.instance = createComponentInstance(
         newComponent,
         options.context,
@@ -2658,9 +2704,16 @@ var __privateMethod = (obj, member, method) => {
       if (oldId) {
         this.instance.setId(oldId);
       }
-      if (hooks) {
+      if (hooks && ((_a = hooks.__stateHooks) == null ? void 0 : _a.length) && isGlobalForceRender()) {
         this.instance.reloadHooks(hooks);
       }
+      if (state && isGlobalForceRender()) {
+        this.instance.setState(state, false);
+      }
+      if (Object.keys(children2).length && isGlobalForceRender()) {
+        this.instance.setChildren(children2);
+      }
+      oldInstance == null ? void 0 : oldInstance.destroy();
       return this.instance;
     }
     template() {
@@ -2761,37 +2814,57 @@ var __privateMethod = (obj, member, method) => {
   function isSVG(tagName) {
     return !!SVG_ELEMENTS[tagName];
   }
-  function insertElement(child, fragment, parentElement, withChildren, options = {}) {
-    if (child instanceof VNode || (child == null ? void 0 : child.makeElement)) {
-      child.setParentElement(parentElement);
-      const el = DomRenderer(child, options).el;
+  function insertElement(childVNode, fragment, parentElement, withChildren, options = {}, isFragmentItem = false) {
+    if (childVNode instanceof VNode || (childVNode == null ? void 0 : childVNode.makeElement)) {
+      childVNode.setParentElement(parentElement);
+      const el = DomRenderer(childVNode, options).el;
       if (el) {
+        el[IS_FRAGMENT_ITEM] = isFragmentItem;
         fragment.appendChild(el);
       }
-    } else if (isArray(child)) {
-      child.forEach((it) => {
+    } else if (isArray(childVNode)) {
+      childVNode.forEach((it) => {
         if (it) {
-          insertElement(it, fragment, parentElement, withChildren, options);
+          insertElement(
+            it,
+            fragment,
+            parentElement,
+            withChildren,
+            options,
+            isFragmentItem
+          );
         }
       });
-    } else if (isFunction(child)) {
-      const result = child();
+    } else if (isFunction(childVNode)) {
+      const result = childVNode();
       if (result) {
-        insertElement(result, fragment, parentElement, withChildren, options);
+        insertElement(
+          result,
+          fragment,
+          parentElement,
+          withChildren,
+          options,
+          isFragmentItem
+        );
       }
-    } else if (child instanceof window.HTMLElement) {
-      fragment.appendChild(child);
-    } else if (isValue(child)) {
-      fragment.appendChild(document.createTextNode(child));
+    } else if (isValue(childVNode)) {
+      fragment.appendChild(document.createTextNode(childVNode));
     } else
       ;
   }
-  function makeChildren(obj, withChildren, options) {
-    const parentElement = obj.el;
-    const children2 = obj.children;
+  function makeChildren(vnode, withChildren, options, isFragmentItem = false) {
+    const parentElement = vnode.el;
+    const children2 = vnode.children;
     if (children2 && children2.length) {
       const fragment = document.createDocumentFragment();
-      insertElement(children2, fragment, parentElement, withChildren, options);
+      insertElement(
+        children2,
+        fragment,
+        parentElement,
+        withChildren,
+        options,
+        isFragmentItem
+      );
       parentElement.appendChild(fragment);
       children2.forEach((child) => {
         if (isArray(child)) {
@@ -2918,7 +2991,7 @@ var __privateMethod = (obj, member, method) => {
       return this;
     const el = document.createDocumentFragment();
     obj.el = el;
-    makeChildren(obj, withChildren, options);
+    makeChildren(obj, withChildren, options, true);
     return obj;
   }
   function VNodeFragmentRender$1(obj, withChildren, options) {
@@ -3002,7 +3075,8 @@ var __privateMethod = (obj, member, method) => {
   );
   const expectKeys = {
     content: true,
-    ref: true
+    ref: true,
+    [IS_FRAGMENT_ITEM]: true
   };
   const TEXT_NODE = 3;
   const COMMENT_NODE = 8;
@@ -3027,7 +3101,9 @@ var __privateMethod = (obj, member, method) => {
       } else if (name.startsWith(PREFIX_EVENT)) {
         el[name.toLowerCase()] = value;
       } else if (name === KEY_STYLE) {
-        el.style.cssText = value;
+        if (el.style.cssText != value) {
+          el.style.cssText = value;
+        }
       } else {
         el.setAttribute(name, value);
         el[name] = value;
@@ -3052,13 +3128,13 @@ var __privateMethod = (obj, member, method) => {
     },
     makeComponent(oldEl, newVNode, options) {
       var _a;
+      let oldInstance = oldEl[COMPONENT_INSTANCE];
       const isRootElement = ((_a = options.context.$el) == null ? void 0 : _a.el) === oldEl;
+      newVNode.setInstance(oldInstance);
       newVNode.makeClassInstance(options);
-      if (oldEl[COMPONENT_INSTANCE]) {
-        newVNode.instance.setState(oldEl[COMPONENT_INSTANCE].state);
-      }
       const instance = newVNode.instance;
       instance.$el = Dom.create(oldEl);
+      instance.setParentElement(oldEl.parentElement);
       renderVNodeComponent(instance);
       if (isRootElement) {
         options.context.$el.el = oldEl;
@@ -3069,6 +3145,22 @@ var __privateMethod = (obj, member, method) => {
           instance,
           instance.id,
           oldEl
+        );
+      }
+    },
+    makeComponentForFragment(oldInstance, newVNode, options) {
+      newVNode.setInstance(oldInstance);
+      newVNode.makeClassInstance(options);
+      const instance = newVNode.instance;
+      instance.$el = oldInstance.$el;
+      instance.setParentElement(oldInstance.parentElement);
+      renderVNodeComponent(instance);
+      if (isFunction(options.registerChildComponent)) {
+        options.registerChildComponent(
+          instance.$el.el,
+          instance,
+          instance.id,
+          oldInstance.$el.el
         );
       }
     },
@@ -3089,15 +3181,34 @@ var __privateMethod = (obj, member, method) => {
     replaceComment(oldEl, newVNode) {
       patch.replaceText(oldEl, newVNode);
     },
+    updateFragmentItem(el, isFragmentItem = false) {
+      el[IS_FRAGMENT_ITEM] = isFragmentItem;
+    },
     addNewVNode(parentElement, oldEl, newVNode, options) {
       parentElement.insertBefore(DomRenderer(newVNode, options).el, oldEl);
       parentElement.removeChild(oldEl);
       newVNode.runMounted();
     },
-    appendChild(el, newVNode, options) {
+    appendChild(el, newVNode, options, isFragmentItem = false) {
       const newVNodeInstance = DomRenderer(newVNode, options);
       if (newVNodeInstance == null ? void 0 : newVNodeInstance.el) {
+        if (isFragmentItem) {
+          patch.updateFragmentItem(newVNodeInstance.el, isFragmentItem);
+        }
         el.appendChild(newVNodeInstance.el);
+        newVNode.runMounted();
+      }
+    },
+    insertAfter(beforeElement, newVNode, options, isFragmentItem = false) {
+      const newVNodeInstance = DomRenderer(newVNode, options);
+      if (newVNodeInstance == null ? void 0 : newVNodeInstance.el) {
+        if (isFragmentItem) {
+          patch.updateFragmentItem(newVNodeInstance.el, isFragmentItem);
+        }
+        beforeElement.parentNode.insertBefore(
+          newVNodeInstance.el,
+          beforeElement.nextSibling
+        );
         newVNode.runMounted();
       }
     },
@@ -3146,7 +3257,7 @@ var __privateMethod = (obj, member, method) => {
     newPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
       const newValue = newProps[key];
       let oldValue;
-      if (key === "style") {
+      if (key === KEY_STYLE) {
         oldValue = node.style.cssText;
       } else {
         oldValue = oldProps[key];
@@ -3215,11 +3326,91 @@ var __privateMethod = (obj, member, method) => {
     );
     updateChildren(oldEl, newVNode, options);
   }
-  function updateChildren(oldEl, newVNode, options = {}) {
-    if (!oldEl.hasChildNodes() && !newVNode.children.length) {
+  function updateChildren(parentElement, newVNode, options = {}) {
+    var _a;
+    if (!(parentElement == null ? void 0 : parentElement.hasChildNodes()) && !newVNode.children.length) {
       return;
     }
-    var oldChildren = children(oldEl);
+    var oldChildren = children$1(parentElement);
+    var newChildren = vNodeChildren(newVNode);
+    if (newVNode.hasComponent()) {
+      const hasFragmentItem = oldChildren.some((it) => it[IS_FRAGMENT_ITEM]);
+      if (hasFragmentItem) {
+        const findChildren = options.context.getChildrenInstanceOf(
+          (_a = newVNode.firstChild) == null ? void 0 : _a.LastComponent
+        );
+        if (findChildren.length) {
+          renderVNodeComponent(findChildren[0]);
+          return;
+        }
+      }
+    }
+    var max = Math.max(oldChildren.length, newChildren.length);
+    if (max === 0) {
+      return;
+    }
+    if (oldChildren.length === 0 && newChildren.length > 0) {
+      var fragment = document.createDocumentFragment();
+      newChildren.forEach((it) => {
+        const retElement = DomRenderer(it, options).el;
+        if (retElement) {
+          fragment.appendChild(retElement);
+        }
+      });
+      parentElement.appendChild(fragment);
+      newChildren.forEach((it) => {
+        if (isFunction(it.runMounted)) {
+          it.runMounted();
+        }
+      });
+    } else if (oldChildren.length > 0 && newChildren.length === 0) {
+      parentElement.textContent = "";
+    } else {
+      for (var i = 0; i < max; i++) {
+        updateElement(parentElement, oldChildren[i], newChildren[i], options);
+      }
+    }
+  }
+  function updateFragment(parentElement, oldChild, newChild, options = {}) {
+    let filteredInstance = null;
+    let parentClassInstance = parentElement[COMPONENT_INSTANCE];
+    const children2 = (parentClassInstance == null ? void 0 : parentClassInstance.children) || {};
+    Object.entries(children2).forEach(([, instance]) => {
+      if (newChild.isType(VNodeType.COMPONENT)) {
+        filteredInstance = instance;
+      }
+    });
+    if (filteredInstance) {
+      patch.makeComponentForFragment(
+        filteredInstance,
+        newChild,
+        parentElement[COMPONENT_INSTANCE].getVNodeOptions()
+      );
+      return;
+    }
+    let lastElement = null;
+    const childMaxCount = Math.max(
+      oldChild.items.length,
+      newChild.children.length
+    );
+    for (var childIndex = 0; childIndex < childMaxCount; childIndex++) {
+      const oldChildItem = oldChild.items[childIndex];
+      const newChildItem = newChild.children[childIndex];
+      if (oldChildItem)
+        lastElement = oldChildItem;
+      updateElementWithFragment(
+        parentElement,
+        oldChildItem,
+        newChildItem,
+        options,
+        lastElement
+      );
+    }
+  }
+  function updateChildrenWithFragment(parentElement, oldChildren = [], newVNode, options = {}) {
+    if (!oldChildren.length && !newVNode.children.length) {
+      return;
+    }
     var newChildren = vNodeChildren(newVNode);
     var max = Math.max(oldChildren.length, newChildren.length);
     if (max === 0) {
@@ -3233,15 +3424,29 @@ var __privateMethod = (obj, member, method) => {
           fragment.appendChild(retElement);
         }
       });
-      oldEl.appendChild(fragment);
+      parentElement.appendChild(fragment);
       newChildren.forEach((it) => {
-        it.runMounted();
+        if (isFunction(it.runMounted)) {
+          it.runMounted();
+        }
       });
     } else if (oldChildren.length > 0 && newChildren.length === 0) {
-      oldEl.textContent = "";
+      parentElement.textContent = "";
     } else {
       for (var i = 0; i < max; i++) {
-        updateElement(oldEl, oldChildren[i], newChildren[i], options);
+        const oldChild = oldChildren[i];
+        const newChild = newChildren[i];
+        if (!oldChild && newChild) {
+          updateElement(parentElement, oldChild, newChild, options);
+        } else if (oldChild && !newChild) {
+          updateElement(parentElement, oldChild.items, newChild, options);
+        } else {
+          if (oldChild.type === CHILD_ITEM_TYPE_FRAGMENT) {
+            updateFragment(parentElement, oldChild, newChild, options);
+          } else if (oldChild.type === CHILD_ITEM_TYPE_ELEMENT) {
+            updateElement(parentElement, oldChild.items, newChild, options);
+          }
+        }
       }
     }
   }
@@ -3273,8 +3478,40 @@ var __privateMethod = (obj, member, method) => {
       updatePropertyAndChildren(oldEl, newVNode, options);
     }
   }
-  const children = (el) => {
-    var element = el.firstChild;
+  function updateElementWithFragment(parentElement, oldEl, newVNode, options = {}, lastElement) {
+    var _a;
+    if (!newVNode && !oldEl) {
+      return;
+    }
+    parentElement = parentElement || options.context.parentElement;
+    if (!oldEl && newVNode) {
+      if (!lastElement) {
+        patch.appendChild(parentElement, newVNode, options, true);
+      } else {
+        patch.insertAfter(lastElement, newVNode, options, true);
+      }
+      return;
+    }
+    if (!newVNode && oldEl) {
+      patch.removeChild(parentElement, oldEl, options);
+      return;
+    }
+    if (!((_a = newVNode == null ? void 0 : newVNode.props) == null ? void 0 : _a.pass)) {
+      if (check.hasPassed(newVNode)) {
+        return;
+      }
+      if (check.changed(newVNode, oldEl) || check.hasRefClass(newVNode)) {
+        updateChangedElement(parentElement, oldEl, newVNode, options);
+        return;
+      }
+    }
+    const newNodeType = newVNode.type;
+    if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
+      updatePropertyAndChildren(oldEl, newVNode, options);
+    }
+  }
+  const children$1 = (el) => {
+    var element = el == null ? void 0 : el.firstChild;
     if (!element) {
       return [];
     }
@@ -3303,29 +3540,112 @@ var __privateMethod = (obj, member, method) => {
       return;
     }
   }
-  async function runningUpdate(componentInstance, template) {
-    if (template.isType(VNodeType.FRAGMENT)) {
-      updateChildren(componentInstance.parentElement, template);
-    } else {
-      Reconcile(
-        componentInstance.$el.el,
+  const children = (el) => {
+    var element = el == null ? void 0 : el.firstChild;
+    if (!element) {
+      return [];
+    }
+    var results = [];
+    do {
+      results[results.length] = element;
+      element = element.nextSibling;
+    } while (element);
+    return results;
+  };
+  function collectFragmentList(element) {
+    const rootList = [];
+    let rootListIndex = 0;
+    children(element).forEach((it) => {
+      if (it[IS_FRAGMENT_ITEM] === true) {
+        if (!rootList[rootListIndex]) {
+          rootList[rootListIndex] = {
+            type: CHILD_ITEM_TYPE_FRAGMENT,
+            items: [it]
+          };
+        } else {
+          if (rootList[rootListIndex]) {
+            if (rootList[rootListIndex].type === CHILD_ITEM_TYPE_FRAGMENT) {
+              rootList[rootListIndex].items.push(it);
+            } else {
+              rootListIndex++;
+              rootList[rootListIndex] = {
+                type: CHILD_ITEM_TYPE_FRAGMENT,
+                items: [it]
+              };
+            }
+          }
+        }
+      } else {
+        if (!rootList[rootListIndex]) {
+          rootList[rootListIndex] = { type: CHILD_ITEM_TYPE_ELEMENT, items: it };
+          rootListIndex++;
+        } else {
+          rootListIndex++;
+          rootList[rootListIndex] = { type: CHILD_ITEM_TYPE_ELEMENT, items: it };
+        }
+      }
+    });
+    return rootList;
+  }
+  function hasFragmentInList(list) {
+    return list.some((it) => it.type === CHILD_ITEM_TYPE_FRAGMENT);
+  }
+  function runningUpdateFragment(componentInstance, template) {
+    const rootList = collectFragmentList(componentInstance.parentElement);
+    if (hasFragmentInList(rootList)) {
+      const length = 1;
+      const fragmentList = [];
+      for (let i = 0; i < rootList.length; i++) {
+        if (rootList[i].type === CHILD_ITEM_TYPE_FRAGMENT) {
+          fragmentList.push(rootList[i]);
+        }
+        if (fragmentList.length === length) {
+          break;
+        }
+      }
+      updateFragment(
+        componentInstance.parentElement,
+        fragmentList[0],
         template,
         componentInstance.getVNodeOptions()
       );
+    }
+  }
+  async function runningUpdate(componentInstance, template) {
+    if (template.isType(VNodeType.FRAGMENT)) {
+      runningUpdateFragment(componentInstance, template);
+    } else {
+      const rootList = collectFragmentList(componentInstance.$el.el);
+      const options = componentInstance.getVNodeOptions();
+      if (hasFragmentInList(rootList)) {
+        updateChildrenWithFragment(
+          componentInstance.$el.el,
+          rootList,
+          template,
+          options
+        );
+      } else if (template.isType(VNodeType.FRAGMENT)) {
+        updateChildren(componentInstance.parentElement, template, options);
+      } else {
+        Reconcile(componentInstance.$el.el, template, options);
+      }
     }
     componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
     componentInstance.runUpdated();
     await componentInstance.runHandlers("update");
   }
   async function runningMount(componentInstance, template, $container) {
-    const newDomElement = DomRenderer(
-      template,
-      componentInstance.getVNodeOptions()
-    );
+    const newDomElement = DomRenderer(template, {
+      ...componentInstance.getVNodeOptions()
+    });
+    componentInstance.prevTemplate = template;
     componentInstance.$el = newDomElement;
     componentInstance.refs.$el = componentInstance.$el;
     if (componentInstance.$el) {
       componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+      if (componentInstance.$el.isFragment) {
+        componentInstance.isFragment = true;
+      }
     }
     if ($container) {
       if (!($container instanceof Dom)) {
@@ -3497,9 +3817,7 @@ var __privateMethod = (obj, member, method) => {
     return globalForceRender;
   }
   function setGlobalForceRender(isForceRender = false) {
-    if (typeof globalForceRender === "undefined") {
-      globalForceRender = isForceRender;
-    }
+    globalForceRender = isForceRender;
   }
   function renderRootElementInstanceList(isForce = false) {
     getRootElementInstanceList().forEach((instance) => {
@@ -3549,11 +3867,11 @@ var __privateMethod = (obj, member, method) => {
   function getModule(Component) {
     const id = _moduleMap.get(Component);
     if (!id) {
-      return Component;
+      return;
     }
     const m = _modules[id];
     if (!m) {
-      return Component;
+      return;
     }
     const newModule = m.new[Component.name];
     if (newModule) {
@@ -3576,7 +3894,7 @@ var __privateMethod = (obj, member, method) => {
     if (currentOldComponent) {
       return m.new[oldKey];
     }
-    return Component;
+    return void 0;
   }
   class Dom {
     constructor(tag, className, attr) {
@@ -4406,7 +4724,7 @@ var __privateMethod = (obj, member, method) => {
     if ($targetElement) {
       app.$el = Dom.create($targetElement.el);
       app.id = $targetElement.el[COMPONENT_INSTANCE].id;
-      renderComponent(app);
+      renderComponent(app, null);
     } else {
       renderComponent(app, $container);
     }
@@ -4527,7 +4845,7 @@ var __privateMethod = (obj, member, method) => {
     return createVNode({
       tag: el.tagName,
       props: getProps(el.attributes),
-      children: children$1(el).map((it) => {
+      children: children$2(el).map((it) => {
         return createVNodeByDom(it);
       })
     });
@@ -4776,7 +5094,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.WHEEL = WHEEL;
   exports2.WebComponent = WebComponent;
   exports2.addProviderSubscribe = addProviderSubscribe;
-  exports2.children = children$1;
+  exports2.children = children$2;
   exports2.classnames = classnames;
   exports2.clone = clone;
   exports2.cloneVNode = cloneVNode;

@@ -2100,8 +2100,7 @@ var __privateMethod = (obj, member, method) => {
       ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ sapa.createElementJsx("span", {
         class: sapa.classnames("arrow", { opened })
       }, /* @__PURE__ */ sapa.createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "menu-area",
-        style: { backgroundColor: "yellow" }
+        class: "menu-area"
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "background",
         "data-direction": direction
@@ -2387,7 +2386,7 @@ var __privateMethod = (obj, member, method) => {
       const {
         style: style2 = {},
         align = "space-between",
-        type = "default",
+        variant = "default",
         rounded = false,
         emphasized = false,
         items = [],
@@ -2400,13 +2399,12 @@ var __privateMethod = (obj, member, method) => {
             [align]: true,
             rounded,
             emphasized,
-            [type]: true
+            [variant]: true
           },
           className
         );
-      }, [align, type, rounded, emphasized, className]);
+      }, [align, variant, rounded, emphasized, className]);
       const styleObject = {
-        id: "toolbar-" + this.id,
         class: localClass,
         style: propertyMap(style2, cssProperties$B)
       };
@@ -2414,8 +2412,7 @@ var __privateMethod = (obj, member, method) => {
         ...styleObject,
         onContextMenu: (e) => e.preventDefault()
       }, makeToolbarItem(items, {
-        emphasized,
-        toolbarId: "toolbar-" + this.id
+        emphasized
       }));
     }
   }
@@ -2990,6 +2987,11 @@ var __privateMethod = (obj, member, method) => {
         },
         ...noneStyle
       };
+      Object.keys(styleObject.style).forEach((key) => {
+        if (styleObject.style[key] === void 0) {
+          delete styleObject.style[key];
+        }
+      });
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
       }, content);

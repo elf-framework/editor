@@ -7,7 +7,7 @@ function makeElement(obj, withChildren, options) {
 
   obj.el = el;
 
-  makeChildren(obj, withChildren, options);
+  makeChildren(obj, withChildren, options, true);
 
   return obj;
 }

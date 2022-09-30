@@ -2,7 +2,7 @@ import { Grid, RoundButton, VBox } from "@elf-framework/ui";
 
 export function StyleView() {
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <VBox
         style={{ gap: 30, backgroundColor: "var(--color-gray-0)", padding: 40 }}
       >

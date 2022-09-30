@@ -3,9 +3,12 @@ import { Slider, VBox } from "@elf-framework/ui";
 
 export function MainView() {
   const [value, setValue] = useState(0);
-  const onInput = useCallback((v) => {
-    setValue(v);
-  }, []);
+  const onInput = useCallback(
+    (v) => {
+      setValue(v);
+    },
+    [setValue]
+  );
   return (
     <VBox
       style={{

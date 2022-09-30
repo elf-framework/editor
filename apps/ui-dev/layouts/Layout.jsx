@@ -3,7 +3,6 @@ import "@elf-framework/ui/style.css";
 
 import { PageMenu } from "../component/PageMenu";
 import { PageTools } from "../component/PageTools";
-import { useScrollStatus } from "../hooks/useScrollStatus";
 import "./Layout.scss";
 
 function LogoView({ title, version }) {
@@ -29,7 +28,7 @@ function LogoView({ title, version }) {
 }
 
 export function Layout(props) {
-  const { content, width, menu = [], version = "", title = "" } = props;
+  const { content, menu = [], version = "", title = "" } = props;
 
   return (
     <div class="layout">
@@ -45,7 +44,7 @@ export function Layout(props) {
         <PageMenu menu={menu} />
       </View>
       <View class="layout-content">
-        <div style={{ margin: "0 auto", width }} class="markdown-body">
+        <div style={{ margin: "0 auto" }} class="markdown-body">
           {content}
         </div>
         {/* <Footer /> */}

@@ -6279,6 +6279,22 @@
         "0": "z-index",
         "1": "tooltip"
       }
+    },
+    "menu": {
+      "value": "{z-index.100}",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.100}"
+      },
+      "attributes": {
+        "category": "z-index",
+        "type": "menu"
+      },
+      "path": {
+        "0": "z-index",
+        "1": "menu"
+      }
     }
   },
   "math": {

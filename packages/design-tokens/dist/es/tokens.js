@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 26 Sep 2022 09:31:58 GMT
+ * Generated on Fri, 30 Sep 2022 06:58:07 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -331,6 +331,7 @@ export const ZIndex30000 = "30000";
 export const ZIndex40000 = "40000";
 export const ZIndex50000 = "50000";
 export const ZIndexTooltip = "50000";
+export const ZIndexMenu = "100";
 export const MathPi = 3.141592653589793;
 export const SizeBase0 = "0rem";
 export const SizeBase10 = "1rem";

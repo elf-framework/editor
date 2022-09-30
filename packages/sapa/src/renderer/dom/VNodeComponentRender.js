@@ -1,20 +1,150 @@
-import { COMPONENT_INSTANCE } from "../../constant/component";
+import {
+  CHILD_ITEM_TYPE_ELEMENT,
+  CHILD_ITEM_TYPE_FRAGMENT,
+  COMPONENT_INSTANCE,
+  IS_FRAGMENT_ITEM,
+} from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
 import { isArray, isFunction, isString } from "../../functions/func";
 import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
-import { Reconcile, updateChildren } from "./Reconcile";
+import {
+  Reconcile,
+  updateChildren,
+  updateChildrenWithFragment,
+  updateFragment,
+} from "./Reconcile";
 
-async function runningUpdate(componentInstance, template) {
-  if (template.isType(VNodeType.FRAGMENT)) {
-    updateChildren(componentInstance.parentElement, template);
-  } else {
-    Reconcile(
-      componentInstance.$el.el,
+const children = (el) => {
+  var element = el?.firstChild;
+
+  if (!element) {
+    return [];
+  }
+
+  var results = [];
+  do {
+    results[results.length] = element;
+    element = element.nextSibling;
+  } while (element);
+
+  return results;
+};
+
+/** fragment item 을 수집한다. */
+function collectFragmentList(element) {
+  const rootList = [];
+  let rootListIndex = 0;
+  children(element).forEach((it) => {
+    if (it[IS_FRAGMENT_ITEM] === true) {
+      if (!rootList[rootListIndex]) {
+        rootList[rootListIndex] = {
+          type: CHILD_ITEM_TYPE_FRAGMENT,
+          items: [it],
+        };
+      } else {
+        if (rootList[rootListIndex]) {
+          if (rootList[rootListIndex].type === CHILD_ITEM_TYPE_FRAGMENT) {
+            rootList[rootListIndex].items.push(it);
+          } else {
+            rootListIndex++;
+            rootList[rootListIndex] = {
+              type: CHILD_ITEM_TYPE_FRAGMENT,
+              items: [it],
+            };
+          }
+        }
+      }
+    } else {
+      if (!rootList[rootListIndex]) {
+        rootList[rootListIndex] = { type: CHILD_ITEM_TYPE_ELEMENT, items: it };
+        rootListIndex++;
+      } else {
+        rootListIndex++;
+        rootList[rootListIndex] = { type: CHILD_ITEM_TYPE_ELEMENT, items: it };
+      }
+    }
+  });
+
+  return rootList;
+}
+
+function hasFragmentInList(list) {
+  return list.some((it) => it.type === CHILD_ITEM_TYPE_FRAGMENT);
+}
+
+function runningUpdateFragment(componentInstance, template) {
+  const rootList = collectFragmentList(componentInstance.parentElement);
+
+  if (hasFragmentInList(rootList)) {
+    const length = 1;
+    const fragmentList = [];
+
+    for (let i = 0; i < rootList.length; i++) {
+      if (rootList[i].type === CHILD_ITEM_TYPE_FRAGMENT) {
+        fragmentList.push(rootList[i]);
+      }
+
+      if (fragmentList.length === length) {
+        break;
+      }
+    }
+
+    // text node 도 fragment 에 포함되어 있을 수 있으므로, fragmentList 에서 text node도 표시할 수 있도록 한다.
+
+    updateFragment(
+      componentInstance.parentElement,
+      fragmentList[0],
       template,
       componentInstance.getVNodeOptions()
     );
+  }
+}
+
+async function runningUpdate(componentInstance, template) {
+  // console.group("update",  componentInstance, template);
+  // 첫 컴포넌트가 Fragment 인 경우 개별로 처리한다.
+  // Fragment 는 여러개가 같은 레벨로 올 수 없다.
+  if (template.isType(VNodeType.FRAGMENT)) {
+    runningUpdateFragment(componentInstance, template);
+  } else {
+    // 하위 리스트에 fragment 가 있는 경우
+    const rootList = collectFragmentList(componentInstance.$el.el);
+
+    const options = componentInstance.getVNodeOptions();
+
+    /**
+     * el 기준으로 is-fragment-item="true" 를 가지고 있는 children 을 재구성한다.
+     * 리스트 중에 fragment 가 있는지 체크한다.
+     * 정해진 순서대로 재구성한다.
+     *
+     * [
+     *    {type: "fragment", items: [element, element]},
+     *    {type: "element", items: element},
+     * ]
+     *
+     * 이렇게 구성하면 vnode.children 과 비교를 할수 있게 된다.
+     */
+    if (hasFragmentInList(rootList)) {
+      // fragment 가 검색되면 fragment 업데이트 로직을 실행한다.
+      updateChildrenWithFragment(
+        componentInstance.$el.el,
+        rootList,
+        template,
+        options
+      );
+      // fragment 는 parentElement 의 자식 기준으로 렌더링 된다.
+    } else if (template.isType(VNodeType.FRAGMENT)) {
+      updateChildren(componentInstance.parentElement, template, options);
+    } else {
+      // console.group("Reconcile");
+      Reconcile(componentInstance.$el.el, template, options);
+      // componentInstance.prevTemplate = template;
+      // console.groupEnd();
+    }
+
+    // console.groupEnd();
   }
 
   // element 에 component 속성 설정
@@ -27,17 +157,21 @@ async function runningUpdate(componentInstance, template) {
 }
 
 async function runningMount(componentInstance, template, $container) {
-  const newDomElement = DomRenderer(
-    template,
-    componentInstance.getVNodeOptions()
-  );
+  const newDomElement = DomRenderer(template, {
+    ...componentInstance.getVNodeOptions(),
+  });
 
+  componentInstance.prevTemplate = template;
   componentInstance.$el = newDomElement;
   componentInstance.refs.$el = componentInstance.$el;
   // this.prevTemplate = template;
   // element 에 component 속성 설정
   if (componentInstance.$el) {
     componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+
+    if (componentInstance.$el.isFragment) {
+      componentInstance.isFragment = true;
+    }
   }
 
   if ($container) {
@@ -63,11 +197,6 @@ async function runningMount(componentInstance, template, $container) {
  * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
  */
 export async function renderVNodeComponent(componentInstance, $container) {
-  //   if (!componentInstance.isPreLoaded) {
-  //     componentInstance.checkLoad($container);
-  //     return;
-  //   }
-
   // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
   componentInstance.resetCurrentComponent();
   const template = componentInstance.template();
@@ -82,6 +211,7 @@ export async function renderVNodeComponent(componentInstance, $container) {
       ].join("\n")
     );
   }
+
   if (componentInstance.$el) {
     await runningUpdate(componentInstance, template);
   } else {

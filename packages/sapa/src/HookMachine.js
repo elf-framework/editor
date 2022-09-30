@@ -108,6 +108,19 @@ export class HookMachine extends MagicHandler {
   reloadHooks(hooks) {
     this.#__stateHooks = hooks.__stateHooks || [];
     this.#__stateHooksIndex = hooks.__stateHooksIndex || 0;
+
+    this.#__stateHooks.forEach((hook, index) => {
+      if (hook?.type === USE_STATE) {
+        hook.hookInfo = createState({
+          value: hook.hookInfo[0].value,
+          component: this,
+        });
+      } else {
+        // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
+        // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
+        this.#__stateHooks[index] = undefined;
+      }
+    });
   }
 
   resetCurrentComponent() {
@@ -356,7 +369,7 @@ export class HookMachine extends MagicHandler {
 
   filterHooks(type) {
     return this.#__stateHooks
-      .filter((it) => it.type === type)
+      .filter((it) => it?.type === type)
       .map((it) => it.hookInfo);
   }
 

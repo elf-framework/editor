@@ -207,22 +207,25 @@ export class VNode {
   }
 
   initializeChildren() {
+    // console.log(this.children, this.props.content);
+
     if (isArray(this.children)) {
       // 하위 객체는 content 로 받는다.
       // 다만 props 에 content 가 정의 되어 있으면 처리 하지 않는다.
-      if (this.props.content) return;
+      if (this.props.content?.length) return;
 
       this.children = this.children.filter(isValue).map((child) => {
-        if (isString(child)) {
-          return createVNodeText(child);
-        } else if (isNumber(child)) {
+        if (isString(child) || isNumber(child)) {
           return createVNodeText(child);
         }
+
+        // console.log("childdddddddddddd", child);
 
         return child;
       });
 
       this.props.content = this.children;
+      // console.log("---------content", this.props.content);
     }
   }
 
@@ -256,6 +259,27 @@ export class VNode {
 
   isType(type) {
     return this.type === type;
+  }
+
+  hasComponent() {
+    return (
+      this.children.length === 1 &&
+      this.children[0].type === VNodeType.COMPONENT
+    );
+  }
+
+  hasFragment() {
+    return (
+      this.children.length === 1 && this.children[0].type === VNodeType.FRAGMENT
+    );
+  }
+
+  get firstChild() {
+    return this.children[0];
+  }
+
+  get lastChild() {
+    return this.children[this.children.length - 1];
   }
 }
 
@@ -353,6 +377,11 @@ export class VNodeComponent extends VNode {
   }
 
   get isComponentChanged() {
+    const localComponent = this.getModule();
+
+    // 미리 로드된 컴포넌트는 항상 새로고침 하지 않은 상태로 처리한다
+    if (!localComponent) return false;
+
     return this.LastComponent !== this.getModule();
   }
 
@@ -366,14 +395,20 @@ export class VNodeComponent extends VNode {
     }
 
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
-    const newComponent = this.getModule();
+    const newComponent = this.getModule() || this.Component;
+
+    // 마지막에 로드한 Component 를 저장해둔다.
+    this.LastComponent = newComponent;
 
     // context 는 상위 Component 의 instance 를 가리킨다.
     // 즉, 컴포넌트의 parent 가 된다.
     // props와 state 를 유지할 수 있는 방법이 있어야 할 듯 하다.
-    const hooks = this.instance?.copyHooks();
-    const state = this.instance?.state;
-    const oldId = this.instance?.id;
+
+    const oldInstance = this.instance;
+    const hooks = oldInstance?.copyHooks();
+    const state = oldInstance?.state;
+    const oldId = oldInstance?.id;
+    const children = oldInstance?.children || {};
 
     this.instance = createComponentInstance(
       newComponent,
@@ -386,9 +421,23 @@ export class VNodeComponent extends VNode {
       this.instance.setId(oldId);
     }
 
-    if (hooks) {
+    if (hooks && hooks.__stateHooks?.length && isGlobalForceRender()) {
       this.instance.reloadHooks(hooks);
     }
+
+    if (state && isGlobalForceRender()) {
+      // state 도 복구한다.
+      // false 를 주는건 렌더링을 바로 하지 않기 위해서이다.
+      this.instance.setState(state, false);
+    }
+
+    if (Object.keys(children).length && isGlobalForceRender()) {
+      this.instance.setChildren(children);
+    }
+
+    // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.
+    // 이걸 매번 새로 만들어야
+    oldInstance?.destroy();
 
     return this.instance;
   }

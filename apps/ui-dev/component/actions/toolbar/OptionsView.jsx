@@ -7,7 +7,7 @@ import { Grid, Toolbar, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <VBox
         style={{ gap: 30, backgroundColor: "var(--color-gray-0)", padding: 20 }}
       >
@@ -52,7 +52,7 @@ export function OptionsView() {
 
         <div>
           <Toolbar
-            type="primary"
+            variant="primary"
             rounded={true}
             emphasized={true}
             items={[
@@ -90,7 +90,6 @@ export function OptionsView() {
         </div>
       </VBox>
       <div>
-        <strong>Emphasis</strong>
         <p>
           An action bar is not emphasized by default. This is best used for when
           it needs to blend in with the rest of the UI, directing a user’s focus
