@@ -1,21 +1,23 @@
-import { CLICK, UIElement, classnames, isFunction } from "@elf-framework/sapa";
+import { UIElement, classnames, isFunction } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Button } from "../button/index";
 
-const cssProperties = {
-  position: "--elf--dialog-position",
-  backgroundColor: "--elf--dialog-background",
-  color: "--elf--dialog-color",
-  fontSize: "--elf--dialog-font-size",
-  fontWeight: "--elf--dialog-font-weight",
-  height: "--elf--dialog-height",
-  padding: "--elf--dialog-padding",
-  borderRadius: "--elf--dialog-border-radius",
-  borderColor: "--elf--dialog-border-color",
-  boxShadow: "--elf--dialog-box-shadow",
-  width: "--elf--dialog-width",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--dialog", {
+  position: true,
+  backgroundColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  borderColor: true,
+  boxShadow: true,
+  width: true,
+});
 
 export class Dialog extends UIElement {
   initState() {
@@ -53,12 +55,25 @@ export class Dialog extends UIElement {
   }
 
   makeDefaultTools() {
-    const { footer, cancelText = "Cancel", okText = "OK" } = this.props;
+    const {
+      footer,
+      cancelText = "Cancel",
+      okText = "OK",
+      okProps = {},
+      cancelProps = {},
+    } = this.props;
 
     if (!footer) {
       return [
-        <Button onClick={() => this.cancel()}>{cancelText}</Button>,
-        <Button type="primary" onClick={() => this.ok()}>
+        <Button shape="round" {...cancelProps} onClick={() => this.cancel()}>
+          {cancelText}
+        </Button>,
+        <Button
+          shape="round"
+          variant="primary"
+          {...okProps}
+          onClick={() => this.ok()}
+        >
           {okText}
         </Button>,
       ];
@@ -69,10 +84,12 @@ export class Dialog extends UIElement {
 
   template() {
     const { style = {}, visible, center } = this.state;
+    const { noBorder, title, closable = true, footer } = this.props;
     const styleObject = {
       class: classnames("elf--dialog", {
         visible,
         center,
+        "no-border": noBorder,
       }),
       style: {
         ...propertyMap(style, cssProperties),
@@ -82,25 +99,33 @@ export class Dialog extends UIElement {
     return (
       <div {...styleObject}>
         <div class="elf--dialog-title">
-          <div class="elf--dialog-title-text">Dialog</div>
-          <div class="elf--dialog-title-tools" ref="$tools">
-            {this.props.tools || undefined}
-          </div>
-          <div class="elf--dialog-title-close" ref="$close">
-            &times;
-          </div>
+          <div class="elf--dialog-title-text">{title}</div>
+          {this.props.tools ? (
+            <div class="elf--dialog-title-tools" ref="$tools">
+              {this.props.tools}
+            </div>
+          ) : undefined}
+          {closable ? (
+            <div
+              class="elf--dialog-title-close"
+              ref="$close"
+              onClick={() => this.close()}
+            >
+              &times;
+            </div>
+          ) : undefined}
         </div>
+        {noBorder ? undefined : <div class="elf--dialog-divider" />}
         <div class="elf--dialog-content">
           <div class="elf--dialog-text">{this.props.content || ""}</div>
           <div class="elf--dialog-content-tools">
-            {this.props.footer ? this.props.footer : this.makeDefaultTools()}
+            {footer ? footer : this.makeDefaultTools()}
           </div>
         </div>
       </div>
     );
   }
-
-  [CLICK("$close")]() {
-    this.close();
-  }
 }
+
+registerComponent("dialog", Dialog);
+registerComponent("Dialog", Dialog);

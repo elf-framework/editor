@@ -1,5 +1,17 @@
 # vite-plugin-sapa
 
+## 2.2.0
+
+### Minor Changes
+
+- split renderer in sapa (dom, html)
+
+## 2.1.7
+
+### Patch Changes
+
+- update version
+
 ## 2.1.5
 
 ### Patch Changes

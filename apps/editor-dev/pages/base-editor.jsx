@@ -39,8 +39,6 @@ start(function () {
             });
 
             console.log(editor.configs.get("yellow"));
-
-            
           },
 
           RenderPlugin,

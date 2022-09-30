@@ -1,30 +1,70 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo, useEffect } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--tabstrip", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tabstrip", {
   backgroundColor: true,
   color: true,
   height: true,
-  width: true,
-  hoverColor: true,
   borderColor: true,
-  hgap: true,
-  vgap: true,
-  delay: true,
+  gap: true,
+  offset: true,
+  selectedColor: true,
 });
 export class TabStrip extends UIElement {
   template() {
-    const { style = {}, items = [], fitted, align = "left" } = this.props;
+    const {
+      style = {},
+      items = [],
+      fitted,
+      align = "left",
+      orientation = "horizontal",
+      activeKey,
+      showIndicator = false,
+      size = "medium",
+      variant = "default",
+      quiet = false,
+    } = this.props;
+
+    const [indicatorInfo, setIndicatorInfo] = this.useState({
+      left: 0,
+      width: 0,
+    });
+
+    const localClass = useMemo(() => {
+      return classnames("elf--tabstrip", {
+        "is-fitted": fitted,
+        [orientation]: true,
+        [size]: true,
+        [variant]: true,
+        quiet,
+      });
+    }, [fitted, orientation, size, variant, quiet]);
+
+    // tab indicator
+    useEffect(() => {
+      if (showIndicator) {
+        const ref = this.refs[`tab-${activeKey}`];
+
+        if (ref) {
+          if (orientation === "horizontal") {
+            const left = ref.offsetLeft;
+            const width = ref.offsetWidth;
+            setIndicatorInfo({ left, width });
+          } else {
+            const top = ref.offsetTop;
+            const height = ref.offsetHeight;
+            setIndicatorInfo({ top, height });
+          }
+        }
+      }
+    }, [activeKey, setIndicatorInfo, orientation, showIndicator]);
 
     const styleObject = {
-      class: classnames("elf--tabstrip", {
-        "is-fitted": fitted,
-      }),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
@@ -39,6 +79,7 @@ export class TabStrip extends UIElement {
             const isDisabled = !!it.disabled;
             const selectedStyle = it.selectedStyle || {};
             const style = it.style || {};
+
             return (
               <div
                 class={classnames("elf--tabstrip-item", {
@@ -47,10 +88,17 @@ export class TabStrip extends UIElement {
                 })}
                 style={isSelected ? selectedStyle : style}
               >
-                <div onClick={it.onClick}>{it.title}</div>
+                <div ref={`tab-${it.key}`} onClick={it.onClick}>
+                  {it.title}
+                </div>
               </div>
             );
           })}
+          {showIndicator ? (
+            <div class="indicator">
+              <div class="indicator-inner" style={indicatorInfo}></div>
+            </div>
+          ) : undefined}
         </div>
         {this.props.tools?.length ? (
           <div class="elf--tabstrip-tools">
@@ -63,3 +111,7 @@ export class TabStrip extends UIElement {
     );
   }
 }
+
+registerComponent("tabstrip", TabStrip);
+registerComponent("TabStrip", TabStrip);
+registerComponent("tab-strip", TabStrip);

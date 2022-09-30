@@ -58,7 +58,7 @@ export class Dom {
 
   static parse(html) {
     var parser = window.DOMParser();
-    return parser.parseFromString(html, "text/htmll");
+    return parser.parseFromString(html, "text/html");
   }
 
   static body() {
@@ -139,19 +139,6 @@ export class Dom {
     return this;
   }
 
-  attrNS(key, value, namespace = "http://www.w3.org/2000/svg") {
-    if (arguments.length == 1) {
-      return this.el.getAttributeNS(namespace, key);
-    }
-
-    // 동일한 속성 값이 있다면 변경하지 않는다.
-    if (this.el.getAttributeNS(namespace, key) != value) {
-      this.el.setAttributeNS(namespace, key, value);
-    }
-
-    return this;
-  }
-
   attrKeyValue(keyField) {
     return {
       [this.el.getAttribute(keyField)]: this.val(),
@@ -219,6 +206,10 @@ export class Dom {
 
   isTag(tag) {
     return this.el.tagName.toLowerCase() === tag.toLowerCase();
+  }
+
+  clone(withChildren = true) {
+    return Dom.create(this.el.cloneNode(withChildren));
   }
 
   closest(cls) {
@@ -344,10 +335,6 @@ export class Dom {
     }
   }
 
-  getById(id) {
-    return this.el.getElementById(id);
-  }
-
   find(selector, el = this.el) {
     if (this.isTextNode) return undefined;
     return el.querySelector(selector);
@@ -389,24 +376,6 @@ export class Dom {
     }
 
     return this;
-  }
-
-  prepend(el) {
-    if (typeof el === "string") {
-      this.el.prepend(document.createTextNode(el));
-    } else {
-      this.el.prepend(el.el || el);
-    }
-
-    return this;
-  }
-
-  prependHTML(html) {
-    var $dom = Dom.create("div").html(html);
-
-    this.prepend($dom.createChildrenFragment());
-
-    return $dom;
   }
 
   appendHTML(html) {
@@ -520,34 +489,6 @@ export class Dom {
     return this;
   }
 
-  getComputedStyle(...list) {
-    var css = window.getComputedStyle(this.el);
-
-    var obj = {};
-    list.forEach((it) => {
-      obj[it] = css[it];
-    });
-
-    return obj;
-  }
-
-  getStyleList(...list) {
-    var style = {};
-
-    var len = this.el.style.length;
-    for (var i = 0; i < len; i++) {
-      var key = this.el.style[i];
-
-      style[key] = this.el.style[key];
-    }
-
-    list.forEach((key) => {
-      style[key] = this.css(key);
-    });
-
-    return style;
-  }
-
   cssText(value) {
     if (typeof value === "undefined") {
       return this.el.style.cssText;
@@ -561,34 +502,12 @@ export class Dom {
     return this;
   }
 
-  cssArray(arr) {
-    if (arr[0]) this.el.style[arr[0]] = arr[1];
-    if (arr[2]) this.el.style[arr[2]] = arr[3];
-    if (arr[4]) this.el.style[arr[4]] = arr[5];
-    if (arr[6]) this.el.style[arr[6]] = arr[7];
-    if (arr[8]) this.el.style[arr[8]] = arr[9];
-
-    return this;
-  }
-
   cssFloat(key) {
     return parseFloat(this.css(key));
   }
 
-  cssInt(key) {
-    return parseInt(this.css(key));
-  }
-
-  px(key, value) {
-    return this.css(key, `${value}px`);
-  }
-
   rect() {
     return this.el.getBoundingClientRect();
-  }
-
-  bbox() {
-    return this.el.getBBox();
   }
 
   isSVG() {
@@ -765,30 +684,6 @@ export class Dom {
     return this.el.nodeType === 3;
   }
 
-  realVal() {
-    switch (this.el.nodeType) {
-      case "INPUT":
-        var type = this.attr("type");
-        if (type == "checkbox" || type == "radio") {
-          return this.checked();
-        }
-        return this.el.value;
-      case "SELECT":
-      case "TEXTAREA":
-        return this.el.value;
-    }
-
-    return "";
-  }
-
-  int() {
-    return parseInt(this.val(), 10);
-  }
-
-  float() {
-    return parseFloat(this.val());
-  }
-
   show(displayType = "block") {
     this.el.style.display = displayType != "none" ? displayType : "block";
 
@@ -827,32 +722,8 @@ export class Dom {
     }
   }
 
-  get totalLength() {
-    return this.el.getTotalLength();
-  }
-
   scrollIntoView() {
     this.el.scrollIntoView();
-  }
-
-  addScrollLeft(dt) {
-    this.el.scrollLeft += dt;
-    return this;
-  }
-
-  addScrollTop(dt) {
-    this.el.scrollTop += dt;
-    return this;
-  }
-
-  setScrollTop(scrollTop) {
-    this.el.scrollTop = scrollTop;
-    return this;
-  }
-
-  setScrollLeft(scrollLeft) {
-    this.el.scrollLeft = scrollLeft;
-    return this;
   }
 
   get scrollTop() {
@@ -893,15 +764,6 @@ export class Dom {
 
   getElement() {
     return this.el;
-  }
-
-  createChild(tag, className = "", attrs = {}, css = {}) {
-    let $element = Dom.create(tag, className, attrs);
-    $element.css(css);
-
-    this.append($element);
-
-    return $element;
   }
 
   get firstChild() {
@@ -992,6 +854,13 @@ export class Dom {
     return this;
   }
 
+  dispatchEvent(event, data) {
+    const evt = new CustomEvent(event, { detail: data });
+    this.el.dispatchEvent(evt);
+
+    return this;
+  }
+
   select() {
     // contenteditable 의 경우 selection api 를 사용해서 select() 를 수행한다.
     if (this.attr("contenteditable") === "true") {
@@ -1011,10 +880,5 @@ export class Dom {
     this.el.blur();
 
     return this;
-  }
-
-  // canvas functions
-  toDataURL(type = "image/png", quality = 1) {
-    return this.el.toDataURL(type, quality);
   }
 }

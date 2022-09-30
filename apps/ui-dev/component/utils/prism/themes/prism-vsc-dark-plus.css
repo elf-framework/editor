@@ -24,6 +24,8 @@ code[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
+	/* white-space: normal !important; */
+    word-break: break-word !important;
 }
 
 pre[class*="language-"]::selection,

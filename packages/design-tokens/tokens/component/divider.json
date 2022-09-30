@@ -3,25 +3,25 @@
     "color": {
       "border": {
         "default": {
-          "value": "{color.core.gray.1.value}"
+          "value": "{color.gray.2.value}"
         },
         "primary": {
-          "value": "{color.background.primary.value}"
+          "value": "{color.primary.value}"
         },
         "secondary": {
-          "value": "{color.background.secondary.value}"
+          "value": "{color.secondary.value}"
         },
         "success": {
-          "value": "{color.background.success.value}"
+          "value": "{color.success.value}"
         },
         "info": {
-          "value": "{color.background.info.value}"
+          "value": "{color.info.value}"
         },
         "warning": {
-          "value": "{color.background.warning.value}"
+          "value": "{color.warning.value}"
         },
         "danger": {
-          "value": "{color.background.danger.value}"
+          "value": "{color.danger.value}"
         }
       }
     }

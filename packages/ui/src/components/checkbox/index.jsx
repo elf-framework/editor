@@ -1,5 +1,6 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 
 const cssProperties = {
@@ -24,6 +25,9 @@ export class Checkbox extends UIElement {
       name,
       checked = false,
       onChange,
+      indeterminate = false,
+      variant = "default",
+      size = "medium",
     } = this.props;
 
     const styleObject = {
@@ -31,6 +35,8 @@ export class Checkbox extends UIElement {
         "elf--checkbox",
         {
           disabled,
+          [variant]: true,
+          [size]: true,
         },
       ]),
       style: {
@@ -45,6 +51,7 @@ export class Checkbox extends UIElement {
             ref="$input"
             type="checkbox"
             {...{
+              indeterminate,
               value,
               name,
               disabled: disabled ? "disabled" : undefined,
@@ -52,14 +59,14 @@ export class Checkbox extends UIElement {
             }}
             onChange={(e) => onChange?.(e, value)}
           />
-          {content}
+          {content?.length ? <span class="text">{content}</span> : undefined}
         </label>
       </div>
     );
   }
 
   get checked() {
-    return this.refs.$input.checked();
+    return this.refs.$input.checked;
   }
 
   get value() {
@@ -67,65 +74,5 @@ export class Checkbox extends UIElement {
   }
 }
 
-export class CheckboxGroup extends UIElement {
-  initState() {
-    return {
-      value: this.props.value || [],
-    };
-  }
-
-  template() {
-    const { disabled, style = {}, value, options = [], onChange } = this.props;
-
-    const styleObject = {
-      class: classnames(["elf--check-group"]),
-      disabled: disabled ? "disabled" : undefined,
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
-    };
-
-    return (
-      <div {...styleObject}>
-        {options.map((it, index) => {
-          return (
-            <Checkbox
-              ref={`$${index}`}
-              value={it.value}
-              onChange={(e) => {
-                onChange(e, this.getValues());
-              }}
-              checked={value.includes(it.value)}
-              disabled={disabled}
-            >
-              {it.label}
-            </Checkbox>
-          );
-        })}
-      </div>
-    );
-  }
-
-  getValues() {
-    const values = [];
-    this.eachChildren((it) => {
-      if (it.checked) {
-        values.push(it.value);
-      }
-    });
-
-    return values;
-  }
-
-  get disabled() {
-    return this.props.disabled;
-  }
-
-  get value() {
-    return this.getValues();
-  }
-
-  set value(values = []) {
-    this.setState({ values });
-  }
-}
+registerComponent("Checkbox", Checkbox);
+registerComponent("checkbox", Checkbox);

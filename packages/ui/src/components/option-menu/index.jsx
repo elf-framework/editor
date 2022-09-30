@@ -1,6 +1,7 @@
 import { CLICK, Dom, IF, UIElement } from "@elf-framework/sapa";
 
 import { ArrowIcon } from "../../icon/arrow";
+import { registerComponent } from "../../utils/component";
 import { Menu } from "../menu";
 
 export class OptionMenu extends UIElement {
@@ -34,6 +35,7 @@ export class OptionMenu extends UIElement {
         {showMenu ? (
           <div class="menu-area">
             <Menu
+              type="dropdown"
               autoPosition={autoPosition}
               rootClose={() => {
                 this.close();
@@ -75,3 +77,7 @@ export class OptionMenu extends UIElement {
     this.close();
   }
 }
+
+registerComponent("OptionMenu", OptionMenu);
+registerComponent("optionmenu", OptionMenu);
+registerComponent("option-menu", OptionMenu);

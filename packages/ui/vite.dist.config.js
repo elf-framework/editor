@@ -16,7 +16,10 @@ export default defineConfig({
   },
   build: {
     emptyOutDir: false,
-    minify: true,
+    minify: false,
+    esbuild: {
+      keepNames: true,
+    },
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "ui",

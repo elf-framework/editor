@@ -1,17 +1,20 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  backgroundColor: "--elf--notification-background",
-  color: "--elf--notification-color",
-  height: "--elf--notification-height",
-  hoverColor: "--elf--notification-hover-color",
-  borderColor: "--elf--notification-border-color",
-  boxShadow: "--elf--notification-box-shadow",
-  toolsBorderColor: "--elf--notification-tools-border-color",
-  toolsBorderRadius: "--elf--notification-tools-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--notification", {
+  backgroundColor: true,
+  color: true,
+  width: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+});
 
 export class Notification extends UIElement {
   template() {
@@ -23,24 +26,27 @@ export class Notification extends UIElement {
       direction = "top-left",
     } = this.props;
 
+    const localClass = useMemo(() => {
+      return classnames("elf--notification", {
+        [direction]: true,
+      });
+    }, [direction]);
+
     const styleObject = {
-      class: classnames(
-        "elf--notification",
-        `elf--notification-direction-${direction}`
-      ),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
       <div {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {icon ? <div class="elf--notification-icon">{icon}</div> : undefined}
-        <div class="elf--notification-content">
-          <div class="elf--notification-text">{content}</div>
+        {icon ? <div class="icon">{icon}</div> : undefined}
+        <div class="content">
+          <div class="text">{content}</div>
         </div>
-        <div class="elf--notification-tools">{tools || []}</div>
+        <div class="tools">{tools || []}</div>
       </div>
     );
   }
 }
+
+registerComponent("notification", Notification);

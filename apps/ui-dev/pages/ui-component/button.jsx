@@ -1,6 +1,6 @@
-import { AddCommentFilled } from "@elf-framework/icon";
+import AddCommentFilled from "@elf-framework/icon/AddCommentFilled";
 import { start } from "@elf-framework/sapa";
-import { Button, Flex, Grid, LinkButton } from "@elf-framework/ui";
+import { Button, Flex, Grid } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { UILayout } from "../../layouts/UILayout";
@@ -344,8 +344,8 @@ start(function () {
   <Button
   selected={true}
   style={{
-    borderColor: "var(--color-core-blue-4)",
-    selectedBackgroundColor: "var(--color-core-blue-4)",
+    borderColor: "var(--color-blue-4)",
+    selectedBackgroundColor: "var(--color-blue-4)",
   }}
 >
   Hello
@@ -361,9 +361,9 @@ start(function () {
                   <Button
                     selected={true}
                     style={{
-                      borderColor: "var(--color-core-blue-5)",
-                      selectedBackgroundColor: "var(--color-core-blue-5)",
-                      color: "var(--color-core-white)",
+                      borderColor: "var(--color-blue-5)",
+                      selectedBackgroundColor: "var(--color-blue-5)",
+                      color: "var(--color-white)",
                     }}
                   >
                     Hello

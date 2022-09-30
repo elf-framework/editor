@@ -8,6 +8,8 @@
 html,body {
     padding: 0px;
     margin: 0px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 .default-layout {
@@ -33,7 +35,7 @@ html,body {
 .layout {
 
     --layout-menu-width: 300px;
-    --layout-header-height: 60px;
+    --layout-header-height: 80px;
 
     display: block;
     position: absolute;
@@ -49,10 +51,12 @@ html,body {
         width: var(--layout-menu-width);
         bottom: 0px;
         top: var(--layout-header-height);
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: none;
         z-index: 1;
         box-sizing: border-box;
-        padding: 10px 0px;
+        padding: 20px 20px;
+        background-color: var(--color-white);
     }
 
     .layout-header {
@@ -88,49 +92,6 @@ html,body {
     }
 }
 
-.page-menu {
-    padding: 10px 20px;
-    // border-radius: 5px;
-    box-sizing: border-box;
-    display: block;
-    &.selected {
-        background-color: var(--color-core-blue-0) !important;
-        border-right: 5px solid var(--color-core-blue-2);
-    }
-
-    &:hover {
-        background-color: rgba(199, 238, 255, 0.269);
-    }
-
-    a {
-        flex: 1 1 auto;
-        text-decoration: none;
-        color: var(--color-core-black);
-        display: block;
-    }
-
-    &[data-depth="1"] {
-        padding-left: 30px;
-    }
-
-    &[data-depth="2"] {
-        padding-left: 50px;
-    }
-
-    &[data-depth="3"] {
-        padding-left: 70px;
-    }
-}
-
-.page-title {
-    font-size: var(--size-font-200);
-    color: var(--color-core-gray-8);
-    padding: 7px 15px;
-    background-color: var(--color-core-gray-0);
-    border-bottom: 1px solid #ececec;
-    border-top: 1px solid #ececec;
-}
-
 .version {
     flex: none;
     display: block;
@@ -139,7 +100,7 @@ html,body {
 }
 
 
-@media (max-width: 800px) { 
+@media (max-width: 900px) { 
     .layout {
         --layout-header-height: 48px;
         position: static;
@@ -196,5 +157,23 @@ html,body {
             }
 
         }
+    }
+}
+
+.markdown-body {
+    h1 {
+        border-bottom: 5px solid var(--color-gray-7);
+        margin-top: 50px;
+        margin-bottom: 50px;        
+    }
+    h2 {
+        border-bottom: 2px solid var(--color-gray-6);
+        padding-bottom: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        display: table;
     }
 }

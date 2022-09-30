@@ -1,19 +1,21 @@
 ---
 title: Getting Started
 layout: SapaLayout
+filename: pages/sapa/getting-started/page.mdx
 ---
 
 import { Alert } from "@elf-framework/ui";
+import packageJSON from "@elf-framework/sapa/package.json";
 
 
 # {title}
 
-Let's learn the basics of Sapa.
+Let's learn the basics of Sapa. 
 Sapa was created to make UI creation with JavaScript easy.
 
 To use the JS library, you need a few things. Let's find out one by one.
 
-## 1. Import
+## Import (ESM)
 
 Import the library into your project.
 
@@ -21,21 +23,26 @@ Import the library into your project.
 import { start } from "@elf-framework/sapa";
 ```
 
-## 2. Start
+## UMD (Using CDN Service)
+
+It can also be used in umd mode.
+
+Let's load the script first.
+
+<Alert variant="dark" shape="round">
+&lt;script src={`https://cdn.jsdelivr.net/npm/@elf-framework/sapa@${packageJSON.version}/dist/sapa.umd.min.js`}>&lt;/script>
+</Alert>
 
 
-Start to rendering.
+Then use the desired function with the sapa object.
 
-```js
-start(App);
-
-// or 
-
-render(App);
-
+```html
+<script>
+const { start } = sapa;
+</script>
 ```
 
-### App
+# App
 
 The App is the root component of your application.
 
@@ -49,7 +56,7 @@ function App() {
 }
 ```
 
-## 3. Render
+## Render
 
 Render the component. 
 ```jsx
@@ -60,9 +67,9 @@ You can use <strong>render</strong> function instead of{" "}
 <strong>start</strong>.
 </Alert>
 
-    start is a function that takes a Sapa component as a parameter.
+`start` is a function that takes a Sapa component as a parameter.
 
-### VNode
+## VNode
 
 A VNode is a virtual DOM node.
 
@@ -70,10 +77,12 @@ A VNode is a virtual DOM node.
 start(<App key="value" />)
 ```
 
-### Class Component
+## Class Component
 A class component is a component that is defined in a class.
 
 ```js
+import { UIElement } from "@elf-framework/sapa";
+
 class App extends UIElement {
   template() {
     return (
@@ -85,7 +94,7 @@ class App extends UIElement {
 }
 ```
 
-### Function Component
+## Function Component
 
 A function component is a component that is defined in a function.
 
@@ -97,5 +106,67 @@ function App() {
     </div>
   );
 }
+```
 
+# RootContext Options 
+
+The `RootContext` is special data that is transmitted only to the root element.
+
+Data for common use in the entire component tree can be injected externally.
+
+
+## container
+
+The container property renders the component under a specific element.
+
+First, mark the area where the component will be drawn.
+
+```html {5} showLineNumbers
+<html>
+  ...
+  <body>
+    <div id="root"></div>
+    <script type="module" src="page.jsx"></script>
+  </body>
+</html>
+```
+
+Then you can specify it as a container option.
+
+```jsx {9} showLineNumbers
+// @page.jsx
+import {start} from "@elf-framework/sapa";
+
+function Main() {
+  return <div>MainComponent</div>
+}
+
+start(Main, {
+  container: document.getElementById('root');
+}
+
+```
+
+## using RootContext
+
+`RootContext` is an option given when running start .
+
+To use RootContext inside component, refer [here](/pages/sapa/hook/#useRootContext154).
+
+```jsx {3}
+start(<Page {...pageProps} />, {
+  pageContext,
+  routeParams,
+});
+```
+
+To use it, do the following:
+
+```jsx {3}
+function OtherComponent () {
+  const pageContext = useRootContext('pageContext');
+  const routeParams = useRootContext('routeParams');
+
+  return <div>Other Component</div>
+}
 ```

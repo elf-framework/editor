@@ -1,19 +1,18 @@
 import {
   UIElement,
   classnames,
-  isFunction,
-  CLICK,
-  IF,
   Dom,
-  POINTEROVER,
-  POINTERLEAVE,
+  useEffect,
+  useState,
+  useMemo,
 } from "@elf-framework/sapa";
 
-import { ArrowIcon } from "../../icon/arrow";
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
-import { Flex } from "../flex/index";
-import { Menu } from "../menu/index";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
+import { ToolsCustomItem } from "./items/ToolsCustomItem";
+import { ToolsItem } from "./items/ToolsItem";
+import { ToolsMenuItem } from "./items/ToolsMenuItem";
 
 const ToolsItemType = {
   MENU: "menu",
@@ -21,290 +20,49 @@ const ToolsItemType = {
   CUSTOM: "custom",
 };
 
-function makeToolsItem(items = []) {
+function makeToolsItem(items = [], options = {}) {
   return items.map((it, index) => {
     const ref = `${it.type}-${index}`;
 
+    let visibility = options.emphasized
+      ? options.visibleTargetList[index]
+        ? "visible"
+        : "hidden"
+      : "visible";
+
+    if (options.visibility) {
+      visibility = "visible";
+    }
+
     if (it.type === ToolsItemType.CUSTOM) {
-      return <ToolsCustomItem ref={ref} {...it} />;
+      return <ToolsCustomItem ref={ref} {...it} style={{ visibility }} />;
     }
 
     if (it.type === ToolsItemType.MENU) {
-      return <ToolsMenuItem ref={ref} {...it} />;
+      return <ToolsMenuItem ref={ref} {...it} style={{ visibility }} />;
     }
 
-    return <ToolsItem ref={ref} {...it} />;
+    return <ToolsItem ref={ref} {...it} style={{ visibility }} />;
   });
 }
 
-class ToolsItem extends UIElement {
-  initialize() {
-    super.initialize();
-    // event check
-    const events = this.props.events || [];
-    if (events.length) {
-      events.forEach((event) => {
-        this.on(event, () => {
-          this.refresh();
-        });
-      });
-    }
-  }
+function makeHiddenToolsItem(items = [], options = {}) {
+  return items.filter((it, index) => {
+    let visibility = options.emphasized
+      ? options.visibleTargetList[index]
+        ? "visible"
+        : "hidden"
+      : "visible";
 
-  initState() {
-    const { title = "", icon, selected } = this.props;
-
-    return {
-      title,
-      icon,
-      selected,
-    };
-  }
-
-  template() {
-    const { title = "", icon } = this.state;
-    return (
-      <div
-        class={classnames("elf--tools-item", {
-          selected: this.selected ? true : undefined,
-        })}
-        onClick={this.props.onClick}
-      >
-        <button type="button">
-          <Flex style={{ columnGap: 4 }}>
-            {[
-              icon ? (
-                <span class="icon">{isFunction(icon) ? icon() : icon}</span>
-              ) : undefined,
-              title ? (
-                <span class="menu-title">
-                  {isFunction(title) ? title() : title}
-                </span>
-              ) : undefined,
-            ].filter(Boolean)}
-          </Flex>
-        </button>
-      </div>
-    );
-  }
-
-  setSelected(isSelected = false) {
-    this.setState({
-      selected: isSelected,
-    });
-  }
-
-  get selected() {
-    if (isFunction(this.state.selected)) {
-      return this.state.selected();
+    if (options.visibility) {
+      visibility = "visible";
     }
 
-    return this.state.selected;
-  }
-
-  set selected(value) {
-    this.setSelected(value);
-  }
+    return visibility === "hidden";
+  });
 }
 
-export class ToolsCustomItem extends ToolsItem {
-  template() {
-    return <div class="elf--tools-item custom">{this.props.render?.()}</div>;
-  }
-}
-
-export class ToolsMenuItem extends ToolsItem {
-  initState() {
-    const {
-      title = "",
-      icon,
-      selected,
-      disabled,
-      opened,
-      items,
-      direction,
-      menuStyle,
-    } = this.props;
-
-    return {
-      title,
-      icon,
-      selected,
-      opened,
-      items,
-      direction,
-      disabled,
-      menuStyle,
-      rootClose: this.close.bind(this),
-    };
-  }
-
-  template() {
-    const {
-      title = "",
-      icon,
-      disabled,
-      selected,
-      items = [],
-      opened = false,
-      direction = "left",
-      menuStyle,
-    } = this.state;
-
-    const hasItems = items.length > 0;
-    const isSelected = selected
-      ? isFunction(selected)
-        ? selected()
-        : selected
-      : undefined;
-
-    return (
-      <div
-        class={classnames("elf--tools-item", {
-          selected: isSelected,
-          "has-items": hasItems,
-        })}
-        disabled={disabled}
-      >
-        <button type="button">
-          <Flex style={{ columnGap: 4 }}>
-            {[
-              icon ? (
-                <span class="icon">{isFunction(icon) ? icon() : icon}</span>
-              ) : undefined,
-              title ? (
-                <span class="menu-title">
-                  {isFunction(title) ? title() : title}
-                </span>
-              ) : undefined,
-            ].filter(Boolean)}
-          </Flex>
-
-          {hasItems ? (
-            <span class={classnames("arrow", { opened: opened })}>
-              <ArrowIcon />
-            </span>
-          ) : undefined}
-        </button>
-        {opened && !disabled ? (
-          <div class="menu-area" style={{ backgroundColor: "yellow" }}>
-            <div class="background" data-direction={direction}></div>
-            <div class="arrow"></div>
-            <Menu
-              ref="$menu"
-              items={items}
-              direction={direction}
-              rootClose={this.state.rootClose}
-              style={{
-                ...(menuStyle || {}),
-                top: "calc(100% + 5px)",
-              }}
-            />
-          </div>
-        ) : undefined}
-      </div>
-    );
-  }
-
-  runCallback(callback, e) {
-    if (isFunction(callback)) {
-      callback(e, this);
-    }
-  }
-
-  open() {
-    // close 되어 있을 때만 open 을 실행한다.
-    if (!this.state.opened) {
-      this.setState({
-        rect: this.$el.rect(),
-        opened: true,
-      });
-    }
-  }
-
-  close() {
-    if (this.state.opened) {
-      this.setState({
-        opened: false,
-      });
-    }
-  }
-
-  toggle() {
-    if (!this.state.opened) {
-      this.setState(
-        {
-          rect: this.$el.rect(),
-        },
-        false
-      );
-
-      this.open();
-    } else {
-      this.close();
-    }
-  }
-
-  checkClickable(e) {
-    const $menu = Dom.create(e.target).closest("menu-area");
-
-    // 메뉴가 클릭 될 때는 버튼 클릭으로 인식하지 않음.
-    if ($menu) return false;
-
-    return true;
-  }
-
-  checkTriggerClick() {
-    const { trigger = "click", onClick } = this.props;
-
-    return trigger === "click" || (trigger === "hover" && isFunction(onClick));
-  }
-
-  checkTriggerOver() {
-    return this.props.trigger === "hover";
-  }
-
-  [POINTEROVER("$el") + IF("checkTriggerOver")]() {
-    this.open();
-  }
-
-  checkNotInMenu(e) {
-    const $menu = Dom.create(e.target).closest("elf--tools-item");
-
-    // pointerout 한 최상위 target 이 현재 메뉴가 아닐 때 메뉴를 닫는다.
-    if (!$menu) return true;
-
-    // 해당 객체가 아닐 때
-    return this.$el.is($menu) === false;
-  }
-
-  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
-    this.close();
-  }
-
-  [CLICK("document") + IF("checkClickable") + IF("checkNotInMenu")]() {
-    this.close();
-  }
-
-  [CLICK("$el") + IF("checkClickable") + IF("checkTriggerClick")](e) {
-    if (Dom.create(e.target).hasClass("arrow")) {
-      this.toggle();
-
-      if (this.state.opened) {
-        this.runCallback(this.props.onOpen, e);
-      } else {
-        this.runCallback(this.props.onClose, e);
-      }
-      this.runCallback(this.props.onClick, e);
-    } else {
-      this.close();
-
-      this.runCallback(this.props.onClick, e);
-    }
-  }
-}
-
-const cssProperties = makeStyleMap("--elf--tools", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tools", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -312,19 +70,139 @@ const cssProperties = makeStyleMap("--elf--tools", {
 
 export class Tools extends UIElement {
   template() {
-    const { style = {} } = this.props;
+    const {
+      style = {},
+      vertical = false,
+      emphasized = false,
+      moreIcon,
+    } = this.props;
+
+    const [visibleTargetList, setVisibilityTargetList] = useState([]);
+    const [lastLeft, setLastLeft] = useState(0);
+    const [visibility, setVisibility] = useState(true);
+    const [rootRect, setRootRect] = useState(null);
+
+    useEffect(() => {
+      let observer, resizeObserver;
+
+      if (emphasized) {
+        const options = {
+          root: this.parent.parent.$el.el,
+          threshold: 1,
+        };
+
+        // intersection observer 사용하여 사용자가 접근하는 영역을 감지한다.
+        // eslint-disable-next-line no-undef
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.intersectionRatio < 1) {
+              setVisibility(false);
+            } else {
+              setVisibility(true);
+            }
+            setRootRect(e.intersectionRect);
+          });
+        }, options);
+
+        observer.observe(this.$el.el);
+
+        // resize container
+        // eslint-disable-next-line no-undef
+        resizeObserver = new ResizeObserver((entries) => {
+          entries.forEach((entry) => {
+            setRootRect(Dom.create(entry.target).rect());
+          });
+        });
+
+        resizeObserver.observe(this.parent.parent.$el.el);
+      }
+
+      return () => {
+        observer?.disconnect();
+        resizeObserver?.disconnect();
+      };
+    }, [emphasized]);
+
+    useEffect(() => {
+      if (emphasized && !visibility) {
+        const list = [];
+
+        let totalWidth = 0;
+        const localRect = this.$el?.rect();
+
+        if (!localRect) return;
+
+        this.$el.children().forEach((child, index) => {
+          if (child.hasClass("hidden-tools")) return;
+
+          const rect = child.rect();
+
+          let isVisible = rect.right + 50 < rootRect.right;
+
+          if (isVisible) {
+            totalWidth += rect.width;
+
+            if (totalWidth + 50 > rootRect.width) {
+              totalWidth = rootRect.width - 50;
+              isVisible = false;
+            }
+          }
+
+          list[index] = isVisible;
+        });
+
+        setVisibilityTargetList(list);
+        setLastLeft(localRect.width - (localRect.right - rootRect.right) - 50);
+      }
+    }, [emphasized, visibility, rootRect]);
+
+    const localClass = useMemo(() => {
+      return classnames("elf--tools", {
+        vertical,
+        emphasized,
+      });
+    }, [vertical, emphasized]);
 
     const styleObject = {
-      class: classnames("elf--tools"),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
+
+    const items = makeToolsItem(this.props.items, {
+      visibleTargetList,
+      rootRect,
+      visibility,
+      emphasized,
+    });
+
+    const hiddenItems = makeHiddenToolsItem(this.props.items, {
+      visibleTargetList,
+      rootRect,
+      visibility,
+      emphasized,
+    });
 
     return (
       <div {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {makeToolsItem(this.props.items)}
+        {items}
+        {hiddenItems.length ? (
+          <ToolsMenuItem
+            class="hidden-tools"
+            items={hiddenItems}
+            icon={moreIcon}
+            direction="right"
+            noArrow={true}
+            style={{
+              position: "absolute",
+              height: "100%",
+              left: lastLeft,
+            }}
+          />
+        ) : undefined}
       </div>
     );
   }
 }
+
+registerComponent("Tools", Tools);
+registerComponent("tools", Tools);

@@ -79,19 +79,19 @@ class UIElement {
 }
 ```
 
-## Create a component instance 
+## Component Lifecycle
 
-A component instance can be created directly.
+Sapa has a basic lifecycle. This works depending on how you render the DOM.
 
-```js
-
-function A ({ title }) {
-  return <div>Simple Text {title} </div>
-}
-
-const instance = createComponentInstance(A, parentInstance, {title: "background"});
-
-// render to container 
-instance.render(document.getElementById('root'))
-
-```
+<Diagram graph={`
+flowchart TD;
+  A["Start(VNode, UIElement, Function)"] --> I[initialize property]
+  I --> D[render]
+  D --> Template[Create template]
+  Template --> G[Has a $el in Component ?]
+  G --NO--> Mounted
+  G --YES--> Updated  
+  Mounted -- onMounted --> Z[Rendering Done]
+  Updated -- onUpdated --> Z
+  Z -- onDestroyed --> Destroyed[DOM removed]
+`} />

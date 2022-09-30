@@ -1,130 +1,311 @@
-var It = Object.defineProperty;
-var Mt = (n, e, t) => e in n ? It(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
-var $ = (n, e, t) => (Mt(n, typeof e != "symbol" ? e + "" : e, t), t);
-import { AFTER as Q, UIElement as h, useState as T, useCallback as j, classnames as f, createElementJsx as o, potal as ft, isFunction as m, CLICK as M, IF as C, PREVENT as Ot, STOP as Et, OBSERVER as Tt, PARAMS as Dt, isString as Rt, Dom as R, POINTEROVER as Pt, POINTERLEAVE as gt, useEffect as Bt, POINTERENTER as _t, isNumber as At, FOCUSIN as B, FOCUSOUT as _, isUndefined as z, SCROLL as Lt, SUBSCRIBE_SELF as ot, DEBOUNCE as Kt, FRAME as jt, POINTERSTART as H, POINTERMOVE as N, POINTEREND as W, debounce as Vt, SUBSCRIBE_ALL as q } from "@elf-framework/sapa";
-import { parse as E, format as k, RGBtoHSL as bt, RGBtoHSV as lt, checkHueColor as Z, HSVtoHSL as zt, HSVtoRGB as it } from "@elf-framework/color";
-const mt = "add/body/first/mousemove", yt = "add/body/mousemove", vt = "add/body/mouseup", K = "body/move/event", is = (n = "move") => Q(`bodyMouseFirstMove ${n}`), rs = (n = "move") => Q(`bodyMouseMove ${n}`), ns = (n = "end") => Q(`bodyMouseUp ${n}`), Ft = {
-  width: !0,
-  height: !0,
-  top: !0,
-  left: !0,
-  right: !0,
-  bottom: !0,
-  maxWidth: !0,
-  maxHeight: !0,
-  minWidth: !0,
-  minHeight: !0,
-  margin: !0,
-  marginTop: !0,
-  marginRight: !0,
-  marginBottom: !0,
-  marginLeft: !0,
-  padding: !0,
-  paddingTop: !0,
-  paddingRight: !0,
-  paddingBottom: !0,
-  paddingLeft: !0,
-  border: !0,
-  borderTop: !0,
-  borderRight: !0,
-  borderBottom: !0,
-  borderLeft: !0,
-  borderWidth: !0,
-  borderTopWidth: !0,
-  borderRightWidth: !0,
-  borderBottomWidth: !0,
-  borderLeftWidth: !0,
-  gap: !0
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+  return value;
 };
-function Ut(n, e) {
-  return typeof e == "number" && Ft[n] && (e = e + "px"), e;
-}
-function b(n, e = {}) {
-  const t = {};
-  return Object.keys(n).forEach((s) => {
-    t[e[s] || s] = Ut(s, n[s]);
-  }), t;
-}
-const Ht = {
-  borderColor: "--elf--alert-border-color",
-  backgroundColor: "--elf--alert-background-color",
-  selectedBackgroundColor: "--elf--alert-selected-background-color",
-  disabledColor: "--elf--alert-disabled-color",
-  color: "--elf--alert-color",
-  fontSize: "--elf--alert-font-size",
-  fontWeight: "--elf--alert-font-weight",
-  height: "--elf--alert-height",
-  padding: "--elf--alert-padding",
-  borderRadius: "--elf--alert-border-radius"
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj))
+    throw TypeError("Cannot " + msg);
 };
-class Nt extends h {
-  template() {
-    const {
-      type: e = "default",
-      title: t = "",
-      content: s = "",
-      style: l = {},
-      closable: i = !1,
-      weak: r = !1,
-      delay: a = 0,
-      ...c
-    } = this.props, [d, u] = T(a), [p, g] = T(!1);
-    this.state.hideCallback = j(
-      (y = 0) => {
-        u(y);
-      },
-      [u]
-    );
-    const v = {
-      class: f(["elf--alert", { [e]: !0, weak: r }, { hide: p }]),
-      style: {
-        ...b(l, Ht),
-        transition: `opacity ${d}ms ease-in-out`,
-        opacity: p ? 0 : 1
-      },
-      ...c
+var __privateGet = (obj, member, getter) => {
+  __accessCheck(obj, member, "read from private field");
+  return getter ? getter.call(obj) : member.get(obj);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj))
+    throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+var __privateSet = (obj, member, value, setter) => {
+  __accessCheck(obj, member, "write to private field");
+  setter ? setter.call(obj, value) : member.set(obj, value);
+  return value;
+};
+var __privateMethod = (obj, member, method) => {
+  __accessCheck(obj, member, "access private method");
+  return method;
+};
+var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
+import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
+import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
+const style$1 = "";
+function usePointerStart(...args) {
+  let [selector, downAction, moveAction, upAction] = args;
+  if (isFunction(selector)) {
+    [downAction, moveAction, upAction] = args;
+    selector = null;
+  }
+  return useMagicMethod(POINTERSTART(selector), (evt) => {
+    if (isFunction(downAction)) {
+      const ret = downAction(evt);
+      if (!isUndefined(ret)) {
+        return ret;
+      }
+    }
+    const move = (e) => {
+      if (isFunction(moveAction)) {
+        moveAction(e);
+      }
     };
-    return /* @__PURE__ */ o("div", {
-      ...v,
-      onContextMenu: (y) => y.preventDefault(),
-      onTransitionEnd: () => {
-        this.props.onHide && this.props.onHide(), this.destroy(!0);
-      }
-    }, t ? /* @__PURE__ */ o("div", {
-      class: "elf--alert-title"
-    }, t) : null, s ? /* @__PURE__ */ o("div", {
-      class: "elf--alert-content"
-    }, s) : null, i ? /* @__PURE__ */ o("div", {
-      class: "elf--alert-close",
-      onClick: () => {
-        g(!0), d === 0 && (this.props.onHide && this.props.onHide(), this.destroy(!0));
-      }
-    }, "\xD7") : null);
+    const end = (e) => {
+      if (isFunction(upAction))
+        upAction(e);
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseup", end);
+    };
+    if (isFunction(moveAction)) {
+      document.addEventListener("mousemove", move);
+    }
+    if (isFunction(upAction) || isFunction(moveAction)) {
+      document.addEventListener("mouseup", end);
+    }
+  });
+}
+class BaseTreeViewProvider {
+  get items() {
   }
-  hide(e = 0) {
-    var t;
-    (t = this.state) == null || t.hideCallback(e);
+  get ids() {
+  }
+  has(id) {
+  }
+  get(id) {
+  }
+  set(id, obj) {
+  }
+  remove(id) {
+  }
+  setParent(targetId, parentId) {
+  }
+  removeParent(targetId) {
+  }
+  appendChild(parentId, obj) {
+  }
+  getParentId(childId) {
+  }
+  deleteInfo(childObj) {
+  }
+  removeChild(parentId, childId) {
+  }
+  insertChild(targetParentId, targetIndex, currentObject) {
+  }
+  findIndex(list = [], id) {
+  }
+  insertItem(targetId, currentId, type = "before") {
+  }
+  insertBefore(targetId, currentId) {
+  }
+  insertAfter(targetId, currentId) {
+  }
+  insertLast(parentId, childId) {
   }
 }
-function as({
-  content: n = void 0,
-  delay: e = 0,
-  title: t = void 0,
-  closable: s = !1,
-  options: l = {},
-  style: i = {}
-}) {
-  return ft(
-    /* @__PURE__ */ o(Nt, {
-      title: t,
-      delay: e,
-      closable: s,
-      style: i
-    }, n),
-    l
-  );
+class TreeViewProvider extends BaseTreeViewProvider {
+  constructor(items = []) {
+    super();
+    __privateAdd(this, _initialize);
+    __privateAdd(this, _traverse);
+    __privateAdd(this, _idMap, {});
+    __privateAdd(this, _items, []);
+    __privateAdd(this, _parentList, {});
+    __privateSet(this, _items, items);
+    __privateMethod(this, _initialize, initialize_fn).call(this);
+  }
+  get items() {
+    return __privateGet(this, _items);
+  }
+  get ids() {
+    return Object.keys(__privateGet(this, _idMap));
+  }
+  has(id) {
+    return Boolean(__privateGet(this, _idMap)[id]);
+  }
+  get(id) {
+    return __privateGet(this, _idMap)[id];
+  }
+  set(id, obj) {
+    const target = this.get(id);
+    if (target) {
+      Object.assign(target, obj);
+    } else {
+      __privateGet(this, _idMap)[id] = obj;
+    }
+  }
+  remove(id) {
+    const obj = __privateGet(this, _idMap)[id];
+    delete __privateGet(this, _idMap)[id];
+    return obj;
+  }
+  setParent(targetId, parentId) {
+    __privateGet(this, _parentList)[targetId] = parentId;
+  }
+  removeParent(targetId) {
+    delete __privateGet(this, _parentList)[targetId];
+  }
+  appendChild(parentId, obj) {
+    const parent = this.get(parentId);
+    if (!parent)
+      return;
+    if (!obj.id)
+      throw new Error("obj.id is required.");
+    if (isArray(parent.children)) {
+      parent.children.push(obj);
+    } else {
+      parent.children = [obj];
+    }
+    this.set(obj.id, obj);
+    this.setParent(obj.id, parentId);
+    return obj;
+  }
+  getParentId(childId) {
+    return __privateGet(this, _parentList)[childId];
+  }
+  deleteInfo(childObj) {
+    if (childObj) {
+      this.remove(childObj.id);
+      this.removeParent(childObj.id);
+      return childObj;
+    }
+  }
+  removeChild(parentId, childId) {
+    var _a;
+    const parent = this.get(parentId);
+    const index = this.findIndex(parent.children, childId);
+    if (index < 0) {
+      return;
+    }
+    let childObj;
+    if (parent) {
+      [childObj] = parent.children.splice(index, 1);
+      if (((_a = parent.children) == null ? void 0 : _a.length) === 0) {
+        delete parent.children;
+      }
+    } else {
+      [childObj] = __privateGet(this, _items).splice(index, 1);
+    }
+    return this.deleteInfo(childObj);
+  }
+  insertChild(targetParentId, targetIndex, currentObject) {
+    const targetParent = this.get(targetParentId);
+    this.set(currentObject.id, currentObject);
+    if (targetParent) {
+      targetParent.children.splice(targetIndex, 0, currentObject);
+      this.setParent(currentObject.id, targetParentId);
+    } else {
+      __privateGet(this, _items).splice(targetIndex, 0, currentObject);
+      this.removeParent(currentObject.id);
+    }
+  }
+  findIndex(list = __privateGet(this, _items), id) {
+    return list.findIndex((it) => it.id === id);
+  }
+  insertItem(targetId, currentId, type = "before") {
+    const targetParentId = this.getParentId(targetId);
+    const targetParent = this.get(targetParentId);
+    const targetIndex = this.findIndex(targetParent == null ? void 0 : targetParent.children, targetId);
+    const currentParentId = this.getParentId(currentId);
+    const currentObject = this.removeChild(currentParentId, currentId);
+    this.insertChild(
+      targetParentId,
+      type === "before" ? targetIndex : targetIndex + 1,
+      currentObject
+    );
+  }
+  insertBefore(targetId, currentId) {
+    return this.insertItem(targetId, currentId, "before");
+  }
+  insertAfter(targetId, currentId) {
+    return this.insertItem(targetId, currentId, "after");
+  }
+  insertLast(parentId, childId) {
+    const lastParentId = this.getParentId(childId);
+    const childObj = this.removeChild(lastParentId, childId);
+    if (childObj) {
+      this.appendChild(parentId, childObj);
+    }
+  }
 }
-const J = {}, Wt = /([A-Z])/g, rt = {
+_idMap = new WeakMap();
+_items = new WeakMap();
+_parentList = new WeakMap();
+_initialize = new WeakSet();
+initialize_fn = function() {
+  __privateMethod(this, _traverse, traverse_fn).call(this, __privateGet(this, _items));
+};
+_traverse = new WeakSet();
+traverse_fn = function(items = [], parentId) {
+  items.forEach((it) => {
+    var _a;
+    if (__privateGet(this, _idMap)[it.id])
+      throw new Error("id is duplicated.");
+    __privateGet(this, _idMap)[it.id] = it;
+    __privateGet(this, _parentList)[it.id] = parentId;
+    if ((_a = it.children) == null ? void 0 : _a.length) {
+      __privateMethod(this, _traverse, traverse_fn).call(this, it.children, it.id);
+    }
+  });
+};
+const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
+const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
+const ADD_BODY_MOUSEUP = "add/body/mouseup";
+const BODY_MOVE_EVENT = "body/move/event";
+const FIRSTMOVE = (method = "move") => {
+  return AFTER(`bodyMouseFirstMove ${method}`);
+};
+const MOVE = (method = "move") => {
+  return AFTER(`bodyMouseMove ${method}`);
+};
+const END = (method = "end") => {
+  return AFTER(`bodyMouseUp ${method}`);
+};
+const _components = {};
+function registerComponent(key, Component) {
+  if (key && Component) {
+    if (_components[key]) {
+      console.warn(
+        `Component ${key} is already registered. Rename key string for  `,
+        Component
+      );
+    } else {
+      _components[key] = Component;
+    }
+  }
+  return Component;
+}
+const NumberStyleKeys = {
+  width: true,
+  height: true,
+  top: true,
+  left: true,
+  right: true,
+  bottom: true,
+  maxWidth: true,
+  maxHeight: true,
+  minWidth: true,
+  minHeight: true,
+  margin: true,
+  marginTop: true,
+  marginRight: true,
+  marginBottom: true,
+  marginLeft: true,
+  padding: true,
+  paddingTop: true,
+  paddingRight: true,
+  paddingBottom: true,
+  paddingLeft: true,
+  border: true,
+  borderTop: true,
+  borderRight: true,
+  borderBottom: true,
+  borderLeft: true,
+  borderWidth: true,
+  borderTopWidth: true,
+  borderRightWidth: true,
+  borderBottomWidth: true,
+  borderLeftWidth: true,
+  gap: true
+};
+const ComponentPropsToStylePropsMap = {
   alignContent: "alignContent",
   alignItems: "alignItems",
   alignSelf: "alignSelf",
@@ -211,310 +392,862 @@ const J = {}, Wt = /([A-Z])/g, rt = {
   width: "width",
   whiteSpace: "whiteSpace",
   wrap: "flexWrap"
-}, Gt = (n) => {
-  if (J[n])
-    return J[n];
-  const e = n.replace(Wt, "-$1").toLowerCase();
-  return J[n] = e, e;
 };
-function x(n, e = {}) {
-  const t = {};
-  return Object.keys(e).forEach((s) => {
-    t[s] = n + "-" + Gt(s);
-  }), t;
-}
-function V(n) {
-  const e = {}, t = {};
-  return Object.keys(n).forEach((s) => {
-    rt[s] ? e[rt[s]] = n[s] : t[s] = n[s];
-  }), { style: e, noneStyle: t };
-}
-const Xt = {
-  borderColor: "--elf--button-border-color",
-  backgroundColor: "--elf--button-background-color",
-  selectedBackgroundColor: "--elf--button-selected-background-color",
-  disabledColor: "--elf--button-disabled-color",
-  color: "--elf--button-color",
-  fontSize: "--elf--button-font-size",
-  fontWeight: "--elf--button-font-weight",
-  height: "--elf--button-height",
-  padding: "--elf--button-padding",
-  borderRadius: "--elf--button-border-radius"
-};
-class F extends h {
-  template() {
-    const {
-      type: e,
-      size: t,
-      disabled: s,
-      selected: l,
-      shape: i,
-      quiet: r = void 0,
-      outline: a = void 0,
-      style: c = {},
-      onClick: d,
-      content: u,
-      ...p
-    } = this.props, { style: g } = V(p), v = {
-      class: f([
-        "elf--button",
-        { selected: l, outline: a, quiet: r, [e]: !0 },
-        {
-          large: t === "large",
-          small: t === "small"
-        },
-        {
-          "elf--button-shape-circle": i === "circle",
-          "elf--button-shape-round": i === "round"
-        }
-      ]),
-      disabled: s ? "disabled" : void 0,
-      style: b(
-        {
-          ...c,
-          ...g
-        },
-        Xt
-      )
-    };
-    return /* @__PURE__ */ o("button", {
-      ...v,
-      onClick: d
-    }, /* @__PURE__ */ o("span", null, u || ""));
+function convertNumberStyleValue(key, value) {
+  if (typeof value === "number") {
+    if (NumberStyleKeys[key]) {
+      value = value + "px";
+    }
   }
+  return value;
 }
-const Yt = x("--elf--button-group", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  hoverColor: !0,
-  borderColor: !0,
-  boxShadow: !0
+function propertyMap(styles = {}, mapper = {}) {
+  const styleObj = {};
+  Object.keys(styles).forEach((key) => {
+    if (typeof styles[key] !== "undefined") {
+      styleObj[mapper[key] || key] = convertNumberStyleValue(key, styles[key]);
+    }
+  });
+  return Object.keys(styleObj).length ? styleObj : void 0;
+}
+const styleKeys = {};
+const uppercasePattern = /([A-Z])/g;
+const convertStyleKey = (key) => {
+  if (styleKeys[key]) {
+    return styleKeys[key];
+  }
+  const upperKey = key.replace(uppercasePattern, "-$1").toLowerCase();
+  styleKeys[key] = upperKey;
+  return upperKey;
+};
+function makeCssVariablePrefixMap(prefix, obj = {}) {
+  const newObj = {};
+  Object.keys(obj).forEach((key) => {
+    newObj[key] = prefix + "-" + convertStyleKey(key);
+  });
+  return newObj;
+}
+function splitStyleKeyAndNoneStyleKey(properties) {
+  const style2 = {};
+  const noneStyle = {};
+  Object.keys(properties).forEach((key) => {
+    const value = properties[key];
+    const styleKey = ComponentPropsToStylePropsMap[key];
+    if (styleKey) {
+      style2[styleKey] = value;
+    } else {
+      noneStyle[key] = value;
+    }
+  });
+  return { style: style2, noneStyle };
+}
+const cssProperties$R = makeCssVariablePrefixMap("--elf--alert", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true
 });
-class cs extends h {
+class Alert extends UIElement {
   template() {
-    const { disabled: e, style: t = {}, content: s, ...l } = this.props, { style: i } = V(l), r = {
-      class: f(["elf--button-group"]),
-      disabled: e ? "disabled" : void 0,
-      style: b(
+    const {
+      variant = "default",
+      title = "",
+      content = "",
+      shape = "rect",
+      style: style2 = {},
+      closable = false,
+      dismissable = false,
+      delay = 0,
+      actions,
+      weak,
+      icon,
+      ...extrProps
+    } = this.props;
+    const [localDelay, setLocalDelay] = useState(delay);
+    const [hide, setHide] = useState(false);
+    this.state.hideCallback = useCallback(
+      (hideDelay = 0) => {
+        setLocalDelay(hideDelay);
+      },
+      [setLocalDelay]
+    );
+    const localClass = useMemo(() => {
+      return classnames("elf--alert", {
+        [variant]: true,
+        weak,
+        hide,
+        closable,
+        [shape]: true,
+        dismissable
+      });
+    }, [variant, weak, hide, closable, shape, dismissable]);
+    const styleObject = {
+      class: localClass,
+      style: {
+        ...propertyMap(style2, cssProperties$R),
+        ...{
+          transition: `opacity ${localDelay}ms ease-in-out`,
+          opacity: hide ? 0 : 1
+        }
+      },
+      ...extrProps
+    };
+    const titleIcon = title && icon ? icon : void 0;
+    const contentIcon = content && icon && !title ? icon : void 0;
+    const titleActions = title && actions ? actions : void 0;
+    const contentActions = content && actions && !title ? actions : void 0;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault(),
+      onTransitionEnd: () => {
+        this.props.onHide && this.props.onHide();
+        this.destroy(true);
+      }
+    }, title ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-title"
+    }, titleIcon, " ", /* @__PURE__ */ createElementJsx("span", null, title), " ", titleActions ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-actions"
+    }, titleActions) : void 0) : null, content ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-content"
+    }, contentIcon, " ", /* @__PURE__ */ createElementJsx("span", null, content), " ", contentActions ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-actions"
+    }, contentActions) : void 0) : null, closable ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--alert-close",
+      onClick: () => {
+        setHide(true);
+        if (localDelay === 0) {
+          this.props.onHide && this.props.onHide();
+          this.destroy(true);
+        }
+      }
+    }, "\xD7") : null);
+  }
+  hide(hideDelay = 0) {
+    var _a;
+    (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+  }
+}
+function alert({
+  content = void 0,
+  delay = 0,
+  title = void 0,
+  closable = false,
+  options = {},
+  style: style2 = {}
+}) {
+  return potal(
+    /* @__PURE__ */ createElementJsx(Alert, {
+      title,
+      delay,
+      closable,
+      style: style2
+    }, content),
+    options
+  );
+}
+registerComponent("Alert", Alert);
+registerComponent("alert", Alert);
+const cssProperties$Q = makeCssVariablePrefixMap("--elf--animation", {
+  name: true,
+  iterationCount: true,
+  timingFunction: true,
+  duration: true,
+  delay: true,
+  playState: true
+});
+class Animation extends UIElement {
+  template() {
+    const {
+      name = "spin",
+      delay = "0s",
+      iterationCount,
+      timingFunction,
+      duration = "1s",
+      style: style2 = {},
+      content,
+      play = false,
+      onEnd: onAnimationEnd,
+      onIteration: onAnimationIteration,
+      onStart: onAnimationStart,
+      onCancel: onAnimationCancel
+    } = this.props;
+    const styleObject = {
+      class: "elf--animation",
+      style: propertyMap(
         {
-          ...t,
-          ...i
+          ...style2,
+          duration,
+          name,
+          iterationCount,
+          timingFunction,
+          delay,
+          playState: play ? "running" : "paused"
         },
-        Yt
+        cssProperties$Q
+      ),
+      onAnimationStart,
+      onAnimationEnd,
+      onAnimationIteration,
+      onAnimationCancel
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
+  }
+}
+[
+  "spin",
+  "ping",
+  "fade",
+  "scaledown",
+  "bounce",
+  "flash",
+  "pulse",
+  "rubberBand",
+  "shake",
+  "headShake",
+  "swing",
+  "tada",
+  "wobble",
+  "jello",
+  "heartBeat"
+].forEach((name) => {
+  Animation[name] = (props) => {
+    return /* @__PURE__ */ createElementJsx(Animation, {
+      ...props,
+      name
+    });
+  };
+});
+registerComponent("animation", Animation);
+registerComponent("Animation", Animation);
+const cssProperties$P = makeCssVariablePrefixMap("--elf--progress-circle", {
+  backgroundColor: true,
+  color: true,
+  duration: true,
+  offset: true,
+  width: true
+});
+class ProgressCircle extends UIElement {
+  template() {
+    const {
+      min = 0,
+      max = 100,
+      value = min,
+      variant = "default",
+      size = "medium",
+      style: style2 = {},
+      indeterminate = false,
+      animated = false,
+      animationType = "normal"
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--progress-circle", {
+        [variant]: true,
+        [size]: true,
+        animated,
+        indeterminate,
+        [animationType]: true
+      });
+    }, [variant, size, indeterminate, animated, animationType]);
+    const percentValue = (value - min) / (max - min);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2,
+          offset: percentValue
+        },
+        cssProperties$P
       )
     };
-    return /* @__PURE__ */ o("div", {
-      ...r
-    }, s);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "progress-area"
+    }, /* @__PURE__ */ createElementJsx("svg", null, /* @__PURE__ */ createElementJsx("circle", {
+      class: "progress-circle track",
+      r: "50%",
+      cx: "50%",
+      cy: "50%"
+    }), /* @__PURE__ */ createElementJsx("circle", {
+      class: "progress-circle fill",
+      r: "50%",
+      cx: "50%",
+      cy: "50%"
+    }))));
   }
 }
-const qt = {
-  borderColor: "--elf--link-button-border-color",
-  backgroundColor: "--elf--link-button-background",
-  disabledColor: "--elf--link-button-disabled-color",
-  color: "--elf--link-button-color",
-  fontSize: "--elf--link-button-font-size",
-  fontWeight: "--elf--link-button-font-weight",
-  padding: "--elf--link-button-padding"
-};
-class ds extends h {
-  template() {
-    const { disabled: e, style: t = {}, content: s, onClick: l, href: i } = this.props, r = {
-      class: f(["elf--link-button"]),
-      disabled: e ? "disabled" : void 0,
-      style: {
-        ...b(t, qt)
-      }
-    };
-    return /* @__PURE__ */ o("a", {
-      ...r,
-      onClick: l,
-      href: i || "#"
-    }, /* @__PURE__ */ o("span", null, s || ""));
-  }
-}
-const Zt = {
-  borderColor: "--elf--icon-button-border-color",
-  backgroundColor: "--elf--icon-button-background",
-  disabledColor: "--elf--icon-button-disabled-color",
-  color: "--elf--icon-button-color",
-  fontSize: "--elf--icon-button-font-size",
-  fontWeight: "--elf--icon-button-font-weight",
-  height: "--elf--icon-button-height",
-  padding: "--elf--icon-button-padding",
-  borderRadius: "--elf--icon-button-border-radius"
-};
-class Jt extends h {
+registerComponent("progress-circle", ProgressCircle);
+registerComponent("progresscircle", ProgressCircle);
+registerComponent("ProgressCircle", ProgressCircle);
+const cssProperties$O = makeCssVariablePrefixMap("--elf--button", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true
+});
+class Button extends UIElement {
   template() {
     const {
-      type: e,
-      icon: t,
-      content: s = "",
-      size: l,
-      disabled: i,
-      shape: r,
-      style: a = {}
-    } = this.props, c = {
-      class: f([
-        "elf--icon-button",
-        {
-          primary: e === "primary",
-          secondary: e === "secondary",
-          outline: e === "outline"
-        },
-        {
-          "elf--icon-button-lg": l === "large",
-          "elf--icon-button-sm": l === "small"
-        },
-        {
-          "elf--icon-button-shape-circle": r === "circle",
-          "elf--icon-button-shape-round": r === "round"
-        }
-      ]),
-      disabled: i ? "disabled" : void 0,
-      style: {
-        ...b(a, Zt)
-      }
-    };
-    return /* @__PURE__ */ o("button", {
-      type: "button",
-      ...c,
-      onClick: this.props.onClick
-    }, t || s || "");
-  }
-}
-const Qt = {
-  borderColor: "--elf--button-border-color",
-  backgroundColor: "--elf--button-background-color",
-  disabledColor: "--elf--button-disabled-color",
-  color: "--elf--button-color",
-  fontSize: "--elf--button-font-size",
-  fontWeight: "--elf--button-font-weight",
-  height: "--elf--button-height",
-  padding: "--elf--button-padding",
-  borderRadius: "--elf--button-border-radius"
-};
-class us extends h {
-  template() {
-    const {
-      type: e,
-      size: t,
-      disabled: s,
-      shape: l,
-      destructive: i = !1,
-      style: r = {},
-      onClick: a,
-      content: c,
-      ...d
-    } = this.props, { style: u } = V(d), p = {
-      class: f([
+      variant = "default",
+      size = "medium",
+      disabled,
+      selected,
+      focused,
+      shape = "rect",
+      quiet = false,
+      outline = false,
+      closable = false,
+      place = "",
+      style: style2 = {},
+      href = "",
+      target = "_blank",
+      content,
+      class: className,
+      iconOnly = false,
+      justified = false,
+      pending = false,
+      play = false,
+      as = "button",
+      hasMinWidth = false,
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--button",
         {
-          primary: e === "primary",
-          secondary: e === "secondary",
-          outline: e === "outline"
+          selected,
+          outline,
+          focused,
+          quiet,
+          closable,
+          justified,
+          [variant]: true,
+          [size]: true,
+          [shape]: true,
+          [place]: true,
+          "icon-only": iconOnly,
+          "has-min-width": hasMinWidth
         },
-        i ? "destructive" : "",
-        {
-          large: t === "large",
-          small: t === "small"
-        },
-        {
-          "elf--button-shape-circle": l === "circle",
-          "elf--button-shape-round": l === "round"
-        }
-      ]),
-      disabled: s ? "disabled" : void 0,
-      style: b(
-        {
-          ...r,
-          ...u
-        },
-        Qt
-      )
+        className
+      ]);
+    }, [
+      variant,
+      size,
+      selected,
+      shape,
+      quiet,
+      outline,
+      place,
+      closable,
+      iconOnly,
+      className,
+      justified,
+      focused,
+      hasMinWidth
+    ]);
+    const styleObject = {
+      class: localClass,
+      disabled: disabled ? "disabled" : void 0,
+      style: propertyMap(style2, cssProperties$O),
+      ...extraProps
     };
-    return /* @__PURE__ */ o("button", {
-      ...p,
-      onClick: a
-    }, /* @__PURE__ */ o("span", null, c || ""));
+    const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, {
+      play
+    }, /* @__PURE__ */ createElementJsx(ProgressCircle, {
+      value: 50,
+      size,
+      variant
+    })) : content || "");
+    if (as === "link") {
+      return /* @__PURE__ */ createElementJsx("a", {
+        ...styleObject,
+        href,
+        target
+      }, buttonContent);
+    } else {
+      return /* @__PURE__ */ createElementJsx("button", {
+        ...styleObject
+      }, buttonContent);
+    }
   }
 }
-const Ct = {
-  borderColor: "--elf--radio-border-color",
-  backgroundColor: "--elf--radio-background",
-  disabledColor: "--elf--radio-disabled-color",
-  color: "--elf--radio-color",
-  fontSize: "--elf--radio-font-size",
-  fontWeight: "--elf--radio-font-weight",
-  height: "--elf--radio-height",
-  padding: "--elf--radio-padding",
-  borderRadius: "--elf--radio-border-radius"
+registerComponent("button", Button);
+registerComponent("btn", Button);
+registerComponent("Button", Button);
+const cssProperties$N = makeCssVariablePrefixMap("--elf--button-group", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true
+});
+class ButtonGroup extends UIElement {
+  template() {
+    const { disabled, style: style2 = {}, content, ...extraStyle } = this.props;
+    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
+    const styleObject = {
+      class: classnames(["elf--button-group"]),
+      disabled: disabled ? "disabled" : void 0,
+      style: propertyMap(
+        {
+          ...style2,
+          ...styleProperties
+        },
+        cssProperties$N
+      )
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
+  }
+}
+registerComponent("button-group", ButtonGroup);
+registerComponent("btn-group", ButtonGroup);
+registerComponent("ButtonGroup", ButtonGroup);
+const cssProperties$M = makeCssVariablePrefixMap("--elf--tooltip", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+  hgap: true,
+  vgap: true,
+  delay: true,
+  contentPadding: true,
+  maxWidth: true,
+  position: true
+});
+const TooltipPlacement = {
+  TOP: "top",
+  BOTTOM: "bottom",
+  LEFT: "left",
+  RIGHT: "right",
+  BOTTOM_LEFT: "bottom-left",
+  BOTTOM_RIGHT: "bottom-right",
+  TOP_LEFT: "top-left",
+  TOP_RIGHT: "top-right"
 };
-class te extends h {
+class Tooltip extends UIElement {
+  initState() {
+    const trigger = this.props.trigger || "hover";
+    return {
+      trigger: isString(trigger) ? [trigger] : trigger,
+      delay: 1e3,
+      show: this.props.show || false
+    };
+  }
   template() {
     const {
-      disabled: e,
-      style: t = {},
-      value: s,
-      content: l,
-      name: i,
-      checked: r = !1,
-      onChange: a
-    } = this.props, c = {
-      class: f([
+      style: style2 = {},
+      message = "",
+      content,
+      placement = "bottom",
+      animated = false,
+      hideArrow = false,
+      variant = "default",
+      position = "relative",
+      icon
+    } = this.props;
+    const { show } = this.state;
+    const localClass = useMemo(() => {
+      return classnames("elf--tooltip", {
+        [placement]: true,
+        animated,
+        [variant]: true,
+        [position]: true
+      });
+    }, [placement, animated, variant, position]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$M)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "content"
+    }, content), show || this.props.show ? /* @__PURE__ */ createElementJsx("div", {
+      class: "message"
+    }, hideArrow ? void 0 : /* @__PURE__ */ createElementJsx("div", {
+      class: "arrow"
+    }), icon ? /* @__PURE__ */ createElementJsx("div", {
+      class: "icon"
+    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "message-content"
+    }, /* @__PURE__ */ createElementJsx("div", null, message))) : void 0);
+  }
+  show() {
+    this.open();
+  }
+  hide() {
+    this.close();
+  }
+  open() {
+    this.setState({
+      show: true
+    });
+  }
+  close() {
+    setTimeout(() => {
+      this.setState({
+        show: false
+      });
+    }, this.props.hideDelay);
+  }
+  toggle() {
+    this.setState({
+      show: !this.state.show
+    });
+  }
+  checkClickable(e) {
+    const $menu = Dom.create(e.target).closest("elf--tooltip-content");
+    if ($menu)
+      return false;
+    return true;
+  }
+  checkTriggerClick() {
+    return this.state.trigger.includes("click");
+  }
+  checkTriggerOver() {
+    return this.state.trigger.includes("hover");
+  }
+  checkTriggerFocus() {
+    return this.state.trigger.includes("focus");
+  }
+  [POINTERENTER("$el") + IF("checkTriggerOver")]() {
+    this.open();
+  }
+  checkNotInTooltip(e) {
+    const $menu = Dom.create(e.target).closest("elf--tooltip");
+    if (!$menu)
+      return true;
+    return this.$el.is($menu) === false;
+  }
+  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
+    this.close();
+  }
+  [CLICK("$el") + IF("checkTriggerClick")]() {
+    this.toggle();
+  }
+  [FOCUS("$el") + IF("checkTriggerFocus")]() {
+    this.open();
+  }
+  remove() {
+    this.$el.remove();
+  }
+}
+function tooltip({
+  content,
+  message = "",
+  delay = 0,
+  position = "fixed",
+  placement = "top",
+  options = {},
+  style: style2
+}) {
+  return potal(
+    /* @__PURE__ */ createElementJsx(Tooltip, {
+      delay,
+      position,
+      placement,
+      message,
+      style: style2,
+      show: true
+    }, content || /* @__PURE__ */ createElementJsx("span", null, "\xA0")),
+    options
+  );
+}
+const cssProperties$L = makeCssVariablePrefixMap("--elf--action-group", {
+  alignItems: true,
+  gap: true
+});
+class ActionGroup extends UIElement {
+  template() {
+    const {
+      direction = "horizontal",
+      quiet = false,
+      compact = false,
+      justified = false,
+      collapsed = false,
+      moreIcon = null,
+      boundary = 50,
+      style: style2 = {},
+      content,
+      shape = "normal",
+      ...extraStyle
+    } = this.props;
+    const [visibleTargetList, setVisibilityTargetList] = useState([]);
+    const [rootRect, setRootRect] = useState(null);
+    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
+    useEffect(() => {
+      var _a;
+      if (!collapsed)
+        return;
+      const list = [];
+      let totalWidth = 0;
+      const localRect = (_a = this.$el) == null ? void 0 : _a.rect();
+      if (!localRect)
+        return;
+      this.$el.children().forEach((child, index) => {
+        if (child.hasClass("hidden-tools"))
+          return;
+        const rect = child.rect();
+        let isVisible = rect.right + boundary < localRect.right;
+        if (isVisible) {
+          totalWidth += rect.width;
+          if (totalWidth + boundary > localRect.width) {
+            totalWidth = localRect.width - boundary;
+            isVisible = false;
+          }
+        }
+        list[index] = isVisible;
+      });
+      setVisibilityTargetList(list);
+    }, [collapsed, rootRect]);
+    useEffect(() => {
+      let resizeObserver;
+      if (collapsed) {
+        resizeObserver = new ResizeObserver((entries) => {
+          entries.forEach((entry) => {
+            setRootRect(Dom.create(entry.target).rect());
+          });
+        });
+        if (!this.$el)
+          return;
+        resizeObserver.observe(this.$el.el);
+      }
+      return () => {
+        resizeObserver == null ? void 0 : resizeObserver.disconnect();
+      };
+    }, [collapsed]);
+    const localClass = useMemo(() => {
+      return classnames("elf--action-group", {
+        [direction]: true,
+        quiet,
+        compact,
+        collapsed,
+        justified,
+        [shape]: true
+      });
+    }, [direction, quiet, compact, collapsed, justified, shape]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2,
+          ...styleProperties
+        },
+        cssProperties$L
+      )
+    };
+    const items = collapsed ? content.filter((item, index) => {
+      return visibleTargetList[index];
+    }) : content;
+    const hiddenItems = collapsed ? content.filter((item, index) => {
+      return !visibleTargetList[index];
+    }) : [];
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, items, hiddenItems.length ? /* @__PURE__ */ createElementJsx(Tooltip, {
+      message: hiddenItems,
+      trigger: "click",
+      hideArrow: true,
+      position: "bottom-left",
+      style: { contentPadding: "0px" }
+    }, /* @__PURE__ */ createElementJsx(Button, {
+      iconOnly: true
+    }, moreIcon)) : void 0);
+  }
+}
+registerComponent("action-group", ActionGroup);
+registerComponent("ActionGroup", ActionGroup);
+function RoundButton({ content, ...props }) {
+  return /* @__PURE__ */ createElementJsx(Button, {
+    ...props,
+    shape: "round"
+  }, content);
+}
+function OutlineButton({ content, ...props }) {
+  return /* @__PURE__ */ createElementJsx(Button, {
+    ...props,
+    outline: true
+  }, content);
+}
+function IconButton({ content, ...props }) {
+  return /* @__PURE__ */ createElementJsx(RoundButton, {
+    ...props,
+    iconOnly: true
+  }, content);
+}
+registerComponent("icon-button", IconButton);
+registerComponent("iconbutton", IconButton);
+registerComponent("IconButton", IconButton);
+const cssProperties$K = makeCssVariablePrefixMap("--elf--link-button", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  padding: true
+});
+class LinkButton extends UIElement {
+  template() {
+    const { disabled, style: style2 = {}, content, onClick, href } = this.props;
+    const styleObject = {
+      class: "elf--link-button",
+      disabled: disabled ? "disabled" : void 0,
+      style: {
+        ...propertyMap(style2, cssProperties$K)
+      }
+    };
+    return /* @__PURE__ */ createElementJsx("a", {
+      ...styleObject,
+      onClick,
+      href: href || "#"
+    }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
+  }
+}
+registerComponent("link-button", LinkButton);
+registerComponent("linkbutton", LinkButton);
+registerComponent("LinkButton", LinkButton);
+const cssProperties$J = makeCssVariablePrefixMap("--elf--radio", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true
+});
+class Radio extends UIElement {
+  template() {
+    const {
+      disabled,
+      style: style2 = {},
+      value,
+      content,
+      name,
+      checked = false,
+      onChange,
+      size = "medium",
+      variant = "default"
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--radio",
         {
-          disabled: e
+          disabled,
+          [size]: true,
+          [variant]: true
         }
-      ]),
-      style: {
-        ...b(t, Ct)
-      }
+      ]);
+    }, [disabled, size, variant]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$J)
     };
-    return /* @__PURE__ */ o("div", {
-      ...c
-    }, /* @__PURE__ */ o("label", null, /* @__PURE__ */ o("input", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", {
       ref: "$input",
       type: "radio",
-      value: s,
-      name: i,
-      disabled: e ? "disabled" : void 0,
-      checked: r ? "checked" : void 0,
-      onChange: (d) => a == null ? void 0 : a(d, s)
-    }), l));
+      ...{
+        value,
+        name,
+        disabled: disabled ? "disabled" : void 0,
+        checked: checked ? "checked" : void 0
+      },
+      onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+    }), content));
   }
 }
-class ps extends h {
+registerComponent("radio", Radio);
+registerComponent("Radio", Radio);
+const cssProperties$I = makeCssVariablePrefixMap("--elf--radio", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true
+});
+class RadioGroup extends UIElement {
   template() {
-    const { disabled: e, style: t = {}, name: s, value: l, onChange: i, content: r } = this.props, a = {
-      class: f(["elf--radio-group"]),
-      disabled: e ? "disabled" : void 0,
-      style: {
-        ...b(t, Ct)
-      }
+    const {
+      disabled,
+      style: style2 = {},
+      name,
+      value,
+      options = [],
+      onChange,
+      direction = "horizontal",
+      size = "medium",
+      variant = "default"
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--radio-group", {
+        [direction]: true
+      });
+    }, [direction]);
+    const styleObject = {
+      class: localClass,
+      disabled: disabled ? "disabled" : void 0,
+      style: propertyMap(style2, cssProperties$I)
     };
-    return /* @__PURE__ */ o("div", {
-      ...a
-    }, r.map((c, d) => /* @__PURE__ */ o(te, {
-      ref: `$${d}`,
-      name: s,
-      value: c.props.value,
-      onChange: (u, p) => {
-        this.setState({ value: p }, !1), i(u, p);
-      },
-      checked: c.props.value === l,
-      disabled: e
-    }, c.props.content)));
+    const radioName = name || "name-" + this.id;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, options.map((it, index) => {
+      const checked = it.value === value;
+      return /* @__PURE__ */ createElementJsx(Radio, {
+        ref: `$${index}`,
+        name: radioName,
+        value: it.value,
+        onChange: (e, v) => {
+          this.setState({ value: v }, false);
+          onChange(e, v);
+        },
+        checked,
+        disabled,
+        size,
+        variant
+      }, it.label);
+    }));
   }
   get value() {
     return this.state.value || this.props.value;
   }
-  set value(e) {
-    this.setState({ value: e });
+  set value(value) {
+    this.setState({ value });
   }
 }
-const kt = {
+registerComponent("RadioGroup", RadioGroup);
+registerComponent("radio-group", RadioGroup);
+registerComponent("radiogroup", RadioGroup);
+const cssProperties$H = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -525,77 +1258,125 @@ const kt = {
   padding: "--elf--checkbox-padding",
   borderRadius: "--elf--checkbox-border-radius"
 };
-class ee extends h {
+class Checkbox extends UIElement {
   template() {
     const {
-      disabled: e,
-      style: t = {},
-      value: s,
-      content: l,
-      name: i,
-      checked: r = !1,
-      onChange: a
-    } = this.props, c = {
-      class: f([
+      disabled,
+      style: style2 = {},
+      value,
+      content,
+      name,
+      checked = false,
+      onChange,
+      indeterminate = false,
+      variant = "default",
+      size = "medium"
+    } = this.props;
+    const styleObject = {
+      class: classnames([
         "elf--checkbox",
         {
-          disabled: e
+          disabled,
+          [variant]: true,
+          [size]: true
         }
       ]),
       style: {
-        ...b(t, kt)
+        ...propertyMap(style2, cssProperties$H)
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...c
-    }, /* @__PURE__ */ o("label", null, /* @__PURE__ */ o("input", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", {
       ref: "$input",
       type: "checkbox",
-      value: s,
-      name: i,
-      disabled: e ? "disabled" : void 0,
-      checked: r ? "checked" : void 0,
-      onChange: (d) => a == null ? void 0 : a(d, s)
-    }), l));
+      ...{
+        indeterminate,
+        value,
+        name,
+        disabled: disabled ? "disabled" : void 0,
+        checked: checked ? "checked" : void 0
+      },
+      onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+    }), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("span", {
+      class: "text"
+    }, content) : void 0));
   }
   get checked() {
-    return this.refs.$input.checked();
+    return this.refs.$input.checked;
   }
   get value() {
     return this.props.value;
   }
 }
-class hs extends h {
+registerComponent("Checkbox", Checkbox);
+registerComponent("checkbox", Checkbox);
+const cssProperties$G = {
+  borderColor: "--elf--checkbox-border-color",
+  backgroundColor: "--elf--checkbox-background",
+  disabledColor: "--elf--checkbox-disabled-color",
+  color: "--elf--checkbox-color",
+  fontSize: "--elf--checkbox-font-size",
+  fontWeight: "--elf--checkbox-font-weight",
+  height: "--elf--checkbox-height",
+  padding: "--elf--checkbox-padding",
+  borderRadius: "--elf--checkbox-border-radius"
+};
+class CheckboxGroup extends UIElement {
   initState() {
     return {
       value: this.props.value || []
     };
   }
   template() {
-    const { disabled: e, style: t = {}, value: s, options: l = [], onChange: i } = this.props, r = {
-      class: f(["elf--check-group"]),
-      disabled: e ? "disabled" : void 0,
+    const {
+      disabled,
+      style: style2 = {},
+      value = [],
+      options = [],
+      onChange,
+      direction = "horizontal",
+      size = "medium",
+      variant = "default"
+    } = this.props;
+    const styleObject = {
+      class: classnames([
+        "elf--checkbox-group",
+        {
+          [direction]: true
+        }
+      ]),
+      disabled: disabled ? "disabled" : void 0,
       style: {
-        ...b(t, kt)
+        ...propertyMap(style2, cssProperties$G)
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...r
-    }, l.map((a, c) => /* @__PURE__ */ o(ee, {
-      ref: `$${c}`,
-      value: a.value,
-      onChange: (d) => {
-        i(d, this.getValues());
-      },
-      checked: s.includes(a.value),
-      disabled: e
-    }, a.label)));
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, options.map((it, index) => {
+      return /* @__PURE__ */ createElementJsx(Checkbox, {
+        ref: `checkbox-${index}`,
+        value: it.value,
+        onChange: (e) => {
+          onChange(e, this.getValues());
+        },
+        checked: value == null ? void 0 : value.includes(it.value),
+        disabled,
+        indeterminate: it.indeterminate,
+        size,
+        variant
+      }, it.label);
+    }));
   }
   getValues() {
-    const e = [];
-    return this.eachChildren((t) => {
-      t.checked && e.push(t.value);
-    }), e;
+    const values = [];
+    Object.keys(this.children).forEach((key) => {
+      const child = this.children[key];
+      if (child.checked) {
+        values.push(child.value);
+      }
+    });
+    return values;
   }
   get disabled() {
     return this.props.disabled;
@@ -603,203 +1384,264 @@ class hs extends h {
   get value() {
     return this.getValues();
   }
-  set value(e = []) {
-    this.setState({ values: e });
+  set value(values = []) {
+    this.setState({ values });
   }
 }
-const se = {
-  color: "--elf--divider-color",
-  margin: "--elf--divider-margin"
-};
-class fs extends h {
+registerComponent("checkbox-group", CheckboxGroup);
+registerComponent("CheckboxGroup", CheckboxGroup);
+const cssProperties$F = makeCssVariablePrefixMap("--elf--divider", {
+  color: true,
+  margin: true
+});
+class Divider extends UIElement {
   template() {
-    const { style: e = {}, type: t = "default", margin: s = "10px 0" } = this.props, l = {
-      class: f("elf--divider", {
-        [t]: !0
+    const {
+      style: style2 = {},
+      variant = "default",
+      size = "small",
+      margin = "10px",
+      orientation = "horizontal"
+    } = this.props;
+    const styleObject = {
+      class: classnames("elf--divider", {
+        [size]: true,
+        [variant]: true,
+        [orientation]: true
       }),
       style: {
-        ...b(
+        ...propertyMap(
           {
-            ...e,
-            margin: s
+            ...style2,
+            margin
           },
-          se
+          cssProperties$F
         )
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...l
-    }, /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       className: "elf--divider-inner"
     }));
   }
 }
-const P = {
+registerComponent("divider", Divider);
+registerComponent("Divider", Divider);
+const MenuItemType = {
   DIVIDER: "divider",
-  GROUP: "group",
+  SECTION: "section",
   MENU: "menu",
   ITEM: "item",
   CUSTOM: "custom",
   LINK: "link"
 };
-function oe(n = [], e) {
-  return n.map((t, s) => {
-    const l = `${t.type || "item"}${s}`;
-    return Rt(t) && t === "-" ? /* @__PURE__ */ o(nt, {
-      ref: l,
-      rootClose: e
-    }) : m(t) ? /* @__PURE__ */ o(at, {
-      ref: `custom${s}`,
-      render: t,
-      rootClose: e
-    }) : t.type === P.CUSTOM ? /* @__PURE__ */ o(at, {
-      ref: l,
-      ...t,
-      rootClose: e
-    }) : t.type === P.LINK ? /* @__PURE__ */ o(le, {
-      ref: l,
-      ...t,
-      rootClose: e
-    }) : t.type === P.GROUP ? /* @__PURE__ */ o(ie, {
-      ref: l,
-      ...t,
-      rootClose: e
-    }) : t.type === P.DIVIDER ? /* @__PURE__ */ o(nt, {
-      ref: l,
-      ...t,
-      rootClose: e
-    }) : /* @__PURE__ */ o(re, {
-      ref: l,
-      ...t,
-      rootClose: e
+function makeMenuItem(items = [], variant, rootClose) {
+  return items.map((it, index) => {
+    const ref = `${it.type || "item"}${index}`;
+    if (isString(it) && it === "-") {
+      return /* @__PURE__ */ createElementJsx(DividerMenuItem, {
+        ref,
+        variant,
+        rootClose
+      });
+    } else if (isFunction(it)) {
+      return /* @__PURE__ */ createElementJsx(CustomMenuItem, {
+        variant,
+        ref: `custom${index}`,
+        render: it,
+        rootClose
+      });
+    } else if (it.type === MenuItemType.CUSTOM) {
+      return /* @__PURE__ */ createElementJsx(CustomMenuItem, {
+        variant,
+        ref,
+        ...it,
+        rootClose
+      });
+    } else if (it.type === MenuItemType.LINK) {
+      return /* @__PURE__ */ createElementJsx(LinkMenuItem, {
+        variant,
+        ref,
+        ...it,
+        rootClose
+      });
+    } else if (it.type === MenuItemType.SECTION) {
+      return /* @__PURE__ */ createElementJsx(SectionMenuItem, {
+        variant,
+        ref,
+        ...it,
+        rootClose
+      });
+    } else if (it.type === MenuItemType.DIVIDER) {
+      return /* @__PURE__ */ createElementJsx(DividerMenuItem, {
+        variant,
+        ref,
+        ...it,
+        rootClose
+      });
+    }
+    return /* @__PURE__ */ createElementJsx(MenuItem, {
+      ref,
+      variant,
+      ...it,
+      rootClose
     });
   });
 }
-function nt({ dashed: n = !1 }) {
-  return /* @__PURE__ */ o("li", {
+function DividerMenuItem({ dashed = false }) {
+  return /* @__PURE__ */ createElementJsx("li", {
     class: "elf--divider",
-    dashed: n
+    dashed
   });
 }
-function at({ render: n, rootClose: e }) {
-  return /* @__PURE__ */ o("li", {
+function CustomMenuItem({ render, rootClose }) {
+  return /* @__PURE__ */ createElementJsx("li", {
     class: "custom"
-  }, n == null ? void 0 : n({ rootClose: e }));
+  }, render == null ? void 0 : render({ rootClose }));
 }
-function le({ rootClose: n, title: e, link: t }) {
-  return /* @__PURE__ */ o("li", {
+function LinkMenuItem({ rootClose, title, link }) {
+  return /* @__PURE__ */ createElementJsx("li", {
     class: "link"
-  }, /* @__PURE__ */ o("a", {
-    href: t,
-    onClick: n
-  }, e));
+  }, /* @__PURE__ */ createElementJsx("a", {
+    href: link,
+    onClick: rootClose
+  }, title));
 }
-function ie({ title: n = "" }) {
-  return /* @__PURE__ */ o("li", {
+function SectionMenuItem({ title = "" }) {
+  return /* @__PURE__ */ createElementJsx("li", {
     class: "section-title"
-  }, n);
+  }, title);
 }
-class re extends h {
+class MenuItem extends UIElement {
   initState() {
     const {
-      title: e = "",
-      hover: t = !1,
-      shortcut: s,
-      icon: l,
-      items: i = [],
-      disabled: r = !1,
-      selectable: a,
-      selected: c,
-      selectedIcon: d = "\u2713",
-      closable: u = !0,
-      rootClose: p
+      title = "",
+      hover = false,
+      shortcut,
+      icon,
+      items = [],
+      disabled = false,
+      selectable,
+      selected,
+      selectedIcon = "\u2713",
+      closable = true,
+      rootClose,
+      description,
+      variant
     } = this.props;
     return {
-      title: e,
-      hover: t,
-      shortcut: s,
-      icon: l,
-      items: i,
-      selectable: a,
-      selected: c,
-      selectedIcon: d,
-      disabled: r,
-      closable: u,
-      rootClose: p
+      title,
+      hover,
+      shortcut,
+      icon,
+      items,
+      selectable,
+      selected,
+      selectedIcon,
+      disabled,
+      closable,
+      rootClose,
+      description,
+      variant
     };
   }
   template() {
     const {
-      title: e = "",
-      shortcut: t,
-      icon: s = "\u25B6",
-      items: l = [],
-      hover: i,
-      selected: r,
-      selectable: a,
-      selectedIcon: c,
-      disabled: d,
-      rootClose: u
-    } = this.state, p = l.length > 0, g = m(r) ? r() : r;
-    return /* @__PURE__ */ o("li", {
-      class: f({
-        hover: i
+      title = "",
+      shortcut,
+      icon,
+      expandIcon = "\u25B6",
+      items = [],
+      hover,
+      selected,
+      selectable,
+      selectedIcon,
+      disabled,
+      rootClose,
+      description,
+      variant,
+      show = false
+    } = this.state;
+    const hasItems = items.length > 0;
+    const selectedValue = isFunction(selected) ? selected() : selected;
+    return /* @__PURE__ */ createElementJsx("li", {
+      class: classnames({
+        hover
       }),
-      disabled: d ? !0 : void 0
-    }, a ? /* @__PURE__ */ o("span", {
+      disabled: disabled ? true : void 0
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "menu-item-content"
+    }, selectable ? /* @__PURE__ */ createElementJsx("span", {
       class: "selected-icon"
-    }, g ? c : void 0) : null, e ? /* @__PURE__ */ o("div", {
-      class: "menu-title"
-    }, e) : void 0, t ? /* @__PURE__ */ o("div", {
-      class: "shortcut"
-    }, t) : void 0, s && p ? /* @__PURE__ */ o("div", {
+    }, selectedValue ? selectedIcon : void 0) : null, icon ? /* @__PURE__ */ createElementJsx("div", {
       class: "icon"
-    }, s) : void 0, l.length > 0 ? /* @__PURE__ */ o(tt, {
-      items: l,
-      rootClose: u
+    }, icon) : void 0, title ? /* @__PURE__ */ createElementJsx("div", {
+      class: "menu-title"
+    }, title) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "value-area"
+    }, shortcut ? /* @__PURE__ */ createElementJsx("div", {
+      class: "shortcut"
+    }, shortcut) : void 0, hasItems ? /* @__PURE__ */ createElementJsx("div", {
+      class: "icon"
+    }, expandIcon) : void 0)), description ? /* @__PURE__ */ createElementJsx("div", {
+      class: "menu-item-description"
+    }, description) : void 0, items.length > 0 || show ? /* @__PURE__ */ createElementJsx(Menu, {
+      items,
+      variant,
+      rootClose
     }) : void 0);
   }
   checkClickable() {
-    if (this.state.disabled)
-      return !1;
-    const { type: e = P.ITEM, items: t = [] } = this.props;
-    return e === P.ITEM && t.length === 0;
+    if (this.state.disabled) {
+      return false;
+    }
+    const { type = MenuItemType.ITEM, items = [] } = this.props;
+    return type === MenuItemType.ITEM && items.length === 0;
   }
-  [M("$el") + C("checkClickable") + Ot + Et](e) {
-    var i, r;
-    const { selectable: t = !1, onClick: s, closable: l = !0 } = this.props;
-    t && this.setSelected(!this.selected), m(s) && s(e, this), l && ((r = (i = this.props).rootClose) == null || r.call(i));
+  [CLICK("$el") + IF("checkClickable") + PREVENT + STOP](e) {
+    var _a, _b;
+    const { selectable = false, onClick, closable = true } = this.props;
+    if (selectable) {
+      this.setSelected(!this.selected);
+    }
+    if (isFunction(onClick)) {
+      onClick(e, this);
+    }
+    if (closable) {
+      (_b = (_a = this.props).rootClose) == null ? void 0 : _b.call(_a);
+    }
   }
-  setSelected(e = !1) {
+  setSelected(isSelected = false) {
     this.setState({
-      selected: e
+      selected: isSelected
     });
   }
   get selected() {
     return this.state.selected;
   }
 }
-const ne = {
-  left: "--elf--menu-left",
-  top: "--elf--menu-top",
-  backgroundColor: "--elf--menu-background",
-  color: "--elf--menu-color",
-  fontSize: "--elf--menu-font-size",
-  fontWeight: "--elf--menu-font-weight",
-  height: "--elf--menu-height",
-  padding: "--elf--menu-padding",
-  borderRadius: "--elf--menu-border-radius",
-  borderColor: "--elf--menu-border-color",
-  boxShadow: "--elf--menu-box-shadow",
-  width: "--elf--menu-width",
-  maxWidth: "--elf--menu-max-width",
-  sectionTitleColor: "--elf--menu-section-title-color",
-  sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
-  dividerColor: "--elf--menu-divider-color",
-  directionLeft: "--elf--menu-direction-left",
-  itemPadding: "--elf--menu-item-padding"
-};
-class tt extends h {
+const cssProperties$E = makeCssVariablePrefixMap("--elf--menu", {
+  left: true,
+  top: true,
+  backgroundColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  borderColor: true,
+  boxShadow: true,
+  width: true,
+  maxWidth: true,
+  sectionTitleColor: true,
+  sectionTitleBackgroundColor: true,
+  dividerColor: true,
+  directionLeft: true,
+  itemPadding: true
+});
+class Menu extends UIElement {
   initState() {
     return {
       intersectionLeft: 0
@@ -807,108 +1649,148 @@ class tt extends h {
   }
   template() {
     let {
-      style: e = {},
-      type: t = "menu",
-      x: s = 0,
-      y: l = 0,
-      direction: i = "left",
-      items: r = [],
-      rootClose: a,
-      autoPosition: c = !1
-    } = this.props, d = { ...e };
-    if (s !== 0 && (d = { ...d, left: s }), l !== 0 && (d = { ...d, top: l }), c) {
-      const p = r.findIndex((g) => g.selectable && g.selected);
-      d = { ...d, top: -1 * (p * 24 + 8) };
+      style: style2 = {},
+      type = "menu",
+      x = 0,
+      y = 0,
+      direction = "left",
+      items = [],
+      rootClose,
+      autoPosition = false,
+      variant = "light",
+      compact = false
+    } = this.props;
+    let itemStyle = { ...style2 };
+    if (x !== 0)
+      itemStyle = { ...itemStyle, left: x };
+    if (y !== 0)
+      itemStyle = { ...itemStyle, top: y };
+    if (autoPosition) {
+      const index = items.findIndex((it) => {
+        return it.selectable && it.selected;
+      });
+      itemStyle = { ...itemStyle, top: -1 * (index * 24 + 8) };
     }
-    const u = {
-      "data-direction": i,
-      class: f("elf--menu", {
-        "elf--menu-contextmenu": t === "contextmenu"
-      }),
-      style: {
-        ...b(d, ne)
-      }
+    const localClass = useMemo(() => {
+      return classnames("elf--menu", {
+        [type]: true,
+        [variant]: true,
+        compact
+      });
+    }, [type, variant, compact]);
+    const styleObject = {
+      "data-direction": direction,
+      class: localClass,
+      style: propertyMap(itemStyle, cssProperties$E)
     };
-    return /* @__PURE__ */ o("menu", {
-      ...u,
-      onContextMenu: (p) => p.preventDefault()
-    }, oe(r, a));
+    return /* @__PURE__ */ createElementJsx("menu", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault()
+    }, makeMenuItem(items, variant, rootClose));
   }
-  [Tt("intersection") + Dt({
+  [OBSERVER("intersection") + PARAMS({
     root: document.body
-  })](e = []) {
-    const t = e.find(
-      (s) => s.isIntersecting && s.intersectionRatio < 1
+  })](intersects = []) {
+    const item = intersects.find(
+      (it) => it.isIntersecting && it.intersectionRatio < 1
     );
-    if (t) {
-      const { left: s, right: l } = t.boundingClientRect, { left: i, right: r } = t.intersectionRect;
-      let a = "left";
-      r != l && i != s ? a = "center" : r != l && (a = "right"), this.$el.attr("data-direction", a);
+    if (item) {
+      const { left: bLeft, right: bRight } = item.boundingClientRect;
+      const { left: iLeft, right: iRight } = item.intersectionRect;
+      let direction = "left";
+      if (iRight != bRight && iLeft != bLeft) {
+        direction = "center";
+      } else if (iRight != bRight) {
+        direction = "right";
+      }
+      this.$el.attr("data-direction", direction);
     }
   }
 }
-function xt() {
-  return /* @__PURE__ */ o("svg", {
+registerComponent("Menu", Menu);
+registerComponent("MenuItem", MenuItem);
+registerComponent("SectionMenuItem", SectionMenuItem);
+registerComponent("DividerMenuItem", DividerMenuItem);
+registerComponent("menu", Menu);
+registerComponent("menuitem", MenuItem);
+registerComponent("sectionmenuitem", SectionMenuItem);
+registerComponent("dividermenuitem", DividerMenuItem);
+registerComponent("menu-item", MenuItem);
+registerComponent("section-menu-item", SectionMenuItem);
+registerComponent("divider-menu-item", DividerMenuItem);
+function ArrowIcon() {
+  return /* @__PURE__ */ createElementJsx("svg", {
     viewBox: "0 0 24 24",
     xmlns: "http://www.w3.org/2000/svg"
-  }, /* @__PURE__ */ o("path", {
+  }, /* @__PURE__ */ createElementJsx("path", {
     d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
   }));
 }
-class St extends h {
+class OptionMenu extends UIElement {
   template() {
     const {
-      icon: e,
-      content: t,
-      items: s,
-      menuStyle: l = {},
-      disabled: i = void 0,
-      autoPosition: r = !1
-    } = this.props, { isOpen: a } = this.state;
-    return /* @__PURE__ */ o("div", {
+      icon,
+      content,
+      items,
+      menuStyle = {},
+      disabled = void 0,
+      autoPosition = false
+    } = this.props;
+    const { isOpen } = this.state;
+    const showMenu = isOpen && items;
+    return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--option-menu",
-      disabled: i
-    }, /* @__PURE__ */ o("div", {
+      disabled
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "content",
       onClick: () => {
         this.setState({
           isOpen: !this.state.isOpen
         });
       }
-    }, e ? /* @__PURE__ */ o("div", {
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--option-menu-icon"
-    }, e) : void 0, /* @__PURE__ */ o("div", {
+    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "text"
-    }, t), /* @__PURE__ */ o("div", {
+    }, content), /* @__PURE__ */ createElementJsx("div", {
       class: "arrow"
-    }, /* @__PURE__ */ o(xt, null))), a && s ? /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx(ArrowIcon, null))), showMenu ? /* @__PURE__ */ createElementJsx("div", {
       class: "menu-area"
-    }, /* @__PURE__ */ o(tt, {
-      autoPosition: r,
+    }, /* @__PURE__ */ createElementJsx(Menu, {
+      type: "dropdown",
+      autoPosition,
       rootClose: () => {
         this.close();
       },
-      style: l,
-      items: s
+      style: menuStyle,
+      items
     })) : void 0);
   }
   close() {
     this.setState({
-      isOpen: !1
+      isOpen: false
     });
   }
   checkClickable(e) {
-    return !R.create(e.target).closest("menu-area");
+    const $menu = Dom.create(e.target).closest("menu-area");
+    if ($menu)
+      return false;
+    return true;
   }
   checkNotInMenu(e) {
-    const t = R.create(e.target).closest("elf--option-menu");
-    return t ? this.$el.is(t) === !1 : !0;
+    const $menu = Dom.create(e.target).closest("elf--option-menu");
+    if (!$menu)
+      return true;
+    return this.$el.is($menu) === false;
   }
-  [M("document") + C("checkClickable") + C("checkNotInMenu")]() {
+  [CLICK("document") + IF("checkClickable") + IF("checkNotInMenu")]() {
     this.close();
   }
 }
-class gs extends h {
+registerComponent("OptionMenu", OptionMenu);
+registerComponent("optionmenu", OptionMenu);
+registerComponent("option-menu", OptionMenu);
+class OptionStrip extends UIElement {
   initState() {
     return {
       value: this.props.value
@@ -916,572 +1798,848 @@ class gs extends h {
   }
   template() {
     const {
-      disabled: e,
-      style: t = {},
-      selectedValue: s,
-      options: l = [],
-      onChange: i
-    } = this.props, r = {
+      disabled,
+      style: style2 = {},
+      selectedValue,
+      options = [],
+      onChange
+    } = this.props;
+    const styleObject = {
       class: "elf--option-strip",
-      disabled: e ? "disabled" : void 0,
+      disabled: disabled ? "disabled" : void 0,
       style: {
-        ...b(t, {})
+        ...propertyMap(style2, {})
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...r
-    }, l.map((a) => /* @__PURE__ */ o("button", {
-      type: "button",
-      class: f("elf--option-strip-item", {
-        selected: s === a.value
-      }),
-      onClick: () => i == null ? void 0 : i(a.value)
-    }, a.icon)));
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, options.map((it) => {
+      return /* @__PURE__ */ createElementJsx("button", {
+        type: "button",
+        class: classnames("elf--option-strip-item", {
+          selected: selectedValue === it.value
+        }),
+        onClick: () => onChange == null ? void 0 : onChange(it.value)
+      }, it.icon);
+    }));
   }
 }
-const ae = {
-  position: "--elf--dialog-position",
-  backgroundColor: "--elf--dialog-background",
-  color: "--elf--dialog-color",
-  fontSize: "--elf--dialog-font-size",
-  fontWeight: "--elf--dialog-font-weight",
-  height: "--elf--dialog-height",
-  padding: "--elf--dialog-padding",
-  borderRadius: "--elf--dialog-border-radius",
-  borderColor: "--elf--dialog-border-color",
-  boxShadow: "--elf--dialog-box-shadow",
-  width: "--elf--dialog-width"
-};
-class bs extends h {
+registerComponent("option-strip", OptionStrip);
+registerComponent("optionstrip", OptionStrip);
+registerComponent("OptionStrip", OptionStrip);
+const cssProperties$D = makeCssVariablePrefixMap("--elf--dialog", {
+  position: true,
+  backgroundColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  borderColor: true,
+  boxShadow: true,
+  width: true
+});
+class Dialog extends UIElement {
   initState() {
-    const { visible: e = !1, style: t = {}, center: s } = this.props;
+    const { visible = false, style: style2 = {}, center } = this.props;
     return {
-      visible: e,
-      style: t,
-      center: s
+      visible,
+      style: style2,
+      center
     };
   }
   close() {
-    const { onClose: e } = this.props;
-    m(e) && e(this);
+    const { onClose } = this.props;
+    if (isFunction(onClose)) {
+      onClose(this);
+    }
   }
   ok() {
-    const { onOk: e } = this.props;
-    m(e) && e(this);
+    const { onOk } = this.props;
+    if (isFunction(onOk)) {
+      onOk(this);
+    }
   }
   cancel() {
-    const { onCancel: e } = this.props;
-    m(e) && e(this);
+    const { onCancel } = this.props;
+    if (isFunction(onCancel)) {
+      onCancel(this);
+    }
   }
   makeDefaultTools() {
-    const { footer: e, cancelText: t = "Cancel", okText: s = "OK" } = this.props;
-    return e ? "" : [
-      /* @__PURE__ */ o(F, {
-        onClick: () => this.cancel()
-      }, t),
-      /* @__PURE__ */ o(F, {
-        type: "primary",
-        onClick: () => this.ok()
-      }, s)
-    ];
+    const {
+      footer,
+      cancelText = "Cancel",
+      okText = "OK",
+      okProps = {},
+      cancelProps = {}
+    } = this.props;
+    if (!footer) {
+      return [
+        /* @__PURE__ */ createElementJsx(Button, {
+          shape: "round",
+          ...cancelProps,
+          onClick: () => this.cancel()
+        }, cancelText),
+        /* @__PURE__ */ createElementJsx(Button, {
+          shape: "round",
+          variant: "primary",
+          ...okProps,
+          onClick: () => this.ok()
+        }, okText)
+      ];
+    }
+    return "";
   }
   template() {
-    const { style: e = {}, visible: t, center: s } = this.state, l = {
-      class: f("elf--dialog", {
-        visible: t,
-        center: s
+    const { style: style2 = {}, visible, center } = this.state;
+    const { noBorder, title, closable = true, footer } = this.props;
+    const styleObject = {
+      class: classnames("elf--dialog", {
+        visible,
+        center,
+        "no-border": noBorder
       }),
       style: {
-        ...b(e, ae)
+        ...propertyMap(style2, cssProperties$D)
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...l
-    }, /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-text"
-    }, "Dialog"), /* @__PURE__ */ o("div", {
+    }, title), this.props.tools ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-tools",
       ref: "$tools"
-    }, this.props.tools || void 0), /* @__PURE__ */ o("div", {
+    }, this.props.tools) : void 0, closable ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-title-close",
-      ref: "$close"
-    }, "\xD7")), /* @__PURE__ */ o("div", {
+      ref: "$close",
+      onClick: () => this.close()
+    }, "\xD7") : void 0), noBorder ? void 0 : /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--dialog-divider"
+    }), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-content"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-text"
-    }, this.props.content || ""), /* @__PURE__ */ o("div", {
+    }, this.props.content || ""), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--dialog-content-tools"
-    }, this.props.footer ? this.props.footer : this.makeDefaultTools())));
-  }
-  [M("$close")]() {
-    this.close();
+    }, footer ? footer : this.makeDefaultTools())));
   }
 }
-class U extends h {
+registerComponent("dialog", Dialog);
+registerComponent("Dialog", Dialog);
+class Flex extends UIElement {
   template() {
     const {
-      style: e = {},
-      class: t = "",
-      content: s,
-      stack: l,
-      wrap: i = !1
-    } = this.props, r = {
-      class: f("elf--flex", t, {
-        stack: l,
-        wrap: i
+      style: style2 = {},
+      class: className = "",
+      content,
+      stack,
+      wrap = false
+    } = this.props;
+    const styleObject = {
+      class: classnames("elf--flex", className, {
+        stack,
+        wrap
       }),
       style: {
-        ...b(e, {})
+        ...propertyMap(style2, {})
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...r
-    }, s);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
-class ms extends U {
-  template() {
-    const { style: e = {}, content: t } = this.props;
-    return /* @__PURE__ */ o(U, {
-      stack: !0,
-      style: e
-    }, t);
-  }
-}
-const ct = {
-  MENU: "menu",
-  ITEM: "item",
-  CUSTOM: "custom"
-};
-function ce(n = []) {
-  return n.map((e, t) => {
-    const s = `${e.type}-${t}`;
-    return e.type === ct.CUSTOM ? /* @__PURE__ */ o(de, {
-      ref: s,
-      ...e
-    }) : e.type === ct.MENU ? /* @__PURE__ */ o(ue, {
-      ref: s,
-      ...e
-    }) : /* @__PURE__ */ o(et, {
-      ref: s,
-      ...e
-    });
-  });
-}
-class et extends h {
+registerComponent("flex", Flex);
+registerComponent("Flex", Flex);
+class ToolsItem extends UIElement {
   initialize() {
     super.initialize();
-    const e = this.props.events || [];
-    e.length && e.forEach((t) => {
-      this.on(t, () => {
-        this.refresh();
+    const events = this.props.events || [];
+    if (events.length) {
+      events.forEach((event) => {
+        this.on(event, () => {
+          this.refresh();
+        });
       });
-    });
+    }
   }
   initState() {
-    const { title: e = "", icon: t, selected: s } = this.props;
+    const { title = "", icon, selected, selectedType } = this.props;
     return {
-      title: e,
-      icon: t,
-      selected: s
+      title,
+      icon,
+      selected,
+      selectedType
     };
   }
   template() {
-    const { title: e = "", icon: t } = this.state;
-    return /* @__PURE__ */ o("div", {
-      class: f("elf--tools-item", {
-        selected: this.selected ? !0 : void 0
-      }),
-      onClick: this.props.onClick
-    }, /* @__PURE__ */ o("button", {
+    const { title = "", icon } = this.state;
+    const { style: style2 = {} } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--tools-item", {
+        selected: this.state.selected ? true : void 0
+      });
+    }, [this.state.selected]);
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: localClass,
+      "data-selected-type": this.state.selectedType,
+      onClick: this.props.onClick,
+      style: style2
+    }, /* @__PURE__ */ createElementJsx("button", {
       type: "button"
-    }, /* @__PURE__ */ o(U, {
-      style: { columnGap: 4 }
+    }, /* @__PURE__ */ createElementJsx(Flex, {
+      style: { gap: 10 }
     }, [
-      t ? /* @__PURE__ */ o("span", {
+      icon ? /* @__PURE__ */ createElementJsx("span", {
         class: "icon"
-      }, m(t) ? t() : t) : void 0,
-      e ? /* @__PURE__ */ o("span", {
+      }, isFunction(icon) ? icon() : icon) : void 0,
+      title ? /* @__PURE__ */ createElementJsx("span", {
         class: "menu-title"
-      }, m(e) ? e() : e) : void 0
+      }, isFunction(title) ? title() : title) : void 0
     ].filter(Boolean))));
   }
-  setSelected(e = !1) {
+  setSelected(isSelected = false) {
     this.setState({
-      selected: e
+      selected: isSelected
     });
   }
   get selected() {
-    return m(this.state.selected) ? this.state.selected() : this.state.selected;
+    if (isFunction(this.state.selected)) {
+      return this.state.selected();
+    }
+    return this.state.selected;
   }
-  set selected(e) {
-    this.setSelected(e);
+  set selected(value) {
+    this.setSelected(value);
   }
 }
-class de extends et {
+registerComponent("tools-item", ToolsItem);
+registerComponent("toolsitem", ToolsItem);
+registerComponent("ToolsItem", ToolsItem);
+class ToolsCustomItem extends ToolsItem {
   template() {
-    var e, t;
-    return /* @__PURE__ */ o("div", {
+    var _a, _b;
+    return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tools-item custom"
-    }, (t = (e = this.props).render) == null ? void 0 : t.call(e));
+    }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
   }
 }
-class ue extends et {
+registerComponent("tools-custom-item", ToolsCustomItem);
+registerComponent("toolscustomitem", ToolsCustomItem);
+registerComponent("ToolsCustomItem", ToolsCustomItem);
+class ToolsMenuItem extends ToolsItem {
   initState() {
     const {
-      title: e = "",
-      icon: t,
-      selected: s,
-      disabled: l,
-      opened: i,
-      items: r,
-      direction: a,
-      menuStyle: c
+      title = "",
+      icon,
+      selected,
+      disabled,
+      opened,
+      direction,
+      menuStyle,
+      noArrow = false
     } = this.props;
     return {
-      title: e,
-      icon: t,
-      selected: s,
-      opened: i,
-      items: r,
-      direction: a,
-      disabled: l,
-      menuStyle: c,
+      title,
+      icon,
+      selected,
+      opened,
+      direction,
+      disabled,
+      menuStyle,
+      noArrow,
       rootClose: this.close.bind(this)
     };
   }
   template() {
     const {
-      title: e = "",
-      icon: t,
-      disabled: s,
-      selected: l,
-      items: i = [],
-      opened: r = !1,
-      direction: a = "left",
-      menuStyle: c
-    } = this.state, d = i.length > 0, u = l ? m(l) ? l() : l : void 0;
-    return /* @__PURE__ */ o("div", {
-      class: f("elf--tools-item", {
-        selected: u,
-        "has-items": d
-      }),
-      disabled: s
-    }, /* @__PURE__ */ o("button", {
+      title = "",
+      icon,
+      disabled,
+      selected,
+      opened = false,
+      direction = "left",
+      menuStyle,
+      noArrow = false
+    } = this.state;
+    const { style: style2 = {}, items, class: className } = this.props;
+    const hasItems = items.length > 0;
+    const isSelected = selected ? isFunction(selected) ? selected() : selected : void 0;
+    const localClass = useMemo(() => {
+      return classnames(
+        "elf--tools-item",
+        {
+          selected: isSelected,
+          "has-items": hasItems
+        },
+        className
+      );
+    }, [isSelected, hasItems, className]);
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: localClass,
+      disabled,
+      style: style2
+    }, /* @__PURE__ */ createElementJsx("button", {
       type: "button"
-    }, /* @__PURE__ */ o(U, {
+    }, /* @__PURE__ */ createElementJsx(Flex, {
       style: { columnGap: 4 }
     }, [
-      t ? /* @__PURE__ */ o("span", {
+      icon ? /* @__PURE__ */ createElementJsx("span", {
         class: "icon"
-      }, m(t) ? t() : t) : void 0,
-      e ? /* @__PURE__ */ o("span", {
+      }, isFunction(icon) ? icon() : icon) : void 0,
+      title ? /* @__PURE__ */ createElementJsx("span", {
         class: "menu-title"
-      }, m(e) ? e() : e) : void 0
-    ].filter(Boolean)), d ? /* @__PURE__ */ o("span", {
-      class: f("arrow", { opened: r })
-    }, /* @__PURE__ */ o(xt, null)) : void 0), r && !s ? /* @__PURE__ */ o("div", {
-      class: "menu-area",
-      style: { backgroundColor: "yellow" }
-    }, /* @__PURE__ */ o("div", {
+      }, isFunction(title) ? title() : title) : void 0
+    ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ createElementJsx("span", {
+      class: classnames("arrow", { opened })
+    }, /* @__PURE__ */ createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ createElementJsx("div", {
+      class: "menu-area"
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "background",
-      "data-direction": a
-    }), /* @__PURE__ */ o("div", {
+      "data-direction": direction
+    }), /* @__PURE__ */ createElementJsx("div", {
       class: "arrow"
-    }), /* @__PURE__ */ o(tt, {
+    }), /* @__PURE__ */ createElementJsx(Menu, {
       ref: "$menu",
-      items: i,
-      direction: a,
+      items,
+      direction,
       rootClose: this.state.rootClose,
       style: {
-        ...c || {},
+        ...menuStyle || {},
         top: "calc(100% + 5px)"
       }
     })) : void 0);
   }
-  runCallback(e, t) {
-    m(e) && e(t, this);
+  runCallback(callback, e) {
+    if (isFunction(callback)) {
+      callback(e, this);
+    }
   }
   open() {
-    this.state.opened || this.setState({
-      rect: this.$el.rect(),
-      opened: !0
-    });
+    if (!this.state.opened) {
+      this.setState({
+        rect: this.$el.rect(),
+        opened: true
+      });
+    }
   }
   close() {
-    this.state.opened && this.setState({
-      opened: !1
-    });
+    if (this.state.opened) {
+      this.setState({
+        opened: false
+      });
+    }
   }
   toggle() {
-    this.state.opened ? this.close() : (this.setState(
-      {
-        rect: this.$el.rect()
-      },
-      !1
-    ), this.open());
+    if (!this.state.opened) {
+      this.setState(
+        {
+          rect: this.$el.rect()
+        },
+        false
+      );
+      this.open();
+    } else {
+      this.close();
+    }
   }
   checkClickable(e) {
-    return !R.create(e.target).closest("menu-area");
+    const $menu = Dom.create(e.target).closest("menu-area");
+    if ($menu)
+      return false;
+    return true;
   }
   checkTriggerClick() {
-    const { trigger: e = "click", onClick: t } = this.props;
-    return e === "click" || e === "hover" && m(t);
+    const { trigger = "click", onClick } = this.props;
+    return trigger === "click" || trigger === "hover" && isFunction(onClick);
   }
   checkTriggerOver() {
     return this.props.trigger === "hover";
   }
-  [Pt("$el") + C("checkTriggerOver")]() {
+  [POINTEROVER("$el") + IF("checkTriggerOver")]() {
     this.open();
   }
   checkNotInMenu(e) {
-    const t = R.create(e.target).closest("elf--tools-item");
-    return t ? this.$el.is(t) === !1 : !0;
+    const $menu = Dom.create(e.target).closest("elf--tools-item");
+    if (!$menu)
+      return true;
+    return this.$el.is($menu) === false;
   }
-  [gt("$el") + C("checkTriggerOver")]() {
+  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
     this.close();
   }
-  [M("document") + C("checkClickable") + C("checkNotInMenu")]() {
+  [CLICK("document") + IF("checkClickable") + IF("checkNotInMenu")]() {
     this.close();
   }
-  [M("$el") + C("checkClickable") + C("checkTriggerClick")](e) {
-    R.create(e.target).hasClass("arrow") ? (this.toggle(), this.state.opened ? this.runCallback(this.props.onOpen, e) : this.runCallback(this.props.onClose, e), this.runCallback(this.props.onClick, e)) : (this.close(), this.runCallback(this.props.onClick, e));
-  }
-}
-const pe = x("--elf--tools", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0
-});
-class he extends h {
-  template() {
-    const { style: e = {} } = this.props, t = {
-      class: f("elf--tools"),
-      style: {
-        ...b(e, pe)
+  [CLICK("$el") + IF("checkClickable") + IF("checkTriggerClick")](e) {
+    if (Dom.create(e.target).hasClass("arrow") && !this.state.noArrow || this.state.noArrow) {
+      this.toggle();
+      if (this.state.opened) {
+        this.runCallback(this.props.onOpen, e);
+      } else {
+        this.runCallback(this.props.onClose, e);
       }
-    };
-    return /* @__PURE__ */ o("div", {
-      ...t,
-      onContextMenu: (s) => s.preventDefault()
-    }, ce(this.props.items));
+      this.runCallback(this.props.onClick, e);
+    } else {
+      this.close();
+      this.runCallback(this.props.onClick, e);
+    }
   }
 }
-function fe(n = []) {
-  return n.map((e, t) => {
-    const s = `${e.type || "item"}${t}`;
-    return /* @__PURE__ */ o(ge, {
-      ref: s,
-      ...e
+registerComponent("ToolsMenuItem", ToolsMenuItem);
+registerComponent("tools-menu-item", ToolsMenuItem);
+registerComponent("toolsmenuitem", ToolsMenuItem);
+const ToolsItemType = {
+  MENU: "menu",
+  ITEM: "item",
+  CUSTOM: "custom"
+};
+function makeToolsItem(items = [], options = {}) {
+  return items.map((it, index) => {
+    const ref = `${it.type}-${index}`;
+    let visibility = options.emphasized ? options.visibleTargetList[index] ? "visible" : "hidden" : "visible";
+    if (options.visibility) {
+      visibility = "visible";
+    }
+    if (it.type === ToolsItemType.CUSTOM) {
+      return /* @__PURE__ */ createElementJsx(ToolsCustomItem, {
+        ref,
+        ...it,
+        style: { visibility }
+      });
+    }
+    if (it.type === ToolsItemType.MENU) {
+      return /* @__PURE__ */ createElementJsx(ToolsMenuItem, {
+        ref,
+        ...it,
+        style: { visibility }
+      });
+    }
+    return /* @__PURE__ */ createElementJsx(ToolsItem, {
+      ref,
+      ...it,
+      style: { visibility }
     });
   });
 }
-class ge extends h {
+function makeHiddenToolsItem(items = [], options = {}) {
+  return items.filter((it, index) => {
+    let visibility = options.emphasized ? options.visibleTargetList[index] ? "visible" : "hidden" : "visible";
+    if (options.visibility) {
+      visibility = "visible";
+    }
+    return visibility === "hidden";
+  });
+}
+const cssProperties$C = makeCssVariablePrefixMap("--elf--tools", {
+  backgroundColor: true,
+  color: true,
+  height: true
+});
+class Tools extends UIElement {
   template() {
-    const { items: e, style: t } = this.props;
-    return /* @__PURE__ */ o("div", {
+    const {
+      style: style2 = {},
+      vertical = false,
+      emphasized = false,
+      moreIcon
+    } = this.props;
+    const [visibleTargetList, setVisibilityTargetList] = useState([]);
+    const [lastLeft, setLastLeft] = useState(0);
+    const [visibility, setVisibility] = useState(true);
+    const [rootRect, setRootRect] = useState(null);
+    useEffect(() => {
+      let observer, resizeObserver;
+      if (emphasized) {
+        const options = {
+          root: this.parent.parent.$el.el,
+          threshold: 1
+        };
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.intersectionRatio < 1) {
+              setVisibility(false);
+            } else {
+              setVisibility(true);
+            }
+            setRootRect(e.intersectionRect);
+          });
+        }, options);
+        observer.observe(this.$el.el);
+        resizeObserver = new ResizeObserver((entries) => {
+          entries.forEach((entry) => {
+            setRootRect(Dom.create(entry.target).rect());
+          });
+        });
+        resizeObserver.observe(this.parent.parent.$el.el);
+      }
+      return () => {
+        observer == null ? void 0 : observer.disconnect();
+        resizeObserver == null ? void 0 : resizeObserver.disconnect();
+      };
+    }, [emphasized]);
+    useEffect(() => {
+      var _a;
+      if (emphasized && !visibility) {
+        const list = [];
+        let totalWidth = 0;
+        const localRect = (_a = this.$el) == null ? void 0 : _a.rect();
+        if (!localRect)
+          return;
+        this.$el.children().forEach((child, index) => {
+          if (child.hasClass("hidden-tools"))
+            return;
+          const rect = child.rect();
+          let isVisible = rect.right + 50 < rootRect.right;
+          if (isVisible) {
+            totalWidth += rect.width;
+            if (totalWidth + 50 > rootRect.width) {
+              totalWidth = rootRect.width - 50;
+              isVisible = false;
+            }
+          }
+          list[index] = isVisible;
+        });
+        setVisibilityTargetList(list);
+        setLastLeft(localRect.width - (localRect.right - rootRect.right) - 50);
+      }
+    }, [emphasized, visibility, rootRect]);
+    const localClass = useMemo(() => {
+      return classnames("elf--tools", {
+        vertical,
+        emphasized
+      });
+    }, [vertical, emphasized]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$C)
+    };
+    const items = makeToolsItem(this.props.items, {
+      visibleTargetList,
+      rootRect,
+      visibility,
+      emphasized
+    });
+    const hiddenItems = makeHiddenToolsItem(this.props.items, {
+      visibleTargetList,
+      rootRect,
+      visibility,
+      emphasized
+    });
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault()
+    }, items, hiddenItems.length ? /* @__PURE__ */ createElementJsx(ToolsMenuItem, {
+      class: "hidden-tools",
+      items: hiddenItems,
+      icon: moreIcon,
+      direction: "right",
+      noArrow: true,
+      style: {
+        position: "absolute",
+        height: "100%",
+        left: lastLeft
+      }
+    }) : void 0);
+  }
+}
+registerComponent("Tools", Tools);
+registerComponent("tools", Tools);
+function makeToolbarItem(items = [], options = {}) {
+  return items.map((it, index) => {
+    const ref = `${it.type || "item"}${index}`;
+    return /* @__PURE__ */ createElementJsx(ToolbarItem, {
+      ref,
+      ...it,
+      ...options
+    });
+  });
+}
+class ToolbarItem extends UIElement {
+  template() {
+    const { items, style: style2, emphasized, moreIcon } = this.props;
+    return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--toolbar-item"
-    }, /* @__PURE__ */ o(he, {
-      ref: "$tools",
-      items: e,
-      style: t
+    }, /* @__PURE__ */ createElementJsx(Tools, {
+      items,
+      style: style2,
+      emphasized,
+      moreIcon
     }));
   }
 }
-const be = x("--elf--toolbar", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  align: !0
+const cssProperties$B = makeCssVariablePrefixMap("--elf--toolbar", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  align: true
 });
-class ys extends h {
-  template() {
-    const { style: e = {}, align: t, items: s = [] } = this.props, l = {
-      class: f("elf--toolbar", {
-        [t]: !0
-      }),
-      style: {
-        ...b(e, be)
-      }
-    };
-    return /* @__PURE__ */ o("div", {
-      ...l,
-      onContextMenu: (i) => i.preventDefault()
-    }, fe(s));
-  }
-}
-const me = {
-  backgroundColor: "--elf--notification-background",
-  color: "--elf--notification-color",
-  height: "--elf--notification-height",
-  hoverColor: "--elf--notification-hover-color",
-  borderColor: "--elf--notification-border-color",
-  boxShadow: "--elf--notification-box-shadow",
-  toolsBorderColor: "--elf--notification-tools-border-color",
-  toolsBorderRadius: "--elf--notification-tools-border-radius"
-};
-class vs extends h {
+class Toolbar extends UIElement {
   template() {
     const {
-      style: e = {},
-      icon: t,
-      content: s,
-      tools: l,
-      direction: i = "top-left"
-    } = this.props, r = {
-      class: f(
-        "elf--notification",
-        `elf--notification-direction-${i}`
-      ),
-      style: {
-        ...b(e, me)
-      }
+      style: style2 = {},
+      align = "space-between",
+      variant = "default",
+      rounded = false,
+      emphasized = false,
+      items = [],
+      class: className
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames(
+        "elf--toolbar",
+        {
+          [align]: true,
+          rounded,
+          emphasized,
+          [variant]: true
+        },
+        className
+      );
+    }, [align, variant, rounded, emphasized, className]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$B)
     };
-    return /* @__PURE__ */ o("div", {
-      ...r,
-      onContextMenu: (a) => a.preventDefault()
-    }, t ? /* @__PURE__ */ o("div", {
-      class: "elf--notification-icon"
-    }, t) : void 0, /* @__PURE__ */ o("div", {
-      class: "elf--notification-content"
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--notification-text"
-    }, s)), /* @__PURE__ */ o("div", {
-      class: "elf--notification-tools"
-    }, l || []));
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault()
+    }, makeToolbarItem(items, {
+      emphasized
+    }));
   }
 }
-const ye = x("--elf--visual-bell", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  hoverColor: !0,
-  borderColor: !0,
-  boxShadow: !0,
-  toolsBorderColor: !0,
-  toolsBorderRadius: !0,
-  hgap: !0,
-  vgap: !0
+registerComponent("toolbar", Toolbar);
+registerComponent("Toolbar", Toolbar);
+const cssProperties$A = makeCssVariablePrefixMap("--elf--notification", {
+  backgroundColor: true,
+  color: true,
+  width: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true
 });
-class ve extends h {
+class Notification extends UIElement {
   template() {
-    const { style: e = {}, content: t, delay: s = 0, direction: l = "bottom" } = this.props, [i, r] = T(s), [a, c] = T(!1);
-    this.state.hideCallback = j(
-      (u = 0) => {
-        r(u);
-      },
-      [r]
-    );
-    const d = {
-      class: f(
-        "elf--visual-bell",
-        `elf--visual-bell-direction-${l}`,
-        { hide: a }
-      ),
-      style: {
-        ...b(e, ye),
-        transition: `opacity ${i}ms ease-in-out`,
-        opacity: a ? 0 : 1
-      }
+    const {
+      style: style2 = {},
+      icon,
+      content,
+      tools,
+      direction = "top-left"
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--notification", {
+        [direction]: true
+      });
+    }, [direction]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$A)
     };
-    return Bt(() => {
-      i > 0 && (a || this.props.onShow && this.props.onShow(), setTimeout(() => {
-        a || c(!0);
-      }, i));
-    }, [i, a]), /* @__PURE__ */ o("div", {
-      class: "elf--visual-bell",
-      ...d,
-      onContextMenu: (u) => u.preventDefault(),
-      onTransitionEnd: () => {
-        this.props.onHide && this.props.onHide(), this.destroy(!0);
-      }
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--visual-bell-content"
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--visual-bell-text"
-    }, t)), /* @__PURE__ */ o("div", {
-      class: "elf--visual-bell-tools"
-    }, this.props.tools || []));
-  }
-  hide(e = 0) {
-    var t;
-    (t = this.state) == null || t.hideCallback(e);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault()
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
+      class: "icon"
+    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "content"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "text"
+    }, content)), /* @__PURE__ */ createElementJsx("div", {
+      class: "tools"
+    }, tools || []));
   }
 }
-function Cs({
-  content: n = "",
-  delay: e = 0,
-  direction: t = "bottom",
-  tools: s = [],
-  options: l = {},
-  style: i = {}
+registerComponent("notification", Notification);
+const cssProperties$z = makeCssVariablePrefixMap("--elf--toast", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+  hgap: true,
+  vgap: true
+});
+class Toast extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      content,
+      delay = 0,
+      icon,
+      direction = "bottom",
+      closable,
+      variant = void 0
+    } = this.props;
+    const [localDelay, setLocalDelay] = useState(delay);
+    const [hide, setHide] = useState(false);
+    this.state.hideCallback = useCallback(
+      (hideDelay = 0) => {
+        setLocalDelay(hideDelay);
+      },
+      [setLocalDelay]
+    );
+    const localClass = useMemo(() => {
+      return classnames("elf--toast", {
+        hide,
+        [direction]: true,
+        [variant]: true
+      });
+    }, [hide, direction, variant]);
+    const styleObject = {
+      class: localClass,
+      style: {
+        ...propertyMap(style2, cssProperties$z),
+        transition: `opacity ${localDelay}ms ease-in-out`,
+        opacity: hide ? 0 : 1
+      }
+    };
+    useEffect(() => {
+      if (localDelay > 0) {
+        if (!hide) {
+          this.props.onShow && this.props.onShow();
+        }
+        setTimeout(() => {
+          if (!hide) {
+            setHide(true);
+          }
+        }, localDelay);
+      }
+    }, [localDelay, hide]);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      onContextMenu: (e) => e.preventDefault(),
+      onTransitionEnd: () => {
+        this.props.onHide && this.props.onHide();
+        this.destroy(true);
+      }
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
+      class: "icon"
+    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "content"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--toast-text"
+    }, content)), /* @__PURE__ */ createElementJsx("div", {
+      class: "tools"
+    }, this.props.tools || []), closable ? /* @__PURE__ */ createElementJsx("div", {
+      class: "close-area"
+    }, /* @__PURE__ */ createElementJsx(Button, {
+      size: "small",
+      style: {
+        color: "var(--color-white)",
+        fontSize: "20px !important"
+      },
+      quiet: true,
+      closable: true,
+      onClick: () => this.hide()
+    }, "\xD7")) : void 0);
+  }
+  hide(hideDelay = 0) {
+    var _a;
+    (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
+  }
+}
+function toast({
+  content = "",
+  delay = 0,
+  direction = "bottom",
+  cloasable = false,
+  onClose,
+  tools = [],
+  options = {},
+  style: style2 = {}
 }) {
-  return ft(
-    /* @__PURE__ */ o(ve, {
-      delay: e,
-      direction: t,
-      tools: s,
-      style: i
-    }, n),
-    l
+  return potal(
+    /* @__PURE__ */ createElementJsx(Toast, {
+      delay,
+      direction,
+      tools,
+      style: style2,
+      cloasable,
+      onClose
+    }, content),
+    options
   );
 }
-const Ce = x("--elf--tooltip", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  hoverColor: !0,
-  borderColor: !0,
-  boxShadow: !0,
-  toolsBorderColor: !0,
-  toolsBorderRadius: !0,
-  hgap: !0,
-  vgap: !0,
-  delay: !0
+registerComponent("toast", Toast);
+registerComponent("Toast", Toast);
+const cssProperties$y = makeCssVariablePrefixMap("--elf--popover", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+  hgap: true,
+  vgap: true,
+  delay: true,
+  contentPadding: true
 });
-class ks extends h {
+class Popover extends UIElement {
   initState() {
     return {
       trigger: this.props.trigger || "hover",
-      show: this.props.show || !1
+      delay: 1e3,
+      show: this.props.show || false
     };
   }
   template() {
     const {
-      style: e = {},
-      message: t = "",
-      content: s,
-      position: l = "bottom"
-    } = this.props, { show: i } = this.state, r = {
-      class: f("elf--tooltip", `elf--tooltip-position-${l}`),
+      style: style2 = {},
+      body = "",
+      content,
+      placement = "bottom",
+      showTip = false,
+      animated = false
+    } = this.props;
+    const { show } = this.state;
+    const styleObject = {
+      class: classnames("elf--popover", { [placement]: true, animated }),
       style: {
-        ...b(e, Ce)
+        ...propertyMap(style2, cssProperties$y)
       }
     };
-    return /* @__PURE__ */ o("div", {
-      class: "elf--tooltip",
-      ...r
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--tooltip-content"
-    }, s), i || this.props.show ? /* @__PURE__ */ o("div", {
-      class: "elf--tooltip-message"
-    }, /* @__PURE__ */ o("div", {
-      class: "arrow"
-    }), /* @__PURE__ */ o("div", {
-      class: "elf--toolltip-message-content"
-    }, t)) : void 0);
+    const isPopoverShow = show || this.props.show;
+    const isShowTip = isPopoverShow && showTip;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--popover-content"
+    }, content, isShowTip ? /* @__PURE__ */ createElementJsx("div", {
+      class: "tip"
+    }) : void 0), isPopoverShow ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--popover-message"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--popover-message-content"
+    }, body), /* @__PURE__ */ createElementJsx("div", {
+      class: "event-panel"
+    })) : void 0);
   }
   open() {
     this.setState({
-      show: !0
+      show: true
     });
   }
   close() {
-    this.setState({
-      show: !1
-    });
+    setTimeout(() => {
+      this.setState({
+        show: false
+      });
+    }, this.props.hideDelay);
   }
   toggle() {
     this.setState({
@@ -1489,7 +2647,10 @@ class ks extends h {
     });
   }
   checkClickable(e) {
-    return !R.create(e.target).closest("elf--tooltip");
+    const $menu = Dom.create(e.target).closest("elf--popover-content");
+    if ($menu)
+      return false;
+    return true;
   }
   checkTriggerClick() {
     return this.state.trigger === "click";
@@ -1497,283 +2658,426 @@ class ks extends h {
   checkTriggerOver() {
     return this.state.trigger === "hover";
   }
-  [_t("$el") + C("checkTriggerOver")]() {
+  [POINTERENTER("$el") + IF("checkTriggerOver")]() {
     this.open();
   }
-  checkNotInTooltip(e) {
-    const t = R.create(e.target).closest("elf--tooltip");
-    return t ? this.$el.is(t) === !1 : !0;
+  checkNotInpopover(e) {
+    const $menu = Dom.create(e.target).closest("elf--popover");
+    if (!$menu)
+      return true;
+    return this.$el.is($menu) === false;
   }
-  [gt("$el") + C("checkTriggerOver")]() {
+  [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
     this.close();
   }
-  [M("$el") + C("checkClickable") + C("checkTriggerClick")]() {
+  [CLICK("$el") + IF("checkTriggerClick")]() {
     this.toggle();
   }
 }
-const ke = {
-  backgroundColor: "--elf--panel-background",
-  color: "--elf--panel-color",
-  height: "--elf--panel-height",
-  hoverColor: "--elf--panel-hover-color",
-  borderColor: "--elf--panel-border-color",
-  boxShadow: "--elf--panel-box-shadow",
-  padding: "--elf--panel-padding",
-  borderRadius: "--elf--panel-border-radius"
-};
-class xs extends h {
+registerComponent("popover", Popover);
+registerComponent("Popover", Popover);
+const cssProperties$x = makeCssVariablePrefixMap("--elf--panel", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  padding: true,
+  borderRadius: true
+});
+class Panel extends UIElement {
   template() {
     const {
-      style: e = {},
-      content: t,
-      theme: s,
-      title: l = "",
-      tools: i = [],
-      mode: r,
-      footer: a
-    } = this.props, c = {
-      class: f("elf--panel", `elf--panel-mode-${r}`),
-      "data-theme": s,
-      style: {
-        ...b(e, ke)
-      }
+      style: style2 = {},
+      content,
+      theme,
+      title = "",
+      tools = [],
+      mode = "default",
+      footer
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--panel", { [mode]: true });
+    }, [mode]);
+    const styleObject = {
+      class: localClass,
+      "data-theme": theme,
+      style: propertyMap(style2, cssProperties$x)
     };
-    return /* @__PURE__ */ o("div", {
-      ...c
-    }, l ? /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, title ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-title"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-title-text"
-    }, l), i ? /* @__PURE__ */ o("div", {
+    }, title), tools ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-title-tools"
-    }, i || []) : void 0) : void 0, /* @__PURE__ */ o("div", {
+    }, tools || []) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-content"
-    }, t), a ? /* @__PURE__ */ o("div", {
+    }, content), footer ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--panel-footer"
-    }, a) : void 0);
+    }, footer) : void 0);
   }
 }
-const xe = x("--elf--tabstrip", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  width: !0,
-  hoverColor: !0,
-  borderColor: !0,
-  hgap: !0,
-  vgap: !0,
-  delay: !0
+registerComponent("panel", Panel);
+registerComponent("Panel", Panel);
+const cssProperties$w = makeCssVariablePrefixMap("--elf--tabstrip", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  borderColor: true,
+  gap: true,
+  offset: true,
+  selectedColor: true
 });
-class Se extends h {
+class TabStrip extends UIElement {
   template() {
-    var r;
-    const { style: e = {}, items: t = [], fitted: s, align: l = "left" } = this.props, i = {
-      class: f("elf--tabstrip", {
-        "is-fitted": s
-      }),
-      style: {
-        ...b(e, xe)
+    var _a;
+    const {
+      style: style2 = {},
+      items = [],
+      fitted,
+      align = "left",
+      orientation = "horizontal",
+      activeKey,
+      showIndicator = false,
+      size = "medium",
+      variant = "default",
+      quiet = false
+    } = this.props;
+    const [indicatorInfo, setIndicatorInfo] = this.useState({
+      left: 0,
+      width: 0
+    });
+    const localClass = useMemo(() => {
+      return classnames("elf--tabstrip", {
+        "is-fitted": fitted,
+        [orientation]: true,
+        [size]: true,
+        [variant]: true,
+        quiet
+      });
+    }, [fitted, orientation, size, variant, quiet]);
+    useEffect(() => {
+      if (showIndicator) {
+        const ref = this.refs[`tab-${activeKey}`];
+        if (ref) {
+          if (orientation === "horizontal") {
+            const left = ref.offsetLeft;
+            const width = ref.offsetWidth;
+            setIndicatorInfo({ left, width });
+          } else {
+            const top = ref.offsetTop;
+            const height = ref.offsetHeight;
+            setIndicatorInfo({ top, height });
+          }
+        }
       }
+    }, [activeKey, setIndicatorInfo, orientation, showIndicator]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$w)
     };
-    return /* @__PURE__ */ o("div", {
-      ...i
-    }, /* @__PURE__ */ o("div", {
-      class: f("elf--tabstrip-content", {
-        [`align-${l}`]: !0
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: classnames("elf--tabstrip-content", {
+        [`align-${align}`]: true
       })
-    }, t.map((a) => {
-      const c = !!a.selected, d = !!a.disabled, u = a.selectedStyle || {}, p = a.style || {};
-      return /* @__PURE__ */ o("div", {
-        class: f("elf--tabstrip-item", {
-          selected: c,
-          disabled: d
+    }, items.map((it) => {
+      const isSelected = !!it.selected;
+      const isDisabled = !!it.disabled;
+      const selectedStyle = it.selectedStyle || {};
+      const style22 = it.style || {};
+      return /* @__PURE__ */ createElementJsx("div", {
+        class: classnames("elf--tabstrip-item", {
+          selected: isSelected,
+          disabled: isDisabled
         }),
-        style: c ? u : p
-      }, /* @__PURE__ */ o("div", {
-        onClick: a.onClick
-      }, a.title));
-    })), (r = this.props.tools) != null && r.length ? /* @__PURE__ */ o("div", {
+        style: isSelected ? selectedStyle : style22
+      }, /* @__PURE__ */ createElementJsx("div", {
+        ref: `tab-${it.key}`,
+        onClick: it.onClick
+      }, it.title));
+    }), showIndicator ? /* @__PURE__ */ createElementJsx("div", {
+      class: "indicator"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "indicator-inner",
+      style: indicatorInfo
+    })) : void 0), ((_a = this.props.tools) == null ? void 0 : _a.length) ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tabstrip-tools"
-    }, this.props.tools.map((a) => /* @__PURE__ */ o("div", {
-      class: "elf--tabstrip-tool"
-    }, a))) : void 0);
+    }, this.props.tools.map((it) => {
+      return /* @__PURE__ */ createElementJsx("div", {
+        class: "elf--tabstrip-tool"
+      }, it);
+    })) : void 0);
   }
 }
-const we = x("--elf--tab", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  width: !0,
-  hoverColor: !0,
-  borderColor: !0
+registerComponent("tabstrip", TabStrip);
+registerComponent("TabStrip", TabStrip);
+registerComponent("tab-strip", TabStrip);
+const cssProperties$v = makeCssVariablePrefixMap("--elf--tab", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  width: true,
+  hoverColor: true,
+  borderColor: true
 });
-function $e({ selected: n, content: e }) {
-  return /* @__PURE__ */ o("div", {
-    class: f("elf--tab-content-item", {
-      selected: n
+function TabItem({ selected, content }) {
+  return /* @__PURE__ */ createElementJsx("div", {
+    class: classnames("elf--tab-content-item", {
+      selected
     })
-  }, e);
+  }, content);
 }
-class Ss extends h {
+class Tab extends UIElement {
   initState() {
     return {
       activeKey: this.props.activeKey
     };
   }
-  changeActiveKey(e) {
-    const { onChange: t } = this.props;
-    this.setState({ activeKey: e }), m(t) && t(e);
+  changeActiveKey(key) {
+    const { onChange } = this.props;
+    this.setState({ activeKey: key });
+    if (isFunction(onChange)) {
+      onChange(key);
+    }
   }
   template() {
-    const { style: e = {}, content: t, full: s, fitted: l, align: i = "left" } = this.props, { activeKey: r } = this.state, a = {
-      class: f("elf--tab", {
-        full: s
-      }),
-      style: b(e, we)
+    const {
+      style: style2 = {},
+      content,
+      full,
+      fitted,
+      align = "left",
+      orientation = "horizontal",
+      showIndicator = false,
+      size = "medium",
+      variant = "default",
+      quiet = false
+    } = this.props;
+    const { activeKey } = this.state;
+    const localClass = useMemo(() => {
+      return classnames("elf--tab", {
+        full
+      });
+    }, [full]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$v)
     };
-    return /* @__PURE__ */ o("div", {
-      ...a
-    }, /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tab-header"
-    }, /* @__PURE__ */ o(Se, {
-      fitted: l,
-      align: i,
-      items: t.map((c) => {
-        const { title: d, key: u, onClick: p, disabled: g, style: v, selectedStyle: y } = c.props;
+    }, /* @__PURE__ */ createElementJsx(TabStrip, {
+      fitted,
+      align,
+      orientation,
+      activeKey,
+      showIndicator,
+      size,
+      variant,
+      quiet,
+      items: content.map((it) => {
+        const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
+        const selected = activeKey === key;
         return {
-          title: d,
-          style: v,
-          disabled: g,
-          selectedStyle: y,
-          selected: u === r,
+          title,
+          style: style22,
+          disabled,
+          selectedStyle,
+          key,
+          selected,
           onClick: () => {
-            this.changeActiveKey(u), p && p();
+            this.changeActiveKey(key);
+            onClick && onClick();
           }
         };
       })
-    })), /* @__PURE__ */ o("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--tab-body"
-    }, t.map((c) => {
-      const { key: d, content: u, disabled: p } = c.props;
-      return /* @__PURE__ */ o($e, {
-        key: d,
-        selected: d === r,
-        disabled: p
-      }, u);
+    }, content.map((it) => {
+      const { key, content: content2, disabled } = it.props;
+      const selected = key === activeKey;
+      return /* @__PURE__ */ createElementJsx(TabItem, {
+        key,
+        selected,
+        disabled
+      }, content2);
     })));
   }
 }
-class ws extends h {
+registerComponent("tab", Tab);
+registerComponent("Tab", Tab);
+registerComponent("TabItem", TabItem);
+registerComponent("tab-item", TabItem);
+registerComponent("tabitem", TabItem);
+class Layout extends UIElement {
   template() {
-    const { style: e = {}, content: t, wrap: s = !1 } = this.props, l = {
-      class: f("elf--layout", {
+    const { style: style2 = {}, content, wrap = false } = this.props;
+    const styleObject = {
+      class: classnames("elf--layout", {
         stack: this.props.stack,
-        wrap: s
+        wrap
       }),
       style: {
-        ...b(e, {
+        ...propertyMap(style2, {
           backgroundColor: "--elf--layout-background-color",
           gap: "--elf--layout-gap"
         })
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...l
-    }, t);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
-function dt(n) {
-  if (typeof n == "number" ? n = Array.from({ length: n }, () => 1) : Array.isArray(n) === !1 && (n = [n]), n.length !== 0)
-    return n.map((e) => At(e) ? `${e}fr` : e).join(" ");
+registerComponent("layout", Layout);
+registerComponent("Layout", Layout);
+class VBox extends Flex {
+  template() {
+    const { style: style2 = {}, content } = this.props;
+    return /* @__PURE__ */ createElementJsx(Flex, {
+      stack: true,
+      style: style2
+    }, content);
+  }
 }
-class st extends h {
+registerComponent("vbox", VBox);
+registerComponent("VBox", VBox);
+function makeTemplates(arr) {
+  if (typeof arr === "number") {
+    arr = Array.from({ length: arr }, () => 1);
+  } else if (Array.isArray(arr) === false) {
+    arr = [arr];
+  }
+  if (arr.length === 0) {
+    return void 0;
+  }
+  return arr.map((it) => isNumber(it) ? `${it}fr` : it).join(" ");
+}
+class Grid extends UIElement {
   template() {
     const {
-      class: e = "",
-      style: t = {},
-      columns: s = [],
-      rows: l = [],
-      gap: i,
-      columnGap: r,
-      rowGap: a,
-      content: c,
-      ...d
-    } = this.props, { style: u, noneStyle: p } = V(d), g = {
-      class: f("elf--grid", e),
+      class: className = "",
+      style: style2 = {},
+      columns = [],
+      rows = [],
+      gap,
+      columnGap,
+      rowGap,
+      content,
+      ...extraStyle
+    } = this.props;
+    const { style: styleProperties, noneStyle } = splitStyleKeyAndNoneStyleKey(extraStyle);
+    const styleObject = {
+      class: classnames("elf--grid", className),
       style: {
-        gridTemplateColumns: dt(s),
-        gridTemplateRows: dt(l),
-        gap: i,
-        columnGap: r,
-        rowGap: a,
-        ...b({ ...t, ...u }, {})
+        gridTemplateColumns: makeTemplates(columns),
+        gridTemplateRows: makeTemplates(rows),
+        gap,
+        columnGap,
+        rowGap,
+        ...propertyMap({ ...style2, ...styleProperties }, {})
       },
-      ...p
+      ...noneStyle
     };
-    return /* @__PURE__ */ o("div", {
-      ...g
-    }, c);
+    Object.keys(styleObject.style).forEach((key) => {
+      if (styleObject.style[key] === void 0) {
+        delete styleObject.style[key];
+      }
+    });
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
   }
 }
-const Ie = x("--elf--input-editor", {
-  borderColor: !0,
-  backgroundColor: !0,
-  disabledColor: !0,
-  color: !0,
-  fontSize: !0,
-  fontWeight: !0,
-  height: !0,
-  padding: !0,
-  borderRadius: !0,
-  placeholderColor: !0,
-  emptyColor: !0
+registerComponent("grid", Grid);
+registerComponent("Grid", Grid);
+function Column({ content, span = 1, style: style2, ...extraProps }) {
+  return /* @__PURE__ */ createElementJsx("div", {
+    ...extraProps,
+    style: {
+      ...style2,
+      gridColumn: `span ${span}`
+    }
+  }, content);
+}
+const cssProperties$u = makeCssVariablePrefixMap("--elf--input-editor", {
+  width: true,
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  placeholderColor: true,
+  emptyColor: true,
+  paddingRight: true
 });
-class Me extends h {
+class InputEditor extends UIElement {
   initState() {
     const {
-      style: e = {},
-      type: t = "text",
-      autoFocus: s = !1,
-      focused: l,
-      hover: i = !1,
-      value: r,
-      placeholder: a,
-      disabled: c
+      type = "text",
+      autoFocus = false,
+      focused,
+      hover = false,
+      value,
+      placeholder,
+      disabled
     } = this.props;
     return {
-      style: e,
-      type: t,
-      autoFocus: s,
-      hover: i || !1,
-      focused: l || !1,
-      placeholder: a,
-      value: r,
-      disabled: c
+      type,
+      autoFocus,
+      hover: hover || false,
+      focused: focused || false,
+      placeholder,
+      value,
+      disabled
     };
   }
   template() {
-    const { icon: e, tools: t } = this.props, {
-      style: s = {},
-      type: l = "text",
-      focused: i = !1,
-      hover: r = !1,
-      value: a,
-      placeholder: c,
-      disabled: d
-    } = this.state, u = {
-      class: f([
+    const {
+      icon,
+      tools,
+      size = "medium",
+      readOnly = false,
+      invalid,
+      style: style2
+    } = this.props;
+    const {
+      type = "text",
+      focused = false,
+      hover = false,
+      value,
+      placeholder,
+      disabled
+    } = this.state;
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-editor",
         {
-          focused: i,
-          hover: r,
-          disabled: d,
-          icon: e
+          focused,
+          hover,
+          disabled,
+          icon,
+          invalid,
+          [size]: true,
+          readonly: readOnly
         }
-      ]),
-      style: {
-        ...b(s, Ie)
-      }
-    }, p = {
+      ]);
+    }, [focused, hover, disabled, icon, invalid, size, readOnly]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$u)
+    };
+    const inputEvents = {
       onInput: this.props.onInput,
       onChange: this.props.onChange,
       onKeyDown: this.props.onKeyDown,
@@ -1783,141 +3087,162 @@ class Me extends h {
       onPaste: this.props.onPaste,
       onCut: this.props.onCut,
       onCopy: this.props.onCopy
-    }, g = {
-      type: l,
-      disabled: d,
-      placeholder: c || "",
-      value: a || ""
     };
-    return /* @__PURE__ */ o("div", {
-      ...u
-    }, e ? /* @__PURE__ */ o("div", {
+    const properties = {
+      type,
+      disabled,
+      readonly: readOnly ? "readonly" : void 0,
+      placeholder: placeholder || "",
+      value: value || ""
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-editor-icon"
-    }, e) : void 0, /* @__PURE__ */ o("div", {
+    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       ref: "$input",
-      ...g,
-      ...p
-    }))), t || void 0);
+      ...properties,
+      ...inputEvents
+    }))), tools ? tools : void 0);
   }
   onMounted() {
-    this.state.autoFocus && setTimeout(() => {
-      this.refs.$input.focus(), this.refs.$input.select();
-    }, 10);
+    if (this.state.autoFocus) {
+      setTimeout(() => {
+        this.refs.$input.focus();
+        this.refs.$input.select();
+      }, 10);
+    }
   }
-  runCallback(e, t) {
-    m(e) && e(t, this);
+  runCallback(callback, e) {
+    if (isFunction(callback)) {
+      callback(e, this);
+    }
   }
-  [B("$input")](e) {
+  [FOCUSIN("$input")](e) {
     this.setState({
-      focused: !0
-    }), this.runCallback(this.props.onFocus, e);
+      focused: true
+    });
+    this.runCallback(this.props.onFocus, e);
   }
-  [_("$input")](e) {
+  [FOCUSOUT("$input")](e) {
     this.setState({
-      focused: !1
-    }), this.runCallback(this.props.onBlur, e);
+      focused: false
+    });
+    this.runCallback(this.props.onBlur, e);
   }
   get value() {
     return this.refs.$input.value;
   }
-  set value(e) {
-    this.refs.$input.value = e;
+  set value(v) {
+    this.refs.$input.value = v;
   }
   get selectedValue() {
     return document.getSelection().toString();
   }
 }
-function wt({ color: n }) {
-  const e = E(n), { r: t, g: s, b: l } = e;
-  return /* @__PURE__ */ o("div", {
+registerComponent("input-editor", InputEditor);
+registerComponent("InputEditor", InputEditor);
+registerComponent("inputeditor", InputEditor);
+function ColorView({ color }) {
+  const parsedColor = parse(color);
+  const { r, g, b } = parsedColor;
+  return /* @__PURE__ */ createElementJsx("div", {
     class: "elf--color-view"
-  }, /* @__PURE__ */ o("div", {
+  }, /* @__PURE__ */ createElementJsx("div", {
     class: "elf--color-view-color",
-    style: { backgroundColor: k({ r: t, g: s, b: l }, "rgb") }
-  }), /* @__PURE__ */ o("div", {
+    style: { backgroundColor: format({ r, g, b }, "rgb") }
+  }), /* @__PURE__ */ createElementJsx("div", {
     class: "elf--color-view-opacity-pattern"
-  }, /* @__PURE__ */ o("div", {
+  }, /* @__PURE__ */ createElementJsx("div", {
     class: "elf--color-view-opacity",
-    style: { backgroundColor: k(e, "rgb") }
+    style: { backgroundColor: format(parsedColor, "rgb") }
   })));
 }
-const Oe = x("--elf--input-paint", {
-  borderColor: !0,
-  backgroundColor: !0,
-  disabledColor: !0,
-  color: !0,
-  fontSize: !0,
-  fontWeight: !0,
-  height: !0,
-  padding: !0,
-  borderRadius: !0,
-  placeholderColor: !0,
-  emptyColor: !0
+registerComponent("color-view", ColorView);
+registerComponent("ColorView", ColorView);
+registerComponent("colorview", ColorView);
+const cssProperties$t = makeCssVariablePrefixMap("--elf--input-paint", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  placeholderColor: true,
+  emptyColor: true
 });
-class Ee extends h {
+class InputPaint extends UIElement {
   constructor() {
     super(...arguments);
-    $(this, "keyup", (t) => {
-      switch (t.preventDefault(), t.key) {
+    __publicField(this, "keyup", (e) => {
+      e.preventDefault();
+      switch (e.key) {
         case "ArrowUp":
-          this.increaseOpacity(t);
+          this.increaseOpacity(e);
           break;
         case "ArrowDown":
-          this.decreaseOpacity(t);
+          this.decreaseOpacity(e);
           break;
       }
     });
   }
   initState() {
     const {
-      style: t = {},
-      autoFocus: s = !1,
-      focused: l,
-      hover: i = !1,
-      value: r,
-      placeholder: a,
-      disabled: c,
-      hasOpacity: d = !0
-    } = this.props, u = E(r);
+      style: style2 = {},
+      autoFocus = false,
+      focused,
+      hover = false,
+      value,
+      placeholder,
+      disabled,
+      hasOpacity = true
+    } = this.props;
+    const parsedColor = parse(value);
     return {
-      style: t,
-      autoFocus: s,
-      hover: i || !1,
-      focused: l || !1,
-      placeholder: a,
-      value: r,
-      parsedColor: u,
-      disabled: c,
-      hasOpacity: d
+      style: style2,
+      autoFocus,
+      hover: hover || false,
+      focused: focused || false,
+      placeholder,
+      value,
+      parsedColor,
+      disabled,
+      hasOpacity
     };
   }
   template() {
-    const { icon: t, hideColorView: s = !1 } = this.props, {
-      style: l = {},
-      focused: i = !1,
-      hover: r = !1,
-      value: a,
-      placeholder: c,
-      disabled: d,
-      parsedColor: u
-    } = this.state, p = {
-      class: f([
+    const { icon, hideColorView = false } = this.props;
+    const {
+      style: style2 = {},
+      focused = false,
+      hover = false,
+      value,
+      placeholder,
+      disabled,
+      parsedColor
+    } = this.state;
+    const styleObject = {
+      class: classnames([
         "elf--input-paint",
         {
-          focused: i,
-          hover: r,
-          disabled: d,
-          icon: t
+          focused,
+          hover,
+          disabled,
+          icon
         }
       ]),
       style: {
-        ...b(l, Oe)
+        ...propertyMap(style2, cssProperties$t)
       }
-    }, g = {
+    };
+    const inputEvents = {
       onInput: this.props.onInput,
       onChange: this.props.onChange,
       onKeyDown: this.props.onKeyDown,
@@ -1927,39 +3252,41 @@ class Ee extends h {
       onPaste: this.props.onPaste,
       onCut: this.props.onCut,
       onCopy: this.props.onCopy
-    }, { r: v, g: y, b: S } = u, w = {
-      disabled: d,
-      placeholder: c || "",
-      value: k({ r: v, g: y, b: S }, "hex")
     };
-    return /* @__PURE__ */ o("div", {
-      ...p
-    }, s ? void 0 : /* @__PURE__ */ o("div", {
+    const { r, g, b } = parsedColor;
+    const properties = {
+      disabled,
+      placeholder: placeholder || "",
+      value: format({ r, g, b }, "hex")
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, hideColorView ? void 0 : /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-paint-icon"
-    }, /* @__PURE__ */ o(wt, {
-      color: a
-    })), /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx(ColorView, {
+      color: value
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       ref: "$input",
-      ...w,
-      ...g
-    }))), this.state.hasOpacity && /* @__PURE__ */ o("div", {
+      ...properties,
+      ...inputEvents
+    }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "opacity",
-      value: `${u.a * 100}%`,
+      value: `${parsedColor.a * 100}%`,
       onKeyUp: this.keyup
     })));
   }
-  updateOpacity(t) {
+  updateOpacity(num) {
     this.setState({
       parsedColor: {
         ...this.state.parsedColor,
-        a: this.state.parsedColor.a + t
+        a: this.state.parsedColor.a + num
       }
     });
   }
@@ -1970,129 +3297,170 @@ class Ee extends h {
     this.updateOpacity(-0.01);
   }
   onMounted() {
-    super.onMounted(), this.state.autoFocus && setTimeout(() => {
-      this.refs.$input.focus(), this.refs.$input.select();
-    }, 10);
+    super.onMounted();
+    if (this.state.autoFocus) {
+      setTimeout(() => {
+        this.refs.$input.focus();
+        this.refs.$input.select();
+      }, 10);
+    }
   }
-  runCallback(t, s) {
-    m(t) && t(s, this);
+  runCallback(callback, e) {
+    if (isFunction(callback)) {
+      callback(e, this);
+    }
   }
-  [M("$el .elf--input-paint-icon")](t) {
-    var s, l;
-    (l = (s = this.props).onClickColorView) == null || l.call(s, t);
+  [CLICK("$el .elf--input-paint-icon")](e) {
+    var _a, _b;
+    (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
   }
-  [B("$el input")](t) {
+  [FOCUSIN("$el input")](e) {
     this.setState({
-      focused: !0
-    }), t.target.select(), this.runCallback(this.props.onFocus, t);
+      focused: true
+    });
+    e.target.select();
+    this.runCallback(this.props.onFocus, e);
   }
-  [_("$el input")](t) {
+  [FOCUSOUT("$el input")](e) {
     this.setState({
-      focused: !1
-    }), this.runCallback(this.props.onBlur, t);
+      focused: false
+    });
+    this.runCallback(this.props.onBlur, e);
   }
   get value() {
     return this.refs.$input.value;
   }
-  set value(t) {
-    this.refs.$input.value = t;
+  set value(v) {
+    this.refs.$input.value = v;
   }
   get selectedValue() {
     return document.getSelection().toString();
   }
 }
-const Te = x("--elf--input-paint", {
-  borderColor: !0,
-  backgroundColor: !0,
-  disabledColor: !0,
-  color: !0,
-  fontSize: !0,
-  fontWeight: !0,
-  height: !0,
-  padding: !0,
-  borderRadius: !0,
-  placeholderColor: !0,
-  emptyColor: !0
+registerComponent("InputPaint", InputPaint);
+registerComponent("input-paint", InputPaint);
+registerComponent("inputpaint", InputPaint);
+const cssProperties$s = makeCssVariablePrefixMap("--elf--input-paint", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  placeholderColor: true,
+  emptyColor: true
 });
-class De extends h {
+class HexColorEditor extends UIElement {
   constructor() {
     super(...arguments);
-    $(this, "keydownColor", (t) => {
-      const s = Math.floor(t.target.selectionStart / 2) * 2;
-      let l = "";
-      switch (s < 2 ? l = "r" : s < 4 ? l = "g" : l = "b", t.key) {
+    __publicField(this, "keydownColor", (e) => {
+      const startIndex = Math.floor(e.target.selectionStart / 2) * 2;
+      let type = "";
+      if (startIndex < 2) {
+        type = "r";
+      } else if (startIndex < 4) {
+        type = "g";
+      } else {
+        type = "b";
+      }
+      switch (e.key) {
         case "ArrowUp":
-          t.preventDefault(), this.increaseColor(l), t.target.setSelectionRange(s, s + 2);
+          e.preventDefault();
+          this.increaseColor(type);
+          e.target.setSelectionRange(startIndex, startIndex + 2);
           break;
         case "ArrowDown":
-          t.preventDefault(), this.decreaseColor(l), t.target.setSelectionRange(s, s + 2);
+          e.preventDefault();
+          this.decreaseColor(type);
+          e.target.setSelectionRange(startIndex, startIndex + 2);
           break;
       }
     });
-    $(this, "keyupColor", (t) => {
-      if (!(t.key === "ArrowUp" || t.key === "ArrowDown")) {
-        if (t.target.value.length === 3 || t.target.value.length === 6) {
-          const s = E("#" + t.target.value);
-          s.type === "hex" && this.isInvalidColor(s) === !1 && this.updateFullColor(s);
+    __publicField(this, "keyupColor", (e) => {
+      if (e.key === "ArrowUp" || e.key === "ArrowDown")
+        ;
+      else {
+        if (e.target.value.length === 3 || e.target.value.length === 6) {
+          const color = parse("#" + e.target.value);
+          if (color.type === "hex") {
+            if (this.isInvalidColor(color) === false) {
+              this.updateFullColor(color);
+            }
+          }
         }
       }
     });
-    $(this, "keydown", (t) => {
-      switch (t.preventDefault(), t.stopPropagation(), t.key) {
+    __publicField(this, "keydown", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      switch (e.key) {
         case "ArrowUp":
-          this.increaseOpacity(t), t.target.select();
+          this.increaseOpacity(e);
+          e.target.select();
           break;
         case "ArrowDown":
-          this.decreaseOpacity(t), t.target.select();
+          this.decreaseOpacity(e);
+          e.target.select();
           break;
       }
     });
   }
   initState() {
     const {
-      style: t = {},
-      autoFocus: s = !1,
-      focused: l,
-      hover: i = !1,
-      value: r,
-      placeholder: a,
-      disabled: c,
-      hasOpacity: d = !0
-    } = this.props, u = E(r);
+      style: style2 = {},
+      autoFocus = false,
+      focused,
+      hover = false,
+      value,
+      placeholder,
+      disabled,
+      hasOpacity = true
+    } = this.props;
+    const parsedColor = parse(value);
     return {
-      style: t,
-      autoFocus: s,
-      hover: i || !1,
-      focused: l || !1,
-      placeholder: a,
-      value: r,
-      parsedColor: u,
-      disabled: c,
-      hasOpacity: d
+      style: style2,
+      autoFocus,
+      hover: hover || false,
+      focused: focused || false,
+      placeholder,
+      value,
+      parsedColor,
+      disabled,
+      hasOpacity
     };
   }
   template() {
-    const { icon: t, value: s } = this.props, {
-      style: l = {},
-      focused: i = !1,
-      hover: r = !1,
-      placeholder: a,
-      disabled: c
-    } = this.state, { r: d, g: u, b: p, a: g } = E(s), v = {
-      class: f([
+    const { icon, value } = this.props;
+    const {
+      style: style2 = {},
+      focused = false,
+      hover = false,
+      placeholder,
+      disabled
+    } = this.state;
+    const { r, g, b, a } = parse(value);
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
-          focused: i,
-          hover: r,
-          disabled: c,
-          icon: t,
-          invalid: this.isInvalidColor({ r: d, g: u, b: p, a: g })
+          focused,
+          hover,
+          disabled,
+          icon,
+          invalid: this.isInvalidColor({ r, g, b, a })
         }
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon, r, g, b, a]);
+    const styleObject = {
+      class: localClass,
       style: {
-        ...b(l, Te)
+        ...propertyMap(style2, cssProperties$s)
       }
-    }, y = {
+    };
+    const inputEvents = {
       onInput: this.props.onInput,
       onChange: this.props.onChange,
       onKeyDown: this.props.onKeyDown,
@@ -2102,249 +3470,47 @@ class De extends h {
       onPaste: this.props.onPaste,
       onCut: this.props.onCut,
       onCopy: this.props.onCopy
-    }, S = {
-      disabled: c,
-      placeholder: a || "",
-      value: k({ r: d, g: u, b: p }, "hex").replace("#", "")
     };
-    return this.setState({
-      parsedColor: {
-        r: d,
-        g: u,
-        b: p,
-        a: g
-      }
-    }, !1), /* @__PURE__ */ o("div", {
-      ...v
-    }, /* @__PURE__ */ o("div", {
+    const properties = {
+      disabled,
+      placeholder: placeholder || "",
+      value: format({ r, g, b }, "hex").replace("#", "")
+    };
+    this.setState(
+      {
+        parsedColor: {
+          r,
+          g,
+          b,
+          a
+        }
+      },
+      false
+    );
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       "data-type": "hex",
       maxlength: 6,
-      ...S,
-      ...y,
+      ...properties,
+      ...inputEvents,
       onKeyDown: this.keydownColor,
       onKeyUp: this.keyupColor
-    }))), this.state.hasOpacity && /* @__PURE__ */ o("div", {
+    }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "opacity",
-      value: `${Math.round(g * 100 * 100) / 100}%`,
+      value: `${Math.round(a * 100 * 100) / 100}%`,
       onKeyDown: this.keydown
     })));
   }
-  updateOpacity(t) {
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + t) * 100) / 100))
-      }
-    }, !1), this.runCallback(this.props.onChange);
-  }
-  updateFullColor(t) {
-    this.setState({
-      parsedColor: t
-    }, !1), this.runCallback(this.props.onChange);
-  }
-  updateColor(t, s) {
-    const l = Math.max(0, Math.min(255, this.state.parsedColor[t] + s));
-    this.state.parsedColor[t] !== l && (this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        [t]: Math.max(0, Math.min(255, this.state.parsedColor[t] + s))
-      }
-    }, !1), this.runCallback(this.props.onChange));
-  }
-  increaseColor(t) {
-    this.updateColor(t, 1);
-  }
-  decreaseColor(t) {
-    this.updateColor(t, -1);
-  }
-  increaseOpacity() {
-    this.updateOpacity(0.01);
-  }
-  decreaseOpacity() {
-    this.updateOpacity(-0.01);
-  }
-  isInvalidColor(t) {
-    return isNaN(t.r) || isNaN(t.g) || isNaN(t.b) || isNaN(t.a) || z(t.r) || z(t.g) || z(t.b) || z(t.a);
-  }
-  onMounted() {
-    this.state.autoFocus && setTimeout(() => {
-      const t = this.$el.$("input[data-type='hex']");
-      t.focus(), t.select();
-    }, 10);
-  }
-  runCallback(t, s) {
-    m(t) && t(this.value, this);
-  }
-  [M("$el .elf--input-paint-icon")](t) {
-    var s, l;
-    (l = (s = this.props).onClickColorView) == null || l.call(s, t);
-  }
-  [B("$el input")](t) {
-    this.setState({
-      focused: !0
-    }), t.target.select(), this.runCallback(this.props.onFocus, t);
-  }
-  [_("$el input")](t) {
-    this.setState({
-      focused: !1
-    }), this.runCallback(this.props.onBlur, t);
-  }
-  get value() {
-    const { parsedColor: t } = this.state, { r: s, g: l, b: i, a: r } = t;
-    return k({ r: s, g: l, b: i, a: r }, "hex");
-  }
-  set value(t) {
-    this.refs.$input.value = t;
-  }
-  get selectedValue() {
-    return document.getSelection().toString();
-  }
-}
-const Re = x("--elf--input-paint", {
-  borderColor: !0,
-  backgroundColor: !0,
-  disabledColor: !0,
-  color: !0,
-  fontSize: !0,
-  fontWeight: !0,
-  height: !0,
-  padding: !0,
-  borderRadius: !0,
-  placeholderColor: !0,
-  emptyColor: !0
-});
-class Pe extends h {
-  constructor() {
-    super(...arguments);
-    $(this, "keydownColor", (t) => {
-      switch (t.key) {
-        case "ArrowUp":
-          t.preventDefault(), this.increaseColor(t.target.getAttribute("data-type")), t.target.select();
-          break;
-        case "ArrowDown":
-          t.preventDefault(), this.decreaseColor(t.target.getAttribute("data-type")), t.target.select();
-          break;
-      }
-    });
-    $(this, "keydown", (t) => {
-      switch (t.key) {
-        case "ArrowUp":
-          t.preventDefault(), this.increaseOpacity(t), t.target.select();
-          break;
-        case "ArrowDown":
-          t.preventDefault(), this.decreaseOpacity(t), t.target.select();
-          break;
-        case "Tab":
-          t.preventDefault();
-          var s = this.$el.$("input[data-type='r']");
-          s.focus(), s.select();
-          break;
-      }
-    });
-  }
-  initState() {
-    const {
-      style: t = {},
-      autoFocus: s = !1,
-      focused: l,
-      hover: i = !1,
-      placeholder: r,
-      disabled: a,
-      hasOpacity: c = !0
-    } = this.props;
-    return {
-      style: t,
-      autoFocus: s,
-      hover: i || !1,
-      focused: l || !1,
-      placeholder: r,
-      disabled: a,
-      hasOpacity: c
-    };
-  }
-  template() {
-    const { icon: t, value: s } = this.props, {
-      style: l = {},
-      focused: i = !1,
-      hover: r = !1,
-      placeholder: a,
-      disabled: c
-    } = this.state, d = {
-      class: f([
-        "elf--input-paint",
-        {
-          focused: i,
-          hover: r,
-          disabled: c,
-          icon: t
-        }
-      ]),
-      style: {
-        ...b(l, Re)
-      }
-    }, { r: u, g: p, b: g, a: v } = E(s), y = {
-      disabled: c,
-      placeholder: a || "",
-      min: 0,
-      max: 255
-    };
-    return this.setState(
-      {
-        parsedColor: { r: u, g: p, b: g, a: v }
-      },
-      !1
-    ), /* @__PURE__ */ o("div", {
-      ...d
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ o(st, {
-      columns: 3
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
-      class: "color",
-      "data-type": "r",
-      tabIndex: 1,
-      value: u,
-      ...y,
-      onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ o("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
-      class: "color",
-      "data-type": "g",
-      tabIndex: 2,
-      value: p,
-      ...y,
-      onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ o("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
-      class: "color",
-      "data-type": "b",
-      tabIndex: 3,
-      value: g,
-      ...y,
-      onKeyDown: this.keydownColor
-    })))), this.state.hasOpacity && /* @__PURE__ */ o("div", {
-      class: "elf--input-opacity"
-    }, /* @__PURE__ */ o("input", {
-      type: "text",
-      tabIndex: 4,
-      class: "opacity",
-      value: `${Math.round(v * 100 * 100) / 100}%`,
-      onKeyDown: this.keydown
-    })));
-  }
-  updateOpacity(t) {
+  updateOpacity(num) {
     this.setState(
       {
         parsedColor: {
@@ -2353,33 +3519,295 @@ class Pe extends h {
             0,
             Math.min(
               1,
-              Math.round((this.state.parsedColor.a + t) * 100) / 100
+              Math.round((this.state.parsedColor.a + num) * 100) / 100
             )
           )
         }
       },
-      !1
-    ), this.runCallback(this.props.onChange);
+      false
+    );
+    this.runCallback(this.props.onChange);
   }
-  updateColor(t, s) {
+  updateFullColor(parsedColor) {
+    this.setState(
+      {
+        parsedColor
+      },
+      false
+    );
+    this.runCallback(this.props.onChange);
+  }
+  updateColor(type, num) {
+    const lastValue = Math.max(
+      0,
+      Math.min(255, this.state.parsedColor[type] + num)
+    );
+    if (this.state.parsedColor[type] === lastValue) {
+      return;
+    }
     this.setState(
       {
         parsedColor: {
           ...this.state.parsedColor,
-          [t]: Math.max(
+          [type]: Math.max(
             0,
-            Math.min(255, this.state.parsedColor[t] + s)
+            Math.min(255, this.state.parsedColor[type] + num)
           )
         }
       },
-      !1
-    ), this.runCallback(this.props.onChange);
+      false
+    );
+    this.runCallback(this.props.onChange);
   }
-  increaseColor(t) {
-    this.updateColor(t, 1);
+  increaseColor(type) {
+    this.updateColor(type, 1);
   }
-  decreaseColor(t) {
-    this.updateColor(t, -1);
+  decreaseColor(type) {
+    this.updateColor(type, -1);
+  }
+  increaseOpacity() {
+    this.updateOpacity(0.01);
+  }
+  decreaseOpacity() {
+    this.updateOpacity(-0.01);
+  }
+  isInvalidColor(color) {
+    return isNaN(color.r) || isNaN(color.g) || isNaN(color.b) || isNaN(color.a) || isUndefined(color.r) || isUndefined(color.g) || isUndefined(color.b) || isUndefined(color.a);
+  }
+  onMounted() {
+    if (this.state.autoFocus) {
+      setTimeout(() => {
+        const $el = this.$el.$("input[data-type='hex']");
+        $el.focus();
+        $el.select();
+      }, 10);
+    }
+  }
+  runCallback(callback) {
+    if (isFunction(callback)) {
+      callback(this.value, this);
+    }
+  }
+  [CLICK("$el .elf--input-paint-icon")](e) {
+    var _a, _b;
+    (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
+  }
+  [FOCUSIN("$el input")](e) {
+    this.setState({
+      focused: true
+    });
+    e.target.select();
+    this.runCallback(this.props.onFocus, e);
+  }
+  [FOCUSOUT("$el input")](e) {
+    this.setState({
+      focused: false
+    });
+    this.runCallback(this.props.onBlur, e);
+  }
+  get value() {
+    const { parsedColor } = this.state;
+    const { r, g, b, a } = parsedColor;
+    return format({ r, g, b, a }, "hex");
+  }
+  set value(v) {
+    this.refs.$input.value = v;
+  }
+  get selectedValue() {
+    return document.getSelection().toString();
+  }
+}
+registerComponent("HexColorEditor", HexColorEditor);
+registerComponent("hex-color-editor", HexColorEditor);
+registerComponent("hexcoloreditor", HexColorEditor);
+const cssProperties$r = makeCssVariablePrefixMap("--elf--input-paint", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  placeholderColor: true,
+  emptyColor: true
+});
+class RGBColorEditor extends UIElement {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "keydownColor", (e) => {
+      switch (e.key) {
+        case "ArrowUp":
+          e.preventDefault();
+          this.increaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
+          break;
+        case "ArrowDown":
+          e.preventDefault();
+          this.decreaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
+          break;
+      }
+    });
+    __publicField(this, "keydown", (e) => {
+      switch (e.key) {
+        case "ArrowUp":
+          e.preventDefault();
+          this.increaseOpacity(e);
+          e.target.select();
+          break;
+        case "ArrowDown":
+          e.preventDefault();
+          this.decreaseOpacity(e);
+          e.target.select();
+          break;
+        case "Tab":
+          e.preventDefault();
+          var $el = this.$el.$("input[data-type='r']");
+          $el.focus();
+          $el.select();
+          break;
+      }
+    });
+  }
+  initState() {
+    const {
+      style: style2 = {},
+      autoFocus = false,
+      focused,
+      hover = false,
+      placeholder,
+      disabled,
+      hasOpacity = true
+    } = this.props;
+    return {
+      style: style2,
+      autoFocus,
+      hover: hover || false,
+      focused: focused || false,
+      placeholder,
+      disabled,
+      hasOpacity
+    };
+  }
+  template() {
+    const { icon, value } = this.props;
+    const {
+      style: style2 = {},
+      focused = false,
+      hover = false,
+      placeholder,
+      disabled
+    } = this.state;
+    const styleObject = {
+      class: classnames([
+        "elf--input-paint",
+        {
+          focused,
+          hover,
+          disabled,
+          icon
+        }
+      ]),
+      style: {
+        ...propertyMap(style2, cssProperties$r)
+      }
+    };
+    const { r, g, b, a } = parse(value);
+    const properties = {
+      disabled,
+      placeholder: placeholder || "",
+      min: 0,
+      max: 255
+    };
+    this.setState(
+      {
+        parsedColor: { r, g, b, a }
+      },
+      false
+    );
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--input-area"
+    }, /* @__PURE__ */ createElementJsx(Grid, {
+      columns: 3
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--input-item"
+    }, /* @__PURE__ */ createElementJsx("input", {
+      class: "color",
+      "data-type": "r",
+      tabIndex: 1,
+      value: r,
+      ...properties,
+      onKeyDown: this.keydownColor
+    })), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--input-item"
+    }, /* @__PURE__ */ createElementJsx("input", {
+      class: "color",
+      "data-type": "g",
+      tabIndex: 2,
+      value: g,
+      ...properties,
+      onKeyDown: this.keydownColor
+    })), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--input-item"
+    }, /* @__PURE__ */ createElementJsx("input", {
+      class: "color",
+      "data-type": "b",
+      tabIndex: 3,
+      value: b,
+      ...properties,
+      onKeyDown: this.keydownColor
+    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--input-opacity"
+    }, /* @__PURE__ */ createElementJsx("input", {
+      type: "text",
+      tabIndex: 4,
+      class: "opacity",
+      value: `${Math.round(a * 100 * 100) / 100}%`,
+      onKeyDown: this.keydown
+    })));
+  }
+  updateOpacity(num) {
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: Math.max(
+            0,
+            Math.min(
+              1,
+              Math.round((this.state.parsedColor.a + num) * 100) / 100
+            )
+          )
+        }
+      },
+      false
+    );
+    this.runCallback(this.props.onChange);
+  }
+  updateColor(type, num) {
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          [type]: Math.max(
+            0,
+            Math.min(255, this.state.parsedColor[type] + num)
+          )
+        }
+      },
+      false
+    );
+    this.runCallback(this.props.onChange);
+  }
+  increaseColor(type) {
+    this.updateColor(type, 1);
+  }
+  decreaseColor(type) {
+    this.updateColor(type, -1);
   }
   increaseOpacity() {
     this.updateOpacity(0.01);
@@ -2388,94 +3816,122 @@ class Pe extends h {
     this.updateOpacity(-0.01);
   }
   onMounted() {
-    this.state.autoFocus && setTimeout(() => {
-      const t = this.$el.$("input[data-type='r']");
-      t.focus(), t.select();
-    }, 10);
+    if (this.state.autoFocus) {
+      setTimeout(() => {
+        const $el = this.$el.$("input[data-type='r']");
+        $el.focus();
+        $el.select();
+      }, 10);
+    }
   }
-  runCallback(t) {
-    m(t) && t(this.value, this);
+  runCallback(callback) {
+    if (isFunction(callback)) {
+      callback(this.value, this);
+    }
   }
-  [M("$el .elf--input-paint-icon")](t) {
-    var s, l;
-    (l = (s = this.props).onClickColorView) == null || l.call(s, t);
+  [CLICK("$el .elf--input-paint-icon")](e) {
+    var _a, _b;
+    (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
   }
-  [B("$el input")](t) {
+  [FOCUSIN("$el input")](e) {
     this.setState({
-      focused: !0
-    }), t.target.select(), this.runCallback(this.props.onFocus, t);
+      focused: true
+    });
+    e.target.select();
+    this.runCallback(this.props.onFocus, e);
   }
-  [_("$el input")](t) {
+  [FOCUSOUT("$el input")](e) {
     this.setState({
-      focused: !1
-    }), this.runCallback(this.props.onBlur, t);
+      focused: false
+    });
+    this.runCallback(this.props.onBlur, e);
   }
   get value() {
-    const { parsedColor: t } = this.state, { r: s, g: l, b: i, a: r } = t;
-    return k({ r: s, g: l, b: i, a: r }, "rgb");
+    const { parsedColor } = this.state;
+    const { r, g, b, a } = parsedColor;
+    return format({ r, g, b, a }, "rgb");
   }
-  set value(t) {
-    this.refs.$input.value = t;
+  set value(v) {
+    this.refs.$input.value = v;
   }
   get selectedValue() {
     return document.getSelection().toString();
   }
 }
-const Be = x("--elf--input-editor", {
-  borderColor: !0,
-  backgroundColor: !0,
-  disabledColor: !0,
-  color: !0,
-  fontSize: !0,
-  fontWeight: !0,
-  height: !0,
-  padding: !0,
-  borderRadius: !0,
-  placeholderColor: !0,
-  emptyColor: !0
+registerComponent("RGBColorEditor", RGBColorEditor);
+registerComponent("rgb-color-editor", RGBColorEditor);
+registerComponent("rgbcoloreditor", RGBColorEditor);
+const cssProperties$q = makeCssVariablePrefixMap("--elf--input-editor", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  placeholderColor: true,
+  emptyColor: true,
+  paddingRight: true
 });
-class $s extends h {
+class TextAreaEditor extends UIElement {
   initState() {
     const {
-      style: e = {},
-      focused: t,
-      hover: s = !1,
-      value: l,
-      placeholder: i,
-      disabled: r
+      autoFocus = false,
+      focused,
+      hover = false,
+      value,
+      placeholder,
+      disabled
     } = this.props;
     return {
-      style: e,
-      hover: s || !1,
-      focused: t || !1,
-      placeholder: i,
-      value: l,
-      disabled: r
+      autoFocus,
+      hover: hover || false,
+      focused: focused || false,
+      placeholder,
+      value,
+      disabled
     };
   }
   template() {
-    const { icon: e } = this.props, {
-      style: t = {},
-      focused: s = !1,
-      hover: l = !1,
-      value: i,
-      placeholder: r,
-      disabled: a
-    } = this.state, c = {
-      class: f([
-        "elf--input-editor",
-        "multiline",
+    const {
+      icon,
+      tools,
+      size = "medium",
+      readOnly = false,
+      invalid,
+      rows,
+      style: style2,
+      resizable
+    } = this.props;
+    const {
+      focused = false,
+      hover = false,
+      value,
+      placeholder,
+      disabled
+    } = this.state;
+    const localClass = useMemo(() => {
+      return classnames([
+        "elf--input-editor textarea",
         {
-          focused: s,
-          hover: l,
-          disabled: a,
-          icon: e
+          focused,
+          hover,
+          disabled,
+          icon,
+          invalid,
+          resizable,
+          [size]: true,
+          readonly: readOnly
         }
-      ]),
-      style: {
-        ...b(t, Be)
-      }
-    }, d = {
+      ]);
+    }, [focused, hover, disabled, icon, invalid, size, readOnly, resizable]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$q)
+    };
+    const inputEvents = {
       onInput: this.props.onInput,
       onChange: this.props.onChange,
       onKeyDown: this.props.onKeyDown,
@@ -2485,419 +3941,671 @@ class $s extends h {
       onPaste: this.props.onPaste,
       onCut: this.props.onCut,
       onCopy: this.props.onCopy
-    }, u = {
-      disabled: a,
-      placeholder: r,
-      value: i
     };
-    return /* @__PURE__ */ o("div", {
-      ...c
-    }, /* @__PURE__ */ o("div", {
+    const properties = {
+      disabled,
+      rows,
+      readonly: readOnly ? "readonly" : void 0,
+      placeholder: placeholder || "",
+      value: value || ""
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, icon ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--input-editor-icon"
+    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("textarea", {
+    }, /* @__PURE__ */ createElementJsx("textarea", {
       ref: "$input",
-      ...u,
-      ...d
-    }, i))));
+      ...properties,
+      ...inputEvents
+    }, value))), tools ? tools : void 0);
   }
   onMounted() {
-    this.state.autoFocus && setTimeout(() => {
-      this.refs.$input.focus(), this.refs.$input.select();
-    }, 10);
+    if (this.state.autoFocus) {
+      setTimeout(() => {
+        this.refs.$input.focus();
+        this.refs.$input.select();
+      }, 10);
+    }
   }
-  runCallback(e, t) {
-    m(e) && e(t, this);
+  runCallback(callback, e) {
+    if (isFunction(callback)) {
+      callback(e, this);
+    }
   }
-  [B("$input")](e) {
+  [FOCUSIN("$input")](e) {
     this.setState({
-      focused: !0
-    }), this.runCallback(this.props.onFocus, e);
+      focused: true
+    });
+    this.runCallback(this.props.onFocus, e);
   }
-  [_("$input")](e) {
+  [FOCUSOUT("$input")](e) {
     this.setState({
-      focused: !1
-    }), this.runCallback(this.props.onBlur, e);
+      focused: false
+    });
+    this.runCallback(this.props.onBlur, e);
   }
   get value() {
     return this.refs.$input.value;
   }
-  set value(e) {
-    this.refs.$input.value = e;
+  set value(v) {
+    this.refs.$input.value = v;
+  }
+  get selectedValue() {
+    return document.getSelection().toString();
   }
 }
-const _e = x("--elf--virtual-scroll", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  hoverColor: !0,
-  borderColor: !0,
-  boxShadow: !0,
-  toolsBorderColor: !0,
-  toolsBorderRadius: !0,
-  hgap: !0,
-  vgap: !0
+registerComponent("TextAreaEditor", TextAreaEditor);
+registerComponent("textareaeditor", TextAreaEditor);
+registerComponent("text-area-editor", TextAreaEditor);
+const cssProperties$p = makeCssVariablePrefixMap("--elf--field", {
+  width: true
 });
-class Is extends h {
+function Field({
+  label,
+  content,
+  help,
+  position,
+  required = false,
+  requiredText = "*",
+  optional = false,
+  optionalText = "(optional)",
+  size,
+  disabled,
+  validIcon,
+  invalid,
+  invalidIcon,
+  invalidMessage,
+  style: style2 = {}
+}) {
+  const localClass = useMemo(() => {
+    return classnames("elf--field", {
+      [position]: true,
+      [size]: true,
+      disabled
+    });
+  }, [position, size, disabled]);
+  const styleObject = {
+    class: localClass,
+    style: {
+      ...propertyMap(style2, cssProperties$p)
+    }
+  };
+  return /* @__PURE__ */ createElementJsx("div", {
+    ...styleObject
+  }, label ? /* @__PURE__ */ createElementJsx("label", {
+    class: "label"
+  }, label, required ? /* @__PURE__ */ createElementJsx("span", {
+    class: "required"
+  }, requiredText) : null, optional ? /* @__PURE__ */ createElementJsx("span", {
+    class: "optional"
+  }, optionalText) : null) : void 0, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", {
+    class: "field-area"
+  }, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", {
+    class: "field-area-content"
+  }, content, !invalid && validIcon ? /* @__PURE__ */ createElementJsx("div", {
+    class: "valid-icon"
+  }, validIcon) : null, invalid && invalidIcon ? /* @__PURE__ */ createElementJsx("div", {
+    class: "invalid-icon"
+  }, invalidIcon) : null) : void 0, help ? /* @__PURE__ */ createElementJsx("div", {
+    class: "help"
+  }, help) : void 0, invalid ? /* @__PURE__ */ createElementJsx("div", {
+    class: "invalid"
+  }, invalidMessage) : void 0) : void 0);
+}
+function TextArea({
+  help,
+  label,
+  size,
+  style: style2,
+  disabled,
+  required,
+  requiredText,
+  position,
+  optional,
+  optionalText,
+  validIcon,
+  invalid,
+  invalidIcon,
+  invalidMessage,
+  inputStyle,
+  resizable,
+  ...extraProps
+}) {
+  const FieldProps = {
+    label,
+    help,
+    size,
+    style: style2,
+    disabled,
+    required,
+    requiredText,
+    position,
+    optional,
+    optionalText,
+    invalid,
+    validIcon,
+    invalidIcon,
+    invalidMessage
+  };
+  const hasIcon = !invalid && validIcon || invalid && invalidIcon;
+  return /* @__PURE__ */ createElementJsx(Field, {
+    ...FieldProps
+  }, /* @__PURE__ */ createElementJsx(TextAreaEditor, {
+    ...extraProps,
+    disabled,
+    required,
+    size,
+    invalid,
+    resizable,
+    style: {
+      ...inputStyle,
+      paddingRight: hasIcon ? "2.6em" : void 0
+    }
+  }));
+}
+registerComponent("text-area", TextArea);
+registerComponent("TextArea", TextArea);
+registerComponent("textarea", TextArea);
+function TextField({
+  help,
+  label,
+  size,
+  style: style2,
+  disabled,
+  required,
+  requiredText,
+  position,
+  optional,
+  optionalText,
+  validIcon,
+  invalid,
+  invalidIcon,
+  invalidMessage,
+  inputStyle,
+  ...extraProps
+}) {
+  const FieldProps = {
+    label,
+    help,
+    size,
+    style: style2,
+    disabled,
+    required,
+    requiredText,
+    position,
+    optional,
+    optionalText,
+    invalid,
+    validIcon,
+    invalidIcon,
+    invalidMessage
+  };
+  const hasIcon = !invalid && validIcon || invalid && invalidIcon;
+  return /* @__PURE__ */ createElementJsx(Field, {
+    ...FieldProps
+  }, /* @__PURE__ */ createElementJsx(InputEditor, {
+    ...extraProps,
+    disabled,
+    required,
+    size,
+    invalid,
+    style: {
+      ...inputStyle,
+      paddingRight: hasIcon ? "2.6em" : void 0
+    }
+  }));
+}
+registerComponent("text-field", TextField);
+registerComponent("TextField", TextField);
+registerComponent("textfield", TextField);
+const cssProperties$o = makeCssVariablePrefixMap("--elf--virtual-scroll", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  toolsBorderColor: true,
+  toolsBorderRadius: true,
+  hgap: true,
+  vgap: true
+});
+class VirtualScroll extends UIElement {
   initState() {
     return {
       scrollHeight: 32
     };
   }
   template() {
-    const { style: e = {}, itemHeight: t = 32, items: s = [] } = this.props, l = s.length, i = {
-      class: f("elf--virtual-scroll", this.props.class),
+    const { style: style2 = {}, itemHeight = 32, items = [] } = this.props;
+    const totalCount = items.length;
+    const styleObject = {
+      class: classnames("elf--virtual-scroll", this.props.class),
       style: {
-        ...b(e, _e),
+        ...propertyMap(style2, cssProperties$o),
         "--elf--virtual-scroll-item-width": "100%",
-        "--elf--virtual-scroll-item-height": `${t}px`,
-        "--elf--virtual-scroll-item-count": l,
-        "--elf--virtual-scroll-panel-height": `${l * t}px`
+        "--elf--virtual-scroll-item-height": `${itemHeight}px`,
+        "--elf--virtual-scroll-item-count": totalCount,
+        "--elf--virtual-scroll-panel-height": `${totalCount * itemHeight}px`
       }
     };
-    return /* @__PURE__ */ o("div", {
-      ...i
-    }, /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-panel"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-content-area",
       "data-scrolling": this.state.scrolling ? "true" : "false"
     }, this.makeItemView())));
   }
   refreshSize() {
-    var t;
-    const e = (t = this.$el) == null ? void 0 : t.offsetRect();
-    e && this.setState(
-      {
-        width: e.width,
-        height: e.height
-      },
-      !1
-    );
+    var _a;
+    const rect = (_a = this.$el) == null ? void 0 : _a.offsetRect();
+    if (rect) {
+      this.setState(
+        {
+          width: rect.width,
+          height: rect.height
+        },
+        false
+      );
+    }
   }
   onMounted() {
     window.setTimeout(() => {
-      const e = this.$el.offsetRect();
+      const rect = this.$el.offsetRect();
       this.setState({
-        width: e.width,
-        height: e.height
+        width: rect.width,
+        height: rect.height
       });
     }, 20);
   }
-  filterItems(e, t, s) {
-    return e.filter((l, i) => i >= t && i <= s);
+  filterItems(items, startIndex, endIndex) {
+    return items.filter((it, index) => {
+      return index >= startIndex && index <= endIndex;
+    });
   }
   makeItemView() {
-    const { itemHeight: e, items: t, overscanRowCount: s = 10 } = this.props, { width: l, height: i, isRenderingItems: r } = this.state;
-    if (!r) {
-      if (!l)
+    const { itemHeight, items, overscanRowCount = 10 } = this.props;
+    const { width, height, isRenderingItems } = this.state;
+    if (!isRenderingItems) {
+      if (!width)
         return [];
-      const a = t.length * e, c = Math.floor(i / e), d = t.length;
+      const scrollHeight = items.length * itemHeight;
+      const itemCount = Math.floor(height / itemHeight);
+      const totalCount = items.length;
       this.setState(
         {
-          scrollHeight: a,
-          itemCount: c
+          scrollHeight,
+          itemCount
         },
-        !1
+        false
       );
-      const u = Math.max(
-        Math.floor((this.state.scrollTop || 0) / 32) - s,
+      const startIndex = Math.max(
+        Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount,
         0
-      ), p = Math.min(
-        Math.floor(u + c + 2 * s),
-        d - 1
       );
-      this.state.renderItems = this.filterItems(t, u, p);
+      const endIndex = Math.min(
+        Math.floor(startIndex + itemCount + 2 * overscanRowCount),
+        totalCount - 1
+      );
+      this.state.renderItems = this.filterItems(items, startIndex, endIndex);
     }
-    return this.state.renderItems.map((a, c) => {
-      var d, u;
-      return (u = (d = this.props).itemRenderer) == null ? void 0 : u.call(
-        d,
-        a,
-        a.index * e,
-        c,
-        t,
+    return this.state.renderItems.map((item, index) => {
+      var _a, _b;
+      return (_b = (_a = this.props).itemRenderer) == null ? void 0 : _b.call(
+        _a,
+        item,
+        item.index * itemHeight,
+        index,
+        items,
         this
       );
     });
   }
   checkScrollTop() {
-    const { scrollTop: e, height: t, scrollHeight: s } = this.state;
-    return this.setState(
+    const { scrollTop, height, scrollHeight } = this.state;
+    this.setState(
       {
         scrollTop: this.$el.scrollTop
       },
-      !1
-    ), e > s - t ? (this.setState({
-      scrolling: !1
-    }), !1) : !0;
+      false
+    );
+    if (scrollTop > scrollHeight - height) {
+      this.setState({
+        scrolling: false
+      });
+      return false;
+    }
+    return true;
   }
-  [Lt("$el") + C("checkScrollTop")]() {
+  [SCROLL("$el") + IF("checkScrollTop")]() {
     this.trigger("reloadItems");
   }
-  [ot("checkScrolling") + Kt(100)]() {
+  [SUBSCRIBE_SELF("checkScrolling") + DEBOUNCE(100)]() {
     this.setState({
-      scrolling: !1
+      scrolling: false
     });
   }
-  [ot("reloadItems") + jt]() {
+  [SUBSCRIBE_SELF("reloadItems") + FRAME]() {
     this.setState({
-      scrolling: !0
-    }), this.trigger("checkScrolling");
+      scrolling: true
+    });
+    this.trigger("checkScrolling");
   }
   refresh() {
     this.setState(
       {
-        isRenderingItems: !1
+        isRenderingItems: false
       },
-      !1
-    ), this.render();
+      false
+    );
+    this.refresh();
   }
   refreshItems() {
     this.setState(
       {
-        isRenderingItems: !0
+        isRenderingItems: true
       },
-      !1
-    ), this.render();
+      false
+    );
+    this.refresh();
   }
-  scrollIntoView(e) {
-    const { itemHeight: t } = this.props, s = e * t;
-    this.$el.scrollTop = s, this.setState(
+  scrollIntoView(index) {
+    const { itemHeight } = this.props;
+    const scrollTop = index * itemHeight;
+    this.$el.scrollTop = scrollTop;
+    this.setState(
       {
         scrollTop: this.$el.scrollTop
       },
-      !1
-    ), this.refreshItems();
+      false
+    );
+    this.refreshItems();
   }
 }
-class Ms extends h {
+registerComponent("VirtualScroll", VirtualScroll);
+registerComponent("virtual-scroll", VirtualScroll);
+registerComponent("virtualscroll", VirtualScroll);
+class Layer extends UIElement {
   template() {
     const {
-      top: e,
-      id: t,
-      topLevel: s,
-      group: l,
-      selected: i,
-      icon: r,
-      content: a,
-      lock: c,
-      visible: d,
-      lockIcon: u,
-      lockOpenIcon: p,
-      visibleIcon: g,
-      isComponent: v = !1,
-      number: y = 10,
-      onClick: S,
-      onDoubleClick: w,
-      onContextMenu: D,
-      onMouseDown: O,
-      onMouseUp: G,
-      onMouseMove: A,
-      onMouseEnter: X,
-      onMouseLeave: Y
+      top,
+      id,
+      topLevel,
+      group,
+      selected,
+      icon,
+      content,
+      lock,
+      visible,
+      lockIcon,
+      lockOpenIcon,
+      visibleIcon,
+      isComponent = false,
+      number = 10,
+      onClick,
+      onDoubleClick,
+      onContextMenu,
+      onMouseDown,
+      onMouseUp,
+      onMouseMove,
+      onMouseEnter,
+      onMouseLeave
     } = this.props;
-    return /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ createElementJsx("div", {
       class: "elf--virtual-scroll-item elf--layer",
       style: {
-        "--elf--virtual-scroll-item-top": `${e}px`
+        "--elf--virtual-scroll-item-top": `${top}px`
       },
-      "data-id": t,
-      "data-number": y
-    }, /* @__PURE__ */ o("div", {
+      "data-id": id,
+      "data-number": number
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "container",
-      "data-top-level": s ? "true" : void 0,
-      "data-hidden": d ? void 0 : "true",
-      "data-component": v ? "true" : void 0,
-      "data-selected": i ? "true" : void 0
-    }, /* @__PURE__ */ o("div", {
+      "data-top-level": topLevel ? "true" : void 0,
+      "data-hidden": !visible ? "true" : void 0,
+      "data-component": isComponent ? "true" : void 0,
+      "data-selected": selected ? "true" : void 0
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "group"
-    }, l), r && /* @__PURE__ */ o("div", {
+    }, group), icon && /* @__PURE__ */ createElementJsx("div", {
       class: "icon"
-    }, r), /* @__PURE__ */ o("div", {
+    }, icon), /* @__PURE__ */ createElementJsx("div", {
       class: "text",
       ref: "$text",
-      onClick: S,
-      onDoubleClick: w,
-      onContextMenu: D,
-      onMouseDown: O,
-      onMouseUp: G,
-      onMouseMove: A,
-      onMouseEnter: X,
-      onMouseLeave: Y
-    }, a), /* @__PURE__ */ o("div", {
+      ...{
+        onClick,
+        onDoubleClick,
+        onContextMenu,
+        onMouseDown,
+        onMouseUp,
+        onMouseMove,
+        onMouseEnter,
+        onMouseLeave
+      }
+    }, content), /* @__PURE__ */ createElementJsx("div", {
       class: "tools"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "lock"
-    }, c ? u : p), /* @__PURE__ */ o("div", {
+    }, lock ? lockIcon : lockOpenIcon), /* @__PURE__ */ createElementJsx("div", {
       class: "visible"
-    }, g))));
+    }, visibleIcon))));
   }
 }
-const Ae = x("--elf--input-paint", {
-  borderColor: !0,
-  backgroundColor: !0,
-  disabledColor: !0,
-  color: !0,
-  fontSize: !0,
-  fontWeight: !0,
-  height: !0,
-  padding: !0,
-  borderRadius: !0,
-  placeholderColor: !0,
-  emptyColor: !0
+registerComponent("layer", Layer);
+registerComponent("Layer", Layer);
+const cssProperties$n = makeCssVariablePrefixMap("--elf--input-paint", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  placeholderColor: true,
+  emptyColor: true
 });
-class Le extends h {
+class HSLColorEditor extends UIElement {
   constructor() {
     super(...arguments);
-    $(this, "keydownColor", (t) => {
-      switch (t.key) {
+    __publicField(this, "keydownColor", (e) => {
+      switch (e.key) {
         case "ArrowUp":
-          t.preventDefault(), this.increaseColor(t.target.getAttribute("data-type")), t.target.select();
+          e.preventDefault();
+          this.increaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
           break;
         case "ArrowDown":
-          t.preventDefault(), this.decreaseColor(t.target.getAttribute("data-type")), t.target.select();
+          e.preventDefault();
+          this.decreaseColor(e.target.getAttribute("data-type"));
+          e.target.select();
           break;
       }
     });
-    $(this, "keydown", (t) => {
-      switch (t.key) {
+    __publicField(this, "keydown", (e) => {
+      switch (e.key) {
         case "ArrowUp":
-          t.preventDefault(), this.increaseOpacity(t), t.target.select();
+          e.preventDefault();
+          this.increaseOpacity(e);
+          e.target.select();
           break;
         case "ArrowDown":
-          t.preventDefault(), this.decreaseOpacity(t), t.target.select();
+          e.preventDefault();
+          this.decreaseOpacity(e);
+          e.target.select();
           break;
         case "Tab":
-          t.preventDefault();
-          const s = this.$el.$("input[data-type='h']");
-          s.focus(), s.select();
+          e.preventDefault();
+          var $el = this.$el.$("input[data-type='h']");
+          $el.focus();
+          $el.select();
           break;
       }
     });
   }
   initState() {
     const {
-      style: t = {},
-      autoFocus: s = !1,
-      focused: l,
-      hover: i = !1,
-      placeholder: r,
-      disabled: a,
-      hasOpacity: c = !0
+      style: style2 = {},
+      autoFocus = false,
+      focused,
+      hover = false,
+      placeholder,
+      disabled,
+      hasOpacity = true
     } = this.props;
     return {
-      style: t,
-      autoFocus: s,
-      hover: i || !1,
-      focused: l || !1,
-      placeholder: r,
-      disabled: a,
-      hasOpacity: c
+      style: style2,
+      autoFocus,
+      hover: hover || false,
+      focused: focused || false,
+      placeholder,
+      disabled,
+      hasOpacity
     };
   }
   template() {
-    const { icon: t, value: s } = this.props, {
-      style: l = {},
-      focused: i = !1,
-      hover: r = !1,
-      placeholder: a,
-      disabled: c
-    } = this.state, { r: d, g: u, b: p, a: g } = E(s), { h: v, s: y, l: S } = bt(d, u, p), w = {
-      class: f([
+    const { icon, value } = this.props;
+    const {
+      style: style2 = {},
+      focused = false,
+      hover = false,
+      placeholder,
+      disabled
+    } = this.state;
+    const { r, g, b, a } = parse(value);
+    const { h, s, l } = RGBtoHSL(r, g, b);
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
-          focused: i,
-          hover: r,
-          disabled: c,
-          icon: t
+          focused,
+          hover,
+          disabled,
+          icon
         }
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon]);
+    const styleObject = {
+      class: localClass,
       style: {
-        ...b(l, Ae)
+        ...propertyMap(style2, cssProperties$n)
       }
-    }, D = {
-      disabled: c,
-      placeholder: a || "",
+    };
+    const properties = {
+      disabled,
+      placeholder: placeholder || "",
       min: 0,
       max: 255
     };
-    return this.setState({
-      parsedColor: {
-        h: v,
-        s: y,
-        l: S,
-        a: g
-      }
-    }, !1), /* @__PURE__ */ o("div", {
-      ...w
-    }, /* @__PURE__ */ o("div", {
+    this.setState(
+      {
+        parsedColor: {
+          h,
+          s,
+          l,
+          a
+        }
+      },
+      false
+    );
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
-    }, /* @__PURE__ */ o(st, {
+    }, /* @__PURE__ */ createElementJsx(Grid, {
       columns: 3
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       tabIndex: 1,
       "data-type": "h",
-      value: v,
-      ...D,
+      value: h,
+      ...properties,
       onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ o("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       tabIndex: 2,
       "data-type": "s",
-      value: y,
-      ...D,
+      value: s,
+      ...properties,
       onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ o("div", {
+    })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-item"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       class: "color",
       type: "text",
       tabIndex: 3,
       "data-type": "l",
-      value: S,
-      ...D,
+      value: l,
+      ...properties,
       onKeyDown: this.keydownColor
-    })))), this.state.hasOpacity && /* @__PURE__ */ o("div", {
+    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-opacity"
-    }, /* @__PURE__ */ o("input", {
+    }, /* @__PURE__ */ createElementJsx("input", {
       type: "text",
       tabIndex: 4,
       class: "opacity",
-      value: `${Math.round(g * 100 * 100) / 100}%`,
+      value: `${Math.round(a * 100 * 100) / 100}%`,
       onKeyDown: this.keydown
     })));
   }
-  updateOpacity(t) {
+  updateOpacity(num) {
     this.setState({
       parsedColor: {
         ...this.state.parsedColor,
-        a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + t) * 100) / 100))
+        a: Math.max(
+          0,
+          Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100)
+        )
       }
-    }), this.runCallback(this.props.onChange);
+    });
+    this.runCallback(this.props.onChange);
   }
-  updateColor(t, s) {
-    const l = {};
-    t === "h" ? l[t] = Math.max(0, Math.min(360, this.state.parsedColor[t] + s)) : t === "s" ? l[t] = Math.max(0, Math.min(100, this.state.parsedColor[t] + s)) : t === "l" && (l[t] = Math.max(0, Math.min(100, this.state.parsedColor[t] + s))), this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        ...l
-      }
-    }, !1), this.runCallback(this.props.onChange);
+  updateColor(type, num) {
+    const data = {};
+    if (type === "h") {
+      data[type] = Math.max(
+        0,
+        Math.min(360, this.state.parsedColor[type] + num)
+      );
+    } else if (type === "s") {
+      data[type] = Math.max(
+        0,
+        Math.min(100, this.state.parsedColor[type] + num)
+      );
+    } else if (type === "l") {
+      data[type] = Math.max(
+        0,
+        Math.min(100, this.state.parsedColor[type] + num)
+      );
+    }
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          ...data
+        }
+      },
+      false
+    );
+    this.runCallback(this.props.onChange);
   }
-  increaseColor(t) {
-    this.updateColor(t, 1);
+  increaseColor(type) {
+    this.updateColor(type, 1);
   }
-  decreaseColor(t) {
-    this.updateColor(t, -1);
+  decreaseColor(type) {
+    this.updateColor(type, -1);
   }
   increaseOpacity() {
     this.updateOpacity(0.01);
@@ -2906,753 +4614,2411 @@ class Le extends h {
     this.updateOpacity(-0.01);
   }
   onMounted() {
-    this.state.autoFocus && setTimeout(() => {
-      const t = this.$el.$("input[data-type='h']");
-      t.focus(), t.select();
-    }, 10);
+    if (this.state.autoFocus) {
+      setTimeout(() => {
+        const $el = this.$el.$("input[data-type='h']");
+        $el.focus();
+        $el.select();
+      }, 10);
+    }
   }
-  runCallback(t) {
-    m(t) && t(this.value, this);
+  runCallback(callback) {
+    if (isFunction(callback)) {
+      callback(this.value, this);
+    }
   }
-  [M("$el .elf--input-paint-icon")](t) {
-    var s, l;
-    (l = (s = this.props).onClickColorView) == null || l.call(s, t);
+  [CLICK("$el .elf--input-paint-icon")](e) {
+    var _a, _b;
+    (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
   }
-  [B("$el input")](t) {
+  [FOCUSIN("$el input")](e) {
     this.setState({
-      focused: !0
-    }), t.target.select(), this.runCallback(this.props.onFocus, t);
+      focused: true
+    });
+    e.target.select();
+    this.runCallback(this.props.onFocus, e);
   }
-  [_("$el input")](t) {
+  [FOCUSOUT("$el input")](e) {
     this.setState({
-      focused: !1
-    }), this.runCallback(this.props.onBlur, t);
+      focused: false
+    });
+    this.runCallback(this.props.onBlur, e);
   }
   get value() {
-    const { parsedColor: t } = this.state, { h: s, s: l, l: i, a: r } = t;
-    return k({ h: s, s: l, l: i, a: r }, "hsl");
+    const { parsedColor } = this.state;
+    const { h, s, l, a } = parsedColor;
+    return format({ h, s, l, a }, "hsl");
   }
-  set value(t) {
-    this.refs.$input.value = t;
+  set value(v) {
+    this.refs.$input.value = v;
   }
   get selectedValue() {
     return document.getSelection().toString();
   }
 }
-const Ke = ["hex", "rgb", "hsl"];
-function je(n) {
-  return /* @__PURE__ */ o("div", {
+registerComponent("HSLColorEditor", HSLColorEditor);
+registerComponent("hsl-color-editor", HSLColorEditor);
+registerComponent("hslcoloreditor", HSLColorEditor);
+const COLOR_TYPES = ["hex", "rgb", "hsl"];
+class ColorInput extends UIElement {
+  initState() {
+    const { type } = this.props;
+    return { type };
+  }
+  makeTypedColorInput() {
+    const { r, g, b, a, onChange } = this.props;
+    const { type } = this.state;
+    const { h, s, l } = RGBtoHSL(r, g, b);
+    switch (type) {
+      case "hex":
+        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(HexColorEditor, {
+          autoFocus: true,
+          value: format({ r, g, b, a }, "hex"),
+          onChange
+        }));
+      case "rgb":
+        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(RGBColorEditor, {
+          autoFocus: true,
+          value: format({ r, g, b, a }, "rgb"),
+          onChange
+        }));
+      case "hsl":
+        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(HSLColorEditor, {
+          autoFocus: true,
+          value: format({ h, s, l, a }, "hsl"),
+          onChange
+        }));
+    }
+    return void 0;
+  }
+  template() {
+    const { type } = this.state;
+    const input = this.makeTypedColorInput();
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: "color-input"
+    }, /* @__PURE__ */ createElementJsx(OptionMenu, {
+      autoPosition: true,
+      menuStyle: {
+        width: 80,
+        itemPadding: "10px"
+      },
+      items: COLOR_TYPES.map((it) => {
+        return {
+          title: it.toUpperCase(),
+          selectable: true,
+          closable: true,
+          selected: type === it,
+          onClick: () => {
+            this.setState({
+              type: it
+            });
+          }
+        };
+      })
+    }, type.toUpperCase()), input);
+  }
+}
+registerComponent("ColorInput", ColorInput);
+registerComponent("color-input", ColorInput);
+registerComponent("colorinput", ColorInput);
+function EyeDropper(props) {
+  return /* @__PURE__ */ createElementJsx("div", {
     class: "eye-dropper"
-  }, /* @__PURE__ */ o(F, {
+  }, /* @__PURE__ */ createElementJsx(IconButton, {
+    size: "large",
+    shape: "rect",
+    quiet: true,
+    style: {
+      width: 50,
+      paddingLeft: 6,
+      paddingRight: 6
+    },
     onClick: async () => {
-      const e = new window.EyeDropper();
+      const eyeDropper = new window.EyeDropper();
       try {
-        const t = await e.open();
-        m(n.onChange) && n.onChange(t.sRGBHex);
-      } catch (t) {
-        console.warn(t);
+        const result = await eyeDropper.open();
+        isFunction(props.onChange) && props.onChange(result.sRGBHex);
+      } catch (e) {
+        console.warn(e);
       }
     }
-  }, /* @__PURE__ */ o("svg", {
+  }, /* @__PURE__ */ createElementJsx("svg", {
     width: "15",
     height: "15",
     viewBox: "0 0 15 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, /* @__PURE__ */ o("path", {
+  }, /* @__PURE__ */ createElementJsx("path", {
     d: "M13.4473 0.6C12.6473 -0.2 11.4473 -0.2 10.6473 0.6L7.84725 3.4L7.04725 2.7C6.64725 2.3 6.04725 2.3 5.64725 2.7C5.24725 3.1 5.24725 3.7 5.64725 4.1L6.34725 4.8L0.547255 10.6C0.147255 11 -0.452745 12.5 0.547255 13.5C1.54725 14.5 3.04725 13.9 3.44725 13.5L9.24725 7.7L9.94725 8.4C10.3473 8.8 10.9473 8.8 11.3473 8.4C11.7473 8 11.7473 7.4 11.3473 7L10.6473 6.3L13.4473 3.5C14.2473 2.6 14.2473 1.4 13.4473 0.6ZM2.54725 12.5H1.54725V11.5L7.34725 5.7L8.34725 6.7C8.24725 6.7 2.54725 12.5 2.54725 12.5Z",
     fill: "black",
     "fill-opacity": "0.8"
   }))));
 }
-class $t extends h {
+registerComponent("eye-dropper", EyeDropper);
+registerComponent("eyedropper", EyeDropper);
+registerComponent("EyeDropper", EyeDropper);
+class BaseSlide extends UIElement {
   template() {
-    const { value: e, containerClass: t, slideClass: s } = this.props;
-    return /* @__PURE__ */ o("div", {
-      class: `${t} slide-view`
-    }, /* @__PURE__ */ o("div", {
-      class: `${s} slide-bg`
-    }, /* @__PURE__ */ o("div", {
+    const { value, containerClass, slideClass } = this.props;
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: `${containerClass} slide-view`
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: `${slideClass} slide-bg`
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "drag-pointer",
       style: {
-        "--drag-point-left": e
+        "--drag-point-left": value
       }
     })));
   }
-  [H("$el .slide-bg")]() {
+  [POINTERSTART("$el .slide-bg")]() {
     this.setState(
       {
-        clicked: !0,
+        clicked: true,
         rect: this.$el.$(".slide-bg").rect()
       },
-      !1
+      false
     );
   }
   checkClicked() {
     return this.state.clicked;
   }
-  [N("document") + C("checkClicked")](e) {
-    const { onChange: t } = this.props, { x: s, width: l } = this.state.rect, i = s, r = i + l, c = (Math.min(Math.max(i, e.clientX), r) - i) / l;
-    m(t) && t(c);
+  [POINTERMOVE("document") + IF("checkClicked")](e) {
+    const { onChange } = this.props;
+    const { x, width } = this.state.rect;
+    const minX = x;
+    const maxX = minX + width;
+    const targetX = Math.min(Math.max(minX, e.clientX), maxX);
+    const value = (targetX - minX) / width;
+    if (isFunction(onChange)) {
+      onChange(value);
+    }
   }
-  [W("document") + C("checkClicked")]() {
+  [POINTEREND("document") + IF("checkClicked")]() {
     this.setState(
       {
-        clicked: !1
+        clicked: false
       },
-      !1
+      false
     );
   }
 }
-class Ve extends h {
-  template() {
-    const { value: e, onChange: t } = this.props;
-    return /* @__PURE__ */ o($t, {
-      value: e,
-      containerClass: "hue-slide",
-      slideClass: "hue-slide-bg",
-      onChange: t
-    });
-  }
+registerComponent("base-slide", BaseSlide);
+registerComponent("baseslide", BaseSlide);
+function HueSlide({ value, onChange }) {
+  return /* @__PURE__ */ createElementJsx(BaseSlide, {
+    value,
+    containerClass: "hue-slide",
+    slideClass: "hue-slide-bg",
+    onChange
+  });
 }
-class ze extends h {
-  template() {
-    const { value: e, onChange: t } = this.props;
-    return /* @__PURE__ */ o($t, {
-      value: e,
-      containerClass: "opacity-slide",
-      slideClass: "opacity-slide-bg",
-      onChange: t
-    });
-  }
+registerComponent("HueSlide", HueSlide);
+registerComponent("hue-slide", HueSlide);
+registerComponent("hueslide", HueSlide);
+function OpacitySlide({ value, onChange }) {
+  return /* @__PURE__ */ createElementJsx(BaseSlide, {
+    value,
+    containerClass: "opacity-slide",
+    slideClass: "opacity-slide-bg",
+    onChange
+  });
 }
-class Fe extends h {
-  initState() {
-    const { type: e } = this.props;
-    return { type: e };
-  }
-  makeTypedColorInput() {
-    const { r: e, g: t, b: s, a: l, onChange: i } = this.props, { type: r } = this.state, { h: a, s: c, l: d } = bt(e, t, s);
-    switch (r) {
-      case "hex":
-        return /* @__PURE__ */ o("div", null, /* @__PURE__ */ o(De, {
-          autoFocus: !0,
-          value: k({ r: e, g: t, b: s, a: l }, "hex"),
-          onChange: i
-        }));
-      case "rgb":
-        return /* @__PURE__ */ o("div", null, /* @__PURE__ */ o(Pe, {
-          autoFocus: !0,
-          value: k({ r: e, g: t, b: s, a: l }, "rgb"),
-          onChange: i
-        }));
-      case "hsl":
-        return /* @__PURE__ */ o("div", null, /* @__PURE__ */ o(Le, {
-          autoFocus: !0,
-          value: k({ h: a, s: c, l: d, a: l }, "hsl"),
-          onChange: i
-        }));
-    }
-  }
-  template() {
-    const { type: e } = this.state, t = this.makeTypedColorInput();
-    return /* @__PURE__ */ o("div", {
-      class: "color-input"
-    }, /* @__PURE__ */ o(St, {
-      autoPosition: !0,
-      menuStyle: {
-        width: 80,
-        itemPadding: "10px"
-      },
-      items: Ke.map((s) => ({
-        title: s.toUpperCase(),
-        selectable: !0,
-        closable: !0,
-        selected: e === s,
-        onClick: () => {
-          this.setState({
-            type: s
-          });
-        }
-      }))
-    }, e.toUpperCase()), t);
-  }
-}
-class Os extends h {
+registerComponent("OpacitySlide", OpacitySlide);
+registerComponent("opacity-slide", OpacitySlide);
+registerComponent("opacityslide", OpacitySlide);
+const cssProperties$m = {
+  height: "--elf--color-mixer-height",
+  width: "--elf--color-mixer-width"
+};
+class ColorMixer extends UIElement {
   constructor() {
     super(...arguments);
-    $(this, "updateOpacity", (t) => {
+    __publicField(this, "updateOpacity", (a) => {
       this.setState({
-        a: t
-      }), this.changeColor();
+        a
+      });
+      this.changeColor();
     });
-    $(this, "updateHueColor", (t) => {
-      t = t * 360;
-      const { s, v: l, a: i } = this.state, { r, g: a, b: c } = it(t, s, l);
+    __publicField(this, "updateHueColor", (h) => {
+      h = h * 360;
+      const { s, v, a } = this.state;
+      const { r, g, b } = HSVtoRGB(h, s, v);
       this.setState({
-        color: k({ r, g: a, b: c }, "rgb"),
+        color: format({ r, g, b }, "rgb"),
         r,
-        g: a,
-        b: c,
-        a: i,
-        hueColor: Z(t / 360),
-        h: t,
-        s,
-        v: l
-      }), this.changeColor();
-    });
-    $(this, "updateColor", (t) => {
-      const s = E(t), { r: l, g: i, b: r, a } = s, { h: c, s: d, v: u } = lt(l, i, r);
-      this.setState({
-        color: k({ r: l, g: i, b: r }, "rgb"),
-        r: l,
-        g: i,
-        b: r,
+        g,
+        b,
         a,
-        hueColor: Z(c / 360),
-        h: c,
-        s: d,
-        v: u
-      }), this.changeColor();
+        hueColor: checkHueColor(h / 360),
+        h,
+        s,
+        v
+      });
+      this.changeColor();
+    });
+    __publicField(this, "updateColor", (color) => {
+      const parsedColor = parse(color);
+      const { r, g, b, a } = parsedColor;
+      const { h, s, v } = RGBtoHSV(r, g, b);
+      this.setState({
+        color: format({ r, g, b }, "rgb"),
+        r,
+        g,
+        b,
+        a,
+        hueColor: checkHueColor(h / 360),
+        h,
+        s,
+        v
+      });
+      this.changeColor();
     });
   }
   initState() {
-    const { color: t } = this.props, s = E(t), { r: l, g: i, b: r, a } = s, { h: c, s: d, v: u } = lt(l, i, r);
+    const { color = "red", width = 240, height = 240 } = this.props;
+    const parsedColor = parse(color);
+    const { r, g, b, a } = parsedColor;
+    const { h, s, v } = RGBtoHSV(r, g, b);
     return {
-      type: s.type,
-      color: k({ r: l, g: i, b: r }, "rgb"),
-      width: 240,
-      height: 240,
-      r: l,
-      g: i,
-      b: r,
+      type: parsedColor.type,
+      color: format({ r, g, b }, "rgb"),
+      width,
+      height,
+      r,
+      g,
+      b,
       a,
-      hueColor: Z(c),
-      h: c,
-      s: d,
-      v: u
+      hueColor: checkHueColor(h),
+      h,
+      s,
+      v
     };
   }
   template() {
-    const { type: t, h: s, s: l, v: i, width: r, height: a, r: c, g: d, b: u, a: p, hueColor: g, color: v } = this.state, y = r * l, S = a * (1 - i);
-    return /* @__PURE__ */ o("div", {
-      class: "elf--color-mixer"
-    }, /* @__PURE__ */ o("div", {
+    const { type, h, s, v, width, height, r, g, b, a, hueColor, color } = this.state;
+    const {
+      hideSlide = false,
+      hideInput = false,
+      shadow,
+      style: style2 = {},
+      disabled
+    } = this.props;
+    const x = width * s;
+    const y = height * (1 - v);
+    const styleObject = {
+      class: classnames("elf--color-mixer", {
+        shadow,
+        disabled
+      }),
+      style: {
+        ...propertyMap(
+          {
+            ...style2,
+            width,
+            height
+          },
+          cssProperties$m
+        )
+      }
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "elf--color-area",
       style: {
-        backgroundColor: g
+        backgroundColor: hueColor
       }
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "saturation"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "value"
-    }, /* @__PURE__ */ o("div", {
+    }, /* @__PURE__ */ createElementJsx("div", {
       class: "drag-pointer",
       style: {
-        backgroundColor: v,
-        left: y,
-        top: S
+        backgroundColor: color,
+        left: x,
+        top: y
       }
-    })))), /* @__PURE__ */ o("div", {
+    })))), hideSlide === false ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--color-slide-area"
-    }, window.EyeDropper ? /* @__PURE__ */ o(je, {
+    }, window.EyeDropper ? /* @__PURE__ */ createElementJsx(EyeDropper, {
       onChange: this.updateColor
-    }) : void 0, /* @__PURE__ */ o("div", {
+    }) : void 0, /* @__PURE__ */ createElementJsx("div", {
       class: "slide"
-    }, /* @__PURE__ */ o(Ve, {
-      value: s / 360,
-      onChange: this.updateHueColor
-    }), /* @__PURE__ */ o(ze, {
-      r: c,
-      g: d,
-      b: u,
-      value: p,
+    }, /* @__PURE__ */ createElementJsx(HueSlide, {
+      value: h / 360,
+      onChange: this.updateHueColor,
+      disabled
+    }), /* @__PURE__ */ createElementJsx(OpacitySlide, {
+      r,
+      g,
+      b,
+      value: a,
+      disabled,
       onChange: this.updateOpacity
-    }))), /* @__PURE__ */ o("div", {
+    }))) : void 0, hideInput === false ? /* @__PURE__ */ createElementJsx("div", {
       class: "elf--color-input-area"
-    }, /* @__PURE__ */ o(Fe, {
-      type: t,
-      h: s,
-      s: l,
-      v: i,
-      r: c,
-      g: d,
-      b: u,
-      a: p,
+    }, /* @__PURE__ */ createElementJsx(ColorInput, {
+      ...{
+        type,
+        h,
+        s,
+        v,
+        r,
+        g,
+        b,
+        a,
+        disabled
+      },
       onChange: this.updateColor
-    })));
+    })) : void 0);
   }
   formatedColor() {
-    const { type: t, r: s, g: l, b: i, h: r, s: a, v: c, a: d } = this.state;
-    let u = "";
-    switch (t) {
+    const { type, r, g, b, h, s, v, a } = this.state;
+    let color = "";
+    switch (type) {
       case "hex":
       case "rgb":
-        u = k({ r: s, g: l, b: i, a: d }, t);
+        color = format({ r, g, b, a }, type);
         break;
       case "hsl":
-        var { h: p, s: g, l: v } = zt(r, a, c);
-        u = k({ h: p, s: g, l: v, a: d }, t);
+        var { h: hslH, s: hslS, l: hslL } = HSVtoHSL(h, s, v);
+        color = format({ h: hslH, s: hslS, l: hslL, a }, type);
         break;
       case "hsv":
-        u = k({ h: r, s: a, v: c, a: d }, t);
+        color = format({ h, s, v, a }, type);
         break;
     }
-    return u;
+    return color;
   }
   changeColor() {
-    const { onChange: t } = this.props;
-    let s = this.formatedColor();
-    m(t) && t(s);
-  }
-  lastChangeColor() {
-    const { onLastChange: t } = this.props;
-    let s = this.formatedColor();
-    m(t) && t(s);
-  }
-  async openEyeDropper() {
-    const t = new window.EyeDropper();
-    try {
-      const s = await t.open();
-      this.updateColor(s.sRGBHex);
-    } catch (s) {
-      console.warn(s);
+    const { onChange } = this.props;
+    let color = this.formatedColor();
+    if (isFunction(onChange)) {
+      onChange(color);
     }
   }
-  [H("$el .elf--color-area")](t) {
+  lastChangeColor() {
+    const { onLastChange } = this.props;
+    let color = this.formatedColor();
+    if (isFunction(onLastChange)) {
+      onLastChange(color);
+    }
+  }
+  async openEyeDropper() {
+    const eyeDropper = new window.EyeDropper();
+    try {
+      const result = await eyeDropper.open();
+      this.updateColor(result.sRGBHex);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+  [POINTERSTART("$el .elf--color-area")](e) {
     this.setState(
       {
-        clicked: !0,
+        clicked: true,
         rect: this.$el.$(".elf--color-area").rect(),
-        clientX: t.clientX,
-        clientY: t.clientY
+        clientX: e.clientX,
+        clientY: e.clientY
       },
-      !1
+      false
     );
   }
   checkClicked() {
     return this.state.clicked;
   }
-  [N("document") + C("checkClicked")](t) {
-    const { x: s, y: l, width: i, height: r } = this.state.rect, a = s, c = a + i, d = l, u = d + r, p = Math.min(Math.max(a, t.clientX), c), g = Math.min(Math.max(d, t.clientY), u), v = (p - a) / i, y = 1 - (g - d) / r;
-    this.updateSaturationValue(v, y);
+  [POINTERMOVE("document") + IF("checkClicked")](e) {
+    const { x, y, width, height } = this.state.rect;
+    const minX = x;
+    const maxX = minX + width;
+    const minY = y;
+    const maxY = minY + height;
+    const targetX = Math.min(Math.max(minX, e.clientX), maxX);
+    const targetY = Math.min(Math.max(minY, e.clientY), maxY);
+    const s = (targetX - minX) / width;
+    const v = 1 - (targetY - minY) / height;
+    this.updateSaturationValue(s, v);
   }
-  [W("document") + C("checkClicked")](t) {
+  [POINTEREND("document") + IF("checkClicked")](e) {
     this.setState(
       {
-        clicked: !1
+        clicked: false
       },
-      !1
-    ), !(this.state.clientX === t.clientX && this.state.clientY === t.clientY) && this.lastChangeColor();
+      false
+    );
+    if (this.state.clientX === e.clientX && this.state.clientY === e.clientY) {
+      return;
+    }
+    this.lastChangeColor();
   }
-  updateSaturationValue(t, s) {
-    const { r: l, g: i, b: r } = it(this.state.h, t, s);
+  updateSaturationValue(s, v) {
+    const { r, g, b } = HSVtoRGB(this.state.h, s, v);
     this.setState({
-      r: l,
-      g: i,
-      b: r,
-      s: t,
-      v: s,
-      color: k({ r: l, g: i, b: r }, "rgb")
-    }), this.changeColor();
+      r,
+      g,
+      b,
+      s,
+      v,
+      color: format({ r, g, b }, "rgb")
+    });
+    this.changeColor();
   }
 }
-class Es extends h {
+registerComponent("ColorMixer", ColorMixer);
+registerComponent("color-mixer", ColorMixer);
+registerComponent("colormixer", ColorMixer);
+class ColorGrid extends UIElement {
   initState() {
     return {
       selectedValue: this.props.selectedValue
     };
   }
   makeItems() {
-    const { items: e } = this.props, { selectedValue: t } = this.state;
-    return e.map((s) => ({
-      title: s.title,
-      selectable: !0,
-      closable: !0,
-      selected: s.value === t,
-      onClick: () => {
-        this.setState({
-          selectedValue: s.value
-        });
-      }
-    }));
-  }
-  template() {
-    const { items: e } = this.props, { selectedValue: t } = this.state, s = e.find((l) => l.value === t) || e[0] || { title: "" };
-    return /* @__PURE__ */ o("div", {
-      class: "elf--color-grid"
-    }, /* @__PURE__ */ o("div", {
-      class: "elf--color-grid-header"
-    }, /* @__PURE__ */ o(St, {
-      items: this.makeItems()
-    }, s.title)), /* @__PURE__ */ o("div", {
-      class: "elf--color-grid-list"
-    }, s.colors.map((l) => /* @__PURE__ */ o("div", {
-      class: "elf--color-grid-item",
-      onClick: () => this.selectColor(l)
-    }, /* @__PURE__ */ o(wt, {
-      color: l
-    })))));
-  }
-  selectColor(e) {
-    this.setState({ selectedColor: e }, !1), this.props.onSelect && this.props.onSelect(e);
-  }
-}
-class Ue extends h {
-  template() {
-    const {
-      as: e = "div",
-      id: t,
-      class: s = "",
-      style: l = {},
-      content: i,
-      ...r
-    } = this.props, { style: a, noneStyle: c } = V(r), d = {
-      class: f(s),
-      id: t,
-      style: b({ ...l, ...a }, {}),
-      ...c
-    };
-    return Object.keys(d).forEach((u) => {
-      d[u] === void 0 && delete d[u];
-    }), o(e, d, i);
-  }
-}
-const He = {
-  boxSizing: "border-box"
-};
-function Ne({ item: { value: n } }) {
-  return /* @__PURE__ */ o(Me, {
-    type: "text",
-    value: n,
-    width: "100%",
-    display: "block",
-    style: He
-  });
-}
-function We({ item: { value: n, key: e } }) {
-  return /* @__PURE__ */ o(Ue, {
-    as: "div",
-    key: e
-  }, n);
-}
-function Ge({
-  item: { gap: n, rowGap: e, columnGap: t, style: s, columns: l = [], items: i = [] },
-  root: r
-}) {
-  return /* @__PURE__ */ o(st, {
-    columns: l,
-    gap: n,
-    rowGap: e,
-    columnGap: t,
-    style: s
-  }, i.map((a, c) => r.makeEditorItem(a, c)));
-}
-function Xe({ item: n }) {
-  return /* @__PURE__ */ o(F, {
-    onClick: n.onClick
-  }, n.title);
-}
-function Ye({ item: { value: n, autoFocus: e } }) {
-  return /* @__PURE__ */ o(Ee, {
-    value: n,
-    autoFocus: e
-  });
-}
-function qe({ item: n }) {
-  return /* @__PURE__ */ o(Jt, {
-    onChange: n.onChange
-  }, n.icon);
-}
-const Ze = x("--elf--data-editor", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  width: !0,
-  hoverColor: !0,
-  borderColor: !0
-}), Je = {
-  title: We,
-  text: Ne,
-  grid: Ge,
-  button: Xe,
-  color: Ye,
-  "toggle-button": qe
-};
-class Ts extends h {
-  initState() {
-    const { data: e = () => ({}), items: t = () => [], plugins: s = {} } = this.props, l = e();
-    return {
-      plugins: {
-        ...Je,
-        ...s
-      },
-      data: l,
-      items: t(l)
-    };
-  }
-  makeEditorItem(e, t) {
-    const { plugins: s } = this.state;
-    if (typeof e == "string") {
-      const l = s.title;
-      return /* @__PURE__ */ o(l, {
-        key: t,
-        item: { value: e }
-      });
-    } else {
-      const l = s[e.type];
-      if (l)
-        return /* @__PURE__ */ o(l, {
-          key: e.key || t,
-          item: e,
-          root: this
-        });
-    }
-  }
-  template() {
-    const { style: e = {} } = this.props, { items: t } = this.state, s = {
-      class: f("elf--data-editor"),
-      style: b(e, Ze)
-    };
-    return /* @__PURE__ */ o("div", {
-      ...s
-    }, t.map((l, i) => /* @__PURE__ */ o("div", {
-      class: f("elf--data-editor-item", { string: typeof l == "string" })
-    }, l.title ? /* @__PURE__ */ o("div", {
-      class: "title"
-    }, l.title) : null, /* @__PURE__ */ o("div", {
-      class: "editor"
-    }, this.makeEditorItem(l, i)))));
-  }
-}
-const ut = { x: 0, y: 0 }, Qe = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER }, pt = 0;
-function ht(n, e) {
-  return Math.sqrt(
-    Math.pow(e.x - n.x, 2) + Math.pow(e.y - n.y, 2)
-  );
-}
-class Ds extends h {
-  initialize() {
-    super.initialize(), this.__initBodyMoves();
-  }
-  __initBodyMoves() {
-    this.__firstMove = /* @__PURE__ */ new Set(), this.__moves = /* @__PURE__ */ new Set(), this.__ends = /* @__PURE__ */ new Set(), this.__modifyBodyMoveSecond(pt);
-  }
-  __modifyBodyMoveSecond(e = pt) {
-    const t = e === 0 ? this.__loopBodyMoves.bind(this) : Vt(this.__loopBodyMoves.bind(this), e);
-    this.__funcBodyMoves = t;
-  }
-  __loopBodyMoves() {
-    var e = this.pos, t = this.$store.get(K), s = this.lastPos || Qe, l = !(s.x === e.x && s.y === e.y);
-    if (l && this.__firstMove.size) {
-      let i = 0;
-      this.__firstMove.forEach((r) => {
-        const a = ht(e, r.xy);
-        if (Math.abs(a) > 0) {
-          var c = e.x - r.xy.x, d = e.y - r.xy.y;
-          r.func.call(r.context, c, d, "move", t.pressure), i++;
+    const { items } = this.props;
+    const { selectedValue } = this.state;
+    return items.map((it) => {
+      return {
+        title: it.title,
+        selectable: true,
+        closable: true,
+        selected: it.value === selectedValue,
+        onClick: () => {
+          this.setState({
+            selectedValue: it.value
+          });
         }
-      }), i > 0 && this.__firstMove.clear();
-    }
-    l && this.__moves.size && (this.__moves.forEach((i) => {
-      const r = ht(e, i.xy);
-      if (Math.abs(r) > 0.5) {
-        var a = e.x - i.xy.x, c = e.y - i.xy.y;
-        i.func.call(i.context, a, c, "move", t.pressure);
-      }
-    }), this.lastPos = e), window.requestAnimationFrame(this.__funcBodyMoves);
-  }
-  __removeBodyMoves() {
-    var e = this.lastPos, t = this.$store.get(K);
-    e && this.__ends.forEach((s) => {
-      s.func.call(
-        s.context,
-        e.x - s.xy.x,
-        e.y - s.xy.y,
-        "end",
-        t.pressure
-      );
-    }), this.__firstMove.clear(), this.__moves.clear(), this.__ends.clear();
-  }
-  [q(mt)](e, t, s) {
-    this.__firstMove.add({ func: e, context: t, xy: s });
-  }
-  [q(yt)](e, t, s) {
-    this.__moves.add({ func: e, context: t, xy: s });
-  }
-  [q(vt)](e, t, s) {
-    this.__ends.add({ func: e, context: t, xy: s });
-  }
-  [H()](e) {
-    var t = e.xy || ut;
-    this.$store.init(K, e), this.pos = t;
-  }
-  [N()](e) {
-    var t = e.xy || ut;
-    this.$store.init(K, e), this.pos = t, this.__requestId || (this.__requestId = window.requestAnimationFrame(this.__funcBodyMoves));
-  }
-  [W()](e) {
-    this.$store.set(K, e), this.__removeBodyMoves(), window.cancelAnimationFrame(this.__requestId), this.__requestId = null;
-  }
-}
-class Rs extends h {
-  bodyMouseFirstMove(e, t) {
-    this[t] && this.emit(mt, this[t], this, e.xy);
-  }
-  bodyMouseMove(e, t) {
-    this[t] && this.emit(yt, this[t], this, e.xy);
-  }
-  bodyMouseUp(e, t) {
-    this[t] && this.emit(vt, this[t], this, e.xy);
-  }
-}
-class ts extends h {
-  template() {
-    return /* @__PURE__ */ o("div", {
-      ...{
-        class: "elf--app-layout-resize-bar"
-      }
+      };
     });
   }
-  [H()](e) {
+  template() {
+    const { items } = this.props;
+    const { selectedValue } = this.state;
+    const colorItem = items.find((it) => it.value === selectedValue) || items[0] || { title: "" };
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid-header"
+    }, /* @__PURE__ */ createElementJsx(OptionMenu, {
+      items: this.makeItems()
+    }, colorItem.title)), /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid-list"
+    }, colorItem.colors.map((color) => /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--color-grid-item",
+      onClick: () => this.selectColor(color)
+    }, /* @__PURE__ */ createElementJsx(ColorView, {
+      color
+    })))));
+  }
+  selectColor(color) {
+    this.setState({ selectedColor: color }, false);
+    this.props.onSelect && this.props.onSelect(color);
+  }
+}
+registerComponent("ColorGrid", ColorGrid);
+registerComponent("color-grid", ColorGrid);
+registerComponent("colorgrid", ColorGrid);
+class View extends UIElement {
+  template() {
+    const {
+      as = "div",
+      id,
+      class: className = "",
+      style: style2 = {},
+      content,
+      ...extraStyle
+    } = this.props;
+    const { style: styleProperties, noneStyle } = splitStyleKeyAndNoneStyleKey(extraStyle);
+    const styleObject = {
+      class: classnames(className),
+      id,
+      style: propertyMap({ ...style2, ...styleProperties }, {}),
+      ...noneStyle
+    };
+    Object.keys(styleObject).forEach((key) => {
+      if (styleObject[key] === void 0) {
+        delete styleObject[key];
+      }
+    });
+    return createElementJsx(as, styleObject, content);
+  }
+}
+registerComponent("view", View);
+registerComponent("View", View);
+const style = {
+  boxSizing: "border-box"
+};
+function TextInputItem({ item: { value } }) {
+  return /* @__PURE__ */ createElementJsx(InputEditor, {
+    type: "text",
+    value,
+    width: "100%",
+    display: "block",
+    style
+  });
+}
+function TitleItem({ item: { value, key } }) {
+  return /* @__PURE__ */ createElementJsx(View, {
+    as: "div",
+    key
+  }, value);
+}
+function GridItem({
+  item: { gap, rowGap, columnGap, style: style2, columns = [], items = [] },
+  root
+}) {
+  return /* @__PURE__ */ createElementJsx(Grid, {
+    columns,
+    gap,
+    rowGap,
+    columnGap,
+    style: style2
+  }, items.map((item, index) => root.makeEditorItem(item, index)));
+}
+const ButtonItem$1 = "";
+function ButtonItem({ item }) {
+  return /* @__PURE__ */ createElementJsx(Button, {
+    onClick: item.onClick
+  }, item.title);
+}
+function ColorItem({ item: { value, autoFocus } }) {
+  return /* @__PURE__ */ createElementJsx(InputPaint, {
+    value,
+    autoFocus
+  });
+}
+const cssProperties$l = makeCssVariablePrefixMap("--elf--data-editor", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  width: true,
+  hoverColor: true,
+  borderColor: true
+});
+const predefinedPlugins = {
+  title: TitleItem,
+  text: TextInputItem,
+  grid: GridItem,
+  button: ButtonItem,
+  color: ColorItem
+};
+class DataEditor extends UIElement {
+  initState() {
+    const { data = () => ({}), items = () => [], plugins = {} } = this.props;
+    const currentData = data();
+    return {
+      plugins: {
+        ...predefinedPlugins,
+        ...plugins
+      },
+      data: currentData,
+      items: items(currentData)
+    };
+  }
+  makeEditorItem(item, index) {
+    const { plugins } = this.state;
+    if (typeof item === "string") {
+      const TitleItem2 = plugins["title"];
+      return /* @__PURE__ */ createElementJsx(TitleItem2, {
+        key: index,
+        item: { value: item }
+      });
+    } else {
+      const TypedItem = plugins[item.type];
+      if (TypedItem) {
+        return /* @__PURE__ */ createElementJsx(TypedItem, {
+          key: item.key || index,
+          item,
+          root: this
+        });
+      }
+    }
+    return void 0;
+  }
+  template() {
+    const { style: style2 = {} } = this.props;
+    const { items } = this.state;
+    const styleObject = {
+      class: classnames("elf--data-editor"),
+      style: propertyMap(style2, cssProperties$l)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, items.map((item, index) => {
+      const isString2 = typeof item === "string";
+      return /* @__PURE__ */ createElementJsx("div", {
+        class: classnames("elf--data-editor-item", { string: isString2 })
+      }, item.title ? /* @__PURE__ */ createElementJsx("div", {
+        class: "title"
+      }, item.title) : null, /* @__PURE__ */ createElementJsx("div", {
+        class: "editor"
+      }, this.makeEditorItem(item, index)));
+    }));
+  }
+}
+const EMPTY_POS = { x: 0, y: 0 };
+const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
+const MOVE_CHECK_MS = 0;
+function getDist(startPos, endPos) {
+  return Math.sqrt(
+    Math.pow(endPos.x - startPos.x, 2) + Math.pow(endPos.y - startPos.y, 2)
+  );
+}
+class EventPanel extends UIElement {
+  initialize() {
+    super.initialize();
+    this.__initBodyMoves();
+  }
+  __initBodyMoves() {
+    this.__firstMove = /* @__PURE__ */ new Set();
+    this.__moves = /* @__PURE__ */ new Set();
+    this.__ends = /* @__PURE__ */ new Set();
+    this.__modifyBodyMoveSecond(MOVE_CHECK_MS);
+  }
+  __modifyBodyMoveSecond(ms = MOVE_CHECK_MS) {
+    const callback = ms === 0 ? this.__loopBodyMoves.bind(this) : debounce(this.__loopBodyMoves.bind(this), ms);
+    this.__funcBodyMoves = callback;
+  }
+  __loopBodyMoves() {
+    var pos = this.pos;
+    var e = this.$store.get(BODY_MOVE_EVENT);
+    var lastPos = this.lastPos || DEFAULT_POS;
+    var isNotEqualLastPos = !(lastPos.x === pos.x && lastPos.y === pos.y);
+    if (isNotEqualLastPos && this.__firstMove.size) {
+      let i = 0;
+      this.__firstMove.forEach((v) => {
+        const dist = getDist(pos, v.xy);
+        if (Math.abs(dist) > 0) {
+          var dx = pos.x - v.xy.x;
+          var dy = pos.y - v.xy.y;
+          v.func.call(v.context, dx, dy, "move", e.pressure);
+          i++;
+        }
+      });
+      if (i > 0) {
+        this.__firstMove.clear();
+      }
+    }
+    if (isNotEqualLastPos && this.__moves.size) {
+      this.__moves.forEach((v) => {
+        const dist = getDist(pos, v.xy);
+        if (Math.abs(dist) > 0.5) {
+          var dx = pos.x - v.xy.x;
+          var dy = pos.y - v.xy.y;
+          v.func.call(v.context, dx, dy, "move", e.pressure);
+        }
+      });
+      this.lastPos = pos;
+    }
+    window.requestAnimationFrame(this.__funcBodyMoves);
+  }
+  __removeBodyMoves() {
+    var pos = this.lastPos;
+    var e = this.$store.get(BODY_MOVE_EVENT);
+    if (pos) {
+      this.__ends.forEach((v) => {
+        v.func.call(
+          v.context,
+          pos.x - v.xy.x,
+          pos.y - v.xy.y,
+          "end",
+          e.pressure
+        );
+      });
+    }
+    this.__firstMove.clear();
+    this.__moves.clear();
+    this.__ends.clear();
+  }
+  [SUBSCRIBE_ALL(ADD_BODY_FIRST_MOUSEMOVE)](func, context, xy) {
+    this.__firstMove.add({ func, context, xy });
+  }
+  [SUBSCRIBE_ALL(ADD_BODY_MOUSEMOVE)](func, context, xy) {
+    this.__moves.add({ func, context, xy });
+  }
+  [SUBSCRIBE_ALL(ADD_BODY_MOUSEUP)](func, context, xy) {
+    this.__ends.add({ func, context, xy });
+  }
+  [POINTERSTART()](e) {
+    var newPos = e.xy || EMPTY_POS;
+    this.$store.init(BODY_MOVE_EVENT, e);
+    this.pos = newPos;
+  }
+  [POINTERMOVE()](e) {
+    var newPos = e.xy || EMPTY_POS;
+    this.$store.init(BODY_MOVE_EVENT, e);
+    this.pos = newPos;
+    if (!this.__requestId) {
+      this.__requestId = window.requestAnimationFrame(this.__funcBodyMoves);
+    }
+  }
+  [POINTEREND()](e) {
+    this.$store.set(BODY_MOVE_EVENT, e);
+    this.__removeBodyMoves();
+    window.cancelAnimationFrame(this.__requestId);
+    this.__requestId = null;
+  }
+}
+registerComponent("event-panel", EventPanel);
+registerComponent("EventPanel", EventPanel);
+registerComponent("eventpanel", EventPanel);
+class EventControlPanel extends UIElement {
+  bodyMouseFirstMove(e, methodName) {
+    if (this[methodName]) {
+      this.emit(ADD_BODY_FIRST_MOUSEMOVE, this[methodName], this, e.xy);
+    }
+  }
+  bodyMouseMove(e, methodName) {
+    if (this[methodName]) {
+      this.emit(ADD_BODY_MOUSEMOVE, this[methodName], this, e.xy);
+    }
+  }
+  bodyMouseUp(e, methodName) {
+    if (this[methodName]) {
+      this.emit(ADD_BODY_MOUSEUP, this[methodName], this, e.xy);
+    }
+  }
+}
+registerComponent("event-control-panel", EventControlPanel);
+registerComponent("EventControlPanel", EventControlPanel);
+registerComponent("eventcontrolpanel", EventControlPanel);
+const cssProperties$k = makeCssVariablePrefixMap("--elf--app-layout", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  align: true
+});
+class AppLayout extends UIElement {
+  getItem(direction) {
+    return this.props.content.find((it) => it.props.direction === direction);
+  }
+  template() {
+    const { style: style2 = {} } = this.props;
+    const styleObject = {
+      class: "elf--app-layout",
+      style: propertyMap(style2, cssProperties$k)
+    };
+    const topLayoutItem = this.getItem("top");
+    const bottomLayoutItem = this.getItem("bottom");
+    const leftLayoutItem = this.getItem("left");
+    const rightLayoutItem = this.getItem("right");
+    const centerLayoutItem = this.getItem("center");
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, topLayoutItem ? topLayoutItem : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--app-layout-body"
+    }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
+  }
+}
+registerComponent("app-layout", AppLayout);
+registerComponent("AppLayout", AppLayout);
+registerComponent("appLayout", AppLayout);
+class AppResizeBar extends UIElement {
+  template() {
+    const styleObject = {
+      class: "elf--app-layout-resize-bar"
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    });
+  }
+  [POINTERSTART()](e) {
     this.startXY = e.xy;
   }
   isMoved(e) {
     if (!this.startXY)
-      return !1;
-    const { xy: t } = e, s = t.x - this.startXY.x, l = t.y - this.startXY.y;
-    return s !== 0 || l !== 0;
+      return false;
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+    if (diffX !== 0 || diffY !== 0) {
+      return true;
+    }
+    return false;
   }
-  [N("document") + C("isMoved")](e) {
-    const { xy: t } = e, s = t.x - this.startXY.x, l = t.y - this.startXY.y;
-    m(this.props.onResize) && this.props.onResize(s, l);
+  [POINTERMOVE("document") + IF("isMoved")](e) {
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+    if (isFunction(this.props.onResize)) {
+      this.props.onResize(diffX, diffY);
+    }
   }
-  [W("document") + C("isMoved")](e) {
-    const { xy: t } = e, s = t.x - this.startXY.x, l = t.y - this.startXY.y;
-    m(this.props.onResizeEnd) && this.props.onResizeEnd(s, l), this.startXY = void 0;
+  [POINTEREND("document") + IF("isMoved")](e) {
+    const { xy } = e;
+    const diffX = xy.x - this.startXY.x;
+    const diffY = xy.y - this.startXY.y;
+    if (isFunction(this.props.onResizeEnd)) {
+      this.props.onResizeEnd(diffX, diffY);
+    }
+    this.startXY = void 0;
   }
 }
-function Ps({
-  direction: n,
-  content: e,
-  width: t = "auto",
-  height: s = "auto",
-  maxWidth: l = 500,
-  minWidth: i = 0,
-  maxHeight: r = 500,
-  minHeight: a = 0,
-  resizable: c = !1,
-  style: d,
-  onResize: u,
-  onResizeEnd: p
+registerComponent("app-resize-bar", AppResizeBar);
+registerComponent("AppResizeBar", AppResizeBar);
+registerComponent("appresizebar", AppResizeBar);
+function AppLayoutItem({
+  direction,
+  content,
+  width = "auto",
+  height = "auto",
+  maxWidth = 500,
+  minWidth = 0,
+  maxHeight = 500,
+  minHeight = 0,
+  resizable = false,
+  style: style2,
+  onResize,
+  onResizeEnd
 }) {
-  const [g, v] = T(t), [y, S] = T(s), [w, D] = T(g), [O, G] = T(y), A = j(
-    (L) => {
-      if (n === "left" || n === "right") {
-        const I = Math.min(Math.max(i, L), l);
-        D(I), w != I && m(u) && u(I, O);
-      } else if (n === "top" || n === "bottom") {
-        const I = Math.min(Math.max(a, L), r);
-        G(I), O != I && m(u) && u(w, I);
+  const [initWidth, setWidth] = useState(width);
+  const [initHeight, setHeight] = useState(height);
+  const [itemWidth, setLastWidth] = useState(initWidth);
+  const [itemHeight, setLastHeight] = useState(initHeight);
+  const setSize = useCallback(
+    (size) => {
+      if (direction === "left" || direction === "right") {
+        const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
+        setLastWidth(lastWidth);
+        if (itemWidth != lastWidth) {
+          isFunction(onResize) && onResize(lastWidth, itemHeight);
+        }
+      } else if (direction === "top" || direction === "bottom") {
+        const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
+        setLastHeight(lastHeight);
+        if (itemHeight != lastHeight) {
+          isFunction(onResize) && onResize(itemWidth, lastHeight);
+        }
       }
     },
-    [w, O]
-  ), X = j(
-    (L, I) => {
-      A(n === "left" || n === "right" ? n === "left" ? g + L : g - L : n === "top" ? y + I : y - I);
+    [itemWidth, itemHeight]
+  );
+  const onResizeCallback = useCallback(
+    (diffX, diffY) => {
+      if (direction === "left" || direction === "right") {
+        setSize(direction === "left" ? initWidth + diffX : initWidth - diffX);
+      } else {
+        setSize(direction === "top" ? initHeight + diffY : initHeight - diffY);
+      }
     },
-    [n, g, y, A]
-  ), Y = j(() => {
-    v(w), S(O), m(p) && p(w, O);
-  }, [w, O, v, S]);
-  return /* @__PURE__ */ o("div", {
+    [direction, initWidth, initHeight, setSize]
+  );
+  const onResizeEndCallback = useCallback(() => {
+    setWidth(itemWidth);
+    setHeight(itemHeight);
+    isFunction(onResizeEnd) && onResizeEnd(itemWidth, itemHeight);
+  }, [itemWidth, itemHeight, setWidth, setHeight]);
+  return /* @__PURE__ */ createElementJsx("div", {
     class: "elf--app-layout-item",
-    "data-direction": n,
-    "data-resizable": c,
-    style: { ...d, width: w, height: O }
-  }, e, c ? /* @__PURE__ */ o(ts, {
-    onResize: X,
-    onResizeEnd: Y
+    "data-direction": direction,
+    "data-resizable": resizable,
+    style: { ...style2, width: itemWidth, height: itemHeight }
+  }, content, resizable ? /* @__PURE__ */ createElementJsx(AppResizeBar, {
+    onResize: onResizeCallback,
+    onResizeEnd: onResizeEndCallback
   }) : void 0);
 }
-const es = x("--elf--toolbar", {
-  backgroundColor: !0,
-  color: !0,
-  height: !0,
-  align: !0
+registerComponent("AppLayoutItem", AppLayoutItem);
+registerComponent("app-layout-item", AppLayoutItem);
+registerComponent("applayoutitem", AppLayoutItem);
+const cssProperties$j = makeCssVariablePrefixMap("--elf--help-text", {
+  color: true
 });
-class Bs extends h {
-  getItem(e) {
-    return this.props.content.find((t) => t.props.direction === e);
-  }
+class HelpText extends UIElement {
   template() {
-    const { style: e = {} } = this.props, t = {
-      class: "elf--app-layout",
-      style: b(e, es)
-    }, s = this.getItem("top"), l = this.getItem("bottom"), i = this.getItem("left"), r = this.getItem("right"), a = this.getItem("center");
-    return /* @__PURE__ */ o("div", {
-      ...t
-    }, s || void 0, /* @__PURE__ */ o("div", {
-      class: "elf--app-layout-body"
-    }, i || void 0, a || void 0, r || void 0), l || void 0);
+    const {
+      variant = "default",
+      size = "medium",
+      content = "",
+      icon,
+      style: style2 = {},
+      disabled = false,
+      ...extrProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--help-text", {
+        [variant]: true,
+        [size]: true,
+        disabled
+      });
+    }, [variant, size, disabled]);
+    const styleObject = {
+      class: localClass,
+      style: {
+        ...propertyMap(style2, cssProperties$j)
+      },
+      ...extrProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, icon && /* @__PURE__ */ createElementJsx("span", {
+      class: "icon"
+    }, icon), content ? /* @__PURE__ */ createElementJsx("div", {
+      class: "content"
+    }, content) : null);
   }
 }
+registerComponent("help-text", HelpText);
+registerComponent("HelpText", HelpText);
+registerComponent("helptext", HelpText);
+const cssProperties$i = makeCssVariablePrefixMap("--elf--breadcrumbs", {});
+const itemCssProperties = makeCssVariablePrefixMap("--elf--breadcrumbs-item", {
+  color: true
+});
+function BreadcrumbsItem({
+  title,
+  selected = false,
+  multiline,
+  style: style2 = {},
+  href = "#",
+  onClick,
+  tooltip: tooltip2
+}) {
+  if (tooltip2) {
+    if (isString(tooltip2)) {
+      tooltip2 = {
+        message: tooltip2,
+        placement: "top",
+        trigger: "hover"
+      };
+    }
+  }
+  const localClass = useMemo(() => {
+    return classnames("elf--breadcrumbs-item", { selected, multiline });
+  }, [selected, multiline]);
+  return /* @__PURE__ */ createElementJsx("span", {
+    class: localClass,
+    style: propertyMap(style2, itemCssProperties)
+  }, tooltip2 ? /* @__PURE__ */ createElementJsx(Tooltip, {
+    ref: "$tooltip",
+    ...tooltip2
+  }, /* @__PURE__ */ createElementJsx("a", {
+    href,
+    onClick,
+    onFocus: () => {
+      if (tooltip2.trigger.includes("focus")) {
+        this.children.$tooltip.show();
+      }
+    },
+    onBlur: () => {
+      if (tooltip2.trigger.includes("focus")) {
+        this.children.$tooltip.hide();
+      }
+    }
+  }, title)) : /* @__PURE__ */ createElementJsx("a", {
+    href,
+    onClick
+  }, title));
+}
+function BreadcrumbsTitleItem({ title, style: style2 = {} }) {
+  return /* @__PURE__ */ createElementJsx("span", {
+    class: "elf--breadcrumbs-title-item",
+    style: style2
+  }, title);
+}
+class Breadcrumbs extends UIElement {
+  template() {
+    const { style: style2 = {}, items = [], separator = "\u3009" } = this.props;
+    const styleObject = {
+      class: "elf--breadcrumbs",
+      style: propertyMap(style2, cssProperties$i)
+    };
+    const renderItems = items.filter((it) => !((it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)));
+    const renderMultiItems = items.filter(
+      (it) => (it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)
+    );
+    const length = renderItems.length;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--breadcrumbs-items"
+    }, renderItems.map((it, index) => {
+      if (typeof it === "string") {
+        it = { title: it };
+      }
+      const item = /* @__PURE__ */ createElementJsx(BreadcrumbsItem, {
+        ...it
+      });
+      if (index < length - 1 || renderMultiItems.length) {
+        return [item, /* @__PURE__ */ createElementJsx("span", {
+          class: "separator"
+        }, separator)];
+      }
+      return item;
+    })), renderMultiItems.length ? /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--breadcrumbs-content"
+    }, renderMultiItems.map((it) => {
+      return /* @__PURE__ */ createElementJsx(BreadcrumbsTitleItem, {
+        ...it
+      });
+    })) : void 0);
+  }
+}
+const cssProperties$h = makeCssVariablePrefixMap("--elf--ghost", {
+  width: true,
+  height: true,
+  animationName: true,
+  animationDuration: true
+});
+class Ghost extends UIElement {
+  template() {
+    const { style: style2 = {}, animated = false } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--ghost", {
+        animated
+      });
+    }, [animated]);
+    const styleObject = {
+      class: localClass,
+      style: {
+        ...propertyMap(
+          {
+            ...style2
+          },
+          cssProperties$h
+        )
+      }
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, "\xA0");
+  }
+}
+registerComponent("ghost", Ghost);
+registerComponent("Ghost", Ghost);
+const cssProperties$g = makeCssVariablePrefixMap("--elf--avatar", {
+  backgroundColor: true,
+  backgroundImage: true
+});
+class Avatar extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      content,
+      size = "medium",
+      shape = "circle",
+      variant = "default",
+      disabled = false,
+      ghost = false,
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--avatar", {
+        [`size-${size}`]: true,
+        [shape]: true,
+        [variant]: true,
+        disabled
+      });
+    }, [shape, size, variant, disabled]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$g),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--avatar-inner"
+    }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true
+    }) : content));
+  }
+}
+const cssProperties$f = makeCssVariablePrefixMap("--elf--tag", {
+  backgroundColor: true,
+  color: true,
+  borderColor: true,
+  borderRadius: true,
+  fontSize: true
+});
+const groupCssProperties = makeCssVariablePrefixMap("--elf--tag-group", {
+  gap: true,
+  width: true
+});
+class Tag extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      content,
+      removable = false,
+      variant = "default",
+      filled = false,
+      disabled = false,
+      readOnly = false
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--tag", {
+        [variant]: true,
+        filled,
+        disabled,
+        readonly: readOnly
+      });
+    }, [variant, filled, disabled, readOnly]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$f)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("label", null, content), removable && /* @__PURE__ */ createElementJsx("span", {
+      class: "close",
+      title: "Close",
+      onClick: this.props.onClose
+    }, "\xD7"));
+  }
+}
+class TagGroup extends UIElement {
+  template() {
+    const { style: style2 = {}, content, gap } = this.props;
+    const styleObject = {
+      class: "elf--tag-group",
+      style: propertyMap(
+        {
+          ...style2,
+          gap
+        },
+        groupCssProperties
+      )
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
+  }
+}
+registerComponent("tag", Tag);
+registerComponent("Tag", Tag);
+const cssProperties$e = makeCssVariablePrefixMap("--elf--badge", {
+  backgroundColor: true,
+  color: true,
+  borderColor: true,
+  borderRadius: true,
+  fontSize: true,
+  offset: true
+});
+class Badge extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      content,
+      variant = "default",
+      filled = false,
+      disabled = false,
+      readOnly = false,
+      size = "small",
+      fixed = false,
+      placement = "none"
+    } = this.props;
+    const localClass = useMemo(() => {
+      const placementClass = fixed ? `placement-${placement}` : "";
+      return classnames(
+        "elf--badge",
+        {
+          [variant]: true,
+          filled,
+          disabled,
+          readonly: readOnly,
+          [size]: true,
+          fixed
+        },
+        placementClass
+      );
+    }, [variant, filled, disabled, readOnly, size, fixed, placement]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$e)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("label", null, content));
+  }
+}
+registerComponent("badge", Badge);
+registerComponent("Badge", Badge);
+const cssProperties$d = makeCssVariablePrefixMap("--elf--progressbar", {
+  backgroundColor: true,
+  color: true,
+  borderRadius: true,
+  fontSize: true,
+  duration: true
+});
+const PERCENT_NUMBER = 100;
+function converValueToPercent(value) {
+  return value + "%";
+}
+class ProgressBar extends UIElement {
+  template() {
+    const {
+      min = 0,
+      max = PERCENT_NUMBER,
+      value = min,
+      showValue = true,
+      valueFunction = converValueToPercent,
+      title,
+      variant = "default",
+      size = "medium",
+      style: style2 = {},
+      shape = "round",
+      indeterminate = false
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--progressbar", {
+        [variant]: true,
+        [size]: true,
+        [shape]: true,
+        indeterminate
+      });
+    }, [variant, size, indeterminate, shape]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$d)
+    };
+    const localValue = (value - min) / (max - min);
+    const percentValue = Math.round(localValue * PERCENT_NUMBER);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, title ? /* @__PURE__ */ createElementJsx("div", {
+      class: "title-area"
+    }, /* @__PURE__ */ createElementJsx("label", null, title), showValue && !indeterminate ? /* @__PURE__ */ createElementJsx("span", null, " ", valueFunction(percentValue), " ") : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "progress-area"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "progress",
+      style: { width: `${percentValue}%` }
+    })));
+  }
+}
+registerComponent("progressbar", ProgressBar);
+registerComponent("ProgressBar", ProgressBar);
+registerComponent("progress-bar", ProgressBar);
+const cssProperties$c = makeCssVariablePrefixMap("--elf--switch", {
+  backgroundColor: true,
+  borderRadius: true,
+  fontSize: true,
+  duration: true,
+  activeColor: true,
+  width: true,
+  height: true,
+  handlBackgroundColor: true,
+  gap: true
+});
+class Switch extends UIElement {
+  template() {
+    const {
+      checked = false,
+      disabled = false,
+      variant = "default",
+      size = "medium",
+      style: style2 = {},
+      content,
+      onClick,
+      readOnly = false
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--switch", {
+        [variant]: true,
+        [size]: true,
+        disabled,
+        readonly: readOnly
+      });
+    }, [variant, size, disabled, readOnly]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$c)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("input", {
+      ref: "$input",
+      id: "switch-checkbox-" + this.id,
+      type: "checkbox",
+      onClick,
+      ...{
+        disabled: disabled ? "disabled" : void 0,
+        checked: checked ? "checked" : void 0
+      }
+    }), /* @__PURE__ */ createElementJsx("span", {
+      class: "tools"
+    }, /* @__PURE__ */ createElementJsx("span", {
+      class: "track"
+    }), /* @__PURE__ */ createElementJsx("span", {
+      class: "handle"
+    })), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("label", {
+      for: "switch-checkbox-" + this.id
+    }, content) : void 0);
+  }
+  get checked() {
+    return this.refs.$input.checked;
+  }
+}
+registerComponent("switch", Switch);
+registerComponent("Switch", Switch);
+const cssProperties$b = makeCssVariablePrefixMap("--elf--slider", {
+  backgroundColor: true,
+  backgroundImage: true,
+  borderRadius: true,
+  fontSize: true,
+  duration: true,
+  activeColor: true,
+  width: true,
+  height: true,
+  handlBackgroundColor: true,
+  gap: true
+});
+function initValue(v) {
+  return v;
+}
+function calculateRoundValue(min, max, step, value) {
+  if (value === 0)
+    return value;
+  if (max < value)
+    return max;
+  if (min > value)
+    return min;
+  if (step % 1 !== 0) {
+    const total = max - min;
+    const count = total / step;
+    const realValueCount = Math.floor(count * ((value - min) / total));
+    const precison = 1 / step;
+    const result = Math.round(realValueCount * step * precison);
+    const minResult = min * precison;
+    return (result + minResult) / precison;
+  }
+  return value - value % step;
+}
+function calculateValue({ min = 0, max = 100, step, left, width, currentX }) {
+  const currentValue = calculateRoundValue(
+    min,
+    max,
+    step,
+    (currentX - left) / width * (max - min) + min
+  );
+  const value = Math.max(min, Math.min(max, currentValue));
+  return value;
+}
+class SingleSlider extends UIElement {
+  template() {
+    const {
+      label,
+      labelPosition = "top",
+      min = 0,
+      max = 100,
+      step = 1,
+      value = min,
+      valuePlacement = "none",
+      showTrigger = "always",
+      showValue = false,
+      size = "medium",
+      variant = "default",
+      fill = false,
+      fillOffset = 0,
+      disabled = false,
+      readOnly = false,
+      style: style2 = {},
+      valueFunc = initValue,
+      onInput
+    } = this.props;
+    const onInputCallback = useCallback(
+      (e) => {
+        const { left, width: width2 } = this.state;
+        const value2 = calculateValue({
+          min,
+          max,
+          step,
+          left,
+          width: width2,
+          currentX: e.clientX
+        });
+        if (value2 !== this.props.value) {
+          onInput && onInput(value2);
+        }
+      },
+      [onInput, min, max, step]
+    );
+    usePointerStart(
+      "$el .range-track",
+      (e) => {
+        const { left, width: width2 } = this.refs.$track.getBoundingClientRect();
+        this.setState(
+          {
+            left,
+            width: width2
+          },
+          false
+        );
+        onInputCallback(e);
+      },
+      (e) => {
+        onInputCallback(e);
+      }
+    );
+    const localClass = useMemo(() => {
+      return classnames("elf--slider", {
+        [variant]: true,
+        [size]: true,
+        disabled,
+        readonly: readOnly,
+        ["placement-" + valuePlacement]: true,
+        [showTrigger]: true,
+        ["show-value"]: showValue,
+        ["label-position-" + labelPosition]: true
+      });
+    }, [
+      variant,
+      size,
+      disabled,
+      readOnly,
+      valuePlacement,
+      showTrigger,
+      showValue,
+      labelPosition
+    ]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$b)
+    };
+    const currentValue = Math.max(min, Math.min(max, value));
+    const currenValueOffset = (currentValue - min) / (max - min) * 100;
+    const progressStartOffset = (fillOffset - min) / (max - min) * 100;
+    const isPrevValue = currentValue < fillOffset;
+    const startOffset = Math.min(currenValueOffset, progressStartOffset);
+    const width = Math.abs(currenValueOffset - progressStartOffset);
+    const lastValue = isFunction(valueFunc) ? valueFunc(currentValue) : currentValue;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, label ? /* @__PURE__ */ createElementJsx("div", {
+      class: "label-area"
+    }, /* @__PURE__ */ createElementJsx("label", {
+      class: "label"
+    }, label), labelPosition === "top" ? /* @__PURE__ */ createElementJsx("span", {
+      class: "value"
+    }, lastValue) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "range-area"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "range-track",
+      ref: "$track"
+    }, fill ? /* @__PURE__ */ createElementJsx("div", {
+      class: "range-progress",
+      style: { left: `${startOffset}%`, width: `${width}%` }
+    }) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "thumb",
+      ref: "$thumb",
+      style: {
+        left: isPrevValue ? `${startOffset}%` : `${startOffset + width}%`
+      }
+    }, showValue && !label ? /* @__PURE__ */ createElementJsx("div", {
+      class: "thumb-value"
+    }, lastValue) : void 0))), label && labelPosition === "side" ? /* @__PURE__ */ createElementJsx("div", {
+      class: "value-area"
+    }, /* @__PURE__ */ createElementJsx("span", {
+      class: "value"
+    }, lastValue)) : void 0);
+  }
+}
+class RangeSlider extends UIElement {
+  template() {
+    return /* @__PURE__ */ createElementJsx("div", null);
+  }
+}
+class Slider extends UIElement {
+  template() {
+    const { type = "single", ...extraProps } = this.props;
+    return type === "single" ? /* @__PURE__ */ createElementJsx(SingleSlider, {
+      ...extraProps
+    }) : /* @__PURE__ */ createElementJsx(RangeSlider, {
+      ...extraProps
+    });
+  }
+}
+registerComponent("slider", Slider);
+registerComponent("Slider", Slider);
+const cssProperties$a = makeCssVariablePrefixMap("--elf--treeview", {
+  backgroundColor: true,
+  backgroundImage: true,
+  borderRadius: true,
+  fontSize: true,
+  duration: true,
+  activeColor: true,
+  width: true,
+  height: true,
+  handlBackgroundColor: true,
+  gap: true
+});
+const tooltipMap = /* @__PURE__ */ new WeakMap();
+const isEllipsisActive = (el) => {
+  return el.offsetWidth < el.scrollWidth;
+};
+function displayTooltip(label, target) {
+  const $label = Dom.create(target).$(".label");
+  if (isEllipsisActive($label.el)) {
+    const labelRect = $label.rect();
+    const { left, top, width, height, right, bottom } = labelRect;
+    const $tooltip = tooltip({
+      message: label,
+      placement: "top",
+      style: {
+        left,
+        top,
+        width,
+        height,
+        right,
+        bottom
+      }
+    });
+    tooltipMap.set(target, $tooltip);
+  }
+}
+function hideTooltip(target) {
+  const $tooltip = tooltipMap.get(target);
+  if ($tooltip) {
+    $tooltip.close();
+    $tooltip.remove();
+    tooltipMap.delete(target);
+  }
+}
+function itemRenderer(item, top, renderIndex, {
+  onSelect,
+  selectionStyle,
+  variant,
+  renderActions,
+  renderArrow,
+  renderLabel,
+  renderLoading,
+  onToggle,
+  renderContext,
+  draggable,
+  showTooltip
+}) {
+  const { data, depth } = item;
+  const arrow = renderArrow == null ? void 0 : renderArrow(item);
+  const contextView = renderContext == null ? void 0 : renderContext(item);
+  const actions = renderActions == null ? void 0 : renderActions(item);
+  const label = (renderLabel == null ? void 0 : renderLabel(item)) || data.title;
+  const loadingText = (renderLoading == null ? void 0 : renderLoading(item)) || "Loading....";
+  return /* @__PURE__ */ createElementJsx("div", {
+    class: classnames("elf--treeview-item", {
+      selected: data.selected,
+      [variant]: true,
+      loading: data.loading
+    }),
+    "data-depth": depth,
+    key: data.id,
+    draggable: draggable ? true : void 0,
+    style: {
+      "--elf--virtual-scroll-item-top": `${top}px`,
+      "--elf--treeview-item-depth": depth
+    }
+  }, draggable ? /* @__PURE__ */ createElementJsx("div", {
+    class: "drag-handle"
+  }, "\u22EE") : void 0, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("div", {
+    class: "checkbox-area"
+  }, /* @__PURE__ */ createElementJsx(Checkbox, {
+    ...{
+      checked: data.selected ? "checked" : void 0
+    },
+    onClick: (e) => onSelect(item, "checkbox", e)
+  })) : void 0, /* @__PURE__ */ createElementJsx("div", {
+    class: "depth-area"
+  }), data.children ? /* @__PURE__ */ createElementJsx("div", {
+    class: "collapse-area",
+    onClick: (e) => {
+      onToggle(item, e);
+    }
+  }, /* @__PURE__ */ createElementJsx("div", {
+    class: classnames({
+      collapsed: data.collapsed
+    })
+  }, arrow || /* @__PURE__ */ createElementJsx("span", null, "\u203A"))) : /* @__PURE__ */ createElementJsx("div", {
+    class: "collapse-area"
+  }, "\xA0"), contextView ? /* @__PURE__ */ createElementJsx("div", {
+    class: "context-area"
+  }, contextView) : void 0, (data == null ? void 0 : data.loading) ? /* @__PURE__ */ createElementJsx("div", {
+    class: "loading-area"
+  }, loadingText) : /* @__PURE__ */ createElementJsx("label", {
+    class: "label-area",
+    onClick: (e) => onSelect(item, "highlight", e),
+    onMouseEnter: (e) => {
+      if (label) {
+        showTooltip && displayTooltip(label, e.target);
+      }
+    },
+    onMouseLeave: (e) => {
+      showTooltip && hideTooltip(e.target);
+    }
+  }, /* @__PURE__ */ createElementJsx("div", {
+    class: "label"
+  }, label)), actions ? /* @__PURE__ */ createElementJsx("div", {
+    class: "actions-area"
+  }, actions) : void 0, /* @__PURE__ */ createElementJsx("div", {
+    class: "tail-area"
+  }));
+}
+function treeToList(items = [], depth = 0, command = { index: 0 }) {
+  const result = [];
+  items.forEach((it) => {
+    result.push({ data: it, depth, index: command.index });
+    command.up();
+    if (!it.collapsed && it.children) {
+      result.push(...treeToList(it.children, depth + 1, command));
+    }
+  });
+  return result;
+}
+class TreeView extends UIElement {
+  initState() {
+    const { items } = this.props;
+    return {
+      originalItems: items,
+      items: this.updateItems(items),
+      isInDraggable: false
+    };
+  }
+  updateItems(items = []) {
+    return treeToList(items, 0, {
+      index: 0,
+      up() {
+        this.index += 1;
+      }
+    });
+  }
+  template() {
+    const {
+      style: style2,
+      variant = "default",
+      itemHeight = 32,
+      overscanRowCount = 30,
+      renderContext,
+      selectionStyle = "highlight",
+      showTooltip = false,
+      renderActions,
+      renderArrow,
+      renderLoading,
+      draggable = false,
+      onClickNode,
+      onToggleNode,
+      onDropNode,
+      items: originalItems
+    } = this.props;
+    const items = this.updateItems(originalItems);
+    const localClass = useMemo(() => {
+      return classnames("elf--treeview", {});
+    }, []);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$a)
+    };
+    const itemRendererProps = {
+      onSelect: useCallback(
+        (item, style22, e) => {
+          if (style22 === selectionStyle) {
+            onClickNode == null ? void 0 : onClickNode(item, e);
+          }
+        },
+        [onClickNode]
+      ),
+      onToggle: useCallback(
+        (item, e) => {
+          onToggleNode == null ? void 0 : onToggleNode(item, e);
+        },
+        [onToggleNode]
+      ),
+      variant,
+      draggable,
+      showTooltip,
+      renderContext,
+      selectionStyle,
+      renderActions,
+      renderArrow,
+      renderLoading
+    };
+    const onDrag = useCallback(() => {
+    }, []);
+    const onDragStart = useCallback((e) => {
+      const $item = Dom.create(e.target).closest("elf--treeview-item");
+      const ghost = this.setGhost($item, e);
+      this.setState(
+        {
+          isInDraggable: true,
+          startId: $item.attr("key"),
+          rect: this.$el.rect(),
+          ghost
+        },
+        false
+      );
+      e.target.style.opacity = 0.5;
+      this.$el.addClass("dragging");
+    }, []);
+    const onDragEnd = useCallback((e) => {
+      Dom.create(this.state.ghost).remove();
+      e.target.style.opacity = 1;
+      this.$el.removeClass("dragging");
+      this.$el.removeClass("dragovered");
+    }, []);
+    const onDragEnter = useCallback(() => {
+    }, []);
+    const onDragOver = useCallback((e) => {
+      e.preventDefault();
+      this.$el.addClass("dragovered");
+      const $item = Dom.create(e.target).closest("elf--treeview-item");
+      if (!$item) {
+        return;
+      }
+      const $depthArea = $item == null ? void 0 : $item.$(".depth-area");
+      this.setState(
+        {
+          endId: $item.attr("key")
+        },
+        false
+      );
+      if (this.state.endId === this.state.startId) {
+        return;
+      }
+      const rect = $item.rect();
+      const depthRect = $depthArea.rect();
+      const left = depthRect.right - rect.left;
+      const rate = (e.clientY - rect.top) / (rect.bottom - rect.top);
+      this.setState(
+        {
+          rate
+        },
+        false
+      );
+      let top = rect.top;
+      if (0.33 < rate && rate < 0.66) {
+        this.$el.removeClass("line");
+        this.$el.addClass("area");
+        Dom.create(this.refs.$dragArea).css({
+          top: `${rect.top - this.state.rect.top}px`,
+          left: `${left}px`,
+          width: `${rect.width - left}px`,
+          height: `${rect.height}px`
+        });
+      } else {
+        this.$el.removeClass("area");
+        this.$el.addClass("line");
+        if (rate > 0.66) {
+          top = rect.bottom;
+        }
+        Dom.create(this.refs.$dragline).css({
+          top: `${top - this.state.rect.top}px`,
+          left: `${left}px`
+        });
+      }
+    }, []);
+    const onDragLeave = useCallback(() => {
+    }, []);
+    const onDrop = useCallback(
+      (e) => {
+        e.preventDefault();
+        this.setState(
+          {
+            isInDraggable: false,
+            endId: Dom.create(e.target).closest("elf--treeview-item").attr("key")
+          },
+          false
+        );
+        if (this.state.startId === this.state.endId) {
+          return;
+        }
+        onDropNode(
+          {
+            startId: this.state.startId,
+            endId: this.state.endId,
+            rate: this.state.rate,
+            targetPosition: this.targetPosition
+          },
+          e
+        );
+      },
+      [onDropNode]
+    );
+    const events = {
+      droppable: true,
+      onDrag,
+      onDragStart,
+      onDragEnd,
+      onDragEnter,
+      onDragOver,
+      onDragLeave,
+      onDrop
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject,
+      ...events
+    }, /* @__PURE__ */ createElementJsx(VirtualScroll, {
+      itemHeight,
+      overscanRowCount,
+      items,
+      itemRenderer: (item, top, renderIndex) => {
+        return itemRenderer(item, top, renderIndex, itemRendererProps);
+      }
+    }), /* @__PURE__ */ createElementJsx("div", {
+      class: "drag-line",
+      ref: "$dragline"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "drag-line-inner left"
+    }), /* @__PURE__ */ createElementJsx("div", {
+      class: "drag-line-inner right"
+    })), /* @__PURE__ */ createElementJsx("div", {
+      class: "drag-inner-area",
+      ref: "$dragArea"
+    }));
+  }
+  get targetPosition() {
+    if (this.state.rate < 0.33) {
+      return "top";
+    } else if (this.state.rate < 0.66) {
+      return "middle";
+    } else {
+      return "bottom";
+    }
+  }
+  setGhost($item, e) {
+    const itemRect = $item.rect();
+    const ghost = $item.clone(true).el;
+    ghost.style.position = "absolute";
+    ghost.style.top = "auto";
+    ghost.style.left = "-100000px";
+    ghost.style.width = `${itemRect.width}px`;
+    ghost.style.height = `${itemRect.height}px`;
+    ghost.style.opacity = 1;
+    ghost.style.pointerEvents = "none";
+    ghost.style.zIndex = 9999;
+    ghost.classList.add("ghost");
+    const ghostLeft = e.clientX - itemRect.left;
+    document.body.appendChild(ghost);
+    e.dataTransfer.setDragImage(ghost, ghostLeft, -10);
+    return ghost;
+  }
+}
+registerComponent("treeview", TreeView);
+registerComponent("tree-view", TreeView);
+registerComponent("TreeView", TreeView);
+const cssProperties$9 = makeCssVariablePrefixMap("--elf--table", {
+  backgroundColor: true,
+  color: true,
+  duration: true,
+  offset: true,
+  width: true,
+  cellTextAlign: true
+});
+const headCssProperties = makeCssVariablePrefixMap("--elf--table-head", {
+  cellAlign: true,
+  cellPadding: true
+});
+class Table extends UIElement {
+  template() {
+    const {
+      quiet = false,
+      columns = [],
+      data = [],
+      style: style2 = {},
+      selectionStyle = "highlight",
+      selectionType = "multiple"
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--table", {
+        quiet,
+        [selectionStyle]: true,
+        [selectionType]: true
+      });
+    }, [quiet, selectionStyle, selectionType]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$9)
+    };
+    let allChecked = false;
+    let indeterminate = false;
+    if (selectionStyle === "checkbox") {
+      const filterData = data.filter((item) => item.selected);
+      if (filterData.length === data.length) {
+        allChecked = true;
+      } else if (filterData.length > 0 && filterData.length < data.length) {
+        indeterminate = true;
+      }
+    }
+    return /* @__PURE__ */ createElementJsx("table", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("thead", null, /* @__PURE__ */ createElementJsx("tr", null, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("th", {
+      class: "elf--table-head-cell"
+    }, /* @__PURE__ */ createElementJsx(Checkbox, {
+      checked: allChecked,
+      indeterminate
+    })) : void 0, columns.map((column) => {
+      var _a;
+      if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
+        return void 0;
+      }
+      return /* @__PURE__ */ createElementJsx("th", {
+        class: classnames({
+          divider: column.showDivider
+        }),
+        style: propertyMap(column == null ? void 0 : column.style, headCssProperties)
+      }, /* @__PURE__ */ createElementJsx("div", {
+        class: "head-content"
+      }, /* @__PURE__ */ createElementJsx("label", null, column.title), column.tools ? /* @__PURE__ */ createElementJsx("div", {
+        class: "tools"
+      }, column.tools) : void 0));
+    }))), /* @__PURE__ */ createElementJsx("tbody", null, data.map((row) => {
+      return /* @__PURE__ */ createElementJsx("tr", {
+        class: classnames({
+          selected: row.selected
+        })
+      }, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("td", {
+        class: "elf--table-cell"
+      }, /* @__PURE__ */ createElementJsx(Checkbox, {
+        checked: row.selected,
+        indeterminate: row.indeterminate
+      })) : void 0, columns.map((column) => {
+        var _a, _b, _c;
+        if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
+          return void 0;
+        }
+        return /* @__PURE__ */ createElementJsx("td", {
+          class: classnames({
+            divider: column.showDivider
+          }),
+          style: {
+            textAlign: (_b = column.style) == null ? void 0 : _b.textAlign,
+            display: (_c = column.style) == null ? void 0 : _c.display
+          }
+        }, column.render ? column.render(column.key, row[column.key], row, data) : row[column.key]);
+      }));
+    })));
+  }
+}
+registerComponent("table", Table);
+registerComponent("Table", Table);
+const cssProperties$8 = makeCssVariablePrefixMap("--elf--card", {
+  borderColor: true,
+  backgroundColor: true,
+  padding: true,
+  borderRadius: true,
+  width: true,
+  height: true,
+  shadow: true
+});
+class Card extends UIElement {
+  template() {
+    const {
+      orientation = "vertical",
+      style: style2 = {},
+      size = "medium",
+      shape = "round",
+      content,
+      quiet = false,
+      ghost = false,
+      selectable = false,
+      selected = false,
+      as = "div",
+      href = "#",
+      full = false,
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card", {
+        [shape]: true,
+        [orientation]: true,
+        quiet,
+        ghost,
+        selectable,
+        selected,
+        full,
+        [size]: true,
+        "as-link": as === "link"
+      });
+    }, [
+      shape,
+      orientation,
+      quiet,
+      ghost,
+      selectable,
+      selected,
+      as,
+      size,
+      full
+    ]);
+    const styleObject = {
+      class: localClass,
+      style: {
+        ...propertyMap(style2, cssProperties$8)
+      },
+      ...extraProps
+    };
+    return as === "link" ? /* @__PURE__ */ createElementJsx("a", {
+      ...styleObject,
+      href
+    }, content) : /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
+  }
+}
+const cssProperties$7 = makeCssVariablePrefixMap("--elf--card-preview", {
+  height: true,
+  width: true,
+  ratio: true,
+  backgroundColor: true
+});
+class CardPreview extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      content,
+      ghost = false,
+      ratio = "1:1",
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-preview", {
+        ghost
+      });
+    }, [ghost]);
+    const [l, p] = ratio.split(":").map((it) => parseInt(it, 10));
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2,
+          ratio: p / l
+        },
+        cssProperties$7
+      ),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true
+    }) : content);
+  }
+}
+const cssProperties$6 = makeCssVariablePrefixMap("--elf--card-header", {
+  textAlign: true
+});
+class CardHeader extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      nowrap = false,
+      title,
+      actions = [],
+      ghost = false,
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-header", {
+        nowrap,
+        ghost,
+        "has-actions": actions.length > 0
+      });
+    }, [nowrap, actions, ghost]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2
+        },
+        cssProperties$6
+      ),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, ghost ? [
+      /* @__PURE__ */ createElementJsx(Ghost, {
+        animated: true
+      }),
+      actions.length ? /* @__PURE__ */ createElementJsx(Ghost, {
+        animated: true
+      }) : void 0
+    ] : [
+      title ? /* @__PURE__ */ createElementJsx("div", {
+        class: "title"
+      }, title) : null,
+      actions.length ? /* @__PURE__ */ createElementJsx("div", {
+        class: "actions"
+      }, actions) : null
+    ]);
+  }
+}
+const cssProperties$5 = makeCssVariablePrefixMap("--elf--card-container", {
+  height: true,
+  ratio: true,
+  backgroundColor: true
+});
+class CardContainer extends UIElement {
+  template() {
+    const { style: style2 = {}, content, ...extraProps } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-container", {});
+    }, []);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2
+        },
+        cssProperties$5
+      ),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
+  }
+}
+const cssProperties$4 = makeCssVariablePrefixMap("--elf--card-footer", {
+  textAlign: true,
+  sideOffset: true
+});
+class CardFooter extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      ghost = false,
+      noDivider = false,
+      content,
+      compact = false,
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-footer", {
+        ghost,
+        compact
+      });
+    }, [ghost, compact]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$4),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, noDivider ? void 0 : /* @__PURE__ */ createElementJsx(Divider, null), /* @__PURE__ */ createElementJsx("div", {
+      class: "content-area"
+    }, ghost ? /* @__PURE__ */ createElementJsx("div", {
+      style: { display: "flex", gap: 10 }
+    }, /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true
+    }), /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true
+    })) : content));
+  }
+}
+const cssProperties$3 = makeCssVariablePrefixMap("--elf--card-body", {
+  textAlign: true
+});
+class CardBody extends UIElement {
+  template() {
+    const { style: style2 = {}, ghost = false, content, ...extraProps } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-body");
+    }, []);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2
+        },
+        cssProperties$3
+      ),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, ghost ? /* @__PURE__ */ createElementJsx(VBox, {
+      style: { gap: 10 }
+    }, /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true,
+      style: { width: "70%" }
+    }), /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true,
+      style: { width: "50%" }
+    }), /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true,
+      style: { width: "30%" }
+    })) : /* @__PURE__ */ createElementJsx("div", {
+      class: "content-area"
+    }, content));
+  }
+}
+const cssProperties$2 = makeCssVariablePrefixMap("--elf--card-avatar", {
+  height: true,
+  width: true,
+  ratio: true,
+  backgroundColor: true
+});
+class CardAvatar extends UIElement {
+  template() {
+    const { style: style2 = {}, content, ghost = false, ...extraProps } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-avatar", {
+        ghost
+      });
+    }, [ghost]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$2),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "elf--card-avatar-inner"
+    }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, {
+      animated: true
+    }) : content));
+  }
+}
+const cssProperties$1 = makeCssVariablePrefixMap("--elf--card-actions", {
+  height: true,
+  width: true,
+  ratio: true,
+  backgroundColor: true
+});
+class CardActions extends UIElement {
+  template() {
+    const { style: style2 = {}, align = "right", content, ...extraProps } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--card-actions", {
+        [align]: true
+      });
+    }, [align]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$1),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content);
+  }
+}
+const cssProperties = makeCssVariablePrefixMap("--elf--blank", {
+  width: true,
+  height: true,
+  backgroundColor: true
+});
+class Blank extends UIElement {
+  template() {
+    const {
+      style: style2 = {},
+      stripe = "none",
+      color = "transparent",
+      content,
+      ...extraProps
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--blank", {
+        [stripe]: true
+      });
+    }, [stripe]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(
+        {
+          ...style2,
+          backgroundColor: color
+        },
+        cssProperties
+      ),
+      ...extraProps
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, content || /* @__PURE__ */ createElementJsx("span", null, "\xA0"));
+  }
+}
+registerComponent("blank", Blank);
+registerComponent("Blank", Blank);
 export {
-  mt as ADD_BODY_FIRST_MOUSEMOVE,
-  yt as ADD_BODY_MOUSEMOVE,
-  vt as ADD_BODY_MOUSEUP,
-  Nt as Alert,
-  Bs as AppLayout,
-  Ps as AppLayoutItem,
-  ts as AppResizeBar,
-  K as BODY_MOVE_EVENT,
-  F as Button,
-  cs as ButtonGroup,
-  ee as Checkbox,
-  hs as CheckboxGroup,
-  Es as ColorGrid,
-  Os as ColorMixer,
-  wt as ColorView,
-  Ts as DataEditor,
-  bs as Dialog,
-  fs as Divider,
-  ns as END,
-  Rs as EventControlPanel,
-  Ds as EventPanel,
-  is as FIRSTMOVE,
-  U as Flex,
-  st as Grid,
-  De as HexColorEditor,
-  Jt as IconButton,
-  Me as InputEditor,
-  Ee as InputPaint,
-  Ms as Layer,
-  ws as Layout,
-  ds as LinkButton,
-  rs as MOVE,
-  tt as Menu,
-  vs as Notification,
-  St as OptionMenu,
-  gs as OptionStrip,
-  xs as Panel,
-  Pe as RGBColorEditor,
-  te as Radio,
-  ps as RadioGroup,
-  Ss as Tab,
-  $e as TabItem,
-  Se as TabStrip,
-  $s as TextAreaEditor,
-  us as ToggleButton,
-  ys as Toolbar,
-  ge as ToolbarItem,
-  he as Tools,
-  de as ToolsCustomItem,
-  ue as ToolsMenuItem,
-  ks as Tooltip,
-  ms as VBox,
-  Ue as View,
-  Is as VirtualScroll,
-  ve as VisualBell,
-  as as alert,
-  Cs as bell
+  ADD_BODY_FIRST_MOUSEMOVE,
+  ADD_BODY_MOUSEMOVE,
+  ADD_BODY_MOUSEUP,
+  ActionGroup,
+  Alert,
+  Animation,
+  AppLayout,
+  AppLayoutItem,
+  AppResizeBar,
+  Avatar,
+  BODY_MOVE_EVENT,
+  Badge,
+  BaseTreeViewProvider,
+  Blank,
+  Breadcrumbs,
+  Button,
+  ButtonGroup,
+  Card,
+  CardActions,
+  CardAvatar,
+  CardBody,
+  CardContainer,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+  Checkbox,
+  CheckboxGroup,
+  ColorGrid,
+  ColorMixer,
+  ColorView,
+  Column,
+  DataEditor,
+  Dialog,
+  Divider,
+  END,
+  EventControlPanel,
+  EventPanel,
+  FIRSTMOVE,
+  Field,
+  Flex,
+  Ghost,
+  Grid,
+  HelpText,
+  HexColorEditor,
+  IconButton,
+  InputEditor,
+  InputPaint,
+  Layer,
+  Layout,
+  LinkButton,
+  MOVE,
+  Menu,
+  Notification,
+  OptionMenu,
+  OptionStrip,
+  OutlineButton,
+  Panel,
+  Popover,
+  ProgressBar,
+  ProgressCircle,
+  RGBColorEditor,
+  Radio,
+  RadioGroup,
+  RoundButton,
+  Slider,
+  Switch,
+  Tab,
+  TabItem,
+  TabStrip,
+  Table,
+  Tag,
+  TagGroup,
+  TextArea,
+  TextAreaEditor,
+  TextField,
+  Toast,
+  Toolbar,
+  ToolbarItem,
+  Tools,
+  Tooltip,
+  TooltipPlacement,
+  TreeView,
+  TreeViewProvider,
+  VBox,
+  View,
+  VirtualScroll,
+  alert,
+  toast,
+  tooltip,
+  usePointerStart
 };

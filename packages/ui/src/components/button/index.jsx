@@ -1,66 +1,117 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { convertPropertyToStyleKey } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
+import { Animation } from "../animation";
+import { ProgressCircle } from "../progress-circle";
 
-const cssProperties = {
-  borderColor: "--elf--button-border-color",
-  backgroundColor: "--elf--button-background-color",
-  selectedBackgroundColor: "--elf--button-selected-background-color",
-  disabledColor: "--elf--button-disabled-color",
-  color: "--elf--button-color",
-  fontSize: "--elf--button-font-size",
-  fontWeight: "--elf--button-font-weight",
-  height: "--elf--button-height",
-  padding: "--elf--button-padding",
-  borderRadius: "--elf--button-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--button", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class Button extends UIElement {
   template() {
     const {
-      type,
-      size,
+      variant = "default",
+      size = "medium",
       disabled,
       selected,
-      shape,
-      quiet = undefined,
-      outline = undefined,
+      focused,
+      shape = "rect",
+      quiet = false,
+      outline = false,
+      closable = false,
+      place = "",
       style = {},
-      onClick,
+      href = "",
+      target = "_blank",
       content,
-      ...extraStyle
+      class: className,
+      iconOnly = false,
+      justified = false,
+      pending = false,
+      play = false,
+      as = "button",
+      hasMinWidth = false,
+      ...extraProps
     } = this.props;
 
-    const { style: styleProperties } = convertPropertyToStyleKey(extraStyle);
+    const localClass = useMemo(() => {
+      return classnames([
+        "elf--button",
+        {
+          selected,
+          outline,
+          focused,
+          quiet,
+          closable,
+          justified,
+          [variant]: true,
+          [size]: true,
+          [shape]: true,
+          [place]: true,
+          "icon-only": iconOnly,
+          "has-min-width": hasMinWidth,
+        },
+        className,
+      ]);
+    }, [
+      variant,
+      size,
+      selected,
+      shape,
+      quiet,
+      outline,
+      place,
+      closable,
+      iconOnly,
+      className,
+      justified,
+      focused,
+      hasMinWidth,
+    ]);
 
     const styleObject = {
-      class: classnames([
-        "elf--button",
-        { selected, outline, quiet, [type]: true },
-        {
-          large: size === "large",
-          small: size === "small",
-        },
-        {
-          "elf--button-shape-circle": shape === "circle",
-          "elf--button-shape-round": shape === "round",
-        },
-      ]),
+      class: localClass,
       disabled: disabled ? "disabled" : undefined,
-      style: propertyMap(
-        {
-          ...style,
-          ...styleProperties,
-        },
-        cssProperties
-      ),
+      style: propertyMap(style, cssProperties),
+      ...extraProps,
     };
 
-    return (
-      <button {...styleObject} onClick={onClick}>
-        <span>{content || ""}</span>
-      </button>
+    const buttonContent = (
+      <span>
+        {pending ? (
+          <Animation.spin play={play}>
+            <ProgressCircle value={50} size={size} variant={variant} />
+          </Animation.spin>
+        ) : (
+          content || ""
+        )}
+      </span>
     );
+
+    if (as === "link") {
+      return (
+        <a {...styleObject} href={href} target={target}>
+          {buttonContent}
+        </a>
+      );
+    } else {
+      return <button {...styleObject}>{buttonContent}</button>;
+    }
   }
 }
+
+registerComponent("button", Button);
+registerComponent("btn", Button);
+registerComponent("Button", Button);

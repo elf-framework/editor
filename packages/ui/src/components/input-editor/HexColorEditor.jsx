@@ -6,13 +6,15 @@ import {
   FOCUSIN,
   isFunction,
   CLICK,
-  isUndefined
+  isUndefined,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--input-paint", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -67,19 +69,23 @@ export class HexColorEditor extends UIElement {
       disabled,
     } = this.state;
 
-    const { r, g, b, a } = parse(value);    
+    const { r, g, b, a } = parse(value);
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
           focused: focused,
           hover: hover,
           disabled: disabled,
           icon: icon,
-          invalid: this.isInvalidColor({ r, g, b, a})
+          invalid: this.isInvalidColor({ r, g, b, a }),
         },
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon, r, g, b, a]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
       },
@@ -97,32 +103,45 @@ export class HexColorEditor extends UIElement {
       onCopy: this.props.onCopy,
     };
 
-
-
     const properties = {
       disabled,
       placeholder: placeholder || "",
-      value: format({ r, g, b }, "hex").replace("#", ''),
+      value: format({ r, g, b }, "hex").replace("#", ""),
     };
 
-    this.setState({
-      parsedColor: {
-        r, g, b, a
-      }
-    }, false)    
+    this.setState(
+      {
+        parsedColor: {
+          r,
+          g,
+          b,
+          a,
+        },
+      },
+      false
+    );
 
     return (
       <div {...styleObject}>
         <div class="elf--input-area">
           <div class="elf--input-item">
-            <input class="color" type="text" data-type="hex" maxlength={6} {...properties} {...inputEvents} onKeyDown={this.keydownColor} onKeyUp={this.keyupColor} />
+            <input
+              class="color"
+              type="text"
+              data-type="hex"
+              maxlength={6}
+              {...properties}
+              {...inputEvents}
+              onKeyDown={this.keydownColor}
+              onKeyUp={this.keyupColor}
+            />
           </div>
         </div>
         {this.state.hasOpacity && (
           <div class="elf--input-opacity">
             <input
               class="opacity"
-              value={`${Math.round(a * 100 * 100)/100}%`}
+              value={`${Math.round(a * 100 * 100) / 100}%`}
               onKeyDown={this.keydown}
             />
           </div>
@@ -132,41 +151,61 @@ export class HexColorEditor extends UIElement {
   }
 
   updateOpacity(num) {
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100)/100)) ,
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          a: Math.max(
+            0,
+            Math.min(
+              1,
+              Math.round((this.state.parsedColor.a + num) * 100) / 100
+            )
+          ),
+        },
       },
-    }, false);
+      false
+    );
 
     this.runCallback(this.props.onChange);
   }
 
   updateFullColor(parsedColor) {
-    this.setState({
-      parsedColor,
-    }, false);
+    this.setState(
+      {
+        parsedColor,
+      },
+      false
+    );
 
     this.runCallback(this.props.onChange);
   }
 
   updateColor(type, num) {
-
-    const lastValue = Math.max(0, Math.min(255, this.state.parsedColor[type] + num))
+    const lastValue = Math.max(
+      0,
+      Math.min(255, this.state.parsedColor[type] + num)
+    );
 
     if (this.state.parsedColor[type] === lastValue) {
       return;
     }
 
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        [type]: Math.max(0, Math.min(255, this.state.parsedColor[type] + num)),
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          [type]: Math.max(
+            0,
+            Math.min(255, this.state.parsedColor[type] + num)
+          ),
+        },
       },
-    }, false);
+      false
+    );
 
     this.runCallback(this.props.onChange);
-  }  
+  }
 
   increaseColor(type) {
     this.updateColor(type, 1);
@@ -174,7 +213,7 @@ export class HexColorEditor extends UIElement {
 
   decreaseColor(type) {
     this.updateColor(type, -1);
-  }  
+  }
 
   increaseOpacity() {
     this.updateOpacity(0.01);
@@ -188,7 +227,7 @@ export class HexColorEditor extends UIElement {
     const startIndex = Math.floor(e.target.selectionStart / 2) * 2;
 
     let type = "";
-    if (startIndex  < 2) {
+    if (startIndex < 2) {
       type = "r";
     } else if (startIndex < 4) {
       type = "g";
@@ -198,44 +237,47 @@ export class HexColorEditor extends UIElement {
 
     switch (e.key) {
       case "ArrowUp":
-        e.preventDefault();        
+        e.preventDefault();
         this.increaseColor(type);
-        e.target.setSelectionRange(startIndex, startIndex + 2);          
+        e.target.setSelectionRange(startIndex, startIndex + 2);
         break;
       case "ArrowDown":
-        e.preventDefault();        
+        e.preventDefault();
         this.decreaseColor(type);
-        e.target.setSelectionRange(startIndex, startIndex + 2);        
+        e.target.setSelectionRange(startIndex, startIndex + 2);
 
         break;
     }
- 
-  }  
+  };
 
   isInvalidColor(color) {
-    return isNaN(color.r) || isNaN(color.g) || isNaN(color.b) || isNaN(color.a) || isUndefined(color.r) || isUndefined(color.g) || isUndefined(color.b) || isUndefined(color.a);
+    return (
+      isNaN(color.r) ||
+      isNaN(color.g) ||
+      isNaN(color.b) ||
+      isNaN(color.a) ||
+      isUndefined(color.r) ||
+      isUndefined(color.g) ||
+      isUndefined(color.b) ||
+      isUndefined(color.a)
+    );
   }
 
   keyupColor = (e) => {
-
     if (e.key === "ArrowUp" || e.key === "ArrowDown") {
       // noop
     } else {
-
       if (e.target.value.length === 3 || e.target.value.length === 6) {
-        const color = parse('#' + e.target.value);
-  
-        if (color.type === 'hex') {
-          if (this.isInvalidColor(color) === false) {
-            this.updateFullColor(color);  
-          }
-  
-          
-        }
-      } 
-    }
+        const color = parse("#" + e.target.value);
 
-  }    
+        if (color.type === "hex") {
+          if (this.isInvalidColor(color) === false) {
+            this.updateFullColor(color);
+          }
+        }
+      }
+    }
+  };
 
   keydown = (e) => {
     e.preventDefault();
@@ -243,29 +285,27 @@ export class HexColorEditor extends UIElement {
     switch (e.key) {
       case "ArrowUp":
         this.increaseOpacity(e);
-        e.target.select();    
+        e.target.select();
         break;
       case "ArrowDown":
         this.decreaseOpacity(e);
-        e.target.select();    
+        e.target.select();
         break;
     }
-
   };
 
   onMounted() {
     if (this.state.autoFocus) {
       setTimeout(() => {
-
         const $el = this.$el.$("input[data-type='hex']");
 
         $el.focus();
-        $el.select()
+        $el.select();
       }, 10);
     }
   }
 
-  runCallback(callback, e) {
+  runCallback(callback) {
     if (isFunction(callback)) {
       callback(this.value, this);
     }
@@ -295,8 +335,8 @@ export class HexColorEditor extends UIElement {
 
   get value() {
     const { parsedColor } = this.state;
-    const {r, g, b, a} = parsedColor;
-    return format({ r, g, b, a }, 'hex');
+    const { r, g, b, a } = parsedColor;
+    return format({ r, g, b, a }, "hex");
   }
 
   set value(v) {
@@ -307,3 +347,7 @@ export class HexColorEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
+
+registerComponent("HexColorEditor", HexColorEditor);
+registerComponent("hex-color-editor", HexColorEditor);
+registerComponent("hexcoloreditor", HexColorEditor);

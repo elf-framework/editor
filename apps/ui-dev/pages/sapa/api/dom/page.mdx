@@ -1,0 +1,709 @@
+---
+title: Dom API
+layout: SapaLayout
+filename: pages/sapa/api/dom/page.mdx
+---
+
+
+# {title}
+
+sapa provides a Dom object for easy manipulation of the dom.
+
+## where is `Dom`
+
+The `Dom` object exists as the root element of all components.
+
+```jsx {3}
+function A () {
+  return <div onClick={() => {
+    console.log(this.$el);
+  }}></div>
+}
+```
+
+## Static Method
+
+**static create(tag, className, attr)**
+
+```jsx
+const body = Dom.create(document.body);
+body.append(document.createElement("div"))
+
+// create with props 
+const $el = Dom.create('div', 'add-class my-class', { style: "background-color: yellow" })
+```
+
+
+**static createByHTML(htmlString)**
+
+```jsx
+const $el = Dom.createByHTML(`
+  <div>Simple Text</div>
+`);
+
+// or 
+const $el = Dom.createByHTML(`
+  <svg>
+    <rect x="0" y="0" width="100" height="100" />
+  </svg>
+`);
+
+```
+
+
+**static createText(text)**
+
+```jsx
+const text = Dom.createText('text');
+```
+
+**static body()**
+
+```jsx
+// It is same to Dom.create(document.body)
+const body = Dom.body();
+```
+
+
+**static createFragment(list = []): DocumentFragment**
+
+```jsx
+const fragment = Dom.createFragment([...elementList])
+ 
+```
+
+## Tag 
+
+**get tagName()**
+
+```jsx
+const stringName = $el.tagName
+```
+
+**get exists()** 
+
+```jsx
+const isExists = $el.exists
+```
+
+**get isFragment()**
+```jsx
+const isFragment = $el.isFragment;
+```
+**get isTemplate()**
+```jsx
+const isTemplate = $el.isTemplate;
+```
+
+**is(checkElement)**
+
+Check if the element is the same.
+
+```jsx
+if ($el.is(newElement)) {
+  console.log("$el is same to newElement");
+}
+```
+
+**isTag(tag)**
+
+```jsx
+if ($el.isTag('div')) {
+  console.log("$el is div element");
+}
+```
+
+## Attribute
+
+**setAttr(obj)**
+This is a function to set various properties of the dom object at once.
+
+```jsx
+$el.setAttr({
+  "data-background-color": "yellow"
+})
+```
+
+**setAttrNS(obj, namespace)**
+
+Set a property with namespace .
+
+Usually used when creating svg tags.
+
+```jsx
+$el.setAttr({
+  "data-background-color": "yellow"
+}, "http://www.w3.org/2000/svg")
+```
+
+**setProp(obj)**
+
+Set the property of HTMLElement.
+
+```jsx
+$el.setProp({
+  value: 10
+})
+```
+
+**data(key, value)**
+
+```jsx
+// set data attribute 
+$el.data('key', value);
+
+// get data attribute 
+const stringValue = $el.data('key');
+```
+
+**attr(...args)**
+
+```jsx
+// set some attribute 
+$el.attr('key', value);
+
+// get some attribute 
+const stringValue = $el.attr('key');
+```
+
+**attrKeyValue(keyField)**
+
+```jsx
+const div = Dom.createByHTML("<input type='text' value='yellow' data-id='backgroundColor' />");
+
+div.attrKeyValue('data-id') === { 'backgroundColor': 'yellow' }
+```
+
+**get attributes()**
+
+Brings all attributes of element.
+
+```jsx
+const attributes = $el.attributes 
+```
+
+See [here](https://developer.mozilla.org/ko/docs/Web/API/Element/attributes) for more details.
+
+
+**attrs(...args)**
+
+```jsx
+const div = Dom.createByHTML("<input type='text' value='yellow' data-id='backgroundColor' />");
+
+const [type, value, dataId ] = div.attrs('type', 'value', 'data-id');
+```
+
+
+**styles(...args)**
+
+```jsx
+const div = Dom.createByHTML("<div style='background-color: yellow; color: blue; border: 1px solid black;'></div>");
+
+const [backgroundColor, color, border ] = div.style('background-color', 'color', 'border');
+```
+
+**removeAttr(key)**
+
+```jsx
+$el.removeAttr(key);
+```
+
+**removeStyle(key)**
+
+```jsx
+$el.removeStyle(key);
+```
+
+
+## Selector
+
+
+**closest(cls)**
+
+```html
+<div class="yellow">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+```
+
+```jsx
+const $yellowElement = $itemEl.closest("yellow");
+```
+
+**path()**
+
+```jsx
+console.log($el.path())
+
+// [...., parent, parent, parent, $el]
+```
+
+**get $parent()**
+
+alias of `parent()` 
+
+```jsx
+const $parentElement = $el.$parent;
+```
+
+**parent()**
+
+```jsx
+const $parentElement = $el.parent();
+
+```
+
+**hasParent(): boolean**
+
+```jsx
+const hasParent = $el.hasParent();
+```
+
+
+**find(selector, el = this.el): HTMLElement**
+
+```jsx
+const element = $el.find("#id");
+```
+
+**$(selector): Dom**
+
+The result of find is made into an instance of Dom.
+
+```jsx
+
+const $el = $otherEl.$("#id");
+
+// $el instanceof Dom
+
+```
+
+**findAll(selector, el = this.el): HTMLElement[]**
+
+```jsx
+const elementList = $el.findAll(".item");
+```
+
+**$$(selector): Dom[]**
+
+```jsx
+const $elList = $el.$$(".item");
+```
+
+**isUnlinked(): boolean**
+
+Elements without a parent are considered disconnected.
+
+```jsx
+const isUnlinked = $el.isUnlinked();
+```
+
+**removeClass(...args): Dom**
+
+```jsx
+$el.removeClass('a', 'b', 'c');
+```
+
+**updateClass(className): Dom**
+
+Modify the `className` property immediately.
+
+```jsx
+$el.updateClass("a b c");
+```
+
+**replaceClass(oldClass, newClass): Dom**
+
+```jsx
+
+const $el = Dom.createByHTML(`<div class="yellow">Simple Text</div>`)
+
+$el.replaceClass("yellow", "red");
+
+// <div class="red">Simple Text</div>
+```
+
+**hasClass(cls): boolean**
+
+```jsx
+
+if ($el.hasClass("yellow")) {
+  // noop
+}
+
+```
+
+**addClass(...args): Dom**
+
+```jsx
+$el.addClass('yellow').addClass('red').addClass('green');
+
+// <div class="yellow red green"></div>
+
+```
+
+**onlyOneClass(cls): void**
+
+`onlyOneClass` applies the class that selects only one of the child elements based on the parent.
+
+```jsx
+
+const $el = Dom.createByHTML(`
+  <div>
+    <div class="item">1</div>
+    <div class="item selected">1</div>
+    <div class="item">1</div>
+    <div class="item">1</div>
+    <div class="item">1</div>
+  </div>
+`)
+
+$el.first().onlyOneClass("selected");
+```
+
+**toggleClass(cls, isForce): Dom**
+
+```jsx
+$el.toggleClass("selected");
+
+//or
+
+$el.toggleClass("selected", false);
+```
+
+**outerHTML(): string**
+
+```jsx
+const outerHTML = $el.outerHTML();
+```
+
+**html(html): string | Dom**
+
+```jsx
+
+// getter
+const html = $el.html()
+
+// setter string
+$el.html("<div></div>");
+
+// setting others 
+$el.html($otherEl);
+```
+
+
+
+**empty(): Dom**
+
+```jsx
+const $el = Dom.createByHTML(`<div class="parent">content</div>`);
+
+$el.empty();
+
+// <div class="parent"></div>
+```
+
+**append(el): Dom**
+
+```jsx
+
+// text node
+$el.append("My Content Text");
+
+// array
+$el.append($other.$$(".item"))
+
+// Dom or HTMLElement or DocumentFragment 
+$el.append($other);
+
+```
+
+**appendHTML(html): Dom**
+
+```jsx
+$el.appendHTML(`
+  <div>
+    <span class="yellow"> color </span>
+  </div>
+`)
+```
+
+**createChildrenFragment(): DocumentFragment**
+
+create document fragment with children dom
+
+```jsx
+const childrenFragment = $el.createChildrenFragment();
+
+// childrenFragment instanceof DocumentFragment
+
+```
+
+
+**appendTo(target): Dom**
+
+Specifies the target to append.
+
+```jsx
+$el.appendTo(document.body);
+```
+
+**remove(): Dom**
+
+Removes the parent's child list.
+
+```jsx
+$el.remove();
+```
+
+**removeChild(el): Dom**
+
+```jsx
+$el.removeChild(htmlElement);
+```
+
+**text(value): string|Dom**
+
+```jsx
+
+// getter
+const textContent = $el.text();
+
+// setter
+$el.text("Sample Text");
+
+```
+
+**css(key, value): string | Dom**
+
+css() gets the value using window.getComputedStyle(). This is useful when you need the value after rendering.
+
+Use the styles() function to simply bring the specified properties or for performance.
+
+```jsx
+// getter 
+const color = $el.css("background-color");
+
+// setter 
+$el.css({
+  'background-color': 'yellow'
+})
+
+```
+
+**css variable property** 
+
+If you use a css variable, it is saved using style.setProperty internally.
+
+```jsx
+$el.css('--color-gray-9', "#ececec");
+```
+
+ 
+**cssText(value): string | Dom**
+
+```jsx
+// getter 
+const cssString = $el.cssText()
+
+// setter 
+$el.cssText('background-color: yellow; color: blue; border: 1px solid black');
+```
+
+**rect(): BoundingClientRect**
+
+```jsx
+const rect = $el.rect();
+```
+
+**isSVG(): boolean**
+
+```jsx
+const isSVG = Dom.createByHTML("<svg></svg>").isSVG();
+```
+
+
+
+**val(value): string|Dom**
+
+```jsx
+// getter 
+const value = $inputEl.val();
+
+// setter 
+$inputEl.val('text');
+
+// $inputEl.el.value = 'text'
+```
+
+**get value(): string**
+
+```jsx
+const value = $inputEl.value;
+```
+
+**get files(): File[]**
+
+```jsx
+const files = $inputFile.files;
+```
+
+**show(displayType = "block"): Dom**
+
+```jsx
+$el.show("inline-block");
+```
+
+**hide(): Dom**
+
+```jsx
+// display: none;
+$el.hide();
+```
+
+**isHide(): boolean**
+
+```jsx
+const isHide = $el.isHide();
+```
+
+**isShow(): boolean**
+
+```jsx
+const isShow = $el.isShwo();
+```
+
+**toggle(isForce): Dom**
+
+```jsx
+$el.toggle();
+
+// force 
+$el.toggle(true);
+```
+
+**scrollIntoView(): void**
+
+```jsx
+$el.scrollIntoView();
+
+```
+
+
+**get first(): Dom**
+
+```jsx
+// HTMLElement, TextNode, Comment 
+const firstChild = $el.first();
+```
+
+**get firstChild(): Dom**
+
+```jsx
+// only HTMLElement
+const firstChildElement = $el.firstChild();
+```
+
+
+**children(): Dom[]**
+
+Only HTMLElement is returned as a list.
+
+```jsx
+const children = $el.children();
+```
+
+**hasChild(child): boolean**
+
+```jsx
+const hasChild = $el.hasChild($child);
+```
+
+
+**get childNodes(): Dom**
+
+Returns all elements(HTMLElement, TextNode, Comment) in its children.
+
+```jsx
+const childNodes = $el.childNodes;
+```
+
+**childLength(): number**
+
+```jsx
+const count = $el.childLength();
+
+```
+
+**replace(newElement): Dom**
+
+```jsx
+$el.replace($otherEl);
+```
+
+**replaceChild(oldElement, newElement): Dom**
+
+```jsx
+$parent.replaceChild($old, $new);
+```
+
+
+## Event
+
+**on(eventName, callback, opt1, opt2): Dom**
+
+Execute addEventListener.
+
+```jsx
+$el.on("click", (e) => { 
+  console.log(e.target);
+})
+```
+
+**off(eventName, callback): Dom**
+
+Execute removeEventListener.
+
+```jsx
+$el.off("click", callback);
+```
+
+
+
+**click(): Dom**
+
+```jsx
+$el.click();
+```
+
+**focus(): Dom**
+
+```jsx
+$el.focus();
+```
+
+**dispatchEvent(event, data): Dom**
+
+```jsx
+$el.on("custom-event", () => {
+  console.log("custom-event is called");
+})
+
+$el.dispatchEvent("custom-event");
+```
+
+**select()**
+
+support text selection 
+
+```jsx
+$inputEl.select();
+```
+
+**blur(): Dom**
+
+```jsx
+$el.blur();
+```

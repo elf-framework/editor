@@ -1,4 +1,4 @@
-import AddFilled from "@elf-framework/icon/esm/AddFilled";
+import AddFilled from "@elf-framework/icon/AddFilled";
 import { start, SUBSCRIBE, UIElement, useSubscribe } from "@elf-framework/sapa";
 import { DataEditor, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
@@ -27,7 +27,7 @@ function App() {
           data={() => ({
             title: "Data Editor",
           })}
-          items={(data, root) => {
+          items={() => {
             return [
               {
                 type: "button",

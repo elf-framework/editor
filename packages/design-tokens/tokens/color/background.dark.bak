@@ -1,0 +1,19 @@
+{
+  "color": {
+    "background": {
+      "primary": { "value": "{color.neutral.1000.value}" },
+      "secondary": { "value": "{color.gray.4.value}" },
+      "tertiary": { "value": "{color.gray.2.value}" },
+
+      "interactive": { "value": "{color.brand.primary.value}" },
+      "hover": { "value": "{color.brand.primary.dark.value}" },
+      "active": { "value": "{color.brand.secondary.value}" },
+      "disabled": { "value": "{color.background.tertiary.value}" },
+      
+      "danger": { "value": "{color.red.4.value}" },
+      "warning": { "value": "{color.yellow.4.value}" },
+      "success": { "value": "{color.green.4.value}" },
+      "info": { "value": "{color.blue.4.value}" }
+    }
+  }
+}

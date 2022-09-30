@@ -1,4 +1,5 @@
 import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
+import { debounce } from "./functions/func";
 import {
   getCurrentComponent,
   renderRootElementInstanceList,
@@ -14,6 +15,10 @@ import {
  * - [x] useMemo
  * - [x] useCallback
  * - [x] useRef
+ * - [x] useSubscribe
+ * - [x] useId
+ * - [x] useSyncExternalStore
+ * - [x] useBatch
  *
  *
  * ps.
@@ -31,10 +36,29 @@ import {
 
 let contextProviderList = {};
 
-export function renderFromRoot() {
+const renderFromRootCallback = debounce(() => {
   renderRootElementInstanceList(true);
+}, 10);
+
+export function renderFromRoot() {
+  renderFromRootCallback();
 }
 
+export function useBatch(callback) {
+  getCurrentComponent().useBatch(callback);
+}
+
+export function useRender() {
+  useBatch(null);
+}
+
+export function useId() {
+  return getCurrentComponent().useId();
+}
+
+export function useSyncExternalStore(subscribe, getSnapshot) {
+  return getCurrentComponent().useSyncExternalStore(subscribe, getSnapshot);
+}
 /**
  * 글로벌 상태값을 저장하고 관리합니다.
  * hook을 사용하는 순서대로 값을 저장하고 있습니다.
@@ -320,4 +344,8 @@ export function useEmit(name, ...args) {
 
 export function useTrigger(name, ...args) {
   return getCurrentComponent().trigger(name, ...args);
+}
+
+export function useMagicMethod(methodName, callback) {
+  return getCurrentComponent().initMagicMethod(methodName, callback);
 }

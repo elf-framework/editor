@@ -1,9 +1,8 @@
-import { debounce, isString } from "./func";
+import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
+import { isString } from "./func";
 import { uuidShort } from "./uuid";
 
-const map = {};
 const handlerMap = {};
-const aliasMap = {};
 const __rootInstance = new Set();
 const __rootInstanceMap = new WeakMap();
 const __tempVariables = new Map();
@@ -11,6 +10,7 @@ const __tempVariablesGroup = new Map();
 const _modules = {};
 const _moduleMap = new WeakMap();
 const RenderCallbackList = new WeakMap();
+const PendingComponentList = new WeakMap();
 const GlobalState = {
   currentComponent: null,
 };
@@ -29,14 +29,15 @@ export function resetCurrentComponent(component) {
   GlobalState.currentComponent = component;
 }
 
-function createRenderCallback(component, delay = 1) {
+function createRenderCallback(component) {
   if (!RenderCallbackList.has(component)) {
-    RenderCallbackList.set(
-      component,
-      debounce(($container = undefined) => {
-        component.render($container);
-      }, delay)
-    );
+    RenderCallbackList.set(component, ($container = undefined) => {
+      const Renderer = component.renderer;
+
+      if (Renderer) {
+        return Renderer(component, $container);
+      }
+    });
   }
 
   return RenderCallbackList.get(component);
@@ -49,9 +50,31 @@ export function removeRenderCallback(component) {
 }
 
 export function renderComponent(component, $container = undefined) {
+  // pending 상태에서는 component 를 렌더링 하지 않습니다.
+  if (isPendingComponent(component)) {
+    return;
+  }
+
   window.requestIdleCallback(() => {
     createRenderCallback(component)?.($container);
   });
+}
+
+/**
+ * Component 의 pending 상태를 관리합니다.
+ *
+ * pending 상태가 되면 render 가 실행되지 않습니다.
+ */
+export function pendingComponent(component) {
+  PendingComponentList.set(component, true);
+}
+
+export function isPendingComponent(component) {
+  return PendingComponentList.has(component);
+}
+
+export function removePendingComponent(component) {
+  PendingComponentList.delete(component);
 }
 
 export const VARIABLE_SAPARATOR = "v:";
@@ -128,24 +151,6 @@ export function hasVariable(id) {
   return __tempVariables.has(id);
 }
 
-export function registElement(classes = {}) {
-  Object.keys(classes).forEach((key) => {
-    map[key] = classes[key];
-  });
-}
-
-export function registAlias(a, b) {
-  aliasMap[a] = b;
-}
-
-export function retriveAlias(key) {
-  return aliasMap[key];
-}
-
-export function retriveElement(className) {
-  return map[retriveAlias(className) || className];
-}
-
 /**
  * root instance 를 등록한다.
  *
@@ -178,9 +183,9 @@ export function isGlobalForceRender() {
 }
 
 export function setGlobalForceRender(isForceRender = false) {
-  if (typeof globalForceRender === "undefined") {
-    globalForceRender = isForceRender;
-  }
+  // if (typeof globalForceRender === "undefined") {
+  globalForceRender = isForceRender;
+  // }
 }
 /**
  * root instance 를 모두 그린다.
@@ -190,7 +195,7 @@ export function renderRootElementInstanceList(isForce = false) {
     if (isForce) {
       instance.forceRender();
     } else {
-      instance.render();
+      renderVNodeComponent(instance);
     }
   });
 }
@@ -241,11 +246,11 @@ export function refreshModule(id, newModules) {
 export function getModule(Component) {
   const id = _moduleMap.get(Component);
   if (!id) {
-    return Component;
+    return;
   }
   const m = _modules[id];
   if (!m) {
-    return Component;
+    return;
   }
 
   // FIXED: function name is always same
@@ -278,5 +283,5 @@ export function getModule(Component) {
     return m.new[oldKey];
   }
 
-  return Component;
+  return undefined;
 }

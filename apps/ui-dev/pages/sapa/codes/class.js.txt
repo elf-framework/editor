@@ -1,9 +1,0 @@
-class App extends UIElement {
-  template() {
-    return (
-      <div>
-        <h1>Hello World</h1>
-      </div>
-    );
-  }
-}

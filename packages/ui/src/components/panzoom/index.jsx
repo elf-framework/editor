@@ -1,27 +1,27 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  backgroundColor: "--elf--panzoom-background",
-  color: "--elf--panzoom-color",
-  height: "--elf--panzoom-height",
-  hoverColor: "--elf--panzoom-hover-color",
-  borderColor: "--elf--panzoom-border-color",
-  boxShadow: "--elf--panzoom-box-shadow",
-  padding: "--elf--panzoom-padding",
-  borderRadius: "--elf--panzoom-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--panzoom", {
+  backgroundColor: true,
+  color: true,
+  height: true,
+  hoverColor: true,
+  borderColor: true,
+  boxShadow: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class PanZoom extends UIElement {
   template() {
     const { style = {}, content } = this.props;
 
     const styleObject = {
-      class: classnames("elf--panzoom"),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: "elf--panzoom",
+      style: propertyMap(style, cssProperties),
     };
 
     return (
@@ -31,3 +31,7 @@ export class PanZoom extends UIElement {
     );
   }
 }
+
+registerComponent("panzoom", PanZoom);
+registerComponent("PanZoom", PanZoom);
+registerComponent("pan-zoom", PanZoom);

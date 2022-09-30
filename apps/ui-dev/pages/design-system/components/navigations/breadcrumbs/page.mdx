@@ -1,0 +1,48 @@
+---
+title: Breadcrumbs
+layout: DesignLayout
+filename: pages/design-system/navigations/breadcrumbs/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/navigations/breadcrumbs/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/navigations/breadcrumbs/OptionsView.jsx"; 
+import { MultilineView } from "../../../../../component/navigations/breadcrumbs/MultilineView.jsx"; 
+import { OverflowView } from "../../../../../component/navigations/breadcrumbs/OverflowView.jsx"; 
+import { TooltipView } from "../../../../../component/navigations/breadcrumbs/TooltipView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Breadcrumbs show hierarchy and navigational context for a user’s location within an app.
+
+
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/breadcrumbs/" />
+</div>
+
+## Options 
+
+### Default
+
+<OptionsView />
+
+### Multiline
+
+<MultilineView />
+
+
+### Overflow
+
+<OverflowView />
+
+
+
+### Tooltips
+
+<TooltipView />
+

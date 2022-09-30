@@ -1,0 +1,70 @@
+.elf--avatar {
+    --elf--avatar-background-color: var(--color-white);
+    --elf--avatar-background-image: none;
+    --elf--avatar-border-radius: 50%;
+    --elf--avatar-size: var(--avatar-size-400);
+    --elf--avatar-border-color: var(--elf--avatar-background-color);
+    --elf--avatar-border-size: 0px;
+
+    background-color: var(--elf--avatar-background-color);
+    background-image: var(--elf--avatar-background-image);
+    display: inline-block;
+    vertical-align: middle;
+    width: var(--elf--avatar-size);
+    height: var(--elf--avatar-size);
+    border-radius: var(--elf--avatar-border-radius);
+    overflow: hidden;
+    box-sizing: border-box;
+    border: var(--elf--avatar-border-size) solid var(--elf--avatar-border-color);
+
+    &.square {
+        --elf--avatar-border-radius: 4px;
+    }
+
+    &.size-small {
+        --elf--avatar-size: var(--avatar-size-200);
+    }
+
+    &.size-medium {
+        --elf--avatar-size: var(--avatar-size-400);
+    }
+
+    &.size-large {
+        --elf--avatar-size: var(--avatar-size-600);
+    }
+
+    &.size-extra-large {
+        --elf--avatar-size: var(--avatar-size-700);
+    }
+
+    &.size-30 { --elf--avatar-size: var(--avatar-size-30); }
+    &.size-50 { --elf--avatar-size: var(--avatar-size-50); }
+    &.size-100 { --elf--avatar-size: var(--avatar-size-100); }
+    &.size-200 { --elf--avatar-size: var(--avatar-size-200); }
+    &.size-300 { --elf--avatar-size: var(--avatar-size-300); }
+    &.size-400 { --elf--avatar-size: var(--avatar-size-400); }
+    &.size-500 { --elf--avatar-size: var(--avatar-size-500); }
+    &.size-600 { --elf--avatar-size: var(--avatar-size-600); }
+    &.size-700 { --elf--avatar-size: var(--avatar-size-700); }
+    
+    .elf--avatar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        > * {
+            flex: 1 1 auto;
+        }
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        .elf--avatar-inner {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+    }
+}

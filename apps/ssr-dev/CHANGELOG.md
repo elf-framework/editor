@@ -1,5 +1,18 @@
 # ui-dev
 
+## 1.0.7
+
+### Patch Changes
+
+- update version
+
+- Updated dependencies []:
+  - @elf-framework/color@2.1.7
+  - @elf-framework/design-tokens@2.1.7
+  - @elf-framework/sapa@2.1.7
+  - @elf-framework/sapa-router@2.1.7
+  - @elf-framework/ui@2.1.7
+
 ## 1.0.6
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 .elf--notification {
-    --elf--notification-background-color: #222222;
-    --elf--notification-hover-color: var(--color-core-newtral-9);
-    --elf--notification-color: var(--color-core-newtral-0);
+    --elf--notification-background-color: #000000;
+    --elf--notification-hover-color: var(--color-gray-9);
+    --elf--notification-color: var(--color-white);
     --elf--notification-border-color: rgba(0, 0, 0, 0.1);
     --elf--notification-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
     --elf--notification-tools-border-color: rgba(255, 255, 255, 0.19);
@@ -9,6 +9,8 @@
     --elf--notification-position: absolute;
     --elf--notification-hgap: 10px;
     --elf--notification-vgap: 10px;
+    --elf--notification-width: 320px;
+    --elf--notification-height: 60px;
 
     background-color: var(--elf--notification-background-color);
     border: 0.5px solid var(--elf--notification-border-color);
@@ -17,67 +19,69 @@
     border-radius: var(--elf--notification-border-radius);   
     color: var(--elf--notification-color);
     
-    width: 320px;
-    height: 60px;
+    width: var(--elf--notification-width);
+    height: var(--elf--notification-height);
+    
 
     display: flex;
 
     position: var(--elf--notification-position);
 
 
-    &.elf--notification-direction-top-left {
+
+    &.top-left {
         top: var(--elf--notification-hgap);
         left: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-top-right {
+    &.top-right {
         top: var(--elf--notification-hgap);
         right: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-bottom-left {
+    &.bottom-left {
         bottom: var(--elf--notification-hgap);
         left: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-bottom-right {
+    &.bottom-right {
         bottom: var(--elf--notification-hgap);
         right: var(--elf--notification-vgap);
     }
 
-    &.elf--notification-direction-center {
+    &.center {
         left: 50%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);                
     }
 
-    &.elf--notification-direction-top {
+    &.top {
         top: var(--elf--notification-hgap);
         left: 50%;
         transform: translateX(-50%);                
     }
 
-    &.elf--notification-direction-bottom {
+    &.bottom {
         bottom: var(--elf--notification-hgap);
         left: 50%;
         transform: translateX(-50%);        
     }
 
-    &.elf--notification-direction-left {
+    &.left {
         left: var(--elf--notification-vgap);
         top: 50%;
         transform: translateY(-50%);        
     }
 
-    &.elf--notification-direction-right {
+    &.right {
         right: var(--elf--notification-vgap);
         top: 50%;
         transform: translateY(-50%);
     }
 
-    .elf--notification-icon {
+    > .icon {
         flex: none;
-        width: 48px;
+        width: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -93,13 +97,18 @@
         }
     }
 
-    .elf--notification-content {
+    > .content {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
+
+        > .text {
+            line-height: 1.2;
+        }
+    
     }
 
-    .elf--notification-tools {
+    > .tools {
         flex: none;
         width: 72px;
         height: 100%;
@@ -123,6 +132,7 @@
             font-weight: 400;
             font-size: 12px; 
             padding: 0;        
+            min-width: 0;
             /* 컴포넌트에 따라서 다르게 해석 할 수도 있음. */
             /* 현재는 notification 에 들어와있는 상태기 때문에 강제함 */
             color: var(--elf--notification-color) !important;

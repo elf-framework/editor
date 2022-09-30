@@ -1,0 +1,150 @@
+.elf--tag {
+    --elf--tag-font-size: var(--font-size-small);
+    --elf--tag-border-radius: 4px;
+    --elf--tag-border-color: var(--color-black);
+    --elf--tag-color: var(--color-black);
+    --elf--tag-background-color: var(--color-white);
+    --elf--tag-padding: 3px 8px;
+
+    display: inline-flex;
+    padding: var(--elf--tag-padding);
+    font-size: var(--elf--tag-font-size);
+    border-radius: var(--elf--tag-border-radius);    
+    color: var(--elf--tag-color);
+    border: 1px solid var(--elf--tag-border-color);
+    background-color: var(--elf--tag-background-color);
+    gap: 10px;
+    white-space: nowrap;
+
+    
+    > .close {
+        cursor: pointer;
+
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    .elf--icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.default {
+        &.filled {
+            --elf--tag-border-color: var(--color-white);
+        }
+    }
+
+    &.primary {
+        --elf--tag-color: var(--color-primary);
+        --elf--tag-border-color: var(--color-primary);
+
+        &.filled {
+            --elf--tag-background-color: var(--color-primary);
+            --elf--tag-color: var(--color-white);
+        }
+    }
+
+    &.secondary {
+        --elf--tag-color: var(--color-secondary);
+        --elf--tag-border-color: var(--color-secondary);
+    }
+
+    &.success {
+        --elf--tag-color: var(--color-success);
+        --elf--tag-border-color: var(--color-success);
+
+        &.filled {
+            --elf--tag-background-color: var(--color-success);
+            --elf--tag-color: var(--color-white);
+        }
+    }
+
+    &.warning {
+        --elf--tag-color: var(--color-warning);
+        --elf--tag-border-color: var(--color-warning);
+
+        &.filled {
+            --elf--tag-background-color: var(--color-warning);
+            --elf--tag-color: var(--color-white);
+        }
+    }
+
+    &.danger {
+        --elf--tag-border-color: var(--color-danger);
+        --elf--tag-color: var(--color-danger);
+
+        &.filled {
+            --elf--tag-background-color: var(--color-danger);
+            --elf--tag-color: var(--color-white);
+        }
+    }
+
+    &.info {
+        --elf--tag-color: var(--color-info);
+        --elf--tag-border-color: var(--color-info);
+
+        &.filled {
+            --elf--tag-background-color: var(--color-info);
+            --elf--tag-color: var(--color-white);
+        }
+    }
+
+    &.dark {
+
+        --elf--tag-color: var(--color-black);
+        --elf--tag-border-color: var(--color-black);
+
+        &.filled {
+            --elf--tag-color: var(--color-white);
+            --elf--tag-border-color: var(--color-white);
+            --elf--tag-background-color: var(--color-black);
+
+            > .elf--button {
+                color: var(--color-white);
+            }
+        }
+
+    }
+
+    &.disabled {
+        --elf--tag-color: var(--color-gray-6) !important;
+        --elf--tag-border-color: var(--color-gray-2) !important;
+        --elf--tag-background-color: var(--color-gray-2) !important;
+        cursor: not-allowed;
+
+        > * {
+            pointer-events: none;
+        }
+        > .elf--button {
+            color: var(--color-gray-5) !important;
+        }
+    }
+
+    &.readonly {
+        --elf--tag-color: var(--color-gray-5) !important;
+        --elf--tag-border-color: var(--color-gray-3) !important;
+        --elf--tag-background-color: var(--color-white) !important;
+        pointer-events: none;
+        > * {
+            pointer-events: all;
+        }
+        > .elf--button {
+            color: var(--color-gray-5) !important;
+        }
+    }    
+}
+
+.elf--tag-group {
+    --elf--tag-group-gap: 10px;
+    --elf--tag-group-width: auto;
+
+    display: block;
+    text-align: left;
+    width: var(--elf--tag-group-width);
+
+    > *:not(:last-child) {
+        margin-right: var(--elf--tag-group-gap);
+        margin-bottom: var(--elf--tag-group-gap);
+    }
+}

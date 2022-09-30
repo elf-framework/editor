@@ -7,7 +7,8 @@
   );
   --elf--alert-title-color: var(--alert-color-title-default);
   --elf--alert-content-color: var(--alert-color-content-default);
-  --elf--alert-border-radius: 4px;
+  --elf--alert-border-radius: 0px;
+  --elf--alert-dismissable-color: var(--color-gray-4);
 
   // height: var(--elf--alert-height, 30px);
   padding: var(--elf--alert-padding);
@@ -18,35 +19,123 @@
   box-sizing: border-box;
   position: relative;
 
+  &.round {
+    --elf--alert-border-radius: 6px;
+  }
+
+  &.dismissable {
+
+    --elf--alert-color: var(--elf--alert-dismissable-color) !important;
+    --elf--alert-title-color: var(--elf--alert-dismissable-color) !important;
+    --elf--alert-content-color: var(--elf--alert-dismissable-color) !important;
+  }
+
   > .elf--alert-close {
     position: absolute;
-    right: 15px;
-    top: 15px;
-    transform: scale(1.5);
+    right: 0px;
+    top: 0px;
+    width: 50px;
+    bottom: 0px;
     cursor: pointer;
     color: var(--elf--alert-title-color);    
+    font-size: 20px;
+    line-height: 1.6;
+    // border-left: 1px solid rgba(155, 155, 155, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px 10px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 0px;
+      width: 1px;
+      bottom: 6px;
+      background-color: rgba(155, 155, 155, 0.3);
+    }
+  }
+
+  .elf--icon {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   > .elf--alert-title {
     color: var(--elf--alert-title-color);
     margin-bottom: 10px;
     font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    > * {
+      flex: 1 1 auto;
+    }
+
+
+    > .elf--icon {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      margin-right: 0.5em;
+    }
+
+    > .elf--alert-actions {
+      flex: none;
+    }
+  }
+
+  &.closable {
+    padding-right: 60px;
   }
 
   > .elf--alert-content {
     color: var(--elf--alert-content-color);
+    display: flex;
+
+    > * {
+      flex: 1 1 auto;
+    }
+
+    > .elf--icon {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;    
+      margin-right: 0.5em;        
+    }
+
+    > .elf--alert-actions {
+      flex: none;
+    }
 
     > *:last-child {
       margin-bottom: 0px;
     }
   }
 
+  &.dark {
+    --elf--alert-background-color: var(
+      --alert-color-background-dark
+    );
+    --elf--alert-title-color: var(--alert-color-content-dark);
+    --elf--alert-content-color: var(--alert-color-content-dark);
+  }
 
   &.primary {
     --elf--alert-background-color: var(
       --alert-color-background-primary
     );
-    --elf--alert-title-color: var(--alert-color-title-primary);
+    --elf--alert-title-color: var(--alert-color-content-primary);
     --elf--alert-content-color: var(--alert-color-content-primary);
     
 
@@ -68,14 +157,12 @@
     --elf--alert-title-color: var(--alert-color-title-secondary);
     --elf--alert-content-color: var(--alert-color-content-secondary);
 
-    --elf--alert-color: white;
-
     &.weak {
       --elf--alert-background-color: var(
         --alert-color-background-weak-secondary
       );
-      --elf--alert-title-color: var(--alert-color-title-weak-secondary);
-      --elf--alert-content-color: var(--alert-color-content-weak-secondary);
+      // --elf--alert-title-color: var(--alert-color-title-weak-secondary);
+      // --elf--alert-content-color: var(--alert-color-content-weak-secondary);
       
       --elf--alert-border-color: var(--alert-color-title-weak-secondary);
     }
@@ -85,9 +172,8 @@
     --elf--alert-background-color: var(
       --alert-color-background-success
     );
-    --elf--alert-title-color: var(--alert-color-title-success);    
+    --elf--alert-title-color: var(--alert-color-content-success);    
     --elf--alert-content-color: var(--alert-color-content-success);
-    
 
     &.weak {
       --elf--alert-background-color: var(
@@ -104,7 +190,7 @@
     --elf--alert-background-color: var(
       --alert-color-background-danger
     );
-    --elf--alert-title-color: var(--alert-color-title-danger);     
+    --elf--alert-title-color: var(--alert-color-content-danger);     
     --elf--alert-content-color: var(--alert-color-content-danger);
     
 
@@ -131,8 +217,8 @@
       --elf--alert-background-color: var(
         --alert-color-background-weak-info
       );
-      --elf--alert-title-color: var(--alert-color-title-weak-info);
-      --elf--alert-content-color: var(--alert-color-content-weak-info);
+      --elf--alert-title-color: var(--alert-color-title-default);
+      --elf--alert-content-color: var(--alert-color-content-default);
       
       --elf--alert-border-color: var(--alert-color-title-weak-info);
     }

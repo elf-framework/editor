@@ -1,0 +1,10 @@
+.italic-view {
+    input {
+        font-size: 12px;
+        width: 200px;
+        padding: 5px 10px;
+        &::placeholder {
+            font-style: italic;
+        }
+    }
+}

@@ -1,4 +1,21 @@
-import { children, createVNode, createVNodeText, getProps } from "./index";
+import { children, createVNode, createVNodeText } from "./index";
+
+function getProps(attributes) {
+  var results = {};
+  const len = attributes.length;
+
+  // 일단 attribute 에는 없음
+  // properties 에 있는지 봐야함.
+  for (let i = 0; i < len; i++) {
+    const t = attributes[i];
+    const name = t.name;
+    const value = t.value;
+
+    results[name] = value;
+  }
+
+  return results;
+}
 
 export function createVNodeByDom(el) {
   if (typeof el === "string") {

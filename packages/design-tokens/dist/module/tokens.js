@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 18 Aug 2022 13:00:11 GMT
+ * Generated on Fri, 30 Sep 2022 06:58:07 GMT
  */
 
 module.exports = {
@@ -65,7 +65,7 @@ module.exports = {
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.white.value}",
+          "value": "{color.white.value}",
           "comment": "Background color that will match the current color scheme"
         },
         "name": "ColorBackgroundDefault",
@@ -81,12 +81,12 @@ module.exports = {
         ]
       },
       "primary": {
-        "value": "#218bff",
+        "value": "#78b6ff",
         "comment": "Base color for the primary color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.4.value}",
+          "value": "{color.blue.4.value}",
           "comment": "Base color for the primary color"
         },
         "name": "ColorBackgroundPrimary",
@@ -102,12 +102,12 @@ module.exports = {
         ]
       },
       "secondary": {
-        "value": "#8c959f",
+        "value": "#a2adb8",
         "comment": "Base color for the secondary color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.gray.4.value}",
+          "value": "{color.gray.4.value}",
           "comment": "Base color for the secondary color"
         },
         "name": "ColorBackgroundSecondary",
@@ -123,12 +123,12 @@ module.exports = {
         ]
       },
       "danger": {
-        "value": "#fa4549",
+        "value": "#ff858b",
         "comment": "Base color for the danger color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.red.4.value}",
+          "value": "{color.red.4.value}",
           "comment": "Base color for the danger color"
         },
         "name": "ColorBackgroundDanger",
@@ -144,12 +144,12 @@ module.exports = {
         ]
       },
       "warning": {
-        "value": "#eac54f",
+        "value": "#ffe75c",
         "comment": "Base color for the warning color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.yellow.2.value}",
+          "value": "{color.yellow.2.value}",
           "comment": "Base color for the warning color"
         },
         "name": "ColorBackgroundWarning",
@@ -165,12 +165,12 @@ module.exports = {
         ]
       },
       "success": {
-        "value": "#5cb33b",
+        "value": "#52d9ac",
         "comment": "Base color for the success color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.green.4.value}",
+          "value": "{color.green.4.value}",
           "comment": "Base color for the success color"
         },
         "name": "ColorBackgroundSuccess",
@@ -186,12 +186,12 @@ module.exports = {
         ]
       },
       "info": {
-        "value": "#80ccff",
+        "value": "#cce3ff",
         "comment": "Base color for the info color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.2.value}",
+          "value": "{color.blue.2.value}",
           "comment": "Base color for the info color"
         },
         "name": "ColorBackgroundInfo",
@@ -213,7 +213,7 @@ module.exports = {
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.white.value}",
+            "value": "{color.white.value}",
             "comment": "Background color that will match the current color scheme"
           },
           "name": "ColorBackgroundWeakDefault",
@@ -231,12 +231,12 @@ module.exports = {
           ]
         },
         "primary": {
-          "value": "#54aeff",
+          "value": "#abd2ff",
           "comment": "Weak color for the primary color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.blue.3.value}",
+            "value": "{color.blue.3.value}",
             "comment": "Weak color for the primary color"
           },
           "name": "ColorBackgroundWeakPrimary",
@@ -254,12 +254,12 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#afb8c1",
+          "value": "#c5ced6",
           "comment": "Weak color for the secondary color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.3.value}",
+            "value": "{color.gray.3.value}",
             "comment": "Weak color for the secondary color"
           },
           "name": "ColorBackgroundWeakSecondary",
@@ -277,12 +277,12 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#ff8182",
+          "value": "#ffb5b9",
           "comment": "Weak color for the danger color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.red.3.value}",
+            "value": "{color.red.3.value}",
             "comment": "Weak color for the danger color"
           },
           "name": "ColorBackgroundWeakDanger",
@@ -300,12 +300,12 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#fae17d",
+          "value": "#fff4b5",
           "comment": "Weak color for the warning color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.yellow.1.value}",
+            "value": "{color.yellow.1.value}",
             "comment": "Weak color for the warning color"
           },
           "name": "ColorBackgroundWeakWarning",
@@ -323,12 +323,12 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#8cc760",
+          "value": "#8debcb",
           "comment": "Weak color for the success color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.green.3.value}",
+            "value": "{color.green.3.value}",
             "comment": "Weak color for the success color"
           },
           "name": "ColorBackgroundWeakSuccess",
@@ -346,12 +346,12 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#b6e3ff",
+          "value": "#e8f3ff",
           "comment": "Weak color for the info color",
           "filePath": "tokens/color/background.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.blue.1.value}",
+            "value": "{color.blue.1.value}",
             "comment": "Weak color for the info color"
           },
           "name": "ColorBackgroundWeakInfo",
@@ -372,2226 +372,2993 @@ module.exports = {
     },
     "border": {
       "default": {
-        "value": "#1b1f24",
-        "comment": "Border color that will match the current color scheme",
+        "value": "#2c353d",
         "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "primary": {
+        "value": "#1273e6",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "secondary": {
+        "value": "#d9e0e6",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "success": {
+        "value": "#009f6a",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "danger": {
+        "value": "#d9363e",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "warning": {
+        "value": "#ffb77c",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "info": {
+        "value": "#abd2ff",
+        "filePath": "tokens/color/border.json",
+        "isSource": true
+      },
+      "value": "#d9e0e6",
+      "filePath": "tokens/color/core.json",
+      "isSource": true,
+      "original": {
+        "default": {
+          "value": "{color.black.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "primary": {
+          "value": "{color.blue.6.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "secondary": {
+          "value": "{color.gray.2.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "success": {
+          "value": "{color.green.6.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "danger": {
+          "value": "{color.red.6.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "warning": {
+          "value": "{color.orange.2.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "info": {
+          "value": "{color.blue.3.value}",
+          "filePath": "tokens/color/border.json",
+          "isSource": true
+        },
+        "value": "{color.gray.2.value}"
+      },
+      "name": "ColorBorder",
+      "attributes": {
+        "category": "color",
+        "type": "border"
+      },
+      "path": [
+        "color",
+        "border"
+      ]
+    },
+    "default": {
+      "value": "#ffffff",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.white.value}"
+      },
+      "name": "ColorDefault",
+      "attributes": {
+        "category": "color",
+        "type": "default"
+      },
+      "path": [
+        "color",
+        "default"
+      ]
+    },
+    "primary": {
+      "value": "#1273e6",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.blue.6.value}"
+      },
+      "name": "ColorPrimary",
+      "attributes": {
+        "category": "color",
+        "type": "primary"
+      },
+      "path": [
+        "color",
+        "primary"
+      ]
+    },
+    "secondary": {
+      "value": "#818e9a",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.gray.5.value}"
+      },
+      "name": "ColorSecondary",
+      "attributes": {
+        "category": "color",
+        "type": "secondary"
+      },
+      "path": [
+        "color",
+        "secondary"
+      ]
+    },
+    "success": {
+      "value": "#009f6a",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.green.6.value}"
+      },
+      "name": "ColorSuccess",
+      "attributes": {
+        "category": "color",
+        "type": "success"
+      },
+      "path": [
+        "color",
+        "success"
+      ]
+    },
+    "danger": {
+      "value": "#d9363e",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.red.6.value}"
+      },
+      "name": "ColorDanger",
+      "attributes": {
+        "category": "color",
+        "type": "danger"
+      },
+      "path": [
+        "color",
+        "danger"
+      ]
+    },
+    "warning": {
+      "value": "#ffb77c",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.orange.2.value}"
+      },
+      "name": "ColorWarning",
+      "attributes": {
+        "category": "color",
+        "type": "warning"
+      },
+      "path": [
+        "color",
+        "warning"
+      ]
+    },
+    "info": {
+      "value": "#abd2ff",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.blue.3.value}"
+      },
+      "name": "ColorInfo",
+      "attributes": {
+        "category": "color",
+        "type": "info"
+      },
+      "path": [
+        "color",
+        "info"
+      ]
+    },
+    "disabled": {
+      "value": "#d9e0e6",
+      "filePath": "tokens/color/brand.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.gray.2.value}"
+      },
+      "name": "ColorDisabled",
+      "attributes": {
+        "category": "color",
+        "type": "disabled"
+      },
+      "path": [
+        "color",
+        "disabled"
+      ]
+    },
+    "hover": {
+      "default": {
+        "value": "#f8f8f8",
+        "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.black.value}",
-          "comment": "Border color that will match the current color scheme"
+          "value": "{color.gray.0.value}"
         },
-        "name": "ColorBorderDefault",
+        "name": "ColorHoverDefault",
         "attributes": {
           "category": "color",
-          "type": "border",
+          "type": "hover",
           "item": "default"
         },
         "path": [
           "color",
-          "border",
+          "hover",
+          "default"
+        ]
+      },
+      "dark": {
+        "value": "#000000",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "#000000"
+        },
+        "name": "ColorHoverDark",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "dark"
+        },
+        "path": [
+          "color",
+          "hover",
+          "dark"
+        ]
+      },
+      "primary": {
+        "value": "#0060cc",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.7.value}"
+        },
+        "name": "ColorHoverPrimary",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "primary"
+        },
+        "path": [
+          "color",
+          "hover",
+          "primary"
+        ]
+      },
+      "secondary": {
+        "value": "#46525c",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.7.value}"
+        },
+        "name": "ColorHoverSecondary",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "secondary"
+        },
+        "path": [
+          "color",
+          "hover",
+          "secondary"
+        ]
+      },
+      "success": {
+        "value": "#067852",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.7.value}"
+        },
+        "name": "ColorHoverSuccess",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "success"
+        },
+        "path": [
+          "color",
+          "hover",
+          "success"
+        ]
+      },
+      "danger": {
+        "value": "#a12b2b",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.7.value}"
+        },
+        "name": "ColorHoverDanger",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "danger"
+        },
+        "path": [
+          "color",
+          "hover",
+          "danger"
+        ]
+      },
+      "warning": {
+        "value": "#e16f24",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.orange.4.value}"
+        },
+        "name": "ColorHoverWarning",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "warning"
+        },
+        "path": [
+          "color",
+          "hover",
+          "warning"
+        ]
+      },
+      "info": {
+        "value": "#78b6ff",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.4.value}"
+        },
+        "name": "ColorHoverInfo",
+        "attributes": {
+          "category": "color",
+          "type": "hover",
+          "item": "info"
+        },
+        "path": [
+          "color",
+          "hover",
+          "info"
+        ]
+      }
+    },
+    "down": {
+      "default": {
+        "value": "#d9e0e6",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.2.value}"
+        },
+        "name": "ColorDownDefault",
+        "attributes": {
+          "category": "color",
+          "type": "down",
+          "item": "default"
+        },
+        "path": [
+          "color",
+          "down",
           "default"
         ]
       },
       "primary": {
-        "value": "#218bff",
-        "comment": "Base color for the primary color",
-        "filePath": "tokens/color/border.json",
+        "value": "#0060cc",
+        "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.4.value}",
-          "comment": "Base color for the primary color"
+          "value": "{color.blue.7.value}"
         },
-        "name": "ColorBorderPrimary",
+        "name": "ColorDownPrimary",
         "attributes": {
           "category": "color",
-          "type": "border",
+          "type": "down",
           "item": "primary"
         },
         "path": [
           "color",
-          "border",
+          "down",
           "primary"
         ]
       },
       "secondary": {
-        "value": "#8c959f",
-        "comment": "Base color for the secondary color",
-        "filePath": "tokens/color/border.json",
+        "value": "#39444d",
+        "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.gray.4.value}",
-          "comment": "Base color for the secondary color"
+          "value": "{color.gray.8.value}"
         },
-        "name": "ColorBorderSecondary",
+        "name": "ColorDownSecondary",
         "attributes": {
           "category": "color",
-          "type": "border",
+          "type": "down",
           "item": "secondary"
         },
         "path": [
           "color",
-          "border",
+          "down",
           "secondary"
         ]
       },
-      "danger": {
-        "value": "#fa4549",
-        "comment": "Base color for the danger color",
-        "filePath": "tokens/color/border.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.red.4.value}",
-          "comment": "Base color for the danger color"
-        },
-        "name": "ColorBorderDanger",
-        "attributes": {
-          "category": "color",
-          "type": "border",
-          "item": "danger"
-        },
-        "path": [
-          "color",
-          "border",
-          "danger"
-        ]
-      },
-      "warning": {
-        "value": "#bf8700",
-        "comment": "Base color for the warning color",
-        "filePath": "tokens/color/border.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.yellow.4.value}",
-          "comment": "Base color for the warning color"
-        },
-        "name": "ColorBorderWarning",
-        "attributes": {
-          "category": "color",
-          "type": "border",
-          "item": "warning"
-        },
-        "path": [
-          "color",
-          "border",
-          "warning"
-        ]
-      },
       "success": {
-        "value": "#5cb33b",
-        "comment": "Base color for the success color",
-        "filePath": "tokens/color/border.json",
+        "value": "#1b5441",
+        "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.green.4.value}",
-          "comment": "Base color for the success color"
+          "value": "{color.green.8.value}"
         },
-        "name": "ColorBorderSuccess",
+        "name": "ColorDownSuccess",
         "attributes": {
           "category": "color",
-          "type": "border",
+          "type": "down",
           "item": "success"
         },
         "path": [
           "color",
-          "border",
+          "down",
           "success"
         ]
       },
-      "info": {
-        "value": "#80ccff",
-        "comment": "Base color for the info color",
-        "filePath": "tokens/color/border.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.blue.2.value}",
-          "comment": "Base color for the info color"
-        },
-        "name": "ColorBorderInfo",
-        "attributes": {
-          "category": "color",
-          "type": "border",
-          "item": "info"
-        },
-        "path": [
-          "color",
-          "border",
-          "info"
-        ]
-      }
-    },
-    "brand": {
-      "primary": {
-        "value": "#218bff",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.blue.4.value}"
-        },
-        "name": "ColorBrandPrimary",
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "primary"
-        },
-        "path": [
-          "color",
-          "brand",
-          "primary"
-        ]
-      },
-      "secondary": {
-        "value": "#8c959f",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.gray.4.value}"
-        },
-        "name": "ColorBrandSecondary",
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "secondary"
-        },
-        "path": [
-          "color",
-          "brand",
-          "secondary"
-        ]
-      },
       "danger": {
-        "value": "#fa4549",
+        "value": "#80252a",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.red.4.value}"
+          "value": "{color.red.8.value}"
         },
-        "name": "ColorBrandDanger",
+        "name": "ColorDownDanger",
         "attributes": {
           "category": "color",
-          "type": "brand",
+          "type": "down",
           "item": "danger"
         },
         "path": [
           "color",
-          "brand",
+          "down",
           "danger"
         ]
       },
       "warning": {
-        "value": "#bf8700",
+        "value": "#5c2200",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.yellow.4.value}"
+          "value": "{color.orange.8.value}"
         },
-        "name": "ColorBrandWarning",
+        "name": "ColorDownWarning",
         "attributes": {
           "category": "color",
-          "type": "brand",
+          "type": "down",
           "item": "warning"
         },
         "path": [
           "color",
-          "brand",
+          "down",
           "warning"
         ]
       },
-      "success": {
-        "value": "#5cb33b",
-        "filePath": "tokens/color/brand.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.green.4.value}"
-        },
-        "name": "ColorBrandSuccess",
-        "attributes": {
-          "category": "color",
-          "type": "brand",
-          "item": "success"
-        },
-        "path": [
-          "color",
-          "brand",
-          "success"
-        ]
-      },
       "info": {
-        "value": "#80ccff",
+        "value": "#0060cc",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.2.value}"
+          "value": "{color.blue.7.value}"
         },
-        "name": "ColorBrandInfo",
+        "name": "ColorDownInfo",
         "attributes": {
           "category": "color",
-          "type": "brand",
+          "type": "down",
           "item": "info"
         },
         "path": [
           "color",
-          "brand",
+          "down",
           "info"
         ]
       }
     },
-    "core": {
-      "red": {
-        "0": {
-          "value": "#ffebe9",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffebe9"
-          },
-          "name": "ColorCoreRed0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "0"
-          ]
+    "status": {
+      "informative": {
+        "value": "#1273e6",
+        "comment": "e.g., active, in use, live, published",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.6.value}",
+          "comment": "e.g., active, in use, live, published"
         },
-        "1": {
-          "value": "#ffcecb",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffcecb"
-          },
-          "name": "ColorCoreRed1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "1"
-          ]
+        "name": "ColorStatusInformative",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "informative"
         },
-        "2": {
-          "value": "#ffaba8",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffaba8"
-          },
-          "name": "ColorCoreRed2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#ff8182",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ff8182"
-          },
-          "name": "ColorCoreRed3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#fa4549",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fa4549"
-          },
-          "name": "ColorCoreRed4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#cf222e",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#cf222e"
-          },
-          "name": "ColorCoreRed5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#a40e26",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#a40e26"
-          },
-          "name": "ColorCoreRed6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#82071e",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#82071e"
-          },
-          "name": "ColorCoreRed7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#660018",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#660018"
-          },
-          "name": "ColorCoreRed8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#4c0014",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#4c0014"
-          },
-          "name": "ColorCoreRed9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "red",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "red",
-            "9"
-          ]
-        }
+        "path": [
+          "color",
+          "status",
+          "informative"
+        ]
       },
-      "orange": {
-        "0": {
-          "value": "#fff1e5",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fff1e5"
-          },
-          "name": "ColorCoreOrange0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "0"
-          ]
+      "neutral": {
+        "value": "#39444d",
+        "comment": "e.g., archived, deleted, paused, draft, not started, ended",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.8.value}",
+          "comment": "e.g., archived, deleted, paused, draft, not started, ended"
         },
-        "1": {
-          "value": "#ffd8b5",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffd8b5"
-          },
-          "name": "ColorCoreOrange1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "1"
-          ]
+        "name": "ColorStatusNeutral",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "neutral"
         },
-        "2": {
-          "value": "#ffb77c",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffb77c"
-          },
-          "name": "ColorCoreOrange2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "2"
-          ]
+        "path": [
+          "color",
+          "status",
+          "neutral"
+        ]
+      },
+      "positive": {
+        "value": "#067852",
+        "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.7.value}",
+          "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published"
         },
-        "3": {
-          "value": "#fb8f44",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fb8f44"
-          },
-          "name": "ColorCoreOrange3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "3"
-          ]
+        "name": "ColorStatusPositive",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "positive"
         },
-        "4": {
-          "value": "#e16f24",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#e16f24"
-          },
-          "name": "ColorCoreOrange4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "4"
-          ]
+        "path": [
+          "color",
+          "status",
+          "positive"
+        ]
+      },
+      "notice": {
+        "value": "#8c40ff",
+        "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.purple.6.value}",
+          "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing"
         },
-        "5": {
-          "value": "#bc4c00",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#bc4c00"
-          },
-          "name": "ColorCoreOrange5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "5"
-          ]
+        "name": "ColorStatusNotice",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "notice"
         },
-        "6": {
-          "value": "#953800",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#953800"
-          },
-          "name": "ColorCoreOrange6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "6"
-          ]
+        "path": [
+          "color",
+          "status",
+          "notice"
+        ]
+      },
+      "negative": {
+        "value": "#a12b2b",
+        "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.7.value}",
+          "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished"
         },
-        "7": {
-          "value": "#762c00",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#762c00"
-          },
-          "name": "ColorCoreOrange7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "7"
-          ]
+        "name": "ColorStatusNegative",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "negative"
         },
-        "8": {
-          "value": "#5c2200",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#5c2200"
-          },
-          "name": "ColorCoreOrange8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "8"
-          ]
+        "path": [
+          "color",
+          "status",
+          "negative"
+        ]
+      },
+      "indigo": {
+        "value": "#762c00",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.orange.7.value}"
         },
-        "9": {
-          "value": "#471700",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#471700"
-          },
-          "name": "ColorCoreOrange9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "orange",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "orange",
-            "9"
-          ]
-        }
+        "name": "ColorStatusIndigo",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "indigo"
+        },
+        "path": [
+          "color",
+          "status",
+          "indigo"
+        ]
+      },
+      "celery": {
+        "value": "#067852",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.green.7.value}"
+        },
+        "name": "ColorStatusCelery",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "celery"
+        },
+        "path": [
+          "color",
+          "status",
+          "celery"
+        ]
       },
       "yellow": {
-        "0": {
-          "value": "#fff8c5",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fff8c5"
-          },
-          "name": "ColorCoreYellow0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "0"
-          ]
+        "value": "#ffda00",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.yellow.3.value}"
         },
-        "1": {
-          "value": "#fae17d",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fae17d"
-          },
-          "name": "ColorCoreYellow1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "1"
-          ]
+        "name": "ColorStatusYellow",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "yellow"
         },
-        "2": {
-          "value": "#eac54f",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#eac54f"
-          },
-          "name": "ColorCoreYellow2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#d4a72c",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#d4a72c"
-          },
-          "name": "ColorCoreYellow3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#bf8700",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#bf8700"
-          },
-          "name": "ColorCoreYellow4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#9a6700",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#9a6700"
-          },
-          "name": "ColorCoreYellow5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#7d4e00",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#7d4e00"
-          },
-          "name": "ColorCoreYellow6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#633c01",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#633c01"
-          },
-          "name": "ColorCoreYellow7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#4d2d00",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#4d2d00"
-          },
-          "name": "ColorCoreYellow8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#3b2300",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#3b2300"
-          },
-          "name": "ColorCoreYellow9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "yellow",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "yellow",
-            "9"
-          ]
-        }
+        "path": [
+          "color",
+          "status",
+          "yellow"
+        ]
       },
-      "green": {
-        "0": {
-          "value": "#f0ffd9",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#f0ffd9"
-          },
-          "name": "ColorCoreGreen0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "0"
-          ]
+      "magenta": {
+        "value": "#a469ff",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.purple.5.value}"
         },
-        "1": {
-          "value": "#d9e9c0",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#d9e9c0"
-          },
-          "name": "ColorCoreGreen1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "1"
-          ]
+        "name": "ColorStatusMagenta",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "magenta"
         },
-        "2": {
-          "value": "#b8d991",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#b8d991"
-          },
-          "name": "ColorCoreGreen2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#8cc760",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#8cc760"
-          },
-          "name": "ColorCoreGreen3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#5cb33b",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#5cb33b"
-          },
-          "name": "ColorCoreGreen4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#3a9f1f",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#3a9f1f"
-          },
-          "name": "ColorCoreGreen5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#1a7c0d",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#1a7c0d"
-          },
-          "name": "ColorCoreGreen6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#0a5a0a",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#0a5a0a"
-          },
-          "name": "ColorCoreGreen7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#004c04",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#004c04"
-          },
-          "name": "ColorCoreGreen8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#003a02",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#003a02"
-          },
-          "name": "ColorCoreGreen9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "green",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "green",
-            "9"
-          ]
-        }
+        "path": [
+          "color",
+          "status",
+          "magenta"
+        ]
       },
-      "blue": {
-        "0": {
-          "value": "#ddf4ff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ddf4ff"
-          },
-          "name": "ColorCoreBlue0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "0"
-          ]
+      "fuchsia": {
+        "value": "#d1347a",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.pink.6.value}"
         },
-        "1": {
-          "value": "#b6e3ff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#b6e3ff"
-          },
-          "name": "ColorCoreBlue1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "1"
-          ]
+        "name": "ColorStatusFuchsia",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "fuchsia"
         },
-        "2": {
-          "value": "#80ccff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#80ccff"
-          },
-          "name": "ColorCoreBlue2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#54aeff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#54aeff"
-          },
-          "name": "ColorCoreBlue3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#218bff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#218bff"
-          },
-          "name": "ColorCoreBlue4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#0969da",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#0969da"
-          },
-          "name": "ColorCoreBlue5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#0550ae",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#0550ae"
-          },
-          "name": "ColorCoreBlue6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#033d8b",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#033d8b"
-          },
-          "name": "ColorCoreBlue7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#0a3069",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#0a3069"
-          },
-          "name": "ColorCoreBlue8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#002155",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#002155"
-          },
-          "name": "ColorCoreBlue9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "blue",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "blue",
-            "9"
-          ]
-        }
+        "path": [
+          "color",
+          "status",
+          "fuchsia"
+        ]
       },
       "purple": {
-        "0": {
-          "value": "#fbefff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fbefff"
-          },
-          "name": "ColorCorePurple0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "0"
-          ]
-        },
-        "1": {
-          "value": "#ecd8ff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ecd8ff"
-          },
-          "name": "ColorCorePurple1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "1"
-          ]
-        },
-        "2": {
-          "value": "#d8b9ff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#d8b9ff"
-          },
-          "name": "ColorCorePurple2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#c297ff",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#c297ff"
-          },
-          "name": "ColorCorePurple3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#a475f9",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#a475f9"
-          },
-          "name": "ColorCorePurple4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#8250df",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#8250df"
-          },
-          "name": "ColorCorePurple5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#6639ba",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#6639ba"
-          },
-          "name": "ColorCorePurple6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#512a97",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#512a97"
-          },
-          "name": "ColorCorePurple7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#3e1f79",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#3e1f79"
-          },
-          "name": "ColorCorePurple8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#2e1461",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#2e1461"
-          },
-          "name": "ColorCorePurple9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "purple",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "purple",
-            "9"
-          ]
-        }
-      },
-      "pink": {
-        "0": {
-          "value": "#ffeff7",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffeff7"
-          },
-          "name": "ColorCorePink0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "0"
-          ]
-        },
-        "1": {
-          "value": "#ffd3eb",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffd3eb"
-          },
-          "name": "ColorCorePink1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "1"
-          ]
-        },
-        "2": {
-          "value": "#ffadda",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ffadda"
-          },
-          "name": "ColorCorePink2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#ff80c8",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#ff80c8"
-          },
-          "name": "ColorCorePink3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#e85aad",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#e85aad"
-          },
-          "name": "ColorCorePink4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#bf3989",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#bf3989"
-          },
-          "name": "ColorCorePink5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#99286e",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#99286e"
-          },
-          "name": "ColorCorePink6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#772057",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#772057"
-          },
-          "name": "ColorCorePink7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#611347",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#611347"
-          },
-          "name": "ColorCorePink8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#4d0336",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#4d0336"
-          },
-          "name": "ColorCorePink9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "pink",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "pink",
-            "9"
-          ]
-        }
-      },
-      "gray": {
-        "0": {
-          "value": "#f6f8fa",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#f6f8fa"
-          },
-          "name": "ColorCoreGray0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "0"
-          ]
-        },
-        "1": {
-          "value": "#eaeef2",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#eaeef2"
-          },
-          "name": "ColorCoreGray1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "1"
-          ]
-        },
-        "2": {
-          "value": "#d0d7de",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#d0d7de"
-          },
-          "name": "ColorCoreGray2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#afb8c1",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#afb8c1"
-          },
-          "name": "ColorCoreGray3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#8c959f",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#8c959f"
-          },
-          "name": "ColorCoreGray4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#6e7781",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#6e7781"
-          },
-          "name": "ColorCoreGray5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#57606a",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#57606a"
-          },
-          "name": "ColorCoreGray6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#424a53",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#424a53"
-          },
-          "name": "ColorCoreGray7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#32383f",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#32383f"
-          },
-          "name": "ColorCoreGray8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#24292f",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#24292f"
-          },
-          "name": "ColorCoreGray9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "gray",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "gray",
-            "9"
-          ]
-        }
-      },
-      "newtral": {
-        "0": {
-          "value": "#fafafa",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#fafafa"
-          },
-          "name": "ColorCoreNewtral0",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "0"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "0"
-          ]
-        },
-        "1": {
-          "value": "#f5f5f5",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#f5f5f5"
-          },
-          "name": "ColorCoreNewtral1",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "1"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "1"
-          ]
-        },
-        "2": {
-          "value": "#f0f0f0",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#f0f0f0"
-          },
-          "name": "ColorCoreNewtral2",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "2"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "2"
-          ]
-        },
-        "3": {
-          "value": "#e6e6e6",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#e6e6e6"
-          },
-          "name": "ColorCoreNewtral3",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "3"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "3"
-          ]
-        },
-        "4": {
-          "value": "#cccccc",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#cccccc"
-          },
-          "name": "ColorCoreNewtral4",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "4"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "4"
-          ]
-        },
-        "5": {
-          "value": "#b3b3b3",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#b3b3b3"
-          },
-          "name": "ColorCoreNewtral5",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "5"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "5"
-          ]
-        },
-        "6": {
-          "value": "#999999",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#999999"
-          },
-          "name": "ColorCoreNewtral6",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "6"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "6"
-          ]
-        },
-        "7": {
-          "value": "#7f7f7f",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#7f7f7f"
-          },
-          "name": "ColorCoreNewtral7",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "7"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "7"
-          ]
-        },
-        "8": {
-          "value": "#666666",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#666666"
-          },
-          "name": "ColorCoreNewtral8",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "8"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "8"
-          ]
-        },
-        "9": {
-          "value": "#4d4d4d",
-          "filePath": "tokens/color/core.json",
-          "isSource": true,
-          "original": {
-            "value": "#4d4d4d"
-          },
-          "name": "ColorCoreNewtral9",
-          "attributes": {
-            "category": "color",
-            "type": "core",
-            "item": "newtral",
-            "subitem": "9"
-          },
-          "path": [
-            "color",
-            "core",
-            "newtral",
-            "9"
-          ]
-        }
-      },
-      "black": {
-        "value": "#1b1f24",
-        "filePath": "tokens/color/core.json",
+        "value": "#a469ff",
+        "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "#1b1f24"
+          "value": "{color.purple.5.value}"
         },
-        "name": "ColorCoreBlack",
+        "name": "ColorStatusPurple",
         "attributes": {
           "category": "color",
-          "type": "core",
-          "item": "black"
+          "type": "status",
+          "item": "purple"
         },
         "path": [
           "color",
-          "core",
-          "black"
+          "status",
+          "purple"
         ]
+      },
+      "seafoam": {
+        "value": "#199091",
+        "filePath": "tokens/color/brand.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.teal.6.value}"
+        },
+        "name": "ColorStatusSeafoam",
+        "attributes": {
+          "category": "color",
+          "type": "status",
+          "item": "seafoam"
+        },
+        "path": [
+          "color",
+          "status",
+          "seafoam"
+        ]
+      }
+    },
+    "red": {
+      "0": {
+        "value": "#fff2f3",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFF2F3"
+        },
+        "name": "ColorRed0",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "red",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#ffebec",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFEBEC"
+        },
+        "name": "ColorRed1",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "red",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#ffcfd1",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFCFD1"
+        },
+        "name": "ColorRed2",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "red",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#ffb5b9",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFB5B9"
+        },
+        "name": "ColorRed3",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "red",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#ff858b",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FF858B"
+        },
+        "name": "ColorRed4",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "red",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#ff5760",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FF5760"
+        },
+        "name": "ColorRed5",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "red",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#d9363e",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#D9363E"
+        },
+        "name": "ColorRed6",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "red",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#a12b2b",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#A12B2B"
+        },
+        "name": "ColorRed7",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "red",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#80252a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#80252A"
+        },
+        "name": "ColorRed8",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "red",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#5c2121",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#5C2121"
+        },
+        "name": "ColorRed9",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "red",
+          "9"
+        ]
+      }
+    },
+    "orange": {
+      "0": {
+        "value": "#fff1e5",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#fff1e5"
+        },
+        "name": "ColorOrange0",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "orange",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#ffd8b5",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#ffd8b5"
+        },
+        "name": "ColorOrange1",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "orange",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#ffb77c",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#ffb77c"
+        },
+        "name": "ColorOrange2",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "orange",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#fb8f44",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#fb8f44"
+        },
+        "name": "ColorOrange3",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "orange",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#e16f24",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#e16f24"
+        },
+        "name": "ColorOrange4",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "orange",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#bc4c00",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#bc4c00"
+        },
+        "name": "ColorOrange5",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "orange",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#953800",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#953800"
+        },
+        "name": "ColorOrange6",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "orange",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#762c00",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#762c00"
+        },
+        "name": "ColorOrange7",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "orange",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#5c2200",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#5c2200"
+        },
+        "name": "ColorOrange8",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "orange",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#471700",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#471700"
+        },
+        "name": "ColorOrange9",
+        "attributes": {
+          "category": "color",
+          "type": "orange",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "orange",
+          "9"
+        ]
+      }
+    },
+    "yellow": {
+      "0": {
+        "value": "#fffadb",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFFADB"
+        },
+        "name": "ColorYellow0",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#fff4b5",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFF4B5"
+        },
+        "name": "ColorYellow1",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#ffe75c",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFE75C"
+        },
+        "name": "ColorYellow2",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#ffda00",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFDA00"
+        },
+        "name": "ColorYellow3",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#e3ad0b",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#E3AD0B"
+        },
+        "name": "ColorYellow4",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#b58c12",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#B58C12"
+        },
+        "name": "ColorYellow5",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#876a2f",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#876A2F"
+        },
+        "name": "ColorYellow6",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#614d27",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#614D27"
+        },
+        "name": "ColorYellow7",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#523e21",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#523E21"
+        },
+        "name": "ColorYellow8",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#3d3121",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#3D3121"
+        },
+        "name": "ColorYellow9",
+        "attributes": {
+          "category": "color",
+          "type": "yellow",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "yellow",
+          "9"
+        ]
+      }
+    },
+    "green": {
+      "0": {
+        "value": "#e8fff7",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#E8FFF7"
+        },
+        "name": "ColorGreen0",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "green",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#d6fff1",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#D6FFF1"
+        },
+        "name": "ColorGreen1",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "green",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#b5f5e0",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#B5F5E0"
+        },
+        "name": "ColorGreen2",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "green",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#8debcb",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#8DEBCB"
+        },
+        "name": "ColorGreen3",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "green",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#52d9ac",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#52D9AC"
+        },
+        "name": "ColorGreen4",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "green",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#28bd8b",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#28BD8B"
+        },
+        "name": "ColorGreen5",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "green",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#009f6a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#009F6A"
+        },
+        "name": "ColorGreen6",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "green",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#067852",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#067852"
+        },
+        "name": "ColorGreen7",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "green",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#1b5441",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#1B5441"
+        },
+        "name": "ColorGreen8",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "green",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#233b33",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#233B33"
+        },
+        "name": "ColorGreen9",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "green",
+          "9"
+        ]
+      }
+    },
+    "blue": {
+      "0": {
+        "value": "#f6faff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#F6FAFF"
+        },
+        "name": "ColorBlue0",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "blue",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#e8f3ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#E8F3FF"
+        },
+        "name": "ColorBlue1",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "blue",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#cce3ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#CCE3FF"
+        },
+        "name": "ColorBlue2",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "blue",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#abd2ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#ABD2FF"
+        },
+        "name": "ColorBlue3",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "blue",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#78b6ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#78B6FF"
+        },
+        "name": "ColorBlue4",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "blue",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#429bff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#429BFF"
+        },
+        "name": "ColorBlue5",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "blue",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#1273e6",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#1273E6"
+        },
+        "name": "ColorBlue6",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "blue",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#0060cc",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#0060CC"
+        },
+        "name": "ColorBlue7",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "blue",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#1a497d",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#1A497D"
+        },
+        "name": "ColorBlue8",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "blue",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#203752",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#203752"
+        },
+        "name": "ColorBlue9",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "blue",
+          "9"
+        ]
+      }
+    },
+    "purple": {
+      "0": {
+        "value": "#f9f5ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#F9F5FF"
+        },
+        "name": "ColorPurple0",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "purple",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#f3ebff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#F3EBFF"
+        },
+        "name": "ColorPurple1",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "purple",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#e5d4ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#E5D4FF"
+        },
+        "name": "ColorPurple2",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "purple",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#d7bdff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#D7BDFF"
+        },
+        "name": "ColorPurple3",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "purple",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#bd91ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#BD91FF"
+        },
+        "name": "ColorPurple4",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "purple",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#a469ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#A469FF"
+        },
+        "name": "ColorPurple5",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "purple",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#8c40ff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#8C40FF"
+        },
+        "name": "ColorPurple6",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "purple",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#7122e3",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#7122E3"
+        },
+        "name": "ColorPurple7",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "purple",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#4c2e87",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#4C2E87"
+        },
+        "name": "ColorPurple8",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "purple",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#352e4a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#352E4A"
+        },
+        "name": "ColorPurple9",
+        "attributes": {
+          "category": "color",
+          "type": "purple",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "purple",
+          "9"
+        ]
+      }
+    },
+    "pink": {
+      "0": {
+        "value": "#fff2f8",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFF2F8"
+        },
+        "name": "ColorPink0",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "pink",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#ffe8f2",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFE8F2"
+        },
+        "name": "ColorPink1",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "pink",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#ffcce3",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFCCE3"
+        },
+        "name": "ColorPink2",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "pink",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#ffb0d3",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FFB0D3"
+        },
+        "name": "ColorPink3",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "pink",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#ff7db7",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#FF7DB7"
+        },
+        "name": "ColorPink4",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "pink",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#f0549a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#F0549A"
+        },
+        "name": "ColorPink5",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "pink",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#d1347a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#D1347A"
+        },
+        "name": "ColorPink6",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "pink",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#992659",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#992659"
+        },
+        "name": "ColorPink7",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "pink",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#782449",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#782449"
+        },
+        "name": "ColorPink8",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "pink",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#522338",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#522338"
+        },
+        "name": "ColorPink9",
+        "attributes": {
+          "category": "color",
+          "type": "pink",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "pink",
+          "9"
+        ]
+      }
+    },
+    "gray": {
+      "0": {
+        "value": "#f8f8f8",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#f8f8f8"
+        },
+        "name": "ColorGray0",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "gray",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#ebf0f5",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#EBF0F5"
+        },
+        "name": "ColorGray1",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "gray",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#d9e0e6",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#D9E0E6"
+        },
+        "name": "ColorGray2",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "gray",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#c5ced6",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#C5CED6"
+        },
+        "name": "ColorGray3",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "gray",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#a2adb8",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#A2ADB8"
+        },
+        "name": "ColorGray4",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "gray",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#818e9a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#818E9A"
+        },
+        "name": "ColorGray5",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "gray",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#626f7a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#626F7A"
+        },
+        "name": "ColorGray6",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "gray",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#46525c",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#46525C"
+        },
+        "name": "ColorGray7",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "gray",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#39444d",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#39444D"
+        },
+        "name": "ColorGray8",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "gray",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#2c353d",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#2C353D"
+        },
+        "name": "ColorGray9",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "gray",
+          "9"
+        ]
+      }
+    },
+    "teal": {
+      "0": {
+        "value": "#e3ffff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#E3FFFF"
+        },
+        "name": "ColorTeal0",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "teal",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#ccffff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#CCFFFF"
+        },
+        "name": "ColorTeal1",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "teal",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#96feff",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#96FEFF"
+        },
+        "name": "ColorTeal2",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "teal",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#6ef4f5",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#6EF4F5"
+        },
+        "name": "ColorTeal3",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "teal",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#37e4e6",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#37E4E6"
+        },
+        "name": "ColorTeal4",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "teal",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#13bebf",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#13BEBF"
+        },
+        "name": "ColorTeal5",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "teal",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#199091",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#199091"
+        },
+        "name": "ColorTeal6",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "teal",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#226363",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#226363"
+        },
+        "name": "ColorTeal7",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "teal",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#274c4d",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#274C4D"
+        },
+        "name": "ColorTeal8",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "teal",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#223a3b",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#223A3B"
+        },
+        "name": "ColorTeal9",
+        "attributes": {
+          "category": "color",
+          "type": "teal",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "teal",
+          "9"
+        ]
+      }
+    },
+    "black": {
+      "value": "#2c353d",
+      "filePath": "tokens/color/core.json",
+      "isSource": true,
+      "original": {
+        "value": "{color.gray.9.value}"
+      },
+      "name": "ColorBlack",
+      "attributes": {
+        "category": "color",
+        "type": "black"
+      },
+      "path": [
+        "color",
+        "black"
+      ]
+    },
+    "white": {
+      "value": "#ffffff",
+      "filePath": "tokens/color/core.json",
+      "isSource": true,
+      "original": {
+        "value": "#ffffff"
+      },
+      "name": "ColorWhite",
+      "attributes": {
+        "category": "color",
+        "type": "white"
+      },
+      "path": [
+        "color",
+        "white"
+      ]
+    },
+    "transparent": {
+      "black": {
+        "0": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0)"
+          },
+          "name": "ColorTransparentBlack0",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "0"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "0"
+          ]
+        },
+        "1": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.1)"
+          },
+          "name": "ColorTransparentBlack1",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "1"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "1"
+          ]
+        },
+        "2": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.2)"
+          },
+          "name": "ColorTransparentBlack2",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "2"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "2"
+          ]
+        },
+        "3": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.3)"
+          },
+          "name": "ColorTransparentBlack3",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "3"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "3"
+          ]
+        },
+        "4": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.4)"
+          },
+          "name": "ColorTransparentBlack4",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "4"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "4"
+          ]
+        },
+        "5": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.5)"
+          },
+          "name": "ColorTransparentBlack5",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "5"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "5"
+          ]
+        },
+        "6": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.6)"
+          },
+          "name": "ColorTransparentBlack6",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "6"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "6"
+          ]
+        },
+        "7": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.7)"
+          },
+          "name": "ColorTransparentBlack7",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "7"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "7"
+          ]
+        },
+        "8": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.8)"
+          },
+          "name": "ColorTransparentBlack8",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "8"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "8"
+          ]
+        },
+        "9": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 0.9)"
+          },
+          "name": "ColorTransparentBlack9",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "9"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "9"
+          ]
+        },
+        "10": {
+          "value": "#000000",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(0, 0, 0, 1)"
+          },
+          "name": "ColorTransparentBlack10",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "black",
+            "subitem": "10"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "black",
+            "10"
+          ]
+        }
       },
       "white": {
-        "value": "#ffffff",
-        "filePath": "tokens/color/core.json",
-        "isSource": true,
-        "original": {
-          "value": "#ffffff"
+        "0": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0)"
+          },
+          "name": "ColorTransparentWhite0",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "0"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "0"
+          ]
         },
-        "name": "ColorCoreWhite",
-        "attributes": {
-          "category": "color",
-          "type": "core",
-          "item": "white"
+        "1": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.1)"
+          },
+          "name": "ColorTransparentWhite1",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "1"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "1"
+          ]
         },
-        "path": [
-          "color",
-          "core",
-          "white"
-        ]
+        "2": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.2)"
+          },
+          "name": "ColorTransparentWhite2",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "2"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "2"
+          ]
+        },
+        "3": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.3)"
+          },
+          "name": "ColorTransparentWhite3",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "3"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "3"
+          ]
+        },
+        "4": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.4)"
+          },
+          "name": "ColorTransparentWhite4",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "4"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "4"
+          ]
+        },
+        "5": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.5)"
+          },
+          "name": "ColorTransparentWhite5",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "5"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "5"
+          ]
+        },
+        "6": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.6)"
+          },
+          "name": "ColorTransparentWhite6",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "6"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "6"
+          ]
+        },
+        "7": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.7)"
+          },
+          "name": "ColorTransparentWhite7",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "7"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "7"
+          ]
+        },
+        "8": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.8)"
+          },
+          "name": "ColorTransparentWhite8",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "8"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "8"
+          ]
+        },
+        "9": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 0.9)"
+          },
+          "name": "ColorTransparentWhite9",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "9"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "9"
+          ]
+        },
+        "10": {
+          "value": "#ffffff",
+          "filePath": "tokens/color/core.json",
+          "isSource": true,
+          "original": {
+            "value": "rgba(255, 255, 255, 1)"
+          },
+          "name": "ColorTransparentWhite10",
+          "attributes": {
+            "category": "color",
+            "type": "transparent",
+            "item": "white",
+            "subitem": "10"
+          },
+          "path": [
+            "color",
+            "transparent",
+            "white",
+            "10"
+          ]
+        }
       }
     },
     "text": {
       "default": {
-        "value": "#1b1f24",
-        "comment": "Default text color",
+        "value": "#39444d",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.black.value}",
-          "comment": "Default text color"
+          "value": "{color.gray.8.value}"
         },
         "name": "ColorTextDefault",
         "attributes": {
@@ -2606,13 +3373,11 @@ module.exports = {
         ]
       },
       "primary": {
-        "value": "#218bff",
-        "comment": "Text color to indicate primary",
+        "value": "#39444d",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.4.value}",
-          "comment": "Text color to indicate primary"
+          "value": "{color.gray.8.value}"
         },
         "name": "ColorTextPrimary",
         "attributes": {
@@ -2627,13 +3392,11 @@ module.exports = {
         ]
       },
       "secondary": {
-        "value": "#8c959f",
-        "comment": "Text color to indicate secondary",
+        "value": "#39444d",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.gray.4.value}",
-          "comment": "Text color to indicate secondary"
+          "value": "{color.gray.8.value}"
         },
         "name": "ColorTextSecondary",
         "attributes": {
@@ -2647,14 +3410,31 @@ module.exports = {
           "secondary"
         ]
       },
-      "danger": {
-        "value": "#fa4549",
-        "comment": "Text color to indicate danger",
+      "success": {
+        "value": "#1b5441",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.red.4.value}",
-          "comment": "Text color to indicate danger"
+          "value": "{color.green.8.value}"
+        },
+        "name": "ColorTextSuccess",
+        "attributes": {
+          "category": "color",
+          "type": "text",
+          "item": "success"
+        },
+        "path": [
+          "color",
+          "text",
+          "success"
+        ]
+      },
+      "danger": {
+        "value": "#80252a",
+        "filePath": "tokens/color/text.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.red.8.value}"
         },
         "name": "ColorTextDanger",
         "attributes": {
@@ -2669,13 +3449,11 @@ module.exports = {
         ]
       },
       "warning": {
-        "value": "#bf8700",
-        "comment": "Text color to indicate warning",
+        "value": "#5c2200",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.yellow.4.value}",
-          "comment": "Text color to indicate warning"
+          "value": "{color.orange.8.value}"
         },
         "name": "ColorTextWarning",
         "attributes": {
@@ -2689,35 +3467,12 @@ module.exports = {
           "warning"
         ]
       },
-      "success": {
-        "value": "#5cb33b",
-        "comment": "Text color to indicate success",
-        "filePath": "tokens/color/text.json",
-        "isSource": true,
-        "original": {
-          "value": "{color.core.green.4.value}",
-          "comment": "Text color to indicate success"
-        },
-        "name": "ColorTextSuccess",
-        "attributes": {
-          "category": "color",
-          "type": "text",
-          "item": "success"
-        },
-        "path": [
-          "color",
-          "text",
-          "success"
-        ]
-      },
       "info": {
-        "value": "#80ccff",
-        "comment": "Text color to indicate info",
+        "value": "#1a497d",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.2.value}",
-          "comment": "Text color to indicate info"
+          "value": "{color.blue.8.value}"
         },
         "name": "ColorTextInfo",
         "attributes": {
@@ -2731,35 +3486,50 @@ module.exports = {
           "info"
         ]
       },
-      "inverse": {
-        "value": "#ffffff",
-        "comment": "Text color to indicate inverse",
+      "title": {
+        "value": "#2c353d",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.white.value}",
-          "comment": "Text color to indicate inverse"
+          "value": "{color.black.value}"
         },
-        "name": "ColorTextInverse",
+        "name": "ColorTextTitle",
         "attributes": {
           "category": "color",
           "type": "text",
-          "item": "inverse"
+          "item": "title"
         },
         "path": [
           "color",
           "text",
-          "inverse"
+          "title"
         ]
       },
-      "link": {
-        "value": "#218bff",
-        "comment": "Text color to indicate link",
+      "subtitle": {
+        "value": "#626f7a",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.core.blue.4.value}",
-          "comment": "Text color to indicate link"
+          "value": "{color.gray.6.value}"
+        },
+        "name": "ColorTextSubtitle",
+        "attributes": {
+          "category": "color",
+          "type": "text",
+          "item": "subtitle"
+        },
+        "path": [
+          "color",
+          "text",
+          "subtitle"
+        ]
+      },
+      "link": {
+        "value": "#1a497d",
+        "filePath": "tokens/color/text.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.blue.8.value}"
         },
         "name": "ColorTextLink",
         "attributes": {
@@ -2772,6 +3542,25 @@ module.exports = {
           "text",
           "link"
         ]
+      },
+      "disabled": {
+        "value": "#818e9a",
+        "filePath": "tokens/color/text.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.5.value}"
+        },
+        "name": "ColorTextDisabled",
+        "attributes": {
+          "category": "color",
+          "type": "text",
+          "item": "disabled"
+        },
+        "path": [
+          "color",
+          "text",
+          "disabled"
+        ]
       }
     }
   },
@@ -2779,11 +3568,11 @@ module.exports = {
     "color": {
       "title": {
         "default": {
-          "value": "#24292f",
+          "value": "#2c353d",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.9.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "AlertColorTitleDefault",
           "attributes": {
@@ -2800,11 +3589,11 @@ module.exports = {
           ]
         },
         "primary": {
-          "value": "#0a3069",
+          "value": "#1a497d",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.blue.8.value}"
+            "value": "{color.blue.8.value}"
           },
           "name": "AlertColorTitlePrimary",
           "attributes": {
@@ -2821,11 +3610,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#32383f",
+          "value": "#ffffff",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.8.value}"
+            "value": "{color.white.value}"
           },
           "name": "AlertColorTitleSecondary",
           "attributes": {
@@ -2842,12 +3631,12 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#82071e",
+          "value": "#a12b2b",
           "comment": "Base color for the danger color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.red.7.value}",
+            "value": "{color.red.7.value}",
             "comment": "Base color for the danger color"
           },
           "name": "AlertColorTitleDanger",
@@ -2865,12 +3654,12 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#9a6700",
+          "value": "#b58c12",
           "comment": "Base color for the warning color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.yellow.5.value}",
+            "value": "{color.yellow.5.value}",
             "comment": "Base color for the warning color"
           },
           "name": "AlertColorTitleWarning",
@@ -2888,12 +3677,12 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#0a5a0a",
+          "value": "#067852",
           "comment": "Base color for the success color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.green.7.value}",
+            "value": "{color.green.7.value}",
             "comment": "Base color for the success color"
           },
           "name": "AlertColorTitleSuccess",
@@ -2911,12 +3700,12 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#0969da",
+          "value": "#429bff",
           "comment": "Base color for the info color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.blue.5.value}",
+            "value": "{color.blue.5.value}",
             "comment": "Base color for the info color"
           },
           "name": "AlertColorTitleInfo",
@@ -2935,11 +3724,11 @@ module.exports = {
         },
         "weak": {
           "default": {
-            "value": "#8c959f",
+            "value": "#a2adb8",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.4.value}"
+              "value": "{color.gray.4.value}"
             },
             "name": "AlertColorTitleWeakDefault",
             "attributes": {
@@ -2958,11 +3747,11 @@ module.exports = {
             ]
           },
           "primary": {
-            "value": "#218bff",
+            "value": "#78b6ff",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.4.value}"
+              "value": "{color.blue.4.value}"
             },
             "name": "AlertColorTitleWeakPrimary",
             "attributes": {
@@ -2981,11 +3770,11 @@ module.exports = {
             ]
           },
           "secondary": {
-            "value": "#8c959f",
+            "value": "#a2adb8",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.4.value}"
+              "value": "{color.gray.4.value}"
             },
             "name": "AlertColorTitleWeakSecondary",
             "attributes": {
@@ -3004,12 +3793,12 @@ module.exports = {
             ]
           },
           "danger": {
-            "value": "#fa4549",
+            "value": "#ff858b",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.red.4.value}",
+              "value": "{color.red.4.value}",
               "comment": "Base color for the danger color"
             },
             "name": "AlertColorTitleWeakDanger",
@@ -3034,7 +3823,7 @@ module.exports = {
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.orange.4.value}",
+              "value": "{color.orange.4.value}",
               "comment": "Base color for the warning color"
             },
             "name": "AlertColorTitleWeakWarning",
@@ -3054,12 +3843,12 @@ module.exports = {
             ]
           },
           "success": {
-            "value": "#5cb33b",
+            "value": "#52d9ac",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.green.4.value}",
+              "value": "{color.green.4.value}",
               "comment": "Base color for the success color"
             },
             "name": "AlertColorTitleWeakSuccess",
@@ -3079,12 +3868,12 @@ module.exports = {
             ]
           },
           "info": {
-            "value": "#218bff",
+            "value": "#78b6ff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.4.value}",
+              "value": "{color.blue.4.value}",
               "comment": "Base color for the info color"
             },
             "name": "AlertColorTitleWeakInfo",
@@ -3107,11 +3896,11 @@ module.exports = {
       },
       "content": {
         "default": {
-          "value": "#57606a",
+          "value": "#2c353d",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.6.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "AlertColorContentDefault",
           "attributes": {
@@ -3127,12 +3916,33 @@ module.exports = {
             "default"
           ]
         },
-        "primary": {
-          "value": "#b6e3ff",
+        "dark": {
+          "value": "#ffffff",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.blue.1.value}"
+            "value": "{color.white.value}"
+          },
+          "name": "AlertColorContentDark",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "dark"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "dark"
+          ]
+        },
+        "primary": {
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.1.value}"
           },
           "name": "AlertColorContentPrimary",
           "attributes": {
@@ -3149,11 +3959,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#eaeef2",
+          "value": "#ebf0f5",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.1.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "AlertColorContentSecondary",
           "attributes": {
@@ -3170,12 +3980,12 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#ffcecb",
+          "value": "#ffebec",
           "comment": "Base color for the danger color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.red.1.value}",
+            "value": "{color.red.1.value}",
             "comment": "Base color for the danger color"
           },
           "name": "AlertColorContentDanger",
@@ -3198,7 +4008,7 @@ module.exports = {
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.white.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the warning color"
           },
           "name": "AlertColorContentWarning",
@@ -3221,7 +4031,7 @@ module.exports = {
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.white.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the success color"
           },
           "name": "AlertColorContentSuccess",
@@ -3244,7 +4054,7 @@ module.exports = {
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.white.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the info color"
           },
           "name": "AlertColorContentInfo",
@@ -3263,11 +4073,11 @@ module.exports = {
         },
         "weak": {
           "default": {
-            "value": "#afb8c1",
+            "value": "#c5ced6",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.3.value}"
+              "value": "{color.gray.3.value}"
             },
             "name": "AlertColorContentWeakDefault",
             "attributes": {
@@ -3286,11 +4096,11 @@ module.exports = {
             ]
           },
           "primary": {
-            "value": "#54aeff",
+            "value": "#abd2ff",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.3.value}"
+              "value": "{color.blue.3.value}"
             },
             "name": "AlertColorContentWeakPrimary",
             "attributes": {
@@ -3309,11 +4119,11 @@ module.exports = {
             ]
           },
           "secondary": {
-            "value": "#afb8c1",
+            "value": "#c5ced6",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.3.value}"
+              "value": "{color.gray.3.value}"
             },
             "name": "AlertColorContentWeakSecondary",
             "attributes": {
@@ -3332,12 +4142,12 @@ module.exports = {
             ]
           },
           "danger": {
-            "value": "#ff8182",
+            "value": "#ffb5b9",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.red.3.value}",
+              "value": "{color.red.3.value}",
               "comment": "Base color for the danger color"
             },
             "name": "AlertColorContentWeakDanger",
@@ -3362,7 +4172,7 @@ module.exports = {
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.orange.3.value}",
+              "value": "{color.orange.3.value}",
               "comment": "Base color for the warning color"
             },
             "name": "AlertColorContentWeakWarning",
@@ -3382,12 +4192,12 @@ module.exports = {
             ]
           },
           "success": {
-            "value": "#8cc760",
+            "value": "#8debcb",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.green.3.value}",
+              "value": "{color.green.3.value}",
               "comment": "Base color for the success color"
             },
             "name": "AlertColorContentWeakSuccess",
@@ -3407,12 +4217,12 @@ module.exports = {
             ]
           },
           "info": {
-            "value": "#0969da",
+            "value": "#429bff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.5.value}",
+              "value": "{color.blue.5.value}",
               "comment": "Base color for the info color"
             },
             "name": "AlertColorContentWeakInfo",
@@ -3435,11 +4245,11 @@ module.exports = {
       },
       "background": {
         "default": {
-          "value": "#eaeef2",
+          "value": "#f8f8f8",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.1.value}"
+            "value": "{color.gray.0.value}"
           },
           "name": "AlertColorBackgroundDefault",
           "attributes": {
@@ -3455,12 +4265,33 @@ module.exports = {
             "default"
           ]
         },
-        "primary": {
-          "value": "#218bff",
+        "dark": {
+          "value": "#2c353d",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary.value}"
+            "value": "{color.gray.9.value}"
+          },
+          "name": "AlertColorBackgroundDark",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "dark"
+          ]
+        },
+        "primary": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/alert.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
           },
           "name": "AlertColorBackgroundPrimary",
           "attributes": {
@@ -3477,11 +4308,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#8c959f",
+          "value": "#818e9a",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary.value}"
+            "value": "{color.secondary.value}"
           },
           "name": "AlertColorBackgroundSecondary",
           "attributes": {
@@ -3498,11 +4329,11 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#5cb33b",
+          "value": "#009f6a",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success.value}"
+            "value": "{color.success.value}"
           },
           "name": "AlertColorBackgroundSuccess",
           "attributes": {
@@ -3519,11 +4350,11 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#80ccff",
+          "value": "#abd2ff",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info.value}"
+            "value": "{color.info.value}"
           },
           "name": "AlertColorBackgroundInfo",
           "attributes": {
@@ -3540,11 +4371,11 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#eac54f",
+          "value": "#ffb77c",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning.value}"
+            "value": "{color.warning.value}"
           },
           "name": "AlertColorBackgroundWarning",
           "attributes": {
@@ -3561,11 +4392,11 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#fa4549",
+          "value": "#d9363e",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger.value}"
+            "value": "{color.danger.value}"
           },
           "name": "AlertColorBackgroundDanger",
           "attributes": {
@@ -3583,11 +4414,11 @@ module.exports = {
         },
         "weak": {
           "default": {
-            "value": "#eaeef2",
+            "value": "#ebf0f5",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.1.value}"
+              "value": "{color.gray.1.value}"
             },
             "name": "AlertColorBackgroundWeakDefault",
             "attributes": {
@@ -3606,11 +4437,11 @@ module.exports = {
             ]
           },
           "primary": {
-            "value": "#b6e3ff",
+            "value": "#e8f3ff",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.blue.1.value}"
+              "value": "{color.blue.1.value}"
             },
             "name": "AlertColorBackgroundWeakPrimary",
             "attributes": {
@@ -3629,11 +4460,11 @@ module.exports = {
             ]
           },
           "secondary": {
-            "value": "#eaeef2",
+            "value": "#ebf0f5",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.gray.1.value}"
+              "value": "{color.gray.1.value}"
             },
             "name": "AlertColorBackgroundWeakSecondary",
             "attributes": {
@@ -3652,12 +4483,12 @@ module.exports = {
             ]
           },
           "danger": {
-            "value": "#ffcecb",
+            "value": "#ffebec",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.red.1.value}",
+              "value": "{color.red.1.value}",
               "comment": "Base color for the danger color"
             },
             "name": "AlertColorBackgroundWeakDanger",
@@ -3682,7 +4513,7 @@ module.exports = {
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.orange.1.value}",
+              "value": "{color.orange.1.value}",
               "comment": "Base color for the warning color"
             },
             "name": "AlertColorBackgroundWeakWarning",
@@ -3702,12 +4533,12 @@ module.exports = {
             ]
           },
           "success": {
-            "value": "#d9e9c0",
+            "value": "#d6fff1",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.core.green.1.value}",
+              "value": "{color.green.1.value}",
               "comment": "Base color for the success color"
             },
             "name": "AlertColorBackgroundWeakSuccess",
@@ -3755,15 +4586,244 @@ module.exports = {
       }
     }
   },
+  "avatar": {
+    "size": {
+      "30": {
+        "value": "16px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "16px"
+        },
+        "name": "AvatarSize30",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "30"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "30"
+        ]
+      },
+      "50": {
+        "value": "20px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "20px"
+        },
+        "name": "AvatarSize50",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "50"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "50"
+        ]
+      },
+      "100": {
+        "value": "30px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "30px"
+        },
+        "name": "AvatarSize100",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "100"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "100"
+        ]
+      },
+      "200": {
+        "value": "35px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "35px"
+        },
+        "name": "AvatarSize200",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "200"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "200"
+        ]
+      },
+      "300": {
+        "value": "40px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "40px"
+        },
+        "name": "AvatarSize300",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "300"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "300"
+        ]
+      },
+      "400": {
+        "value": "45px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "45px"
+        },
+        "name": "AvatarSize400",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "400"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "400"
+        ]
+      },
+      "500": {
+        "value": "50px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "50px"
+        },
+        "name": "AvatarSize500",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "500"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "500"
+        ]
+      },
+      "600": {
+        "value": "55px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "55px"
+        },
+        "name": "AvatarSize600",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "600"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "600"
+        ]
+      },
+      "700": {
+        "value": "60px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": true,
+        "original": {
+          "value": "60px"
+        },
+        "name": "AvatarSize700",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "700"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "700"
+        ]
+      }
+    }
+  },
   "button": {
-    "selected": {
+    "closable": {
+      "hover": {
+        "background": {
+          "default": {
+            "value": "#ffffff",
+            "filePath": "tokens/component/button.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.transparent.white.1.value}"
+            },
+            "name": "ButtonClosableHoverBackgroundDefault",
+            "attributes": {
+              "category": "button",
+              "type": "closable",
+              "item": "hover",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "button",
+              "closable",
+              "hover",
+              "background",
+              "default"
+            ]
+          }
+        }
+      }
+    },
+    "hover": {
       "background": {
         "default": {
-          "value": "#d0d7de",
+          "value": "#ebf0f5",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.2.value}"
+            "value": "{color.gray.1.value}"
+          },
+          "name": "ButtonHoverBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "default"
+          ]
+        }
+      }
+    },
+    "selected": {
+      "background": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonSelectedBackgroundDefault",
           "attributes": {
@@ -3784,11 +4844,11 @@ module.exports = {
     "disabled": {
       "background": {
         "default": {
-          "value": "#eaeef2",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.1.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonDisabledBackgroundDefault",
           "attributes": {
@@ -3805,13 +4865,36 @@ module.exports = {
           ]
         }
       },
-      "text": {
+      "border": {
         "default": {
-          "value": "#afb8c1",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.3.value}"
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonDisabledBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "disabled",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "disabled",
+            "border",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.5.value}"
           },
           "name": "ButtonDisabledTextDefault",
           "attributes": {
@@ -3836,7 +4919,7 @@ module.exports = {
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.default.value}"
+            "value": "{color.default.value}"
           },
           "name": "ButtonColorBackgroundDefault",
           "attributes": {
@@ -3853,11 +4936,11 @@ module.exports = {
           ]
         },
         "primary": {
-          "value": "#218bff",
+          "value": "#1273e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary.value}"
+            "value": "{color.primary.value}"
           },
           "name": "ButtonColorBackgroundPrimary",
           "attributes": {
@@ -3874,11 +4957,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#8c959f",
+          "value": "#818e9a",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary.value}"
+            "value": "{color.secondary.value}"
           },
           "name": "ButtonColorBackgroundSecondary",
           "attributes": {
@@ -3895,11 +4978,11 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#5cb33b",
+          "value": "#009f6a",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success.value}"
+            "value": "{color.success.value}"
           },
           "name": "ButtonColorBackgroundSuccess",
           "attributes": {
@@ -3916,11 +4999,11 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#80ccff",
+          "value": "#abd2ff",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info.value}"
+            "value": "{color.info.value}"
           },
           "name": "ButtonColorBackgroundInfo",
           "attributes": {
@@ -3937,11 +5020,11 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#eac54f",
+          "value": "#ffb77c",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning.value}"
+            "value": "{color.warning.value}"
           },
           "name": "ButtonColorBackgroundWarning",
           "attributes": {
@@ -3958,11 +5041,11 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#fa4549",
+          "value": "#d9363e",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger.value}"
+            "value": "{color.danger.value}"
           },
           "name": "ButtonColorBackgroundDanger",
           "attributes": {
@@ -3977,15 +5060,36 @@ module.exports = {
             "background",
             "danger"
           ]
+        },
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonColorBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "dark"
+          ]
         }
       },
       "border": {
         "default": {
-          "value": "#1b1f24",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.black.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonColorBorderDefault",
           "attributes": {
@@ -4002,11 +5106,11 @@ module.exports = {
           ]
         },
         "primary": {
-          "value": "#218bff",
+          "value": "#1273e6",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary.value}"
+            "value": "{color.primary.value}"
           },
           "name": "ButtonColorBorderPrimary",
           "attributes": {
@@ -4023,11 +5127,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#8c959f",
+          "value": "#818e9a",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary.value}"
+            "value": "{color.secondary.value}"
           },
           "name": "ButtonColorBorderSecondary",
           "attributes": {
@@ -4044,11 +5148,11 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#5cb33b",
+          "value": "#009f6a",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success.value}"
+            "value": "{color.success.value}"
           },
           "name": "ButtonColorBorderSuccess",
           "attributes": {
@@ -4065,11 +5169,11 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#80ccff",
+          "value": "#abd2ff",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info.value}"
+            "value": "{color.info.value}"
           },
           "name": "ButtonColorBorderInfo",
           "attributes": {
@@ -4086,11 +5190,11 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#eac54f",
+          "value": "#ffb77c",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning.value}"
+            "value": "{color.warning.value}"
           },
           "name": "ButtonColorBorderWarning",
           "attributes": {
@@ -4107,11 +5211,11 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#fa4549",
+          "value": "#d9363e",
           "filePath": "tokens/component/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger.value}"
+            "value": "{color.danger.value}"
           },
           "name": "ButtonColorBorderDanger",
           "attributes": {
@@ -4125,6 +5229,27 @@ module.exports = {
             "color",
             "border",
             "danger"
+          ]
+        },
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonColorBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "dark"
           ]
         }
       }
@@ -4201,11 +5326,11 @@ module.exports = {
     "color": {
       "border": {
         "default": {
-          "value": "#eaeef2",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.core.gray.1.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "DividerColorBorderDefault",
           "attributes": {
@@ -4222,11 +5347,11 @@ module.exports = {
           ]
         },
         "primary": {
-          "value": "#218bff",
+          "value": "#1273e6",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.primary.value}"
+            "value": "{color.primary.value}"
           },
           "name": "DividerColorBorderPrimary",
           "attributes": {
@@ -4243,11 +5368,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#8c959f",
+          "value": "#818e9a",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.secondary.value}"
+            "value": "{color.secondary.value}"
           },
           "name": "DividerColorBorderSecondary",
           "attributes": {
@@ -4264,11 +5389,11 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#5cb33b",
+          "value": "#009f6a",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.success.value}"
+            "value": "{color.success.value}"
           },
           "name": "DividerColorBorderSuccess",
           "attributes": {
@@ -4285,11 +5410,11 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#80ccff",
+          "value": "#abd2ff",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.info.value}"
+            "value": "{color.info.value}"
           },
           "name": "DividerColorBorderInfo",
           "attributes": {
@@ -4306,11 +5431,11 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#eac54f",
+          "value": "#ffb77c",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.warning.value}"
+            "value": "{color.warning.value}"
           },
           "name": "DividerColorBorderWarning",
           "attributes": {
@@ -4327,11 +5452,11 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#fa4549",
+          "value": "#d9363e",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.danger.value}"
+            "value": "{color.danger.value}"
           },
           "name": "DividerColorBorderDanger",
           "attributes": {
@@ -4348,6 +5473,1181 @@ module.exports = {
           ]
         }
       }
+    }
+  },
+  "shadow": {
+    "1": {
+      "value": "0 1px 4px 0 rgba(170, 170, 170, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 1px 4px 0 {shadow.color.value}"
+      },
+      "name": "Shadow1",
+      "attributes": {
+        "category": "shadow",
+        "type": "1"
+      },
+      "path": [
+        "shadow",
+        "1"
+      ]
+    },
+    "2": {
+      "value": "0 4px 8px 0 rgba(170, 170, 170, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 4px 8px 0 {shadow.color.value}"
+      },
+      "name": "Shadow2",
+      "attributes": {
+        "category": "shadow",
+        "type": "2"
+      },
+      "path": [
+        "shadow",
+        "2"
+      ]
+    },
+    "3": {
+      "value": "0 8px 16px 0 rgba(170, 170, 170, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 8px 16px 0 {shadow.color.value}"
+      },
+      "name": "Shadow3",
+      "attributes": {
+        "category": "shadow",
+        "type": "3"
+      },
+      "path": [
+        "shadow",
+        "3"
+      ]
+    },
+    "4": {
+      "value": "0 12px 24px 0 rgba(170, 170, 170, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 12px 24px 0 {shadow.color.value}"
+      },
+      "name": "Shadow4",
+      "attributes": {
+        "category": "shadow",
+        "type": "4"
+      },
+      "path": [
+        "shadow",
+        "4"
+      ]
+    },
+    "5": {
+      "value": "0 16px 32px 0 rgba(170, 170, 170, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "0 16px 32px 0 {shadow.color.value}"
+      },
+      "name": "Shadow5",
+      "attributes": {
+        "category": "shadow",
+        "type": "5"
+      },
+      "path": [
+        "shadow",
+        "5"
+      ]
+    },
+    "none": {
+      "value": "none",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "none"
+      },
+      "name": "ShadowNone",
+      "attributes": {
+        "category": "shadow",
+        "type": "none"
+      },
+      "path": [
+        "shadow",
+        "none"
+      ]
+    },
+    "color": {
+      "value": "rgba(170, 170, 170, 0.5)",
+      "filePath": "tokens/elevation/shadow.json",
+      "isSource": true,
+      "original": {
+        "value": "rgba(170, 170, 170, 0.5)"
+      },
+      "name": "ShadowColor",
+      "attributes": {
+        "category": "shadow",
+        "type": "color"
+      },
+      "path": [
+        "shadow",
+        "color"
+      ]
+    }
+  },
+  "column": {
+    "1": {
+      "value": "repeat(1, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(1, 1fr)"
+      },
+      "name": "Column1",
+      "attributes": {
+        "category": "column",
+        "type": "1"
+      },
+      "path": [
+        "column",
+        "1"
+      ]
+    },
+    "2": {
+      "value": "repeat(2, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(2, 1fr)"
+      },
+      "name": "Column2",
+      "attributes": {
+        "category": "column",
+        "type": "2"
+      },
+      "path": [
+        "column",
+        "2"
+      ]
+    },
+    "3": {
+      "value": "repeat(3, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(3, 1fr)"
+      },
+      "name": "Column3",
+      "attributes": {
+        "category": "column",
+        "type": "3"
+      },
+      "path": [
+        "column",
+        "3"
+      ]
+    },
+    "4": {
+      "value": "repeat(4, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(4, 1fr)"
+      },
+      "name": "Column4",
+      "attributes": {
+        "category": "column",
+        "type": "4"
+      },
+      "path": [
+        "column",
+        "4"
+      ]
+    },
+    "5": {
+      "value": "repeat(5, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(5, 1fr)"
+      },
+      "name": "Column5",
+      "attributes": {
+        "category": "column",
+        "type": "5"
+      },
+      "path": [
+        "column",
+        "5"
+      ]
+    },
+    "6": {
+      "value": "repeat(6, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(6, 1fr)"
+      },
+      "name": "Column6",
+      "attributes": {
+        "category": "column",
+        "type": "6"
+      },
+      "path": [
+        "column",
+        "6"
+      ]
+    },
+    "7": {
+      "value": "repeat(7, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(7, 1fr)"
+      },
+      "name": "Column7",
+      "attributes": {
+        "category": "column",
+        "type": "7"
+      },
+      "path": [
+        "column",
+        "7"
+      ]
+    },
+    "8": {
+      "value": "repeat(8, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(8, 1fr)"
+      },
+      "name": "Column8",
+      "attributes": {
+        "category": "column",
+        "type": "8"
+      },
+      "path": [
+        "column",
+        "8"
+      ]
+    },
+    "9": {
+      "value": "repeat(9, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(9, 1fr)"
+      },
+      "name": "Column9",
+      "attributes": {
+        "category": "column",
+        "type": "9"
+      },
+      "path": [
+        "column",
+        "9"
+      ]
+    },
+    "10": {
+      "value": "repeat(10, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(10, 1fr)"
+      },
+      "name": "Column10",
+      "attributes": {
+        "category": "column",
+        "type": "10"
+      },
+      "path": [
+        "column",
+        "10"
+      ]
+    },
+    "11": {
+      "value": "repeat(11, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(11, 1fr)"
+      },
+      "name": "Column11",
+      "attributes": {
+        "category": "column",
+        "type": "11"
+      },
+      "path": [
+        "column",
+        "11"
+      ]
+    },
+    "12": {
+      "value": "repeat(12, 1fr)",
+      "filePath": "tokens/layout/column.json",
+      "isSource": true,
+      "original": {
+        "value": "repeat(12, 1fr)"
+      },
+      "name": "Column12",
+      "attributes": {
+        "category": "column",
+        "type": "12"
+      },
+      "path": [
+        "column",
+        "12"
+      ]
+    }
+  },
+  "gap": {
+    "8": {
+      "value": "8px",
+      "filePath": "tokens/layout/gap.json",
+      "isSource": true,
+      "original": {
+        "value": "8px"
+      },
+      "name": "Gap8",
+      "attributes": {
+        "category": "gap",
+        "type": "8"
+      },
+      "path": [
+        "gap",
+        "8"
+      ]
+    },
+    "16": {
+      "value": "16px",
+      "filePath": "tokens/layout/gap.json",
+      "isSource": true,
+      "original": {
+        "value": "16px"
+      },
+      "name": "Gap16",
+      "attributes": {
+        "category": "gap",
+        "type": "16"
+      },
+      "path": [
+        "gap",
+        "16"
+      ]
+    },
+    "24": {
+      "value": "24px",
+      "filePath": "tokens/layout/gap.json",
+      "isSource": true,
+      "original": {
+        "value": "24px"
+      },
+      "name": "Gap24",
+      "attributes": {
+        "category": "gap",
+        "type": "24"
+      },
+      "path": [
+        "gap",
+        "24"
+      ]
+    },
+    "32": {
+      "value": "32px",
+      "filePath": "tokens/layout/gap.json",
+      "isSource": true,
+      "original": {
+        "value": "32px"
+      },
+      "name": "Gap32",
+      "attributes": {
+        "category": "gap",
+        "type": "32"
+      },
+      "path": [
+        "gap",
+        "32"
+      ]
+    },
+    "40": {
+      "value": "40px",
+      "filePath": "tokens/layout/gap.json",
+      "isSource": true,
+      "original": {
+        "value": "40px"
+      },
+      "name": "Gap40",
+      "attributes": {
+        "category": "gap",
+        "type": "40"
+      },
+      "path": [
+        "gap",
+        "40"
+      ]
+    },
+    "48": {
+      "value": "48px",
+      "filePath": "tokens/layout/gap.json",
+      "isSource": true,
+      "original": {
+        "value": "48px"
+      },
+      "name": "Gap48",
+      "attributes": {
+        "category": "gap",
+        "type": "48"
+      },
+      "path": [
+        "gap",
+        "48"
+      ]
+    }
+  },
+  "spacing": {
+    "0": {
+      "value": "2px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "2px"
+      },
+      "name": "Spacing0",
+      "attributes": {
+        "category": "spacing",
+        "type": "0"
+      },
+      "path": [
+        "spacing",
+        "0"
+      ]
+    },
+    "1": {
+      "value": "4px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "4px"
+      },
+      "name": "Spacing1",
+      "attributes": {
+        "category": "spacing",
+        "type": "1"
+      },
+      "path": [
+        "spacing",
+        "1"
+      ]
+    },
+    "2": {
+      "value": "8px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "8px"
+      },
+      "name": "Spacing2",
+      "attributes": {
+        "category": "spacing",
+        "type": "2"
+      },
+      "path": [
+        "spacing",
+        "2"
+      ]
+    },
+    "3": {
+      "value": "12px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "12px"
+      },
+      "name": "Spacing3",
+      "attributes": {
+        "category": "spacing",
+        "type": "3"
+      },
+      "path": [
+        "spacing",
+        "3"
+      ]
+    },
+    "4": {
+      "value": "16px",
+      "comment": "base size",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "16px",
+        "comment": "base size"
+      },
+      "name": "Spacing4",
+      "attributes": {
+        "category": "spacing",
+        "type": "4"
+      },
+      "path": [
+        "spacing",
+        "4"
+      ]
+    },
+    "5": {
+      "value": "20px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "20px"
+      },
+      "name": "Spacing5",
+      "attributes": {
+        "category": "spacing",
+        "type": "5"
+      },
+      "path": [
+        "spacing",
+        "5"
+      ]
+    },
+    "6": {
+      "value": "24px",
+      "comment": "base size",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "24px",
+        "comment": "base size"
+      },
+      "name": "Spacing6",
+      "attributes": {
+        "category": "spacing",
+        "type": "6"
+      },
+      "path": [
+        "spacing",
+        "6"
+      ]
+    },
+    "7": {
+      "value": "32px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "32px"
+      },
+      "name": "Spacing7",
+      "attributes": {
+        "category": "spacing",
+        "type": "7"
+      },
+      "path": [
+        "spacing",
+        "7"
+      ]
+    },
+    "8": {
+      "value": "40px",
+      "filePath": "tokens/layout/spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "40px"
+      },
+      "name": "Spacing8",
+      "attributes": {
+        "category": "spacing",
+        "type": "8"
+      },
+      "path": [
+        "spacing",
+        "8"
+      ]
+    },
+    "size": {
+      "xxxs": {
+        "value": "2px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.0.value}"
+        },
+        "name": "SpacingSizeXxxs",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxxs"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxxs"
+        ]
+      },
+      "xxs": {
+        "value": "4px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.1.value}"
+        },
+        "name": "SpacingSizeXxs",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxs"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxs"
+        ]
+      },
+      "xs": {
+        "value": "8px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.2.value}"
+        },
+        "name": "SpacingSizeXs",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xs"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xs"
+        ]
+      },
+      "sm": {
+        "value": "12px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.3.value}"
+        },
+        "name": "SpacingSizeSm",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "sm"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "sm"
+        ]
+      },
+      "md": {
+        "value": "16px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.4.value}"
+        },
+        "name": "SpacingSizeMd",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "md"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "md"
+        ]
+      },
+      "lg": {
+        "value": "20px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.5.value}"
+        },
+        "name": "SpacingSizeLg",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "lg"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "lg"
+        ]
+      },
+      "xl": {
+        "value": "24px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.6.value}"
+        },
+        "name": "SpacingSizeXl",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xl"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xl"
+        ]
+      },
+      "xxl": {
+        "value": "32px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.7.value}"
+        },
+        "name": "SpacingSizeXxl",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxl"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxl"
+        ]
+      },
+      "xxxl": {
+        "value": "40px",
+        "filePath": "tokens/layout/spacing.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.8.value}"
+        },
+        "name": "SpacingSizeXxxl",
+        "attributes": {
+          "category": "spacing",
+          "type": "size",
+          "item": "xxxl"
+        },
+        "path": [
+          "spacing",
+          "size",
+          "xxxl"
+        ]
+      }
+    }
+  },
+  "z-index": {
+    "0": {
+      "value": "0",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "0"
+      },
+      "name": "ZIndex0",
+      "attributes": {
+        "category": "z-index",
+        "type": "0"
+      },
+      "path": [
+        "z-index",
+        "0"
+      ]
+    },
+    "10": {
+      "value": "10",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "10"
+      },
+      "name": "ZIndex10",
+      "attributes": {
+        "category": "z-index",
+        "type": "10"
+      },
+      "path": [
+        "z-index",
+        "10"
+      ]
+    },
+    "20": {
+      "value": "20",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "20"
+      },
+      "name": "ZIndex20",
+      "attributes": {
+        "category": "z-index",
+        "type": "20"
+      },
+      "path": [
+        "z-index",
+        "20"
+      ]
+    },
+    "30": {
+      "value": "30",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "30"
+      },
+      "name": "ZIndex30",
+      "attributes": {
+        "category": "z-index",
+        "type": "30"
+      },
+      "path": [
+        "z-index",
+        "30"
+      ]
+    },
+    "40": {
+      "value": "40",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "40"
+      },
+      "name": "ZIndex40",
+      "attributes": {
+        "category": "z-index",
+        "type": "40"
+      },
+      "path": [
+        "z-index",
+        "40"
+      ]
+    },
+    "50": {
+      "value": "50",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "50"
+      },
+      "name": "ZIndex50",
+      "attributes": {
+        "category": "z-index",
+        "type": "50"
+      },
+      "path": [
+        "z-index",
+        "50"
+      ]
+    },
+    "100": {
+      "value": "100",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "100"
+      },
+      "name": "ZIndex100",
+      "attributes": {
+        "category": "z-index",
+        "type": "100"
+      },
+      "path": [
+        "z-index",
+        "100"
+      ]
+    },
+    "200": {
+      "value": "200",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "200"
+      },
+      "name": "ZIndex200",
+      "attributes": {
+        "category": "z-index",
+        "type": "200"
+      },
+      "path": [
+        "z-index",
+        "200"
+      ]
+    },
+    "300": {
+      "value": "300",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "300"
+      },
+      "name": "ZIndex300",
+      "attributes": {
+        "category": "z-index",
+        "type": "300"
+      },
+      "path": [
+        "z-index",
+        "300"
+      ]
+    },
+    "400": {
+      "value": "400",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "400"
+      },
+      "name": "ZIndex400",
+      "attributes": {
+        "category": "z-index",
+        "type": "400"
+      },
+      "path": [
+        "z-index",
+        "400"
+      ]
+    },
+    "500": {
+      "value": "500",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "500"
+      },
+      "name": "ZIndex500",
+      "attributes": {
+        "category": "z-index",
+        "type": "500"
+      },
+      "path": [
+        "z-index",
+        "500"
+      ]
+    },
+    "1000": {
+      "value": "1000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "1000"
+      },
+      "name": "ZIndex1000",
+      "attributes": {
+        "category": "z-index",
+        "type": "1000"
+      },
+      "path": [
+        "z-index",
+        "1000"
+      ]
+    },
+    "2000": {
+      "value": "2000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "2000"
+      },
+      "name": "ZIndex2000",
+      "attributes": {
+        "category": "z-index",
+        "type": "2000"
+      },
+      "path": [
+        "z-index",
+        "2000"
+      ]
+    },
+    "3000": {
+      "value": "3000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "3000"
+      },
+      "name": "ZIndex3000",
+      "attributes": {
+        "category": "z-index",
+        "type": "3000"
+      },
+      "path": [
+        "z-index",
+        "3000"
+      ]
+    },
+    "4000": {
+      "value": "4000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "4000"
+      },
+      "name": "ZIndex4000",
+      "attributes": {
+        "category": "z-index",
+        "type": "4000"
+      },
+      "path": [
+        "z-index",
+        "4000"
+      ]
+    },
+    "5000": {
+      "value": "5000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "5000"
+      },
+      "name": "ZIndex5000",
+      "attributes": {
+        "category": "z-index",
+        "type": "5000"
+      },
+      "path": [
+        "z-index",
+        "5000"
+      ]
+    },
+    "10000": {
+      "value": "10000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "10000"
+      },
+      "name": "ZIndex10000",
+      "attributes": {
+        "category": "z-index",
+        "type": "10000"
+      },
+      "path": [
+        "z-index",
+        "10000"
+      ]
+    },
+    "20000": {
+      "value": "20000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "20000"
+      },
+      "name": "ZIndex20000",
+      "attributes": {
+        "category": "z-index",
+        "type": "20000"
+      },
+      "path": [
+        "z-index",
+        "20000"
+      ]
+    },
+    "30000": {
+      "value": "30000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "30000"
+      },
+      "name": "ZIndex30000",
+      "attributes": {
+        "category": "z-index",
+        "type": "30000"
+      },
+      "path": [
+        "z-index",
+        "30000"
+      ]
+    },
+    "40000": {
+      "value": "40000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "40000"
+      },
+      "name": "ZIndex40000",
+      "attributes": {
+        "category": "z-index",
+        "type": "40000"
+      },
+      "path": [
+        "z-index",
+        "40000"
+      ]
+    },
+    "50000": {
+      "value": "50000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "50000"
+      },
+      "name": "ZIndex50000",
+      "attributes": {
+        "category": "z-index",
+        "type": "50000"
+      },
+      "path": [
+        "z-index",
+        "50000"
+      ]
+    },
+    "tooltip": {
+      "value": "50000",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.50000.value}"
+      },
+      "name": "ZIndexTooltip",
+      "attributes": {
+        "category": "z-index",
+        "type": "tooltip"
+      },
+      "path": [
+        "z-index",
+        "tooltip"
+      ]
+    },
+    "menu": {
+      "value": "100",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.100.value}"
+      },
+      "name": "ZIndexMenu",
+      "attributes": {
+        "category": "z-index",
+        "type": "menu"
+      },
+      "path": [
+        "z-index",
+        "menu"
+      ]
+    }
+  },
+  "math": {
+    "pi": {
+      "value": 3.141592653589793,
+      "filePath": "tokens/math/math.json",
+      "isSource": true,
+      "original": {
+        "value": 3.141592653589793
+      },
+      "name": "MathPi",
+      "attributes": {
+        "category": "math",
+        "type": "pi"
+      },
+      "path": [
+        "math",
+        "pi"
+      ]
     }
   },
   "size": {
@@ -4828,48 +7128,50 @@ module.exports = {
           ]
         }
       }
-    },
-    "font": {
+    }
+  },
+  "font": {
+    "size": {
       "50": {
-        "value": "11rem",
+        "value": "11px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "11px"
         },
-        "name": "SizeFont50",
+        "name": "FontSize50",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "50"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "50"
         ]
       },
       "75": {
-        "value": "12rem",
+        "value": "12px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "12px"
         },
-        "name": "SizeFont75",
+        "name": "FontSize75",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "75"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "75"
         ]
       },
       "100": {
-        "value": "14rem",
+        "value": "14px",
         "comment": "base size",
         "filePath": "tokens/size/font.json",
         "isSource": true,
@@ -4877,590 +7179,706 @@ module.exports = {
           "value": "14px",
           "comment": "base size"
         },
-        "name": "SizeFont100",
+        "name": "FontSize100",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "100"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "100"
         ]
       },
       "200": {
-        "value": "16rem",
+        "value": "16px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "16px"
         },
-        "name": "SizeFont200",
+        "name": "FontSize200",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "200"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "200"
         ]
       },
       "300": {
-        "value": "18rem",
+        "value": "18px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "18px"
         },
-        "name": "SizeFont300",
+        "name": "FontSize300",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "300"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "300"
         ]
       },
       "400": {
-        "value": "20rem",
+        "value": "20px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "20px"
         },
-        "name": "SizeFont400",
+        "name": "FontSize400",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "400"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "400"
         ]
       },
       "500": {
-        "value": "22rem",
+        "value": "22px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "22px"
         },
-        "name": "SizeFont500",
+        "name": "FontSize500",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "500"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "500"
         ]
       },
       "600": {
-        "value": "25rem",
+        "value": "25px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "25px"
         },
-        "name": "SizeFont600",
+        "name": "FontSize600",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "600"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "600"
         ]
       },
       "700": {
-        "value": "28rem",
+        "value": "28px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "28px"
         },
-        "name": "SizeFont700",
+        "name": "FontSize700",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "700"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "700"
         ]
       },
       "800": {
-        "value": "32rem",
+        "value": "32px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "32px"
         },
-        "name": "SizeFont800",
+        "name": "FontSize800",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "800"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "800"
         ]
       },
       "900": {
-        "value": "36rem",
+        "value": "36px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "36px"
         },
-        "name": "SizeFont900",
+        "name": "FontSize900",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "900"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "900"
         ]
       },
       "1000": {
-        "value": "40rem",
+        "value": "40px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "40px"
         },
-        "name": "SizeFont1000",
+        "name": "FontSize1000",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1000"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "1000"
         ]
       },
       "1100": {
-        "value": "45rem",
+        "value": "45px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "45px"
         },
-        "name": "SizeFont1100",
+        "name": "FontSize1100",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1100"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "1100"
         ]
       },
       "1200": {
-        "value": "50rem",
+        "value": "50px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "50px"
         },
-        "name": "SizeFont1200",
+        "name": "FontSize1200",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1200"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "1200"
         ]
       },
       "1300": {
-        "value": "60rem",
+        "value": "60px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
           "value": "60px"
         },
-        "name": "SizeFont1300",
+        "name": "FontSize1300",
         "attributes": {
-          "category": "size",
-          "type": "font",
+          "category": "font",
+          "type": "size",
           "item": "1300"
         },
         "path": [
-          "size",
           "font",
+          "size",
           "1300"
         ]
-      }
-    },
-    "padding": {
-      "xs": {
-        "value": "0.25rem",
-        "filePath": "tokens/size/padding.json",
+      },
+      "h1": {
+        "value": "32px",
+        "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": 0.25
+          "value": "{font.size.800.value}"
         },
-        "name": "SizePaddingXs",
+        "name": "FontSizeH1",
         "attributes": {
-          "category": "size",
-          "type": "padding",
-          "item": "xs"
+          "category": "font",
+          "type": "size",
+          "item": "h1"
         },
         "path": [
+          "font",
           "size",
-          "padding",
-          "xs"
+          "h1"
+        ]
+      },
+      "h2": {
+        "value": "28px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.700.value}"
+        },
+        "name": "FontSizeH2",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h2"
+        },
+        "path": [
+          "font",
+          "size",
+          "h2"
+        ]
+      },
+      "h3": {
+        "value": "25px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.600.value}"
+        },
+        "name": "FontSizeH3",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h3"
+        },
+        "path": [
+          "font",
+          "size",
+          "h3"
+        ]
+      },
+      "h4": {
+        "value": "22px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.500.value}"
+        },
+        "name": "FontSizeH4",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h4"
+        },
+        "path": [
+          "font",
+          "size",
+          "h4"
+        ]
+      },
+      "h5": {
+        "value": "20px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.400.value}"
+        },
+        "name": "FontSizeH5",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h5"
+        },
+        "path": [
+          "font",
+          "size",
+          "h5"
+        ]
+      },
+      "h6": {
+        "value": "18px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.300.value}"
+        },
+        "name": "FontSizeH6",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "h6"
+        },
+        "path": [
+          "font",
+          "size",
+          "h6"
         ]
       },
       "small": {
-        "value": "0.5rem",
-        "filePath": "tokens/size/padding.json",
+        "value": "11px",
+        "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": 0.5
+          "value": "{font.size.50.value}"
         },
-        "name": "SizePaddingSmall",
+        "name": "FontSizeSmall",
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "font",
+          "type": "size",
           "item": "small"
         },
         "path": [
+          "font",
           "size",
-          "padding",
           "small"
         ]
       },
       "medium": {
-        "value": "1rem",
-        "filePath": "tokens/size/padding.json",
+        "value": "14px",
+        "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": 1
+          "value": "{font.size.100.value}"
         },
-        "name": "SizePaddingMedium",
+        "name": "FontSizeMedium",
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "font",
+          "type": "size",
           "item": "medium"
         },
         "path": [
+          "font",
           "size",
-          "padding",
           "medium"
         ]
       },
       "large": {
-        "value": "1.5rem",
-        "filePath": "tokens/size/padding.json",
+        "value": "18px",
+        "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": 1.5
+          "value": "{font.size.300.value}"
         },
-        "name": "SizePaddingLarge",
+        "name": "FontSizeLarge",
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "font",
+          "type": "size",
           "item": "large"
         },
         "path": [
+          "font",
           "size",
+          "large"
+        ]
+      },
+      "extra-large": {
+        "value": "22px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "{font.size.500.value}"
+        },
+        "name": "FontSizeExtraLarge",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "extra-large"
+        },
+        "path": [
+          "font",
+          "size",
+          "extra-large"
+        ]
+      }
+    },
+    "weight": {
+      "thin": {
+        "value": "100",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "100"
+        },
+        "name": "FontWeightThin",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "thin"
+        },
+        "path": [
+          "font",
+          "weight",
+          "thin"
+        ]
+      },
+      "light": {
+        "value": "300",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "300"
+        },
+        "name": "FontWeightLight",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "light"
+        },
+        "path": [
+          "font",
+          "weight",
+          "light"
+        ]
+      },
+      "regular": {
+        "value": "400",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "400"
+        },
+        "name": "FontWeightRegular",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "regular"
+        },
+        "path": [
+          "font",
+          "weight",
+          "regular"
+        ]
+      },
+      "medium": {
+        "value": "500",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "500"
+        },
+        "name": "FontWeightMedium",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "medium"
+        },
+        "path": [
+          "font",
+          "weight",
+          "medium"
+        ]
+      },
+      "semibold": {
+        "value": "600",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "600"
+        },
+        "name": "FontWeightSemibold",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "semibold"
+        },
+        "path": [
+          "font",
+          "weight",
+          "semibold"
+        ]
+      },
+      "bold": {
+        "value": "700",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "700"
+        },
+        "name": "FontWeightBold",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "bold"
+        },
+        "path": [
+          "font",
+          "weight",
+          "bold"
+        ]
+      },
+      "extrabold": {
+        "value": "800",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "800"
+        },
+        "name": "FontWeightExtrabold",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "extrabold"
+        },
+        "path": [
+          "font",
+          "weight",
+          "extrabold"
+        ]
+      },
+      "black": {
+        "value": "900",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "900"
+        },
+        "name": "FontWeightBlack",
+        "attributes": {
+          "category": "font",
+          "type": "weight",
+          "item": "black"
+        },
+        "path": [
+          "font",
+          "weight",
+          "black"
+        ]
+      }
+    }
+  },
+  "padding": {
+    "size": {
+      "xs": {
+        "value": "8px",
+        "filePath": "tokens/size/padding.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.size.xs.value}"
+        },
+        "name": "PaddingSizeXs",
+        "attributes": {
+          "category": "padding",
+          "type": "size",
+          "item": "xs"
+        },
+        "path": [
           "padding",
+          "size",
+          "xs"
+        ]
+      },
+      "small": {
+        "value": "12px",
+        "filePath": "tokens/size/padding.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.size.sm.value}"
+        },
+        "name": "PaddingSizeSmall",
+        "attributes": {
+          "category": "padding",
+          "type": "size",
+          "item": "small"
+        },
+        "path": [
+          "padding",
+          "size",
+          "small"
+        ]
+      },
+      "medium": {
+        "value": "16px",
+        "filePath": "tokens/size/padding.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.size.md.value}"
+        },
+        "name": "PaddingSizeMedium",
+        "attributes": {
+          "category": "padding",
+          "type": "size",
+          "item": "medium"
+        },
+        "path": [
+          "padding",
+          "size",
+          "medium"
+        ]
+      },
+      "large": {
+        "value": "20px",
+        "filePath": "tokens/size/padding.json",
+        "isSource": true,
+        "original": {
+          "value": "{spacing.size.lg.value}"
+        },
+        "name": "PaddingSizeLarge",
+        "attributes": {
+          "category": "padding",
+          "type": "size",
+          "item": "large"
+        },
+        "path": [
+          "padding",
+          "size",
           "large"
         ]
       },
       "xl": {
-        "value": "2rem",
+        "value": "24px",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 2
+          "value": "{spacing.size.xl.value}"
         },
-        "name": "SizePaddingXl",
+        "name": "PaddingSizeXl",
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "xl"
         },
         "path": [
-          "size",
           "padding",
+          "size",
           "xl"
         ]
       },
       "xxl": {
-        "value": "4rem",
+        "value": "32px",
         "filePath": "tokens/size/padding.json",
         "isSource": true,
         "original": {
-          "value": 4
+          "value": "{spacing.size.xxl.value}"
         },
-        "name": "SizePaddingXxl",
+        "name": "PaddingSizeXxl",
         "attributes": {
-          "category": "size",
-          "type": "padding",
+          "category": "padding",
+          "type": "size",
           "item": "xxl"
         },
         "path": [
-          "size",
           "padding",
+          "size",
           "xxl"
-        ]
-      }
-    },
-    "spacing": {
-      "50": {
-        "value": "2rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "2px"
-        },
-        "name": "SizeSpacing50",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "50"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "50"
-        ]
-      },
-      "75": {
-        "value": "4rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "4px"
-        },
-        "name": "SizeSpacing75",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "75"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "75"
-        ]
-      },
-      "100": {
-        "value": "8rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "8px"
-        },
-        "name": "SizeSpacing100",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "100"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "100"
-        ]
-      },
-      "200": {
-        "value": "12rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "12px"
-        },
-        "name": "SizeSpacing200",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "200"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "200"
-        ]
-      },
-      "300": {
-        "value": "16rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "16px"
-        },
-        "name": "SizeSpacing300",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "300"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "300"
-        ]
-      },
-      "400": {
-        "value": "24rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "24px"
-        },
-        "name": "SizeSpacing400",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "400"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "400"
-        ]
-      },
-      "500": {
-        "value": "32rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "32px"
-        },
-        "name": "SizeSpacing500",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "500"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "500"
-        ]
-      },
-      "600": {
-        "value": "40rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "40px"
-        },
-        "name": "SizeSpacing600",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "600"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "600"
-        ]
-      },
-      "700": {
-        "value": "48rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "48px"
-        },
-        "name": "SizeSpacing700",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "700"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "700"
-        ]
-      },
-      "800": {
-        "value": "64rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "64px"
-        },
-        "name": "SizeSpacing800",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "800"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "800"
-        ]
-      },
-      "900": {
-        "value": "80rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "80px"
-        },
-        "name": "SizeSpacing900",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "900"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "900"
-        ]
-      },
-      "1000": {
-        "value": "96rem",
-        "filePath": "tokens/size/spacing.json",
-        "isSource": true,
-        "original": {
-          "value": "96px"
-        },
-        "name": "SizeSpacing1000",
-        "attributes": {
-          "category": "size",
-          "type": "spacing",
-          "item": "1000"
-        },
-        "path": [
-          "size",
-          "spacing",
-          "1000"
         ]
       }
     }
@@ -5655,67 +8073,6 @@ module.exports = {
           "time",
           "duration",
           "1000"
-        ]
-      }
-    }
-  },
-  "weight": {
-    "font": {
-      "normal": {
-        "value": 400,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 400
-        },
-        "name": "WeightFontNormal",
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "normal"
-        },
-        "path": [
-          "weight",
-          "font",
-          "normal"
-        ]
-      },
-      "semibold": {
-        "value": 600,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 600
-        },
-        "name": "WeightFontSemibold",
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "semibold"
-        },
-        "path": [
-          "weight",
-          "font",
-          "semibold"
-        ]
-      },
-      "bold": {
-        "value": 700,
-        "filePath": "tokens/weight/font.json",
-        "isSource": true,
-        "original": {
-          "value": 700
-        },
-        "name": "WeightFontBold",
-        "attributes": {
-          "category": "weight",
-          "type": "font",
-          "item": "bold"
-        },
-        "path": [
-          "weight",
-          "font",
-          "bold"
         ]
       }
     }

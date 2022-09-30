@@ -1,7 +1,7 @@
 {
   "name": "@elf-framework/ui",
-  "version": "2.1.5",
-  "description": "Fantastic UI library",
+  "version": "2.2.5",
+  "description": "ELF - An easy and customizable set of developers",
   "types": "./index.d.ts",
   "files": [
     "dist",
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
-    "watch": "vite build --config=vite.dist.config.js --watch",
+    "watch": "vite build --config=vite.dist.config.js --watch",   
     "ui:watch": "npm run watch",
     "editor:watch": "npm run watch",
     "build": "npm run vite:dist",

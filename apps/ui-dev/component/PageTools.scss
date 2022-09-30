@@ -18,10 +18,15 @@
     }
     a {
         text-decoration: none;
-        // background-color: var(--color-core-blue-0);
+        // background-color: var(--color-blue-0);
         padding: 5px 10px;
-        color: var(--color-core-black);
+        color: var(--color-black);
 
+        &.selected {
+            background-color: var(--color-blue-1);
+            border-radius: 4px;
+            font-weight: bold;
+        }
     }
 
     .sm {

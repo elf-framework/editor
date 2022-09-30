@@ -6,13 +6,15 @@ import {
   FOCUSIN,
   isFunction,
   CLICK,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Grid } from "../grid";
 
-const cssProperties = makeStyleMap("--elf--input-paint", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -63,10 +65,10 @@ export class HSLColorEditor extends UIElement {
     } = this.state;
 
     const { r, g, b, a } = parse(value);
-    const {h, s, l} = RGBtoHSL(r, g, b);
+    const { h, s, l } = RGBtoHSL(r, g, b);
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
           focused: focused,
@@ -74,7 +76,11 @@ export class HSLColorEditor extends UIElement {
           disabled: disabled,
           icon: icon,
         },
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
       },
@@ -84,29 +90,57 @@ export class HSLColorEditor extends UIElement {
       disabled,
       placeholder: placeholder || "",
       min: 0,
-      max: 255
+      max: 255,
     };
 
-    this.setState({
-      parsedColor: {
-        h, s, l, a
-      }
-    }, false)    
-
-
+    this.setState(
+      {
+        parsedColor: {
+          h,
+          s,
+          l,
+          a,
+        },
+      },
+      false
+    );
 
     return (
       <div {...styleObject}>
         <div class="elf--input-area">
           <Grid columns={3}>
             <div class="elf--input-item">
-              <input class="color" type="text" tabIndex={1} data-type="h" value={h} {...properties} onKeyDown={this.keydownColor} />
+              <input
+                class="color"
+                type="text"
+                tabIndex={1}
+                data-type="h"
+                value={h}
+                {...properties}
+                onKeyDown={this.keydownColor}
+              />
             </div>
             <div class="elf--input-item">
-              <input class="color" type="text" tabIndex={2} data-type="s" value={s} {...properties} onKeyDown={this.keydownColor} />
+              <input
+                class="color"
+                type="text"
+                tabIndex={2}
+                data-type="s"
+                value={s}
+                {...properties}
+                onKeyDown={this.keydownColor}
+              />
             </div>
             <div class="elf--input-item">
-              <input class="color" type="text" tabIndex={3} data-type="l" value={l} {...properties} onKeyDown={this.keydownColor} />
+              <input
+                class="color"
+                type="text"
+                tabIndex={3}
+                data-type="l"
+                value={l}
+                {...properties}
+                onKeyDown={this.keydownColor}
+              />
             </div>
           </Grid>
         </div>
@@ -116,7 +150,7 @@ export class HSLColorEditor extends UIElement {
               type="text"
               tabIndex={4}
               class="opacity"
-              value={`${Math.round(a * 100 * 100)/100}%`}
+              value={`${Math.round(a * 100 * 100) / 100}%`}
               onKeyDown={this.keydown}
             />
           </div>
@@ -129,33 +163,47 @@ export class HSLColorEditor extends UIElement {
     this.setState({
       parsedColor: {
         ...this.state.parsedColor,
-        a: Math.max(0, Math.min(1, Math.round((this.state.parsedColor.a + num) * 100)/100)) ,
+        a: Math.max(
+          0,
+          Math.min(1, Math.round((this.state.parsedColor.a + num) * 100) / 100)
+        ),
       },
     });
 
-    this.runCallback(this.props.onChange);    
+    this.runCallback(this.props.onChange);
   }
 
   updateColor(type, num) {
-
-    const data = {}
-    if (type === 'h') {
-      data[type] = Math.max(0, Math.min(360, this.state.parsedColor[type] + num));
-    } else if (type === 's') {
-      data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));
-    } else if (type === 'l') {
-      data[type] = Math.max(0, Math.min(100, this.state.parsedColor[type] + num));      
+    const data = {};
+    if (type === "h") {
+      data[type] = Math.max(
+        0,
+        Math.min(360, this.state.parsedColor[type] + num)
+      );
+    } else if (type === "s") {
+      data[type] = Math.max(
+        0,
+        Math.min(100, this.state.parsedColor[type] + num)
+      );
+    } else if (type === "l") {
+      data[type] = Math.max(
+        0,
+        Math.min(100, this.state.parsedColor[type] + num)
+      );
     }
 
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        ...data
+    this.setState(
+      {
+        parsedColor: {
+          ...this.state.parsedColor,
+          ...data,
+        },
       },
-    }, false);
+      false
+    );
 
     this.runCallback(this.props.onChange);
-  }  
+  }
 
   increaseColor(type) {
     this.updateColor(type, 1);
@@ -173,43 +221,40 @@ export class HSLColorEditor extends UIElement {
     this.updateOpacity(-0.01);
   }
 
-
   keydownColor = (e) => {
     switch (e.key) {
       case "ArrowUp":
-        e.preventDefault();        
-        this.increaseColor(e.target.getAttribute('data-type'));
-        e.target.select();    
+        e.preventDefault();
+        this.increaseColor(e.target.getAttribute("data-type"));
+        e.target.select();
         break;
       case "ArrowDown":
-        e.preventDefault();        
-        this.decreaseColor(e.target.getAttribute('data-type'));
-        e.target.select();    
+        e.preventDefault();
+        this.decreaseColor(e.target.getAttribute("data-type"));
+        e.target.select();
         break;
     }
-
-  }
+  };
 
   keydown = (e) => {
     switch (e.key) {
       case "ArrowUp":
         e.preventDefault();
         this.increaseOpacity(e);
-        e.target.select();            
+        e.target.select();
         break;
       case "ArrowDown":
         e.preventDefault();
         this.decreaseOpacity(e);
-        e.target.select();    
+        e.target.select();
         break;
       case "Tab":
         e.preventDefault();
-        const $el = this.$el.$("input[data-type='h']");
+        var $el = this.$el.$("input[data-type='h']");
         $el.focus();
         $el.select();
         break;
     }
-
   };
 
   onMounted() {
@@ -218,7 +263,7 @@ export class HSLColorEditor extends UIElement {
         const $el = this.$el.$("input[data-type='h']");
 
         $el.focus();
-        $el.select()
+        $el.select();
       }, 10);
     }
   }
@@ -253,8 +298,8 @@ export class HSLColorEditor extends UIElement {
 
   get value() {
     const { parsedColor } = this.state;
-    const {h, s, l, a} = parsedColor;
-    return format({ h, s, l, a }, 'hsl');
+    const { h, s, l, a } = parsedColor;
+    return format({ h, s, l, a }, "hsl");
   }
 
   set value(v) {
@@ -265,3 +310,7 @@ export class HSLColorEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
+
+registerComponent("HSLColorEditor", HSLColorEditor);
+registerComponent("hsl-color-editor", HSLColorEditor);
+registerComponent("hslcoloreditor", HSLColorEditor);

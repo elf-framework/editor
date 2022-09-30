@@ -1,10 +1,16 @@
-import { UIElement, classnames, isFunction } from "@elf-framework/sapa";
+import {
+  UIElement,
+  classnames,
+  isFunction,
+  useMemo,
+} from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { TabStrip } from "../tabstrip";
 
-const cssProperties = makeStyleMap("--elf--tab", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tab", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -41,12 +47,28 @@ export class Tab extends UIElement {
   }
 
   template() {
-    const { style = {}, content, full, fitted, align = "left" } = this.props;
+    const {
+      style = {},
+      content,
+      full,
+      fitted,
+      align = "left",
+      orientation = "horizontal",
+      showIndicator = false,
+      size = "medium",
+      variant = "default",
+      quiet = false,
+    } = this.props;
     const { activeKey } = this.state;
-    const styleObject = {
-      class: classnames("elf--tab", {
+
+    const localClass = useMemo(() => {
+      return classnames("elf--tab", {
         full,
-      }),
+      });
+    }, [full]);
+
+    const styleObject = {
+      class: localClass,
       style: propertyMap(style, cssProperties),
     };
 
@@ -56,15 +78,23 @@ export class Tab extends UIElement {
           <TabStrip
             fitted={fitted}
             align={align}
+            orientation={orientation}
+            activeKey={activeKey}
+            showIndicator={showIndicator}
+            size={size}
+            variant={variant}
+            quiet={quiet}
             items={content.map((it) => {
               const { title, key, onClick, disabled, style, selectedStyle } =
                 it.props;
+              const selected = activeKey === key;
               return {
                 title: title,
                 style,
                 disabled,
                 selectedStyle,
-                selected: key === activeKey,
+                key,
+                selected,
                 onClick: () => {
                   this.changeActiveKey(key);
                   onClick && onClick();
@@ -88,3 +118,9 @@ export class Tab extends UIElement {
     );
   }
 }
+
+registerComponent("tab", Tab);
+registerComponent("Tab", Tab);
+registerComponent("TabItem", TabItem);
+registerComponent("tab-item", TabItem);
+registerComponent("tabitem", TabItem);

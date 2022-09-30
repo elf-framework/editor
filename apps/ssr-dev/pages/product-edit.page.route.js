@@ -6,7 +6,7 @@ export const iKnowThePerformanceRisksOfAsyncRouteFunctions = true;
 // item.page.route.js -> route 에 따라서 page가 달라진다.
 
 export default (pageContext) => {
-  const { url } = pageContext;
+  const { urlOriginal: url } = pageContext;
 
   if (!url.startsWith("/product/")) {
     return false;

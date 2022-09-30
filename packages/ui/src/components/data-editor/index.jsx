@@ -1,17 +1,16 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import {
   ButtonItem,
   ColorItem,
   GridItem,
   TextInputItem,
   TitleItem,
-  ToggleButtonItem,
 } from "./editor-items";
 
-const cssProperties = makeStyleMap("--elf--data-editor", {
+const cssProperties = makeCssVariablePrefixMap("--elf--data-editor", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -26,7 +25,6 @@ const predefinedPlugins = {
   grid: GridItem,
   button: ButtonItem,
   color: ColorItem,
-  "toggle-button": ToggleButtonItem,
 };
 
 export class DataEditor extends UIElement {

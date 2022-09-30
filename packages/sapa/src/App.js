@@ -1,7 +1,13 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { Dom } from "./functions/Dom";
-import { registRootElementInstance } from "./functions/registElement";
+import {
+  registRootElementInstance,
+  renderComponent,
+} from "./functions/registElement";
 import { VNode, VNodeComponent } from "./functions/vnode/index";
+import { DomRenderer } from "./renderer/dom/DomRenderer";
+import { renderVNodeComponent } from "./renderer/dom/VNodeComponentRender";
+import { renderVNodeComponentToHtml } from "./renderer/html/VNodeComponentRender";
 // import { Router } from "./Router";
 import { createComponentInstance } from "./UIElement";
 
@@ -23,7 +29,10 @@ export const start = (ElementClass, opt = {}) => {
     ElementClass = () => rootVNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, opt);
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponent,
+  });
 
   // hmr 로 인해서 동일한 패턴으로 start 가 되었을 때
   // dom 이 살아있지 않으면 추가
@@ -32,9 +41,11 @@ export const start = (ElementClass, opt = {}) => {
     app.$el = Dom.create($targetElement.el);
     // id 유지
     app.id = $targetElement.el[COMPONENT_INSTANCE].id;
-    app.render();
+
+    // dom render 를 위해서 추가
+    renderComponent(app, null, true);
   } else {
-    app.render($container);
+    renderComponent(app, $container, true);
   }
   registRootElementInstance(app, $container);
 
@@ -55,15 +66,19 @@ export const hydrate = (ElementClass, opt = {}) => {
     ElementClass = () => rootVNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, opt);
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponent,
+  });
 
   const $targetElement = $container.firstChild;
 
   if ($targetElement) {
     app.$el = $targetElement;
-    app.render();
+    app.$el.el[COMPONENT_INSTANCE] = app;
+    renderComponent(app);
   } else {
-    app.render($container);
+    renderComponent(app, $container);
   }
   registRootElementInstance(app, $container);
 
@@ -79,9 +94,7 @@ export const potal = (ElementClass, opt = {}) => {
 
   // component 일 때는 바로 렌더링을 시작한다.
   if (ElementClass instanceof VNodeComponent) {
-    ElementClass.render({
-      $container,
-    });
+    DomRenderer(ElementClass, $container);
 
     return ElementClass.instance;
   }
@@ -91,9 +104,12 @@ export const potal = (ElementClass, opt = {}) => {
     ElementClass = () => rootVNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, opt);
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponent,
+  });
 
-  app.render($container);
+  renderComponent(app, $container);
 
   return app;
 };
@@ -104,8 +120,12 @@ export async function renderToHtml(ElementClass, opt) {
     ElementClass = () => rootVNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, opt);
-  const html = await app.renderToHtml();
+  const app = createComponentInstance(ElementClass, null, {
+    ...opt,
+    renderer: renderVNodeComponentToHtml,
+  });
+
+  const html = await renderVNodeComponentToHtml(app);
 
   return html;
 }

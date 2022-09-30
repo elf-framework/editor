@@ -4,33 +4,40 @@ import {
   useState,
   useCallback,
   potal,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  borderColor: "--elf--alert-border-color",
-  backgroundColor: "--elf--alert-background-color",
-  selectedBackgroundColor: "--elf--alert-selected-background-color",
-  disabledColor: "--elf--alert-disabled-color",
-  color: "--elf--alert-color",
-  fontSize: "--elf--alert-font-size",
-  fontWeight: "--elf--alert-font-weight",
-  height: "--elf--alert-height",
-  padding: "--elf--alert-padding",
-  borderRadius: "--elf--alert-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--alert", {
+  borderColor: true,
+  backgroundColor: true,
+  selectedBackgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class Alert extends UIElement {
   template() {
     const {
-      type = "default",
+      variant = "default",
       title = "",
       content = "",
+      shape = "rect",
       style = {},
       closable = false,
-      weak = false,
+      dismissable = false,
       delay = 0,
+      actions,
+      weak,
+      icon,
       ...extrProps
     } = this.props;
     const [localDelay, setLocalDelay] = useState(delay);
@@ -43,8 +50,19 @@ export class Alert extends UIElement {
       [setLocalDelay]
     );
 
+    const localClass = useMemo(() => {
+      return classnames("elf--alert", {
+        [variant]: true,
+        weak,
+        hide,
+        closable,
+        [shape]: true,
+        dismissable,
+      });
+    }, [variant, weak, hide, closable, shape, dismissable]);
+
     const styleObject = {
-      class: classnames(["elf--alert", { [type]: true, weak }, { hide }]),
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
         ...{
@@ -55,6 +73,12 @@ export class Alert extends UIElement {
       ...extrProps,
     };
 
+    const titleIcon = title && icon ? icon : undefined;
+    const contentIcon = content && icon && !title ? icon : undefined;
+
+    const titleActions = title && actions ? actions : undefined;
+    const contentActions = content && actions && !title ? actions : undefined;
+
     return (
       <div
         {...styleObject}
@@ -64,8 +88,22 @@ export class Alert extends UIElement {
           this.destroy(true);
         }}
       >
-        {title ? <div class="elf--alert-title">{title}</div> : null}
-        {content ? <div class="elf--alert-content">{content}</div> : null}
+        {title ? (
+          <div class="elf--alert-title">
+            {titleIcon} <span>{title}</span>{" "}
+            {titleActions ? (
+              <div class="elf--alert-actions">{titleActions}</div>
+            ) : undefined}
+          </div>
+        ) : null}
+        {content ? (
+          <div class="elf--alert-content">
+            {contentIcon} <span>{content}</span>{" "}
+            {contentActions ? (
+              <div class="elf--alert-actions">{contentActions}</div>
+            ) : undefined}
+          </div>
+        ) : null}
         {closable ? (
           <div
             class="elf--alert-close"
@@ -104,3 +142,6 @@ export function alert({
     options
   );
 }
+
+registerComponent("Alert", Alert);
+registerComponent("alert", Alert);

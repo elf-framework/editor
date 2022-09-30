@@ -1,0 +1,26 @@
+{
+  "name": "sapa-dev",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
+    "sapa:dev": "npm run vite:dev",
+    "//build": "npm run vite:prod",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",
+    "format": "prettier .  --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elf-framework/sapa": "*"
+  },
+  "devDependencies": {
+    "@elf-framework/config": "*",
+    "vite": "^3.1.0",
+    "vite-plugin-sapa": "*",
+    "vitest": "0.23.2"
+  }
+}

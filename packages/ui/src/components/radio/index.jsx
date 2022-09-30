@@ -1,18 +1,20 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  borderColor: "--elf--radio-border-color",
-  backgroundColor: "--elf--radio-background",
-  disabledColor: "--elf--radio-disabled-color",
-  color: "--elf--radio-color",
-  fontSize: "--elf--radio-font-size",
-  fontWeight: "--elf--radio-font-weight",
-  height: "--elf--radio-height",
-  padding: "--elf--radio-padding",
-  borderRadius: "--elf--radio-border-radius",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--radio", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+});
 
 export class Radio extends UIElement {
   template() {
@@ -24,18 +26,24 @@ export class Radio extends UIElement {
       name,
       checked = false,
       onChange,
+      size = "medium",
+      variant = "default",
     } = this.props;
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--radio",
         {
           disabled,
+          [size]: true,
+          [variant]: true,
         },
-      ]),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      ]);
+    }, [disabled, size, variant]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
@@ -59,46 +67,5 @@ export class Radio extends UIElement {
   }
 }
 
-export class RadioGroup extends UIElement {
-  template() {
-    const { disabled, style = {}, name, value, onChange, content } = this.props;
-
-    const styleObject = {
-      class: classnames(["elf--radio-group"]),
-      disabled: disabled ? "disabled" : undefined,
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
-    };
-
-    return (
-      <div {...styleObject}>
-        {content.map((it, index) => {
-          return (
-            <Radio
-              ref={`$${index}`}
-              name={name}
-              value={it.props.value}
-              onChange={(e, v) => {
-                this.setState({ value: v }, false);
-                onChange(e, v);
-              }}
-              checked={it.props.value === value}
-              disabled={disabled}
-            >
-              {it.props.content}
-            </Radio>
-          );
-        })}
-      </div>
-    );
-  }
-
-  get value() {
-    return this.state.value || this.props.value;
-  }
-
-  set value(value) {
-    this.setState({ value });
-  }
-}
+registerComponent("radio", Radio);
+registerComponent("Radio", Radio);

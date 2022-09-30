@@ -1,0 +1,41 @@
+---
+title: Typography
+layout: DesignLayout
+filename: pages/design/page.mdx
+---
+
+import { VBox } from "@elf-framework/ui";
+import { FontSizeView } from "../../../../component/typography/FontSizeView.jsx";
+import { FontWeightView } from "../../../../component/typography/FontWeightView.jsx";
+import { BoldView } from "../../../../component/typography/BoldView.jsx";
+import { ItalicView } from "../../../../component/typography/ItalicView.jsx";
+import { UnderlineView } from "../../../../component/typography/UnderlineView.jsx";
+import { StrongView } from "../../../../component/typography/StrongView.jsx";
+import { EmphasisView } from "../../../../component/typography/EmphasisView.jsx";
+
+# {title}
+
+
+## Font Size
+
+<FontSizeView />
+
+## Text Format
+
+<VBox style={{gap: 50}}>
+    <BoldView />
+
+    <ItalicView />
+
+    <UnderlineView />
+
+    <StrongView />
+
+    <EmphasisView />
+</VBox>
+
+## Font Weight 
+
+<FontWeightView />
+
+

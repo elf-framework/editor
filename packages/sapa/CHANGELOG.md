@@ -1,5 +1,112 @@
 # @elf-framework/sapa
 
+## 2.2.4
+
+### Patch Changes
+
+- modify initializing time in DomEventHandler
+
+## 2.2.2
+
+### Patch Changes
+
+- fixed domdiff bug
+
+## 2.2.0
+
+### Minor Changes
+
+- split renderer in sapa (dom, html)
+
+## 2.1.47
+
+### Patch Changes
+
+- fixed useRef
+
+## 2.1.45
+
+### Patch Changes
+
+- add createRef function
+  support useType in useMemo
+
+## 2.1.43
+
+### Patch Changes
+
+- modify makeElement in vnode
+
+## 2.1.36
+
+### Patch Changes
+
+- add clone function in Dom
+
+## 2.1.35
+
+### Patch Changes
+
+- support useId, useBatch, useSyncExternalStore hooks
+  modify style attribute diff algorithm
+  fixed children value type in jsx
+
+## 2.1.33
+
+### Patch Changes
+
+- Refactoring...
+
+## 2.1.25
+
+### Patch Changes
+
+- remove registerElement function
+  remove style attribute if style value is empty object in vnode
+
+## 2.1.23
+
+### Patch Changes
+
+- support indeterminate property for input
+
+## 2.1.19
+
+### Patch Changes
+
+- fixed useEffect bug
+
+## 2.1.15
+
+### Patch Changes
+
+- fixed isEqual for hmr
+
+## 2.1.9
+
+### Patch Changes
+
+- remove unused function for Dom object
+
+## 2.1.8
+
+### Patch Changes
+
+- support useMagicMethod hook
+  support PROPS MagicMethod
+
+## 2.1.7
+
+### Patch Changes
+
+- update version
+
+## 2.1.6
+
+### Patch Changes
+
+- remove unused function
+
 ## 2.1.4
 
 ### Patch Changes

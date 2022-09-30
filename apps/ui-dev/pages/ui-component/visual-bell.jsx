@@ -1,5 +1,5 @@
 import { start } from "@elf-framework/sapa";
-import { Button, VisualBell } from "@elf-framework/ui";
+import { Button, Toast } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { UILayout } from "../../layouts/UILayout";
@@ -13,25 +13,17 @@ start(function () {
   return (
     <UILayout>
       <div>
-        <VisualBell direction="top-left" tools={tools}>
+        <Toast direction="top-left" tools={tools}>
           Hello World yellow 234
-        </VisualBell>
-        <VisualBell direction="top" content="Hello World" tools={tools} />
-        <VisualBell direction="top-right" content="Hello World" tools={tools} />
-        <VisualBell direction="left" content="Hello World" tools={tools} />
-        <VisualBell direction="center" content="Hello World" tools={tools} />
-        <VisualBell direction="right" content="Hello World" tools={tools} />
-        <VisualBell
-          direction="bottom-left"
-          content="Hello World"
-          tools={tools}
-        />
-        <VisualBell direction="bottom" content="Hello World" tools={tools} />
-        <VisualBell
-          direction="bottom-right"
-          content="Hello World"
-          tools={tools}
-        />
+        </Toast>
+        <Toast direction="top" content="Hello World" tools={tools} />
+        <Toast direction="top-right" content="Hello World" tools={tools} />
+        <Toast direction="left" content="Hello World" tools={tools} />
+        <Toast direction="center" content="Hello World" tools={tools} />
+        <Toast direction="right" content="Hello World" tools={tools} />
+        <Toast direction="bottom-left" content="Hello World" tools={tools} />
+        <Toast direction="bottom" content="Hello World" tools={tools} />
+        <Toast direction="bottom-right" content="Hello World" tools={tools} />
       </div>
     </UILayout>
   );

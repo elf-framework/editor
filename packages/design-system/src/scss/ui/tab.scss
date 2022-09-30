@@ -1,10 +1,11 @@
 .elf--tab {
-    --elf--tab-background-color: white;
-    --elf--tab-font-color: rgba(0, 0, 0, 0.3);
+    --elf--tab-background-color: transparent;
+    --elf--tab-font-color: var(--color-black);
     --elf--tab-height: auto;
     --elf--tab-font-weight: 500;
     --elf--tab-border-color: rgba(0, 0, 0, 0.1);
     --elf--tab-body-padding: 8px;
+    --elf--tab-width: 100%;
 
     background-color: var(--elf--tab-background-color);
     // color: var(--elf--tab-font-color);
@@ -12,6 +13,7 @@
     display: flex;
     flex-direction: column;
     height: var(--elf--tab-height);
+    width: var(--elf--tab-width);
 
     &.full {
         --elf--tab-height: 100%;

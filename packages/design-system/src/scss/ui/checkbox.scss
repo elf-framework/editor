@@ -1,33 +1,128 @@
 .elf--checkbox {
     --elf--checkbox-border-color: rgba(0, 0, 0, 0.8);
     --elf--checkbox-padding: 7px 10px;
-    --elf--checkbox-font-size: var(--elf--font-size, 14px);
+    --elf--checkbox-font-size: 13px;
     --elf--checkbox-background-color: transparent;
     --elf--checkbox-color: rgba(0, 0, 0, 0.8);
-    --elf--checkbox-border-radius: 4px;
+    --elf--checkbox-border-radius: 2px;
+    /** disabled */
     --elf--checkbox-disabled-color: var(--elf--disabled-color);
 
-    display: inline-block;
+    /** accent */
+    --elf--checkbox-active-color: var(--color-primary);
+    --elf--checkbox-hover-color: var(--color-hover-primary);
+    --elf--checkbox-down-color: var(--color-down-primary);
+
+    /** error */
+    --elf--checkbox-error-color: var(--color-danger);
+    --elf--checkbox-error-hover-color: var(--color-hover-danger);
+    --elf--checkbox-error-down-color: var(--color-down-danger);    
+
+    display: flex;
     color: var(--elf--checkbox-color);
+    vertical-align: middle;
+    accent-color: var(--elf--checkbox-active-color);
+    font-size: var(--elf--checkbox-font-size);
+    justify-content: flex-start;
+
+    &.small {
+        --elf--checkbox-font-size: var(--font-size-small);
+    }
+
+    &.medium {
+        --elf--checkbox-font-size: var(--font-size-medium);
+    }
+
+    &.large {
+        --elf--checkbox-font-size: var(--font-size-large);
+    }
+
+    &.extra-large {
+        --elf--checkbox-font-size: var(--font-size-extra-large);
+    }
+
+    &.dark {
+        --elf--checkbox-active-color: var(--color-black);
+    }
 
     &.disabled {
         cursor: not-allowed;
-        --elf--checkbox-background-color: var(--elf--checkbox-disabled-color) !important;
+        // --elf--checkbox-background-color: var(--elf--checkbox-disabled-color) !important;
         --elf--checkbox-color: rgba(0, 0, 0, 0.3) !important;
         --elf--checkbox-border-color: transparent !important;
+        --elf--checkbox-active-color: var(--elf--checkbox-disabled-color) !important;
 
         > * {
             pointer-events: none;
         }
     }
-} 
 
-.elf--checkbox-group {
-    display: flex;
-    width: fit-content;
-    height: fit-content;
-    
-    > .elf--checkbox {
-        margin-right: 10px;
+    &.danger {
+        --elf--checkbox-color: rgba(0, 0, 0, 0.3) !important;
+        --elf--checkbox-border-color: transparent !important;
+        --elf--checkbox-active-color: var(--elf--checkbox-error-color) !important;
+
+        label {
+            input[type="checkbox"] {
+                --elf--checkbox-hover-color: var(--elf--checkbox-error-hover-color);
+                --elf--checkbox-down-color: var(--elf--checkbox-error-down-color);
+
+                &:not(:checked) {
+                    appearance: none;
+                    border: 1px solid var(--elf--checkbox-error-color);
+                    border-radius: 2px;
+
+                    &:hover {
+                        border-color: var(--elf--checkbox-error-hover-color);
+                    }
+                }
+            }
+        }
     }
-}
+
+    label {
+        vertical-align: middle;
+        text-align: center;
+        input[type="checkbox"] {
+            vertical-align: middle;        
+            // margin-right: calc(1em);
+            width: 1em;
+            height: 1em;
+
+            &:indeterminate {
+                background-color: var(--elf--checkbox-active-color);
+                appearance: none;
+                position: relative;
+                border-radius: var(--elf--checkbox-border-radius);
+
+                &:hover {
+                    background-color: var(--elf--checkbox-hover-color);
+                }
+
+                &:active {
+                    background-color: var(--elf--checkbox-down-color);
+                }
+
+                &:before {
+                    content: "";
+                    display: block;
+                    width: 60%;
+                    height: 20%;
+                    background-color: var(--color-white);
+                    position: absolute;
+                    border-radius: 5%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        > *:not(input) {
+            pointer-events: none;
+            vertical-align: middle;
+            margin-left: 1em;
+        }
+    }
+
+} 

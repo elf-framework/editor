@@ -10,6 +10,10 @@ function getIdendifierName(ast) {
     return {
       name: ast.id.value,
     };
+  } else if (ast.type === "ClassDeclaration") {
+    return {
+      name: ast.identifier.value,
+    };
   } else if (ast.type === "FunctionDeclaration") {
     return {
       name: ast.identifier.value,
@@ -91,10 +95,19 @@ module.exports = function sapa(options = {}) {
 
         const names = options.results
           .map((it) => {
-            return it.names;
+            if (Array.isArray(it.names.name)) {
+              return [it.names];
+            } else if (typeof it.names === "object") {
+              return [it.names];
+            }
+
+            return [];
           })
           .flat(Infinity)
-          .map((it) => it.name);
+          .map((it) => {
+            return it?.name;
+          })
+          .filter(Boolean);
         transformedCode = `
 
 import { registerModule, renderFromRoot, uuidShort, setGlobalForceRender } from "@elf-framework/sapa";
@@ -113,6 +126,10 @@ if (import.meta.hot) {
     console.log("hot reload");
     setGlobalForceRender(true);
     renderFromRoot();
+
+    setTimeout(() => {
+      setGlobalForceRender(false);
+    }, 500);
   });
 }
         `;

@@ -4,12 +4,15 @@ import {
   FOCUSOUT,
   FOCUSIN,
   isFunction,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--input-editor", {
+const cssProperties = makeCssVariablePrefixMap("--elf--input-editor", {
+  width: true,
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -21,12 +24,12 @@ const cssProperties = makeStyleMap("--elf--input-editor", {
   borderRadius: true,
   placeholderColor: true,
   emptyColor: true,
+  paddingRight: true,
 });
 
 export class InputEditor extends UIElement {
   initState() {
     const {
-      style = {},
       type = "text",
       autoFocus = false,
       focused,
@@ -37,7 +40,6 @@ export class InputEditor extends UIElement {
     } = this.props;
 
     return {
-      style,
       type,
       autoFocus,
       hover: hover || false,
@@ -49,9 +51,15 @@ export class InputEditor extends UIElement {
   }
 
   template() {
-    const { icon, tools } = this.props;
     const {
-      style = {},
+      icon,
+      tools,
+      size = "medium",
+      readOnly = false,
+      invalid,
+      style,
+    } = this.props;
+    const {
       type = "text",
       focused = false,
       hover = false,
@@ -60,19 +68,24 @@ export class InputEditor extends UIElement {
       disabled,
     } = this.state;
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-editor",
         {
-          focused: focused,
-          hover: hover,
-          disabled: disabled,
-          icon: icon,
+          focused,
+          hover,
+          disabled,
+          icon,
+          invalid,
+          [size]: true,
+          readonly: readOnly,
         },
-      ]),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      ]);
+    }, [focused, hover, disabled, icon, invalid, size, readOnly]);
+
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     const inputEvents = {
@@ -90,6 +103,7 @@ export class InputEditor extends UIElement {
     const properties = {
       type,
       disabled,
+      readonly: readOnly ? "readonly" : undefined,
       placeholder: placeholder || "",
       value: value || "",
     };
@@ -150,3 +164,7 @@ export class InputEditor extends UIElement {
     return document.getSelection().toString();
   }
 }
+
+registerComponent("input-editor", InputEditor);
+registerComponent("InputEditor", InputEditor);
+registerComponent("inputeditor", InputEditor);

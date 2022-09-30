@@ -67,39 +67,21 @@ export default [
     link: "/pages/sapa/router/",
     title: "Router",
   },
+  "API",
+
   {
     type: "link",
-    link: "/pages/sapa/api/",
-    title: "API",
-
-    items: [
-      {
-        type: "link",
-        link: "/pages/sapa/api/rendering/",
-        title: "Redering",
-      },
-      {
-        type: "link",
-        link: "/pages/sapa/api/hook/",
-        title: "Hooks",
-      },
-      {
-        type: "link",
-        link: "/pages/sapa/api/dom/",
-        title: "Dom",
-      },
-      {
-        type: "link",
-        link: "/pages/sapa/api/vnode/",
-        title: "Virtual Node",
-        items: [
-          {
-            type: "link",
-            link: "/pages/sapa/api/vnode/",
-            title: "Virtual Node",
-          },
-        ],
-      },
-    ],
+    link: "/pages/sapa/api/rendering/",
+    title: "Redering",
+  },
+  {
+    type: "link",
+    link: "/pages/sapa/api/dom/",
+    title: "Dom",
+  },
+  {
+    type: "link",
+    link: "/pages/sapa/api/vnode/",
+    title: "Virtual Node",
   },
 ];

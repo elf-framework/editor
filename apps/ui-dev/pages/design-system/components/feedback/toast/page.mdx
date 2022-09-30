@@ -1,0 +1,44 @@
+---
+title: Toast
+layout: DesignLayout
+filename: pages/design-system/components/feedback/notification/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/feedback/toast/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/feedback/toast/OptionsView.jsx"; 
+import { IconView } from "../../../../../component/feedback/toast/IconView.jsx"; 
+import { ToolsView } from "../../../../../component/feedback/toast/ToolsView.jsx"; 
+import { ClosableView } from "../../../../../component/feedback/toast/ClosableView.jsx"; 
+import { VariantView } from "../../../../../component/feedback/toast/VariantView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Toasts display brief, temporary notifications. They're meant to be noticed without disrupting a user's experience or requiring an action to be taken.
+
+
+<MainView />
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/toast/" />
+</div>
+
+## Options 
+
+
+### Text
+<OptionsView />
+
+### Icon
+<IconView />
+
+### Tools
+<ToolsView />
+
+### Closable
+<ClosableView />
+
+### Variant
+<VariantView />
+

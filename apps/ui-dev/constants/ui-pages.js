@@ -16,9 +16,9 @@ export default [
   { link: "/pages/ui-component/tools.html", title: "14. Tools" },
   { link: "/pages/ui-component/alert.html", title: "5. Alert" },
   { link: "/pages/ui-component/notification.html", title: "15. Notification" },
-  { link: "/pages/ui-component/visual-bell.html", title: "16. Visual Bell" },
+  { link: "/pages/ui-component/toast.html", title: "16. Visual Bell" },
   {
-    link: "/pages/ui-component/visual-bell-target.html",
+    link: "/pages/ui-component/toast-target.html",
     title: "16-1. Visual Bell with Target",
   },
   { link: "/pages/ui-component/tooltip.html", title: "17. Tooltip" },

@@ -1,23 +1,25 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  borderColor: "--elf--link-button-border-color",
-  backgroundColor: "--elf--link-button-background",
-  disabledColor: "--elf--link-button-disabled-color",
-  color: "--elf--link-button-color",
-  fontSize: "--elf--link-button-font-size",
-  fontWeight: "--elf--link-button-font-weight",
-  padding: "--elf--link-button-padding",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--link-button", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  padding: true,
+});
 
 export class LinkButton extends UIElement {
   template() {
     const { disabled, style = {}, content, onClick, href } = this.props;
 
     const styleObject = {
-      class: classnames(["elf--link-button"]),
+      class: "elf--link-button",
       disabled: disabled ? "disabled" : undefined,
       style: {
         ...propertyMap(style, cssProperties),
@@ -31,3 +33,7 @@ export class LinkButton extends UIElement {
     );
   }
 }
+
+registerComponent("link-button", LinkButton);
+registerComponent("linkbutton", LinkButton);
+registerComponent("LinkButton", LinkButton);

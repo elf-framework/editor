@@ -1,0 +1,513 @@
+---
+title: Action Group
+layout: DesignLayout
+filename: pages/design-system/actions/actiongroup/page.mdx
+---
+
+import { VBox } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/actions/actiongroup/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/actions/actiongroup/OptionsView.jsx"; 
+import { SizeView } from "../../../../../component/actions/actiongroup/SizeView.jsx"; 
+import { DensityView } from "../../../../../component/actions/actiongroup/DensityView.jsx"; 
+import { JustifiedView } from "../../../../../component/actions/actiongroup/JustifiedView.jsx"; 
+import { QuietView } from "../../../../../component/actions/actiongroup/QuietView.jsx"; 
+import { EnableSelectionView } from "../../../../../component/actions/actiongroup/EnableSelectionView.jsx"; 
+import { MultiSelectionView } from "../../../../../component/actions/actiongroup/MultiSelectionView.jsx"; 
+import { OverflowView } from "../../../../../component/actions/actiongroup/OverflowView.jsx"; 
+import { DisabledView } from "../../../../../component/actions/actiongroup/DisabledView.jsx"; 
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
+
+# {title}
+An action group is a grouping of action buttons that are related to each other.
+
+
+<MainView />
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {5} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup>
+            <Button>
+                <EditFilled /> Edit
+            </Button>
+            <Button>
+                <ContentCopyFilled /> Copy
+            </Button>
+            <Button>
+                <DeleteFilled /> Delete
+            </Button>
+            <Button iconOnly>
+                <MoreHorizOutlined />
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--action-group horizontal normal">
+    <button class="elf--button default medium rect ">
+        <span>{icon}</span>
+    </button>
+    <button class="elf--button default medium rect ">
+        <span>{icon}</span>
+    </button>
+    <button class="elf--button default medium rect ">
+        <span>{icon}</span>
+    </button>
+    .....
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+## Options 
+
+### Orientation
+<OptionsView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {32} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <div>
+            <div>
+            <em>Horizontal</em>
+            <ActionGroup style={{ gap: 10, margin: 10 }}>
+                <Button>
+                    <DescriptionFilled />
+                    Document Setup
+                </Button>
+                <Button>
+                    <SettingsFilled /> Settings
+                </Button>
+            </ActionGroup>
+            <ActionGroup style={{ gap: 10, margin: "10px 10px" }}>
+                <IconButton quiet={true}>
+                    <EditFilled />
+                </IconButton>
+                <IconButton quiet={true}>
+                    <DescriptionFilled />
+                </IconButton>
+                <IconButton quiet={true}>
+                    <SettingsFilled />
+                </IconButton>
+            </ActionGroup>
+            </div>
+            <div>
+            <em>Vertical</em>
+            <Grid columns={2} gap={20}>
+                <ActionGroup direction="vertical" style={{ gap: 10, margin: 10 }}>
+                    <Button>
+                        <DescriptionFilled />
+                        Document Setup
+                    </Button>
+                    <Button>
+                        <SettingsFilled /> Settings
+                    </Button>
+                </ActionGroup>
+                <ActionGroup direction="vertical" style={{ gap: 10, margin: "10px 10px" }}>
+                    <IconButton quiet={true}>
+                        <EditFilled />
+                    </IconButton>
+                    <IconButton quiet={true}>
+                        <DescriptionFilled />
+                    </IconButton>
+                    <IconButton quiet={true}>
+                        <SettingsFilled />
+                    </IconButton>
+                </ActionGroup>
+            </Grid>
+            </div>
+        </div>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--action-group horizontal normal">
+    <button class="elf--button default medium rect ">
+        <span>{icon}</span>
+    </button>
+    <button class="elf--button default medium rect ">
+        <span>{icon}</span>
+    </button>
+    <button class="elf--button default medium rect ">
+        <span>{icon}</span>
+    </button>
+    .....
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Size 
+<SizeView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {9, 12} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <div>
+            <VBox>
+                <em>Small</em>
+                <ActionGroup style={{ gap: 10, margin: 10 }}>
+                    <Button size="small">
+                        <DescriptionFilled /> Document Setup
+                    </Button>
+                    <Button size="small">
+                        <SettingsFilled /> Settings
+                    </Button>
+                </ActionGroup>
+            </VBox>
+            ...
+        </div>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {2, 5} showLineNumbers
+<div class="elf--action-group horizontal normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button default small rect ">
+        <span>{icon} Document Setup</span>
+    </button>
+    <button class="elf--button default small rect ">
+        <span>{icon} Settings</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Density
+<DensityView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {5} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup compact style={{ margin: 10 }}>
+            <Button>
+                <DescriptionFilled />
+                Document Setup
+            </Button>
+            <Button>
+                <SettingsFilled /> Settings
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html showLineNumbers
+<div class="elf--action-group horizontal compact normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button default medium round  icon-only">
+        <span>{icon}</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Justified
+<JustifiedView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {5} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+         <ActionGroup justified compact style={{ gap: 10, margin: 10 }}>
+            <Button>
+              <ContentCopyFilled /> Copy
+            </Button>
+            <Button>
+              <SettingsFilled /> Settings
+            </Button>
+          </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--action-group horizontal compact justified normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button default medium rect ">
+        <span> Settings</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Quiet
+<QuietView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6, 9} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup style={{ gap: 10, margin: 10 }}>
+            <Button quiet>
+              <DescriptionFilled /> Document Setup
+            </Button>
+            <Button quiet>
+              <SettingsFilled /> Settings
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--action-group horizontal normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button quiet default medium rect ">
+        <span>Settings</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+
+### Enable Selection
+<EnableSelectionView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup compact style={{ gap: 10, margin: 10 }}>
+            <Button selected>
+                <DescriptionFilled /> Document Setup
+            </Button>
+            <Button>
+                <SettingsFilled /> Settings
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {2} showLineNumbers
+<div class="elf--action-group horizontal compact normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button selected default medium rect ">
+        <span> Document Setup</span>
+    </button>
+    <button class="elf--button default medium rect ">
+        <span> Settings</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Multi Selection
+<MultiSelectionView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6,9} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup style={{ gap: 10, margin: 10 }}>
+            <Button selected>
+                <DescriptionFilled /> Document Setup
+            </Button>
+            <Button selected>
+                <SettingsFilled /> Settings
+            </Button>
+            <Button>
+                <ContentCopyFilled /> Copy
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--action-group horizontal normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button selected medium rect ">
+        <span> Document Setup</span>
+    </button>
+    <button class="elf--button selected medium rect ">
+        <span>Settings</span>
+    </button>
+    <button class="elf--button medium rect ">
+        <span>Copy</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Overflow
+<OverflowView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6-10} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup
+            collapsed
+            moreIcon={<MoreHorizOutlined />}
+            onMoreClick={(e, items) => {
+              console.log(items);
+            }}
+            style={{ gap: 10, margin: 10 }}
+          >
+            <Button>
+              <DescriptionFilled /> Document Setup
+            </Button>
+            <Button>
+              <SettingsFilled /> Settings
+            </Button>
+            <Button onClick={() => console.log("copy")}>
+              <ContentCopyFilled /> Copy
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {1, 8-14} showLineNumbers
+<div class="elf--action-group horizontal collapsed normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button default medium rect ">
+        <span>Document Setup</span>
+    </button>
+    <button class="elf--button default medium rect ">
+        <span>Settings</span>
+    </button>
+    <div class="elf--tooltip bottom default bottom-left" style="--elf--tooltip-content-padding: 0px;">
+        <div class="content">
+            <button class="elf--button default medium rect  icon-only">
+                <span>{moreIcon}
+            </button>
+        </div>
+    </div>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+### Disabled
+<DisabledView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {6, 9, 12} showLineNumbers
+import { ActionGroup, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+        <ActionGroup style={{ gap: 10, margin: 10 }}>
+            <Button disabled>
+              <DescriptionFilled /> Document Setup
+            </Button>
+            <Button disabled>
+              <SettingsFilled /> Settings
+            </Button>
+            <Button disabled>
+              <ContentCopyFilled /> Copy
+            </Button>
+        </ActionGroup>
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {2,5,8} showLineNumbers
+<div class="elf--action-group horizontal normal" style="--elf--action-group-gap: 10px; margin: 10px;">
+    <button class="elf--button default medium rect " disabled="disabled">
+        <span>Document Setup</span>
+    </button>
+    <button class="elf--button default medium rect " disabled="disabled">
+        <span>Settings</span>
+    </button>
+    <button class="elf--button default medium rect " disabled="disabled">
+        <span>Copy</span>
+    </button>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
+
+
+
+
+
+
+

@@ -1,15 +1,16 @@
-import { COMPONENT_INSTANCE } from "./constant/component";
-import { VNodeType } from "./constant/vnode";
-import { Dom } from "./functions/Dom";
-import { VNodeToElement, VNodeToHtml } from "./functions/DomUtil";
-import { isFunction, collectProps, isArray, isObject } from "./functions/func";
+import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
+import { isFunction, collectProps, isObject } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
-import { Reconcile, updateChildren } from "./functions/Reconcile";
-import { removeRenderCallback } from "./functions/registElement";
+import {
+  isGlobalForceRender,
+  removeRenderCallback,
+  renderComponent,
+} from "./functions/registElement";
 import { uuid } from "./functions/uuid";
 import { vnodePropsDiff } from "./functions/vnode";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
+import PropsHandler from "./handler/PropsHandler";
 import StoreHandler from "./handler/StoreHandler";
 import { HookMachine } from "./HookMachine";
 
@@ -30,6 +31,10 @@ export class EventMachine extends HookMachine {
     this.initializeProperty(opt, props, state);
   }
 
+  get renderer() {
+    return this.$store.get(COMPONENT_ROOT_CONTEXT).renderer;
+  }
+
   setId(id) {
     this.id = id;
   }
@@ -39,6 +44,7 @@ export class EventMachine extends HookMachine {
       DomEventHandler,
       ObserverHandler,
       StoreHandler,
+      PropsHandler,
     });
   }
 
@@ -64,6 +70,10 @@ export class EventMachine extends HookMachine {
 
     // 객체 생성할 때 state 도 같이 초기화 한다.
     this.#state = Object.assign({}, this.#state, state);
+  }
+
+  setProps(props) {
+    this.props = props;
   }
 
   /**
@@ -130,7 +140,7 @@ export class EventMachine extends HookMachine {
     if (isRefresh) {
       // 전체를 리프레쉬 할지
       // load 만 할지 고민이 필요함.
-      this.refresh();
+      renderComponent(this);
     }
   }
 
@@ -163,9 +173,9 @@ export class EventMachine extends HookMachine {
    * @protected
    */
   _reload(props) {
-    if (this.changedProps(props)) {
+    if (isGlobalForceRender() || this.changedProps(props)) {
       this.props = props;
-      this.refresh();
+      renderComponent(this);
     }
   }
 
@@ -176,7 +186,7 @@ export class EventMachine extends HookMachine {
    */
   checkLoad($container) {
     window.requestAnimationFrame(() => {
-      this.render($container);
+      renderComponent(this, $container);
     });
   }
 
@@ -197,6 +207,13 @@ export class EventMachine extends HookMachine {
         return [_key, this.#childObjectElements.get(child)];
       })
     );
+  }
+
+  setChildren(children) {
+    Object.entries(children).forEach(([id, instance]) => {
+      this.#childObjectList[id] = instance.$el.el;
+      this.#childObjectElements.set(instance.$el.el, instance);
+    });
   }
 
   /**
@@ -227,20 +244,32 @@ export class EventMachine extends HookMachine {
   };
 
   registerChildComponent = (el, childComponent, id, oldEl) => {
+    let isEq = false;
+    if (el === oldEl) {
+      isEq = true;
+    }
+
+    el = el || oldEl;
     if (!this.#childObjectElements.has(el)) {
       this.#childObjectList[id] = el;
       this.#childObjectElements.set(el, childComponent);
     }
 
-    if (this.#childObjectElements.has(oldEl)) {
+    if (this.#childObjectElements.has(oldEl) && !isEq) {
       this.#childObjectElements.delete(oldEl);
+    } else {
+      this.#childObjectList[id] = el;
+      this.#childObjectElements.set(el, childComponent);
     }
   };
 
   getTargetInstance(oldEl) {
-    const _target = this.#childObjectElements.get(oldEl);
-    if (_target) {
-      return _target;
+    const targetList = Object.values(this.children).filter((instance) => {
+      return instance.$el.el === oldEl;
+    });
+
+    if (targetList.length) {
+      return targetList[0];
     }
 
     return undefined;
@@ -257,49 +286,14 @@ export class EventMachine extends HookMachine {
     return false;
   }
 
-  isInstanceOf(Component) {
-    return this instanceof Component;
+  isInstanceOf(...args) {
+    return args.includes(this);
   }
 
-  async runningUpdate(template, isForceRender) {
-    if (template.type === VNodeType.FRAGMENT) {
-      updateChildren(this.parentElement, template);
-    } else {
-      Reconcile(this.$el.el, template, {
-        checkRefClass: this.checkRefClass,
-        context: this,
-        isForceRender,
-        registerRef: this.registerRef,
-        registerChildComponent: this.registerChildComponent,
-      });
-    }
-
-    // element 에 component 속성 설정
-    this.$el.el[COMPONENT_INSTANCE] = this;
-    // this.prevTemplate = template;
-    this.runUpdated();
-  }
-
-  async runningMount(template, $container) {
-    const newDomElement = this.parseMainTemplate(template);
-    this.$el = newDomElement;
-    this.refs.$el = this.$el;
-    // this.prevTemplate = template;
-    // element 에 component 속성 설정
-    this.$el.el[COMPONENT_INSTANCE] = this;
-    if ($container) {
-      if (!($container instanceof Dom)) {
-        $container = Dom.create($container);
-      }
-
-      // $container 의 자식이 아닐 때만 추가
-      if ($container.hasChild(this.$el) === false) {
-        $container.append(this.$el);
-        this.runMounted();
-      }
-    }
-    // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
-    await this._afterLoad();
+  getChildrenInstanceOf(localClass) {
+    return Object.values(this.children).filter((child) => {
+      return child.isInstanceOf(localClass);
+    });
   }
 
   checkRefClass = (oldEl, newVNode) => {
@@ -334,14 +328,13 @@ export class EventMachine extends HookMachine {
         return true;
       }
     }
-
     // 다른 예외 사항이 있으면 여기에 기록하기
     return true;
   };
 
   async forceRender() {
     this.cleanHooks();
-    await this.render(null, true);
+    await renderComponent(this);
   }
 
   setParentElement(parentElement) {
@@ -358,41 +351,7 @@ export class EventMachine extends HookMachine {
    * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
    */
   async render($container, isForceRender = false) {
-    if (!this.isPreLoaded) {
-      this.checkLoad($container);
-      return;
-    }
-
-    // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
-    this.resetCurrentComponent();
-    const template = this.template();
-    if (isArray(template)) {
-      throw new Error(
-        [
-          `Error Component - ${this.sourceName}`,
-          "Template root is not must an array, however You can use Fragment instead of it",
-          "Fragment Samples: ",
-          " <>{list}</> ",
-          " <Fragment>{list}</Fragment>",
-        ].join("\n")
-      );
-    }
-    if (this.$el) {
-      await this.runningUpdate(template, isForceRender);
-    } else {
-      await this.runningMount(template, $container);
-    }
-
-    return this;
-  }
-
-  async renderToHtml() {
-    // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
-    this.resetCurrentComponent();
-    const template = this.template();
-    const html = await VNodeToHtml(template, this.getVNodeOptions());
-
-    return html;
+    renderComponent(this, $container, isForceRender);
   }
 
   initialize() {
@@ -411,26 +370,13 @@ export class EventMachine extends HookMachine {
   }
 
   // afterComponentRendering() {}
-
   getVNodeOptions() {
     return {
       context: this,
       registerRef: this.registerRef,
       registerChildComponent: this.registerChildComponent,
+      checkRefClass: this.checkRefClass,
     };
-  }
-
-  /**
-   * template() 함수의 결과물을 파싱해서 dom element 를 생성한다.
-   *
-   * element 생성 후 ref 에 들어갈 element 를 찾아서 등록한다.
-   *
-   * @param {string} html
-   */
-  parseMainTemplate(html) {
-    let $el = VNodeToElement(html, this.getVNodeOptions());
-
-    return $el;
   }
 
   getFunctionComponent() {
@@ -441,16 +387,10 @@ export class EventMachine extends HookMachine {
    * refresh 는 load 함수들을 실행한다.
    */
   refresh() {
-    this.render();
+    renderComponent(this);
   }
 
   afterRender() {}
-
-  async _afterLoad() {
-    this.runHandlers("initialize");
-
-    this.afterRender();
-  }
 
   // 기본 템플릿 지정
   template() {
@@ -624,6 +564,15 @@ export class EventMachine extends HookMachine {
 
     if (instance) {
       instance.onUnmounted();
+    }
+  }
+
+  /**
+   * Initialize Magic Method
+   */
+  initMagicMethod(methodName, callback) {
+    if (!this[methodName]) {
+      this[methodName] = callback;
     }
   }
 }

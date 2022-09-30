@@ -1,0 +1,90 @@
+---
+title: Getting Started
+layout: DesignLayout
+filename: pages/design/page.mdx
+---
+
+# {title}
+
+ELF basically manages design in two forms to make UI.
+
+* Design Tokens 
+* Design System 
+* UI Component (Sapa based)
+
+
+# Design Tokens
+
+Design token manages various basic elements such as color, border, and padding, which are basic elements of design.
+
+
+## Install 
+
+```shell
+npm install @elf-framework/design-tokens
+```
+
+
+## Import 
+
+### JSON data
+```jsx
+// json 
+import tokens from "@elf-framework/design-tokens/tokens.json";
+
+console.log(tokens.spacing.size.lg);
+```
+
+### CSS variable
+
+```css
+@import "@elf-framework/design-tokens/tokens.css";
+
+background-color: var(--color-gray-0);
+```
+
+### CSS Class  
+
+```css
+@import "@elf-framework/design-tokens/style.css";
+```
+
+```html
+<div class="gap-16">Simple Text</div>
+```
+
+# Design System
+
+The design system uses the design token to create a basic structure for making ui components.
+
+## Install 
+
+```shell
+npm install @elf-framework/design-system
+```
+
+## Import 
+
+### ESM Mode
+```jsx
+import "@elf-framework/design-system/style.css";
+```
+
+# UI Component (Sapa based)
+
+The UI component uses the design system to create a `sapa` implementation that can actually be used.
+
+## Install 
+
+```shell
+npm install @elf-framework/ui
+```
+
+## Import
+
+### ESM Mode
+```jsx
+import {Button} from "@elf-framework/ui";
+```
+
+

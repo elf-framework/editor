@@ -1,5 +1,11 @@
 # @elf-framework/color
 
+## 2.1.7
+
+### Patch Changes
+
+- update version
+
 ## 2.1.5
 
 ### Patch Changes

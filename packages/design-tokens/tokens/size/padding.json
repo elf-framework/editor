@@ -1,14 +1,12 @@
-
 {
+  "padding": {
     "size": {
-      "padding": {
-        "xs": { "value": 0.25 },
-        "small": { "value": 0.5 },
-        "medium": { "value": 1 },
-        "large": { "value": 1.5 },
-        "xl": { "value": 2 },
-        "xxl": { "value": 4 }
-      }
+      "xs": { "value": "{spacing.size.xs.value}" },
+      "small": { "value": "{spacing.size.sm.value}" },
+      "medium": { "value": "{spacing.size.md.value}" },
+      "large": { "value": "{spacing.size.lg.value}" },
+      "xl": { "value": "{spacing.size.xl.value}" },
+      "xxl": { "value": "{spacing.size.xxl.value}" }
     }
+  }
 }
-  

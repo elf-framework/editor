@@ -1,17 +1,20 @@
-import packageJSON from "@elf-framework/design-system/package.json";
+import { isFunction } from "@elf-framework/sapa";
 
-import designPages from "../../constants/design-pages";
+import { DesignSystemVersion } from "../../component/Version";
+import menu from "../../constants/design-pages";
 import { Layout } from "../Layout";
 
 export function DesignLayout({ content, ...extraProps }) {
   return (
     <Layout
       {...extraProps}
-      title="ELF Design"
-      version={packageJSON.version}
-      menu={designPages}
+      title="Design"
+      version={<DesignSystemVersion />}
+      menu={menu}
     >
-      {content}
+      {content.map((it) => {
+        return isFunction(it) ? it(menu) : it;
+      })}
     </Layout>
   );
 }

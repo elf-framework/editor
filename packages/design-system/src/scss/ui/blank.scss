@@ -1,0 +1,21 @@
+.elf--blank {
+
+    --elf--blank-width: 100%;
+    --elf--blank-height: 30px;
+    --elf--blank-background-color: transparent;
+
+    display: block;
+    position: relative;
+
+    width: var(--elf--blank-width);
+    height: var(--elf--blank-height);
+    background-color: var(--elf--blank-background-color);
+
+    &.default {
+        background: repeating-linear-gradient(45deg,
+                #606dbc,
+                #606dbc 10px,
+                #465298 10px,
+                #465298 20px);
+    }
+}

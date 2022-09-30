@@ -1,4 +1,4 @@
-import { isArray, isString } from "./func";
+import { isArray, isString, isValue } from "./func";
 import {
   createVNode,
   createVNodeComment,
@@ -65,7 +65,7 @@ export function createElement(Component, props, children = []) {
 }
 
 export function createElementJsx(Component, props = {}, ...children) {
-  children = children.filter(Boolean);
+  children = children.filter(isValue);
   // Fragment 는 자동으로 배열 형태로 리턴한다.
   if (Component === FragmentInstance) {
     return createComponentFragment(Component, props, children);

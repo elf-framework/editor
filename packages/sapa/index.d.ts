@@ -10,6 +10,7 @@ declare module "@elf-framework/sapa" {
   export function isBoolean(obj: any): boolean;
   export function isUndefined(obj: any): boolean;
   export function isEqual(obj1: any, obj2: any): boolean;
+  export function isValue(value: any): boolean;
 
   // event name regular expression
   export type EVENT = (...args: string[]) => string;
@@ -72,7 +73,9 @@ declare module "@elf-framework/sapa" {
 
   type CallbackFunction = (...args: string[]) => string;
   type DOM_EVENT_MAKE = (...keys: string[]) => CallbackFunction;
+  type PROPS_MAKE = (ref: string, ...args: string[]) => CallbackFunction;
 
+  export const PROPS: PROPS_MAKE;
   export const SUBSCRIBE: CallbackFunction;
   export const SUBSCRIBE_ALL: CallbackFunction;
   export const SUBSCRIBE_SELF: CallbackFunction;
@@ -137,20 +140,8 @@ declare module "@elf-framework/sapa" {
   export const POPSTATE: CallbackFunction;
   export const HASHCHANGE: CallbackFunction;
 
-  // Predefined LOADER
-
-  /**
-   * 특정 영역의 html 을 만들기 위한 함수
-   *
-   * @param [refName=$el] 업데이트 되기 위한 refName
-   * @returns {string}
-   */
-  export function LOAD(refName: string): string;
   export function OBSERVER(observerName: string): string;
   export function PARAMS(obj: KeyValue): string;
-  export function createRef(value: any): string;
-  export function getRef(id: string): any;
-  export function BIND(value: string, checkFieldOrCallback: string): string;
 
   type ClassNameType = string | object | Array<string | object>;
   export function classnames(...args: ClassNameType[]): string;
@@ -199,6 +190,7 @@ declare module "@elf-framework/sapa" {
     focus(): Dom;
     select(): Dom;
     blur(): Dom;
+    dispatchEvent(event: string, data: KeyValue): Dom;
 
     /* utility */
     fullscreen(): void;
@@ -469,21 +461,23 @@ declare module "@elf-framework/sapa" {
     | VNodeTextJSONType
     | VNodeFragmentJSONType
     | VNodeComponentJSONType;
-  export function jsonToVNode(json: JSONType): VNode;
 
-  type InitValueType =
-    | string
-    | number
-    | boolean
-    | undefined
-    | null
-    | unknown[]
-    | object
-    | unknown;
-
-  type UseStateValueType = InitValueType | (() => InitValueType);
+  interface ConvertOptions {
+    retrieveComponent: (component: ElementType, rest: JSONType) => ElementType;
+  }
+  export function jsonToVNode(json: JSONType, options?: ConvertOptions): VNode;
 
   /** Hooks */
+  export function createRef<T>(initializeValue: T): RefObject<T>;
+
+  export function useId(): string;
+  export function useBatch(callback: () => void): void;
+  export function useRender(): void;
+  export function useSyncExternalStore<T>(
+    subscribe: (callback: () => void) => () => void,
+    getSnapshot: () => T,
+    isEqual?: (a: T, b: T) => boolean
+  ): T;
   export function useState<T>(
     initializeValue: T | (() => T)
   ): [value: T, setValue: (value: T) => void];
@@ -504,12 +498,23 @@ declare module "@elf-framework/sapa" {
   export function useMemo<T>(callback: () => unknown, deps: unknown[]): T;
   export function useCallback<T>(callback: () => T, deps: unknown[]): () => T;
 
-  interface Ref<T> {
+  interface RefObject<T> {
     current: T;
   }
-  export function useRef<T>(initialValue: T): Ref<T>;
+  interface MutableRefObject<T> {
+    current: T;
+  }
+  export function useRef<T>(initialValue: T): MutableRefObject<T>;
+  export function useRef<T>(initialValue: T | null): RefObject<T>;
+  export function useRef<T = undefined>(): MutableRefObject<T | undefined>;
   export function useEmit(name: string, ...args: unknown[]): void;
   export function useTrigger(name: string, ...args: unknown[]): void;
+
+  type MagicMethodString = string;
+  export function useMagicMethod(
+    methodName: MagicMethodString,
+    callback: () => unknown
+  ): void;
 
   interface ProviderProps<T> {
     value: T;

@@ -220,7 +220,76 @@ function App() {
 }
 ```
 
+## useId 
 
+`useId` is used to generate a unique id.
+
+```jsx
+function App() {
+  const id = useId();
+
+  return (
+    <div id={id}>
+      <label for={id + '-label'}>Simple Label</label>
+      <input type="text" id={id + '-label'} />
+    </div>
+  );
+}
+```
+
+## useSyncExternalStore 
+
+`useSyncExternalStore` is used to synchronize external data.
+
+```jsx
+
+import { useSyncExternalStore } from "@elf-framework/ui";
+
+function subscribe(callback) {
+  window.addEventListener("online", callback);
+  window.addEventListener("offline", callback);
+  return () => {
+    window.removeEventListener("online", callback);
+    window.removeEventListener("offline", callback);
+  };
+}
+
+function useOnlineStatus() {
+  return useSyncExternalStore(subscribe, () => navigator.onLine);
+}
+
+function App() {
+  const isOnline = useOnlineStatus();
+
+  return <div>online : {isOnline ? "true" : "false" }</div>
+}
+
+```
+
+## useBatch 
+
+`useBatch` is used to batch update.
+
+```jsx
+function App() {
+  const [value, setValue] = useState(0);
+
+  function onClick() {
+    useBatch(() => {
+      setValue(value + 1);
+      setValue(value + 1);
+      setValue(value + 1);
+    });
+  }
+
+  return (
+    <div>
+      <div>{value}</div>
+      <button onClick={onClick}>Batch</button>
+    </div>
+  );
+}
+```
 
 # Class Component Hook 
 
@@ -276,6 +345,21 @@ function A ( ) {
 
   useSubscribe("message", () => {
     console.log("receive message");
+  })
+
+  return <div onClick={() => useEmit("message")}>Simple Text</div>
+}
+```
+
+## useRender 
+
+`useRender` is used to render a component.
+
+```jsx
+function A ( ) {
+
+  useSubscribe("message", () => {
+    useRender();
   })
 
   return <div onClick={() => useEmit("message")}>Simple Text</div>
@@ -341,7 +425,7 @@ function A ( ) {
 
   // rerender after background-color message received
   useSubscribe("background-color", () => {
-    this.render();
+    useRender();
   })
 
   return <div style={{
@@ -407,6 +491,10 @@ function App() {
 }
 ```
 
+## useMagicMethod 
+
+For instructions on how to use [useMagicMethod](/pages/sapa/magic-method/#Use%20-MagicMethod-%20with%20Hook120).
+
 # How to make custom hook
 
 Let's make a custom hook. It is very easy.
@@ -432,4 +520,31 @@ function App () {
   return <div>{value}</div>
 }
 
+```
+
+## useRootContext 
+
+In addition to the container, other data can also be set.
+
+Sapa calls this the rootContext.
+
+```jsx
+start(<Page {...pageProps} />, {
+  pageContext,
+  routeParams,
+});
+
+```
+
+To use it, do the following:
+
+```jsx
+import { useRootContext } from "@elf-framework/sapa";
+
+function OtherComponent () {
+  const pageContext = useRootContext('pageContext');
+  const routeParams = useRootContext('routeParams');
+
+  return <div>Other Component</div>
+}
 ```

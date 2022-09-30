@@ -1,0 +1,68 @@
+.elf--action-group {
+    --elf--action-group-gap: 10px;
+    --elf--action-group-align-items: flex-start;
+
+    display: flex;
+
+    flex-wrap: wrap;
+    gap: var(--elf--action-group-gap);
+
+    &.collapsed {
+        flex-wrap: nowrap;
+    }
+
+    &.horizontal {
+        flex-direction: row;
+    }
+
+    &.vertical {
+        flex-direction: column;
+        align-items: var(--elf--action-group-align-items);
+    }
+
+    &.compact {
+        gap: 0px !important;
+
+        .elf--button {
+            &:first-child {
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            &:last-child {
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+
+            &:not(:first-child) {
+                border-left: 0px;
+            }
+
+            &:not(:first-child):not(:last-child) {
+                border-radius: 0px;
+            }
+        }
+
+        &.rect {
+            .elf--button {
+                &:first-child {
+                    border-radius: 0px !important;
+                }
+    
+                &:last-child {
+                    border-radius: 0px !important;
+                }
+            }
+        }
+    }
+
+    &.justified {
+        display: flex;
+        justify-content: space-between;
+
+        > .elf--button {
+            flex: 1;
+        }
+    }
+
+} 

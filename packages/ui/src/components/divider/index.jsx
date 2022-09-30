@@ -1,18 +1,28 @@
 import { UIElement, classnames } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = {
-  color: "--elf--divider-color",
-  margin: "--elf--divider-margin",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--divider", {
+  color: true,
+  margin: true,
+});
 
 export class Divider extends UIElement {
   template() {
-    const { style = {}, type = "default", margin = "10px 0" } = this.props;
+    const {
+      style = {},
+      variant = "default",
+      size = "small",
+      margin = "10px",
+      orientation = "horizontal",
+    } = this.props;
     const styleObject = {
       class: classnames("elf--divider", {
-        [type]: true,
+        [size]: true,
+        [variant]: true,
+        [orientation]: true,
       }),
       style: {
         ...propertyMap(
@@ -32,3 +42,6 @@ export class Divider extends UIElement {
     );
   }
 }
+
+registerComponent("divider", Divider);
+registerComponent("Divider", Divider);

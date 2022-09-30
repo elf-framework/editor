@@ -6,12 +6,16 @@ import {
   IF,
   POINTERLEAVE,
   Dom,
+  useMemo,
+  FOCUS,
+  isString,
+  potal,
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
-const cssProperties = makeStyleMap("--elf--tooltip", {
+const cssProperties = makeCssVariablePrefixMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -23,12 +27,29 @@ const cssProperties = makeStyleMap("--elf--tooltip", {
   hgap: true,
   vgap: true,
   delay: true,
+  contentPadding: true,
+  maxWidth: true,
+  position: true,
 });
+
+export const TooltipPlacement = {
+  TOP: "top",
+  BOTTOM: "bottom",
+  LEFT: "left",
+  RIGHT: "right",
+  BOTTOM_LEFT: "bottom-left",
+  BOTTOM_RIGHT: "bottom-right",
+  TOP_LEFT: "top-left",
+  TOP_RIGHT: "top-right",
+};
 
 export class Tooltip extends UIElement {
   initState() {
+    const trigger = this.props.trigger || "hover";
+
     return {
-      trigger: this.props.trigger || "hover",
+      trigger: isString(trigger) ? [trigger] : trigger,
+      delay: 1000,
       show: this.props.show || false,
     };
   }
@@ -38,28 +59,51 @@ export class Tooltip extends UIElement {
       style = {},
       message = "",
       content,
-      position = "bottom",
+      placement = "bottom",
+      animated = false,
+      hideArrow = false,
+      variant = "default",
+      position = "relative",
+      icon,
     } = this.props;
     const { show } = this.state;
 
+    const localClass = useMemo(() => {
+      return classnames("elf--tooltip", {
+        [placement]: true,
+        animated,
+        [variant]: true,
+        [position]: true,
+      });
+    }, [placement, animated, variant, position]);
+
     const styleObject = {
-      class: classnames("elf--tooltip", `elf--tooltip-position-${position}`),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
-      <div class="elf--tooltip" {...styleObject}>
-        <div class="elf--tooltip-content">{content}</div>
+      <div {...styleObject}>
+        <div class="content">{content}</div>
         {show || this.props.show ? (
-          <div class="elf--tooltip-message">
-            <div class="arrow"></div>
-            <div class="elf--toolltip-message-content">{message}</div>
+          <div class="message">
+            {hideArrow ? undefined : <div class="arrow"></div>}
+            {icon ? <div class="icon">{icon}</div> : undefined}
+            <div class="message-content">
+              <div>{message}</div>
+            </div>
           </div>
         ) : undefined}
       </div>
     );
+  }
+
+  show() {
+    this.open();
+  }
+
+  hide() {
+    this.close();
   }
 
   open() {
@@ -69,9 +113,11 @@ export class Tooltip extends UIElement {
   }
 
   close() {
-    this.setState({
-      show: false,
-    });
+    setTimeout(() => {
+      this.setState({
+        show: false,
+      });
+    }, this.props.hideDelay);
   }
 
   toggle() {
@@ -81,7 +127,7 @@ export class Tooltip extends UIElement {
   }
 
   checkClickable(e) {
-    const $menu = Dom.create(e.target).closest("elf--tooltip");
+    const $menu = Dom.create(e.target).closest("elf--tooltip-content");
 
     // 메뉴가 클릭 될 때는 버튼 클릭으로 인식하지 않음.
     if ($menu) return false;
@@ -90,11 +136,15 @@ export class Tooltip extends UIElement {
   }
 
   checkTriggerClick() {
-    return this.state.trigger === "click";
+    return this.state.trigger.includes("click");
   }
 
   checkTriggerOver() {
-    return this.state.trigger === "hover";
+    return this.state.trigger.includes("hover");
+  }
+
+  checkTriggerFocus() {
+    return this.state.trigger.includes("focus");
   }
 
   [POINTERENTER("$el") + IF("checkTriggerOver")]() {
@@ -115,7 +165,39 @@ export class Tooltip extends UIElement {
     this.close();
   }
 
-  [CLICK("$el") + IF("checkClickable") + IF("checkTriggerClick")]() {
+  [CLICK("$el") + IF("checkTriggerClick")]() {
     this.toggle();
   }
+
+  [FOCUS("$el") + IF("checkTriggerFocus")]() {
+    this.open();
+  }
+
+  remove() {
+    this.$el.remove();
+  }
+}
+
+export function tooltip({
+  content,
+  message = "",
+  delay = 0,
+  position = "fixed",
+  placement = "top",
+  options = {},
+  style,
+}) {
+  return potal(
+    <Tooltip
+      delay={delay}
+      position={position}
+      placement={placement}
+      message={message}
+      style={style}
+      show={true}
+    >
+      {content || <span>&nbsp;</span>}
+    </Tooltip>,
+    options
+  );
 }

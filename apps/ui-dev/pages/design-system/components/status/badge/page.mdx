@@ -1,0 +1,56 @@
+---
+title: Badge
+layout: DesignLayout
+filename: pages/design-system/status/badge/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/status/badge/MainView.jsx"; 
+import { IconView } from "../../../../../component/status/badge/IconView.jsx"; 
+import { DisabledView } from "../../../../../component/status/badge/DisabledView.jsx"; 
+import { LabelView } from "../../../../../component/status/badge/LabelView.jsx"; 
+// import { RemovableView } from "../../../../../component/status/badge/RemovableView.jsx"; 
+import { SizeView } from "../../../../../component/status/badge/SizeView.jsx"; 
+import { VariantView } from "../../../../../component/status/badge/VariantView.jsx"; 
+import { FixedView } from "../../../../../component/status/badge/FixedView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Similar to status lights, badges are for showing a small amount of color-categorized metadata. They're ideal for getting a user's attention.
+
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/badge/" />
+</div>
+
+## Options 
+
+### Label
+
+<LabelView />
+
+### Icon
+
+<IconView />
+
+### Size
+
+<SizeView />
+
+### Semantic Variants 
+
+<VariantView />
+
+
+### Fixed
+
+<FixedView />
+
+### Disabled
+
+<DisabledView />
+

@@ -1,0 +1,59 @@
+---
+title: Progress Circle
+layout: DesignLayout
+filename: pages/design-system/status/progresscircle/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/status/progresscircle/MainView.jsx"; 
+import { IndeterminateView } from "../../../../../component/status/progresscircle/IndeterminateView.jsx"; 
+import { SpinView } from "../../../../../component/status/progresscircle/SpinView.jsx"; 
+import { DisabledView } from "../../../../../component/status/progresscircle/DisabledView.jsx"; 
+import { DefaultVariantView } from "../../../../../component/status/progresscircle/DefaultVariantView.jsx"; 
+import { OverBackgroundVariantView } from "../../../../../component/status/progresscircle/OverBackgroundVariantView.jsx"; 
+import { SizeView } from "../../../../../component/status/progresscircle/SizeView.jsx"; 
+import { WidthView } from "../../../../../component/status/progresscircle/WidthView.jsx"; 
+import { ValueView } from "../../../../../component/status/progresscircle/ValueView.jsx"; 
+import { MinMaxValueView } from "../../../../../component/status/progresscircle/MinMaxValueView.jsx"; 
+import { VariantView } from "../../../../../component/status/progresscircle/VariantView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Progress circles show the progression of a system operation such as downloading, uploading, processing, etc. in a visual way. They can represent determinate or indeterminate progress.
+
+<MainView />
+
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/progresscircle/" />
+</div>
+
+## Options 
+
+### Default variant
+
+<DefaultVariantView />
+
+### Over background variant
+
+<OverBackgroundVariantView />
+
+### Value, min value, max value
+<MinMaxValueView />
+
+### Size
+
+<SizeView />
+
+
+### Indeterminate
+
+<IndeterminateView />
+
+
+### spin animation
+
+<SpinView />
+
+

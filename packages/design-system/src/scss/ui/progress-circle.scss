@@ -1,0 +1,146 @@
+
+.elf--progress-circle {
+  --elf--progress-circle-width: 30px;
+  --elf--progress-circle-padding: 2px;
+  --elf--progress-circle-track-color: var(--color-gray-2);
+  --elf--progress-circle-active-color: var(--color-black);
+  --elf--progress-circle-color: var(--color-black);
+  --elf--progress-circle-duration: 3s;
+  --elf--progress-circle-bar-height: 3px;
+  --elf--progress-circle-animation: none;
+  --elf--progress-circle-determinate-animation: progress-circle-one var(--elf--progress-circle-duration) ease-in-out infinite;
+  --elf--progress-circle-spin-animation: spin var(--elf--progress-circle-duration) linear infinite;
+  --elf--progress-circle-indeterminate-animation: progress-circle var(--elf--progress-circle-duration) ease-in-out infinite, spin var(--elf--progress-circle-duration) ease-in-out infinite;
+  --elf--progress-circle-offset: 0%;
+
+
+  display: inline-block;
+  width: var(--elf--progress-circle-width);
+  height: var(--elf--progress-circle-width);
+  box-sizing: border-box;
+  padding: var(--elf--progress-circle-padding);
+  vertical-align: middle;
+
+
+  /** size **/
+  &.small {
+    --elf--progress-circle-width: 20px;
+    --elf--progress-circle-bar-height: 2px;
+  }
+
+  &.medium {
+    --elf--progress-circle-width: 24px;
+    --elf--progress-circle-bar-height: 3px;
+  }
+
+  &.large {
+    --elf--progress-circle-width: 50px;
+    --elf--progress-circle-bar-height: 4px;
+  }
+
+  &.extra-large {
+    --elf--progress-circle-width: 60px;
+    --elf--progress-circle-bar-height: 5px;
+  }
+
+  /** variant **/
+  &.primary {
+    --elf--progress-circle-active-color: var(--color-primary);
+  }
+
+  &.secondary {
+    --elf--progress-circle-active-color: var(--color-secondary);
+  }
+
+  &.success {
+    --elf--progress-circle-active-color: var(--color-success);
+  }
+
+  &.warning {
+    --elf--progress-circle-active-color: var(--color-warning);
+  }
+
+  &.danger {
+    --elf--progress-circle-active-color: var(--color-danger);
+  }
+
+  &.info {
+    --elf--progress-circle-active-color: var(--color-info);
+  }
+
+  &.dark {
+    --elf--progress-circle-active-color: var(--color-white);
+    --elf--progress-circle-track-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &.indeterminate {
+    --elf--progress-circle-animation: var(--elf--progress-circle-indeterminate-animation);
+    > .progress-area {
+      .fill {
+        stroke-dasharray: 0 200;
+        animation: var(--elf--progress-circle-animation);
+      }
+    }
+
+  }
+
+  &:not(.indeterminate) {
+
+    // calculate svg circle size  (width - bar-height) is circle raidus
+    --progress-circle-size: calc(var(--elf--progress-circle-width) - var(--elf--progress-circle-bar-height));
+    --progress-total-length: calc(var(--progress-circle-size) * var(--math-pi));
+    --progress-gauge: calc(var(--progress-total-length) * var(--elf--progress-circle-offset));          
+    &.animated {
+      --elf--progress-circle-animation: var(--elf--progress-circle-determinate-animation);
+
+      &.spin {
+        --elf--progress-circle-animation: var(--elf--progress-circle-spin-animation);
+      }
+
+      > .progress-area{
+        .fill {
+          animation: var(--elf--progress-circle-animation);
+        }
+      }
+    }
+
+    > .progress-area{
+      .fill {
+
+        stroke: var(--elf--progress-circle-active-color);
+        stroke-dasharray: var(--progress-gauge) calc(var(--progress-total-length) - var(--progress-gauge));
+        transform-origin: 50% 50%;
+        rotate: -90deg;
+      }
+
+    }
+  }
+
+  > .progress-area {
+    width: 100%;
+    height: 100%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+
+
+      circle {
+
+        &.track {
+          stroke: var(--elf--progress-circle-track-color);          
+        }
+
+        &.fill {
+          stroke: var(--elf--progress-circle-active-color);
+          transform-origin: 50% 50%;
+        }
+
+        stroke: var(--elf--progress-circle-active-color);
+        stroke-width: var(--elf--progress-circle-bar-height);
+        fill: none;
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@ import {
   ADD_BODY_MOUSEUP,
   BODY_MOVE_EVENT,
 } from "../../consts";
+import { registerComponent } from "../../utils/component";
 
 const EMPTY_POS = { x: 0, y: 0 };
 const DEFAULT_POS = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
@@ -148,3 +149,7 @@ export class EventPanel extends UIElement {
     this.__requestId = null;
   }
 }
+
+registerComponent("event-panel", EventPanel);
+registerComponent("EventPanel", EventPanel);
+registerComponent("eventpanel", EventPanel);

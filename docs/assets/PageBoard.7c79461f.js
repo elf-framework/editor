@@ -1,0 +1,1 @@
+import{c as a}from"./Version.10c83006.js";import{L as u,M as s}from"./LayoutManager.fca90247.js";function g({layout:r,page:t,filename:e}){const o=u.get(r||"SapaLayout");return a(o,null,n=>a(s,{page:t,filename:e,menu:n}))}export{g as P};

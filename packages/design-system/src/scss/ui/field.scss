@@ -1,0 +1,92 @@
+.elf--field {
+    --elf--field-width: 200px;
+    --elf--field-label-color: var(--color-gray-6);
+    --elf--field-label-font-size: 12px;
+
+    display: flex;
+    flex-direction: column;
+    width: var(--elf--field-width);
+    gap: 4px;
+
+    > * {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    &.disabled {
+        > label {
+            --elf--field-label-color: var(--color-gray-4);
+        }
+    }
+
+    &.small {
+        --elf--field-label-font-size: 11px;
+    }
+
+    &.medium {
+        --elf--field-label-font-size: 13px;
+    }
+
+    &.large {
+        --elf--field-label-font-size: 13px;
+    }
+
+    &.extra-large {
+        --elf--field-label-font-size: 15px;
+    }
+
+
+
+    > label {
+        font-size: var(--elf--field-label-font-size);
+        color: var(--elf--field-label-color);
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    &.horizontal {
+        flex-direction: row;
+
+        > * {
+            flex: 2;
+        }
+
+        > label {
+            flex: 1;
+            align-items: flex-start;
+        }
+
+    }
+
+    > .field-area {
+        > .field-area-content {
+            position: relative;
+
+            > .valid-icon {
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                color: var(--color-success);
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            > .invalid-icon {
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                color: var(--color-danger);
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}

@@ -1,17 +1,22 @@
 .table-of-contents {
     display: block;
     position: relative;
-    width: 200px;
-    flex-grow: 1;
     padding-left: 32px;
     width: 100%;
-    max-width: 256px;    
+    max-width: 256px;  
+    overflow: auto;  
+    height: 700px;
 
     > .items {
-        position: sticky;
+        position: fixed;
         top: 130px;
 
         --data-level: 10px;
+
+        > .title {
+            padding-left: 0px;
+            font-size: 20px;
+        }
 
         > * {
             display: block;
@@ -48,6 +53,11 @@
 
         > [data-level="6"] {
             padding-left: calc(var(--data-level) * 5);
+        }
+
+        > .selected {
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
         
 

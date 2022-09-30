@@ -1,63 +1,61 @@
 ---
-title: DOM
+title: Handler
 layout: SapaLayout
-filename: pages/sapa/dom/page.mdx
+filename: pages/sapa/handler/page.mdx
 ---
-
-import { Grid } from "@elf-framework/ui";
-import { Diagram } from "../../../utils/Diagram";
-
 
 # {title}
 
-Sapa provides several functions to easily manipulate the dom used in the component.
+Sapa provides Handler as a technology to extend components.
 
-## Root Element - $el
+* `StoreHandler` - Handler to deal with MagicMethod for store
+* `DomEventHandler` - Handler to deal with MagicMethod for dom event
+* `PropsHandler` - Handler to deal with MagicMethod for props
+* `ObserverHandler` - Handler to deal with MagicMethod for dom observer
 
-After the component is rendered, the $el field becomes active.
+# How to make my own handler 
 
+You can make your own handler.
 
-```jsx
-class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.$el.hasClass('root-element')) {
-        console.log("check root element");
-      }
-    }}>Simple Text</div>
-  }
-}
-```
+Handler allows components to be extended externally by using three functions: `initialize`, `update`, and `destroy`.
 
-## ref
+Handler is managed for each component instance.
 
-A specific element can be directly referenced through the `ref` attribute.
-
-Elements defined as ref can be brought to `this.refs`.
 
 ```jsx
-class A extends UIElement {
-  template() {
-    return <div class="root-element" onClick={() => {
-      if (this.refs.$sender) {
-        console.log("It has send button element");
-      }
-    }}>
-      <button ref="$sender">Simple Button</button>
-    </div>
+import { BaseHandler } from "@elf-framework/sapa";
+
+registHandler({
+  myHandler: class MyHandler extends BaseHandler {
+    // mounted
+    initialize () {
+      // context is a component instance.
+      // $el is <div>Simple Text</div>
+      console.log(this.context.$el);
+
+      this.context.$el.on("click", (e) => {
+        console.log(e);
+      })
+    }
+
+    // updated
+    update () {
+
+    }
+
+    // destroyed
+    destroy() {
+
+    }
   }
+})
+
+function MyComponent () {
+  return <div>Simple Text</div>
 }
+
+start(MyComponent);
+
 ```
 
-## Dom Class
-
-유틸리티 기본 정리 
-
-나머지는 API 쪽에서 하는것으로 하자.
-
-## DOM Event 
-
-### attribute 
-
-### magic method 
-
+The handler code will be helpful [here](https://github.com/elf-framework/editor/tree/develop/packages/sapa/src/handler)

@@ -1,29 +1,36 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
-import { makeStyleMap } from "../../utils/styleKeys";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Tools } from "../tools/index";
 
-function makeToolbarItem(items = []) {
+function makeToolbarItem(items = [], options = {}) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
 
-    return <ToolbarItem ref={ref} {...it} />;
+    return <ToolbarItem ref={ref} {...it} {...options} />;
   });
 }
 
 export class ToolbarItem extends UIElement {
   template() {
-    const { items, style } = this.props;
+    const { items, style, emphasized, moreIcon } = this.props;
+
     return (
       <div class="elf--toolbar-item">
-        <Tools ref="$tools" items={items} style={style} />
+        <Tools
+          items={items}
+          style={style}
+          emphasized={emphasized}
+          moreIcon={moreIcon}
+        />
       </div>
     );
   }
 }
 
-const cssProperties = makeStyleMap("--elf--toolbar", {
+const cssProperties = makeCssVariablePrefixMap("--elf--toolbar", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -32,21 +39,43 @@ const cssProperties = makeStyleMap("--elf--toolbar", {
 
 export class Toolbar extends UIElement {
   template() {
-    const { style = {}, align, items = [] } = this.props;
+    const {
+      style = {},
+      align = "space-between",
+      variant = "default",
+      rounded = false,
+      emphasized = false,
+      items = [],
+      class: className,
+    } = this.props;
+
+    const localClass = useMemo(() => {
+      return classnames(
+        "elf--toolbar",
+        {
+          [align]: true,
+          rounded,
+          emphasized,
+          [variant]: true,
+        },
+        className
+      );
+    }, [align, variant, rounded, emphasized, className]);
 
     const styleObject = {
-      class: classnames("elf--toolbar", {
-        [align]: true,
-      }),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(style, cssProperties),
     };
 
     return (
       <div {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {makeToolbarItem(items)}
+        {makeToolbarItem(items, {
+          emphasized,
+        })}
       </div>
     );
   }
 }
+
+registerComponent("toolbar", Toolbar);
+registerComponent("Toolbar", Toolbar);

@@ -82,6 +82,56 @@ export function contrastColor(c) {
   return contrast(c) >= 128 ? "black" : "white";
 }
 
+// param: array [R, G, B]
+export function luminance(r, g, b) {
+  r = r / 255;
+  g = g / 255;
+  b = b / 255;
+
+  r = r < 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);
+  g = g < 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4);
+  b = b < 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4);
+
+  return r * 0.2126 + g * 0.7152 + b * 0.0722;
+}
+
+export function contrastRatio(color1, color2) {
+  color1 = parse(color1);
+  color2 = parse(color2);
+
+  const lum1 = luminance(color1.r, color1.g, color1.b);
+  const lum2 = luminance(color2.r, color2.g, color2.b);
+
+  return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+}
+
+/**
+ *
+ * Fail
+ *   – Your text doesn't have enough contrast with the background. You probably want to make it darker. This is a score of less than 3.0.
+ * AA Large
+ *   – The smallest acceptable amount of contrast for type sizes of 18pt and larger. This is a score of at least 3.0.
+ * AA
+ *   – This is the sweet spot for text sizes below ~18pt. This is a score of at least 4.5.
+ * AAA
+ *   – This is enhanced contrast with a score of at least 7.0. Think longer form articles that will be read for a significant period of time.
+ */
+export function contrastScore(contrast) {
+  if (contrast >= 7) {
+    return "AAA";
+  }
+
+  if (contrast >= 4.5) {
+    return "AA";
+  }
+
+  if (contrast >= 3) {
+    return "AA Large";
+  }
+
+  return "Fail";
+}
+
 export function gradient(colors, count = 10) {
   colors = parseGradient(colors);
 

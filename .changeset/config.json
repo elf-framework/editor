@@ -5,17 +5,17 @@
   "linked": [
     [
       "@elf-framework/base-editor",
+      "@elf-framework/ui",      
       "@elf-framework/color",
-      "@elf-framework/design-system",
-      "@elf-framework/design-tokens",
-      "@elf-framework/sapa",
       "@elf-framework/sapa-router",
-      "@elf-framework/ui",
-      "vite-plugin-sapa"
+      "vite-plugin-sapa",
+      "@elf-framework/sapa",      
+      "@elf-framework/design-system",
+      "@elf-framework/design-tokens"            
     ]
   ],
   "access": "public",
-  "baseBranch": "v-dom-3",
+  "baseBranch": "develop",
   "updateInternalDependencies": "patch",
   "ignore": [],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {

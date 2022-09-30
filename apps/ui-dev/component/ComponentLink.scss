@@ -1,0 +1,51 @@
+.component-link {
+    --component-link-color: var(--color-blue-5);
+    border: 2px solid var(--component-link-color);
+
+    display: flex;
+
+    width: 224px;
+    height: 64px;
+    box-sizing: border-box;
+    // border-radius: 2px;
+    overflow: hidden;
+    text-decoration: none !important;
+    // box-shadow: 5px 5px 0px 1px var(--component-link-color);
+    .component-link-icon {
+        width: 64px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        font-weight: 700;
+        color: var(--color-white);
+        font-size: var(--font-size-small);
+        background-color: var(--component-link-color);
+        // display: none;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .component-link-title {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;        
+        padding: 0px 12px;
+
+        .title {
+            margin: 2px 0px;
+            font-size: 14px;
+
+        }
+
+        .description {
+            color: var(--color-gray-6);
+            font-size: 12px;
+        }
+    }
+}

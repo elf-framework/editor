@@ -157,6 +157,10 @@ export function isFunction(value) {
   return typeof value == "function";
 }
 
+export function isValue(value) {
+  return value !== undefined && value !== null;
+}
+
 export function isNumber(value) {
   return typeof value == "number";
 }

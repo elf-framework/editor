@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 18 Aug 2022 13:00:11 GMT
+ * Generated on Fri, 30 Sep 2022 06:58:07 GMT
  */
 
 export default tokens;
@@ -46,25 +46,160 @@ declare const tokens: {
         "info": DesignToken
       }
     },
-    "border": {
+    "border": DesignToken,
+    "default": DesignToken,
+    "primary": DesignToken,
+    "secondary": DesignToken,
+    "success": DesignToken,
+    "danger": DesignToken,
+    "warning": DesignToken,
+    "info": DesignToken,
+    "disabled": DesignToken,
+    "hover": {
+      "default": DesignToken,
+      "dark": DesignToken,
+      "primary": DesignToken,
+      "secondary": DesignToken,
+      "success": DesignToken,
+      "danger": DesignToken,
+      "warning": DesignToken,
+      "info": DesignToken
+    },
+    "down": {
       "default": DesignToken,
       "primary": DesignToken,
       "secondary": DesignToken,
+      "success": DesignToken,
       "danger": DesignToken,
       "warning": DesignToken,
-      "success": DesignToken,
       "info": DesignToken
     },
-    "brand": {
-      "primary": DesignToken,
-      "secondary": DesignToken,
-      "danger": DesignToken,
-      "warning": DesignToken,
-      "success": DesignToken,
-      "info": DesignToken
+    "status": {
+      "informative": DesignToken,
+      "neutral": DesignToken,
+      "positive": DesignToken,
+      "notice": DesignToken,
+      "negative": DesignToken,
+      "indigo": DesignToken,
+      "celery": DesignToken,
+      "yellow": DesignToken,
+      "magenta": DesignToken,
+      "fuchsia": DesignToken,
+      "purple": DesignToken,
+      "seafoam": DesignToken
     },
-    "core": {
-      "red": {
+    "red": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "orange": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "yellow": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "green": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "blue": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "purple": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "pink": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "gray": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "teal": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
+    "black": DesignToken,
+    "white": DesignToken,
+    "transparent": {
+      "black": {
         "0": DesignToken,
         "1": DesignToken,
         "2": DesignToken,
@@ -74,9 +209,10 @@ declare const tokens: {
         "6": DesignToken,
         "7": DesignToken,
         "8": DesignToken,
-        "9": DesignToken
+        "9": DesignToken,
+        "10": DesignToken
       },
-      "orange": {
+      "white": {
         "0": DesignToken,
         "1": DesignToken,
         "2": DesignToken,
@@ -86,105 +222,22 @@ declare const tokens: {
         "6": DesignToken,
         "7": DesignToken,
         "8": DesignToken,
-        "9": DesignToken
-      },
-      "yellow": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "green": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "blue": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "purple": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "pink": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "gray": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "newtral": {
-        "0": DesignToken,
-        "1": DesignToken,
-        "2": DesignToken,
-        "3": DesignToken,
-        "4": DesignToken,
-        "5": DesignToken,
-        "6": DesignToken,
-        "7": DesignToken,
-        "8": DesignToken,
-        "9": DesignToken
-      },
-      "black": DesignToken,
-      "white": DesignToken
+        "9": DesignToken,
+        "10": DesignToken
+      }
     },
     "text": {
       "default": DesignToken,
       "primary": DesignToken,
       "secondary": DesignToken,
+      "success": DesignToken,
       "danger": DesignToken,
       "warning": DesignToken,
-      "success": DesignToken,
       "info": DesignToken,
-      "inverse": DesignToken,
-      "link": DesignToken
+      "title": DesignToken,
+      "subtitle": DesignToken,
+      "link": DesignToken,
+      "disabled": DesignToken
     }
   },
   "alert": {
@@ -209,6 +262,7 @@ declare const tokens: {
       },
       "content": {
         "default": DesignToken,
+        "dark": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
         "danger": DesignToken,
@@ -227,6 +281,7 @@ declare const tokens: {
       },
       "background": {
         "default": DesignToken,
+        "dark": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
@@ -245,7 +300,32 @@ declare const tokens: {
       }
     }
   },
+  "avatar": {
+    "size": {
+      "30": DesignToken,
+      "50": DesignToken,
+      "100": DesignToken,
+      "200": DesignToken,
+      "300": DesignToken,
+      "400": DesignToken,
+      "500": DesignToken,
+      "600": DesignToken,
+      "700": DesignToken
+    }
+  },
   "button": {
+    "closable": {
+      "hover": {
+        "background": {
+          "default": DesignToken
+        }
+      }
+    },
+    "hover": {
+      "background": {
+        "default": DesignToken
+      }
+    },
     "selected": {
       "background": {
         "default": DesignToken
@@ -253,6 +333,9 @@ declare const tokens: {
     },
     "disabled": {
       "background": {
+        "default": DesignToken
+      },
+      "border": {
         "default": DesignToken
       },
       "text": {
@@ -267,7 +350,8 @@ declare const tokens: {
         "success": DesignToken,
         "info": DesignToken,
         "warning": DesignToken,
-        "danger": DesignToken
+        "danger": DesignToken,
+        "dark": DesignToken
       },
       "border": {
         "default": DesignToken,
@@ -276,7 +360,8 @@ declare const tokens: {
         "success": DesignToken,
         "info": DesignToken,
         "warning": DesignToken,
-        "danger": DesignToken
+        "danger": DesignToken,
+        "dark": DesignToken
       }
     },
     "size": {
@@ -299,6 +384,87 @@ declare const tokens: {
         "danger": DesignToken
       }
     }
+  },
+  "shadow": {
+    "1": DesignToken,
+    "2": DesignToken,
+    "3": DesignToken,
+    "4": DesignToken,
+    "5": DesignToken,
+    "none": DesignToken,
+    "color": DesignToken
+  },
+  "column": {
+    "1": DesignToken,
+    "2": DesignToken,
+    "3": DesignToken,
+    "4": DesignToken,
+    "5": DesignToken,
+    "6": DesignToken,
+    "7": DesignToken,
+    "8": DesignToken,
+    "9": DesignToken,
+    "10": DesignToken,
+    "11": DesignToken,
+    "12": DesignToken
+  },
+  "gap": {
+    "8": DesignToken,
+    "16": DesignToken,
+    "24": DesignToken,
+    "32": DesignToken,
+    "40": DesignToken,
+    "48": DesignToken
+  },
+  "spacing": {
+    "0": DesignToken,
+    "1": DesignToken,
+    "2": DesignToken,
+    "3": DesignToken,
+    "4": DesignToken,
+    "5": DesignToken,
+    "6": DesignToken,
+    "7": DesignToken,
+    "8": DesignToken,
+    "size": {
+      "xxxs": DesignToken,
+      "xxs": DesignToken,
+      "xs": DesignToken,
+      "sm": DesignToken,
+      "md": DesignToken,
+      "lg": DesignToken,
+      "xl": DesignToken,
+      "xxl": DesignToken,
+      "xxxl": DesignToken
+    }
+  },
+  "z-index": {
+    "0": DesignToken,
+    "10": DesignToken,
+    "20": DesignToken,
+    "30": DesignToken,
+    "40": DesignToken,
+    "50": DesignToken,
+    "100": DesignToken,
+    "200": DesignToken,
+    "300": DesignToken,
+    "400": DesignToken,
+    "500": DesignToken,
+    "1000": DesignToken,
+    "2000": DesignToken,
+    "3000": DesignToken,
+    "4000": DesignToken,
+    "5000": DesignToken,
+    "10000": DesignToken,
+    "20000": DesignToken,
+    "30000": DesignToken,
+    "40000": DesignToken,
+    "50000": DesignToken,
+    "tooltip": DesignToken,
+    "menu": DesignToken
+  },
+  "math": {
+    "pi": DesignToken
   },
   "size": {
     "base": {
@@ -332,8 +498,10 @@ declare const tokens: {
         "medium": DesignToken,
         "large": DesignToken
       }
-    },
-    "font": {
+    }
+  },
+  "font": {
+    "size": {
       "50": DesignToken,
       "75": DesignToken,
       "100": DesignToken,
@@ -348,29 +516,37 @@ declare const tokens: {
       "1000": DesignToken,
       "1100": DesignToken,
       "1200": DesignToken,
-      "1300": DesignToken
+      "1300": DesignToken,
+      "h1": DesignToken,
+      "h2": DesignToken,
+      "h3": DesignToken,
+      "h4": DesignToken,
+      "h5": DesignToken,
+      "h6": DesignToken,
+      "small": DesignToken,
+      "medium": DesignToken,
+      "large": DesignToken,
+      "extra-large": DesignToken
     },
-    "padding": {
+    "weight": {
+      "thin": DesignToken,
+      "light": DesignToken,
+      "regular": DesignToken,
+      "medium": DesignToken,
+      "semibold": DesignToken,
+      "bold": DesignToken,
+      "extrabold": DesignToken,
+      "black": DesignToken
+    }
+  },
+  "padding": {
+    "size": {
       "xs": DesignToken,
       "small": DesignToken,
       "medium": DesignToken,
       "large": DesignToken,
       "xl": DesignToken,
       "xxl": DesignToken
-    },
-    "spacing": {
-      "50": DesignToken,
-      "75": DesignToken,
-      "100": DesignToken,
-      "200": DesignToken,
-      "300": DesignToken,
-      "400": DesignToken,
-      "500": DesignToken,
-      "600": DesignToken,
-      "700": DesignToken,
-      "800": DesignToken,
-      "900": DesignToken,
-      "1000": DesignToken
     }
   },
   "time": {
@@ -385,13 +561,6 @@ declare const tokens: {
       "800": DesignToken,
       "900": DesignToken,
       "1000": DesignToken
-    }
-  },
-  "weight": {
-    "font": {
-      "normal": DesignToken,
-      "semibold": DesignToken,
-      "bold": DesignToken
     }
   }
 }

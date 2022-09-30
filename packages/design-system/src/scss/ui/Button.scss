@@ -1,26 +1,72 @@
 .elf--button {
   --elf--button-border-color: var(--button-color-border-default);
-  --elf--button-padding: var(--button-size-padding-medium);
+  --elf--button-padding: 6px;
+  --elf--button-height: 20px;
+  --elf--button-side-padding: calc(var(--elf--button-padding) + 2px);
   --elf--button-font-size: var(--elf--font-size, 14px);
   --elf--button-background-color: var(
     --button-color-background-default
   );
-  --elf--button-color: rgba(0, 0, 0, 0.8);
-  --elf--button-border-radius: 4px;
+  --elf--button-border-width: 1px;
+  --elf--button-color: var(--color-transparent-black-8);
+  --elf--button-border-radius: 6px;
   --elf--button-disabled-color: var(--elf--disabled-color);
-  --elf--button-inner-gap: 10px;
+  --elf--button-inner-gap: 6px;
   --elf--button-selected-background-color: var(--button-selected-background-default);
   --elf--button-selected-border-color: var(--button-selected-background-default);
+  --elf--button-hover-background-color: var(--button-hover-background-default);
+
+  --elf--button-closable-hover-background-color: var(--button-closable-hover-background-default);
 
   // height: var(--elf--button-height, 30px);
-  padding: var(--elf--button-padding);
+  padding: var(--elf--button-padding) var(--elf--button-side-padding);
   border-radius: var(--elf--button-border-radius);
-  line-height: 16px;
   font-size: var(--elf--button-font-size);
   background-color: var(--elf--button-background-color);
   color: var(--elf--button-color);
-  border: 1px solid var(--elf--button-border-color);
+  border: var(--elf--button-border-width) solid var(--elf--button-border-color);
   cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: var(--elf--button-height);
+
+
+  &.has-min-width {
+    min-width: calc(var(--elf--button-height) * 2.25);
+  }
+
+
+  .elf--icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.closable {
+    border:1px solid white;
+
+    span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+    &:hover {
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        // width: 20px;
+        background-color: var(--elf--button-closable-hover-background-color);
+        border-radius: 50%;
+      }
+    }
+  }
 
   &.selected {
     background-color: var(--elf--button-selected-background-color);
@@ -62,19 +108,84 @@
 
   &.large {
     --elf--button-font-size: 16px;
-    --elf--button-padding: var(--button-size-padding-large);
+    --elf--button-padding: 10px;
   }
+
+  &.extra-large {
+    --elf--button-font-size: 20px;
+    --elf--button-padding: 14px;
+    --elf--button-side-padding: calc(var(--elf--button-padding) + 2px);
+  }
+
 
   &.small {
     --elf--button-font-size: 12px;
-    --elf--button-padding: var(--button-size-padding-small);
+    --elf--button-padding: 3px;
+    --elf--button-side-padding: 3px;
+    --elf--button-inner-gap: 4px;
+    --elf--button-height: 30px;
   }
 
-  &.elf--button-shape-round {
-    --elf--button-border-radius: 8px;
+  &.medium {
+    --elf--button-height: 36px;
   }
 
-  &.elf--button-shape-circle {
+  &.large {
+    --elf--button-height: 50px;
+
+    .elf--progress-circle {
+      --elf--progress-circle-width: 30px;
+    }    
+  }
+
+  &.extra-large {
+    --elf--button-height: 60px;
+
+    .elf--progress-circle {
+      --elf--progress-circle-width: 40px;
+    }
+  }
+
+  &.justified {
+    width: 100%;
+  }
+
+  &.square,
+  &.rect {
+    --elf--button-border-radius: 0px;
+  }
+
+  &.icon-only {
+    padding-left: 6px;
+    padding-right: 6px;
+    min-width: 0 !important;
+    width: var(--elf--button-height);
+  }  
+
+  &.round {
+    padding-left: 14px;
+    padding-right: 14px;
+    --elf--button-border-radius: 20px;
+
+    &.small {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    &.large {
+      padding-left: 20px;
+      padding-right: 20px;
+      --elf--button-border-radius: 100px;
+    }
+
+    &.extra-large {
+      padding-left: 30px;
+      padding-right: 30px;
+      --elf--button-border-radius: 100px;
+    }
+  }
+
+  &.circle {
     --elf--button-border-radius: 50%;
   }
 
@@ -89,27 +200,51 @@
     &.quiet {
         --elf--button-background-color: transparent !important;
     }
+
+    &.outline {
+      --elf--button-background-color: transparent !important;
+      --elf--button-border-color: var(--button-disabled-border-default) !important;
+    }
   }
 
   &:hover,
   &.hover {
-    --elf--button-background-color: rgba(0, 0, 0, 0.06);
+    --elf--button-background-color: var(--elf--button-hover-background-color);
   }
+
+  &:active,
+  &.active {
+    &.primary {
+        --elf--button-background-color: var(--color-down-primary);
+    }
+    --elf--button-background-color: rgba(0, 0, 0, 0.1);
+  }  
+
+  &:focus,
+  &.focused {
+
+    &:not(.default) {
+      border-color: var(--color-white);
+      outline: 2px solid var(--elf--button-border-color);
+    } 
+
+  }    
 
   &.primary {
     --elf--button-background-color: var(
       --button-color-background-primary
     );
-    --elf--button-color: white;
-    border-width: 0px;
-
-    &.focus {
-      --elf--button-border-color: rgba(0, 0, 0, 0.3);
-      border-width: 2px;
-    }
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-border-primary);
 
     &[disabled] {
       --elf--button-background-color: var(--elf--disabled-color);
+    }
+
+    &:hover {
+      --elf--button-background-color: var(
+        --color-blue-7
+      );
     }
   }
 
@@ -117,8 +252,8 @@
     --elf--button-background-color: var(
       --button-color-background-secondary
     );
-    --elf--button-color: white;
-    border: 0px solid var(--elf--button-border-color);
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-border-secondary);
 
     &[disabled] {
       --elf--button-background-color: var(--elf--disabled-color);
@@ -129,45 +264,68 @@
     --elf--button-background-color: var(
       --button-color-background-success
     );
-    --elf--button-color: white;
-    border-width: 0px;
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-background-success);
   }
 
   &.danger {
     --elf--button-background-color: var(
       --button-color-background-danger
     );
-    --elf--button-color: white;
-    border-width: 0px;
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-border-danger);
   }
 
   &.info {
     --elf--button-background-color: var(
       --button-color-background-info
     );
-    --elf--button-color: white;
-    border-width: 0px;
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-border-info);
   }
 
   &.warning {
     --elf--button-background-color: var(
       --button-color-background-warning
     );
-    --elf--button-color: white;
-    border-width: 0px;
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-border-warning);    
   }
 
-  &.outline {
+  &.dark {
     --elf--button-background-color: var(
-      --button-color-background-default
+      --button-color-background-dark
     );
-    border-width: 1px;
+    --elf--button-color: var(--color-white);
+    --elf--button-border-color: var(--button-color-border-dark);    
+  }  
+
+  &.outline {
+    --elf--button-background-color: inherit;
+    --elf--button-border-color: var(--elf--button-color);
+    --elf--button-border-width: 2px;
+    // border-width: 1px;
+    font-weight: bold;
+    // color: inherit;
+
+
+    &.toast {
+      --elf--button-color: var(--color-white) !important;
+      --elf--button-background-color: inherit !important;
+    }
 
     &.primary {
       --elf--button-border-color: var(--button-color-border-primary);
       --elf--button-color: var(
         --button-color-background-primary
       );
+
+      &:hover {
+        --elf--button-background-color: var(
+          --button-color-background-primary
+        ) !important;
+        --elf--button-color: var(--color-white);
+      }
     }
 
     &.secondary {
@@ -196,6 +354,12 @@
       --elf--button-border-color: var(--button-color-border-warning);
       --elf--button-color: var(--button-color-background-warning);
     }
+
+    &.dark {
+      --elf--button-border-color: var(--color-black);
+      --elf--button-color: inherit;
+    }    
+
   }
 
   &.quiet {

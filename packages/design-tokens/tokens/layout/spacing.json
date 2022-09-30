@@ -1,0 +1,24 @@
+{
+  "spacing": {
+    "0": { "value": "2px" },
+    "1": { "value": "4px" },
+    "2": { "value": "8px" },
+    "3": { "value": "12px" },
+    "4": { "value": "16px", "comment": "base size" },
+    "5": { "value": "20px" },
+    "6": { "value": "24px", "comment": "base size" },
+    "7": { "value": "32px" },
+    "8": { "value": "40px" },
+    "size": {
+      "xxxs": { "value": "{spacing.0.value}" },
+      "xxs": { "value": "{spacing.1.value}" },
+      "xs": { "value": "{spacing.2.value}" },
+      "sm": { "value": "{spacing.3.value}" },
+      "md": { "value": "{spacing.4.value}" },
+      "lg": { "value": "{spacing.5.value}" },
+      "xl": { "value": "{spacing.6.value}" },
+      "xxl": { "value": "{spacing.7.value}" },
+      "xxxl": { "value": "{spacing.8.value}" }
+    }
+  }
+}

@@ -1,38 +1,111 @@
 .elf--tooltip {
-    --elf--tooltip-background-color: #222222;
+    --elf--tooltip-background-color: var(--color-white);
     --elf--tooltip-hover-color: var(--color-neutral-10);
-    --elf--tooltip-color: var(--color-neutral-0);
-    --elf--tooltip-border-color: rgba(0, 0, 0, 0.1);
-    --elf--tooltip-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--tooltip-color: var(--color-black);
+    --elf--tooltip-border-color: var(--color-gray-5);
+    --elf--tooltip-box-shadow: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.15));
     --elf--tooltip-tools-border-color: rgba(255, 255, 255, 0.19);
-    --elf--tooltip-border-radius: 2px;    
+    --elf--tooltip-border-radius: 4px;    
     --elf--tooltip-position: fixed;
     --elf--tooltip-hgap: 10px;
     --elf--tooltip-vgap: 10px;
     --elf--tooltip-arrow-background-color: var(--elf--tooltip-background-color);
     --elf--tooltip-delay: 0.5s;
-
-    position: relative;
+    --elf--tooltip-content-padding: 4px 10px;
+    --elf--tooltip-animation: fadein var(--elf--tooltip-delay) ease-in-out;
+    --elf--tooltip-max-width: 160;
+    --elf--tooltip-position: relative;
+    position: var(--elf--tooltip-position);
     width: fit-content;
     height: fit-content;
     display: inline-block;
+    z-index: var(--z-index-tooltip);
 
-    > .elf--tooltip-content {
+    &.fixed {
+        --elf--tooltip-position: fixed;
+        pointer-events: none;
+
+        > .message {
+            pointer-events: auto;
+        }
+    }
+
+
+    &.primary {
+        --elf--tooltip-background-color: var(--color-primary);
+        --elf--tooltip-color: var(--color-white);
+    }
+
+    &.dark {
+        --elf--tooltip-background-color: var(--color-black);
+        --elf--tooltip-color: var(--color-white);
+    }    
+
+    &.secondary {
+        --elf--tooltip-background-color: var(--color-secondary);
+        --elf--tooltip-color: var(--color-gray-9);        
+    }
+
+    &.success {
+        --elf--tooltip-background-color: var(--color-success);
+        --elf--tooltip-color: var(--color-white);        
+    }
+
+    &.warning {
+        --elf--tooltip-background-color: var(--color-warning);
+        --elf--tooltip-color: var(--color-white);        
+    }
+
+    &.danger {
+        --elf--tooltip-background-color: var(--color-danger);
+        --elf--tooltip-color: var(--color-white);        
+    }
+
+    &.info {
+        --elf--tooltip-background-color: var(--color-info);
+        --elf--tooltip-color: var(--color-white);        
+    }    
+
+    &.no-padding {
+        --elf--tooltip-hgap: 0px;
+        --elf--tooltip-vgap: 0px;
+        --elf--tooltip-content-padding: 0px;
+    }
+
+
+    > .content {
 
     }
 
-    > .elf--tooltip-message {
-        display: inline-block;
+
+    &.animated {
+        > .message {
+            animation: var(--elf--popover-animation);
+        }
+    
+    }    
+
+    > .message {
+        display: flex;
         position: absolute;
         border-radius: var(--elf--tooltip-border-radius);
         background-color: var(--elf--tooltip-background-color);
         color: var(--elf--tooltip-color);
-        box-shadow: var(--elf--tooltip-box-shadow);
-        padding: 8px 14px;
+        padding: var(--elf--tooltip-content-padding);
         font-size: 13px;
         box-sizing: border-box;
-        animation: fadein var(--elf--tooltip-delay) ease-in-out;
+        filter: var(--elf--tooltip-box-shadow);
+        width: auto;
+        min-width: var(--elf--tooltip-max-width);
+        max-width: var(--elf--tooltip-max-width);        
         white-space: nowrap;
+        font-weight: normal;
+
+        .elf--icon {
+            width: 20px;
+            height: 20px;    
+            margin-right: 4px;
+        }
 
         > .arrow {
             position: absolute;
@@ -49,12 +122,25 @@
             display: inline-block;
             // background-color: var(--elf--tools-arrow-background);
             z-index: 1;
+            white-space: nowrap;            
+        }
+
+        .icon {
+            // flex: none;
+        }
+
+        .message-content {
+            text-align: left;
+            display: inline-block;
+            // flex: 1 1 auto;
+            // word-break: break-all;
+            // text-align: center;
         }
 
     }
 
-    &.elf--tooltip-position-top-left {
-        > .elf--tooltip-message {
+    &.top-left {
+        > .message {
             right: 100%;
             bottom: calc(100% + var(--elf--tooltip-hgap));
             transform: translateX(20px);
@@ -72,8 +158,8 @@
         }
     }
 
-    &.elf--tooltip-position-top-right {
-        > .elf--tooltip-message {
+    &.top-right {
+        > .message {
             left: 100%;
             bottom: calc(100% + var(--elf--tooltip-hgap));
             transform: translateX(-20px);
@@ -90,8 +176,8 @@
         }
     }
 
-    &.elf--tooltip-position-bottom-left {
-        > .elf--tooltip-message {
+    &.bottom-left {
+        > .message {
             top: calc(100% + var(--elf--tooltip-hgap));
             right: 100%;
             transform: translateX(25px);
@@ -105,8 +191,8 @@
         }
     }
 
-    &.elf--tooltip-position-bottom-right {
-        > .elf--tooltip-message {
+    &.bottom-right {
+        > .message {
             top: calc(100% + var(--elf--tooltip-hgap));
             left: 100%;
             transform: translateX(-20px);
@@ -120,8 +206,8 @@
         }
     }
 
-    &.elf--tooltip-position-top {
-        > .elf--tooltip-message {
+    &.top {
+        > .message {
             bottom: calc(100% + var(--elf--tooltip-hgap));
             left: 50%;
             transform: translateX(-50%);
@@ -136,8 +222,8 @@
         }
     }
 
-    &.elf--tooltip-position-bottom {
-        > .elf--tooltip-message {
+    &.bottom {
+        > .message {
             top: calc(100% + var(--elf--tooltip-hgap));
             left: 50%;
             transform: translateX(-50%);
@@ -149,8 +235,8 @@
         }
     }
 
-    &.elf--tooltip-position-left {
-        > .elf--tooltip-message {
+    &.left {
+        > .message {
             top: 50%;
             right: calc(100%);
             transform: translateY(-50%) translateX(calc(-1 * var(--elf--tooltip-vgap)));
@@ -169,8 +255,8 @@
         }
     }
 
-    &.elf--tooltip-position-right {
-        > .elf--tooltip-message {
+    &.right {
+        > .message {
             top: 50%;
             left: calc(100%);
             transform: translateY(-50%) translateX(var(--elf--tooltip-vgap));

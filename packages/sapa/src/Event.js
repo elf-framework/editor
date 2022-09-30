@@ -21,8 +21,6 @@ export const ON = EVENT;
 export const NAME_SAPARATOR = ":";
 export const SAPARATOR = " ";
 
-const refManager = {};
-
 const DOM_EVENT_MAKE = (...keys) => {
   var key = keys.join(NAME_SAPARATOR);
   return (...args) => {
@@ -43,6 +41,10 @@ const OBSERVER_EVENT_MAKE = (...args) => {
   return MagicMethod.make("observer", ...args);
 };
 
+const PROPS_MAKE = (ref, ...args) => {
+  return MagicMethod.make("props", ref, ...args);
+};
+
 // Predefined CHECKER
 export const CHECKER = (value, split = SPLITTER) => {
   return makeEventChecker(value, split);
@@ -57,7 +59,6 @@ export const BEFORE = (value, split = SPLITTER) => {
 };
 
 export const IF = CHECKER;
-export const KEY = CHECKER;
 
 export const ARROW_UP = CHECKER("ArrowUp");
 export const ARROW_DOWN = CHECKER("ArrowDown");
@@ -131,6 +132,7 @@ export const CALLBACK = CALLBACK_EVENT_MAKE;
 export const RAF = CALLBACK("requestAnimationFrame");
 
 export const OBSERVER = OBSERVER_EVENT_MAKE;
+export const PROPS = PROPS_MAKE;
 
 export const CUSTOM = DOM_EVENT_MAKE;
 export const CLICK = DOM_EVENT_MAKE("click");
@@ -197,50 +199,6 @@ export const DOUBLETAB = CUSTOM("doubletab");
 export const POPSTATE = CUSTOM("popstate");
 export const ORIENTATIONCHANGE = CUSTOM("orientationchange");
 export const HASHCHANGE = CUSTOM("hashchange");
-
-// Predefined LOADER
-export const LOAD = (value = "$el") => {
-  return MagicMethod.make("load", value);
-};
-
-export const getRef = (id) => {
-  return refManager[id] || "";
-};
-
-export const BIND_CHECK_FUNCTION = (field) => {
-  return function () {
-    return this.prevState[field] != this.state[field];
-  };
-};
-
-export const BIND_CHECK_DEFAULT_FUNCTION = () => {
-  return true;
-};
-
-export const BIND = (value = "$el") => {
-  return MagicMethod.make("bind", value);
-};
-
-export function normalizeWheelEvent(e) {
-  let dx = e.deltaX;
-  let dy = e.deltaY;
-
-  if (dx === 0 && e.shiftKey) {
-    [dy, dx] = [dx, dy];
-  }
-
-  if (e.deltaMode === window.WheelEvent.DOM_DELTA_LINE) {
-    dy *= 8;
-  } else if (e.deltaMode === window.WheelEvent.DOM_DELTA_PAGE) {
-    dy *= 24;
-  }
-
-  return [limit(dx, 24), limit(dy, 24), 0];
-}
-
-function limit(delta, maxDelta) {
-  return Math.sign(delta) * Math.min(maxDelta, Math.abs(delta));
-}
 
 export default {
   addDomEvent(eventTarget, eventName, callback, useCapture = false) {

@@ -1,0 +1,73 @@
+---
+title: Tree view
+layout: DesignLayout
+filename: pages/design-system/navigations/treeview/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/navigations/treeview/MainView.jsx"; 
+import { OptionsView } from "../../../../../component/navigations/treeview/OptionsView.jsx"; 
+import { IconsView } from "../../../../../component/navigations/treeview/IconsView.jsx"; 
+import { ThumbnailsView } from "../../../../../component/navigations/treeview/ThumbnailsView.jsx"; 
+import { EmphasisView } from "../../../../../component/navigations/treeview/EmphasisView.jsx"; 
+import { SelectionView } from "../../../../../component/navigations/treeview/SelectionView.jsx"; 
+import { SelectionStyleView } from "../../../../../component/navigations/treeview/SelectionStyleView.jsx"; 
+import { ActionsAreaView } from "../../../../../component/navigations/treeview/ActionsAreaView.jsx"; 
+import { TextOverflowView } from "../../../../../component/navigations/treeview/TextOverflowView.jsx"; 
+import { TooltipView } from "../../../../../component/navigations/treeview/TooltipView.jsx"; 
+import { LoadingView } from "../../../../../component/navigations/treeview/LoadingView.jsx"; 
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+A tree view provides users with a way to navigate nested hierarchical information.
+
+
+<MainView />
+
+<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/slider/" />
+</div>
+
+## Options 
+
+### Text only
+
+<OptionsView />
+
+### Icons
+
+<IconsView />
+
+### Thumbnails
+
+<ThumbnailsView />
+
+### Emphasis
+
+<EmphasisView />
+
+### Selection
+
+<SelectionView />
+
+### Checkbox or highlight selection style
+
+<SelectionStyleView />
+
+
+### Actions area 
+
+<ActionsAreaView />
+
+### Text overflow
+
+<TextOverflowView />
+
+### Loading
+
+<LoadingView />
+
+### Show truncated labels in tooltip
+
+<TooltipView />

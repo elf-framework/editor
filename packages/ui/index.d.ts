@@ -11,6 +11,23 @@ declare module "@elf-framework/ui" {
   export function MOVE(method: string): string;
   export function END(method: string): string;
 
+  export function registerComponent(key: string, component: ContentType): void;
+
+  /** hooks  */
+
+  export function usePointerStart(
+    selector: string,
+    downAction: () => unknown,
+    moveAction: () => unknown,
+    upAction: () => unknown
+  ): void;
+
+  export function usePointerStart(
+    downAction: () => unknown,
+    moveAction: () => unknown,
+    upAction: () => unknown
+  ): void;
+
   /** base */
   type ContentType = string | UIElement | string[] | UIElement[];
 
@@ -18,8 +35,23 @@ declare module "@elf-framework/ui" {
 
   type ThemeType = "dark" | "light" | string;
 
+  type VariantType =
+    | "default"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"
+    | "light"
+    | "dark";
+
+  type SizeType = "small" | "medium" | "large" | "extra-large";
+
+  type OrientationType = "horizontal" | "vertical";
+
   /** button */
-  type ButtonType =
+  type ButtonVariant =
     | "primary"
     | "secondary"
     | "sucess"
@@ -27,7 +59,15 @@ declare module "@elf-framework/ui" {
     | "danger"
     | "warning"
     | "outline";
-  type ButtonSize = "small" | "default" | "large";
+  type ButtonSize =
+    | "extra-small"
+    | "xsmall"
+    | "small"
+    | "default"
+    | "large"
+    | "extra-large"
+    | "xlarge";
+
   type ButtonShape = "square" | "round" | "circle";
 
   interface CommonStyle {
@@ -204,13 +244,21 @@ declare module "@elf-framework/ui" {
   }
 
   interface ButtonProps {
-    type?: ButtonType;
+    variant?: ButtonVariant;
     size?: ButtonSize;
     shape?: ButtonShape;
     selected?: boolean;
     outline?: boolean;
     quiet?: boolean;
     disabled?: boolean;
+    onlyIcon?: boolean;
+    class: string;
+    iconOnly: boolean;
+    place?: string;
+    justified?: boolean;
+    play?: boolean;
+    focused?: boolean;
+    hasMinWidth?: boolean;
     onClick?: (event: PointerEvent) => void;
     style?: ButtonStyle & CommonStyle;
   }
@@ -225,6 +273,18 @@ declare module "@elf-framework/ui" {
     props: ButtonProps & CommonStyle;
   }
 
+  export class RoundButton extends UIElement {
+    props: ButtonProps & CommonStyle;
+  }
+
+  export class IconButton extends UIElement {
+    props: ButtonProps & CommonStyle;
+  }
+
+  export class OutlineButton extends UIElement {
+    props: ButtonProps & CommonStyle;
+  }
+
   interface ButtonGroupProps {
     content?: Button[];
     disabled?: boolean;
@@ -235,35 +295,49 @@ declare module "@elf-framework/ui" {
     props: ButtonGroupProps;
   }
 
-  export class LinkButton extends UIElement {
-    props: LinkButtonProps & CommonStyle;
+  interface ActionGroupProps {
+    content?: Button[];
+    direction?: OrientationType;
+    moreIcon?: ContentType;
+    quiet?: boolean;
+    compact?: boolean;
+    justified?: boolean;
+    collapsed?: boolean;
+    disabled?: boolean;
+    shape?: "rect" | "normal";
+    onMoreClick?: (event: PointerEvent, items: ContentType[]) => void;
+    style?: ButtonStyle & CommonStyle;
   }
 
-  export class IconButton extends Button {
-    props: ButtonProps & {
-      icon: string;
-    } & CommonStyle;
+  export class ActionGroup extends UIElement {
+    props: ActionGroupProps;
+  }
+
+  export class LinkButton extends UIElement {
+    props: LinkButtonProps & CommonStyle;
   }
 
   /** menu */
   export type MenuItemType = {
     type: "item";
-    title: string;
-    shortcut?: string;
+    title: ContentType;
+    shortcut?: ContentType;
     hover?: boolean;
-    icon?: string;
+    icon?: ContentType;
+    description?: ContentType;
     selectable?: boolean;
     selected?: boolean;
-    selectedIcon?: string;
+    selectedIcon?: ContentType;
     onClick?: (event: PointerEvent) => void;
     onSelect?: (event: PointerEvent, context: MenuItem) => void;
     items?: ItemType[];
     closable?: boolean;
     rootClose?: () => void;
+    disabled?: boolean;
   };
 
-  export type GroupMenuItemType = {
-    type: "group";
+  export type SectionMenuItemType = {
+    type: "section";
     rootClose?: () => void;
     title: string;
   };
@@ -293,11 +367,12 @@ declare module "@elf-framework/ui" {
 
   export type ItemType =
     | MenuItemType
-    | GroupMenuItemType
+    | SectionMenuItemType
     | DividerMenuItemType
     | CustomMenuItemType
     | LinkMenuItemType
-    | "-";
+    | "-"
+    | string;
 
   interface MenuStyle {
     backgroundColor?: string;
@@ -321,16 +396,18 @@ declare module "@elf-framework/ui" {
 
   export interface MenuProps {
     items: ItemType[];
-    type: "menu" | "contextmenu";
+    type: "menu" | "dropdown" | "contextmenu";
     x?: number;
     y?: number;
     direction?: MenuDirectionType;
     style: MenuStyle & CommonStyle;
     root?: ToolsMenuItem;
+    compact?: boolean;
+    variant?: "light" | "dark";
   }
 
-  export class GroupMenuItem extends UIElement {
-    props: GroupMenuItemType & CommonStyle;
+  export class SectionMenuItem extends UIElement {
+    props: SectionMenuItemType & CommonStyle;
   }
 
   export class MenuItem extends UIElement {
@@ -360,10 +437,17 @@ declare module "@elf-framework/ui" {
 
   interface DialogProps {
     visible: boolean;
-    tools: any[];
-    footer: any[] | any;
+    tools: ContentType;
+    footer: ContentType;
     center?: boolean;
+    noBorder?: boolean;
     style: DialogStyle;
+    okText?: ContentType;
+    cancelText?: ContentType;
+    okProps?: ButtonProps;
+    cancelProps?: ButtonProps;
+    title?: ContentType;
+    closable?: boolean;
     onOk: (event: Dialog) => void;
     onCancel: (event: Dialog) => void;
     onClose: (event: Dialog) => void;
@@ -381,6 +465,17 @@ declare module "@elf-framework/ui" {
     color?: string;
     height?: string;
     align?: string;
+    rounded?: boolean;
+    class?: string;
+    emphasized?: boolean;
+    type?:
+      | "default"
+      | "primary"
+      | "secondary"
+      | "success"
+      | "info"
+      | "warning"
+      | "danger";
   }
 
   export type ToolbarAlignType =
@@ -393,10 +488,11 @@ declare module "@elf-framework/ui" {
     items: ToolsProps[];
     align?: ToolbarAlignType;
     style: ToolbarStyle;
+    variant?: VariantType;
   }
 
   export class Toolbar extends UIElement {
-    props: ToolbarProps & CommonStyle;
+    props: ToolbarProps & DomEventType;
   }
 
   /** menu */
@@ -405,6 +501,7 @@ declare module "@elf-framework/ui" {
     title: string;
     icon?: string;
     selected?: boolean;
+    selectedType?: "primary" | "secondary";
     events?: string[];
     onClick?: (event: PointerEvent) => void;
   };
@@ -412,8 +509,8 @@ declare module "@elf-framework/ui" {
   export type ToolsMenuItemType = {
     type: "menu";
     items?: ItemType[];
-    title: string;
-    icon?: string;
+    title: ContentType;
+    icon?: ContentType;
     selected?: boolean;
     events?: string[];
     opened?: boolean;
@@ -447,6 +544,9 @@ declare module "@elf-framework/ui" {
   export interface ToolsProps {
     items: ToolsType[];
     style: ToolsStyle & CommonStyle;
+    vertical?: boolean;
+    emphasized?: boolean;
+    moreIcon?: ContentType;
   }
   export class Tools extends UIElement {
     props: ToolsProps & CommonStyle;
@@ -483,7 +583,7 @@ declare module "@elf-framework/ui" {
     props: NotificationProps & CommonStyle;
   }
 
-  interface VisualBellStyle {
+  interface ToastStyle {
     backgroundColor?: string;
     hoverColor?: string;
     borderColor?: string;
@@ -493,7 +593,7 @@ declare module "@elf-framework/ui" {
     color?: string;
   }
 
-  export type VisualBellDirectionType =
+  export type ToastDirectionType =
     | "left"
     | "right"
     | "center"
@@ -504,32 +604,34 @@ declare module "@elf-framework/ui" {
     | "bottom-left"
     | "bottom-right";
 
-  export interface VisualBellProps {
-    icon?: string | UIElement | UIElement[];
-    content?: string | string[] | UIElement | UIElement[];
-    style: VisualBellStyle & CommonStyle;
-    direction?: VisualBellDirectionType;
+  export interface ToastProps {
+    icon?: ContentType;
+    content?: ContentType;
+    style: ToastStyle & CommonStyle;
+    direction?: ToastDirectionType;
+    closable?: boolean;
     delay?: number;
+    variant?: VariantType;
     onShow?: () => void;
     onHide?: () => void;
   }
-  export class VisualBell extends UIElement {
-    props: VisualBellProps & CommonStyle;
+  export class Toast extends UIElement {
+    props: ToastProps & CommonStyle;
     hide: () => void;
   }
 
-  /** call VisualBell with potal */
-  export function bell(arg: {
+  /** call Toast with potal */
+  export function toast(arg: {
     content: ContentType;
     delay?: number;
-    direction?: VisualBellDirectionType;
+    direction?: ToastDirectionType;
     tools?: ContentType[];
     options?:
       | {
           container: HTMLElement | string;
         }
       | unknown;
-  }): VisualBell;
+  }): Toast;
 
   interface TooltipStyle {
     backgroundColor?: string;
@@ -542,12 +644,14 @@ declare module "@elf-framework/ui" {
     hgap?: number;
     vgap?: number;
     delay?: string;
+    maxWidth?: number | string;
   }
 
+  type TooltipTriggerType = "hover" | "click" | "focus" | "manual";
   export interface TooltipProps {
     content: ContentType;
     message?: ContentType;
-    position:
+    placement:
       | "top"
       | "bottom"
       | "left"
@@ -556,12 +660,57 @@ declare module "@elf-framework/ui" {
       | "top-right"
       | "bottom-left"
       | "bottom-right";
-    trigger: "hover" | "click";
+    trigger: TooltipTriggerType[] | TooltipTriggerType;
+    icon: ContentType;
     show: boolean;
+    animated?: boolean;
     style: TooltipStyle & CommonStyle;
+    hideArrow: boolean;
+    position?: "relative" | "absolute" | "fixed";
   }
   export class Tooltip extends UIElement {
     props: TooltipProps & CommonStyle;
+  }
+
+  interface PopoverStyle {
+    backgroundColor?: string;
+    hoverColor?: string;
+    borderColor?: string;
+    boxShadow?: string;
+    toolsBorderColor?: string;
+    toolsBorderRadius?: string;
+    color?: string;
+    hgap?: number;
+    vgap?: number;
+    delay?: string;
+  }
+
+  type PopoverPlacementType =
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right"
+    | "left-top"
+    | "left-bottom"
+    | "right-top"
+    | "right-bottom";
+
+  export interface PopoverProps {
+    content: ContentType;
+    body?: ContentType;
+    placement: PopoverPlacementType;
+    trigger: "hover" | "click";
+    animated?: boolean;
+    show: boolean;
+    style: TooltipStyle & CommonStyle;
+    showTip: boolean;
+  }
+  export class Popover extends UIElement {
+    props: PopoverProps & CommonStyle;
   }
 
   interface PanelStyle {
@@ -610,6 +759,11 @@ declare module "@elf-framework/ui" {
     align?: "left" | "center" | "right";
     items?: string[] | UIElement[];
     style?: TabStripStyle & CommonStyle;
+    orientation?: OrientationType;
+    showIndicator?: boolean;
+    size: SizeType;
+    variant?: VariantType;
+    quiet?: boolean;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 
@@ -656,6 +810,11 @@ declare module "@elf-framework/ui" {
     align?: "left" | "center" | "right";
     content?: TabItem[];
     style?: TabStyle & CommonStyle;
+    orientation: OrientationType;
+    showIndicator?: boolean;
+    size?: SizeType;
+    variant?: VariantType;
+    quiet?: boolean;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 
@@ -704,6 +863,15 @@ declare module "@elf-framework/ui" {
     props: GridProps & CommonStyle & DomEventType;
   }
 
+  export interface ColumnProps {
+    span?: number;
+    style?: CommonStyle;
+  }
+
+  export class Column extends UIElement {
+    props: ColumnProps & DomEventType;
+  }
+
   export interface ViewProps {
     as?: string;
     id?: string;
@@ -744,6 +912,8 @@ declare module "@elf-framework/ui" {
     placeholder?: string;
     style?: InputEditorStyle & CommonStyle;
     disabled?: boolean;
+    value?: string;
+    readOnly?: boolean;
   }
 
   export class InputEditor extends UIElement {
@@ -798,7 +968,13 @@ declare module "@elf-framework/ui" {
     props: HSLColorEditorProps & InputPaintProps & DomEventType;
   }
 
-  export class TextAreaEditor extends InputEditor {}
+  interface TextAreaEditorProps {
+    rows?: number;
+    resizable?: boolean;
+  }
+  export class TextAreaEditor extends InputEditor {
+    props: TextAreaEditorProps & InputEditorProps & DomEventType;
+  }
 
   export interface RadioProps {
     checked: boolean;
@@ -806,6 +982,10 @@ declare module "@elf-framework/ui" {
     value: any;
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
+    indeterminate?: boolean;
+    variant?: "default" | "dark" | "danger";
+    size?: SizeType;
+    disabled?: boolean;
   }
   export class Radio extends UIElement {
     props: RadioProps & CommonStyle;
@@ -816,6 +996,10 @@ declare module "@elf-framework/ui" {
     value: any;
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
+    size: SizeType;
+    variant: "default" | "dark" | "danger";
+    disabled?: boolean;
+    options?: RadioProps[];
   }
 
   export class RadioGroup extends UIElement {
@@ -836,9 +1020,13 @@ declare module "@elf-framework/ui" {
   export interface CheckboxGroupProps {
     name: string;
     value: any;
+    direction?: OrientationType;
     options: CheckboxItem[];
     onChange: (event: PointerEvent) => void;
     style: CommonStyle;
+    size: SizeType;
+    variant: "default" | "dark" | "danger";
+    disabled?: boolean;
   }
 
   export class CheckboxGroup extends UIElement {
@@ -925,6 +1113,10 @@ declare module "@elf-framework/ui" {
     onChange: (color: string) => void;
     onLastChange: (color: string) => void;
     style: CommonStyle;
+    hideSlide?: boolean;
+    hideInput?: boolean;
+    shadow?: boolean;
+    disabled?: boolean;
   }
   export class ColorMixer extends UIElement {
     props: ColorMixerProps & CommonStyle;
@@ -1012,17 +1204,9 @@ declare module "@elf-framework/ui" {
   }
 
   interface DividerProps {
-    type:
-      | "default"
-      | "primary"
-      | "secondary"
-      | "success"
-      | "danger"
-      | "warning"
-      | "info"
-      | "light"
-      | "dark";
-
+    size: SizeType;
+    variant: VariantType;
+    orientation: OrientationType;
     margin?: number | string;
     style: CommonStyle;
   }
@@ -1031,13 +1215,16 @@ declare module "@elf-framework/ui" {
   }
 
   interface AlertProps {
-    type: "default" | "primary" | "success" | "info" | "warning" | "danger";
+    variant: VariantType;
     title: ContentType;
     content: ContentType;
     style: CommonStyle;
     closable: boolean;
-    weak?: boolean;
+    dismissable: boolean;
     delay?: number;
+    icon?: ContentType;
+    shape?: "rect" | "round";
+    actions?: ContentType;
     onShow?: () => void;
     onHide?: () => void;
   }
@@ -1061,4 +1248,466 @@ declare module "@elf-framework/ui" {
         }
       | unknown;
   }): Alert;
+
+  interface HelpTextProps {
+    content: ContentType;
+    style: CommonStyle;
+    variant: VariantType;
+    size: SizeType;
+    icon?: ContentType;
+    disabled?: boolean;
+  }
+  export class HelpText extends UIElement {
+    props: HelpTextProps & DomEventType;
+  }
+
+  interface FieldProps {
+    help: ContentType;
+    label: ContentType;
+    size: SizeType;
+    style: CommonStyle;
+    disabled?: boolean;
+    required?: boolean;
+    requiredText?: ContentType;
+    optional?: boolean;
+    optionalText?: ContentType;
+    validIcon?: ContentType;
+    invalid?: boolean;
+    invalidIcon?: ContentType;
+    invalidMessage?: ContentType;
+    content?: ContentType;
+  }
+  export class Field extends UIElement {
+    props: FieldProps & CommonStyle;
+  }
+
+  interface TextFieldProps {
+    inputStyle?: InputEditorStyle;
+  }
+
+  export class TextField extends UIElement {
+    props: TextFieldProps &
+      FieldProps &
+      InputEditorProps &
+      CommonStyle &
+      DomEventType;
+  }
+
+  export class TextArea extends TextField {
+    props: TextFieldProps &
+      FieldProps &
+      InputEditorProps &
+      TextAreaEditorProps &
+      CommonStyle &
+      DomEventType;
+  }
+
+  interface BreadcrumbsItem {
+    title: ContentType;
+    selected?: boolean;
+    multiline?: boolean;
+    style?: CommonStyle;
+    tooltip?: TooltipProps;
+  }
+
+  interface BreadcrumbsProps {
+    items: (string | BreadcrumbsItem)[];
+    separator?: ContentType;
+  }
+  export class Breadcrumbs extends UIElement {
+    props: BreadcrumbsProps & CommonStyle & DomEventType;
+  }
+
+  interface AvatarProps {
+    content?: ContentType;
+    size: "50" | "100" | "200" | "300" | "400" | "500" | "600" | "700";
+    variant: VariantType;
+    shape: "circle" | "square";
+    style: CommonStyle;
+    disabled?: boolean;
+    ghost?: boolean;
+  }
+
+  export class Avatar extends UIElement {
+    props: AvatarProps & DomEventType;
+  }
+
+  interface TagProps {
+    content: ContentType;
+    style: CommonStyle;
+    removable: boolean;
+    onClose: () => void;
+    variant: VariantType;
+    filled?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+  }
+  export class Tag extends UIElement {
+    props: TagProps & DomEventType;
+  }
+
+  interface TagGroupProps {
+    content: ContentType;
+    gap?: number;
+  }
+  export class TagGroup extends UIElement {
+    props: TagGroupProps;
+  }
+
+  interface BadgeProps {
+    content: ContentType;
+    style: CommonStyle;
+    onClose: () => void;
+    disabled?: boolean;
+    size: SizeType;
+    variant:
+      | "informative"
+      | "neutral"
+      | "positive"
+      | "notice"
+      | "negative"
+      | "indigo"
+      | "celery"
+      | "chartreuse"
+      | "yellow"
+      | "magenta"
+      | "fuchsia"
+      | "purple"
+      | "seafoam";
+    fixed?: boolean;
+    placement?: "none" | "top" | "bottom" | "left" | "right";
+  }
+  export class Badge extends UIElement {
+    props: BadgeProps & DomEventType;
+  }
+
+  interface ProgressBarProps {
+    value: number;
+    showValue?: boolean;
+    valueFunc: (value: number) => ContentType;
+    variant: VariantType;
+    size: SizeType;
+    style: CommonStyle;
+    max: number;
+    min: number;
+    indeterminate?: boolean;
+    shape: "round" | "rect";
+  }
+  export class ProgressBar extends UIElement {
+    props: ProgressBarProps & DomEventType;
+  }
+
+  interface ProgressCircleProps {
+    value: number;
+    showValue?: boolean;
+    variant: VariantType;
+    size: SizeType;
+    style: CommonStyle;
+    max: number;
+    min: number;
+    indeterminate?: boolean;
+    animated?: boolean;
+    animationType?: "normal" | "spin";
+  }
+  export class ProgressCircle extends UIElement {
+    props: ProgressCircleProps & DomEventType;
+  }
+
+  interface SwitchProps {
+    checked: boolean;
+    disabled?: boolean;
+    size: SizeType;
+    variant: VariantType;
+    style: CommonStyle;
+    onChange: (checked: boolean) => void;
+    content: ContentType;
+    readOnly?: boolean;
+  }
+  export class Switch extends UIElement {
+    props: SwitchProps & DomEventType;
+  }
+
+  interface SliderProps {
+    type: "range" | "single";
+    label: ContentType;
+    labelPosition: "top" | "side";
+    value: number | [number, number];
+    fill?: boolean;
+    fillOffset?: number;
+    disabled?: boolean;
+    size: SizeType;
+    variant: VariantType;
+    style: CommonStyle;
+    onChange: (value: number) => void;
+    min: number;
+    max: number;
+    step: number;
+    showValue?: boolean;
+    valuePlacement?: "none" | "top" | "bottom";
+    showTrigger?: "always" | "hover" | "none";
+    valueFunc: (value: number) => ContentType;
+    readOnly?: boolean;
+  }
+  export class Slider extends UIElement {
+    props: SliderProps & DomEventType;
+  }
+
+  interface TreeViewItemType {
+    id: string;
+    title: ContentType;
+    children?: TreeViewItemType[];
+    selected?: boolean;
+    collapsed?: boolean;
+    disabled?: boolean;
+    style?: CommonStyle;
+  }
+
+  interface TreeDropItemType {
+    startId: unknown;
+    endId: unknown;
+    rate: number;
+    targetPosition: "top" | "middle" | "bottom";
+  }
+
+  interface TreeViewProps {
+    items: TreeViewItemType[];
+    draggable?: boolean;
+    itemHeight?: number;
+    overscanRowCount?: number;
+    selectionStyle: "checkbox" | "highlight";
+    selectionType: "single" | "multiple";
+    variant?: VariantType;
+    showTooltip?: boolean;
+    renderLabel?: (item: TreeViewItemType) => ContentType;
+    renderContext?: (item: TreeViewItemType) => ContentType;
+    renderActions?: (item: TreeViewItemType) => ContentType;
+    renderArrow?: (item: TreeViewItemType) => ContentType;
+    renderLoading?: (item: TreeViewItemType) => ContentType;
+    onClickNode?: (item: TreeViewItemType, e: MouseEvent) => void;
+    onToggleNode?: (item: TreeViewItemType, e: MouseEvent) => void;
+    onDropNode?: (obj: TreeDropItemType, e: DragEvent) => void;
+  }
+
+  export class TreeView extends UIElement {
+    props: TreeViewProps & DomEventType;
+  }
+
+  type TreeViewItemInsertType = "before" | "after" | "append";
+
+  class BaseTreeViewProvider {
+    get items(): TreeViewItemType[];
+    get ids(): string[];
+    has(id: string): boolean;
+    get(id: string): TreeViewItemType;
+    set(id: string, item: TreeViewItemType): void;
+    remove(id: string): void;
+    setParent(id: string, parentId: string): void;
+    removeParent(id: string): void;
+    appendChild(parentId: string, item: TreeViewItemType): void;
+    getParent(id: string): string;
+    deleteInfo(item: TreeViewItemType): void;
+    removeChild(parentId: string, id: string): void;
+    insertChild(parentId: string, index: number, item: TreeViewItemType): void;
+    findIndex(list: TreeViewItemType[], id: string): number;
+    insertItem(
+      targetId: string,
+      currentId: string,
+      type: TreeViewItemInsertType
+    ): void;
+    insertBefore(targetId: string, currentId: string): void;
+    insertAfter(targetId: string, currentId: string): void;
+    insertLast(targetId: string, currentId: string): void;
+  }
+
+  export class TreeViewProvider extends BaseTreeViewProvider {}
+
+  interface AnimationProps {
+    name?: string;
+    duration?: number;
+    delay?: number;
+    iterationCount?: string;
+    timingFunction?: string;
+    content?: ContentType;
+    play?: boolean;
+    onEnd?: (e: AnimationEvent) => void;
+    onIteration?: (e: AnimationEvent) => void;
+    onStart?: (e: AnimationEvent) => void;
+  }
+
+  export type AnimationType =
+    | "spin"
+    | "ping"
+    | "fade"
+    | "scaledown"
+    | "bounce"
+    | "flash"
+    | "pulse"
+    | "rubberBand"
+    | "shake"
+    | "headShake"
+    | "swing"
+    | "tada"
+    | "wobble"
+    | "jello"
+    | "heartBeat";
+
+  export class Animation extends UIElement {
+    props: AnimationProps;
+    static spin: Animation;
+    static fade: Animation;
+    static bounce: Animation;
+    static flash: Animation;
+    static pulse: Animation;
+    static rubberBand: Animation;
+    static shake: Animation;
+    static headShake: Animation;
+    static swing: Animation;
+    static tada: Animation;
+    static wobble: Animation;
+    static jello: Animation;
+    static heartBeat: Animation;
+  }
+
+  interface TableColumn {
+    title: ContentType;
+    key: string;
+    showDivider?: boolean;
+    style: {
+      cellPadding?: number | string;
+      cellAlign: "space-between" | "flex-start" | "flex-end";
+      textAlign: "left" | "right" | "center" | "justify";
+      width?: number;
+    };
+  }
+
+  interface TableData {
+    [key: string]: unknown;
+    selected?: boolean;
+  }
+
+  interface TableProps<T> {
+    columns: TableColumn[];
+    data: (TableData & T)[];
+    quiet?: boolean;
+    selectionStyle: "checkbox" | "highlight";
+    selectionType: "single" | "multiple";
+  }
+
+  export class Table<T> extends UIElement {
+    props: TableProps<T> & DomEventType;
+  }
+
+  interface CardProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    shape?: "round" | "square";
+    orientation: "horizontal" | "vertical";
+    quiet?: boolean;
+    ghost?: boolean;
+    selectable?: boolean;
+    selected?: boolean;
+    as?: "div" | "link";
+    href?: string;
+    full?: boolean;
+  }
+
+  export class Card extends UIElement {
+    props: CardProps & DomEventType;
+  }
+
+  interface CardPreviewProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    ratio?:
+      | "1:1"
+      | "2:1"
+      | "3:1"
+      | "4:1"
+      | "4:3"
+      | "3:4"
+      | "1:2"
+      | "1:3"
+      | "1:4";
+  }
+
+  export class CardPreview extends UIElement {
+    props: CardPreviewProps & DomEventType;
+  }
+
+  interface CardContainerProps {
+    content?: ContentType;
+    style?: CommonStyle;
+  }
+
+  export class CardContainer extends UIElement {
+    props: CardContainerProps & DomEventType;
+  }
+
+  interface CardHeaderProps {
+    title?: ContentType;
+    actions?: ContentType[];
+    style?: CommonStyle;
+    nowrap?: boolean;
+    ghost?: boolean;
+  }
+
+  export class CardHeader extends UIElement {
+    props: CardHeaderProps & DomEventType;
+  }
+
+  interface CardFooterProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    noDivider?: boolean;
+  }
+
+  export class CardFooter extends UIElement {
+    props: CardFooterProps & DomEventType;
+  }
+
+  interface CardBodyProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    ghost?: boolean;
+  }
+
+  export class CardBody extends UIElement {
+    props: CardBodyProps & DomEventType;
+  }
+
+  interface CardAvatarProps {
+    content?: ContentType;
+    style?: CommonStyle;
+  }
+
+  export class CardAvatar extends UIElement {
+    props: CardAvatarProps & DomEventType;
+  }
+
+  interface CardActionsProps {
+    content?: ContentType;
+    style?: CommonStyle;
+    align?: "left" | "right" | "center";
+  }
+
+  export class CardActions extends UIElement {
+    props: CardActionsProps & DomEventType;
+  }
+
+  interface GhostProps {
+    animated?: boolean;
+  }
+
+  export class Ghost extends UIElement {
+    props: GhostProps & DomEventType;
+  }
+
+  interface BlankProps {
+    style?: CommonStyle;
+    stripe?: "default";
+  }
+
+  export class Blank extends UIElement {
+    props: BlankProps & DomEventType;
+  }
 }

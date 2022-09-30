@@ -2,32 +2,25 @@
   "color": {
     "border": {
       "default": {
-        "value": "{color.core.black.value}",
-        "comment": "Border color that will match the current color scheme"
+        "value": "{color.black.value}"
       },
       "primary": {
-        "value": "{color.core.blue.4.value}",
-        "comment": "Base color for the primary color"
+        "value": "{color.blue.6.value}"
       },
       "secondary": {
-        "value": "{color.core.gray.4.value}",
-        "comment": "Base color for the secondary color"
-      },
-      "danger": {
-        "value": "{color.core.red.4.value}",
-        "comment": "Base color for the danger color"
-      },
-      "warning": {
-        "value": "{color.core.yellow.4.value}",
-        "comment": "Base color for the warning color"
+        "value": "{color.gray.2.value}"
       },
       "success": {
-        "value": "{color.core.green.4.value}",
-        "comment": "Base color for the success color"
+        "value": "{color.green.6.value}"
+      },
+      "danger": {
+        "value": "{color.red.6.value}"
+      },
+      "warning": {
+        "value": "{color.orange.2.value}"
       },
       "info": {
-        "value": "{color.core.blue.2.value}",
-        "comment": "Base color for the info color"
+        "value": "{color.blue.3.value}"
       }
     }
   }

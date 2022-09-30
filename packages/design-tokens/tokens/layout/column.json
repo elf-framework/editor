@@ -1,0 +1,16 @@
+{
+    "column": {
+        "1": { "value": "repeat(1, 1fr)" },
+        "2": { "value": "repeat(2, 1fr)" },
+        "3": { "value": "repeat(3, 1fr)" },
+        "4": { "value": "repeat(4, 1fr)" },
+        "5": { "value": "repeat(5, 1fr)" },
+        "6": { "value": "repeat(6, 1fr)" },
+        "7": { "value": "repeat(7, 1fr)" },
+        "8": { "value": "repeat(8, 1fr)" },
+        "9": { "value": "repeat(9, 1fr)" },
+        "10": { "value": "repeat(10, 1fr)" },
+        "11": { "value": "repeat(11, 1fr)" },
+        "12": { "value": "repeat(12, 1fr)" }
+    }
+}

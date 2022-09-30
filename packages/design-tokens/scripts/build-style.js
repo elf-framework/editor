@@ -16,6 +16,39 @@ function makeFontWeightStyle(prop) {
 };`;
 }
 
+function makeSpacingStyle(prop) {
+  const { item, type } = prop.attributes;
+
+  if (item) {
+    return `.padding-${item} {
+  padding: ${prop.value};
+}
+
+.margin-${item} {
+  margin: ${prop.value};
+}`;
+  }
+
+  return `.padding-${type} {
+    padding: ${prop.value};
+}
+.margin-${type} {
+  margin: ${prop.value};
+}`;
+}
+
+function makeGapStyle(prop) {
+  return `.${prop.name} { gap: ${prop.value}; }`;
+}
+
+function makeShadowStyle(prop) {
+  return `.${prop.name} { box-shadow: ${prop.value}; }`;
+}
+
+function makeColumnStyle(prop) {
+  return `.${prop.name} { grid-template-columns: ${prop.value}; }`;
+}
+
 function makeColorStyle(prop) {
   let cssField = "";
   switch (prop.attributes.type) {
@@ -35,13 +68,13 @@ function makeColorStyle(prop) {
       cssField = "stroke";
       break;
     default:
-      return "";
+      return `
+.${prop.name} { color: ${prop.value}; }
+.background-${prop.name} { background-color: ${prop.value}; }`;
   }
 
   return `
-.${prop.name} {
-  ${cssField}: ${prop.value};
-};`;
+.${prop.name} { ${cssField}: ${prop.value}; }`;
 }
 
 StyleDictionary.extend({
@@ -54,6 +87,14 @@ ${fileHeader({ file })}
 ${dictionary.allProperties
   .map((prop) => {
     switch (prop.attributes.category) {
+      case "shadow":
+        return makeShadowStyle(prop);
+      case "gap":
+        return makeGapStyle(prop);
+      case "column":
+        return makeColumnStyle(prop);
+      case "spacing":
+        return makeSpacingStyle(prop);
       case "image":
         break;
       case "weight":

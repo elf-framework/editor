@@ -1,0 +1,48 @@
+---
+title: Alert Dialog
+layout: DesignLayout
+filename: pages/design-system/components/feedback/notification/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "../../../../../component/feedback/dialog/MainView.jsx"; 
+import { TitleView } from "../../../../../component/feedback/dialog/TitleView.jsx"; 
+import { DescriptionView } from "../../../../../component/feedback/dialog/DescriptionView.jsx";
+import { VariantView } from "../../../../../component/feedback/dialog/VariantView.jsx";
+import { ClosableView } from "../../../../../component/feedback/dialog/ClosableView.jsx";
+import { CustomFooterView } from "../../../../../component/feedback/dialog/CustomFooterView.jsx";
+import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+
+# {title}
+
+Alert dialogs display important information that users need to acknowledge. They appear over the interface and block further interactions until an action is selected.
+
+
+<MainView />
+
+<div style={{ display: "flex", gap: 30, padding: "30px 0"}}>
+    <UIComponentLink link="/pages/ui-component/notification/" />
+</div>
+
+## Options 
+
+
+### Title
+
+<TitleView />
+
+### Description
+
+<DescriptionView />
+
+### Confirmation Variant 
+
+<VariantView />
+
+### Cloasable 
+
+<ClosableView />
+
+### Custom Footer
+
+<CustomFooterView />

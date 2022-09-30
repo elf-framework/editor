@@ -9,44 +9,80 @@ import {
   isString,
   OBSERVER,
   PARAMS,
+  useMemo,
 } from "@elf-framework/sapa";
 
+import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 
 const MenuItemType = {
   DIVIDER: "divider",
-  GROUP: "group",
+  SECTION: "section",
   MENU: "menu",
   ITEM: "item",
   CUSTOM: "custom",
   LINK: "link",
 };
 
-function makeMenuItem(items = [], rootClose) {
+function makeMenuItem(items = [], variant, rootClose) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
 
     if (isString(it) && it === "-") {
-      return <DividerMenuItem ref={ref} rootClose={rootClose} />;
+      return (
+        <DividerMenuItem ref={ref} variant={variant} rootClose={rootClose} />
+      );
     } else if (isFunction(it)) {
       return (
         <CustomMenuItem
+          variant={variant}
           ref={`custom${index}`}
           render={it}
           rootClose={rootClose}
         />
       );
     } else if (it.type === MenuItemType.CUSTOM) {
-      return <CustomMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <CustomMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     } else if (it.type === MenuItemType.LINK) {
-      return <LinkMenuItem ref={ref} {...it} rootClose={rootClose} />;
-    } else if (it.type === MenuItemType.GROUP) {
-      return <GroupMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <LinkMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
+    } else if (it.type === MenuItemType.SECTION) {
+      return (
+        <SectionMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     } else if (it.type === MenuItemType.DIVIDER) {
-      return <DividerMenuItem ref={ref} {...it} rootClose={rootClose} />;
+      return (
+        <DividerMenuItem
+          variant={variant}
+          ref={ref}
+          {...it}
+          rootClose={rootClose}
+        />
+      );
     }
 
-    return <MenuItem ref={ref} {...it} rootClose={rootClose} />;
+    return (
+      <MenuItem ref={ref} variant={variant} {...it} rootClose={rootClose} />
+    );
   });
 }
 
@@ -68,7 +104,7 @@ function LinkMenuItem({ rootClose, title, link }) {
   );
 }
 
-function GroupMenuItem({ title = "" }) {
+function SectionMenuItem({ title = "" }) {
   return <li class="section-title">{title}</li>;
 }
 
@@ -86,6 +122,8 @@ class MenuItem extends UIElement {
       selectedIcon = "✓",
       closable = true,
       rootClose,
+      description,
+      variant,
     } = this.props;
 
     return {
@@ -100,6 +138,8 @@ class MenuItem extends UIElement {
       disabled,
       closable,
       rootClose,
+      description,
+      variant,
     };
   }
 
@@ -107,7 +147,8 @@ class MenuItem extends UIElement {
     const {
       title = "",
       shortcut,
-      icon = "▶",
+      icon,
+      expandIcon = "▶",
       items = [],
       hover,
       selected,
@@ -115,6 +156,9 @@ class MenuItem extends UIElement {
       selectedIcon,
       disabled,
       rootClose,
+      description,
+      variant,
+      show = false,
     } = this.state;
 
     const hasItems = items.length > 0;
@@ -128,17 +172,26 @@ class MenuItem extends UIElement {
         })}
         disabled={disabled ? true : undefined}
       >
-        {selectable ? (
-          <span class="selected-icon">
-            {selectedValue ? selectedIcon : undefined}
-          </span>
-        ) : null}
-        {title ? <div class="menu-title">{title}</div> : undefined}
-        {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
-        {icon && hasItems ? <div class="icon">{icon}</div> : undefined}
+        <div class="menu-item-content">
+          {selectable ? (
+            <span class="selected-icon">
+              {selectedValue ? selectedIcon : undefined}
+            </span>
+          ) : null}
 
-        {items.length > 0 ? (
-          <Menu items={items} rootClose={rootClose} />
+          {icon ? <div class="icon">{icon}</div> : undefined}
+          {title ? <div class="menu-title">{title}</div> : undefined}
+          <div class="value-area">
+            {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
+            {hasItems ? <div class="icon">{expandIcon}</div> : undefined}
+          </div>
+        </div>
+        {description ? (
+          <div class="menu-item-description">{description}</div>
+        ) : undefined}
+
+        {items.length > 0 || show ? (
+          <Menu items={items} variant={variant} rootClose={rootClose} />
         ) : undefined}
       </li>
     );
@@ -180,26 +233,26 @@ class MenuItem extends UIElement {
   }
 }
 
-const cssProperties = {
-  left: "--elf--menu-left",
-  top: "--elf--menu-top",
-  backgroundColor: "--elf--menu-background",
-  color: "--elf--menu-color",
-  fontSize: "--elf--menu-font-size",
-  fontWeight: "--elf--menu-font-weight",
-  height: "--elf--menu-height",
-  padding: "--elf--menu-padding",
-  borderRadius: "--elf--menu-border-radius",
-  borderColor: "--elf--menu-border-color",
-  boxShadow: "--elf--menu-box-shadow",
-  width: "--elf--menu-width",
-  maxWidth: "--elf--menu-max-width",
-  sectionTitleColor: "--elf--menu-section-title-color",
-  sectionTitleBackgroundColor: "--elf--menu-section-title-background-color",
-  dividerColor: "--elf--menu-divider-color",
-  directionLeft: "--elf--menu-direction-left",
-  itemPadding: "--elf--menu-item-padding",
-};
+const cssProperties = makeCssVariablePrefixMap("--elf--menu", {
+  left: true,
+  top: true,
+  backgroundColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true,
+  borderColor: true,
+  boxShadow: true,
+  width: true,
+  maxWidth: true,
+  sectionTitleColor: true,
+  sectionTitleBackgroundColor: true,
+  dividerColor: true,
+  directionLeft: true,
+  itemPadding: true,
+});
 
 export class Menu extends UIElement {
   initState() {
@@ -218,6 +271,8 @@ export class Menu extends UIElement {
       items = [],
       rootClose,
       autoPosition = false,
+      variant = "light",
+      compact = false,
     } = this.props;
 
     let itemStyle = { ...style };
@@ -232,19 +287,23 @@ export class Menu extends UIElement {
       itemStyle = { ...itemStyle, top: -1 * (index * 24 + 8) };
     }
 
+    const localClass = useMemo(() => {
+      return classnames("elf--menu", {
+        [type]: true,
+        [variant]: true,
+        compact,
+      });
+    }, [type, variant, compact]);
+
     const styleObject = {
       "data-direction": direction,
-      class: classnames("elf--menu", {
-        "elf--menu-contextmenu": type === "contextmenu",
-      }),
-      style: {
-        ...propertyMap(itemStyle, cssProperties),
-      },
+      class: localClass,
+      style: propertyMap(itemStyle, cssProperties),
     };
 
     return (
       <menu {...styleObject} onContextMenu={(e) => e.preventDefault()}>
-        {makeMenuItem(items, rootClose)}
+        {makeMenuItem(items, variant, rootClose)}
       </menu>
     );
   }
@@ -273,3 +332,17 @@ export class Menu extends UIElement {
     }
   }
 }
+
+registerComponent("Menu", Menu);
+registerComponent("MenuItem", MenuItem);
+registerComponent("SectionMenuItem", SectionMenuItem);
+registerComponent("DividerMenuItem", DividerMenuItem);
+
+registerComponent("menu", Menu);
+registerComponent("menuitem", MenuItem);
+registerComponent("sectionmenuitem", SectionMenuItem);
+registerComponent("dividermenuitem", DividerMenuItem);
+
+registerComponent("menu-item", MenuItem);
+registerComponent("section-menu-item", SectionMenuItem);
+registerComponent("divider-menu-item", DividerMenuItem);

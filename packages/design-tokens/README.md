@@ -17,7 +17,7 @@ import "@elf-framework/design-tokens/tokens.css";
 
 
 .my-color {
-    background-color: var(--color-core-gray-4);
+    background-color: var(--color-gray-4);
 }
 
 ```
