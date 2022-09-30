@@ -28,7 +28,7 @@ export function PlacementView() {
                 }}
                 placement="top" // default
               >
-                <Button quiet size="extra-small" selected>
+                <Button quiet iconOnly size="extra-small" selected>
                   <InfoOutlined />
                 </Button>
               </Tooltip>
@@ -54,7 +54,7 @@ export function PlacementView() {
                 }}
                 placement="bottom-right" // default
               >
-                <Button quiet size="extra-small" selected>
+                <Button quiet iconOnly size="extra-small" selected>
                   <InfoOutlined />
                 </Button>
               </Tooltip>
@@ -80,7 +80,7 @@ export function PlacementView() {
                 }}
                 placement="bottom" // default
               >
-                <Button quiet size="extra-small" selected>
+                <Button quiet iconOnly size="extra-small" selected>
                   <InfoOutlined />
                 </Button>
               </Tooltip>

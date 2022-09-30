@@ -6,7 +6,10 @@ export function ContainersView() {
   return (
     <div>
       <Grid columns={2} rows={["300px"]} style={{ gap: 10 }}>
-        <PreviewItem title={"Popover"}>
+        <PreviewItem
+          title={"Popover"}
+          link={"/pages/design-system/components/containers/popover/"}
+        >
           <Popover
             body={
               <Menu
@@ -38,7 +41,10 @@ export function ContainersView() {
             <Button>Settings</Button>
           </Popover>
         </PreviewItem>
-        <PreviewItem title={"Divider"}>
+        <PreviewItem
+          title={"Divider"}
+          link={"/pages/design-system/components/containers/divider/"}
+        >
           <Divider />
           <Divider variant="primary" />
           <Divider variant="primary" orientation="vertical" />

@@ -25,7 +25,10 @@ export function NavigationsView() {
   return (
     <div>
       <Grid columns={2} style={{ gap: 10 }}>
-        <PreviewItem title={"Breadcrumbs"}>
+        <PreviewItem
+          title={"Breadcrumbs"}
+          link={"/pages/design-system/components/navigations/breadcrumbs/"}
+        >
           <Breadcrumbs
             items={[
               {
@@ -55,7 +58,10 @@ export function NavigationsView() {
           />
         </PreviewItem>
 
-        <PreviewItem title={"Avatar"}>
+        <PreviewItem
+          title={"Avatar"}
+          link={"/pages/design-system/components/navigations/avatar/"}
+        >
           <div>
             <Avatar size="300">
               <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
@@ -79,6 +85,7 @@ export function NavigationsView() {
           style={{
             gridRow: "span 2",
           }}
+          link={"/pages/design-system/components/navigations/treeview/"}
         >
           <div
             style={{
@@ -122,14 +129,20 @@ export function NavigationsView() {
             />
           </div>
         </PreviewItem>
-        <PreviewItem title={"Tabs"}>
+        <PreviewItem
+          title={"Tabs"}
+          link={"/pages/design-system/components/navigations/tabs/"}
+        >
           <Tab activeKey={1} showIndicator variant="primary">
             <TabItem title="Design" key={1}></TabItem>
             <TabItem title="Prototype" key={2}></TabItem>
             <TabItem title="Project" key={3} disabled={true}></TabItem>
           </Tab>
         </PreviewItem>
-        <PreviewItem title={"Tag"}>
+        <PreviewItem
+          title={"Tag"}
+          link={"/pages/design-system/components/navigations/tag/"}
+        >
           <TagGroup>
             <Tag>
               <Avatar size="30">

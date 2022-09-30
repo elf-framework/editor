@@ -1,4 +1,12 @@
-import { Flex, Grid, VBox, View } from "@elf-framework/ui";
+import {
+  ActionGroup,
+  Blank,
+  Button,
+  Flex,
+  Grid,
+  VBox,
+  View,
+} from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { PageMenu } from "../component/PageMenu";
@@ -42,6 +50,15 @@ export function Layout(props) {
       </div>
       <View class="layout-menu">
         <PageMenu menu={menu} />
+        <Blank style={{ height: 100 }} />
+        <div>
+          <ActionGroup justified>
+            <Button as="link" href="https://github.com/elf-framework/editor">
+              Github
+            </Button>
+          </ActionGroup>
+        </div>
+        <Blank />
       </View>
       <View class="layout-content">
         <div style={{ margin: "0 auto" }} class="markdown-body">

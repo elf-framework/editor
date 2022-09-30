@@ -28,7 +28,10 @@ export function FeedbacksView() {
   return (
     <div>
       <Grid columns={1} rows={[100, "minmax(100px, auto)"]} style={{ gap: 10 }}>
-        <PreviewItem title={"Alert"}>
+        <PreviewItem
+          title={"Alert"}
+          link={"/pages/design-system/components/feedback/alert/"}
+        >
           <Alert
             shape="round"
             variant="primary"
@@ -43,7 +46,10 @@ export function FeedbacksView() {
           </Alert>
         </PreviewItem>
 
-        <PreviewItem title={"Notification"}>
+        <PreviewItem
+          title={"Notification"}
+          link={"/pages/design-system/components/feedback/notification/"}
+        >
           <Notification
             tools={<Tools />}
             style={{
@@ -56,7 +62,10 @@ export function FeedbacksView() {
             email to elf-framework.com. This sample
           </Notification>
         </PreviewItem>
-        <PreviewItem title={"Toast"}>
+        <PreviewItem
+          title={"Toast"}
+          link={"/pages/design-system/components/feedback/toast/"}
+        >
           <div
             style={{
               position: "relative",
@@ -92,6 +101,7 @@ export function FeedbacksView() {
       <Grid columns={2} rows={2} style={{ gap: 10 }}>
         <PreviewItem
           title={"Dialog"}
+          link={"/pages/design-system/components/feedback/dialog/"}
           style={{
             gridRow: "span 2",
           }}
@@ -111,7 +121,10 @@ export function FeedbacksView() {
             </div>
           </Dialog>
         </PreviewItem>
-        <PreviewItem title={"Tooltip"}>
+        <PreviewItem
+          title={"Tooltip"}
+          link={"/pages/design-system/components/feedback/tooltip/"}
+        >
           <Tooltip placement="top" message={"text message"} show>
             <Button>
               <HelpOutlineFilled />
@@ -120,6 +133,7 @@ export function FeedbacksView() {
         </PreviewItem>
         <PreviewItem
           title={"Contextual help"}
+          link={"/pages/design-system/components/feedback/contextual-help/"}
           align={"left"}
           style={{
             flex: "none",

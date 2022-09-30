@@ -20,7 +20,10 @@ export function PatternsView() {
   return (
     <div>
       <Grid columns={1} style={{ gap: 10 }}>
-        <PreviewItem title={"Card"}>
+        <PreviewItem
+          title={"Card"}
+          link={"/pages/design-system/components/patterns/card/"}
+        >
           <div
             style={{
               display: "flex",
@@ -118,7 +121,10 @@ export function PatternsView() {
           </div>
         </PreviewItem>
 
-        <PreviewItem title={"Table"}>
+        <PreviewItem
+          title={"Table"}
+          link={"/pages/design-system/components/patterns/table/"}
+        >
           <Table columns={columns} data={data} />
         </PreviewItem>
       </Grid>

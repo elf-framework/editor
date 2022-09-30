@@ -12,18 +12,27 @@ export function ActionsView() {
   return (
     <div>
       <Grid columns={2} style={{ gap: 10 }}>
-        <PreviewItem title={"Button"}>
+        <PreviewItem
+          title={"Button"}
+          link={"/pages/design-system/components/actions/button/"}
+        >
           <RoundButton size="extra-large" variant="primary">
             Button
           </RoundButton>
         </PreviewItem>
-        <PreviewItem title={"Action group"}>
+        <PreviewItem
+          title={"Action group"}
+          link={"/pages/design-system/components/actions/actiongroup/"}
+        >
           <ActionGroup compact>
             <RoundButton variant="primary">Button</RoundButton>
             <RoundButton>Button</RoundButton>
           </ActionGroup>
         </PreviewItem>
-        <PreviewItem title={"Toolbar"}>
+        <PreviewItem
+          title={"Toolbar"}
+          link={"/pages/design-system/components/actions/toolbar/"}
+        >
           <Toolbar
             class="shadow-1"
             rounded={true}
@@ -55,7 +64,10 @@ export function ActionsView() {
             ]}
           />
         </PreviewItem>
-        <PreviewItem title={"Menu"}>
+        <PreviewItem
+          title={"Menu"}
+          link={"/pages/design-system/components/actions/menu/"}
+        >
           <Menu
             type="dropdown"
             style={{

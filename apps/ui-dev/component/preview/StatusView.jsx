@@ -45,7 +45,10 @@ export function StatusView() {
   return (
     <div>
       <Grid columns={2} style={{ gap: 10 }}>
-        <PreviewItem title={"Animation"}>
+        <PreviewItem
+          title={"Animation"}
+          link={"/pages/design-system/components/status/animation/"}
+        >
           <Animation.spin duration="2s" play>
             <ProgressCircle size="large" variant="primary" value={30} />
           </Animation.spin>
@@ -58,7 +61,10 @@ export function StatusView() {
           </div>
         </PreviewItem>
 
-        <PreviewItem title={"Ghost"}>
+        <PreviewItem
+          title={"Ghost"}
+          link={"/pages/design-system/components/status/ghost/"}
+        >
           <div
             style={{
               width: 100,
@@ -69,11 +75,17 @@ export function StatusView() {
           </div>
         </PreviewItem>
 
-        <PreviewItem title={"Blank"}>
+        <PreviewItem
+          title={"Blank"}
+          link={"/pages/design-system/components/status/blank/"}
+        >
           <Blank stripe="default" />
         </PreviewItem>
 
-        <PreviewItem title={"Badge"}>
+        <PreviewItem
+          title={"Badge"}
+          link={"/pages/design-system/components/status/badge/"}
+        >
           <div
             style={{
               display: "flex",
@@ -91,14 +103,20 @@ export function StatusView() {
             </Badge>
           </div>
         </PreviewItem>
-        <PreviewItem title={"Progress bar"}>
+        <PreviewItem
+          title={"Progress bar"}
+          link={"/pages/design-system/components/status/progressbar/"}
+        >
           <ProgressBar
             title="Loading data..."
             value={value}
             valueText={`${value}%`}
           />
         </PreviewItem>
-        <PreviewItem title={"Progress circle"}>
+        <PreviewItem
+          title={"Progress circle"}
+          link={"/pages/design-system/components/status/progress-circle/"}
+        >
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
             <ProgressCircle
               size="extra-large"

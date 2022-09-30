@@ -194,10 +194,10 @@ export default [
         link: COMPONENTS_URL + "status/progress-circle/",
         title: "Progress Circle",
       },
-      {
-        link: COMPONENTS_URL + "status/status-light/",
-        title: "Status light * ",
-      },
+      // {
+      //   link: COMPONENTS_URL + "status/status-light/",
+      //   title: "Status light * ",
+      // },
     ],
     category: "Components",
   },
@@ -206,10 +206,10 @@ export default [
     title: "Pattern",
     items: [
       { link: COMPONENTS_URL + "patterns/card/", title: "Card" },
-      {
-        link: COMPONENTS_URL + "patterns/form-errors/",
-        title: "Form errors *",
-      },
+      // {
+      //   link: COMPONENTS_URL + "patterns/form-errors/",
+      //   title: "Form errors *",
+      // },
       {
         link: COMPONENTS_URL + "patterns/table/",
         title: "Table",

@@ -20,7 +20,10 @@ export function InputsView() {
   return (
     <div>
       <Grid columns={3} rows={[100, "minmax(100px, auto)"]} style={{ gap: 10 }}>
-        <PreviewItem title={"Checkbox"}>
+        <PreviewItem
+          title={"Checkbox"}
+          link={"/pages/design-system/components/inputs/checkbox/"}
+        >
           <div
             style={{
               display: "flex",
@@ -41,7 +44,10 @@ export function InputsView() {
           </div>
         </PreviewItem>
 
-        <PreviewItem title={"Checkbox Group"}>
+        <PreviewItem
+          title={"Checkbox Group"}
+          link={"/pages/design-system/components/inputs/checkbox-group/"}
+        >
           <CheckboxGroup
             direction="vertical"
             value={[10]}
@@ -53,7 +59,10 @@ export function InputsView() {
             onChange={(e, values) => console.log(values)}
           />
         </PreviewItem>
-        <PreviewItem title={"Option Menu"}>
+        <PreviewItem
+          title={"Option Menu"}
+          link={"/pages/design-system/components/inputs/option-menu/"}
+        >
           <OptionMenu
             icon={<AddChartFilled />}
             items={[
@@ -102,7 +111,10 @@ export function InputsView() {
             text overflow
           </OptionMenu>
         </PreviewItem>
-        <PreviewItem title={"Radio Group"}>
+        <PreviewItem
+          title={"Radio Group"}
+          link={"/pages/design-system/components/inputs/radio/"}
+        >
           <div
             style={{
               display: "flex",
@@ -125,10 +137,16 @@ export function InputsView() {
             <HelpText>Select a product size</HelpText>
           </div>
         </PreviewItem>
-        <PreviewItem title={"Field label"}>
+        <PreviewItem
+          title={"Field label"}
+          link={"/pages/design-system/components/inputs/field/"}
+        >
           <Field label="Email address(label)">This is content</Field>
         </PreviewItem>
-        <PreviewItem title={"Help text"}>
+        <PreviewItem
+          title={"Help text"}
+          link={"/pages/design-system/components/inputs/help-text/"}
+        >
           <HelpText>Select a product size</HelpText>
           <HelpText size="large">Select a product size</HelpText>
         </PreviewItem>
@@ -140,10 +158,14 @@ export function InputsView() {
           style={{
             gridRow: "span 2",
           }}
+          link={"/pages/design-system/components/inputs/colorarea/"}
         >
           <ColorMixer color="red" shadow />
         </PreviewItem>
-        <PreviewItem title={"Slider"}>
+        <PreviewItem
+          title={"Slider"}
+          link={"/pages/design-system/components/inputs/slider/"}
+        >
           <Slider
             min={0}
             max={10000}
@@ -155,7 +177,10 @@ export function InputsView() {
             valueFunc={(v) => new Intl.NumberFormat().format(v)}
           />
         </PreviewItem>
-        <PreviewItem title={"Switch"}>
+        <PreviewItem
+          title={"Switch"}
+          link={"/pages/design-system/components/inputs/switch/"}
+        >
           <Switch
             variant="success"
             checked
@@ -166,14 +191,20 @@ export function InputsView() {
             Available offline
           </Switch>
         </PreviewItem>
-        <PreviewItem title={"Text field"}>
+        <PreviewItem
+          title={"Text field"}
+          link={"/pages/design-system/components/inputs/textfield/"}
+        >
           <TextField
             label={"Title"}
             optional={true}
             help={<HelpText>Designer, lawyer, etc</HelpText>}
           />
         </PreviewItem>
-        <PreviewItem title={"Text area"}>
+        <PreviewItem
+          title={"Text area"}
+          link={"/pages/design-system/components/inputs/textarea/"}
+        >
           <TextArea
             label={"Description"}
             value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}

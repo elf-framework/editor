@@ -1,4 +1,4 @@
-import { VBox } from "@elf-framework/ui";
+import { Divider, VBox } from "@elf-framework/ui";
 
 export function MainView() {
   return (
@@ -11,7 +11,8 @@ export function MainView() {
       }}
     >
       <div>
-        <h1>Profile</h1>
+        <h1 style={{ marginBottom: 10 }}>Profile</h1>
+        <Divider />
         <p>Your profile is a place to keep your settings and preferences.</p>
       </div>
     </VBox>

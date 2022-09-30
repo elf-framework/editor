@@ -6,7 +6,7 @@ export function MainView() {
     <VBox
       style={{
         gap: 30,
-        backgroundColor: "var(--color-gray-0)",
+        backgroundColor: "#ececec",
         padding: "60px 150px",
         position: "relative",
       }}

@@ -84,7 +84,7 @@ export function MarkdownPage({ page: Page, filename, menu }) {
   const template = Page();
 
   const items = [];
-  template.children.forEach((child, index) => {
+  template.children.forEach((child) => {
     if (child.nodeName?.startsWith("H")) {
       const text = child.makeText(" ");
       const id = child.makeText("-");
