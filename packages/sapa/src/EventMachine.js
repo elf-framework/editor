@@ -265,7 +265,7 @@ export class EventMachine extends HookMachine {
 
   getTargetInstance(oldEl) {
     const targetList = Object.values(this.children).filter((instance) => {
-      return instance.$el.el === oldEl;
+      return instance.$el?.el === oldEl;
     });
 
     if (targetList.length) {

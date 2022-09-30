@@ -2438,9 +2438,10 @@ class Notification extends UIElement {
     } = this.props;
     const localClass = useMemo(() => {
       return classnames("elf--notification", {
-        [direction]: true
+        [direction]: true,
+        "has-icon": icon
       });
-    }, [direction]);
+    }, [direction, icon]);
     const styleObject = {
       class: localClass,
       style: propertyMap(style2, cssProperties$A)
@@ -4906,11 +4907,14 @@ class ColorMixer extends UIElement {
     } = this.props;
     const x = width * s;
     const y = height * (1 - v);
-    const styleObject = {
-      class: classnames("elf--color-mixer", {
+    const localClass = useMemo(() => {
+      return classnames("elf--color-mixer", {
         shadow,
         disabled
-      }),
+      });
+    }, [shadow, disabled]);
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(
           {

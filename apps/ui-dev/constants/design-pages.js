@@ -6,6 +6,11 @@ const COMPONENTS_URL = BASE_URL + "components/";
 
 export default [
   { link: GETTING_STARTED_URL, title: "Getting Started", category: "_" },
+  {
+    link: GETTING_STARTED_URL + "preview/",
+    title: "Preview components",
+    category: "_",
+  },
   "Foundation",
   { link: FOUNDATION_URL + "color/", title: "Color", category: "Foundation" },
   { link: FOUNDATION_URL + "states/", title: "States", category: "Foundation" },

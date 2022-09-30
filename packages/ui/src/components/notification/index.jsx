@@ -29,8 +29,9 @@ export class Notification extends UIElement {
     const localClass = useMemo(() => {
       return classnames("elf--notification", {
         [direction]: true,
+        "has-icon": icon,
       });
-    }, [direction]);
+    }, [direction, icon]);
 
     const styleObject = {
       class: localClass,

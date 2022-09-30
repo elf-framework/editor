@@ -2440,9 +2440,10 @@ var __privateMethod = (obj, member, method) => {
       } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--notification", {
-          [direction]: true
+          [direction]: true,
+          "has-icon": icon
         });
-      }, [direction]);
+      }, [direction, icon]);
       const styleObject = {
         class: localClass,
         style: propertyMap(style2, cssProperties$A)
@@ -4908,11 +4909,14 @@ var __privateMethod = (obj, member, method) => {
       } = this.props;
       const x = width * s;
       const y = height * (1 - v);
-      const styleObject = {
-        class: sapa.classnames("elf--color-mixer", {
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf--color-mixer", {
           shadow,
           disabled
-        }),
+        });
+      }, [shadow, disabled]);
+      const styleObject = {
+        class: localClass,
         style: {
           ...propertyMap(
             {

@@ -1,9 +1,4 @@
-import {
-  classnames,
-  isString,
-  useEffect,
-  useStoreSet,
-} from "@elf-framework/sapa";
+import { classnames, isString } from "@elf-framework/sapa";
 import { Divider, Flex } from "@elf-framework/ui";
 
 import { traverseTree } from "../utils/traverseTree";
@@ -105,38 +100,13 @@ export function MarkdownPage({ page: Page, filename, menu }) {
     }
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            useStoreSet("scrollTarget", decodeURIComponent(entry.target.id));
-          }
-        }
-      },
-      {
-        rootMargin: "-50% 0px",
-      }
-    );
-
-    this.refs.$inner
-      ?.querySelectorAll("h1, h2, h3, h4, h5, h6")
-      .forEach((it) => {
-        observer.observe(it);
-      });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <div class="markdown-page">
       <div class="markdown-page-content">
         <div class="content-container">
           <FileEditorLink filename={filename} />
           <div class="content-inner" ref="$inner">
-            {template.children}
+            {template}
           </div>
           <Divider margin={100} />
           <LinkedPage menu={menu} />

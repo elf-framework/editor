@@ -1823,7 +1823,8 @@ var __privateMethod = (obj, member, method) => {
     }
     getTargetInstance(oldEl) {
       const targetList = Object.values(this.children).filter((instance) => {
-        return instance.$el.el === oldEl;
+        var _a;
+        return ((_a = instance.$el) == null ? void 0 : _a.el) === oldEl;
       });
       if (targetList.length) {
         return targetList[0];

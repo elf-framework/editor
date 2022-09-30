@@ -14,6 +14,7 @@ import {
   UIElement,
   isFunction,
   classnames,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -65,11 +66,15 @@ export class ColorMixer extends UIElement {
     const x = width * s;
     const y = height * (1 - v);
 
-    const styleObject = {
-      class: classnames("elf--color-mixer", {
+    const localClass = useMemo(() => {
+      return classnames("elf--color-mixer", {
         shadow,
         disabled,
-      }),
+      });
+    }, [shadow, disabled]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(
           {

@@ -103,7 +103,6 @@ function runningUpdateFragment(componentInstance, template) {
 }
 
 async function runningUpdate(componentInstance, template) {
-  // console.group("update",  componentInstance, template);
   // 첫 컴포넌트가 Fragment 인 경우 개별로 처리한다.
   // Fragment 는 여러개가 같은 레벨로 올 수 없다.
   if (template.isType(VNodeType.FRAGMENT)) {
@@ -138,13 +137,8 @@ async function runningUpdate(componentInstance, template) {
     } else if (template.isType(VNodeType.FRAGMENT)) {
       updateChildren(componentInstance.parentElement, template, options);
     } else {
-      // console.group("Reconcile");
       Reconcile(componentInstance.$el.el, template, options);
-      // componentInstance.prevTemplate = template;
-      // console.groupEnd();
     }
-
-    // console.groupEnd();
   }
 
   // element 에 component 속성 설정

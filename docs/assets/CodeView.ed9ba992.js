@@ -1,0 +1,1 @@
+import{c as e,o as n,p as s}from"./Version.066681bd.js";function d({content:t}){return e("div",{class:"codeview",style:{marginTop:10}},e(n,{size:"extra-large",activeKey:0,showIndicator:!0},t.map((a,o)=>{const{title:i,content:r}=a.props;return e(s,{title:i,key:o},r)})))}function m({content:t}){return e("div",{class:"codeview-item"},t)}export{d as C,m as a};

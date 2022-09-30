@@ -2,7 +2,7 @@ import CachedFilled from "@elf-framework/icon/CachedFilled";
 import EditFilled from "@elf-framework/icon/EditFilled";
 import HelpOutlineFilled from "@elf-framework/icon/HelpOutlineFilled";
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, VBox, Toast, Tooltip } from "@elf-framework/ui";
+import { Button, VBox, Tooltip } from "@elf-framework/ui";
 
 export function MainView() {
   return (

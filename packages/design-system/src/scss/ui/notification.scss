@@ -11,6 +11,7 @@
     --elf--notification-vgap: 10px;
     --elf--notification-width: 320px;
     --elf--notification-height: 60px;
+    --elf--notification-padding: 20px;
 
     background-color: var(--elf--notification-background-color);
     border: 0.5px solid var(--elf--notification-border-color);
@@ -101,6 +102,7 @@
         flex: 1 1 auto;
         display: flex;
         align-items: center;
+        padding: var(--elf--notification-padding);
 
         > .text {
             line-height: 1.2;
