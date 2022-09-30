@@ -7,7 +7,7 @@ export function HelpTextView() {
   const [invalid, setInvalid] = useState(false);
   const [hasValidIcon, setHasValidIcon] = useState(false);
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <VBox
         style={{
           gap: 30,

@@ -48,7 +48,7 @@ export function MainView() {
 
       <div>
         <Toolbar
-          type="primary"
+          variant="primary"
           rounded={true}
           items={[
             {
@@ -84,7 +84,7 @@ export function MainView() {
       </div>
       <div>
         <Toolbar
-          type="secondary"
+          variant="secondary"
           rounded={true}
           items={[
             {
@@ -120,7 +120,7 @@ export function MainView() {
       </div>
       <div>
         <Toolbar
-          type="success"
+          variant="success"
           rounded={true}
           items={[
             {

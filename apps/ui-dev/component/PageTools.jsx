@@ -1,9 +1,11 @@
+import { classnames } from "@elf-framework/sapa";
 import { Tools } from "@elf-framework/ui";
 
 import mainMenus from "../constants/main-menus";
 import "./PageTools.scss";
 
 export function PageTools({ menu }) {
+  const pathname = location.pathname;
   return (
     <div class="page-tools">
       <div class="sm">
@@ -25,6 +27,7 @@ export function PageTools({ menu }) {
                   }
                   return {
                     type: "link",
+                    selected: pathname.startsWith(it.category),
                     ...it,
                   };
                 }),
@@ -39,9 +42,18 @@ export function PageTools({ menu }) {
             return <a href={it.link}>{it.title}</a>;
           }
 
+          const selected = pathname.startsWith(it.category);
+
           return [
             <span class="divider"></span>,
-            <a href={it.link}>{it.title}</a>,
+            <a
+              href={it.link}
+              class={classnames({
+                selected,
+              })}
+            >
+              {it.title}
+            </a>,
           ];
         })}
       </div>

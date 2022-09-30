@@ -95,7 +95,7 @@ export class ToolsMenuItem extends ToolsItem {
           ) : undefined}
         </button>
         {opened && !disabled ? (
-          <div class="menu-area" style={{ backgroundColor: "yellow" }}>
+          <div class="menu-area">
             <div class="background" data-direction={direction}></div>
             <div class="arrow"></div>
             <Menu

@@ -26,6 +26,17 @@
       "dependsOn": ["ui:watch"],
       "cache": false
     },
+    "sapa:watch": {
+      "dependsOn": [
+        "^sapa:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },    
+    "sapa:dev": {
+      "dependsOn": ["sapa:watch"],
+      "cache": false
+    },    
     "ssr:watch": {
       "dependsOn": [
         "^ssr:watch"
@@ -46,17 +57,6 @@
     },        
     "editor:dev": {
       "dependsOn": ["editor:watch"]
-    },    
-    "ui-react:watch": {
-      "dependsOn": [
-        "^ui-react:watch"
-      ],
-      "outputs": ["dist/**", ".next/**"],
-      "cache": false
-    },        
-    "ui-react:dev": {
-      "dependsOn": ["ui-react:watch"]
-    }                                   
-
+    }
   }
 }

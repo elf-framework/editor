@@ -12,6 +12,7 @@
     "ssr:dev": "turbo run ssr:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
     "ui:dev": "turbo run ui:dev --parallel",
+    "sapa:dev": "turbo run sapa:dev --parallel",
     "ui-react:dev": "turbo run ui-react:dev --parallel",
     "editor:dev": "turbo run editor:dev --parallel",
     "editor:profile": "turbo run build --parallel --profile",

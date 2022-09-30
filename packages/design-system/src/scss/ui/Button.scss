@@ -223,8 +223,11 @@
   &:focus,
   &.focused {
 
-    border-color: var(--color-white);
-    outline: 2px solid var(--elf--button-border-color);
+    &:not(.default) {
+      border-color: var(--color-white);
+      outline: 2px solid var(--elf--button-border-color);
+    } 
+
   }    
 
   &.primary {

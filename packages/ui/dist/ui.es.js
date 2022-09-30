@@ -2098,8 +2098,7 @@ class ToolsMenuItem extends ToolsItem {
     ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ createElementJsx("span", {
       class: classnames("arrow", { opened })
     }, /* @__PURE__ */ createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-area",
-      style: { backgroundColor: "yellow" }
+      class: "menu-area"
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "background",
       "data-direction": direction
@@ -2385,7 +2384,7 @@ class Toolbar extends UIElement {
     const {
       style: style2 = {},
       align = "space-between",
-      type = "default",
+      variant = "default",
       rounded = false,
       emphasized = false,
       items = [],
@@ -2398,13 +2397,12 @@ class Toolbar extends UIElement {
           [align]: true,
           rounded,
           emphasized,
-          [type]: true
+          [variant]: true
         },
         className
       );
-    }, [align, type, rounded, emphasized, className]);
+    }, [align, variant, rounded, emphasized, className]);
     const styleObject = {
-      id: "toolbar-" + this.id,
       class: localClass,
       style: propertyMap(style2, cssProperties$B)
     };
@@ -2412,8 +2410,7 @@ class Toolbar extends UIElement {
       ...styleObject,
       onContextMenu: (e) => e.preventDefault()
     }, makeToolbarItem(items, {
-      emphasized,
-      toolbarId: "toolbar-" + this.id
+      emphasized
     }));
   }
 }
@@ -2988,6 +2985,11 @@ class Grid extends UIElement {
       },
       ...noneStyle
     };
+    Object.keys(styleObject.style).forEach((key) => {
+      if (styleObject.style[key] === void 0) {
+        delete styleObject.style[key];
+      }
+    });
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
     }, content);

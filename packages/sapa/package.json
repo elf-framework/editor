@@ -26,6 +26,7 @@
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
+    "sapa:watch": "npm run watch",     
     "ssr:watch": "npm run watch",
     "ui:watch": "npm run watch",
     "editor:watch": "npm run watch",

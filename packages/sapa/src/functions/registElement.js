@@ -183,9 +183,9 @@ export function isGlobalForceRender() {
 }
 
 export function setGlobalForceRender(isForceRender = false) {
-  if (typeof globalForceRender === "undefined") {
-    globalForceRender = isForceRender;
-  }
+  // if (typeof globalForceRender === "undefined") {
+  globalForceRender = isForceRender;
+  // }
 }
 /**
  * root instance 를 모두 그린다.
@@ -246,11 +246,11 @@ export function refreshModule(id, newModules) {
 export function getModule(Component) {
   const id = _moduleMap.get(Component);
   if (!id) {
-    return Component;
+    return;
   }
   const m = _modules[id];
   if (!m) {
-    return Component;
+    return;
   }
 
   // FIXED: function name is always same
@@ -283,5 +283,5 @@ export function getModule(Component) {
     return m.new[oldKey];
   }
 
-  return Component;
+  return undefined;
 }

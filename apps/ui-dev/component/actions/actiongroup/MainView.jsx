@@ -2,7 +2,7 @@ import ContentCopyFilled from "@elf-framework/icon/ContentCopyFilled";
 import DeleteFilled from "@elf-framework/icon/DeleteFilled";
 import EditFilled from "@elf-framework/icon/EditFilled";
 import MoreHorizOutlined from "@elf-framework/icon/MoreHorizOutlined";
-import { Button, VBox } from "@elf-framework/ui";
+import { ActionGroup, Button, VBox } from "@elf-framework/ui";
 
 export function MainView() {
   return (
@@ -11,21 +11,23 @@ export function MainView() {
     >
       <div>
         <div style={{ gap: 10, display: "flex", justifyContent: "center" }}>
-          <Button>
-            <EditFilled />
-            Edit
-          </Button>
-          <Button>
-            <ContentCopyFilled />
-            Copy
-          </Button>
-          <Button>
-            <DeleteFilled />
-            Delete
-          </Button>
-          <Button iconOnly>
-            <MoreHorizOutlined />
-          </Button>
+          <ActionGroup>
+            <Button>
+              <EditFilled />
+              Edit
+            </Button>
+            <Button>
+              <ContentCopyFilled />
+              Copy
+            </Button>
+            <Button>
+              <DeleteFilled />
+              Delete
+            </Button>
+            <Button iconOnly>
+              <MoreHorizOutlined />
+            </Button>
+          </ActionGroup>
         </div>
       </div>
     </VBox>

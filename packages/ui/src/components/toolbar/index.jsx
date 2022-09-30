@@ -42,7 +42,7 @@ export class Toolbar extends UIElement {
     const {
       style = {},
       align = "space-between",
-      type = "default",
+      variant = "default",
       rounded = false,
       emphasized = false,
       items = [],
@@ -56,14 +56,13 @@ export class Toolbar extends UIElement {
           [align]: true,
           rounded,
           emphasized,
-          [type]: true,
+          [variant]: true,
         },
         className
       );
-    }, [align, type, rounded, emphasized, className]);
+    }, [align, variant, rounded, emphasized, className]);
 
     const styleObject = {
-      id: "toolbar-" + this.id,
       class: localClass,
       style: propertyMap(style, cssProperties),
     };
@@ -72,7 +71,6 @@ export class Toolbar extends UIElement {
       <div {...styleObject} onContextMenu={(e) => e.preventDefault()}>
         {makeToolbarItem(items, {
           emphasized,
-          toolbarId: "toolbar-" + this.id,
         })}
       </div>
     );

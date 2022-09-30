@@ -9,7 +9,7 @@ import treeData from "./data/base.json";
 export function IconsView() {
   const [provider] = useState(new TreeViewProvider(treeData));
   return (
-    <Grid columns={["50%", "50%"]} gap={30}>
+    <Grid columns={["50%", 1]} gap={30}>
       <VBox
         style={{
           gap: 30,
