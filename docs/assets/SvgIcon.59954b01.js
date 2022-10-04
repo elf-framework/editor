@@ -1,0 +1,1 @@
+import{c as n}from"./Version.833375e0.js";function r(e){return n(e.tag,e.attributes,e.children.map(r))}function c(e,a={}){return n("span",{class:`elf--icon ${e.theme}`,"data-name":e.name},n("svg",{...e.icon.attributes,fill:"currentColor",...a},e.icon.children.map(r)))}export{c};

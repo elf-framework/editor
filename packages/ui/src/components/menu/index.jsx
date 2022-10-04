@@ -165,13 +165,14 @@ class MenuItem extends UIElement {
 
     const selectedValue = isFunction(selected) ? selected() : selected;
 
+    const localClass = useMemo(() => {
+      return classnames({
+        hover,
+      });
+    }, [hover]);
+
     return (
-      <li
-        class={classnames({
-          hover,
-        })}
-        disabled={disabled ? true : undefined}
-      >
+      <li class={localClass} disabled={disabled ? true : undefined}>
         <div class="menu-item-content">
           {selectable ? (
             <span class="selected-icon">
@@ -181,10 +182,12 @@ class MenuItem extends UIElement {
 
           {icon ? <div class="icon">{icon}</div> : undefined}
           {title ? <div class="menu-title">{title}</div> : undefined}
-          <div class="value-area">
-            {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
-            {hasItems ? <div class="icon">{expandIcon}</div> : undefined}
-          </div>
+          {shortcut || hasItems ? (
+            <div class="value-area">
+              {shortcut ? <div class="shortcut">{shortcut}</div> : undefined}
+              {hasItems ? <div class="icon">{expandIcon}</div> : undefined}
+            </div>
+          ) : undefined}
         </div>
         {description ? (
           <div class="menu-item-description">{description}</div>

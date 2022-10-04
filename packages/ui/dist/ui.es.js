@@ -1565,10 +1565,13 @@ class MenuItem extends UIElement {
     } = this.state;
     const hasItems = items.length > 0;
     const selectedValue = isFunction(selected) ? selected() : selected;
-    return /* @__PURE__ */ createElementJsx("li", {
-      class: classnames({
+    const localClass = useMemo(() => {
+      return classnames({
         hover
-      }),
+      });
+    }, [hover]);
+    return /* @__PURE__ */ createElementJsx("li", {
+      class: localClass,
       disabled: disabled ? true : void 0
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "menu-item-content"
@@ -1578,13 +1581,13 @@ class MenuItem extends UIElement {
       class: "icon"
     }, icon) : void 0, title ? /* @__PURE__ */ createElementJsx("div", {
       class: "menu-title"
-    }, title) : void 0, /* @__PURE__ */ createElementJsx("div", {
+    }, title) : void 0, shortcut || hasItems ? /* @__PURE__ */ createElementJsx("div", {
       class: "value-area"
     }, shortcut ? /* @__PURE__ */ createElementJsx("div", {
       class: "shortcut"
     }, shortcut) : void 0, hasItems ? /* @__PURE__ */ createElementJsx("div", {
       class: "icon"
-    }, expandIcon) : void 0)), description ? /* @__PURE__ */ createElementJsx("div", {
+    }, expandIcon) : void 0) : void 0), description ? /* @__PURE__ */ createElementJsx("div", {
       class: "menu-item-description"
     }, description) : void 0, items.length > 0 || show ? /* @__PURE__ */ createElementJsx(Menu, {
       items,

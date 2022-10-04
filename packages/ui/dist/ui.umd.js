@@ -1567,10 +1567,13 @@ var __privateMethod = (obj, member, method) => {
       } = this.state;
       const hasItems = items.length > 0;
       const selectedValue = sapa.isFunction(selected) ? selected() : selected;
-      return /* @__PURE__ */ sapa.createElementJsx("li", {
-        class: sapa.classnames({
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames({
           hover
-        }),
+        });
+      }, [hover]);
+      return /* @__PURE__ */ sapa.createElementJsx("li", {
+        class: localClass,
         disabled: disabled ? true : void 0
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "menu-item-content"
@@ -1580,13 +1583,13 @@ var __privateMethod = (obj, member, method) => {
         class: "icon"
       }, icon) : void 0, title ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "menu-title"
-      }, title) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, title) : void 0, shortcut || hasItems ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "value-area"
       }, shortcut ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "shortcut"
       }, shortcut) : void 0, hasItems ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "icon"
-      }, expandIcon) : void 0)), description ? /* @__PURE__ */ sapa.createElementJsx("div", {
+      }, expandIcon) : void 0) : void 0), description ? /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "menu-item-description"
       }, description) : void 0, items.length > 0 || show ? /* @__PURE__ */ sapa.createElementJsx(Menu, {
         items,

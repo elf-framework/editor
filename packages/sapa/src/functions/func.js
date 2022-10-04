@@ -221,5 +221,5 @@ export function classnames(...args) {
     }
   });
 
-  return result.join(" ");
+  return result.length ? result.join(" ") : undefined;
 }

@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 2.2.7
+
+### Patch Changes
+
+- update menu component
+
 ## 2.2.5
 
 ### Patch Changes

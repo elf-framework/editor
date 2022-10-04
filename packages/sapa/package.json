@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "2.2.4",
+  "version": "0.0.4",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [
@@ -26,7 +26,7 @@
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
-    "sapa:watch": "npm run watch",     
+    "sapa:watch": "npm run watch",
     "ssr:watch": "npm run watch",
     "ui:watch": "npm run watch",
     "editor:watch": "npm run watch",

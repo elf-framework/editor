@@ -194,7 +194,7 @@ var __privateMethod = (obj, member, method) => {
         result.push(it);
       }
     });
-    return result.join(" ");
+    return result.length ? result.join(" ") : void 0;
   }
   const VNodeType = {
     NODE: 8,

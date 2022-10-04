@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 2.2.6
+
+### Patch Changes
+
+- fixed classnames function bug
+
 ## 2.2.4
 
 ### Patch Changes
