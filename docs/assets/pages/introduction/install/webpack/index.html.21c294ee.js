@@ -1,2 +1,0 @@
-import{i as e,s as c,c as a}from"../../../../Version.066681bd.js";import{L as r,M as s}from"../../../../LayoutManager.7778c99f.js";const m="Webpack",u="MainLayout";function o(t){const n=Object.assign({h1:"h1",p:"p"},t.components);return e.createElementJsx(e.FragmentInstance,null,e.createElementJsx(n.h1,null,m),`
-`,e.createElementJsx(n.p,null,"Comming soon..."))}function l(t={}){const{wrapper:n}=t.components||{};return n?e.createElementJsx(n,t,e.createElementJsx(o,t)):o(t)}function i(){const t=r.get(u);return a(t,{maxWidth:900},a(s,{page:l}))}c(i);

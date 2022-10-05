@@ -9,6 +9,7 @@
     "ui:dev": "npm run vite:dev",
     "//build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
+    "prod": "npm run vite:prod",
     "vite:preview": "vite preview --config=vite.prod.config.js",
     "copy:resource": "cp CNAME ../../docs/",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",

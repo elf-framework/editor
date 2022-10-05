@@ -1,2 +1,0 @@
-import{i as t,s as o,c as s}from"../../../Version.066681bd.js";import{P as m}from"../../../PageBoard.02ebaf31.js";import"../../../LayoutManager.7778c99f.js";const c="Router",r="SapaLayout",l="pages/sapa/dom/page.mdx";function a(e){const n=Object.assign({h1:"h1",p:"p"},e.components);return t.createElementJsx(t.FragmentInstance,null,t.createElementJsx(n.h1,null,c),`
-`,t.createElementJsx(n.p,null,"Comming soon..."))}function i(e={}){const{wrapper:n}=e.components||{};return n?t.createElementJsx(n,e,t.createElementJsx(a,e)):a(e)}o(s(m,{layout:r,filename:l,page:i}));

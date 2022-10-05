@@ -1,1 +1,0 @@
-import{c as a}from"./Version.833375e0.js";import{L as u,M as s}from"./LayoutManager.3c16e74c.js";function c({layout:r,page:t,filename:e}){const o=u.get(r||"SapaLayout");return a(o,null,n=>a("div",null,a(s,{page:t,filename:e,menu:n})))}export{c as P};
