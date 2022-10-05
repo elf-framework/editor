@@ -23,7 +23,7 @@
     "@elf-framework/color": "*",
     "@elf-framework/design-system": "*",
     "@elf-framework/design-tokens": "*",
-    "@elf-framework/icon": "^0.0.3",
+    "@elf-framework/icon": "^0.0.4",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",
