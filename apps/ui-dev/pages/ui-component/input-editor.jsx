@@ -1,4 +1,4 @@
-import AddChartFilled from "@elf-framework/icon/esm/AddChartFilled";
+import AddChartFilled from "@elf-framework/icon/AddChartFilled";
 import { start } from "@elf-framework/sapa";
 import { InputEditor, TextAreaEditor } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";

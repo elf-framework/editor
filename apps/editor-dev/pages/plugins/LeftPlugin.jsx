@@ -1,4 +1,4 @@
-import AddChartFilled from "@elf-framework/icon/esm/AddChartFilled";
+import AddChartFilled from "@elf-framework/icon/AddChartFilled";
 import { Layer, Tab, TabItem, View, VirtualScroll } from "@elf-framework/ui";
 
 export function LeftPlugin(editor) {
