@@ -35,6 +35,8 @@ jobs:
         with:
           node-version: 16        
           cache: 'npm'
+      - name: Cache 
+        run: npm cache clean -f
       - name: Install
         run: npm install
       - name: build
