@@ -19,8 +19,8 @@ export function TextOverflowView() {
         >
           <Alert variant="dark" closable>
             Your trial has expired. Please purchase to continue.
-            <div style={{ textAlign: "right" }}>
-              <RoundButton outline variant="dark" place="toast">
+            <div style={{ textAlign: "right", marginTop: 10 }}>
+              <RoundButton outline variant="primary" place="toast">
                 Update
               </RoundButton>
             </div>

@@ -713,6 +713,10 @@ declare module "@elf-framework/ui" {
     props: PopoverProps & CommonStyle;
   }
 
+  export class DropdownPopover extends Popover {
+    props: PopoverProps & CommonStyle;
+  }
+
   interface PanelStyle {
     backgroundColor: string;
     color: string;

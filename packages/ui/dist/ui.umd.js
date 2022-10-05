@@ -2682,6 +2682,12 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("popover", Popover);
   registerComponent("Popover", Popover);
+  function DropdownPopover(props) {
+    return /* @__PURE__ */ sapa.createElementJsx(Popover, {
+      ...props,
+      type: "dropdown"
+    });
+  }
   const cssProperties$x = makeCssVariablePrefixMap("--elf--panel", {
     backgroundColor: true,
     color: true,
@@ -6973,6 +6979,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.DataEditor = DataEditor;
   exports2.Dialog = Dialog;
   exports2.Divider = Divider;
+  exports2.DropdownPopover = DropdownPopover;
   exports2.END = END;
   exports2.EventControlPanel = EventControlPanel;
   exports2.EventPanel = EventPanel;

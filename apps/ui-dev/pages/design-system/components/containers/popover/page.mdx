@@ -10,6 +10,7 @@ import { OptionsView } from "../../../../../component/containers/popover/Options
 import { ShowTipView } from "../../../../../component/containers/popover/ShowTipView.jsx"; 
 import { PlacementView } from "../../../../../component/containers/popover/PlacementView.jsx"; 
 import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -18,9 +19,145 @@ Popovers are containers used to display transient content such as menus, options
 
 <MainView />
 
-<div style={{ display: "flex", justifyContent: "flex-start", gap: 30, padding: "30px 0"}}>
-    <UIComponentLink link="/pages/ui-component/popover/" />
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx
+import { Popover, Button, Menu } from "@elf-framework/ui";
+
+function App() {
+    return <div>
+        <Popover
+            body={
+            <Menu
+                type="dropdown"
+                items={[
+                    { type: "item", title: "Document Setup" },
+                    { type: "item", title: "Settings" },
+                    { type: "item", title: "Copy" },
+                    {
+                        type: "section",
+                        title: "Group",
+                    },
+                    {
+                        type: "item",
+                        title: "Languages",
+                    },
+                ]}
+                style={{
+                width: 200,
+                position: "relative",
+                boxShadow: "none",
+                }}
+            />
+            }
+            show={true}
+            showTip
+            placement="bottom-left"
+        >
+            <Button>
+            <SettingsFilled /> Settings
+            </Button>
+        </Popover>
+    </div>
+}
+
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--popover bottom-left" style="">
+    <div class="elf--popover-content"><button class="elf--button default medium rect "><span><span
+                    class="elf--icon filled" data-name="Settings"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z">
+                        </path>
+                    </svg></span> Settings</span></button>
+        <div class="tip"></div>
+    </div>
+    <div class="elf--popover-message">
+        <div class="elf--popover-message-content">
+            <menu data-direction="left" class="elf--menu dropdown light"
+                style="--elf--menu-width: 200px; position: relative; --elf--menu-box-shadow: none;">
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Document Setup</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Settings</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Copy</div>
+                    </div>
+                </li>
+                <li class="section-title">Group</li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Languages</div>
+                    </div>
+                </li>
+            </menu>
+        </div>
+        <div class="event-panel"></div>
+    </div>
 </div>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Typescript">
+
+```typescript
+  interface PopoverStyle {
+    backgroundColor?: string;
+    hoverColor?: string;
+    borderColor?: string;
+    boxShadow?: string;
+    toolsBorderColor?: string;
+    toolsBorderRadius?: string;
+    color?: string;
+    hgap?: number;
+    vgap?: number;
+    delay?: string;
+  }
+
+  type PopoverPlacementType =
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right"
+    | "left-top"
+    | "left-bottom"
+    | "right-top"
+    | "right-bottom";
+
+  export interface PopoverProps {
+    content: ContentType;
+    body?: ContentType;
+    placement: PopoverPlacementType;
+    trigger: "hover" | "click";
+    animated?: boolean;
+    show: boolean;
+    style: TooltipStyle & CommonStyle;
+    showTip: boolean;
+  }
+  export class Popover extends UIElement {
+    props: PopoverProps & CommonStyle;
+  }
+
+  export class DropdownPopover extends Popover {
+    props: PopoverProps & CommonStyle;
+  }
+  ```
+    </CodeViewItem>
+</CodeView>
+
 
 ## Options 
 
@@ -29,11 +166,212 @@ Popovers are containers used to display transient content such as menus, options
 
 <OptionsView />
 
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx
+import SettingsFilled from "@elf-framework/icon/SettingsFilled";
+import { Button, Popover } from "@elf-framework/ui";
+
+export function App() {
+  return (
+
+        <Popover
+            body={
+            <Menu
+                type="dropdown"
+                items={[
+                    ...
+                ]}
+                style={{
+                    width: 200,
+                    position: "relative",
+                    boxShadow: "none",
+                }}
+            />
+            }
+            show={true}
+            placement="bottom-left"
+        >
+            <Button selected={true} style={{ display: "none" }}>
+                <SettingsFilled /> Settings
+            </Button>
+        </Popover>
+
+  );
+}
+
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--popover bottom-left" style="">
+    <div class="elf--popover-content"><button class="elf--button selected default medium rect "
+            style="display: none;"><span><span class="elf--icon filled" data-name="Settings"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z">
+                        </path>
+                    </svg></span> Settings</span></button></div>
+    <div class="elf--popover-message">
+        <div class="elf--popover-message-content">
+            <menu data-direction="left" class="elf--menu dropdown light"
+                style="--elf--menu-width: 200px; position: relative; --elf--menu-box-shadow: none;">
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Document Setup</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Settings</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Copy</div>
+                    </div>
+                </li>
+                <li class="section-title">Group</li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Languages</div>
+                    </div>
+                </li>
+            </menu>
+        </div>
+        <div class="event-panel"></div>
+    </div>
+</div>
+```
+    </CodeViewItem>
+</CodeView>
+
 ### Show tip
 
 <ShowTipView />
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx  {6} showLineNumbers
+ <Popover
+        body={
+            ...
+        }
+        show={true}
+        showTip={true}
+        placement="bottom"
+    >
+        <Button selected={true}>
+            <SettingsFilled /> Settings
+        </Button>
+    </Popover>
+```
+    </CodeViewItem>
+
+    <CodeViewItem title="Html">
+```html
+<div class="elf--popover bottom" style="">
+    <div class="elf--popover-content"><button class="elf--button selected default medium rect "
+            style="visibility: hidden;"><span><span class="elf--icon filled" data-name="Settings"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z">
+                        </path>
+                    </svg></span> Settings</span></button>
+        <div class="tip"></div>
+    </div>
+    <div class="elf--popover-message">
+        <div class="elf--popover-message-content">
+            <menu data-direction="left" class="elf--menu dropdown light"
+                style="--elf--menu-width: 200px; position: relative; --elf--menu-box-shadow: none;">
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Document Setup</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Settings</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Copy</div>
+                    </div>
+                </li>
+            </menu>
+        </div>
+        <div class="event-panel"></div>
+    </div>
+</div>
+```
+    </CodeViewItem>    
+</CodeView>
 
 
 ### Placement
 
 <PlacementView />
+
+<CodeView >
+    <CodeViewItem title="Sapa">
+```jsx {11} showLineNumbers
+<Popover
+    body={
+        <Menu
+            type="dropdown"
+            items={[
+                ...
+            ]}
+        />
+    }
+    show={true}
+    placement="bottom-left"
+>
+    <Button>
+        <SettingsFilled /> Settings
+    </Button>
+</Popover>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--popover top-left" style="">
+    <div class="elf--popover-content">
+        <button class="elf--button default medium rect ">
+            <span>
+                <span
+                    class="elf--icon filled" data-name="Settings"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z">
+                        </path>
+                    </svg>
+                </span> Settings
+            </span>
+        </button>
+    </div>
+    <div class="elf--popover-message">
+        <div class="elf--popover-message-content">
+            <menu data-direction="center" class="elf--menu dropdown light compact"
+                style="--elf--menu-width: auto; position: relative;">
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Document Setup</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item-content">
+                        <div class="menu-title">Settings</div>
+                    </div>
+                </li>
+            </menu>
+        </div>
+        <div class="event-panel"></div>
+    </div>
+</div>
+```
+    </CodeViewItem>
+</CodeView>

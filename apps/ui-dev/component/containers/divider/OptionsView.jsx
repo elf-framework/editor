@@ -34,18 +34,17 @@ export function OptionsView() {
       </VBox>
       <div>
         <p>
-          The <code>small</code> divider is the default size. This is used to
-          divide similar components such as table rows, action button groups,
-          and components within a panel.
+          The <code>small</code> dividers are the default size. Used to split
+          similar components, such as table rows, action button groups, and
+          components within a panel.
         </p>
         <p>
-          The <code>medium</code> divider is used for dividing subsections on a
-          page, or to separate different groupings of components such as panels,
-          rails, etc.
+          The <code>medium</code> dividers are used to divide subsections of
+          pages or to separate different groups of components, such as panels,
+          etc.
         </p>
-
         <p>
-          The <code>large</code> divider should only be used for page titles or
+          The <code>large</code> dividers should only be used for page titles or
           section titles.
         </p>
       </div>

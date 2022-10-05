@@ -2680,6 +2680,12 @@ class Popover extends UIElement {
 }
 registerComponent("popover", Popover);
 registerComponent("Popover", Popover);
+function DropdownPopover(props) {
+  return /* @__PURE__ */ createElementJsx(Popover, {
+    ...props,
+    type: "dropdown"
+  });
+}
 const cssProperties$x = makeCssVariablePrefixMap("--elf--panel", {
   backgroundColor: true,
   color: true,
@@ -6972,6 +6978,7 @@ export {
   DataEditor,
   Dialog,
   Divider,
+  DropdownPopover,
   END,
   EventControlPanel,
   EventPanel,

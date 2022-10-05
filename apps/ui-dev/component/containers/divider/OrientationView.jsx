@@ -39,9 +39,9 @@ export function OrientationView() {
       </VBox>
       <div>
         <p>
-          By default, dividers are horizontal and should be used for separating
-          content vertically. The vertical divider is used to separate content
-          horizontally.
+          By default, the dividing line is horizontal and should be used to
+          separate content vertically. Vertical dividers are used to separate
+          content horizontally.
         </p>
       </div>
     </Grid>

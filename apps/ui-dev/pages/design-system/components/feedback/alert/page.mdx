@@ -12,13 +12,62 @@ import { ActionableView } from "../../../../../component/feedback/alert/Actionab
 import { DismissableView } from "../../../../../component/feedback/alert/DismissableView.jsx"; 
 import { TextOverflowView } from "../../../../../component/feedback/alert/TextOverflowView.jsx"; 
 import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
-Alert banners show pressing and high-signal messages, such as system alerts. They're meant to be noticed and prompt users to take action.
+The alert banner displays emergency and high signal messages, such as system warnings. This is to pay attention and urge the user to take action.
 
 
 <MainView />
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {15-17} showLineNumbers
+import EditFilled from "@elf-framework/icon/EditFilled";
+import { Alert, Flex, VBox } from "@elf-framework/ui";
+
+export function MainView() {
+  return (
+    <VBox
+      style={{
+        gap: 30,
+        backgroundColor: "#ececec",
+        padding: "60px 150px",
+        position: "relative",
+      }}
+    >
+      <Flex style={{ flexDirection: "column", gap: 10, position: "relative" }}>
+        <Alert icon={<EditFilled />} title={"title"}>
+          Your trial has expired. Please purchase to continue.
+        </Alert>
+      </Flex>
+    </VBox>
+  );
+}
+
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html showLineNumbers
+<div class="elf--alert default rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+    <div class="elf--alert-title">
+        <span class="elf--icon filled" data-name="Edit">
+            <svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
+                </path>
+            </svg>
+        </span> 
+        <span>title</span> 
+    </div>
+    <div class="elf--alert-content"> <span>Your trial has expired. Please purchase to continue.</span> </div>
+</div>
+
+```
+    </CodeViewItem>
+</CodeView>
 
 ## Options 
 
@@ -27,9 +76,71 @@ Alert banners show pressing and high-signal messages, such as system alerts. The
 
 <TextView />
 
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx
+<Alert variant="dark" closable>
+    Your trial has expired. Please purchase to continue.
+</Alert>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div class="elf--alert dark closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+    <div class="elf--alert-content"> <span>Your trial has expired. Please purchase to continue.</span> </div>
+    <div class="elf--alert-close">×</div>
+</div>
+```
+    </CodeViewItem>
+
+</CodeView>
+
 ### Variant
 
 <VariantView />
+
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {1, 4, 7} showLineNumbers
+<Alert variant="dark" closable>
+    Your trial has expired. Please purchase to continue.
+</Alert>
+<Alert icon={<InfoOutlined />} variant="primary" closable>
+    Your trial has expired.
+</Alert>
+<Alert icon={<WarningFilled />} variant="danger" closable>
+    Connect interrupted.
+</Alert>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html showLineNumbers
+<div style="display: flex; gap: 30px; flex-direction: column;">
+    <div class="elf--alert dark closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+        <div class="elf--alert-content"> <span>Your trial has expired. Please purchase to continue.</span> </div>
+        <div class="elf--alert-close">×</div>
+    </div>
+    <div class="elf--alert primary closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+        <div class="elf--alert-content"><span class="elf--icon outlined" data-name="Info"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+                    </path>
+                </svg></span> <span>Your trial has expired.</span> </div>
+        <div class="elf--alert-close">×</div>
+    </div>
+    <div class="elf--alert danger closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+        <div class="elf--alert-content"><span class="elf--icon filled" data-name="Warning"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path>
+                </svg></span> <span>Connect interrupted.</span> </div>
+        <div class="elf--alert-close">×</div>
+    </div>
+</div>
+```
+    </CodeViewItem>    
+</CodeView>
 
 
 
@@ -37,10 +148,115 @@ Alert banners show pressing and high-signal messages, such as system alerts. The
 
 <ActionableView />
 
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {5-9, 18-22} showLineNumbers
+{/* with title */}
+<Alert
+    variant="dark"
+    closable
+    actions={
+        <RoundButton outline place="toast">
+            open
+        </RoundButton>
+    }
+>
+    Your trial has expired. Please purchase to continue.
+</Alert>
+
+{/* with title */}
+<Alert
+    variant="dark"
+    closable
+    actions={
+        <RoundButton outline place="toast">
+        open
+        </RoundButton>
+    }
+    title="Title"
+>
+    Your trial has expired. Please purchase to continue.
+</Alert>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html
+<div style="display: flex; gap: 30px; flex-direction: column;">
+    <div class="elf--alert dark closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+        <div class="elf--alert-content"> <span>Your trial has expired. Please purchase to continue.</span>
+            <div class="elf--alert-actions"><button
+                    class="elf--button outline default medium round toast"><span>open</span></button></div>
+        </div>
+        <div class="elf--alert-close">×</div>
+    </div>
+    <div class="elf--alert dark closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+        <div class="elf--alert-title"> <span>Title</span>
+            <div class="elf--alert-actions"><button
+                    class="elf--button outline default medium round toast"><span>open</span></button></div>
+        </div>
+        <div class="elf--alert-content"> <span>Your trial has expired. Please purchase to continue.</span> </div>
+        <div class="elf--alert-close">×</div>
+    </div>
+</div>
+```
+    </CodeViewItem>    
+</CodeView>
+
 ### Dismissable 
 
 <DismissableView />
 
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Alert variant="dark" dismissable closable>
+    Your trial has expired. Please purchase to continue.
+</Alert>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```Html
+<div class="elf--alert dark closable rect dismissable" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+    <div class="elf--alert-content"> <span>Your trial has expired. Please purchase to continue.</span> </div>
+    <div class="elf--alert-close">×</div>
+</div>
+```
+    </CodeViewItem>    
+</CodeView>
+
 ### Text overflow
 
 <TextOverflowView />
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {3-7} showLineNumbers
+<Alert variant="dark" closable>
+    Your trial has expired. Please purchase to continue.
+    <div style={{ textAlign: "right", marginTop: 10 }}>
+        <RoundButton outline variant="primary" place="toast">
+            Update
+        </RoundButton>
+    </div>
+</Alert>
+```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html showLineNumbers
+<div class="elf--alert dark closable rect" style="transition: opacity 0ms ease-in-out 0s; opacity: 1;">
+    <div class="elf--alert-content"> 
+        <span>
+            Your trial has expired. Please purchase to continue.
+            
+            <div style="text-align: right; margin-top: 10px;">
+                <button class="elf--button outline primary medium round toast">
+                    <span>Update</span>
+                </button>
+            </div>
+        </span>
+    </div>
+    <div class="elf--alert-close">×</div>
+</div>
+```
+    </CodeViewItem>    
+</CodeView>
