@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/design-system",
-  "version": "2.2.5",
+  "version": "0.0.6",
   "description": "Fantastic Design System ",
   "main": "./dist/design-system.umd.js",
   "module": "./dist/design-system.es.js",
@@ -13,8 +13,7 @@
     }
   },
   "dependencies": {
-    "@elf-framework/design-tokens": "*",
-    "open-color": "^1.9.1"
+    "@elf-framework/design-tokens": "*"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",

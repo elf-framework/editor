@@ -1,0 +1,11 @@
+{
+  "popover": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default.value}"
+        }
+      }
+    }
+  }
+}

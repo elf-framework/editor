@@ -55,7 +55,8 @@ export function renderComponent(component, $container = undefined) {
     return;
   }
 
-  window.requestIdleCallback(() => {
+  // eslint-disable-next-line no-undef
+  requestIdleCallback(() => {
     createRenderCallback(component)?.($container);
   });
 }

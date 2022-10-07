@@ -179,17 +179,6 @@ export class EventMachine extends HookMachine {
     }
   }
 
-  /**
-   * async render method
-   *
-   * @param {Dom|HTMLElement} $container
-   */
-  checkLoad($container) {
-    window.requestAnimationFrame(() => {
-      renderComponent(this, $container);
-    });
-  }
-
   get state() {
     return this.#state;
   }
@@ -264,9 +253,11 @@ export class EventMachine extends HookMachine {
   };
 
   getTargetInstance(oldEl) {
-    const targetList = Object.values(this.children).filter((instance) => {
-      return instance.$el?.el === oldEl;
-    });
+    const targetList = Object.values(this.children)
+      .filter(Boolean)
+      .filter((instance) => {
+        return instance?.$el?.el === oldEl;
+      });
 
     if (targetList.length) {
       return targetList[0];

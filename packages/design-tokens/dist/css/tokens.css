@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 06 Oct 2022 01:50:17 GMT
+ * Generated on Fri, 07 Oct 2022 12:42:14 GMT
  */
 
 :root {
@@ -112,6 +112,9 @@
   --column-1: repeat(1, 1fr);
   --shadow-color: rgba(170, 170, 170, 0.5);
   --shadow-none: none;
+  --toast-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+  --menu-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+  --dialog-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --avatar-size-700: 60px;
   --avatar-size-600: 55px;
   --avatar-size-500: 50px;
@@ -249,8 +252,9 @@
   --font-size-h3: var(--font-size-600);
   --font-size-h2: var(--font-size-700);
   --font-size-h1: var(--font-size-800);
+  --z-index-header: var(--z-index-200);
   --z-index-menu: var(--z-index-100);
-  --z-index-tooltip: var(--z-index-50000);
+  --z-index-tooltip: var(--z-index-100);
   --spacing-size-xxxl: var(--spacing-8);
   --spacing-size-xxl: var(--spacing-7);
   --spacing-size-xl: var(--spacing-6);
@@ -265,7 +269,27 @@
   --shadow-3: 0 8px 16px 0 var(--shadow-color);
   --shadow-2: 0 4px 8px 0 var(--shadow-color);
   --shadow-1: 0 1px 4px 0 var(--shadow-color);
+  --toolbar-color-text-disabled: var(--color-gray-5);
+  --toolbar-color-text-link: var(--color-blue-8);
+  --toolbar-color-text-subtitle: var(--color-gray-6);
+  --toolbar-color-text-info: var(--color-blue-8);
+  --toolbar-color-text-warning: var(--color-orange-8);
+  --toolbar-color-text-danger: var(--color-red-8);
+  --toolbar-color-text-success: var(--color-green-8);
+  --toolbar-color-text-secondary: var(--color-gray-8);
+  --toolbar-color-text-primary: var(--color-gray-8);
+  --toolbar-color-text-default: var(--color-gray-8);
+  --switch-true-color-handle-background-default: var(--color-white);
+  --switch-true-color-background-default: var(--color-gray-9);
+  --switch-false-color-handle-background-default: #2c353d;
+  --switch-false-color-background-default: var(--color-gray-2);
+  --slider-color-progress-thumb-background-default: var(--color-gray-9);
+  --slider-color-progress-background-default: var(--color-gray-9);
+  --panel-color-border-default: #2c353d;
+  --menu-color-border-default: #2c353d;
   --divider-color-border-default: var(--color-gray-2);
+  --dialog-color-border-default: #2c353d;
+  --dialog-color-background-default: var(--color-white);
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
   --button-size-padding-small: var(--size-base-65) var(--size-base-75);
@@ -379,12 +403,31 @@
   --padding-size-medium: var(--spacing-size-md);
   --padding-size-small: var(--spacing-size-sm);
   --padding-size-xs: var(--spacing-size-xs);
+  --tooltip-color-text-default: var(--color-text-default);
+  --tooltip-color-background-default: var(--color-background-default);
+  --toolbar-color-text-title: var(--color-black);
+  --toolbar-color-background-dark: var(--color-black);
+  --toolbar-color-background-danger: var(--color-danger);
+  --toolbar-color-background-warning: var(--color-warning);
+  --toolbar-color-background-info: var(--color-info);
+  --toolbar-color-background-success: var(--color-success);
+  --toolbar-color-background-secondary: var(--color-secondary);
+  --toolbar-color-background-primary: var(--color-primary);
+  --toolbar-color-background-default: var(--color-default);
+  --popover-color-background-default: var(--color-background-default);
+  --panel-color-text-default: var(--color-text-default);
+  --panel-color-background-default: var(--color-background-default);
+  --menu-color-text-default: var(--color-text-default);
+  --menu-color-background-hover-default: var(--color-hover-default);
+  --menu-color-background-default: var(--color-background-default);
   --divider-color-border-danger: var(--color-danger);
   --divider-color-border-warning: var(--color-warning);
   --divider-color-border-info: var(--color-info);
   --divider-color-border-success: var(--color-success);
   --divider-color-border-secondary: var(--color-secondary);
   --divider-color-border-primary: var(--color-primary);
+  --dialog-color-text-default: var(--color-text-default);
+  --checkbox-color-background-dark: var(--color-black);
   --button-color-border-dark: var(--color-black);
   --button-color-border-danger: var(--color-danger);
   --button-color-border-warning: var(--color-warning);

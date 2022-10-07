@@ -1,6 +1,6 @@
 .elf--option-menu {
     --elf--option-menu-min-width: 60px;
-    --elf--option-menu-border-color: transparent;
+    --elf--option-menu-border-color: var(--color-border);
     --elf--option-menu-hover-border-color: var(--color-gray-3);
     --elf--option-menu-outline-color: transparent;
     --elf--option-menu-border-radius: 1px;
@@ -19,7 +19,7 @@
     height: var(--elf--option-menu-height, 30px);
     box-sizing: border-box;
     display: flex;
-    background-color: var(--elf--option-menu-background-color);
+    // background-color: var(--elf--option-menu-background-color);
     position: relative;
 
     &:hover,

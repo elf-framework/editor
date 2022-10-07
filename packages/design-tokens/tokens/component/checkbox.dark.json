@@ -1,0 +1,11 @@
+{
+  "checkbox": {
+    "color": {
+      "background": {
+        "dark": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    }
+  }
+}

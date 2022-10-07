@@ -4,6 +4,7 @@ import {
   Button,
   Dialog,
   Grid,
+  RoundButton,
   VBox,
 } from "@elf-framework/ui";
 
@@ -51,10 +52,10 @@ export function CustomFooterView() {
                 >
                   <Badge variant="informative">Sample text</Badge>
                   <ActionGroup style={{ gap: 10 }}>
-                    <Button variant="dark" outline>
+                    <RoundButton variant="dark" outline>
                       Cancel
-                    </Button>
-                    <Button variant="dark">OK</Button>
+                    </RoundButton>
+                    <RoundButton variant="dark">OK</RoundButton>
                   </ActionGroup>
                 </div>
               }

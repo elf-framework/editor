@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 06 Oct 2022 01:50:17 GMT
+ * Generated on Fri, 07 Oct 2022 12:42:14 GMT
  */
 
 module.exports = {
@@ -5322,6 +5322,127 @@ module.exports = {
       }
     }
   },
+  "checkbox": {
+    "color": {
+      "background": {
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/checkbox.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "CheckboxColorBackgroundDark",
+          "attributes": {
+            "category": "checkbox",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "checkbox",
+            "color",
+            "background",
+            "dark"
+          ]
+        }
+      }
+    }
+  },
+  "dialog": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/dialog.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "DialogColorBackgroundDefault",
+          "attributes": {
+            "category": "dialog",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "dialog",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#39444d",
+          "filePath": "tokens/component/dialog.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "DialogColorTextDefault",
+          "attributes": {
+            "category": "dialog",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "dialog",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/dialog.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default.value}"
+          },
+          "name": "DialogColorBorderDefault",
+          "attributes": {
+            "category": "dialog",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "dialog",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/dialog.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "name": "DialogShadowDefault",
+        "attributes": {
+          "category": "dialog",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "dialog",
+          "shadow",
+          "default"
+        ]
+      }
+    }
+  },
   "divider": {
     "color": {
       "border": {
@@ -5470,6 +5591,880 @@ module.exports = {
             "color",
             "border",
             "danger"
+          ]
+        }
+      }
+    }
+  },
+  "menu": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "MenuColorBackgroundDefault",
+          "attributes": {
+            "category": "menu",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "menu",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "hover": {
+          "default": {
+            "value": "#f8f8f8",
+            "filePath": "tokens/component/menu.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.hover.default.value}"
+            },
+            "name": "MenuColorBackgroundHoverDefault",
+            "attributes": {
+              "category": "menu",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": [
+              "menu",
+              "color",
+              "background",
+              "hover",
+              "default"
+            ]
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#39444d",
+          "filePath": "tokens/component/menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "MenuColorTextDefault",
+          "attributes": {
+            "category": "menu",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "menu",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default.value}"
+          },
+          "name": "MenuColorBorderDefault",
+          "attributes": {
+            "category": "menu",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "menu",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/menu.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "name": "MenuShadowDefault",
+        "attributes": {
+          "category": "menu",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "menu",
+          "shadow",
+          "default"
+        ]
+      }
+    }
+  },
+  "panel": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/panel.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "PanelColorBackgroundDefault",
+          "attributes": {
+            "category": "panel",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "panel",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#39444d",
+          "filePath": "tokens/component/panel.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "PanelColorTextDefault",
+          "attributes": {
+            "category": "panel",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "panel",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/panel.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default.value}"
+          },
+          "name": "PanelColorBorderDefault",
+          "attributes": {
+            "category": "panel",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "panel",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    }
+  },
+  "popover": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/popover.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "PopoverColorBackgroundDefault",
+          "attributes": {
+            "category": "popover",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "popover",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      }
+    }
+  },
+  "slider": {
+    "color": {
+      "progress": {
+        "background": {
+          "default": {
+            "value": "#2c353d",
+            "filePath": "tokens/component/slider.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.9.value}"
+            },
+            "name": "SliderColorProgressBackgroundDefault",
+            "attributes": {
+              "category": "slider",
+              "type": "color",
+              "item": "progress",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "slider",
+              "color",
+              "progress",
+              "background",
+              "default"
+            ]
+          }
+        },
+        "thumb": {
+          "background": {
+            "default": {
+              "value": "#2c353d",
+              "filePath": "tokens/component/slider.json",
+              "isSource": true,
+              "original": {
+                "value": "{color.gray.9.value}"
+              },
+              "name": "SliderColorProgressThumbBackgroundDefault",
+              "attributes": {
+                "category": "slider",
+                "type": "color",
+                "item": "progress",
+                "subitem": "thumb",
+                "state": "background"
+              },
+              "path": [
+                "slider",
+                "color",
+                "progress",
+                "thumb",
+                "background",
+                "default"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "switch": {
+    "false": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "#d9e0e6",
+            "filePath": "tokens/component/switch.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2.value}"
+            },
+            "name": "SwitchFalseColorBackgroundDefault",
+            "attributes": {
+              "category": "switch",
+              "type": "false",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "switch",
+              "false",
+              "color",
+              "background",
+              "default"
+            ]
+          }
+        },
+        "handle": {
+          "background": {
+            "default": {
+              "value": "#2c353d",
+              "filePath": "tokens/component/switch.json",
+              "isSource": true,
+              "original": {
+                "value": "{color.border.default.value}"
+              },
+              "name": "SwitchFalseColorHandleBackgroundDefault",
+              "attributes": {
+                "category": "switch",
+                "type": "false",
+                "item": "color",
+                "subitem": "handle",
+                "state": "background"
+              },
+              "path": [
+                "switch",
+                "false",
+                "color",
+                "handle",
+                "background",
+                "default"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "true": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "#2c353d",
+            "filePath": "tokens/component/switch.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.9.value}"
+            },
+            "name": "SwitchTrueColorBackgroundDefault",
+            "attributes": {
+              "category": "switch",
+              "type": "true",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "switch",
+              "true",
+              "color",
+              "background",
+              "default"
+            ]
+          }
+        },
+        "handle": {
+          "background": {
+            "default": {
+              "value": "#ffffff",
+              "filePath": "tokens/component/switch.json",
+              "isSource": true,
+              "original": {
+                "value": "{color.white.value}"
+              },
+              "name": "SwitchTrueColorHandleBackgroundDefault",
+              "attributes": {
+                "category": "switch",
+                "type": "true",
+                "item": "color",
+                "subitem": "handle",
+                "state": "background"
+              },
+              "path": [
+                "switch",
+                "true",
+                "color",
+                "handle",
+                "background",
+                "default"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "toast": {
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/toast.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "name": "ToastShadowDefault",
+        "attributes": {
+          "category": "toast",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "toast",
+          "shadow",
+          "default"
+        ]
+      }
+    }
+  },
+  "toolbar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.default.value}"
+          },
+          "name": "ToolbarColorBackgroundDefault",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
+          },
+          "name": "ToolbarColorBackgroundPrimary",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.secondary.value}"
+          },
+          "name": "ToolbarColorBackgroundSecondary",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#009f6a",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.success.value}"
+          },
+          "name": "ToolbarColorBackgroundSuccess",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#abd2ff",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.info.value}"
+          },
+          "name": "ToolbarColorBackgroundInfo",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "info"
+          ]
+        },
+        "warning": {
+          "value": "#ffb77c",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.warning.value}"
+          },
+          "name": "ToolbarColorBackgroundWarning",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "warning"
+          ]
+        },
+        "danger": {
+          "value": "#d9363e",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.danger.value}"
+          },
+          "name": "ToolbarColorBackgroundDanger",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "danger"
+          ]
+        },
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ToolbarColorBackgroundDark",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "background",
+            "dark"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#39444d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ToolbarColorTextDefault",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#39444d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ToolbarColorTextPrimary",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#39444d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ToolbarColorTextSecondary",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#1b5441",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.8.value}"
+          },
+          "name": "ToolbarColorTextSuccess",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "success"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "success"
+          ]
+        },
+        "danger": {
+          "value": "#80252a",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.8.value}"
+          },
+          "name": "ToolbarColorTextDanger",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "danger"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "danger"
+          ]
+        },
+        "warning": {
+          "value": "#5c2200",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.8.value}"
+          },
+          "name": "ToolbarColorTextWarning",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "warning"
+          ]
+        },
+        "info": {
+          "value": "#1a497d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8.value}"
+          },
+          "name": "ToolbarColorTextInfo",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "info"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "info"
+          ]
+        },
+        "title": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ToolbarColorTextTitle",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "title"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "title"
+          ]
+        },
+        "subtitle": {
+          "value": "#626f7a",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.6.value}"
+          },
+          "name": "ToolbarColorTextSubtitle",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "subtitle"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "subtitle"
+          ]
+        },
+        "link": {
+          "value": "#1a497d",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8.value}"
+          },
+          "name": "ToolbarColorTextLink",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "link"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "link"
+          ]
+        },
+        "disabled": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.5.value}"
+          },
+          "name": "ToolbarColorTextDisabled",
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "disabled"
+          },
+          "path": [
+            "toolbar",
+            "color",
+            "text",
+            "disabled"
+          ]
+        }
+      }
+    }
+  },
+  "tooltip": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/tooltip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "TooltipColorBackgroundDefault",
+          "attributes": {
+            "category": "tooltip",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tooltip",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#39444d",
+          "filePath": "tokens/component/tooltip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TooltipColorTextDefault",
+          "attributes": {
+            "category": "tooltip",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tooltip",
+            "color",
+            "text",
+            "default"
           ]
         }
       }
@@ -6597,11 +7592,11 @@ module.exports = {
       ]
     },
     "tooltip": {
-      "value": "50000",
+      "value": "100",
       "filePath": "tokens/layout/z-index.json",
       "isSource": true,
       "original": {
-        "value": "{z-index.50000.value}"
+        "value": "{z-index.100.value}"
       },
       "name": "ZIndexTooltip",
       "attributes": {
@@ -6628,6 +7623,23 @@ module.exports = {
       "path": [
         "z-index",
         "menu"
+      ]
+    },
+    "header": {
+      "value": "200",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.200.value}"
+      },
+      "name": "ZIndexHeader",
+      "attributes": {
+        "category": "z-index",
+        "type": "header"
+      },
+      "path": [
+        "z-index",
+        "header"
       ]
     }
   },

@@ -1,0 +1,117 @@
+{
+  "button": {
+    "closable" : {
+      "hover": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.black.1.value}"
+          }
+        }
+      }
+    }
+,
+    "hover": {
+      "background": {
+        "default": {
+          "value": "{color.gray.1.value}"
+        },
+        "primary": {
+          "value": "{color.blue.2.value}"
+        }
+      }
+    },    
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    },
+    "disabled": {
+      "background": {
+        "default": {
+          "value": "{color.gray.1.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },      
+      "text": {
+          "default": {
+              "value": "{color.gray.5.value}"
+          }
+      }
+
+    },
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.0.value}"
+        },
+        "primary": {
+          "value": "{color.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.secondary.value}"
+        },
+        "success": {
+          "value": "{color.success.value}"
+        },
+        "info": {
+          "value": "{color.info.value}"
+        },
+        "warning": {
+          "value": "{color.warning.value}"
+        },
+        "danger": {
+          "value": "{color.red.3.value}"
+        },
+        "dark": {
+          "value": "{color.black.value}"
+        }
+      },
+
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        },
+        "primary": {
+          "value": "{color.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.secondary.value}"
+        },
+        "success": {
+          "value": "{color.success.value}"
+        },
+        "info": {
+          "value": "{color.info.value}"
+        },
+        "warning": {
+          "value": "{color.warning.value}"
+        },
+        "danger": {
+          "value": "{color.red.3.value}"
+        },
+        "dark": {
+          "value": "{color.white.value}"
+        }
+      }
+    },
+    "size": {
+      "padding": {
+        "small": {
+          "value": "{size.base.65.value} {size.base.75.value}"
+        },
+        "medium": {
+          "value": "{size.base.100.value} {size.base.125.value}"
+        },
+        "large": {
+          "value": "{size.base.175.value} {size.base.250.value}"
+        }
+      }
+    }
+  }
+}

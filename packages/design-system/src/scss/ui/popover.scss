@@ -1,5 +1,5 @@
 .elf--popover {
-    --elf--popover-background-color: var(--color-white);
+    --elf--popover-background-color: var(--popover-color-background-default);
     --elf--popover-hover-color: var(--color-neutral-10);
     --elf--popover-color: var(--color-black);
     --elf--popover-border-color: var(--color-gray-5);
@@ -9,7 +9,7 @@
     --elf--popover-position: fixed;
     --elf--popover-hgap: 6px;
     --elf--popover-vgap: 6px;
-    --elf--popover-tip-background-color: var(--elf--popover-background-color);
+    --elf--popover-tip-background-color: var(--popover-color-background-default);
     --elf--popover-delay: 0.5s;
     --elf--popover-content-padding: 8px 14px;
     --elf--popover-animation: fadein var(--elf--popover-delay) ease-in-out;

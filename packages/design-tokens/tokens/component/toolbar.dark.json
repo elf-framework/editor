@@ -1,0 +1,68 @@
+{
+  "toolbar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.default.value}"
+        },
+        "primary": {
+          "value": "{color.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.secondary.value}"
+        },
+        "success": {
+          "value": "{color.success.value}"
+        },
+        "info": {
+          "value": "{color.info.value}"
+        },
+        "warning": {
+          "value": "{color.warning.value}"
+        },
+        "danger": {
+          "value": "{color.danger.value}"
+        },
+        "dark": {
+          "value": "{color.black.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.gray.0.value}"
+        },
+        "primary": {
+          "value": "{color.gray.8.value}"
+        },
+        "secondary": {
+          "value": "{color.gray.8.value}"
+        },
+        "success": {
+          "value": "{color.green.8.value}"
+        },
+        "danger": {
+          "value": "{color.red.8.value}"
+        },
+        "warning": {
+          "value": "{color.orange.8.value}"
+        },
+        "info": {
+          "value": "{color.blue.8.value}"
+        },
+        "title": {
+          "value": "{color.black.value}"
+        },
+        "subtitle": {
+          "value": "{color.gray.6.value}"
+        },
+        "link": {
+          "value": "{color.blue.8.value}"
+        },
+  
+        "disabled": {
+          "value": "{color.gray.5.value}"
+        }
+      }
+    }
+  }
+}

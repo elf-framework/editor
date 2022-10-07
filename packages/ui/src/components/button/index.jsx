@@ -27,7 +27,7 @@ export class Button extends UIElement {
       disabled,
       selected,
       focused,
-      shape = "rect",
+      shape = "none",
       quiet = false,
       outline = false,
       closable = false,

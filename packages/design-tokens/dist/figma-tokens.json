@@ -5061,6 +5061,122 @@
       }
     }
   },
+  "checkbox": {
+    "color": {
+      "background": {
+        "dark": {
+          "value": "{color.black}",
+          "filePath": "tokens/component/checkbox.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black}"
+          },
+          "attributes": {
+            "category": "checkbox",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": {
+            "0": "checkbox",
+            "1": "color",
+            "2": "background",
+            "3": "dark"
+          }
+        }
+      }
+    }
+  },
+  "dialog": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white}",
+          "filePath": "tokens/component/dialog.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white}"
+          },
+          "attributes": {
+            "category": "dialog",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "dialog",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/dialog.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "dialog",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "dialog",
+            "1": "color",
+            "2": "text",
+            "3": "default"
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border.default}",
+          "filePath": "tokens/component/dialog.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default}"
+          },
+          "attributes": {
+            "category": "dialog",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "dialog",
+            "1": "color",
+            "2": "border",
+            "3": "default"
+          }
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/dialog.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "attributes": {
+          "category": "dialog",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": {
+          "0": "dialog",
+          "1": "shadow",
+          "2": "default"
+        }
+      }
+    }
+  },
   "divider": {
     "color": {
       "border": {
@@ -5202,6 +5318,843 @@
             "1": "color",
             "2": "border",
             "3": "danger"
+          }
+        }
+      }
+    }
+  },
+  "menu": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "menu",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "menu",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        },
+        "hover": {
+          "default": {
+            "value": "{color.hover.default}",
+            "filePath": "tokens/component/menu.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.hover.default}"
+            },
+            "attributes": {
+              "category": "menu",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": {
+              "0": "menu",
+              "1": "color",
+              "2": "background",
+              "3": "hover",
+              "4": "default"
+            }
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "menu",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "menu",
+            "1": "color",
+            "2": "text",
+            "3": "default"
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border.default}",
+          "filePath": "tokens/component/menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default}"
+          },
+          "attributes": {
+            "category": "menu",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "menu",
+            "1": "color",
+            "2": "border",
+            "3": "default"
+          }
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/menu.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "attributes": {
+          "category": "menu",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": {
+          "0": "menu",
+          "1": "shadow",
+          "2": "default"
+        }
+      }
+    }
+  },
+  "panel": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/panel.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "panel",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "panel",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/panel.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "panel",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "panel",
+            "1": "color",
+            "2": "text",
+            "3": "default"
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border.default}",
+          "filePath": "tokens/component/panel.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default}"
+          },
+          "attributes": {
+            "category": "panel",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "panel",
+            "1": "color",
+            "2": "border",
+            "3": "default"
+          }
+        }
+      }
+    }
+  },
+  "popover": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/popover.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "popover",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "popover",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      }
+    }
+  },
+  "slider": {
+    "color": {
+      "progress": {
+        "background": {
+          "default": {
+            "value": "{color.gray.9}",
+            "filePath": "tokens/component/slider.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.9}"
+            },
+            "attributes": {
+              "category": "slider",
+              "type": "color",
+              "item": "progress",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": {
+              "0": "slider",
+              "1": "color",
+              "2": "progress",
+              "3": "background",
+              "4": "default"
+            }
+          }
+        },
+        "thumb": {
+          "background": {
+            "default": {
+              "value": "{color.gray.9}",
+              "filePath": "tokens/component/slider.json",
+              "isSource": true,
+              "original": {
+                "value": "{color.gray.9}"
+              },
+              "attributes": {
+                "category": "slider",
+                "type": "color",
+                "item": "progress",
+                "subitem": "thumb",
+                "state": "background"
+              },
+              "path": {
+                "0": "slider",
+                "1": "color",
+                "2": "progress",
+                "3": "thumb",
+                "4": "background",
+                "5": "default"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "switch": {
+    "false": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "{color.gray.2}",
+            "filePath": "tokens/component/switch.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2}"
+            },
+            "attributes": {
+              "category": "switch",
+              "type": "false",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": {
+              "0": "switch",
+              "1": "false",
+              "2": "color",
+              "3": "background",
+              "4": "default"
+            }
+          }
+        },
+        "handle": {
+          "background": {
+            "default": {
+              "value": "{color.border.default}",
+              "filePath": "tokens/component/switch.json",
+              "isSource": true,
+              "original": {
+                "value": "{color.border.default}"
+              },
+              "attributes": {
+                "category": "switch",
+                "type": "false",
+                "item": "color",
+                "subitem": "handle",
+                "state": "background"
+              },
+              "path": {
+                "0": "switch",
+                "1": "false",
+                "2": "color",
+                "3": "handle",
+                "4": "background",
+                "5": "default"
+              }
+            }
+          }
+        }
+      }
+    },
+    "true": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "{color.gray.9}",
+            "filePath": "tokens/component/switch.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.9}"
+            },
+            "attributes": {
+              "category": "switch",
+              "type": "true",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": {
+              "0": "switch",
+              "1": "true",
+              "2": "color",
+              "3": "background",
+              "4": "default"
+            }
+          }
+        },
+        "handle": {
+          "background": {
+            "default": {
+              "value": "{color.white}",
+              "filePath": "tokens/component/switch.json",
+              "isSource": true,
+              "original": {
+                "value": "{color.white}"
+              },
+              "attributes": {
+                "category": "switch",
+                "type": "true",
+                "item": "color",
+                "subitem": "handle",
+                "state": "background"
+              },
+              "path": {
+                "0": "switch",
+                "1": "true",
+                "2": "color",
+                "3": "handle",
+                "4": "background",
+                "5": "default"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "toast": {
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/toast.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "attributes": {
+          "category": "toast",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": {
+          "0": "toast",
+          "1": "shadow",
+          "2": "default"
+        }
+      }
+    }
+  },
+  "toolbar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.default}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.default}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.primary}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.secondary}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.secondary}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "secondary"
+          }
+        },
+        "success": {
+          "value": "{color.success}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.success}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "success"
+          }
+        },
+        "info": {
+          "value": "{color.info}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.info}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "info"
+          }
+        },
+        "warning": {
+          "value": "{color.warning}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.warning}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "warning"
+          }
+        },
+        "danger": {
+          "value": "{color.danger}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.danger}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "danger"
+          }
+        },
+        "dark": {
+          "value": "{color.black}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "background",
+            "3": "dark"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.gray.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "default"
+          }
+        },
+        "primary": {
+          "value": "{color.gray.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "primary"
+          }
+        },
+        "secondary": {
+          "value": "{color.gray.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "secondary"
+          }
+        },
+        "success": {
+          "value": "{color.green.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "success"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "success"
+          }
+        },
+        "danger": {
+          "value": "{color.red.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "danger"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "danger"
+          }
+        },
+        "warning": {
+          "value": "{color.orange.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "warning"
+          }
+        },
+        "info": {
+          "value": "{color.blue.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "info"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "info"
+          }
+        },
+        "title": {
+          "value": "{color.black}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "title"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "title"
+          }
+        },
+        "subtitle": {
+          "value": "{color.gray.6}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.6}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "subtitle"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "subtitle"
+          }
+        },
+        "link": {
+          "value": "{color.blue.8}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "link"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "link"
+          }
+        },
+        "disabled": {
+          "value": "{color.gray.5}",
+          "filePath": "tokens/component/toolbar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.5}"
+          },
+          "attributes": {
+            "category": "toolbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "disabled"
+          },
+          "path": {
+            "0": "toolbar",
+            "1": "color",
+            "2": "text",
+            "3": "disabled"
+          }
+        }
+      }
+    }
+  },
+  "tooltip": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/tooltip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "tooltip",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "tooltip",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/tooltip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "tooltip",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "tooltip",
+            "1": "color",
+            "2": "text",
+            "3": "default"
           }
         }
       }
@@ -6265,11 +7218,11 @@
       }
     },
     "tooltip": {
-      "value": "{z-index.50000}",
+      "value": "{z-index.100}",
       "filePath": "tokens/layout/z-index.json",
       "isSource": true,
       "original": {
-        "value": "{z-index.50000}"
+        "value": "{z-index.100}"
       },
       "attributes": {
         "category": "z-index",
@@ -6294,6 +7247,22 @@
       "path": {
         "0": "z-index",
         "1": "menu"
+      }
+    },
+    "header": {
+      "value": "{z-index.200}",
+      "filePath": "tokens/layout/z-index.json",
+      "isSource": true,
+      "original": {
+        "value": "{z-index.200}"
+      },
+      "attributes": {
+        "category": "z-index",
+        "type": "header"
+      },
+      "path": {
+        "0": "z-index",
+        "1": "header"
       }
     }
   },

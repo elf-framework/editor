@@ -1,0 +1,31 @@
+{
+  "dialog": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default.value}"
+        },
+        "hover": {
+          "default": {
+            "value": "{color.gray.1.value}"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(50, 50, 50, 0.05), 0px 5px 17px rgba(50, 50, 50, 0.15)"
+      }
+    }
+  }
+}

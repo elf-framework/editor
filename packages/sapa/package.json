@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
+    "happy-dom": "^7.1.1",
     "vite": "^3.0.8",
     "vite-plugin-replace": "^0.1.1",
     "vitest": "0.22.1"
@@ -32,6 +33,7 @@
     "editor:watch": "npm run watch",
     "build": "npm run vite:dist",
     "test": "vitest",
+    "sapa:test": "npm run test",
     "coverage": "vitest --coverage"
   },
   "repository": {

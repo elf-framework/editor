@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.2.6
+
+### Patch Changes
+
+- update design system color rules
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.2.6
+
 ## 2.2.7
 
 ### Patch Changes

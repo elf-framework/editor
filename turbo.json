@@ -15,6 +15,10 @@
       "dependsOn": ["watch"],
       "cache": false
     },
+    "sapa:test": {
+      "dependsOn": [],
+      "outputs": ["dist/**", ".next/**"]
+    },    
     "ui:watch": {
       "dependsOn": [
         "^ui:watch"

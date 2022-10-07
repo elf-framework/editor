@@ -1,0 +1,120 @@
+{
+  "color": {
+    "default": {
+      "value": "{color.white.value}"
+    },
+    "primary": {
+      "value": "{color.blue.3.value}"
+    },
+    "secondary": {
+      "value": "{color.gray.2.value}"
+    },
+    "success": {
+      "value": "{color.green.3.value}"
+    },
+    "danger": {
+      "value": "{color.red.3.value}"
+    },
+    "warning": {
+      "value": "{color.orange.5.value}"
+    },
+    "info": {
+      "value": "{color.blue.3.value}"
+    },
+    "disabled": {
+      "value": "{color.gray.2.value}"
+    },
+    "hover": {
+      "default": {
+        "value": "{color.gray.0.value}"
+      },
+      "dark": {
+        "value": "#000000"
+      },
+      "primary": {
+        "value": "{color.blue.7.value}"
+      },
+      "secondary": {
+        "value": "{color.gray.7.value}"
+      },
+      "success": {
+        "value": "{color.green.7.value}"
+      },
+      "danger": {
+        "value": "{color.red.7.value}"
+      },
+      "warning": {
+        "value": "{color.orange.4.value}"
+      },
+      "info": {
+        "value": "{color.blue.4.value}"
+      }
+    },
+    "down": {
+      "default": {
+        "value": "{color.gray.2.value}"
+      },
+      "primary": {
+        "value": "{color.blue.1.value}"
+      },
+      "secondary": {
+        "value": "{color.gray.8.value}"
+      },
+      "success": {
+        "value": "{color.green.8.value}"
+      },
+      "danger": {
+        "value": "{color.red.8.value}"
+      },
+      "warning": {
+        "value": "{color.orange.8.value}"
+      },
+      "info": {
+        "value": "{color.blue.7.value}"
+      }
+    },
+    "status": {
+      "informative": {
+        "value": "{color.blue.3.value}",
+        "comment": "e.g., active, in use, live, published"
+      },
+      "neutral": {
+        "value": "{color.gray.2.value}",
+        "comment": "e.g., archived, deleted, paused, draft, not started, ended"
+      },
+      "positive": {
+        "value": "{color.green.3.value}",
+        "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published"
+      },
+      "notice": {
+        "value": "{color.purple.2.value}",
+        "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing"
+      },
+      "negative": {
+        "value": "{color.red.3.value}",
+        "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished"
+      },
+      "indigo": {
+        "value": "{color.orange.2.value}"
+      },
+      "celery": {
+        "value": "{color.green.1.value}"
+      },
+      "yellow": {
+        "value": "{color.yellow.5.value}"
+      },
+      "magenta": {
+        "value": "{color.purple.4.value}"
+      },
+      "fuchsia": {
+        "value": "{color.pink.3.value}"
+      },
+      "purple": {
+        "value": "{color.purple.1.value}"
+      },
+      "seafoam": {
+        "value": "{color.teal.3.value}"
+      }
+    }
+  }
+}

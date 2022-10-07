@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 06 Oct 2022 01:50:17 GMT
+ * Generated on Fri, 07 Oct 2022 12:42:14 GMT
  */
 
 export const ImageLogo : string;
@@ -259,6 +259,11 @@ export const ButtonColorBorderDark : string;
 export const ButtonSizePaddingSmall : string;
 export const ButtonSizePaddingMedium : string;
 export const ButtonSizePaddingLarge : string;
+export const CheckboxColorBackgroundDark : string;
+export const DialogColorBackgroundDefault : string;
+export const DialogColorTextDefault : string;
+export const DialogColorBorderDefault : string;
+export const DialogShadowDefault : string;
 export const DividerColorBorderDefault : string;
 export const DividerColorBorderPrimary : string;
 export const DividerColorBorderSecondary : string;
@@ -266,6 +271,43 @@ export const DividerColorBorderSuccess : string;
 export const DividerColorBorderInfo : string;
 export const DividerColorBorderWarning : string;
 export const DividerColorBorderDanger : string;
+export const MenuColorBackgroundDefault : string;
+export const MenuColorBackgroundHoverDefault : string;
+export const MenuColorTextDefault : string;
+export const MenuColorBorderDefault : string;
+export const MenuShadowDefault : string;
+export const PanelColorBackgroundDefault : string;
+export const PanelColorTextDefault : string;
+export const PanelColorBorderDefault : string;
+export const PopoverColorBackgroundDefault : string;
+export const SliderColorProgressBackgroundDefault : string;
+export const SliderColorProgressThumbBackgroundDefault : string;
+export const SwitchFalseColorBackgroundDefault : string;
+export const SwitchFalseColorHandleBackgroundDefault : string;
+export const SwitchTrueColorBackgroundDefault : string;
+export const SwitchTrueColorHandleBackgroundDefault : string;
+export const ToastShadowDefault : string;
+export const ToolbarColorBackgroundDefault : string;
+export const ToolbarColorBackgroundPrimary : string;
+export const ToolbarColorBackgroundSecondary : string;
+export const ToolbarColorBackgroundSuccess : string;
+export const ToolbarColorBackgroundInfo : string;
+export const ToolbarColorBackgroundWarning : string;
+export const ToolbarColorBackgroundDanger : string;
+export const ToolbarColorBackgroundDark : string;
+export const ToolbarColorTextDefault : string;
+export const ToolbarColorTextPrimary : string;
+export const ToolbarColorTextSecondary : string;
+export const ToolbarColorTextSuccess : string;
+export const ToolbarColorTextDanger : string;
+export const ToolbarColorTextWarning : string;
+export const ToolbarColorTextInfo : string;
+export const ToolbarColorTextTitle : string;
+export const ToolbarColorTextSubtitle : string;
+export const ToolbarColorTextLink : string;
+export const ToolbarColorTextDisabled : string;
+export const TooltipColorBackgroundDefault : string;
+export const TooltipColorTextDefault : string;
 export const Shadow1 : string;
 export const Shadow2 : string;
 export const Shadow3 : string;
@@ -332,6 +374,7 @@ export const ZIndex40000 : string;
 export const ZIndex50000 : string;
 export const ZIndexTooltip : string;
 export const ZIndexMenu : string;
+export const ZIndexHeader : string;
 export const MathPi : number;
 export const SizeBase0 : string;
 export const SizeBase10 : string;

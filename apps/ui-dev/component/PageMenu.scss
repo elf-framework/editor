@@ -7,6 +7,7 @@
     &.selected {
         background-color: var(--color-blue-1) !important;
         // border-right: 5px solid var(--color-blue-5);
+        color: var(--color-text-header-default);
         font-weight: bold;
     }
 
@@ -19,12 +20,13 @@
 
     &:hover {
         background-color: rgba(199, 238, 255, 0.269);
+        color: var(--color-text-header-default);
     }
 
     a {
         flex: 1 1 auto;
         text-decoration: none;
-        color: var(--color-black);
+        color: inherit;
         display: block;
     }
 
@@ -32,6 +34,7 @@
         padding-left: 15px;
         font-weight: bold;
         font-size: 15px;
+        color: var(--color-text-header-default);
     }
 
 
@@ -43,13 +46,13 @@
     &[data-depth="2"] {
         padding-left: 50px;
         font-size: 12px;
-        color: var(--color-gray-7);
+        color: var(--color-gray-6);
     }
 
     &[data-depth="3"] {
         padding-left: 70px;
         font-size: 12px;
-        color: var(--color-gray-7);        
+        color: var(--color-gray-5);        
     }
     margin-bottom: 2px;
 }

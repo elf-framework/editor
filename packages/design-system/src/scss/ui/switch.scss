@@ -1,12 +1,12 @@
 .elf--switch {
   --elf--switch-font-size: var(--font-size-medium);
-  --elf--switch-track-color: var(--color-gray-3);
+  --elf--switch-track-color: var(--switch-false-color-background-default);
   --elf--switch-width: 30px;
   --elf--switch-height: 16px;
   --elf--switch-border-radius: 10px;
 
   /** track, thumb **/
-  --elf--switch-handle-background-color: var(--color-white);
+  --elf--switch-handle-background-color: var(--switch-false-color-handle-background-default);
   --elf--switch-handle-size: calc(var(--elf--switch-height) * 0.7);
   --elf--switch-handle-width: var(--elf--switch-handle-size);
   --elf--switch-handle-height: var(--elf--switch-handle-size);
@@ -82,13 +82,16 @@
       --elf--switch-handle-left: calc(
         var(--elf--switch-width) - var(--elf--switch-handle-width) - 2px
       );
+      --elf--switch-handle-background-color: var(--switch-true-color-handle-background-default);      
+      --elf--switch-track-color: var(--switch-true-color-background-default);
     }
   }
 
   /** variant **/
   &.default {
     > input[type="checkbox"]:checked + .tools {
-      --elf--switch-track-color: var(--color-black);
+      // --elf--switch-track-color: var(--color-text-default);
+
     }
   }
 

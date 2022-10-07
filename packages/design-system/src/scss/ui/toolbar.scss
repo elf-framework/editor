@@ -1,7 +1,8 @@
 .elf--toolbar {
 
-    --elf--toolbar-background-color: var(--color-white);
-    --elf--toolbar-color: var(--color-black);
+
+    --elf--toolbar-background-color: var(--toolbar-color-background-default);
+    --elf--toolbar-color: var(--toolbar-color-text-default);
     --elf--toolbar-height: 48px;
     --elf--toolbar-align: space-between;
 
@@ -14,17 +15,17 @@
     gap: 24px;
 
     &.primary {
-        --elf--toolbar-background-color: var(--color-blue-7);
+        --elf--toolbar-background-color: var(--toolbar-color-background-primary);
         --elf--toolbar-color: var(--color-white);
     }
 
     &.secondary {
-        --elf--toolbar-background-color: var(--color-gray-9);
+        --elf--toolbar-background-color: var(--toolbar-color-background-secondary);
         --elf--toolbar-color: var(--color-white);
     }
 
     &.success {
-        --elf--toolbar-background-color: var(--color-green-7);
+        --elf--toolbar-background-color: var(--toolbar-color-background-success);
         --elf--toolbar-color: var(--color-white);
     }    
 

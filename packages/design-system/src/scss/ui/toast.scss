@@ -2,7 +2,7 @@
     --elf--toast-background-color: var(--color-black);
     --elf--toast-color: var(--color-white);
     --elf--toast-border-color: rgba(0, 0, 0, 0.1);
-    --elf--toast-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--toast-box-shadow: var(--toast-shadow-default);
     --elf--toast-tools-border-color: rgba(255, 255, 255, 0.19);
     --elf--toast-border-radius: 5px;    
     --elf--toast-position: static;

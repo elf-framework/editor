@@ -3,7 +3,6 @@
     --elf--checkbox-padding: 7px 10px;
     --elf--checkbox-font-size: 13px;
     --elf--checkbox-background-color: transparent;
-    --elf--checkbox-color: rgba(0, 0, 0, 0.8);
     --elf--checkbox-border-radius: 2px;
     /** disabled */
     --elf--checkbox-disabled-color: var(--elf--disabled-color);
@@ -42,13 +41,11 @@
     }
 
     &.dark {
-        --elf--checkbox-active-color: var(--color-black);
+        --elf--checkbox-active-color: var(--checkbox-color-background-dark);
     }
 
     &.disabled {
         cursor: not-allowed;
-        // --elf--checkbox-background-color: var(--elf--checkbox-disabled-color) !important;
-        --elf--checkbox-color: rgba(0, 0, 0, 0.3) !important;
         --elf--checkbox-border-color: transparent !important;
         --elf--checkbox-active-color: var(--elf--checkbox-disabled-color) !important;
 
@@ -58,7 +55,6 @@
     }
 
     &.danger {
-        --elf--checkbox-color: rgba(0, 0, 0, 0.3) !important;
         --elf--checkbox-border-color: transparent !important;
         --elf--checkbox-active-color: var(--elf--checkbox-error-color) !important;
 

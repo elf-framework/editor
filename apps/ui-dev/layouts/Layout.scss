@@ -13,6 +13,13 @@ html,body {
     scroll-padding-top: 100px;
 }
 
+body {
+    &.dark {
+        background-color: var(--color-background-default);
+        color: var(--color-text-default);
+    }
+}
+
 .default-layout {
 
     .layout-logo {
@@ -46,7 +53,7 @@ html,body {
     bottom: 0;
 
     .layout-menu {
-        border-right: 1px solid #ececec;
+        border-right: 1px solid var(--color-border);
         position: fixed;
         left: 0px;
         width: var(--layout-menu-width);
@@ -54,10 +61,10 @@ html,body {
         top: var(--layout-header-height);
         overflow-y: auto;
         overflow-x: none;
-        z-index: 1;
+        z-index: var(--z-index-header);
         box-sizing: border-box;
         padding: 20px 20px;
-        background-color: var(--color-white);
+        // background-color: var(--color-white);
     }
 
     .layout-header {
@@ -66,11 +73,11 @@ html,body {
         left: 0;
         right: 0;
         height: var(--layout-header-height);
-        background-color: rgb(255, 255, 255);
-        border-bottom: 1px solid #ececec;
+        // background-color: rgb(255, 255, 255);
+        border-bottom: 1px solid var(--color-border);
         display: grid;
         grid-template-columns: var(--layout-menu-width) 1fr;
-        z-index: 10;
+        z-index: var(--z-index-header);
 
         &.fixed {
             position: fixed;
@@ -162,16 +169,24 @@ html,body {
 }
 
 .markdown-body {
+    background-color: transparent;
+    color: var(--color-text-default);
+    font-size: 14px;
     h1 {
         border-bottom: 0px;
         margin-top: 50px;
         margin-bottom: 50px;        
+        color: var(--color-text-header-default);
     }
     h2 {
         border-bottom: 0px;
         padding-bottom: 20px;
         margin-top: 30px;
         margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 20px;
     }
 
     table {

@@ -22,7 +22,7 @@ export function MainView() {
           gap: 10,
         }}
       >
-        <RoundButton disabled>Create segment</RoundButton>
+        <Button disabled>Create segment</Button>
         <Popover
           show
           body={
@@ -33,7 +33,7 @@ export function MainView() {
           }
           placement="right-bottom"
         >
-          <Button quiet size="extra-small" selected>
+          <Button iconOnly quiet size="extra-small" selected>
             <InfoOutlined />
           </Button>
         </Popover>

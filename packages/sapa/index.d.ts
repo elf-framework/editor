@@ -387,8 +387,8 @@ declare module "@elf-framework/sapa" {
     target: Dom | string | HTMLElement;
   }
 
-  export function start(uiElement: ElementType, options?: KeyValue): UIElement;
-  export function render(uiElement: ElementType, options?: KeyValue): UIElement;
+  export function start(uiElement: ElementType, options?: KeyValue): VNode;
+  export function render(uiElement: ElementType, options?: KeyValue): VNode;
   export function hydrate(
     uiElement: ElementType,
     options?: HydrateOptions

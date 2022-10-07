@@ -1,6 +1,6 @@
 .elf--panel {
-    --elf--panel-background-color: white;
-    --elf--panel-color: black;
+    --elf--panel-background-color: var(--panel-color-background-default);
+    --elf--panel-color: var(--panel-color-text-default);;
     --elf--panel-border-color: transparent;
     --elf--panel-width: 240px;
     --elf--panel-min-width: var(--elf--panel-width);

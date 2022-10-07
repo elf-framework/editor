@@ -358,6 +358,10 @@ export class VNodeComponent extends VNode {
     );
   }
 
+  isFunctionComponent() {
+    return this.LastComponent.__proto__.name === "";
+  }
+
   mounted() {
     this.instance?.onMounted();
   }

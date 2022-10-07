@@ -1,0 +1,36 @@
+{
+  "switch": {
+    "false": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "{color.gray.2.value}"
+          }
+        },
+        "handle": {
+          "background": {
+            "default": {
+              "value": "{color.border.default.value}"
+            }
+          }
+        }
+      }
+    },
+    "true": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "{color.gray.9.value}"
+          }
+        },
+        "handle": {
+          "background": {
+            "default": {
+              "value": "{color.white.value}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

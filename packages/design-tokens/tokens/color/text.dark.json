@@ -1,0 +1,46 @@
+{
+  "color": {
+    "text": {
+      "default": {
+        "value": "{color.gray.5.value}"
+      },
+      "primary": {
+        "value": "{color.gray.9.value}"
+      },
+      "secondary": {
+        "value": "{color.gray.8.value}"
+      },
+      "success": {
+        "value": "{color.green.8.value}"
+      },
+      "danger": {
+        "value": "{color.red.8.value}"
+      },
+      "warning": {
+        "value": "{color.orange.8.value}"
+      },
+      "info": {
+        "value": "{color.blue.8.value}"
+      },
+      "title": {
+        "value": "{color.black.value}"
+      },
+      "subtitle": {
+        "value": "{color.gray.6.value}"
+      },
+      "link": {
+        "value": "{color.blue.8.value}"
+      },
+
+      "disabled": {
+        "value": "{color.gray.5.value}"
+      },
+
+      "header": {
+        "default": {
+          "value": "{color.gray.9.value}"
+        }
+      }
+    }
+  }
+}

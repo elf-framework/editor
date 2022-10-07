@@ -57,25 +57,33 @@
 
     .filename {
         text-align: right;
+        color: inherit;
 
         &:last-child {
             margin-top: 100px;
         }
 
+        a {
+            color: var(--color-text-header-default);
+            text-underline-offset: 10px;
+        }
+
     }
 
     .link {
-        background-color: var(--color-white);
+        // background-color: var(--color-white);
         padding: var(--padding-size-medium);
         text-align: left;
 
         .category {
-            color: var(--color-gray-6);
+            color: var(--color-gray-5);
             display: block;
+            font-size: 15px;
         }
 
         .title {
             color: var(--color-blue-7);
+            font-size: 20px;
         }
 
         &.prev {

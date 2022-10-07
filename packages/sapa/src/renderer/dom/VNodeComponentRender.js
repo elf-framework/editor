@@ -143,7 +143,8 @@ async function runningUpdate(componentInstance, template) {
 
   // element 에 component 속성 설정
   componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
-  // this.prevTemplate = template;
+  // this.alternate = template;
+  componentInstance.alternate = template;
   componentInstance.runUpdated();
 
   // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
@@ -155,12 +156,12 @@ async function runningMount(componentInstance, template, $container) {
     ...componentInstance.getVNodeOptions(),
   });
 
-  componentInstance.prevTemplate = template;
+  componentInstance.alternate = template;
   componentInstance.$el = newDomElement;
   componentInstance.refs.$el = componentInstance.$el;
-  // this.prevTemplate = template;
+  // this.alternate = template;
   // element 에 component 속성 설정
-  if (componentInstance.$el) {
+  if (componentInstance.$el?.el) {
     componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
 
     if (componentInstance.$el.isFragment) {

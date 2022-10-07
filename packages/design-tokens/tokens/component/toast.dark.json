@@ -1,0 +1,9 @@
+{
+  "toast": {
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(50, 50, 50, 0.05), 0px 5px 17px rgba(50, 50, 50, 0.15)"
+      }
+    }
+  }
+}

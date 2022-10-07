@@ -22,6 +22,7 @@
     
     width: var(--elf--notification-width);
     height: var(--elf--notification-height);
+    min-width: 300px;
     
 
     display: flex;
@@ -106,6 +107,8 @@
 
         > .text {
             line-height: 1.2;
+            height: 100%;
+            overflow: auto;
         }
     
     }

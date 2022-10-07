@@ -1,7 +1,7 @@
 .elf--dialog {
     --elf--dialog-position: relative;
     --elf--dialog-width: 240px;
-    --elf--dialog-background-color: white;
+    --elf--dialog-background-color: var(--dialog-color-background-default);
     --elf--dialog-border-color: var(--color-gray-1);
     --elf--dialog-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
     --elf--dialog-border-radius: 4px;
@@ -42,14 +42,11 @@
     }
 
     > .elf--dialog-title {
-        // height: 40px;
         display: flex;
         box-sizing: border-box;
-        // border-bottom: 1px solid var(--elf--dialog-border-color);
-        // padding: 0px 16px 0px 16px;
         align-items: center;
         padding: 10px var(--elf--dialog-padding);
-        // padding-bottom: 0px;
+        padding-top: 0px;
 
         > .elf--dialog-title-text {
             flex: 1 1 auto;

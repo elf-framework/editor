@@ -109,3 +109,32 @@ StyleDictionary.extend({
     },
   },
 }).buildAllPlatforms();
+
+
+
+// building dark mode
+StyleDictionary.extend({
+  // Using the include array so that dark mode token overrides don't show warnings
+  include: [`tokens/**/!(*.${modes.join(`|*.`)}).js*`],
+  source: [`tokens/**/*.dark.js*`],
+  // ... skipping configuration above
+  platforms: {
+    css: {
+      transforms,
+      buildPath: "dist/",
+      files: [
+        {
+          destination: `css/tokens.dark.css`,
+          format: `css/variables`,
+          // only outputting the tokens from files with '.dark' in the filepath
+          filter: (token) => token.filePath.indexOf(`.dark`) > -1,
+          options: {
+            outputReferences: true,
+            selector: ".dark",
+          },
+        },
+      ],
+    },
+    //...
+  },
+}).buildAllPlatforms();

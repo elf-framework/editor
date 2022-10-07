@@ -22,10 +22,13 @@
     "40000": { "value": "40000" },
     "50000": { "value": "50000" },
     "tooltip": {
-      "value": "{z-index.50000.value}"
+      "value": "{z-index.100.value}"
     },
     "menu": {
       "value": "{z-index.100.value}"
+    },
+    "header": {
+      "value": "{z-index.200.value}"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/design-tokens",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "",
   "main": "./src/index.js",
   "files": [
@@ -9,6 +9,7 @@
   "exports": {
     "./style.css": "./dist/css/style.css",
     "./tokens.css": "./dist/css/tokens.css",
+    "./tokens.dark.css": "./dist/css/tokens.dark.css",
     "./tokens.es.js": "./dist/es/tokens.js",
     "./tokens.es.d.ts": "./dist/es/tokens.d.ts",
     "./tokens.module.js": "./dist/module/tokens.js",

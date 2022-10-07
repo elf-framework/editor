@@ -8,7 +8,7 @@
     --button-color-background-default
   );
   --elf--button-border-width: 1px;
-  --elf--button-color: var(--color-transparent-black-8);
+  --elf--button-color: var(--color-text-default);
   --elf--button-border-radius: 6px;
   --elf--button-disabled-color: var(--elf--disabled-color);
   --elf--button-inner-gap: 6px;
@@ -210,6 +210,7 @@
   &:hover,
   &.hover {
     --elf--button-background-color: var(--elf--button-hover-background-color);
+    --elf--button-color: var(--elf--button-hover-color);
   }
 
   &:active,
@@ -224,8 +225,9 @@
   &.focused {
 
     &:not(.default) {
-      border-color: var(--color-white);
-      outline: 2px solid var(--elf--button-border-color);
+      border-color: var(--color-background-default);
+      border-width: 3px;
+      outline: 3px solid var(--elf--button-border-color);
     } 
 
   }    
@@ -242,9 +244,7 @@
     }
 
     &:hover {
-      --elf--button-background-color: var(
-        --color-blue-7
-      );
+      --elf--button-background-color: var(--button-hover-background-primary);
     }
   }
 
@@ -273,7 +273,7 @@
       --button-color-background-danger
     );
     --elf--button-color: var(--color-white);
-    --elf--button-border-color: var(--button-color-border-danger);
+    --elf--button-border-color: var(--button-color-border-danger);    
   }
 
   &.info {
@@ -288,7 +288,7 @@
     --elf--button-background-color: var(
       --button-color-background-warning
     );
-    --elf--button-color: var(--color-white);
+    --elf--button-color: var(--color-text-default);
     --elf--button-border-color: var(--button-color-border-warning);    
   }
 
@@ -296,14 +296,14 @@
     --elf--button-background-color: var(
       --button-color-background-dark
     );
-    --elf--button-color: var(--color-white);
+    --elf--button-color: var(--color-text-default);
     --elf--button-border-color: var(--button-color-border-dark);    
   }  
 
   &.outline {
     --elf--button-background-color: inherit;
     --elf--button-border-color: var(--elf--button-color);
-    --elf--button-border-width: 2px;
+    --elf--button-border-width: 1px;
     // border-width: 1px;
     font-weight: bold;
     // color: inherit;
@@ -356,7 +356,7 @@
     }
 
     &.dark {
-      --elf--button-border-color: var(--color-black);
+      --elf--button-border-color: var(--button-color-border-dark);
       --elf--button-color: inherit;
     }    
 

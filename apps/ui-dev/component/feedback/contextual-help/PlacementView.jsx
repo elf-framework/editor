@@ -31,7 +31,7 @@ export function PlacementView() {
                 }
                 placement="bottom-left" // default
               >
-                <Button quiet size="extra-small" selected>
+                <Button iconOnly quiet size="extra-small" selected>
                   <InfoOutlined />
                 </Button>
               </Popover>
@@ -57,7 +57,7 @@ export function PlacementView() {
                 }
                 placement="top"
               >
-                <Button quiet size="extra-small" selected>
+                <Button iconOnly quiet size="extra-small" selected>
                   <HelpOutlineOutlined />
                 </Button>
               </Popover>
@@ -83,7 +83,7 @@ export function PlacementView() {
                 }
                 placement="right-bottom"
               >
-                <Button quiet size="extra-small" selected>
+                <Button iconOnly quiet size="extra-small" selected>
                   <HelpOutlineOutlined />
                 </Button>
               </Popover>

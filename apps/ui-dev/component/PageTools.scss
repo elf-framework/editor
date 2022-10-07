@@ -7,25 +7,29 @@
     gap: 10px;
     padding: 0px 10px;
     z-index: 1;
+    flex: 1 1 auto;
+    background-color: var(--color-background-default);
 
     .divider {
         display: inline-block;
         height: 20px;
         width: 1px;
-        background-color: #e0e0e0;
+        background-color: var(--color-border);
         margin: 0px 10px;
+        vertical-align: middle;
 
     }
     a {
         text-decoration: none;
         // background-color: var(--color-blue-0);
         padding: 5px 10px;
-        color: var(--color-black);
+        color: var(--color-text-default);
 
         &.selected {
             background-color: var(--color-blue-1);
             border-radius: 4px;
             font-weight: bold;
+            color: var(--color-text-header-default);
         }
     }
 
@@ -36,6 +40,8 @@
     .lg {
         display: flex;
         align-items: center;
+        width: 100%;
+        justify-content: space-between;
     }
 }
 

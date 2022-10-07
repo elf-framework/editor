@@ -1,0 +1,20 @@
+{
+  "slider": {
+    "color": {
+      "progress": {
+        "background": {
+          "default": {
+            "value": "{color.gray.9.value}"
+          }
+        },
+        "thumb": {
+          "background": {
+            "default": {
+              "value": "{color.gray.9.value}"
+            }
+          }
+        }        
+      }
+    }
+  }
+}

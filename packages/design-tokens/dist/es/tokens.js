@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 06 Oct 2022 01:50:17 GMT
+ * Generated on Fri, 07 Oct 2022 12:42:14 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -259,6 +259,11 @@ export const ButtonColorBorderDark = "#2c353d";
 export const ButtonSizePaddingSmall = "5rem 6rem";
 export const ButtonSizePaddingMedium = "8rem 10rem";
 export const ButtonSizePaddingLarge = "14rem 20rem";
+export const CheckboxColorBackgroundDark = "#2c353d";
+export const DialogColorBackgroundDefault = "#ffffff";
+export const DialogColorTextDefault = "#39444d";
+export const DialogColorBorderDefault = "#2c353d";
+export const DialogShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
 export const DividerColorBorderDefault = "#d9e0e6";
 export const DividerColorBorderPrimary = "#1273e6";
 export const DividerColorBorderSecondary = "#818e9a";
@@ -266,6 +271,43 @@ export const DividerColorBorderSuccess = "#009f6a";
 export const DividerColorBorderInfo = "#abd2ff";
 export const DividerColorBorderWarning = "#ffb77c";
 export const DividerColorBorderDanger = "#d9363e";
+export const MenuColorBackgroundDefault = "#ffffff";
+export const MenuColorBackgroundHoverDefault = "#f8f8f8";
+export const MenuColorTextDefault = "#39444d";
+export const MenuColorBorderDefault = "#2c353d";
+export const MenuShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
+export const PanelColorBackgroundDefault = "#ffffff";
+export const PanelColorTextDefault = "#39444d";
+export const PanelColorBorderDefault = "#2c353d";
+export const PopoverColorBackgroundDefault = "#ffffff";
+export const SliderColorProgressBackgroundDefault = "#2c353d";
+export const SliderColorProgressThumbBackgroundDefault = "#2c353d";
+export const SwitchFalseColorBackgroundDefault = "#d9e0e6";
+export const SwitchFalseColorHandleBackgroundDefault = "#2c353d";
+export const SwitchTrueColorBackgroundDefault = "#2c353d";
+export const SwitchTrueColorHandleBackgroundDefault = "#ffffff";
+export const ToastShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
+export const ToolbarColorBackgroundDefault = "#ffffff";
+export const ToolbarColorBackgroundPrimary = "#1273e6";
+export const ToolbarColorBackgroundSecondary = "#818e9a";
+export const ToolbarColorBackgroundSuccess = "#009f6a";
+export const ToolbarColorBackgroundInfo = "#abd2ff";
+export const ToolbarColorBackgroundWarning = "#ffb77c";
+export const ToolbarColorBackgroundDanger = "#d9363e";
+export const ToolbarColorBackgroundDark = "#2c353d";
+export const ToolbarColorTextDefault = "#39444d";
+export const ToolbarColorTextPrimary = "#39444d";
+export const ToolbarColorTextSecondary = "#39444d";
+export const ToolbarColorTextSuccess = "#1b5441";
+export const ToolbarColorTextDanger = "#80252a";
+export const ToolbarColorTextWarning = "#5c2200";
+export const ToolbarColorTextInfo = "#1a497d";
+export const ToolbarColorTextTitle = "#2c353d";
+export const ToolbarColorTextSubtitle = "#626f7a";
+export const ToolbarColorTextLink = "#1a497d";
+export const ToolbarColorTextDisabled = "#818e9a";
+export const TooltipColorBackgroundDefault = "#ffffff";
+export const TooltipColorTextDefault = "#39444d";
 export const Shadow1 = "0 1px 4px 0 rgba(170, 170, 170, 0.5)";
 export const Shadow2 = "0 4px 8px 0 rgba(170, 170, 170, 0.5)";
 export const Shadow3 = "0 8px 16px 0 rgba(170, 170, 170, 0.5)";
@@ -330,8 +372,9 @@ export const ZIndex20000 = "20000";
 export const ZIndex30000 = "30000";
 export const ZIndex40000 = "40000";
 export const ZIndex50000 = "50000";
-export const ZIndexTooltip = "50000";
+export const ZIndexTooltip = "100";
 export const ZIndexMenu = "100";
+export const ZIndexHeader = "200";
 export const MathPi = 3.141592653589793;
 export const SizeBase0 = "0rem";
 export const SizeBase10 = "1rem";

@@ -1,11 +1,11 @@
 .elf--menu {
     /* menu background color */
-    --elf--menu-background-color: var(--color-white);
-    --elf--menu-font-color: var(--color-black);
+    --elf--menu-background-color: var(--menu-color-background-default);
+    --elf--menu-font-color: var(--menu-color-text-default);
     /* menu border color */
     --elf--menu-border-color: rgba(0, 0, 0, 0.1);
     /* menu box-shadow */
-    --elf--menu-box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+    --elf--menu-box-shadow: var(--menu-shadow-default);
     /* menu default width */
     --elf--menu-width: 224px;
     /* menu max height */
@@ -15,11 +15,11 @@
     /* menu item padding */
     --elf--menu-item-padding: 16px;
     /* menu item section title color */
-    --elf--menu-item-section-title-color: var(--color-black);
+    --elf--menu-item-section-title-color: var(--color-text-header-default);
     /* menu item divider color */
-    --elf--menu-item-divider-color: var(--color-border);    
+    --elf--menu-item-divider-color: var(--menu-color-border-default);    
 
-    --elf--menu-item-hover-color: var(--color-gray-1);
+    --elf--menu-item-hover-color: var(--menu-color-background-hover-default);
     /* menu direction */
     --elf--menu-direction-left: 100%;
     /* menu selected icon font size */
@@ -83,7 +83,6 @@
 
     &.dropdown {
         // box-shadow: none;
-        box-shadow: none;
         border-radius: 4px;
         --elf--menu-position: relative;
         

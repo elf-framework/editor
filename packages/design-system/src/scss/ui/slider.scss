@@ -1,7 +1,7 @@
 .elf--slider {
 
   --elf--slider-height: 24px;
-  --elf--slider-font-color: var(--color-black);
+  // --elf--slider-font-color: var(--color-black);
   --elf--slider-gap: 20px;
   --elf--slider-background-image: none;
 
@@ -11,7 +11,8 @@
   --elf--slider-track-height: 2px;
   --elf--slider-track-color: var(--color-gray-3);
   --elf--slider-track-radius: cacl(var(--elf--slider-track-height)/2);
-  --elf--slider-progress-color: var(--color-black);
+  --elf--slider-progress-color: var(--slider-color-progress-background-default);
+  --elf--slider-progress-thumb-color: var(--slider-color-progress-thumb-background-default);
 
   --elf--slider-thumb-width: 14px;
   --elf--slider-thumb-height: 14px;
@@ -24,7 +25,7 @@
   --elf--slider-thumb-value-position-left: 50%;
   --elf--slider-thumb-value-position-top: 0px;
   --elf--slider-thumb-value-color: var(--color-white);
-  --elf--slider-thumb-value-background-color: var(--elf--slider-progress-color);
+  --elf--slider-thumb-value-background-color: var(--elf--slider-progress-thumb-color);
   --elf--slider-thumb-value-position-offset: 24px;
 
   font-size: var(--elf--slider-font-size);

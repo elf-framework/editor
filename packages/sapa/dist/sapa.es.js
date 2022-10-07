@@ -1790,11 +1790,6 @@ const _EventMachine = class extends HookMachine {
       renderComponent(this);
     }
   }
-  checkLoad($container) {
-    window.requestAnimationFrame(() => {
-      renderComponent(this, $container);
-    });
-  }
   get state() {
     return __privateGet(this, _state);
   }
@@ -1818,9 +1813,9 @@ const _EventMachine = class extends HookMachine {
     return true;
   }
   getTargetInstance(oldEl) {
-    const targetList = Object.values(this.children).filter((instance) => {
+    const targetList = Object.values(this.children).filter(Boolean).filter((instance) => {
       var _a;
-      return ((_a = instance.$el) == null ? void 0 : _a.el) === oldEl;
+      return ((_a = instance == null ? void 0 : instance.$el) == null ? void 0 : _a.el) === oldEl;
     });
     if (targetList.length) {
       return targetList[0];
@@ -2658,6 +2653,9 @@ class VNodeComponent extends VNode {
       this.children.map((it) => it.clone()),
       this.Component
     );
+  }
+  isFunctionComponent() {
+    return this.LastComponent.__proto__.name === "";
   }
   mounted() {
     var _a;
@@ -3628,17 +3626,19 @@ async function runningUpdate(componentInstance, template) {
     }
   }
   componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+  componentInstance.alternate = template;
   componentInstance.runUpdated();
   await componentInstance.runHandlers("update");
 }
 async function runningMount(componentInstance, template, $container) {
+  var _a;
   const newDomElement = DomRenderer(template, {
     ...componentInstance.getVNodeOptions()
   });
-  componentInstance.prevTemplate = template;
+  componentInstance.alternate = template;
   componentInstance.$el = newDomElement;
   componentInstance.refs.$el = componentInstance.$el;
-  if (componentInstance.$el) {
+  if ((_a = componentInstance.$el) == null ? void 0 : _a.el) {
     componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
     if (componentInstance.$el.isFragment) {
       componentInstance.isFragment = true;
@@ -3740,7 +3740,7 @@ function renderComponent(component, $container = void 0) {
   if (isPendingComponent(component)) {
     return;
   }
-  window.requestIdleCallback(() => {
+  requestIdleCallback(() => {
     var _a;
     (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
   });

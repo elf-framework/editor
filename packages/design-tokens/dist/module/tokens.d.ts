@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 06 Oct 2022 01:50:17 GMT
+ * Generated on Fri, 07 Oct 2022 12:42:14 GMT
  */
 
 export default tokens;
@@ -372,6 +372,29 @@ declare const tokens: {
       }
     }
   },
+  "checkbox": {
+    "color": {
+      "background": {
+        "dark": DesignToken
+      }
+    }
+  },
+  "dialog": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
+      }
+    },
+    "shadow": {
+      "default": DesignToken
+    }
+  },
   "divider": {
     "color": {
       "border": {
@@ -382,6 +405,127 @@ declare const tokens: {
         "info": DesignToken,
         "warning": DesignToken,
         "danger": DesignToken
+      }
+    }
+  },
+  "menu": {
+    "color": {
+      "background": {
+        "default": DesignToken,
+        "hover": {
+          "default": DesignToken
+        }
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
+      }
+    },
+    "shadow": {
+      "default": DesignToken
+    }
+  },
+  "panel": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
+      }
+    }
+  },
+  "popover": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      }
+    }
+  },
+  "slider": {
+    "color": {
+      "progress": {
+        "background": {
+          "default": DesignToken
+        },
+        "thumb": {
+          "background": {
+            "default": DesignToken
+          }
+        }
+      }
+    }
+  },
+  "switch": {
+    "false": {
+      "color": {
+        "background": {
+          "default": DesignToken
+        },
+        "handle": {
+          "background": {
+            "default": DesignToken
+          }
+        }
+      }
+    },
+    "true": {
+      "color": {
+        "background": {
+          "default": DesignToken
+        },
+        "handle": {
+          "background": {
+            "default": DesignToken
+          }
+        }
+      }
+    }
+  },
+  "toast": {
+    "shadow": {
+      "default": DesignToken
+    }
+  },
+  "toolbar": {
+    "color": {
+      "background": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "warning": DesignToken,
+        "danger": DesignToken,
+        "dark": DesignToken
+      },
+      "text": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "danger": DesignToken,
+        "warning": DesignToken,
+        "info": DesignToken,
+        "title": DesignToken,
+        "subtitle": DesignToken,
+        "link": DesignToken,
+        "disabled": DesignToken
+      }
+    }
+  },
+  "tooltip": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
       }
     }
   },
@@ -461,7 +605,8 @@ declare const tokens: {
     "40000": DesignToken,
     "50000": DesignToken,
     "tooltip": DesignToken,
-    "menu": DesignToken
+    "menu": DesignToken,
+    "header": DesignToken
   },
   "math": {
     "pi": DesignToken

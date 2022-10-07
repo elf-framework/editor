@@ -8,7 +8,7 @@ export function MainView() {
       style={{
         gap: 30,
         overflow: "auto",
-        backgroundColor: "var(--color-gray-0)",
+        backgroundColor: "var(--color-gray-3)",
         padding: 20,
       }}
     >

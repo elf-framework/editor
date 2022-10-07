@@ -709,7 +709,7 @@ var __privateMethod = (obj, member, method) => {
         disabled,
         selected,
         focused,
-        shape = "rect",
+        shape = "none",
         quiet = false,
         outline = false,
         closable = false,

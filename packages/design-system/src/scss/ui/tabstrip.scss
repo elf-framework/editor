@@ -7,10 +7,10 @@
     --elf--tabstrip-border-color: transparent;
     --elf--tabstrip-offset: 0.5em;
     --elf--tabstrip-indicator-background-color: var(--color-gray-2);
-    --elf--tabstrip-indicator-color: var(--color-black);
+    --elf--tabstrip-indicator-color: var(--color-gray-1);
     --elf--tabstrip-indicator-size: 3px;
     --elf--tabstrip-indicator-transition: all 0.2s ease;
-    --elf--tabstrip-selected-color: var(--color-black);
+    --elf--tabstrip-selected-color: var(--color-text-default);
     --elf--tabstrip-disabled-color: var(--color-gray-3);
 
     background-color: var(--elf--tabstrip-background-color);

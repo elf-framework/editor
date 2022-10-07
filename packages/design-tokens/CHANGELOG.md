@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.2.6
+
+### Patch Changes
+
+- update design system color rules
+
 ## 2.2.7
 
 ### Patch Changes
