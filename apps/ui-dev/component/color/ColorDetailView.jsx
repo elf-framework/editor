@@ -12,7 +12,7 @@ export function ColorDetailView({ color, title, message, description = "" }) {
         style={{
           flex: "none",
           backgroundColor: color,
-          border: "2px solid black",
+          border: "1px solid rgba(255, 255, 255, 0.5)",
           height: "100px",
         }}
       >

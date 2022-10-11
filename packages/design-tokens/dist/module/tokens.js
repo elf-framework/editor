@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 07 Oct 2022 12:42:14 GMT
+ * Generated on Tue, 11 Oct 2022 11:58:04 GMT
  */
 
 module.exports = {
@@ -543,11 +543,11 @@ module.exports = {
       ]
     },
     "warning": {
-      "value": "#ffb77c",
+      "value": "#e16f24",
       "filePath": "tokens/color/brand.json",
       "isSource": true,
       "original": {
-        "value": "{color.orange.2.value}"
+        "value": "{color.orange.4.value}"
       },
       "name": "ColorWarning",
       "attributes": {
@@ -560,11 +560,11 @@ module.exports = {
       ]
     },
     "info": {
-      "value": "#abd2ff",
+      "value": "#429bff",
       "filePath": "tokens/color/brand.json",
       "isSource": true,
       "original": {
-        "value": "{color.blue.3.value}"
+        "value": "{color.blue.5.value}"
       },
       "name": "ColorInfo",
       "attributes": {
@@ -2850,6 +2850,198 @@ module.exports = {
         ]
       }
     },
+    "dark": {
+      "0": {
+        "value": "#d5d7e0",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#d5d7e0"
+        },
+        "name": "ColorDark0",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "0"
+        },
+        "path": [
+          "color",
+          "dark",
+          "0"
+        ]
+      },
+      "1": {
+        "value": "#acaebf",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#acaebf"
+        },
+        "name": "ColorDark1",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "1"
+        },
+        "path": [
+          "color",
+          "dark",
+          "1"
+        ]
+      },
+      "2": {
+        "value": "#8c8fa3",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#8c8fa3"
+        },
+        "name": "ColorDark2",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "2"
+        },
+        "path": [
+          "color",
+          "dark",
+          "2"
+        ]
+      },
+      "3": {
+        "value": "#666980",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#666980"
+        },
+        "name": "ColorDark3",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "3"
+        },
+        "path": [
+          "color",
+          "dark",
+          "3"
+        ]
+      },
+      "4": {
+        "value": "#4d4f66",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#4d4f66"
+        },
+        "name": "ColorDark4",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "4"
+        },
+        "path": [
+          "color",
+          "dark",
+          "4"
+        ]
+      },
+      "5": {
+        "value": "#34354a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#34354a"
+        },
+        "name": "ColorDark5",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "5"
+        },
+        "path": [
+          "color",
+          "dark",
+          "5"
+        ]
+      },
+      "6": {
+        "value": "#2b2c3d",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#2b2c3d"
+        },
+        "name": "ColorDark6",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "6"
+        },
+        "path": [
+          "color",
+          "dark",
+          "6"
+        ]
+      },
+      "7": {
+        "value": "#1d1e30",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#1d1e30"
+        },
+        "name": "ColorDark7",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "7"
+        },
+        "path": [
+          "color",
+          "dark",
+          "7"
+        ]
+      },
+      "8": {
+        "value": "#0c0d21",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#0c0d21"
+        },
+        "name": "ColorDark8",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "8"
+        },
+        "path": [
+          "color",
+          "dark",
+          "8"
+        ]
+      },
+      "9": {
+        "value": "#01010a",
+        "filePath": "tokens/color/core.json",
+        "isSource": true,
+        "original": {
+          "value": "#01010a"
+        },
+        "name": "ColorDark9",
+        "attributes": {
+          "category": "color",
+          "type": "dark",
+          "item": "9"
+        },
+        "path": [
+          "color",
+          "dark",
+          "9"
+        ]
+      }
+    },
     "black": {
       "value": "#2c353d",
       "filePath": "tokens/color/core.json",
@@ -3354,11 +3546,11 @@ module.exports = {
     },
     "text": {
       "default": {
-        "value": "#39444d",
+        "value": "#2c353d",
         "filePath": "tokens/color/text.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.8.value}"
+          "value": "{color.gray.9.value}"
         },
         "name": "ColorTextDefault",
         "attributes": {
@@ -4350,7 +4542,7 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#abd2ff",
+          "value": "#429bff",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
@@ -4371,7 +4563,7 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#ffb77c",
+          "value": "#e16f24",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
@@ -4761,13 +4953,2604 @@ module.exports = {
       }
     }
   },
+  "blank": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "transparent",
+          "filePath": "tokens/component/blank.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "BlankColorBackgroundDefault",
+          "attributes": {
+            "category": "blank",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "blank",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      }
+    }
+  },
   "button": {
+    "default": {
+      "background": {
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonDefaultBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#d9363e",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.danger.value}"
+          },
+          "name": "ButtonDefaultBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.info.value}"
+          },
+          "name": "ButtonDefaultBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "info"
+          ]
+        },
+        "primary": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
+          },
+          "name": "ButtonDefaultBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.secondary.value}"
+          },
+          "name": "ButtonDefaultBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#009f6a",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.success.value}"
+          },
+          "name": "ButtonDefaultBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#e16f24",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.warning.value}"
+          },
+          "name": "ButtonDefaultBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "warning"
+          ]
+        }
+      },
+      "border": {
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonDefaultBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#d9363e",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.danger.value}"
+          },
+          "name": "ButtonDefaultBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.info.value}"
+          },
+          "name": "ButtonDefaultBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "info"
+          ]
+        },
+        "primary": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
+          },
+          "name": "ButtonDefaultBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.secondary.value}"
+          },
+          "name": "ButtonDefaultBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#009f6a",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.success.value}"
+          },
+          "name": "ButtonDefaultBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#e16f24",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.warning.value}"
+          },
+          "name": "ButtonDefaultBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "warning"
+          ]
+        }
+      },
+      "text": {
+        "dark": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextDark",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextDanger",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextInfo",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "info"
+          ]
+        },
+        "primary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextWarning",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "warning"
+          ]
+        }
+      }
+    },
+    "outline": {
+      "background": {
+        "dark": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "warning"
+          ]
+        }
+      },
+      "border": {
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonOutlineBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#d9363e",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.danger.value}"
+          },
+          "name": "ButtonOutlineBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.info.value}"
+          },
+          "name": "ButtonOutlineBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonOutlineBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
+          },
+          "name": "ButtonOutlineBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#818e9a",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.secondary.value}"
+          },
+          "name": "ButtonOutlineBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#009f6a",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.success.value}"
+          },
+          "name": "ButtonOutlineBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#e16f24",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.warning.value}"
+          },
+          "name": "ButtonOutlineBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "warning"
+          ]
+        }
+      },
+      "text": {
+        "dark": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextDark",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextDanger",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextInfo",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextDefault",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ButtonOutlineTextWarning",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "warning"
+          ]
+        }
+      }
+    },
+    "hover": {
+      "background": {
+        "dark": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonHoverBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#a12b2b",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.7.value}"
+          },
+          "name": "ButtonHoverBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.6.value}"
+          },
+          "name": "ButtonHoverBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonHoverBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.7.value}"
+          },
+          "name": "ButtonHoverBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonHoverBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#067852",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.7.value}"
+          },
+          "name": "ButtonHoverBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#762c00",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.7.value}"
+          },
+          "name": "ButtonHoverBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "warning"
+          ]
+        }
+      },
+      "border": {
+        "dark": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonHoverBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#a12b2b",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.7.value}"
+          },
+          "name": "ButtonHoverBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.6.value}"
+          },
+          "name": "ButtonHoverBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonHoverBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.7.value}"
+          },
+          "name": "ButtonHoverBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonHoverBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#067852",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.7.value}"
+          },
+          "name": "ButtonHoverBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#762c00",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.7.value}"
+          },
+          "name": "ButtonHoverBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "warning"
+          ]
+        }
+      },
+      "text": {
+        "dark": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextDark",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextDanger",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextInfo",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.9.value}"
+          },
+          "name": "ButtonHoverTextDefault",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextWarning",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "warning"
+          ]
+        }
+      }
+    },
+    "selected": {
+      "background": {
+        "dark": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#a12b2b",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.6.value}"
+          },
+          "name": "ButtonSelectedBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonSelectedBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#067852",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#762c00",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "warning"
+          ]
+        }
+      },
+      "border": {
+        "dark": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonSelectedBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#80252a",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.8.value}"
+          },
+          "name": "ButtonSelectedBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.6.value}"
+          },
+          "name": "ButtonSelectedBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonSelectedBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#1a497d",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8.value}"
+          },
+          "name": "ButtonSelectedBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonSelectedBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#1b5441",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.8.value}"
+          },
+          "name": "ButtonSelectedBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#5c2200",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.8.value}"
+          },
+          "name": "ButtonSelectedBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "warning"
+          ]
+        }
+      }
+    },
+    "focus": {
+      "background": {
+        "dark": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonFocusBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#80252a",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.8.value}"
+          },
+          "name": "ButtonFocusBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.7.value}"
+          },
+          "name": "ButtonFocusBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "info"
+          ]
+        },
+        "primary": {
+          "value": "#1a497d",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8.value}"
+          },
+          "name": "ButtonFocusBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonFocusBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#1b5441",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.8.value}"
+          },
+          "name": "ButtonFocusBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#5c2200",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.8.value}"
+          },
+          "name": "ButtonFocusBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "warning"
+          ]
+        }
+      },
+      "border": {
+        "dark": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonFocusBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#80252a",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.8.value}"
+          },
+          "name": "ButtonFocusBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.7.value}"
+          },
+          "name": "ButtonFocusBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "info"
+          ]
+        },
+        "primary": {
+          "value": "#1a497d",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8.value}"
+          },
+          "name": "ButtonFocusBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonFocusBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#1b5441",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.8.value}"
+          },
+          "name": "ButtonFocusBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "success"
+          ]
+        },
+        "warning": {
+          "value": "#5c2200",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.8.value}"
+          },
+          "name": "ButtonFocusBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "warning"
+          ]
+        }
+      }
+    },
+    "active": {
+      "background": {
+        "dark": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonActiveBackgroundDark",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#ffcfd1",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.2.value}"
+          },
+          "name": "ButtonActiveBackgroundDanger",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.1.value}"
+          },
+          "name": "ButtonActiveBackgroundInfo",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#ffb77c",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2.value}"
+          },
+          "name": "ButtonActiveBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#cce3ff",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.2.value}"
+          },
+          "name": "ButtonActiveBackgroundPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonActiveBackgroundSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#b5f5e0",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.2.value}"
+          },
+          "name": "ButtonActiveBackgroundSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "success"
+          ]
+        }
+      },
+      "border": {
+        "dark": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonActiveBorderDark",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#ffcfd1",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.2.value}"
+          },
+          "name": "ButtonActiveBorderDanger",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.1.value}"
+          },
+          "name": "ButtonActiveBorderInfo",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#ffb77c",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2.value}"
+          },
+          "name": "ButtonActiveBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#cce3ff",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.2.value}"
+          },
+          "name": "ButtonActiveBorderPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonActiveBorderSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#b5f5e0",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.2.value}"
+          },
+          "name": "ButtonActiveBorderSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "success"
+          ]
+        }
+      },
+      "text": {
+        "dark": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.__dark__.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextDark",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "dark"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "dark"
+          ]
+        },
+        "danger": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.danger.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextDanger",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "danger"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "danger"
+          ]
+        },
+        "info": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.info.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextInfo",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "info"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "info"
+          ]
+        },
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextDefault",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.primary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextPrimary",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.secondary.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextSecondary",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.success.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextSuccess",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "success"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "success"
+          ]
+        }
+      }
+    },
     "closable": {
       "hover": {
         "background": {
           "default": {
             "value": "#ffffff",
-            "filePath": "tokens/component/button.json",
+            "filePath": "tokens/component/button/button.json",
             "isSource": true,
             "original": {
               "value": "{color.transparent.white.1.value}"
@@ -4791,61 +7574,11 @@ module.exports = {
         }
       }
     },
-    "hover": {
-      "background": {
-        "default": {
-          "value": "#ebf0f5",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.1.value}"
-          },
-          "name": "ButtonHoverBackgroundDefault",
-          "attributes": {
-            "category": "button",
-            "type": "hover",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "button",
-            "hover",
-            "background",
-            "default"
-          ]
-        }
-      }
-    },
-    "selected": {
-      "background": {
-        "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.2.value}"
-          },
-          "name": "ButtonSelectedBackgroundDefault",
-          "attributes": {
-            "category": "button",
-            "type": "selected",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "button",
-            "selected",
-            "background",
-            "default"
-          ]
-        }
-      }
-    },
     "disabled": {
       "background": {
         "default": {
           "value": "#d9e0e6",
-          "filePath": "tokens/component/button.json",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -4868,7 +7601,7 @@ module.exports = {
       "border": {
         "default": {
           "value": "#d9e0e6",
-          "filePath": "tokens/component/button.json",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -4891,7 +7624,7 @@ module.exports = {
       "text": {
         "default": {
           "value": "#818e9a",
-          "filePath": "tokens/component/button.json",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.5.value}"
@@ -4912,353 +7645,11 @@ module.exports = {
         }
       }
     },
-    "color": {
-      "background": {
-        "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.default.value}"
-          },
-          "name": "ButtonColorBackgroundDefault",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "default"
-          ]
-        },
-        "primary": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.primary.value}"
-          },
-          "name": "ButtonColorBackgroundPrimary",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "primary"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "primary"
-          ]
-        },
-        "secondary": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.secondary.value}"
-          },
-          "name": "ButtonColorBackgroundSecondary",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "secondary"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "secondary"
-          ]
-        },
-        "success": {
-          "value": "#009f6a",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.success.value}"
-          },
-          "name": "ButtonColorBackgroundSuccess",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "success"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "success"
-          ]
-        },
-        "info": {
-          "value": "#abd2ff",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.info.value}"
-          },
-          "name": "ButtonColorBackgroundInfo",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "info"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "info"
-          ]
-        },
-        "warning": {
-          "value": "#ffb77c",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.warning.value}"
-          },
-          "name": "ButtonColorBackgroundWarning",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "warning"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "warning"
-          ]
-        },
-        "danger": {
-          "value": "#d9363e",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.danger.value}"
-          },
-          "name": "ButtonColorBackgroundDanger",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "danger"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "danger"
-          ]
-        },
-        "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.black.value}"
-          },
-          "name": "ButtonColorBackgroundDark",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "background",
-            "subitem": "dark"
-          },
-          "path": [
-            "button",
-            "color",
-            "background",
-            "dark"
-          ]
-        }
-      },
-      "border": {
-        "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.2.value}"
-          },
-          "name": "ButtonColorBorderDefault",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "default"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "default"
-          ]
-        },
-        "primary": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.primary.value}"
-          },
-          "name": "ButtonColorBorderPrimary",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "primary"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "primary"
-          ]
-        },
-        "secondary": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.secondary.value}"
-          },
-          "name": "ButtonColorBorderSecondary",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "secondary"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "secondary"
-          ]
-        },
-        "success": {
-          "value": "#009f6a",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.success.value}"
-          },
-          "name": "ButtonColorBorderSuccess",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "success"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "success"
-          ]
-        },
-        "info": {
-          "value": "#abd2ff",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.info.value}"
-          },
-          "name": "ButtonColorBorderInfo",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "info"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "info"
-          ]
-        },
-        "warning": {
-          "value": "#ffb77c",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.warning.value}"
-          },
-          "name": "ButtonColorBorderWarning",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "warning"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "warning"
-          ]
-        },
-        "danger": {
-          "value": "#d9363e",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.danger.value}"
-          },
-          "name": "ButtonColorBorderDanger",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "danger"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "danger"
-          ]
-        },
-        "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.black.value}"
-          },
-          "name": "ButtonColorBorderDark",
-          "attributes": {
-            "category": "button",
-            "type": "color",
-            "item": "border",
-            "subitem": "dark"
-          },
-          "path": [
-            "button",
-            "color",
-            "border",
-            "dark"
-          ]
-        }
-      }
-    },
     "size": {
       "padding": {
         "small": {
           "value": "5rem 6rem",
-          "filePath": "tokens/component/button.json",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
             "value": "{size.base.65.value} {size.base.75.value}"
@@ -5279,7 +7670,7 @@ module.exports = {
         },
         "medium": {
           "value": "8rem 10rem",
-          "filePath": "tokens/component/button.json",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
             "value": "{size.base.100.value} {size.base.125.value}"
@@ -5300,7 +7691,7 @@ module.exports = {
         },
         "large": {
           "value": "14rem 20rem",
-          "filePath": "tokens/component/button.json",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
             "value": "{size.base.175.value} {size.base.250.value}"
@@ -5317,6 +7708,121 @@ module.exports = {
             "size",
             "padding",
             "large"
+          ]
+        }
+      }
+    }
+  },
+  "card": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/card.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "CardColorBackgroundDefault",
+          "attributes": {
+            "category": "card",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "card",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "selected": {
+          "value": "#f6faff",
+          "filePath": "tokens/component/card.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.0.value}"
+          },
+          "name": "CardColorBackgroundSelected",
+          "attributes": {
+            "category": "card",
+            "type": "color",
+            "item": "background",
+            "subitem": "selected"
+          },
+          "path": [
+            "card",
+            "color",
+            "background",
+            "selected"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/card.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "CardColorTextDefault",
+          "attributes": {
+            "category": "card",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "card",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/card.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "CardColorBorderDefault",
+          "attributes": {
+            "category": "card",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "card",
+            "color",
+            "border",
+            "default"
+          ]
+        },
+        "selected": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/card.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
+          },
+          "name": "CardColorBorderSelected",
+          "attributes": {
+            "category": "card",
+            "type": "color",
+            "item": "border",
+            "subitem": "selected"
+          },
+          "path": [
+            "card",
+            "color",
+            "border",
+            "selected"
           ]
         }
       }
@@ -5376,7 +7882,7 @@ module.exports = {
       },
       "text": {
         "default": {
-          "value": "#39444d",
+          "value": "#2c353d",
           "filePath": "tokens/component/dialog.json",
           "isSource": true,
           "original": {
@@ -5531,7 +8037,7 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#abd2ff",
+          "value": "#429bff",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
@@ -5552,7 +8058,7 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#ffb77c",
+          "value": "#e16f24",
           "filePath": "tokens/component/divider.json",
           "isSource": true,
           "original": {
@@ -5591,6 +8097,148 @@ module.exports = {
             "color",
             "border",
             "danger"
+          ]
+        }
+      }
+    }
+  },
+  "ghost": {
+    "color": {
+      "background": {
+        "1": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/ghost.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.transparent.white.0.value}"
+          },
+          "name": "GhostColorBackground1",
+          "attributes": {
+            "category": "ghost",
+            "type": "color",
+            "item": "background",
+            "subitem": "1"
+          },
+          "path": [
+            "ghost",
+            "color",
+            "background",
+            "1"
+          ]
+        },
+        "2": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/ghost.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.transparent.white.5.value}"
+          },
+          "name": "GhostColorBackground2",
+          "attributes": {
+            "category": "ghost",
+            "type": "color",
+            "item": "background",
+            "subitem": "2"
+          },
+          "path": [
+            "ghost",
+            "color",
+            "background",
+            "2"
+          ]
+        },
+        "default": {
+          "value": "#ebf0f5",
+          "filePath": "tokens/component/ghost.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.1.value}"
+          },
+          "name": "GhostColorBackgroundDefault",
+          "attributes": {
+            "category": "ghost",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "ghost",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      }
+    }
+  },
+  "input": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/input.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "InputColorBackgroundDefault",
+          "attributes": {
+            "category": "input",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "input",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/input.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "InputColorTextDefault",
+          "attributes": {
+            "category": "input",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "input",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/input.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "InputColorBorderDefault",
+          "attributes": {
+            "category": "input",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "input",
+            "color",
+            "border",
+            "default"
           ]
         }
       }
@@ -5648,7 +8296,7 @@ module.exports = {
       },
       "text": {
         "default": {
-          "value": "#39444d",
+          "value": "#2c353d",
           "filePath": "tokens/component/menu.json",
           "isSource": true,
           "original": {
@@ -5742,7 +8390,7 @@ module.exports = {
       },
       "text": {
         "default": {
-          "value": "#39444d",
+          "value": "#2c353d",
           "filePath": "tokens/component/panel.json",
           "isSource": true,
           "original": {
@@ -5812,6 +8460,117 @@ module.exports = {
             "default"
           ]
         }
+      }
+    }
+  },
+  "progressbar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/progress-bar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ProgressbarColorBackgroundDefault",
+          "attributes": {
+            "category": "progressbar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "progressbar",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/progress-bar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "ProgressbarColorTextDefault",
+          "attributes": {
+            "category": "progressbar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "progressbar",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "active": {
+        "value": "#2c353d",
+        "filePath": "tokens/component/progress-bar.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.9.value}"
+        },
+        "name": "ProgressbarColorActive",
+        "attributes": {
+          "category": "progressbar",
+          "type": "color",
+          "item": "active"
+        },
+        "path": [
+          "progressbar",
+          "color",
+          "active"
+        ]
+      }
+    }
+  },
+  "progress-circle": {
+    "color": {
+      "track": {
+        "value": "#d9e0e6",
+        "filePath": "tokens/component/progress-circle.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.2.value}"
+        },
+        "name": "ProgressCircleColorTrack",
+        "attributes": {
+          "category": "progress-circle",
+          "type": "color",
+          "item": "track"
+        },
+        "path": [
+          "progress-circle",
+          "color",
+          "track"
+        ]
+      },
+      "active": {
+        "value": "#2c353d",
+        "filePath": "tokens/component/progress-circle.json",
+        "isSource": true,
+        "original": {
+          "value": "{color.gray.9.value}"
+        },
+        "name": "ProgressCircleColorActive",
+        "attributes": {
+          "category": "progress-circle",
+          "type": "color",
+          "item": "active"
+        },
+        "path": [
+          "progress-circle",
+          "color",
+          "active"
+        ]
       }
     }
   },
@@ -5990,6 +8749,321 @@ module.exports = {
       }
     }
   },
+  "table": {
+    "color": {
+      "border": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/table.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "TableColorBorderDefault",
+          "attributes": {
+            "category": "table",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "table",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "thead": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "transparent",
+            "filePath": "tokens/component/table.json",
+            "isSource": true,
+            "original": {
+              "value": "transparent"
+            },
+            "name": "TableTheadColorBackgroundDefault",
+            "attributes": {
+              "category": "table",
+              "type": "thead",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "table",
+              "thead",
+              "color",
+              "background",
+              "default"
+            ]
+          }
+        }
+      }
+    },
+    "tbody": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "#ffffff",
+            "filePath": "tokens/component/table.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.background.default.value}"
+            },
+            "name": "TableTbodyColorBackgroundDefault",
+            "attributes": {
+              "category": "table",
+              "type": "tbody",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "table",
+              "tbody",
+              "color",
+              "background",
+              "default"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "tabstrip": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.transparent.white.0.value}"
+          },
+          "name": "TabstripColorBackgroundDefault",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "indicator": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "TabstripColorBackgroundIndicator",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "background",
+            "subitem": "indicator"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "background",
+            "indicator"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#626f7a",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.6.value}"
+          },
+          "name": "TabstripColorTextDefault",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "text",
+            "default"
+          ]
+        },
+        "indicator": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TabstripColorTextIndicator",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "text",
+            "subitem": "indicator"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "text",
+            "indicator"
+          ]
+        },
+        "selected": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TabstripColorTextSelected",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "text",
+            "subitem": "selected"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "text",
+            "selected"
+          ]
+        },
+        "disabled": {
+          "value": "#c5ced6",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.3.value}"
+          },
+          "name": "TabstripColorTextDisabled",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "text",
+            "subitem": "disabled"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "text",
+            "disabled"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/tabstrip.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.transparent.white.0.value}"
+          },
+          "name": "TabstripColorBorderDefault",
+          "attributes": {
+            "category": "tabstrip",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "tabstrip",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    }
+  },
+  "tag": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/tag.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "TagColorBackgroundDefault",
+          "attributes": {
+            "category": "tag",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tag",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/tag.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TagColorTextDefault",
+          "attributes": {
+            "category": "tag",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tag",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/tag.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TagColorBorderDefault",
+          "attributes": {
+            "category": "tag",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "tag",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    }
+  },
   "toast": {
     "shadow": {
       "default": {
@@ -6101,7 +9175,7 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#abd2ff",
+          "value": "#429bff",
           "filePath": "tokens/component/toolbar.json",
           "isSource": true,
           "original": {
@@ -6122,7 +9196,7 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#ffb77c",
+          "value": "#e16f24",
           "filePath": "tokens/component/toolbar.json",
           "isSource": true,
           "original": {
@@ -6447,7 +9521,7 @@ module.exports = {
       },
       "text": {
         "default": {
-          "value": "#39444d",
+          "value": "#2c353d",
           "filePath": "tokens/component/tooltip.json",
           "isSource": true,
           "original": {
@@ -6466,6 +9540,202 @@ module.exports = {
             "text",
             "default"
           ]
+        }
+      }
+    }
+  },
+  "treeview": {
+    "item": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "transparent",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "transparent"
+            },
+            "name": "TreeviewItemColorBackgroundDefault",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "background",
+              "default"
+            ]
+          },
+          "hover": {
+            "value": "#ebf0f5",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1.value}"
+            },
+            "name": "TreeviewItemColorBackgroundHover",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "background",
+              "state": "hover"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "background",
+              "hover"
+            ]
+          },
+          "selected": {
+            "value": "#d9e0e6",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2.value}"
+            },
+            "name": "TreeviewItemColorBackgroundSelected",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "background",
+              "state": "selected"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "background",
+              "selected"
+            ]
+          },
+          "ghost": {
+            "value": "#ebf0f5",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1.value}"
+            },
+            "name": "TreeviewItemColorBackgroundGhost",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "background",
+              "state": "ghost"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "background",
+              "ghost"
+            ]
+          }
+        },
+        "text": {
+          "default": {
+            "value": "#2c353d",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.text.default.value}"
+            },
+            "name": "TreeviewItemColorTextDefault",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "text",
+              "state": "default"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "text",
+              "default"
+            ]
+          }
+        },
+        "border": {
+          "default": {
+            "value": "transparent",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "transparent"
+            },
+            "name": "TreeviewItemColorBorderDefault",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "border",
+              "state": "default"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "border",
+              "default"
+            ]
+          },
+          "hover": {
+            "value": "transparent",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "transparent"
+            },
+            "name": "TreeviewItemColorBorderHover",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "border",
+              "state": "hover"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "border",
+              "hover"
+            ]
+          },
+          "selected": {
+            "value": "transparent",
+            "filePath": "tokens/component/treeview.json",
+            "isSource": true,
+            "original": {
+              "value": "transparent"
+            },
+            "name": "TreeviewItemColorBorderSelected",
+            "attributes": {
+              "category": "treeview",
+              "type": "item",
+              "item": "color",
+              "subitem": "border",
+              "state": "selected"
+            },
+            "path": [
+              "treeview",
+              "item",
+              "color",
+              "border",
+              "selected"
+            ]
+          }
         }
       }
     }

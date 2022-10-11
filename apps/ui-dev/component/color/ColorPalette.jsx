@@ -49,7 +49,7 @@ export function ColorPalette({ title = "", colors = [] }) {
         <div
           style={{
             "z-index": 1,
-            backgroundColor: "white",
+            // backgroundColor: "white",
           }}
         >
           <Grid
@@ -81,6 +81,8 @@ export function ColorPalette({ title = "", colors = [] }) {
               style={{
                 padding: "18px 30px",
                 boxSizing: "border-box",
+                borderRight: "1px solid var(--color-border)",
+                borderBottom: "1px solid var(--color-border)",
               }}
             >
               <TextInfo

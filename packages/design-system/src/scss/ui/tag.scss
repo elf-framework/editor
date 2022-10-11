@@ -1,9 +1,9 @@
 .elf--tag {
     --elf--tag-font-size: var(--font-size-small);
     --elf--tag-border-radius: 4px;
-    --elf--tag-border-color: var(--color-black);
-    --elf--tag-color: var(--color-black);
-    --elf--tag-background-color: var(--color-white);
+    --elf--tag-border-color: var(--tag-color-border-default);
+    --elf--tag-color: var(--tag-color-text-default);
+    --elf--tag-background-color: var(--tag-color-background-default);
     --elf--tag-padding: 3px 8px;
 
     display: inline-flex;
@@ -97,7 +97,6 @@
 
         &.filled {
             --elf--tag-color: var(--color-white);
-            --elf--tag-border-color: var(--color-white);
             --elf--tag-background-color: var(--color-black);
 
             > .elf--button {
@@ -122,15 +121,10 @@
     }
 
     &.readonly {
-        --elf--tag-color: var(--color-gray-5) !important;
-        --elf--tag-border-color: var(--color-gray-3) !important;
-        --elf--tag-background-color: var(--color-white) !important;
         pointer-events: none;
         > * {
             pointer-events: all;
-        }
-        > .elf--button {
-            color: var(--color-gray-5) !important;
+            user-select: none;
         }
     }    
 }

@@ -1,0 +1,29 @@
+{
+  "table": {
+    "color": {
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    },
+    "thead": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "transparent"
+          }
+        }
+      }
+    },
+    "tbody": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "{color.background.default.value}"
+          }
+        }
+      }
+    }
+  }
+}

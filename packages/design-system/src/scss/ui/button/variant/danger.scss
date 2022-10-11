@@ -1,0 +1,49 @@
+.elf--button.danger {
+
+  --elf--button-background-color: var(--button-default-background-danger);
+  --elf--button-text-color: var(--button-default-text-danger);
+  --elf--button-border-color: var(--button-default-border-danger);
+
+  &.selected {
+    --elf--button-background-color: var(--button-selected-background-danger);
+    --elf--button-border-color: var(--button-selected-border-danger);
+  }
+
+  &:active,
+  &.active {
+    --elf--button-background-color: var(--button-active-background-danger);
+    --elf--button-border-color: var(--button-active-border-danger);
+  }
+
+  &:hover,
+  &.hover {
+    --elf--button-background-color: var(--button-hover-background-danger);
+    --elf--button-text-color: var(--button-hover-text-danger);
+    --elf--button-border-color: var(--button-hover-border-danger);
+  }
+
+  &:focus,
+  &.focused {
+
+    &:not(.quiet):not(.outline) {
+      outline: 2px solid var(--button-default-border-danger);
+      --elf--button-border-color: var(--color-background-default);
+      border-width: 2px;
+    }
+
+  }
+
+  &.outline {
+
+    --elf--button-border-color: var(--button-outline-border-danger);
+    --elf--button-text-color: var(--button-outline-text-danger);
+    --elf--button-background-color: var(--button-outline-background-danger);
+
+    &:hover,
+    &.hover {
+      --elf--button-background-color: var(--button-default-background-danger) !important;
+      --elf--button-text-color: var(--button-default-text-danger) !important;
+      --elf--button-border-color: var(--button-default-border-danger) !important;
+    }
+  }
+}

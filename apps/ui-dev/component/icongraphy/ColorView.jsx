@@ -1,5 +1,5 @@
 import AddCardFilled from "@elf-framework/icon/AddCardFilled";
-import { Grid, VBox } from "@elf-framework/ui";
+import { Button, Grid, IconButton, VBox } from "@elf-framework/ui";
 
 export function ColorView() {
   return (
@@ -43,18 +43,20 @@ export function ColorView() {
                 style={{
                   width: 200,
                   padding: "10px 20px",
+                  backgroundColor: "var(--color-white)",
+                  color: "var(--color-black)",
                   borderRadius: 4,
                 }}
               >
-                <span style={{ color: "var(--color-gray-7)" }}>
+                <Button iconOnly quiet size="large">
                   <AddCardFilled width={40} height={40} />
-                </span>
-                <span style={{ color: "var(--color-black)" }}>
+                </Button>
+                <Button hover iconOnly quiet size="large">
                   <AddCardFilled width={40} height={40} />
-                </span>
-                <span style={{ color: "var(--color-text-disabled)" }}>
+                </Button>
+                <Button iconOnly quiet disabled size="large">
                   <AddCardFilled width={40} height={40} />
-                </span>
+                </Button>
               </Grid>
               <Grid
                 columns={3}
@@ -62,7 +64,7 @@ export function ColorView() {
                   width: 200,
                   padding: "10px 20px",
                   backgroundColor: "var(--color-black)",
-                  color: "var(--color-white)",
+                  color: "var(--color-gray-9)",
                   borderRadius: 4,
                 }}
               >

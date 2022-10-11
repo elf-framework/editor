@@ -1,12 +1,12 @@
 .elf--table {
   --elf--table-width: 100%;
   --elf--table-font-size: var(--font-size-medium);
-  --elf--table-border-color: var(--color-gray-2);
+  --elf--table-border-color: var(--table-color-border-default);
 
-  --elf--table-thead-background-color: transparent;
+  --elf--table-thead-background-color: var(--table-thead-color-background-default);
 
   --elf--table-head-cell-padding: 6px 13px;
-  --elf--table-tbody-background-color: var(--color-white);
+  --elf--table-tbody-background-color: var(--table-tbody-color-background-default);
 
 
   --elf--table-cell-padding: 10px 12px;

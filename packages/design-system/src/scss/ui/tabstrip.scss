@@ -1,17 +1,17 @@
 .elf--tabstrip {
-    --elf--tabstrip-background-color: transparent;
-    --elf--tabstrip-color: var(--color-gray-6);
+    --elf--tabstrip-background-color: var(--tabstrip-color-background-default);
+    --elf--tabstrip-color: var(--tabstrip-color-text-default);
     --elf--tabstrip-font-weight: 500;
     --elf--tabstrip-font-size: 14px;
     --elf--tabstrip-gap: 0.7em;
-    --elf--tabstrip-border-color: transparent;
+    --elf--tabstrip-border-color: var(--tabstrip-color-border-default);
     --elf--tabstrip-offset: 0.5em;
-    --elf--tabstrip-indicator-background-color: var(--color-gray-2);
-    --elf--tabstrip-indicator-color: var(--color-gray-1);
+    --elf--tabstrip-indicator-background-color: var(--tabstrip-color-background-indicator);
+    --elf--tabstrip-indicator-color: var(--tabstrip-color-text-indicator);
     --elf--tabstrip-indicator-size: 3px;
     --elf--tabstrip-indicator-transition: all 0.2s ease;
-    --elf--tabstrip-selected-color: var(--color-text-default);
-    --elf--tabstrip-disabled-color: var(--color-gray-3);
+    --elf--tabstrip-selected-color: var(--tabstrip-color-text-selected);
+    --elf--tabstrip-disabled-color: var(--tabstrip-color-text-disabled);
 
     background-color: var(--elf--tabstrip-background-color);
     color: var(--elf--tabstrip-color);

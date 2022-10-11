@@ -1,0 +1,12 @@
+{
+  "progress-circle": {
+    "color": {
+      "track": {
+        "value": "{color.gray.2.value}"
+      },
+      "active": {
+        "value": "{color.gray.5.value}"
+      }
+    }
+  }
+}

@@ -37,7 +37,7 @@ export function AnimationView() {
               const A = Animation[it];
               return (
                 <div>
-                  <A duration="2s">
+                  <A duration="2s" play>
                     <ProgressCircle size="large" variant="primary" value={30} />
                   </A>
                   <div>{it}</div>

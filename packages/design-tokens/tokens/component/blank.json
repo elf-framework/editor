@@ -1,0 +1,11 @@
+{
+  "blank": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "transparent"
+        }
+      }
+    }
+  }
+}

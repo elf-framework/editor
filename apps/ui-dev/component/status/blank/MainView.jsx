@@ -13,9 +13,10 @@ export function MainView() {
       <div>
         <Blank
           stripe="none"
-          color="white"
+          // color="white"
           style={{
             height: 100,
+            border: "1px solid var(--color-gray-3)",
           }}
         />
       </div>

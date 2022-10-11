@@ -9,17 +9,20 @@ const transforms = [
 const { transform } = require("@divriots/style-dictionary-to-figma");
 const StyleDictionary = require("style-dictionary");
 
+const figmaTokensPluginJson = (opts) => {
+  const { dictionary } = opts;
+  // Transform the tokens from the style dictionary instance
+  const parsedTokens = transform(dictionary.tokens);
+  // Turn the object into JSON, the "2" third param is used to format indents with 2 spaces
+  return JSON.stringify(parsedTokens, null, 2);
+};
+
+//
 StyleDictionary.extend({
   source: [`tokens/**/!(*.${modes.join(`|*.`)}).js*`],
   format: {
     // Define a custom format using our transformer
-    figmaTokensPluginJson: (opts) => {
-      const { dictionary } = opts;
-      // Transform the tokens from the style dictionary instance
-      const parsedTokens = transform(dictionary.tokens);
-      // Turn the object into JSON, the "2" third param is used to format indents with 2 spaces
-      return JSON.stringify(parsedTokens, null, 2);
-    },
+    figmaTokensPluginJson,
   },
   platforms: {
     ts: {
@@ -110,15 +113,49 @@ StyleDictionary.extend({
   },
 }).buildAllPlatforms();
 
-
-
 // building dark mode
 StyleDictionary.extend({
   // Using the include array so that dark mode token overrides don't show warnings
   include: [`tokens/**/!(*.${modes.join(`|*.`)}).js*`],
   source: [`tokens/**/*.dark.js*`],
   // ... skipping configuration above
+  format: {
+    // Define a custom format using our transformer
+    figmaTokensPluginJson,
+  },
   platforms: {
+    js: {
+      buildPath: "dist/",
+      transforms: ["attribute/cti", "name/cti/pascal", "color/hex"],
+      files: [
+        {
+          destination: "tokens.dark.json",
+          format: "json/nested",
+          options: {
+            // Look here 👇
+            outputReferences: true,
+          },
+        },
+        {
+          destination: "umd/tokens.dark.js",
+          format: "javascript/umd",
+          options: {
+            // Look here 👇
+            outputReferences: true,
+          },
+        },
+      ],
+    },
+    json: {
+      transformGroup: "js",
+      buildPath: "dist/",
+      files: [
+        {
+          destination: "figma-tokens.dark.json",
+          format: "figmaTokensPluginJson",
+        },
+      ],
+    },
     css: {
       transforms,
       buildPath: "dist/",
@@ -130,7 +167,7 @@ StyleDictionary.extend({
           filter: (token) => token.filePath.indexOf(`.dark`) > -1,
           options: {
             outputReferences: true,
-            selector: ".dark",
+            selector: ".theme-dark",
           },
         },
       ],

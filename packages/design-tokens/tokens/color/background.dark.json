@@ -2,7 +2,7 @@
   "color": {
     "background": {
       "default": {
-        "value": "{color.black.value}",
+        "value": "{color.dark.9.value}",
         "comment": "Background color that will match the current color scheme"
       },
       "primary": {

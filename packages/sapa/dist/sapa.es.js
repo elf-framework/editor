@@ -1815,7 +1815,7 @@ const _EventMachine = class extends HookMachine {
   getTargetInstance(oldEl) {
     const targetList = Object.values(this.children).filter(Boolean).filter((instance) => {
       var _a;
-      return ((_a = instance == null ? void 0 : instance.$el) == null ? void 0 : _a.el) === oldEl;
+      return (instance == null ? void 0 : instance.id) !== this.id && ((_a = instance == null ? void 0 : instance.$el) == null ? void 0 : _a.el) === oldEl;
     });
     if (targetList.length) {
       return targetList[0];
@@ -1956,6 +1956,7 @@ const _EventMachine = class extends HookMachine {
     super.onUpdated();
     const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
     if (instance) {
+      console.log(this.id, this.instance);
       instance.onUpdated();
     }
   }

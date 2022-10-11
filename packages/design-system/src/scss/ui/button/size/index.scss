@@ -1,0 +1,60 @@
+.elf--button {
+
+  --elf--button-padding: 6px;
+  --elf--button-height: 36px;
+  --elf--button-side-padding: calc(var(--elf--button-padding) + 12px);
+  --elf--button-font-size: var(--elf--font-size, 14px);
+  --elf--button-border-radius: 4px;
+
+  // height: var(--elf--button-height, 30px);
+  padding: var(--elf--button-padding) var(--elf--button-side-padding);
+  border-radius: var(--elf--button-border-radius);
+  font-size: var(--elf--button-font-size);
+  height: var(--elf--button-height);
+
+
+  &.has-min-width {
+    min-width: calc(var(--elf--button-height) * 2.25);
+  }
+
+
+  .elf--icon {
+    width: 20px;
+    height: 20px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.justified {
+    width: 100%;
+  }
+
+  &.square,
+  &.rect {
+    --elf--button-border-radius: 0px;
+  }
+
+  &.icon-only {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    min-width: 0 !important;
+    width: var(--elf--button-height);
+  }  
+
+  &.round {
+    padding-left: 20px;
+    padding-right: 20px;
+    --elf--button-border-radius: 20px;
+  }
+
+  &.circle {
+    --elf--button-border-radius: 50%;
+  }
+}
+
+@import "./small.scss";
+@import "./large.scss";
+@import "./extra-large.scss";

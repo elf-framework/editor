@@ -1,0 +1,26 @@
+.elf--button {
+
+
+  &.large {
+    --elf--button-font-size: 16px;
+    --elf--button-padding: 10px;
+    --elf--button-height: 50px;
+
+    .elf--icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .elf--progress-circle {
+      --elf--progress-circle-width: 30px;
+    }
+
+
+    &.round {
+      padding-left: 20px;
+      padding-right: 20px;
+      --elf--button-border-radius: 100px;
+    }
+  }
+
+}

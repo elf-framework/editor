@@ -1,6 +1,6 @@
-import tokens from "@elf-framework/design-tokens/tokens.json";
 import { Grid } from "@elf-framework/ui";
 
+import { getThemeTokens } from "../../utils/theme";
 import { ucwords } from "../../utils/ucwords";
 import { ColorPalette } from "./ColorPalette";
 
@@ -11,6 +11,8 @@ function convertToKeyValue(obj) {
 }
 
 export function PaletteView() {
+  const tokens = getThemeTokens();
+
   return (
     <Grid
       columns={1}

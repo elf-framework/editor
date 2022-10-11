@@ -1,7 +1,7 @@
 
 /**
  * Do not edit directly
- * Generated on Fri, 07 Oct 2022 12:42:15 GMT
+ * Generated on Tue, 11 Oct 2022 02:53:29 GMT
  */
 
 
@@ -51,11 +51,11 @@
 .color-danger { color: #d9363e; }
 .background-color-danger { background-color: #d9363e; }
 
-.color-warning { color: #ffb77c; }
-.background-color-warning { background-color: #ffb77c; }
+.color-warning { color: #e16f24; }
+.background-color-warning { background-color: #e16f24; }
 
-.color-info { color: #abd2ff; }
-.background-color-info { background-color: #abd2ff; }
+.color-info { color: #429bff; }
+.background-color-info { background-color: #429bff; }
 
 .color-disabled { color: #d9e0e6; }
 .background-color-disabled { background-color: #d9e0e6; }
@@ -410,6 +410,36 @@
 
 .color-teal-9 { color: #223a3b; }
 .background-color-teal-9 { background-color: #223a3b; }
+
+.color-dark-0 { color: #d5d7e0; }
+.background-color-dark-0 { background-color: #d5d7e0; }
+
+.color-dark-1 { color: #acaebf; }
+.background-color-dark-1 { background-color: #acaebf; }
+
+.color-dark-2 { color: #8c8fa3; }
+.background-color-dark-2 { background-color: #8c8fa3; }
+
+.color-dark-3 { color: #666980; }
+.background-color-dark-3 { background-color: #666980; }
+
+.color-dark-4 { color: #4d4f66; }
+.background-color-dark-4 { background-color: #4d4f66; }
+
+.color-dark-5 { color: #34354a; }
+.background-color-dark-5 { background-color: #34354a; }
+
+.color-dark-6 { color: #2b2c3d; }
+.background-color-dark-6 { background-color: #2b2c3d; }
+
+.color-dark-7 { color: #1d1e30; }
+.background-color-dark-7 { background-color: #1d1e30; }
+
+.color-dark-8 { color: #0c0d21; }
+.background-color-dark-8 { background-color: #0c0d21; }
+
+.color-dark-9 { color: #01010a; }
+.background-color-dark-9 { background-color: #01010a; }
 
 .color-black { color: #2c353d; }
 .background-color-black { background-color: #2c353d; }

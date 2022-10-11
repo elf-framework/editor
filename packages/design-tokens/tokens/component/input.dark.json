@@ -1,0 +1,21 @@
+{
+  "input": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.1.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    }
+  }
+}

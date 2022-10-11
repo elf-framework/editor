@@ -1,0 +1,21 @@
+.elf--button {
+
+  &[disabled] {
+    cursor: not-allowed;
+    --elf--button-background-color: var(
+      --elf--button-disabled-background-default
+    ) !important;
+    --elf--button-color: var(--elf--button-disabled-text-default) !important;
+    --elf--button-border-color: transparent !important;
+
+    &.quiet {
+        --elf--button-background-color: transparent !important;
+    }
+
+    &.outline {
+      --elf--button-background-color: transparent !important;
+      --elf--button-border-color: var(--button-disabled-border-default) !important;
+    }
+  }
+
+}

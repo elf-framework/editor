@@ -257,6 +257,7 @@ declare module "@elf-framework/ui" {
     place?: string;
     justified?: boolean;
     play?: boolean;
+    hover?: boolean;
     focused?: boolean;
     hasMinWidth?: boolean;
     onClick?: (event: PointerEvent) => void;

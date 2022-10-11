@@ -256,7 +256,7 @@ export class EventMachine extends HookMachine {
     const targetList = Object.values(this.children)
       .filter(Boolean)
       .filter((instance) => {
-        return instance?.$el?.el === oldEl;
+        return instance?.id !== this.id && instance?.$el?.el === oldEl;
       });
 
     if (targetList.length) {
@@ -525,9 +525,14 @@ export class EventMachine extends HookMachine {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 updated 를 같이 실행해준다.
+
+    // FIXME: 이 부분은 무한루프에 빠질 수 있으므로 주의해야 한다.
+    // FIxME: 자식 노드의 일부분이 부모와 연결 되어 있다.
     const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
+      console.log(this.id, this.instance);
+
       instance.onUpdated();
     }
 

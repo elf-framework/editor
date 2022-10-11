@@ -3,15 +3,15 @@
     --elf--card-height: auto;
     --elf--card-display: flex;
     --elf--card-position: relative;
-    --elf--card-border-color: var(--color-gray-2);
     --elf--card-border-radius: 4px;
-    --elf--card-background-color: var(--color-white);
     --elf--card-offset: 10px;
     --elf--card-side-offset: 16px;
     --elf--card-shadow: none;
-    --elf--card-selected-border-color: var(--color-primary);
-    --elf--card-selected-background-color: var(--color-blue-0);
-
+    
+    --elf--card-border-color: var(--card-color-border-default);
+    --elf--card-selected-border-color: var(--card-color-border-selected);    
+    --elf--card-background-color: var(--card-color-background-default);
+    --elf--card-selected-background-color: var(--card-color-background-selected);
 
     position: var(--elf--card-position);
     display: grid;

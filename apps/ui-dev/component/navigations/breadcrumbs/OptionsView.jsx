@@ -1,5 +1,5 @@
 import CheckFilled from "@elf-framework/icon/CheckFilled";
-import { Breadcrumbs, Grid, VBox } from "@elf-framework/ui";
+import { Breadcrumbs, Button, Grid, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {
   return (
@@ -25,7 +25,11 @@ export function OptionsView() {
           <Breadcrumbs
             items={[
               {
-                title: <CheckFilled />,
+                title: (
+                  <Button size="small" iconOnly quiet>
+                    <CheckFilled />
+                  </Button>
+                ),
               },
               {
                 title: "Design",

@@ -1,6 +1,5 @@
 .elf--breadcrumbs {
     --elf--breadcrumbs-font-size: var(--font-size-medium);
-    --elf--breadcrumbs-font-color: var(--color-black);
     --elf--breadcrumbs-item-gap: 10px;
     --elf--breadcrumbs-title-font-size: var(--font-size-large);
     display: inline-block;
@@ -10,7 +9,6 @@
     .elf--breadcrumbs-items {
         display: inline-flex;
         font-size: var(--elf--breadcrumbs-font-size);
-        color: var(--elf--breadcrumbs-font-color);
         text-align: left;
         gap: var(--elf--breadcrumbs-item-gap);
         align-items: center;

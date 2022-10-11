@@ -1,0 +1,27 @@
+{
+  "card": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white.value}"
+        },
+        "selected": {
+          "value": "{color.blue.0.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        },
+        "selected": {
+          "value": "{color.primary.value}"
+        }
+      }
+    }
+  }
+}

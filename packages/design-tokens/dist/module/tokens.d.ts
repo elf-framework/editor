@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 07 Oct 2022 12:42:14 GMT
+ * Generated on Tue, 11 Oct 2022 11:58:04 GMT
  */
 
 export default tokens;
@@ -196,6 +196,18 @@ declare const tokens: {
       "8": DesignToken,
       "9": DesignToken
     },
+    "dark": {
+      "0": DesignToken,
+      "1": DesignToken,
+      "2": DesignToken,
+      "3": DesignToken,
+      "4": DesignToken,
+      "5": DesignToken,
+      "6": DesignToken,
+      "7": DesignToken,
+      "8": DesignToken,
+      "9": DesignToken
+    },
     "black": DesignToken,
     "white": DesignToken,
     "transparent": {
@@ -313,22 +325,183 @@ declare const tokens: {
       "700": DesignToken
     }
   },
+  "blank": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      }
+    }
+  },
   "button": {
+    "default": {
+      "background": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "border": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "text": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      }
+    },
+    "outline": {
+      "background": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "border": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "text": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      }
+    },
+    "hover": {
+      "background": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "border": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "text": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      }
+    },
+    "selected": {
+      "background": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "border": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      }
+    },
+    "focus": {
+      "background": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      },
+      "border": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "warning": DesignToken
+      }
+    },
+    "active": {
+      "background": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken
+      },
+      "border": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken
+      },
+      "text": {
+        "dark": DesignToken,
+        "danger": DesignToken,
+        "info": DesignToken,
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken
+      }
+    },
     "closable": {
       "hover": {
         "background": {
           "default": DesignToken
         }
-      }
-    },
-    "hover": {
-      "background": {
-        "default": DesignToken
-      }
-    },
-    "selected": {
-      "background": {
-        "default": DesignToken
       }
     },
     "disabled": {
@@ -342,33 +515,26 @@ declare const tokens: {
         "default": DesignToken
       }
     },
-    "color": {
-      "background": {
-        "default": DesignToken,
-        "primary": DesignToken,
-        "secondary": DesignToken,
-        "success": DesignToken,
-        "info": DesignToken,
-        "warning": DesignToken,
-        "danger": DesignToken,
-        "dark": DesignToken
-      },
-      "border": {
-        "default": DesignToken,
-        "primary": DesignToken,
-        "secondary": DesignToken,
-        "success": DesignToken,
-        "info": DesignToken,
-        "warning": DesignToken,
-        "danger": DesignToken,
-        "dark": DesignToken
-      }
-    },
     "size": {
       "padding": {
         "small": DesignToken,
         "medium": DesignToken,
         "large": DesignToken
+      }
+    }
+  },
+  "card": {
+    "color": {
+      "background": {
+        "default": DesignToken,
+        "selected": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken,
+        "selected": DesignToken
       }
     }
   },
@@ -405,6 +571,28 @@ declare const tokens: {
         "info": DesignToken,
         "warning": DesignToken,
         "danger": DesignToken
+      }
+    }
+  },
+  "ghost": {
+    "color": {
+      "background": {
+        "1": DesignToken,
+        "2": DesignToken,
+        "default": DesignToken
+      }
+    }
+  },
+  "input": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
       }
     }
   },
@@ -447,6 +635,23 @@ declare const tokens: {
       }
     }
   },
+  "progressbar": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "active": DesignToken
+    }
+  },
+  "progress-circle": {
+    "color": {
+      "track": DesignToken,
+      "active": DesignToken
+    }
+  },
   "slider": {
     "color": {
       "progress": {
@@ -484,6 +689,57 @@ declare const tokens: {
             "default": DesignToken
           }
         }
+      }
+    }
+  },
+  "table": {
+    "color": {
+      "border": {
+        "default": DesignToken
+      }
+    },
+    "thead": {
+      "color": {
+        "background": {
+          "default": DesignToken
+        }
+      }
+    },
+    "tbody": {
+      "color": {
+        "background": {
+          "default": DesignToken
+        }
+      }
+    }
+  },
+  "tabstrip": {
+    "color": {
+      "background": {
+        "default": DesignToken,
+        "indicator": DesignToken
+      },
+      "text": {
+        "default": DesignToken,
+        "indicator": DesignToken,
+        "selected": DesignToken,
+        "disabled": DesignToken
+      },
+      "border": {
+        "default": DesignToken
+      }
+    }
+  },
+  "tag": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
       }
     }
   },
@@ -526,6 +782,26 @@ declare const tokens: {
       },
       "text": {
         "default": DesignToken
+      }
+    }
+  },
+  "treeview": {
+    "item": {
+      "color": {
+        "background": {
+          "default": DesignToken,
+          "hover": DesignToken,
+          "selected": DesignToken,
+          "ghost": DesignToken
+        },
+        "text": {
+          "default": DesignToken
+        },
+        "border": {
+          "default": DesignToken,
+          "hover": DesignToken,
+          "selected": DesignToken
+        }
       }
     }
   },

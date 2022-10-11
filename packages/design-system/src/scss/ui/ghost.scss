@@ -2,12 +2,12 @@
 
     --elf--ghost-width: 100%;
     --elf--ghost-height: 100%;
-    --elf--ghost-background-color: var(--color-gray-1);
+    --elf--ghost-background-color: var(--ghost-color-background-default);
     --elf--ghost-border-radius: 5px;
     --elf--ghost-animation-name: ghost;
     --elf--ghost-animation-duration: 1.5s;
-    --elf--ghost-background-color-1: var(--color-transparent-white-0);
-    --elf--ghost-background-color-2: var(--color-transparent-white-5);
+    --elf--ghost-background-color-1: var(--ghost-color-background-1);
+    --elf--ghost-background-color-2: var(--ghost-color-background-2);
 
     display: block;
     position: relative;

@@ -26,13 +26,13 @@
     },
     "hover": {
       "default": {
-        "value": "{color.gray.0.value}"
+        "value": "{color.gray.1.value}"
       },
       "dark": {
         "value": "#000000"
       },
       "primary": {
-        "value": "{color.blue.7.value}"
+        "value": "{color.blue.2.value}"
       },
       "secondary": {
         "value": "{color.gray.7.value}"

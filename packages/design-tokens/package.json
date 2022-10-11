@@ -15,10 +15,12 @@
     "./tokens.module.js": "./dist/module/tokens.js",
     "./tokens.module.d.ts": "./dist/module/tokens.d.ts",
     "./tokens.umd.js": "./dist/umd/tokens.js",
-    "./tokens.json": "./dist/tokens.json"
+    "./tokens.dark.umd.js": "./dist/umd/tokens.dark.js",
+    "./tokens.json": "./dist/tokens.json",
+    "./tokens.dark.json": "./dist/tokens.dark.json"
   },
   "scripts": {
-    "build": "node scripts/build.js && npm run build:style",
+    "build": "node scripts/build.js",
     "build:style": "node scripts/build-style.js",
     "build:all": "node scripts/build-all.js",
     "watch": "npm run build && chokidar  \"tokens/**/*.js*\" -c \"npm run build\"",

@@ -16,10 +16,10 @@
       "value": "{color.red.6.value}"
     },
     "warning": {
-      "value": "{color.orange.2.value}"
+      "value": "{color.orange.4.value}"
     },
     "info": {
-      "value": "{color.blue.3.value}"
+      "value": "{color.blue.5.value}"
     },
     "disabled": {
       "value": "{color.gray.2.value}"

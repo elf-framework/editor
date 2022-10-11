@@ -1,0 +1,49 @@
+.elf--button.secondary {
+
+  --elf--button-background-color: var(--button-default-background-secondary);
+  --elf--button-text-color: var(--button-default-text-secondary);
+  --elf--button-border-color: var(--button-default-border-secondary);
+
+  &.selected {
+    --elf--button-background-color: var(--button-selected-background-secondary);
+    --elf--button-border-color: var(--button-selected-border-secondary);
+  }
+
+  &:active,
+  &.active {
+    --elf--button-background-color: var(--button-active-background-secondary);
+    --elf--button-border-color: var(--button-active-border-secondary);
+  }
+
+  &:hover,
+  &.hover {
+    --elf--button-background-color: var(--button-hover-background-secondary);
+    --elf--button-text-color: var(--button-hover-text-secondary);
+    --elf--button-border-color: var(--button-hover-border-secondary);
+  }
+
+  &:focus,
+  &.focused {
+
+    &:not(.quiet):not(.outline) {
+      outline: 2px solid var(--button-default-border-secondary);
+      --elf--button-border-color: var(--color-background-default);
+      border-width: 2px;
+    }
+
+  }
+
+  &.outline {
+
+    --elf--button-border-color: var(--button-outline-border-secondary);
+    --elf--button-text-color: var(--button-outline-text-secondary);
+    --elf--button-background-color: var(--button-outline-background-secondary);
+
+    &:hover,
+    &.hover {
+      --elf--button-background-color: var(--button-default-background-secondary) !important;
+      --elf--button-text-color: var(--button-default-text-secondary) !important;
+      --elf--button-border-color: var(--button-default-border-secondary) !important;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Grid } from "@elf-framework/ui";
+import { Button, Grid, RoundButton } from "@elf-framework/ui";
 
 export function DisabledView() {
   return (
@@ -24,32 +24,11 @@ export function DisabledView() {
               gap: 20,
             }}
           >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-disabled)",
-                color: "var(--color-text-disabled)",
-                border: 0,
-                borderRadius: 25,
-                padding: "8px 20px",
-                fontWeight: "900",
-              }}
-            >
+            <RoundButton variant="primary" disabled>
               Action
-            </button>
+            </RoundButton>
 
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-disabled)",
-                color: "var(--color-text-disabled)",
-                border: "1px solid transparent",
-                borderRadius: 4,
-                padding: "8px 20px",
-              }}
-            >
-              Action
-            </button>
+            <Button disabled>Action</Button>
           </div>
         </div>
       </Grid>

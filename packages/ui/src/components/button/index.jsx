@@ -41,6 +41,7 @@ export class Button extends UIElement {
       justified = false,
       pending = false,
       play = false,
+      hover = false,
       as = "button",
       hasMinWidth = false,
       ...extraProps
@@ -60,6 +61,7 @@ export class Button extends UIElement {
           [size]: true,
           [shape]: true,
           [place]: true,
+          hover,
           "icon-only": iconOnly,
           "has-min-width": hasMinWidth,
         },
@@ -78,6 +80,7 @@ export class Button extends UIElement {
       className,
       justified,
       focused,
+      hover,
       hasMinWidth,
     ]);
 

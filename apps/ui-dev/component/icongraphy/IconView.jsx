@@ -1,6 +1,6 @@
 import AddCardFilled from "@elf-framework/icon/AddCardFilled";
 import AddChartFilled from "@elf-framework/icon/AddChartFilled";
-import { Grid } from "@elf-framework/ui";
+import { Button, Grid } from "@elf-framework/ui";
 
 export function IconView() {
   return (
@@ -10,9 +10,8 @@ export function IconView() {
           <strong>Metaphors</strong>
           <div style={{ padding: 10 }}>
             <p>
-              icon metaphors are clear, strong, and additive to experiences.
-              They describe tools and topics as simply and accurately as
-              possible.
+              The metaphor of the icon is clear, powerful, and empirical.
+              Briefly and accurately describe the tools and topics as follows:
             </p>
           </div>
         </div>
@@ -26,25 +25,11 @@ export function IconView() {
               height: 150,
             }}
           >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-action-primary)",
-                color: "var(--color-black)",
-                border: 0,
-                borderRadius: 25,
-                padding: "10px 20px",
-                fontWeight: "900",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 5,
-              }}
-            >
+            <Button quiet>
               <AddCardFilled />
               <AddChartFilled />
               Welcome
-            </button>
+            </Button>
           </div>
         </div>
       </Grid>

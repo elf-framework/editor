@@ -1,4 +1,4 @@
-import { Grid } from "@elf-framework/ui";
+import { Button, Grid, RoundButton } from "@elf-framework/ui";
 
 export function HoverView() {
   return (
@@ -22,32 +22,11 @@ export function HoverView() {
               gap: 20,
             }}
           >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-hover-primary)",
-                color: "white",
-                border: 0,
-                borderRadius: 25,
-                padding: "10px 20px",
-                fontWeight: "900",
-              }}
-            >
+            <RoundButton variant="primary" hover>
               Action
-            </button>
+            </RoundButton>
 
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-hover-default)",
-                color: "var(--color-text-default)",
-                border: "1px solid var(--color-black)",
-                borderRadius: 4,
-                padding: "10px 20px",
-              }}
-            >
-              Action
-            </button>
+            <Button hover>Action</Button>
           </div>
         </div>
       </Grid>

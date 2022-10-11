@@ -1,0 +1,49 @@
+.elf--button.success {
+
+  --elf--button-background-color: var(--button-default-background-success);
+  --elf--button-text-color: var(--button-default-text-success);
+  --elf--button-border-color: var(--button-default-border-success);
+
+  &.selected {
+    --elf--button-background-color: var(--button-selected-background-success);
+    --elf--button-border-color: var(--button-selected-border-success);
+  }
+
+  &:active,
+  &.active {
+    --elf--button-background-color: var(--button-active-background-success);
+    --elf--button-border-color: var(--button-active-border-success);
+  }
+
+  &:hover,
+  &.hover {
+    --elf--button-background-color: var(--button-hover-background-success);
+    --elf--button-text-color: var(--button-hover-text-success);
+    --elf--button-border-color: var(--button-hover-border-success);
+  }
+
+  &:focus,
+  &.focused {
+
+    &:not(.quiet):not(.outline) {
+      outline: 2px solid var(--button-default-border-success);
+      --elf--button-border-color: var(--color-background-default);
+      border-width: 2px;
+    }
+
+  }
+
+  &.outline {
+
+    --elf--button-border-color: var(--button-outline-border-success);
+    --elf--button-text-color: var(--button-outline-text-success);
+    --elf--button-background-color: var(--button-outline-background-success);
+
+    &:hover,
+    &.hover {
+      --elf--button-background-color: var(--button-default-background-success) !important;
+      --elf--button-text-color: var(--button-default-text-success) !important;
+      --elf--button-border-color: var(--button-default-border-success) !important;
+    }
+  }
+}

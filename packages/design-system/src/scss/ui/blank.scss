@@ -2,7 +2,7 @@
 
     --elf--blank-width: 100%;
     --elf--blank-height: 30px;
-    --elf--blank-background-color: transparent;
+    --elf--blank-background-color: var(--blank-color-background-default);
 
     display: block;
     position: relative;

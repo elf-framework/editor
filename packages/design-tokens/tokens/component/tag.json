@@ -1,0 +1,21 @@
+{
+  "tag": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      }
+    }
+  }
+}

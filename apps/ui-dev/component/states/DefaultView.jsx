@@ -1,4 +1,4 @@
-import { Grid } from "@elf-framework/ui";
+import { Button, Grid, RoundButton } from "@elf-framework/ui";
 
 export function DefaultView() {
   return (
@@ -22,32 +22,9 @@ export function DefaultView() {
               gap: 20,
             }}
           >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-primary)",
-                color: "white",
-                border: 0,
-                borderRadius: 25,
-                padding: "7px 20px",
-                fontWeight: "900",
-              }}
-            >
-              Action
-            </button>
+            <RoundButton variant="primary">Action</RoundButton>
 
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-background-default)",
-                color: "var(--color-text-default)",
-                border: "1px solid var(--color-black)",
-                borderRadius: 4,
-                padding: "7px 20px",
-              }}
-            >
-              Action
-            </button>
+            <Button>Action</Button>
           </div>
         </div>
       </Grid>

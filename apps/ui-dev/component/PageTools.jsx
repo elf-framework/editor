@@ -21,9 +21,9 @@ export function PageTools({ menu }) {
     const mode = localStorage.getItem("view-mode") || "light";
 
     if (mode === "light") {
-      document.body.classList.toggle("dark", false);
+      document.body.classList.toggle("theme-dark", false);
     } else {
-      document.body.classList.toggle("dark", true);
+      document.body.classList.toggle("theme-dark", true);
     }
   }, []);
 
@@ -88,7 +88,7 @@ export function PageTools({ menu }) {
               onClick={() => {
                 setViewMode("light");
                 localStorage.setItem("view-mode", "light");
-                document.body.classList.toggle("dark", false);
+                document.body.classList.toggle("theme-dark", false);
               }}
             >
               <DarkModeFilled />
@@ -100,7 +100,7 @@ export function PageTools({ menu }) {
               onClick={() => {
                 setViewMode("dark");
                 localStorage.setItem("view-mode", "dark");
-                document.body.classList.toggle("dark", true);
+                document.body.classList.toggle("theme-dark", true);
               }}
             >
               <LightModeFilled />

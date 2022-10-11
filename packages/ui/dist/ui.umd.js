@@ -723,6 +723,7 @@ var __privateMethod = (obj, member, method) => {
         justified = false,
         pending = false,
         play = false,
+        hover = false,
         as = "button",
         hasMinWidth = false,
         ...extraProps
@@ -741,6 +742,7 @@ var __privateMethod = (obj, member, method) => {
             [size]: true,
             [shape]: true,
             [place]: true,
+            hover,
             "icon-only": iconOnly,
             "has-min-width": hasMinWidth
           },
@@ -759,6 +761,7 @@ var __privateMethod = (obj, member, method) => {
         className,
         justified,
         focused,
+        hover,
         hasMinWidth
       ]);
       const styleObject = {

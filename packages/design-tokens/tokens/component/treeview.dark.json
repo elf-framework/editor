@@ -1,0 +1,38 @@
+{
+  "treeview": {
+    "item": {
+      "color": {
+        "background": {
+          "default": {
+            "value": "transparent"
+          },
+          "hover": {
+            "value": "{color.gray.1.value}"
+          },
+          "selected": {
+            "value": "{color.gray.2.value}"
+          },
+          "ghost": {
+            "value": "{color.gray.1.value}"
+          }
+        },
+        "text": {
+          "default": {
+            "value": "{color.text.default.value}"
+          }
+        },
+        "border": {
+          "default": {
+            "value": "transparent"
+          },
+          "hover": {
+            "value": "transparent"
+          },
+          "selected": {
+            "value": "transparent"
+          }
+        }
+      }
+    }
+  }
+}

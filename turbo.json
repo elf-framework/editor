@@ -19,6 +19,11 @@
       "dependsOn": [],
       "outputs": ["dist/**", ".next/**"]
     },    
+
+    "sapa2:test": {
+      "dependsOn": [],
+      "outputs": ["dist/**", ".next/**"]
+    },        
     "ui:watch": {
       "dependsOn": [
         "^ui:watch"

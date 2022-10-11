@@ -2,8 +2,8 @@
 .elf--progress-circle {
   --elf--progress-circle-width: 30px;
   --elf--progress-circle-padding: 2px;
-  --elf--progress-circle-track-color: var(--color-gray-2);
-  --elf--progress-circle-active-color: var(--color-black);
+  --elf--progress-circle-track-color: var(--progress-circle-color-track);
+  --elf--progress-circle-active-color: var(--progress-circle-color-active);
   --elf--progress-circle-color: var(--color-black);
   --elf--progress-circle-duration: 3s;
   --elf--progress-circle-bar-height: 3px;

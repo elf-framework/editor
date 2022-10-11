@@ -1,5 +1,5 @@
 import CheckFilled from "@elf-framework/icon/CheckFilled";
-import { Breadcrumbs, Grid, VBox } from "@elf-framework/ui";
+import { Breadcrumbs, Button, Grid, VBox } from "@elf-framework/ui";
 
 export function MultilineView() {
   return (
@@ -26,7 +26,11 @@ export function MultilineView() {
             multiline
             items={[
               {
-                title: <CheckFilled />,
+                title: (
+                  <Button size="small" iconOnly quiet>
+                    <CheckFilled />
+                  </Button>
+                ),
               },
               {
                 title: "Design",

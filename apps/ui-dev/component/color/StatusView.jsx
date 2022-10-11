@@ -1,9 +1,10 @@
-import tokens from "@elf-framework/design-tokens/tokens.json";
 import { Grid } from "@elf-framework/ui";
 
+import { getThemeTokens } from "../../utils/theme";
 import { ColorDetailView } from "./ColorDetailView";
 
 export function StatusView() {
+  const tokens = getThemeTokens();
   return (
     <Grid
       columns={2}

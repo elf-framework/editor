@@ -1,0 +1,17 @@
+{
+  "ghost": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        },
+        "1": {
+          "value": "{color.transparent.white.1.value}"
+        },
+        "2": {
+          "value": "{color.transparent.white.3.value}"
+        }
+      }
+    }
+  }
+}

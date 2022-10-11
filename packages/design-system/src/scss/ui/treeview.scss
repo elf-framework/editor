@@ -93,13 +93,13 @@
   --elf--treeview-item-drag-handler-width: 20px;
   --elf--treeview-item-checkbox-area-width: 32px;
   --elf--treeview-item-collapse-area-width: 20px;
-  --elf--treeview-item-hover-background-color: var(--color-gray-1);
-  --elf--treeview-item-selected-background-color: var(--color-gray-2);
-  --elf--treeview-item-hover-border-color: transparent;
-  --elf--treeview-item-border-color: transparent;
-  --elf--treeview-item-background-color: transparent;
-  --elf--treeview-item-ghost-background-color: var(--color-gray-1);
-  --elf--treeview-item-font-color: var(--color-black);
+  --elf--treeview-item-hover-background-color: var(--treeview-item-color-background-hover);
+  --elf--treeview-item-selected-background-color: var(--treeview-item-color-background-selected);
+  --elf--treeview-item-background-color: var(--treeview-item-color-background-default);
+  --elf--treeview-item-ghost-background-color: var(--treeview-item-color-background-ghost);
+
+  --elf--treeview-item-hover-border-color: var(--treeview-item-color-border-hover);
+  --elf--treeview-item-border-color: var(--treeview-item-color-border-default);
 
   box-sizing: border-box;
   border: 1px solid var(--elf--treeview-item-border-color);
@@ -108,12 +108,12 @@
   border-radius: var(--elf--treeview-item-border-radius);    
   display: flex;
   background-color: var(--elf--treeview-item-background-color);
-  color: var(--elf--treeview-item-font-color);
+  // color: var(--elf--treeview-item-font-color);
   justify-content: space-between;
 
 
 
-  &.selected {
+  &.selected:not(:hover):not(.hover) {
     &.primary {
       --elf--treeview-item-selected-background-color: var(--color-blue-2);
     }
@@ -147,7 +147,7 @@
     }
   }
 
-  &.selected {
+  &.selected:not(:hover):not(.hover) {
     --elf--treeview-item-background-color: var(--elf--treeview-item-selected-background-color);
     // --elf--treeview-item-border-radius: 5px;
   }    

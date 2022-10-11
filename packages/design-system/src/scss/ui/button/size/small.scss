@@ -1,0 +1,13 @@
+.elf--button {
+  &.small {
+    --elf--button-font-size: 12px;
+    --elf--button-padding: 3px;
+    --elf--button-side-padding: 3px;
+    --elf--button-height: 30px;
+
+    &.round {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}

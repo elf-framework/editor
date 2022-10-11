@@ -67,7 +67,7 @@ export function OverflowView() {
                       />
                     }
                   >
-                    <Button quiet selected={true}>
+                    <Button iconOnly size="small" quiet selected={true}>
                       <CheckFilled />
                     </Button>
                   </Popover>

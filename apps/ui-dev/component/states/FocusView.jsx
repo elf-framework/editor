@@ -1,4 +1,4 @@
-import { Grid } from "@elf-framework/ui";
+import { Button, Grid, RoundButton } from "@elf-framework/ui";
 
 export function FocusView() {
   return (
@@ -7,11 +7,16 @@ export function FocusView() {
         <div>
           <strong>Keyboard Focus</strong>
           <div style={{ padding: 10 }}>
-            Keyboard focus# Keyboard focus is initiated by the user and
-            highlights an item when navigated using a keyboard. The keyboard
-            focus state typically takes the component’s visual hover state and
-            adds an additional indication, most commonly a 2 px blue ring around
-            the component.
+            <div>Keyboard Focus is initiated by the user. </div>
+
+            <div>
+              Use the keyboard to highlight items when navigating. Keyboard The
+              focus state typically takes the visual hover state of the
+              component Add additional marks.
+            </div>
+            <div>
+              Most commonly, there is a two-pixel blue ring around. Components.
+            </div>
           </div>
         </div>
         <div>
@@ -25,35 +30,11 @@ export function FocusView() {
               gap: 20,
             }}
           >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-hover-primary)",
-                color: "white",
-                border: "2px solid var(--color-white)",
-                outline: "2px solid var(--color-hover-primary)",
-                borderRadius: 25,
-                boxSizing: "border-box",
-                padding: "7px 20px",
-                fontWeight: "900",
-              }}
-            >
+            <RoundButton variant="primary" focused>
               Action
-            </button>
+            </RoundButton>
 
-            <button
-              type="button"
-              style={{
-                backgroundColor: "var(--color-background-default)",
-                color: "var(--color-text-default)",
-                border: "0px solid var(--color-black)",
-                outline: "2px solid var(--color-hover-primary)",
-                borderRadius: 4,
-                padding: "7px 20px",
-              }}
-            >
-              Action
-            </button>
+            <Button focused>Action</Button>
           </div>
         </div>
       </Grid>

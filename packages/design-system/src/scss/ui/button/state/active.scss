@@ -1,0 +1,7 @@
+.elf--button {
+
+  &:active,
+  &.active {
+    --elf--button-background-color: var(--elf--button-active-background-color);
+  }  
+}

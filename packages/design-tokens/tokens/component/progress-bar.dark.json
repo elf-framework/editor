@@ -1,0 +1,19 @@
+{
+  "progressbar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      },
+      "active": {
+        "value": "{color.gray.9.value}"
+      }
+    }
+  }
+}

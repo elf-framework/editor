@@ -1,0 +1,112 @@
+{
+  "button": {
+    "closable": {
+      "hover": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.white.1.value}"
+          }
+        }
+      }
+    },
+    "hover": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.gray.9.value}"
+        }
+      }
+    },
+    "outline": {
+      "background": {
+        "default": {
+          "value": "transparent"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      }
+    },         
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        },
+        "primary": {
+          "value": "{color.blue.1.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        },
+        "primary": {
+          "value": "{color.blue.1.value}"
+        }
+      }
+    },
+    "disabled": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.gray.5.value}"
+        }
+      }
+    },
+    "active": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.gray.9.value}"
+        }
+      }
+    },
+    "size": {
+      "padding": {
+        "small": {
+          "value": "{size.base.65.value} {size.base.75.value}"
+        },
+        "medium": {
+          "value": "{size.base.100.value} {size.base.125.value}"
+        },
+        "large": {
+          "value": "{size.base.175.value} {size.base.250.value}"
+        }
+      }
+    }
+  }
+}

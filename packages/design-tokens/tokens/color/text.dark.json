@@ -2,7 +2,7 @@
   "color": {
     "text": {
       "default": {
-        "value": "{color.gray.5.value}"
+        "value": "{color.gray.9.value}"
       },
       "primary": {
         "value": "{color.gray.9.value}"
@@ -23,7 +23,7 @@
         "value": "{color.blue.8.value}"
       },
       "title": {
-        "value": "{color.black.value}"
+        "value": "{color.gray.9.value}"
       },
       "subtitle": {
         "value": "{color.gray.6.value}"

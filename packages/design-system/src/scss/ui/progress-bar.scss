@@ -3,9 +3,9 @@
   --elf--progressbar-width: 200px;
   --elf--progressbar-font-size: var(--font-size-medium);
   --elf--progressbar-bar-height: 4px;
-  --elf--progressbar-background-color: var(--color-gray-2);
-  --elf--progressbar-active-color: var(--color-black);
-  --elf--progressbar-color: var(--color-black);
+  --elf--progressbar-background-color: var(--progressbar-color-background-default);
+  --elf--progressbar-active-color: var(--progressbar-color-active);
+  --elf--progressbar-color: var(--progressbar-color-text-default);
   --elf--progressbar-duration: 1.5s;
   --elf--progressbar-border-radius: 4px;
 

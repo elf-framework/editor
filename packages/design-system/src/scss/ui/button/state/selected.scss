@@ -1,0 +1,6 @@
+.elf--button {
+  &.selected {
+    --elf--button-background-color: var(--elf-button-selected-background-color);
+    --elf--button-border-color: var(--elf-button-selected-border-color);
+  }
+}

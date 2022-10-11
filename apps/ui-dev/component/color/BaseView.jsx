@@ -1,9 +1,11 @@
-import tokens from "@elf-framework/design-tokens/tokens.json";
 import { Grid } from "@elf-framework/ui";
 
+import { getThemeTokens } from "../../utils/theme";
 import { ColorDetailView } from "./ColorDetailView";
 
 export function BaseView() {
+  const tokens = getThemeTokens();
+
   return (
     <Grid
       columns={2}
@@ -13,7 +15,7 @@ export function BaseView() {
       }}
     >
       <ColorDetailView
-        color={tokens.color.white}
+        color={tokens.color.background.default}
         title={"Application Background"}
         message={"Color White"}
       />
