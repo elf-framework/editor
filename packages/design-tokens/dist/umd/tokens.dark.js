@@ -19,7 +19,7 @@
     "logo": {
       "value": "assets/svg/logo.svg",
       "filePath": "tokens/asset/svg.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "assets/svg/logo.svg"
       },
@@ -36,7 +36,7 @@
     "empty": {
       "value": "assets/svg/empty.svg",
       "filePath": "tokens/asset/svg.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "assets/svg/empty.svg"
       },
@@ -53,7 +53,7 @@
     "files": {
       "value": "assets/svg/files.svg",
       "filePath": "tokens/asset/svg.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "assets/svg/files.svg"
       },
@@ -71,12 +71,12 @@
   "color": {
     "background": {
       "default": {
-        "value": "#ffffff",
+        "value": "#01010a",
         "comment": "Background color that will match the current color scheme",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.white.value}",
+          "value": "{color.dark.9.value}",
           "comment": "Background color that will match the current color scheme"
         },
         "name": "ColorBackgroundDefault",
@@ -92,9 +92,9 @@
         ]
       },
       "primary": {
-        "value": "#78b6ff",
+        "value": "#429bff",
         "comment": "Base color for the primary color",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.blue.4.value}",
@@ -113,9 +113,9 @@
         ]
       },
       "secondary": {
-        "value": "#a2adb8",
+        "value": "#888888",
         "comment": "Base color for the secondary color",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.4.value}",
@@ -134,9 +134,9 @@
         ]
       },
       "danger": {
-        "value": "#ff858b",
+        "value": "#ff5760",
         "comment": "Base color for the danger color",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.red.4.value}",
@@ -155,9 +155,9 @@
         ]
       },
       "warning": {
-        "value": "#ffe75c",
+        "value": "#614d27",
         "comment": "Base color for the warning color",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.yellow.2.value}",
@@ -176,9 +176,9 @@
         ]
       },
       "success": {
-        "value": "#52d9ac",
+        "value": "#28bd8b",
         "comment": "Base color for the success color",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.green.4.value}",
@@ -197,9 +197,9 @@
         ]
       },
       "info": {
-        "value": "#cce3ff",
+        "value": "#0060cc",
         "comment": "Base color for the info color",
-        "filePath": "tokens/color/background.json",
+        "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.blue.2.value}",
@@ -221,7 +221,7 @@
         "default": {
           "value": "#ffffff",
           "comment": "Background color that will match the current color scheme",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}",
@@ -242,9 +242,9 @@
           ]
         },
         "primary": {
-          "value": "#abd2ff",
+          "value": "#1273e6",
           "comment": "Weak color for the primary color",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.3.value}",
@@ -265,9 +265,9 @@
           ]
         },
         "secondary": {
-          "value": "#c5ced6",
+          "value": "#686868",
           "comment": "Weak color for the secondary color",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.3.value}",
@@ -288,9 +288,9 @@
           ]
         },
         "danger": {
-          "value": "#ffb5b9",
+          "value": "#d9363e",
           "comment": "Weak color for the danger color",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.3.value}",
@@ -311,9 +311,9 @@
           ]
         },
         "warning": {
-          "value": "#fff4b5",
+          "value": "#523e21",
           "comment": "Weak color for the warning color",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.yellow.1.value}",
@@ -334,9 +334,9 @@
           ]
         },
         "success": {
-          "value": "#8debcb",
+          "value": "#009f6a",
           "comment": "Weak color for the success color",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.3.value}",
@@ -357,9 +357,9 @@
           ]
         },
         "info": {
-          "value": "#e8f3ff",
+          "value": "#1a497d",
           "comment": "Weak color for the info color",
-          "filePath": "tokens/color/background.json",
+          "filePath": "tokens/color/background.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.1.value}",
@@ -383,78 +383,78 @@
     },
     "border": {
       "default": {
-        "value": "#2c353d",
+        "value": "#000000",
         "filePath": "tokens/color/border.json",
-        "isSource": true
+        "isSource": false
       },
       "primary": {
-        "value": "#1273e6",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "secondary": {
-        "value": "#d9e0e6",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "success": {
-        "value": "#009f6a",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "danger": {
-        "value": "#d9363e",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "warning": {
-        "value": "#ffb77c",
-        "filePath": "tokens/color/border.json",
-        "isSource": true
-      },
-      "info": {
         "value": "#abd2ff",
         "filePath": "tokens/color/border.json",
-        "isSource": true
+        "isSource": false
       },
-      "value": "#d9e0e6",
-      "filePath": "tokens/color/core.json",
+      "secondary": {
+        "value": "#484848",
+        "filePath": "tokens/color/border.json",
+        "isSource": false
+      },
+      "success": {
+        "value": "#8debcb",
+        "filePath": "tokens/color/border.json",
+        "isSource": false
+      },
+      "danger": {
+        "value": "#ffb5b9",
+        "filePath": "tokens/color/border.json",
+        "isSource": false
+      },
+      "warning": {
+        "value": "#762c00",
+        "filePath": "tokens/color/border.json",
+        "isSource": false
+      },
+      "info": {
+        "value": "#1273e6",
+        "filePath": "tokens/color/border.json",
+        "isSource": false
+      },
+      "value": "#484848",
+      "filePath": "tokens/color/core.dark.json",
       "isSource": true,
       "original": {
         "default": {
           "value": "{color.black.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "primary": {
           "value": "{color.blue.6.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "secondary": {
           "value": "{color.gray.2.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "success": {
           "value": "{color.green.6.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "danger": {
           "value": "{color.red.6.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "warning": {
           "value": "{color.orange.2.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "info": {
           "value": "{color.blue.3.value}",
           "filePath": "tokens/color/border.json",
-          "isSource": true
+          "isSource": false
         },
         "value": "{color.gray.2.value}"
       },
@@ -470,7 +470,7 @@
     },
     "default": {
       "value": "#ffffff",
-      "filePath": "tokens/color/brand.json",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
         "value": "{color.white.value}"
@@ -487,10 +487,10 @@
     },
     "primary": {
       "value": "#1273e6",
-      "filePath": "tokens/color/brand.json",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.blue.6.value}"
+        "value": "{color.blue.3.value}"
       },
       "name": "ColorPrimary",
       "attributes": {
@@ -503,11 +503,11 @@
       ]
     },
     "secondary": {
-      "value": "#818e9a",
-      "filePath": "tokens/color/brand.json",
+      "value": "#484848",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.gray.5.value}"
+        "value": "{color.gray.2.value}"
       },
       "name": "ColorSecondary",
       "attributes": {
@@ -521,10 +521,10 @@
     },
     "success": {
       "value": "#009f6a",
-      "filePath": "tokens/color/brand.json",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.green.6.value}"
+        "value": "{color.green.3.value}"
       },
       "name": "ColorSuccess",
       "attributes": {
@@ -538,10 +538,10 @@
     },
     "danger": {
       "value": "#d9363e",
-      "filePath": "tokens/color/brand.json",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.red.6.value}"
+        "value": "{color.red.3.value}"
       },
       "name": "ColorDanger",
       "attributes": {
@@ -555,10 +555,10 @@
     },
     "warning": {
       "value": "#e16f24",
-      "filePath": "tokens/color/brand.json",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.orange.4.value}"
+        "value": "{color.orange.5.value}"
       },
       "name": "ColorWarning",
       "attributes": {
@@ -571,11 +571,11 @@
       ]
     },
     "info": {
-      "value": "#429bff",
-      "filePath": "tokens/color/brand.json",
+      "value": "#1273e6",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.blue.5.value}"
+        "value": "{color.blue.3.value}"
       },
       "name": "ColorInfo",
       "attributes": {
@@ -588,8 +588,8 @@
       ]
     },
     "disabled": {
-      "value": "#d9e0e6",
-      "filePath": "tokens/color/brand.json",
+      "value": "#484848",
+      "filePath": "tokens/color/brand.dark.json",
       "isSource": true,
       "original": {
         "value": "{color.gray.2.value}"
@@ -606,11 +606,11 @@
     },
     "hover": {
       "default": {
-        "value": "#f8f8f8",
-        "filePath": "tokens/color/brand.json",
+        "value": "#282828",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.0.value}"
+          "value": "{color.gray.1.value}"
         },
         "name": "ColorHoverDefault",
         "attributes": {
@@ -626,7 +626,7 @@
       },
       "dark": {
         "value": "#000000",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "#000000"
@@ -645,10 +645,10 @@
       },
       "primary": {
         "value": "#0060cc",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.7.value}"
+          "value": "{color.blue.2.value}"
         },
         "name": "ColorHoverPrimary",
         "attributes": {
@@ -663,8 +663,8 @@
         ]
       },
       "secondary": {
-        "value": "#46525c",
-        "filePath": "tokens/color/brand.json",
+        "value": "#e0e0e0",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.7.value}"
@@ -682,8 +682,8 @@
         ]
       },
       "success": {
-        "value": "#067852",
-        "filePath": "tokens/color/brand.json",
+        "value": "#b5f5e0",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.green.7.value}"
@@ -701,8 +701,8 @@
         ]
       },
       "danger": {
-        "value": "#a12b2b",
-        "filePath": "tokens/color/brand.json",
+        "value": "#ffcfd1",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.red.7.value}"
@@ -720,8 +720,8 @@
         ]
       },
       "warning": {
-        "value": "#e16f24",
-        "filePath": "tokens/color/brand.json",
+        "value": "#bc4c00",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.orange.4.value}"
@@ -739,8 +739,8 @@
         ]
       },
       "info": {
-        "value": "#78b6ff",
-        "filePath": "tokens/color/brand.json",
+        "value": "#429bff",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.blue.4.value}"
@@ -760,8 +760,8 @@
     },
     "down": {
       "default": {
-        "value": "#d9e0e6",
-        "filePath": "tokens/color/brand.json",
+        "value": "#484848",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.2.value}"
@@ -779,11 +779,11 @@
         ]
       },
       "primary": {
-        "value": "#0060cc",
-        "filePath": "tokens/color/brand.json",
+        "value": "#1a497d",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.7.value}"
+          "value": "{color.blue.1.value}"
         },
         "name": "ColorDownPrimary",
         "attributes": {
@@ -798,8 +798,8 @@
         ]
       },
       "secondary": {
-        "value": "#39444d",
-        "filePath": "tokens/color/brand.json",
+        "value": "#f0f0f0",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.8.value}"
@@ -817,8 +817,8 @@
         ]
       },
       "success": {
-        "value": "#1b5441",
-        "filePath": "tokens/color/brand.json",
+        "value": "#d6fff1",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.green.8.value}"
@@ -836,8 +836,8 @@
         ]
       },
       "danger": {
-        "value": "#80252a",
-        "filePath": "tokens/color/brand.json",
+        "value": "#ffebec",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.red.8.value}"
@@ -855,8 +855,8 @@
         ]
       },
       "warning": {
-        "value": "#5c2200",
-        "filePath": "tokens/color/brand.json",
+        "value": "#ffd8b5",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.orange.8.value}"
@@ -874,8 +874,8 @@
         ]
       },
       "info": {
-        "value": "#0060cc",
-        "filePath": "tokens/color/brand.json",
+        "value": "#cce3ff",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.blue.7.value}"
@@ -897,10 +897,10 @@
       "informative": {
         "value": "#1273e6",
         "comment": "e.g., active, in use, live, published",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.blue.6.value}",
+          "value": "{color.blue.3.value}",
           "comment": "e.g., active, in use, live, published"
         },
         "name": "ColorStatusInformative",
@@ -916,12 +916,12 @@
         ]
       },
       "neutral": {
-        "value": "#39444d",
+        "value": "#484848",
         "comment": "e.g., archived, deleted, paused, draft, not started, ended",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.8.value}",
+          "value": "{color.gray.2.value}",
           "comment": "e.g., archived, deleted, paused, draft, not started, ended"
         },
         "name": "ColorStatusNeutral",
@@ -937,12 +937,12 @@
         ]
       },
       "positive": {
-        "value": "#067852",
+        "value": "#009f6a",
         "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.green.7.value}",
+          "value": "{color.green.3.value}",
           "comment": "e.g., completed, finished, success, approved, verified, active, in use, live, published"
         },
         "name": "ColorStatusPositive",
@@ -958,12 +958,12 @@
         ]
       },
       "notice": {
-        "value": "#8c40ff",
+        "value": "#7122e3",
         "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.purple.6.value}",
+          "value": "{color.purple.2.value}",
           "comment": "e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing"
         },
         "name": "ColorStatusNotice",
@@ -979,12 +979,12 @@
         ]
       },
       "negative": {
-        "value": "#a12b2b",
+        "value": "#d9363e",
         "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.red.7.value}",
+          "value": "{color.red.3.value}",
           "comment": "e.g., error, failed, denied, blocked, inactive, not in use, unpublished"
         },
         "name": "ColorStatusNegative",
@@ -1001,10 +1001,10 @@
       },
       "indigo": {
         "value": "#762c00",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.orange.7.value}"
+          "value": "{color.orange.2.value}"
         },
         "name": "ColorStatusIndigo",
         "attributes": {
@@ -1019,11 +1019,11 @@
         ]
       },
       "celery": {
-        "value": "#067852",
-        "filePath": "tokens/color/brand.json",
+        "value": "#1b5441",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.green.7.value}"
+          "value": "{color.green.1.value}"
         },
         "name": "ColorStatusCelery",
         "attributes": {
@@ -1038,11 +1038,11 @@
         ]
       },
       "yellow": {
-        "value": "#ffda00",
-        "filePath": "tokens/color/brand.json",
+        "value": "#e3ad0b",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.yellow.3.value}"
+          "value": "{color.yellow.5.value}"
         },
         "name": "ColorStatusYellow",
         "attributes": {
@@ -1058,10 +1058,10 @@
       },
       "magenta": {
         "value": "#a469ff",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.purple.5.value}"
+          "value": "{color.purple.4.value}"
         },
         "name": "ColorStatusMagenta",
         "attributes": {
@@ -1077,10 +1077,10 @@
       },
       "fuchsia": {
         "value": "#d1347a",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.pink.6.value}"
+          "value": "{color.pink.3.value}"
         },
         "name": "ColorStatusFuchsia",
         "attributes": {
@@ -1095,11 +1095,11 @@
         ]
       },
       "purple": {
-        "value": "#a469ff",
-        "filePath": "tokens/color/brand.json",
+        "value": "#4c2e87",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.purple.5.value}"
+          "value": "{color.purple.1.value}"
         },
         "name": "ColorStatusPurple",
         "attributes": {
@@ -1115,10 +1115,10 @@
       },
       "seafoam": {
         "value": "#199091",
-        "filePath": "tokens/color/brand.json",
+        "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.teal.6.value}"
+          "value": "{color.teal.3.value}"
         },
         "name": "ColorStatusSeafoam",
         "attributes": {
@@ -1135,11 +1135,11 @@
     },
     "red": {
       "0": {
-        "value": "#fff2f3",
-        "filePath": "tokens/color/core.json",
+        "value": "#5c2121",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFF2F3"
+          "value": "#5C2121"
         },
         "name": "ColorRed0",
         "attributes": {
@@ -1154,11 +1154,11 @@
         ]
       },
       "1": {
-        "value": "#ffebec",
-        "filePath": "tokens/color/core.json",
+        "value": "#80252a",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFEBEC"
+          "value": "#80252A"
         },
         "name": "ColorRed1",
         "attributes": {
@@ -1173,11 +1173,11 @@
         ]
       },
       "2": {
-        "value": "#ffcfd1",
-        "filePath": "tokens/color/core.json",
+        "value": "#a12b2b",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFCFD1"
+          "value": "#A12B2B"
         },
         "name": "ColorRed2",
         "attributes": {
@@ -1192,11 +1192,11 @@
         ]
       },
       "3": {
-        "value": "#ffb5b9",
-        "filePath": "tokens/color/core.json",
+        "value": "#d9363e",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFB5B9"
+          "value": "#D9363E"
         },
         "name": "ColorRed3",
         "attributes": {
@@ -1211,11 +1211,11 @@
         ]
       },
       "4": {
-        "value": "#ff858b",
-        "filePath": "tokens/color/core.json",
+        "value": "#ff5760",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FF858B"
+          "value": "#FF5760"
         },
         "name": "ColorRed4",
         "attributes": {
@@ -1230,11 +1230,11 @@
         ]
       },
       "5": {
-        "value": "#ff5760",
-        "filePath": "tokens/color/core.json",
+        "value": "#ff858b",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FF5760"
+          "value": "#FF858B"
         },
         "name": "ColorRed5",
         "attributes": {
@@ -1249,11 +1249,11 @@
         ]
       },
       "6": {
-        "value": "#d9363e",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffb5b9",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#D9363E"
+          "value": "#FFB5B9"
         },
         "name": "ColorRed6",
         "attributes": {
@@ -1268,11 +1268,11 @@
         ]
       },
       "7": {
-        "value": "#a12b2b",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffcfd1",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#A12B2B"
+          "value": "#FFCFD1"
         },
         "name": "ColorRed7",
         "attributes": {
@@ -1287,11 +1287,11 @@
         ]
       },
       "8": {
-        "value": "#80252a",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffebec",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#80252A"
+          "value": "#FFEBEC"
         },
         "name": "ColorRed8",
         "attributes": {
@@ -1306,11 +1306,11 @@
         ]
       },
       "9": {
-        "value": "#5c2121",
-        "filePath": "tokens/color/core.json",
+        "value": "#fff2f3",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#5C2121"
+          "value": "#FFF2F3"
         },
         "name": "ColorRed9",
         "attributes": {
@@ -1327,11 +1327,11 @@
     },
     "orange": {
       "0": {
-        "value": "#fff1e5",
-        "filePath": "tokens/color/core.json",
+        "value": "#471700",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#fff1e5"
+          "value": "#471700"
         },
         "name": "ColorOrange0",
         "attributes": {
@@ -1346,11 +1346,11 @@
         ]
       },
       "1": {
-        "value": "#ffd8b5",
-        "filePath": "tokens/color/core.json",
+        "value": "#5c2200",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#ffd8b5"
+          "value": "#5c2200"
         },
         "name": "ColorOrange1",
         "attributes": {
@@ -1365,11 +1365,11 @@
         ]
       },
       "2": {
-        "value": "#ffb77c",
-        "filePath": "tokens/color/core.json",
+        "value": "#762c00",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#ffb77c"
+          "value": "#762c00"
         },
         "name": "ColorOrange2",
         "attributes": {
@@ -1384,11 +1384,11 @@
         ]
       },
       "3": {
-        "value": "#fb8f44",
-        "filePath": "tokens/color/core.json",
+        "value": "#953800",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#fb8f44"
+          "value": "#953800"
         },
         "name": "ColorOrange3",
         "attributes": {
@@ -1403,11 +1403,11 @@
         ]
       },
       "4": {
-        "value": "#e16f24",
-        "filePath": "tokens/color/core.json",
+        "value": "#bc4c00",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#e16f24"
+          "value": "#bc4c00"
         },
         "name": "ColorOrange4",
         "attributes": {
@@ -1422,11 +1422,11 @@
         ]
       },
       "5": {
-        "value": "#bc4c00",
-        "filePath": "tokens/color/core.json",
+        "value": "#e16f24",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#bc4c00"
+          "value": "#e16f24"
         },
         "name": "ColorOrange5",
         "attributes": {
@@ -1441,11 +1441,11 @@
         ]
       },
       "6": {
-        "value": "#953800",
-        "filePath": "tokens/color/core.json",
+        "value": "#fb8f44",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#953800"
+          "value": "#fb8f44"
         },
         "name": "ColorOrange6",
         "attributes": {
@@ -1460,11 +1460,11 @@
         ]
       },
       "7": {
-        "value": "#762c00",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffb77c",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#762c00"
+          "value": "#ffb77c"
         },
         "name": "ColorOrange7",
         "attributes": {
@@ -1479,11 +1479,11 @@
         ]
       },
       "8": {
-        "value": "#5c2200",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffd8b5",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#5c2200"
+          "value": "#ffd8b5"
         },
         "name": "ColorOrange8",
         "attributes": {
@@ -1498,11 +1498,11 @@
         ]
       },
       "9": {
-        "value": "#471700",
-        "filePath": "tokens/color/core.json",
+        "value": "#fff1e5",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#471700"
+          "value": "#fff1e5"
         },
         "name": "ColorOrange9",
         "attributes": {
@@ -1519,11 +1519,11 @@
     },
     "yellow": {
       "0": {
-        "value": "#fffadb",
-        "filePath": "tokens/color/core.json",
+        "value": "#3d3121",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFFADB"
+          "value": "#3D3121"
         },
         "name": "ColorYellow0",
         "attributes": {
@@ -1538,11 +1538,11 @@
         ]
       },
       "1": {
-        "value": "#fff4b5",
-        "filePath": "tokens/color/core.json",
+        "value": "#523e21",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFF4B5"
+          "value": "#523E21"
         },
         "name": "ColorYellow1",
         "attributes": {
@@ -1557,11 +1557,11 @@
         ]
       },
       "2": {
-        "value": "#ffe75c",
-        "filePath": "tokens/color/core.json",
+        "value": "#614d27",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFE75C"
+          "value": "#614D27"
         },
         "name": "ColorYellow2",
         "attributes": {
@@ -1576,11 +1576,11 @@
         ]
       },
       "3": {
-        "value": "#ffda00",
-        "filePath": "tokens/color/core.json",
+        "value": "#876a2f",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFDA00"
+          "value": "#876A2F"
         },
         "name": "ColorYellow3",
         "attributes": {
@@ -1595,11 +1595,11 @@
         ]
       },
       "4": {
-        "value": "#e3ad0b",
-        "filePath": "tokens/color/core.json",
+        "value": "#b58c12",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#E3AD0B"
+          "value": "#B58C12"
         },
         "name": "ColorYellow4",
         "attributes": {
@@ -1614,11 +1614,11 @@
         ]
       },
       "5": {
-        "value": "#b58c12",
-        "filePath": "tokens/color/core.json",
+        "value": "#e3ad0b",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#B58C12"
+          "value": "#E3AD0B"
         },
         "name": "ColorYellow5",
         "attributes": {
@@ -1633,11 +1633,11 @@
         ]
       },
       "6": {
-        "value": "#876a2f",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffda00",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#876A2F"
+          "value": "#FFDA00"
         },
         "name": "ColorYellow6",
         "attributes": {
@@ -1652,11 +1652,11 @@
         ]
       },
       "7": {
-        "value": "#614d27",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffe75c",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#614D27"
+          "value": "#FFE75C"
         },
         "name": "ColorYellow7",
         "attributes": {
@@ -1671,11 +1671,11 @@
         ]
       },
       "8": {
-        "value": "#523e21",
-        "filePath": "tokens/color/core.json",
+        "value": "#fff4b5",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#523E21"
+          "value": "#FFF4B5"
         },
         "name": "ColorYellow8",
         "attributes": {
@@ -1690,11 +1690,11 @@
         ]
       },
       "9": {
-        "value": "#3d3121",
-        "filePath": "tokens/color/core.json",
+        "value": "#fffadb",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#3D3121"
+          "value": "#FFFADB"
         },
         "name": "ColorYellow9",
         "attributes": {
@@ -1711,11 +1711,11 @@
     },
     "green": {
       "0": {
-        "value": "#e8fff7",
-        "filePath": "tokens/color/core.json",
+        "value": "#233b33",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#E8FFF7"
+          "value": "#233B33"
         },
         "name": "ColorGreen0",
         "attributes": {
@@ -1730,11 +1730,11 @@
         ]
       },
       "1": {
-        "value": "#d6fff1",
-        "filePath": "tokens/color/core.json",
+        "value": "#1b5441",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#D6FFF1"
+          "value": "#1B5441"
         },
         "name": "ColorGreen1",
         "attributes": {
@@ -1749,11 +1749,11 @@
         ]
       },
       "2": {
-        "value": "#b5f5e0",
-        "filePath": "tokens/color/core.json",
+        "value": "#067852",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#B5F5E0"
+          "value": "#067852"
         },
         "name": "ColorGreen2",
         "attributes": {
@@ -1768,11 +1768,11 @@
         ]
       },
       "3": {
-        "value": "#8debcb",
-        "filePath": "tokens/color/core.json",
+        "value": "#009f6a",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#8DEBCB"
+          "value": "#009F6A"
         },
         "name": "ColorGreen3",
         "attributes": {
@@ -1787,11 +1787,11 @@
         ]
       },
       "4": {
-        "value": "#52d9ac",
-        "filePath": "tokens/color/core.json",
+        "value": "#28bd8b",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#52D9AC"
+          "value": "#28BD8B"
         },
         "name": "ColorGreen4",
         "attributes": {
@@ -1806,11 +1806,11 @@
         ]
       },
       "5": {
-        "value": "#28bd8b",
-        "filePath": "tokens/color/core.json",
+        "value": "#52d9ac",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#28BD8B"
+          "value": "#52D9AC"
         },
         "name": "ColorGreen5",
         "attributes": {
@@ -1825,11 +1825,11 @@
         ]
       },
       "6": {
-        "value": "#009f6a",
-        "filePath": "tokens/color/core.json",
+        "value": "#8debcb",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#009F6A"
+          "value": "#8DEBCB"
         },
         "name": "ColorGreen6",
         "attributes": {
@@ -1844,11 +1844,11 @@
         ]
       },
       "7": {
-        "value": "#067852",
-        "filePath": "tokens/color/core.json",
+        "value": "#b5f5e0",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#067852"
+          "value": "#B5F5E0"
         },
         "name": "ColorGreen7",
         "attributes": {
@@ -1863,11 +1863,11 @@
         ]
       },
       "8": {
-        "value": "#1b5441",
-        "filePath": "tokens/color/core.json",
+        "value": "#d6fff1",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#1B5441"
+          "value": "#D6FFF1"
         },
         "name": "ColorGreen8",
         "attributes": {
@@ -1882,11 +1882,11 @@
         ]
       },
       "9": {
-        "value": "#233b33",
-        "filePath": "tokens/color/core.json",
+        "value": "#e8fff7",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#233B33"
+          "value": "#E8FFF7"
         },
         "name": "ColorGreen9",
         "attributes": {
@@ -1903,11 +1903,11 @@
     },
     "blue": {
       "0": {
-        "value": "#f6faff",
-        "filePath": "tokens/color/core.json",
+        "value": "#203752",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#F6FAFF"
+          "value": "#203752"
         },
         "name": "ColorBlue0",
         "attributes": {
@@ -1922,11 +1922,11 @@
         ]
       },
       "1": {
-        "value": "#e8f3ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#1a497d",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#E8F3FF"
+          "value": "#1A497D"
         },
         "name": "ColorBlue1",
         "attributes": {
@@ -1941,11 +1941,11 @@
         ]
       },
       "2": {
-        "value": "#cce3ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#0060cc",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#CCE3FF"
+          "value": "#0060CC"
         },
         "name": "ColorBlue2",
         "attributes": {
@@ -1960,11 +1960,11 @@
         ]
       },
       "3": {
-        "value": "#abd2ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#1273e6",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#ABD2FF"
+          "value": "#1273E6"
         },
         "name": "ColorBlue3",
         "attributes": {
@@ -1979,11 +1979,11 @@
         ]
       },
       "4": {
-        "value": "#78b6ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#429bff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#78B6FF"
+          "value": "#429BFF"
         },
         "name": "ColorBlue4",
         "attributes": {
@@ -1998,11 +1998,11 @@
         ]
       },
       "5": {
-        "value": "#429bff",
-        "filePath": "tokens/color/core.json",
+        "value": "#78b6ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#429BFF"
+          "value": "#78B6FF"
         },
         "name": "ColorBlue5",
         "attributes": {
@@ -2017,11 +2017,11 @@
         ]
       },
       "6": {
-        "value": "#1273e6",
-        "filePath": "tokens/color/core.json",
+        "value": "#abd2ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#1273E6"
+          "value": "#ABD2FF"
         },
         "name": "ColorBlue6",
         "attributes": {
@@ -2036,11 +2036,11 @@
         ]
       },
       "7": {
-        "value": "#0060cc",
-        "filePath": "tokens/color/core.json",
+        "value": "#cce3ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#0060CC"
+          "value": "#CCE3FF"
         },
         "name": "ColorBlue7",
         "attributes": {
@@ -2055,11 +2055,11 @@
         ]
       },
       "8": {
-        "value": "#1a497d",
-        "filePath": "tokens/color/core.json",
+        "value": "#e8f3ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#1A497D"
+          "value": "#E8F3FF"
         },
         "name": "ColorBlue8",
         "attributes": {
@@ -2074,11 +2074,11 @@
         ]
       },
       "9": {
-        "value": "#203752",
-        "filePath": "tokens/color/core.json",
+        "value": "#f6faff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#203752"
+          "value": "#F6FAFF"
         },
         "name": "ColorBlue9",
         "attributes": {
@@ -2095,11 +2095,11 @@
     },
     "purple": {
       "0": {
-        "value": "#f9f5ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#352e4a",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#F9F5FF"
+          "value": "#352E4A"
         },
         "name": "ColorPurple0",
         "attributes": {
@@ -2114,11 +2114,11 @@
         ]
       },
       "1": {
-        "value": "#f3ebff",
-        "filePath": "tokens/color/core.json",
+        "value": "#4c2e87",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#F3EBFF"
+          "value": "#4C2E87"
         },
         "name": "ColorPurple1",
         "attributes": {
@@ -2133,11 +2133,11 @@
         ]
       },
       "2": {
-        "value": "#e5d4ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#7122e3",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#E5D4FF"
+          "value": "#7122E3"
         },
         "name": "ColorPurple2",
         "attributes": {
@@ -2152,11 +2152,11 @@
         ]
       },
       "3": {
-        "value": "#d7bdff",
-        "filePath": "tokens/color/core.json",
+        "value": "#8c40ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#D7BDFF"
+          "value": "#8C40FF"
         },
         "name": "ColorPurple3",
         "attributes": {
@@ -2171,11 +2171,11 @@
         ]
       },
       "4": {
-        "value": "#bd91ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#a469ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#BD91FF"
+          "value": "#A469FF"
         },
         "name": "ColorPurple4",
         "attributes": {
@@ -2190,11 +2190,11 @@
         ]
       },
       "5": {
-        "value": "#a469ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#bd91ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#A469FF"
+          "value": "#BD91FF"
         },
         "name": "ColorPurple5",
         "attributes": {
@@ -2209,11 +2209,11 @@
         ]
       },
       "6": {
-        "value": "#8c40ff",
-        "filePath": "tokens/color/core.json",
+        "value": "#d7bdff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#8C40FF"
+          "value": "#D7BDFF"
         },
         "name": "ColorPurple6",
         "attributes": {
@@ -2228,11 +2228,11 @@
         ]
       },
       "7": {
-        "value": "#7122e3",
-        "filePath": "tokens/color/core.json",
+        "value": "#e5d4ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#7122E3"
+          "value": "#E5D4FF"
         },
         "name": "ColorPurple7",
         "attributes": {
@@ -2247,11 +2247,11 @@
         ]
       },
       "8": {
-        "value": "#4c2e87",
-        "filePath": "tokens/color/core.json",
+        "value": "#f3ebff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#4C2E87"
+          "value": "#F3EBFF"
         },
         "name": "ColorPurple8",
         "attributes": {
@@ -2266,11 +2266,11 @@
         ]
       },
       "9": {
-        "value": "#352e4a",
-        "filePath": "tokens/color/core.json",
+        "value": "#f9f5ff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#352E4A"
+          "value": "#F9F5FF"
         },
         "name": "ColorPurple9",
         "attributes": {
@@ -2287,11 +2287,11 @@
     },
     "pink": {
       "0": {
-        "value": "#fff2f8",
-        "filePath": "tokens/color/core.json",
+        "value": "#522338",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFF2F8"
+          "value": "#522338"
         },
         "name": "ColorPink0",
         "attributes": {
@@ -2306,11 +2306,11 @@
         ]
       },
       "1": {
-        "value": "#ffe8f2",
-        "filePath": "tokens/color/core.json",
+        "value": "#782449",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFE8F2"
+          "value": "#782449"
         },
         "name": "ColorPink1",
         "attributes": {
@@ -2325,11 +2325,11 @@
         ]
       },
       "2": {
-        "value": "#ffcce3",
-        "filePath": "tokens/color/core.json",
+        "value": "#992659",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFCCE3"
+          "value": "#992659"
         },
         "name": "ColorPink2",
         "attributes": {
@@ -2344,11 +2344,11 @@
         ]
       },
       "3": {
-        "value": "#ffb0d3",
-        "filePath": "tokens/color/core.json",
+        "value": "#d1347a",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FFB0D3"
+          "value": "#D1347A"
         },
         "name": "ColorPink3",
         "attributes": {
@@ -2363,11 +2363,11 @@
         ]
       },
       "4": {
-        "value": "#ff7db7",
-        "filePath": "tokens/color/core.json",
+        "value": "#f0549a",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#FF7DB7"
+          "value": "#F0549A"
         },
         "name": "ColorPink4",
         "attributes": {
@@ -2382,11 +2382,11 @@
         ]
       },
       "5": {
-        "value": "#f0549a",
-        "filePath": "tokens/color/core.json",
+        "value": "#ff7db7",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#F0549A"
+          "value": "#FF7DB7"
         },
         "name": "ColorPink5",
         "attributes": {
@@ -2401,11 +2401,11 @@
         ]
       },
       "6": {
-        "value": "#d1347a",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffb0d3",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#D1347A"
+          "value": "#FFB0D3"
         },
         "name": "ColorPink6",
         "attributes": {
@@ -2420,11 +2420,11 @@
         ]
       },
       "7": {
-        "value": "#992659",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffcce3",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#992659"
+          "value": "#FFCCE3"
         },
         "name": "ColorPink7",
         "attributes": {
@@ -2439,11 +2439,11 @@
         ]
       },
       "8": {
-        "value": "#782449",
-        "filePath": "tokens/color/core.json",
+        "value": "#ffe8f2",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#782449"
+          "value": "#FFE8F2"
         },
         "name": "ColorPink8",
         "attributes": {
@@ -2458,11 +2458,11 @@
         ]
       },
       "9": {
-        "value": "#522338",
-        "filePath": "tokens/color/core.json",
+        "value": "#fff2f8",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#522338"
+          "value": "#FFF2F8"
         },
         "name": "ColorPink9",
         "attributes": {
@@ -2479,11 +2479,11 @@
     },
     "gray": {
       "0": {
-        "value": "#f8f8f8",
-        "filePath": "tokens/color/core.json",
+        "value": "#181818",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#f8f8f8"
+          "value": "#181818"
         },
         "name": "ColorGray0",
         "attributes": {
@@ -2498,11 +2498,11 @@
         ]
       },
       "1": {
-        "value": "#ebf0f5",
-        "filePath": "tokens/color/core.json",
+        "value": "#282828",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#EBF0F5"
+          "value": "#282828"
         },
         "name": "ColorGray1",
         "attributes": {
@@ -2517,11 +2517,11 @@
         ]
       },
       "2": {
-        "value": "#d9e0e6",
-        "filePath": "tokens/color/core.json",
+        "value": "#484848",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#D9E0E6"
+          "value": "#484848"
         },
         "name": "ColorGray2",
         "attributes": {
@@ -2536,11 +2536,11 @@
         ]
       },
       "3": {
-        "value": "#c5ced6",
-        "filePath": "tokens/color/core.json",
+        "value": "#686868",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#C5CED6"
+          "value": "#686868"
         },
         "name": "ColorGray3",
         "attributes": {
@@ -2555,11 +2555,11 @@
         ]
       },
       "4": {
-        "value": "#a2adb8",
-        "filePath": "tokens/color/core.json",
+        "value": "#888888",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#A2ADB8"
+          "value": "#888888"
         },
         "name": "ColorGray4",
         "attributes": {
@@ -2574,11 +2574,11 @@
         ]
       },
       "5": {
-        "value": "#818e9a",
-        "filePath": "tokens/color/core.json",
+        "value": "#a8a8a8",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#818E9A"
+          "value": "#A8A8A8"
         },
         "name": "ColorGray5",
         "attributes": {
@@ -2593,11 +2593,11 @@
         ]
       },
       "6": {
-        "value": "#626f7a",
-        "filePath": "tokens/color/core.json",
+        "value": "#c8c8c8",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#626F7A"
+          "value": "#C8C8C8"
         },
         "name": "ColorGray6",
         "attributes": {
@@ -2612,11 +2612,11 @@
         ]
       },
       "7": {
-        "value": "#46525c",
-        "filePath": "tokens/color/core.json",
+        "value": "#e0e0e0",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#46525C"
+          "value": "#E0E0E0"
         },
         "name": "ColorGray7",
         "attributes": {
@@ -2631,11 +2631,11 @@
         ]
       },
       "8": {
-        "value": "#39444d",
-        "filePath": "tokens/color/core.json",
+        "value": "#f0f0f0",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#39444D"
+          "value": "#F0F0F0"
         },
         "name": "ColorGray8",
         "attributes": {
@@ -2650,11 +2650,11 @@
         ]
       },
       "9": {
-        "value": "#2c353d",
-        "filePath": "tokens/color/core.json",
+        "value": "#f8f8f8",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#2C353D"
+          "value": "#F8F8F8"
         },
         "name": "ColorGray9",
         "attributes": {
@@ -2671,11 +2671,11 @@
     },
     "teal": {
       "0": {
-        "value": "#e3ffff",
-        "filePath": "tokens/color/core.json",
+        "value": "#223a3b",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#E3FFFF"
+          "value": "#223A3B"
         },
         "name": "ColorTeal0",
         "attributes": {
@@ -2690,11 +2690,11 @@
         ]
       },
       "1": {
-        "value": "#ccffff",
-        "filePath": "tokens/color/core.json",
+        "value": "#274c4d",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#CCFFFF"
+          "value": "#274C4D"
         },
         "name": "ColorTeal1",
         "attributes": {
@@ -2709,11 +2709,11 @@
         ]
       },
       "2": {
-        "value": "#96feff",
-        "filePath": "tokens/color/core.json",
+        "value": "#226363",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#96FEFF"
+          "value": "#226363"
         },
         "name": "ColorTeal2",
         "attributes": {
@@ -2728,11 +2728,11 @@
         ]
       },
       "3": {
-        "value": "#6ef4f5",
-        "filePath": "tokens/color/core.json",
+        "value": "#199091",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#6EF4F5"
+          "value": "#199091"
         },
         "name": "ColorTeal3",
         "attributes": {
@@ -2747,11 +2747,11 @@
         ]
       },
       "4": {
-        "value": "#37e4e6",
-        "filePath": "tokens/color/core.json",
+        "value": "#13bebf",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#37E4E6"
+          "value": "#13BEBF"
         },
         "name": "ColorTeal4",
         "attributes": {
@@ -2766,11 +2766,11 @@
         ]
       },
       "5": {
-        "value": "#13bebf",
-        "filePath": "tokens/color/core.json",
+        "value": "#37e4e6",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#13BEBF"
+          "value": "#37E4E6"
         },
         "name": "ColorTeal5",
         "attributes": {
@@ -2785,11 +2785,11 @@
         ]
       },
       "6": {
-        "value": "#199091",
-        "filePath": "tokens/color/core.json",
+        "value": "#6ef4f5",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#199091"
+          "value": "#6EF4F5"
         },
         "name": "ColorTeal6",
         "attributes": {
@@ -2804,11 +2804,11 @@
         ]
       },
       "7": {
-        "value": "#226363",
-        "filePath": "tokens/color/core.json",
+        "value": "#96feff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#226363"
+          "value": "#96FEFF"
         },
         "name": "ColorTeal7",
         "attributes": {
@@ -2823,11 +2823,11 @@
         ]
       },
       "8": {
-        "value": "#274c4d",
-        "filePath": "tokens/color/core.json",
+        "value": "#ccffff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#274C4D"
+          "value": "#CCFFFF"
         },
         "name": "ColorTeal8",
         "attributes": {
@@ -2842,11 +2842,11 @@
         ]
       },
       "9": {
-        "value": "#223a3b",
-        "filePath": "tokens/color/core.json",
+        "value": "#e3ffff",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#223A3B"
+          "value": "#E3FFFF"
         },
         "name": "ColorTeal9",
         "attributes": {
@@ -2864,7 +2864,7 @@
     "dark": {
       "0": {
         "value": "#d5d7e0",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#d5d7e0"
@@ -2883,7 +2883,7 @@
       },
       "1": {
         "value": "#acaebf",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#acaebf"
@@ -2902,7 +2902,7 @@
       },
       "2": {
         "value": "#8c8fa3",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#8c8fa3"
@@ -2921,7 +2921,7 @@
       },
       "3": {
         "value": "#666980",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#666980"
@@ -2940,7 +2940,7 @@
       },
       "4": {
         "value": "#4d4f66",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#4d4f66"
@@ -2959,7 +2959,7 @@
       },
       "5": {
         "value": "#34354a",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#34354a"
@@ -2978,7 +2978,7 @@
       },
       "6": {
         "value": "#2b2c3d",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#2b2c3d"
@@ -2997,7 +2997,7 @@
       },
       "7": {
         "value": "#1d1e30",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#1d1e30"
@@ -3016,7 +3016,7 @@
       },
       "8": {
         "value": "#0c0d21",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#0c0d21"
@@ -3035,7 +3035,7 @@
       },
       "9": {
         "value": "#01010a",
-        "filePath": "tokens/color/core.json",
+        "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
           "value": "#01010a"
@@ -3054,11 +3054,11 @@
       }
     },
     "black": {
-      "value": "#2c353d",
-      "filePath": "tokens/color/core.json",
+      "value": "#000000",
+      "filePath": "tokens/color/core.dark.json",
       "isSource": true,
       "original": {
-        "value": "{color.gray.9.value}"
+        "value": "#000000"
       },
       "name": "ColorBlack",
       "attributes": {
@@ -3072,7 +3072,7 @@
     },
     "white": {
       "value": "#ffffff",
-      "filePath": "tokens/color/core.json",
+      "filePath": "tokens/color/core.dark.json",
       "isSource": true,
       "original": {
         "value": "#ffffff"
@@ -3091,7 +3091,7 @@
       "black": {
         "0": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0)"
@@ -3112,7 +3112,7 @@
         },
         "1": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.1)"
@@ -3133,7 +3133,7 @@
         },
         "2": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.2)"
@@ -3154,7 +3154,7 @@
         },
         "3": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.3)"
@@ -3175,7 +3175,7 @@
         },
         "4": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.4)"
@@ -3196,7 +3196,7 @@
         },
         "5": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.5)"
@@ -3217,7 +3217,7 @@
         },
         "6": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.6)"
@@ -3238,7 +3238,7 @@
         },
         "7": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.7)"
@@ -3259,7 +3259,7 @@
         },
         "8": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.8)"
@@ -3280,7 +3280,7 @@
         },
         "9": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 0.9)"
@@ -3301,7 +3301,7 @@
         },
         "10": {
           "value": "#000000",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(0, 0, 0, 1)"
@@ -3324,7 +3324,7 @@
       "white": {
         "0": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0)"
@@ -3345,7 +3345,7 @@
         },
         "1": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.1)"
@@ -3366,7 +3366,7 @@
         },
         "2": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.2)"
@@ -3387,7 +3387,7 @@
         },
         "3": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.3)"
@@ -3408,7 +3408,7 @@
         },
         "4": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.4)"
@@ -3429,7 +3429,7 @@
         },
         "5": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.5)"
@@ -3450,7 +3450,7 @@
         },
         "6": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.6)"
@@ -3471,7 +3471,7 @@
         },
         "7": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.7)"
@@ -3492,7 +3492,7 @@
         },
         "8": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.8)"
@@ -3513,7 +3513,7 @@
         },
         "9": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 0.9)"
@@ -3534,7 +3534,7 @@
         },
         "10": {
           "value": "#ffffff",
-          "filePath": "tokens/color/core.json",
+          "filePath": "tokens/color/core.dark.json",
           "isSource": true,
           "original": {
             "value": "rgba(255, 255, 255, 1)"
@@ -3557,8 +3557,8 @@
     },
     "text": {
       "default": {
-        "value": "#2c353d",
-        "filePath": "tokens/color/text.json",
+        "value": "#f8f8f8",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.9.value}"
@@ -3576,11 +3576,11 @@
         ]
       },
       "primary": {
-        "value": "#39444d",
-        "filePath": "tokens/color/text.json",
+        "value": "#f8f8f8",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.8.value}"
+          "value": "{color.gray.9.value}"
         },
         "name": "ColorTextPrimary",
         "attributes": {
@@ -3595,8 +3595,8 @@
         ]
       },
       "secondary": {
-        "value": "#39444d",
-        "filePath": "tokens/color/text.json",
+        "value": "#f0f0f0",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.8.value}"
@@ -3614,8 +3614,8 @@
         ]
       },
       "success": {
-        "value": "#1b5441",
-        "filePath": "tokens/color/text.json",
+        "value": "#d6fff1",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.green.8.value}"
@@ -3633,8 +3633,8 @@
         ]
       },
       "danger": {
-        "value": "#80252a",
-        "filePath": "tokens/color/text.json",
+        "value": "#ffebec",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.red.8.value}"
@@ -3652,8 +3652,8 @@
         ]
       },
       "warning": {
-        "value": "#5c2200",
-        "filePath": "tokens/color/text.json",
+        "value": "#ffd8b5",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.orange.8.value}"
@@ -3671,8 +3671,8 @@
         ]
       },
       "info": {
-        "value": "#1a497d",
-        "filePath": "tokens/color/text.json",
+        "value": "#e8f3ff",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.blue.8.value}"
@@ -3690,11 +3690,11 @@
         ]
       },
       "title": {
-        "value": "#2c353d",
-        "filePath": "tokens/color/text.json",
+        "value": "#f8f8f8",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.black.value}"
+          "value": "{color.gray.9.value}"
         },
         "name": "ColorTextTitle",
         "attributes": {
@@ -3709,8 +3709,8 @@
         ]
       },
       "subtitle": {
-        "value": "#626f7a",
-        "filePath": "tokens/color/text.json",
+        "value": "#c8c8c8",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.6.value}"
@@ -3728,8 +3728,8 @@
         ]
       },
       "link": {
-        "value": "#1a497d",
-        "filePath": "tokens/color/text.json",
+        "value": "#e8f3ff",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.blue.8.value}"
@@ -3747,8 +3747,8 @@
         ]
       },
       "disabled": {
-        "value": "#818e9a",
-        "filePath": "tokens/color/text.json",
+        "value": "#a8a8a8",
+        "filePath": "tokens/color/text.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.5.value}"
@@ -3764,6 +3764,29 @@
           "text",
           "disabled"
         ]
+      },
+      "header": {
+        "default": {
+          "value": "#f8f8f8",
+          "filePath": "tokens/color/text.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.9.value}"
+          },
+          "name": "ColorTextHeaderDefault",
+          "attributes": {
+            "category": "color",
+            "type": "text",
+            "item": "header",
+            "subitem": "default"
+          },
+          "path": [
+            "color",
+            "text",
+            "header",
+            "default"
+          ]
+        }
       }
     }
   },
@@ -3771,9 +3794,9 @@
     "color": {
       "title": {
         "default": {
-          "value": "#2c353d",
+          "value": "#f8f8f8",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.9.value}"
           },
@@ -3792,9 +3815,9 @@
           ]
         },
         "primary": {
-          "value": "#1a497d",
+          "value": "#e8f3ff",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.blue.8.value}"
           },
@@ -3815,7 +3838,7 @@
         "secondary": {
           "value": "#ffffff",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.white.value}"
           },
@@ -3834,10 +3857,10 @@
           ]
         },
         "danger": {
-          "value": "#a12b2b",
+          "value": "#ffcfd1",
           "comment": "Base color for the danger color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.red.7.value}",
             "comment": "Base color for the danger color"
@@ -3857,10 +3880,10 @@
           ]
         },
         "warning": {
-          "value": "#b58c12",
+          "value": "#e3ad0b",
           "comment": "Base color for the warning color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.yellow.5.value}",
             "comment": "Base color for the warning color"
@@ -3880,10 +3903,10 @@
           ]
         },
         "success": {
-          "value": "#067852",
+          "value": "#b5f5e0",
           "comment": "Base color for the success color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.green.7.value}",
             "comment": "Base color for the success color"
@@ -3903,10 +3926,10 @@
           ]
         },
         "info": {
-          "value": "#429bff",
+          "value": "#78b6ff",
           "comment": "Base color for the info color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.blue.5.value}",
             "comment": "Base color for the info color"
@@ -3927,9 +3950,9 @@
         },
         "weak": {
           "default": {
-            "value": "#a2adb8",
+            "value": "#888888",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.gray.4.value}"
             },
@@ -3950,9 +3973,9 @@
             ]
           },
           "primary": {
-            "value": "#78b6ff",
+            "value": "#429bff",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.blue.4.value}"
             },
@@ -3973,9 +3996,9 @@
             ]
           },
           "secondary": {
-            "value": "#a2adb8",
+            "value": "#888888",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.gray.4.value}"
             },
@@ -3996,10 +4019,10 @@
             ]
           },
           "danger": {
-            "value": "#ff858b",
+            "value": "#ff5760",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.red.4.value}",
               "comment": "Base color for the danger color"
@@ -4021,10 +4044,10 @@
             ]
           },
           "warning": {
-            "value": "#e16f24",
+            "value": "#bc4c00",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.orange.4.value}",
               "comment": "Base color for the warning color"
@@ -4046,10 +4069,10 @@
             ]
           },
           "success": {
-            "value": "#52d9ac",
+            "value": "#28bd8b",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.green.4.value}",
               "comment": "Base color for the success color"
@@ -4071,10 +4094,10 @@
             ]
           },
           "info": {
-            "value": "#78b6ff",
+            "value": "#429bff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.blue.4.value}",
               "comment": "Base color for the info color"
@@ -4099,9 +4122,9 @@
       },
       "content": {
         "default": {
-          "value": "#2c353d",
+          "value": "#f8f8f8",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.9.value}"
           },
@@ -4122,7 +4145,7 @@
         "dark": {
           "value": "#ffffff",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.white.value}"
           },
@@ -4141,9 +4164,9 @@
           ]
         },
         "primary": {
-          "value": "#e8f3ff",
+          "value": "#1a497d",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.blue.1.value}"
           },
@@ -4162,9 +4185,9 @@
           ]
         },
         "secondary": {
-          "value": "#ebf0f5",
+          "value": "#282828",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.1.value}"
           },
@@ -4183,10 +4206,10 @@
           ]
         },
         "danger": {
-          "value": "#ffebec",
+          "value": "#80252a",
           "comment": "Base color for the danger color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.red.1.value}",
             "comment": "Base color for the danger color"
@@ -4209,7 +4232,7 @@
           "value": "#ffffff",
           "comment": "Base color for the warning color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.white.value}",
             "comment": "Base color for the warning color"
@@ -4232,7 +4255,7 @@
           "value": "#ffffff",
           "comment": "Base color for the success color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.white.value}",
             "comment": "Base color for the success color"
@@ -4255,7 +4278,7 @@
           "value": "#ffffff",
           "comment": "Base color for the info color",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.white.value}",
             "comment": "Base color for the info color"
@@ -4276,9 +4299,9 @@
         },
         "weak": {
           "default": {
-            "value": "#c5ced6",
+            "value": "#686868",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.gray.3.value}"
             },
@@ -4299,9 +4322,9 @@
             ]
           },
           "primary": {
-            "value": "#abd2ff",
+            "value": "#1273e6",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.blue.3.value}"
             },
@@ -4322,9 +4345,9 @@
             ]
           },
           "secondary": {
-            "value": "#c5ced6",
+            "value": "#686868",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.gray.3.value}"
             },
@@ -4345,10 +4368,10 @@
             ]
           },
           "danger": {
-            "value": "#ffb5b9",
+            "value": "#d9363e",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.red.3.value}",
               "comment": "Base color for the danger color"
@@ -4370,10 +4393,10 @@
             ]
           },
           "warning": {
-            "value": "#fb8f44",
+            "value": "#953800",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.orange.3.value}",
               "comment": "Base color for the warning color"
@@ -4395,10 +4418,10 @@
             ]
           },
           "success": {
-            "value": "#8debcb",
+            "value": "#009f6a",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.green.3.value}",
               "comment": "Base color for the success color"
@@ -4420,10 +4443,10 @@
             ]
           },
           "info": {
-            "value": "#429bff",
+            "value": "#78b6ff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.blue.5.value}",
               "comment": "Base color for the info color"
@@ -4448,9 +4471,9 @@
       },
       "background": {
         "default": {
-          "value": "#f8f8f8",
+          "value": "#181818",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.0.value}"
           },
@@ -4469,9 +4492,9 @@
           ]
         },
         "dark": {
-          "value": "#2c353d",
+          "value": "#f8f8f8",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.9.value}"
           },
@@ -4492,7 +4515,7 @@
         "primary": {
           "value": "#1273e6",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.primary.value}"
           },
@@ -4511,9 +4534,9 @@
           ]
         },
         "secondary": {
-          "value": "#818e9a",
+          "value": "#484848",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.secondary.value}"
           },
@@ -4534,7 +4557,7 @@
         "success": {
           "value": "#009f6a",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.success.value}"
           },
@@ -4553,9 +4576,9 @@
           ]
         },
         "info": {
-          "value": "#429bff",
+          "value": "#1273e6",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.info.value}"
           },
@@ -4576,7 +4599,7 @@
         "warning": {
           "value": "#e16f24",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.warning.value}"
           },
@@ -4597,7 +4620,7 @@
         "danger": {
           "value": "#d9363e",
           "filePath": "tokens/component/alert.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.danger.value}"
           },
@@ -4617,9 +4640,9 @@
         },
         "weak": {
           "default": {
-            "value": "#ebf0f5",
+            "value": "#282828",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.gray.1.value}"
             },
@@ -4640,9 +4663,9 @@
             ]
           },
           "primary": {
-            "value": "#e8f3ff",
+            "value": "#1a497d",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.blue.1.value}"
             },
@@ -4663,9 +4686,9 @@
             ]
           },
           "secondary": {
-            "value": "#ebf0f5",
+            "value": "#282828",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.gray.1.value}"
             },
@@ -4686,10 +4709,10 @@
             ]
           },
           "danger": {
-            "value": "#ffebec",
+            "value": "#80252a",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.red.1.value}",
               "comment": "Base color for the danger color"
@@ -4711,10 +4734,10 @@
             ]
           },
           "warning": {
-            "value": "#ffd8b5",
+            "value": "#5c2200",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.orange.1.value}",
               "comment": "Base color for the warning color"
@@ -4736,10 +4759,10 @@
             ]
           },
           "success": {
-            "value": "#d6fff1",
+            "value": "#1b5441",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "{color.green.1.value}",
               "comment": "Base color for the success color"
@@ -4764,7 +4787,7 @@
             "value": "#e2f4ff",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
-            "isSource": true,
+            "isSource": false,
             "original": {
               "value": "#e2f4ff",
               "comment": "Base color for the info color"
@@ -4794,7 +4817,7 @@
       "30": {
         "value": "16px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "16px"
         },
@@ -4813,7 +4836,7 @@
       "50": {
         "value": "20px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "20px"
         },
@@ -4832,7 +4855,7 @@
       "100": {
         "value": "30px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "30px"
         },
@@ -4851,7 +4874,7 @@
       "200": {
         "value": "35px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "35px"
         },
@@ -4870,7 +4893,7 @@
       "300": {
         "value": "40px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "40px"
         },
@@ -4889,7 +4912,7 @@
       "400": {
         "value": "45px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "45px"
         },
@@ -4908,7 +4931,7 @@
       "500": {
         "value": "50px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "50px"
         },
@@ -4927,7 +4950,7 @@
       "600": {
         "value": "55px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "55px"
         },
@@ -4946,7 +4969,7 @@
       "700": {
         "value": "60px",
         "filePath": "tokens/component/avatar.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "60px"
         },
@@ -4969,7 +4992,7 @@
       "background": {
         "default": {
           "value": "transparent",
-          "filePath": "tokens/component/blank.json",
+          "filePath": "tokens/component/blank.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -4995,11 +5018,11 @@
     "default": {
       "background": {
         "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#686868",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.black.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonDefaultBackgroundDark",
           "attributes": {
@@ -5017,7 +5040,7 @@
         },
         "danger": {
           "value": "#d9363e",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.danger.value}"
@@ -5037,8 +5060,8 @@
           ]
         },
         "info": {
-          "value": "#429bff",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.info.value}"
@@ -5059,7 +5082,7 @@
         },
         "primary": {
           "value": "#1273e6",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.primary.value}"
@@ -5079,8 +5102,8 @@
           ]
         },
         "secondary": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.secondary.value}"
@@ -5101,7 +5124,7 @@
         },
         "success": {
           "value": "#009f6a",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.success.value}"
@@ -5122,7 +5145,7 @@
         },
         "warning": {
           "value": "#e16f24",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.warning.value}"
@@ -5144,11 +5167,11 @@
       },
       "border": {
         "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#686868",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.black.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonDefaultBorderDark",
           "attributes": {
@@ -5166,7 +5189,7 @@
         },
         "danger": {
           "value": "#d9363e",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.danger.value}"
@@ -5186,8 +5209,8 @@
           ]
         },
         "info": {
-          "value": "#429bff",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#1273e6",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.info.value}"
@@ -5208,7 +5231,7 @@
         },
         "primary": {
           "value": "#1273e6",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.primary.value}"
@@ -5228,8 +5251,8 @@
           ]
         },
         "secondary": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.secondary.value}"
@@ -5250,7 +5273,7 @@
         },
         "success": {
           "value": "#009f6a",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.success.value}"
@@ -5271,7 +5294,7 @@
         },
         "warning": {
           "value": "#e16f24",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.warning.value}"
@@ -5294,7 +5317,7 @@
       "text": {
         "dark": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5315,7 +5338,7 @@
         },
         "danger": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5336,7 +5359,7 @@
         },
         "info": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.info.json",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5357,7 +5380,7 @@
         },
         "primary": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5378,7 +5401,7 @@
         },
         "secondary": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5399,7 +5422,7 @@
         },
         "success": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5420,7 +5443,7 @@
         },
         "warning": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -5445,7 +5468,7 @@
       "background": {
         "dark": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5466,7 +5489,7 @@
         },
         "danger": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5487,7 +5510,7 @@
         },
         "info": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.info.json",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5508,7 +5531,7 @@
         },
         "default": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.json",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5529,7 +5552,7 @@
         },
         "primary": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5550,7 +5573,7 @@
         },
         "secondary": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5571,7 +5594,7 @@
         },
         "success": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5592,7 +5615,7 @@
         },
         "warning": {
           "value": "transparent",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "transparent"
@@ -5614,11 +5637,11 @@
       },
       "border": {
         "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.black.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineBorderDark",
           "attributes": {
@@ -5636,7 +5659,7 @@
         },
         "danger": {
           "value": "#d9363e",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.danger.value}"
@@ -5656,11 +5679,11 @@
           ]
         },
         "info": {
-          "value": "#429bff",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#78b6ff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.info.value}"
+            "value": "{color.blue.5.value}"
           },
           "name": "ButtonOutlineBorderInfo",
           "attributes": {
@@ -5677,11 +5700,11 @@
           ]
         },
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#a8a8a8",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.5.value}"
           },
           "name": "ButtonOutlineBorderDefault",
           "attributes": {
@@ -5699,7 +5722,7 @@
         },
         "primary": {
           "value": "#1273e6",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.primary.value}"
@@ -5719,8 +5742,8 @@
           ]
         },
         "secondary": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.secondary.value}"
@@ -5741,7 +5764,7 @@
         },
         "success": {
           "value": "#009f6a",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.success.value}"
@@ -5762,7 +5785,7 @@
         },
         "warning": {
           "value": "#e16f24",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.warning.value}"
@@ -5784,11 +5807,11 @@
       },
       "text": {
         "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextDark",
           "attributes": {
@@ -5805,11 +5828,11 @@
           ]
         },
         "danger": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextDanger",
           "attributes": {
@@ -5826,11 +5849,11 @@
           ]
         },
         "info": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextInfo",
           "attributes": {
@@ -5847,11 +5870,11 @@
           ]
         },
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextDefault",
           "attributes": {
@@ -5868,11 +5891,11 @@
           ]
         },
         "primary": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextPrimary",
           "attributes": {
@@ -5889,11 +5912,11 @@
           ]
         },
         "secondary": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextSecondary",
           "attributes": {
@@ -5910,11 +5933,11 @@
           ]
         },
         "success": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextSuccess",
           "attributes": {
@@ -5931,11 +5954,11 @@
           ]
         },
         "warning": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextWarning",
           "attributes": {
@@ -5956,11 +5979,11 @@
     "hover": {
       "background": {
         "dark": {
-          "value": "#46525c",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#282828",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.7.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "ButtonHoverBackgroundDark",
           "attributes": {
@@ -5978,10 +6001,10 @@
         },
         "danger": {
           "value": "#a12b2b",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.red.7.value}"
+            "value": "{color.red.2.value}"
           },
           "name": "ButtonHoverBackgroundDanger",
           "attributes": {
@@ -5998,11 +6021,11 @@
           ]
         },
         "info": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.6.value}"
+            "value": "{color.blue.4.value}"
           },
           "name": "ButtonHoverBackgroundInfo",
           "attributes": {
@@ -6019,11 +6042,11 @@
           ]
         },
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#282828",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "ButtonHoverBackgroundDefault",
           "attributes": {
@@ -6040,11 +6063,11 @@
           ]
         },
         "primary": {
-          "value": "#0060cc",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.7.value}"
+            "value": "{color.blue.4.value}"
           },
           "name": "ButtonHoverBackgroundPrimary",
           "attributes": {
@@ -6061,11 +6084,11 @@
           ]
         },
         "secondary": {
-          "value": "#46525c",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#686868",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.7.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonHoverBackgroundSecondary",
           "attributes": {
@@ -6083,10 +6106,10 @@
         },
         "success": {
           "value": "#067852",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.green.7.value}"
+            "value": "{color.green.2.value}"
           },
           "name": "ButtonHoverBackgroundSuccess",
           "attributes": {
@@ -6103,11 +6126,11 @@
           ]
         },
         "warning": {
-          "value": "#762c00",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#bc4c00",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.7.value}"
+            "value": "{color.orange.4.value}"
           },
           "name": "ButtonHoverBackgroundWarning",
           "attributes": {
@@ -6126,11 +6149,11 @@
       },
       "border": {
         "dark": {
-          "value": "#46525c",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#282828",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.7.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "ButtonHoverBorderDark",
           "attributes": {
@@ -6148,10 +6171,10 @@
         },
         "danger": {
           "value": "#a12b2b",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.red.7.value}"
+            "value": "{color.red.2.value}"
           },
           "name": "ButtonHoverBorderDanger",
           "attributes": {
@@ -6168,11 +6191,11 @@
           ]
         },
         "info": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.6.value}"
+            "value": "{color.blue.4.value}"
           },
           "name": "ButtonHoverBorderInfo",
           "attributes": {
@@ -6189,11 +6212,11 @@
           ]
         },
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#a8a8a8",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.5.value}"
           },
           "name": "ButtonHoverBorderDefault",
           "attributes": {
@@ -6210,11 +6233,11 @@
           ]
         },
         "primary": {
-          "value": "#0060cc",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#429bff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.7.value}"
+            "value": "{color.blue.4.value}"
           },
           "name": "ButtonHoverBorderPrimary",
           "attributes": {
@@ -6231,11 +6254,11 @@
           ]
         },
         "secondary": {
-          "value": "#46525c",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#686868",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.7.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "ButtonHoverBorderSecondary",
           "attributes": {
@@ -6253,10 +6276,10 @@
         },
         "success": {
           "value": "#067852",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.green.7.value}"
+            "value": "{color.green.2.value}"
           },
           "name": "ButtonHoverBorderSuccess",
           "attributes": {
@@ -6273,11 +6296,11 @@
           ]
         },
         "warning": {
-          "value": "#762c00",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#bc4c00",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.7.value}"
+            "value": "{color.orange.4.value}"
           },
           "name": "ButtonHoverBorderWarning",
           "attributes": {
@@ -6297,7 +6320,7 @@
       "text": {
         "dark": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6318,7 +6341,7 @@
         },
         "danger": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6339,7 +6362,7 @@
         },
         "info": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.info.json",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6359,11 +6382,11 @@
           ]
         },
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.9.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonHoverTextDefault",
           "attributes": {
@@ -6381,7 +6404,7 @@
         },
         "primary": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6402,7 +6425,7 @@
         },
         "secondary": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6423,7 +6446,7 @@
         },
         "success": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6444,7 +6467,7 @@
         },
         "warning": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -6468,8 +6491,8 @@
     "selected": {
       "background": {
         "dark": {
-          "value": "#46525c",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#e0e0e0",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.7.value}"
@@ -6489,8 +6512,8 @@
           ]
         },
         "danger": {
-          "value": "#a12b2b",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#ffcfd1",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.7.value}"
@@ -6510,8 +6533,8 @@
           ]
         },
         "info": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#abd2ff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.6.value}"
@@ -6531,8 +6554,8 @@
           ]
         },
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -6552,8 +6575,8 @@
           ]
         },
         "primary": {
-          "value": "#0060cc",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#cce3ff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.7.value}"
@@ -6573,8 +6596,8 @@
           ]
         },
         "secondary": {
-          "value": "#46525c",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#e0e0e0",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.7.value}"
@@ -6594,8 +6617,8 @@
           ]
         },
         "success": {
-          "value": "#067852",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#b5f5e0",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.7.value}"
@@ -6615,8 +6638,8 @@
           ]
         },
         "warning": {
-          "value": "#762c00",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#ffb77c",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.orange.7.value}"
@@ -6638,8 +6661,8 @@
       },
       "border": {
         "dark": {
-          "value": "#39444d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -6659,8 +6682,8 @@
           ]
         },
         "danger": {
-          "value": "#80252a",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#ffebec",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.8.value}"
@@ -6680,8 +6703,8 @@
           ]
         },
         "info": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#abd2ff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.6.value}"
@@ -6701,8 +6724,8 @@
           ]
         },
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -6722,8 +6745,8 @@
           ]
         },
         "primary": {
-          "value": "#1a497d",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.8.value}"
@@ -6743,8 +6766,8 @@
           ]
         },
         "secondary": {
-          "value": "#39444d",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -6764,8 +6787,8 @@
           ]
         },
         "success": {
-          "value": "#1b5441",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#d6fff1",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.8.value}"
@@ -6785,8 +6808,8 @@
           ]
         },
         "warning": {
-          "value": "#5c2200",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#ffd8b5",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.orange.8.value}"
@@ -6810,8 +6833,8 @@
     "focus": {
       "background": {
         "dark": {
-          "value": "#39444d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -6831,8 +6854,8 @@
           ]
         },
         "danger": {
-          "value": "#80252a",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#ffebec",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.8.value}"
@@ -6852,8 +6875,8 @@
           ]
         },
         "info": {
-          "value": "#0060cc",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#cce3ff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.7.value}"
@@ -6873,8 +6896,8 @@
           ]
         },
         "primary": {
-          "value": "#1a497d",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.8.value}"
@@ -6894,8 +6917,8 @@
           ]
         },
         "secondary": {
-          "value": "#39444d",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -6915,8 +6938,8 @@
           ]
         },
         "success": {
-          "value": "#1b5441",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#d6fff1",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.8.value}"
@@ -6936,8 +6959,8 @@
           ]
         },
         "warning": {
-          "value": "#5c2200",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#ffd8b5",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.orange.8.value}"
@@ -6959,8 +6982,8 @@
       },
       "border": {
         "dark": {
-          "value": "#39444d",
-          "filePath": "tokens/component/button/button.__dark__.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -6980,8 +7003,8 @@
           ]
         },
         "danger": {
-          "value": "#80252a",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#ffebec",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.8.value}"
@@ -7001,8 +7024,8 @@
           ]
         },
         "info": {
-          "value": "#0060cc",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#cce3ff",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.7.value}"
@@ -7022,8 +7045,8 @@
           ]
         },
         "primary": {
-          "value": "#1a497d",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.8.value}"
@@ -7043,8 +7066,8 @@
           ]
         },
         "secondary": {
-          "value": "#39444d",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -7064,8 +7087,8 @@
           ]
         },
         "success": {
-          "value": "#1b5441",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#d6fff1",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.8.value}"
@@ -7085,8 +7108,8 @@
           ]
         },
         "warning": {
-          "value": "#5c2200",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#ffd8b5",
+          "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.orange.8.value}"
@@ -7110,9 +7133,9 @@
     "active": {
       "background": {
         "dark": {
-          "value": "#d9e0e6",
+          "value": "#484848",
           "filePath": "tokens/component/button/button.__dark__.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.2.value}"
           },
@@ -7131,8 +7154,8 @@
           ]
         },
         "danger": {
-          "value": "#ffcfd1",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#a12b2b",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.2.value}"
@@ -7152,8 +7175,8 @@
           ]
         },
         "info": {
-          "value": "#e8f3ff",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#1a497d",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.1.value}"
@@ -7173,11 +7196,11 @@
           ]
         },
         "default": {
-          "value": "#ffb77c",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.2.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonActiveBackgroundDefault",
           "attributes": {
@@ -7194,8 +7217,8 @@
           ]
         },
         "primary": {
-          "value": "#cce3ff",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.2.value}"
@@ -7215,8 +7238,8 @@
           ]
         },
         "secondary": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -7236,8 +7259,8 @@
           ]
         },
         "success": {
-          "value": "#b5f5e0",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#067852",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.2.value}"
@@ -7255,13 +7278,34 @@
             "background",
             "success"
           ]
+        },
+        "warning": {
+          "value": "#762c00",
+          "filePath": "tokens/component/button/button.warning.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2.value}"
+          },
+          "name": "ButtonActiveBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "warning"
+          ]
         }
       },
       "border": {
         "dark": {
-          "value": "#d9e0e6",
+          "value": "#484848",
           "filePath": "tokens/component/button/button.__dark__.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.2.value}"
           },
@@ -7280,8 +7324,8 @@
           ]
         },
         "danger": {
-          "value": "#ffcfd1",
-          "filePath": "tokens/component/button/button.danger.json",
+          "value": "#a12b2b",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.2.value}"
@@ -7301,8 +7345,8 @@
           ]
         },
         "info": {
-          "value": "#e8f3ff",
-          "filePath": "tokens/component/button/button.info.json",
+          "value": "#1a497d",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.1.value}"
@@ -7322,11 +7366,11 @@
           ]
         },
         "default": {
-          "value": "#ffb77c",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.2.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonActiveBorderDefault",
           "attributes": {
@@ -7343,8 +7387,8 @@
           ]
         },
         "primary": {
-          "value": "#cce3ff",
-          "filePath": "tokens/component/button/button.primary.json",
+          "value": "#0060cc",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.2.value}"
@@ -7364,8 +7408,8 @@
           ]
         },
         "secondary": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -7385,8 +7429,8 @@
           ]
         },
         "success": {
-          "value": "#b5f5e0",
-          "filePath": "tokens/component/button/button.success.json",
+          "value": "#067852",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.2.value}"
@@ -7404,13 +7448,34 @@
             "border",
             "success"
           ]
+        },
+        "warning": {
+          "value": "#762c00",
+          "filePath": "tokens/component/button/button.warning.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2.value}"
+          },
+          "name": "ButtonActiveBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "warning"
+          ]
         }
       },
       "text": {
         "dark": {
           "value": "#ffffff",
           "filePath": "tokens/component/button/button.__dark__.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.white.value}"
           },
@@ -7430,7 +7495,7 @@
         },
         "danger": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.danger.json",
+          "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -7451,7 +7516,7 @@
         },
         "info": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.info.json",
+          "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -7472,7 +7537,7 @@
         },
         "default": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.warning.json",
+          "filePath": "tokens/component/button/button.__dark__.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -7493,7 +7558,7 @@
         },
         "primary": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.primary.json",
+          "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -7514,7 +7579,7 @@
         },
         "secondary": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.secondary.json",
+          "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -7535,7 +7600,7 @@
         },
         "success": {
           "value": "#ffffff",
-          "filePath": "tokens/component/button/button.success.json",
+          "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.white.value}"
@@ -7553,6 +7618,27 @@
             "text",
             "success"
           ]
+        },
+        "warning": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.warning.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextWarning",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "warning"
+          ]
         }
       }
     },
@@ -7560,11 +7646,11 @@
       "hover": {
         "background": {
           "default": {
-            "value": "#ffffff",
-            "filePath": "tokens/component/button/button.json",
+            "value": "#000000",
+            "filePath": "tokens/component/button/button.dark.json",
             "isSource": true,
             "original": {
-              "value": "{color.transparent.white.1.value}"
+              "value": "{color.transparent.black.1.value}"
             },
             "name": "ButtonClosableHoverBackgroundDefault",
             "attributes": {
@@ -7588,11 +7674,11 @@
     "disabled": {
       "background": {
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#282828",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "ButtonDisabledBackgroundDefault",
           "attributes": {
@@ -7611,8 +7697,8 @@
       },
       "border": {
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -7634,8 +7720,8 @@
       },
       "text": {
         "default": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/button/button.json",
+          "value": "#a8a8a8",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.5.value}"
@@ -7660,7 +7746,7 @@
       "padding": {
         "small": {
           "value": "5px 6px",
-          "filePath": "tokens/component/button/button.json",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{size.base.65.value} {size.base.75.value}"
@@ -7681,7 +7767,7 @@
         },
         "medium": {
           "value": "8px 10px",
-          "filePath": "tokens/component/button/button.json",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{size.base.100.value} {size.base.125.value}"
@@ -7702,7 +7788,7 @@
         },
         "large": {
           "value": "14px 20px",
-          "filePath": "tokens/component/button/button.json",
+          "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
             "value": "{size.base.175.value} {size.base.250.value}"
@@ -7728,11 +7814,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/card.json",
+          "value": "#181818",
+          "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.gray.0.value}"
           },
           "name": "CardColorBackgroundDefault",
           "attributes": {
@@ -7749,8 +7835,8 @@
           ]
         },
         "selected": {
-          "value": "#f6faff",
-          "filePath": "tokens/component/card.json",
+          "value": "#203752",
+          "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.0.value}"
@@ -7772,8 +7858,8 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/card.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -7795,8 +7881,8 @@
       },
       "border": {
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/card.json",
+          "value": "#484848",
+          "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -7817,7 +7903,7 @@
         },
         "selected": {
           "value": "#1273e6",
-          "filePath": "tokens/component/card.json",
+          "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.primary.value}"
@@ -7843,11 +7929,11 @@
     "color": {
       "background": {
         "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/checkbox.json",
+          "value": "#484848",
+          "filePath": "tokens/component/checkbox.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.black.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "CheckboxColorBackgroundDark",
           "attributes": {
@@ -7870,11 +7956,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/dialog.json",
+          "value": "#01010a",
+          "filePath": "tokens/component/dialog.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.background.default.value}"
           },
           "name": "DialogColorBackgroundDefault",
           "attributes": {
@@ -7889,12 +7975,37 @@
             "background",
             "default"
           ]
+        },
+        "hover": {
+          "default": {
+            "value": "#282828",
+            "filePath": "tokens/component/dialog.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1.value}"
+            },
+            "name": "DialogColorBackgroundHoverDefault",
+            "attributes": {
+              "category": "dialog",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": [
+              "dialog",
+              "color",
+              "background",
+              "hover",
+              "default"
+            ]
+          }
         }
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/dialog.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/dialog.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -7916,11 +8027,11 @@
       },
       "border": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/dialog.json",
+          "value": "#484848",
+          "filePath": "tokens/component/dialog.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.border.default.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "DialogColorBorderDefault",
           "attributes": {
@@ -7940,11 +8051,11 @@
     },
     "shadow": {
       "default": {
-        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
-        "filePath": "tokens/component/dialog.json",
+        "value": "0px 2px 7px rgba(50, 50, 50, 0.05), 0px 5px 17px rgba(50, 50, 50, 0.15)",
+        "filePath": "tokens/component/dialog.dark.json",
         "isSource": true,
         "original": {
-          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+          "value": "0px 2px 7px rgba(50, 50, 50, 0.05), 0px 5px 17px rgba(50, 50, 50, 0.15)"
         },
         "name": "DialogShadowDefault",
         "attributes": {
@@ -7964,9 +8075,9 @@
     "color": {
       "border": {
         "default": {
-          "value": "#d9e0e6",
+          "value": "#484848",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.gray.2.value}"
           },
@@ -7987,7 +8098,7 @@
         "primary": {
           "value": "#1273e6",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.primary.value}"
           },
@@ -8006,9 +8117,9 @@
           ]
         },
         "secondary": {
-          "value": "#818e9a",
+          "value": "#484848",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.secondary.value}"
           },
@@ -8029,7 +8140,7 @@
         "success": {
           "value": "#009f6a",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.success.value}"
           },
@@ -8048,9 +8159,9 @@
           ]
         },
         "info": {
-          "value": "#429bff",
+          "value": "#1273e6",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.info.value}"
           },
@@ -8071,7 +8182,7 @@
         "warning": {
           "value": "#e16f24",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.warning.value}"
           },
@@ -8092,7 +8203,7 @@
         "danger": {
           "value": "#d9363e",
           "filePath": "tokens/component/divider.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": "{color.danger.value}"
           },
@@ -8118,10 +8229,10 @@
       "background": {
         "1": {
           "value": "#ffffff",
-          "filePath": "tokens/component/ghost.json",
+          "filePath": "tokens/component/ghost.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.transparent.white.0.value}"
+            "value": "{color.transparent.white.1.value}"
           },
           "name": "GhostColorBackground1",
           "attributes": {
@@ -8139,10 +8250,10 @@
         },
         "2": {
           "value": "#ffffff",
-          "filePath": "tokens/component/ghost.json",
+          "filePath": "tokens/component/ghost.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.transparent.white.5.value}"
+            "value": "{color.transparent.white.3.value}"
           },
           "name": "GhostColorBackground2",
           "attributes": {
@@ -8159,11 +8270,11 @@
           ]
         },
         "default": {
-          "value": "#ebf0f5",
-          "filePath": "tokens/component/ghost.json",
+          "value": "#484848",
+          "filePath": "tokens/component/ghost.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "GhostColorBackgroundDefault",
           "attributes": {
@@ -8186,11 +8297,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/input.json",
+          "value": "#282828",
+          "filePath": "tokens/component/input.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "InputColorBackgroundDefault",
           "attributes": {
@@ -8209,8 +8320,8 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/input.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/input.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -8232,8 +8343,8 @@
       },
       "border": {
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/input.json",
+          "value": "#484848",
+          "filePath": "tokens/component/input.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -8259,8 +8370,8 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/menu.json",
+          "value": "#01010a",
+          "filePath": "tokens/component/menu.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.background.default.value}"
@@ -8281,11 +8392,11 @@
         },
         "hover": {
           "default": {
-            "value": "#f8f8f8",
-            "filePath": "tokens/component/menu.json",
+            "value": "#282828",
+            "filePath": "tokens/component/menu.dark.json",
             "isSource": true,
             "original": {
-              "value": "{color.hover.default.value}"
+              "value": "{color.gray.1.value}"
             },
             "name": "MenuColorBackgroundHoverDefault",
             "attributes": {
@@ -8307,8 +8418,8 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/menu.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/menu.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -8330,11 +8441,11 @@
       },
       "border": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/menu.json",
+          "value": "#484848",
+          "filePath": "tokens/component/menu.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.border.default.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "MenuColorBorderDefault",
           "attributes": {
@@ -8354,11 +8465,11 @@
     },
     "shadow": {
       "default": {
-        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
-        "filePath": "tokens/component/menu.json",
+        "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)",
+        "filePath": "tokens/component/menu.dark.json",
         "isSource": true,
         "original": {
-          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+          "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)"
         },
         "name": "MenuShadowDefault",
         "attributes": {
@@ -8378,8 +8489,8 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/panel.json",
+          "value": "#01010a",
+          "filePath": "tokens/component/panel.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.background.default.value}"
@@ -8401,8 +8512,8 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/panel.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/panel.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -8424,8 +8535,8 @@
       },
       "border": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/panel.json",
+          "value": "#000000",
+          "filePath": "tokens/component/panel.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.border.default.value}"
@@ -8451,8 +8562,8 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/popover.json",
+          "value": "#01010a",
+          "filePath": "tokens/component/popover.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.background.default.value}"
@@ -8478,8 +8589,8 @@
     "color": {
       "background": {
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/progress-bar.json",
+          "value": "#484848",
+          "filePath": "tokens/component/progress-bar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -8501,8 +8612,8 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/progress-bar.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/progress-bar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -8523,8 +8634,8 @@
         }
       },
       "active": {
-        "value": "#2c353d",
-        "filePath": "tokens/component/progress-bar.json",
+        "value": "#f8f8f8",
+        "filePath": "tokens/component/progress-bar.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.9.value}"
@@ -8546,8 +8657,8 @@
   "progress-circle": {
     "color": {
       "track": {
-        "value": "#d9e0e6",
-        "filePath": "tokens/component/progress-circle.json",
+        "value": "#484848",
+        "filePath": "tokens/component/progress-circle.dark.json",
         "isSource": true,
         "original": {
           "value": "{color.gray.2.value}"
@@ -8565,11 +8676,11 @@
         ]
       },
       "active": {
-        "value": "#2c353d",
-        "filePath": "tokens/component/progress-circle.json",
+        "value": "#a8a8a8",
+        "filePath": "tokens/component/progress-circle.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.9.value}"
+          "value": "{color.gray.5.value}"
         },
         "name": "ProgressCircleColorActive",
         "attributes": {
@@ -8590,8 +8701,8 @@
       "progress": {
         "background": {
           "default": {
-            "value": "#2c353d",
-            "filePath": "tokens/component/slider.json",
+            "value": "#f8f8f8",
+            "filePath": "tokens/component/slider.dark.json",
             "isSource": true,
             "original": {
               "value": "{color.gray.9.value}"
@@ -8616,11 +8727,11 @@
         "thumb": {
           "background": {
             "default": {
-              "value": "#2c353d",
-              "filePath": "tokens/component/slider.json",
+              "value": "#484848",
+              "filePath": "tokens/component/slider.dark.json",
               "isSource": true,
               "original": {
-                "value": "{color.gray.9.value}"
+                "value": "{color.gray.2.value}"
               },
               "name": "SliderColorProgressThumbBackgroundDefault",
               "attributes": {
@@ -8649,11 +8760,11 @@
       "color": {
         "background": {
           "default": {
-            "value": "#d9e0e6",
-            "filePath": "tokens/component/switch.json",
+            "value": "#888888",
+            "filePath": "tokens/component/switch.dark.json",
             "isSource": true,
             "original": {
-              "value": "{color.gray.2.value}"
+              "value": "{color.gray.4.value}"
             },
             "name": "SwitchFalseColorBackgroundDefault",
             "attributes": {
@@ -8675,8 +8786,8 @@
         "handle": {
           "background": {
             "default": {
-              "value": "#2c353d",
-              "filePath": "tokens/component/switch.json",
+              "value": "#000000",
+              "filePath": "tokens/component/switch.dark.json",
               "isSource": true,
               "original": {
                 "value": "{color.border.default.value}"
@@ -8706,11 +8817,11 @@
       "color": {
         "background": {
           "default": {
-            "value": "#2c353d",
-            "filePath": "tokens/component/switch.json",
+            "value": "#484848",
+            "filePath": "tokens/component/switch.dark.json",
             "isSource": true,
             "original": {
-              "value": "{color.gray.9.value}"
+              "value": "{color.gray.2.value}"
             },
             "name": "SwitchTrueColorBackgroundDefault",
             "attributes": {
@@ -8732,11 +8843,11 @@
         "handle": {
           "background": {
             "default": {
-              "value": "#ffffff",
-              "filePath": "tokens/component/switch.json",
+              "value": "#f8f8f8",
+              "filePath": "tokens/component/switch.dark.json",
               "isSource": true,
               "original": {
-                "value": "{color.white.value}"
+                "value": "{color.gray.9.value}"
               },
               "name": "SwitchTrueColorHandleBackgroundDefault",
               "attributes": {
@@ -8764,8 +8875,8 @@
     "color": {
       "border": {
         "default": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/table.json",
+          "value": "#484848",
+          "filePath": "tokens/component/table.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -8791,7 +8902,7 @@
         "background": {
           "default": {
             "value": "transparent",
-            "filePath": "tokens/component/table.json",
+            "filePath": "tokens/component/table.dark.json",
             "isSource": true,
             "original": {
               "value": "transparent"
@@ -8819,8 +8930,8 @@
       "color": {
         "background": {
           "default": {
-            "value": "#ffffff",
-            "filePath": "tokens/component/table.json",
+            "value": "#01010a",
+            "filePath": "tokens/component/table.dark.json",
             "isSource": true,
             "original": {
               "value": "{color.background.default.value}"
@@ -8850,7 +8961,7 @@
       "background": {
         "default": {
           "value": "#ffffff",
-          "filePath": "tokens/component/tabstrip.json",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.transparent.white.0.value}"
@@ -8870,8 +8981,8 @@
           ]
         },
         "indicator": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/tabstrip.json",
+          "value": "#484848",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
@@ -8893,11 +9004,11 @@
       },
       "text": {
         "default": {
-          "value": "#626f7a",
-          "filePath": "tokens/component/tabstrip.json",
+          "value": "#a8a8a8",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.6.value}"
+            "value": "{color.gray.5.value}"
           },
           "name": "TabstripColorTextDefault",
           "attributes": {
@@ -8914,11 +9025,11 @@
           ]
         },
         "indicator": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/tabstrip.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "TabstripColorTextIndicator",
           "attributes": {
@@ -8935,11 +9046,11 @@
           ]
         },
         "selected": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/tabstrip.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "TabstripColorTextSelected",
           "attributes": {
@@ -8956,8 +9067,8 @@
           ]
         },
         "disabled": {
-          "value": "#c5ced6",
-          "filePath": "tokens/component/tabstrip.json",
+          "value": "#686868",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.3.value}"
@@ -8980,7 +9091,7 @@
       "border": {
         "default": {
           "value": "#ffffff",
-          "filePath": "tokens/component/tabstrip.json",
+          "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.transparent.white.0.value}"
@@ -9006,11 +9117,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/tag.json",
+          "value": "#000000",
+          "filePath": "tokens/component/tag.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.transparent.black.0.value}"
           },
           "name": "TagColorBackgroundDefault",
           "attributes": {
@@ -9029,8 +9140,8 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/tag.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/tag.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.text.default.value}"
@@ -9052,11 +9163,11 @@
       },
       "border": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/tag.json",
+          "value": "#686868",
+          "filePath": "tokens/component/tag.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.gray.3.value}"
           },
           "name": "TagColorBorderDefault",
           "attributes": {
@@ -9078,11 +9189,11 @@
   "toast": {
     "shadow": {
       "default": {
-        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
-        "filePath": "tokens/component/toast.json",
+        "value": "0px 2px 7px rgba(50, 50, 50, 0.05), 0px 5px 17px rgba(50, 50, 50, 0.15)",
+        "filePath": "tokens/component/toast.dark.json",
         "isSource": true,
         "original": {
-          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+          "value": "0px 2px 7px rgba(50, 50, 50, 0.05), 0px 5px 17px rgba(50, 50, 50, 0.15)"
         },
         "name": "ToastShadowDefault",
         "attributes": {
@@ -9103,7 +9214,7 @@
       "background": {
         "default": {
           "value": "#ffffff",
-          "filePath": "tokens/component/toolbar.json",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.default.value}"
@@ -9124,7 +9235,7 @@
         },
         "primary": {
           "value": "#1273e6",
-          "filePath": "tokens/component/toolbar.json",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.primary.value}"
@@ -9144,8 +9255,8 @@
           ]
         },
         "secondary": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#484848",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.secondary.value}"
@@ -9166,7 +9277,7 @@
         },
         "success": {
           "value": "#009f6a",
-          "filePath": "tokens/component/toolbar.json",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.success.value}"
@@ -9186,8 +9297,8 @@
           ]
         },
         "info": {
-          "value": "#429bff",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#1273e6",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.info.value}"
@@ -9208,7 +9319,7 @@
         },
         "warning": {
           "value": "#e16f24",
-          "filePath": "tokens/component/toolbar.json",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.warning.value}"
@@ -9229,7 +9340,7 @@
         },
         "danger": {
           "value": "#d9363e",
-          "filePath": "tokens/component/toolbar.json",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.danger.value}"
@@ -9249,8 +9360,8 @@
           ]
         },
         "dark": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#000000",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.black.value}"
@@ -9272,11 +9383,11 @@
       },
       "text": {
         "default": {
-          "value": "#39444d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#181818",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.8.value}"
+            "value": "{color.gray.0.value}"
           },
           "name": "ToolbarColorTextDefault",
           "attributes": {
@@ -9293,8 +9404,8 @@
           ]
         },
         "primary": {
-          "value": "#39444d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -9314,8 +9425,8 @@
           ]
         },
         "secondary": {
-          "value": "#39444d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#f0f0f0",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.8.value}"
@@ -9335,8 +9446,8 @@
           ]
         },
         "success": {
-          "value": "#1b5441",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#d6fff1",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.green.8.value}"
@@ -9356,8 +9467,8 @@
           ]
         },
         "danger": {
-          "value": "#80252a",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#ffebec",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.red.8.value}"
@@ -9377,8 +9488,8 @@
           ]
         },
         "warning": {
-          "value": "#5c2200",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#ffd8b5",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.orange.8.value}"
@@ -9398,8 +9509,8 @@
           ]
         },
         "info": {
-          "value": "#1a497d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.8.value}"
@@ -9419,8 +9530,8 @@
           ]
         },
         "title": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#000000",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.black.value}"
@@ -9440,8 +9551,8 @@
           ]
         },
         "subtitle": {
-          "value": "#626f7a",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#c8c8c8",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.6.value}"
@@ -9461,8 +9572,8 @@
           ]
         },
         "link": {
-          "value": "#1a497d",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.blue.8.value}"
@@ -9482,8 +9593,8 @@
           ]
         },
         "disabled": {
-          "value": "#818e9a",
-          "filePath": "tokens/component/toolbar.json",
+          "value": "#a8a8a8",
+          "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.gray.5.value}"
@@ -9509,8 +9620,8 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/tooltip.json",
+          "value": "#01010a",
+          "filePath": "tokens/component/tooltip.dark.json",
           "isSource": true,
           "original": {
             "value": "{color.background.default.value}"
@@ -9532,11 +9643,11 @@
       },
       "text": {
         "default": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/tooltip.json",
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/tooltip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.text.header.default.value}"
           },
           "name": "TooltipColorTextDefault",
           "attributes": {
@@ -9561,7 +9672,7 @@
         "background": {
           "default": {
             "value": "transparent",
-            "filePath": "tokens/component/treeview.json",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "transparent"
@@ -9583,8 +9694,8 @@
             ]
           },
           "hover": {
-            "value": "#ebf0f5",
-            "filePath": "tokens/component/treeview.json",
+            "value": "#282828",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "{color.gray.1.value}"
@@ -9606,8 +9717,8 @@
             ]
           },
           "selected": {
-            "value": "#d9e0e6",
-            "filePath": "tokens/component/treeview.json",
+            "value": "#484848",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "{color.gray.2.value}"
@@ -9629,8 +9740,8 @@
             ]
           },
           "ghost": {
-            "value": "#ebf0f5",
-            "filePath": "tokens/component/treeview.json",
+            "value": "#282828",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "{color.gray.1.value}"
@@ -9654,8 +9765,8 @@
         },
         "text": {
           "default": {
-            "value": "#2c353d",
-            "filePath": "tokens/component/treeview.json",
+            "value": "#f8f8f8",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "{color.text.default.value}"
@@ -9680,7 +9791,7 @@
         "border": {
           "default": {
             "value": "transparent",
-            "filePath": "tokens/component/treeview.json",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "transparent"
@@ -9703,7 +9814,7 @@
           },
           "hover": {
             "value": "transparent",
-            "filePath": "tokens/component/treeview.json",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "transparent"
@@ -9726,7 +9837,7 @@
           },
           "selected": {
             "value": "transparent",
-            "filePath": "tokens/component/treeview.json",
+            "filePath": "tokens/component/treeview.dark.json",
             "isSource": true,
             "original": {
               "value": "transparent"
@@ -9755,7 +9866,7 @@
     "1": {
       "value": "0 1px 4px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "0 1px 4px 0 {shadow.color.value}"
       },
@@ -9772,7 +9883,7 @@
     "2": {
       "value": "0 4px 8px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "0 4px 8px 0 {shadow.color.value}"
       },
@@ -9789,7 +9900,7 @@
     "3": {
       "value": "0 8px 16px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "0 8px 16px 0 {shadow.color.value}"
       },
@@ -9806,7 +9917,7 @@
     "4": {
       "value": "0 12px 24px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "0 12px 24px 0 {shadow.color.value}"
       },
@@ -9823,7 +9934,7 @@
     "5": {
       "value": "0 16px 32px 0 rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "0 16px 32px 0 {shadow.color.value}"
       },
@@ -9840,7 +9951,7 @@
     "none": {
       "value": "none",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "none"
       },
@@ -9857,7 +9968,7 @@
     "color": {
       "value": "rgba(170, 170, 170, 0.5)",
       "filePath": "tokens/elevation/shadow.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "rgba(170, 170, 170, 0.5)"
       },
@@ -9876,7 +9987,7 @@
     "1": {
       "value": "repeat(1, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(1, 1fr)"
       },
@@ -9893,7 +10004,7 @@
     "2": {
       "value": "repeat(2, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(2, 1fr)"
       },
@@ -9910,7 +10021,7 @@
     "3": {
       "value": "repeat(3, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(3, 1fr)"
       },
@@ -9927,7 +10038,7 @@
     "4": {
       "value": "repeat(4, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(4, 1fr)"
       },
@@ -9944,7 +10055,7 @@
     "5": {
       "value": "repeat(5, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(5, 1fr)"
       },
@@ -9961,7 +10072,7 @@
     "6": {
       "value": "repeat(6, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(6, 1fr)"
       },
@@ -9978,7 +10089,7 @@
     "7": {
       "value": "repeat(7, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(7, 1fr)"
       },
@@ -9995,7 +10106,7 @@
     "8": {
       "value": "repeat(8, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(8, 1fr)"
       },
@@ -10012,7 +10123,7 @@
     "9": {
       "value": "repeat(9, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(9, 1fr)"
       },
@@ -10029,7 +10140,7 @@
     "10": {
       "value": "repeat(10, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(10, 1fr)"
       },
@@ -10046,7 +10157,7 @@
     "11": {
       "value": "repeat(11, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(11, 1fr)"
       },
@@ -10063,7 +10174,7 @@
     "12": {
       "value": "repeat(12, 1fr)",
       "filePath": "tokens/layout/column.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "repeat(12, 1fr)"
       },
@@ -10082,7 +10193,7 @@
     "8": {
       "value": "8px",
       "filePath": "tokens/layout/gap.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "8px"
       },
@@ -10099,7 +10210,7 @@
     "16": {
       "value": "16px",
       "filePath": "tokens/layout/gap.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "16px"
       },
@@ -10116,7 +10227,7 @@
     "24": {
       "value": "24px",
       "filePath": "tokens/layout/gap.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "24px"
       },
@@ -10133,7 +10244,7 @@
     "32": {
       "value": "32px",
       "filePath": "tokens/layout/gap.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "32px"
       },
@@ -10150,7 +10261,7 @@
     "40": {
       "value": "40px",
       "filePath": "tokens/layout/gap.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "40px"
       },
@@ -10167,7 +10278,7 @@
     "48": {
       "value": "48px",
       "filePath": "tokens/layout/gap.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "48px"
       },
@@ -10186,7 +10297,7 @@
     "0": {
       "value": "2px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "2px"
       },
@@ -10203,7 +10314,7 @@
     "1": {
       "value": "4px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "4px"
       },
@@ -10220,7 +10331,7 @@
     "2": {
       "value": "8px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "8px"
       },
@@ -10237,7 +10348,7 @@
     "3": {
       "value": "12px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "12px"
       },
@@ -10255,7 +10366,7 @@
       "value": "16px",
       "comment": "base size",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "16px",
         "comment": "base size"
@@ -10273,7 +10384,7 @@
     "5": {
       "value": "20px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "20px"
       },
@@ -10291,7 +10402,7 @@
       "value": "24px",
       "comment": "base size",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "24px",
         "comment": "base size"
@@ -10309,7 +10420,7 @@
     "7": {
       "value": "32px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "32px"
       },
@@ -10326,7 +10437,7 @@
     "8": {
       "value": "40px",
       "filePath": "tokens/layout/spacing.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "40px"
       },
@@ -10344,7 +10455,7 @@
       "xxxs": {
         "value": "2px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.0.value}"
         },
@@ -10363,7 +10474,7 @@
       "xxs": {
         "value": "4px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.1.value}"
         },
@@ -10382,7 +10493,7 @@
       "xs": {
         "value": "8px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.2.value}"
         },
@@ -10401,7 +10512,7 @@
       "sm": {
         "value": "12px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.3.value}"
         },
@@ -10420,7 +10531,7 @@
       "md": {
         "value": "16px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.4.value}"
         },
@@ -10439,7 +10550,7 @@
       "lg": {
         "value": "20px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.5.value}"
         },
@@ -10458,7 +10569,7 @@
       "xl": {
         "value": "24px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.6.value}"
         },
@@ -10477,7 +10588,7 @@
       "xxl": {
         "value": "32px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.7.value}"
         },
@@ -10496,7 +10607,7 @@
       "xxxl": {
         "value": "40px",
         "filePath": "tokens/layout/spacing.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.8.value}"
         },
@@ -10518,7 +10629,7 @@
     "0": {
       "value": "0",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "0"
       },
@@ -10535,7 +10646,7 @@
     "10": {
       "value": "10",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "10"
       },
@@ -10552,7 +10663,7 @@
     "20": {
       "value": "20",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "20"
       },
@@ -10569,7 +10680,7 @@
     "30": {
       "value": "30",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "30"
       },
@@ -10586,7 +10697,7 @@
     "40": {
       "value": "40",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "40"
       },
@@ -10603,7 +10714,7 @@
     "50": {
       "value": "50",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "50"
       },
@@ -10620,7 +10731,7 @@
     "100": {
       "value": "100",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "100"
       },
@@ -10637,7 +10748,7 @@
     "200": {
       "value": "200",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "200"
       },
@@ -10654,7 +10765,7 @@
     "300": {
       "value": "300",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "300"
       },
@@ -10671,7 +10782,7 @@
     "400": {
       "value": "400",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "400"
       },
@@ -10688,7 +10799,7 @@
     "500": {
       "value": "500",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "500"
       },
@@ -10705,7 +10816,7 @@
     "1000": {
       "value": "1000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "1000"
       },
@@ -10722,7 +10833,7 @@
     "2000": {
       "value": "2000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "2000"
       },
@@ -10739,7 +10850,7 @@
     "3000": {
       "value": "3000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "3000"
       },
@@ -10756,7 +10867,7 @@
     "4000": {
       "value": "4000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "4000"
       },
@@ -10773,7 +10884,7 @@
     "5000": {
       "value": "5000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "5000"
       },
@@ -10790,7 +10901,7 @@
     "10000": {
       "value": "10000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "10000"
       },
@@ -10807,7 +10918,7 @@
     "20000": {
       "value": "20000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "20000"
       },
@@ -10824,7 +10935,7 @@
     "30000": {
       "value": "30000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "30000"
       },
@@ -10841,7 +10952,7 @@
     "40000": {
       "value": "40000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "40000"
       },
@@ -10858,7 +10969,7 @@
     "50000": {
       "value": "50000",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "50000"
       },
@@ -10875,7 +10986,7 @@
     "tooltip": {
       "value": "100",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "{z-index.100.value}"
       },
@@ -10892,7 +11003,7 @@
     "menu": {
       "value": "100",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "{z-index.100.value}"
       },
@@ -10909,7 +11020,7 @@
     "header": {
       "value": "200",
       "filePath": "tokens/layout/z-index.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": "{z-index.200.value}"
       },
@@ -10928,7 +11039,7 @@
     "pi": {
       "value": 3.141592653589793,
       "filePath": "tokens/math/math.json",
-      "isSource": true,
+      "isSource": false,
       "original": {
         "value": 3.141592653589793
       },
@@ -10948,7 +11059,7 @@
       "0": {
         "value": "0px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "0px"
         },
@@ -10967,7 +11078,7 @@
       "10": {
         "value": "1px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "1px"
         },
@@ -10986,7 +11097,7 @@
       "25": {
         "value": "2px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "2px"
         },
@@ -11005,7 +11116,7 @@
       "40": {
         "value": "3px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "3px"
         },
@@ -11024,7 +11135,7 @@
       "50": {
         "value": "4px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "4px"
         },
@@ -11043,7 +11154,7 @@
       "65": {
         "value": "5px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "5px"
         },
@@ -11062,7 +11173,7 @@
       "75": {
         "value": "6px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "6px"
         },
@@ -11081,7 +11192,7 @@
       "85": {
         "value": "7px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "7px"
         },
@@ -11101,7 +11212,7 @@
         "value": "8px",
         "comment": "base size",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "8px",
           "comment": "base size"
@@ -11121,7 +11232,7 @@
       "115": {
         "value": "9px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "9px"
         },
@@ -11140,7 +11251,7 @@
       "125": {
         "value": "10px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "10px"
         },
@@ -11159,7 +11270,7 @@
       "130": {
         "value": "11px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "11px"
         },
@@ -11178,7 +11289,7 @@
       "150": {
         "value": "12px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "12px"
         },
@@ -11197,7 +11308,7 @@
       "160": {
         "value": "13px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "13px"
         },
@@ -11216,7 +11327,7 @@
       "175": {
         "value": "14px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "14px"
         },
@@ -11235,7 +11346,7 @@
       "200": {
         "value": "16px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "16px"
         },
@@ -11254,7 +11365,7 @@
       "225": {
         "value": "18px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "18px"
         },
@@ -11273,7 +11384,7 @@
       "250": {
         "value": "20px",
         "filePath": "tokens/size/base.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "20px"
         },
@@ -11295,7 +11406,7 @@
         "small": {
           "value": 0.0625,
           "filePath": "tokens/size/border.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": 0.0625
           },
@@ -11316,7 +11427,7 @@
         "medium": {
           "value": 0.125,
           "filePath": "tokens/size/border.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": 0.125
           },
@@ -11337,7 +11448,7 @@
         "large": {
           "value": 0.25,
           "filePath": "tokens/size/border.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": 0.25
           },
@@ -11360,7 +11471,7 @@
         "small": {
           "value": 0.25,
           "filePath": "tokens/size/border.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": 0.25
           },
@@ -11381,7 +11492,7 @@
         "medium": {
           "value": 1,
           "filePath": "tokens/size/border.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": 1
           },
@@ -11402,7 +11513,7 @@
         "large": {
           "value": 3,
           "filePath": "tokens/size/border.json",
-          "isSource": true,
+          "isSource": false,
           "original": {
             "value": 3
           },
@@ -11428,7 +11539,7 @@
       "50": {
         "value": "11px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "11px"
         },
@@ -11447,7 +11558,7 @@
       "75": {
         "value": "12px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "12px"
         },
@@ -11467,7 +11578,7 @@
         "value": "14px",
         "comment": "base size",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "14px",
           "comment": "base size"
@@ -11487,7 +11598,7 @@
       "200": {
         "value": "16px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "16px"
         },
@@ -11506,7 +11617,7 @@
       "300": {
         "value": "18px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "18px"
         },
@@ -11525,7 +11636,7 @@
       "400": {
         "value": "20px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "20px"
         },
@@ -11544,7 +11655,7 @@
       "500": {
         "value": "22px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "22px"
         },
@@ -11563,7 +11674,7 @@
       "600": {
         "value": "25px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "25px"
         },
@@ -11582,7 +11693,7 @@
       "700": {
         "value": "28px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "28px"
         },
@@ -11601,7 +11712,7 @@
       "800": {
         "value": "32px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "32px"
         },
@@ -11620,7 +11731,7 @@
       "900": {
         "value": "36px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "36px"
         },
@@ -11639,7 +11750,7 @@
       "1000": {
         "value": "40px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "40px"
         },
@@ -11658,7 +11769,7 @@
       "1100": {
         "value": "45px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "45px"
         },
@@ -11677,7 +11788,7 @@
       "1200": {
         "value": "50px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "50px"
         },
@@ -11696,7 +11807,7 @@
       "1300": {
         "value": "60px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "60px"
         },
@@ -11715,7 +11826,7 @@
       "h1": {
         "value": "32px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.800.value}"
         },
@@ -11734,7 +11845,7 @@
       "h2": {
         "value": "28px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.700.value}"
         },
@@ -11753,7 +11864,7 @@
       "h3": {
         "value": "25px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.600.value}"
         },
@@ -11772,7 +11883,7 @@
       "h4": {
         "value": "22px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.500.value}"
         },
@@ -11791,7 +11902,7 @@
       "h5": {
         "value": "20px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.400.value}"
         },
@@ -11810,7 +11921,7 @@
       "h6": {
         "value": "18px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.300.value}"
         },
@@ -11829,7 +11940,7 @@
       "small": {
         "value": "11px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.50.value}"
         },
@@ -11848,7 +11959,7 @@
       "medium": {
         "value": "14px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.100.value}"
         },
@@ -11867,7 +11978,7 @@
       "large": {
         "value": "18px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.300.value}"
         },
@@ -11886,7 +11997,7 @@
       "extra-large": {
         "value": "22px",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{font.size.500.value}"
         },
@@ -11907,7 +12018,7 @@
       "thin": {
         "value": "100",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "100"
         },
@@ -11926,7 +12037,7 @@
       "light": {
         "value": "300",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "300"
         },
@@ -11945,7 +12056,7 @@
       "regular": {
         "value": "400",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "400"
         },
@@ -11964,7 +12075,7 @@
       "medium": {
         "value": "500",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "500"
         },
@@ -11983,7 +12094,7 @@
       "semibold": {
         "value": "600",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "600"
         },
@@ -12002,7 +12113,7 @@
       "bold": {
         "value": "700",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "700"
         },
@@ -12021,7 +12132,7 @@
       "extrabold": {
         "value": "800",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "800"
         },
@@ -12040,7 +12151,7 @@
       "black": {
         "value": "900",
         "filePath": "tokens/size/font.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "900"
         },
@@ -12063,7 +12174,7 @@
       "xs": {
         "value": "8px",
         "filePath": "tokens/size/padding.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.size.xs.value}"
         },
@@ -12082,7 +12193,7 @@
       "small": {
         "value": "12px",
         "filePath": "tokens/size/padding.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.size.sm.value}"
         },
@@ -12101,7 +12212,7 @@
       "medium": {
         "value": "16px",
         "filePath": "tokens/size/padding.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.size.md.value}"
         },
@@ -12120,7 +12231,7 @@
       "large": {
         "value": "20px",
         "filePath": "tokens/size/padding.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.size.lg.value}"
         },
@@ -12139,7 +12250,7 @@
       "xl": {
         "value": "24px",
         "filePath": "tokens/size/padding.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.size.xl.value}"
         },
@@ -12158,7 +12269,7 @@
       "xxl": {
         "value": "32px",
         "filePath": "tokens/size/padding.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "{spacing.size.xxl.value}"
         },
@@ -12181,7 +12292,7 @@
       "100": {
         "value": "130ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "130ms"
         },
@@ -12200,7 +12311,7 @@
       "200": {
         "value": "160ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "160ms"
         },
@@ -12219,7 +12330,7 @@
       "300": {
         "value": "190ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "190ms"
         },
@@ -12238,7 +12349,7 @@
       "400": {
         "value": "220ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "220ms"
         },
@@ -12257,7 +12368,7 @@
       "500": {
         "value": "250ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "250ms"
         },
@@ -12276,7 +12387,7 @@
       "600": {
         "value": "300ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "300ms"
         },
@@ -12295,7 +12406,7 @@
       "700": {
         "value": "350ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "350ms"
         },
@@ -12314,7 +12425,7 @@
       "800": {
         "value": "400ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "400ms"
         },
@@ -12333,7 +12444,7 @@
       "900": {
         "value": "450ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "450ms"
         },
@@ -12352,7 +12463,7 @@
       "1000": {
         "value": "500ms",
         "filePath": "tokens/time/duration.json",
-        "isSource": true,
+        "isSource": false,
         "original": {
           "value": "500ms"
         },
