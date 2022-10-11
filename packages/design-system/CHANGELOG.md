@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 2.2.1
+
+### Patch Changes
+
+- support dark theme
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.2.1
+
 ## 2.2.6
 
 ### Patch Changes

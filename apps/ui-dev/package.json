@@ -19,7 +19,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elf-framework/base-editor": "^2.1.7",
     "@elf-framework/color": "*",
     "@elf-framework/design-system": "*",
     "@elf-framework/design-tokens": "*",
