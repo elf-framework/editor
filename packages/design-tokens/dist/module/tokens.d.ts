@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 03:09:36 GMT
+ * Generated on Wed, 12 Oct 2022 12:27:06 GMT
  */
 
 export default tokens;
@@ -545,6 +545,13 @@ declare const tokens: {
       }
     }
   },
+  "color-mixer": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      }
+    }
+  },
   "dialog": {
     "color": {
       "background": {
@@ -613,6 +620,13 @@ declare const tokens: {
     },
     "shadow": {
       "default": DesignToken
+    }
+  },
+  "option-menu": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      }
     }
   },
   "panel": {

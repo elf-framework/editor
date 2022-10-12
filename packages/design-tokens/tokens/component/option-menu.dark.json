@@ -1,0 +1,11 @@
+{
+  "option-menu": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.0.value}"
+        }
+      }
+    }
+  }
+}

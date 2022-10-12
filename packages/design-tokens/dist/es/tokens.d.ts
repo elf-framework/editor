@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 03:09:36 GMT
+ * Generated on Wed, 12 Oct 2022 12:27:06 GMT
  */
 
 export const ImageLogo : string;
@@ -378,6 +378,7 @@ export const CardColorTextDefault : string;
 export const CardColorBorderDefault : string;
 export const CardColorBorderSelected : string;
 export const CheckboxColorBackgroundDark : string;
+export const ColorMixerColorBackgroundDefault : string;
 export const DialogColorBackgroundDefault : string;
 export const DialogColorTextDefault : string;
 export const DialogColorBorderDefault : string;
@@ -400,6 +401,7 @@ export const MenuColorBackgroundHoverDefault : string;
 export const MenuColorTextDefault : string;
 export const MenuColorBorderDefault : string;
 export const MenuShadowDefault : string;
+export const OptionMenuColorBackgroundDefault : string;
 export const PanelColorBackgroundDefault : string;
 export const PanelColorTextDefault : string;
 export const PanelColorBorderDefault : string;

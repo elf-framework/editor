@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 03:09:37 GMT
+ * Generated on Wed, 12 Oct 2022 12:27:06 GMT
  */
 
 :root {
@@ -324,6 +324,7 @@
   --progressbar-color-active: var(--color-gray-9);
   --progressbar-color-background-default: var(--color-gray-2);
   --panel-color-border-default: #2c353d;
+  --option-menu-color-background-default: var(--color-white);
   --menu-color-border-default: #2c353d;
   --input-color-border-default: var(--color-gray-2);
   --input-color-background-default: var(--color-white);
@@ -333,6 +334,7 @@
   --divider-color-border-default: var(--color-gray-2);
   --dialog-color-border-default: #2c353d;
   --dialog-color-background-default: var(--color-white);
+  --color-mixer-color-background-default: var(--color-white);
   --card-color-border-default: var(--color-gray-2);
   --card-color-background-selected: var(--color-blue-0);
   --card-color-background-default: var(--color-white);

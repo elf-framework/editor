@@ -66,6 +66,7 @@ export class ColorInput extends UIElement {
       <div class="color-input">
         <OptionMenu
           autoPosition={true}
+          quiet
           menuStyle={{
             width: 80,
             itemPadding: "10px",

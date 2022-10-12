@@ -1,0 +1,11 @@
+{
+  "color-mixer": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white.value}"
+        }
+      }
+    }
+  }
+}

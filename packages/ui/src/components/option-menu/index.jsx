@@ -1,4 +1,11 @@
-import { CLICK, Dom, IF, UIElement } from "@elf-framework/sapa";
+import {
+  classnames,
+  CLICK,
+  Dom,
+  IF,
+  UIElement,
+  useMemo,
+} from "@elf-framework/sapa";
 
 import { ArrowIcon } from "../../icon/arrow";
 import { registerComponent } from "../../utils/component";
@@ -10,14 +17,22 @@ export class OptionMenu extends UIElement {
       icon,
       content,
       items,
+      quiet,
       menuStyle = {},
       disabled = undefined,
       autoPosition = false,
     } = this.props;
     const { isOpen } = this.state;
     const showMenu = isOpen && items;
+
+    const localClass = useMemo(() => {
+      return classnames("elf--option-menu", {
+        quiet,
+      });
+    }, [quiet]);
+
     return (
-      <div class="elf--option-menu" disabled={disabled}>
+      <div class={localClass} disabled={disabled}>
         <div
           class="content"
           onClick={() => {

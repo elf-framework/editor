@@ -1,13 +1,12 @@
 .elf--color-mixer {
     --elf--color-mixer-width: 240px;
     --elf--color-mixer-height: 240px;
-    --elf--color-mixer-background-color: var(--color-white);
+    --elf--color-mixer-background-color: var(--color-mixer-color-background-default);
     --elf--color-mixer-opacity-size: 16px;
     --elf--color-mixer-opacity-pattern-size: 6px;
     --elf--color-mixer-opacity-pattern-color-1: #FFFFFF;
     --elf--color-mixer-opacity-pattern-color-2: #ececec;
     --elf--color-mixer-disabled-color: var(--color-gray-4);
-
     display: inline-block;
     background-color: var(--elf--color-mixer-background-color);
 
@@ -91,7 +90,7 @@
                 border:0px;
                 display: inline-block;
 
-                color: black;
+                color: var(--color-gray-9);
             }
         }
 

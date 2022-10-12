@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 2.2.1
+
+### Patch Changes
+
+- update dark theme
+
 ## 0.0.7
 
 ### Patch Changes

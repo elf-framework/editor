@@ -1,6 +1,6 @@
 {
   "name": "create-sapa-app",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "description": "initialize sapa app template ",
   "main": "index.js",
   "type": "module",

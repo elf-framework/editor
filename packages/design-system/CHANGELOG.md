@@ -4,6 +4,15 @@
 
 ### Patch Changes
 
+- update dark theme
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@2.2.1
+
+## 2.2.1
+
+### Patch Changes
+
 - support dark theme
 
 - Updated dependencies []:

@@ -528,6 +528,13 @@
       }
     }
   },
+  "color-mixer": {
+    "color": {
+      "background": {
+        "default": "#181818"
+      }
+    }
+  },
   "dialog": {
     "color": {
       "background": {
@@ -599,6 +606,13 @@
     },
     "shadow": {
       "default": "0px 0px 0px 1px rgba(72, 72, 72, 1)"
+    }
+  },
+  "option-menu": {
+    "color": {
+      "background": {
+        "default": "#181818"
+      }
     }
   },
   "panel": {

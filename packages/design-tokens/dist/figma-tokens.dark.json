@@ -3590,8 +3590,8 @@
       "title": {
         "default": {
           "value": "{color.gray.9}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.9}"
           },
@@ -3610,8 +3610,8 @@
         },
         "primary": {
           "value": "{color.blue.8}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.blue.8}"
           },
@@ -3630,8 +3630,8 @@
         },
         "secondary": {
           "value": "{color.white}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.white}"
           },
@@ -3651,8 +3651,8 @@
         "danger": {
           "value": "{color.red.7}",
           "comment": "Base color for the danger color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.red.7}",
             "comment": "Base color for the danger color"
@@ -3673,8 +3673,8 @@
         "warning": {
           "value": "{color.yellow.5}",
           "comment": "Base color for the warning color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.yellow.5}",
             "comment": "Base color for the warning color"
@@ -3695,8 +3695,8 @@
         "success": {
           "value": "{color.green.7}",
           "comment": "Base color for the success color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.green.7}",
             "comment": "Base color for the success color"
@@ -3717,8 +3717,8 @@
         "info": {
           "value": "{color.blue.5}",
           "comment": "Base color for the info color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.blue.5}",
             "comment": "Base color for the info color"
@@ -3739,8 +3739,8 @@
         "weak": {
           "default": {
             "value": "{color.gray.4}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.gray.4}"
             },
@@ -3761,8 +3761,8 @@
           },
           "primary": {
             "value": "{color.blue.4}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.blue.4}"
             },
@@ -3783,8 +3783,8 @@
           },
           "secondary": {
             "value": "{color.gray.4}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.gray.4}"
             },
@@ -3806,8 +3806,8 @@
           "danger": {
             "value": "{color.red.4}",
             "comment": "Base color for the danger color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.red.4}",
               "comment": "Base color for the danger color"
@@ -3830,8 +3830,8 @@
           "warning": {
             "value": "{color.orange.4}",
             "comment": "Base color for the warning color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.orange.4}",
               "comment": "Base color for the warning color"
@@ -3854,8 +3854,8 @@
           "success": {
             "value": "{color.green.4}",
             "comment": "Base color for the success color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.green.4}",
               "comment": "Base color for the success color"
@@ -3878,8 +3878,8 @@
           "info": {
             "value": "{color.blue.4}",
             "comment": "Base color for the info color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.blue.4}",
               "comment": "Base color for the info color"
@@ -3904,8 +3904,8 @@
       "content": {
         "default": {
           "value": "{color.gray.9}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.9}"
           },
@@ -3924,8 +3924,8 @@
         },
         "dark": {
           "value": "{color.white}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.white}"
           },
@@ -3944,8 +3944,8 @@
         },
         "primary": {
           "value": "{color.blue.1}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.blue.1}"
           },
@@ -3964,8 +3964,8 @@
         },
         "secondary": {
           "value": "{color.gray.1}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.1}"
           },
@@ -3985,8 +3985,8 @@
         "danger": {
           "value": "{color.red.1}",
           "comment": "Base color for the danger color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.red.1}",
             "comment": "Base color for the danger color"
@@ -4007,8 +4007,8 @@
         "warning": {
           "value": "{color.white}",
           "comment": "Base color for the warning color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.white}",
             "comment": "Base color for the warning color"
@@ -4029,8 +4029,8 @@
         "success": {
           "value": "{color.white}",
           "comment": "Base color for the success color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.white}",
             "comment": "Base color for the success color"
@@ -4051,8 +4051,8 @@
         "info": {
           "value": "{color.white}",
           "comment": "Base color for the info color",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.white}",
             "comment": "Base color for the info color"
@@ -4073,8 +4073,8 @@
         "weak": {
           "default": {
             "value": "{color.gray.3}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.gray.3}"
             },
@@ -4095,8 +4095,8 @@
           },
           "primary": {
             "value": "{color.blue.3}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.blue.3}"
             },
@@ -4117,8 +4117,8 @@
           },
           "secondary": {
             "value": "{color.gray.3}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.gray.3}"
             },
@@ -4140,8 +4140,8 @@
           "danger": {
             "value": "{color.red.3}",
             "comment": "Base color for the danger color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.red.3}",
               "comment": "Base color for the danger color"
@@ -4164,8 +4164,8 @@
           "warning": {
             "value": "{color.orange.3}",
             "comment": "Base color for the warning color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.orange.3}",
               "comment": "Base color for the warning color"
@@ -4188,8 +4188,8 @@
           "success": {
             "value": "{color.green.3}",
             "comment": "Base color for the success color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.green.3}",
               "comment": "Base color for the success color"
@@ -4212,8 +4212,8 @@
           "info": {
             "value": "{color.blue.5}",
             "comment": "Base color for the info color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.blue.5}",
               "comment": "Base color for the info color"
@@ -4238,8 +4238,8 @@
       "background": {
         "default": {
           "value": "{color.gray.0}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.0}"
           },
@@ -4258,8 +4258,8 @@
         },
         "dark": {
           "value": "{color.gray.9}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.9}"
           },
@@ -4278,8 +4278,8 @@
         },
         "primary": {
           "value": "{color.primary}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.primary}"
           },
@@ -4298,8 +4298,8 @@
         },
         "secondary": {
           "value": "{color.secondary}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.secondary}"
           },
@@ -4318,8 +4318,8 @@
         },
         "success": {
           "value": "{color.success}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.success}"
           },
@@ -4338,8 +4338,8 @@
         },
         "info": {
           "value": "{color.info}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.info}"
           },
@@ -4358,8 +4358,8 @@
         },
         "warning": {
           "value": "{color.warning}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.warning}"
           },
@@ -4378,8 +4378,8 @@
         },
         "danger": {
           "value": "{color.danger}",
-          "filePath": "tokens/component/alert.json",
-          "isSource": false,
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.danger}"
           },
@@ -4399,8 +4399,8 @@
         "weak": {
           "default": {
             "value": "{color.gray.1}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.gray.1}"
             },
@@ -4421,8 +4421,8 @@
           },
           "primary": {
             "value": "{color.blue.1}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.blue.1}"
             },
@@ -4443,8 +4443,8 @@
           },
           "secondary": {
             "value": "{color.gray.1}",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.gray.1}"
             },
@@ -4466,8 +4466,8 @@
           "danger": {
             "value": "{color.red.1}",
             "comment": "Base color for the danger color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.red.1}",
               "comment": "Base color for the danger color"
@@ -4490,8 +4490,8 @@
           "warning": {
             "value": "{color.orange.1}",
             "comment": "Base color for the warning color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.orange.1}",
               "comment": "Base color for the warning color"
@@ -4514,8 +4514,8 @@
           "success": {
             "value": "{color.green.1}",
             "comment": "Base color for the success color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "{color.green.1}",
               "comment": "Base color for the success color"
@@ -4538,8 +4538,8 @@
           "info": {
             "value": "#e2f4ff",
             "comment": "Base color for the info color",
-            "filePath": "tokens/component/alert.json",
-            "isSource": false,
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
             "original": {
               "value": "#e2f4ff",
               "comment": "Base color for the info color"
@@ -7557,6 +7557,32 @@
       }
     }
   },
+  "color-mixer": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.0}",
+          "filePath": "tokens/component/color-mixer.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.0}"
+          },
+          "attributes": {
+            "category": "color-mixer",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "color-mixer",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      }
+    }
+  },
   "dialog": {
     "color": {
       "background": {
@@ -8063,6 +8089,32 @@
           "0": "menu",
           "1": "shadow",
           "2": "default"
+        }
+      }
+    }
+  },
+  "option-menu": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.0}",
+          "filePath": "tokens/component/option-menu.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.0}"
+          },
+          "attributes": {
+            "category": "option-menu",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "option-menu",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
         }
       }
     }

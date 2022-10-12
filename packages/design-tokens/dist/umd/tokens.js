@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 03:09:36 GMT
+ * Generated on Wed, 12 Oct 2022 12:27:06 GMT
  */
 
 (function(root, factory) {
@@ -7866,6 +7866,33 @@
       }
     }
   },
+  "color-mixer": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/color-mixer.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ColorMixerColorBackgroundDefault",
+          "attributes": {
+            "category": "color-mixer",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "color-mixer",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      }
+    }
+  },
   "dialog": {
     "color": {
       "background": {
@@ -8371,6 +8398,33 @@
           "shadow",
           "default"
         ]
+      }
+    }
+  },
+  "option-menu": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/option-menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "OptionMenuColorBackgroundDefault",
+          "attributes": {
+            "category": "option-menu",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "option-menu",
+            "color",
+            "background",
+            "default"
+          ]
+        }
       }
     }
   },

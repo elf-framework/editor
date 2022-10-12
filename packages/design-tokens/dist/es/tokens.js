@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 03:09:36 GMT
+ * Generated on Wed, 12 Oct 2022 12:27:06 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -378,6 +378,7 @@ export const CardColorTextDefault = "#2c353d";
 export const CardColorBorderDefault = "#d9e0e6";
 export const CardColorBorderSelected = "#1273e6";
 export const CheckboxColorBackgroundDark = "#2c353d";
+export const ColorMixerColorBackgroundDefault = "#ffffff";
 export const DialogColorBackgroundDefault = "#ffffff";
 export const DialogColorTextDefault = "#2c353d";
 export const DialogColorBorderDefault = "#2c353d";
@@ -400,6 +401,7 @@ export const MenuColorBackgroundHoverDefault = "#f8f8f8";
 export const MenuColorTextDefault = "#2c353d";
 export const MenuColorBorderDefault = "#2c353d";
 export const MenuShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
+export const OptionMenuColorBackgroundDefault = "#ffffff";
 export const PanelColorBackgroundDefault = "#ffffff";
 export const PanelColorTextDefault = "#2c353d";
 export const PanelColorBorderDefault = "#2c353d";

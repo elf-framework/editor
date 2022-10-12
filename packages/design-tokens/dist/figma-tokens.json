@@ -7475,6 +7475,32 @@
       }
     }
   },
+  "color-mixer": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white}",
+          "filePath": "tokens/component/color-mixer.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white}"
+          },
+          "attributes": {
+            "category": "color-mixer",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "color-mixer",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      }
+    }
+  },
   "dialog": {
     "color": {
       "background": {
@@ -7957,6 +7983,32 @@
           "0": "menu",
           "1": "shadow",
           "2": "default"
+        }
+      }
+    }
+  },
+  "option-menu": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white}",
+          "filePath": "tokens/component/option-menu.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white}"
+          },
+          "attributes": {
+            "category": "option-menu",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "option-menu",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
         }
       }
     }

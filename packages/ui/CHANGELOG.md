@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 2.2.1
+
+### Patch Changes
+
+- update dark theme
+
+- Updated dependencies []:
+  - @elf-framework/design-system@2.2.1
+
 ## 0.0.7
 
 ### Patch Changes

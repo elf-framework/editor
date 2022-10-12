@@ -4,7 +4,7 @@
     --elf--option-menu-hover-border-color: var(--color-gray-3);
     --elf--option-menu-outline-color: transparent;
     --elf--option-menu-border-radius: 1px;
-    --elf--option-menu-background-color: var(--color-white);
+    --elf--option-menu-background-color: var(--option-menu-color-background-default);
     --elf--option-menu-color: black;
     --elf--option-menu-font-size: 14px;
     --elf--option-menu-empty-color: var(--color-gray-7);
@@ -21,6 +21,10 @@
     display: flex;
     // background-color: var(--elf--option-menu-background-color);
     position: relative;
+
+    &.quiet {
+        border-width: 0px;
+    }
 
     &:hover,
     &.hover {

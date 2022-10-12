@@ -1,0 +1,176 @@
+{
+  "alert": {
+    "color": {
+      "title": {
+        "default": {
+          "value": "{color.gray.9.value}"
+        },
+        "primary": {
+          "value": "{color.blue.8.value}"
+        },
+        "secondary": {
+          "value": "{color.white.value}"
+        },
+
+        "danger": {
+          "value": "{color.red.7.value}",
+          "comment": "Base color for the danger color"
+        },
+        "warning": {
+          "value": "{color.yellow.5.value}",
+          "comment": "Base color for the warning color"
+        },
+        "success": {
+          "value": "{color.green.7.value}",
+          "comment": "Base color for the success color"
+        },
+        "info": {
+          "value": "{color.blue.5.value}",
+          "comment": "Base color for the info color"
+        },
+        "weak": {
+          "default": {
+            "value": "{color.gray.4.value}"
+          },
+          "primary": {
+            "value": "{color.blue.4.value}"
+          },
+          "secondary": {
+            "value": "{color.gray.4.value}"
+          },
+
+          "danger": {
+            "value": "{color.red.4.value}",
+            "comment": "Base color for the danger color"
+          },
+          "warning": {
+            "value": "{color.orange.4.value}",
+            "comment": "Base color for the warning color"
+          },
+          "success": {
+            "value": "{color.green.4.value}",
+            "comment": "Base color for the success color"
+          },
+          "info": {
+            "value": "{color.blue.4.value}",
+            "comment": "Base color for the info color"
+          }
+        }
+      },
+      "content": {
+        "default": {
+          "value": "{color.gray.9.value}"
+        },
+        "dark": {
+          "value": "{color.white.value}"
+        },        
+        "primary": {
+          "value": "{color.blue.1.value}"
+        },
+        "secondary": {
+          "value": "{color.gray.1.value}"
+        },
+
+        "danger": {
+          "value": "{color.red.1.value}",
+          "comment": "Base color for the danger color"
+        },
+        "warning": {
+          "value": "{color.white.value}",
+          "comment": "Base color for the warning color"
+        },
+        "success": {
+          "value": "{color.white.value}",
+          "comment": "Base color for the success color"
+        },
+        "info": {
+          "value": "{color.white.value}",
+          "comment": "Base color for the info color"
+        },
+        "weak": {
+          "default": {
+            "value": "{color.gray.3.value}"
+          },
+          "primary": {
+            "value": "{color.blue.3.value}"
+          },
+          "secondary": {
+            "value": "{color.gray.3.value}"
+          },
+
+          "danger": {
+            "value": "{color.red.3.value}",
+            "comment": "Base color for the danger color"
+          },
+          "warning": {
+            "value": "{color.orange.3.value}",
+            "comment": "Base color for the warning color"
+          },
+          "success": {
+            "value": "{color.green.3.value}",
+            "comment": "Base color for the success color"
+          },
+          "info": {
+            "value": "{color.blue.5.value}",
+            "comment": "Base color for the info color"
+          }
+        }
+      },
+      "background": {
+        "default": {
+          "value": "{color.gray.0.value}"
+        },
+        "dark": {
+          "value": "{color.gray.9.value}"
+        },        
+        "primary": {
+          "value": "{color.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.secondary.value}"
+        },
+        "success": {
+          "value": "{color.success.value}"
+        },
+        "info": {
+          "value": "{color.info.value}"
+        },
+        "warning": {
+          "value": "{color.warning.value}"
+        },
+        "danger": {
+          "value": "{color.danger.value}"
+        },
+
+        "weak": {
+          "default": {
+            "value": "{color.gray.1.value}"
+          },
+          "primary": {
+            "value": "{color.blue.1.value}"
+          },
+          "secondary": {
+            "value": "{color.gray.1.value}"
+          },
+
+          "danger": {
+            "value": "{color.red.1.value}",
+            "comment": "Base color for the danger color"
+          },
+          "warning": {
+            "value": "{color.orange.1.value}",
+            "comment": "Base color for the warning color"
+          },
+          "success": {
+            "value": "{color.green.1.value}",
+            "comment": "Base color for the success color"
+          },
+          "info": {
+            "value": "#e2f4ff",
+            "comment": "Base color for the info color"
+          }
+        }
+      }
+    }
+  }
+}
