@@ -68,10 +68,10 @@ export function ProjectItem({
               textAlign: "center",
             }}
           >
-            <Button as="link" href={docLink} size="large">
+            <Button as="link" outline href={docLink} size="large">
               {docLinkText}
             </Button>
-            <Button as="link" href={codeLink} size="large">
+            <Button as="link" outline href={codeLink} size="large">
               {codeLinkText}
             </Button>
           </ActionGroup>
