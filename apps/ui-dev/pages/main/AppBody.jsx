@@ -5,9 +5,13 @@ import Page from "./page.mdx";
 import "./page.scss";
 
 export function AppBody() {
+  const template = Page();
+
+  console.log(template.children);
+
   return (
     <BlankLayout>
-      <Page />
+      <div>{template.children || template}</div>
     </BlankLayout>
   );
 }

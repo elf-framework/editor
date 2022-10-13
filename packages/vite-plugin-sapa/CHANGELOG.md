@@ -1,5 +1,17 @@
 # vite-plugin-sapa
 
+## 0.0.10
+
+### Patch Changes
+
+- add flatTemplate function
+
+## 0.0.9
+
+### Patch Changes
+
+- modify fragment children to array
+
 ## 2.2.0
 
 ### Minor Changes

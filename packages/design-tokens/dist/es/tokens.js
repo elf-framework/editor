@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 12:27:06 GMT
+ * Generated on Thu, 13 Oct 2022 12:04:22 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -365,6 +365,8 @@ export const ButtonActiveTextDefault = "#ffffff";
 export const ButtonActiveTextPrimary = "#ffffff";
 export const ButtonActiveTextSecondary = "#ffffff";
 export const ButtonActiveTextSuccess = "#ffffff";
+export const ButtonColorBackgroundDefault = "#ffffff";
+export const ButtonColorBorderDefault = "#c5ced6";
 export const ButtonClosableHoverBackgroundDefault = "#ffffff";
 export const ButtonDisabledBackgroundDefault = "#d9e0e6";
 export const ButtonDisabledBorderDefault = "#d9e0e6";

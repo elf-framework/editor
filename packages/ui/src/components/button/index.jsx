@@ -95,7 +95,7 @@ export class Button extends UIElement {
       <span>
         {pending ? (
           <Animation.spin play={play}>
-            <ProgressCircle value={50} size={size} variant={variant} />
+            <ProgressCircle value={80} size={size} variant={variant} />
           </Animation.spin>
         ) : (
           content || ""

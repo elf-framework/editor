@@ -106,7 +106,7 @@ export function MarkdownPage({ page: Page, filename, menu }) {
         <div class="content-container">
           <FileEditorLink filename={filename} />
           <div class="content-inner" ref="$inner">
-            {template}
+            {template.children || template}
           </div>
           <Divider margin={100} />
           <LinkedPage menu={menu} />

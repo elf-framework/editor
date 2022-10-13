@@ -125,11 +125,11 @@ if (import.meta.hot) {
   import.meta.hot.accept((m) => {
     console.log("hot reload");
     setGlobalForceRender(true);
-    renderFromRoot();
+
 
     setTimeout(() => {
-      setGlobalForceRender(false);
-    }, 500);
+      renderFromRoot();
+    }, 30);
   });
 }
         `;

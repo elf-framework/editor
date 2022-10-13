@@ -773,7 +773,7 @@ var __privateMethod = (obj, member, method) => {
       const buttonContent = /* @__PURE__ */ sapa.createElementJsx("span", null, pending ? /* @__PURE__ */ sapa.createElementJsx(Animation.spin, {
         play
       }, /* @__PURE__ */ sapa.createElementJsx(ProgressCircle, {
-        value: 50,
+        value: 80,
         size,
         variant
       })) : content || "");
@@ -1952,13 +1952,18 @@ var __privateMethod = (obj, member, method) => {
         class: className = "",
         content,
         stack,
-        wrap = false
+        wrap = false,
+        sameWidth = false
       } = this.props;
-      const styleObject = {
-        class: sapa.classnames("elf--flex", className, {
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf--flex", className, {
           stack,
-          wrap
-        }),
+          wrap,
+          "same-width": sameWidth
+        });
+      }, [className, stack, wrap, sameWidth]);
+      const styleObject = {
+        class: localClass,
         style: {
           ...propertyMap(style2, {})
         }
@@ -5684,7 +5689,7 @@ var __privateMethod = (obj, member, method) => {
   });
   class Ghost extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, animated = false } = this.props;
+      const { style: style2 = {}, animated = false, content } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--ghost", {
           animated
@@ -5701,9 +5706,15 @@ var __privateMethod = (obj, member, method) => {
           )
         }
       };
-      return /* @__PURE__ */ sapa.createElementJsx("div", {
-        ...styleObject
-      }, "\xA0");
+      if (content == null ? void 0 : content.length) {
+        return /* @__PURE__ */ sapa.createElementJsx("div", {
+          ...styleObject
+        }, content);
+      } else {
+        return /* @__PURE__ */ sapa.createElementJsx("div", {
+          ...styleObject
+        }, "\xA0");
+      }
     }
   }
   registerComponent("ghost", Ghost);

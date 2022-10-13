@@ -1,5 +1,18 @@
 {
   "button": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.white.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.3.value}"
+        }
+      }
+    },
+
     "closable": {
       "hover": {
         "background": {

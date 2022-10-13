@@ -21,7 +21,7 @@ export const data = [
   {
     title: "@elf-framework/color",
     npm: "@elf-framework/color",
-    description: "Elf color library",
+    description: "ELF color library",
     docLink: "https://www.elf-framework.com",
     codeLinkText: "Github",
     codeLink:
@@ -41,7 +41,7 @@ export const data = [
   {
     title: "@elf-framework/design-tokens",
     npm: "@elf-framework/design-tokens",
-    description: "Elf Design Tokens",
+    description: "ELF Design Tokens",
     docLink: "../pages/design-system/getting-started/index.html",
     codeLinkText: "Github",
     codeLink:
@@ -51,7 +51,7 @@ export const data = [
   {
     title: "@elf-framework/design-system",
     npm: "@elf-framework/design-system",
-    description: "Elf Design System",
+    description: "ELF Design System",
     docLink: "../pages/design-system/getting-started/index.html",
     codeLinkText: "Github",
     codeLink:

@@ -531,8 +531,6 @@ export class EventMachine extends HookMachine {
     const instance = this.getTargetInstance(this.$el?.el);
 
     if (instance) {
-      console.log(this.id, this.instance);
-
       instance.onUpdated();
     }
 

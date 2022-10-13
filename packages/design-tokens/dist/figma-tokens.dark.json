@@ -7260,15 +7260,61 @@
         }
       }
     },
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2}",
+          "filePath": "tokens/component/button/button.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "background",
+            "3": "default"
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.3}",
+          "filePath": "tokens/component/button/button.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.3}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": {
+            "0": "button",
+            "1": "color",
+            "2": "border",
+            "3": "default"
+          }
+        }
+      }
+    },
     "closable": {
       "hover": {
         "background": {
           "default": {
-            "value": "{color.transparent.black.1}",
-            "filePath": "tokens/component/button/button.dark.json",
-            "isSource": true,
+            "value": "{color.transparent.white.1}",
+            "filePath": "tokens/component/button/button.json",
+            "isSource": false,
             "original": {
-              "value": "{color.transparent.black.1}"
+              "value": "{color.transparent.white.1}"
             },
             "attributes": {
               "category": "button",

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 12:27:06 GMT
+ * Generated on Thu, 13 Oct 2022 12:04:22 GMT
  */
 
 export const ImageLogo : string;
@@ -365,6 +365,8 @@ export const ButtonActiveTextDefault : string;
 export const ButtonActiveTextPrimary : string;
 export const ButtonActiveTextSecondary : string;
 export const ButtonActiveTextSuccess : string;
+export const ButtonColorBackgroundDefault : string;
+export const ButtonColorBorderDefault : string;
 export const ButtonClosableHoverBackgroundDefault : string;
 export const ButtonDisabledBackgroundDefault : string;
 export const ButtonDisabledBorderDefault : string;

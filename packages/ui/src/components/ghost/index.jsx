@@ -13,7 +13,7 @@ const cssProperties = makeCssVariablePrefixMap("--elf--ghost", {
 
 export class Ghost extends UIElement {
   template() {
-    const { style = {}, animated = false } = this.props;
+    const { style = {}, animated = false, content } = this.props;
 
     const localClass = useMemo(() => {
       return classnames("elf--ghost", {
@@ -33,7 +33,11 @@ export class Ghost extends UIElement {
       },
     };
 
-    return <div {...styleObject}>&nbsp;</div>;
+    if (content?.length) {
+      return <div {...styleObject}>{content}</div>;
+    } else {
+      return <div {...styleObject}>&nbsp;</div>;
+    }
   }
 }
 

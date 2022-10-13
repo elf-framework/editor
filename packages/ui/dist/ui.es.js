@@ -771,7 +771,7 @@ class Button extends UIElement {
     const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, {
       play
     }, /* @__PURE__ */ createElementJsx(ProgressCircle, {
-      value: 50,
+      value: 80,
       size,
       variant
     })) : content || "");
@@ -1950,13 +1950,18 @@ class Flex extends UIElement {
       class: className = "",
       content,
       stack,
-      wrap = false
+      wrap = false,
+      sameWidth = false
     } = this.props;
-    const styleObject = {
-      class: classnames("elf--flex", className, {
+    const localClass = useMemo(() => {
+      return classnames("elf--flex", className, {
         stack,
-        wrap
-      }),
+        wrap,
+        "same-width": sameWidth
+      });
+    }, [className, stack, wrap, sameWidth]);
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(style2, {})
       }
@@ -5682,7 +5687,7 @@ const cssProperties$h = makeCssVariablePrefixMap("--elf--ghost", {
 });
 class Ghost extends UIElement {
   template() {
-    const { style: style2 = {}, animated = false } = this.props;
+    const { style: style2 = {}, animated = false, content } = this.props;
     const localClass = useMemo(() => {
       return classnames("elf--ghost", {
         animated
@@ -5699,9 +5704,15 @@ class Ghost extends UIElement {
         )
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, "\xA0");
+    if (content == null ? void 0 : content.length) {
+      return /* @__PURE__ */ createElementJsx("div", {
+        ...styleObject
+      }, content);
+    } else {
+      return /* @__PURE__ */ createElementJsx("div", {
+        ...styleObject
+      }, "\xA0");
+    }
   }
 }
 registerComponent("ghost", Ghost);

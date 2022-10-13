@@ -9,7 +9,7 @@
     --elf--ghost-background-color-1: var(--ghost-color-background-1);
     --elf--ghost-background-color-2: var(--ghost-color-background-2);
 
-    display: block;
+    display: flex;
     position: relative;
     width: var(--elf--ghost-width);
     height: var(--elf--ghost-height);
@@ -20,6 +20,8 @@
             var(--elf--ghost-background-color-1) 60%);
     background-size: 200% 100%;
     background-position-x: 180%;
+    align-items: center;
+    justify-content: center;
 
     &.quiet {
         --elf--ghost-border-radius: 0px;

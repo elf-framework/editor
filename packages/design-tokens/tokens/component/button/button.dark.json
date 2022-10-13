@@ -1,15 +1,17 @@
 {
   "button": {
-    "closable" : {
-      "hover": {
-        "background": {
-          "default": {
-            "value": "{color.transparent.black.1.value}"
-          }
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.3.value}"
         }
       }
-    }
-,
+    },
     "hover": {
       "background": {
         "default": {

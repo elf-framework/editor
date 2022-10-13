@@ -371,7 +371,12 @@ export class VNodeComponent extends VNode {
   }
 
   getModule() {
-    return getModule(this.Component);
+    if (this.Component.__timestamp) {
+      const a = getModule(this.Component);
+      return a;
+    }
+
+    return this.Component;
   }
 
   // 임의의 instance 를 설정한다.

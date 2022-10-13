@@ -1960,7 +1960,6 @@ var __privateMethod = (obj, member, method) => {
       super.onUpdated();
       const instance = this.getTargetInstance((_a = this.$el) == null ? void 0 : _a.el);
       if (instance) {
-        console.log(this.id, this.instance);
         instance.onUpdated();
       }
     }
@@ -2671,7 +2670,11 @@ var __privateMethod = (obj, member, method) => {
       (_a = this.instance) == null ? void 0 : _a.onUpdated();
     }
     getModule() {
-      return getModule(this.Component);
+      if (this.Component.__timestamp) {
+        const a = getModule(this.Component);
+        return a;
+      }
+      return this.Component;
     }
     setInstance(instance) {
       this.instance = instance;
@@ -3587,6 +3590,28 @@ var __privateMethod = (obj, member, method) => {
     });
     return rootList;
   }
+  function flatTemplate(template) {
+    let root = [template];
+    root = root.filter(Boolean).map((it) => {
+      var _a, _b;
+      if (it.type === VNodeType.FRAGMENT) {
+        return it.children.map(flatTemplate);
+      }
+      if (it.type === VNodeType.COMPONENT) {
+        it.children = (_a = it.children) == null ? void 0 : _a.map((child) => {
+          return flatTemplate(child);
+        }).flat(Infinity);
+        it.memoizedProps.content = it.children;
+      } else if (it.type === VNodeType.NODE) {
+        it.children = (_b = it.children) == null ? void 0 : _b.map((child) => {
+          return flatTemplate(child);
+        }).flat(Infinity);
+        it.memoizedProps.content = it.children;
+      }
+      return it;
+    }).flat(Infinity);
+    return root;
+  }
   function hasFragmentInList(list) {
     return list.some((it) => it.type === CHILD_ITEM_TYPE_FRAGMENT);
   }
@@ -3663,8 +3688,9 @@ var __privateMethod = (obj, member, method) => {
   }
   async function renderVNodeComponent(componentInstance, $container) {
     componentInstance.resetCurrentComponent();
-    const template = componentInstance.template();
-    if (isArray(template)) {
+    let template = componentInstance.template();
+    template = flatTemplate(template);
+    if (isArray(template) && template.length > 1) {
       throw new Error(
         [
           `Error Component - ${componentInstance.sourceName}`,
@@ -3675,10 +3701,11 @@ var __privateMethod = (obj, member, method) => {
         ].join("\n")
       );
     }
+    const rootTemplate = template[0];
     if (componentInstance.$el) {
-      await runningUpdate(componentInstance, template);
+      await runningUpdate(componentInstance, rootTemplate);
     } else {
-      await runningMount(componentInstance, template, $container);
+      await runningMount(componentInstance, rootTemplate, $container);
     }
     return componentInstance;
   }

@@ -480,10 +480,18 @@
         "warning": "#ffffff"
       }
     },
+    "color": {
+      "background": {
+        "default": "#484848"
+      },
+      "border": {
+        "default": "#686868"
+      }
+    },
     "closable": {
       "hover": {
         "background": {
-          "default": "#000000"
+          "default": "#ffffff"
         }
       }
     },

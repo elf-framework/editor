@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 12:27:06 GMT
+ * Generated on Thu, 13 Oct 2022 12:04:22 GMT
  */
 
 .theme-dark {
@@ -204,7 +204,8 @@
   --button-disabled-text-default: var(--color-gray-5);
   --button-disabled-border-default: var(--color-gray-2);
   --button-disabled-background-default: var(--color-gray-1);
-  --button-closable-hover-background-default: var(--color-transparent-black-1);
+  --button-color-border-default: var(--color-gray-3);
+  --button-color-background-default: var(--color-gray-2);
   --button-active-text-warning: var(--color-white);
   --button-active-text-success: var(--color-white);
   --button-active-text-secondary: var(--color-white);

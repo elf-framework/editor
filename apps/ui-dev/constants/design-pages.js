@@ -58,6 +58,10 @@ export default [
     title: "Containers",
     items: [
       {
+        link: COMPONENTS_URL + "containers/layouts/",
+        title: "Layout",
+      },
+      {
         link: COMPONENTS_URL + "containers/divider/",
         title: "Divider",
       },

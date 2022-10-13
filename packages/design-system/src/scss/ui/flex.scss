@@ -16,9 +16,10 @@
     &.wrap {
         flex-wrap: wrap;
     }
-    
-    > * {
-        flex: 1;
-    }
 
+    &.same-width {
+        > * {
+            flex: 1;
+        }
+    }
 }

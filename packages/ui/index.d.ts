@@ -835,6 +835,7 @@ declare module "@elf-framework/ui" {
     class?: string;
     stack?: boolean;
     wrap?: boolean;
+    sameWidth?: boolean;
     style?: FlexStyle & CommonStyle;
   }
 

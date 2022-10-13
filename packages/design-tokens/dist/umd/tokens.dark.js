@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 12 Oct 2022 12:27:06 GMT
+ * Generated on Thu, 13 Oct 2022 12:04:22 GMT
  */
 
 (function(root, factory) {
@@ -7642,15 +7642,63 @@
         }
       }
     },
+    "color": {
+      "background": {
+        "default": {
+          "value": "#484848",
+          "filePath": "tokens/component/button/button.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonColorBackgroundDefault",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#686868",
+          "filePath": "tokens/component/button/button.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.3.value}"
+          },
+          "name": "ButtonColorBorderDefault",
+          "attributes": {
+            "category": "button",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "button",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
     "closable": {
       "hover": {
         "background": {
           "default": {
-            "value": "#000000",
-            "filePath": "tokens/component/button/button.dark.json",
-            "isSource": true,
+            "value": "#ffffff",
+            "filePath": "tokens/component/button/button.json",
+            "isSource": false,
             "original": {
-              "value": "{color.transparent.black.1.value}"
+              "value": "{color.transparent.white.1.value}"
             },
             "name": "ButtonClosableHoverBackgroundDefault",
             "attributes": {

@@ -70,6 +70,50 @@ function collectFragmentList(element) {
   return rootList;
 }
 
+/**
+ * fragment 를 최대한 없애는 함수
+ *
+ * fragment.children 을 배열로 치환해서 일렬로 맞춘다.
+ *
+ * @param {*} template
+ * @returns
+ */
+function flatTemplate(template) {
+  let root = [template];
+
+  root = root
+    .filter(Boolean)
+    .map((it) => {
+      if (it.type === VNodeType.FRAGMENT) {
+        return it.children.map(flatTemplate);
+      }
+
+      if (it.type === VNodeType.COMPONENT) {
+        it.children = it.children
+          ?.map((child) => {
+            return flatTemplate(child);
+          })
+          .flat(Infinity);
+
+        // 실제로 dom 에 적용될 영역에 다시 넣는다.
+        it.memoizedProps.content = it.children;
+      } else if (it.type === VNodeType.NODE) {
+        it.children = it.children
+          ?.map((child) => {
+            return flatTemplate(child);
+          })
+          .flat(Infinity);
+        // 실제로 dom 에 적용될 영역에 다시 넣는다.
+        it.memoizedProps.content = it.children;
+      }
+
+      return it;
+    })
+    .flat(Infinity);
+
+  return root;
+}
+
 function hasFragmentInList(list) {
   return list.some((it) => it.type === CHILD_ITEM_TYPE_FRAGMENT);
 }
@@ -194,8 +238,12 @@ async function runningMount(componentInstance, template, $container) {
 export async function renderVNodeComponent(componentInstance, $container) {
   // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
   componentInstance.resetCurrentComponent();
-  const template = componentInstance.template();
-  if (isArray(template)) {
+  let template = componentInstance.template();
+
+  // fragment 로 들어오는 children 리스트를 일렬로 다룬다.
+  template = flatTemplate(template);
+
+  if (isArray(template) && template.length > 1) {
     throw new Error(
       [
         `Error Component - ${componentInstance.sourceName}`,
@@ -207,10 +255,12 @@ export async function renderVNodeComponent(componentInstance, $container) {
     );
   }
 
+  const rootTemplate = template[0];
+
   if (componentInstance.$el) {
-    await runningUpdate(componentInstance, template);
+    await runningUpdate(componentInstance, rootTemplate);
   } else {
-    await runningMount(componentInstance, template, $container);
+    await runningMount(componentInstance, rootTemplate, $container);
   }
 
   return componentInstance;
