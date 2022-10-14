@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [
@@ -21,7 +21,6 @@
     "@elf-framework/config": "*",
     "happy-dom": "^7.1.1",
     "vite": "^3.0.8",
-    "vite-plugin-replace": "^0.1.1",
     "vitest": "0.22.1"
   },
   "scripts": {

@@ -112,7 +112,6 @@ const patch = {
    *
    */
   makeComponent(oldEl, newVNode, options) {
-    // console.group("makeComponent", oldEl, newVNode);
     let oldInstance = oldEl[COMPONENT_INSTANCE];
 
     const isRootElement = options.context.$el?.el === oldEl;
@@ -146,7 +145,6 @@ const patch = {
         oldEl // 옛날 element 는 삭제하기
       );
     }
-    // console.groupEnd();
   },
 
   makeComponentForFragment(oldInstance, newVNode, options) {
@@ -403,10 +401,8 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
         isFunction(options.checkRefClass) &&
         options.checkRefClass(oldEl, newVNode)
       ) {
-        // console.group("updateChangedElement");
         // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
         patch.makeComponent(oldEl, newVNode, options);
-        // console.groupEnd();
       } else {
         // 컴포넌트 내부에서 다시 그리기를 한다.
         // noop
@@ -638,7 +634,6 @@ export function updateChildrenWithFragment(
  *
  */
 function updateElement(parentElement, oldEl, newVNode, options = {}) {
-  // console.group("updateElement", oldEl, newVNode);
   if (!newVNode && !oldEl) {
     return;
   }
@@ -671,7 +666,6 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
   if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
     updatePropertyAndChildren(oldEl, newVNode, options);
   }
-  // console.groupEnd();
 }
 
 function updateElementWithFragment(

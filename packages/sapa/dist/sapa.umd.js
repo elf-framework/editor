@@ -22,16 +22,14 @@ var __privateSet = (obj, member, value, setter) => {
   setter ? setter.call(obj, value) : member.set(obj, value);
   return value;
 };
-var __privateWrapper = (obj, member, setter, getter) => {
-  return {
-    set _(value) {
-      __privateSet(obj, member, value, setter);
-    },
-    get _() {
-      return __privateGet(obj, member, getter);
-    }
-  };
-};
+var __privateWrapper = (obj, member, setter, getter) => ({
+  set _(value) {
+    __privateSet(obj, member, value, setter);
+  },
+  get _() {
+    return __privateGet(obj, member, getter);
+  }
+});
 var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
@@ -2697,7 +2695,6 @@ var __privateMethod = (obj, member, method) => {
       const hooks = oldInstance == null ? void 0 : oldInstance.copyHooks();
       const state = oldInstance == null ? void 0 : oldInstance.state;
       const oldId = oldInstance == null ? void 0 : oldInstance.id;
-      const children2 = (oldInstance == null ? void 0 : oldInstance.children) || {};
       this.instance = createComponentInstance(
         newComponent,
         options.context,
@@ -2707,16 +2704,12 @@ var __privateMethod = (obj, member, method) => {
       if (oldId) {
         this.instance.setId(oldId);
       }
-      if (hooks && ((_a = hooks.__stateHooks) == null ? void 0 : _a.length) && isGlobalForceRender()) {
+      if (hooks && ((_a = hooks.__stateHooks) == null ? void 0 : _a.length)) {
         this.instance.reloadHooks(hooks);
       }
-      if (state && isGlobalForceRender()) {
+      if (state) {
         this.instance.setState(state, false);
       }
-      if (Object.keys(children2).length && isGlobalForceRender()) {
-        this.instance.setChildren(children2);
-      }
-      oldInstance == null ? void 0 : oldInstance.destroy();
       return this.instance;
     }
     template() {

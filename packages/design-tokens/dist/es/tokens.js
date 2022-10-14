@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 13 Oct 2022 12:04:22 GMT
+ * Generated on Fri, 14 Oct 2022 08:49:44 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -383,7 +383,7 @@ export const CheckboxColorBackgroundDark = "#2c353d";
 export const ColorMixerColorBackgroundDefault = "#ffffff";
 export const DialogColorBackgroundDefault = "#ffffff";
 export const DialogColorTextDefault = "#2c353d";
-export const DialogColorBorderDefault = "#2c353d";
+export const DialogColorBorderDefault = "#d9e0e6";
 export const DialogShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
 export const DividerColorBorderDefault = "#d9e0e6";
 export const DividerColorBorderPrimary = "#1273e6";
@@ -401,12 +401,12 @@ export const InputColorBorderDefault = "#d9e0e6";
 export const MenuColorBackgroundDefault = "#ffffff";
 export const MenuColorBackgroundHoverDefault = "#f8f8f8";
 export const MenuColorTextDefault = "#2c353d";
-export const MenuColorBorderDefault = "#2c353d";
+export const MenuColorBorderDefault = "#d9e0e6";
 export const MenuShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
 export const OptionMenuColorBackgroundDefault = "#ffffff";
 export const PanelColorBackgroundDefault = "#ffffff";
 export const PanelColorTextDefault = "#2c353d";
-export const PanelColorBorderDefault = "#2c353d";
+export const PanelColorBorderDefault = "#d9e0e6";
 export const PopoverColorBackgroundDefault = "#ffffff";
 export const ProgressbarColorBackgroundDefault = "#d9e0e6";
 export const ProgressbarColorTextDefault = "#2c353d";
@@ -416,7 +416,7 @@ export const ProgressCircleColorActive = "#2c353d";
 export const SliderColorProgressBackgroundDefault = "#2c353d";
 export const SliderColorProgressThumbBackgroundDefault = "#2c353d";
 export const SwitchFalseColorBackgroundDefault = "#d9e0e6";
-export const SwitchFalseColorHandleBackgroundDefault = "#2c353d";
+export const SwitchFalseColorHandleBackgroundDefault = "#d9e0e6";
 export const SwitchTrueColorBackgroundDefault = "#2c353d";
 export const SwitchTrueColorHandleBackgroundDefault = "#ffffff";
 export const TableColorBorderDefault = "#d9e0e6";

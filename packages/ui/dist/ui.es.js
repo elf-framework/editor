@@ -27,7 +27,7 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
-import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL } from "@elf-framework/sapa";
+import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 const style$1 = "";
 function usePointerStart(...args) {
@@ -2119,8 +2119,6 @@ class ToolsMenuItem extends ToolsItem {
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "background",
       "data-direction": direction
-    }), /* @__PURE__ */ createElementJsx("div", {
-      class: "arrow"
     }), /* @__PURE__ */ createElementJsx(Menu, {
       ref: "$menu",
       items,
@@ -5502,19 +5500,23 @@ function AppLayoutItem({
   const [itemHeight, setLastHeight] = useState(initHeight);
   const setSize = useCallback(
     (size) => {
+      pendingComponent(this);
       if (direction === "left" || direction === "right") {
         const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
         setLastWidth(lastWidth);
         if (itemWidth != lastWidth) {
           isFunction(onResize) && onResize(lastWidth, itemHeight);
         }
+        this.$el.css("width", lastWidth + "px");
       } else if (direction === "top" || direction === "bottom") {
         const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
         setLastHeight(lastHeight);
+        this.$el.css("height", lastHeight + "px");
         if (itemHeight != lastHeight) {
           isFunction(onResize) && onResize(itemWidth, lastHeight);
         }
       }
+      removePendingComponent(this);
     },
     [itemWidth, itemHeight]
   );

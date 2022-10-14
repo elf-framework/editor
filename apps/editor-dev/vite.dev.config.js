@@ -18,12 +18,13 @@ export default defineConfig({
     jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
   },
   optimizeDeps: {
-    link: [
+    exclude: [
       "@elf-framework/sapa",
       "@elf-framework/ui",
-      "@elf-framework/color",
+      "@elf-framework/icon",
+      "@elf-framework/sapa-router",
+      "@elf-framework/design-tokens",
       "@elf-framework/design-system",
-      "@elf-framework/base-editor",
     ],
   },
   plugins: [sapa()],

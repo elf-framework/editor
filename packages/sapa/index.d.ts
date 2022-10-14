@@ -563,5 +563,8 @@ declare module "@elf-framework/sapa" {
     HTMLComment: typeof HTMLComment;
   };
 
+  export function pendingComponent(component: UIElement): void;
+  export function removePendingComponent(component: UIElement): void;
+
   export default sapa;
 }

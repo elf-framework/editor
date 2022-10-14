@@ -1,5 +1,14 @@
 # editor-dev
 
+## 1.0.5
+
+### Patch Changes
+
+- update icon version
+
+- Updated dependencies []:
+  - @elf-framework/base-editor@0.0.14
+
 ## 1.0.4
 
 ### Patch Changes

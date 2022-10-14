@@ -28,7 +28,6 @@ export class Layer extends UIElement {
       onMouseEnter,
       onMouseLeave,
     } = this.props;
-
     return (
       <div
         class="elf--virtual-scroll-item elf--layer"

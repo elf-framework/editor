@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 13 Oct 2022 12:04:22 GMT
+ * Generated on Fri, 14 Oct 2022 08:49:45 GMT
  */
 
 :root {
@@ -315,7 +315,7 @@
   --table-color-border-default: var(--color-gray-2);
   --switch-true-color-handle-background-default: var(--color-white);
   --switch-true-color-background-default: var(--color-gray-9);
-  --switch-false-color-handle-background-default: #2c353d;
+  --switch-false-color-handle-background-default: #d9e0e6;
   --switch-false-color-background-default: var(--color-gray-2);
   --slider-color-progress-thumb-background-default: var(--color-gray-9);
   --slider-color-progress-background-default: var(--color-gray-9);
@@ -323,16 +323,16 @@
   --progress-circle-color-track: var(--color-gray-2);
   --progressbar-color-active: var(--color-gray-9);
   --progressbar-color-background-default: var(--color-gray-2);
-  --panel-color-border-default: #2c353d;
+  --panel-color-border-default: #d9e0e6;
   --option-menu-color-background-default: var(--color-white);
-  --menu-color-border-default: #2c353d;
+  --menu-color-border-default: #d9e0e6;
   --input-color-border-default: var(--color-gray-2);
   --input-color-background-default: var(--color-white);
   --ghost-color-background-default: var(--color-gray-1);
   --ghost-color-background-2: var(--color-transparent-white-5);
   --ghost-color-background-1: var(--color-transparent-white-0);
   --divider-color-border-default: var(--color-gray-2);
-  --dialog-color-border-default: #2c353d;
+  --dialog-color-border-default: #d9e0e6;
   --dialog-color-background-default: var(--color-white);
   --color-mixer-color-background-default: var(--color-white);
   --card-color-border-default: var(--color-gray-2);

@@ -97,7 +97,7 @@ export class ToolsMenuItem extends ToolsItem {
         {opened && !disabled ? (
           <div class="menu-area">
             <div class="background" data-direction={direction}></div>
-            <div class="arrow"></div>
+            {/* <div class="arrow"></div> */}
             <Menu
               ref="$menu"
               items={items}

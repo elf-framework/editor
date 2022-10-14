@@ -632,7 +632,7 @@
         "default": "#f8f8f8"
       },
       "border": {
-        "default": "#000000"
+        "default": "#484848"
       }
     }
   },
@@ -682,7 +682,7 @@
         },
         "handle": {
           "background": {
-            "default": "#000000"
+            "default": "#484848"
           }
         }
       }

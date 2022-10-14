@@ -1,4 +1,10 @@
-import { isFunction, useCallback, useState } from "@elf-framework/sapa";
+import {
+  isFunction,
+  pendingComponent,
+  removePendingComponent,
+  useCallback,
+  useState,
+} from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { AppResizeBar } from "./AppResizeBar";
@@ -24,6 +30,9 @@ export function AppLayoutItem({
 
   const setSize = useCallback(
     (size) => {
+      // 화면 전체를 갱신하지 않고 dom 만 갱신하기 위해서 pending 을 걸어준다.
+      pendingComponent(this);
+
       if (direction === "left" || direction === "right") {
         const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
         setLastWidth(lastWidth);
@@ -31,14 +40,19 @@ export function AppLayoutItem({
         if (itemWidth != lastWidth) {
           isFunction(onResize) && onResize(lastWidth, itemHeight);
         }
+
+        this.$el.css("width", lastWidth + "px");
       } else if (direction === "top" || direction === "bottom") {
         const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
         setLastHeight(lastHeight);
 
+        this.$el.css("height", lastHeight + "px");
         if (itemHeight != lastHeight) {
           isFunction(onResize) && onResize(itemWidth, lastHeight);
         }
       }
+
+      removePendingComponent(this);
     },
     [itemWidth, itemHeight]
   );

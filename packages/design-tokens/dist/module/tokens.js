@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 13 Oct 2022 12:04:22 GMT
+ * Generated on Fri, 14 Oct 2022 08:49:44 GMT
  */
 
 module.exports = {
@@ -372,7 +372,7 @@ module.exports = {
     },
     "border": {
       "default": {
-        "value": "#2c353d",
+        "value": "#d9e0e6",
         "filePath": "tokens/color/border.json",
         "isSource": true
       },
@@ -411,7 +411,7 @@ module.exports = {
       "isSource": true,
       "original": {
         "default": {
-          "value": "{color.black.value}",
+          "value": "{color.border.value}",
           "filePath": "tokens/color/border.json",
           "isSource": true
         },
@@ -7980,7 +7980,7 @@ module.exports = {
       },
       "border": {
         "default": {
-          "value": "#2c353d",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/dialog.json",
           "isSource": true,
           "original": {
@@ -8394,7 +8394,7 @@ module.exports = {
       },
       "border": {
         "default": {
-          "value": "#2c353d",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/menu.json",
           "isSource": true,
           "original": {
@@ -8515,7 +8515,7 @@ module.exports = {
       },
       "border": {
         "default": {
-          "value": "#2c353d",
+          "value": "#d9e0e6",
           "filePath": "tokens/component/panel.json",
           "isSource": true,
           "original": {
@@ -8766,7 +8766,7 @@ module.exports = {
         "handle": {
           "background": {
             "default": {
-              "value": "#2c353d",
+              "value": "#d9e0e6",
               "filePath": "tokens/component/switch.json",
               "isSource": true,
               "original": {

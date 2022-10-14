@@ -2121,8 +2121,6 @@ var __privateMethod = (obj, member, method) => {
       }, /* @__PURE__ */ sapa.createElementJsx("div", {
         class: "background",
         "data-direction": direction
-      }), /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: "arrow"
       }), /* @__PURE__ */ sapa.createElementJsx(Menu, {
         ref: "$menu",
         items,
@@ -5504,19 +5502,23 @@ var __privateMethod = (obj, member, method) => {
     const [itemHeight, setLastHeight] = sapa.useState(initHeight);
     const setSize = sapa.useCallback(
       (size) => {
+        sapa.pendingComponent(this);
         if (direction === "left" || direction === "right") {
           const lastWidth = Math.min(Math.max(minWidth, size), maxWidth);
           setLastWidth(lastWidth);
           if (itemWidth != lastWidth) {
             sapa.isFunction(onResize) && onResize(lastWidth, itemHeight);
           }
+          this.$el.css("width", lastWidth + "px");
         } else if (direction === "top" || direction === "bottom") {
           const lastHeight = Math.min(Math.max(minHeight, size), maxHeight);
           setLastHeight(lastHeight);
+          this.$el.css("height", lastHeight + "px");
           if (itemHeight != lastHeight) {
             sapa.isFunction(onResize) && onResize(itemWidth, lastHeight);
           }
         }
+        sapa.removePendingComponent(this);
       },
       [itemWidth, itemHeight]
     );

@@ -1,11 +1,11 @@
 {
   "name": "editor-dev",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
-    "vite:dev": "vite --port=3000 --config=vite.dev.config.js",
+    "vite:dev": "vite --port=3000 --open --config=vite.dev.config.js",
     "editor:dev": "npm run vite:dev",
     "//vite:build": "npm run vite:prod",
     "vite:prod": "vite build --config=vite.prod.config.js",
@@ -21,7 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "@elf-framework/base-editor": "*",
-    "@elf-framework/icon": "^2.0.51",
+    "@elf-framework/icon": "*",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*"
@@ -32,8 +32,8 @@
     "husky": "^8.0.1",
     "prettier": "2.7.1",
     "rollup-plugin-copy": "^3.4.0",
-    "vite": "^3.0.8",
+    "vite": "^3.1.8",
     "vite-plugin-sapa": "*",
-    "vitest": "0.22.1"
+    "vitest": "0.24.1"
   }
 }

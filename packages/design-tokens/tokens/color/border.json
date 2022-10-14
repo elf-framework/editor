@@ -2,7 +2,7 @@
   "color": {
     "border": {
       "default": {
-        "value": "{color.black.value}"
+        "value": "{color.border.value}"
       },
       "primary": {
         "value": "{color.blue.6.value}"

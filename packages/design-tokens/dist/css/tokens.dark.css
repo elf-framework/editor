@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 13 Oct 2022 12:04:22 GMT
+ * Generated on Fri, 14 Oct 2022 08:49:45 GMT
  */
 
 .theme-dark {
@@ -174,7 +174,7 @@
   --table-color-border-default: var(--color-gray-2);
   --switch-true-color-handle-background-default: var(--color-gray-9);
   --switch-true-color-background-default: var(--color-gray-2);
-  --switch-false-color-handle-background-default: #000000;
+  --switch-false-color-handle-background-default: #484848;
   --switch-false-color-background-default: var(--color-gray-4);
   --slider-color-progress-thumb-background-default: var(--color-gray-2);
   --slider-color-progress-background-default: var(--color-gray-9);
@@ -182,7 +182,7 @@
   --progress-circle-color-track: var(--color-gray-2);
   --progressbar-color-active: var(--color-gray-9);
   --progressbar-color-background-default: var(--color-gray-2);
-  --panel-color-border-default: #000000;
+  --panel-color-border-default: #484848;
   --option-menu-color-background-default: var(--color-gray-0);
   --menu-color-border-default: var(--color-gray-2);
   --menu-color-background-hover-default: var(--color-gray-1);

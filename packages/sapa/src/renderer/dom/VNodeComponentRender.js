@@ -187,7 +187,6 @@ async function runningUpdate(componentInstance, template) {
 
   // element 에 component 속성 설정
   componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
-  // this.alternate = template;
   componentInstance.alternate = template;
   componentInstance.runUpdated();
 
@@ -256,7 +255,6 @@ export async function renderVNodeComponent(componentInstance, $container) {
   }
 
   const rootTemplate = template[0];
-
   if (componentInstance.$el) {
     await runningUpdate(componentInstance, rootTemplate);
   } else {

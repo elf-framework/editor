@@ -207,11 +207,7 @@ export class VNode {
   }
 
   initializeChildren() {
-    // console.log(this.children, this.props.content);
-
     if (isArray(this.children)) {
-      // 하위 객체는 content 로 받는다.
-      // 다만 props 에 content 가 정의 되어 있으면 처리 하지 않는다.
       if (this.props.content?.length) return;
 
       this.children = this.children.filter(isValue).map((child) => {
@@ -219,13 +215,10 @@ export class VNode {
           return createVNodeText(child);
         }
 
-        // console.log("childdddddddddddd", child);
-
         return child;
       });
 
       this.props.content = this.children;
-      // console.log("---------content", this.props.content);
     }
   }
 
@@ -417,7 +410,7 @@ export class VNodeComponent extends VNode {
     const hooks = oldInstance?.copyHooks();
     const state = oldInstance?.state;
     const oldId = oldInstance?.id;
-    const children = oldInstance?.children || {};
+    // const children = oldInstance?.children || {};
 
     this.instance = createComponentInstance(
       newComponent,
@@ -430,23 +423,23 @@ export class VNodeComponent extends VNode {
       this.instance.setId(oldId);
     }
 
-    if (hooks && hooks.__stateHooks?.length && isGlobalForceRender()) {
+    if (hooks && hooks.__stateHooks?.length) {
       this.instance.reloadHooks(hooks);
     }
 
-    if (state && isGlobalForceRender()) {
+    if (state) {
       // state 도 복구한다.
       // false 를 주는건 렌더링을 바로 하지 않기 위해서이다.
       this.instance.setState(state, false);
     }
 
-    if (Object.keys(children).length && isGlobalForceRender()) {
-      this.instance.setChildren(children);
-    }
+    // if (Object.keys(children).length) {
+    //   this.instance.setChildren(children);
+    // }
 
     // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.
     // 이걸 매번 새로 만들어야
-    oldInstance?.destroy();
+    // oldInstance?.destroy();
 
     return this.instance;
   }

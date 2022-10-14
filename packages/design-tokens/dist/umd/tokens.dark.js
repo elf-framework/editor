@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 13 Oct 2022 12:04:22 GMT
+ * Generated on Fri, 14 Oct 2022 08:49:45 GMT
  */
 
 (function(root, factory) {
@@ -383,7 +383,7 @@
     },
     "border": {
       "default": {
-        "value": "#000000",
+        "value": "#484848",
         "filePath": "tokens/color/border.json",
         "isSource": false
       },
@@ -422,7 +422,7 @@
       "isSource": true,
       "original": {
         "default": {
-          "value": "{color.black.value}",
+          "value": "{color.border.value}",
           "filePath": "tokens/color/border.json",
           "isSource": false
         },
@@ -8637,7 +8637,7 @@
       },
       "border": {
         "default": {
-          "value": "#000000",
+          "value": "#484848",
           "filePath": "tokens/component/panel.dark.json",
           "isSource": true,
           "original": {
@@ -8888,7 +8888,7 @@
         "handle": {
           "background": {
             "default": {
-              "value": "#000000",
+              "value": "#484848",
               "filePath": "tokens/component/switch.dark.json",
               "isSource": true,
               "original": {

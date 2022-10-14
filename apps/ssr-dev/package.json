@@ -21,7 +21,7 @@
   "dependencies": {
     "@elf-framework/color": "*",
     "@elf-framework/design-tokens": "*",
-    "@elf-framework/icon": "^2.0.62",
+    "@elf-framework/icon": "*",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",

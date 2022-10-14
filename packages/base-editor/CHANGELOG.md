@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.14
+
+### Patch Changes
+
+- update icon version
+
 ## 2.1.7
 
 ### Patch Changes

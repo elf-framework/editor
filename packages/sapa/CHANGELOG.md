@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.12
+
+### Patch Changes
+
+- update pendingComponent position
+
 ## 0.0.10
 
 ### Patch Changes
