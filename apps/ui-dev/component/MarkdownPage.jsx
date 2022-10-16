@@ -38,6 +38,7 @@ function PrevNextLink({ prev, next }) {
         gap: "var(--gap-32)",
         height: 80,
         marginTop: 30,
+        justifyContent: "space-between",
       }}
     >
       {prev ? (

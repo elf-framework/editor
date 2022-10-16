@@ -15,15 +15,6 @@ import {
 
 import { PreviewItem } from "./PreviewItem";
 
-function Tools() {
-  return (
-    <>
-      <Button onClick={() => console.log("action")}>Action</Button>
-      <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>
-    </>
-  );
-}
-
 export function FeedbacksView() {
   return (
     <div>
@@ -49,9 +40,15 @@ export function FeedbacksView() {
         <PreviewItem
           title={"Notification"}
           link={"/pages/design-system/components/feedback/notification/"}
+          style={{
+            height: 250,
+          }}
         >
           <Notification
-            tools={<Tools />}
+            tools={[
+              <Button onClick={() => console.log("action")}>Action</Button>,
+              <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>,
+            ]}
             style={{
               position: "relative",
               width: "100%",
@@ -83,7 +80,7 @@ export function FeedbacksView() {
               tools={[
                 <RoundButton
                   outline
-                  // variant="danger"
+                  variant="dark"
                   place="toast"
                   onClick={() => console.log("action")}
                 >
@@ -126,7 +123,7 @@ export function FeedbacksView() {
           link={"/pages/design-system/components/feedback/tooltip/"}
         >
           <Tooltip placement="top" message={"text message"} show>
-            <Button>
+            <Button iconOnly>
               <HelpOutlineFilled />
             </Button>
           </Tooltip>
@@ -154,7 +151,7 @@ export function FeedbacksView() {
             }
             placement="right-bottom"
           >
-            <Button iconOnly quiet size="extra-small" selected>
+            <Button iconOnly quiet size="small" selected>
               <InfoOutlined />
             </Button>
           </Popover>

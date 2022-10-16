@@ -1,4 +1,11 @@
-import { UIElement, classnames, useMemo, useEffect } from "@elf-framework/sapa";
+import {
+  UIElement,
+  classnames,
+  useMemo,
+  useEffect,
+  isUndefined,
+  useState,
+} from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
@@ -18,17 +25,18 @@ export class TabStrip extends UIElement {
     const {
       style = {},
       items = [],
-      fitted,
+      fitted = false,
       align = "left",
       orientation = "horizontal",
       activeKey,
-      showIndicator = false,
+      showIndicator = true,
       size = "medium",
       variant = "default",
       quiet = false,
+      stripType = "underline",
     } = this.props;
 
-    const [indicatorInfo, setIndicatorInfo] = this.useState({
+    const [indicatorInfo, setIndicatorInfo] = useState({
       left: 0,
       width: 0,
     });
@@ -39,9 +47,10 @@ export class TabStrip extends UIElement {
         [orientation]: true,
         [size]: true,
         [variant]: true,
+        [stripType]: true,
         quiet,
       });
-    }, [fitted, orientation, size, variant, quiet]);
+    }, [fitted, orientation, size, variant, quiet, stripType]);
 
     // tab indicator
     useEffect(() => {
@@ -51,16 +60,16 @@ export class TabStrip extends UIElement {
         if (ref) {
           if (orientation === "horizontal") {
             const left = ref.offsetLeft;
-            const width = ref.offsetWidth;
+            const width = ref.offsetWidth + (stripType === "group" ? 1 : 0);
             setIndicatorInfo({ left, width });
           } else {
             const top = ref.offsetTop;
-            const height = ref.offsetHeight;
+            const height = ref.offsetHeight + (stripType === "group" ? 1 : 0);
             setIndicatorInfo({ top, height });
           }
         }
       }
-    }, [activeKey, setIndicatorInfo, orientation, showIndicator]);
+    }, [activeKey, setIndicatorInfo, orientation, showIndicator, stripType]);
 
     const styleObject = {
       class: localClass,
@@ -75,7 +84,9 @@ export class TabStrip extends UIElement {
           })}
         >
           {items.map((it) => {
-            const isSelected = !!it.selected;
+            const isSelected = isUndefined(it.selected)
+              ? activeKey === it.key
+              : !!it.selected;
             const isDisabled = !!it.disabled;
             const selectedStyle = it.selectedStyle || {};
             const style = it.style || {};

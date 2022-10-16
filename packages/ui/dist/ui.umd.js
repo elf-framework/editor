@@ -2555,10 +2555,8 @@ var __privateMethod = (obj, member, method) => {
         class: "close-area"
       }, /* @__PURE__ */ sapa.createElementJsx(Button, {
         size: "small",
-        style: {
-          color: "var(--color-white)",
-          fontSize: "20px !important"
-        },
+        variant,
+        iconOnly: true,
         quiet: true,
         closable: true,
         onClick: () => this.hide()
@@ -2761,16 +2759,17 @@ var __privateMethod = (obj, member, method) => {
       const {
         style: style2 = {},
         items = [],
-        fitted,
+        fitted = false,
         align = "left",
         orientation = "horizontal",
         activeKey,
-        showIndicator = false,
+        showIndicator = true,
         size = "medium",
         variant = "default",
-        quiet = false
+        quiet = false,
+        stripType = "underline"
       } = this.props;
-      const [indicatorInfo, setIndicatorInfo] = this.useState({
+      const [indicatorInfo, setIndicatorInfo] = sapa.useState({
         left: 0,
         width: 0
       });
@@ -2780,25 +2779,26 @@ var __privateMethod = (obj, member, method) => {
           [orientation]: true,
           [size]: true,
           [variant]: true,
+          [stripType]: true,
           quiet
         });
-      }, [fitted, orientation, size, variant, quiet]);
+      }, [fitted, orientation, size, variant, quiet, stripType]);
       sapa.useEffect(() => {
         if (showIndicator) {
           const ref = this.refs[`tab-${activeKey}`];
           if (ref) {
             if (orientation === "horizontal") {
               const left = ref.offsetLeft;
-              const width = ref.offsetWidth;
+              const width = ref.offsetWidth + (stripType === "group" ? 1 : 0);
               setIndicatorInfo({ left, width });
             } else {
               const top = ref.offsetTop;
-              const height = ref.offsetHeight;
+              const height = ref.offsetHeight + (stripType === "group" ? 1 : 0);
               setIndicatorInfo({ top, height });
             }
           }
         }
-      }, [activeKey, setIndicatorInfo, orientation, showIndicator]);
+      }, [activeKey, setIndicatorInfo, orientation, showIndicator, stripType]);
       const styleObject = {
         class: localClass,
         style: propertyMap(style2, cssProperties$w)
@@ -2810,7 +2810,7 @@ var __privateMethod = (obj, member, method) => {
           [`align-${align}`]: true
         })
       }, items.map((it) => {
-        const isSelected = !!it.selected;
+        const isSelected = sapa.isUndefined(it.selected) ? activeKey === it.key : !!it.selected;
         const isDisabled = !!it.disabled;
         const selectedStyle = it.selectedStyle || {};
         const style22 = it.style || {};
@@ -2877,10 +2877,11 @@ var __privateMethod = (obj, member, method) => {
         fitted,
         align = "left",
         orientation = "horizontal",
-        showIndicator = false,
+        showIndicator = true,
         size = "medium",
         variant = "default",
-        quiet = false
+        quiet = false,
+        stripType = "underline"
       } = this.props;
       const { activeKey } = this.state;
       const localClass = sapa.useMemo(() => {
@@ -2905,6 +2906,7 @@ var __privateMethod = (obj, member, method) => {
         size,
         variant,
         quiet,
+        stripType,
         items: content.map((it) => {
           const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
           const selected = activeKey === key;

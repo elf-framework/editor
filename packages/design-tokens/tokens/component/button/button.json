@@ -52,7 +52,7 @@
       },
       "text": {
         "default": {
-          "value": "{color.text.default.value}"
+          "value": "{color.white.value}"
         }
       }
     },         

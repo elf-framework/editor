@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:44 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 export default tokens;
@@ -738,17 +738,15 @@ declare const tokens: {
   "tabstrip": {
     "color": {
       "background": {
-        "default": DesignToken,
-        "indicator": DesignToken
+        "indicator": {
+          "default": DesignToken,
+          "selected": DesignToken
+        }
       },
       "text": {
         "default": DesignToken,
-        "indicator": DesignToken,
         "selected": DesignToken,
         "disabled": DesignToken
-      },
-      "border": {
-        "default": DesignToken
       }
     }
   },

@@ -25,12 +25,7 @@ export function SizeView() {
               <div style={{ flex: "none", width: 100 }}>
                 <em>{size}</em>
               </div>
-              <Tab
-                activeKey={1}
-                size={size}
-                showIndicator
-                style={{ width: 240 }}
-              >
+              <Tab activeKey={1} size={size} style={{ width: 240 }}>
                 <TabItem title="Design" key={1}></TabItem>
                 <TabItem title="Prototype" key={2}></TabItem>
                 <TabItem title="Project" key={3}></TabItem>

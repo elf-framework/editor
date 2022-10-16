@@ -71,8 +71,11 @@ const patch = {
     } else if (name.startsWith(PREFIX_EVENT)) {
       el[name.toLowerCase()] = value;
     } else if (name === KEY_STYLE) {
-      if (el.style.cssText != value) {
+      const oldStyle = el.style.cssText;
+      if (oldStyle != value) {
         el.style.cssText = value;
+      } else if (oldStyle === "" && value === "") {
+        this.removeProp(el, name);
       }
     } else {
       // 속성을 정의할 때 property 와 같이 정의한다.
@@ -82,6 +85,9 @@ const patch = {
   },
   removeProp(el, name) {
     el.removeAttribute(name);
+
+    // name 이 style 인 경우 remoteAttribute 만 처리한다.
+    if (name == KEY_STYLE) return;
 
     if (isBooleanType(name)) {
       el[name] = false;

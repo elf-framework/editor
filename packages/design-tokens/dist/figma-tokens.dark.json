@@ -7748,8 +7748,8 @@
       "border": {
         "default": {
           "value": "{color.gray.2}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.2}"
           },
@@ -7768,8 +7768,8 @@
         },
         "primary": {
           "value": "{color.primary}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.primary}"
           },
@@ -7788,8 +7788,8 @@
         },
         "secondary": {
           "value": "{color.secondary}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.secondary}"
           },
@@ -7808,8 +7808,8 @@
         },
         "success": {
           "value": "{color.success}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.success}"
           },
@@ -7828,8 +7828,8 @@
         },
         "info": {
           "value": "{color.info}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.info}"
           },
@@ -7848,8 +7848,8 @@
         },
         "warning": {
           "value": "{color.warning}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.warning}"
           },
@@ -7868,8 +7868,8 @@
         },
         "danger": {
           "value": "{color.danger}",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.danger}"
           },
@@ -8621,54 +8621,60 @@
   "tabstrip": {
     "color": {
       "background": {
-        "default": {
-          "value": "{color.transparent.white.0}",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.transparent.white.0}"
-          },
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "background",
-            "default"
-          ]
-        },
         "indicator": {
-          "value": "{color.gray.2}",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.2}"
+          "default": {
+            "value": "{color.gray.2}",
+            "filePath": "tokens/component/tabstrip.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2}"
+            },
+            "attributes": {
+              "category": "tabstrip",
+              "type": "color",
+              "item": "background",
+              "subitem": "indicator",
+              "state": "default"
+            },
+            "path": [
+              "tabstrip",
+              "color",
+              "background",
+              "indicator",
+              "default"
+            ]
           },
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "background",
-            "subitem": "indicator"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "background",
-            "indicator"
-          ]
+          "selected": {
+            "value": "{color.white}",
+            "filePath": "tokens/component/tabstrip.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.white}"
+            },
+            "attributes": {
+              "category": "tabstrip",
+              "type": "color",
+              "item": "background",
+              "subitem": "indicator",
+              "state": "selected"
+            },
+            "path": [
+              "tabstrip",
+              "color",
+              "background",
+              "indicator",
+              "selected"
+            ]
+          }
         }
       },
       "text": {
         "default": {
-          "value": "{color.gray.5}",
+          "value": "{color.gray.6}",
           "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.5}"
+            "value": "{color.gray.6}"
           },
           "attributes": {
             "category": "tabstrip",
@@ -8683,32 +8689,12 @@
             "default"
           ]
         },
-        "indicator": {
-          "value": "{color.gray.9}",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.9}"
-          },
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "text",
-            "subitem": "indicator"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "text",
-            "indicator"
-          ]
-        },
         "selected": {
-          "value": "{color.gray.9}",
+          "value": "{color.white}",
           "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.9}"
+            "value": "{color.white}"
           },
           "attributes": {
             "category": "tabstrip",
@@ -8741,28 +8727,6 @@
             "color",
             "text",
             "disabled"
-          ]
-        }
-      },
-      "border": {
-        "default": {
-          "value": "{color.transparent.white.0}",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.transparent.white.0}"
-          },
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "border",
-            "subitem": "default"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "border",
-            "default"
           ]
         }
       }
@@ -9486,9 +9450,9 @@
   },
   "shadow": {
     "1": {
-      "value": "0 1px 4px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 1px 4px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 1px 4px 0 {shadow.color.value}"
       },
@@ -9502,9 +9466,9 @@
       ]
     },
     "2": {
-      "value": "0 4px 8px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 4px 8px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 4px 8px 0 {shadow.color.value}"
       },
@@ -9518,9 +9482,9 @@
       ]
     },
     "3": {
-      "value": "0 8px 16px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 8px 16px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 8px 16px 0 {shadow.color.value}"
       },
@@ -9534,9 +9498,9 @@
       ]
     },
     "4": {
-      "value": "0 12px 24px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 12px 24px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 12px 24px 0 {shadow.color.value}"
       },
@@ -9550,9 +9514,9 @@
       ]
     },
     "5": {
-      "value": "0 16px 32px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 16px 32px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 16px 32px 0 {shadow.color.value}"
       },
@@ -9567,8 +9531,8 @@
     },
     "none": {
       "value": "none",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "none"
       },
@@ -9582,11 +9546,11 @@
       ]
     },
     "color": {
-      "value": "rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
-        "value": "rgba(170, 170, 170, 0.5)"
+        "value": "rgba(255, 255, 255, 0.1)"
       },
       "attributes": {
         "category": "shadow",

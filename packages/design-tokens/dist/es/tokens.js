@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:44 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -274,7 +274,7 @@ export const ButtonOutlineBackgroundPrimary = "transparent";
 export const ButtonOutlineBackgroundSecondary = "transparent";
 export const ButtonOutlineBackgroundSuccess = "transparent";
 export const ButtonOutlineBackgroundWarning = "transparent";
-export const ButtonOutlineBorderDark = "#2c353d";
+export const ButtonOutlineBorderDark = "#ffffff";
 export const ButtonOutlineBorderDanger = "#d9363e";
 export const ButtonOutlineBorderInfo = "#429bff";
 export const ButtonOutlineBorderDefault = "#d9e0e6";
@@ -282,10 +282,10 @@ export const ButtonOutlineBorderPrimary = "#1273e6";
 export const ButtonOutlineBorderSecondary = "#818e9a";
 export const ButtonOutlineBorderSuccess = "#009f6a";
 export const ButtonOutlineBorderWarning = "#e16f24";
-export const ButtonOutlineTextDark = "#2c353d";
+export const ButtonOutlineTextDark = "#ffffff";
 export const ButtonOutlineTextDanger = "#2c353d";
 export const ButtonOutlineTextInfo = "#2c353d";
-export const ButtonOutlineTextDefault = "#2c353d";
+export const ButtonOutlineTextDefault = "#ffffff";
 export const ButtonOutlineTextPrimary = "#2c353d";
 export const ButtonOutlineTextSecondary = "#2c353d";
 export const ButtonOutlineTextSuccess = "#2c353d";
@@ -422,13 +422,11 @@ export const SwitchTrueColorHandleBackgroundDefault = "#ffffff";
 export const TableColorBorderDefault = "#d9e0e6";
 export const TableTheadColorBackgroundDefault = "transparent";
 export const TableTbodyColorBackgroundDefault = "#ffffff";
-export const TabstripColorBackgroundDefault = "#ffffff";
-export const TabstripColorBackgroundIndicator = "#d9e0e6";
+export const TabstripColorBackgroundIndicatorDefault = "#d9e0e6";
+export const TabstripColorBackgroundIndicatorSelected = "#2c353d";
 export const TabstripColorTextDefault = "#626f7a";
-export const TabstripColorTextIndicator = "#2c353d";
 export const TabstripColorTextSelected = "#2c353d";
 export const TabstripColorTextDisabled = "#c5ced6";
-export const TabstripColorBorderDefault = "#ffffff";
 export const TagColorBackgroundDefault = "#ffffff";
 export const TagColorTextDefault = "#2c353d";
 export const TagColorBorderDefault = "#2c353d";

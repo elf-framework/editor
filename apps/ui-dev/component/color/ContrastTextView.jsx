@@ -22,7 +22,7 @@ export function ContrastTextView({ text, color, textColor, fontSize }) {
     }
   }
   return (
-    <VBox style={{ width: 50, flex: "none" }}>
+    <VBox style={{ width: 50, flex: "none", justifyContent: "flex-end" }}>
       <Flex
         style={{
           justifyContent: "center",

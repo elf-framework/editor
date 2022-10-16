@@ -1,15 +1,6 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
 import { Button, Notification, VBox } from "@elf-framework/ui";
 
-function Tools() {
-  return (
-    <>
-      <Button onClick={() => console.log("action")}>Action</Button>
-      <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>
-    </>
-  );
-}
-
 export function MainView() {
   return (
     <VBox
@@ -29,7 +20,10 @@ export function MainView() {
       >
         <Notification
           icon={<InfoOutlined />}
-          tools={<Tools />}
+          tools={[
+            <Button onClick={() => console.log("action")}>Action</Button>,
+            <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>,
+          ]}
           style={{
             width: "100%",
             height: 100,

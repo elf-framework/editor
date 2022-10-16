@@ -1,20 +1,27 @@
 .elf--tabstrip {
+
+    /* text */
+    --elf--tabstrip-text-color: var(--tabstrip-color-text-default);
+    --elf--tabstrip-selected-text-color: var(--tabstrip-color-text-selected);
+    --elf--tabstrip-disabled-color: var(--tabstrip-color-text-disabled);
+
+    /* indicator */
+    --elf--tabstrip-indicator-background-color: var(--tabstrip-color-background-indicator-default);
+    --elf--tabstrip-indicator-color: var(--tabstrip-color-background-indicator-selected);
+    --elf--tabstrip-indicator-size: 3px;
+    --elf--tabstrip-indicator-transition: all 0.2s ease;
+
+    
     --elf--tabstrip-background-color: var(--tabstrip-color-background-default);
-    --elf--tabstrip-color: var(--tabstrip-color-text-default);
     --elf--tabstrip-font-weight: 500;
     --elf--tabstrip-font-size: 14px;
     --elf--tabstrip-gap: 0.7em;
     --elf--tabstrip-border-color: var(--tabstrip-color-border-default);
-    --elf--tabstrip-offset: 0.5em;
-    --elf--tabstrip-indicator-background-color: var(--tabstrip-color-background-indicator);
-    --elf--tabstrip-indicator-color: var(--tabstrip-color-text-indicator);
-    --elf--tabstrip-indicator-size: 3px;
-    --elf--tabstrip-indicator-transition: all 0.2s ease;
-    --elf--tabstrip-selected-color: var(--tabstrip-color-text-selected);
-    --elf--tabstrip-disabled-color: var(--tabstrip-color-text-disabled);
+    --elf--tabstrip-offset: 0.3em;
+
 
     background-color: var(--elf--tabstrip-background-color);
-    color: var(--elf--tabstrip-color);
+    color: var(--elf--tabstrip-text-color);
     padding: 0px;
     box-sizing: border-box;
     display: flex;
@@ -43,39 +50,39 @@
 
     /** variant **/
     &.primary {
-        --elf--tabstrip-selected-color: var(--color-primary);
+        --elf--tabstrip-selected-text-color: var(--color-primary);
         --elf--tabstrip-indicator-color: var(--color-primary);
     }
 
     &.secondary {
-        --elf--tabstrip-selected-color: var(--color-secondary);
+        --elf--tabstrip-selected-text-color: var(--color-secondary);
         --elf--tabstrip-indicator-color: var(--color-secondary);
     }
 
     &.success {
-        --elf--tabstrip-selected-color: var(--color-success);
+        --elf--tabstrip-selected-text-color: var(--color-success);
         --elf--tabstrip-indicator-color: var(--color-success);
     }
 
     &.warning {
-        --elf--tabstrip-selected-color: var(--color-warning);
+        --elf--tabstrip-selected-text-color: var(--color-warning);
         --elf--tabstrip-indicator-color: var(--color-warning);
     }
 
     &.danger {
-        --elf--tabstrip-selected-color: var(--color-danger);
+        --elf--tabstrip-selected-text-color: var(--color-danger);
         --elf--tabstrip-indicator-color: var(--color-danger);
     }
 
     &.info {
-        --elf--tabstrip-selected-color: var(--color-info);
+        --elf--tabstrip-selected-text-color: var(--color-info);
         --elf--tabstrip-indicator-color: var(--color-info);
     }
 
     &.dark {
         // --elf--tabstrip-background-color: var(--color-black);
-        --elf--tabstrip-color: var(--color-white);
-        --elf--tabstrip-selected-color: var(--color-white);
+        --elf--tabstrip-text-color: var(--color-white);
+        --elf--tabstrip-selected-text-color: var(--color-white);
         --elf--tabstrip-indicator-color: var(--color-white);
         --elf--tabstrip-indicator-background-color: var(--color-gray-5);
     }
@@ -137,9 +144,11 @@
         width: 100%;
 
         > .elf--tabstrip-content {
+            gap: 0px;
             > .elf--tabstrip-item {
                 flex: 1 1 auto;
-                justify-content: center;
+                box-sizing: border-box;
+                // justify-content: center;
             }
         }
     }
@@ -184,10 +193,13 @@
         }        
 
         > .elf--tabstrip-item {
-            color: var(--elf--tabstrip-color);
+            color: var(--elf--tabstrip-text-color);
             cursor: pointer;
             display: flex;
             align-items: center;
+            z-index: 1;
+            box-sizing: border-box;
+            font-weight: bold;
 
             .elf--icon {
                 width: 20px;
@@ -196,7 +208,7 @@
             }
 
             > * {
-                padding: 8px 0px;                
+                padding: 8px 10px;                
                 flex: auto;
                 display: flex;
                 align-items: center;
@@ -205,12 +217,12 @@
 
 
             &.selected {
-                --elf--tabstrip-color: var(--elf--tabstrip-selected-color);
+                --elf--tabstrip-text-color: var(--elf--tabstrip-selected-text-color);
             }
 
             &.disabled {
                 cursor: not-allowed;                
-                --elf--tabstrip-color: var(--elf--tabstrip-disabled-color);
+                --elf--tabstrip-text-color: var(--elf--tabstrip-disabled-color);
                 > * {
                     pointer-events: none;
                     user-select: none;
@@ -230,7 +242,7 @@
 
         > .elf--tabstrip-tool {
             // padding: 8px;
-            color: var(--elf--tabstrip-color);
+            color: var(--elf--tabstrip-text-color);
             cursor: pointer;
             display: flex;
             align-items: center;

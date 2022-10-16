@@ -19,7 +19,7 @@ export function OrientationView() {
             height: 200,
           }}
         >
-          <Tab activeKey={1} showIndicator>
+          <Tab activeKey={1}>
             <TabItem title="Design" key={1}></TabItem>
             <TabItem title="Prototype" key={2}></TabItem>
             <TabItem title="Project" key={3}></TabItem>
@@ -32,7 +32,7 @@ export function OrientationView() {
             height: 200,
           }}
         >
-          <Tab activeKey={1} orientation="vertical" showIndicator>
+          <Tab activeKey={1} orientation="vertical">
             <TabItem title="Design" key={1}></TabItem>
             <TabItem title="Prototype" key={2}></TabItem>
             <TabItem title="Project" key={3}></TabItem>

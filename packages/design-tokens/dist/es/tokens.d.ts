@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:44 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 export const ImageLogo : string;
@@ -422,13 +422,11 @@ export const SwitchTrueColorHandleBackgroundDefault : string;
 export const TableColorBorderDefault : string;
 export const TableTheadColorBackgroundDefault : string;
 export const TableTbodyColorBackgroundDefault : string;
-export const TabstripColorBackgroundDefault : string;
-export const TabstripColorBackgroundIndicator : string;
+export const TabstripColorBackgroundIndicatorDefault : string;
+export const TabstripColorBackgroundIndicatorSelected : string;
 export const TabstripColorTextDefault : string;
-export const TabstripColorTextIndicator : string;
 export const TabstripColorTextSelected : string;
 export const TabstripColorTextDisabled : string;
-export const TabstripColorBorderDefault : string;
 export const TagColorBackgroundDefault : string;
 export const TagColorTextDefault : string;
 export const TagColorBorderDefault : string;

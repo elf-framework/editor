@@ -133,7 +133,7 @@ export function NavigationsView() {
           title={"Tabs"}
           link={"/pages/design-system/components/navigations/tabs/"}
         >
-          <Tab activeKey={1} showIndicator variant="primary">
+          <Tab activeKey={1} variant="primary">
             <TabItem title="Design" key={1}></TabItem>
             <TabItem title="Prototype" key={2}></TabItem>
             <TabItem title="Project" key={3} disabled={true}></TabItem>

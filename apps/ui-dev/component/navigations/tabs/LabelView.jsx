@@ -16,10 +16,10 @@ export function LabelView() {
           style={{
             display: "flex",
             gap: 30,
-            padding: [20, 40],
+            // padding: [20, 40],
             justifyContent: "center",
             alignItems: "flex-start",
-            height: 200,
+            // height: 200,
           }}
         >
           <Tab activeKey={1}>

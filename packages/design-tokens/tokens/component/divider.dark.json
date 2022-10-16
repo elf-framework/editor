@@ -1,0 +1,29 @@
+{
+  "divider": {
+    "color": {
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        },
+        "primary": {
+          "value": "{color.primary.value}"
+        },
+        "secondary": {
+          "value": "{color.secondary.value}"
+        },
+        "success": {
+          "value": "{color.success.value}"
+        },
+        "info": {
+          "value": "{color.info.value}"
+        },
+        "warning": {
+          "value": "{color.warning.value}"
+        },
+        "danger": {
+          "value": "{color.danger.value}"
+        }
+      }
+    }
+  }
+}

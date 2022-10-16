@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:45 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 (function(root, factory) {
@@ -8151,8 +8151,8 @@
       "border": {
         "default": {
           "value": "#484848",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.gray.2.value}"
           },
@@ -8172,8 +8172,8 @@
         },
         "primary": {
           "value": "#1273e6",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.primary.value}"
           },
@@ -8193,8 +8193,8 @@
         },
         "secondary": {
           "value": "#484848",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.secondary.value}"
           },
@@ -8214,8 +8214,8 @@
         },
         "success": {
           "value": "#009f6a",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.success.value}"
           },
@@ -8235,8 +8235,8 @@
         },
         "info": {
           "value": "#1273e6",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.info.value}"
           },
@@ -8256,8 +8256,8 @@
         },
         "warning": {
           "value": "#e16f24",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.warning.value}"
           },
@@ -8277,8 +8277,8 @@
         },
         "danger": {
           "value": "#d9363e",
-          "filePath": "tokens/component/divider.json",
-          "isSource": false,
+          "filePath": "tokens/component/divider.dark.json",
+          "isSource": true,
           "original": {
             "value": "{color.danger.value}"
           },
@@ -9061,56 +9061,62 @@
   "tabstrip": {
     "color": {
       "background": {
-        "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.transparent.white.0.value}"
-          },
-          "name": "TabstripColorBackgroundDefault",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "background",
-            "default"
-          ]
-        },
         "indicator": {
-          "value": "#484848",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.2.value}"
+          "default": {
+            "value": "#484848",
+            "filePath": "tokens/component/tabstrip.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2.value}"
+            },
+            "name": "TabstripColorBackgroundIndicatorDefault",
+            "attributes": {
+              "category": "tabstrip",
+              "type": "color",
+              "item": "background",
+              "subitem": "indicator",
+              "state": "default"
+            },
+            "path": [
+              "tabstrip",
+              "color",
+              "background",
+              "indicator",
+              "default"
+            ]
           },
-          "name": "TabstripColorBackgroundIndicator",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "background",
-            "subitem": "indicator"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "background",
-            "indicator"
-          ]
+          "selected": {
+            "value": "#ffffff",
+            "filePath": "tokens/component/tabstrip.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.white.value}"
+            },
+            "name": "TabstripColorBackgroundIndicatorSelected",
+            "attributes": {
+              "category": "tabstrip",
+              "type": "color",
+              "item": "background",
+              "subitem": "indicator",
+              "state": "selected"
+            },
+            "path": [
+              "tabstrip",
+              "color",
+              "background",
+              "indicator",
+              "selected"
+            ]
+          }
         }
       },
       "text": {
         "default": {
-          "value": "#a8a8a8",
+          "value": "#c8c8c8",
           "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.5.value}"
+            "value": "{color.gray.6.value}"
           },
           "name": "TabstripColorTextDefault",
           "attributes": {
@@ -9126,33 +9132,12 @@
             "default"
           ]
         },
-        "indicator": {
-          "value": "#f8f8f8",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.9.value}"
-          },
-          "name": "TabstripColorTextIndicator",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "text",
-            "subitem": "indicator"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "text",
-            "indicator"
-          ]
-        },
         "selected": {
-          "value": "#f8f8f8",
+          "value": "#ffffff",
           "filePath": "tokens/component/tabstrip.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.9.value}"
+            "value": "{color.white.value}"
           },
           "name": "TabstripColorTextSelected",
           "attributes": {
@@ -9187,29 +9172,6 @@
             "color",
             "text",
             "disabled"
-          ]
-        }
-      },
-      "border": {
-        "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/tabstrip.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.transparent.white.0.value}"
-          },
-          "name": "TabstripColorBorderDefault",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "border",
-            "subitem": "default"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "border",
-            "default"
           ]
         }
       }
@@ -9966,9 +9928,9 @@
   },
   "shadow": {
     "1": {
-      "value": "0 1px 4px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 1px 4px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 1px 4px 0 {shadow.color.value}"
       },
@@ -9983,9 +9945,9 @@
       ]
     },
     "2": {
-      "value": "0 4px 8px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 4px 8px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 4px 8px 0 {shadow.color.value}"
       },
@@ -10000,9 +9962,9 @@
       ]
     },
     "3": {
-      "value": "0 8px 16px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 8px 16px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 8px 16px 0 {shadow.color.value}"
       },
@@ -10017,9 +9979,9 @@
       ]
     },
     "4": {
-      "value": "0 12px 24px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 12px 24px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 12px 24px 0 {shadow.color.value}"
       },
@@ -10034,9 +9996,9 @@
       ]
     },
     "5": {
-      "value": "0 16px 32px 0 rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "0 16px 32px 0 rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "0 16px 32px 0 {shadow.color.value}"
       },
@@ -10052,8 +10014,8 @@
     },
     "none": {
       "value": "none",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
         "value": "none"
       },
@@ -10068,11 +10030,11 @@
       ]
     },
     "color": {
-      "value": "rgba(170, 170, 170, 0.5)",
-      "filePath": "tokens/elevation/shadow.json",
-      "isSource": false,
+      "value": "rgba(255, 255, 255, 0.1)",
+      "filePath": "tokens/elevation/shadow.dark.json",
+      "isSource": true,
       "original": {
-        "value": "rgba(170, 170, 170, 0.5)"
+        "value": "rgba(255, 255, 255, 0.1)"
       },
       "name": "ShadowColor",
       "attributes": {

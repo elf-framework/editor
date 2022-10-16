@@ -22,6 +22,7 @@
 
             .content-container {
                 width: 100%;
+                max-width: 600px;
             }
         }
 
@@ -78,6 +79,7 @@
         // background-color: var(--color-white);
         padding: var(--padding-size-medium);
         text-align: left;
+        min-width: 300px;
 
         .category {
             color: var(--color-gray-5);

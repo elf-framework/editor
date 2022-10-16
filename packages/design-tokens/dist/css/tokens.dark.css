@@ -1,9 +1,11 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:45 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 .theme-dark {
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --shadow-none: none;
   --treeview-item-color-border-selected: transparent;
   --treeview-item-color-border-hover: transparent;
   --treeview-item-color-border-default: transparent;
@@ -147,6 +149,11 @@
   --color-red-1: #80252a;
   --color-red-0: #5c2121;
   --color-hover-dark: #000000;
+  --shadow-5: 0 16px 32px 0 var(--shadow-color);
+  --shadow-4: 0 12px 24px 0 var(--shadow-color);
+  --shadow-3: 0 8px 16px 0 var(--shadow-color);
+  --shadow-2: 0 4px 8px 0 var(--shadow-color);
+  --shadow-1: 0 1px 4px 0 var(--shadow-color);
   --treeview-item-color-background-ghost: var(--color-gray-1);
   --treeview-item-color-background-selected: var(--color-gray-2);
   --treeview-item-color-background-hover: var(--color-gray-1);
@@ -164,13 +171,11 @@
   --toolbar-color-background-dark: var(--color-black);
   --tag-color-border-default: var(--color-gray-3);
   --tag-color-background-default: var(--color-transparent-black-0);
-  --tabstrip-color-border-default: var(--color-transparent-white-0);
   --tabstrip-color-text-disabled: var(--color-gray-3);
-  --tabstrip-color-text-selected: var(--color-gray-9);
-  --tabstrip-color-text-indicator: var(--color-gray-9);
-  --tabstrip-color-text-default: var(--color-gray-5);
-  --tabstrip-color-background-indicator: var(--color-gray-2);
-  --tabstrip-color-background-default: var(--color-transparent-white-0);
+  --tabstrip-color-text-selected: var(--color-white);
+  --tabstrip-color-text-default: var(--color-gray-6);
+  --tabstrip-color-background-indicator-selected: var(--color-white);
+  --tabstrip-color-background-indicator-default: var(--color-gray-2);
   --table-color-border-default: var(--color-gray-2);
   --switch-true-color-handle-background-default: var(--color-gray-9);
   --switch-true-color-background-default: var(--color-gray-2);
@@ -191,6 +196,7 @@
   --ghost-color-background-default: var(--color-gray-2);
   --ghost-color-background-2: var(--color-transparent-white-3);
   --ghost-color-background-1: var(--color-transparent-white-1);
+  --divider-color-border-default: var(--color-gray-2);
   --dialog-color-border-default: var(--color-gray-2);
   --dialog-color-background-hover-default: var(--color-gray-1);
   --color-mixer-color-background-default: var(--color-gray-0);
@@ -418,6 +424,12 @@
   --menu-color-text-default: var(--color-text-default);
   --menu-color-background-default: var(--color-background-default);
   --input-color-text-default: var(--color-text-default);
+  --divider-color-border-danger: var(--color-danger);
+  --divider-color-border-warning: var(--color-warning);
+  --divider-color-border-info: var(--color-info);
+  --divider-color-border-success: var(--color-success);
+  --divider-color-border-secondary: var(--color-secondary);
+  --divider-color-border-primary: var(--color-primary);
   --dialog-color-text-default: var(--color-text-default);
   --dialog-color-background-default: var(--color-background-default);
   --card-color-border-selected: var(--color-primary);

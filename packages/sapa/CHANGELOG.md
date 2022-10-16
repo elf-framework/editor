@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.15
+
+### Patch Changes
+
+- fixed to find target component instance
+
 ## 0.0.12
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:44 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 (function(root, factory) {
@@ -5614,11 +5614,11 @@
       },
       "border": {
         "dark": {
-          "value": "#2c353d",
+          "value": "#ffffff",
           "filePath": "tokens/component/button/button.__dark__.json",
           "isSource": true,
           "original": {
-            "value": "{color.black.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineBorderDark",
           "attributes": {
@@ -5784,11 +5784,11 @@
       },
       "text": {
         "dark": {
-          "value": "#2c353d",
+          "value": "#ffffff",
           "filePath": "tokens/component/button/button.__dark__.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextDark",
           "attributes": {
@@ -5847,11 +5847,11 @@
           ]
         },
         "default": {
-          "value": "#2c353d",
+          "value": "#ffffff",
           "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.white.value}"
           },
           "name": "ButtonOutlineTextDefault",
           "attributes": {
@@ -8950,47 +8950,53 @@
   "tabstrip": {
     "color": {
       "background": {
-        "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/tabstrip.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.transparent.white.0.value}"
-          },
-          "name": "TabstripColorBackgroundDefault",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "background",
-            "default"
-          ]
-        },
         "indicator": {
-          "value": "#d9e0e6",
-          "filePath": "tokens/component/tabstrip.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.2.value}"
+          "default": {
+            "value": "#d9e0e6",
+            "filePath": "tokens/component/tabstrip.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2.value}"
+            },
+            "name": "TabstripColorBackgroundIndicatorDefault",
+            "attributes": {
+              "category": "tabstrip",
+              "type": "color",
+              "item": "background",
+              "subitem": "indicator",
+              "state": "default"
+            },
+            "path": [
+              "tabstrip",
+              "color",
+              "background",
+              "indicator",
+              "default"
+            ]
           },
-          "name": "TabstripColorBackgroundIndicator",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "background",
-            "subitem": "indicator"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "background",
-            "indicator"
-          ]
+          "selected": {
+            "value": "#2c353d",
+            "filePath": "tokens/component/tabstrip.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.9.value}"
+            },
+            "name": "TabstripColorBackgroundIndicatorSelected",
+            "attributes": {
+              "category": "tabstrip",
+              "type": "color",
+              "item": "background",
+              "subitem": "indicator",
+              "state": "selected"
+            },
+            "path": [
+              "tabstrip",
+              "color",
+              "background",
+              "indicator",
+              "selected"
+            ]
+          }
         }
       },
       "text": {
@@ -9013,27 +9019,6 @@
             "color",
             "text",
             "default"
-          ]
-        },
-        "indicator": {
-          "value": "#2c353d",
-          "filePath": "tokens/component/tabstrip.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.text.default.value}"
-          },
-          "name": "TabstripColorTextIndicator",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "text",
-            "subitem": "indicator"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "text",
-            "indicator"
           ]
         },
         "selected": {
@@ -9076,29 +9061,6 @@
             "color",
             "text",
             "disabled"
-          ]
-        }
-      },
-      "border": {
-        "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/tabstrip.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.transparent.white.0.value}"
-          },
-          "name": "TabstripColorBorderDefault",
-          "attributes": {
-            "category": "tabstrip",
-            "type": "color",
-            "item": "border",
-            "subitem": "default"
-          },
-          "path": [
-            "tabstrip",
-            "color",
-            "border",
-            "default"
           ]
         }
       }

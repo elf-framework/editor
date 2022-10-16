@@ -69,10 +69,10 @@ export function MainView() {
           }}
           renderActions={() => {
             return [
-              <Button quiet shape="square">
+              <Button quiet shape="square" iconOnly>
                 I
               </Button>,
-              <Button quiet shape="square">
+              <Button quiet shape="square" iconOnly>
                 II
               </Button>,
             ];

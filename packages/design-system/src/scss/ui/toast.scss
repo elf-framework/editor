@@ -150,6 +150,12 @@
         margin-left: 10px;
         border-left: 1px solid var(--elf--toast-tools-border-color);    
 
+
+        > button {
+            background-color: transparent;
+            font-size: 24px;
+            color: white;
+        }
     }
 
     > .icon {

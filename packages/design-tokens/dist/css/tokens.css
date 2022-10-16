@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Oct 2022 08:49:45 GMT
+ * Generated on Sun, 16 Oct 2022 17:02:41 GMT
  */
 
 :root {
@@ -307,11 +307,10 @@
   --toolbar-color-text-primary: var(--color-gray-8);
   --toolbar-color-text-default: var(--color-gray-8);
   --tag-color-background-default: var(--color-white);
-  --tabstrip-color-border-default: var(--color-transparent-white-0);
   --tabstrip-color-text-disabled: var(--color-gray-3);
   --tabstrip-color-text-default: var(--color-gray-6);
-  --tabstrip-color-background-indicator: var(--color-gray-2);
-  --tabstrip-color-background-default: var(--color-transparent-white-0);
+  --tabstrip-color-background-indicator-selected: var(--color-gray-9);
+  --tabstrip-color-background-indicator-default: var(--color-gray-2);
   --table-color-border-default: var(--color-gray-2);
   --switch-true-color-handle-background-default: var(--color-white);
   --switch-true-color-background-default: var(--color-gray-9);
@@ -422,7 +421,10 @@
   --button-hover-background-info: var(--color-blue-6);
   --button-hover-background-danger: var(--color-red-7);
   --button-hover-background-dark: var(--color-gray-7);
+  --button-outline-text-default: var(--color-white);
+  --button-outline-text-dark: var(--color-white);
   --button-outline-border-default: var(--color-gray-2);
+  --button-outline-border-dark: var(--color-white);
   --button-default-text-warning: var(--color-white);
   --button-default-text-success: var(--color-white);
   --button-default-text-secondary: var(--color-white);
@@ -548,7 +550,6 @@
   --tag-color-border-default: var(--color-text-default);
   --tag-color-text-default: var(--color-text-default);
   --tabstrip-color-text-selected: var(--color-text-default);
-  --tabstrip-color-text-indicator: var(--color-text-default);
   --table-tbody-color-background-default: var(--color-background-default);
   --progressbar-color-text-default: var(--color-text-default);
   --popover-color-background-default: var(--color-background-default);
@@ -572,17 +573,14 @@
   --button-outline-text-success: var(--color-text-default);
   --button-outline-text-secondary: var(--color-text-default);
   --button-outline-text-primary: var(--color-text-default);
-  --button-outline-text-default: var(--color-text-default);
   --button-outline-text-info: var(--color-text-default);
   --button-outline-text-danger: var(--color-text-default);
-  --button-outline-text-dark: var(--color-text-default);
   --button-outline-border-warning: var(--color-warning);
   --button-outline-border-success: var(--color-success);
   --button-outline-border-secondary: var(--color-secondary);
   --button-outline-border-primary: var(--color-primary);
   --button-outline-border-info: var(--color-info);
   --button-outline-border-danger: var(--color-danger);
-  --button-outline-border-dark: var(--color-black);
   --button-default-border-warning: var(--color-warning);
   --button-default-border-success: var(--color-success);
   --button-default-border-secondary: var(--color-secondary);

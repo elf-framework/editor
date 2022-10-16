@@ -25,12 +25,12 @@
       },
       "border": {
         "dark": {
-          "value": "{color.black.value}"
+          "value": "{color.white.value}"
         }
       },
       "text": {
         "dark": {
-          "value": "{color.text.default.value}"
+          "value": "{color.white.value}"
         }
       }
     },        

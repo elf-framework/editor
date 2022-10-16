@@ -22,8 +22,6 @@ export function InjectView({
     .flat(Infinity)
     .filter(Boolean);
 
-  // console.log("list", groups, views, list);
-
   return (
     <View as={as} style={style}>
       {list}

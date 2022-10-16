@@ -82,7 +82,6 @@ StyleDictionary.extend({
   ignore: [`*component*`],
   format: {
     "css/style": ({ dictionary, file, options }) => {
-      console.log(file);
       return `
 ${fileHeader({ file })}
 ${dictionary.allProperties

@@ -1824,7 +1824,7 @@ const _EventMachine = class extends HookMachine {
     return false;
   }
   isInstanceOf(...args) {
-    return args.includes(this);
+    return args.some((TargetClass) => this instanceof TargetClass);
   }
   getChildrenInstanceOf(localClass) {
     return Object.values(this.children).filter((child) => {
@@ -2270,7 +2270,7 @@ const _UIElement = class extends EventMachine {
         return NewFunctionComponent;
       }
       isInstanceOf(...args) {
-        return args.includes(NewFunctionComponent);
+        return args.some((TargetClass) => NewFunctionComponent === TargetClass);
       }
       template() {
         return NewFunctionComponent.call(this, this.props);
@@ -2691,6 +2691,7 @@ class VNodeComponent extends VNode {
     const hooks = oldInstance == null ? void 0 : oldInstance.copyHooks();
     const state = oldInstance == null ? void 0 : oldInstance.state;
     const oldId = oldInstance == null ? void 0 : oldInstance.id;
+    const children2 = (oldInstance == null ? void 0 : oldInstance.children) || {};
     this.instance = createComponentInstance(
       newComponent,
       options.context,
@@ -2705,6 +2706,9 @@ class VNodeComponent extends VNode {
     }
     if (state) {
       this.instance.setState(state, false);
+    }
+    if (Object.keys(children2).length) {
+      this.instance.setChildren(children2);
     }
     return this.instance;
   }
@@ -3093,8 +3097,11 @@ const patch = {
     } else if (name.startsWith(PREFIX_EVENT)) {
       el[name.toLowerCase()] = value;
     } else if (name === KEY_STYLE) {
-      if (el.style.cssText != value) {
+      const oldStyle = el.style.cssText;
+      if (oldStyle != value) {
         el.style.cssText = value;
+      } else if (oldStyle === "" && value === "") {
+        this.removeProp(el, name);
       }
     } else {
       el.setAttribute(name, value);
@@ -3103,6 +3110,8 @@ const patch = {
   },
   removeProp(el, name) {
     el.removeAttribute(name);
+    if (name == KEY_STYLE)
+      return;
     if (isBooleanType(name)) {
       el[name] = false;
     } else if (name) {
@@ -3680,6 +3689,7 @@ async function renderVNodeComponent(componentInstance, $container) {
   let template = componentInstance.template();
   template = flatTemplate(template);
   if (isArray(template) && template.length > 1) {
+    console.log(template);
     throw new Error(
       [
         `Error Component - ${componentInstance.sourceName}`,

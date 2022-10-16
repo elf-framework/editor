@@ -206,7 +206,7 @@ export class UIElement extends EventMachine {
 
       // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
       isInstanceOf(...args) {
-        return args.includes(NewFunctionComponent);
+        return args.some((TargetClass) => NewFunctionComponent === TargetClass);
       }
       template() {
         return NewFunctionComponent.call(this, this.props);

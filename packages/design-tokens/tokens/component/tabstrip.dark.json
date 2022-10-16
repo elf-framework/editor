@@ -2,30 +2,24 @@
   "tabstrip": {
     "color": {
       "background": {
-        "default": {
-          "value": "{color.transparent.white.0.value}"
-        },
         "indicator": {
-          "value": "{color.gray.2.value}"
+          "default": {
+            "value": "{color.gray.2.value}"
+          },
+          "selected": {
+            "value": "{color.white.value}"
+          }
         }
       },
       "text": {
         "default": {
-          "value": "{color.gray.5.value}"
-        },
-        "indicator": {
-          "value": "{color.gray.9.value}"
+          "value": "{color.gray.6.value}"
         },
         "selected": {
-          "value": "{color.gray.9.value}"
+          "value": "{color.white.value}"
         },
         "disabled": {
           "value": "{color.gray.3.value}"
-        }
-      },
-      "border": {
-        "default": {
-          "value": "{color.transparent.white.0.value}"
         }
       }
     }

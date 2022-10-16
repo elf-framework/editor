@@ -724,17 +724,15 @@
   "tabstrip": {
     "color": {
       "background": {
-        "default": "#ffffff",
-        "indicator": "#484848"
+        "indicator": {
+          "default": "#484848",
+          "selected": "#ffffff"
+        }
       },
       "text": {
-        "default": "#a8a8a8",
-        "indicator": "#f8f8f8",
-        "selected": "#f8f8f8",
+        "default": "#c8c8c8",
+        "selected": "#ffffff",
         "disabled": "#686868"
-      },
-      "border": {
-        "default": "#ffffff"
       }
     }
   },
@@ -814,13 +812,13 @@
     }
   },
   "shadow": {
-    "1": "0 1px 4px 0 rgba(170, 170, 170, 0.5)",
-    "2": "0 4px 8px 0 rgba(170, 170, 170, 0.5)",
-    "3": "0 8px 16px 0 rgba(170, 170, 170, 0.5)",
-    "4": "0 12px 24px 0 rgba(170, 170, 170, 0.5)",
-    "5": "0 16px 32px 0 rgba(170, 170, 170, 0.5)",
+    "1": "0 1px 4px 0 rgba(255, 255, 255, 0.1)",
+    "2": "0 4px 8px 0 rgba(255, 255, 255, 0.1)",
+    "3": "0 8px 16px 0 rgba(255, 255, 255, 0.1)",
+    "4": "0 12px 24px 0 rgba(255, 255, 255, 0.1)",
+    "5": "0 16px 32px 0 rgba(255, 255, 255, 0.1)",
     "none": "none",
-    "color": "rgba(170, 170, 170, 0.5)"
+    "color": "rgba(255, 255, 255, 0.1)"
   },
   "column": {
     "1": "repeat(1, 1fr)",

@@ -22,7 +22,7 @@
     "@elf-framework/color": "*",
     "@elf-framework/design-system": "*",
     "@elf-framework/design-tokens": "*",
-    "@elf-framework/icon": "^0.0.7",
+    "@elf-framework/icon": "^0.0.11",
     "@elf-framework/sapa": "*",
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
-    "@mdx-js/rollup": "^2.1.4",
+    "@mdx-js/rollup": "^2.1.5",
     "glob": "^8.0.3",
     "mdx-mermaid": "^2.0.0-rc1",
     "mdx-prism": "^0.3.4",
@@ -39,9 +39,8 @@
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-frontmatter": "^2.0.3",
-    "vite": "^3.1.6",
+    "vite": "^3.1.8",
     "vite-plugin-sapa": "*",
-    "vite-plugin-ssr": "^0.4.39",
-    "vitest": "0.23.4"
+    "vitest": "0.24.3"
   }
 }

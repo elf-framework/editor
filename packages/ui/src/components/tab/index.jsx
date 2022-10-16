@@ -54,10 +54,11 @@ export class Tab extends UIElement {
       fitted,
       align = "left",
       orientation = "horizontal",
-      showIndicator = false,
+      showIndicator = true,
       size = "medium",
       variant = "default",
       quiet = false,
+      stripType = "underline",
     } = this.props;
     const { activeKey } = this.state;
 
@@ -84,6 +85,7 @@ export class Tab extends UIElement {
             size={size}
             variant={variant}
             quiet={quiet}
+            stripType={stripType}
             items={content.map((it) => {
               const { title, key, onClick, disabled, style, selectedStyle } =
                 it.props;

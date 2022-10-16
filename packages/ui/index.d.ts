@@ -753,6 +753,14 @@ declare module "@elf-framework/ui" {
     style?: PanelStyle;
   }
 
+  type TabStripType =
+    | "underline"
+    | "button"
+    | "group"
+    | "round-group"
+    | "block"
+    | "classic";
+
   export interface TabStripProps {
     tools?: ContentType;
     /**
@@ -769,6 +777,7 @@ declare module "@elf-framework/ui" {
     size: SizeType;
     variant?: VariantType;
     quiet?: boolean;
+    stripType: TabStripType;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 
@@ -820,6 +829,7 @@ declare module "@elf-framework/ui" {
     size?: SizeType;
     variant?: VariantType;
     quiet?: boolean;
+    stripType: TabStripType;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 

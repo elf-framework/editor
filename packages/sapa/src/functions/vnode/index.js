@@ -395,7 +395,6 @@ export class VNodeComponent extends VNode {
     if (props.ref) {
       this.getContextProps(options.context, props);
     }
-
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
     const newComponent = this.getModule() || this.Component;
 
@@ -410,7 +409,7 @@ export class VNodeComponent extends VNode {
     const hooks = oldInstance?.copyHooks();
     const state = oldInstance?.state;
     const oldId = oldInstance?.id;
-    // const children = oldInstance?.children || {};
+    const children = oldInstance?.children || {};
 
     this.instance = createComponentInstance(
       newComponent,
@@ -433,9 +432,9 @@ export class VNodeComponent extends VNode {
       this.instance.setState(state, false);
     }
 
-    // if (Object.keys(children).length) {
-    //   this.instance.setChildren(children);
-    // }
+    if (Object.keys(children).length) {
+      this.instance.setChildren(children);
+    }
 
     // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.
     // 이걸 매번 새로 만들어야

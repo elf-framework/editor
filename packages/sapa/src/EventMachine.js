@@ -278,7 +278,7 @@ export class EventMachine extends HookMachine {
   }
 
   isInstanceOf(...args) {
-    return args.includes(this);
+    return args.some((TargetClass) => this instanceof TargetClass);
   }
 
   getChildrenInstanceOf(localClass) {
@@ -294,7 +294,7 @@ export class EventMachine extends HookMachine {
     if (newVNode.isComponentChanged) {
       return true;
     }
-    // children 에 있는지 체크
+    // children 에 root 가 있는지 체크
     let targetInstance = this.getTargetInstance(oldEl);
 
     if (targetInstance) {

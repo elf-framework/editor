@@ -22,7 +22,7 @@ export function QuietView() {
         >
           <div>
             <em>Not quiet</em>
-            <Tab activeKey={1} showIndicator>
+            <Tab activeKey={1}>
               <TabItem title="Design" key={1}></TabItem>
               <TabItem title="Prototype" key={2}></TabItem>
               <TabItem title="Project" key={3}></TabItem>
@@ -30,7 +30,7 @@ export function QuietView() {
           </div>
           <div>
             <em>Quiet</em>
-            <Tab activeKey={1} quiet showIndicator>
+            <Tab activeKey={1} quiet>
               <TabItem title="Design" key={1}></TabItem>
               <TabItem title="Prototype" key={2}></TabItem>
               <TabItem title="Project" key={3}></TabItem>

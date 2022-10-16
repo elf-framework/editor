@@ -22,7 +22,7 @@ export function VariantView() {
         >
           <div>
             <em>Not emphasized</em>
-            <Tab activeKey={1} showIndicator>
+            <Tab activeKey={1}>
               <TabItem title="Design" key={1}></TabItem>
               <TabItem title="Prototype" key={2}></TabItem>
               <TabItem title="Project" key={3}></TabItem>
@@ -30,7 +30,7 @@ export function VariantView() {
           </div>
           <div>
             <em>Emphasized - primary</em>
-            <Tab activeKey={1} variant={"primary"} showIndicator>
+            <Tab activeKey={1} variant={"primary"}>
               <TabItem title="Design" key={1}></TabItem>
               <TabItem title="Prototype" key={2}></TabItem>
               <TabItem title="Project" key={3}></TabItem>
@@ -39,7 +39,7 @@ export function VariantView() {
 
           <div>
             <em>Emphasized - danger</em>
-            <Tab activeKey={1} variant={"danger"} showIndicator>
+            <Tab activeKey={1} variant={"danger"}>
               <TabItem title="Design" key={1}></TabItem>
               <TabItem title="Prototype" key={2}></TabItem>
               <TabItem title="Project" key={3}></TabItem>
@@ -49,7 +49,7 @@ export function VariantView() {
             style={{ backgroundColor: "black", color: "white", padding: 10 }}
           >
             <em>Emphasized - dark</em>
-            <Tab activeKey={1} variant={"dark"} showIndicator>
+            <Tab activeKey={1} variant={"dark"}>
               <TabItem title="Design" key={1}></TabItem>
               <TabItem title="Prototype" key={2}></TabItem>
               <TabItem title="Project" key={3}></TabItem>

@@ -235,7 +235,6 @@ async function runningMount(componentInstance, template, $container) {
  * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
  */
 export async function renderVNodeComponent(componentInstance, $container) {
-  // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
   componentInstance.resetCurrentComponent();
   let template = componentInstance.template();
 
@@ -243,6 +242,7 @@ export async function renderVNodeComponent(componentInstance, $container) {
   template = flatTemplate(template);
 
   if (isArray(template) && template.length > 1) {
+    console.log(template);
     throw new Error(
       [
         `Error Component - ${componentInstance.sourceName}`,
@@ -255,6 +255,7 @@ export async function renderVNodeComponent(componentInstance, $container) {
   }
 
   const rootTemplate = template[0];
+
   if (componentInstance.$el) {
     await runningUpdate(componentInstance, rootTemplate);
   } else {

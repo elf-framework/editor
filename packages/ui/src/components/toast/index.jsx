@@ -97,12 +97,8 @@ export class Toast extends UIElement {
           <div class="close-area">
             <Button
               size="small"
-              style={{
-                // border: "1px solid white",
-                // width: 42,
-                color: "var(--color-white)",
-                fontSize: "20px !important",
-              }}
+              variant={variant}
+              iconOnly
               quiet
               closable
               onClick={() => this.hide()}
