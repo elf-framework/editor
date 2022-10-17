@@ -12,7 +12,7 @@ export function MainView() {
         padding: 20,
       }}
     >
-      <Flex>
+      <Flex style={{ justifyContent: "space-around" }}>
         <div
           style={{
             display: "flex",

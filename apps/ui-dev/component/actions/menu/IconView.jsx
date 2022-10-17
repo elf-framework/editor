@@ -3,7 +3,7 @@ import { Grid, Menu, VBox } from "@elf-framework/ui";
 
 export function IconView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
@@ -34,7 +34,6 @@ export function IconView() {
         </div>
       </VBox>
       <div>
-        <strong>Icon</strong>
         <p>
           A menu item can include an icon, but not purely for decoration. Use an
           icon only when necessary and when it has a strong association with the

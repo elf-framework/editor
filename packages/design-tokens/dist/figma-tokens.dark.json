@@ -3943,11 +3943,11 @@
           ]
         },
         "primary": {
-          "value": "{color.blue.1}",
+          "value": "{color.white}",
           "filePath": "tokens/component/alert.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.1}"
+            "value": "{color.white}"
           },
           "attributes": {
             "category": "alert",

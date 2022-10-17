@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 09:23:08 GMT
+ * Generated on Mon, 17 Oct 2022 12:22:11 GMT
  */
 
 .theme-dark {
@@ -328,7 +328,7 @@
   --alert-color-content-warning: var(--color-white); /* Base color for the warning color */
   --alert-color-content-danger: var(--color-red-1); /* Base color for the danger color */
   --alert-color-content-secondary: var(--color-gray-1);
-  --alert-color-content-primary: var(--color-blue-1);
+  --alert-color-content-primary: var(--color-white);
   --alert-color-content-dark: var(--color-white);
   --alert-color-content-default: var(--color-gray-9);
   --alert-color-title-weak-info: var(--color-blue-4); /* Base color for the info color */

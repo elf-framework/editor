@@ -13,7 +13,6 @@ import { ValueView } from "../../../../../component/actions/menu/ValueView.jsx";
 import { DisabledView } from "../../../../../component/actions/menu/DisabledView.jsx"; 
 import { SectionView } from "../../../../../component/actions/menu/SectionView.jsx"; 
 import { VariantView } from "../../../../../component/actions/menu/VariantView.jsx"; 
-import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx"; 
 import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
@@ -280,32 +279,232 @@ function App() {
 </CodeView>
 
 
-## Options 
+## Options  
 
 
 ### Popover container
 <OptionsView />
 
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2} showLineNumbers
+<Menu
+  type="dropdown"
+  items={[
+    { type: "item", title: "Document Setup" },
+    { type: "item", title: "Settings" },
+    { type: "item", title: "Copy" },
+  ]}
+/>
+```
+  </CodeViewItem>
+</CodeView>
 
 
 ### Icon
 <IconView />
 
+
+<CodeView>
+  <CodeViewItem>
+```jsx {5} showLineNumbers
+<Menu
+  items={[
+    {
+      type: "item",
+      icon: <DescriptionFilled />,
+      title: "Document Setup",
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Copy",
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
 ### Description
 <DescriptionView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {6, 12} showLineNumbers
+ <Menu
+  items={[
+    {
+      type: "item",
+      title: "Quick export",
+      description: "Share a low-res snapshot",
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 
 ### Value
 <ValueView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {6,8} showLineNumbers
+<Menu
+  items={[
+    {
+      type: "item",
+      title: "Quick export",
+      shortcut: "⌘ + Ctrl+E",
+      description: "Share a low-res snapshot",
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
 ### Disabled
 <DisabledView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {8} showLineNumbers
+<Menu
+  items={[
+    {
+      type: "item",
+      title: "Quick export",
+      shortcut: "⌘ + Ctrl+E",
+      description: "Share a low-res snapshot",
+      disabled: true,
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 
 ### Section
 <SectionView />
 
 
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {4} showLineNumbers
+ <Menu
+  items={[
+    {
+      type: "section",
+      title: "Section 1",
+    },
+    {
+      type: "item",
+      title: "Quick export",
+      shortcut: "⌘ + Ctrl+E",
+      description: "Share a low-res snapshot",
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+    { type: "item", title: "Settings" },
+    "-",
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+
 ### Variant
 <VariantView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {27} showLineNumbers
+<div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+  <strong>Dark</strong>
+  <Menu
+    variant="dark"
+    items={[
+      {
+        type: "item",
+        title: "Quick export",
+        shortcut: "⌘ + Ctrl+E",
+        description: "Share a low-res snapshot",
+        items: [{ type: "item", title: "Document Setup" }],
+      },
+      { type: "item", title: "Settings" },
+      {
+        type: "item",
+        title: "Open a copy",
+        description: "Open in iPad",
+      },
+    ]}
+    style={{
+      position: "relative",
+    }}
+  />
+</div>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 
 
 

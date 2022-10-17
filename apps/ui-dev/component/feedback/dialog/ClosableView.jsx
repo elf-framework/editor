@@ -2,12 +2,14 @@ import { Dialog, Grid, VBox } from "@elf-framework/ui";
 
 export function ClosableView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: "20px 40px",
+          padding: [50, 50],
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div>
@@ -23,10 +25,6 @@ export function ClosableView() {
               visible={true}
               style={{
                 width: 300,
-              }}
-              okProps={{
-                variant: "dark",
-                outline: true,
               }}
               title="Title"
             >

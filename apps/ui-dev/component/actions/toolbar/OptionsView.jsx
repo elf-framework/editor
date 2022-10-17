@@ -7,7 +7,7 @@ import { Grid, Toolbar, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{ gap: 30, backgroundColor: "var(--color-gray-0)", padding: 20 }}
       >

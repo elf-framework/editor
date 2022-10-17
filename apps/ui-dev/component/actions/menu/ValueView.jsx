@@ -2,7 +2,7 @@ import { Grid, Menu, VBox } from "@elf-framework/ui";
 
 export function ValueView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
@@ -34,7 +34,6 @@ export function ValueView() {
         </div>
       </VBox>
       <div>
-        <strong>Value</strong>
         <p>
           A menu item can display a related value in the value area. Examples of
           values include the selected option from a submenu, a keyboard shortcut

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 09:23:08 GMT
+ * Generated on Mon, 17 Oct 2022 12:22:11 GMT
  */
 
 (function(root, factory) {
@@ -4164,11 +4164,11 @@
           ]
         },
         "primary": {
-          "value": "#1a497d",
+          "value": "#ffffff",
           "filePath": "tokens/component/alert.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.1.value}"
+            "value": "{color.white.value}"
           },
           "name": "AlertColorContentPrimary",
           "attributes": {

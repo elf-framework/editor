@@ -8,21 +8,22 @@ function Item({ variant }) {
 
 export function VariantView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 50,
           backgroundColor: "var(--color-gray-0)",
-          padding: "70px 40px",
-          height: 500,
+          padding: "70px 100px",
+          height: 300,
         }}
       >
         <div
           style={{
-            display: "flex",
-            gap: 70,
-            flexDirection: "column",
+            display: "grid",
+            gap: 100,
+            gridTemplateColumns: "repeat(3, 1fr)",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Item variant="default" />

@@ -4,7 +4,7 @@ import { columns, data } from "./data/selection";
 
 export function SelectionView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,

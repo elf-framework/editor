@@ -19,7 +19,7 @@ const variants = [
 
 export function VariantView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,

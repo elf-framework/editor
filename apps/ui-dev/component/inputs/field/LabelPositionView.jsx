@@ -2,7 +2,7 @@ import { Field, Grid, InputEditor, VBox } from "@elf-framework/ui";
 
 export function LabelPositionView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,

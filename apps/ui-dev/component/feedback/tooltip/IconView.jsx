@@ -19,21 +19,22 @@ function Item({ variant, icon }) {
 
 export function IconView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: [80, 40],
-          height: 500,
+          padding: [80, 100],
+          height: 300,
         }}
       >
         <div
           style={{
-            display: "flex",
-            gap: 70,
-            flexDirection: "column",
+            display: "grid",
+            gap: 100,
+            gridTemplateColumns: "repeat(3, 1fr)",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Item variant="default" icon={<InfoOutlined />} />

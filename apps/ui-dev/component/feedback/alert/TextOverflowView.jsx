@@ -2,7 +2,7 @@ import { Alert, Grid, RoundButton, VBox } from "@elf-framework/ui";
 
 export function TextOverflowView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
@@ -20,7 +20,12 @@ export function TextOverflowView() {
           <Alert variant="dark" closable>
             Your trial has expired. Please purchase to continue.
             <div style={{ textAlign: "right", marginTop: 10 }}>
-              <RoundButton outline variant="primary" place="toast">
+              <RoundButton
+                outline
+                variant="primary"
+                place="toast"
+                style={{ textColor: "white" }}
+              >
                 Update
               </RoundButton>
             </div>

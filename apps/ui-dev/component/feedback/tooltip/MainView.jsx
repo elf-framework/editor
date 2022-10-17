@@ -10,7 +10,7 @@ export function MainView() {
       style={{
         gap: 30,
         backgroundColor: "var(--color-gray-0)",
-        padding: "60px 150px",
+        padding: "0px 150px",
         position: "relative",
         height: 200,
       }}

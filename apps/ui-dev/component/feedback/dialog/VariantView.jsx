@@ -9,96 +9,99 @@ import {
 
 export function VariantView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: "20px 40px",
+          padding: [100, 40],
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <div>
-          <div
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 20,
+            textAlign: "center",
+          }}
+        >
+          <Dialog
+            visible={true}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-              textAlign: "center",
+              width: 300,
             }}
+            closable={false}
+            title={<Ghost width="100%" />}
           >
-            <Dialog
-              visible={true}
-              style={{
-                width: 300,
-              }}
-              closable={false}
-              title={<Ghost width="100%" />}
-            >
-              Smart filters are nondestructive
-            </Dialog>
+            Smart filters are nondestructive
+          </Dialog>
 
-            <Dialog
-              visible={true}
-              style={{
-                width: 300,
-              }}
-              closable={false}
-              okProps={{
-                variant: "danger",
-              }}
-              okText="Delete"
-              title={<Ghost width="100%" />}
-            >
-              Smart filters are nondestructive
-            </Dialog>
+          <Dialog
+            visible={true}
+            style={{
+              width: 300,
+            }}
+            closable={false}
+            okProps={{
+              variant: "danger",
+            }}
+            okText="Delete"
+            title={<Ghost width="100%" />}
+          >
+            Smart filters are nondestructive
+          </Dialog>
 
-            <Dialog
-              visible={true}
-              style={{
-                width: 300,
-              }}
-              closable={false}
-              okProps={{
-                variant: "dark",
-                outline: true,
-              }}
-              title={<Ghost width="100%" />}
-            >
-              Smart filters are nondestructive
-            </Dialog>
+          <Dialog
+            visible={true}
+            style={{
+              width: 300,
+            }}
+            closable={false}
+            okProps={{
+              variant: "dark",
+              outline: true,
+              style: {
+                backgroundColor: "black",
+              },
+            }}
+            title={<Ghost width="100%" />}
+          >
+            Smart filters are nondestructive
+          </Dialog>
 
-            <Dialog
-              visible={true}
-              style={{
-                width: 300,
-              }}
-              closable={false}
-              okProps={{
-                variant: "dark",
-                outline: true,
-              }}
-              title={<Ghost width="100%" />}
-              footer={
-                <div>
-                  <ActionGroup
-                    direction="vertical"
-                    style={{
-                      textAlign: "right",
-                      alignItems: "flex-end",
-                    }}
+          <Dialog
+            visible={true}
+            style={{
+              width: 300,
+            }}
+            closable={false}
+            title={<Ghost width="100%" />}
+            footer={
+              <div>
+                <ActionGroup
+                  direction="vertical"
+                  style={{
+                    textAlign: "right",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <RoundButton>No, thanks</RoundButton>
+                  <RoundButton>Remind me later</RoundButton>
+                  <RoundButton
+                    variant="dark"
+                    outline
+                    style={{ backgroundColor: "black" }}
                   >
-                    <RoundButton>No, thanks</RoundButton>
-                    <RoundButton>Remind me later</RoundButton>
-                    <RoundButton variant="dark" outline>
-                      Rate now
-                    </RoundButton>
-                  </ActionGroup>
-                </div>
-              }
-            >
-              Smart filters are nondestructive
-            </Dialog>
-          </div>
+                    Rate now
+                  </RoundButton>
+                </ActionGroup>
+              </div>
+            }
+          >
+            Smart filters are nondestructive
+          </Dialog>
         </div>
       </VBox>
       <div>

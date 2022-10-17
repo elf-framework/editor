@@ -1,7 +1,6 @@
 import {
   ActionGroup,
   Badge,
-  Button,
   Dialog,
   Grid,
   RoundButton,
@@ -10,12 +9,14 @@ import {
 
 export function CustomFooterView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: "20px 40px",
+          padding: [50, 40],
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div>

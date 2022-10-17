@@ -65,7 +65,7 @@
           "value": "{color.white.value}"
         },        
         "primary": {
-          "value": "{color.blue.1.value}"
+          "value": "{color.white.value}"
         },
         "secondary": {
           "value": "{color.gray.1.value}"

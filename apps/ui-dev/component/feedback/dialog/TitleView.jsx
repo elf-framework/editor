@@ -2,12 +2,14 @@ import { Dialog, Ghost, Grid, VBox } from "@elf-framework/ui";
 
 export function TitleView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: "20px 40px",
+          padding: "50px 40px",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div>

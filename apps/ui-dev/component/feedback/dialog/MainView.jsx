@@ -6,9 +6,11 @@ export function MainView() {
       style={{
         gap: 30,
         backgroundColor: "var(--color-gray-0)",
-        padding: "60px 150px",
+        padding: "60px 0px",
         position: "relative",
         height: 300,
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <div

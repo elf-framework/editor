@@ -2,7 +2,7 @@ import { Grid, Menu, VBox } from "@elf-framework/ui";
 
 export function DescriptionView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
@@ -32,7 +32,6 @@ export function DescriptionView() {
         </div>
       </VBox>
       <div>
-        <strong>Description</strong>
         <p>
           Menu items can display additional description text when necessary.
           Descriptions offer helpful details for clarifying the menu item, such

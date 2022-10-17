@@ -255,7 +255,7 @@
       "content": {
         "default": "#f8f8f8",
         "dark": "#ffffff",
-        "primary": "#1a497d",
+        "primary": "#ffffff",
         "secondary": "#282828",
         "danger": "#80252a",
         "warning": "#ffffff",

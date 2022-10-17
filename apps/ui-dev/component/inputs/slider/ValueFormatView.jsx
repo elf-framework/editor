@@ -2,7 +2,7 @@ import { Grid, VBox, Slider } from "@elf-framework/ui";
 
 export function ValueFormatView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,

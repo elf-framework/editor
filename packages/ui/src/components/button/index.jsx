@@ -12,6 +12,7 @@ const cssProperties = makeCssVariablePrefixMap("--elf--button", {
   selectedBackgroundColor: true,
   disabledColor: true,
   color: true,
+  textColor: true,
   fontSize: true,
   fontWeight: true,
   height: true,

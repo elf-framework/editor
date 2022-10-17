@@ -22,12 +22,13 @@ function Item({ variant, icon }) {
 
 export function MaxWidthView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: [80, 40],
+          padding: [120, 40],
+          height: 200,
         }}
       >
         <div

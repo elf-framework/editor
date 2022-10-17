@@ -5,7 +5,7 @@ export function LabelPositionView() {
   const [value, setValue] = useState(0);
   const [value2, setValue2] = useState(0);
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,

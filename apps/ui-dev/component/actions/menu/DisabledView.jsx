@@ -2,7 +2,7 @@ import { Grid, Menu, VBox } from "@elf-framework/ui";
 
 export function DisabledView() {
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
@@ -35,7 +35,6 @@ export function DisabledView() {
         </div>
       </VBox>
       <div>
-        <strong>Disabled</strong>
         <p>
           A menu item in a disabled state shows that an option exists, but is
           not available in that circumstance. This state can be used to maintain

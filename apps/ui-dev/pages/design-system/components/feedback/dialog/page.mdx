@@ -1,7 +1,7 @@
 ---
 title: Alert Dialog
 layout: DesignLayout
-filename: pages/design-system/components/feedback/notification/page.mdx
+filename: pages/design-system/components/feedback/dialog/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
@@ -11,7 +11,7 @@ import { DescriptionView } from "../../../../../component/feedback/dialog/Descri
 import { VariantView } from "../../../../../component/feedback/dialog/VariantView.jsx";
 import { ClosableView } from "../../../../../component/feedback/dialog/ClosableView.jsx";
 import { CustomFooterView } from "../../../../../component/feedback/dialog/CustomFooterView.jsx";
-import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -20,6 +20,28 @@ Alert dialogs display important information that users need to acknowledge. They
 
 <MainView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+<Dialog
+    visible
+    style={{
+        width: 400,
+    }}
+    noBorder
+    title="Dialog"
+>
+    <div>
+        The following typefaces are not available. Please either install
+        these on your computer or in Figma. Alternatively you can replace
+        them with other fonts.
+    </div>
+</Dialog>
+```
+  </CodeViewItem>
+</CodeView>
+
 ## Options 
 
 
@@ -27,18 +49,210 @@ Alert dialogs display important information that users need to acknowledge. They
 
 <TitleView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+<Dialog
+    visible
+    noBorder
+    style={{
+        width: 300,
+    }}
+    title="Dialog"
+    closable={false}
+    footer={<span />}
+>
+    <div
+        style={{ display: "flex", flexDirection: "column", gap: 10 }}
+    >
+        <Ghost style={{ width: "100%" }} />
+        <Ghost style={{ width: "90%" }} />
+    </div>
+</Dialog>
+```
+  </CodeViewItem>
+</CodeView>
+
 ### Description
 
 <DescriptionView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+<Dialog
+    visible
+    noBorder
+    style={{
+        width: 300,
+    }}
+    closable={false}
+    title={<Ghost width="100%" />}
+    footer={<span />}
+>
+    The following typefaces are not available. Please either install
+    these on your computer or in Figma. Alternatively you can replace
+    them with other fonts.
+</Dialog>
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Confirmation Variant 
 
 <VariantView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {11-13} showLineNumbers
+<Dialog
+    visible
+    style={{
+        width: 300,
+    }}
+    closable={false}
+    title={<Ghost width="100%" />}
+    >
+        Smart filters are nondestructive
+</Dialog>
+
+<Dialog
+    visible
+    style={{
+        width: 300,
+    }}
+    closable={false}
+    okProps={{
+        variant: "danger",
+    }}
+    okText="Delete"
+    title={<Ghost width="100%" />}
+    >
+        Smart filters are nondestructive
+</Dialog>
+
+<Dialog
+    visible
+    style={{
+        width: 300,
+    }}
+    closable={false}
+    okProps={{
+        variant: "dark",
+        outline: true,
+        style: {
+            backgroundColor: "black",
+        },
+    }}
+    title={<Ghost width="100%" />}
+    >
+        Smart filters are nondestructive
+</Dialog>
+
+<Dialog
+    visible
+    style={{
+        width: 300,
+    }}
+    closable={false}
+    title={<Ghost width="100%" />}
+    footer={
+        <ActionGroup
+            direction="vertical"
+            style={{
+            textAlign: "right",
+            alignItems: "flex-end",
+            }}
+        >
+            <RoundButton>No, thanks</RoundButton>
+            <RoundButton>Remind me later</RoundButton>
+            <RoundButton
+            variant="dark"
+            outline
+            style={{ backgroundColor: "black" }}
+            >
+            Rate now
+            </RoundButton>
+        </ActionGroup>
+    }
+>
+    Smart filters are nondestructive
+</Dialog>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ### Cloasable 
 
 <ClosableView />
 
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+ <Dialog
+    visible
+    style={{
+        width: 300,
+    }}
+    okProps={{
+        variant: "dark",
+        outline: true,
+    }}
+    title="Title"
+>
+    Smart filters are nondestructive
+</Dialog>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ### Custom Footer
 
 <CustomFooterView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+ <Dialog
+    visible
+    style={{
+        width: 300,
+    }}
+    title="Title"
+    footer={
+    <div
+        style={{
+            display: "flex",
+            gap: 10,
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            borderTop: "1px solid var(--color-gray-1)",
+            paddingTop: 20,
+            marginTop: 20,
+        }}
+    >
+        <Badge variant="informative">Sample text</Badge>
+        <ActionGroup style={{ gap: 10 }}>
+        <RoundButton variant="dark" outline>
+            Cancel
+        </RoundButton>
+        <RoundButton variant="dark">OK</RoundButton>
+        </ActionGroup>
+    </div>
+    }
+>
+    Smart filters are nondestructive
+</Dialog>
+```
+  </CodeViewItem>
+</CodeView>
+

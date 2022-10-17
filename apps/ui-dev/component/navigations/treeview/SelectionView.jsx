@@ -11,7 +11,7 @@ export function SelectionView() {
   const [provider] = useState(new TreeViewProvider(treeData));
   const [singleProvider] = useState(new TreeViewProvider(single));
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
