@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 06:31:02 GMT
+ * Generated on Mon, 17 Oct 2022 09:23:08 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -419,7 +419,7 @@ export const ProgressCircleColorActive = "#2c353d";
 export const SliderColorProgressBackgroundDefault = "#2c353d";
 export const SliderColorProgressThumbBackgroundDefault = "#2c353d";
 export const SwitchFalseColorBackgroundDefault = "#d9e0e6";
-export const SwitchFalseColorHandleBackgroundDefault = "#d9e0e6";
+export const SwitchFalseColorHandleBackgroundDefault = "#ffffff";
 export const SwitchTrueColorBackgroundDefault = "#2c353d";
 export const SwitchTrueColorHandleBackgroundDefault = "#ffffff";
 export const TableColorBorderDefault = "#d9e0e6";

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 06:31:02 GMT
+ * Generated on Mon, 17 Oct 2022 09:23:08 GMT
  */
 
 :root {
@@ -315,7 +315,7 @@
   --table-color-border-default: var(--color-gray-2);
   --switch-true-color-handle-background-default: var(--color-white);
   --switch-true-color-background-default: var(--color-gray-9);
-  --switch-false-color-handle-background-default: #d9e0e6;
+  --switch-false-color-handle-background-default: var(--color-white);
   --switch-false-color-background-default: var(--color-gray-2);
   --slider-color-progress-thumb-background-default: var(--color-gray-9);
   --slider-color-progress-background-default: var(--color-gray-9);

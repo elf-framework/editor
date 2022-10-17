@@ -1437,6 +1437,8 @@ declare module "@elf-framework/ui" {
     style: CommonStyle;
     onChange: (checked: boolean) => void;
     content: ContentType;
+    withLabel?: boolean;
+    labels: ContentType[];
     readOnly?: boolean;
   }
   export class Switch extends UIElement {

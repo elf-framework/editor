@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 06:31:02 GMT
+ * Generated on Mon, 17 Oct 2022 09:23:08 GMT
  */
 
 module.exports = {
@@ -8829,11 +8829,11 @@ module.exports = {
         "handle": {
           "background": {
             "default": {
-              "value": "#d9e0e6",
+              "value": "#ffffff",
               "filePath": "tokens/component/switch.json",
               "isSource": true,
               "original": {
-                "value": "{color.border.default.value}"
+                "value": "{color.white.value}"
               },
               "name": "SwitchFalseColorHandleBackgroundDefault",
               "attributes": {

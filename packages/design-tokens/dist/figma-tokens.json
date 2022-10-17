@@ -8408,11 +8408,11 @@
         "handle": {
           "background": {
             "default": {
-              "value": "{color.border.default}",
+              "value": "{color.white}",
               "filePath": "tokens/component/switch.json",
               "isSource": true,
               "original": {
-                "value": "{color.border.default}"
+                "value": "{color.white}"
               },
               "attributes": {
                 "category": "switch",

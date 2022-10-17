@@ -5946,6 +5946,8 @@ var __privateMethod = (obj, member, method) => {
         size = "medium",
         style: style2 = {},
         content,
+        withLabel = false,
+        labels = void 0,
         onClick,
         readOnly = false
       } = this.props;
@@ -5954,9 +5956,10 @@ var __privateMethod = (obj, member, method) => {
           [variant]: true,
           [size]: true,
           disabled,
-          readonly: readOnly
+          readonly: readOnly,
+          "with-label": withLabel
         });
-      }, [variant, size, disabled, readOnly]);
+      }, [variant, size, disabled, readOnly, withLabel]);
       const styleObject = {
         class: localClass,
         style: propertyMap(style2, cssProperties$c)
@@ -5976,7 +5979,13 @@ var __privateMethod = (obj, member, method) => {
         class: "tools"
       }, /* @__PURE__ */ sapa.createElementJsx("span", {
         class: "track"
-      }), /* @__PURE__ */ sapa.createElementJsx("span", {
+      }), withLabel ? /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "label-area"
+      }, /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "unchecked"
+      }, labels == null ? void 0 : labels[0]), /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: "checked"
+      }, labels == null ? void 0 : labels[1])) : void 0, /* @__PURE__ */ sapa.createElementJsx("span", {
         class: "handle"
       })), (content == null ? void 0 : content.length) ? /* @__PURE__ */ sapa.createElementJsx("label", {
         for: "switch-checkbox-" + this.id

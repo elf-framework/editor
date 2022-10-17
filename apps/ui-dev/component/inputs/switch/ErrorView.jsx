@@ -2,7 +2,7 @@ import { Checkbox, Grid, VBox } from "@elf-framework/ui";
 
 export function ErrorView() {
   return (
-    <Grid columns={2} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,

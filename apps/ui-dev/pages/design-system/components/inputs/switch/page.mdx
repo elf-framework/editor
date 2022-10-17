@@ -11,11 +11,12 @@ import { SizeView } from "../../../../../component/inputs/switch/SizeView.jsx";
 import { EmphasisView } from "../../../../../component/inputs/switch/EmphasisView.jsx"; 
 import { DisabledView } from "../../../../../component/inputs/switch/DisabledView.jsx"; 
 import { ReadOnlyView } from "../../../../../component/inputs/switch/ReadOnlyView.jsx"; 
-import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { WithLabelView } from "../../../../../component/inputs/switch/WithLabelView.jsx"; 
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
-Switches allow users to turn an individual option on or off. They are usually used to activate or deactivate a specific setting.
+The switch allows the user to turn individual options on or off. Typically used to enable or disable certain settings.
 
 <MainView />
 
@@ -26,13 +27,68 @@ Switches allow users to turn an individual option on or off. They are usually us
 
 <OptionsView />
 
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {2,5} showLineNumbers
+// with label
+<Switch checked>label</Switch>
+
+// standalone
+<Switch size="small" checked />
+```
+    </CodeViewItem>
+</CodeView>
+
 ### Size
 
 <SizeView />
 
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {1,5,9, 13} showLineNumbers
+<Switch size="small" checked>
+    Small
+</Switch>
+
+<Switch size="medium" checked>
+    Medium
+</Switch>
+
+<Switch size="large" checked>
+    Large
+</Switch>
+
+<Switch size="extra-large" checked>
+    Extra Large
+</Switch>
+```
+    </CodeViewItem>
+</CodeView>
+
+
 ### Emphasis
 
 <EmphasisView />
+
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {1,4,7} showLineNumbers
+ <Switch variant="primary" checked>
+    Label
+</Switch>
+<Switch variant="success" checked>
+    Label
+</Switch>
+<Switch variant="danger" checked>
+    Label
+</Switch>
+```
+    </CodeViewItem>
+</CodeView>
+
 
 
 ### Disabled
@@ -42,4 +98,41 @@ Switches allow users to turn an individual option on or off. They are usually us
 ### Read only
 
 <ReadOnlyView />
+
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {1,2,5} showLineNumbers
+<Switch readOnly>label</Switch>
+<Switch readOnly checked>
+    label
+</Switch>
+<Switch readOnly indeterminate>
+    label
+</Switch>
+```
+    </CodeViewItem>
+</CodeView>
+
+
+
+
+### With label view
+
+<WithLabelView />
+
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {4-5} showLineNumbers
+  <Switch
+    size="extra-large"
+    checked
+    withLabel
+    labels={["OFF", "ON"]}    
+    variant={"primary"}
+/>
+```
+    </CodeViewItem>
+</CodeView>
 

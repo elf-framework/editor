@@ -41,11 +41,11 @@
     }
 
     &.large {
-        --elf--tabstrip-font-size: var(--font-size-large);
+        --elf--tabstrip-font-size: var(--font-size-300);
     }
 
     &.extra-large {
-        --elf--tabstrip-font-size: var(--font-size-extra-large);
+        --elf--tabstrip-font-size: var(--font-size-500);
     }
 
     /** variant **/

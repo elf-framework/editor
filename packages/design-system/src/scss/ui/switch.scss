@@ -10,7 +10,7 @@
   --elf--switch-handle-size: calc(var(--elf--switch-height) * 0.7);
   --elf--switch-handle-width: var(--elf--switch-handle-size);
   --elf--switch-handle-height: var(--elf--switch-handle-size);
-
+  --elf--switch-label-font-size: var(--font-size-small);
   --elf--switch-handle-left: 2px;
   --elf--switch-duration: 0.3s;
   --elf--switch-border-color: transparent;
@@ -54,6 +54,22 @@
       transition: all var(--elf--switch-duration) ease-in-out;
       border: 1px solid var(--elf--switch-border-color);
       box-sizing: border-box;
+    }
+
+    > .label-area {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: var(--elf--switch-label-font-size);
+      &.checked {
+        justify-content: flex-start;
+      }
     }
 
     > .handle {
@@ -193,6 +209,118 @@
 
     > input[type="checkbox"]:checked + .tools {
       --elf--switch-track-color: var(--color-gray-2) !important;
+    }
+  }
+
+  &.with-label {
+
+    --elf--switch-width: 70px;
+    --elf--switch-height: 30px;
+
+    &.small {
+      --elf--switch-width: 50px;
+      --elf--switch-height: 20px;
+    }
+
+    &.large {
+      --elf--switch-width: 90px;
+      --elf--switch-height: 40px;
+    }    
+
+    &.extra-large {
+      --elf--switch-width: 110px;
+      --elf--switch-height: 50px;
+    }
+
+    display: inline-block;
+    position: relative;
+    width: var(--elf--switch-width);
+    height: var(--elf--switch-height);
+    overflow: hidden;
+
+    --elf-switch-border-radius: var(--elf--switch-height);
+    --elf--switch-handle-size: calc(var(--elf--switch-height) * 0.7);
+    --elf--switch-handle-text-padding: calc(var(--elf--switch-handle-size)/2);
+    > input {
+      width: 100%;
+      height: 100%;
+    }
+
+    > .tools {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      margin: 0px;
+      width: auto;
+      height: auto;
+      top: 0px;
+      bottom: 0px;
+
+
+      > .handle {
+        left: 5px;
+      }
+
+      > .label-area {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        color: white;
+        pointer-events: none;
+
+        > * {
+          position: absolute;
+          left: 0px;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: flex-end;
+          // padding-right: 5px;
+          align-items: center;
+          font-size: calc(var(--elf--switch-height) / 2 - 1px);
+          opacity: 1;
+          transition: opacity var(--elf--switch-duration) ease-in-out;
+
+          &.checked {
+            padding-left: var(--elf--switch-handle-text-padding);
+            justify-content: flex-start;
+          }
+
+          &.unchecked {
+            color: var(--color-text-default);
+            padding-right: var(--elf--switch-handle-text-padding);
+          }
+        }
+      }
+    }
+
+    > input[type="checkbox"]:not(:checked) + .tools {
+      > .label-area {
+        .checked {
+          opacity: 0;
+        }
+      }
+    }
+
+    > input[type="checkbox"]:checked + .tools {
+      > .label-area {
+
+        .unchecked {
+          opacity: 0;
+        }
+        color: white;
+
+      }
+
+      > .handle {
+        right: auto;
+        left: calc(100% - var(--elf--switch-handle-size) - 5px);
+      }
     }
   }
 }

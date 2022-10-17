@@ -25,6 +25,8 @@ export class Switch extends UIElement {
       size = "medium",
       style = {},
       content,
+      withLabel = false,
+      labels = undefined,
       onClick,
       readOnly = false,
     } = this.props;
@@ -35,8 +37,9 @@ export class Switch extends UIElement {
         [size]: true,
         disabled,
         readonly: readOnly,
+        "with-label": withLabel,
       });
-    }, [variant, size, disabled, readOnly]);
+    }, [variant, size, disabled, readOnly, withLabel]);
 
     const styleObject = {
       class: localClass,
@@ -57,6 +60,12 @@ export class Switch extends UIElement {
         />
         <span class="tools">
           <span class="track"></span>
+          {withLabel ? (
+            <div class="label-area">
+              <div class="unchecked">{labels?.[0]}</div>
+              <div class="checked">{labels?.[1]}</div>
+            </div>
+          ) : undefined}
           <span class="handle"></span>
         </span>
         {content?.length ? (

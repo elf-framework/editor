@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.19
+
+### Patch Changes
+
+- add withLabel option in switch
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.19
+
 ## 0.0.16
 
 ### Patch Changes

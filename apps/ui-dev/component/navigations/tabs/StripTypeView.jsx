@@ -5,7 +5,7 @@ export function StripTypeView() {
   const [selectedKey, setSelectedKey] = useState(1);
 
   return (
-    <Grid columns={["50%", 1]} gap={30}>
+    <Grid columns={1} gap={30}>
       <VBox
         style={{
           gap: 30,
@@ -84,7 +84,12 @@ export function StripTypeView() {
               <li>button</li>
               <li>group</li>
               <li>round-group</li>
+              <li>block</li>
+              <li>classic</li>
             </ul>
+          </p>
+          <p>
+            Also, tabstrip can be used alone, not as part of a tab component.
           </p>
         </p>
       </div>

@@ -10,7 +10,7 @@
         "handle": {
           "background": {
             "default": {
-              "value": "{color.border.default.value}"
+              "value": "{color.white.value}"
             }
           }
         }
