@@ -65,7 +65,7 @@ class B extends UIElement {
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
   [SUBSCRIBE('key')] () {
-    useRender();
+    useRender(this);
   }
 }
 
@@ -128,7 +128,7 @@ function A() {
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
   useSubscribe('key', () => {
-    useRender();
+    useRender(this);
   })
 
   return <div onClick={() => {
@@ -147,7 +147,7 @@ function A() {
 function B () {
   useSubscribe('key', () => {
     // Re-render when key is changed.
-    useRender();
+    useRender(this);
   })
 
   return <div>{useStore('key')}</div>

@@ -27,6 +27,7 @@ export class EventMachine extends HookMachine {
 
     this.refs = {};
     this.id = uuid();
+    this.sourceId = uuid();
 
     this.initializeProperty(opt, props, state);
   }

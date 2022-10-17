@@ -12,24 +12,41 @@ export default [
     category: "_",
   },
   "Foundation",
-  { link: FOUNDATION_URL + "color/", title: "Color", category: "Foundation" },
-  { link: FOUNDATION_URL + "states/", title: "States", category: "Foundation" },
   {
-    link: FOUNDATION_URL + "icongraphy/",
-    title: "Icongraphy",
-    category: "Foundation",
+    title: "Base style",
+    items: [
+      {
+        link: FOUNDATION_URL + "color/",
+        title: "Color",
+        category: "Foundation",
+      },
+      {
+        link: FOUNDATION_URL + "states/",
+        title: "States",
+        category: "Foundation",
+      },
+      {
+        link: FOUNDATION_URL + "icongraphy/",
+        title: "Icongraphy",
+        category: "Foundation",
+      },
+      {
+        link: FOUNDATION_URL + "typography/",
+        title: "Typography",
+        category: "Foundation",
+      },
+      {
+        link: FOUNDATION_URL + "spacing/",
+        title: "Spacing",
+        category: "Foundation",
+      },
+      {
+        link: FOUNDATION_URL + "layout/",
+        title: "Application Layout",
+        category: "Foundation",
+      },
+    ],
   },
-  {
-    link: FOUNDATION_URL + "typography/",
-    title: "Typography",
-    category: "Foundation",
-  },
-  {
-    link: FOUNDATION_URL + "spacing/",
-    title: "Spacing",
-    category: "Foundation",
-  },
-  { link: FOUNDATION_URL + "layout/", title: "Layout", category: "Foundation" },
   "Components",
   {
     title: "Actions",

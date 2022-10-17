@@ -359,7 +359,7 @@ function A ( ) {
 function A ( ) {
 
   useSubscribe("message", () => {
-    useRender();
+    useRender(this);
   })
 
   return <div onClick={() => useEmit("message")}>Simple Text</div>
@@ -425,7 +425,7 @@ function A ( ) {
 
   // rerender after background-color message received
   useSubscribe("background-color", () => {
-    useRender();
+    useRender(this);
   })
 
   return <div style={{

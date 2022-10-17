@@ -49,21 +49,21 @@ export function MainView() {
           }}
           onToggleNode={(item) => {
             item.data.collapsed = !item.data.collapsed;
-            useRender();
+            useRender(this);
           }}
           onDropNode={({ startId, endId, targetPosition }) => {
             switch (targetPosition) {
               case "top":
                 provider.insertBefore(endId, startId);
-                useRender();
+                useRender(this);
                 break;
               case "bottom":
                 provider.insertAfter(endId, startId);
-                useRender();
+                useRender(this);
                 break;
               case "middle":
                 provider.insertLast(endId, startId);
-                useRender();
+                useRender(this);
                 break;
             }
           }}

@@ -83,6 +83,7 @@ export function ColorPalette({ title = "", colors = [] }) {
                 boxSizing: "border-box",
                 borderRight: "1px solid var(--color-border)",
                 borderBottom: "1px solid var(--color-border)",
+                background: "var(--color-background-default)",
               }}
             >
               <TextInfo
@@ -105,15 +106,15 @@ export function ColorPalette({ title = "", colors = [] }) {
               />
               <TextInfo
                 title="CSS :"
-                text={`--color-${title}-${selectedColorIndex}`}
+                text={`--color-${title.toLowerCase()}-${selectedColorIndex}`}
               />
               <TextInfo
                 title="SCSS :"
-                text={`$color-${title}-${selectedColorIndex}`}
+                text={`$color-${title.toLowerCase()}-${selectedColorIndex}`}
               />
               <TextInfo
                 title="Props :"
-                text={`color.${title}.${selectedColorIndex}`}
+                text={`color.${title.toLowerCase()}.${selectedColorIndex}`}
               />
             </div>
           </Grid>

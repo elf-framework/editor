@@ -231,8 +231,8 @@ var __privateMethod = (obj, member, method) => {
   function useBatch(callback) {
     getCurrentComponent().useBatch(callback);
   }
-  function useRender() {
-    useBatch(null);
+  function useRender(component) {
+    renderComponent(component);
   }
   function useId() {
     return getCurrentComponent().useId();
@@ -376,6 +376,12 @@ var __privateMethod = (obj, member, method) => {
       throttleSecond,
       isSelf
     );
+  }
+  function useComponentRender(name) {
+    const component = getCurrentComponent();
+    return component.useSubscribe(name, () => {
+      useRender(component);
+    });
   }
   function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
     return getCurrentComponent().useSelf(
@@ -1579,6 +1585,7 @@ var __privateMethod = (obj, member, method) => {
         ;
       else {
         this.context.$store.offAll(this.context);
+        this._callbacks = null;
       }
     }
     getCallback(field) {
@@ -1717,6 +1724,7 @@ var __privateMethod = (obj, member, method) => {
       });
       this.refs = {};
       this.id = uuid();
+      this.sourceId = uuid();
       this.initializeProperty(opt, props, state);
     }
     get renderer() {
@@ -2694,7 +2702,7 @@ var __privateMethod = (obj, member, method) => {
       const oldInstance = this.instance;
       const hooks = oldInstance == null ? void 0 : oldInstance.copyHooks();
       const state = oldInstance == null ? void 0 : oldInstance.state;
-      const oldId = oldInstance == null ? void 0 : oldInstance.id;
+      oldInstance == null ? void 0 : oldInstance.id;
       const children2 = (oldInstance == null ? void 0 : oldInstance.children) || {};
       this.instance = createComponentInstance(
         newComponent,
@@ -2702,18 +2710,15 @@ var __privateMethod = (obj, member, method) => {
         props,
         state
       );
-      if (oldId) {
-        this.instance.setId(oldId);
-      }
       if (hooks && ((_a = hooks.__stateHooks) == null ? void 0 : _a.length)) {
         this.instance.reloadHooks(hooks);
       }
       if (state) {
         this.instance.setState(state, false);
       }
-      if (Object.keys(children2).length) {
-        this.instance.setChildren(children2);
-      }
+      if (Object.keys(children2).length)
+        ;
+      oldInstance == null ? void 0 : oldInstance.destroy();
       return this.instance;
     }
     template() {
@@ -5201,6 +5206,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.throttle = throttle;
   exports2.useBatch = useBatch;
   exports2.useCallback = useCallback;
+  exports2.useComponentRender = useComponentRender;
   exports2.useContext = useContext;
   exports2.useEffect = useEffect;
   exports2.useEmit = useEmit;

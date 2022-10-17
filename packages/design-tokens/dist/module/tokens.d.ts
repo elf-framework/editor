@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 export default tokens;
@@ -476,7 +476,8 @@ declare const tokens: {
         "default": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
-        "success": DesignToken
+        "success": DesignToken,
+        "warning": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -485,7 +486,8 @@ declare const tokens: {
         "default": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
-        "success": DesignToken
+        "success": DesignToken,
+        "warning": DesignToken
       },
       "text": {
         "dark": DesignToken,
@@ -494,7 +496,8 @@ declare const tokens: {
         "default": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
-        "success": DesignToken
+        "success": DesignToken,
+        "warning": DesignToken
       }
     },
     "color": {
@@ -989,6 +992,9 @@ declare const tokens: {
       "xl": DesignToken,
       "xxl": DesignToken
     }
+  },
+  "theme": {
+    "type": DesignToken
   },
   "time": {
     "duration": {

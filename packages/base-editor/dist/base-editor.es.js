@@ -1,4 +1,4 @@
-import { isFunction as g, isObject as f, VNode as d, isArray as p, createElementJsx as o, useStore as l, UIElement as C, useSelf as m, classnames as I } from "@elf-framework/sapa";
+import { isFunction as g, isObject as f, VNode as d, isArray as p, createElementJsx as o, useStore as l, UIElement as C, useComponentRender as m, classnames as I } from "@elf-framework/sapa";
 import { View as E } from "@elf-framework/ui";
 class U {
   constructor(t) {
@@ -308,15 +308,14 @@ class $ extends C {
     this.$editor.updateConfigs(t), this.activate();
   }
   async activate() {
-    await this.$editor.activate(), this.trigger("editor.plugin.activated");
+    await this.$editor.activate(), this.emit("editor.plugin.activated");
   }
 }
 class M extends $ {
   template() {
+    m("editor.plugin.activated");
     const t = n();
-    return m("editor.plugin.activated", () => {
-      this.refresh();
-    }), /* @__PURE__ */ o("div", {
+    return /* @__PURE__ */ o("div", {
       class: I("elf--base-editor", {
         "full-screen": this.props.fullScreen,
         ...this.props.editorClass

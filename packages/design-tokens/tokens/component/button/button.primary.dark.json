@@ -54,12 +54,12 @@
     "selected": {
       "background": {
         "primary": {
-          "value": "{color.blue.7.value}"
+          "value": "{color.blue.1.value}"
         }
       },
       "border": {
         "primary": {
-          "value": "{color.blue.8.value}"
+          "value": "{color.blue.1.value}"
         }
       }
     },

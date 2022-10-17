@@ -77,17 +77,17 @@
     },
     "active": {
       "background": {
-        "default": {
+        "warning": {
           "value": "{color.orange.2.value}"
         }
       },
       "border": {
-        "default": {
+        "warning": {
           "value": "{color.orange.2.value}"
         }
       },
       "text": {
-        "default": {
+        "warning": {
           "value": "{color.white.value}"
         }
       }

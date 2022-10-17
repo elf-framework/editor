@@ -1,11 +1,12 @@
 .elf--button {
-
+  --elf--button-disabled-background-color: var(--button-disabled-background-default);
+  --elf--button-disabled-text-color: var(--button-disabled-text-default);
   &[disabled] {
     cursor: not-allowed;
     --elf--button-background-color: var(
-      --elf--button-disabled-background-default
+      --elf--button-disabled-background-color
     ) !important;
-    --elf--button-color: var(--elf--button-disabled-text-default) !important;
+    --elf--button-text-color: var(--elf--button-disabled-text-color) !important;
     --elf--button-border-color: transparent !important;
 
     &.quiet {

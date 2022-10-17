@@ -1,13 +1,7 @@
 import DarkModeFilled from "@elf-framework/icon/DarkModeFilled";
 import LightModeFilled from "@elf-framework/icon/LightModeFilled";
-import { classnames, useEffect, useState } from "@elf-framework/sapa";
-import {
-  Button,
-  IconButton,
-  RoundButton,
-  Switch,
-  Tools,
-} from "@elf-framework/ui";
+import { classnames, useEffect, useEmit, useState } from "@elf-framework/sapa";
+import { RoundButton, Tools } from "@elf-framework/ui";
 
 import mainMenus from "../constants/main-menus";
 import "./PageTools.scss";
@@ -87,6 +81,7 @@ export function PageTools({ menu }) {
               variant="dark"
               onClick={() => {
                 setViewMode("light");
+                useEmit("view-mode", "light");
                 localStorage.setItem("view-mode", "light");
                 document.body.classList.toggle("theme-dark", false);
               }}
@@ -99,6 +94,7 @@ export function PageTools({ menu }) {
               quiet
               onClick={() => {
                 setViewMode("dark");
+                useEmit("view-mode", "dark");
                 localStorage.setItem("view-mode", "dark");
                 document.body.classList.toggle("theme-dark", true);
               }}

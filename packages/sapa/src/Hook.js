@@ -2,6 +2,7 @@ import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
 import { debounce } from "./functions/func";
 import {
   getCurrentComponent,
+  renderComponent,
   renderRootElementInstanceList,
 } from "./functions/registElement";
 
@@ -48,8 +49,8 @@ export function useBatch(callback) {
   getCurrentComponent().useBatch(callback);
 }
 
-export function useRender() {
-  useBatch(null);
+export function useRender(component) {
+  renderComponent(component);
 }
 
 export function useId() {
@@ -322,6 +323,14 @@ export function useSubscribe(
     throttleSecond,
     isSelf
   );
+}
+
+export function useComponentRender(name) {
+  const component = getCurrentComponent();
+
+  return component.useSubscribe(name, () => {
+    useRender(component);
+  });
 }
 
 export function useSelf(

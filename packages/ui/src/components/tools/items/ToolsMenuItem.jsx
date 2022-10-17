@@ -105,7 +105,7 @@ export class ToolsMenuItem extends ToolsItem {
               rootClose={this.state.rootClose}
               style={{
                 ...(menuStyle || {}),
-                top: "calc(100% + 5px)",
+                top: "100%",
               }}
             />
           </div>

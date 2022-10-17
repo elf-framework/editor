@@ -29,6 +29,18 @@
         }
       }      
     },    
+    "selected": {
+      "background": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    },    
     "outline": {
       "background": {
         "default": {
@@ -46,24 +58,6 @@
         }
       }
     },      
-    "selected": {
-      "background": {
-        "default": {
-          "value": "{color.gray.2.value}"
-        },
-        "primary": {
-          "value": "{color.blue.1.value}"
-        }
-      },
-      "border": {
-        "default": {
-          "value": "{color.gray.2.value}"
-        },
-        "primary": {
-          "value": "{color.blue.1.value}"
-        }
-      }
-    },
     "disabled": {
       "background": {
         "default": {

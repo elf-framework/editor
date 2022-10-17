@@ -109,7 +109,7 @@ When used with `useSubscribe` , you can control the desired rendering time.
 function A () {
   // render when message is received.
   useSubscribe("message", () => {
-    useRender();
+    useRender(this);
   })
 
   return <div onClick={() => {
@@ -117,7 +117,7 @@ function A () {
       value: 10
     }, false)
 
-    useRender();
+    useRender(this);
   }}>Simple text {this.state.value} </div>
 }
 

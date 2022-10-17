@@ -173,7 +173,7 @@ class MyApp extends UIElement {
 
     // subscribe event for $store
     useSubscribe("myVariable", () => {
-      useRender();
+      useRender(this);
     })
 
     return <div onClick={() => {
@@ -194,7 +194,7 @@ Sapa provides a way to send messages from an internal component hierarchy.
 function MyApp () {
 
   useSubscribe("refreshComponent", () => {
-    useRender();
+    useRender(this);
   })
 
   return <div onClick={() => {

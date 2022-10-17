@@ -1,14 +1,12 @@
-import { classnames, useSelf } from "@elf-framework/sapa";
+import { classnames, useComponentRender } from "@elf-framework/sapa";
 
 import { Editor, useEditor } from "./Editor";
 
 export class BaseEditor extends Editor {
   template() {
-    const editor = useEditor();
+    useComponentRender("editor.plugin.activated");
 
-    useSelf("editor.plugin.activated", () => {
-      this.refresh();
-    });
+    const editor = useEditor();
 
     return (
       <div

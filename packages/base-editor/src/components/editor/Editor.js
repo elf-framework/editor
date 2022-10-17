@@ -92,7 +92,10 @@ export class Editor extends UIElement {
   }
 
   async activate() {
+    // start to load plugins
     await this.$editor.activate();
-    this.trigger("editor.plugin.activated");
+
+    // send message
+    this.emit("editor.plugin.activated");
   }
 }

@@ -30,13 +30,11 @@ export function ToolbarPlugin(editor) {
       {
         type: "menu",
         title: "fdsafd",
-        selected: () => {
-          return true;
-        },
         events: ["selectedItem", "selectionMode"],
         direction: "left",
         arrow: true,
         trigger: "hover",
+        // opened: true,
         onClick: () => {
           if (editor.$store.is("selectionMode", "shape")) {
             editor.$store.set(

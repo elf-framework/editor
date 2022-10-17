@@ -21,6 +21,7 @@ export default class StoreHandler extends BaseHandler {
       // NOOP
     } else {
       this.context.$store.offAll(this.context);
+      this._callbacks = null;
     }
   }
 
@@ -109,6 +110,7 @@ export default class StoreHandler extends BaseHandler {
     const originalCallback = this.context[magicMethod.originalMethod];
     [...eventList, events].filter(Boolean).forEach((e) => {
       var callback = this.createLocalCallback(e, originalCallback);
+
       this.context.$store.on(
         e,
         callback,

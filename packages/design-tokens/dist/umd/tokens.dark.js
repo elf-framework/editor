@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 (function(root, factory) {
@@ -6575,11 +6575,11 @@
           ]
         },
         "primary": {
-          "value": "#cce3ff",
+          "value": "#1a497d",
           "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.7.value}"
+            "value": "{color.blue.1.value}"
           },
           "name": "ButtonSelectedBackgroundPrimary",
           "attributes": {
@@ -6745,11 +6745,11 @@
           ]
         },
         "primary": {
-          "value": "#e8f3ff",
+          "value": "#1a497d",
           "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.8.value}"
+            "value": "{color.blue.1.value}"
           },
           "name": "ButtonSelectedBorderPrimary",
           "attributes": {
@@ -12040,11 +12040,11 @@
         ]
       },
       "large": {
-        "value": "18px",
+        "value": "28px",
         "filePath": "tokens/size/font.json",
         "isSource": false,
         "original": {
-          "value": "{font.size.300.value}"
+          "value": "{font.size.700.value}"
         },
         "name": "FontSizeLarge",
         "attributes": {
@@ -12059,11 +12059,11 @@
         ]
       },
       "extra-large": {
-        "value": "22px",
+        "value": "40px",
         "filePath": "tokens/size/font.json",
         "isSource": false,
         "original": {
-          "value": "{font.size.500.value}"
+          "value": "{font.size.1000.value}"
         },
         "name": "FontSizeExtraLarge",
         "attributes": {
@@ -12349,6 +12349,25 @@
           "xxl"
         ]
       }
+    }
+  },
+  "theme": {
+    "type": {
+      "value": "dark",
+      "filePath": "tokens/theme/theme.dark.json",
+      "isSource": true,
+      "original": {
+        "value": "dark"
+      },
+      "name": "ThemeType",
+      "attributes": {
+        "category": "theme",
+        "type": "type"
+      },
+      "path": [
+        "theme",
+        "type"
+      ]
     }
   },
   "time": {

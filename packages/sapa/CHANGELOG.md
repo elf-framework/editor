@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.17
+
+### Patch Changes
+
+- add useComponentRender with subscription
+
 ## 0.0.15
 
 ### Patch Changes

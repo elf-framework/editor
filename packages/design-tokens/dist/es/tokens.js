@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -347,24 +347,27 @@ export const ButtonFocusBorderWarning = "#5c2200";
 export const ButtonActiveBackgroundDark = "#d9e0e6";
 export const ButtonActiveBackgroundDanger = "#ffcfd1";
 export const ButtonActiveBackgroundInfo = "#e8f3ff";
-export const ButtonActiveBackgroundDefault = "#ffb77c";
+export const ButtonActiveBackgroundDefault = "#d9e0e6";
 export const ButtonActiveBackgroundPrimary = "#cce3ff";
 export const ButtonActiveBackgroundSecondary = "#d9e0e6";
 export const ButtonActiveBackgroundSuccess = "#b5f5e0";
+export const ButtonActiveBackgroundWarning = "#ffb77c";
 export const ButtonActiveBorderDark = "#d9e0e6";
 export const ButtonActiveBorderDanger = "#ffcfd1";
 export const ButtonActiveBorderInfo = "#e8f3ff";
-export const ButtonActiveBorderDefault = "#ffb77c";
+export const ButtonActiveBorderDefault = "#d9e0e6";
 export const ButtonActiveBorderPrimary = "#cce3ff";
 export const ButtonActiveBorderSecondary = "#d9e0e6";
 export const ButtonActiveBorderSuccess = "#b5f5e0";
+export const ButtonActiveBorderWarning = "#ffb77c";
 export const ButtonActiveTextDark = "#ffffff";
 export const ButtonActiveTextDanger = "#ffffff";
 export const ButtonActiveTextInfo = "#ffffff";
-export const ButtonActiveTextDefault = "#ffffff";
+export const ButtonActiveTextDefault = "#2c353d";
 export const ButtonActiveTextPrimary = "#ffffff";
 export const ButtonActiveTextSecondary = "#ffffff";
 export const ButtonActiveTextSuccess = "#ffffff";
+export const ButtonActiveTextWarning = "#ffffff";
 export const ButtonColorBackgroundDefault = "#ffffff";
 export const ButtonColorBorderDefault = "#c5ced6";
 export const ButtonClosableHoverBackgroundDefault = "#ffffff";
@@ -575,8 +578,8 @@ export const FontSizeH5 = "20px";
 export const FontSizeH6 = "18px";
 export const FontSizeSmall = "11px";
 export const FontSizeMedium = "14px";
-export const FontSizeLarge = "18px";
-export const FontSizeExtraLarge = "22px";
+export const FontSizeLarge = "28px";
+export const FontSizeExtraLarge = "40px";
 export const FontWeightThin = "100";
 export const FontWeightLight = "300";
 export const FontWeightRegular = "400";
@@ -591,6 +594,7 @@ export const PaddingSizeMedium = "16px";
 export const PaddingSizeLarge = "20px";
 export const PaddingSizeXl = "24px";
 export const PaddingSizeXxl = "32px";
+export const ThemeType = "light";
 export const TimeDuration100 = "130ms";
 export const TimeDuration200 = "160ms";
 export const TimeDuration300 = "190ms";

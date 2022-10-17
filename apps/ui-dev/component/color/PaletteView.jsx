@@ -1,3 +1,4 @@
+import { useComponentRender } from "@elf-framework/sapa";
 import { Grid } from "@elf-framework/ui";
 
 import { getThemeTokens } from "../../utils/theme";
@@ -11,6 +12,8 @@ function convertToKeyValue(obj) {
 }
 
 export function PaletteView() {
+  useComponentRender("view-mode");
+
   const tokens = getThemeTokens();
 
   return (

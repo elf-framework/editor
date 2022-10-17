@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 :root {
@@ -14,6 +14,7 @@
   --time-duration-300: 0.19s;
   --time-duration-200: 0.16s;
   --time-duration-100: 0.13s;
+  --theme-type: light;
   --font-weight-black: 900;
   --font-weight-extrabold: 800;
   --font-weight-bold: 700;
@@ -266,8 +267,8 @@
   --image-files: assets/svg/files.svg;
   --image-empty: assets/svg/empty.svg;
   --image-logo: assets/svg/logo.svg;
-  --font-size-extra-large: var(--font-size-500);
-  --font-size-large: var(--font-size-300);
+  --font-size-extra-large: var(--font-size-1000);
+  --font-size-large: var(--font-size-700);
   --font-size-medium: var(--font-size-100);
   --font-size-small: var(--font-size-50);
   --font-size-h6: var(--font-size-300);
@@ -346,24 +347,27 @@
   --button-closable-hover-background-default: var(--color-transparent-white-1);
   --button-color-border-default: var(--color-gray-3);
   --button-color-background-default: var(--color-white);
+  --button-active-text-warning: var(--color-white);
   --button-active-text-success: var(--color-white);
   --button-active-text-secondary: var(--color-white);
   --button-active-text-primary: var(--color-white);
-  --button-active-text-default: var(--color-white);
+  --button-active-text-default: var(--color-gray-9);
   --button-active-text-info: var(--color-white);
   --button-active-text-danger: var(--color-white);
   --button-active-text-dark: var(--color-white);
+  --button-active-border-warning: var(--color-orange-2);
   --button-active-border-success: var(--color-green-2);
   --button-active-border-secondary: var(--color-gray-2);
   --button-active-border-primary: var(--color-blue-2);
-  --button-active-border-default: var(--color-orange-2);
+  --button-active-border-default: var(--color-gray-2);
   --button-active-border-info: var(--color-blue-1);
   --button-active-border-danger: var(--color-red-2);
   --button-active-border-dark: var(--color-gray-2);
+  --button-active-background-warning: var(--color-orange-2);
   --button-active-background-success: var(--color-green-2);
   --button-active-background-secondary: var(--color-gray-2);
   --button-active-background-primary: var(--color-blue-2);
-  --button-active-background-default: var(--color-orange-2);
+  --button-active-background-default: var(--color-gray-2);
   --button-active-background-info: var(--color-blue-1);
   --button-active-background-danger: var(--color-red-2);
   --button-active-background-dark: var(--color-gray-2);

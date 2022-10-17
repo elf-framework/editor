@@ -6813,11 +6813,11 @@
           ]
         },
         "default": {
-          "value": "{color.orange.2}",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "{color.gray.2}",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.2}"
+            "value": "{color.gray.2}"
           },
           "attributes": {
             "category": "button",
@@ -6890,6 +6890,26 @@
             "active",
             "background",
             "success"
+          ]
+        },
+        "warning": {
+          "value": "{color.orange.2}",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "warning"
           ]
         }
       },
@@ -6955,11 +6975,11 @@
           ]
         },
         "default": {
-          "value": "{color.orange.2}",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "{color.gray.2}",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.2}"
+            "value": "{color.gray.2}"
           },
           "attributes": {
             "category": "button",
@@ -7033,6 +7053,26 @@
             "border",
             "success"
           ]
+        },
+        "warning": {
+          "value": "{color.orange.2}",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "warning"
+          ]
         }
       },
       "text": {
@@ -7097,11 +7137,11 @@
           ]
         },
         "default": {
-          "value": "{color.white}",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "{color.gray.9}",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.white}"
+            "value": "{color.gray.9}"
           },
           "attributes": {
             "category": "button",
@@ -7174,6 +7214,26 @@
             "active",
             "text",
             "success"
+          ]
+        },
+        "warning": {
+          "value": "{color.white}",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white}"
+          },
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "warning"
           ]
         }
       }
@@ -11341,11 +11401,11 @@
         ]
       },
       "large": {
-        "value": "{font.size.300}",
+        "value": "{font.size.700}",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": "{font.size.300}"
+          "value": "{font.size.700}"
         },
         "attributes": {
           "category": "font",
@@ -11359,11 +11419,11 @@
         ]
       },
       "extra-large": {
-        "value": "{font.size.500}",
+        "value": "{font.size.1000}",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": "{font.size.500}"
+          "value": "{font.size.1000}"
         },
         "attributes": {
           "category": "font",
@@ -11634,6 +11694,24 @@
           "xxl"
         ]
       }
+    }
+  },
+  "theme": {
+    "type": {
+      "value": "light",
+      "filePath": "tokens/theme/theme.json",
+      "isSource": true,
+      "original": {
+        "value": "light"
+      },
+      "attributes": {
+        "category": "theme",
+        "type": "type"
+      },
+      "path": [
+        "theme",
+        "type"
+      ]
     }
   },
   "time": {

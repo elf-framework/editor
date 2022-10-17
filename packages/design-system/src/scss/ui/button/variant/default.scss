@@ -22,9 +22,9 @@
     --elf--button-border-color: var(--button-active-border-default);    
   }
 
-  &[disabled] {
-    --elf--button-background-color: var(--elf--disabled-color) !important;
-  }
+  // &[disabled] {
+  //   --elf--button-background-color: var(--elf--disabled-color) !important;
+  // }
 
   &:hover,
   &.hover {

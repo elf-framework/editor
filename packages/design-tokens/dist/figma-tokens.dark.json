@@ -6243,11 +6243,11 @@
           ]
         },
         "primary": {
-          "value": "{color.blue.7}",
+          "value": "{color.blue.1}",
           "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.7}"
+            "value": "{color.blue.1}"
           },
           "attributes": {
             "category": "button",
@@ -6405,11 +6405,11 @@
           ]
         },
         "primary": {
-          "value": "{color.blue.8}",
+          "value": "{color.blue.1}",
           "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.8}"
+            "value": "{color.blue.1}"
           },
           "attributes": {
             "category": "button",
@@ -11447,11 +11447,11 @@
         ]
       },
       "large": {
-        "value": "{font.size.300}",
+        "value": "{font.size.700}",
         "filePath": "tokens/size/font.json",
         "isSource": false,
         "original": {
-          "value": "{font.size.300}"
+          "value": "{font.size.700}"
         },
         "attributes": {
           "category": "font",
@@ -11465,11 +11465,11 @@
         ]
       },
       "extra-large": {
-        "value": "{font.size.500}",
+        "value": "{font.size.1000}",
         "filePath": "tokens/size/font.json",
         "isSource": false,
         "original": {
-          "value": "{font.size.500}"
+          "value": "{font.size.1000}"
         },
         "attributes": {
           "category": "font",
@@ -11740,6 +11740,24 @@
           "xxl"
         ]
       }
+    }
+  },
+  "theme": {
+    "type": {
+      "value": "dark",
+      "filePath": "tokens/theme/theme.dark.json",
+      "isSource": true,
+      "original": {
+        "value": "dark"
+      },
+      "attributes": {
+        "category": "theme",
+        "type": "type"
+      },
+      "path": [
+        "theme",
+        "type"
+      ]
     }
   },
   "time": {

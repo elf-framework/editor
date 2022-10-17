@@ -430,5 +430,23 @@ It is like `grid-template-columns: 1fr 100px;`.
     <Ghost>3</Ghost>
 </Grid>
 ```
+&nbsp;
 
+`columns="repeat(auto-fit, minmax(100px, 1fr))"`
+
+It is like `grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));`.
+
+<Grid columns="repeat(auto-fit, minmax(100px, 1fr))" rows={['100px', '100px']} style={{gap: 10}}>
+    <Ghost>1</Ghost>
+    <Ghost>2</Ghost>
+    <Ghost>3</Ghost>
+</Grid>
+
+```jsx {1} showLineNumbers
+<Grid columns="repeat(auto-fit, minmax(100px, 1fr))" rows={['100px', '100px']} style={{gap: 10}}>
+    <Ghost>1</Ghost>
+    <Ghost>2</Ghost>
+    <Ghost>3</Ghost>
+</Grid>
+```
 

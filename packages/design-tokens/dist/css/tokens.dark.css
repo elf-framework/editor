@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 .theme-dark {
+  --theme-type: dark;
   --shadow-color: rgba(255, 255, 255, 0.1);
   --shadow-none: none;
   --treeview-item-color-border-selected: transparent;
@@ -250,7 +251,7 @@
   --button-selected-border-warning: var(--color-orange-8);
   --button-selected-border-success: var(--color-green-8);
   --button-selected-border-secondary: var(--color-gray-8);
-  --button-selected-border-primary: var(--color-blue-8);
+  --button-selected-border-primary: var(--color-blue-1);
   --button-selected-border-default: var(--color-gray-2);
   --button-selected-border-info: var(--color-blue-6);
   --button-selected-border-danger: var(--color-red-8);
@@ -258,7 +259,7 @@
   --button-selected-background-warning: var(--color-orange-7);
   --button-selected-background-success: var(--color-green-7);
   --button-selected-background-secondary: var(--color-gray-7);
-  --button-selected-background-primary: var(--color-blue-7);
+  --button-selected-background-primary: var(--color-blue-1);
   --button-selected-background-default: var(--color-gray-2);
   --button-selected-background-info: var(--color-blue-6);
   --button-selected-background-danger: var(--color-red-7);

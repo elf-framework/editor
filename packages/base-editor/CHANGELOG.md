@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.18
+
+### Patch Changes
+
+- modify plugin active trigger
+
 ## 0.0.14
 
 ### Patch Changes

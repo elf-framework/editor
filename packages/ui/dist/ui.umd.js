@@ -2128,7 +2128,7 @@ var __privateMethod = (obj, member, method) => {
         rootClose: this.state.rootClose,
         style: {
           ...menuStyle || {},
-          top: "calc(100% + 5px)"
+          top: "100%"
         }
       })) : void 0);
     }

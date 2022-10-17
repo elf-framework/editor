@@ -24,8 +24,8 @@
       "h6": { "value": "{font.size.300.value}" },
       "small": { "value": "{font.size.50.value}" },
       "medium": { "value": "{font.size.100.value}" },
-      "large": { "value": "{font.size.300.value}" },
-      "extra-large": { "value": "{font.size.500.value}" }
+      "large": { "value": "{font.size.700.value}" },
+      "extra-large": { "value": "{font.size.1000.value}" }
     },
     "weight": {
       "thin": { "value": "100" },

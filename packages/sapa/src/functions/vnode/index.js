@@ -419,7 +419,7 @@ export class VNodeComponent extends VNode {
     );
 
     if (oldId) {
-      this.instance.setId(oldId);
+      // this.instance.setId(oldId);
     }
 
     if (hooks && hooks.__stateHooks?.length) {
@@ -433,12 +433,11 @@ export class VNodeComponent extends VNode {
     }
 
     if (Object.keys(children).length) {
-      this.instance.setChildren(children);
+      // this.instance.setChildren(children);
     }
 
     // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.
-    // 이걸 매번 새로 만들어야
-    // oldInstance?.destroy();
+    oldInstance?.destroy();
 
     return this.instance;
   }

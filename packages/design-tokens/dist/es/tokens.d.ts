@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 export const ImageLogo : string;
@@ -351,6 +351,7 @@ export const ButtonActiveBackgroundDefault : string;
 export const ButtonActiveBackgroundPrimary : string;
 export const ButtonActiveBackgroundSecondary : string;
 export const ButtonActiveBackgroundSuccess : string;
+export const ButtonActiveBackgroundWarning : string;
 export const ButtonActiveBorderDark : string;
 export const ButtonActiveBorderDanger : string;
 export const ButtonActiveBorderInfo : string;
@@ -358,6 +359,7 @@ export const ButtonActiveBorderDefault : string;
 export const ButtonActiveBorderPrimary : string;
 export const ButtonActiveBorderSecondary : string;
 export const ButtonActiveBorderSuccess : string;
+export const ButtonActiveBorderWarning : string;
 export const ButtonActiveTextDark : string;
 export const ButtonActiveTextDanger : string;
 export const ButtonActiveTextInfo : string;
@@ -365,6 +367,7 @@ export const ButtonActiveTextDefault : string;
 export const ButtonActiveTextPrimary : string;
 export const ButtonActiveTextSecondary : string;
 export const ButtonActiveTextSuccess : string;
+export const ButtonActiveTextWarning : string;
 export const ButtonColorBackgroundDefault : string;
 export const ButtonColorBorderDefault : string;
 export const ButtonClosableHoverBackgroundDefault : string;
@@ -591,6 +594,7 @@ export const PaddingSizeMedium : string;
 export const PaddingSizeLarge : string;
 export const PaddingSizeXl : string;
 export const PaddingSizeXxl : string;
+export const ThemeType : string;
 export const TimeDuration100 : string;
 export const TimeDuration200 : string;
 export const TimeDuration300 : string;

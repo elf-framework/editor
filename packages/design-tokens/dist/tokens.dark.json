@@ -412,7 +412,7 @@
         "danger": "#ffcfd1",
         "info": "#abd2ff",
         "default": "#484848",
-        "primary": "#cce3ff",
+        "primary": "#1a497d",
         "secondary": "#e0e0e0",
         "success": "#b5f5e0",
         "warning": "#ffb77c"
@@ -422,7 +422,7 @@
         "danger": "#ffebec",
         "info": "#abd2ff",
         "default": "#484848",
-        "primary": "#e8f3ff",
+        "primary": "#1a497d",
         "secondary": "#f0f0f0",
         "success": "#d6fff1",
         "warning": "#ffd8b5"
@@ -952,8 +952,8 @@
       "h6": "18px",
       "small": "11px",
       "medium": "14px",
-      "large": "18px",
-      "extra-large": "22px"
+      "large": "28px",
+      "extra-large": "40px"
     },
     "weight": {
       "thin": "100",
@@ -975,6 +975,9 @@
       "xl": "24px",
       "xxl": "32px"
     }
+  },
+  "theme": {
+    "type": "dark"
   },
   "time": {
     "duration": {

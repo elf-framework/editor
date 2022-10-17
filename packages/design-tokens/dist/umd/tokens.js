@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 16 Oct 2022 17:02:41 GMT
+ * Generated on Mon, 17 Oct 2022 06:31:02 GMT
  */
 
 (function(root, factory) {
@@ -7173,11 +7173,11 @@
           ]
         },
         "default": {
-          "value": "#ffb77c",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.2.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonActiveBackgroundDefault",
           "attributes": {
@@ -7255,6 +7255,27 @@
             "background",
             "success"
           ]
+        },
+        "warning": {
+          "value": "#ffb77c",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2.value}"
+          },
+          "name": "ButtonActiveBackgroundWarning",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "warning"
+          ]
         }
       },
       "border": {
@@ -7322,11 +7343,11 @@
           ]
         },
         "default": {
-          "value": "#ffb77c",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.orange.2.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonActiveBorderDefault",
           "attributes": {
@@ -7404,6 +7425,27 @@
             "border",
             "success"
           ]
+        },
+        "warning": {
+          "value": "#ffb77c",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.orange.2.value}"
+          },
+          "name": "ButtonActiveBorderWarning",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "warning"
+          ]
         }
       },
       "text": {
@@ -7471,11 +7513,11 @@
           ]
         },
         "default": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/button/button.warning.json",
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "ButtonActiveTextDefault",
           "attributes": {
@@ -7552,6 +7594,27 @@
             "active",
             "text",
             "success"
+          ]
+        },
+        "warning": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.warning.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextWarning",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "warning"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "warning"
           ]
         }
       }
@@ -11929,11 +11992,11 @@
         ]
       },
       "large": {
-        "value": "18px",
+        "value": "28px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": "{font.size.300.value}"
+          "value": "{font.size.700.value}"
         },
         "name": "FontSizeLarge",
         "attributes": {
@@ -11948,11 +12011,11 @@
         ]
       },
       "extra-large": {
-        "value": "22px",
+        "value": "40px",
         "filePath": "tokens/size/font.json",
         "isSource": true,
         "original": {
-          "value": "{font.size.500.value}"
+          "value": "{font.size.1000.value}"
         },
         "name": "FontSizeExtraLarge",
         "attributes": {
@@ -12238,6 +12301,25 @@
           "xxl"
         ]
       }
+    }
+  },
+  "theme": {
+    "type": {
+      "value": "light",
+      "filePath": "tokens/theme/theme.json",
+      "isSource": true,
+      "original": {
+        "value": "light"
+      },
+      "name": "ThemeType",
+      "attributes": {
+        "category": "theme",
+        "type": "type"
+      },
+      "path": [
+        "theme",
+        "type"
+      ]
     }
   },
   "time": {
