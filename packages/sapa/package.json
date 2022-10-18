@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "0.0.17",
+  "version": "0.0.23",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [
@@ -50,5 +50,8 @@
   "bugs": {
     "url": "https://github.com/elf-framework/editor/issues"
   },
-  "homepage": "https://docs.elf-framework.com/"
+  "homepage": "https://docs.elf-framework.com/",
+  "dependencies": {
+    "requestidlecallback-polyfill": "^1.0.2"
+  }
 }

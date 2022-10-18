@@ -194,6 +194,20 @@ var __privateMethod = (obj, member, method) => {
     });
     return result.length ? result.join(" ") : void 0;
   }
+  window.requestIdleCallback = window.requestIdleCallback || function(cb) {
+    var start2 = Date.now();
+    return setTimeout(function() {
+      cb({
+        didTimeout: false,
+        timeRemaining: function() {
+          return Math.max(0, 50 - (Date.now() - start2));
+        }
+      });
+    }, 1);
+  };
+  window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
+    clearTimeout(id);
+  };
   const VNodeType = {
     NODE: 8,
     TEXT: 3,

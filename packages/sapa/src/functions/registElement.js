@@ -1,3 +1,5 @@
+import "requestidlecallback-polyfill";
+
 import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
 import { isString } from "./func";
 import { uuidShort } from "./uuid";
