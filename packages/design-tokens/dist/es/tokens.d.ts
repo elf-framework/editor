@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 12:29:37 GMT
+ * Generated on Tue, 18 Oct 2022 00:28:49 GMT
  */
 
 export const ImageLogo : string;
@@ -557,6 +557,7 @@ export const SizeBorderRadiusMedium : string;
 export const SizeBorderRadiusLarge : string;
 export const FontSize50 : string;
 export const FontSize75 : string;
+export const FontSize85 : string;
 export const FontSize100 : string; // base size
 export const FontSize200 : string;
 export const FontSize300 : string;

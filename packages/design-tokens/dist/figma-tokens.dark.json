@@ -11066,6 +11066,24 @@
           "75"
         ]
       },
+      "85": {
+        "value": "13px",
+        "filePath": "tokens/size/font.json",
+        "isSource": false,
+        "original": {
+          "value": "13px"
+        },
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "85"
+        },
+        "path": [
+          "font",
+          "size",
+          "85"
+        ]
+      },
       "100": {
         "value": "14px",
         "comment": "base size",

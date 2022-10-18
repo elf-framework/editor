@@ -5,7 +5,7 @@ import { Layout } from "../Layout";
 
 export function MainLayout({ content, ...extraProps }) {
   return (
-    <Layout {...extraProps} title="ELF" menu={menu}>
+    <Layout {...extraProps} menu={menu}>
       {content.map((it) => {
         return isFunction(it) ? it(menu) : it;
       })}

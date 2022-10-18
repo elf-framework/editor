@@ -3,6 +3,7 @@
     "size": {
       "50": { "value": "11px" },
       "75": { "value": "12px" },
+      "85": { "value": "13px" },
       "100": { "value": "14px", "comment": "base size" },
       "200": { "value": "16px" },
       "300": { "value": "18px" },

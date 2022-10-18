@@ -15,21 +15,20 @@ import "./Layout.scss";
 
 function LogoView({ title, version }) {
   return (
-    <Grid columns={["100px", 1]}>
+    <Grid columns={["50px", 1]}>
       <Flex
         style={{
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
-          fontSize: 40,
+          fontSize: "var(--font-size-600)",
         }}
       >
         <a href="/" style={{ textDecoration: "none", textAlign: "center" }}>
           🏝
         </a>
       </Flex>
-      <VBox>
-        <div>ELF {title}</div>
-        <div style={{ fontSize: 12, color: "rgb(170 170 170)" }}>{version}</div>
+      <VBox style={{ justifyContent: "center" }}>
+        <div>EasyLogic Framework</div>
       </VBox>
     </Grid>
   );
@@ -42,13 +41,17 @@ export function Layout(props) {
     <div class="layout">
       <div class="layout-header">
         <Flex class="layout-logo">
-          <LogoView title={title} version={version} />
+          <LogoView title={title} />
         </Flex>
         <Flex class="layout-tools">
           <PageTools menu={menu} />
         </Flex>
       </div>
       <View class="layout-menu">
+        {version ? (
+          <Flex style={{ paddingBottom: 30 }}>package: &nbsp; {version}</Flex>
+        ) : undefined}
+
         <PageMenu menu={menu} />
         <Blank style={{ height: 100 }} />
         <div>

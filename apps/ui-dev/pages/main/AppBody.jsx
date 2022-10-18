@@ -7,8 +7,6 @@ import "./page.scss";
 export function AppBody() {
   const template = Page();
 
-  console.log(template.children);
-
   return (
     <BlankLayout>
       <div>{template.children || template}</div>

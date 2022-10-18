@@ -1,11 +1,12 @@
 .page-menu {
-    padding: 10px 20px;
+    padding: 6px 10px;
     // border-radius: 5px;
     box-sizing: border-box;
     display: block;
     border-radius: 5px;
+    margin-bottom: 2px;
     &.selected {
-        background-color: var(--color-blue-1) !important;
+        background-color: var(--color-gray-1);
         // border-right: 5px solid var(--color-blue-5);
         color: var(--color-text-header-default);
         font-weight: bold;
@@ -19,7 +20,7 @@
     }
 
     &:hover {
-        background-color: rgba(199, 238, 255, 0.269);
+        background-color: var(--color-gray-1);
         color: var(--color-text-header-default);
     }
 
@@ -32,9 +33,9 @@
 
     &[data-depth="0"] {
         padding-left: 15px;
-        font-weight: bold;
-        font-size: 15px;
-        color: var(--color-text-header-default);
+        font-weight: normal;
+        font-size: var(--font-size-85);
+        // color: var(--color-text-header-default);
     }
 
 
@@ -58,12 +59,20 @@
 }
 
 .page-title {
-    font-size: var(--size-font-200);
-    color: var(--color-blue-6);
+    font-size: var(--font-size-85);
+    color: var(--color-gray-6);
     padding: 7px 15px;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-style: wavy;
+    font-weight: normal;
+    margin: 0px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    &:first-child {
+        margin-top: 0px;
+    }
+    // text-decoration: underline;
+    // text-underline-offset: 3px;
+    // text-decoration-style: wavy;
     // background-color: var(--color-gray-0);
     // border-bottom: 1px solid #ececec;
     // border-top: 1px solid #ececec;

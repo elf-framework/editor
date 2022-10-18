@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 12:29:37 GMT
+ * Generated on Tue, 18 Oct 2022 00:28:49 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -557,6 +557,7 @@ export const SizeBorderRadiusMedium = "1rem";
 export const SizeBorderRadiusLarge = "3rem";
 export const FontSize50 = "11px";
 export const FontSize75 = "12px";
+export const FontSize85 = "13px";
 export const FontSize100 = "14px"; // base size
 export const FontSize200 = "16px";
 export const FontSize300 = "18px";

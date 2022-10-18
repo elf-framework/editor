@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 12:29:37 GMT
+ * Generated on Tue, 18 Oct 2022 00:28:49 GMT
  */
 
 export default tokens;
@@ -948,6 +948,7 @@ declare const tokens: {
     "size": {
       "50": DesignToken,
       "75": DesignToken,
+      "85": DesignToken,
       "100": DesignToken,
       "200": DesignToken,
       "300": DesignToken,

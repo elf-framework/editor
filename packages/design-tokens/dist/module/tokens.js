@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 17 Oct 2022 12:29:37 GMT
+ * Generated on Tue, 18 Oct 2022 00:28:49 GMT
  */
 
 module.exports = {
@@ -11577,6 +11577,25 @@ module.exports = {
           "font",
           "size",
           "75"
+        ]
+      },
+      "85": {
+        "value": "13px",
+        "filePath": "tokens/size/font.json",
+        "isSource": true,
+        "original": {
+          "value": "13px"
+        },
+        "name": "FontSize85",
+        "attributes": {
+          "category": "font",
+          "type": "size",
+          "item": "85"
+        },
+        "path": [
+          "font",
+          "size",
+          "85"
         ]
       },
       "100": {
