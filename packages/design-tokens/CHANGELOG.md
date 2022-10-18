@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.22
+
+### Patch Changes
+
+- add thin style at button
+
 ## 0.0.21
 
 ### Patch Changes

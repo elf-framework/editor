@@ -713,6 +713,7 @@ var __privateMethod = (obj, member, method) => {
         shape = "none",
         quiet = false,
         outline = false,
+        thin = false,
         closable = false,
         place = "",
         style: style2 = {},
@@ -743,6 +744,7 @@ var __privateMethod = (obj, member, method) => {
             [size]: true,
             [shape]: true,
             [place]: true,
+            thin,
             hover,
             "icon-only": iconOnly,
             "has-min-width": hasMinWidth
@@ -763,7 +765,8 @@ var __privateMethod = (obj, member, method) => {
         justified,
         focused,
         hover,
-        hasMinWidth
+        hasMinWidth,
+        thin
       ]);
       const styleObject = {
         class: localClass,

@@ -711,6 +711,7 @@ class Button extends UIElement {
       shape = "none",
       quiet = false,
       outline = false,
+      thin = false,
       closable = false,
       place = "",
       style: style2 = {},
@@ -741,6 +742,7 @@ class Button extends UIElement {
           [size]: true,
           [shape]: true,
           [place]: true,
+          thin,
           hover,
           "icon-only": iconOnly,
           "has-min-width": hasMinWidth
@@ -761,7 +763,8 @@ class Button extends UIElement {
       justified,
       focused,
       hover,
-      hasMinWidth
+      hasMinWidth,
+      thin
     ]);
     const styleObject = {
       class: localClass,

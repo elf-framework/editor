@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.22
+
+### Patch Changes
+
+- add thin style at button
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.22
+
 ## 0.0.21
 
 ### Patch Changes

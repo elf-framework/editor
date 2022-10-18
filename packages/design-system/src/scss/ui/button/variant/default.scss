@@ -36,6 +36,10 @@
     border-width: 2px;
     font-weight: bold;
 
+    &.thin {
+      border-width: 1px;
+    }
+
     --elf--button-border-color: var(--button-outline-border-default);
     --elf--button-text-color: var(--button-outline-text-default);
     --elf--button-background-color: var(--button-outline-background-default);    

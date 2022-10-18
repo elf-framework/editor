@@ -31,6 +31,7 @@ export class Button extends UIElement {
       shape = "none",
       quiet = false,
       outline = false,
+      thin = false,
       closable = false,
       place = "",
       style = {},
@@ -62,6 +63,7 @@ export class Button extends UIElement {
           [size]: true,
           [shape]: true,
           [place]: true,
+          thin,
           hover,
           "icon-only": iconOnly,
           "has-min-width": hasMinWidth,
@@ -83,6 +85,7 @@ export class Button extends UIElement {
       focused,
       hover,
       hasMinWidth,
+      thin,
     ]);
 
     const styleObject = {

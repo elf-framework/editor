@@ -68,10 +68,24 @@ export function ProjectItem({
               textAlign: "center",
             }}
           >
-            <Button as="link" outline href={docLink} size="large">
+            <Button
+              as="link"
+              thin
+              outline
+              href={docLink}
+              size="large"
+              style={{ borderColor: "var(--color-border)" }}
+            >
               {docLinkText}
             </Button>
-            <Button as="link" outline href={codeLink} size="large">
+            <Button
+              as="link"
+              thin
+              outline
+              href={codeLink}
+              size="large"
+              style={{ borderColor: "var(--color-border)" }}
+            >
               {codeLinkText}
             </Button>
           </ActionGroup>
