@@ -30,7 +30,7 @@
       },
       "text": {
         "warning": {
-          "value": "{color.white.value}"
+          "value": "{color.warning.value}"
         }
       }
     },        

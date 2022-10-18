@@ -30,7 +30,7 @@
       },
       "text": {
         "primary": {
-          "value": "{color.white.value}"
+          "value": "{color.primary.value}"
         }
       }
     },    

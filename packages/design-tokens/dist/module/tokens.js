@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 00:28:49 GMT
+ * Generated on Tue, 18 Oct 2022 01:52:16 GMT
  */
 
 module.exports = {
@@ -102,12 +102,12 @@ module.exports = {
         ]
       },
       "secondary": {
-        "value": "#a2adb8",
+        "value": "#ffffff",
         "comment": "Base color for the secondary color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.4.value}",
+          "value": "{color.white.value}",
           "comment": "Base color for the secondary color"
         },
         "name": "ColorBackgroundSecondary",
@@ -5603,11 +5603,11 @@ module.exports = {
       },
       "border": {
         "dark": {
-          "value": "#ffffff",
+          "value": "#2c353d",
           "filePath": "tokens/component/button/button.__dark__.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "ButtonOutlineBorderDark",
           "attributes": {
@@ -5666,11 +5666,11 @@ module.exports = {
           ]
         },
         "default": {
-          "value": "#d9e0e6",
+          "value": "#818e9a",
           "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.5.value}"
           },
           "name": "ButtonOutlineBorderDefault",
           "attributes": {
@@ -5773,11 +5773,11 @@ module.exports = {
       },
       "text": {
         "dark": {
-          "value": "#ffffff",
+          "value": "#2c353d",
           "filePath": "tokens/component/button/button.__dark__.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.gray.9.value}"
           },
           "name": "ButtonOutlineTextDark",
           "attributes": {
@@ -5794,11 +5794,11 @@ module.exports = {
           ]
         },
         "danger": {
-          "value": "#2c353d",
+          "value": "#d9363e",
           "filePath": "tokens/component/button/button.danger.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.danger.value}"
           },
           "name": "ButtonOutlineTextDanger",
           "attributes": {
@@ -5815,11 +5815,11 @@ module.exports = {
           ]
         },
         "info": {
-          "value": "#2c353d",
+          "value": "#429bff",
           "filePath": "tokens/component/button/button.info.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.info.value}"
           },
           "name": "ButtonOutlineTextInfo",
           "attributes": {
@@ -5836,11 +5836,11 @@ module.exports = {
           ]
         },
         "default": {
-          "value": "#ffffff",
+          "value": "#818e9a",
           "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.gray.5.value}"
           },
           "name": "ButtonOutlineTextDefault",
           "attributes": {
@@ -5857,11 +5857,11 @@ module.exports = {
           ]
         },
         "primary": {
-          "value": "#2c353d",
+          "value": "#1273e6",
           "filePath": "tokens/component/button/button.primary.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.primary.value}"
           },
           "name": "ButtonOutlineTextPrimary",
           "attributes": {
@@ -5878,11 +5878,11 @@ module.exports = {
           ]
         },
         "secondary": {
-          "value": "#2c353d",
+          "value": "#818e9a",
           "filePath": "tokens/component/button/button.secondary.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.secondary.value}"
           },
           "name": "ButtonOutlineTextSecondary",
           "attributes": {
@@ -5899,11 +5899,11 @@ module.exports = {
           ]
         },
         "success": {
-          "value": "#2c353d",
+          "value": "#009f6a",
           "filePath": "tokens/component/button/button.success.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.success.value}"
           },
           "name": "ButtonOutlineTextSuccess",
           "attributes": {
@@ -5920,11 +5920,11 @@ module.exports = {
           ]
         },
         "warning": {
-          "value": "#2c353d",
+          "value": "#e16f24",
           "filePath": "tokens/component/button/button.warning.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default.value}"
+            "value": "{color.warning.value}"
           },
           "name": "ButtonOutlineTextWarning",
           "attributes": {

@@ -365,13 +365,13 @@
       },
       "text": {
         "dark": "#ffffff",
-        "danger": "#ffffff",
-        "info": "#ffffff",
+        "danger": "#d9363e",
+        "info": "#78b6ff",
         "default": "#ffffff",
-        "primary": "#ffffff",
-        "secondary": "#ffffff",
-        "success": "#ffffff",
-        "warning": "#ffffff"
+        "primary": "#1273e6",
+        "secondary": "#484848",
+        "success": "#009f6a",
+        "warning": "#e16f24"
       }
     },
     "hover": {

@@ -30,7 +30,7 @@
       },
       "text": {
         "secondary": {
-          "value": "{color.white.value}"
+          "value": "{color.secondary.value}"
         }
       }
     },        

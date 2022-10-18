@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 00:28:49 GMT
+ * Generated on Tue, 18 Oct 2022 01:52:16 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -8,7 +8,7 @@ export const ImageEmpty = "assets/svg/empty.svg";
 export const ImageFiles = "assets/svg/files.svg";
 export const ColorBackgroundDefault = "#ffffff"; // Background color that will match the current color scheme
 export const ColorBackgroundPrimary = "#78b6ff"; // Base color for the primary color
-export const ColorBackgroundSecondary = "#a2adb8"; // Base color for the secondary color
+export const ColorBackgroundSecondary = "#ffffff"; // Base color for the secondary color
 export const ColorBackgroundDanger = "#ff858b"; // Base color for the danger color
 export const ColorBackgroundWarning = "#ffe75c"; // Base color for the warning color
 export const ColorBackgroundSuccess = "#52d9ac"; // Base color for the success color
@@ -274,22 +274,22 @@ export const ButtonOutlineBackgroundPrimary = "transparent";
 export const ButtonOutlineBackgroundSecondary = "transparent";
 export const ButtonOutlineBackgroundSuccess = "transparent";
 export const ButtonOutlineBackgroundWarning = "transparent";
-export const ButtonOutlineBorderDark = "#ffffff";
+export const ButtonOutlineBorderDark = "#2c353d";
 export const ButtonOutlineBorderDanger = "#d9363e";
 export const ButtonOutlineBorderInfo = "#429bff";
-export const ButtonOutlineBorderDefault = "#d9e0e6";
+export const ButtonOutlineBorderDefault = "#818e9a";
 export const ButtonOutlineBorderPrimary = "#1273e6";
 export const ButtonOutlineBorderSecondary = "#818e9a";
 export const ButtonOutlineBorderSuccess = "#009f6a";
 export const ButtonOutlineBorderWarning = "#e16f24";
-export const ButtonOutlineTextDark = "#ffffff";
-export const ButtonOutlineTextDanger = "#2c353d";
-export const ButtonOutlineTextInfo = "#2c353d";
-export const ButtonOutlineTextDefault = "#ffffff";
-export const ButtonOutlineTextPrimary = "#2c353d";
-export const ButtonOutlineTextSecondary = "#2c353d";
-export const ButtonOutlineTextSuccess = "#2c353d";
-export const ButtonOutlineTextWarning = "#2c353d";
+export const ButtonOutlineTextDark = "#2c353d";
+export const ButtonOutlineTextDanger = "#d9363e";
+export const ButtonOutlineTextInfo = "#429bff";
+export const ButtonOutlineTextDefault = "#818e9a";
+export const ButtonOutlineTextPrimary = "#1273e6";
+export const ButtonOutlineTextSecondary = "#818e9a";
+export const ButtonOutlineTextSuccess = "#009f6a";
+export const ButtonOutlineTextWarning = "#e16f24";
 export const ButtonHoverBackgroundDark = "#46525c";
 export const ButtonHoverBackgroundDanger = "#a12b2b";
 export const ButtonHoverBackgroundInfo = "#1273e6";

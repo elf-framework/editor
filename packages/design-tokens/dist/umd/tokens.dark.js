@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 00:28:49 GMT
+ * Generated on Tue, 18 Oct 2022 01:52:16 GMT
  */
 
 (function(root, factory) {
@@ -5828,11 +5828,11 @@
           ]
         },
         "danger": {
-          "value": "#ffffff",
+          "value": "#d9363e",
           "filePath": "tokens/component/button/button.danger.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.danger.value}"
           },
           "name": "ButtonOutlineTextDanger",
           "attributes": {
@@ -5849,11 +5849,11 @@
           ]
         },
         "info": {
-          "value": "#ffffff",
+          "value": "#78b6ff",
           "filePath": "tokens/component/button/button.info.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.blue.5.value}"
           },
           "name": "ButtonOutlineTextInfo",
           "attributes": {
@@ -5891,11 +5891,11 @@
           ]
         },
         "primary": {
-          "value": "#ffffff",
+          "value": "#1273e6",
           "filePath": "tokens/component/button/button.primary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.primary.value}"
           },
           "name": "ButtonOutlineTextPrimary",
           "attributes": {
@@ -5912,11 +5912,11 @@
           ]
         },
         "secondary": {
-          "value": "#ffffff",
+          "value": "#484848",
           "filePath": "tokens/component/button/button.secondary.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.secondary.value}"
           },
           "name": "ButtonOutlineTextSecondary",
           "attributes": {
@@ -5933,11 +5933,11 @@
           ]
         },
         "success": {
-          "value": "#ffffff",
+          "value": "#009f6a",
           "filePath": "tokens/component/button/button.success.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.success.value}"
           },
           "name": "ButtonOutlineTextSuccess",
           "attributes": {
@@ -5954,11 +5954,11 @@
           ]
         },
         "warning": {
-          "value": "#ffffff",
+          "value": "#e16f24",
           "filePath": "tokens/component/button/button.warning.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.white.value}"
+            "value": "{color.warning.value}"
           },
           "name": "ButtonOutlineTextWarning",
           "attributes": {

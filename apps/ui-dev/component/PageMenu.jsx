@@ -49,6 +49,7 @@ export function PageMenu({ menu = [], depth = 0 }) {
               })}
               data-depth={depth}
               id={pageId(page?.link)}
+              data-has-items={Boolean(page.items?.length)}
             >
               <a href={page.link}>{page.title}</a>
             </div>,

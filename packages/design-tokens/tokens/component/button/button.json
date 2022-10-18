@@ -59,12 +59,12 @@
       },
       "border": {
         "default": {
-          "value": "{color.gray.2.value}"
+          "value": "{color.gray.5.value}"
         }
       },
       "text": {
         "default": {
-          "value": "{color.white.value}"
+          "value": "{color.gray.5.value}"
         }
       }
     },         

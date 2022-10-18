@@ -30,7 +30,7 @@
       },
       "text": {
         "danger": {
-          "value": "{color.white.value}"
+          "value": "{color.danger.value}"
         }
       }
     },        

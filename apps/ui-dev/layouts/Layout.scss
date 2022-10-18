@@ -170,7 +170,8 @@ body {
 }
 
 .markdown-body {
-    background-color: transparent;
+    margin: 0 auto;
+    background-color: var(--color-background-secondary);
     color: var(--color-text-default);
     font-size: 14px;
     h1 {

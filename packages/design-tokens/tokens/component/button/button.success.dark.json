@@ -30,7 +30,7 @@
       },
       "text": {
         "success": {
-          "value": "{color.white.value}"
+          "value": "{color.success.value}"
         }
       }
     },        

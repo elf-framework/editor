@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 00:28:49 GMT
+ * Generated on Tue, 18 Oct 2022 01:52:16 GMT
  */
 
 :root {
@@ -426,10 +426,10 @@
   --button-hover-background-info: var(--color-blue-6);
   --button-hover-background-danger: var(--color-red-7);
   --button-hover-background-dark: var(--color-gray-7);
-  --button-outline-text-default: var(--color-white);
-  --button-outline-text-dark: var(--color-white);
-  --button-outline-border-default: var(--color-gray-2);
-  --button-outline-border-dark: var(--color-white);
+  --button-outline-text-default: var(--color-gray-5);
+  --button-outline-text-dark: var(--color-gray-9);
+  --button-outline-border-default: var(--color-gray-5);
+  --button-outline-border-dark: var(--color-gray-9);
   --button-default-text-warning: var(--color-white);
   --button-default-text-success: var(--color-white);
   --button-default-text-secondary: var(--color-white);
@@ -531,7 +531,7 @@
   --color-background-success: var(--color-green-4); /* Base color for the success color */
   --color-background-warning: var(--color-yellow-2); /* Base color for the warning color */
   --color-background-danger: var(--color-red-4); /* Base color for the danger color */
-  --color-background-secondary: var(--color-gray-4); /* Base color for the secondary color */
+  --color-background-secondary: var(--color-white); /* Base color for the secondary color */
   --color-background-primary: var(--color-blue-4); /* Base color for the primary color */
   --color-background-default: var(--color-white); /* Background color that will match the current color scheme */
   --padding-size-xxl: var(--spacing-size-xxl);
@@ -574,12 +574,12 @@
   --checkbox-color-background-dark: var(--color-black);
   --card-color-border-selected: var(--color-primary);
   --card-color-text-default: var(--color-text-default);
-  --button-outline-text-warning: var(--color-text-default);
-  --button-outline-text-success: var(--color-text-default);
-  --button-outline-text-secondary: var(--color-text-default);
-  --button-outline-text-primary: var(--color-text-default);
-  --button-outline-text-info: var(--color-text-default);
-  --button-outline-text-danger: var(--color-text-default);
+  --button-outline-text-warning: var(--color-warning);
+  --button-outline-text-success: var(--color-success);
+  --button-outline-text-secondary: var(--color-secondary);
+  --button-outline-text-primary: var(--color-primary);
+  --button-outline-text-info: var(--color-info);
+  --button-outline-text-danger: var(--color-danger);
   --button-outline-border-warning: var(--color-warning);
   --button-outline-border-success: var(--color-success);
   --button-outline-border-secondary: var(--color-secondary);

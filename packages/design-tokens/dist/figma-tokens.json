@@ -92,12 +92,12 @@
         ]
       },
       "secondary": {
-        "value": "{color.gray.4}",
+        "value": "{color.white}",
         "comment": "Base color for the secondary color",
         "filePath": "tokens/color/background.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.4}",
+          "value": "{color.white}",
           "comment": "Base color for the secondary color"
         },
         "attributes": {
@@ -5327,11 +5327,11 @@
       },
       "border": {
         "dark": {
-          "value": "{color.white}",
+          "value": "{color.gray.9}",
           "filePath": "tokens/component/button/button.__dark__.json",
           "isSource": true,
           "original": {
-            "value": "{color.white}"
+            "value": "{color.gray.9}"
           },
           "attributes": {
             "category": "button",
@@ -5387,11 +5387,11 @@
           ]
         },
         "default": {
-          "value": "{color.gray.2}",
+          "value": "{color.gray.5}",
           "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2}"
+            "value": "{color.gray.5}"
           },
           "attributes": {
             "category": "button",
@@ -5489,11 +5489,11 @@
       },
       "text": {
         "dark": {
-          "value": "{color.white}",
+          "value": "{color.gray.9}",
           "filePath": "tokens/component/button/button.__dark__.json",
           "isSource": true,
           "original": {
-            "value": "{color.white}"
+            "value": "{color.gray.9}"
           },
           "attributes": {
             "category": "button",
@@ -5509,11 +5509,11 @@
           ]
         },
         "danger": {
-          "value": "{color.text.default}",
+          "value": "{color.danger}",
           "filePath": "tokens/component/button/button.danger.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default}"
+            "value": "{color.danger}"
           },
           "attributes": {
             "category": "button",
@@ -5529,11 +5529,11 @@
           ]
         },
         "info": {
-          "value": "{color.text.default}",
+          "value": "{color.info}",
           "filePath": "tokens/component/button/button.info.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default}"
+            "value": "{color.info}"
           },
           "attributes": {
             "category": "button",
@@ -5549,11 +5549,11 @@
           ]
         },
         "default": {
-          "value": "{color.white}",
+          "value": "{color.gray.5}",
           "filePath": "tokens/component/button/button.json",
           "isSource": true,
           "original": {
-            "value": "{color.white}"
+            "value": "{color.gray.5}"
           },
           "attributes": {
             "category": "button",
@@ -5569,11 +5569,11 @@
           ]
         },
         "primary": {
-          "value": "{color.text.default}",
+          "value": "{color.primary}",
           "filePath": "tokens/component/button/button.primary.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default}"
+            "value": "{color.primary}"
           },
           "attributes": {
             "category": "button",
@@ -5589,11 +5589,11 @@
           ]
         },
         "secondary": {
-          "value": "{color.text.default}",
+          "value": "{color.secondary}",
           "filePath": "tokens/component/button/button.secondary.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default}"
+            "value": "{color.secondary}"
           },
           "attributes": {
             "category": "button",
@@ -5609,11 +5609,11 @@
           ]
         },
         "success": {
-          "value": "{color.text.default}",
+          "value": "{color.success}",
           "filePath": "tokens/component/button/button.success.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default}"
+            "value": "{color.success}"
           },
           "attributes": {
             "category": "button",
@@ -5629,11 +5629,11 @@
           ]
         },
         "warning": {
-          "value": "{color.text.default}",
+          "value": "{color.warning}",
           "filePath": "tokens/component/button/button.warning.json",
           "isSource": true,
           "original": {
-            "value": "{color.text.default}"
+            "value": "{color.warning}"
           },
           "attributes": {
             "category": "button",

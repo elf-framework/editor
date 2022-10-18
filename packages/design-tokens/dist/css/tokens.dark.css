@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 00:28:49 GMT
+ * Generated on Tue, 18 Oct 2022 01:52:16 GMT
  */
 
 .theme-dark {
@@ -288,13 +288,8 @@
   --button-hover-background-info: var(--color-blue-4);
   --button-hover-background-danger: var(--color-red-2);
   --button-hover-background-dark: var(--color-gray-1);
-  --button-outline-text-warning: var(--color-white);
-  --button-outline-text-success: var(--color-white);
-  --button-outline-text-secondary: var(--color-white);
-  --button-outline-text-primary: var(--color-white);
   --button-outline-text-default: var(--color-white);
-  --button-outline-text-info: var(--color-white);
-  --button-outline-text-danger: var(--color-white);
+  --button-outline-text-info: var(--color-blue-5);
   --button-outline-text-dark: var(--color-white);
   --button-outline-border-default: var(--color-gray-5);
   --button-outline-border-info: var(--color-blue-5);
@@ -435,6 +430,11 @@
   --dialog-color-background-default: var(--color-background-default);
   --card-color-border-selected: var(--color-primary);
   --card-color-text-default: var(--color-text-default);
+  --button-outline-text-warning: var(--color-warning);
+  --button-outline-text-success: var(--color-success);
+  --button-outline-text-secondary: var(--color-secondary);
+  --button-outline-text-primary: var(--color-primary);
+  --button-outline-text-danger: var(--color-danger);
   --button-outline-border-warning: var(--color-warning);
   --button-outline-border-success: var(--color-success);
   --button-outline-border-secondary: var(--color-secondary);

@@ -30,7 +30,7 @@
       },
       "text": {
         "success": {
-          "value": "{color.text.default.value}"
+          "value": "{color.success.value}"
         }
       }
     },        

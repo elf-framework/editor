@@ -33,7 +33,8 @@
 
   &.outline {
 
-    border-width: 1px;
+    border-width: 2px;
+    font-weight: bold;
 
     --elf--button-border-color: var(--button-outline-border-default);
     --elf--button-text-color: var(--button-outline-text-default);

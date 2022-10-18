@@ -30,7 +30,7 @@
       },
       "text": {
         "info": {
-          "value": "{color.text.default.value}"
+          "value": "{color.info.value}"
         }
       }
     },        
