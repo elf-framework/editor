@@ -1,6 +1,12 @@
 import DarkModeFilled from "@elf-framework/icon/DarkModeFilled";
 import LightModeFilled from "@elf-framework/icon/LightModeFilled";
-import { classnames, useEffect, useEmit, useState } from "@elf-framework/sapa";
+import {
+  classnames,
+  useEffect,
+  useEmit,
+  useState,
+  useSubscribe,
+} from "@elf-framework/sapa";
 import { RoundButton, Tools } from "@elf-framework/ui";
 
 import mainMenus from "../constants/main-menus";
@@ -11,15 +17,9 @@ export function PageTools({ menu }) {
   const mode = localStorage.getItem("view-mode") || "light";
   const [viewMode, setViewMode] = useState(mode);
 
-  useEffect(() => {
-    const mode = localStorage.getItem("view-mode") || "light";
-
-    if (mode === "light") {
-      document.body.classList.toggle("theme-dark", false);
-    } else {
-      document.body.classList.toggle("theme-dark", true);
-    }
-  }, []);
+  useSubscribe("view-mode", (mode) => {
+    setViewMode(mode);
+  });
 
   return (
     <div class="page-tools">
@@ -74,7 +74,7 @@ export function PageTools({ menu }) {
           })}
         </div>
         <div style={{ justifyContent: "flex-end" }}>
-          {mode === "dark" ? (
+          {viewMode === "dark" ? (
             <RoundButton
               iconOnly
               quiet

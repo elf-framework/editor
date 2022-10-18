@@ -11,9 +11,10 @@ import "@elf-framework/ui/style.css";
 
 import { PageMenu } from "../component/PageMenu";
 import { PageTools } from "../component/PageTools";
+import { useTheme } from "../hooks/useTheme";
 import "./Layout.scss";
 
-function LogoView({ title, version }) {
+function LogoView() {
   return (
     <Grid columns={["50px", 1]}>
       <Flex
@@ -36,6 +37,8 @@ function LogoView({ title, version }) {
 
 export function Layout(props) {
   const { content, menu = [], version = "", title = "" } = props;
+
+  useTheme();
 
   return (
     <div class="layout">

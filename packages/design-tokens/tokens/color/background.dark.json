@@ -10,7 +10,7 @@
         "comment": "Base color for the primary color"
       },
       "secondary": {
-        "value": "{color.gray.4.value}",
+        "value": "{color.background.default.value}",
         "comment": "Base color for the secondary color"
       },
       "danger": {

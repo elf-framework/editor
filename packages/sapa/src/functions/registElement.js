@@ -1,5 +1,3 @@
-import "requestidlecallback-polyfill";
-
 import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
 import { isString } from "./func";
 import { uuidShort } from "./uuid";
@@ -56,11 +54,7 @@ export function renderComponent(component, $container = undefined) {
   if (isPendingComponent(component)) {
     return;
   }
-
-  // eslint-disable-next-line no-undef
-  requestIdleCallback(() => {
-    createRenderCallback(component)?.($container);
-  });
+  createRenderCallback(component)?.($container);
 }
 
 /**

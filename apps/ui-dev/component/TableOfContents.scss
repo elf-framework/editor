@@ -16,6 +16,9 @@
         > .title {
             padding-left: 0px;
             font-size: 20px;
+            text-decoration: underline;
+            text-underline-offset: 10px;
+            margin-bottom: 40px;
         }
 
         > * {
@@ -24,13 +27,10 @@
             padding-left: 32px;
             font-size: 14px;
             font-weight: 500;
-            color: #000;
             text-decoration: none;
             transition: color 0.2s ease-in-out;
-            &:hover {
-                color: #000;
-            }
         }
+
         > [data-level="1"] {
             padding-left: calc(var(--data-level) * 0);
         }

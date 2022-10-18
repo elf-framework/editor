@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 07:54:08 GMT
+ * Generated on Tue, 18 Oct 2022 09:51:34 GMT
  */
 
 .theme-dark {
@@ -203,7 +203,7 @@
   --color-mixer-color-background-default: var(--color-gray-0);
   --checkbox-color-background-dark: var(--color-gray-2);
   --card-color-border-default: var(--color-gray-2);
-  --card-color-background-selected: var(--color-blue-0);
+  --card-color-background-selected: var(--color-dark-8);
   --card-color-background-default: var(--color-gray-0);
   --button-size-padding-large: var(--size-base-175) var(--size-base-250);
   --button-size-padding-medium: var(--size-base-100) var(--size-base-125);
@@ -309,7 +309,7 @@
   --alert-color-background-weak-secondary: var(--color-gray-1);
   --alert-color-background-weak-primary: var(--color-blue-1);
   --alert-color-background-weak-default: var(--color-gray-1);
-  --alert-color-background-dark: var(--color-gray-9);
+  --alert-color-background-dark: var(--color-gray-0);
   --alert-color-background-default: var(--color-gray-0);
   --alert-color-content-weak-info: var(--color-blue-5); /* Base color for the info color */
   --alert-color-content-weak-success: var(--color-green-3); /* Base color for the success color */
@@ -398,7 +398,6 @@
   --color-background-success: var(--color-green-4); /* Base color for the success color */
   --color-background-warning: var(--color-yellow-2); /* Base color for the warning color */
   --color-background-danger: var(--color-red-4); /* Base color for the danger color */
-  --color-background-secondary: var(--color-gray-4); /* Base color for the secondary color */
   --color-background-primary: var(--color-blue-4); /* Base color for the primary color */
   --color-background-default: var(--color-dark-9); /* Background color that will match the current color scheme */
   --treeview-item-color-text-default: var(--color-text-default);
@@ -458,4 +457,5 @@
   --alert-color-background-success: var(--color-success);
   --alert-color-background-secondary: var(--color-secondary);
   --alert-color-background-primary: var(--color-primary);
+  --color-background-secondary: var(--color-background-default); /* Base color for the secondary color */
 }

@@ -2,8 +2,8 @@
     --elf--input-paint-border-color: transparent;
     --elf--input-paint-outline-color: transparent;
     --elf--input-paint-border-radius: 1px;
-    --elf--input-paint-background-color: white;
-    --elf--input-paint-color: black;
+    --elf--input-paint-background-color: var(--color-mixer-color-background-default);
+    --elf--input-paint-color: var(--color-text-default);
     --elf--input-paint-font-size: 14px;
     --elf--input-paint-empty-color: rgba(0, 0, 0, 0.3);
     --elf--input-paint-placeholder-color: rgba(0, 0, 0, 0.3);
@@ -35,8 +35,8 @@
     &:focus,
     &:focus-within,
     &.focused {
-        --elf--input-paint-border-color: var(--elf--primary-color);
-        --elf--input-paint-outline-color: var(--elf--primary-color);
+        --elf--input-paint-border-color: var(--color-primary);
+        --elf--input-paint-outline-color: var(--color-primary);
     }
 
     &.disabled {
@@ -130,7 +130,7 @@
         border-left: 1px solid var(--elf--input-paint-border-color);
 
         > input {
-            padding: 7px 4px 7px 7px;
+            padding: 7px 4px 7px 4px;
             width: 100%;
             height: 100%;
             appearance: none;
@@ -139,6 +139,8 @@
             border:0px;
             outline: none;
             font-size: var(--elf--input-paint-font-size);
+            background-color: var(--elf--input-paint-background-color);
+            color: var(--elf--input-paint-color);
         }
     }
 }

@@ -49,6 +49,7 @@ const expectKeys = {
 const TEXT_NODE = 3;
 const COMMENT_NODE = 8;
 const KEY_STYLE = "style";
+const KEY_CLASS = "class";
 const PREFIX_EVENT = "on";
 
 function isBooleanType(key) {
@@ -76,6 +77,13 @@ const patch = {
         el.style.cssText = value;
       } else if (oldStyle === "" && value === "") {
         this.removeProp(el, name);
+      }
+    } else if (name === KEY_CLASS) {
+      if (el[name] === "" && value === "") {
+        this.removeProp(el, name);
+      } else {
+        // 속성을 정의할 때 property 와 같이 정의한다.
+        el.setAttribute(name, value);
       }
     } else {
       // 속성을 정의할 때 property 와 같이 정의한다.

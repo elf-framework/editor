@@ -10,6 +10,9 @@ export async function renderVNodeComponentToHtml(
   // 렌더 하기 전에 hook에 현재 컴포넌트를 등록한다.
   componentInstance.resetCurrentComponent();
   const template = componentInstance.template();
+
+  template.memoizedProps["data-saparoot"] = true;
+
   const html = await HtmlRenderer(template, options);
 
   return html;

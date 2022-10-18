@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 07:54:08 GMT
+ * Generated on Tue, 18 Oct 2022 09:51:34 GMT
  */
 
 (function(root, factory) {
@@ -113,12 +113,12 @@
         ]
       },
       "secondary": {
-        "value": "#888888",
+        "value": "#01010a",
         "comment": "Base color for the secondary color",
         "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.4.value}",
+          "value": "{color.background.default.value}",
           "comment": "Base color for the secondary color"
         },
         "name": "ColorBackgroundSecondary",
@@ -4492,11 +4492,11 @@
           ]
         },
         "dark": {
-          "value": "#f8f8f8",
+          "value": "#181818",
           "filePath": "tokens/component/alert.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.9.value}"
+            "value": "{color.gray.0.value}"
           },
           "name": "AlertColorBackgroundDark",
           "attributes": {
@@ -7883,11 +7883,11 @@
           ]
         },
         "selected": {
-          "value": "#203752",
+          "value": "#0c0d21",
           "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.0.value}"
+            "value": "{color.dark.8.value}"
           },
           "name": "CardColorBackgroundSelected",
           "attributes": {

@@ -8,7 +8,7 @@
     "background": {
       "default": "#01010a",
       "primary": "#429bff",
-      "secondary": "#888888",
+      "secondary": "#01010a",
       "danger": "#ff5760",
       "warning": "#614d27",
       "success": "#28bd8b",
@@ -273,7 +273,7 @@
       },
       "background": {
         "default": "#181818",
-        "dark": "#f8f8f8",
+        "dark": "#181818",
         "primary": "#1273e6",
         "secondary": "#484848",
         "success": "#009f6a",
@@ -518,7 +518,7 @@
     "color": {
       "background": {
         "default": "#181818",
-        "selected": "#203752"
+        "selected": "#0c0d21"
       },
       "text": {
         "default": "#f8f8f8"

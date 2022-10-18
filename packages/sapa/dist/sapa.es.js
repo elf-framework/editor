@@ -190,20 +190,6 @@ function classnames(...args) {
   });
   return result.length ? result.join(" ") : void 0;
 }
-window.requestIdleCallback = window.requestIdleCallback || function(cb) {
-  var start2 = Date.now();
-  return setTimeout(function() {
-    cb({
-      didTimeout: false,
-      timeRemaining: function() {
-        return Math.max(0, 50 - (Date.now() - start2));
-      }
-    });
-  }, 1);
-};
-window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
-  clearTimeout(id);
-};
 const VNodeType = {
   NODE: 8,
   TEXT: 3,
@@ -3096,6 +3082,7 @@ const expectKeys = {
 const TEXT_NODE = 3;
 const COMMENT_NODE = 8;
 const KEY_STYLE = "style";
+const KEY_CLASS = "class";
 const PREFIX_EVENT = "on";
 function isBooleanType(key) {
   return booleanTypes.has(key);
@@ -3121,6 +3108,12 @@ const patch = {
         el.style.cssText = value;
       } else if (oldStyle === "" && value === "") {
         this.removeProp(el, name);
+      }
+    } else if (name === KEY_CLASS) {
+      if (el[name] === "" && value === "") {
+        this.removeProp(el, name);
+      } else {
+        el.setAttribute(name, value);
       }
     } else {
       el.setAttribute(name, value);
@@ -3787,13 +3780,11 @@ function removeRenderCallback(component) {
   }
 }
 function renderComponent(component, $container = void 0) {
+  var _a;
   if (isPendingComponent(component)) {
     return;
   }
-  requestIdleCallback(() => {
-    var _a;
-    (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
-  });
+  (_a = createRenderCallback(component)) == null ? void 0 : _a($container);
 }
 function pendingComponent(component) {
   PendingComponentList.set(component, true);
@@ -4743,6 +4734,7 @@ async function HtmlRenderer(obj, options = {}) {
 async function renderVNodeComponentToHtml(componentInstance, options = {}) {
   componentInstance.resetCurrentComponent();
   const template = componentInstance.template();
+  template.memoizedProps["data-saparoot"] = true;
   const html = await HtmlRenderer(template, options);
   return html;
 }

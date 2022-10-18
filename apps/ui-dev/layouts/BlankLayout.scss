@@ -10,8 +10,9 @@ html,body {
     margin: 0px;
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-        padding: 0px 3em;
+        // padding: 0px 3em;
         padding-bottom: 200px;
+    // background-color: var(--color-background-default);
 }
 
 .default-layout {
@@ -144,5 +145,32 @@ html,body {
             }
 
         }
+    }
+}
+
+.markdown-body {
+    margin: 0 auto;
+    background-color: var(--color-background-secondary) !important;
+    color: var(--color-text-default) !important;
+    font-size: 14px;
+    h1 {
+        border-bottom: 0px;
+        margin-top: 50px;
+        margin-bottom: 50px;        
+        color: var(--color-text-header-default);
+    }
+    h2 {
+        border-bottom: 0px;
+        padding-bottom: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    table {
+        display: table;
     }
 }

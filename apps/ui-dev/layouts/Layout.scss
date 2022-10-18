@@ -171,8 +171,8 @@ body {
 
 .markdown-body {
     margin: 0 auto;
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-default);
+    background-color: var(--color-background-secondary) !important;
+    color: var(--color-text-default) !important;
     font-size: 14px;
     h1 {
         border-bottom: 0px;

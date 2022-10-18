@@ -92,12 +92,12 @@
         ]
       },
       "secondary": {
-        "value": "{color.gray.4}",
+        "value": "{color.background.default}",
         "comment": "Base color for the secondary color",
         "filePath": "tokens/color/background.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.4}",
+          "value": "{color.background.default}",
           "comment": "Base color for the secondary color"
         },
         "attributes": {
@@ -4257,11 +4257,11 @@
           ]
         },
         "dark": {
-          "value": "{color.gray.9}",
+          "value": "{color.gray.0}",
           "filePath": "tokens/component/alert.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.9}"
+            "value": "{color.gray.0}"
           },
           "attributes": {
             "category": "alert",
@@ -7491,11 +7491,11 @@
           ]
         },
         "selected": {
-          "value": "{color.blue.0}",
+          "value": "{color.dark.8}",
           "filePath": "tokens/component/card.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.0}"
+            "value": "{color.dark.8}"
           },
           "attributes": {
             "category": "card",

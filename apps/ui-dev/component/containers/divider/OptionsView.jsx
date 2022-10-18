@@ -7,7 +7,9 @@ export function OptionsView() {
         style={{
           gap: 30,
           backgroundColor: "var(--color-gray-0)",
-          padding: "60px 20px",
+          padding: "60px 50px",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div
@@ -16,38 +18,23 @@ export function OptionsView() {
             display: "flex",
             gap: 30,
             flexDirection: "column",
+            width: 300,
           }}
         >
-          <Flex>
+          <Flex style={{ gap: 30 }}>
             <em>Small</em>
             <Divider size="small" />
           </Flex>
-          <Flex>
+          <Flex style={{ gap: 30 }}>
             <em>Medium</em>
             <Divider size="medium" />
           </Flex>
-          <Flex>
+          <Flex style={{ gap: 30 }}>
             <em>Large</em>
             <Divider size="large" />
           </Flex>
         </div>
       </VBox>
-      <div>
-        <p>
-          The <code>small</code> dividers are the default size. Used to split
-          similar components, such as table rows, action button groups, and
-          components within a panel.
-        </p>
-        <p>
-          The <code>medium</code> dividers are used to divide subsections of
-          pages or to separate different groups of components, such as panels,
-          etc.
-        </p>
-        <p>
-          The <code>large</code> dividers should only be used for page titles or
-          section titles.
-        </p>
-      </div>
     </Grid>
   );
 }

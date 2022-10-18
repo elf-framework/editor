@@ -6,7 +6,7 @@ export function OverBackgroundVariantView() {
       <VBox
         style={{
           gap: 30,
-          backgroundColor: "var(--color-green-7)",
+          backgroundColor: "var(--color-gray-0)",
           padding: "30px 20px",
           fontSize: 13,
           height: 100,
@@ -26,7 +26,7 @@ export function OverBackgroundVariantView() {
             <ProgressBar
               title="Loading data..."
               value={20}
-              variant="dark"
+              // variant="dark"
               valueText={"20%"}
             />
           </div>

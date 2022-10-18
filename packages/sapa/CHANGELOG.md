@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 0.0.26
+
+### Patch Changes
+
+- remove requestIdleCallback
+
+## 0.0.24
+
+### Patch Changes
+
+- modify requestIdlecallback polyfill
+
 ## 0.0.23
 
 ### Patch Changes
