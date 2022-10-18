@@ -40,6 +40,7 @@ export function MainView() {
               <RoundButton
                 outline
                 // variant="danger"
+                variant="white"
                 place="toast"
                 onClick={() => console.log("action")}
               >

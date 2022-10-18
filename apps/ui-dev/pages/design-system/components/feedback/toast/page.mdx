@@ -11,7 +11,7 @@ import { IconView } from "../../../../../component/feedback/toast/IconView.jsx";
 import { ToolsView } from "../../../../../component/feedback/toast/ToolsView.jsx"; 
 import { ClosableView } from "../../../../../component/feedback/toast/ClosableView.jsx"; 
 import { VariantView } from "../../../../../component/feedback/toast/VariantView.jsx"; 
-import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -19,6 +19,34 @@ Toasts display brief, temporary notifications. They're meant to be noticed witho
 
 
 <MainView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+ <Toast
+    direction="bottom-right"
+    icon={<InfoOutlined />}
+    style={{
+        position: "absolute",
+    }}
+    tools={[
+        <RoundButton
+            outline
+            variant="white"
+            place="toast"
+            onClick={() => console.log("action")}
+        >
+            Action
+        </RoundButton>,
+    ]}
+    closable
+>
+    Hello World yellow 234
+</Toast>
+```
+  </CodeViewItem>
+</CodeView>
 
 ## Options 
 

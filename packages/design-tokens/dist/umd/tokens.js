@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 09:51:33 GMT
+ * Generated on Tue, 18 Oct 2022 12:51:31 GMT
  */
 
 (function(root, factory) {
@@ -5140,6 +5140,27 @@
             "background",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonDefaultBackgroundWhite",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "background",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "default",
+            "background",
+            "white"
+          ]
         }
       },
       "border": {
@@ -5289,6 +5310,27 @@
             "border",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.black.value}"
+          },
+          "name": "ButtonDefaultBorderWhite",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "border",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "default",
+            "border",
+            "white"
+          ]
         }
       },
       "text": {
@@ -5437,6 +5479,27 @@
             "default",
             "text",
             "warning"
+          ]
+        },
+        "white": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonDefaultTextWhite",
+          "attributes": {
+            "category": "button",
+            "type": "default",
+            "item": "text",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "default",
+            "text",
+            "white"
           ]
         }
       }
@@ -5610,6 +5673,27 @@
             "background",
             "warning"
           ]
+        },
+        "white": {
+          "value": "transparent",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "ButtonOutlineBackgroundWhite",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "background",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "outline",
+            "background",
+            "white"
+          ]
         }
       },
       "border": {
@@ -5780,6 +5864,27 @@
             "border",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonOutlineBorderWhite",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "border",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "outline",
+            "border",
+            "white"
+          ]
         }
       },
       "text": {
@@ -5949,6 +6054,27 @@
             "outline",
             "text",
             "warning"
+          ]
+        },
+        "white": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonOutlineTextWhite",
+          "attributes": {
+            "category": "button",
+            "type": "outline",
+            "item": "text",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "outline",
+            "text",
+            "white"
           ]
         }
       }
@@ -6122,6 +6248,27 @@
             "background",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonHoverBackgroundWhite",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "background",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "hover",
+            "background",
+            "white"
+          ]
         }
       },
       "border": {
@@ -6292,6 +6439,27 @@
             "border",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonHoverBorderWhite",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "border",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "hover",
+            "border",
+            "white"
+          ]
         }
       },
       "text": {
@@ -6461,6 +6629,27 @@
             "hover",
             "text",
             "warning"
+          ]
+        },
+        "white": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonHoverTextWhite",
+          "attributes": {
+            "category": "button",
+            "type": "hover",
+            "item": "text",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "hover",
+            "text",
+            "white"
           ]
         }
       }
@@ -6634,6 +6823,27 @@
             "background",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#46525c",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.7.value}"
+          },
+          "name": "ButtonSelectedBackgroundWhite",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "background",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "selected",
+            "background",
+            "white"
+          ]
         }
       },
       "border": {
@@ -6804,6 +7014,27 @@
             "border",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonSelectedBorderWhite",
+          "attributes": {
+            "category": "button",
+            "type": "selected",
+            "item": "border",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "selected",
+            "border",
+            "white"
+          ]
         }
       }
     },
@@ -6955,6 +7186,27 @@
             "background",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonFocusBackgroundWhite",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "background",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "focus",
+            "background",
+            "white"
+          ]
         }
       },
       "border": {
@@ -7103,6 +7355,27 @@
             "focus",
             "border",
             "warning"
+          ]
+        },
+        "white": {
+          "value": "#39444d",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.8.value}"
+          },
+          "name": "ButtonFocusBorderWhite",
+          "attributes": {
+            "category": "button",
+            "type": "focus",
+            "item": "border",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "focus",
+            "border",
+            "white"
           ]
         }
       }
@@ -7276,6 +7549,27 @@
             "background",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonActiveBackgroundWhite",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "background",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "active",
+            "background",
+            "white"
+          ]
         }
       },
       "border": {
@@ -7446,6 +7740,27 @@
             "border",
             "warning"
           ]
+        },
+        "white": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "ButtonActiveBorderWhite",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "border",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "active",
+            "border",
+            "white"
+          ]
         }
       },
       "text": {
@@ -7615,6 +7930,27 @@
             "active",
             "text",
             "warning"
+          ]
+        },
+        "white": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/button/button.white.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "ButtonActiveTextWhite",
+          "attributes": {
+            "category": "button",
+            "type": "active",
+            "item": "text",
+            "subitem": "white"
+          },
+          "path": [
+            "button",
+            "active",
+            "text",
+            "white"
           ]
         }
       }

@@ -14,7 +14,7 @@ export function ToolsView() {
           <Toast
             direction="bottom-right"
             tools={[
-              <RoundButton place="toast" variant="outline">
+              <RoundButton place="toast" outline variant="white">
                 Action
               </RoundButton>,
             ]}

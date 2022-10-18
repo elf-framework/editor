@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 09:51:33 GMT
+ * Generated on Tue, 18 Oct 2022 12:51:31 GMT
  */
 
 export default tokens;
@@ -341,7 +341,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -350,7 +351,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "text": {
         "dark": DesignToken,
@@ -359,7 +361,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       }
     },
     "outline": {
@@ -371,7 +374,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -381,7 +385,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "text": {
         "dark": DesignToken,
@@ -391,7 +396,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       }
     },
     "hover": {
@@ -403,7 +409,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -413,7 +420,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "text": {
         "dark": DesignToken,
@@ -423,7 +431,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       }
     },
     "selected": {
@@ -435,7 +444,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -445,7 +455,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       }
     },
     "focus": {
@@ -456,7 +467,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -465,7 +477,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       }
     },
     "active": {
@@ -477,7 +490,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "border": {
         "dark": DesignToken,
@@ -487,7 +501,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       },
       "text": {
         "dark": DesignToken,
@@ -497,7 +512,8 @@ declare const tokens: {
         "primary": DesignToken,
         "secondary": DesignToken,
         "success": DesignToken,
-        "warning": DesignToken
+        "warning": DesignToken,
+        "white": DesignToken
       }
     },
     "color": {

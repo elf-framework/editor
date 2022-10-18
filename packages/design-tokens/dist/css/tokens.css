@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 18 Oct 2022 09:51:33 GMT
+ * Generated on Tue, 18 Oct 2022 12:51:31 GMT
  */
 
 :root {
@@ -122,6 +122,7 @@
   --table-thead-color-background-default: transparent;
   --menu-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --dialog-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
+  --button-outline-background-white: transparent;
   --button-outline-background-warning: transparent;
   --button-outline-background-success: transparent;
   --button-outline-background-secondary: transparent;
@@ -348,6 +349,7 @@
   --button-closable-hover-background-default: var(--color-transparent-white-1);
   --button-color-border-default: var(--color-gray-3);
   --button-color-background-default: var(--color-white);
+  --button-active-text-white: var(--color-white);
   --button-active-text-warning: var(--color-white);
   --button-active-text-success: var(--color-white);
   --button-active-text-secondary: var(--color-white);
@@ -356,6 +358,7 @@
   --button-active-text-info: var(--color-white);
   --button-active-text-danger: var(--color-white);
   --button-active-text-dark: var(--color-white);
+  --button-active-border-white: var(--color-gray-2);
   --button-active-border-warning: var(--color-orange-2);
   --button-active-border-success: var(--color-green-2);
   --button-active-border-secondary: var(--color-gray-2);
@@ -364,6 +367,7 @@
   --button-active-border-info: var(--color-blue-1);
   --button-active-border-danger: var(--color-red-2);
   --button-active-border-dark: var(--color-gray-2);
+  --button-active-background-white: var(--color-gray-2);
   --button-active-background-warning: var(--color-orange-2);
   --button-active-background-success: var(--color-green-2);
   --button-active-background-secondary: var(--color-gray-2);
@@ -372,6 +376,7 @@
   --button-active-background-info: var(--color-blue-1);
   --button-active-background-danger: var(--color-red-2);
   --button-active-background-dark: var(--color-gray-2);
+  --button-focus-border-white: var(--color-gray-8);
   --button-focus-border-warning: var(--color-orange-8);
   --button-focus-border-success: var(--color-green-8);
   --button-focus-border-secondary: var(--color-gray-8);
@@ -379,6 +384,7 @@
   --button-focus-border-info: var(--color-blue-7);
   --button-focus-border-danger: var(--color-red-8);
   --button-focus-border-dark: var(--color-gray-8);
+  --button-focus-background-white: var(--color-gray-8);
   --button-focus-background-warning: var(--color-orange-8);
   --button-focus-background-success: var(--color-green-8);
   --button-focus-background-secondary: var(--color-gray-8);
@@ -386,6 +392,7 @@
   --button-focus-background-info: var(--color-blue-7);
   --button-focus-background-danger: var(--color-red-8);
   --button-focus-background-dark: var(--color-gray-8);
+  --button-selected-border-white: var(--color-gray-8);
   --button-selected-border-warning: var(--color-orange-8);
   --button-selected-border-success: var(--color-green-8);
   --button-selected-border-secondary: var(--color-gray-8);
@@ -394,6 +401,7 @@
   --button-selected-border-info: var(--color-blue-6);
   --button-selected-border-danger: var(--color-red-8);
   --button-selected-border-dark: var(--color-gray-8);
+  --button-selected-background-white: var(--color-gray-7);
   --button-selected-background-warning: var(--color-orange-7);
   --button-selected-background-success: var(--color-green-7);
   --button-selected-background-secondary: var(--color-gray-7);
@@ -402,6 +410,7 @@
   --button-selected-background-info: var(--color-blue-6);
   --button-selected-background-danger: var(--color-red-7);
   --button-selected-background-dark: var(--color-gray-7);
+  --button-hover-text-white: var(--color-white);
   --button-hover-text-warning: var(--color-white);
   --button-hover-text-success: var(--color-white);
   --button-hover-text-secondary: var(--color-white);
@@ -410,6 +419,7 @@
   --button-hover-text-info: var(--color-white);
   --button-hover-text-danger: var(--color-white);
   --button-hover-text-dark: var(--color-white);
+  --button-hover-border-white: var(--color-gray-7);
   --button-hover-border-warning: var(--color-orange-7);
   --button-hover-border-success: var(--color-green-7);
   --button-hover-border-secondary: var(--color-gray-7);
@@ -418,6 +428,7 @@
   --button-hover-border-info: var(--color-blue-6);
   --button-hover-border-danger: var(--color-red-7);
   --button-hover-border-dark: var(--color-gray-7);
+  --button-hover-background-white: var(--color-gray-7);
   --button-hover-background-warning: var(--color-orange-7);
   --button-hover-background-success: var(--color-green-7);
   --button-hover-background-secondary: var(--color-gray-7);
@@ -426,10 +437,13 @@
   --button-hover-background-info: var(--color-blue-6);
   --button-hover-background-danger: var(--color-red-7);
   --button-hover-background-dark: var(--color-gray-7);
+  --button-outline-text-white: var(--color-white);
   --button-outline-text-default: var(--color-gray-5);
   --button-outline-text-dark: var(--color-gray-9);
+  --button-outline-border-white: var(--color-white);
   --button-outline-border-default: var(--color-gray-5);
   --button-outline-border-dark: var(--color-gray-9);
+  --button-default-text-white: var(--color-white);
   --button-default-text-warning: var(--color-white);
   --button-default-text-success: var(--color-white);
   --button-default-text-secondary: var(--color-white);
@@ -586,6 +600,7 @@
   --button-outline-border-primary: var(--color-primary);
   --button-outline-border-info: var(--color-info);
   --button-outline-border-danger: var(--color-danger);
+  --button-default-border-white: var(--color-black);
   --button-default-border-warning: var(--color-warning);
   --button-default-border-success: var(--color-success);
   --button-default-border-secondary: var(--color-secondary);
@@ -593,6 +608,7 @@
   --button-default-border-info: var(--color-info);
   --button-default-border-danger: var(--color-danger);
   --button-default-border-dark: var(--color-black);
+  --button-default-background-white: var(--color-black);
   --button-default-background-warning: var(--color-warning);
   --button-default-background-success: var(--color-success);
   --button-default-background-secondary: var(--color-secondary);

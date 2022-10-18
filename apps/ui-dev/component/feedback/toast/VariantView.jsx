@@ -10,7 +10,8 @@ function Item({ variant }) {
       tools={[
         <RoundButton
           place="toast"
-          variant="outline"
+          variant="white"
+          outline
           onClick={() => console.log("action")}
         >
           Action

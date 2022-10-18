@@ -1,0 +1,49 @@
+.elf--button.white {
+
+  --elf--button-background-color: var(--button-default-background-white);
+  --elf--button-text-color: var(--button-default-text-white);
+  --elf--button-border-color: var(--button-default-border-white);
+
+  &.selected {
+    --elf--button-background-color: var(--button-selected-background-white);
+    --elf--button-border-color: var(--button-selected-border-white);
+  }
+
+  &:active,
+  &.active {
+    --elf--button-background-color: var(--button-active-background-white);
+    --elf--button-border-color: var(--button-active-border-white);
+  }
+
+  &:hover,
+  &.hover {
+    --elf--button-background-color: var(--button-hover-background-white);
+    --elf--button-text-color: var(--button-hover-text-white);
+    --elf--button-border-color: var(--button-hover-border-white);
+  }
+
+  &:focus,
+  &.focused {
+
+    &:not(.quiet):not(.outline) {
+      outline: 2px solid var(--button-default-border-white);
+      --elf--button-border-color: var(--color-background-default);
+      border-width: 2px;
+    }
+
+  }
+
+  &.outline {
+
+    --elf--button-border-color: var(--button-outline-border-white);
+    --elf--button-text-color: var(--button-outline-text-white);
+    --elf--button-background-color: var(--button-outline-background-white);
+
+    &:hover,
+    &.hover {
+      --elf--button-background-color: var(--button-default-background-white) !important;
+      --elf--button-text-color: var(--button-default-text-white) !important;
+      // --elf--button-border-color: var(--button-default-border-white) !important;
+    }
+  }
+}

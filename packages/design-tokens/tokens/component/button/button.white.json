@@ -1,0 +1,96 @@
+{
+  "button": {
+    "default": {
+      "background": {
+        "white": {
+          "value": "{color.black.value}"
+        }
+      },
+      "border": {
+        "white": {
+          "value": "{color.black.value}"
+        }
+      },
+      "text": {
+        "white": {
+          "value": "{color.white.value}"
+        }
+      }
+    },
+    "outline": {
+      "background": {
+        "white": {
+          "value": "transparent"
+        }
+      },
+      "border": {
+        "white": {
+          "value": "{color.white.value}"
+        }
+      },
+      "text": {
+        "white": {
+          "value": "{color.white.value}"
+        }
+      }
+    },        
+    "hover": {
+      "background": {
+        "white": {
+          "value": "{color.gray.7.value}"
+        }
+      },
+      "border": {
+        "white": {
+          "value": "{color.gray.7.value}"
+        }
+      },
+      "text": {
+        "white": {
+          "value": "{color.white.value}"
+        }
+      }
+    },
+    "selected": {
+      "background": {
+        "white": {
+          "value": "{color.gray.7.value}"
+        }
+      },
+      "border": {
+        "white": {
+          "value": "{color.gray.8.value}"
+        }
+      }
+    },
+    "focus": {
+      "background": {
+        "white": {
+          "value": "{color.gray.8.value}"
+        }
+      },
+      "border": {
+        "white": {
+          "value": "{color.gray.8.value}"
+        }
+      }
+    },
+    "active": {
+      "background": {
+        "white": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "border": {
+        "white": {
+          "value": "{color.gray.2.value}"
+        }
+      },
+      "text": {
+        "white": {
+          "value": "{color.white.value}"
+        }
+      }
+    }
+  }
+}
