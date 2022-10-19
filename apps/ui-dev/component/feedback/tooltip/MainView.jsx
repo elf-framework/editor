@@ -36,17 +36,17 @@ export function MainView() {
             gap: 20,
           }}
         >
-          <Button>
+          <Button iconOnly>
             <EditFilled />
           </Button>
-          <Button>
+          <Button iconOnly>
             <InfoOutlined />
           </Button>
-          <Button>
+          <Button iconOnly>
             <CachedFilled />
           </Button>
           <Tooltip placement="top" message={"text message"} show>
-            <Button>
+            <Button iconOnly>
               <HelpOutlineFilled />
             </Button>
           </Tooltip>

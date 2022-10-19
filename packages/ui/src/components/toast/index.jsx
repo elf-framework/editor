@@ -6,6 +6,7 @@ import {
   useCallback,
   potal,
   useMemo,
+  isFunction,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -36,6 +37,7 @@ export class Toast extends UIElement {
       direction = "bottom",
       closable,
       variant = undefined,
+      onClose,
     } = this.props;
     const [localDelay, setLocalDelay] = useState(delay);
     const [hide, setHide] = useState(false);
@@ -84,7 +86,7 @@ export class Toast extends UIElement {
         {...styleObject}
         onContextMenu={(e) => e.preventDefault()}
         onTransitionEnd={() => {
-          this.props.onHide && this.props.onHide();
+          isFunction(onClose) && onClose();
           this.destroy(true);
         }}
       >

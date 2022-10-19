@@ -11,7 +11,13 @@ export function ClosableView() {
         }}
       >
         <div>
-          <Toast direction="bottom-right" closable>
+          <Toast
+            direction="bottom-right"
+            closable
+            onHide={() => {
+              console.log("onHide");
+            }}
+          >
             Hello World yellow 234
           </Toast>
         </div>

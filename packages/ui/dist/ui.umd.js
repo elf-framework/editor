@@ -2503,7 +2503,8 @@ var __privateMethod = (obj, member, method) => {
         icon,
         direction = "bottom",
         closable,
-        variant = void 0
+        variant = void 0,
+        onClose
       } = this.props;
       const [localDelay, setLocalDelay] = sapa.useState(delay);
       const [hide, setHide] = sapa.useState(false);
@@ -2544,7 +2545,7 @@ var __privateMethod = (obj, member, method) => {
         ...styleObject,
         onContextMenu: (e) => e.preventDefault(),
         onTransitionEnd: () => {
-          this.props.onHide && this.props.onHide();
+          sapa.isFunction(onClose) && onClose();
           this.destroy(true);
         }
       }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", {

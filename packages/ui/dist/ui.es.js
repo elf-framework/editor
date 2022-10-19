@@ -2501,7 +2501,8 @@ class Toast extends UIElement {
       icon,
       direction = "bottom",
       closable,
-      variant = void 0
+      variant = void 0,
+      onClose
     } = this.props;
     const [localDelay, setLocalDelay] = useState(delay);
     const [hide, setHide] = useState(false);
@@ -2542,7 +2543,7 @@ class Toast extends UIElement {
       ...styleObject,
       onContextMenu: (e) => e.preventDefault(),
       onTransitionEnd: () => {
-        this.props.onHide && this.props.onHide();
+        isFunction(onClose) && onClose();
         this.destroy(true);
       }
     }, icon ? /* @__PURE__ */ createElementJsx("div", {

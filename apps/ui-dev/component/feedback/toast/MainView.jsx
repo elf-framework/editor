@@ -9,7 +9,7 @@ export function MainView() {
         backgroundColor: "var(--color-gray-0)",
         padding: "60px 150px",
         position: "relative",
-        height: 300,
+        height: 400,
       }}
     >
       <div
@@ -17,14 +17,14 @@ export function MainView() {
           flex: "none",
           position: "relative",
           display: "flex",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignItems: "center",
           gap: 10,
         }}
       >
         <div
           style={{
-            height: 300,
+            height: 200,
             position: "relative",
             width: "100%",
             backgroundColor: "white",

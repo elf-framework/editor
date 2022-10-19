@@ -12,7 +12,7 @@ import { PlacementView } from "../../../../../component/feedback/tooltip/Placeme
 import { ClosableView } from "../../../../../component/feedback/tooltip/ClosableView.jsx"; 
 import { VariantView } from "../../../../../component/feedback/tooltip/VariantView.jsx"; 
 import { MaxWidthView } from "../../../../../component/feedback/tooltip/MaxWidthView.jsx"; 
-import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -21,21 +21,158 @@ Tooltips show contextual help or information about specific components when a us
 
 <MainView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Tooltip placement="top" message={"text message"} show>
+    <Button iconOnly>
+        <HelpOutlineFilled />
+    </Button>
+</Tooltip>
+```
+  </CodeViewItem>
+</CodeView>
+
 ## Options 
 
 
 ### Label
 <OptionsView />
 
+&nbsp;
+
+All tooltips have a label. The label communicates the contextual help or information about specific components when a user hovers over or focuses on them.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+<Tooltip placement="top" message={"label"} show />
+```
+  </CodeViewItem>
+</CodeView>
+
 ### Variants
 <VariantView />
 
+&nbsp;
+
+By default, tooltips are the neutral variant. These are the most common variant because most tooltips are used to only disclose
+additional information, without conveying a semantic meaning. The
+neutral variant never includes an icon.
+
+Tooltips also come in semantic variants: informative (blue), positive
+(green), and negative (red). These use semantic colors to communicate
+the meaning.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+<Tooltip placement="top" message={"label"} show />
+```
+  </CodeViewItem>
+</CodeView>
+
 
 ### Icon
+
 <IconView />
 
+&nbsp;
+
+3 of the 4 tooltip variants (informative, positive, and negative) can
+include an icon to supplement the messaging. 
+
+These icons are predefined and can not be customized. Unless it's being used to
+provide context about the exact same icon, a semantic tooltip should
+always show an icon. 
+
+Doing this is essential for helping users with
+color vision deficiency to discern the message tone.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2} showLineNumbers
+<Tooltip
+    variant={variant}
+    icon={icon}
+    message={<div>text message</div>}
+    placement="top"
+    show
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
 ### Maximum width
+
 <MaxWidthView />
+
+&nbsp;
+
+By default, the maximum width of a tooltip is size-2000 (160 px on
+desktop, 200 px on mobile). This can be customized to better fit your
+context.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {12} showLineNumbers
+<Tooltip
+    variant={variant}
+    icon={icon}
+    message={[
+        <div style={{ whiteSpace: "pre-wrap" }}>
+            Your admin must grant you permission to create segments
+        </div>,
+    ]}
+    placement="top"
+    show
+    style={{
+        maxWidth: 160,
+    }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Placement
 <PlacementView />
+
+A tooltip is positioned in relation to its target. Placement property
+values are at the:
+
+* top
+* top-left
+* top-right
+* bottom
+* bottom-left
+* bottom-right
+* left
+* right
+
+The default placement value is at the top.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {11} showLineNumbers
+<Tooltip
+    show
+    message={
+        <div style={{ whiteSpace: "pre-wrap" }}>
+            Your admin must grant you permission to create segments
+        </div>
+    }
+    style={{
+        maxWidth: 200,
+    }}
+    placement="bottom" // default
+>
+    <Button quiet iconOnly size="extra-small" selected>
+        <InfoOutlined />
+    </Button>
+</Tooltip>
+```
+  </CodeViewItem>
+</CodeView>

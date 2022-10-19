@@ -12,7 +12,7 @@ import { SizeView } from "../../../../../component/inputs/checkbox/SizeView.jsx"
 import { EmphasisView } from "../../../../../component/inputs/checkbox/EmphasisView.jsx"; 
 import { DisabledView } from "../../../../../component/inputs/checkbox/DisabledView.jsx"; 
 import { ErrorView } from "../../../../../component/inputs/checkbox/ErrorView.jsx"; 
-import { UIComponentLink } from "../../../../../component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "../../../../../utils/CodeView.jsx"; 
 
 # {title}
 
@@ -20,23 +20,119 @@ Checkboxes allow users to select multiple items from a list of individual items,
 
 <MainView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Checkbox checked>Illustration</Checkbox>
+
+<Checkbox checked>Photo</Checkbox>
+
+<Checkbox indeterminate checked>
+    UI/UX Design
+</Checkbox>
+```
+  </CodeViewItem>
+</CodeView>
+
 ## Options 
 
 ### Label
 
 <OptionsView />
 
+
+&nbsp; 
+
+Checkboxes should always have a label. When the label is not defined, a checkbox becomes standalone. Standalone checkboxes are only used when their connection to other components is clear and they give sufficient context — for example, in application panels.
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+// with label
+
+<Checkbox>label</Checkbox>
+<Checkbox checked>label</Checkbox>
+<Checkbox indeterminate>label</Checkbox>
+
+
+// Standalone
+
+<Checkbox />
+<Checkbox checked />
+<Checkbox indeterminate />
+```
+  </CodeViewItem>
+</CodeView>
+
 ### Selection
 
 <SelectionView />
+
+
+&nbsp;
+
+Checkboxes can be selected, not selected, or in an indeterminate state. They are in an indeterminate state when they represent both selected and not selected values.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {3} showLineNumbers
+<Checkbox>label</Checkbox>
+<Checkbox checked>label</Checkbox>
+<Checkbox indeterminate>label</Checkbox>
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Size
 
 <SizeView />
 
+&nbsp;
+
+Checkboxes come in four different sizes: small, medium, large, and extra-large. The medium size is the default and most frequently used option. Use the other sizes sparingly; they should be used to create a hierarchy of importance within the page.
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {3} showLineNumbers
+<Checkbox size="small" checked>Label</Checkbox>
+<Checkbox size="medium" checked>Label</Checkbox>
+<Checkbox size="large" checked>Label</Checkbox>
+<Checkbox size="extra-large" checked>Label</Checkbox>
+```
+  </CodeViewItem>
+</CodeView>
+
 ### Emphasis
 
 <EmphasisView />
+
+&nbsp; 
+
+By default, checkboxes are not emphasized (gray). This version is optimal for when the checkbox is not the core part of an interface,
+such as in application panels, where all visual components are monochrome in order to direct focus to the content.
+
+
+The emphasized (blue) version provides a visual prominence that is optimal for forms, settings, lists or grids of assets, and other situations where a checkbox need to be noticed.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx showLineNumbers
+<Checkbox variant="dark">label</Checkbox>
+<Checkbox variant="dark" checked>
+    label
+</Checkbox>
+<Checkbox variant="dark" indeterminate>
+    label
+</Checkbox>
+```
+  </CodeViewItem>
+</CodeView>
 
 
 ### Disabled

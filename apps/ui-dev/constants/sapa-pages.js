@@ -4,7 +4,7 @@ export default [
     link: "/pages/sapa/getting-started/",
     title: "Getting Started",
   },
-  { type: "group", title: "Basics" },
+  "Basics",
   {
     type: "link",
     link: "/pages/sapa/basic/",

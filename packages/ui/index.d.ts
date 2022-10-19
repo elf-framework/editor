@@ -614,7 +614,7 @@ declare module "@elf-framework/ui" {
     delay?: number;
     variant?: VariantType;
     onShow?: () => void;
-    onHide?: () => void;
+    onClose?: () => void;
   }
   export class Toast extends UIElement {
     props: ToastProps & CommonStyle;
