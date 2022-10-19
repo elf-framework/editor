@@ -1,7 +1,7 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { MarkdownPage } from "../../../../component/MarkdownPage";
+import { MarkdownPage } from "~/component/MarkdownPage";
 import LayoutManager from "../../../../layouts/LayoutManager";
 import Page, { layout } from "./page.mdx";
 import "./page.scss";

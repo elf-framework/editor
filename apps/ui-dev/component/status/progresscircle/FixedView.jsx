@@ -1,7 +1,7 @@
 import CheckCircleFilled from "@elf-framework/icon/CheckCircleFilled";
 import { Badge, Grid, VBox } from "@elf-framework/ui";
 
-import { ucwords } from "../../../utils/ucwords";
+import { ucwords } from "~/utils/ucwords";
 
 export function FixedView() {
   return (

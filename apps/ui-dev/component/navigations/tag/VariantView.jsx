@@ -1,7 +1,7 @@
 import WarningFilled from "@elf-framework/icon/WarningFilled";
 import { Grid, Tag, VBox } from "@elf-framework/ui";
 
-import { ucwords } from "../../../utils/ucwords";
+import { ucwords } from "~/utils/ucwords";
 
 export function VariantView() {
   return (

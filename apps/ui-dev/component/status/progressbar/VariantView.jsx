@@ -1,6 +1,6 @@
 import { Badge, Grid, VBox } from "@elf-framework/ui";
 
-import { ucwords } from "../../../utils/ucwords";
+import { ucwords } from "~/utils/ucwords";
 
 const variants = [
   "informative",
