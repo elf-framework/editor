@@ -1,5 +1,5 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Grid, RoundButton, Toast, VBox } from "@elf-framework/ui";
+import { RoundButton, Toast, VBox } from "@elf-framework/ui";
 
 function Item({ variant }) {
   return (

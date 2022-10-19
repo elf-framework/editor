@@ -11,6 +11,7 @@ const layouts = {
   "pages/design-system": "DesignLayout",
   "pages/sapa": "SapaLayout",
   "pages/blog": "BlogLayout",
+  "pages/introduction": "MainLayout",
 };
 
 function ucwords(str) {
