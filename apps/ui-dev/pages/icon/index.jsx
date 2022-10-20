@@ -1,14 +1,9 @@
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
-import { IconLayout } from "../../layouts/IconLayout";
+import Page, { layout } from "./index.mdx";
 
-function Main() {
-  return (
-    <IconLayout>
-      <h1>Basic</h1>
-    </IconLayout>
-  );
-}
+import { PageBoard } from "~/layouts/PageBoard";
 
-start(Main);
+const filename = "pages/icon/index.mdx";
+start(<PageBoard layout={layout} filename={filename} page={Page} />);

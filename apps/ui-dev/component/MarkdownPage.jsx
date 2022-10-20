@@ -44,9 +44,9 @@ function PrevNextLink({ prev, next }) {
       {prev ? (
         <LinkView
           class="prev"
-          link={prev.item.link}
-          title={prev.item.title}
-          category={prev.parent?.title || prev.item.category}
+          link={prev.item?.link}
+          title={prev.item?.title}
+          category={prev.parent?.title || prev.item?.category}
         />
       ) : (
         <div />
@@ -54,9 +54,9 @@ function PrevNextLink({ prev, next }) {
       {next ? (
         <LinkView
           class="next"
-          link={next.item.link}
-          title={next.item.title}
-          category={next.parent?.title || next.item.category}
+          link={next.item?.link}
+          title={next.item?.title}
+          category={next.parent?.title || next.item?.category}
         />
       ) : (
         <div />
@@ -115,7 +115,7 @@ export function MarkdownPage({ page: Page, filename, menu }) {
           <FileEditorLink filename={filename} />
         </div>
 
-        <TableOfContents items={items} />
+        {items.length ? <TableOfContents items={items} /> : undefined}
       </div>
     </div>
   );

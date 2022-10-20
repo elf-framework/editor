@@ -2,7 +2,6 @@ import DarkModeFilled from "@elf-framework/icon/DarkModeFilled";
 import LightModeFilled from "@elf-framework/icon/LightModeFilled";
 import {
   classnames,
-  useEffect,
   useEmit,
   useState,
   useSubscribe,
@@ -54,14 +53,10 @@ export function PageTools({ menu }) {
       <div class="lg">
         <div>
           {mainMenus.map((it, index) => {
-            if (index === 0) {
-              return <a href={it.link}>{it.title}</a>;
-            }
-
             const selected = pathname.startsWith(it.category);
 
             return [
-              <span class="divider"></span>,
+              index === 0 ? undefined : <span class="divider"></span>,
               <a
                 href={it.link}
                 class={classnames({

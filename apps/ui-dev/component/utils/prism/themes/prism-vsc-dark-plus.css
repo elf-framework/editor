@@ -1,8 +1,8 @@
 
 .markdown-body code, 
 .markdown-body tt  {
-    color: #ff0000;
-    background-color: #ffe4e4;
+    color: var(--color-text-default);
+    border: 1px solid var(--color-red-3);
 }
 
 pre[class*="language-"],

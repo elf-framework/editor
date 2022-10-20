@@ -1,0 +1,513 @@
+---
+title: Menu
+layout: DesignLayout
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "~/component/actions/menu/MainView.jsx"; 
+import { OptionsView } from "~/component/actions/menu/OptionsView.jsx"; 
+import { IconView } from "~/component/actions/menu/IconView.jsx"; 
+import { DescriptionView } from "~/component/actions/menu/DescriptionView.jsx"; 
+import { ValueView } from "~/component/actions/menu/ValueView.jsx"; 
+import { DisabledView } from "~/component/actions/menu/DisabledView.jsx"; 
+import { SectionView } from "~/component/actions/menu/SectionView.jsx"; 
+import { VariantView } from "~/component/actions/menu/VariantView.jsx"; 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+
+# {title}
+
+Menus help users take actions, choose from a list of options, configure settings, and more. They can be placed in a transient container, like a popover or tray.
+
+
+<MainView />
+
+
+<CodeView>
+
+    <CodeViewItem title="Sapa">
+    ```jsx {9, 10} showLineNumbers
+import { Menu, Button } from "@elf-framework/ui";
+
+function App() { 
+    return (
+
+      <div
+          style={{
+            display: "flex",
+            position: "relative",
+            alignItems: "start",
+            gap: 10,
+            padding: 50,
+            height: 300,
+            overflow: "hidden",
+          }}
+        >
+          <Button>
+            <SettingsFilled /> Settings
+          </Button>
+          <Menu
+            items={[
+              { type: "item", title: "Document Setup" },
+              { type: "item", title: "Settings" },
+              { type: "item", title: "Copy" },
+              {
+                type: "section",
+                title: "Group",
+              },
+              {
+                type: "item",
+                title: "Languages",
+                hover: true,
+                items: [
+                  { type: "item", title: "English", selectable: true },
+                  {
+                    type: "item",
+                    title: "German",
+                    selected: true,
+                    selectable: true,
+                  },
+                  { type: "item", title: "French", selectable: true },
+                  { type: "item", title: "Spanish", selectable: true },
+                  { type: "item", title: "Italian", selectable: true },
+                  "-",
+                  { type: "item", title: "Portuguese", selectable: true },
+                  { type: "item", title: "Russian", selectable: true },
+                  { type: "item", title: "Japanese", selectable: true },
+                  { type: "item", title: "Chinese", selectable: true },
+                ],
+              },
+            ]}
+            style={{
+              position: "relative",
+            }}
+          />
+        </div>
+
+    )
+}
+    ```
+    </CodeViewItem>
+    <CodeViewItem title="Html">
+```html {2-12} showLineNumbers
+<menu data-direction="left" class="elf--menu menu light" style="position: relative;">
+    <li>
+        <div class="menu-item-content">
+            <div class="menu-title">Document Setup</div>
+        </div>
+    </li>
+    <li>
+        <div class="menu-item-content">
+            <div class="menu-title">Settings</div>
+        </div>
+    </li>
+    <li>
+        <div class="menu-item-content">
+            <div class="menu-title">Copy</div>
+        </div>
+    </li>
+    <li class="section-title">Group</li>
+    <li class="hover">
+        <div class="menu-item-content">
+            <div class="menu-title">Languages</div>
+            <div class="value-area">
+                <div class="icon">▶</div>
+            </div>
+        </div>
+        <menu data-direction="right" class="elf--menu menu light">
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">English</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon">✓</span>
+                    <div class="menu-title">German</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">French</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">Spanish</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">Italian</div>
+                </div>
+            </li>
+            <li class="elf--divider" dashed="false"></li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">Portuguese</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">Russian</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">Japanese</div>
+                </div>
+            </li>
+            <li>
+                <div class="menu-item-content"><span class="selected-icon"></span>
+                    <div class="menu-title">Chinese</div>
+                </div>
+            </li>
+        </menu>
+    </li>
+</menu>
+```
+    </CodeViewItem>
+
+    <CodeViewItem title="Typescript">
+```typescript {6, 24-30} showLineNumbers
+  
+  /** menu */
+  export type MenuItemType = {
+    type: "item";
+    title: ContentType;
+    shortcut?: ContentType;
+    hover?: boolean;
+    icon?: ContentType;
+    description?: ContentType;
+    selectable?: boolean;
+    selected?: boolean;
+    selectedIcon?: ContentType;
+    onClick?: (event: PointerEvent) => void;
+    onSelect?: (event: PointerEvent, context: MenuItem) => void;
+    items?: ItemType[];
+    closable?: boolean;
+    rootClose?: () => void;
+    disabled?: boolean;
+  };
+
+  export type SectionMenuItemType = {
+    type: "section";
+    rootClose?: () => void;
+    title: string;
+  };
+
+  export type DividerMenuItemType = {
+    type: "divider";
+    rootClose?: () => void;
+    dashed: boolean;
+  };
+
+  export type CustomMenuRenderFunctionType = ContentType;
+
+  export type CustomMenuItemType =
+    | {
+        type: "custom";
+        rootClose?: () => void;
+        render?: (context: MenuItem) => UIElement;
+      }
+    | CustomMenuRenderFunctionType;
+
+  export type LinkMenuItemType = {
+    type: "link";
+    title: string;
+    link: string;
+    rootClose?: () => void;
+  };
+
+  export type ItemType =
+    | MenuItemType
+    | SectionMenuItemType
+    | DividerMenuItemType
+    | CustomMenuItemType
+    | LinkMenuItemType
+    | "-"
+    | string;
+
+  interface MenuStyle {
+    backgroundColor?: string;
+    color?: string;
+    fontSize?: string;
+    fontWeight?: string;
+    height?: string;
+    padding?: string;
+    borderRadius?: string;
+    borderColor?: string;
+    boxShadow?: string;
+    width?: string;
+    maxWidth?: string;
+    sectionTitleColor?: string;
+    sectionTitleBackgroundColor?: string;
+    dividerColor?: string;
+    left?: string;
+  }
+
+  export type MenuDirectionType = "left" | "right" | "center";
+
+  export interface MenuProps {
+    items: ItemType[];
+    type: "menu" | "dropdown" | "contextmenu";
+    x?: number;
+    y?: number;
+    direction?: MenuDirectionType;
+    style: MenuStyle & CommonStyle;
+    root?: ToolsMenuItem;
+    compact?: boolean;
+    variant?: "light" | "dark";
+  }
+
+  export class SectionMenuItem extends UIElement {
+    props: SectionMenuItemType & CommonStyle;
+  }
+
+  export class MenuItem extends UIElement {
+    props: MenuItemType & CommonStyle;
+    get selected(): boolean;
+  }
+
+  export class Menu extends UIElement {
+    props: MenuProps & CommonStyle;
+  }
+
+```
+
+    </CodeViewItem>
+
+</CodeView>
+
+
+## Options  
+
+
+### Popover container
+<OptionsView />
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2} showLineNumbers
+<Menu
+  type="dropdown"
+  items={[
+    { type: "item", title: "Document Setup" },
+    { type: "item", title: "Settings" },
+    { type: "item", title: "Copy" },
+  ]}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+### Icon
+<IconView />
+
+
+<CodeView>
+  <CodeViewItem>
+```jsx {5} showLineNumbers
+<Menu
+  items={[
+    {
+      type: "item",
+      icon: <DescriptionFilled />,
+      title: "Document Setup",
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Copy",
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+### Description
+<DescriptionView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {6, 12} showLineNumbers
+ <Menu
+  items={[
+    {
+      type: "item",
+      title: "Quick export",
+      description: "Share a low-res snapshot",
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+### Value
+<ValueView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {6,8} showLineNumbers
+<Menu
+  items={[
+    {
+      type: "item",
+      title: "Quick export",
+      shortcut: "⌘ + Ctrl+E",
+      description: "Share a low-res snapshot",
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+### Disabled
+<DisabledView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {8} showLineNumbers
+<Menu
+  items={[
+    {
+      type: "item",
+      title: "Quick export",
+      shortcut: "⌘ + Ctrl+E",
+      description: "Share a low-res snapshot",
+      disabled: true,
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+    { type: "item", title: "Settings" },
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+### Section
+<SectionView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {4} showLineNumbers
+ <Menu
+  items={[
+    {
+      type: "section",
+      title: "Section 1",
+    },
+    {
+      type: "item",
+      title: "Quick export",
+      shortcut: "⌘ + Ctrl+E",
+      description: "Share a low-res snapshot",
+      items: [{ type: "item", title: "Document Setup" }],
+    },
+    { type: "item", title: "Settings" },
+    "-",
+    {
+      type: "item",
+      title: "Open a copy",
+      description: "Open in iPad",
+    },
+  ]}
+  style={{
+    position: "relative",
+  }}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+
+### Variant
+<VariantView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {27} showLineNumbers
+<div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+  <strong>Dark</strong>
+  <Menu
+    variant="dark"
+    items={[
+      {
+        type: "item",
+        title: "Quick export",
+        shortcut: "⌘ + Ctrl+E",
+        description: "Share a low-res snapshot",
+        items: [{ type: "item", title: "Document Setup" }],
+      },
+      { type: "item", title: "Settings" },
+      {
+        type: "item",
+        title: "Open a copy",
+        description: "Open in iPad",
+      },
+    ]}
+    style={{
+      position: "relative",
+    }}
+  />
+</div>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+
+
+
+
+
+

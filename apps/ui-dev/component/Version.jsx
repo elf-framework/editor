@@ -6,6 +6,10 @@ export function DesignSystemVersion() {
   return <Version npmPackage={"@elf-framework/design-system"} />;
 }
 
+export function IconVersion() {
+  return <Version npmPackage={"@elf-framework/icon"} />;
+}
+
 export function SapaVersion() {
   return <Version npmPackage="@elf-framework/sapa" />;
 }

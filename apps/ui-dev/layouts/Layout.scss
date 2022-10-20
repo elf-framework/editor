@@ -193,5 +193,27 @@ body {
 
     table {
         display: table;
+
+
+        > thead > tr {
+            background-color: var(--elf--table-thead-background-color) !important;
+            border: 0px !important;
+
+            > th {
+                --elf--table-head-cell-align: flex-start;
+          
+                padding: var(--elf--table-head-cell-padding);
+                border:0px;
+                font-weight: 500;
+                text-align: var(--elf--table-cell-text-align);
+                border:0px;
+            }
+                
+        }
+
+        > tbody > tr {
+            background-color: var(--elf--table-tbody-background-color) !important;
+        
+        }
     }
 }
