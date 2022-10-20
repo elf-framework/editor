@@ -286,16 +286,6 @@ declare module "@elf-framework/ui" {
     props: ButtonProps & CommonStyle;
   }
 
-  interface ButtonGroupProps {
-    content?: Button[];
-    disabled?: boolean;
-    style?: ButtonStyle & CommonStyle;
-  }
-
-  export class ButtonGroup extends UIElement {
-    props: ButtonGroupProps;
-  }
-
   interface ActionGroupProps {
     content?: Button[];
     direction?: OrientationType;
@@ -1156,21 +1146,6 @@ declare module "@elf-framework/ui" {
   }
   export class ColorGrid extends UIElement {
     props: ColorGridProps & CommonStyle;
-  }
-
-  export type OptionStripItem = {
-    value: unknown;
-    icon: VNode;
-  };
-  export interface OptionStripProps {
-    options: OptionStripItem[];
-    selectedValue: unknown;
-    disabled?: boolean;
-    onChange: (event: PointerEvent) => void;
-    style: CommonStyle;
-  }
-  export class OptionStrip extends UIElement {
-    props: OptionStripProps & CommonStyle;
   }
 
   export type DataEditorItemType = string;

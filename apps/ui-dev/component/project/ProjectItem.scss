@@ -1,3 +1,30 @@
 .project-item {
 
 }
+
+
+.striped {
+    --striped-dist: 20px;
+    text-shadow: 0 0 10px var(--color-transparent-black-10);
+    color: white !important;
+
+    background: repeating-linear-gradient(135deg,
+    #ffffff,
+    #ffffff var(--striped-dist),
+    #dedede var(--striped-dist),
+    #dedede calc(var(--striped-dist) * 2));
+}
+
+@media (max-width: 900px) { 
+    .project-item-list {
+        grid-template-columns: 1fr 1fr !important; 
+    }    
+}
+
+
+@media (max-width: 600px) { 
+    .project-item-list {
+        grid-template-columns: 1fr !important; 
+    }    
+}
+

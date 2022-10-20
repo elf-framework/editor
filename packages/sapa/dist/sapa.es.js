@@ -4507,8 +4507,9 @@ class Dom {
     return results;
   }
   hasChild(child) {
+    var _a;
     const childNode = child.el || child;
-    return this.el === childNode ? false : this.el.contains(childNode);
+    return this.el === childNode ? false : (_a = this.el) == null ? void 0 : _a.contains(childNode);
   }
   get childNodes() {
     const result = [];

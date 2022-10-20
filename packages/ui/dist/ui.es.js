@@ -441,7 +441,7 @@ function splitStyleKeyAndNoneStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$R = makeCssVariablePrefixMap("--elf--alert", {
+const cssProperties$Q = makeCssVariablePrefixMap("--elf--alert", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -490,7 +490,7 @@ class Alert extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$R),
+        ...propertyMap(style2, cssProperties$Q),
         ...{
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
@@ -553,7 +553,7 @@ function alert({
 }
 registerComponent("Alert", Alert);
 registerComponent("alert", Alert);
-const cssProperties$Q = makeCssVariablePrefixMap("--elf--animation", {
+const cssProperties$P = makeCssVariablePrefixMap("--elf--animation", {
   name: true,
   iterationCount: true,
   timingFunction: true,
@@ -589,7 +589,7 @@ class Animation extends UIElement {
           delay,
           playState: play ? "running" : "paused"
         },
-        cssProperties$Q
+        cssProperties$P
       ),
       onAnimationStart,
       onAnimationEnd,
@@ -627,7 +627,7 @@ class Animation extends UIElement {
 });
 registerComponent("animation", Animation);
 registerComponent("Animation", Animation);
-const cssProperties$P = makeCssVariablePrefixMap("--elf--progress-circle", {
+const cssProperties$O = makeCssVariablePrefixMap("--elf--progress-circle", {
   backgroundColor: true,
   color: true,
   duration: true,
@@ -664,7 +664,7 @@ class ProgressCircle extends UIElement {
           ...style2,
           offset: percentValue
         },
-        cssProperties$P
+        cssProperties$O
       )
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -687,7 +687,7 @@ class ProgressCircle extends UIElement {
 registerComponent("progress-circle", ProgressCircle);
 registerComponent("progresscircle", ProgressCircle);
 registerComponent("ProgressCircle", ProgressCircle);
-const cssProperties$O = makeCssVariablePrefixMap("--elf--button", {
+const cssProperties$N = makeCssVariablePrefixMap("--elf--button", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -769,7 +769,7 @@ class Button extends UIElement {
     const styleObject = {
       class: localClass,
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(style2, cssProperties$O),
+      style: propertyMap(style2, cssProperties$N),
       ...extraProps
     };
     const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, {
@@ -795,37 +795,6 @@ class Button extends UIElement {
 registerComponent("button", Button);
 registerComponent("btn", Button);
 registerComponent("Button", Button);
-const cssProperties$N = makeCssVariablePrefixMap("--elf--button-group", {
-  backgroundColor: true,
-  color: true,
-  height: true,
-  hoverColor: true,
-  borderColor: true,
-  boxShadow: true
-});
-class ButtonGroup extends UIElement {
-  template() {
-    const { disabled, style: style2 = {}, content, ...extraStyle } = this.props;
-    const { style: styleProperties } = splitStyleKeyAndNoneStyleKey(extraStyle);
-    const styleObject = {
-      class: classnames(["elf--button-group"]),
-      disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(
-        {
-          ...style2,
-          ...styleProperties
-        },
-        cssProperties$N
-      )
-    };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
-  }
-}
-registerComponent("button-group", ButtonGroup);
-registerComponent("btn-group", ButtonGroup);
-registerComponent("ButtonGroup", ButtonGroup);
 const cssProperties$M = makeCssVariablePrefixMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
@@ -1806,43 +1775,6 @@ class OptionMenu extends UIElement {
 registerComponent("OptionMenu", OptionMenu);
 registerComponent("optionmenu", OptionMenu);
 registerComponent("option-menu", OptionMenu);
-class OptionStrip extends UIElement {
-  initState() {
-    return {
-      value: this.props.value
-    };
-  }
-  template() {
-    const {
-      disabled,
-      style: style2 = {},
-      selectedValue,
-      options = [],
-      onChange
-    } = this.props;
-    const styleObject = {
-      class: "elf--option-strip",
-      disabled: disabled ? "disabled" : void 0,
-      style: {
-        ...propertyMap(style2, {})
-      }
-    };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, options.map((it) => {
-      return /* @__PURE__ */ createElementJsx("button", {
-        type: "button",
-        class: classnames("elf--option-strip-item", {
-          selected: selectedValue === it.value
-        }),
-        onClick: () => onChange == null ? void 0 : onChange(it.value)
-      }, it.icon);
-    }));
-  }
-}
-registerComponent("option-strip", OptionStrip);
-registerComponent("optionstrip", OptionStrip);
-registerComponent("OptionStrip", OptionStrip);
 const cssProperties$D = makeCssVariablePrefixMap("--elf--dialog", {
   position: true,
   backgroundColor: true,
@@ -6995,7 +6927,6 @@ export {
   Blank,
   Breadcrumbs,
   Button,
-  ButtonGroup,
   Card,
   CardActions,
   CardAvatar,
@@ -7034,7 +6965,6 @@ export {
   Menu,
   Notification,
   OptionMenu,
-  OptionStrip,
   OutlineButton,
   Panel,
   Popover,

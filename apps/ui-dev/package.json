@@ -32,6 +32,7 @@
   "devDependencies": {
     "@elf-framework/config": "*",
     "@mdx-js/rollup": "^2.1.5",
+    "chokidar": "^3.5.3",
     "front-matter": "^4.0.2",
     "glob": "^8.0.3",
     "mdx-mermaid": "^2.0.0-rc1",
