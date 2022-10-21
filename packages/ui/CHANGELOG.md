@@ -1,5 +1,15 @@
 # @elf-framework/ui
 
+## 0.0.29
+
+### Patch Changes
+
+- fixed virtual scroll base height bug
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.29
+  - @elf-framework/sapa@0.0.29
+
 ## 0.0.28
 
 ### Patch Changes

@@ -44,6 +44,7 @@ export * from "./components/input-editor/Field";
 export * from "./components/input-editor/TextArea";
 export * from "./components/input-editor/TextField";
 export * from "./components/virtual-scroll";
+export * from "./components/virtual-scroll/VirtualScrollItem";
 export * from "./components/layer";
 export * from "./components/color/ColorView";
 export * from "./components/color-mixer";

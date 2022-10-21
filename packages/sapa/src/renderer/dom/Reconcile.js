@@ -7,9 +7,19 @@ import {
 import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
 import { isFunction, isNotUndefined, isUndefined } from "../../functions/func";
+import { isSVG } from "../../functions/svg";
 import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
 import { renderVNodeComponent } from "./VNodeComponentRender";
+
+const IGNORE_SET_PROPS = {
+  cx: true,
+  cy: true,
+};
+
+function isIgnoreProperty(key) {
+  return IGNORE_SET_PROPS[key];
+}
 
 const booleanTypes = new Map(
   Object.entries({
@@ -60,9 +70,14 @@ const patch = {
   setBooleanProp(el, name, value) {
     if (isNotUndefined(value)) {
       el.setAttribute(name, name);
+
+      if (isIgnoreProperty(name)) return;
+
       el[name] = value;
     } else {
       el.removeAttribute(name);
+
+      if (isIgnoreProperty(name)) return;
       el[name] = undefined;
     }
   },
@@ -88,6 +103,8 @@ const patch = {
     } else {
       // 속성을 정의할 때 property 와 같이 정의한다.
       el.setAttribute(name, value);
+
+      if (isSVG(el.tagName)) return;
       el[name] = value;
     }
   },

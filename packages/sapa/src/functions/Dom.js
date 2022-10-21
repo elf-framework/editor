@@ -684,6 +684,14 @@ export class Dom {
     return this.el.nodeType === 3;
   }
 
+  get scrollTop() {
+    return this.el.scrollTop;
+  }
+
+  set scrollTop(v) {
+    this.el.scrollTop = v;
+  }
+
   show(displayType = "block") {
     this.el.style.display = displayType != "none" ? displayType : "block";
 

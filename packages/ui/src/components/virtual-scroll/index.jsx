@@ -25,15 +25,21 @@ const cssProperties = makeCssVariablePrefixMap("--elf--virtual-scroll", {
   vgap: true,
 });
 
+const DEFAULT_SCROLL_HEIGHT = 32;
+
 export class VirtualScroll extends UIElement {
   initState() {
     return {
-      scrollHeight: 32,
+      scrollHeight: DEFAULT_SCROLL_HEIGHT,
     };
   }
 
   template() {
-    const { style = {}, itemHeight = 32, items = [] } = this.props;
+    const {
+      style = {},
+      itemHeight = DEFAULT_SCROLL_HEIGHT,
+      items = [],
+    } = this.props;
     const totalCount = items.length;
 
     const styleObject = {
@@ -111,7 +117,7 @@ export class VirtualScroll extends UIElement {
       );
 
       const startIndex = Math.max(
-        Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount,
+        Math.floor((this.state.scrollTop || 0) / itemHeight) - overscanRowCount,
         0
       );
       const endIndex = Math.min(

@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.29
+
+### Patch Changes
+
+- fixed virtual scroll base height bug
+
 ## 0.0.26
 
 ### Patch Changes

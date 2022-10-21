@@ -9,16 +9,13 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    // border: 1px solid #a9a9a9;
 
     > .elf--virtual-scroll-panel {
-        // background-color: yellow;
         position: relative;
         height: var(--elf--virtual-scroll-panel-height, fit-content);
         contain: size;
 
         > .elf--virtual-scroll-content-area {
-            background-color: green;
             position: relative;
             height: fit-content;
 

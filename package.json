@@ -18,7 +18,7 @@
     "editor:profile": "turbo run build --parallel --profile",
     "editor:graph": "turbo run build --graph=my-graph.html",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "version": "changeset version",
     "prerelease": "npm run build",
     "release": "changeset publish",
     "lint": "turbo run lint",

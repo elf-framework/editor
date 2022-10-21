@@ -135,12 +135,9 @@ export class EventMachine extends HookMachine {
    * @param {Boolean} isLoad  다시 로드 할 것인지 체크 , true 면 state 변경후 다시 로드
    */
   setState(state = {}, isRefresh = true) {
-    // this.#prevState = this.#state;
     this.#state = Object.assign({}, this.#state, state);
 
     if (isRefresh) {
-      // 전체를 리프레쉬 할지
-      // load 만 할지 고민이 필요함.
       renderComponent(this);
     }
   }

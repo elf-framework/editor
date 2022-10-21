@@ -54,20 +54,12 @@ html,body {
         padding-top: var(--layout-header-height);
         padding-right: 100px;
     }
-
-    .layout-logo {
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        font-weight: 900;
-    }
 }
 
 .version {
     flex: none;
     display: block;
     font-size: 12px;
-    color: gray;
 }
 
 

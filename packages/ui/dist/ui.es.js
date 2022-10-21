@@ -4135,14 +4135,19 @@ const cssProperties$o = makeCssVariablePrefixMap("--elf--virtual-scroll", {
   hgap: true,
   vgap: true
 });
+const DEFAULT_SCROLL_HEIGHT = 32;
 class VirtualScroll extends UIElement {
   initState() {
     return {
-      scrollHeight: 32
+      scrollHeight: DEFAULT_SCROLL_HEIGHT
     };
   }
   template() {
-    const { style: style2 = {}, itemHeight = 32, items = [] } = this.props;
+    const {
+      style: style2 = {},
+      itemHeight = DEFAULT_SCROLL_HEIGHT,
+      items = []
+    } = this.props;
     const totalCount = items.length;
     const styleObject = {
       class: classnames("elf--virtual-scroll", this.props.class),
@@ -4207,7 +4212,7 @@ class VirtualScroll extends UIElement {
         false
       );
       const startIndex = Math.max(
-        Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount,
+        Math.floor((this.state.scrollTop || 0) / itemHeight) - overscanRowCount,
         0
       );
       const endIndex = Math.min(
@@ -4292,6 +4297,12 @@ class VirtualScroll extends UIElement {
 registerComponent("VirtualScroll", VirtualScroll);
 registerComponent("virtual-scroll", VirtualScroll);
 registerComponent("virtualscroll", VirtualScroll);
+function VirtualScrollItem({ top, style: style2, content }) {
+  return /* @__PURE__ */ createElementJsx("div", {
+    class: "elf--virtual-scroll-item",
+    style: { ...style2, "--elf--virtual-scroll-item-top": top + "px" }
+  }, content);
+}
 class Layer extends UIElement {
   template() {
     const {
@@ -6996,6 +7007,7 @@ export {
   VBox,
   View,
   VirtualScroll,
+  VirtualScrollItem,
   alert,
   toast,
   tooltip,

@@ -1071,6 +1071,16 @@ declare module "@elf-framework/ui" {
     props: VirtualScrollProps & CommonStyle;
   }
 
+  interface VirtualScrollItemProps {
+    top: number | string;
+    content: ContentType;
+    style: CommonStyle;
+  }
+
+  export class VirtualScrollItem extends UIElement {
+    props: VirtualScrollItemProps;
+  }
+
   export interface LayerProps {
     selected?: boolean;
     collapsed?: boolean;

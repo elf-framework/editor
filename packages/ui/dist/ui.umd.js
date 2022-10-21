@@ -4137,14 +4137,19 @@ var __privateMethod = (obj, member, method) => {
     hgap: true,
     vgap: true
   });
+  const DEFAULT_SCROLL_HEIGHT = 32;
   class VirtualScroll extends sapa.UIElement {
     initState() {
       return {
-        scrollHeight: 32
+        scrollHeight: DEFAULT_SCROLL_HEIGHT
       };
     }
     template() {
-      const { style: style2 = {}, itemHeight = 32, items = [] } = this.props;
+      const {
+        style: style2 = {},
+        itemHeight = DEFAULT_SCROLL_HEIGHT,
+        items = []
+      } = this.props;
       const totalCount = items.length;
       const styleObject = {
         class: sapa.classnames("elf--virtual-scroll", this.props.class),
@@ -4209,7 +4214,7 @@ var __privateMethod = (obj, member, method) => {
           false
         );
         const startIndex = Math.max(
-          Math.floor((this.state.scrollTop || 0) / 32) - overscanRowCount,
+          Math.floor((this.state.scrollTop || 0) / itemHeight) - overscanRowCount,
           0
         );
         const endIndex = Math.min(
@@ -4294,6 +4299,12 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("VirtualScroll", VirtualScroll);
   registerComponent("virtual-scroll", VirtualScroll);
   registerComponent("virtualscroll", VirtualScroll);
+  function VirtualScrollItem({ top, style: style2, content }) {
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--virtual-scroll-item",
+      style: { ...style2, "--elf--virtual-scroll-item-top": top + "px" }
+    }, content);
+  }
   class Layer extends sapa.UIElement {
     template() {
       const {
@@ -6997,6 +7008,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.VBox = VBox;
   exports2.View = View;
   exports2.VirtualScroll = VirtualScroll;
+  exports2.VirtualScrollItem = VirtualScrollItem;
   exports2.alert = alert;
   exports2.toast = toast;
   exports2.tooltip = tooltip;

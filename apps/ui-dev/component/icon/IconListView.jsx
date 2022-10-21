@@ -1,5 +1,5 @@
 import * as icons from "@elf-framework/icon";
-import { Grid } from "@elf-framework/ui";
+import { VirtualScroll, VirtualScrollItem } from "@elf-framework/ui";
 
 const list = {};
 
@@ -19,15 +19,19 @@ Object.keys(icons).forEach((key) => {
   }
 });
 
-function IconView({ Filled, Outlined, key }) {
+function IconView({ Filled, Outlined, key, index }) {
   return (
     <div
       style={{
         border: "1px solid #ccc",
-        padding: 10,
-        contain: "size",
-        height: 80,
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
         fontSize: 12,
+        width: "100%",
+        height: "100%",
+        boxSizing: "border-box",
+        alignItems: "center",
+        padding: "0 10px",
       }}
     >
       {Filled && (
@@ -44,13 +48,35 @@ function IconView({ Filled, Outlined, key }) {
   );
 }
 
+function itemRenderer(item, top, renderIndex, items, virtualScroll) {
+  return <VirtualScrollItem top={top}>{item.content}</VirtualScrollItem>;
+}
+
+const iconList = Object.keys(list).map((key, index) => {
+  const { filled: Filled, outlined: Outlined } = list[key];
+  return {
+    index,
+    content: (
+      <IconView Filled={Filled} Outlined={Outlined} key={key} index={index} />
+    ),
+  };
+});
+
 export function IconListView() {
   return (
-    <Grid columns={3}>
-      {Object.keys(list).map((key) => {
-        const { filled: Filled, outlined: Outlined } = list[key];
-        return <IconView Filled={Filled} Outlined={Outlined} key={key} />;
-      })}
-    </Grid>
+    <div style={{ height: 500, width: "100%", position: "relative" }}>
+      <div
+        style={{ position: "absolute", left: 0, right: 0, bottom: 0, top: 0 }}
+      >
+        <VirtualScroll
+          // ref="$scroll"
+          class="my-scroll"
+          itemHeight={50}
+          overscanRowCount={50}
+          items={iconList}
+          itemRenderer={itemRenderer}
+        />
+      </div>
+    </div>
   );
 }

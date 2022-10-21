@@ -2698,7 +2698,7 @@ class VNodeComponent extends VNode {
     const oldInstance = this.instance;
     const hooks = oldInstance == null ? void 0 : oldInstance.copyHooks();
     const state = oldInstance == null ? void 0 : oldInstance.state;
-    oldInstance == null ? void 0 : oldInstance.id;
+    const oldId = oldInstance == null ? void 0 : oldInstance.id;
     const children2 = (oldInstance == null ? void 0 : oldInstance.children) || {};
     this.instance = createComponentInstance(
       newComponent,
@@ -2706,14 +2706,18 @@ class VNodeComponent extends VNode {
       props,
       state
     );
+    if (oldId) {
+      this.instance.setId(oldId);
+    }
     if (hooks && ((_a = hooks.__stateHooks) == null ? void 0 : _a.length)) {
       this.instance.reloadHooks(hooks);
     }
     if (state) {
       this.instance.setState(state, false);
     }
-    if (Object.keys(children2).length)
-      ;
+    if (Object.keys(children2).length) {
+      this.instance.setChildren(children2);
+    }
     oldInstance == null ? void 0 : oldInstance.destroy();
     return this.instance;
   }
@@ -3050,6 +3054,13 @@ function DomRenderer(obj, options = {}) {
   }
   return obj;
 }
+const IGNORE_SET_PROPS = {
+  cx: true,
+  cy: true
+};
+function isIgnoreProperty(key) {
+  return IGNORE_SET_PROPS[key];
+}
 const booleanTypes = new Map(
   Object.entries({
     checked: true,
@@ -3091,9 +3102,13 @@ const patch = {
   setBooleanProp(el, name, value) {
     if (isNotUndefined(value)) {
       el.setAttribute(name, name);
+      if (isIgnoreProperty(name))
+        return;
       el[name] = value;
     } else {
       el.removeAttribute(name);
+      if (isIgnoreProperty(name))
+        return;
       el[name] = void 0;
     }
   },
@@ -3117,6 +3132,8 @@ const patch = {
       }
     } else {
       el.setAttribute(name, value);
+      if (isSVG(el.tagName))
+        return;
       el[name] = value;
     }
   },
@@ -4425,6 +4442,12 @@ class Dom {
   }
   get isTextNode() {
     return this.el.nodeType === 3;
+  }
+  get scrollTop() {
+    return this.el.scrollTop;
+  }
+  set scrollTop(v) {
+    this.el.scrollTop = v;
   }
   show(displayType = "block") {
     this.el.style.display = displayType != "none" ? displayType : "block";
