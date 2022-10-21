@@ -19,7 +19,7 @@ Object.keys(icons).forEach((key) => {
   }
 });
 
-function IconView({ Filled, Outlined, key, index }) {
+function IconView({ Filled, Outlined, key }) {
   return (
     <div
       style={{
@@ -48,7 +48,7 @@ function IconView({ Filled, Outlined, key, index }) {
   );
 }
 
-function itemRenderer(item, top, renderIndex, items, virtualScroll) {
+function itemRenderer(item, top) {
   return <VirtualScrollItem top={top}>{item.content}</VirtualScrollItem>;
 }
 

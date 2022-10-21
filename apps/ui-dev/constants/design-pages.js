@@ -193,6 +193,10 @@ export default [
         title: "Tag",
       },
       {
+        link: COMPONENTS_URL + "navigations/virtual-scroll/",
+        title: "Virtual Scroll",
+      },
+      {
         link: COMPONENTS_URL + "navigations/treeview/",
         title: "Tree view",
       },
