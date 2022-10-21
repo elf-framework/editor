@@ -13,9 +13,86 @@ Virtual Scroll is a technique for rendering only the visible portion of a list, 
 
 ## Options 
 
-### Basic
+### Fixed Size
 
+The most common use case for virtual scroll is when the items in the list have a fixed size. This is the case when the list contains a large number of items that are all the same height. In this case, the height of the list can be calculated by multiplying the number of items by the height of a single item. The height of the list can then be set on the list container, and the list will be rendered with a scrollbar that allows the user to scroll through the list.
 
+```jsx {10} showLineNumbers
 
+ <div style={{ height: "100%", width: "100%", position: "relative" }}>
+    <div
+        style={{ position: "absolute", left: 0, right: 0, bottom: 0, top: 0 }}
+    >
+        <VirtualScroll
+            class="my-scroll"
+            itemHeight={32}
+            overscanRowCount={5}
+            items={iconList}
+            itemRenderer={itemRenderer}
+        />
+    </div>
+</div>
+```
 
+### Item height 
+
+The height of each item in the list. This is used to calculate the number of items that can be rendered at once.
+
+```jsx
+<VirtualScroll
+    class="my-scroll"
+    itemHeight={32}
+    overscanRowCount={5}
+    items={iconList}
+    itemRenderer={itemRenderer}
+/>
+```
+
+### Overscan row count
+
+The number of rows to render above and below the visible area of the list. This is used to reduce the amount of flickering that occurs when the user scrolls.
+
+```jsx
+    <VirtualScroll
+        overscanRowCount={5}
+    />
+```
+
+### Items
+
+The list of items to render.
+
+```jsx
+<VirtualScroll
+    items={[
+        { index: 0, content: "xxx" },
+        { index: 1, content: "xxx" },
+        { index: 2, content: "xxx" },
+        { index: 3, content: "xxx" },
+        ....
+    ]}
+/>
+```
+
+Items always have an index.
+
+### Item renderer
+
+A function that renders a single item in the list.
+
+```jsx
+<VirtualScroll
+    itemRenderer={itemRenderer}
+/>
+```
+
+### virtual item 
+
+A function that renders a single item in the list.
+
+```jsx
+function itemRenderer (item, top) {
+    return <VirtualScrollItem top={top} >{item.content}</VirtualScrollItem>
+}
+```
   
