@@ -211,6 +211,18 @@ function generateHtmlFile(realpath) {
   }
 }
 
+/**
+ * @deprecated
+ *
+ * mdx 파일 이름을 기준으로 html 파일을 생성한다.
+ *
+ * 1. {filename}.html 을 생성한다.
+ * 2. {filename}.meta.json 을 생성한다.
+ * 3. {filename}.jsx 를 생성한다.
+ *
+ *
+ * @returns
+ */
 function makeIndexEntries() {
   // index auto generate
   const entries = {};

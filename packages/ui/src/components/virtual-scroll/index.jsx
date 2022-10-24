@@ -6,6 +6,7 @@ import {
   SUBSCRIBE_SELF,
   DEBOUNCE,
   classnames,
+  useMemo,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -36,14 +37,22 @@ export class VirtualScroll extends UIElement {
 
   template() {
     const {
+      class: className,
       style = {},
       itemHeight = DEFAULT_SCROLL_HEIGHT,
       items = [],
+      hideScrollbar = false,
     } = this.props;
     const totalCount = items.length;
 
+    const localClass = useMemo(() => {
+      return classnames("elf--virtual-scroll", className, {
+        "hide-scrollbar": hideScrollbar,
+      });
+    }, [hideScrollbar, className]);
+
     const styleObject = {
-      class: classnames("elf--virtual-scroll", this.props.class),
+      class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
         "--elf--virtual-scroll-item-width": "100%",

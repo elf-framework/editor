@@ -4144,13 +4144,20 @@ class VirtualScroll extends UIElement {
   }
   template() {
     const {
+      class: className,
       style: style2 = {},
       itemHeight = DEFAULT_SCROLL_HEIGHT,
-      items = []
+      items = [],
+      hideScrollbar = false
     } = this.props;
     const totalCount = items.length;
+    const localClass = useMemo(() => {
+      return classnames("elf--virtual-scroll", className, {
+        "hide-scrollbar": hideScrollbar
+      });
+    }, [hideScrollbar, className]);
     const styleObject = {
-      class: classnames("elf--virtual-scroll", this.props.class),
+      class: localClass,
       style: {
         ...propertyMap(style2, cssProperties$o),
         "--elf--virtual-scroll-item-width": "100%",

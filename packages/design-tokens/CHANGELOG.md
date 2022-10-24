@@ -1,5 +1,13 @@
 # @elf-framework/design-tokens
 
+## 0.0.31
+
+### Patch Changes
+
+- remove link-button style
+  remove button-group style
+  add hide-scrollbar class to virtual scroll
+
 ## 0.0.29
 
 ### Patch Changes

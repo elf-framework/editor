@@ -32,15 +32,18 @@
   "devDependencies": {
     "@elf-framework/config": "*",
     "@mdx-js/rollup": "^2.1.5",
+    "autoprefixer": "^10.4.12",
     "chokidar": "^3.5.3",
     "front-matter": "^4.0.2",
     "glob": "^8.0.3",
     "mdx-mermaid": "^2.0.0-rc1",
     "mdx-prism": "^0.3.4",
+    "postcss": "^8.4.18",
     "rehype-prism-plus": "^1.5.0",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-frontmatter": "^2.0.3",
+    "tailwindcss": "^3.2.1",
     "vite": "^3.1.8",
     "vite-plugin-sapa": "*",
     "vitest": "0.24.3"

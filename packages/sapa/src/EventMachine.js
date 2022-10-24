@@ -20,6 +20,7 @@ export class EventMachine extends HookMachine {
   #functionCache = {};
   #childObjectList = {};
   #childObjectElements = new WeakMap();
+  #cachedChildren = new WeakMap();
 
   // hook 을 그대로 유지할 방법이 필요함.
   constructor(opt, props, state) {
@@ -251,6 +252,10 @@ export class EventMachine extends HookMachine {
   };
 
   getTargetInstance(oldEl) {
+    if (this.#cachedChildren.has(oldEl)) {
+      return this.#cachedChildren.get(oldEl);
+    }
+
     const targetList = Object.values(this.children)
       .filter(Boolean)
       .filter((instance) => {
@@ -258,6 +263,7 @@ export class EventMachine extends HookMachine {
       });
 
     if (targetList.length) {
+      this.#cachedChildren.set(oldEl, targetList[0]);
       return targetList[0];
     }
 

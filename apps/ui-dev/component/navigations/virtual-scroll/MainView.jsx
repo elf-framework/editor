@@ -35,8 +35,9 @@ export function MainView() {
           <VirtualScroll
             // ref="$scroll"
             class="my-scroll"
+            hideScrollbar
             itemHeight={32}
-            overscanRowCount={5}
+            overscanRowCount={3}
             items={iconList}
             itemRenderer={itemRenderer}
           />

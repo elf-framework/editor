@@ -1,5 +1,15 @@
 # @elf-framework/ui
 
+## 0.0.31
+
+### Patch Changes
+
+- remove link-button style
+  remove button-group style
+  add hide-scrollbar class to virtual scroll
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.31
+
 ## 0.0.29
 
 ### Patch Changes

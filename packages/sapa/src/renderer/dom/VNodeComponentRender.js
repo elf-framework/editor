@@ -88,25 +88,6 @@ function flatTemplate(template) {
         return it.children.map(flatTemplate);
       }
 
-      if (it.type === VNodeType.COMPONENT) {
-        it.children = it.children
-          ?.map((child) => {
-            return flatTemplate(child);
-          })
-          .flat(Infinity);
-
-        // 실제로 dom 에 적용될 영역에 다시 넣는다.
-        it.memoizedProps.content = it.children;
-      } else if (it.type === VNodeType.NODE) {
-        it.children = it.children
-          ?.map((child) => {
-            return flatTemplate(child);
-          })
-          .flat(Infinity);
-        // 실제로 dom 에 적용될 영역에 다시 넣는다.
-        it.memoizedProps.content = it.children;
-      }
-
       return it;
     })
     .flat(Infinity);
@@ -187,7 +168,7 @@ async function runningUpdate(componentInstance, template) {
 
   // element 에 component 속성 설정
   componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
-  componentInstance.alternate = template;
+  // componentInstance.alternate = template;
   componentInstance.runUpdated();
 
   // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
@@ -199,7 +180,7 @@ async function runningMount(componentInstance, template, $container) {
     ...componentInstance.getVNodeOptions(),
   });
 
-  componentInstance.alternate = template;
+  // componentInstance.alternate = template;
   componentInstance.$el = newDomElement;
   componentInstance.refs.$el = componentInstance.$el;
   // this.alternate = template;

@@ -1050,6 +1050,7 @@ declare module "@elf-framework/ui" {
     style: VirtualScrollStyle & CommonStyle;
     items: any[];
     itemHeight: number;
+    hideScrollbar?: boolean;
     itemRenderer: (
       item: any,
       top: number,

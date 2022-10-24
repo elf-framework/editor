@@ -34,7 +34,7 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _reloadInstance, reloadInstance_fn, _storeInstance;
+var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _cachedChildren, _reloadInstance, reloadInstance_fn, _storeInstance;
 const COMPONENT_INSTANCE = "__componentInstance";
 const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
 const IS_FRAGMENT_ITEM = "__is_fragment_item";
@@ -1670,6 +1670,7 @@ const _EventMachine = class extends HookMachine {
     __privateAdd(this, _functionCache, {});
     __privateAdd(this, _childObjectList, {});
     __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
+    __privateAdd(this, _cachedChildren, /* @__PURE__ */ new WeakMap());
     __publicField(this, "registerRef", (ref, el) => {
       if (typeof ref === "function") {
         ref(el);
@@ -1819,11 +1820,15 @@ const _EventMachine = class extends HookMachine {
     return true;
   }
   getTargetInstance(oldEl) {
+    if (__privateGet(this, _cachedChildren).has(oldEl)) {
+      return __privateGet(this, _cachedChildren).get(oldEl);
+    }
     const targetList = Object.values(this.children).filter(Boolean).filter((instance) => {
       var _a;
       return (instance == null ? void 0 : instance.id) !== this.id && ((_a = instance == null ? void 0 : instance.$el) == null ? void 0 : _a.el) === oldEl;
     });
     if (targetList.length) {
+      __privateGet(this, _cachedChildren).set(oldEl, targetList[0]);
       return targetList[0];
     }
     return void 0;
@@ -1993,6 +1998,7 @@ _cachedMethodList = new WeakMap();
 _functionCache = new WeakMap();
 _childObjectList = new WeakMap();
 _childObjectElements = new WeakMap();
+_cachedChildren = new WeakMap();
 _reloadInstance = new WeakSet();
 reloadInstance_fn = function(instance, props) {
   instance._reload(props);
@@ -2517,16 +2523,12 @@ class VNode {
   }
   runMounted() {
     if (this.mounted) {
-      requestAnimationFrame(() => {
-        this.mounted();
-      }, 0);
+      this.mounted();
     }
   }
   runUpdated() {
     if (this.updated) {
-      requestAnimationFrame(() => {
-        this.updated();
-      }, 0);
+      this.updated();
     }
   }
   get stringifyStyle() {
@@ -3620,20 +3622,8 @@ function collectFragmentList(element) {
 function flatTemplate(template) {
   let root = [template];
   root = root.filter(Boolean).map((it) => {
-    var _a, _b;
     if (it.type === VNodeType.FRAGMENT) {
       return it.children.map(flatTemplate);
-    }
-    if (it.type === VNodeType.COMPONENT) {
-      it.children = (_a = it.children) == null ? void 0 : _a.map((child) => {
-        return flatTemplate(child);
-      }).flat(Infinity);
-      it.memoizedProps.content = it.children;
-    } else if (it.type === VNodeType.NODE) {
-      it.children = (_b = it.children) == null ? void 0 : _b.map((child) => {
-        return flatTemplate(child);
-      }).flat(Infinity);
-      it.memoizedProps.content = it.children;
     }
     return it;
   }).flat(Infinity);
@@ -3683,7 +3673,6 @@ async function runningUpdate(componentInstance, template) {
     }
   }
   componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
-  componentInstance.alternate = template;
   componentInstance.runUpdated();
   await componentInstance.runHandlers("update");
 }
@@ -3692,7 +3681,6 @@ async function runningMount(componentInstance, template, $container) {
   const newDomElement = DomRenderer(template, {
     ...componentInstance.getVNodeOptions()
   });
-  componentInstance.alternate = template;
   componentInstance.$el = newDomElement;
   componentInstance.refs.$el = componentInstance.$el;
   if ((_a = componentInstance.$el) == null ? void 0 : _a.el) {
