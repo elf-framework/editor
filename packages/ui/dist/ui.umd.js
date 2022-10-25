@@ -4854,7 +4854,7 @@ var __privateMethod = (obj, member, method) => {
       });
     }
     initState() {
-      const { color: color$1 = "red", width = 240, height = 240 } = this.props;
+      const { color: color$1 = "red", width = 240, height = width } = this.props;
       const parsedColor = color.parse(color$1);
       const { r, g, b, a } = parsedColor;
       const { h, s, v } = color.RGBtoHSV(r, g, b);

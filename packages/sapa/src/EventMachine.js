@@ -518,7 +518,6 @@ export class EventMachine extends HookMachine {
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 mounted 를 같이 실행해준다.
     const instance = this.getTargetInstance(this.$el?.el);
-
     if (instance) {
       instance.onMounted();
     }
@@ -529,7 +528,6 @@ export class EventMachine extends HookMachine {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 updated 를 같이 실행해준다.
-
     // FIXME: 이 부분은 무한루프에 빠질 수 있으므로 주의해야 한다.
     // FIxME: 자식 노드의 일부분이 부모와 연결 되어 있다.
     const instance = this.getTargetInstance(this.$el?.el);

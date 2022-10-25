@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.32
+
+### Patch Changes
+
+- fixed mounted, updated timing
+
 ## 0.0.30
 
 ### Patch Changes

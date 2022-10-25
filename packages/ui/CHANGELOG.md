@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.33
+
+### Patch Changes
+
+- modify colormixer default height
+
 ## 0.0.31
 
 ### Patch Changes

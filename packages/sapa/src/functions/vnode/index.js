@@ -163,18 +163,29 @@ export class VNode {
   runMounted() {
     if (this.mounted) {
       // element 가 추가 된 이후에 rendering 을 바로 하지 않기 때문에 시간차를 둔다.
-      // requestAnimationFrame(() => {
-      this.mounted();
-      // });
+
+      if (!this.runnedMounted) {
+        requestAnimationFrame(() => {
+          this.mounted();
+        });
+        this.runnedMounted = true;
+      } else {
+        this.mounted();
+      }
     }
   }
 
   runUpdated() {
     if (this.updated) {
       // element 가 추가 된 이후에 rendering 을 바로 하지 않기 때문에 시간차를 둔다.
-      // requestAnimationFrame(() => {
-      this.updated();
-      // }, 0);
+      if (!this.runnedUpdated) {
+        requestAnimationFrame(() => {
+          this.updated();
+        });
+        this.runnedUpdated = true;
+      } else {
+        this.updated();
+      }
     }
   }
 

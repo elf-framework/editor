@@ -4852,7 +4852,7 @@ class ColorMixer extends UIElement {
     });
   }
   initState() {
-    const { color = "red", width = 240, height = 240 } = this.props;
+    const { color = "red", width = 240, height = width } = this.props;
     const parsedColor = parse(color);
     const { r, g, b, a } = parsedColor;
     const { h, s, v } = RGBtoHSV(r, g, b);

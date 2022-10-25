@@ -2527,12 +2527,26 @@ var __privateMethod = (obj, member, method) => {
     }
     runMounted() {
       if (this.mounted) {
-        this.mounted();
+        if (!this.runnedMounted) {
+          requestAnimationFrame(() => {
+            this.mounted();
+          });
+          this.runnedMounted = true;
+        } else {
+          this.mounted();
+        }
       }
     }
     runUpdated() {
       if (this.updated) {
-        this.updated();
+        if (!this.runnedUpdated) {
+          requestAnimationFrame(() => {
+            this.updated();
+          });
+          this.runnedUpdated = true;
+        } else {
+          this.updated();
+        }
       }
     }
     get stringifyStyle() {

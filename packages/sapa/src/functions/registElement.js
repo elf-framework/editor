@@ -54,6 +54,7 @@ export function renderComponent(component, $container = undefined) {
   if (isPendingComponent(component)) {
     return;
   }
+
   createRenderCallback(component)?.($container);
 }
 
