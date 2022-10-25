@@ -1,0 +1,12 @@
+.check-contrast {
+    
+    > * {
+        display: none;
+    }
+
+    &:hover {
+        > * {
+            display: block;
+        }
+    }
+}

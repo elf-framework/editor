@@ -15,13 +15,43 @@ import { DisabledView } from "~/component/states/DisabledView.jsx";
 
 ## Types of states
 
-<VBox style={{gap: 50}}>
-    <DefaultView />
-    <HoverView />
-    <DownView />
-    <FocusView />
-    <DisabledView />
-</VBox>
+### Default
+
+This is the default state of a component or item when not interacted with.
+
+<DefaultView />
+
+### Hover
+
+The hover state is initiated by the user and appears when the user places the cursor over the interactive item.
+
+<HoverView />
+
+### Down
+
+A down state is initiated by the user and communicates when an interactive item is pressed (by a cursor, stylus, or finger).
+
+<DownView />
+
+### Focus
+
+Keyboard Focus is initiated by the user. 
+
+
+Use the keyboard to highlight items when navigating. Keyboard The focus state typically takes the visual hover state of the component Add additional marks.
+
+Most commonly, there is a two-pixel blue ring around. Components.
+
+<FocusView />
+
+### Disabled
+
+A disabled state is initiated by a component option. 
+It shows that the item exists, but is not interactive in that circumstance. 
+This state can be used to maintain layout continuity and to communicate that an action may become available later.
+
+<DisabledView />
+
 
 
 

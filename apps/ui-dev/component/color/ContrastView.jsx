@@ -10,13 +10,14 @@ export function ContrastView({ color }) {
         alignItems="end"
         style={{
           position: "absolute",
-          bottom: 0,
+          top: "50%",
           left: 0,
           right: 0,
           gap: 30,
           justifyContent: "space-between",
           padding: 10,
           textAlign: "center",
+          transform: "translateY(-50%)",
         }}
       >
         <Flex style={{ justifyContent: "center" }}>

@@ -1,17 +1,17 @@
-const F = (r) => JSON.parse(JSON.stringify(r));
+const E = (r) => JSON.parse(JSON.stringify(r));
 function V(r) {
   if (!(typeof r > "u"))
-    return F(r);
+    return E(r);
 }
 function l(r, n) {
   return n = typeof n > "u" ? 1 : n, Math.round(r * n) / n;
 }
-function B(r, n, e = "rgba(0, 0, 0, 0)") {
-  return Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), n == "hex" ? z(r) : n == "rgb" ? R(r, e) : n == "hsl" ? Z(r) : n == "hsv" ? _(r) : n == "cmyk" ? q(r) : `${n}(${r.r},${r.g},${r.b})`;
+function w(r, n, e = "rgba(0, 0, 0, 0)") {
+  return Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), n == "hex" ? z(r) : n == "rgb" ? B(r, e) : n == "hsl" ? P(r) : n == "hsv" ? Z(r) : n == "cmyk" ? _(r) : `${n}(${r.r},${r.g},${r.b})`;
 }
-function ir(r, n, e = "rgba(0, 0, 0, 0)") {
+function lr(r, n, e = "rgba(0, 0, 0, 0)") {
   const t = V(r);
-  return t.a = 1, B(t, n, e);
+  return t.a = 1, w(t, n, e);
 }
 function z(r) {
   Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] });
@@ -28,19 +28,19 @@ function z(r) {
     return g < 16 && (a = "0" + a), `#${n}${e}${t}${a}`;
   }
 }
-function R(r, n = "rgba(0, 0, 0, 0)") {
+function B(r, n = "rgba(0, 0, 0, 0)") {
   if (Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), !(typeof r > "u"))
     return r.a == 1 || typeof r.a > "u" ? isNaN(r.r) ? n : `rgb(${r.r},${r.g},${r.b})` : `rgba(${r.r},${r.g},${r.b},${r.a})`;
 }
-function Z(r) {
+function P(r) {
   return Array.isArray(r) && (r = { h: r[0], s: r[1], l: r[2], a: r[3] }), r.a == 1 || typeof r.a > "u" ? `hsl(${r.h}, ${r.s}%, ${r.l}%)` : `hsla(${r.h}, ${r.s}%, ${r.l}%, ${r.a})`;
 }
-function _(r) {
+function Z(r) {
   Array.isArray(r) && (r = { h: r[0], s: r[1], v: r[2], a: r[3] });
   const n = l(r.h), e = r.a, t = l(r.s * 100), a = l(r.v * 100);
   return r.a == 1 || typeof r.a > "u" ? `hsv(${n}, ${t}%, ${a}%)` : `hsva(${n}, ${t}%, ${a}%, ${e})`;
 }
-function q(r) {
+function _(r) {
   Array.isArray(r) && (r = { c: r[0], m: r[1], y: r[2], k: r[3] });
   const n = l(r.c * 100, 100), e = l(r.m * 100, 100), t = l(r.y * 100, 100), a = l(r.k * 100, 100);
   return `cmyk(${n}%,${e}%,${t}%,${a}%)`;
@@ -48,28 +48,28 @@ function q(r) {
 function m(r, n) {
   return Math.floor(Math.random() * (n - r + 1)) + r;
 }
-function sr(r = 1) {
+function or(r = 1) {
   let n = [];
   for (var e = 0; e < r; e++)
-    n[n.length] = K();
+    n[n.length] = q();
   return n;
 }
-function K() {
-  return R({
+function q() {
+  return B({
     r: m(0, 255),
     g: m(0, 255),
     b: m(0, 255)
   });
 }
-function lr() {
-  return R({
+function cr() {
+  return B({
     r: m(0, 255),
     g: m(0, 255),
     b: m(0, 255),
     a: m(0, 1e3) / 1e3
   });
 }
-function or(r, n, e, t) {
+function br(r, n, e, t) {
   if (arguments.length == 1)
     var { c: r, m: n, y: e, k: t } = arguments[0];
   const a = 255 * (1 - r) * (1 - t), g = 255 * (1 - n) * (1 - t), f = 255 * (1 - e) * (1 - t);
@@ -81,7 +81,7 @@ function y(r) {
 function x(r) {
   return r > 31308e-7 ? 1.055 * Math.pow(r, 1 / 2.4) - 0.055 : 12.92 * r;
 }
-function J(r, n, e) {
+function K(r, n, e) {
   if (arguments.length == 1)
     var { x: r, y: n, z: e } = arguments[0];
   let t = r / 100, a = n / 100, g = e / 100, f = t * 3.2406 + a * -1.5372 + g * -0.4986, u = t * -0.9689 + a * 1.8758 + g * 0.0415, i = t * 0.0557 + a * -0.204 + g * 1.057;
@@ -89,7 +89,7 @@ function J(r, n, e) {
   const s = l(f * 255), c = l(u * 255), h = l(i * 255);
   return { r: s, g: c, b: h };
 }
-function P(r, n, e) {
+function T(r, n, e) {
   if (arguments.length == 1)
     var { l: r, a: n, b: e } = arguments[0];
   let t = (r + 16) / 116, a = n / 500 + t, g = t - e / 200;
@@ -97,21 +97,21 @@ function P(r, n, e) {
   const f = a * 95.047, u = t * 100, i = g * 108.883;
   return { x: f, y: u, z: i };
 }
-function k(r) {
+function A(r) {
   return r > 8856e-6 ? Math.pow(r, 1 / 3) : (7.787 * r + 16) / 116;
 }
-function T(r, n, e) {
+function J(r, n, e) {
   if (arguments.length == 1)
     var { x: r, y: n, z: e } = arguments[0];
   let t = r / 95.047, a = n / 100, g = e / 108.883;
-  t = k(t), a = k(a), g = k(g);
+  t = A(t), a = A(a), g = A(g);
   const f = 116 * a - 16, u = 500 * (t - a), i = 200 * (a - g);
   return { l: f, a: u, b: i };
 }
-function cr(r, n, e) {
+function hr(r, n, e) {
   if (arguments.length == 1)
     var { l: r, a: n, b: e } = arguments[0];
-  return J(P(r, n, e));
+  return K(T(r, n, e));
 }
 function O(r, n, e) {
   if (arguments.length == 1)
@@ -124,7 +124,7 @@ function O(r, n, e) {
   var h = f;
   return { h: s, s: c, v: h };
 }
-function br(r, n, e) {
+function dr(r, n, e) {
   if (arguments.length == 1)
     var { r, g: n, b: e } = arguments[0];
   const t = r / 255, a = n / 255, g = e / 255, f = 1 - Math.max(t, a, g), u = (1 - t - f) / (1 - f), i = (1 - a - f) / (1 - f), s = (1 - g - f) / (1 - f);
@@ -154,23 +154,23 @@ function p(r, n, e) {
   }
   return { h: l(g * 360), s: l(f * 100), l: l(u * 100) };
 }
-function hr(r, n, e) {
-  if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  return A((r + n + e) / 3 > 90 ? 0 : 255);
-}
-function A(r) {
-  return { r, g: r, b: r };
-}
-function dr(r, n, e) {
-  if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  return A(Math.ceil((r + n + e) / 3));
-}
 function mr(r, n, e) {
   if (arguments.length == 1)
     var { r, g: n, b: e } = arguments[0];
-  return A(D(r, n, e).y);
+  return S((r + n + e) / 3 > 90 ? 0 : 255);
+}
+function S(r) {
+  return { r, g: r, b: r };
+}
+function vr(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  return S(Math.ceil((r + n + e) / 3));
+}
+function pr(r, n, e) {
+  if (arguments.length == 1)
+    var { r, g: n, b: e } = arguments[0];
+  return S(D(r, n, e).y);
 }
 function U(r, n, e) {
   return Math.ceil(r * 0.2126 + n * 0.7152 + e * 0.0722);
@@ -181,32 +181,32 @@ function D(r, n, e) {
   const t = U(r, n, e), a = 0.564 * (e - t), g = 0.713 * (r - t);
   return { y: t, cr: g, cb: a };
 }
-function M(r) {
+function k(r) {
   return (r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92) * 100;
 }
 function W(r, n, e) {
   if (arguments.length == 1)
     var { r, g: n, b: e } = arguments[0];
   let t = r / 255, a = n / 255, g = e / 255;
-  t = M(t), a = M(a), g = M(g);
+  t = k(t), a = k(a), g = k(g);
   const f = t * 0.4124 + a * 0.3576 + g * 0.1805, u = t * 0.2126 + a * 0.7152 + g * 0.0722, i = t * 0.0193 + a * 0.1192 + g * 0.9505;
   return { x: f, y: u, z: i };
 }
-function vr(r, n, e) {
+function yr(r, n, e) {
   if (arguments.length == 1)
     var { r, g: n, b: e } = arguments[0];
-  return T(W(r, n, e));
+  return J(W(r, n, e));
 }
-function $(r, n, e) {
+function M(r, n, e) {
   return e < 0 && (e += 1), e > 1 && (e -= 1), e < 1 / 6 ? r + (n - r) * 6 * e : e < 1 / 2 ? n : e < 2 / 3 ? r + (n - r) * (2 / 3 - e) * 6 : r;
 }
-function pr(r, n, e) {
+function xr(r, n, e) {
   if (arguments.length == 1)
     var { h: r, s: n, l: e } = arguments[0];
-  const t = w(r, n, e);
+  const t = $(r, n, e);
   return O(t.r, t.g, t.b);
 }
-function w(r, n, e) {
+function $(r, n, e) {
   if (arguments.length == 1)
     var { h: r, s: n, l: e } = arguments[0];
   var t, a, g;
@@ -214,7 +214,7 @@ function w(r, n, e) {
     t = a = g = e;
   else {
     var f = e < 0.5 ? e * (1 + n) : e + n - e * n, u = 2 * e - f;
-    t = $(u, f, r + 1 / 3), a = $(u, f, r), g = $(u, f, r - 1 / 3);
+    t = M(u, f, r + 1 / 3), a = M(u, f, r), g = M(u, f, r - 1 / 3);
   }
   return { r: l(t * 255), g: l(a * 255), b: l(g * 255) };
 }
@@ -231,13 +231,13 @@ function H(r, n, e) {
     b: l((s[2] + i) * 255)
   };
 }
-function yr(r, n, e) {
+function Ar(r, n, e) {
   if (arguments.length == 1)
     var { h: r, s: n, v: e } = arguments[0];
   const t = H(r, n, e);
   return p(t.r, t.g, t.b);
 }
-function xr(r, n, e, t) {
+function kr(r, n, e, t) {
   if (arguments.length == 1) {
     var { y: r, cr: n, cb: e, bit: t } = arguments[0];
     t = t || 0;
@@ -400,17 +400,17 @@ const I = {
 function Q(r) {
   return !!I[r];
 }
-function Y(r) {
+function L(r) {
   return I[r];
 }
 const j = /(#(?:[\da-f]{3}){1,2}|#(?:[\da-f]{8})|rgb\((?:\s*\d{1,3},\s*){2}\d{1,3}\s*\)|rgba\((?:\s*\d{1,3},\s*){3}\d*\.?\d+\s*\)|hsl\(\s*\d{1,3}(?:,\s*\d{1,3}%){2}\s*\)|hsla\(\s*\d{1,3}(?:,\s*\d{1,3}%){2},\s*\d*\.?\d+\s*\)|([\w_-]+))/gi;
-function G(r, n = "@") {
+function R(r, n = "@") {
   return `${n}${r.startIndex}`.padEnd(10, "0");
 }
-function kr(r) {
-  return !!L(r).length;
+function Mr(r) {
+  return !!Y(r).length;
 }
-function L(r) {
+function Y(r) {
   const n = r.match(j);
   let e = [];
   if (!n)
@@ -419,7 +419,7 @@ function L(r) {
     if (n[t].indexOf("#") > -1 || n[t].indexOf("rgb") > -1 || n[t].indexOf("hsl") > -1)
       e.push({ color: n[t] });
     else {
-      var g = Y(n[t]);
+      var g = L(n[t]);
       g && e.push({ color: n[t], nameColor: g });
     }
   var f = { next: 0 };
@@ -429,21 +429,21 @@ function L(r) {
   }), e;
 }
 function N(r, n = "@") {
-  const e = L(r);
+  const e = Y(r);
   return e.forEach((t) => {
-    r = r.replace(t.color, G(t, n));
+    r = r.replace(t.color, R(t, n));
   }), { str: r, matches: e };
 }
 function X(r, n = ",") {
   const e = N(r);
   return e.str.split(n).map((t, a) => (t = b(t), e.matches[a] && (t = t.replace(
-    G(e.matches[a]),
+    R(e.matches[a]),
     e.matches[a].color
   )), t));
 }
 function rr(r, n) {
   return n.forEach((e) => {
-    r = r.replace(G(e), e.color);
+    r = r.replace(R(e), e.color);
   }), r;
 }
 const er = /^\s+|\s+$/g;
@@ -452,7 +452,7 @@ function b(r) {
 }
 function v(r) {
   if (typeof r == "string") {
-    if (Q(r) && (r = Y(r)), r.indexOf("rgb(") > -1) {
+    if (Q(r) && (r = L(r)), r.indexOf("rgb(") > -1) {
       for (var n = r.replace("rgb(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
         n[e] = parseInt(b(n[e]), 10);
       var a = { type: "rgb", r: n[0], g: n[1], b: n[2], a: 1 };
@@ -466,12 +466,12 @@ function v(r) {
       for (var n = r.replace("hsl(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
         n[e] = parseFloat(b(n[e]));
       var a = { type: "hsl", h: n[0], s: n[1], l: n[2], a: 1 };
-      return a = { ...a, ...w(a) }, a;
+      return a = { ...a, ...$(a) }, a;
     } else if (r.indexOf("hsla(") > -1) {
       for (var n = r.replace("hsla(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
         t - 1 == e ? n[e] = parseFloat(b(n[e])) : n[e] = parseInt(b(n[e]), 10);
       var a = { type: "hsl", h: n[0], s: n[1], l: n[2], a: n[3] };
-      return a = { ...a, ...w(a) }, a;
+      return a = { ...a, ...$(a) }, a;
     } else if (r.indexOf("#") == 0) {
       r = r.replace("#", "");
       var n = [], g = 1;
@@ -523,7 +523,7 @@ function nr(r) {
 }
 function tr(r, n, e = 0.5, t = "hex") {
   var a = ar(r, n, e);
-  return B(a, t);
+  return w(a, t);
 }
 function ar(r, n, e = 0.5) {
   const t = typeof r.a > "u" ? 1 : r.a, a = typeof n.a > "u" ? 1 : n.a;
@@ -540,32 +540,37 @@ function o(r, n = 5) {
   typeof r == "string" && (r = X(r)), r = r || [];
   for (var e = r.length, t = [], a = 0; a < e - 1; a++)
     for (var g = 0; g < n; g++)
-      t.push(E(r[a], r[a + 1], g / n));
+      t.push(F(r[a], r[a + 1], g / n));
   return t;
 }
-function E(r, n, e = 0.5, t = "hex") {
+function F(r, n, e = 0.5, t = "hex") {
   var a = v(r), g = v(n);
   return tr(a, g, e, t);
 }
 function gr(r, n, e = 0.5, t = "hex") {
-  return E(r, n, e, t);
+  return F(r, n, e, t);
 }
 function fr(r) {
   return r = v(r), (Math.round(r.r * 299) + Math.round(r.g * 587) + Math.round(r.b * 114)) / 1e3;
 }
-function Mr(r) {
+function $r(r) {
   return fr(r) >= 128 ? "black" : "white";
 }
 function C(r, n, e) {
   return r = r / 255, n = n / 255, e = e / 255, r = r < 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4), n = n < 0.03928 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4), e = e < 0.03928 ? e / 12.92 : Math.pow((e + 0.055) / 1.055, 2.4), r * 0.2126 + n * 0.7152 + e * 0.0722;
 }
-function $r(r, n) {
+function ur(r, n) {
   r = v(r), n = v(n);
   const e = C(r.r, r.g, r.b), t = C(n.r, n.g, n.b);
   return (Math.max(e, t) + 0.05) / (Math.min(e, t) + 0.05);
 }
-function wr(r) {
+function ir(r) {
   return r >= 7 ? "AAA" : r >= 4.5 ? "AA" : r >= 3 ? "AA Large" : "Fail";
+}
+function wr(r, n, e, t = 20) {
+  const a = ir(ur(r, n)), g = e > t;
+  let f = "FAIL";
+  return g ? (a === "AA Large" || a === "AA" || a === "AAA") && (f = "PASS") : (a === "AA" || a === "AAA") && (f = "PASS"), f;
 }
 function Br(r, n = 10) {
   r = nr(r);
@@ -578,19 +583,19 @@ function Br(r, n = 10) {
   }
   return e;
 }
-function S(r, n = "h", e = 9, t = "rgb", a = 0, g = 1, f = 100) {
+function G(r, n = "h", e = 9, t = "rgb", a = 0, g = 1, f = 100) {
   for (var u = v(r), i = O(u), s = (g - a) * f / e, c = [], h = 1; h <= e; h++)
-    i[n] = Math.abs((f - s * h) / f), c.push(B(H(i), t));
+    i[n] = Math.abs((f - s * h) / f), c.push(w(H(i), t));
   return c;
 }
-function Rr(r, n = 9, e = "rgb", t = 0, a = 360) {
-  return S(r, "h", n, e, t, a, 1);
+function Sr(r, n = 9, e = "rgb", t = 0, a = 360) {
+  return G(r, "h", n, e, t, a, 1);
 }
-function Ar(r, n = 9, e = "rgb", t = 0, a = 1) {
-  return S(r, "s", n, e, t, a, 100);
+function Rr(r, n = 9, e = "rgb", t = 0, a = 1) {
+  return G(r, "s", n, e, t, a, 100);
 }
 function Gr(r, n = 9, e = "rgb", t = 0, a = 1) {
-  return S(r, "v", n, e, t, a, 100);
+  return G(r, "v", n, e, t, a, 100);
 }
 o.parula = function(r) {
   return o(["#352a87", "#0f5cdd", "#00b5a6", "#ffc337", "#fdff00"], r);
@@ -644,7 +649,7 @@ const d = [
   { rgb: "#ff00ff", start: 0.83 },
   { rgb: "#ff0000", start: 1 }
 ];
-function Sr(r) {
+function Cr(r) {
   for (var n, e, t = 0; t < d.length; t++)
     if (d[t].start >= r) {
       n = d[t - 1], e = d[t];
@@ -656,77 +661,78 @@ function Sr(r) {
     (r - n.start) / (e.start - n.start)
   ) : d[0].rgb;
 }
-function ur() {
+function sr() {
   for (var r = 0, n = d.length; r < n; r++) {
     var e = d[r], t = v(e.rgb);
     e.r = t.r, e.g = t.g, e.b = t.b;
   }
 }
-ur();
+sr();
 export {
-  or as CMYKtoRGB,
-  pr as HSLtoHSV,
-  w as HSLtoRGB,
-  yr as HSVtoHSL,
+  br as CMYKtoRGB,
+  xr as HSLtoHSV,
+  $ as HSLtoRGB,
+  Ar as HSVtoHSL,
   H as HSVtoRGB,
-  $ as HUEtoRGB,
-  cr as LABtoRGB,
-  P as LABtoXYZ,
-  M as PivotRGB,
-  k as PivotXyz,
-  br as RGBtoCMYK,
-  mr as RGBtoGray,
+  M as HUEtoRGB,
+  hr as LABtoRGB,
+  T as LABtoXYZ,
+  k as PivotRGB,
+  A as PivotXyz,
+  dr as RGBtoCMYK,
+  pr as RGBtoGray,
   p as RGBtoHSL,
   O as RGBtoHSV,
-  vr as RGBtoLAB,
-  dr as RGBtoSimpleGray,
+  yr as RGBtoLAB,
+  vr as RGBtoSimpleGray,
   W as RGBtoXYZ,
   D as RGBtoYCrCb,
   x as ReverseRGB,
   y as ReverseXyz,
-  T as XYZtoLAB,
-  J as XYZtoRGB,
-  xr as YCrCbtoRGB,
-  E as blend,
+  J as XYZtoLAB,
+  K as XYZtoRGB,
+  kr as YCrCbtoRGB,
+  F as blend,
   U as brightness,
-  hr as c,
-  Sr as checkHueColor,
-  q as cmyk,
+  mr as c,
+  Cr as checkHueColor,
+  _ as cmyk,
   I as color_names,
   fr as contrast,
-  Mr as contrastColor,
-  $r as contrastRatio,
-  wr as contrastScore,
+  $r as contrastColor,
+  ur as contrastRatio,
+  ir as contrastScore,
+  wr as contrastScoreText,
   N as convertMatches,
   X as convertMatchesArray,
-  B as format,
-  ir as formatWithoutAlpha,
-  Y as getColorByName,
-  G as getColorIndexString,
+  w as format,
+  lr as formatWithoutAlpha,
+  L as getColorByName,
+  R as getColorIndexString,
   Br as gradient,
-  A as gray,
+  S as gray,
   z as hex,
-  Z as hsl,
-  _ as hsv,
+  P as hsl,
+  Z as hsv,
   d as hue_color,
   tr as interpolateRGB,
   ar as interpolateRGBObject,
-  kr as isColor,
+  Mr as isColor,
   Q as isColorName,
   C as luminance,
-  L as matches,
+  Y as matches,
   gr as mix,
   v as parse,
   nr as parseGradient,
-  K as random,
-  sr as randomByCount,
-  lr as randomRGBA,
+  q as random,
+  or as randomByCount,
+  cr as randomRGBA,
   rr as reverseMatches,
-  R as rgb,
+  B as rgb,
   o as scale,
-  Rr as scaleH,
-  S as scaleHSV,
-  Ar as scaleS,
+  Sr as scaleH,
+  G as scaleHSV,
+  Rr as scaleS,
   Gr as scaleV,
   b as trim
 };

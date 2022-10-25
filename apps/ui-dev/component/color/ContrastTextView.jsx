@@ -1,53 +1,37 @@
-import { contrastRatio, contrastScore } from "@elf-framework/color";
+import { contrastScoreText } from "@elf-framework/color";
 import { Flex, VBox } from "@elf-framework/ui";
 
 export function ContrastTextView({ text, color, textColor, fontSize }) {
-  const score = contrastScore(contrastRatio(color, textColor));
-  const isLarge = fontSize > 20;
-  let pass = "FAIL";
+  const pass = contrastScoreText(color, textColor, fontSize, 20);
 
-  if (isLarge) {
-    if (score === "AA Large") {
-      pass = "PASS";
-    } else if (score === "AA") {
-      pass = "PASS";
-    } else if (score === "AAA") {
-      pass = "PASS";
-    }
-  } else {
-    if (score === "AA") {
-      pass = "PASS";
-    } else if (score === "AAA") {
-      pass = "PASS";
-    }
-  }
   return (
-    <VBox style={{ width: 50, flex: "none", justifyContent: "flex-end" }}>
+    <VBox style={{ width: 30, flex: "none", justifyContent: "flex-end" }}>
       <Flex
         style={{
           justifyContent: "center",
-          alignItems: "end",
+          alignItems: "flex-end",
         }}
       >
         <label style={{ fontSize, color: textColor }}>{text}</label>
       </Flex>
-      <div style={{ height: 30, flex: "none" }}>
+      <div style={{ height: 10, flex: "none" }}>
         <span
           style={{
-            backgroundColor: pass === "FAIL" ? "black" : "blue",
+            backgroundColor: pass === "FAIL" ? "transparent" : "blue",
             color: "white",
-            padding: "2px 5px",
+            // padding: "5px 5px",
             borderRadius: 4,
+            display: "inline-block",
+            width: 8,
+            height: 8,
             fontSize: 13,
             boxSizing: "border-box",
-            border: "1px solid transparent",
+            border: "2px solid transparent",
             borderColor: pass === "FAIL" ? "transparent" : "white",
             fontWeight: "bold",
             transition: "all 0.2s ease-in-out",
           }}
-        >
-          {pass}
-        </span>
+        ></span>
       </div>
     </VBox>
   );

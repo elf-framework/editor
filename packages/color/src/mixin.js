@@ -132,6 +132,36 @@ export function contrastScore(contrast) {
   return "Fail";
 }
 
+export function contrastScoreText(
+  backgroundColor,
+  textColor,
+  fontSize,
+  baseFontSize = 20
+) {
+  const score = contrastScore(contrastRatio(backgroundColor, textColor));
+
+  const isLarge = fontSize > baseFontSize;
+  let pass = "FAIL";
+
+  if (isLarge) {
+    if (score === "AA Large") {
+      pass = "PASS";
+    } else if (score === "AA") {
+      pass = "PASS";
+    } else if (score === "AAA") {
+      pass = "PASS";
+    }
+  } else {
+    if (score === "AA") {
+      pass = "PASS";
+    } else if (score === "AAA") {
+      pass = "PASS";
+    }
+  }
+
+  return pass;
+}
+
 export function gradient(colors, count = 10) {
   colors = parseGradient(colors);
 
