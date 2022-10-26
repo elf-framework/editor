@@ -73,6 +73,7 @@ export function useI18n(key, params = {}) {
  * content manager
  * children manager
  * command manager
+ * shortcut manager
  *
  *
  */

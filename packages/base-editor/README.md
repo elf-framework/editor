@@ -46,7 +46,7 @@ start(function () {
                   <button
                     type="button"
                     onClick={async () => {
-                      const ret = await editor.commands.emit("my-command");
+                      const ret = await editor.commands.execute("my-command");
 
                       console.log("return", ret);
                     }}
@@ -94,7 +94,7 @@ start(function () {
 ```js
 const editor = useEditor()
 
-editor.commands.emit("my-command");
+editor.commands.execute("my-command");
 ```
 
 ### useEditorOption
@@ -309,7 +309,7 @@ function (editor) {
                     const backgroundColor = Color.random();
 
                     // current 에 색깔 적용
-                    editor.context.commands.emit("setAttribute", {
+                    editor.context.commands.execute("setAttribute", {
                     [current.id]: {
                         color: textColor,
                         "background-color": backgroundColor,
@@ -357,7 +357,7 @@ function (editor) {
         return editor.context.config.is("editing.mode", EditingMode.SELECT);
       },
       action: (editor) => {
-        editor.context.commands.emit("addLayerView", "select");
+        editor.context.commands.execute("addLayerView", "select");
         editor.context.config.is("editing.mode.itemType", EditingMode.SELECT);
       },
     },
@@ -460,7 +460,7 @@ function (editor) {
             <button
                 type="button"
                 onClick={async () => {
-                    const ret = await editor.commands.emit("my-command");
+                    const ret = await editor.commands.execute("my-command");
 
                     console.log("return", ret);
                 }}

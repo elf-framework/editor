@@ -1,6 +1,10 @@
+import keymapKeydown from "../commands/keymap.keydown";
+import keymapKeyup from "../commands/keymap.keyup";
 import { CommandManager } from "./CommandManager";
 import { ConfigManager } from "./ConfigManager";
+import { KeyBoardManager } from "./KeyboardManager";
 import { PluginManager } from "./PluginManager";
+import { ShortCutManager } from "./ShortcutManager";
 import { UIManager } from "./UIManager";
 
 const CONTEXT_ID = "EditorContext";
@@ -21,7 +25,11 @@ export class EditorContext {
     } = this.$options;
     this.initializeManagers(managers);
     this.initializeConfigs(configList);
+
+    /** commands 초기화 */
+    this.initializeInnerCommands();
     this.initializeCommands(commands);
+
     this.initializePlugins(plugins);
 
     this.emit("editor.initialize", this);
@@ -33,6 +41,8 @@ export class EditorContext {
       commands: CommandManager,
       plugins: PluginManager,
       uis: UIManager,
+      shortcuts: ShortCutManager,
+      keyboard: KeyBoardManager,
       //TODO: i18n: I18nManager,            // 다국어 매니저
       //TODO: history: HistoryManager,      // history manager
       //TODO: inspector: InspectorManager,  // inspector 관리용 매니저
@@ -64,6 +74,10 @@ export class EditorContext {
 
   updateConfigs(configs = {}) {
     this.configs.updateConfig(configs);
+  }
+
+  initializeInnerCommands() {
+    this.initializeCommands([keymapKeydown, keymapKeyup]);
   }
 
   initializeCommands(commands = []) {
@@ -114,6 +128,10 @@ export class EditorContext {
 
   registerConfig(config) {
     this.configs.registerConfig(config);
+  }
+
+  registerShortcut(shortcut) {
+    this.shortcuts.registerShortcut(shortcut);
   }
 
   getUI(name) {

@@ -16,7 +16,7 @@ export function ToolbarPlugin(editor) {
           {
             type: "item",
             selectable: true,
-            selected: () => false,
+            selected: () => true,
             title: "3D fdsafjkdlsafjdkslfjdksl",
           },
           {

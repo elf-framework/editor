@@ -30,15 +30,27 @@ start(function () {
               type: "string",
             });
 
+            // 커맨드 동적 등록
             editor.registerCommand({
               command: "my-command",
               title: "My Command",
+              description: "My Command Description",
               execute: async () => {
+                console.log("sample command");
+                console.log(editor.keyboard.event);
                 return 10;
               },
             });
 
-            console.log(editor.configs.get("yellow"));
+            // short 동적 등록
+            editor.registerShortcut({
+              key: "meta+shift+e",
+              mac: "ctrl+shift+e",
+              command: (editor, a, b, c) => {
+                console.log("sample shortcut", editor, a, b, c);
+              },
+              args: [1, 2, 3],
+            });
           },
 
           RenderPlugin,

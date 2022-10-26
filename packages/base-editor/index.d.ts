@@ -23,6 +23,26 @@ declare module "@elf-framework/base-editor" {
     registerCommand: (command: CommandType) => void;
   }
 
+  export interface ShortcutManager {
+    registerShortcut: (shortcut: ShortcutType) => void;
+  }
+
+  export interface KeyboardManager {
+    /**
+     * 눌러진 키 체크하기
+     */
+    hasKey(keyOrKeyCode: string|number): boolean;
+
+    /**
+     * key, keycode 가 눌러져있는지 체크
+     */
+    check(args: any[]): boolean;
+    isShift(): boolean;
+    isCtrl(): boolean;
+    isAlt(): boolean;
+    isMeta(): boolean;
+  }
+
   export interface EditorManager {
     [key: string]: unknown;
   }
@@ -38,6 +58,16 @@ declare module "@elf-framework/base-editor" {
 
   export type CommandType = EditorCommand;
   export type PluginType = (editor: EditorContext, options?: any) => void;
+  export type ShortcutType = {
+    key: string;
+    command: string;
+    args: unknown[];
+    eventType: "keydown" | "keyup";
+    when: () => boolean | string;
+    mac: string;
+    win: string;
+    linux: string;
+  };
 
   export interface ConfigManager {
     has: (key: string) => boolean;
@@ -53,10 +83,14 @@ declare module "@elf-framework/base-editor" {
 
   export interface EditorContext {
     configs: ConfigManager;
+    commands: CommandManager;
+    shortcuts: ShortcutManager;
+    keyboard: KeyboardManager;
 
     registerConfig(config: EditorConfig): void;
     registerManager(manager: EditorManager): void;
     registerCommand(command: CommandType): void;
+    registerShortcut(shortcut: ShortcutType): void;
     registerUI(obj: UIListType): void;
     registerGroupUI(key: string, obj: UIListType): void;
     getCommand<T>(name: string): T | undefined;

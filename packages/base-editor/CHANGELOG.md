@@ -1,5 +1,17 @@
 # @elf-framework/base-editor
 
+## 0.0.35
+
+### Patch Changes
+
+- support direct command function for shortcut
+
+## 0.0.34
+
+### Patch Changes
+
+- add ShortcutManager, KeyboardManager to editor context
+
 ## 0.0.18
 
 ### Patch Changes

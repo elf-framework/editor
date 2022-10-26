@@ -45,6 +45,8 @@ export class CommandManager {
       if (!command.execute) throw new Error("callback is required", command);
 
       const callback = (...args) => {
+        // 커맨드 함수를 생성하는 시점에 editorContext 를 자동으로 넘겨 주도록 맞춘다.
+        // 이렇게 하는 이유는 editorContext 를 항상 전달해서 활용하기 위함이다.
         const result = command.execute.call(
           command,
           this.editorContext,
@@ -61,14 +63,20 @@ export class CommandManager {
   }
 
   getCallback(command) {
+    if (typeof command === "function") {
+      return command;
+    }
+
     return this.localCommands[command];
   }
 
-  emit(command, ...args) {
+  execute(command, ...args) {
     const callback = this.getCallback(command);
 
-    if (callback) {
-      return callback(...args);
+    if (!callback) {
+      throw new Error("command is not registered : " + command);
     }
+
+    return callback(...args);
   }
 }
