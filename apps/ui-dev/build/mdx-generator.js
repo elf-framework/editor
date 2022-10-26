@@ -160,13 +160,15 @@ function generateHtmlFile(realpath) {
       entryExtName
     );
 
-    const { title } = meta;
+    const { title, keywords, description } = meta;
 
     // create index.html file
     let content = indexTemplate;
 
     // title auto generate
     content = content.replace("{{title}}", title);
+    content = content.replace("{{keywords}}", keywords);
+    content = content.replace("{{description}}", description);
     content = content.replace(
       "{{entryFileName}}",
       "./" + entryFileName + ".jsx"
@@ -410,10 +412,10 @@ export function mdxGenerator() {
               console.log("File", path, "has been added");
               generateHtmlFile(path);
             })
-            // .on("change", function (path) {
-            //   //   console.log("File", path, "has been changed");
-            //   //   makeIndexEntries();
-            // })
+            .on("change", function (path) {
+              //   console.log("File", path, "has been changed");
+              generateHtmlFile(path);
+            })
             .on("unlink", function (path) {
               if (isPagesDirectory(path) === false) return;
               console.log("File", path, "has been removed");

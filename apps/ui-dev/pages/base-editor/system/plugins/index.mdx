@@ -1,0 +1,80 @@
+---
+title: Plugins
+layout: BaseEditorLayout
+description: Plugins
+keywords: editor, plugin, system
+---
+  
+# Plugin
+
+Plugins are a way to extend the functionality of the editor. They can be used to add new features, or to override existing ones. Plugins are loaded at runtime, and can be added or removed without restarting the editor.
+
+
+```jsx
+
+<BaseEditor plugins={[
+    // MyPlugin
+    function (editorContext) {
+
+    }
+]}>
+
+```
+
+## Structure
+
+Plugins are functions that take an editor context.
+
+```jsx
+
+function (editorContext) {
+    editorContext.xxx("");
+}
+
+```
+
+A plugin is defined as a function and takes an editorContext to extend various elements.
+
+### initialized 
+
+The initialized event is called when the editor is initialized.
+
+```jsx
+
+function (editorContext) {
+    // <-- initialized -->
+    // register "my-command" command
+    editorContext.registerCommand({
+        command: "my-command",
+        execute: (editorContext) => {
+            // do something
+        }
+    });
+}
+
+```
+
+### life cycle
+
+The life cycle of the editor is as follows.
+
+```jsx
+
+function (editorContext) {
+    // <-- initialized -->
+    // register "my-command" command
+    editorContext.registerCommand({
+        command: "my-command",
+        execute: (editorContext) => {
+            // do something
+        }
+    });
+    // <-- beforeRender -->
+    // <-- render -->
+    // <-- afterRender -->
+    // <-- beforeDestroy -->
+    // <-- destroy -->
+}
+
+```
+
