@@ -1,4 +1,4 @@
-import { isBoolean } from "@elf-framework/sapa";
+import { isBoolean, isString } from "@elf-framework/sapa";
 
 import { generateKeyCode, KEY_STRING } from "../consts/key";
 import { os } from "../utils/detect";
@@ -42,6 +42,11 @@ export class ShortCutManager {
       key: "",
       args: [],
       eventType: "keydown",
+      priority: 10,
+      preventDefault: false,
+      stopPropagation: false,
+      isDisabled: false,
+      container: null,
       ...shortcut,
       command: this.makeShortcutCommandFunction(shortcut.command),
       checkKeyString: this.splitShortCut(shortcut[OSName] || shortcut.key),
@@ -168,9 +173,30 @@ export class ShortCutManager {
         .filter((it) => this.checkWhen(it));
 
       if (filteredCommands.length) {
-        // e.preventDefault();
-
         filteredCommands.forEach((it) => {
+          if (it.container) {
+            if (isString(it.container)) {
+              // target 이 selector 와 매칭되지 않으면 실행하지 않음
+              if (!e.target.matches(it.container)) {
+                return;
+              }
+              // eslint-disable-next-line no-undef
+            } else if (it.container instanceof HTMLElement) {
+              // target 이 container 안에 없으면 실행하지 않음.
+              if (!it.container.contains(e.target)) {
+                return;
+              }
+            }
+          }
+
+          if (it.preventDefault) {
+            e.preventDefault();
+          }
+
+          if (it.stopPropagation) {
+            e.stopPropagation();
+          }
+
           this.editorContext.commands.execute(it.command, ...it.args);
         });
       }

@@ -9,19 +9,19 @@ export default [
 
   "System",
   {
-    link: url("pages/base-editor/system/plugins/index.html"),
+    link: url("pages/base-editor/system/plugin/index.html"),
     title: "Plugin",
   },
   {
-    link: url("pages/base-editor/system/commands/index.html"),
+    link: url("pages/base-editor/system/command/index.html"),
     title: "Command",
   },
   {
-    link: url("pages/base-editor/system/shortcuts/index.html"),
+    link: url("pages/base-editor/system/shortcut/index.html"),
     title: "Shortcut",
   },
   {
-    link: url("pages/base-editor/system/configs/index.html"),
+    link: url("pages/base-editor/system/config/index.html"),
     title: "Config",
   },
   {

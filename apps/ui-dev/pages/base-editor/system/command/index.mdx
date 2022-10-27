@@ -1,0 +1,107 @@
+---
+title: Command
+layout: BaseEditorLayout
+---
+  
+# Command
+
+It provides the basic functionality for executing a command, undoing a command, and redoing a command. It also provides the ability to add and remove command listeners.
+
+## Regist command
+
+`editorContext.registerCommand` method is used to register a command. The command is registered with a unique name. The command can be executed by calling the `editorContext.commands.execute()` method with the command name.
+
+```jsx
+function (editorContext) {
+    editorContext.registerCommand({
+        command: "my-command",
+        execute: (editorContext, ...args) => {
+            // do something
+            console.log(args);
+        },
+    })
+}
+
+// execute command
+editorContext.commands.execute("my-command", 1, 2, 3);
+```
+
+### Command options
+
+| Name | Type | Description |
+| --- | --- | --- |
+| command | string | The command name. |
+| description | string | The command description. |
+| execute | function | The function to execute the command. |
+| undo | function | The function to undo the command. |
+| redo | function | The function to redo the command. |
+
+
+### return a value 
+
+If you want to return a value from the command, you can use the `editorContext.commands.execute` method.
+
+```jsx
+
+function (editorContext) {
+    editorContext.registerCommand({
+        command: "my-command",
+        execute: (editorContext, ...args) => {
+            // do something
+            return "result";
+        },
+    })
+}
+
+// execute command
+const result = editorContext.commands.execute("my-command", 1, 2, 3);
+console.log(result); // "result"
+```
+
+### Async command 
+
+If you want to execute the command asynchronously, you  can also use the `editorContext.commands.execute` method.
+
+```jsx
+
+function (editorContext) {
+    editorContext.registerCommand({
+        command: "my-command",
+        execute: async (editorContext, ...args) => {
+            // do something
+            return "result";
+        },
+    })
+}
+
+// execute command
+const result = await editorContext.commands.executeAsync("my-command", 1, 2, 3);
+console.log(result); // "result"
+```
+
+### History 
+
+`history.xxxx` is a command that can be used to undo and redo. The `history.xxxx` command is automatically registered when the editor is created.
+
+```jsx
+
+function (editorContext) {
+    editorContext.registerCommand({
+        command: "history.my-command",
+        execute: (editorContext, ...args) => {
+            // do something
+            return "result";
+        },
+        undo: (editorContext, ...args) => {
+            // undo
+        },
+        redo: (editorContext, ...args) => {
+            // redo
+        },
+    })
+}
+
+// execute command
+const result = editorContext.commands.execute("history.my-command", 1, 2, 3);
+
+```

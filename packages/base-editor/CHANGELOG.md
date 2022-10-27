@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.36
+
+### Patch Changes
+
+- update shortcut options (priority, preventDefault, stopPropagation, container)
+
 ## 0.0.35
 
 ### Patch Changes
