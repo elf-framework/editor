@@ -16,7 +16,7 @@ function readContent(file) {
 }
 
 function ucwords(str) {
-  return str.replace(/_-/g, " ").replace(/(?:^|\s)\S/g, function (a) {
+  return str.replace(/[_-]/g, " ").replace(/(?:^|\s)\S/g, function (a) {
     return a.toUpperCase();
   });
 }
@@ -413,6 +413,7 @@ export function mdxGenerator() {
               generateHtmlFile(path);
             })
             .on("change", function (path) {
+              if (isPagesDirectory(path) === false) return;
               //   console.log("File", path, "has been changed");
               generateHtmlFile(path);
             })

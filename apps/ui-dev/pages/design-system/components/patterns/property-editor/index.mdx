@@ -1,0 +1,47 @@
+---
+title: Property Editor
+layout: DesignLayout
+---
+
+import { MainView } from "~/component/patterns/property-editor/MainView.jsx"; 
+  
+# Property Editor 
+
+The Property Editor is a tool that allows you to edit the properties of a selected object. 
+
+<MainView />
+
+## make a property editor
+
+```jsx
+function App() {
+    return (
+        <PropertyEditor 
+            value={{
+                name: 'John',
+            }}
+            inspector={(value) => {
+                return [
+                    {
+                        type: "column",
+                        size: [1, 1],
+                        columns: [
+                            {
+                                type: "text", 
+                                label: "Name",
+                                value: value.name,
+                                onChange: (name) => {
+                                    console.log(name);
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }}
+        />
+    )
+}
+
+```
+
+

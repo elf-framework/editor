@@ -31,7 +31,7 @@ var __privateMethod = (obj, member, method) => {
 })(this, function(exports2, sapa, color) {
   var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
   "use strict";
-  const style$1 = "";
+  const style = "";
   function usePointerStart(...args) {
     let [selector, downAction, moveAction, upAction] = args;
     if (sapa.isFunction(selector)) {
@@ -5126,16 +5126,15 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("view", View);
   registerComponent("View", View);
-  const style = {
-    boxSizing: "border-box"
-  };
-  function TextInputItem({ item: { value } }) {
+  function TextInputItem({ value, style: style2, onChange }) {
     return /* @__PURE__ */ sapa.createElementJsx(InputEditor, {
       type: "text",
       value,
       width: "100%",
-      display: "block",
-      style
+      style: style2,
+      onInput: (e) => {
+        onChange && onChange(e.target.value);
+      }
     });
   }
   function TitleItem({ item: { value, key } }) {
@@ -5168,7 +5167,7 @@ var __privateMethod = (obj, member, method) => {
       autoFocus
     });
   }
-  const cssProperties$l = makeCssVariablePrefixMap("--elf--data-editor", {
+  const cssProperties$l = makeCssVariablePrefixMap("--elf-property-editor", {
     backgroundColor: true,
     color: true,
     height: true,
@@ -5183,58 +5182,104 @@ var __privateMethod = (obj, member, method) => {
     button: ButtonItem,
     color: ColorItem
   };
-  class DataEditor extends sapa.UIElement {
-    initState() {
-      const { data = () => ({}), items = () => [], plugins = {} } = this.props;
-      const currentData = data();
-      return {
-        plugins: {
-          ...predefinedPlugins,
-          ...plugins
-        },
-        data: currentData,
-        items: items(currentData)
-      };
-    }
+  class PropertyEditor extends sapa.UIElement {
     makeEditorItem(item, index) {
-      const { plugins } = this.state;
-      if (typeof item === "string") {
-        const TitleItem2 = plugins["title"];
-        return /* @__PURE__ */ sapa.createElementJsx(TitleItem2, {
-          key: index,
-          item: { value: item }
+      const { plugins = {} } = this.props;
+      const { key, value = this.state.value[key], label, type } = item;
+      const InnerEditor = plugins[type] || predefinedPlugins[type];
+      if (InnerEditor) {
+        return /* @__PURE__ */ sapa.createElementJsx(InnerEditor, {
+          key,
+          index,
+          label,
+          value,
+          onChange: (newValue) => {
+            if (item.onChange) {
+              item.onChange(newValue, item, this);
+            }
+            if (sapa.isFunction(this.props.onChange)) {
+              this.props.onChange(key, newValue, this);
+            }
+            this.state.value[key] = newValue;
+          }
         });
-      } else {
-        const TypedItem = plugins[item.type];
-        if (TypedItem) {
-          return /* @__PURE__ */ sapa.createElementJsx(TypedItem, {
-            key: item.key || index,
-            item,
-            root: this
-          });
-        }
       }
       return void 0;
     }
+    makeType(value) {
+      if (typeof value === "string") {
+        return "text";
+      }
+      return "text";
+    }
+    makeInspector(inspector, value) {
+      let returnInspector = [];
+      if (sapa.isFunction(inspector)) {
+        returnInspector = inspector(value);
+      } else if (Array.isArray(inspector)) {
+        returnInspector = inspector;
+      }
+      if (!inspector || Array.isArray(inspector) === false) {
+        returnInspector = Object.entries(value).map(([key, value2]) => {
+          return {
+            key,
+            value: value2,
+            label: key,
+            type: this.makeType(value2)
+          };
+        });
+      }
+      return returnInspector;
+    }
+    initState() {
+      return {
+        value: this.props.value || {}
+      };
+    }
+    reloadInspector() {
+      this.setState(
+        {
+          value: this.props.value || {}
+        },
+        false
+      );
+    }
     template() {
       const { style: style2 = {} } = this.props;
-      const { items } = this.state;
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf-property-editor");
+      });
       const styleObject = {
-        class: sapa.classnames("elf--data-editor"),
+        class: localClass,
         style: propertyMap(style2, cssProperties$l)
       };
+      this.state.inspector = this.makeInspector(
+        this.props.inspector,
+        this.props.value
+      );
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         ...styleObject
-      }, items.map((item, index) => {
-        const isString = typeof item === "string";
+      }, this.state.inspector.map((item, index) => {
         return /* @__PURE__ */ sapa.createElementJsx("div", {
-          class: sapa.classnames("elf--data-editor-item", { string: isString })
-        }, item.title ? /* @__PURE__ */ sapa.createElementJsx("div", {
-          class: "title"
-        }, item.title) : null, /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "elf-property-editor-item"
+        }, item.label ? /* @__PURE__ */ sapa.createElementJsx("div", {
+          class: "label"
+        }, item.label) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", {
           class: "editor"
         }, this.makeEditorItem(item, index)));
       }));
+    }
+    getValue() {
+      return this.state.value;
+    }
+    setValue(v) {
+      this.setState({ value: v });
+    }
+    get value() {
+      return this.getValue();
+    }
+    set value(v) {
+      this.setValue(v);
     }
   }
   const EMPTY_POS = { x: 0, y: 0 };
@@ -6959,7 +7004,6 @@ var __privateMethod = (obj, member, method) => {
   exports2.ColorMixer = ColorMixer;
   exports2.ColorView = ColorView;
   exports2.Column = Column;
-  exports2.DataEditor = DataEditor;
   exports2.Dialog = Dialog;
   exports2.Divider = Divider;
   exports2.DropdownPopover = DropdownPopover;
@@ -6988,6 +7032,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.Popover = Popover;
   exports2.ProgressBar = ProgressBar;
   exports2.ProgressCircle = ProgressCircle;
+  exports2.PropertyEditor = PropertyEditor;
   exports2.RGBColorEditor = RGBColorEditor;
   exports2.Radio = Radio;
   exports2.RadioGroup = RadioGroup;

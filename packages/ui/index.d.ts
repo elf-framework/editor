@@ -1715,4 +1715,45 @@ declare module "@elf-framework/ui" {
   export class Blank extends UIElement {
     props: BlankProps & DomEventType;
   }
+
+  interface BaseSchema {
+    type: string;
+    label?: string;
+    key?: string;
+    value?: unknown;
+    required?: boolean;
+    disabled?: boolean;
+    readOnly?: boolean;
+    hidden?: boolean;
+    placeholder?: string;
+    description?: string;
+    style?: CommonStyle;
+    onChange?: (value: unknown) => void;
+  }
+
+  interface TextSchema extends BaseSchema {
+    type: "text";
+    value: string;
+    onChange?: (value: string) => void;
+  }
+
+  type Schema = TextSchema;
+
+  interface PropertyEditorProps<T> {
+    value: T;
+    onChange: (value: T) => void;
+    inspector: (value: T) => Schema[] | Schema[];
+    plugins?: {
+      [key: string]: ContentType;
+    };
+    style?: CommonStyle;
+  }
+
+  export class PropertyEditor<T> extends UIElement {
+    props: PropertyEditorProps<T>;
+    get value(): T;
+    set value(value: T);
+    getValue(): T;
+    setValue(value: T): void;
+  }
 }

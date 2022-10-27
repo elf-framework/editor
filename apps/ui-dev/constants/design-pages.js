@@ -231,10 +231,10 @@ export default [
     title: "Pattern",
     items: [
       { link: COMPONENTS_URL + "patterns/card/", title: "Card" },
-      // {
-      //   link: COMPONENTS_URL + "patterns/form-errors/",
-      //   title: "Form errors *",
-      // },
+      {
+        link: COMPONENTS_URL + "patterns/property-editor/",
+        title: "Property editor",
+      },
       {
         link: COMPONENTS_URL + "patterns/table/",
         title: "Table",

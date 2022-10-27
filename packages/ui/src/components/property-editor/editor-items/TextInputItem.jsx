@@ -1,17 +1,15 @@
 import { InputEditor } from "../../input-editor";
 
-const style = {
-  boxSizing: "border-box",
-};
-
-export function TextInputItem({ item: { value } }) {
+export function TextInputItem({ value, style, onChange }) {
   return (
     <InputEditor
       type="text"
       value={value}
       width="100%"
-      display="block"
       style={style}
+      onInput={(e) => {
+        onChange && onChange(e.target.value);
+      }}
     />
   );
 }

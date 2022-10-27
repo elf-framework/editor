@@ -29,7 +29,7 @@ var __privateMethod = (obj, member, method) => {
 var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
 import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
-const style$1 = "";
+const style = "";
 function usePointerStart(...args) {
   let [selector, downAction, moveAction, upAction] = args;
   if (isFunction(selector)) {
@@ -5124,16 +5124,15 @@ class View extends UIElement {
 }
 registerComponent("view", View);
 registerComponent("View", View);
-const style = {
-  boxSizing: "border-box"
-};
-function TextInputItem({ item: { value } }) {
+function TextInputItem({ value, style: style2, onChange }) {
   return /* @__PURE__ */ createElementJsx(InputEditor, {
     type: "text",
     value,
     width: "100%",
-    display: "block",
-    style
+    style: style2,
+    onInput: (e) => {
+      onChange && onChange(e.target.value);
+    }
   });
 }
 function TitleItem({ item: { value, key } }) {
@@ -5166,7 +5165,7 @@ function ColorItem({ item: { value, autoFocus } }) {
     autoFocus
   });
 }
-const cssProperties$l = makeCssVariablePrefixMap("--elf--data-editor", {
+const cssProperties$l = makeCssVariablePrefixMap("--elf-property-editor", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -5181,58 +5180,104 @@ const predefinedPlugins = {
   button: ButtonItem,
   color: ColorItem
 };
-class DataEditor extends UIElement {
-  initState() {
-    const { data = () => ({}), items = () => [], plugins = {} } = this.props;
-    const currentData = data();
-    return {
-      plugins: {
-        ...predefinedPlugins,
-        ...plugins
-      },
-      data: currentData,
-      items: items(currentData)
-    };
-  }
+class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
-    const { plugins } = this.state;
-    if (typeof item === "string") {
-      const TitleItem2 = plugins["title"];
-      return /* @__PURE__ */ createElementJsx(TitleItem2, {
-        key: index,
-        item: { value: item }
+    const { plugins = {} } = this.props;
+    const { key, value = this.state.value[key], label, type } = item;
+    const InnerEditor = plugins[type] || predefinedPlugins[type];
+    if (InnerEditor) {
+      return /* @__PURE__ */ createElementJsx(InnerEditor, {
+        key,
+        index,
+        label,
+        value,
+        onChange: (newValue) => {
+          if (item.onChange) {
+            item.onChange(newValue, item, this);
+          }
+          if (isFunction(this.props.onChange)) {
+            this.props.onChange(key, newValue, this);
+          }
+          this.state.value[key] = newValue;
+        }
       });
-    } else {
-      const TypedItem = plugins[item.type];
-      if (TypedItem) {
-        return /* @__PURE__ */ createElementJsx(TypedItem, {
-          key: item.key || index,
-          item,
-          root: this
-        });
-      }
     }
     return void 0;
   }
+  makeType(value) {
+    if (typeof value === "string") {
+      return "text";
+    }
+    return "text";
+  }
+  makeInspector(inspector, value) {
+    let returnInspector = [];
+    if (isFunction(inspector)) {
+      returnInspector = inspector(value);
+    } else if (Array.isArray(inspector)) {
+      returnInspector = inspector;
+    }
+    if (!inspector || Array.isArray(inspector) === false) {
+      returnInspector = Object.entries(value).map(([key, value2]) => {
+        return {
+          key,
+          value: value2,
+          label: key,
+          type: this.makeType(value2)
+        };
+      });
+    }
+    return returnInspector;
+  }
+  initState() {
+    return {
+      value: this.props.value || {}
+    };
+  }
+  reloadInspector() {
+    this.setState(
+      {
+        value: this.props.value || {}
+      },
+      false
+    );
+  }
   template() {
     const { style: style2 = {} } = this.props;
-    const { items } = this.state;
+    const localClass = useMemo(() => {
+      return classnames("elf-property-editor");
+    });
     const styleObject = {
-      class: classnames("elf--data-editor"),
+      class: localClass,
       style: propertyMap(style2, cssProperties$l)
     };
+    this.state.inspector = this.makeInspector(
+      this.props.inspector,
+      this.props.value
+    );
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
-    }, items.map((item, index) => {
-      const isString2 = typeof item === "string";
+    }, this.state.inspector.map((item, index) => {
       return /* @__PURE__ */ createElementJsx("div", {
-        class: classnames("elf--data-editor-item", { string: isString2 })
-      }, item.title ? /* @__PURE__ */ createElementJsx("div", {
-        class: "title"
-      }, item.title) : null, /* @__PURE__ */ createElementJsx("div", {
+        class: "elf-property-editor-item"
+      }, item.label ? /* @__PURE__ */ createElementJsx("div", {
+        class: "label"
+      }, item.label) : void 0, /* @__PURE__ */ createElementJsx("div", {
         class: "editor"
       }, this.makeEditorItem(item, index)));
     }));
+  }
+  getValue() {
+    return this.state.value;
+  }
+  setValue(v) {
+    this.setState({ value: v });
+  }
+  get value() {
+    return this.getValue();
+  }
+  set value(v) {
+    this.setValue(v);
   }
 }
 const EMPTY_POS = { x: 0, y: 0 };
@@ -6958,7 +7003,6 @@ export {
   ColorMixer,
   ColorView,
   Column,
-  DataEditor,
   Dialog,
   Divider,
   DropdownPopover,
@@ -6987,6 +7031,7 @@ export {
   Popover,
   ProgressBar,
   ProgressCircle,
+  PropertyEditor,
   RGBColorEditor,
   Radio,
   RadioGroup,
