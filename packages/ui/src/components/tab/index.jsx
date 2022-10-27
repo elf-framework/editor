@@ -59,6 +59,7 @@ export class Tab extends UIElement {
       variant = "default",
       quiet = false,
       stripType = "underline",
+      stripStyle = {},
     } = this.props;
     const { activeKey } = this.state;
 
@@ -86,6 +87,7 @@ export class Tab extends UIElement {
             variant={variant}
             quiet={quiet}
             stripType={stripType}
+            style={stripStyle}
             items={content.map((it) => {
               const { title, key, onClick, disabled, style, selectedStyle } =
                 it.props;

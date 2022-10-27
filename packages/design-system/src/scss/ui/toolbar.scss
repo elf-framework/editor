@@ -24,6 +24,12 @@
         --elf--toolbar-color: var(--color-white);
     }
 
+    &.dark {
+        --elf--toolbar-background-color: var(--toolbar-color-background-dark);
+        --elf--toolbar-color: var(--color-white);
+        
+    }
+
     &.success {
         --elf--toolbar-background-color: var(--toolbar-color-background-success);
         --elf--toolbar-color: var(--color-white);

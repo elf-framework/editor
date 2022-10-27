@@ -1922,17 +1922,14 @@ class ToolsItem extends UIElement {
     }
   }
   initState() {
-    const { title = "", icon, selected, selectedType } = this.props;
+    const { selected, selectedType } = this.props;
     return {
-      title,
-      icon,
       selected,
       selectedType
     };
   }
   template() {
-    const { title = "", icon } = this.state;
-    const { style: style2 = {} } = this.props;
+    const { title = "", icon, style: style2 = {} } = this.props;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
         selected: this.state.selected ? true : void 0
@@ -2816,7 +2813,8 @@ class Tab extends UIElement {
       size = "medium",
       variant = "default",
       quiet = false,
-      stripType = "underline"
+      stripType = "underline",
+      stripStyle = {}
     } = this.props;
     const { activeKey } = this.state;
     const localClass = useMemo(() => {
@@ -2842,6 +2840,7 @@ class Tab extends UIElement {
       variant,
       quiet,
       stripType,
+      style: stripStyle,
       items: content.map((it) => {
         const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
         const selected = activeKey === key;

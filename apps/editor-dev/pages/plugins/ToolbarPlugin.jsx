@@ -1,29 +1,31 @@
+import DarkModeFilled from "@elf-framework/icon/DarkModeFilled";
+import LightModeFilled from "@elf-framework/icon/LightModeFilled";
 import { Toolbar } from "@elf-framework/ui";
 
 export function ToolbarPlugin(editor) {
-  const item = {
+  const leftMenu = {
     items: [
       {
         type: "item",
-        title: "3D",
+        title: editor.i18n.get("app.title"),
       },
       {
         type: "menu",
-        title: () => "3D fdsafjkdlsafjdkslfjdksl",
+        title: () => "3D ",
         trigger: "hover",
         items: [
-          { title: () => "3D fdsafjkdlsafjdkslfjdksl" },
+          { title: () => "texture" },
           {
             type: "item",
             selectable: true,
             selected: () => true,
-            title: "3D fdsafjkdlsafjdkslfjdksl",
+            title: "3D mesh",
           },
           {
             type: "item",
             selectable: false,
             selected: true,
-            title: "3D fdsafjkdlsafjdkslfjdksl",
+            title: "sample title",
           },
         ],
       },
@@ -63,7 +65,32 @@ export function ToolbarPlugin(editor) {
     ],
   };
 
+  const rightMenu = {
+    items: [
+      {
+        type: "item",
+        icon: () => {
+          const theme = editor.configs.get("editor.theme");
+
+          return theme === "light" ? <DarkModeFilled /> : <LightModeFilled />;
+        },
+        onClick: () => {
+          editor.commands.execute("toggle.theme");
+        },
+        events: ["config:editor.theme"],
+      },
+    ],
+  };
+
   editor.registerUI({
-    Toolbar: [Toolbar, { items: [item] }],
+    Toolbar: [
+      Toolbar,
+      {
+        items: [leftMenu, rightMenu],
+        style: {
+          height: 40,
+        },
+      },
+    ],
   });
 }

@@ -1924,17 +1924,14 @@ var __privateMethod = (obj, member, method) => {
       }
     }
     initState() {
-      const { title = "", icon, selected, selectedType } = this.props;
+      const { selected, selectedType } = this.props;
       return {
-        title,
-        icon,
         selected,
         selectedType
       };
     }
     template() {
-      const { title = "", icon } = this.state;
-      const { style: style2 = {} } = this.props;
+      const { title = "", icon, style: style2 = {} } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--tools-item", {
           selected: this.state.selected ? true : void 0
@@ -2818,7 +2815,8 @@ var __privateMethod = (obj, member, method) => {
         size = "medium",
         variant = "default",
         quiet = false,
-        stripType = "underline"
+        stripType = "underline",
+        stripStyle = {}
       } = this.props;
       const { activeKey } = this.state;
       const localClass = sapa.useMemo(() => {
@@ -2844,6 +2842,7 @@ var __privateMethod = (obj, member, method) => {
         variant,
         quiet,
         stripType,
+        style: stripStyle,
         items: content.map((it) => {
           const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
           const selected = activeKey === key;

@@ -251,11 +251,11 @@ export class EventMachine extends HookMachine {
     }
   };
 
+  /**
+   * root 가 변경되는 경우가 있기 때문에
+   * oldEl 는 성능을 위해서 캐슁을 하면 안됨
+   */
   getTargetInstance(oldEl) {
-    if (this.#cachedChildren.has(oldEl)) {
-      return this.#cachedChildren.get(oldEl);
-    }
-
     const targetList = Object.values(this.children)
       .filter(Boolean)
       .filter((instance) => {
@@ -263,7 +263,6 @@ export class EventMachine extends HookMachine {
       });
 
     if (targetList.length) {
-      this.#cachedChildren.set(oldEl, targetList[0]);
       return targetList[0];
     }
 

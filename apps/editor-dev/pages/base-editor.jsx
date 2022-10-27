@@ -2,6 +2,7 @@ import { BaseEditor } from "@elf-framework/base-editor";
 import { start } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
+import locales from "./messages/locales";
 import { CenterPlugin } from "./plugins/CenterPlugin";
 import { LeftPlugin } from "./plugins/LeftPlugin";
 import { RenderPlugin } from "./plugins/RenderPlugin";
@@ -16,6 +17,10 @@ start(function () {
           key: "value",
         }}
         plugins={[
+          function (editorContext) {
+            editorContext.registerI18nMessageWithLang(locales);
+          },
+
           ToolbarPlugin,
           RightPlugin,
           LeftPlugin,

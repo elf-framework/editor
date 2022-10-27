@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.37
+
+### Patch Changes
+
+- fixed children object in EventMachine
+
 ## 0.0.32
 
 ### Patch Changes

@@ -1820,15 +1820,11 @@ const _EventMachine = class extends HookMachine {
     return true;
   }
   getTargetInstance(oldEl) {
-    if (__privateGet(this, _cachedChildren).has(oldEl)) {
-      return __privateGet(this, _cachedChildren).get(oldEl);
-    }
     const targetList = Object.values(this.children).filter(Boolean).filter((instance) => {
       var _a;
       return (instance == null ? void 0 : instance.id) !== this.id && ((_a = instance == null ? void 0 : instance.$el) == null ? void 0 : _a.el) === oldEl;
     });
     if (targetList.length) {
-      __privateGet(this, _cachedChildren).set(oldEl, targetList[0]);
       return targetList[0];
     }
     return void 0;

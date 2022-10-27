@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.38
+
+### Patch Changes
+
+- modify tools height, add stripStyle in tabs
+
 ## 0.0.33
 
 ### Patch Changes

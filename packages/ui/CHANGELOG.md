@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.38
+
+### Patch Changes
+
+- modify tools height, add stripStyle in tabs
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.38
+
 ## 0.0.33
 
 ### Patch Changes

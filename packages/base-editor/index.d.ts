@@ -31,7 +31,7 @@ declare module "@elf-framework/base-editor" {
     /**
      * 눌러진 키 체크하기
      */
-    hasKey(keyOrKeyCode: string|number): boolean;
+    hasKey(keyOrKeyCode: string | number): boolean;
 
     /**
      * key, keycode 가 눌러져있는지 체크
@@ -81,6 +81,14 @@ declare module "@elf-framework/base-editor" {
     [key: string]: UIElement;
   }
 
+  interface LocaleMessageType {
+    [key: string]: string | (() => string);
+  }
+
+  interface LocaleType {
+    [key: string]: LocaleMessageType;
+  }
+
   export interface EditorContext {
     configs: ConfigManager;
     commands: CommandManager;
@@ -91,6 +99,10 @@ declare module "@elf-framework/base-editor" {
     registerManager(manager: EditorManager): void;
     registerCommand(command: CommandType): void;
     registerShortcut(shortcut: ShortcutType): void;
+
+    registerI18nMessage(locale: string, messages: LocaleMessageType): void;
+    registerI18nMessageWithLang(locales: LocaleType): void;
+
     registerUI(obj: UIListType): void;
     registerGroupUI(key: string, obj: UIListType): void;
     getCommand<T>(name: string): T | undefined;

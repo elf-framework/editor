@@ -23,19 +23,16 @@ export class ToolsItem extends UIElement {
   }
 
   initState() {
-    const { title = "", icon, selected, selectedType } = this.props;
+    const { selected, selectedType } = this.props;
 
     return {
-      title,
-      icon,
       selected,
       selectedType,
     };
   }
 
   template() {
-    const { title = "", icon } = this.state;
-    const { style = {} } = this.props;
+    const { title = "", icon, style = {} } = this.props;
 
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {

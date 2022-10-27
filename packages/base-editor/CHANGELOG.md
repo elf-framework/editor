@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.39
+
+### Patch Changes
+
+- add I18nManager , add editor.theme command
+
 ## 0.0.36
 
 ### Patch Changes

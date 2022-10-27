@@ -1,7 +1,8 @@
-import keymapKeydown from "../commands/keymap.keydown";
-import keymapKeyup from "../commands/keymap.keyup";
+import defaultCommands from "../commands";
+import defaultConfigs from "../configs";
 import { CommandManager } from "./CommandManager";
 import { ConfigManager } from "./ConfigManager";
+import { I18nManager } from "./I18nManager";
 import { KeyBoardManager } from "./KeyboardManager";
 import { PluginManager } from "./PluginManager";
 import { ShortCutManager } from "./ShortcutManager";
@@ -24,6 +25,9 @@ export class EditorContext {
       plugins = [],
     } = this.$options;
     this.initializeManagers(managers);
+
+    // config 초기화
+    this.initializeConfigs(defaultConfigs);
     this.initializeConfigs(configList);
 
     /** commands 초기화 */
@@ -43,7 +47,7 @@ export class EditorContext {
       uis: UIManager,
       shortcuts: ShortCutManager,
       keyboard: KeyBoardManager,
-      //TODO: i18n: I18nManager,            // 다국어 매니저
+      i18n: I18nManager,
       //TODO: history: HistoryManager,      // history manager
       //TODO: inspector: InspectorManager,  // inspector 관리용 매니저
       //TODO: state: StateManager,  // config 와 관계없는 에디터 공용 캐쉬 저장소
@@ -77,7 +81,7 @@ export class EditorContext {
   }
 
   initializeInnerCommands() {
-    this.initializeCommands([keymapKeydown, keymapKeyup]);
+    this.initializeCommands(defaultCommands);
   }
 
   initializeCommands(commands = []) {
@@ -132,6 +136,16 @@ export class EditorContext {
 
   registerShortcut(shortcut) {
     this.shortcuts.registerShortcut(shortcut);
+  }
+
+  registerI18nMessage(lang, messages) {
+    this.i18n.registerI18nMessage(lang, messages);
+  }
+
+  registerI18nMessageWithLang(locales) {
+    Object.keys(locales).forEach((locale) => {
+      this.registerI18nMessage(locale, locales[locale]);
+    });
   }
 
   getUI(name) {

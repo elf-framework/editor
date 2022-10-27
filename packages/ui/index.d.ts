@@ -768,6 +768,7 @@ declare module "@elf-framework/ui" {
     variant?: VariantType;
     quiet?: boolean;
     stripType: TabStripType;
+    stripStyle?: CommonStyle;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
 

@@ -3,16 +3,13 @@
   --elf--tools-arrow-background-color: white;
   --elf--tools-hover-background-color: rgba(0, 0, 0, 0.1);
   --elf--tools-active-background-color: rgba(0, 0, 0, 0.2);
-  // --elf--tools-color: white;
-  --elf--tools-height: 48px;
   --elf--tools-min-width: 40px;
   --elf--tools-min-width-scale: 10px;
 
   display: inline-flex;
   flex-direction: row;
-  height: var(--elf--tools-height);
+  height: 100%;
   background-color: var(--elf--tools-background-color);
-  // color: var(--elf--tools-color);
   position: relative;
 
   &.vertical {

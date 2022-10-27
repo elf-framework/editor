@@ -28,4 +28,9 @@ export default [
     link: url("pages/base-editor/system/i18n/index.html"),
     title: "Internationalization(i18n)",
   },
+  "Feature",
+  {
+    link: url("pages/base-editor/feature/hook/index.html"),
+    title: "Editor Hooks",
+  },
 ];

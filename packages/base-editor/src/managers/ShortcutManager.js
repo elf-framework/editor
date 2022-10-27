@@ -36,9 +36,7 @@ export class ShortCutManager {
   registerShortcut(shortcut) {
     const OSName = os();
 
-    console.log(OSName);
-
-    this.list.push({
+    const shortcutData = {
       key: "",
       args: [],
       eventType: "keydown",
@@ -54,9 +52,11 @@ export class ShortCutManager {
         shortcut.command,
         shortcut.when || true
       ),
-    });
+    };
 
-    this.sort();
+    this.list.push(shortcutData);
+
+    this.updateCommandInfo(shortcutData);
   }
 
   makeWhenFunction(command, when) {
@@ -73,14 +73,18 @@ export class ShortCutManager {
     };
   }
 
+  updateCommandInfo(it) {
+    if (Array.isArray(this.commands[it.checkKeyString]) === false) {
+      this.commands[it.checkKeyString] = [];
+    }
+
+    this.commands[it.checkKeyString].push(it);
+  }
+
   sort() {
     this.commands = {};
     this.list.forEach((it) => {
-      if (Array.isArray(this.commands[it.checkKeyString]) === false) {
-        this.commands[it.checkKeyString] = [];
-      }
-
-      this.commands[it.checkKeyString].push(it);
+      this.updateCommandInfo(it);
     });
   }
 
