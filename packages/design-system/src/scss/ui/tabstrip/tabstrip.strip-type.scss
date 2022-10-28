@@ -280,6 +280,7 @@
 
             >.elf--tabstrip-item {
                 border: 1px solid var(--elf--tabstrip-indicator-color);
+                box-sizing: border-box;
 
                 &:not(:first-child) {
                     border-left: 0px;

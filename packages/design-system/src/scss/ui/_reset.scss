@@ -78,10 +78,11 @@ body {
 //     padding: 0;
 // }
 
-// [type="number"]::-webkit-inner-spin-button,
-// [type="number"]::-webkit-outer-spin-button {
-//     height: auto;
-// }
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+    opacity: 1;
+}
 
 // [type="search"] {
 //     -webkit-appearance: textfield;

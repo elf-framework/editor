@@ -767,6 +767,7 @@ declare module "@elf-framework/ui" {
     size: SizeType;
     variant?: VariantType;
     quiet?: boolean;
+    compact?: boolean;
     stripType: TabStripType;
     stripStyle?: CommonStyle;
     onChange?: (event: PointerEvent, item: UIElement) => void;
@@ -820,6 +821,7 @@ declare module "@elf-framework/ui" {
     size?: SizeType;
     variant?: VariantType;
     quiet?: boolean;
+    compact?: boolean;
     stripType: TabStripType;
     onChange?: (event: PointerEvent, item: UIElement) => void;
   }
@@ -996,6 +998,27 @@ declare module "@elf-framework/ui" {
   }
   export class Radio extends UIElement {
     props: RadioProps & CommonStyle;
+  }
+
+  interface SelectItem {
+    value: any;
+    label: string;
+  }
+
+  export interface SelectProps {
+    checked: boolean;
+    name: string;
+    value: any;
+    onChange: (value: string) => void;
+    style: CommonStyle;
+    variant?: VariantType;
+    size?: SizeType;
+    disabled?: boolean;
+    options?: SelectItem[];
+  }
+
+  export class Select extends UIElement {
+    props: SelectProps & CommonStyle;
   }
 
   export interface RadioGroupProps {
@@ -1452,6 +1475,7 @@ declare module "@elf-framework/ui" {
     showTrigger?: "always" | "hover" | "none";
     valueFunc: (value: number) => ContentType;
     readOnly?: boolean;
+    fitted?: boolean;
   }
   export class Slider extends UIElement {
     props: SliderProps & DomEventType;
@@ -1721,6 +1745,8 @@ declare module "@elf-framework/ui" {
     label?: string;
     key?: string;
     value?: unknown;
+    variant?: VariantType;
+    direction?: "horizontal" | "vertical";
     required?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
@@ -1737,7 +1763,80 @@ declare module "@elf-framework/ui" {
     onChange?: (value: string) => void;
   }
 
-  type Schema = TextSchema;
+  interface BooleanSchema extends BaseSchema {
+    type: "boolean";
+    value: boolean;
+    onChange?: (value: boolean) => void;
+  }
+
+  interface NumberSchema extends BaseSchema {
+    type: "number";
+    value: number;
+    min?: number;
+    max?: number;
+    onChange?: (value: number) => void;
+  }
+
+  interface SliderSchema extends BaseSchema {
+    type: "slider";
+    value: number;
+    min?: number;
+    max?: number;
+    step?: number;
+    onChange?: (value: number) => void;
+  }
+
+
+  interface DateSchema extends BaseSchema {
+    type: "date";
+    value: string;
+    onChange?: (value: string) => void;
+  }
+
+  interface SwitchSchema extends BaseSchema {
+    type: "switch";
+    value: boolean;
+    onChange?: (value: boolean) => void;
+  }
+
+  interface SelectSchema extends BaseSchema {
+    type: "select";
+    value: string;
+    options: {
+      label: string;
+      value: string;
+    }[];
+    onChange?: (value: string) => void;
+  }
+
+  interface ColorSchema extends BaseSchema {
+    type: "color";
+    value: string;
+    onChange?: (value: string) => void;
+  }
+
+  interface ButtonSchema extends BaseSchema {
+    type: "button";
+    label: string;
+    onClick?: () => void;
+  }
+
+  interface LabelSchema extends BaseSchema {
+    type: "label";
+    label: string;
+  }
+
+  type Schema =
+    | TextSchema
+    | BooleanSchema
+    | NumberSchema
+    | SliderSchema
+    | DateSchema
+    | SwitchSchema
+    | SelectSchema
+    | ColorSchema
+    | ButtonSchema
+    | LabelSchema;
 
   interface PropertyEditorProps<T> {
     value: T;
@@ -1747,6 +1846,8 @@ declare module "@elf-framework/ui" {
       [key: string]: ContentType;
     };
     style?: CommonStyle;
+    sync?: boolean;
+    direction?: "horizontal" | "vertical";
   }
 
   export class PropertyEditor<T> extends UIElement {

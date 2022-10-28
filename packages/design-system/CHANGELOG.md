@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.42
+
+### Patch Changes
+
+- update property editor's sub item (slider, number, select, switch, tab, boolean)
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.42
+
 ## 0.0.40
 
 ### Patch Changes

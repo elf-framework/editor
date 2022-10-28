@@ -1,10 +1,10 @@
 .elf--input-paint {
-    --elf--input-paint-border-color: transparent;
+    --elf--input-paint-border-color: var(--input-color-border-default);
     --elf--input-paint-outline-color: transparent;
     --elf--input-paint-border-radius: 1px;
     --elf--input-paint-background-color: var(--color-mixer-color-background-default);
     --elf--input-paint-color: var(--color-text-default);
-    --elf--input-paint-font-size: 14px;
+    --elf--input-paint-font-size: 13px;
     --elf--input-paint-empty-color: rgba(0, 0, 0, 0.3);
     --elf--input-paint-placeholder-color: rgba(0, 0, 0, 0.3);
     --elf--input-paint-disabled-color: rgba(0, 0, 0, 0.3);
@@ -14,7 +14,7 @@
     box-shadow: 0 0 1px 0 var(--elf--input-paint-outline-color);
     outline: 1px solid var(--elf--input-paint-outline-color);
     border-radius: var(--elf--input-paint-border-radius);
-    height: var(--elf--input-paint-height, 32px);
+    height: var(--elf--input-editor-height, 32px);
     box-sizing: border-box;
     display: flex;
     background-color: var(--elf--input-paint-background-color);
@@ -37,6 +37,7 @@
     &.focused {
         --elf--input-paint-border-color: var(--color-primary);
         --elf--input-paint-outline-color: var(--color-primary);
+        outline: none;
     }
 
     &.disabled {
@@ -55,6 +56,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        // border: 1px solid var(--elf--input-paint-border-color);
         
         svg {
             width: 16px;

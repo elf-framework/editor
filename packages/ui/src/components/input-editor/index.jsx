@@ -29,24 +29,12 @@ const cssProperties = makeCssVariablePrefixMap("--elf--input-editor", {
 
 export class InputEditor extends UIElement {
   initState() {
-    const {
-      type = "text",
-      autoFocus = false,
-      focused,
-      hover = false,
-      value,
-      placeholder,
-      disabled,
-    } = this.props;
+    const { autoFocus = false, focused = false, hover = false } = this.props;
 
     return {
-      type,
       autoFocus,
+      focused,
       hover: hover || false,
-      focused: focused || false,
-      placeholder,
-      value,
-      disabled,
     };
   }
 
@@ -58,15 +46,15 @@ export class InputEditor extends UIElement {
       readOnly = false,
       invalid,
       style,
-    } = this.props;
-    const {
-      type = "text",
-      focused = false,
-      hover = false,
       value,
+      min,
+      max,
+      step,
       placeholder,
       disabled,
-    } = this.state;
+      type = "text",
+    } = this.props;
+    const { hover = false, focused = false } = this.state;
 
     const localClass = useMemo(() => {
       return classnames([
@@ -106,6 +94,9 @@ export class InputEditor extends UIElement {
       readonly: readOnly ? "readonly" : undefined,
       placeholder: placeholder || "",
       value: value || "",
+      min,
+      max,
+      step,
     };
 
     return (

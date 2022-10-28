@@ -1,0 +1,110 @@
+.elf--select {
+    --elf--select-min-width: 50px;
+    --elf--select-max-width: 100%;
+    --elf--select-width: 100%;
+    --elf--select-border-color: var(--input-color-border-default);
+    --elf--select-outline-color: transparent;
+    --elf--select-border-radius: 1px;
+    --elf--select-background-color: var(--input-color-background-default);
+    --elf--select-color: var(--input-color-text-default);
+    --elf--select-font-size: 13px;
+    --elf--select-empty-color: rgba(0, 0, 0, 0.3);
+    --elf--select-placeholder-color: rgba(0, 0, 0, 0.3);
+    --elf--select-disabled-color: var(--color-gray-4);
+    --elf--select-padding: 6px 3px 6px 7px;
+    --elf--select-padding-right: 3px;
+
+    min-width: var(--elf--select-min-width);
+
+    border: 1px solid var(--elf--select-border-color);
+    outline: 1px solid var(--elf--select-outline-color);
+    border-radius: var(--elf--select-border-radius);
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--elf--select-background-color);
+    border-radius: 2px;
+    width: var(--elf--select-width);
+
+    &:hover,
+    &.hover {
+        --elf--select-border-color: var(--color-gray-3);
+    }
+
+    &:focus:not(.readonly):not(.disabled):not(.invalid),
+    &:focus-within:not(.readonly):not(.disabled):not(.invalid),
+    &.focused:not(.readonly):not(.disabled):not(.invalid) {
+        --elf--select-border-color: var(--color-primary);
+        --elf--select-outline-color: var(--color-primary);
+
+        /** FIXME: 아웃라인 크기를 정해야함 */
+        outline: none;
+    }
+
+    &.disabled {
+        --elf--select-border-color: var(--color-gray-2);
+        --elf--select-placeholder-color: var(--color-gray-4);
+        cursor: not-allowed;
+        --elf--select-background-color: var(--color-gray-1);
+        --elf--select-color: var(--elf--select-disabled-color);
+    }
+
+    &.invalid:not(.disabled) {
+        --elf--select-border-color: var(--color-red-5);
+        border-width: 2px;
+    }
+
+    &.readonly {
+        --elf--select-background-color: transparent !important;
+        --elf--select-border-color: transparent !important;
+        // --elf--select-color: var(--elf--select-disabled-color);        
+    }
+
+    &.small {
+        --elf--select-font-size: 11px;
+        --elf--select-padding: 5px 10px;
+    }
+
+    &.medium {
+        --elf--select-font-size: 12px;
+    }
+
+    &.large {
+        --elf--select-font-size: 14px;
+        --elf--select-padding: 5px 12px;
+    }
+
+    &.extra-large {
+        --elf--select-font-size: 16px;
+        --elf--select-padding: 5px 15px;
+    }
+
+
+
+
+    > select {
+        width: var(--elf--select-width);
+        height: 100%;
+        border: none;
+        box-sizing: border-box;
+        outline: none;
+        font-size: var(--elf--select-font-size);
+
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.005em;
+        padding: var(--elf--select-padding);
+        padding-right: var(--elf--select-padding-right);
+        background-color: transparent;
+        color: var(--elf--select-color);
+
+        &:placeholder {
+            --elf--select-color: var(--elf--select-placeholder-color);
+        }
+
+        &[disabled] {
+            pointer-events: none;
+            user-select: none;
+
+        }
+    }
+}

@@ -1,32 +1,60 @@
-.elf-property-editor {
-    --elf-property-editor-background-color: var(--property-editor-background-color);
-    --elf-property-editor-font-color: var(--property-editor-text-color);
-    --elf-property-editor-width: clamp(240px, 10vw, 100%);
-    --elf-property-editor-item-label-width: 80px;
+.elf--property-editor {
+    --elf--property-editor-background-color: var(--property-editor-background-color);
+    --elf--property-editor-font-color: var(--property-editor-text-color);
+    --elf--property-editor-width: clamp(240px, 10vw, 100%);
+    --elf--property-editor-item-label-width: 80px;
 
-    background-color: var(--elf-property-editor-background-color);
+    background-color: var(--elf--property-editor-background-color);
     box-sizing: border-box;
     display: block;
-    width: var(--elf-property-editor-width);
+    width: var(--elf--property-editor-width);
 
-    > .elf-property-editor-item {
+    &.horizontal {
+
+    }
+
+    &.vertical {
+        .elf--property-editor-item {
+            flex-direction: column;
+            margin: 6px 0;
+
+            > .label {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    .elf--property-editor-item {
         display: flex;
         flex-direction: row;
-        margin: 4px 0;
-        
+        margin: 10px 0;
+        gap: 10px;
+
+        &.vertical {
+            flex-direction: column;
+            margin: 6px 0;
+
+            > .label {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+        }
+
         > * {
             flex: 1 1 auto;
+            text-align: left;
         } 
 
         > .label {
             flex: none;
-            width: var(--elf-property-editor-item-label-width);
+            width: var(--elf--property-editor-item-label-width);
             display: flex;
             justify-content: flex-start;
             align-items: center;
             font-size: 13px;
             box-sizing: border-box;
-            padding-left: 2px;
+            font-weight: bold;
         }
     }
 }

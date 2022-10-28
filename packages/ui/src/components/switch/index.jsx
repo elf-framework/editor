@@ -28,6 +28,7 @@ export class Switch extends UIElement {
       withLabel = false,
       labels = undefined,
       onClick,
+      onChange,
       readOnly = false,
     } = this.props;
 
@@ -53,6 +54,7 @@ export class Switch extends UIElement {
           id={"switch-checkbox-" + this.id}
           type="checkbox"
           onClick={onClick}
+          onChange={onChange}
           {...{
             disabled: disabled ? "disabled" : undefined,
             checked: checked ? "checked" : undefined,

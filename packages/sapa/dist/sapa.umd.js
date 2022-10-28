@@ -1780,7 +1780,7 @@ var __privateMethod = (obj, member, method) => {
     }
     setState(state = {}, isRefresh = true) {
       __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
-      if (isRefresh) {
+      if (Boolean(isRefresh) === true) {
         renderComponent(this);
       }
     }

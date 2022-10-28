@@ -24,8 +24,8 @@ function App() {
                 return [
                     {
                         type: "column",
-                        size: [1, 1],
-                        columns: [
+                        columns: 2,
+                        items: [
                             {
                                 type: "text", 
                                 label: "Name",
@@ -43,5 +43,148 @@ function App() {
 }
 
 ```
+
+# API
+
+## PropertyEditor
+
+The Property Editor has a good pattern for editing objects.
+
+You can put the object you want to edit in the value property, define the inspector property as a function or an array, and then catch the change with `onChange` .
+
+| Property | Type | Description |
+| --- | --- | --- |
+| value | object | The value of the object to edit |
+| inspector | function | A function that returns an array of inspector items |
+| onChange | function | A function that is called when the value changes |
+
+## Inspector
+
+Inspector is a space that provides an editor to edit objects.
+
+If there are 3 text types as shown below, 3 inputs are created.
+
+```jsx
+<PropertyEditor inspector={[
+    { type: 'text', label: 'Name' },
+    { type: 'text', label: 'Age' },
+    { type: 'text', label: 'Address' },
+]} />
+```
+
+&nbsp;
+
+Inspectors are represented as arrays.
+
+Each data has some basic properties.
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | any | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+
+## Syncrounous data 
+
+```jsx
+<PropertyEditor sync inspector={[]} />
+```
+
+The property editor provides options that can be utilized when updating data.
+
+When `sync` is `true`, editor rendering is re-rendered whenever the data to be edited is changed.
+
+When `sync` is `false`, a new component is not rendered even if the data to be edited is changed.
+This case is useful when the property editor does not need to be changed by a specific external value.
+
+## Inspector item types
+
+### column
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| columns | number | The number of columns |
+| items | array | An array of inspector items |
+
+
+### text
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | string | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+
+### number
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | number | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+
+### boolean
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | boolean | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+
+### select
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | any | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+| options | array | An array of options |
+
+
+### color 
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | string | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+
+
+### tab 
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| items | TabItem[] | An array of inspector items |
+
+### slider
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | number | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+| min | number | The minimum value of the slider |
+| max | number | The maximum value of the slider |
+| step | number | The step value of the slider |
+
+
+### switch 
+
+| Property | Type | Description |
+| --- | --- | --- |
+| type | string | The type of inspector item |
+| label | string | The label of the inspector item |
+| value | boolean | The value of the inspector item |
+| onChange | function | A function that is called when the value changes |
+
 
 

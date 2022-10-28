@@ -1,5 +1,14 @@
 import { InputPaint } from "../../input-editor/InputPaint";
 
-export function ColorItem({ item: { value, autoFocus } }) {
-  return <InputPaint value={value} autoFocus={autoFocus} />;
+export function ColorItem({ value, onChange, item }) {
+  const { onClickColorView } = item;
+  return (
+    <InputPaint
+      value={value}
+      onChange={onChange}
+      onClickColorView={(e, color) => {
+        onClickColorView && onClickColorView(e, color);
+      }}
+    />
+  );
 }

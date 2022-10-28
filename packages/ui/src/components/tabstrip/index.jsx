@@ -30,6 +30,7 @@ export class TabStrip extends UIElement {
       orientation = "horizontal",
       activeKey,
       showIndicator = true,
+      compact = false,
       size = "medium",
       variant = "default",
       quiet = false,
@@ -49,8 +50,9 @@ export class TabStrip extends UIElement {
         [variant]: true,
         [stripType]: true,
         quiet,
+        compact,
       });
-    }, [fitted, orientation, size, variant, quiet, stripType]);
+    }, [fitted, orientation, size, variant, quiet, stripType, compact]);
 
     // tab indicator
     useEffect(() => {

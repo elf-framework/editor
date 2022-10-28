@@ -1,21 +1,28 @@
 import {
   UIElement,
-  classnames,
-  useMemo,
   isFunction,
+  useMemo,
+  classnames,
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
+import { Tab, TabItem } from "../tab";
 import {
+  BooleanItem,
   ButtonItem,
   ColorItem,
   GridItem,
+  NumberInputItem,
+  SelectItem,
+  SliderItem,
+  SwitchItem,
+  TabContainerItem,
   TextInputItem,
   TitleItem,
 } from "./editor-items";
 
-const cssProperties = makeCssVariablePrefixMap("--elf-property-editor", {
+const cssProperties = makeCssVariablePrefixMap("--elf--property-editor", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -27,16 +34,55 @@ const cssProperties = makeCssVariablePrefixMap("--elf-property-editor", {
 const predefinedPlugins = {
   title: TitleItem,
   text: TextInputItem,
+  number: NumberInputItem,
   grid: GridItem,
   button: ButtonItem,
   color: ColorItem,
+  select: SelectItem,
+  boolean: BooleanItem,
+  switch: SwitchItem,
+  tab: TabContainerItem,
+  slider: SliderItem,
 };
 
 export class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
-    const { plugins = {} } = this.props;
-    const { key, value = this.state.value[key], label, type } = item;
+    const { plugins = {}, sync } = this.props;
+    const { key, value, label, type } = item;
+    let oldValue = this.state.value[key];
 
+    if (typeof value !== "undefined") {
+      if (isFunction(value)) {
+        oldValue = value(this.state.value);
+      } else {
+        oldValue = value;
+      }
+    }
+
+    if (type === "tab") {
+      const { style, stripType, activeKey, fitted, compact } = item;
+      return (
+        <Tab
+          style={style}
+          compact={compact}
+          activeKey={activeKey}
+          fitted={fitted}
+          stripType={stripType}
+        >
+          {item.items.map((it) => {
+            return (
+              <TabItem key={it.key} title={it.label}>
+                {it.items.map((it, index) => {
+                  return this.makeInspectorItem(it, index);
+                })}
+              </TabItem>
+            );
+          })}
+        </Tab>
+      );
+    }
+
+    // editor
     const InnerEditor = plugins[type] || predefinedPlugins[type];
 
     if (InnerEditor) {
@@ -45,7 +91,9 @@ export class PropertyEditor extends UIElement {
           key={key}
           index={index}
           label={label}
-          value={value}
+          value={oldValue}
+          item={item}
+          root={this}
           onChange={(newValue) => {
             if (item.onChange) {
               item.onChange(newValue, item, this);
@@ -55,7 +103,13 @@ export class PropertyEditor extends UIElement {
               this.props.onChange(key, newValue, this);
             }
 
-            this.state.value[key] = newValue;
+            // sync 가 true 이면 전체 데이타를 다시 업데이트 한다.
+            if (sync) {
+              this.state.value[key] = newValue;
+              this.refresh();
+            } else {
+              this.state.value[key] = newValue;
+            }
           }}
         />
       );
@@ -72,14 +126,14 @@ export class PropertyEditor extends UIElement {
   }
 
   makeInspector(inspector, value) {
-    let returnInspector = [];
+    let returnInspector = inspector;
     if (isFunction(inspector)) {
       returnInspector = inspector(value);
     } else if (Array.isArray(inspector)) {
       returnInspector = inspector;
     }
 
-    if (!inspector || Array.isArray(inspector) === false) {
+    if (!returnInspector || Array.isArray(returnInspector) === false) {
       returnInspector = Object.entries(value).map(([key, value]) => {
         return {
           key,
@@ -95,6 +149,7 @@ export class PropertyEditor extends UIElement {
 
   initState() {
     return {
+      oldValue: this.props.value,
       value: this.props.value || {},
     };
   }
@@ -108,12 +163,44 @@ export class PropertyEditor extends UIElement {
     );
   }
 
+  makeInspectorItem(item, index) {
+    if (item.type === "label") {
+      return <div class="elf--property-editor-item label">{item.label}</div>;
+    }
+
+    return (
+      <div
+        class={classnames("elf--property-editor-item", {
+          [item.direction]: true,
+        })}
+      >
+        {item.label ? <div class="label">{item.label}</div> : undefined}
+        <div class="editor">{this.makeEditorItem(item, index)}</div>
+      </div>
+    );
+  }
+
   template() {
-    const { style = {} } = this.props;
+    const { style = {}, value, direction = "horizontal" } = this.props;
+    const { oldValue } = this.state;
+
+    if (oldValue != value) {
+      // 특정 상태에서 상태가 변경되면 리로드를 해야함.
+      // FIXME: 이런 상황이 발생하는 이유를 찾아야함.
+      this.setState(
+        {
+          oldValue: value,
+          value: value || {},
+        },
+        false
+      );
+    }
 
     const localClass = useMemo(() => {
-      return classnames("elf-property-editor");
-    });
+      return classnames("elf--property-editor", {
+        [direction]: true,
+      });
+    }, [direction]);
 
     const styleObject = {
       class: localClass,
@@ -122,18 +209,13 @@ export class PropertyEditor extends UIElement {
 
     this.state.inspector = this.makeInspector(
       this.props.inspector,
-      this.props.value
+      this.state.value
     );
 
     return (
       <div {...styleObject}>
         {this.state.inspector.map((item, index) => {
-          return (
-            <div class="elf-property-editor-item">
-              {item.label ? <div class="label">{item.label}</div> : undefined}
-              <div class="editor">{this.makeEditorItem(item, index)}</div>
-            </div>
-          );
+          return this.makeInspectorItem(item, index);
         })}
       </div>
     );

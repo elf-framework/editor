@@ -5,7 +5,6 @@ import {
   FOCUSOUT,
   FOCUSIN,
   isFunction,
-  CLICK,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -27,59 +26,35 @@ const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   emptyColor: true,
 });
 
-/**
- * input 은 어떻게 정의를 해야 괜찮을까?
- * input, textarea 같은 form 의 한 요소는
- * value 라는 자체 상태를 가진다.
- *
- * 내부에서 저 상태를 유지하고 있는 것은 컨트롤 하지 않겠다는 의미가 된다.
- *
- * 그래서 리액트에서는 Uncontrolled 이라는 개념을 사용한다.
- * 나도 그래야 할까?
- *
- * props 로 넘어오는 value 와 state 의 value 를 나눠서 생각해야할까?
- *
- * 이걸 나누지 않으면 어떻게 되는거지?
- */
 export class InputPaint extends UIElement {
   initState() {
     const {
-      style = {},
       autoFocus = false,
       focused,
       hover = false,
-      value,
-      placeholder,
-      disabled,
       hasOpacity = true,
     } = this.props;
 
-    const parsedColor = parse(value);
-
     return {
-      style,
       autoFocus,
       hover: hover || false,
       focused: focused || false,
-      placeholder,
-      value,
-      parsedColor,
-      disabled,
       hasOpacity,
     };
   }
 
   template() {
-    const { icon, hideColorView = false } = this.props;
     const {
-      style = {},
-      focused = false,
-      hover = false,
-      value,
-      placeholder,
+      icon,
+      hideColorView = false,
+      onClickColorView,
       disabled,
-      parsedColor,
-    } = this.state;
+      placeholder,
+      value,
+    } = this.props;
+    const { style = {}, focused = false, hover = false } = this.state;
+
+    const parsedColor = parse(value);
 
     const styleObject = {
       class: classnames([
@@ -91,9 +66,7 @@ export class InputPaint extends UIElement {
           icon: icon,
         },
       ]),
-      style: {
-        ...propertyMap(style, cssProperties),
-      },
+      style: propertyMap(style, cssProperties),
     };
 
     const inputEvents = {
@@ -119,7 +92,12 @@ export class InputPaint extends UIElement {
     return (
       <div {...styleObject}>
         {hideColorView ? undefined : (
-          <div class="elf--input-paint-icon">
+          <div
+            class="elf--input-paint-icon"
+            onClick={(e) => {
+              onClickColorView && onClickColorView(e, this.value);
+            }}
+          >
             <ColorView color={value} />
           </div>
         )}
@@ -191,10 +169,6 @@ export class InputPaint extends UIElement {
     if (isFunction(callback)) {
       callback(e, this);
     }
-  }
-
-  [CLICK("$el .elf--input-paint-icon")](e) {
-    this.props.onClickColorView?.(e);
   }
 
   [FOCUSIN("$el input")](e) {

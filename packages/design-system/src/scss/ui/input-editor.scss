@@ -43,6 +43,9 @@
     &.focused:not(.readonly):not(.disabled):not(.invalid) {
         --elf--input-editor-border-color: var(--color-primary);
         --elf--input-editor-outline-color: var(--color-primary);
+
+        /** FIXME: 아웃라인 크기를 정해야함 */
+        outline:none;
     }
 
     &.disabled {
@@ -133,7 +136,8 @@
             flex: 1 1 auto;
             height: 100%;            
 
-            > input, textarea {
+            > input, 
+            > textarea {
                 width: var(--elf--input-editor-width);
                 height: 100%;
                 border: none;

@@ -19,6 +19,8 @@
     --elf--tabstrip-border-color: var(--tabstrip-color-border-default);
     --elf--tabstrip-offset: 0.3em;
 
+    --elf--tabstrip-height: auto;
+
 
     background-color: var(--elf--tabstrip-background-color);
     color: var(--elf--tabstrip-text-color);
@@ -30,6 +32,11 @@
     justify-content: space-between;
     font-weight: var(--elf--tabstrip-font-weight);
     font-size: var(--elf--tabstrip-font-size);
+    height: var(--elf--tabstrip-height);
+
+    &.compact {
+        --elf--tabstrip-height: 26px;
+    }
 
     /** size **/
     &.small {

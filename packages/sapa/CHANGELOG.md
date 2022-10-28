@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.41
+
+### Patch Changes
+
+- modify isRefresh check when setState is run
+
 ## 0.0.37
 
 ### Patch Changes

@@ -33,6 +33,15 @@
   width: var(--elf--slider-track-width);
   // background-color: yellow;
 
+  &.fitted {
+    --elf--slider-track-width: 100%;
+  }
+
+  &.small {
+    --elf--slider-thumb-width: 10px;
+    --elf--slider-thumb-height: 10px;
+  }
+
   &.label-position-side {
     display: flex;
     align-items: center;

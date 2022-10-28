@@ -138,7 +138,7 @@ export class EventMachine extends HookMachine {
   setState(state = {}, isRefresh = true) {
     this.#state = Object.assign({}, this.#state, state);
 
-    if (isRefresh) {
+    if (Boolean(isRefresh) === true) {
       renderComponent(this);
     }
   }

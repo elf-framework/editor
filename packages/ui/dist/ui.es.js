@@ -441,7 +441,7 @@ function splitStyleKeyAndNoneStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$Q = makeCssVariablePrefixMap("--elf--alert", {
+const cssProperties$R = makeCssVariablePrefixMap("--elf--alert", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -490,7 +490,7 @@ class Alert extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$Q),
+        ...propertyMap(style2, cssProperties$R),
         ...{
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
@@ -553,7 +553,7 @@ function alert({
 }
 registerComponent("Alert", Alert);
 registerComponent("alert", Alert);
-const cssProperties$P = makeCssVariablePrefixMap("--elf--animation", {
+const cssProperties$Q = makeCssVariablePrefixMap("--elf--animation", {
   name: true,
   iterationCount: true,
   timingFunction: true,
@@ -589,7 +589,7 @@ class Animation extends UIElement {
           delay,
           playState: play ? "running" : "paused"
         },
-        cssProperties$P
+        cssProperties$Q
       ),
       onAnimationStart,
       onAnimationEnd,
@@ -627,7 +627,7 @@ class Animation extends UIElement {
 });
 registerComponent("animation", Animation);
 registerComponent("Animation", Animation);
-const cssProperties$O = makeCssVariablePrefixMap("--elf--progress-circle", {
+const cssProperties$P = makeCssVariablePrefixMap("--elf--progress-circle", {
   backgroundColor: true,
   color: true,
   duration: true,
@@ -664,7 +664,7 @@ class ProgressCircle extends UIElement {
           ...style2,
           offset: percentValue
         },
-        cssProperties$O
+        cssProperties$P
       )
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -687,7 +687,7 @@ class ProgressCircle extends UIElement {
 registerComponent("progress-circle", ProgressCircle);
 registerComponent("progresscircle", ProgressCircle);
 registerComponent("ProgressCircle", ProgressCircle);
-const cssProperties$N = makeCssVariablePrefixMap("--elf--button", {
+const cssProperties$O = makeCssVariablePrefixMap("--elf--button", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -769,7 +769,7 @@ class Button extends UIElement {
     const styleObject = {
       class: localClass,
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(style2, cssProperties$N),
+      style: propertyMap(style2, cssProperties$O),
       ...extraProps
     };
     const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, {
@@ -795,7 +795,7 @@ class Button extends UIElement {
 registerComponent("button", Button);
 registerComponent("btn", Button);
 registerComponent("Button", Button);
-const cssProperties$M = makeCssVariablePrefixMap("--elf--tooltip", {
+const cssProperties$N = makeCssVariablePrefixMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -853,7 +853,7 @@ class Tooltip extends UIElement {
     }, [placement, animated, variant, position]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$M)
+      style: propertyMap(style2, cssProperties$N)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -950,7 +950,7 @@ function tooltip({
     options
   );
 }
-const cssProperties$L = makeCssVariablePrefixMap("--elf--action-group", {
+const cssProperties$M = makeCssVariablePrefixMap("--elf--action-group", {
   alignItems: true,
   gap: true
 });
@@ -1030,7 +1030,7 @@ class ActionGroup extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$L
+        cssProperties$M
       )
     };
     const items = collapsed ? content.filter((item, index) => {
@@ -1075,7 +1075,7 @@ function IconButton({ content, ...props }) {
 registerComponent("icon-button", IconButton);
 registerComponent("iconbutton", IconButton);
 registerComponent("IconButton", IconButton);
-const cssProperties$K = makeCssVariablePrefixMap("--elf--link-button", {
+const cssProperties$L = makeCssVariablePrefixMap("--elf--link-button", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -1091,7 +1091,7 @@ class LinkButton extends UIElement {
       class: "elf--link-button",
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$K)
+        ...propertyMap(style2, cssProperties$L)
       }
     };
     return /* @__PURE__ */ createElementJsx("a", {
@@ -1104,7 +1104,7 @@ class LinkButton extends UIElement {
 registerComponent("link-button", LinkButton);
 registerComponent("linkbutton", LinkButton);
 registerComponent("LinkButton", LinkButton);
-const cssProperties$J = makeCssVariablePrefixMap("--elf--radio", {
+const cssProperties$K = makeCssVariablePrefixMap("--elf--radio", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -1140,7 +1140,7 @@ class Radio extends UIElement {
     }, [disabled, size, variant]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$J)
+      style: propertyMap(style2, cssProperties$K)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -1159,7 +1159,7 @@ class Radio extends UIElement {
 }
 registerComponent("radio", Radio);
 registerComponent("Radio", Radio);
-const cssProperties$I = makeCssVariablePrefixMap("--elf--radio", {
+const cssProperties$J = makeCssVariablePrefixMap("--elf--radio", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -1191,7 +1191,7 @@ class RadioGroup extends UIElement {
     const styleObject = {
       class: localClass,
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(style2, cssProperties$I)
+      style: propertyMap(style2, cssProperties$J)
     };
     const radioName = name || "name-" + this.id;
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1223,7 +1223,7 @@ class RadioGroup extends UIElement {
 registerComponent("RadioGroup", RadioGroup);
 registerComponent("radio-group", RadioGroup);
 registerComponent("radiogroup", RadioGroup);
-const cssProperties$H = {
+const cssProperties$I = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -1258,7 +1258,7 @@ class Checkbox extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$H)
+        ...propertyMap(style2, cssProperties$I)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1287,7 +1287,7 @@ class Checkbox extends UIElement {
 }
 registerComponent("Checkbox", Checkbox);
 registerComponent("checkbox", Checkbox);
-const cssProperties$G = {
+const cssProperties$H = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -1324,7 +1324,7 @@ class CheckboxGroup extends UIElement {
       ]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$G)
+        ...propertyMap(style2, cssProperties$H)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1366,7 +1366,7 @@ class CheckboxGroup extends UIElement {
 }
 registerComponent("checkbox-group", CheckboxGroup);
 registerComponent("CheckboxGroup", CheckboxGroup);
-const cssProperties$F = makeCssVariablePrefixMap("--elf--divider", {
+const cssProperties$G = makeCssVariablePrefixMap("--elf--divider", {
   color: true,
   margin: true
 });
@@ -1391,7 +1391,7 @@ class Divider extends UIElement {
             ...style2,
             margin
           },
-          cssProperties$F
+          cssProperties$G
         )
       }
     };
@@ -1600,7 +1600,7 @@ class MenuItem extends UIElement {
     return this.state.selected;
   }
 }
-const cssProperties$E = makeCssVariablePrefixMap("--elf--menu", {
+const cssProperties$F = makeCssVariablePrefixMap("--elf--menu", {
   left: true,
   top: true,
   backgroundColor: true,
@@ -1660,7 +1660,7 @@ class Menu extends UIElement {
     const styleObject = {
       "data-direction": direction,
       class: localClass,
-      style: propertyMap(itemStyle, cssProperties$E)
+      style: propertyMap(itemStyle, cssProperties$F)
     };
     return /* @__PURE__ */ createElementJsx("menu", {
       ...styleObject,
@@ -1775,7 +1775,7 @@ class OptionMenu extends UIElement {
 registerComponent("OptionMenu", OptionMenu);
 registerComponent("optionmenu", OptionMenu);
 registerComponent("option-menu", OptionMenu);
-const cssProperties$D = makeCssVariablePrefixMap("--elf--dialog", {
+const cssProperties$E = makeCssVariablePrefixMap("--elf--dialog", {
   position: true,
   backgroundColor: true,
   color: true,
@@ -1850,7 +1850,7 @@ class Dialog extends UIElement {
         "no-border": noBorder
       }),
       style: {
-        ...propertyMap(style2, cssProperties$D)
+        ...propertyMap(style2, cssProperties$E)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -2184,7 +2184,7 @@ function makeHiddenToolsItem(items = [], options = {}) {
     return visibility === "hidden";
   });
 }
-const cssProperties$C = makeCssVariablePrefixMap("--elf--tools", {
+const cssProperties$D = makeCssVariablePrefixMap("--elf--tools", {
   backgroundColor: true,
   color: true,
   height: true
@@ -2265,7 +2265,7 @@ class Tools extends UIElement {
     }, [vertical, emphasized]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$C)
+      style: propertyMap(style2, cssProperties$D)
     };
     const items = makeToolsItem(this.props.items, {
       visibleTargetList,
@@ -2321,7 +2321,7 @@ class ToolbarItem extends UIElement {
     }));
   }
 }
-const cssProperties$B = makeCssVariablePrefixMap("--elf--toolbar", {
+const cssProperties$C = makeCssVariablePrefixMap("--elf--toolbar", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2352,7 +2352,7 @@ class Toolbar extends UIElement {
     }, [align, variant, rounded, emphasized, className]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$B)
+      style: propertyMap(style2, cssProperties$C)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject,
@@ -2364,7 +2364,7 @@ class Toolbar extends UIElement {
 }
 registerComponent("toolbar", Toolbar);
 registerComponent("Toolbar", Toolbar);
-const cssProperties$A = makeCssVariablePrefixMap("--elf--notification", {
+const cssProperties$B = makeCssVariablePrefixMap("--elf--notification", {
   backgroundColor: true,
   color: true,
   width: true,
@@ -2392,7 +2392,7 @@ class Notification extends UIElement {
     }, [direction, icon]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$A)
+      style: propertyMap(style2, cssProperties$B)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject,
@@ -2409,7 +2409,7 @@ class Notification extends UIElement {
   }
 }
 registerComponent("notification", Notification);
-const cssProperties$z = makeCssVariablePrefixMap("--elf--toast", {
+const cssProperties$A = makeCssVariablePrefixMap("--elf--toast", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2451,7 +2451,7 @@ class Toast extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$z),
+        ...propertyMap(style2, cssProperties$A),
         transition: `opacity ${localDelay}ms ease-in-out`,
         opacity: hide ? 0 : 1
       }
@@ -2523,7 +2523,7 @@ function toast({
 }
 registerComponent("toast", Toast);
 registerComponent("Toast", Toast);
-const cssProperties$y = makeCssVariablePrefixMap("--elf--popover", {
+const cssProperties$z = makeCssVariablePrefixMap("--elf--popover", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2558,7 +2558,7 @@ class Popover extends UIElement {
     const styleObject = {
       class: classnames("elf--popover", { [placement]: true, animated }),
       style: {
-        ...propertyMap(style2, cssProperties$y)
+        ...propertyMap(style2, cssProperties$z)
       }
     };
     const isPopoverShow = show || this.props.show;
@@ -2630,7 +2630,7 @@ function DropdownPopover(props) {
     type: "dropdown"
   });
 }
-const cssProperties$x = makeCssVariablePrefixMap("--elf--panel", {
+const cssProperties$y = makeCssVariablePrefixMap("--elf--panel", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2657,7 +2657,7 @@ class Panel extends UIElement {
     const styleObject = {
       class: localClass,
       "data-theme": theme,
-      style: propertyMap(style2, cssProperties$x)
+      style: propertyMap(style2, cssProperties$y)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -2676,7 +2676,7 @@ class Panel extends UIElement {
 }
 registerComponent("panel", Panel);
 registerComponent("Panel", Panel);
-const cssProperties$w = makeCssVariablePrefixMap("--elf--tabstrip", {
+const cssProperties$x = makeCssVariablePrefixMap("--elf--tabstrip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2696,6 +2696,7 @@ class TabStrip extends UIElement {
       orientation = "horizontal",
       activeKey,
       showIndicator = true,
+      compact = false,
       size = "medium",
       variant = "default",
       quiet = false,
@@ -2712,9 +2713,10 @@ class TabStrip extends UIElement {
         [size]: true,
         [variant]: true,
         [stripType]: true,
-        quiet
+        quiet,
+        compact
       });
-    }, [fitted, orientation, size, variant, quiet, stripType]);
+    }, [fitted, orientation, size, variant, quiet, stripType, compact]);
     useEffect(() => {
       if (showIndicator) {
         const ref = this.refs[`tab-${activeKey}`];
@@ -2733,7 +2735,7 @@ class TabStrip extends UIElement {
     }, [activeKey, setIndicatorInfo, orientation, showIndicator, stripType]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$w)
+      style: propertyMap(style2, cssProperties$x)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -2773,7 +2775,7 @@ class TabStrip extends UIElement {
 registerComponent("tabstrip", TabStrip);
 registerComponent("TabStrip", TabStrip);
 registerComponent("tab-strip", TabStrip);
-const cssProperties$v = makeCssVariablePrefixMap("--elf--tab", {
+const cssProperties$w = makeCssVariablePrefixMap("--elf--tab", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -2813,6 +2815,7 @@ class Tab extends UIElement {
       size = "medium",
       variant = "default",
       quiet = false,
+      compact = false,
       stripType = "underline",
       stripStyle = {}
     } = this.props;
@@ -2824,7 +2827,7 @@ class Tab extends UIElement {
     }, [full]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$v)
+      style: propertyMap(style2, cssProperties$w)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -2840,6 +2843,7 @@ class Tab extends UIElement {
       variant,
       quiet,
       stripType,
+      compact,
       style: stripStyle,
       items: content.map((it) => {
         const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
@@ -2966,7 +2970,7 @@ function Column({ content, span = 1, style: style2, ...extraProps }) {
     }
   }, content);
 }
-const cssProperties$u = makeCssVariablePrefixMap("--elf--input-editor", {
+const cssProperties$v = makeCssVariablePrefixMap("--elf--input-editor", {
   width: true,
   borderColor: true,
   backgroundColor: true,
@@ -2983,23 +2987,11 @@ const cssProperties$u = makeCssVariablePrefixMap("--elf--input-editor", {
 });
 class InputEditor extends UIElement {
   initState() {
-    const {
-      type = "text",
-      autoFocus = false,
-      focused,
-      hover = false,
-      value,
-      placeholder,
-      disabled
-    } = this.props;
+    const { autoFocus = false, focused = false, hover = false } = this.props;
     return {
-      type,
       autoFocus,
-      hover: hover || false,
-      focused: focused || false,
-      placeholder,
-      value,
-      disabled
+      focused,
+      hover: hover || false
     };
   }
   template() {
@@ -3009,16 +3001,16 @@ class InputEditor extends UIElement {
       size = "medium",
       readOnly = false,
       invalid,
-      style: style2
-    } = this.props;
-    const {
-      type = "text",
-      focused = false,
-      hover = false,
+      style: style2,
       value,
+      min,
+      max,
+      step,
       placeholder,
-      disabled
-    } = this.state;
+      disabled,
+      type = "text"
+    } = this.props;
+    const { hover = false, focused = false } = this.state;
     const localClass = useMemo(() => {
       return classnames([
         "elf--input-editor",
@@ -3035,7 +3027,7 @@ class InputEditor extends UIElement {
     }, [focused, hover, disabled, icon, invalid, size, readOnly]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$u)
+      style: propertyMap(style2, cssProperties$v)
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -3053,7 +3045,10 @@ class InputEditor extends UIElement {
       disabled,
       readonly: readOnly ? "readonly" : void 0,
       placeholder: placeholder || "",
-      value: value || ""
+      value: value || "",
+      min,
+      max,
+      step
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -3125,7 +3120,7 @@ function ColorView({ color }) {
 registerComponent("color-view", ColorView);
 registerComponent("ColorView", ColorView);
 registerComponent("colorview", ColorView);
-const cssProperties$t = makeCssVariablePrefixMap("--elf--input-paint", {
+const cssProperties$u = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -3155,39 +3150,29 @@ class InputPaint extends UIElement {
   }
   initState() {
     const {
-      style: style2 = {},
       autoFocus = false,
       focused,
       hover = false,
-      value,
-      placeholder,
-      disabled,
       hasOpacity = true
     } = this.props;
-    const parsedColor = parse(value);
     return {
-      style: style2,
       autoFocus,
       hover: hover || false,
       focused: focused || false,
-      placeholder,
-      value,
-      parsedColor,
-      disabled,
       hasOpacity
     };
   }
   template() {
-    const { icon, hideColorView = false } = this.props;
     const {
-      style: style2 = {},
-      focused = false,
-      hover = false,
-      value,
-      placeholder,
+      icon,
+      hideColorView = false,
+      onClickColorView,
       disabled,
-      parsedColor
-    } = this.state;
+      placeholder,
+      value
+    } = this.props;
+    const { style: style2 = {}, focused = false, hover = false } = this.state;
+    const parsedColor = parse(value);
     const styleObject = {
       class: classnames([
         "elf--input-paint",
@@ -3198,9 +3183,7 @@ class InputPaint extends UIElement {
           icon
         }
       ]),
-      style: {
-        ...propertyMap(style2, cssProperties$t)
-      }
+      style: propertyMap(style2, cssProperties$u)
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -3222,7 +3205,10 @@ class InputPaint extends UIElement {
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
     }, hideColorView ? void 0 : /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-paint-icon"
+      class: "elf--input-paint-icon",
+      onClick: (e) => {
+        onClickColorView && onClickColorView(e, this.value);
+      }
     }, /* @__PURE__ */ createElementJsx(ColorView, {
       color: value
     })), /* @__PURE__ */ createElementJsx("div", {
@@ -3270,10 +3256,6 @@ class InputPaint extends UIElement {
       callback(e, this);
     }
   }
-  [CLICK("$el .elf--input-paint-icon")](e) {
-    var _a, _b;
-    (_b = (_a = this.props).onClickColorView) == null ? void 0 : _b.call(_a, e);
-  }
   [FOCUSIN("$el input")](e) {
     this.setState({
       focused: true
@@ -3300,7 +3282,7 @@ class InputPaint extends UIElement {
 registerComponent("InputPaint", InputPaint);
 registerComponent("input-paint", InputPaint);
 registerComponent("inputpaint", InputPaint);
-const cssProperties$s = makeCssVariablePrefixMap("--elf--input-paint", {
+const cssProperties$t = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -3417,7 +3399,7 @@ class HexColorEditor extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$s)
+        ...propertyMap(style2, cssProperties$t)
       }
     };
     const inputEvents = {
@@ -3580,7 +3562,7 @@ class HexColorEditor extends UIElement {
 registerComponent("HexColorEditor", HexColorEditor);
 registerComponent("hex-color-editor", HexColorEditor);
 registerComponent("hexcoloreditor", HexColorEditor);
-const cssProperties$r = makeCssVariablePrefixMap("--elf--input-paint", {
+const cssProperties$s = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -3671,7 +3653,7 @@ class RGBColorEditor extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$r)
+        ...propertyMap(style2, cssProperties$s)
       }
     };
     const { r, g, b, a } = parse(value);
@@ -3821,7 +3803,7 @@ class RGBColorEditor extends UIElement {
 registerComponent("RGBColorEditor", RGBColorEditor);
 registerComponent("rgb-color-editor", RGBColorEditor);
 registerComponent("rgbcoloreditor", RGBColorEditor);
-const cssProperties$q = makeCssVariablePrefixMap("--elf--input-editor", {
+const cssProperties$r = makeCssVariablePrefixMap("--elf--input-editor", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -3889,7 +3871,7 @@ class TextAreaEditor extends UIElement {
     }, [focused, hover, disabled, icon, invalid, size, readOnly, resizable]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$q)
+      style: propertyMap(style2, cssProperties$r)
     };
     const inputEvents = {
       onInput: this.props.onInput,
@@ -3961,7 +3943,7 @@ class TextAreaEditor extends UIElement {
 registerComponent("TextAreaEditor", TextAreaEditor);
 registerComponent("textareaeditor", TextAreaEditor);
 registerComponent("text-area-editor", TextAreaEditor);
-const cssProperties$p = makeCssVariablePrefixMap("--elf--field", {
+const cssProperties$q = makeCssVariablePrefixMap("--elf--field", {
   width: true
 });
 function Field({
@@ -3991,7 +3973,7 @@ function Field({
   const styleObject = {
     class: localClass,
     style: {
-      ...propertyMap(style2, cssProperties$p)
+      ...propertyMap(style2, cssProperties$q)
     }
   };
   return /* @__PURE__ */ createElementJsx("div", {
@@ -4122,7 +4104,7 @@ function TextField({
 registerComponent("text-field", TextField);
 registerComponent("TextField", TextField);
 registerComponent("textfield", TextField);
-const cssProperties$o = makeCssVariablePrefixMap("--elf--virtual-scroll", {
+const cssProperties$p = makeCssVariablePrefixMap("--elf--virtual-scroll", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -4158,7 +4140,7 @@ class VirtualScroll extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$o),
+        ...propertyMap(style2, cssProperties$p),
         "--elf--virtual-scroll-item-width": "100%",
         "--elf--virtual-scroll-item-height": `${itemHeight}px`,
         "--elf--virtual-scroll-item-count": totalCount,
@@ -4376,7 +4358,7 @@ class Layer extends UIElement {
 }
 registerComponent("layer", Layer);
 registerComponent("Layer", Layer);
-const cssProperties$n = makeCssVariablePrefixMap("--elf--input-paint", {
+const cssProperties$o = makeCssVariablePrefixMap("--elf--input-paint", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -4472,7 +4454,7 @@ class HSLColorEditor extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$n)
+        ...propertyMap(style2, cssProperties$o)
       }
     };
     const properties = {
@@ -4802,7 +4784,7 @@ function OpacitySlide({ value, onChange }) {
 registerComponent("OpacitySlide", OpacitySlide);
 registerComponent("opacity-slide", OpacitySlide);
 registerComponent("opacityslide", OpacitySlide);
-const cssProperties$m = {
+const cssProperties$n = {
   height: "--elf--color-mixer-height",
   width: "--elf--color-mixer-width"
 };
@@ -4896,7 +4878,7 @@ class ColorMixer extends UIElement {
             width,
             height
           },
-          cssProperties$m
+          cssProperties$n
         )
       }
     };
@@ -5135,6 +5117,20 @@ function TextInputItem({ value, style: style2, onChange }) {
     }
   });
 }
+function NumberInputItem({ value, item, style: style2, onChange }) {
+  const { min = 0, max = 100 } = item;
+  return /* @__PURE__ */ createElementJsx(InputEditor, {
+    type: "number",
+    value,
+    min,
+    max,
+    width: "100%",
+    style: style2,
+    onInput: (e) => {
+      onChange && onChange(e.target.value);
+    }
+  });
+}
 function TitleItem({ item: { value, key } }) {
   return /* @__PURE__ */ createElementJsx(View, {
     as: "div",
@@ -5154,18 +5150,398 @@ function GridItem({
   }, items.map((item, index) => root.makeEditorItem(item, index)));
 }
 const ButtonItem$1 = "";
-function ButtonItem({ item }) {
+function ButtonItem({ label, style: style2, item }) {
+  const { onClick, justified, iconOnly, shape, variant } = item;
   return /* @__PURE__ */ createElementJsx(Button, {
-    onClick: item.onClick
-  }, item.title);
+    onClick,
+    style: {
+      ...style2,
+      height: 26
+    },
+    justified,
+    iconOnly,
+    shape,
+    variant
+  }, label);
 }
-function ColorItem({ item: { value, autoFocus } }) {
+function ColorItem({ value, onChange, item }) {
+  const { onClickColorView } = item;
   return /* @__PURE__ */ createElementJsx(InputPaint, {
     value,
-    autoFocus
+    onChange,
+    onClickColorView: (e, color) => {
+      onClickColorView && onClickColorView(e, color);
+    }
   });
 }
-const cssProperties$l = makeCssVariablePrefixMap("--elf-property-editor", {
+const cssProperties$m = makeCssVariablePrefixMap("--elf--radio", {
+  borderColor: true,
+  backgroundColor: true,
+  disabledColor: true,
+  color: true,
+  fontSize: true,
+  fontWeight: true,
+  height: true,
+  padding: true,
+  borderRadius: true
+});
+class Select extends UIElement {
+  template() {
+    const {
+      disabled,
+      style: style2 = {},
+      value,
+      options = [],
+      onChange,
+      size = "medium",
+      variant = "default"
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames([
+        "elf--select",
+        {
+          disabled,
+          [size]: true,
+          [variant]: true
+        }
+      ]);
+    }, [disabled, size, variant]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$m)
+    };
+    useEffect(() => {
+      this.refs.$select.value = value;
+    }, [value]);
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("select", {
+      ref: "$select",
+      onChange: (e) => onChange && onChange(e.target.value)
+    }, options.map((option) => {
+      return /* @__PURE__ */ createElementJsx("option", {
+        value: option.value
+      }, option.label);
+    })));
+  }
+}
+registerComponent("select", Select);
+registerComponent("Select", Select);
+function SelectItem({ value, item, style: style2, onChange }) {
+  return /* @__PURE__ */ createElementJsx(Select, {
+    value,
+    style: style2,
+    onChange,
+    options: item.options
+  });
+}
+function BooleanItem({ value, onChange, style: style2 }) {
+  return /* @__PURE__ */ createElementJsx(Checkbox, {
+    checked: value,
+    style: style2,
+    onChange: (e) => {
+      onChange && onChange(e.target.checked);
+    }
+  });
+}
+const cssProperties$l = makeCssVariablePrefixMap("--elf--switch", {
+  backgroundColor: true,
+  borderRadius: true,
+  fontSize: true,
+  duration: true,
+  activeColor: true,
+  width: true,
+  height: true,
+  handlBackgroundColor: true,
+  gap: true
+});
+class Switch extends UIElement {
+  template() {
+    const {
+      checked = false,
+      disabled = false,
+      variant = "default",
+      size = "medium",
+      style: style2 = {},
+      content,
+      withLabel = false,
+      labels = void 0,
+      onClick,
+      onChange,
+      readOnly = false
+    } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--switch", {
+        [variant]: true,
+        [size]: true,
+        disabled,
+        readonly: readOnly,
+        "with-label": withLabel
+      });
+    }, [variant, size, disabled, readOnly, withLabel]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$l)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, /* @__PURE__ */ createElementJsx("input", {
+      ref: "$input",
+      id: "switch-checkbox-" + this.id,
+      type: "checkbox",
+      onClick,
+      onChange,
+      ...{
+        disabled: disabled ? "disabled" : void 0,
+        checked: checked ? "checked" : void 0
+      }
+    }), /* @__PURE__ */ createElementJsx("span", {
+      class: "tools"
+    }, /* @__PURE__ */ createElementJsx("span", {
+      class: "track"
+    }), withLabel ? /* @__PURE__ */ createElementJsx("div", {
+      class: "label-area"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "unchecked"
+    }, labels == null ? void 0 : labels[0]), /* @__PURE__ */ createElementJsx("div", {
+      class: "checked"
+    }, labels == null ? void 0 : labels[1])) : void 0, /* @__PURE__ */ createElementJsx("span", {
+      class: "handle"
+    })), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("label", {
+      for: "switch-checkbox-" + this.id
+    }, content) : void 0);
+  }
+  get checked() {
+    return this.refs.$input.checked;
+  }
+}
+registerComponent("switch", Switch);
+registerComponent("Switch", Switch);
+function SwitchItem({ item, value, onChange, style: style2 }) {
+  const { variant } = item;
+  return /* @__PURE__ */ createElementJsx(Switch, {
+    checked: value,
+    style: style2,
+    variant,
+    onChange: (e) => {
+      onChange && onChange(e.target.checked);
+    }
+  });
+}
+function TabContainerItem({ item, root }) {
+  const { style: style2, stripType, activeKey, fitted, compact } = item;
+  return /* @__PURE__ */ createElementJsx(Tab, {
+    style: style2,
+    compact,
+    activeKey,
+    fitted,
+    stripType
+  }, item.items.map((it) => {
+    return /* @__PURE__ */ createElementJsx(TabItem, {
+      key: it.key,
+      title: it.label
+    }, it.items.map((it2, index) => {
+      return root.makeInspectorItem(it2, index);
+    }));
+  }));
+}
+const cssProperties$k = makeCssVariablePrefixMap("--elf--slider", {
+  backgroundColor: true,
+  backgroundImage: true,
+  borderRadius: true,
+  fontSize: true,
+  duration: true,
+  activeColor: true,
+  width: true,
+  height: true,
+  handlBackgroundColor: true,
+  gap: true
+});
+function initValue(v) {
+  return v;
+}
+function calculateRoundValue(min, max, step, value) {
+  if (value === 0)
+    return value;
+  if (max < value)
+    return max;
+  if (min > value)
+    return min;
+  if (step % 1 !== 0) {
+    const total = max - min;
+    const count = total / step;
+    const realValueCount = Math.floor(count * ((value - min) / total));
+    const precison = 1 / step;
+    const result = Math.round(realValueCount * step * precison);
+    const minResult = min * precison;
+    return (result + minResult) / precison;
+  }
+  return value - value % step;
+}
+function calculateValue({ min = 0, max = 100, step, left, width, currentX }) {
+  const currentValue = calculateRoundValue(
+    min,
+    max,
+    step,
+    (currentX - left) / width * (max - min) + min
+  );
+  const value = Math.max(min, Math.min(max, currentValue));
+  return value;
+}
+class SingleSlider extends UIElement {
+  template() {
+    const {
+      label,
+      labelPosition = "top",
+      min = 0,
+      max = 100,
+      step = 1,
+      value = min,
+      valuePlacement = "none",
+      showTrigger = "always",
+      showValue = false,
+      size = "medium",
+      variant = "default",
+      fill = false,
+      fillOffset = 0,
+      disabled = false,
+      readOnly = false,
+      style: style2 = {},
+      valueFunc = initValue,
+      onInput,
+      fitted = false
+    } = this.props;
+    const onInputCallback = useCallback(
+      (e) => {
+        const { left, width: width2 } = this.state;
+        const value2 = calculateValue({
+          min,
+          max,
+          step,
+          left,
+          width: width2,
+          currentX: e.clientX
+        });
+        if (value2 !== this.props.value) {
+          onInput && onInput(value2);
+        }
+      },
+      [onInput, min, max, step]
+    );
+    usePointerStart(
+      "$el .range-track",
+      (e) => {
+        const { left, width: width2 } = this.refs.$track.getBoundingClientRect();
+        this.setState(
+          {
+            left,
+            width: width2
+          },
+          false
+        );
+        onInputCallback(e);
+      },
+      (e) => {
+        onInputCallback(e);
+      }
+    );
+    const localClass = useMemo(() => {
+      return classnames("elf--slider", {
+        [variant]: true,
+        [size]: true,
+        disabled,
+        readonly: readOnly,
+        ["placement-" + valuePlacement]: true,
+        [showTrigger]: true,
+        ["show-value"]: showValue,
+        ["label-position-" + labelPosition]: true,
+        fitted
+      });
+    }, [
+      variant,
+      size,
+      disabled,
+      readOnly,
+      valuePlacement,
+      showTrigger,
+      showValue,
+      labelPosition,
+      fitted
+    ]);
+    const styleObject = {
+      class: localClass,
+      style: propertyMap(style2, cssProperties$k)
+    };
+    const currentValue = Math.max(min, Math.min(max, value));
+    const currenValueOffset = (currentValue - min) / (max - min) * 100;
+    const progressStartOffset = (fillOffset - min) / (max - min) * 100;
+    const isPrevValue = currentValue < fillOffset;
+    const startOffset = Math.min(currenValueOffset, progressStartOffset);
+    const width = Math.abs(currenValueOffset - progressStartOffset);
+    const lastValue = isFunction(valueFunc) ? valueFunc(currentValue) : currentValue;
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
+    }, label ? /* @__PURE__ */ createElementJsx("div", {
+      class: "label-area"
+    }, /* @__PURE__ */ createElementJsx("label", {
+      class: "label"
+    }, label), labelPosition === "top" ? /* @__PURE__ */ createElementJsx("span", {
+      class: "value"
+    }, lastValue) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "range-area"
+    }, /* @__PURE__ */ createElementJsx("div", {
+      class: "range-track",
+      ref: "$track"
+    }, fill ? /* @__PURE__ */ createElementJsx("div", {
+      class: "range-progress",
+      style: { left: `${startOffset}%`, width: `${width}%` }
+    }) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "thumb",
+      ref: "$thumb",
+      style: {
+        left: isPrevValue ? `${startOffset}%` : `${startOffset + width}%`
+      }
+    }, showValue && !label ? /* @__PURE__ */ createElementJsx("div", {
+      class: "thumb-value"
+    }, lastValue) : void 0))), label && labelPosition === "side" ? /* @__PURE__ */ createElementJsx("div", {
+      class: "value-area"
+    }, /* @__PURE__ */ createElementJsx("span", {
+      class: "value"
+    }, lastValue)) : void 0);
+  }
+}
+class RangeSlider extends UIElement {
+  template() {
+    return /* @__PURE__ */ createElementJsx("div", null);
+  }
+}
+class Slider extends UIElement {
+  template() {
+    const { type = "single", ...extraProps } = this.props;
+    return type === "single" ? /* @__PURE__ */ createElementJsx(SingleSlider, {
+      ...extraProps
+    }) : /* @__PURE__ */ createElementJsx(RangeSlider, {
+      ...extraProps
+    });
+  }
+}
+registerComponent("slider", Slider);
+registerComponent("Slider", Slider);
+function SliderItem({ value, item, style: style2, onChange }) {
+  const { min = 0, max = 100, step = 1, fitted = false } = item;
+  return /* @__PURE__ */ createElementJsx(Slider, {
+    min,
+    max,
+    step,
+    value,
+    style: style2,
+    size: "small",
+    fitted,
+    onInput: onChange,
+    valuePlacement: "bottom"
+  });
+}
+const cssProperties$j = makeCssVariablePrefixMap("--elf--property-editor", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -5176,21 +5552,54 @@ const cssProperties$l = makeCssVariablePrefixMap("--elf-property-editor", {
 const predefinedPlugins = {
   title: TitleItem,
   text: TextInputItem,
+  number: NumberInputItem,
   grid: GridItem,
   button: ButtonItem,
-  color: ColorItem
+  color: ColorItem,
+  select: SelectItem,
+  boolean: BooleanItem,
+  switch: SwitchItem,
+  tab: TabContainerItem,
+  slider: SliderItem
 };
 class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
-    const { plugins = {} } = this.props;
-    const { key, value = this.state.value[key], label, type } = item;
+    const { plugins = {}, sync } = this.props;
+    const { key, value, label, type } = item;
+    let oldValue = this.state.value[key];
+    if (typeof value !== "undefined") {
+      if (isFunction(value)) {
+        oldValue = value(this.state.value);
+      } else {
+        oldValue = value;
+      }
+    }
+    if (type === "tab") {
+      const { style: style2, stripType, activeKey, fitted, compact } = item;
+      return /* @__PURE__ */ createElementJsx(Tab, {
+        style: style2,
+        compact,
+        activeKey,
+        fitted,
+        stripType
+      }, item.items.map((it) => {
+        return /* @__PURE__ */ createElementJsx(TabItem, {
+          key: it.key,
+          title: it.label
+        }, it.items.map((it2, index2) => {
+          return this.makeInspectorItem(it2, index2);
+        }));
+      }));
+    }
     const InnerEditor = plugins[type] || predefinedPlugins[type];
     if (InnerEditor) {
       return /* @__PURE__ */ createElementJsx(InnerEditor, {
         key,
         index,
         label,
-        value,
+        value: oldValue,
+        item,
+        root: this,
         onChange: (newValue) => {
           if (item.onChange) {
             item.onChange(newValue, item, this);
@@ -5198,7 +5607,12 @@ class PropertyEditor extends UIElement {
           if (isFunction(this.props.onChange)) {
             this.props.onChange(key, newValue, this);
           }
-          this.state.value[key] = newValue;
+          if (sync) {
+            this.state.value[key] = newValue;
+            this.refresh();
+          } else {
+            this.state.value[key] = newValue;
+          }
         }
       });
     }
@@ -5211,13 +5625,13 @@ class PropertyEditor extends UIElement {
     return "text";
   }
   makeInspector(inspector, value) {
-    let returnInspector = [];
+    let returnInspector = inspector;
     if (isFunction(inspector)) {
       returnInspector = inspector(value);
     } else if (Array.isArray(inspector)) {
       returnInspector = inspector;
     }
-    if (!inspector || Array.isArray(inspector) === false) {
+    if (!returnInspector || Array.isArray(returnInspector) === false) {
       returnInspector = Object.entries(value).map(([key, value2]) => {
         return {
           key,
@@ -5231,6 +5645,7 @@ class PropertyEditor extends UIElement {
   }
   initState() {
     return {
+      oldValue: this.props.value,
       value: this.props.value || {}
     };
   }
@@ -5242,29 +5657,51 @@ class PropertyEditor extends UIElement {
       false
     );
   }
+  makeInspectorItem(item, index) {
+    if (item.type === "label") {
+      return /* @__PURE__ */ createElementJsx("div", {
+        class: "elf--property-editor-item label"
+      }, item.label);
+    }
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: classnames("elf--property-editor-item", {
+        [item.direction]: true
+      })
+    }, item.label ? /* @__PURE__ */ createElementJsx("div", {
+      class: "label"
+    }, item.label) : void 0, /* @__PURE__ */ createElementJsx("div", {
+      class: "editor"
+    }, this.makeEditorItem(item, index)));
+  }
   template() {
-    const { style: style2 = {} } = this.props;
+    const { style: style2 = {}, value, direction = "horizontal" } = this.props;
+    const { oldValue } = this.state;
+    if (oldValue != value) {
+      this.setState(
+        {
+          oldValue: value,
+          value: value || {}
+        },
+        false
+      );
+    }
     const localClass = useMemo(() => {
-      return classnames("elf-property-editor");
-    });
+      return classnames("elf--property-editor", {
+        [direction]: true
+      });
+    }, [direction]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$l)
+      style: propertyMap(style2, cssProperties$j)
     };
     this.state.inspector = this.makeInspector(
       this.props.inspector,
-      this.props.value
+      this.state.value
     );
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
     }, this.state.inspector.map((item, index) => {
-      return /* @__PURE__ */ createElementJsx("div", {
-        class: "elf-property-editor-item"
-      }, item.label ? /* @__PURE__ */ createElementJsx("div", {
-        class: "label"
-      }, item.label) : void 0, /* @__PURE__ */ createElementJsx("div", {
-        class: "editor"
-      }, this.makeEditorItem(item, index)));
+      return this.makeInspectorItem(item, index);
     }));
   }
   getValue() {
@@ -5406,7 +5843,7 @@ class EventControlPanel extends UIElement {
 registerComponent("event-control-panel", EventControlPanel);
 registerComponent("EventControlPanel", EventControlPanel);
 registerComponent("eventcontrolpanel", EventControlPanel);
-const cssProperties$k = makeCssVariablePrefixMap("--elf--app-layout", {
+const cssProperties$i = makeCssVariablePrefixMap("--elf--app-layout", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -5420,7 +5857,7 @@ class AppLayout extends UIElement {
     const { style: style2 = {} } = this.props;
     const styleObject = {
       class: "elf--app-layout",
-      style: propertyMap(style2, cssProperties$k)
+      style: propertyMap(style2, cssProperties$i)
     };
     const topLayoutItem = this.getItem("top");
     const bottomLayoutItem = this.getItem("bottom");
@@ -5549,7 +5986,7 @@ function AppLayoutItem({
 registerComponent("AppLayoutItem", AppLayoutItem);
 registerComponent("app-layout-item", AppLayoutItem);
 registerComponent("applayoutitem", AppLayoutItem);
-const cssProperties$j = makeCssVariablePrefixMap("--elf--help-text", {
+const cssProperties$h = makeCssVariablePrefixMap("--elf--help-text", {
   color: true
 });
 class HelpText extends UIElement {
@@ -5573,7 +6010,7 @@ class HelpText extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$j)
+        ...propertyMap(style2, cssProperties$h)
       },
       ...extrProps
     };
@@ -5589,7 +6026,7 @@ class HelpText extends UIElement {
 registerComponent("help-text", HelpText);
 registerComponent("HelpText", HelpText);
 registerComponent("helptext", HelpText);
-const cssProperties$i = makeCssVariablePrefixMap("--elf--breadcrumbs", {});
+const cssProperties$g = makeCssVariablePrefixMap("--elf--breadcrumbs", {});
 const itemCssProperties = makeCssVariablePrefixMap("--elf--breadcrumbs-item", {
   color: true
 });
@@ -5649,7 +6086,7 @@ class Breadcrumbs extends UIElement {
     const { style: style2 = {}, items = [], separator = "\u3009" } = this.props;
     const styleObject = {
       class: "elf--breadcrumbs",
-      style: propertyMap(style2, cssProperties$i)
+      style: propertyMap(style2, cssProperties$g)
     };
     const renderItems = items.filter((it) => !((it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)));
     const renderMultiItems = items.filter(
@@ -5682,7 +6119,7 @@ class Breadcrumbs extends UIElement {
     })) : void 0);
   }
 }
-const cssProperties$h = makeCssVariablePrefixMap("--elf--ghost", {
+const cssProperties$f = makeCssVariablePrefixMap("--elf--ghost", {
   width: true,
   height: true,
   animationName: true,
@@ -5703,7 +6140,7 @@ class Ghost extends UIElement {
           {
             ...style2
           },
-          cssProperties$h
+          cssProperties$f
         )
       }
     };
@@ -5720,7 +6157,7 @@ class Ghost extends UIElement {
 }
 registerComponent("ghost", Ghost);
 registerComponent("Ghost", Ghost);
-const cssProperties$g = makeCssVariablePrefixMap("--elf--avatar", {
+const cssProperties$e = makeCssVariablePrefixMap("--elf--avatar", {
   backgroundColor: true,
   backgroundImage: true
 });
@@ -5746,7 +6183,7 @@ class Avatar extends UIElement {
     }, [shape, size, variant, disabled]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$g),
+      style: propertyMap(style2, cssProperties$e),
       ...extraProps
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -5758,7 +6195,7 @@ class Avatar extends UIElement {
     }) : content));
   }
 }
-const cssProperties$f = makeCssVariablePrefixMap("--elf--tag", {
+const cssProperties$d = makeCssVariablePrefixMap("--elf--tag", {
   backgroundColor: true,
   color: true,
   borderColor: true,
@@ -5790,7 +6227,7 @@ class Tag extends UIElement {
     }, [variant, filled, disabled, readOnly]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$f)
+      style: propertyMap(style2, cssProperties$d)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -5821,7 +6258,7 @@ class TagGroup extends UIElement {
 }
 registerComponent("tag", Tag);
 registerComponent("Tag", Tag);
-const cssProperties$e = makeCssVariablePrefixMap("--elf--badge", {
+const cssProperties$c = makeCssVariablePrefixMap("--elf--badge", {
   backgroundColor: true,
   color: true,
   borderColor: true,
@@ -5859,7 +6296,7 @@ class Badge extends UIElement {
     }, [variant, filled, disabled, readOnly, size, fixed, placement]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$e)
+      style: propertyMap(style2, cssProperties$c)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -5868,7 +6305,7 @@ class Badge extends UIElement {
 }
 registerComponent("badge", Badge);
 registerComponent("Badge", Badge);
-const cssProperties$d = makeCssVariablePrefixMap("--elf--progressbar", {
+const cssProperties$b = makeCssVariablePrefixMap("--elf--progressbar", {
   backgroundColor: true,
   color: true,
   borderRadius: true,
@@ -5904,7 +6341,7 @@ class ProgressBar extends UIElement {
     }, [variant, size, indeterminate, shape]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$d)
+      style: propertyMap(style2, cssProperties$b)
     };
     const localValue = (value - min) / (max - min);
     const percentValue = Math.round(localValue * PERCENT_NUMBER);
@@ -5923,256 +6360,6 @@ class ProgressBar extends UIElement {
 registerComponent("progressbar", ProgressBar);
 registerComponent("ProgressBar", ProgressBar);
 registerComponent("progress-bar", ProgressBar);
-const cssProperties$c = makeCssVariablePrefixMap("--elf--switch", {
-  backgroundColor: true,
-  borderRadius: true,
-  fontSize: true,
-  duration: true,
-  activeColor: true,
-  width: true,
-  height: true,
-  handlBackgroundColor: true,
-  gap: true
-});
-class Switch extends UIElement {
-  template() {
-    const {
-      checked = false,
-      disabled = false,
-      variant = "default",
-      size = "medium",
-      style: style2 = {},
-      content,
-      withLabel = false,
-      labels = void 0,
-      onClick,
-      readOnly = false
-    } = this.props;
-    const localClass = useMemo(() => {
-      return classnames("elf--switch", {
-        [variant]: true,
-        [size]: true,
-        disabled,
-        readonly: readOnly,
-        "with-label": withLabel
-      });
-    }, [variant, size, disabled, readOnly, withLabel]);
-    const styleObject = {
-      class: localClass,
-      style: propertyMap(style2, cssProperties$c)
-    };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("input", {
-      ref: "$input",
-      id: "switch-checkbox-" + this.id,
-      type: "checkbox",
-      onClick,
-      ...{
-        disabled: disabled ? "disabled" : void 0,
-        checked: checked ? "checked" : void 0
-      }
-    }), /* @__PURE__ */ createElementJsx("span", {
-      class: "tools"
-    }, /* @__PURE__ */ createElementJsx("span", {
-      class: "track"
-    }), withLabel ? /* @__PURE__ */ createElementJsx("div", {
-      class: "label-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "unchecked"
-    }, labels == null ? void 0 : labels[0]), /* @__PURE__ */ createElementJsx("div", {
-      class: "checked"
-    }, labels == null ? void 0 : labels[1])) : void 0, /* @__PURE__ */ createElementJsx("span", {
-      class: "handle"
-    })), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("label", {
-      for: "switch-checkbox-" + this.id
-    }, content) : void 0);
-  }
-  get checked() {
-    return this.refs.$input.checked;
-  }
-}
-registerComponent("switch", Switch);
-registerComponent("Switch", Switch);
-const cssProperties$b = makeCssVariablePrefixMap("--elf--slider", {
-  backgroundColor: true,
-  backgroundImage: true,
-  borderRadius: true,
-  fontSize: true,
-  duration: true,
-  activeColor: true,
-  width: true,
-  height: true,
-  handlBackgroundColor: true,
-  gap: true
-});
-function initValue(v) {
-  return v;
-}
-function calculateRoundValue(min, max, step, value) {
-  if (value === 0)
-    return value;
-  if (max < value)
-    return max;
-  if (min > value)
-    return min;
-  if (step % 1 !== 0) {
-    const total = max - min;
-    const count = total / step;
-    const realValueCount = Math.floor(count * ((value - min) / total));
-    const precison = 1 / step;
-    const result = Math.round(realValueCount * step * precison);
-    const minResult = min * precison;
-    return (result + minResult) / precison;
-  }
-  return value - value % step;
-}
-function calculateValue({ min = 0, max = 100, step, left, width, currentX }) {
-  const currentValue = calculateRoundValue(
-    min,
-    max,
-    step,
-    (currentX - left) / width * (max - min) + min
-  );
-  const value = Math.max(min, Math.min(max, currentValue));
-  return value;
-}
-class SingleSlider extends UIElement {
-  template() {
-    const {
-      label,
-      labelPosition = "top",
-      min = 0,
-      max = 100,
-      step = 1,
-      value = min,
-      valuePlacement = "none",
-      showTrigger = "always",
-      showValue = false,
-      size = "medium",
-      variant = "default",
-      fill = false,
-      fillOffset = 0,
-      disabled = false,
-      readOnly = false,
-      style: style2 = {},
-      valueFunc = initValue,
-      onInput
-    } = this.props;
-    const onInputCallback = useCallback(
-      (e) => {
-        const { left, width: width2 } = this.state;
-        const value2 = calculateValue({
-          min,
-          max,
-          step,
-          left,
-          width: width2,
-          currentX: e.clientX
-        });
-        if (value2 !== this.props.value) {
-          onInput && onInput(value2);
-        }
-      },
-      [onInput, min, max, step]
-    );
-    usePointerStart(
-      "$el .range-track",
-      (e) => {
-        const { left, width: width2 } = this.refs.$track.getBoundingClientRect();
-        this.setState(
-          {
-            left,
-            width: width2
-          },
-          false
-        );
-        onInputCallback(e);
-      },
-      (e) => {
-        onInputCallback(e);
-      }
-    );
-    const localClass = useMemo(() => {
-      return classnames("elf--slider", {
-        [variant]: true,
-        [size]: true,
-        disabled,
-        readonly: readOnly,
-        ["placement-" + valuePlacement]: true,
-        [showTrigger]: true,
-        ["show-value"]: showValue,
-        ["label-position-" + labelPosition]: true
-      });
-    }, [
-      variant,
-      size,
-      disabled,
-      readOnly,
-      valuePlacement,
-      showTrigger,
-      showValue,
-      labelPosition
-    ]);
-    const styleObject = {
-      class: localClass,
-      style: propertyMap(style2, cssProperties$b)
-    };
-    const currentValue = Math.max(min, Math.min(max, value));
-    const currenValueOffset = (currentValue - min) / (max - min) * 100;
-    const progressStartOffset = (fillOffset - min) / (max - min) * 100;
-    const isPrevValue = currentValue < fillOffset;
-    const startOffset = Math.min(currenValueOffset, progressStartOffset);
-    const width = Math.abs(currenValueOffset - progressStartOffset);
-    const lastValue = isFunction(valueFunc) ? valueFunc(currentValue) : currentValue;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, label ? /* @__PURE__ */ createElementJsx("div", {
-      class: "label-area"
-    }, /* @__PURE__ */ createElementJsx("label", {
-      class: "label"
-    }, label), labelPosition === "top" ? /* @__PURE__ */ createElementJsx("span", {
-      class: "value"
-    }, lastValue) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "range-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "range-track",
-      ref: "$track"
-    }, fill ? /* @__PURE__ */ createElementJsx("div", {
-      class: "range-progress",
-      style: { left: `${startOffset}%`, width: `${width}%` }
-    }) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "thumb",
-      ref: "$thumb",
-      style: {
-        left: isPrevValue ? `${startOffset}%` : `${startOffset + width}%`
-      }
-    }, showValue && !label ? /* @__PURE__ */ createElementJsx("div", {
-      class: "thumb-value"
-    }, lastValue) : void 0))), label && labelPosition === "side" ? /* @__PURE__ */ createElementJsx("div", {
-      class: "value-area"
-    }, /* @__PURE__ */ createElementJsx("span", {
-      class: "value"
-    }, lastValue)) : void 0);
-  }
-}
-class RangeSlider extends UIElement {
-  template() {
-    return /* @__PURE__ */ createElementJsx("div", null);
-  }
-}
-class Slider extends UIElement {
-  template() {
-    const { type = "single", ...extraProps } = this.props;
-    return type === "single" ? /* @__PURE__ */ createElementJsx(SingleSlider, {
-      ...extraProps
-    }) : /* @__PURE__ */ createElementJsx(RangeSlider, {
-      ...extraProps
-    });
-  }
-}
-registerComponent("slider", Slider);
-registerComponent("Slider", Slider);
 const cssProperties$a = makeCssVariablePrefixMap("--elf--treeview", {
   backgroundColor: true,
   backgroundImage: true,
@@ -7036,6 +7223,7 @@ export {
   Radio,
   RadioGroup,
   RoundButton,
+  Select,
   Slider,
   Switch,
   Tab,

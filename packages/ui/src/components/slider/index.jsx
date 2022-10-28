@@ -84,6 +84,7 @@ class SingleSlider extends UIElement {
       style = {},
       valueFunc = initValue,
       onInput,
+      fitted = false,
     } = this.props;
 
     const onInputCallback = useCallback(
@@ -135,6 +136,7 @@ class SingleSlider extends UIElement {
         [showTrigger]: true,
         ["show-value"]: showValue,
         ["label-position-" + labelPosition]: true,
+        fitted,
       });
     }, [
       variant,
@@ -145,6 +147,7 @@ class SingleSlider extends UIElement {
       showTrigger,
       showValue,
       labelPosition,
+      fitted,
     ]);
 
     const styleObject = {
