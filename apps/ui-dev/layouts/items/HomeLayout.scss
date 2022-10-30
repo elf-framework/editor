@@ -1,0 +1,182 @@
+body {
+    padding: 0px;
+}
+
+.home-layout {
+
+    .home-layout-header {
+        width :100%;
+        position: relative;
+        height: max-content;
+
+        .background {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 100%;
+            width: 100%;
+            background-image: radial-gradient(circle 800px at 700px 200px, var(--color-purple-0), #ffb0ff00), radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--color-teal-0), #ffb0ff00), radial-gradient(circle 800px at right center, var(--color-blue-1), #ffb0ff00), radial-gradient(circle 800px at right bottom, var(--color-blue-0), #ffb0ff00), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), var(--color-pink-1), var(--color-pink-0), #ffb0ff00);
+            z-index: -1;
+        }
+
+
+    }
+
+    .layout-header {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0px 20px;
+        // background-color: yellow;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > .tools {
+            display: flex;
+
+            ul {
+                display: flex;
+                list-style: none;
+                padding-left: 0px;
+                // padding: 0px 20px;
+                box-sizing: border-box;
+                height: 100%;
+                margin: 0px;
+
+                li {
+                    display: flex;
+                    align-items: center;
+
+                    &:not(:last-child) {
+                        margin-right: 30px;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        text-underline-offset: 4px;
+
+                        &:visited {
+                            color: var(--color-text-default);
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    section {
+        padding: 50px 100px;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+
+
+        @media screen and (max-width: 900px) {
+            padding: 50px 20px;
+        }
+        
+
+        > * {
+            margin: 20px 0px;
+        }
+
+        .hero {
+            font-size: 3rem;
+            width: 500px;
+            line-height: 1.6em;
+
+            > h1 {
+                margin: 0px;
+            }
+        }
+
+        .description {
+            font-size: 1.5rem;
+            width: 500px;
+            line-height: 1.6em;
+            color: var(--color-text-secondary);
+        }
+    }
+
+    .layout-content {
+
+        section {
+            font-size: 1.2rem;
+        }
+
+        pre {
+            background-color: var(--color-background-secondary);
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            max-width: 100%;
+            margin: 20px 0px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+        }
+
+        .message {
+            font-size: 30px;
+            background-color: var(--color-gray-0);
+            padding: 20px;
+            text-align: center;
+            letter-spacing: 5px;
+            margin: 100px 0px;
+        }
+    }
+
+    .layout-footer {
+        padding: 0px 100px;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+
+
+        @media screen and (max-width: 900px) {
+            padding: 0px 20px;
+        }
+        
+
+        footer {
+            padding: 100px 0px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            h3 {
+                font-size: 1.2rem;
+                margin: 0px;
+                margin-bottom: 20px;
+            }
+
+            ul {
+                list-style: none;
+                padding-left: 0px;
+                margin: 0px;
+
+                li {
+                    margin-bottom: 10px;
+
+                    a {
+                        text-decoration: none;
+                        text-underline-offset: 4px;
+
+                        &:visited {
+                            color: var(--color-text-default);
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

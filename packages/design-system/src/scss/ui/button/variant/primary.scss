@@ -22,16 +22,16 @@
     --elf--button-border-color: var(--button-hover-border-primary);
   }
 
-  &:focus,
-  &.focused {
+  // &:focus,
+  // &.focused {
 
-    &:not(.quiet):not(.outline) {
-      outline: 2px solid var(--button-default-border-primary);
-      --elf--button-border-color: var(--color-background-default);
-      border-width: 2px;
-    }
+  //   &:not(.quiet):not(.outline) {
+  //     outline: 2px solid var(--button-default-border-primary);
+  //     --elf--button-border-color: var(--color-background-default);
+  //     border-width: 2px;
+  //   }
 
-  }
+  // }
 
   &.outline {
 

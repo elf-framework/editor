@@ -1,24 +1,12 @@
-import DarkModeFilled from "@elf-framework/icon/DarkModeFilled";
-import LightModeFilled from "@elf-framework/icon/LightModeFilled";
-import {
-  classnames,
-  useEmit,
-  useState,
-  useSubscribe,
-} from "@elf-framework/sapa";
-import { RoundButton, Tools } from "@elf-framework/ui";
+import { classnames } from "@elf-framework/sapa";
+import { Tools } from "@elf-framework/ui";
 
 import mainMenus from "../constants/main-menus";
 import "./PageTools.scss";
+import { ThemeButton } from "./utils/theme-button/ThemeButton";
 
 export function PageTools({ menu }) {
   const pathname = location.pathname;
-  const mode = localStorage.getItem("view-mode") || "light";
-  const [viewMode, setViewMode] = useState(mode);
-
-  useSubscribe("view-mode", (mode) => {
-    setViewMode(mode);
-  });
 
   return (
     <div class="page-tools">
@@ -69,34 +57,7 @@ export function PageTools({ menu }) {
           })}
         </div>
         <div style={{ justifyContent: "flex-end" }}>
-          {viewMode === "dark" ? (
-            <RoundButton
-              iconOnly
-              quiet
-              variant="dark"
-              onClick={() => {
-                setViewMode("light");
-                useEmit("view-mode", "light");
-                localStorage.setItem("view-mode", "light");
-                document.body.classList.toggle("theme-dark", false);
-              }}
-            >
-              <DarkModeFilled />
-            </RoundButton>
-          ) : (
-            <RoundButton
-              iconOnly
-              quiet
-              onClick={() => {
-                setViewMode("dark");
-                useEmit("view-mode", "dark");
-                localStorage.setItem("view-mode", "dark");
-                document.body.classList.toggle("theme-dark", true);
-              }}
-            >
-              <LightModeFilled />
-            </RoundButton>
-          )}
+          <ThemeButton />
         </div>
       </div>
     </div>

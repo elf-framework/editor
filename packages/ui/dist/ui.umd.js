@@ -5152,8 +5152,8 @@ var __privateMethod = (obj, member, method) => {
     }, items.map((item, index) => root.makeEditorItem(item, index)));
   }
   const ButtonItem$1 = "";
-  function ButtonItem({ label, style: style2, item }) {
-    const { onClick, justified, iconOnly, shape, variant } = item;
+  function ButtonItem({ style: style2, item }) {
+    const { onClick, justified, iconOnly, shape, variant, title } = item;
     return /* @__PURE__ */ sapa.createElementJsx(Button, {
       onClick,
       style: {
@@ -5164,7 +5164,7 @@ var __privateMethod = (obj, member, method) => {
       iconOnly,
       shape,
       variant
-    }, label);
+    }, title);
   }
   function ColorItem({ value, onChange, item }) {
     const { onClickColorView } = item;
@@ -5549,7 +5549,9 @@ var __privateMethod = (obj, member, method) => {
     height: true,
     width: true,
     hoverColor: true,
-    borderColor: true
+    borderColor: true,
+    gap: true,
+    itemLabelWidth: true
   });
   const predefinedPlugins = {
     title: TitleItem,

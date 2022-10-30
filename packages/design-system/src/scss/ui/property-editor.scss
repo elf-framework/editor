@@ -1,8 +1,9 @@
 .elf--property-editor {
     --elf--property-editor-background-color: var(--property-editor-background-color);
     --elf--property-editor-font-color: var(--property-editor-text-color);
-    --elf--property-editor-width: clamp(240px, 10vw, 100%);
+    --elf--property-editor-width: 100%;
     --elf--property-editor-item-label-width: 80px;
+    --elf--property-editor-gap: 10px;
 
     background-color: var(--elf--property-editor-background-color);
     box-sizing: border-box;
@@ -29,7 +30,7 @@
         display: flex;
         flex-direction: row;
         margin: 10px 0;
-        gap: 10px;
+        gap: var(--elf--property-editor-gap);
 
         &.vertical {
             flex-direction: column;

@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.43
+
+### Patch Changes
+
+- update property-editor
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.43
+
 ## 0.0.42
 
 ### Patch Changes

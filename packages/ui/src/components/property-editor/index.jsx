@@ -29,6 +29,8 @@ const cssProperties = makeCssVariablePrefixMap("--elf--property-editor", {
   width: true,
   hoverColor: true,
   borderColor: true,
+  gap: true,
+  itemLabelWidth: true,
 });
 
 const predefinedPlugins = {

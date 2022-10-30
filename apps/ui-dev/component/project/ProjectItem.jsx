@@ -35,7 +35,10 @@ export function ProjectItem({
 
   return (
     <div class="project-item" style={style}>
-      <Card style={{ width: "100%" }} {...cardProps}>
+      <Card
+        style={{ width: "100%", backgroundColor: "transparent" }}
+        {...cardProps}
+      >
         <CardContainer>
           <CardHeader
             title={title}

@@ -5150,8 +5150,8 @@ function GridItem({
   }, items.map((item, index) => root.makeEditorItem(item, index)));
 }
 const ButtonItem$1 = "";
-function ButtonItem({ label, style: style2, item }) {
-  const { onClick, justified, iconOnly, shape, variant } = item;
+function ButtonItem({ style: style2, item }) {
+  const { onClick, justified, iconOnly, shape, variant, title } = item;
   return /* @__PURE__ */ createElementJsx(Button, {
     onClick,
     style: {
@@ -5162,7 +5162,7 @@ function ButtonItem({ label, style: style2, item }) {
     iconOnly,
     shape,
     variant
-  }, label);
+  }, title);
 }
 function ColorItem({ value, onChange, item }) {
   const { onClickColorView } = item;
@@ -5547,7 +5547,9 @@ const cssProperties$j = makeCssVariablePrefixMap("--elf--property-editor", {
   height: true,
   width: true,
   hoverColor: true,
-  borderColor: true
+  borderColor: true,
+  gap: true,
+  itemLabelWidth: true
 });
 const predefinedPlugins = {
   title: TitleItem,

@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.43
+
+### Patch Changes
+
+- update property-editor
+
 ## 0.0.42
 
 ### Patch Changes

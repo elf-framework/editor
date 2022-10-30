@@ -1,8 +1,8 @@
 import { Button } from "../../button";
 import "./ButtonItem.scss";
 
-export function ButtonItem({ label, style, item }) {
-  const { onClick, justified, iconOnly, shape, variant } = item;
+export function ButtonItem({ style, item }) {
+  const { onClick, justified, iconOnly, shape, variant, title } = item;
   return (
     <Button
       onClick={onClick}
@@ -15,7 +15,7 @@ export function ButtonItem({ label, style, item }) {
       shape={shape}
       variant={variant}
     >
-      {label}
+      {title}
     </Button>
   );
 }

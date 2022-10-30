@@ -1,37 +1,11 @@
 ---
 title: ELF framework
-layout: BlankLayout
+layout: HomeLayout
 ---
 
 import {Grid, Divider, Column, Blank} from "@elf-framework/ui";
 
 import {ProjectItem} from "~/component/project/ProjectItem.jsx";
 import {data} from "~/component/main/data.jsx";
-
-<div style={{fontSize: 40, padding: "30px 0px", fontWeight: 700}}>
-### <img src="/icon.png" style={{width: 50,verticalAlign: "middle", borderRadius: 4}} /><span style={{verticalAlign: "middle"}}>LF Framework</span>
-</div>
-
-<div className="text-3xl" style={{fontSize: 20}}>An easy and customizable set of developers</div>
-
-<Grid class="project-item-list" columns={3} style={{gap: 20, marginTop: 30}}>
-    <ProjectItem title={"With elf-framework"} description={[
-    <div>Open source developer, 2</div>,
-    <div>&nbsp;</div>,
-    <p>Let's get together in one place, study together, play together, and build together.</p>
-    ]} docLink="/pages/introduction/" codeLinkText="Github" codeLink="https://github.com/elf-framework" />
-</Grid>
-
-<Divider margin={50}/>
-
-<Grid class="project-item-list" columns={3} rows={1} style={{gap: 20}}>
-    {data.map(it => {
-        return <ProjectItem full title={it.title} npm={it.npm} description={it.description} docLink={it.docLink} codeLinkText={it.codeLinkText} codeLink={it.codeLink} type={it.type} selected={it.selected} />
-    })}
-</Grid>
-
-
-<Blank style={{height: 100}} />
-
 
 

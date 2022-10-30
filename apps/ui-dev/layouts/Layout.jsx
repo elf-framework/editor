@@ -12,26 +12,14 @@ import "@elf-framework/ui/style.css";
 import { PageMenu } from "../component/PageMenu";
 import { PageTools } from "../component/PageTools";
 import { useTheme } from "../hooks/useTheme";
+import { Logo } from "./items/Logo";
 import "./Layout.scss";
 
 function LogoView() {
   return (
-    <Grid columns={["50px", 1]}>
-      <Flex
-        style={{
-          justifyContent: "flex-start",
-          alignItems: "center",
-          fontSize: "var(--font-size-600)",
-        }}
-      >
-        <a href="/" style={{ textDecoration: "none", textAlign: "center" }}>
-          🏝
-        </a>
-      </Flex>
-      <VBox style={{ justifyContent: "center" }}>
-        <div>EasyLogic Framework</div>
-      </VBox>
-    </Grid>
+    <div>
+      <Logo />
+    </div>
   );
 }
 
