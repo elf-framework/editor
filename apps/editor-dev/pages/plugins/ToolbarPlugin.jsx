@@ -1,5 +1,6 @@
 import DarkModeFilled from "@elf-framework/icon/DarkModeFilled";
 import LightModeFilled from "@elf-framework/icon/LightModeFilled";
+import PolylineFilled from "@elf-framework/icon/PolylineFilled";
 import { Toolbar } from "@elf-framework/ui";
 
 export function ToolbarPlugin(editor) {
@@ -7,7 +8,10 @@ export function ToolbarPlugin(editor) {
     items: [
       {
         type: "item",
-        title: editor.i18n.get("app.title"),
+        // title: editor.i18n.get("app.title"),
+        icon: <PolylineFilled />,
+        selectable: true,
+        selected: true,
       },
       {
         type: "menu",

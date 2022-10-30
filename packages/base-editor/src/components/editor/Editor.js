@@ -98,5 +98,6 @@ export class Editor extends UIElement {
 
     // send message
     this.emit("editor.plugin.activated");
+    this.trigger("editor.plugin.activated");
   }
 }

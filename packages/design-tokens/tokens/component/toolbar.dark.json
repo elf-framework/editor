@@ -3,7 +3,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.default.value}"
+          "value": "{color.gray.2.value}"
         },
         "primary": {
           "value": "{color.primary.value}"
@@ -29,7 +29,7 @@
       },
       "text": {
         "default": {
-          "value": "{color.gray.0.value}"
+          "value": "{color.text.default.value}"
         },
         "primary": {
           "value": "{color.gray.8.value}"

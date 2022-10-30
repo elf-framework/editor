@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:01 GMT
  */
 
 (function(root, factory) {
@@ -6168,11 +6168,11 @@
           ]
         },
         "default": {
-          "value": "#282828",
+          "value": "#484848",
           "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ButtonHoverBackgroundDefault",
           "attributes": {
@@ -7981,11 +7981,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#484848",
+          "value": "#282828",
           "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "ButtonColorBackgroundDefault",
           "attributes": {
@@ -8708,11 +8708,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#282828",
+          "value": "#181818",
           "filePath": "tokens/component/input.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1.value}"
+            "value": "{color.gray.0.value}"
           },
           "name": "InputColorBackgroundDefault",
           "attributes": {
@@ -8927,11 +8927,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#282828",
           "filePath": "tokens/component/panel.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.default.value}"
+            "value": "{color.gray.1.value}"
           },
           "name": "PanelColorBackgroundDefault",
           "attributes": {
@@ -9309,6 +9309,79 @@
       }
     }
   },
+  "tab": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#282828",
+          "filePath": "tokens/component/tab.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.1.value}"
+          },
+          "name": "TabColorBackgroundDefault",
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#484848",
+          "filePath": "tokens/component/tab.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.value}"
+          },
+          "name": "TabColorBorderDefault",
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/tab.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TabColorTextDefault",
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      }
+    }
+  },
   "table": {
     "color": {
       "border": {
@@ -9613,11 +9686,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "#ffffff",
+          "value": "#484848",
           "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.default.value}"
+            "value": "{color.gray.2.value}"
           },
           "name": "ToolbarColorBackgroundDefault",
           "attributes": {
@@ -9783,11 +9856,11 @@
       },
       "text": {
         "default": {
-          "value": "#181818",
+          "value": "#f8f8f8",
           "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.0.value}"
+            "value": "{color.text.default.value}"
           },
           "name": "ToolbarColorTextDefault",
           "attributes": {

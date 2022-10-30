@@ -1,4 +1,30 @@
+import { useComponentRender, useEffect } from "@elf-framework/sapa";
+
 export function Canvas3D() {
+  useComponentRender("resize.window");
+
+  useEffect(() => {
+    const ctx = this.$el.el.getContext("2d");
+    const rect = this.$el.rect();
+
+    const width = +this.$el.attr("width");
+
+    if (!width) {
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      const backingStoreRatio = ctx.backingStorePixelRatio || 1;
+      const ratio = devicePixelRatio / backingStoreRatio;
+
+      this.$el.attr("width", rect.width * ratio);
+      this.$el.attr("height", rect.height * ratio);
+
+      ctx.scale(ratio, ratio);
+    }
+
+    ctx.fillRect(100, 100, 200, 200);
+    ctx.clearRect(120, 120, 160, 160);
+    ctx.strokeRect(160, 160, 80, 80);
+  }, [window.innerWidth, window.innerHeight]);
+
   return (
     <canvas
       style={{
@@ -8,7 +34,7 @@ export function Canvas3D() {
         width: "100%",
         height: "100%",
         zIndex: -1,
-        backgroundColor: "black",
+        backgroundColor: "#ececec",
       }}
     ></canvas>
   );

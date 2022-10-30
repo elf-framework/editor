@@ -1,19 +1,19 @@
 {
-  "panel": {
+  "tab": {
     "color": {
       "background": {
         "default": {
           "value": "{color.gray.1.value}"
         }
       },
+      "border": {
+        "default": {
+          "value": "{color.border.value}"
+        }
+      },
       "text": {
         "default": {
           "value": "{color.text.default.value}"
-        }
-      },
-      "border": {
-        "default": {
-          "value": "{color.border.default.value}"
         }
       }
     }

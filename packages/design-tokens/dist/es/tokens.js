@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:01 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -438,6 +438,9 @@ export const SwitchFalseColorBackgroundDefault = "#d9e0e6";
 export const SwitchFalseColorHandleBackgroundDefault = "#ffffff";
 export const SwitchTrueColorBackgroundDefault = "#2c353d";
 export const SwitchTrueColorHandleBackgroundDefault = "#ffffff";
+export const TabColorBackgroundDefault = "#ffffff";
+export const TabColorBorderDefault = "#d9e0e6";
+export const TabColorTextDefault = "#2c353d";
 export const TableColorBorderDefault = "#d9e0e6";
 export const TableTheadColorBackgroundDefault = "transparent";
 export const TableTbodyColorBackgroundDefault = "#ffffff";

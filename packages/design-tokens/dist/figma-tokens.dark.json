@@ -5855,11 +5855,11 @@
           ]
         },
         "default": {
-          "value": "{color.gray.1}",
+          "value": "{color.gray.2}",
           "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1}"
+            "value": "{color.gray.2}"
           },
           "attributes": {
             "category": "button",
@@ -7583,11 +7583,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.gray.2}",
+          "value": "{color.gray.1}",
           "filePath": "tokens/component/button/button.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.2}"
+            "value": "{color.gray.1}"
           },
           "attributes": {
             "category": "button",
@@ -8279,11 +8279,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.gray.1}",
+          "value": "{color.gray.0}",
           "filePath": "tokens/component/input.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.1}"
+            "value": "{color.gray.0}"
           },
           "attributes": {
             "category": "input",
@@ -8489,11 +8489,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.background.default}",
+          "value": "{color.gray.1}",
           "filePath": "tokens/component/panel.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.default}"
+            "value": "{color.gray.1}"
           },
           "attributes": {
             "category": "panel",
@@ -8856,6 +8856,76 @@
       }
     }
   },
+  "tab": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.gray.1}",
+          "filePath": "tokens/component/tab.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.1}"
+          },
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border}",
+          "filePath": "tokens/component/tab.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border}"
+          },
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/tab.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      }
+    }
+  },
   "table": {
     "color": {
       "border": {
@@ -9148,11 +9218,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.default}",
+          "value": "{color.gray.2}",
           "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.default}"
+            "value": "{color.gray.2}"
           },
           "attributes": {
             "category": "toolbar",
@@ -9310,11 +9380,11 @@
       },
       "text": {
         "default": {
-          "value": "{color.gray.0}",
+          "value": "{color.text.default}",
           "filePath": "tokens/component/toolbar.dark.json",
           "isSource": true,
           "original": {
-            "value": "{color.gray.0}"
+            "value": "{color.text.default}"
           },
           "attributes": {
             "category": "toolbar",

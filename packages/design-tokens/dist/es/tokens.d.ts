@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:01 GMT
  */
 
 export const ImageLogo : string;
@@ -438,6 +438,9 @@ export const SwitchFalseColorBackgroundDefault : string;
 export const SwitchFalseColorHandleBackgroundDefault : string;
 export const SwitchTrueColorBackgroundDefault : string;
 export const SwitchTrueColorHandleBackgroundDefault : string;
+export const TabColorBackgroundDefault : string;
+export const TabColorBorderDefault : string;
+export const TabColorTextDefault : string;
 export const TableColorBorderDefault : string;
 export const TableTheadColorBackgroundDefault : string;
 export const TableTbodyColorBackgroundDefault : string;

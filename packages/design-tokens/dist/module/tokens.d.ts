@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:01 GMT
  */
 
 export default tokens;
@@ -730,6 +730,19 @@ declare const tokens: {
             "default": DesignToken
           }
         }
+      }
+    }
+  },
+  "tab": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
+      },
+      "text": {
+        "default": DesignToken
       }
     }
   },

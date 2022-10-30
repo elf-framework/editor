@@ -3,7 +3,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.gray.2.value}"
+          "value": "{color.gray.1.value}"
         }
       },
       "border": {
@@ -15,7 +15,7 @@
     "hover": {
       "background": {
         "default": {
-          "value": "{color.gray.1.value}"
+          "value": "{color.gray.2.value}"
         }
       },
       "border": {

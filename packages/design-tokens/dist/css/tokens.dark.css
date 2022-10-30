@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:02 GMT
  */
 
 .theme-dark {
@@ -168,8 +168,8 @@
   --toolbar-color-text-success: var(--color-green-8);
   --toolbar-color-text-secondary: var(--color-gray-8);
   --toolbar-color-text-primary: var(--color-gray-8);
-  --toolbar-color-text-default: var(--color-gray-0);
   --toolbar-color-background-dark: var(--color-black);
+  --toolbar-color-background-default: var(--color-gray-2);
   --tag-color-border-default: var(--color-gray-3);
   --tag-color-background-default: var(--color-transparent-black-0);
   --tabstrip-color-text-disabled: var(--color-gray-3);
@@ -178,6 +178,7 @@
   --tabstrip-color-background-indicator-selected: var(--color-white);
   --tabstrip-color-background-indicator-default: var(--color-gray-2);
   --table-color-border-default: var(--color-gray-2);
+  --tab-color-background-default: var(--color-gray-1);
   --switch-true-color-handle-background-default: var(--color-gray-9);
   --switch-true-color-background-default: var(--color-gray-2);
   --switch-false-color-handle-background-default: #484848;
@@ -189,11 +190,12 @@
   --progressbar-color-active: var(--color-gray-9);
   --progressbar-color-background-default: var(--color-gray-2);
   --panel-color-border-default: #484848;
+  --panel-color-background-default: var(--color-gray-1);
   --option-menu-color-background-default: var(--color-gray-0);
   --menu-color-border-default: var(--color-gray-2);
   --menu-color-background-hover-default: var(--color-gray-1);
   --input-color-border-default: var(--color-gray-2);
-  --input-color-background-default: var(--color-gray-1);
+  --input-color-background-default: var(--color-gray-0);
   --ghost-color-background-default: var(--color-gray-2);
   --ghost-color-background-2: var(--color-transparent-white-3);
   --ghost-color-background-1: var(--color-transparent-white-1);
@@ -212,7 +214,7 @@
   --button-disabled-border-default: var(--color-gray-2);
   --button-disabled-background-default: var(--color-gray-1);
   --button-color-border-default: var(--color-gray-3);
-  --button-color-background-default: var(--color-gray-2);
+  --button-color-background-default: var(--color-gray-1);
   --button-active-text-warning: var(--color-white);
   --button-active-text-success: var(--color-white);
   --button-active-text-secondary: var(--color-white);
@@ -284,7 +286,7 @@
   --button-hover-background-success: var(--color-green-2);
   --button-hover-background-secondary: var(--color-gray-3);
   --button-hover-background-primary: var(--color-blue-4);
-  --button-hover-background-default: var(--color-gray-1);
+  --button-hover-background-default: var(--color-gray-2);
   --button-hover-background-info: var(--color-blue-4);
   --button-hover-background-danger: var(--color-red-2);
   --button-hover-background-dark: var(--color-gray-1);
@@ -403,19 +405,20 @@
   --treeview-item-color-text-default: var(--color-text-default);
   --tooltip-color-text-default: var(--color-text-header-default);
   --tooltip-color-background-default: var(--color-background-default);
+  --toolbar-color-text-default: var(--color-text-default);
   --toolbar-color-background-danger: var(--color-danger);
   --toolbar-color-background-warning: var(--color-warning);
   --toolbar-color-background-info: var(--color-info);
   --toolbar-color-background-success: var(--color-success);
   --toolbar-color-background-secondary: var(--color-secondary);
   --toolbar-color-background-primary: var(--color-primary);
-  --toolbar-color-background-default: var(--color-default);
   --tag-color-text-default: var(--color-text-default);
   --table-tbody-color-background-default: var(--color-background-default);
+  --tab-color-text-default: var(--color-text-default);
+  --tab-color-border-default: var(--color-border);
   --progressbar-color-text-default: var(--color-text-default);
   --popover-color-background-default: var(--color-background-default);
   --panel-color-text-default: var(--color-text-default);
-  --panel-color-background-default: var(--color-background-default);
   --menu-color-text-default: var(--color-text-default);
   --menu-color-background-default: var(--color-background-default);
   --input-color-text-default: var(--color-text-default);

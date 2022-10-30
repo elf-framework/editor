@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.44
+
+### Patch Changes
+
+- update dark style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.44
+
 ## 0.0.43
 
 ### Patch Changes

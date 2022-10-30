@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:01 GMT
  */
 
 module.exports = {
@@ -9246,6 +9246,79 @@ module.exports = {
               ]
             }
           }
+        }
+      }
+    }
+  },
+  "tab": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/tab.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "TabColorBackgroundDefault",
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/tab.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.value}"
+          },
+          "name": "TabColorBorderDefault",
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/tab.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "TabColorTextDefault",
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "text",
+            "default"
+          ]
         }
       }
     }

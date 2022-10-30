@@ -385,7 +385,7 @@
         "dark": "#282828",
         "danger": "#a12b2b",
         "info": "#429bff",
-        "default": "#282828",
+        "default": "#484848",
         "primary": "#429bff",
         "secondary": "#686868",
         "success": "#067852",
@@ -498,7 +498,7 @@
     },
     "color": {
       "background": {
-        "default": "#484848"
+        "default": "#282828"
       },
       "border": {
         "default": "#686868"
@@ -603,7 +603,7 @@
   "input": {
     "color": {
       "background": {
-        "default": "#282828"
+        "default": "#181818"
       },
       "text": {
         "default": "#f8f8f8"
@@ -642,7 +642,7 @@
   "panel": {
     "color": {
       "background": {
-        "default": "#01010a"
+        "default": "#282828"
       },
       "text": {
         "default": "#f8f8f8"
@@ -716,6 +716,19 @@
       }
     }
   },
+  "tab": {
+    "color": {
+      "background": {
+        "default": "#282828"
+      },
+      "border": {
+        "default": "#484848"
+      },
+      "text": {
+        "default": "#f8f8f8"
+      }
+    }
+  },
   "table": {
     "color": {
       "border": {
@@ -773,7 +786,7 @@
   "toolbar": {
     "color": {
       "background": {
-        "default": "#ffffff",
+        "default": "#484848",
         "primary": "#1273e6",
         "secondary": "#484848",
         "success": "#009f6a",
@@ -783,7 +796,7 @@
         "dark": "#000000"
       },
       "text": {
-        "default": "#181818",
+        "default": "#f8f8f8",
         "primary": "#f0f0f0",
         "secondary": "#f0f0f0",
         "success": "#d6fff1",

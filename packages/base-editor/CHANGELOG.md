@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.45
+
+### Patch Changes
+
+- update toggle.theme command with dom
+
 ## 0.0.39
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Oct 2022 10:22:20 GMT
+ * Generated on Sun, 30 Oct 2022 16:05:01 GMT
  */
 
 :root {
@@ -570,6 +570,9 @@
   --tag-color-text-default: var(--color-text-default);
   --tabstrip-color-text-selected: var(--color-text-default);
   --table-tbody-color-background-default: var(--color-background-default);
+  --tab-color-text-default: var(--color-text-default);
+  --tab-color-border-default: var(--color-border);
+  --tab-color-background-default: var(--color-background-default);
   --progressbar-color-text-default: var(--color-text-default);
   --popover-color-background-default: var(--color-background-default);
   --panel-color-text-default: var(--color-text-default);

@@ -1,0 +1,21 @@
+{
+  "tab": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border.value}"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      }
+    }
+  }
+}

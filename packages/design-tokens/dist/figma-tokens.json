@@ -8810,6 +8810,76 @@
       }
     }
   },
+  "tab": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/tab.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border}",
+          "filePath": "tokens/component/tab.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border}"
+          },
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/tab.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "tab",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "tab",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      }
+    }
+  },
   "table": {
     "color": {
       "border": {
