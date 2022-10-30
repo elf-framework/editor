@@ -1,5 +1,15 @@
 import { useComponentRender, useEffect } from "@elf-framework/sapa";
 
+function draw(ctx) {
+  const canvas = ctx.canvas;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(100, 100, 200, 200);
+  ctx.clearRect(120, 120, 160, 160);
+  ctx.strokeRect(160, 160, 80, 80);
+
+  requestAnimationFrame(() => draw(ctx));
+}
+
 export function Canvas3D() {
   useComponentRender("resize.window");
 
@@ -17,12 +27,10 @@ export function Canvas3D() {
       this.$el.attr("width", rect.width * ratio);
       this.$el.attr("height", rect.height * ratio);
 
-      ctx.scale(ratio, ratio);
+      // ctx.scale(ratio, ratio);
     }
 
-    ctx.fillRect(100, 100, 200, 200);
-    ctx.clearRect(120, 120, 160, 160);
-    ctx.strokeRect(160, 160, 80, 80);
+    requestAnimationFrame(() => draw(ctx));
   }, [window.innerWidth, window.innerHeight]);
 
   return (
