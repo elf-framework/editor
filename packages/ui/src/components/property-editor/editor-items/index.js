@@ -9,3 +9,4 @@ export * from "./BooleanItem";
 export * from "./SwitchItem";
 export * from "./TabContainerItem";
 export * from "./SliderItem";
+export * from "./DividerItem";

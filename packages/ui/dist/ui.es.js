@@ -1368,7 +1368,9 @@ registerComponent("checkbox-group", CheckboxGroup);
 registerComponent("CheckboxGroup", CheckboxGroup);
 const cssProperties$G = makeCssVariablePrefixMap("--elf--divider", {
   color: true,
-  margin: true
+  margin: true,
+  height: true,
+  borderStyle: true
 });
 class Divider extends UIElement {
   template() {
@@ -5541,6 +5543,13 @@ function SliderItem({ value, item, style: style2, onChange }) {
     valuePlacement: "bottom"
   });
 }
+function DividerItem({ item }) {
+  const { margin = 10, style: style2 } = item;
+  return /* @__PURE__ */ createElementJsx(Divider, {
+    style: style2,
+    margin
+  });
+}
 const cssProperties$j = makeCssVariablePrefixMap("--elf--property-editor", {
   backgroundColor: true,
   color: true,
@@ -5562,7 +5571,8 @@ const predefinedPlugins = {
   boolean: BooleanItem,
   switch: SwitchItem,
   tab: TabContainerItem,
-  slider: SliderItem
+  slider: SliderItem,
+  divider: DividerItem
 };
 function getValueByPath(obj, path) {
   if (!path) {
@@ -5583,6 +5593,52 @@ function setValueByPath(obj, path, value) {
     return acc[key];
   }, obj);
   target[lastKey] = value;
+}
+function makeDividerStyle(item) {
+  if (item === "-") {
+    item = {
+      type: "divider"
+    };
+  } else if (item === "--") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "dashed"
+      }
+    };
+  } else if (item === "*") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "dotted"
+      }
+    };
+  } else if (item === "=") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "double",
+        height: 3
+      }
+    };
+  } else if (item === "==") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "double",
+        height: 5
+      }
+    };
+  } else if (item === "===") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "double",
+        height: 7
+      }
+    };
+  }
+  return item;
 }
 class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
@@ -5678,6 +5734,13 @@ class PropertyEditor extends UIElement {
     );
   }
   makeInspectorItem(item, index) {
+    item = makeDividerStyle(item);
+    if (typeof item === "string" || typeof item === "number") {
+      item = {
+        type: "label",
+        label: item
+      };
+    }
     if (item.type === "label") {
       return /* @__PURE__ */ createElementJsx("div", {
         class: "elf--property-editor-item label"

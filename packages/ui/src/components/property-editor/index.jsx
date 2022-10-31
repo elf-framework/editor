@@ -12,6 +12,7 @@ import {
   BooleanItem,
   ButtonItem,
   ColorItem,
+  DividerItem,
   GridItem,
   NumberInputItem,
   SelectItem,
@@ -45,6 +46,7 @@ const predefinedPlugins = {
   switch: SwitchItem,
   tab: TabContainerItem,
   slider: SliderItem,
+  divider: DividerItem,
 };
 
 function getValueByPath(obj, path) {
@@ -75,9 +77,58 @@ function setValueByPath(obj, path, value) {
   target[lastKey] = value;
 }
 
+function makeDividerStyle(item) {
+  if (item === "-") {
+    item = {
+      type: "divider",
+    };
+  } else if (item === "--") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "dashed",
+      },
+    };
+  } else if (item === "*") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "dotted",
+      },
+    };
+  } else if (item === "=") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "double",
+        height: 3,
+      },
+    };
+  } else if (item === "==") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "double",
+        height: 5,
+      },
+    };
+  } else if (item === "===") {
+    item = {
+      type: "divider",
+      style: {
+        borderStyle: "double",
+        height: 7,
+      },
+    };
+  }
+
+  return item;
+}
+
 export class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
     const { plugins = {}, sync } = this.props;
+
     const { key, value, label, type } = item;
     let oldValue = getValueByPath(this.state.value, key);
 
@@ -193,6 +244,15 @@ export class PropertyEditor extends UIElement {
   }
 
   makeInspectorItem(item, index) {
+    item = makeDividerStyle(item);
+
+    if (typeof item === "string" || typeof item === "number") {
+      item = {
+        type: "label",
+        label: item,
+      };
+    }
+
     if (item.type === "label") {
       return <div class="elf--property-editor-item label">{item.label}</div>;
     }

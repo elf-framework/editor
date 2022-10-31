@@ -100,12 +100,12 @@ declare module "@elf-framework/ui" {
     fontWeight?: string;
     gap?: string;
     grow?: string;
-    height?: string;
+    height?: string | number;
     justifyContent?: string;
     left?: string;
     letterSpacing?: string;
     lineHeight?: string;
-    margin?: string;
+    margin?: string | number | number[] | string[];
     marginBlock?: string;
     marginBlockEnd?: string;
     marginBlockStart?: string;
@@ -1763,6 +1763,25 @@ declare module "@elf-framework/ui" {
     onChange?: (value: string) => void;
   }
 
+  interface DividerSchema extends BaseSchema {
+    type: "divider";
+    margin?: number;
+    style: {
+      color?: string;
+      height?: number;
+      margin?: number;
+      borderStyle?:
+        | "solid"
+        | "dashed"
+        | "dotted"
+        | "double"
+        | "groove"
+        | "ridge"
+        | "inset"
+        | "outset";
+    };
+  }
+
   interface BooleanSchema extends BaseSchema {
     type: "boolean";
     value: boolean;
@@ -1785,7 +1804,6 @@ declare module "@elf-framework/ui" {
     step?: number;
     onChange?: (value: number) => void;
   }
-
 
   interface DateSchema extends BaseSchema {
     type: "date";
@@ -1827,6 +1845,13 @@ declare module "@elf-framework/ui" {
   }
 
   type Schema =
+    | "-"
+    | "--"
+    | "="
+    | "=="
+    | "==="
+    | "*"
+    | DividerSchema
     | TextSchema
     | BooleanSchema
     | NumberSchema

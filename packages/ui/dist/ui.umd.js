@@ -1370,7 +1370,9 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("CheckboxGroup", CheckboxGroup);
   const cssProperties$G = makeCssVariablePrefixMap("--elf--divider", {
     color: true,
-    margin: true
+    margin: true,
+    height: true,
+    borderStyle: true
   });
   class Divider extends sapa.UIElement {
     template() {
@@ -5543,6 +5545,13 @@ var __privateMethod = (obj, member, method) => {
       valuePlacement: "bottom"
     });
   }
+  function DividerItem({ item }) {
+    const { margin = 10, style: style2 } = item;
+    return /* @__PURE__ */ sapa.createElementJsx(Divider, {
+      style: style2,
+      margin
+    });
+  }
   const cssProperties$j = makeCssVariablePrefixMap("--elf--property-editor", {
     backgroundColor: true,
     color: true,
@@ -5564,7 +5573,8 @@ var __privateMethod = (obj, member, method) => {
     boolean: BooleanItem,
     switch: SwitchItem,
     tab: TabContainerItem,
-    slider: SliderItem
+    slider: SliderItem,
+    divider: DividerItem
   };
   function getValueByPath(obj, path) {
     if (!path) {
@@ -5585,6 +5595,52 @@ var __privateMethod = (obj, member, method) => {
       return acc[key];
     }, obj);
     target[lastKey] = value;
+  }
+  function makeDividerStyle(item) {
+    if (item === "-") {
+      item = {
+        type: "divider"
+      };
+    } else if (item === "--") {
+      item = {
+        type: "divider",
+        style: {
+          borderStyle: "dashed"
+        }
+      };
+    } else if (item === "*") {
+      item = {
+        type: "divider",
+        style: {
+          borderStyle: "dotted"
+        }
+      };
+    } else if (item === "=") {
+      item = {
+        type: "divider",
+        style: {
+          borderStyle: "double",
+          height: 3
+        }
+      };
+    } else if (item === "==") {
+      item = {
+        type: "divider",
+        style: {
+          borderStyle: "double",
+          height: 5
+        }
+      };
+    } else if (item === "===") {
+      item = {
+        type: "divider",
+        style: {
+          borderStyle: "double",
+          height: 7
+        }
+      };
+    }
+    return item;
   }
   class PropertyEditor extends sapa.UIElement {
     makeEditorItem(item, index) {
@@ -5680,6 +5736,13 @@ var __privateMethod = (obj, member, method) => {
       );
     }
     makeInspectorItem(item, index) {
+      item = makeDividerStyle(item);
+      if (typeof item === "string" || typeof item === "number") {
+        item = {
+          type: "label",
+          label: item
+        };
+      }
       if (item.type === "label") {
         return /* @__PURE__ */ sapa.createElementJsx("div", {
           class: "elf--property-editor-item label"

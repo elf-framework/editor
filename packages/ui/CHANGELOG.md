@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.49
+
+### Patch Changes
+
+- update divier item in property editor
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.49
+
 ## 0.0.48
 
 ### Patch Changes

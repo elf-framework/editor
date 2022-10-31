@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.49
+
+### Patch Changes
+
+- update divier item in property editor
+
 ## 0.0.48
 
 ### Patch Changes

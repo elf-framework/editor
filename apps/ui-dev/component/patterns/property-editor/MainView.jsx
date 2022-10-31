@@ -43,10 +43,15 @@ export function MainView() {
                   console.log(value);
                 },
               },
-              {
-                type: "label",
-                label: value.active ? "active" : "inactive",
-              },
+              "-",
+
+              value.active ? "active" : "inactive",
+
+              "*",
+              "--",
+              "=",
+              "==",
+              "===",
               {
                 type: "switch",
                 variant: "toggle",

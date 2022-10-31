@@ -2,19 +2,21 @@
 
     --elf--divider-color: var(--divider-color-border-default);
     --elf--divider-margin: 10px;
+    --elf--divider-height: 1px;
+    --elf--divider-border-style: solid;
 
-    border-top: 1px solid;
+    border-top: var(--elf--divider-height) var(--elf--divider-border-style);
     border-top-color: var(--elf--divider-color);
     margin: var(--elf--divider-margin) auto;
     width: 100%;
     height: auto;
 
     &.medium {
-        border-top-width: 3px;
+        --elf--divider-height: 3px;
     }
 
     &.large {
-        border-top-width: 5px;
+        --elf--divider-height: 5px;
         --elf--divider-color: var(--color-gray-9);
     }
 

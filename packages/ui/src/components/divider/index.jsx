@@ -7,6 +7,8 @@ import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 const cssProperties = makeCssVariablePrefixMap("--elf--divider", {
   color: true,
   margin: true,
+  height: true,
+  borderStyle: true,
 });
 
 export class Divider extends UIElement {
