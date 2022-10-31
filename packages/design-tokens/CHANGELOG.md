@@ -1,5 +1,17 @@
 # @elf-framework/design-tokens
 
+## 0.0.48
+
+### Patch Changes
+
+- support key path at property editor
+
+## 0.0.47
+
+### Patch Changes
+
+- remove log
+
 ## 0.0.44
 
 ### Patch Changes

@@ -3045,7 +3045,7 @@ class InputEditor extends UIElement {
       disabled,
       readonly: readOnly ? "readonly" : void 0,
       placeholder: placeholder || "",
-      value: value || "",
+      value: typeof value === "undefined" ? "" : value,
       min,
       max,
       step
@@ -5127,7 +5127,7 @@ function NumberInputItem({ value, item, style: style2, onChange }) {
     width: "100%",
     style: style2,
     onInput: (e) => {
-      onChange && onChange(e.target.value);
+      onChange && onChange(Number(e.target.value));
     }
   });
 }
@@ -5564,11 +5564,31 @@ const predefinedPlugins = {
   tab: TabContainerItem,
   slider: SliderItem
 };
+function getValueByPath(obj, path) {
+  if (!path) {
+    return obj;
+  }
+  const pathArray = path.split(".");
+  return pathArray.reduce((acc, key) => {
+    return acc[key];
+  }, obj);
+}
+function setValueByPath(obj, path, value) {
+  if (!path) {
+    return obj;
+  }
+  const pathArray = path.split(".");
+  const lastKey = pathArray.pop();
+  const target = pathArray.reduce((acc, key) => {
+    return acc[key];
+  }, obj);
+  target[lastKey] = value;
+}
 class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
     const { plugins = {}, sync } = this.props;
     const { key, value, label, type } = item;
-    let oldValue = this.state.value[key];
+    let oldValue = getValueByPath(this.state.value, key);
     if (typeof value !== "undefined") {
       if (isFunction(value)) {
         oldValue = value(this.state.value);
@@ -5609,11 +5629,9 @@ class PropertyEditor extends UIElement {
           if (isFunction(this.props.onChange)) {
             this.props.onChange(key, newValue, this);
           }
+          setValueByPath(this.state.value, key, newValue);
           if (sync) {
-            this.state.value[key] = newValue;
             this.refresh();
-          } else {
-            this.state.value[key] = newValue;
           }
         }
       });

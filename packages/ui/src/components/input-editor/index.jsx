@@ -93,7 +93,7 @@ export class InputEditor extends UIElement {
       disabled,
       readonly: readOnly ? "readonly" : undefined,
       placeholder: placeholder || "",
-      value: value || "",
+      value: typeof value === "undefined" ? "" : value,
       min,
       max,
       step,

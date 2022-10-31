@@ -7,7 +7,6 @@ import {
   RESIZE,
   SUBSCRIBE,
   SUBSCRIBE_SELF,
-  THROTTLE,
   useComponentRender,
   useMemo,
 } from "@elf-framework/sapa";

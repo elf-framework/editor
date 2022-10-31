@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 0.0.47
+
+### Patch Changes
+
+- remove log
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.47
+
 ## 0.0.45
 
 ### Patch Changes

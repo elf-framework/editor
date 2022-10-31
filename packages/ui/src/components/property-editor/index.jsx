@@ -47,11 +47,39 @@ const predefinedPlugins = {
   slider: SliderItem,
 };
 
+function getValueByPath(obj, path) {
+  if (!path) {
+    return obj;
+  }
+
+  const pathArray = path.split(".");
+
+  return pathArray.reduce((acc, key) => {
+    return acc[key];
+  }, obj);
+}
+
+function setValueByPath(obj, path, value) {
+  if (!path) {
+    return obj;
+  }
+
+  const pathArray = path.split(".");
+
+  const lastKey = pathArray.pop();
+
+  const target = pathArray.reduce((acc, key) => {
+    return acc[key];
+  }, obj);
+
+  target[lastKey] = value;
+}
+
 export class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
     const { plugins = {}, sync } = this.props;
     const { key, value, label, type } = item;
-    let oldValue = this.state.value[key];
+    let oldValue = getValueByPath(this.state.value, key);
 
     if (typeof value !== "undefined") {
       if (isFunction(value)) {
@@ -105,12 +133,11 @@ export class PropertyEditor extends UIElement {
               this.props.onChange(key, newValue, this);
             }
 
+            setValueByPath(this.state.value, key, newValue);
+
             // sync 가 true 이면 전체 데이타를 다시 업데이트 한다.
             if (sync) {
-              this.state.value[key] = newValue;
               this.refresh();
-            } else {
-              this.state.value[key] = newValue;
             }
           }}
         />

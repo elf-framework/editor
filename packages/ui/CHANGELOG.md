@@ -1,5 +1,23 @@
 # @elf-framework/ui
 
+## 0.0.48
+
+### Patch Changes
+
+- support key path at property editor
+
+## 0.0.47
+
+### Patch Changes
+
+- remove log
+
+## 0.0.46
+
+### Patch Changes
+
+- test log
+
 ## 0.0.44
 
 ### Patch Changes

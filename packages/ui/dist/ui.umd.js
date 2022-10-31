@@ -3047,7 +3047,7 @@ var __privateMethod = (obj, member, method) => {
         disabled,
         readonly: readOnly ? "readonly" : void 0,
         placeholder: placeholder || "",
-        value: value || "",
+        value: typeof value === "undefined" ? "" : value,
         min,
         max,
         step
@@ -5129,7 +5129,7 @@ var __privateMethod = (obj, member, method) => {
       width: "100%",
       style: style2,
       onInput: (e) => {
-        onChange && onChange(e.target.value);
+        onChange && onChange(Number(e.target.value));
       }
     });
   }
@@ -5566,11 +5566,31 @@ var __privateMethod = (obj, member, method) => {
     tab: TabContainerItem,
     slider: SliderItem
   };
+  function getValueByPath(obj, path) {
+    if (!path) {
+      return obj;
+    }
+    const pathArray = path.split(".");
+    return pathArray.reduce((acc, key) => {
+      return acc[key];
+    }, obj);
+  }
+  function setValueByPath(obj, path, value) {
+    if (!path) {
+      return obj;
+    }
+    const pathArray = path.split(".");
+    const lastKey = pathArray.pop();
+    const target = pathArray.reduce((acc, key) => {
+      return acc[key];
+    }, obj);
+    target[lastKey] = value;
+  }
   class PropertyEditor extends sapa.UIElement {
     makeEditorItem(item, index) {
       const { plugins = {}, sync } = this.props;
       const { key, value, label, type } = item;
-      let oldValue = this.state.value[key];
+      let oldValue = getValueByPath(this.state.value, key);
       if (typeof value !== "undefined") {
         if (sapa.isFunction(value)) {
           oldValue = value(this.state.value);
@@ -5611,11 +5631,9 @@ var __privateMethod = (obj, member, method) => {
             if (sapa.isFunction(this.props.onChange)) {
               this.props.onChange(key, newValue, this);
             }
+            setValueByPath(this.state.value, key, newValue);
             if (sync) {
-              this.state.value[key] = newValue;
               this.refresh();
-            } else {
-              this.state.value[key] = newValue;
             }
           }
         });

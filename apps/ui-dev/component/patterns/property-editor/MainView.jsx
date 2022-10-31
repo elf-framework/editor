@@ -30,10 +30,19 @@ export function MainView() {
             gender: "male",
             background: "yellow",
             active: false,
+            translate: [0, 0, 0],
           }}
           sync
           inspector={(value) => {
             return [
+              {
+                type: "number",
+                key: "translate.0",
+                label: "Translate",
+                onChange: (value) => {
+                  console.log(value);
+                },
+              },
               {
                 type: "label",
                 label: value.active ? "active" : "inactive",
@@ -184,7 +193,7 @@ export function MainView() {
             ];
           }}
           onChange={(key, value, editor) => {
-            // console.log(key, value, editor.getValue());
+            console.log(key, value, editor.getValue());
           }}
         />
       </div>

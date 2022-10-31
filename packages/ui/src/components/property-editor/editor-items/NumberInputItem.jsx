@@ -11,7 +11,7 @@ export function NumberInputItem({ value, item, style, onChange }) {
       width="100%"
       style={style}
       onInput={(e) => {
-        onChange && onChange(e.target.value);
+        onChange && onChange(Number(e.target.value));
       }}
     />
   );
