@@ -9,10 +9,11 @@ layout: BaseEditorLayout
 
 The internalization (i18n) feature allows you to localize your editor. 
 
-## How to use
+## How to use 
+
+### in plugin 
 
 ```jsx
-
 function Editor () {
     return <BaseEditor plugins={[
         function (editorContext) {
@@ -22,5 +23,16 @@ function Editor () {
         }
     ]}>
 }
+```
 
+### in component
+
+```jsx
+function Editor () {
+    const { i18n } = useEditor();
+
+    const appName = i18n.get("app.name");
+
+    return <BaseEditor title={appName} />
+}
 ```
