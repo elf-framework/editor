@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.53
+
+### Patch Changes
+
+- update design token values
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.53
+
 ## 0.0.49
 
 ### Patch Changes

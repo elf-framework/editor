@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 31 Oct 2022 12:37:55 GMT
+ * Generated on Tue, 01 Nov 2022 12:11:15 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -438,7 +438,7 @@ export const SwitchFalseColorBackgroundDefault = "#d9e0e6";
 export const SwitchFalseColorHandleBackgroundDefault = "#ffffff";
 export const SwitchTrueColorBackgroundDefault = "#2c353d";
 export const SwitchTrueColorHandleBackgroundDefault = "#ffffff";
-export const TabColorBackgroundDefault = "#ffffff";
+export const TabColorBackgroundDefault = "transparent";
 export const TabColorBorderDefault = "#d9e0e6";
 export const TabColorTextDefault = "#2c353d";
 export const TableColorBorderDefault = "#d9e0e6";
@@ -456,22 +456,15 @@ export const ToastShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px
 export const ToolbarColorBackgroundDefault = "#ffffff";
 export const ToolbarColorBackgroundPrimary = "#1273e6";
 export const ToolbarColorBackgroundSecondary = "#818e9a";
-export const ToolbarColorBackgroundSuccess = "#009f6a";
-export const ToolbarColorBackgroundInfo = "#429bff";
-export const ToolbarColorBackgroundWarning = "#e16f24";
-export const ToolbarColorBackgroundDanger = "#d9363e";
 export const ToolbarColorBackgroundDark = "#2c353d";
 export const ToolbarColorTextDefault = "#39444d";
 export const ToolbarColorTextPrimary = "#39444d";
 export const ToolbarColorTextSecondary = "#39444d";
-export const ToolbarColorTextSuccess = "#1b5441";
-export const ToolbarColorTextDanger = "#80252a";
-export const ToolbarColorTextWarning = "#5c2200";
-export const ToolbarColorTextInfo = "#1a497d";
-export const ToolbarColorTextTitle = "#2c353d";
-export const ToolbarColorTextSubtitle = "#626f7a";
 export const ToolbarColorTextLink = "#1a497d";
 export const ToolbarColorTextDisabled = "#818e9a";
+export const ToolsColorBackgroundDefault = "#ffffff";
+export const ToolsColorHoverBackgroundDefault = "#000000";
+export const ToolsColorActiveBackgroundDefault = "#000000";
 export const TooltipColorBackgroundDefault = "#ffffff";
 export const TooltipColorTextDefault = "#2c353d";
 export const TreeviewItemColorBackgroundDefault = "transparent";

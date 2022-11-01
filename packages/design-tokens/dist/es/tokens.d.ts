@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 31 Oct 2022 12:37:55 GMT
+ * Generated on Tue, 01 Nov 2022 12:11:15 GMT
  */
 
 export const ImageLogo : string;
@@ -456,22 +456,15 @@ export const ToastShadowDefault : string;
 export const ToolbarColorBackgroundDefault : string;
 export const ToolbarColorBackgroundPrimary : string;
 export const ToolbarColorBackgroundSecondary : string;
-export const ToolbarColorBackgroundSuccess : string;
-export const ToolbarColorBackgroundInfo : string;
-export const ToolbarColorBackgroundWarning : string;
-export const ToolbarColorBackgroundDanger : string;
 export const ToolbarColorBackgroundDark : string;
 export const ToolbarColorTextDefault : string;
 export const ToolbarColorTextPrimary : string;
 export const ToolbarColorTextSecondary : string;
-export const ToolbarColorTextSuccess : string;
-export const ToolbarColorTextDanger : string;
-export const ToolbarColorTextWarning : string;
-export const ToolbarColorTextInfo : string;
-export const ToolbarColorTextTitle : string;
-export const ToolbarColorTextSubtitle : string;
 export const ToolbarColorTextLink : string;
 export const ToolbarColorTextDisabled : string;
+export const ToolsColorBackgroundDefault : string;
+export const ToolsColorHoverBackgroundDefault : string;
+export const ToolsColorActiveBackgroundDefault : string;
 export const TooltipColorBackgroundDefault : string;
 export const TooltipColorTextDefault : string;
 export const TreeviewItemColorBackgroundDefault : string;

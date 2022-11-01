@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 31 Oct 2022 12:37:55 GMT
+ * Generated on Tue, 01 Nov 2022 12:11:15 GMT
  */
 
 export default tokens;
@@ -806,24 +806,31 @@ declare const tokens: {
         "default": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
-        "success": DesignToken,
-        "info": DesignToken,
-        "warning": DesignToken,
-        "danger": DesignToken,
         "dark": DesignToken
       },
       "text": {
         "default": DesignToken,
         "primary": DesignToken,
         "secondary": DesignToken,
-        "success": DesignToken,
-        "danger": DesignToken,
-        "warning": DesignToken,
-        "info": DesignToken,
-        "title": DesignToken,
-        "subtitle": DesignToken,
         "link": DesignToken,
         "disabled": DesignToken
+      }
+    }
+  },
+  "tools": {
+    "color": {
+      "background": {
+        "default": DesignToken
+      },
+      "hover": {
+        "background": {
+          "default": DesignToken
+        }
+      },
+      "active": {
+        "background": {
+          "default": DesignToken
+        }
       }
     }
   },

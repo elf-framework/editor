@@ -8814,11 +8814,11 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.background.default}",
+          "value": "transparent",
           "filePath": "tokens/component/tab.json",
           "isSource": true,
           "original": {
-            "value": "{color.background.default}"
+            "value": "transparent"
           },
           "attributes": {
             "category": "tab",
@@ -9231,86 +9231,6 @@
             "secondary"
           ]
         },
-        "success": {
-          "value": "{color.success}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.success}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "background",
-            "subitem": "success"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "background",
-            "success"
-          ]
-        },
-        "info": {
-          "value": "{color.info}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.info}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "background",
-            "subitem": "info"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "background",
-            "info"
-          ]
-        },
-        "warning": {
-          "value": "{color.warning}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.warning}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "background",
-            "subitem": "warning"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "background",
-            "warning"
-          ]
-        },
-        "danger": {
-          "value": "{color.danger}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.danger}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "background",
-            "subitem": "danger"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "background",
-            "danger"
-          ]
-        },
         "dark": {
           "value": "{color.black}",
           "filePath": "tokens/component/toolbar.json",
@@ -9393,126 +9313,6 @@
             "secondary"
           ]
         },
-        "success": {
-          "value": "{color.green.8}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.green.8}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "text",
-            "subitem": "success"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "text",
-            "success"
-          ]
-        },
-        "danger": {
-          "value": "{color.red.8}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.red.8}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "text",
-            "subitem": "danger"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "text",
-            "danger"
-          ]
-        },
-        "warning": {
-          "value": "{color.orange.8}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.orange.8}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "text",
-            "subitem": "warning"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "text",
-            "warning"
-          ]
-        },
-        "info": {
-          "value": "{color.blue.8}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.blue.8}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "text",
-            "subitem": "info"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "text",
-            "info"
-          ]
-        },
-        "title": {
-          "value": "{color.black}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.black}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "text",
-            "subitem": "title"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "text",
-            "title"
-          ]
-        },
-        "subtitle": {
-          "value": "{color.gray.6}",
-          "filePath": "tokens/component/toolbar.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.6}"
-          },
-          "attributes": {
-            "category": "toolbar",
-            "type": "color",
-            "item": "text",
-            "subitem": "subtitle"
-          },
-          "path": [
-            "toolbar",
-            "color",
-            "text",
-            "subtitle"
-          ]
-        },
         "link": {
           "value": "{color.blue.8}",
           "filePath": "tokens/component/toolbar.json",
@@ -9552,6 +9352,84 @@
             "text",
             "disabled"
           ]
+        }
+      }
+    }
+  },
+  "tools": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/tools.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "tools",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "tools",
+            "color",
+            "background",
+            "default"
+          ]
+        }
+      },
+      "hover": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.black.1}",
+            "filePath": "tokens/component/tools.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.transparent.black.1}"
+            },
+            "attributes": {
+              "category": "tools",
+              "type": "color",
+              "item": "hover",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "tools",
+              "color",
+              "hover",
+              "background",
+              "default"
+            ]
+          }
+        }
+      },
+      "active": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.black.2}",
+            "filePath": "tokens/component/tools.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.transparent.black.2}"
+            },
+            "attributes": {
+              "category": "tools",
+              "type": "color",
+              "item": "active",
+              "subitem": "background",
+              "state": "default"
+            },
+            "path": [
+              "tools",
+              "color",
+              "active",
+              "background",
+              "default"
+            ]
+          }
         }
       }
     }

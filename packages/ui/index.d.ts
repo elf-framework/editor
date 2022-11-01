@@ -1111,7 +1111,9 @@ declare module "@elf-framework/ui" {
     collapsed?: boolean;
     group?: string;
     icon?: string;
-    content?: any;
+    content?: ContentType;
+    lockIcon?: ContentType;
+    visibleIcon?: ContentType;
     onClick?: (event: PointerEvent) => void;
     onDoubleClick?: (event: PointerEvent) => void;
     onContextMenu?: (event: PointerEvent) => void;
@@ -1161,6 +1163,7 @@ declare module "@elf-framework/ui" {
   }
   export class ColorMixer extends UIElement {
     props: ColorMixerProps & CommonStyle;
+    updateColor: (color: string) => void;
   }
 
   export type OpacityType = {

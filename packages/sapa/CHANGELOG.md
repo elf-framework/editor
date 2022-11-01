@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.51
+
+### Patch Changes
+
+- update useComponentRender options
+
 ## 0.0.41
 
 ### Patch Changes

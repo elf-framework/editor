@@ -3228,7 +3228,7 @@ var __privateMethod = (obj, member, method) => {
         class: "elf--input-opacity"
       }, /* @__PURE__ */ sapa.createElementJsx("input", {
         class: "opacity",
-        value: `${parsedColor.a * 100}%`,
+        value: `${Math.round(parsedColor.a * 100 * 100) / 100}%`,
         onKeyUp: this.keyup
       })));
     }

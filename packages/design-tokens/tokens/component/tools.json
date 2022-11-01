@@ -1,0 +1,25 @@
+{
+  "tools": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default.value}"
+        }
+      },
+      "hover": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.black.1.value}"
+          }
+        }
+      },
+      "active": {
+        "background": {
+          "default": {
+            "value": "{color.transparent.black.2.value}"
+          }
+        }
+      }
+    }
+  }
+}

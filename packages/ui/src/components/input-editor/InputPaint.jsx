@@ -116,7 +116,7 @@ export class InputPaint extends UIElement {
           <div class="elf--input-opacity">
             <input
               class="opacity"
-              value={`${parsedColor.a * 100}%`}
+              value={`${Math.round(parsedColor.a * 100 * 100) / 100}%`}
               onKeyUp={this.keyup}
             />
           </div>

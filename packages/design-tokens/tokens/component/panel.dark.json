@@ -3,7 +3,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "{color.gray.1.value}"
+          "value": "{color.gray.0.value}"
         }
       },
       "text": {

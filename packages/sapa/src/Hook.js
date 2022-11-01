@@ -325,12 +325,25 @@ export function useSubscribe(
   );
 }
 
-export function useComponentRender(name) {
+export function useComponentRender(
+  name,
+  options = {
+    debounce: 0,
+    throttle: 0,
+    isSelf: false,
+  }
+) {
   const component = getCurrentComponent();
 
-  return component.useSubscribe(name, () => {
-    useRender(component);
-  });
+  return component.useSubscribe(
+    name,
+    () => {
+      useRender(component);
+    },
+    options.debounce,
+    options.throttle,
+    options.isSelf
+  );
 }
 
 export function useSelf(

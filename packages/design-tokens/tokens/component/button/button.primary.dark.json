@@ -54,7 +54,7 @@
     "selected": {
       "background": {
         "primary": {
-          "value": "{color.blue.1.value}"
+          "value": "{color.blue.3.value}"
         }
       },
       "border": {

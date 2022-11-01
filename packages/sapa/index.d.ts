@@ -543,7 +543,15 @@ declare module "@elf-framework/sapa" {
     throttleSecond: number,
     isSelf: boolean
   ): () => void;
-  export function useComponentRender(name: string): void;
+  interface RenderOptions {
+    debounc?: number;
+    throttle?: number;
+    isSelf?: boolean;
+  }
+  export function useComponentRender(
+    name: string,
+    options?: RenderOptions
+  ): void;
   export function useSelf(
     name: string,
     callback: () => void,

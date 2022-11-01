@@ -16,7 +16,6 @@ export function RightTab() {
     >
       <SamplePanel />
       <Divider height={1} margin={0} />
-      <SamplePanel />
     </div>
   );
 }

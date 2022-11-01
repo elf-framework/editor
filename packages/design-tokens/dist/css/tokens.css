@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 31 Oct 2022 12:37:55 GMT
+ * Generated on Tue, 01 Nov 2022 12:11:15 GMT
  */
 
 :root {
@@ -120,6 +120,7 @@
   --treeview-item-color-background-default: transparent;
   --toast-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --table-thead-color-background-default: transparent;
+  --tab-color-background-default: transparent;
   --menu-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --dialog-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --button-outline-background-white: transparent;
@@ -299,13 +300,10 @@
   --treeview-item-color-background-ghost: var(--color-gray-1);
   --treeview-item-color-background-selected: var(--color-gray-2);
   --treeview-item-color-background-hover: var(--color-gray-1);
+  --tools-color-active-background-default: var(--color-transparent-black-2);
+  --tools-color-hover-background-default: var(--color-transparent-black-1);
   --toolbar-color-text-disabled: var(--color-gray-5);
   --toolbar-color-text-link: var(--color-blue-8);
-  --toolbar-color-text-subtitle: var(--color-gray-6);
-  --toolbar-color-text-info: var(--color-blue-8);
-  --toolbar-color-text-warning: var(--color-orange-8);
-  --toolbar-color-text-danger: var(--color-red-8);
-  --toolbar-color-text-success: var(--color-green-8);
   --toolbar-color-text-secondary: var(--color-gray-8);
   --toolbar-color-text-primary: var(--color-gray-8);
   --toolbar-color-text-default: var(--color-gray-8);
@@ -557,12 +555,8 @@
   --treeview-item-color-text-default: var(--color-text-default);
   --tooltip-color-text-default: var(--color-text-default);
   --tooltip-color-background-default: var(--color-background-default);
-  --toolbar-color-text-title: var(--color-black);
+  --tools-color-background-default: var(--color-background-default);
   --toolbar-color-background-dark: var(--color-black);
-  --toolbar-color-background-danger: var(--color-danger);
-  --toolbar-color-background-warning: var(--color-warning);
-  --toolbar-color-background-info: var(--color-info);
-  --toolbar-color-background-success: var(--color-success);
   --toolbar-color-background-secondary: var(--color-secondary);
   --toolbar-color-background-primary: var(--color-primary);
   --toolbar-color-background-default: var(--color-default);
@@ -572,7 +566,6 @@
   --table-tbody-color-background-default: var(--color-background-default);
   --tab-color-text-default: var(--color-text-default);
   --tab-color-border-default: var(--color-border);
-  --tab-color-background-default: var(--color-background-default);
   --progressbar-color-text-default: var(--color-text-default);
   --popover-color-background-default: var(--color-background-default);
   --panel-color-text-default: var(--color-text-default);

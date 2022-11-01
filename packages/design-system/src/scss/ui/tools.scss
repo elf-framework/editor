@@ -1,8 +1,8 @@
 .elf--tools {
   --elf--tools-background-color: transparent;
   --elf--tools-arrow-background-color: white;
-  --elf--tools-hover-background-color: rgba(0, 0, 0, 0.1);
-  --elf--tools-active-background-color: rgba(0, 0, 0, 0.2);
+  --elf--tools-hover-background-color: var(--tools-color-hover-background-default);
+  --elf--tools-active-background-color: var(--tools-color-active-background-default);
   --elf--tools-selected-background-color: var(--color-primary);
   --elf--tools-selected-text-color: white;
   --elf--tools-min-width: 40px;

@@ -373,11 +373,21 @@ function useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, is
     isSelf
   );
 }
-function useComponentRender(name) {
+function useComponentRender(name, options = {
+  debounce: 0,
+  throttle: 0,
+  isSelf: false
+}) {
   const component = getCurrentComponent();
-  return component.useSubscribe(name, () => {
-    useRender(component);
-  });
+  return component.useSubscribe(
+    name,
+    () => {
+      useRender(component);
+    },
+    options.debounce,
+    options.throttle,
+    options.isSelf
+  );
 }
 function useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
   return getCurrentComponent().useSelf(
