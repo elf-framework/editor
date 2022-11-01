@@ -4730,19 +4730,7 @@ class BaseSlide extends UIElement {
       }
     })));
   }
-  [POINTERSTART("$el .slide-bg")]() {
-    this.setState(
-      {
-        clicked: true,
-        rect: this.$el.$(".slide-bg").rect()
-      },
-      false
-    );
-  }
-  checkClicked() {
-    return this.state.clicked;
-  }
-  [POINTERMOVE("document") + IF("checkClicked")](e) {
+  updateValue(e) {
     const { onChange } = this.props;
     const { x, width } = this.state.rect;
     const minX = x;
@@ -4752,6 +4740,22 @@ class BaseSlide extends UIElement {
     if (isFunction(onChange)) {
       onChange(value);
     }
+  }
+  [POINTERSTART("$el .slide-bg")](e) {
+    this.setState(
+      {
+        clicked: true,
+        rect: this.$el.$(".slide-bg").rect()
+      },
+      false
+    );
+    this.updateValue(e);
+  }
+  checkClicked() {
+    return this.state.clicked;
+  }
+  [POINTERMOVE("document") + IF("checkClicked")](e) {
+    this.updateValue(e);
   }
   [POINTEREND("document") + IF("checkClicked")]() {
     this.setState(
@@ -4987,11 +4991,12 @@ class ColorMixer extends UIElement {
       },
       false
     );
+    this.updateSaturationValueByEvent(e);
   }
   checkClicked() {
     return this.state.clicked;
   }
-  [POINTERMOVE("document") + IF("checkClicked")](e) {
+  updateSaturationValueByEvent(e) {
     const { x, y, width, height } = this.state.rect;
     const minX = x;
     const maxX = minX + width;
@@ -5002,6 +5007,9 @@ class ColorMixer extends UIElement {
     const s = (targetX - minX) / width;
     const v = 1 - (targetY - minY) / height;
     this.updateSaturationValue(s, v);
+  }
+  [POINTERMOVE("document") + IF("checkClicked")](e) {
+    this.updateSaturationValueByEvent(e);
   }
   [POINTEREND("document") + IF("checkClicked")](e) {
     this.setState(

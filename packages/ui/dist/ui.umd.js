@@ -4732,19 +4732,7 @@ var __privateMethod = (obj, member, method) => {
         }
       })));
     }
-    [sapa.POINTERSTART("$el .slide-bg")]() {
-      this.setState(
-        {
-          clicked: true,
-          rect: this.$el.$(".slide-bg").rect()
-        },
-        false
-      );
-    }
-    checkClicked() {
-      return this.state.clicked;
-    }
-    [sapa.POINTERMOVE("document") + sapa.IF("checkClicked")](e) {
+    updateValue(e) {
       const { onChange } = this.props;
       const { x, width } = this.state.rect;
       const minX = x;
@@ -4754,6 +4742,22 @@ var __privateMethod = (obj, member, method) => {
       if (sapa.isFunction(onChange)) {
         onChange(value);
       }
+    }
+    [sapa.POINTERSTART("$el .slide-bg")](e) {
+      this.setState(
+        {
+          clicked: true,
+          rect: this.$el.$(".slide-bg").rect()
+        },
+        false
+      );
+      this.updateValue(e);
+    }
+    checkClicked() {
+      return this.state.clicked;
+    }
+    [sapa.POINTERMOVE("document") + sapa.IF("checkClicked")](e) {
+      this.updateValue(e);
     }
     [sapa.POINTEREND("document") + sapa.IF("checkClicked")]() {
       this.setState(
@@ -4989,11 +4993,12 @@ var __privateMethod = (obj, member, method) => {
         },
         false
       );
+      this.updateSaturationValueByEvent(e);
     }
     checkClicked() {
       return this.state.clicked;
     }
-    [sapa.POINTERMOVE("document") + sapa.IF("checkClicked")](e) {
+    updateSaturationValueByEvent(e) {
       const { x, y, width, height } = this.state.rect;
       const minX = x;
       const maxX = minX + width;
@@ -5004,6 +5009,9 @@ var __privateMethod = (obj, member, method) => {
       const s = (targetX - minX) / width;
       const v = 1 - (targetY - minY) / height;
       this.updateSaturationValue(s, v);
+    }
+    [sapa.POINTERMOVE("document") + sapa.IF("checkClicked")](e) {
+      this.updateSaturationValueByEvent(e);
     }
     [sapa.POINTEREND("document") + sapa.IF("checkClicked")](e) {
       this.setState(

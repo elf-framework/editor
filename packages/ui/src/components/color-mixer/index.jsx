@@ -259,13 +259,15 @@ export class ColorMixer extends UIElement {
       },
       false
     );
+
+    this.updateSaturationValueByEvent(e);
   }
 
   checkClicked() {
     return this.state.clicked;
   }
 
-  [POINTERMOVE("document") + IF("checkClicked")](e) {
+  updateSaturationValueByEvent(e) {
     const { x, y, width, height } = this.state.rect;
     const minX = x;
     const maxX = minX + width;
@@ -280,6 +282,10 @@ export class ColorMixer extends UIElement {
     const v = 1 - (targetY - minY) / height;
 
     this.updateSaturationValue(s, v);
+  }
+
+  [POINTERMOVE("document") + IF("checkClicked")](e) {
+    this.updateSaturationValueByEvent(e);
   }
 
   [POINTEREND("document") + IF("checkClicked")](e) {
