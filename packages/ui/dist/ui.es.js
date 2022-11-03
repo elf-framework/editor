@@ -5558,6 +5558,11 @@ function DividerItem({ item }) {
     margin
   });
 }
+function LabelItem({ style: style2, item: { label } }) {
+  return /* @__PURE__ */ createElementJsx(View, {
+    style: style2
+  }, label);
+}
 const cssProperties$j = makeCssVariablePrefixMap("--elf--property-editor", {
   backgroundColor: true,
   color: true,
@@ -5580,7 +5585,8 @@ const predefinedPlugins = {
   switch: SwitchItem,
   tab: TabContainerItem,
   slider: SliderItem,
-  divider: DividerItem
+  divider: DividerItem,
+  label: LabelItem
 };
 function getValueByPath(obj, path) {
   if (!path) {
@@ -5651,6 +5657,13 @@ function makeDividerStyle(item) {
 class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
     const { plugins = {}, sync } = this.props;
+    item = makeDividerStyle(item);
+    if (typeof item === "string" || typeof item === "number") {
+      item = {
+        type: "label",
+        label: item
+      };
+    }
     const { key, value, label, type } = item;
     let oldValue = getValueByPath(this.state.value, key);
     if (typeof value !== "undefined") {

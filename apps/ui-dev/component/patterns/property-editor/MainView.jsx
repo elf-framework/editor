@@ -16,7 +16,7 @@ export function MainView() {
           alignItems: "center",
           margin: "0 auto",
           gap: 30,
-          maxWidth: 900,
+          maxWidth: 500,
           padding: [20, 100],
           textAlign: "center",
         }}
@@ -35,6 +35,15 @@ export function MainView() {
           sync
           inspector={(value) => {
             return [
+              {
+                type: "grid",
+                label: " ",
+                columns: 3,
+                style: {
+                  textAlign: "center",
+                },
+                items: ["x", "y", "z"],
+              },
               {
                 type: "number",
                 key: "translate.0",

@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.59
+
+### Patch Changes
+
+- modify initializeConfigs type
+
 ## 0.0.47
 
 ### Patch Changes

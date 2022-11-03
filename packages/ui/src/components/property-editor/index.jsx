@@ -14,6 +14,7 @@ import {
   ColorItem,
   DividerItem,
   GridItem,
+  LabelItem,
   NumberInputItem,
   SelectItem,
   SliderItem,
@@ -47,6 +48,7 @@ const predefinedPlugins = {
   tab: TabContainerItem,
   slider: SliderItem,
   divider: DividerItem,
+  label: LabelItem,
 };
 
 function getValueByPath(obj, path) {
@@ -128,6 +130,15 @@ function makeDividerStyle(item) {
 export class PropertyEditor extends UIElement {
   makeEditorItem(item, index) {
     const { plugins = {}, sync } = this.props;
+
+    item = makeDividerStyle(item);
+
+    if (typeof item === "string" || typeof item === "number") {
+      item = {
+        type: "label",
+        label: item,
+      };
+    }
 
     const { key, value, label, type } = item;
     let oldValue = getValueByPath(this.state.value, key);

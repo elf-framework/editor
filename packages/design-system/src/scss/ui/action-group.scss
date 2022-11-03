@@ -23,33 +23,48 @@
     &.compact {
         gap: 0px !important;
 
-        .elf--button {
-            &:first-child {
+        > *:first-child:not(:last-child) {
+            &.elf--button,
+            .elf--button {
                 border-top-right-radius: 0px;
                 border-bottom-right-radius: 0px;
             }
 
-            &:last-child {
+        }
+
+        > *:last-child:not(:first-child) {
+            &.elf--button,
+            .elf--button {
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
             }
+        }
 
-            &:not(:first-child) {
+        > *:not(:first-child) {
+            &.elf--button,
+            .elf--button {
                 border-left: 0px;
             }
+        }
 
-            &:not(:first-child):not(:last-child) {
+        > *:not(:first-child):not(:last-child) {
+            &.elf--button,
+            .elf--button {
                 border-radius: 0px;
             }
         }
 
         &.rect {
-            .elf--button {
-                &:first-child {
+            > *:first-child {
+                &.elf--button,
+                .elf--button {
                     border-radius: 0px !important;
                 }
-    
-                &:last-child {
+            }
+
+            > *:last-child {
+                &.elf--button,
+                .elf--button {
                     border-radius: 0px !important;
                 }
             }
@@ -60,9 +75,9 @@
         display: flex;
         justify-content: space-between;
 
-        > .elf--button {
+        * {
             flex: 1;
         }
     }
 
-} 
+}

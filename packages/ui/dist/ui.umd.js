@@ -5560,6 +5560,11 @@ var __privateMethod = (obj, member, method) => {
       margin
     });
   }
+  function LabelItem({ style: style2, item: { label } }) {
+    return /* @__PURE__ */ sapa.createElementJsx(View, {
+      style: style2
+    }, label);
+  }
   const cssProperties$j = makeCssVariablePrefixMap("--elf--property-editor", {
     backgroundColor: true,
     color: true,
@@ -5582,7 +5587,8 @@ var __privateMethod = (obj, member, method) => {
     switch: SwitchItem,
     tab: TabContainerItem,
     slider: SliderItem,
-    divider: DividerItem
+    divider: DividerItem,
+    label: LabelItem
   };
   function getValueByPath(obj, path) {
     if (!path) {
@@ -5653,6 +5659,13 @@ var __privateMethod = (obj, member, method) => {
   class PropertyEditor extends sapa.UIElement {
     makeEditorItem(item, index) {
       const { plugins = {}, sync } = this.props;
+      item = makeDividerStyle(item);
+      if (typeof item === "string" || typeof item === "number") {
+        item = {
+          type: "label",
+          label: item
+        };
+      }
       const { key, value, label, type } = item;
       let oldValue = getValueByPath(this.state.value, key);
       if (typeof value !== "undefined") {

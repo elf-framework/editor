@@ -1,5 +1,41 @@
 # @elf-framework/design-system
 
+## 0.0.60
+
+### Patch Changes
+
+- add LabelItem to property editor
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.60
+
+## 0.0.58
+
+### Patch Changes
+
+- modify action-group button style bug
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.58
+
+## 0.0.57
+
+### Patch Changes
+
+- support tooltip for action group
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.57
+
+## 0.0.55
+
+### Patch Changes
+
+- modify tools button's font-size default value
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.55
+
 ## 0.0.53
 
 ### Patch Changes

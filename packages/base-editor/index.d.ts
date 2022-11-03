@@ -108,7 +108,7 @@ declare module "@elf-framework/base-editor" {
     getCommand<T>(name: string): T | undefined;
     registerPlugin(plugin: PluginType): void;
 
-    initializeConfig(configList: EditorConfig[]): void;
+    initializeConfigs(configList: EditorConfig[]): void;
     updateConfigs(configs: EditorConfig): void;
     initializeManager(managers: EditorManager[]): void;
     initializeCommand(commands: CommandType[]): void;
