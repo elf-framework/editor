@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.72
+
+### Patch Changes
+
+- add checkFunction to useComponentRender
+
 ## 0.0.71
 
 ### Patch Changes

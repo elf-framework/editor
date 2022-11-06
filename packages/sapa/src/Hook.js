@@ -1,5 +1,5 @@
 import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
-import { debounce } from "./functions/func";
+import { debounce, isFunction } from "./functions/func";
 import {
   getCurrentComponent,
   renderComponent,
@@ -331,6 +331,7 @@ export function useComponentRender(
     debounce: 0,
     throttle: 0,
     isSelf: false,
+    checkFunction: null,
   }
 ) {
   const component = getCurrentComponent();
@@ -338,7 +339,13 @@ export function useComponentRender(
   return component.useSubscribe(
     name,
     () => {
-      useRender(component);
+      if (isFunction(options.checkFunction)) {
+        if (options.checkFunction()) {
+          useRender(component);
+        }
+      } else {
+        useRender(component);
+      }
     },
     options.debounce,
     options.throttle,

@@ -380,13 +380,20 @@ var __privateMethod = (obj, member, method) => {
   function useComponentRender(name, options = {
     debounce: 0,
     throttle: 0,
-    isSelf: false
+    isSelf: false,
+    checkFunction: null
   }) {
     const component = getCurrentComponent();
     return component.useSubscribe(
       name,
       () => {
-        useRender(component);
+        if (isFunction(options.checkFunction)) {
+          if (options.checkFunction()) {
+            useRender(component);
+          }
+        } else {
+          useRender(component);
+        }
       },
       options.debounce,
       options.throttle,
