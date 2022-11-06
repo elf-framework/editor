@@ -3339,12 +3339,14 @@ function getProps$1(oldEl, attributes, newProps) {
     const value = t.value;
     results[name] = value;
   }
-  Object.keys(newProps).forEach((key) => {
+  const newPropKeys = Object.keys(newProps);
+  for (let i = 0; i < newPropKeys.length; i++) {
+    const key = newPropKeys[i];
     const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
     if (!results[checkKey]) {
       results[key] = oldEl[checkKey];
     }
-  });
+  }
   return results;
 }
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {

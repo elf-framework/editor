@@ -398,13 +398,16 @@ function getProps(oldEl, attributes, newProps) {
   // DESC: newProps 를 기준으로 oldEl 에서 없는 요소를 추가한다.
   // DESC: property 로 입력 되는 이벤트 들만 처리 하는 것도 의미가 있을 듯 합니다.
   // DESC: onXXX 로 시작되는것은 property 로 정의되기 때문에 여기서 처리합니다.
-  Object.keys(newProps).forEach((key) => {
+  const newPropKeys = Object.keys(newProps);
+
+  for (let i = 0; i < newPropKeys.length; i++) {
+    const key = newPropKeys[i];
     const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
 
     if (!results[checkKey]) {
       results[key] = oldEl[checkKey];
     }
-  });
+  }
 
   return results;
 }

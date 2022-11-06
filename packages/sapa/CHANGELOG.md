@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.71
+
+### Patch Changes
+
+- modify getProp function in Reconcile for performance tuning
+
 ## 0.0.61
 
 ### Patch Changes
