@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.70
+
+### Patch Changes
+
+- update color item type in property-editor
+
 ## 0.0.69
 
 ### Patch Changes

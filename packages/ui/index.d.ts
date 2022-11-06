@@ -1744,11 +1744,13 @@ declare module "@elf-framework/ui" {
     props: BlankProps & DomEventType;
   }
 
-  interface BaseSchema {
+  interface BaseSchema<T> {
     type: string;
     label?: string;
     key?: string;
     value?: unknown;
+    valueType?: "valueByPath" | "valueByObject";
+    valueFunc?: (v: T) => any;
     variant?: VariantType;
     direction?: "horizontal" | "vertical";
     required?: boolean;
@@ -1761,13 +1763,13 @@ declare module "@elf-framework/ui" {
     onChange?: (value: unknown) => void;
   }
 
-  interface TextSchema extends BaseSchema {
+  interface TextSchema<T> extends BaseSchema<T> {
     type: "text";
     value: string;
     onChange?: (value: string) => void;
   }
 
-  interface DividerSchema extends BaseSchema {
+  interface DividerSchema<T> extends BaseSchema<T> {
     type: "divider";
     margin?: number;
     style: {
@@ -1786,13 +1788,13 @@ declare module "@elf-framework/ui" {
     };
   }
 
-  interface BooleanSchema extends BaseSchema {
+  interface BooleanSchema<T> extends BaseSchema<T> {
     type: "boolean";
     value: boolean;
     onChange?: (value: boolean) => void;
   }
 
-  interface NumberSchema extends BaseSchema {
+  interface NumberSchema<T> extends BaseSchema<T> {
     type: "number";
     value: number;
     min?: number;
@@ -1800,7 +1802,7 @@ declare module "@elf-framework/ui" {
     onChange?: (value: number) => void;
   }
 
-  interface SliderSchema extends BaseSchema {
+  interface SliderSchema<T> extends BaseSchema<T> {
     type: "slider";
     value: number;
     min?: number;
@@ -1809,19 +1811,19 @@ declare module "@elf-framework/ui" {
     onChange?: (value: number) => void;
   }
 
-  interface DateSchema extends BaseSchema {
+  interface DateSchema<T> extends BaseSchema<T> {
     type: "date";
     value: string;
     onChange?: (value: string) => void;
   }
 
-  interface SwitchSchema extends BaseSchema {
+  interface SwitchSchema<T> extends BaseSchema<T> {
     type: "switch";
     value: boolean;
     onChange?: (value: boolean) => void;
   }
 
-  interface SelectSchema extends BaseSchema {
+  interface SelectSchema<T> extends BaseSchema<T> {
     type: "select";
     value: string;
     options: {
@@ -1831,46 +1833,47 @@ declare module "@elf-framework/ui" {
     onChange?: (value: string) => void;
   }
 
-  interface ColorSchema extends BaseSchema {
+  interface ColorSchema<T> extends BaseSchema<T> {
     type: "color";
     value: string;
     onChange?: (value: string) => void;
   }
 
-  interface ButtonSchema extends BaseSchema {
+  interface ButtonSchema<T> extends BaseSchema<T> {
     type: "button";
     label: string;
+    title: string;
     onClick?: () => void;
   }
 
-  interface LabelSchema extends BaseSchema {
+  interface LabelSchema<T> extends BaseSchema<T> {
     type: "label";
     label: string;
   }
 
-  type Schema =
+  type Schema<T> =
     | "-"
     | "--"
     | "="
     | "=="
     | "==="
     | "*"
-    | DividerSchema
-    | TextSchema
-    | BooleanSchema
-    | NumberSchema
-    | SliderSchema
-    | DateSchema
-    | SwitchSchema
-    | SelectSchema
-    | ColorSchema
-    | ButtonSchema
-    | LabelSchema;
+    | DividerSchema<T>
+    | TextSchema<T>
+    | BooleanSchema<T>
+    | NumberSchema<T>
+    | SliderSchema<T>
+    | DateSchema<T>
+    | SwitchSchema<T>
+    | SelectSchema<T>
+    | ColorSchema<T>
+    | ButtonSchema<T>
+    | LabelSchema<T>;
 
   interface PropertyEditorProps<T> {
     value: T;
     onChange: (value: T) => void;
-    inspector: (value: T) => Schema[] | Schema[];
+    inspector: (value: T) => Schema<T>[] | Schema<T>[];
     plugins?: {
       [key: string]: ContentType;
     };
