@@ -2506,14 +2506,16 @@ function toast({
   delay = 0,
   direction = "bottom",
   cloasable = false,
+  icon = null,
   onClose,
   tools = [],
   options = {},
   style: style2 = {}
 }) {
-  return potal(
+  const rootInstance = potal(
     /* @__PURE__ */ createElementJsx(Toast, {
       delay,
+      icon,
       direction,
       tools,
       style: style2,
@@ -2522,6 +2524,7 @@ function toast({
     }, content),
     options
   );
+  return Object.values(rootInstance.children)[0];
 }
 registerComponent("toast", Toast);
 registerComponent("Toast", Toast);
@@ -3135,33 +3138,25 @@ const cssProperties$u = makeCssVariablePrefixMap("--elf--input-paint", {
   placeholderColor: true,
   emptyColor: true
 });
+function normalizeAlpha(a) {
+  a = Math.round(a * 100) / 100;
+  return Math.min(1, Math.max(0, a));
+}
 class InputPaint extends UIElement {
-  constructor() {
-    super(...arguments);
-    __publicField(this, "keyup", (e) => {
-      e.preventDefault();
-      switch (e.key) {
-        case "ArrowUp":
-          this.increaseOpacity(e);
-          break;
-        case "ArrowDown":
-          this.decreaseOpacity(e);
-          break;
-      }
-    });
-  }
   initState() {
     const {
       autoFocus = false,
       focused,
       hover = false,
-      hasOpacity = true
+      hasOpacity = true,
+      value
     } = this.props;
     return {
       autoFocus,
       hover: hover || false,
       focused: focused || false,
-      hasOpacity
+      hasOpacity,
+      originalValue: value
     };
   }
   template() {
@@ -3171,12 +3166,15 @@ class InputPaint extends UIElement {
       onClickColorView,
       disabled,
       placeholder,
-      value
+      value,
+      sync = false
     } = this.props;
     const { style: style2 = {}, focused = false, hover = false } = this.state;
-    const parsedColor = parse(value);
-    const styleObject = {
-      class: classnames([
+    if (!this.state.parsedColor || sync) {
+      this.state.parsedColor = parse(value);
+    }
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
           focused,
@@ -3184,7 +3182,10 @@ class InputPaint extends UIElement {
           disabled,
           icon
         }
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon]);
+    const styleObject = {
+      class: localClass,
       style: propertyMap(style2, cssProperties$u)
     };
     const inputEvents = {
@@ -3198,21 +3199,27 @@ class InputPaint extends UIElement {
       onCut: this.props.onCut,
       onCopy: this.props.onCopy
     };
-    const { r, g, b } = parsedColor;
+    const { r, g, b } = this.state.parsedColor;
     const properties = {
       disabled,
       placeholder: placeholder || "",
       value: format({ r, g, b }, "hex")
     };
+    const colorString = format(
+      this.state.parsedColor,
+      this.state.parsedColor.type
+    );
+    this.state.parsedColor.a = normalizeAlpha(this.state.parsedColor.a);
+    const opacityString = `${100 * this.state.parsedColor.a}%`;
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
     }, hideColorView ? void 0 : /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-paint-icon",
       onClick: (e) => {
-        onClickColorView && onClickColorView(e, this.value);
+        onClickColorView && onClickColorView(e, colorString);
       }
     }, /* @__PURE__ */ createElementJsx(ColorView, {
-      color: value
+      color: colorString
     })), /* @__PURE__ */ createElementJsx("div", {
       class: "elf--input-area"
     }, /* @__PURE__ */ createElementJsx("div", {
@@ -3221,28 +3228,54 @@ class InputPaint extends UIElement {
       class: "color",
       ref: "$input",
       ...properties,
-      ...inputEvents
+      ...inputEvents,
+      onKeyDown: (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const parsedValue = parse(e.target.value);
+          if (isUndefined(parsedValue.r) || isUndefined(parsedValue.g) || isUndefined(parsedValue.b)) {
+            return;
+          }
+          const a = normalizeAlpha(this.state.parsedColor.a);
+          this.state.parsedColor = {
+            ...parsedValue,
+            a
+          };
+          this.state.originalValue = e.target.value;
+          this.runOnChange();
+          this.refresh();
+        }
+      }
     }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-opacity"
+      class: "elf--input-opacity",
+      "data-opacity-string-length": opacityString.length
     }, /* @__PURE__ */ createElementJsx("input", {
       class: "opacity",
-      value: `${Math.round(parsedColor.a * 100 * 100) / 100}%`,
-      onKeyUp: this.keyup
+      value: opacityString,
+      onKeyDown: (e) => {
+        e.preventDefault();
+        switch (e.key) {
+          case "ArrowUp":
+            this.updateOpacity(0.01);
+            break;
+          case "ArrowDown":
+            this.updateOpacity(-0.01);
+            break;
+        }
+      }
     })));
   }
+  runOnChange() {
+    this.runCallback(this.props.onChange, format(this.state.parsedColor));
+  }
   updateOpacity(num) {
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        a: this.state.parsedColor.a + num
-      }
-    });
-  }
-  increaseOpacity() {
-    this.updateOpacity(0.01);
-  }
-  decreaseOpacity() {
-    this.updateOpacity(-0.01);
+    const color = this.state.parsedColor;
+    console.log(color.a, num);
+    color.a += num;
+    color.a = normalizeAlpha(color.a);
+    console.log(color.a);
+    this.runOnChange();
+    this.refresh();
   }
   onMounted() {
     super.onMounted();
@@ -5128,12 +5161,13 @@ function TextInputItem({ value, style: style2, onChange }) {
   });
 }
 function NumberInputItem({ value, item, style: style2, onChange }) {
-  const { min = 0, max = 100 } = item;
+  const { min = 0, max = 100, step = 1 } = item;
   return /* @__PURE__ */ createElementJsx(InputEditor, {
     type: "number",
     value,
     min,
     max,
+    step,
     width: "100%",
     style: style2,
     onInput: (e) => {
@@ -5178,7 +5212,10 @@ function ColorItem({ value, onChange, item }) {
   const { onClickColorView } = item;
   return /* @__PURE__ */ createElementJsx(InputPaint, {
     value,
-    onChange,
+    sync: true,
+    onChange: (color, inputPaintInstance) => {
+      onChange && onChange(color, inputPaintInstance);
+    },
     onClickColorView: (e, color) => {
       onClickColorView && onClickColorView(e, color);
     }
@@ -5538,7 +5575,7 @@ class Slider extends UIElement {
 registerComponent("slider", Slider);
 registerComponent("Slider", Slider);
 function SliderItem({ value, item, style: style2, onChange }) {
-  const { min = 0, max = 100, step = 1, fitted = false } = item;
+  const { min = 0, max = 100, step = 1, fitted = true } = item;
   return /* @__PURE__ */ createElementJsx(Slider, {
     min,
     max,
@@ -5608,6 +5645,10 @@ function setValueByPath(obj, path, value) {
   }, obj);
   target[lastKey] = value;
 }
+function setValueByObject(obj, key, value, valueFunc) {
+  const newValue = valueFunc(value, obj);
+  Object.assign(obj, newValue);
+}
 function makeDividerStyle(item) {
   if (item === "-") {
     item = {
@@ -5664,7 +5705,14 @@ class PropertyEditor extends UIElement {
         label: item
       };
     }
-    const { key, value, label, type } = item;
+    const {
+      key,
+      value,
+      label,
+      type,
+      valueType = "valueByPath",
+      valueFunc
+    } = item;
     let oldValue = getValueByPath(this.state.value, key);
     if (typeof value !== "undefined") {
       if (isFunction(value)) {
@@ -5706,7 +5754,11 @@ class PropertyEditor extends UIElement {
           if (isFunction(this.props.onChange)) {
             this.props.onChange(key, newValue, this);
           }
-          setValueByPath(this.state.value, key, newValue);
+          if (valueType === "valueByPath") {
+            setValueByPath(this.state.value, key, newValue);
+          } else if (valueType === "valueByObject") {
+            setValueByObject(this.state.value, key, newValue, valueFunc);
+          }
           if (sync) {
             this.refresh();
           }

@@ -1,3 +1,4 @@
+import { format, parse } from "@elf-framework/color";
 import { PropertyEditor } from "@elf-framework/ui";
 
 export function MainView() {
@@ -28,7 +29,12 @@ export function MainView() {
             lastName: "Doe",
             age: 20,
             gender: "male",
-            background: "yellow",
+            background: {
+              r: 255,
+              g: 255,
+              b: 0,
+              a: 1,
+            },
             active: false,
             translate: [0, 0, 0],
           }}
@@ -46,6 +52,7 @@ export function MainView() {
               },
               {
                 type: "number",
+                step: 0.01,
                 key: "translate.0",
                 label: "Translate",
                 onChange: (value) => {
@@ -79,13 +86,29 @@ export function MainView() {
                 type: "color",
                 label: "Background",
                 key: "background",
+                value: (v) => format(v.background, "hex"),
+                valueType: "valueByObject",
+                valueFunc: (v) => {
+                  console.log(v);
+                  const newValue = parse(v);
+
+                  console.log("parsed", newValue);
+
+                  return {
+                    background: newValue,
+                  };
+                },
                 onChange: (color) => {
                   console.log("property editor", color);
+                },
+                onClickColorView: (e, color) => {
+                  console.log(color);
                 },
               },
               {
                 type: "button",
                 label: "Button",
+                title: "Button",
                 justified: true,
                 variant: "primary",
                 onClick: () => {

@@ -20,7 +20,11 @@ import { clone, round } from "./utils/index";
  * @param {hex|rgb|hsl} type  format string type
  * @returns {*}
  */
-export function format(obj, type, defaultColor = "rgba(0, 0, 0, 0)") {
+export function format(
+  obj,
+  type = obj.type,
+  defaultColor = "rgba(0, 0, 0, 0)"
+) {
   if (Array.isArray(obj)) {
     obj = { r: obj[0], g: obj[1], b: obj[2], a: obj[3] };
   }

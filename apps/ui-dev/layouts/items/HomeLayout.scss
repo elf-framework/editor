@@ -56,10 +56,7 @@ body {
                     a {
                         text-decoration: none;
                         text-underline-offset: 4px;
-
-                        &:visited {
-                            color: var(--color-text-default);
-                        }
+                        color: var(--color-text-default);
 
                         &:hover {
                             text-decoration: underline;

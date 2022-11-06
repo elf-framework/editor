@@ -49,12 +49,12 @@
 
     > .elf--input-paint-icon {
         flex: none;
-        width: 32px;
+        width: 28px;
         height: 32px;
         transform: translate(-2px, -2px);
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         cursor: pointer;
         // border: 1px solid var(--elf--input-paint-border-color);
         
@@ -130,6 +130,19 @@
         width: 47px;
         box-sizing: border-box;
         border-left: 1px solid var(--elf--input-paint-border-color);
+
+        &[data-opacity-string-length="5"] {
+            > input {
+                font-size: 11px;
+            }
+        }
+        &[data-opacity-string-length="6"] {
+
+            > input {
+                font-size: 10px;
+            }
+
+        }
 
         > input {
             padding: 7px 4px 7px 4px;

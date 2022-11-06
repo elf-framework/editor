@@ -4826,10 +4826,6 @@ const hydrate = (ElementClass, opt = {}) => {
 };
 const potal = (ElementClass, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
-  if (ElementClass instanceof VNodeComponent) {
-    DomRenderer(ElementClass, $container);
-    return ElementClass.instance;
-  }
   if (ElementClass instanceof VNode) {
     const rootVNode = ElementClass;
     ElementClass = () => rootVNode;

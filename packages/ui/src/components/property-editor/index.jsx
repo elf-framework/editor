@@ -79,6 +79,12 @@ function setValueByPath(obj, path, value) {
   target[lastKey] = value;
 }
 
+function setValueByObject(obj, key, value, valueFunc) {
+  const newValue = valueFunc(value, obj);
+
+  Object.assign(obj, newValue);
+}
+
 function makeDividerStyle(item) {
   if (item === "-") {
     item = {
@@ -140,7 +146,14 @@ export class PropertyEditor extends UIElement {
       };
     }
 
-    const { key, value, label, type } = item;
+    const {
+      key,
+      value,
+      label,
+      type,
+      valueType = "valueByPath",
+      valueFunc,
+    } = item;
     let oldValue = getValueByPath(this.state.value, key);
 
     if (typeof value !== "undefined") {
@@ -195,7 +208,11 @@ export class PropertyEditor extends UIElement {
               this.props.onChange(key, newValue, this);
             }
 
-            setValueByPath(this.state.value, key, newValue);
+            if (valueType === "valueByPath") {
+              setValueByPath(this.state.value, key, newValue);
+            } else if (valueType === "valueByObject") {
+              setValueByObject(this.state.value, key, newValue, valueFunc);
+            }
 
             // sync 가 true 이면 전체 데이타를 다시 업데이트 한다.
             if (sync) {

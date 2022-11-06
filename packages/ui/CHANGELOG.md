@@ -1,5 +1,70 @@
 # @elf-framework/ui
 
+## 0.0.69
+
+### Patch Changes
+
+- update input-paint color value
+
+- Updated dependencies []:
+  - @elf-framework/color@0.0.69
+  - @elf-framework/design-system@0.0.69
+
+## 0.0.68
+
+### Patch Changes
+
+- modify sync property in input-paint
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.68
+
+## 0.0.67
+
+### Patch Changes
+
+- update sync property in input-paint
+
+## 0.0.66
+
+### Patch Changes
+
+- update input-paint component
+
+- Updated dependencies []:
+  - @elf-framework/color@0.0.66
+  - @elf-framework/design-system@0.0.66
+
+## 0.0.65
+
+### Patch Changes
+
+- support number's step property
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.65
+
+## 0.0.64
+
+### Patch Changes
+
+- update slider fitted default value in property editor
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.64
+
+## 0.0.63
+
+### Patch Changes
+
+- update toast function return value
+
+## 0.0.62
+
+### Patch Changes
+
+- add icon parameter in toast function
+
 ## 0.0.60
 
 ### Patch Changes

@@ -123,14 +123,16 @@ export function toast({
   delay = 0,
   direction = "bottom",
   cloasable = false,
+  icon = null,
   onClose,
   tools = [],
   options = {},
   style = {},
 }) {
-  return potal(
+  const rootInstance = potal(
     <Toast
       delay={delay}
+      icon={icon}
       direction={direction}
       tools={tools}
       style={style}
@@ -141,6 +143,8 @@ export function toast({
     </Toast>,
     options
   );
+
+  return Object.values(rootInstance.children)[0];
 }
 
 registerComponent("toast", Toast);

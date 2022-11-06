@@ -5,6 +5,8 @@ import {
   FOCUSOUT,
   FOCUSIN,
   isFunction,
+  useMemo,
+  isUndefined,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
@@ -26,6 +28,11 @@ const cssProperties = makeCssVariablePrefixMap("--elf--input-paint", {
   emptyColor: true,
 });
 
+function normalizeAlpha(a) {
+  a = Math.round(a * 100) / 100;
+  return Math.min(1, Math.max(0, a));
+}
+
 export class InputPaint extends UIElement {
   initState() {
     const {
@@ -33,6 +40,7 @@ export class InputPaint extends UIElement {
       focused,
       hover = false,
       hasOpacity = true,
+      value,
     } = this.props;
 
     return {
@@ -40,6 +48,7 @@ export class InputPaint extends UIElement {
       hover: hover || false,
       focused: focused || false,
       hasOpacity,
+      originalValue: value,
     };
   }
 
@@ -51,21 +60,28 @@ export class InputPaint extends UIElement {
       disabled,
       placeholder,
       value,
+      sync = false,
     } = this.props;
     const { style = {}, focused = false, hover = false } = this.state;
 
-    const parsedColor = parse(value);
+    if (!this.state.parsedColor || sync) {
+      this.state.parsedColor = parse(value);
+    }
 
-    const styleObject = {
-      class: classnames([
+    const localClass = useMemo(() => {
+      return classnames([
         "elf--input-paint",
         {
-          focused: focused,
-          hover: hover,
-          disabled: disabled,
-          icon: icon,
+          focused,
+          hover,
+          disabled,
+          icon,
         },
-      ]),
+      ]);
+    }, [focused, hover, disabled, icon]);
+
+    const styleObject = {
+      class: localClass,
       style: propertyMap(style, cssProperties),
     };
 
@@ -81,7 +97,7 @@ export class InputPaint extends UIElement {
       onCopy: this.props.onCopy,
     };
 
-    const { r, g, b } = parsedColor;
+    const { r, g, b } = this.state.parsedColor;
 
     const properties = {
       disabled,
@@ -89,16 +105,25 @@ export class InputPaint extends UIElement {
       value: format({ r, g, b }, "hex"),
     };
 
+    const colorString = format(
+      this.state.parsedColor,
+      this.state.parsedColor.type
+    );
+
+    this.state.parsedColor.a = normalizeAlpha(this.state.parsedColor.a);
+
+    const opacityString = `${100 * this.state.parsedColor.a}%`;
+
     return (
       <div {...styleObject}>
         {hideColorView ? undefined : (
           <div
             class="elf--input-paint-icon"
             onClick={(e) => {
-              onClickColorView && onClickColorView(e, this.value);
+              onClickColorView && onClickColorView(e, colorString);
             }}
           >
-            <ColorView color={value} />
+            <ColorView color={colorString} />
           </div>
         )}
 
@@ -109,15 +134,55 @@ export class InputPaint extends UIElement {
               ref="$input"
               {...properties}
               {...inputEvents}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+
+                  const parsedValue = parse(e.target.value);
+
+                  if (
+                    isUndefined(parsedValue.r) ||
+                    isUndefined(parsedValue.g) ||
+                    isUndefined(parsedValue.b)
+                  ) {
+                    return;
+                  }
+
+                  const a = normalizeAlpha(this.state.parsedColor.a);
+
+                  this.state.parsedColor = {
+                    ...parsedValue,
+                    a,
+                  };
+                  this.state.originalValue = e.target.value;
+
+                  this.runOnChange();
+
+                  this.refresh();
+                }
+              }}
             />
           </div>
         </div>
         {this.state.hasOpacity && (
-          <div class="elf--input-opacity">
+          <div
+            class="elf--input-opacity"
+            data-opacity-string-length={opacityString.length}
+          >
             <input
               class="opacity"
-              value={`${Math.round(parsedColor.a * 100 * 100) / 100}%`}
-              onKeyUp={this.keyup}
+              value={opacityString}
+              onKeyDown={(e) => {
+                e.preventDefault();
+                switch (e.key) {
+                  case "ArrowUp":
+                    this.updateOpacity(0.01);
+                    break;
+                  case "ArrowDown":
+                    this.updateOpacity(-0.01);
+                    break;
+                }
+              }}
             />
           </div>
         )}
@@ -125,34 +190,24 @@ export class InputPaint extends UIElement {
     );
   }
 
+  runOnChange() {
+    this.runCallback(this.props.onChange, format(this.state.parsedColor));
+  }
+
   updateOpacity(num) {
-    this.setState({
-      parsedColor: {
-        ...this.state.parsedColor,
-        a: this.state.parsedColor.a + num,
-      },
-    });
-  }
+    const color = this.state.parsedColor;
 
-  increaseOpacity() {
-    this.updateOpacity(0.01);
-  }
+    console.log(color.a, num);
 
-  decreaseOpacity() {
-    this.updateOpacity(-0.01);
-  }
+    color.a += num;
+    color.a = normalizeAlpha(color.a);
 
-  keyup = (e) => {
-    e.preventDefault();
-    switch (e.key) {
-      case "ArrowUp":
-        this.increaseOpacity(e);
-        break;
-      case "ArrowDown":
-        this.decreaseOpacity(e);
-        break;
-    }
-  };
+    console.log(color.a);
+
+    this.runOnChange();
+
+    this.refresh();
+  }
 
   onMounted() {
     super.onMounted();

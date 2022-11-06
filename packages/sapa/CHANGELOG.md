@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.61
+
+### Patch Changes
+
+- fixed to create vnode instance in potal
+
 ## 0.0.51
 
 ### Patch Changes

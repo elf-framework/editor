@@ -1,5 +1,17 @@
 # @elf-framework/color
 
+## 0.0.69
+
+### Patch Changes
+
+- update input-paint color value
+
+## 0.0.66
+
+### Patch Changes
+
+- update input-paint component
+
 ## 2.1.7
 
 ### Patch Changes

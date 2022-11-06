@@ -947,6 +947,7 @@ declare module "@elf-framework/ui" {
     style?: InputPaintStyle & CommonStyle;
     disabled?: boolean;
     hideColorView?: boolean;
+    sync?: boolean;
   }
 
   export class InputPaint extends UIElement {

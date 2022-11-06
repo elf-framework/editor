@@ -184,8 +184,15 @@ export function parse(str) {
 
         a = arr.pop() / 255;
       } else {
+
+        if (str.length !== 6) {
+          return;
+        }
+
         for (var i = 0, len = str.length; i < len; i += 2) {
-          arr.push(parseInt(str.substr(i, 2), 16));
+          const value = parseInt(str.substr(i, 2), 16);
+
+          arr.push(value);
         }
       }
 

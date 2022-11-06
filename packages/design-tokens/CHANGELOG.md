@@ -1,5 +1,35 @@
 # @elf-framework/design-tokens
 
+## 0.0.69
+
+### Patch Changes
+
+- update input-paint color value
+
+## 0.0.68
+
+### Patch Changes
+
+- modify sync property in input-paint
+
+## 0.0.66
+
+### Patch Changes
+
+- update input-paint component
+
+## 0.0.65
+
+### Patch Changes
+
+- support number's step property
+
+## 0.0.64
+
+### Patch Changes
+
+- update slider fitted default value in property editor
+
 ## 0.0.60
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 import { Slider } from "../../slider";
 
 export function SliderItem({ value, item, style, onChange }) {
-  const { min = 0, max = 100, step = 1, fitted = false } = item;
+  const { min = 0, max = 100, step = 1, fitted = true } = item;
   return (
     <Slider
       min={min}
