@@ -5586,7 +5586,9 @@ var __privateMethod = (obj, member, method) => {
       style: style2,
       size: "small",
       fitted,
-      onInput: onChange,
+      onInput: (v) => {
+        onChange && onChange(v);
+      },
       valuePlacement: "bottom"
     });
   }

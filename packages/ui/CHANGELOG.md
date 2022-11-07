@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.73
+
+### Patch Changes
+
+- change slider item onChange function in property editor
+
 ## 0.0.70
 
 ### Patch Changes

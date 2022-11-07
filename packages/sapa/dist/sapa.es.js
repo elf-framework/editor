@@ -382,9 +382,9 @@ function useComponentRender(name, options = {
   const component = getCurrentComponent();
   return component.useSubscribe(
     name,
-    () => {
+    (...args) => {
       if (isFunction(options.checkFunction)) {
-        if (options.checkFunction()) {
+        if (options.checkFunction(...args)) {
           useRender(component);
         }
       } else {

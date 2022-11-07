@@ -5584,7 +5584,9 @@ function SliderItem({ value, item, style: style2, onChange }) {
     style: style2,
     size: "small",
     fitted,
-    onInput: onChange,
+    onInput: (v) => {
+      onChange && onChange(v);
+    },
     valuePlacement: "bottom"
   });
 }

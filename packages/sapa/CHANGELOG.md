@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 0.0.75
+
+### Patch Changes
+
+- modify index.d.ts
+
+## 0.0.74
+
+### Patch Changes
+
+- add arguments for useComponentRender
+
 ## 0.0.72
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.73
+
+### Patch Changes
+
+- change slider item onChange function in property editor
+
 ## 0.0.69
 
 ### Patch Changes

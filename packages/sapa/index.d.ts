@@ -543,20 +543,21 @@ declare module "@elf-framework/sapa" {
     throttleSecond: number,
     isSelf: boolean
   ): () => void;
-  interface RenderOptions {
-    debounc?: number;
+  interface RenderOptions<T> {
+    debounce?: number;
     throttle?: number;
     isSelf?: boolean;
+    checkFunction?: null | ((args: T) => boolean);
   }
-  export function useComponentRender(
+  export function useComponentRender<T>(
     name: string,
-    options?: RenderOptions
+    options?: RenderOptions<T>
   ): void;
   export function useSelf(
     name: string,
     callback: () => void,
-    debounceSecond: number,
-    throttleSecond: number
+    debounce: number,
+    throttle: number
   ): () => void;
 
   export function getCurrentComponent(): UIElement;
