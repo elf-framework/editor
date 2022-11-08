@@ -258,12 +258,6 @@ const cssProperties = makeCssVariablePrefixMap("--elf--menu", {
 });
 
 export class Menu extends UIElement {
-  initState() {
-    return {
-      intersectionLeft: 0,
-    };
-  }
-
   template() {
     let {
       style = {},

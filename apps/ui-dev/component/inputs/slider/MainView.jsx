@@ -25,6 +25,7 @@ export function MainView() {
           flexDirection: "column",
           gap: 30,
           fontSize: 20,
+          width: "100%",
         }}
       >
         <Slider

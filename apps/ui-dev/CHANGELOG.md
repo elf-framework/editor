@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.36
+
+### Patch Changes
+
+- update documentation
+
 ## 1.0.35
 
 ### Patch Changes

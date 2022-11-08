@@ -9,7 +9,15 @@ import {
 
 import { ArrowIcon } from "../../icon/arrow";
 import { registerComponent } from "../../utils/component";
+import { propertyMap } from "../../utils/propertyMap";
+import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Menu } from "../menu";
+
+const cssProperties = makeCssVariablePrefixMap("--elf--option-menu", {
+  backgroundColor: true,
+  color: true,
+  width: true,
+});
 
 export class OptionMenu extends UIElement {
   template() {
@@ -21,6 +29,7 @@ export class OptionMenu extends UIElement {
       menuStyle = {},
       disabled = undefined,
       autoPosition = false,
+      style,
     } = this.props;
     const { isOpen } = this.state;
     const showMenu = isOpen && items;
@@ -31,8 +40,14 @@ export class OptionMenu extends UIElement {
       });
     }, [quiet]);
 
+    const styleObject = {
+      class: localClass,
+      disabled,
+      style: propertyMap(style, cssProperties),
+    };
+
     return (
-      <div class={localClass} disabled={disabled}>
+      <div {...styleObject}>
         <div
           class="content"
           onClick={() => {

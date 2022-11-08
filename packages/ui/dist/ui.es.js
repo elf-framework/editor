@@ -441,7 +441,7 @@ function splitStyleKeyAndNoneStyleKey(properties) {
   });
   return { style: style2, noneStyle };
 }
-const cssProperties$R = makeCssVariablePrefixMap("--elf--alert", {
+const cssProperties$S = makeCssVariablePrefixMap("--elf--alert", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -490,7 +490,7 @@ class Alert extends UIElement {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$R),
+        ...propertyMap(style2, cssProperties$S),
         ...{
           transition: `opacity ${localDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1
@@ -553,7 +553,7 @@ function alert({
 }
 registerComponent("Alert", Alert);
 registerComponent("alert", Alert);
-const cssProperties$Q = makeCssVariablePrefixMap("--elf--animation", {
+const cssProperties$R = makeCssVariablePrefixMap("--elf--animation", {
   name: true,
   iterationCount: true,
   timingFunction: true,
@@ -589,7 +589,7 @@ class Animation extends UIElement {
           delay,
           playState: play ? "running" : "paused"
         },
-        cssProperties$Q
+        cssProperties$R
       ),
       onAnimationStart,
       onAnimationEnd,
@@ -627,7 +627,7 @@ class Animation extends UIElement {
 });
 registerComponent("animation", Animation);
 registerComponent("Animation", Animation);
-const cssProperties$P = makeCssVariablePrefixMap("--elf--progress-circle", {
+const cssProperties$Q = makeCssVariablePrefixMap("--elf--progress-circle", {
   backgroundColor: true,
   color: true,
   duration: true,
@@ -664,7 +664,7 @@ class ProgressCircle extends UIElement {
           ...style2,
           offset: percentValue
         },
-        cssProperties$P
+        cssProperties$Q
       )
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -687,7 +687,7 @@ class ProgressCircle extends UIElement {
 registerComponent("progress-circle", ProgressCircle);
 registerComponent("progresscircle", ProgressCircle);
 registerComponent("ProgressCircle", ProgressCircle);
-const cssProperties$O = makeCssVariablePrefixMap("--elf--button", {
+const cssProperties$P = makeCssVariablePrefixMap("--elf--button", {
   borderColor: true,
   backgroundColor: true,
   selectedBackgroundColor: true,
@@ -769,7 +769,7 @@ class Button extends UIElement {
     const styleObject = {
       class: localClass,
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(style2, cssProperties$O),
+      style: propertyMap(style2, cssProperties$P),
       ...extraProps
     };
     const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, {
@@ -795,7 +795,7 @@ class Button extends UIElement {
 registerComponent("button", Button);
 registerComponent("btn", Button);
 registerComponent("Button", Button);
-const cssProperties$N = makeCssVariablePrefixMap("--elf--tooltip", {
+const cssProperties$O = makeCssVariablePrefixMap("--elf--tooltip", {
   backgroundColor: true,
   color: true,
   height: true,
@@ -853,7 +853,7 @@ class Tooltip extends UIElement {
     }, [placement, animated, variant, position]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$N)
+      style: propertyMap(style2, cssProperties$O)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -950,7 +950,7 @@ function tooltip({
     options
   );
 }
-const cssProperties$M = makeCssVariablePrefixMap("--elf--action-group", {
+const cssProperties$N = makeCssVariablePrefixMap("--elf--action-group", {
   alignItems: true,
   gap: true
 });
@@ -1030,7 +1030,7 @@ class ActionGroup extends UIElement {
           ...style2,
           ...styleProperties
         },
-        cssProperties$M
+        cssProperties$N
       )
     };
     const items = collapsed ? content.filter((item, index) => {
@@ -1075,7 +1075,7 @@ function IconButton({ content, ...props }) {
 registerComponent("icon-button", IconButton);
 registerComponent("iconbutton", IconButton);
 registerComponent("IconButton", IconButton);
-const cssProperties$L = makeCssVariablePrefixMap("--elf--link-button", {
+const cssProperties$M = makeCssVariablePrefixMap("--elf--link-button", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -1091,7 +1091,7 @@ class LinkButton extends UIElement {
       class: "elf--link-button",
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$L)
+        ...propertyMap(style2, cssProperties$M)
       }
     };
     return /* @__PURE__ */ createElementJsx("a", {
@@ -1104,7 +1104,7 @@ class LinkButton extends UIElement {
 registerComponent("link-button", LinkButton);
 registerComponent("linkbutton", LinkButton);
 registerComponent("LinkButton", LinkButton);
-const cssProperties$K = makeCssVariablePrefixMap("--elf--radio", {
+const cssProperties$L = makeCssVariablePrefixMap("--elf--radio", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -1140,7 +1140,7 @@ class Radio extends UIElement {
     }, [disabled, size, variant]);
     const styleObject = {
       class: localClass,
-      style: propertyMap(style2, cssProperties$K)
+      style: propertyMap(style2, cssProperties$L)
     };
     return /* @__PURE__ */ createElementJsx("div", {
       ...styleObject
@@ -1159,7 +1159,7 @@ class Radio extends UIElement {
 }
 registerComponent("radio", Radio);
 registerComponent("Radio", Radio);
-const cssProperties$J = makeCssVariablePrefixMap("--elf--radio", {
+const cssProperties$K = makeCssVariablePrefixMap("--elf--radio", {
   borderColor: true,
   backgroundColor: true,
   disabledColor: true,
@@ -1191,7 +1191,7 @@ class RadioGroup extends UIElement {
     const styleObject = {
       class: localClass,
       disabled: disabled ? "disabled" : void 0,
-      style: propertyMap(style2, cssProperties$J)
+      style: propertyMap(style2, cssProperties$K)
     };
     const radioName = name || "name-" + this.id;
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1223,7 +1223,7 @@ class RadioGroup extends UIElement {
 registerComponent("RadioGroup", RadioGroup);
 registerComponent("radio-group", RadioGroup);
 registerComponent("radiogroup", RadioGroup);
-const cssProperties$I = {
+const cssProperties$J = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -1258,7 +1258,7 @@ class Checkbox extends UIElement {
         }
       ]),
       style: {
-        ...propertyMap(style2, cssProperties$I)
+        ...propertyMap(style2, cssProperties$J)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1287,7 +1287,7 @@ class Checkbox extends UIElement {
 }
 registerComponent("Checkbox", Checkbox);
 registerComponent("checkbox", Checkbox);
-const cssProperties$H = {
+const cssProperties$I = {
   borderColor: "--elf--checkbox-border-color",
   backgroundColor: "--elf--checkbox-background",
   disabledColor: "--elf--checkbox-disabled-color",
@@ -1324,7 +1324,7 @@ class CheckboxGroup extends UIElement {
       ]),
       disabled: disabled ? "disabled" : void 0,
       style: {
-        ...propertyMap(style2, cssProperties$H)
+        ...propertyMap(style2, cssProperties$I)
       }
     };
     return /* @__PURE__ */ createElementJsx("div", {
@@ -1366,7 +1366,7 @@ class CheckboxGroup extends UIElement {
 }
 registerComponent("checkbox-group", CheckboxGroup);
 registerComponent("CheckboxGroup", CheckboxGroup);
-const cssProperties$G = makeCssVariablePrefixMap("--elf--divider", {
+const cssProperties$H = makeCssVariablePrefixMap("--elf--divider", {
   color: true,
   margin: true,
   height: true,
@@ -1393,7 +1393,7 @@ class Divider extends UIElement {
             ...style2,
             margin
           },
-          cssProperties$G
+          cssProperties$H
         )
       }
     };
@@ -1602,7 +1602,7 @@ class MenuItem extends UIElement {
     return this.state.selected;
   }
 }
-const cssProperties$F = makeCssVariablePrefixMap("--elf--menu", {
+const cssProperties$G = makeCssVariablePrefixMap("--elf--menu", {
   left: true,
   top: true,
   backgroundColor: true,
@@ -1623,11 +1623,6 @@ const cssProperties$F = makeCssVariablePrefixMap("--elf--menu", {
   itemPadding: true
 });
 class Menu extends UIElement {
-  initState() {
-    return {
-      intersectionLeft: 0
-    };
-  }
   template() {
     let {
       style: style2 = {},
@@ -1662,7 +1657,7 @@ class Menu extends UIElement {
     const styleObject = {
       "data-direction": direction,
       class: localClass,
-      style: propertyMap(itemStyle, cssProperties$F)
+      style: propertyMap(itemStyle, cssProperties$G)
     };
     return /* @__PURE__ */ createElementJsx("menu", {
       ...styleObject,
@@ -1707,6 +1702,11 @@ function ArrowIcon() {
     d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
   }));
 }
+const cssProperties$F = makeCssVariablePrefixMap("--elf--option-menu", {
+  backgroundColor: true,
+  color: true,
+  width: true
+});
 class OptionMenu extends UIElement {
   template() {
     const {
@@ -1716,7 +1716,8 @@ class OptionMenu extends UIElement {
       quiet,
       menuStyle = {},
       disabled = void 0,
-      autoPosition = false
+      autoPosition = false,
+      style: style2
     } = this.props;
     const { isOpen } = this.state;
     const showMenu = isOpen && items;
@@ -1725,9 +1726,13 @@ class OptionMenu extends UIElement {
         quiet
       });
     }, [quiet]);
-    return /* @__PURE__ */ createElementJsx("div", {
+    const styleObject = {
       class: localClass,
-      disabled
+      disabled,
+      style: propertyMap(style2, cssProperties$F)
+    };
+    return /* @__PURE__ */ createElementJsx("div", {
+      ...styleObject
     }, /* @__PURE__ */ createElementJsx("div", {
       class: "content",
       onClick: () => {

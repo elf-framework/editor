@@ -12,7 +12,7 @@ import { SizeView } from "~/component/inputs/option-menu/SizeView.jsx";
 import { EmphasisView } from "~/component/inputs/option-menu/EmphasisView.jsx"; 
 import { DisabledView } from "~/component/inputs/option-menu/DisabledView.jsx"; 
 import { ErrorView } from "~/component/inputs/option-menu/ErrorView.jsx"; 
-import { UIComponentLink } from "~/component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
 
 # {title}
 
@@ -20,6 +20,63 @@ Combo boxes combine a text entry with a picker menu, allowing users to filter lo
 
 
 <MainView />
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<OptionMenu
+icon={<AddChartFilled />}
+style={{ width: 200 }}
+items={[
+    {
+        type: "item",
+        title: "Hello",
+        shortcut: "⌃⌥⇧⌘A",
+        onClick: (e, item) => {
+          console.log(item.selected);
+        },
+    },
+    {
+        type: "divider",
+        dashed: true,
+    },
+    { type: "group", title: "Group" },
+    {
+        type: "item",
+        title: "Menu Item",
+        shortcut: "⌃⌥⇧⌘A",
+    },
+    { type: "divider" },
+    { type: "group", title: "Section Title" },
+    {
+        type: "item",
+        title: "Menu Item",
+        items: [
+            { type: "item", title: "Hello", shortcut: "⌃⌥⇧⌘A" },
+            {
+                type: "divider",
+                dashed: true,
+            },
+            { type: "group", title: "Group" },
+            {
+                type: "item",
+                title: "Menu Item",
+                shortcut: "⌃⌥⇧⌘A",
+                onClick: (e, item) => {
+                    console.log(e, item);
+                },
+            },
+        ],
+    },
+]}
+>
+text
+</OptionMenu>
+```
+  </CodeViewItem>
+</CodeView>
 
 ## Options 
 

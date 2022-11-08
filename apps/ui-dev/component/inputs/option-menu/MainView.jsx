@@ -14,6 +14,7 @@ export function MainView() {
       <div style={{ textAlign: "center" }}>
         <OptionMenu
           icon={<AddChartFilled />}
+          style={{ width: 200 }}
           items={[
             {
               type: "item",
