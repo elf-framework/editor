@@ -7,7 +7,7 @@ import { Toolbar, VBox } from "@elf-framework/ui";
 export function MainView() {
   return (
     <VBox
-      style={{ gap: 30, backgroundColor: "var(--color-gray-0)", padding: 60 }}
+      style={{ gap: 50, backgroundColor: "var(--color-gray-0)", padding: 60 }}
     >
       <div>
         <Toolbar
@@ -21,6 +21,11 @@ export function MainView() {
                   icon: <AddCardFilled />,
                   title: "Add Card",
                 },
+                {
+                  type: "menu",
+                  title: "Edit",
+                  items: [{ type: "item", title: "Save a file" }],
+                },
               ],
             },
             {
@@ -28,6 +33,10 @@ export function MainView() {
                 {
                   type: "button",
                   icon: <EditFilled />,
+                  tooltip: {
+                    message: "Edit",
+                    show: true,
+                  },
                   title: "Edit",
                 },
                 {

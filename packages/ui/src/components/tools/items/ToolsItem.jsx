@@ -7,6 +7,7 @@ import {
 
 import { registerComponent } from "../../../utils/component";
 import { Flex } from "../../flex";
+import { Tooltip } from "../../tooltip";
 
 export class ToolsItem extends UIElement {
   initialize() {
@@ -32,13 +33,39 @@ export class ToolsItem extends UIElement {
   }
 
   template() {
-    const { title = "", icon, style = {} } = this.props;
+    const { title = "", icon, style = {}, tooltip } = this.props;
 
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
         selected: this.state.selected ? true : undefined,
       });
     }, [this.state.selected]);
+
+    const buttonComponent = (
+      <button type="button" class="tools-button">
+        <Flex style={{ gap: 10 }}>
+          {[
+            icon ? (
+              <span class="icon">{isFunction(icon) ? icon() : icon}</span>
+            ) : undefined,
+            title ? (
+              <span class="menu-title">
+                {isFunction(title) ? title() : title}
+              </span>
+            ) : undefined,
+          ].filter(Boolean)}
+        </Flex>
+      </button>
+    );
+
+    let localTooltip = tooltip;
+    if (localTooltip) {
+      if (typeof localTooltip === "string") {
+        localTooltip = { message: localTooltip };
+      } else if (typeof localTooltip === "object") {
+        // noop
+      }
+    }
 
     return (
       <div
@@ -47,20 +74,13 @@ export class ToolsItem extends UIElement {
         onClick={this.props.onClick}
         style={style}
       >
-        <button type="button">
-          <Flex style={{ gap: 10 }}>
-            {[
-              icon ? (
-                <span class="icon">{isFunction(icon) ? icon() : icon}</span>
-              ) : undefined,
-              title ? (
-                <span class="menu-title">
-                  {isFunction(title) ? title() : title}
-                </span>
-              ) : undefined,
-            ].filter(Boolean)}
-          </Flex>
-        </button>
+        {localTooltip ? (
+          <Tooltip {...localTooltip} style={{ height: "100%" }}>
+            {buttonComponent}
+          </Tooltip>
+        ) : (
+          buttonComponent
+        )}
       </div>
     );
   }

@@ -126,7 +126,7 @@
       }
     }
 
-    > button {
+    .tools-button {
       width: 100%;
       height: 100%;
       background-color: transparent;
@@ -193,7 +193,7 @@
     &.selected {
       --elf--tools-background-color: var(--elf--tools-selected-background-color);
 
-      > button {
+      .tools-button {
         color: var(--elf--tools-selected-text-color);
       }
 

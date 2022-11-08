@@ -15,9 +15,10 @@
     --elf--tooltip-animation: fadein var(--elf--tooltip-delay) ease-in-out;
     --elf--tooltip-max-width: 160;
     --elf--tooltip-position: relative;
+    --elf--tooltip-height: fit-content;
     position: var(--elf--tooltip-position);
     width: fit-content;
-    height: fit-content;
+    height: var(--elf--tooltip-height);
     display: inline-block;
     z-index: var(--z-index-tooltip);
 
@@ -74,7 +75,7 @@
 
 
     > .content {
-
+        height: var(--elf--tooltip-height);
     }
 
 

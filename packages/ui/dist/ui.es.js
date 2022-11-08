@@ -1931,19 +1931,15 @@ class ToolsItem extends UIElement {
     };
   }
   template() {
-    const { title = "", icon, style: style2 = {} } = this.props;
+    const { title = "", icon, style: style2 = {}, tooltip: tooltip2 } = this.props;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
         selected: this.state.selected ? true : void 0
       });
     }, [this.state.selected]);
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: localClass,
-      "data-selected-type": this.state.selectedType,
-      onClick: this.props.onClick,
-      style: style2
-    }, /* @__PURE__ */ createElementJsx("button", {
-      type: "button"
+    const buttonComponent = /* @__PURE__ */ createElementJsx("button", {
+      type: "button",
+      class: "tools-button"
     }, /* @__PURE__ */ createElementJsx(Flex, {
       style: { gap: 10 }
     }, [
@@ -1953,7 +1949,22 @@ class ToolsItem extends UIElement {
       title ? /* @__PURE__ */ createElementJsx("span", {
         class: "menu-title"
       }, isFunction(title) ? title() : title) : void 0
-    ].filter(Boolean))));
+    ].filter(Boolean)));
+    let localTooltip = tooltip2;
+    if (localTooltip) {
+      if (typeof localTooltip === "string") {
+        localTooltip = { message: localTooltip };
+      }
+    }
+    return /* @__PURE__ */ createElementJsx("div", {
+      class: localClass,
+      "data-selected-type": this.state.selectedType,
+      onClick: this.props.onClick,
+      style: style2
+    }, localTooltip ? /* @__PURE__ */ createElementJsx(Tooltip, {
+      ...localTooltip,
+      style: { height: "100%" }
+    }, buttonComponent) : buttonComponent);
   }
   setSelected(isSelected = false) {
     this.setState({
@@ -2037,7 +2048,8 @@ class ToolsMenuItem extends ToolsItem {
       disabled,
       style: style2
     }, /* @__PURE__ */ createElementJsx("button", {
-      type: "button"
+      type: "button",
+      class: "tools-button"
     }, /* @__PURE__ */ createElementJsx(Flex, {
       style: { columnGap: 4 }
     }, [

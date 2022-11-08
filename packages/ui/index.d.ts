@@ -492,6 +492,7 @@ declare module "@elf-framework/ui" {
     title: string;
     icon?: string;
     selected?: boolean;
+    tooltip?: string | TooltipProps;
     selectedType?: "primary" | "secondary";
     events?: string[];
     onClick?: (event: PointerEvent) => void;

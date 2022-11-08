@@ -1,5 +1,20 @@
 # @elf-framework/design-system
 
+## 0.0.77
+
+### Patch Changes
+
+- fixed menu style in toolbar menu item
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.77
+
+## 0.0.76
+
+### Patch Changes
+
+- support tooltip in toolbar button item
+
 ## 0.0.69
 
 ### Patch Changes

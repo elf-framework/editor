@@ -74,7 +74,7 @@ export class ToolsMenuItem extends ToolsItem {
 
     return (
       <div class={localClass} disabled={disabled} style={style}>
-        <button type="button">
+        <button type="button" class="tools-button">
           <Flex style={{ columnGap: 4 }}>
             {[
               icon ? (

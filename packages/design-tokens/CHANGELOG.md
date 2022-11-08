@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.77
+
+### Patch Changes
+
+- fixed menu style in toolbar menu item
+
 ## 0.0.73
 
 ### Patch Changes
