@@ -12,7 +12,7 @@ import { SizeView } from "~/component/inputs/checkbox-group/SizeView.jsx";
 import { EmphasisView } from "~/component/inputs/checkbox-group/EmphasisView.jsx"; 
 import { DisabledView } from "~/component/inputs/checkbox-group/DisabledView.jsx"; 
 import { ErrorView } from "~/component/inputs/checkbox-group/ErrorView.jsx"; 
-import { UIComponentLink } from "~/component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
 
 # {title}
 
@@ -20,33 +20,126 @@ A checkbox group is a grouping of checkboxes that are related to each other.
 
 <MainView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+import {start} from "@elf-framework/sapa";
+import {CheckboxGroup} from "@elf-framework/ui";
+
+start(
+<CheckboxGroup
+    direction="vertical"
+    value={[10]}
+    options={[
+        { value: 10, label: "Travel" },
+        { value: 20, label: "Music" },
+        { value: 30, label: "Shopping" },
+    ]}
+    onChange={(e, values) => console.log(values)}
+/>)
+```
+  </CodeViewItem>
+</CodeView>
+
 ## Options 
-
-### Label
-
-
-### Selection
-
-
 
 ### Size
 
 <SizeView />
 
 
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {8} showLineNumbers
+import {start} from "@elf-framework/sapa";
+import {CheckboxGroup} from "@elf-framework/ui";
 
-### Emphasis
-
-
+start(
+<CheckboxGroup
+    direction="vertical"
+    value={[10]}
+    size="extra-large"
+    options={[
+        { value: 10, label: "Travel" },
+        { value: 20, label: "Music" },
+        { value: 30, label: "Shopping" },
+    ]}
+    onChange={(e, values) => console.log(values)}
+/>)
+```
+  </CodeViewItem>
+</CodeView>
 
 
 ### Disabled
 
 <DisabledView />
 
+&nbsp;
+
+A checkbox group in a disabled state shows that a selection exists,
+but is not available in that circumstance. This can be used to
+maintain layout continuity and communicate that an action may become
+available later. The field label, checkboxes, and help text are all
+displayed in a disabled state when the checkbox group is disabled.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {8} showLineNumbers
+import {start} from "@elf-framework/sapa";
+import {CheckboxGroup} from "@elf-framework/ui";
+
+start(
+<CheckboxGroup
+    direction="vertical"
+    value={[10]}
+    size="extra-large"
+    options={[
+        { value: 10, label: "Travel" },
+        { value: 20, label: "Music" },
+        { value: 30, label: "Shopping" },
+    ]}
+    onChange={(e, values) => console.log(values)}
+/>)
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ### Error
 
 <ErrorView />
 
+&nbsp;
+
+Checkboxes can be marked as having an error to show that a selection
+needs to be made in order to move forward, or that a selection that
+was made is invalid. For example, in a form that requires a user to
+acknowledge legal terms before proceeding, the checkbox would show an
+unchecked error to communicate that it needs to be selected.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {8} showLineNumbers
+import {start} from "@elf-framework/sapa";
+import {CheckboxGroup} from "@elf-framework/ui";
+
+start(
+ <CheckboxGroup
+    direction="vertical"
+    value={[10]}
+    variant="danger"
+    options={[
+        { value: 10, label: "Travel" },
+        { value: 20, label: "Music" },
+        { value: 30, label: "Shopping" },
+    ]}
+    onChange={(e, values) => console.log(values)}
+/>)
+```
+  </CodeViewItem>
+</CodeView>
 
 

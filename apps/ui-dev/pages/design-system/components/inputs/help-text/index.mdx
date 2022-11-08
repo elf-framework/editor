@@ -10,10 +10,8 @@ import { OptionsView } from "~/component/inputs/help-text/OptionsView.jsx";
 import { VariantView } from "~/component/inputs/help-text/VariantView.jsx"; 
 import { IconView } from "~/component/inputs/help-text/IconView.jsx"; 
 import { SizeView } from "~/component/inputs/help-text/SizeView.jsx"; 
-import { EmphasisView } from "~/component/inputs/help-text/EmphasisView.jsx"; 
 import { DisabledView } from "~/component/inputs/help-text/DisabledView.jsx"; 
-import { ErrorView } from "~/component/inputs/help-text/ErrorView.jsx"; 
-import { UIComponentLink } from "~/component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
 
 # {title}
 
@@ -22,25 +20,187 @@ Help text provides either an informative description or an error message that gi
 
 <MainView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<div style={{ textAlign: "left", width: 300 }}>
+    <InputEditor value="sample text" />
+    <HelpText variant="danger">
+        Create password with at least 8 characters.
+    </HelpText>
+</div>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ## Options 
 
 ### Text
 
 <OptionsView />
 
+&nbsp;
+
+
+The text can accommodate either a description or an error message,
+giving extra context and guidance. Sometimes this communicates what
+to input or select, and sometimes it communicates how. It includes
+information such as:
+
+* An overall description of an input field or controls
+* Hints for what kind of information needs to be input or selected
+* Specific formatting examples or requirements
+
+Regardless of the kind of message, it should be clear and concise.
+
+Use 1-2 short, complete sentences that end with a period (never anexclamation point). 
+When showing formatting examples, it's not
+necessary to end with a period.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<HelpText>xxx@elf-framework.com</HelpText>
+
+<HelpText>
+    Select the best way to contact you in case there's issue with your account.
+</HelpText>
+
+<HelpText variant="danger">Enter your email address.</HelpText>
+
+<HelpText variant="danger"> Select a contact method.</HelpText>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 
 ### Variants
 
 <VariantView />
 
+&nbsp;
+
+Help text has two variants: neutral and negative. The neutral
+variant is used to convey informative messages, while the negative
+variant is used to convey error messages.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+ <div>
+    <div>
+        <em>Neutral</em>
+    </div>
+    <HelpText>Password must be at least 8 characters.</HelpText>
+</div>
+<div>
+    <div>
+        <em>primary</em>
+    </div>
+    <HelpText variant="primary">
+        Password must be at least 8 characters.
+    </HelpText>
+</div>
+<div>
+    <div>
+        <em>Success</em>
+    </div>
+    <HelpText variant="success">
+        Password must be at least 8 characters.
+    </HelpText>
+</div>
+<div>
+    <div>
+        <em>warning</em>
+    </div>
+    <HelpText variant="warning">
+        Password must be at least 8 characters.
+    </HelpText>
+</div>
+<div>
+    <div>
+        <em>Danger</em>
+    </div>
+    <HelpText variant="danger">
+        Password must be at least 8 characters.
+    </HelpText>
+</div>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ### Icon 
 
 <IconView />
+
+&nbsp;
+
+Help text using the negative variant can have an optional icon. In
+most cases, help text is used with a component that already displays
+an icon communicating an error (e.g., text field, text area, picker,
+combo box), so it’s not necessary to include another icon. In other
+cases, help text that is used with a component that does not display
+an icon communicating an error (e.g., checkbox group, radio group)
+needs to display an icon.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<div>
+    <div>
+        <em>With icon</em>
+    </div>
+    <HelpText icon={<WarningOutlined />} variant="danger">
+        Password must be at least 8 characters.
+    </HelpText>
+</div>
+<div>
+    <div>
+        <em>Without icon</em>
+    </div>
+    <HelpText variant="danger">
+        Password must be at least 8 characters.
+    </HelpText>
+</div>
+```
+  </CodeViewItem>
+</CodeView>
 
 
 ### Size
 
 <SizeView />
+
+&nbsp;
+
+Help text comes in four different sizes: small, medium, large, and
+extra-large. The medium size is the default and most frequent
+option. Use the other sizes sparingly and pair them with components
+of the same size to respect the built-in hierarchy.
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+{["small", "medium", "large", "extra-large"].map((size) => (
+    <div>
+        <div>
+        <em>{size}</em>
+        </div>
+        <HelpText icon={<WarningOutlined />} size={size} variant="danger">
+        Password must be at least 8 characters.
+        </HelpText>
+    </div>
+))}
+```
+  </CodeViewItem>
+</CodeView>
 
 
 
@@ -49,3 +209,22 @@ Help text provides either an informative description or an error message that gi
 <DisabledView />
 
 
+&nbsp;
+
+Help text using the neutral variant can be displayed in a disabled
+state. The text appears with a lighter gray that matches the style of
+other components in a disabled state. Help text using the negative
+variant cannot be displayed in a disabled state because it
+communicates an error, and error messages should not be visible when
+the component is disabled.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<HelpText icon={<WarningOutlined />} disabled>
+    Password must be at least 8 characters.
+</HelpText>
+```
+  </CodeViewItem>
+</CodeView>

@@ -10,7 +10,7 @@ import { OptionsView } from "~/component/inputs/field/OptionsView.jsx";
 import { LabelPositionView } from "~/component/inputs/field/LabelPositionView.jsx"; 
 import { SizeView } from "~/component/inputs/field/SizeView.jsx"; 
 import { DisabledView } from "~/component/inputs/field/DisabledView.jsx"; 
-import { UIComponentLink } from "~/component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
 
 # {title}
 
@@ -19,24 +19,134 @@ Help text provides either an informative description or an error message that gi
 
 <MainView />
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Field label="Email address">
+    <InputEditor value="sample text" />
+</Field>
+
+<Field label="Account Type">
+    <RadioGroup
+        direction="vertical"
+        value={10}
+        options={[
+            { value: 10, label: "Travel", checked: true },
+            { value: 20, label: "Music" },
+            { value: 30, label: "Shopping" },
+        ]}
+    />
+</Field>
+```
+  </CodeViewItem>
+</CodeView>
+
 ## Options 
 
 ### Label
 
 <OptionsView />
 
+&nbsp;
+
+Inputs (text fields, checkboxes, sliders, etc.) should always have a
+label. In rare cases where context is sufficient and an
+accessibility expert has reviewed the design, the label could be
+undefined. These inputs without a visible label should still include
+an aria-label in HTML (depending on the context, “aria-label” or
+“aria-labelledby”).
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Field label="Email address">
+    <InputEditor />
+</Field>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ### Label position
 
 <LabelPositionView />
+
+
+&nbsp;
+
+A label can be placed either on top or on the side of an input. This
+option affects the bounding box of the component to ensure proper
+alignment. Top labels are the default and are recommended because
+they work better with long copy, localization, and responsive
+layouts. Side labels are most useful when vertical space is limited.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+
+<Field label="Email address">
+    <InputEditor />
+</Field>
+
+<Field label="Email address" position="horizontal">
+    <InputEditor />
+</Field>
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Size
 
 <SizeView />
 
+&nbsp;
 
+Help text comes in four different sizes: small, medium, large, and
+extra-large. The medium size is the default and most frequent
+option. Use the other sizes sparingly and pair them with components
+of the same size to respect the built-in hierarchy.
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+{["small", "medium", "large", "extra-large"].map((size) => (
+    <div style={{ display: "flex" }}>
+        <div style={{ flex: "none", width: 100 }}>
+        <em>{size}</em>
+        </div>
+        <Field label={"Label"} size={size} required={true} />
+    </div>
+))}
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Disabled
 
 <DisabledView />
 
 
+&nbsp;
+
+A field label in a disabled state shows that an input field exists,
+but is not available in that circumstance. This can be used to
+maintain layout continuity and communicate that an input field may
+become available later.
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Field label="Country" disabled>
+    <InputEditor disabled />
+</Field>
+```
+  </CodeViewItem>
+</CodeView>
