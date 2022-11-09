@@ -24,7 +24,26 @@ export function MainView() {
                 {
                   type: "menu",
                   title: "Edit",
-                  items: [{ type: "item", title: "Save a file" }],
+                  // opened: true,
+                  trigger: "click",
+                  items: [
+                    {
+                      type: "item",
+                      title: "Save a file",
+                      description: "create a new shape",
+                    },
+                    {
+                      type: "item",
+                      title: "Save a file",
+                    },
+                    "-",
+                    {
+                      type: "item",
+                      title: "Save a file",
+                      description: "create a new shape",
+                    },
+                    "-",
+                  ],
                 },
               ],
             },

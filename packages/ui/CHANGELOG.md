@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.79
+
+### Patch Changes
+
+- update menu style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.79
+
 ## 0.0.78
 
 ### Patch Changes
