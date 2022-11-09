@@ -16,7 +16,8 @@ import { DisabledView } from "~/component/inputs/textarea/DisabledView.jsx";
 import { ReadOnlyView } from "~/component/inputs/textarea/ReadOnlyView.jsx"; 
 import { HelpTextView } from "~/component/inputs/textarea/HelpTextView.jsx"; 
 import { ResizableView } from "~/component/inputs/textarea/ResizableView.jsx"; 
-import { UIComponentLink } from "~/component/UIComponentLink.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+
 
 # {title}
 
@@ -26,11 +27,45 @@ A text area lets a user input a longer amount of text than a standard text field
 <MainView />
 
 
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<TextArea
+    label={"Description"}
+    value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
+    rows={7}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
 ## Options 
 
 ### Label
 
 <OptionsView />
+
+&nbsp; 
+
+A Text area should always have a label. In rare cases where context
+is sufficient and an accessibility expert has reviewed the design,
+the label could be undefined. A text area without a visible label
+should still include an aria-label in HTML (depending on the
+context, “aria-label” or “aria-labelledby”).
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<TextArea
+    label={"Description"}
+    value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
+    rows={3}
+/>
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Label position
 

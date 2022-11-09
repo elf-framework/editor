@@ -21,11 +21,38 @@ The switch allows the user to turn individual options on or off. Typically used 
 <MainView />
 
 
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+ <Switch
+    checked
+    onClick={(e) => {
+    console.log(e.target.checked ? "checked" : "unchecked");
+    }}
+>
+    Available offline
+</Switch>
+<Switch>Require password </Switch>
+<Switch>Allow commenting</Switch>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
 ## Options 
 
 ### Label
 
 <OptionsView />
+
+&nbsp;
+
+Switches should always have labels. When the label is not defined, a
+switch becomes standalone. Standalone switches should only be used
+when their connection to other components is clear and they give
+sufficient context — for example, in application panels.
 
 
 <CodeView>
@@ -44,6 +71,12 @@ The switch allows the user to turn individual options on or off. Typically used 
 
 <SizeView />
 
+&nbsp; 
+
+Switches come in four different sizes: small, medium, large, and
+extra-large. The medium size is the default and most frequently used
+option. Use the other sizes sparingly; they should be used to create a
+hierarchy of importance within the page.
 
 <CodeView>
     <CodeViewItem title="Sapa">
@@ -73,6 +106,17 @@ The switch allows the user to turn individual options on or off. Typically used 
 <EmphasisView />
 
 
+&nbsp;
+
+By default, Switches are not emphasized (gray). This version is
+optimal for when the Switch is not the core part of an interface, such
+as in application panels, where all visual components are monochrome
+in order to direct focus to the content.
+
+The emphasized (blue) version provides a visual prominence that is
+optimal for forms, settings, lists or grids of assets, and other
+situations where a Switch need to be noticed.
+
 <CodeView>
     <CodeViewItem title="Sapa">
 ```jsx {1,4,7} showLineNumbers
@@ -95,9 +139,35 @@ The switch allows the user to turn individual options on or off. Typically used 
 
 <DisabledView />
 
+&nbsp;
+
+A Switch in a disabled state shows that a selection exists, but is not
+available in that circumstance. This can be used to maintain layout
+continuity and communicate that an action may become available later.
+
+<CodeView>
+    <CodeViewItem title="Sapa">
+```jsx {1,4,7} showLineNumbers
+<Switch disabled>label</Switch>
+<Switch disabled checked>
+    label
+</Switch>
+<Switch disabled indeterminate>
+    label
+</Switch>
+```
+    </CodeViewItem>
+</CodeView>
+
 ### Read only
 
 <ReadOnlyView />
+
+&nbsp;
+
+Switches have a read-only option for when they’re in the disabled
+state but still need their labels to be shown. This allows for content
+to be copied, but not interacted with or changed.
 
 
 <CodeView>
@@ -120,6 +190,11 @@ The switch allows the user to turn individual options on or off. Typically used 
 ### With label view
 
 <WithLabelView />
+
+&nbsp;
+
+You can also put text inside the switch. The font size is
+automatically calculated by the switch height.
 
 
 <CodeView>
