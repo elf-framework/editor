@@ -31,6 +31,7 @@ export function MainView() {
           }}
         >
           <Toast
+            delay={2000}
             direction="bottom-right"
             icon={<InfoOutlined />}
             style={{

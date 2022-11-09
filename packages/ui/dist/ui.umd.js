@@ -393,7 +393,8 @@ var __privateMethod = (obj, member, method) => {
     transformOrigin: "transformOrigin",
     width: "width",
     whiteSpace: "whiteSpace",
-    wrap: "flexWrap"
+    wrap: "flexWrap",
+    zIndex: "zIndex"
   };
   function convertNumberStyleValue(key, value) {
     if (typeof value === "number") {
@@ -535,23 +536,10 @@ var __privateMethod = (obj, member, method) => {
       (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
     }
   }
-  function alert({
-    content = void 0,
-    delay = 0,
-    title = void 0,
-    closable = false,
-    options = {},
-    style: style2 = {}
-  }) {
-    return sapa.potal(
-      /* @__PURE__ */ sapa.createElementJsx(Alert, {
-        title,
-        delay,
-        closable,
-        style: style2
-      }, content),
-      options
-    );
+  function alert({ content = void 0, options = {}, ...extraProps }) {
+    return sapa.potal(/* @__PURE__ */ sapa.createElementJsx(Alert, {
+      ...extraProps
+    }, content), options);
   }
   registerComponent("Alert", Alert);
   registerComponent("alert", Alert);
@@ -2473,8 +2461,10 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: {
           ...propertyMap(style2, cssProperties$A),
-          transition: `opacity ${localDelay}ms ease-in-out`,
-          opacity: hide ? 0 : 1
+          transition: `opacity ${localDelay}ms ease-in-out, transform  ${localDelay}ms ease-in-out`,
+          opacity: hide ? 0 : 1,
+          transform: hide ? "scale(0.3)" : "scale(1)",
+          transformOrigin: "center top"
         }
       };
       sapa.useEffect(() => {
@@ -2512,7 +2502,7 @@ var __privateMethod = (obj, member, method) => {
         iconOnly: true,
         quiet: true,
         closable: true,
-        onClick: () => this.hide()
+        onClick: () => this.hide(1)
       }, "\xD7")) : void 0);
     }
     hide(hideDelay = 0) {
@@ -2520,29 +2510,10 @@ var __privateMethod = (obj, member, method) => {
       (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
     }
   }
-  function toast({
-    content = "",
-    delay = 0,
-    direction = "bottom",
-    cloasable = false,
-    icon = null,
-    onClose,
-    tools = [],
-    options = {},
-    style: style2 = {}
-  }) {
-    const rootInstance = sapa.potal(
-      /* @__PURE__ */ sapa.createElementJsx(Toast, {
-        delay,
-        icon,
-        direction,
-        tools,
-        style: style2,
-        cloasable,
-        onClose
-      }, content),
-      options
-    );
+  function toast({ content = "", options = {}, ...extraProps }) {
+    const rootInstance = sapa.potal(/* @__PURE__ */ sapa.createElementJsx(Toast, {
+      ...extraProps
+    }, content), options);
     return Object.values(rootInstance.children)[0];
   }
   registerComponent("toast", Toast);

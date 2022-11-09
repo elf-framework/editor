@@ -450,7 +450,7 @@ export class EventMachine extends HookMachine {
     this.runHandlers("destroy");
 
     if (isRemoveElement) {
-      this.$el.remove();
+      this.$el?.remove();
       this.$el = null;
       this.onUnmounted();
     }

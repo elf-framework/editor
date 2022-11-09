@@ -61,8 +61,10 @@ export class Toast extends UIElement {
       class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
-        transition: `opacity ${localDelay}ms ease-in-out`,
+        transition: `opacity ${localDelay}ms ease-in-out, transform  ${localDelay}ms ease-in-out`,
         opacity: hide ? 0 : 1,
+        transform: hide ? "scale(0.3)" : "scale(1)",
+        transformOrigin: "center top",
       },
     };
 
@@ -103,7 +105,7 @@ export class Toast extends UIElement {
               iconOnly
               quiet
               closable
-              onClick={() => this.hide()}
+              onClick={() => this.hide(1)}
             >
               &times;
             </Button>
@@ -118,31 +120,8 @@ export class Toast extends UIElement {
   }
 }
 
-export function toast({
-  content = "",
-  delay = 0,
-  direction = "bottom",
-  cloasable = false,
-  icon = null,
-  onClose,
-  tools = [],
-  options = {},
-  style = {},
-}) {
-  const rootInstance = potal(
-    <Toast
-      delay={delay}
-      icon={icon}
-      direction={direction}
-      tools={tools}
-      style={style}
-      cloasable={cloasable}
-      onClose={onClose}
-    >
-      {content}
-    </Toast>,
-    options
-  );
+export function toast({ content = "", options = {}, ...extraProps }) {
+  const rootInstance = potal(<Toast {...extraProps}>{content}</Toast>, options);
 
   return Object.values(rootInstance.children)[0];
 }

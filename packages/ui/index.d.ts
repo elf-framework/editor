@@ -613,17 +613,15 @@ declare module "@elf-framework/ui" {
   }
 
   /** call Toast with potal */
-  export function toast(arg: {
-    content: ContentType;
-    delay?: number;
-    direction?: ToastDirectionType;
-    tools?: ContentType[];
-    options?:
-      | {
-          container: HTMLElement | string;
-        }
-      | unknown;
-  }): Toast;
+  export function toast(
+    arg: {
+      options?:
+        | {
+            container: HTMLElement | string;
+          }
+        | unknown;
+    } & ToastProps
+  ): Toast;
 
   interface TooltipStyle {
     backgroundColor?: string;
@@ -1265,20 +1263,15 @@ declare module "@elf-framework/ui" {
   }
 
   /** call Alert with potal */
-  export function alert(arg: {
-    content?: ContentType;
-    title?: ContentType;
-    delay?: number;
-    style?: CommonStyle;
-    closable?: boolean;
-    onShow?: () => void;
-    onHide?: () => void;
-    options?:
-      | {
-          container: HTMLElement | string;
-        }
-      | unknown;
-  }): Alert;
+  export function alert(
+    arg: {
+      options?:
+        | {
+            container: HTMLElement | string;
+          }
+        | unknown;
+    } & AlertProps
+  ): Alert;
 
   interface HelpTextProps {
     content: ContentType;

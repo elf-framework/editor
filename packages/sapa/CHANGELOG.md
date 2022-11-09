@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 0.0.82
+
+### Patch Changes
+
+- fixed zIndex to number props
+
+## 0.0.80
+
+### Patch Changes
+
+- modify this.$el check bug
+
 ## 0.0.75
 
 ### Patch Changes

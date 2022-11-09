@@ -127,20 +127,8 @@ export class Alert extends UIElement {
   }
 }
 
-export function alert({
-  content = undefined,
-  delay = 0,
-  title = undefined,
-  closable = false,
-  options = {},
-  style = {},
-}) {
-  return potal(
-    <Alert title={title} delay={delay} closable={closable} style={style}>
-      {content}
-    </Alert>,
-    options
-  );
+export function alert({ content = undefined, options = {}, ...extraProps }) {
+  return potal(<Alert {...extraProps}>{content}</Alert>, options);
 }
 
 registerComponent("Alert", Alert);

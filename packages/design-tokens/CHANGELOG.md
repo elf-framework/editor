@@ -1,5 +1,17 @@
 # @elf-framework/design-tokens
 
+## 0.0.83
+
+### Patch Changes
+
+- fixed zIndex to z-index in View component
+
+## 0.0.81
+
+### Patch Changes
+
+- update alert, toast props
+
 ## 0.0.79
 
 ### Patch Changes

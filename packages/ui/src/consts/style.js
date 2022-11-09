@@ -119,4 +119,5 @@ export const ComponentPropsToStylePropsMap = {
   width: "width",
   whiteSpace: "whiteSpace",
   wrap: "flexWrap",
+  zIndex: "zIndex",
 };

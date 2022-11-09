@@ -32,7 +32,7 @@ const NumberStyleKeys = {
   orphans: true,
   tabSize: true,
   widows: true,
-  zIndex: true,
+  // zIndex: true,  // pure number is not allowed
   zoom: true,
   width: true,
   maxWidth: true,

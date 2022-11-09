@@ -1919,6 +1919,7 @@ const _EventMachine = class extends HookMachine {
     });
   }
   destroy(isRemoveElement = false) {
+    var _a;
     removeRenderCallback(this);
     Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
       const childInstance = __privateGet(this, _childObjectElements).get(child);
@@ -1930,7 +1931,7 @@ const _EventMachine = class extends HookMachine {
     });
     this.runHandlers("destroy");
     if (isRemoveElement) {
-      this.$el.remove();
+      (_a = this.$el) == null ? void 0 : _a.remove();
       this.$el = null;
       this.onUnmounted();
     }
@@ -2354,7 +2355,6 @@ const NumberStyleKeys = {
   orphans: true,
   tabSize: true,
   widows: true,
-  zIndex: true,
   zoom: true,
   width: true,
   maxWidth: true,

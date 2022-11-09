@@ -391,7 +391,8 @@ const ComponentPropsToStylePropsMap = {
   transformOrigin: "transformOrigin",
   width: "width",
   whiteSpace: "whiteSpace",
-  wrap: "flexWrap"
+  wrap: "flexWrap",
+  zIndex: "zIndex"
 };
 function convertNumberStyleValue(key, value) {
   if (typeof value === "number") {
@@ -533,23 +534,10 @@ class Alert extends UIElement {
     (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
   }
 }
-function alert({
-  content = void 0,
-  delay = 0,
-  title = void 0,
-  closable = false,
-  options = {},
-  style: style2 = {}
-}) {
-  return potal(
-    /* @__PURE__ */ createElementJsx(Alert, {
-      title,
-      delay,
-      closable,
-      style: style2
-    }, content),
-    options
-  );
+function alert({ content = void 0, options = {}, ...extraProps }) {
+  return potal(/* @__PURE__ */ createElementJsx(Alert, {
+    ...extraProps
+  }, content), options);
 }
 registerComponent("Alert", Alert);
 registerComponent("alert", Alert);
@@ -2471,8 +2459,10 @@ class Toast extends UIElement {
       class: localClass,
       style: {
         ...propertyMap(style2, cssProperties$A),
-        transition: `opacity ${localDelay}ms ease-in-out`,
-        opacity: hide ? 0 : 1
+        transition: `opacity ${localDelay}ms ease-in-out, transform  ${localDelay}ms ease-in-out`,
+        opacity: hide ? 0 : 1,
+        transform: hide ? "scale(0.3)" : "scale(1)",
+        transformOrigin: "center top"
       }
     };
     useEffect(() => {
@@ -2510,7 +2500,7 @@ class Toast extends UIElement {
       iconOnly: true,
       quiet: true,
       closable: true,
-      onClick: () => this.hide()
+      onClick: () => this.hide(1)
     }, "\xD7")) : void 0);
   }
   hide(hideDelay = 0) {
@@ -2518,29 +2508,10 @@ class Toast extends UIElement {
     (_a = this.state) == null ? void 0 : _a.hideCallback(hideDelay);
   }
 }
-function toast({
-  content = "",
-  delay = 0,
-  direction = "bottom",
-  cloasable = false,
-  icon = null,
-  onClose,
-  tools = [],
-  options = {},
-  style: style2 = {}
-}) {
-  const rootInstance = potal(
-    /* @__PURE__ */ createElementJsx(Toast, {
-      delay,
-      icon,
-      direction,
-      tools,
-      style: style2,
-      cloasable,
-      onClose
-    }, content),
-    options
-  );
+function toast({ content = "", options = {}, ...extraProps }) {
+  const rootInstance = potal(/* @__PURE__ */ createElementJsx(Toast, {
+    ...extraProps
+  }, content), options);
   return Object.values(rootInstance.children)[0];
 }
 registerComponent("toast", Toast);
