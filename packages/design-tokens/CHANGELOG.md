@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.90
+
+### Patch Changes
+
+- add extra-small size to button
+
 ## 0.0.89
 
 ### Patch Changes

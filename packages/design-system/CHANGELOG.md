@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.90
+
+### Patch Changes
+
+- add extra-small size to button
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.90
+
 ## 0.0.89
 
 ### Patch Changes

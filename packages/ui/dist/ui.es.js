@@ -2527,31 +2527,35 @@ function FixedTooltip({
   ...tooltipProps
 }) {
   const tooltipRef = useRef(null);
-  const onMouseEnter = useCallback((e) => {
-    const target = Dom.create(e.target);
-    const labelRect = target.rect();
-    const { left, top, width, height, right, bottom } = labelRect;
-    (options == null ? void 0 : options.container) || document.body;
-    tooltipRef.current = tooltip({
-      placement: "top",
-      ...tooltipProps,
-      message,
-      position,
-      style: {
-        left,
-        top,
-        width,
-        height,
-        right,
-        bottom
-      },
-      options
-    });
-  }, []);
+  const onMouseEnter = useCallback(
+    (e) => {
+      const target = Dom.create(e.target);
+      const labelRect = target.rect();
+      const { left, top, width, height, right, bottom } = labelRect;
+      (options == null ? void 0 : options.container) || document.body;
+      tooltipRef.current = tooltip({
+        placement: "top",
+        ...tooltipProps,
+        message,
+        position,
+        style: {
+          left,
+          top,
+          width,
+          height,
+          right,
+          bottom
+        },
+        options
+      });
+    },
+    [message]
+  );
   const onMouseLeave = useCallback(() => {
     tooltipRef.current.close();
     tooltipRef.current.remove();
-  }, []);
+    tooltipRef.current = null;
+  }, [message]);
   return /* @__PURE__ */ createElementJsx("div", {
     class: "elf--fixed-tooltip",
     style: {

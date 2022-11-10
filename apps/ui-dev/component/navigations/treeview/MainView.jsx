@@ -2,13 +2,7 @@ import ChevronRightFilled from "@elf-framework/icon/ChevronRightFilled";
 import DescriptionFilled from "@elf-framework/icon/DescriptionFilled";
 import FolderFilled from "@elf-framework/icon/FolderFilled";
 import { useRender, useState } from "@elf-framework/sapa";
-import {
-  Button,
-  FixedTooltip,
-  TreeView,
-  TreeViewProvider,
-  VBox,
-} from "@elf-framework/ui";
+import { Button, TreeView, TreeViewProvider, VBox } from "@elf-framework/ui";
 
 import treeData from "./data/base.json";
 
@@ -78,10 +72,10 @@ export function MainView() {
           }}
           renderActions={() => {
             return [
-              <Button quiet shape="square" iconOnly>
+              <Button quiet shape="square" iconOnly size="extra-small">
                 I
               </Button>,
-              <Button quiet shape="square" iconOnly>
+              <Button quiet shape="square" iconOnly size="extra-small">
                 II
               </Button>,
             ];

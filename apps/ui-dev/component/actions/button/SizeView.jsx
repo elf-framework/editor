@@ -7,24 +7,26 @@ export function SizeView() {
       <VBox
         style={{ gap: 30, backgroundColor: "var(--color-gray-0)", padding: 40 }}
       >
-        {["small", "medium", "large", "extra-large"].map((size) => (
-          <Grid columns={[1, 2]} gap={20}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
-            >
-              <label>{size}</label>
-            </div>
-            <div>
-              <RoundButton size={size} variant="primary">
-                <SettingsFilled /> Share
-              </RoundButton>
-            </div>
-          </Grid>
-        ))}
+        {["extra-small", "small", "medium", "large", "extra-large"].map(
+          (size) => (
+            <Grid columns={[1, 2]} gap={20}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                }}
+              >
+                <label>{size}</label>
+              </div>
+              <div>
+                <RoundButton size={size} variant="primary">
+                  <SettingsFilled /> Share
+                </RoundButton>
+              </div>
+            </Grid>
+          )
+        )}
       </VBox>
       <div>
         <p>
