@@ -10728,11 +10728,11 @@
       ]
     },
     "tooltip": {
-      "value": "{z-index.100}",
+      "value": "{z-index.10000}",
       "filePath": "tokens/layout/z-index.json",
       "isSource": true,
       "original": {
-        "value": "{z-index.100}"
+        "value": "{z-index.10000}"
       },
       "attributes": {
         "category": "z-index",

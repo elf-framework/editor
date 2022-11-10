@@ -22,7 +22,7 @@
     "40000": { "value": "40000" },
     "50000": { "value": "50000" },
     "tooltip": {
-      "value": "{z-index.100.value}"
+      "value": "{z-index.10000.value}"
     },
     "menu": {
       "value": "{z-index.100.value}"

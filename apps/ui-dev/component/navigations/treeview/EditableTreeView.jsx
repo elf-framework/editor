@@ -53,11 +53,9 @@ export function EditableTreeView() {
       </VBox>
       <div>
         <p>
-          Use thumbnails for when a user needs to have a preview of the content
-          contained in a tree view item. Thumbnails are primarily used in
-          experiences such as layer panels.
-          <br />
-          (with itemHeight={40})
+          You can edit the label when you double-click the label. During
+          editing, the Enter key means completion, and if you lose focus or
+          press Escape, you can cancel the editing.
         </p>
       </div>
     </Grid>

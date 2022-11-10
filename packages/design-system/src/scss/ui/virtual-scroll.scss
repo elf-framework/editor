@@ -21,7 +21,6 @@
     > .elf--virtual-scroll-panel {
         position: relative;
         height: var(--elf--virtual-scroll-panel-height, fit-content);
-        contain: size;
 
         > .elf--virtual-scroll-content-area {
             position: relative;
@@ -43,7 +42,6 @@
                 width: var(--elf--virtual-scroll-item-width);
                 height: var(--elf--virtual-scroll-item-height);
                 transform: translate3d(0px, var(--elf--virtual-scroll-item-top, 0px), 0px);
-                contain: size;
             }
         }
     }

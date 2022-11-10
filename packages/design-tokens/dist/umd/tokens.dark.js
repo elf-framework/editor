@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 10 Nov 2022 08:28:45 GMT
+ * Generated on Thu, 10 Nov 2022 11:54:45 GMT
  */
 
 (function(root, factory) {
@@ -11370,11 +11370,11 @@
       ]
     },
     "tooltip": {
-      "value": "100",
+      "value": "10000",
       "filePath": "tokens/layout/z-index.json",
       "isSource": false,
       "original": {
-        "value": "{z-index.100.value}"
+        "value": "{z-index.10000.value}"
       },
       "name": "ZIndexTooltip",
       "attributes": {

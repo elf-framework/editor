@@ -12,6 +12,7 @@ import { PlacementView } from "~/component/feedback/tooltip/PlacementView.jsx";
 import { ClosableView } from "~/component/feedback/tooltip/ClosableView.jsx"; 
 import { VariantView } from "~/component/feedback/tooltip/VariantView.jsx"; 
 import { MaxWidthView } from "~/component/feedback/tooltip/MaxWidthView.jsx"; 
+import { FixedTooltipView } from "~/component/feedback/tooltip/FixedTooltipView.jsx"; 
 import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
 
 # {title}
@@ -173,6 +174,29 @@ The default placement value is at the top.
         <InfoOutlined />
     </Button>
 </Tooltip>
+```
+  </CodeViewItem>
+</CodeView>
+
+## Fixed tooltip
+
+<FixedTooltipView />
+
+&nbsp;
+
+Tooltips sometimes need to be shown beyond the display area.
+ 
+Then you can use the FixedTooltip to show the tooltip in a wider area.
+
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {11} showLineNumbers
+<FixedTooltip message={"Sample"}>
+  <InfoOutlined /> Hello
+</FixedTooltip>
 ```
   </CodeViewItem>
 </CodeView>

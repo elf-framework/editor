@@ -1,6 +1,12 @@
 import ChevronRightFilled from "@elf-framework/icon/ChevronRightFilled";
 import { useState } from "@elf-framework/sapa";
-import { Grid, VBox, TreeViewProvider, TreeView } from "@elf-framework/ui";
+import {
+  Grid,
+  VBox,
+  TreeViewProvider,
+  TreeView,
+  Tooltip,
+} from "@elf-framework/ui";
 
 import treeData from "./data/base.json";
 
@@ -59,6 +65,13 @@ export function TooltipView() {
               }}
               renderArrow={() => {
                 return <ChevronRightFilled />;
+              }}
+              renderActions={(item) => {
+                return [
+                  <Tooltip message={"text"} placement="top" show>
+                    <ChevronRightFilled />
+                  </Tooltip>,
+                ];
               }}
               showTooltip
               itemHeight={40}

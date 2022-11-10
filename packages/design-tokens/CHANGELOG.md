@@ -1,5 +1,17 @@
 # @elf-framework/design-tokens
 
+## 0.0.89
+
+### Patch Changes
+
+- implement FixedTooltip component
+
+## 0.0.88
+
+### Patch Changes
+
+- implement FixedTooltip component
+
 ## 0.0.86
 
 ### Patch Changes

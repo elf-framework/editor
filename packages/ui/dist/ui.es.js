@@ -27,7 +27,7 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
-import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent } from "@elf-framework/sapa";
+import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, useRef, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 const style = "";
 function usePointerStart(...args) {
@@ -2519,6 +2519,50 @@ function toast({ content = "", options = {}, ...extraProps }) {
 }
 registerComponent("toast", Toast);
 registerComponent("Toast", Toast);
+function FixedTooltip({
+  content,
+  message,
+  position = "fixed",
+  options,
+  ...tooltipProps
+}) {
+  const tooltipRef = useRef(null);
+  const onMouseEnter = useCallback((e) => {
+    const target = Dom.create(e.target);
+    const labelRect = target.rect();
+    const { left, top, width, height, right, bottom } = labelRect;
+    (options == null ? void 0 : options.container) || document.body;
+    tooltipRef.current = tooltip({
+      placement: "top",
+      ...tooltipProps,
+      message,
+      position,
+      style: {
+        left,
+        top,
+        width,
+        height,
+        right,
+        bottom
+      },
+      options
+    });
+  }, []);
+  const onMouseLeave = useCallback(() => {
+    tooltipRef.current.close();
+    tooltipRef.current.remove();
+  }, []);
+  return /* @__PURE__ */ createElementJsx("div", {
+    class: "elf--fixed-tooltip",
+    style: {
+      display: "inline-block",
+      width: "fit-content",
+      height: "fit-content"
+    },
+    onMouseEnter,
+    onMouseLeave
+  }, content);
+}
 const cssProperties$z = makeCssVariablePrefixMap("--elf--popover", {
   backgroundColor: true,
   color: true,
@@ -7452,6 +7496,7 @@ export {
   EventPanel,
   FIRSTMOVE,
   Field,
+  FixedTooltip,
   Flex,
   Ghost,
   Grid,

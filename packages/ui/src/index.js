@@ -25,6 +25,7 @@ export * from "./components/tools";
 export * from "./components/notification";
 export * from "./components/toast";
 export * from "./components/tooltip";
+export * from "./components/tooltip/FixedTooltip";
 export * from "./components/popover";
 export * from "./components/popover/DropdownPopover";
 export * from "./components/panel";

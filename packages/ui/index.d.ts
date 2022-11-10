@@ -662,6 +662,18 @@ declare module "@elf-framework/ui" {
     props: TooltipProps & CommonStyle;
   }
 
+  export class FixedTooltip extends UIElement {
+    props: TooltipProps & CommonStyle;
+  }
+
+  export function tooltip(
+    args: {
+      options?: {
+        container: HTMLElement | string;
+      };
+    } & TooltipProps
+  ): Tooltip;
+
   interface PopoverStyle {
     backgroundColor?: string;
     hoverColor?: string;

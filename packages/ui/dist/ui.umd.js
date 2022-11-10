@@ -2521,6 +2521,50 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("toast", Toast);
   registerComponent("Toast", Toast);
+  function FixedTooltip({
+    content,
+    message,
+    position = "fixed",
+    options,
+    ...tooltipProps
+  }) {
+    const tooltipRef = sapa.useRef(null);
+    const onMouseEnter = sapa.useCallback((e) => {
+      const target = sapa.Dom.create(e.target);
+      const labelRect = target.rect();
+      const { left, top, width, height, right, bottom } = labelRect;
+      (options == null ? void 0 : options.container) || document.body;
+      tooltipRef.current = tooltip({
+        placement: "top",
+        ...tooltipProps,
+        message,
+        position,
+        style: {
+          left,
+          top,
+          width,
+          height,
+          right,
+          bottom
+        },
+        options
+      });
+    }, []);
+    const onMouseLeave = sapa.useCallback(() => {
+      tooltipRef.current.close();
+      tooltipRef.current.remove();
+    }, []);
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      class: "elf--fixed-tooltip",
+      style: {
+        display: "inline-block",
+        width: "fit-content",
+        height: "fit-content"
+      },
+      onMouseEnter,
+      onMouseLeave
+    }, content);
+  }
   const cssProperties$z = makeCssVariablePrefixMap("--elf--popover", {
     backgroundColor: true,
     color: true,
@@ -7453,6 +7497,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.EventPanel = EventPanel;
   exports2.FIRSTMOVE = FIRSTMOVE;
   exports2.Field = Field;
+  exports2.FixedTooltip = FixedTooltip;
   exports2.Flex = Flex;
   exports2.Ghost = Ghost;
   exports2.Grid = Grid;

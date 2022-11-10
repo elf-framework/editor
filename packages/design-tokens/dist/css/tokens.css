@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 10 Nov 2022 08:28:45 GMT
+ * Generated on Thu, 10 Nov 2022 11:54:45 GMT
  */
 
 :root {
@@ -282,7 +282,7 @@
   --font-size-h1: var(--font-size-800);
   --z-index-header: var(--z-index-200);
   --z-index-menu: var(--z-index-100);
-  --z-index-tooltip: var(--z-index-100);
+  --z-index-tooltip: var(--z-index-10000);
   --spacing-size-xxxl: var(--spacing-8);
   --spacing-size-xxl: var(--spacing-7);
   --spacing-size-xl: var(--spacing-6);

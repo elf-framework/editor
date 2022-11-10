@@ -18,11 +18,77 @@ import { TooltipView } from "~/component/navigations/treeview/TooltipView.jsx";
 import { LoadingView } from "~/component/navigations/treeview/LoadingView.jsx"; 
 import { EditableTreeView } from "~/component/navigations/treeview/EditableTreeView.jsx"; 
 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+
 # {title}
 
 A tree view provides users with a way to navigate nested hierarchical information.
 
 <MainView />
+
+&nbsp;
+
+The Treeview component is implemented on the VirtualScroll component.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<TreeView
+    draggable={true}
+    // selectionStyle="checkbox"
+    renderContext={(item) => {
+        return item.data.children?.length ? (
+            <FolderFilled />
+        ) : (
+            <DescriptionFilled />
+        );
+    }}
+    renderArrow={() => {
+        return <ChevronRightFilled />;
+    }}
+    items={provider.items}
+    onDoubleClickNode={(item, e) => {
+        console.log(item, e);
+    }}
+    onClickNode={(item) => {
+        item.data.selected = !item.data.selected;
+        this.refresh();
+    }}
+    onToggleNode={(item) => {
+        item.data.collapsed = !item.data.collapsed;
+        useRender(this);
+    }}
+    onDropNode={({ startId, endId, targetPosition }) => {
+        switch (targetPosition) {
+            case "top":
+            provider.insertBefore(endId, startId);
+            useRender(this);
+            break;
+            case "bottom":
+            provider.insertAfter(endId, startId);
+            useRender(this);
+            break;
+            case "middle":
+            provider.insertLast(endId, startId);
+            useRender(this);
+            break;
+        }
+    }}
+    renderActions={() => {
+        return [
+            <Button quiet shape="square" iconOnly>
+            I
+            </Button>,
+            <Button quiet shape="square" iconOnly>
+            II
+            </Button>,
+        ];
+    }}
+    overscanRowCount={1}
+    />
+```
+  </CodeViewItem>
+</CodeView>
 
 ## Options 
 
