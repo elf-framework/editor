@@ -43,6 +43,9 @@ export function MainView() {
             return <ChevronRightFilled />;
           }}
           items={provider.items}
+          onDoubleClickNode={(item, e) => {
+            console.log(item, e);
+          }}
           onClickNode={(item) => {
             item.data.selected = !item.data.selected;
             this.refresh();

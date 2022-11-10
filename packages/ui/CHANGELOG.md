@@ -1,5 +1,18 @@
 # @elf-framework/ui
 
+## 0.0.87
+
+### Patch Changes
+
+- support input-editor for treeview
+
+## 0.0.86
+
+### Patch Changes
+
+- fixed global tooltip view bug
+  support to rename title in treeview
+
 ## 0.0.84
 
 ### Patch Changes

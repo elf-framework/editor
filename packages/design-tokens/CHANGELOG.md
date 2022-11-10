@@ -1,5 +1,12 @@
 # @elf-framework/design-tokens
 
+## 0.0.86
+
+### Patch Changes
+
+- fixed global tooltip view bug
+  support to rename title in treeview
+
 ## 0.0.83
 
 ### Patch Changes

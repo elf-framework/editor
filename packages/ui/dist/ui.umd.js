@@ -926,10 +926,12 @@ var __privateMethod = (obj, member, method) => {
     position = "fixed",
     placement = "top",
     options = {},
-    style: style2
+    style: style2,
+    variant = "default"
   }) {
-    return sapa.potal(
+    const root = sapa.potal(
       /* @__PURE__ */ sapa.createElementJsx(Tooltip, {
+        variant,
         delay,
         position,
         placement,
@@ -939,6 +941,7 @@ var __privateMethod = (obj, member, method) => {
       }, content || /* @__PURE__ */ sapa.createElementJsx("span", null, "\xA0")),
       options
     );
+    return root.firstChild;
   }
   const cssProperties$N = makeCssVariablePrefixMap("--elf--action-group", {
     alignItems: true,
@@ -2514,7 +2517,7 @@ var __privateMethod = (obj, member, method) => {
     const rootInstance = sapa.potal(/* @__PURE__ */ sapa.createElementJsx(Toast, {
       ...extraProps
     }, content), options);
-    return Object.values(rootInstance.children)[0];
+    return rootInstance.firstChild;
   }
   registerComponent("toast", Toast);
   registerComponent("Toast", Toast);
@@ -6554,7 +6557,13 @@ var __privateMethod = (obj, member, method) => {
   }
   function itemRenderer(item, top, renderIndex, {
     onSelect,
+    onDoubleClick,
     selectionStyle,
+    editable,
+    onEditStart,
+    onEditCancel,
+    onEdit,
+    onEditEnd,
     variant,
     renderActions,
     renderArrow,
@@ -6610,8 +6619,39 @@ var __privateMethod = (obj, member, method) => {
       class: "context-area"
     }, contextView) : void 0, (data == null ? void 0 : data.loading) ? /* @__PURE__ */ sapa.createElementJsx("div", {
       class: "loading-area"
-    }, loadingText) : /* @__PURE__ */ sapa.createElementJsx("label", {
+    }, loadingText) : item.edit ? /* @__PURE__ */ sapa.createElementJsx("label", {
+      class: "label-area"
+    }, /* @__PURE__ */ sapa.createElementJsx(InputEditor, {
+      type: "text",
+      value: item.data.title,
+      onFocusOut: (e) => {
+        console.log("onFocusOut", e);
+        onEditCancel(item, e);
+      },
+      onKeyUp: (e) => {
+        if (editable) {
+          if (e.key === "Enter") {
+            e.target.blur();
+            item.data.title = e.target.value;
+            onEditEnd(item, e);
+            return;
+          } else if (e.key === "Escape") {
+            onEditCancel(item, e);
+            return;
+          }
+          onEdit(item, e.target.value);
+        }
+      }
+    })) : /* @__PURE__ */ sapa.createElementJsx("label", {
       class: "label-area",
+      onDblClick: (e) => {
+        if (editable) {
+          if (!item.edit) {
+            onEditStart(item, e);
+          }
+        }
+        onDoubleClick(item, e);
+      },
       onClick: (e) => onSelect(item, "highlight", e),
       onMouseEnter: (e) => {
         if (label) {
@@ -6632,7 +6672,13 @@ var __privateMethod = (obj, member, method) => {
   function treeToList(items = [], depth = 0, command = { index: 0 }) {
     const result = [];
     items.forEach((it) => {
-      result.push({ data: it, depth, index: command.index });
+      result.push({
+        data: it,
+        depth,
+        edit: it.id === command.editId,
+        editing: it.id === command.editingId,
+        index: command.index
+      });
       command.up();
       if (!it.collapsed && it.children) {
         result.push(...treeToList(it.children, depth + 1, command));
@@ -6652,6 +6698,8 @@ var __privateMethod = (obj, member, method) => {
     updateItems(items = []) {
       return treeToList(items, 0, {
         index: 0,
+        editId: this.state.editId,
+        editingId: this.state.editingId,
         up() {
           this.index += 1;
         }
@@ -6671,19 +6719,29 @@ var __privateMethod = (obj, member, method) => {
         renderLoading,
         draggable = false,
         onClickNode,
+        onDoubleClickNode,
         onToggleNode,
         onDropNode,
+        onEditStart,
+        onEdit,
+        onEditEnd,
+        onEditCancel,
+        editable,
         items: originalItems
       } = this.props;
       const items = this.updateItems(originalItems);
-      const localClass = sapa.useMemo(() => {
-        return sapa.classnames("elf--treeview", {});
-      }, []);
+      const localClass = "elf--treeview";
       const styleObject = {
         class: localClass,
         style: propertyMap(style2, cssProperties$a)
       };
       const itemRendererProps = {
+        onDoubleClick: sapa.useCallback(
+          (item, e) => {
+            onDoubleClickNode == null ? void 0 : onDoubleClickNode(item, e);
+          },
+          [onDoubleClickNode]
+        ),
         onSelect: sapa.useCallback(
           (item, style22, e) => {
             if (style22 === selectionStyle) {
@@ -6698,6 +6756,45 @@ var __privateMethod = (obj, member, method) => {
           },
           [onToggleNode]
         ),
+        onEdit: sapa.useCallback(
+          (item, value) => {
+            if (this.state.editingId !== item.data.id) {
+              this.state.editingId = item.data.id;
+            }
+            onEdit == null ? void 0 : onEdit(item, value);
+          },
+          [onEdit]
+        ),
+        onEditStart: sapa.useCallback(
+          (item, e) => {
+            this.state.editId = item.data.id;
+            this.state.target = e.target;
+            this.refresh();
+            onEditStart == null ? void 0 : onEditStart(item, e);
+          },
+          [onEditStart]
+        ),
+        onEditEnd: sapa.useCallback(
+          (item, e) => {
+            this.state.editId = "";
+            this.state.editingId = "";
+            this.state.target = null;
+            this.refresh();
+            onEditEnd == null ? void 0 : onEditEnd(item, e);
+          },
+          [onEditEnd]
+        ),
+        onEditCancel: sapa.useCallback(
+          (item, e) => {
+            this.state.editId = "";
+            this.state.editingId = "";
+            this.state.target = null;
+            this.refresh();
+            onEditCancel == null ? void 0 : onEditCancel(item, e);
+          },
+          [onEditCancel]
+        ),
+        editable,
         variant,
         draggable,
         showTooltip,
@@ -6808,6 +6905,17 @@ var __privateMethod = (obj, member, method) => {
         },
         [onDropNode]
       );
+      sapa.useEffect(() => {
+        if (this.state.editId) {
+          setTimeout(() => {
+            const $input = sapa.Dom.create(this.state.target).$("input");
+            if ($input) {
+              $input.focus();
+              $input.select();
+            }
+          }, 10);
+        }
+      }, [this.state.editId, this.state.editingId]);
       const events = {
         droppable: true,
         onDrag,

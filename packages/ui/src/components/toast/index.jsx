@@ -123,7 +123,7 @@ export class Toast extends UIElement {
 export function toast({ content = "", options = {}, ...extraProps }) {
   const rootInstance = potal(<Toast {...extraProps}>{content}</Toast>, options);
 
-  return Object.values(rootInstance.children)[0];
+  return rootInstance.firstChild;
 }
 
 registerComponent("toast", Toast);

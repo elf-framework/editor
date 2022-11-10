@@ -3,13 +3,14 @@ import {
   Dom,
   UIElement,
   useCallback,
-  useMemo,
+  useEffect,
 } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
 import { makeCssVariablePrefixMap } from "../../utils/styleKeys";
 import { Checkbox } from "../checkbox";
+import { InputEditor } from "../input-editor";
 import { tooltip } from "../tooltip";
 import { VirtualScroll } from "../virtual-scroll";
 
@@ -70,7 +71,13 @@ function itemRenderer(
   renderIndex,
   {
     onSelect,
+    onDoubleClick,
     selectionStyle,
+    editable,
+    onEditStart,
+    onEditCancel,
+    onEdit,
+    onEditEnd,
     variant,
     renderActions,
     renderArrow,
@@ -138,9 +145,52 @@ function itemRenderer(
       {contextView ? <div class="context-area">{contextView}</div> : undefined}
       {data?.loading ? (
         <div class="loading-area">{loadingText}</div>
+      ) : item.edit ? (
+        <label class="label-area">
+          <InputEditor
+            type="text"
+            value={item.data.title}
+            onFocusOut={(e) => {
+              console.log("onFocusOut", e);
+              onEditCancel(item, e);
+            }}
+            onKeyUp={(e) => {
+              if (editable) {
+                if (e.key === "Enter") {
+                  // refer to https://mygumi.tistory.com/321
+                  e.target.blur();
+                  // FIXME : 데이타는 어떤게 들어올지 알 수 없다.
+                  // 하지만 여기서는 title 밖에 처리하지 않는다.
+                  item.data.title = e.target.value;
+                  onEditEnd(item, e);
+                  return;
+                } else if (e.key === "Escape") {
+                  onEditCancel(item, e);
+                  return;
+                }
+                onEdit(item, e.target.value);
+              }
+            }}
+          />
+        </label>
       ) : (
         <label
           class="label-area"
+          onDblClick={(e) => {
+            if (editable) {
+              if (!item.edit) {
+                // 현재가 edit 일 때
+                onEditStart(item, e);
+
+                // label 의 text 를 수정 할 수 있도록 해야한다.
+                // 방법을 생각해보자.
+                // 1. label 내에 input 을 넣는다.
+                // 2. label 을 content editable 로 바꾼다.
+              }
+            }
+
+            onDoubleClick(item, e);
+          }}
           onClick={(e) => onSelect(item, "highlight", e)}
           onMouseEnter={(e) => {
             if (label) {
@@ -165,7 +215,13 @@ function treeToList(items = [], depth = 0, command = { index: 0 }) {
   const result = [];
 
   items.forEach((it) => {
-    result.push({ data: it, depth, index: command.index });
+    result.push({
+      data: it,
+      depth,
+      edit: it.id === command.editId,
+      editing: it.id === command.editingId,
+      index: command.index,
+    });
     command.up();
     if (!it.collapsed && it.children) {
       result.push(...treeToList(it.children, depth + 1, command));
@@ -189,6 +245,8 @@ export class TreeView extends UIElement {
   updateItems(items = []) {
     return treeToList(items, 0, {
       index: 0,
+      editId: this.state.editId,
+      editingId: this.state.editingId,
       up() {
         this.index += 1;
       },
@@ -209,15 +267,19 @@ export class TreeView extends UIElement {
       renderLoading,
       draggable = false,
       onClickNode,
+      onDoubleClickNode,
       onToggleNode,
       onDropNode,
+      onEditStart,
+      onEdit,
+      onEditEnd,
+      onEditCancel,
+      editable,
       items: originalItems,
     } = this.props;
     const items = this.updateItems(originalItems);
 
-    const localClass = useMemo(() => {
-      return classnames("elf--treeview", {});
-    }, []);
+    const localClass = "elf--treeview";
 
     const styleObject = {
       class: localClass,
@@ -225,6 +287,12 @@ export class TreeView extends UIElement {
     };
 
     const itemRendererProps = {
+      onDoubleClick: useCallback(
+        (item, e) => {
+          onDoubleClickNode?.(item, e);
+        },
+        [onDoubleClickNode]
+      ),
       onSelect: useCallback(
         (item, style, e) => {
           // highlight 모드 일 때는 item 전체를 클릭하고 선택
@@ -241,6 +309,46 @@ export class TreeView extends UIElement {
         },
         [onToggleNode]
       ),
+      onEdit: useCallback(
+        (item, value) => {
+          if (this.state.editingId !== item.data.id) {
+            this.state.editingId = item.data.id;
+          }
+
+          onEdit?.(item, value);
+        },
+        [onEdit]
+      ),
+      onEditStart: useCallback(
+        (item, e) => {
+          this.state.editId = item.data.id;
+          this.state.target = e.target;
+          this.refresh();
+          onEditStart?.(item, e);
+        },
+        [onEditStart]
+      ),
+      onEditEnd: useCallback(
+        (item, e) => {
+          this.state.editId = "";
+          this.state.editingId = "";
+          this.state.target = null;
+          this.refresh();
+          onEditEnd?.(item, e);
+        },
+        [onEditEnd]
+      ),
+      onEditCancel: useCallback(
+        (item, e) => {
+          this.state.editId = "";
+          this.state.editingId = "";
+          this.state.target = null;
+          this.refresh();
+          onEditCancel?.(item, e);
+        },
+        [onEditCancel]
+      ),
+      editable,
       variant,
       draggable,
       showTooltip,
@@ -381,6 +489,20 @@ export class TreeView extends UIElement {
       },
       [onDropNode]
     );
+
+    useEffect(() => {
+      if (this.state.editId) {
+        setTimeout(() => {
+          const $input = Dom.create(this.state.target).$("input");
+
+          if ($input) {
+            $input.focus();
+            $input.select();
+          }
+        }, 10);
+      }
+    }, [this.state.editId, this.state.editingId]);
+
     const events = {
       droppable: true,
       onDrag,

@@ -1759,6 +1759,9 @@ var __privateMethod = (obj, member, method) => {
         PropsHandler
       });
     }
+    get firstChild() {
+      return Object.values(this.children)[0];
+    }
     checkProps(props = {}) {
       return props;
     }
@@ -1826,8 +1829,8 @@ var __privateMethod = (obj, member, method) => {
     }
     get children() {
       return Object.fromEntries(
-        Object.entries(__privateGet(this, _childObjectList)).map(([_key, child]) => {
-          return [_key, __privateGet(this, _childObjectElements).get(child)];
+        Object.entries(__privateGet(this, _childObjectList)).map(([id, child]) => {
+          return [id, __privateGet(this, _childObjectElements).get(child)];
         })
       );
     }

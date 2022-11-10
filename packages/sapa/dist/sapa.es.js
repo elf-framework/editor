@@ -1755,6 +1755,9 @@ const _EventMachine = class extends HookMachine {
       PropsHandler
     });
   }
+  get firstChild() {
+    return Object.values(this.children)[0];
+  }
   checkProps(props = {}) {
     return props;
   }
@@ -1822,8 +1825,8 @@ const _EventMachine = class extends HookMachine {
   }
   get children() {
     return Object.fromEntries(
-      Object.entries(__privateGet(this, _childObjectList)).map(([_key, child]) => {
-        return [_key, __privateGet(this, _childObjectElements).get(child)];
+      Object.entries(__privateGet(this, _childObjectList)).map(([id, child]) => {
+        return [id, __privateGet(this, _childObjectElements).get(child)];
       })
     );
   }

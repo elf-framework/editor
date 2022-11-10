@@ -1505,12 +1505,21 @@ declare module "@elf-framework/ui" {
     selectionType: "single" | "multiple";
     variant?: VariantType;
     showTooltip?: boolean;
+    editable?: boolean;
+    onEditStart?: (item: TreeDropItemType, e: MouseEvent) => void;
+    onEdit?: (item: TreeDropItemType, e: KeyboardEvent) => void;
+    onEditEnd?: (item: TreeDropItemType, e: KeyboardEvent) => void;
+    onEditCancel?: (
+      item: TreeDropItemType,
+      e: KeyboardEvent | FocusEvent
+    ) => void;
     renderLabel?: (item: TreeViewItemType) => ContentType;
     renderContext?: (item: TreeViewItemType) => ContentType;
     renderActions?: (item: TreeViewItemType) => ContentType;
     renderArrow?: (item: TreeViewItemType) => ContentType;
     renderLoading?: (item: TreeViewItemType) => ContentType;
     onClickNode?: (item: TreeViewItemType, e: MouseEvent) => void;
+    onDoubleClickNode?: (item: TreeViewItemType, e: MouseEvent) => void;
     onToggleNode?: (item: TreeViewItemType, e: MouseEvent) => void;
     onDropNode?: (obj: TreeDropItemType, e: DragEvent) => void;
   }

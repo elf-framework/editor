@@ -924,10 +924,12 @@ function tooltip({
   position = "fixed",
   placement = "top",
   options = {},
-  style: style2
+  style: style2,
+  variant = "default"
 }) {
-  return potal(
+  const root = potal(
     /* @__PURE__ */ createElementJsx(Tooltip, {
+      variant,
       delay,
       position,
       placement,
@@ -937,6 +939,7 @@ function tooltip({
     }, content || /* @__PURE__ */ createElementJsx("span", null, "\xA0")),
     options
   );
+  return root.firstChild;
 }
 const cssProperties$N = makeCssVariablePrefixMap("--elf--action-group", {
   alignItems: true,
@@ -2512,7 +2515,7 @@ function toast({ content = "", options = {}, ...extraProps }) {
   const rootInstance = potal(/* @__PURE__ */ createElementJsx(Toast, {
     ...extraProps
   }, content), options);
-  return Object.values(rootInstance.children)[0];
+  return rootInstance.firstChild;
 }
 registerComponent("toast", Toast);
 registerComponent("Toast", Toast);
@@ -6552,7 +6555,13 @@ function hideTooltip(target) {
 }
 function itemRenderer(item, top, renderIndex, {
   onSelect,
+  onDoubleClick,
   selectionStyle,
+  editable,
+  onEditStart,
+  onEditCancel,
+  onEdit,
+  onEditEnd,
   variant,
   renderActions,
   renderArrow,
@@ -6608,8 +6617,39 @@ function itemRenderer(item, top, renderIndex, {
     class: "context-area"
   }, contextView) : void 0, (data == null ? void 0 : data.loading) ? /* @__PURE__ */ createElementJsx("div", {
     class: "loading-area"
-  }, loadingText) : /* @__PURE__ */ createElementJsx("label", {
+  }, loadingText) : item.edit ? /* @__PURE__ */ createElementJsx("label", {
+    class: "label-area"
+  }, /* @__PURE__ */ createElementJsx(InputEditor, {
+    type: "text",
+    value: item.data.title,
+    onFocusOut: (e) => {
+      console.log("onFocusOut", e);
+      onEditCancel(item, e);
+    },
+    onKeyUp: (e) => {
+      if (editable) {
+        if (e.key === "Enter") {
+          e.target.blur();
+          item.data.title = e.target.value;
+          onEditEnd(item, e);
+          return;
+        } else if (e.key === "Escape") {
+          onEditCancel(item, e);
+          return;
+        }
+        onEdit(item, e.target.value);
+      }
+    }
+  })) : /* @__PURE__ */ createElementJsx("label", {
     class: "label-area",
+    onDblClick: (e) => {
+      if (editable) {
+        if (!item.edit) {
+          onEditStart(item, e);
+        }
+      }
+      onDoubleClick(item, e);
+    },
     onClick: (e) => onSelect(item, "highlight", e),
     onMouseEnter: (e) => {
       if (label) {
@@ -6630,7 +6670,13 @@ function itemRenderer(item, top, renderIndex, {
 function treeToList(items = [], depth = 0, command = { index: 0 }) {
   const result = [];
   items.forEach((it) => {
-    result.push({ data: it, depth, index: command.index });
+    result.push({
+      data: it,
+      depth,
+      edit: it.id === command.editId,
+      editing: it.id === command.editingId,
+      index: command.index
+    });
     command.up();
     if (!it.collapsed && it.children) {
       result.push(...treeToList(it.children, depth + 1, command));
@@ -6650,6 +6696,8 @@ class TreeView extends UIElement {
   updateItems(items = []) {
     return treeToList(items, 0, {
       index: 0,
+      editId: this.state.editId,
+      editingId: this.state.editingId,
       up() {
         this.index += 1;
       }
@@ -6669,19 +6717,29 @@ class TreeView extends UIElement {
       renderLoading,
       draggable = false,
       onClickNode,
+      onDoubleClickNode,
       onToggleNode,
       onDropNode,
+      onEditStart,
+      onEdit,
+      onEditEnd,
+      onEditCancel,
+      editable,
       items: originalItems
     } = this.props;
     const items = this.updateItems(originalItems);
-    const localClass = useMemo(() => {
-      return classnames("elf--treeview", {});
-    }, []);
+    const localClass = "elf--treeview";
     const styleObject = {
       class: localClass,
       style: propertyMap(style2, cssProperties$a)
     };
     const itemRendererProps = {
+      onDoubleClick: useCallback(
+        (item, e) => {
+          onDoubleClickNode == null ? void 0 : onDoubleClickNode(item, e);
+        },
+        [onDoubleClickNode]
+      ),
       onSelect: useCallback(
         (item, style22, e) => {
           if (style22 === selectionStyle) {
@@ -6696,6 +6754,45 @@ class TreeView extends UIElement {
         },
         [onToggleNode]
       ),
+      onEdit: useCallback(
+        (item, value) => {
+          if (this.state.editingId !== item.data.id) {
+            this.state.editingId = item.data.id;
+          }
+          onEdit == null ? void 0 : onEdit(item, value);
+        },
+        [onEdit]
+      ),
+      onEditStart: useCallback(
+        (item, e) => {
+          this.state.editId = item.data.id;
+          this.state.target = e.target;
+          this.refresh();
+          onEditStart == null ? void 0 : onEditStart(item, e);
+        },
+        [onEditStart]
+      ),
+      onEditEnd: useCallback(
+        (item, e) => {
+          this.state.editId = "";
+          this.state.editingId = "";
+          this.state.target = null;
+          this.refresh();
+          onEditEnd == null ? void 0 : onEditEnd(item, e);
+        },
+        [onEditEnd]
+      ),
+      onEditCancel: useCallback(
+        (item, e) => {
+          this.state.editId = "";
+          this.state.editingId = "";
+          this.state.target = null;
+          this.refresh();
+          onEditCancel == null ? void 0 : onEditCancel(item, e);
+        },
+        [onEditCancel]
+      ),
+      editable,
       variant,
       draggable,
       showTooltip,
@@ -6806,6 +6903,17 @@ class TreeView extends UIElement {
       },
       [onDropNode]
     );
+    useEffect(() => {
+      if (this.state.editId) {
+        setTimeout(() => {
+          const $input = Dom.create(this.state.target).$("input");
+          if ($input) {
+            $input.focus();
+            $input.select();
+          }
+        }, 10);
+      }
+    }, [this.state.editId, this.state.editingId]);
     const events = {
       droppable: true,
       onDrag,

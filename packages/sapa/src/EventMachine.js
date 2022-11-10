@@ -51,6 +51,13 @@ export class EventMachine extends HookMachine {
   }
 
   /**
+   * get first child instance
+   */
+  get firstChild() {
+    return Object.values(this.children)[0];
+  }
+
+  /**
    * 매개변수를 체크한다.
    *
    * @param {object} props
@@ -191,8 +198,8 @@ export class EventMachine extends HookMachine {
    */
   get children() {
     return Object.fromEntries(
-      Object.entries(this.#childObjectList).map(([_key, child]) => {
-        return [_key, this.#childObjectElements.get(child)];
+      Object.entries(this.#childObjectList).map(([id, child]) => {
+        return [id, this.#childObjectElements.get(child)];
       })
     );
   }
@@ -208,6 +215,7 @@ export class EventMachine extends HookMachine {
    * render 를 할 수 있는지 체크한다.
    *
    * @override
+   * @deprecated
    */
   get isPreLoaded() {
     return true;

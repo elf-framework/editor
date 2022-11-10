@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.85
+
+### Patch Changes
+
+- add firstChild field to EventMachine
+
 ## 0.0.82
 
 ### Patch Changes

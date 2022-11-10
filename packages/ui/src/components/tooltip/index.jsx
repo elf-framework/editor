@@ -186,9 +186,11 @@ export function tooltip({
   placement = "top",
   options = {},
   style,
+  variant = "default",
 }) {
-  return potal(
+  const root = potal(
     <Tooltip
+      variant={variant}
       delay={delay}
       position={position}
       placement={placement}
@@ -200,4 +202,6 @@ export function tooltip({
     </Tooltip>,
     options
   );
+
+  return root.firstChild;
 }
