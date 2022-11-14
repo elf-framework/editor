@@ -1935,9 +1935,12 @@ var __privateMethod = (obj, member, method) => {
           selected: this.state.selected ? true : void 0
         });
       }, [this.state.selected]);
+      const isIconOnly = !title;
       const buttonComponent = /* @__PURE__ */ sapa.createElementJsx("button", {
         type: "button",
-        class: "tools-button"
+        class: sapa.classnames("tools-button", {
+          "icon-only": isIconOnly
+        })
       }, /* @__PURE__ */ sapa.createElementJsx(Flex, {
         style: { gap: 10 }
       }, [

@@ -1,29 +1,29 @@
-import { isFunction as x, isObject as b, isBoolean as T, isString as w, VNode as v, isArray as k, createElementJsx as f, useStore as p, UIElement as K, useComponentRender as L, useMemo as A, classnames as U, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as g, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
+import { isFunction as x, isObject as b, isBoolean as w, isString as T, VNode as v, isArray as k, createElementJsx as f, useStore as p, UIElement as K, useComponentRender as L, useMemo as U, classnames as A, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as g, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
 import { View as F } from "@elf-framework/ui";
 const j = {
   command: "keymap.keydown",
   execute: function(s, t) {
     s.keyboard.add(t.code, t.keyCode, t), s.shortcuts && s.shortcuts.execute(t, "keydown");
   }
-}, D = {
+}, R = {
   command: "keymap.keyup",
   execute: function(s, t) {
     s.shortcuts && s.shortcuts.execute(t, "keyup");
   }
-}, R = {
+}, D = {
   command: "toggle.theme",
   execute: function(s) {
     var t = s.configs.get("editor.theme");
     s.configs.set("editor.theme", t === "light" ? "dark" : "light");
   }
-}, N = [j, D, R], V = {
+}, V = [j, R, D], N = {
   key: "editor.theme",
   defaultValue: "light",
   title: "Editor Theme ",
   description: "Set editor's theme",
   type: "string"
-}, G = [V];
-class H {
+}, G = [N];
+class W {
   constructor(t) {
     this.editorContext = t, this.localCommands = {};
   }
@@ -61,7 +61,7 @@ class H {
     return i(...e);
   }
 }
-class W {
+class H {
   constructor(t) {
     this.editorContext = t, this.configList = [], this.config = /* @__PURE__ */ new Map();
   }
@@ -237,11 +237,7 @@ let l = {
   name: void 0
 };
 function C() {
-  if (l.name === void 0) {
-    const s = navigator.userAgentData.platform.toLowerCase();
-    s.indexOf("win") != -1 ? l.name = "win" : s.indexOf("mac") != -1 ? l.name = "mac" : s.indexOf("x11") != -1 ? l.name = "linux" : l.name = "";
-  }
-  return l.name;
+  return l.name === void 0 && (window.navigator.appVersion.indexOf("Win") != -1 ? l.name = "win" : window.navigator.appVersion.indexOf("Mac") != -1 ? l.name = "mac" : window.navigator.appVersion.indexOf("X11") != -1 ? l.name = "linux" : l.name = ""), l.name;
 }
 const J = {
   backspace: 8,
@@ -388,7 +384,7 @@ class Z {
     this.list.push(i), this.updateCommandInfo(i);
   }
   makeWhenFunction(t, e) {
-    if (T(e) && e)
+    if (w(e) && e)
       return () => !0;
     const i = this.editorContext, n = e.split("|").map((r) => r.trim());
     return () => n.some(
@@ -461,7 +457,7 @@ class Z {
       const n = i.filter((r) => r.eventType === e).filter((r) => this.checkWhen(r));
       n.length && n.forEach((r) => {
         if (r.container) {
-          if (w(r.container)) {
+          if (T(r.container)) {
             if (!t.target.matches(r.container))
               return;
           } else if (r.container instanceof HTMLElement && !r.container.contains(t.target))
@@ -515,8 +511,8 @@ class et {
   }
   initializeManagers(t = {}) {
     t = {
-      configs: W,
-      commands: H,
+      configs: H,
+      commands: W,
       plugins: X,
       uis: Q,
       shortcuts: Z,
@@ -545,7 +541,7 @@ class et {
     this.configs.updateConfig(t);
   }
   initializeInnerCommands() {
-    this.initializeCommands(N);
+    this.initializeCommands(V);
   }
   initializeCommands(t = []) {
     t.forEach((e) => {
@@ -655,7 +651,7 @@ class dt extends it {
   template() {
     const { editorClass: t, fullScreen: e } = this.props;
     L("editor.plugin.activated");
-    const i = h(), n = A(() => U("elf--base-editor", {
+    const i = h(), n = U(() => A("elf--base-editor", {
       "full-screen": e,
       [t]: !0
     }), [t, e]);

@@ -4,10 +4,11 @@ let osInfo = {
 
 export function os() {
   if (osInfo.name === undefined) {
-    const platform = navigator.userAgentData.platform.toLowerCase();
-    if (platform.indexOf("win") != -1) osInfo.name = "win";
-    else if (platform.indexOf("mac") != -1) osInfo.name = "mac";
-    else if (platform.indexOf("x11") != -1) osInfo.name = "linux";
+    if (window.navigator.appVersion.indexOf("Win") != -1) osInfo.name = "win";
+    else if (window.navigator.appVersion.indexOf("Mac") != -1)
+      osInfo.name = "mac";
+    else if (window.navigator.appVersion.indexOf("X11") != -1)
+      osInfo.name = "linux";
     else osInfo.name = "";
   }
 

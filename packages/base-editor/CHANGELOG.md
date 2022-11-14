@@ -1,5 +1,20 @@
 # @elf-framework/base-editor
 
+## 0.0.93
+
+### Patch Changes
+
+- update menu item style
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.93
+
+## 0.0.92
+
+### Patch Changes
+
+- modify os detect function
+
 ## 0.0.59
 
 ### Patch Changes

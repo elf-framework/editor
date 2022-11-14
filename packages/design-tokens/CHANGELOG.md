@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.93
+
+### Patch Changes
+
+- update menu item style
+
 ## 0.0.90
 
 ### Patch Changes

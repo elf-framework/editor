@@ -1933,9 +1933,12 @@ class ToolsItem extends UIElement {
         selected: this.state.selected ? true : void 0
       });
     }, [this.state.selected]);
+    const isIconOnly = !title;
     const buttonComponent = /* @__PURE__ */ createElementJsx("button", {
       type: "button",
-      class: "tools-button"
+      class: classnames("tools-button", {
+        "icon-only": isIconOnly
+      })
     }, /* @__PURE__ */ createElementJsx(Flex, {
       style: { gap: 10 }
     }, [

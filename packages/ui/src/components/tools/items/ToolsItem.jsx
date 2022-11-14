@@ -41,8 +41,15 @@ export class ToolsItem extends UIElement {
       });
     }, [this.state.selected]);
 
+    const isIconOnly = !title;
+
     const buttonComponent = (
-      <button type="button" class="tools-button">
+      <button
+        type="button"
+        class={classnames("tools-button", {
+          "icon-only": isIconOnly,
+        })}
+      >
         <Flex style={{ gap: 10 }}>
           {[
             icon ? (

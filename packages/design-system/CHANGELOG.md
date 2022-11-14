@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.93
+
+### Patch Changes
+
+- update menu item style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.93
+
 ## 0.0.90
 
 ### Patch Changes

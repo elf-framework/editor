@@ -139,6 +139,10 @@
       cursor: pointer;
       font-size: inherit;
 
+      &.icon-only {
+        padding: 0px;
+      }
+
       .icon {
         svg {
           width: 20px;
