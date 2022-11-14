@@ -35,14 +35,32 @@ function makeToolsItem(items = [], options = {}) {
     }
 
     if (it.type === ToolsItemType.CUSTOM) {
-      return <ToolsCustomItem ref={ref} {...it} style={{ visibility }} />;
+      return (
+        <ToolsCustomItem
+          ref={ref}
+          {...it}
+          style={{ visibility, ...(it.style || {}) }}
+        />
+      );
     }
 
     if (it.type === ToolsItemType.MENU) {
-      return <ToolsMenuItem ref={ref} {...it} style={{ visibility }} />;
+      return (
+        <ToolsMenuItem
+          ref={ref}
+          {...it}
+          style={{ visibility, ...(it.style || {}) }}
+        />
+      );
     }
 
-    return <ToolsItem ref={ref} {...it} style={{ visibility }} />;
+    return (
+      <ToolsItem
+        ref={ref}
+        {...it}
+        style={{ visibility, ...(it.style || {}) }}
+      />
+    );
   });
 }
 

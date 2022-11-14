@@ -1,5 +1,17 @@
 # @elf-framework/base-editor
 
+## 0.0.97
+
+### Patch Changes
+
+- update index.d.ts
+
+## 0.0.96
+
+### Patch Changes
+
+- add to check command funtion
+
 ## 0.0.93
 
 ### Patch Changes

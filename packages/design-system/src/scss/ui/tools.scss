@@ -126,6 +126,15 @@
       }
     }
 
+
+    &.icon-only {
+      padding: 0px;
+
+      .tools-button {
+        padding: 0px;
+      }
+    }
+
     .tools-button {
       width: 100%;
       height: 100%;
@@ -139,11 +148,9 @@
       cursor: pointer;
       font-size: inherit;
 
-      &.icon-only {
-        padding: 0px;
-      }
 
       .icon {
+        line-height: 0;
         svg {
           width: 20px;
           height: 20px;

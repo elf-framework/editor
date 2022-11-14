@@ -60,6 +60,9 @@ class W {
       throw new Error("command is not registered : " + t);
     return i(...e);
   }
+  has(t) {
+    return !!this.getCallback(t);
+  }
 }
 class H {
   constructor(t) {

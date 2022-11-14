@@ -35,21 +35,16 @@ export class ToolsItem extends UIElement {
   template() {
     const { title = "", icon, style = {}, tooltip } = this.props;
 
+    const isIconOnly = !title;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
         selected: this.state.selected ? true : undefined,
+        "icon-only": isIconOnly,
       });
-    }, [this.state.selected]);
-
-    const isIconOnly = !title;
+    }, [this.state.selected, isIconOnly]);
 
     const buttonComponent = (
-      <button
-        type="button"
-        class={classnames("tools-button", {
-          "icon-only": isIconOnly,
-        })}
-      >
+      <button type="button" class="tools-button">
         <Flex style={{ gap: 10 }}>
           {[
             icon ? (

@@ -21,6 +21,14 @@ declare module "@elf-framework/base-editor" {
 
   export interface CommandManager {
     registerCommand: (command: CommandType) => void;
+
+    /**
+     * command 가 존재하는지 확인합니다.
+     *
+     * @param commandName
+     *
+     */
+    has: (command: string) => boolean;
   }
 
   export interface ShortcutManager {
@@ -48,7 +56,7 @@ declare module "@elf-framework/base-editor" {
   }
 
   export interface EditorCommand {
-    name: string;
+    command: string;
     description: string;
     history?: boolean;
     execute: (editor: EditorContext, ...args: any[]) => void;

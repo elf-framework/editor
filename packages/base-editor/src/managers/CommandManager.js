@@ -79,4 +79,11 @@ export class CommandManager {
 
     return callback(...args);
   }
+
+  /**
+   * command 가 등록되어 있는지 확인한다.
+   */
+  has(command) {
+    return !!this.getCallback(command);
+  }
 }

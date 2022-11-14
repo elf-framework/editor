@@ -1930,17 +1930,16 @@ var __privateMethod = (obj, member, method) => {
     }
     template() {
       const { title = "", icon, style: style2 = {}, tooltip: tooltip2 } = this.props;
+      const isIconOnly = !title;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--tools-item", {
-          selected: this.state.selected ? true : void 0
+          selected: this.state.selected ? true : void 0,
+          "icon-only": isIconOnly
         });
-      }, [this.state.selected]);
-      const isIconOnly = !title;
+      }, [this.state.selected, isIconOnly]);
       const buttonComponent = /* @__PURE__ */ sapa.createElementJsx("button", {
         type: "button",
-        class: sapa.classnames("tools-button", {
-          "icon-only": isIconOnly
-        })
+        class: "tools-button"
       }, /* @__PURE__ */ sapa.createElementJsx(Flex, {
         style: { gap: 10 }
       }, [
@@ -2173,20 +2172,20 @@ var __privateMethod = (obj, member, method) => {
         return /* @__PURE__ */ sapa.createElementJsx(ToolsCustomItem, {
           ref,
           ...it,
-          style: { visibility }
+          style: { visibility, ...it.style || {} }
         });
       }
       if (it.type === ToolsItemType.MENU) {
         return /* @__PURE__ */ sapa.createElementJsx(ToolsMenuItem, {
           ref,
           ...it,
-          style: { visibility }
+          style: { visibility, ...it.style || {} }
         });
       }
       return /* @__PURE__ */ sapa.createElementJsx(ToolsItem, {
         ref,
         ...it,
-        style: { visibility }
+        style: { visibility, ...it.style || {} }
       });
     });
   }
