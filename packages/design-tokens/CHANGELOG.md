@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.98
+
+### Patch Changes
+
+- modify action-group compact vertical style
+
 ## 0.0.95
 
 ### Patch Changes

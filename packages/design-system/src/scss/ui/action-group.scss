@@ -20,7 +20,7 @@
         align-items: var(--elf--action-group-align-items);
     }
 
-    &.compact {
+    &.compact.horizontal {
         gap: 0px !important;
 
         > *:first-child:not(:last-child) {
@@ -53,6 +53,47 @@
                 border-radius: 0px;
             }
         }
+
+    }
+
+
+    &.compact.vertical {
+        gap: 0px !important;
+
+        > *:first-child:not(:last-child) {
+            &.elf--button,
+            .elf--button {
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+
+        }
+
+        > *:last-child:not(:first-child) {
+            &.elf--button,
+            .elf--button {
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+            }
+        }
+
+        > *:not(:first-child) {
+            &.elf--button,
+            .elf--button {
+                border-top: 0px;
+            }
+        }
+
+        > *:not(:first-child):not(:last-child) {
+            &.elf--button,
+            .elf--button {
+                border-radius: 0px;
+            }
+        }
+
+    }
+
+    &.compact {
 
         &.rect {
             > *:first-child {

@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.98
+
+### Patch Changes
+
+- modify action-group compact vertical style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.98
+
 ## 0.0.95
 
 ### Patch Changes

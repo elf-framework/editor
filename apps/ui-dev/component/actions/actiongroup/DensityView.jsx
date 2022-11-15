@@ -43,40 +43,94 @@ export function DensityView() {
             </IconButton>
           </ActionGroup>
         </VBox>
-        <VBox>
-          <em>Compact</em>
-          <ActionGroup compact={true} style={{ gap: 10, margin: 10 }}>
-            <Button>
-              <DescriptionFilled />
-              Document Setup
-            </Button>
-            <Button>
-              <SettingsFilled /> Settings
-            </Button>
-          </ActionGroup>
-          <ActionGroup compact={true} style={{ gap: 10, margin: "10px 10px" }}>
-            <IconButton>
-              <EditFilled />
-            </IconButton>
-            <IconButton>
-              <DescriptionFilled />
-            </IconButton>
-            <IconButton>
-              <SettingsFilled />
-            </IconButton>
-          </ActionGroup>
-          <ActionGroup compact={true} style={{ gap: 10, margin: "10px 10px" }}>
-            <IconButton quiet={true}>
-              <EditFilled />
-            </IconButton>
-            <IconButton quiet={true}>
-              <DescriptionFilled />
-            </IconButton>
-            <IconButton quiet={true}>
-              <SettingsFilled />
-            </IconButton>
-          </ActionGroup>
-        </VBox>
+        <Grid columns={2}>
+          <VBox>
+            <em>Compact</em>
+            <ActionGroup compact={true} style={{ gap: 10, margin: 10 }}>
+              <Button>
+                <DescriptionFilled />
+                Document Setup
+              </Button>
+              <Button>
+                <SettingsFilled /> Settings
+              </Button>
+            </ActionGroup>
+            <ActionGroup
+              compact={true}
+              style={{ gap: 10, margin: "10px 10px" }}
+            >
+              <IconButton>
+                <EditFilled />
+              </IconButton>
+              <IconButton>
+                <DescriptionFilled />
+              </IconButton>
+              <IconButton>
+                <SettingsFilled />
+              </IconButton>
+            </ActionGroup>
+            <ActionGroup
+              compact={true}
+              style={{ gap: 10, margin: "10px 10px" }}
+            >
+              <IconButton quiet={true}>
+                <EditFilled />
+              </IconButton>
+              <IconButton quiet={true}>
+                <DescriptionFilled />
+              </IconButton>
+              <IconButton quiet={true}>
+                <SettingsFilled />
+              </IconButton>
+            </ActionGroup>
+          </VBox>
+          <VBox>
+            <em>Compact Vertical</em>
+            <ActionGroup
+              compact={true}
+              direction={"vertical"}
+              style={{ gap: 10, margin: 10 }}
+            >
+              <Button>
+                <DescriptionFilled />
+                Document Setup
+              </Button>
+              <Button>
+                <SettingsFilled /> Settings
+              </Button>
+            </ActionGroup>
+            <ActionGroup
+              compact={true}
+              direction={"vertical"}
+              style={{ gap: 10, margin: "10px 10px" }}
+            >
+              <Button iconOnly>
+                <EditFilled />
+              </Button>
+              <IconButton selected>
+                <DescriptionFilled />
+              </IconButton>
+              <IconButton>
+                <SettingsFilled />
+              </IconButton>
+            </ActionGroup>
+            <ActionGroup
+              compact={true}
+              direction={"vertical"}
+              style={{ gap: 10, margin: "10px 10px" }}
+            >
+              <IconButton quiet={true}>
+                <EditFilled />
+              </IconButton>
+              <IconButton quiet={true}>
+                <DescriptionFilled />
+              </IconButton>
+              <IconButton quiet={true}>
+                <SettingsFilled />
+              </IconButton>
+            </ActionGroup>
+          </VBox>
+        </Grid>
       </VBox>
       <div>
         <p>
