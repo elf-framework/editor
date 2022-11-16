@@ -44,6 +44,7 @@ function itemRenderer(item, top, renderIndex, items, virtualScroll) {
   );
 }
 
+// @deprecated
 export function TreeView() {
   return (
     <VirtualScroll

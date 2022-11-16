@@ -123,6 +123,15 @@ export class ShortCutManager {
   }
 
   makeKeyString(e) {
+    if (
+      e.key === "Shift" ||
+      e.key === "Control" ||
+      e.key === "Alt" ||
+      e.key === "Meta"
+    ) {
+      return e.key?.toUpperCase();
+    }
+
     return joinKeys(
       e.altKey ? KEY_STRING.ALT : "",
       e.ctrlKey ? KEY_STRING.CTRL : "",
@@ -133,6 +142,15 @@ export class ShortCutManager {
   }
 
   makeCodeString(e) {
+    if (
+      e.key === "Shift" ||
+      e.key === "Control" ||
+      e.key === "Alt" ||
+      e.key === "Meta"
+    ) {
+      return e.code?.toUpperCase();
+    }
+
     return joinKeys(
       e.altKey ? KEY_STRING.ALT : "",
       e.ctrlKey ? KEY_STRING.CTRL : "",
@@ -143,6 +161,15 @@ export class ShortCutManager {
   }
 
   makeKeyCodeString(e) {
+    if (
+      e.key === "Shift" ||
+      e.key === "Control" ||
+      e.key === "Alt" ||
+      e.key === "Meta"
+    ) {
+      return e.keyCode;
+    }
+
     return joinKeys(
       e.altKey ? KEY_STRING.ALT : "",
       e.ctrlKey ? KEY_STRING.CTRL : "",

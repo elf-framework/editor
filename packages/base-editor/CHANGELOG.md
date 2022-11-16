@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.99
+
+### Patch Changes
+
+- fixed shortcut system for stand shift key
+
 ## 0.0.97
 
 ### Patch Changes

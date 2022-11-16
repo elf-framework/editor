@@ -56,6 +56,13 @@ start(function () {
               },
               args: [1, 2, 3],
             });
+
+            editor.registerShortcut({
+              key: "shift",
+              command: (editor) => {
+                console.log("shift", editor);
+              },
+            });
           },
 
           RenderPlugin,

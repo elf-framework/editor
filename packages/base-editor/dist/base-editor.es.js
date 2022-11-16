@@ -1,4 +1,4 @@
-import { isFunction as x, isObject as b, isBoolean as w, isString as T, VNode as v, isArray as k, createElementJsx as f, useStore as p, UIElement as K, useComponentRender as L, useMemo as U, classnames as A, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as g, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
+import { isFunction as p, isObject as b, isBoolean as k, isString as w, VNode as T, isArray as v, createElementJsx as f, useStore as x, UIElement as K, useComponentRender as A, useMemo as L, classnames as U, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as g, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
 import { View as F } from "@elf-framework/ui";
 const j = {
   command: "keymap.keydown",
@@ -29,7 +29,7 @@ class W {
   }
   loadCommands(t = {}) {
     Object.keys(t).forEach((e) => {
-      x(t[e]) ? this.registerCommand(e, t[e]) : this.registerCommand(t[e]);
+      p(t[e]) ? this.registerCommand(e, t[e]) : this.registerCommand(t[e]);
     });
   }
   registerCommand(t, e) {
@@ -152,12 +152,12 @@ class _ {
   get(t, e = {}, i = void 0) {
     var c, u;
     const n = this.getLang(i), r = ((c = this.locales[n]) == null ? void 0 : c[t]) || ((u = this.locales[this.fallbackLang]) == null ? void 0 : u[t]) || t || void 0;
-    if (x(r))
+    if (p(r))
       return r(e);
     {
       let a = r;
-      return t === a ? t.split(".").pop() : (Object.entries(e).forEach(([I, S]) => {
-        a = a.replace(new RegExp(`{${I}}`, "ig"), S);
+      return t === a ? t.split(".").pop() : (Object.entries(e).forEach(([S, I]) => {
+        a = a.replace(new RegExp(`{${S}}`, "ig"), I);
       }), a);
     }
   }
@@ -387,7 +387,7 @@ class Z {
     this.list.push(i), this.updateCommandInfo(i);
   }
   makeWhenFunction(t, e) {
-    if (w(e) && e)
+    if (k(e) && e)
       return () => !0;
     const i = this.editorContext, n = e.split("|").map((r) => r.trim());
     return () => n.some(
@@ -416,27 +416,27 @@ class Z {
     );
   }
   makeKeyString(t) {
-    var e;
-    return d(
+    var e, i;
+    return t.key === "Shift" || t.key === "Control" || t.key === "Alt" || t.key === "Meta" ? (e = t.key) == null ? void 0 : e.toUpperCase() : d(
       t.altKey ? o.ALT : "",
       t.ctrlKey ? o.CTRL : "",
       t.shiftKey ? o.SHIFT : "",
       t.metaKey ? o.META : "",
-      (e = t.key) == null ? void 0 : e.toUpperCase()
+      (i = t.key) == null ? void 0 : i.toUpperCase()
     );
   }
   makeCodeString(t) {
-    var e;
-    return d(
+    var e, i;
+    return t.key === "Shift" || t.key === "Control" || t.key === "Alt" || t.key === "Meta" ? (e = t.code) == null ? void 0 : e.toUpperCase() : d(
       t.altKey ? o.ALT : "",
       t.ctrlKey ? o.CTRL : "",
       t.shiftKey ? o.SHIFT : "",
       t.metaKey ? o.META : "",
-      (e = t.code) == null ? void 0 : e.toUpperCase()
+      (i = t.code) == null ? void 0 : i.toUpperCase()
     );
   }
   makeKeyCodeString(t) {
-    return d(
+    return t.key === "Shift" || t.key === "Control" || t.key === "Alt" || t.key === "Meta" ? t.keyCode : d(
       t.altKey ? o.ALT : "",
       t.ctrlKey ? o.CTRL : "",
       t.shiftKey ? o.SHIFT : "",
@@ -460,7 +460,7 @@ class Z {
       const n = i.filter((r) => r.eventType === e).filter((r) => this.checkWhen(r));
       n.length && n.forEach((r) => {
         if (r.container) {
-          if (T(r.container)) {
+          if (w(r.container)) {
             if (!t.target.matches(r.container))
               return;
           } else if (r.container instanceof HTMLElement && !r.container.contains(t.target))
@@ -482,9 +482,9 @@ class Q {
     this.groupUis[t] || (this.groupUis[t] = {}), Object.assign(this.groupUis[t], e);
   }
   createUI(t) {
-    if (t instanceof v)
+    if (t instanceof T)
       return t;
-    if (k(t)) {
+    if (v(t)) {
       const [e, i] = t;
       return f(e, i);
     }
@@ -602,7 +602,7 @@ class et {
     return this.configs.get(t);
   }
 }
-const E = "editor", y = "editorOption";
+const y = "editor", E = "editorOption";
 class ot {
   constructor(t, e = {}) {
     this.editor = t, this.props = e;
@@ -617,11 +617,11 @@ class ot {
   }
 }
 function h() {
-  return p(E);
+  return x(y);
 }
 function at(s) {
   var t;
-  return (t = p(y)) == null ? void 0 : t[s];
+  return (t = x(E)) == null ? void 0 : t[s];
 }
 function ct(s) {
   var t, e;
@@ -641,7 +641,7 @@ function ut(s, t = {}) {
 }
 class it extends K {
   initialize() {
-    super.initialize(), this.$editor = new et(this, this.props), this.$store.set(E, this.$editor), this.$store.set(y, this.props);
+    super.initialize(), this.$editor = new et(this, this.props), this.$store.set(y, this.$editor), this.$store.set(E, this.props);
     const { configs: t } = this.props;
     this.$editor.updateConfigs(t), this.activate();
   }
@@ -653,8 +653,8 @@ const st = ["TEXTAREA", "INPUT", "SELECT"];
 class dt extends it {
   template() {
     const { editorClass: t, fullScreen: e } = this.props;
-    L("editor.plugin.activated");
-    const i = h(), n = U(() => A("elf--base-editor", {
+    A("editor.plugin.activated");
+    const i = h(), n = L(() => U("elf--base-editor", {
       "full-screen": e,
       [t]: !0
     }), [t, e]);
