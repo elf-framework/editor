@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.100
+
+### Patch Changes
+
+- support animationDelay in toast
+
 ## 0.0.98
 
 ### Patch Changes

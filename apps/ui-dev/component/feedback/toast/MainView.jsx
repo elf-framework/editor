@@ -1,7 +1,15 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { VBox, Toast, RoundButton } from "@elf-framework/ui";
+import { useEffect } from "@elf-framework/sapa";
+import { VBox, Toast, RoundButton, toast } from "@elf-framework/ui";
 
 export function MainView() {
+  useEffect(() => {
+    toast({
+      title: "message",
+      closable: true,
+    });
+  }, []);
+
   return (
     <VBox
       style={{

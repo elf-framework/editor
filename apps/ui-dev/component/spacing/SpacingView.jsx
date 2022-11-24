@@ -24,7 +24,6 @@ export function SpacingView() {
           display: "flex",
           justifyContent: "center",
           alignItems: "end",
-          height: 80,
           marginBottom: 50,
           gap: 30,
           padding: 50,

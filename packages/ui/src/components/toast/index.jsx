@@ -33,6 +33,7 @@ export class Toast extends UIElement {
       style = {},
       content,
       delay = 0,
+      animationDelay = 300,
       icon,
       direction = "bottom",
       closable,
@@ -61,10 +62,10 @@ export class Toast extends UIElement {
       class: localClass,
       style: {
         ...propertyMap(style, cssProperties),
-        transition: `opacity ${localDelay}ms ease-in-out, transform  ${localDelay}ms ease-in-out`,
+        transition: `opacity ${animationDelay}ms ease-in-out, transform  ${animationDelay}ms ease-in-out`,
         opacity: hide ? 0 : 1,
-        transform: hide ? "scale(0.3)" : "scale(1)",
-        transformOrigin: "center top",
+        transform: hide ? "translateY(10px)" : "translateY(0px)",
+        transformOrigin: "center",
       },
     };
 

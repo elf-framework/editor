@@ -603,6 +603,7 @@ declare module "@elf-framework/ui" {
     direction?: ToastDirectionType;
     closable?: boolean;
     delay?: number;
+    animationDelay?: number;
     variant?: VariantType;
     onShow?: () => void;
     onClose?: () => void;
