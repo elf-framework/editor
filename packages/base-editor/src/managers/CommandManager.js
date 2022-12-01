@@ -42,7 +42,8 @@ export class CommandManager {
       // return this.editorContext.on(command, callback, this, 0);
     } else if (isObject(command)) {
       if (!command.command) throw new Error("command is required", command);
-      if (!command.execute) throw new Error("callback is required", command);
+      if (!isFunction(command.execute))
+        throw new Error("execute function is required", command);
 
       const callback = (...args) => {
         // 커맨드 함수를 생성하는 시점에 editorContext 를 자동으로 넘겨 주도록 맞춘다.
@@ -68,6 +69,10 @@ export class CommandManager {
     }
 
     return this.localCommands[command];
+  }
+
+  get(command) {
+    return this.getCallback(command);
   }
 
   execute(command, ...args) {

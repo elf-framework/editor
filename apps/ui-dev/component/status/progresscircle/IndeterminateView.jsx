@@ -9,7 +9,7 @@ export function IndeterminateView() {
           backgroundColor: "var(--color-gray-0)",
           padding: "30px 20px",
           fontSize: 13,
-          height: 100,
+          // height: 100,
         }}
       >
         <div
@@ -19,7 +19,7 @@ export function IndeterminateView() {
             padding: [0, 40],
             justifyContent: "center",
             alignItems: "flex-start",
-            height: 200,
+            // height: 200,
             textAlign: "center",
           }}
         >

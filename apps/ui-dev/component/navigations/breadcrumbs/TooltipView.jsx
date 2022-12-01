@@ -1,66 +1,55 @@
 import CheckFilled from "@elf-framework/icon/CheckFilled";
-import { Breadcrumbs, Grid, VBox } from "@elf-framework/ui";
+import { Breadcrumbs, VBox } from "@elf-framework/ui";
 
 export function TooltipView() {
   return (
-    <Grid columns={1} gap={30}>
-      <VBox
+    <VBox
+      style={{
+        gap: 30,
+        backgroundColor: "var(--color-gray-0)",
+        padding: "30px 20px",
+        fontSize: 13,
+        height: 100,
+      }}
+    >
+      <div
         style={{
+          display: "flex",
           gap: 30,
-          backgroundColor: "var(--color-gray-0)",
-          padding: "30px 20px",
-          fontSize: 13,
-          height: 100,
+          flexDirection: "column",
+          padding: [20, 40],
+          // justifyContent: "center",
+          alignItems: "flex-start",
+          height: 200,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            gap: 30,
-            flexDirection: "column",
-            padding: [20, 40],
-            // justifyContent: "center",
-            alignItems: "flex-start",
-            height: 200,
-          }}
-        >
-          <Breadcrumbs
-            items={[
-              {
-                title: <CheckFilled />,
+        <Breadcrumbs
+          items={[
+            {
+              title: <CheckFilled />,
+            },
+            {
+              title: "Design",
+              href: "/pages/design-system/getting-started/",
+            },
+            {
+              title: "Inputs",
+              href: "/pages/design-system/components/inputs/checkbox/",
+            },
+            {
+              selected: true,
+              title: "New line menu",
+              tooltip: {
+                trigger: ["focus", "hover"],
+                placement: "top",
+                message: "New line menu",
+                show: true,
               },
-              {
-                title: "Design",
-                href: "/pages/design-system/getting-started/",
-              },
-              {
-                title: "Inputs",
-                href: "/pages/design-system/components/inputs/checkbox/",
-              },
-              {
-                selected: true,
-                title: "New line menu",
-                tooltip: {
-                  trigger: ["focus", "hover"],
-                  placement: "top",
-                  message: "New line menu",
-                  show: true,
-                },
-                href: "/pages/design-system/components/navigations/avatar/",
-              },
-            ]}
-          />
-        </div>
-      </VBox>
-      <div>
-        <p>
-          <p>
-            When the breadcrumb title is truncated, a tooltip should display the
-            full title when the user hovers, keyboard focuses, or single-taps on
-            mobile.
-          </p>
-        </p>
+              href: "/pages/design-system/components/navigations/avatar/",
+            },
+          ]}
+        />
       </div>
-    </Grid>
+    </VBox>
   );
 }
