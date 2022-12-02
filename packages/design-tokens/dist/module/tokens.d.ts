@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 02 Dec 2022 08:43:54 GMT
+ * Generated on Fri, 02 Dec 2022 16:33:37 GMT
  */
 
 export default tokens;
@@ -698,6 +698,9 @@ declare const tokens: {
       "background": {
         "default": DesignToken,
         "hover": {
+          "default": DesignToken
+        },
+        "selected": {
           "default": DesignToken
         }
       },

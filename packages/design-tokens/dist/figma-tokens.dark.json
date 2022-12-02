@@ -564,11 +564,11 @@
     },
     "hover": {
       "default": {
-        "value": "{color.gray.1}",
+        "value": "{color.gray.2}",
         "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.1}"
+          "value": "{color.gray.2}"
         },
         "attributes": {
           "category": "color",
@@ -2866,11 +2866,11 @@
         ]
       },
       "9": {
-        "value": "#01010a",
+        "value": "#1d1d1e",
         "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#01010a"
+          "value": "#1D1D1E"
         },
         "attributes": {
           "category": "color",
@@ -8712,11 +8712,11 @@
         },
         "hover": {
           "default": {
-            "value": "{color.gray.1}",
+            "value": "{color.gray.2}",
             "filePath": "tokens/component/sidebar.dark.json",
             "isSource": true,
             "original": {
-              "value": "{color.gray.1}"
+              "value": "{color.gray.2}"
             },
             "attributes": {
               "category": "sidebar",
@@ -8730,6 +8730,30 @@
               "color",
               "background",
               "hover",
+              "default"
+            ]
+          }
+        },
+        "selected": {
+          "default": {
+            "value": "{color.gray.2}",
+            "filePath": "tokens/component/sidebar.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2}"
+            },
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "selected",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "selected",
               "default"
             ]
           }

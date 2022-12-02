@@ -9,7 +9,12 @@
           "default": {
             "value": "{color.hover.default.value}"
           }
-        }
+        },
+        "selected": {
+          "default": {
+            "value": "{color.hover.default.value}"
+          }
+        }        
       },
       "text": {
         "default": {

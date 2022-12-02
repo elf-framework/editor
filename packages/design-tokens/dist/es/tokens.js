@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 02 Dec 2022 08:43:54 GMT
+ * Generated on Fri, 02 Dec 2022 16:33:37 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -29,7 +29,7 @@ export const ColorDanger = "#d9363e";
 export const ColorWarning = "#e16f24";
 export const ColorInfo = "#429bff";
 export const ColorDisabled = "#d9e0e6";
-export const ColorHoverDefault = "#f8f8f8";
+export const ColorHoverDefault = "#ebf0f5";
 export const ColorHoverDark = "#000000";
 export const ColorHoverPrimary = "#0060cc";
 export const ColorHoverSecondary = "#46525c";
@@ -418,7 +418,7 @@ export const InputColorBackgroundDefault = "#ffffff";
 export const InputColorTextDefault = "#2c353d";
 export const InputColorBorderDefault = "#d9e0e6";
 export const MenuColorBackgroundDefault = "#ffffff";
-export const MenuColorBackgroundHoverDefault = "#f8f8f8";
+export const MenuColorBackgroundHoverDefault = "#ebf0f5";
 export const MenuColorTextDefault = "#2c353d";
 export const MenuColorBorderDefault = "#d9e0e6";
 export const MenuShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
@@ -433,7 +433,8 @@ export const ProgressbarColorActive = "#2c353d";
 export const ProgressCircleColorTrack = "#d9e0e6";
 export const ProgressCircleColorActive = "#2c353d";
 export const SidebarColorBackgroundDefault = "#ffffff";
-export const SidebarColorBackgroundHoverDefault = "#f8f8f8";
+export const SidebarColorBackgroundHoverDefault = "#ebf0f5";
+export const SidebarColorBackgroundSelectedDefault = "#ebf0f5";
 export const SidebarColorTextDefault = "#2c353d";
 export const SidebarColorBorderDefault = "#d9e0e6";
 export const SidebarShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";

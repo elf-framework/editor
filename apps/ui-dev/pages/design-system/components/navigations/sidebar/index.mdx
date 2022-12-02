@@ -6,6 +6,10 @@ filename: pages/design-system/components/navigations/sidebar/page.mdx
 
 import { VBox, Flex } from "@elf-framework/ui";
 import { MainView } from "~/component/navigations/sidebar/MainView.jsx"; 
+import { IconView } from "~/component/navigations/sidebar/IconView.jsx"; 
+import { NestedView } from "~/component/navigations/sidebar/NestedView.jsx"; 
+import { CompactView } from "~/component/navigations/sidebar/CompactView.jsx"; 
+import { TooltipView } from "~/component/navigations/sidebar/TooltipView.jsx"; 
 import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
 
 # {title}
@@ -19,19 +23,19 @@ An avatar is a thumbnail representation of an entity, such as a user or an organ
 <CodeView>
   <CodeViewItem title="Sapa">
 ```jsx {2,7} showLineNumbers
-<div>
-    <Avatar size="300">
-        <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
-    </Avatar>
-</div>
-<div>
-    <Avatar
-        style={{
-            backgroundImage:
-            "linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)",
-        }}
-    />
-</div>
+<Sidebar
+    items={[
+        "Section title",
+        { type: "section", title: "Section title 2" },
+        "-",
+        { title: "xxx", link: "xxx" },
+        { title: "xxx", link: "xxx", selected: true },
+        "-",
+        "Hello World",
+        { title: "blue" },
+        { title: "group", items: [{ title: "xxxx" }] },
+    ]}
+/>
 ```
   </CodeViewItem>
 </CodeView>
@@ -40,4 +44,136 @@ An avatar is a thumbnail representation of an entity, such as a user or an organ
 ## Options 
 
 
-### Size
+### With icon 
+
+
+<IconView />
+
+Individual sidebar items can have icons.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {9} showLineNumbers
+<Sidebar
+    items={[
+        "Section title",
+        { type: "section", title: "Section title 2" },
+        "-",
+        { 
+            title: "xxx", 
+            link: "xxx",
+            icon: <SettingsAccessibilityFilled />,
+        },
+        { title: "xxx", link: "xxx", selected: true },
+        "-",
+        "Hello World",
+        { title: "blue" },
+        { title: "group", items: [{ title: "xxxx" }] },
+    ]}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+### Nested items
+
+
+<NestedView />
+
+Individual sidebar items can have icons.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2,7} showLineNumbers
+<Sidebar
+    items={[
+        "Section title",
+        { type: "section", title: "Section title 2" },
+        "-",
+        { title: "xxx", link: "xxx" },
+        { title: "xxx", link: "xxx", selected: true },
+        "-",
+        "Hello World",
+        { title: "blue" },
+        { title: "group", items: [
+            { title: "xxxx" },
+            { title: "xxxx" },
+            { title: "xxxx" },
+            { title: "xxxx" },
+        ] },
+    ]}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+### Compact sidebar
+
+
+<CompactView />
+
+&nbsp;
+
+A simple sidebar is implemented in compact mode.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2} showLineNumbers
+<Sidebar
+    compact
+    header={<SettingsAccessibilityFilled />}
+    footer={<SettingsAccessibilityFilled />}
+    items={[
+    {
+        link: "xxx",
+        selected: true,
+        icon: <SettingsAccessibilityFilled />,
+    },
+    {
+        title: "xxx",
+        link: "xxx",
+        icon: <SettingsAccessibilityFilled />,
+        tooltip: "xxx",
+    },
+    {
+        title: "xxx",
+        link: "xxx",
+        icon: <SettingsAccessibilityFilled />,
+    },
+    ]}
+/>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+### Tooltip
+
+
+<TooltipView />
+
+&nbsp;
+
+Additional information can be expressed through Tooltip.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {7} showLineNumbers
+<Sidebar
+    compact
+    items={[
+    {
+        link: "xxx",
+        selected: true,
+        icon: <SettingsAccessibilityFilled />,
+        tooltip: "Tooltip",
+    },
+    ]}
+/>
+```
+  </CodeViewItem>
+</CodeView>

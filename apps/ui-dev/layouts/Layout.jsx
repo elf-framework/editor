@@ -50,8 +50,6 @@ export function Layout(props) {
             </ActionGroup>
           }
         />
-
-        <Blank />
       </View>
       <View class="layout-content">
         <div style={{ margin: "0 auto" }} class="markdown-body">

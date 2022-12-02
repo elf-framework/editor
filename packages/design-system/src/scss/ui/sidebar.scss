@@ -8,6 +8,7 @@
     --elf--sidebar-box-shadow: var(--sidebar-shadow-default);
     /* sidebar default width */
     --elf--sidebar-width: 100%;
+    --elf--sidebar-height: 100%;
     /* sidebar max height */
     --elf--sidebar-max-width: 240px;
     /* sidebar item height */
@@ -17,9 +18,10 @@
     /* sidebar item section title color */
     --elf--sidebar-item-section-title-color: var(--color-text-header-default);
     /* sidebar item divider color */
-    --elf--sidebar-item-divider-color: var(--sidebar-color-border-default);    
+    --elf--sidebar-item-divider-color: var(--sidebar-color-border-default);
 
     --elf--sidebar-item-hover-color: var(--sidebar-color-background-hover-default);
+    --elf--sidebar-item-selected-color: var(--sidebar-color-background-selected-default);
     /* sidebar direction */
     --elf--sidebar-direction-left: 100%;
     /* sidebar selected icon font size */
@@ -35,6 +37,7 @@
     background: var(--elf--sidebar-background-color);
     // border: 1px solid var(--elf--sidebar-border-color);
     width: var(--elf--sidebar-width);
+    height: var(--elf--sidebar-height);
     max-width: var(--elf--sidebar-width);
     border-radius: 2px;
     display: flex;
@@ -42,31 +45,49 @@
     margin: 0px;
     font-size: var(--elf--sidebar-item-font-size);
     position: var(--elf--sidebar-position);
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    top: 0px;
     text-align: left;
-    padding:0px;
+    padding: 0px;
 
-    &.compact {
-        --elf--sidebar-position: absolute;
+
+    >* {
+        padding: 16px;
     }
 
-    > * {
-        padding: 10px;
+    > .header + .body {
+        // padding-top: 0px;
     }
 
-    > .body {
+    >.body {
         flex: 1 1 auto;
         overflow: auto;
+        
     }
 
-    > .header,
-    > .footer {
+    >.header,
+    >.footer {
         flex: none;
         // background-color: rgba(0, 0, 0, 0.1);
     }
+
+    > .header {
+        box-sizing: border-box;
+
+        > * {
+            flex: 1 1 auto;
+        }
+    }
+
+    > .footer {
+        min-height: 80px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+        > * {
+            flex: 1 1 auto;
+        }
+    }    
 
     // variant style - dark 
     &.dark {
@@ -82,54 +103,104 @@
     .elf--sidebar-item {
 
         &.selected {
-            > .item-title {
-                background-color: var(--color-gray-1);
+            >.item-title > .selected-area {
+                background-color: var(--elf--sidebar-item-selected-color);
             }
 
         }
-    
+
         &.disabled {
-            > .item-title > * {
+            >.item-title>* {
                 color: gray !important;
             }
-    
-        }
-        
 
-        > .item-title {
+        }
+
+
+        >.item-title {
             display: flex;
 
-            padding: 6px 10px;
+
             // border-radius: 5px;
             box-sizing: border-box;
-            display: block;
-            border-radius: 5px;
+
             margin-bottom: 2px;
-            transition: background-color 0.1s ease-in-out;            
+            transition: background-color 0.1s ease-in-out;
+
+            > .selected-area {
+                flex: 1 1 auto;
+                padding: 10px 14px;
+                border-radius: 4px;
+                box-sizing: border-box;
+
+            }
 
             &:hover {
-                background-color: var(--color-gray-1);
-                color: var(--color-text-header-default);
+
+                .selected-area {
+                    background-color: var(--elf--sidebar-item-hover-color);
+                    color: var(--color-text-header-default);
+                }
+
             }
-    
+
+            >.icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 10px;
+                font-size: 20px;
+                color: var(--color-gray-6);
+                transition: color 0.1s ease-in-out;
+            }
+
+            &+.items {
+                position: relative;
+                // padding-left: 10px;
+
+                > * {
+                    margin-left: 10px;
+                }
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    left: 20px;
+                    top: 0px;
+                    bottom: 0px;
+                    width: 1px;
+                    background-color: var(--color-border);
+                }
+            }
+
         }
 
-        
+
         [data-depth="0"] {
             padding-left: 0px;
         }
 
         [data-depth="1"] {
-            padding-left: 30px;
+            padding-left: 20px;
         }
 
         [data-depth="2"] {
-            padding-left: 50px;
+            padding-left: 40px;
         }
 
         &.section-title {
+
+            &:not(:first-child) {
+                margin-top: 40px;
+            }
+
+
+            padding: 10px 16px;
+            padding-top: 0px;
             .title {
                 font-weight: bold;
+                font-size: 11px;
+                color: var(--color-gray-4);
             }
         }
 
@@ -140,4 +211,57 @@
             }
         }
     }
+}
+
+.elf--sidebar.compact-sidebar {
+
+    --elf--sidebar-width: 80px;
+    right: auto;
+
+    > * {
+        padding: 16px 20px;
+
+        text-align: center;
+    }
+
+    > .header {
+        // min-height: var(--elf--sidebar-width);
+        box-sizing: border-box;
+
+        > * {
+            flex: 1 1 auto;
+        }
+    }
+
+    > .footer {
+        min-height: var(--elf--sidebar-width);
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+        > * {
+            flex: 1 1 auto;
+        }
+    }
+
+    > .body {
+        overflow: auto;
+        z-index: 100;
+    }
+    .elf--sidebar-item {
+        padding: 0px;
+        margin-bottom: 4px;
+
+        .item-title {
+
+            .selected-area {
+                padding: 8px;
+                > :not(.icon) {
+                    display: none;
+                }
+            }
+
+        }
+    }    
 }

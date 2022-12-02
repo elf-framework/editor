@@ -1,49 +1,24 @@
 import SettingsAccessibilityFilled from "@elf-framework/icon/SettingsAccessibilityFilled";
-import { Flex, Sidebar } from "@elf-framework/ui";
+import { Sidebar, VBox } from "@elf-framework/ui";
 
-export function MainView() {
+export function CompactView() {
   return (
-    <Flex
+    <VBox
       style={{
         gap: 30,
         backgroundColor: "var(--color-gray-2)",
-        padding: [60, 100],
-        position: "relative",
+        padding: "30px 150px",
+        fontSize: 13,
       }}
     >
       <div
         style={{
-          textAlign: "center",
           display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
           gap: 30,
-          width: 240,
-          position: "relative",
-        }}
-      >
-        <Sidebar
-          header={<div>Header</div>}
-          footer={<div>Footer</div>}
-          items={[
-            "Section title",
-            { title: "xxx", link: "xxx" },
-            { type: "section", title: "Section title 2" },
-            { title: "xxx", link: "xxx" },
-            "Hello World",
-            { title: "blue" },
-            { title: "group", items: [{ title: "xxxx", selected: true }] },
-          ]}
-        />
-      </div>
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          gap: 30,
-          position: "relative",
+          flexDirection: "column",
+          padding: [20, 40],
+          // justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Sidebar
@@ -87,6 +62,6 @@ export function MainView() {
           ]}
         />
       </div>
-    </Flex>
+    </VBox>
   );
 }

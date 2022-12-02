@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 02 Dec 2022 08:43:54 GMT
+ * Generated on Fri, 02 Dec 2022 16:33:37 GMT
  */
 
 (function(root, factory) {
@@ -71,7 +71,7 @@
   "color": {
     "background": {
       "default": {
-        "value": "#01010a",
+        "value": "#1d1d1e",
         "comment": "Background color that will match the current color scheme",
         "filePath": "tokens/color/background.dark.json",
         "isSource": true,
@@ -113,7 +113,7 @@
         ]
       },
       "secondary": {
-        "value": "#01010a",
+        "value": "#1d1d1e",
         "comment": "Base color for the secondary color",
         "filePath": "tokens/color/background.dark.json",
         "isSource": true,
@@ -606,11 +606,11 @@
     },
     "hover": {
       "default": {
-        "value": "#282828",
+        "value": "#484848",
         "filePath": "tokens/color/brand.dark.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.1.value}"
+          "value": "{color.gray.2.value}"
         },
         "name": "ColorHoverDefault",
         "attributes": {
@@ -3034,11 +3034,11 @@
         ]
       },
       "9": {
-        "value": "#01010a",
+        "value": "#1d1d1e",
         "filePath": "tokens/color/core.dark.json",
         "isSource": true,
         "original": {
-          "value": "#01010a"
+          "value": "#1D1D1E"
         },
         "name": "ColorDark9",
         "attributes": {
@@ -8367,7 +8367,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#1d1d1e",
           "filePath": "tokens/component/dialog.dark.json",
           "isSource": true,
           "original": {
@@ -8781,7 +8781,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#1d1d1e",
           "filePath": "tokens/component/menu.dark.json",
           "isSource": true,
           "original": {
@@ -9000,7 +9000,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#1d1d1e",
           "filePath": "tokens/component/popover.dark.json",
           "isSource": true,
           "original": {
@@ -9138,7 +9138,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#1d1d1e",
           "filePath": "tokens/component/sidebar.dark.json",
           "isSource": true,
           "original": {
@@ -9160,11 +9160,11 @@
         },
         "hover": {
           "default": {
-            "value": "#282828",
+            "value": "#484848",
             "filePath": "tokens/component/sidebar.dark.json",
             "isSource": true,
             "original": {
-              "value": "{color.gray.1.value}"
+              "value": "{color.gray.2.value}"
             },
             "name": "SidebarColorBackgroundHoverDefault",
             "attributes": {
@@ -9179,6 +9179,31 @@
               "color",
               "background",
               "hover",
+              "default"
+            ]
+          }
+        },
+        "selected": {
+          "default": {
+            "value": "#484848",
+            "filePath": "tokens/component/sidebar.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.2.value}"
+            },
+            "name": "SidebarColorBackgroundSelectedDefault",
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "selected",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "selected",
               "default"
             ]
           }
@@ -9560,7 +9585,7 @@
       "color": {
         "background": {
           "default": {
-            "value": "#01010a",
+            "value": "#1d1d1e",
             "filePath": "tokens/component/table.dark.json",
             "isSource": true,
             "original": {
@@ -10044,7 +10069,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#1d1d1e",
           "filePath": "tokens/component/tools.dark.json",
           "isSource": true,
           "original": {
@@ -10125,7 +10150,7 @@
     "color": {
       "background": {
         "default": {
-          "value": "#01010a",
+          "value": "#1d1d1e",
           "filePath": "tokens/component/tooltip.dark.json",
           "isSource": true,
           "original": {

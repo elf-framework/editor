@@ -6,9 +6,9 @@
   },
   "color": {
     "background": {
-      "default": "#01010a",
+      "default": "#1d1d1e",
       "primary": "#429bff",
-      "secondary": "#01010a",
+      "secondary": "#1d1d1e",
       "danger": "#ff5760",
       "warning": "#614d27",
       "success": "#28bd8b",
@@ -33,7 +33,7 @@
     "info": "#1273e6",
     "disabled": "#484848",
     "hover": {
-      "default": "#282828",
+      "default": "#484848",
       "dark": "#000000",
       "primary": "#0060cc",
       "secondary": "#e0e0e0",
@@ -183,7 +183,7 @@
       "6": "#2b2c3d",
       "7": "#1d1e30",
       "8": "#0c0d21",
-      "9": "#01010a"
+      "9": "#1d1d1e"
     },
     "black": "#000000",
     "white": "#ffffff",
@@ -562,7 +562,7 @@
   "dialog": {
     "color": {
       "background": {
-        "default": "#01010a",
+        "default": "#1d1d1e",
         "hover": {
           "default": "#282828"
         }
@@ -616,7 +616,7 @@
   "menu": {
     "color": {
       "background": {
-        "default": "#01010a",
+        "default": "#1d1d1e",
         "hover": {
           "default": "#282828"
         }
@@ -655,7 +655,7 @@
   "popover": {
     "color": {
       "background": {
-        "default": "#01010a"
+        "default": "#1d1d1e"
       }
     }
   },
@@ -679,9 +679,12 @@
   "sidebar": {
     "color": {
       "background": {
-        "default": "#01010a",
+        "default": "#1d1d1e",
         "hover": {
-          "default": "#282828"
+          "default": "#484848"
+        },
+        "selected": {
+          "default": "#484848"
         }
       },
       "text": {
@@ -764,7 +767,7 @@
     "tbody": {
       "color": {
         "background": {
-          "default": "#01010a"
+          "default": "#1d1d1e"
         }
       }
     }
@@ -824,7 +827,7 @@
   "tools": {
     "color": {
       "background": {
-        "default": "#01010a"
+        "default": "#1d1d1e"
       },
       "hover": {
         "background": {
@@ -841,7 +844,7 @@
   "tooltip": {
     "color": {
       "background": {
-        "default": "#01010a"
+        "default": "#1d1d1e"
       },
       "text": {
         "default": "#f8f8f8"

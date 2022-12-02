@@ -7,7 +7,12 @@
         },
         "hover": {
           "default": {
-            "value": "{color.gray.1.value}"
+            "value": "{color.gray.2.value}"
+          }
+        },
+        "selected": {
+          "default": {
+            "value": "{color.gray.2.value}"
           }
         }
       },

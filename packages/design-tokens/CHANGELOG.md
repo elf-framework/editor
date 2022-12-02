@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.102
+
+### Patch Changes
+
+- support sidebar compact component
+
 ## 0.0.101
 
 ### Patch Changes

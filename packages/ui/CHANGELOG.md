@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.102
+
+### Patch Changes
+
+- support sidebar compact component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.102
+
 ## 0.0.101
 
 ### Patch Changes

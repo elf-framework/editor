@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 02 Dec 2022 08:43:54 GMT
+ * Generated on Fri, 02 Dec 2022 16:33:37 GMT
  */
 
 :root {
@@ -524,7 +524,7 @@
   --color-hover-success: var(--color-green-7);
   --color-hover-secondary: var(--color-gray-7);
   --color-hover-primary: var(--color-blue-7);
-  --color-hover-default: var(--color-gray-0);
+  --color-hover-default: var(--color-gray-1);
   --color-disabled: var(--color-gray-2);
   --color-info: var(--color-blue-5);
   --color-warning: var(--color-orange-4);
@@ -569,6 +569,7 @@
   --tab-color-text-default: var(--color-text-default);
   --tab-color-border-default: var(--color-border);
   --sidebar-color-text-default: var(--color-text-default);
+  --sidebar-color-background-selected-default: var(--color-hover-default);
   --sidebar-color-background-hover-default: var(--color-hover-default);
   --sidebar-color-background-default: var(--color-background-default);
   --progressbar-color-text-default: var(--color-text-default);

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 02 Dec 2022 08:43:54 GMT
+ * Generated on Fri, 02 Dec 2022 16:33:37 GMT
  */
 
 module.exports = {
@@ -595,11 +595,11 @@ module.exports = {
     },
     "hover": {
       "default": {
-        "value": "#f8f8f8",
+        "value": "#ebf0f5",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.0.value}"
+          "value": "{color.gray.1.value}"
         },
         "name": "ColorHoverDefault",
         "attributes": {
@@ -8744,7 +8744,7 @@ module.exports = {
         },
         "hover": {
           "default": {
-            "value": "#f8f8f8",
+            "value": "#ebf0f5",
             "filePath": "tokens/component/menu.json",
             "isSource": true,
             "original": {
@@ -9101,7 +9101,7 @@ module.exports = {
         },
         "hover": {
           "default": {
-            "value": "#f8f8f8",
+            "value": "#ebf0f5",
             "filePath": "tokens/component/sidebar.json",
             "isSource": true,
             "original": {
@@ -9120,6 +9120,31 @@ module.exports = {
               "color",
               "background",
               "hover",
+              "default"
+            ]
+          }
+        },
+        "selected": {
+          "default": {
+            "value": "#ebf0f5",
+            "filePath": "tokens/component/sidebar.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.hover.default.value}"
+            },
+            "name": "SidebarColorBackgroundSelectedDefault",
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "selected",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "selected",
               "default"
             ]
           }

@@ -564,11 +564,11 @@
     },
     "hover": {
       "default": {
-        "value": "{color.gray.0}",
+        "value": "{color.gray.1}",
         "filePath": "tokens/color/brand.json",
         "isSource": true,
         "original": {
-          "value": "{color.gray.0}"
+          "value": "{color.gray.1}"
         },
         "attributes": {
           "category": "color",
@@ -8684,6 +8684,30 @@
               "color",
               "background",
               "hover",
+              "default"
+            ]
+          }
+        },
+        "selected": {
+          "default": {
+            "value": "{color.hover.default}",
+            "filePath": "tokens/component/sidebar.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.hover.default}"
+            },
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "selected",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "selected",
               "default"
             ]
           }
