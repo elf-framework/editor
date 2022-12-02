@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.39
+
+### Patch Changes
+
+- update panel documentation
+
 ## 1.0.38
 
 ### Patch Changes

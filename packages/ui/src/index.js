@@ -80,3 +80,4 @@ export * from "./components/card/CardActions";
 export * from "./components/ghost";
 export * from "./components/blank";
 export * from "./components/select";
+export * from "./components/sidebar";

@@ -1,0 +1,31 @@
+{
+  "sidebar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default.value}"
+        },
+        "hover": {
+          "default": {
+            "value": "{color.gray.1.value}"
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default.value}"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2.value}"
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)"
+      }
+    }
+  }
+}

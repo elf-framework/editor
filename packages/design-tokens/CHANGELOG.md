@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.101
+
+### Patch Changes
+
+- update panel component
+
 ## 0.0.100
 
 ### Patch Changes

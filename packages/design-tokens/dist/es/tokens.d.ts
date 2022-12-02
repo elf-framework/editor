@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 01 Dec 2022 04:58:54 GMT
+ * Generated on Fri, 02 Dec 2022 08:43:54 GMT
  */
 
 export const ImageLogo : string;
@@ -432,6 +432,11 @@ export const ProgressbarColorTextDefault : string;
 export const ProgressbarColorActive : string;
 export const ProgressCircleColorTrack : string;
 export const ProgressCircleColorActive : string;
+export const SidebarColorBackgroundDefault : string;
+export const SidebarColorBackgroundHoverDefault : string;
+export const SidebarColorTextDefault : string;
+export const SidebarColorBorderDefault : string;
+export const SidebarShadowDefault : string;
 export const SliderColorProgressBackgroundDefault : string;
 export const SliderColorProgressThumbBackgroundDefault : string;
 export const SwitchFalseColorBackgroundDefault : string;

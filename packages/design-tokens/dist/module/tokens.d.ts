@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 01 Dec 2022 04:58:54 GMT
+ * Generated on Fri, 02 Dec 2022 08:43:54 GMT
  */
 
 export default tokens;
@@ -691,6 +691,25 @@ declare const tokens: {
     "color": {
       "track": DesignToken,
       "active": DesignToken
+    }
+  },
+  "sidebar": {
+    "color": {
+      "background": {
+        "default": DesignToken,
+        "hover": {
+          "default": DesignToken
+        }
+      },
+      "text": {
+        "default": DesignToken
+      },
+      "border": {
+        "default": DesignToken
+      }
+    },
+    "shadow": {
+      "default": DesignToken
     }
   },
   "slider": {

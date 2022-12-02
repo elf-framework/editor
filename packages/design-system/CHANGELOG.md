@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.101
+
+### Patch Changes
+
+- update panel component
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.101
+
 ## 0.0.98
 
 ### Patch Changes

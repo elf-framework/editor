@@ -1,5 +1,5 @@
 .elf--panel {
-    --elf--panel-background-color: var(--panel-color-background-default);
+    --elf--panel-background-color: transparent;
     --elf--panel-color: var(--panel-color-text-default);;
     --elf--panel-border-color: transparent;
     --elf--panel-width: 100%;
@@ -46,7 +46,7 @@
         align-items: center;
 
         & + .elf--panel-content {
-            padding: 0px var(--elf--panel-padding);
+            padding-top: 0px;
         }
 
         > .elf--panel-title-text {
@@ -55,7 +55,7 @@
             align-items: center;
             // justify-content: center;
             // padding-left: 16px;
-            font-weight: 600;
+            font-weight: bold;
             color: var(--elf--panel-color);
 
         }

@@ -8687,6 +8687,120 @@
       }
     }
   },
+  "sidebar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/sidebar.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "hover": {
+          "default": {
+            "value": "{color.gray.1}",
+            "filePath": "tokens/component/sidebar.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1}"
+            },
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "hover",
+              "default"
+            ]
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/sidebar.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.gray.2}",
+          "filePath": "tokens/component/sidebar.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2}"
+          },
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)",
+        "filePath": "tokens/component/sidebar.dark.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)"
+        },
+        "attributes": {
+          "category": "sidebar",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "sidebar",
+          "shadow",
+          "default"
+        ]
+      }
+    }
+  },
   "slider": {
     "color": {
       "progress": {

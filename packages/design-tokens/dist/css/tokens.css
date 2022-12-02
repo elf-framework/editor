@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 01 Dec 2022 04:58:54 GMT
+ * Generated on Fri, 02 Dec 2022 08:43:54 GMT
  */
 
 :root {
@@ -121,6 +121,7 @@
   --toast-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --table-thead-color-background-default: transparent;
   --tab-color-background-default: transparent;
+  --sidebar-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --menu-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --dialog-shadow-default: 0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2);
   --button-outline-background-white: transparent;
@@ -319,6 +320,7 @@
   --switch-false-color-background-default: var(--color-gray-2);
   --slider-color-progress-thumb-background-default: var(--color-gray-9);
   --slider-color-progress-background-default: var(--color-gray-9);
+  --sidebar-color-border-default: #d9e0e6;
   --progress-circle-color-active: var(--color-gray-9);
   --progress-circle-color-track: var(--color-gray-2);
   --progressbar-color-active: var(--color-gray-9);
@@ -566,6 +568,9 @@
   --table-tbody-color-background-default: var(--color-background-default);
   --tab-color-text-default: var(--color-text-default);
   --tab-color-border-default: var(--color-border);
+  --sidebar-color-text-default: var(--color-text-default);
+  --sidebar-color-background-hover-default: var(--color-hover-default);
+  --sidebar-color-background-default: var(--color-background-default);
   --progressbar-color-text-default: var(--color-text-default);
   --popover-color-background-default: var(--color-background-default);
   --panel-color-text-default: var(--color-text-default);

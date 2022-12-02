@@ -1,4 +1,4 @@
-import { isFunction as p, isObject as b, isBoolean as k, isString as w, VNode as T, isArray as v, createElementJsx as f, useStore as x, UIElement as K, useComponentRender as A, useMemo as L, classnames as U, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as g, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
+import { isFunction as g, isObject as b, isBoolean as k, isString as w, VNode as T, isArray as v, createElementJsx as f, useStore as x, UIElement as K, useComponentRender as A, useMemo as L, classnames as U, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as m, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
 import { View as F } from "@elf-framework/ui";
 const j = {
   command: "keymap.keydown",
@@ -29,7 +29,7 @@ class W {
   }
   loadCommands(t = {}) {
     Object.keys(t).forEach((e) => {
-      p(t[e]) ? this.registerCommand(e, t[e]) : this.registerCommand(t[e]);
+      g(t[e]) ? this.registerCommand(e, t[e]) : this.registerCommand(t[e]);
     });
   }
   registerCommand(t, e) {
@@ -41,8 +41,8 @@ class W {
     } else if (b(t)) {
       if (!t.command)
         throw new Error("command is required", t);
-      if (!t.execute)
-        throw new Error("callback is required", t);
+      if (!g(t.execute))
+        throw new Error("execute function is required", t);
       const i = (...n) => t.execute.call(
         t,
         this.editorContext,
@@ -53,6 +53,9 @@ class W {
   }
   getCallback(t) {
     return typeof t == "function" ? t : this.localCommands[t];
+  }
+  get(t) {
+    return this.getCallback(t);
   }
   execute(t, ...e) {
     const i = this.getCallback(t);
@@ -152,7 +155,7 @@ class _ {
   get(t, e = {}, i = void 0) {
     var c, u;
     const n = this.getLang(i), r = ((c = this.locales[n]) == null ? void 0 : c[t]) || ((u = this.locales[this.fallbackLang]) == null ? void 0 : u[t]) || t || void 0;
-    if (p(r))
+    if (g(r))
       return r(e);
     {
       let a = r;
@@ -347,7 +350,7 @@ const o = {
   SPACE: "SPACE",
   BACKSPACE: "BACKSPACE"
 };
-function m(s) {
+function p(s) {
   return J[`${s}`.toLowerCase()] || s;
 }
 function d(...s) {
@@ -358,7 +361,7 @@ class Z {
     this.editorContext = t, this.loadShortCuts();
   }
   getGeneratedKeyCode(t) {
-    return m(t);
+    return p(t);
   }
   loadShortCuts() {
     this.list = [], this.commands = {};
@@ -412,7 +415,7 @@ class Z {
       n ? o.CTRL : "",
       r ? o.SHIFT : "",
       c ? o.META : "",
-      m(u.join(""))
+      p(u.join(""))
     );
   }
   makeKeyString(t) {
@@ -676,10 +679,10 @@ class dt extends it {
   [O("config:editor.theme")]() {
     this.updateTheme();
   }
-  [P("document") + g("isNotFormElement")](t) {
+  [P("document") + m("isNotFormElement")](t) {
     this.$editor.commands.execute("keymap.keydown", t);
   }
-  [z("document") + g("isNotFormElement")](t) {
+  [z("document") + m("isNotFormElement")](t) {
     this.$editor.commands.execute("keymap.keyup", t);
   }
   [$("window") + B(10)]() {

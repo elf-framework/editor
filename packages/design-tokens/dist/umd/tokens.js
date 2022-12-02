@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 01 Dec 2022 04:58:54 GMT
+ * Generated on Fri, 02 Dec 2022 08:43:54 GMT
  */
 
 (function(root, factory) {
@@ -9082,6 +9082,125 @@
           "progress-circle",
           "color",
           "active"
+        ]
+      }
+    }
+  },
+  "sidebar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/sidebar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "SidebarColorBackgroundDefault",
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "hover": {
+          "default": {
+            "value": "#f8f8f8",
+            "filePath": "tokens/component/sidebar.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.hover.default.value}"
+            },
+            "name": "SidebarColorBackgroundHoverDefault",
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "hover",
+              "default"
+            ]
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#2c353d",
+          "filePath": "tokens/component/sidebar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "SidebarColorTextDefault",
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#d9e0e6",
+          "filePath": "tokens/component/sidebar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default.value}"
+          },
+          "name": "SidebarColorBorderDefault",
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/sidebar.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "name": "SidebarShadowDefault",
+        "attributes": {
+          "category": "sidebar",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "sidebar",
+          "shadow",
+          "default"
         ]
       }
     }

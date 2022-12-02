@@ -21,18 +21,18 @@ An avatar is a thumbnail representation of an entity, such as a user or an organ
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
+```jsx {2,7} showLineNumbers
 <div>
     <Avatar size="300">
-    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+        <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
     </Avatar>
 </div>
 <div>
     <Avatar
-    style={{
-        backgroundImage:
-        "linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)",
-    }}
+        style={{
+            backgroundImage:
+            "linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)",
+        }}
     />
 </div>
 ```
@@ -48,14 +48,77 @@ An avatar is a thumbnail representation of an entity, such as a user or an organ
 <SizeView />
 
 
+&nbsp;
+
+Avatar sizes scale exponentially, based on the Spectrum type scale.
+These range from size-50 to size-700. An avatar can also be
+customized to fit appropriately for your context.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2,7} showLineNumbers
+ {["50", "100", "200", "300", "400", "500", "600", "700"].map(
+    (size) => (
+        <div style={{ display: "flex" }}>
+        <div style={{ flex: "none", width: 100 }}>
+            <em>{size}</em>
+        </div>
+        <Avatar size={size}>
+            <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+        </Avatar>
+        </div>
+    )
+)}
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
 ### Image
 
 <ImageView />
 
+&nbsp;
+
+Avatars can have a defined image, which is usually uploaded by a user.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2,7} showLineNumbers
+<Avatar>
+    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+</Avatar>
+<Avatar>
+    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+</Avatar>
+<Avatar>
+    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+</Avatar>
+```
+  </CodeViewItem>
+</CodeView>
 
 ### Disabled
 
 <DisabledView />
+
+&nbsp;
+
+An avatar in a disabled state shows that an avatar exists, but is not
+available or a user is not active in that circumstance. This can be
+used to maintain layout continuity and communicate that an avatar may
+become available or active later.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2,7} showLineNumbers
+<Avatar disabled>
+    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+</Avatar>
+```
+  </CodeViewItem>
+</CodeView>
 
 
 

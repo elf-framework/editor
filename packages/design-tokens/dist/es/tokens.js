@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 01 Dec 2022 04:58:54 GMT
+ * Generated on Fri, 02 Dec 2022 08:43:54 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -432,6 +432,11 @@ export const ProgressbarColorTextDefault = "#2c353d";
 export const ProgressbarColorActive = "#2c353d";
 export const ProgressCircleColorTrack = "#d9e0e6";
 export const ProgressCircleColorActive = "#2c353d";
+export const SidebarColorBackgroundDefault = "#ffffff";
+export const SidebarColorBackgroundHoverDefault = "#f8f8f8";
+export const SidebarColorTextDefault = "#2c353d";
+export const SidebarColorBorderDefault = "#d9e0e6";
+export const SidebarShadowDefault = "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)";
 export const SliderColorProgressBackgroundDefault = "#2c353d";
 export const SliderColorProgressThumbBackgroundDefault = "#2c353d";
 export const SwitchFalseColorBackgroundDefault = "#d9e0e6";

@@ -1,4 +1,4 @@
-import { UIElement, classnames } from "@elf-framework/sapa";
+import { UIElement, classnames, useMemo } from "@elf-framework/sapa";
 
 import { registerComponent } from "../../utils/component";
 import { propertyMap } from "../../utils/propertyMap";
@@ -20,12 +20,17 @@ export class Divider extends UIElement {
       margin = "10px",
       orientation = "horizontal",
     } = this.props;
-    const styleObject = {
-      class: classnames("elf--divider", {
+
+    const localClass = useMemo(() => {
+      return classnames("elf--divider", {
         [size]: true,
         [variant]: true,
         [orientation]: true,
-      }),
+      });
+    }, [size, variant, orientation]);
+
+    const styleObject = {
+      class: localClass,
       style: {
         ...propertyMap(
           {

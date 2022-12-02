@@ -8641,6 +8641,120 @@
       }
     }
   },
+  "sidebar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{color.background.default}",
+          "filePath": "tokens/component/sidebar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default}"
+          },
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "hover": {
+          "default": {
+            "value": "{color.hover.default}",
+            "filePath": "tokens/component/sidebar.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.hover.default}"
+            },
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "hover",
+              "default"
+            ]
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{color.text.default}",
+          "filePath": "tokens/component/sidebar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default}"
+          },
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.border.default}",
+          "filePath": "tokens/component/sidebar.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.border.default}"
+          },
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)",
+        "filePath": "tokens/component/sidebar.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 2px 7px rgba(0, 0, 0, 0.15), 0px 5px 17px rgba(0, 0, 0, 0.2)"
+        },
+        "attributes": {
+          "category": "sidebar",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "sidebar",
+          "shadow",
+          "default"
+        ]
+      }
+    }
+  },
   "slider": {
     "color": {
       "progress": {

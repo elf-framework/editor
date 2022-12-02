@@ -1905,4 +1905,65 @@ declare module "@elf-framework/ui" {
     getValue(): T;
     setValue(value: T): void;
   }
+
+  type SectionSidebarItemType = {
+    type: "section";
+    title: string;
+    style?: CommonStyle;
+  };
+
+  type LinkSidebarItemType = {
+    type?: "link";
+    link?: string;
+    title: string;
+    items?: SidebarItemType[];
+    selected?: boolean;
+    onClick?: (e: MouseEvent) => void;
+    hasSelected?: (item: LinkSidebarItemType) => boolean;
+    style?: CommonStyle;
+  };
+
+  type CustomSidebarItemType = {
+    type?: "custom";
+    link?: string;
+    title: string;
+    selected?: boolean;
+    hasSelected?: (item: CustomSidebarItemType) => boolean;
+    style?: CommonStyle;
+    render?: (item: CustomSidebarItemType) => ContentType;
+  };
+
+  type DividerSidebarItemType = {
+    type: "divider";
+    style?: CommonStyle;
+  };
+
+  type BlankSidebarItemType = {
+    type: "blank";
+    style?: CommonStyle;
+  };
+
+  type SidebarItemType =
+    | "-"
+    | string
+    | DividerSidebarItemType
+    | BlankSidebarItemType
+    | CustomSidebarItemType
+    | SectionSidebarItemType
+    | LinkSidebarItemType;
+
+  export interface SidebarProps {
+    items: SidebarItemType[];
+    header: ContentType;
+    footer: ContentType;
+    style: MenuStyle & CommonStyle;
+    root?: ToolsMenuItem;
+    compact?: boolean;
+    variant?: "light" | "dark";
+    hasSelected?: (item: SidebarItemType) => boolean;
+  }
+
+  export class Sidebar extends UIElement {
+    props: SidebarProps & CommonStyle;
+  }
 }

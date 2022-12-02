@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 01 Dec 2022 04:58:54 GMT
+ * Generated on Fri, 02 Dec 2022 08:43:54 GMT
  */
 
 (function(root, factory) {
@@ -9130,6 +9130,125 @@
           "progress-circle",
           "color",
           "active"
+        ]
+      }
+    }
+  },
+  "sidebar": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "#01010a",
+          "filePath": "tokens/component/sidebar.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.background.default.value}"
+          },
+          "name": "SidebarColorBackgroundDefault",
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "hover": {
+          "default": {
+            "value": "#282828",
+            "filePath": "tokens/component/sidebar.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1.value}"
+            },
+            "name": "SidebarColorBackgroundHoverDefault",
+            "attributes": {
+              "category": "sidebar",
+              "type": "color",
+              "item": "background",
+              "subitem": "hover",
+              "state": "default"
+            },
+            "path": [
+              "sidebar",
+              "color",
+              "background",
+              "hover",
+              "default"
+            ]
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/sidebar.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.text.default.value}"
+          },
+          "name": "SidebarColorTextDefault",
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "text",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "text",
+            "default"
+          ]
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#484848",
+          "filePath": "tokens/component/sidebar.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.2.value}"
+          },
+          "name": "SidebarColorBorderDefault",
+          "attributes": {
+            "category": "sidebar",
+            "type": "color",
+            "item": "border",
+            "subitem": "default"
+          },
+          "path": [
+            "sidebar",
+            "color",
+            "border",
+            "default"
+          ]
+        }
+      }
+    },
+    "shadow": {
+      "default": {
+        "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)",
+        "filePath": "tokens/component/sidebar.dark.json",
+        "isSource": true,
+        "original": {
+          "value": "0px 0px 0px 1px rgba(72, 72, 72, 1)"
+        },
+        "name": "SidebarShadowDefault",
+        "attributes": {
+          "category": "sidebar",
+          "type": "shadow",
+          "item": "default"
+        },
+        "path": [
+          "sidebar",
+          "shadow",
+          "default"
         ]
       }
     }

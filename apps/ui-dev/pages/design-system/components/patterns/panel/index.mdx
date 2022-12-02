@@ -1,0 +1,143 @@
+---
+title: Panel
+layout: DesignLayout
+filename: pages/design-system/components/patterns/panel/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "~/component/patterns/panel/MainView.jsx"; 
+import { OptionsView } from "~/component/patterns/panel/OptionsView.jsx"; 
+import { TitleView } from "~/component/patterns/panel/TitleView.jsx"; 
+import { ToolView } from "~/component/patterns/panel/ToolView.jsx"; 
+import { FooterView } from "~/component/patterns/panel/FooterView.jsx"; 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+
+# {title}
+
+Panels are good for simple property sets or grouping of content.
+
+<MainView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Panel
+    title={"Panel title"}
+    tools={[
+        <Button iconOnly quiet>
+            <MoreHorizFilled />
+        </Button>,
+    ]}
+    footer={"footer"}
+    style={{
+        backgroundColor: "var(--color-gray-1)",
+    }}
+>
+    Learn how to work with green screen video with these tips for video
+    makers.
+</Panel>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+
+## Options 
+
+
+### Contents
+
+<OptionsView />
+
+&nbsp;
+
+Content can be expressed freely. If you need a simple message or guide, use a Panel.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Panel>
+    Learn how to work with green screen video with these tips for video
+    makers.
+</Panel>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+### Title
+
+<TitleView />
+
+&nbsp;
+
+The panel displays a title with a summary of the area.
+
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {1} showLineNumbers
+<Panel title="Sample Panel">
+    Learn how to work with green screen video with these tips for video
+    makers.
+</Panel>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+### Tools 
+
+<ToolView />
+
+The tools is used when adding additional functions other than the title display.
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {3-6} showLineNumbers
+<Panel 
+    title="Sample Panel" 
+    tools={[
+        <Button iconOnly quiet>
+            <MoreHorizFilled />
+        </Button>,
+    ]}
+>
+    Learn how to work with green screen video with these tips for video
+    makers.
+</Panel>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+### footer 
+
+<FooterView />
+
+Only standard cards have a footer. The footer has a content area that
+can hold buttons on the right side and indicators (badges, icons,
+status lights, etc.) on the left. The footer is always divided from
+the card body using a small divider.
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {3-6} showLineNumbers
+<Panel footer={[
+    <Button iconOnly quiet>
+        <MoreHorizFilled />
+    </Button>,
+]}
+    title="Sample Panel" 
+>
+    Learn how to work with green screen video with these tips for video
+    makers.
+</Panel>
+```
+  </CodeViewItem>
+</CodeView>
+

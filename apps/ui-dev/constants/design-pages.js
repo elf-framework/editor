@@ -182,7 +182,7 @@ export default [
       },
       {
         link: COMPONENTS_URL + "navigations/sidebar/",
-        title: "Sidebar * ",
+        title: "Sidebar",
       },
       {
         link: COMPONENTS_URL + "navigations/tabs/",
@@ -230,6 +230,7 @@ export default [
     link: COMPONENTS_URL + "patterns/",
     title: "Pattern",
     items: [
+      { link: COMPONENTS_URL + "patterns/panel/", title: "Panel" },
       { link: COMPONENTS_URL + "patterns/card/", title: "Card" },
       {
         link: COMPONENTS_URL + "patterns/property-editor/",

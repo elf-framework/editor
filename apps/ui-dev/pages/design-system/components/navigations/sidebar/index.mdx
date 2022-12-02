@@ -1,0 +1,43 @@
+---
+title: Sidebar
+layout: DesignLayout
+filename: pages/design-system/components/navigations/sidebar/page.mdx
+---
+
+import { VBox, Flex } from "@elf-framework/ui";
+import { MainView } from "~/component/navigations/sidebar/MainView.jsx"; 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+
+# {title}
+
+An avatar is a thumbnail representation of an entity, such as a user or an organization.
+
+
+<MainView />
+
+
+<CodeView>
+  <CodeViewItem title="Sapa">
+```jsx {2,7} showLineNumbers
+<div>
+    <Avatar size="300">
+        <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+    </Avatar>
+</div>
+<div>
+    <Avatar
+        style={{
+            backgroundImage:
+            "linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)",
+        }}
+    />
+</div>
+```
+  </CodeViewItem>
+</CodeView>
+
+
+## Options 
+
+
+### Size
