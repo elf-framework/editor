@@ -16,16 +16,17 @@
     "@elf-framework/design-tokens": "*"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "cssnano": "^5.1.13",
-    "postcss": "^8.4.16",
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
     "postcss-sorting": "^7.0.1",
-    "sass": "^1.54.4",
-    "vite": "^3.0.8",
-    "vitest": "0.22.1"
+    "sass": "^1.56.2",
+    "vite": "^4.0.0",
+    "vitest": "0.25.6"
   },
   "scripts": {
     "vite:dev": "vite --config=vite.config.js",
+    "npm-check": "npx npm-check-updates -u",
     "vite:dist": "vite build --config=vite.dist.config.js",
     "design:watch": "vite build --config=vite.dist.config.js --watch",
     "ui:watch": "vite build --config=vite.dist.config.js --watch",

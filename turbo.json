@@ -66,6 +66,10 @@
     },        
     "editor:dev": {
       "dependsOn": ["editor:watch"]
+    },
+    "npm-check": {
+      "dependsOn": ["^npm-check"],
+      "cache": false
     }
   }
 }

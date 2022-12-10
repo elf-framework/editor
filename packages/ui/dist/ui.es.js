@@ -503,31 +503,33 @@ class Alert extends UIElement {
     const contentIcon = content && icon && !title ? icon : void 0;
     const titleActions = title && actions ? actions : void 0;
     const contentActions = content && actions && !title ? actions : void 0;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault(),
-      onTransitionEnd: () => {
-        this.props.onHide && this.props.onHide();
-        this.destroy(true);
-      }
-    }, title ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-title"
-    }, titleIcon, " ", /* @__PURE__ */ createElementJsx("span", null, title), " ", titleActions ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-actions"
-    }, titleActions) : void 0) : null, content ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-content"
-    }, contentIcon, " ", /* @__PURE__ */ createElementJsx("span", null, content), " ", contentActions ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-actions"
-    }, contentActions) : void 0) : null, closable ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--alert-close",
-      onClick: () => {
-        setHide(true);
-        if (localDelay === 0) {
+    return /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault(),
+        onTransitionEnd: () => {
           this.props.onHide && this.props.onHide();
           this.destroy(true);
         }
-      }
-    }, "\xD7") : null);
+      },
+      title ? /* @__PURE__ */ createElementJsx("div", { class: "elf--alert-title" }, titleIcon, " ", /* @__PURE__ */ createElementJsx("span", null, title), " ", titleActions ? /* @__PURE__ */ createElementJsx("div", { class: "elf--alert-actions" }, titleActions) : void 0) : null,
+      content ? /* @__PURE__ */ createElementJsx("div", { class: "elf--alert-content" }, contentIcon, " ", /* @__PURE__ */ createElementJsx("span", null, content), " ", contentActions ? /* @__PURE__ */ createElementJsx("div", { class: "elf--alert-actions" }, contentActions) : void 0) : null,
+      closable ? /* @__PURE__ */ createElementJsx(
+        "div",
+        {
+          class: "elf--alert-close",
+          onClick: () => {
+            setHide(true);
+            if (localDelay === 0) {
+              this.props.onHide && this.props.onHide();
+              this.destroy(true);
+            }
+          }
+        },
+        "×"
+      ) : null
+    );
   }
   hide(hideDelay = 0) {
     var _a;
@@ -535,9 +537,7 @@ class Alert extends UIElement {
   }
 }
 function alert({ content = void 0, options = {}, ...extraProps }) {
-  return potal(/* @__PURE__ */ createElementJsx(Alert, {
-    ...extraProps
-  }, content), options);
+  return potal(/* @__PURE__ */ createElementJsx(Alert, { ...extraProps }, content), options);
 }
 registerComponent("Alert", Alert);
 registerComponent("alert", Alert);
@@ -584,9 +584,7 @@ class Animation extends UIElement {
       onAnimationIteration,
       onAnimationCancel
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 [
@@ -607,10 +605,7 @@ class Animation extends UIElement {
   "heartBeat"
 ].forEach((name) => {
   Animation[name] = (props) => {
-    return /* @__PURE__ */ createElementJsx(Animation, {
-      ...props,
-      name
-    });
+    return /* @__PURE__ */ createElementJsx(Animation, { ...props, name });
   };
 });
 registerComponent("animation", Animation);
@@ -655,21 +650,7 @@ class ProgressCircle extends UIElement {
         cssProperties$S
       )
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "progress-area"
-    }, /* @__PURE__ */ createElementJsx("svg", null, /* @__PURE__ */ createElementJsx("circle", {
-      class: "progress-circle track",
-      r: "50%",
-      cx: "50%",
-      cy: "50%"
-    }), /* @__PURE__ */ createElementJsx("circle", {
-      class: "progress-circle fill",
-      r: "50%",
-      cx: "50%",
-      cy: "50%"
-    }))));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "progress-area" }, /* @__PURE__ */ createElementJsx("svg", null, /* @__PURE__ */ createElementJsx("circle", { class: "progress-circle track", r: "50%", cx: "50%", cy: "50%" }), /* @__PURE__ */ createElementJsx("circle", { class: "progress-circle fill", r: "50%", cx: "50%", cy: "50%" }))));
   }
 }
 registerComponent("progress-circle", ProgressCircle);
@@ -760,23 +741,11 @@ class Button extends UIElement {
       style: propertyMap(style2, cssProperties$R),
       ...extraProps
     };
-    const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, {
-      play
-    }, /* @__PURE__ */ createElementJsx(ProgressCircle, {
-      value: 80,
-      size,
-      variant
-    })) : content || "");
+    const buttonContent = /* @__PURE__ */ createElementJsx("span", null, pending ? /* @__PURE__ */ createElementJsx(Animation.spin, { play }, /* @__PURE__ */ createElementJsx(ProgressCircle, { value: 80, size, variant })) : content || "");
     if (as === "link") {
-      return /* @__PURE__ */ createElementJsx("a", {
-        ...styleObject,
-        href,
-        target
-      }, buttonContent);
+      return /* @__PURE__ */ createElementJsx("a", { ...styleObject, href, target }, buttonContent);
     } else {
-      return /* @__PURE__ */ createElementJsx("button", {
-        ...styleObject
-      }, buttonContent);
+      return /* @__PURE__ */ createElementJsx("button", { ...styleObject }, buttonContent);
     }
   }
 }
@@ -843,19 +812,7 @@ class Tooltip extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$Q)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "content"
-    }, content), show || this.props.show ? /* @__PURE__ */ createElementJsx("div", {
-      class: "message"
-    }, hideArrow ? void 0 : /* @__PURE__ */ createElementJsx("div", {
-      class: "arrow"
-    }), icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "icon"
-    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "message-content"
-    }, /* @__PURE__ */ createElementJsx("div", null, message))) : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "content" }, content), show || this.props.show ? /* @__PURE__ */ createElementJsx("div", { class: "message" }, hideArrow ? void 0 : /* @__PURE__ */ createElementJsx("div", { class: "arrow" }), icon ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "message-content" }, /* @__PURE__ */ createElementJsx("div", null, message))) : void 0);
   }
   show() {
     this.open();
@@ -928,15 +885,19 @@ function tooltip({
   variant = "default"
 }) {
   const root = potal(
-    /* @__PURE__ */ createElementJsx(Tooltip, {
-      variant,
-      delay,
-      position,
-      placement,
-      message,
-      style: style2,
-      show: true
-    }, content || /* @__PURE__ */ createElementJsx("span", null, "\xA0")),
+    /* @__PURE__ */ createElementJsx(
+      Tooltip,
+      {
+        variant,
+        delay,
+        position,
+        placement,
+        message,
+        style: style2,
+        show: true
+      },
+      content || /* @__PURE__ */ createElementJsx("span", null, " ")
+    ),
     options
   );
   return root.firstChild;
@@ -1030,38 +991,29 @@ class ActionGroup extends UIElement {
     const hiddenItems = collapsed ? content.filter((item, index) => {
       return !visibleTargetList[index];
     }) : [];
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, items, hiddenItems.length ? /* @__PURE__ */ createElementJsx(Tooltip, {
-      message: hiddenItems,
-      trigger: "click",
-      hideArrow: true,
-      position: "bottom-left",
-      style: { contentPadding: "0px" }
-    }, /* @__PURE__ */ createElementJsx(Button, {
-      iconOnly: true
-    }, moreIcon)) : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, items, hiddenItems.length ? /* @__PURE__ */ createElementJsx(
+      Tooltip,
+      {
+        message: hiddenItems,
+        trigger: "click",
+        hideArrow: true,
+        position: "bottom-left",
+        style: { contentPadding: "0px" }
+      },
+      /* @__PURE__ */ createElementJsx(Button, { iconOnly: true }, moreIcon)
+    ) : void 0);
   }
 }
 registerComponent("action-group", ActionGroup);
 registerComponent("ActionGroup", ActionGroup);
 function RoundButton({ content, ...props }) {
-  return /* @__PURE__ */ createElementJsx(Button, {
-    ...props,
-    shape: "round"
-  }, content);
+  return /* @__PURE__ */ createElementJsx(Button, { ...props, shape: "round" }, content);
 }
 function OutlineButton({ content, ...props }) {
-  return /* @__PURE__ */ createElementJsx(Button, {
-    ...props,
-    outline: true
-  }, content);
+  return /* @__PURE__ */ createElementJsx(Button, { ...props, outline: true }, content);
 }
 function IconButton({ content, ...props }) {
-  return /* @__PURE__ */ createElementJsx(RoundButton, {
-    ...props,
-    iconOnly: true
-  }, content);
+  return /* @__PURE__ */ createElementJsx(RoundButton, { ...props, iconOnly: true }, content);
 }
 registerComponent("icon-button", IconButton);
 registerComponent("iconbutton", IconButton);
@@ -1085,11 +1037,7 @@ class LinkButton extends UIElement {
         ...propertyMap(style2, cssProperties$O)
       }
     };
-    return /* @__PURE__ */ createElementJsx("a", {
-      ...styleObject,
-      onClick,
-      href: href || "#"
-    }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
+    return /* @__PURE__ */ createElementJsx("a", { ...styleObject, onClick, href: href || "#" }, /* @__PURE__ */ createElementJsx("span", null, content || ""));
   }
 }
 registerComponent("link-button", LinkButton);
@@ -1133,19 +1081,20 @@ class Radio extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$N)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", {
-      ref: "$input",
-      type: "radio",
-      ...{
-        value,
-        name,
-        disabled: disabled ? "disabled" : void 0,
-        checked: checked ? "checked" : void 0
-      },
-      onChange: (e) => onChange == null ? void 0 : onChange(e, value)
-    }), content));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        ref: "$input",
+        type: "radio",
+        ...{
+          value,
+          name,
+          disabled: disabled ? "disabled" : void 0,
+          checked: checked ? "checked" : void 0
+        },
+        onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+      }
+    ), content));
   }
 }
 registerComponent("radio", Radio);
@@ -1185,23 +1134,25 @@ class RadioGroup extends UIElement {
       style: propertyMap(style2, cssProperties$M)
     };
     const radioName = name || "name-" + this.id;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, options.map((it, index) => {
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, options.map((it, index) => {
       const checked = it.value === value;
-      return /* @__PURE__ */ createElementJsx(Radio, {
-        ref: `$${index}`,
-        name: radioName,
-        value: it.value,
-        onChange: (e, v) => {
-          this.setState({ value: v }, false);
-          onChange(e, v);
+      return /* @__PURE__ */ createElementJsx(
+        Radio,
+        {
+          ref: `$${index}`,
+          name: radioName,
+          value: it.value,
+          onChange: (e, v) => {
+            this.setState({ value: v }, false);
+            onChange(e, v);
+          },
+          checked,
+          disabled,
+          size,
+          variant
         },
-        checked,
-        disabled,
-        size,
-        variant
-      }, it.label);
+        it.label
+      );
     }));
   }
   get value() {
@@ -1252,22 +1203,21 @@ class Checkbox extends UIElement {
         ...propertyMap(style2, cssProperties$L)
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx("input", {
-      ref: "$input",
-      type: "checkbox",
-      ...{
-        indeterminate,
-        value,
-        name,
-        disabled: disabled ? "disabled" : void 0,
-        checked: checked ? "checked" : void 0
-      },
-      onChange: (e) => onChange == null ? void 0 : onChange(e, value)
-    }), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("span", {
-      class: "text"
-    }, content) : void 0));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("label", null, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        ref: "$input",
+        type: "checkbox",
+        ...{
+          indeterminate,
+          value,
+          name,
+          disabled: disabled ? "disabled" : void 0,
+          checked: checked ? "checked" : void 0
+        },
+        onChange: (e) => onChange == null ? void 0 : onChange(e, value)
+      }
+    ), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("span", { class: "text" }, content) : void 0));
   }
   get checked() {
     return this.refs.$input.checked;
@@ -1318,21 +1268,23 @@ class CheckboxGroup extends UIElement {
         ...propertyMap(style2, cssProperties$K)
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, options.map((it, index) => {
-      return /* @__PURE__ */ createElementJsx(Checkbox, {
-        ref: `checkbox-${index}`,
-        value: it.value,
-        onChange: (e) => {
-          onChange(e, this.getValues());
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, options.map((it, index) => {
+      return /* @__PURE__ */ createElementJsx(
+        Checkbox,
+        {
+          ref: `checkbox-${index}`,
+          value: it.value,
+          onChange: (e) => {
+            onChange(e, this.getValues());
+          },
+          checked: value == null ? void 0 : value.includes(it.value),
+          disabled,
+          indeterminate: it.indeterminate,
+          size,
+          variant
         },
-        checked: value == null ? void 0 : value.includes(it.value),
-        disabled,
-        indeterminate: it.indeterminate,
-        size,
-        variant
-      }, it.label);
+        it.label
+      );
     }));
   }
   getValues() {
@@ -1391,11 +1343,7 @@ class Divider extends UIElement {
         )
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      className: "elf--divider-inner"
-    }));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { className: "elf--divider-inner" }));
   }
 }
 registerComponent("divider", Divider);
@@ -1412,78 +1360,72 @@ function makeMenuItem(items = [], variant, rootClose) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
     if (isString(it) && it === "-") {
-      return /* @__PURE__ */ createElementJsx(DividerMenuItem, {
-        ref,
-        variant,
-        rootClose
-      });
+      return /* @__PURE__ */ createElementJsx(DividerMenuItem, { ref, variant, rootClose });
     } else if (isFunction(it)) {
-      return /* @__PURE__ */ createElementJsx(CustomMenuItem, {
-        variant,
-        ref: `custom${index}`,
-        render: it,
-        rootClose
-      });
+      return /* @__PURE__ */ createElementJsx(
+        CustomMenuItem,
+        {
+          variant,
+          ref: `custom${index}`,
+          render: it,
+          rootClose
+        }
+      );
     } else if (it.type === MenuItemType.CUSTOM) {
-      return /* @__PURE__ */ createElementJsx(CustomMenuItem, {
-        variant,
-        ref,
-        ...it,
-        rootClose
-      });
+      return /* @__PURE__ */ createElementJsx(
+        CustomMenuItem,
+        {
+          variant,
+          ref,
+          ...it,
+          rootClose
+        }
+      );
     } else if (it.type === MenuItemType.LINK) {
-      return /* @__PURE__ */ createElementJsx(LinkMenuItem, {
-        variant,
-        ref,
-        ...it,
-        rootClose
-      });
+      return /* @__PURE__ */ createElementJsx(
+        LinkMenuItem,
+        {
+          variant,
+          ref,
+          ...it,
+          rootClose
+        }
+      );
     } else if (it.type === MenuItemType.SECTION) {
-      return /* @__PURE__ */ createElementJsx(SectionMenuItem, {
-        variant,
-        ref,
-        ...it,
-        rootClose
-      });
+      return /* @__PURE__ */ createElementJsx(
+        SectionMenuItem,
+        {
+          variant,
+          ref,
+          ...it,
+          rootClose
+        }
+      );
     } else if (it.type === MenuItemType.DIVIDER) {
-      return /* @__PURE__ */ createElementJsx(DividerMenuItem, {
-        variant,
-        ref,
-        ...it,
-        rootClose
-      });
+      return /* @__PURE__ */ createElementJsx(
+        DividerMenuItem,
+        {
+          variant,
+          ref,
+          ...it,
+          rootClose
+        }
+      );
     }
-    return /* @__PURE__ */ createElementJsx(MenuItem, {
-      ref,
-      variant,
-      ...it,
-      rootClose
-    });
+    return /* @__PURE__ */ createElementJsx(MenuItem, { ref, variant, ...it, rootClose });
   });
 }
 function DividerMenuItem({ dashed = false }) {
-  return /* @__PURE__ */ createElementJsx("li", {
-    class: "elf--divider",
-    dashed
-  });
+  return /* @__PURE__ */ createElementJsx("li", { class: "elf--divider", dashed });
 }
 function CustomMenuItem({ render, rootClose }) {
-  return /* @__PURE__ */ createElementJsx("li", {
-    class: "custom"
-  }, render == null ? void 0 : render({ rootClose }));
+  return /* @__PURE__ */ createElementJsx("li", { class: "custom" }, render == null ? void 0 : render({ rootClose }));
 }
 function LinkMenuItem({ rootClose, title, link }) {
-  return /* @__PURE__ */ createElementJsx("li", {
-    class: "link"
-  }, /* @__PURE__ */ createElementJsx("a", {
-    href: link,
-    onClick: rootClose
-  }, title));
+  return /* @__PURE__ */ createElementJsx("li", { class: "link" }, /* @__PURE__ */ createElementJsx("a", { href: link, onClick: rootClose }, title));
 }
 function SectionMenuItem({ title = "" }) {
-  return /* @__PURE__ */ createElementJsx("li", {
-    class: "section-title"
-  }, title);
+  return /* @__PURE__ */ createElementJsx("li", { class: "section-title" }, title);
 }
 class MenuItem extends UIElement {
   initState() {
@@ -1496,7 +1438,7 @@ class MenuItem extends UIElement {
       disabled = false,
       selectable,
       selected,
-      selectedIcon = "\u2713",
+      selectedIcon = "✓",
       closable = true,
       rootClose,
       description,
@@ -1523,7 +1465,7 @@ class MenuItem extends UIElement {
       title = "",
       shortcut,
       icon,
-      expandIcon = "\u25B6",
+      expandIcon = "▶",
       items = [],
       hover,
       selected,
@@ -1542,30 +1484,7 @@ class MenuItem extends UIElement {
         hover
       });
     }, [hover]);
-    return /* @__PURE__ */ createElementJsx("li", {
-      class: localClass,
-      disabled: disabled ? true : void 0
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-item-content"
-    }, selectable ? /* @__PURE__ */ createElementJsx("span", {
-      class: "selected-icon"
-    }, selectedValue ? selectedIcon : void 0) : null, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "icon"
-    }, icon) : void 0, title ? /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-title"
-    }, title) : void 0, shortcut || hasItems ? /* @__PURE__ */ createElementJsx("div", {
-      class: "value-area"
-    }, shortcut ? /* @__PURE__ */ createElementJsx("div", {
-      class: "shortcut"
-    }, shortcut) : void 0, hasItems ? /* @__PURE__ */ createElementJsx("div", {
-      class: "icon"
-    }, expandIcon) : void 0) : void 0), description ? /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-item-description"
-    }, description) : void 0, items.length > 0 || show ? /* @__PURE__ */ createElementJsx(Menu, {
-      items,
-      variant,
-      rootClose
-    }) : void 0);
+    return /* @__PURE__ */ createElementJsx("li", { class: localClass, disabled: disabled ? true : void 0 }, /* @__PURE__ */ createElementJsx("div", { class: "menu-item-content" }, selectable ? /* @__PURE__ */ createElementJsx("span", { class: "selected-icon" }, selectedValue ? selectedIcon : void 0) : null, icon ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon) : void 0, title ? /* @__PURE__ */ createElementJsx("div", { class: "menu-title" }, title) : void 0, shortcut || hasItems ? /* @__PURE__ */ createElementJsx("div", { class: "value-area" }, shortcut ? /* @__PURE__ */ createElementJsx("div", { class: "shortcut" }, shortcut) : void 0, hasItems ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, expandIcon) : void 0) : void 0), description ? /* @__PURE__ */ createElementJsx("div", { class: "menu-item-description" }, description) : void 0, items.length > 0 || show ? /* @__PURE__ */ createElementJsx(Menu, { items, variant, rootClose }) : void 0);
   }
   checkClickable() {
     if (this.state.disabled) {
@@ -1653,10 +1572,7 @@ class Menu extends UIElement {
       class: localClass,
       style: propertyMap(itemStyle, cssProperties$I)
     };
-    return /* @__PURE__ */ createElementJsx("menu", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault()
-    }, makeMenuItem(items, variant, rootClose));
+    return /* @__PURE__ */ createElementJsx("menu", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, makeMenuItem(items, variant, rootClose));
   }
   [OBSERVER("intersection") + PARAMS({
     root: document.body
@@ -1689,12 +1605,7 @@ registerComponent("menu-item", MenuItem);
 registerComponent("section-menu-item", SectionMenuItem);
 registerComponent("divider-menu-item", DividerMenuItem);
 function ArrowIcon() {
-  return /* @__PURE__ */ createElementJsx("svg", {
-    viewBox: "0 0 24 24",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /* @__PURE__ */ createElementJsx("path", {
-    d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
-  }));
+  return /* @__PURE__ */ createElementJsx("svg", { viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ createElementJsx("path", { d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" }));
 }
 const cssProperties$H = makeCssVariablePrefixMap("--elf--option-menu", {
   backgroundColor: true,
@@ -1725,32 +1636,31 @@ class OptionMenu extends UIElement {
       disabled,
       style: propertyMap(style2, cssProperties$H)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "content",
-      onClick: () => {
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
-      }
-    }, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--option-menu-icon"
-    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "text"
-    }, content), /* @__PURE__ */ createElementJsx("div", {
-      class: "arrow"
-    }, /* @__PURE__ */ createElementJsx(ArrowIcon, null))), showMenu ? /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-area"
-    }, /* @__PURE__ */ createElementJsx(Menu, {
-      type: "dropdown",
-      autoPosition,
-      rootClose: () => {
-        this.close();
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "content",
+        onClick: () => {
+          this.setState({
+            isOpen: !this.state.isOpen
+          });
+        }
       },
-      style: menuStyle,
-      items
-    })) : void 0);
+      icon ? /* @__PURE__ */ createElementJsx("div", { class: "elf--option-menu-icon" }, icon) : void 0,
+      /* @__PURE__ */ createElementJsx("div", { class: "text" }, content),
+      /* @__PURE__ */ createElementJsx("div", { class: "arrow" }, /* @__PURE__ */ createElementJsx(ArrowIcon, null))
+    ), showMenu ? /* @__PURE__ */ createElementJsx("div", { class: "menu-area" }, /* @__PURE__ */ createElementJsx(
+      Menu,
+      {
+        type: "dropdown",
+        autoPosition,
+        rootClose: () => {
+          this.close();
+        },
+        style: menuStyle,
+        items
+      }
+    )) : void 0);
   }
   close() {
     this.setState({
@@ -1826,17 +1736,17 @@ class Dialog extends UIElement {
     } = this.props;
     if (!footer) {
       return [
-        /* @__PURE__ */ createElementJsx(Button, {
-          shape: "round",
-          ...cancelProps,
-          onClick: () => this.cancel()
-        }, cancelText),
-        /* @__PURE__ */ createElementJsx(Button, {
-          shape: "round",
-          variant: "primary",
-          ...okProps,
-          onClick: () => this.ok()
-        }, okText)
+        /* @__PURE__ */ createElementJsx(Button, { shape: "round", ...cancelProps, onClick: () => this.cancel() }, cancelText),
+        /* @__PURE__ */ createElementJsx(
+          Button,
+          {
+            shape: "round",
+            variant: "primary",
+            ...okProps,
+            onClick: () => this.ok()
+          },
+          okText
+        )
       ];
     }
     return "";
@@ -1854,28 +1764,15 @@ class Dialog extends UIElement {
         ...propertyMap(style2, cssProperties$G)
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-text"
-    }, title), this.props.tools ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-tools",
-      ref: "$tools"
-    }, this.props.tools) : void 0, closable ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-title-close",
-      ref: "$close",
-      onClick: () => this.close()
-    }, "\xD7") : void 0), noBorder ? void 0 : /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-divider"
-    }), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-content"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-text"
-    }, this.props.content || ""), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--dialog-content-tools"
-    }, footer ? footer : this.makeDefaultTools())));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-title" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-title-text" }, title), this.props.tools ? /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-title-tools", ref: "$tools" }, this.props.tools) : void 0, closable ? /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--dialog-title-close",
+        ref: "$close",
+        onClick: () => this.close()
+      },
+      "×"
+    ) : void 0), noBorder ? void 0 : /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-divider" }), /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-content" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-text" }, this.props.content || ""), /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-content-tools" }, footer ? footer : this.makeDefaultTools())));
   }
 }
 registerComponent("dialog", Dialog);
@@ -1903,9 +1800,7 @@ class Flex extends UIElement {
         ...propertyMap(style2, {})
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 registerComponent("flex", Flex);
@@ -1938,18 +1833,9 @@ class ToolsItem extends UIElement {
         "icon-only": isIconOnly
       });
     }, [this.state.selected, isIconOnly]);
-    const buttonComponent = /* @__PURE__ */ createElementJsx("button", {
-      type: "button",
-      class: "tools-button"
-    }, /* @__PURE__ */ createElementJsx(Flex, {
-      style: { gap: 10 }
-    }, [
-      icon ? /* @__PURE__ */ createElementJsx("span", {
-        class: "icon"
-      }, isFunction(icon) ? icon() : icon) : void 0,
-      title ? /* @__PURE__ */ createElementJsx("span", {
-        class: "menu-title"
-      }, isFunction(title) ? title() : title) : void 0
+    const buttonComponent = /* @__PURE__ */ createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ createElementJsx(Flex, { style: { gap: 10 } }, [
+      icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, isFunction(icon) ? icon() : icon) : void 0,
+      title ? /* @__PURE__ */ createElementJsx("span", { class: "menu-title" }, isFunction(title) ? title() : title) : void 0
     ].filter(Boolean)));
     let localTooltip = tooltip2;
     if (localTooltip) {
@@ -1957,15 +1843,16 @@ class ToolsItem extends UIElement {
         localTooltip = { message: localTooltip };
       }
     }
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: localClass,
-      "data-selected-type": this.state.selectedType,
-      onClick: this.props.onClick,
-      style: style2
-    }, localTooltip ? /* @__PURE__ */ createElementJsx(Tooltip, {
-      ...localTooltip,
-      style: { height: "100%" }
-    }, buttonComponent) : buttonComponent);
+    return /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: localClass,
+        "data-selected-type": this.state.selectedType,
+        onClick: this.props.onClick,
+        style: style2
+      },
+      localTooltip ? /* @__PURE__ */ createElementJsx(Tooltip, { ...localTooltip, style: { height: "100%" } }, buttonComponent) : buttonComponent
+    );
   }
   setSelected(isSelected = false) {
     this.setState({
@@ -1988,9 +1875,7 @@ registerComponent("ToolsItem", ToolsItem);
 class ToolsCustomItem extends ToolsItem {
   template() {
     var _a, _b;
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--tools-item custom"
-    }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
+    return /* @__PURE__ */ createElementJsx("div", { class: "elf--tools-item custom" }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
   }
 }
 registerComponent("tools-custom-item", ToolsCustomItem);
@@ -2044,39 +1929,22 @@ class ToolsMenuItem extends ToolsItem {
         className
       );
     }, [isSelected, hasItems, className]);
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: localClass,
-      disabled,
-      style: style2
-    }, /* @__PURE__ */ createElementJsx("button", {
-      type: "button",
-      class: "tools-button"
-    }, /* @__PURE__ */ createElementJsx(Flex, {
-      style: { columnGap: 4 }
-    }, [
-      icon ? /* @__PURE__ */ createElementJsx("span", {
-        class: "icon"
-      }, isFunction(icon) ? icon() : icon) : void 0,
-      title ? /* @__PURE__ */ createElementJsx("span", {
-        class: "menu-title"
-      }, isFunction(title) ? title() : title) : void 0
-    ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ createElementJsx("span", {
-      class: classnames("arrow", { opened })
-    }, /* @__PURE__ */ createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ createElementJsx("div", {
-      class: "menu-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "background",
-      "data-direction": direction
-    }), /* @__PURE__ */ createElementJsx(Menu, {
-      ref: "$menu",
-      items,
-      direction,
-      rootClose: this.state.rootClose,
-      style: {
-        ...menuStyle || {},
-        top: "100%"
+    return /* @__PURE__ */ createElementJsx("div", { class: localClass, disabled, style: style2 }, /* @__PURE__ */ createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ createElementJsx(Flex, { style: { columnGap: 4 } }, [
+      icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, isFunction(icon) ? icon() : icon) : void 0,
+      title ? /* @__PURE__ */ createElementJsx("span", { class: "menu-title" }, isFunction(title) ? title() : title) : void 0
+    ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ createElementJsx("span", { class: classnames("arrow", { opened }) }, /* @__PURE__ */ createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ createElementJsx("div", { class: "menu-area" }, /* @__PURE__ */ createElementJsx("div", { class: "background", "data-direction": direction }), /* @__PURE__ */ createElementJsx(
+      Menu,
+      {
+        ref: "$menu",
+        items,
+        direction,
+        rootClose: this.state.rootClose,
+        style: {
+          ...menuStyle || {},
+          top: "100%"
+        }
       }
-    })) : void 0);
+    )) : void 0);
   }
   runCallback(callback, e) {
     if (isFunction(callback)) {
@@ -2170,24 +2038,33 @@ function makeToolsItem(items = [], options = {}) {
       visibility = "visible";
     }
     if (it.type === ToolsItemType.CUSTOM) {
-      return /* @__PURE__ */ createElementJsx(ToolsCustomItem, {
-        ref,
-        ...it,
-        style: { visibility, ...it.style || {} }
-      });
+      return /* @__PURE__ */ createElementJsx(
+        ToolsCustomItem,
+        {
+          ref,
+          ...it,
+          style: { visibility, ...it.style || {} }
+        }
+      );
     }
     if (it.type === ToolsItemType.MENU) {
-      return /* @__PURE__ */ createElementJsx(ToolsMenuItem, {
+      return /* @__PURE__ */ createElementJsx(
+        ToolsMenuItem,
+        {
+          ref,
+          ...it,
+          style: { visibility, ...it.style || {} }
+        }
+      );
+    }
+    return /* @__PURE__ */ createElementJsx(
+      ToolsItem,
+      {
         ref,
         ...it,
         style: { visibility, ...it.style || {} }
-      });
-    }
-    return /* @__PURE__ */ createElementJsx(ToolsItem, {
-      ref,
-      ...it,
-      style: { visibility, ...it.style || {} }
-    });
+      }
+    );
   });
 }
 function makeHiddenToolsItem(items = [], options = {}) {
@@ -2294,21 +2171,21 @@ class Tools extends UIElement {
       visibility,
       emphasized
     });
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault()
-    }, items, hiddenItems.length ? /* @__PURE__ */ createElementJsx(ToolsMenuItem, {
-      class: "hidden-tools",
-      items: hiddenItems,
-      icon: moreIcon,
-      direction: "right",
-      noArrow: true,
-      style: {
-        position: "absolute",
-        height: "100%",
-        left: lastLeft
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, items, hiddenItems.length ? /* @__PURE__ */ createElementJsx(
+      ToolsMenuItem,
+      {
+        class: "hidden-tools",
+        items: hiddenItems,
+        icon: moreIcon,
+        direction: "right",
+        noArrow: true,
+        style: {
+          position: "absolute",
+          height: "100%",
+          left: lastLeft
+        }
       }
-    }) : void 0);
+    ) : void 0);
   }
 }
 registerComponent("Tools", Tools);
@@ -2316,24 +2193,21 @@ registerComponent("tools", Tools);
 function makeToolbarItem(items = [], options = {}) {
   return items.map((it, index) => {
     const ref = `${it.type || "item"}${index}`;
-    return /* @__PURE__ */ createElementJsx(ToolbarItem, {
-      ref,
-      ...it,
-      ...options
-    });
+    return /* @__PURE__ */ createElementJsx(ToolbarItem, { ref, ...it, ...options });
   });
 }
 class ToolbarItem extends UIElement {
   template() {
     const { items, style: style2, emphasized, moreIcon } = this.props;
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--toolbar-item"
-    }, /* @__PURE__ */ createElementJsx(Tools, {
-      items,
-      style: style2,
-      emphasized,
-      moreIcon
-    }));
+    return /* @__PURE__ */ createElementJsx("div", { class: "elf--toolbar-item" }, /* @__PURE__ */ createElementJsx(
+      Tools,
+      {
+        items,
+        style: style2,
+        emphasized,
+        moreIcon
+      }
+    ));
   }
 }
 const cssProperties$E = makeCssVariablePrefixMap("--elf--toolbar", {
@@ -2369,10 +2243,7 @@ class Toolbar extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$E)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault()
-    }, makeToolbarItem(items, {
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, makeToolbarItem(items, {
       emphasized
     }));
   }
@@ -2409,18 +2280,7 @@ class Notification extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$D)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault()
-    }, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "icon"
-    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "content"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "text"
-    }, content)), /* @__PURE__ */ createElementJsx("div", {
-      class: "tools"
-    }, tools || []));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "content" }, /* @__PURE__ */ createElementJsx("div", { class: "text" }, content)), /* @__PURE__ */ createElementJsx("div", { class: "tools" }, tools || []));
   }
 }
 registerComponent("notification", Notification);
@@ -2486,31 +2346,32 @@ class Toast extends UIElement {
         }, localDelay);
       }
     }, [localDelay, hide]);
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      onContextMenu: (e) => e.preventDefault(),
-      onTransitionEnd: () => {
-        isFunction(onClose) && onClose();
-        this.destroy(true);
-      }
-    }, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "icon"
-    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "content"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--toast-text"
-    }, content)), /* @__PURE__ */ createElementJsx("div", {
-      class: "tools"
-    }, this.props.tools || []), closable ? /* @__PURE__ */ createElementJsx("div", {
-      class: "close-area"
-    }, /* @__PURE__ */ createElementJsx(Button, {
-      size: "small",
-      variant,
-      iconOnly: true,
-      quiet: true,
-      closable: true,
-      onClick: () => this.hide(1)
-    }, "\xD7")) : void 0);
+    return /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        ...styleObject,
+        onContextMenu: (e) => e.preventDefault(),
+        onTransitionEnd: () => {
+          isFunction(onClose) && onClose();
+          this.destroy(true);
+        }
+      },
+      icon ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon) : void 0,
+      /* @__PURE__ */ createElementJsx("div", { class: "content" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--toast-text" }, content)),
+      /* @__PURE__ */ createElementJsx("div", { class: "tools" }, this.props.tools || []),
+      closable ? /* @__PURE__ */ createElementJsx("div", { class: "close-area" }, /* @__PURE__ */ createElementJsx(
+        Button,
+        {
+          size: "small",
+          variant,
+          iconOnly: true,
+          quiet: true,
+          closable: true,
+          onClick: () => this.hide(1)
+        },
+        "×"
+      )) : void 0
+    );
   }
   hide(hideDelay = 0) {
     var _a;
@@ -2518,9 +2379,7 @@ class Toast extends UIElement {
   }
 }
 function toast({ content = "", options = {}, ...extraProps }) {
-  const rootInstance = potal(/* @__PURE__ */ createElementJsx(Toast, {
-    ...extraProps
-  }, content), options);
+  const rootInstance = potal(/* @__PURE__ */ createElementJsx(Toast, { ...extraProps }, content), options);
   return rootInstance.firstChild;
 }
 registerComponent("toast", Toast);
@@ -2562,16 +2421,20 @@ function FixedTooltip({
     tooltipRef.current.remove();
     tooltipRef.current = null;
   }, [message]);
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--fixed-tooltip",
-    style: {
-      display: "inline-block",
-      width: "fit-content",
-      height: "fit-content"
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: "elf--fixed-tooltip",
+      style: {
+        display: "inline-block",
+        width: "fit-content",
+        height: "fit-content"
+      },
+      onMouseEnter,
+      onMouseLeave
     },
-    onMouseEnter,
-    onMouseLeave
-  }, content);
+    content
+  );
 }
 const cssProperties$B = makeCssVariablePrefixMap("--elf--popover", {
   backgroundColor: true,
@@ -2613,19 +2476,7 @@ class Popover extends UIElement {
     };
     const isPopoverShow = show || this.props.show;
     const isShowTip = isPopoverShow && showTip;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--popover-content"
-    }, content, isShowTip ? /* @__PURE__ */ createElementJsx("div", {
-      class: "tip"
-    }) : void 0), isPopoverShow ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--popover-message"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--popover-message-content"
-    }, body), /* @__PURE__ */ createElementJsx("div", {
-      class: "event-panel"
-    })) : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--popover-content" }, content, isShowTip ? /* @__PURE__ */ createElementJsx("div", { class: "tip" }) : void 0), isPopoverShow ? /* @__PURE__ */ createElementJsx("div", { class: "elf--popover-message" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--popover-message-content" }, body), /* @__PURE__ */ createElementJsx("div", { class: "event-panel" })) : void 0);
   }
   open() {
     this.setState({
@@ -2675,10 +2526,7 @@ class Popover extends UIElement {
 registerComponent("popover", Popover);
 registerComponent("Popover", Popover);
 function DropdownPopover(props) {
-  return /* @__PURE__ */ createElementJsx(Popover, {
-    ...props,
-    type: "dropdown"
-  });
+  return /* @__PURE__ */ createElementJsx(Popover, { ...props, type: "dropdown" });
 }
 const cssProperties$A = makeCssVariablePrefixMap("--elf--panel", {
   backgroundColor: true,
@@ -2709,19 +2557,7 @@ class Panel extends UIElement {
       "data-theme": theme,
       style: propertyMap(style2, cssProperties$A)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, title ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--panel-title"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--panel-title-text"
-    }, title), tools ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--panel-title-tools"
-    }, tools || []) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--panel-content"
-    }, content), footer ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--panel-footer"
-    }, footer) : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, title ? /* @__PURE__ */ createElementJsx("div", { class: "elf--panel-title" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--panel-title-text" }, title), tools ? /* @__PURE__ */ createElementJsx("div", { class: "elf--panel-title-tools" }, tools || []) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "elf--panel-content" }, content), footer ? /* @__PURE__ */ createElementJsx("div", { class: "elf--panel-footer" }, footer) : void 0);
   }
 }
 registerComponent("panel", Panel);
@@ -2787,38 +2623,33 @@ class TabStrip extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$z)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: classnames("elf--tabstrip-content", {
-        [`align-${align}`]: true
-      })
-    }, items.map((it) => {
-      const isSelected = isUndefined(it.selected) ? activeKey === it.key : !!it.selected;
-      const isDisabled = !!it.disabled;
-      const selectedStyle = it.selectedStyle || {};
-      const style22 = it.style || {};
-      return /* @__PURE__ */ createElementJsx("div", {
-        class: classnames("elf--tabstrip-item", {
-          selected: isSelected,
-          disabled: isDisabled
-        }),
-        style: isSelected ? selectedStyle : style22
-      }, /* @__PURE__ */ createElementJsx("div", {
-        ref: `tab-${it.key}`,
-        onClick: it.onClick
-      }, it.title));
-    }), showIndicator ? /* @__PURE__ */ createElementJsx("div", {
-      class: "indicator"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "indicator-inner",
-      style: indicatorInfo
-    })) : void 0), ((_a = this.props.tools) == null ? void 0 : _a.length) ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--tabstrip-tools"
-    }, this.props.tools.map((it) => {
-      return /* @__PURE__ */ createElementJsx("div", {
-        class: "elf--tabstrip-tool"
-      }, it);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: classnames("elf--tabstrip-content", {
+          [`align-${align}`]: true
+        })
+      },
+      items.map((it) => {
+        const isSelected = isUndefined(it.selected) ? activeKey === it.key : !!it.selected;
+        const isDisabled = !!it.disabled;
+        const selectedStyle = it.selectedStyle || {};
+        const style22 = it.style || {};
+        return /* @__PURE__ */ createElementJsx(
+          "div",
+          {
+            class: classnames("elf--tabstrip-item", {
+              selected: isSelected,
+              disabled: isDisabled
+            }),
+            style: isSelected ? selectedStyle : style22
+          },
+          /* @__PURE__ */ createElementJsx("div", { ref: `tab-${it.key}`, onClick: it.onClick }, it.title)
+        );
+      }),
+      showIndicator ? /* @__PURE__ */ createElementJsx("div", { class: "indicator" }, /* @__PURE__ */ createElementJsx("div", { class: "indicator-inner", style: indicatorInfo })) : void 0
+    ), ((_a = this.props.tools) == null ? void 0 : _a.length) ? /* @__PURE__ */ createElementJsx("div", { class: "elf--tabstrip-tools" }, this.props.tools.map((it) => {
+      return /* @__PURE__ */ createElementJsx("div", { class: "elf--tabstrip-tool" }, it);
     })) : void 0);
   }
 }
@@ -2834,11 +2665,15 @@ const cssProperties$y = makeCssVariablePrefixMap("--elf--tab", {
   borderColor: true
 });
 function TabItem({ selected, content }) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: classnames("elf--tab-content-item", {
-      selected
-    })
-  }, content);
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: classnames("elf--tab-content-item", {
+        selected
+      })
+    },
+    content
+  );
 }
 class Tab extends UIElement {
   initState() {
@@ -2879,48 +2714,41 @@ class Tab extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$y)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--tab-header"
-    }, /* @__PURE__ */ createElementJsx(TabStrip, {
-      fitted,
-      align,
-      orientation,
-      activeKey,
-      showIndicator,
-      size,
-      variant,
-      quiet,
-      stripType,
-      compact,
-      style: stripStyle,
-      items: content.map((it) => {
-        const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
-        const selected = activeKey === key;
-        return {
-          title,
-          style: style22,
-          disabled,
-          selectedStyle,
-          key,
-          selected,
-          onClick: () => {
-            this.changeActiveKey(key);
-            onClick && onClick();
-          }
-        };
-      })
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--tab-body"
-    }, content.map((it) => {
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--tab-header" }, /* @__PURE__ */ createElementJsx(
+      TabStrip,
+      {
+        fitted,
+        align,
+        orientation,
+        activeKey,
+        showIndicator,
+        size,
+        variant,
+        quiet,
+        stripType,
+        compact,
+        style: stripStyle,
+        items: content.map((it) => {
+          const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
+          const selected = activeKey === key;
+          return {
+            title,
+            style: style22,
+            disabled,
+            selectedStyle,
+            key,
+            selected,
+            onClick: () => {
+              this.changeActiveKey(key);
+              onClick && onClick();
+            }
+          };
+        })
+      }
+    )), /* @__PURE__ */ createElementJsx("div", { class: "elf--tab-body" }, content.map((it) => {
       const { key, content: content2, disabled } = it.props;
       const selected = key === activeKey;
-      return /* @__PURE__ */ createElementJsx(TabItem, {
-        key,
-        selected,
-        disabled
-      }, content2);
+      return /* @__PURE__ */ createElementJsx(TabItem, { key, selected, disabled }, content2);
     })));
   }
 }
@@ -2944,9 +2772,7 @@ class Layout extends UIElement {
         })
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 registerComponent("layout", Layout);
@@ -2954,10 +2780,7 @@ registerComponent("Layout", Layout);
 class VBox extends Flex {
   template() {
     const { style: style2 = {}, content } = this.props;
-    return /* @__PURE__ */ createElementJsx(Flex, {
-      stack: true,
-      style: style2
-    }, content);
+    return /* @__PURE__ */ createElementJsx(Flex, { stack: true, style: style2 }, content);
   }
 }
 registerComponent("vbox", VBox);
@@ -3004,21 +2827,23 @@ class Grid extends UIElement {
         delete styleObject.style[key];
       }
     });
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 registerComponent("grid", Grid);
 registerComponent("Grid", Grid);
 function Column({ content, span = 1, style: style2, ...extraProps }) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    ...extraProps,
-    style: {
-      ...style2,
-      gridColumn: `span ${span}`
-    }
-  }, content);
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      ...extraProps,
+      style: {
+        ...style2,
+        gridColumn: `span ${span}`
+      }
+    },
+    content
+  );
 }
 const cssProperties$x = makeCssVariablePrefixMap("--elf--input-editor", {
   width: true,
@@ -3100,19 +2925,7 @@ class InputEditor extends UIElement {
       max,
       step
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-editor-icon"
-    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      ref: "$input",
-      ...properties,
-      ...inputEvents
-    }))), tools ? tools : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, icon ? /* @__PURE__ */ createElementJsx("div", { class: "elf--input-editor-icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-area" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx("input", { ref: "$input", ...properties, ...inputEvents }))), tools ? tools : void 0);
   }
   onMounted() {
     if (this.state.autoFocus) {
@@ -3155,17 +2968,19 @@ registerComponent("inputeditor", InputEditor);
 function ColorView({ color }) {
   const parsedColor = parse(color);
   const { r, g, b } = parsedColor;
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--color-view"
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--color-view-color",
-    style: { backgroundColor: format({ r, g, b }, "rgb") }
-  }), /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--color-view-opacity-pattern"
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--color-view-opacity",
-    style: { backgroundColor: format(parsedColor, "rgb") }
-  })));
+  return /* @__PURE__ */ createElementJsx("div", { class: "elf--color-view" }, /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: "elf--color-view-color",
+      style: { backgroundColor: format({ r, g, b }, "rgb") }
+    }
+  ), /* @__PURE__ */ createElementJsx("div", { class: "elf--color-view-opacity-pattern" }, /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: "elf--color-view-opacity",
+      style: { backgroundColor: format(parsedColor, "rgb") }
+    }
+  )));
 }
 registerComponent("color-view", ColorView);
 registerComponent("ColorView", ColorView);
@@ -3256,59 +3071,65 @@ class InputPaint extends UIElement {
     );
     this.state.parsedColor.a = normalizeAlpha(this.state.parsedColor.a);
     const opacityString = `${100 * this.state.parsedColor.a}%`;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, hideColorView ? void 0 : /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-paint-icon",
-      onClick: (e) => {
-        onClickColorView && onClickColorView(e, colorString);
-      }
-    }, /* @__PURE__ */ createElementJsx(ColorView, {
-      color: colorString
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      ref: "$input",
-      ...properties,
-      ...inputEvents,
-      onKeyDown: (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          const parsedValue = parse(e.target.value);
-          if (isUndefined(parsedValue.r) || isUndefined(parsedValue.g) || isUndefined(parsedValue.b)) {
-            return;
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, hideColorView ? void 0 : /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--input-paint-icon",
+        onClick: (e) => {
+          onClickColorView && onClickColorView(e, colorString);
+        }
+      },
+      /* @__PURE__ */ createElementJsx(ColorView, { color: colorString })
+    ), /* @__PURE__ */ createElementJsx("div", { class: "elf--input-area" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        ref: "$input",
+        ...properties,
+        ...inputEvents,
+        onKeyDown: (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            const parsedValue = parse(e.target.value);
+            if (isUndefined(parsedValue.r) || isUndefined(parsedValue.g) || isUndefined(parsedValue.b)) {
+              return;
+            }
+            const a = normalizeAlpha(this.state.parsedColor.a);
+            this.state.parsedColor = {
+              ...parsedValue,
+              a
+            };
+            this.state.originalValue = e.target.value;
+            this.runOnChange();
+            this.refresh();
           }
-          const a = normalizeAlpha(this.state.parsedColor.a);
-          this.state.parsedColor = {
-            ...parsedValue,
-            a
-          };
-          this.state.originalValue = e.target.value;
-          this.runOnChange();
-          this.refresh();
         }
       }
-    }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-opacity",
-      "data-opacity-string-length": opacityString.length
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "opacity",
-      value: opacityString,
-      onKeyDown: (e) => {
-        e.preventDefault();
-        switch (e.key) {
-          case "ArrowUp":
-            this.updateOpacity(0.01);
-            break;
-          case "ArrowDown":
-            this.updateOpacity(-0.01);
-            break;
+    ))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--input-opacity",
+        "data-opacity-string-length": opacityString.length
+      },
+      /* @__PURE__ */ createElementJsx(
+        "input",
+        {
+          class: "opacity",
+          value: opacityString,
+          onKeyDown: (e) => {
+            e.preventDefault();
+            switch (e.key) {
+              case "ArrowUp":
+                this.updateOpacity(0.01);
+                break;
+              case "ArrowDown":
+                this.updateOpacity(-0.01);
+                break;
+            }
+          }
         }
-      }
-    })));
+      )
+    ));
   }
   runOnChange() {
     this.runCallback(this.props.onChange, format(this.state.parsedColor));
@@ -3509,28 +3330,26 @@ class HexColorEditor extends UIElement {
       },
       false
     );
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      type: "text",
-      "data-type": "hex",
-      maxlength: 6,
-      ...properties,
-      ...inputEvents,
-      onKeyDown: this.keydownColor,
-      onKeyUp: this.keyupColor
-    }))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-opacity"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "opacity",
-      value: `${Math.round(a * 100 * 100) / 100}%`,
-      onKeyDown: this.keydown
-    })));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-area" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        type: "text",
+        "data-type": "hex",
+        maxlength: 6,
+        ...properties,
+        ...inputEvents,
+        onKeyDown: this.keydownColor,
+        onKeyUp: this.keyupColor
+      }
+    ))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", { class: "elf--input-opacity" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "opacity",
+        value: `${Math.round(a * 100 * 100) / 100}%`,
+        onKeyDown: this.keydown
+      }
+    )));
   }
   updateOpacity(num) {
     this.setState(
@@ -3749,48 +3568,46 @@ class RGBColorEditor extends UIElement {
       },
       false
     );
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ createElementJsx(Grid, {
-      columns: 3
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      "data-type": "r",
-      tabIndex: 1,
-      value: r,
-      ...properties,
-      onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      "data-type": "g",
-      tabIndex: 2,
-      value: g,
-      ...properties,
-      onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      "data-type": "b",
-      tabIndex: 3,
-      value: b,
-      ...properties,
-      onKeyDown: this.keydownColor
-    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-opacity"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      type: "text",
-      tabIndex: 4,
-      class: "opacity",
-      value: `${Math.round(a * 100 * 100) / 100}%`,
-      onKeyDown: this.keydown
-    })));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-area" }, /* @__PURE__ */ createElementJsx(Grid, { columns: 3 }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        "data-type": "r",
+        tabIndex: 1,
+        value: r,
+        ...properties,
+        onKeyDown: this.keydownColor
+      }
+    )), /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        "data-type": "g",
+        tabIndex: 2,
+        value: g,
+        ...properties,
+        onKeyDown: this.keydownColor
+      }
+    )), /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        "data-type": "b",
+        tabIndex: 3,
+        value: b,
+        ...properties,
+        onKeyDown: this.keydownColor
+      }
+    )))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", { class: "elf--input-opacity" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        type: "text",
+        tabIndex: 4,
+        class: "opacity",
+        value: `${Math.round(a * 100 * 100) / 100}%`,
+        onKeyDown: this.keydown
+      }
+    )));
   }
   updateOpacity(num) {
     this.setState(
@@ -3971,19 +3788,7 @@ class TextAreaEditor extends UIElement {
       placeholder: placeholder || "",
       value: value || ""
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, icon ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-editor-icon"
-    }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("textarea", {
-      ref: "$input",
-      ...properties,
-      ...inputEvents
-    }, value))), tools ? tools : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, icon ? /* @__PURE__ */ createElementJsx("div", { class: "elf--input-editor-icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-area" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx("textarea", { ref: "$input", ...properties, ...inputEvents }, value))), tools ? tools : void 0);
   }
   onMounted() {
     if (this.state.autoFocus) {
@@ -4056,27 +3861,7 @@ function Field({
       ...propertyMap(style2, cssProperties$s)
     }
   };
-  return /* @__PURE__ */ createElementJsx("div", {
-    ...styleObject
-  }, label ? /* @__PURE__ */ createElementJsx("label", {
-    class: "label"
-  }, label, required ? /* @__PURE__ */ createElementJsx("span", {
-    class: "required"
-  }, requiredText) : null, optional ? /* @__PURE__ */ createElementJsx("span", {
-    class: "optional"
-  }, optionalText) : null) : void 0, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", {
-    class: "field-area"
-  }, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", {
-    class: "field-area-content"
-  }, content, !invalid && validIcon ? /* @__PURE__ */ createElementJsx("div", {
-    class: "valid-icon"
-  }, validIcon) : null, invalid && invalidIcon ? /* @__PURE__ */ createElementJsx("div", {
-    class: "invalid-icon"
-  }, invalidIcon) : null) : void 0, help ? /* @__PURE__ */ createElementJsx("div", {
-    class: "help"
-  }, help) : void 0, invalid ? /* @__PURE__ */ createElementJsx("div", {
-    class: "invalid"
-  }, invalidMessage) : void 0) : void 0);
+  return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, label ? /* @__PURE__ */ createElementJsx("label", { class: "label" }, label, required ? /* @__PURE__ */ createElementJsx("span", { class: "required" }, requiredText) : null, optional ? /* @__PURE__ */ createElementJsx("span", { class: "optional" }, optionalText) : null) : void 0, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", { class: "field-area" }, (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("div", { class: "field-area-content" }, content, !invalid && validIcon ? /* @__PURE__ */ createElementJsx("div", { class: "valid-icon" }, validIcon) : null, invalid && invalidIcon ? /* @__PURE__ */ createElementJsx("div", { class: "invalid-icon" }, invalidIcon) : null) : void 0, help ? /* @__PURE__ */ createElementJsx("div", { class: "help" }, help) : void 0, invalid ? /* @__PURE__ */ createElementJsx("div", { class: "invalid" }, invalidMessage) : void 0) : void 0);
 }
 function TextArea({
   help,
@@ -4114,20 +3899,21 @@ function TextArea({
     invalidMessage
   };
   const hasIcon = !invalid && validIcon || invalid && invalidIcon;
-  return /* @__PURE__ */ createElementJsx(Field, {
-    ...FieldProps
-  }, /* @__PURE__ */ createElementJsx(TextAreaEditor, {
-    ...extraProps,
-    disabled,
-    required,
-    size,
-    invalid,
-    resizable,
-    style: {
-      ...inputStyle,
-      paddingRight: hasIcon ? "2.6em" : void 0
+  return /* @__PURE__ */ createElementJsx(Field, { ...FieldProps }, /* @__PURE__ */ createElementJsx(
+    TextAreaEditor,
+    {
+      ...extraProps,
+      disabled,
+      required,
+      size,
+      invalid,
+      resizable,
+      style: {
+        ...inputStyle,
+        paddingRight: hasIcon ? "2.6em" : void 0
+      }
     }
-  }));
+  ));
 }
 registerComponent("text-area", TextArea);
 registerComponent("TextArea", TextArea);
@@ -4167,19 +3953,20 @@ function TextField({
     invalidMessage
   };
   const hasIcon = !invalid && validIcon || invalid && invalidIcon;
-  return /* @__PURE__ */ createElementJsx(Field, {
-    ...FieldProps
-  }, /* @__PURE__ */ createElementJsx(InputEditor, {
-    ...extraProps,
-    disabled,
-    required,
-    size,
-    invalid,
-    style: {
-      ...inputStyle,
-      paddingRight: hasIcon ? "2.6em" : void 0
+  return /* @__PURE__ */ createElementJsx(Field, { ...FieldProps }, /* @__PURE__ */ createElementJsx(
+    InputEditor,
+    {
+      ...extraProps,
+      disabled,
+      required,
+      size,
+      invalid,
+      style: {
+        ...inputStyle,
+        paddingRight: hasIcon ? "2.6em" : void 0
+      }
     }
-  }));
+  ));
 }
 registerComponent("text-field", TextField);
 registerComponent("TextField", TextField);
@@ -4227,14 +4014,14 @@ class VirtualScroll extends UIElement {
         "--elf--virtual-scroll-panel-height": `${totalCount * itemHeight}px`
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--virtual-scroll-panel"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--virtual-scroll-content-area",
-      "data-scrolling": this.state.scrolling ? "true" : "false"
-    }, this.makeItemView())));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--virtual-scroll-panel" }, /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--virtual-scroll-content-area",
+        "data-scrolling": this.state.scrolling ? "true" : "false"
+      },
+      this.makeItemView()
+    )));
   }
   refreshSize() {
     var _a;
@@ -4366,10 +4153,14 @@ registerComponent("VirtualScroll", VirtualScroll);
 registerComponent("virtual-scroll", VirtualScroll);
 registerComponent("virtualscroll", VirtualScroll);
 function VirtualScrollItem({ top, style: style2, content }) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--virtual-scroll-item",
-    style: { ...style2, "--elf--virtual-scroll-item-top": top + "px" }
-  }, content);
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: "elf--virtual-scroll-item",
+      style: { ...style2, "--elf--virtual-scroll-item-top": top + "px" }
+    },
+    content
+  );
 }
 class Layer extends UIElement {
   template() {
@@ -4397,43 +4188,48 @@ class Layer extends UIElement {
       onMouseEnter,
       onMouseLeave
     } = this.props;
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--virtual-scroll-item elf--layer",
-      style: {
-        "--elf--virtual-scroll-item-top": `${top}px`
+    return /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--virtual-scroll-item elf--layer",
+        style: {
+          "--elf--virtual-scroll-item-top": `${top}px`
+        },
+        "data-id": id,
+        "data-number": number
       },
-      "data-id": id,
-      "data-number": number
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "container",
-      "data-top-level": topLevel ? "true" : void 0,
-      "data-hidden": !visible ? "true" : void 0,
-      "data-component": isComponent ? "true" : void 0,
-      "data-selected": selected ? "true" : void 0
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "group"
-    }, group), icon && /* @__PURE__ */ createElementJsx("div", {
-      class: "icon"
-    }, icon), /* @__PURE__ */ createElementJsx("div", {
-      class: "text",
-      ref: "$text",
-      ...{
-        onClick,
-        onDoubleClick,
-        onContextMenu,
-        onMouseDown,
-        onMouseUp,
-        onMouseMove,
-        onMouseEnter,
-        onMouseLeave
-      }
-    }, content), /* @__PURE__ */ createElementJsx("div", {
-      class: "tools"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "lock"
-    }, lock ? lockIcon : lockOpenIcon), /* @__PURE__ */ createElementJsx("div", {
-      class: "visible"
-    }, visibleIcon))));
+      /* @__PURE__ */ createElementJsx(
+        "div",
+        {
+          class: "container",
+          "data-top-level": topLevel ? "true" : void 0,
+          "data-hidden": !visible ? "true" : void 0,
+          "data-component": isComponent ? "true" : void 0,
+          "data-selected": selected ? "true" : void 0
+        },
+        /* @__PURE__ */ createElementJsx("div", { class: "group" }, group),
+        icon && /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon),
+        /* @__PURE__ */ createElementJsx(
+          "div",
+          {
+            class: "text",
+            ref: "$text",
+            ...{
+              onClick,
+              onDoubleClick,
+              onContextMenu,
+              onMouseDown,
+              onMouseUp,
+              onMouseMove,
+              onMouseEnter,
+              onMouseLeave
+            }
+          },
+          content
+        ),
+        /* @__PURE__ */ createElementJsx("div", { class: "tools" }, /* @__PURE__ */ createElementJsx("div", { class: "lock" }, lock ? lockIcon : lockOpenIcon), /* @__PURE__ */ createElementJsx("div", { class: "visible" }, visibleIcon))
+      )
+    );
   }
 }
 registerComponent("layer", Layer);
@@ -4554,51 +4350,49 @@ class HSLColorEditor extends UIElement {
       },
       false
     );
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-area"
-    }, /* @__PURE__ */ createElementJsx(Grid, {
-      columns: 3
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      type: "text",
-      tabIndex: 1,
-      "data-type": "h",
-      value: h,
-      ...properties,
-      onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      type: "text",
-      tabIndex: 2,
-      "data-type": "s",
-      value: s,
-      ...properties,
-      onKeyDown: this.keydownColor
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-item"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      class: "color",
-      type: "text",
-      tabIndex: 3,
-      "data-type": "l",
-      value: l,
-      ...properties,
-      onKeyDown: this.keydownColor
-    })))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--input-opacity"
-    }, /* @__PURE__ */ createElementJsx("input", {
-      type: "text",
-      tabIndex: 4,
-      class: "opacity",
-      value: `${Math.round(a * 100 * 100) / 100}%`,
-      onKeyDown: this.keydown
-    })));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-area" }, /* @__PURE__ */ createElementJsx(Grid, { columns: 3 }, /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        type: "text",
+        tabIndex: 1,
+        "data-type": "h",
+        value: h,
+        ...properties,
+        onKeyDown: this.keydownColor
+      }
+    )), /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        type: "text",
+        tabIndex: 2,
+        "data-type": "s",
+        value: s,
+        ...properties,
+        onKeyDown: this.keydownColor
+      }
+    )), /* @__PURE__ */ createElementJsx("div", { class: "elf--input-item" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        class: "color",
+        type: "text",
+        tabIndex: 3,
+        "data-type": "l",
+        value: l,
+        ...properties,
+        onKeyDown: this.keydownColor
+      }
+    )))), this.state.hasOpacity && /* @__PURE__ */ createElementJsx("div", { class: "elf--input-opacity" }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        type: "text",
+        tabIndex: 4,
+        class: "opacity",
+        value: `${Math.round(a * 100 * 100) / 100}%`,
+        onKeyDown: this.keydown
+      }
+    )));
   }
   updateOpacity(num) {
     this.setState({
@@ -4711,85 +4505,105 @@ class ColorInput extends UIElement {
     const { h, s, l } = RGBtoHSL(r, g, b);
     switch (type) {
       case "hex":
-        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(HexColorEditor, {
-          autoFocus: true,
-          value: format({ r, g, b, a }, "hex"),
-          onChange
-        }));
+        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(
+          HexColorEditor,
+          {
+            autoFocus: true,
+            value: format({ r, g, b, a }, "hex"),
+            onChange
+          }
+        ));
       case "rgb":
-        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(RGBColorEditor, {
-          autoFocus: true,
-          value: format({ r, g, b, a }, "rgb"),
-          onChange
-        }));
+        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(
+          RGBColorEditor,
+          {
+            autoFocus: true,
+            value: format({ r, g, b, a }, "rgb"),
+            onChange
+          }
+        ));
       case "hsl":
-        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(HSLColorEditor, {
-          autoFocus: true,
-          value: format({ h, s, l, a }, "hsl"),
-          onChange
-        }));
+        return /* @__PURE__ */ createElementJsx("div", null, /* @__PURE__ */ createElementJsx(
+          HSLColorEditor,
+          {
+            autoFocus: true,
+            value: format({ h, s, l, a }, "hsl"),
+            onChange
+          }
+        ));
     }
     return void 0;
   }
   template() {
     const { type } = this.state;
     const input = this.makeTypedColorInput();
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: "color-input"
-    }, /* @__PURE__ */ createElementJsx(OptionMenu, {
-      autoPosition: true,
-      quiet: true,
-      menuStyle: {
-        width: 80,
-        itemPadding: "10px"
+    return /* @__PURE__ */ createElementJsx("div", { class: "color-input" }, /* @__PURE__ */ createElementJsx(
+      OptionMenu,
+      {
+        autoPosition: true,
+        quiet: true,
+        menuStyle: {
+          width: 80,
+          itemPadding: "10px"
+        },
+        items: COLOR_TYPES.map((it) => {
+          return {
+            title: it.toUpperCase(),
+            selectable: true,
+            closable: true,
+            selected: type === it,
+            onClick: () => {
+              this.setState({
+                type: it
+              });
+            }
+          };
+        })
       },
-      items: COLOR_TYPES.map((it) => {
-        return {
-          title: it.toUpperCase(),
-          selectable: true,
-          closable: true,
-          selected: type === it,
-          onClick: () => {
-            this.setState({
-              type: it
-            });
-          }
-        };
-      })
-    }, type.toUpperCase()), input);
+      type.toUpperCase()
+    ), input);
   }
 }
 registerComponent("ColorInput", ColorInput);
 registerComponent("color-input", ColorInput);
 registerComponent("colorinput", ColorInput);
 function EyeDropper(props) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "eye-dropper"
-  }, /* @__PURE__ */ createElementJsx(IconButton, {
-    shape: "rect",
-    quiet: true,
-    style: {
-      color: "var(--color-gray-9)"
-    },
-    onClick: async () => {
-      const eyeDropper = new window.EyeDropper();
-      try {
-        const result = await eyeDropper.open();
-        isFunction(props.onChange) && props.onChange(result.sRGBHex);
-      } catch (e) {
-        console.warn(e);
+  return /* @__PURE__ */ createElementJsx("div", { class: "eye-dropper" }, /* @__PURE__ */ createElementJsx(
+    IconButton,
+    {
+      shape: "rect",
+      quiet: true,
+      style: {
+        color: "var(--color-gray-9)"
+      },
+      onClick: async () => {
+        const eyeDropper = new window.EyeDropper();
+        try {
+          const result = await eyeDropper.open();
+          isFunction(props.onChange) && props.onChange(result.sRGBHex);
+        } catch (e) {
+          console.warn(e);
+        }
       }
-    }
-  }, /* @__PURE__ */ createElementJsx("svg", {
-    width: "15",
-    height: "15",
-    viewBox: "0 0 15 15",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /* @__PURE__ */ createElementJsx("path", {
-    d: "M13.4473 0.6C12.6473 -0.2 11.4473 -0.2 10.6473 0.6L7.84725 3.4L7.04725 2.7C6.64725 2.3 6.04725 2.3 5.64725 2.7C5.24725 3.1 5.24725 3.7 5.64725 4.1L6.34725 4.8L0.547255 10.6C0.147255 11 -0.452745 12.5 0.547255 13.5C1.54725 14.5 3.04725 13.9 3.44725 13.5L9.24725 7.7L9.94725 8.4C10.3473 8.8 10.9473 8.8 11.3473 8.4C11.7473 8 11.7473 7.4 11.3473 7L10.6473 6.3L13.4473 3.5C14.2473 2.6 14.2473 1.4 13.4473 0.6ZM2.54725 12.5H1.54725V11.5L7.34725 5.7L8.34725 6.7C8.24725 6.7 2.54725 12.5 2.54725 12.5Z",
-    fill: "currentColor"
-  }))));
+    },
+    /* @__PURE__ */ createElementJsx(
+      "svg",
+      {
+        width: "15",
+        height: "15",
+        viewBox: "0 0 15 15",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg"
+      },
+      /* @__PURE__ */ createElementJsx(
+        "path",
+        {
+          d: "M13.4473 0.6C12.6473 -0.2 11.4473 -0.2 10.6473 0.6L7.84725 3.4L7.04725 2.7C6.64725 2.3 6.04725 2.3 5.64725 2.7C5.24725 3.1 5.24725 3.7 5.64725 4.1L6.34725 4.8L0.547255 10.6C0.147255 11 -0.452745 12.5 0.547255 13.5C1.54725 14.5 3.04725 13.9 3.44725 13.5L9.24725 7.7L9.94725 8.4C10.3473 8.8 10.9473 8.8 11.3473 8.4C11.7473 8 11.7473 7.4 11.3473 7L10.6473 6.3L13.4473 3.5C14.2473 2.6 14.2473 1.4 13.4473 0.6ZM2.54725 12.5H1.54725V11.5L7.34725 5.7L8.34725 6.7C8.24725 6.7 2.54725 12.5 2.54725 12.5Z",
+          fill: "currentColor"
+        }
+      )
+    )
+  ));
 }
 registerComponent("eye-dropper", EyeDropper);
 registerComponent("eyedropper", EyeDropper);
@@ -4797,16 +4611,15 @@ registerComponent("EyeDropper", EyeDropper);
 class BaseSlide extends UIElement {
   template() {
     const { value, containerClass, slideClass } = this.props;
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: `${containerClass} slide-view`
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: `${slideClass} slide-bg`
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "drag-pointer",
-      style: {
-        "--drag-point-left": value
+    return /* @__PURE__ */ createElementJsx("div", { class: `${containerClass} slide-view` }, /* @__PURE__ */ createElementJsx("div", { class: `${slideClass} slide-bg` }, /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "drag-pointer",
+        style: {
+          "--drag-point-left": value
+        }
       }
-    })));
+    )));
   }
   updateValue(e) {
     const { onChange } = this.props;
@@ -4847,23 +4660,29 @@ class BaseSlide extends UIElement {
 registerComponent("base-slide", BaseSlide);
 registerComponent("baseslide", BaseSlide);
 function HueSlide({ value, onChange }) {
-  return /* @__PURE__ */ createElementJsx(BaseSlide, {
-    value,
-    containerClass: "hue-slide",
-    slideClass: "hue-slide-bg",
-    onChange
-  });
+  return /* @__PURE__ */ createElementJsx(
+    BaseSlide,
+    {
+      value,
+      containerClass: "hue-slide",
+      slideClass: "hue-slide-bg",
+      onChange
+    }
+  );
 }
 registerComponent("HueSlide", HueSlide);
 registerComponent("hue-slide", HueSlide);
 registerComponent("hueslide", HueSlide);
 function OpacitySlide({ value, onChange }) {
-  return /* @__PURE__ */ createElementJsx(BaseSlide, {
-    value,
-    containerClass: "opacity-slide",
-    slideClass: "opacity-slide-bg",
-    onChange
-  });
+  return /* @__PURE__ */ createElementJsx(
+    BaseSlide,
+    {
+      value,
+      containerClass: "opacity-slide",
+      slideClass: "opacity-slide-bg",
+      onChange
+    }
+  );
 }
 registerComponent("OpacitySlide", OpacitySlide);
 registerComponent("opacity-slide", OpacitySlide);
@@ -4966,57 +4785,59 @@ class ColorMixer extends UIElement {
         )
       }
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-area",
-      style: {
-        backgroundColor: hueColor
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--color-area",
+        style: {
+          backgroundColor: hueColor
+        }
+      },
+      /* @__PURE__ */ createElementJsx("div", { class: "saturation" }, /* @__PURE__ */ createElementJsx("div", { class: "value" }, /* @__PURE__ */ createElementJsx(
+        "div",
+        {
+          class: "drag-pointer",
+          style: {
+            backgroundColor: color,
+            left: x,
+            top: y
+          }
+        }
+      )))
+    ), hideSlide === false ? /* @__PURE__ */ createElementJsx("div", { class: "elf--color-slide-area" }, window.EyeDropper ? /* @__PURE__ */ createElementJsx(EyeDropper, { onChange: this.updateColor }) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "slide" }, /* @__PURE__ */ createElementJsx(
+      HueSlide,
+      {
+        value: h / 360,
+        onChange: this.updateHueColor,
+        disabled
       }
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "saturation"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "value"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "drag-pointer",
-      style: {
-        backgroundColor: color,
-        left: x,
-        top: y
-      }
-    })))), hideSlide === false ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-slide-area"
-    }, window.EyeDropper ? /* @__PURE__ */ createElementJsx(EyeDropper, {
-      onChange: this.updateColor
-    }) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "slide"
-    }, /* @__PURE__ */ createElementJsx(HueSlide, {
-      value: h / 360,
-      onChange: this.updateHueColor,
-      disabled
-    }), /* @__PURE__ */ createElementJsx(OpacitySlide, {
-      r,
-      g,
-      b,
-      value: a,
-      disabled,
-      onChange: this.updateOpacity
-    }))) : void 0, hideInput === false ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-input-area"
-    }, /* @__PURE__ */ createElementJsx(ColorInput, {
-      ...{
-        type,
-        h,
-        s,
-        v,
+    ), /* @__PURE__ */ createElementJsx(
+      OpacitySlide,
+      {
         r,
         g,
         b,
-        a,
-        disabled
-      },
-      onChange: this.updateColor
-    })) : void 0);
+        value: a,
+        disabled,
+        onChange: this.updateOpacity
+      }
+    ))) : void 0, hideInput === false ? /* @__PURE__ */ createElementJsx("div", { class: "elf--color-input-area" }, /* @__PURE__ */ createElementJsx(
+      ColorInput,
+      {
+        ...{
+          type,
+          h,
+          s,
+          v,
+          r,
+          g,
+          b,
+          a,
+          disabled
+        },
+        onChange: this.updateColor
+      }
+    )) : void 0);
   }
   formatedColor() {
     const { type, r, g, b, h, s, v, a } = this.state;
@@ -5144,20 +4965,14 @@ class ColorGrid extends UIElement {
     const { items } = this.props;
     const { selectedValue } = this.state;
     const colorItem = items.find((it) => it.value === selectedValue) || items[0] || { title: "" };
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-grid"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-grid-header"
-    }, /* @__PURE__ */ createElementJsx(OptionMenu, {
-      items: this.makeItems()
-    }, colorItem.title)), /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-grid-list"
-    }, colorItem.colors.map((color) => /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--color-grid-item",
-      onClick: () => this.selectColor(color)
-    }, /* @__PURE__ */ createElementJsx(ColorView, {
-      color
-    })))));
+    return /* @__PURE__ */ createElementJsx("div", { class: "elf--color-grid" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--color-grid-header" }, /* @__PURE__ */ createElementJsx(OptionMenu, { items: this.makeItems() }, colorItem.title)), /* @__PURE__ */ createElementJsx("div", { class: "elf--color-grid-list" }, colorItem.colors.map((color) => /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "elf--color-grid-item",
+        onClick: () => this.selectColor(color)
+      },
+      /* @__PURE__ */ createElementJsx(ColorView, { color })
+    ))));
   }
   selectColor(color) {
     this.setState({ selectedColor: color }, false);
@@ -5195,76 +5010,90 @@ class View extends UIElement {
 registerComponent("view", View);
 registerComponent("View", View);
 function TextInputItem({ value, style: style2, onChange }) {
-  return /* @__PURE__ */ createElementJsx(InputEditor, {
-    type: "text",
-    value,
-    width: "100%",
-    style: style2,
-    onInput: (e) => {
-      onChange && onChange(e.target.value);
+  return /* @__PURE__ */ createElementJsx(
+    InputEditor,
+    {
+      type: "text",
+      value,
+      width: "100%",
+      style: style2,
+      onInput: (e) => {
+        onChange && onChange(e.target.value);
+      }
     }
-  });
+  );
 }
 function NumberInputItem({ value, item, style: style2, onChange }) {
   const { min = 0, max = 100, step = 1 } = item;
-  return /* @__PURE__ */ createElementJsx(InputEditor, {
-    type: "number",
-    value,
-    min,
-    max,
-    step,
-    width: "100%",
-    style: style2,
-    onInput: (e) => {
-      onChange && onChange(Number(e.target.value));
+  return /* @__PURE__ */ createElementJsx(
+    InputEditor,
+    {
+      type: "number",
+      value,
+      min,
+      max,
+      step,
+      width: "100%",
+      style: style2,
+      onInput: (e) => {
+        onChange && onChange(Number(e.target.value));
+      }
     }
-  });
+  );
 }
 function TitleItem({ item: { value, key } }) {
-  return /* @__PURE__ */ createElementJsx(View, {
-    as: "div",
-    key
-  }, value);
+  return /* @__PURE__ */ createElementJsx(View, { as: "div", key }, value);
 }
 function GridItem({
   item: { gap, rowGap, columnGap, style: style2, columns = [], items = [] },
   root
 }) {
-  return /* @__PURE__ */ createElementJsx(Grid, {
-    columns,
-    gap,
-    rowGap,
-    columnGap,
-    style: style2
-  }, items.map((item, index) => root.makeEditorItem(item, index)));
+  return /* @__PURE__ */ createElementJsx(
+    Grid,
+    {
+      columns,
+      gap,
+      rowGap,
+      columnGap,
+      style: style2
+    },
+    items.map((item, index) => root.makeEditorItem(item, index))
+  );
 }
 const ButtonItem$1 = "";
 function ButtonItem({ style: style2, item }) {
   const { onClick, justified, iconOnly, shape, variant, title } = item;
-  return /* @__PURE__ */ createElementJsx(Button, {
-    onClick,
-    style: {
-      ...style2,
-      height: 26
+  return /* @__PURE__ */ createElementJsx(
+    Button,
+    {
+      onClick,
+      style: {
+        ...style2,
+        height: 26
+      },
+      justified,
+      iconOnly,
+      shape,
+      variant
     },
-    justified,
-    iconOnly,
-    shape,
-    variant
-  }, title);
+    title
+  );
 }
 function ColorItem({ value, onChange, item }) {
   const { onClickColorView } = item;
-  return /* @__PURE__ */ createElementJsx(InputPaint, {
-    value,
-    sync: true,
-    onChange: (color, inputPaintInstance) => {
-      onChange && onChange(color, inputPaintInstance);
-    },
-    onClickColorView: (e, color) => {
-      onClickColorView && onClickColorView(e, color);
+  return /* @__PURE__ */ createElementJsx(
+    InputPaint,
+    {
+      value,
+      sync: true,
+      onChange: (color, inputPaintInstance) => {
+        onChange && onChange(color, inputPaintInstance);
+      },
+      onClickColorView: (e, color) => {
+        onClickColorView && onClickColorView(e, color);
+      }
     }
-  });
+  );
 }
 const cssProperties$o = makeCssVariablePrefixMap("--elf--radio", {
   borderColor: true,
@@ -5305,36 +5134,42 @@ class Select extends UIElement {
     useEffect(() => {
       this.refs.$select.value = value;
     }, [value]);
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("select", {
-      ref: "$select",
-      onChange: (e) => onChange && onChange(e.target.value)
-    }, options.map((option) => {
-      return /* @__PURE__ */ createElementJsx("option", {
-        value: option.value
-      }, option.label);
-    })));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx(
+      "select",
+      {
+        ref: "$select",
+        onChange: (e) => onChange && onChange(e.target.value)
+      },
+      options.map((option) => {
+        return /* @__PURE__ */ createElementJsx("option", { value: option.value }, option.label);
+      })
+    ));
   }
 }
 registerComponent("select", Select);
 registerComponent("Select", Select);
 function SelectItem({ value, item, style: style2, onChange }) {
-  return /* @__PURE__ */ createElementJsx(Select, {
-    value,
-    style: style2,
-    onChange,
-    options: item.options
-  });
+  return /* @__PURE__ */ createElementJsx(
+    Select,
+    {
+      value,
+      style: style2,
+      onChange,
+      options: item.options
+    }
+  );
 }
 function BooleanItem({ value, onChange, style: style2 }) {
-  return /* @__PURE__ */ createElementJsx(Checkbox, {
-    checked: value,
-    style: style2,
-    onChange: (e) => {
-      onChange && onChange(e.target.checked);
+  return /* @__PURE__ */ createElementJsx(
+    Checkbox,
+    {
+      checked: value,
+      style: style2,
+      onChange: (e) => {
+        onChange && onChange(e.target.checked);
+      }
     }
-  });
+  );
 }
 const cssProperties$n = makeCssVariablePrefixMap("--elf--switch", {
   backgroundColor: true,
@@ -5375,33 +5210,20 @@ class Switch extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$n)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("input", {
-      ref: "$input",
-      id: "switch-checkbox-" + this.id,
-      type: "checkbox",
-      onClick,
-      onChange,
-      ...{
-        disabled: disabled ? "disabled" : void 0,
-        checked: checked ? "checked" : void 0
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx(
+      "input",
+      {
+        ref: "$input",
+        id: "switch-checkbox-" + this.id,
+        type: "checkbox",
+        onClick,
+        onChange,
+        ...{
+          disabled: disabled ? "disabled" : void 0,
+          checked: checked ? "checked" : void 0
+        }
       }
-    }), /* @__PURE__ */ createElementJsx("span", {
-      class: "tools"
-    }, /* @__PURE__ */ createElementJsx("span", {
-      class: "track"
-    }), withLabel ? /* @__PURE__ */ createElementJsx("div", {
-      class: "label-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "unchecked"
-    }, labels == null ? void 0 : labels[0]), /* @__PURE__ */ createElementJsx("div", {
-      class: "checked"
-    }, labels == null ? void 0 : labels[1])) : void 0, /* @__PURE__ */ createElementJsx("span", {
-      class: "handle"
-    })), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("label", {
-      for: "switch-checkbox-" + this.id
-    }, content) : void 0);
+    ), /* @__PURE__ */ createElementJsx("span", { class: "tools" }, /* @__PURE__ */ createElementJsx("span", { class: "track" }), withLabel ? /* @__PURE__ */ createElementJsx("div", { class: "label-area" }, /* @__PURE__ */ createElementJsx("div", { class: "unchecked" }, labels == null ? void 0 : labels[0]), /* @__PURE__ */ createElementJsx("div", { class: "checked" }, labels == null ? void 0 : labels[1])) : void 0, /* @__PURE__ */ createElementJsx("span", { class: "handle" })), (content == null ? void 0 : content.length) ? /* @__PURE__ */ createElementJsx("label", { for: "switch-checkbox-" + this.id }, content) : void 0);
   }
   get checked() {
     return this.refs.$input.checked;
@@ -5411,31 +5233,35 @@ registerComponent("switch", Switch);
 registerComponent("Switch", Switch);
 function SwitchItem({ item, value, onChange, style: style2 }) {
   const { variant } = item;
-  return /* @__PURE__ */ createElementJsx(Switch, {
-    checked: value,
-    style: style2,
-    variant,
-    onChange: (e) => {
-      onChange && onChange(e.target.checked);
+  return /* @__PURE__ */ createElementJsx(
+    Switch,
+    {
+      checked: value,
+      style: style2,
+      variant,
+      onChange: (e) => {
+        onChange && onChange(e.target.checked);
+      }
     }
-  });
+  );
 }
 function TabContainerItem({ item, root }) {
   const { style: style2, stripType, activeKey, fitted, compact } = item;
-  return /* @__PURE__ */ createElementJsx(Tab, {
-    style: style2,
-    compact,
-    activeKey,
-    fitted,
-    stripType
-  }, item.items.map((it) => {
-    return /* @__PURE__ */ createElementJsx(TabItem, {
-      key: it.key,
-      title: it.label
-    }, it.items.map((it2, index) => {
-      return root.makeInspectorItem(it2, index);
-    }));
-  }));
+  return /* @__PURE__ */ createElementJsx(
+    Tab,
+    {
+      style: style2,
+      compact,
+      activeKey,
+      fitted,
+      stripType
+    },
+    item.items.map((it) => {
+      return /* @__PURE__ */ createElementJsx(TabItem, { key: it.key, title: it.label }, it.items.map((it2, index) => {
+        return root.makeInspectorItem(it2, index);
+      }));
+    })
+  );
 }
 const cssProperties$m = makeCssVariablePrefixMap("--elf--slider", {
   backgroundColor: true,
@@ -5571,35 +5397,23 @@ class SingleSlider extends UIElement {
     const startOffset = Math.min(currenValueOffset, progressStartOffset);
     const width = Math.abs(currenValueOffset - progressStartOffset);
     const lastValue = isFunction(valueFunc) ? valueFunc(currentValue) : currentValue;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, label ? /* @__PURE__ */ createElementJsx("div", {
-      class: "label-area"
-    }, /* @__PURE__ */ createElementJsx("label", {
-      class: "label"
-    }, label), labelPosition === "top" ? /* @__PURE__ */ createElementJsx("span", {
-      class: "value"
-    }, lastValue) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "range-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "range-track",
-      ref: "$track"
-    }, fill ? /* @__PURE__ */ createElementJsx("div", {
-      class: "range-progress",
-      style: { left: `${startOffset}%`, width: `${width}%` }
-    }) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "thumb",
-      ref: "$thumb",
-      style: {
-        left: isPrevValue ? `${startOffset}%` : `${startOffset + width}%`
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, label ? /* @__PURE__ */ createElementJsx("div", { class: "label-area" }, /* @__PURE__ */ createElementJsx("label", { class: "label" }, label), labelPosition === "top" ? /* @__PURE__ */ createElementJsx("span", { class: "value" }, lastValue) : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "range-area" }, /* @__PURE__ */ createElementJsx("div", { class: "range-track", ref: "$track" }, fill ? /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "range-progress",
+        style: { left: `${startOffset}%`, width: `${width}%` }
       }
-    }, showValue && !label ? /* @__PURE__ */ createElementJsx("div", {
-      class: "thumb-value"
-    }, lastValue) : void 0))), label && labelPosition === "side" ? /* @__PURE__ */ createElementJsx("div", {
-      class: "value-area"
-    }, /* @__PURE__ */ createElementJsx("span", {
-      class: "value"
-    }, lastValue)) : void 0);
+    ) : void 0, /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "thumb",
+        ref: "$thumb",
+        style: {
+          left: isPrevValue ? `${startOffset}%` : `${startOffset + width}%`
+        }
+      },
+      showValue && !label ? /* @__PURE__ */ createElementJsx("div", { class: "thumb-value" }, lastValue) : void 0
+    ))), label && labelPosition === "side" ? /* @__PURE__ */ createElementJsx("div", { class: "value-area" }, /* @__PURE__ */ createElementJsx("span", { class: "value" }, lastValue)) : void 0);
   }
 }
 class RangeSlider extends UIElement {
@@ -5610,42 +5424,36 @@ class RangeSlider extends UIElement {
 class Slider extends UIElement {
   template() {
     const { type = "single", ...extraProps } = this.props;
-    return type === "single" ? /* @__PURE__ */ createElementJsx(SingleSlider, {
-      ...extraProps
-    }) : /* @__PURE__ */ createElementJsx(RangeSlider, {
-      ...extraProps
-    });
+    return type === "single" ? /* @__PURE__ */ createElementJsx(SingleSlider, { ...extraProps }) : /* @__PURE__ */ createElementJsx(RangeSlider, { ...extraProps });
   }
 }
 registerComponent("slider", Slider);
 registerComponent("Slider", Slider);
 function SliderItem({ value, item, style: style2, onChange }) {
   const { min = 0, max = 100, step = 1, fitted = true } = item;
-  return /* @__PURE__ */ createElementJsx(Slider, {
-    min,
-    max,
-    step,
-    value,
-    style: style2,
-    size: "small",
-    fitted,
-    onInput: (v) => {
-      onChange && onChange(v);
-    },
-    valuePlacement: "bottom"
-  });
+  return /* @__PURE__ */ createElementJsx(
+    Slider,
+    {
+      min,
+      max,
+      step,
+      value,
+      style: style2,
+      size: "small",
+      fitted,
+      onInput: (v) => {
+        onChange && onChange(v);
+      },
+      valuePlacement: "bottom"
+    }
+  );
 }
 function DividerItem({ item }) {
   const { margin = 10, style: style2 } = item;
-  return /* @__PURE__ */ createElementJsx(Divider, {
-    style: style2,
-    margin
-  });
+  return /* @__PURE__ */ createElementJsx(Divider, { style: style2, margin });
 }
 function LabelItem({ style: style2, item: { label } }) {
-  return /* @__PURE__ */ createElementJsx(View, {
-    style: style2
-  }, label);
+  return /* @__PURE__ */ createElementJsx(View, { style: style2 }, label);
 }
 const cssProperties$l = makeCssVariablePrefixMap("--elf--property-editor", {
   backgroundColor: true,
@@ -5770,47 +5578,51 @@ class PropertyEditor extends UIElement {
     }
     if (type === "tab") {
       const { style: style2, stripType, activeKey, fitted, compact } = item;
-      return /* @__PURE__ */ createElementJsx(Tab, {
-        style: style2,
-        compact,
-        activeKey,
-        fitted,
-        stripType
-      }, item.items.map((it) => {
-        return /* @__PURE__ */ createElementJsx(TabItem, {
-          key: it.key,
-          title: it.label
-        }, it.items.map((it2, index2) => {
-          return this.makeInspectorItem(it2, index2);
-        }));
-      }));
+      return /* @__PURE__ */ createElementJsx(
+        Tab,
+        {
+          style: style2,
+          compact,
+          activeKey,
+          fitted,
+          stripType
+        },
+        item.items.map((it) => {
+          return /* @__PURE__ */ createElementJsx(TabItem, { key: it.key, title: it.label }, it.items.map((it2, index2) => {
+            return this.makeInspectorItem(it2, index2);
+          }));
+        })
+      );
     }
     const InnerEditor = plugins[type] || predefinedPlugins[type];
     if (InnerEditor) {
-      return /* @__PURE__ */ createElementJsx(InnerEditor, {
-        key,
-        index,
-        label,
-        value: oldValue,
-        item,
-        root: this,
-        onChange: (newValue) => {
-          if (item.onChange) {
-            item.onChange(newValue, item, this);
-          }
-          if (isFunction(this.props.onChange)) {
-            this.props.onChange(key, newValue, this);
-          }
-          if (valueType === "valueByPath") {
-            setValueByPath(this.state.value, key, newValue);
-          } else if (valueType === "valueByObject") {
-            setValueByObject(this.state.value, key, newValue, valueFunc);
-          }
-          if (sync) {
-            this.refresh();
+      return /* @__PURE__ */ createElementJsx(
+        InnerEditor,
+        {
+          key,
+          index,
+          label,
+          value: oldValue,
+          item,
+          root: this,
+          onChange: (newValue) => {
+            if (item.onChange) {
+              item.onChange(newValue, item, this);
+            }
+            if (isFunction(this.props.onChange)) {
+              this.props.onChange(key, newValue, this);
+            }
+            if (valueType === "valueByPath") {
+              setValueByPath(this.state.value, key, newValue);
+            } else if (valueType === "valueByObject") {
+              setValueByObject(this.state.value, key, newValue, valueFunc);
+            }
+            if (sync) {
+              this.refresh();
+            }
           }
         }
-      });
+      );
     }
     return void 0;
   }
@@ -5862,19 +5674,18 @@ class PropertyEditor extends UIElement {
       };
     }
     if (item.type === "label") {
-      return /* @__PURE__ */ createElementJsx("div", {
-        class: "elf--property-editor-item label"
-      }, item.label);
+      return /* @__PURE__ */ createElementJsx("div", { class: "elf--property-editor-item label" }, item.label);
     }
-    return /* @__PURE__ */ createElementJsx("div", {
-      class: classnames("elf--property-editor-item", {
-        [item.direction]: true
-      })
-    }, item.label ? /* @__PURE__ */ createElementJsx("div", {
-      class: "label"
-    }, item.label) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "editor"
-    }, this.makeEditorItem(item, index)));
+    return /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: classnames("elf--property-editor-item", {
+          [item.direction]: true
+        })
+      },
+      item.label ? /* @__PURE__ */ createElementJsx("div", { class: "label" }, item.label) : void 0,
+      /* @__PURE__ */ createElementJsx("div", { class: "editor" }, this.makeEditorItem(item, index))
+    );
   }
   template() {
     const { style: style2 = {}, value, direction = "horizontal" } = this.props;
@@ -5901,9 +5712,7 @@ class PropertyEditor extends UIElement {
       this.props.inspector,
       this.state.value
     );
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, this.state.inspector.map((item, index) => {
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, this.state.inspector.map((item, index) => {
       return this.makeInspectorItem(item, index);
     }));
   }
@@ -6067,11 +5876,7 @@ class AppLayout extends UIElement {
     const leftLayoutItem = this.getItem("left");
     const rightLayoutItem = this.getItem("right");
     const centerLayoutItem = this.getItem("center");
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, topLayoutItem ? topLayoutItem : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--app-layout-body"
-    }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, topLayoutItem ? topLayoutItem : void 0, /* @__PURE__ */ createElementJsx("div", { class: "elf--app-layout-body" }, leftLayoutItem ? leftLayoutItem : void 0, centerLayoutItem ? centerLayoutItem : void 0, rightLayoutItem ? rightLayoutItem : void 0), bottomLayoutItem ? bottomLayoutItem : void 0);
   }
 }
 registerComponent("app-layout", AppLayout);
@@ -6082,9 +5887,7 @@ class AppResizeBar extends UIElement {
     const styleObject = {
       class: "elf--app-layout-resize-bar"
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    });
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject });
   }
   [POINTERSTART()](e) {
     this.startXY = e.xy;
@@ -6176,15 +5979,23 @@ function AppLayoutItem({
     setHeight(itemHeight);
     isFunction(onResizeEnd) && onResizeEnd(itemWidth, itemHeight);
   }, [itemWidth, itemHeight, setWidth, setHeight]);
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--app-layout-item",
-    "data-direction": direction,
-    "data-resizable": resizable,
-    style: { ...style2, width: itemWidth, height: itemHeight }
-  }, content, resizable ? /* @__PURE__ */ createElementJsx(AppResizeBar, {
-    onResize: onResizeCallback,
-    onResizeEnd: onResizeEndCallback
-  }) : void 0);
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: "elf--app-layout-item",
+      "data-direction": direction,
+      "data-resizable": resizable,
+      style: { ...style2, width: itemWidth, height: itemHeight }
+    },
+    content,
+    resizable ? /* @__PURE__ */ createElementJsx(
+      AppResizeBar,
+      {
+        onResize: onResizeCallback,
+        onResizeEnd: onResizeEndCallback
+      }
+    ) : void 0
+  );
 }
 registerComponent("AppLayoutItem", AppLayoutItem);
 registerComponent("app-layout-item", AppLayoutItem);
@@ -6217,13 +6028,7 @@ class HelpText extends UIElement {
       },
       ...extrProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, icon && /* @__PURE__ */ createElementJsx("span", {
-      class: "icon"
-    }, icon), content ? /* @__PURE__ */ createElementJsx("div", {
-      class: "content"
-    }, content) : null);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, icon && /* @__PURE__ */ createElementJsx("span", { class: "icon" }, icon), content ? /* @__PURE__ */ createElementJsx("div", { class: "content" }, content) : null);
   }
 }
 registerComponent("help-text", HelpText);
@@ -6254,39 +6059,31 @@ function BreadcrumbsItem({
   const localClass = useMemo(() => {
     return classnames("elf--breadcrumbs-item", { selected, multiline });
   }, [selected, multiline]);
-  return /* @__PURE__ */ createElementJsx("span", {
-    class: localClass,
-    style: propertyMap(style2, itemCssProperties)
-  }, tooltip2 ? /* @__PURE__ */ createElementJsx(Tooltip, {
-    ref: "$tooltip",
-    ...tooltip2
-  }, /* @__PURE__ */ createElementJsx("a", {
-    href,
-    onClick,
-    onFocus: () => {
-      if (tooltip2.trigger.includes("focus")) {
-        this.children.$tooltip.show();
+  return /* @__PURE__ */ createElementJsx("span", { class: localClass, style: propertyMap(style2, itemCssProperties) }, tooltip2 ? /* @__PURE__ */ createElementJsx(Tooltip, { ref: "$tooltip", ...tooltip2 }, /* @__PURE__ */ createElementJsx(
+    "a",
+    {
+      href,
+      onClick,
+      onFocus: () => {
+        if (tooltip2.trigger.includes("focus")) {
+          this.children.$tooltip.show();
+        }
+      },
+      onBlur: () => {
+        if (tooltip2.trigger.includes("focus")) {
+          this.children.$tooltip.hide();
+        }
       }
     },
-    onBlur: () => {
-      if (tooltip2.trigger.includes("focus")) {
-        this.children.$tooltip.hide();
-      }
-    }
-  }, title)) : /* @__PURE__ */ createElementJsx("a", {
-    href,
-    onClick
-  }, title));
+    title
+  )) : /* @__PURE__ */ createElementJsx("a", { href, onClick }, title));
 }
 function BreadcrumbsTitleItem({ title, style: style2 = {} }) {
-  return /* @__PURE__ */ createElementJsx("span", {
-    class: "elf--breadcrumbs-title-item",
-    style: style2
-  }, title);
+  return /* @__PURE__ */ createElementJsx("span", { class: "elf--breadcrumbs-title-item", style: style2 }, title);
 }
 class Breadcrumbs extends UIElement {
   template() {
-    const { style: style2 = {}, items = [], separator = "\u3009" } = this.props;
+    const { style: style2 = {}, items = [], separator = "〉" } = this.props;
     const styleObject = {
       class: "elf--breadcrumbs",
       style: propertyMap(style2, cssProperties$i)
@@ -6296,29 +6093,17 @@ class Breadcrumbs extends UIElement {
       (it) => (it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)
     );
     const length = renderItems.length;
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--breadcrumbs-items"
-    }, renderItems.map((it, index) => {
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--breadcrumbs-items" }, renderItems.map((it, index) => {
       if (typeof it === "string") {
         it = { title: it };
       }
-      const item = /* @__PURE__ */ createElementJsx(BreadcrumbsItem, {
-        ...it
-      });
+      const item = /* @__PURE__ */ createElementJsx(BreadcrumbsItem, { ...it });
       if (index < length - 1 || renderMultiItems.length) {
-        return [item, /* @__PURE__ */ createElementJsx("span", {
-          class: "separator"
-        }, separator)];
+        return [item, /* @__PURE__ */ createElementJsx("span", { class: "separator" }, separator)];
       }
       return item;
-    })), renderMultiItems.length ? /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--breadcrumbs-content"
-    }, renderMultiItems.map((it) => {
-      return /* @__PURE__ */ createElementJsx(BreadcrumbsTitleItem, {
-        ...it
-      });
+    })), renderMultiItems.length ? /* @__PURE__ */ createElementJsx("div", { class: "elf--breadcrumbs-content" }, renderMultiItems.map((it) => {
+      return /* @__PURE__ */ createElementJsx(BreadcrumbsTitleItem, { ...it });
     })) : void 0);
   }
 }
@@ -6348,13 +6133,9 @@ class Ghost extends UIElement {
       }
     };
     if (content == null ? void 0 : content.length) {
-      return /* @__PURE__ */ createElementJsx("div", {
-        ...styleObject
-      }, content);
+      return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
     } else {
-      return /* @__PURE__ */ createElementJsx("div", {
-        ...styleObject
-      }, "\xA0");
+      return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, " ");
     }
   }
 }
@@ -6389,13 +6170,7 @@ class Avatar extends UIElement {
       style: propertyMap(style2, cssProperties$g),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--avatar-inner"
-    }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    }) : content));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--avatar-inner" }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, { animated: true }) : content));
   }
 }
 const cssProperties$f = makeCssVariablePrefixMap("--elf--tag", {
@@ -6432,13 +6207,7 @@ class Tag extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$f)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("label", null, content), removable && /* @__PURE__ */ createElementJsx("span", {
-      class: "close",
-      title: "Close",
-      onClick: this.props.onClose
-    }, "\xD7"));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("label", null, content), removable && /* @__PURE__ */ createElementJsx("span", { class: "close", title: "Close", onClick: this.props.onClose }, "×"));
   }
 }
 class TagGroup extends UIElement {
@@ -6454,9 +6223,7 @@ class TagGroup extends UIElement {
         groupCssProperties
       )
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 registerComponent("tag", Tag);
@@ -6501,9 +6268,7 @@ class Badge extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$e)
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("label", null, content));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("label", null, content));
   }
 }
 registerComponent("badge", Badge);
@@ -6548,16 +6313,7 @@ class ProgressBar extends UIElement {
     };
     const localValue = (value - min) / (max - min);
     const percentValue = Math.round(localValue * PERCENT_NUMBER);
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, title ? /* @__PURE__ */ createElementJsx("div", {
-      class: "title-area"
-    }, /* @__PURE__ */ createElementJsx("label", null, title), showValue && !indeterminate ? /* @__PURE__ */ createElementJsx("span", null, " ", valueFunction(percentValue), " ") : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", {
-      class: "progress-area"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "progress",
-      style: { width: `${percentValue}%` }
-    })));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, title ? /* @__PURE__ */ createElementJsx("div", { class: "title-area" }, /* @__PURE__ */ createElementJsx("label", null, title), showValue && !indeterminate ? /* @__PURE__ */ createElementJsx("span", null, " ", valueFunction(percentValue), " ") : void 0) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "progress-area" }, /* @__PURE__ */ createElementJsx("div", { class: "progress", style: { width: `${percentValue}%` } })));
   }
 }
 registerComponent("progressbar", ProgressBar);
@@ -6632,94 +6388,103 @@ function itemRenderer(item, top, renderIndex, {
   const actions = renderActions == null ? void 0 : renderActions(item);
   const label = (renderLabel == null ? void 0 : renderLabel(item)) || data.title;
   const loadingText = (renderLoading == null ? void 0 : renderLoading(item)) || "Loading....";
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: classnames("elf--treeview-item", {
-      selected: data.selected,
-      [variant]: true,
-      loading: data.loading
-    }),
-    "data-depth": depth,
-    key: data.id,
-    draggable: draggable ? true : void 0,
-    style: {
-      "--elf--virtual-scroll-item-top": `${top}px`,
-      "--elf--treeview-item-depth": depth
-    }
-  }, draggable ? /* @__PURE__ */ createElementJsx("div", {
-    class: "drag-handle"
-  }, "\u22EE") : void 0, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("div", {
-    class: "checkbox-area"
-  }, /* @__PURE__ */ createElementJsx(Checkbox, {
-    ...{
-      checked: data.selected ? "checked" : void 0
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: classnames("elf--treeview-item", {
+        selected: data.selected,
+        [variant]: true,
+        loading: data.loading
+      }),
+      "data-depth": depth,
+      key: data.id,
+      draggable: draggable ? true : void 0,
+      style: {
+        "--elf--virtual-scroll-item-top": `${top}px`,
+        "--elf--treeview-item-depth": depth
+      }
     },
-    onClick: (e) => onSelect(item, "checkbox", e)
-  })) : void 0, /* @__PURE__ */ createElementJsx("div", {
-    class: "depth-area"
-  }), data.children ? /* @__PURE__ */ createElementJsx("div", {
-    class: "collapse-area",
-    onClick: (e) => {
-      onToggle(item, e);
-    }
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: classnames({
-      collapsed: data.collapsed
-    })
-  }, arrow || /* @__PURE__ */ createElementJsx("span", null, "\u203A"))) : /* @__PURE__ */ createElementJsx("div", {
-    class: "collapse-area"
-  }, "\xA0"), contextView ? /* @__PURE__ */ createElementJsx("div", {
-    class: "context-area"
-  }, contextView) : void 0, (data == null ? void 0 : data.loading) ? /* @__PURE__ */ createElementJsx("div", {
-    class: "loading-area"
-  }, loadingText) : item.edit ? /* @__PURE__ */ createElementJsx("label", {
-    class: "label-area"
-  }, /* @__PURE__ */ createElementJsx(InputEditor, {
-    type: "text",
-    value: item.data.title,
-    onFocusOut: (e) => {
-      console.log("onFocusOut", e);
-      onEditCancel(item, e);
-    },
-    onKeyUp: (e) => {
-      if (editable) {
-        if (e.key === "Enter") {
-          e.target.blur();
-          item.data.title = e.target.value;
-          onEditEnd(item, e);
-          return;
-        } else if (e.key === "Escape") {
+    draggable ? /* @__PURE__ */ createElementJsx("div", { class: "drag-handle" }, "⋮") : void 0,
+    selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("div", { class: "checkbox-area" }, /* @__PURE__ */ createElementJsx(
+      Checkbox,
+      {
+        ...{
+          checked: data.selected ? "checked" : void 0
+        },
+        onClick: (e) => onSelect(item, "checkbox", e)
+      }
+    )) : void 0,
+    /* @__PURE__ */ createElementJsx("div", { class: "depth-area" }),
+    data.children ? /* @__PURE__ */ createElementJsx(
+      "div",
+      {
+        class: "collapse-area",
+        onClick: (e) => {
+          onToggle(item, e);
+        }
+      },
+      /* @__PURE__ */ createElementJsx(
+        "div",
+        {
+          class: classnames({
+            collapsed: data.collapsed
+          })
+        },
+        arrow || /* @__PURE__ */ createElementJsx("span", null, "›")
+      )
+    ) : /* @__PURE__ */ createElementJsx("div", { class: "collapse-area" }, " "),
+    contextView ? /* @__PURE__ */ createElementJsx("div", { class: "context-area" }, contextView) : void 0,
+    (data == null ? void 0 : data.loading) ? /* @__PURE__ */ createElementJsx("div", { class: "loading-area" }, loadingText) : item.edit ? /* @__PURE__ */ createElementJsx("label", { class: "label-area" }, /* @__PURE__ */ createElementJsx(
+      InputEditor,
+      {
+        type: "text",
+        value: item.data.title,
+        onFocusOut: (e) => {
+          console.log("onFocusOut", e);
           onEditCancel(item, e);
-          return;
+        },
+        onKeyUp: (e) => {
+          if (editable) {
+            if (e.key === "Enter") {
+              e.target.blur();
+              item.data.title = e.target.value;
+              onEditEnd(item, e);
+              return;
+            } else if (e.key === "Escape") {
+              onEditCancel(item, e);
+              return;
+            }
+            onEdit(item, e.target.value);
+          }
         }
-        onEdit(item, e.target.value);
       }
-    }
-  })) : /* @__PURE__ */ createElementJsx("label", {
-    class: "label-area",
-    onDblClick: (e) => {
-      if (editable) {
-        if (!item.edit) {
-          onEditStart(item, e);
+    )) : /* @__PURE__ */ createElementJsx(
+      "label",
+      {
+        class: "label-area",
+        onDblClick: (e) => {
+          if (editable) {
+            if (!item.edit) {
+              onEditStart(item, e);
+            }
+          }
+          onDoubleClick(item, e);
+        },
+        onClick: (e) => onSelect(item, "highlight", e),
+        onMouseEnter: (e) => {
+          if (label) {
+            showTooltip && displayTooltip(label, e.target);
+          }
+        },
+        onMouseLeave: (e) => {
+          showTooltip && hideTooltip(e.target);
         }
-      }
-      onDoubleClick(item, e);
-    },
-    onClick: (e) => onSelect(item, "highlight", e),
-    onMouseEnter: (e) => {
-      if (label) {
-        showTooltip && displayTooltip(label, e.target);
-      }
-    },
-    onMouseLeave: (e) => {
-      showTooltip && hideTooltip(e.target);
-    }
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "label"
-  }, label)), actions ? /* @__PURE__ */ createElementJsx("div", {
-    class: "actions-area"
-  }, actions) : void 0, /* @__PURE__ */ createElementJsx("div", {
-    class: "tail-area"
-  }));
+      },
+      /* @__PURE__ */ createElementJsx("div", { class: "label" }, label)
+    ),
+    actions ? /* @__PURE__ */ createElementJsx("div", { class: "actions-area" }, actions) : void 0,
+    /* @__PURE__ */ createElementJsx("div", { class: "tail-area" })
+  );
 }
 function treeToList(items = [], depth = 0, command = { index: 0 }) {
   const result = [];
@@ -6978,27 +6743,17 @@ class TreeView extends UIElement {
       onDragLeave,
       onDrop
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject,
-      ...events
-    }, /* @__PURE__ */ createElementJsx(VirtualScroll, {
-      itemHeight,
-      overscanRowCount,
-      items,
-      itemRenderer: (item, top, renderIndex) => {
-        return itemRenderer(item, top, renderIndex, itemRendererProps);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject, ...events }, /* @__PURE__ */ createElementJsx(
+      VirtualScroll,
+      {
+        itemHeight,
+        overscanRowCount,
+        items,
+        itemRenderer: (item, top, renderIndex) => {
+          return itemRenderer(item, top, renderIndex, itemRendererProps);
+        }
       }
-    }), /* @__PURE__ */ createElementJsx("div", {
-      class: "drag-line",
-      ref: "$dragline"
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "drag-line-inner left"
-    }), /* @__PURE__ */ createElementJsx("div", {
-      class: "drag-line-inner right"
-    })), /* @__PURE__ */ createElementJsx("div", {
-      class: "drag-inner-area",
-      ref: "$dragArea"
-    }));
+    ), /* @__PURE__ */ createElementJsx("div", { class: "drag-line", ref: "$dragline" }, /* @__PURE__ */ createElementJsx("div", { class: "drag-line-inner left" }), /* @__PURE__ */ createElementJsx("div", { class: "drag-line-inner right" })), /* @__PURE__ */ createElementJsx("div", { class: "drag-inner-area", ref: "$dragArea" }));
   }
   get targetPosition() {
     if (this.state.rate < 0.33) {
@@ -7073,53 +6828,56 @@ class Table extends UIElement {
         indeterminate = true;
       }
     }
-    return /* @__PURE__ */ createElementJsx("table", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("thead", null, /* @__PURE__ */ createElementJsx("tr", null, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("th", {
-      class: "elf--table-head-cell"
-    }, /* @__PURE__ */ createElementJsx(Checkbox, {
-      checked: allChecked,
-      indeterminate
-    })) : void 0, columns.map((column) => {
+    return /* @__PURE__ */ createElementJsx("table", { ...styleObject }, /* @__PURE__ */ createElementJsx("thead", null, /* @__PURE__ */ createElementJsx("tr", null, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("th", { class: "elf--table-head-cell" }, /* @__PURE__ */ createElementJsx(Checkbox, { checked: allChecked, indeterminate })) : void 0, columns.map((column) => {
       var _a;
       if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
         return void 0;
       }
-      return /* @__PURE__ */ createElementJsx("th", {
-        class: classnames({
-          divider: column.showDivider
-        }),
-        style: propertyMap(column == null ? void 0 : column.style, headCssProperties)
-      }, /* @__PURE__ */ createElementJsx("div", {
-        class: "head-content"
-      }, /* @__PURE__ */ createElementJsx("label", null, column.title), column.tools ? /* @__PURE__ */ createElementJsx("div", {
-        class: "tools"
-      }, column.tools) : void 0));
-    }))), /* @__PURE__ */ createElementJsx("tbody", null, data.map((row) => {
-      return /* @__PURE__ */ createElementJsx("tr", {
-        class: classnames({
-          selected: row.selected
-        })
-      }, selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("td", {
-        class: "elf--table-cell"
-      }, /* @__PURE__ */ createElementJsx(Checkbox, {
-        checked: row.selected,
-        indeterminate: row.indeterminate
-      })) : void 0, columns.map((column) => {
-        var _a, _b, _c;
-        if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
-          return void 0;
-        }
-        return /* @__PURE__ */ createElementJsx("td", {
+      return /* @__PURE__ */ createElementJsx(
+        "th",
+        {
           class: classnames({
             divider: column.showDivider
           }),
-          style: {
-            textAlign: (_b = column.style) == null ? void 0 : _b.textAlign,
-            display: (_c = column.style) == null ? void 0 : _c.display
+          style: propertyMap(column == null ? void 0 : column.style, headCssProperties)
+        },
+        /* @__PURE__ */ createElementJsx("div", { class: "head-content" }, /* @__PURE__ */ createElementJsx("label", null, column.title), column.tools ? /* @__PURE__ */ createElementJsx("div", { class: "tools" }, column.tools) : void 0)
+      );
+    }))), /* @__PURE__ */ createElementJsx("tbody", null, data.map((row) => {
+      return /* @__PURE__ */ createElementJsx(
+        "tr",
+        {
+          class: classnames({
+            selected: row.selected
+          })
+        },
+        selectionStyle === "checkbox" ? /* @__PURE__ */ createElementJsx("td", { class: "elf--table-cell" }, /* @__PURE__ */ createElementJsx(
+          Checkbox,
+          {
+            checked: row.selected,
+            indeterminate: row.indeterminate
           }
-        }, column.render ? column.render(column.key, row[column.key], row, data) : row[column.key]);
-      }));
+        )) : void 0,
+        columns.map((column) => {
+          var _a, _b, _c;
+          if (((_a = column.style) == null ? void 0 : _a.display) === "none") {
+            return void 0;
+          }
+          return /* @__PURE__ */ createElementJsx(
+            "td",
+            {
+              class: classnames({
+                divider: column.showDivider
+              }),
+              style: {
+                textAlign: (_b = column.style) == null ? void 0 : _b.textAlign,
+                display: (_c = column.style) == null ? void 0 : _c.display
+              }
+            },
+            column.render ? column.render(column.key, row[column.key], row, data) : row[column.key]
+          );
+        })
+      );
     })));
   }
 }
@@ -7181,12 +6939,7 @@ class Card extends UIElement {
       },
       ...extraProps
     };
-    return as === "link" ? /* @__PURE__ */ createElementJsx("a", {
-      ...styleObject,
-      href
-    }, content) : /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return as === "link" ? /* @__PURE__ */ createElementJsx("a", { ...styleObject, href }, content) : /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 const cssProperties$9 = makeCssVariablePrefixMap("--elf--card-preview", {
@@ -7221,11 +6974,7 @@ class CardPreview extends UIElement {
       ),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    }) : content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, { animated: true }) : content);
   }
 }
 const cssProperties$8 = makeCssVariablePrefixMap("--elf--card-header", {
@@ -7258,22 +7007,12 @@ class CardHeader extends UIElement {
       ),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, ghost ? [
-      /* @__PURE__ */ createElementJsx(Ghost, {
-        animated: true
-      }),
-      actions.length ? /* @__PURE__ */ createElementJsx(Ghost, {
-        animated: true
-      }) : void 0
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, ghost ? [
+      /* @__PURE__ */ createElementJsx(Ghost, { animated: true }),
+      actions.length ? /* @__PURE__ */ createElementJsx(Ghost, { animated: true }) : void 0
     ] : [
-      title ? /* @__PURE__ */ createElementJsx("div", {
-        class: "title"
-      }, title) : null,
-      actions.length ? /* @__PURE__ */ createElementJsx("div", {
-        class: "actions"
-      }, actions) : null
+      title ? /* @__PURE__ */ createElementJsx("div", { class: "title" }, title) : null,
+      actions.length ? /* @__PURE__ */ createElementJsx("div", { class: "actions" }, actions) : null
     ]);
   }
 }
@@ -7298,9 +7037,7 @@ class CardContainer extends UIElement {
       ),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 const cssProperties$6 = makeCssVariablePrefixMap("--elf--card-footer", {
@@ -7328,17 +7065,7 @@ class CardFooter extends UIElement {
       style: propertyMap(style2, cssProperties$6),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, noDivider ? void 0 : /* @__PURE__ */ createElementJsx(Divider, null), /* @__PURE__ */ createElementJsx("div", {
-      class: "content-area"
-    }, ghost ? /* @__PURE__ */ createElementJsx("div", {
-      style: { display: "flex", gap: 10 }
-    }, /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    }), /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    })) : content));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, noDivider ? void 0 : /* @__PURE__ */ createElementJsx(Divider, null), /* @__PURE__ */ createElementJsx("div", { class: "content-area" }, ghost ? /* @__PURE__ */ createElementJsx("div", { style: { display: "flex", gap: 10 } }, /* @__PURE__ */ createElementJsx(Ghost, { animated: true }), /* @__PURE__ */ createElementJsx(Ghost, { animated: true })) : content));
   }
 }
 const cssProperties$5 = makeCssVariablePrefixMap("--elf--card-body", {
@@ -7360,22 +7087,7 @@ class CardBody extends UIElement {
       ),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, ghost ? /* @__PURE__ */ createElementJsx(VBox, {
-      style: { gap: 10 }
-    }, /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true,
-      style: { width: "70%" }
-    }), /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true,
-      style: { width: "50%" }
-    }), /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true,
-      style: { width: "30%" }
-    })) : /* @__PURE__ */ createElementJsx("div", {
-      class: "content-area"
-    }, content));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, ghost ? /* @__PURE__ */ createElementJsx(VBox, { style: { gap: 10 } }, /* @__PURE__ */ createElementJsx(Ghost, { animated: true, style: { width: "70%" } }), /* @__PURE__ */ createElementJsx(Ghost, { animated: true, style: { width: "50%" } }), /* @__PURE__ */ createElementJsx(Ghost, { animated: true, style: { width: "30%" } })) : /* @__PURE__ */ createElementJsx("div", { class: "content-area" }, content));
   }
 }
 const cssProperties$4 = makeCssVariablePrefixMap("--elf--card-avatar", {
@@ -7397,13 +7109,7 @@ class CardAvatar extends UIElement {
       style: propertyMap(style2, cssProperties$4),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, /* @__PURE__ */ createElementJsx("div", {
-      class: "elf--card-avatar-inner"
-    }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, {
-      animated: true
-    }) : content));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, /* @__PURE__ */ createElementJsx("div", { class: "elf--card-avatar-inner" }, ghost ? /* @__PURE__ */ createElementJsx(Ghost, { animated: true }) : content));
   }
 }
 const cssProperties$3 = makeCssVariablePrefixMap("--elf--card-actions", {
@@ -7425,9 +7131,7 @@ class CardActions extends UIElement {
       style: propertyMap(style2, cssProperties$3),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content);
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
 const cssProperties$2 = makeCssVariablePrefixMap("--elf--blank", {
@@ -7460,9 +7164,7 @@ class Blank extends UIElement {
       ),
       ...extraProps
     };
-    return /* @__PURE__ */ createElementJsx("div", {
-      ...styleObject
-    }, content || /* @__PURE__ */ createElementJsx("span", null, "\xA0"));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content || /* @__PURE__ */ createElementJsx("span", null, " "));
   }
 }
 registerComponent("blank", Blank);
@@ -7499,41 +7201,39 @@ function makeSidebarItem$1(list, depth = 0, hasSelected) {
       it = { type: "section", title: it };
     }
     if (it.type === "divider") {
-      return /* @__PURE__ */ createElementJsx(Divider, {
-        style: it.style
-      });
+      return /* @__PURE__ */ createElementJsx(Divider, { style: it.style });
     }
     if (it.type === "blank") {
-      return /* @__PURE__ */ createElementJsx(Blank, {
-        style: it.style
-      });
+      return /* @__PURE__ */ createElementJsx(Blank, { style: it.style });
     }
     if (it.type === "custom") {
-      return /* @__PURE__ */ createElementJsx(CustomSidebarItem, {
-        ...it,
-        depth,
-        hasSelected,
-        selected: (hasSelected == null ? void 0 : hasSelected(it)) || (it == null ? void 0 : it.selected)
-      });
+      return /* @__PURE__ */ createElementJsx(
+        CustomSidebarItem,
+        {
+          ...it,
+          depth,
+          hasSelected,
+          selected: (hasSelected == null ? void 0 : hasSelected(it)) || (it == null ? void 0 : it.selected)
+        }
+      );
     }
     if (it.type === "section") {
-      return /* @__PURE__ */ createElementJsx(SidebarItem$1, {
-        depth,
-        title: it.title,
-        icon: it.icon
-      });
+      return /* @__PURE__ */ createElementJsx(SidebarItem$1, { depth, title: it.title, icon: it.icon });
     }
-    return /* @__PURE__ */ createElementJsx(LinkSidebarItem$1, {
-      link: it.link,
-      title: it.title,
-      target: it.target,
-      items: it.items,
-      depth,
-      icon: it.icon,
-      onClick: it.onClick,
-      hasSelected,
-      selected: (hasSelected == null ? void 0 : hasSelected(it)) || (it == null ? void 0 : it.selected)
-    });
+    return /* @__PURE__ */ createElementJsx(
+      LinkSidebarItem$1,
+      {
+        link: it.link,
+        title: it.title,
+        target: it.target,
+        items: it.items,
+        depth,
+        icon: it.icon,
+        onClick: it.onClick,
+        hasSelected,
+        selected: (hasSelected == null ? void 0 : hasSelected(it)) || (it == null ? void 0 : it.selected)
+      }
+    );
   });
 }
 function LinkSidebarItem$1({
@@ -7547,58 +7247,31 @@ function LinkSidebarItem$1({
   onClick,
   hasSelected
 }) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: classnames("elf--sidebar-item sidebar-link", {
-      selected: isFunction(hasSelected) ? hasSelected({ title, icon, link, depth }) : selected
-    })
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "item-title"
-  }, /* @__PURE__ */ createElementJsx("span", {
-    class: "depth",
-    "data-depth": depth
-  }), /* @__PURE__ */ createElementJsx("span", {
-    class: "selected-area"
-  }, icon ? /* @__PURE__ */ createElementJsx("span", {
-    class: "icon"
-  }, icon) : void 0, !items.length && link ? /* @__PURE__ */ createElementJsx("a", {
-    href: link,
-    target
-  }, title) : /* @__PURE__ */ createElementJsx("div", {
-    onClick
-  }, title))), /* @__PURE__ */ createElementJsx("div", {
-    class: "items"
-  }, items.length ? makeSidebarItem$1(items, depth + 1, hasSelected) : void 0));
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: classnames("elf--sidebar-item sidebar-link", {
+        selected: isFunction(hasSelected) ? hasSelected({ title, icon, link, depth }) : selected
+      })
+    },
+    /* @__PURE__ */ createElementJsx("div", { class: "item-title" }, /* @__PURE__ */ createElementJsx("span", { class: "depth", "data-depth": depth }), /* @__PURE__ */ createElementJsx("span", { class: "selected-area" }, icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, icon) : void 0, !items.length && link ? /* @__PURE__ */ createElementJsx("a", { href: link, target }, title) : /* @__PURE__ */ createElementJsx("div", { onClick }, title))),
+    /* @__PURE__ */ createElementJsx("div", { class: "items" }, items.length ? makeSidebarItem$1(items, depth + 1, hasSelected) : void 0)
+  );
 }
 function SidebarItem$1({ title, depth, icon }) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--sidebar-item section-title"
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "item-title"
-  }, /* @__PURE__ */ createElementJsx("span", {
-    class: "depth",
-    "data-depth": depth
-  }), icon ? /* @__PURE__ */ createElementJsx("span", {
-    class: "icon"
-  }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-    class: "title"
-  }, title)));
+  return /* @__PURE__ */ createElementJsx("div", { class: "elf--sidebar-item section-title" }, /* @__PURE__ */ createElementJsx("div", { class: "item-title" }, /* @__PURE__ */ createElementJsx("span", { class: "depth", "data-depth": depth }), icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "title" }, title)));
 }
 function CustomSidebarItem(props) {
   const { render, depth, icon, hasSelected, selected } = props;
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: classnames("elf--sidebar-item custom", {
-      selected: isFunction(hasSelected) ? hasSelected(props) : selected
-    })
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "item-title"
-  }, /* @__PURE__ */ createElementJsx("span", {
-    class: "depth",
-    "data-depth": depth
-  }), icon ? /* @__PURE__ */ createElementJsx("span", {
-    class: "icon"
-  }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", {
-    class: "title"
-  }, render(props))));
+  return /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: classnames("elf--sidebar-item custom", {
+        selected: isFunction(hasSelected) ? hasSelected(props) : selected
+      })
+    },
+    /* @__PURE__ */ createElementJsx("div", { class: "item-title" }, /* @__PURE__ */ createElementJsx("span", { class: "depth", "data-depth": depth }), icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "title" }, render(props)))
+  );
 }
 function BaseSidebar(props) {
   let {
@@ -7623,15 +7296,7 @@ function BaseSidebar(props) {
     class: localClass,
     style: propertyMap(itemStyle, cssProperties$1)
   };
-  return /* @__PURE__ */ createElementJsx("menu", {
-    ...styleObject
-  }, header ? /* @__PURE__ */ createElementJsx("div", {
-    class: "header"
-  }, header) : void 0, /* @__PURE__ */ createElementJsx("div", {
-    class: "body"
-  }, makeSidebarItem$1(items, 0, hasSelected)), footer ? /* @__PURE__ */ createElementJsx("div", {
-    class: "footer"
-  }, footer) : void 0);
+  return /* @__PURE__ */ createElementJsx("menu", { ...styleObject }, header ? /* @__PURE__ */ createElementJsx("div", { class: "header" }, header) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "body" }, makeSidebarItem$1(items, 0, hasSelected)), footer ? /* @__PURE__ */ createElementJsx("div", { class: "footer" }, footer) : void 0);
 }
 const cssProperties = makeCssVariablePrefixMap("--elf--sidebar", {
   left: true,
@@ -7665,34 +7330,29 @@ function makeSidebarItem(list, depth = 0, hasSelected) {
       it = { type: "section", title: it };
     }
     if (it.type === "divider") {
-      return /* @__PURE__ */ createElementJsx(Divider, {
-        style: it.style
-      });
+      return /* @__PURE__ */ createElementJsx(Divider, { style: it.style });
     }
     if (it.type === "blank") {
-      return /* @__PURE__ */ createElementJsx(Blank, {
-        style: it.style
-      });
+      return /* @__PURE__ */ createElementJsx(Blank, { style: it.style });
     }
     if (it.type === "section") {
-      return /* @__PURE__ */ createElementJsx(SidebarItem, {
-        depth,
-        title: it.title,
-        icon: it.icon
-      });
+      return /* @__PURE__ */ createElementJsx(SidebarItem, { depth, title: it.title, icon: it.icon });
     }
-    return /* @__PURE__ */ createElementJsx(LinkSidebarItem, {
-      link: it.link,
-      title: it.title,
-      target: it.target,
-      items: it.items,
-      depth,
-      icon: it.icon,
-      tooltip: it.tooltip,
-      onClick: it.onClick,
-      hasSelected,
-      selected: (hasSelected == null ? void 0 : hasSelected(it)) || (it == null ? void 0 : it.selected)
-    });
+    return /* @__PURE__ */ createElementJsx(
+      LinkSidebarItem,
+      {
+        link: it.link,
+        title: it.title,
+        target: it.target,
+        items: it.items,
+        depth,
+        icon: it.icon,
+        tooltip: it.tooltip,
+        onClick: it.onClick,
+        hasSelected,
+        selected: (hasSelected == null ? void 0 : hasSelected(it)) || (it == null ? void 0 : it.selected)
+      }
+    );
   });
 }
 function LinkSidebarItem({
@@ -7706,40 +7366,22 @@ function LinkSidebarItem({
   tooltip: tooltip2,
   hasSelected
 }) {
-  const sidebarItem = /* @__PURE__ */ createElementJsx("div", {
-    class: classnames("elf--sidebar-item sidebar-link", {
-      selected: isFunction(hasSelected) ? hasSelected({ title, icon, link, depth }) : selected
-    })
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "item-title"
-  }, /* @__PURE__ */ createElementJsx("span", {
-    class: "selected-area"
-  }, link ? /* @__PURE__ */ createElementJsx("a", {
-    class: "icon",
-    href: link,
-    target
-  }, icon) : /* @__PURE__ */ createElementJsx("div", {
-    class: "icon",
-    onClick
-  }, icon))));
+  const sidebarItem = /* @__PURE__ */ createElementJsx(
+    "div",
+    {
+      class: classnames("elf--sidebar-item sidebar-link", {
+        selected: isFunction(hasSelected) ? hasSelected({ title, icon, link, depth }) : selected
+      })
+    },
+    /* @__PURE__ */ createElementJsx("div", { class: "item-title" }, /* @__PURE__ */ createElementJsx("span", { class: "selected-area" }, link ? /* @__PURE__ */ createElementJsx("a", { class: "icon", href: link, target }, icon) : /* @__PURE__ */ createElementJsx("div", { class: "icon", onClick }, icon)))
+  );
   if (typeof tooltip2 === "string") {
     tooltip2 = { message: tooltip2 };
   }
-  return tooltip2 ? /* @__PURE__ */ createElementJsx(FixedTooltip, {
-    ...tooltip2,
-    placement: "right",
-    variant: "dark",
-    show: true
-  }, sidebarItem) : sidebarItem;
+  return tooltip2 ? /* @__PURE__ */ createElementJsx(FixedTooltip, { ...tooltip2, placement: "right", variant: "dark", show: true }, sidebarItem) : sidebarItem;
 }
 function SidebarItem({ icon }) {
-  return /* @__PURE__ */ createElementJsx("div", {
-    class: "elf--sidebar-item section-title"
-  }, /* @__PURE__ */ createElementJsx("div", {
-    class: "item-title"
-  }, icon ? /* @__PURE__ */ createElementJsx("span", {
-    class: "icon"
-  }, icon) : void 0));
+  return /* @__PURE__ */ createElementJsx("div", { class: "elf--sidebar-item section-title" }, /* @__PURE__ */ createElementJsx("div", { class: "item-title" }, icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, icon) : void 0));
 }
 function CompactSidebar(props) {
   let {
@@ -7764,23 +7406,11 @@ function CompactSidebar(props) {
     class: localClass,
     style: propertyMap(itemStyle, cssProperties)
   };
-  return /* @__PURE__ */ createElementJsx("menu", {
-    ...styleObject
-  }, header ? /* @__PURE__ */ createElementJsx("div", {
-    class: "header"
-  }, header) : void 0, /* @__PURE__ */ createElementJsx("div", {
-    class: "body"
-  }, makeSidebarItem(items, 0, hasSelected)), footer ? /* @__PURE__ */ createElementJsx("div", {
-    class: "footer"
-  }, footer) : void 0);
+  return /* @__PURE__ */ createElementJsx("menu", { ...styleObject }, header ? /* @__PURE__ */ createElementJsx("div", { class: "header" }, header) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "body" }, makeSidebarItem(items, 0, hasSelected)), footer ? /* @__PURE__ */ createElementJsx("div", { class: "footer" }, footer) : void 0);
 }
 function Sidebar(props) {
   let { compact = false, ...otherProps } = props;
-  return compact ? /* @__PURE__ */ createElementJsx(CompactSidebar, {
-    ...otherProps
-  }) : /* @__PURE__ */ createElementJsx(BaseSidebar, {
-    ...otherProps
-  });
+  return compact ? /* @__PURE__ */ createElementJsx(CompactSidebar, { ...otherProps }) : /* @__PURE__ */ createElementJsx(BaseSidebar, { ...otherProps });
 }
 registerComponent("sidebar", Sidebar);
 export {

@@ -3,56 +3,56 @@ function V(r) {
   if (!(typeof r > "u"))
     return E(r);
 }
-function l(r, n) {
-  return n = typeof n > "u" ? 1 : n, Math.round(r * n) / n;
+function l(r, e) {
+  return e = typeof e > "u" ? 1 : e, Math.round(r * e) / e;
 }
-function w(r, n = r.type, e = "rgba(0, 0, 0, 0)") {
-  return Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), n == "hex" ? z(r) : n == "rgb" ? B(r, e) : n == "hsl" ? P(r) : n == "hsv" ? Z(r) : n == "cmyk" ? _(r) : `${n}(${r.r},${r.g},${r.b})`;
+function w(r, e = r.type, n = "rgba(0, 0, 0, 0)") {
+  return Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), e == "hex" ? z(r) : e == "rgb" ? B(r, n) : e == "hsl" ? P(r) : e == "hsv" ? Z(r) : e == "cmyk" ? _(r) : `${e}(${r.r},${r.g},${r.b})`;
 }
-function lr(r, n, e = "rgba(0, 0, 0, 0)") {
+function lr(r, e, n = "rgba(0, 0, 0, 0)") {
   const t = V(r);
-  return t.a = 1, w(t, n, e);
+  return t.a = 1, w(t, e, n);
 }
 function z(r) {
   Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] });
-  var n = r.r.toString(16);
-  r.r < 16 && (n = "0" + n);
-  var e = r.g.toString(16);
-  r.g < 16 && (e = "0" + e);
+  var e = r.r.toString(16);
+  r.r < 16 && (e = "0" + e);
+  var n = r.g.toString(16);
+  r.g < 16 && (n = "0" + n);
   var t = r.b.toString(16);
   if (r.b < 16 && (t = "0" + t), r.a == 1 || typeof r.a > "u")
-    return `#${n}${e}${t}`;
+    return `#${e}${n}${t}`;
   {
     const g = Math.ceil(r.a * 255);
     var a = g.toString(16);
-    return g < 16 && (a = "0" + a), `#${n}${e}${t}${a}`;
+    return g < 16 && (a = "0" + a), `#${e}${n}${t}${a}`;
   }
 }
-function B(r, n = "rgba(0, 0, 0, 0)") {
+function B(r, e = "rgba(0, 0, 0, 0)") {
   if (Array.isArray(r) && (r = { r: r[0], g: r[1], b: r[2], a: r[3] }), !(typeof r > "u"))
-    return r.a == 1 || typeof r.a > "u" ? isNaN(r.r) ? n : `rgb(${r.r},${r.g},${r.b})` : `rgba(${r.r},${r.g},${r.b},${r.a})`;
+    return r.a == 1 || typeof r.a > "u" ? isNaN(r.r) ? e : `rgb(${r.r},${r.g},${r.b})` : `rgba(${r.r},${r.g},${r.b},${r.a})`;
 }
 function P(r) {
   return Array.isArray(r) && (r = { h: r[0], s: r[1], l: r[2], a: r[3] }), r.a == 1 || typeof r.a > "u" ? `hsl(${r.h}, ${r.s}%, ${r.l}%)` : `hsla(${r.h}, ${r.s}%, ${r.l}%, ${r.a})`;
 }
 function Z(r) {
   Array.isArray(r) && (r = { h: r[0], s: r[1], v: r[2], a: r[3] });
-  const n = l(r.h), e = r.a, t = l(r.s * 100), a = l(r.v * 100);
-  return r.a == 1 || typeof r.a > "u" ? `hsv(${n}, ${t}%, ${a}%)` : `hsva(${n}, ${t}%, ${a}%, ${e})`;
+  const e = l(r.h), n = r.a, t = l(r.s * 100), a = l(r.v * 100);
+  return r.a == 1 || typeof r.a > "u" ? `hsv(${e}, ${t}%, ${a}%)` : `hsva(${e}, ${t}%, ${a}%, ${n})`;
 }
 function _(r) {
   Array.isArray(r) && (r = { c: r[0], m: r[1], y: r[2], k: r[3] });
-  const n = l(r.c * 100, 100), e = l(r.m * 100, 100), t = l(r.y * 100, 100), a = l(r.k * 100, 100);
-  return `cmyk(${n}%,${e}%,${t}%,${a}%)`;
+  const e = l(r.c * 100, 100), n = l(r.m * 100, 100), t = l(r.y * 100, 100), a = l(r.k * 100, 100);
+  return `cmyk(${e}%,${n}%,${t}%,${a}%)`;
 }
-function m(r, n) {
-  return Math.floor(Math.random() * (n - r + 1)) + r;
+function m(r, e) {
+  return Math.floor(Math.random() * (e - r + 1)) + r;
 }
 function or(r = 1) {
-  let n = [];
-  for (var e = 0; e < r; e++)
-    n[n.length] = q();
-  return n;
+  let e = [];
+  for (var n = 0; n < r; n++)
+    e[e.length] = q();
+  return e;
 }
 function q() {
   return B({
@@ -69,10 +69,10 @@ function cr() {
     a: m(0, 1e3) / 1e3
   });
 }
-function br(r, n, e, t) {
+function br(r, e, n, t) {
   if (arguments.length == 1)
-    var { c: r, m: n, y: e, k: t } = arguments[0];
-  const a = 255 * (1 - r) * (1 - t), g = 255 * (1 - n) * (1 - t), f = 255 * (1 - e) * (1 - t);
+    var { c: r, m: e, y: n, k: t } = arguments[0];
+  const a = 255 * (1 - r) * (1 - t), g = 255 * (1 - e) * (1 - t), f = 255 * (1 - n) * (1 - t);
   return { r: a, g, b: f };
 }
 function y(r) {
@@ -81,18 +81,18 @@ function y(r) {
 function x(r) {
   return r > 31308e-7 ? 1.055 * Math.pow(r, 1 / 2.4) - 0.055 : 12.92 * r;
 }
-function K(r, n, e) {
+function K(r, e, n) {
   if (arguments.length == 1)
-    var { x: r, y: n, z: e } = arguments[0];
-  let t = r / 100, a = n / 100, g = e / 100, f = t * 3.2406 + a * -1.5372 + g * -0.4986, u = t * -0.9689 + a * 1.8758 + g * 0.0415, i = t * 0.0557 + a * -0.204 + g * 1.057;
+    var { x: r, y: e, z: n } = arguments[0];
+  let t = r / 100, a = e / 100, g = n / 100, f = t * 3.2406 + a * -1.5372 + g * -0.4986, u = t * -0.9689 + a * 1.8758 + g * 0.0415, i = t * 0.0557 + a * -0.204 + g * 1.057;
   f = x(f), u = x(u), i = x(i);
   const s = l(f * 255), c = l(u * 255), b = l(i * 255);
   return { r: s, g: c, b };
 }
-function T(r, n, e) {
+function T(r, e, n) {
   if (arguments.length == 1)
-    var { l: r, a: n, b: e } = arguments[0];
-  let t = (r + 16) / 116, a = n / 500 + t, g = t - e / 200;
+    var { l: r, a: e, b: n } = arguments[0];
+  let t = (r + 16) / 116, a = e / 500 + t, g = t - n / 200;
   t = y(t), a = y(a), g = y(g);
   const f = a * 95.047, u = t * 100, i = g * 108.883;
   return { x: f, y: u, z: i };
@@ -100,23 +100,23 @@ function T(r, n, e) {
 function A(r) {
   return r > 8856e-6 ? Math.pow(r, 1 / 3) : (7.787 * r + 16) / 116;
 }
-function J(r, n, e) {
+function J(r, e, n) {
   if (arguments.length == 1)
-    var { x: r, y: n, z: e } = arguments[0];
-  let t = r / 95.047, a = n / 100, g = e / 108.883;
+    var { x: r, y: e, z: n } = arguments[0];
+  let t = r / 95.047, a = e / 100, g = n / 108.883;
   t = A(t), a = A(a), g = A(g);
   const f = 116 * a - 16, u = 500 * (t - a), i = 200 * (a - g);
   return { l: f, a: u, b: i };
 }
-function hr(r, n, e) {
+function hr(r, e, n) {
   if (arguments.length == 1)
-    var { l: r, a: n, b: e } = arguments[0];
-  return K(T(r, n, e));
+    var { l: r, a: e, b: n } = arguments[0];
+  return K(T(r, e, n));
 }
-function O(r, n, e) {
+function O(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  const t = r / 255, a = n / 255, g = e / 255, f = Math.max(t, a, g), u = Math.min(t, a, g), i = f - u;
+    var { r, g: e, b: n } = arguments[0];
+  const t = r / 255, a = e / 255, g = n / 255, f = Math.max(t, a, g), u = Math.min(t, a, g), i = f - u;
   var s = 0;
   i == 0 ? s = 0 : f == t ? s = 60 * ((a - g) / i % 6) : f == a ? s = 60 * ((g - t) / i + 2) : f == g && (s = 60 * ((t - a) / i + 4)), s < 0 && (s = 360 + s);
   var c = 0;
@@ -124,104 +124,104 @@ function O(r, n, e) {
   var b = f;
   return { h: s, s: c, v: b };
 }
-function dr(r, n, e) {
+function dr(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  const t = r / 255, a = n / 255, g = e / 255, f = 1 - Math.max(t, a, g), u = (1 - t - f) / (1 - f), i = (1 - a - f) / (1 - f), s = (1 - g - f) / (1 - f);
+    var { r, g: e, b: n } = arguments[0];
+  const t = r / 255, a = e / 255, g = n / 255, f = 1 - Math.max(t, a, g), u = (1 - t - f) / (1 - f), i = (1 - a - f) / (1 - f), s = (1 - g - f) / (1 - f);
   return { c: u, m: i, y: s, k: f };
 }
-function p(r, n, e) {
+function p(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  r /= 255, n /= 255, e /= 255;
-  var t = Math.max(r, n, e), a = Math.min(r, n, e), g, f, u = (t + a) / 2;
+    var { r, g: e, b: n } = arguments[0];
+  r /= 255, e /= 255, n /= 255;
+  var t = Math.max(r, e, n), a = Math.min(r, e, n), g, f, u = (t + a) / 2;
   if (t == a)
     g = f = 0;
   else {
     var i = t - a;
     switch (f = u > 0.5 ? i / (2 - t - a) : i / (t + a), t) {
       case r:
-        g = (n - e) / i + (n < e ? 6 : 0);
-        break;
-      case n:
-        g = (e - r) / i + 2;
+        g = (e - n) / i + (e < n ? 6 : 0);
         break;
       case e:
-        g = (r - n) / i + 4;
+        g = (n - r) / i + 2;
+        break;
+      case n:
+        g = (r - e) / i + 4;
         break;
     }
     g /= 6;
   }
   return { h: l(g * 360), s: l(f * 100), l: l(u * 100) };
 }
-function mr(r, n, e) {
+function mr(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  return S((r + n + e) / 3 > 90 ? 0 : 255);
+    var { r, g: e, b: n } = arguments[0];
+  return S((r + e + n) / 3 > 90 ? 0 : 255);
 }
 function S(r) {
   return { r, g: r, b: r };
 }
-function vr(r, n, e) {
+function vr(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  return S(Math.ceil((r + n + e) / 3));
+    var { r, g: e, b: n } = arguments[0];
+  return S(Math.ceil((r + e + n) / 3));
 }
-function pr(r, n, e) {
+function pr(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  return S(D(r, n, e).y);
+    var { r, g: e, b: n } = arguments[0];
+  return S(D(r, e, n).y);
 }
-function U(r, n, e) {
-  return Math.ceil(r * 0.2126 + n * 0.7152 + e * 0.0722);
+function U(r, e, n) {
+  return Math.ceil(r * 0.2126 + e * 0.7152 + n * 0.0722);
 }
-function D(r, n, e) {
+function D(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  const t = U(r, n, e), a = 0.564 * (e - t), g = 0.713 * (r - t);
+    var { r, g: e, b: n } = arguments[0];
+  const t = U(r, e, n), a = 0.564 * (n - t), g = 0.713 * (r - t);
   return { y: t, cr: g, cb: a };
 }
 function k(r) {
   return (r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92) * 100;
 }
-function W(r, n, e) {
+function W(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  let t = r / 255, a = n / 255, g = e / 255;
+    var { r, g: e, b: n } = arguments[0];
+  let t = r / 255, a = e / 255, g = n / 255;
   t = k(t), a = k(a), g = k(g);
   const f = t * 0.4124 + a * 0.3576 + g * 0.1805, u = t * 0.2126 + a * 0.7152 + g * 0.0722, i = t * 0.0193 + a * 0.1192 + g * 0.9505;
   return { x: f, y: u, z: i };
 }
-function yr(r, n, e) {
+function yr(r, e, n) {
   if (arguments.length == 1)
-    var { r, g: n, b: e } = arguments[0];
-  return J(W(r, n, e));
+    var { r, g: e, b: n } = arguments[0];
+  return J(W(r, e, n));
 }
-function M(r, n, e) {
-  return e < 0 && (e += 1), e > 1 && (e -= 1), e < 1 / 6 ? r + (n - r) * 6 * e : e < 1 / 2 ? n : e < 2 / 3 ? r + (n - r) * (2 / 3 - e) * 6 : r;
+function M(r, e, n) {
+  return n < 0 && (n += 1), n > 1 && (n -= 1), n < 1 / 6 ? r + (e - r) * 6 * n : n < 1 / 2 ? e : n < 2 / 3 ? r + (e - r) * (2 / 3 - n) * 6 : r;
 }
-function xr(r, n, e) {
+function xr(r, e, n) {
   if (arguments.length == 1)
-    var { h: r, s: n, l: e } = arguments[0];
-  const t = $(r, n, e);
+    var { h: r, s: e, l: n } = arguments[0];
+  const t = $(r, e, n);
   return O(t.r, t.g, t.b);
 }
-function $(r, n, e) {
+function $(r, e, n) {
   if (arguments.length == 1)
-    var { h: r, s: n, l: e } = arguments[0];
+    var { h: r, s: e, l: n } = arguments[0];
   var t, a, g;
-  if (r /= 360, n /= 100, e /= 100, n == 0)
-    t = a = g = e;
+  if (r /= 360, e /= 100, n /= 100, e == 0)
+    t = a = g = n;
   else {
-    var f = e < 0.5 ? e * (1 + n) : e + n - e * n, u = 2 * e - f;
+    var f = n < 0.5 ? n * (1 + e) : n + e - n * e, u = 2 * n - f;
     t = M(u, f, r + 1 / 3), a = M(u, f, r), g = M(u, f, r - 1 / 3);
   }
   return { r: l(t * 255), g: l(a * 255), b: l(g * 255) };
 }
-function H(r, n, e) {
+function H(r, e, n) {
   if (arguments.length == 1)
-    var { h: r, s: n, v: e } = arguments[0];
-  var t = r, a = n, g = e;
+    var { h: r, s: e, v: n } = arguments[0];
+  var t = r, a = e, g = n;
   t >= 360 && (t = 0);
   const f = a * g, u = f * (1 - Math.abs(t / 60 % 2 - 1)), i = g - f;
   let s = [];
@@ -231,18 +231,18 @@ function H(r, n, e) {
     b: l((s[2] + i) * 255)
   };
 }
-function Ar(r, n, e) {
+function Ar(r, e, n) {
   if (arguments.length == 1)
-    var { h: r, s: n, v: e } = arguments[0];
-  const t = H(r, n, e);
+    var { h: r, s: e, v: n } = arguments[0];
+  const t = H(r, e, n);
   return p(t.r, t.g, t.b);
 }
-function kr(r, n, e, t) {
+function kr(r, e, n, t) {
   if (arguments.length == 1) {
-    var { y: r, cr: n, cb: e, bit: t } = arguments[0];
+    var { y: r, cr: e, cb: n, bit: t } = arguments[0];
     t = t || 0;
   }
-  const a = r + 1.402 * (n - t), g = r - 0.344 * (e - t) - 0.714 * (n - t), f = r + 1.772 * (e - t);
+  const a = r + 1.402 * (e - t), g = r - 0.344 * (n - t) - 0.714 * (e - t), f = r + 1.772 * (n - t);
   return { r: Math.ceil(a), g: Math.ceil(g), b: Math.ceil(f) };
 }
 const I = {
@@ -404,46 +404,46 @@ function L(r) {
   return I[r];
 }
 const j = /(#(?:[\da-f]{3}){1,2}|#(?:[\da-f]{8})|rgb\((?:\s*\d{1,3},\s*){2}\d{1,3}\s*\)|rgba\((?:\s*\d{1,3},\s*){3}\d*\.?\d+\s*\)|hsl\(\s*\d{1,3}(?:,\s*\d{1,3}%){2}\s*\)|hsla\(\s*\d{1,3}(?:,\s*\d{1,3}%){2},\s*\d*\.?\d+\s*\)|([\w_-]+))/gi;
-function R(r, n = "@") {
-  return `${n}${r.startIndex}`.padEnd(10, "0");
+function R(r, e = "@") {
+  return `${e}${r.startIndex}`.padEnd(10, "0");
 }
 function Mr(r) {
   return !!Y(r).length;
 }
 function Y(r) {
-  const n = r.match(j);
-  let e = [];
-  if (!n)
-    return e;
-  for (var t = 0, a = n.length; t < a; t++)
-    if (n[t].indexOf("#") > -1 || n[t].indexOf("rgb") > -1 || n[t].indexOf("hsl") > -1)
-      e.push({ color: n[t] });
+  const e = r.match(j);
+  let n = [];
+  if (!e)
+    return n;
+  for (var t = 0, a = e.length; t < a; t++)
+    if (e[t].indexOf("#") > -1 || e[t].indexOf("rgb") > -1 || e[t].indexOf("hsl") > -1)
+      n.push({ color: e[t] });
     else {
-      var g = L(n[t]);
-      g && e.push({ color: n[t], nameColor: g });
+      var g = L(e[t]);
+      g && n.push({ color: e[t], nameColor: g });
     }
   var f = { next: 0 };
-  return e.forEach((u) => {
+  return n.forEach((u) => {
     const i = r.indexOf(u.color, f.next);
     u.startIndex = i, u.endIndex = i + u.color.length, f.next = u.endIndex;
-  }), e;
+  }), n;
 }
-function N(r, n = "@") {
-  const e = Y(r);
-  return e.forEach((t) => {
-    r = r.replace(t.color, R(t, n));
-  }), { str: r, matches: e };
+function N(r, e = "@") {
+  const n = Y(r);
+  return n.forEach((t) => {
+    r = r.replace(t.color, R(t, e));
+  }), { str: r, matches: n };
 }
-function X(r, n = ",") {
-  const e = N(r);
-  return e.str.split(n).map((t, a) => (t = h(t), e.matches[a] && (t = t.replace(
-    R(e.matches[a]),
-    e.matches[a].color
+function X(r, e = ",") {
+  const n = N(r);
+  return n.str.split(e).map((t, a) => (t = h(t), n.matches[a] && (t = t.replace(
+    R(n.matches[a]),
+    n.matches[a].color
   )), t));
 }
-function rr(r, n) {
-  return n.forEach((e) => {
-    r = r.replace(R(e), e.color);
+function rr(r, e) {
+  return e.forEach((n) => {
+    r = r.replace(R(n), n.color);
   }), r;
 }
 const er = /^\s+|\s+$/g;
@@ -453,46 +453,46 @@ function h(r) {
 function v(r) {
   if (typeof r == "string") {
     if (Q(r) && (r = L(r)), r.indexOf("rgb(") > -1) {
-      for (var n = r.replace("rgb(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
-        n[e] = parseInt(h(n[e]), 10);
-      var a = { type: "rgb", r: n[0], g: n[1], b: n[2], a: 1 };
+      for (var e = r.replace("rgb(", "").replace(")", "").split(","), n = 0, t = e.length; n < t; n++)
+        e[n] = parseInt(h(e[n]), 10);
+      var a = { type: "rgb", r: e[0], g: e[1], b: e[2], a: 1 };
       return a = { ...a, ...p(a) }, a;
     } else if (r.indexOf("rgba(") > -1) {
-      for (var n = r.replace("rgba(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
-        t - 1 == e ? n[e] = parseFloat(h(n[e])) : n[e] = parseInt(h(n[e]), 10);
-      var a = { type: "rgb", r: n[0], g: n[1], b: n[2], a: n[3] };
+      for (var e = r.replace("rgba(", "").replace(")", "").split(","), n = 0, t = e.length; n < t; n++)
+        t - 1 == n ? e[n] = parseFloat(h(e[n])) : e[n] = parseInt(h(e[n]), 10);
+      var a = { type: "rgb", r: e[0], g: e[1], b: e[2], a: e[3] };
       return a = { ...a, ...p(a) }, a;
     } else if (r.indexOf("hsl(") > -1) {
-      for (var n = r.replace("hsl(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
-        n[e] = parseFloat(h(n[e]));
-      var a = { type: "hsl", h: n[0], s: n[1], l: n[2], a: 1 };
+      for (var e = r.replace("hsl(", "").replace(")", "").split(","), n = 0, t = e.length; n < t; n++)
+        e[n] = parseFloat(h(e[n]));
+      var a = { type: "hsl", h: e[0], s: e[1], l: e[2], a: 1 };
       return a = { ...a, ...$(a) }, a;
     } else if (r.indexOf("hsla(") > -1) {
-      for (var n = r.replace("hsla(", "").replace(")", "").split(","), e = 0, t = n.length; e < t; e++)
-        t - 1 == e ? n[e] = parseFloat(h(n[e])) : n[e] = parseInt(h(n[e]), 10);
-      var a = { type: "hsl", h: n[0], s: n[1], l: n[2], a: n[3] };
+      for (var e = r.replace("hsla(", "").replace(")", "").split(","), n = 0, t = e.length; n < t; n++)
+        t - 1 == n ? e[n] = parseFloat(h(e[n])) : e[n] = parseInt(h(e[n]), 10);
+      var a = { type: "hsl", h: e[0], s: e[1], l: e[2], a: e[3] };
       return a = { ...a, ...$(a) }, a;
     } else if (r.indexOf("#") == 0) {
       r = r.replace("#", "");
-      var n = [], g = 1;
+      var e = [], g = 1;
       if (r.length == 3)
-        for (var e = 0, t = r.length; e < t; e++) {
-          var f = r.substr(e, 1);
-          n.push(parseInt(f + f, 16));
+        for (var n = 0, t = r.length; n < t; n++) {
+          var f = r.substr(n, 1);
+          e.push(parseInt(f + f, 16));
         }
       else if (r.length === 8) {
-        for (var e = 0, t = r.length; e < t; e += 2)
-          n.push(parseInt(r.substr(e, 2), 16));
-        g = n.pop() / 255;
+        for (var n = 0, t = r.length; n < t; n += 2)
+          e.push(parseInt(r.substr(n, 2), 16));
+        g = e.pop() / 255;
       } else {
         if (r.length !== 6)
           return;
-        for (var e = 0, t = r.length; e < t; e += 2) {
-          const b = parseInt(r.substr(e, 2), 16);
-          n.push(b);
+        for (var n = 0, t = r.length; n < t; n += 2) {
+          const b = parseInt(r.substr(n, 2), 16);
+          e.push(b);
         }
       }
-      var a = { type: "hex", r: n[0], g: n[1], b: n[2], a: g };
+      var a = { type: "hex", r: e[0], g: e[1], b: e[2], a: g };
       return a = { ...a, ...p(a) }, a;
     }
   } else if (typeof r == "number") {
@@ -509,51 +509,51 @@ function v(r) {
   return r;
 }
 function nr(r) {
-  typeof r == "string" && (r = X(r)), r = r.map((e) => {
-    if (typeof e == "string") {
-      const t = N(e);
+  typeof r == "string" && (r = X(r)), r = r.map((n) => {
+    if (typeof n == "string") {
+      const t = N(n);
       let a = h(t.str).split(" ");
       return a[1] ? a[1].indexOf("%") > -1 ? a[1] = parseFloat(a[1].replace(/%/, "")) / 100 : a[1] = parseFloat(a[1]) : a[1] = "*", a[0] = rr(a[0], t.matches), a;
-    } else if (Array.isArray(e))
-      return e[1] ? typeof e[1] == "string" && (e[1].indexOf("%") > -1 ? e[1] = parseFloat(e[1].replace(/%/, "")) / 100 : e[1] = +e[1]) : e[1] = "*", [...e];
+    } else if (Array.isArray(n))
+      return n[1] ? typeof n[1] == "string" && (n[1].indexOf("%") > -1 ? n[1] = parseFloat(n[1].replace(/%/, "")) / 100 : n[1] = +n[1]) : n[1] = "*", [...n];
   });
-  const n = r.filter((e) => e[1] === "*").length;
-  if (n > 0) {
-    const e = r.filter((a) => a[1] != "*" && a[1] != 1).map((a) => a[1]).reduce((a, g) => a + g, 0), t = (1 - e) / n;
+  const e = r.filter((n) => n[1] === "*").length;
+  if (e > 0) {
+    const t = (1 - r.filter((a) => a[1] != "*" && a[1] != 1).map((a) => a[1]).reduce((a, g) => a + g, 0)) / e;
     r.forEach((a, g) => {
       a[1] == "*" && g > 0 && (r.length - 1 == g || (a[1] = t));
     });
   }
   return r;
 }
-function tr(r, n, e = 0.5, t = "hex") {
-  var a = ar(r, n, e);
+function tr(r, e, n = 0.5, t = "hex") {
+  var a = ar(r, e, n);
   return w(a, t);
 }
-function ar(r, n, e = 0.5) {
-  const t = typeof r.a > "u" ? 1 : r.a, a = typeof n.a > "u" ? 1 : n.a;
+function ar(r, e, n = 0.5) {
+  const t = typeof r.a > "u" ? 1 : r.a, a = typeof e.a > "u" ? 1 : e.a;
   return {
-    r: l(r.r + (n.r - r.r) * e),
-    g: l(r.g + (n.g - r.g) * e),
-    b: l(r.b + (n.b - r.b) * e),
-    a: l(t + (a - t) * e, 100)
+    r: l(r.r + (e.r - r.r) * n),
+    g: l(r.g + (e.g - r.g) * n),
+    b: l(r.b + (e.b - r.b) * n),
+    a: l(t + (a - t) * n, 100)
   };
 }
-function o(r, n = 5) {
+function o(r, e = 5) {
   if (!r)
     return [];
   typeof r == "string" && (r = X(r)), r = r || [];
-  for (var e = r.length, t = [], a = 0; a < e - 1; a++)
-    for (var g = 0; g < n; g++)
-      t.push(F(r[a], r[a + 1], g / n));
+  for (var n = r.length, t = [], a = 0; a < n - 1; a++)
+    for (var g = 0; g < e; g++)
+      t.push(F(r[a], r[a + 1], g / e));
   return t;
 }
-function F(r, n, e = 0.5, t = "hex") {
-  var a = v(r), g = v(n);
-  return tr(a, g, e, t);
+function F(r, e, n = 0.5, t = "hex") {
+  var a = v(r), g = v(e);
+  return tr(a, g, n, t);
 }
-function gr(r, n, e = 0.5, t = "hex") {
-  return F(r, n, e, t);
+function gr(r, e, n = 0.5, t = "hex") {
+  return F(r, e, n, t);
 }
 function fr(r) {
   return r = v(r), (Math.round(r.r * 299) + Math.round(r.g * 587) + Math.round(r.b * 114)) / 1e3;
@@ -561,46 +561,46 @@ function fr(r) {
 function $r(r) {
   return fr(r) >= 128 ? "black" : "white";
 }
-function C(r, n, e) {
-  return r = r / 255, n = n / 255, e = e / 255, r = r < 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4), n = n < 0.03928 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4), e = e < 0.03928 ? e / 12.92 : Math.pow((e + 0.055) / 1.055, 2.4), r * 0.2126 + n * 0.7152 + e * 0.0722;
+function C(r, e, n) {
+  return r = r / 255, e = e / 255, n = n / 255, r = r < 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4), e = e < 0.03928 ? e / 12.92 : Math.pow((e + 0.055) / 1.055, 2.4), n = n < 0.03928 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4), r * 0.2126 + e * 0.7152 + n * 0.0722;
 }
-function ur(r, n) {
-  r = v(r), n = v(n);
-  const e = C(r.r, r.g, r.b), t = C(n.r, n.g, n.b);
-  return (Math.max(e, t) + 0.05) / (Math.min(e, t) + 0.05);
+function ur(r, e) {
+  r = v(r), e = v(e);
+  const n = C(r.r, r.g, r.b), t = C(e.r, e.g, e.b);
+  return (Math.max(n, t) + 0.05) / (Math.min(n, t) + 0.05);
 }
 function ir(r) {
   return r >= 7 ? "AAA" : r >= 4.5 ? "AA" : r >= 3 ? "AA Large" : "Fail";
 }
-function wr(r, n, e, t = 20) {
-  const a = ir(ur(r, n)), g = e > t;
+function wr(r, e, n, t = 20) {
+  const a = ir(ur(r, e)), g = n > t;
   let f = "FAIL";
   return g ? (a === "AA Large" || a === "AA" || a === "AAA") && (f = "PASS") : (a === "AA" || a === "AAA") && (f = "PASS"), f;
 }
-function Br(r, n = 10) {
+function Br(r, e = 10) {
   r = nr(r);
-  let e = [], t = n - (r.length - 1), a = t;
+  let n = [], t = e - (r.length - 1), a = t;
   for (var g = 1, f = r.length; g < f; g++) {
     var u = r[g - 1][0], i = r[g][0], s = g == 1 ? r[g][1] : r[g][1] - r[g - 1][1], c = g == r.length - 1 ? a : Math.floor(s * t);
-    e = e.concat(o([u, i], c), [
+    n = n.concat(o([u, i], c), [
       i
     ]), a -= c;
   }
-  return e;
+  return n;
 }
-function G(r, n = "h", e = 9, t = "rgb", a = 0, g = 1, f = 100) {
-  for (var u = v(r), i = O(u), s = (g - a) * f / e, c = [], b = 1; b <= e; b++)
-    i[n] = Math.abs((f - s * b) / f), c.push(w(H(i), t));
+function G(r, e = "h", n = 9, t = "rgb", a = 0, g = 1, f = 100) {
+  for (var u = v(r), i = O(u), s = (g - a) * f / n, c = [], b = 1; b <= n; b++)
+    i[e] = Math.abs((f - s * b) / f), c.push(w(H(i), t));
   return c;
 }
-function Sr(r, n = 9, e = "rgb", t = 0, a = 360) {
-  return G(r, "h", n, e, t, a, 1);
+function Sr(r, e = 9, n = "rgb", t = 0, a = 360) {
+  return G(r, "h", e, n, t, a, 1);
 }
-function Rr(r, n = 9, e = "rgb", t = 0, a = 1) {
-  return G(r, "s", n, e, t, a, 100);
+function Rr(r, e = 9, n = "rgb", t = 0, a = 1) {
+  return G(r, "s", e, n, t, a, 100);
 }
-function Gr(r, n = 9, e = "rgb", t = 0, a = 1) {
-  return G(r, "v", n, e, t, a, 100);
+function Gr(r, e = 9, n = "rgb", t = 0, a = 1) {
+  return G(r, "v", e, n, t, a, 100);
 }
 o.parula = function(r) {
   return o(["#352a87", "#0f5cdd", "#00b5a6", "#ffc337", "#fdff00"], r);
@@ -655,21 +655,21 @@ const d = [
   { rgb: "#ff0000", start: 1 }
 ];
 function Cr(r) {
-  for (var n, e, t = 0; t < d.length; t++)
+  for (var e, n, t = 0; t < d.length; t++)
     if (d[t].start >= r) {
-      n = d[t - 1], e = d[t];
+      e = d[t - 1], n = d[t];
       break;
     }
-  return n && e ? gr(
-    n,
+  return e && n ? gr(
     e,
-    (r - n.start) / (e.start - n.start)
+    n,
+    (r - e.start) / (n.start - e.start)
   ) : d[0].rgb;
 }
 function sr() {
-  for (var r = 0, n = d.length; r < n; r++) {
-    var e = d[r], t = v(e.rgb);
-    e.r = t.r, e.g = t.g, e.b = t.b;
+  for (var r = 0, e = d.length; r < e; r++) {
+    var n = d[r], t = v(n.rgb);
+    n.r = t.r, n.g = t.g, n.b = t.b;
   }
 }
 sr();

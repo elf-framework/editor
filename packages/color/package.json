@@ -16,10 +16,11 @@
     }
   },
   "devDependencies": {
-    "vite": "^3.0.8",
-    "vitest": "0.22.1"
+    "vite": "^4.0.0",
+    "vitest": "0.25.6"
   },
   "scripts": {
+    "npm-check": "npx npm-check-updates -u",
     "vite:dist": "vite build --config=vite.dist.config.js",
     "watch": "vite build --config=vite.dist.config.js --watch",
     "ui:watch": "npm run watch",

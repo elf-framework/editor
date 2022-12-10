@@ -18,13 +18,13 @@
     }
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "cssnano": "^5.1.13",
-    "postcss": "^8.4.16",
-    "recast": "^0.21.2",
-    "sass": "^1.54.4",
-    "vite": "^3.0.8",
-    "vitest": "0.22.1"
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
+    "recast": "^0.22.0",
+    "sass": "^1.56.2",
+    "vite": "^4.0.0",
+    "vitest": "0.25.6"
   },
   "dependencies": {
     "@elf-framework/color": "*",
@@ -33,6 +33,7 @@
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
+    "npm-check": "npx npm-check-updates -u",
     "watch": "vite build --config=vite.dist.config.js --watch",
     "ui:watch": "npm run watch",
     "editor:watch": "npm run watch",

@@ -8,6 +8,7 @@
     "package.json": "./package.json"
   },
   "scripts": {
+    "npm-check": "npx npm-check-updates -u",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -22,11 +23,11 @@
   "author": "cyberuls@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^5.1.0",
+    "chalk": "^5.2.0",
     "commander": "^9.4.1",
-    "inquirer": "^9.1.2",
+    "inquirer": "^9.1.4",
     "install": "^0.13.0",
-    "npm": "^8.19.2",
+    "npm": "^9.2.0",
     "rimraf": "^3.0.2"
   }
 }

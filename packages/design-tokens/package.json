@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
+    "npm-check": "npx npm-check-updates -u",
     "build:style": "node scripts/build-style.js",
     "build:all": "node scripts/build-all.js",
     "watch": "npm run build && chokidar  \"tokens/**/*.js*\" -c \"npm run build\"",
@@ -34,7 +35,7 @@
   "author": "easylogic",
   "license": "MIT",
   "devDependencies": {
-    "@divriots/style-dictionary-to-figma": "^0.3.0",
+    "@divriots/style-dictionary-to-figma": "^0.4.0",
     "chokidar-cli": "^3.0.0",
     "style-dictionary": "^3.7.1"
   }

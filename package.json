@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "npm-check": "turbo run npm-check --parallel",
     "dev": "turbo run dev --parallel --profile",
     "ssr:dev": "turbo run ssr:dev --parallel",
     "design:dev": "turbo run design:dev --parallel",
