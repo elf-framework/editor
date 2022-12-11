@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.103
+
+### Patch Changes
+
+- modify to remove key in keyboard manger
+
 ## 0.0.99
 
 ### Patch Changes

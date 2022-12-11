@@ -8,7 +8,7 @@ const j = {
 }, R = {
   command: "keymap.keyup",
   execute: function(s, t) {
-    s.shortcuts && s.shortcuts.execute(t, "keyup");
+    s.keyboard.remove(t.code, t.keyCode), s.shortcuts && s.shortcuts.execute(t, "keyup");
   }
 }, D = {
   command: "toggle.theme",
@@ -180,7 +180,7 @@ class q {
     this.codeSet.has(t) === !1 && this.codeSet.add(t), this.keyCodeSet.has(e) === !1 && this.keyCodeSet.add(e), this.event = i;
   }
   remove(t, e) {
-    this.codeSet.delete(t), this.keyCodeSet.delete(e);
+    this.codeSet.delete(t), this.keyCodeSet.delete(e), this.event = {};
   }
   hasKey(t) {
     return this.codeSet.has(t) || this.keyCodeSet.has(t);

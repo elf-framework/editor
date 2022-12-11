@@ -27,6 +27,8 @@ export class KeyBoardManager {
   remove(key, keyCode) {
     this.codeSet.delete(key);
     this.keyCodeSet.delete(keyCode);
+
+    this.event = {};
   }
 
   /**
