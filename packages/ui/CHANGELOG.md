@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.104
+
+### Patch Changes
+
+- add onDblClick event for InputEditor
+
 ## 0.0.102
 
 ### Patch Changes

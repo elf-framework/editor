@@ -2915,7 +2915,17 @@ var __privateMethod = (obj, member, method) => {
         onSelect: this.props.onSelect,
         onPaste: this.props.onPaste,
         onCut: this.props.onCut,
-        onCopy: this.props.onCopy
+        onCopy: this.props.onCopy,
+        onClick: this.props.onClick,
+        onDblClick: this.props.onDblClick,
+        onMouseDown: this.props.onMouseDown,
+        onMouseUp: this.props.onMouseUp,
+        onMouseEnter: this.props.onMouseEnter,
+        onMouseLeave: this.props.onMouseLeave,
+        onMouseOver: this.props.onMouseOver,
+        onMouseOut: this.props.onMouseOut,
+        onMouseMove: this.props.onMouseMove,
+        onContextMenu: this.props.onContextMenu
       };
       const properties = {
         type,
