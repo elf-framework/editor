@@ -1,52 +1,114 @@
-import { isFunction as g, isObject as b, isBoolean as k, isString as w, VNode as T, isArray as v, createElementJsx as f, useStore as x, UIElement as K, useComponentRender as A, useMemo as L, classnames as U, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as m, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
+import { isFunction as f, isObject as E, isBoolean as k, isString as I, VNode as T, isArray as v, createElementJsx as g, useStore as x, UIElement as L, useComponentRender as K, useMemo as A, classnames as U, SUBSCRIBE_SELF as M, SUBSCRIBE as O, KEYDOWN as P, IF as m, KEYUP as z, RESIZE as $, DEBOUNCE as B } from "@elf-framework/sapa";
 import { View as F } from "@elf-framework/ui";
-const j = {
+const V = {
+  command: "editor.layout.toggle.bottom",
+  execute: function(s) {
+    var t = s.configs.get("editor.layout.show.bottom");
+    s.configs.set("editor.layout.show.bottom", !t);
+  }
+}, R = {
+  command: "editor.layout.toggle.left",
+  execute: function(s) {
+    var t = s.configs.get("editor.layout.show.left");
+    s.configs.set("editor.layout.show.left", !t);
+  }
+}, j = {
+  command: "editor.layout.toggle.right",
+  execute: function(s) {
+    var t = s.configs.get("editor.layout.show.right");
+    s.configs.set("editor.layout.show.right", !t);
+  }
+}, D = {
+  command: "editor.layout.toggle.top",
+  execute: function(s) {
+    var t = s.configs.get("editor.layout.show.top");
+    s.configs.set("editor.layout.show.top", !t);
+  }
+}, N = {
   command: "keymap.keydown",
   execute: function(s, t) {
     s.keyboard.add(t.code, t.keyCode, t), s.shortcuts && s.shortcuts.execute(t, "keydown");
   }
-}, R = {
+}, G = {
   command: "keymap.keyup",
   execute: function(s, t) {
     s.keyboard.remove(t.code, t.keyCode), s.shortcuts && s.shortcuts.execute(t, "keyup");
   }
-}, D = {
+}, W = {
   command: "toggle.theme",
   execute: function(s) {
     var t = s.configs.get("editor.theme");
     s.configs.set("editor.theme", t === "light" ? "dark" : "light");
   }
-}, V = [j, R, D], N = {
+}, H = [
+  N,
+  G,
+  W,
+  D,
+  j,
+  R,
+  V
+], _ = {
+  key: "editor.layout.show.bottom",
+  defaultValue: !0,
+  title: "Show bottom panel in layout ",
+  description: "Show bottom panel in layout",
+  type: "boolean"
+}, q = {
+  key: "editor.layout.show.left",
+  defaultValue: !0,
+  title: "Show left panel in layout ",
+  description: "Show left panel in layout",
+  type: "boolean"
+}, Y = {
+  key: "editor.layout.show.right",
+  defaultValue: !0,
+  title: "Show right panel in layout ",
+  description: "Show right panel in layout",
+  type: "boolean"
+}, X = {
+  key: "editor.layout.show.top",
+  defaultValue: !0,
+  title: "Show top panel in layout ",
+  description: "Show top panel in layout",
+  type: "boolean"
+}, J = {
   key: "editor.theme",
   defaultValue: "light",
   title: "Editor Theme ",
   description: "Set editor's theme",
   type: "string"
-}, G = [N];
-class W {
+}, Z = [
+  J,
+  X,
+  q,
+  Y,
+  _
+];
+class Q {
   constructor(t) {
     this.editorContext = t, this.localCommands = {};
   }
   loadCommands(t = {}) {
     Object.keys(t).forEach((e) => {
-      g(t[e]) ? this.registerCommand(e, t[e]) : this.registerCommand(t[e]);
+      f(t[e]) ? this.registerCommand(e, t[e]) : this.registerCommand(t[e]);
     });
   }
   registerCommand(t, e) {
     if (this.localCommands[t])
       throw new Error(`command ${t} is already registered`);
     if (arguments.length === 2) {
-      const i = (...n) => e.call(this, this.editorContext, ...n);
+      const i = (...o) => e.call(this, this.editorContext, ...o);
       i.source = t, this.localCommands[t] = i;
-    } else if (b(t)) {
+    } else if (E(t)) {
       if (!t.command)
         throw new Error("command is required", t);
-      if (!g(t.execute))
+      if (!f(t.execute))
         throw new Error("execute function is required", t);
-      const i = (...n) => t.execute.call(
+      const i = (...o) => t.execute.call(
         t,
         this.editorContext,
-        ...n
+        ...o
       );
       i.source = t.command, this.localCommands[t.command] = i;
     }
@@ -67,7 +129,7 @@ class W {
     return !!this.getCallback(t);
   }
 }
-class H {
+class tt {
   constructor(t) {
     this.editorContext = t, this.configList = [], this.config = /* @__PURE__ */ new Map();
   }
@@ -83,12 +145,12 @@ class H {
     i !== e && (this.config.set(t, e), this.editorContext.emit("config:" + t, e, i));
   }
   push(t, e) {
-    const n = this.get(t).length;
-    return this.setIndexValue(t, n, e), n;
+    const o = this.get(t).length;
+    return this.setIndexValue(t, o, e), o;
   }
   setIndexValue(t, e, i) {
-    const n = this.get(t);
-    n[e] = i, this.set(t, [...n]);
+    const o = this.get(t);
+    o[e] = i, this.set(t, [...o]);
   }
   getIndexValue(t, e) {
     return this.get(t)[e];
@@ -137,12 +199,12 @@ class H {
     this.config.set(t.key, t.defaultValue), this.configList.push(t);
   }
   updateConfig(t, e = !1) {
-    Object.entries(t).forEach(([i, n]) => {
-      e ? this.set(i, n) : this.config.set(i, n);
+    Object.entries(t).forEach(([i, o]) => {
+      e ? this.set(i, o) : this.config.set(i, o);
     });
   }
 }
-class _ {
+class et {
   constructor(t) {
     this.editorContext = t, this.locales = {}, this.fallbackLang = "en_US";
   }
@@ -153,14 +215,14 @@ class _ {
     this.fallbackLang = t;
   }
   get(t, e = {}, i = void 0) {
-    var c, u;
-    const n = this.getLang(i), r = ((c = this.locales[n]) == null ? void 0 : c[t]) || ((u = this.locales[this.fallbackLang]) == null ? void 0 : u[t]) || t || void 0;
-    if (g(r))
-      return r(e);
+    var l, u;
+    const o = this.getLang(i), n = ((l = this.locales[o]) == null ? void 0 : l[t]) || ((u = this.locales[this.fallbackLang]) == null ? void 0 : u[t]) || t || void 0;
+    if (f(n))
+      return n(e);
     {
-      let a = r;
-      return t === a ? t.split(".").pop() : (Object.entries(e).forEach(([S, I]) => {
-        a = a.replace(new RegExp(`{${S}}`, "ig"), I);
+      let a = n;
+      return t === a ? t.split(".").pop() : (Object.entries(e).forEach(([S, b]) => {
+        a = a.replace(new RegExp(`{${S}}`, "ig"), b);
       }), a);
     }
   }
@@ -172,7 +234,7 @@ class _ {
     this.locales[t] || (this.locales[t] = {}), Object.assign(this.locales[t], e);
   }
 }
-class q {
+class it {
   constructor(t) {
     this.editorContext = t, this.codeSet = /* @__PURE__ */ new Set(), this.keyCodeSet = /* @__PURE__ */ new Set(), this.event = {};
   }
@@ -201,7 +263,7 @@ class q {
     return Boolean(this.event.metaKey);
   }
 }
-class Y {
+class st {
   constructor(t, e, i) {
     this.editor = t, this.callback = e, this.options = i, this.isActivated = !1, this.ret = null;
   }
@@ -216,12 +278,12 @@ class Y {
     this.isActivated = !1;
   }
 }
-class X {
+class ot {
   constructor(t) {
     this.editorContext = t, this.plugins = [];
   }
   registerPlugin(t, e = {}) {
-    this.plugins.push(new Y(this.editorContext, t, e));
+    this.plugins.push(new st(this.editorContext, t, e));
   }
   async initializePlugin() {
     return await Promise.all(
@@ -239,13 +301,13 @@ class X {
     await this.initializePlugin();
   }
 }
-let l = {
+let c = {
   name: void 0
 };
-function C() {
-  return l.name === void 0 && (window.navigator.appVersion.indexOf("Win") != -1 ? l.name = "win" : window.navigator.appVersion.indexOf("Mac") != -1 ? l.name = "mac" : window.navigator.appVersion.indexOf("X11") != -1 ? l.name = "linux" : l.name = ""), l.name;
+function y() {
+  return c.name === void 0 && (window.navigator.appVersion.indexOf("Win") != -1 ? c.name = "win" : window.navigator.appVersion.indexOf("Mac") != -1 ? c.name = "mac" : window.navigator.appVersion.indexOf("X11") != -1 ? c.name = "linux" : c.name = ""), c.name;
 }
-const J = {
+const nt = {
   backspace: 8,
   tab: 9,
   enter: 13,
@@ -340,8 +402,8 @@ const J = {
   "'": 222,
   altgr: 225
 };
-C();
-const o = {
+y();
+const r = {
   ALT: "ALT",
   CMD: "CMD",
   META: "META",
@@ -351,12 +413,12 @@ const o = {
   BACKSPACE: "BACKSPACE"
 };
 function p(s) {
-  return J[`${s}`.toLowerCase()] || s;
+  return nt[`${s}`.toLowerCase()] || s;
 }
 function d(...s) {
   return s.filter(Boolean).join("+");
 }
-class Z {
+class rt {
   constructor(t) {
     this.editorContext = t, this.loadShortCuts();
   }
@@ -370,7 +432,7 @@ class Z {
     return typeof t == "function" ? (...e) => t(this.editorContext, ...e) : t;
   }
   registerShortcut(t) {
-    const e = C(), i = {
+    const e = y(), i = {
       key: "",
       args: [],
       eventType: "keydown",
@@ -392,9 +454,9 @@ class Z {
   makeWhenFunction(t, e) {
     if (k(e) && e)
       return () => !0;
-    const i = this.editorContext, n = e.split("|").map((r) => r.trim());
-    return () => n.some(
-      (r) => i.context.modeViewManager.isCurrentMode(r)
+    const i = this.editorContext, o = e.split("|").map((n) => n.trim());
+    return () => o.some(
+      (n) => i.context.modeViewManager.isCurrentMode(n)
     );
   }
   updateCommandInfo(t) {
@@ -407,43 +469,43 @@ class Z {
   }
   splitShortCut(t) {
     var e = t.toUpperCase().split("+").map((a) => a.trim()).filter(Boolean);
-    let i = !1, n = !1, r = !1, c = !1, u = [];
+    let i = !1, o = !1, n = !1, l = !1, u = [];
     return e.forEach((a) => {
-      a.includes(o.ALT) ? i = !0 : a.includes(o.CTRL) ? n = !0 : a.includes(o.SHIFT) ? r = !0 : a.includes("CMD") || a.includes("WIN") || a.includes(o.META) ? c = !0 : u.push(a);
+      a.includes(r.ALT) ? i = !0 : a.includes(r.CTRL) ? o = !0 : a.includes(r.SHIFT) ? n = !0 : a.includes("CMD") || a.includes("WIN") || a.includes(r.META) ? l = !0 : u.push(a);
     }), d(
-      i ? o.ALT : "",
-      n ? o.CTRL : "",
-      r ? o.SHIFT : "",
-      c ? o.META : "",
+      i ? r.ALT : "",
+      o ? r.CTRL : "",
+      n ? r.SHIFT : "",
+      l ? r.META : "",
       p(u.join(""))
     );
   }
   makeKeyString(t) {
     var e, i;
     return t.key === "Shift" || t.key === "Control" || t.key === "Alt" || t.key === "Meta" ? (e = t.key) == null ? void 0 : e.toUpperCase() : d(
-      t.altKey ? o.ALT : "",
-      t.ctrlKey ? o.CTRL : "",
-      t.shiftKey ? o.SHIFT : "",
-      t.metaKey ? o.META : "",
+      t.altKey ? r.ALT : "",
+      t.ctrlKey ? r.CTRL : "",
+      t.shiftKey ? r.SHIFT : "",
+      t.metaKey ? r.META : "",
       (i = t.key) == null ? void 0 : i.toUpperCase()
     );
   }
   makeCodeString(t) {
     var e, i;
     return t.key === "Shift" || t.key === "Control" || t.key === "Alt" || t.key === "Meta" ? (e = t.code) == null ? void 0 : e.toUpperCase() : d(
-      t.altKey ? o.ALT : "",
-      t.ctrlKey ? o.CTRL : "",
-      t.shiftKey ? o.SHIFT : "",
-      t.metaKey ? o.META : "",
+      t.altKey ? r.ALT : "",
+      t.ctrlKey ? r.CTRL : "",
+      t.shiftKey ? r.SHIFT : "",
+      t.metaKey ? r.META : "",
       (i = t.code) == null ? void 0 : i.toUpperCase()
     );
   }
   makeKeyCodeString(t) {
     return t.key === "Shift" || t.key === "Control" || t.key === "Alt" || t.key === "Meta" ? t.keyCode : d(
-      t.altKey ? o.ALT : "",
-      t.ctrlKey ? o.CTRL : "",
-      t.shiftKey ? o.SHIFT : "",
-      t.metaKey ? o.META : "",
+      t.altKey ? r.ALT : "",
+      t.ctrlKey ? r.CTRL : "",
+      t.shiftKey ? r.SHIFT : "",
+      t.metaKey ? r.META : "",
       t.keyCode
     );
   }
@@ -460,21 +522,21 @@ class Z {
       this.makeCodeString(t)
     );
     if (i) {
-      const n = i.filter((r) => r.eventType === e).filter((r) => this.checkWhen(r));
-      n.length && n.forEach((r) => {
-        if (r.container) {
-          if (w(r.container)) {
-            if (!t.target.matches(r.container))
+      const o = i.filter((n) => n.eventType === e).filter((n) => this.checkWhen(n));
+      o.length && o.forEach((n) => {
+        if (n.container) {
+          if (I(n.container)) {
+            if (!t.target.matches(n.container))
               return;
-          } else if (r.container instanceof HTMLElement && !r.container.contains(t.target))
+          } else if (n.container instanceof HTMLElement && !n.container.contains(t.target))
             return;
         }
-        r.preventDefault && t.preventDefault(), r.stopPropagation && t.stopPropagation(), this.editorContext.commands.execute(r.command, ...r.args);
+        n.preventDefault && t.preventDefault(), n.stopPropagation && t.stopPropagation(), this.editorContext.commands.execute(n.command, ...n.args);
       });
     }
   }
 }
-class Q {
+class at {
   constructor(t) {
     this.editorContext = t, this.uis = {}, this.groupUis = {};
   }
@@ -489,9 +551,9 @@ class Q {
       return t;
     if (v(t)) {
       const [e, i] = t;
-      return f(e, i);
+      return g(e, i);
     }
-    return f(t);
+    return g(t);
   }
   getUI(t) {
     if (this.uis[t])
@@ -501,8 +563,8 @@ class Q {
     return Object.values(this.groupUis[t] || {}).map((i) => this.createUI(i)).filter(Boolean);
   }
 }
-const tt = "EditorContext";
-class et {
+const lt = "EditorContext";
+class ct {
   constructor(t, e = {}) {
     this.$rootEditor = t, this.$options = e, this.isPluginActivated = !1, this.initialize();
   }
@@ -511,19 +573,19 @@ class et {
       managers: t = {},
       configList: e = [],
       commands: i = [],
-      plugins: n = []
+      plugins: o = []
     } = this.$options;
-    this.initializeManagers(t), this.initializeConfigs(G), this.initializeConfigs(e), this.initializeInnerCommands(), this.initializeCommands(i), this.initializePlugins(n), this.emit("editor.initialize", this);
+    this.initializeManagers(t), this.initializeConfigs(Z), this.initializeConfigs(e), this.initializeInnerCommands(), this.initializeCommands(i), this.initializePlugins(o), this.emit("editor.initialize", this);
   }
   initializeManagers(t = {}) {
     t = {
-      configs: H,
-      commands: W,
-      plugins: X,
-      uis: Q,
-      shortcuts: Z,
-      keyboard: q,
-      i18n: _,
+      configs: tt,
+      commands: Q,
+      plugins: ot,
+      uis: at,
+      shortcuts: rt,
+      keyboard: it,
+      i18n: et,
       ...t
     }, Object.entries(t).forEach(([e, i]) => {
       if (Object.hasOwnProperty.call(this, e)) {
@@ -547,7 +609,7 @@ class et {
     this.configs.updateConfig(t);
   }
   initializeInnerCommands() {
-    this.initializeCommands(V);
+    this.initializeCommands(H);
   }
   initializeCommands(t = []) {
     t.forEach((e) => {
@@ -567,7 +629,7 @@ class et {
     return this.$rootEditor.$store;
   }
   emit(t, ...e) {
-    this.$store.source = tt, this.$store.emit(t, ...e);
+    this.$store.source = lt, this.$store.emit(t, ...e);
   }
   registerCommand(t) {
     this.commands.registerCommand(t);
@@ -605,8 +667,8 @@ class et {
     return this.configs.get(t);
   }
 }
-const y = "editor", E = "editorOption";
-class ot {
+const C = "editor", w = "editorOption";
+class ft {
   constructor(t, e = {}) {
     this.editor = t, this.props = e;
   }
@@ -620,31 +682,31 @@ class ot {
   }
 }
 function h() {
-  return x(y);
+  return x(C);
 }
-function at(s) {
+function mt(s) {
   var t;
-  return (t = x(E)) == null ? void 0 : t[s];
+  return (t = x(w)) == null ? void 0 : t[s];
 }
-function ct(s) {
+function pt(s) {
   var t, e;
   return (e = (t = h()) == null ? void 0 : t.configs) == null ? void 0 : e.get(s);
 }
-function lt(s, t) {
+function xt(s, t) {
   var e, i;
   return (i = (e = h()) == null ? void 0 : e.configs) == null ? void 0 : i.set(s, t);
 }
-async function ht(s, ...t) {
+async function yt(s, ...t) {
   var e, i;
   return await ((i = (e = h()) == null ? void 0 : e.commands) == null ? void 0 : i.emit(s, ...t));
 }
-function ut(s, t = {}) {
+function Ct(s, t = {}) {
   var e, i;
   return (i = (e = h()) == null ? void 0 : e.i18n) == null ? void 0 : i.get(s, t);
 }
-class it extends K {
+class ht extends L {
   initialize() {
-    super.initialize(), this.$editor = new et(this, this.props), this.$store.set(y, this.$editor), this.$store.set(E, this.props);
+    super.initialize(), this.$editor = new ct(this, this.props), this.$store.set(C, this.$editor), this.$store.set(w, this.props);
     const { configs: t } = this.props;
     this.$editor.updateConfigs(t), this.activate();
   }
@@ -652,22 +714,22 @@ class it extends K {
     await this.$editor.activate(), this.emit("editor.plugin.activated"), this.trigger("editor.plugin.activated");
   }
 }
-const st = ["TEXTAREA", "INPUT", "SELECT"];
-class dt extends it {
+const ut = ["TEXTAREA", "INPUT", "SELECT"];
+class wt extends ht {
   template() {
     const { editorClass: t, fullScreen: e } = this.props;
-    A("editor.plugin.activated");
-    const i = h(), n = L(() => U("elf--base-editor", {
+    K("editor.plugin.activated");
+    const i = h(), o = A(() => U("elf--base-editor", {
       "full-screen": e,
       [t]: !0
     }), [t, e]);
-    return /* @__PURE__ */ f("div", {
-      class: n
+    return /* @__PURE__ */ g("div", {
+      class: o
     }, i.isPluginActivated ? i.getUIList("renderView") : void 0);
   }
   isNotFormElement(t) {
     var e = t.target.tagName;
-    return st.includes(e) ? !1 : t.target.getAttribute("contenteditable") !== "true";
+    return ut.includes(e) ? !1 : t.target.getAttribute("contenteditable") !== "true";
   }
   updateTheme() {
     const t = this.$editor.configs.get("editor.theme") !== "light";
@@ -689,30 +751,30 @@ class dt extends it {
     this.$editor.emit("resize.window");
   }
 }
-function ft({
+function St({
   views: s = [],
   groups: t = [],
   as: e = "div",
   style: i = {}
 }) {
-  const n = h(), r = [
-    ...s.map((c) => n.getUI(c)),
-    ...t.map((c) => n.getGroupUI(c))
+  const o = h(), n = [
+    ...s.map((l) => o.getUI(l)),
+    ...t.map((l) => o.getGroupUI(l))
   ].flat(1 / 0).filter(Boolean);
-  return /* @__PURE__ */ f(F, {
+  return /* @__PURE__ */ g(F, {
     as: e,
     style: i
-  }, r);
+  }, n);
 }
 export {
-  dt as BaseEditor,
-  it as Editor,
-  ot as EditorPlugin,
-  ft as InjectView,
-  ht as useCommand,
-  ct as useConfig,
+  wt as BaseEditor,
+  ht as Editor,
+  ft as EditorPlugin,
+  St as InjectView,
+  yt as useCommand,
+  pt as useConfig,
   h as useEditor,
-  at as useEditorOption,
-  ut as useI18n,
-  lt as useSetConfig
+  mt as useEditorOption,
+  Ct as useI18n,
+  xt as useSetConfig
 };

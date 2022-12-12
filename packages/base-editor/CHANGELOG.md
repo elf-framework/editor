@@ -1,5 +1,12 @@
 # @elf-framework/base-editor
 
+## 0.0.109
+
+### Patch Changes
+
+- support commands: editor.layout.toggle.xxx
+  support configs: editor.layout.show.xxxx
+
 ## 0.0.103
 
 ### Patch Changes

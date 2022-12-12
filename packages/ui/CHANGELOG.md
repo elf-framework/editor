@@ -1,5 +1,13 @@
 # @elf-framework/ui
 
+## 0.0.108
+
+### Patch Changes
+
+- fixed AppLayoutItem resize bug
+  modify hoverable property in ToolsCustomItem
+  fixed virtual-scroll rendering
+
 ## 0.0.106
 
 ### Patch Changes

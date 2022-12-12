@@ -27,7 +27,7 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
-import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, useRef, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent } from "@elf-framework/sapa";
+import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, useRef, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent, useRender } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 const style = "";
 function usePointerStart(...args) {
@@ -1882,7 +1882,13 @@ registerComponent("ToolsItem", ToolsItem);
 class ToolsCustomItem extends ToolsItem {
   template() {
     var _a, _b;
-    return /* @__PURE__ */ createElementJsx("div", { class: "elf--tools-item custom hoverable" }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
+    const { hoverable = true } = this.props;
+    const localClass = useMemo(() => {
+      return classnames("elf--tools-item custom", {
+        hoverable
+      });
+    }, [hoverable]);
+    return /* @__PURE__ */ createElementJsx("div", { class: localClass }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a, this));
   }
 }
 registerComponent("tools-custom-item", ToolsCustomItem);
@@ -4059,7 +4065,7 @@ class VirtualScroll extends UIElement {
     const { itemHeight, items, overscanRowCount = 10 } = this.props;
     const { width, height, isRenderingItems } = this.state;
     if (!isRenderingItems) {
-      if (!width)
+      if (typeof width !== "number")
         return [];
       const scrollHeight = items.length * itemHeight;
       const itemCount = Math.floor(height / itemHeight);
@@ -5984,6 +5990,22 @@ function AppLayoutItem({
     setHeight(itemHeight);
     isFunction(onResizeEnd) && onResizeEnd(itemWidth, itemHeight);
   }, [itemWidth, itemHeight, setWidth, setHeight]);
+  useEffect(() => {
+    pendingComponent(this);
+    let hasChanged = false;
+    if (itemWidth != width) {
+      setLastWidth(width);
+      hasChanged = true;
+    }
+    if (itemHeight != height) {
+      setLastHeight(height);
+      hasChanged = true;
+    }
+    removePendingComponent(this);
+    if (hasChanged) {
+      useRender(this);
+    }
+  }, [itemWidth, itemHeight, width, height]);
   return /* @__PURE__ */ createElementJsx(
     "div",
     {

@@ -111,7 +111,7 @@ export class VirtualScroll extends UIElement {
     const { width, height, isRenderingItems } = this.state;
 
     if (!isRenderingItems) {
-      if (!width) return [];
+      if (typeof width !== "number") return [];
 
       const scrollHeight = items.length * itemHeight;
       const itemCount = Math.floor(height / itemHeight);

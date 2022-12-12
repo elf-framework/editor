@@ -1,5 +1,12 @@
 # editor-dev
 
+## 1.0.7
+
+### Patch Changes
+
+- add CustomMenuItem to center toolbar
+  add test code for layout resize
+
 ## 1.0.6
 
 ### Patch Changes

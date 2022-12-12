@@ -1884,7 +1884,13 @@ var __privateMethod = (obj, member, method) => {
   class ToolsCustomItem extends ToolsItem {
     template() {
       var _a, _b;
-      return /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--tools-item custom hoverable" }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
+      const { hoverable = true } = this.props;
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames("elf--tools-item custom", {
+          hoverable
+        });
+      }, [hoverable]);
+      return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a, this));
     }
   }
   registerComponent("tools-custom-item", ToolsCustomItem);
@@ -4061,7 +4067,7 @@ var __privateMethod = (obj, member, method) => {
       const { itemHeight, items, overscanRowCount = 10 } = this.props;
       const { width, height, isRenderingItems } = this.state;
       if (!isRenderingItems) {
-        if (!width)
+        if (typeof width !== "number")
           return [];
         const scrollHeight = items.length * itemHeight;
         const itemCount = Math.floor(height / itemHeight);
@@ -5986,6 +5992,22 @@ var __privateMethod = (obj, member, method) => {
       setHeight(itemHeight);
       sapa.isFunction(onResizeEnd) && onResizeEnd(itemWidth, itemHeight);
     }, [itemWidth, itemHeight, setWidth, setHeight]);
+    sapa.useEffect(() => {
+      sapa.pendingComponent(this);
+      let hasChanged = false;
+      if (itemWidth != width) {
+        setLastWidth(width);
+        hasChanged = true;
+      }
+      if (itemHeight != height) {
+        setLastHeight(height);
+        hasChanged = true;
+      }
+      sapa.removePendingComponent(this);
+      if (hasChanged) {
+        sapa.useRender(this);
+      }
+    }, [itemWidth, itemHeight, width, height]);
     return /* @__PURE__ */ sapa.createElementJsx(
       "div",
       {

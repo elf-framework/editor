@@ -1,29 +1,44 @@
+import { useComponentRender } from "@elf-framework/sapa";
 import { AppLayout, AppLayoutItem } from "@elf-framework/ui";
 
 export async function RenderPlugin(editor) {
   editor.registerGroupUI("renderView", {
-    renderView: () => (
-      <AppLayout>
-        <AppLayoutItem direction="top" height={"auto"}>
-          {editor.getUIList("Toolbar")}
-        </AppLayoutItem>
-        <AppLayoutItem
-          direction="left"
-          width={280}
-          minWidth={280}
-          maxWidth={350}
-          resizable={true}
-        >
-          {editor.getUIList("left-panel")}
-        </AppLayoutItem>
-        <AppLayoutItem direction="right" width={300}>
-          {editor.getUIList("right-panel")}
-        </AppLayoutItem>
-        <AppLayoutItem direction="center">
-          {editor.getUIList("center-panel")}
-        </AppLayoutItem>
-      </AppLayout>
-    ),
+    renderView: () => {
+      useComponentRender("config:editor.layout.show.left");
+      useComponentRender("config:editor.layout.show.right");
+      useComponentRender("config:editor.layout.show.top");
+      useComponentRender("config:editor.layout.show.bottom");
+
+      const isShowTop = editor.configs.get("editor.layout.show.top");
+      const isShowLeft = editor.configs.get("editor.layout.show.left");
+      const isShowRight = editor.configs.get("editor.layout.show.right");
+      // const isShowBottom = editor.configs.get("editor.layout.show.bottom");
+
+      return (
+        <AppLayout>
+          <AppLayoutItem direction="top" height={isShowTop ? "auto" : 0}>
+            {editor.getUIList("Toolbar")}
+          </AppLayoutItem>
+          <AppLayoutItem
+            direction="left"
+            width={isShowLeft ? 280 : 0}
+            maxWidth={350}
+            resizable={true}
+            style={{
+              overflow: "hidden",
+            }}
+          >
+            {editor.getUIList("left-panel")}
+          </AppLayoutItem>
+          <AppLayoutItem direction="right" width={isShowRight ? 300 : 0}>
+            {editor.getUIList("right-panel")}
+          </AppLayoutItem>
+          <AppLayoutItem direction="center">
+            {editor.getUIList("center-panel")}
+          </AppLayoutItem>
+        </AppLayout>
+      );
+    },
     tooltipView: () => undefined,
   });
 }

@@ -520,6 +520,7 @@ declare module "@elf-framework/ui" {
 
   export type ToolsCustomItemType = {
     type: "custom";
+    hoverable?: boolean;
     render?: (item: ToolsCustomItemType) => UIElement;
   };
 

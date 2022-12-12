@@ -1,13 +1,19 @@
+import { classnames, useMemo } from "@elf-framework/sapa";
+
 import { registerComponent } from "../../../utils/component";
 import { ToolsItem } from "./ToolsItem";
 
 export class ToolsCustomItem extends ToolsItem {
   template() {
-    return (
-      <div class="elf--tools-item custom hoverable">
-        {this.props.render?.()}
-      </div>
-    );
+    const { hoverable = true } = this.props;
+
+    const localClass = useMemo(() => {
+      return classnames("elf--tools-item custom", {
+        hoverable,
+      });
+    }, [hoverable]);
+
+    return <div class={localClass}>{this.props.render?.(this)}</div>;
   }
 }
 

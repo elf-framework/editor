@@ -3,6 +3,8 @@ import {
   pendingComponent,
   removePendingComponent,
   useCallback,
+  useEffect,
+  useRender,
   useState,
 } from "@elf-framework/sapa";
 
@@ -74,6 +76,27 @@ export function AppLayoutItem({
     setHeight(itemHeight);
     isFunction(onResizeEnd) && onResizeEnd(itemWidth, itemHeight);
   }, [itemWidth, itemHeight, setWidth, setHeight]);
+
+  useEffect(() => {
+    pendingComponent(this);
+
+    let hasChanged = false;
+    if (itemWidth != width) {
+      setLastWidth(width);
+      hasChanged = true;
+    }
+
+    if (itemHeight != height) {
+      setLastHeight(height);
+      hasChanged = true;
+    }
+
+    removePendingComponent(this);
+
+    if (hasChanged) {
+      useRender(this);
+    }
+  }, [itemWidth, itemHeight, width, height]);
 
   return (
     <div
