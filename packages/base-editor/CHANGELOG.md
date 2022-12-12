@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 0.0.111
+
+### Patch Changes
+
+- modify button side padding by size
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.111
+
 ## 0.0.109
 
 ### Patch Changes

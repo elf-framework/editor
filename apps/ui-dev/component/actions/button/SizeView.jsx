@@ -1,5 +1,5 @@
 import SettingsFilled from "@elf-framework/icon/SettingsFilled";
-import { Grid, RoundButton, VBox } from "@elf-framework/ui";
+import { Button, Grid, RoundButton, VBox } from "@elf-framework/ui";
 
 export function SizeView() {
   return (
@@ -9,7 +9,7 @@ export function SizeView() {
       >
         {["extra-small", "small", "medium", "large", "extra-large"].map(
           (size) => (
-            <Grid columns={[1, 2]} gap={20}>
+            <Grid columns={[1, 1, 1]} gap={20}>
               <div
                 style={{
                   display: "flex",
@@ -23,6 +23,11 @@ export function SizeView() {
                 <RoundButton size={size} variant="primary">
                   <SettingsFilled /> Share
                 </RoundButton>
+              </div>
+              <div>
+                <Button size={size} variant="primary">
+                  <SettingsFilled /> Share
+                </Button>
               </div>
             </Grid>
           )
