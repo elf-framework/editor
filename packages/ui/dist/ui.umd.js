@@ -1827,14 +1827,21 @@ var __privateMethod = (obj, member, method) => {
       };
     }
     template() {
-      const { title = "", icon, style: style2 = {}, tooltip: tooltip2 } = this.props;
+      const {
+        title = "",
+        icon,
+        style: style2 = {},
+        tooltip: tooltip2,
+        hoverable = true
+      } = this.props;
       const isIconOnly = !title;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--tools-item", {
           selected: this.state.selected ? true : void 0,
-          "icon-only": isIconOnly
+          "icon-only": isIconOnly,
+          hoverable
         });
-      }, [this.state.selected, isIconOnly]);
+      }, [this.state.selected, isIconOnly, hoverable]);
       const buttonComponent = /* @__PURE__ */ sapa.createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ sapa.createElementJsx(Flex, { style: { gap: 10 } }, [
         icon ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "icon" }, sapa.isFunction(icon) ? icon() : icon) : void 0,
         title ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "menu-title" }, sapa.isFunction(title) ? title() : title) : void 0
@@ -1877,7 +1884,7 @@ var __privateMethod = (obj, member, method) => {
   class ToolsCustomItem extends ToolsItem {
     template() {
       var _a, _b;
-      return /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--tools-item custom" }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
+      return /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--tools-item custom hoverable" }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a));
     }
   }
   registerComponent("tools-custom-item", ToolsCustomItem);
@@ -1885,40 +1892,27 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("ToolsCustomItem", ToolsCustomItem);
   class ToolsMenuItem extends ToolsItem {
     initState() {
-      const {
-        title = "",
-        icon,
-        selected,
-        disabled,
-        opened,
-        direction,
-        menuStyle,
-        noArrow = false
-      } = this.props;
+      const { selected, opened } = this.props;
       return {
-        title,
-        icon,
         selected,
         opened,
-        direction,
-        disabled,
-        menuStyle,
-        noArrow,
         rootClose: this.close.bind(this)
       };
     }
     template() {
+      const { selected, opened = false } = this.state;
       const {
+        direction = "left",
+        menuStyle,
+        noArrow = false,
         title = "",
         icon,
         disabled,
-        selected,
-        opened = false,
-        direction = "left",
-        menuStyle,
-        noArrow = false
-      } = this.state;
-      const { style: style2 = {}, items, class: className } = this.props;
+        style: style2 = {},
+        items,
+        class: className,
+        hoverable = true
+      } = this.props;
       const hasItems = items.length > 0;
       const isSelected = selected ? sapa.isFunction(selected) ? selected() : selected : void 0;
       const localClass = sapa.useMemo(() => {
@@ -1926,11 +1920,12 @@ var __privateMethod = (obj, member, method) => {
           "elf--tools-item",
           {
             selected: isSelected,
-            "has-items": hasItems
+            "has-items": hasItems,
+            hoverable
           },
           className
         );
-      }, [isSelected, hasItems, className]);
+      }, [isSelected, hasItems, className, hoverable]);
       return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass, disabled, style: style2 }, /* @__PURE__ */ sapa.createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ sapa.createElementJsx(Flex, { style: { columnGap: 4 } }, [
         icon ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "icon" }, sapa.isFunction(icon) ? icon() : icon) : void 0,
         title ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "menu-title" }, sapa.isFunction(title) ? title() : title) : void 0

@@ -1,5 +1,17 @@
 # @elf-framework/ui
 
+## 0.0.106
+
+### Patch Changes
+
+- support hoverable=false tools item in menu
+
+## 0.0.105
+
+### Patch Changes
+
+- update variant property in TooltipProps interface
+
 ## 0.0.104
 
 ### Patch Changes

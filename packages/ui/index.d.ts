@@ -494,6 +494,7 @@ declare module "@elf-framework/ui" {
     selected?: boolean;
     tooltip?: string | TooltipProps;
     selectedType?: "primary" | "secondary";
+    hoverable?: boolean;
     events?: string[];
     onClick?: (event: PointerEvent) => void;
   };
@@ -658,6 +659,7 @@ declare module "@elf-framework/ui" {
     style: TooltipStyle & CommonStyle;
     hideArrow: boolean;
     position?: "relative" | "absolute" | "fixed";
+    variant?: VariantType;
   }
   export class Tooltip extends UIElement {
     props: TooltipProps & CommonStyle;

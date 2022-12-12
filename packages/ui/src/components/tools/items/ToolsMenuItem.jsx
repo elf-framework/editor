@@ -17,42 +17,29 @@ import { ToolsItem } from "./ToolsItem";
 
 export class ToolsMenuItem extends ToolsItem {
   initState() {
-    const {
-      title = "",
-      icon,
-      selected,
-      disabled,
-      opened,
-      direction,
-      menuStyle,
-      noArrow = false,
-    } = this.props;
+    const { selected, opened } = this.props;
 
     return {
-      title,
-      icon,
       selected,
       opened,
-      direction,
-      disabled,
-      menuStyle,
-      noArrow,
       rootClose: this.close.bind(this),
     };
   }
 
   template() {
+    const { selected, opened = false } = this.state;
     const {
-      title = "",
-      icon,
-      disabled,
-      selected,
-      opened = false,
       direction = "left",
       menuStyle,
       noArrow = false,
-    } = this.state;
-    const { style = {}, items, class: className } = this.props;
+      title = "",
+      icon,
+      disabled,
+      style = {},
+      items,
+      class: className,
+      hoverable = true,
+    } = this.props;
 
     const hasItems = items.length > 0;
     const isSelected = selected
@@ -67,10 +54,11 @@ export class ToolsMenuItem extends ToolsItem {
         {
           selected: isSelected,
           "has-items": hasItems,
+          hoverable,
         },
         className
       );
-    }, [isSelected, hasItems, className]);
+    }, [isSelected, hasItems, className, hoverable]);
 
     return (
       <div class={localClass} disabled={disabled} style={style}>

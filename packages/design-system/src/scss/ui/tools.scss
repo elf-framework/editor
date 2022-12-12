@@ -191,13 +191,13 @@
       }
     }
 
-    &:hover,
-    &.hover {
+    &:hover.hoverable,
+    &.hover.hoverable {
       --elf--tools-background-color: var(--elf--tools-hover-background-color);
     }
 
-    &:active,
-    &.active {
+    &:active.hoverable,
+    &.active.hoverable {
       --elf--tools-background-color: var(--elf--tools-active-background-color);
     }    
 

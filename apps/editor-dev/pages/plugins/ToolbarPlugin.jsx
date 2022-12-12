@@ -69,6 +69,16 @@ export function ToolbarPlugin(editor) {
     ],
   };
 
+  const centerMenu = {
+    items: [
+      {
+        type: "item",
+        title: "hoverable false tools item",
+        hoverable: false,
+      },
+    ],
+  };
+
   const rightMenu = {
     items: [
       {
@@ -90,7 +100,7 @@ export function ToolbarPlugin(editor) {
     Toolbar: [
       Toolbar,
       {
-        items: [leftMenu, rightMenu],
+        items: [leftMenu, centerMenu, rightMenu],
         style: {
           height: 40,
         },

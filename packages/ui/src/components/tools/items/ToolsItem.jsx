@@ -33,15 +33,22 @@ export class ToolsItem extends UIElement {
   }
 
   template() {
-    const { title = "", icon, style = {}, tooltip } = this.props;
+    const {
+      title = "",
+      icon,
+      style = {},
+      tooltip,
+      hoverable = true,
+    } = this.props;
 
     const isIconOnly = !title;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
         selected: this.state.selected ? true : undefined,
         "icon-only": isIconOnly,
+        hoverable,
       });
-    }, [this.state.selected, isIconOnly]);
+    }, [this.state.selected, isIconOnly, hoverable]);
 
     const buttonComponent = (
       <button type="button" class="tools-button">
