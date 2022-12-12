@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.112
+
+### Patch Changes
+
+- update button style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.112
+
 ## 0.0.110
 
 ### Patch Changes
