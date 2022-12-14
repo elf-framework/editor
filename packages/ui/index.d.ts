@@ -28,6 +28,60 @@ declare module "@elf-framework/ui" {
     upAction: () => unknown
   ): void;
 
+  /** utils  */
+
+  type CamelCase = string;
+  type KebabCase = string;
+
+  /**
+   * convert style key to css key (camelCase to kebab-case)
+   *
+   * backgroundColor -> background-color
+   *
+   */
+  export function convertStyleKey(key: CamelCase): KebabCase;
+
+  interface CSSTargetProperties {
+    [key: string]: boolean;
+  }
+
+  interface CSSVariableProperties {
+    [key: string]: string;
+  }
+
+  /**
+   * prefixed style key
+   *
+   * makeCssVariablePrefixMap("--elf--ui", { backgroundColor: true });
+   * =>
+   * {
+   *  backgroundColor: "--elf--ui-background-color",
+   * }
+   *
+   */
+  export function makeCssVariablePrefixMap(
+    prefix: string,
+    obj: CSSTargetProperties
+  ): CSSVariableProperties;
+
+  interface StyleProperties {
+    [key: string]: string | number;
+  }
+
+  interface StylePropertiesMap {
+    style: StyleProperties;
+    noneStyle: StyleProperties;
+  }
+
+  /**
+   * properties key 중에 style key가 있는지 확인
+   * style key 와 none style key 를 분리해서 반환
+   *
+   */
+  export function splitStyleKeyAndNoneStyleKey(
+    properties: StyleProperties
+  ): StylePropertiesMap;
+
   /** base */
   type ContentType = string | UIElement | string[] | UIElement[];
 
