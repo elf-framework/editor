@@ -247,33 +247,6 @@ var __privateMethod = (obj, member, method) => {
       }
     });
   };
-  const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
-  const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
-  const ADD_BODY_MOUSEUP = "add/body/mouseup";
-  const BODY_MOVE_EVENT = "body/move/event";
-  const FIRSTMOVE = (method = "move") => {
-    return sapa.AFTER(`bodyMouseFirstMove ${method}`);
-  };
-  const MOVE = (method = "move") => {
-    return sapa.AFTER(`bodyMouseMove ${method}`);
-  };
-  const END = (method = "end") => {
-    return sapa.AFTER(`bodyMouseUp ${method}`);
-  };
-  const _components = {};
-  function registerComponent(key, Component) {
-    if (key && Component) {
-      if (_components[key]) {
-        console.warn(
-          `Component ${key} is already registered. Rename key string for  `,
-          Component
-        );
-      } else {
-        _components[key] = Component;
-      }
-    }
-    return Component;
-  }
   const NumberStyleKeys = {
     width: true,
     height: true,
@@ -396,23 +369,6 @@ var __privateMethod = (obj, member, method) => {
     wrap: "flexWrap",
     zIndex: "zIndex"
   };
-  function convertNumberStyleValue(key, value) {
-    if (typeof value === "number") {
-      if (NumberStyleKeys[key]) {
-        value = value + "px";
-      }
-    }
-    return value;
-  }
-  function propertyMap(styles = {}, mapper = {}) {
-    const styleObj = {};
-    Object.keys(styles).forEach((key) => {
-      if (typeof styles[key] !== "undefined") {
-        styleObj[mapper[key] || key] = convertNumberStyleValue(key, styles[key]);
-      }
-    });
-    return Object.keys(styleObj).length ? styleObj : void 0;
-  }
   const styleKeys = {};
   const uppercasePattern = /([A-Z])/g;
   const convertStyleKey = (key) => {
@@ -443,6 +399,50 @@ var __privateMethod = (obj, member, method) => {
       }
     });
     return { style: style2, noneStyle };
+  }
+  function convertNumberStyleValue(key, value) {
+    if (typeof value === "number") {
+      if (NumberStyleKeys[key]) {
+        value = value + "px";
+      }
+    }
+    return value;
+  }
+  function propertyMap(styles = {}, mapper = {}) {
+    const styleObj = {};
+    Object.keys(styles).forEach((key) => {
+      if (typeof styles[key] !== "undefined") {
+        styleObj[mapper[key] || key] = convertNumberStyleValue(key, styles[key]);
+      }
+    });
+    return Object.keys(styleObj).length ? styleObj : void 0;
+  }
+  const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
+  const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
+  const ADD_BODY_MOUSEUP = "add/body/mouseup";
+  const BODY_MOVE_EVENT = "body/move/event";
+  const FIRSTMOVE = (method = "move") => {
+    return sapa.AFTER(`bodyMouseFirstMove ${method}`);
+  };
+  const MOVE = (method = "move") => {
+    return sapa.AFTER(`bodyMouseMove ${method}`);
+  };
+  const END = (method = "end") => {
+    return sapa.AFTER(`bodyMouseUp ${method}`);
+  };
+  const _components = {};
+  function registerComponent(key, Component) {
+    if (key && Component) {
+      if (_components[key]) {
+        console.warn(
+          `Component ${key} is already registered. Rename key string for  `,
+          Component
+        );
+      } else {
+        _components[key] = Component;
+      }
+    }
+    return Component;
   }
   const cssProperties$U = makeCssVariablePrefixMap("--elf--alert", {
     borderColor: true,
@@ -7532,6 +7532,11 @@ var __privateMethod = (obj, member, method) => {
   exports2.VirtualScroll = VirtualScroll;
   exports2.VirtualScrollItem = VirtualScrollItem;
   exports2.alert = alert;
+  exports2.convertNumberStyleValue = convertNumberStyleValue;
+  exports2.convertStyleKey = convertStyleKey;
+  exports2.makeCssVariablePrefixMap = makeCssVariablePrefixMap;
+  exports2.propertyMap = propertyMap;
+  exports2.splitStyleKeyAndNoneStyleKey = splitStyleKeyAndNoneStyleKey;
   exports2.toast = toast;
   exports2.tooltip = tooltip;
   exports2.usePointerStart = usePointerStart;
