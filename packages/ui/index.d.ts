@@ -29,6 +29,22 @@ declare module "@elf-framework/ui" {
   ): void;
 
   /** utils  */
+  /**
+   * convertNumberStyleValue("width", 10) => "10px"
+   */
+  export function convertNumberStyleValue(
+    key: string,
+    value: string | number
+  ): string;
+
+  interface CSSProperties {
+    [key: string]: string | number | string[] | number[];
+  }
+
+  export function propertyMap(
+    styles: CSSProperties,
+    mapper: CSSTargetProperties
+  ): CSSVariableProperties | undefined;
 
   type CamelCase = string;
   type KebabCase = string;

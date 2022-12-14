@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.115
+
+### Patch Changes
+
+- update type: propertyMap, convertNumberStyleValue
+
 ## 0.0.114
 
 ### Patch Changes
