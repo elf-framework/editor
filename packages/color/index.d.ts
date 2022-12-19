@@ -179,19 +179,19 @@ declare module "@elf-framework/color" {
   export function luminance(color: string): number;
   export function luminanceScore(luminance: number): "AAA" | "AA" | "Fail";
   export function luminanceScoreText(
-    backgroundColor,
-    textColor,
-    fontSize,
-    baseFontSize
+    backgroundColor: string,
+    textColor: string,
+    fontSize: number,
+    baseFontSize: number
   ): "PASS" | "FAIL";
 
   export function colorScore(
-    backgroundColor,
-    textColor,
-    fontSize,
-    baseFontSize
+    backgroundColor: string,
+    textColor: string,
+    fontSize: number,
+    baseFontSize: number
   ): "PASS" | "FAIL";
-}
+
   export function isColor(str: string): boolean;
 
   export function parse(

@@ -1,5 +1,11 @@
 # @elf-framework/color
 
+## 0.0.116
+
+### Patch Changes
+
+- modify index.d.ts
+
 ## 0.0.69
 
 ### Patch Changes
