@@ -6936,6 +6936,7 @@ var __privateMethod = (obj, member, method) => {
         as = "div",
         href = "#",
         full = false,
+        wide = false,
         ...extraProps
       } = this.props;
       const localClass = sapa.useMemo(() => {
@@ -6948,7 +6949,8 @@ var __privateMethod = (obj, member, method) => {
           selected,
           full,
           [size]: true,
-          "as-link": as === "link"
+          "as-link": as === "link",
+          wide
         });
       }, [
         shape,
@@ -6959,7 +6961,8 @@ var __privateMethod = (obj, member, method) => {
         selected,
         as,
         size,
-        full
+        full,
+        wide
       ]);
       const styleObject = {
         class: localClass,

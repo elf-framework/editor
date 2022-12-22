@@ -28,6 +28,7 @@ export class Card extends UIElement {
       as = "div",
       href = "#",
       full = false,
+      wide = false,
       ...extraProps
     } = this.props;
 
@@ -42,6 +43,7 @@ export class Card extends UIElement {
         full,
         [size]: true,
         "as-link": as === "link",
+        wide,
       });
     }, [
       shape,
@@ -53,6 +55,7 @@ export class Card extends UIElement {
       as,
       size,
       full,
+      wide,
     ]);
 
     const styleObject = {

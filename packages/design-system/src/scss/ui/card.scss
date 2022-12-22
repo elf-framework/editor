@@ -30,6 +30,10 @@
         --elf--card-height: 100%;
     }
 
+    &.wide {
+        --elf--card-width: 100%;
+    }
+
     > *:last-child:not(:first-child) {
         // margin-bottom: var(--elf--card-offset);
     }

@@ -1,6 +1,7 @@
 declare module "@elf-framework/ui" {
   import type { HSL, HSV, RGB } from "@elf-framework/color";
   import { UIElement, VNode } from "@elf-framework/sapa";
+  import type { ContentType } from "@elf-framework/sapa";
 
   export const ADD_BODY_FIRST_MOUSEMOVE = "add/body/first/mousemove";
   export const ADD_BODY_MOUSEMOVE = "add/body/mousemove";
@@ -43,7 +44,7 @@ declare module "@elf-framework/ui" {
 
   export function propertyMap(
     styles: CSSProperties,
-    mapper: CSSTargetProperties
+    mapper: CSSVariableProperties
   ): CSSVariableProperties | undefined;
 
   type CamelCase = string;
@@ -99,7 +100,7 @@ declare module "@elf-framework/ui" {
   ): StylePropertiesMap;
 
   /** base */
-  type ContentType = string | UIElement | string[] | UIElement[];
+  // type ContentType = string | UIElement | string[] | UIElement[];
 
   /** theme */
 
@@ -1731,6 +1732,7 @@ declare module "@elf-framework/ui" {
     as?: "div" | "link";
     href?: string;
     full?: boolean;
+    wide?: boolean;
   }
 
   export class Card extends UIElement {

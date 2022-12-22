@@ -156,6 +156,11 @@ declare module "@elf-framework/sapa" {
     props: KeyValue;
     children: VNode[];
     component?: ElementType;
+    nodeName?: string;
+    key?: string;
+    text?: string;
+    makeText?: (split: string) => string;
+    memoizedProps?: KeyValue;
   }
 
   export class Length {
@@ -381,7 +386,8 @@ declare module "@elf-framework/sapa" {
     off(message: string, callback: () => void): void;
   }
   type ElementFunction = () => unknown;
-  type ElementType = typeof UIElement | ElementFunction | VNode;
+  type ElementType = typeof UIElement | ElementFunction | VNode | string;
+  export type ContentType = string | typeof UIElement | string[] | UIElement[];
 
   interface HydrateOptions {
     target: Dom | string | HTMLElement;
@@ -483,7 +489,7 @@ declare module "@elf-framework/sapa" {
   ): [value: T, setValue: (value: T) => void];
 
   type UseEffectCleanUp = (() => void) | undefined;
-  type UseEffectCallbackType = () => UseEffectCleanUp;
+  type UseEffectCallbackType = () => undefined | void | UseEffectCleanUp;
 
   export function useEffect(
     callback: UseEffectCallbackType,
@@ -538,10 +544,10 @@ declare module "@elf-framework/sapa" {
   export function useRootContext<T>(key: string): T;
   export function useSubscribe(
     name: string,
-    callback: () => void,
-    debounceSecond: number,
-    throttleSecond: number,
-    isSelf: boolean
+    callback: (event: string) => void,
+    debounceSecond?: number,
+    throttleSecond?: number,
+    isSelf?: boolean
   ): () => void;
   interface RenderOptions<T> {
     debounce?: number;

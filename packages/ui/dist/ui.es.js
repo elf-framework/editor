@@ -6934,6 +6934,7 @@ class Card extends UIElement {
       as = "div",
       href = "#",
       full = false,
+      wide = false,
       ...extraProps
     } = this.props;
     const localClass = useMemo(() => {
@@ -6946,7 +6947,8 @@ class Card extends UIElement {
         selected,
         full,
         [size]: true,
-        "as-link": as === "link"
+        "as-link": as === "link",
+        wide
       });
     }, [
       shape,
@@ -6957,7 +6959,8 @@ class Card extends UIElement {
       selected,
       as,
       size,
-      full
+      full,
+      wide
     ]);
     const styleObject = {
       class: localClass,

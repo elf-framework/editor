@@ -1,5 +1,35 @@
 # @elf-framework/ui
 
+## 0.0.126
+
+### Patch Changes
+
+- update wide props in Card component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.126
+
+## 0.0.122
+
+### Patch Changes
+
+- update types
+
+## 0.0.121
+
+### Patch Changes
+
+- update types
+
+## 0.0.120
+
+### Patch Changes
+
+- update types
+
+- Updated dependencies []:
+  - @elf-framework/sapa@0.0.120
+
 ## 0.0.115
 
 ### Patch Changes

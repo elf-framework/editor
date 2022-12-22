@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 0.0.126
+
+### Patch Changes
+
+- update wide props in Card component
+
 ## 0.0.113
 
 ### Patch Changes
