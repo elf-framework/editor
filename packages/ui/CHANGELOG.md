@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.128
+
+### Patch Changes
+
+- update wide props in style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.128
+
 ## 0.0.126
 
 ### Patch Changes

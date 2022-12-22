@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 0.0.128
+
+### Patch Changes
+
+- update wide props in style
+
 ## 0.0.127
 
 ### Patch Changes
