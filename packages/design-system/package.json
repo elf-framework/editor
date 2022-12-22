@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/design-system",
-  "version": "0.0.126",
+  "version": "0.0.127",
   "description": "Fantastic Design System ",
   "main": "./dist/design-system.umd.js",
   "module": "./dist/design-system.es.js",
