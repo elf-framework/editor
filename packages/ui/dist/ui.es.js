@@ -7103,10 +7103,18 @@ const cssProperties$5 = makeCssVariablePrefixMap("--elf--card-body", {
 });
 class CardBody extends UIElement {
   template() {
-    const { style: style2 = {}, ghost = false, content, ...extraProps } = this.props;
+    const {
+      style: style2 = {},
+      compact = false,
+      ghost = false,
+      content,
+      ...extraProps
+    } = this.props;
     const localClass = useMemo(() => {
-      return classnames("elf--card-body");
-    }, []);
+      return classnames("elf--card-body", {
+        compact
+      });
+    }, [compact]);
     const styleObject = {
       class: localClass,
       style: propertyMap(

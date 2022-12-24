@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 0.0.130
+
+### Patch Changes
+
+- update VNode.Component type
+
+## 0.0.129
+
+### Patch Changes
+
+- add toString() in VNode
+
 ## 0.0.125
 
 ### Patch Changes

@@ -7105,10 +7105,18 @@ var __privateMethod = (obj, member, method) => {
   });
   class CardBody extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, ghost = false, content, ...extraProps } = this.props;
+      const {
+        style: style2 = {},
+        compact = false,
+        ghost = false,
+        content,
+        ...extraProps
+      } = this.props;
       const localClass = sapa.useMemo(() => {
-        return sapa.classnames("elf--card-body");
-      }, []);
+        return sapa.classnames("elf--card-body", {
+          compact
+        });
+      }, [compact]);
       const styleObject = {
         class: localClass,
         style: propertyMap(

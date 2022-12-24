@@ -1793,6 +1793,7 @@ declare module "@elf-framework/ui" {
     content?: ContentType;
     style?: CommonStyle;
     ghost?: boolean;
+    compact?: boolean;
   }
 
   export class CardBody extends UIElement {

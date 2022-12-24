@@ -2632,6 +2632,9 @@ var __privateMethod = (obj, member, method) => {
     get lastChild() {
       return this.children[this.children.length - 1];
     }
+    toString() {
+      return this.makeText();
+    }
   }
   class VNodeText extends VNode {
     constructor(value) {

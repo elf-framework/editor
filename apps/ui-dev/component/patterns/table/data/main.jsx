@@ -70,8 +70,8 @@ export const data = [
     size: "1.2MB",
     tools: [
       <ActionGroup compact style={{ gap: 10 }}>
-        <Button>1243</Button>
-        <Button>24234</Button>
+        <Button size="small">1243</Button>
+        <Button size="small">24234</Button>
       </ActionGroup>,
     ],
   },

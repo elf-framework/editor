@@ -1,5 +1,23 @@
 # @elf-framework/design-tokens
 
+## 0.0.134
+
+### Patch Changes
+
+- add compact property in CardBody component
+
+## 0.0.133
+
+### Patch Changes
+
+- update panel style
+
+## 0.0.131
+
+### Patch Changes
+
+- update panel style
+
 ## 0.0.113
 
 ### Patch Changes

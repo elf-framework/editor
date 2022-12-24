@@ -273,6 +273,10 @@
     font-weight: var(--elf--card-body-font-weight);
     color: var(--elf--card-body-font-color);
     text-align: var(--elf--card-body-text-align);
+
+    &.compact {
+        --elf--card-body-padding: 0px;
+    }
 }
 
 .elf--card-avatar {

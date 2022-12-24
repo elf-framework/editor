@@ -155,7 +155,11 @@ declare module "@elf-framework/sapa" {
     tag: string | "object";
     props: KeyValue;
     children: VNode[];
-    component?: ElementType;
+
+    /**
+     * Component function for custom vnode type
+     */
+    Component?: ElementType;
     nodeName?: string;
     key?: string;
     text?: string;

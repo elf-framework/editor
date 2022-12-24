@@ -1,5 +1,23 @@
 # @elf-framework/ui
 
+## 0.0.134
+
+### Patch Changes
+
+- add compact property in CardBody component
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.134
+
+## 0.0.133
+
+### Patch Changes
+
+- update panel style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.133
+
 ## 0.0.128
 
 ### Patch Changes

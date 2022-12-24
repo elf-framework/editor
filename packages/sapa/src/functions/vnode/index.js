@@ -285,6 +285,10 @@ export class VNode {
   get lastChild() {
     return this.children[this.children.length - 1];
   }
+
+  toString() {
+    return this.makeText();
+  }
 }
 
 export class VNodeText extends VNode {

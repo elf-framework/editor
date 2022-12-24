@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 0.0.134
+
+### Patch Changes
+
+- add compact property in CardBody component
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.134
+
 ## 0.0.111
 
 ### Patch Changes
