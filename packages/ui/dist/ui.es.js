@@ -2837,6 +2837,7 @@ function Column({ content, span = 1, style: style2, ...extraProps }) {
   return /* @__PURE__ */ createElementJsx(
     "div",
     {
+      class: "elf--column",
       ...extraProps,
       style: {
         ...style2,

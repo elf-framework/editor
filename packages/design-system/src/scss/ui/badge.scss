@@ -1,12 +1,14 @@
 .elf--badge {
   --elf--badge-font-size: var(--font-size-small);
-  --elf--badge-border-radius: 4px;
+  --elf--badge-border-radius: 6px;
   --elf--badge-color: var(--color-white);
   --elf--badge-background-color: var(--color-black);
-  --elf--badge-padding: 3px 4px;
+  --elf--badge-padding: 0px 8px;
   --elf--badge-left: auto;
   --elf--badge-right: auto;
   --elf--badge-offset: 20px;
+  --elf--badge-height: 30px;
+  --elf--badge-icon-size: 20px;
 
   display: inline-flex;
   padding: var(--elf--badge-padding);
@@ -16,7 +18,14 @@
   background-color: var(--elf--badge-background-color);
   gap: 10px;
   white-space: nowrap;
-  line-height: 1.6;
+  line-height: 0;
+  min-width: 22px;
+  height: var(--elf--badge-height);
+  cursor: default;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-weight: 700;
 
   > .elf--button {
     padding: 0px;
@@ -24,9 +33,14 @@
   }
 
   .elf--icon {
-    width: 1.6em;
-    height: 1.6em;
+    width: var(--elf--badge-icon-size);
+    height: var(--elf--badge-icon-size);
     vertical-align: middle;
+
+    svg {
+      width: 100%;
+      height:100%;
+    }
   }
 
   &.informative {
@@ -73,7 +87,9 @@
 
   &.small {
     --elf--badge-font-size: var(--font-size-small);
-    --elf--badge-padding: 3px 5px;
+    --elf--badge-padding: 4px 6px;
+    --elf--badge-height: 24px;
+    --elf--badge-icon-size: 16px;
   }
 
   &.medium {
@@ -84,11 +100,15 @@
   &.large {
     --elf--badge-font-size: var(--font-size-large);
     --elf--badge-padding: 8px 10px;
+    --elf--badge-height: 50px;
+    --elf--badge-icon-size: 26px;
   }
 
   &.extra-large {
     --elf--badge-font-size: var(--font-size-extra-large);
-    --elf--badge-padding: 8px 14px;
+    --elf--badge-padding: 4px 10px;
+    --elf--badge-height: 60px;
+    --elf--badge-icon-size: 32px;
   }
 
   &.fixed {

@@ -1,5 +1,17 @@
 # @elf-framework/design-tokens
 
+## 0.0.137
+
+### Patch Changes
+
+- update badge style
+
+## 0.0.136
+
+### Patch Changes
+
+- update badge style
+
 ## 0.0.134
 
 ### Patch Changes

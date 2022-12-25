@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 0.0.137
+
+### Patch Changes
+
+- update badge style
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.137
+
 ## 0.0.134
 
 ### Patch Changes

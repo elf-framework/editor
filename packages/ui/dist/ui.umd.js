@@ -2839,6 +2839,7 @@ var __privateMethod = (obj, member, method) => {
     return /* @__PURE__ */ sapa.createElementJsx(
       "div",
       {
+        class: "elf--column",
         ...extraProps,
         style: {
           ...style2,

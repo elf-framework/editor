@@ -1,5 +1,23 @@
 # @elf-framework/design-system
 
+## 0.0.137
+
+### Patch Changes
+
+- update badge style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.137
+
+## 0.0.136
+
+### Patch Changes
+
+- update badge style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.136
+
 ## 0.0.134
 
 ### Patch Changes
