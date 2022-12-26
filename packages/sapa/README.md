@@ -28,6 +28,17 @@ esbuild: {
 
 ```
 
+## use jsx-runtime 
+
+tsconfig.json 
+
+```json
+"compilerOptions": {
+  "jsx": "react-jsx",
+  "jsxImportSource": "@elf-framework/sapa",
+}
+```
+
 # Core Concept
 
 Sapa is a library for easily creating DOM-based UIs. However, since it uses JSX as a grammar, it can be used as data.
