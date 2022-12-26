@@ -390,7 +390,7 @@ declare module "@elf-framework/sapa" {
     off(message: string, callback: () => void): void;
   }
   type ElementFunction = () => unknown;
-  type ElementType = typeof UIElement | ElementFunction | VNode | string;
+  export type ElementType = typeof UIElement | ElementFunction | VNode | string;
   export type ContentType = string | typeof UIElement | string[] | UIElement[];
 
   interface HydrateOptions {
@@ -423,8 +423,8 @@ declare module "@elf-framework/sapa" {
     children: any[]
   ): VNode;
 
-  type FragmentInstanceType = any;
-  type HTMLCommentType = any;
+  export type FragmentInstanceType = any;
+  export type HTMLCommentType = any;
 
   /**
    * fragment 용 instance
@@ -437,6 +437,15 @@ declare module "@elf-framework/sapa" {
     props: KeyValue,
     ...children: any[]
   ): string;
+
+  export function jsx(
+    tag: string | ElementType | FragmentInstanceType | HTMLCommentType,
+    props: KeyValue
+  ): VNode;
+  export function jsxs(
+    tag: string | ElementType | FragmentInstanceType | HTMLCommentType,
+    props: KeyValue
+  ): VNode;
 
   export function htmlToVNode(html: string): VNode;
 
@@ -581,10 +590,31 @@ declare module "@elf-framework/sapa" {
     createElementJsx: typeof createElementJsx;
     FragmentInstance: typeof FragmentInstance;
     HTMLComment: typeof HTMLComment;
+    jsx: typeof jsx;
+    jsxs: typeof jsxs;
   };
 
   export function pendingComponent(component: UIElement): void;
   export function removePendingComponent(component: UIElement): void;
 
   export default sapa;
+}
+
+declare module "@elf-framework/sapa/jsx-runtime" {
+  import type {
+    ElementType,
+    FragmentInstanceType,
+    HTMLCommentType,
+    KeyValue,
+    VNode,
+  } from "@elf-framework/sapa";
+
+  export function jsx(
+    tag: string | ElementType | FragmentInstanceType | HTMLCommentType,
+    props: KeyValue
+  ): VNode;
+  export function jsxs(
+    tag: string | ElementType | FragmentInstanceType | HTMLCommentType,
+    props: KeyValue
+  ): VNode;
 }

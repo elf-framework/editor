@@ -5028,7 +5028,12 @@ function createElementJsx$1(Component, props = {}, ...children2) {
 }
 const FragmentInstance$1 = new Object();
 const HTMLComment$1 = new Object();
-const jsx = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const jsx$1 = (tag, props) => {
+  const { children: children2, ...extraProps } = props;
+  return createElementJsx$1(tag, extraProps, ...children2);
+};
+const jsxs$1 = jsx$1;
+const jsxFunctions = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   createComponent,
   createComponentFragment,
@@ -5037,13 +5042,17 @@ const jsx = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty(
   createElement,
   createElementJsx: createElementJsx$1,
   FragmentInstance: FragmentInstance$1,
-  HTMLComment: HTMLComment$1
+  HTMLComment: HTMLComment$1,
+  jsx: jsx$1,
+  jsxs: jsxs$1
 }, Symbol.toStringTag, { value: "Module" }));
 const FragmentInstance = FragmentInstance$1;
 const createElementJsx = createElementJsx$1;
 const HTMLComment = HTMLComment$1;
+const jsx = jsx$1;
+const jsxs = jsxs$1;
 const index = {
-  ...jsx
+  ...jsxFunctions
 };
 export {
   AFTER,
@@ -5223,6 +5232,8 @@ export {
   isValue,
   isZero,
   jsonToVNode,
+  jsx,
+  jsxs,
   keyEach,
   keyMap,
   keyMapJoin,

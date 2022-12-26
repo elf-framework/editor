@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "0.0.130",
+  "version": "0.0.139",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [
@@ -12,6 +12,10 @@
   "module": "./dist/sapa.es.js",
   "exports": {
     "./package.json": "./package.json",
+    "./jsx-runtime": {
+      "import": "./dist/sapa.es.js",
+      "require": "./dist/sapa.umd.js"
+    },
     ".": {
       "import": "./dist/sapa.es.js",
       "require": "./dist/sapa.umd.js"

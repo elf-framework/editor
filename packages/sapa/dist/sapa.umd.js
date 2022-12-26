@@ -5032,7 +5032,12 @@ var __privateMethod = (obj, member, method) => {
   }
   const FragmentInstance$1 = new Object();
   const HTMLComment$1 = new Object();
-  const jsx = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  const jsx$1 = (tag, props) => {
+    const { children: children2, ...extraProps } = props;
+    return createElementJsx$1(tag, extraProps, ...children2);
+  };
+  const jsxs$1 = jsx$1;
+  const jsxFunctions = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     __proto__: null,
     createComponent,
     createComponentFragment,
@@ -5041,13 +5046,17 @@ var __privateMethod = (obj, member, method) => {
     createElement,
     createElementJsx: createElementJsx$1,
     FragmentInstance: FragmentInstance$1,
-    HTMLComment: HTMLComment$1
+    HTMLComment: HTMLComment$1,
+    jsx: jsx$1,
+    jsxs: jsxs$1
   }, Symbol.toStringTag, { value: "Module" }));
   const FragmentInstance = FragmentInstance$1;
   const createElementJsx = createElementJsx$1;
   const HTMLComment = HTMLComment$1;
+  const jsx = jsx$1;
+  const jsxs = jsxs$1;
   const index = {
-    ...jsx
+    ...jsxFunctions
   };
   exports2.AFTER = AFTER;
   exports2.ALL_TRIGGER = ALL_TRIGGER;
@@ -5226,6 +5235,8 @@ var __privateMethod = (obj, member, method) => {
   exports2.isValue = isValue;
   exports2.isZero = isZero;
   exports2.jsonToVNode = jsonToVNode;
+  exports2.jsx = jsx;
+  exports2.jsxs = jsxs;
   exports2.keyEach = keyEach;
   exports2.keyMap = keyMap;
   exports2.keyMapJoin = keyMapJoin;

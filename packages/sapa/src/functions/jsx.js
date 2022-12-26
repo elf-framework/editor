@@ -87,3 +87,15 @@ export function createElementJsx(Component, props = {}, ...children) {
 
 export const FragmentInstance = new Object();
 export const HTMLComment = new Object();
+
+/**
+ * jsx-runtime 을 사용하지 않고, 직접 jsx 를 만들어서 사용할 때 사용한다.
+ *
+ */
+export const jsx = (tag, props) => {
+  const { children, ...extraProps } = props;
+
+  return createElementJsx(tag, extraProps, ...children);
+};
+
+export const jsxs = jsx;

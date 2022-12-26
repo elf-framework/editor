@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 0.0.139
+
+### Patch Changes
+
+- support @elf-framework/sapa/jsx-runtime module types
+
+## 0.0.138
+
+### Patch Changes
+
+- support jsx and jsxs function for jsx-runtime
+
 ## 0.0.130
 
 ### Patch Changes

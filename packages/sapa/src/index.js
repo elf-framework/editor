@@ -14,13 +14,17 @@ export * from "./constant/vnode";
 export * from "./functions/vnode/createVNodeByDom";
 export * from "./functions/vnode/htmlToVNode";
 export * from "./functions/vnode/jsonToVNode";
-import * as jsx from "./functions/jsx";
+import * as jsxFunctions from "./functions/jsx";
 
-const FragmentInstance = jsx.FragmentInstance;
-const createElementJsx = jsx.createElementJsx;
-const HTMLComment = jsx.HTMLComment;
+const FragmentInstance = jsxFunctions.FragmentInstance;
+const createElementJsx = jsxFunctions.createElementJsx;
+const HTMLComment = jsxFunctions.HTMLComment;
 
-export { FragmentInstance, createElementJsx, HTMLComment };
+// for jsx-runtime
+const jsx = jsxFunctions.jsx;
+const jsxs = jsxFunctions.jsxs;
+
+export { FragmentInstance, createElementJsx, HTMLComment, jsx, jsxs };
 export default {
-  ...jsx,
+  ...jsxFunctions,
 };
