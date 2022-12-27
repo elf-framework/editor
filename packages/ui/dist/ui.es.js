@@ -27,7 +27,7 @@ var __privateMethod = (obj, member, method) => {
   return method;
 };
 var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
-import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, Dom, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, useRef, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent, useRender } from "@elf-framework/sapa";
+import { isFunction, useMagicMethod, POINTERSTART, isUndefined, isArray, AFTER, UIElement, useState, useCallback, useMemo, classnames, createElementJsx, potal, isString, POINTERENTER, IF, POINTERLEAVE, CLICK, FOCUS, useEffect, Dom, PREVENT, STOP, OBSERVER, PARAMS, POINTEROVER, useRef, isNumber, FOCUSIN, FOCUSOUT, SCROLL, SUBSCRIBE_SELF, DEBOUNCE, FRAME, POINTERMOVE, POINTEREND, debounce, SUBSCRIBE_ALL, pendingComponent, removePendingComponent, useRender } from "@elf-framework/sapa";
 import { parse, format, RGBtoHSL, RGBtoHSV, checkHueColor, HSVtoHSL, HSVtoRGB } from "@elf-framework/color";
 const style = "";
 function usePointerStart(...args) {
@@ -837,12 +837,6 @@ class Tooltip extends UIElement {
       show: !this.state.show
     });
   }
-  checkClickable(e) {
-    const $menu = Dom.create(e.target).closest("elf--tooltip-content");
-    if ($menu)
-      return false;
-    return true;
-  }
   checkTriggerClick() {
     return this.state.trigger.includes("click");
   }
@@ -854,12 +848,6 @@ class Tooltip extends UIElement {
   }
   [POINTERENTER("$el") + IF("checkTriggerOver")]() {
     this.open();
-  }
-  checkNotInTooltip(e) {
-    const $menu = Dom.create(e.target).closest("elf--tooltip");
-    if (!$menu)
-      return true;
-    return this.$el.is($menu) === false;
   }
   [POINTERLEAVE("$el") + IF("checkTriggerOver")]() {
     this.close();

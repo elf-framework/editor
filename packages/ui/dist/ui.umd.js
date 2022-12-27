@@ -839,12 +839,6 @@ var __privateMethod = (obj, member, method) => {
         show: !this.state.show
       });
     }
-    checkClickable(e) {
-      const $menu = sapa.Dom.create(e.target).closest("elf--tooltip-content");
-      if ($menu)
-        return false;
-      return true;
-    }
     checkTriggerClick() {
       return this.state.trigger.includes("click");
     }
@@ -856,12 +850,6 @@ var __privateMethod = (obj, member, method) => {
     }
     [sapa.POINTERENTER("$el") + sapa.IF("checkTriggerOver")]() {
       this.open();
-    }
-    checkNotInTooltip(e) {
-      const $menu = sapa.Dom.create(e.target).closest("elf--tooltip");
-      if (!$menu)
-        return true;
-      return this.$el.is($menu) === false;
     }
     [sapa.POINTERLEAVE("$el") + sapa.IF("checkTriggerOver")]() {
       this.close();

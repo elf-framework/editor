@@ -3588,11 +3588,11 @@
             ]
           },
           "primary": {
-            "value": "{color.blue.8}",
+            "value": "{color.white}",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.blue.8}"
+              "value": "{color.white}"
             },
             "attributes": {
               "category": "alert",
@@ -3628,12 +3628,12 @@
             ]
           },
           "danger": {
-            "value": "{color.red.7}",
+            "value": "{color.white}",
             "comment": "Base color for the danger color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.red.7}",
+              "value": "{color.white}",
               "comment": "Base color for the danger color"
             },
             "attributes": {
@@ -3650,12 +3650,12 @@
             ]
           },
           "warning": {
-            "value": "{color.yellow.5}",
+            "value": "{color.white}",
             "comment": "Base color for the warning color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.yellow.5}",
+              "value": "{color.white}",
               "comment": "Base color for the warning color"
             },
             "attributes": {
@@ -3672,12 +3672,12 @@
             ]
           },
           "success": {
-            "value": "{color.green.7}",
+            "value": "{color.white}",
             "comment": "Base color for the success color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.green.7}",
+              "value": "{color.white}",
               "comment": "Base color for the success color"
             },
             "attributes": {
@@ -3694,12 +3694,12 @@
             ]
           },
           "info": {
-            "value": "{color.blue.5}",
+            "value": "{color.white}",
             "comment": "Base color for the info color",
             "filePath": "tokens/component/alert.json",
             "isSource": true,
             "original": {
-              "value": "{color.blue.5}",
+              "value": "{color.white}",
               "comment": "Base color for the info color"
             },
             "attributes": {

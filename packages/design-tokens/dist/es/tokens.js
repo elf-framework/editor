@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 26 Dec 2022 05:27:29 GMT
+ * Generated on Tue, 27 Dec 2022 05:15:11 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";
@@ -192,12 +192,12 @@ export const ColorTextSubtitle = "#626f7a";
 export const ColorTextLink = "#1a497d";
 export const ColorTextDisabled = "#818e9a";
 export const AlertColorTitleDefault = "#2c353d";
-export const AlertColorTitlePrimary = "#1a497d";
+export const AlertColorTitlePrimary = "#ffffff";
 export const AlertColorTitleSecondary = "#ffffff";
-export const AlertColorTitleDanger = "#a12b2b"; // Base color for the danger color
-export const AlertColorTitleWarning = "#b58c12"; // Base color for the warning color
-export const AlertColorTitleSuccess = "#067852"; // Base color for the success color
-export const AlertColorTitleInfo = "#429bff"; // Base color for the info color
+export const AlertColorTitleDanger = "#ffffff"; // Base color for the danger color
+export const AlertColorTitleWarning = "#ffffff"; // Base color for the warning color
+export const AlertColorTitleSuccess = "#ffffff"; // Base color for the success color
+export const AlertColorTitleInfo = "#ffffff"; // Base color for the info color
 export const AlertColorTitleWeakDefault = "#a2adb8";
 export const AlertColorTitleWeakPrimary = "#78b6ff";
 export const AlertColorTitleWeakSecondary = "#a2adb8";

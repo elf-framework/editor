@@ -6,26 +6,26 @@
           "value": "{color.gray.9.value}"
         },
         "primary": {
-          "value": "{color.blue.8.value}"
+          "value": "{color.white.value}"
         },
         "secondary": {
           "value": "{color.white.value}"
         },
 
         "danger": {
-          "value": "{color.red.7.value}",
+          "value": "{color.white.value}",
           "comment": "Base color for the danger color"
         },
         "warning": {
-          "value": "{color.yellow.5.value}",
+          "value": "{color.white.value}",
           "comment": "Base color for the warning color"
         },
         "success": {
-          "value": "{color.green.7.value}",
+          "value": "{color.white.value}",
           "comment": "Base color for the success color"
         },
         "info": {
-          "value": "{color.blue.5.value}",
+          "value": "{color.white.value}",
           "comment": "Base color for the info color"
         },
         "weak": {

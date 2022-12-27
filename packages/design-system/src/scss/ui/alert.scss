@@ -68,7 +68,7 @@
   > .elf--alert-title {
     color: var(--elf--alert-title-color);
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 700;
 
     display: flex;
     align-items: center;
@@ -135,7 +135,7 @@
     --elf--alert-background-color: var(
       --alert-color-background-primary
     );
-    --elf--alert-title-color: var(--alert-color-content-primary);
+    --elf--alert-title-color: var(--alert-color-title-primary);
     --elf--alert-content-color: var(--alert-color-content-primary);
     
 
@@ -172,7 +172,7 @@
     --elf--alert-background-color: var(
       --alert-color-background-success
     );
-    --elf--alert-title-color: var(--alert-color-content-success);    
+    --elf--alert-title-color: var(--alert-color-title-success);    
     --elf--alert-content-color: var(--alert-color-content-success);
 
     &.weak {
@@ -190,7 +190,7 @@
     --elf--alert-background-color: var(
       --alert-color-background-danger
     );
-    --elf--alert-title-color: var(--alert-color-content-danger);     
+    --elf--alert-title-color: var(--alert-color-title-danger);     
     --elf--alert-content-color: var(--alert-color-content-danger);
     
 

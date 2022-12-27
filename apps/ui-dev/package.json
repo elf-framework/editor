@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -28,7 +28,8 @@
     "@elf-framework/sapa-router": "*",
     "@elf-framework/ui": "*",
     "github-markdown-css": "^5.1.0",
-    "mermaid": "^9.3.0"
+    "mermaid": "^9.3.0",
+    "yorkie-js-sdk": "^0.2.19"
   },
   "devDependencies": {
     "@elf-framework/config": "*",

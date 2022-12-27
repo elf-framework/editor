@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 
 import { data } from "~/component/main/data.jsx";
 import { ProjectItem } from "~/component/project/ProjectItem.jsx";
+import { PeerView } from "~/component/utils/peer-view/PeerView";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
 import mainMenus from "~/constants/main-menus";
 import { useTheme } from "~/hooks/useTheme";
@@ -30,6 +31,9 @@ export function HomeLayout() {
                   </li>
                 );
               })}
+              <li>
+                <PeerView />
+              </li>
               <li>
                 <ThemeButton />
               </li>

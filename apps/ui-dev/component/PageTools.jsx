@@ -3,6 +3,7 @@ import { Tools } from "@elf-framework/ui";
 
 import mainMenus from "../constants/main-menus";
 import "./PageTools.scss";
+import { PeerView } from "./utils/peer-view/PeerView";
 import { ThemeButton } from "./utils/theme-button/ThemeButton";
 
 export function PageTools({ menu }) {
@@ -56,7 +57,15 @@ export function PageTools({ menu }) {
             ];
           })}
         </div>
-        <div style={{ justifyContent: "flex-end" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <PeerView />
           <ThemeButton />
         </div>
       </div>

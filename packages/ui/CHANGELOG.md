@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.140
+
+### Patch Changes
+
+- update alert style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.140
+
 ## 0.0.137
 
 ### Patch Changes

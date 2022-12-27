@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.40
+
+### Patch Changes
+
+- support peer view by yorkie-js-sdk
+
 ## 1.0.39
 
 ### Patch Changes

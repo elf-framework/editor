@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 26 Dec 2022 05:27:29 GMT
+ * Generated on Tue, 27 Dec 2022 05:15:11 GMT
  */
 
 (function(root, factory) {
@@ -3792,11 +3792,11 @@
           ]
         },
         "primary": {
-          "value": "#1a497d",
+          "value": "#ffffff",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.8.value}"
+            "value": "{color.white.value}"
           },
           "name": "AlertColorTitlePrimary",
           "attributes": {
@@ -3834,12 +3834,12 @@
           ]
         },
         "danger": {
-          "value": "#a12b2b",
+          "value": "#ffffff",
           "comment": "Base color for the danger color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.red.7.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the danger color"
           },
           "name": "AlertColorTitleDanger",
@@ -3857,12 +3857,12 @@
           ]
         },
         "warning": {
-          "value": "#b58c12",
+          "value": "#ffffff",
           "comment": "Base color for the warning color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.yellow.5.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the warning color"
           },
           "name": "AlertColorTitleWarning",
@@ -3880,12 +3880,12 @@
           ]
         },
         "success": {
-          "value": "#067852",
+          "value": "#ffffff",
           "comment": "Base color for the success color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.green.7.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the success color"
           },
           "name": "AlertColorTitleSuccess",
@@ -3903,12 +3903,12 @@
           ]
         },
         "info": {
-          "value": "#429bff",
+          "value": "#ffffff",
           "comment": "Base color for the info color",
           "filePath": "tokens/component/alert.json",
           "isSource": true,
           "original": {
-            "value": "{color.blue.5.value}",
+            "value": "{color.white.value}",
             "comment": "Base color for the info color"
           },
           "name": "AlertColorTitleInfo",
