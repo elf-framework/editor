@@ -28,7 +28,6 @@ export const yorkieStore = {
 
       unscribes.push(
         client.subscribe((event) => {
-          console.log(event);
           if (event.type === "peers-changed") {
             peers = event.value[doc.getKey()];
             callback();

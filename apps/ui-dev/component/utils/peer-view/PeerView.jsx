@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "@elf-framework/sapa";
 import { Badge } from "@elf-framework/ui";
 
-import { yorkieStore } from "../../../hooks/yorkieStore";
+import { yorkieStore } from "~/hooks/yorkieStore";
 
 export function PeerView() {
   const store = useSyncExternalStore(
@@ -13,7 +13,8 @@ export function PeerView() {
 
   return (
     <div class="peer-view">
-      Users: {counter > 0 ? <Badge variant="notice">{counter}</Badge> : undefined}
+      Users:{" "}
+      {counter > 0 ? <Badge variant="notice">{counter}</Badge> : undefined}
     </div>
   );
 }
