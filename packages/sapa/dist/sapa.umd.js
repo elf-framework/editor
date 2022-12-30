@@ -521,8 +521,12 @@ var __privateMethod = (obj, member, method) => {
       component,
       value: getValue(),
       getValue,
-      update: (newValue) => {
-        component.$store.set(key, newValue);
+      update: (value) => {
+        let _newValue = value;
+        if (isFunction(value)) {
+          _newValue = value(getValue());
+        }
+        component.$store.set(key, _newValue);
       }
     };
     function getValue() {
@@ -534,8 +538,12 @@ var __privateMethod = (obj, member, method) => {
     let localValue = {
       key,
       component,
-      update: (newValue) => {
-        component.$store.set(key, newValue);
+      update: (value) => {
+        let _newValue = value;
+        if (isFunction(value)) {
+          _newValue = value(component.$store.get(key));
+        }
+        component.$store.set(key, _newValue);
       }
     };
     return localValue;

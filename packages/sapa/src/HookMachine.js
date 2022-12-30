@@ -100,8 +100,12 @@ function createStoreValue({ key, defaultValue, component }) {
     component,
     value: getValue(),
     getValue,
-    update: (newValue) => {
-      component.$store.set(key, newValue);
+    update: (value) => {
+      let _newValue = value;
+      if (isFunction(value)) {
+        _newValue = value(getValue());
+      }
+      component.$store.set(key, _newValue);
     },
   };
 
@@ -116,8 +120,12 @@ function createSetStoreValue({ key, component }) {
   let localValue = {
     key,
     component,
-    update: (newValue) => {
-      component.$store.set(key, newValue);
+    update: (value) => {
+      let _newValue = value;
+      if (isFunction(value)) {
+        _newValue = value(component.$store.get(key));
+      }
+      component.$store.set(key, _newValue);
     },
   };
 

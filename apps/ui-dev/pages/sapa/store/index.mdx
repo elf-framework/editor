@@ -127,12 +127,10 @@ When the value of the store is changed, a message is delivered to the key value 
 function A() {
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
-  useSubscribe('key', () => {
-    useRender(this);
-  })
+  const [value, setStore] = useStoreValue('key');
 
-  return <div onClick={() => {
-    useStoreSet('key', e.target);
+  return <div onClick={(e) => {
+    setStore(e.target.textContent);
   }}>Simple Text</div>
 }
 ```
@@ -141,16 +139,16 @@ function A() {
 
 ```jsx {2,6-9}
 function A() {
-  return <div onClick={() => useStoreSet('key', useStore('key') + 1)}>Simple Text</div>
+  const setStore = useSetStoreValue('key');
+  return <div onClick={() => setStore(v => v + 1)}>Simple Text</div>
 }
 
 function B () {
-  useSubscribe('key', () => {
-    // Re-render when key is changed.
-    useRender(this);
-  })
 
-  return <div>{useStore('key')}</div>
+  // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
+  const [key] = useStoreValue('key');
+
+  return <div>{key}</div>
 }
 
 function Main() {

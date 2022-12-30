@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.144
+
+### Patch Changes
+
+- support function for useStoreValue
+
 ## 0.0.143
 
 ### Patch Changes
