@@ -1,5 +1,14 @@
 # @elf-framework/sapa
 
+## 0.0.141
+
+### Patch Changes
+
+- fixed destroy bug when deleting from the dom tree.
+  modify multi root component rendering
+  update start, hydrate function parameters
+  fixed to reload previous hook data for useMemo, useCallback, useRef
+
 ## 0.0.139
 
 ### Patch Changes

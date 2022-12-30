@@ -115,6 +115,16 @@ export class HookMachine extends MagicHandler {
           value: hook.hookInfo[0].value,
           component: this,
         });
+      } else if (
+        hook?.type === USE_MEMO ||
+        hook?.type === USE_CALLBACK ||
+        hook?.type === USE_REF
+      ) {
+        hook.hookInfo = {
+          callback: hook.hookInfo.callback.bind(this),
+          value: hook.hookInfo.value,
+          deps: hook.hookInfo.deps,
+        };
       } else {
         // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
         // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
@@ -265,6 +275,7 @@ export class HookMachine extends MagicHandler {
       this.setHook(useType, {
         deps,
         value: callback(),
+        callback,
       });
     }
 
@@ -357,12 +368,12 @@ export class HookMachine extends MagicHandler {
     return this.emit(name, ...args);
   }
 
-  useStore(key) {
-    return this.$store.get(key);
+  useStore(key, defaultValue) {
+    return this.$store.get(key, defaultValue);
   }
 
-  useStoreSet(key, value) {
-    this.$store.set(key, value);
+  useStoreSet(key, value, hasChangeMessage = true) {
+    this.$store.set(key, value, hasChangeMessage);
   }
 
   /** utility function for hooks */

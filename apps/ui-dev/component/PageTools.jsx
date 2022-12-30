@@ -1,5 +1,5 @@
-import { classnames } from "@elf-framework/sapa";
-import { Tools } from "@elf-framework/ui";
+import { classnames, useStoreSet } from "@elf-framework/sapa";
+import { Button, Tools } from "@elf-framework/ui";
 
 import mainMenus from "../constants/main-menus";
 import "./PageTools.scss";
@@ -65,6 +65,13 @@ export function PageTools({ menu }) {
             gap: 10,
           }}
         >
+          <Button
+            onClick={() => {
+              useStoreSet("open.search.view", true);
+            }}
+          >
+            Open search
+          </Button>
           <PeerView />
           <ThemeButton />
         </div>

@@ -295,10 +295,12 @@ export function runProviderSubscribe(provider) {
 
 /**
  * Utility Hooks
+ * 
+ * @todo support useComponentRender
+ * 
  */
-
-export function useStore(key) {
-  return getCurrentComponent().useStore(key);
+export function useStore(key, defaultValue) {
+  return getCurrentComponent().useStore(key, defaultValue);
 }
 
 export function useStoreSet(key, value) {
@@ -377,4 +379,8 @@ export function useTrigger(name, ...args) {
 
 export function useMagicMethod(methodName, callback) {
   return getCurrentComponent().initMagicMethod(methodName, callback);
+}
+
+export function forwardRef(callback) {
+  return getCurrentComponent().forwardRef(callback);
 }

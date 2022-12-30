@@ -1,5 +1,15 @@
 # ui-dev
 
+## 1.0.41
+
+### Patch Changes
+
+- remove unused TreeView Component
+  support SearchView Component
+  support useOpenSearch hook
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.142
+
 ## 1.0.40
 
 ### Patch Changes

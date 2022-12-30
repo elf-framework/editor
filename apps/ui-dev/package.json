@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -20,6 +20,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.7.4",
+    "@algolia/autocomplete-theme-classic": "^1.7.4",
     "@elf-framework/color": "*",
     "@elf-framework/design-system": "*",
     "@elf-framework/design-tokens": "*",

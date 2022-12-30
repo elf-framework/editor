@@ -1,16 +1,18 @@
 import {
-  ActionGroup,
-  Blank,
-  Button,
-  Flex,
-  Grid,
-  VBox,
-  View,
-} from "@elf-framework/ui";
+  resetCurrentComponent,
+  useCallback,
+  useComponentRender,
+  useEffect,
+  useStore,
+  useStoreSet,
+} from "@elf-framework/sapa";
+import { ActionGroup, Button, Flex, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import { PageMenu } from "../component/PageMenu";
 import { PageTools } from "../component/PageTools";
+import { SearchView } from "../component/utils/search-view/SearchView";
+import { useOpenSearch } from "../hooks/useOpenSearch";
 import { useTheme } from "../hooks/useTheme";
 import { Logo } from "./items/Logo";
 import "./Layout.scss";
@@ -26,7 +28,11 @@ function LogoView() {
 export function Layout(props) {
   const { content, menu = [], version = "", title = "" } = props;
 
+  useOpenSearch();
   useTheme();
+  useComponentRender("open.search.view");
+  const openSearchView = useStore("open.search.view");
+
 
   return (
     <div class="layout">
@@ -57,6 +63,8 @@ export function Layout(props) {
         </div>
         {/* <Footer /> */}
       </View>
+
+      {openSearchView ? <SearchView /> : undefined}
     </div>
   );
 }

@@ -1,5 +1,13 @@
 # editor-dev
 
+## 1.0.8
+
+### Patch Changes
+
+- remove unused TreeView Component
+  support SearchView Component
+  support useOpenSearch hook
+
 ## 1.0.7
 
 ### Patch Changes

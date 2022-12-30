@@ -466,6 +466,40 @@ export class VNodeComponent extends VNode {
   }
 }
 
+class VNodePotal extends VNode {
+  constructor(props = {}, children, Component) {
+    super(VNodeType.PORTAL, "potal", props || {}, children);
+    this.Component = Component;
+  }
+
+  clone() {
+    return new VNodePotal(
+      this.props,
+      this.children.map((it) => it.clone()),
+      this.Component
+    );
+  }
+
+  makeText() {
+    return "";
+  }
+}
+
+class VNodeLazy extends VNode {
+  constructor(asyncCallbackComponent) {
+    super(VNodeType.LAZY, "lazy", {}, asyncCallbackComponent);
+    this.Component = asyncCallbackComponent;
+  }
+
+  clone() {
+    return new VNodeLazy(this.Component);
+  }
+
+  makeText() {
+    return "";
+  }
+}
+
 export function createVNode({ tag, props = {}, children }) {
   return new VNode(VNodeType.NODE, tag, props, children);
 }
@@ -487,6 +521,14 @@ export function createVNodeText(text) {
 
 export function createVNodeComment(text) {
   return new VNodeComment(text);
+}
+
+export function createPotal({ props = {}, children, Component }) {
+  return new VNodePotal(props, children, Component);
+}
+
+export function createLazy(asyncCallback) {
+  return new VNodeLazy(asyncCallback);
 }
 
 export function cloneVNode(vnode) {

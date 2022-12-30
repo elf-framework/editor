@@ -4,8 +4,7 @@ import {
   registRootElementInstance,
   renderComponent,
 } from "./functions/registElement";
-import { VNode, VNodeComponent } from "./functions/vnode/index";
-import { DomRenderer } from "./renderer/dom/DomRenderer";
+import { VNode } from "./functions/vnode/index";
 import { renderVNodeComponent } from "./renderer/dom/VNodeComponentRender";
 import { renderVNodeComponentToHtml } from "./renderer/html/VNodeComponentRender";
 // import { Router } from "./Router";
@@ -17,7 +16,11 @@ import { createComponentInstance } from "./UIElement";
  * @param {UIElement|Function} ElementClass
  * @returns {UIElement}
  */
-export const start = (ElementClass, opt = {}) => {
+export function start(ElementClass, opt = {}) {
+  if (opt instanceof window.HTMLElement) {
+    opt = { container: opt };
+  }
+
   const $container = Dom.create(opt.container || document.body);
 
   const $targetElement = $container
@@ -50,7 +53,7 @@ export const start = (ElementClass, opt = {}) => {
   registRootElementInstance(app, $container);
 
   return app;
-};
+}
 
 export const render = start;
 
@@ -59,6 +62,10 @@ export const render = start;
  *
  */
 export const hydrate = (ElementClass, opt = {}) => {
+  if (opt instanceof window.HTMLElement) {
+    opt = { container: opt };
+  }
+
   const $container = Dom.create(opt.container || document.body);
 
   if (ElementClass instanceof VNode) {
@@ -73,7 +80,7 @@ export const hydrate = (ElementClass, opt = {}) => {
 
   const $targetElement = $container.firstChild;
 
-  if ($targetElement) {
+  if ($targetElement && $targetElement.el) {
     app.$el = $targetElement;
     app.$el.el[COMPONENT_INSTANCE] = app;
     renderComponent(app);

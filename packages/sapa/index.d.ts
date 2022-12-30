@@ -397,11 +397,14 @@ declare module "@elf-framework/sapa" {
     target: Dom | string | HTMLElement;
   }
 
-  export function start(uiElement: ElementType, options?: KeyValue): VNode;
+  export function start(
+    uiElement: ElementType,
+    options?: KeyValue | HTMLElement
+  ): VNode;
   export function render(uiElement: ElementType, options?: KeyValue): VNode;
   export function hydrate(
     uiElement: ElementType,
-    options?: HydrateOptions
+    options?: HydrateOptions | HTMLElement
   ): UIElement;
   export function potal(uiElement: ElementType, options?: KeyValue): UIElement;
   export function renderToHtml(
@@ -580,6 +583,7 @@ declare module "@elf-framework/sapa" {
   ): () => void;
 
   export function getCurrentComponent(): UIElement;
+  export function resetCurrentComponent(component: UIElement): void;
 
   export function renderFromRoot(): void;
   export function setGlobalForceRender(forceRender: boolean): void;

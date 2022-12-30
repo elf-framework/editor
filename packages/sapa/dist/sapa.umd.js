@@ -200,7 +200,10 @@ var __privateMethod = (obj, member, method) => {
     FRAGMENT: 11,
     COMPONENT: 100,
     ELEMENT: 101,
-    COMMENT: 102
+    COMMENT: 102,
+    ROOT: 103,
+    PORTAL: 104,
+    LAZY: 105
   };
   const UUID_REG = /[xy]/g;
   function uuid() {
@@ -359,8 +362,8 @@ var __privateMethod = (obj, member, method) => {
       });
     }
   }
-  function useStore(key) {
-    return getCurrentComponent().useStore(key);
+  function useStore(key, defaultValue2) {
+    return getCurrentComponent().useStore(key, defaultValue2);
   }
   function useStoreSet(key, value) {
     return getCurrentComponent().useStoreSet(key, value);
@@ -416,6 +419,9 @@ var __privateMethod = (obj, member, method) => {
   }
   function useMagicMethod(methodName, callback) {
     return getCurrentComponent().initMagicMethod(methodName, callback);
+  }
+  function forwardRef(callback) {
+    return getCurrentComponent().forwardRef(callback);
   }
   class MagicHandler {
     constructor() {
@@ -521,6 +527,12 @@ var __privateMethod = (obj, member, method) => {
             value: hook.hookInfo[0].value,
             component: this
           });
+        } else if ((hook == null ? void 0 : hook.type) === USE_MEMO || (hook == null ? void 0 : hook.type) === USE_CALLBACK || (hook == null ? void 0 : hook.type) === USE_REF) {
+          hook.hookInfo = {
+            callback: hook.hookInfo.callback.bind(this),
+            value: hook.hookInfo.value,
+            deps: hook.hookInfo.deps
+          };
         } else {
           __privateGet(this, ___stateHooks)[index2] = void 0;
         }
@@ -618,7 +630,8 @@ var __privateMethod = (obj, member, method) => {
       if (hasChangedDeps) {
         this.setHook(useType, {
           deps,
-          value: callback()
+          value: callback(),
+          callback
         });
       }
       const lastHookValue = this.getHook().hookInfo || {};
@@ -686,11 +699,11 @@ var __privateMethod = (obj, member, method) => {
     useEmit(name, ...args) {
       return this.emit(name, ...args);
     }
-    useStore(key) {
-      return this.$store.get(key);
+    useStore(key, defaultValue2) {
+      return this.$store.get(key, defaultValue2);
     }
-    useStoreSet(key, value) {
-      this.$store.set(key, value);
+    useStoreSet(key, value, hasChangeMessage = true) {
+      this.$store.set(key, value, hasChangeMessage);
     }
     filterHooks(type) {
       return __privateGet(this, ___stateHooks).filter((it) => (it == null ? void 0 : it.type) === type).map((it) => it.hookInfo);
@@ -2768,6 +2781,34 @@ var __privateMethod = (obj, member, method) => {
       return "";
     }
   }
+  class VNodePotal extends VNode {
+    constructor(props = {}, children2, Component) {
+      super(VNodeType.PORTAL, "potal", props || {}, children2);
+      this.Component = Component;
+    }
+    clone() {
+      return new VNodePotal(
+        this.props,
+        this.children.map((it) => it.clone()),
+        this.Component
+      );
+    }
+    makeText() {
+      return "";
+    }
+  }
+  class VNodeLazy extends VNode {
+    constructor(asyncCallbackComponent) {
+      super(VNodeType.LAZY, "lazy", {}, asyncCallbackComponent);
+      this.Component = asyncCallbackComponent;
+    }
+    clone() {
+      return new VNodeLazy(this.Component);
+    }
+    makeText() {
+      return "";
+    }
+  }
   function createVNode({ tag, props = {}, children: children2 }) {
     return new VNode(VNodeType.NODE, tag, props, children2);
   }
@@ -2785,6 +2826,12 @@ var __privateMethod = (obj, member, method) => {
   }
   function createVNodeComment(text) {
     return new VNodeComment(text);
+  }
+  function createPotal({ props = {}, children: children2, Component }) {
+    return new VNodePotal(props, children2, Component);
+  }
+  function createLazy(asyncCallback) {
+    return new VNodeLazy(asyncCallback);
   }
   function cloneVNode(vnode) {
     return vnode.clone();
@@ -3282,6 +3329,9 @@ var __privateMethod = (obj, member, method) => {
       }
     },
     removeChild(parentElement, oldEl) {
+      if (oldEl[COMPONENT_INSTANCE]) {
+        oldEl[COMPONENT_INSTANCE].destroy();
+      }
       parentElement.removeChild(oldEl);
     }
   };
@@ -3744,18 +3794,8 @@ var __privateMethod = (obj, member, method) => {
     componentInstance.resetCurrentComponent();
     let template = componentInstance.template();
     template = flatTemplate(template);
-    if (isArray(template) && template.length > 1) {
-      console.log(template);
-      throw new Error(
-        [
-          `Error Component - ${componentInstance.sourceName}`,
-          "Template root is not must an array, however You can use Fragment instead of it",
-          "Fragment Samples: ",
-          " <>{list}</> ",
-          " <Fragment>{list}</Fragment>"
-        ].join("\n")
-      );
-    }
+    if (isArray(template) && template.length > 1)
+      ;
     const rootTemplate = template[0];
     if (componentInstance.$el) {
       await runningUpdate(componentInstance, rootTemplate);
@@ -4800,7 +4840,10 @@ var __privateMethod = (obj, member, method) => {
   async function VNodeComponentRender(vNodeInstance, withChildren, options) {
     return await makeHtml(vNodeInstance, withChildren, options);
   }
-  const start = (ElementClass, opt = {}) => {
+  function start(ElementClass, opt = {}) {
+    if (opt instanceof window.HTMLElement) {
+      opt = { container: opt };
+    }
     const $container = Dom.create(opt.container || document.body);
     const $targetElement = $container.children().find((it) => it.el[COMPONENT_INSTANCE]);
     if (ElementClass instanceof VNode) {
@@ -4820,9 +4863,12 @@ var __privateMethod = (obj, member, method) => {
     }
     registRootElementInstance(app, $container);
     return app;
-  };
+  }
   const render = start;
   const hydrate = (ElementClass, opt = {}) => {
+    if (opt instanceof window.HTMLElement) {
+      opt = { container: opt };
+    }
     const $container = Dom.create(opt.container || document.body);
     if (ElementClass instanceof VNode) {
       const rootVNode = ElementClass;
@@ -4833,7 +4879,7 @@ var __privateMethod = (obj, member, method) => {
       renderer: renderVNodeComponent
     });
     const $targetElement = $container.firstChild;
-    if ($targetElement) {
+    if ($targetElement && $targetElement.el) {
       app.$el = $targetElement;
       app.$el.el[COMPONENT_INSTANCE] = app;
       renderComponent(app);
@@ -5199,6 +5245,8 @@ var __privateMethod = (obj, member, method) => {
   exports2.createContext = createContext;
   exports2.createElementJsx = createElementJsx;
   exports2.createHandlerInstance = createHandlerInstance;
+  exports2.createLazy = createLazy;
+  exports2.createPotal = createPotal;
   exports2.createVNode = createVNode;
   exports2.createVNodeByDom = createVNodeByDom;
   exports2.createVNodeComment = createVNodeComment;
@@ -5208,6 +5256,7 @@ var __privateMethod = (obj, member, method) => {
   exports2.debounce = debounce;
   exports2.default = index;
   exports2.defaultValue = defaultValue;
+  exports2.forwardRef = forwardRef;
   exports2.get = get;
   exports2.getContextProvider = getContextProvider;
   exports2.getCurrentComponent = getCurrentComponent;

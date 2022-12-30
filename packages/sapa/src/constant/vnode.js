@@ -5,4 +5,7 @@ export const VNodeType = {
   COMPONENT: 100,
   ELEMENT: 101,
   COMMENT: 102,
+  ROOT: 103,
+  PORTAL: 104,
+  LAZY: 105,
 };

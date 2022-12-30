@@ -265,6 +265,10 @@ const patch = {
   },
 
   removeChild(parentElement, oldEl) {
+    if (oldEl[COMPONENT_INSTANCE]) {
+      oldEl[COMPONENT_INSTANCE].destroy();
+    }
+
     parentElement.removeChild(oldEl);
   },
 };
