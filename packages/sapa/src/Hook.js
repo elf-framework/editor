@@ -295,16 +295,54 @@ export function runProviderSubscribe(provider) {
 
 /**
  * Utility Hooks
- * 
+ *
  * @todo support useComponentRender
- * 
+ *
  */
 export function useStore(key, defaultValue) {
   return getCurrentComponent().useStore(key, defaultValue);
 }
 
+/**
+ * Use useStoreValue instead this function
+ *
+ * @deprecated
+ */
 export function useStoreSet(key, value) {
   return getCurrentComponent().useStoreSet(key, value);
+}
+
+/**
+ * useStoreValue returns the current value and settter together.
+ *
+ * If you don't need the setter, use useStore instead.
+ *
+ *
+ * ```js
+ * const [value, setValue] = useStoreValue('key');
+ *
+ * // or
+ *
+ * const [value] = useStoreValue('key');
+ * ```
+ *
+ * @param {string} key
+ * @returns
+ */
+export function useStoreValue(key) {
+  return getCurrentComponent().useStoreValue(key);
+}
+
+/**
+ * useSetStoreValue returns the setter of the store.
+ *
+ * ```js
+ * const setValue = useSetStoreValue('key');
+ * ```
+ *
+ */
+export function useSetStoreValue(key) {
+  return getCurrentComponent().useSetStoreValue(key);
 }
 
 export function useRootContext(key) {

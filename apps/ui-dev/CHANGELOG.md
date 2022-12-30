@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.42
+
+### Patch Changes
+
+- update SearchView with initState
+
 ## 1.0.41
 
 ### Patch Changes

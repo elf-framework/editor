@@ -383,7 +383,7 @@ function A ( ) {
 }
 ```
 
-## useStore
+## `deprecated` useStore 
 
 `useStore` brings the value stored in the store.
 
@@ -398,7 +398,7 @@ function A ( ) {
 }
 ```
 
-## useStoreSet
+## `deprecated` useStoreSet
 
 `useStoreSet` stores values ​​in a public store.
 
@@ -436,6 +436,46 @@ function A ( ) {
 }
 ```
 
+## useStoreValue 
+
+`useStoreValue` brings the value stored in the store.
+
+```jsx
+function A ( ) {
+
+  const [backgroundColor, setBackgroundColor] = useStoreValue("background-color", /*default value*/"red")
+
+  return <div style={{
+    backgroundColor
+  }} onClick={() => {
+    setBackgroundColor("yellow");
+  }}>Simple Text</div>
+}
+```
+
+Because useStoreValue includes useSubscribe, the component is automatically re-rendered when the value of the corresponding `key` changes.
+
+## useSetStoreValue 
+
+`useSetStoreValue` is a hook that can change the value of a specific key in the store.
+
+Return the setter function.
+
+```jsx
+
+function A ( ) {
+
+  const setBackgroundColor = useSetStoreValue("background-color")
+
+  return <div style={{
+    backgroundColor: "red"
+  }} onClick={() => {
+    setBackgroundColor("yellow");
+  }}>Simple Text</div>
+}
+```
+
+
 ## useRootContext 
 
 It brings the options applied when running on the root, such as `start`, `hydrate`, and `renderToHtml`.
@@ -450,6 +490,32 @@ start(<A >, {
 ```jsx
 function App() {
   return <div>{useRootContext('title')}</div>
+}
+```
+
+
+In addition to the container, other data can also be set.
+
+Sapa calls this the rootContext.
+
+```jsx
+start(<Page {...pageProps} />, {
+  pageContext,
+  routeParams,
+});
+
+```
+
+To use it, do the following:
+
+```jsx
+import { useRootContext } from "@elf-framework/sapa";
+
+function OtherComponent () {
+  const pageContext = useRootContext('pageContext');
+  const routeParams = useRootContext('routeParams');
+
+  return <div>Other Component</div>
 }
 ```
 
@@ -520,31 +586,4 @@ function App () {
   return <div>{value}</div>
 }
 
-```
-
-## useRootContext 
-
-In addition to the container, other data can also be set.
-
-Sapa calls this the rootContext.
-
-```jsx
-start(<Page {...pageProps} />, {
-  pageContext,
-  routeParams,
-});
-
-```
-
-To use it, do the following:
-
-```jsx
-import { useRootContext } from "@elf-framework/sapa";
-
-function OtherComponent () {
-  const pageContext = useRootContext('pageContext');
-  const routeParams = useRootContext('routeParams');
-
-  return <div>Other Component</div>
-}
 ```

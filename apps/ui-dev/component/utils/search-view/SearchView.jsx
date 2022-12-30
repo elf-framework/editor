@@ -2,14 +2,12 @@ import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import {
   hydrate,
-  resetCurrentComponent,
   start,
   useCallback,
   useEffect,
   useMemo,
   useRef,
-  useState,
-  useStoreSet,
+  useSetStoreValue,
 } from "@elf-framework/sapa";
 
 import "./SearchView.scss";
@@ -17,18 +15,17 @@ import "./SearchView.scss";
 export function SearchView() {
   const autoRef = useRef(null);
   const previewRef = useRef(null);
-  const [searchContent, setSearchContent] = useState("");
+  const initState = useRef({});
+  const setOpenSearchView = useSetStoreValue("open.search.view");
 
   const handleClose = useCallback(() => {
-    resetCurrentComponent(this);
-    useStoreSet("open.search.view", false);
-  }, [useStoreSet]);
+    setOpenSearchView(false);
+  }, [setOpenSearchView]);
 
   const searchLinks = useMemo(() => {
     return {
       sourceId: "links",
       onSelect({ item }) {
-        console.log(previewRef.current);
         hydrate(
           <div>
             {item.label}-{item.url}
@@ -84,7 +81,15 @@ export function SearchView() {
   }, [previewRef]);
 
   useEffect(() => {
+    if (!autoRef.current) return;
+
     autocomplete({
+      // 초기 상태 적용
+      initialState: initState.current,
+      onStateChange({ state }) {
+        // 변경된 상태 캐쉬
+        initState.current = state;
+      },
       renderer: {
         // eslint-disable-next-line no-undef
         createElement: createElementJsx,
@@ -102,7 +107,7 @@ export function SearchView() {
         return [searchLinks];
       },
     });
-  }, [setSearchContent, previewRef, searchLinks]);
+  }, [autoRef, previewRef, initState, searchLinks]);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -130,13 +135,14 @@ export function SearchView() {
         </div>
         <div class="search-view-content">
           <div class="search-view-content-list"></div>
-          <div class="search-view-content-preview" ref={previewRef}>
-            {searchContent}
-          </div>
+          <div class="search-view-content-preview" ref={previewRef}></div>
         </div>
         <div class="search-view-bottom">
-          <div class="search-view-bottom-left">Recent Searches</div>
-          <div class="search-view-bottom-right">Recent Searches</div>
+          <div class="search-view-bottom-left">
+            <kbd>↵</kbd> to select <kbd>↓</kbd> <kbd>↑</kbd> to navigate{" "}
+            <kbd>esc</kbd> to close
+          </div>
+          <div class="search-view-bottom-right">Search by elf-framework</div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { isFunction } from "./functions/func";
+import { isFunction, isUndefined } from "./functions/func";
 import {
   pendingComponent,
   removePendingComponent,
@@ -18,6 +18,8 @@ const USE_CONTEXT = Symbol("useContext");
 const USE_SUBSCRIBE = Symbol("useSubscribe");
 const USE_ID = Symbol("useId");
 const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
+const USE_STORE_VALUE = Symbol("useStoreValue");
+const USE_SET_STORE_VALUE = Symbol("useSetStoreValue");
 
 export class RefClass {
   constructor(current) {
@@ -49,7 +51,7 @@ function createState({ value, component }) {
     return v;
   }
 
-  const update = (newValue) => {
+  localValue.update = (newValue) => {
     const _newValue = getValue(newValue);
 
     if (localValue.value !== _newValue) {
@@ -60,7 +62,7 @@ function createState({ value, component }) {
     }
   };
 
-  return [localValue, update];
+  return localValue;
 }
 
 function createExternalStore({ subscribe, getSnapshot, isEqual, component }) {
@@ -91,6 +93,88 @@ function createExternalStore({ subscribe, getSnapshot, isEqual, component }) {
   return localValue;
 }
 
+function createStoreValue({ key, defaultValue, component }) {
+  let localValue = {
+    key,
+    defaultValue,
+    component,
+    value: getValue(),
+    getValue,
+    update: (newValue) => {
+      component.$store.set(key, newValue);
+    },
+  };
+
+  function getValue() {
+    return component.$store.get(key, defaultValue);
+  }
+
+  return localValue;
+}
+
+function createSetStoreValue({ key, component }) {
+  let localValue = {
+    key,
+    component,
+    update: (newValue) => {
+      component.$store.set(key, newValue);
+    },
+  };
+
+  return localValue;
+}
+
+function createEffect({ callback, deps, component, hasChangedDeps }) {
+  return {
+    callback,
+    deps,
+    hasChangedDeps,
+    component,
+  };
+}
+
+function createMemo({ callback, deps, component, value }) {
+  const localValue = {
+    callback,
+    deps,
+    component,
+    value: null,
+  };
+
+  localValue.value = isUndefined(value) ? callback.call(component) : value;
+
+  return localValue;
+}
+
+function createSubscribe({
+  name,
+  callback,
+  debounceSecond,
+  throttleSecond,
+  isSelf,
+  component,
+}) {
+  const localValue = {
+    name,
+    callback,
+    component,
+  };
+
+  // register callback to store
+  // create unsubscribe
+  localValue.unsubscribe = component.$store.on(
+    name,
+    callback,
+    this,
+    debounceSecond,
+    throttleSecond,
+    false,
+    isSelf
+  );
+
+  return localValue;
+}
+
 export class HookMachine extends MagicHandler {
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
   #__stateHooks = [];
@@ -110,25 +194,79 @@ export class HookMachine extends MagicHandler {
     this.#__stateHooksIndex = hooks.__stateHooksIndex || 0;
 
     this.#__stateHooks.forEach((hook, index) => {
-      if (hook?.type === USE_STATE) {
-        hook.hookInfo = createState({
-          value: hook.hookInfo[0].value,
-          component: this,
-        });
-      } else if (
-        hook?.type === USE_MEMO ||
-        hook?.type === USE_CALLBACK ||
-        hook?.type === USE_REF
-      ) {
-        hook.hookInfo = {
-          callback: hook.hookInfo.callback.bind(this),
-          value: hook.hookInfo.value,
-          deps: hook.hookInfo.deps,
-        };
-      } else {
-        // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
-        // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
-        this.#__stateHooks[index] = undefined;
+      switch (hook?.type) {
+        case USE_STATE:
+          hook.hookInfo = createState({
+            value: hook.hookInfo.value,
+            component: this,
+          });
+          break;
+        case USE_EFFECT:
+          // useEffect 는 렌더링 시점에 실행되기 때문에
+          // 따로 복구하지 않는다.
+          // useEffect 에서 실행되는 callback 은
+          // 항상 새로 생성되는 함수이기 때문에
+          // 복구할 필요가 없다.
+
+          // hook.hookInfo = createEffect({
+          //   callback: hook.hookInfo.callback,
+          //   deps: hook.hookInfo.deps,
+          //   cleanup: hook.hookInfo.cleanup?.bind(this),
+          //   component: this,
+          // });
+          break;
+        case USE_MEMO:
+        case USE_CALLBACK:
+        case USE_REF:
+          var newData = {
+            callback: hook.hookInfo.callback,
+            deps: hook.hookInfo.deps,
+            component: this,
+          };
+
+          if (hook.type === USE_REF || hook.type === USE_MEMO) {
+            newData.value = hook.hookInfo.value;
+          }
+
+          hook.hookInfo = createMemo(newData);
+          break;
+        case USE_STORE_VALUE:
+          hook.hookInfo = createStoreValue({
+            key: hook.hookInfo.key,
+            defaultValue: hook.hookInfo.defaultValue,
+            component: this,
+          });
+          break;
+        case USE_SET_STORE_VALUE:
+          hook.hookInfo = createSetStoreValue({
+            key: hook.hookInfo.key,
+            component: this,
+          });
+          break;
+        case USE_SYNC_EXTERNAL_STORE:
+          hook.hookInfo = createExternalStore({
+            subscribe: hook.hookInfo.subscribe,
+            getSnapshot: hook.hookInfo.getSnapshot,
+            isEqual: hook.hookInfo.isEqual,
+            component: this,
+          });
+          break;
+        case USE_SUBSCRIBE:
+          hook.hookInfo = createSubscribe({
+            name: hook.hookInfo.name,
+            callback: hook.hookInfo.callback,
+            debounceSecond: hook.hookInfo.debounceSecond,
+            throttleSecond: hook.hookInfo.throttleSecond,
+            isSelf: hook.hookInfo.isSelf,
+            component: this,
+          });
+          break;
+        default:
+          // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
+          // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
+
+          this.#__stateHooks[index] = undefined;
+          break;
       }
     });
   }
@@ -223,11 +361,11 @@ export class HookMachine extends MagicHandler {
       );
     }
 
-    const [value, update] = this.getHook().hookInfo;
+    const value = this.getHook().hookInfo;
 
     this.increaseHookIndex();
 
-    return [value.value, update];
+    return [value.value, value.update];
   }
 
   isChangedDeps(deps) {
@@ -246,14 +384,27 @@ export class HookMachine extends MagicHandler {
     return hasDeps || hasChangedDeps;
   }
 
+  /**
+   * useEffect 는 렌더링이 완료된 후에 실행되는 hook입니다.
+   *
+   * useEffect 가 실행되면 callback 은 항상 재생성되고, deps 변경 유무를 설정해줍니다.
+   *
+   * deps 의 변경 유무는 isChangedDeps 에서 확인하고 mounted 상태에서는 deps 가 변경되었을
+   * 때만 callback 을 실행합니다. (runHook() 참조). callback 을 실행한 이후에 나오는
+   * cleanup 함수는 destroy 될 때 실행됩니다.
+   *
+   */
   useEffect(callback, deps) {
-    const hasChangedDeps = this.isChangedDeps(deps);
-
-    this.setHook(USE_EFFECT, {
-      deps,
-      hasChangedDeps,
-      callback,
-    });
+    this.setHook(
+      USE_EFFECT,
+      createEffect({
+        deps,
+        callback,
+        // 현재 인덱스의 기존 deps 와 새로운 deps 를 비교해서 변경여부 설정
+        hasChangedDeps: this.isChangedDeps(deps),
+        component: this,
+      })
+    );
 
     this.increaseHookIndex();
   }
@@ -272,11 +423,14 @@ export class HookMachine extends MagicHandler {
     const hasChangedDeps = this.isChangedDeps(deps);
 
     if (hasChangedDeps) {
-      this.setHook(useType, {
-        deps,
-        value: callback(),
-        callback,
-      });
+      this.setHook(
+        useType,
+        createMemo({
+          deps,
+          callback,
+          component: this,
+        })
+      );
     }
 
     const lastHookValue = this.getHook().hookInfo || {};
@@ -331,27 +485,20 @@ export class HookMachine extends MagicHandler {
     isSelf = false
   ) {
     if (!this.getHook()) {
-      this.setHook(USE_SUBSCRIBE, {
-        name,
-        callback,
-        component: this,
-        unsubscribe: this.$store.on(
+      this.setHook(
+        USE_SUBSCRIBE,
+        createSubscribe({
           name,
           callback,
-          this,
+          component: this,
           debounceSecond,
           throttleSecond,
-          false,
-          isSelf
-        ),
-      });
+          isSelf,
+        })
+      );
     }
 
-    const { unsubscribe } = this.getHook().hookInfo;
-
     this.increaseHookIndex();
-
-    return unsubscribe;
   }
 
   useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
@@ -368,10 +515,76 @@ export class HookMachine extends MagicHandler {
     return this.emit(name, ...args);
   }
 
+  /**
+   *
+   * ```js
+   * const [ value, setValue ] = useStoreValue('key');
+   *
+   * setValue('value');
+   *
+   * ```
+   *
+   */
+  useStoreValue(key, defaultValue) {
+    // register store event listener
+    this.useSubscribe(key, () => {
+      renderComponent(this);
+    });
+
+    if (!this.getHook()) {
+      this.setHook(
+        USE_STORE_VALUE,
+        createStoreValue({
+          key,
+          defaultValue,
+          component: this,
+        })
+      );
+    }
+
+    const value = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
+    return [value.getValue(), value.update];
+  }
+
+  /**
+   * useStoreValue returns setter function for store value.
+   *
+   */
+  useSetStoreValue(key) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_SET_STORE_VALUE,
+        createSetStoreValue({
+          key,
+          component: this,
+        })
+      );
+    }
+
+    const value = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
+    return value.update;
+  }
+
+  /**
+   * Use useStoreValue instead of this function.
+   *
+   * @deprecated
+   */
   useStore(key, defaultValue) {
     return this.$store.get(key, defaultValue);
   }
 
+  /**
+   * Use useSetStoreValue or useStoreValue instead of this function.
+   *
+   * @deprecated
+   */
   useStoreSet(key, value, hasChangeMessage = true) {
     this.$store.set(key, value, hasChangeMessage);
   }
@@ -392,6 +605,10 @@ export class HookMachine extends MagicHandler {
     return this.filterHooks(USE_SYNC_EXTERNAL_STORE);
   }
 
+  getUseSubscribe() {
+    return this.filterHooks(USE_SUBSCRIBE);
+  }
+
   getUseStates() {
     return this.filterHooks(USE_STATE).map((it) => it.value);
   }
@@ -400,6 +617,7 @@ export class HookMachine extends MagicHandler {
     // hooks
     this.getUseEffects().forEach((it) => {
       // FIXME: hook을 실행하기 전에 cleanup 을 수행해야할까?
+      // const hasChangedDeps = this.isChangedDeps(it.deps);
       if (it.hasChangedDeps) {
         // deps: [] 는 한번만 실행하도록 해야한다.
         it.cleanup = it.callback();
@@ -416,6 +634,12 @@ export class HookMachine extends MagicHandler {
 
     /** unscribe external store  */
     this.getUseSyncExternalStore().forEach((it) => {
+      if (isFunction(it.unsubscribe)) {
+        it.unsubscribe();
+      }
+    });
+
+    this.getUseSubscribe().forEach((it) => {
       if (isFunction(it.unsubscribe)) {
         it.unsubscribe();
       }

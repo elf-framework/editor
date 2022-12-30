@@ -122,6 +122,18 @@
             display: flex;
             border-top: 1px solid var(--color-border);
 
+            kbd {
+                border: 2px solid black; 
+                box-shadow: 2px 2px black; 
+                font-size: 1.2em; 
+                line-height: 1em; 
+                display: inline-block;
+                font-weight: 900;
+                letter-spacing: .05em; 
+                padding: 3px 6px;
+                white-space: nowrap;
+            }
+
             > .search-view-bottom-left {
                 flex: 1 1 auto;
                 padding: 10px;

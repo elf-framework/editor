@@ -100,6 +100,9 @@ function makeElement(vNodeInstance, withChildren, options) {
 
     Object.keys(props).forEach((key) => {
       const value = props[key];
+
+      if (key === "ref") return;
+
       if (key === "style") {
         if (isString(value)) {
           el.style.cssText = value;

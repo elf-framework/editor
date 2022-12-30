@@ -82,6 +82,9 @@ const patch = {
     }
   },
   setProp(el, name, value) {
+    // ref 는 속성설정을 하지 않는다.
+    if (name === "ref") return;
+
     if (isBooleanType(name)) {
       this.setBooleanProp(el, name, value);
     } else if (name.startsWith(PREFIX_EVENT)) {
@@ -345,8 +348,10 @@ const updateProps = (
   if (newProps.ref) {
     if (newVNode.ref instanceof RefClass) {
       newVNode.ref.setCurrent(node);
+    } else {
+      isFunction(options.registerRef) &&
+        options.registerRef(newProps.ref, node);
     }
-    isFunction(options.registerRef) && options.registerRef(newProps.ref, node);
   }
   // newProps 를 기준으로 루프를 먼저 돌고
   newPropsKeys

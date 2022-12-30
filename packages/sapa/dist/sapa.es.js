@@ -364,6 +364,12 @@ function useStore(key, defaultValue2) {
 function useStoreSet(key, value) {
   return getCurrentComponent().useStoreSet(key, value);
 }
+function useStoreValue(key) {
+  return getCurrentComponent().useStoreValue(key);
+}
+function useSetStoreValue(key) {
+  return getCurrentComponent().useSetStoreValue(key);
+}
 function useRootContext(key) {
   return useStore(COMPONENT_ROOT_CONTEXT)[key];
 }
@@ -456,6 +462,8 @@ const USE_CONTEXT = Symbol("useContext");
 const USE_SUBSCRIBE = Symbol("useSubscribe");
 const USE_ID = Symbol("useId");
 const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
+const USE_STORE_VALUE = Symbol("useStoreValue");
+const USE_SET_STORE_VALUE = Symbol("useSetStoreValue");
 class RefClass {
   constructor(current) {
     this.current = current;
@@ -475,14 +483,14 @@ function createState({ value, component }) {
     }
     return v;
   }
-  const update = (newValue) => {
+  localValue.update = (newValue) => {
     const _newValue = getValue(newValue);
     if (localValue.value !== _newValue) {
       localValue.value = _newValue;
       renderComponent(localValue.component);
     }
   };
-  return [localValue, update];
+  return localValue;
 }
 function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, component }) {
   let localValue = {
@@ -502,6 +510,74 @@ function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, compon
   localValue.unsubscribe = subscribe(update);
   return localValue;
 }
+function createStoreValue({ key, defaultValue: defaultValue2, component }) {
+  let localValue = {
+    key,
+    defaultValue: defaultValue2,
+    component,
+    value: getValue(),
+    getValue,
+    update: (newValue) => {
+      component.$store.set(key, newValue);
+    }
+  };
+  function getValue() {
+    return component.$store.get(key, defaultValue2);
+  }
+  return localValue;
+}
+function createSetStoreValue({ key, component }) {
+  let localValue = {
+    key,
+    component,
+    update: (newValue) => {
+      component.$store.set(key, newValue);
+    }
+  };
+  return localValue;
+}
+function createEffect({ callback, deps, component, hasChangedDeps }) {
+  return {
+    callback,
+    deps,
+    hasChangedDeps,
+    component
+  };
+}
+function createMemo({ callback, deps, component, value }) {
+  const localValue = {
+    callback,
+    deps,
+    component,
+    value: null
+  };
+  localValue.value = isUndefined(value) ? callback.call(component) : value;
+  return localValue;
+}
+function createSubscribe({
+  name,
+  callback,
+  debounceSecond,
+  throttleSecond,
+  isSelf,
+  component
+}) {
+  const localValue = {
+    name,
+    callback,
+    component
+  };
+  localValue.unsubscribe = component.$store.on(
+    name,
+    callback,
+    this,
+    debounceSecond,
+    throttleSecond,
+    false,
+    isSelf
+  );
+  return localValue;
+}
 class HookMachine extends MagicHandler {
   constructor() {
     super(...arguments);
@@ -518,19 +594,62 @@ class HookMachine extends MagicHandler {
     __privateSet(this, ___stateHooks, hooks.__stateHooks || []);
     __privateSet(this, ___stateHooksIndex, hooks.__stateHooksIndex || 0);
     __privateGet(this, ___stateHooks).forEach((hook, index2) => {
-      if ((hook == null ? void 0 : hook.type) === USE_STATE) {
-        hook.hookInfo = createState({
-          value: hook.hookInfo[0].value,
-          component: this
-        });
-      } else if ((hook == null ? void 0 : hook.type) === USE_MEMO || (hook == null ? void 0 : hook.type) === USE_CALLBACK || (hook == null ? void 0 : hook.type) === USE_REF) {
-        hook.hookInfo = {
-          callback: hook.hookInfo.callback.bind(this),
-          value: hook.hookInfo.value,
-          deps: hook.hookInfo.deps
-        };
-      } else {
-        __privateGet(this, ___stateHooks)[index2] = void 0;
+      switch (hook == null ? void 0 : hook.type) {
+        case USE_STATE:
+          hook.hookInfo = createState({
+            value: hook.hookInfo.value,
+            component: this
+          });
+          break;
+        case USE_EFFECT:
+          break;
+        case USE_MEMO:
+        case USE_CALLBACK:
+        case USE_REF:
+          var newData = {
+            callback: hook.hookInfo.callback,
+            deps: hook.hookInfo.deps,
+            component: this
+          };
+          if (hook.type === USE_REF || hook.type === USE_MEMO) {
+            newData.value = hook.hookInfo.value;
+          }
+          hook.hookInfo = createMemo(newData);
+          break;
+        case USE_STORE_VALUE:
+          hook.hookInfo = createStoreValue({
+            key: hook.hookInfo.key,
+            defaultValue: hook.hookInfo.defaultValue,
+            component: this
+          });
+          break;
+        case USE_SET_STORE_VALUE:
+          hook.hookInfo = createSetStoreValue({
+            key: hook.hookInfo.key,
+            component: this
+          });
+          break;
+        case USE_SYNC_EXTERNAL_STORE:
+          hook.hookInfo = createExternalStore({
+            subscribe: hook.hookInfo.subscribe,
+            getSnapshot: hook.hookInfo.getSnapshot,
+            isEqual: hook.hookInfo.isEqual,
+            component: this
+          });
+          break;
+        case USE_SUBSCRIBE:
+          hook.hookInfo = createSubscribe({
+            name: hook.hookInfo.name,
+            callback: hook.hookInfo.callback,
+            debounceSecond: hook.hookInfo.debounceSecond,
+            throttleSecond: hook.hookInfo.throttleSecond,
+            isSelf: hook.hookInfo.isSelf,
+            component: this
+          });
+          break;
+        default:
+          __privateGet(this, ___stateHooks)[index2] = void 0;
+          break;
       }
     });
   }
@@ -590,9 +709,9 @@ class HookMachine extends MagicHandler {
         createState({ value: initialState, component: this })
       );
     }
-    const [value, update] = this.getHook().hookInfo;
+    const value = this.getHook().hookInfo;
     this.increaseHookIndex();
-    return [value.value, update];
+    return [value.value, value.update];
   }
   isChangedDeps(deps) {
     const hasDeps = !deps;
@@ -606,12 +725,15 @@ class HookMachine extends MagicHandler {
     return hasDeps || hasChangedDeps;
   }
   useEffect(callback, deps) {
-    const hasChangedDeps = this.isChangedDeps(deps);
-    this.setHook(USE_EFFECT, {
-      deps,
-      hasChangedDeps,
-      callback
-    });
+    this.setHook(
+      USE_EFFECT,
+      createEffect({
+        deps,
+        callback,
+        hasChangedDeps: this.isChangedDeps(deps),
+        component: this
+      })
+    );
     this.increaseHookIndex();
   }
   useReducer(reducer, initialState) {
@@ -624,11 +746,14 @@ class HookMachine extends MagicHandler {
   useMemo(callback, deps, useType = USE_MEMO) {
     const hasChangedDeps = this.isChangedDeps(deps);
     if (hasChangedDeps) {
-      this.setHook(useType, {
-        deps,
-        value: callback(),
-        callback
-      });
+      this.setHook(
+        useType,
+        createMemo({
+          deps,
+          callback,
+          component: this
+        })
+      );
     }
     const lastHookValue = this.getHook().hookInfo || {};
     this.increaseHookIndex();
@@ -664,24 +789,19 @@ class HookMachine extends MagicHandler {
   }
   useSubscribe(name, callback, debounceSecond = 0, throttleSecond = 0, isSelf = false) {
     if (!this.getHook()) {
-      this.setHook(USE_SUBSCRIBE, {
-        name,
-        callback,
-        component: this,
-        unsubscribe: this.$store.on(
+      this.setHook(
+        USE_SUBSCRIBE,
+        createSubscribe({
           name,
           callback,
-          this,
+          component: this,
           debounceSecond,
           throttleSecond,
-          false,
           isSelf
-        )
-      });
+        })
+      );
     }
-    const { unsubscribe } = this.getHook().hookInfo;
     this.increaseHookIndex();
-    return unsubscribe;
   }
   useSelf(name, callback, debounceSecond = 0, throttleSecond = 0) {
     return this.useSubscribe(
@@ -694,6 +814,38 @@ class HookMachine extends MagicHandler {
   }
   useEmit(name, ...args) {
     return this.emit(name, ...args);
+  }
+  useStoreValue(key, defaultValue2) {
+    this.useSubscribe(key, () => {
+      renderComponent(this);
+    });
+    if (!this.getHook()) {
+      this.setHook(
+        USE_STORE_VALUE,
+        createStoreValue({
+          key,
+          defaultValue: defaultValue2,
+          component: this
+        })
+      );
+    }
+    const value = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return [value.getValue(), value.update];
+  }
+  useSetStoreValue(key) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_SET_STORE_VALUE,
+        createSetStoreValue({
+          key,
+          component: this
+        })
+      );
+    }
+    const value = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return value.update;
   }
   useStore(key, defaultValue2) {
     return this.$store.get(key, defaultValue2);
@@ -709,6 +861,9 @@ class HookMachine extends MagicHandler {
   }
   getUseSyncExternalStore() {
     return this.filterHooks(USE_SYNC_EXTERNAL_STORE);
+  }
+  getUseSubscribe() {
+    return this.filterHooks(USE_SUBSCRIBE);
   }
   getUseStates() {
     return this.filterHooks(USE_STATE).map((it) => it.value);
@@ -727,6 +882,11 @@ class HookMachine extends MagicHandler {
       }
     });
     this.getUseSyncExternalStore().forEach((it) => {
+      if (isFunction(it.unsubscribe)) {
+        it.unsubscribe();
+      }
+    });
+    this.getUseSubscribe().forEach((it) => {
       if (isFunction(it.unsubscribe)) {
         it.unsubscribe();
       }
@@ -3040,6 +3200,8 @@ function makeElement$3(vNodeInstance, withChildren, options) {
     }
     Object.keys(props).forEach((key) => {
       const value = props[key];
+      if (key === "ref")
+        return;
       if (key === "style") {
         if (isString(value)) {
           el.style.cssText = value;
@@ -3195,6 +3357,8 @@ const patch = {
     }
   },
   setProp(el, name, value) {
+    if (name === "ref")
+      return;
     if (isBooleanType(name)) {
       this.setBooleanProp(el, name, value);
     } else if (name.startsWith(PREFIX_EVENT)) {
@@ -3366,8 +3530,9 @@ const updateProps = (node, newProps = {}, oldProps = {}, options = {}, newVNode)
   if (newProps.ref) {
     if (newVNode.ref instanceof RefClass) {
       newVNode.ref.setCurrent(node);
+    } else {
+      isFunction(options.registerRef) && options.registerRef(newProps.ref, node);
     }
-    isFunction(options.registerRef) && options.registerRef(newProps.ref, node);
   }
   newPropsKeys.filter((key) => !expectKeys[key]).forEach((key) => {
     const newValue = newProps[key];
@@ -5324,9 +5489,11 @@ export {
   useRender,
   useRootContext,
   useSelf,
+  useSetStoreValue,
   useState,
   useStore,
   useStoreSet,
+  useStoreValue,
   useSubscribe,
   useSyncExternalStore,
   useTrigger,

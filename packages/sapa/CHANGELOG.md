@@ -1,5 +1,13 @@
 # @elf-framework/sapa
 
+## 0.0.143
+
+### Patch Changes
+
+- Redesign hooks algorithm
+  deprecated useStore, useStoreSet hooks
+  add useStoreValue, useSetStoreValue hooks
+
 ## 0.0.141
 
 ### Patch Changes

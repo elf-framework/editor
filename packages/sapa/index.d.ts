@@ -551,12 +551,48 @@ declare module "@elf-framework/sapa" {
   }
   export function createContext<T>(defaultValue: T): Context<T>;
   export function useContext<T>(context: Context<T>): T;
+
+  /**
+   * store 의 상태를 가져온다.
+   *
+   * Use useStoreValue instead.
+   *
+   * @deprecated
+   */
   export function useStore<T>(key: string): T;
 
   /**
    * store 의 상태를 변경한다.
+   *
+   * Use useSetStoreValue or useStoreValue instead.
+   *
+   * @deprecated
    */
   export function useStoreSet<T>(key: string, value: T): T;
+
+  /**
+   * useStoreValue returns the current value and settter together.
+   *
+   * ```js
+   * const [value, setValue] = useStoreValue('key');
+   *
+   * // or
+   *
+   * const [value] = useStoreValue('key');
+   * ```
+   *
+   */
+  export function useStoreValue<T>(key: string): [T, (value: T) => void];
+
+  /**
+   * useSetStoreValue returns the setter function.
+   *
+   *
+   * ```js
+   * const setValue = useSetStoreValue('key');
+   * ```
+   */
+  export function useSetStoreValue<T>(key: string): (value: T) => void;
   export function useRootContext<T>(key: string): T;
   export function useSubscribe(
     name: string,
