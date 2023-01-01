@@ -1,14 +1,8 @@
-import {
-  resetCurrentComponent,
-  useCallback,
-  useComponentRender,
-  useEffect,
-  useStore,
-  useStoreSet,
-} from "@elf-framework/sapa";
+import { useStoreValue } from "@elf-framework/sapa";
 import { ActionGroup, Button, Flex, View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
+import { MobileMenu } from "../component/MobileMenu";
 import { PageMenu } from "../component/PageMenu";
 import { PageTools } from "../component/PageTools";
 import { SearchView } from "../component/utils/search-view/SearchView";
@@ -17,28 +11,19 @@ import { useTheme } from "../hooks/useTheme";
 import { Logo } from "./items/Logo";
 import "./Layout.scss";
 
-function LogoView() {
-  return (
-    <div>
-      <Logo />
-    </div>
-  );
-}
-
 export function Layout(props) {
   const { content, menu = [], version = "", title = "" } = props;
 
   useOpenSearch();
   useTheme();
-  useComponentRender("open.search.view");
-  const openSearchView = useStore("open.search.view");
-
+  const [openSearchView] = useStoreValue("open.search.view");
+  const [showMobileMenu] = useStoreValue("show.mobile.menu");
 
   return (
     <div class="layout">
       <div class="layout-header">
-        <Flex class="layout-logo">
-          <LogoView title={title} />
+        <Flex class="layout-logo" style={{ alignItem: "center" }}>
+          <Logo title={title} />
         </Flex>
         <Flex class="layout-tools">
           <PageTools menu={menu} />
@@ -64,6 +49,7 @@ export function Layout(props) {
         {/* <Footer /> */}
       </View>
 
+      {showMobileMenu ? <MobileMenu menu={menu} /> : undefined}
       {openSearchView ? <SearchView /> : undefined}
     </div>
   );

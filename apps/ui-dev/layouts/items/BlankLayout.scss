@@ -90,16 +90,16 @@ html,body {
             padding: 0px 10px;
             padding-right: 0px;
             .layout-logo {
-                flex: none;
+                // flex: none;
 
                 height: 100%;
-                display: inline-block;
+                // display: inline-block;
             }
 
             .layout-tools {
                 flex: none; 
                 justify-content: flex-end;
-                width: 40px;
+                // width: 40px;
                 height: 100%;
                 text-align: right;
             }

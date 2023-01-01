@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.43
+
+### Patch Changes
+
+- update MobileMenu component
+
 ## 1.0.42
 
 ### Patch Changes

@@ -496,6 +496,7 @@ function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, compon
   let localValue = {
     value: getSnapshot(),
     subscribe,
+    getSnapshot,
     unsubscribe: null,
     component
   };

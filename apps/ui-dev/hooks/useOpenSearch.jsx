@@ -1,18 +1,11 @@
-import {
-  getCurrentComponent,
-  resetCurrentComponent,
-  useCallback,
-  useEffect,
-  useStoreSet,
-} from "@elf-framework/sapa";
+import { useCallback, useEffect, useSetStoreValue } from "@elf-framework/sapa";
 
 export function useOpenSearch() {
-  const self = getCurrentComponent();
+  const setOpenSearchView = useSetStoreValue("open.search.view");
 
   const showSearchView = useCallback(() => {
-    resetCurrentComponent(self);
-    useStoreSet("open.search.view", true);
-  }, [resetCurrentComponent, useStoreSet]);
+    setOpenSearchView(true);
+  }, [setOpenSearchView]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {

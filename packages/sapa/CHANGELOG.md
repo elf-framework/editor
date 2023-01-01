@@ -1,5 +1,12 @@
 # @elf-framework/sapa
 
+## 0.0.145
+
+### Patch Changes
+
+- fixed useSyncExternalStore bug
+  update index.d.ts
+
 ## 0.0.144
 
 ### Patch Changes

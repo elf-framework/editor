@@ -69,6 +69,7 @@ function createExternalStore({ subscribe, getSnapshot, isEqual, component }) {
   let localValue = {
     value: getSnapshot(),
     subscribe,
+    getSnapshot,
     unsubscribe: null,
     component,
   };

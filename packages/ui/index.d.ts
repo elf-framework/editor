@@ -322,7 +322,6 @@ declare module "@elf-framework/ui" {
     outline?: boolean;
     quiet?: boolean;
     disabled?: boolean;
-    onlyIcon?: boolean;
     class: string;
     iconOnly: boolean;
     place?: string;

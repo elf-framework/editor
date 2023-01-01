@@ -500,6 +500,7 @@ var __privateMethod = (obj, member, method) => {
     let localValue = {
       value: getSnapshot(),
       subscribe,
+      getSnapshot,
       unsubscribe: null,
       component
     };
