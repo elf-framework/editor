@@ -16,7 +16,9 @@ export function PageTools() {
 
   return (
     <div class="page-tools">
-      <div class="sm">
+      <div class="sm" style={{ whiteSpace: "nowrap" }}>
+        <PeerView noLabel={true} />
+
         <Button iconOnly quiet onClick={() => setOpenSearchView(true)}>
           <SearchFilled />
         </Button>

@@ -2626,12 +2626,14 @@ var __privateMethod = (obj, member, method) => {
           const isDisabled = !!it.disabled;
           const selectedStyle = it.selectedStyle || {};
           const style22 = it.style || {};
+          const zIndex = it.zIndex || void 0;
           return /* @__PURE__ */ sapa.createElementJsx(
             "div",
             {
               class: sapa.classnames("elf--tabstrip-item", {
                 selected: isSelected,
-                disabled: isDisabled
+                disabled: isDisabled,
+                zIndex
               }),
               style: isSelected ? selectedStyle : style22
             },

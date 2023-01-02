@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.147
+
+### Patch Changes
+
+- modify tabstrp zindex
+
 ## 0.0.146
 
 ### Patch Changes

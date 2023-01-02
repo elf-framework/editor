@@ -92,12 +92,14 @@ export class TabStrip extends UIElement {
             const isDisabled = !!it.disabled;
             const selectedStyle = it.selectedStyle || {};
             const style = it.style || {};
+            const zIndex = it.zIndex || undefined;
 
             return (
               <div
                 class={classnames("elf--tabstrip-item", {
                   selected: isSelected,
                   disabled: isDisabled,
+                  zIndex,
                 })}
                 style={isSelected ? selectedStyle : style}
               >

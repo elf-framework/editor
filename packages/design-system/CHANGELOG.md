@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.148
+
+### Patch Changes
+
+- modify tabstrip zIndex
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.148
+
 ## 0.0.140
 
 ### Patch Changes

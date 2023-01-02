@@ -52,7 +52,20 @@ Buttons allow users to perform an action or to navigate to another page. They ha
 ## Options 
 
 ### Label and icon
+
 <OptionsView />
+
+&nbsp;
+
+Buttons should always have a label, unless they are only using an icon
+that is universally understood and accessible. They can have an
+optional icon, but it should not be used for decoration. Use an icon
+only when necessary and when it has a strong association with the
+label text.
+
+The label can be hidden to create an icon-only button. If the label is
+hidden, an icon is required, and the label will appear in a tooltip.
+
 
 <CodeView>
 
@@ -113,6 +126,13 @@ function App() {
 
 ### Variant
 <VariantView />
+
+&nbsp;
+
+The accent button communicates strong emphasis and is reserved for
+actions that are essential to an experience. Don’t use more than 3
+accent buttons in the same view. These give extra prominence to
+important actions and are meant to establish a clear hierarchy.
 
 
 <CodeView>
@@ -250,6 +270,13 @@ function App() {
 ### Style 
 <StyleView />
 
+&nbsp;
+
+Buttons are available in either fill or outline styles. A button in
+the fill style has a solid background, since it’s meant to be
+intentionally more prominent than a button in the outline style. An
+outline style button has a visible stroke and no background color, and
+should only be used for secondary actions.
 
 <CodeView>
 
@@ -279,6 +306,12 @@ function App() {
 ### Justified 
 <JustifiedView />
 
+&nbsp;
+
+A button can become justified. By default, it is not justified since
+the button size depends on the label and/or icon inside of each
+button. When a button is justified, it takes up the entire available
+container width.
 
 
 <CodeView>
@@ -336,6 +369,13 @@ function App() {
 ### Disabled
 <DisabledView />
 
+&nbsp;
+A button in a disabled state shows that an action exists, but is not
+available in that circumstance. This state can be used to maintain
+layout continuity and to communicate that an action may become
+available later.
+
+
 <CodeView>
 
     <CodeViewItem title="Sapa">
@@ -364,6 +404,11 @@ function App() {
 ### Focus 
 
 <FocusedView />
+
+&nbsp;
+A button can be navigated using a keyboard. The keyboard focus state
+takes the button’s visual hover state and adds a blue ring to the
+button in focus.
 
 <CodeView>
 

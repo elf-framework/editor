@@ -40,6 +40,8 @@
 
     .sm {
         display: none;
+        flex: 1 1 auto;
+        height: 100%;
     }
 
     .lg {
@@ -55,7 +57,8 @@
     .page-tools {
         padding: 0px;
         .sm {
-            display: block;
+            display: flex;
+            align-items: center;
         }
     
         .lg {
