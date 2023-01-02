@@ -469,7 +469,9 @@ class RefClass {
     this.current = current;
   }
   setCurrent(current) {
-    this.current = current;
+    if (this.current !== current) {
+      this.current = current;
+    }
   }
 }
 function createRef(current = void 0) {
@@ -610,8 +612,6 @@ class HookMachine extends MagicHandler {
             component: this
           });
           break;
-        case USE_EFFECT:
-          break;
         case USE_MEMO:
         case USE_CALLBACK:
         case USE_REF:
@@ -656,6 +656,7 @@ class HookMachine extends MagicHandler {
             component: this
           });
           break;
+        case USE_EFFECT:
         default:
           __privateGet(this, ___stateHooks)[index2] = void 0;
           break;
@@ -2358,9 +2359,10 @@ class BaseStore {
     window.Promise.resolve().then(() => {
       var list = this.getCachedCallbacks(event);
       if (list) {
-        const runnableFunctions = list.filter(
-          (f) => f.context.source === source
-        );
+        const runnableFunctions = list.filter((f) => {
+          var _a;
+          return ((_a = f.context) == null ? void 0 : _a.source) === source;
+        });
         runnableFunctions.forEach((f) => {
           f.callback.apply(f.context, args);
         });

@@ -1,40 +1,56 @@
-import { useComponentRender, useEffect } from "@elf-framework/sapa";
-
-function draw(ctx) {
-  const canvas = ctx.canvas;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillRect(100, 100, 200, 200);
-  ctx.clearRect(120, 120, 160, 160);
-  ctx.strokeRect(160, 160, 80, 80);
-
-  requestAnimationFrame(() => draw(ctx));
-}
+import { useComponentRender, useEffect, useRef } from "@elf-framework/sapa";
 
 export function Canvas3D() {
+  const canvasRef = useRef();
   useComponentRender("resize.window");
 
   useEffect(() => {
-    const ctx = this.$el.el.getContext("2d");
-    const rect = this.$el.rect();
+    if (!canvasRef.current) return;
 
-    const width = +this.$el.attr("width");
+    const ctx = canvasRef.current.getContext("2d");
+    const rect = canvasRef.current.getBoundingClientRect();
+
+    const width = +canvasRef.current.getAttribute("width");
 
     if (!width) {
       const devicePixelRatio = window.devicePixelRatio || 1;
       const backingStoreRatio = ctx.backingStorePixelRatio || 1;
       const ratio = devicePixelRatio / backingStoreRatio;
 
-      this.$el.attr("width", rect.width * ratio);
-      this.$el.attr("height", rect.height * ratio);
+      canvasRef.current.setAttribute("width", rect.width * ratio);
+      canvasRef.current.setAttribute("height", rect.height * ratio);
 
       // ctx.scale(ratio, ratio);
     }
 
-    requestAnimationFrame(() => draw(ctx));
-  }, [window.innerWidth, window.innerHeight]);
+    let requestId;
+
+    function draw() {
+      const canvas = ctx.canvas;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgb(100, 100, 255)";
+      ctx.fillRect(100, 100, 200, 200);
+      ctx.clearRect(120, 120, 160, 160);
+      ctx.strokeStyle = "rgb(200, 5, 255)";
+      ctx.lineWidth = 5;
+      ctx.strokeRect(160, 160, 80, 80);
+    }
+
+    function render() {
+      draw();
+
+      requestId = requestAnimationFrame(render);
+    }
+
+    render();
+    return () => {
+      cancelAnimationFrame(requestId);
+    };
+  }, []);
 
   return (
     <canvas
+      ref={canvasRef}
       style={{
         position: "absolute",
         top: 0,

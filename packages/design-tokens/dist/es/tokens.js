@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 02 Jan 2023 04:09:40 GMT
+ * Generated on Mon, 02 Jan 2023 05:10:35 GMT
  */
 
 export const ImageLogo = "assets/svg/logo.svg";

@@ -1,6 +1,4 @@
-import { Tab, TabItem, View } from "@elf-framework/ui";
-
-import { TreeView } from "../../components/treeview/TreeView";
+import { Tab, TabItem, TreeView, View } from "@elf-framework/ui";
 
 export function LeftTab() {
   return (

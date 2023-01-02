@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.149
+
+### Patch Changes
+
+- fixed useEffect reload ordering
+
 ## 0.0.145
 
 ### Patch Changes

@@ -261,9 +261,9 @@ export class BaseStore {
       var list = this.getCachedCallbacks(event);
 
       if (list) {
-        const runnableFunctions = list.filter(
-          (f) => f.context.source === source
-        );
+        const runnableFunctions = list.filter((f) => {
+          return f.context?.source === source;
+        });
 
         runnableFunctions.forEach((f) => {
           f.callback.apply(f.context, args);

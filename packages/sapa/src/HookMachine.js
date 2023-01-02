@@ -27,7 +27,9 @@ export class RefClass {
   }
 
   setCurrent(current) {
-    this.current = current;
+    if (this.current !== current) {
+      this.current = current;
+    }
   }
 }
 
@@ -210,20 +212,6 @@ export class HookMachine extends MagicHandler {
             component: this,
           });
           break;
-        case USE_EFFECT:
-          // useEffect 는 렌더링 시점에 실행되기 때문에
-          // 따로 복구하지 않는다.
-          // useEffect 에서 실행되는 callback 은
-          // 항상 새로 생성되는 함수이기 때문에
-          // 복구할 필요가 없다.
-
-          // hook.hookInfo = createEffect({
-          //   callback: hook.hookInfo.callback,
-          //   deps: hook.hookInfo.deps,
-          //   cleanup: hook.hookInfo.cleanup?.bind(this),
-          //   component: this,
-          // });
-          break;
         case USE_MEMO:
         case USE_CALLBACK:
         case USE_REF:
@@ -270,6 +258,7 @@ export class HookMachine extends MagicHandler {
             component: this,
           });
           break;
+        case USE_EFFECT:
         default:
           // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
           // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
