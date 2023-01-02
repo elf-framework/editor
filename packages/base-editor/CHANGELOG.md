@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.152
+
+### Patch Changes
+
+- add useGetCommand type in index.d.ts
+
 ## 0.0.151
 
 ### Patch Changes
