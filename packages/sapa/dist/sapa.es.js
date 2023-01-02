@@ -364,8 +364,11 @@ function useStore(key, defaultValue2) {
 function useStoreSet(key, value) {
   return getCurrentComponent().useStoreSet(key, value);
 }
-function useStoreValue(key) {
-  return getCurrentComponent().useStoreValue(key);
+function useStoreValue(key, defaultValue2) {
+  return getCurrentComponent().useStoreValue(key, defaultValue2);
+}
+function useGetStoreValue(key, defaultValue2) {
+  return getCurrentComponent().useGetStoreValue(key, defaultValue2);
 }
 function useSetStoreValue(key) {
   return getCurrentComponent().useSetStoreValue(key);
@@ -464,6 +467,7 @@ const USE_ID = Symbol("useId");
 const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
 const USE_STORE_VALUE = Symbol("useStoreValue");
 const USE_SET_STORE_VALUE = Symbol("useSetStoreValue");
+const USE_GET_STORE_VALUE = Symbol("useGetStoreValue");
 class RefClass {
   constructor(current) {
     this.current = current;
@@ -514,23 +518,21 @@ function createExternalStore({ subscribe, getSnapshot, isEqual: isEqual2, compon
   return localValue;
 }
 function createStoreValue({ key, defaultValue: defaultValue2, component }) {
+  let localValue = Object.assign(
+    {},
+    createGetStoreValue({ key, defaultValue: defaultValue2, component }),
+    createSetStoreValue({ key, component })
+  );
+  return localValue;
+}
+function createGetStoreValue({ key, defaultValue: defaultValue2, component }) {
   let localValue = {
     key,
-    defaultValue: defaultValue2,
     component,
-    value: getValue(),
-    getValue,
-    update: (value) => {
-      let _newValue = value;
-      if (isFunction(value)) {
-        _newValue = value(getValue());
-      }
-      component.$store.set(key, _newValue);
+    getValue: () => {
+      return component.$store.get(key, defaultValue2);
     }
   };
-  function getValue() {
-    return component.$store.get(key, defaultValue2);
-  }
   return localValue;
 }
 function createSetStoreValue({ key, component }) {
@@ -627,6 +629,13 @@ class HookMachine extends MagicHandler {
           break;
         case USE_STORE_VALUE:
           hook.hookInfo = createStoreValue({
+            key: hook.hookInfo.key,
+            defaultValue: hook.hookInfo.defaultValue,
+            component: this
+          });
+          break;
+        case USE_GET_STORE_VALUE:
+          hook.hookInfo = createGetStoreValue({
             key: hook.hookInfo.key,
             defaultValue: hook.hookInfo.defaultValue,
             component: this
@@ -842,6 +851,21 @@ class HookMachine extends MagicHandler {
     const value = this.getHook().hookInfo;
     this.increaseHookIndex();
     return [value.getValue(), value.update];
+  }
+  useGetStoreValue(key, defaultValue2) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_GET_STORE_VALUE,
+        createGetStoreValue({
+          key,
+          defaultValue: defaultValue2,
+          component: this
+        })
+      );
+    }
+    const value = this.getHook().hookInfo;
+    this.increaseHookIndex();
+    return value.getValue;
   }
   useSetStoreValue(key) {
     if (!this.getHook()) {
@@ -5492,6 +5516,7 @@ export {
   useContext,
   useEffect,
   useEmit,
+  useGetStoreValue,
   useId,
   useMagicMethod,
   useMemo,

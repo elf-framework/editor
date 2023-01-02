@@ -59,6 +59,15 @@ export async function useCommand(key, ...args) {
 }
 
 /**
+ *
+ * return command callback to use command by function call
+ *
+ */
+export function useGetCommand(key) {
+  return useEditor()?.commands?.get(key);
+}
+
+/**
  * 다국어 메세지 조회
  */
 export function useI18n(key, params = {}) {

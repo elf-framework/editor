@@ -582,7 +582,16 @@ declare module "@elf-framework/sapa" {
    * ```
    *
    */
-  export function useStoreValue<T>(key: string): [T, (value: T) => void];
+  export function useStoreValue<T>(
+    key: string,
+    defaultValut: T
+  ): [T, (value: T) => void];
+
+  /**
+   * return callback to get the current value of the store.
+   *
+   */
+  export function useGetStoreValue<T>(key: string, defaultValue?: T): () => T;
 
   /**
    * useSetStoreValue returns the setter function.

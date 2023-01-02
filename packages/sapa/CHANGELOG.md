@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.150
+
+### Patch Changes
+
+- add useGetStoreValue hook
+
 ## 0.0.149
 
 ### Patch Changes

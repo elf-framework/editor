@@ -145,6 +145,17 @@ const ret = useCommand("my-command");
 
 ```
 
+### useGetCommand 
+
+return command callback function to run command 
+
+```js
+
+const commandCallback = useGetCommand("my-command");
+
+commandCallback(1, 2, 3);
+```
+
 ## Plugin Manager
 
 플러그인 시스템 

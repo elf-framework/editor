@@ -20,6 +20,7 @@ const USE_ID = Symbol("useId");
 const USE_SYNC_EXTERNAL_STORE = Symbol("useSyncExternalStore");
 const USE_STORE_VALUE = Symbol("useStoreValue");
 const USE_SET_STORE_VALUE = Symbol("useSetStoreValue");
+const USE_GET_STORE_VALUE = Symbol("useGetStoreValue");
 
 export class RefClass {
   constructor(current) {
@@ -97,24 +98,23 @@ function createExternalStore({ subscribe, getSnapshot, isEqual, component }) {
 }
 
 function createStoreValue({ key, defaultValue, component }) {
+  let localValue = Object.assign(
+    {},
+    createGetStoreValue({ key, defaultValue, component }),
+    createSetStoreValue({ key, component })
+  );
+
+  return localValue;
+}
+
+function createGetStoreValue({ key, defaultValue, component }) {
   let localValue = {
     key,
-    defaultValue,
     component,
-    value: getValue(),
-    getValue,
-    update: (value) => {
-      let _newValue = value;
-      if (isFunction(value)) {
-        _newValue = value(getValue());
-      }
-      component.$store.set(key, _newValue);
+    getValue: () => {
+      return component.$store.get(key, defaultValue);
     },
   };
-
-  function getValue() {
-    return component.$store.get(key, defaultValue);
-  }
 
   return localValue;
 }
@@ -229,6 +229,13 @@ export class HookMachine extends MagicHandler {
           break;
         case USE_STORE_VALUE:
           hook.hookInfo = createStoreValue({
+            key: hook.hookInfo.key,
+            defaultValue: hook.hookInfo.defaultValue,
+            component: this,
+          });
+          break;
+        case USE_GET_STORE_VALUE:
+          hook.hookInfo = createGetStoreValue({
             key: hook.hookInfo.key,
             defaultValue: hook.hookInfo.defaultValue,
             component: this,
@@ -545,6 +552,29 @@ export class HookMachine extends MagicHandler {
     this.increaseHookIndex();
 
     return [value.getValue(), value.update];
+  }
+  /**
+   *
+   * return callback to get store value.
+   *
+   */
+  useGetStoreValue(key, defaultValue) {
+    if (!this.getHook()) {
+      this.setHook(
+        USE_GET_STORE_VALUE,
+        createGetStoreValue({
+          key,
+          defaultValue,
+          component: this,
+        })
+      );
+    }
+
+    const value = this.getHook().hookInfo;
+
+    this.increaseHookIndex();
+
+    return value.getValue;
   }
 
   /**

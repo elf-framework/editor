@@ -215,8 +215,8 @@ class et {
     this.fallbackLang = t;
   }
   get(t, e = {}, i = void 0) {
-    var l, u;
-    const o = this.getLang(i), n = ((l = this.locales[o]) == null ? void 0 : l[t]) || ((u = this.locales[this.fallbackLang]) == null ? void 0 : u[t]) || t || void 0;
+    var c, u;
+    const o = this.getLang(i), n = ((c = this.locales[o]) == null ? void 0 : c[t]) || ((u = this.locales[this.fallbackLang]) == null ? void 0 : u[t]) || t || void 0;
     if (f(n))
       return n(e);
     {
@@ -301,11 +301,11 @@ class ot {
     await this.initializePlugin();
   }
 }
-let c = {
+let h = {
   name: void 0
 };
 function y() {
-  return c.name === void 0 && (window.navigator.appVersion.indexOf("Win") != -1 ? c.name = "win" : window.navigator.appVersion.indexOf("Mac") != -1 ? c.name = "mac" : window.navigator.appVersion.indexOf("X11") != -1 ? c.name = "linux" : c.name = ""), c.name;
+  return h.name === void 0 && (window.navigator.appVersion.indexOf("Win") != -1 ? h.name = "win" : window.navigator.appVersion.indexOf("Mac") != -1 ? h.name = "mac" : window.navigator.appVersion.indexOf("X11") != -1 ? h.name = "linux" : h.name = ""), h.name;
 }
 const nt = {
   backspace: 8,
@@ -469,14 +469,14 @@ class rt {
   }
   splitShortCut(t) {
     var e = t.toUpperCase().split("+").map((a) => a.trim()).filter(Boolean);
-    let i = !1, o = !1, n = !1, l = !1, u = [];
+    let i = !1, o = !1, n = !1, c = !1, u = [];
     return e.forEach((a) => {
-      a.includes(r.ALT) ? i = !0 : a.includes(r.CTRL) ? o = !0 : a.includes(r.SHIFT) ? n = !0 : a.includes("CMD") || a.includes("WIN") || a.includes(r.META) ? l = !0 : u.push(a);
+      a.includes(r.ALT) ? i = !0 : a.includes(r.CTRL) ? o = !0 : a.includes(r.SHIFT) ? n = !0 : a.includes("CMD") || a.includes("WIN") || a.includes(r.META) ? c = !0 : u.push(a);
     }), d(
       i ? r.ALT : "",
       o ? r.CTRL : "",
       n ? r.SHIFT : "",
-      l ? r.META : "",
+      c ? r.META : "",
       p(u.join(""))
     );
   }
@@ -563,8 +563,8 @@ class at {
     return Object.values(this.groupUis[t] || {}).map((i) => this.createUI(i)).filter(Boolean);
   }
 }
-const lt = "EditorContext";
-class ct {
+const ct = "EditorContext";
+class lt {
   constructor(t, e = {}) {
     this.$rootEditor = t, this.$options = e, this.isPluginActivated = !1, this.initialize();
   }
@@ -629,7 +629,7 @@ class ct {
     return this.$rootEditor.$store;
   }
   emit(t, ...e) {
-    this.$store.source = lt, this.$store.emit(t, ...e);
+    this.$store.source = ct, this.$store.emit(t, ...e);
   }
   registerCommand(t) {
     this.commands.registerCommand(t);
@@ -681,7 +681,7 @@ class ft {
   deactivate() {
   }
 }
-function h() {
+function l() {
   return x(C);
 }
 function mt(s) {
@@ -690,23 +690,27 @@ function mt(s) {
 }
 function pt(s) {
   var t, e;
-  return (e = (t = h()) == null ? void 0 : t.configs) == null ? void 0 : e.get(s);
+  return (e = (t = l()) == null ? void 0 : t.configs) == null ? void 0 : e.get(s);
 }
 function xt(s, t) {
   var e, i;
-  return (i = (e = h()) == null ? void 0 : e.configs) == null ? void 0 : i.set(s, t);
+  return (i = (e = l()) == null ? void 0 : e.configs) == null ? void 0 : i.set(s, t);
 }
 async function yt(s, ...t) {
   var e, i;
-  return await ((i = (e = h()) == null ? void 0 : e.commands) == null ? void 0 : i.emit(s, ...t));
+  return await ((i = (e = l()) == null ? void 0 : e.commands) == null ? void 0 : i.emit(s, ...t));
 }
-function Ct(s, t = {}) {
+function Ct(s) {
+  var t, e;
+  return (e = (t = l()) == null ? void 0 : t.commands) == null ? void 0 : e.get(s);
+}
+function wt(s, t = {}) {
   var e, i;
-  return (i = (e = h()) == null ? void 0 : e.i18n) == null ? void 0 : i.get(s, t);
+  return (i = (e = l()) == null ? void 0 : e.i18n) == null ? void 0 : i.get(s, t);
 }
 class ht extends L {
   initialize() {
-    super.initialize(), this.$editor = new ct(this, this.props), this.$store.set(C, this.$editor), this.$store.set(w, this.props);
+    super.initialize(), this.$editor = new lt(this, this.props), this.$store.set(C, this.$editor), this.$store.set(w, this.props);
     const { configs: t } = this.props;
     this.$editor.updateConfigs(t), this.activate();
   }
@@ -715,11 +719,11 @@ class ht extends L {
   }
 }
 const ut = ["TEXTAREA", "INPUT", "SELECT"];
-class wt extends ht {
+class St extends ht {
   template() {
     const { editorClass: t, fullScreen: e } = this.props;
     K("editor.plugin.activated");
-    const i = h(), o = A(() => U("elf--base-editor", {
+    const i = l(), o = A(() => U("elf--base-editor", {
       "full-screen": e,
       [t]: !0
     }), [t, e]);
@@ -751,15 +755,15 @@ class wt extends ht {
     this.$editor.emit("resize.window");
   }
 }
-function St({
+function bt({
   views: s = [],
   groups: t = [],
   as: e = "div",
   style: i = {}
 }) {
-  const o = h(), n = [
-    ...s.map((l) => o.getUI(l)),
-    ...t.map((l) => o.getGroupUI(l))
+  const o = l(), n = [
+    ...s.map((c) => o.getUI(c)),
+    ...t.map((c) => o.getGroupUI(c))
   ].flat(1 / 0).filter(Boolean);
   return /* @__PURE__ */ g(F, {
     as: e,
@@ -767,14 +771,15 @@ function St({
   }, n);
 }
 export {
-  wt as BaseEditor,
+  St as BaseEditor,
   ht as Editor,
   ft as EditorPlugin,
-  St as InjectView,
+  bt as InjectView,
   yt as useCommand,
   pt as useConfig,
-  h as useEditor,
+  l as useEditor,
   mt as useEditorOption,
-  Ct as useI18n,
+  Ct as useGetCommand,
+  wt as useI18n,
   xt as useSetConfig
 };

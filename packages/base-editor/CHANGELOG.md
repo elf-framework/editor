@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.151
+
+### Patch Changes
+
+- add useGetCommand hook
+
 ## 0.0.137
 
 ### Patch Changes

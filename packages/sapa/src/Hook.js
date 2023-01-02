@@ -329,8 +329,16 @@ export function useStoreSet(key, value) {
  * @param {string} key
  * @returns
  */
-export function useStoreValue(key) {
-  return getCurrentComponent().useStoreValue(key);
+export function useStoreValue(key, defaultValue) {
+  return getCurrentComponent().useStoreValue(key, defaultValue);
+}
+
+/**
+ * return callback to get the current value of the store.
+ *
+ */
+export function useGetStoreValue(key, defaultValue) {
+  return getCurrentComponent().useGetStoreValue(key, defaultValue);
 }
 
 /**
