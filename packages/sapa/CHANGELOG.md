@@ -1,5 +1,96 @@
 # @elf-framework/sapa
 
+## 0.0.167
+
+### Patch Changes
+
+- support BaseStore.setValue, BaseStore.initValue with changeFunction
+  add BaseStore types
+
+## 0.0.166
+
+### Patch Changes
+
+- remove console.log
+
+## 0.0.165
+
+### Patch Changes
+
+- add test code
+
+## 0.0.164
+
+### Patch Changes
+
+- add test code
+
+## 0.0.163
+
+### Patch Changes
+
+- add test code
+
+## 0.0.162
+
+### Patch Changes
+
+- add test code
+
+## 0.0.161
+
+### Patch Changes
+
+- add test code
+
+## 0.0.160
+
+### Patch Changes
+
+- add test code
+
+## 0.0.159
+
+### Patch Changes
+
+- add test code
+
+## 0.0.158
+
+### Patch Changes
+
+- add test code
+
+## 0.0.157
+
+### Patch Changes
+
+- add test code
+
+## 0.0.156
+
+### Patch Changes
+
+- add test code
+
+## 0.0.155
+
+### Patch Changes
+
+- add test code
+
+## 0.0.154
+
+### Patch Changes
+
+- add test code
+
+## 0.0.153
+
+### Patch Changes
+
+- add test code
+
 ## 0.0.150
 
 ### Patch Changes

@@ -7,31 +7,45 @@ import {
   RESIZE,
   SUBSCRIBE,
   SUBSCRIBE_SELF,
-  useComponentRender,
+  useEffect,
+  useGetStoreValue,
   useMemo,
+  useRef,
 } from "@elf-framework/sapa";
 
+import { Loading } from "../status/Loading";
 import { Editor, useEditor } from "./Editor";
 const formElements = ["TEXTAREA", "INPUT", "SELECT"];
 export class BaseEditor extends Editor {
   template() {
-    const { editorClass, fullScreen } = this.props;
-
-    useComponentRender("editor.plugin.activated");
-
+    const {
+      class: className = "",
+      fullScreen,
+      loading = <Loading />,
+    } = this.props;
+    const editorRef = useRef(0);
     const editor = useEditor();
+    const isPluginActivated = useGetStoreValue("editor.plugin.activated");
+
+    editorRef.current++;
 
     const localClass = useMemo(() => {
-      return classnames("elf--base-editor", {
-        "full-screen": fullScreen,
-        [editorClass]: true,
-      });
-    }, [editorClass, fullScreen]);
+      return classnames(
+        "elf--base-editor",
+        {
+          "full-screen": fullScreen,
+        },
+        className
+      );
+    }, [className, fullScreen]);
+
+    useEffect(() => {
+      this.load();
+    }, []);
 
     return (
       <div class={localClass}>
-        {/* 렌더링 영역 중간에 보여지는 UI 는 renderView 로 지정한다. */}
-        {editor.isPluginActivated ? editor.getUIList("renderView") : undefined}
+        {isPluginActivated() ? editor.getUIList("renderView") : loading}
       </div>
     );
   }

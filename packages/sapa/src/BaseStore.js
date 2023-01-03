@@ -42,6 +42,20 @@ export class BaseStore {
     }
   }
 
+  setValue(key, valueFunction) {
+    const oldValue = this.get(key);
+    const newValue = valueFunction(oldValue);
+
+    this.set(key, newValue);
+  }
+
+  initValue(key, valueFunction) {
+    const oldValue = this.get(key);
+    const newValue = valueFunction(oldValue);
+
+    this.init(key, newValue);
+  }
+
   init(key, value) {
     this.set(key, value, false);
   }

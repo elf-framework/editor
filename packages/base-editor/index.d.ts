@@ -1,5 +1,6 @@
 declare module "@elf-framework/base-editor" {
   import { UIElement } from "@elf-framework/sapa";
+  import type { ContentType } from "@elf-framework/sapa";
   type EditorConfigValueType =
     | "string"
     | "number"
@@ -137,6 +138,7 @@ declare module "@elf-framework/base-editor" {
       [key: string]: boolean;
     };
     fullscreen: boolean;
+    loading: ContentType;
   }
 
   export class Editor extends UIElement {

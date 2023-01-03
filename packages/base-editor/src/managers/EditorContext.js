@@ -13,7 +13,7 @@ export class EditorContext {
   constructor($rootEditor, $options = {}) {
     this.$rootEditor = $rootEditor;
     this.$options = $options;
-    this.isPluginActivated = false;
+
     this.initialize();
   }
 
@@ -91,6 +91,7 @@ export class EditorContext {
   }
 
   initializePlugins(plugins = []) {
+    this.plugins.init();
     plugins.forEach((plugin) => {
       this.plugins.registerPlugin(plugin);
     });
@@ -100,8 +101,6 @@ export class EditorContext {
     // LifeCycle 이벤트 전달
     // 1. plugin 설정
     const ret = await this.plugins.activate();
-
-    this.isPluginActivated = true;
 
     // 2. plugin 설정 이후 config 값 설정
     this.updateConfigs(this.$options.configs);

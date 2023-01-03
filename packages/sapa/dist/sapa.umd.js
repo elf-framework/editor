@@ -2043,8 +2043,10 @@ var __privateMethod = (obj, member, method) => {
     }
     setChildren(children2) {
       Object.entries(children2).forEach(([id, instance]) => {
-        __privateGet(this, _childObjectList)[id] = instance.$el.el;
-        __privateGet(this, _childObjectElements).set(instance.$el.el, instance);
+        if (instance) {
+          __privateGet(this, _childObjectList)[id] = instance.$el.el;
+          __privateGet(this, _childObjectElements).set(instance.$el.el, instance);
+        }
       });
     }
     get isPreLoaded() {
@@ -2252,6 +2254,16 @@ var __privateMethod = (obj, member, method) => {
           this.sendMessage(this, key, value);
         }
       }
+    }
+    setValue(key, valueFunction) {
+      const oldValue = this.get(key);
+      const newValue = valueFunction(oldValue);
+      this.set(key, newValue);
+    }
+    initValue(key, valueFunction) {
+      const oldValue = this.get(key);
+      const newValue = valueFunction(oldValue);
+      this.init(key, newValue);
     }
     init(key, value) {
       this.set(key, value, false);

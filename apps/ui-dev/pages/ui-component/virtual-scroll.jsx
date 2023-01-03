@@ -50,7 +50,6 @@ function itemRenderer(item, top, renderIndex, items, virtualScroll) {
       lockOpenIcon={makeIconDom("lock_open", renderIndex)}
       isComponent={item.isComponent}
       onClick={() => {
-        console.log("aaa");
         if (selections.includes(item.index)) {
           selections.splice(selections.indexOf(item.index), 1);
         } else {

@@ -1,5 +1,18 @@
 # @elf-framework/base-editor
 
+## 0.0.169
+
+### Patch Changes
+
+- update BaseEditor
+
+## 0.0.168
+
+### Patch Changes
+
+- fixed editor plugin states to start app
+  support global loading component
+
 ## 0.0.152
 
 ### Patch Changes

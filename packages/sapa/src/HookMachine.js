@@ -578,7 +578,7 @@ export class HookMachine extends MagicHandler {
   }
 
   /**
-   * useStoreValue returns setter function for store value.
+   * useSetStoreValue returns setter function for store value.
    *
    */
   useSetStoreValue(key) {

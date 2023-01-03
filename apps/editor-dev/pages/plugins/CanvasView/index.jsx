@@ -17,8 +17,8 @@ export function Canvas3D() {
       const backingStoreRatio = ctx.backingStorePixelRatio || 1;
       const ratio = devicePixelRatio / backingStoreRatio;
 
-      canvasRef.current.setAttribute("width", rect.width * ratio);
-      canvasRef.current.setAttribute("height", rect.height * ratio);
+      canvasRef.current.setAttribute("width", rect.width * ratio + "px");
+      canvasRef.current.setAttribute("height", rect.height * ratio + "px");
 
       // ctx.scale(ratio, ratio);
     }
@@ -28,10 +28,10 @@ export function Canvas3D() {
     function draw() {
       const canvas = ctx.canvas;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgb(100, 100, 255)";
+      ctx.fillStyle = "rgb(255, 100, 255)";
       ctx.fillRect(100, 100, 200, 200);
       ctx.clearRect(120, 120, 160, 160);
-      ctx.strokeStyle = "rgb(200, 5, 255)";
+      ctx.strokeStyle = "rgb(0, 200, 255)";
       ctx.lineWidth = 5;
       ctx.strokeRect(160, 160, 80, 80);
     }

@@ -206,8 +206,10 @@ export class EventMachine extends HookMachine {
 
   setChildren(children) {
     Object.entries(children).forEach(([id, instance]) => {
-      this.#childObjectList[id] = instance.$el.el;
-      this.#childObjectElements.set(instance.$el.el, instance);
+      if (instance) {
+        this.#childObjectList[id] = instance.$el.el;
+        this.#childObjectElements.set(instance.$el.el, instance);
+      }
     });
   }
 

@@ -1,0 +1,72 @@
+import { BaseEditor } from "@elf-framework/base-editor";
+import "@elf-framework/ui/style.css";
+
+import locales from "./messages/locales";
+import { CenterPlugin } from "./plugins/CenterPlugin";
+import { LeftPlugin } from "./plugins/LeftPlugin";
+import { RenderPlugin } from "./plugins/RenderPlugin";
+import { RightPlugin } from "./plugins/RightPlugin";
+import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
+
+export function MyEditor() {
+  return (
+    <div>
+      <BaseEditor
+        configs={{
+          yellow: "blue",
+        }}
+        plugins={[
+          function (editorContext) {
+            editorContext.registerI18nMessageWithLang(locales);
+          },
+
+          ToolbarPlugin,
+          RightPlugin,
+          LeftPlugin,
+          CenterPlugin,
+
+          async function (editor) {
+            editor.registerConfig({
+              key: "yellow",
+              defaultValue: "yellow",
+              title: "Yellow Title",
+              description: "Description Yellow",
+              type: "string",
+            });
+
+            // 커맨드 동적 등록
+            editor.registerCommand({
+              command: "my-command",
+              title: "My Command",
+              description: "My Command Description",
+              execute: async () => {
+                console.log("sample command");
+                console.log(editor.keyboard.event);
+                return 10;
+              },
+            });
+
+            // short 동적 등록
+            editor.registerShortcut({
+              key: "meta+shift+e",
+              mac: "ctrl+shift+e",
+              command: (editor, a, b, c) => {
+                console.log("sample shortcut", editor, a, b, c);
+              },
+              args: [1, 2, 3],
+            });
+
+            editor.registerShortcut({
+              key: "shift",
+              command: (editor) => {
+                console.log("shift", editor);
+              },
+            });
+          },
+
+          RenderPlugin,
+        ]}
+      ></BaseEditor>
+    </div>
+  );
+}

@@ -90,15 +90,20 @@ export class Editor extends UIElement {
   initialize() {
     super.initialize();
 
-    this.$editor = new EditorContext(this, this.props);
+    if (!this.$editor) {
+      this.$editor = new EditorContext(this, this.props);
+    }
 
     this.$store.set(KEY_EDITOR, this.$editor);
     this.$store.set(KEY_EDITOR_OPTION, this.props);
+  }
 
+  async load() {
+    // start to load plugins
     const { configs } = this.props;
     this.$editor.updateConfigs(configs);
 
-    this.activate();
+    await this.activate();
   }
 
   async activate() {
@@ -106,7 +111,7 @@ export class Editor extends UIElement {
     await this.$editor.activate();
 
     // send message
-    this.emit("editor.plugin.activated");
-    this.trigger("editor.plugin.activated");
+    this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
+    this.render();
   }
 }

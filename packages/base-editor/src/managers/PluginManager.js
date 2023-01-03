@@ -41,6 +41,13 @@ export class PluginManager {
   }
 
   /**
+   * 플러그인 리스트 초기화
+   */
+  init() {
+    this.plugins = [];
+  }
+
+  /**
    * 플러그인 초기화를 비동기로 한다.
    *
    */
@@ -58,6 +65,8 @@ export class PluginManager {
   }
 
   async activate() {
-    await this.initializePlugin();
+    const ret = await this.initializePlugin();
+
+    return ret;
   }
 }
