@@ -38,7 +38,7 @@ jobs:
       - name: Cache 
         run: npm cache clean -f
       - name: Install
-        run: npm install
+        run: npm install --no-save turbo-linux-64 && npm install
       - name: build
         run: npm run prod --workspace apps/ui-dev         
       - name: Setup Pages
