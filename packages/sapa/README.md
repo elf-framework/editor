@@ -68,9 +68,9 @@ function MyApp() {
 
 &nbsp;
 
-<Alert type="info" weak={true}>
-You can also use the `className` attribute as is. If you use the `className` attribute, it is automatically linked to the `class` attribute.
-</Alert>
+
+  You can also use the `className` attribute as is. If you use the `className` attribute, it is automatically linked to the `class` attribute.
+
 
 ## Component 
 
@@ -112,6 +112,9 @@ You can use a Hook similar to React.
 * useContext
 * useRef
 * useEffect 
+  
+See [here](https://www.elf-framework.com/pages/sapa/hook/) for details.
+
 
 ## DOM 
 
@@ -179,18 +182,17 @@ function MyApp () {
 ### hierarchy store 
 
 ```jsx
+import {useStoreValue} from "@elf-framework/sapa";
+
 class MyApp extends UIElement {
   template () {
 
     // subscribe event for $store
-    useSubscribe("myVariable", () => {
-      useRender(this);
-    })
+    const [myVariable, setMyVariable] = useStoreValue("myVariable", 0);
 
     return <div onClick={() => {
-      const myVariable = this.$store.get("myVariable", 0);
-      this.$store.set("myVariable", myVariable+1)
-    }}></div>
+      setMyVariable((v) => v + 1);
+    }}>{myVariable}</div>
   }
 }
 
@@ -201,12 +203,11 @@ class MyApp extends UIElement {
 Sapa provides a way to send messages from an internal component hierarchy.
 
 ```jsx
+import {useComponentRender} from "@elf-framework/sapa";
 
 function MyApp () {
 
-  useSubscribe("refreshComponent", () => {
-    useRender(this);
-  })
+  useComponentRender("refreshComponent");
 
   return <div onClick={() => {
     this.emit("refreshComponent");
