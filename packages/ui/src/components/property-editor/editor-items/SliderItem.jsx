@@ -12,7 +12,7 @@ export function SliderItem({ value, item, style, onChange }) {
       size="small"
       fitted={fitted}
       onInput={(v) => {
-        onChange && onChange(v);
+        onChange && onChange(v, item);
       }}
       valuePlacement="bottom"
     />

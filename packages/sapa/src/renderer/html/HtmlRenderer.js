@@ -17,8 +17,6 @@ const RendererList = {
 async function VNodeRender(vNodeInstance, withChildren, options) {
   const CurrentRenderer = RendererList[vNodeInstance.type];
 
-  //   console.log(CurrentRenderer, vNodeInstance);
-
   if (CurrentRenderer) {
     const result = CurrentRenderer(vNodeInstance, withChildren, options);
     return await result;

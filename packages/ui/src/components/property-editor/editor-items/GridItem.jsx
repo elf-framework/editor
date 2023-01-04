@@ -3,6 +3,7 @@ import { Grid } from "../../grid";
 export function GridItem({
   item: { gap, rowGap, columnGap, style, columns = [], items = [] },
   root,
+  onChange,
 }) {
   return (
     <Grid
@@ -12,7 +13,7 @@ export function GridItem({
       columnGap={columnGap}
       style={style}
     >
-      {items.map((item, index) => root.makeEditorItem(item, index))}
+      {items.map((item, index) => root.makeEditorItem(item, index, onChange))}
     </Grid>
   );
 }

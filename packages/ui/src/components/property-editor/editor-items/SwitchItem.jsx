@@ -8,7 +8,7 @@ export function SwitchItem({ item, value, onChange, style }) {
       style={style}
       variant={variant}
       onChange={(e) => {
-        onChange && onChange(e.target.checked);
+        onChange && onChange(e.target.checked, item);
       }}
     />
   );

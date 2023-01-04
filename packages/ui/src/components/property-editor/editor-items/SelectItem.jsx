@@ -5,7 +5,7 @@ export function SelectItem({ value, item, style, onChange }) {
     <Select
       value={value}
       style={style}
-      onChange={onChange}
+      onChange={(v) => onChange(v, item)}
       options={item.options}
     />
   );

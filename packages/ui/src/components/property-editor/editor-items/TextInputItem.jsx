@@ -1,6 +1,6 @@
 import { InputEditor } from "../../input-editor";
 
-export function TextInputItem({ value, style, onChange }) {
+export function TextInputItem({ key, value, style, item, onChange }) {
   return (
     <InputEditor
       type="text"
@@ -8,7 +8,7 @@ export function TextInputItem({ value, style, onChange }) {
       width="100%"
       style={style}
       onInput={(e) => {
-        onChange && onChange(e.target.value);
+        onChange && onChange(e.target.value, item, key);
       }}
     />
   );

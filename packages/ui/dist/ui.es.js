@@ -3138,10 +3138,8 @@ class InputPaint extends UIElement {
   }
   updateOpacity(num) {
     const color = this.state.parsedColor;
-    console.log(color.a, num);
     color.a += num;
     color.a = normalizeAlpha(color.a);
-    console.log(color.a);
     this.runOnChange();
     this.refresh();
   }
@@ -5011,7 +5009,7 @@ class View extends UIElement {
 }
 registerComponent("view", View);
 registerComponent("View", View);
-function TextInputItem({ value, style: style2, onChange }) {
+function TextInputItem({ key, value, style: style2, item, onChange }) {
   return /* @__PURE__ */ createElementJsx(
     InputEditor,
     {
@@ -5020,7 +5018,7 @@ function TextInputItem({ value, style: style2, onChange }) {
       width: "100%",
       style: style2,
       onInput: (e) => {
-        onChange && onChange(e.target.value);
+        onChange && onChange(e.target.value, item, key);
       }
     }
   );
@@ -5038,7 +5036,7 @@ function NumberInputItem({ value, item, style: style2, onChange }) {
       width: "100%",
       style: style2,
       onInput: (e) => {
-        onChange && onChange(Number(e.target.value));
+        onChange && onChange(Number(e.target.value), item);
       }
     }
   );
@@ -5048,7 +5046,8 @@ function TitleItem({ item: { value, key } }) {
 }
 function GridItem({
   item: { gap, rowGap, columnGap, style: style2, columns = [], items = [] },
-  root
+  root,
+  onChange
 }) {
   return /* @__PURE__ */ createElementJsx(
     Grid,
@@ -5059,7 +5058,7 @@ function GridItem({
       columnGap,
       style: style2
     },
-    items.map((item, index) => root.makeEditorItem(item, index))
+    items.map((item, index) => root.makeEditorItem(item, index, onChange))
   );
 }
 const ButtonItem$1 = "";
@@ -5089,7 +5088,7 @@ function ColorItem({ value, onChange, item }) {
       value,
       sync: true,
       onChange: (color, inputPaintInstance) => {
-        onChange && onChange(color, inputPaintInstance);
+        onChange && onChange(color, item, inputPaintInstance);
       },
       onClickColorView: (e, color) => {
         onClickColorView && onClickColorView(e, color);
@@ -5156,19 +5155,19 @@ function SelectItem({ value, item, style: style2, onChange }) {
     {
       value,
       style: style2,
-      onChange,
+      onChange: (v) => onChange(v, item),
       options: item.options
     }
   );
 }
-function BooleanItem({ value, onChange, style: style2 }) {
+function BooleanItem({ value, item, onChange, style: style2 }) {
   return /* @__PURE__ */ createElementJsx(
     Checkbox,
     {
       checked: value,
       style: style2,
       onChange: (e) => {
-        onChange && onChange(e.target.checked);
+        onChange && onChange(e.target.checked, item);
       }
     }
   );
@@ -5242,13 +5241,13 @@ function SwitchItem({ item, value, onChange, style: style2 }) {
       style: style2,
       variant,
       onChange: (e) => {
-        onChange && onChange(e.target.checked);
+        onChange && onChange(e.target.checked, item);
       }
     }
   );
 }
 function TabContainerItem({ item, root }) {
-  const { style: style2, stripType, activeKey, fitted, compact } = item;
+  const { style: style2, stripType, activeKey, fitted, compact, onChange } = item;
   return /* @__PURE__ */ createElementJsx(
     Tab,
     {
@@ -5260,7 +5259,7 @@ function TabContainerItem({ item, root }) {
     },
     item.items.map((it) => {
       return /* @__PURE__ */ createElementJsx(TabItem, { key: it.key, title: it.label }, it.items.map((it2, index) => {
-        return root.makeInspectorItem(it2, index);
+        return root.makeInspectorItem(it2, index, onChange);
       }));
     })
   );
@@ -5444,7 +5443,7 @@ function SliderItem({ value, item, style: style2, onChange }) {
       size: "small",
       fitted,
       onInput: (v) => {
-        onChange && onChange(v);
+        onChange && onChange(v, item);
       },
       valuePlacement: "bottom"
     }
@@ -5454,7 +5453,7 @@ function DividerItem({ item }) {
   const { margin = 10, style: style2 } = item;
   return /* @__PURE__ */ createElementJsx(Divider, { style: style2, margin });
 }
-function LabelItem({ style: style2, item: { label } }) {
+function LabelItem({ style: style2, label }) {
   return /* @__PURE__ */ createElementJsx(View, { style: style2 }, label);
 }
 const cssProperties$l = makeCssVariablePrefixMap("--elf--property-editor", {
@@ -5553,8 +5552,8 @@ function makeDividerStyle(item) {
   return item;
 }
 class PropertyEditor extends UIElement {
-  makeEditorItem(item, index) {
-    const { plugins = {}, sync } = this.props;
+  makeEditorItem(item, index, onChange) {
+    const { plugins = {} } = this.props;
     item = makeDividerStyle(item);
     if (typeof item === "string" || typeof item === "number") {
       item = {
@@ -5562,21 +5561,18 @@ class PropertyEditor extends UIElement {
         label: item
       };
     }
-    const {
-      key,
-      value,
-      label,
-      type,
-      valueType = "valueByPath",
-      valueFunc
-    } = item;
+    const { key, value, label, type } = item;
     let oldValue = getValueByPath(this.state.value, key);
+    let oldLabel = label;
     if (typeof value !== "undefined") {
       if (isFunction(value)) {
         oldValue = value(this.state.value);
       } else {
         oldValue = value;
       }
+    }
+    if (typeof label === "function") {
+      oldLabel = label(this.state.value);
     }
     if (type === "tab") {
       const { style: style2, stripType, activeKey, fitted, compact } = item;
@@ -5603,26 +5599,11 @@ class PropertyEditor extends UIElement {
         {
           key,
           index,
-          label,
+          label: oldLabel,
           value: oldValue,
           item,
           root: this,
-          onChange: (newValue) => {
-            if (item.onChange) {
-              item.onChange(newValue, item, this);
-            }
-            if (isFunction(this.props.onChange)) {
-              this.props.onChange(key, newValue, this);
-            }
-            if (valueType === "valueByPath") {
-              setValueByPath(this.state.value, key, newValue);
-            } else if (valueType === "valueByObject") {
-              setValueByObject(this.state.value, key, newValue, valueFunc);
-            }
-            if (sync) {
-              this.refresh();
-            }
-          }
+          onChange
         }
       );
     }
@@ -5667,7 +5648,7 @@ class PropertyEditor extends UIElement {
       false
     );
   }
-  makeInspectorItem(item, index) {
+  makeInspectorItem(item, index, onChange) {
     item = makeDividerStyle(item);
     if (typeof item === "string" || typeof item === "number") {
       item = {
@@ -5675,8 +5656,12 @@ class PropertyEditor extends UIElement {
         label: item
       };
     }
+    let { label } = item;
+    if (typeof label === "function") {
+      label = label(this.state.value);
+    }
     if (item.type === "label") {
-      return /* @__PURE__ */ createElementJsx("div", { class: "elf--property-editor-item label" }, item.label);
+      return /* @__PURE__ */ createElementJsx("div", { class: "elf--property-editor-item label" }, label);
     }
     return /* @__PURE__ */ createElementJsx(
       "div",
@@ -5685,12 +5670,12 @@ class PropertyEditor extends UIElement {
           [item.direction]: true
         })
       },
-      item.label ? /* @__PURE__ */ createElementJsx("div", { class: "label" }, item.label) : void 0,
-      /* @__PURE__ */ createElementJsx("div", { class: "editor" }, this.makeEditorItem(item, index))
+      label ? /* @__PURE__ */ createElementJsx("div", { class: "label" }, label) : void 0,
+      /* @__PURE__ */ createElementJsx("div", { class: "editor" }, this.makeEditorItem(item, index, onChange))
     );
   }
   template() {
-    const { style: style2 = {}, value, direction = "horizontal" } = this.props;
+    const { style: style2 = {}, value, sync, direction = "horizontal" } = this.props;
     const { oldValue } = this.state;
     if (oldValue != value) {
       this.setState(
@@ -5706,17 +5691,42 @@ class PropertyEditor extends UIElement {
         [direction]: true
       });
     }, [direction]);
+    const onChange = useCallback(
+      (newValue, item) => {
+        const { valueType = "valueByPath", valueFunc, key } = item;
+        if (item.onChange) {
+          item.onChange(newValue, item, this);
+        }
+        if (isFunction(this.props.onChange)) {
+          this.props.onChange(key, newValue, this);
+        }
+        if (valueType === "valueByPath") {
+          setValueByPath(this.state.value, key, newValue);
+        } else if (valueType === "valueByObject") {
+          setValueByObject(this.state.value, key, newValue, valueFunc);
+        }
+        if (sync) {
+          this.setState({
+            value: {
+              ...this.state.value
+            }
+          });
+        }
+      },
+      [sync, this.props]
+    );
+    const inspectorList = useMemo(() => {
+      return this.makeInspector(this.props.inspector, this.state.value).map(
+        (item, index) => {
+          return this.makeInspectorItem(item, index, onChange);
+        }
+      );
+    }, [this.props.inspector, onChange, this.state.value]);
     const styleObject = {
       class: localClass,
       style: propertyMap(style2, cssProperties$l)
     };
-    this.state.inspector = this.makeInspector(
-      this.props.inspector,
-      this.state.value
-    );
-    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, this.state.inspector.map((item, index) => {
-      return this.makeInspectorItem(item, index);
-    }));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, inspectorList);
   }
   getValue() {
     return this.state.value;
@@ -6458,7 +6468,6 @@ function itemRenderer(item, top, renderIndex, {
         type: "text",
         value: item.data.title,
         onFocusOut: (e) => {
-          console.log("onFocusOut", e);
           onEditCancel(item, e);
         },
         onKeyUp: (e) => {

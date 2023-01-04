@@ -1,5 +1,7 @@
 import { COMPONENT_INSTANCE } from "./constant/component";
 import { Dom } from "./functions/Dom";
+import { isFunction } from "./functions/func";
+import { createElementJsx } from "./functions/jsx";
 import {
   registRootElementInstance,
   renderComponent,
@@ -16,7 +18,7 @@ import { createComponentInstance } from "./UIElement";
  * @param {UIElement|Function} ElementClass
  * @returns {UIElement}
  */
-export function start(ElementClass, opt = {}) {
+export function start(ElementNode, opt = {}) {
   if (opt instanceof window.HTMLElement) {
     opt = { container: opt };
   }
@@ -27,12 +29,17 @@ export function start(ElementClass, opt = {}) {
     .children()
     .find((it) => it.el[COMPONENT_INSTANCE]);
 
-  if (ElementClass instanceof VNode) {
-    const rootVNode = ElementClass;
-    ElementClass = () => rootVNode;
+  let RootElement = ElementNode;
+
+  // 함수로 들어오면 컴포넌트로 변환한다.
+  if (isFunction(ElementNode)) {
+    RootElement = () => createElementJsx(ElementNode);
+  } else if (ElementNode instanceof VNode) {
+    // VNode 로 들어오면 컴포넌트로 변환한다.
+    RootElement = () => ElementNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, {
+  const app = createComponentInstance(RootElement, null, {
     ...opt,
     renderer: renderVNodeComponent,
   });
@@ -41,12 +48,21 @@ export function start(ElementClass, opt = {}) {
   // dom 이 살아있지 않으면 추가
   // dom 이 살아있으면 업데이트 하는 로직을 추가 한다.
   if ($targetElement) {
-    app.$el = Dom.create($targetElement.el);
-    // id 유지
-    app.id = $targetElement.el[COMPONENT_INSTANCE].id;
+    // target 에 instance 가 있으면
+    // 그 instance 를 기반으로 root instance 를 찾고
+    // 그 root instance 의 child 를 찾아서
+    // child 의 $el 을 다시 instance 로 설정한다.
+    // 이렇게 하면 hot reload 이후 업데이트 하는 로직이랑 같아진다.
+    const targetInstance = $targetElement.el[COMPONENT_INSTANCE];
+    const rootInstance = targetInstance.getRootInstance();
+    const childInstance = rootInstance.child;
+
+    if (childInstance?.$el) {
+      childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
+    }
 
     // dom render 를 위해서 추가
-    renderComponent(app, null, true);
+    renderComponent(childInstance, null, true);
   } else {
     renderComponent(app, $container, true);
   }
@@ -61,19 +77,24 @@ export const render = start;
  * hydrates the app with the given state
  *
  */
-export const hydrate = (ElementClass, opt = {}) => {
+export const hydrate = (ElementNode, opt = {}) => {
   if (opt instanceof window.HTMLElement) {
     opt = { container: opt };
   }
 
   const $container = Dom.create(opt.container || document.body);
 
-  if (ElementClass instanceof VNode) {
-    const rootVNode = ElementClass;
-    ElementClass = () => rootVNode;
+  let RootElement = ElementNode;
+
+  // 함수로 들어오면 컴포넌트로 변환한다.
+  if (isFunction(ElementNode)) {
+    RootElement = () => createElementJsx(ElementNode);
+  } else if (ElementNode instanceof VNode) {
+    // VNode 로 들어오면 컴포넌트로 변환한다.
+    RootElement = () => ElementNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, {
+  const app = createComponentInstance(RootElement, null, {
     ...opt,
     renderer: renderVNodeComponent,
   });

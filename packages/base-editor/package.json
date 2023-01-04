@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/base-editor",
-  "version": "0.0.169",
+  "version": "0.0.198",
   "description": "Fantastic Editor library",
   "types": "./index.d.ts",
   "files": [

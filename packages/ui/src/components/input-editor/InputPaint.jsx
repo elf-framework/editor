@@ -197,12 +197,8 @@ export class InputPaint extends UIElement {
   updateOpacity(num) {
     const color = this.state.parsedColor;
 
-    console.log(color.a, num);
-
     color.a += num;
     color.a = normalizeAlpha(color.a);
-
-    console.log(color.a);
 
     this.runOnChange();
 

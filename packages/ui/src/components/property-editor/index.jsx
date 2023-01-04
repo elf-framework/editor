@@ -3,6 +3,7 @@ import {
   isFunction,
   useMemo,
   classnames,
+  useCallback,
 } from "@elf-framework/sapa";
 
 import { propertyMap } from "../../utils/propertyMap";
@@ -134,8 +135,8 @@ function makeDividerStyle(item) {
 }
 
 export class PropertyEditor extends UIElement {
-  makeEditorItem(item, index) {
-    const { plugins = {}, sync } = this.props;
+  makeEditorItem(item, index, onChange) {
+    const { plugins = {} } = this.props;
 
     item = makeDividerStyle(item);
 
@@ -146,15 +147,9 @@ export class PropertyEditor extends UIElement {
       };
     }
 
-    const {
-      key,
-      value,
-      label,
-      type,
-      valueType = "valueByPath",
-      valueFunc,
-    } = item;
+    const { key, value, label, type } = item;
     let oldValue = getValueByPath(this.state.value, key);
+    let oldLabel = label;
 
     if (typeof value !== "undefined") {
       if (isFunction(value)) {
@@ -162,6 +157,10 @@ export class PropertyEditor extends UIElement {
       } else {
         oldValue = value;
       }
+    }
+
+    if (typeof label === "function") {
+      oldLabel = label(this.state.value);
     }
 
     if (type === "tab") {
@@ -195,30 +194,11 @@ export class PropertyEditor extends UIElement {
         <InnerEditor
           key={key}
           index={index}
-          label={label}
+          label={oldLabel}
           value={oldValue}
           item={item}
           root={this}
-          onChange={(newValue) => {
-            if (item.onChange) {
-              item.onChange(newValue, item, this);
-            }
-
-            if (isFunction(this.props.onChange)) {
-              this.props.onChange(key, newValue, this);
-            }
-
-            if (valueType === "valueByPath") {
-              setValueByPath(this.state.value, key, newValue);
-            } else if (valueType === "valueByObject") {
-              setValueByObject(this.state.value, key, newValue, valueFunc);
-            }
-
-            // sync 가 true 이면 전체 데이타를 다시 업데이트 한다.
-            if (sync) {
-              this.refresh();
-            }
-          }}
+          onChange={onChange}
         />
       );
     }
@@ -271,7 +251,7 @@ export class PropertyEditor extends UIElement {
     );
   }
 
-  makeInspectorItem(item, index) {
+  makeInspectorItem(item, index, onChange) {
     item = makeDividerStyle(item);
 
     if (typeof item === "string" || typeof item === "number") {
@@ -281,8 +261,14 @@ export class PropertyEditor extends UIElement {
       };
     }
 
+    let { label } = item;
+
+    if (typeof label === "function") {
+      label = label(this.state.value);
+    }
+
     if (item.type === "label") {
-      return <div class="elf--property-editor-item label">{item.label}</div>;
+      return <div class="elf--property-editor-item label">{label}</div>;
     }
 
     return (
@@ -291,14 +277,14 @@ export class PropertyEditor extends UIElement {
           [item.direction]: true,
         })}
       >
-        {item.label ? <div class="label">{item.label}</div> : undefined}
-        <div class="editor">{this.makeEditorItem(item, index)}</div>
+        {label ? <div class="label">{label}</div> : undefined}
+        <div class="editor">{this.makeEditorItem(item, index, onChange)}</div>
       </div>
     );
   }
 
   template() {
-    const { style = {}, value, direction = "horizontal" } = this.props;
+    const { style = {}, value, sync, direction = "horizontal" } = this.props;
     const { oldValue } = this.state;
 
     if (oldValue != value) {
@@ -319,23 +305,49 @@ export class PropertyEditor extends UIElement {
       });
     }, [direction]);
 
+    const onChange = useCallback(
+      (newValue, item) => {
+        const { valueType = "valueByPath", valueFunc, key } = item;
+        if (item.onChange) {
+          item.onChange(newValue, item, this);
+        }
+
+        if (isFunction(this.props.onChange)) {
+          this.props.onChange(key, newValue, this);
+        }
+
+        if (valueType === "valueByPath") {
+          setValueByPath(this.state.value, key, newValue);
+        } else if (valueType === "valueByObject") {
+          setValueByObject(this.state.value, key, newValue, valueFunc);
+        }
+
+        // sync 가 true 이면 전체 데이타를 다시 업데이트 한다.
+        if (sync) {
+          this.setState({
+            value: {
+              ...this.state.value,
+            },
+          });
+        }
+      },
+      [sync, this.props]
+    );
+
+    const inspectorList = useMemo(() => {
+      return this.makeInspector(this.props.inspector, this.state.value).map(
+        (item, index) => {
+          return this.makeInspectorItem(item, index, onChange);
+        }
+      );
+    }, [this.props.inspector, onChange, this.state.value]);
+
     const styleObject = {
       class: localClass,
       style: propertyMap(style, cssProperties),
     };
 
-    this.state.inspector = this.makeInspector(
-      this.props.inspector,
-      this.state.value
-    );
-
-    return (
-      <div {...styleObject}>
-        {this.state.inspector.map((item, index) => {
-          return this.makeInspectorItem(item, index);
-        })}
-      </div>
-    );
+    return <div {...styleObject}>{inspectorList}</div>;
   }
 
   getValue() {

@@ -204,6 +204,10 @@ export class EventMachine extends HookMachine {
     );
   }
 
+  get child() {
+    return Object.values(this.children)[0];
+  }
+
   setChildren(children) {
     Object.entries(children).forEach(([id, instance]) => {
       if (instance) {
@@ -322,10 +326,8 @@ export class EventMachine extends HookMachine {
           return true;
         }
 
-        // targetInstance 를 props 기준으로 다시 로드한다.
-        this.#reloadInstance(targetInstance, props);
-
-        // dom 을 바꾸지 않는다. 이미 생성된 instance 이므로
+        // 이미 생성된 instance 이므로 newVnode 로 컴포넌트 인스턴스를 다시 생성하지 않는다.
+        // props 를 업데이트 한다.
         return false;
       } else {
         // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
@@ -335,6 +337,16 @@ export class EventMachine extends HookMachine {
     // 다른 예외 사항이 있으면 여기에 기록하기
     return true;
   };
+
+  getRootInstance() {
+    let rootInstance = this;
+
+    while (rootInstance.parent?.sourceName) {
+      rootInstance = rootInstance.parent;
+    }
+
+    return rootInstance;
+  }
 
   async forceRender() {
     this.cleanHooks();
@@ -393,8 +405,6 @@ export class EventMachine extends HookMachine {
   refresh() {
     renderComponent(this);
   }
-
-  afterRender() {}
 
   // 기본 템플릿 지정
   template() {

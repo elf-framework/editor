@@ -1,5 +1,12 @@
 # @elf-framework/sapa
 
+## 0.0.197
+
+### Patch Changes
+
+- refactoring hook system when hmr is fired
+  Set start and renderRoot equal
+  improvement reconciel algorithm
 ## 0.0.171
 
 ### Patch Changes

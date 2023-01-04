@@ -1,5 +1,68 @@
 # @elf-framework/base-editor
 
+## 0.0.198
+
+### Patch Changes
+
+- modify plugin system for base-editor
+
+## 0.0.188
+
+### Patch Changes
+
+- refactoring base editor for plugin loading
+
+## 0.0.187
+
+### Patch Changes
+
+- add test code
+
+## 0.0.186
+
+### Patch Changes
+
+- add test code
+
+## 0.0.185
+
+### Patch Changes
+
+- add test code
+
+## 0.0.183
+
+### Patch Changes
+
+- add test code
+
+## 0.0.182
+
+### Patch Changes
+
+- add test code
+
+## 0.0.181
+
+### Patch Changes
+
+- add test code
+
+## 0.0.176
+
+### Patch Changes
+
+- add test code
+
+- Updated dependencies []:
+  - @elf-framework/sapa@0.0.176
+
+## 0.0.175
+
+### Patch Changes
+
+- add test code
+
 ## 0.0.169
 
 ### Patch Changes
