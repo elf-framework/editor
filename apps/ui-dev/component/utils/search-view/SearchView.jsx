@@ -12,8 +12,6 @@ import "./SearchView.scss";
 
 import { searchData } from "~/data/search";
 
-console.log(searchData);
-
 export function SearchView({ query = "" }) {
   const [searchQuery, setSearchQuery] = useState(query);
   const [selectedIndex, setSelectedIndex] = useState(-1);
