@@ -2661,7 +2661,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   function styleKeyMap(key) {
     return convertStyleKey(key);
   }
-  function css(style) {
+  function css(style = {}) {
     const newStyles = {};
     Object.keys(style).forEach((styleKey) => {
       newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(
@@ -5062,7 +5062,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       );
       tempChildren.push(...tempArray);
     }
-    return tempChildren.join("\n");
+    return tempChildren.join("");
   }
   function getContextProps(context, props) {
     const newProps = context.filterFunction("getProps").flat(Infinity);
@@ -5115,18 +5115,14 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     }
     const tag = vNodeInstance.tag;
     if (isVoidTag(tag)) {
-      return `
-      <${tag} ${tempProps.join(" ")} />
-    `;
+      return `<${tag} ${tempProps.join(" ")} />`;
     } else {
       const childrenHtml = await makeChildrenHtml(
         vNodeInstance,
         withChildren,
         options
       );
-      return `
-      <${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>
-    `;
+      return `<${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>`;
     }
   }
   async function VNodeElementRender(vNodeInstance, withChildren, options) {
@@ -5210,7 +5206,6 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       if (childInstance == null ? void 0 : childInstance.$el) {
         childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
       }
-      console.log($targetElement, childInstance, rootInstance, ElementNode);
       renderComponent(childInstance, null);
     } else {
       renderComponent(app, $container);

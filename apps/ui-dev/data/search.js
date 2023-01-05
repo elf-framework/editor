@@ -1,5 +1,14 @@
 const modules = import.meta.glob(
-  ["../pages/**/*.meta.json", "../pages/**/*.mdx"],
+  [
+    "../pages/introduction/**/*.meta.json",
+    "../pages/introduction/**/*.mdx",
+    "../pages/sapa/**/*.meta.json",
+    "../pages/sapa/**/*.mdx",
+    "../pages/design-system/**/*.meta.json",
+    "../pages/design-system/**/*.mdx",
+    "../pages/base-editor/**/*.meta.json",
+    "../pages/base-editor/**/*.mdx",
+  ],
   { eager: true }
 );
 

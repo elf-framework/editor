@@ -2657,7 +2657,7 @@ function convertNumberStyleValue(key, value) {
 function styleKeyMap(key) {
   return convertStyleKey(key);
 }
-function css(style) {
+function css(style = {}) {
   const newStyles = {};
   Object.keys(style).forEach((styleKey) => {
     newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(
@@ -5058,7 +5058,7 @@ async function makeChildrenHtml(vNodeInstance, withChildren, options) {
     );
     tempChildren.push(...tempArray);
   }
-  return tempChildren.join("\n");
+  return tempChildren.join("");
 }
 function getContextProps(context, props) {
   const newProps = context.filterFunction("getProps").flat(Infinity);
@@ -5111,18 +5111,14 @@ async function makeHtml$3(vNodeInstance, withChildren = false, options = {}) {
   }
   const tag = vNodeInstance.tag;
   if (isVoidTag(tag)) {
-    return `
-      <${tag} ${tempProps.join(" ")} />
-    `;
+    return `<${tag} ${tempProps.join(" ")} />`;
   } else {
     const childrenHtml = await makeChildrenHtml(
       vNodeInstance,
       withChildren,
       options
     );
-    return `
-      <${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>
-    `;
+    return `<${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>`;
   }
 }
 async function VNodeElementRender(vNodeInstance, withChildren, options) {
@@ -5206,7 +5202,6 @@ function start(ElementNode, opt = {}) {
     if (childInstance == null ? void 0 : childInstance.$el) {
       childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
     }
-    console.log($targetElement, childInstance, rootInstance, ElementNode);
     renderComponent(childInstance, null);
   } else {
     renderComponent(app, $container);

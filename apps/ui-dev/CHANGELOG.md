@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.48
+
+### Patch Changes
+
+- modify performance to search data
+
 ## 1.0.47
 
 ### Patch Changes

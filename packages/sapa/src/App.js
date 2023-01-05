@@ -62,7 +62,6 @@ export function start(ElementNode, opt = {}) {
     }
 
     // dom render 를 위해서 추가
-    console.log($targetElement, childInstance, rootInstance, ElementNode);
     renderComponent(childInstance, null, true);
   } else {
     renderComponent(app, $container, true);

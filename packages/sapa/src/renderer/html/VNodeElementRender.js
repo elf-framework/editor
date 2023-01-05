@@ -69,9 +69,7 @@ async function makeHtml(vNodeInstance, withChildren = false, options = {}) {
 
   const tag = vNodeInstance.tag;
   if (isVoidTag(tag)) {
-    return `
-      <${tag} ${tempProps.join(" ")} />
-    `;
+    return `<${tag} ${tempProps.join(" ")} />`;
   } else {
     const childrenHtml = await makeChildrenHtml(
       vNodeInstance,
@@ -79,9 +77,7 @@ async function makeHtml(vNodeInstance, withChildren = false, options = {}) {
       options
     );
 
-    return `
-      <${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>
-    `;
+    return `<${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>`;
   }
 }
 

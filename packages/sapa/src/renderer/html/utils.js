@@ -32,5 +32,5 @@ export async function makeChildrenHtml(vNodeInstance, withChildren, options) {
     tempChildren.push(...tempArray);
   }
 
-  return tempChildren.join("\n");
+  return tempChildren.join("");
 }

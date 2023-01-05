@@ -125,7 +125,7 @@ function styleKeyMap(key) {
   return convertStyleKey(key);
 }
 
-export function css(style) {
+export function css(style = {}) {
   const newStyles = {};
   Object.keys(style).forEach((styleKey) => {
     newStyles[styleKeyMap(styleKey)] = convertNumberStyleValue(

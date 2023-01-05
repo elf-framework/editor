@@ -1,4 +1,5 @@
 import {
+  renderToHtml,
   useBatch,
   useCallback,
   useEffect,
@@ -12,9 +13,12 @@ import "./SearchView.scss";
 
 import { searchData } from "~/data/search";
 
+const ContentCache = {};
+
 export function SearchView({ query = "" }) {
   const [searchQuery, setSearchQuery] = useState(query);
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [searchResult, setSearchResult] = useState("");
   const setOpenSearchView = useSetStoreValue("open.search.view");
 
   const handleClose = useCallback(() => {
@@ -54,25 +58,31 @@ export function SearchView({ query = "" }) {
 
   const handleSelectItem = useCallback(
     (index) => {
-      setSelectedIndex(index);
+      useBatch(async () => {
+        setSelectedIndex(index);
 
-      setTimeout(() => {
-        const selected = document.querySelector(".search-item.selected");
+        const currentLink = searchList[index];
 
-        if (selected) {
-          selected.classList.remove("selected");
-        }
+        setSearchResult(currentLink.content());
 
-        const input = document.querySelector(
-          `.search-item[data-index='${index}']`
-        );
+        setTimeout(() => {
+          const selected = document.querySelector(".search-item.selected");
 
-        input?.classList.add("selected");
+          if (selected) {
+            selected.classList.remove("selected");
+          }
 
-        input?.scrollIntoView({ block: "center" });
-      }, 10);
+          const input = document.querySelector(
+            `.search-item[data-index='${index}']`
+          );
+
+          input?.classList.add("selected");
+
+          input?.scrollIntoView({ block: "center" });
+        }, 10);
+      });
     },
-    [setSelectedIndex]
+    [setSelectedIndex, setSearchResult, searchList, ContentCache]
   );
 
   const handleInput = (e) => {
@@ -86,14 +96,11 @@ export function SearchView({ query = "" }) {
       }
     } else {
       useBatch(() => {
-        console.log(e.target.value);
         setSearchQuery(e.target.value);
         setSelectedIndex(-1);
       });
     }
   };
-
-  console.log(this.id);
 
   return (
     <div class="search-view-overlay">
@@ -160,7 +167,7 @@ export function SearchView({ query = "" }) {
                     {currentLink.title}
                   </div>
                   <div class="search-view-content-preview-description">
-                    {currentLink.content()}
+                    {searchResult}
                   </div>
                 </div>
               ) : (
