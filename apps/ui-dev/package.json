@@ -1,6 +1,6 @@
 {
   "name": "ui-dev",
-  "version": "1.0.44",
+  "version": "1.0.46",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -38,6 +38,7 @@
     "@mdx-js/rollup": "^2.2.1",
     "autoprefixer": "^10.4.13",
     "chokidar": "^3.5.3",
+    "eslint-plugin-mdx": "^2.0.5",
     "front-matter": "^4.0.2",
     "glob": "^8.0.3",
     "mdx-mermaid": "^2.0.0-rc1",

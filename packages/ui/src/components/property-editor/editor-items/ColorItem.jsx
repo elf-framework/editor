@@ -7,7 +7,7 @@ export function ColorItem({ value, onChange, item }) {
       value={value}
       sync
       onChange={(color, inputPaintInstance) => {
-        onChange && onChange(color, inputPaintInstance);
+        onChange && onChange(color, item, inputPaintInstance);
       }}
       onClickColorView={(e, color) => {
         onClickColorView && onClickColorView(e, color);

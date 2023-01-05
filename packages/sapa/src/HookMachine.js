@@ -200,6 +200,11 @@ export class HookMachine extends MagicHandler {
     };
   }
 
+  initHooks() {
+    this.#__stateHooks = [];
+    this.#__stateHooksIndex = 0;
+  }
+
   reloadHooks(hooks) {
     this.#__stateHooks = hooks.__stateHooks || [];
     this.#__stateHooksIndex = hooks.__stateHooksIndex || 0;
@@ -256,6 +261,11 @@ export class HookMachine extends MagicHandler {
           });
           break;
         case USE_SUBSCRIBE:
+          // 이전 이벤트는 삭제한다.
+          if (hook.hookInfo.unsubscribe) {
+            hook.hookInfo.unsubscribe();
+          }
+
           hook.hookInfo = createSubscribe({
             name: hook.hookInfo.name,
             callback: hook.hookInfo.callback,

@@ -1,1 +1,1035 @@
-(function(l,o){typeof exports=="object"&&typeof module<"u"?o(exports,require("@elf-framework/sapa"),require("@elf-framework/ui")):typeof define=="function"&&define.amd?define(["exports","@elf-framework/sapa","@elf-framework/ui"],o):(l=typeof globalThis<"u"?globalThis:l||self,o(l.baseEditor={},l.sapa,l.ui))})(this,function(l,o,w){"use strict";const q="",S=[{command:"keymap.keydown",execute:function(s,t){s.keyboard.add(t.code,t.keyCode,t),s.shortcuts&&s.shortcuts.execute(t,"keydown")}},{command:"keymap.keyup",execute:function(s,t){s.keyboard.remove(t.code,t.keyCode),s.shortcuts&&s.shortcuts.execute(t,"keyup")}},{command:"toggle.theme",execute:function(s){var t=s.configs.get("editor.theme");s.configs.set("editor.theme",t==="light"?"dark":"light")}},{command:"editor.layout.toggle.top",execute:function(s){var t=s.configs.get("editor.layout.show.top");s.configs.set("editor.layout.show.top",!t)}},{command:"editor.layout.toggle.right",execute:function(s){var t=s.configs.get("editor.layout.show.right");s.configs.set("editor.layout.show.right",!t)}},{command:"editor.layout.toggle.left",execute:function(s){var t=s.configs.get("editor.layout.show.left");s.configs.set("editor.layout.show.left",!t)}},{command:"editor.layout.toggle.bottom",execute:function(s){var t=s.configs.get("editor.layout.show.bottom");s.configs.set("editor.layout.show.bottom",!t)}}],E=[{key:"editor.theme",defaultValue:"light",title:"Editor Theme ",description:"Set editor's theme",type:"string"},{key:"editor.layout.show.top",defaultValue:!0,title:"Show top panel in layout ",description:"Show top panel in layout",type:"boolean"},{key:"editor.layout.show.left",defaultValue:!0,title:"Show left panel in layout ",description:"Show left panel in layout",type:"boolean"},{key:"editor.layout.show.right",defaultValue:!0,title:"Show right panel in layout ",description:"Show right panel in layout",type:"boolean"},{key:"editor.layout.show.bottom",defaultValue:!0,title:"Show bottom panel in layout ",description:"Show bottom panel in layout",type:"boolean"}];class b{constructor(t){this.editorContext=t,this.localCommands={}}loadCommands(t={}){Object.keys(t).forEach(e=>{o.isFunction(t[e])?this.registerCommand(e,t[e]):this.registerCommand(t[e])})}registerCommand(t,e){if(this.localCommands[t])throw new Error(`command ${t} is already registered`);if(arguments.length===2){const i=(...r)=>e.call(this,this.editorContext,...r);i.source=t,this.localCommands[t]=i}else if(o.isObject(t)){if(!t.command)throw new Error("command is required",t);if(!o.isFunction(t.execute))throw new Error("execute function is required",t);const i=(...r)=>t.execute.call(t,this.editorContext,...r);i.source=t.command,this.localCommands[t.command]=i}}getCallback(t){return typeof t=="function"?t:this.localCommands[t]}get(t){return this.getCallback(t)}execute(t,...e){const i=this.getCallback(t);if(!i)throw new Error("command is not registered : "+t);return i(...e)}has(t){return!!this.getCallback(t)}}class k{constructor(t){this.editorContext=t,this.configList=[],this.config=new Map}get(t){var e;return this.config.has(t)===!1&&this.config.set(t,(e=this.configList.find(i=>i.key==t))==null?void 0:e.defaultValue),this.config.get(t)}set(t,e){const i=this.config.get(t);i!==e&&(this.config.set(t,e),this.editorContext.emit("config:"+t,e,i))}push(t,e){const r=this.get(t).length;return this.setIndexValue(t,r,e),r}setIndexValue(t,e,i){const r=this.get(t);r[e]=i,this.set(t,[...r])}getIndexValue(t,e){return this.get(t)[e]}removeByIndex(t,e){const i=this.get(t);i.splice(e,1),this.set(t,[...i])}init(t,e){this.set(t,e,!1)}setAll(t){Object.keys(t).forEach(e=>{this.set(e,t[e])})}getType(t){var e;return(e=this.configList.find(i=>i.key==t))==null?void 0:e.type}isType(t,e){return this.getType(t)===e}isBoolean(t){return this.isType(t,"boolean")}toggle(t){this.set(t,!this.get(t))}toggleWith(t,e,i){this.get(t)===e?this.set(t,i):this.set(t,e)}true(t){return this.get(t)===!0}false(t){return this.get(t)===!1}is(t,e){return this.get(t)===e}remove(t){this.config.delete(t),this.editorContext.emit("config:"+t)}registerConfig(t){this.config.set(t.key,t.defaultValue),this.configList.push(t)}updateConfig(t,e=!1){Object.entries(t).forEach(([i,r])=>{e?this.set(i,r):this.config.set(i,r)})}}class T{constructor(t){this.editorContext=t,this.locales={},this.fallbackLang="en_US"}getLang(t=void 0){return t||this.fallbackLang}setFallbackLang(t){this.fallbackLang=t}get(t,e={},i=void 0){var u,d;const r=this.getLang(i),n=((u=this.locales[r])==null?void 0:u[t])||((d=this.locales[this.fallbackLang])==null?void 0:d[t])||t||void 0;if(o.isFunction(n))return n(e);{let c=n;return t===c?t.split(".").pop():(Object.entries(e).forEach(([_,W])=>{c=c.replace(new RegExp(`{${_}}`,"ig"),W)}),c)}}hasKey(t,e=void 0){const i=this.getLang(e);return!!(this.locales[i][t]||this.locales[this.fallbackLang][t])}registerI18nMessage(t,e){this.locales[t]||(this.locales[t]={}),Object.assign(this.locales[t],e)}}class I{constructor(t){this.editorContext=t,this.codeSet=new Set,this.keyCodeSet=new Set,this.event={}}add(t,e,i){this.codeSet.has(t)===!1&&this.codeSet.add(t),this.keyCodeSet.has(e)===!1&&this.keyCodeSet.add(e),this.event=i}remove(t,e){this.codeSet.delete(t),this.keyCodeSet.delete(e),this.event={}}hasKey(t){return this.codeSet.has(t)||this.keyCodeSet.has(t)}check(...t){return t.some(e=>this.hasKey(e))}isShift(){return Boolean(this.event.shiftKey)}isCtrl(){return Boolean(this.event.ctrlKey)}isAlt(){return Boolean(this.event.altKey)}isMeta(){return Boolean(this.event.metaKey)}}class L{constructor(t,e,i){this.editor=t,this.callback=e,this.options=i,this.isActivated=!1,this.ret=null}async initialize(){const t=await this.callback(this.editor,this.options);return this.isActivated=!0,t}async activate(){return this.isActivated?this.ret:(this.ret=await this.initialize(),this.ret)}deactivate(){this.isActivated=!1}}class v{constructor(t){this.editorContext=t,this.plugins=[]}registerPlugin(t,e={}){this.plugins.push(new L(this.editorContext,t,e))}init(){this.plugins=[]}async initializePlugin(){return await Promise.all(this.plugins.map(async t=>{try{return await t.activate()}catch(e){console.error(e);return}}))}async activate(){return await this.initializePlugin()}}let f={name:void 0};function m(){return f.name===void 0&&(window.navigator.appVersion.indexOf("Win")!=-1?f.name="win":window.navigator.appVersion.indexOf("Mac")!=-1?f.name="mac":window.navigator.appVersion.indexOf("X11")!=-1?f.name="linux":f.name=""),f.name}const K={backspace:8,tab:9,enter:13,escape:27,space:32,pageup:33,pagedown:34,end:35,home:36,left:37,up:38,right:39,down:40,insert:45,delete:46,0:48,1:49,2:50,3:51,4:52,5:53,6:54,7:55,8:56,9:57,semicolon:59,equals:61,a:65,b:66,c:67,d:68,e:69,f:70,g:71,h:72,i:73,j:74,k:75,l:76,m:77,n:78,o:79,p:80,q:81,r:82,s:83,t:84,u:85,v:86,w:87,x:88,y:89,z:90,multiply:106,add:107,subtract:109,divide:111,f1:112,f2:113,f3:114,f4:115,f5:116,f6:117,f7:118,f8:119,f9:120,f10:121,f11:122,f12:123,f13:124,f14:125,f15:126,f16:127,f17:128,f18:129,f19:130,comma:188,",":188,period:190,".":190,slash:191,"/":191,backquote:192,"`":192,openbracket:219,"[":219,backslash:220,"\\":220,closebracket:221,"]":221,quote:222,"'":222,altgr:225};m();const a={ALT:"ALT",CMD:"CMD",META:"META",CTRL:"CTRL",SHIFT:"SHIFT",SPACE:"SPACE",BACKSPACE:"BACKSPACE"};function p(s){return K[`${s}`.toLowerCase()]||s}function g(...s){return s.filter(Boolean).join("+")}class U{constructor(t){this.editorContext=t,this.loadShortCuts()}getGeneratedKeyCode(t){return p(t)}loadShortCuts(){this.list=[],this.commands={}}makeShortcutCommandFunction(t){return typeof t=="function"?(...e)=>t(this.editorContext,...e):t}registerShortcut(t){const e=m(),i={key:"",args:[],eventType:"keydown",priority:10,preventDefault:!1,stopPropagation:!1,isDisabled:!1,container:null,...t,command:this.makeShortcutCommandFunction(t.command),checkKeyString:this.splitShortCut(t[e]||t.key),whenFunction:this.makeWhenFunction(t.command,t.when||!0)};this.list.push(i),this.updateCommandInfo(i)}makeWhenFunction(t,e){if(o.isBoolean(e)&&e)return()=>!0;const i=this.editorContext,r=e.split("|").map(n=>n.trim());return()=>r.some(n=>i.context.modeViewManager.isCurrentMode(n))}updateCommandInfo(t){Array.isArray(this.commands[t.checkKeyString])===!1&&(this.commands[t.checkKeyString]=[]),this.commands[t.checkKeyString].push(t)}sort(){this.commands={},this.list.forEach(t=>{this.updateCommandInfo(t)})}splitShortCut(t){var e=t.toUpperCase().split("+").map(c=>c.trim()).filter(Boolean);let i=!1,r=!1,n=!1,u=!1,d=[];return e.forEach(c=>{c.includes(a.ALT)?i=!0:c.includes(a.CTRL)?r=!0:c.includes(a.SHIFT)?n=!0:c.includes("CMD")||c.includes("WIN")||c.includes(a.META)?u=!0:d.push(c)}),g(i?a.ALT:"",r?a.CTRL:"",n?a.SHIFT:"",u?a.META:"",p(d.join("")))}makeKeyString(t){var e,i;return t.key==="Shift"||t.key==="Control"||t.key==="Alt"||t.key==="Meta"?(e=t.key)==null?void 0:e.toUpperCase():g(t.altKey?a.ALT:"",t.ctrlKey?a.CTRL:"",t.shiftKey?a.SHIFT:"",t.metaKey?a.META:"",(i=t.key)==null?void 0:i.toUpperCase())}makeCodeString(t){var e,i;return t.key==="Shift"||t.key==="Control"||t.key==="Alt"||t.key==="Meta"?(e=t.code)==null?void 0:e.toUpperCase():g(t.altKey?a.ALT:"",t.ctrlKey?a.CTRL:"",t.shiftKey?a.SHIFT:"",t.metaKey?a.META:"",(i=t.code)==null?void 0:i.toUpperCase())}makeKeyCodeString(t){return t.key==="Shift"||t.key==="Control"||t.key==="Alt"||t.key==="Meta"?t.keyCode:g(t.altKey?a.ALT:"",t.ctrlKey?a.CTRL:"",t.shiftKey?a.SHIFT:"",t.metaKey?a.META:"",t.keyCode)}checkShortCut(t,e,i){return this.commands[t]||this.commands[e]||this.commands[i]}checkWhen(t){return t.whenFunction()}execute(t,e="keydown"){let i=this.checkShortCut(this.makeKeyCodeString(t),this.makeKeyString(t),this.makeCodeString(t));if(i){const r=i.filter(n=>n.eventType===e).filter(n=>this.checkWhen(n));r.length&&r.forEach(n=>{if(n.container){if(o.isString(n.container)){if(!t.target.matches(n.container))return}else if(n.container instanceof HTMLElement&&!n.container.contains(t.target))return}n.preventDefault&&t.preventDefault(),n.stopPropagation&&t.stopPropagation(),this.editorContext.commands.execute(n.command,...n.args)})}}}class A{constructor(t){this.editorContext=t,this.uis={},this.groupUis={}}registerUI(t={}){Object.assign(this.uis,t)}registerGroupUI(t,e={}){this.groupUis[t]||(this.groupUis[t]={}),Object.assign(this.groupUis[t],e)}createUI(t){if(t instanceof o.VNode)return t;if(o.isArray(t)){const[e,i]=t;return o.createElementJsx(e,i)}return o.createElementJsx(t)}getUI(t){if(this.uis[t])return this.createUI(this.uis[t])}getGroupUI(t){return Object.values(this.groupUis[t]||{}).map(i=>this.createUI(i)).filter(Boolean)}}const M="EditorContext";class O{constructor(t,e={}){this.$rootEditor=t,this.$options=e,this.initialize()}initialize(){const{managers:t={},configList:e=[],commands:i=[],plugins:r=[]}=this.$options;this.initializeManagers(t),this.initializeConfigs(E),this.initializeConfigs(e),this.initializeInnerCommands(),this.initializeCommands(i),this.initializePlugins(r),this.emit("editor.initialize",this)}initializeManagers(t={}){t={configs:k,commands:b,plugins:v,uis:A,shortcuts:U,keyboard:I,i18n:T,...t},Object.entries(t).forEach(([e,i])=>{if(Object.hasOwnProperty.call(this,e)){console.warn(`[EditorContext] ${e} manager is already exists.`);return}Object.defineProperty(this,e,{enumerable:!1,configurable:!1,writable:!1,value:new i(this)})})}initializeConfigs(t=[]){t.forEach(e=>{this.configs.registerConfig(e)})}updateConfigs(t={}){this.configs.updateConfig(t)}initializeInnerCommands(){this.initializeCommands(S)}initializeCommands(t=[]){t.forEach(e=>{this.commands.registerCommand(e)})}initializePlugins(t=[]){this.plugins.init(),t.forEach(e=>{this.plugins.registerPlugin(e)})}async activate(){const t=await this.plugins.activate();return this.updateConfigs(this.$options.configs),t}get $store(){return this.$rootEditor.$store}emit(t,...e){this.$store.source=M,this.$store.emit(t,...e)}registerCommand(t){this.commands.registerCommand(t)}registerUI(t){this.uis.registerUI(t)}registerGroupUI(t,e){this.uis.registerGroupUI(t,e)}registerConfig(t){this.configs.registerConfig(t)}registerShortcut(t){this.shortcuts.registerShortcut(t)}registerI18nMessage(t,e){this.i18n.registerI18nMessage(t,e)}registerI18nMessageWithLang(t){Object.keys(t).forEach(e=>{this.registerI18nMessage(e,t[e])})}getUI(t){return this.uis.getUI(t)}getGroupUI(t){return this.uis.getGroupUI(t)}getUIList(t){return[this.getUI(t),this.getGroupUI(t)].flat(1/0).filter(Boolean)}getConfig(t){return this.configs.get(t)}}const x="editor",y="editorOption";class B{constructor(t,e={}){this.editor=t,this.props=e}initialize(){}load(){}activate(){}deactivate(){}}function h(){return o.useStore(x)}function $(s){var t;return(t=o.useStore(y))==null?void 0:t[s]}function P(s){var t,e;return(e=(t=h())==null?void 0:t.configs)==null?void 0:e.get(s)}function z(s,t){var e,i;return(i=(e=h())==null?void 0:e.configs)==null?void 0:i.set(s,t)}async function F(s,...t){var e,i;return await((i=(e=h())==null?void 0:e.commands)==null?void 0:i.emit(s,...t))}function V(s){var t,e;return(e=(t=h())==null?void 0:t.commands)==null?void 0:e.get(s)}function j(s,t={}){var e,i;return(i=(e=h())==null?void 0:e.i18n)==null?void 0:i.get(s,t)}class C extends o.UIElement{initialize(){super.initialize(),this.$editor||(this.$editor=new O(this,this.props)),this.$store.set(x,this.$editor),this.$store.set(y,this.props)}async load(){const{configs:t}=this.props;this.$editor.updateConfigs(t),await this.activate()}async activate(){await this.$editor.activate(),this.$store.initValue("editor.plugin.activated",(t=0)=>t+1),this.render()}}function R(){return o.createElementJsx("div",{style:{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",width:"100%",position:"absolute",top:0,left:0}},"Loading...")}const D=["TEXTAREA","INPUT","SELECT"];class N extends C{template(){const{class:t="",fullScreen:e,loading:i=o.createElementJsx(R,null)}=this.props,r=o.useRef(0),n=h(),u=o.useGetStoreValue("editor.plugin.activated");r.current++;const d=o.useMemo(()=>o.classnames("elf--base-editor",{"full-screen":e},t),[t,e]);return o.useEffect(()=>{this.load()},[]),o.createElementJsx("div",{class:d},u()?n.getUIList("renderView"):i)}isNotFormElement(t){var e=t.target.tagName;return D.includes(e)?!1:t.target.getAttribute("contenteditable")!=="true"}updateTheme(){const t=this.$editor.configs.get("editor.theme")!=="light";document.body.classList.toggle("theme-dark",t)}[o.SUBSCRIBE_SELF("editor.plugin.activated")](){this.updateTheme()}[o.SUBSCRIBE("config:editor.theme")](){this.updateTheme()}[o.KEYDOWN("document")+o.IF("isNotFormElement")](t){this.$editor.commands.execute("keymap.keydown",t)}[o.KEYUP("document")+o.IF("isNotFormElement")](t){this.$editor.commands.execute("keymap.keyup",t)}[o.RESIZE("window")+o.DEBOUNCE(10)](){this.$editor.emit("resize.window")}}function G({views:s=[],groups:t=[],as:e="div",style:i={}}){const r=h(),n=[...s.map(u=>r.getUI(u)),...t.map(u=>r.getGroupUI(u))].flat(1/0).filter(Boolean);return o.createElementJsx(w.View,{as:e,style:i},n)}l.BaseEditor=N,l.Editor=C,l.EditorPlugin=B,l.InjectView=G,l.useCommand=F,l.useConfig=P,l.useEditor=h,l.useEditorOption=$,l.useGetCommand=V,l.useI18n=j,l.useSetConfig=z,Object.defineProperties(l,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("@elf-framework/sapa"), require("@elf-framework/ui")) : typeof define === "function" && define.amd ? define(["exports", "@elf-framework/sapa", "@elf-framework/ui"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.baseEditor = {}, global.sapa, global.ui));
+})(this, function(exports2, sapa, ui) {
+  "use strict";
+  const style = "";
+  const editorLayoutToggleBottom = {
+    command: "editor.layout.toggle.bottom",
+    execute: function(editor) {
+      var isShow = editor.configs.get("editor.layout.show.bottom");
+      editor.configs.set("editor.layout.show.bottom", !isShow);
+    }
+  };
+  const editorLayoutToggleLeft = {
+    command: "editor.layout.toggle.left",
+    execute: function(editor) {
+      var isShow = editor.configs.get("editor.layout.show.left");
+      editor.configs.set("editor.layout.show.left", !isShow);
+    }
+  };
+  const editorLayoutToggleRight = {
+    command: "editor.layout.toggle.right",
+    execute: function(editor) {
+      var isShow = editor.configs.get("editor.layout.show.right");
+      editor.configs.set("editor.layout.show.right", !isShow);
+    }
+  };
+  const editorLayoutToggleTop = {
+    command: "editor.layout.toggle.top",
+    execute: function(editor) {
+      var isShow = editor.configs.get("editor.layout.show.top");
+      editor.configs.set("editor.layout.show.top", !isShow);
+    }
+  };
+  const keymapKeydown = {
+    command: "keymap.keydown",
+    execute: function(editor, e) {
+      editor.keyboard.add(e.code, e.keyCode, e);
+      if (editor.shortcuts) {
+        editor.shortcuts.execute(e, "keydown");
+      }
+    }
+  };
+  const keymapKeyup = {
+    command: "keymap.keyup",
+    execute: function(editor, e) {
+      editor.keyboard.remove(e.code, e.keyCode);
+      if (editor.shortcuts) {
+        editor.shortcuts.execute(e, "keyup");
+      }
+    }
+  };
+  const toggleTheme = {
+    command: "toggle.theme",
+    execute: function(editor) {
+      var theme = editor.configs.get("editor.theme");
+      editor.configs.set("editor.theme", theme === "light" ? "dark" : "light");
+    }
+  };
+  const defaultCommands = [
+    keymapKeydown,
+    keymapKeyup,
+    toggleTheme,
+    editorLayoutToggleTop,
+    editorLayoutToggleRight,
+    editorLayoutToggleLeft,
+    editorLayoutToggleBottom
+  ];
+  const editorLayoutShowBottom = {
+    key: "editor.layout.show.bottom",
+    defaultValue: true,
+    title: "Show bottom panel in layout ",
+    description: "Show bottom panel in layout",
+    type: "boolean"
+  };
+  const editorLayoutShowLeft = {
+    key: "editor.layout.show.left",
+    defaultValue: true,
+    title: "Show left panel in layout ",
+    description: "Show left panel in layout",
+    type: "boolean"
+  };
+  const editorLayoutShowRight = {
+    key: "editor.layout.show.right",
+    defaultValue: true,
+    title: "Show right panel in layout ",
+    description: "Show right panel in layout",
+    type: "boolean"
+  };
+  const editorLayoutShowTop = {
+    key: "editor.layout.show.top",
+    defaultValue: true,
+    title: "Show top panel in layout ",
+    description: "Show top panel in layout",
+    type: "boolean"
+  };
+  const editorTheme = {
+    key: "editor.theme",
+    defaultValue: "light",
+    title: "Editor Theme ",
+    description: "Set editor's theme",
+    type: "string"
+  };
+  const defaultConfigs = [
+    editorTheme,
+    editorLayoutShowTop,
+    editorLayoutShowLeft,
+    editorLayoutShowRight,
+    editorLayoutShowBottom
+  ];
+  class CommandManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.localCommands = {};
+    }
+    loadCommands(userCommands = {}) {
+      Object.keys(userCommands).forEach((command) => {
+        if (sapa.isFunction(userCommands[command])) {
+          this.registerCommand(command, userCommands[command]);
+        } else {
+          this.registerCommand(userCommands[command]);
+        }
+      });
+    }
+    registerCommand(command, commandCallback) {
+      if (this.localCommands[command]) {
+        throw new Error(`command ${command} is already registered`);
+      }
+      if (arguments.length === 2) {
+        const callback = (...args) => {
+          const result = commandCallback.call(this, this.editorContext, ...args);
+          return result;
+        };
+        callback.source = command;
+        this.localCommands[command] = callback;
+      } else if (sapa.isObject(command)) {
+        if (!command.command)
+          throw new Error("command is required", command);
+        if (!sapa.isFunction(command.execute))
+          throw new Error("execute function is required", command);
+        const callback = (...args) => {
+          const result = command.execute.call(
+            command,
+            this.editorContext,
+            ...args
+          );
+          return result;
+        };
+        callback.source = command.command;
+        this.localCommands[command.command] = callback;
+      }
+    }
+    getCallback(command) {
+      if (typeof command === "function") {
+        return command;
+      }
+      return this.localCommands[command];
+    }
+    get(command) {
+      return this.getCallback(command);
+    }
+    execute(command, ...args) {
+      const callback = this.getCallback(command);
+      if (!callback) {
+        throw new Error("command is not registered : " + command);
+      }
+      return callback(...args);
+    }
+    has(command) {
+      return !!this.getCallback(command);
+    }
+  }
+  class ConfigManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.configList = [];
+      this.config = /* @__PURE__ */ new Map();
+    }
+    get(key) {
+      var _a;
+      if (this.config.has(key) === false) {
+        this.config.set(
+          key,
+          (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.defaultValue
+        );
+      }
+      return this.config.get(key);
+    }
+    set(key, value) {
+      const oldValue = this.config.get(key);
+      if (oldValue !== value) {
+        this.config.set(key, value);
+        this.editorContext.emit("config:" + key, value, oldValue);
+      }
+    }
+    push(key, value) {
+      const list = this.get(key);
+      const lastIndex = list.length;
+      this.setIndexValue(key, lastIndex, value);
+      return lastIndex;
+    }
+    setIndexValue(key, index, value) {
+      const list = this.get(key);
+      list[index] = value;
+      this.set(key, [...list]);
+    }
+    getIndexValue(key, index) {
+      const list = this.get(key);
+      return list[index];
+    }
+    removeByIndex(key, index) {
+      const list = this.get(key);
+      list.splice(index, 1);
+      this.set(key, [...list]);
+    }
+    init(key, value) {
+      this.set(key, value, false);
+    }
+    setAll(obj) {
+      Object.keys(obj).forEach((key) => {
+        this.set(key, obj[key]);
+      });
+    }
+    getType(key) {
+      var _a;
+      return (_a = this.configList.find((it) => it.key == key)) == null ? void 0 : _a.type;
+    }
+    isType(key, type) {
+      return this.getType(key) === type;
+    }
+    isBoolean(key) {
+      return this.isType(key, "boolean");
+    }
+    toggle(key) {
+      this.set(key, !this.get(key));
+    }
+    toggleWith(key, firstValue, secondValue) {
+      if (this.get(key) === firstValue) {
+        this.set(key, secondValue);
+      } else {
+        this.set(key, firstValue);
+      }
+    }
+    true(key) {
+      return this.get(key) === true;
+    }
+    false(key) {
+      return this.get(key) === false;
+    }
+    is(key, value) {
+      return this.get(key) === value;
+    }
+    remove(key) {
+      this.config.delete(key);
+      this.editorContext.emit("config:" + key);
+    }
+    registerConfig(config) {
+      this.config.set(config.key, config.defaultValue);
+      this.configList.push(config);
+    }
+    updateConfig(config, isEmit = false) {
+      Object.entries(config).forEach(([key, value]) => {
+        if (isEmit) {
+          this.set(key, value);
+        } else {
+          this.config.set(key, value);
+        }
+      });
+    }
+  }
+  class I18nManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.locales = {};
+      this.fallbackLang = "en_US";
+    }
+    getLang(lang = void 0) {
+      return lang || this.fallbackLang;
+    }
+    setFallbackLang(lang) {
+      this.fallbackLang = lang;
+    }
+    get(key, params = {}, lang = void 0) {
+      var _a, _b;
+      const currentLang = this.getLang(lang);
+      const str = ((_a = this.locales[currentLang]) == null ? void 0 : _a[key]) || ((_b = this.locales[this.fallbackLang]) == null ? void 0 : _b[key]) || key || void 0;
+      if (sapa.isFunction(str)) {
+        return str(params);
+      } else {
+        let newValue = str;
+        if (key === newValue) {
+          return key.split(".").pop();
+        }
+        Object.entries(params).forEach(([key2, value]) => {
+          newValue = newValue.replace(new RegExp(`{${key2}}`, "ig"), value);
+        });
+        return newValue;
+      }
+    }
+    hasKey(key, lang = void 0) {
+      const currentLang = this.getLang(lang);
+      return !!(this.locales[currentLang][key] || this.locales[this.fallbackLang][key]);
+    }
+    registerI18nMessage(lang, messages) {
+      if (!this.locales[lang]) {
+        this.locales[lang] = {};
+      }
+      Object.assign(this.locales[lang], messages);
+    }
+  }
+  class KeyBoardManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.codeSet = /* @__PURE__ */ new Set();
+      this.keyCodeSet = /* @__PURE__ */ new Set();
+      this.event = {};
+    }
+    add(key, keyCode, e) {
+      if (this.codeSet.has(key) === false) {
+        this.codeSet.add(key);
+      }
+      if (this.keyCodeSet.has(keyCode) === false) {
+        this.keyCodeSet.add(keyCode);
+      }
+      this.event = e;
+    }
+    remove(key, keyCode) {
+      this.codeSet.delete(key);
+      this.keyCodeSet.delete(keyCode);
+      this.event = {};
+    }
+    hasKey(keyOrKeyCode) {
+      return this.codeSet.has(keyOrKeyCode) || this.keyCodeSet.has(keyOrKeyCode);
+    }
+    check(...args) {
+      return args.some((keyOrKeyCode) => this.hasKey(keyOrKeyCode));
+    }
+    isShift() {
+      return Boolean(this.event.shiftKey);
+    }
+    isCtrl() {
+      return Boolean(this.event.ctrlKey);
+    }
+    isAlt() {
+      return Boolean(this.event.altKey);
+    }
+    isMeta() {
+      return Boolean(this.event.metaKey);
+    }
+  }
+  class EditorPlugin$1 {
+    constructor(editor, callback, options) {
+      this.editor = editor;
+      this.callback = callback;
+      this.options = options;
+      this.isActivated = false;
+      this.ret = null;
+    }
+    async initialize() {
+      const ret = await this.callback(this.editor, this.options);
+      this.isActivated = true;
+      return ret;
+    }
+    async activate() {
+      if (this.isActivated) {
+        return this.ret;
+      }
+      this.ret = await this.initialize();
+      return this.ret;
+    }
+    deactivate() {
+      this.isActivated = false;
+    }
+  }
+  class PluginManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.plugins = [];
+    }
+    registerPlugin(func, options = {}) {
+      this.plugins.push(new EditorPlugin$1(this.editorContext, func, options));
+    }
+    init() {
+      this.plugins = [];
+    }
+    async initializePlugin() {
+      return await Promise.all(
+        this.plugins.map(async (plugin) => {
+          try {
+            return await plugin.activate();
+          } catch (e) {
+            console.error(e);
+            return void 0;
+          }
+        })
+      );
+    }
+    async activate() {
+      const ret = await this.initializePlugin();
+      return ret;
+    }
+  }
+  let osInfo = {
+    name: void 0
+  };
+  function os() {
+    if (osInfo.name === void 0) {
+      if (window.navigator.appVersion.indexOf("Win") != -1)
+        osInfo.name = "win";
+      else if (window.navigator.appVersion.indexOf("Mac") != -1)
+        osInfo.name = "mac";
+      else if (window.navigator.appVersion.indexOf("X11") != -1)
+        osInfo.name = "linux";
+      else
+        osInfo.name = "";
+    }
+    return osInfo.name;
+  }
+  const KEY_CODE = {
+    backspace: 8,
+    tab: 9,
+    enter: 13,
+    escape: 27,
+    space: 32,
+    pageup: 33,
+    pagedown: 34,
+    end: 35,
+    home: 36,
+    left: 37,
+    up: 38,
+    right: 39,
+    down: 40,
+    insert: 45,
+    delete: 46,
+    0: 48,
+    1: 49,
+    2: 50,
+    3: 51,
+    4: 52,
+    5: 53,
+    6: 54,
+    7: 55,
+    8: 56,
+    9: 57,
+    semicolon: 59,
+    equals: 61,
+    a: 65,
+    b: 66,
+    c: 67,
+    d: 68,
+    e: 69,
+    f: 70,
+    g: 71,
+    h: 72,
+    i: 73,
+    j: 74,
+    k: 75,
+    l: 76,
+    m: 77,
+    n: 78,
+    o: 79,
+    p: 80,
+    q: 81,
+    r: 82,
+    s: 83,
+    t: 84,
+    u: 85,
+    v: 86,
+    w: 87,
+    x: 88,
+    y: 89,
+    z: 90,
+    multiply: 106,
+    add: 107,
+    subtract: 109,
+    divide: 111,
+    f1: 112,
+    f2: 113,
+    f3: 114,
+    f4: 115,
+    f5: 116,
+    f6: 117,
+    f7: 118,
+    f8: 119,
+    f9: 120,
+    f10: 121,
+    f11: 122,
+    f12: 123,
+    f13: 124,
+    f14: 125,
+    f15: 126,
+    f16: 127,
+    f17: 128,
+    f18: 129,
+    f19: 130,
+    comma: 188,
+    ",": 188,
+    period: 190,
+    ".": 190,
+    slash: 191,
+    "/": 191,
+    backquote: 192,
+    "`": 192,
+    openbracket: 219,
+    "[": 219,
+    backslash: 220,
+    "\\": 220,
+    closebracket: 221,
+    "]": 221,
+    quote: 222,
+    "'": 222,
+    altgr: 225
+  };
+  os();
+  const KEY_STRING = {
+    ALT: "ALT",
+    CMD: "CMD",
+    META: "META",
+    CTRL: "CTRL",
+    SHIFT: "SHIFT",
+    SPACE: "SPACE",
+    BACKSPACE: "BACKSPACE"
+  };
+  function generateKeyCode(code) {
+    return KEY_CODE[`${code}`.toLowerCase()] || code;
+  }
+  function joinKeys(...args) {
+    return args.filter(Boolean).join("+");
+  }
+  class ShortCutManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.loadShortCuts();
+    }
+    getGeneratedKeyCode(code) {
+      return generateKeyCode(code);
+    }
+    loadShortCuts() {
+      this.list = [];
+      this.commands = {};
+    }
+    makeShortcutCommandFunction(command) {
+      if (typeof command === "function") {
+        return (...args) => {
+          return command(this.editorContext, ...args);
+        };
+      }
+      return command;
+    }
+    registerShortcut(shortcut) {
+      const OSName = os();
+      const shortcutData = {
+        key: "",
+        args: [],
+        eventType: "keydown",
+        priority: 10,
+        preventDefault: false,
+        stopPropagation: false,
+        isDisabled: false,
+        container: null,
+        ...shortcut,
+        command: this.makeShortcutCommandFunction(shortcut.command),
+        checkKeyString: this.splitShortCut(shortcut[OSName] || shortcut.key),
+        whenFunction: this.makeWhenFunction(
+          shortcut.command,
+          shortcut.when || true
+        )
+      };
+      this.list.push(shortcutData);
+      this.updateCommandInfo(shortcutData);
+    }
+    makeWhenFunction(command, when) {
+      if (sapa.isBoolean(when) && when) {
+        return () => true;
+      }
+      const editor = this.editorContext;
+      const whenList = when.split("|").map((it) => it.trim());
+      return () => {
+        return whenList.some(
+          (it) => editor.context.modeViewManager.isCurrentMode(it)
+        );
+      };
+    }
+    updateCommandInfo(it) {
+      if (Array.isArray(this.commands[it.checkKeyString]) === false) {
+        this.commands[it.checkKeyString] = [];
+      }
+      this.commands[it.checkKeyString].push(it);
+    }
+    sort() {
+      this.commands = {};
+      this.list.forEach((it) => {
+        this.updateCommandInfo(it);
+      });
+    }
+    splitShortCut(key) {
+      var arr = key.toUpperCase().split("+").map((it) => it.trim()).filter(Boolean);
+      let isAlt = false;
+      let isControl = false;
+      let isShift = false;
+      let isMeta = false;
+      let restKeys = [];
+      arr.forEach((key2) => {
+        if (key2.includes(KEY_STRING.ALT))
+          isAlt = true;
+        else if (key2.includes(KEY_STRING.CTRL))
+          isControl = true;
+        else if (key2.includes(KEY_STRING.SHIFT))
+          isShift = true;
+        else if (key2.includes("CMD") || key2.includes("WIN") || key2.includes(KEY_STRING.META))
+          isMeta = true;
+        else
+          restKeys.push(key2);
+      });
+      return joinKeys(
+        isAlt ? KEY_STRING.ALT : "",
+        isControl ? KEY_STRING.CTRL : "",
+        isShift ? KEY_STRING.SHIFT : "",
+        isMeta ? KEY_STRING.META : "",
+        generateKeyCode(restKeys.join(""))
+      );
+    }
+    makeKeyString(e) {
+      var _a, _b;
+      if (e.key === "Shift" || e.key === "Control" || e.key === "Alt" || e.key === "Meta") {
+        return (_a = e.key) == null ? void 0 : _a.toUpperCase();
+      }
+      return joinKeys(
+        e.altKey ? KEY_STRING.ALT : "",
+        e.ctrlKey ? KEY_STRING.CTRL : "",
+        e.shiftKey ? KEY_STRING.SHIFT : "",
+        e.metaKey ? KEY_STRING.META : "",
+        (_b = e.key) == null ? void 0 : _b.toUpperCase()
+      );
+    }
+    makeCodeString(e) {
+      var _a, _b;
+      if (e.key === "Shift" || e.key === "Control" || e.key === "Alt" || e.key === "Meta") {
+        return (_a = e.code) == null ? void 0 : _a.toUpperCase();
+      }
+      return joinKeys(
+        e.altKey ? KEY_STRING.ALT : "",
+        e.ctrlKey ? KEY_STRING.CTRL : "",
+        e.shiftKey ? KEY_STRING.SHIFT : "",
+        e.metaKey ? KEY_STRING.META : "",
+        (_b = e.code) == null ? void 0 : _b.toUpperCase()
+      );
+    }
+    makeKeyCodeString(e) {
+      if (e.key === "Shift" || e.key === "Control" || e.key === "Alt" || e.key === "Meta") {
+        return e.keyCode;
+      }
+      return joinKeys(
+        e.altKey ? KEY_STRING.ALT : "",
+        e.ctrlKey ? KEY_STRING.CTRL : "",
+        e.shiftKey ? KEY_STRING.SHIFT : "",
+        e.metaKey ? KEY_STRING.META : "",
+        e.keyCode
+      );
+    }
+    checkShortCut(keyCodeString, keyString, codeString) {
+      return this.commands[keyCodeString] || this.commands[keyString] || this.commands[codeString];
+    }
+    checkWhen(command) {
+      return command.whenFunction();
+    }
+    execute(e, eventType = "keydown") {
+      let commands = this.checkShortCut(
+        this.makeKeyCodeString(e),
+        this.makeKeyString(e),
+        this.makeCodeString(e)
+      );
+      if (commands) {
+        const filteredCommands = commands.filter((it) => it.eventType === eventType).filter((it) => this.checkWhen(it));
+        if (filteredCommands.length) {
+          filteredCommands.forEach((it) => {
+            if (it.container) {
+              if (sapa.isString(it.container)) {
+                if (!e.target.matches(it.container)) {
+                  return;
+                }
+              } else if (it.container instanceof HTMLElement) {
+                if (!it.container.contains(e.target)) {
+                  return;
+                }
+              }
+            }
+            if (it.preventDefault) {
+              e.preventDefault();
+            }
+            if (it.stopPropagation) {
+              e.stopPropagation();
+            }
+            this.editorContext.commands.execute(it.command, ...it.args);
+          });
+        }
+      }
+    }
+  }
+  class UIManager {
+    constructor(editorContext) {
+      this.editorContext = editorContext;
+      this.uis = {};
+      this.groupUis = {};
+    }
+    registerUI(obj = {}) {
+      Object.assign(this.uis, obj);
+    }
+    registerGroupUI(key, obj = {}) {
+      if (!this.groupUis[key]) {
+        this.groupUis[key] = {};
+      }
+      Object.assign(this.groupUis[key], obj);
+    }
+    createUI(ui2) {
+      if (ui2 instanceof sapa.VNode) {
+        return ui2;
+      }
+      if (sapa.isArray(ui2)) {
+        const [Component, props] = ui2;
+        return sapa.createElementJsx(Component, props);
+      }
+      return sapa.createElementJsx(ui2);
+    }
+    getUI(key) {
+      if (this.uis[key]) {
+        return this.createUI(this.uis[key]);
+      }
+      return void 0;
+    }
+    getGroupUI(key) {
+      const list = Object.values(this.groupUis[key] || {}).map((uis) => {
+        return this.createUI(uis);
+      }).filter(Boolean);
+      return list;
+    }
+  }
+  const CONTEXT_ID = "EditorContext";
+  class EditorContext {
+    constructor($rootEditor, $options = {}) {
+      this.$rootEditor = $rootEditor;
+      this.$options = $options;
+      this.initialize();
+    }
+    initialize() {
+      const {
+        managers = {},
+        configList = [],
+        commands = [],
+        plugins = []
+      } = this.$options;
+      this.initializeManagers(managers);
+      this.initializeConfigs(defaultConfigs);
+      this.initializeConfigs(configList);
+      this.initializeInnerCommands();
+      this.initializeCommands(commands);
+      this.initializePlugins(plugins);
+      this.emit("editor.initialize", this);
+    }
+    initializeManagers(managers = {}) {
+      managers = {
+        configs: ConfigManager,
+        commands: CommandManager,
+        plugins: PluginManager,
+        uis: UIManager,
+        shortcuts: ShortCutManager,
+        keyboard: KeyBoardManager,
+        i18n: I18nManager,
+        ...managers
+      };
+      Object.entries(managers).forEach(([key, Manager]) => {
+        if (Object.hasOwnProperty.call(this, key)) {
+          console.warn(`[EditorContext] ${key} manager is already exists.`);
+          return;
+        }
+        Object.defineProperty(this, key, {
+          enumerable: false,
+          configurable: false,
+          writable: false,
+          value: new Manager(this)
+        });
+      });
+    }
+    initializeConfigs(configs = []) {
+      configs.forEach((config) => {
+        this.configs.registerConfig(config);
+      });
+    }
+    updateConfigs(configs = {}) {
+      this.configs.updateConfig(configs);
+    }
+    initializeInnerCommands() {
+      this.initializeCommands(defaultCommands);
+    }
+    initializeCommands(commands = []) {
+      commands.forEach((command) => {
+        this.commands.registerCommand(command);
+      });
+    }
+    initializePlugins(plugins = []) {
+      this.plugins.init();
+      plugins.forEach((plugin) => {
+        this.plugins.registerPlugin(plugin);
+      });
+    }
+    async activate() {
+      const ret = await this.plugins.activate();
+      this.updateConfigs(this.$options.configs);
+      return ret;
+    }
+    get $store() {
+      return this.$rootEditor.$store;
+    }
+    emit(message, ...args) {
+      this.$store.source = CONTEXT_ID;
+      this.$store.emit(message, ...args);
+    }
+    registerCommand(command) {
+      this.commands.registerCommand(command);
+    }
+    registerUI(ui2) {
+      this.uis.registerUI(ui2);
+    }
+    registerGroupUI(group, ui2) {
+      this.uis.registerGroupUI(group, ui2);
+    }
+    registerConfig(config) {
+      this.configs.registerConfig(config);
+    }
+    registerShortcut(shortcut) {
+      this.shortcuts.registerShortcut(shortcut);
+    }
+    registerI18nMessage(lang, messages) {
+      this.i18n.registerI18nMessage(lang, messages);
+    }
+    registerI18nMessageWithLang(locales) {
+      Object.keys(locales).forEach((locale) => {
+        this.registerI18nMessage(locale, locales[locale]);
+      });
+    }
+    getUI(name) {
+      return this.uis.getUI(name);
+    }
+    getGroupUI(group) {
+      return this.uis.getGroupUI(group);
+    }
+    getUIList(name) {
+      const list = [this.getUI(name), this.getGroupUI(name)].flat(Infinity).filter(Boolean);
+      return list;
+    }
+    getConfig(key) {
+      return this.configs.get(key);
+    }
+  }
+  const KEY_EDITOR$1 = "editor";
+  const KEY_EDITOR_OPTION$1 = "editorOption";
+  class EditorPlugin {
+    constructor(editor, props = {}) {
+      this.editor = editor;
+      this.props = props;
+    }
+    initialize() {
+    }
+    load() {
+    }
+    activate() {
+    }
+    deactivate() {
+    }
+  }
+  function useEditor() {
+    return sapa.useStore(KEY_EDITOR$1);
+  }
+  function useEditorOption(key) {
+    var _a;
+    return (_a = sapa.useStore(KEY_EDITOR_OPTION$1)) == null ? void 0 : _a[key];
+  }
+  function useConfig(key) {
+    var _a, _b;
+    return (_b = (_a = useEditor()) == null ? void 0 : _a.configs) == null ? void 0 : _b.get(key);
+  }
+  function useSetConfig(key, value) {
+    var _a, _b;
+    return (_b = (_a = useEditor()) == null ? void 0 : _a.configs) == null ? void 0 : _b.set(key, value);
+  }
+  async function useCommand(key, ...args) {
+    var _a, _b;
+    return await ((_b = (_a = useEditor()) == null ? void 0 : _a.commands) == null ? void 0 : _b.emit(key, ...args));
+  }
+  function useGetCommand(key) {
+    var _a, _b;
+    return (_b = (_a = useEditor()) == null ? void 0 : _a.commands) == null ? void 0 : _b.get(key);
+  }
+  function useI18n(key, params = {}) {
+    var _a, _b;
+    return (_b = (_a = useEditor()) == null ? void 0 : _a.i18n) == null ? void 0 : _b.get(key, params);
+  }
+  class Editor extends sapa.UIElement {
+    initialize() {
+      super.initialize();
+      console.log("editor initialize");
+      if (!this.$editor) {
+        this.$editor = new EditorContext(this, this.props);
+      }
+      this.$store.set(KEY_EDITOR$1, this.$editor);
+      this.$store.set(KEY_EDITOR_OPTION$1, this.props);
+    }
+    async load() {
+      const { configs } = this.props;
+      this.$editor.updateConfigs(configs);
+      console.warn("editor plugin load");
+      await this.activate();
+    }
+    async activate() {
+      await this.$editor.activate();
+      this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
+      console.warn("editor.plugin.activated");
+      this.render();
+    }
+  }
+  function Loading() {
+    return /* @__PURE__ */ sapa.createElementJsx("div", {
+      style: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        width: "100%",
+        position: "absolute",
+        top: 0,
+        left: 0
+      }
+    }, "Loading...");
+  }
+  const formElements = ["TEXTAREA", "INPUT", "SELECT"];
+  const KEY_EDITOR = "editor";
+  const KEY_EDITOR_OPTION = "editorOption";
+  class BaseEditor extends sapa.UIElement {
+    template() {
+      const {
+        class: className = "",
+        fullScreen,
+        loading = /* @__PURE__ */ sapa.createElementJsx(Loading, null),
+        plugins,
+        configs
+      } = this.props;
+      const pluginActivatedRef = sapa.useRef(false);
+      const editor = useEditor();
+      const localClass = sapa.useMemo(() => {
+        return sapa.classnames(
+          "elf--base-editor",
+          {
+            "full-screen": fullScreen
+          },
+          className
+        );
+      }, [className, fullScreen]);
+      sapa.useEffect(async () => {
+        if (pluginActivatedRef.current) {
+          return;
+        }
+        if (!this.$editor) {
+          this.$editor = new EditorContext(this, this.props);
+        }
+        this.$store.set(KEY_EDITOR, this.$editor);
+        this.$store.set(KEY_EDITOR_OPTION, this.props);
+        this.$editor.updateConfigs(configs);
+        await this.$editor.activate();
+        pluginActivatedRef.current = true;
+        sapa.useRender(this);
+      }, [pluginActivatedRef.current, plugins, configs]);
+      return /* @__PURE__ */ sapa.createElementJsx("div", {
+        class: localClass
+      }, pluginActivatedRef.current ? editor.getUIList("renderView") : loading);
+    }
+    isNotFormElement(e) {
+      var tagName = e.target.tagName;
+      if (formElements.includes(tagName))
+        return false;
+      else if (e.target.getAttribute("contenteditable") === "true")
+        return false;
+      return true;
+    }
+    updateTheme() {
+      const isDark = this.$editor.configs.get("editor.theme") === "light" ? false : true;
+      document.body.classList.toggle("theme-dark", isDark);
+    }
+    [sapa.SUBSCRIBE_SELF("editor.plugin.activated")]() {
+      this.updateTheme();
+    }
+    [sapa.SUBSCRIBE("config:editor.theme")]() {
+      this.updateTheme();
+    }
+    [sapa.KEYDOWN("document") + sapa.IF("isNotFormElement")](e) {
+      this.$editor.commands.execute("keymap.keydown", e);
+    }
+    [sapa.KEYUP("document") + sapa.IF("isNotFormElement")](e) {
+      this.$editor.commands.execute("keymap.keyup", e);
+    }
+    [sapa.RESIZE("window") + sapa.DEBOUNCE(10)]() {
+      this.$editor.emit("resize.window");
+    }
+  }
+  function InjectView({
+    views = [],
+    groups = [],
+    as = "div",
+    style: style2 = {}
+  }) {
+    const editor = useEditor();
+    const list = [
+      ...views.map((it) => {
+        return editor.getUI(it);
+      }),
+      ...groups.map((it) => {
+        return editor.getGroupUI(it);
+      })
+    ].flat(Infinity).filter(Boolean);
+    return /* @__PURE__ */ sapa.createElementJsx(ui.View, {
+      as,
+      style: style2
+    }, list);
+  }
+  exports2.BaseEditor = BaseEditor;
+  exports2.Editor = Editor;
+  exports2.EditorPlugin = EditorPlugin;
+  exports2.InjectView = InjectView;
+  exports2.useCommand = useCommand;
+  exports2.useConfig = useConfig;
+  exports2.useEditor = useEditor;
+  exports2.useEditorOption = useEditorOption;
+  exports2.useGetCommand = useGetCommand;
+  exports2.useI18n = useI18n;
+  exports2.useSetConfig = useSetConfig;
+  Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+});

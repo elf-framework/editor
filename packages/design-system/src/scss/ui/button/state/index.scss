@@ -1,7 +1,7 @@
 .elf--button {
     &.quiet {
         border-width: 0px;
-        background-color: transparent;
+        --elf--button-background-color: transparent;
     }
 }
 

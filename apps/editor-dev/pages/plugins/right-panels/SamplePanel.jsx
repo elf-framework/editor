@@ -30,11 +30,13 @@ export function SamplePanel() {
           gap: 5,
         }}
         sync
-        inspector={(value) => {
+        inspector={() => {
           return [
             {
               type: "label",
-              label: value.active ? "active" : "inactive",
+              label: (value) => {
+                return value?.active ? "active" : "inactive"
+              },
             },
             {
               type: "switch",

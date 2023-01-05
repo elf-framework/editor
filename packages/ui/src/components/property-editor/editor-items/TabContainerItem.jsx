@@ -1,7 +1,7 @@
 import { Tab, TabItem } from "../../tab";
 
 export function TabContainerItem({ item, root }) {
-  const { style, stripType, activeKey, fitted, compact } = item;
+  const { style, stripType, activeKey, fitted, compact, onChange } = item;
   return (
     <Tab
       style={style}
@@ -14,7 +14,7 @@ export function TabContainerItem({ item, root }) {
         return (
           <TabItem key={it.key} title={it.label}>
             {it.items.map((it, index) => {
-              return root.makeInspectorItem(it, index);
+              return root.makeInspectorItem(it, index, onChange);
             })}
           </TabItem>
         );

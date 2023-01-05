@@ -126,7 +126,6 @@ if (import.meta.hot) {
     console.log("hot reload");
     setGlobalForceRender(true);
 
-
     setTimeout(() => {
       renderFromRoot();
     }, 30);

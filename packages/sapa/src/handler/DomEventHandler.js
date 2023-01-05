@@ -89,7 +89,6 @@ const selfCheckMethods = {
 export default class DomEventHandler extends BaseHandler {
   initialize() {
     // this.destroy();
-
     // 이미 정의된 domEvents 가 있고 notEventRedefine 설정이 true 로 되어 있으면 이벤트를 한번만 설정한다.
     if (
       !isGlobalForceRender() &&
@@ -127,7 +126,13 @@ export default class DomEventHandler extends BaseHandler {
     if (this.context.notEventRedefine) {
       // NOOP
     } else {
-      this.removeEventAll();
+      // FIXME: 이벤트 정의를 지우는 시점과 생성하는 시점이 명확해야한다.
+      // FIXME: destroy() 될 때 모든 이벤트 핸들러를 지워야할까?
+      // FIXME: destryo () 되는 경우는 2가지 있는데
+      // FIXME: 하나는 완전히 객체가 사라졌을 때이고
+      // FIXME: 또 하나는 hmr 형태로 다시 렌더링이 될 때 기존 객체를 지워야 하는 경우 생긴다.
+      // NOOP
+      // this.removeEventAll();
     }
   }
 

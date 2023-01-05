@@ -167,12 +167,14 @@ async function runningUpdate(componentInstance, template) {
   }
 
   // element 에 component 속성 설정
-  componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+  // componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
   // componentInstance.alternate = template;
   componentInstance.runUpdated();
 
   // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
   await componentInstance.runHandlers("update");
+
+  componentInstance.previousTemplate = template;
 }
 
 async function runningMount(componentInstance, template, $container) {
@@ -207,7 +209,7 @@ async function runningMount(componentInstance, template, $container) {
   // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
   await componentInstance.runHandlers("initialize");
 
-  await componentInstance.afterRender();
+  componentInstance.previousTemplate = template;
 }
 
 /**
@@ -222,20 +224,20 @@ export async function renderVNodeComponent(componentInstance, $container) {
   // fragment 로 들어오는 children 리스트를 일렬로 다룬다.
   template = flatTemplate(template);
 
-  // TODO: MULTI ROOT 를 허용하지 않는다.
-  if (isArray(template) && template.length > 1) {
-    // console.log(template);
-    // template = [createVNodeFragment({ children: template })];
-    // throw new Error(
-    //   [
-    //     `Error Component - ${componentInstance.sourceName}`,
-    //     "Template root is not must an array, however You can use Fragment instead of it",
-    //     "Fragment Samples: ",
-    //     " <>{list}</> ",
-    //     " <Fragment>{list}</Fragment>",
-    //   ].join("\n")
-    // );
-  }
+  // // TODO: MULTI ROOT 를 허용하지 않는다.
+  // if (isArray(template) && template.length > 1) {
+  //   // console.log(template);
+  //   // template = [createVNodeFragment({ children: template })];
+  //   // throw new Error(
+  //   //   [
+  //   //     `Error Component - ${componentInstance.sourceName}`,
+  //   //     "Template root is not must an array, however You can use Fragment instead of it",
+  //   //     "Fragment Samples: ",
+  //   //     " <>{list}</> ",
+  //   //     " <Fragment>{list}</Fragment>",
+  //   //   ].join("\n")
+  //   // );
+  // }
 
   const rootTemplate = template[0];
 

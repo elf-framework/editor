@@ -7,27 +7,63 @@ import {
   RESIZE,
   SUBSCRIBE,
   SUBSCRIBE_SELF,
+  UIElement,
   useEffect,
-  useGetStoreValue,
   useMemo,
   useRef,
+  useRender,
 } from "@elf-framework/sapa";
 
+import { EditorContext } from "../../managers/EditorContext";
 import { Loading } from "../status/Loading";
-import { Editor, useEditor } from "./Editor";
+import { useEditor } from "./Editor";
 const formElements = ["TEXTAREA", "INPUT", "SELECT"];
-export class BaseEditor extends Editor {
+const KEY_EDITOR = "editor";
+const KEY_EDITOR_OPTION = "editorOption";
+
+export class BaseEditor extends UIElement {
+  // initialize() {
+  //   super.initialize();
+
+  //   console.log("editor initialize");
+
+  //   if (!this.$editor) {
+  //     this.$editor = new EditorContext(this, this.props);
+  //   }
+
+  //   this.$store.set(KEY_EDITOR, this.$editor);
+  //   this.$store.set(KEY_EDITOR_OPTION, this.props);
+  // }
+
+  // async load() {
+  //   // start to load plugins
+  //   const { configs } = this.props;
+  //   this.$editor.updateConfigs(configs);
+  //   console.warn("editor plugin load");
+  //   await this.activate();
+  // }
+
+  // async activate() {
+  //   // start to load plugins
+  //   await this.$editor.activate();
+
+  //   // send message
+  //   this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
+  //   console.warn("editor.plugin.activated");
+  //   this.render();
+  // }
+
   template() {
     const {
       class: className = "",
       fullScreen,
       loading = <Loading />,
+      plugins,
+      configs,
     } = this.props;
-    const editorRef = useRef(0);
+    // const editorRef = useRef(0);
+    const pluginActivatedRef = useRef(false);
     const editor = useEditor();
-    const isPluginActivated = useGetStoreValue("editor.plugin.activated");
-
-    editorRef.current++;
 
     const localClass = useMemo(() => {
       return classnames(
@@ -39,13 +75,33 @@ export class BaseEditor extends Editor {
       );
     }, [className, fullScreen]);
 
-    useEffect(() => {
-      this.load();
-    }, []);
+    useEffect(async () => {
+      if (pluginActivatedRef.current) {
+        return;
+      }
+
+      if (!this.$editor) {
+        this.$editor = new EditorContext(this, this.props);
+      }
+
+      this.$store.set(KEY_EDITOR, this.$editor);
+      this.$store.set(KEY_EDITOR_OPTION, this.props);
+
+      // start to load plugins
+      this.$editor.updateConfigs(configs);
+
+      // start to load plugins
+      await this.$editor.activate();
+
+      // send message
+      // this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
+      pluginActivatedRef.current = true;
+      useRender(this);
+    }, [pluginActivatedRef.current, plugins, configs]);
 
     return (
       <div class={localClass}>
-        {isPluginActivated() ? editor.getUIList("renderView") : loading}
+        {pluginActivatedRef.current ? editor.getUIList("renderView") : loading}
       </div>
     );
   }

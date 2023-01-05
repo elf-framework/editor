@@ -90,6 +90,8 @@ export class Editor extends UIElement {
   initialize() {
     super.initialize();
 
+    console.log("editor initialize");
+
     if (!this.$editor) {
       this.$editor = new EditorContext(this, this.props);
     }
@@ -102,7 +104,7 @@ export class Editor extends UIElement {
     // start to load plugins
     const { configs } = this.props;
     this.$editor.updateConfigs(configs);
-
+    console.warn("editor plugin load");
     await this.activate();
   }
 
@@ -112,6 +114,7 @@ export class Editor extends UIElement {
 
     // send message
     this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
+    console.warn("editor.plugin.activated");
     this.render();
   }
 }

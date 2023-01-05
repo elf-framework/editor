@@ -11,7 +11,7 @@ export function RenderView() {
         style={{ position: "absolute" }}
         onClick={() => console.log("Hello World")}
       >
-        Hello World
+        Hello World 2 3
       </button>
     </View>
   );

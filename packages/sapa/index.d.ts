@@ -342,14 +342,6 @@ declare module "@elf-framework/sapa" {
     protected initialize(): void;
 
     /**
-     * render 이후에 실행될 함수
-     * dom 이 실제로 생성된 이후에 수행할 작업들을 정의한다.
-     *
-     * @protected
-     */
-    protected afterRender(): void;
-
-    /**
      * 하위에 연결될 객체들을 정의한다
      *
      * @protected

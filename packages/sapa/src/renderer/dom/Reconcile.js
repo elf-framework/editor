@@ -137,6 +137,15 @@ const patch = {
     }
   },
 
+  // 컴포넌트 내부에서 다시 그리기를 한다.
+  reloadComponent(oldEl, newVNode, options) {
+    const targetInstance = options.context.getTargetInstance(oldEl);
+
+    if (targetInstance) {
+      targetInstance._reload(newVNode.props);
+    }
+  },
+
   /**
    * 이 함수는 Component 의 클래스/함수 자체가 변경되었을 때 호출한다. (HMR)
    *
@@ -153,6 +162,7 @@ const patch = {
     // 현재 oldElement 가 객체 참조를 가지고 있지 않는 경우
     // 부모의 객체를 기준으로 작성한다.
     newVNode.setInstance(oldInstance);
+    // console.warn("make component", oldInstance, newVNode);
     newVNode.makeClassInstance(options);
 
     // 기존의 $el 을 대입
@@ -185,6 +195,7 @@ const patch = {
     // 현재 oldElement 가 객체 참조를 가지고 있지 않는 경우
     // 부모의 객체를 기준으로 작성한다.
     newVNode.setInstance(oldInstance);
+    // console.warn("make component for fragment", oldInstance, newVNode);
     newVNode.makeClassInstance(options);
 
     // 기존의 $el 을 대입
@@ -233,9 +244,13 @@ const patch = {
   },
 
   addNewVNode(parentElement, oldEl, newVNode, options) {
-    parentElement.insertBefore(DomRenderer(newVNode, options).el, oldEl);
-    parentElement.removeChild(oldEl);
-    newVNode.runMounted();
+    const newEl = DomRenderer(newVNode, options).el;
+
+    if (newEl) {
+      parentElement.insertBefore(newEl, oldEl);
+      parentElement.removeChild(oldEl);
+      newVNode.runMounted();
+    }
   },
 
   appendChild(el, newVNode, options, isFragmentItem = false) {
@@ -326,6 +341,40 @@ const check = {
    */
   hasRefClass(vNode) {
     return vNode.Component;
+  },
+
+  checkRefClass(oldEl, newVNode, options) {
+    const props = newVNode.props;
+
+    // isComponentChanged 가 있으면 새로고침한다.
+    if (newVNode.isComponentChanged) {
+      return true;
+    }
+    // children 에 root 가 있는지 체크
+    let targetInstance = options.context.getTargetInstance(oldEl);
+
+    if (targetInstance) {
+      if (targetInstance.isInstanceOf(newVNode.Component)) {
+        // 컴포넌트가 바뀌었을 경우 다시 그린다.
+        if (newVNode.isComponentChanged) {
+          return true;
+        }
+
+        // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
+        if (targetInstance.isForceRender(props)) {
+          return true;
+        }
+
+        // 이미 생성된 instance 이므로 newVnode 로 컴포넌트 인스턴스를 다시 생성하지 않는다.
+        // props 를 업데이트 한다.
+        return false;
+      } else {
+        // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
+        return true;
+      }
+    }
+    // 다른 예외 사항이 있으면 여기에 기록하기
+    return true;
   },
 };
 
@@ -440,15 +489,13 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   } else {
     // newVNode 가 Component 인 경우
     if (check.hasRefClass(newVNode)) {
-      if (
-        isFunction(options.checkRefClass) &&
-        options.checkRefClass(oldEl, newVNode)
-      ) {
+      const isNewComponent = check.checkRefClass(oldEl, newVNode, options);
+
+      if (isNewComponent) {
         // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
         patch.makeComponent(oldEl, newVNode, options);
       } else {
-        // 컴포넌트 내부에서 다시 그리기를 한다.
-        // noop
+        patch.reloadComponent(oldEl, newVNode, options);
       }
     } else {
       patch.replaceWith(oldEl, newVNode, options);
@@ -790,9 +837,16 @@ const DefaultOption = {
 
 /**
  *
- *  Reconcile 를 수행한다.
+ * Reconcile 를 수행한다.
  *
  * Dom 과 VNode 를 Diff 한다.
+ *
+ * Reconcile 을 수행하기 전에 oldEl 에 COMPONENT_INSTANCE 를 미리 지정해둬야 한다.
+ * COMPONENT_INSTANCE 는 Root Instance 의 것으로 지정이 가능하다.
+ *
+ * 여기서 의문
+ *
+ * 꼭 COMPONENT_INSTANCE 를 지정해야 하는가?
  *
  */
 export function Reconcile(oldEl, newVNode, options = {}) {

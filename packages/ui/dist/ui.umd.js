@@ -703,10 +703,10 @@ var __privateMethod = (obj, member, method) => {
         return sapa.classnames([
           "elf--button",
           {
-            selected,
             outline,
             focused,
             quiet,
+            selected,
             closable,
             justified,
             [variant]: true,
@@ -3140,10 +3140,8 @@ var __privateMethod = (obj, member, method) => {
     }
     updateOpacity(num) {
       const color2 = this.state.parsedColor;
-      console.log(color2.a, num);
       color2.a += num;
       color2.a = normalizeAlpha(color2.a);
-      console.log(color2.a);
       this.runOnChange();
       this.refresh();
     }
@@ -5013,7 +5011,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("view", View);
   registerComponent("View", View);
-  function TextInputItem({ value, style: style2, onChange }) {
+  function TextInputItem({ key, value, style: style2, item, onChange }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       InputEditor,
       {
@@ -5022,7 +5020,7 @@ var __privateMethod = (obj, member, method) => {
         width: "100%",
         style: style2,
         onInput: (e) => {
-          onChange && onChange(e.target.value);
+          onChange && onChange(e.target.value, item, key);
         }
       }
     );
@@ -5040,7 +5038,7 @@ var __privateMethod = (obj, member, method) => {
         width: "100%",
         style: style2,
         onInput: (e) => {
-          onChange && onChange(Number(e.target.value));
+          onChange && onChange(Number(e.target.value), item);
         }
       }
     );
@@ -5050,7 +5048,8 @@ var __privateMethod = (obj, member, method) => {
   }
   function GridItem({
     item: { gap, rowGap, columnGap, style: style2, columns = [], items = [] },
-    root
+    root,
+    onChange
   }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       Grid,
@@ -5061,7 +5060,7 @@ var __privateMethod = (obj, member, method) => {
         columnGap,
         style: style2
       },
-      items.map((item, index) => root.makeEditorItem(item, index))
+      items.map((item, index) => root.makeEditorItem(item, index, onChange))
     );
   }
   const ButtonItem$1 = "";
@@ -5091,7 +5090,7 @@ var __privateMethod = (obj, member, method) => {
         value,
         sync: true,
         onChange: (color2, inputPaintInstance) => {
-          onChange && onChange(color2, inputPaintInstance);
+          onChange && onChange(color2, item, inputPaintInstance);
         },
         onClickColorView: (e, color2) => {
           onClickColorView && onClickColorView(e, color2);
@@ -5158,19 +5157,19 @@ var __privateMethod = (obj, member, method) => {
       {
         value,
         style: style2,
-        onChange,
+        onChange: (v) => onChange(v, item),
         options: item.options
       }
     );
   }
-  function BooleanItem({ value, onChange, style: style2 }) {
+  function BooleanItem({ value, item, onChange, style: style2 }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       Checkbox,
       {
         checked: value,
         style: style2,
         onChange: (e) => {
-          onChange && onChange(e.target.checked);
+          onChange && onChange(e.target.checked, item);
         }
       }
     );
@@ -5244,13 +5243,13 @@ var __privateMethod = (obj, member, method) => {
         style: style2,
         variant,
         onChange: (e) => {
-          onChange && onChange(e.target.checked);
+          onChange && onChange(e.target.checked, item);
         }
       }
     );
   }
   function TabContainerItem({ item, root }) {
-    const { style: style2, stripType, activeKey, fitted, compact } = item;
+    const { style: style2, stripType, activeKey, fitted, compact, onChange } = item;
     return /* @__PURE__ */ sapa.createElementJsx(
       Tab,
       {
@@ -5262,7 +5261,7 @@ var __privateMethod = (obj, member, method) => {
       },
       item.items.map((it) => {
         return /* @__PURE__ */ sapa.createElementJsx(TabItem, { key: it.key, title: it.label }, it.items.map((it2, index) => {
-          return root.makeInspectorItem(it2, index);
+          return root.makeInspectorItem(it2, index, onChange);
         }));
       })
     );
@@ -5446,7 +5445,7 @@ var __privateMethod = (obj, member, method) => {
         size: "small",
         fitted,
         onInput: (v) => {
-          onChange && onChange(v);
+          onChange && onChange(v, item);
         },
         valuePlacement: "bottom"
       }
@@ -5456,7 +5455,7 @@ var __privateMethod = (obj, member, method) => {
     const { margin = 10, style: style2 } = item;
     return /* @__PURE__ */ sapa.createElementJsx(Divider, { style: style2, margin });
   }
-  function LabelItem({ style: style2, item: { label } }) {
+  function LabelItem({ style: style2, label }) {
     return /* @__PURE__ */ sapa.createElementJsx(View, { style: style2 }, label);
   }
   const cssProperties$l = makeCssVariablePrefixMap("--elf--property-editor", {
@@ -5555,8 +5554,8 @@ var __privateMethod = (obj, member, method) => {
     return item;
   }
   class PropertyEditor extends sapa.UIElement {
-    makeEditorItem(item, index) {
-      const { plugins = {}, sync } = this.props;
+    makeEditorItem(item, index, onChange) {
+      const { plugins = {} } = this.props;
       item = makeDividerStyle(item);
       if (typeof item === "string" || typeof item === "number") {
         item = {
@@ -5564,21 +5563,18 @@ var __privateMethod = (obj, member, method) => {
           label: item
         };
       }
-      const {
-        key,
-        value,
-        label,
-        type,
-        valueType = "valueByPath",
-        valueFunc
-      } = item;
+      const { key, value, label, type } = item;
       let oldValue = getValueByPath(this.state.value, key);
+      let oldLabel = label;
       if (typeof value !== "undefined") {
         if (sapa.isFunction(value)) {
           oldValue = value(this.state.value);
         } else {
           oldValue = value;
         }
+      }
+      if (typeof label === "function") {
+        oldLabel = label(this.state.value);
       }
       if (type === "tab") {
         const { style: style2, stripType, activeKey, fitted, compact } = item;
@@ -5605,26 +5601,11 @@ var __privateMethod = (obj, member, method) => {
           {
             key,
             index,
-            label,
+            label: oldLabel,
             value: oldValue,
             item,
             root: this,
-            onChange: (newValue) => {
-              if (item.onChange) {
-                item.onChange(newValue, item, this);
-              }
-              if (sapa.isFunction(this.props.onChange)) {
-                this.props.onChange(key, newValue, this);
-              }
-              if (valueType === "valueByPath") {
-                setValueByPath(this.state.value, key, newValue);
-              } else if (valueType === "valueByObject") {
-                setValueByObject(this.state.value, key, newValue, valueFunc);
-              }
-              if (sync) {
-                this.refresh();
-              }
-            }
+            onChange
           }
         );
       }
@@ -5669,7 +5650,7 @@ var __privateMethod = (obj, member, method) => {
         false
       );
     }
-    makeInspectorItem(item, index) {
+    makeInspectorItem(item, index, onChange) {
       item = makeDividerStyle(item);
       if (typeof item === "string" || typeof item === "number") {
         item = {
@@ -5677,8 +5658,12 @@ var __privateMethod = (obj, member, method) => {
           label: item
         };
       }
+      let { label } = item;
+      if (typeof label === "function") {
+        label = label(this.state.value);
+      }
       if (item.type === "label") {
-        return /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--property-editor-item label" }, item.label);
+        return /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--property-editor-item label" }, label);
       }
       return /* @__PURE__ */ sapa.createElementJsx(
         "div",
@@ -5687,12 +5672,12 @@ var __privateMethod = (obj, member, method) => {
             [item.direction]: true
           })
         },
-        item.label ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "label" }, item.label) : void 0,
-        /* @__PURE__ */ sapa.createElementJsx("div", { class: "editor" }, this.makeEditorItem(item, index))
+        label ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "label" }, label) : void 0,
+        /* @__PURE__ */ sapa.createElementJsx("div", { class: "editor" }, this.makeEditorItem(item, index, onChange))
       );
     }
     template() {
-      const { style: style2 = {}, value, direction = "horizontal" } = this.props;
+      const { style: style2 = {}, value, sync, direction = "horizontal" } = this.props;
       const { oldValue } = this.state;
       if (oldValue != value) {
         this.setState(
@@ -5708,17 +5693,42 @@ var __privateMethod = (obj, member, method) => {
           [direction]: true
         });
       }, [direction]);
+      const onChange = sapa.useCallback(
+        (newValue, item) => {
+          const { valueType = "valueByPath", valueFunc, key } = item;
+          if (item.onChange) {
+            item.onChange(newValue, item, this);
+          }
+          if (sapa.isFunction(this.props.onChange)) {
+            this.props.onChange(key, newValue, this);
+          }
+          if (valueType === "valueByPath") {
+            setValueByPath(this.state.value, key, newValue);
+          } else if (valueType === "valueByObject") {
+            setValueByObject(this.state.value, key, newValue, valueFunc);
+          }
+          if (sync) {
+            this.setState({
+              value: {
+                ...this.state.value
+              }
+            });
+          }
+        },
+        [sync, this.props]
+      );
+      const inspectorList = sapa.useMemo(() => {
+        return this.makeInspector(this.props.inspector, this.state.value).map(
+          (item, index) => {
+            return this.makeInspectorItem(item, index, onChange);
+          }
+        );
+      }, [this.props.inspector, onChange, this.state.value]);
       const styleObject = {
         class: localClass,
         style: propertyMap(style2, cssProperties$l)
       };
-      this.state.inspector = this.makeInspector(
-        this.props.inspector,
-        this.state.value
-      );
-      return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, this.state.inspector.map((item, index) => {
-        return this.makeInspectorItem(item, index);
-      }));
+      return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, inspectorList);
     }
     getValue() {
       return this.state.value;
@@ -6460,7 +6470,6 @@ var __privateMethod = (obj, member, method) => {
           type: "text",
           value: item.data.title,
           onFocusOut: (e) => {
-            console.log("onFocusOut", e);
             onEditCancel(item, e);
           },
           onKeyUp: (e) => {

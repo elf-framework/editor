@@ -67,7 +67,7 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
     return true;
   }
 
-  return obj1Keys.every((key) => {
+  const result = obj1Keys.every((key) => {
     // omitKeys 에 있는 키는 비교하지 않는다.
     if (omitKeys[key]) {
       return true;
@@ -114,6 +114,8 @@ export function isEqual(obj1, obj2, count = 0, omitKeys = {}) {
 
     return result;
   });
+
+  return result;
 }
 
 export function vnodePropsDiff(oldProps, newProps) {
@@ -439,6 +441,8 @@ export class VNodeComponent extends VNode {
 
     if (hooks && hooks.__stateHooks?.length) {
       this.instance.reloadHooks(hooks);
+    } else {
+      this.instance.initHooks();
     }
 
     if (state) {

@@ -13,7 +13,7 @@ export default defineConfig({
   },
   build: {
     emptyOutDir: false,
-    minify: true,
+    minify: false,
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "baseEditor",

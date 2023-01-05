@@ -5,13 +5,18 @@ module.exports = {
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:import/recommended",
+    "plugin:mdx/recommended",
   ],
   settings: {
     "import/resolver": {
       node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".mdx", ".md"],
       },
     },
+    "mdx/code-blocks": true,
+    // optional, if you want to disable language mapper, set it to `false`
+    // if you want to override the default language mapper inside, you can provide your own
+    "mdx/language-mapper": {},
   },
   rules: {
     "prettier/prettier": "error",

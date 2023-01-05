@@ -140,6 +140,20 @@ body {
 }
 
 
+@media (max-width: 770px) {
+    .layout {
+        .layout-header {
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .layout-content {
+            padding-top: 50px !important;
+            padding: 50px !important;
+        }
+    }
+}
+
 @media (max-width: 600px) {
     .layout {
         .layout-header {

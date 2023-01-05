@@ -1,3 +1,4 @@
+import { COMPONENT_INSTANCE } from "../constant/component";
 import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
 import { isString } from "./func";
 import { uuidShort } from "./uuid";
@@ -190,11 +191,27 @@ export function setGlobalForceRender(isForceRender = false) {
  */
 export function renderRootElementInstanceList(isForce = false) {
   getRootElementInstanceList().forEach((instance) => {
-    if (isForce) {
-      instance.forceRender();
-    } else {
-      renderVNodeComponent(instance);
+    // root 를 재시작한다는 이야기는 최초 start 에서 생성된 root instance 를 다시 생성해야 한다는 이야기이다.
+    // 그렇기 때문에 start 함수는 항상 root instance 를 생성해야 한다.
+
+    const rootInstance = instance.getRootInstance();
+
+    const childInstance = rootInstance.child;
+
+    // FIXME: 다시 연결 해주는게 맞는건가?
+    // FIXME: COMPONENT_INSTANCE 의 용법을 다시 정의해야할 듯
+    // FIXME: hydrate 함수 참조, 같은 방식으로 정의 되어있음.
+    if (childInstance?.$el) {
+      childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
     }
+
+    // rootInstance 의 Component 가 변겨되었는지를 검사한다.
+
+    const componentInstanceForRootRendering = childInstance || rootInstance
+    // rootInstance 다시 렌더링 시작
+    // 기존 Hook 도 유지를 한다.
+    // 그래야 다시 렌더링이 되는데, Hook 이 다시 초기화 되지 않는다.
+    renderVNodeComponent(componentInstanceForRootRendering);
   });
 }
 

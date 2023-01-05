@@ -151,7 +151,6 @@ function itemRenderer(
             type="text"
             value={item.data.title}
             onFocusOut={(e) => {
-              console.log("onFocusOut", e);
               onEditCancel(item, e);
             }}
             onKeyUp={(e) => {

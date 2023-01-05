@@ -27,6 +27,11 @@
   text-transform: capitalize;
   font-weight: 700;
 
+  > label {
+    user-select: none;
+    pointer-events: none;
+  }
+
   > .elf--button {
     padding: 0px;
     font-size: calc(var(--elf--badge-font-size) + 5px);
