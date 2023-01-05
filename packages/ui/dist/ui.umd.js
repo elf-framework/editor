@@ -703,10 +703,10 @@ var __privateMethod = (obj, member, method) => {
         return sapa.classnames([
           "elf--button",
           {
-            selected,
             outline,
             focused,
             quiet,
+            selected,
             closable,
             justified,
             [variant]: true,

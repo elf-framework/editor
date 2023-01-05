@@ -74,6 +74,11 @@ function App() {
 ### Orientation
 <OptionsView />
 
+&nbsp;
+
+An action group can be either horizontal or vertical in its
+orientation. By default, an action group is horizontal. The vertical
+option should be reserved for when horizontal space is limited.
 
 <CodeView>
 
@@ -160,6 +165,12 @@ function App() {
 ### Size 
 <SizeView />
 
+&nbsp;
+
+Action groups come in four different sizes: small, medium, large, and
+extra-large. The medium size is the default and most frequently used
+option. Use the other sizes sparingly; they should be used to create a
+hierarchy of importance within the page.
 
 <CodeView>
 
@@ -206,6 +217,11 @@ function App() {
 ### Density
 <DensityView />
 
+&nbsp;
+
+Action groups come in 2 densities: regular and compact. The compact
+density retains the same font and icon sizes, but has tighter spacing.
+The action buttons also become connected for non-quiet action groups.
 
 <CodeView>
 
@@ -244,6 +260,12 @@ function App() {
 ### Justified
 <JustifiedView />
 
+&nbsp;
+
+Action groups come in 2 densities: regular and compact. The compact
+density retains the same font and icon sizes, but has tighter spacing.
+The action buttons also become connected for non-quiet action groups.
+
 
 <CodeView>
 
@@ -281,6 +303,18 @@ function App() {
 ### Quiet
 <QuietView />
 
+&nbsp;
+
+By default, an action group uses not-quiet action buttons. This style
+works best in a dense array of controls where the background helps to
+separate action buttons from the surrounding container, or to give
+visibility to isolated buttons.
+
+Alternatively, quiet action groups can have no visible background
+until they’re interacted with. This style works best when a clear
+layout (vertical stack, table, grid) makes it easy to parse the
+buttons. Too many quiet components in a small space can be hard to
+read.
 
 <CodeView>
 
@@ -319,6 +353,14 @@ function App() {
 ### Enable Selection
 <EnableSelectionView />
 
+&nbsp;
+
+By default, selection is not enabled in an action group. This is used
+for action groups that offer direct actions, rather than toggling.
+
+Selection can be enabled for an action group to allow for toggling.
+This can be used to disclose parts of an interface (e.g., showing or
+hiding panels) or to switch between views (e.g., grid or list views).
 
 <CodeView>
 
@@ -358,6 +400,12 @@ function App() {
 
 ### Multi Selection
 <MultiSelectionView />
+
+&nbsp;
+
+When selection is enabled, an action group can allow for single or
+multiple selection of action buttons.
+
 
 
 <CodeView>
@@ -405,6 +453,13 @@ function App() {
 ### Overflow
 <OverflowView />
 
+&nbsp;
+
+When space is limited in an action group, there are 2 options for the
+group's overflow behavior: wrap or collapse. By default, an action
+group is set to wrap, meaning that the action buttons inside the group
+wrap to form another line. Alternatively, an action group can be set
+to collapse inside a More (...) action button.
 
 <CodeView>
 
@@ -460,13 +515,21 @@ function App() {
 
 
 ### Disabled
+
 <DisabledView />
+
+&nbsp;
+
+A action group in a disabled state shows that the action buttons
+within the group exist, but are not available in that circumstance.
+This state can be used to maintain layout continuity and to
+communicate that an action group may become available later.
 
 
 <CodeView>
 
     <CodeViewItem title="Sapa">
-    ```jsx {6, 9, 12} showLineNumbers
+```jsx {6, 9, 12} showLineNumbers
 import { ActionGroup, Button } from "@elf-framework/ui";
 
 function App() { 
@@ -484,7 +547,7 @@ function App() {
         </ActionGroup>
     )
 }
-    ```
+```
     </CodeViewItem>
     <CodeViewItem title="Html">
 ```html {2,5,8} showLineNumbers

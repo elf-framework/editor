@@ -701,10 +701,10 @@ class Button extends UIElement {
       return classnames([
         "elf--button",
         {
-          selected,
           outline,
           focused,
           quiet,
+          selected,
           closable,
           justified,
           [variant]: true,
