@@ -54,11 +54,24 @@ export function PageTools() {
           }}
         >
           <Button
+            quiet
             onClick={() => {
               setOpenSearchView(true);
             }}
           >
-            Open search
+            Search{" "}
+            <kbd
+              style={{
+                marginLeft: 5,
+                padding: [2, 8],
+                borderRadius: 3,
+                fontSize: 20,
+                backgroundColor: "var(--color-gray-1)",
+                color: "var(--color-gray-8)",
+              }}
+            >
+              K
+            </kbd>
           </Button>
           <PeerView />
           <ThemeButton />

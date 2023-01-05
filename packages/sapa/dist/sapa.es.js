@@ -2074,8 +2074,14 @@ const _EventMachine = class extends HookMachine {
   getRootInstance() {
     var _a;
     let rootInstance = this;
+    if (rootInstance.sourceName === "RootElement") {
+      return rootInstance;
+    }
     while ((_a = rootInstance.parent) == null ? void 0 : _a.sourceName) {
       rootInstance = rootInstance.parent;
+      if (rootInstance.sourceName === "RootElement") {
+        break;
+      }
     }
     return rootInstance;
   }
@@ -3505,6 +3511,9 @@ const patch = {
     }
   },
   replaceWith(oldEl, newVNode, options) {
+    if (!(newVNode instanceof VNode)) {
+      return;
+    }
     const isRootElement = options.context.$el.el === oldEl;
     const objectElement = DomRenderer(newVNode, options).el;
     if (isRootElement) {
@@ -4115,6 +4124,9 @@ function removeRenderCallback(component) {
 }
 function renderComponent(component, $container = void 0) {
   var _a;
+  if (!component) {
+    return;
+  }
   if (isPendingComponent(component)) {
     return;
   }
@@ -5190,10 +5202,11 @@ function start(ElementNode, opt = {}) {
   if ($targetElement) {
     const targetInstance = $targetElement.el[COMPONENT_INSTANCE];
     const rootInstance = targetInstance.getRootInstance();
-    const childInstance = rootInstance.child;
+    const childInstance = rootInstance.child || rootInstance;
     if (childInstance == null ? void 0 : childInstance.$el) {
       childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
     }
+    console.log($targetElement, childInstance, rootInstance, ElementNode);
     renderComponent(childInstance, null);
   } else {
     renderComponent(app, $container);

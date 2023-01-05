@@ -1,113 +1,27 @@
-import { autocomplete } from "@algolia/autocomplete-js";
-import "@algolia/autocomplete-theme-classic";
 import {
-  hydrate,
-  start,
+  useBatch,
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useSetStoreValue,
+  useState,
 } from "@elf-framework/sapa";
+import { Badge, InputEditor } from "@elf-framework/ui";
 
 import "./SearchView.scss";
 
-export function SearchView() {
-  const autoRef = useRef(null);
-  const previewRef = useRef(null);
-  const initState = useRef({});
+import { searchData } from "~/data/search";
+
+console.log(searchData);
+
+export function SearchView({ query = "" }) {
+  const [searchQuery, setSearchQuery] = useState(query);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const setOpenSearchView = useSetStoreValue("open.search.view");
 
   const handleClose = useCallback(() => {
     setOpenSearchView(false);
   }, [setOpenSearchView]);
-
-  const searchLinks = useMemo(() => {
-    return {
-      sourceId: "links",
-      onSelect({ item }) {
-        hydrate(
-          <div>
-            {item.label}-{item.url}
-          </div>,
-          previewRef.current
-        );
-      },
-      onActive({ item }) {
-        hydrate(
-          <div>
-            {item.label}-{item.url}
-          </div>,
-          previewRef.current
-        );
-      },
-      getItems({ query }) {
-        const items = [
-          { label: "Twitter", url: "https://twitter.com" },
-          { label: "GitHub", url: "https://github.com" },
-        ];
-
-        return new Promise((resolve) => {
-          resolve(
-            items.filter(({ label }) =>
-              label.toLowerCase().includes(query.toLowerCase())
-            )
-          );
-        });
-      },
-      getItemUrl({ item }) {
-        return item.url;
-      },
-      templates: {
-        header() {
-          return (
-            <div class="search-result-header">
-              <div class="search-result-label">Links</div>
-            </div>
-          );
-        },
-        item({ item }) {
-          return (
-            <div class="search-result-item">
-              <div class="search-result-label">{item.label}</div>
-            </div>
-          );
-        },
-        noResults() {
-          return <div class="search-no-result">No results</div>;
-        },
-      },
-    };
-  }, [previewRef]);
-
-  useEffect(() => {
-    if (!autoRef.current) return;
-
-    autocomplete({
-      // 초기 상태 적용
-      initialState: initState.current,
-      onStateChange({ state }) {
-        // 변경된 상태 캐쉬
-        initState.current = state;
-      },
-      renderer: {
-        // eslint-disable-next-line no-undef
-        createElement: createElementJsx,
-        // eslint-disable-next-line no-undef
-        Fragment: FragmentInstance,
-        render: start,
-      },
-      container: "#autocomplete",
-      panelContainer: ".search-view-content-list",
-      placeholder: "Search for elf framework",
-      panelPlacement: "full-width",
-      autoFocus: true,
-      openOnFocus: true,
-      getSources() {
-        return [searchLinks];
-      },
-    });
-  }, [autoRef, previewRef, initState, searchLinks]);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -117,32 +31,156 @@ export function SearchView() {
     };
 
     document.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "auto";
     };
   }, []);
+
+  const searchList = useMemo(() => {
+    const targetQuery = searchQuery.toLowerCase();
+    return searchData.filter(({ title, description, path }) => {
+      return (
+        title.toLowerCase().includes(targetQuery) ||
+        description?.toLowerCase().includes(targetQuery) ||
+        path.includes(targetQuery)
+      );
+    });
+  }, [searchQuery]);
+
+  const currentLink = useMemo(() => {
+    return searchList[selectedIndex];
+  }, [searchList, selectedIndex]);
+
+  const handleSelectItem = useCallback(
+    (index) => {
+      setSelectedIndex(index);
+
+      setTimeout(() => {
+        const selected = document.querySelector(".search-item.selected");
+
+        if (selected) {
+          selected.classList.remove("selected");
+        }
+
+        const input = document.querySelector(
+          `.search-item[data-index='${index}']`
+        );
+
+        input?.classList.add("selected");
+
+        input?.scrollIntoView({ block: "center" });
+      }, 10);
+    },
+    [setSelectedIndex]
+  );
+
+  const handleInput = (e) => {
+    if (e.key === "ArrowDown") {
+      handleSelectItem(selectedIndex + 1);
+    } else if (e.key === "ArrowUp") {
+      handleSelectItem(Math.max(-1, selectedIndex - 1));
+    } else if (e.key === "Enter") {
+      if (currentLink.path) {
+        location.assign(currentLink.path);
+      }
+    } else {
+      useBatch(() => {
+        console.log(e.target.value);
+        setSearchQuery(e.target.value);
+        setSelectedIndex(-1);
+      });
+    }
+  };
+
+  console.log(this.id);
 
   return (
     <div class="search-view-overlay">
       <div class="search-view">
         <div class="search-view-top">
           <div class="search-view-title">Search</div>
-          <div class="search-view-input" id="autocomplete" ref={autoRef}></div>
+          <div class="search-view-input" id="autocomplete">
+            <InputEditor
+              type="text"
+              onKeyDown={handleInput}
+              autoFocus
+              autoFocusDelay={10}
+              value={searchQuery}
+            />
+          </div>
           <div class="search-view-close" onClick={handleClose}>
             Close
           </div>
         </div>
         <div class="search-view-content">
-          <div class="search-view-content-list"></div>
-          <div class="search-view-content-preview" ref={previewRef}></div>
+          <div>
+            <div
+              class="search-view-content-list"
+              onClick={(e) => {
+                const index = +e.target
+                  .closest("[data-index]")
+                  .getAttribute("data-index");
+
+                handleSelectItem(index);
+              }}
+            >
+              {searchList.length === 0 ? (
+                <div class="search-no-result">No results found</div>
+              ) : undefined}
+              {searchList.map((item, index) => {
+                return (
+                  <div
+                    data-index={index}
+                    class={`search-item ${
+                      index === selectedIndex ? "selected" : ""
+                    }`}
+                  >
+                    <div class="search-item-title">
+                      <Badge variant="purple">{item.category}</Badge>
+                      &nbsp;
+                      {item.title}
+                    </div>
+                    <div class="search-item-path">{item.path}</div>
+                    <div class="search-item-description">
+                      {item.description}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <div class="search-view-content-preview">
+              {currentLink ? (
+                <div>
+                  <div class="search-view-content-preview-title">
+                    <Badge variant="purple">{currentLink.category}</Badge>
+                    &nbsp;
+                    {currentLink.title}
+                  </div>
+                  <div class="search-view-content-preview-description">
+                    {currentLink.content()}
+                  </div>
+                </div>
+              ) : (
+                <div class="search-view-content-preview-empty">
+                  No preview available
+                </div>
+              )}
+            </div>
+          </div>
         </div>
         <div class="search-view-bottom">
           <div class="search-view-bottom-left">
             <kbd>↵</kbd> to select <kbd>↓</kbd> <kbd>↑</kbd> to navigate{" "}
             <kbd>esc</kbd> to close
           </div>
-          <div class="search-view-bottom-right">Search by elf-framework</div>
+          <div class="search-view-bottom-right">
+            Search by <Badge>ELF</Badge>
+          </div>
         </div>
       </div>
     </div>

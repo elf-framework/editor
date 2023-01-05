@@ -6,7 +6,7 @@ import {
 } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
-import { isArray, isFunction, isString } from "../../functions/func";
+import { isFunction, isString } from "../../functions/func";
 import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
 import {

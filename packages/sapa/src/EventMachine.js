@@ -341,8 +341,16 @@ export class EventMachine extends HookMachine {
   getRootInstance() {
     let rootInstance = this;
 
+    if (rootInstance.sourceName === "RootElement") {
+      return rootInstance;
+    }
+
     while (rootInstance.parent?.sourceName) {
       rootInstance = rootInstance.parent;
+
+      if (rootInstance.sourceName === "RootElement") {
+        break;
+      }
     }
 
     return rootInstance;

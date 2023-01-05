@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.47
+
+### Patch Changes
+
+- implement search view
+
 ## 1.0.46
 
 ### Patch Changes

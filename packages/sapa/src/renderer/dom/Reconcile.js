@@ -8,6 +8,7 @@ import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
 import { isFunction, isNotUndefined, isUndefined } from "../../functions/func";
 import { isSVG } from "../../functions/svg";
+import { VNode } from "../../functions/vnode";
 import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
 import { renderVNodeComponent } from "./VNodeComponentRender";
@@ -220,6 +221,10 @@ const patch = {
   },
 
   replaceWith(oldEl, newVNode, options) {
+    if (!(newVNode instanceof VNode)) {
+      return;
+    }
+
     const isRootElement = options.context.$el.el === oldEl;
     const objectElement = DomRenderer(newVNode, options).el;
 

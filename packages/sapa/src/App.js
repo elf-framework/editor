@@ -55,13 +55,14 @@ export function start(ElementNode, opt = {}) {
     // 이렇게 하면 hot reload 이후 업데이트 하는 로직이랑 같아진다.
     const targetInstance = $targetElement.el[COMPONENT_INSTANCE];
     const rootInstance = targetInstance.getRootInstance();
-    const childInstance = rootInstance.child;
+    const childInstance = rootInstance.child || rootInstance;
 
     if (childInstance?.$el) {
       childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
     }
 
     // dom render 를 위해서 추가
+    console.log($targetElement, childInstance, rootInstance, ElementNode);
     renderComponent(childInstance, null, true);
   } else {
     renderComponent(app, $container, true);

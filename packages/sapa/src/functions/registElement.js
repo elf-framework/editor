@@ -51,6 +51,10 @@ export function removeRenderCallback(component) {
 }
 
 export function renderComponent(component, $container = undefined) {
+  if (!component) {
+    return;
+  }
+
   // pending 상태에서는 component 를 렌더링 하지 않습니다.
   if (isPendingComponent(component)) {
     return;
@@ -207,7 +211,7 @@ export function renderRootElementInstanceList(isForce = false) {
 
     // rootInstance 의 Component 가 변겨되었는지를 검사한다.
 
-    const componentInstanceForRootRendering = childInstance || rootInstance
+    const componentInstanceForRootRendering = childInstance || rootInstance;
     // rootInstance 다시 렌더링 시작
     // 기존 Hook 도 유지를 한다.
     // 그래야 다시 렌더링이 되는데, Hook 이 다시 초기화 되지 않는다.
