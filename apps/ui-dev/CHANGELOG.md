@@ -1,5 +1,12 @@
 # ui-dev
 
+## 1.0.46
+
+### Patch Changes
+
+- update toolbar pages
+  modify responsive layout for device with 770px
+
 ## 1.0.45
 
 ### Patch Changes
