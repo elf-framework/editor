@@ -1,3 +1,5 @@
+import { ELEMENT_INSTANCE, ELEMENT_PROPS } from "../../constant/component";
+
 let TEMP_COMMENT;
 
 function makeTempComment() {
@@ -19,8 +21,12 @@ function createElement(vNodeInstance) {
 }
 
 function makeElement(vNodeInstance) {
-  vNodeInstance.el = createElement(vNodeInstance);
+  const el = createElement(vNodeInstance);
 
+  el[ELEMENT_INSTANCE] = vNodeInstance;
+  el[ELEMENT_PROPS] = { value: vNodeInstance.value };
+
+  vNodeInstance.el = el;
   return vNodeInstance;
 }
 

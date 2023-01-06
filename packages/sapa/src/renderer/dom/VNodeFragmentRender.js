@@ -1,17 +1,19 @@
+import { ELEMENT_INSTANCE } from "../../constant/component";
 import { makeChildren } from "./utils";
 
-function makeElement(obj, withChildren, options) {
-  if (obj.el) return this;
+function makeElement(vNodeInstance, withChildren, options) {
+  if (vNodeInstance.el) return this;
 
   const el = document.createDocumentFragment();
 
-  obj.el = el;
+  el[ELEMENT_INSTANCE] = vNodeInstance;
+  vNodeInstance.el = el;
 
-  makeChildren(obj, withChildren, options, true);
+  makeChildren(vNodeInstance, withChildren, options, true);
 
-  return obj;
+  return vNodeInstance;
 }
 
-export function VNodeFragmentRender(obj, withChildren, options) {
-  return makeElement(obj, withChildren, options);
+export function VNodeFragmentRender(vNodeInstance, withChildren, options) {
+  return makeElement(vNodeInstance, withChildren, options);
 }

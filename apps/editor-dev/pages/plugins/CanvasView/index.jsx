@@ -28,12 +28,12 @@ export function Canvas3D() {
     function draw() {
       const canvas = ctx.canvas;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgb(255, 100, 255)";
+      ctx.fillStyle = "rgb(255, 100, 0)";
       ctx.fillRect(100, 100, 200, 200);
       ctx.clearRect(120, 120, 160, 160);
-      ctx.strokeStyle = "rgb(0, 200, 255)";
+      ctx.strokeStyle = "rgb(255, 0, 0)";
       ctx.lineWidth = 5;
-      ctx.strokeRect(160, 160, 80, 80);
+      ctx.strokeRect(80, 160, 80, 80);
     }
 
     function render() {
@@ -57,7 +57,7 @@ export function Canvas3D() {
         left: 0,
         width: "100%",
         height: "100%",
-        zIndex: -1,
+        zIndex: -2,
         backgroundColor: "#ececec",
       }}
     ></canvas>

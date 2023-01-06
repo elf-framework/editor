@@ -1,3 +1,4 @@
+import { ELEMENT_INSTANCE, ELEMENT_PROPS } from "../../constant/component";
 import { css } from "../../functions/css";
 import { isFunction, isObject, isString } from "../../functions/func";
 import { isSVG } from "../../functions/svg";
@@ -132,6 +133,8 @@ function makeElement(vNodeInstance, withChildren, options) {
     });
   }
 
+  el[ELEMENT_PROPS] = props;
+  el[ELEMENT_INSTANCE] = vNodeInstance;
   vNodeInstance.el = el;
   makeChildren(vNodeInstance, withChildren, options);
 

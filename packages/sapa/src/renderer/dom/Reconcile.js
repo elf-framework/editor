@@ -2,6 +2,8 @@ import {
   CHILD_ITEM_TYPE_ELEMENT,
   CHILD_ITEM_TYPE_FRAGMENT,
   COMPONENT_INSTANCE,
+  ELEMENT_INSTANCE,
+  ELEMENT_PROPS,
   IS_FRAGMENT_ITEM,
 } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
@@ -236,8 +238,9 @@ const patch = {
   },
 
   replaceText(oldEl, newVNode) {
-    if (oldEl.textContent != newVNode.textContent) {
-      oldEl.textContent = newVNode.textContent;
+    if (oldEl[ELEMENT_PROPS].value != newVNode.value) {
+      oldEl.textContent = newVNode.value;
+      oldEl[ELEMENT_PROPS].value = newVNode.value;
     }
   },
   replaceComment(oldEl, newVNode) {
@@ -395,6 +398,7 @@ const updateProps = (
 
   // props 가 없으면 비교하지 않는다.
   if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+    node[ELEMENT_PROPS] = newProps;
     return;
   }
 
@@ -442,37 +446,51 @@ const updateProps = (
         }
       }
     });
+
+  // 변경된 속성으로 업데이트 해서 이전 데이타를 유지해준다.
+  node[ELEMENT_INSTANCE] = newVNode;
+  node[ELEMENT_PROPS] = newProps;
 };
 
-function getProps(oldEl, attributes, newProps) {
-  var results = {};
-  const len = attributes.length;
+/**
+ * el[ELEMENT_PROPS] 에서 properties 를 가져온다.
+ *
+ * 향후 사용하지 않는 방향으로 정리한다.
+ *
+ * @deprecated
+ */
+function getProps(oldEl) {
+  return oldEl[ELEMENT_PROPS] || {};
 
-  // 일단 attribute 에는 없음
-  // properties 에 있는지 봐야함.
-  for (let i = 0; i < len; i++) {
-    const t = attributes[i];
-    const name = t.name;
-    const value = t.value;
+  // console.log(oldEl, oldEl[ELEMENT_PROPS], attributes, newProps);
+  // var results = {};
+  // const len = attributes.length;
 
-    results[name] = value;
-  }
+  // // 일단 attribute 에는 없음
+  // // properties 에 있는지 봐야함.
+  // for (let i = 0; i < len; i++) {
+  //   const t = attributes[i];
+  //   const name = t.name;
+  //   const value = t.value;
 
-  // DESC: newProps 를 기준으로 oldEl 에서 없는 요소를 추가한다.
-  // DESC: property 로 입력 되는 이벤트 들만 처리 하는 것도 의미가 있을 듯 합니다.
-  // DESC: onXXX 로 시작되는것은 property 로 정의되기 때문에 여기서 처리합니다.
-  const newPropKeys = Object.keys(newProps);
+  //   results[name] = value;
+  // }
 
-  for (let i = 0; i < newPropKeys.length; i++) {
-    const key = newPropKeys[i];
-    const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
+  // // DESC: newProps 를 기준으로 oldEl 에서 없는 요소를 추가한다.
+  // // DESC: property 로 입력 되는 이벤트 들만 처리 하는 것도 의미가 있을 듯 합니다.
+  // // DESC: onXXX 로 시작되는것은 property 로 정의되기 때문에 여기서 처리합니다.
+  // const newPropKeys = Object.keys(newProps);
 
-    if (!results[checkKey]) {
-      results[key] = oldEl[checkKey];
-    }
-  }
+  // for (let i = 0; i < newPropKeys.length; i++) {
+  //   const key = newPropKeys[i];
+  //   const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
 
-  return results;
+  //   if (!results[checkKey]) {
+  //     results[key] = oldEl[checkKey];
+  //   }
+  // }
+
+  // return results;
 }
 
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {

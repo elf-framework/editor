@@ -1,3 +1,5 @@
+import { ELEMENT_INSTANCE, ELEMENT_PROPS } from "../../constant/component";
+
 let TEMP_TEXT;
 
 function makeTempText() {
@@ -14,15 +16,19 @@ function makeNativeTextDom(value) {
   return text;
 }
 
-function createElement(obj) {
-  return makeNativeTextDom(obj.value);
+function createElement(vNodeInstance) {
+  return makeNativeTextDom(vNodeInstance.value);
 }
 
-function makeElement(obj) {
-  obj.el = createElement(obj);
-  return obj;
+function makeElement(vNodeInstance) {
+  const el = createElement(vNodeInstance);
+  el[ELEMENT_INSTANCE] = vNodeInstance;
+  el[ELEMENT_PROPS] = { value: vNodeInstance.value };
+
+  vNodeInstance.el = el;
+  return vNodeInstance;
 }
 
-export function VNodeTextRender(obj) {
-  return makeElement(obj);
+export function VNodeTextRender(vNodeInstance) {
+  return makeElement(vNodeInstance);
 }

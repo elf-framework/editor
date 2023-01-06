@@ -8,6 +8,7 @@ import {
   isNumber,
   isObject,
   isString,
+  isUndefined,
   isValue,
 } from "../func";
 import { getModule, isGlobalForceRender } from "../registElement";
@@ -208,6 +209,23 @@ export class VNode {
         delete newProps.className;
       }
 
+      // undefined, null, false, "" 는 제거한다.
+      // 0 은 제거하지 않는다.
+      // 0 을 제거하면 안되는 이유는, 0 을 제거하면, 0 이 아닌 값이 있을 때, 0 이 제거되어서
+      Object.keys(newProps).forEach((key) => {
+        const value = newProps[key];
+
+        if (key === "style") {
+          if (isUndefined(value) || value === "") {
+            delete newProps[key];
+          }
+        } else {
+          if (isUndefined(value)) {
+            delete newProps[key];
+          }
+        }
+      });
+
       this.memoizedProps = newProps;
     } else {
       // NOOP
@@ -354,8 +372,7 @@ export class VNodeFragment extends VNode {
 
 export class VNodeComponent extends VNode {
   constructor(props = {}, children, Component) {
-    super(VNodeType.COMPONENT, "object", props || {}, children);
-    this.Component = Component;
+    super(VNodeType.COMPONENT, "object", props || {}, children, Component);
     this.LastComponent = Component;
     this.instance = null;
   }

@@ -37,6 +37,8 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   "use strict";
   const COMPONENT_INSTANCE = "__componentInstance";
   const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
+  const ELEMENT_INSTANCE = "__elementInstance";
+  const ELEMENT_PROPS = "__elementProps";
   const IS_FRAGMENT_ITEM = "__is_fragment_item";
   const CHILD_ITEM_TYPE_FRAGMENT = "fragment";
   const CHILD_ITEM_TYPE_ELEMENT = "element";
@@ -2813,6 +2815,18 @@ var __privateWrapper = (obj, member, setter, getter) => ({
           newProps.class = newProps.className;
           delete newProps.className;
         }
+        Object.keys(newProps).forEach((key) => {
+          const value = newProps[key];
+          if (key === "style") {
+            if (isUndefined(value) || value === "") {
+              delete newProps[key];
+            }
+          } else {
+            if (isUndefined(value)) {
+              delete newProps[key];
+            }
+          }
+        });
         this.memoizedProps = newProps;
       }
       if (this.props.enableHtml) {
@@ -2922,8 +2936,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   }
   class VNodeComponent extends VNode {
     constructor(props = {}, children2, Component) {
-      super(VNodeType.COMPONENT, "object", props || {}, children2);
-      this.Component = Component;
+      super(VNodeType.COMPONENT, "object", props || {}, children2, Component);
       this.LastComponent = Component;
       this.instance = null;
     }
@@ -3076,7 +3089,10 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     return makeNativeCommentDom(vNodeInstance.value);
   }
   function makeElement$4(vNodeInstance) {
-    vNodeInstance.el = createElement$3(vNodeInstance);
+    const el = createElement$3(vNodeInstance);
+    el[ELEMENT_INSTANCE] = vNodeInstance;
+    el[ELEMENT_PROPS] = { value: vNodeInstance.value };
+    vNodeInstance.el = el;
     return vNodeInstance;
   }
   function VNodeCommentRender$1(vNodeInstance, withChildren, options) {
@@ -3296,6 +3312,8 @@ var __privateWrapper = (obj, member, setter, getter) => ({
         }
       });
     }
+    el[ELEMENT_PROPS] = props;
+    el[ELEMENT_INSTANCE] = vNodeInstance;
     vNodeInstance.el = el;
     makeChildren(vNodeInstance, withChildren, options);
     return vNodeInstance;
@@ -3303,16 +3321,17 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   function VNodeElementRender$1(vNodeInstance, withChildren, options) {
     return makeElement$3(vNodeInstance, withChildren, options);
   }
-  function makeElement$2(obj, withChildren, options) {
-    if (obj.el)
+  function makeElement$2(vNodeInstance, withChildren, options) {
+    if (vNodeInstance.el)
       return this;
     const el = document.createDocumentFragment();
-    obj.el = el;
-    makeChildren(obj, withChildren, options, true);
-    return obj;
+    el[ELEMENT_INSTANCE] = vNodeInstance;
+    vNodeInstance.el = el;
+    makeChildren(vNodeInstance, withChildren, options, true);
+    return vNodeInstance;
   }
-  function VNodeFragmentRender$1(obj, withChildren, options) {
-    return makeElement$2(obj, withChildren, options);
+  function VNodeFragmentRender$1(vNodeInstance, withChildren, options) {
+    return makeElement$2(vNodeInstance, withChildren, options);
   }
   let TEMP_TEXT;
   function makeTempText() {
@@ -3326,15 +3345,18 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     text.textContent = value;
     return text;
   }
-  function createElement$1(obj) {
-    return makeNativeTextDom(obj.value);
+  function createElement$1(vNodeInstance) {
+    return makeNativeTextDom(vNodeInstance.value);
   }
-  function makeElement$1(obj) {
-    obj.el = createElement$1(obj);
-    return obj;
+  function makeElement$1(vNodeInstance) {
+    const el = createElement$1(vNodeInstance);
+    el[ELEMENT_INSTANCE] = vNodeInstance;
+    el[ELEMENT_PROPS] = { value: vNodeInstance.value };
+    vNodeInstance.el = el;
+    return vNodeInstance;
   }
-  function VNodeTextRender$1(obj) {
-    return makeElement$1(obj);
+  function VNodeTextRender$1(vNodeInstance) {
+    return makeElement$1(vNodeInstance);
   }
   const RendererList$1 = {
     [VNodeType.TEXT]: VNodeTextRender$1,
@@ -3527,8 +3549,9 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       newVNode.runMounted();
     },
     replaceText(oldEl, newVNode) {
-      if (oldEl.textContent != newVNode.textContent) {
-        oldEl.textContent = newVNode.textContent;
+      if (oldEl[ELEMENT_PROPS].value != newVNode.value) {
+        oldEl.textContent = newVNode.value;
+        oldEl[ELEMENT_PROPS].value = newVNode.value;
       }
     },
     replaceComment(oldEl, newVNode) {
@@ -3626,6 +3649,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     const newPropsKeys = Object.keys(newProps);
     const oldPropsKeys = Object.keys(oldProps);
     if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
+      node[ELEMENT_PROPS] = newProps;
       return;
     }
     if (newProps.ref) {
@@ -3658,25 +3682,11 @@ var __privateWrapper = (obj, member, setter, getter) => ({
         }
       }
     });
+    node[ELEMENT_INSTANCE] = newVNode;
+    node[ELEMENT_PROPS] = newProps;
   };
-  function getProps$1(oldEl, attributes, newProps) {
-    var results = {};
-    const len = attributes.length;
-    for (let i = 0; i < len; i++) {
-      const t = attributes[i];
-      const name = t.name;
-      const value = t.value;
-      results[name] = value;
-    }
-    const newPropKeys = Object.keys(newProps);
-    for (let i = 0; i < newPropKeys.length; i++) {
-      const key = newPropKeys[i];
-      const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
-      if (!results[checkKey]) {
-        results[key] = oldEl[checkKey];
-      }
-    }
-    return results;
+  function getProps$1(oldEl) {
+    return oldEl[ELEMENT_PROPS] || {};
   }
   function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
     if (check.isTextNode(oldEl) && !check.isVNodeText(newVNode) || check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode)) {
@@ -3706,7 +3716,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     updateProps(
       oldEl,
       newVNodeProps,
-      getProps$1(oldEl, oldEl.attributes, newVNodeProps),
+      getProps$1(oldEl, oldEl.attributes),
       options,
       newVNode
     );
