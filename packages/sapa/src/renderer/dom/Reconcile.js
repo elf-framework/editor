@@ -57,6 +57,9 @@ const expectKeys = {
   content: true,
   ref: true,
   [IS_FRAGMENT_ITEM]: true,
+  [ELEMENT_INSTANCE]: true,
+  [ELEMENT_PROPS]: true,
+  [COMPONENT_INSTANCE]: true,
 };
 
 const TEXT_NODE = 3;

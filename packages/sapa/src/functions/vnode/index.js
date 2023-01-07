@@ -128,7 +128,7 @@ export function vnodePropsDiff(oldProps, newProps) {
  *
  */
 export class VNode {
-  constructor(type, tag, props, children, Component) {
+  constructor(type, tag, props, children, Component = undefined) {
     this.type = type;
     this.tag = tag;
     this.nodeName = tag?.toUpperCase();
@@ -373,6 +373,7 @@ export class VNodeFragment extends VNode {
 export class VNodeComponent extends VNode {
   constructor(props = {}, children, Component) {
     super(VNodeType.COMPONENT, "object", props || {}, children, Component);
+    this.Component = Component;
     this.LastComponent = Component;
     this.instance = null;
   }
@@ -398,6 +399,7 @@ export class VNodeComponent extends VNode {
   }
 
   getModule() {
+    // vite-plugin-sapa 에서 변경 가능성이 있는 컴포넌트들은 미리 __timestamp 를 붙여준다.
     if (this.Component.__timestamp) {
       const a = getModule(this.Component);
       return a;

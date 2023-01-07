@@ -2754,7 +2754,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     return isEqual(oldProps, newProps, 0, EXPECT_ATTRIBUTES);
   }
   class VNode {
-    constructor(type, tag, props, children2, Component) {
+    constructor(type, tag, props, children2, Component = void 0) {
       this.type = type;
       this.tag = tag;
       this.nodeName = tag == null ? void 0 : tag.toUpperCase();
@@ -2937,6 +2937,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   class VNodeComponent extends VNode {
     constructor(props = {}, children2, Component) {
       super(VNodeType.COMPONENT, "object", props || {}, children2, Component);
+      this.Component = Component;
       this.LastComponent = Component;
       this.instance = null;
     }
@@ -3422,7 +3423,10 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   const expectKeys = {
     content: true,
     ref: true,
-    [IS_FRAGMENT_ITEM]: true
+    [IS_FRAGMENT_ITEM]: true,
+    [ELEMENT_INSTANCE]: true,
+    [ELEMENT_PROPS]: true,
+    [COMPONENT_INSTANCE]: true
   };
   const TEXT_NODE = 3;
   const COMMENT_NODE = 8;

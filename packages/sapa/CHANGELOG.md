@@ -1,5 +1,77 @@
 # @elf-framework/sapa
 
+## 0.0.215
+
+### Patch Changes
+
+- fixed VNodeComponent constructor
+
+## 0.0.214
+
+### Patch Changes
+
+- add test code
+
+## 0.0.213
+
+### Patch Changes
+
+- add test code
+
+## 0.0.212
+
+### Patch Changes
+
+- add test code
+
+## 0.0.211
+
+### Patch Changes
+
+- add test code
+
+## 0.0.210
+
+### Patch Changes
+
+- add test code
+
+## 0.0.209
+
+### Patch Changes
+
+- add test code
+
+## 0.0.208
+
+### Patch Changes
+
+- add test code
+
+## 0.0.207
+
+### Patch Changes
+
+- add test code
+
+## 0.0.206
+
+### Patch Changes
+
+- add test code
+
+## 0.0.205
+
+### Patch Changes
+
+- add test code
+
+## 0.0.204
+
+### Patch Changes
+
+- add test code
+
 ## 0.0.202
 
 ### Patch Changes

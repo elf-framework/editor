@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.203
+
+### Patch Changes
+
+- update version
+
 ## 0.0.198
 
 ### Patch Changes

@@ -5,7 +5,7 @@ import { Button, Panel, PropertyEditor } from "@elf-framework/ui";
 export function SamplePanel() {
   return (
     <Panel
-      title={"Sample"}
+      title={"Sample 2"}
       tools={[
         <Button size="small" iconOnly selected>
           <AddCardFilled />
