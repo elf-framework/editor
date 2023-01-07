@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-sapa",
-  "version": "0.0.10",
+  "version": "0.0.216",
   "description": "vite plugin for sapa",
   "main": "src/index.js",
   "types": "index.d.ts",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@swc/core": "^1.3.23"
+    "@swc/core": "^1.3.25"
   },
   "devDependencies": {
-    "vite": "^4.0.2"
+    "vite": "^4.0.4"
   }
 }

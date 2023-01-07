@@ -1,5 +1,16 @@
 # @elf-framework/ui
 
+## 0.0.216
+
+### Patch Changes
+
+- update dependencies in package.json
+
+- Updated dependencies []:
+  - @elf-framework/color@0.0.216
+  - @elf-framework/design-system@0.0.216
+  - @elf-framework/sapa@0.0.216
+
 ## 0.0.199
 
 ### Patch Changes

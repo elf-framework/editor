@@ -31,10 +31,10 @@
   "devDependencies": {
     "@elf-framework/config": "*",
     "glob": "^8.0.3",
-    "vite": "^4.0.2",
+    "vite": "^4.0.4",
     "vite-plugin-mdx": "^3.5.11",
     "vite-plugin-sapa": "*",
-    "vite-plugin-ssr": "^0.4.62",
-    "vitest": "0.26.0"
+    "vite-plugin-ssr": "^0.4.69",
+    "vitest": "0.26.3"
   }
 }

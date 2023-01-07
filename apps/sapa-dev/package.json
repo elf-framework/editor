@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@elf-framework/config": "*",
-    "vite": "^4.0.2",
+    "vite": "^4.0.4",
     "vite-plugin-sapa": "*",
-    "vitest": "0.26.0"
+    "vitest": "0.26.3"
   }
 }

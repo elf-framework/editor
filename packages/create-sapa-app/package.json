@@ -1,6 +1,6 @@
 {
   "name": "create-sapa-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "initialize sapa app template ",
   "main": "index.js",
   "type": "module",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.2.0",
-    "commander": "^9.4.1",
+    "commander": "^9.5.0",
     "inquirer": "^9.1.4",
     "install": "^0.13.0",
     "npm": "^9.2.0",

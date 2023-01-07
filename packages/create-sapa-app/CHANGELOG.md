@@ -1,5 +1,11 @@
 # create-sapa-app
 
+## 0.0.2
+
+### Patch Changes
+
+- update dependencies in package.json
+
 ## 1.0.2
 
 ### Patch Changes

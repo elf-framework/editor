@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.216
+
+### Patch Changes
+
+- update dependencies in package.json
+
 ## 0.0.199
 
 ### Patch Changes
