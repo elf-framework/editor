@@ -1,3 +1,4 @@
+import { VNODE_INSTANCE } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
 import { createComponentInstance } from "../../UIElement";
@@ -21,13 +22,19 @@ const EXPECT_ATTRIBUTES = {
   instance: true,
 };
 
+window.instanceList = [];
+
 function stringifyStyle(styleObject) {
   const newStyle = css(styleObject);
-  return Object.keys(newStyle)
-    .map((key) => {
-      return `${key}: ${newStyle[key]};`;
-    })
-    .join(" ");
+
+  const list = [];
+  const keys = Object.keys(newStyle);
+  for (let i = 0, len = keys.length; i < len; i++) {
+    const key = keys[i];
+    list[list.length] = `${key}: ${newStyle[key]};`;
+  }
+
+  return list.join("");
 }
 
 export const children = (el) => {
@@ -445,6 +452,7 @@ export class VNodeComponent extends VNode {
     const hooks = oldInstance?.copyHooks();
     const state = oldInstance?.state;
     const oldId = oldInstance?.id;
+    const refs = oldInstance?.refs;
     const children = oldInstance?.children || {};
 
     this.instance = createComponentInstance(
@@ -456,6 +464,10 @@ export class VNodeComponent extends VNode {
 
     if (oldId) {
       this.instance.setId(oldId);
+    }
+
+    if (refs) {
+      this.instance.setRefs(refs);
     }
 
     if (hooks && hooks.__stateHooks?.length) {
@@ -474,8 +486,14 @@ export class VNodeComponent extends VNode {
       this.instance.setChildren(children);
     }
 
+    this.instance[VNODE_INSTANCE] = this;
+
     // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.
-    oldInstance?.destroy();
+    //
+    // Hook 을 설정한 이후에 이전 리소스를 제거하다 보니
+    // 무조건 children 이 없어지는 문제가 발생함.
+    // 다시 소스가 바뀌었을 때 대응이 안됨
+    // oldInstance?.destroy();
 
     return this.instance;
   }

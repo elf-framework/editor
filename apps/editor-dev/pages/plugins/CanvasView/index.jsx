@@ -31,7 +31,7 @@ export function Canvas3D() {
       ctx.fillStyle = "rgb(255, 100, 0)";
       ctx.fillRect(100, 100, 200, 200);
       ctx.clearRect(120, 120, 160, 160);
-      ctx.strokeStyle = "rgb(255, 0, 0)";
+      ctx.strokeStyle = "rgb(255, 255, 0)";
       ctx.lineWidth = 5;
       ctx.strokeRect(80, 160, 80, 80);
     }

@@ -188,7 +188,9 @@ async function runningMount(componentInstance, template, $container) {
   // this.alternate = template;
   // element 에 component 속성 설정
   if (componentInstance.$el?.el) {
-    componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+    if (!componentInstance.$el.el[COMPONENT_INSTANCE]) {
+      componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+    }
 
     if (componentInstance.$el.isFragment) {
       componentInstance.isFragment = true;

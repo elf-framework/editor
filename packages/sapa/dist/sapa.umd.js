@@ -33,8 +33,9 @@ var __privateWrapper = (obj, member, setter, getter) => ({
 (function(global, factory) {
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.sapa = {}));
 })(this, function(exports2) {
-  var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _childObjectElements, _cachedChildren, _reloadInstance, reloadInstance_fn, _storeInstance;
+  var _handlerCache, ___stateHooks, ___stateHooksIndex, _state, _cachedMethodList, _functionCache, _childObjectList, _storeInstance;
   "use strict";
+  const VNODE_INSTANCE = "__vnodeInstance";
   const COMPONENT_INSTANCE = "__componentInstance";
   const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
   const ELEMENT_INSTANCE = "__elementInstance";
@@ -224,7 +225,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   }
   let contextProviderList = {};
   const renderFromRootCallback = debounce(() => {
-    renderRootElementInstanceList(true);
+    renderRootElementInstanceList();
   }, 10);
   function renderFromRoot() {
     renderFromRootCallback();
@@ -523,7 +524,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     let localValue = Object.assign(
       {},
       createGetStoreValue({ key, defaultValue: defaultValue2, component }),
-      createSetStoreValue({ key, component })
+      createSetStoreValue({ key, defaultValue: defaultValue2, component })
     );
     return localValue;
   }
@@ -537,14 +538,15 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     };
     return localValue;
   }
-  function createSetStoreValue({ key, component }) {
+  function createSetStoreValue({ key, defaultValue: defaultValue2, component }) {
     let localValue = {
       key,
       component,
+      defaultValue: defaultValue2,
       update: (value) => {
         let _newValue = value;
         if (isFunction(value)) {
-          _newValue = value(component.$store.get(key));
+          _newValue = value(component.$store.get(key) || defaultValue2);
         }
         component.$store.set(key, _newValue);
       }
@@ -580,12 +582,15 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     const localValue = {
       name,
       callback,
-      component
+      component,
+      debounceSecond,
+      throttleSecond,
+      isSelf
     };
     localValue.unsubscribe = component.$store.on(
       name,
       callback,
-      this,
+      component,
       debounceSecond,
       throttleSecond,
       false,
@@ -650,6 +655,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
           case USE_SET_STORE_VALUE:
             hook.hookInfo = createSetStoreValue({
               key: hook.hookInfo.key,
+              defaultValue: hook.hookInfo.defaultValue,
               component: this
             });
             break;
@@ -667,7 +673,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
             }
             hook.hookInfo = createSubscribe({
               name: hook.hookInfo.name,
-              callback: hook.hookInfo.callback,
+              callback: hook.hookInfo.callback.bind(this),
               debounceSecond: hook.hookInfo.debounceSecond,
               throttleSecond: hook.hookInfo.throttleSecond,
               isSelf: hook.hookInfo.isSelf,
@@ -1894,13 +1900,10 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   const _EventMachine = class extends HookMachine {
     constructor(opt, props, state) {
       super();
-      __privateAdd(this, _reloadInstance);
       __privateAdd(this, _state, {});
       __privateAdd(this, _cachedMethodList, void 0);
       __privateAdd(this, _functionCache, {});
       __privateAdd(this, _childObjectList, {});
-      __privateAdd(this, _childObjectElements, /* @__PURE__ */ new WeakMap());
-      __privateAdd(this, _cachedChildren, /* @__PURE__ */ new WeakMap());
       __publicField(this, "registerRef", (ref, el) => {
         if (typeof ref === "function") {
           ref(el);
@@ -1916,37 +1919,11 @@ var __privateWrapper = (obj, member, setter, getter) => ({
           isEq = true;
         }
         el = el || oldEl;
-        if (!__privateGet(this, _childObjectElements).has(el)) {
-          __privateGet(this, _childObjectList)[id] = el;
-          __privateGet(this, _childObjectElements).set(el, childComponent);
-        }
-        if (__privateGet(this, _childObjectElements).has(oldEl) && !isEq) {
-          __privateGet(this, _childObjectElements).delete(oldEl);
+        if (__privateGet(this, _childObjectList)[id] && !isEq) {
+          delete __privateGet(this, _childObjectList)[id];
         } else {
-          __privateGet(this, _childObjectList)[id] = el;
-          __privateGet(this, _childObjectElements).set(el, childComponent);
+          __privateGet(this, _childObjectList)[id] = childComponent;
         }
-      });
-      __publicField(this, "checkRefClass", (oldEl, newVNode) => {
-        const props = newVNode.props;
-        if (newVNode.isComponentChanged) {
-          return true;
-        }
-        let targetInstance = this.getTargetInstance(oldEl);
-        if (targetInstance) {
-          if (targetInstance.isInstanceOf(newVNode.Component)) {
-            if (newVNode.isComponentChanged) {
-              return true;
-            }
-            if (targetInstance.isForceRender(props)) {
-              return true;
-            }
-            return false;
-          } else {
-            return true;
-          }
-        }
-        return true;
       });
       this.refs = {};
       this.id = uuid();
@@ -1958,6 +1935,9 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     }
     setId(id) {
       this.id = id;
+    }
+    setRefs(refs = {}) {
+      this.refs = refs;
     }
     initializeHandler() {
       return super.initializeHandler({
@@ -2036,25 +2016,28 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       return this.props.ref;
     }
     get children() {
-      return Object.fromEntries(
-        Object.entries(__privateGet(this, _childObjectList)).map(([id, child]) => {
-          return [id, __privateGet(this, _childObjectElements).get(child)];
-        })
-      );
+      return __privateGet(this, _childObjectList);
     }
     get child() {
       return Object.values(this.children)[0];
     }
+    isNestedComponent() {
+      return Object.values(this.children).some((child) => {
+        return this.$el.el === child.$el.el;
+      });
+    }
     setChildren(children2) {
       Object.entries(children2).forEach(([id, instance]) => {
         if (instance) {
-          __privateGet(this, _childObjectList)[id] = instance.$el.el;
-          __privateGet(this, _childObjectElements).set(instance.$el.el, instance);
+          __privateGet(this, _childObjectList)[id] = instance;
         }
       });
     }
     get isPreLoaded() {
       return true;
+    }
+    getEl() {
+      return this.$el.el;
     }
     getTargetInstance(oldEl) {
       const targetList = Object.values(this.children).filter(Boolean).filter((instance) => {
@@ -2130,35 +2113,29 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     }
     clear() {
       Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
-        if (!child.parentNode) {
-          const childInstance = __privateGet(this, _childObjectElements).get(child);
-          if (childInstance) {
-            childInstance.destroy();
-            __privateGet(this, _childObjectElements).delete(child);
+        if (!child.$el.el.parentNode) {
+          if (child) {
+            child.destroy();
             delete __privateGet(this, _childObjectList)[_key];
           }
         }
       });
     }
     clearAll() {
-      Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
-        const childInstance = __privateGet(this, _childObjectElements).get(child);
-        if (childInstance) {
-          childInstance.destroy();
-          __privateGet(this, _childObjectElements).delete(child);
-          delete __privateGet(this, _childObjectList)[_key];
+      Object.entries(__privateGet(this, _childObjectList)).forEach(([id, child]) => {
+        if (child) {
+          child.destroy();
+          delete __privateGet(this, _childObjectList)[id];
         }
       });
     }
     destroy(isRemoveElement = false) {
       var _a;
+      console.log(this.sourceName, "destroy");
       removeRenderCallback(this);
-      Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
-        const childInstance = __privateGet(this, _childObjectElements).get(child);
-        if (childInstance) {
-          childInstance.destroy();
-          __privateGet(this, _childObjectElements).delete(child);
-          delete __privateGet(this, _childObjectList)[_key];
+      Object.entries(__privateGet(this, _childObjectList)).forEach(([id, child]) => {
+        if (child) {
+          child.destroy();
         }
       });
       this.runHandlers("destroy");
@@ -2243,12 +2220,6 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   _cachedMethodList = new WeakMap();
   _functionCache = new WeakMap();
   _childObjectList = new WeakMap();
-  _childObjectElements = new WeakMap();
-  _cachedChildren = new WeakMap();
-  _reloadInstance = new WeakSet();
-  reloadInstance_fn = function(instance, props) {
-    instance._reload(props);
-  };
   class BaseStore {
     constructor() {
       this.id = uuidShort();
@@ -2260,7 +2231,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       if (this.settings.has(key) === false) {
         return defaultValue2;
       }
-      return this.settings.get(key);
+      return this.settings.get(key) || defaultValue2;
     }
     set(key, value, hasChangeMessage = true) {
       const oldValue = this.settings.get(key);
@@ -2351,12 +2322,10 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       if (arguments.length == 1) {
         this.setCallbacks(event);
       } else if (arguments.length == 2) {
-        this.setCallbacks(
-          event,
-          this.getCallbacks(event).filter((f) => {
-            return f.originalCallback !== originalCallback;
-          })
-        );
+        const filteredEvents = this.getCallbacks(event).filter((f) => {
+          return f.originalCallback !== originalCallback;
+        });
+        this.setCallbacks(event, filteredEvents);
       }
     }
     offAll(context) {
@@ -2680,11 +2649,16 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     children: true,
     instance: true
   };
+  window.instanceList = [];
   function stringifyStyle$1(styleObject) {
     const newStyle = css(styleObject);
-    return Object.keys(newStyle).map((key) => {
-      return `${key}: ${newStyle[key]};`;
-    }).join(" ");
+    const list = [];
+    const keys = Object.keys(newStyle);
+    for (let i = 0, len = keys.length; i < len; i++) {
+      const key = keys[i];
+      list[list.length] = `${key}: ${newStyle[key]};`;
+    }
+    return list.join("");
   }
   const children$2 = (el) => {
     var element = el.firstChild;
@@ -2987,6 +2961,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       const hooks = oldInstance == null ? void 0 : oldInstance.copyHooks();
       const state = oldInstance == null ? void 0 : oldInstance.state;
       const oldId = oldInstance == null ? void 0 : oldInstance.id;
+      const refs = oldInstance == null ? void 0 : oldInstance.refs;
       const children2 = (oldInstance == null ? void 0 : oldInstance.children) || {};
       this.instance = createComponentInstance(
         newComponent,
@@ -2996,6 +2971,9 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       );
       if (oldId) {
         this.instance.setId(oldId);
+      }
+      if (refs) {
+        this.instance.setRefs(refs);
       }
       if (hooks && ((_a = hooks.__stateHooks) == null ? void 0 : _a.length)) {
         this.instance.reloadHooks(hooks);
@@ -3008,7 +2986,7 @@ var __privateWrapper = (obj, member, setter, getter) => ({
       if (Object.keys(children2).length) {
         this.instance.setChildren(children2);
       }
-      oldInstance == null ? void 0 : oldInstance.destroy();
+      this.instance[VNODE_INSTANCE] = this;
       return this.instance;
     }
     template() {
@@ -4052,7 +4030,9 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     componentInstance.$el = newDomElement;
     componentInstance.refs.$el = componentInstance.$el;
     if ((_a = componentInstance.$el) == null ? void 0 : _a.el) {
-      componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+      if (!componentInstance.$el.el[COMPONENT_INSTANCE]) {
+        componentInstance.$el.el[COMPONENT_INSTANCE] = componentInstance;
+      }
       if (componentInstance.$el.isFragment) {
         componentInstance.isFragment = true;
       }
@@ -4221,14 +4201,11 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   function setGlobalForceRender(isForceRender = false) {
     globalForceRender = isForceRender;
   }
-  function renderRootElementInstanceList(isForce = false) {
+  function renderRootElementInstanceList() {
     getRootElementInstanceList().forEach((instance) => {
       const rootInstance = instance.getRootInstance();
-      const childInstance = rootInstance.child;
-      if (childInstance == null ? void 0 : childInstance.$el) {
-        childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
-      }
-      const componentInstanceForRootRendering = childInstance || rootInstance;
+      const componentInstanceForRootRendering = rootInstance;
+      rootInstance.$el.el[COMPONENT_INSTANCE] = rootInstance;
       renderVNodeComponent(componentInstanceForRootRendering);
     });
   }
@@ -5008,7 +4985,10 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   const FragmentInstance$1 = new Object();
   const HTMLComment$1 = new Object();
   const jsx$1 = (tag, props) => {
-    const { children: children2, ...extraProps } = props;
+    let { children: children2 = [], ...extraProps } = props;
+    if (!isArray(children2)) {
+      children2 = [children2];
+    }
     return createElementJsx$1(tag, extraProps, ...children2);
   };
   const jsxs$1 = jsx$1;

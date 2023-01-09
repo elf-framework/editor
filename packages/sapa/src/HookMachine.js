@@ -101,7 +101,7 @@ function createStoreValue({ key, defaultValue, component }) {
   let localValue = Object.assign(
     {},
     createGetStoreValue({ key, defaultValue, component }),
-    createSetStoreValue({ key, component })
+    createSetStoreValue({ key, defaultValue, component })
   );
 
   return localValue;
@@ -119,14 +119,15 @@ function createGetStoreValue({ key, defaultValue, component }) {
   return localValue;
 }
 
-function createSetStoreValue({ key, component }) {
+function createSetStoreValue({ key, defaultValue, component }) {
   let localValue = {
     key,
     component,
+    defaultValue,
     update: (value) => {
       let _newValue = value;
       if (isFunction(value)) {
-        _newValue = value(component.$store.get(key));
+        _newValue = value(component.$store.get(key) || defaultValue);
       }
       component.$store.set(key, _newValue);
     },
@@ -169,6 +170,9 @@ function createSubscribe({
     name,
     callback,
     component,
+    debounceSecond,
+    throttleSecond,
+    isSelf,
   };
 
   // register callback to store
@@ -176,7 +180,7 @@ function createSubscribe({
   localValue.unsubscribe = component.$store.on(
     name,
     callback,
-    this,
+    component,
     debounceSecond,
     throttleSecond,
     false,
@@ -249,6 +253,7 @@ export class HookMachine extends MagicHandler {
         case USE_SET_STORE_VALUE:
           hook.hookInfo = createSetStoreValue({
             key: hook.hookInfo.key,
+            defaultValue: hook.hookInfo.defaultValue,
             component: this,
           });
           break;
@@ -268,7 +273,10 @@ export class HookMachine extends MagicHandler {
 
           hook.hookInfo = createSubscribe({
             name: hook.hookInfo.name,
-            callback: hook.hookInfo.callback,
+            // callback의 context 를 새로운 컴포넌트로 변경을 해줘야 한다.
+            // 그렇지 않으면 이전 컴포넌트를 destroy 이 하는 시점에 이벤트가 삭제되어서
+            // 새로운 컴포넌트에서 이벤트가 발생하지 않는다.
+            callback: hook.hookInfo.callback.bind(this),
             debounceSecond: hook.hookInfo.debounceSecond,
             throttleSecond: hook.hookInfo.throttleSecond,
             isSelf: hook.hookInfo.isSelf,

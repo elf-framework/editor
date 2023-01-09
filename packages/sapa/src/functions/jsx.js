@@ -93,7 +93,11 @@ export const HTMLComment = new Object();
  *
  */
 export const jsx = (tag, props) => {
-  const { children, ...extraProps } = props;
+  let { children = [], ...extraProps } = props;
+
+  if (!isArray(children)) {
+    children = [children];
+  }
 
   return createElementJsx(tag, extraProps, ...children);
 };

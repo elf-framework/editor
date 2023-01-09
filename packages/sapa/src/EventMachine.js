@@ -19,8 +19,7 @@ export class EventMachine extends HookMachine {
   #cachedMethodList;
   #functionCache = {};
   #childObjectList = {};
-  #childObjectElements = new WeakMap();
-  #cachedChildren = new WeakMap();
+  // #childObjectElements = {};
 
   // hook 을 그대로 유지할 방법이 필요함.
   constructor(opt, props, state) {
@@ -39,6 +38,13 @@ export class EventMachine extends HookMachine {
 
   setId(id) {
     this.id = id;
+  }
+
+  /**
+   * refs 를 다시 설정한다.
+   */
+  setRefs(refs = {}) {
+    this.refs = refs;
   }
 
   initializeHandler() {
@@ -197,22 +203,27 @@ export class EventMachine extends HookMachine {
    * 자식 컴포넌트 리스트를 반환한다.
    */
   get children() {
-    return Object.fromEntries(
-      Object.entries(this.#childObjectList).map(([id, child]) => {
-        return [id, this.#childObjectElements.get(child)];
-      })
-    );
+    return this.#childObjectList;
   }
 
   get child() {
     return Object.values(this.children)[0];
   }
 
+  /**
+   * 자식과 같은 컴포넌트를 가지는지 체크한다.
+   *
+   */
+  isNestedComponent() {
+    return Object.values(this.children).some((child) => {
+      return this.$el.el === child.$el.el;
+    });
+  }
+
   setChildren(children) {
     Object.entries(children).forEach(([id, instance]) => {
       if (instance) {
-        this.#childObjectList[id] = instance.$el.el;
-        this.#childObjectElements.set(instance.$el.el, instance);
+        this.#childObjectList[id] = instance;
       }
     });
   }
@@ -227,9 +238,8 @@ export class EventMachine extends HookMachine {
     return true;
   }
 
-  #reloadInstance(instance, props) {
-    // 리로드 하기
-    instance._reload(props);
+  getEl() {
+    return this.$el.el;
   }
 
   /**
@@ -252,16 +262,11 @@ export class EventMachine extends HookMachine {
     }
 
     el = el || oldEl;
-    if (!this.#childObjectElements.has(el)) {
-      this.#childObjectList[id] = el;
-      this.#childObjectElements.set(el, childComponent);
-    }
 
-    if (this.#childObjectElements.has(oldEl) && !isEq) {
-      this.#childObjectElements.delete(oldEl);
+    if (this.#childObjectList[id] && !isEq) {
+      delete this.#childObjectList[id];
     } else {
-      this.#childObjectList[id] = el;
-      this.#childObjectElements.set(el, childComponent);
+      this.#childObjectList[id] = childComponent;
     }
   };
 
@@ -304,39 +309,46 @@ export class EventMachine extends HookMachine {
     });
   }
 
-  checkRefClass = (oldEl, newVNode) => {
-    const props = newVNode.props;
+  /**
+   *
+   * @deprecated
+   */
+  // checkRefClass = (oldEl, newVNode) => {
+  //   console.log("deprecated");
+  //   const props = newVNode.props;
 
-    // isComponentChanged 가 있으면 새로고침한다.
-    if (newVNode.isComponentChanged) {
-      return true;
-    }
-    // children 에 root 가 있는지 체크
-    let targetInstance = this.getTargetInstance(oldEl);
+  //   // isComponentChanged 가 있으면 새로고침한다.
+  //   // if (newVNode.isComponentChanged) {
+  //   //   return true;
+  //   // }
+  //   // children 에 root 가 있는지 체크
+  //   let targetInstance = this.getTargetInstance(oldEl);
 
-    if (targetInstance) {
-      if (targetInstance.isInstanceOf(newVNode.Component)) {
-        // 컴포넌트가 바뀌었을 경우 다시 그린다.
-        if (newVNode.isComponentChanged) {
-          return true;
-        }
+  //   console.log(targetInstance?.id, "fjdkslafds");
 
-        // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
-        if (targetInstance.isForceRender(props)) {
-          return true;
-        }
+  //   if (targetInstance) {
+  //     if (targetInstance.isInstanceOf(newVNode.Component)) {
+  //       // 컴포넌트가 바뀌었을 경우 다시 그린다.
+  //       if (newVNode.isComponentChanged) {
+  //         return true;
+  //       }
 
-        // 이미 생성된 instance 이므로 newVnode 로 컴포넌트 인스턴스를 다시 생성하지 않는다.
-        // props 를 업데이트 한다.
-        return false;
-      } else {
-        // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
-        return true;
-      }
-    }
-    // 다른 예외 사항이 있으면 여기에 기록하기
-    return true;
-  };
+  //       // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
+  //       if (targetInstance.isForceRender(props)) {
+  //         return true;
+  //       }
+
+  //       // 이미 생성된 instance 이므로 newVnode 로 컴포넌트 인스턴스를 다시 생성하지 않는다.
+  //       // props 를 업데이트 한다.
+  //       return false;
+  //     } else {
+  //       // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
+  //       return true;
+  //     }
+  //   }
+  //   // 다른 예외 사항이 있으면 여기에 기록하기
+  //   return true;
+  // };
 
   getRootInstance() {
     let rootInstance = this;
@@ -429,13 +441,10 @@ export class EventMachine extends HookMachine {
    */
   clear() {
     Object.entries(this.#childObjectList).forEach(([_key, child]) => {
-      if (!child.parentNode) {
-        const childInstance = this.#childObjectElements.get(child);
+      if (!child.$el.el.parentNode) {
+        if (child) {
+          child.destroy();
 
-        if (childInstance) {
-          childInstance.destroy();
-
-          this.#childObjectElements.delete(child);
           delete this.#childObjectList[_key];
         }
       }
@@ -443,14 +452,11 @@ export class EventMachine extends HookMachine {
   }
 
   clearAll() {
-    Object.entries(this.#childObjectList).forEach(([_key, child]) => {
-      const childInstance = this.#childObjectElements.get(child);
+    Object.entries(this.#childObjectList).forEach(([id, child]) => {
+      if (child) {
+        child.destroy();
 
-      if (childInstance) {
-        childInstance.destroy();
-
-        this.#childObjectElements.delete(child);
-        delete this.#childObjectList[_key];
+        delete this.#childObjectList[id];
       }
     });
   }
@@ -461,17 +467,15 @@ export class EventMachine extends HookMachine {
    *
    */
   destroy(isRemoveElement = false) {
+    console.log(this.sourceName, "destroy");
     removeRenderCallback(this);
 
     // 자식 컴포넌트들을 제거한다.
-    Object.entries(this.#childObjectList).forEach(([_key, child]) => {
-      const childInstance = this.#childObjectElements.get(child);
+    Object.entries(this.#childObjectList).forEach(([id, child]) => {
+      if (child) {
+        child.destroy();
 
-      if (childInstance) {
-        childInstance.destroy();
-
-        this.#childObjectElements.delete(child);
-        delete this.#childObjectList[_key];
+        // delete this.#childObjectList[id];
       }
     });
 

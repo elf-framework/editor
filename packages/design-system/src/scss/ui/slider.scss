@@ -66,6 +66,7 @@
   > .value-area {
     user-select: none;
     color: var(--elf--slider-font-color);    
+    display: none;
   }
 
   > .label-area {
@@ -145,6 +146,10 @@
   }
 
   &.show-value {
+
+    > .value-area {
+      display: block;
+    }
 
     &.placement-none {
       --elf--slider-thumb-width: fit-content;

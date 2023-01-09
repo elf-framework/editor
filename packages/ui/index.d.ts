@@ -1554,6 +1554,9 @@ declare module "@elf-framework/ui" {
     min: number;
     max: number;
     step: number;
+    /**
+     * show value on the slider
+     */
     showValue?: boolean;
     valuePlacement?: "none" | "top" | "bottom";
     showTrigger?: "always" | "hover" | "none";

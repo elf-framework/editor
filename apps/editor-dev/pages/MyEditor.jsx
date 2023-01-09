@@ -1,5 +1,6 @@
 import { BaseEditor } from "@elf-framework/base-editor";
 import { useStoreValue } from "@elf-framework/sapa";
+import { View } from "@elf-framework/ui";
 import "@elf-framework/ui/style.css";
 
 import locales from "./messages/locales";
@@ -9,10 +10,26 @@ import { RenderPlugin } from "./plugins/RenderPlugin";
 import { RightPlugin } from "./plugins/RightPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
+function C() {
+  const [b, setB] = useStoreValue("b", 1);
+  return <div>aaa {b}</div>;
+}
+
+function B() {
+  return <C />;
+}
+
+function A() {
+  const [b, setB] = useStoreValue("b", 1);
+  return <div>A</div>;
+}
+
 export function MyEditor() {
-  const [a, setA] = useStoreValue("a", 1);
+  const [a, setA] = useStoreValue("myeditor", 1);
 
   return (
+    // <A />
+// 
     <BaseEditor
       configs={{
         yellow: "blue",

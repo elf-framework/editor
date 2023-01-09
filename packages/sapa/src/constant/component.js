@@ -1,3 +1,4 @@
+export const VNODE_INSTANCE = "__vnodeInstance";
 export const COMPONENT_INSTANCE = "__componentInstance";
 export const COMPONENT_ROOT_INSTANCE = "__componentRootInstance";
 export const COMPONENT_ROOT_CONTEXT = "__componentRootContext";

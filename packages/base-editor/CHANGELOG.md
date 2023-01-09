@@ -1,5 +1,26 @@
 # @elf-framework/base-editor
 
+## 0.0.220
+
+### Patch Changes
+
+- add setRefs for reload component
+
+- npm run version
+
+- Updated dependencies []:
+  - @elf-framework/sapa@0.0.220
+  - @elf-framework/ui@0.0.220
+
+## 0.0.219
+
+### Patch Changes
+
+- fixed showValue property css in slider
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.219
+
 ## 0.0.203
 
 ### Patch Changes
