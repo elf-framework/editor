@@ -2127,7 +2127,6 @@ const _EventMachine = class extends HookMachine {
   }
   destroy(isRemoveElement = false) {
     var _a;
-    console.log(this.sourceName, "destroy");
     removeRenderCallback(this);
     Object.entries(__privateGet(this, _childObjectList)).forEach(([id, child]) => {
       if (child) {

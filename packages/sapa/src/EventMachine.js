@@ -467,7 +467,6 @@ export class EventMachine extends HookMachine {
    *
    */
   destroy(isRemoveElement = false) {
-    console.log(this.sourceName, "destroy");
     removeRenderCallback(this);
 
     // 자식 컴포넌트들을 제거한다.

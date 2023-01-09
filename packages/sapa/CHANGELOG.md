@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.229
+
+### Patch Changes
+
+- remove console.log
+
 ## 0.0.228
 
 ### Patch Changes
