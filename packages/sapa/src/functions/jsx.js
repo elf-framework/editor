@@ -35,6 +35,10 @@ export function createComment(children = []) {
   return createVNodeComment(children[0] || "");
 }
 
+/**
+ *
+ * @deprecated
+ */
 export function createComponentList(...args) {
   return args.map((it) => {
     let ComponentName;

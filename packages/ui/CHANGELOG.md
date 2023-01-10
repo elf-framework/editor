@@ -1,5 +1,32 @@
 # @elf-framework/ui
 
+## 0.0.233
+
+### Patch Changes
+
+- update notification style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.233
+
+## 0.0.232
+
+### Patch Changes
+
+- fixed notification style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.232
+
+## 0.0.230
+
+### Patch Changes
+
+- update notification style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.230
+
 ## 0.0.220
 
 ### Patch Changes

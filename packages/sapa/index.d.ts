@@ -477,6 +477,10 @@ declare module "@elf-framework/sapa" {
     children?: any[]
   ): VNode;
 
+  /**
+   *
+   * @deprecated
+   */
   export function createComponentList(...args: any[]): VNode[];
 
   export function createElement(

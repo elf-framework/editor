@@ -2256,7 +2256,7 @@ class Notification extends UIElement {
       style: style2 = {},
       icon,
       content,
-      tools,
+      tools = [],
       direction = "top-left"
     } = this.props;
     const localClass = useMemo(() => {
@@ -2269,7 +2269,7 @@ class Notification extends UIElement {
       class: localClass,
       style: propertyMap(style2, cssProperties$D)
     };
-    return /* @__PURE__ */ createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "content" }, /* @__PURE__ */ createElementJsx("div", { class: "text" }, content)), /* @__PURE__ */ createElementJsx("div", { class: "tools" }, tools || []));
+    return /* @__PURE__ */ createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ createElementJsx("div", { class: "content" }, /* @__PURE__ */ createElementJsx("div", { class: "text" }, content)), (tools == null ? void 0 : tools.length) ? /* @__PURE__ */ createElementJsx("div", { class: "tools" }, tools) : void 0);
   }
 }
 registerComponent("notification", Notification);

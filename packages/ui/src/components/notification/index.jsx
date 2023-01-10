@@ -22,7 +22,7 @@ export class Notification extends UIElement {
       style = {},
       icon,
       content,
-      tools,
+      tools = [],
       direction = "top-left",
     } = this.props;
 
@@ -44,7 +44,7 @@ export class Notification extends UIElement {
         <div class="content">
           <div class="text">{content}</div>
         </div>
-        <div class="tools">{tools || []}</div>
+        {tools?.length ? <div class="tools">{tools}</div> : undefined}
       </div>
     );
   }

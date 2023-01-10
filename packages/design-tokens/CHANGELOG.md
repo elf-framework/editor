@@ -1,5 +1,23 @@
 # @elf-framework/design-tokens
 
+## 0.0.233
+
+### Patch Changes
+
+- update notification style
+
+## 0.0.232
+
+### Patch Changes
+
+- fixed notification style
+
+## 0.0.230
+
+### Patch Changes
+
+- update notification style
+
 ## 0.0.220
 
 ### Patch Changes

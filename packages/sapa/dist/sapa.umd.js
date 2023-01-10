@@ -4202,10 +4202,14 @@ var __privateWrapper = (obj, member, setter, getter) => ({
   }
   function renderRootElementInstanceList() {
     getRootElementInstanceList().forEach((instance) => {
+      var _a;
       const rootInstance = instance.getRootInstance();
-      const componentInstanceForRootRendering = rootInstance;
-      rootInstance.$el.el[COMPONENT_INSTANCE] = rootInstance;
-      renderVNodeComponent(componentInstanceForRootRendering);
+      const childInstance = rootInstance.child;
+      const comp = childInstance || rootInstance;
+      if ((_a = comp == null ? void 0 : comp.$el) == null ? void 0 : _a.el) {
+        comp.$el.el[COMPONENT_INSTANCE] = comp;
+      }
+      renderVNodeComponent(comp);
     });
   }
   function registHandler(handlers) {

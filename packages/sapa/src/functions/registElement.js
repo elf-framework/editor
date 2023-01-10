@@ -200,7 +200,7 @@ export function renderRootElementInstanceList() {
 
     const rootInstance = instance.getRootInstance();
 
-    // const childInstance = rootInstance.child;
+    const childInstance = rootInstance.child;
 
     // FIXME: 다시 연결 해주는게 맞는건가?
     // FIXME: COMPONENT_INSTANCE 의 용법을 다시 정의해야할 듯
@@ -211,12 +211,16 @@ export function renderRootElementInstanceList() {
 
     // rootInstance 의 Component 가 변겨되었는지를 검사한다.
 
-    const componentInstanceForRootRendering = rootInstance;
-    rootInstance.$el.el[COMPONENT_INSTANCE] = rootInstance;
+    const comp = childInstance || rootInstance;
+
+    if (comp?.$el?.el) {
+      comp.$el.el[COMPONENT_INSTANCE] = comp;
+    }
+
     // rootInstance 다시 렌더링 시작
     // 기존 Hook 도 유지를 한다.
     // 그래야 다시 렌더링이 되는데, Hook 이 다시 초기화 되지 않는다.
-    renderVNodeComponent(componentInstanceForRootRendering);
+    renderVNodeComponent(comp);
   });
 }
 

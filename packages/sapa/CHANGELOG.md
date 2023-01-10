@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.231
+
+### Patch Changes
+
+- fixed root rendering
+
 ## 0.0.229
 
 ### Patch Changes

@@ -2258,7 +2258,7 @@ var __privateMethod = (obj, member, method) => {
         style: style2 = {},
         icon,
         content,
-        tools,
+        tools = [],
         direction = "top-left"
       } = this.props;
       const localClass = sapa.useMemo(() => {
@@ -2271,7 +2271,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(style2, cssProperties$D)
       };
-      return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "text" }, content)), /* @__PURE__ */ sapa.createElementJsx("div", { class: "tools" }, tools || []));
+      return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "text" }, content)), (tools == null ? void 0 : tools.length) ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "tools" }, tools) : void 0);
     }
   }
   registerComponent("notification", Notification);
