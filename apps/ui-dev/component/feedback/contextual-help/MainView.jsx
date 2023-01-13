@@ -1,5 +1,5 @@
 import InfoOutlined from "@elf-framework/icon/InfoOutlined";
-import { Button, Panel, Popover, RoundButton, VBox } from "@elf-framework/ui";
+import { Button, Panel, Popover, VBox } from "@elf-framework/ui";
 
 export function MainView() {
   return (
@@ -26,7 +26,12 @@ export function MainView() {
         <Popover
           show
           body={
-            <Panel title={"Permission required"}>
+            <Panel
+              title={"Permission required"}
+              style={{
+                width: 200,
+              }}
+            >
               <p>Your admin must grant you permission to create segments.</p>
               <a href="#">Learn about permissions</a>
             </Panel>

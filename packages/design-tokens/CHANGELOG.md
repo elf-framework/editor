@@ -1,5 +1,17 @@
 # @elf-framework/design-tokens
 
+## 0.0.235
+
+### Patch Changes
+
+- update panel style
+
+## 0.0.234
+
+### Patch Changes
+
+- update panel style
+
 ## 0.0.233
 
 ### Patch Changes

@@ -1,9 +1,9 @@
 .elf--panel {
-    --elf--panel-background-color: transparent;
+    --elf--panel-background-color: var(--panel-color-background-default);
     --elf--panel-color: var(--panel-color-text-default);;
     --elf--panel-border-color: transparent;
-    --elf--panel-width: 100%;
-    --elf--panel-min-width: var(--elf--panel-width);
+    --elf--panel-width: 240px;
+    --elf--panel-min-width: 100%;
     --elf--panel-border-radius: 0px;
     --elf--panel-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
     --elf--panel-padding: 16px;

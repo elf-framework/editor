@@ -23,15 +23,16 @@ export function MainView() {
       >
         <Panel
           title={"Panel title"}
+          mode={"stroke"}
           tools={[
             <Button iconOnly quiet>
               <MoreHorizFilled />
             </Button>,
           ]}
-          footer={"footer"}
           style={{
-            backgroundColor: "var(--color-gray-1)",
+            boxShadow: "var(--shadow-1)",
           }}
+          footer={"footer"}
         >
           Learn how to work with green screen video with these tips for video
           makers.

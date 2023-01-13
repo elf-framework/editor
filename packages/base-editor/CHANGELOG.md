@@ -1,5 +1,23 @@
 # @elf-framework/base-editor
 
+## 0.0.235
+
+### Patch Changes
+
+- update panel style
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.235
+
+## 0.0.234
+
+### Patch Changes
+
+- update panel style
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.234
+
 ## 0.0.233
 
 ### Patch Changes
