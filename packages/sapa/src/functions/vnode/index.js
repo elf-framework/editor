@@ -1,6 +1,10 @@
-import { VNODE_INSTANCE } from "../../constant/component";
+import {
+  SELF_COMPONENT_INSTANCE,
+  VNODE_INSTANCE,
+} from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
+import { commitMount } from "../../renderer/dom/utils";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
 import {
@@ -168,6 +172,32 @@ export class VNode {
    */
   mounted() {
     // noop
+
+    const selfInstance = this[SELF_COMPONENT_INSTANCE];
+
+    commitMount(selfInstance);
+  }
+
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
+  updated() {
+    // noop
+
+    const selfInstance = this[SELF_COMPONENT_INSTANCE];
+
+    if (selfInstance) {
+      const family = selfInstance.getFamily();
+
+      let len = family.family.length;
+
+      while (len--) {
+        const component = family.family[len];
+        component?.runUpdated();
+      }
+    }
   }
 
   runMounted() {
@@ -322,6 +352,7 @@ export class VNodeText extends VNode {
   constructor(value) {
     super(VNodeType.TEXT, null, {});
     this.value = value;
+    this.nodeName = "#TEXT";
   }
 
   clone() {
@@ -471,6 +502,12 @@ export class VNodeComponent extends VNode {
     }
 
     if (hooks && hooks.__stateHooks?.length) {
+      console.log(
+        oldInstance.sourceName,
+        "->",
+        this.instance.sourceName,
+        hooks
+      );
       this.instance.reloadHooks(hooks);
     } else {
       this.instance.initHooks();

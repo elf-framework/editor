@@ -34,6 +34,7 @@ export default defineConfig(async () => {
       jsxFragment: "FragmentInstance",
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
     },
+    root: path.resolve(__dirname, "pages/"),
     build: {
       rollupOptions: {
         input: {
@@ -44,9 +45,6 @@ export default defineConfig(async () => {
     },
     resolve: {
       extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", "md", "mdx"],
-    },
-    optimizeDeps: {
-      exclude: ["@elf-framework/sapa"],
     },
     plugins: [sapa()],
   };

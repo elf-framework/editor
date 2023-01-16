@@ -28,8 +28,6 @@ export function MyEditor() {
   const [a, setA] = useStoreValue("myeditor", 1);
 
   return (
-    // <A />
-// 
     <BaseEditor
       configs={{
         yellow: "blue",

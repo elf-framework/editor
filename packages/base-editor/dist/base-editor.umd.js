@@ -943,8 +943,8 @@
         plugins,
         configs
       } = this.props;
+      const editorRef = sapa.useRef(new EditorContext(this, this.props));
       const pluginActivatedRef = sapa.useRef(false);
-      const editor = useEditor();
       const localClass = sapa.useMemo(() => {
         return sapa.classnames(
           "elf--base-editor",
@@ -955,11 +955,12 @@
         );
       }, [className, fullScreen]);
       sapa.useEffect(async () => {
+        console.log("editor useEffect", pluginActivatedRef.current);
         if (pluginActivatedRef.current) {
           return;
         }
         if (!this.$editor) {
-          this.$editor = new EditorContext(this, this.props);
+          this.$editor = editorRef.current;
         }
         this.$store.set(KEY_EDITOR, this.$editor);
         this.$store.set(KEY_EDITOR_OPTION, this.props);
@@ -967,10 +968,10 @@
         await this.$editor.activate();
         pluginActivatedRef.current = true;
         sapa.useRender(this);
-      }, [pluginActivatedRef.current, plugins, configs]);
+      }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         class: localClass
-      }, pluginActivatedRef.current ? editor.getUIList("renderView") : loading);
+      }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);
     }
     isNotFormElement(e) {
       var tagName = e.target.tagName;

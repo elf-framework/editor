@@ -28,7 +28,7 @@ function stringifyStyle(styleObject) {
     .join(" ");
 }
 
-async function makeHtml(vNodeInstance, withChildren = false, options = {}) {
+async function makeHtml(vNodeInstance, options = {}) {
   const tempProps = [];
   const props = vNodeInstance.memoizedProps;
   if (props) {
@@ -71,16 +71,12 @@ async function makeHtml(vNodeInstance, withChildren = false, options = {}) {
   if (isVoidTag(tag)) {
     return `<${tag} ${tempProps.join(" ")} />`;
   } else {
-    const childrenHtml = await makeChildrenHtml(
-      vNodeInstance,
-      withChildren,
-      options
-    );
+    const childrenHtml = await makeChildrenHtml(vNodeInstance, options);
 
     return `<${tag} ${tempProps.join(" ")}>${childrenHtml}</${tag}>`;
   }
 }
 
-export async function VNodeElementRender(vNodeInstance, withChildren, options) {
-  return await makeHtml(vNodeInstance, withChildren, options);
+export async function VNodeElementRender(vNodeInstance, options) {
+  return await makeHtml(vNodeInstance, options);
 }

@@ -2,7 +2,7 @@ import { isArray, isFunction } from "../../functions/func";
 import { VNode } from "../../functions/vnode";
 import { HtmlRenderer } from "./HtmlRenderer";
 
-export async function makeChildrenHtml(vNodeInstance, withChildren, options) {
+export async function makeChildrenHtml(vNodeInstance, options) {
   const tempChildren = [];
   const children = vNodeInstance.children;
   if (children && children.length) {

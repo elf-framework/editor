@@ -949,7 +949,7 @@ var __privateMethod = (obj, member, method) => {
           });
           if (!this.$el)
             return;
-          resizeObserver.observe(this.$el.el);
+          resizeObserver.observe(this.getEl());
         }
         return () => {
           resizeObserver == null ? void 0 : resizeObserver.disconnect();
@@ -2088,7 +2088,7 @@ var __privateMethod = (obj, member, method) => {
         let observer, resizeObserver;
         if (emphasized) {
           const options = {
-            root: this.parent.parent.$el.el,
+            root: this.parent.parent.getEl(),
             threshold: 1
           };
           observer = new IntersectionObserver((entries) => {
@@ -2101,13 +2101,13 @@ var __privateMethod = (obj, member, method) => {
               setRootRect(e.intersectionRect);
             });
           }, options);
-          observer.observe(this.$el.el);
+          observer.observe(this.getEl());
           resizeObserver = new ResizeObserver((entries) => {
             entries.forEach((entry) => {
               setRootRect(sapa.Dom.create(entry.target).rect());
             });
           });
-          resizeObserver.observe(this.parent.parent.$el.el);
+          resizeObserver.observe(this.parent.parent.getEl());
         }
         return () => {
           observer == null ? void 0 : observer.disconnect();

@@ -1,4 +1,3 @@
-import { COMPONENT_INSTANCE } from "../constant/component";
 import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
 import { isString } from "./func";
 import { uuidShort } from "./uuid";
@@ -31,6 +30,7 @@ export function resetCurrentComponent(component) {
 }
 
 function createRenderCallback(component) {
+  // console.log(RenderCallbackList);
   if (!RenderCallbackList.has(component)) {
     RenderCallbackList.set(component, ($container = undefined) => {
       const Renderer = component.renderer;
@@ -200,22 +200,7 @@ export function renderRootElementInstanceList() {
 
     const rootInstance = instance.getRootInstance();
 
-    const childInstance = rootInstance.child;
-
-    // FIXME: 다시 연결 해주는게 맞는건가?
-    // FIXME: COMPONENT_INSTANCE 의 용법을 다시 정의해야할 듯
-    // FIXME: hydrate 함수 참조, 같은 방식으로 정의 되어있음.
-    // if (childInstance?.$el) {
-    //   childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
-    // }
-
-    // rootInstance 의 Component 가 변겨되었는지를 검사한다.
-
-    const comp = childInstance || rootInstance;
-
-    if (comp?.$el?.el) {
-      comp.$el.el[COMPONENT_INSTANCE] = comp;
-    }
+    const comp = rootInstance;
 
     // rootInstance 다시 렌더링 시작
     // 기존 Hook 도 유지를 한다.

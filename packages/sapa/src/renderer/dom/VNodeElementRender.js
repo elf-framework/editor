@@ -82,7 +82,7 @@ function getContextProps(context, props) {
   });
 }
 
-function makeElement(vNodeInstance, withChildren, options) {
+function makeElement(vNodeInstance, options) {
   const el = createElement(vNodeInstance);
 
   let props = vNodeInstance.memoizedProps;
@@ -136,11 +136,11 @@ function makeElement(vNodeInstance, withChildren, options) {
   el[ELEMENT_PROPS] = props;
   el[ELEMENT_INSTANCE] = vNodeInstance;
   vNodeInstance.el = el;
-  makeChildren(vNodeInstance, withChildren, options);
+  makeChildren(vNodeInstance, options);
 
   return vNodeInstance;
 }
 
-export function VNodeElementRender(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+export function VNodeElementRender(vNodeInstance, options) {
+  return makeElement(vNodeInstance, options);
 }

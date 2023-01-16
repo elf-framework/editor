@@ -30,6 +30,6 @@ function makeElement(vNodeInstance) {
   return vNodeInstance;
 }
 
-export function VNodeCommentRender(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+export function VNodeCommentRender(vNodeInstance, options) {
+  return makeElement(vNodeInstance, options);
 }

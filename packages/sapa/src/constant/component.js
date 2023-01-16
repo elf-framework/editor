@@ -1,5 +1,7 @@
 export const VNODE_INSTANCE = "__vnodeInstance";
 export const COMPONENT_INSTANCE = "__componentInstance";
+export const ALTERNATE_TEMPLATE = "__alternateTemplate";
+export const SELF_COMPONENT_INSTANCE = "__selfComponentInstance";
 export const COMPONENT_ROOT_INSTANCE = "__componentRootInstance";
 export const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
 export const ELEMENT_INSTANCE = "__elementInstance";

@@ -307,8 +307,20 @@ export class HookMachine extends MagicHandler {
     this.#__stateHooksIndex++;
   }
 
-  getHook() {
-    return this.#__stateHooks[this.#__stateHooksIndex];
+  getHook(hookType) {
+    const hookInfo = this.#__stateHooks[this.#__stateHooksIndex];
+
+    /**
+     * hookType 이 있으면 hookInfo 의 type 이 hookType 과 같은지 확인한다.
+     * 같지 않으면 undefined 를 반환한다.
+     *
+     * undefined 로 리턴되면 새로운 hook을 지정할 수 있다.
+     */
+    if (hookType && hookInfo?.type !== hookType) {
+      return undefined;
+    }
+
+    return hookInfo;
   }
 
   setHook(type, hookInfo) {
@@ -338,7 +350,7 @@ export class HookMachine extends MagicHandler {
    * useId is a hook for generating unique IDs
    */
   useId() {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_ID)) {
       this.setHook(USE_ID, { value: uuid(), component: this });
     }
 
@@ -350,7 +362,7 @@ export class HookMachine extends MagicHandler {
   }
 
   useSyncExternalStore(subscribe, getSnapshot, isEqual) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_SYNC_EXTERNAL_STORE)) {
       this.setHook(
         USE_SYNC_EXTERNAL_STORE,
         createExternalStore({
@@ -377,7 +389,7 @@ export class HookMachine extends MagicHandler {
    * @returns
    */
   useState(initialState) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_STATE)) {
       this.setHook(
         USE_STATE,
         createState({ value: initialState, component: this })
@@ -482,7 +494,7 @@ export class HookMachine extends MagicHandler {
   }
 
   useContext(context) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_CONTEXT)) {
       this.setHook(USE_CONTEXT, {
         provider: getContextProvider(context),
         component: this,
@@ -507,7 +519,7 @@ export class HookMachine extends MagicHandler {
     throttleSecond = 0,
     isSelf = false
   ) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_SUBSCRIBE)) {
       this.setHook(
         USE_SUBSCRIBE,
         createSubscribe({
@@ -554,7 +566,7 @@ export class HookMachine extends MagicHandler {
       renderComponent(this);
     });
 
-    if (!this.getHook()) {
+    if (!this.getHook(USE_STORE_VALUE)) {
       this.setHook(
         USE_STORE_VALUE,
         createStoreValue({
@@ -577,7 +589,7 @@ export class HookMachine extends MagicHandler {
    *
    */
   useGetStoreValue(key, defaultValue) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_GET_STORE_VALUE)) {
       this.setHook(
         USE_GET_STORE_VALUE,
         createGetStoreValue({
@@ -600,7 +612,7 @@ export class HookMachine extends MagicHandler {
    *
    */
   useSetStoreValue(key) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_SET_STORE_VALUE)) {
       this.setHook(
         USE_SET_STORE_VALUE,
         createSetStoreValue({
@@ -662,8 +674,6 @@ export class HookMachine extends MagicHandler {
   runHooks() {
     // hooks
     this.getUseEffects().forEach((it) => {
-      // FIXME: hook을 실행하기 전에 cleanup 을 수행해야할까?
-      // const hasChangedDeps = this.isChangedDeps(it.deps);
       if (it.hasChangedDeps) {
         // deps: [] 는 한번만 실행하도록 해야한다.
         it.cleanup = it.callback();

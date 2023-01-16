@@ -48,24 +48,15 @@ export function start(ElementNode, opt = {}) {
   // dom 이 살아있지 않으면 추가
   // dom 이 살아있으면 업데이트 하는 로직을 추가 한다.
   if ($targetElement) {
-    // target 에 instance 가 있으면
-    // 그 instance 를 기반으로 root instance 를 찾고
-    // 그 root instance 의 child 를 찾아서
-    // child 의 $el 을 다시 instance 로 설정한다.
-    // 이렇게 하면 hot reload 이후 업데이트 하는 로직이랑 같아진다.
     const targetInstance = $targetElement.el[COMPONENT_INSTANCE];
     const rootInstance = targetInstance.getRootInstance();
-    const childInstance = rootInstance.child || rootInstance;
-
-    if (childInstance?.$el) {
-      childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
-    }
 
     // dom render 를 위해서 추가
-    renderComponent(childInstance, null, true);
+    renderComponent(rootInstance);
   } else {
-    renderComponent(app, $container, true);
+    renderComponent(app, $container);
   }
+
   registRootElementInstance(app, $container);
 
   return app;
@@ -102,6 +93,9 @@ export const hydrate = (ElementNode, opt = {}) => {
   const $targetElement = $container.firstChild;
 
   if ($targetElement && $targetElement.el) {
+
+    // 기존에 존재하는 dom 을 사용해서 hydrate 를 수행한다.
+    // hydrate dom 을 최대한 재사용 하는 구조로 되어 있다.
     app.$el = $targetElement;
     app.$el.el[COMPONENT_INSTANCE] = app;
     renderComponent(app);

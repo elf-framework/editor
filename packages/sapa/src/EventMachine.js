@@ -1,4 +1,10 @@
-import { COMPONENT_ROOT_CONTEXT } from "./constant/component";
+import {
+  ALTERNATE_TEMPLATE,
+  COMPONENT_INSTANCE,
+  COMPONENT_ROOT_CONTEXT,
+  SELF_COMPONENT_INSTANCE,
+  VNODE_INSTANCE,
+} from "./constant/component";
 import { isFunction, collectProps, isObject } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import {
@@ -215,8 +221,9 @@ export class EventMachine extends HookMachine {
    *
    */
   isNestedComponent() {
+    const oldEl = this.getEl();
     return Object.values(this.children).some((child) => {
-      return this.$el.el === child.$el.el;
+      return oldEl === child.getEl();
     });
   }
 
@@ -238,8 +245,56 @@ export class EventMachine extends HookMachine {
     return true;
   }
 
+  /**
+   * 컴포넌트의 마지막 dom root 를 반환한다.
+   *
+   * ```jsx
+   * <A>
+   *  <B>
+   *    <C>Sample</C>
+   * </B>
+   * </A>
+   * ```
+   *
+   * A -> B -> C 형태로 중첩이 된 상태에서는 마지막 C 의 dom 을 반환한다.
+   * A, B 는 $el 을 가지고 있지 않다.
+   *
+   * A, B, C 는 하나의 family 형태로 묶이며
+   * A -> B, B -> C 는 ALTER_TEMPLATE 로 연결된다.
+   *
+   * @returns
+   */
   getEl() {
+    // console.log(this, this.$el?.el);
+    if (!this.$el?.el) {
+      return this[ALTERNATE_TEMPLATE]?.instance?.getEl();
+    }
+
     return this.$el.el;
+  }
+
+  getFamily() {
+    const el = this.getEl();
+    let lastComponent = el[COMPONENT_INSTANCE];
+    const family = [];
+
+    while (lastComponent) {
+      family.push(lastComponent);
+
+      if (!lastComponent[VNODE_INSTANCE]) break;
+
+      lastComponent = lastComponent[VNODE_INSTANCE][SELF_COMPONENT_INSTANCE];
+    }
+
+    family.reverse();
+
+    const familyIndex = family.findIndex((item) => item === this);
+
+    return {
+      family,
+      component: this,
+      index: familyIndex,
+    };
   }
 
   /**
@@ -278,7 +333,7 @@ export class EventMachine extends HookMachine {
     const targetList = Object.values(this.children)
       .filter(Boolean)
       .filter((instance) => {
-        return instance?.id !== this.id && instance?.$el?.el === oldEl;
+        return instance?.id !== this.id && instance?.getEl() === oldEl;
       });
 
     if (targetList.length) {
@@ -441,7 +496,7 @@ export class EventMachine extends HookMachine {
    */
   clear() {
     Object.entries(this.#childObjectList).forEach(([_key, child]) => {
-      if (!child.$el.el.parentNode) {
+      if (!child.getEl().parentNode) {
         if (child) {
           child.destroy();
 

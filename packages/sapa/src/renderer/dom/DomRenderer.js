@@ -16,16 +16,15 @@ const RendererList = {
   [VNodeType.COMMENT]: VNodeCommentRender,
 };
 
-function VNodeRender(vNodeInstance, withChildren, options) {
+function VNodeRender(vNodeInstance, options) {
   if (isBoolean(options)) {
     throw new Error("options is boolean");
   }
   const CurrentRenderer = RendererList[vNodeInstance.type];
 
   if (CurrentRenderer) {
-    return CurrentRenderer(vNodeInstance, withChildren, options);
+    return CurrentRenderer(vNodeInstance, options);
   }
-
   return null;
 }
 
@@ -39,7 +38,7 @@ export function DomRenderer(obj, options = {}) {
   }
 
   if (obj) {
-    return Dom.create(VNodeRender(obj, true, options)?.el);
+    return Dom.create(VNodeRender(obj, options)?.el);
   }
 
   return obj;
