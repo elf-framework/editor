@@ -7,7 +7,7 @@ function makeElement(vNodeInstance, options) {
   const el = document.createDocumentFragment();
 
   el[ELEMENT_INSTANCE] = vNodeInstance;
-  vNodeInstance.el = el;
+  vNodeInstance.setEl(el);
 
   makeChildren(vNodeInstance, options, true);
 

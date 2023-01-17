@@ -1,5 +1,4 @@
 import { VNodeType } from "../../constant/vnode";
-import { Dom } from "../../functions/Dom";
 import { isArray, isBoolean, isString } from "../../functions/func";
 import { createVNodeText } from "../../functions/vnode";
 import { VNodeCommentRender } from "./VNodeCommentRender";
@@ -38,7 +37,7 @@ export function DomRenderer(obj, options = {}) {
   }
 
   if (obj) {
-    return Dom.create(VNodeRender(obj, options)?.el);
+    return VNodeRender(obj, options);
   }
 
   return obj;

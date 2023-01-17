@@ -32,11 +32,11 @@ export function resetCurrentComponent(component) {
 function createRenderCallback(component) {
   // console.log(RenderCallbackList);
   if (!RenderCallbackList.has(component)) {
-    RenderCallbackList.set(component, ($container = undefined) => {
+    RenderCallbackList.set(component, (containerElement = undefined) => {
       const Renderer = component.renderer;
 
       if (Renderer) {
-        return Renderer(component, $container);
+        return Renderer(component, containerElement);
       }
     });
   }
@@ -50,7 +50,7 @@ export function removeRenderCallback(component) {
   }
 }
 
-export function renderComponent(component, $container = undefined) {
+export function renderComponent(component, containerElement = undefined) {
   if (!component) {
     return;
   }
@@ -60,7 +60,7 @@ export function renderComponent(component, $container = undefined) {
     return;
   }
 
-  createRenderCallback(component)?.($container);
+  createRenderCallback(component)?.(containerElement);
 }
 
 /**
@@ -160,7 +160,7 @@ export function hasVariable(id) {
  * @param {UIElement} instance
  */
 export function registRootElementInstance(instance, containerElement) {
-  const rootContainerElement = containerElement.el || containerElement;
+  const rootContainerElement = containerElement;
   __rootInstance.add(instance);
 
   // 기존에 있던 root instance 는 지운다.

@@ -54,10 +54,10 @@ export function start(ElementNode, opt = {}) {
     // dom render 를 위해서 추가
     renderComponent(rootInstance);
   } else {
-    renderComponent(app, $container);
+    renderComponent(app, $container.el);
   }
 
-  registRootElementInstance(app, $container);
+  registRootElementInstance(app, $container.el);
 
   return app;
 }
@@ -93,16 +93,15 @@ export const hydrate = (ElementNode, opt = {}) => {
   const $targetElement = $container.firstChild;
 
   if ($targetElement && $targetElement.el) {
-
     // 기존에 존재하는 dom 을 사용해서 hydrate 를 수행한다.
     // hydrate dom 을 최대한 재사용 하는 구조로 되어 있다.
     app.$el = $targetElement;
     app.$el.el[COMPONENT_INSTANCE] = app;
     renderComponent(app);
   } else {
-    renderComponent(app, $container);
+    renderComponent(app, $container.el);
   }
-  registRootElementInstance(app, $container);
+  registRootElementInstance(app, $container.el);
 
   return app;
 };

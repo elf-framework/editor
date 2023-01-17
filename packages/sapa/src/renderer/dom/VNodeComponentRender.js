@@ -8,8 +8,6 @@ import {
 } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
-import { isFunction, isString } from "../../functions/func";
-import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
 import {
   Reconcile,
@@ -17,7 +15,7 @@ import {
   updateChildrenWithFragment,
   updateFragment,
 } from "./Reconcile";
-import { commitMount } from "./utils";
+import { commitMountFromElement } from "./utils";
 
 const children = (el) => {
   var element = el?.firstChild;
@@ -194,15 +192,13 @@ async function runningUpdate(componentInstance, template) {
  *
  */
 async function runningMount(componentInstance, template, $container) {
-  console.group("runningMount", componentInstance.sourceName, template);
   template[SELF_COMPONENT_INSTANCE] = componentInstance;
-  console.log("runningMount", componentInstance.sourceName, template);
   const newDomElement = DomRenderer(template, {
     ...componentInstance.getVNodeOptions(),
   });
 
   if (!template.Component) {
-    componentInstance.$el = newDomElement;
+    componentInstance.$el = Dom.create(newDomElement.el);
     componentInstance.refs.$el = componentInstance.$el;
   }
 
@@ -210,11 +206,18 @@ async function runningMount(componentInstance, template, $container) {
   // element 에 component 속성 설정
   const el = componentInstance.getEl();
   if (el) {
+    // component instance 가 없으면 component instance 지정
+    // el 의 마지막에 지정된 component instance 이다.
+    // A -> B -> C -> div 라고 있을 때 C의 instance 를 가리킨다.
+    // 나머지 A, B 는 getFamily() 함수를 통해서 조회할 수 있다.
+    // 기본적으로 컴포넌트를 생성하는 시점에 SELF_COMPONENT_INSTANCE 를 대입해주기 때문에
+    // 연결고리를 찾을 수 있다.
     if (!el[COMPONENT_INSTANCE]) {
       el[COMPONENT_INSTANCE] = componentInstance;
     }
 
-    if (Dom.create(el).isFragment) {
+    // fragment 아이템인지 표시한다.
+    if (el[IS_FRAGMENT_ITEM]) {
       componentInstance.isFragment = true;
     }
   }
@@ -225,16 +228,14 @@ async function runningMount(componentInstance, template, $container) {
     }
 
     // $container 의 자식이 아닐 때만 추가
-    // const el = componentInstance.getEl();
     if ($container.hasChild(el) === false) {
       $container.append(el);
 
-      commitMount(el[COMPONENT_INSTANCE]);
+      // append 이후에는 항상 commitMount 를 실행한다.
+      // element 기준으로 실행해야할 듯
+      commitMountFromElement(el);
     }
   }
-
-  // componentInstance.runMounted();
-  // console.log("생성시 mounted", componentInstance.sourceName);
 
   // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
   await componentInstance.runHandlers("initialize");
@@ -245,76 +246,48 @@ async function runningMount(componentInstance, template, $container) {
 /**
  * template 을 렌더링 한다.
  *
- * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
  */
-export async function renderVNodeComponent(componentInstance, $container) {
+export async function renderVNodeComponent(
+  componentInstance,
+  /**
+   * componentInstance 의 결과물로 만들어진 el 을 추가할 dom container element 를 지정한다.
+   */
+  containerElement = undefined
+) {
   componentInstance.resetCurrentComponent();
   let template = componentInstance.template();
 
   // fragment 로 들어오는 children 리스트를 일렬로 다룬다.
   template = flatTemplate(template);
 
-  // // TODO: MULTI ROOT 를 허용하지 않는다.
-  // if (isArray(template) && template.length > 1) {
-  //   // console.log(template);
-  //   // template = [createVNodeFragment({ children: template })];
-  //   // throw new Error(
-  //   //   [
-  //   //     `Error Component - ${componentInstance.sourceName}`,
-  //   //     "Template root is not must an array, however You can use Fragment instead of it",
-  //   //     "Fragment Samples: ",
-  //   //     " <>{list}</> ",
-  //   //     " <Fragment>{list}</Fragment>",
-  //   //   ].join("\n")
-  //   // );
-  // }
-
   const rootTemplate = template[0];
 
   if (componentInstance.getEl()) {
     await runningUpdate(componentInstance, rootTemplate);
   } else {
-    await runningMount(componentInstance, rootTemplate, $container);
+    await runningMount(componentInstance, rootTemplate, containerElement);
   }
 
   return componentInstance;
 }
 
-function render(vNode, options) {
+function renderComponentForVNode(vNode) {
+  renderVNodeComponent(vNode.instance);
+}
+
+function makeElement(vNode, options = {}) {
   vNode.makeClassInstance(options);
   try {
     // 객체를 생성 후에는 렌더링을 한다.
     vNode.instance.setParentElement(vNode.parentElement);
-    renderVNodeComponent(vNode.instance, options.$container);
+    renderComponentForVNode(vNode);
   } catch (e) {
     console.error(e);
-  }
-}
-
-function makeElement(vNode, options = {}) {
-  render(vNode, options);
-
-  // 렌더링 된 객체에서 element 를 얻는다.
-  vNode.el = vNode.instance?.getEl();
-
-  if (vNode.el) {
-    // props.ref 가 있으면 등록한다.
-    const id = isString(vNode.props.ref) ? vNode.props.ref : vNode.instance.id;
-
-    if (vNode.props.ref instanceof RefClass) {
-      // ref 가 있으면 component 의 instance 를 등록한다.
-      vNode.props.ref.setCurrent(vNode.instance);
-    }
-
-    // 상위 컨텍스트 에서 내부 children 을 관리한다.
-    isFunction(options.registerChildComponent) &&
-      options.registerChildComponent(vNode.el, vNode.instance, id);
   }
 
   return vNode;
 }
 
 export function VNodeComponentRender(vNode, options) {
-  console.log("1. VNodeComponentRender", vNode);
   return makeElement(vNode, options);
 }

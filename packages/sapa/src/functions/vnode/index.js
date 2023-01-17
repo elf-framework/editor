@@ -4,9 +4,11 @@ import {
 } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
+import { RefClass } from "../../HookMachine";
 import { commitMount } from "../../renderer/dom/utils";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
+import { Dom } from "../Dom";
 import {
   isArray,
   isFunction,
@@ -146,6 +148,7 @@ export class VNode {
     this.props = props;
     this.children = children;
     this.Component = Component;
+    this.el = null;
 
     this.initializeProps();
     this.initializeChildren();
@@ -294,22 +297,6 @@ export class VNode {
     this.parentElement = parentElement;
   }
 
-  /**
-   * context 에서 사용할 수 있는 속성을 추출한다.
-   */
-  getContextProps(context, props) {
-    const newProps = context.filterFunction("getProps").flat(Infinity);
-    const newPropList = newProps.filter((it) => {
-      return it.ref === props.ref;
-    });
-
-    newPropList.forEach((it) => {
-      if (isObject(it.props)) {
-        Object.assign(props, it.props);
-      }
-    });
-  }
-
   makeText(divider = "") {
     const arr = this.children
       .map((child) => child.makeText(divider))
@@ -345,6 +332,14 @@ export class VNode {
 
   toString() {
     return this.makeText();
+  }
+
+  getEl() {
+    return this.el;
+  }
+
+  setEl(el) {
+    this.el = el;
   }
 }
 
@@ -428,6 +423,14 @@ export class VNodeComponent extends VNode {
     return this.LastComponent.__proto__.name === "";
   }
 
+  getEl() {
+    return this.instance?.getEl();
+  }
+
+  setEl(el) {
+    this.instance.$el = Dom.create(el);
+  }
+
   mounted() {
     this.instance?.onMounted();
   }
@@ -465,10 +468,6 @@ export class VNodeComponent extends VNode {
   makeClassInstance(options) {
     const props = { ...this.props };
 
-    // ref 가 있을 때는 context 에서 props 를 가지고 온다.
-    if (props.ref) {
-      this.getContextProps(options.context, props);
-    }
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
     const newComponent = this.getModule() || this.Component;
 
@@ -502,12 +501,6 @@ export class VNodeComponent extends VNode {
     }
 
     if (hooks && hooks.__stateHooks?.length) {
-      console.log(
-        oldInstance.sourceName,
-        "->",
-        this.instance.sourceName,
-        hooks
-      );
       this.instance.reloadHooks(hooks);
     } else {
       this.instance.initHooks();
@@ -523,6 +516,12 @@ export class VNodeComponent extends VNode {
       this.instance.setChildren(children);
     }
 
+    // props 에 ref 가 있으면 새로운 instance 를 등록한다.
+    if (props?.ref instanceof RefClass) {
+      props?.ref.setCurrent(this.instance);
+    }
+
+    // instance 에서 vnode 를 사용할 수 있도록 설정한다.
     this.instance[VNODE_INSTANCE] = this;
 
     // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.

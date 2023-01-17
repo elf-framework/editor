@@ -12,5 +12,5 @@ export function SampleApp() {
     );
   }, [ref]);
 
-  return <Test a="1" b="2" c="3" ref={ref} />;
+  return <Test ref={ref} a={1} b={2} c={3} />;
 }

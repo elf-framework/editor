@@ -16,7 +16,6 @@ import { uuid } from "./functions/uuid";
 import { vnodePropsDiff } from "./functions/vnode";
 import DomEventHandler from "./handler/DomEventHandler";
 import ObserverHandler from "./handler/ObserverHandler";
-import PropsHandler from "./handler/PropsHandler";
 import StoreHandler from "./handler/StoreHandler";
 import { HookMachine } from "./HookMachine";
 
@@ -58,7 +57,6 @@ export class EventMachine extends HookMachine {
       DomEventHandler,
       ObserverHandler,
       StoreHandler,
-      PropsHandler,
     });
   }
 

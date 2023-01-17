@@ -24,6 +24,7 @@ const USE_GET_STORE_VALUE = Symbol("useGetStoreValue");
 
 export class RefClass {
   constructor(current) {
+    this.id = uuid();
     this.current = current;
   }
 
@@ -35,7 +36,9 @@ export class RefClass {
 }
 
 function createRef(current = undefined) {
-  return new RefClass(current);
+  const refInstance = new RefClass(current);
+
+  return refInstance;
 }
 
 /**

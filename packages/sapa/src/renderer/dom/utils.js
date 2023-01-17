@@ -1,6 +1,7 @@
 import {
+  COMPONENT_INSTANCE,
+  ELEMENT_PROPS,
   IS_FRAGMENT_ITEM,
-  SELF_COMPONENT_INSTANCE,
 } from "../../constant/component";
 import { isArray, isFunction, isValue } from "../../functions/func";
 import { VNode } from "../../functions/vnode";
@@ -18,17 +19,18 @@ export function insertElement(
   isFragmentItem = false
 ) {
   // children 은 fragment 로 만들어서 추가한다.
-
-  console.log(childVNode, options);
-
   if (childVNode instanceof VNode || childVNode?.makeElement) {
     childVNode.setParentElement(parentElement);
-    const el = DomRenderer(childVNode, options).el;
+    let instance = DomRenderer(childVNode, options);
+
+    const el = instance?.getEl();
 
     if (el) {
       el[IS_FRAGMENT_ITEM] = isFragmentItem;
 
       fragment.appendChild(el);
+      // el 을 추가한 후에 commitMount 를 실행한다.
+      commitMountFromElement(el);
     }
   } else if (isArray(childVNode)) {
     childVNode.forEach((it) => {
@@ -43,7 +45,9 @@ export function insertElement(
       insertElement(result, fragment, parentElement, options, isFragmentItem);
     }
   } else if (isValue(childVNode)) {
-    fragment.appendChild(document.createTextNode(childVNode));
+    childVNode.el = document.createTextNode(childVNode);
+    childVNode.el[ELEMENT_PROPS] = { value: childVNode };
+    fragment.appendChild(childVNode.el);
   } else {
     // NOOP
     // undefined, null 은 표시하지 않는다.
@@ -64,38 +68,29 @@ export function makeChildren(vnode, options, isFragmentItem = false) {
 
     // fragment 적용
     parentElement.appendChild(fragment);
-
-    // mounted 메세지 실행
-    console.group("runMounted", vnode, children);
-    children.forEach((child) => {
-      if (isArray(child)) {
-        child.forEach((it) => {
-          if (isFunction(it?.runMounted)) {
-            it.runMounted();
-          }
-        });
-      } else if (child) {
-        if (isFunction(child?.runMounted)) {
-          child.runMounted();
-        }
-      }
-    });
-    console.groupEnd();
   }
 }
 
+/**
+ * el 에 설정된 COMPONENT_INSTANCE 기준으로 family 그룹을 구해서
+ * 마지막 인스턴스부터 차례로 runMounted 를 실행한다.
+ */
+export function commitMountFromElement(el) {
+  commitMount(el[COMPONENT_INSTANCE]);
+}
+
+/**
+ * componentInstance 기준으로 runMounted 실행한다.
+ */
 export function commitMount(componentInstance) {
   if (componentInstance) {
     const family = componentInstance.getFamily();
 
     let len = family.family.length;
 
-    console.log(family, len);
-
     while (len--) {
       const component = family.family[len];
 
-      console.log("runMounted", component.copyHooks());
       component?.runMounted();
     }
   }

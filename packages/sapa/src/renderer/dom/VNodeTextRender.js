@@ -25,7 +25,7 @@ function makeElement(vNodeInstance) {
   el[ELEMENT_INSTANCE] = vNodeInstance;
   el[ELEMENT_PROPS] = { value: vNodeInstance.value };
 
-  vNodeInstance.el = el;
+  vNodeInstance.setEl(el);
   return vNodeInstance;
 }
 

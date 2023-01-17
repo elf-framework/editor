@@ -38,11 +38,11 @@ export class Test extends UIElement {
     }, [ref]);
 
     return (
-      <div ref={ref} {...props} class="test-component">
+      <div {...props} b={b} ref={ref} class="test-component">
         <button type="button" onClick={c}>
           {b} 1 fd 10 30
         </button>
-        {/* <Sample /> */}
+        <Sample />
       </div>
     );
   }
