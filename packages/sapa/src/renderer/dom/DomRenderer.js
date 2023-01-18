@@ -37,7 +37,7 @@ export function DomRenderer(obj, options = {}) {
   }
 
   if (obj) {
-    return VNodeRender(obj, options);
+    return VNodeRender(obj, options, options.container);
   }
 
   return obj;

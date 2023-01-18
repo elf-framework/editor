@@ -5,7 +5,11 @@ import {
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
 import { RefClass } from "../../HookMachine";
-import { commitMount } from "../../renderer/dom/utils";
+import {
+  commitMount,
+  commitUnmount,
+  commitUpdated,
+} from "../../renderer/dom/utils";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
 import { Dom } from "../Dom";
@@ -192,14 +196,22 @@ export class VNode {
     const selfInstance = this[SELF_COMPONENT_INSTANCE];
 
     if (selfInstance) {
-      const family = selfInstance.getFamily();
+      commitUpdated(selfInstance);
+    }
+  }
 
-      let len = family.family.length;
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
+  unmounted() {
+    // noop
 
-      while (len--) {
-        const component = family.family[len];
-        component?.runUpdated();
-      }
+    const selfInstance = this[SELF_COMPONENT_INSTANCE];
+
+    if (selfInstance) {
+      commitUnmount(selfInstance);
     }
   }
 
@@ -215,6 +227,12 @@ export class VNode {
       } else {
         this.mounted();
       }
+    }
+  }
+
+  runUnmounted() {
+    if (this.unmounted) {
+      this.unmounted();
     }
   }
 
@@ -362,6 +380,8 @@ export class VNodeText extends VNode {
 
   runUpdated() {}
 
+  runUnmounted() {}
+
   makeText() {
     return this.value;
   }
@@ -384,6 +404,8 @@ export class VNodeComment extends VNode {
   runMounted() {}
 
   runUpdated() {}
+
+  runUnmounted() {}
 
   makeText() {
     return "";
@@ -431,19 +453,32 @@ export class VNodeComponent extends VNode {
     this.instance.$el = Dom.create(el);
   }
 
+  /**
+   * DomTree 에 추가되었을 때, 호출된다.
+   */
   mounted() {
     this.instance?.onMounted();
   }
 
+  /**
+   * DomTree 에서 변경되었을 때, 호출된다.
+   */
   updated() {
     this.instance?.onUpdated();
+  }
+
+  /**
+   * DomTree 에서 제외되었을 때, 호출된다.
+   */
+  unmounted() {
+    this.instance?.onUnmounted();
   }
 
   getModule() {
     // vite-plugin-sapa 에서 변경 가능성이 있는 컴포넌트들은 미리 __timestamp 를 붙여준다.
     if (this.Component.__timestamp) {
-      const a = getModule(this.Component);
-      return a;
+      const currentModule = getModule(this.Component);
+      return currentModule;
     }
 
     return this.Component;

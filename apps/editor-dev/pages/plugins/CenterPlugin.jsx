@@ -30,6 +30,7 @@ export function RenderView() {
         style={{ position: "absolute" }}
         onClick={() => {
           setValue((v = 0) => {
+            console.log(v);
             return v + 1;
           });
         }}

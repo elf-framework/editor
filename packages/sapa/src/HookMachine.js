@@ -24,7 +24,7 @@ const USE_GET_STORE_VALUE = Symbol("useGetStoreValue");
 
 export class RefClass {
   constructor(current) {
-    this.id = uuid();
+    // this.id = uuid();
     this.current = current;
   }
 
@@ -195,28 +195,28 @@ function createSubscribe({
 
 export class HookMachine extends MagicHandler {
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
-  #__stateHooks = [];
-  #__stateHooksIndex = 0;
+  __stateHooks = [];
+  __stateHooksIndex = 0;
 
   /***** hook ********/
 
   copyHooks() {
     return {
-      __stateHooks: this.#__stateHooks,
-      __stateHooksIndex: this.#__stateHooksIndex,
+      __stateHooks: this.__stateHooks,
+      __stateHooksIndex: this.__stateHooksIndex,
     };
   }
 
   initHooks() {
-    this.#__stateHooks = [];
-    this.#__stateHooksIndex = 0;
+    this.__stateHooks = [];
+    this.__stateHooksIndex = 0;
   }
 
   reloadHooks(hooks) {
-    this.#__stateHooks = hooks.__stateHooks || [];
-    this.#__stateHooksIndex = hooks.__stateHooksIndex || 0;
+    this.__stateHooks = hooks.__stateHooks || [];
+    this.__stateHooksIndex = hooks.__stateHooksIndex || 0;
 
-    this.#__stateHooks.forEach((hook, index) => {
+    this.__stateHooks.forEach((hook, index) => {
       switch (hook?.type) {
         case USE_STATE:
           hook.hookInfo = createState({
@@ -291,7 +291,7 @@ export class HookMachine extends MagicHandler {
           // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
           // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
 
-          this.#__stateHooks[index] = undefined;
+          this.__stateHooks[index] = undefined;
           break;
       }
     });
@@ -303,15 +303,15 @@ export class HookMachine extends MagicHandler {
   }
 
   resetHookIndex() {
-    this.#__stateHooksIndex = 0;
+    this.__stateHooksIndex = 0;
   }
 
   increaseHookIndex() {
-    this.#__stateHooksIndex++;
+    this.__stateHooksIndex++;
   }
 
   getHook(hookType) {
-    const hookInfo = this.#__stateHooks[this.#__stateHooksIndex];
+    const hookInfo = this.__stateHooks[this.__stateHooksIndex];
 
     /**
      * hookType 이 있으면 hookInfo 의 type 이 hookType 과 같은지 확인한다.
@@ -327,7 +327,7 @@ export class HookMachine extends MagicHandler {
   }
 
   setHook(type, hookInfo) {
-    this.#__stateHooks[this.#__stateHooksIndex] = {
+    this.__stateHooks[this.__stateHooksIndex] = {
       type,
       hookInfo,
     };
@@ -653,7 +653,7 @@ export class HookMachine extends MagicHandler {
   /** utility function for hooks */
 
   filterHooks(type) {
-    return this.#__stateHooks
+    return this.__stateHooks
       .filter((it) => it?.type === type)
       .map((it) => it.hookInfo);
   }
@@ -728,5 +728,9 @@ export class HookMachine extends MagicHandler {
     this.cleanHooks();
   }
 
-  onUnmounted() {}
+  onUnmounted() {
+    this.isMounted = false;
+    // hooks
+    this.cleanHooks();
+  }
 }

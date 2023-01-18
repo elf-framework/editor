@@ -4,6 +4,7 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useRootContext,
 } from "@elf-framework/sapa";
 
 import { Sample } from "./Sample";
@@ -37,8 +38,10 @@ export class Test extends UIElement {
       );
     }, [ref]);
 
+    const spline = useRootContext("spline");
+
     return (
-      <div {...props} b={b} ref={ref} class="test-component">
+      <div {...props} b={b} ref={ref} spline={spline} class="test-component">
         <button type="button" onClick={c}>
           {b} 1 fd 10 30
         </button>

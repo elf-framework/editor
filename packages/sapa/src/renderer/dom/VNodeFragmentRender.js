@@ -9,7 +9,14 @@ function makeElement(vNodeInstance, options) {
   el[ELEMENT_INSTANCE] = vNodeInstance;
   vNodeInstance.setEl(el);
 
-  makeChildren(vNodeInstance, options, true);
+  makeChildren(
+    vNodeInstance,
+    {
+      ...options,
+      container: el,
+    },
+    true
+  );
 
   return vNodeInstance;
 }

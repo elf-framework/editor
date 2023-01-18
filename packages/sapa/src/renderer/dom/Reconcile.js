@@ -14,6 +14,11 @@ import { isSVG } from "../../functions/svg";
 import { VNode } from "../../functions/vnode";
 import { RefClass } from "../../HookMachine";
 import { DomRenderer } from "./DomRenderer";
+import {
+  commitMount,
+  commitMountFromElement,
+  commitUnmountFromElement,
+} from "./utils";
 import { renderVNodeComponent } from "./VNodeComponentRender";
 
 const IGNORE_SET_PROPS = {
@@ -93,11 +98,19 @@ const patch = {
     if (name === "ref") return;
 
     if (isBooleanType(name)) {
-      this.setBooleanProp(el, name, value);
+      const oldFieldValue = el[ELEMENT_PROPS]?.[name];
+
+      if (oldFieldValue !== value) {
+        this.setBooleanProp(el, name, value);
+      }
     } else if (name.startsWith(PREFIX_EVENT)) {
-      el[name.toLowerCase()] = value;
+      const oldFieldValue = el[ELEMENT_PROPS]?.[name];
+
+      if (oldFieldValue !== value) {
+        el[name.toLowerCase()] = value;
+      }
     } else if (name === KEY_STYLE) {
-      const oldStyle = el.style.cssText;
+      const oldStyle = el[ELEMENT_PROPS].style || el.style.cssText;
       if (oldStyle != value) {
         el.style.cssText = value;
       } else if (oldStyle === "" && value === "") {
@@ -107,15 +120,23 @@ const patch = {
       if (el[name] === "" && value === "") {
         this.removeProp(el, name);
       } else {
-        // 속성을 정의할 때 property 와 같이 정의한다.
-        el.setAttribute(name, value);
+        const oldClassName = el[ELEMENT_PROPS].class || el.className;
+
+        if (oldClassName !== value) {
+          // 속성을 정의할 때 property 와 같이 정의한다.
+          el.setAttribute(name, value);
+        }
       }
     } else {
-      // 속성을 정의할 때 property 와 같이 정의한다.
-      el.setAttribute(name, value);
+      const oldFieldValue = el[ELEMENT_PROPS]?.[name] || el[name];
 
-      if (isSVG(el.tagName)) return;
-      el[name] = value;
+      if (oldFieldValue !== value) {
+        // 속성을 정의할 때 property 와 같이 정의한다.
+        el.setAttribute(name, value);
+
+        if (isSVG(el.tagName)) return;
+        el[name] = value;
+      }
     }
   },
   removeProp(el, name) {
@@ -145,6 +166,14 @@ const patch = {
   },
 
   // 컴포넌트 내부에서 다시 그리기를 한다.
+  /**
+   * 이 함수를 더 이상 사용하지 않습니다.
+   * getTargetInstance 로 컴포넌트를 찾지 않습니다.
+   *
+   * reloadComponentInstance() 함수를 사용해주세요.
+   *
+   * @deprecated
+   */
   reloadComponent(oldEl, newVNode, options) {
     const targetInstance = options.context.getTargetInstance(oldEl);
 
@@ -203,16 +232,6 @@ const patch = {
     // component 를 다시 렌더링
     // $el 이 존재하면 Reconcile 을 수행함
     renderVNodeComponent(instance);
-
-    // 새로운 컴포넌트를 부모의 child 로 등록한다.
-    if (isFunction(options.registerChildComponent)) {
-      options.registerChildComponent(
-        instance.getEl(),
-        instance,
-        instance.id,
-        oldEl // 옛날 element 는 삭제하기
-      );
-    }
   },
 
   makeComponentInstance(oldInstance, newVNode, options) {
@@ -235,7 +254,6 @@ const patch = {
     // 현재 oldElement 가 객체 참조를 가지고 있지 않는 경우
     // 부모의 객체를 기준으로 작성한다.
     newVNode.setInstance(oldInstance);
-    // console.warn("make component", oldInstance, newVNode);
     newVNode.makeClassInstance(options);
 
     // 기존의 $el 을 대입
@@ -247,16 +265,6 @@ const patch = {
     // component 를 다시 렌더링
     // $el 이 존재하면 Reconcile 을 수행함
     renderVNodeComponent(instance);
-
-    // 새로운 컴포넌트를 부모의 child 로 등록한다.
-    if (isFunction(options.registerChildComponent)) {
-      options.registerChildComponent(
-        instance.getEl(),
-        instance,
-        instance.id,
-        oldEl // 옛날 element 는 삭제하기
-      );
-    }
   },
 
   makeComponentForFragment(oldInstance, newVNode, options) {
@@ -275,16 +283,6 @@ const patch = {
     // component 를 다시 렌더링
     // $el 이 존재하면 Reconcile 을 수행함
     renderVNodeComponent(instance);
-
-    // 새로운 컴포넌트를 부모의 child 로 등록한다.
-    if (isFunction(options.registerChildComponent)) {
-      options.registerChildComponent(
-        instance.getEl(),
-        instance,
-        instance.id,
-        oldInstance?.getEl() // 옛날 element 는 삭제하기
-      );
-    }
   },
 
   replaceWith(oldEl, newVNode, options) {
@@ -292,14 +290,20 @@ const patch = {
       return;
     }
 
-    const isRootElement = options.context.getEl() === oldEl;
-    const objectElement = DomRenderer(newVNode, options).el;
+    const newComponentInstance = DomRenderer(newVNode, {
+      ...options,
+      container: oldEl.parentElement,
+    });
 
-    if (isRootElement) {
-      options.context.$el.el = objectElement;
-    }
+    const objectElement = newComponentInstance.getEl();
+
     oldEl.replaceWith(objectElement);
-    newVNode.runMounted();
+
+    // 기존의 el 을 삭제한다.
+    commitUnmountFromElement(oldEl);
+
+    // 새로운 el 을 마운트한다.
+    commitMountFromElement(objectElement);
   },
 
   replaceText(oldEl, newVNode) {
@@ -324,27 +328,38 @@ const patch = {
   },
 
   addNewVNode(parentElement, oldEl, newVNode, options) {
-    const newEl = DomRenderer(newVNode, options).el;
+    const componentInstance = DomRenderer(newVNode, options);
+    const newEl = componentInstance.el;
 
     if (newEl) {
       parentElement.insertBefore(newEl, oldEl);
       parentElement.removeChild(oldEl);
-      console.group("add new vnode", newEl);
-      newVNode.runMounted();
-      console.groupEnd();
+
+      // unmounted
+      commitUnmountFromElement(oldEl);
+
+      // mounted
+      commitMount(componentInstance);
     }
   },
 
-  appendChild(el, newVNode, options, isFragmentItem = false) {
+  appendChild(containerElement, newVNode, options, isFragmentItem = false) {
     const newVNodeInstance = DomRenderer(newVNode, options);
 
-    if (newVNodeInstance?.el) {
+    const el = newVNodeInstance.getEl();
+
+    if (containerElement) {
       if (isFragmentItem) {
-        patch.updateFragmentItem(newVNodeInstance.el, isFragmentItem);
+        patch.updateFragmentItem(el, isFragmentItem);
       }
 
-      el.appendChild(newVNodeInstance.el);
-      newVNode.runMounted();
+      if (el) {
+        containerElement.appendChild(el);
+        commitMountFromElement(el);
+      } else {
+        // el 이 존재하지 않더라도 mounted 는 실행해야한다.
+        commitMount(newVNodeInstance.instance);
+      }
     }
   },
 
@@ -427,14 +442,17 @@ const check = {
    * 5. true 는 컴포넌트를 새로 생성한다.
    * 6. false 면 reload 만 수행한다.
    * 7. reload 는 컴포넌트의 props 만 비교해서 다시 렌더링한다.
+   *
+   * 이곳의 알고리즘은 아직 실험적이며 계속해서 개선될 예정이다.
    */
   checkRefClass(oldEl, newVNode, options) {
     // isComponentChanged 가 있으면 새로고침한다.
-    if (newVNode.isComponentChanged) {
-      // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
-      patch.makeComponent(oldEl, newVNode, options);
-      return;
-    }
+    // if (newVNode.isComponentChanged) {
+
+    //   // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
+    //   patch.makeComponent(oldEl, newVNode, options);
+    //   return;
+    // }
 
     // 새로운 newVNode 가 SELF_COMPONENT_INSTANCE 가 없으면
     // root 가 아니라 children 에서 생성되기 때문에
@@ -442,29 +460,65 @@ const check = {
     // 즉, self_component_instance 가 없으면  상위 컴포넌트의 children 으로 존재하기 때문에
     // hierarchy 기준으로 검색한다.
     if (!newVNode[SELF_COMPONENT_INSTANCE]) {
-      // context 기준으로 oldEl 가 컴포넌트의 인스턴스를 가지고 있는지를 찾고
-      let targetInstance = options.context.getTargetInstance(oldEl);
+      // oldEl 의 컴포넌트 인스턴스를 구한다.
+      const family = oldEl[COMPONENT_INSTANCE]?.getFamily();
 
-      if (targetInstance) {
-        // 컴포넌트의 instance 가  newVNode.Component 와 같은지를 체크한다.
-        if (targetInstance.isInstanceOf(newVNode.Component)) {
-          if (newVNode.isComponentChanged) {
-            patch.makeComponentInstance(targetInstance, newVNode, options);
-            return;
-          }
-
-          // 만약에 같으면 props 를 업데이트 한다.
-          // patch.reloadComponent(oldEl, newVNode, options);
-          patch.reloadComponentInstance(targetInstance, newVNode, options);
-          return;
-        } else {
-          // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
-          patch.makeComponent(oldEl, newVNode, options);
-          return;
-        }
+      // 기존 컴포넌트 instance 와 다르면 dom 을 교체한다.
+      // dom의 family 를 구해서 첫번째 컴포넌트 객체와 다르면 교체한다.
+      if (
+        family &&
+        family?.family?.length &&
+        family?.family[0]?.isInstanceOf(newVNode.Component) === false
+      ) {
+        patch.replaceWith(oldEl, newVNode, options);
+        return;
       }
 
-      patch.reloadComponent(oldEl, newVNode, options);
+      // family 가 존재하고  첫번째 컴포넌트 객체와 같으면 reload 한다.
+      if (
+        family &&
+        family?.family?.length &&
+        family?.family[0]?.isInstanceOf(newVNode.Component)
+      ) {
+        // 해당 컴포넌트를 알고 있으면 그 컴포넌트를 바로 reload 한다.
+        patch.reloadComponentInstance(family?.family[0], newVNode, options);
+        return;
+      }
+
+      /*----------------------------------------------*/
+
+      // // context 기준으로 oldEl 가 컴포넌트의 인스턴스를 가지고 있는지를 찾고
+      // let targetInstance = options.context.getTargetInstance(oldEl);
+
+      // if (targetInstance) {
+      //   // 컴포넌트의 instance 가  newVNode.Component 와 같은지를 체크한다.
+      //   if (targetInstance.isInstanceOf(newVNode.Component)) {
+      //     if (newVNode.isComponentChanged) {
+      //       patch.makeComponentInstance(targetInstance, newVNode, options);
+      //       return;
+      //     }
+
+      //     // 만약에 같으면 props 를 업데이트 한다.
+      //     // patch.reloadComponent(oldEl, newVNode, options);
+      //     patch.reloadComponentInstance(targetInstance, newVNode, options);
+      //     return;
+      //   } else {
+      //     // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
+      //     patch.makeComponent(oldEl, newVNode, options);
+      //     return;
+      //   }
+      // }
+
+      // newVNode의 SELF_COMPONENT_INSTANCE 가 없는 경우는 처음 생성되는 경우이다.
+      // 이 때 oldEl 의 컴포넌트가 newVNode 의 컴포넌트와 같은지를 체크한다.
+      if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component)) {
+        // 만약에 같으면 props 를 업데이트 한다.
+        patch.reloadComponent(oldEl, newVNode, options);
+      } else {
+        // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
+        patch.replaceWith(oldEl, newVNode, options);
+      }
+
       return;
     }
 
@@ -495,39 +549,6 @@ const check = {
       patch.makeComponentInstance(targetFamilyInstance, newVNode, options);
       return;
     }
-
-    // // children 에 root 가 있는지 체크
-    // let targetInstance = options.context.getTargetInstance(oldEl);
-
-    // if (targetInstance) {
-    //   if (targetInstance.isInstanceOf(newVNode.Component)) {
-    //     // 컴포넌트가 바뀌었을 경우 다시 그린다.
-    //     if (newVNode.isComponentChanged) {
-    //       patch.makeComponent(oldEl, newVNode, options);
-    //       return;
-    //     }
-
-    //     // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
-    //     if (targetInstance.isForceRender(props)) {
-    //       patch.makeComponent(oldEl, newVNode, options);
-    //       return;
-    //     }
-
-    //     // 이미 생성된 instance 이므로 newVnode 로 컴포넌트 인스턴스를 다시 생성하지 않는다.
-    //     // props 를 업데이트 한다.
-    //     patch.reloadComponentInstance(targetInstance, newVNode, options);
-    //     return;
-    //   } else {
-    //     // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
-    //     patch.makeComponent(oldEl, newVNode, options);
-    //     return;
-    //   }
-    // }
-
-    // console.groupEnd();
-    // // 다른 예외 사항이 있으면 여기에 기록하기
-    // patch.makeComponent(oldEl, newVNode, options);
-    // return;
   },
 };
 
@@ -570,7 +591,9 @@ const updateProps = (
         oldValue = oldProps[key];
       }
 
-      patch.updateProp(node, key, newValue, oldValue);
+      if (newValue !== oldValue) {
+        patch.updateProp(node, key, newValue, oldValue);
+      }
     });
 
   // oldProps 기준으로 newProps 에 키가 없으면 삭제한다.
@@ -606,36 +629,6 @@ const updateProps = (
  */
 function getProps(oldEl) {
   return oldEl[ELEMENT_PROPS] || {};
-
-  // console.log(oldEl, oldEl[ELEMENT_PROPS], attributes, newProps);
-  // var results = {};
-  // const len = attributes.length;
-
-  // // 일단 attribute 에는 없음
-  // // properties 에 있는지 봐야함.
-  // for (let i = 0; i < len; i++) {
-  //   const t = attributes[i];
-  //   const name = t.name;
-  //   const value = t.value;
-
-  //   results[name] = value;
-  // }
-
-  // // DESC: newProps 를 기준으로 oldEl 에서 없는 요소를 추가한다.
-  // // DESC: property 로 입력 되는 이벤트 들만 처리 하는 것도 의미가 있을 듯 합니다.
-  // // DESC: onXXX 로 시작되는것은 property 로 정의되기 때문에 여기서 처리합니다.
-  // const newPropKeys = Object.keys(newProps);
-
-  // for (let i = 0; i < newPropKeys.length; i++) {
-  //   const key = newPropKeys[i];
-  //   const checkKey = key.startsWith(PREFIX_EVENT) ? key.toLowerCase() : key;
-
-  //   if (!results[checkKey]) {
-  //     results[key] = oldEl[checkKey];
-  //   }
-  // }
-
-  // return results;
 }
 
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
@@ -685,20 +678,16 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
   const newVNodeProps = newVNode.memoizedProps;
 
   // update properties
-  updateProps(
-    oldEl,
-    newVNodeProps,
-    getProps(oldEl, oldEl.attributes, newVNodeProps),
-    options,
-    newVNode
-  ); // added
+  // el 에는 렌더링 될 때 사용한 ELEMENT_PROPS 를 가지고 있다.
+  // dom 요소로 비교하지 않고 ELEMENT_PROPS 를 사용해서 새로운 VNode의 props 와 비교한다.
+  updateProps(oldEl, newVNodeProps, oldEl[ELEMENT_PROPS], options, newVNode); // added
 
   updateChildren(oldEl, newVNode, options);
 }
 
 export function updateChildren(parentElement, newVNode, options = {}) {
   // check children count
-  if (!parentElement?.hasChildNodes() && !newVNode.children.length) {
+  if (!parentElement?.hasChildNodes() && !newVNode.children?.length) {
     return;
   }
   var oldChildren = children(parentElement);
@@ -737,21 +726,11 @@ export function updateChildren(parentElement, newVNode, options = {}) {
 
   // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
   if (oldChildren.length === 0 && newChildren.length > 0) {
-    var fragment = document.createDocumentFragment();
     newChildren.forEach((it) => {
-      const retElement = DomRenderer(it, options).el;
-
-      if (retElement) {
-        fragment.appendChild(retElement);
-      }
-    });
-    // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
-    // B 에서 모든 자식을 A 에 추가한다.
-    parentElement.appendChild(fragment);
-    newChildren.forEach((it) => {
-      if (isFunction(it.runMounted)) {
-        it.runMounted();
-      }
+      DomRenderer(it, {
+        ...options,
+        container: parentElement,
+      });
     });
   } else if (oldChildren.length > 0 && newChildren.length === 0) {
     // noop
@@ -843,22 +822,14 @@ export function updateChildrenWithFragment(
 
   // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
   if (oldChildren.length === 0 && newChildren.length > 0) {
-    var fragment = document.createDocumentFragment();
     newChildren.forEach((it) => {
-      const retElement = DomRenderer(it, options).el;
-
-      if (retElement) {
-        fragment.appendChild(retElement);
-      }
+      DomRenderer(it, {
+        ...options,
+        container: parentElement,
+      });
     });
     // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
     // B 에서 모든 자식을 A 에 추가한다.
-    parentElement.appendChild(fragment);
-    newChildren.forEach((it) => {
-      if (isFunction(it.runMounted)) {
-        it.runMounted();
-      }
-    });
   } else if (oldChildren.length > 0 && newChildren.length === 0) {
     // noop
     parentElement.textContent = "";
@@ -913,21 +884,11 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     patch.removeChild(parentElement, oldEl, options);
     return;
   }
-  // pass 옵션이 없는 경우
-  if (!newVNode?.props?.pass) {
-    if (check.hasPassed(newVNode)) {
-      return;
-    }
+  const isChanged = check.changed(newVNode, oldEl);
 
-    const isChanged = check.changed(newVNode, oldEl);
-
-    if (isChanged || check.isVNodeComponent(newVNode)) {
-      updateChangedElement(parentElement, oldEl, newVNode, options);
-      return;
-    }
-  } else {
-    // newVNode.props.pass === true
-    // noop
+  if (isChanged || check.isVNodeComponent(newVNode)) {
+    updateChangedElement(parentElement, oldEl, newVNode, options);
+    return;
   }
 
   const newNodeType = newVNode.type;

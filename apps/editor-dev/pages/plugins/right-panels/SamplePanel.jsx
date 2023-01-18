@@ -35,7 +35,7 @@ export function SamplePanel() {
             {
               type: "label",
               label: (value) => {
-                return value?.active ? "active" : "inactive"
+                return value?.active ? "active 2" : "inactive 2"
               },
             },
             {

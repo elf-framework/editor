@@ -118,7 +118,10 @@ function makeElement(vNodeInstance, options) {
   el[ELEMENT_PROPS] = props;
   el[ELEMENT_INSTANCE] = vNodeInstance;
   vNodeInstance.setEl(el);
-  makeChildren(vNodeInstance, options);
+  makeChildren(vNodeInstance, {
+    ...options,
+    container: el, // container 를 사전에 지정해서 실행한다.
+  });
 
   return vNodeInstance;
 }

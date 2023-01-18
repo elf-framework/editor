@@ -79,16 +79,24 @@ export class BaseEditor extends UIElement {
 
     useEffect(async () => {
       console.log("editor useEffect", pluginActivatedRef.current);
-      if (pluginActivatedRef.current) {
-        return;
-      }
+
+      /**
+       * hmr 로 인해서 컴포넌트의 템플릿을 새로 생성이 되면
+       * 기존의 인스턴스에 저장해놓았던 this.$editor 가 사라지기 때문에
+       * useRef 를 사용해서 다시 복구하는 형태로 진행한다.
+       */
 
       if (!this.$editor) {
         this.$editor = editorRef.current;
       }
 
+      // store를 재설정한다.
       this.$store.set(KEY_EDITOR, this.$editor);
       this.$store.set(KEY_EDITOR_OPTION, this.props);
+
+      if (pluginActivatedRef.current) {
+        return;
+      }
 
       // start to load plugins
       this.$editor.updateConfigs(configs);
@@ -99,9 +107,15 @@ export class BaseEditor extends UIElement {
       // send message
       // this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
       pluginActivatedRef.current = true;
+      console.warn("editor.plugin.activated", pluginActivatedRef.current);
       useRender(this);
     }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
 
+    console.log(
+      "editor render",
+      pluginActivatedRef.current,
+      editorRef.current.getUIList("renderView")
+    );
     return (
       <div class={localClass}>
         {pluginActivatedRef.current
@@ -143,6 +157,7 @@ export class BaseEditor extends UIElement {
   }
 
   [RESIZE("window") + DEBOUNCE(10)]() {
+    console.log(this.$editor, this);
     this.$editor.emit("resize.window");
   }
 }

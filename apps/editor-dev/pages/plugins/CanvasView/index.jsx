@@ -1,25 +1,40 @@
-import { useComponentRender, useEffect, useRef } from "@elf-framework/sapa";
+import {
+  useComponentRender,
+  useEffect,
+  useRef,
+  useState,
+} from "@elf-framework/sapa";
 
 export function Canvas3D() {
   const canvasRef = useRef();
-  useComponentRender("resize.window");
+  const lastCanvasWidth = useRef(0);
+  const [counter, setCounter] = useState(0);
+  useComponentRender("resize.window", {
+    debounce: 100,
+    checkFunction: () => {
+      setCounter((v) => v + 1);
+      return true;
+    },
+  });
 
   useEffect(() => {
     if (!canvasRef.current) return;
 
     const ctx = canvasRef.current.getContext("2d");
-    const rect = canvasRef.current.getBoundingClientRect();
+    const rectWidth = canvasRef.current.clientWidth;
+    const rectHeight = canvasRef.current.clientHeight;
 
-    const width = +canvasRef.current.getAttribute("width");
+    const width = canvasRef.current.clientWidth;
 
-    if (!width) {
+    if (lastCanvasWidth.current != width) {
       const devicePixelRatio = window.devicePixelRatio || 1;
       const backingStoreRatio = ctx.backingStorePixelRatio || 1;
       const ratio = devicePixelRatio / backingStoreRatio;
 
-      canvasRef.current.setAttribute("width", rect.width * ratio + "px");
-      canvasRef.current.setAttribute("height", rect.height * ratio + "px");
+      canvasRef.current.width = rectWidth * ratio;
+      canvasRef.current.height = rectHeight * ratio;
 
+      lastCanvasWidth.current = width;
       // ctx.scale(ratio, ratio);
     }
 
@@ -44,9 +59,10 @@ export function Canvas3D() {
 
     render();
     return () => {
+      console.log("cancelAnimationFrame");
       cancelAnimationFrame(requestId);
     };
-  }, []);
+  }, [lastCanvasWidth, counter]);
 
   return (
     <canvas

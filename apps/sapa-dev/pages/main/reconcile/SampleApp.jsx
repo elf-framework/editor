@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "@elf-framework/sapa";
+import { useEffect, useRef, useRootContext } from "@elf-framework/sapa";
 
 import { Test } from "./Test";
 
@@ -11,6 +11,7 @@ export function SampleApp() {
       ref.current
     );
   }, [ref]);
+  const app = useRootContext("app");
 
-  return <Test ref={ref} a={1} b={2} c={3} />;
+  return <Test ref={ref} a={1} b={2} c={3} app={app} />;
 }

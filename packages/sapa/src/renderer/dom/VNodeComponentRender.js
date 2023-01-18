@@ -192,9 +192,16 @@ async function runningUpdate(componentInstance, template) {
  *
  */
 async function runningMount(componentInstance, template, $container) {
+  // template 이 없는 경우 componentInstance 를 자동으로 mount 한다.
+  if (!template) {
+    componentInstance?.runMounted();
+    await componentInstance.runHandlers("initialize");
+    return;
+  }
   template[SELF_COMPONENT_INSTANCE] = componentInstance;
   const newDomElement = DomRenderer(template, {
     ...componentInstance.getVNodeOptions(),
+    container: $container,
   });
 
   if (!template.Component) {
@@ -239,8 +246,6 @@ async function runningMount(componentInstance, template, $container) {
 
   // 최초 렌더링 될 때 한번만 실행하는걸로 하자.
   await componentInstance.runHandlers("initialize");
-
-  console.groupEnd();
 }
 
 /**
@@ -271,8 +276,8 @@ export async function renderVNodeComponent(
   return componentInstance;
 }
 
-function renderComponentForVNode(vNode) {
-  renderVNodeComponent(vNode.instance);
+function renderComponentForVNode(vNode, options) {
+  renderVNodeComponent(vNode.instance, options.container);
 }
 
 function makeElement(vNode, options = {}) {
@@ -280,7 +285,7 @@ function makeElement(vNode, options = {}) {
   try {
     // 객체를 생성 후에는 렌더링을 한다.
     vNode.instance.setParentElement(vNode.parentElement);
-    renderComponentForVNode(vNode);
+    renderComponentForVNode(vNode, options);
   } catch (e) {
     console.error(e);
   }

@@ -10,18 +10,18 @@ import { uuidShort } from "./functions/uuid";
  * @property {Editor} $editor
  */
 export class UIElement extends EventMachine {
-  #storeInstance;
+  storeInstance;
 
   constructor(opt, props = {}, state = {}) {
     super(opt, props, state);
 
     // messaging store 설정
     if (props.store) {
-      this.#storeInstance = props.store;
+      this.storeInstance = props.store;
     } else {
       // 부모에 store 가 없을 경우만 자체 생성한다.
       if (!this.parent.$store) {
-        this.#storeInstance = new BaseStore();
+        this.storeInstance = new BaseStore();
       }
     }
 
@@ -42,7 +42,7 @@ export class UIElement extends EventMachine {
   }
 
   setStore(storeInstance) {
-    this.#storeInstance = storeInstance;
+    this.storeInstance = storeInstance;
   }
 
   /**
@@ -51,7 +51,7 @@ export class UIElement extends EventMachine {
    * @override
    */
   get $store() {
-    return this.#storeInstance || this.parent.$store;
+    return this.storeInstance || this.parent.$store;
   }
 
   /**

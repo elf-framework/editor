@@ -21,16 +21,16 @@ export function insertElement(
   // children 은 fragment 로 만들어서 추가한다.
   if (childVNode instanceof VNode || childVNode?.makeElement) {
     childVNode.setParentElement(parentElement);
-    let instance = DomRenderer(childVNode, options);
+    let componentInstance = DomRenderer(childVNode, options);
 
-    const el = instance?.getEl();
+    const el = componentInstance?.getEl();
 
     if (el) {
       el[IS_FRAGMENT_ITEM] = isFragmentItem;
 
       fragment.appendChild(el);
       // el 을 추가한 후에 commitMount 를 실행한다.
-      commitMountFromElement(el);
+      commitMount(el[COMPONENT_INSTANCE]);
     }
   } else if (isArray(childVNode)) {
     childVNode.forEach((it) => {
@@ -59,15 +59,20 @@ export function insertElement(
  * children 은 항상 fragment 로 생성해서 추가한다.
  */
 export function makeChildren(vnode, options, isFragmentItem = false) {
-  const parentElement = vnode.el;
   const children = vnode.children;
   if (children && children.length) {
     const fragment = document.createDocumentFragment();
 
-    insertElement(children, fragment, parentElement, options, isFragmentItem);
+    insertElement(
+      children,
+      fragment,
+      options.container,
+      options,
+      isFragmentItem
+    );
 
     // fragment 적용
-    parentElement.appendChild(fragment);
+    options.container.appendChild(fragment);
   }
 }
 
@@ -83,15 +88,67 @@ export function commitMountFromElement(el) {
  * componentInstance 기준으로 runMounted 실행한다.
  */
 export function commitMount(componentInstance) {
-  if (componentInstance) {
+  if (componentInstance && componentInstance.getFamily) {
+    window.requestIdleCallback(() => {
+      const family = componentInstance.getFamily();
+
+      let len = family.family.length;
+
+      while (len--) {
+        const component = family.family[len];
+
+        component?.runMounted();
+      }
+    });
+  }
+}
+
+/**
+ * el 에 설정된 COMPONENT_INSTANCE 기준으로 family 그룹을 구해서
+ * 마지막 인스턴스부터 차례로 runMounted 를 실행한다.
+ */
+export function commitUnmountFromElement(el) {
+  commitUnmount(el[COMPONENT_INSTANCE]);
+}
+
+/**
+ * DomTree 에서 삭제될 때 실행한다.
+ */
+export function commitUnmount(componentInstance) {
+  if (componentInstance && componentInstance.getFamily) {
     const family = componentInstance.getFamily();
 
     let len = family.family.length;
+    let i = 0;
 
-    while (len--) {
+    while (i < len) {
       const component = family.family[len];
 
-      component?.runMounted();
+      component?.runUnmounted();
+      i++;
     }
+  }
+}
+
+export function commitUpdatedFromElement(el) {
+  commitUpdated(el[COMPONENT_INSTANCE]);
+}
+
+/**
+ * componentInstance 기준으로 runMounted 실행한다.
+ */
+export function commitUpdated(componentInstance) {
+  if (componentInstance) {
+    window.requestIdleCallback(() => {
+      const family = componentInstance.getFamily();
+
+      let len = family.family.length;
+
+      while (len--) {
+        const component = family.family[len];
+
+        component?.runUpdated();
+      }
+    });
   }
 }

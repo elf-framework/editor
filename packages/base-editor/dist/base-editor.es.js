@@ -954,19 +954,25 @@ class BaseEditor extends UIElement {
     }, [className, fullScreen]);
     useEffect(async () => {
       console.log("editor useEffect", pluginActivatedRef.current);
-      if (pluginActivatedRef.current) {
-        return;
-      }
       if (!this.$editor) {
         this.$editor = editorRef.current;
       }
       this.$store.set(KEY_EDITOR, this.$editor);
       this.$store.set(KEY_EDITOR_OPTION, this.props);
+      if (pluginActivatedRef.current) {
+        return;
+      }
       this.$editor.updateConfigs(configs);
       await this.$editor.activate();
       pluginActivatedRef.current = true;
+      console.warn("editor.plugin.activated", pluginActivatedRef.current);
       useRender(this);
     }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
+    console.log(
+      "editor render",
+      pluginActivatedRef.current,
+      editorRef.current.getUIList("renderView")
+    );
     return /* @__PURE__ */ createElementJsx("div", {
       class: localClass
     }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);
@@ -996,6 +1002,7 @@ class BaseEditor extends UIElement {
     this.$editor.commands.execute("keymap.keyup", e);
   }
   [RESIZE("window") + DEBOUNCE(10)]() {
+    console.log(this.$editor, this);
     this.$editor.emit("resize.window");
   }
 }

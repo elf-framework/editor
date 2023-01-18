@@ -263,7 +263,6 @@ export class EventMachine extends HookMachine {
    * @returns
    */
   getEl() {
-    // console.log(this, this.$el?.el);
     if (!this.$el?.el) {
       return this[ALTERNATE_TEMPLATE]?.instance?.getEl();
     }
@@ -273,6 +272,11 @@ export class EventMachine extends HookMachine {
 
   getFamily() {
     const el = this.getEl();
+
+    if (!el) {
+      return { family: [this[VNODE_INSTANCE]] };
+    }
+
     let lastComponent = el[COMPONENT_INSTANCE];
     const family = [];
 
@@ -281,7 +285,13 @@ export class EventMachine extends HookMachine {
 
       if (!lastComponent[VNODE_INSTANCE]) break;
 
-      lastComponent = lastComponent[VNODE_INSTANCE][SELF_COMPONENT_INSTANCE];
+      const vnodeInstance = lastComponent[VNODE_INSTANCE];
+
+      if (!vnodeInstance[SELF_COMPONENT_INSTANCE]) {
+        break;
+      }
+
+      lastComponent = vnodeInstance[SELF_COMPONENT_INSTANCE];
     }
 
     family.reverse();
@@ -308,24 +318,13 @@ export class EventMachine extends HookMachine {
     }
   };
 
-  registerChildComponent = (el, childComponent, id, oldEl) => {
-    let isEq = false;
-    if (el === oldEl) {
-      isEq = true;
-    }
-
-    el = el || oldEl;
-
-    if (this.#childObjectList[id] && !isEq) {
-      delete this.#childObjectList[id];
-    } else {
-      this.#childObjectList[id] = childComponent;
-    }
-  };
-
   /**
    * root 가 변경되는 경우가 있기 때문에
    * oldEl 는 성능을 위해서 캐슁을 하면 안됨
+   *
+   * children 을 따로 관리하지 않는다.
+   *
+   * @deprecated
    */
   getTargetInstance(oldEl) {
     const targetList = Object.values(this.children)
@@ -361,47 +360,6 @@ export class EventMachine extends HookMachine {
       return child.isInstanceOf(localClass);
     });
   }
-
-  /**
-   *
-   * @deprecated
-   */
-  // checkRefClass = (oldEl, newVNode) => {
-  //   console.log("deprecated");
-  //   const props = newVNode.props;
-
-  //   // isComponentChanged 가 있으면 새로고침한다.
-  //   // if (newVNode.isComponentChanged) {
-  //   //   return true;
-  //   // }
-  //   // children 에 root 가 있는지 체크
-  //   let targetInstance = this.getTargetInstance(oldEl);
-
-  //   console.log(targetInstance?.id, "fjdkslafds");
-
-  //   if (targetInstance) {
-  //     if (targetInstance.isInstanceOf(newVNode.Component)) {
-  //       // 컴포넌트가 바뀌었을 경우 다시 그린다.
-  //       if (newVNode.isComponentChanged) {
-  //         return true;
-  //       }
-
-  //       // 강제로 업데이트 할지 여부를 체크 해서 업데이트 하도록 한다.
-  //       if (targetInstance.isForceRender(props)) {
-  //         return true;
-  //       }
-
-  //       // 이미 생성된 instance 이므로 newVnode 로 컴포넌트 인스턴스를 다시 생성하지 않는다.
-  //       // props 를 업데이트 한다.
-  //       return false;
-  //     } else {
-  //       // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
-  //       return true;
-  //     }
-  //   }
-  //   // 다른 예외 사항이 있으면 여기에 기록하기
-  //   return true;
-  // };
 
   getRootInstance() {
     let rootInstance = this;
@@ -463,8 +421,6 @@ export class EventMachine extends HookMachine {
     return {
       context: this,
       registerRef: this.registerRef,
-      registerChildComponent: this.registerChildComponent,
-      checkRefClass: this.checkRefClass,
     };
   }
 
@@ -591,6 +547,10 @@ export class EventMachine extends HookMachine {
     this.onUpdated();
   }
 
+  runUnmounted() {
+    this.onUnmounted();
+  }
+
   /**
    * 컴포넌트가 mount 된 이후에 실행된다.
    *
@@ -600,10 +560,10 @@ export class EventMachine extends HookMachine {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 mounted 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el?.el);
-    if (instance) {
-      instance.onMounted();
-    }
+    // const instance = this.getTargetInstance(this.$el?.el);
+    // if (instance) {
+    //   instance.onMounted();
+    // }
   }
 
   onUpdated() {
@@ -613,11 +573,11 @@ export class EventMachine extends HookMachine {
     // 자식 vnode 의 updated 를 같이 실행해준다.
     // FIXME: 이 부분은 무한루프에 빠질 수 있으므로 주의해야 한다.
     // FIxME: 자식 노드의 일부분이 부모와 연결 되어 있다.
-    const instance = this.getTargetInstance(this.$el?.el);
+    // const instance = this.getTargetInstance(this.$el?.el);
 
-    if (instance) {
-      instance.onUpdated();
-    }
+    // if (instance) {
+    //   instance.onUpdated();
+    // }
 
     // TODO: 업데이트 할 때 이벤트를 다시 제어해야할까?
   }
@@ -627,11 +587,11 @@ export class EventMachine extends HookMachine {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 destroyed 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el?.el);
+    // const instance = this.getTargetInstance(this.$el?.el);
 
-    if (instance) {
-      instance.onDestroyed();
-    }
+    // if (instance) {
+    //   instance.onDestroyed();
+    // }
   }
 
   onUnmounted() {
@@ -639,11 +599,11 @@ export class EventMachine extends HookMachine {
 
     // root vnode의 element 와 나의 element 가 같을 때는
     // 자식 vnode 의 destroyed 를 같이 실행해준다.
-    const instance = this.getTargetInstance(this.$el?.el);
+    // const instance = this.getTargetInstance(this.$el?.el);
 
-    if (instance) {
-      instance.onUnmounted();
-    }
+    // if (instance) {
+    //   instance.onUnmounted();
+    // }
   }
 
   /**

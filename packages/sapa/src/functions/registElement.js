@@ -30,7 +30,6 @@ export function resetCurrentComponent(component) {
 }
 
 function createRenderCallback(component) {
-  // console.log(RenderCallbackList);
   if (!RenderCallbackList.has(component)) {
     RenderCallbackList.set(component, (containerElement = undefined) => {
       const Renderer = component.renderer;
