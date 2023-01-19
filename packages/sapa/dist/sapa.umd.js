@@ -3634,7 +3634,7 @@ var __privateSet = (obj, member, value, setter) => {
       return vNode == null ? void 0 : vNode.pass;
     },
     checkRefClass(oldEl, newVNode, options) {
-      var _a, _b, _c, _d, _e;
+      var _a, _b, _c, _d, _e, _f;
       if (!newVNode[SELF_COMPONENT_INSTANCE]) {
         const family2 = (_a = oldEl[COMPONENT_INSTANCE]) == null ? void 0 : _a.getFamily();
         if (family2 && ((_b = family2 == null ? void 0 : family2.family) == null ? void 0 : _b.length) && ((_c = family2 == null ? void 0 : family2.family[0]) == null ? void 0 : _c.isInstanceOf(newVNode.Component)) === false) {
@@ -3645,7 +3645,7 @@ var __privateSet = (obj, member, value, setter) => {
           patch.reloadComponentInstance(family2 == null ? void 0 : family2.family[0], newVNode, options);
           return;
         }
-        if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component)) {
+        if ((_f = oldEl[COMPONENT_INSTANCE]) == null ? void 0 : _f.isInstanceOf(newVNode.Component)) {
           patch.reloadComponent(oldEl, newVNode, options);
         } else {
           patch.replaceWith(oldEl, newVNode, options);
@@ -3731,7 +3731,6 @@ var __privateSet = (obj, member, value, setter) => {
     } else {
       patch.replaceWith(oldEl, newVNode, options);
     }
-    return true;
   }
   function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
     const newVNodeProps = newVNode.memoizedProps;
@@ -3861,6 +3860,10 @@ var __privateSet = (obj, member, value, setter) => {
       patch.removeChild(parentElement, oldEl, options);
       return;
     }
+    if (!oldEl[SELF_COMPONENT_INSTANCE] && oldEl[COMPONENT_INSTANCE] && !newVNode[SELF_COMPONENT_INSTANCE]) {
+      patch.replaceWith(oldEl, newVNode, options);
+      return;
+    }
     const isChanged = check.changed(newVNode, oldEl);
     if (isChanged || check.isVNodeComponent(newVNode)) {
       updateChangedElement(parentElement, oldEl, newVNode, options);
@@ -3921,13 +3924,8 @@ var __privateSet = (obj, member, value, setter) => {
     }
     return vnode.children;
   };
-  const DefaultOption = {
-    checkPassed: void 0,
-    keyField: "key",
-    removedElements: []
-  };
   function Reconcile(oldInstance, newVNode, options = {}) {
-    options = Object.assign({}, DefaultOption, options);
+    options = Object.assign({}, options);
     const oldEl = oldInstance.getEl();
     if ((oldEl == null ? void 0 : oldEl.nodeType) && (oldEl == null ? void 0 : oldEl.nodeType) !== 11) {
       updateElement(oldEl.parentElement, oldEl, newVNode, options);

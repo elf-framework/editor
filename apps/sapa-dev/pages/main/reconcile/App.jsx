@@ -1,8 +1,9 @@
 import { start } from "@elf-framework/sapa";
 
-import { SampleApp } from "./SampleApp";
+import { ElementComponentSwitch } from "./ElementComponentSwitch";
+// import { SampleApp } from "./SampleApp";
 
-start(<SampleApp />, {
+start(<ElementComponentSwitch a={1} b={2} />, {
   app: 10,
-  spline: "sample app"
+  spline: "sample app",
 });

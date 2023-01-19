@@ -220,7 +220,6 @@ const patch = {
     // 현재 oldElement 가 객체 참조를 가지고 있지 않는 경우
     // 부모의 객체를 기준으로 작성한다.
     newVNode.setInstance(oldInstance);
-    // console.warn("make component", oldInstance, newVNode);
     newVNode.makeClassInstance(options);
 
     // 기존의 $el 을 대입
@@ -271,7 +270,6 @@ const patch = {
     // 현재 oldElement 가 객체 참조를 가지고 있지 않는 경우
     // 부모의 객체를 기준으로 작성한다.
     newVNode.setInstance(oldInstance);
-    // console.warn("make component for fragment", oldInstance, newVNode);
     newVNode.makeClassInstance(options);
 
     // 기존의 $el 을 대입
@@ -296,7 +294,6 @@ const patch = {
     });
 
     const objectElement = newComponentInstance.getEl();
-
     oldEl.replaceWith(objectElement);
 
     // 기존의 el 을 삭제한다.
@@ -446,14 +443,6 @@ const check = {
    * 이곳의 알고리즘은 아직 실험적이며 계속해서 개선될 예정이다.
    */
   checkRefClass(oldEl, newVNode, options) {
-    // isComponentChanged 가 있으면 새로고침한다.
-    // if (newVNode.isComponentChanged) {
-
-    //   // 컴포넌트가 적용되는 곳은 Reconcile 을 재귀로 실행
-    //   patch.makeComponent(oldEl, newVNode, options);
-    //   return;
-    // }
-
     // 새로운 newVNode 가 SELF_COMPONENT_INSTANCE 가 없으면
     // root 가 아니라 children 에서 생성되기 때문에
     // 해당 element 의 family 컴포넌트중 root 에 해당된다.
@@ -487,31 +476,9 @@ const check = {
 
       /*----------------------------------------------*/
 
-      // // context 기준으로 oldEl 가 컴포넌트의 인스턴스를 가지고 있는지를 찾고
-      // let targetInstance = options.context.getTargetInstance(oldEl);
-
-      // if (targetInstance) {
-      //   // 컴포넌트의 instance 가  newVNode.Component 와 같은지를 체크한다.
-      //   if (targetInstance.isInstanceOf(newVNode.Component)) {
-      //     if (newVNode.isComponentChanged) {
-      //       patch.makeComponentInstance(targetInstance, newVNode, options);
-      //       return;
-      //     }
-
-      //     // 만약에 같으면 props 를 업데이트 한다.
-      //     // patch.reloadComponent(oldEl, newVNode, options);
-      //     patch.reloadComponentInstance(targetInstance, newVNode, options);
-      //     return;
-      //   } else {
-      //     // 객체 인스턴스가 존재하지 않으면 dom 을 교체한다.
-      //     patch.makeComponent(oldEl, newVNode, options);
-      //     return;
-      //   }
-      // }
-
       // newVNode의 SELF_COMPONENT_INSTANCE 가 없는 경우는 처음 생성되는 경우이다.
       // 이 때 oldEl 의 컴포넌트가 newVNode 의 컴포넌트와 같은지를 체크한다.
-      if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component)) {
+      if (oldEl[COMPONENT_INSTANCE]?.isInstanceOf(newVNode.Component)) {
         // 만약에 같으면 props 를 업데이트 한다.
         patch.reloadComponent(oldEl, newVNode, options);
       } else {
@@ -620,17 +587,6 @@ const updateProps = (
   node[ELEMENT_PROPS] = newProps;
 };
 
-/**
- * el[ELEMENT_PROPS] 에서 properties 를 가져온다.
- *
- * 향후 사용하지 않는 방향으로 정리한다.
- *
- * @deprecated
- */
-function getProps(oldEl) {
-  return oldEl[ELEMENT_PROPS] || {};
-}
-
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   // oldEl 가 text, comment 일 때, newVNode 가 text, comment 가 아니면 새로운 노드로 대체한다.
   if (
@@ -669,8 +625,6 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
     // oldEl 의 tag 와 newVNode 의 tag 가 다르면, 새로운 노드로 대체한다.
     patch.replaceWith(oldEl, newVNode, options);
   }
-
-  return true;
 }
 
 function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
@@ -876,16 +830,33 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
   }
 
   parentElement = parentElement || options.context.parentElement;
+
+  // oldEl 이 없고, newVNode 가 있는 경우
   if (!oldEl && newVNode) {
     patch.appendChild(parentElement, newVNode, options);
     return;
   }
+
+  // oldEl 이 있고, newVNode 가 없는 경우
   if (!newVNode && oldEl) {
     patch.removeChild(parentElement, oldEl, options);
     return;
   }
+
+  // oldEl 이 component 인데, newVNode 가 component 가 아닌 경우
+  // oldEl 을 삭제하고, newVNode 를 추가한다.
+  if (
+    !oldEl[SELF_COMPONENT_INSTANCE] &&
+    oldEl[COMPONENT_INSTANCE] &&
+    !newVNode[SELF_COMPONENT_INSTANCE]
+  ) {
+    patch.replaceWith(oldEl, newVNode, options);
+    return;
+  }
+
   const isChanged = check.changed(newVNode, oldEl);
 
+  // oldEl 이 component 인데, newVNode 가 component 인 경우
   if (isChanged || check.isVNodeComponent(newVNode)) {
     updateChangedElement(parentElement, oldEl, newVNode, options);
     return;
@@ -968,12 +939,6 @@ const vNodeChildren = (vnode) => {
   return vnode.children;
 };
 
-const DefaultOption = {
-  checkPassed: undefined,
-  keyField: "key",
-  removedElements: [],
-};
-
 /**
  *
  * Reconcile 를 수행한다.
@@ -989,7 +954,7 @@ const DefaultOption = {
  *
  */
 export function Reconcile(oldInstance, newVNode, options = {}) {
-  options = Object.assign({}, DefaultOption, options);
+  options = Object.assign({}, options);
   const oldEl = oldInstance.getEl();
   if (oldEl?.nodeType && oldEl?.nodeType !== 11) {
     // fragment 가 아니면 비교를 시작한다.
