@@ -29,6 +29,7 @@ const ALTERNATE_TEMPLATE = "__alternateTemplate";
 const SELF_COMPONENT_INSTANCE = "__selfComponentInstance";
 const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
 const ELEMENT_INSTANCE = "__elementInstance";
+const PARENT_VNODE_INSTANCE = "__parentVNodeInstance";
 const ELEMENT_PROPS = "__elementProps";
 const IS_FRAGMENT_ITEM = "__is_fragment_item";
 const CHILD_ITEM_TYPE_FRAGMENT = "fragment";
@@ -2159,36 +2160,73 @@ _state = new WeakMap();
 _cachedMethodList = new WeakMap();
 _functionCache = new WeakMap();
 _childObjectList = new WeakMap();
-function insertElement(childVNode, fragment, parentElement, options = {}, isFragmentItem = false) {
+function insertElement(childVNode, fragment, parentElement, options = {}, isFragmentItem = false, parentVNode) {
   if (childVNode instanceof VNode || (childVNode == null ? void 0 : childVNode.makeElement)) {
     childVNode.setParentElement(parentElement);
+    childVNode[PARENT_VNODE_INSTANCE] = parentVNode;
     let componentInstance = DomRenderer(childVNode, options);
     const el = componentInstance == null ? void 0 : componentInstance.getEl();
     if (el) {
-      el[IS_FRAGMENT_ITEM] = isFragmentItem;
-      fragment.appendChild(el);
-      commitMount(el[COMPONENT_INSTANCE]);
+      if (el instanceof window.DocumentFragment) {
+        const vNodeInstance = componentInstance;
+        const instance = vNodeInstance.instance;
+        const fragmentTemplate = instance[ALTERNATE_TEMPLATE];
+        fragmentTemplate.children.forEach((it) => {
+          if (it) {
+            console.log(it, "it");
+            insertElement(
+              it,
+              fragment,
+              parentElement,
+              options,
+              true,
+              childVNode
+            );
+          }
+        });
+      } else {
+        el[IS_FRAGMENT_ITEM] = isFragmentItem;
+        el[PARENT_VNODE_INSTANCE] = parentVNode;
+        fragment.appendChild(el);
+        commitMount(el[COMPONENT_INSTANCE]);
+      }
     }
   } else if (isArray(childVNode)) {
     childVNode.forEach((it) => {
       if (it) {
-        insertElement(it, fragment, parentElement, options, isFragmentItem);
+        insertElement(
+          it,
+          fragment,
+          parentElement,
+          options,
+          isFragmentItem,
+          parentVNode
+        );
       }
     });
   } else if (isFunction(childVNode)) {
     const result = childVNode();
     if (result) {
-      insertElement(result, fragment, parentElement, options, isFragmentItem);
+      insertElement(
+        result,
+        fragment,
+        parentElement,
+        options,
+        isFragmentItem,
+        parentVNode
+      );
     }
   } else if (isValue(childVNode)) {
+    childVNode[PARENT_VNODE_INSTANCE] = parentVNode;
     childVNode.el = document.createTextNode(childVNode);
     childVNode.el[ELEMENT_PROPS] = { value: childVNode };
+    childVNode.el[ELEMENT_INSTANCE] = childVNode;
     fragment.appendChild(childVNode.el);
   } else
     ;
 }
-function makeChildren(vnode, options, isFragmentItem = false) {
-  const children2 = vnode.children;
+function makeChildren(parentVNode, options, isFragmentItem = false) {
+  const children2 = parentVNode.children;
   if (children2 && children2.length) {
     const fragment = document.createDocumentFragment();
     insertElement(
@@ -2196,7 +2234,8 @@ function makeChildren(vnode, options, isFragmentItem = false) {
       fragment,
       options.container,
       options,
-      isFragmentItem
+      isFragmentItem,
+      parentVNode
     );
     options.container.appendChild(fragment);
   }
@@ -3225,6 +3264,7 @@ function createElement$2(vNodeInstance) {
 }
 function makeElement$3(vNodeInstance, options) {
   const el = createElement$2(vNodeInstance);
+  console.group("makeElement", vNodeInstance, el);
   let props = vNodeInstance.memoizedProps;
   if (props) {
     if (props.ref) {
@@ -3271,6 +3311,7 @@ function makeElement$3(vNodeInstance, options) {
     ...options,
     container: el
   });
+  console.groupEnd();
   return vNodeInstance;
 }
 function VNodeElementRender$1(vNodeInstance, options) {
@@ -3310,14 +3351,14 @@ function makeNativeTextDom(value) {
 function createElement$1(vNodeInstance) {
   return makeNativeTextDom(vNodeInstance.value);
 }
-function makeElement$1(vNodeInstance) {
+function makeElement$1(vNodeInstance, options) {
   const el = createElement$1(vNodeInstance);
   el[ELEMENT_INSTANCE] = vNodeInstance;
   el[ELEMENT_PROPS] = { value: vNodeInstance.value };
   vNodeInstance.setEl(el);
   return vNodeInstance;
 }
-function VNodeTextRender$1(vNodeInstance) {
+function VNodeTextRender$1(vNodeInstance, options) {
   return makeElement$1(vNodeInstance);
 }
 const RendererList$1 = {
@@ -3977,12 +4018,7 @@ function collectFragmentList(element) {
 }
 function flatTemplate(template) {
   let root = [template];
-  root = root.filter(Boolean).map((it) => {
-    if (it.type === VNodeType.FRAGMENT) {
-      return it.children.map(flatTemplate);
-    }
-    return it;
-  }).flat(Infinity);
+  root = root.filter(Boolean).flat(Infinity);
   return root;
 }
 function hasFragmentInList(list) {
@@ -4033,19 +4069,19 @@ async function runningUpdate(componentInstance, template) {
   await componentInstance.runHandlers("update");
   componentInstance[ALTERNATE_TEMPLATE] = template;
 }
-async function runningMount(componentInstance, template, $container) {
+async function runningMount(componentInstance, template, containerElement) {
   if (!template) {
     componentInstance == null ? void 0 : componentInstance.runMounted();
     await componentInstance.runHandlers("initialize");
     return;
   }
   template[SELF_COMPONENT_INSTANCE] = componentInstance;
-  const newDomElement = DomRenderer(template, {
+  const newVNodeInstance = DomRenderer(template, {
     ...componentInstance.getVNodeOptions(),
-    container: $container
+    container: containerElement
   });
   if (!template.Component) {
-    componentInstance.$el = Dom.create(newDomElement.el);
+    componentInstance.$el = Dom.create(newVNodeInstance.el);
     componentInstance.refs.$el = componentInstance.$el;
   }
   componentInstance[ALTERNATE_TEMPLATE] = template;
@@ -4058,13 +4094,18 @@ async function runningMount(componentInstance, template, $container) {
       componentInstance.isFragment = true;
     }
   }
-  if ($container) {
+  if (containerElement) {
+    let $container = containerElement;
     if (!($container instanceof Dom)) {
       $container = Dom.create($container);
     }
     if ($container.hasChild(el) === false) {
-      $container.append(el);
-      commitMountFromElement(el);
+      if (el instanceof window.DocumentFragment) {
+        commitMountFromElement(el);
+      } else {
+        containerElement.appendChild(el);
+        commitMountFromElement(el);
+      }
     }
   }
   await componentInstance.runHandlers("initialize");

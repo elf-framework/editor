@@ -82,16 +82,7 @@ function collectFragmentList(element) {
 function flatTemplate(template) {
   let root = [template];
 
-  root = root
-    .filter(Boolean)
-    .map((it) => {
-      if (it.type === VNodeType.FRAGMENT) {
-        return it.children.map(flatTemplate);
-      }
-
-      return it;
-    })
-    .flat(Infinity);
+  root = root.filter(Boolean).flat(Infinity);
 
   return root;
 }
@@ -191,7 +182,7 @@ async function runningUpdate(componentInstance, template) {
  *
  *
  */
-async function runningMount(componentInstance, template, $container) {
+async function runningMount(componentInstance, template, containerElement) {
   // template 이 없는 경우 componentInstance 를 자동으로 mount 한다.
   if (!template) {
     componentInstance?.runMounted();
@@ -199,13 +190,13 @@ async function runningMount(componentInstance, template, $container) {
     return;
   }
   template[SELF_COMPONENT_INSTANCE] = componentInstance;
-  const newDomElement = DomRenderer(template, {
+  const newVNodeInstance = DomRenderer(template, {
     ...componentInstance.getVNodeOptions(),
-    container: $container,
+    container: containerElement,
   });
 
   if (!template.Component) {
-    componentInstance.$el = Dom.create(newDomElement.el);
+    componentInstance.$el = Dom.create(newVNodeInstance.el);
     componentInstance.refs.$el = componentInstance.$el;
   }
 
@@ -229,18 +220,40 @@ async function runningMount(componentInstance, template, $container) {
     }
   }
 
-  if ($container) {
+  if (containerElement) {
+    let $container = containerElement;
     if (!($container instanceof Dom)) {
       $container = Dom.create($container);
     }
 
     // $container 의 자식이 아닐 때만 추가
     if ($container.hasChild(el) === false) {
-      $container.append(el);
+      if (el instanceof window.DocumentFragment) {
+        /**
+         * fragment 를 추가할 때 문제가 생긴다.
+         * 원인을 생각해보면
+         *
+         * 1. fragment 는 documentFragment 의 instance 로 생성이 되는데
+         * 2. main 컴포넌트 렌더링을 할 때 시점의 차이가 있어서 문제가 생기는 것 같다.
+         * 3. containerElement 에 fragment 를 추가 할 때 순서가 맞지 않다.
+         *
+         * 좀 더 분석이 필요하다.
+         *
+         * 일단은 여기서는 추가하지 않고 makeChildren 할 때 추가하는걸로 바꿨다.
+         *
+         */
 
-      // append 이후에는 항상 commitMount 를 실행한다.
-      // element 기준으로 실행해야할 듯
-      commitMountFromElement(el);
+        // console.group("append fragment", el.children, $container);
+        // $container.append(el);
+        // append 이후에는 항상 commitMount 를 실행한다.
+        // fragment 기준으로 실행해야할 듯
+        commitMountFromElement(el);
+      } else {
+        containerElement.appendChild(el);
+        // append 이후에는 항상 commitMount 를 실행한다.
+        // element 기준으로 실행해야할 듯
+        commitMountFromElement(el);
+      }
     }
   }
 

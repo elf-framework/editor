@@ -19,7 +19,16 @@ export const COMPONENT_ROOT_INSTANCE = "__componentRootInstance";
  * Root 컴포넌트를 속성을 정의한다.
  */
 export const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
+
+/**
+ * element 의 instance 를 캐쉬한다.
+ */
 export const ELEMENT_INSTANCE = "__elementInstance";
+
+/**
+ * element 의 parent vnode instance 를 캐쉬한다.
+ */
+export const PARENT_VNODE_INSTANCE = "__parentVNodeInstance";
 
 /**
  * text, element 에 설정된 props 의 캐쉬를 설정한다.

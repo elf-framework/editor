@@ -20,7 +20,7 @@ function createElement(vNodeInstance) {
   return makeNativeTextDom(vNodeInstance.value);
 }
 
-function makeElement(vNodeInstance) {
+function makeElement(vNodeInstance, options) {
   const el = createElement(vNodeInstance);
   el[ELEMENT_INSTANCE] = vNodeInstance;
   el[ELEMENT_PROPS] = { value: vNodeInstance.value };
@@ -29,6 +29,6 @@ function makeElement(vNodeInstance) {
   return vNodeInstance;
 }
 
-export function VNodeTextRender(vNodeInstance) {
-  return makeElement(vNodeInstance);
+export function VNodeTextRender(vNodeInstance, options) {
+  return makeElement(vNodeInstance, options);
 }
