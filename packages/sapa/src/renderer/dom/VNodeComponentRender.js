@@ -243,7 +243,6 @@ async function runningMount(componentInstance, template, containerElement) {
          *
          */
 
-        // console.group("append fragment", el.children, $container);
         // $container.append(el);
         // append 이후에는 항상 commitMount 를 실행한다.
         // fragment 기준으로 실행해야할 듯

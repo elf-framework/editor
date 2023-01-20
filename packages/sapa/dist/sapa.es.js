@@ -3264,7 +3264,6 @@ function createElement$2(vNodeInstance) {
 }
 function makeElement$3(vNodeInstance, options) {
   const el = createElement$2(vNodeInstance);
-  console.group("makeElement", vNodeInstance, el);
   let props = vNodeInstance.memoizedProps;
   if (props) {
     if (props.ref) {
@@ -3311,7 +3310,6 @@ function makeElement$3(vNodeInstance, options) {
     ...options,
     container: el
   });
-  console.groupEnd();
   return vNodeInstance;
 }
 function VNodeElementRender$1(vNodeInstance, options) {

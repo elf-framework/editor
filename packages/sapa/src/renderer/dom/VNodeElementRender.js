@@ -69,8 +69,6 @@ function createElement(vNodeInstance) {
 function makeElement(vNodeInstance, options) {
   const el = createElement(vNodeInstance);
 
-  console.group("makeElement", vNodeInstance, el);
-
   let props = vNodeInstance.memoizedProps;
   if (props) {
     // props 에 ref 속성이 있으면 context 에 추가한다.
@@ -124,8 +122,6 @@ function makeElement(vNodeInstance, options) {
     ...options,
     container: el, // container 를 사전에 지정해서 실행한다.
   });
-
-  console.groupEnd();
 
   return vNodeInstance;
 }

@@ -3268,7 +3268,6 @@ var __privateSet = (obj, member, value, setter) => {
   }
   function makeElement$3(vNodeInstance, options) {
     const el = createElement$2(vNodeInstance);
-    console.group("makeElement", vNodeInstance, el);
     let props = vNodeInstance.memoizedProps;
     if (props) {
       if (props.ref) {
@@ -3315,7 +3314,6 @@ var __privateSet = (obj, member, value, setter) => {
       ...options,
       container: el
     });
-    console.groupEnd();
     return vNodeInstance;
   }
   function VNodeElementRender$1(vNodeInstance, options) {
