@@ -1,5 +1,5 @@
 import { VNodeType } from "../../constant/vnode";
-import { isArray, isBoolean, isString } from "../../functions/func";
+import { isArray, isString } from "../../functions/func";
 import { createVNodeText } from "../../functions/vnode";
 import { VNodeCommentRender } from "./VNodeCommentRender";
 import { VNodeComponentRender } from "./VNodeComponentRender";
@@ -16,9 +16,6 @@ const RendererList = {
 };
 
 function VNodeRender(vNodeInstance, options) {
-  if (isBoolean(options)) {
-    throw new Error("options is boolean");
-  }
   const CurrentRenderer = RendererList[vNodeInstance.type];
 
   if (CurrentRenderer) {

@@ -39,6 +39,7 @@ export class ToolsMenuItem extends ToolsItem {
       items,
       class: className,
       hoverable = true,
+      variant = "light",
     } = this.props;
 
     const hasItems = items.length > 0;
@@ -91,6 +92,7 @@ export class ToolsMenuItem extends ToolsItem {
               items={items}
               direction={direction}
               rootClose={this.state.rootClose}
+              variant={variant}
               style={{
                 ...(menuStyle || {}),
                 top: "100%",

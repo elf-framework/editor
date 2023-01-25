@@ -579,6 +579,7 @@ declare module "@elf-framework/ui" {
     opened?: boolean;
     trigger: "click" | "hover";
     direction?: MenuDirectionType;
+    variant?: "light" | "dark";
     onOpen?: (event: PointerEvent, item: ToolsMenuItemType) => void;
     onClick?: (event: PointerEvent, item: ToolsMenuItemType) => void;
   };

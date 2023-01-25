@@ -1830,6 +1830,8 @@ var __privateSet = (obj, member, value, setter) => {
     destroy() {
     }
     onMounted() {
+      if (this.isMounted)
+        return;
       this.isMounted = true;
       this.runHooks();
     }
@@ -2917,7 +2919,8 @@ var __privateSet = (obj, member, value, setter) => {
       return this.type === type;
     }
     hasComponent() {
-      return this.children.length === 1 && this.children[0].type === VNodeType.COMPONENT;
+      var _a, _b;
+      return ((_a = this.children) == null ? void 0 : _a.length) === 1 && ((_b = this.children) == null ? void 0 : _b[0].type) === VNodeType.COMPONENT;
     }
     hasFragment() {
       return this.children.length === 1 && this.children[0].type === VNodeType.FRAGMENT;
@@ -3320,8 +3323,6 @@ var __privateSet = (obj, member, value, setter) => {
     return makeElement$3(vNodeInstance, options);
   }
   function makeElement$2(vNodeInstance, options) {
-    if (vNodeInstance.el)
-      return this;
     const el = document.createDocumentFragment();
     el[ELEMENT_INSTANCE] = vNodeInstance;
     vNodeInstance.setEl(el);
@@ -3371,9 +3372,6 @@ var __privateSet = (obj, member, value, setter) => {
     [VNodeType.COMMENT]: VNodeCommentRender$1
   };
   function VNodeRender$1(vNodeInstance, options) {
-    if (isBoolean(options)) {
-      throw new Error("options is boolean");
-    }
     const CurrentRenderer = RendererList$1[vNodeInstance.type];
     if (CurrentRenderer) {
       return CurrentRenderer(vNodeInstance, options);
@@ -3681,6 +3679,10 @@ var __privateSet = (obj, member, value, setter) => {
           return;
         }
         if (family2 && ((_d = family2 == null ? void 0 : family2.family) == null ? void 0 : _d.length) && ((_e = family2 == null ? void 0 : family2.family[0]) == null ? void 0 : _e.isInstanceOf(newVNode.Component))) {
+          if (newVNode.isComponentChanged) {
+            patch.makeComponentInstance(family2 == null ? void 0 : family2.family[0], newVNode, options);
+            return;
+          }
           patch.reloadComponentInstance(family2 == null ? void 0 : family2.family[0], newVNode, options);
           return;
         }
@@ -3900,8 +3902,17 @@ var __privateSet = (obj, member, value, setter) => {
       return;
     }
     if (!oldEl[SELF_COMPONENT_INSTANCE] && oldEl[COMPONENT_INSTANCE] && !newVNode[SELF_COMPONENT_INSTANCE]) {
-      patch.replaceWith(oldEl, newVNode, options);
-      return;
+      if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component))
+        ;
+      else {
+        const family = oldEl[COMPONENT_INSTANCE].getFamily();
+        if (family.family[0].isInstanceOf(newVNode.Component))
+          ;
+        else {
+          patch.replaceWith(oldEl, newVNode, options);
+          return;
+        }
+      }
     }
     const isChanged = check.changed(newVNode, oldEl);
     if (isChanged || check.isVNodeComponent(newVNode)) {
@@ -3958,7 +3969,8 @@ var __privateSet = (obj, member, value, setter) => {
     return results;
   };
   const vNodeChildren = (vnode) => {
-    if (!vnode.children.length) {
+    var _a;
+    if (!((_a = vnode.children) == null ? void 0 : _a.length)) {
       return [];
     }
     return vnode.children;

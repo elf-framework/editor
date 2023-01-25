@@ -714,6 +714,8 @@ export class HookMachine extends MagicHandler {
    *
    */
   onMounted() {
+    if (this.isMounted) return;
+
     this.isMounted = true;
     this.runHooks();
   }

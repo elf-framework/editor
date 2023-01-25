@@ -1905,7 +1905,8 @@ var __privateMethod = (obj, member, method) => {
         style: style2 = {},
         items,
         class: className,
-        hoverable = true
+        hoverable = true,
+        variant = "light"
       } = this.props;
       const hasItems = items.length > 0;
       const isSelected = selected ? sapa.isFunction(selected) ? selected() : selected : void 0;
@@ -1930,6 +1931,7 @@ var __privateMethod = (obj, member, method) => {
           items,
           direction,
           rootClose: this.state.rootClose,
+          variant,
           style: {
             ...menuStyle || {},
             top: "100%"

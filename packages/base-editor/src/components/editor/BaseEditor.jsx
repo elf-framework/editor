@@ -16,7 +16,7 @@ import {
 
 import { EditorContext } from "../../managers/EditorContext";
 import { Loading } from "../status/Loading";
-import { useEditor } from "./Editor";
+
 const formElements = ["TEXTAREA", "INPUT", "SELECT"];
 const KEY_EDITOR = "editor";
 const KEY_EDITOR_OPTION = "editorOption";
@@ -78,8 +78,6 @@ export class BaseEditor extends UIElement {
     }, [className, fullScreen]);
 
     useEffect(async () => {
-      console.log("editor useEffect", pluginActivatedRef.current);
-
       /**
        * hmr 로 인해서 컴포넌트의 템플릿을 새로 생성이 되면
        * 기존의 인스턴스에 저장해놓았던 this.$editor 가 사라지기 때문에

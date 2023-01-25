@@ -329,8 +329,8 @@ export class VNode {
 
   hasComponent() {
     return (
-      this.children.length === 1 &&
-      this.children[0].type === VNodeType.COMPONENT
+      this.children?.length === 1 &&
+      this.children?.[0].type === VNodeType.COMPONENT
     );
   }
 

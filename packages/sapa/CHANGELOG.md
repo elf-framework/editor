@@ -1,5 +1,12 @@
 # @elf-framework/sapa
 
+## 0.0.236
+
+### Patch Changes
+
+- fixed fragment render
+  fixed component diff algorithm
+
 ## 0.0.231
 
 ### Patch Changes

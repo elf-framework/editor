@@ -1903,7 +1903,8 @@ class ToolsMenuItem extends ToolsItem {
       style: style2 = {},
       items,
       class: className,
-      hoverable = true
+      hoverable = true,
+      variant = "light"
     } = this.props;
     const hasItems = items.length > 0;
     const isSelected = selected ? isFunction(selected) ? selected() : selected : void 0;
@@ -1928,6 +1929,7 @@ class ToolsMenuItem extends ToolsItem {
         items,
         direction,
         rootClose: this.state.rootClose,
+        variant,
         style: {
           ...menuStyle || {},
           top: "100%"

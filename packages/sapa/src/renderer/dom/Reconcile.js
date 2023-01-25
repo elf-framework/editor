@@ -469,6 +469,14 @@ const check = {
         family?.family?.length &&
         family?.family[0]?.isInstanceOf(newVNode.Component)
       ) {
+        // family 의 컴포넌트 이지만
+        // hmr 에 의해서 새로 로드된 컴포넌트는 새로운 컴포넌트로 템플릿을 다시 생성해야한다.
+        // 그로 인한 사이드 이펙트들도 모두 이전해야한다.
+        if (newVNode.isComponentChanged) {
+          patch.makeComponentInstance(family?.family[0], newVNode, options);
+          return;
+        }
+
         // 해당 컴포넌트를 알고 있으면 그 컴포넌트를 바로 reload 한다.
         patch.reloadComponentInstance(family?.family[0], newVNode, options);
         return;
@@ -850,8 +858,20 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     oldEl[COMPONENT_INSTANCE] &&
     !newVNode[SELF_COMPONENT_INSTANCE]
   ) {
-    patch.replaceWith(oldEl, newVNode, options);
-    return;
+    if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component)) {
+      // oldEl 가 component instance 를 가지고 있고
+      // newVNode 가 해당 Component 를 가지고 있으면  하위에서 처리한다.
+      // NOOP
+    } else {
+      const family = oldEl[COMPONENT_INSTANCE].getFamily();
+
+      if (family.family[0].isInstanceOf(newVNode.Component)) {
+        // NOOP
+      } else {
+        patch.replaceWith(oldEl, newVNode, options);
+        return;
+      }
+    }
   }
 
   const isChanged = check.changed(newVNode, oldEl);
@@ -932,7 +952,7 @@ const children = (el) => {
 };
 
 const vNodeChildren = (vnode) => {
-  if (!vnode.children.length) {
+  if (!vnode.children?.length) {
     return [];
   }
 
