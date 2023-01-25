@@ -1,4 +1,6 @@
 import {
+  COMPONENT_INSTANCE,
+  PARENT_VNODE_INSTANCE,
   SELF_COMPONENT_INSTANCE,
   VNODE_INSTANCE,
 } from "../../constant/component";
@@ -30,6 +32,10 @@ const EXPECT_ATTRIBUTES = {
   el: true,
   children: true,
   instance: true,
+  [PARENT_VNODE_INSTANCE]: true,
+  [SELF_COMPONENT_INSTANCE]: true,
+  [VNODE_INSTANCE]: true,
+  [COMPONENT_INSTANCE]: true,
 };
 
 window.instanceList = [];

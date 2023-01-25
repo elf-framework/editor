@@ -294,6 +294,7 @@ const patch = {
     });
 
     const objectElement = newComponentInstance.getEl();
+
     oldEl.replaceWith(objectElement);
 
     // 기존의 el 을 삭제한다.
@@ -381,7 +382,9 @@ const patch = {
       oldEl[COMPONENT_INSTANCE].destroy();
     }
 
-    parentElement.removeChild(oldEl);
+    if (Dom.create(parentElement).hasChild(oldEl)) {
+      parentElement?.removeChild(oldEl);
+    }
   },
 };
 
@@ -858,14 +861,20 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     oldEl[COMPONENT_INSTANCE] &&
     !newVNode[SELF_COMPONENT_INSTANCE]
   ) {
-    if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component)) {
+    if (
+      newVNode.Component &&
+      oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component)
+    ) {
       // oldEl 가 component instance 를 가지고 있고
       // newVNode 가 해당 Component 를 가지고 있으면  하위에서 처리한다.
       // NOOP
     } else {
       const family = oldEl[COMPONENT_INSTANCE].getFamily();
 
-      if (family.family[0].isInstanceOf(newVNode.Component)) {
+      if (
+        newVNode.Component &&
+        family.family[0].isInstanceOf(newVNode.Component)
+      ) {
         // NOOP
       } else {
         patch.replaceWith(oldEl, newVNode, options);

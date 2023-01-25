@@ -2713,7 +2713,11 @@ var __privateSet = (obj, member, value, setter) => {
     parentElement: true,
     el: true,
     children: true,
-    instance: true
+    instance: true,
+    [PARENT_VNODE_INSTANCE]: true,
+    [SELF_COMPONENT_INSTANCE]: true,
+    [VNODE_INSTANCE]: true,
+    [COMPONENT_INSTANCE]: true
   };
   window.instanceList = [];
   function stringifyStyle$1(styleObject) {
@@ -3642,7 +3646,9 @@ var __privateSet = (obj, member, value, setter) => {
       if (oldEl[COMPONENT_INSTANCE]) {
         oldEl[COMPONENT_INSTANCE].destroy();
       }
-      parentElement.removeChild(oldEl);
+      if (Dom.create(parentElement).hasChild(oldEl)) {
+        parentElement == null ? void 0 : parentElement.removeChild(oldEl);
+      }
     }
   };
   const check = {
@@ -3902,11 +3908,11 @@ var __privateSet = (obj, member, value, setter) => {
       return;
     }
     if (!oldEl[SELF_COMPONENT_INSTANCE] && oldEl[COMPONENT_INSTANCE] && !newVNode[SELF_COMPONENT_INSTANCE]) {
-      if (oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component))
+      if (newVNode.Component && oldEl[COMPONENT_INSTANCE].isInstanceOf(newVNode.Component))
         ;
       else {
         const family = oldEl[COMPONENT_INSTANCE].getFamily();
-        if (family.family[0].isInstanceOf(newVNode.Component))
+        if (newVNode.Component && family.family[0].isInstanceOf(newVNode.Component))
           ;
         else {
           patch.replaceWith(oldEl, newVNode, options);
