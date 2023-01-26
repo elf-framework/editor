@@ -22,5 +22,9 @@
       --elf--button-border-radius: 100px;
     }
 
+    &.rect {
+      --elf--button-border-radius: 0px;
+    }
+
   }
 }
