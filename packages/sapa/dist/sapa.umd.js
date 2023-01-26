@@ -2167,6 +2167,7 @@ var __privateSet = (obj, member, value, setter) => {
   _functionCache = new WeakMap();
   _childObjectList = new WeakMap();
   function insertElement(childVNode, fragment, parentElement, options = {}, isFragmentItem = false, parentVNode) {
+    var _a, _b;
     if (childVNode instanceof VNode || (childVNode == null ? void 0 : childVNode.makeElement)) {
       childVNode.setParentElement(parentElement);
       childVNode[PARENT_VNODE_INSTANCE] = parentVNode;
@@ -2175,11 +2176,14 @@ var __privateSet = (obj, member, value, setter) => {
       if (el) {
         if (el instanceof window.DocumentFragment) {
           const vNodeInstance = componentInstance;
-          const instance = vNodeInstance.instance;
-          const fragmentTemplate = instance[ALTERNATE_TEMPLATE];
-          fragmentTemplate.children.forEach((it) => {
+          let fragmentChildren = [];
+          if (vNodeInstance.type === VNodeType.FRAGMENT) {
+            fragmentChildren = vNodeInstance.children;
+          } else if ((_a = vNodeInstance.instance) == null ? void 0 : _a[ALTERNATE_TEMPLATE]) {
+            fragmentChildren = ((_b = vNodeInstance.instance[ALTERNATE_TEMPLATE]) == null ? void 0 : _b.children) || [];
+          }
+          fragmentChildren.forEach((it) => {
             if (it) {
-              console.log(it, "it");
               insertElement(
                 it,
                 fragment,
@@ -3776,6 +3780,9 @@ var __privateSet = (obj, member, value, setter) => {
     if (check.isVNodeComponent(newVNode)) {
       check.checkRefClass(oldEl, newVNode, options);
     } else {
+      if (newVNode.type === VNodeType.FRAGMENT) {
+        console.log(newVNode);
+      }
       patch.replaceWith(oldEl, newVNode, options);
     }
   }
@@ -3979,7 +3986,12 @@ var __privateSet = (obj, member, value, setter) => {
     if (!((_a = vnode.children) == null ? void 0 : _a.length)) {
       return [];
     }
-    return vnode.children;
+    return vnode.children.map((it) => {
+      if (it.type === VNodeType.FRAGMENT) {
+        return vNodeChildren(it);
+      }
+      return it;
+    }).flat(Infinity);
   };
   function Reconcile(oldInstance, newVNode, options = {}) {
     options = Object.assign({}, options);
@@ -4123,7 +4135,7 @@ var __privateSet = (obj, member, value, setter) => {
         if (el instanceof window.DocumentFragment) {
           commitMountFromElement(el);
         } else {
-          containerElement.appendChild(el);
+          $container == null ? void 0 : $container.append(el);
           commitMountFromElement(el);
         }
       }

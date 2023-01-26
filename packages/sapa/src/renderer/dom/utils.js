@@ -6,6 +6,7 @@ import {
   IS_FRAGMENT_ITEM,
   PARENT_VNODE_INSTANCE,
 } from "../../constant/component";
+import { VNodeType } from "../../constant/vnode";
 import { isArray, isFunction, isValue } from "../../functions/func";
 import { VNode } from "../../functions/vnode";
 import { DomRenderer } from "./DomRenderer";
@@ -35,14 +36,19 @@ export function insertElement(
       // 자식 리스트를 가져와서 추가한다.
       if (el instanceof window.DocumentFragment) {
         const vNodeInstance = componentInstance;
-        const instance = vNodeInstance.instance;
 
+        let fragmentChildren = [];
+
+        // 컴포넌트 root 가 fragment 인 경우 템플릿에서 fragment 정보를 가지고 온다.
+        if (vNodeInstance.type === VNodeType.FRAGMENT) {
+          fragmentChildren = vNodeInstance.children;
+        } else if (vNodeInstance.instance?.[ALTERNATE_TEMPLATE]) {
+          fragmentChildren =
+            vNodeInstance.instance[ALTERNATE_TEMPLATE]?.children || [];
+        }
         // get fragment template
-        const fragmentTemplate = instance[ALTERNATE_TEMPLATE];
-
-        fragmentTemplate.children.forEach((it) => {
+        fragmentChildren.forEach((it) => {
           if (it) {
-            console.log(it, "it");
             insertElement(
               it,
               fragment,

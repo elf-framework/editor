@@ -632,6 +632,10 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   if (check.isVNodeComponent(newVNode)) {
     check.checkRefClass(oldEl, newVNode, options);
   } else {
+    if (newVNode.type === VNodeType.FRAGMENT) {
+      console.log(newVNode);
+    }
+
     // newVNode 가 Component 가 아닌 경우
     // oldEl 의 tag 와 newVNode 의 tag 가 다르면, 새로운 노드로 대체한다.
     patch.replaceWith(oldEl, newVNode, options);
@@ -965,7 +969,18 @@ const vNodeChildren = (vnode) => {
     return [];
   }
 
-  return vnode.children;
+  // fragment 타입의 경우 children 을 모두 하나의 배열로 만든다.
+  // 이렇게 하는 이유는 dom 과 비교 하는 경우에 컴포넌트들이 어느 시점에 할당될지 알 수가 없기 때문에
+  // 모든 children 을 기준으로 하나로 인지하도록 한다.
+  // FIXME: 하지만 이것도 내부 컴포넌트에 감싸져있는 fragment 는 알 수가 없다.
+  return vnode.children
+    .map((it) => {
+      if (it.type === VNodeType.FRAGMENT) {
+        return vNodeChildren(it);
+      }
+      return it;
+    })
+    .flat(Infinity);
 };
 
 /**

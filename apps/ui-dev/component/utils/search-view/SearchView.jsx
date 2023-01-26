@@ -65,7 +65,7 @@ export function SearchView({ query = "" }) {
 
         const currentLink = searchList[index];
 
-        setSearchResult(currentLink.content());
+        setSearchResult(currentLink?.content());
 
         setTimeout(() => {
           const selected = document.querySelector(".search-item.selected");
