@@ -91,7 +91,7 @@ export function SearchView({ query = "" }) {
     if (e.key === "ArrowDown") {
       handleSelectItem(Math.min(selectedIndex + 1, searchList.length - 1));
     } else if (e.key === "ArrowUp") {
-      handleSelectItem(Math.max(-1, selectedIndex - 1));
+      handleSelectItem(Math.max(0, selectedIndex - 1));
     } else if (e.key === "Enter") {
       if (currentLink.path) {
         location.assign(currentLink.path);

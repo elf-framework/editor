@@ -31,9 +31,12 @@ export const ELEMENT_INSTANCE = "__elementInstance";
 export const PARENT_VNODE_INSTANCE = "__parentVNodeInstance";
 
 /**
+ * fragment 연결고리 설정
+ */
+export const FRAGMENT_VNODE_INSTANCE = "__fragmentVNodeInstance";
+
+/**
  * text, element 에 설정된 props 의 캐쉬를 설정한다.
  */
 export const ELEMENT_PROPS = "__elementProps";
 export const IS_FRAGMENT_ITEM = "__is_fragment_item";
-export const CHILD_ITEM_TYPE_FRAGMENT = "fragment";
-export const CHILD_ITEM_TYPE_ELEMENT = "element";

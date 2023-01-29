@@ -792,7 +792,7 @@ export class Dom {
   }
 
   hasChild(child) {
-    const childNode = child.el || child;
+    const childNode = child?.el || child;
 
     return this.el === childNode ? false : this.el?.contains(childNode);
   }

@@ -1,9 +1,8 @@
 import {
-  CHILD_ITEM_TYPE_ELEMENT,
-  CHILD_ITEM_TYPE_FRAGMENT,
   COMPONENT_INSTANCE,
   ELEMENT_INSTANCE,
   ELEMENT_PROPS,
+  FRAGMENT_VNODE_INSTANCE,
   IS_FRAGMENT_ITEM,
   SELF_COMPONENT_INSTANCE,
 } from "../../constant/component";
@@ -70,6 +69,7 @@ const expectKeys = {
 
 const TEXT_NODE = 3;
 const COMMENT_NODE = 8;
+const FRAGMENT_NODE = 11;
 const KEY_STYLE = "style";
 const KEY_CLASS = "class";
 const PREFIX_EVENT = "on";
@@ -266,42 +266,25 @@ const patch = {
     renderVNodeComponent(instance);
   },
 
-  makeComponentForFragment(oldInstance, newVNode, options) {
-    // 현재 oldElement 가 객체 참조를 가지고 있지 않는 경우
-    // 부모의 객체를 기준으로 작성한다.
-    newVNode.setInstance(oldInstance);
-    newVNode.makeClassInstance(options);
-
-    // 기존의 $el 을 대입
-    const instance = newVNode.instance;
-    instance.$el = oldInstance.$el;
-
-    instance.setParentElement(oldInstance.parentElement);
-
-    // component 를 다시 렌더링
-    // $el 이 존재하면 Reconcile 을 수행함
-    renderVNodeComponent(instance);
-  },
-
   replaceWith(oldEl, newVNode, options) {
     if (!(newVNode instanceof VNode)) {
       return;
     }
 
-    const newComponentInstance = DomRenderer(newVNode, {
+    const newVNodeInstance = DomRenderer(newVNode, {
       ...options,
       container: oldEl.parentElement,
     });
 
-    const objectElement = newComponentInstance.getEl();
+    const newElement = newVNodeInstance.getEl();
 
-    oldEl.replaceWith(objectElement);
+    oldEl.replaceWith(newElement);
 
     // 기존의 el 을 삭제한다.
     commitUnmountFromElement(oldEl);
 
     // 새로운 el 을 마운트한다.
-    commitMountFromElement(objectElement);
+    commitMountFromElement(newElement);
   },
 
   replaceText(oldEl, newVNode) {
@@ -319,10 +302,21 @@ const patch = {
   },
   replaceComment(oldEl, newVNode) {
     patch.replaceText(oldEl, newVNode);
+
+    newVNode.setEl(oldEl);
+    newVNode.el[ELEMENT_INSTANCE] = newVNode;
+
+    if (newVNode[FRAGMENT_VNODE_INSTANCE]) {
+      this.updateFragmentItem(newVNode, true);
+    }
   },
 
-  updateFragmentItem(el, isFragmentItem = false) {
-    el[IS_FRAGMENT_ITEM] = isFragmentItem;
+  updateFragmentItem(vNodeInstance, isFragmentItem = false) {
+    if (isFragmentItem) {
+      vNodeInstance.el[FRAGMENT_VNODE_INSTANCE] =
+        vNodeInstance[FRAGMENT_VNODE_INSTANCE];
+      vNodeInstance.el[IS_FRAGMENT_ITEM] = isFragmentItem;
+    }
   },
 
   addNewVNode(parentElement, oldEl, newVNode, options) {
@@ -341,14 +335,14 @@ const patch = {
     }
   },
 
-  appendChild(containerElement, newVNode, options, isFragmentItem = false) {
+  appendChild(containerElement, newVNode, options, isFragment = false) {
     const newVNodeInstance = DomRenderer(newVNode, options);
 
     const el = newVNodeInstance.getEl();
 
     if (containerElement) {
-      if (isFragmentItem) {
-        patch.updateFragmentItem(el, isFragmentItem);
+      if (isFragment) {
+        patch.updateFragmentItem(newVNodeInstance, isFragment);
       }
 
       if (el) {
@@ -361,15 +355,15 @@ const patch = {
     }
   },
 
-  insertAfter(beforeElement, newVNode, options, isFragmentItem = false) {
+  insertAfter(beforeElement, newVNode, options, isFragment = false) {
     const newVNodeInstance = DomRenderer(newVNode, options);
 
     if (newVNodeInstance?.el) {
-      if (isFragmentItem) {
-        patch.updateFragmentItem(newVNodeInstance.el, isFragmentItem);
+      if (isFragment) {
+        patch.updateFragmentItem(newVNodeInstance, isFragment);
       }
 
-      beforeElement.parentNode.insertBefore(
+      beforeElement.parentElement?.insertBefore(
         newVNodeInstance.el,
         beforeElement.nextSibling
       );
@@ -398,6 +392,9 @@ const check = {
   isElementNode(node) {
     return node.nodeType === 1;
   },
+  isFragmentNode(node) {
+    return node.nodeType === FRAGMENT_NODE;
+  },
   isVNodeText(node) {
     return node.type === VNodeType.TEXT;
   },
@@ -406,6 +403,9 @@ const check = {
   },
   isVNodeComponent(node) {
     return node.type === VNodeType.COMPONENT;
+  },
+  isVNodeFragment(node) {
+    return node.type === VNodeType.FRAGMENT;
   },
   /**
    * TEXT_NODE/COMMENT_NODE 일 때   둘 다 공백일 때는  비교하지 않는다.
@@ -540,12 +540,6 @@ const updateProps = (
   const newPropsKeys = Object.keys(newProps);
   const oldPropsKeys = Object.keys(oldProps);
 
-  // props 가 없으면 비교하지 않는다.
-  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
-    node[ELEMENT_PROPS] = newProps;
-    return;
-  }
-
   // set child's ref element to parent
   if (newProps.ref) {
     if (newVNode.ref instanceof RefClass) {
@@ -596,6 +590,9 @@ const updateProps = (
   // 변경된 속성으로 업데이트 해서 이전 데이타를 유지해준다.
   node[ELEMENT_INSTANCE] = newVNode;
   node[ELEMENT_PROPS] = newProps;
+
+  // newVNode 의 el 을 node 로 설정한다.
+  newVNode.setEl(node);
 };
 
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
@@ -632,10 +629,6 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   if (check.isVNodeComponent(newVNode)) {
     check.checkRefClass(oldEl, newVNode, options);
   } else {
-    if (newVNode.type === VNodeType.FRAGMENT) {
-      console.log(newVNode);
-    }
-
     // newVNode 가 Component 가 아닌 경우
     // oldEl 의 tag 와 newVNode 의 tag 가 다르면, 새로운 노드로 대체한다.
     patch.replaceWith(oldEl, newVNode, options);
@@ -655,6 +648,7 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
 }
 
 export function updateChildren(parentElement, newVNode, options = {}) {
+  // console.log("updateChildren", parentElement, newVNode, options);
   // check children count
   if (!parentElement?.hasChildNodes() && !newVNode.children?.length) {
     return;
@@ -694,141 +688,86 @@ export function updateChildren(parentElement, newVNode, options = {}) {
   }
 
   // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
-  if (oldChildren.length === 0 && newChildren.length > 0) {
-    newChildren.forEach((it) => {
-      DomRenderer(it, {
-        ...options,
-        container: parentElement,
-      });
-    });
-  } else if (oldChildren.length > 0 && newChildren.length === 0) {
-    // noop
-    parentElement.textContent = "";
-  } else {
-    // // 그 외는 다시 loop를 돌린다.
-    for (var i = 0; i < max; i++) {
-      updateElement(parentElement, oldChildren[i], newChildren[i], options);
-    }
+  for (var i = 0; i < max; i++) {
+    updateElement(
+      parentElement,
+      oldChildren[i],
+      newChildren[i],
+      false,
+      options
+    );
   }
 }
 
-export function updateFragment(
+/**
+ * diff fragment vs fragement
+ */
+export function updateFragmentAll(
   parentElement,
-  oldChild,
-  newChild,
+  oldFragment,
+  newFragment,
   options = {}
 ) {
-  let filteredInstance = null;
+  var oldChildren = fragmentVNodeChildren(oldFragment).map((it) => it.getEl());
+  var newChildren = fragmentVNodeChildren(newFragment);
 
-  let parentClassInstance = parentElement[COMPONENT_INSTANCE];
+  updateElementList(parentElement, oldChildren, newChildren, true, options);
+}
 
-  const children = parentClassInstance?.children || {};
+// reconcile fragment children
+function updateElementList(
+  parentElement,
+  oldChildren,
+  newChildren,
+  isFragment,
+  options = {}
+) {
+  if (isFragment) {
+    const nextOldChildren = [...oldChildren];
+    const nextNewChildren = [...newChildren];
 
-  // newChild 이 Component 인 경우 객체 찾기
-  Object.entries(children).forEach(([, instance]) => {
-    // parent에서 fragment 인 것만필터링 한다.
-    // LastComponent 는 마지막에 로드된 컷을 가리킨다.
-    if (newChild.isType(VNodeType.COMPONENT)) {
-      filteredInstance = instance;
-    }
-  });
+    // start
+    updateElement(parentElement, oldChildren[0], newChildren[0], true, options);
 
-  if (filteredInstance) {
-    // 객체를 다시 그림
-    patch.makeComponentForFragment(
-      filteredInstance,
-      newChild,
-      parentElement[COMPONENT_INSTANCE].getVNodeOptions()
+    // middle
+    nextOldChildren.shift();
+    nextOldChildren.pop();
+
+    nextNewChildren.shift();
+    nextNewChildren.pop();
+
+    // end
+    updateElement(
+      parentElement,
+      oldChildren[oldChildren.length - 1],
+      newChildren[newChildren.length - 1],
+      isFragment,
+      options
     );
-    return;
+
+    oldChildren = nextOldChildren;
+    newChildren = nextNewChildren;
   }
 
-  let lastElement = null;
-  const childMaxCount = Math.max(
-    oldChild.items.length,
-    newChild.children.length
-  );
+  var max = Math.max(oldChildren.length, newChildren.length);
+  // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
+  let lastElement;
+  for (var i = 0; i < max; i++) {
+    const oldChildElement = oldChildren[i];
+    const newChildVNode = newChildren[i];
 
-  for (var childIndex = 0; childIndex < childMaxCount; childIndex++) {
-    const oldChildItem = oldChild.items[childIndex];
-    const newChildItem = newChild.children[childIndex];
+    if (oldChildElement) {
+      lastElement = oldChildElement;
+    }
 
-    if (oldChildItem) lastElement = oldChildItem;
-
-    // fragment 내부에 있는 el 을 newChild.children 과 비교해서 처리한다.
-    // fragment 로 추가된 element 는 경계가 필요하기 때문에
-    // lastElement 로 그 경계를 표시한다.
-    // parentElement 의 appendChild 로 항상 마지막에 추가 하는 개념이 아니라
-    // lastElement 의 다음에 추가하는 개념이다.
-    updateElementWithFragment(
+    updateElement(
       parentElement,
-      oldChildItem,
-      newChildItem,
+      oldChildElement,
+      newChildVNode,
+      isFragment,
       options,
       lastElement
     );
-  }
-}
-
-export function updateChildrenWithFragment(
-  parentElement,
-  oldChildren = [],
-  newVNode,
-  options = {}
-) {
-  // check children count
-  if (!oldChildren.length && !newVNode.children.length) {
-    return;
-  }
-
-  var newChildren = vNodeChildren(newVNode);
-
-  // 개수가 없으면 종료
-  var max = Math.max(oldChildren.length, newChildren.length);
-  if (max === 0) {
-    return;
-  }
-
-  // newChildren 만 존재할 때는 추가하고, oldChildren 만 존재할 때는 삭제한다.
-  if (oldChildren.length === 0 && newChildren.length > 0) {
-    newChildren.forEach((it) => {
-      DomRenderer(it, {
-        ...options,
-        container: parentElement,
-      });
-    });
-    // children B 만 존재할 때는 b 에 있는 것을 모두 A 로 추가한다.
-    // B 에서 모든 자식을 A 에 추가한다.
-  } else if (oldChildren.length > 0 && newChildren.length === 0) {
-    // noop
-    parentElement.textContent = "";
-  } else {
-    // 그 외는 다시 loop를 돌린다.
-
-    for (var i = 0; i < max; i++) {
-      const oldChild = oldChildren[i];
-      const newChild = newChildren[i];
-
-      if (!oldChild && newChild) {
-        // 추가 되는 경우
-        // fragment 이외의 element 는 기존과 동일하게 updateElement 로 처리한다.
-        updateElement(parentElement, oldChild, newChild, options);
-      } else if (oldChild && !newChild) {
-        // 삭제 되는 경우
-        // fragment 이외의 element 는 기존과 동일하게 updateElement 로 처리한다.
-        updateElement(parentElement, oldChild.items, newChild, options);
-      } else {
-        // 변경 되는 경우
-        // oldChild.type 이 fragment 인 경우는
-        // fragment 내부에 있는 el 을 newChild.children 과 비교해서 처리한다.
-        if (oldChild.type === CHILD_ITEM_TYPE_FRAGMENT) {
-          updateFragment(parentElement, oldChild, newChild, options);
-        } else if (oldChild.type === CHILD_ITEM_TYPE_ELEMENT) {
-          // fragment 이외의 element 는 기존과 동일하게 updateElement 로 처리한다.
-          updateElement(parentElement, oldChild.items, newChild, options);
-        }
-      }
-    }
   }
 }
 
@@ -839,7 +778,14 @@ export function updateChildrenWithFragment(
  *
  *
  */
-function updateElement(parentElement, oldEl, newVNode, options = {}) {
+function updateElement(
+  parentElement,
+  oldEl,
+  newVNode,
+  isFragment,
+  options = {},
+  lastElement
+) {
   if (!newVNode && !oldEl) {
     return;
   }
@@ -848,13 +794,27 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
 
   // oldEl 이 없고, newVNode 가 있는 경우
   if (!oldEl && newVNode) {
-    patch.appendChild(parentElement, newVNode, options);
+    if (lastElement && isFragment) {
+      patch.insertAfter(lastElement, newVNode, options, isFragment);
+    } else {
+      patch.appendChild(parentElement, newVNode, options, isFragment);
+    }
+
     return;
   }
 
   // oldEl 이 있고, newVNode 가 없는 경우
   if (!newVNode && oldEl) {
     patch.removeChild(parentElement, oldEl, options);
+    return;
+  }
+
+  // oldEl 이 fragment 인데, newVNode 가 fragment 인 경우
+  if (check.isVNodeFragment(oldEl) && check.isVNodeFragment(newVNode)) {
+    var oldChildren = fragmentVNodeChildren(oldEl).map((it) => it.getEl());
+    var newChildren = fragmentVNodeChildren(newVNode);
+
+    updateElementList(parentElement, oldChildren, newChildren, true, options);
     return;
   }
 
@@ -895,53 +855,8 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     return;
   }
 
-  const newNodeType = newVNode.type;
-  if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
-    updatePropertyAndChildren(oldEl, newVNode, options);
-  }
-}
-
-function updateElementWithFragment(
-  parentElement,
-  oldEl,
-  newVNode,
-  options = {},
-  lastElement
-) {
-  if (!newVNode && !oldEl) {
-    return;
-  }
-
-  parentElement = parentElement || options.context.parentElement;
-  if (!oldEl && newVNode) {
-    if (!lastElement) {
-      patch.appendChild(parentElement, newVNode, options, true);
-    } else {
-      // fragment 리스트 내부의 lastElement 기준으로 newVNode 를 추가한다.
-      patch.insertAfter(lastElement, newVNode, options, true);
-    }
-
-    return;
-  }
-  if (!newVNode && oldEl) {
-    patch.removeChild(parentElement, oldEl, options);
-    return;
-  }
-  // pass 옵션이 없는 경우
-  if (!newVNode?.props?.pass) {
-    if (check.hasPassed(newVNode)) {
-      return;
-    }
-
-    if (check.changed(newVNode, oldEl) || check.isVNodeComponent(newVNode)) {
-      updateChangedElement(parentElement, oldEl, newVNode, options);
-      return;
-    }
-  } else {
-    // newVNode.props.pass === true
-    // noop
-  }
-
+  // oldEl 이 component 가 아니고, newVNode 가 element 인 경우
+  // 두개를 동일한 형태로 보고 Reconcile 을 수행한다.
   const newNodeType = newVNode.type;
   if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
     updatePropertyAndChildren(oldEl, newVNode, options);
@@ -961,7 +876,51 @@ const children = (el) => {
     element = element.nextSibling;
   } while (element);
 
-  return results;
+  // split fragment node
+  let fragmentId = null;
+  results.forEach((result) => {
+    if (check.isCommentNode(result)) {
+      const key = result.textContent;
+
+      if (key.startsWith("start-")) {
+        const id = key.split("start-")[1];
+        result.fragmentId = id;
+        fragmentId = id;
+        result.start = true;
+      } else if (key.startsWith("end-" + fragmentId)) {
+        result.fragmentId = fragmentId;
+        fragmentId = null;
+        result.end = true;
+      }
+    } else {
+      result.fragmentId = fragmentId;
+    }
+  });
+
+  // group fragment
+  const fragmentMap = [];
+
+  results.forEach((result) => {
+    if (result.fragmentId) {
+      if (result.start) {
+        fragmentMap.push(result[FRAGMENT_VNODE_INSTANCE]);
+      }
+    } else {
+      fragmentMap.push(result);
+    }
+  });
+
+  return fragmentMap;
+};
+
+const fragmentVNodeChildren = (vnode) => {
+  if (!vnode.children?.length) {
+    return [];
+  }
+
+  const children = vnode.children || [];
+
+  return children;
 };
 
 const vNodeChildren = (vnode) => {
@@ -969,18 +928,8 @@ const vNodeChildren = (vnode) => {
     return [];
   }
 
-  // fragment 타입의 경우 children 을 모두 하나의 배열로 만든다.
-  // 이렇게 하는 이유는 dom 과 비교 하는 경우에 컴포넌트들이 어느 시점에 할당될지 알 수가 없기 때문에
-  // 모든 children 을 기준으로 하나로 인지하도록 한다.
-  // FIXME: 하지만 이것도 내부 컴포넌트에 감싸져있는 fragment 는 알 수가 없다.
-  return vnode.children
-    .map((it) => {
-      if (it.type === VNodeType.FRAGMENT) {
-        return vNodeChildren(it);
-      }
-      return it;
-    })
-    .flat(Infinity);
+  // fragment 를 그대로 유지한다.
+  return vnode.children;
 };
 
 /**
@@ -1002,7 +951,33 @@ export function Reconcile(oldInstance, newVNode, options = {}) {
   const oldEl = oldInstance.getEl();
   if (oldEl?.nodeType && oldEl?.nodeType !== 11) {
     // fragment 가 아니면 비교를 시작한다.
-    updateElement(oldEl.parentElement, oldEl, newVNode, options);
+    updateElement(oldEl.parentElement, oldEl, newVNode, false, options);
     return;
+  } else {
+    // fragment 인 경우 리스트 끼리만 비교한다.
+    // oldChildren 을 구하는 방법을 생각해보자.
+    // 1. oldEl 가 fragment 인 경우, ELEMENT_INSTANCE 를 통해 VNodeFragment 객체를 가지고 와서 children 을 구한다.
+    let oldChildren = children(oldEl);
+
+    if (check.isFragmentNode(oldEl)) {
+      // fragment 인 경우
+      oldChildren = fragmentVNodeChildren(oldEl[ELEMENT_INSTANCE]).map((it) =>
+        it.getEl()
+      );
+    }
+
+    // 비교하는 newChildren 을 구한다.
+    const newChildren = fragmentVNodeChildren(newVNode);
+
+    // fragment 기준으로 전체 리스트를 다시 업데이트한다.
+    updateElementList(
+      oldChildren[0].parentElement,
+      oldChildren,
+      newChildren,
+      true,
+      options
+    );
+
+    // FIXME: oldChildren 에서 newChildren 으로 재구성되어야 한다.
   }
 }

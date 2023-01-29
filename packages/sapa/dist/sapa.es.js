@@ -30,10 +30,9 @@ const SELF_COMPONENT_INSTANCE = "__selfComponentInstance";
 const COMPONENT_ROOT_CONTEXT = "__componentRootContext";
 const ELEMENT_INSTANCE = "__elementInstance";
 const PARENT_VNODE_INSTANCE = "__parentVNodeInstance";
+const FRAGMENT_VNODE_INSTANCE = "__fragmentVNodeInstance";
 const ELEMENT_PROPS = "__elementProps";
 const IS_FRAGMENT_ITEM = "__is_fragment_item";
-const CHILD_ITEM_TYPE_FRAGMENT = "fragment";
-const CHILD_ITEM_TYPE_ELEMENT = "element";
 function collectProps(root, rootClass, filterFunction = () => true) {
   let p = root;
   let results = [];
@@ -2717,7 +2716,10 @@ const EXPECT_ATTRIBUTES = {
   [PARENT_VNODE_INSTANCE]: true,
   [SELF_COMPONENT_INSTANCE]: true,
   [VNODE_INSTANCE]: true,
-  [COMPONENT_INSTANCE]: true
+  [COMPONENT_INSTANCE]: true,
+  startComment: true,
+  endComment: true,
+  fragmentId: true
 };
 window.instanceList = [];
 function stringifyStyle$1(styleObject) {
@@ -2730,7 +2732,7 @@ function stringifyStyle$1(styleObject) {
   }
   return list.join("");
 }
-const children$2 = (el) => {
+const children$1 = (el) => {
   var element = el.firstChild;
   if (!element) {
     return [];
@@ -2899,10 +2901,7 @@ class VNode {
     }
   }
   initializeChildren() {
-    var _a;
     if (isArray(this.children)) {
-      if ((_a = this.props.content) == null ? void 0 : _a.length)
-        return;
       this.children = this.children.filter(isValue).map((child) => {
         if (isString(child) || isNumber(child)) {
           return createVNodeText(child);
@@ -2978,6 +2977,9 @@ class VNodeComment extends VNode {
   get textContent() {
     return this.value;
   }
+  get fragment() {
+    return this[FRAGMENT_VNODE_INSTANCE];
+  }
   runMounted() {
   }
   runUpdated() {
@@ -2991,12 +2993,31 @@ class VNodeComment extends VNode {
 class VNodeFragment extends VNode {
   constructor(props = {}, children2) {
     super(VNodeType.FRAGMENT, "fragment", props || {}, children2);
+    this.fragmentId = uuidShort();
+    this.startComment = createVNodeComment(`start-${this.fragmentId}`);
+    this.endComment = createVNodeComment(`end-${this.fragmentId}`);
+    this.initializeFragment();
+  }
+  initializeFragment() {
+    this.children = [this.startComment, ...this.children, this.endComment].map(
+      (it) => {
+        it[FRAGMENT_VNODE_INSTANCE] = this;
+        return it;
+      }
+    );
+    this.props.content = this.children;
   }
   clone() {
     return new VNodeFragment(
       this.props,
       this.children.map((it) => it.clone())
     );
+  }
+  get startFragment() {
+    return this.startComment;
+  }
+  get endFragment() {
+    return this.endComment;
   }
 }
 class VNodeComponent extends VNode {
@@ -3173,6 +3194,7 @@ function makeElement$4(vNodeInstance) {
   const el = createElement$3(vNodeInstance);
   el[ELEMENT_INSTANCE] = vNodeInstance;
   el[ELEMENT_PROPS] = { value: vNodeInstance.value };
+  el[FRAGMENT_VNODE_INSTANCE] = vNodeInstance.fragment;
   vNodeInstance.setEl(el);
   return vNodeInstance;
 }
@@ -3435,6 +3457,7 @@ const expectKeys = {
 };
 const TEXT_NODE = 3;
 const COMMENT_NODE = 8;
+const FRAGMENT_NODE = 11;
 const KEY_STYLE = "style";
 const KEY_CLASS = "class";
 const PREFIX_EVENT = "on";
@@ -3565,26 +3588,18 @@ const patch = {
     instance.setParentElement(oldEl.parentElement);
     renderVNodeComponent(instance);
   },
-  makeComponentForFragment(oldInstance, newVNode, options) {
-    newVNode.setInstance(oldInstance);
-    newVNode.makeClassInstance(options);
-    const instance = newVNode.instance;
-    instance.$el = oldInstance.$el;
-    instance.setParentElement(oldInstance.parentElement);
-    renderVNodeComponent(instance);
-  },
   replaceWith(oldEl, newVNode, options) {
     if (!(newVNode instanceof VNode)) {
       return;
     }
-    const newComponentInstance = DomRenderer(newVNode, {
+    const newVNodeInstance = DomRenderer(newVNode, {
       ...options,
       container: oldEl.parentElement
     });
-    const objectElement = newComponentInstance.getEl();
-    oldEl.replaceWith(objectElement);
+    const newElement = newVNodeInstance.getEl();
+    oldEl.replaceWith(newElement);
     commitUnmountFromElement(oldEl);
-    commitMountFromElement(objectElement);
+    commitMountFromElement(newElement);
   },
   replaceText(oldEl, newVNode) {
     var _a;
@@ -3600,9 +3615,17 @@ const patch = {
   },
   replaceComment(oldEl, newVNode) {
     patch.replaceText(oldEl, newVNode);
+    newVNode.setEl(oldEl);
+    newVNode.el[ELEMENT_INSTANCE] = newVNode;
+    if (newVNode[FRAGMENT_VNODE_INSTANCE]) {
+      this.updateFragmentItem(newVNode, true);
+    }
   },
-  updateFragmentItem(el, isFragmentItem = false) {
-    el[IS_FRAGMENT_ITEM] = isFragmentItem;
+  updateFragmentItem(vNodeInstance, isFragmentItem = false) {
+    if (isFragmentItem) {
+      vNodeInstance.el[FRAGMENT_VNODE_INSTANCE] = vNodeInstance[FRAGMENT_VNODE_INSTANCE];
+      vNodeInstance.el[IS_FRAGMENT_ITEM] = isFragmentItem;
+    }
   },
   addNewVNode(parentElement, oldEl, newVNode, options) {
     const componentInstance = DomRenderer(newVNode, options);
@@ -3614,12 +3637,12 @@ const patch = {
       commitMount(componentInstance);
     }
   },
-  appendChild(containerElement, newVNode, options, isFragmentItem = false) {
+  appendChild(containerElement, newVNode, options, isFragment = false) {
     const newVNodeInstance = DomRenderer(newVNode, options);
     const el = newVNodeInstance.getEl();
     if (containerElement) {
-      if (isFragmentItem) {
-        patch.updateFragmentItem(el, isFragmentItem);
+      if (isFragment) {
+        patch.updateFragmentItem(newVNodeInstance, isFragment);
       }
       if (el) {
         containerElement.appendChild(el);
@@ -3629,13 +3652,14 @@ const patch = {
       }
     }
   },
-  insertAfter(beforeElement, newVNode, options, isFragmentItem = false) {
+  insertAfter(beforeElement, newVNode, options, isFragment = false) {
+    var _a;
     const newVNodeInstance = DomRenderer(newVNode, options);
     if (newVNodeInstance == null ? void 0 : newVNodeInstance.el) {
-      if (isFragmentItem) {
-        patch.updateFragmentItem(newVNodeInstance.el, isFragmentItem);
+      if (isFragment) {
+        patch.updateFragmentItem(newVNodeInstance, isFragment);
       }
-      beforeElement.parentNode.insertBefore(
+      (_a = beforeElement.parentElement) == null ? void 0 : _a.insertBefore(
         newVNodeInstance.el,
         beforeElement.nextSibling
       );
@@ -3661,6 +3685,9 @@ const check = {
   isElementNode(node) {
     return node.nodeType === 1;
   },
+  isFragmentNode(node) {
+    return node.nodeType === FRAGMENT_NODE;
+  },
   isVNodeText(node) {
     return node.type === VNodeType.TEXT;
   },
@@ -3669,6 +3696,9 @@ const check = {
   },
   isVNodeComponent(node) {
     return node.type === VNodeType.COMPONENT;
+  },
+  isVNodeFragment(node) {
+    return node.type === VNodeType.FRAGMENT;
   },
   changed(vNode, node2) {
     return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
@@ -3717,10 +3747,6 @@ const check = {
 const updateProps = (node, newProps = {}, oldProps = {}, options = {}, newVNode) => {
   const newPropsKeys = Object.keys(newProps);
   const oldPropsKeys = Object.keys(oldProps);
-  if (newPropsKeys.length === 0 && oldPropsKeys.length === 0) {
-    node[ELEMENT_PROPS] = newProps;
-    return;
-  }
   if (newProps.ref) {
     if (newVNode.ref instanceof RefClass) {
       newVNode.ref.setCurrent(node);
@@ -3755,6 +3781,7 @@ const updateProps = (node, newProps = {}, oldProps = {}, options = {}, newVNode)
   });
   node[ELEMENT_INSTANCE] = newVNode;
   node[ELEMENT_PROPS] = newProps;
+  newVNode.setEl(node);
 };
 function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   if (check.isTextNode(oldEl) && !check.isVNodeText(newVNode) || check.isCommentNode(oldEl) && !check.isVNodeComment(newVNode)) {
@@ -3776,9 +3803,6 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
   if (check.isVNodeComponent(newVNode)) {
     check.checkRefClass(oldEl, newVNode, options);
   } else {
-    if (newVNode.type === VNodeType.FRAGMENT) {
-      console.log(newVNode);
-    }
     patch.replaceWith(oldEl, newVNode, options);
   }
 }
@@ -3792,7 +3816,7 @@ function updateChildren(parentElement, newVNode, options = {}) {
   if (!(parentElement == null ? void 0 : parentElement.hasChildNodes()) && !((_a = newVNode.children) == null ? void 0 : _a.length)) {
     return;
   }
-  var oldChildren = children$1(parentElement);
+  var oldChildren = children(parentElement);
   var newChildren = vNodeChildren(newVNode);
   if (newVNode.hasComponent()) {
     const hasFragmentItem = oldChildren.some((it) => it[IS_FRAGMENT_ITEM]);
@@ -3810,104 +3834,74 @@ function updateChildren(parentElement, newVNode, options = {}) {
   if (max === 0) {
     return;
   }
-  if (oldChildren.length === 0 && newChildren.length > 0) {
-    newChildren.forEach((it) => {
-      DomRenderer(it, {
-        ...options,
-        container: parentElement
-      });
-    });
-  } else if (oldChildren.length > 0 && newChildren.length === 0) {
-    parentElement.textContent = "";
-  } else {
-    for (var i = 0; i < max; i++) {
-      updateElement(parentElement, oldChildren[i], newChildren[i], options);
-    }
+  for (var i = 0; i < max; i++) {
+    updateElement(
+      parentElement,
+      oldChildren[i],
+      newChildren[i],
+      false,
+      options
+    );
   }
 }
-function updateFragment(parentElement, oldChild, newChild, options = {}) {
-  let filteredInstance = null;
-  let parentClassInstance = parentElement[COMPONENT_INSTANCE];
-  const children2 = (parentClassInstance == null ? void 0 : parentClassInstance.children) || {};
-  Object.entries(children2).forEach(([, instance]) => {
-    if (newChild.isType(VNodeType.COMPONENT)) {
-      filteredInstance = instance;
-    }
-  });
-  if (filteredInstance) {
-    patch.makeComponentForFragment(
-      filteredInstance,
-      newChild,
-      parentElement[COMPONENT_INSTANCE].getVNodeOptions()
-    );
-    return;
-  }
-  let lastElement = null;
-  const childMaxCount = Math.max(
-    oldChild.items.length,
-    newChild.children.length
-  );
-  for (var childIndex = 0; childIndex < childMaxCount; childIndex++) {
-    const oldChildItem = oldChild.items[childIndex];
-    const newChildItem = newChild.children[childIndex];
-    if (oldChildItem)
-      lastElement = oldChildItem;
-    updateElementWithFragment(
+function updateElementList(parentElement, oldChildren, newChildren, isFragment, options = {}) {
+  if (isFragment) {
+    const nextOldChildren = [...oldChildren];
+    const nextNewChildren = [...newChildren];
+    updateElement(parentElement, oldChildren[0], newChildren[0], true, options);
+    nextOldChildren.shift();
+    nextOldChildren.pop();
+    nextNewChildren.shift();
+    nextNewChildren.pop();
+    updateElement(
       parentElement,
-      oldChildItem,
-      newChildItem,
+      oldChildren[oldChildren.length - 1],
+      newChildren[newChildren.length - 1],
+      isFragment,
+      options
+    );
+    oldChildren = nextOldChildren;
+    newChildren = nextNewChildren;
+  }
+  var max = Math.max(oldChildren.length, newChildren.length);
+  let lastElement;
+  for (var i = 0; i < max; i++) {
+    const oldChildElement = oldChildren[i];
+    const newChildVNode = newChildren[i];
+    if (oldChildElement) {
+      lastElement = oldChildElement;
+    }
+    updateElement(
+      parentElement,
+      oldChildElement,
+      newChildVNode,
+      isFragment,
       options,
       lastElement
     );
   }
 }
-function updateChildrenWithFragment(parentElement, oldChildren = [], newVNode, options = {}) {
-  if (!oldChildren.length && !newVNode.children.length) {
-    return;
-  }
-  var newChildren = vNodeChildren(newVNode);
-  var max = Math.max(oldChildren.length, newChildren.length);
-  if (max === 0) {
-    return;
-  }
-  if (oldChildren.length === 0 && newChildren.length > 0) {
-    newChildren.forEach((it) => {
-      DomRenderer(it, {
-        ...options,
-        container: parentElement
-      });
-    });
-  } else if (oldChildren.length > 0 && newChildren.length === 0) {
-    parentElement.textContent = "";
-  } else {
-    for (var i = 0; i < max; i++) {
-      const oldChild = oldChildren[i];
-      const newChild = newChildren[i];
-      if (!oldChild && newChild) {
-        updateElement(parentElement, oldChild, newChild, options);
-      } else if (oldChild && !newChild) {
-        updateElement(parentElement, oldChild.items, newChild, options);
-      } else {
-        if (oldChild.type === CHILD_ITEM_TYPE_FRAGMENT) {
-          updateFragment(parentElement, oldChild, newChild, options);
-        } else if (oldChild.type === CHILD_ITEM_TYPE_ELEMENT) {
-          updateElement(parentElement, oldChild.items, newChild, options);
-        }
-      }
-    }
-  }
-}
-function updateElement(parentElement, oldEl, newVNode, options = {}) {
+function updateElement(parentElement, oldEl, newVNode, isFragment, options = {}, lastElement) {
   if (!newVNode && !oldEl) {
     return;
   }
   parentElement = parentElement || options.context.parentElement;
   if (!oldEl && newVNode) {
-    patch.appendChild(parentElement, newVNode, options);
+    if (lastElement && isFragment) {
+      patch.insertAfter(lastElement, newVNode, options, isFragment);
+    } else {
+      patch.appendChild(parentElement, newVNode, options, isFragment);
+    }
     return;
   }
   if (!newVNode && oldEl) {
     patch.removeChild(parentElement, oldEl, options);
+    return;
+  }
+  if (check.isVNodeFragment(oldEl) && check.isVNodeFragment(newVNode)) {
+    var oldChildren = fragmentVNodeChildren(oldEl).map((it) => it.getEl());
+    var newChildren = fragmentVNodeChildren(newVNode);
+    updateElementList(parentElement, oldChildren, newChildren, true, options);
     return;
   }
   if (!oldEl[SELF_COMPONENT_INSTANCE] && oldEl[COMPONENT_INSTANCE] && !newVNode[SELF_COMPONENT_INSTANCE]) {
@@ -3933,70 +3927,6 @@ function updateElement(parentElement, oldEl, newVNode, options = {}) {
     updatePropertyAndChildren(oldEl, newVNode, options);
   }
 }
-function updateElementWithFragment(parentElement, oldEl, newVNode, options = {}, lastElement) {
-  var _a;
-  if (!newVNode && !oldEl) {
-    return;
-  }
-  parentElement = parentElement || options.context.parentElement;
-  if (!oldEl && newVNode) {
-    if (!lastElement) {
-      patch.appendChild(parentElement, newVNode, options, true);
-    } else {
-      patch.insertAfter(lastElement, newVNode, options, true);
-    }
-    return;
-  }
-  if (!newVNode && oldEl) {
-    patch.removeChild(parentElement, oldEl, options);
-    return;
-  }
-  if (!((_a = newVNode == null ? void 0 : newVNode.props) == null ? void 0 : _a.pass)) {
-    if (check.hasPassed(newVNode)) {
-      return;
-    }
-    if (check.changed(newVNode, oldEl) || check.isVNodeComponent(newVNode)) {
-      updateChangedElement(parentElement, oldEl, newVNode, options);
-      return;
-    }
-  }
-  const newNodeType = newVNode.type;
-  if (newNodeType !== VNodeType.TEXT && newNodeType !== VNodeType.COMMENT) {
-    updatePropertyAndChildren(oldEl, newVNode, options);
-  }
-}
-const children$1 = (el) => {
-  var element = el == null ? void 0 : el.firstChild;
-  if (!element) {
-    return [];
-  }
-  var results = [];
-  do {
-    results[results.length] = element;
-    element = element.nextSibling;
-  } while (element);
-  return results;
-};
-const vNodeChildren = (vnode) => {
-  var _a;
-  if (!((_a = vnode.children) == null ? void 0 : _a.length)) {
-    return [];
-  }
-  return vnode.children.map((it) => {
-    if (it.type === VNodeType.FRAGMENT) {
-      return vNodeChildren(it);
-    }
-    return it;
-  }).flat(Infinity);
-};
-function Reconcile(oldInstance, newVNode, options = {}) {
-  options = Object.assign({}, options);
-  const oldEl = oldInstance.getEl();
-  if ((oldEl == null ? void 0 : oldEl.nodeType) && (oldEl == null ? void 0 : oldEl.nodeType) !== 11) {
-    updateElement(oldEl.parentElement, oldEl, newVNode, options);
-    return;
-  }
-}
 const children = (el) => {
   var element = el == null ? void 0 : el.firstChild;
   if (!element) {
@@ -4007,91 +3937,85 @@ const children = (el) => {
     results[results.length] = element;
     element = element.nextSibling;
   } while (element);
-  return results;
-};
-function collectFragmentList(element) {
-  const rootList = [];
-  let rootListIndex = 0;
-  children(element).forEach((it) => {
-    if (it[IS_FRAGMENT_ITEM] === true) {
-      if (!rootList[rootListIndex]) {
-        rootList[rootListIndex] = {
-          type: CHILD_ITEM_TYPE_FRAGMENT,
-          items: [it]
-        };
-      } else {
-        if (rootList[rootListIndex]) {
-          if (rootList[rootListIndex].type === CHILD_ITEM_TYPE_FRAGMENT) {
-            rootList[rootListIndex].items.push(it);
-          } else {
-            rootListIndex++;
-            rootList[rootListIndex] = {
-              type: CHILD_ITEM_TYPE_FRAGMENT,
-              items: [it]
-            };
-          }
-        }
+  let fragmentId = null;
+  results.forEach((result) => {
+    if (check.isCommentNode(result)) {
+      const key = result.textContent;
+      if (key.startsWith("start-")) {
+        const id = key.split("start-")[1];
+        result.fragmentId = id;
+        fragmentId = id;
+        result.start = true;
+      } else if (key.startsWith("end-" + fragmentId)) {
+        result.fragmentId = fragmentId;
+        fragmentId = null;
+        result.end = true;
       }
     } else {
-      if (!rootList[rootListIndex]) {
-        rootList[rootListIndex] = { type: CHILD_ITEM_TYPE_ELEMENT, items: it };
-        rootListIndex++;
-      } else {
-        rootListIndex++;
-        rootList[rootListIndex] = { type: CHILD_ITEM_TYPE_ELEMENT, items: it };
-      }
+      result.fragmentId = fragmentId;
     }
   });
-  return rootList;
+  const fragmentMap = [];
+  results.forEach((result) => {
+    if (result.fragmentId) {
+      if (result.start) {
+        fragmentMap.push(result[FRAGMENT_VNODE_INSTANCE]);
+      }
+    } else {
+      fragmentMap.push(result);
+    }
+  });
+  return fragmentMap;
+};
+const fragmentVNodeChildren = (vnode) => {
+  var _a;
+  if (!((_a = vnode.children) == null ? void 0 : _a.length)) {
+    return [];
+  }
+  const children2 = vnode.children || [];
+  return children2;
+};
+const vNodeChildren = (vnode) => {
+  var _a;
+  if (!((_a = vnode.children) == null ? void 0 : _a.length)) {
+    return [];
+  }
+  return vnode.children;
+};
+function Reconcile(oldInstance, newVNode, options = {}) {
+  options = Object.assign({}, options);
+  const oldEl = oldInstance.getEl();
+  if ((oldEl == null ? void 0 : oldEl.nodeType) && (oldEl == null ? void 0 : oldEl.nodeType) !== 11) {
+    updateElement(oldEl.parentElement, oldEl, newVNode, false, options);
+    return;
+  } else {
+    let oldChildren = children(oldEl);
+    if (check.isFragmentNode(oldEl)) {
+      oldChildren = fragmentVNodeChildren(oldEl[ELEMENT_INSTANCE]).map(
+        (it) => it.getEl()
+      );
+    }
+    const newChildren = fragmentVNodeChildren(newVNode);
+    updateElementList(
+      oldChildren[0].parentElement,
+      oldChildren,
+      newChildren,
+      true,
+      options
+    );
+  }
 }
 function flatTemplate(template) {
   let root = [template];
   root = root.filter(Boolean).flat(Infinity);
   return root;
 }
-function hasFragmentInList(list) {
-  return list.some((it) => it.type === CHILD_ITEM_TYPE_FRAGMENT);
-}
-function runningUpdateFragment(componentInstance, template) {
-  const rootList = collectFragmentList(componentInstance.parentElement);
-  if (hasFragmentInList(rootList)) {
-    const length = 1;
-    const fragmentList = [];
-    for (let i = 0; i < rootList.length; i++) {
-      if (rootList[i].type === CHILD_ITEM_TYPE_FRAGMENT) {
-        fragmentList.push(rootList[i]);
-      }
-      if (fragmentList.length === length) {
-        break;
-      }
-    }
-    updateFragment(
-      componentInstance.parentElement,
-      fragmentList[0],
-      template,
-      componentInstance.getVNodeOptions()
-    );
-  }
-}
 async function runningUpdate(componentInstance, template) {
   template[SELF_COMPONENT_INSTANCE] = componentInstance;
-  if (template.isType(VNodeType.FRAGMENT)) {
-    runningUpdateFragment(componentInstance, template);
-  } else {
-    const rootList = collectFragmentList(componentInstance.getEl());
-    const options = componentInstance.getVNodeOptions();
-    if (hasFragmentInList(rootList)) {
-      updateChildrenWithFragment(
-        componentInstance.getEl(),
-        rootList,
-        template,
-        options
-      );
-    } else if (template.isType(VNodeType.FRAGMENT)) {
-      updateChildren(componentInstance.parentElement, template, options);
-    } else {
-      Reconcile(componentInstance, template, options);
-    }
+  Reconcile(componentInstance, template, componentInstance.getVNodeOptions());
+  if (template.type === VNodeType.FRAGMENT) {
+    template.setEl(componentInstance.$el.el);
+    template.el[ELEMENT_INSTANCE] = template;
   }
   componentInstance.runUpdated();
   await componentInstance.runHandlers("update");
@@ -4930,7 +4854,7 @@ class Dom {
   }
   hasChild(child) {
     var _a;
-    const childNode = child.el || child;
+    const childNode = (child == null ? void 0 : child.el) || child;
     return this.el === childNode ? false : (_a = this.el) == null ? void 0 : _a.contains(childNode);
   }
   get childNodes() {
@@ -5356,7 +5280,7 @@ function createVNodeByDom(el) {
   return createVNode({
     tag: el.tagName,
     props: getProps(el.attributes),
-    children: children$2(el).map((it) => {
+    children: children$1(el).map((it) => {
       return createVNodeByDom(it);
     })
   });
@@ -5536,7 +5460,7 @@ export {
   WHEEL,
   WebComponent,
   addProviderSubscribe,
-  children$2 as children,
+  children$1 as children,
   classnames,
   clone,
   cloneVNode,

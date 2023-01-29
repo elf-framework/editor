@@ -1,5 +1,6 @@
 import {
   COMPONENT_INSTANCE,
+  FRAGMENT_VNODE_INSTANCE,
   PARENT_VNODE_INSTANCE,
   SELF_COMPONENT_INSTANCE,
   VNODE_INSTANCE,
@@ -25,6 +26,7 @@ import {
   isValue,
 } from "../func";
 import { getModule, isGlobalForceRender } from "../registElement";
+import { uuidShort } from "../uuid";
 
 const EXPECT_ATTRIBUTES = {
   memoizedProps: true,
@@ -36,6 +38,9 @@ const EXPECT_ATTRIBUTES = {
   [SELF_COMPONENT_INSTANCE]: true,
   [VNODE_INSTANCE]: true,
   [COMPONENT_INSTANCE]: true,
+  startComment: true,
+  endComment: true,
+  fragmentId: true,
 };
 
 window.instanceList = [];
@@ -303,8 +308,6 @@ export class VNode {
 
   initializeChildren() {
     if (isArray(this.children)) {
-      if (this.props.content?.length) return;
-
       this.children = this.children.filter(isValue).map((child) => {
         if (isString(child) || isNumber(child)) {
           return createVNodeText(child);
@@ -407,6 +410,10 @@ export class VNodeComment extends VNode {
     return this.value;
   }
 
+  get fragment() {
+    return this[FRAGMENT_VNODE_INSTANCE];
+  }
+
   runMounted() {}
 
   runUpdated() {}
@@ -421,6 +428,23 @@ export class VNodeComment extends VNode {
 export class VNodeFragment extends VNode {
   constructor(props = {}, children) {
     super(VNodeType.FRAGMENT, "fragment", props || {}, children);
+
+    this.fragmentId = uuidShort();
+    this.startComment = createVNodeComment(`start-${this.fragmentId}`);
+    this.endComment = createVNodeComment(`end-${this.fragmentId}`);
+
+    this.initializeFragment();
+  }
+
+  initializeFragment() {
+    this.children = [this.startComment, ...this.children, this.endComment].map(
+      (it) => {
+        it[FRAGMENT_VNODE_INSTANCE] = this;
+        return it;
+      }
+    );
+
+    this.props.content = this.children;
   }
 
   clone() {
@@ -428,6 +452,14 @@ export class VNodeFragment extends VNode {
       this.props,
       this.children.map((it) => it.clone())
     );
+  }
+
+  get startFragment() {
+    return this.startComment;
+  }
+
+  get endFragment() {
+    return this.endComment;
   }
 }
 

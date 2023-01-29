@@ -5,8 +5,9 @@ export function Test2({ a, b, c }) {
 
   return (
     <>
+      <div>Fragment Test2 1</div>
       <div>{value + 1}</div>
-      {value > 10 ? <div>2</div> : undefined}
+      {value > 2 ? <div> Fragment remove 2</div> : undefined}
 
       <div>
         <div>
@@ -28,7 +29,13 @@ export function Test2({ a, b, c }) {
         >
           count -
         </button>
+        <>
+          <div>1</div>
+          <div>2</div>
+          <div>{value}</div>
+        </>
       </div>
+      <div>Fragment Test2 2</div>
     </>
   );
 }
