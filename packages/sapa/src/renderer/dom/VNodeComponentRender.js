@@ -29,9 +29,6 @@ function flatTemplate(template) {
 
 async function runningUpdate(componentInstance, template) {
   template[SELF_COMPONENT_INSTANCE] = componentInstance;
-  // 첫 컴포넌트가 Fragment 인 경우 개별로 처리한다.
-  // Fragment 는 여러개가 같은 레벨로 올 수 없다.
-  // Reconcile 를 실행한다.
   Reconcile(componentInstance, template, componentInstance.getVNodeOptions());
 
   if (template.type === VNodeType.FRAGMENT) {

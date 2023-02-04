@@ -953,7 +953,6 @@ class BaseEditor extends UIElement {
       );
     }, [className, fullScreen]);
     useEffect(async () => {
-      console.log("editor useEffect", pluginActivatedRef.current);
       if (!this.$editor) {
         this.$editor = editorRef.current;
       }

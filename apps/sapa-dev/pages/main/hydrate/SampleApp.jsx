@@ -1,3 +1,8 @@
+import { useState } from "@elf-framework/sapa";
+
 export function SampleApp() {
-  return <button onClick={() => console.log(10)}>test 200</button>;
+  const [value, setValue] = useState(1);
+  return (
+    <button onClick={() => setValue((v) => v + 2)}>test 200 {value}</button>
+  );
 }
