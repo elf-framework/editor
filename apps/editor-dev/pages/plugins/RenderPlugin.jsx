@@ -2,6 +2,9 @@ import { useEditor } from "@elf-framework/base-editor";
 import { useComponentRender } from "@elf-framework/sapa";
 import { AppLayout, AppLayoutItem } from "@elf-framework/ui";
 
+
+const TooltipView = () => undefined;
+
 function ApplicationLayout() {
   const editor = useEditor();
 
@@ -44,6 +47,6 @@ function ApplicationLayout() {
 export async function RenderPlugin(editor) {
   editor.registerGroupUI("renderView", {
     renderView: <ApplicationLayout />,
-    tooltipView: () => undefined,
+    tooltipView: <TooltipView />,
   });
 }

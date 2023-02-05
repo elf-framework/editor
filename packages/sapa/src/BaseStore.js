@@ -27,7 +27,7 @@ export class BaseStore {
       return defaultValue;
     }
 
-    return this.settings.get(key);
+    return this.settings.get(key) || defaultValue;
   }
 
   set(key, value, hasChangeMessage = true) {
@@ -180,17 +180,14 @@ export class BaseStore {
    * @param {*} originalCallback
    */
   off(event, originalCallback) {
-    // this.debug("off message event", event);
-
     if (arguments.length == 1) {
       this.setCallbacks(event);
     } else if (arguments.length == 2) {
-      this.setCallbacks(
-        event,
-        this.getCallbacks(event).filter((f) => {
-          return f.originalCallback !== originalCallback;
-        })
-      );
+      const filteredEvents = this.getCallbacks(event).filter((f) => {
+        return f.originalCallback !== originalCallback;
+      });
+
+      this.setCallbacks(event, filteredEvents);
     }
   }
 

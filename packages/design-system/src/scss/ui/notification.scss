@@ -81,6 +81,12 @@
         transform: translateY(-50%);
     }
 
+    &.has-icon {
+        > .content {
+            padding-left: 0px;
+        }
+    }
+
     > .icon {
         flex: none;
         width: 60px;

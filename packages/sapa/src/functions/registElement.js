@@ -1,4 +1,3 @@
-import { COMPONENT_INSTANCE } from "../constant/component";
 import { renderVNodeComponent } from "../renderer/dom/VNodeComponentRender";
 import { isString } from "./func";
 import { uuidShort } from "./uuid";
@@ -32,11 +31,11 @@ export function resetCurrentComponent(component) {
 
 function createRenderCallback(component) {
   if (!RenderCallbackList.has(component)) {
-    RenderCallbackList.set(component, ($container = undefined) => {
+    RenderCallbackList.set(component, (containerElement = undefined) => {
       const Renderer = component.renderer;
 
       if (Renderer) {
-        return Renderer(component, $container);
+        return Renderer(component, containerElement);
       }
     });
   }
@@ -50,7 +49,7 @@ export function removeRenderCallback(component) {
   }
 }
 
-export function renderComponent(component, $container = undefined) {
+export function renderComponent(component, containerElement = undefined) {
   if (!component) {
     return;
   }
@@ -60,7 +59,7 @@ export function renderComponent(component, $container = undefined) {
     return;
   }
 
-  createRenderCallback(component)?.($container);
+  createRenderCallback(component)?.(containerElement);
 }
 
 /**
@@ -160,7 +159,7 @@ export function hasVariable(id) {
  * @param {UIElement} instance
  */
 export function registRootElementInstance(instance, containerElement) {
-  const rootContainerElement = containerElement.el || containerElement;
+  const rootContainerElement = containerElement;
   __rootInstance.add(instance);
 
   // 기존에 있던 root instance 는 지운다.
@@ -193,29 +192,19 @@ export function setGlobalForceRender(isForceRender = false) {
 /**
  * root instance 를 모두 그린다.
  */
-export function renderRootElementInstanceList(isForce = false) {
+export function renderRootElementInstanceList() {
   getRootElementInstanceList().forEach((instance) => {
     // root 를 재시작한다는 이야기는 최초 start 에서 생성된 root instance 를 다시 생성해야 한다는 이야기이다.
     // 그렇기 때문에 start 함수는 항상 root instance 를 생성해야 한다.
 
     const rootInstance = instance.getRootInstance();
 
-    const childInstance = rootInstance.child;
+    const comp = rootInstance;
 
-    // FIXME: 다시 연결 해주는게 맞는건가?
-    // FIXME: COMPONENT_INSTANCE 의 용법을 다시 정의해야할 듯
-    // FIXME: hydrate 함수 참조, 같은 방식으로 정의 되어있음.
-    if (childInstance?.$el) {
-      childInstance.$el.el[COMPONENT_INSTANCE] = childInstance;
-    }
-
-    // rootInstance 의 Component 가 변겨되었는지를 검사한다.
-
-    const componentInstanceForRootRendering = childInstance || rootInstance;
     // rootInstance 다시 렌더링 시작
     // 기존 Hook 도 유지를 한다.
     // 그래야 다시 렌더링이 되는데, Hook 이 다시 초기화 되지 않는다.
-    renderVNodeComponent(componentInstanceForRootRendering);
+    renderVNodeComponent(comp);
   });
 }
 

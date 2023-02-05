@@ -24,6 +24,7 @@ const USE_GET_STORE_VALUE = Symbol("useGetStoreValue");
 
 export class RefClass {
   constructor(current) {
+    // this.id = uuid();
     this.current = current;
   }
 
@@ -35,7 +36,9 @@ export class RefClass {
 }
 
 function createRef(current = undefined) {
-  return new RefClass(current);
+  const refInstance = new RefClass(current);
+
+  return refInstance;
 }
 
 /**
@@ -101,7 +104,7 @@ function createStoreValue({ key, defaultValue, component }) {
   let localValue = Object.assign(
     {},
     createGetStoreValue({ key, defaultValue, component }),
-    createSetStoreValue({ key, component })
+    createSetStoreValue({ key, defaultValue, component })
   );
 
   return localValue;
@@ -119,14 +122,15 @@ function createGetStoreValue({ key, defaultValue, component }) {
   return localValue;
 }
 
-function createSetStoreValue({ key, component }) {
+function createSetStoreValue({ key, defaultValue, component }) {
   let localValue = {
     key,
     component,
+    defaultValue,
     update: (value) => {
       let _newValue = value;
       if (isFunction(value)) {
-        _newValue = value(component.$store.get(key));
+        _newValue = value(component.$store.get(key) || defaultValue);
       }
       component.$store.set(key, _newValue);
     },
@@ -169,6 +173,9 @@ function createSubscribe({
     name,
     callback,
     component,
+    debounceSecond,
+    throttleSecond,
+    isSelf,
   };
 
   // register callback to store
@@ -176,7 +183,7 @@ function createSubscribe({
   localValue.unsubscribe = component.$store.on(
     name,
     callback,
-    this,
+    component,
     debounceSecond,
     throttleSecond,
     false,
@@ -188,28 +195,28 @@ function createSubscribe({
 
 export class HookMachine extends MagicHandler {
   // 컴포넌트 내부에서 Hook 을 관리하는 리스트
-  #__stateHooks = [];
-  #__stateHooksIndex = 0;
+  __stateHooks = [];
+  __stateHooksIndex = 0;
 
   /***** hook ********/
 
   copyHooks() {
     return {
-      __stateHooks: this.#__stateHooks,
-      __stateHooksIndex: this.#__stateHooksIndex,
+      __stateHooks: this.__stateHooks,
+      __stateHooksIndex: this.__stateHooksIndex,
     };
   }
 
   initHooks() {
-    this.#__stateHooks = [];
-    this.#__stateHooksIndex = 0;
+    this.__stateHooks = [];
+    this.__stateHooksIndex = 0;
   }
 
   reloadHooks(hooks) {
-    this.#__stateHooks = hooks.__stateHooks || [];
-    this.#__stateHooksIndex = hooks.__stateHooksIndex || 0;
+    this.__stateHooks = hooks.__stateHooks || [];
+    this.__stateHooksIndex = hooks.__stateHooksIndex || 0;
 
-    this.#__stateHooks.forEach((hook, index) => {
+    this.__stateHooks.forEach((hook, index) => {
       switch (hook?.type) {
         case USE_STATE:
           hook.hookInfo = createState({
@@ -249,6 +256,7 @@ export class HookMachine extends MagicHandler {
         case USE_SET_STORE_VALUE:
           hook.hookInfo = createSetStoreValue({
             key: hook.hookInfo.key,
+            defaultValue: hook.hookInfo.defaultValue,
             component: this,
           });
           break;
@@ -268,7 +276,10 @@ export class HookMachine extends MagicHandler {
 
           hook.hookInfo = createSubscribe({
             name: hook.hookInfo.name,
-            callback: hook.hookInfo.callback,
+            // callback의 context 를 새로운 컴포넌트로 변경을 해줘야 한다.
+            // 그렇지 않으면 이전 컴포넌트를 destroy 이 하는 시점에 이벤트가 삭제되어서
+            // 새로운 컴포넌트에서 이벤트가 발생하지 않는다.
+            callback: hook.hookInfo.callback.bind(this),
             debounceSecond: hook.hookInfo.debounceSecond,
             throttleSecond: hook.hookInfo.throttleSecond,
             isSelf: hook.hookInfo.isSelf,
@@ -280,7 +291,7 @@ export class HookMachine extends MagicHandler {
           // 훅이 새로 로드될 때는 항상 새로운 값을 반환해야하기 때문에
           // hook 의 저장된 값을 모두 삭제하고 다시 생성한다.
 
-          this.#__stateHooks[index] = undefined;
+          this.__stateHooks[index] = undefined;
           break;
       }
     });
@@ -292,19 +303,31 @@ export class HookMachine extends MagicHandler {
   }
 
   resetHookIndex() {
-    this.#__stateHooksIndex = 0;
+    this.__stateHooksIndex = 0;
   }
 
   increaseHookIndex() {
-    this.#__stateHooksIndex++;
+    this.__stateHooksIndex++;
   }
 
-  getHook() {
-    return this.#__stateHooks[this.#__stateHooksIndex];
+  getHook(hookType) {
+    const hookInfo = this.__stateHooks[this.__stateHooksIndex];
+
+    /**
+     * hookType 이 있으면 hookInfo 의 type 이 hookType 과 같은지 확인한다.
+     * 같지 않으면 undefined 를 반환한다.
+     *
+     * undefined 로 리턴되면 새로운 hook을 지정할 수 있다.
+     */
+    if (hookType && hookInfo?.type !== hookType) {
+      return undefined;
+    }
+
+    return hookInfo;
   }
 
   setHook(type, hookInfo) {
-    this.#__stateHooks[this.#__stateHooksIndex] = {
+    this.__stateHooks[this.__stateHooksIndex] = {
       type,
       hookInfo,
     };
@@ -330,7 +353,7 @@ export class HookMachine extends MagicHandler {
    * useId is a hook for generating unique IDs
    */
   useId() {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_ID)) {
       this.setHook(USE_ID, { value: uuid(), component: this });
     }
 
@@ -342,7 +365,7 @@ export class HookMachine extends MagicHandler {
   }
 
   useSyncExternalStore(subscribe, getSnapshot, isEqual) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_SYNC_EXTERNAL_STORE)) {
       this.setHook(
         USE_SYNC_EXTERNAL_STORE,
         createExternalStore({
@@ -369,7 +392,7 @@ export class HookMachine extends MagicHandler {
    * @returns
    */
   useState(initialState) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_STATE)) {
       this.setHook(
         USE_STATE,
         createState({ value: initialState, component: this })
@@ -474,7 +497,7 @@ export class HookMachine extends MagicHandler {
   }
 
   useContext(context) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_CONTEXT)) {
       this.setHook(USE_CONTEXT, {
         provider: getContextProvider(context),
         component: this,
@@ -499,7 +522,7 @@ export class HookMachine extends MagicHandler {
     throttleSecond = 0,
     isSelf = false
   ) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_SUBSCRIBE)) {
       this.setHook(
         USE_SUBSCRIBE,
         createSubscribe({
@@ -546,7 +569,7 @@ export class HookMachine extends MagicHandler {
       renderComponent(this);
     });
 
-    if (!this.getHook()) {
+    if (!this.getHook(USE_STORE_VALUE)) {
       this.setHook(
         USE_STORE_VALUE,
         createStoreValue({
@@ -569,7 +592,7 @@ export class HookMachine extends MagicHandler {
    *
    */
   useGetStoreValue(key, defaultValue) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_GET_STORE_VALUE)) {
       this.setHook(
         USE_GET_STORE_VALUE,
         createGetStoreValue({
@@ -592,7 +615,7 @@ export class HookMachine extends MagicHandler {
    *
    */
   useSetStoreValue(key) {
-    if (!this.getHook()) {
+    if (!this.getHook(USE_SET_STORE_VALUE)) {
       this.setHook(
         USE_SET_STORE_VALUE,
         createSetStoreValue({
@@ -630,7 +653,7 @@ export class HookMachine extends MagicHandler {
   /** utility function for hooks */
 
   filterHooks(type) {
-    return this.#__stateHooks
+    return this.__stateHooks
       .filter((it) => it?.type === type)
       .map((it) => it.hookInfo);
   }
@@ -654,8 +677,6 @@ export class HookMachine extends MagicHandler {
   runHooks() {
     // hooks
     this.getUseEffects().forEach((it) => {
-      // FIXME: hook을 실행하기 전에 cleanup 을 수행해야할까?
-      // const hasChangedDeps = this.isChangedDeps(it.deps);
       if (it.hasChangedDeps) {
         // deps: [] 는 한번만 실행하도록 해야한다.
         it.cleanup = it.callback();
@@ -693,6 +714,8 @@ export class HookMachine extends MagicHandler {
    *
    */
   onMounted() {
+    if (this.isMounted) return;
+
     this.isMounted = true;
     this.runHooks();
   }
@@ -707,5 +730,9 @@ export class HookMachine extends MagicHandler {
     this.cleanHooks();
   }
 
-  onUnmounted() {}
+  onUnmounted() {
+    this.isMounted = false;
+    // hooks
+    this.cleanHooks();
+  }
 }

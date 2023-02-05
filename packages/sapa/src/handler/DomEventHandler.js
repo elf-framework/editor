@@ -117,9 +117,12 @@ export default class DomEventHandler extends BaseHandler {
     }
   }
 
+  /**
+   * @deprecated
+   */
   update() {
     // FIXME: 이벤트를 다시 설정해야 한다.
-    this.initialize();
+    // this.initialize();
   }
 
   destroy() {

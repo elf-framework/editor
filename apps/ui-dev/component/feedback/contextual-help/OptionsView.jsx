@@ -5,48 +5,46 @@ import { Button, Grid, VBox } from "@elf-framework/ui";
 
 export function OptionsView() {
   return (
-    <Grid columns={1} gap={30}>
-      <VBox
+    <VBox
+      style={{
+        gap: 30,
+        backgroundColor: "var(--color-gray-0)",
+        padding: "40px 40px",
+      }}
+    >
+      <Grid
+        columns={2}
+        gap={30}
         style={{
-          gap: 30,
-          backgroundColor: "var(--color-gray-0)",
-          padding: "40px 40px",
+          maxWidth: 400,
+          margin: [0, "auto"],
         }}
       >
-        <Grid columns={2}>
+        <div>
+          <em style={{ marginBottom: 10 }}>Information</em>
           <div>
-            <em style={{ marginBottom: 10 }}>Information</em>
-            <div>
-              <Button>
-                <EditFilled /> Edit
-              </Button>
-              &nbsp;
-              <Button quiet size="extra-small">
-                <InfoOutlined />
-              </Button>
-            </div>
+            <Button>
+              <EditFilled /> Edit
+            </Button>
+            &nbsp;
+            <Button iconOnly quiet size="extra-small">
+              <InfoOutlined />
+            </Button>
           </div>
+        </div>
+        <div>
+          <em style={{ marginBottom: 10 }}>Help</em>
           <div>
-            <em style={{ marginBottom: 10 }}>Help</em>
-            <div>
-              <Button>
-                <EditFilled /> Edit
-              </Button>
-              &nbsp;
-              <Button quiet size="extra-small">
-                <HelpOutlineOutlined />
-              </Button>
-            </div>
+            <Button>
+              <EditFilled /> Edit
+            </Button>
+            &nbsp;
+            <Button iconOnly quiet size="extra-small">
+              <HelpOutlineOutlined />
+            </Button>
           </div>
-        </Grid>
-      </VBox>
-      <div>
-        <p>
-          Contextual help can be used to display two types of supplementary
-          content in an experience: in-line information (the info icon) or help
-          and resources to learn more (the help icon).
-        </p>
-      </div>
-    </Grid>
+        </div>
+      </Grid>
+    </VBox>
   );
 }

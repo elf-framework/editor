@@ -1,19 +1,26 @@
 import { ELEMENT_INSTANCE } from "../../constant/component";
 import { makeChildren } from "./utils";
 
-function makeElement(vNodeInstance, withChildren, options) {
-  if (vNodeInstance.el) return this;
-
+function makeElement(vNodeInstance, options) {
+  // fragment 는 DocumentFragment 를 대상으로 구조를 맞춘다.
+  // 하위 element들은 DocumentFragment 에 넣어두고 DOM 에 추가한다.
   const el = document.createDocumentFragment();
 
   el[ELEMENT_INSTANCE] = vNodeInstance;
-  vNodeInstance.el = el;
+  vNodeInstance.setEl(el);
 
-  makeChildren(vNodeInstance, withChildren, options, true);
+  makeChildren(
+    vNodeInstance,
+    {
+      ...options,
+      container: el,
+    },
+    true
+  );
 
   return vNodeInstance;
 }
 
-export function VNodeFragmentRender(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+export function VNodeFragmentRender(vNodeInstance, options) {
+  return makeElement(vNodeInstance, options);
 }

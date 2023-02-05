@@ -66,31 +66,13 @@ function createElement(vNodeInstance) {
   return makeNativeDom(vNodeInstance.tag);
 }
 
-/**
- * context 에서 사용할 수 있는 속성을 추출한다.
- */
-function getContextProps(context, props) {
-  const newProps = context.filterFunction("getProps").flat(Infinity);
-  const newPropList = newProps.filter((it) => {
-    return it.ref === props.ref;
-  });
-
-  newPropList.forEach((it) => {
-    if (isObject(it.props)) {
-      Object.assign(props, it.props);
-    }
-  });
-}
-
-function makeElement(vNodeInstance, withChildren, options) {
+function makeElement(vNodeInstance, options) {
   const el = createElement(vNodeInstance);
 
   let props = vNodeInstance.memoizedProps;
   if (props) {
     // props 에 ref 속성이 있으면 context 에 추가한다.
     if (props.ref) {
-      getContextProps(options.context, props);
-
       vNodeInstance.ref = props.ref;
 
       if (vNodeInstance.ref instanceof RefClass) {
@@ -135,12 +117,15 @@ function makeElement(vNodeInstance, withChildren, options) {
 
   el[ELEMENT_PROPS] = props;
   el[ELEMENT_INSTANCE] = vNodeInstance;
-  vNodeInstance.el = el;
-  makeChildren(vNodeInstance, withChildren, options);
+  vNodeInstance.setEl(el);
+  makeChildren(vNodeInstance, {
+    ...options,
+    container: el, // container 를 사전에 지정해서 실행한다.
+  });
 
   return vNodeInstance;
 }
 
-export function VNodeElementRender(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+export function VNodeElementRender(vNodeInstance, options) {
+  return makeElement(vNodeInstance, options);
 }

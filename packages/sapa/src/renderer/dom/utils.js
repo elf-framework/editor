@@ -1,4 +1,12 @@
-import { IS_FRAGMENT_ITEM } from "../../constant/component";
+import {
+  ALTERNATE_TEMPLATE,
+  COMPONENT_INSTANCE,
+  ELEMENT_INSTANCE,
+  ELEMENT_PROPS,
+  IS_FRAGMENT_ITEM,
+  PARENT_VNODE_INSTANCE,
+} from "../../constant/component";
+import { VNodeType } from "../../constant/vnode";
 import { isArray, isFunction, isValue } from "../../functions/func";
 import { VNode } from "../../functions/vnode";
 import { DomRenderer } from "./DomRenderer";
@@ -11,20 +19,56 @@ export function insertElement(
   childVNode,
   fragment,
   parentElement,
-  withChildren,
   options = {},
-  isFragmentItem = false
+  isFragmentItem = false,
+  parentVNode
 ) {
   // children 은 fragment 로 만들어서 추가한다.
-
   if (childVNode instanceof VNode || childVNode?.makeElement) {
     childVNode.setParentElement(parentElement);
-    const el = DomRenderer(childVNode, options).el;
+    childVNode[PARENT_VNODE_INSTANCE] = parentVNode;
+    let componentInstance = DomRenderer(childVNode, options);
+
+    const el = componentInstance?.getEl();
 
     if (el) {
-      el[IS_FRAGMENT_ITEM] = isFragmentItem;
+      // el 이 DocumentFragment 인 경우는 el 에 아무것도 없기 때문에
+      // 자식 리스트를 가져와서 추가한다.
+      if (el instanceof window.DocumentFragment) {
+        const vNodeInstance = componentInstance;
 
-      fragment.appendChild(el);
+        let fragmentChildren = [];
+
+        // 컴포넌트 root 가 fragment 인 경우 템플릿에서 fragment 정보를 가지고 온다.
+        if (vNodeInstance.type === VNodeType.FRAGMENT) {
+          fragmentChildren = vNodeInstance.children;
+        } else if (vNodeInstance.instance?.[ALTERNATE_TEMPLATE]) {
+          fragmentChildren =
+            vNodeInstance.instance[ALTERNATE_TEMPLATE]?.children || [];
+        }
+        // get fragment template
+        fragmentChildren.forEach((it) => {
+          if (it) {
+            insertElement(
+              it,
+              fragment,
+              parentElement,
+              options,
+              true,
+              childVNode
+            );
+          }
+        });
+      }
+      // documentFragment 가 아닌 경우는 정상적으로 처리한다.
+      else {
+        el[IS_FRAGMENT_ITEM] = isFragmentItem;
+        el[PARENT_VNODE_INSTANCE] = parentVNode;
+
+        fragment.appendChild(el);
+        // el 을 추가한 후에 commitMount 를 실행한다.
+        commitMount(el[COMPONENT_INSTANCE]);
+      }
     }
   } else if (isArray(childVNode)) {
     childVNode.forEach((it) => {
@@ -33,9 +77,9 @@ export function insertElement(
           it,
           fragment,
           parentElement,
-          withChildren,
           options,
-          isFragmentItem
+          isFragmentItem,
+          parentVNode
         );
       }
     });
@@ -47,13 +91,17 @@ export function insertElement(
         result,
         fragment,
         parentElement,
-        withChildren,
         options,
-        isFragmentItem
+        isFragmentItem,
+        parentVNode
       );
     }
   } else if (isValue(childVNode)) {
-    fragment.appendChild(document.createTextNode(childVNode));
+    childVNode[PARENT_VNODE_INSTANCE] = parentVNode;
+    childVNode.el = document.createTextNode(childVNode);
+    childVNode.el[ELEMENT_PROPS] = { value: childVNode };
+    childVNode.el[ELEMENT_INSTANCE] = childVNode;
+    fragment.appendChild(childVNode.el);
   } else {
     // NOOP
     // undefined, null 은 표시하지 않는다.
@@ -64,41 +112,97 @@ export function insertElement(
  * vnode 의 children 을 element 로 생성한다.
  * children 은 항상 fragment 로 생성해서 추가한다.
  */
-export function makeChildren(
-  vnode,
-  withChildren,
-  options,
-  isFragmentItem = false
-) {
-  const parentElement = vnode.el;
-  const children = vnode.children;
+export function makeChildren(parentVNode, options, isFragmentItem = false) {
+  const children = parentVNode.children;
   if (children && children.length) {
     const fragment = document.createDocumentFragment();
 
     insertElement(
       children,
       fragment,
-      parentElement,
-      withChildren,
+      options.container,
       options,
-      isFragmentItem
+      isFragmentItem,
+      parentVNode
     );
 
     // fragment 적용
-    parentElement.appendChild(fragment);
+    options.container.appendChild(fragment);
+  }
+}
 
-    // mounted 메세지 실행
-    children.forEach((child) => {
-      if (isArray(child)) {
-        child.forEach((it) => {
-          if (isFunction(it?.runMounted)) {
-            it.runMounted();
-          }
-        });
-      } else if (child) {
-        if (isFunction(child?.runMounted)) {
-          child.runMounted();
-        }
+/**
+ * el 에 설정된 COMPONENT_INSTANCE 기준으로 family 그룹을 구해서
+ * 마지막 인스턴스부터 차례로 runMounted 를 실행한다.
+ */
+export function commitMountFromElement(el) {
+  commitMount(el[COMPONENT_INSTANCE]);
+}
+
+/**
+ * componentInstance 기준으로 runMounted 실행한다.
+ */
+export function commitMount(componentInstance) {
+  if (componentInstance && componentInstance.getFamily) {
+    window.requestIdleCallback(() => {
+      const family = componentInstance.getFamily();
+
+      let len = family.family.length;
+
+      while (len--) {
+        const component = family.family[len];
+
+        component?.runMounted();
+      }
+    });
+  }
+}
+
+/**
+ * el 에 설정된 COMPONENT_INSTANCE 기준으로 family 그룹을 구해서
+ * 마지막 인스턴스부터 차례로 runMounted 를 실행한다.
+ */
+export function commitUnmountFromElement(el) {
+  commitUnmount(el[COMPONENT_INSTANCE]);
+}
+
+/**
+ * DomTree 에서 삭제될 때 실행한다.
+ */
+export function commitUnmount(componentInstance) {
+  if (componentInstance && componentInstance.getFamily) {
+    const family = componentInstance.getFamily();
+
+    let len = family.family.length;
+    let i = 0;
+
+    while (i < len) {
+      const component = family.family[len];
+
+      component?.runUnmounted();
+      i++;
+    }
+  }
+}
+
+export function commitUpdatedFromElement(el) {
+  commitUpdated(el[COMPONENT_INSTANCE]);
+}
+
+/**
+ * componentInstance 기준으로 runMounted 실행한다.
+ */
+export function commitUpdated(componentInstance) {
+  if (componentInstance) {
+    window.requestIdleCallback(() => {
+      const family = componentInstance.getFamily();
+
+      let len = family.family.length;
+
+      while (len--) {
+        const component = family.family[len];
+
+        component?.runUpdated();
       }
     });
   }

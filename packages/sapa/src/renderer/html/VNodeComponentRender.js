@@ -29,14 +29,10 @@ async function renderHtml(vNodeInstance, parentOptions) {
   return await renderVNodeComponentToHtml(instance, instance.getVNodeOptions());
 }
 
-async function makeHtml(vNodeInstance, withChildren, options = {}) {
+async function makeHtml(vNodeInstance, options = {}) {
   return await renderHtml(vNodeInstance, options);
 }
 
-export async function VNodeComponentRender(
-  vNodeInstance,
-  withChildren,
-  options
-) {
-  return await makeHtml(vNodeInstance, withChildren, options);
+export async function VNodeComponentRender(vNodeInstance, options) {
+  return await makeHtml(vNodeInstance, options);
 }

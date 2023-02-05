@@ -949,7 +949,7 @@ var __privateMethod = (obj, member, method) => {
           });
           if (!this.$el)
             return;
-          resizeObserver.observe(this.$el.el);
+          resizeObserver.observe(this.getEl());
         }
         return () => {
           resizeObserver == null ? void 0 : resizeObserver.disconnect();
@@ -1905,7 +1905,8 @@ var __privateMethod = (obj, member, method) => {
         style: style2 = {},
         items,
         class: className,
-        hoverable = true
+        hoverable = true,
+        variant = "light"
       } = this.props;
       const hasItems = items.length > 0;
       const isSelected = selected ? sapa.isFunction(selected) ? selected() : selected : void 0;
@@ -1930,6 +1931,7 @@ var __privateMethod = (obj, member, method) => {
           items,
           direction,
           rootClose: this.state.rootClose,
+          variant,
           style: {
             ...menuStyle || {},
             top: "100%"
@@ -2088,7 +2090,7 @@ var __privateMethod = (obj, member, method) => {
         let observer, resizeObserver;
         if (emphasized) {
           const options = {
-            root: this.parent.parent.$el.el,
+            root: this.parent.parent.getEl(),
             threshold: 1
           };
           observer = new IntersectionObserver((entries) => {
@@ -2101,13 +2103,13 @@ var __privateMethod = (obj, member, method) => {
               setRootRect(e.intersectionRect);
             });
           }, options);
-          observer.observe(this.$el.el);
+          observer.observe(this.getEl());
           resizeObserver = new ResizeObserver((entries) => {
             entries.forEach((entry) => {
               setRootRect(sapa.Dom.create(entry.target).rect());
             });
           });
-          resizeObserver.observe(this.parent.parent.$el.el);
+          resizeObserver.observe(this.parent.parent.getEl());
         }
         return () => {
           observer == null ? void 0 : observer.disconnect();
@@ -2258,7 +2260,7 @@ var __privateMethod = (obj, member, method) => {
         style: style2 = {},
         icon,
         content,
-        tools,
+        tools = [],
         direction = "top-left"
       } = this.props;
       const localClass = sapa.useMemo(() => {
@@ -2271,7 +2273,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(style2, cssProperties$D)
       };
-      return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "text" }, content)), /* @__PURE__ */ sapa.createElementJsx("div", { class: "tools" }, tools || []));
+      return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "text" }, content)), (tools == null ? void 0 : tools.length) ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "tools" }, tools) : void 0);
     }
   }
   registerComponent("notification", Notification);

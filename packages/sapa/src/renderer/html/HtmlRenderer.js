@@ -14,11 +14,11 @@ const RendererList = {
   [VNodeType.COMMENT]: VNodeCommentRender,
 };
 
-async function VNodeRender(vNodeInstance, withChildren, options) {
+async function VNodeRender(vNodeInstance, options) {
   const CurrentRenderer = RendererList[vNodeInstance.type];
 
   if (CurrentRenderer) {
-    const result = CurrentRenderer(vNodeInstance, withChildren, options);
+    const result = CurrentRenderer(vNodeInstance, options);
     return await result;
   }
 
@@ -31,7 +31,7 @@ export async function HtmlRenderer(obj, options = {}) {
   }
 
   if (obj) {
-    const html = await VNodeRender(obj, true, options);
+    const html = await VNodeRender(obj, options);
     return html;
   }
 

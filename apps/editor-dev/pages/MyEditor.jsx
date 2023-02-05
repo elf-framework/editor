@@ -10,7 +10,7 @@ import { RightPlugin } from "./plugins/RightPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 export function MyEditor() {
-  const [a, setA] = useStoreValue("a", 1);
+  const [a, setA] = useStoreValue("myeditor", 1);
 
   return (
     <BaseEditor

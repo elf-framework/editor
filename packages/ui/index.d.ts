@@ -579,6 +579,7 @@ declare module "@elf-framework/ui" {
     opened?: boolean;
     trigger: "click" | "hover";
     direction?: MenuDirectionType;
+    variant?: "light" | "dark";
     onOpen?: (event: PointerEvent, item: ToolsMenuItemType) => void;
     onClick?: (event: PointerEvent, item: ToolsMenuItemType) => void;
   };
@@ -1554,6 +1555,9 @@ declare module "@elf-framework/ui" {
     min: number;
     max: number;
     step: number;
+    /**
+     * show value on the slider
+     */
     showValue?: boolean;
     valuePlacement?: "none" | "top" | "bottom";
     showTrigger?: "always" | "hover" | "none";

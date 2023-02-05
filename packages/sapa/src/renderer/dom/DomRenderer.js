@@ -1,6 +1,5 @@
 import { VNodeType } from "../../constant/vnode";
-import { Dom } from "../../functions/Dom";
-import { isArray, isBoolean, isString } from "../../functions/func";
+import { isArray, isString } from "../../functions/func";
 import { createVNodeText } from "../../functions/vnode";
 import { VNodeCommentRender } from "./VNodeCommentRender";
 import { VNodeComponentRender } from "./VNodeComponentRender";
@@ -16,16 +15,12 @@ const RendererList = {
   [VNodeType.COMMENT]: VNodeCommentRender,
 };
 
-function VNodeRender(vNodeInstance, withChildren, options) {
-  if (isBoolean(options)) {
-    throw new Error("options is boolean");
-  }
+function VNodeRender(vNodeInstance, options) {
   const CurrentRenderer = RendererList[vNodeInstance.type];
 
   if (CurrentRenderer) {
-    return CurrentRenderer(vNodeInstance, withChildren, options);
+    return CurrentRenderer(vNodeInstance, options);
   }
-
   return null;
 }
 
@@ -39,7 +34,7 @@ export function DomRenderer(obj, options = {}) {
   }
 
   if (obj) {
-    return Dom.create(VNodeRender(obj, true, options)?.el);
+    return VNodeRender(obj, options, options.container);
   }
 
   return obj;

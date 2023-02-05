@@ -1,5 +1,98 @@
 # @elf-framework/sapa
 
+## 0.0.238
+
+### Patch Changes
+
+- remove comment
+
+## 0.0.236
+
+### Patch Changes
+
+- fixed fragment render
+  fixed component diff algorithm
+
+## 0.0.231
+
+### Patch Changes
+
+- fixed root rendering
+
+## 0.0.229
+
+### Patch Changes
+
+- remove console.log
+
+## 0.0.228
+
+### Patch Changes
+
+- refactoring hook
+
+## 0.0.227
+
+### Patch Changes
+
+- add test code
+
+## 0.0.226
+
+### Patch Changes
+
+- add test code
+
+## 0.0.225
+
+### Patch Changes
+
+- add test code
+
+## 0.0.224
+
+### Patch Changes
+
+- add test code
+
+## 0.0.223
+
+### Patch Changes
+
+- add test code
+
+## 0.0.222
+
+### Patch Changes
+
+- add test code
+
+## 0.0.221
+
+### Patch Changes
+
+- add default value in basestore.get function
+
+## 0.0.220
+
+### Patch Changes
+
+- add setRefs for reload component
+
+- npm run version
+
+## 0.0.218
+
+### Patch Changes
+
+- fixed children default value in jsx-runtime function
+
+## 0.0.217
+
+### Patch Changes
+
+- update types
+
 ## 0.0.216
 
 ### Patch Changes

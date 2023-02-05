@@ -941,8 +941,8 @@ class BaseEditor extends UIElement {
       plugins,
       configs
     } = this.props;
+    const editorRef = useRef(new EditorContext(this, this.props));
     const pluginActivatedRef = useRef(false);
-    const editor = useEditor();
     const localClass = useMemo(() => {
       return classnames(
         "elf--base-editor",
@@ -953,22 +953,28 @@ class BaseEditor extends UIElement {
       );
     }, [className, fullScreen]);
     useEffect(async () => {
-      if (pluginActivatedRef.current) {
-        return;
-      }
       if (!this.$editor) {
-        this.$editor = new EditorContext(this, this.props);
+        this.$editor = editorRef.current;
       }
       this.$store.set(KEY_EDITOR, this.$editor);
       this.$store.set(KEY_EDITOR_OPTION, this.props);
+      if (pluginActivatedRef.current) {
+        return;
+      }
       this.$editor.updateConfigs(configs);
       await this.$editor.activate();
       pluginActivatedRef.current = true;
+      console.warn("editor.plugin.activated", pluginActivatedRef.current);
       useRender(this);
-    }, [pluginActivatedRef.current, plugins, configs]);
+    }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
+    console.log(
+      "editor render",
+      pluginActivatedRef.current,
+      editorRef.current.getUIList("renderView")
+    );
     return /* @__PURE__ */ createElementJsx("div", {
       class: localClass
-    }, pluginActivatedRef.current ? editor.getUIList("renderView") : loading);
+    }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);
   }
   isNotFormElement(e) {
     var tagName = e.target.tagName;
@@ -995,6 +1001,7 @@ class BaseEditor extends UIElement {
     this.$editor.commands.execute("keymap.keyup", e);
   }
   [RESIZE("window") + DEBOUNCE(10)]() {
+    console.log(this.$editor, this);
     this.$editor.emit("resize.window");
   }
 }

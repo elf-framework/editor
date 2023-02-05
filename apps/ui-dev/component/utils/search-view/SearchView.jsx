@@ -1,5 +1,4 @@
 import {
-  renderToHtml,
   useBatch,
   useCallback,
   useEffect,
@@ -59,11 +58,14 @@ export function SearchView({ query = "" }) {
   const handleSelectItem = useCallback(
     (index) => {
       useBatch(async () => {
+        // index 가 같으면 변경을 하지 않는다.
+        if (index === selectedIndex) return;
+
         setSelectedIndex(index);
 
         const currentLink = searchList[index];
 
-        setSearchResult(currentLink.content());
+        setSearchResult(currentLink?.content());
 
         setTimeout(() => {
           const selected = document.querySelector(".search-item.selected");
@@ -82,14 +84,14 @@ export function SearchView({ query = "" }) {
         }, 10);
       });
     },
-    [setSelectedIndex, setSearchResult, searchList, ContentCache]
+    [setSelectedIndex, setSearchResult, searchList, ContentCache, selectedIndex]
   );
 
   const handleInput = (e) => {
     if (e.key === "ArrowDown") {
-      handleSelectItem(selectedIndex + 1);
+      handleSelectItem(Math.min(selectedIndex + 1, searchList.length - 1));
     } else if (e.key === "ArrowUp") {
-      handleSelectItem(Math.max(-1, selectedIndex - 1));
+      handleSelectItem(Math.max(0, selectedIndex - 1));
     } else if (e.key === "Enter") {
       if (currentLink.path) {
         location.assign(currentLink.path);

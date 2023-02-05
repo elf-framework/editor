@@ -105,7 +105,7 @@ export class Tools extends UIElement {
 
       if (emphasized) {
         const options = {
-          root: this.parent.parent.$el.el,
+          root: this.parent.parent.getEl(),
           threshold: 1,
         };
 
@@ -122,7 +122,7 @@ export class Tools extends UIElement {
           });
         }, options);
 
-        observer.observe(this.$el.el);
+        observer.observe(this.getEl());
 
         // resize container
         // eslint-disable-next-line no-undef
@@ -132,7 +132,7 @@ export class Tools extends UIElement {
           });
         });
 
-        resizeObserver.observe(this.parent.parent.$el.el);
+        resizeObserver.observe(this.parent.parent.getEl());
       }
 
       return () => {

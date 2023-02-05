@@ -87,7 +87,7 @@ export class ActionGroup extends UIElement {
 
         if (!this.$el) return;
 
-        resizeObserver.observe(this.$el.el);
+        resizeObserver.observe(this.getEl());
       }
 
       return () => {

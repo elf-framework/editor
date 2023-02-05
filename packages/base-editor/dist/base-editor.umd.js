@@ -943,8 +943,8 @@
         plugins,
         configs
       } = this.props;
+      const editorRef = sapa.useRef(new EditorContext(this, this.props));
       const pluginActivatedRef = sapa.useRef(false);
-      const editor = useEditor();
       const localClass = sapa.useMemo(() => {
         return sapa.classnames(
           "elf--base-editor",
@@ -955,22 +955,28 @@
         );
       }, [className, fullScreen]);
       sapa.useEffect(async () => {
-        if (pluginActivatedRef.current) {
-          return;
-        }
         if (!this.$editor) {
-          this.$editor = new EditorContext(this, this.props);
+          this.$editor = editorRef.current;
         }
         this.$store.set(KEY_EDITOR, this.$editor);
         this.$store.set(KEY_EDITOR_OPTION, this.props);
+        if (pluginActivatedRef.current) {
+          return;
+        }
         this.$editor.updateConfigs(configs);
         await this.$editor.activate();
         pluginActivatedRef.current = true;
+        console.warn("editor.plugin.activated", pluginActivatedRef.current);
         sapa.useRender(this);
-      }, [pluginActivatedRef.current, plugins, configs]);
+      }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
+      console.log(
+        "editor render",
+        pluginActivatedRef.current,
+        editorRef.current.getUIList("renderView")
+      );
       return /* @__PURE__ */ sapa.createElementJsx("div", {
         class: localClass
-      }, pluginActivatedRef.current ? editor.getUIList("renderView") : loading);
+      }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);
     }
     isNotFormElement(e) {
       var tagName = e.target.tagName;
@@ -997,6 +1003,7 @@
       this.$editor.commands.execute("keymap.keyup", e);
     }
     [sapa.RESIZE("window") + sapa.DEBOUNCE(10)]() {
+      console.log(this.$editor, this);
       this.$editor.emit("resize.window");
     }
   }

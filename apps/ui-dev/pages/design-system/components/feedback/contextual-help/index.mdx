@@ -8,7 +8,6 @@ import { VBox, Flex } from "@elf-framework/ui";
 import { MainView } from "~/component/feedback/contextual-help/MainView.jsx"; 
 import { OptionsView } from "~/component/feedback/contextual-help/OptionsView.jsx"; 
 import { PlacementView } from "~/component/feedback/contextual-help/PlacementView.jsx"; 
-import { UIComponentLink } from "~/component/UIComponentLink.jsx";
 
 # {title}
 
@@ -23,10 +22,33 @@ Contextual help shows a user extra information about the state of either an adja
 
 <OptionsView />
 
+&nbsp;
 
+Contextual help can be used to display two types of supplementary
+content in an experience: in-line information (the info icon) or help
+and resources to learn more (the help icon).
 
 ### Popover placement
 
 <PlacementView />
 
+&nbsp;
+
+A popover is positioned in relation to its source. The placement
+property values are the following:
+
+* top
+* top-left
+* top-right
+* bottom
+* bottom-left
+* bottom-right
+* left
+* left-top
+* left-bottom
+* right
+* right-top
+* right-bottom
+
+The default placement value is at the top.
 

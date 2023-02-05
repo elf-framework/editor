@@ -1,4 +1,8 @@
-import { ELEMENT_INSTANCE, ELEMENT_PROPS } from "../../constant/component";
+import {
+  ELEMENT_INSTANCE,
+  ELEMENT_PROPS,
+  FRAGMENT_VNODE_INSTANCE,
+} from "../../constant/component";
 
 let TEMP_COMMENT;
 
@@ -26,10 +30,13 @@ function makeElement(vNodeInstance) {
   el[ELEMENT_INSTANCE] = vNodeInstance;
   el[ELEMENT_PROPS] = { value: vNodeInstance.value };
 
-  vNodeInstance.el = el;
+  // if comment is a child of fragment, set fragment to el
+  el[FRAGMENT_VNODE_INSTANCE] = vNodeInstance.fragment;
+
+  vNodeInstance.setEl(el);
   return vNodeInstance;
 }
 
-export function VNodeCommentRender(vNodeInstance, withChildren, options) {
-  return makeElement(vNodeInstance, withChildren, options);
+export function VNodeCommentRender(vNodeInstance, options) {
+  return makeElement(vNodeInstance, options);
 }

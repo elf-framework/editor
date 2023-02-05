@@ -1,18 +1,43 @@
+import { useStoreValue } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 
 import { Canvas3D } from "./CanvasView";
 
+export function B() {
+  const [value, setValue] = useStoreValue("sample.2", 100);
+  return (
+    <div
+      style={{ position: "absolute", top: 100, left: 100 }}
+      onClick={() => {
+        setValue((v) => {
+          return v + 1;
+        });
+      }}
+    >
+      B - {value}
+    </div>
+  );
+}
+
 export function RenderView() {
+  const [value, setValue] = useStoreValue("sample", 0);
+
   return (
     <View position="relative" height="100%" overflow="hidden">
       <Canvas3D />
       <button
         type="button"
         style={{ position: "absolute" }}
-        onClick={() => console.log("Hello World")}
+        onClick={() => {
+          setValue((v = 0) => {
+            console.log(v);
+            return v + 1;
+          });
+        }}
       >
-        Hello World 2 3
+        Hello World 2 {value} 5
       </button>
+      <B />
     </View>
   );
 }

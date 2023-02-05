@@ -1,7 +1,21 @@
+import {
+  COMPONENT_INSTANCE,
+  FRAGMENT_VNODE_INSTANCE,
+  PARENT_VNODE_INSTANCE,
+  SELF_COMPONENT_INSTANCE,
+  VNODE_INSTANCE,
+} from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { EventMachine } from "../../EventMachine";
+import { RefClass } from "../../HookMachine";
+import {
+  commitMount,
+  commitUnmount,
+  commitUpdated,
+} from "../../renderer/dom/utils";
 import { createComponentInstance } from "../../UIElement";
 import { css } from "../css";
+import { Dom } from "../Dom";
 import {
   isArray,
   isFunction,
@@ -12,6 +26,7 @@ import {
   isValue,
 } from "../func";
 import { getModule, isGlobalForceRender } from "../registElement";
+import { uuidShort } from "../uuid";
 
 const EXPECT_ATTRIBUTES = {
   memoizedProps: true,
@@ -19,15 +34,28 @@ const EXPECT_ATTRIBUTES = {
   el: true,
   children: true,
   instance: true,
+  [PARENT_VNODE_INSTANCE]: true,
+  [SELF_COMPONENT_INSTANCE]: true,
+  [VNODE_INSTANCE]: true,
+  [COMPONENT_INSTANCE]: true,
+  startComment: true,
+  endComment: true,
+  fragmentId: true,
 };
+
+window.instanceList = [];
 
 function stringifyStyle(styleObject) {
   const newStyle = css(styleObject);
-  return Object.keys(newStyle)
-    .map((key) => {
-      return `${key}: ${newStyle[key]};`;
-    })
-    .join(" ");
+
+  const list = [];
+  const keys = Object.keys(newStyle);
+  for (let i = 0, len = keys.length; i < len; i++) {
+    const key = keys[i];
+    list[list.length] = `${key}: ${newStyle[key]};`;
+  }
+
+  return list.join("");
 }
 
 export const children = (el) => {
@@ -135,6 +163,7 @@ export class VNode {
     this.props = props;
     this.children = children;
     this.Component = Component;
+    this.el = null;
 
     this.initializeProps();
     this.initializeChildren();
@@ -161,6 +190,40 @@ export class VNode {
    */
   mounted() {
     // noop
+
+    const selfInstance = this[SELF_COMPONENT_INSTANCE];
+
+    commitMount(selfInstance);
+  }
+
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
+  updated() {
+    // noop
+
+    const selfInstance = this[SELF_COMPONENT_INSTANCE];
+
+    if (selfInstance) {
+      commitUpdated(selfInstance);
+    }
+  }
+
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
+  unmounted() {
+    // noop
+
+    const selfInstance = this[SELF_COMPONENT_INSTANCE];
+
+    if (selfInstance) {
+      commitUnmount(selfInstance);
+    }
   }
 
   runMounted() {
@@ -175,6 +238,12 @@ export class VNode {
       } else {
         this.mounted();
       }
+    }
+  }
+
+  runUnmounted() {
+    if (this.unmounted) {
+      this.unmounted();
     }
   }
 
@@ -239,8 +308,6 @@ export class VNode {
 
   initializeChildren() {
     if (isArray(this.children)) {
-      if (this.props.content?.length) return;
-
       this.children = this.children.filter(isValue).map((child) => {
         if (isString(child) || isNumber(child)) {
           return createVNodeText(child);
@@ -257,22 +324,6 @@ export class VNode {
     this.parentElement = parentElement;
   }
 
-  /**
-   * context 에서 사용할 수 있는 속성을 추출한다.
-   */
-  getContextProps(context, props) {
-    const newProps = context.filterFunction("getProps").flat(Infinity);
-    const newPropList = newProps.filter((it) => {
-      return it.ref === props.ref;
-    });
-
-    newPropList.forEach((it) => {
-      if (isObject(it.props)) {
-        Object.assign(props, it.props);
-      }
-    });
-  }
-
   makeText(divider = "") {
     const arr = this.children
       .map((child) => child.makeText(divider))
@@ -287,8 +338,8 @@ export class VNode {
 
   hasComponent() {
     return (
-      this.children.length === 1 &&
-      this.children[0].type === VNodeType.COMPONENT
+      this.children?.length === 1 &&
+      this.children?.[0].type === VNodeType.COMPONENT
     );
   }
 
@@ -309,12 +360,21 @@ export class VNode {
   toString() {
     return this.makeText();
   }
+
+  getEl() {
+    return this.el;
+  }
+
+  setEl(el) {
+    this.el = el;
+  }
 }
 
 export class VNodeText extends VNode {
   constructor(value) {
     super(VNodeType.TEXT, null, {});
     this.value = value;
+    this.nodeName = "#TEXT";
   }
 
   clone() {
@@ -328,6 +388,8 @@ export class VNodeText extends VNode {
   runMounted() {}
 
   runUpdated() {}
+
+  runUnmounted() {}
 
   makeText() {
     return this.value;
@@ -348,9 +410,15 @@ export class VNodeComment extends VNode {
     return this.value;
   }
 
+  get fragment() {
+    return this[FRAGMENT_VNODE_INSTANCE];
+  }
+
   runMounted() {}
 
   runUpdated() {}
+
+  runUnmounted() {}
 
   makeText() {
     return "";
@@ -360,6 +428,23 @@ export class VNodeComment extends VNode {
 export class VNodeFragment extends VNode {
   constructor(props = {}, children) {
     super(VNodeType.FRAGMENT, "fragment", props || {}, children);
+
+    this.fragmentId = uuidShort();
+    this.startComment = createVNodeComment(`start-${this.fragmentId}`);
+    this.endComment = createVNodeComment(`end-${this.fragmentId}`);
+
+    this.initializeFragment();
+  }
+
+  initializeFragment() {
+    this.children = [this.startComment, ...this.children, this.endComment].map(
+      (it) => {
+        it[FRAGMENT_VNODE_INSTANCE] = this;
+        return it;
+      }
+    );
+
+    this.props.content = this.children;
   }
 
   clone() {
@@ -367,6 +452,14 @@ export class VNodeFragment extends VNode {
       this.props,
       this.children.map((it) => it.clone())
     );
+  }
+
+  get startFragment() {
+    return this.startComment;
+  }
+
+  get endFragment() {
+    return this.endComment;
   }
 }
 
@@ -390,19 +483,40 @@ export class VNodeComponent extends VNode {
     return this.LastComponent.__proto__.name === "";
   }
 
+  getEl() {
+    return this.instance?.getEl();
+  }
+
+  setEl(el) {
+    this.instance.$el = Dom.create(el);
+  }
+
+  /**
+   * DomTree 에 추가되었을 때, 호출된다.
+   */
   mounted() {
     this.instance?.onMounted();
   }
 
+  /**
+   * DomTree 에서 변경되었을 때, 호출된다.
+   */
   updated() {
     this.instance?.onUpdated();
+  }
+
+  /**
+   * DomTree 에서 제외되었을 때, 호출된다.
+   */
+  unmounted() {
+    this.instance?.onUnmounted();
   }
 
   getModule() {
     // vite-plugin-sapa 에서 변경 가능성이 있는 컴포넌트들은 미리 __timestamp 를 붙여준다.
     if (this.Component.__timestamp) {
-      const a = getModule(this.Component);
-      return a;
+      const currentModule = getModule(this.Component);
+      return currentModule;
     }
 
     return this.Component;
@@ -427,10 +541,6 @@ export class VNodeComponent extends VNode {
   makeClassInstance(options) {
     const props = { ...this.props };
 
-    // ref 가 있을 때는 context 에서 props 를 가지고 온다.
-    if (props.ref) {
-      this.getContextProps(options.context, props);
-    }
     // 등록된 Component 중에 새로운 Component 를 가지고 온다.
     const newComponent = this.getModule() || this.Component;
 
@@ -445,6 +555,7 @@ export class VNodeComponent extends VNode {
     const hooks = oldInstance?.copyHooks();
     const state = oldInstance?.state;
     const oldId = oldInstance?.id;
+    const refs = oldInstance?.refs;
     const children = oldInstance?.children || {};
 
     this.instance = createComponentInstance(
@@ -456,6 +567,10 @@ export class VNodeComponent extends VNode {
 
     if (oldId) {
       this.instance.setId(oldId);
+    }
+
+    if (refs) {
+      this.instance.setRefs(refs);
     }
 
     if (hooks && hooks.__stateHooks?.length) {
@@ -474,8 +589,20 @@ export class VNodeComponent extends VNode {
       this.instance.setChildren(children);
     }
 
+    // props 에 ref 가 있으면 새로운 instance 를 등록한다.
+    if (props?.ref instanceof RefClass) {
+      props?.ref.setCurrent(this.instance);
+    }
+
+    // instance 에서 vnode 를 사용할 수 있도록 설정한다.
+    this.instance[VNODE_INSTANCE] = this;
+
     // 새로운 리소스를 만들었으니 이전 리소스를 제거한다.
-    oldInstance?.destroy();
+    //
+    // Hook 을 설정한 이후에 이전 리소스를 제거하다 보니
+    // 무조건 children 이 없어지는 문제가 발생함.
+    // 다시 소스가 바뀌었을 때 대응이 안됨
+    // oldInstance?.destroy();
 
     return this.instance;
   }

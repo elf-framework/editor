@@ -734,14 +734,6 @@ export class Dom {
     this.el.scrollIntoView();
   }
 
-  get scrollTop() {
-    if (this.el === document.body) {
-      return Dom.getScrollTop();
-    }
-
-    return this.el.scrollTop;
-  }
-
   get scrollLeft() {
     if (this.el === document.body) {
       return Dom.getScrollLeft();
@@ -800,7 +792,7 @@ export class Dom {
   }
 
   hasChild(child) {
-    const childNode = child.el || child;
+    const childNode = child?.el || child;
 
     return this.el === childNode ? false : this.el?.contains(childNode);
   }

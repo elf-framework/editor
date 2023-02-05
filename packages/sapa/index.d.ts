@@ -477,6 +477,10 @@ declare module "@elf-framework/sapa" {
     children?: any[]
   ): VNode;
 
+  /**
+   *
+   * @deprecated
+   */
   export function createComponentList(...args: any[]): VNode[];
 
   export function createElement(
@@ -643,7 +647,7 @@ declare module "@elf-framework/sapa" {
    */
   export function useStoreValue<T>(
     key: string,
-    defaultValut: T
+    defaultValue?: T
   ): [T, (value: T) => void];
 
   /**

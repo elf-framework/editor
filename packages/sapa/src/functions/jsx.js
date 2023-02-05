@@ -1,4 +1,4 @@
-import { isArray, isString, isValue } from "./func";
+import { isArray, isValue } from "./func";
 import {
   createVNode,
   createVNodeComment,
@@ -12,7 +12,7 @@ export function createComponent(Component, props = {}, children = []) {
 
   return createVNodeComponent({
     props: props || {},
-    children,
+    children: children.length ? children : undefined,
     Component,
   });
 }
@@ -23,7 +23,7 @@ export function createComponentFragment(Component, props = {}, children = []) {
 
   return createVNodeFragment({
     props: props || {},
-    children,
+    children: children.length ? children : undefined,
     Component,
   });
 }
@@ -35,33 +35,14 @@ export function createComment(children = []) {
   return createVNodeComment(children[0] || "");
 }
 
-export function createComponentList(...args) {
-  return args.map((it) => {
-    let ComponentName;
-    let props = {};
-    let children = [];
-    if (isString(it)) {
-      ComponentName = it;
-    } else if (isArray(it)) {
-      [ComponentName, props = {}, children = []] = it;
-    }
-
-    if (children.length) {
-      return createComponent(
-        ComponentName,
-        props || {},
-        createComponentList(children)
-      );
-    }
-
-    return createComponent(ComponentName, props);
-  });
-}
-
-export function createElement(Component, props, children = []) {
+export function createElement(Component, props, ...children) {
   children = children.flat(Infinity);
 
-  return createVNode({ tag: Component, props, children });
+  return createVNode({
+    tag: Component,
+    props,
+    children: children.length ? children : undefined,
+  });
 }
 
 export function createElementJsx(Component, props = {}, ...children) {
@@ -93,7 +74,11 @@ export const HTMLComment = new Object();
  *
  */
 export const jsx = (tag, props) => {
-  const { children, ...extraProps } = props;
+  let { children = [], ...extraProps } = props;
+
+  if (!isArray(children)) {
+    children = [children];
+  }
 
   return createElementJsx(tag, extraProps, ...children);
 };
