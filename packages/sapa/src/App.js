@@ -110,22 +110,29 @@ export const hydrate = (ElementNode, opt = {}) => {
  * 특정 컴포넌트에 렌더링하기
  *
  */
-export const potal = (ElementClass, opt = {}) => {
+export const potal = (ElementNode, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
 
-  if (ElementClass instanceof VNode) {
-    const rootVNode = ElementClass;
-    ElementClass = () => rootVNode;
+  let RootElement = ElementNode;
+
+  // 함수로 들어오면 컴포넌트로 변환한다.
+  if (isFunction(ElementNode)) {
+    RootElement = () => createElementJsx(ElementNode);
+  } else if (ElementNode instanceof VNode) {
+    // VNode 로 들어오면 컴포넌트로 변환한다.
+    RootElement = () => ElementNode;
   }
 
-  const app = createComponentInstance(ElementClass, null, {
+  const app = createComponentInstance(RootElement, null, {
     ...opt,
     renderer: renderVNodeComponent,
   });
 
   renderComponent(app, $container);
 
-  return app;
+  const family = app.getFamily();
+
+  return family.family[1];
 };
 
 export async function renderToHtml(ElementClass, opt) {

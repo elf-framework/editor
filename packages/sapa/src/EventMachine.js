@@ -8,6 +8,7 @@ import {
 import { isFunction, collectProps, isObject } from "./functions/func";
 import { MagicMethod } from "./functions/MagicMethod";
 import {
+  getRootElementInstanceList,
   isGlobalForceRender,
   removeRenderCallback,
   renderComponent,
@@ -212,17 +213,6 @@ export class EventMachine extends HookMachine {
 
   get child() {
     return Object.values(this.children)[0];
-  }
-
-  /**
-   * 자식과 같은 컴포넌트를 가지는지 체크한다.
-   *
-   */
-  isNestedComponent() {
-    const oldEl = this.getEl();
-    return Object.values(this.children).some((child) => {
-      return oldEl === child.getEl();
-    });
   }
 
   setChildren(children) {

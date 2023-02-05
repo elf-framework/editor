@@ -874,7 +874,7 @@ var __privateMethod = (obj, member, method) => {
     style: style2,
     variant = "default"
   }) {
-    const root = sapa.potal(
+    const tooltipInstance = sapa.potal(
       /* @__PURE__ */ sapa.createElementJsx(
         Tooltip,
         {
@@ -890,7 +890,7 @@ var __privateMethod = (obj, member, method) => {
       ),
       options
     );
-    return root.firstChild;
+    return tooltipInstance;
   }
   const cssProperties$P = makeCssVariablePrefixMap("--elf--action-group", {
     alignItems: true,
@@ -2372,8 +2372,11 @@ var __privateMethod = (obj, member, method) => {
     }
   }
   function toast({ content = "", options = {}, ...extraProps }) {
-    const rootInstance = sapa.potal(/* @__PURE__ */ sapa.createElementJsx(Toast, { ...extraProps }, content), options);
-    return rootInstance.firstChild;
+    const toastInstance = sapa.potal(
+      /* @__PURE__ */ sapa.createElementJsx(Toast, { ...extraProps }, content),
+      options
+    );
+    return toastInstance;
   }
   registerComponent("toast", Toast);
   registerComponent("Toast", Toast);

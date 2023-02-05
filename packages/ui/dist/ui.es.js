@@ -872,7 +872,7 @@ function tooltip({
   style: style2,
   variant = "default"
 }) {
-  const root = potal(
+  const tooltipInstance = potal(
     /* @__PURE__ */ createElementJsx(
       Tooltip,
       {
@@ -888,7 +888,7 @@ function tooltip({
     ),
     options
   );
-  return root.firstChild;
+  return tooltipInstance;
 }
 const cssProperties$P = makeCssVariablePrefixMap("--elf--action-group", {
   alignItems: true,
@@ -2370,8 +2370,11 @@ class Toast extends UIElement {
   }
 }
 function toast({ content = "", options = {}, ...extraProps }) {
-  const rootInstance = potal(/* @__PURE__ */ createElementJsx(Toast, { ...extraProps }, content), options);
-  return rootInstance.firstChild;
+  const toastInstance = potal(
+    /* @__PURE__ */ createElementJsx(Toast, { ...extraProps }, content),
+    options
+  );
+  return toastInstance;
 }
 registerComponent("toast", Toast);
 registerComponent("Toast", Toast);

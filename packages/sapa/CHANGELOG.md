@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.241
+
+### Patch Changes
+
+- fixed potal instance bug
+
 ## 0.0.239
 
 ### Patch Changes

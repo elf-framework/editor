@@ -1953,12 +1953,6 @@ const _EventMachine = class extends HookMachine {
   get child() {
     return Object.values(this.children)[0];
   }
-  isNestedComponent() {
-    const oldEl = this.getEl();
-    return Object.values(this.children).some((child) => {
-      return oldEl === child.getEl();
-    });
-  }
   setChildren(children2) {
     Object.entries(children2).forEach(([id, instance]) => {
       if (instance) {
@@ -5192,18 +5186,21 @@ const hydrate = (ElementNode, opt = {}) => {
   registRootElementInstance(app, $container.el);
   return app;
 };
-const potal = (ElementClass, opt = {}) => {
+const potal = (ElementNode, opt = {}) => {
   const $container = Dom.create(opt.container || document.body);
-  if (ElementClass instanceof VNode) {
-    const rootVNode = ElementClass;
-    ElementClass = () => rootVNode;
+  let RootElement = ElementNode;
+  if (isFunction(ElementNode)) {
+    RootElement = () => createElementJsx$1(ElementNode);
+  } else if (ElementNode instanceof VNode) {
+    RootElement = () => ElementNode;
   }
-  const app = createComponentInstance(ElementClass, null, {
+  const app = createComponentInstance(RootElement, null, {
     ...opt,
     renderer: renderVNodeComponent
   });
   renderComponent(app, $container);
-  return app;
+  const family = app.getFamily();
+  return family.family[1];
 };
 async function renderToHtml(ElementClass, opt) {
   if (ElementClass instanceof VNode) {

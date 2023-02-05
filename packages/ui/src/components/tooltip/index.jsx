@@ -168,7 +168,7 @@ export function tooltip({
   style,
   variant = "default",
 }) {
-  const root = potal(
+  const tooltipInstance = potal(
     <Tooltip
       variant={variant}
       delay={delay}
@@ -183,5 +183,5 @@ export function tooltip({
     options
   );
 
-  return root.firstChild;
+  return tooltipInstance;
 }

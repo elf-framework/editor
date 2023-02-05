@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.241
+
+### Patch Changes
+
+- fixed potal instance bug
+
+- Updated dependencies []:
+  - @elf-framework/sapa@0.0.241
+
 ## 0.0.239
 
 ### Patch Changes
