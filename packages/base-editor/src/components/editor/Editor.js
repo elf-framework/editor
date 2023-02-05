@@ -63,8 +63,8 @@ export async function useCommand(key, ...args) {
  * return command callback to use command by function call
  *
  */
-export function useGetCommand(key) {
-  return useEditor()?.commands?.get(key);
+export function useGetCommand(key, ...args) {
+  return useEditor()?.commands?.get(key, ...args);
 }
 
 /**

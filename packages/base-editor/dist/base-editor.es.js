@@ -147,14 +147,19 @@ class CommandManager {
       this.localCommands[command.command] = callback;
     }
   }
-  getCallback(command) {
+  getCallback(command, ...args) {
     if (typeof command === "function") {
       return command;
     }
-    return this.localCommands[command];
+    if (args.length === 0) {
+      return this.localCommands[command];
+    }
+    return (...newArgs) => {
+      return this.localCommands[command](...args, ...newArgs);
+    };
   }
-  get(command) {
-    return this.getCallback(command);
+  get(command, ...args) {
+    return this.getCallback(command, ...args);
   }
   execute(command, ...args) {
     const callback = this.getCallback(command);
@@ -884,9 +889,9 @@ async function useCommand(key, ...args) {
   var _a, _b;
   return await ((_b = (_a = useEditor()) == null ? void 0 : _a.commands) == null ? void 0 : _b.emit(key, ...args));
 }
-function useGetCommand(key) {
+function useGetCommand(key, ...args) {
   var _a, _b;
-  return (_b = (_a = useEditor()) == null ? void 0 : _a.commands) == null ? void 0 : _b.get(key);
+  return (_b = (_a = useEditor()) == null ? void 0 : _a.commands) == null ? void 0 : _b.get(key, ...args);
 }
 function useI18n(key, params = {}) {
   var _a, _b;
@@ -967,11 +972,6 @@ class BaseEditor extends UIElement {
       console.warn("editor.plugin.activated", pluginActivatedRef.current);
       useRender(this);
     }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
-    console.log(
-      "editor render",
-      pluginActivatedRef.current,
-      editorRef.current.getUIList("renderView")
-    );
     return /* @__PURE__ */ createElementJsx("div", {
       class: localClass
     }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);

@@ -1,5 +1,11 @@
 # @elf-framework/base-editor
 
+## 0.0.240
+
+### Patch Changes
+
+- support predefined arguments for useGetCommand
+
 ## 0.0.239
 
 ### Patch Changes

@@ -63,16 +63,23 @@ export class CommandManager {
     }
   }
 
-  getCallback(command) {
+  getCallback(command, ...args) {
     if (typeof command === "function") {
       return command;
     }
 
-    return this.localCommands[command];
+    if (args.length === 0) {
+      return this.localCommands[command];
+    }
+
+    // ...args 가 사전에 정의 되었을 때  커맨드 실행 시점에 같이 적용해준다.
+    return (...newArgs) => {
+      return this.localCommands[command](...args, ...newArgs);
+    };
   }
 
-  get(command) {
-    return this.getCallback(command);
+  get(command, ...args) {
+    return this.getCallback(command, ...args);
   }
 
   execute(command, ...args) {

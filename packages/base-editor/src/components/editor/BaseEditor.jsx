@@ -22,37 +22,6 @@ const KEY_EDITOR = "editor";
 const KEY_EDITOR_OPTION = "editorOption";
 
 export class BaseEditor extends UIElement {
-  // initialize() {
-  //   super.initialize();
-
-  //   console.log("editor initialize");
-
-  //   if (!this.$editor) {
-  //     this.$editor = new EditorContext(this, this.props);
-  //   }
-
-  //   this.$store.set(KEY_EDITOR, this.$editor);
-  //   this.$store.set(KEY_EDITOR_OPTION, this.props);
-  // }
-
-  // async load() {
-  //   // start to load plugins
-  //   const { configs } = this.props;
-  //   this.$editor.updateConfigs(configs);
-  //   console.warn("editor plugin load");
-  //   await this.activate();
-  // }
-
-  // async activate() {
-  //   // start to load plugins
-  //   await this.$editor.activate();
-
-  //   // send message
-  //   this.$store.initValue("editor.plugin.activated", (v = 0) => v + 1);
-  //   console.warn("editor.plugin.activated");
-  //   this.render();
-  // }
-
   template() {
     const {
       class: className = "",
@@ -109,11 +78,6 @@ export class BaseEditor extends UIElement {
       useRender(this);
     }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
 
-    console.log(
-      "editor render",
-      pluginActivatedRef.current,
-      editorRef.current.getUIList("renderView")
-    );
     return (
       <div class={localClass}>
         {pluginActivatedRef.current

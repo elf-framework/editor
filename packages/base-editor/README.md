@@ -154,6 +154,12 @@ return command callback function to run command
 const commandCallback = useGetCommand("my-command");
 
 commandCallback(1, 2, 3);
+
+// or predefined arguments 
+
+const commandCallback = useGetCommand("my-command", 1, 2);
+
+commandCallback(3)  //  is equals useGetCommand("my-command")(1, 2, 3);
 ```
 
 ## Plugin Manager

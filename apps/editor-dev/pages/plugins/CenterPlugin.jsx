@@ -1,3 +1,4 @@
+import { useGetCommand } from "@elf-framework/base-editor";
 import { useStoreValue } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 
@@ -21,6 +22,7 @@ export function B() {
 
 export function RenderView() {
   const [value, setValue] = useStoreValue("sample", 0);
+  const testCallback = useGetCommand("test", 1, 2, 3);
 
   return (
     <View position="relative" height="100%" overflow="hidden">
@@ -33,6 +35,8 @@ export function RenderView() {
             console.log(v);
             return v + 1;
           });
+
+          testCallback(4);
         }}
       >
         Hello World 2 {value} 5
@@ -45,5 +49,12 @@ export function RenderView() {
 export async function CenterPlugin(editor) {
   editor.registerGroupUI("center-panel", {
     renderView: <RenderView />,
+  });
+
+  editor.registerCommand({
+    command: "test",
+    execute: function (editor, ...args) {
+      console.log("test command (", ...args, ")");
+    },
   });
 }
