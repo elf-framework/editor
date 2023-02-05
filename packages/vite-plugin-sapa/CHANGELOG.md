@@ -1,5 +1,11 @@
 # vite-plugin-sapa
 
+## 0.0.239
+
+### Patch Changes
+
+- refactoring hook system
+
 ## 0.0.216
 
 ### Patch Changes

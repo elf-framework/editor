@@ -1,5 +1,15 @@
 # @elf-framework/base-editor
 
+## 0.0.239
+
+### Patch Changes
+
+- refactoring hook system
+
+- Updated dependencies []:
+  - @elf-framework/sapa@0.0.239
+  - @elf-framework/ui@0.0.239
+
 ## 0.0.237
 
 ### Patch Changes
