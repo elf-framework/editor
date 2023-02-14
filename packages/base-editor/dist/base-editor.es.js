@@ -1001,7 +1001,6 @@ class BaseEditor extends UIElement {
     this.$editor.commands.execute("keymap.keyup", e);
   }
   [RESIZE("window") + DEBOUNCE(10)]() {
-    console.log(this.$editor, this);
     this.$editor.emit("resize.window");
   }
 }

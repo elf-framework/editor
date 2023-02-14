@@ -1,6 +1,7 @@
 .elf--dialog {
     --elf--dialog-position: relative;
     --elf--dialog-width: 240px;
+    --elf--dialog-height: auto;
     --elf--dialog-background-color: var(--dialog-color-background-default);
     --elf--dialog-border-color: var(--color-gray-1);
     --elf--dialog-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
@@ -8,9 +9,11 @@
     --elf--dialog-padding: 20px;
 
     position: var(--elf--dialog-position);
-    display: block;
+    display: flex;
+    flex-direction: column;
     background-color: var(--elf--dialog-background-color);
     width: var(--elf--dialog-width);
+    height: var(--elf--dialog-height);
 
     border: 0.5px solid var(--elf--dialog-border-color);
     box-shadow: var(--elf--dialog-box-shadow);
@@ -25,6 +28,7 @@
     }
 
     > .elf--dialog-divider {
+        flex: none;
         display: block;
         height: 1px;
         background-color: var(--elf--dialog-border-color);
@@ -47,6 +51,7 @@
         align-items: center;
         padding: 10px var(--elf--dialog-padding);
         padding-top: 0px;
+        flex: none;
 
         > .elf--dialog-title-text {
             flex: 1 1 auto;
@@ -78,6 +83,7 @@
     }
 
     > .elf--dialog-content {
+        flex: 1 1 auto;
         padding: 10px var(--elf--dialog-padding);
         text-align: left;
 
@@ -88,30 +94,34 @@
                 padding: 8px 16px;
             }
         }
+    }
 
-        > .elf--dialog-content-tools {
+
+    .elf--dialog-footer {
+        flex: none;
+        padding: 10px var(--elf--dialog-padding);        
+        display: flex;
+        margin-top: var(--elf--dialog-padding);
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        position: relative;
+        overflow: auto;
+
+        > .panel {
+            flex: 1 1 auto;
             display: flex;
-            margin-top: var(--elf--dialog-padding);
             align-items: center;
             justify-content: flex-end;
-            gap: 10px;
-            position: relative;
+            column-gap: 8px;
 
-            > .panel {
-                flex: 1 1 auto;
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                column-gap: 8px;
-
-                &.left {
-                    justify-content: flex-start;
-                }
-            }            
-
-            > * {
-                min-width: 60px;
+            &.left {
+                justify-content: flex-start;
             }
+        }            
+
+        > * {
+            min-width: 60px;
         }
     }
 }

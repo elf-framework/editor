@@ -1,5 +1,17 @@
 # @elf-framework/sapa
 
+## 0.0.244
+
+### Patch Changes
+
+- refactoring reconcile
+
+## 0.0.242
+
+### Patch Changes
+
+- fixed fragment vs component diff
+
 ## 0.0.241
 
 ### Patch Changes

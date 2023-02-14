@@ -1682,12 +1682,12 @@ var __privateMethod = (obj, member, method) => {
     color: true,
     fontSize: true,
     fontWeight: true,
-    height: true,
     padding: true,
     borderRadius: true,
     borderColor: true,
     boxShadow: true,
-    width: true
+    width: true,
+    height: true
   });
   class Dialog extends sapa.UIElement {
     initState() {
@@ -1762,7 +1762,7 @@ var __privateMethod = (obj, member, method) => {
           onClick: () => this.close()
         },
         "×"
-      ) : void 0), noBorder ? void 0 : /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-divider" }), /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-text" }, this.props.content || ""), /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-content-tools" }, footer ? footer : this.makeDefaultTools())));
+      ) : void 0), noBorder ? void 0 : /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-divider" }), /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-text" }, this.props.content || "")), /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-footer" }, footer ? footer : this.makeDefaultTools()));
     }
   }
   registerComponent("dialog", Dialog);

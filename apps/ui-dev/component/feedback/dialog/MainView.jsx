@@ -23,6 +23,7 @@ export function MainView() {
           visible={true}
           style={{
             width: 400,
+            // height: 200,
           }}
           noBorder
           title="Dialog"

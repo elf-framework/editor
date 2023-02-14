@@ -251,8 +251,14 @@ export function refreshModule(id, newModules) {
   });
 }
 
-export function getModule(Component) {
+export function getModulePathId(Component) {
   const id = _moduleMap.get(Component);
+
+  return id;
+}
+
+export function getModule(Component) {
+  const id = getModulePathId(Component);
   if (!id) {
     return;
   }

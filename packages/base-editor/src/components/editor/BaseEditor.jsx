@@ -119,7 +119,6 @@ export class BaseEditor extends UIElement {
   }
 
   [RESIZE("window") + DEBOUNCE(10)]() {
-    console.log(this.$editor, this);
     this.$editor.emit("resize.window");
   }
 }

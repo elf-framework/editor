@@ -1003,7 +1003,6 @@
       this.$editor.commands.execute("keymap.keyup", e);
     }
     [sapa.RESIZE("window") + sapa.DEBOUNCE(10)]() {
-      console.log(this.$editor, this);
       this.$editor.emit("resize.window");
     }
   }

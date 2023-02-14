@@ -11,12 +11,12 @@ const cssProperties = makeCssVariablePrefixMap("--elf--dialog", {
   color: true,
   fontSize: true,
   fontWeight: true,
-  height: true,
   padding: true,
   borderRadius: true,
   borderColor: true,
   boxShadow: true,
   width: true,
+  height: true,
 });
 
 export class Dialog extends UIElement {
@@ -118,9 +118,9 @@ export class Dialog extends UIElement {
         {noBorder ? undefined : <div class="elf--dialog-divider" />}
         <div class="elf--dialog-content">
           <div class="elf--dialog-text">{this.props.content || ""}</div>
-          <div class="elf--dialog-content-tools">
-            {footer ? footer : this.makeDefaultTools()}
-          </div>
+        </div>
+        <div class="elf--dialog-footer">
+          {footer ? footer : this.makeDefaultTools()}
         </div>
       </div>
     );

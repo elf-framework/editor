@@ -5,6 +5,7 @@ import {
   FRAGMENT_VNODE_INSTANCE,
   IS_FRAGMENT_ITEM,
   SELF_COMPONENT_INSTANCE,
+  VNODE_INSTANCE,
 } from "../../constant/component";
 import { VNodeType } from "../../constant/vnode";
 import { Dom } from "../../functions/Dom";
@@ -321,7 +322,7 @@ const patch = {
 
   addNewVNode(parentElement, oldEl, newVNode, options) {
     const componentInstance = DomRenderer(newVNode, options);
-    const newEl = componentInstance.el;
+    const newEl = componentInstance.getEl();
 
     if (newEl) {
       parentElement.insertBefore(newEl, oldEl);
@@ -627,6 +628,25 @@ function updateChangedElement(parentElement, oldEl, newVNode, options = {}) {
 
   // newVNode 가 Component 인 경우
   if (check.isVNodeComponent(newVNode)) {
+    // newVNode 가 Component 이고 oldEl 이 Fragment 인 경우
+    // fragment 의 상위 instance 를 기준으로 다시 비교를 해보자.
+    if (check.isVNodeFragment(oldEl)) {
+      const oldInstance = oldEl[SELF_COMPONENT_INSTANCE];
+      const oldVNode = oldInstance[VNODE_INSTANCE];
+
+      if (oldVNode.LastComponent.name === oldVNode.LastComponent.name) {
+        if (oldVNode.LastComponent === newVNode.LastComponent) {
+          // 이름이 같고, LastComponent 가 같으면 reload 한다.
+          patch.reloadComponentInstance(oldInstance, newVNode, options);
+        } else {
+          // 이름은 같지만, LastComponent 가 다르면 변경된 것으로 인지하고 새로운 컴포넌트로 다시 생성한다.
+          patch.makeComponentInstance(oldInstance, newVNode, options);
+        }
+
+        return;
+      }
+    }
+
     check.checkRefClass(oldEl, newVNode, options);
   } else {
     // newVNode 가 Component 가 아닌 경우
@@ -648,7 +668,6 @@ function updatePropertyAndChildren(oldEl, newVNode, options = {}) {
 }
 
 export function updateChildren(parentElement, newVNode, options = {}) {
-  // console.log("updateChildren", parentElement, newVNode, options);
   // check children count
   if (!parentElement?.hasChildNodes() && !newVNode.children?.length) {
     return;
@@ -722,6 +741,7 @@ function updateElementList(
   isFragment,
   options = {}
 ) {
+  console.log(oldChildren, newChildren);
   if (isFragment) {
     const nextOldChildren = [...oldChildren];
     const nextNewChildren = [...newChildren];
@@ -799,7 +819,6 @@ function updateElement(
     } else {
       patch.appendChild(parentElement, newVNode, options, isFragment);
     }
-
     return;
   }
 
@@ -807,6 +826,21 @@ function updateElement(
   if (!newVNode && oldEl) {
     patch.removeChild(parentElement, oldEl, options);
     return;
+  }
+
+  // fragment 를 주석부터 시작할 때
+  if (check.isVNodeFragment(oldEl) && check.isVNodeComment(newVNode)) {
+    // comment 가 Fragment VNODE Instance 를 가지고 있다면
+    // 비교 대상을 FragmentVNodeInstance 로 대체해서 비교한다.
+    if (newVNode[FRAGMENT_VNODE_INSTANCE]) {
+      var oldChildren = fragmentVNodeChildren(oldEl).map((it) => it.getEl());
+      var newChildren = fragmentVNodeChildren(
+        newVNode[FRAGMENT_VNODE_INSTANCE]
+      );
+
+      updateElementList(parentElement, oldChildren, newChildren, true, options);
+      return;
+    }
   }
 
   // oldEl 이 fragment 인데, newVNode 가 fragment 인 경우
@@ -949,6 +983,7 @@ const vNodeChildren = (vnode) => {
 export function Reconcile(oldInstance, newVNode, options = {}) {
   options = Object.assign({}, options);
   const oldEl = oldInstance.getEl();
+
   if (oldEl?.nodeType && oldEl?.nodeType !== 11) {
     // fragment 가 아니면 비교를 시작한다.
     updateElement(oldEl.parentElement, oldEl, newVNode, false, options);

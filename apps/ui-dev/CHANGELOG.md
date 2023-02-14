@@ -1,5 +1,16 @@
 # ui-dev
 
+## 1.0.49
+
+### Patch Changes
+
+- support dialog height css
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.243
+  - @elf-framework/design-tokens@0.0.243
+  - @elf-framework/ui@0.0.243
+
 ## 1.0.48
 
 ### Patch Changes

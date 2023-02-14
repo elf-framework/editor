@@ -1680,12 +1680,12 @@ const cssProperties$G = makeCssVariablePrefixMap("--elf--dialog", {
   color: true,
   fontSize: true,
   fontWeight: true,
-  height: true,
   padding: true,
   borderRadius: true,
   borderColor: true,
   boxShadow: true,
-  width: true
+  width: true,
+  height: true
 });
 class Dialog extends UIElement {
   initState() {
@@ -1760,7 +1760,7 @@ class Dialog extends UIElement {
         onClick: () => this.close()
       },
       "×"
-    ) : void 0), noBorder ? void 0 : /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-divider" }), /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-content" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-text" }, this.props.content || ""), /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-content-tools" }, footer ? footer : this.makeDefaultTools())));
+    ) : void 0), noBorder ? void 0 : /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-divider" }), /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-content" }, /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-text" }, this.props.content || "")), /* @__PURE__ */ createElementJsx("div", { class: "elf--dialog-footer" }, footer ? footer : this.makeDefaultTools()));
   }
 }
 registerComponent("dialog", Dialog);

@@ -534,7 +534,7 @@ export class VNodeComponent extends VNode {
     // 미리 로드된 컴포넌트는 항상 새로고침 하지 않은 상태로 처리한다
     if (!localComponent) return false;
 
-    return this.LastComponent !== this.getModule();
+    return this.LastComponent !== localComponent;
   }
 
   // class/function instance 생성

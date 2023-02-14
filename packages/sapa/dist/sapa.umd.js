@@ -2575,7 +2575,9 @@ var __privateSet = (obj, member, value, setter) => {
           return NewFunctionComponent;
         }
         isInstanceOf(...args) {
-          return args.some((TargetClass) => NewFunctionComponent === TargetClass);
+          return args.some((TargetClass) => {
+            return NewFunctionComponent === TargetClass;
+          });
         }
         template() {
           return NewFunctionComponent.call(this, this.props);
@@ -3068,7 +3070,7 @@ var __privateSet = (obj, member, value, setter) => {
       const localComponent = this.getModule();
       if (!localComponent)
         return false;
-      return this.LastComponent !== this.getModule();
+      return this.LastComponent !== localComponent;
     }
     makeClassInstance(options) {
       var _a;
@@ -3627,7 +3629,7 @@ var __privateSet = (obj, member, value, setter) => {
     },
     addNewVNode(parentElement, oldEl, newVNode, options) {
       const componentInstance = DomRenderer(newVNode, options);
-      const newEl = componentInstance.el;
+      const newEl = componentInstance.getEl();
       if (newEl) {
         parentElement.insertBefore(newEl, oldEl);
         parentElement.removeChild(oldEl);
@@ -3799,6 +3801,18 @@ var __privateSet = (obj, member, value, setter) => {
       return;
     }
     if (check.isVNodeComponent(newVNode)) {
+      if (check.isVNodeFragment(oldEl)) {
+        const oldInstance = oldEl[SELF_COMPONENT_INSTANCE];
+        const oldVNode = oldInstance[VNODE_INSTANCE];
+        if (oldVNode.LastComponent.name === oldVNode.LastComponent.name) {
+          if (oldVNode.LastComponent === newVNode.LastComponent) {
+            patch.reloadComponentInstance(oldInstance, newVNode, options);
+          } else {
+            patch.makeComponentInstance(oldInstance, newVNode, options);
+          }
+          return;
+        }
+      }
       check.checkRefClass(oldEl, newVNode, options);
     } else {
       patch.replaceWith(oldEl, newVNode, options);
@@ -3843,6 +3857,7 @@ var __privateSet = (obj, member, value, setter) => {
     }
   }
   function updateElementList(parentElement, oldChildren, newChildren, isFragment, options = {}) {
+    console.log(oldChildren, newChildren);
     if (isFragment) {
       const nextOldChildren = [...oldChildren];
       const nextNewChildren = [...newChildren];
@@ -3895,6 +3910,16 @@ var __privateSet = (obj, member, value, setter) => {
     if (!newVNode && oldEl) {
       patch.removeChild(parentElement, oldEl, options);
       return;
+    }
+    if (check.isVNodeFragment(oldEl) && check.isVNodeComment(newVNode)) {
+      if (newVNode[FRAGMENT_VNODE_INSTANCE]) {
+        var oldChildren = fragmentVNodeChildren(oldEl).map((it) => it.getEl());
+        var newChildren = fragmentVNodeChildren(
+          newVNode[FRAGMENT_VNODE_INSTANCE]
+        );
+        updateElementList(parentElement, oldChildren, newChildren, true, options);
+        return;
+      }
     }
     if (check.isVNodeFragment(oldEl) && check.isVNodeFragment(newVNode)) {
       var oldChildren = fragmentVNodeChildren(oldEl).map((it) => it.getEl());
@@ -4246,8 +4271,12 @@ var __privateSet = (obj, member, value, setter) => {
       _moduleMap.set(newModules[key], id);
     });
   }
-  function getModule(Component) {
+  function getModulePathId(Component) {
     const id = _moduleMap.get(Component);
+    return id;
+  }
+  function getModule(Component) {
+    const id = getModulePathId(Component);
     if (!id) {
       return;
     }
@@ -5486,6 +5515,7 @@ var __privateSet = (obj, member, value, setter) => {
   exports2.getContextProvider = getContextProvider;
   exports2.getCurrentComponent = getCurrentComponent;
   exports2.getModule = getModule;
+  exports2.getModulePathId = getModulePathId;
   exports2.getRootElementInstanceList = getRootElementInstanceList;
   exports2.getVariable = getVariable;
   exports2.hasVariable = hasVariable;
