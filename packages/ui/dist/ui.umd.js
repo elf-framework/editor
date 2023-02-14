@@ -2950,15 +2950,23 @@ var __privateMethod = (obj, member, method) => {
       }
     }
     [sapa.FOCUSIN("$input")](e) {
-      this.setState({
-        focused: true
-      });
+      this.$el.el.classList.add("focused");
+      this.setState(
+        {
+          focused: true
+        },
+        false
+      );
       this.runCallback(this.props.onFocus, e);
     }
     [sapa.FOCUSOUT("$input")](e) {
-      this.setState({
-        focused: false
-      });
+      this.$el.el.classList.remove("focused");
+      this.setState(
+        {
+          focused: false
+        },
+        false
+      );
       this.runCallback(this.props.onBlur, e);
     }
     get value() {

@@ -1,5 +1,11 @@
 # @elf-framework/ui
 
+## 0.0.245
+
+### Patch Changes
+
+- fixed input focusin/focusout rerender
+
 ## 0.0.244
 
 ### Patch Changes
