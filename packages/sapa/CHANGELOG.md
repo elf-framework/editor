@@ -1,5 +1,11 @@
 # @elf-framework/sapa
 
+## 0.0.246
+
+### Patch Changes
+
+- fixed isChangedDeps for hook dependency check
+
 ## 0.0.244
 
 ### Patch Changes

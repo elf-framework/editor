@@ -1634,7 +1634,7 @@ class HookMachine extends MagicHandler {
       hookInfo: { deps: currentDeps }
     } = this.getHook() || { hookInfo: {} };
     const hasChangedDeps = currentDeps ? !deps.every((d, i) => d === currentDeps[i]) : true;
-    if ((deps == null ? void 0 : deps.length) === 0 && (currentDeps == null ? void 0 : currentDeps.length) === 0) {
+    if (isArray(deps) && deps.length === 0 && isArray(currentDeps) && currentDeps.length === 0) {
       return false;
     }
     return hasDeps || hasChangedDeps;

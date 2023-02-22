@@ -1,4 +1,4 @@
-import { isFunction, isUndefined } from "./functions/func";
+import { isArray, isFunction, isUndefined } from "./functions/func";
 import {
   pendingComponent,
   removePendingComponent,
@@ -415,7 +415,13 @@ export class HookMachine extends MagicHandler {
       ? !deps.every((d, i) => d === currentDeps[i])
       : true;
 
-    if (deps?.length === 0 && currentDeps?.length === 0) {
+    // 배열이 공백이고 같을 때만 false 를 처리한다.
+    if (
+      isArray(deps) &&
+      deps.length === 0 &&
+      isArray(currentDeps) &&
+      currentDeps.length === 0
+    ) {
       return false;
     }
 
