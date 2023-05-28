@@ -42,13 +42,16 @@ export class ToolsItem extends UIElement {
     } = this.props;
 
     const isIconOnly = !title;
+    const localSelected = isFunction(this.state.selected)
+      ? this.state.selected()
+      : this.state.selected;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
-        selected: this.state.selected ? true : undefined,
+        selected: localSelected,
         "icon-only": isIconOnly,
         hoverable,
       });
-    }, [this.state.selected, isIconOnly, hoverable]);
+    }, [localSelected, isIconOnly, hoverable]);
 
     const buttonComponent = (
       <button type="button" class="tools-button">

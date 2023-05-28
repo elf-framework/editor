@@ -2008,7 +2008,9 @@ const _EventMachine = class extends HookMachine {
     return false;
   }
   isInstanceOf(...args) {
-    return args.some((TargetClass) => this instanceof TargetClass);
+    return args.some((TargetClass) => {
+      return this instanceof TargetClass;
+    });
   }
   getChildrenInstanceOf(localClass) {
     return Object.values(this.children).filter((child) => {

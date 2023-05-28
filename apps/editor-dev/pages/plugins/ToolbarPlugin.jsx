@@ -19,7 +19,7 @@ export function ToolbarPlugin(editor) {
         title: () => "3D ",
         trigger: "hover",
         items: [
-          { title: () => "texture" },
+          { title: <span>texture</span> },
           {
             type: "item",
             selectable: true,

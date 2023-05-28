@@ -1,5 +1,15 @@
 # @elf-framework/base-editor
 
+## 0.0.252
+
+### Patch Changes
+
+- fixed number input value format
+
+- Updated dependencies []:
+  - @elf-framework/sapa@0.0.252
+  - @elf-framework/ui@0.0.252
+
 ## 0.0.244
 
 ### Patch Changes

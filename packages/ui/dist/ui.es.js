@@ -587,27 +587,51 @@ class Animation extends UIElement {
     return /* @__PURE__ */ createElementJsx("div", { ...styleObject }, content);
   }
 }
-[
-  "spin",
-  "ping",
-  "fade",
-  "scaledown",
-  "bounce",
-  "flash",
-  "pulse",
-  "rubberBand",
-  "shake",
-  "headShake",
-  "swing",
-  "tada",
-  "wobble",
-  "jello",
-  "heartBeat"
-].forEach((name) => {
-  Animation[name] = (props) => {
-    return /* @__PURE__ */ createElementJsx(Animation, { ...props, name });
-  };
-});
+Animation.spin = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "spin" });
+};
+Animation.ping = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "ping" });
+};
+Animation.fade = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "fade" });
+};
+Animation.scaledown = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "scaledown" });
+};
+Animation.bounce = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "bounce" });
+};
+Animation.flash = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "flash" });
+};
+Animation.pulse = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "pulse" });
+};
+Animation.rubberBand = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "rubberBand" });
+};
+Animation.shake = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "shake" });
+};
+Animation.headShake = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "headShake" });
+};
+Animation.swing = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "swing" });
+};
+Animation.tada = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "tada" });
+};
+Animation.wobble = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "wobble" });
+};
+Animation.jello = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "jello" });
+};
+Animation.heartBeat = function(props) {
+  return /* @__PURE__ */ createElementJsx(Animation, { ...props, name: "heartBeat" });
+};
 registerComponent("animation", Animation);
 registerComponent("Animation", Animation);
 const cssProperties$S = makeCssVariablePrefixMap("--elf--progress-circle", {
@@ -1821,13 +1845,14 @@ class ToolsItem extends UIElement {
       hoverable = true
     } = this.props;
     const isIconOnly = !title;
+    const localSelected = isFunction(this.state.selected) ? this.state.selected() : this.state.selected;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item", {
-        selected: this.state.selected ? true : void 0,
+        selected: localSelected,
         "icon-only": isIconOnly,
         hoverable
       });
-    }, [this.state.selected, isIconOnly, hoverable]);
+    }, [localSelected, isIconOnly, hoverable]);
     const buttonComponent = /* @__PURE__ */ createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ createElementJsx(Flex, { style: { gap: 10 } }, [
       icon ? /* @__PURE__ */ createElementJsx("span", { class: "icon" }, isFunction(icon) ? icon() : icon) : void 0,
       title ? /* @__PURE__ */ createElementJsx("span", { class: "menu-title" }, isFunction(title) ? title() : title) : void 0
@@ -1870,13 +1895,13 @@ registerComponent("ToolsItem", ToolsItem);
 class ToolsCustomItem extends ToolsItem {
   template() {
     var _a, _b;
-    const { hoverable = true } = this.props;
+    const { hoverable = true, style: style2 = {} } = this.props;
     const localClass = useMemo(() => {
       return classnames("elf--tools-item custom", {
         hoverable
       });
     }, [hoverable]);
-    return /* @__PURE__ */ createElementJsx("div", { class: localClass }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a, this));
+    return /* @__PURE__ */ createElementJsx("div", { class: localClass, style: style2 }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a, this));
   }
 }
 registerComponent("tools-custom-item", ToolsCustomItem);
@@ -5036,7 +5061,7 @@ function TextInputItem({ key, value, style: style2, item, onChange }) {
     }
   );
 }
-function NumberInputItem({ value, item, style: style2, onChange }) {
+function NumberInputItem({ value, item, style: style2, onChange, onInput }) {
   const { min = 0, max = 100, step = 1 } = item;
   return /* @__PURE__ */ createElementJsx(
     InputEditor,
@@ -5049,7 +5074,12 @@ function NumberInputItem({ value, item, style: style2, onChange }) {
       width: "100%",
       style: style2,
       onInput: (e) => {
-        onChange && onChange(Number(e.target.value), item);
+        onInput && onInput(e.target.value, item, e);
+        if (e.target.value === "" && e.target.value === "-")
+          ;
+        else {
+          onChange && onChange(e.target.value, item, e);
+        }
       }
     }
   );

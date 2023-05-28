@@ -342,7 +342,9 @@ export class EventMachine extends HookMachine {
   }
 
   isInstanceOf(...args) {
-    return args.some((TargetClass) => this instanceof TargetClass);
+    return args.some((TargetClass) => {
+      return this instanceof TargetClass;
+    });
   }
 
   getChildrenInstanceOf(localClass) {

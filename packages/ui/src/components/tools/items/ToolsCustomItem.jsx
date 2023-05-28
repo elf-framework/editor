@@ -5,7 +5,7 @@ import { ToolsItem } from "./ToolsItem";
 
 export class ToolsCustomItem extends ToolsItem {
   template() {
-    const { hoverable = true } = this.props;
+    const { hoverable = true, style = {} } = this.props;
 
     const localClass = useMemo(() => {
       return classnames("elf--tools-item custom", {
@@ -13,7 +13,11 @@ export class ToolsCustomItem extends ToolsItem {
       });
     }, [hoverable]);
 
-    return <div class={localClass}>{this.props.render?.(this)}</div>;
+    return (
+      <div class={localClass} style={style}>
+        {this.props.render?.(this)}
+      </div>
+    );
   }
 }
 

@@ -559,9 +559,9 @@ declare module "@elf-framework/ui" {
   /** menu */
   export type ToolsItemType = {
     type: "item";
-    title: string;
-    icon?: string;
-    selected?: boolean;
+    title: ContentType | (() => ContentType);
+    icon?: ContentType | (() => ContentType);
+    selected?: boolean | (() => boolean);
     tooltip?: string | TooltipProps;
     selectedType?: "primary" | "secondary";
     hoverable?: boolean;

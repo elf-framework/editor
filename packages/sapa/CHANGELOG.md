@@ -1,5 +1,29 @@
 # @elf-framework/sapa
 
+## 0.0.252
+
+### Patch Changes
+
+- fixed number input value format
+
+## 0.0.250
+
+### Patch Changes
+
+- modify tools selected function
+
+## 0.0.249
+
+### Patch Changes
+
+- remove console.log
+
+## 0.0.247
+
+### Patch Changes
+
+- display log for isInstanceOf
+
 ## 0.0.246
 
 ### Patch Changes

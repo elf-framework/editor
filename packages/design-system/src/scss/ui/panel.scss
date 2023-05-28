@@ -1,90 +1,91 @@
 .elf--panel {
-    --elf--panel-background-color: var(--panel-color-background-default);
-    --elf--panel-color: var(--panel-color-text-default);;
-    --elf--panel-border-color: transparent;
-    --elf--panel-width: 240px;
-    --elf--panel-min-width: 100%;
-    --elf--panel-border-radius: 0px;
-    --elf--panel-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
-    --elf--panel-padding: 16px;
+  --elf--panel-background-color: var(--panel-color-background-default);
+  --elf--panel-color: var(--panel-color-text-default);
+  --elf--panel-border-color: transparent;
+  --elf--panel-height: auto;
+  --elf--panel-width: 240px;
+  --elf--panel-min-width: 100%;
+  --elf--panel-border-radius: 0px;
+  --elf--panel-box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.15);
+  --elf--panel-padding: 16px;
 
-    background-color: var(--elf--panel-background-color);
-    color: var(--elf--panel-color);
-    border: 1px solid var(--elf--panel-border-color);
-    padding: 0px;
+  background-color: var(--elf--panel-background-color);
+  color: var(--elf--panel-color);
+  border: 1px solid var(--elf--panel-border-color);
+  padding: 0px;
+  box-sizing: border-box;
+  min-width: var(--elf--panel-min-width);
+  width: var(--elf--panel-width);
+  height: var(--elf--panel-height);
+  border-radius: var(--elf--panel-border-radius);
+
+  &[data-theme="dark"] {
+    --elf--panel-background-color: black;
+    --elf--panel-color: white;
+  }
+
+  &[disabled] {
+    // pointer-events: none;
+    cursor: not-allowed;
+    > * {
+      pointer-events: none;
+      filter: opacity(0.5);
+      user-select: none;
+    }
+  }
+
+  &.stroke {
+    --elf--panel-border-color: var(--elf--border-color);
+    --elf--panel-border-radius: 2px;
+    box-shadow: var(--elf--panel-box-shadow);
+  }
+
+  > .elf--panel-title {
+    padding: 8px var(--elf--panel-padding);
+    display: flex;
     box-sizing: border-box;
-    min-width: var(--elf--panel-min-width);
-    width: var(--elf--panel-width);
-    border-radius: var(--elf--panel-border-radius);
+    border-bottom: 1px solid var(--elf--panel-border-color);
+    align-items: center;
 
-    &[data-theme="dark"] {
-        --elf--panel-background-color: black;
-        --elf--panel-color: white;
+    & + .elf--panel-content {
+      padding-top: 0px;
     }
 
-    &[disabled] {
-        // pointer-events: none;
-        cursor: not-allowed;
-        > * {
-            pointer-events: none;
-            filter: opacity(0.5);
-            user-select: none;
-        }
+    > .elf--panel-title-text {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      // padding-left: 16px;
+      font-weight: bold;
+      // color: var(--elf--panel-color);
     }
 
-    &.stroke {
-        --elf--panel-border-color: var(--elf--border-color);        
-        --elf--panel-border-radius: 2px;
-        box-shadow: var(--elf--panel-box-shadow);
+    > .elf--panel-title-tools {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 2px;
+
+      > * {
+        border: 0px;
+        padding: 0px;
+      }
     }
+  }
 
-    > .elf--panel-title {
-        padding: 8px var(--elf--panel-padding);
-        display: flex;
-        box-sizing: border-box;
-        border-bottom: 1px solid var(--elf--panel-border-color);
-        align-items: center;
+  > .elf--panel-content {
+    padding: var(--elf--panel-padding);
+    font-size: 14px;
+    // color: var(--color-gray-8);
 
-        & + .elf--panel-content {
-            padding-top: 0px;
-        }
-
-        > .elf--panel-title-text {
-            flex: 1 1 auto;
-            display: flex;
-            align-items: center;
-            // justify-content: center;
-            // padding-left: 16px;
-            font-weight: bold;
-            // color: var(--elf--panel-color);
-
-        }
-
-        > .elf--panel-title-tools {
-            flex: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            column-gap: 2px;
-
-            > * {
-                border: 0px;
-                padding: 0px;
-            }
-        }
+    a {
+      text-decoration: underline;
     }
+  }
 
-    > .elf--panel-content {
-        padding: var(--elf--panel-padding);
-        font-size: 14px;
-        // color: var(--color-gray-8);
-
-        a {
-            text-decoration: underline;            
-        }
-    }
-
-    > .elf--panel-footer {
-        padding: 8px var(--elf--panel-padding);
-    }
+  > .elf--panel-footer {
+    padding: 8px var(--elf--panel-padding);
+  }
 }

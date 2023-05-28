@@ -54,27 +54,51 @@ export class Animation extends UIElement {
   }
 }
 
-[
-  "spin",
-  "ping",
-  "fade",
-  "scaledown",
-  "bounce",
-  "flash",
-  "pulse",
-  "rubberBand",
-  "shake",
-  "headShake",
-  "swing",
-  "tada",
-  "wobble",
-  "jello",
-  "heartBeat",
-].forEach((name) => {
-  Animation[name] = (props) => {
-    return <Animation {...props} name={name} />;
-  };
-});
+Animation.spin = function (props) {
+  return <Animation {...props} name="spin" />;
+};
+Animation.ping = function (props) {
+  return <Animation {...props} name="ping" />;
+};
+Animation.fade = function (props) {
+  return <Animation {...props} name="fade" />;
+};
+Animation.scaledown = function (props) {
+  return <Animation {...props} name="scaledown" />;
+};
+Animation.bounce = function (props) {
+  return <Animation {...props} name="bounce" />;
+};
+Animation.flash = function (props) {
+  return <Animation {...props} name="flash" />;
+};
+Animation.pulse = function (props) {
+  return <Animation {...props} name="pulse" />;
+};
+Animation.rubberBand = function (props) {
+  return <Animation {...props} name="rubberBand" />;
+};
+Animation.shake = function (props) {
+  return <Animation {...props} name="shake" />;
+};
+Animation.headShake = function (props) {
+  return <Animation {...props} name="headShake" />;
+};
+Animation.swing = function (props) {
+  return <Animation {...props} name="swing" />;
+};
+Animation.tada = function (props) {
+  return <Animation {...props} name="tada" />;
+};
+Animation.wobble = function (props) {
+  return <Animation {...props} name="wobble" />;
+};
+Animation.jello = function (props) {
+  return <Animation {...props} name="jello" />;
+};
+Animation.heartBeat = function (props) {
+  return <Animation {...props} name="heartBeat" />;
+};
 
 registerComponent("animation", Animation);
 registerComponent("Animation", Animation);
