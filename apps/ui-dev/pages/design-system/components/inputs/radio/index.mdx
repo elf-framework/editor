@@ -5,46 +5,42 @@ filename: pages/design-system/components/inputs/radio/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/inputs/radio/MainView.jsx"; 
-import { OptionsView } from "~/component/inputs/radio/OptionsView.jsx"; 
-import { SelectionView } from "~/component/inputs/radio/SelectionView.jsx"; 
-import { SizeView } from "~/component/inputs/radio/SizeView.jsx"; 
-import { DisabledView } from "~/component/inputs/radio/DisabledView.jsx"; 
-import { ErrorView } from "~/component/inputs/radio/ErrorView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/inputs/radio/MainView.jsx";
+import { OptionsView } from "~/component/inputs/radio/OptionsView.jsx";
+import { SelectionView } from "~/component/inputs/radio/SelectionView.jsx";
+import { SizeView } from "~/component/inputs/radio/SizeView.jsx";
+import { DisabledView } from "~/component/inputs/radio/DisabledView.jsx";
+import { ErrorView } from "~/component/inputs/radio/ErrorView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 A radio group is a grouping of radio buttons that are related to each other.
 
 <MainView />
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<RadioGroup
-    direction="vertical"
-    value={10}
-    options={[
+    ```jsx {1} showLineNumbers
+    <RadioGroup
+      direction="vertical"
+      value={10}
+      options={[
         { value: 10, label: "Small" },
         { value: 20, label: "Medium" },
         { value: 30, label: "Large" },
-    ]}
-    onChange={(e, values) => console.log(values)}
-/>
-```
+      ]}
+      onChange={(e, values) => console.log(values)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-## Options 
+## Options
 
 ### Label
 
-
 ### Selection
-
-
 
 ### Size
 
@@ -58,30 +54,25 @@ option. Use the other sizes sparingly; they should be used to create a
 hierarchy of importance within the page. The field label, radio
 buttons, and help text all conform to the same sizing option.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {4} showLineNumbers
-<RadioGroup
-    direction="vertical"
-    value={10}
-    size="extra-large"
-    options={[
+    ```jsx {4} showLineNumbers
+    <RadioGroup
+      direction="vertical"
+      value={10}
+      size="extra-large"
+      options={[
         { value: 10, label: "Travel" },
         { value: 20, label: "Music" },
         { value: 30, label: "Shopping" },
-    ]}
-    onChange={(e, values) => console.log(values)}
-/>
-```
+      ]}
+      onChange={(e, values) => console.log(values)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-
 ### Emphasis
-
-
-
 
 ### Disabled
 
@@ -95,25 +86,23 @@ layout continuity and communicate that an action may become available
 later. The field label, radio buttons, and help text are all displayed
 in a disabled state when the radio group is disabled.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {4} showLineNumbers
-<RadioGroup
-    direction="vertical"
-    value={10}
-    disabled
-    options={[
+    ```jsx {4} showLineNumbers
+    <RadioGroup
+      direction="vertical"
+      value={10}
+      disabled
+      options={[
         { value: 10, label: "Travel" },
         { value: 20, label: "Music" },
         { value: 30, label: "Shopping" },
-    ]}
-    onChange={(e, values) => console.log(values)}
-/>
-```
+      ]}
+      onChange={(e, values) => console.log(values)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
-
 
 ### Error
 
@@ -126,23 +115,20 @@ needs to be made in order to move forward, or that a selection that
 was made is invalid. The error is indicated with negative help text,
 along with an icon.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {4} showLineNumbers
- <RadioGroup
-    direction="vertical"
-    value={10}
-    variant="danger"
-    options={[
+    ```jsx {4} showLineNumbers
+    <RadioGroup
+      direction="vertical"
+      value={10}
+      variant="danger"
+      options={[
         { value: 10, label: "Travel" },
         { value: 20, label: "Music" },
         { value: 30, label: "Shopping" },
-    ]}
-    onChange={(e, values) => console.log(values)}
-/>
-```
+      ]}
+      onChange={(e, values) => console.log(values)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
-
-

@@ -5,43 +5,42 @@ filename: pages/design-system/components/inputs/slider/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/inputs/slider/MainView.jsx"; 
-import { OptionsView } from "~/component/inputs/slider/OptionsView.jsx"; 
-import { LabelPositionView } from "~/component/inputs/slider/LabelPositionView.jsx"; 
-import { MinMaxView } from "~/component/inputs/slider/MinMaxView.jsx"; 
-import { ValueFormatView } from "~/component/inputs/slider/ValueFormatView.jsx"; 
-import { FillView } from "~/component/inputs/slider/FillView.jsx"; 
-import { FillStartView } from "~/component/inputs/slider/FillStartView.jsx"; 
-import { DisabledView } from "~/component/inputs/slider/DisabledView.jsx"; 
-import { GradientView } from "~/component/inputs/slider/GradientView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/inputs/slider/MainView.jsx";
+import { OptionsView } from "~/component/inputs/slider/OptionsView.jsx";
+import { LabelPositionView } from "~/component/inputs/slider/LabelPositionView.jsx";
+import { MinMaxView } from "~/component/inputs/slider/MinMaxView.jsx";
+import { ValueFormatView } from "~/component/inputs/slider/ValueFormatView.jsx";
+import { FillView } from "~/component/inputs/slider/FillView.jsx";
+import { FillStartView } from "~/component/inputs/slider/FillStartView.jsx";
+import { DisabledView } from "~/component/inputs/slider/DisabledView.jsx";
+import { GradientView } from "~/component/inputs/slider/GradientView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Sliders allow users to quickly select a value within a range. They should be used when the upper and lower bounds to the range are invariable.
 
 <MainView />
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Slider
-    min={0}
-    max={10000}
-    step={20}
-    value={value}
-    onInput={onInput}
-    valuePlacement="top"
-    label={"Contrast"}
-    // eslint-disable-next-line no-undef
-    valueFunc={(v) => new Intl.NumberFormat().format(v)}
-/>
-```
+    ```jsx {1} showLineNumbers
+    <Slider
+      min={0}
+      max={10000}
+      step={20}
+      value={value}
+      onInput={onInput}
+      valuePlacement="top"
+      label={"Contrast"}
+      // eslint-disable-next-line no-undef
+      valueFunc={(v) => new Intl.NumberFormat().format(v)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-## Options 
+## Options
 
 ### Label
 
@@ -55,18 +54,17 @@ label could be undefined. These sliders should still include an
 aria-label in HTML (depending on the context, “aria-label” or
 “aria-labelledby”).
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Slider
-    label={"Contrast"}
-    value={value}
-    max={10000}
-    step={20}
-    onInput={(v) => setValue(v)}
-/>
-```
+    ```jsx {1} showLineNumbers
+    <Slider
+      label={"Contrast"}
+      value={value}
+      max={10000}
+      step={20}
+      onInput={(v) => setValue(v)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -83,25 +81,24 @@ vertical space is limited.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {3} showLineNumbers
-<Slider
-    label={"Contrast"}
-    labelPosition="side"
-    value={value2}
-    max={10000}
-    step={20}
-    onInput={(v) => setValue2(v)}
-/>
-```
+    ```jsx {3} showLineNumbers
+    <Slider
+      label={"Contrast"}
+      labelPosition="side"
+      value={value2}
+      max={10000}
+      step={20}
+      onInput={(v) => setValue2(v)}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-### Value, min value, max value and step 
+### Value, min value, max value and step
 
 <MinMaxView />
 
 &nbsp;
-
 
 The value is the number selected within the slider’s range, from the
 min value to max value.
@@ -114,20 +111,19 @@ The step is the increment by which these values increase or decrease.
 A step value of 1 (the default) lets a user only select whole numbers
 within the min and max range.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {3} showLineNumbers
-<Slider
-    label={"Contrast"}
-    value={40}
-    fill
-    min={0}
-    max={100}
-    step={1}
-    valueFunc={(v) => `${v}%`}
-/>
-```
+    ```jsx {3} showLineNumbers
+    <Slider
+      label={"Contrast"}
+      value={40}
+      fill
+      min={0}
+      max={100}
+      step={1}
+      valueFunc={(v) => `${v}%`}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -141,7 +137,6 @@ Sometimes a value needs to be formatted for localization or for
 clearer communication (e.g., currencies or percentages). Formatting
 can involve rounding, mathematical transformations, number formatting,
 or displaying a prefix or suffix (e.g., “+/-” or “px”).
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
@@ -169,21 +164,19 @@ or displaying a prefix or suffix (e.g., “+/-” or “px”).
 The track of the slider can have a fill. By default, the fill
 originates from the left side of the track.
 
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {4} showLineNumbers
-<Slider
-    label={"Exposure"}
-    value={1.83}
-    fill
-    min={-5}
-    max={5}
-    step={0.01}
-    valueFunc={(v) => `${v < 0 ? "-" : "+"} ${v}%`}
-/>
-```
+    ```jsx {4} showLineNumbers
+    <Slider
+      label={"Exposure"}
+      value={1.83}
+      fill
+      min={-5}
+      max={5}
+      step={0.01}
+      valueFunc={(v) => `${v < 0 ? "-" : "+"} ${v}%`}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -197,21 +190,20 @@ If the value represents an offset, the fill start can be set to
 represent the point of origin. This allows the slider fill to start
 from inside the track.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {5} showLineNumbers
- <Slider
-    label={"Exposure"}
-    value={1.83}
-    fill
-    fillOffset={0}
-    min={-5}
-    max={5}
-    step={0.01}
-    valueFunc={(v) => `${v < 0 ? "-" : "+"} ${v}%`}
-/>
-```
+    ```jsx {5} showLineNumbers
+    <Slider
+      label={"Exposure"}
+      value={1.83}
+      fill
+      fillOffset={0}
+      min={-5}
+      max={5}
+      step={0.01}
+      valueFunc={(v) => `${v < 0 ? "-" : "+"} ${v}%`}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -226,22 +218,21 @@ meaning to the range of values. Tracks with a gradient can also have a
 fill. A gradient track should not be used for choosing a precise
 color; use a color slider, color area, or color wheel instead.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {5} showLineNumbers
-<Slider
-    label={"Opacity"}
-    value={40}
-    min={0}
-    max={100}
-    step={1}
-    valueFunc={(v) => `${v}%`}
-    style={{
+    ```jsx {5} showLineNumbers
+    <Slider
+      label={"Opacity"}
+      value={40}
+      min={0}
+      max={100}
+      step={1}
+      valueFunc={(v) => `${v}%`}
+      style={{
         backgroundImage: "linear-gradient(to right, #fff, #f00)",
-    }}
-/>
-```
+      }}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -251,25 +242,22 @@ color; use a color slider, color area, or color wheel instead.
 
 &nbsp;
 
-A slider in a disabled state shows that an input exists, but is not available in that circumstance. 
+A slider in a disabled state shows that an input exists, but is not available in that circumstance.
 This can be used to maintain layout continuity and communicate that a slider may become available later.
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {5} showLineNumbers
-<Slider
-    disabled
-    label={"Exposure"}
-    value={1.83}
-    fill
-    min={-5}
-    max={5}
-    step={0.01}
-    valueFunc={(v) => `${v < 0 ? "-" : "+"} ${v}%`}
-/>
-```
+    ```jsx {5} showLineNumbers
+    <Slider
+      disabled
+      label={"Exposure"}
+      value={1.83}
+      fill
+      min={-5}
+      max={5}
+      step={0.01}
+      valueFunc={(v) => `${v < 0 ? "-" : "+"} ${v}%`}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
-
-

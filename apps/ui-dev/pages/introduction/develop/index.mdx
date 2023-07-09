@@ -4,25 +4,25 @@ layout: MainLayout
 filename: pages/introduction/develop/page.mdx
 ---
 
-# {title}
+# {frontmatter.title}
 
 `ELF` can be modified by anyone and put their own functions.
 
-## Clone project 
+## Clone project
 
 ```shell
-git clone https://github.com/elf-framework/editor 
-cd editor 
-npm install 
+git clone https://github.com/elf-framework/editor
+cd editor
+npm install
 ```
 
-## Monorepo Workspace 
+## Monorepo Workspace
 
 ```shell
 apps/
 + editor-dev
 + ui-dev
-packages/ 
+packages/
 + base-editor
 + color
 + config
@@ -42,24 +42,25 @@ Use turborepo to configure the command.
 ### Install npm package to indivisual package
 
 ```shell
-npm install (library) -w apps/ui-dev 
+npm install (library) -w apps/ui-dev
 ```
 
-### run ui-dev 
+### run ui-dev
 
 ```shell
-npm run ui:dev 
+npm run ui:dev
 ```
 
 when `ui:dev` is runinng, some packages is too running by watch mode at same time.
 
-#### related packages 
-* ui
-* sapa
-* vite-plugin-sapa
-* design-tokens
-* design-system
-* color
+#### related packages
+
+- ui
+- sapa
+- vite-plugin-sapa
+- design-tokens
+- design-system
+- color
 
 ### run editor-dev
 
@@ -69,11 +70,12 @@ npm run editor:dev
 
 when `editor:dev` is runinng, some packages is too running by watch mode at same time.
 
-#### related packages 
-* base-editor
-* ui
-* sapa
-* vite-plugin-sapa
-* design-tokens
-* design-system
-* color
+#### related packages
+
+- base-editor
+- ui
+- sapa
+- vite-plugin-sapa
+- design-tokens
+- design-system
+- color

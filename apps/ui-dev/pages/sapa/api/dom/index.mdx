@@ -4,8 +4,7 @@ layout: SapaLayout
 filename: pages/sapa/api/dom/page.mdx
 ---
 
-
-# {title}
+# {frontmatter.title}
 
 sapa provides a Dom object for easy manipulation of the dom.
 
@@ -14,10 +13,14 @@ sapa provides a Dom object for easy manipulation of the dom.
 The `Dom` object exists as the root element of all components.
 
 ```jsx {3}
-function A () {
-  return <div onClick={() => {
-    console.log(this.$el);
-  }}></div>
+function A() {
+  return (
+    <div
+      onClick={() => {
+        console.log(this.$el);
+      }}
+    ></div>
+  );
 }
 ```
 
@@ -27,12 +30,13 @@ function A () {
 
 ```jsx
 const body = Dom.create(document.body);
-body.append(document.createElement("div"))
+body.append(document.createElement("div"));
 
-// create with props 
-const $el = Dom.create('div', 'add-class my-class', { style: "background-color: yellow" })
+// create with props
+const $el = Dom.create("div", "add-class my-class", {
+  style: "background-color: yellow",
+});
 ```
-
 
 **static createByHTML(htmlString)**
 
@@ -41,20 +45,18 @@ const $el = Dom.createByHTML(`
   <div>Simple Text</div>
 `);
 
-// or 
+// or
 const $el = Dom.createByHTML(`
   <svg>
     <rect x="0" y="0" width="100" height="100" />
   </svg>
 `);
-
 ```
-
 
 **static createText(text)**
 
 ```jsx
-const text = Dom.createText('text');
+const text = Dom.createText("text");
 ```
 
 **static body()**
@@ -64,33 +66,34 @@ const text = Dom.createText('text');
 const body = Dom.body();
 ```
 
-
 **static createFragment(list = []): DocumentFragment**
 
 ```jsx
-const fragment = Dom.createFragment([...elementList])
- 
+const fragment = Dom.createFragment([...elementList]);
 ```
 
-## Tag 
+## Tag
 
 **get tagName()**
 
 ```jsx
-const stringName = $el.tagName
+const stringName = $el.tagName;
 ```
 
-**get exists()** 
+**get exists()**
 
 ```jsx
-const isExists = $el.exists
+const isExists = $el.exists;
 ```
 
 **get isFragment()**
+
 ```jsx
 const isFragment = $el.isFragment;
 ```
+
 **get isTemplate()**
+
 ```jsx
 const isTemplate = $el.isTemplate;
 ```
@@ -108,7 +111,7 @@ if ($el.is(newElement)) {
 **isTag(tag)**
 
 ```jsx
-if ($el.isTag('div')) {
+if ($el.isTag("div")) {
   console.log("$el is div element");
 }
 ```
@@ -120,8 +123,8 @@ This is a function to set various properties of the dom object at once.
 
 ```jsx
 $el.setAttr({
-  "data-background-color": "yellow"
-})
+  "data-background-color": "yellow",
+});
 ```
 
 **setAttrNS(obj, namespace)**
@@ -131,9 +134,12 @@ Set a property with namespace .
 Usually used when creating svg tags.
 
 ```jsx
-$el.setAttr({
-  "data-background-color": "yellow"
-}, "http://www.w3.org/2000/svg")
+$el.setAttr(
+  {
+    "data-background-color": "yellow",
+  },
+  "http://www.w3.org/2000/svg"
+);
 ```
 
 **setProp(obj)**
@@ -142,36 +148,38 @@ Set the property of HTMLElement.
 
 ```jsx
 $el.setProp({
-  value: 10
-})
+  value: 10,
+});
 ```
 
 **data(key, value)**
 
 ```jsx
-// set data attribute 
-$el.data('key', value);
+// set data attribute
+$el.data("key", value);
 
-// get data attribute 
-const stringValue = $el.data('key');
+// get data attribute
+const stringValue = $el.data("key");
 ```
 
 **attr(...args)**
 
 ```jsx
-// set some attribute 
-$el.attr('key', value);
+// set some attribute
+$el.attr("key", value);
 
-// get some attribute 
-const stringValue = $el.attr('key');
+// get some attribute
+const stringValue = $el.attr("key");
 ```
 
 **attrKeyValue(keyField)**
 
 ```jsx
-const div = Dom.createByHTML("<input type='text' value='yellow' data-id='backgroundColor' />");
+const div = Dom.createByHTML(
+  "<input type='text' value='yellow' data-id='backgroundColor' />"
+);
 
-div.attrKeyValue('data-id') === { 'backgroundColor': 'yellow' }
+div.attrKeyValue("data-id") === { backgroundColor: "yellow" };
 ```
 
 **get attributes()**
@@ -179,27 +187,33 @@ div.attrKeyValue('data-id') === { 'backgroundColor': 'yellow' }
 Brings all attributes of element.
 
 ```jsx
-const attributes = $el.attributes 
+const attributes = $el.attributes;
 ```
 
 See [here](https://developer.mozilla.org/ko/docs/Web/API/Element/attributes) for more details.
 
-
 **attrs(...args)**
 
 ```jsx
-const div = Dom.createByHTML("<input type='text' value='yellow' data-id='backgroundColor' />");
+const div = Dom.createByHTML(
+  "<input type='text' value='yellow' data-id='backgroundColor' />"
+);
 
-const [type, value, dataId ] = div.attrs('type', 'value', 'data-id');
+const [type, value, dataId] = div.attrs("type", "value", "data-id");
 ```
-
 
 **styles(...args)**
 
 ```jsx
-const div = Dom.createByHTML("<div style='background-color: yellow; color: blue; border: 1px solid black;'></div>");
+const div = Dom.createByHTML(
+  "<div style='background-color: yellow; color: blue; border: 1px solid black;'></div>"
+);
 
-const [backgroundColor, color, border ] = div.style('background-color', 'color', 'border');
+const [backgroundColor, color, border] = div.style(
+  "background-color",
+  "color",
+  "border"
+);
 ```
 
 **removeAttr(key)**
@@ -214,9 +228,7 @@ $el.removeAttr(key);
 $el.removeStyle(key);
 ```
 
-
 ## Selector
-
 
 **closest(cls)**
 
@@ -235,14 +247,14 @@ const $yellowElement = $itemEl.closest("yellow");
 **path()**
 
 ```jsx
-console.log($el.path())
+console.log($el.path());
 
 // [...., parent, parent, parent, $el]
 ```
 
 **get $parent()**
 
-alias of `parent()` 
+alias of `parent()`
 
 ```jsx
 const $parentElement = $el.$parent;
@@ -252,7 +264,6 @@ const $parentElement = $el.$parent;
 
 ```jsx
 const $parentElement = $el.parent();
-
 ```
 
 **hasParent(): boolean**
@@ -260,7 +271,6 @@ const $parentElement = $el.parent();
 ```jsx
 const hasParent = $el.hasParent();
 ```
-
 
 **find(selector, el = this.el): HTMLElement**
 
@@ -273,11 +283,9 @@ const element = $el.find("#id");
 The result of find is made into an instance of Dom.
 
 ```jsx
-
 const $el = $otherEl.$("#id");
 
 // $el instanceof Dom
-
 ```
 
 **findAll(selector, el = this.el): HTMLElement[]**
@@ -303,7 +311,7 @@ const isUnlinked = $el.isUnlinked();
 **removeClass(...args): Dom**
 
 ```jsx
-$el.removeClass('a', 'b', 'c');
+$el.removeClass("a", "b", "c");
 ```
 
 **updateClass(className): Dom**
@@ -317,8 +325,7 @@ $el.updateClass("a b c");
 **replaceClass(oldClass, newClass): Dom**
 
 ```jsx
-
-const $el = Dom.createByHTML(`<div class="yellow">Simple Text</div>`)
+const $el = Dom.createByHTML(`<div class="yellow">Simple Text</div>`);
 
 $el.replaceClass("yellow", "red");
 
@@ -328,20 +335,17 @@ $el.replaceClass("yellow", "red");
 **hasClass(cls): boolean**
 
 ```jsx
-
 if ($el.hasClass("yellow")) {
   // noop
 }
-
 ```
 
 **addClass(...args): Dom**
 
 ```jsx
-$el.addClass('yellow').addClass('red').addClass('green');
+$el.addClass("yellow").addClass("red").addClass("green");
 
 // <div class="yellow red green"></div>
-
 ```
 
 **onlyOneClass(cls): void**
@@ -349,7 +353,6 @@ $el.addClass('yellow').addClass('red').addClass('green');
 `onlyOneClass` applies the class that selects only one of the child elements based on the parent.
 
 ```jsx
-
 const $el = Dom.createByHTML(`
   <div>
     <div class="item">1</div>
@@ -358,7 +361,7 @@ const $el = Dom.createByHTML(`
     <div class="item">1</div>
     <div class="item">1</div>
   </div>
-`)
+`);
 
 $el.first().onlyOneClass("selected");
 ```
@@ -382,18 +385,15 @@ const outerHTML = $el.outerHTML();
 **html(html): string | Dom**
 
 ```jsx
-
 // getter
-const html = $el.html()
+const html = $el.html();
 
 // setter string
 $el.html("<div></div>");
 
-// setting others 
+// setting others
 $el.html($otherEl);
 ```
-
-
 
 **empty(): Dom**
 
@@ -408,16 +408,14 @@ $el.empty();
 **append(el): Dom**
 
 ```jsx
-
 // text node
 $el.append("My Content Text");
 
 // array
-$el.append($other.$$(".item"))
+$el.append($other.$$(".item"));
 
-// Dom or HTMLElement or DocumentFragment 
+// Dom or HTMLElement or DocumentFragment
 $el.append($other);
-
 ```
 
 **appendHTML(html): Dom**
@@ -427,7 +425,7 @@ $el.appendHTML(`
   <div>
     <span class="yellow"> color </span>
   </div>
-`)
+`);
 ```
 
 **createChildrenFragment(): DocumentFragment**
@@ -438,9 +436,7 @@ create document fragment with children dom
 const childrenFragment = $el.createChildrenFragment();
 
 // childrenFragment instanceof DocumentFragment
-
 ```
-
 
 **appendTo(target): Dom**
 
@@ -467,13 +463,11 @@ $el.removeChild(htmlElement);
 **text(value): string|Dom**
 
 ```jsx
-
 // getter
 const textContent = $el.text();
 
 // setter
 $el.text("Sample Text");
-
 ```
 
 **css(key, value): string | Dom**
@@ -483,33 +477,31 @@ css() gets the value using window.getComputedStyle(). This is useful when you ne
 Use the styles() function to simply bring the specified properties or for performance.
 
 ```jsx
-// getter 
+// getter
 const color = $el.css("background-color");
 
-// setter 
+// setter
 $el.css({
-  'background-color': 'yellow'
-})
-
+  "background-color": "yellow",
+});
 ```
 
-**css variable property** 
+**css variable property**
 
 If you use a css variable, it is saved using style.setProperty internally.
 
 ```jsx
-$el.css('--color-gray-9', "#ececec");
+$el.css("--color-gray-9", "#ececec");
 ```
 
- 
 **cssText(value): string | Dom**
 
 ```jsx
-// getter 
-const cssString = $el.cssText()
+// getter
+const cssString = $el.cssText();
 
-// setter 
-$el.cssText('background-color: yellow; color: blue; border: 1px solid black');
+// setter
+$el.cssText("background-color: yellow; color: blue; border: 1px solid black");
 ```
 
 **rect(): BoundingClientRect**
@@ -524,16 +516,14 @@ const rect = $el.rect();
 const isSVG = Dom.createByHTML("<svg></svg>").isSVG();
 ```
 
-
-
 **val(value): string|Dom**
 
 ```jsx
-// getter 
+// getter
 const value = $inputEl.val();
 
-// setter 
-$inputEl.val('text');
+// setter
+$inputEl.val("text");
 
 // $inputEl.el.value = 'text'
 ```
@@ -580,7 +570,7 @@ const isShow = $el.isShwo();
 ```jsx
 $el.toggle();
 
-// force 
+// force
 $el.toggle(true);
 ```
 
@@ -588,14 +578,12 @@ $el.toggle(true);
 
 ```jsx
 $el.scrollIntoView();
-
 ```
-
 
 **get first(): Dom**
 
 ```jsx
-// HTMLElement, TextNode, Comment 
+// HTMLElement, TextNode, Comment
 const firstChild = $el.first();
 ```
 
@@ -605,7 +593,6 @@ const firstChild = $el.first();
 // only HTMLElement
 const firstChildElement = $el.firstChild();
 ```
-
 
 **children(): Dom[]**
 
@@ -621,7 +608,6 @@ const children = $el.children();
 const hasChild = $el.hasChild($child);
 ```
 
-
 **get childNodes(): Dom**
 
 Returns all elements(HTMLElement, TextNode, Comment) in its children.
@@ -634,7 +620,6 @@ const childNodes = $el.childNodes;
 
 ```jsx
 const count = $el.childLength();
-
 ```
 
 **replace(newElement): Dom**
@@ -649,7 +634,6 @@ $el.replace($otherEl);
 $parent.replaceChild($old, $new);
 ```
 
-
 ## Event
 
 **on(eventName, callback, opt1, opt2): Dom**
@@ -657,9 +641,9 @@ $parent.replaceChild($old, $new);
 Execute addEventListener.
 
 ```jsx
-$el.on("click", (e) => { 
+$el.on("click", (e) => {
   console.log(e.target);
-})
+});
 ```
 
 **off(eventName, callback): Dom**
@@ -669,8 +653,6 @@ Execute removeEventListener.
 ```jsx
 $el.off("click", callback);
 ```
-
-
 
 **click(): Dom**
 
@@ -689,14 +671,14 @@ $el.focus();
 ```jsx
 $el.on("custom-event", () => {
   console.log("custom-event is called");
-})
+});
 
 $el.dispatchEvent("custom-event");
 ```
 
 **select()**
 
-support text selection 
+support text selection
 
 ```jsx
 $inputEl.select();

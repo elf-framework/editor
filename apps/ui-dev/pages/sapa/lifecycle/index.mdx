@@ -6,12 +6,12 @@ filename: pages/sapa/lifecycle/page.mdx
 
 import { Diagram } from "~/utils/Diagram";
 
-
-# {title}
+# {frontmatter.title}
 
 Sapa has a basic lifecycle. This works depending on how you render the DOM.
 
-<Diagram graph={`
+<Diagram
+  graph={`
 flowchart TD;
   A["Start(VNode, UIElement, Function)"] --> I[initialize property]
   I --> D[render]
@@ -22,4 +22,5 @@ flowchart TD;
   Mounted -- onMounted --> Z[Rendering Done]
   Updated -- onUpdated --> Z
   Z -- onDestroyed --> Destroyed[DOM removed]
-`} />
+`}
+/>

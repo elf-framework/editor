@@ -7,10 +7,9 @@ filename: pages/sapa/getting-started/page.mdx
 import { Alert } from "@elf-framework/ui";
 import packageJSON from "@elf-framework/sapa/package.json";
 
+# {frontmatter.title}
 
-# {title}
-
-Let's learn the basics of Sapa. 
+Let's learn the basics of Sapa.
 Sapa was created to make UI creation with JavaScript easy.
 
 To use the JS library, you need a few things. Let's find out one by one.
@@ -30,15 +29,16 @@ It can also be used in umd mode.
 Let's load the script first.
 
 <Alert variant="dark" shape="round">
-&lt;script src={`https://cdn.jsdelivr.net/npm/@elf-framework/sapa@${packageJSON.version}/dist/sapa.umd.min.js`}>&lt;/script>
+  &lt;script src=
+  {`https://cdn.jsdelivr.net/npm/@elf-framework/sapa@${packageJSON.version}/dist/sapa.umd.min.js`}
+  >&lt;/script>
 </Alert>
-
 
 Then use the desired function with the sapa object.
 
 ```html
 <script>
-const { start } = sapa;
+  const { start } = sapa;
 </script>
 ```
 
@@ -58,13 +58,14 @@ function App() {
 
 ## Render
 
-Render the component. 
+Render the component.
+
 ```jsx
 start(App);
 ```
+
 <Alert type="info" weak={true}>
-You can use <strong>render</strong> function instead of{" "}
-<strong>start</strong>.
+  You can use <strong>render</strong> function instead of <strong>start</strong>.
 </Alert>
 
 `start` is a function that takes a Sapa component as a parameter.
@@ -74,10 +75,11 @@ You can use <strong>render</strong> function instead of{" "}
 A VNode is a virtual DOM node.
 
 ```js
-start(<App key="value" />)
+start(<App key="value" />);
 ```
 
 ## Class Component
+
 A class component is a component that is defined in a class.
 
 ```js
@@ -108,12 +110,11 @@ function App() {
 }
 ```
 
-# RootContext Options 
+# RootContext Options
 
 The `RootContext` is special data that is transmitted only to the root element.
 
 Data for common use in the entire component tree can be injected externally.
-
 
 ## container
 
@@ -163,10 +164,10 @@ start(<Page {...pageProps} />, {
 To use it, do the following:
 
 ```jsx {3}
-function OtherComponent () {
-  const pageContext = useRootContext('pageContext');
-  const routeParams = useRootContext('routeParams');
+function OtherComponent() {
+  const pageContext = useRootContext("pageContext");
+  const routeParams = useRootContext("routeParams");
 
-  return <div>Other Component</div>
+  return <div>Other Component</div>;
 }
 ```

@@ -4,26 +4,26 @@ layout: MainLayout
 filename: pages/introduction/install/vite/page.mdx
 ---
 
-import {Diagram} from "~/utils/Diagram";
+import { Diagram } from "~/utils/Diagram";
 
-# {title}
+# {frontmatter.title}
 
 Let's use Vite as a bundler.
 
-## create a project 
+## create a project
 
 ```shell
 mkdir my-project
-cd my-project 
+cd my-project
 npm init -y
 ```
 
-## npm 
+## npm
 
 After creating the project, let's install vite.
 
 ```shell
-npm install -D vite 
+npm install -D vite
 ```
 
 ## package.json
@@ -39,7 +39,7 @@ Write the execution script in package.json .
 
 ```
 
-## vite.config.js 
+## vite.config.js
 
 Now we need to configure the structure to run sapa on vite.
 
@@ -61,16 +61,15 @@ export default defineConfig({
         ui: path.resolve(__dirname, "index.html"),
       },
     },
-  }
+  },
 });
-
 ```
 
 ## ESBuild
 
 Since vite uses a compiler called esbuild by default, keywords are specified for jsx processing.
 
-## Running Dev Server 
+## Running Dev Server
 
 The basic setup to run is complete. You need to specify the config you set last.
 
@@ -85,22 +84,21 @@ First, change the command in package.json as follows.
 
 ```
 
-# Make a `index.html` 
+# Make a `index.html`
 
 Let's create index.html in the input specified in rollupOption. This will be the starting point for everything.
 
 ```html {8}
 <!DOCTYPE html>
 <html>
-    <head>    
-        <meta charset="utf-8" />
-        <title>ELF - An easy and customizable set of developers</title>
-    </head>
-    <body>
-        <script type="module" src="./page.jsx"></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>ELF - An easy and customizable set of developers</title>
+  </head>
+  <body>
+    <script type="module" src="./page.jsx"></script>
+  </body>
 </html>
-
 ```
 
 Use `script type="module"` to specify a script to be started as a module.
@@ -115,9 +113,8 @@ Define the component and render it on the screen using the start function.
 import { start } from "@elf-framework/sapa";
 
 function Main() {
-  return <div>Hello, World!! This is a Sapa </div>
+  return <div>Hello, World!! This is a Sapa </div>;
 }
 
 start(Main);
 ```
-

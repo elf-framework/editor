@@ -5,20 +5,18 @@ filename: pages/design-system/components/inputs/field/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/inputs/field/MainView.jsx"; 
-import { OptionsView } from "~/component/inputs/field/OptionsView.jsx"; 
-import { LabelPositionView } from "~/component/inputs/field/LabelPositionView.jsx"; 
-import { SizeView } from "~/component/inputs/field/SizeView.jsx"; 
-import { DisabledView } from "~/component/inputs/field/DisabledView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/inputs/field/MainView.jsx";
+import { OptionsView } from "~/component/inputs/field/OptionsView.jsx";
+import { LabelPositionView } from "~/component/inputs/field/LabelPositionView.jsx";
+import { SizeView } from "~/component/inputs/field/SizeView.jsx";
+import { DisabledView } from "~/component/inputs/field/DisabledView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Help text provides either an informative description or an error message that gives more context about what a user needs to input. It’s commonly used in forms.
 
-
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
@@ -42,7 +40,7 @@ Help text provides either an informative description or an error message that gi
   </CodeViewItem>
 </CodeView>
 
-## Options 
+## Options
 
 ### Label
 
@@ -57,23 +55,19 @@ undefined. These inputs without a visible label should still include
 an aria-label in HTML (depending on the context, “aria-label” or
 “aria-labelledby”).
 
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Field label="Email address">
-    <InputEditor />
-</Field>
-```
+    ```jsx {1} showLineNumbers
+    <Field label="Email address">
+      <InputEditor />
+    </Field>
+    ```
   </CodeViewItem>
 </CodeView>
-
 
 ### Label position
 
 <LabelPositionView />
-
 
 &nbsp;
 
@@ -83,13 +77,12 @@ alignment. Top labels are the default and are recommended because
 they work better with long copy, localization, and responsive
 layouts. Side labels are most useful when vertical space is limited.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
 ```jsx {1} showLineNumbers
 
 <Field label="Email address">
-    <InputEditor />
+  <InputEditor />
 </Field>
 
 <Field label="Email address" position="horizontal">
@@ -110,27 +103,24 @@ extra-large. The medium size is the default and most frequent
 option. Use the other sizes sparingly and pair them with components
 of the same size to respect the built-in hierarchy.
 
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-{["small", "medium", "large", "extra-large"].map((size) => (
-    <div style={{ display: "flex" }}>
+    ```jsx {1} showLineNumbers
+    {["small", "medium", "large", "extra-large"].map((size) => (
+      <div style={{ display: "flex" }}>
         <div style={{ flex: "none", width: 100 }}>
-        <em>{size}</em>
+          <em>{size}</em>
         </div>
         <Field label={"Label"} size={size} required={true} />
-    </div>
-))}
-```
+      </div>
+    ))}
+    ```
   </CodeViewItem>
 </CodeView>
 
 ### Disabled
 
 <DisabledView />
-
 
 &nbsp;
 
@@ -139,14 +129,12 @@ but is not available in that circumstance. This can be used to
 maintain layout continuity and communicate that an input field may
 become available later.
 
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Field label="Country" disabled>
-    <InputEditor disabled />
-</Field>
-```
+    ```jsx {1} showLineNumbers
+    <Field label="Country" disabled>
+      <InputEditor disabled />
+    </Field>
+    ```
   </CodeViewItem>
 </CodeView>

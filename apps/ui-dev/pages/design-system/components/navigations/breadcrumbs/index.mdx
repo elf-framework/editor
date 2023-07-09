@@ -5,79 +5,77 @@ filename: pages/design-system/components/navigations/breadcrumbs/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/navigations/breadcrumbs/MainView.jsx"; 
-import { OptionsView } from "~/component/navigations/breadcrumbs/OptionsView.jsx"; 
-import { MultilineView } from "~/component/navigations/breadcrumbs/MultilineView.jsx"; 
-import { OverflowView } from "~/component/navigations/breadcrumbs/OverflowView.jsx"; 
-import { TooltipView } from "~/component/navigations/breadcrumbs/TooltipView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/navigations/breadcrumbs/MainView.jsx";
+import { OptionsView } from "~/component/navigations/breadcrumbs/OptionsView.jsx";
+import { MultilineView } from "~/component/navigations/breadcrumbs/MultilineView.jsx";
+import { OverflowView } from "~/component/navigations/breadcrumbs/OverflowView.jsx";
+import { TooltipView } from "~/component/navigations/breadcrumbs/TooltipView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Breadcrumbs show hierarchy and navigational context for a user’s location within an app.
 
 <MainView />
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Breadcrumbs
-    items={[
-    {
-        title: (
-        <Popover
-            trigger="click"
-            show={selected}
-            placement="bottom-left"
-            body={
-            <Menu
-                type="dropdown"
-                items={[
-                {
-                    type: "item",
-                    title: "Item 1",
-                },
-                ]}
-            />
-            }
-        >
-            <Button
+    ```jsx {1} showLineNumbers
+    <Breadcrumbs
+      items={[
+        {
+          title: (
+            <Popover
+              trigger="click"
+              show={selected}
+              placement="bottom-left"
+              body={
+                <Menu
+                  type="dropdown"
+                  items={[
+                    {
+                      type: "item",
+                      title: "Item 1",
+                    },
+                  ]}
+                />
+              }
+            >
+              <Button
                 quiet
                 selected={selected}
                 onClick={() => {
-                    setSelected(!selected);
+                  setSelected(!selected);
                 }}
-            >
-            <CheckFilled />
-            </Button>
-        </Popover>
-        ),
-    },
-    {
-        title: "Design",
-        href: "/pages/design-system/getting-started/",
-    },
-    {
-        title: "Inputs",
-        href: "/pages/design-system/components/inputs/checkbox/",
-    },
-    {
-        selected: true,
-        title: "New",
-        href: "/pages/design-system/components/navigations/avatar/",
-        style: {
-            color: "var(--color-primary)",
+              >
+                <CheckFilled />
+              </Button>
+            </Popover>
+          ),
         },
-    },
-    ]}
-/>
-```
+        {
+          title: "Design",
+          href: "/pages/design-system/getting-started/",
+        },
+        {
+          title: "Inputs",
+          href: "/pages/design-system/components/inputs/checkbox/",
+        },
+        {
+          selected: true,
+          title: "New",
+          href: "/pages/design-system/components/navigations/avatar/",
+          style: {
+            color: "var(--color-primary)",
+          },
+        },
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-## Options 
+## Options
 
 ### Default
 
@@ -87,36 +85,34 @@ Breadcrumbs show hierarchy and navigational context for a user’s location with
 
 By default, breadcrumbs are displayed inline with the hierarchy shown in reading order.
 
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Breadcrumbs
-    items={[
+    ```jsx {1} showLineNumbers
+    <Breadcrumbs
+      items={[
         {
-            title: (
+          title: (
             <Button size="small" iconOnly quiet>
-                <CheckFilled />
+              <CheckFilled />
             </Button>
-            ),
+          ),
         },
         {
-            title: "Design",
-            href: "/pages/design-system/getting-started/",
+          title: "Design",
+          href: "/pages/design-system/getting-started/",
         },
         {
-            title: "Inputs",
-            href: "/pages/design-system/components/inputs/checkbox/",
+          title: "Inputs",
+          href: "/pages/design-system/components/inputs/checkbox/",
         },
         {
-            selected: true,
-            title: "New",
-            href: "/pages/design-system/components/navigations/avatar/",
+          selected: true,
+          title: "New",
+          href: "/pages/design-system/components/navigations/avatar/",
         },
-    ]}
-/>
-```
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -130,45 +126,42 @@ The multiline variation places emphasis on the selected breadcrumb
 item as a page title, helping a user to more clearly identify their
 current location.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
- <Breadcrumbs
-    multiline
-    items={[
+    ```jsx {1} showLineNumbers
+    <Breadcrumbs
+      multiline
+      items={[
         {
-            title: (
+          title: (
             <Button size="small" iconOnly quiet>
-                <CheckFilled />
+              <CheckFilled />
             </Button>
-            ),
+          ),
         },
         {
-            title: "Design",
-            href: "/pages/design-system/getting-started/",
+          title: "Design",
+          href: "/pages/design-system/getting-started/",
         },
         {
-            title: "Inputs",
-            href: "/pages/design-system/components/inputs/checkbox/",
+          title: "Inputs",
+          href: "/pages/design-system/components/inputs/checkbox/",
         },
         {
-            selected: true,
-            multiline: true,
-            title: "New line menu",
-            href: "/pages/design-system/components/navigations/avatar/",
+          selected: true,
+          multiline: true,
+          title: "New line menu",
+          href: "/pages/design-system/components/navigations/avatar/",
         },
-    ]}
-/>
-```
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
-
 
 ### Overflow
 
 <OverflowView />
-
 
 &nbsp;
 
@@ -176,73 +169,70 @@ The multiline variation places emphasis on the selected breadcrumb
 item as a page title, helping a user to more clearly identify their
 current location.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
- <Breadcrumbs
-    items={[
+    ```jsx {1} showLineNumbers
+    <Breadcrumbs
+      items={[
         {
-            title: (
-                <Popover
-                    trigger="click"
-                    show={true}
-                    placement="bottom-left"
-                    body={
-                        <Menu
-                        type="dropdown"
-                        compact
-                        style={{
-                            width: 150,
-                        }}
-                        items={[
-                            {
-                            type: "item",
-                            title: "Item 1",
-                            },
-                            {
-                            type: "item",
-                            title: "Item 2",
-                            },
-                            {
-                            type: "item",
-                            title: "Item 3",
-                            },
-                            {
-                            type: "item",
-                            title: "Item 4",
-                            },
-                        ]}
-                        />
-                    }
-                    >
-                    <Button iconOnly size="small" quiet selected={true}>
-                        <CheckFilled />
-                    </Button>
-                </Popover>
-            ),
+          title: (
+            <Popover
+              trigger="click"
+              show={true}
+              placement="bottom-left"
+              body={
+                <Menu
+                  type="dropdown"
+                  compact
+                  style={{
+                    width: 150,
+                  }}
+                  items={[
+                    {
+                      type: "item",
+                      title: "Item 1",
+                    },
+                    {
+                      type: "item",
+                      title: "Item 2",
+                    },
+                    {
+                      type: "item",
+                      title: "Item 3",
+                    },
+                    {
+                      type: "item",
+                      title: "Item 4",
+                    },
+                  ]}
+                />
+              }
+            >
+              <Button iconOnly size="small" quiet selected={true}>
+                <CheckFilled />
+              </Button>
+            </Popover>
+          ),
         },
         {
-            title: "Design",
-            href: "/pages/design-system/getting-started/",
+          title: "Design",
+          href: "/pages/design-system/getting-started/",
         },
         {
-            title: "Inputs",
-            href: "/pages/design-system/components/inputs/checkbox/",
+          title: "Inputs",
+          href: "/pages/design-system/components/inputs/checkbox/",
         },
         {
-            selected: true,
-            title: "New line menu",
-            tooltip: "New line menu tooltip",
-            href: "/pages/design-system/components/navigations/avatar/",
+          selected: true,
+          title: "New line menu",
+          tooltip: "New line menu tooltip",
+          href: "/pages/design-system/components/navigations/avatar/",
         },
-    ]}
-/>
-```
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
-
-
 
 ### Tooltips
 
@@ -254,39 +244,35 @@ When the breadcrumb title is truncated, a tooltip should display the
 full title when the user hovers, keyboard focuses, or single-taps on
 mobile.
 
-
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Breadcrumbs
-    items={[
-    {
-        title: <CheckFilled />,
-    },
-    {
-        title: "Design",
-        href: "/pages/design-system/getting-started/",
-    },
-    {
-        title: "Inputs",
-        href: "/pages/design-system/components/inputs/checkbox/",
-    },
-    {
-        selected: true,
-        title: "New line menu",
-        tooltip: {
+    ```jsx {1} showLineNumbers
+    <Breadcrumbs
+      items={[
+        {
+          title: <CheckFilled />,
+        },
+        {
+          title: "Design",
+          href: "/pages/design-system/getting-started/",
+        },
+        {
+          title: "Inputs",
+          href: "/pages/design-system/components/inputs/checkbox/",
+        },
+        {
+          selected: true,
+          title: "New line menu",
+          tooltip: {
             trigger: ["focus", "hover"],
             placement: "top",
             message: "New line menu",
             show: true,
+          },
+          href: "/pages/design-system/components/navigations/avatar/",
         },
-        href: "/pages/design-system/components/navigations/avatar/",
-    },
-]}
-/>
-```
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
-

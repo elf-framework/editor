@@ -5,22 +5,21 @@ filename: pages/design-system/components/actions/button/page.mdx
 ---
 
 import { VBox } from "@elf-framework/ui";
-import { MainView } from "~/component/actions/button/MainView.jsx"; 
-import { OptionsView } from "~/component/actions/button/OptionsView.jsx"; 
-import { SizeView } from "~/component/actions/button/SizeView.jsx"; 
-import { StyleView } from "~/component/actions/button/StyleView.jsx"; 
-import { JustifiedView } from "~/component/actions/button/JustifiedView.jsx"; 
-import { PendingView } from "~/component/actions/button/PendingView.jsx"; 
-import { DisabledView } from "~/component/actions/button/DisabledView.jsx"; 
-import { FocusedView } from "~/component/actions/button/FocusedView.jsx"; 
-import { TooltipView } from "~/component/actions/button/TooltipView.jsx"; 
-import { VariantView } from "~/component/actions/button/VariantView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/actions/button/MainView.jsx";
+import { OptionsView } from "~/component/actions/button/OptionsView.jsx";
+import { SizeView } from "~/component/actions/button/SizeView.jsx";
+import { StyleView } from "~/component/actions/button/StyleView.jsx";
+import { JustifiedView } from "~/component/actions/button/JustifiedView.jsx";
+import { PendingView } from "~/component/actions/button/PendingView.jsx";
+import { DisabledView } from "~/component/actions/button/DisabledView.jsx";
+import { FocusedView } from "~/component/actions/button/FocusedView.jsx";
+import { TooltipView } from "~/component/actions/button/TooltipView.jsx";
+import { VariantView } from "~/component/actions/button/VariantView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# Button
 
 Buttons allow users to perform an action or to navigate to another page. They have multiple styles for various needs, and are ideal for calling attention to where a user needs to do something in order to move forward in a flow.
-
 
 <MainView />
 <CodeView>
@@ -29,7 +28,7 @@ Buttons allow users to perform an action or to navigate to another page. They ha
     ```jsx {5-7} showLineNumbers
     import { RoundButton } from "@elf-framework/ui";
 
-    function App() { 
+    function App() {
         return (
             <RoundButton size="extra-large" variant="primary">
                     Getting started
@@ -48,8 +47,7 @@ Buttons allow users to perform an action or to navigate to another page. They ha
 
 </CodeView>
 
-
-## Options 
+## Options
 
 ### Label and icon
 
@@ -66,32 +64,31 @@ label text.
 The label can be hidden to create an icon-only button. If the label is
 hidden, an icon is required, and the label will appear in a tooltip.
 
-
 <CodeView>
 
 <CodeViewItem title="Sapa">
 ```jsx {7-9,14,19-21} showLineNumbers
 import { RoundButton } from "@elf-framework/ui";
 
-function App() { 
-    return <Grid columns={[2, 1]} gap={20}>
-        <label>With label and icon</label>
-        <div>
-            <RoundButton variant="primary">
-                <FilePresentFilled /> Share
-            </RoundButton>
-        </div>
-        <label>Without icon</label>
-        <div>
-            <RoundButton variant="primary">
-                Share
-            </RoundButton>
-        </div>
-        <label>With icon and label hidden</label>
-        <div>
-            <IconButton variant="primary">
-                <FilePresentFilled />
-            </IconButton>
+function App() {
+return <Grid columns={[2, 1]} gap={20}>
+<label>With label and icon</label>
+<div>
+<RoundButton variant="primary">
+<FilePresentFilled /> Share
+</RoundButton>
+</div>
+<label>Without icon</label>
+<div>
+<RoundButton variant="primary">
+Share
+</RoundButton>
+</div>
+<label>With icon and label hidden</label>
+<div>
+<IconButton variant="primary">
+<FilePresentFilled />
+</IconButton>
 
             {/* RoundButton like IconButton */}
             <RoundButton variant="primary" iconOnly>
@@ -99,9 +96,10 @@ function App() {
             </RoundButton>
         </div>
         </Grid>
-    
+
 }
-```
+
+````
 </CodeViewItem>
     <CodeViewItem title="Html">
     ```html
@@ -141,7 +139,7 @@ important actions and are meant to establish a clear hierarchy.
     ```jsx {7-14} showLineNumbers
     import { RoundButton } from "@elf-framework/ui";
 
-    function App() { 
+    function App() {
         return (
           <Grid columns={[1, 2]} gap={20}>
             {[
@@ -218,7 +216,7 @@ hierarchy of importance within the page.
     ```jsx {6, 18} showLineNumbers
 import { Grid, RoundButton } from "@elf-framework/ui";
 
-function App() { 
+function App() {
     return (
         <div>
         {["small", "medium", "large", "extra-large"].map((size) => (
@@ -267,7 +265,7 @@ function App() {
 
 </CodeView>
 
-### Style 
+### Style
 <StyleView />
 
 &nbsp;
@@ -282,7 +280,7 @@ should only be used for secondary actions.
 
     <CodeViewItem title="Sapa">
     ```jsx {6, 18} showLineNumbers
-// default style 
+// default style
 <RoundButton variant={variant}>Action</RoundButton>
 
 // outline style
@@ -303,7 +301,7 @@ should only be used for secondary actions.
 
 </CodeView>
 
-### Justified 
+### Justified
 <JustifiedView />
 
 &nbsp;
@@ -321,52 +319,77 @@ container width.
 <RoundButton justified variant="primary">
     Render
 </RoundButton>
-```
+````
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html {1}
 <button class="elf--button justified primary medium round ">
-    <span>Render</span>
+  <span>Render</span>
 </button>
 ```
+
     </CodeViewItem>
 
 </CodeView>
 
 ### Pending
+
 <PendingView />
 
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx {1} showLineNumbers
 <RoundButton size={size} pending play>
-    <SettingsFilled /> Share
+  <SettingsFilled /> Share
 </RoundButton>
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html {3-10} showLineNumbers
 <button class="elf--button default medium round ">
-    <span>
-        <div class="elf--animation" style="--elf--animation-duration: 1s; --elf--animation-name: spin; --elf--animation-delay: 0s; --elf--animation-play-state: running;">
-            <div class="elf--progress-circle default medium normal" style="--elf--progress-circle-offset: 0.5;">
-                <div class="progress-area">
-                    <svg>
-                        <circle class="progress-circle track" r="50%" cx="50%" cy="50%"></circle>
-                        <circle class="progress-circle fill" r="50%" cx="50%" cy="50%"></circle>
-                    </svg>
-                </div>
-            </div>
+  <span>
+    <div
+      class="elf--animation"
+      style="--elf--animation-duration: 1s; --elf--animation-name: spin; --elf--animation-delay: 0s; --elf--animation-play-state: running;"
+    >
+      <div
+        class="elf--progress-circle default medium normal"
+        style="--elf--progress-circle-offset: 0.5;"
+      >
+        <div class="progress-area">
+          <svg>
+            <circle
+              class="progress-circle track"
+              r="50%"
+              cx="50%"
+              cy="50%"
+            ></circle>
+            <circle
+              class="progress-circle fill"
+              r="50%"
+              cx="50%"
+              cy="50%"
+            ></circle>
+          </svg>
         </div>
-    </span>
+      </div>
+    </div>
+  </span>
 </button>
 ```
+
     </CodeViewItem>
 
 </CodeView>
 
 ### Disabled
+
 <DisabledView />
 
 &nbsp;
@@ -375,10 +398,10 @@ available in that circumstance. This state can be used to maintain
 layout continuity and to communicate that an action may become
 available later.
 
-
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx {1, 3} showLineNumbers
 <RoundButton disabled>Share</RoundButton>
 
@@ -386,22 +409,25 @@ available later.
     Share
 </RoundButton>
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html {1, 5} showLineNumbers
 <button class="elf--button default medium round " disabled="disabled">
-    <span>Share</span>
+  <span>Share</span>
 </button>
 
 <button class="elf--button outline default medium round " disabled="disabled">
-    <span>Share</span>
+  <span>Share</span>
 </button>
 ```
+
     </CodeViewItem>
 
 </CodeView>
 
-### Focus 
+### Focus
 
 <FocusedView />
 
@@ -413,22 +439,25 @@ button in focus.
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx {1} showLineNumbers
 <RoundButton focused variant="primary">
-    Action
+  Action
 </RoundButton>
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html {1}
 <button class="elf--button focused primary medium round ">
-    <span>Action</span>
+  <span>Action</span>
 </button>
 ```
+
     </CodeViewItem>
 
 </CodeView>
-
 
 ### Tooltip
 
@@ -440,40 +469,40 @@ When the button label is hidden, a tooltip is shown on hover that displays the l
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx {1, 5, 9} showLineNumbers
-import {Tooltip, RoundButton} from "@elf-framework/ui";
+import { Tooltip, RoundButton } from "@elf-framework/ui";
 
 function App() {
-    return (
-        <Tooltip message={"Share"} show placement="top" variant="dark">
-            <RoundButton iconOnly variant="primary">
-                <SettingsFilled />
-            </RoundButton>
-        </Tooltip>
-    )
+  return (
+    <Tooltip message={"Share"} show placement="top" variant="dark">
+      <RoundButton iconOnly variant="primary">
+        <SettingsFilled />
+      </RoundButton>
+    </Tooltip>
+  );
 }
-
-
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html {1}
 <div class="elf--tooltip top dark relative">
-    <div class="content">
-        <button class="elf--button primary medium round  icon-only">
-            <span>{icon}</span>
-        </button>
+  <div class="content">
+    <button class="elf--button primary medium round  icon-only">
+      <span>{icon}</span>
+    </button>
+  </div>
+  <div class="message">
+    <div class="arrow"></div>
+    <div class="message-content">
+      <div>Share</div>
     </div>
-    <div class="message">
-        <div class="arrow"></div>
-        <div class="message-content">
-            <div>Share</div>
-        </div>
-    </div>
+  </div>
 </div>
 ```
+
     </CodeViewItem>
 
 </CodeView>
-
-

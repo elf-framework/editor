@@ -4,8 +4,7 @@ layout: SapaLayout
 filename: pages/sapa/api/vnode/page.mdx
 ---
 
-
-# {title}
+# {frontmatter.title}
 
 What is `VNode`?
 
@@ -13,8 +12,7 @@ What is `VNode`?
 
 Since it exists in a form similar to the DOM element, comparison can be made based on the DOM.
 
-
-## createElementJsx 
+## createElementJsx
 
 The `jsx` syntax is replaced by the `createElementJsx` function.
 
@@ -23,36 +21,35 @@ The `jsx` syntax is replaced by the `createElementJsx` function.
 ```
 
 ```jsx
-import {createElementJsx} from "@elf-framework/sapa"; 
+import { createElementJsx } from "@elf-framework/sapa";
 
-createElementJsx("div", { title: "yellow" })
+createElementJsx("div", { title: "yellow" });
 ```
 
 ## VNode types
 
 VNode has the following types.
 
-* VNode 
-* VNodeComponent
-* VNodeComment
-* VNodeFragment
-* VNodeText
+- VNode
+- VNodeComponent
+- VNodeComment
+- VNodeFragment
+- VNodeText
 
 Except for VNode, the rest are implemented by inheriting VNode.
 
 ## Creation function for each VNode type
 
-* createVNode(): VNode 
-* createVNodeComponent(): VNodeComponent
-* createVNodeText(): VNodeText
-* createVNodeComment(): VNodeComment
-* createVNodeFragment(): VNodeFragment
+- createVNode(): VNode
+- createVNodeComponent(): VNodeComponent
+- createVNodeText(): VNodeText
+- createVNodeComment(): VNodeComment
+- createVNodeFragment(): VNodeFragment
 
 ```jsx
-
 // create VNode
 createVNode({
-  tag: 'div',
+  tag: "div",
   props: {
     title: "yellow",
   },
@@ -60,24 +57,24 @@ createVNode({
     "text",
     "text",
     createVNode({
-      tag: 'span',
+      tag: "span",
       props: {
-        title: "blue"
-      }
-    })
-  ]
-})
+        title: "blue",
+      },
+    }),
+  ],
+});
 
 // create VNodeComponent
 createVNodeComponent({
-  Component: function A () { return createVNode('div') },
-  props: {
-    title: "yellow"
+  Component: function A() {
+    return createVNode("div");
   },
-  children: [
-    "text"
-  ]
-})
+  props: {
+    title: "yellow",
+  },
+  children: ["text"],
+});
 
 // create VNodeText
 createVNodeText("Simple text");
@@ -93,17 +90,12 @@ createVNodeFragment({
     createVNode({
       tag: "div",
       props: {
-        title: 'yellow'
+        title: "yellow",
       },
-      children: [
-        1, 
-        2, 
-        3
-      ]
-    })
-  ]
-})
-
+      children: [1, 2, 3],
+    }),
+  ],
+});
 ```
 
 ## DomRenderer
@@ -112,17 +104,15 @@ createVNodeFragment({
 
 ```jsx
 const vnode = createVNode({
-  tag: 'div', 
+  tag: "div",
   props: {
-    title: "yellow"
-  }
-})
+    title: "yellow",
+  },
+});
 const element = DomRenderer(vnode, {
-  context: parentComponentInstance
-}).el
+  context: parentComponentInstance,
+}).el;
 ```
-
-
 
 ## renderToHtml
 
@@ -130,18 +120,16 @@ const element = DomRenderer(vnode, {
 
 ```jsx
 const vnode = createVNode({
-  tag: 'div', 
+  tag: "div",
   props: {
-    title: "yellow"
-  }
-})
-
-(async () => {
+    title: "yellow",
+  },
+})(async () => {
   const htmlString = await renderToHtml(vnode);
-})()
+})();
 ```
 
-## Options 
+## Options
 
 `options` sends meta information needed when the renderer draws the vnode.
 
@@ -150,13 +138,13 @@ const vnode = createVNode({
   checkRefClass: this.checkRefClass,
   context: this,
   registerRef: this.registerRef,
-  registerChildComponent: this.registerChildComponent,      
+  registerChildComponent: this.registerChildComponent,
 }
 ```
 
-| Variable  | Description |
-| ------------- | ------------- |
-| context  | Parent component instance  |
-| checkRefClass  | Check if there is a created component   |
-| registerRef  | Register vnode with ref attribute  |
-| registerChildComponent  | Register the created child component  |
+| Variable               | Description                           |
+| ---------------------- | ------------------------------------- |
+| context                | Parent component instance             |
+| checkRefClass          | Check if there is a created component |
+| registerRef            | Register vnode with ref attribute     |
+| registerChildComponent | Register the created child component  |

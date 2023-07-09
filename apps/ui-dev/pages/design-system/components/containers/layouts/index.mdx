@@ -5,13 +5,13 @@ filename: pages/design-system/components/containers/layouts/page.mdx
 ---
 
 import { VBox, Ghost, Flex, Grid } from "@elf-framework/ui";
-import { MainView } from "~/component/containers/layouts/MainView.jsx"; 
-import { OptionsView } from "~/component/containers/layouts/OptionsView.jsx"; 
-import { OrientationView } from "~/component/containers/layouts/OrientationView.jsx"; 
+import { MainView } from "~/component/containers/layouts/MainView.jsx";
+import { OptionsView } from "~/component/containers/layouts/OptionsView.jsx";
+import { OrientationView } from "~/component/containers/layouts/OrientationView.jsx";
 import { UIComponentLink } from "~/component/UIComponentLink.jsx";
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# Layout
 
 Layout helps in a number of ways to arrange a space.
 
@@ -19,97 +19,106 @@ Most of the functions for layout are in the form of directly specifying css styl
 
 <MainView />
 
-
-
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx showLineNumbers
 function App() {
-    return <div>
-        <h1>Grid</h1>
-        <Grid columns={3} style={{ gap: 10 }} rows={["100px", "100px"]}>
-          <Ghost />
-          <Ghost />
-          <Ghost />
-          <Ghost />
-          <Ghost />
-          <Ghost />
-        </Grid>
+  return (
+    <div>
+      <h1>Grid</h1>
+      <Grid columns={3} style={{ gap: 10 }} rows={["100px", "100px"]}>
+        <Ghost />
+        <Ghost />
+        <Ghost />
+        <Ghost />
+        <Ghost />
+        <Ghost />
+      </Grid>
     </div>
+  );
 }
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html showLineNumbers
-<div class="elf--grid" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 100px 100px; gap: 10px;">
-    <div class="elf--ghost">&nbsp;</div>
-    <div class="elf--ghost">&nbsp;</div>
-    <div class="elf--ghost">&nbsp;</div>
-    <div class="elf--ghost">&nbsp;</div>
-    <div class="elf--ghost">&nbsp;</div>
-    <div class="elf--ghost">&nbsp;</div>
+<div
+  class="elf--grid"
+  style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 100px 100px; gap: 10px;"
+>
+  <div class="elf--ghost">&nbsp;</div>
+  <div class="elf--ghost">&nbsp;</div>
+  <div class="elf--ghost">&nbsp;</div>
+  <div class="elf--ghost">&nbsp;</div>
+  <div class="elf--ghost">&nbsp;</div>
+  <div class="elf--ghost">&nbsp;</div>
 </div>
 ```
+
     </CodeViewItem>
     <CodeViewItem title="TypeScript">
+
 ```typescript
+export type FlexStyle = {
+  backgroundColor: string;
+  gap: number;
+};
+export interface FlexProps {
+  class?: string;
+  stack?: boolean;
+  wrap?: boolean;
+  sameWidth?: boolean;
+  style?: FlexStyle & CommonStyle;
+}
 
-  export type FlexStyle = {
-    backgroundColor: string;
-    gap: number;
-  };
-  export interface FlexProps {
-    class?: string;
-    stack?: boolean;
-    wrap?: boolean;
-    sameWidth?: boolean;
-    style?: FlexStyle & CommonStyle;
-  }
+export class Flex extends UIElement {
+  props: FlexProps & CommonStyle;
+}
 
-  export class Flex extends UIElement {
-    props: FlexProps & CommonStyle;
-  }
+export interface VBoxProps {
+  wrap?: boolean;
+  style?: FlexStyle & CommonStyle;
+}
 
-  export interface VBoxProps {
-    wrap?: boolean;
-    style?: FlexStyle & CommonStyle;
-  }
+export class VBox extends Flex {
+  props: VBoxProps & CommonStyle;
+}
 
-  export class VBox extends Flex {
-    props: VBoxProps & CommonStyle;
-  }
+export type GridStyle = {
+  backgroundColor: string;
+  gap: number;
+};
 
-  export type GridStyle = {
-    backgroundColor: string;
-    gap: number;
-  };
+export type GridTemplate = number | string;
+export interface GridProps {
+  class: string;
+  columns?: GridTemplate | GridTemplate[];
+  rows?: GridTemplate | GridTemplate[];
+  style?: GridStyle & CommonStyle;
+}
 
-  export type GridTemplate = number | string;
-  export interface GridProps {
-    class: string;
-    columns?: GridTemplate | GridTemplate[];
-    rows?: GridTemplate | GridTemplate[];
-    style?: GridStyle & CommonStyle;
-  }
+export class Grid extends UIElement {
+  props: GridProps & CommonStyle & DomEventType;
+}
 
-  export class Grid extends UIElement {
-    props: GridProps & CommonStyle & DomEventType;
-  }
+export interface ColumnProps {
+  span?: number;
+  style?: CommonStyle;
+}
 
-  export interface ColumnProps {
-    span?: number;
-    style?: CommonStyle;
-  }
-
-  export class Column extends UIElement {
-    props: ColumnProps & DomEventType;
-  }
+export class Column extends UIElement {
+  props: ColumnProps & DomEventType;
+}
 ```
+
     </CodeViewItem>
+
 </CodeView>
 
-## Flex 
+## Flex
 
 When dealing with layouts, this is the layout you use when dealing with only one dimension (row or column) at a time.
 
@@ -121,31 +130,34 @@ Since Flex deals with layouts relative to one axis, you need to specify the dire
 The default is row .
 
 <div>
-    <h3>flex-direction: row</h3>
-    <Flex style={{gap: 20}}>
-        <Ghost style={{height: 100,width: 100}} />
-        <Ghost style={{height: 100,width: 100}} />
-    </Flex>
+  <h3>flex-direction: row</h3>
+  <Flex style={{ gap: 20 }}>
+    <Ghost style={{ height: 100, width: 100 }} />
+    <Ghost style={{ height: 100, width: 100 }} />
+  </Flex>
 </div>
 &nbsp;
 <div>
-    <h3>flex-direction: column</h3>    
-    <Flex style={{gap: 20, flexDirection: "column"}}>
-        <Ghost style={{height: 100,width: 100}} />
-        <Ghost style={{height: 100,width: 100}} />
-    </Flex>
+  <h3>flex-direction: column</h3>
+  <Flex style={{ gap: 20, flexDirection: "column" }}>
+    <Ghost style={{ height: 100, width: 100 }} />
+    <Ghost style={{ height: 100, width: 100 }} />
+  </Flex>
 </div>
 
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx
-<Flex style={{flexDirection: "column"}}>
-    <div>flex item</div>
-    <div>flex item</div>
+<Flex style={{ flexDirection: "column" }}>
+  <div>flex item</div>
+  <div>flex item</div>
 </Flex>
 ```
+
     </CodeViewItem>
+
 </CodeView>
 
 ### alignment of axes
@@ -156,82 +168,148 @@ One axis is shown as the main axis, and the other axis is orthogonal to the main
 
 ### align main axis (justify-content)
 
-justify-content  (refer to https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+justify-content (refer to https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
 
-* flex-start
-* center
-* flex-end 
-* space-between 
-* ...
+- flex-start
+- center
+- flex-end
+- space-between
+- ...
 
 <div>
-    <Flex style={{gap: 20, justifyContent: "flex-end", backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}} />
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}} />
-    </Flex>
+  <Flex
+    style={{
+      gap: 20,
+      justifyContent: "flex-end",
+      backgroundColor: "var(--color-gray-0)",
+      padding: 10,
+      marginBottom: 10,
+    }}
+  >
+    <Ghost
+      style={{
+        height: 100,
+        width: 100,
+        backgroundColor: "var(--color-gray-2)",
+      }}
+    />
+    <Ghost
+      style={{
+        height: 100,
+        width: 100,
+        backgroundColor: "var(--color-gray-2)",
+      }}
+    />
+  </Flex>
 </div>
 
-
 ```jsx
-    <Flex style={{gap: 20, justifyContent: "flex-end", backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}} />
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}} />
-    </Flex>
+<Flex
+  style={{
+    gap: 20,
+    justifyContent: "flex-end",
+    backgroundColor: "var(--color-gray-0)",
+    padding: 10,
+    marginBottom: 10,
+  }}
+>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  />
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  />
+</Flex>
 ```
 
 ### Orthogonal axis alignment (align-content)
 
 Alignment of the axis orthogonal to the main axis can also be applied.
 
-align-content  (refer to https://developer.mozilla.org/en-US/docs/Web/CSS/align-content)
+align-content (refer to https://developer.mozilla.org/en-US/docs/Web/CSS/align-content)
 
-* flex-start
-* center
-* flex-end 
-* space-between 
-* ...
+- flex-start
+- center
+- flex-end
+- space-between
+- ...
 
 <div>
-    <Flex style={{gap: 20, flexDirection: "column", width: 200, height: 200, alignContent: "flex-start", backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-        <Ghost style={{height: 50, backgroundColor: "var(--color-gray-2)"}} />
-        <Ghost style={{height: 50, backgroundColor: "var(--color-gray-2)"}} />
-    </Flex>
+  <Flex
+    style={{
+      gap: 20,
+      flexDirection: "column",
+      width: 200,
+      height: 200,
+      alignContent: "flex-start",
+      backgroundColor: "var(--color-gray-0)",
+      padding: 10,
+      marginBottom: 10,
+    }}
+  >
+    <Ghost style={{ height: 50, backgroundColor: "var(--color-gray-2)" }} />
+    <Ghost style={{ height: 50, backgroundColor: "var(--color-gray-2)" }} />
+  </Flex>
 </div>
 
-
 ```jsx
-    <Flex style={{gap: 20, flexDirection: "column", width: 200, height: 200, alignContent: "flex-start", backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-        <Ghost style={{height: 50, backgroundColor: "var(--color-gray-2)"}} />
-        <Ghost style={{height: 50, backgroundColor: "var(--color-gray-2)"}} />
-    </Flex>
+<Flex
+  style={{
+    gap: 20,
+    flexDirection: "column",
+    width: 200,
+    height: 200,
+    alignContent: "flex-start",
+    backgroundColor: "var(--color-gray-0)",
+    padding: 10,
+    marginBottom: 10,
+  }}
+>
+  <Ghost style={{ height: 50, backgroundColor: "var(--color-gray-2)" }} />
+  <Ghost style={{ height: 50, backgroundColor: "var(--color-gray-2)" }} />
+</Flex>
 ```
-
 
 ### Specifying gaps between items
 
 You can specify spacing within the layout.
 
 <div>
-    <Flex style={{gap: 30, backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}} />
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}} />
-        <Ghost style={{height: 100,}} />
-    </Flex>
+  <Flex
+    style={{
+      gap: 30,
+      backgroundColor: "var(--color-gray-0)",
+      padding: 10,
+      marginBottom: 10,
+    }}
+  >
+    <Ghost
+      style={{
+        height: 100,
+        width: 100,
+        backgroundColor: "var(--color-gray-2)",
+      }}
+    />
+    <Ghost
+      style={{
+        height: 100,
+        width: 100,
+        backgroundColor: "var(--color-gray-2)",
+      }}
+    />
+    <Ghost style={{ height: 100 }} />
+  </Flex>
 </div>
 
-
 ```jsx
-<Flex style={{gap: 30}}>
-   ...
-</Flex>
+<Flex style={{ gap: 30 }}>...</Flex>
 ```
 
 > Because the style attribute is used as it is, other attributes can be specified in the form of css style.
-> 
-> ```<Flex style={{columnGap: 10}}>...</Flex>```
-> 
+>
+> `<Flex style={{columnGap: 10}}>...</Flex>`
 
-### fill 
+### fill
 
 The area to be filled depends on the size of the item.
 
@@ -246,14 +324,30 @@ The area to be filled depends on the size of the item.
         <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
         <Ghost style={{height: 100,}}>auto</Ghost>
         <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    </Flex>    
+    </Flex>
+
 </div>
 
 ```jsx showLineNumbers
-<Flex style={{gap: 30, backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100,}}>auto</Ghost>
+<Flex
+  style={{
+    gap: 30,
+    backgroundColor: "var(--color-gray-0)",
+    padding: 10,
+    marginBottom: 10,
+  }}
+>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost style={{ height: 100 }}>auto</Ghost>
 </Flex>
 ```
 
@@ -272,36 +366,72 @@ If the default size (width or height) is defined, only the size is drawn.
         <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
         <Ghost style={{height: 100, width: 200,}}>200</Ghost>
         <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    </Flex>    
+    </Flex>
+
 </div>
 
 ### Wrap
 
 `flex` has the ability to automatically wrap lines. Default is false .
 
-<Flex wrap style={{gap: 30, justifyContent: "flex-start", backgroundColor: "var(--color-gray-0)", padding: 10, marginBottom: 10}}>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100, width: 200 }}>200</Ghost>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100, width: 200 }}>200</Ghost>
-        <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100,width: 100, backgroundColor: "var(--color-gray-2)"}}>100</Ghost>
-    <Ghost style={{height: 100, width: 200 }}>200</Ghost>    
+<Flex
+  wrap
+  style={{
+    gap: 30,
+    justifyContent: "flex-start",
+    backgroundColor: "var(--color-gray-0)",
+    padding: 10,
+    marginBottom: 10,
+  }}
+>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost style={{ height: 100, width: 200 }}>200</Ghost>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost style={{ height: 100, width: 200 }}>200</Ghost>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost
+    style={{ height: 100, width: 100, backgroundColor: "var(--color-gray-2)" }}
+  >
+    100
+  </Ghost>
+  <Ghost style={{ height: 100, width: 200 }}>200</Ghost>
 </Flex>
 
 ```jsx {1} showLineNumbers
-<Flex wrap style={{
-    gap: 30, 
-    justifyContent: "flex-start", 
-}}>
-...
+<Flex
+  wrap
+  style={{
+    gap: 30,
+    justifyContent: "flex-start",
+  }}
+>
+  ...
 </Flex>
 ```
 
-
-## Grid 
+## Grid
 
 You can create a two-dimensional layout.
 
@@ -311,19 +441,19 @@ You can create a two-dimensional layout.
 
 `columns={3}`
 
-It is like  `grid-template-columns: 1fr 1fr 1fr;`.
+It is like `grid-template-columns: 1fr 1fr 1fr;`.
 
-<Grid columns={3} rows={['100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={3} rows={["100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 
 ```jsx {1} showLineNumbers
-<Grid columns={3} rows={['100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={3} rows={["100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 ```
 
@@ -331,19 +461,19 @@ It is like  `grid-template-columns: 1fr 1fr 1fr;`.
 
 `columns={[1, 2]}`
 
-It is like `grid-template-columns: 1fr 2fr;` 
+It is like `grid-template-columns: 1fr 2fr;`
 
-<Grid columns={[1, 2]} rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, 2]} rows={["100px", "100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 
 ```jsx {1} showLineNumbers
-<Grid columns={[1, 2]} rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, 2]} rows={["100px", "100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 ```
 
@@ -353,20 +483,19 @@ It is like `grid-template-columns: 1fr 2fr;`
 
 It is like `grid-template-columns: 1fr 100px;`.
 
-<Grid columns={[1, '100px']} rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, "100px"]} rows={["100px", "100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 
 ```jsx {1} showLineNumbers
-<Grid columns={[1, 2]} rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, 2]} rows={["100px", "100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 ```
-
 
 ### row
 
@@ -374,41 +503,38 @@ It is like `grid-template-columns: 1fr 100px;`.
 
 `rows={3}`
 
-It is like  `grid-template-rows: 1fr 1fr 1fr;`.
+It is like `grid-template-rows: 1fr 1fr 1fr;`.
 
-
-<Grid columns={3}  rows={3} style={{gap: 10, height: 300}}>
-    <Ghost>1</Ghost>
-    <div style={{backgroundColor: "var(--color-gray-2)"}}></div>
-    <div style={{backgroundColor: "var(--color-gray-2)"}}></div>
-    <Ghost>2</Ghost>
-        <div style={{backgroundColor: "var(--color-gray-2)"}}></div>
-    <div style={{backgroundColor: "var(--color-gray-2)"}}></div>
-    <Ghost>3</Ghost>
-        <div style={{backgroundColor: "var(--color-gray-2)"}}></div>
-    <div style={{backgroundColor: "var(--color-gray-2)"}}></div>
+<Grid columns={3} rows={3} style={{ gap: 10, height: 300 }}>
+  <Ghost>1</Ghost>
+  <div style={{ backgroundColor: "var(--color-gray-2)" }}></div>
+  <div style={{ backgroundColor: "var(--color-gray-2)" }}></div>
+  <Ghost>2</Ghost>
+  <div style={{ backgroundColor: "var(--color-gray-2)" }}></div>
+  <div style={{ backgroundColor: "var(--color-gray-2)" }}></div>
+  <Ghost>3</Ghost>
+  <div style={{ backgroundColor: "var(--color-gray-2)" }}></div>
+  <div style={{ backgroundColor: "var(--color-gray-2)" }}></div>
 </Grid>
-
 
 ### set by array
 
 `rows={[1, 2]}`
 
-It is like `grid-template-rows: 1fr 2fr;` 
+It is like `grid-template-rows: 1fr 2fr;`
 
-<Grid columns={[1, 2]} rows={[1, 2]} style={{gap: 10, height: 300}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, 2]} rows={[1, 2]} style={{ gap: 10, height: 300 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 
 ```jsx {1} showLineNumbers
-<Grid columns={[1, 2]} rows={[1, 2]} style={{gap: 10, height: 300}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, 2]} rows={[1, 2]} style={{ gap: 10, height: 300 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
-
 ```
 
 &nbsp;
@@ -417,37 +543,44 @@ It is like `grid-template-rows: 1fr 2fr;`
 
 It is like `grid-template-columns: 1fr 100px;`.
 
-<Grid columns={[1, '100px']} rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, "100px"]} rows={["100px", "100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 
 ```jsx {1} showLineNumbers
-<Grid columns={[1, 2]} rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid columns={[1, 2]} rows={["100px", "100px"]} style={{ gap: 10 }}>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 ```
+
 &nbsp;
 
 `columns="repeat(auto-fit, minmax(100px, 1fr))"`
 
 It is like `grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));`.
 
-<Grid columns="repeat(auto-fit, minmax(100px, 1fr))" rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid
+  columns="repeat(auto-fit, minmax(100px, 1fr))"
+  rows={["100px", "100px"]}
+  style={{ gap: 10 }}
+>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 
 ```jsx {1} showLineNumbers
-<Grid columns="repeat(auto-fit, minmax(100px, 1fr))" rows={['100px', '100px']} style={{gap: 10}}>
-    <Ghost>1</Ghost>
-    <Ghost>2</Ghost>
-    <Ghost>3</Ghost>
+<Grid
+  columns="repeat(auto-fit, minmax(100px, 1fr))"
+  rows={["100px", "100px"]}
+  style={{ gap: 10 }}
+>
+  <Ghost>1</Ghost>
+  <Ghost>2</Ghost>
+  <Ghost>3</Ghost>
 </Grid>
 ```
-
-

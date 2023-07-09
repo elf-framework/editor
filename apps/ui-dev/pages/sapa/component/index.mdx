@@ -7,8 +7,7 @@ filename: pages/sapa/component/page.mdx
 import { Grid } from "@elf-framework/ui";
 import { Diagram } from "~/utils/Diagram";
 
-
-# {title}
+# {frontmatter.title}
 
 Sapa provides two types of components.
 
@@ -18,8 +17,7 @@ The two differ only in the format of the notation, but everything is the same.
 
 `Function` is also treated as a `Class` component at the end.
 
-
-## Class Component 
+## Class Component
 
 A class component can be defined as follows.
 
@@ -29,22 +27,21 @@ import { UIElement } from "@elf-framework/sapa";
 class A extends UIElement {}
 
 // jsx
-<A>Class Component</A>
+<A>Class Component</A>;
 ```
-  
 
-## Function Component 
+## Function Component
 
 A function component can be defined as follows.
 
 ```jsx
-function A () {}
+function A() {}
 
 // jsx
-<A>Function Component</A>
+<A>Function Component</A>;
 ```
 
-## Deep Dive Function Component 
+## Deep Dive Function Component
 
 See the `createFunctionElementInstance` function.
 
@@ -77,7 +74,8 @@ class UIElement {
 
 Sapa has a basic lifecycle. This works depending on how you render the DOM.
 
-<Diagram graph={`
+<Diagram
+  graph={`
 flowchart TD;
   A["Start(VNode, UIElement, Function)"] --> I[initialize property]
   I --> D[render]
@@ -88,4 +86,5 @@ flowchart TD;
   Mounted -- onMounted --> Z[Rendering Done]
   Updated -- onUpdated --> Z
   Z -- onDestroyed --> Destroyed[DOM removed]
-`} />
+`}
+/>

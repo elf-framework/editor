@@ -5,18 +5,17 @@ filename: pages/design-system/components/feedback/contextual-help/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/feedback/contextual-help/MainView.jsx"; 
-import { OptionsView } from "~/component/feedback/contextual-help/OptionsView.jsx"; 
-import { PlacementView } from "~/component/feedback/contextual-help/PlacementView.jsx"; 
+import { MainView } from "~/component/feedback/contextual-help/MainView.jsx";
+import { OptionsView } from "~/component/feedback/contextual-help/OptionsView.jsx";
+import { PlacementView } from "~/component/feedback/contextual-help/PlacementView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Contextual help shows a user extra information about the state of either an adjacent component or an entire view. It explains a high-level topic about an experience and can point users to more information elsewhere.
 
-
 <MainView />
 
-## Options 
+## Options
 
 ### Icon
 
@@ -37,18 +36,17 @@ and resources to learn more (the help icon).
 A popover is positioned in relation to its source. The placement
 property values are the following:
 
-* top
-* top-left
-* top-right
-* bottom
-* bottom-left
-* bottom-right
-* left
-* left-top
-* left-bottom
-* right
-* right-top
-* right-bottom
+- top
+- top-left
+- top-right
+- bottom
+- bottom-left
+- bottom-right
+- left
+- left-top
+- left-bottom
+- right
+- right-top
+- right-bottom
 
 The default placement value is at the top.
-

@@ -7,23 +7,21 @@ filename: pages/sapa/store/page.mdx
 import { Grid } from "@elf-framework/ui";
 import { Diagram } from "~/utils/Diagram";
 
-
-# {title}
+# Store Basic
 
 Sapa provides storage that can be used in three forms.
 
-* `useState` - having order store 
-* `state` - key-value store 
-* `$store` - hierarchy store 
+- `useState` - having order store
+- `state` - key-value store
+- `$store` - hierarchy store
 
-
-## useState 
+## useState
 
 `useState` is an ordered storage using Hooks.
 
 See [Hook](/pages/sapa/hook/) for details.
 
-## state 
+## state
 
 `state` is a local key-value store.
 
@@ -33,20 +31,19 @@ Since it is a class variable, the initial value is specified with `initState()` 
 import { UIElement } from "@elf-framework/sapa";
 
 class A extends UIElement {
-
   initState() {
     return {
-      value: 10
-    }
+      value: 10,
+    };
   }
 
-  template () {
-    return <div>{this.state.value}</div>
+  template() {
+    return <div>{this.state.value}</div>;
   }
 }
 ```
 
-## $store 
+## $store
 
 `$store` is the storage structure used in the hierachy structure.
 
@@ -55,38 +52,42 @@ Components connected by hierachy all share one `$store`.
 First, let's see how to use it in class components.
 
 ```jsx
-import {UIElement, SUBSCRIBE} from "@elf-framework/sapa";
+import { UIElement, SUBSCRIBE } from "@elf-framework/sapa";
 
 class B extends UIElement {
-  template () {
-
-    return <div>{this.$store.get('key')}</div>
+  template() {
+    return <div>{this.$store.get("key")}</div>;
   }
 
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
-  [SUBSCRIBE('key')] () {
+  [SUBSCRIBE("key")]() {
     useRender(this);
   }
 }
 
 class A extends UIElement {
-  template () {
-
-    return <div onClick={() => {
-      this.$store.set("key", "value")
-    }}>
-      {this.$store.get('key')}
-      <B />
-    </div>
+  template() {
+    return (
+      <div
+        onClick={() => {
+          this.$store.set("key", "value");
+        }}
+      >
+        {this.$store.get("key")}
+        <B />
+      </div>
+    );
   }
 }
 
 class Main extends UIElement {
-  template () {
-    return <div>
-      <A />
-      <B />
-    </div>
+  template() {
+    return (
+      <div>
+        <A />
+        <B />
+      </div>
+    );
   }
 }
 ```
@@ -98,7 +99,6 @@ In the class component, you can access it using this.`$store`. Of course, since 
 The `SUBSCRIBE` magic method receives a specific event and executes it.
 
 For details of `SUBSCRIBE`, check [Magic Method](/pages/sapa/magic-method/#SUBSCRIBE).
-
 
 Let's see how to use it in function component.
 
@@ -117,21 +117,27 @@ function A () {
 }
 
 ```
+
 You can use this.`$store` as it is in the function component, but it can be used more appropriately for the function component by providing useStore and useStoreSet hooks.
 
-### Store Message 
+### Store Message
 
 When the value of the store is changed, a message is delivered to the key value of the store.
 
 ```jsx
 function A() {
-
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
-  const [value, setStore] = useStoreValue('key');
+  const [value, setStore] = useStoreValue("key");
 
-  return <div onClick={(e) => {
-    setStore(e.target.textContent);
-  }}>Simple Text</div>
+  return (
+    <div
+      onClick={(e) => {
+        setStore(e.target.textContent);
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
@@ -139,23 +145,24 @@ function A() {
 
 ```jsx {2,6-9}
 function A() {
-  const setStore = useSetStoreValue('key');
-  return <div onClick={() => setStore(v => v + 1)}>Simple Text</div>
+  const setStore = useSetStoreValue("key");
+  return <div onClick={() => setStore((v) => v + 1)}>Simple Text</div>;
 }
 
-function B () {
-
+function B() {
   // If the value defined as key among the values ​​of $store changes, it receives and executes a message.
-  const [key] = useStoreValue('key');
+  const [key] = useStoreValue("key");
 
-  return <div>{key}</div>
+  return <div>{key}</div>;
 }
 
 function Main() {
-  return <div>
-    <A />
-    <B />
-  </div>
+  return (
+    <div>
+      <A />
+      <B />
+    </div>
+  );
 }
 ```
 

@@ -2,7 +2,7 @@
 title: Getting started
 layout: BaseEditorLayout
 ---
-  
+
 # Getting started
 
 `BaseEditor` implements the base framework for creating editors using Sapa.
@@ -23,27 +23,27 @@ npm install --save @elf-framework/sapa \
 To use the editor, import the `BaseEditor` component and use it in your application:
 
 ```js
-import start from '@elf-framework/sapa';
+import start from "@elf-framework/sapa";
 
-import { BaseEditor } from '@elf-framework/base-editor';
+import { BaseEditor } from "@elf-framework/base-editor";
 
 const MyEditor = () => (
-    <BaseEditor
-        configs={{
-          key: "value",
-        }}
-        plugins={[
-            function (editorContext) {
-                // ...
-            }
-        ]}
-      />
+  <BaseEditor
+    configs={{
+      key: "value",
+    }}
+    plugins={[
+      function (editorContext) {
+        // ...
+      },
+    ]}
+  />
 );
 
 start(MyEditor, {
-    title: 'My App',
-    icon: 'my-icon'
-})
+  title: "My App",
+  icon: "my-icon",
+});
 ```
 
 ## Props
@@ -54,59 +54,56 @@ The `configs` prop is an object that contains the configuration for the editor. 
 
 ### `plugins`
 
-The `plugins` prop is an array of functions that are called when the editor is initialized. 
-Each function is passed the `editorContext` object as an argument. 
+The `plugins` prop is an array of functions that are called when the editor is initialized.
+Each function is passed the `editorContext` object as an argument.
 The `editorContext` object contains the following properties:
 
-* `editorContext.commands` - The commands manager.
-* `editorContext.configs` - The configuration manger.
-* `editorContext.shortcuts` - The shortcuts manger.
-* `editorContext.uis` - The UI manger.
-* `editorContext.keyboard` - The keyboard manger.
-* `editorContext.i18n` - The i18n manger.
-* `editorContext.plugins` - The plugins manger.
-* `editorContext.history` - The history manger.
+- `editorContext.commands` - The commands manager.
+- `editorContext.configs` - The configuration manger.
+- `editorContext.shortcuts` - The shortcuts manger.
+- `editorContext.uis` - The UI manger.
+- `editorContext.keyboard` - The keyboard manger.
+- `editorContext.i18n` - The i18n manger.
+- `editorContext.plugins` - The plugins manger.
+- `editorContext.history` - The history manger.
 
 ```jsx
-
-<BaseEditor plugins={[
-
+<BaseEditor
+  plugins={[
     async function (editorContext) {
+      // register config
+      editorContext.registerConfig({
+        key: "yellow",
+        defaultValue: "yellow",
+        title: "Yellow Title",
+        description: "Description Yellow",
+        type: "string",
+      });
 
-        // register config 
-        editorContext.registerConfig({
-            key: "yellow",
-            defaultValue: "yellow",
-            title: "Yellow Title",
-            description: "Description Yellow",
-            type: "string",
-        });
+      // register command
+      editorContext.registerCommand({
+        command: "my-command",
+        title: "My Command",
+        description: "My Command Description",
+        execute: async () => {
+          console.log("sample command");
+          console.log(editor.keyboard.event);
+          return 10;
+        },
+      });
 
-        // register command 
-        editorContext.registerCommand({
-            command: "my-command",
-            title: "My Command",
-            description: "My Command Description",
-            execute: async () => {
-                console.log("sample command");
-                console.log(editor.keyboard.event);
-                return 10;
-            },
-        });
-
-        // register document shortcut
-        editorContext.registerShortcut({
-            key: "meta+shift+e",
-            mac: "ctrl+shift+e",
-            command: (editor, a, b, c) => {
-            console.log("sample shortcut", editor, a, b, c);
-            },
-            args: [1, 2, 3],
-        });
+      // register document shortcut
+      editorContext.registerShortcut({
+        key: "meta+shift+e",
+        mac: "ctrl+shift+e",
+        command: (editor, a, b, c) => {
+          console.log("sample shortcut", editor, a, b, c);
+        },
+        args: [1, 2, 3],
+      });
     },
-
-]}/>
-
+  ]}
+/>
 ```
 
 ### register features
@@ -115,7 +112,7 @@ The `registerXXX` method is used to register a feature. The feature is a functio
 
 The `registerXXX` method accepts an object with the following properties:
 
-* `editorContext.registerCommand` - register function command 
-* `editorContext.registerShortcut` - register document shortcut
-* `editorContext.registerConfig` - register global config
-* `editorContext.registerUI` - register UI component
+- `editorContext.registerCommand` - register function command
+- `editorContext.registerShortcut` - register document shortcut
+- `editorContext.registerConfig` - register global config
+- `editorContext.registerUI` - register UI component

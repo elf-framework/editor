@@ -4,7 +4,7 @@ layout: MainLayout
 filename: pages/introduction/contribute/page.mdx
 ---
 
-# {title}
+# {frontmatter.title}
 
 ## update ChangeLog
 
@@ -15,17 +15,16 @@ Use changeset to manage changelog. See [here](https://github.com/changesets/chan
 npm run changeset
 ```
 
-* Select multiple projects to be changed after executing changeset.
-* Then, insert comments for major, minor, and patch.
+- Select multiple projects to be changed after executing changeset.
+- Then, insert comments for major, minor, and patch.
 
-## update version 
+## update version
 
 Updates the version of package.json for the project in which the changelog is updated.
 
 ```shell
-npm run version-packages 
+npm run version-packages
 ```
-
 
 ## Release packages
 

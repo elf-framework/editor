@@ -5,40 +5,38 @@ filename: pages/design-system/components/feedback/tooltip/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/feedback/tooltip/MainView.jsx"; 
-import { OptionsView } from "~/component/feedback/tooltip/OptionsView.jsx"; 
-import { IconView } from "~/component/feedback/tooltip/IconView.jsx"; 
-import { PlacementView } from "~/component/feedback/tooltip/PlacementView.jsx"; 
-import { ClosableView } from "~/component/feedback/tooltip/ClosableView.jsx"; 
-import { VariantView } from "~/component/feedback/tooltip/VariantView.jsx"; 
-import { MaxWidthView } from "~/component/feedback/tooltip/MaxWidthView.jsx"; 
-import { FixedTooltipView } from "~/component/feedback/tooltip/FixedTooltipView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/feedback/tooltip/MainView.jsx";
+import { OptionsView } from "~/component/feedback/tooltip/OptionsView.jsx";
+import { IconView } from "~/component/feedback/tooltip/IconView.jsx";
+import { PlacementView } from "~/component/feedback/tooltip/PlacementView.jsx";
+import { ClosableView } from "~/component/feedback/tooltip/ClosableView.jsx";
+import { VariantView } from "~/component/feedback/tooltip/VariantView.jsx";
+import { MaxWidthView } from "~/component/feedback/tooltip/MaxWidthView.jsx";
+import { FixedTooltipView } from "~/component/feedback/tooltip/FixedTooltipView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Tooltips show contextual help or information about specific components when a user hovers or focuses on them.
 
-
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Tooltip placement="top" message={"text message"} show>
-    <Button iconOnly>
+    ```jsx {1} showLineNumbers
+    <Tooltip placement="top" message={"text message"} show>
+      <Button iconOnly>
         <HelpOutlineFilled />
-    </Button>
-</Tooltip>
-```
+      </Button>
+    </Tooltip>
+    ```
   </CodeViewItem>
 </CodeView>
 
-## Options 
-
+## Options
 
 ### Label
+
 <OptionsView />
 
 &nbsp;
@@ -47,13 +45,14 @@ All tooltips have a label. The label communicates the contextual help or informa
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Tooltip placement="top" message={"label"} show />
-```
+    ```jsx showLineNumbers
+    <Tooltip placement="top" message={"label"} show />
+    ```
   </CodeViewItem>
 </CodeView>
 
 ### Variants
+
 <VariantView />
 
 &nbsp;
@@ -68,12 +67,11 @@ the meaning.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Tooltip placement="top" message={"label"} show />
-```
+    ```jsx showLineNumbers
+    <Tooltip placement="top" message={"label"} show />
+    ```
   </CodeViewItem>
 </CodeView>
-
 
 ### Icon
 
@@ -82,27 +80,26 @@ the meaning.
 &nbsp;
 
 3 of the 4 tooltip variants (informative, positive, and negative) can
-include an icon to supplement the messaging. 
+include an icon to supplement the messaging.
 
 These icons are predefined and can not be customized. Unless it's being used to
 provide context about the exact same icon, a semantic tooltip should
-always show an icon. 
+always show an icon.
 
 Doing this is essential for helping users with
 color vision deficiency to discern the message tone.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2} showLineNumbers
-<Tooltip
-    variant={variant}
-    icon={icon}
-    message={<div>text message</div>}
-    placement="top"
-    show
-/>
-```
+    ```jsx {2} showLineNumbers
+    <Tooltip
+      variant={variant}
+      icon={icon}
+      message={<div>text message</div>}
+      placement="top"
+      show
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -118,63 +115,63 @@ context.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {12} showLineNumbers
-<Tooltip
-    variant={variant}
-    icon={icon}
-    message={[
+    ```jsx {12} showLineNumbers
+    <Tooltip
+      variant={variant}
+      icon={icon}
+      message={[
         <div style={{ whiteSpace: "pre-wrap" }}>
-            Your admin must grant you permission to create segments
+          Your admin must grant you permission to create segments
         </div>,
-    ]}
-    placement="top"
-    show
-    style={{
+      ]}
+      placement="top"
+      show
+      style={{
         maxWidth: 160,
-    }}
-/>
-```
+      }}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
 ### Placement
+
 <PlacementView />
 
 A tooltip is positioned in relation to its target. Placement property
 values are at the:
 
-* top
-* top-left
-* top-right
-* bottom
-* bottom-left
-* bottom-right
-* left
-* right
+- top
+- top-left
+- top-right
+- bottom
+- bottom-left
+- bottom-right
+- left
+- right
 
 The default placement value is at the top.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {11} showLineNumbers
-<Tooltip
-    show
-    message={
+    ```jsx {11} showLineNumbers
+    <Tooltip
+      show
+      message={
         <div style={{ whiteSpace: "pre-wrap" }}>
-            Your admin must grant you permission to create segments
+          Your admin must grant you permission to create segments
         </div>
-    }
-    style={{
+      }
+      style={{
         maxWidth: 200,
-    }}
-    placement="bottom" // default
->
-    <Button quiet iconOnly size="extra-small" selected>
+      }}
+      placement="bottom" // default
+    >
+      <Button quiet iconOnly size="extra-small" selected>
         <InfoOutlined />
-    </Button>
-</Tooltip>
-```
+      </Button>
+    </Tooltip>
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -185,19 +182,15 @@ The default placement value is at the top.
 &nbsp;
 
 Tooltips sometimes need to be shown beyond the display area.
- 
+
 Then you can use the FixedTooltip to show the tooltip in a wider area.
-
-
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {11} showLineNumbers
-<FixedTooltip message={"Sample"}>
-  <InfoOutlined /> Hello
-</FixedTooltip>
-```
+    ```jsx {11} showLineNumbers
+    <FixedTooltip message={"Sample"}>
+      <InfoOutlined /> Hello
+    </FixedTooltip>
+    ```
   </CodeViewItem>
 </CodeView>
-

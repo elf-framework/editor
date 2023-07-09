@@ -7,8 +7,7 @@ filename: pages/sapa/hook/page.mdx
 import { Grid } from "@elf-framework/ui";
 import { Diagram } from "~/utils/Diagram";
 
-
-# {title}
+# {frontmatter.title}
 
 Sapa provides a few hooks for working in a React-like manner.
 
@@ -16,20 +15,19 @@ Hooks only work inside `render` during component lifecycle.
 
 So, it works the same in both `Class` and `Function` components. (Since the method of using the hook is the same, we will define an example of the hook only as a function component.)
 
-
 ```jsx
 // Class Component
 class A extends UIElement {
   template() {
     const [value] = useState(0);
-    return <div>{value}</div>
+    return <div>{value}</div>;
   }
 }
 
 // Function Component
-function A () {
+function A() {
   const [value] = useState(0);
-  return <div>{value}</div>
+  return <div>{value}</div>;
 }
 ```
 
@@ -40,55 +38,52 @@ Because hooks have an order, they must always be executed in the same order.
 For example, do not use hooks inside an if statement, as shown below.
 
 ```jsx
-function A () {
+function A() {
   const [value] = useState(0);
 
   if (value === 0) {
-
     // this is wrong
     const [secondValue] = useState(1);
   }
 
-  return <div>{value}</div>
+  return <div>{value}</div>;
 }
 ```
 
-
-
-## useState 
+## useState
 
 `useState` passes the initial value and returns the value and the modifying function as an array.
 
 ```jsx
-function A () {
+function A() {
   const [value, setValue] = useState(0);
-  return <div onClick={() => setValue(value + 1)}>{value}</div>
+  return <div onClick={() => setValue(value + 1)}>{value}</div>;
 }
 ```
 
 The initial value can be defined as a function.
 
 ```jsx
-function A ({ count }) {
+function A({ count }) {
   const [value, setValue] = useState(() => count + 100);
-  return <div onClick={() => setValue(value + 1)}>{value}</div>
+  return <div onClick={() => setValue(value + 1)}>{value}</div>;
 }
 ```
 
-## useEffect 
+## useEffect
 
 &nbsp;
 `useEffect` is executed after the component is rendered.
 
 ```jsx
-function A () {
+function A() {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    console.log("rendered component")
+    console.log("rendered component");
   });
 
-  return <div>{value}</div>
+  return <div>{value}</div>;
 }
 ```
 
@@ -97,100 +92,102 @@ function A () {
 `useEffect` has deps . deps controls when `useEffect` is overridden.
 
 ```jsx
-
 // always running
 useEffect(() => {
   console.log("It runs whenever it is rendered.");
-})
+});
 
 // only one running
 useEffect(() => {
   console.log("It is executed only once at the time of rendering.");
 }, []);
 
-// running if value is changed 
+// running if value is changed
 useEffect(() => {
   console.log("It is executed only when the ", value, " variable changes.");
-}, [value])
-
+}, [value]);
 ```
+
 &nbsp;
 
 `useEffect` can define a cleanup function.
 
 ```jsx
-function A () {
+function A() {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     const onScroll = (e) => {
-      console.log('scroll', e, value);
-    }
-    window.addEventListener('scroll', onScroll);
+      console.log("scroll", e, value);
+    };
+    window.addEventListener("scroll", onScroll);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-    }
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [value]);
 
-  return <div>{value}</div>
+  return <div>{value}</div>;
 }
 ```
 
 &nbsp;
-## useCallback 
+
+## useCallback
 
 `useCallback` caches functions defined according to deps .
 
 This helps keep the context running inside the function.
 
 ```jsx
-function A () {
+function A() {
   const [value, setValue] = useState(0);
 
   const onClick = useCallback(() => {
     setValue(value + 1);
-  }, [value, setValue])
+  }, [value, setValue]);
 
-  return <div onClick={onClick}>{value}</div>
+  return <div onClick={onClick}>{value}</div>;
 }
 ```
 
-## useMemo 
+## useMemo
 
 `useMemo` caches value defined according to deps .
 
 ```jsx
-function A () {
+function A() {
   const [value, setValue] = useState(0);
 
   const onClick = useCallback(() => {
-    setValue(value + 1)
-  }, [value, setValue])
+    setValue(value + 1);
+  }, [value, setValue]);
 
   const onePlusValue = useMemo(() => {
-    return value + 1
-  }, [value])
+    return value + 1;
+  }, [value]);
 
-  return <div onClick={onClick}>{onePlusValue}</div>
+  return <div onClick={onClick}>{onePlusValue}</div>;
 }
 ```
 
-## useRef 
+## useRef
 
 `useRef` is used to store a value whose reference is persistent.
 
 ```jsx
-function A () {
-
+function A() {
   const ref = useRef(null);
 
-  return <div ref={ref} onClick={() => console.log(ref.value)}>Simple Text</div>
+  return (
+    <div ref={ref} onClick={() => console.log(ref.value)}>
+      Simple Text
+    </div>
+  );
 }
 ```
 
-
-## useReducer 
+## useReducer
 
 `useReducer` allows you to manage values ​​according to a specific state.
 
@@ -209,18 +206,19 @@ function App() {
     }
   }, /*initial value*/ 0);
 
-
   return (
-    <div onClick={() => {
+    <div
+      onClick={() => {
         dispatch("INCREMENT");
-    }}>
+      }}
+    >
       Simple Text
     </div>
   );
 }
 ```
 
-## useId 
+## useId
 
 `useId` is used to generate a unique id.
 
@@ -230,19 +228,18 @@ function App() {
 
   return (
     <div id={id}>
-      <label for={id + '-label'}>Simple Label</label>
-      <input type="text" id={id + '-label'} />
+      <label for={id + "-label"}>Simple Label</label>
+      <input type="text" id={id + "-label"} />
     </div>
   );
 }
 ```
 
-## useSyncExternalStore 
+## useSyncExternalStore
 
 `useSyncExternalStore` is used to synchronize external data.
 
 ```jsx
-
 import { useSyncExternalStore } from "@elf-framework/ui";
 
 function subscribe(callback) {
@@ -261,12 +258,11 @@ function useOnlineStatus() {
 function App() {
   const isOnline = useOnlineStatus();
 
-  return <div>online : {isOnline ? "true" : "false" }</div>
+  return <div>online : {isOnline ? "true" : "false"}</div>;
 }
-
 ```
 
-## useBatch 
+## useBatch
 
 `useBatch` is used to batch update.
 
@@ -291,7 +287,7 @@ function App() {
 }
 ```
 
-# Class Component Hook 
+# Class Component Hook
 
 Hooks make state handling more manageable in function components.
 
@@ -299,12 +295,11 @@ But don't forget, function components are like class components.
 
 That means that you can apply hooks to class components in the same way.
 
-
 This is a very nice pattern.
 
 ```jsx
 class A extends UIElement {
-  template () {
+  template() {
     const [value, dispatch] = useReducer((s, action) => {
       switch (action) {
         case "INCREMENT":
@@ -318,11 +313,12 @@ class A extends UIElement {
       }
     }, /*initial value*/ 0);
 
-
     return (
-      <div onClick={() => {
+      <div
+        onClick={() => {
           dispatch("INCREMENT");
-      }}>
+        }}
+      >
         Simple Text
       </div>
     );
@@ -330,71 +326,73 @@ class A extends UIElement {
 }
 ```
 
-# Sapa Hooks 
+# Sapa Hooks
 
 Sapa has created a few more hooks that can be used internally.
 
-## useSubscribe 
+## useSubscribe
 
-`useSubscribe` registers a callback that can receive messages. 
+`useSubscribe` registers a callback that can receive messages.
 
 Propagated to all components with the same message name.
 
 ```jsx
-function A ( ) {
-
+function A() {
   useSubscribe("message", () => {
     console.log("receive message");
-  })
+  });
 
-  return <div onClick={() => useEmit("message")}>Simple Text</div>
+  return <div onClick={() => useEmit("message")}>Simple Text</div>;
 }
 ```
 
-## useRender 
+## useRender
 
 `useRender` is used to render a component.
 
 ```jsx
-function A ( ) {
-
+function A() {
   useSubscribe("message", () => {
     useRender(this);
-  })
+  });
 
-  return <div onClick={() => useEmit("message")}>Simple Text</div>
+  return <div onClick={() => useEmit("message")}>Simple Text</div>;
 }
 ```
 
-## useSelf 
+## useSelf
 
 `useSelf` specifies a callback that registers messages sent to yourself.
 
 `useSelf` does not send messages to other components.
 
 ```jsx
-function A ( ) {
-
+function A() {
   useSelf("message", () => {
     console.log("receive trigger message");
-  })
+  });
 
-  return <div onClick={() => useTrigger("message")}>Simple Text</div>
+  return <div onClick={() => useTrigger("message")}>Simple Text</div>;
 }
 ```
 
-## `deprecated` useStore 
+## `deprecated` useStore
 
 `useStore` brings the value stored in the store.
 
 ```jsx
-function A ( ) {
+function A() {
+  const backgroundColor = useStore("background-color");
 
-  const backgroundColor = useStore("background-color")
-
-  return <div style={{
-    backgroundColor
-  }}>Simple Text</div>
+  return (
+    <div
+      style={{
+        backgroundColor,
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
@@ -402,81 +400,105 @@ function A ( ) {
 
 `useStoreSet` stores values ​​in a public store.
 
-
 ```jsx
-function A ( ) {
+function A() {
+  const backgroundColor = useStore("background-color");
 
-  const backgroundColor = useStore("background-color")
-
-  return <div style={{
-    backgroundColor
-  }} onClick={() => {
-    useStoreSet("background-color", "yellow");
-  }}>Simple Text</div>
+  return (
+    <div
+      style={{
+        backgroundColor,
+      }}
+      onClick={() => {
+        useStoreSet("background-color", "yellow");
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
 If the value of store is changed, a message with the same name as key is sent.
 
 ```jsx
-function A ( ) {
-
-  const backgroundColor = useStore("background-color")
+function A() {
+  const backgroundColor = useStore("background-color");
 
   // rerender after background-color message received
   useSubscribe("background-color", () => {
     useRender(this);
-  })
+  });
 
-  return <div style={{
-    backgroundColor
-  }} onClick={() => {
-    useStoreSet("background-color", "yellow");
-  }}>Simple Text</div>
+  return (
+    <div
+      style={{
+        backgroundColor,
+      }}
+      onClick={() => {
+        useStoreSet("background-color", "yellow");
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
-## useStoreValue 
+## useStoreValue
 
 `useStoreValue` brings the value stored in the store.
 
 ```jsx
-function A ( ) {
+function A() {
+  const [backgroundColor, setBackgroundColor] = useStoreValue(
+    "background-color",
+    /*default value*/ "red"
+  );
 
-  const [backgroundColor, setBackgroundColor] = useStoreValue("background-color", /*default value*/"red")
-
-  return <div style={{
-    backgroundColor
-  }} onClick={() => {
-    setBackgroundColor("yellow");
-  }}>Simple Text</div>
+  return (
+    <div
+      style={{
+        backgroundColor,
+      }}
+      onClick={() => {
+        setBackgroundColor("yellow");
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
 Because useStoreValue includes useSubscribe, the component is automatically re-rendered when the value of the corresponding `key` changes.
 
-## useSetStoreValue 
+## useSetStoreValue
 
 `useSetStoreValue` is a hook that can change the value of a specific key in the store.
 
 Return the setter function.
 
 ```jsx
+function A() {
+  const setBackgroundColor = useSetStoreValue("background-color");
 
-function A ( ) {
-
-  const setBackgroundColor = useSetStoreValue("background-color")
-
-  return <div style={{
-    backgroundColor: "red"
-  }} onClick={() => {
-    setBackgroundColor("yellow");
-  }}>Simple Text</div>
+  return (
+    <div
+      style={{
+        backgroundColor: "red",
+      }}
+      onClick={() => {
+        setBackgroundColor("yellow");
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
-
-## useRootContext 
+## useRootContext
 
 It brings the options applied when running on the root, such as `start`, `hydrate`, and `renderToHtml`.
 
@@ -489,10 +511,9 @@ start(<A >, {
 
 ```jsx
 function App() {
-  return <div>{useRootContext('title')}</div>
+  return <div>{useRootContext("title")}</div>;
 }
 ```
-
 
 In addition to the container, other data can also be set.
 
@@ -503,7 +524,6 @@ start(<Page {...pageProps} />, {
   pageContext,
   routeParams,
 });
-
 ```
 
 To use it, do the following:
@@ -511,53 +531,63 @@ To use it, do the following:
 ```jsx
 import { useRootContext } from "@elf-framework/sapa";
 
-function OtherComponent () {
-  const pageContext = useRootContext('pageContext');
-  const routeParams = useRootContext('routeParams');
+function OtherComponent() {
+  const pageContext = useRootContext("pageContext");
+  const routeParams = useRootContext("routeParams");
 
-  return <div>Other Component</div>
+  return <div>Other Component</div>;
 }
 ```
 
-## useEmit 
+## useEmit
 
 `useEmit` sends a message to all connected components except myself.
 
 ```jsx
 function App() {
-  return <div onClick={() => useEmit("changeBackgroundColor", "yellow")}>Simple Text</div>
+  return (
+    <div onClick={() => useEmit("changeBackgroundColor", "yellow")}>
+      Simple Text
+    </div>
+  );
 }
 
-function B () {
+function B() {
   const [value, setValue] = useState("red");
   useSubscribe("changeBackgroundColor", (color) => {
     setValue(color);
-  })
+  });
 
-  return <div style={{color: value}}>{value}</div>
+  return <div style={{ color: value }}>{value}</div>;
 }
 
-start(<B><A /></B>)
-
+start(
+  <B>
+    <A />
+  </B>
+);
 ```
 
-## useTrigger 
+## useTrigger
 
 Unlike useEmit, `useTrigger` sends a message only to itself.
-
 
 ```jsx
 function App() {
   const [value, setValue] = useState("red");
-  useSelf ("changeBackgroundColor", (color) => {
+  useSelf("changeBackgroundColor", (color) => {
     setValue(color);
-  })
+  });
 
-  return <div onClick={() => useTrigger("changeBackgroundColor", "yellow")}>Simple Text {value}</div>
+  return (
+    <div onClick={() => useTrigger("changeBackgroundColor", "yellow")}>
+      Simple Text {value}
+    </div>
+  );
 }
 ```
 
-## useMagicMethod 
+## useMagicMethod
 
 For instructions on how to use [useMagicMethod](/pages/sapa/magic-method/#Use%20-MagicMethod-%20with%20Hook120).
 
@@ -568,22 +598,20 @@ Let's make a custom hook. It is very easy.
 The depth of the hook is irrelevant because the hook will only be executed in the context of rendering.
 
 ```jsx
-
 function useMyHook(defaultValue) {
   const [value, setValue] = useState(defaultValue);
 
-  useEffect (() => {
+  useEffect(() => {
     console.log(value);
-  }, [value])
+  }, [value]);
 
   return [value + 1, setValue];
 }
 
-function App () {
+function App() {
   // my hook
   const [value, setValue] = useMyHook(10);
 
-  return <div>{value}</div>
+  return <div>{value}</div>;
 }
-
 ```

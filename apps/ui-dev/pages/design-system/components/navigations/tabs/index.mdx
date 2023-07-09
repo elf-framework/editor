@@ -5,41 +5,40 @@ filename: pages/design-system/components/navigations/tabs/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/navigations/tabs/MainView.jsx"; 
-import { IconsView } from "~/component/navigations/tabs/IconsView.jsx"; 
-import { DisabledView } from "~/component/navigations/tabs/DisabledView.jsx"; 
-import { LabelView } from "~/component/navigations/tabs/LabelView.jsx"; 
-import { OrientationView } from "~/component/navigations/tabs/OrientationView.jsx"; 
-import { SizeView } from "~/component/navigations/tabs/SizeView.jsx"; 
-import { VariantView } from "~/component/navigations/tabs/VariantView.jsx"; 
-import { QuietView } from "~/component/navigations/tabs/QuietView.jsx"; 
-import { StripTypeView } from "~/component/navigations/tabs/StripTypeView.jsx"; 
-import { TabItemView } from "~/component/navigations/tabs/TabItemView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/navigations/tabs/MainView.jsx";
+import { IconsView } from "~/component/navigations/tabs/IconsView.jsx";
+import { DisabledView } from "~/component/navigations/tabs/DisabledView.jsx";
+import { LabelView } from "~/component/navigations/tabs/LabelView.jsx";
+import { OrientationView } from "~/component/navigations/tabs/OrientationView.jsx";
+import { SizeView } from "~/component/navigations/tabs/SizeView.jsx";
+import { VariantView } from "~/component/navigations/tabs/VariantView.jsx";
+import { QuietView } from "~/component/navigations/tabs/QuietView.jsx";
+import { StripTypeView } from "~/component/navigations/tabs/StripTypeView.jsx";
+import { TabItemView } from "~/component/navigations/tabs/TabItemView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 An tabs is a thumbnail representation of an entity, such as a user or an organization.
 
 <MainView />
 
-
-## Options 
+## Options
 
 ### Label
 
 <LabelView />
 
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {2} showLineNumbers
-<Tab activeKey={1}>
-    <TabItem title="Design" key={1}></TabItem>
-    <TabItem title="Prototype" key={2}></TabItem>
-    <TabItem title="Project" key={3}></TabItem>
-</Tab>
-```
-    </CodeViewItem>
+  <CodeViewItem title="Sapa">
+    ```jsx {2} showLineNumbers
+    <Tab activeKey={1}>
+      <TabItem title="Design" key={1}></TabItem>
+      <TabItem title="Prototype" key={2}></TabItem>
+      <TabItem title="Project" key={3}></TabItem>
+    </Tab>
+    ```
+  </CodeViewItem>
 </CodeView>
 
 ### Icons
@@ -47,149 +46,139 @@ An tabs is a thumbnail representation of an entity, such as a user or an organiz
 <IconsView />
 
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {5} showLineNumbers
-<Tab activeKey={1}>
-    <TabItem
+  <CodeViewItem title="Sapa">
+    ```jsx {5} showLineNumbers
+    <Tab activeKey={1}>
+      <TabItem
         title={
-            <span>
-                <PaidOutlined /> Design
-            </span>
+          <span>
+            <PaidOutlined /> Design
+          </span>
         }
         key={1}
-    ></TabItem>
-    <TabItem title="Prototype" key={2}></TabItem>
-</Tab>
-```
-    </CodeViewItem>
+      ></TabItem>
+      <TabItem title="Prototype" key={2}></TabItem>
+    </Tab>
+    ```
+  </CodeViewItem>
 </CodeView>
-
-
 
 ### Disabled
 
 <DisabledView />
 
-
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {10} showLineNumbers
-<Tab activeKey={1}>
-    <TabItem
-    title={
-        <span>
-        <PaidOutlined /> Design
-        </span>
-    }
-    key={1}
-    ></TabItem>
-    <TabItem title="Prototype" key={2} disabled></TabItem>
-</Tab>
-```
-    </CodeViewItem>
+  <CodeViewItem title="Sapa">
+    ```jsx {10} showLineNumbers
+    <Tab activeKey={1}>
+      <TabItem
+        title={
+          <span>
+            <PaidOutlined /> Design
+          </span>
+        }
+        key={1}
+      ></TabItem>
+      <TabItem title="Prototype" key={2} disabled></TabItem>
+    </Tab>
+    ```
+  </CodeViewItem>
 </CodeView>
-
-
 
 ### Orientation
 
 <OrientationView />
 
-
 ### Size
 
 <SizeView />
 
-
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {3} showLineNumbers
- {["small", "medium", "large", "extra-large"].map((size) => (
-    <Tab activeKey={1} size={size}>
+  <CodeViewItem title="Sapa">
+    ```jsx {3} showLineNumbers
+    {["small", "medium", "large", "extra-large"].map((size) => (
+      <Tab activeKey={1} size={size}>
         <TabItem title="Design" key={1}></TabItem>
         <TabItem title="Prototype" key={2}></TabItem>
         <TabItem title="Project" key={3}></TabItem>
-    </Tab>
-))}
-```
-    </CodeViewItem>
+      </Tab>
+    ))}
+    ```
+  </CodeViewItem>
 </CodeView>
 
-### Emphasis 
+### Emphasis
 
 <VariantView />
 
-
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Tab activeKey={1} variant={"primary"}>
-    <TabItem title="Design" key={1}></TabItem>
-    <TabItem title="Prototype" key={2}></TabItem>
-    <TabItem title="Project" key={3}></TabItem>
-</Tab>
-```
-    </CodeViewItem>
+  <CodeViewItem title="Sapa">
+    ```jsx {1} showLineNumbers
+    <Tab activeKey={1} variant={"primary"}>
+      <TabItem title="Design" key={1}></TabItem>
+      <TabItem title="Prototype" key={2}></TabItem>
+      <TabItem title="Project" key={3}></TabItem>
+    </Tab>
+    ```
+  </CodeViewItem>
 </CodeView>
-
 
 ### Quiet
 
 <QuietView />
 
-
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Tab activeKey={1} quiet>
-    <TabItem title="Design" key={1}></TabItem>
-    <TabItem title="Prototype" key={2}></TabItem>
-    <TabItem title="Project" key={3}></TabItem>
-</Tab>
-```
-    </CodeViewItem>
+  <CodeViewItem title="Sapa">
+    ```jsx {1} showLineNumbers
+    <Tab activeKey={1} quiet>
+      <TabItem title="Design" key={1}></TabItem>
+      <TabItem title="Prototype" key={2}></TabItem>
+      <TabItem title="Project" key={3}></TabItem>
+    </Tab>
+    ```
+  </CodeViewItem>
 </CodeView>
-
 
 ### Strip Type
 
 <StripTypeView />
 
-
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx {3} showLineNumbers
- {["underline", "button", "group", "round-group", "block"].map((stripType) => {
-    return (
-        <Tab activeKey={1} stripType={stripType}>
+  <CodeViewItem title="Sapa">
+    ```jsx {3} showLineNumbers
+    {["underline", "button", "group", "round-group", "block"].map(
+      (stripType) => {
+        return (
+          <Tab activeKey={1} stripType={stripType}>
             <TabItem title="Design" key={1}></TabItem>
             <TabItem title="Prototype" key={2}></TabItem>
             <TabItem title="Project" key={3}></TabItem>
-        </Tab>
-    );
-})}
-```
-    </CodeViewItem>
+          </Tab>
+        );
+      }
+    )}
+    ```
+  </CodeViewItem>
 </CodeView>
 
-### Content 
+### Content
 
 <TabItemView />
 
 <CodeView>
-    <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Tab activeKey={1}>
-    <TabItem title="Design" key={1}>
+  <CodeViewItem title="Sapa">
+    ```jsx showLineNumbers
+    <Tab activeKey={1}>
+      <TabItem title="Design" key={1}>
         Design Content
-    </TabItem>
-    <TabItem title="Prototype" key={2}>
+      </TabItem>
+      <TabItem title="Prototype" key={2}>
         Prototype Content
-    </TabItem>
-    <TabItem title="Project" key={3}>
+      </TabItem>
+      <TabItem title="Project" key={3}>
         Project Content
-    </TabItem>
-</Tab>
-```
-    </CodeViewItem>
+      </TabItem>
+    </Tab>
+    ```
+  </CodeViewItem>
 </CodeView>

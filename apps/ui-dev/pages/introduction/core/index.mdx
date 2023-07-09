@@ -4,7 +4,7 @@ layout: MainLayout
 filename: pages/introduction/core/page.mdx
 ---
 
-import {Diagram} from "~/utils/Diagram";
+import { Diagram } from "~/utils/Diagram";
 
 # Core Concept
 
@@ -14,25 +14,26 @@ The goal is to provide a structure that can be easily implemented when creating 
 
 So, we plan to combine all of the various technologies below.
 
-* Design Tokens: Color, Size, Font, etc 
-* Design System: Typography, Grid, Space, Color Status, etc 
-* Sapa : frontend library like React 
-* UI : Design System and Sapa 
-* Icon : icons for Sapa  
-* Router : Sapa client router 
-* MDX : Markdown for Sapa
-* MPA : Multple page application for sapa
-* vite-plugin-sapa : Sapa Hot Module Reload 
-* BaseEditor : base editor library for sapa
-* EditorContext:  editor store 
-* Register System :  Editor item register system 
-* I18n : Internalization 
-* Shortcut : Keyboard Event Manager 
-* Config : Editor config 
+- Design Tokens: Color, Size, Font, etc
+- Design System: Typography, Grid, Space, Color Status, etc
+- Sapa : frontend library like React
+- UI : Design System and Sapa
+- Icon : icons for Sapa
+- Router : Sapa client router
+- MDX : Markdown for Sapa
+- MPA : Multple page application for sapa
+- vite-plugin-sapa : Sapa Hot Module Reload
+- BaseEditor : base editor library for sapa
+- EditorContext: editor store
+- Register System : Editor item register system
+- I18n : Internalization
+- Shortcut : Keyboard Event Manager
+- Config : Editor config
 
-# Architecture 
+# Architecture
 
-<Diagram graph={`
+<Diagram
+  graph={`
 flowchart TD;
   subgraph sapa
     DesignTokens-->DesignSystem;
@@ -58,8 +59,9 @@ flowchart TD;
     registerPlugin-->registerConfig & registerCommand & registerUI & registerShortcut & registerI18n & registerInspector
   end
     registerConfig & registerCommand & registerUI & registerShortcut & registerI18n & registerInspector-->YourEditor
-`} />
+`}
+/>
 
-# Getting started 
+# Getting started
 
 Let's go try the `ELF` framework. [Here](/pages/introduction/getting-started/)

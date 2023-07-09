@@ -5,48 +5,44 @@ filename: pages/design-system/components/inputs/textarea/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/inputs/textarea/MainView.jsx"; 
-import { OptionsView } from "~/component/inputs/textarea/OptionsView.jsx"; 
-import { LabelPositionView } from "~/component/inputs/textarea/LabelPositionView.jsx"; 
-import { ValueView } from "~/component/inputs/textarea/ValueView.jsx"; 
-import { WidthView } from "~/component/inputs/textarea/WidthView.jsx"; 
-import { SizeView } from "~/component/inputs/textarea/SizeView.jsx"; 
-import { RequiredOptionalView } from "~/component/inputs/textarea/RequiredOptionalView.jsx"; 
-import { DisabledView } from "~/component/inputs/textarea/DisabledView.jsx"; 
-import { ReadOnlyView } from "~/component/inputs/textarea/ReadOnlyView.jsx"; 
-import { HelpTextView } from "~/component/inputs/textarea/HelpTextView.jsx"; 
-import { ResizableView } from "~/component/inputs/textarea/ResizableView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/inputs/textarea/MainView.jsx";
+import { OptionsView } from "~/component/inputs/textarea/OptionsView.jsx";
+import { LabelPositionView } from "~/component/inputs/textarea/LabelPositionView.jsx";
+import { ValueView } from "~/component/inputs/textarea/ValueView.jsx";
+import { WidthView } from "~/component/inputs/textarea/WidthView.jsx";
+import { SizeView } from "~/component/inputs/textarea/SizeView.jsx";
+import { RequiredOptionalView } from "~/component/inputs/textarea/RequiredOptionalView.jsx";
+import { DisabledView } from "~/component/inputs/textarea/DisabledView.jsx";
+import { ReadOnlyView } from "~/component/inputs/textarea/ReadOnlyView.jsx";
+import { HelpTextView } from "~/component/inputs/textarea/HelpTextView.jsx";
+import { ResizableView } from "~/component/inputs/textarea/ResizableView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-
-# {title}
+# {frontmatter.title}
 
 A text area lets a user input a longer amount of text than a standard text field. It can include all of the standard validation options supported by the text field component.
 
-
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<TextArea
-    label={"Description"}
-    value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
-    rows={7}
-/>
-```
+    ```jsx {1} showLineNumbers
+    <TextArea
+      label={"Description"}
+      value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
+      rows={7}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-## Options 
+## Options
 
 ### Label
 
 <OptionsView />
 
-&nbsp; 
+&nbsp;
 
 A Text area should always have a label. In rare cases where context
 is sufficient and an accessibility expert has reviewed the design,
@@ -54,16 +50,15 @@ the label could be undefined. A text area without a visible label
 should still include an aria-label in HTML (depending on the
 context, “aria-label” or “aria-labelledby”).
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<TextArea
-    label={"Description"}
-    value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
-    rows={3}
-/>
-```
+    ```jsx {1} showLineNumbers
+    <TextArea
+      label={"Description"}
+      value={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`}
+      rows={3}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -79,16 +74,13 @@ context, “aria-label” or “aria-labelledby”).
 
 <WidthView />
 
-
 ### Size
 
 <SizeView />
 
-### Required or Optional 
+### Required or Optional
 
 <RequiredOptionalView />
-
-
 
 ### Disabled
 

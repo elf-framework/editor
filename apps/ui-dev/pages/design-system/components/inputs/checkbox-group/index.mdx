@@ -5,21 +5,20 @@ filename: pages/design-system/components/inputs/checkbox-group/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/inputs/checkbox-group/MainView.jsx"; 
-import { OptionsView } from "~/component/inputs/checkbox-group/OptionsView.jsx"; 
-import { SelectionView } from "~/component/inputs/checkbox-group/SelectionView.jsx"; 
-import { SizeView } from "~/component/inputs/checkbox-group/SizeView.jsx"; 
-import { EmphasisView } from "~/component/inputs/checkbox-group/EmphasisView.jsx"; 
-import { DisabledView } from "~/component/inputs/checkbox-group/DisabledView.jsx"; 
-import { ErrorView } from "~/component/inputs/checkbox-group/ErrorView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/inputs/checkbox-group/MainView.jsx";
+import { OptionsView } from "~/component/inputs/checkbox-group/OptionsView.jsx";
+import { SelectionView } from "~/component/inputs/checkbox-group/SelectionView.jsx";
+import { SizeView } from "~/component/inputs/checkbox-group/SizeView.jsx";
+import { EmphasisView } from "~/component/inputs/checkbox-group/EmphasisView.jsx";
+import { DisabledView } from "~/component/inputs/checkbox-group/DisabledView.jsx";
+import { ErrorView } from "~/component/inputs/checkbox-group/ErrorView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 A checkbox group is a grouping of checkboxes that are related to each other.
 
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
@@ -28,6 +27,7 @@ import {start} from "@elf-framework/sapa";
 import {CheckboxGroup} from "@elf-framework/ui";
 
 start(
+
 <CheckboxGroup
     direction="vertical"
     value={[10]}
@@ -42,12 +42,11 @@ start(
   </CodeViewItem>
 </CodeView>
 
-## Options 
+## Options
 
 ### Size
 
 <SizeView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
@@ -56,6 +55,7 @@ import {start} from "@elf-framework/sapa";
 import {CheckboxGroup} from "@elf-framework/ui";
 
 start(
+
 <CheckboxGroup
     direction="vertical"
     value={[10]}
@@ -70,7 +70,6 @@ start(
 ```
   </CodeViewItem>
 </CodeView>
-
 
 ### Disabled
 
@@ -91,6 +90,7 @@ import {start} from "@elf-framework/sapa";
 import {CheckboxGroup} from "@elf-framework/ui";
 
 start(
+
 <CheckboxGroup
     direction="vertical"
     value={[10]}
@@ -106,7 +106,6 @@ start(
   </CodeViewItem>
 </CodeView>
 
-
 ### Error
 
 <ErrorView />
@@ -119,7 +118,6 @@ was made is invalid. For example, in a form that requires a user to
 acknowledge legal terms before proceeding, the checkbox would show an
 unchecked error to communicate that it needs to be selected.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
 ```jsx {8} showLineNumbers
@@ -127,6 +125,7 @@ import {start} from "@elf-framework/sapa";
 import {CheckboxGroup} from "@elf-framework/ui";
 
 start(
+
  <CheckboxGroup
     direction="vertical"
     value={[10]}
@@ -141,5 +140,3 @@ start(
 ```
   </CodeViewItem>
 </CodeView>
-
-

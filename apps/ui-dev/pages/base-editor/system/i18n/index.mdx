@@ -2,16 +2,16 @@
 title: Internalization
 layout: BaseEditorLayout
 ---
-  
+
 # Internalization (i18n)
 
 ## Introduction
 
-The internalization (i18n) feature allows you to localize your editor. 
+The internalization (i18n) feature allows you to localize your editor.
 
-## How to use 
+## How to use
 
-### in plugin 
+### in plugin
 
 ```jsx
 function Editor () {
@@ -28,11 +28,11 @@ function Editor () {
 ### in component
 
 ```jsx
-function Editor () {
-    const { i18n } = useEditor();
+function Editor() {
+  const { i18n } = useEditor();
 
-    const appName = i18n.get("app.name");
+  const appName = i18n.get("app.name");
 
-    return <BaseEditor title={appName} />
+  return <BaseEditor title={appName} />;
 }
 ```

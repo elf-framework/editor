@@ -5,18 +5,17 @@ filename: pages/design-system/components/inputs/colorarea/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/inputs/colorarea/MainView.jsx"; 
-import { SelectionView } from "~/component/inputs/colorarea/SelectionView.jsx"; 
-import { SizeView } from "~/component/inputs/colorarea/SizeView.jsx"; 
-import { DisabledView } from "~/component/inputs/colorarea/DisabledView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/inputs/colorarea/MainView.jsx";
+import { SelectionView } from "~/component/inputs/colorarea/SelectionView.jsx";
+import { SizeView } from "~/component/inputs/colorarea/SizeView.jsx";
+import { DisabledView } from "~/component/inputs/colorarea/DisabledView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 A color area allows users to visually select two properties of a color simultaneously. It's commonly used together with a color slider or color wheel.
 
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
@@ -24,13 +23,14 @@ A color area allows users to visually select two properties of a color simultane
 import { ColorMixer } from "@elf-framework/ui";
 
 function App() {
-    return <ColorMixer color="red" shadow />
+return <ColorMixer color="red" shadow />
 }
-```
+
+````
   </CodeViewItem>
 </CodeView>
 
-## Options 
+## Options
 
 ### Label
 
@@ -48,7 +48,8 @@ function App() {
 
 <ColorMixer color="red" hideInput />
 
-```
+````
+
   </CodeViewItem>
 </CodeView>
 
@@ -67,7 +68,7 @@ By default, the width is size-2400 (192 px on desktop and 240 px on mobile).
 
 <ColorMixer color="red" hideSlide hideInput width={192} height={192} />
 
-```
+````
   </CodeViewItem>
 </CodeView>
 
@@ -77,7 +78,7 @@ By default, the width is size-2400 (192 px on desktop and 240 px on mobile).
 
 &nbsp;
 
-A color area in a disabled state shows that an input exists, but is not available in that circumstance. 
+A color area in a disabled state shows that an input exists, but is not available in that circumstance.
 This can be used to maintain layout continuity and communicate that the area may become available later.
 
 
@@ -88,6 +89,7 @@ This can be used to maintain layout continuity and communicate that the area may
 
 <ColorMixer color="red" disabled />
 
-```
+````
+
   </CodeViewItem>
 </CodeView>

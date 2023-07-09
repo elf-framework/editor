@@ -5,47 +5,38 @@ filename: pages/design-system/components/feedback/notification/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/feedback/notification/MainView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/feedback/notification/MainView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Notification show pressing and high-signal messages, such as system alerts. They're meant to be noticed and prompt users to take action.
 
-
 <MainView />
-
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Notification
-    icon={<InfoOutlined />}
-    tools={[
+    ```jsx showLineNumbers
+    <Notification
+      icon={<InfoOutlined />}
+      tools={[
         <Button onClick={() => console.log("action")}>Action</Button>,
         <Button onClick={() => console.log("Dismiss")}>Dismiss</Button>,
-    ]}
-    style={{
+      ]}
+      style={{
         width: "100%",
         height: 100,
-    }}
->
-    Your trial has expired. Please purchase to continue. Please send email
-    to elf-framework.com. This sample
-</Notification>
-```
+      }}
+    >
+      Your trial has expired. Please purchase to continue. Please send email to
+      elf-framework.com. This sample
+    </Notification>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-## Options 
-
+## Options
 
 ### Size
 
-
-
-
 ### Orientation
-

@@ -6,14 +6,13 @@ layout: BaseEditorLayout
 # Config
 
 The config is a global object that contains all the configuration options for the application. It is a singleton object that is available to all the components of the application.
-  
 
 ## How to get the config
 
 The config is available as a global object called `config`. It is available in all the components of the application.
 
 ```js
-const state = editorContext.configs.get('config.state');
+const state = editorContext.configs.get("config.state");
 
 console.log(state);
 ```
@@ -23,20 +22,16 @@ console.log(state);
 The config can be set using the `set` method of the `configs` object.
 
 ```js
-editorContext.configs.set('config.state', 'NY');
+editorContext.configs.set("config.state", "NY");
 ```
 
 ## How to listen to config changes
 
-UI 에서 사용할 때 config 의 변경을 감지하여 UI 를 업데이트 하고 싶을 때가 있습니다. 
-
+UI 에서 사용할 때 config 의 변경을 감지하여 UI 를 업데이트 하고 싶을 때가 있습니다.
 
 ```jsx
-
 function App() {
-    const value = useConfig('config.state');
-    return <div>{value}</div>
+  const value = useConfig("config.state");
+  return <div>{value}</div>;
 }
-
-
 ```

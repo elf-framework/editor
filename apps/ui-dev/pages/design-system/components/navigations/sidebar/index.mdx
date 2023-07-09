@@ -5,26 +5,24 @@ filename: pages/design-system/components/navigations/sidebar/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/navigations/sidebar/MainView.jsx"; 
-import { IconView } from "~/component/navigations/sidebar/IconView.jsx"; 
-import { NestedView } from "~/component/navigations/sidebar/NestedView.jsx"; 
-import { CompactView } from "~/component/navigations/sidebar/CompactView.jsx"; 
-import { TooltipView } from "~/component/navigations/sidebar/TooltipView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/navigations/sidebar/MainView.jsx";
+import { IconView } from "~/component/navigations/sidebar/IconView.jsx";
+import { NestedView } from "~/component/navigations/sidebar/NestedView.jsx";
+import { CompactView } from "~/component/navigations/sidebar/CompactView.jsx";
+import { TooltipView } from "~/component/navigations/sidebar/TooltipView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 An avatar is a thumbnail representation of an entity, such as a user or an organization.
 
-
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2,7} showLineNumbers
-<Sidebar
-    items={[
+    ```jsx {(2, 7)} showLineNumbers
+    <Sidebar
+      items={[
         "Section title",
         { type: "section", title: "Section title 2" },
         "-",
@@ -34,18 +32,15 @@ An avatar is a thumbnail representation of an entity, such as a user or an organ
         "Hello World",
         { title: "blue" },
         { title: "group", items: [{ title: "xxxx" }] },
-    ]}
-/>
-```
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
+## Options
 
-## Options 
-
-
-### With icon 
-
+### With icon
 
 <IconView />
 
@@ -53,32 +48,29 @@ Individual sidebar items can have icons.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {9} showLineNumbers
-<Sidebar
-    items={[
+    ```jsx {9} showLineNumbers
+    <Sidebar
+      items={[
         "Section title",
         { type: "section", title: "Section title 2" },
         "-",
-        { 
-            title: "xxx", 
-            link: "xxx",
-            icon: <SettingsAccessibilityFilled />,
+        {
+          title: "xxx",
+          link: "xxx",
+          icon: <SettingsAccessibilityFilled />,
         },
         { title: "xxx", link: "xxx", selected: true },
         "-",
         "Hello World",
         { title: "blue" },
         { title: "group", items: [{ title: "xxxx" }] },
-    ]}
-/>
-```
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-
 ### Nested items
-
 
 <NestedView />
 
@@ -86,9 +78,9 @@ Individual sidebar items can have icons.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2,7} showLineNumbers
-<Sidebar
-    items={[
+    ```jsx {(2, 7)} showLineNumbers
+    <Sidebar
+      items={[
         "Section title",
         { type: "section", title: "Section title 2" },
         "-",
@@ -97,22 +89,22 @@ Individual sidebar items can have icons.
         "-",
         "Hello World",
         { title: "blue" },
-        { title: "group", items: [
+        {
+          title: "group",
+          items: [
             { title: "xxxx" },
             { title: "xxxx" },
             { title: "xxxx" },
             { title: "xxxx" },
-        ] },
-    ]}
-/>
-```
+          ],
+        },
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-
 ### Compact sidebar
-
 
 <CompactView />
 
@@ -122,37 +114,35 @@ A simple sidebar is implemented in compact mode.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2} showLineNumbers
-<Sidebar
-    compact
-    header={<SettingsAccessibilityFilled />}
-    footer={<SettingsAccessibilityFilled />}
-    items={[
-    {
-        link: "xxx",
-        selected: true,
-        icon: <SettingsAccessibilityFilled />,
-    },
-    {
-        title: "xxx",
-        link: "xxx",
-        icon: <SettingsAccessibilityFilled />,
-        tooltip: "xxx",
-    },
-    {
-        title: "xxx",
-        link: "xxx",
-        icon: <SettingsAccessibilityFilled />,
-    },
-    ]}
-/>
-```
+    ```jsx {2} showLineNumbers
+    <Sidebar
+      compact
+      header={<SettingsAccessibilityFilled />}
+      footer={<SettingsAccessibilityFilled />}
+      items={[
+        {
+          link: "xxx",
+          selected: true,
+          icon: <SettingsAccessibilityFilled />,
+        },
+        {
+          title: "xxx",
+          link: "xxx",
+          icon: <SettingsAccessibilityFilled />,
+          tooltip: "xxx",
+        },
+        {
+          title: "xxx",
+          link: "xxx",
+          icon: <SettingsAccessibilityFilled />,
+        },
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>
 
-
 ### Tooltip
-
 
 <TooltipView />
 
@@ -162,18 +152,18 @@ Additional information can be expressed through Tooltip.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {7} showLineNumbers
-<Sidebar
-    compact
-    items={[
-    {
-        link: "xxx",
-        selected: true,
-        icon: <SettingsAccessibilityFilled />,
-        tooltip: "Tooltip",
-    },
-    ]}
-/>
-```
+    ```jsx {7} showLineNumbers
+    <Sidebar
+      compact
+      items={[
+        {
+          link: "xxx",
+          selected: true,
+          icon: <SettingsAccessibilityFilled />,
+          tooltip: "Tooltip",
+        },
+      ]}
+    />
+    ```
   </CodeViewItem>
 </CodeView>

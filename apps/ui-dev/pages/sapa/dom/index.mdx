@@ -7,8 +7,7 @@ filename: pages/sapa/dom/page.mdx
 import { Grid } from "@elf-framework/ui";
 import { Diagram } from "~/utils/Diagram";
 
-
-# {title}
+# {frontmatter.title}
 
 Sapa provides several functions to easily manipulate the dom used in the component.
 
@@ -16,15 +15,21 @@ Sapa provides several functions to easily manipulate the dom used in the compone
 
 After the component is rendered, the $el field becomes active.
 
-
 ```jsx
 class A extends UIElement {
   template() {
-    return <div class="root-element" onClick={() => {
-      if (this.$el.hasClass('root-element')) {
-        console.log("check root element");
-      }
-    }}>Simple Text</div>
+    return (
+      <div
+        class="root-element"
+        onClick={() => {
+          if (this.$el.hasClass("root-element")) {
+            console.log("check root element");
+          }
+        }}
+      >
+        Simple Text
+      </div>
+    );
   }
 }
 ```
@@ -38,41 +43,52 @@ Elements defined as ref can be brought to `this.refs`.
 ```jsx
 class A extends UIElement {
   template() {
-    return <div class="root-element" onClick={() => {
-      if (this.refs.$sender) {
-        console.log("It has send button element");
-      }
-    }}>
-      <button ref="$sender">Simple Button</button>
-    </div>
+    return (
+      <div
+        class="root-element"
+        onClick={() => {
+          if (this.refs.$sender) {
+            console.log("It has send button element");
+          }
+        }}
+      >
+        <button ref="$sender">Simple Button</button>
+      </div>
+    );
   }
 }
 ```
 
 ## Dom Class
 
-`$el` is an instance of the Dom class. 
+`$el` is an instance of the Dom class.
 The dom class is a collection of utility functions that make dom manipulation easy.
 
-See [here](/pages/sapa/api/dom/) for details. 
+See [here](/pages/sapa/api/dom/) for details.
 
-## DOM Event 
+## DOM Event
 
 A dom event can be specified in two ways.
 
-### event attribute 
+### event attribute
 
 How to directly specify an event with the `onXXXX` attribute
 
 ```jsx
 function A() {
-  return <div onClick={(nativeDomEvent) => {
-    console.log(nativeDomEvent);
-  }}>Simple Text</div>
+  return (
+    <div
+      onClick={(nativeDomEvent) => {
+        console.log(nativeDomEvent);
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 ```
 
-### magic method 
+### magic method
 
 How to specify using magic methods.
 
@@ -80,15 +96,14 @@ The magic methods can be used under class components. To be made available for u
 
 ```jsx
 class A extends UIElement {
-  template () {
-    return <div>Simple Text</div>
+  template() {
+    return <div>Simple Text</div>;
   }
 
-  [CLICK('$el')] (nativeDomEvent) {
+  [CLICK("$el")](nativeDomEvent) {
     console.log(nativeDomEvent);
   }
 }
-
 ```
 
 If you use a magic method, you can create a template more easily.

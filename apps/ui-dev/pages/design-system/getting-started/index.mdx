@@ -4,35 +4,32 @@ layout: DesignLayout
 filename: pages/design-system/getting-started/page.mdx
 ---
 
-# {title}
-
+# Getting Started
 
 This project is inspired by [spectrum.adobe.com/](https://spectrum.adobe.com/)
 
 ELF basically manages design in two forms to make UI.
 
-* Design Tokens
-* Design System 
-* UI Component (Sapa based)
-
+- Design Tokens
+- Design System
+- UI Component (Sapa based)
 
 # Design Tokens
 
 Design token manages various basic elements such as color, border, and padding, which are basic elements of design.
 
-
-## Install 
+## Install
 
 ```shell
 npm install @elf-framework/design-tokens
 ```
 
-
-## Import 
+## Import
 
 ### JSON data
+
 ```jsx
-// json 
+// json
 import tokens from "@elf-framework/design-tokens/tokens.json";
 
 console.log(tokens.spacing.size.lg);
@@ -46,7 +43,7 @@ console.log(tokens.spacing.size.lg);
 background-color: var(--color-gray-0);
 ```
 
-### CSS Class  
+### CSS Class
 
 ```css
 @import "@elf-framework/design-tokens/style.css";
@@ -60,15 +57,16 @@ background-color: var(--color-gray-0);
 
 The design system uses the design token to create a basic structure for making ui components.
 
-## Install 
+## Install
 
 ```shell
 npm install @elf-framework/design-system
 ```
 
-## Import 
+## Import
 
 ### ESM Mode
+
 ```jsx
 import "@elf-framework/design-system/style.css";
 ```
@@ -77,7 +75,7 @@ import "@elf-framework/design-system/style.css";
 
 The UI component uses the design system to create a `sapa` implementation that can actually be used.
 
-## Install 
+## Install
 
 ```shell
 npm install @elf-framework/ui
@@ -86,9 +84,7 @@ npm install @elf-framework/ui
 ## Import
 
 ### ESM Mode
+
 ```jsx
-import {Button} from "@elf-framework/ui";
+import { Button } from "@elf-framework/ui";
 ```
-
-
-

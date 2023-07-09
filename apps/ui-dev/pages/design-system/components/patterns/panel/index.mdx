@@ -5,43 +5,39 @@ filename: pages/design-system/components/patterns/panel/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/patterns/panel/MainView.jsx"; 
-import { OptionsView } from "~/component/patterns/panel/OptionsView.jsx"; 
-import { TitleView } from "~/component/patterns/panel/TitleView.jsx"; 
-import { ToolView } from "~/component/patterns/panel/ToolView.jsx"; 
-import { FooterView } from "~/component/patterns/panel/FooterView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/patterns/panel/MainView.jsx";
+import { OptionsView } from "~/component/patterns/panel/OptionsView.jsx";
+import { TitleView } from "~/component/patterns/panel/TitleView.jsx";
+import { ToolView } from "~/component/patterns/panel/ToolView.jsx";
+import { FooterView } from "~/component/patterns/panel/FooterView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Panels are good for simple property sets or grouping of content.
 
 <MainView />
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Panel
-    title={"Panel title"}
-    tools={[
+    ```jsx {1} showLineNumbers
+    <Panel
+      title={"Panel title"}
+      tools={[
         <Button iconOnly quiet>
-            <MoreHorizFilled />
+          <MoreHorizFilled />
         </Button>,
-    ]}
-    footer={"footer"}
->
-    Learn how to work with green screen video with these tips for video
-    makers.
-</Panel>
-```
+      ]}
+      footer={"footer"}
+    >
+      Learn how to work with green screen video with these tips for video
+      makers.
+    </Panel>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-
-## Options 
-
+## Options
 
 ### Contents
 
@@ -51,18 +47,16 @@ Panels are good for simple property sets or grouping of content.
 
 Content can be expressed freely. If you need a simple message or guide, use a Panel.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Panel>
-    Learn how to work with green screen video with these tips for video
-    makers.
-</Panel>
-```
+    ```jsx {1} showLineNumbers
+    <Panel>
+      Learn how to work with green screen video with these tips for video
+      makers.
+    </Panel>
+    ```
   </CodeViewItem>
 </CodeView>
-
 
 ### Title
 
@@ -72,47 +66,42 @@ Content can be expressed freely. If you need a simple message or guide, use a Pa
 
 The panel displays a title with a summary of the area.
 
-
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Panel title="Sample Panel">
-    Learn how to work with green screen video with these tips for video
-    makers.
-</Panel>
-```
+    ```jsx {1} showLineNumbers
+    <Panel title="Sample Panel">
+      Learn how to work with green screen video with these tips for video
+      makers.
+    </Panel>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-### Tools 
+### Tools
 
 <ToolView />
 
 The tools is used when adding additional functions other than the title display.
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {3-6} showLineNumbers
-<Panel 
-    title="Sample Panel" 
-    tools={[
+    ```jsx {3 - 6} showLineNumbers
+    <Panel
+      title="Sample Panel"
+      tools={[
         <Button iconOnly quiet>
-            <MoreHorizFilled />
+          <MoreHorizFilled />
         </Button>,
-    ]}
->
-    Learn how to work with green screen video with these tips for video
-    makers.
-</Panel>
-```
+      ]}
+    >
+      Learn how to work with green screen video with these tips for video
+      makers.
+    </Panel>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-### footer 
+### footer
 
 <FooterView />
 
@@ -123,18 +112,18 @@ the card body using a small divider.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {3-6} showLineNumbers
-<Panel footer={[
-    <Button iconOnly quiet>
-        <MoreHorizFilled />
-    </Button>,
-]}
-    title="Sample Panel" 
->
-    Learn how to work with green screen video with these tips for video
-    makers.
-</Panel>
-```
+    ```jsx {3 - 6} showLineNumbers
+    <Panel
+      footer={[
+        <Button iconOnly quiet>
+          <MoreHorizFilled />
+        </Button>,
+      ]}
+      title="Sample Panel"
+    >
+      Learn how to work with green screen video with these tips for video
+      makers.
+    </Panel>
+    ```
   </CodeViewItem>
 </CodeView>
-

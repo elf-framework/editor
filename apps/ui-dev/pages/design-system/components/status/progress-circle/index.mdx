@@ -5,26 +5,25 @@ filename: pages/design-system/components/status/progress-circle/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/status/progresscircle/MainView.jsx"; 
-import { IndeterminateView } from "~/component/status/progresscircle/IndeterminateView.jsx"; 
-import { SpinView } from "~/component/status/progresscircle/SpinView.jsx"; 
-import { DisabledView } from "~/component/status/progresscircle/DisabledView.jsx"; 
-import { DefaultVariantView } from "~/component/status/progresscircle/DefaultVariantView.jsx"; 
-import { OverBackgroundVariantView } from "~/component/status/progresscircle/OverBackgroundVariantView.jsx"; 
-import { SizeView } from "~/component/status/progresscircle/SizeView.jsx"; 
-import { WidthView } from "~/component/status/progresscircle/WidthView.jsx"; 
-import { ValueView } from "~/component/status/progresscircle/ValueView.jsx"; 
-import { MinMaxValueView } from "~/component/status/progresscircle/MinMaxValueView.jsx"; 
-import { VariantView } from "~/component/status/progresscircle/VariantView.jsx"; 
+import { MainView } from "~/component/status/progresscircle/MainView.jsx";
+import { IndeterminateView } from "~/component/status/progresscircle/IndeterminateView.jsx";
+import { SpinView } from "~/component/status/progresscircle/SpinView.jsx";
+import { DisabledView } from "~/component/status/progresscircle/DisabledView.jsx";
+import { DefaultVariantView } from "~/component/status/progresscircle/DefaultVariantView.jsx";
+import { OverBackgroundVariantView } from "~/component/status/progresscircle/OverBackgroundVariantView.jsx";
+import { SizeView } from "~/component/status/progresscircle/SizeView.jsx";
+import { WidthView } from "~/component/status/progresscircle/WidthView.jsx";
+import { ValueView } from "~/component/status/progresscircle/ValueView.jsx";
+import { MinMaxValueView } from "~/component/status/progresscircle/MinMaxValueView.jsx";
+import { VariantView } from "~/component/status/progresscircle/VariantView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Progress circles show the progression of a system operation such as downloading, uploading, processing, etc. in a visual way. They can represent determinate or indeterminate progress.
 
 <MainView />
 
-
-## Options 
+## Options
 
 ### Default variant
 
@@ -35,21 +34,17 @@ Progress circles show the progression of a system operation such as downloading,
 <OverBackgroundVariantView />
 
 ### Value, min value, max value
+
 <MinMaxValueView />
 
 ### Size
 
 <SizeView />
 
-
 ### Indeterminate
 
 <IndeterminateView />
 
-
 ### spin animation
 
 <SpinView />
-
-
-

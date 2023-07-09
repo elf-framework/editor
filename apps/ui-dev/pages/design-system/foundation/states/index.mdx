@@ -4,14 +4,14 @@ layout: DesignLayout
 filename: pages/design-system/foundation/states/page.mdx
 ---
 
-import {VBox} from "@elf-framework/ui";
+import { VBox } from "@elf-framework/ui";
 import { DefaultView } from "~/component/states/DefaultView.jsx";
 import { HoverView } from "~/component/states/HoverView.jsx";
 import { DownView } from "~/component/states/DownView.jsx";
 import { FocusView } from "~/component/states/FocusView.jsx";
 import { DisabledView } from "~/component/states/DisabledView.jsx";
 
-# {title}
+# States
 
 ## Types of states
 
@@ -35,8 +35,7 @@ A down state is initiated by the user and communicates when an interactive item 
 
 ### Focus
 
-Keyboard Focus is initiated by the user. 
-
+Keyboard Focus is initiated by the user.
 
 Use the keyboard to highlight items when navigating. Keyboard The focus state typically takes the visual hover state of the component Add additional marks.
 
@@ -46,17 +45,8 @@ Most commonly, there is a two-pixel blue ring around. Components.
 
 ### Disabled
 
-A disabled state is initiated by a component option. 
-It shows that the item exists, but is not interactive in that circumstance. 
+A disabled state is initiated by a component option.
+It shows that the item exists, but is not interactive in that circumstance.
 This state can be used to maintain layout continuity and to communicate that an action may become available later.
 
 <DisabledView />
-
-
-
-
-
-
-
-
-

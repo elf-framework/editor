@@ -5,22 +5,22 @@ filename: pages/design-system/components/navigations/treeview/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/navigations/treeview/MainView.jsx"; 
-import { OptionsView } from "~/component/navigations/treeview/OptionsView.jsx"; 
-import { IconsView } from "~/component/navigations/treeview/IconsView.jsx"; 
-import { ThumbnailsView } from "~/component/navigations/treeview/ThumbnailsView.jsx"; 
-import { EmphasisView } from "~/component/navigations/treeview/EmphasisView.jsx"; 
-import { SelectionView } from "~/component/navigations/treeview/SelectionView.jsx"; 
-import { SelectionStyleView } from "~/component/navigations/treeview/SelectionStyleView.jsx"; 
-import { ActionsAreaView } from "~/component/navigations/treeview/ActionsAreaView.jsx"; 
-import { TextOverflowView } from "~/component/navigations/treeview/TextOverflowView.jsx"; 
-import { TooltipView } from "~/component/navigations/treeview/TooltipView.jsx"; 
-import { LoadingView } from "~/component/navigations/treeview/LoadingView.jsx"; 
-import { EditableTreeView } from "~/component/navigations/treeview/EditableTreeView.jsx"; 
+import { MainView } from "~/component/navigations/treeview/MainView.jsx";
+import { OptionsView } from "~/component/navigations/treeview/OptionsView.jsx";
+import { IconsView } from "~/component/navigations/treeview/IconsView.jsx";
+import { ThumbnailsView } from "~/component/navigations/treeview/ThumbnailsView.jsx";
+import { EmphasisView } from "~/component/navigations/treeview/EmphasisView.jsx";
+import { SelectionView } from "~/component/navigations/treeview/SelectionView.jsx";
+import { SelectionStyleView } from "~/component/navigations/treeview/SelectionStyleView.jsx";
+import { ActionsAreaView } from "~/component/navigations/treeview/ActionsAreaView.jsx";
+import { TextOverflowView } from "~/component/navigations/treeview/TextOverflowView.jsx";
+import { TooltipView } from "~/component/navigations/treeview/TooltipView.jsx";
+import { LoadingView } from "~/component/navigations/treeview/LoadingView.jsx";
+import { EditableTreeView } from "~/component/navigations/treeview/EditableTreeView.jsx";
 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 A tree view provides users with a way to navigate nested hierarchical information.
 
@@ -32,65 +32,65 @@ The Treeview component is implemented on the VirtualScroll component.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<TreeView
-    draggable={true}
-    // selectionStyle="checkbox"
-    renderContext={(item) => {
+    ```jsx {1} showLineNumbers
+    <TreeView
+      draggable={true}
+      // selectionStyle="checkbox"
+      renderContext={(item) => {
         return item.data.children?.length ? (
-            <FolderFilled />
+          <FolderFilled />
         ) : (
-            <DescriptionFilled />
+          <DescriptionFilled />
         );
-    }}
-    renderArrow={() => {
+      }}
+      renderArrow={() => {
         return <ChevronRightFilled />;
-    }}
-    items={provider.items}
-    onDoubleClickNode={(item, e) => {
+      }}
+      items={provider.items}
+      onDoubleClickNode={(item, e) => {
         console.log(item, e);
-    }}
-    onClickNode={(item) => {
+      }}
+      onClickNode={(item) => {
         item.data.selected = !item.data.selected;
         this.refresh();
-    }}
-    onToggleNode={(item) => {
+      }}
+      onToggleNode={(item) => {
         item.data.collapsed = !item.data.collapsed;
         useRender(this);
-    }}
-    onDropNode={({ startId, endId, targetPosition }) => {
+      }}
+      onDropNode={({ startId, endId, targetPosition }) => {
         switch (targetPosition) {
-            case "top":
+          case "top":
             provider.insertBefore(endId, startId);
             useRender(this);
             break;
-            case "bottom":
+          case "bottom":
             provider.insertAfter(endId, startId);
             useRender(this);
             break;
-            case "middle":
+          case "middle":
             provider.insertLast(endId, startId);
             useRender(this);
             break;
         }
-    }}
-    renderActions={() => {
+      }}
+      renderActions={() => {
         return [
-            <Button quiet shape="square" iconOnly>
+          <Button quiet shape="square" iconOnly>
             I
-            </Button>,
-            <Button quiet shape="square" iconOnly>
+          </Button>,
+          <Button quiet shape="square" iconOnly>
             II
-            </Button>,
+          </Button>,
         ];
-    }}
-    overscanRowCount={1}
+      }}
+      overscanRowCount={1}
     />
-```
+    ```
   </CodeViewItem>
 </CodeView>
 
-## Options 
+## Options
 
 ### Text only
 
@@ -116,8 +116,7 @@ The Treeview component is implemented on the VirtualScroll component.
 
 <SelectionStyleView />
 
-
-### Actions area 
+### Actions area
 
 <ActionsAreaView />
 

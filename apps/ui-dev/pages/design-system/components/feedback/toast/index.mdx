@@ -5,53 +5,51 @@ filename: pages/design-system/components/feedback/toast/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/feedback/toast/MainView.jsx"; 
-import { OptionsView } from "~/component/feedback/toast/OptionsView.jsx"; 
-import { IconView } from "~/component/feedback/toast/IconView.jsx"; 
-import { ToolsView } from "~/component/feedback/toast/ToolsView.jsx"; 
-import { ClosableView } from "~/component/feedback/toast/ClosableView.jsx"; 
-import { VariantView } from "~/component/feedback/toast/VariantView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/feedback/toast/MainView.jsx";
+import { OptionsView } from "~/component/feedback/toast/OptionsView.jsx";
+import { IconView } from "~/component/feedback/toast/IconView.jsx";
+import { ToolsView } from "~/component/feedback/toast/ToolsView.jsx";
+import { ClosableView } from "~/component/feedback/toast/ClosableView.jsx";
+import { VariantView } from "~/component/feedback/toast/VariantView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Toasts display brief, temporary notifications. They're meant to be noticed without disrupting a user's experience or requiring an action to be taken.
 
-
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
- <Toast
-    direction="bottom-right"
-    icon={<InfoOutlined />}
-    style={{
+    ```jsx showLineNumbers
+    <Toast
+      direction="bottom-right"
+      icon={<InfoOutlined />}
+      style={{
         position: "absolute",
-    }}
-    tools={[
+      }}
+      tools={[
         <RoundButton
-            outline
-            variant="white"
-            place="toast"
-            onClick={() => console.log("action")}
+          outline
+          variant="white"
+          place="toast"
+          onClick={() => console.log("action")}
         >
-            Action
+          Action
         </RoundButton>,
-    ]}
-    closable
->
-    Hello World yellow 234
-</Toast>
-```
+      ]}
+      closable
+    >
+      Hello World yellow 234
+    </Toast>
+    ```
   </CodeViewItem>
 </CodeView>
 
-## Options 
-
+## Options
 
 ### Text
+
 <OptionsView />
 
 &nbsp;
@@ -63,13 +61,14 @@ guidelines.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Toast direction="bottom-right">Hello World yellow 234</Toast>
-```
+    ```jsx showLineNumbers
+    <Toast direction="bottom-right">Hello World yellow 234</Toast>
+    ```
   </CodeViewItem>
 </CodeView>
 
 ### Icon
+
 <IconView />
 
 &nbsp;
@@ -78,16 +77,16 @@ Toast can have an icon in front.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Toast direction="bottom-right" icon={<InfoOutlined />}>
-    Hello World yellow 234
-</Toast>
-```
+    ```jsx showLineNumbers
+    <Toast direction="bottom-right" icon={<InfoOutlined />}>
+      Hello World yellow 234
+    </Toast>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
 ### Tools
+
 <ToolsView />
 
 &nbsp;
@@ -96,36 +95,40 @@ Toast can add specific actions.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Toast
-    direction="bottom-right"
-    tools={[
+    ```jsx showLineNumbers
+    <Toast
+      direction="bottom-right"
+      tools={[
         <RoundButton place="toast" outline variant="white">
-        Action
+          Action
         </RoundButton>,
-    ]}
->
-    Hello World yellow 234
-</Toast>
-```
+      ]}
+    >
+      Hello World yellow 234
+    </Toast>
+    ```
   </CodeViewItem>
 </CodeView>
 
 ### Closable
-<ClosableView />
 
+<ClosableView />
 
 Toast can be closed.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-<Toast direction="bottom-right" closable onClick={() => {
-    console.log("closed");    
-}}>
-    Hello World yellow 234
-</Toast>
-```
+    ```jsx showLineNumbers
+    <Toast
+      direction="bottom-right"
+      closable
+      onClick={() => {
+        console.log("closed");
+      }}
+    >
+      Hello World yellow 234
+    </Toast>
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -146,45 +149,42 @@ The `positive` toast uses the positive semantic color
 deficiency discern the message tone. This is used to inform about a
 successful action or completion of a task.
 
-
 The `negative` toast uses the negative semantic color (red)
 and has an alert icon to help those with color vision deficiency to
 discern the message tone. This is used to show an error or failure.
 
 The list of variants is as follows.
 
-* default
-* primary 
-* secondary
-* danger
-* warning
-* info
-* success
-* dark
+- default
+- primary
+- secondary
+- danger
+- warning
+- info
+- success
+- dark
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx showLineNumbers
-  <Toast
-    variant={variant}
-    direction="bottom-right"
-    icon={<InfoOutlined />}
-    tools={[
+    ```jsx showLineNumbers
+    <Toast
+      variant={variant}
+      direction="bottom-right"
+      icon={<InfoOutlined />}
+      tools={[
         <RoundButton
-            place="toast"
-            variant="white"
-            outline
-            onClick={() => console.log("action")}
+          place="toast"
+          variant="white"
+          outline
+          onClick={() => console.log("action")}
         >
-            Action
+          Action
         </RoundButton>,
-    ]}
-    closable
->
-    Hello World yellow 234
-</Toast>
-```
+      ]}
+      closable
+    >
+      Hello World yellow 234
+    </Toast>
+    ```
   </CodeViewItem>
 </CodeView>
-
-

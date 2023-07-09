@@ -5,107 +5,103 @@ filename: pages/design-system/components/patterns/card/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/patterns/card/MainView.jsx"; 
-import { OptionsView } from "~/component/patterns/card/OptionsView.jsx"; 
-import { OrientationView } from "~/component/patterns/card/OrientationView.jsx"; 
-import { SizeView } from "~/component/patterns/card/SizeView.jsx"; 
-import { SelectableView } from "~/component/patterns/card/SelectableView.jsx"; 
-import { PreviewRatioView } from "~/component/patterns/card/PreviewRatioView.jsx"; 
-import { TextOverflowView } from "~/component/patterns/card/TextOverflowView.jsx"; 
-import { GhostLoadingView } from "~/component/patterns/card/GhostLoadingView.jsx"; 
-import { QuickActionsView } from "~/component/patterns/card/QuickActionsView.jsx"; 
-import { FooterView } from "~/component/patterns/card/FooterView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/patterns/card/MainView.jsx";
+import { OptionsView } from "~/component/patterns/card/OptionsView.jsx";
+import { OrientationView } from "~/component/patterns/card/OrientationView.jsx";
+import { SizeView } from "~/component/patterns/card/SizeView.jsx";
+import { SelectableView } from "~/component/patterns/card/SelectableView.jsx";
+import { PreviewRatioView } from "~/component/patterns/card/PreviewRatioView.jsx";
+import { TextOverflowView } from "~/component/patterns/card/TextOverflowView.jsx";
+import { GhostLoadingView } from "~/component/patterns/card/GhostLoadingView.jsx";
+import { QuickActionsView } from "~/component/patterns/card/QuickActionsView.jsx";
+import { FooterView } from "~/component/patterns/card/FooterView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 Cards group information into flexible containers to let users to browse a collection of related items and actions. They show a taste of information and reveal more details upon interaction.
 
 <MainView />
 
-
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {1} showLineNumbers
-<Card
-    style={{
-    width: 300,
-    }}
-    selectable
-    as="link"
->
-    <CardPreview
-    ratio="2:1"
-    style={{
-        backgroundColor: "var(--color-gray-3)",
-    }}
+    ```jsx {1} showLineNumbers
+    <Card
+      style={{
+        width: 300,
+      }}
+      selectable
+      as="link"
     >
-    <img
-        src="https://pbs.twimg.com/profile_banners/52672213/1398217635/1500x500"
+      <CardPreview
+        ratio="2:1"
         style={{
-        objectFit: "cover",
+          backgroundColor: "var(--color-gray-3)",
         }}
-    />
-    </CardPreview>
-    <CardAvatar
-    style={{
-        top: -20,
-        left: 0,
-    }}
-    >
-    <Avatar size="large">
-        <img src="https://avatars.githubusercontent.com/u/1680273?v=4" />
-    </Avatar>
-    </CardAvatar>
-    <CardContainer>
-    <CardHeader
-        nowrap
-        title="Prototypes in XXXX"
-        actions={[
-        <Popover
-            body={
-            <Menu
-                type="dropdown"
-                items={[{ type: "item", title: "Edit" }]}
-                style={{
-                width: 200,
-                }}
-            />
-            }
-            // show={true}
-            placement="bottom-right"
+      >
+        <img
+          src="https://pbs.twimg.com/profile_banners/52672213/1398217635/1500x500"
+          style={{
+            objectFit: "cover",
+          }}
+        />
+      </CardPreview>
+      <CardAvatar
+        style={{
+          top: -20,
+          left: 0,
+        }}
+      >
+        <Avatar size="large">
+          <img src="https://avatars.githubusercontent.com/u/1680273?v=4" />
+        </Avatar>
+      </CardAvatar>
+      <CardContainer>
+        <CardHeader
+          nowrap
+          title="Prototypes in XXXX"
+          actions={[
+            <Popover
+              body={
+                <Menu
+                  type="dropdown"
+                  items={[{ type: "item", title: "Edit" }]}
+                  style={{
+                    width: 200,
+                  }}
+                />
+              }
+              // show={true}
+              placement="bottom-right"
+            >
+              <Button quiet>
+                <MoreHorizFilled />
+              </Button>
+            </Popover>,
+          ]}
+        />
+        <CardBody>
+          Learn how to work with green screen video with these tips for video
+          makers.
+        </CardBody>
+      </CardContainer>
+      <CardFooter>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
-            <Button quiet>
-            <MoreHorizFilled />
-            </Button>
-        </Popover>,
-        ]}
-    />
-    <CardBody>
-        Learn how to work with green screen video with these tips for
-        video makers.
-    </CardBody>
-    </CardContainer>
-    <CardFooter>
-    <div
-        style={{
-        display: "flex",
-        justifyContent: "space-between",
-        }}
-    >
-        <div>Created by</div>
-        <div>Updated by</div>
-    </div>
-    </CardFooter>
-</Card>
-```
+          <div>Created by</div>
+          <div>Updated by</div>
+        </div>
+      </CardFooter>
+    </Card>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-
-## Options 
-
+## Options
 
 ### Standard or quiet
 
@@ -117,12 +113,11 @@ Cards can either be standard or quiet style. Use standard style for a
 footer with buttons and more information. Quiet style is reserved for
 very simple cards with little metadata.
 
-### Vertical or horizontal 
+### Vertical or horizontal
 
 <OrientationView />
 
-
-### Size 
+### Size
 
 <SizeView />
 
@@ -136,9 +131,7 @@ popovers, or trays. These should only have a preview, title,
 description, badge(s), and/or action menu. More details should be
 reserved for a one-up or detail view.
 
-
-
-### Selectable 
+### Selectable
 
 <SelectableView />
 
@@ -150,7 +143,7 @@ reserved for a one-up or detail view.
 
 <TextOverflowView />
 
-### Ghost loading 
+### Ghost loading
 
 <GhostLoadingView />
 
@@ -158,6 +151,6 @@ reserved for a one-up or detail view.
 
 <QuickActionsView />
 
-### Footer 
+### Footer
 
 <FooterView />

@@ -2,7 +2,7 @@
 title: Command
 layout: BaseEditorLayout
 ---
-  
+
 # Command
 
 It provides the basic functionality for executing a command, undoing a command, and redoing a command. It also provides the ability to add and remove command listeners.
@@ -28,16 +28,15 @@ editorContext.commands.execute("my-command", 1, 2, 3);
 
 ### Command options
 
-| Name | Type | Description |
-| --- | --- | --- |
-| command | string | The command name. |
-| description | string | The command description. |
-| execute | function | The function to execute the command. |
-| undo | function | The function to undo the command. |
-| redo | function | The function to redo the command. |
+| Name        | Type     | Description                          |
+| ----------- | -------- | ------------------------------------ |
+| command     | string   | The command name.                    |
+| description | string   | The command description.             |
+| execute     | function | The function to execute the command. |
+| undo        | function | The function to undo the command.    |
+| redo        | function | The function to redo the command.    |
 
-
-### return a value 
+### return a value
 
 If you want to return a value from the command, you can use the `editorContext.commands.execute` method.
 
@@ -58,9 +57,9 @@ const result = editorContext.commands.execute("my-command", 1, 2, 3);
 console.log(result); // "result"
 ```
 
-### Async command 
+### Async command
 
-If you want to execute the command asynchronously, you  can also use the `editorContext.commands.execute` method.
+If you want to execute the command asynchronously, you can also use the `editorContext.commands.execute` method.
 
 ```jsx
 
@@ -79,7 +78,7 @@ const result = await editorContext.commands.executeAsync("my-command", 1, 2, 3);
 console.log(result); // "result"
 ```
 
-### History 
+### History
 
 `history.xxxx` is a command that can be used to undo and redo. The `history.xxxx` command is automatically registered when the editor is created.
 

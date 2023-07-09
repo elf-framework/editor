@@ -5,48 +5,42 @@ filename: pages/design-system/components/navigations/avatar/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/navigations/avatar/MainView.jsx"; 
-import { DisabledView } from "~/component/navigations/avatar/DisabledView.jsx"; 
-import { ImageView } from "~/component/navigations/avatar/ImageView.jsx"; 
-import { SizeView } from "~/component/navigations/avatar/SizeView.jsx"; 
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { MainView } from "~/component/navigations/avatar/MainView.jsx";
+import { DisabledView } from "~/component/navigations/avatar/DisabledView.jsx";
+import { ImageView } from "~/component/navigations/avatar/ImageView.jsx";
+import { SizeView } from "~/component/navigations/avatar/SizeView.jsx";
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# {frontmatter.title}
 
 An avatar is a thumbnail representation of an entity, such as a user or an organization.
 
-
 <MainView />
-
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2,7} showLineNumbers
-<div>
-    <Avatar size="300">
+    ```jsx {(2, 7)} showLineNumbers
+    <div>
+      <Avatar size="300">
         <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
-    </Avatar>
-</div>
-<div>
-    <Avatar
+      </Avatar>
+    </div>
+    <div>
+      <Avatar
         style={{
-            backgroundImage:
-            "linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)",
+          backgroundImage: "linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)",
         }}
-    />
-</div>
-```
+      />
+    </div>
+    ```
   </CodeViewItem>
 </CodeView>
 
-
-## Options 
-
+## Options
 
 ### Size
 
 <SizeView />
-
 
 &nbsp;
 
@@ -56,24 +50,20 @@ customized to fit appropriately for your context.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2,7} showLineNumbers
- {["50", "100", "200", "300", "400", "500", "600", "700"].map(
-    (size) => (
-        <div style={{ display: "flex" }}>
+    ```jsx {(2, 7)} showLineNumbers
+    {["50", "100", "200", "300", "400", "500", "600", "700"].map((size) => (
+      <div style={{ display: "flex" }}>
         <div style={{ flex: "none", width: 100 }}>
-            <em>{size}</em>
+          <em>{size}</em>
         </div>
         <Avatar size={size}>
-            <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+          <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
         </Avatar>
-        </div>
-    )
-)}
-```
+      </div>
+    ))}
+    ```
   </CodeViewItem>
 </CodeView>
-
-
 
 ### Image
 
@@ -85,17 +75,17 @@ Avatars can have a defined image, which is usually uploaded by a user.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2,7} showLineNumbers
-<Avatar>
-    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
-</Avatar>
-<Avatar>
-    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
-</Avatar>
-<Avatar>
-    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
-</Avatar>
-```
+    ```jsx {(2, 7)} showLineNumbers
+    <Avatar>
+      <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+    </Avatar>
+    <Avatar>
+      <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+    </Avatar>
+    <Avatar>
+      <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+    </Avatar>
+    ```
   </CodeViewItem>
 </CodeView>
 
@@ -112,13 +102,10 @@ become available or active later.
 
 <CodeView>
   <CodeViewItem title="Sapa">
-```jsx {2,7} showLineNumbers
-<Avatar disabled>
-    <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
-</Avatar>
-```
+    ```jsx {(2, 7)} showLineNumbers
+    <Avatar disabled>
+      <img src="https://avatars.githubusercontent.com/u/591983?v=4" />
+    </Avatar>
+    ```
   </CodeViewItem>
 </CodeView>
-
-
-

@@ -5,62 +5,71 @@ filename: pages/design-system/components/containers/divider/page.mdx
 ---
 
 import { VBox, Flex } from "@elf-framework/ui";
-import { MainView } from "~/component/containers/divider/MainView.jsx"; 
-import { OptionsView } from "~/component/containers/divider/OptionsView.jsx"; 
-import { OrientationView } from "~/component/containers/divider/OrientationView.jsx"; 
+import { MainView } from "~/component/containers/divider/MainView.jsx";
+import { OptionsView } from "~/component/containers/divider/OptionsView.jsx";
+import { OrientationView } from "~/component/containers/divider/OrientationView.jsx";
 import { UIComponentLink } from "~/component/UIComponentLink.jsx";
-import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx"; 
+import { CodeView, CodeViewItem } from "~/utils/CodeView.jsx";
 
-# {title}
+# Divider
 
 The divider groups and splits content closely to clarify the layout. It can also be used to set up rhythms and hierarchies.
 
 <MainView />
 
-
-
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx
 function App() {
-    return <div>
-        <h1>Profile</h1>
-        <Divider />
-        <p>Your profile is a place to keep your settings and preferences.</p>
+  return (
+    <div>
+      <h1>Profile</h1>
+      <Divider />
+      <p>Your profile is a place to keep your settings and preferences.</p>
     </div>
+  );
 }
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html
 <div>
-    <h1 style="margin-bottom: 10px;">Profile</h1>
-    <div class="elf--divider small default horizontal" style="--elf--divider-margin: 10px;">
-        <div class="elf--divider-inner"></div>
-    </div>
-    <p>Your profile is a place to keep your settings and preferences.</p>
+  <h1 style="margin-bottom: 10px;">Profile</h1>
+  <div
+    class="elf--divider small default horizontal"
+    style="--elf--divider-margin: 10px;"
+  >
+    <div class="elf--divider-inner"></div>
+  </div>
+  <p>Your profile is a place to keep your settings and preferences.</p>
 </div>
 ```
+
     </CodeViewItem>
     <CodeViewItem title="TypeScript">
+
 ```typescript
-  interface DividerProps {
-    size: SizeType;
-    variant: VariantType;
-    orientation: OrientationType;
-    margin?: number | string;
-    style: CommonStyle;
-  }
-  export class Divider extends UIElement {
-    props: DividerProps;
-  }
+interface DividerProps {
+  size: SizeType;
+  variant: VariantType;
+  orientation: OrientationType;
+  margin?: number | string;
+  style: CommonStyle;
+}
+export class Divider extends UIElement {
+  props: DividerProps;
+}
 ```
+
     </CodeViewItem>
+
 </CodeView>
 
-## Options 
-
+## Options
 
 ### Size
 
@@ -79,34 +88,43 @@ etc.
 The `large` dividers should only be used for page titles or
 section titles.
 
-
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx
-import {Flex, Divider} from "@elf-framework/ui";
+import { Flex, Divider } from "@elf-framework/ui";
 
 function App() {
-    return <div>
-        <Flex>
-            <em>Small</em>
-            <Divider size="small" />
-        </Flex>
+  return (
+    <div>
+      <Flex>
+        <em>Small</em>
+        <Divider size="small" />
+      </Flex>
     </div>
+  );
 }
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
-```html
-    <div class="elf--flex" style=""><em>Small</em>
-        <div class="elf--divider small default horizontal" style="--elf--divider-margin: 10px;">
-            <div class="elf--divider-inner"></div>
-        </div>
-    </div>
-```
-    </CodeViewItem>
-</CodeView>
 
+```html
+<div class="elf--flex" style="">
+  <em>Small</em>
+  <div
+    class="elf--divider small default horizontal"
+    style="--elf--divider-margin: 10px;"
+  >
+    <div class="elf--divider-inner"></div>
+  </div>
+</div>
+```
+
+    </CodeViewItem>
+
+</CodeView>
 
 ### Orientation
 
@@ -121,42 +139,52 @@ content horizontally.
 <CodeView>
 
     <CodeViewItem title="Sapa">
+
 ```jsx
-import {VBox, Divider} from "@elf-framework/ui";
+import { VBox, Divider } from "@elf-framework/ui";
 
 function App() {
-    return <div>
-        <VBox>
-            <Divider size="small" orientation="horizontal" />
-            <em>Horizontal</em>
-        </VBox>
-        <VBox>
-            <Divider
-                size="small"
-                orientation="vertical"
-                style={{ height: 100 }}
-            />
-            <em>Vertical</em>
-        </VBox>
+  return (
+    <div>
+      <VBox>
+        <Divider size="small" orientation="horizontal" />
+        <em>Horizontal</em>
+      </VBox>
+      <VBox>
+        <Divider size="small" orientation="vertical" style={{ height: 100 }} />
+        <em>Vertical</em>
+      </VBox>
     </div>
+  );
 }
 ```
+
     </CodeViewItem>
     <CodeViewItem title="Html">
+
 ```html
 <div class="elf--grid" style="grid-template-columns: 1fr 1fr; gap: 30px;">
-    <div class="elf--flex stack">
-        <div class="elf--divider small default horizontal" style="--elf--divider-margin: 10px;">
-            <div class="elf--divider-inner"></div>
-        </div><em>Horizontal</em>
+  <div class="elf--flex stack">
+    <div
+      class="elf--divider small default horizontal"
+      style="--elf--divider-margin: 10px;"
+    >
+      <div class="elf--divider-inner"></div>
     </div>
-    <div class="elf--flex stack">
-        <div class="elf--divider small default vertical"
-            style="align-self: center; height: 100px; --elf--divider-margin: 10px;">
-            <div class="elf--divider-inner"></div>
-        </div><em>Vertical</em>
+    <em>Horizontal</em>
+  </div>
+  <div class="elf--flex stack">
+    <div
+      class="elf--divider small default vertical"
+      style="align-self: center; height: 100px; --elf--divider-margin: 10px;"
+    >
+      <div class="elf--divider-inner"></div>
     </div>
+    <em>Vertical</em>
+  </div>
 </div>
 ```
+
     </CodeViewItem>
+
 </CodeView>

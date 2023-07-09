@@ -4,38 +4,37 @@ layout: MainLayout
 filename: pages/introduction/install/page.mdx
 ---
 
-import {Diagram} from "~/utils/Diagram";
+import { Diagram } from "~/utils/Diagram";
 
 # Install
 
 It can install it with the npm(or yarn) command.
 
-## npm 
+## npm
 
 ```shell
 npm install @elf-framework/sapa --save
 ```
 
-## yarn 
+## yarn
 
 ```shell
-yarn add @elf-framework/sapa 
+yarn add @elf-framework/sapa
 ```
 
 # Template - JSX
 
 Sapa is using [JSX](https://ko.reactjs.org/docs/introducing-jsx.html) template.
 
+## Vite config
 
-## Vite config 
-
-```js {3-5} showLineNumbers 
+```js {3-5} showLineNumbers
 export default defineConfig({
   esbuild: {
     jsxFactory: "createElementJsx",
     jsxFragment: "FragmentInstance",
-    jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`
-  }
+    jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
+  },
 });
 ```
 
@@ -44,7 +43,6 @@ export default defineConfig({
 ## import
 
 It can be rendering from `start` function. Please check about [@elf-framework/sapa](/pages/sapa) for details.
-
 
 ```jsx
 import { start } from "@elf-framework/sapa";
@@ -59,7 +57,7 @@ function App() {
 start(App);
 ```
 
-# Bundlers 
+# Bundlers
 
 ELF uses vite by default.
 

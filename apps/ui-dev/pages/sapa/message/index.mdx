@@ -4,19 +4,18 @@ layout: SapaLayout
 filename: pages/sapa/message/page.mdx
 ---
 
-
-# {title}
+# Message
 
 Sapa provides a way to send messages to multiple components.
 
 Basically, Message supports two types.
 
-* subscribe - Send messages to other components
-* subscribe_self - Send messages to own component
+- subscribe - Send messages to other components
+- subscribe_self - Send messages to own component
 
-## SUBSCRIBE 
+## SUBSCRIBE
 
-`SUBSCRIBE` to the point to the point to the message. 
+`SUBSCRIBE` to the point to the point to the message.
 
 You can send a message to another component through `emit`.
 
@@ -24,24 +23,23 @@ You can send a message to another component through `emit`.
 import { UIElement, SUBSCRIBE, CLICK } from "@elf-framework/sapa";
 
 class A extends UIElement {
-  template () {
-    return <div>Simple Text A</div>
+  template() {
+    return <div>Simple Text A</div>;
   }
-  [SUBSCRIBE('message')] (param) {
-    console.log('message is called with', { param });
+  [SUBSCRIBE("message")](param) {
+    console.log("message is called with", { param });
   }
 }
 
 class B extends UIElement {
-  template () {
-    return <div>Simple Text B</div>
+  template() {
+    return <div>Simple Text B</div>;
   }
 
-  [CLICK()] () {
+  [CLICK()]() {
     this.emit("message", 10);
   }
 }
-
 ```
 
 ## SUBSCRIBE_SELF
@@ -49,28 +47,24 @@ class B extends UIElement {
 You can send a message to my own component through `trigger`.
 
 ```jsx {11, 14-16}
+import { UIElement, SUBSCRIBE_SELF } from "@elf-framework/sapa";
 
-import {UIElement, SUBSCRIBE_SELF} from "@elf-framework/sapa";
-
-class A  extends UIElement {
-
-  template (){
-    return <div>Simple Text</div>
+class A extends UIElement {
+  template() {
+    return <div>Simple Text</div>;
   }
 
-  [CLICK()] () {
+  [CLICK()]() {
     this.trigger("message", 10);
   }
 
-  [SUBSCRIBE_SELF('message')] (...params) {
-    console.log('message is called with', { params });
+  [SUBSCRIBE_SELF("message")](...params) {
+    console.log("message is called with", { params });
   }
-
 }
-
 ```
 
-## with Checker 
+## with Checker
 
 Some messages may have to be run lazy. At this time, use some checkers to control.
 
@@ -99,36 +93,46 @@ class A extends UIElement {
 
 These checkers can prevent continuous message execution.
 
-* DEBOUNCE
-* TROTTLE 
-* IF 
+- DEBOUNCE
+- TROTTLE
+- IF
 
 ## Subscribe message Hook
 
-Messages can also be used as Hooks. 
+Messages can also be used as Hooks.
 
 ```jsx {3-9, 12, 18}
-function A () {
-
+function A() {
   useSubscribe("message-2", () => {
     console.log("message-2 is called with param");
-  })
+  });
 
   useSelf("message", (...params) => {
     console.log("message is called with param", ...params);
-  })
+  });
 
-  return <div onClick={() => {
-    this.trigger("message", 10);
-  }}>Simple Text</div>
+  return (
+    <div
+      onClick={() => {
+        this.trigger("message", 10);
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
 
-function B () {
-  return <div onClick={() => {
-    this.emit("message-2");
-  }}>Simple B</div>
+function B() {
+  return (
+    <div
+      onClick={() => {
+        this.emit("message-2");
+      }}
+    >
+      Simple B
+    </div>
+  );
 }
-
 ```
 
 ## Send message with Hook
@@ -136,68 +140,87 @@ function B () {
 You can send messages more easily through `useEmit` and `useTrigger` .
 
 ```jsx
-
-// useEmit 
-function A () {
-  return <div onClick={() => {
-    useEmit("message", 10);
-  }}>Simple A</div>
+// useEmit
+function A() {
+  return (
+    <div
+      onClick={() => {
+        useEmit("message", 10);
+      }}
+    >
+      Simple A
+    </div>
+  );
 }
 
 // useTrigger
 function B() {
-
   useSelf("message", () => {
     console.log("message is triggered.");
-  })
+  });
 
-  return <div onClick={() => {
-    useTrigger("message");
-  }}>Simple Text</div>
+  return (
+    <div
+      onClick={() => {
+        useTrigger("message");
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
-
 ```
 
-# How to use `useMagicMethod` 
+# How to use `useMagicMethod`
 
 Using the `useMagicMethod` hook can be written in the same way.
 
 ```jsx
-import {useMagicMethod, SUBSCRIBE_SELF, DEBOUNCE } from "@elf-framework/sapa";
-function A () {
-
+import { useMagicMethod, SUBSCRIBE_SELF, DEBOUNCE } from "@elf-framework/sapa";
+function A() {
   useMagicMethod(SUBSCRIBE_SELF("message") + DEBOUNCE(100), () => {
     console.log("message is called with trigger");
-  })
+  });
 
-  return <div onClick={() => {
-    useTrigger("message");
-  }}>Simple Text</div>
+  return (
+    <div
+      onClick={() => {
+        useTrigger("message");
+      }}
+    >
+      Simple Text
+    </div>
+  );
 }
-
 ```
 
 # Passing messages between parent and child components
 
 ```jsx
-
-function ChildComponent ({ onChange }) {
-  return <div onClick={() => {
-    this.parent.trigger(onChange)
-  }}> Simple Text </div>
+function ChildComponent({ onChange }) {
+  return (
+    <div
+      onClick={() => {
+        this.parent.trigger(onChange);
+      }}
+    >
+      {" "}
+      Simple Text{" "}
+    </div>
+  );
 }
 
-function ParentComponent () {
-
+function ParentComponent() {
   useSelf("message", () => {
     console.log("message is triggered");
-  })
+  });
 
-  return <div>
+  return (
+    <div>
       <ChildComponent onChange="message" />
-  </div>
+    </div>
+  );
 }
-
 ```
 
 # `emit` and `trigger`
@@ -205,24 +228,28 @@ function ParentComponent () {
 `callback` can be used in place of the message name.
 
 ```jsx
-
-function ChildComponent ({ onChange }) {
-  return <div onClick={() => {
-    this.parent.trigger(onChange)
-  }}> Simple Text </div>
+function ChildComponent({ onChange }) {
+  return (
+    <div
+      onClick={() => {
+        this.parent.trigger(onChange);
+      }}
+    >
+      {" "}
+      Simple Text{" "}
+    </div>
+  );
 }
 
-function ParentComponent () {
-
-  return <div>
-      <ChildComponent onChange={() => {
-        console.log("message is triggered");
-      }} />
-  </div>
+function ParentComponent() {
+  return (
+    <div>
+      <ChildComponent
+        onChange={() => {
+          console.log("message is triggered");
+        }}
+      />
+    </div>
+  );
 }
-
 ```
-
-
-
-

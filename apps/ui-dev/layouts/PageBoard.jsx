@@ -2,7 +2,7 @@ import { MarkdownPage } from "../component/MarkdownPage";
 import LayoutManager from "./LayoutManager";
 import "./PageBoard.scss";
 
-export function PageBoard({ layout, page, filename }) {
+export function PageBoard({ layout, page, filename, ...rest }) {
   const CurrentLayout = LayoutManager.get(layout || "SapaLayout");
 
   return (
@@ -10,7 +10,12 @@ export function PageBoard({ layout, page, filename }) {
       {(menu) => {
         return (
           <div>
-            <MarkdownPage page={page} filename={filename} menu={menu} />
+            <MarkdownPage
+              page={page}
+              filename={filename}
+              menu={menu}
+              {...rest}
+            />
           </div>
         );
       }}

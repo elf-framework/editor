@@ -4,8 +4,7 @@ layout: SapaLayout
 filename: pages/sapa/api/rendering/page.mdx
 ---
 
-
-# {title}
+# {frontmatter.title}
 
 At some point, I want to control the rendering at the point I want it to.
 
@@ -13,20 +12,19 @@ These are the APIs that can be used at this time.
 
 Basically, all Class/Function components work in the same way.
 
-
 ## Rendering Root
 
-### `start` function 
+### `start` function
 
 ```jsx {3}
-import {start} from "@elf-framework/sapa";
+import { start } from "@elf-framework/sapa";
 
 start(<div>Simple Text</div>, {
-  container: document.getElementById('root')
-})
+  container: document.getElementById("root"),
+});
 ```
 
-### `hydrate` function 
+### `hydrate` function
 
 It is similar to `start` function.
 
@@ -36,16 +34,15 @@ But rendering the component in the specified place is different.
 import { hydrate } from "@elf-framework/sapa";
 
 hydrate(<div>Simple Text</div>, {
-  container: document.getElementById('root')
-})
-
+  container: document.getElementById("root"),
+});
 ```
 
-### `renderToHtml` function 
+### `renderToHtml` function
 
 It is similar to `start` function.
 
-``renderToHtml`` converts the given `vnode` to `html` string.
+`renderToHtml` converts the given `vnode` to `html` string.
 
 Used in Server Side Rendering (SSR).
 
@@ -56,20 +53,16 @@ import { renderToHtml } from "@elf-framework/sapa";
 
 (async () => {
   const html = await renderToHtml(<div>Simple Text</div>, {
-    some: value
+    some: value,
   });
 
   console.log(html);
-})()
-
+})();
 ```
-
-
-
 
 ## Rendering Component
 
-### setState 
+### setState
 
 The `setState` method calls `render`() function again while changing a specific value.
 
@@ -78,49 +71,72 @@ In this case, the values ​​are not compared.
 Just call the `render`() function.
 
 ```jsx {3-5}
-function A () {
-  return <div onClick={() => {
-    this.setState({
-      value: (this.state?.value || 0) + 1
-    })
-  }}>Simple Text{this.state.value}</div>
+function A() {
+  return (
+    <div
+      onClick={() => {
+        this.setState({
+          value: (this.state?.value || 0) + 1,
+        });
+      }}
+    >
+      Simple Text{this.state.value}
+    </div>
+  );
 }
 ```
 
 Change the state value and give options when not rendering.
 
 ```jsx {5}
-function A () {
-  return <div onClick={() => {
-    this.setState({
-      value: (this.state?.value || 0) + 1
-    }, false)   // do not render
-  }}>Simple Text{this.state.value}</div>
+function A() {
+  return (
+    <div
+      onClick={() => {
+        this.setState(
+          {
+            value: (this.state?.value || 0) + 1,
+          },
+          false
+        ); // do not render
+      }}
+    >
+      Simple Text{this.state.value}
+    </div>
+  );
 }
 ```
 
-### useRender 
+### useRender
 
 `useRender` method allows you to perform rendering at any point in time.
 
 When used with `useSubscribe` , you can control the desired rendering time.
 
 ```jsx {4, 10, 13}
-function A () {
+function A() {
   // render when message is received.
   useSubscribe("message", () => {
     useRender(this);
-  })
+  });
 
-  return <div onClick={() => {
-    this.setState({
-      value: 10
-    }, false)
+  return (
+    <div
+      onClick={() => {
+        this.setState(
+          {
+            value: 10,
+          },
+          false
+        );
 
-    useRender(this);
-  }}>Simple text {this.state.value} </div>
+        useRender(this);
+      }}
+    >
+      Simple text {this.state.value}{" "}
+    </div>
+  );
 }
-
 ```
 
 By this time, you would have noticed.
@@ -132,7 +148,7 @@ Because the rendering can be adjusted at any time, it can do quite a lot with me
 When the values ​​of `useState` are modified at the same time, it is rendered only once.
 
 ```jsx
-function A () {
+function A() {
   const [value, setValue] = useState(0);
   const [value2, setValue2] = useState(0);
   const [value3, setValue3] = useState(0);
@@ -143,9 +159,9 @@ function A () {
       setValue(10);
       setValue2(20);
       setValue3(30);
-    })
+    });
   }
 
-  return <div onClick={handleClick}>Simple text {this.state.value} </div>
+  return <div onClick={handleClick}>Simple text {this.state.value} </div>;
 }
-````
+```

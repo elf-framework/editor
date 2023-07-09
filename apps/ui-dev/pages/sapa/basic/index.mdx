@@ -6,21 +6,19 @@ filename: pages/sapa/basic/page.mdx
 
 import { Alert } from "@elf-framework/ui";
 
-
-# {title}
+# {frontmatter.title}
 
 Sapa is a library for easily creating DOM-based UIs. However, since it uses JSX as a grammar, it can be used as data.
 
 The basic template uses JSX, and many functions are structured similarly to React, providing a structure that anyone who has used React can move comfortably.
 
-
-## JSX 
+## JSX
 
 It uses `JSX` as the template engine.
 
 ```jsx
 function MyApp() {
-  return <div>Sample Text</div>
+  return <div>Sample Text</div>;
 }
 ```
 
@@ -30,199 +28,198 @@ function MyApp() {
 
 ```jsx
 function MyApp() {
-  return <div class="layout">SampleText</div>
+  return <div class="layout">SampleText</div>;
 }
 ```
 
 &nbsp;
 
 <Alert shape="round">
-You can also use the `className` attribute as is. If you use the `className` attribute, it is automatically linked to the `class` attribute.
+  You can also use the `className` attribute as is. If you use the `className`
+  attribute, it is automatically linked to the `class` attribute.
 </Alert>
 
-## Component 
+## Component
 
 Sapa consists of two components.
 
-* Class component 
-* Function component 
+- Class component
+- Function component
 
-### Class Component 
+### Class Component
 
 ```jsx
-import {UIElement} from "@elf-framework/sapa";
+import { UIElement } from "@elf-framework/sapa";
 
 class MyApp extends UIElement {
-  template () {
-    return <div>My App</div>
+  template() {
+    return <div>My App</div>;
   }
 }
-
 ```
 
-### Function Component 
+### Function Component
 
 ```jsx
 function MyApp() {
-  return <div>My App</div>
+  return <div>My App</div>;
 }
-
 ```
 
-## Hook 
+## Hook
 
 You can use a Hook similar to React.
 
-* [useState](/pages/sapa/hook/#useState)
-* [useCallback](/pages/sapa/hook/#useCallback)
-* [useMemo](/pages/sapa/hook/#useMemo) 
-* [useReducer](/pages/sapa/hook/#useReducer) 
-* [useContext](/pages/sapa/hook/#useContext)
-* [useRef](/pages/sapa/hook/#useRef)
-* [useEffect](/pages/sapa/hook/#useEffect) 
-* [useId](/pages/sapa/hook/#useId)
-* [useSyncExternalStore](/pages/sapa/hook/#useSyncExternalStore)
+- [useState](/pages/sapa/hook/#useState)
+- [useCallback](/pages/sapa/hook/#useCallback)
+- [useMemo](/pages/sapa/hook/#useMemo)
+- [useReducer](/pages/sapa/hook/#useReducer)
+- [useContext](/pages/sapa/hook/#useContext)
+- [useRef](/pages/sapa/hook/#useRef)
+- [useEffect](/pages/sapa/hook/#useEffect)
+- [useId](/pages/sapa/hook/#useId)
+- [useSyncExternalStore](/pages/sapa/hook/#useSyncExternalStore)
 
-## DOM 
+## DOM
 
 It has several features that allow you to directly control the DOM.
 
-* ref - Provides a selector to directly access the dom node.
-* event - Provides a magic method to easily set the dom event.
+- ref - Provides a selector to directly access the dom node.
+- event - Provides a magic method to easily set the dom event.
 
-### DOM Event 
+### DOM Event
 
 You can set various DOM events using Magic Methods.
 
 ```jsx {8-10}
-import {CLICK, ALT} from "@elf-framework/sapa";
+import { CLICK, ALT } from "@elf-framework/sapa";
 
 class MyApp extends UIElement {
   template() {
-    return <div>My App</div>
+    return <div>My App</div>;
   }
 
-  [CLICK() + ALT] (e) {
+  [CLICK() + ALT](e) {
     console.log(e);
   }
 }
 ```
 
-## Store 
+## Store
 
 Sapa basically provides 3 types of store.
 
-* `state` : Rendering control through the instance state and `setState` function used inside the component
-* `useState`: Sorted storage used inside the component, rendering control with `update` function
-* `$store` : Message passing through `subscribe`, a public repository used in component inheritance
-
+- `state` : Rendering control through the instance state and `setState` function used inside the component
+- `useState`: Sorted storage used inside the component, rendering control with `update` function
+- `$store` : Message passing through `subscribe`, a public repository used in component inheritance
 
 The above three types allow us to handle data in various ways.
 
-### instance state 
+### instance state
 
 ```jsx
 class MyApp extends UIElement {
-  template () {
-    return <div>{this.state.myVariable}</div>
+  template() {
+    return <div>{this.state.myVariable}</div>;
   }
 
-  [CLICK()] () {
+  [CLICK()]() {
     const { myVariable = 0 } = this.state;
     myVariable++;
-    this.setState({ myVariable })
+    this.setState({ myVariable });
   }
 }
-
 ```
 
-### hook state 
+### hook state
 
 ```jsx
-function MyApp () {
+function MyApp() {
   const [myVariable, setMyVariable] = useState(0);
 
-  return <div onClick={() => setMyVariable(myVariable+1)}>{myVariable}</div>
+  return <div onClick={() => setMyVariable(myVariable + 1)}>{myVariable}</div>;
 }
 ```
 
-### hierarchy store 
+### hierarchy store
 
 ```jsx
 class MyApp extends UIElement {
-  template () {
-
+  template() {
     // subscribe event for $store
     useSubscribe("myVariable", () => {
       useRender(this);
-    })
+    });
 
-    return <div onClick={() => {
-      const myVariable = this.$store.get("myVariable", 0);
-      this.$store.set("myVariable", myVariable+1)
-    }}></div>
+    return (
+      <div
+        onClick={() => {
+          const myVariable = this.$store.get("myVariable", 0);
+          this.$store.set("myVariable", myVariable + 1);
+        }}
+      ></div>
+    );
   }
 }
-
 ```
 
-## Message 
+## Message
 
 Sapa provides a way to send messages from an internal component hierarchy.
 
 ```jsx
-
-function MyApp () {
-
+function MyApp() {
   useSubscribe("refreshComponent", () => {
-    useRender(this);;
-  })
+    useRender(this);
+  });
 
-  return <div onClick={() => {
-    this.emit("refreshComponent");
-  }}></div>
+  return (
+    <div
+      onClick={() => {
+        this.emit("refreshComponent");
+      }}
+    ></div>
+  );
 }
-
 ```
-
 
 Sapa focuses on how to store data, how to send messages, and how to render DOM through JSX.
 
-# start to render 
+# start to render
 
 ## start(Function|Class|VNode, RootOptions)
 
 The start function is for dom rendering.
 
 ```jsx
-import {start} from "@elf-framework/sapa";
+import { start } from "@elf-framework/sapa";
 
-start(<div >Simple Text</div>, {
-  container: document.body
-})
+start(<div>Simple Text</div>, {
+  container: document.body,
+});
 ```
 
-By default, the component is rendered through the container property. 
+By default, the component is rendered through the container property.
 It can be used in the browser or environment where the DOM api operates.
 
-The container property defaults to `document.body` . 
+The container property defaults to `document.body` .
 
 If you want to draw in other areas, you can designate a different dom element.
 
 ```jsx
-import {start} from "@elf-framework/sapa";
+import { start } from "@elf-framework/sapa";
 
-start(<div >Simple Text</div>, {
-  container: document.getElementById('root')
-})
+start(<div>Simple Text</div>, {
+  container: document.getElementById("root"),
+});
 ```
 
-## hydrate 
+## hydrate
 
 Basically similar to start . It can be made into components in the state that the html structure has already been output.
 
 ```jsx
-hydrate(<div >Simple Text</div>, {
+hydrate(<div>Simple Text</div>, {
   container: document.getElementById("page-view"),
   routeParams,
   pageContext,
@@ -237,16 +234,14 @@ The usage is similar to `start` function . This function converts the component 
 
 ```jsx
 (async () => {
-
   const pageHtml = await renderToHtml(<Page {...pageProps} />, {
     pageContext,
     routeParams,
   });
-
 })();
 ```
 
-It can be used when expressing a component purely in HTML. 
+It can be used when expressing a component purely in HTML.
 Usually used in SSR(Server Side Rendering).
 
 # Hot Module Reload
