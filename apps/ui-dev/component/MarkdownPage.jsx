@@ -40,6 +40,7 @@ function PrevNextLink({ prev, next }) {
         marginTop: 30,
         justifyContent: "space-between",
       }}
+      wrap={true}
     >
       {prev ? (
         <LinkView
