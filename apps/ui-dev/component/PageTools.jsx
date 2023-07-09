@@ -17,7 +17,7 @@ export function PageTools() {
   return (
     <div class="page-tools">
       <div class="sm" style={{ whiteSpace: "nowrap" }}>
-        <PeerView noLabel={true} />
+        {/* <PeerView noLabel={true} /> */}
 
         <Button iconOnly quiet onClick={() => setOpenSearchView(true)}>
           <SearchFilled />
@@ -73,7 +73,7 @@ export function PageTools() {
               K
             </kbd>
           </Button>
-          <PeerView />
+          {/* <PeerView /> */}
           <ThemeButton />
         </div>
       </div>

@@ -2,7 +2,7 @@ import yorkie from "yorkie-js-sdk";
 
 const server = "https://api.yorkie.dev";
 const apiKey = "cel7stqkdldurulgerj0";
-const docKey = "my-first-document";
+const docKey = "my-second-document";
 let client;
 let doc;
 let peers;
@@ -20,6 +20,10 @@ export const yorkieStore = {
 
         doc = new yorkie.Document(docKey);
         await client.attach(doc);
+
+        doc.update((root) => {
+          root["hello"] = "world";
+        });
       } else {
         unscribes.forEach((u) => {
           u();
@@ -29,8 +33,8 @@ export const yorkieStore = {
       unscribes.push(
         client.subscribe((event) => {
           if (event.type === "peers-changed") {
-            peers = event.value[doc.getKey()];
-            callback();
+            // peers = client.getPeersByDocKey(doc.getKey());
+            // callback();
           }
         })
       );

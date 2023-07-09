@@ -1,5 +1,11 @@
 # ui-dev
 
+## 1.0.50
+
+### Patch Changes
+
+- remove yorkie peer view
+
 ## 1.0.49
 
 ### Patch Changes

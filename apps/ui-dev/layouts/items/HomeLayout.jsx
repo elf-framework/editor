@@ -31,9 +31,9 @@ export function HomeLayout() {
                   </li>
                 );
               })}
-              <li>
+              {/* <li>
                 <PeerView />
-              </li>
+              </li> */}
               <li>
                 <ThemeButton />
               </li>

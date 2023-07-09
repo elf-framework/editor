@@ -1,128 +1,127 @@
 .markdown-page {
+  margin: 0 auto;
+  width: 100%;
 
-    margin: 0 auto;
-    width: 100%;
+  padding: 32px 48px;
+  // padding-right: 0px;
+  box-sizing: border-box;
 
-    padding: 32px 48px;
-    // padding-right: 0px;
+  @media screen and (max-width: 900px) {
+    padding: 0px 0px 35px 0px;
+  }
+
+  p {
+    font-size: 16px !important;
+  }
+
+  > .markdown-page-content {
+    display: flex;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+      .table-of-contents {
+        display: none;
+      }
+
+      .content-container {
+        width: 100%;
+        max-width: 600px;
+      }
+    }
+
+    .content-container {
+      margin: 0 auto;
+      max-width: 900px;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        padding: 5px;
+      }
+
+      *:target {
+        position: relative;
+        color: blue;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: linear-gradient(to right, white, black);
+        }
+      }
+    }
+
+    > *:first-child {
+      flex: 1 1 auto;
+    }
+
+    > *:last-child {
+      flex: none;
+    }
+  }
+
+  .filename {
+    text-align: right;
+    color: inherit;
+
+    &:last-child {
+      margin-top: 100px;
+    }
+
+    a {
+      color: var(--color-text-header-default);
+      text-underline-offset: 10px;
+    }
+
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  .link {
+    // background-color: var(--color-white);
+    padding: var(--padding-size-medium);
+    text-align: left;
+    min-width: 300px;
+
+    .category {
+      color: var(--color-gray-5);
+      display: block;
+      font-size: 15px;
+    }
+
+    .title {
+      color: var(--color-blue-7);
+      font-size: 20px;
+    }
+
+    &.prev {
+      .title {
+        &::before {
+          content: "« ";
+        }
+      }
+    }
+
+    &.next {
+      text-align: right;
+
+      .title {
+        &::after {
+          content: " »";
+        }
+      }
+    }
+
+    border: 2px solid var(--color-blue-5);
+    border-radius: 4px;
     box-sizing: border-box;
-
-
-
-    @media screen and (max-width: 900px) {    
-        padding: 35px 0px;
-    }
-
-    p {
-        font-size: 16px !important;
-    }
-
-    > .markdown-page-content {
-        display: flex;
-
-        @media screen and (max-width: 900px) {
-            flex-direction: column;
-            .table-of-contents {
-                display: none;
-            }
-
-            .content-container {
-                width: 100%;
-                max-width: 600px;
-            }
-        }
-
-        .content-container {
-            margin: 0 auto;
-            max-width: 900px;
-
-            h1,h2,h3,h4,h5,h6 {
-                padding: 5px;
-            }
-
-            *:target {
-                position: relative;
-                color: blue;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: linear-gradient(to right, white, black);
-                }
-            }
-        }
-
-        > *:first-child {
-            flex: 1 1 auto;
-        }
-    
-        > *:last-child {
-            flex: none;
-        }
-    }
-
-
-    .filename {
-        text-align: right;
-        color: inherit;
-
-        &:last-child {
-            margin-top: 100px;
-        }
-
-        a {
-            color: var(--color-text-header-default);
-            text-underline-offset: 10px;
-        }
-
-    }
-
-    .link {
-        // background-color: var(--color-white);
-        padding: var(--padding-size-medium);
-        text-align: left;
-        min-width: 300px;
-
-        .category {
-            color: var(--color-gray-5);
-            display: block;
-            font-size: 15px;
-        }
-
-        .title {
-            color: var(--color-blue-7);
-            font-size: 20px;
-        }
-
-        &.prev {
-
-            .title {
-                &::before {
-                    content: "« ";
-                }
-            }
-
-        }
-
-        &.next {
-            text-align: right;
-
-
-            .title {
-                &::after{
-                    content: " »";
-                }
-            }
-
-        }
-
-        border: 2px solid var(--color-blue-5);
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
+  }
 }
