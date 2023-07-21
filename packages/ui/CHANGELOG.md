@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.254
+
+### Patch Changes
+
+- fix icon position in tools
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.254
+
 ## 0.0.253
 
 ### Patch Changes

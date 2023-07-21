@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.254
+
+### Patch Changes
+
+- fix icon position in tools
+
 ## 0.0.253
 
 ### Patch Changes
