@@ -1,8 +1,12 @@
 .elf--tools {
   --elf--tools-background-color: transparent;
   --elf--tools-arrow-background-color: white;
-  --elf--tools-hover-background-color: var(--tools-color-hover-background-default);
-  --elf--tools-active-background-color: var(--tools-color-active-background-default);
+  --elf--tools-hover-background-color: var(
+    --tools-color-hover-background-default
+  );
+  --elf--tools-active-background-color: var(
+    --tools-color-active-background-default
+  );
   --elf--tools-selected-background-color: var(--color-primary);
   --elf--tools-selected-text-color: white;
   --elf--tools-min-width: 40px;
@@ -65,8 +69,7 @@
     cursor: pointer;
 
     &.hidden-tools {
-        padding: 0px;
-        
+      padding: 0px;
     }
 
     &.has-items {
@@ -126,7 +129,6 @@
       }
     }
 
-
     &.icon-only {
       padding: 0px;
 
@@ -148,16 +150,12 @@
       cursor: pointer;
       font-size: inherit;
 
-
       .icon {
         line-height: 0;
         svg {
           width: 20px;
           height: 20px;
-
-          path {
-            fill: currentColor;
-          }
+          fill: currentColor;
         }
       }
 
@@ -199,17 +197,16 @@
     &:active.hoverable,
     &.active.hoverable {
       --elf--tools-background-color: var(--elf--tools-active-background-color);
-    }    
+    }
 
     &.selected {
-      --elf--tools-background-color: var(--elf--tools-selected-background-color);
+      --elf--tools-background-color: var(
+        --elf--tools-selected-background-color
+      );
 
       .tools-button {
         color: var(--elf--tools-selected-text-color);
       }
-
     }
-
-
   }
 }

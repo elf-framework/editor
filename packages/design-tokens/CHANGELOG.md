@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.253
+
+### Patch Changes
+
+- fix toolbar icon style
+
 ## 0.0.252
 
 ### Patch Changes

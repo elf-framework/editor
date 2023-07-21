@@ -5000,13 +5000,13 @@ const jsx$1 = (tag, props) => {
 const jsxs$1 = jsx$1;
 const jsxFunctions = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  createComponent,
-  createComponentFragment,
-  createComment,
-  createElement,
-  createElementJsx: createElementJsx$1,
   FragmentInstance: FragmentInstance$1,
   HTMLComment: HTMLComment$1,
+  createComment,
+  createComponent,
+  createComponentFragment,
+  createElement,
+  createElementJsx: createElementJsx$1,
   jsx: jsx$1,
   jsxs: jsxs$1
 }, Symbol.toStringTag, { value: "Module" }));

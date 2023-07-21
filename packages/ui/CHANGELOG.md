@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.253
+
+### Patch Changes
+
+- fix toolbar icon style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.253
+
 ## 0.0.252
 
 ### Patch Changes
