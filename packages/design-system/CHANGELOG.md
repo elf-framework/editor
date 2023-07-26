@@ -1,5 +1,14 @@
 # @elf-framework/design-system
 
+## 0.0.258
+
+### Patch Changes
+
+- modify toast placement
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.258
+
 ## 0.0.257
 
 ### Patch Changes

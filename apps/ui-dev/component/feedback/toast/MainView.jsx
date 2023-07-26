@@ -39,8 +39,7 @@ export function MainView() {
           }}
         >
           <Toast
-            delay={2000}
-            direction="bottom-right"
+            direction="center"
             icon={<InfoOutlined />}
             style={{
               position: "absolute",

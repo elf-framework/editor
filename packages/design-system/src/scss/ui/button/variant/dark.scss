@@ -1,5 +1,4 @@
 .elf--button.dark {
-
   --elf--button-background-color: var(--button-default-background-dark);
   --elf--button-text-color: var(--button-default-text-dark);
   --elf--button-border-color: var(--button-default-border-dark);
@@ -24,24 +23,23 @@
 
   &:focus,
   &.focused {
-
     &:not(.quiet):not(.outline) {
       outline: 2px solid var(--button-default-border-dark);
       --elf--button-border-color: var(--color-background-default);
       border-width: 2px;
     }
-
   }
 
   &.outline {
-
     --elf--button-border-color: var(--button-outline-border-dark);
     --elf--button-text-color: var(--button-outline-text-dark);
     --elf--button-background-color: var(--button-outline-background-dark);
 
     &:hover,
     &.hover {
-      --elf--button-background-color: var(--button-default-background-dark) !important;
+      --elf--button-background-color: var(
+        --button-default-background-dark
+      ) !important;
       --elf--button-text-color: var(--button-default-text-dark) !important;
       // --elf--button-border-color: var(--button-default-border-dark) !important;
     }

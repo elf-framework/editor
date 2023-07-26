@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.258
+
+### Patch Changes
+
+- modify toast placement
+
 ## 0.0.254
 
 ### Patch Changes
