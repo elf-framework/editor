@@ -1,5 +1,14 @@
 # @elf-framework/ui
 
+## 0.0.261
+
+### Patch Changes
+
+- modify checkbox style
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.261
+
 ## 0.0.258
 
 ### Patch Changes

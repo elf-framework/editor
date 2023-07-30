@@ -1,5 +1,20 @@
 # @elf-framework/design-system
 
+## 0.0.261
+
+### Patch Changes
+
+- modify checkbox style
+
+- Updated dependencies []:
+  - @elf-framework/design-tokens@0.0.261
+
+## 0.0.260
+
+### Patch Changes
+
+- update checkbox style
+
 ## 0.0.259
 
 ### Patch Changes

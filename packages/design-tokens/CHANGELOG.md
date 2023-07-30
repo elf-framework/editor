@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.0.261
+
+### Patch Changes
+
+- modify checkbox style
+
 ## 0.0.258
 
 ### Patch Changes
