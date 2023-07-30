@@ -1,5 +1,11 @@
 # @elf-framework/design-system
 
+## 0.0.259
+
+### Patch Changes
+
+- modify checkbox font size
+
 ## 0.0.258
 
 ### Patch Changes

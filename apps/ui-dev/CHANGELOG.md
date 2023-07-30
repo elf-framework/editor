@@ -1,5 +1,14 @@
 # ui-dev
 
+## 1.0.51
+
+### Patch Changes
+
+- modify checkbox font size
+
+- Updated dependencies []:
+  - @elf-framework/design-system@0.0.259
+
 ## 1.0.50
 
 ### Patch Changes
