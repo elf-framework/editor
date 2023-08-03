@@ -1,5 +1,14 @@
 # @elf-framework/base-editor
 
+## 0.0.270
+
+### Patch Changes
+
+- fix textarea resize tool
+
+- Updated dependencies []:
+  - @elf-framework/ui@0.0.270
+
 ## 0.0.261
 
 ### Patch Changes

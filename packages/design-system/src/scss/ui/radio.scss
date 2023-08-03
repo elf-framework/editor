@@ -1,97 +1,95 @@
 .elf--radio {
-    --elf--radio-border-color: rgba(0, 0, 0, 0.8);
-    --elf--radio-padding: 7px 10px;
-    --elf--radio-font-size: 13px;
-    --elf--radio-background-color: transparent;
-    --elf--radio-border-radius: 2px;
-    /** disabled */
-    --elf--radio-disabled-color: var(--elf--disabled-color);
+  --elf--radio-border-color: rgba(0, 0, 0, 0.8);
+  --elf--radio-padding: 7px 10px;
+  --elf--radio-font-size: 13px;
+  --elf--radio-background-color: transparent;
+  --elf--radio-border-radius: 2px;
+  /** disabled */
+  --elf--radio-disabled-color: var(--elf--disabled-color);
 
-    /** accent */
-    --elf--radio-active-color: var(--color-primary);
-    --elf--radio-hover-color: var(--color-hover-primary);
-    --elf--radio-down-color: var(--color-down-primary);
+  /** accent */
+  --elf--radio-active-color: var(--color-primary);
+  --elf--radio-hover-color: var(--color-hover-primary);
+  --elf--radio-down-color: var(--color-down-primary);
 
-    /** error */
-    --elf--radio-error-color: var(--color-danger);
-    --elf--radio-error-hover-color: var(--color-hover-danger);
-    --elf--radio-error-down-color: var(--color-down-danger);    
+  /** error */
+  --elf--radio-error-color: var(--color-danger);
+  --elf--radio-error-hover-color: var(--color-hover-danger);
+  --elf--radio-error-down-color: var(--color-down-danger);
 
+  display: inline-block;
+  color: var(--elf--radio-color);
+  vertical-align: middle;
+  accent-color: var(--elf--radio-active-color);
+  font-size: var(--elf--radio-font-size);
 
-    display: inline-block;
-    color: var(--elf--radio-color);
-    vertical-align: middle;
-    accent-color: var(--elf--radio-active-color);
-    font-size: var(--elf--radio-font-size);
+  &.small {
+    --elf--radio-font-size: var(--font-size-small);
+  }
 
+  &.medium {
+    --elf--radio-font-size: var(--font-size-medium);
+  }
 
-    &.small {
-        --elf--radio-font-size: var(--font-size-small);
+  &.large {
+    --elf--radio-font-size: var(--font-size-large);
+  }
+
+  &.extra-large {
+    --elf--radio-font-size: var(--font-size-extra-large);
+  }
+
+  &.dark {
+    --elf--radio-active-color: var(--color-black);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    // --elf--radio-background-color: var(--elf--radio-disabled-color) !important;
+    --elf--radio-color: rgba(0, 0, 0, 0.3) !important;
+    --elf--radio-border-color: transparent !important;
+    --elf--radio-active-color: var(--elf--radio-disabled-color) !important;
+
+    > * {
+      pointer-events: none;
     }
+  }
 
-    &.medium {
-        --elf--radio-font-size: var(--font-size-medium);
-    }
-
-    &.large {
-        --elf--radio-font-size: var(--font-size-large);
-    }
-
-    &.extra-large {
-        --elf--radio-font-size: var(--font-size-extra-large);
-    }
-
-    &.dark {
-        --elf--radio-active-color: var(--color-black);
-    }
-
-    &.disabled {
-        cursor: not-allowed;
-        // --elf--radio-background-color: var(--elf--radio-disabled-color) !important;
-        --elf--radio-color: rgba(0, 0, 0, 0.3) !important;
-        --elf--radio-border-color: transparent !important;
-        --elf--radio-active-color: var(--elf--radio-disabled-color) !important;
-
-        > * {
-            pointer-events: none;
-        }
-    }
-
-    &.danger {
-        --elf--radio-color: rgba(0, 0, 0, 0.3) !important;
-        --elf--radio-border-color: transparent !important;
-        --elf--radio-active-color: var(--elf--radio-error-color) !important;
-
-        label {
-            input[type="radio"] {
-                --elf--radio-hover-color: var(--elf--radio-error-hover-color);
-                --elf--radio-down-color: var(--elf--radio-error-down-color);
-
-                &:not(:checked) {
-                    appearance: none;
-                    border: 1px solid var(--elf--radio-error-color);
-                    border-radius: 50%;
-
-                    &:hover {
-                        border-color: var(--elf--radio-error-hover-color);
-                    }
-                }
-            }
-        }
-    }
+  &.danger {
+    --elf--radio-color: rgba(0, 0, 0, 0.3) !important;
+    --elf--radio-border-color: transparent !important;
+    --elf--radio-active-color: var(--elf--radio-error-color) !important;
 
     label {
-        vertical-align: middle;
-        input[type="radio"] {
-            vertical-align: middle;        
-            margin-right: calc(1em);
-            width: 1em;
-            height: 1em;
-        }
+      input[type="radio"] {
+        --elf--radio-hover-color: var(--elf--radio-error-hover-color);
+        --elf--radio-down-color: var(--elf--radio-error-down-color);
 
-        > *:not(input) {
-            pointer-events: none;
-            vertical-align: middle;
+        &:not(:checked) {
+          appearance: none;
+          border: 1px solid var(--elf--radio-error-color);
+          border-radius: 50%;
+
+          &:hover {
+            border-color: var(--elf--radio-error-hover-color);
+          }
         }
+      }
     }
-} 
+  }
+
+  label {
+    vertical-align: middle;
+    input[type="radio"] {
+      vertical-align: middle;
+      margin-right: 1em;
+      width: var(--elf--radio-font-size);
+      height: var(--elf--radio-font-size);
+    }
+
+    > *:not(input) {
+      pointer-events: none;
+      vertical-align: middle;
+    }
+  }
+}

@@ -101,7 +101,7 @@ declare module "@elf-framework/color" {
   export function randomRGBA(): RGBA;
 
   export function format(
-    obj: RGBA | HSLA,
+    obj: RGBA | HSLA | HSVA,
     type: ColorType,
     defaultColor?: string
   ): string;
@@ -126,6 +126,7 @@ declare module "@elf-framework/color" {
   export function XYZtoLAB(x: number, y: number, z: number): LAB;
   export function LABtoRGB(l: number, a: number, b: number): RGB;
   export function RGBtoHSV(r: number, g: number, b: number): HSV;
+  export function HSVtoRGB(h: number, s: number, v: number): RGB;
   export function RGBtoCMYK(r: number, g: number, b: number): CMYK;
   export function RGBtoHSL(r: number, g: number, b: number): HSL;
   export function brightness(r: number, g: number, b: number): number;
@@ -197,4 +198,6 @@ declare module "@elf-framework/color" {
   export function parse(
     str: string | number
   ): RGB | RGBA | HSL | HSLA | CMYK | XYZ | LAB | YCrCb | HSV | HSVA;
+
+  export function checkHueColor(p: number): string;
 }

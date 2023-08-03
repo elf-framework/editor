@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/color",
-  "version": "0.0.216",
+  "version": "0.0.267",
   "description": "Fantastic Color library",
   "types": "./index.d.ts",
   "files": [

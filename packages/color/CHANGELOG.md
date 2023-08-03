@@ -1,5 +1,43 @@
 # @elf-framework/color
 
+## 0.0.267
+
+### Patch Changes
+
+- update types
+
+## 0.0.266
+
+### Patch Changes
+
+- pnpm run version
+
+- add color function type
+
+## 0.0.265
+
+### Patch Changes
+
+- add HSVToRGB type
+
+## 0.0.264
+
+### Patch Changes
+
+- add HSVA type in format function
+
+## 0.0.263
+
+### Patch Changes
+
+- add checkHueColor type definition
+
+## 0.0.262
+
+### Patch Changes
+
+- add checkHueColor type definition
+
 ## 0.0.216
 
 ### Patch Changes
