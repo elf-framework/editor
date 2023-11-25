@@ -1495,7 +1495,7 @@ declare module "@elf-framework/ui" {
   interface ProgressBarProps {
     value: number;
     showValue?: boolean;
-    valueFunc: (value: number) => ContentType;
+    valueFunction: (value: number) => ContentType;
     variant: VariantType;
     size: SizeType;
     style: CommonStyle;

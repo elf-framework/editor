@@ -2157,6 +2157,19 @@ _state = new WeakMap();
 _cachedMethodList = new WeakMap();
 _functionCache = new WeakMap();
 _childObjectList = new WeakMap();
+if (!window.requestIdleCallback) {
+  window.requestIdleCallback = function(cb) {
+    var start2 = Date.now();
+    return setTimeout(function() {
+      cb({
+        didTimeout: false,
+        timeRemaining: function() {
+          return Math.max(0, 50 - (Date.now() - start2));
+        }
+      });
+    }, 1);
+  };
+}
 function insertElement(childVNode, fragment, parentElement, options = {}, isFragmentItem = false, parentVNode) {
   var _a, _b;
   if (childVNode instanceof VNode || (childVNode == null ? void 0 : childVNode.makeElement)) {

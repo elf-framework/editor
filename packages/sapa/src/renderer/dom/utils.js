@@ -11,6 +11,21 @@ import { isArray, isFunction, isValue } from "../../functions/func";
 import { VNode } from "../../functions/vnode";
 import { DomRenderer } from "./DomRenderer";
 
+// polyfill: requestIdleCallback
+if (!window.requestIdleCallback) {
+  window.requestIdleCallback = function (cb) {
+    var start = Date.now();
+    return setTimeout(function () {
+      cb({
+        didTimeout: false,
+        timeRemaining: function () {
+          return Math.max(0, 50 - (Date.now() - start));
+        },
+      });
+    }, 1);
+  };
+}
+
 /**
  * childVNode 를 element 를 생성해서 fragment 에 추가한다.
  *
