@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa",
-  "version": "0.0.263",
+  "version": "0.1.0",
   "description": "Fantastic UI library for vanilla JS",
   "types": "./index.d.ts",
   "files": [
@@ -8,24 +8,28 @@
     "index.d.ts",
     "package.json"
   ],
-  "main": "./dist/sapa.umd.js",
-  "module": "./dist/sapa.es.js",
-  "exports": {
-    "./package.json": "./package.json",
-    "./jsx-runtime": {
-      "import": "./dist/sapa.es.js",
-      "require": "./dist/sapa.umd.js"
-    },
-    ".": {
-      "import": "./dist/sapa.es.js",
-      "require": "./dist/sapa.umd.js"
+  "main": "./src/index.js",
+  "publishConfig": {
+    "access": "public",
+    "main": "./dist/sapa.umd.js",
+    "module": "./dist/sapa.es.js",
+    "exports": {
+      "./package.json": "./package.json",
+      "./jsx-runtime": {
+        "import": "./dist/sapa.es.js",
+        "require": "./dist/sapa.umd.js"
+      },
+      ".": {
+        "import": "./dist/sapa.es.js",
+        "require": "./dist/sapa.umd.js"
+      }
     }
   },
   "devDependencies": {
-    "@elf-framework/config": "*",
+    "@elf-framework/config": "workspace:*",
     "happy-dom": "^8.1.3",
-    "vite": "^4.0.4",
-    "vitest": "0.26.3"
+    "vite": "^5.0.12",
+    "vitest": "1.2.1"
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",

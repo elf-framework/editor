@@ -3,7 +3,7 @@
     "watch": {
       "dependsOn": ["^watch"],
       "outputs": ["dist/**", ".next/**"]
-    },    
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
@@ -18,54 +18,42 @@
     "sapa:test": {
       "dependsOn": [],
       "outputs": ["dist/**", ".next/**"]
-    },    
+    },
 
     "sapa2:test": {
       "dependsOn": [],
       "outputs": ["dist/**", ".next/**"]
-    },        
+    },
     "ui:watch": {
-      "dependsOn": [
-        "^ui:watch"
-      ],
+      "dependsOn": ["^ui:watch"],
       "outputs": ["dist/**", ".next/**"],
       "cache": false
-    },    
+    },
     "ui:dev": {
-      "dependsOn": ["ui:watch"],
+      "dependsOn": ["^ui:watch"],
       "cache": false
     },
     "sapa:watch": {
-      "dependsOn": [
-        "^sapa:watch"
-      ],
+      "dependsOn": ["^sapa:watch"],
       "outputs": ["dist/**", ".next/**"],
       "cache": false
-    },    
+    },
     "sapa:dev": {
       "dependsOn": ["sapa:watch"],
       "cache": false
-    },    
+    },
     "ssr:watch": {
-      "dependsOn": [
-        "^ssr:watch"
-      ],
+      "dependsOn": ["^ssr:watch"],
       "outputs": ["dist/**", ".next/**"],
       "cache": false
-    },    
+    },
     "ssr:dev": {
       "dependsOn": ["ssr:watch"],
       "cache": false
-    },    
-    "editor:watch": {
-      "dependsOn": [
-        "^editor:watch"
-      ],
-      "outputs": ["dist/**", ".next/**"],
-      "cache": false
-    },        
+    },
     "editor:dev": {
-      "dependsOn": ["editor:watch"]
+      "dependsOn": ["^editor:dev"],
+      "cache": false
     },
     "npm-check": {
       "dependsOn": ["^npm-check"],

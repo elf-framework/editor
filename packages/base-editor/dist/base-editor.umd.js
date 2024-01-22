@@ -2,7 +2,6 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("@elf-framework/sapa"), require("@elf-framework/ui")) : typeof define === "function" && define.amd ? define(["exports", "@elf-framework/sapa", "@elf-framework/ui"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.baseEditor = {}, global.sapa, global.ui));
 })(this, function(exports2, sapa, ui) {
   "use strict";
-  const style = "";
   const editorLayoutToggleBottom = {
     command: "editor.layout.toggle.bottom",
     execute: function(editor) {
@@ -101,7 +100,9 @@
     type: "string"
   };
   const defaultConfigs = [
+    // theme
     editorTheme,
+    // layout
     editorLayoutShowTop,
     editorLayoutShowLeft,
     editorLayoutShowRight,
@@ -121,6 +122,13 @@
         }
       });
     }
+    /**
+     * command 를 등록한다.
+     * 등록 이후에 커맨드 실행 이후 종료시킬 함수를 리턴해준다.
+     * 종료를 하게 되면 command 에서 빠지게 된다.
+     *
+     * @returns {Function} dispose callback
+     */
     registerCommand(command, commandCallback) {
       if (this.localCommands[command]) {
         throw new Error(`command ${command} is already registered`);
@@ -170,6 +178,9 @@
       }
       return callback(...args);
     }
+    /**
+     * command 가 등록되어 있는지 확인한다.
+     */
     has(command) {
       return !!this.getCallback(command);
     }
@@ -180,6 +191,30 @@
       this.configList = [];
       this.config = /* @__PURE__ */ new Map();
     }
+    /**
+     *  key 에 해당하는 config 를 가지고 온다.
+     *
+     * todo: config default 값을 설정할 수 있어야 한다.
+     *
+     * ```js
+     * config {
+     *  ['set.tool.hand']: {
+     *      name: 'set.tool.hand',
+     *      description: '',
+     *      defaultValue: '',
+     *       type: 'boolean',
+     *      type: 'list',
+     *      selectionType: 'one',
+     *      items: [
+     *          'value',
+     *          {value: '1', label: 'value' }
+     *      ]
+     *  }
+     * }
+     * ```
+     *
+     * @param {string} key
+     */
     get(key) {
       var _a;
       if (this.config.has(key) === false) {
@@ -251,6 +286,14 @@
     false(key) {
       return this.get(key) === false;
     }
+    /**
+     * key 에 해당하는 config 의 값을 비교한다.
+     *
+     *
+     * @param {string} key
+     * @param {any} value
+     * @returns {boolean}
+     */
     is(key, value) {
       return this.get(key) === value;
     }
@@ -258,10 +301,28 @@
       this.config.delete(key);
       this.editorContext.emit("config:" + key);
     }
+    /**
+     * config 기본 설정을 등록한다.
+     *
+     * @param {Object} config
+     * @param {string} config.type config key 자료형
+     * @param {string} config.key config key 이름
+     * @param {any} config.defaultValue config key 기본 값
+     * @param {string} config.title config key 제목
+     * @param {string} config.description config key 설명
+     */
     registerConfig(config) {
       this.config.set(config.key, config.defaultValue);
       this.configList.push(config);
     }
+    /**
+     * updateConfig({
+     *  key: value,
+     *  key2: value,
+     * })
+     *
+     *
+     */
     updateConfig(config, isEmit = false) {
       Object.entries(config).forEach(([key, value]) => {
         if (isEmit) {
@@ -319,6 +380,12 @@
       this.keyCodeSet = /* @__PURE__ */ new Set();
       this.event = {};
     }
+    /**
+     * 키 이벤트가 발생 했을 때 키, 키코드 추가 하기
+     *
+     * @param {string} key
+     * @param {number} keyCode
+     */
     add(key, keyCode, e) {
       if (this.codeSet.has(key) === false) {
         this.codeSet.add(key);
@@ -333,9 +400,17 @@
       this.keyCodeSet.delete(keyCode);
       this.event = {};
     }
+    /**
+     * 눌러진 키 체크하기
+     * @param {string|number} keyOrKeyCode
+     */
     hasKey(keyOrKeyCode) {
       return this.codeSet.has(keyOrKeyCode) || this.keyCodeSet.has(keyOrKeyCode);
     }
+    /**
+     * key, keycode 가 눌러져있는지 체크
+     * @param {string|number} keyOrKeyCode
+     */
     check(...args) {
       return args.some((keyOrKeyCode) => this.hasKey(keyOrKeyCode));
     }
@@ -352,7 +427,7 @@
       return Boolean(this.event.metaKey);
     }
   }
-  class EditorPlugin$1 {
+  let EditorPlugin$1 = class EditorPlugin {
     constructor(editor, callback, options) {
       this.editor = editor;
       this.callback = callback;
@@ -375,7 +450,7 @@
     deactivate() {
       this.isActivated = false;
     }
-  }
+  };
   class PluginManager {
     constructor(editorContext) {
       this.editorContext = editorContext;
@@ -384,9 +459,16 @@
     registerPlugin(func, options = {}) {
       this.plugins.push(new EditorPlugin$1(this.editorContext, func, options));
     }
+    /**
+     * 플러그인 리스트 초기화
+     */
     init() {
       this.plugins = [];
     }
+    /**
+     * 플러그인 초기화를 비동기로 한다.
+     *
+     */
     async initializePlugin() {
       return await Promise.all(
         this.plugins.map(async (plugin) => {
@@ -422,98 +504,191 @@
   }
   const KEY_CODE = {
     backspace: 8,
+    // 8
     tab: 9,
+    // 9
     enter: 13,
+    // 13
     escape: 27,
+    // 27
     space: 32,
+    // 32
     pageup: 33,
+    // 33
     pagedown: 34,
+    // 34
     end: 35,
+    // 35
     home: 36,
+    // 36
     left: 37,
+    // 37
     up: 38,
+    // 38
     right: 39,
+    // 39
     down: 40,
+    // 40
     insert: 45,
+    // 45
     delete: 46,
+    // 46
     0: 48,
+    // 49
     1: 49,
+    // 50
     2: 50,
+    // 51
     3: 51,
+    // 52
     4: 52,
+    // 53
     5: 53,
+    // 54
     6: 54,
+    // 55
     7: 55,
+    // 56
     8: 56,
+    // 57
     9: 57,
+    // 58
     semicolon: 59,
+    // 59
     equals: 61,
+    // 61
     a: 65,
+    // 65
     b: 66,
+    // 66
     c: 67,
+    // 67
     d: 68,
+    // 68
     e: 69,
+    // 69
     f: 70,
+    // 70
     g: 71,
+    // 71
     h: 72,
+    // 72
     i: 73,
+    // 73
     j: 74,
+    // 74
     k: 75,
+    // 75
     l: 76,
+    // 76
     m: 77,
+    // 77
     n: 78,
+    // 78
     o: 79,
+    // 79
     p: 80,
+    // 80
     q: 81,
+    // 81
     r: 82,
+    // 82
     s: 83,
+    // 83
     t: 84,
+    // 84
     u: 85,
+    // 85
     v: 86,
+    // 86
     w: 87,
+    // 87
     x: 88,
+    // 88
     y: 89,
+    // 89
     z: 90,
+    // 90
     multiply: 106,
+    // 106 , *
     add: 107,
+    // 107 , "+"
     subtract: 109,
+    // 109 , "-"
     divide: 111,
+    // 111 , "/"
     f1: 112,
+    // 112
     f2: 113,
+    // 113
     f3: 114,
+    // 114
     f4: 115,
+    // 115
     f5: 116,
+    // 116
     f6: 117,
+    // 117
     f7: 118,
+    // 118
     f8: 119,
+    // 119
     f9: 120,
+    // 120
     f10: 121,
+    // 121
     f11: 122,
+    // 122
     f12: 123,
+    // 123
     f13: 124,
+    // 124
     f14: 125,
+    // 125
     f15: 126,
+    // 126
     f16: 127,
+    // 127
     f17: 128,
+    // 128
     f18: 129,
+    // 129
     f19: 130,
+    // 130
     comma: 188,
+    // 188	Comma (",") key.
     ",": 188,
+    // 188	Comma (",") key.
     period: 190,
+    // 190	Period (".") key.
     ".": 190,
+    // 190	Period (".") key.
     slash: 191,
+    // 191	Slash ("/") key.
     "/": 191,
+    // 191	Slash ("/") key.
     backquote: 192,
+    // 192	Back tick ("`") key.
     "`": 192,
+    // 192	Back tick ("`") key.
     openbracket: 219,
+    // 219	Open square bracket ("[") key.
     "[": 219,
+    // 219	Open square bracket ("[") key.
     backslash: 220,
+    // 220	Back slash ("\") key.
     "\\": 220,
+    // 220	Back slash ("\") key.
     closebracket: 221,
+    // 221	Close square bracket ("]") key.
     "]": 221,
+    // 221	Close square bracket ("]") key.
     quote: 222,
+    // 222	Quote (''') key.
     "'": 222,
+    // 222	Quote (''') key.
     altgr: 225
+    // 225	AltGr key (Level 3 Shift key or Level 5 Shift key) on Linux.
   };
   os();
   const KEY_STRING = {
@@ -716,6 +891,38 @@
       }
       Object.assign(this.groupUis[key], obj);
     }
+    /**
+     * editor.registerUI({
+     *  "ui-name": App.UI.InjectView,
+     * })
+     *
+     * or
+     *
+     * 외부에서 주입할 수 있는 UI 는 2가지 형태로 정의된다.
+     * 1. 배열 (Array)
+     *  [Component, props]
+     *
+     *  초기화 하는 시점에 props 도 같이 넘겨주고 싶으면 배열 형태로 UI 를 동록하자.
+     *
+     * 2. 객체/Function
+     * - Component
+     * editor.registerUI({
+     *   "ui-name": [App.UI.InjectView, {key: value}],
+     * })
+     *
+     * this.createUI(this.uis['ui-name'])
+     *
+     * 3. VNode 일 때
+     *
+     * editor.registerUI({
+     *  "ui-name": <div>...</div>,
+     * })
+     *
+     * vNode 를 그대로 렌더링 하는 쪽에 전달한다.
+     *
+     * @param {*} ui
+     * @returns
+     */
     createUI(ui2) {
       if (ui2 instanceof sapa.VNode) {
         return ui2;
@@ -770,6 +977,9 @@
         shortcuts: ShortCutManager,
         keyboard: KeyBoardManager,
         i18n: I18nManager,
+        //TODO: history: HistoryManager,      // history manager
+        //TODO: inspector: InspectorManager,  // inspector 관리용 매니저
+        //TODO: state: StateManager,  // config 와 관계없는 에디터 공용 캐쉬 저장소
         ...managers
       };
       Object.entries(managers).forEach(([key, Manager]) => {
@@ -923,18 +1133,22 @@
     }
   }
   function Loading() {
-    return /* @__PURE__ */ sapa.createElementJsx("div", {
-      style: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        width: "100%",
-        position: "absolute",
-        top: 0,
-        left: 0
-      }
-    }, "Loading...");
+    return /* @__PURE__ */ sapa.createElementJsx(
+      "div",
+      {
+        style: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0
+        }
+      },
+      "Loading..."
+    );
   }
   const formElements = ["TEXTAREA", "INPUT", "SELECT"];
   const KEY_EDITOR = "editor";
@@ -974,9 +1188,7 @@
         console.warn("editor.plugin.activated", pluginActivatedRef.current);
         sapa.useRender(this);
       }, [editorRef.current, pluginActivatedRef.current, plugins, configs]);
-      return /* @__PURE__ */ sapa.createElementJsx("div", {
-        class: localClass
-      }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);
+      return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass }, pluginActivatedRef.current ? editorRef.current.getUIList("renderView") : loading);
     }
     isNotFormElement(e) {
       var tagName = e.target.tagName;
@@ -1010,7 +1222,7 @@
     views = [],
     groups = [],
     as = "div",
-    style: style2 = {}
+    style = {}
   }) {
     const editor = useEditor();
     const list = [
@@ -1021,10 +1233,7 @@
         return editor.getGroupUI(it);
       })
     ].flat(Infinity).filter(Boolean);
-    return /* @__PURE__ */ sapa.createElementJsx(ui.View, {
-      as,
-      style: style2
-    }, list);
+    return /* @__PURE__ */ sapa.createElementJsx(ui.View, { as, style }, list);
   }
   exports2.BaseEditor = BaseEditor;
   exports2.Editor = Editor;
@@ -1037,5 +1246,5 @@
   exports2.useGetCommand = useGetCommand;
   exports2.useI18n = useI18n;
   exports2.useSetConfig = useSetConfig;
-  Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+  Object.defineProperty(exports2, Symbol.toStringTag, { value: "Module" });
 });

@@ -1,5 +1,11 @@
 # @elf-framework/design-tokens
 
+## 0.1.0
+
+### Minor Changes
+
+- npm to pnpm
+
 ## 0.0.268
 
 ### Patch Changes

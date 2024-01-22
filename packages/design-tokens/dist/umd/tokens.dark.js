@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 25 Nov 2023 12:09:08 GMT
+ * Generated on Mon, 22 Jan 2024 16:24:49 GMT
  */
 
 (function(root, factory) {
@@ -3790,1230 +3790,6 @@
       }
     }
   },
-  "alert": {
-    "color": {
-      "title": {
-        "default": {
-          "value": "#f8f8f8",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.9.value}"
-          },
-          "name": "AlertColorTitleDefault",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "default"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "default"
-          ]
-        },
-        "primary": {
-          "value": "#e8f3ff",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.blue.8.value}"
-          },
-          "name": "AlertColorTitlePrimary",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "primary"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "primary"
-          ]
-        },
-        "secondary": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.white.value}"
-          },
-          "name": "AlertColorTitleSecondary",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "secondary"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "secondary"
-          ]
-        },
-        "danger": {
-          "value": "#ffcfd1",
-          "comment": "Base color for the danger color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.red.7.value}",
-            "comment": "Base color for the danger color"
-          },
-          "name": "AlertColorTitleDanger",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "danger"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "danger"
-          ]
-        },
-        "warning": {
-          "value": "#e3ad0b",
-          "comment": "Base color for the warning color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.yellow.5.value}",
-            "comment": "Base color for the warning color"
-          },
-          "name": "AlertColorTitleWarning",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "warning"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "warning"
-          ]
-        },
-        "success": {
-          "value": "#b5f5e0",
-          "comment": "Base color for the success color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.green.7.value}",
-            "comment": "Base color for the success color"
-          },
-          "name": "AlertColorTitleSuccess",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "success"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "success"
-          ]
-        },
-        "info": {
-          "value": "#78b6ff",
-          "comment": "Base color for the info color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.blue.5.value}",
-            "comment": "Base color for the info color"
-          },
-          "name": "AlertColorTitleInfo",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "title",
-            "subitem": "info"
-          },
-          "path": [
-            "alert",
-            "color",
-            "title",
-            "info"
-          ]
-        },
-        "weak": {
-          "default": {
-            "value": "#888888",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.gray.4.value}"
-            },
-            "name": "AlertColorTitleWeakDefault",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "default"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "default"
-            ]
-          },
-          "primary": {
-            "value": "#429bff",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.blue.4.value}"
-            },
-            "name": "AlertColorTitleWeakPrimary",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "primary"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "primary"
-            ]
-          },
-          "secondary": {
-            "value": "#888888",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.gray.4.value}"
-            },
-            "name": "AlertColorTitleWeakSecondary",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "secondary"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "secondary"
-            ]
-          },
-          "danger": {
-            "value": "#ff5760",
-            "comment": "Base color for the danger color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.red.4.value}",
-              "comment": "Base color for the danger color"
-            },
-            "name": "AlertColorTitleWeakDanger",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "danger"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "danger"
-            ]
-          },
-          "warning": {
-            "value": "#bc4c00",
-            "comment": "Base color for the warning color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.orange.4.value}",
-              "comment": "Base color for the warning color"
-            },
-            "name": "AlertColorTitleWeakWarning",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "warning"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "warning"
-            ]
-          },
-          "success": {
-            "value": "#28bd8b",
-            "comment": "Base color for the success color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.green.4.value}",
-              "comment": "Base color for the success color"
-            },
-            "name": "AlertColorTitleWeakSuccess",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "success"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "success"
-            ]
-          },
-          "info": {
-            "value": "#429bff",
-            "comment": "Base color for the info color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.blue.4.value}",
-              "comment": "Base color for the info color"
-            },
-            "name": "AlertColorTitleWeakInfo",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "title",
-              "subitem": "weak",
-              "state": "info"
-            },
-            "path": [
-              "alert",
-              "color",
-              "title",
-              "weak",
-              "info"
-            ]
-          }
-        }
-      },
-      "content": {
-        "default": {
-          "value": "#f8f8f8",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.9.value}"
-          },
-          "name": "AlertColorContentDefault",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "default"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "default"
-          ]
-        },
-        "dark": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.white.value}"
-          },
-          "name": "AlertColorContentDark",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "dark"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "dark"
-          ]
-        },
-        "primary": {
-          "value": "#ffffff",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.white.value}"
-          },
-          "name": "AlertColorContentPrimary",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "primary"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "primary"
-          ]
-        },
-        "secondary": {
-          "value": "#282828",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.1.value}"
-          },
-          "name": "AlertColorContentSecondary",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "secondary"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "secondary"
-          ]
-        },
-        "danger": {
-          "value": "#80252a",
-          "comment": "Base color for the danger color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.red.1.value}",
-            "comment": "Base color for the danger color"
-          },
-          "name": "AlertColorContentDanger",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "danger"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "danger"
-          ]
-        },
-        "warning": {
-          "value": "#ffffff",
-          "comment": "Base color for the warning color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.white.value}",
-            "comment": "Base color for the warning color"
-          },
-          "name": "AlertColorContentWarning",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "warning"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "warning"
-          ]
-        },
-        "success": {
-          "value": "#ffffff",
-          "comment": "Base color for the success color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.white.value}",
-            "comment": "Base color for the success color"
-          },
-          "name": "AlertColorContentSuccess",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "success"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "success"
-          ]
-        },
-        "info": {
-          "value": "#ffffff",
-          "comment": "Base color for the info color",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.white.value}",
-            "comment": "Base color for the info color"
-          },
-          "name": "AlertColorContentInfo",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "content",
-            "subitem": "info"
-          },
-          "path": [
-            "alert",
-            "color",
-            "content",
-            "info"
-          ]
-        },
-        "weak": {
-          "default": {
-            "value": "#686868",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.gray.3.value}"
-            },
-            "name": "AlertColorContentWeakDefault",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "default"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "default"
-            ]
-          },
-          "primary": {
-            "value": "#1273e6",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.blue.3.value}"
-            },
-            "name": "AlertColorContentWeakPrimary",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "primary"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "primary"
-            ]
-          },
-          "secondary": {
-            "value": "#686868",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.gray.3.value}"
-            },
-            "name": "AlertColorContentWeakSecondary",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "secondary"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "secondary"
-            ]
-          },
-          "danger": {
-            "value": "#d9363e",
-            "comment": "Base color for the danger color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.red.3.value}",
-              "comment": "Base color for the danger color"
-            },
-            "name": "AlertColorContentWeakDanger",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "danger"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "danger"
-            ]
-          },
-          "warning": {
-            "value": "#953800",
-            "comment": "Base color for the warning color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.orange.3.value}",
-              "comment": "Base color for the warning color"
-            },
-            "name": "AlertColorContentWeakWarning",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "warning"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "warning"
-            ]
-          },
-          "success": {
-            "value": "#009f6a",
-            "comment": "Base color for the success color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.green.3.value}",
-              "comment": "Base color for the success color"
-            },
-            "name": "AlertColorContentWeakSuccess",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "success"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "success"
-            ]
-          },
-          "info": {
-            "value": "#78b6ff",
-            "comment": "Base color for the info color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.blue.5.value}",
-              "comment": "Base color for the info color"
-            },
-            "name": "AlertColorContentWeakInfo",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "content",
-              "subitem": "weak",
-              "state": "info"
-            },
-            "path": [
-              "alert",
-              "color",
-              "content",
-              "weak",
-              "info"
-            ]
-          }
-        }
-      },
-      "background": {
-        "default": {
-          "value": "#181818",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.0.value}"
-          },
-          "name": "AlertColorBackgroundDefault",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "default"
-          ]
-        },
-        "dark": {
-          "value": "#181818",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.gray.0.value}"
-          },
-          "name": "AlertColorBackgroundDark",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "dark"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "dark"
-          ]
-        },
-        "primary": {
-          "value": "#429bff",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.primary.value}"
-          },
-          "name": "AlertColorBackgroundPrimary",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "primary"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "primary"
-          ]
-        },
-        "secondary": {
-          "value": "#484848",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.secondary.value}"
-          },
-          "name": "AlertColorBackgroundSecondary",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "secondary"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "secondary"
-          ]
-        },
-        "success": {
-          "value": "#009f6a",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.success.value}"
-          },
-          "name": "AlertColorBackgroundSuccess",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "success"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "success"
-          ]
-        },
-        "info": {
-          "value": "#1273e6",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.info.value}"
-          },
-          "name": "AlertColorBackgroundInfo",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "info"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "info"
-          ]
-        },
-        "warning": {
-          "value": "#e16f24",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.warning.value}"
-          },
-          "name": "AlertColorBackgroundWarning",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "warning"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "warning"
-          ]
-        },
-        "danger": {
-          "value": "#d9363e",
-          "filePath": "tokens/component/alert.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "{color.danger.value}"
-          },
-          "name": "AlertColorBackgroundDanger",
-          "attributes": {
-            "category": "alert",
-            "type": "color",
-            "item": "background",
-            "subitem": "danger"
-          },
-          "path": [
-            "alert",
-            "color",
-            "background",
-            "danger"
-          ]
-        },
-        "weak": {
-          "default": {
-            "value": "#282828",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.gray.1.value}"
-            },
-            "name": "AlertColorBackgroundWeakDefault",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "default"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "default"
-            ]
-          },
-          "primary": {
-            "value": "#1a497d",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.blue.1.value}"
-            },
-            "name": "AlertColorBackgroundWeakPrimary",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "primary"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "primary"
-            ]
-          },
-          "secondary": {
-            "value": "#282828",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.gray.1.value}"
-            },
-            "name": "AlertColorBackgroundWeakSecondary",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "secondary"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "secondary"
-            ]
-          },
-          "danger": {
-            "value": "#80252a",
-            "comment": "Base color for the danger color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.red.1.value}",
-              "comment": "Base color for the danger color"
-            },
-            "name": "AlertColorBackgroundWeakDanger",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "danger"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "danger"
-            ]
-          },
-          "warning": {
-            "value": "#5c2200",
-            "comment": "Base color for the warning color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.orange.1.value}",
-              "comment": "Base color for the warning color"
-            },
-            "name": "AlertColorBackgroundWeakWarning",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "warning"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "warning"
-            ]
-          },
-          "success": {
-            "value": "#1b5441",
-            "comment": "Base color for the success color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "{color.green.1.value}",
-              "comment": "Base color for the success color"
-            },
-            "name": "AlertColorBackgroundWeakSuccess",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "success"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "success"
-            ]
-          },
-          "info": {
-            "value": "#e2f4ff",
-            "comment": "Base color for the info color",
-            "filePath": "tokens/component/alert.dark.json",
-            "isSource": true,
-            "original": {
-              "value": "#e2f4ff",
-              "comment": "Base color for the info color"
-            },
-            "name": "AlertColorBackgroundWeakInfo",
-            "attributes": {
-              "category": "alert",
-              "type": "color",
-              "item": "background",
-              "subitem": "weak",
-              "state": "info"
-            },
-            "path": [
-              "alert",
-              "color",
-              "background",
-              "weak",
-              "info"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "avatar": {
-    "size": {
-      "30": {
-        "value": "16px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "16px"
-        },
-        "name": "AvatarSize30",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "30"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "30"
-        ]
-      },
-      "50": {
-        "value": "20px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "20px"
-        },
-        "name": "AvatarSize50",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "50"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "50"
-        ]
-      },
-      "100": {
-        "value": "30px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "30px"
-        },
-        "name": "AvatarSize100",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "100"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "100"
-        ]
-      },
-      "200": {
-        "value": "35px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "35px"
-        },
-        "name": "AvatarSize200",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "200"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "200"
-        ]
-      },
-      "300": {
-        "value": "40px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "40px"
-        },
-        "name": "AvatarSize300",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "300"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "300"
-        ]
-      },
-      "400": {
-        "value": "45px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "45px"
-        },
-        "name": "AvatarSize400",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "400"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "400"
-        ]
-      },
-      "500": {
-        "value": "50px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "50px"
-        },
-        "name": "AvatarSize500",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "500"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "500"
-        ]
-      },
-      "600": {
-        "value": "55px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "55px"
-        },
-        "name": "AvatarSize600",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "600"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "600"
-        ]
-      },
-      "700": {
-        "value": "60px",
-        "filePath": "tokens/component/avatar.json",
-        "isSource": false,
-        "original": {
-          "value": "60px"
-        },
-        "name": "AvatarSize700",
-        "attributes": {
-          "category": "avatar",
-          "type": "size",
-          "item": "700"
-        },
-        "path": [
-          "avatar",
-          "size",
-          "700"
-        ]
-      }
-    }
-  },
-  "blank": {
-    "color": {
-      "background": {
-        "default": {
-          "value": "transparent",
-          "filePath": "tokens/component/blank.dark.json",
-          "isSource": true,
-          "original": {
-            "value": "transparent"
-          },
-          "name": "BlankColorBackgroundDefault",
-          "attributes": {
-            "category": "blank",
-            "type": "color",
-            "item": "background",
-            "subitem": "default"
-          },
-          "path": [
-            "blank",
-            "color",
-            "background",
-            "default"
-          ]
-        }
-      }
-    }
-  },
   "button": {
     "default": {
       "background": {
@@ -8189,6 +6965,1230 @@
             "size",
             "padding",
             "large"
+          ]
+        }
+      }
+    }
+  },
+  "alert": {
+    "color": {
+      "title": {
+        "default": {
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.9.value}"
+          },
+          "name": "AlertColorTitleDefault",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "default"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "default"
+          ]
+        },
+        "primary": {
+          "value": "#e8f3ff",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.8.value}"
+          },
+          "name": "AlertColorTitlePrimary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "primary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "AlertColorTitleSecondary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "secondary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "secondary"
+          ]
+        },
+        "danger": {
+          "value": "#ffcfd1",
+          "comment": "Base color for the danger color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.7.value}",
+            "comment": "Base color for the danger color"
+          },
+          "name": "AlertColorTitleDanger",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "danger"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "danger"
+          ]
+        },
+        "warning": {
+          "value": "#e3ad0b",
+          "comment": "Base color for the warning color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.yellow.5.value}",
+            "comment": "Base color for the warning color"
+          },
+          "name": "AlertColorTitleWarning",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "warning"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "warning"
+          ]
+        },
+        "success": {
+          "value": "#b5f5e0",
+          "comment": "Base color for the success color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.green.7.value}",
+            "comment": "Base color for the success color"
+          },
+          "name": "AlertColorTitleSuccess",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "success"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#78b6ff",
+          "comment": "Base color for the info color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.blue.5.value}",
+            "comment": "Base color for the info color"
+          },
+          "name": "AlertColorTitleInfo",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "title",
+            "subitem": "info"
+          },
+          "path": [
+            "alert",
+            "color",
+            "title",
+            "info"
+          ]
+        },
+        "weak": {
+          "default": {
+            "value": "#888888",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.4.value}"
+            },
+            "name": "AlertColorTitleWeakDefault",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "default"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "default"
+            ]
+          },
+          "primary": {
+            "value": "#429bff",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.blue.4.value}"
+            },
+            "name": "AlertColorTitleWeakPrimary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "primary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "primary"
+            ]
+          },
+          "secondary": {
+            "value": "#888888",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.4.value}"
+            },
+            "name": "AlertColorTitleWeakSecondary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "secondary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "secondary"
+            ]
+          },
+          "danger": {
+            "value": "#ff5760",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.red.4.value}",
+              "comment": "Base color for the danger color"
+            },
+            "name": "AlertColorTitleWeakDanger",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "danger"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "danger"
+            ]
+          },
+          "warning": {
+            "value": "#bc4c00",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.orange.4.value}",
+              "comment": "Base color for the warning color"
+            },
+            "name": "AlertColorTitleWeakWarning",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "warning"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "warning"
+            ]
+          },
+          "success": {
+            "value": "#28bd8b",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.green.4.value}",
+              "comment": "Base color for the success color"
+            },
+            "name": "AlertColorTitleWeakSuccess",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "success"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "success"
+            ]
+          },
+          "info": {
+            "value": "#429bff",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.blue.4.value}",
+              "comment": "Base color for the info color"
+            },
+            "name": "AlertColorTitleWeakInfo",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "title",
+              "subitem": "weak",
+              "state": "info"
+            },
+            "path": [
+              "alert",
+              "color",
+              "title",
+              "weak",
+              "info"
+            ]
+          }
+        }
+      },
+      "content": {
+        "default": {
+          "value": "#f8f8f8",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.9.value}"
+          },
+          "name": "AlertColorContentDefault",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "default"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "default"
+          ]
+        },
+        "dark": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "AlertColorContentDark",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "dark"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "dark"
+          ]
+        },
+        "primary": {
+          "value": "#ffffff",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}"
+          },
+          "name": "AlertColorContentPrimary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "primary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#282828",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.1.value}"
+          },
+          "name": "AlertColorContentSecondary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "secondary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "secondary"
+          ]
+        },
+        "danger": {
+          "value": "#80252a",
+          "comment": "Base color for the danger color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.red.1.value}",
+            "comment": "Base color for the danger color"
+          },
+          "name": "AlertColorContentDanger",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "danger"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "danger"
+          ]
+        },
+        "warning": {
+          "value": "#ffffff",
+          "comment": "Base color for the warning color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}",
+            "comment": "Base color for the warning color"
+          },
+          "name": "AlertColorContentWarning",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "warning"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "warning"
+          ]
+        },
+        "success": {
+          "value": "#ffffff",
+          "comment": "Base color for the success color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}",
+            "comment": "Base color for the success color"
+          },
+          "name": "AlertColorContentSuccess",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "success"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#ffffff",
+          "comment": "Base color for the info color",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.white.value}",
+            "comment": "Base color for the info color"
+          },
+          "name": "AlertColorContentInfo",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "content",
+            "subitem": "info"
+          },
+          "path": [
+            "alert",
+            "color",
+            "content",
+            "info"
+          ]
+        },
+        "weak": {
+          "default": {
+            "value": "#686868",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.3.value}"
+            },
+            "name": "AlertColorContentWeakDefault",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "default"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "default"
+            ]
+          },
+          "primary": {
+            "value": "#1273e6",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.blue.3.value}"
+            },
+            "name": "AlertColorContentWeakPrimary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "primary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "primary"
+            ]
+          },
+          "secondary": {
+            "value": "#686868",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.3.value}"
+            },
+            "name": "AlertColorContentWeakSecondary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "secondary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "secondary"
+            ]
+          },
+          "danger": {
+            "value": "#d9363e",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.red.3.value}",
+              "comment": "Base color for the danger color"
+            },
+            "name": "AlertColorContentWeakDanger",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "danger"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "danger"
+            ]
+          },
+          "warning": {
+            "value": "#953800",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.orange.3.value}",
+              "comment": "Base color for the warning color"
+            },
+            "name": "AlertColorContentWeakWarning",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "warning"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "warning"
+            ]
+          },
+          "success": {
+            "value": "#009f6a",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.green.3.value}",
+              "comment": "Base color for the success color"
+            },
+            "name": "AlertColorContentWeakSuccess",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "success"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "success"
+            ]
+          },
+          "info": {
+            "value": "#78b6ff",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.blue.5.value}",
+              "comment": "Base color for the info color"
+            },
+            "name": "AlertColorContentWeakInfo",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "content",
+              "subitem": "weak",
+              "state": "info"
+            },
+            "path": [
+              "alert",
+              "color",
+              "content",
+              "weak",
+              "info"
+            ]
+          }
+        }
+      },
+      "background": {
+        "default": {
+          "value": "#181818",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.0.value}"
+          },
+          "name": "AlertColorBackgroundDefault",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "default"
+          ]
+        },
+        "dark": {
+          "value": "#181818",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.gray.0.value}"
+          },
+          "name": "AlertColorBackgroundDark",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "dark"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "dark"
+          ]
+        },
+        "primary": {
+          "value": "#429bff",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.primary.value}"
+          },
+          "name": "AlertColorBackgroundPrimary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "primary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#484848",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.secondary.value}"
+          },
+          "name": "AlertColorBackgroundSecondary",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "secondary"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "secondary"
+          ]
+        },
+        "success": {
+          "value": "#009f6a",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.success.value}"
+          },
+          "name": "AlertColorBackgroundSuccess",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "success"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "success"
+          ]
+        },
+        "info": {
+          "value": "#1273e6",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.info.value}"
+          },
+          "name": "AlertColorBackgroundInfo",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "info"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "info"
+          ]
+        },
+        "warning": {
+          "value": "#e16f24",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.warning.value}"
+          },
+          "name": "AlertColorBackgroundWarning",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "warning"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "warning"
+          ]
+        },
+        "danger": {
+          "value": "#d9363e",
+          "filePath": "tokens/component/alert.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.danger.value}"
+          },
+          "name": "AlertColorBackgroundDanger",
+          "attributes": {
+            "category": "alert",
+            "type": "color",
+            "item": "background",
+            "subitem": "danger"
+          },
+          "path": [
+            "alert",
+            "color",
+            "background",
+            "danger"
+          ]
+        },
+        "weak": {
+          "default": {
+            "value": "#282828",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1.value}"
+            },
+            "name": "AlertColorBackgroundWeakDefault",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "default"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "default"
+            ]
+          },
+          "primary": {
+            "value": "#1a497d",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.blue.1.value}"
+            },
+            "name": "AlertColorBackgroundWeakPrimary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "primary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "primary"
+            ]
+          },
+          "secondary": {
+            "value": "#282828",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.gray.1.value}"
+            },
+            "name": "AlertColorBackgroundWeakSecondary",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "secondary"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "secondary"
+            ]
+          },
+          "danger": {
+            "value": "#80252a",
+            "comment": "Base color for the danger color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.red.1.value}",
+              "comment": "Base color for the danger color"
+            },
+            "name": "AlertColorBackgroundWeakDanger",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "danger"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "danger"
+            ]
+          },
+          "warning": {
+            "value": "#5c2200",
+            "comment": "Base color for the warning color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.orange.1.value}",
+              "comment": "Base color for the warning color"
+            },
+            "name": "AlertColorBackgroundWeakWarning",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "warning"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "warning"
+            ]
+          },
+          "success": {
+            "value": "#1b5441",
+            "comment": "Base color for the success color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "{color.green.1.value}",
+              "comment": "Base color for the success color"
+            },
+            "name": "AlertColorBackgroundWeakSuccess",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "success"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "success"
+            ]
+          },
+          "info": {
+            "value": "#e2f4ff",
+            "comment": "Base color for the info color",
+            "filePath": "tokens/component/alert.dark.json",
+            "isSource": true,
+            "original": {
+              "value": "#e2f4ff",
+              "comment": "Base color for the info color"
+            },
+            "name": "AlertColorBackgroundWeakInfo",
+            "attributes": {
+              "category": "alert",
+              "type": "color",
+              "item": "background",
+              "subitem": "weak",
+              "state": "info"
+            },
+            "path": [
+              "alert",
+              "color",
+              "background",
+              "weak",
+              "info"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "avatar": {
+    "size": {
+      "30": {
+        "value": "16px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "16px"
+        },
+        "name": "AvatarSize30",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "30"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "30"
+        ]
+      },
+      "50": {
+        "value": "20px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "20px"
+        },
+        "name": "AvatarSize50",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "50"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "50"
+        ]
+      },
+      "100": {
+        "value": "30px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "30px"
+        },
+        "name": "AvatarSize100",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "100"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "100"
+        ]
+      },
+      "200": {
+        "value": "35px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "35px"
+        },
+        "name": "AvatarSize200",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "200"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "200"
+        ]
+      },
+      "300": {
+        "value": "40px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "40px"
+        },
+        "name": "AvatarSize300",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "300"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "300"
+        ]
+      },
+      "400": {
+        "value": "45px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "45px"
+        },
+        "name": "AvatarSize400",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "400"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "400"
+        ]
+      },
+      "500": {
+        "value": "50px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "50px"
+        },
+        "name": "AvatarSize500",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "500"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "500"
+        ]
+      },
+      "600": {
+        "value": "55px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "55px"
+        },
+        "name": "AvatarSize600",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "600"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "600"
+        ]
+      },
+      "700": {
+        "value": "60px",
+        "filePath": "tokens/component/avatar.json",
+        "isSource": false,
+        "original": {
+          "value": "60px"
+        },
+        "name": "AvatarSize700",
+        "attributes": {
+          "category": "avatar",
+          "type": "size",
+          "item": "700"
+        },
+        "path": [
+          "avatar",
+          "size",
+          "700"
+        ]
+      }
+    }
+  },
+  "blank": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "transparent",
+          "filePath": "tokens/component/blank.dark.json",
+          "isSource": true,
+          "original": {
+            "value": "transparent"
+          },
+          "name": "BlankColorBackgroundDefault",
+          "attributes": {
+            "category": "blank",
+            "type": "color",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "blank",
+            "color",
+            "background",
+            "default"
           ]
         }
       }

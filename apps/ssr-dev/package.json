@@ -20,21 +20,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elf-framework/color": "*",
-    "@elf-framework/design-tokens": "*",
+    "@elf-framework/color": "workspace:*",
+    "@elf-framework/design-tokens": "workspace:*",
     "@elf-framework/icon": "*",
-    "@elf-framework/sapa": "*",
-    "@elf-framework/sapa-router": "*",
-    "@elf-framework/ui": "*",
+    "@elf-framework/sapa": "workspace:*",
+    "@elf-framework/sapa-router": "workspace:*",
+    "@elf-framework/ui": "workspace:*",
     "mermaid": "^9.3.0"
   },
   "devDependencies": {
-    "@elf-framework/config": "*",
+    "@elf-framework/config": "workspace:*",
     "glob": "^8.0.3",
-    "vite": "^4.0.4",
-    "vite-plugin-mdx": "^3.5.11",
-    "vite-plugin-sapa": "*",
-    "vite-plugin-ssr": "^0.4.69",
-    "vitest": "0.26.3"
+    "vite": "^5.0.12",
+    "vike": "*",
+    "vite-plugin-sapa": "workspace:*",
+    "vite-plugin-ssr": "^0.4.142",
+    "vitest": "1.2.1"
   }
 }

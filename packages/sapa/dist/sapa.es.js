@@ -224,6 +224,12 @@ class MagicMethod {
   getCache(key) {
     return this.__cache.get(key);
   }
+  /**
+   * 특정 키워드가 존재하는지 체크
+   *
+   * @param {string} keyword
+   * @returns {boolean}
+   */
   hasKeyword(keyword) {
     if (this.hasCache(keyword)) {
       return this.getCache(keyword);
@@ -241,6 +247,12 @@ class MagicMethod {
     this.setCache(keyword, exists);
     return exists;
   }
+  /**
+   * 특정 키워드가 존재하는지 체크
+   *
+   * @param {string} keyword
+   * @returns {boolean}
+   */
   hasFunction(funcName) {
     if (this.hasCache(funcName)) {
       return this.getCache(funcName);
@@ -249,24 +261,51 @@ class MagicMethod {
     this.setCache(funcName, exists);
     return exists;
   }
+  /**
+   * 함수 파이프 얻어오기
+   *
+   * @param {string} funcName
+   * @returns
+   */
   getFunction(funcName) {
     return this.functions.find((pipe) => pipe.func === funcName);
   }
+  /**
+   * 특정 함수 이름을 가지고 있는 함수 리스트 조회
+   *
+   * @param {string} funcName
+   * @returns
+   */
   getFunctionList(funcName) {
     return this.functions.filter((pipe) => pipe.func === funcName);
   }
   get originalCallback() {
     return this.context[this.originalMethod];
   }
+  /**
+   * keyword 목록 조회
+   */
   get keywords() {
     return this.keys[MAGICMETHOD_EXTRA.KEYWORD].map((pipe) => pipe.value);
   }
+  /**
+   * function 목록 조회
+   */
   get functions() {
     return this.keys[MAGICMETHOD_EXTRA.FUNCTION];
   }
+  /**
+   * 값 목록 조회
+   */
   get values() {
     return this.keys[MAGICMETHOD_EXTRA.VALUE].map((pipe) => pipe.value);
   }
+  /**
+   * context 를 기준으로 original method 를 실행한다.
+   *
+   * @param  {...any} args
+   * @returns
+   */
   execute(...args) {
     return this.originalCallback.call(this.context, ...args);
   }
@@ -340,7 +379,7 @@ class MagicMethod {
 }
 const UUID_REG = /[xy]/g;
 function uuid() {
-  var dt = new Date().getTime();
+  var dt = (/* @__PURE__ */ new Date()).getTime();
   var uuid2 = "xxx12-xx-34xx".replace(UUID_REG, function(c) {
     var r = (dt + Math.random() * 16) % 16 | 0;
     dt = Math.floor(dt / 16);
@@ -349,7 +388,7 @@ function uuid() {
   return uuid2;
 }
 function uuidShort() {
-  var dt = new Date().getTime();
+  var dt = (/* @__PURE__ */ new Date()).getTime();
   var uuid2 = "idxxxxxxx".replace(UUID_REG, function(c) {
     var r = (dt + Math.random() * 16) % 16 | 0;
     dt = Math.floor(dt / 16);
@@ -536,16 +575,25 @@ const Event = {
   }
 };
 class BaseHandler {
+  /**
+   *
+   * @param {EventMachine} context
+   * @param {*} options
+   */
   constructor(context, options = {}) {
     this.context = context;
     this.options = options;
   }
+  // 초기화 설정
   initialize() {
   }
+  // html 을 로드 할 때
   load() {
   }
+  // 새로고침 할 때
   refresh() {
   }
+  // 화면에 그린 이후에 실행 되는 로직들
   render() {
   }
   getRef(id) {
@@ -562,6 +610,9 @@ const scrollBlockingEvents = {
   mousedown: true,
   mouseup: true,
   mousemove: true
+  // wheel, mousewheel 은 prevent 를 해야한다. 그래서 scroll blocking 을 막아야 한다.
+  // 'wheel': true,
+  // 'mousewheel': true
 };
 const eventConverts = {
   doubletab: "touchend"
@@ -570,6 +621,7 @@ const customEventNames = {
   doubletab: true
 };
 const selfCheckMethods = {
+  /* magic check method  */
   self(e) {
     return e && e.$dt && e.$dt.is(e.target);
   },
@@ -600,6 +652,8 @@ const selfCheckMethods = {
   hasPen(e) {
     return e.pointerType === "pen";
   },
+  /** before check method */
+  /* after check method */
   preventDefault(e) {
     e.preventDefault();
     return true;
@@ -623,6 +677,9 @@ class DomEventHandler extends BaseHandler {
       this._initialized = true;
     }
   }
+  /**
+   * @deprecated
+   */
   update() {
   }
   destroy() {
@@ -761,6 +818,13 @@ class DomEventHandler extends BaseHandler {
   getCustomEventName(eventName) {
     return customEventNames[eventName] ? eventName : "";
   }
+  /**
+   *
+   * doubletab -> touchend 로 바뀜
+   *
+   * @param {string} eventName  이벤트 이름
+   * @param {array} checkMethodFilters 매직 필터 목록
+   */
   getDefaultEventObject(eventName, dom, delegate, magicMethod, callback) {
     var _a, _b;
     const obj = {
@@ -888,6 +952,11 @@ class DomEventHandler extends BaseHandler {
     });
     return results;
   }
+  /**
+   * 이벤트 문자열 파싱하기
+   *
+   * @param {MagicMethod} it
+   */
   parseDomEvent(it) {
     const context = this.context;
     var arr = it.args;
@@ -958,6 +1027,12 @@ class ObserverHandler extends BaseHandler {
     }
     return el;
   }
+  /**
+   *
+   * @param {MagicMethod} magicMethod
+   * @param {*} callback
+   * @returns
+   */
   createObserver(magicMethod, callback) {
     var _a;
     const [observerType, observerTarget] = magicMethod.args || ["intersection"];
@@ -998,6 +1073,11 @@ class ObserverHandler extends BaseHandler {
   bindingObserver(magicMethod, callback) {
     this.addObserver(this.createObserver(magicMethod, callback));
   }
+  /**
+   * 이벤트 문자열 파싱하기
+   *
+   * @param {MagicMethod} it
+   */
   parseObserver(it) {
     const context = this.context;
     var originalCallback = context[it.originalMethod].bind(context);
@@ -1043,6 +1123,11 @@ class StoreHandler extends BaseHandler {
     newCallback.source = this.context.source;
     return newCallback;
   }
+  /**
+   * 이벤트 문자열 파싱하기
+   *
+   * @param {string} key
+   */
   parseSubscribe(magicMethod) {
     var _a, _b;
     const events = magicMethod.args.join(" ");
@@ -1478,9 +1563,11 @@ function createSubscribe({
 class HookMachine extends MagicHandler {
   constructor() {
     super(...arguments);
+    // 컴포넌트 내부에서 Hook 을 관리하는 리스트
     __publicField(this, "__stateHooks", []);
     __publicField(this, "__stateHooksIndex", 0);
   }
+  /***** hook ********/
   copyHooks() {
     return {
       __stateHooks: this.__stateHooks,
@@ -1550,6 +1637,9 @@ class HookMachine extends MagicHandler {
           }
           hook.hookInfo = createSubscribe({
             name: hook.hookInfo.name,
+            // callback의 context 를 새로운 컴포넌트로 변경을 해줘야 한다.
+            // 그렇지 않으면 이전 컴포넌트를 destroy 이 하는 시점에 이벤트가 삭제되어서
+            // 새로운 컴포넌트에서 이벤트가 발생하지 않는다.
             callback: hook.hookInfo.callback.bind(this),
             debounceSecond: hook.hookInfo.debounceSecond,
             throttleSecond: hook.hookInfo.throttleSecond,
@@ -1587,12 +1677,24 @@ class HookMachine extends MagicHandler {
       hookInfo
     };
   }
+  /**
+   * useState 의 updater 를 모아서 수행한다.
+   *
+   * useBatch(() => {
+   *   setState1(1);
+   *   setState2(2);
+   * })
+   */
   useBatch(callback) {
     pendingComponent(this);
     callback && callback();
     removePendingComponent(this);
     renderComponent(this);
   }
+  /**
+   *
+   * useId is a hook for generating unique IDs
+   */
   useId() {
     if (!this.getHook(USE_ID)) {
       this.setHook(USE_ID, { value: uuid(), component: this });
@@ -1617,6 +1719,13 @@ class HookMachine extends MagicHandler {
     this.increaseHookIndex();
     return value;
   }
+  /**
+   * 글로벌 상태값을 저장하고 관리합니다.
+   * hook을 사용하는 순서대로 값을 저장하고 있습니다.
+   *
+   * @param {any} initialState
+   * @returns
+   */
   useState(initialState) {
     if (!this.getHook(USE_STATE)) {
       this.setHook(
@@ -1639,12 +1748,23 @@ class HookMachine extends MagicHandler {
     }
     return hasDeps || hasChangedDeps;
   }
+  /**
+   * useEffect 는 렌더링이 완료된 후에 실행되는 hook입니다.
+   *
+   * useEffect 가 실행되면 callback 은 항상 재생성되고, deps 변경 유무를 설정해줍니다.
+   *
+   * deps 의 변경 유무는 isChangedDeps 에서 확인하고 mounted 상태에서는 deps 가 변경되었을
+   * 때만 callback 을 실행합니다. (runHook() 참조). callback 을 실행한 이후에 나오는
+   * cleanup 함수는 destroy 될 때 실행됩니다.
+   *
+   */
   useEffect(callback, deps) {
     this.setHook(
       USE_EFFECT,
       createEffect({
         deps,
         callback,
+        // 현재 인덱스의 기존 deps 와 새로운 deps 를 비교해서 변경여부 설정
         hasChangedDeps: this.isChangedDeps(deps),
         component: this
       })
@@ -1730,6 +1850,16 @@ class HookMachine extends MagicHandler {
   useEmit(name, ...args) {
     return this.emit(name, ...args);
   }
+  /**
+   *
+   * ```js
+   * const [ value, setValue ] = useStoreValue('key');
+   *
+   * setValue('value');
+   *
+   * ```
+   *
+   */
   useStoreValue(key, defaultValue2) {
     this.useSubscribe(key, () => {
       renderComponent(this);
@@ -1748,6 +1878,11 @@ class HookMachine extends MagicHandler {
     this.increaseHookIndex();
     return [value.getValue(), value.update];
   }
+  /**
+   *
+   * return callback to get store value.
+   *
+   */
   useGetStoreValue(key, defaultValue2) {
     if (!this.getHook(USE_GET_STORE_VALUE)) {
       this.setHook(
@@ -1763,6 +1898,10 @@ class HookMachine extends MagicHandler {
     this.increaseHookIndex();
     return value.getValue;
   }
+  /**
+   * useSetStoreValue returns setter function for store value.
+   *
+   */
   useSetStoreValue(key) {
     if (!this.getHook(USE_SET_STORE_VALUE)) {
       this.setHook(
@@ -1777,12 +1916,23 @@ class HookMachine extends MagicHandler {
     this.increaseHookIndex();
     return value.update;
   }
+  /**
+   * Use useStoreValue instead of this function.
+   *
+   * @deprecated
+   */
   useStore(key, defaultValue2) {
     return this.$store.get(key, defaultValue2);
   }
+  /**
+   * Use useSetStoreValue or useStoreValue instead of this function.
+   *
+   * @deprecated
+   */
   useStoreSet(key, value, hasChangeMessage = true) {
     this.$store.set(key, value, hasChangeMessage);
   }
+  /** utility function for hooks */
   filterHooks(type) {
     return this.__stateHooks.filter((it) => (it == null ? void 0 : it.type) === type).map((it) => it.hookInfo);
   }
@@ -1822,8 +1972,13 @@ class HookMachine extends MagicHandler {
       }
     });
   }
+  /** utility function for hooks */
   destroy() {
   }
+  /**
+   * 컴포넌트가 mount 된 이후에 실행된다.
+   *
+   */
   onMounted() {
     if (this.isMounted)
       return;
@@ -1842,13 +1997,18 @@ class HookMachine extends MagicHandler {
     this.cleanHooks();
   }
 }
-const _EventMachine = class extends HookMachine {
+const _EventMachine = class _EventMachine extends HookMachine {
+  // #childObjectElements = {};
+  // hook 을 그대로 유지할 방법이 필요함.
   constructor(opt, props, state) {
     super();
     __privateAdd(this, _state, {});
     __privateAdd(this, _cachedMethodList, void 0);
     __privateAdd(this, _functionCache, {});
     __privateAdd(this, _childObjectList, {});
+    /**
+     * dom ref 등록하기
+     */
     __publicField(this, "registerRef", (ref, el) => {
       if (typeof ref === "function") {
         ref(el);
@@ -1869,6 +2029,9 @@ const _EventMachine = class extends HookMachine {
   setId(id) {
     this.id = id;
   }
+  /**
+   * refs 를 다시 설정한다.
+   */
   setRefs(refs = {}) {
     this.refs = refs;
   }
@@ -1879,12 +2042,24 @@ const _EventMachine = class extends HookMachine {
       StoreHandler
     });
   }
+  /**
+   * get first child instance
+   */
   get firstChild() {
     return Object.values(this.children)[0];
   }
+  /**
+   * 매개변수를 체크한다.
+   *
+   * @param {object} props
+   * @returns
+   */
   checkProps(props = {}) {
     return props;
   }
+  /**
+   * UIElement instance 에 필요한 기본 속성 설정
+   */
   initializeProperty(opt, props = {}, state = {}) {
     this.opt = opt || {};
     this.parent = this.opt;
@@ -1896,12 +2071,28 @@ const _EventMachine = class extends HookMachine {
   setProps(props) {
     this.props = props;
   }
+  /**
+   * 함수 캐쉬
+   *
+   * @param {string} funcName
+   * @param {function} func
+   * @returns
+   */
   createFunction(funcName, func) {
     if (isFunction(func) && !__privateGet(this, _functionCache)[funcName]) {
       __privateGet(this, _functionCache)[funcName] = func;
     }
     return __privateGet(this, _functionCache)[funcName];
   }
+  /**
+   * 캐쉬된 함수 실행하기
+   *
+   * 한번만 실행할 수 있음.
+   *
+   * @param {string} funcName
+   * @param {function} func
+   * @returns
+   */
   runFunction(funcName, func) {
     const cachedFunction = this.createFunction(funcName, func);
     if (cachedFunction == null ? void 0 : cachedFunction.running) {
@@ -1915,15 +2106,34 @@ const _EventMachine = class extends HookMachine {
     }
     return cachedFunction;
   }
+  /**
+   * state 를 초기화 한것을 리턴한다.
+   *
+   * @protected
+   * @returns {Object}
+   */
   initState() {
     return {};
   }
+  /**
+   * state 를 변경한다.
+   *
+   * @param {Object} state  새로운 state
+   * @param {Boolean} isLoad  다시 로드 할 것인지 체크 , true 면 state 변경후 다시 로드
+   */
   setState(state = {}, isRefresh = true) {
     __privateSet(this, _state, Object.assign({}, __privateGet(this, _state), state));
     if (Boolean(isRefresh) === true) {
       renderComponent(this);
     }
   }
+  /**
+   * state 에 있는 key 필드의 값을 토글한다.
+   * Boolean 형태의 값만 동작한다.
+   *
+   * @param {string} key
+   * @param {Boolean} isLoad
+   */
   toggleState(key, isLoad = true) {
     this.setState(
       {
@@ -1935,6 +2145,13 @@ const _EventMachine = class extends HookMachine {
   changedProps(newProps) {
     return !vnodePropsDiff(this.props, newProps);
   }
+  /**
+   * 객체를 다시 그릴 때 사용한다.
+   *
+   * @param {KeyValue} props
+   * @param {Dom} [$container=null] $container 가 존재하면 render 를 같이 한다.
+   * @protected
+   */
   _reload(props) {
     if (isGlobalForceRender() || this.changedProps(props)) {
       this.props = props;
@@ -1947,6 +2164,9 @@ const _EventMachine = class extends HookMachine {
   get ref() {
     return this.props.ref;
   }
+  /**
+   * 자식 컴포넌트 리스트를 반환한다.
+   */
   get children() {
     return __privateGet(this, _childObjectList);
   }
@@ -1960,9 +2180,34 @@ const _EventMachine = class extends HookMachine {
       }
     });
   }
+  /**
+   * render 를 할 수 있는지 체크한다.
+   *
+   * @override
+   * @deprecated
+   */
   get isPreLoaded() {
     return true;
   }
+  /**
+   * 컴포넌트의 마지막 dom root 를 반환한다.
+   *
+   * ```jsx
+   * <A>
+   *  <B>
+   *    <C>Sample</C>
+   * </B>
+   * </A>
+   * ```
+   *
+   * A -> B -> C 형태로 중첩이 된 상태에서는 마지막 C 의 dom 을 반환한다.
+   * A, B 는 $el 을 가지고 있지 않다.
+   *
+   * A, B, C 는 하나의 family 형태로 묶이며
+   * A -> B, B -> C 는 ALTER_TEMPLATE 로 연결된다.
+   *
+   * @returns
+   */
   getEl() {
     var _a, _b, _c;
     if (!((_a = this.$el) == null ? void 0 : _a.el)) {
@@ -1995,6 +2240,14 @@ const _EventMachine = class extends HookMachine {
       index: familyIndex
     };
   }
+  /**
+   * root 가 변경되는 경우가 있기 때문에
+   * oldEl 는 성능을 위해서 캐슁을 하면 안됨
+   *
+   * children 을 따로 관리하지 않는다.
+   *
+   * @deprecated
+   */
   getTargetInstance(oldEl) {
     const targetList = Object.values(this.children).filter(Boolean).filter((instance) => {
       return (instance == null ? void 0 : instance.id) !== this.id && (instance == null ? void 0 : instance.getEl()) === oldEl;
@@ -2004,6 +2257,13 @@ const _EventMachine = class extends HookMachine {
     }
     return void 0;
   }
+  /**
+   *
+   * 특정 클래스 참조를 바로 diff 형태로 렌더링 하지 않고
+   * 강제로 다시 그리기를 원할때 사용할 수 있다.
+   *
+   * @returns
+   */
   isForceRender() {
     return false;
   }
@@ -2041,16 +2301,28 @@ const _EventMachine = class extends HookMachine {
   is(name, callback) {
     return this.sourceName === name && callback(this);
   }
+  /**
+   * template 을 렌더링 한다.
+   *
+   * @param {Dom|undefined} $container  컴포넌트가 그려질 대상
+   */
   async render($container, isForceRender = false) {
     renderComponent(this, $container);
   }
   initialize() {
     __privateSet(this, _state, this.initState());
   }
+  /**
+   * ref 이름을 가진 Component 를 가지고 온다.
+   *
+   * @param  {any[]} args
+   * @returns {EventMachine}
+   */
   getRef(...args) {
     const key = args.join("");
     return this.refs[key];
   }
+  // afterComponentRendering() {}
   getVNodeOptions() {
     return {
       context: this,
@@ -2060,12 +2332,24 @@ const _EventMachine = class extends HookMachine {
   getFunctionComponent() {
     return this;
   }
+  /**
+   * refresh 는 load 함수들을 실행한다.
+   */
   refresh() {
     renderComponent(this);
   }
+  // 기본 템플릿 지정
   template() {
     return null;
   }
+  /**
+   *
+   * 자식 컴포넌트 중에서 element 가 부모를 가지고 있지 않는 상태가 되면
+   * 메모리에서 지운다.
+   *
+   * TODO: 지우지 않고 객체를 그대로 사용할 방법이 있을까?
+   *
+   */
   clear() {
     Object.entries(__privateGet(this, _childObjectList)).forEach(([_key, child]) => {
       if (!child.getEl().parentNode) {
@@ -2084,6 +2368,11 @@ const _EventMachine = class extends HookMachine {
       }
     });
   }
+  /**
+   * 자원을 해제한다.
+   * 자식 컴포넌트까지 제어하기 때문에 가장 최상위 부모에서 한번만 호출되도 된다.
+   *
+   */
   destroy(isRemoveElement = false) {
     var _a;
     removeRenderCallback(this);
@@ -2101,6 +2390,12 @@ const _EventMachine = class extends HookMachine {
     this.onDestroyed();
     this.refs = {};
   }
+  /**
+   * property 수집하기
+   * 상위 클래스의 모든 property 를 수집해서 리턴한다.
+   *
+   * @returns {string[]} 나의 상위 모든 메소드를 수집해서 리턴한다.
+   */
   collectMethodes(refreshCache = false) {
     if (!__privateGet(this, _cachedMethodList) || refreshCache) {
       __privateSet(this, _cachedMethodList, collectProps(
@@ -2108,7 +2403,11 @@ const _EventMachine = class extends HookMachine {
         _EventMachine,
         (name) => MagicMethod.check(name)
       ).map((it) => {
-        return MagicMethod.parse(it, this);
+        return MagicMethod.parse(
+          it,
+          /*context*/
+          this
+        );
       }));
     }
     return __privateGet(this, _cachedMethodList);
@@ -2118,6 +2417,13 @@ const _EventMachine = class extends HookMachine {
       return it.method === methodKey;
     });
   }
+  /**
+   * 자식 객체의 content 를 확인
+   *
+   * @param {function} filterCallback
+   * @param {any} defaultValue
+   * @returns
+   */
   getChildContent(filterCallback, defaultValue2 = "") {
     var _a;
     return ((_a = this.getChild(filterCallback)) == null ? void 0 : _a.props.content) || defaultValue2;
@@ -2134,6 +2440,10 @@ const _EventMachine = class extends HookMachine {
   runUnmounted() {
     this.onUnmounted();
   }
+  /**
+   * 컴포넌트가 mount 된 이후에 실행된다.
+   *
+   */
   onMounted() {
     super.onMounted();
   }
@@ -2146,17 +2456,20 @@ const _EventMachine = class extends HookMachine {
   onUnmounted() {
     super.onUnmounted();
   }
+  /**
+   * Initialize Magic Method
+   */
   initMagicMethod(methodName, callback) {
     if (!this[methodName]) {
       this[methodName] = callback;
     }
   }
 };
-let EventMachine = _EventMachine;
 _state = new WeakMap();
 _cachedMethodList = new WeakMap();
 _functionCache = new WeakMap();
 _childObjectList = new WeakMap();
+let EventMachine = _EventMachine;
 if (!window.requestIdleCallback) {
   window.requestIdleCallback = function(cb) {
     var start2 = Date.now();
@@ -2347,6 +2660,14 @@ class BaseStore {
   false(key) {
     return this.get(key) === false;
   }
+  /**
+   * key 에 해당하는 config 의 값을 비교한다.
+   *
+   *
+   * @param {string} key
+   * @param {any} value
+   * @returns {boolean}
+   */
   is(key, value) {
     return this.get(key) === value;
   }
@@ -2366,6 +2687,19 @@ class BaseStore {
   setCallbacks(event, list = []) {
     this.callbacks[event] = list;
   }
+  /**
+   * 메세지 등록
+   *
+   * @param {string} event
+   * @param {Function} originalCallback
+   * @param {EventMachine} context
+   * @param {number} debounceDelay
+   * @param {number} throttleDelay
+   * @param {boolean} enableAllTrigger
+   * @param {boolean} enableSelfTrigger
+   * @param {string[]} [beforeMethods=[]]
+   * @returns {Function} off callback
+   */
   on(event, originalCallback, context, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, beforeMethods = [], frame = false) {
     var callback = originalCallback;
     if (debounceDelay > 0)
@@ -2394,6 +2728,12 @@ class BaseStore {
       this.off(event, originalCallback);
     };
   }
+  /**
+   * 메세지 해제
+   *
+   * @param {string} event
+   * @param {*} originalCallback
+   */
   off(event, originalCallback) {
     if (arguments.length == 1) {
       this.setCallbacks(event);
@@ -2434,6 +2774,18 @@ class BaseStore {
       }
     }
   }
+  /**
+   *
+   * run multi messages
+   *
+   * message.callback can has a return value.
+   *
+   * if return value is false then message will be skip.
+   * if return value is function then message will be skip after run return function.
+   *
+   * @param {string} source
+   * @param {Command[]} messages
+   */
   sendMessageList(source, messages = []) {
     window.Promise.resolve().then(() => {
       messages.forEach(([event, ...args]) => {
@@ -2479,6 +2831,11 @@ class BaseStore {
       this.sendMessage(this.source, event, ...args);
     }
   }
+  /**
+   * 마이크로 Task 를 실행
+   *
+   * @param {Function} callback  마이크로Task 형식으로 실행될 함수
+   */
   nextTick(callback) {
     this.nextSendMessage(this.source, callback);
   }
@@ -2516,9 +2873,18 @@ class UIElement extends EventMachine {
   setStore(storeInstance) {
     this.storeInstance = storeInstance;
   }
+  /**
+   * 메세징 루트를 재정의 할 수 있음.
+   *
+   * @override
+   */
   get $store() {
     return this.storeInstance || this.parent.$store;
   }
+  /**
+   * UIElement 가 생성될 때 호출되는 메소드
+   * @protected
+   */
   async created() {
   }
   createLocalCallback(event, callback) {
@@ -2527,25 +2893,59 @@ class UIElement extends EventMachine {
     newCallback.source = this.source;
     return newCallback;
   }
+  /**
+   * UIElement 기반으로 메세지를 호출 한다.
+   * 나 이외의 객체들에게 메세지를 전달한다.
+   *
+   * @param {string} messageName
+   * @param {any[]} args
+   */
   emit(messageName, ...args) {
     this.$store.source = this.source;
     this.$store.sourceContext = this;
     this.$store.emit(messageName, ...args);
   }
+  /**
+   * MicroTask 를 수행한다.
+   *
+   * @param {Function} callback
+   * @param {number} [delay=0]  callback 이 실행될 딜레이 시간 설정
+   */
   nextTick(callback, delay = 0) {
     window.setTimeout(() => {
       this.$store.nextTick(callback);
     }, delay);
   }
+  /**
+   *
+   * emit 은 외부 객체에게 메세지를 보내고
+   * trigger 는 자신의 내부에 메세지를 보낸다.
+   *
+   * @param {string} messageName
+   * @param {any[]} args
+   */
   trigger(messageName, ...args) {
     this.$store.source = this.source;
     this.$store.trigger(messageName, ...args);
   }
+  /**
+   * 상위 객체에게만 호출되는 메세지를 수행한다.
+   *
+   * @param {*} callback
+   * @param  {...any} args
+   */
   runCallback(callback, ...args) {
     if (this.parent) {
       this.parent.trigger(callback, ...args);
     }
   }
+  /**
+   * message 이벤트에 주어진 callack 을 등록
+   * 동일한 메세지 명으로 callback 은 list 화 되어서 관리 됩니다.
+   *
+   * @param {string} message 이벤트 메세지 이름
+   * @param {Function} callback 메세지 지정시 실행될 함수
+   */
   on(message, callback, debounceDelay = 0, throttleDelay = 0, enableAllTrigger = false, enableSelfTrigger = false, frame = false) {
     this.$store.on(
       message,
@@ -2562,6 +2962,20 @@ class UIElement extends EventMachine {
   off(message, callback) {
     this.$store.off(message, callback, this.source);
   }
+  /**
+   * 동적으로 subscribe 함수를 지정합니다.
+   *
+   * template 안에서 동적으로 수행할 수 있습니다.
+   *
+   * 이렇게 생성된 subscribe 함수는 외부에서는 실행 할수가 없는 SUBSCRIBE_SELF 로 생성됩니다.
+   *
+   * 함수 내부에서 context 를 유지하기 때문에 this 로 instance 에 접근 할 수 있습니다.
+   *
+   * @param {Function} callback subscribe 함수로 지정할 callback
+   * @param {number} [debounceSecond=0] debounce 시간(ms)
+   * @param {number} [throttleSecond=0] throttle 시간(ms)
+   * @returns {string} function id
+   */
   subscribe(callback, debounceSecond = 0, throttleSecond = 0) {
     const id = `subscribe.${uuidShort()}`;
     const newCallback = this.createLocalCallback(id, callback);
@@ -2572,12 +2986,16 @@ class UIElement extends EventMachine {
       debounceSecond,
       throttleSecond,
       false,
+      /*self trigger*/
       true
     );
     return id;
   }
   static createFunctionElementInstance(NewFunctionComponent, parentInstance, props, state = {}) {
     class FunctionElement extends UIElement {
+      /**
+       * UIElement instance 에 필요한 기본 속성 설정
+       */
       initializeProperty(opt, props2 = {}, state2 = {}) {
         super.initializeProperty(opt, props2, state2);
         this.sourceName = this.getFunctionComponent().name || this.sourceName;
@@ -2585,6 +3003,7 @@ class UIElement extends EventMachine {
       getFunctionComponent() {
         return NewFunctionComponent;
       }
+      // 함수형 컴포넌트는 instance 인지 체크를 해야할 수도 있다.
       isInstanceOf(...args) {
         return args.some((TargetClass) => {
           return NewFunctionComponent === TargetClass;
@@ -2596,6 +3015,7 @@ class UIElement extends EventMachine {
     }
     return new FunctionElement(parentInstance, props, state);
   }
+  // root instance 생성용 함수
   static createElementInstance(ElementClass, parent, props, state) {
     if (ElementClass.__proto__.name === "") {
       return UIElement.createFunctionElementInstance(
@@ -2637,12 +3057,14 @@ const NumberStyleKeys = {
   gridColumnSpan: true,
   gridColumnStart: true,
   fontSize: true,
+  // fontWeight: true,
   lineClamp: true,
   lineHeight: true,
   order: true,
   orphans: true,
   tabSize: true,
   widows: true,
+  // zIndex: true,  // pure number is not allowed
   zoom: true,
   width: true,
   maxWidth: true,
@@ -2668,6 +3090,7 @@ const NumberStyleKeys = {
   gap: true,
   columnGap: true,
   rowGap: true,
+  // SVG-related properties
   fillOpacity: true,
   floodOpacity: true,
   stopOpacity: true,
@@ -2834,16 +3257,31 @@ class VNode {
   find(callback) {
     return this.props.content.find(callback);
   }
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
   mounted() {
     const selfInstance = this[SELF_COMPONENT_INSTANCE];
     commitMount(selfInstance);
   }
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
   updated() {
     const selfInstance = this[SELF_COMPONENT_INSTANCE];
     if (selfInstance) {
       commitUpdated(selfInstance);
     }
   }
+  /**
+   * 상위 element 에 추가된 이후에 호출된다.
+   *
+   * @override
+   */
   unmounted() {
     const selfInstance = this[SELF_COMPONENT_INSTANCE];
     if (selfInstance) {
@@ -3055,14 +3493,23 @@ class VNodeComponent extends VNode {
   setEl(el) {
     this.instance.$el = Dom.create(el);
   }
+  /**
+   * DomTree 에 추가되었을 때, 호출된다.
+   */
   mounted() {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onMounted();
   }
+  /**
+   * DomTree 에서 변경되었을 때, 호출된다.
+   */
   updated() {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onUpdated();
   }
+  /**
+   * DomTree 에서 제외되었을 때, 호출된다.
+   */
   unmounted() {
     var _a;
     (_a = this.instance) == null ? void 0 : _a.onUnmounted();
@@ -3074,6 +3521,8 @@ class VNodeComponent extends VNode {
     }
     return this.Component;
   }
+  // 임의의 instance 를 설정한다.
+  // 임의의 instance 의 state, hook, id 등을 얻기 위해서 사용한다.
   setInstance(instance) {
     this.instance = instance;
   }
@@ -3083,6 +3532,7 @@ class VNodeComponent extends VNode {
       return false;
     return this.LastComponent !== localComponent;
   }
+  // class/function instance 생성
   makeClassInstance(options) {
     var _a;
     const props = { ...this.props };
@@ -3353,6 +3803,7 @@ function makeElement$3(vNodeInstance, options) {
   makeChildren(vNodeInstance, {
     ...options,
     container: el
+    // container 를 사전에 지정해서 실행한다.
   });
   return vNodeInstance;
 }
@@ -3548,17 +3999,38 @@ const patch = {
       this.setProp(node, name, newValue);
     }
   },
+  // 컴포넌트 내부에서 다시 그리기를 한다.
+  /**
+   * 이 함수를 더 이상 사용하지 않습니다.
+   * getTargetInstance 로 컴포넌트를 찾지 않습니다.
+   *
+   * reloadComponentInstance() 함수를 사용해주세요.
+   *
+   * @deprecated
+   */
   reloadComponent(oldEl, newVNode, options) {
     const targetInstance = options.context.getTargetInstance(oldEl);
     if (targetInstance) {
       targetInstance._reload(newVNode.props);
     }
   },
+  /**
+   * targetInstance 에 newVNode.props 를 업데이트 하고 다시 그린다.
+   */
   reloadComponentInstance(targetInstance, newVNode) {
     if (targetInstance) {
       targetInstance._reload(newVNode.props);
     }
   },
+  /**
+   * 이 함수는 Component 의 클래스/함수 자체가 변경되었을 때 호출한다. (HMR)
+   *
+   * 기본 컨셉은 oldEl 에 적용된 component instance 를 newVNode 의 instance 로 교체한다.
+   * 이 때 component instance 가 가지고 있던 몇가지 정보들은 유지해야 한다.
+   *
+   *
+   * @deprecated
+   */
   makeComponent(oldEl, newVNode, options) {
     let oldInstance = oldEl[COMPONENT_INSTANCE];
     const family = oldInstance.getFamily();
@@ -3711,12 +4183,38 @@ const check = {
   isVNodeFragment(node) {
     return node.type === VNodeType.FRAGMENT;
   },
+  /**
+   * TEXT_NODE/COMMENT_NODE 일 때   둘 다 공백일 때는  비교하지 않는다.
+   * nodeName 이 다를 때는 변경 된 것으로 인지한다.
+   *
+   * @param {*} node1
+   *
+   * @param {*} node2
+   */
   changed(vNode, node2) {
     return (vNode.type === VNodeType.TEXT || vNode.type === VNodeType.COMMENT) && vNode.textContent !== node2.textContent || vNode.nodeName !== node2.nodeName.toUpperCase();
   },
+  /**
+   * pass 속성이 있을 때만 비교한다.
+   *
+   * @param {VNode} vNode
+   * @returns
+   */
   hasPassed(vNode) {
     return vNode == null ? void 0 : vNode.pass;
   },
+  /**
+   * oldElement 를 기준으로 컴포넌트를 다시 그릴지 여부를 판단한다.
+   * 1. 현재컴포넌트 oldElement[COMPONENT_INSTANCE] 구한다.
+   * 2. 현재 컴포넌트 기준으로 FamilyTree 를 구한다.
+   * 3. FamilyTree 에서 newVNode[SELF_COMPONENT_INSTANCE] 가 있는지 체크한다.
+   * 4. newVNode[SELF_COMPONENT_INSTANCE] 가 있고, newVNode.isComponentChanged 가 true 면 true 를 리턴한다.
+   * 5. true 는 컴포넌트를 새로 생성한다.
+   * 6. false 면 reload 만 수행한다.
+   * 7. reload 는 컴포넌트의 props 만 비교해서 다시 렌더링한다.
+   *
+   * 이곳의 알고리즘은 아직 실험적이며 계속해서 개선될 예정이다.
+   */
   checkRefClass(oldEl, newVNode, options) {
     var _a, _b, _c, _d, _e, _f;
     if (!newVNode[SELF_COMPONENT_INSTANCE]) {
@@ -3743,6 +4241,13 @@ const check = {
     const family = oldEl[COMPONENT_INSTANCE].getFamily();
     const familyInstance = newVNode[SELF_COMPONENT_INSTANCE];
     const targetFamilyInstance = family.family.find(
+      // familyInstance.id 가 같은지 체크
+      // id 같으면 같은 컴포넌트이다.
+      // 모듈이 새롭게 로드되면 컴포넌트는 같더라도 instance 의 참조가 달라지기 때문에
+      // 같다라는걸 검증 할 수 없다.
+      // 그래서 id 를 사용한다.
+      // id 가 같으면 같은 컴포넌트이다.
+      // 그래서 makeComponent 에서 id 를 계승하도록 한다.
       (it) => it.id === familyInstance.id
     );
     if (!targetFamilyInstance) {
@@ -4393,6 +4898,12 @@ class Dom {
     });
     return this;
   }
+  /**
+   * data-xxx 속성을 관리한다.
+   *
+   * @param {string} key
+   * @param {any} value
+   */
   data(key, value) {
     if (arguments.length === 1) {
       const value2 = this.attr("data-" + key);
@@ -4402,6 +4913,15 @@ class Dom {
     }
     return this;
   }
+  /**
+   * Dom attribute 얻기 또는 설정
+   *
+   * get ->  Dom.create(targetElement).attr('key');
+   * set -> Dom.create(targetElement).attr('key', value);
+   *
+   * @param {string} key
+   * @param {string[]} value
+   */
   attr(...args) {
     if (args.length == 1) {
       return isFunction(this.el.getAttribute) && this.el.getAttribute(args[0]);
@@ -4606,12 +5126,21 @@ class Dom {
     this.append($dom.createChildrenFragment());
     return $dom;
   }
+  /**
+   * create document fragment with children dom
+   */
   createChildrenFragment() {
     const list = this.childNodes;
     var fragment = document.createDocumentFragment();
     list.forEach(($el) => fragment.appendChild($el.el));
     return fragment;
   }
+  /**
+   * dom 리스트로 fragment 만들기
+   *
+   * @param {HTMLElement[]} list
+   * @returns
+   */
   static createFragment(list = []) {
     var fragment = document.createDocumentFragment();
     list.forEach((it) => fragment.appendChild(it));
@@ -4632,6 +5161,11 @@ class Dom {
     this.el.removeChild(el.el || el);
     return this;
   }
+  /**
+   *
+   * @param {string} value
+   * @returns {string} 파라미터가 없을 때  textContent 를 리턴한다.
+   */
   text(value) {
     if (typeof value === "undefined") {
       return this.el.textContent;
@@ -4646,6 +5180,15 @@ class Dom {
       return this;
     }
   }
+  /**
+   *
+   * $el.css`
+   *  border-color: yellow;
+   * `
+   *
+   * @param {*} key
+   * @param {*} value
+   */
   css(key, value) {
     if (typeof key !== "undefined" && typeof value !== "undefined") {
       if (key.indexOf("--") === 0 && typeof value !== "undefined") {
@@ -4690,6 +5233,14 @@ class Dom {
     }
     return this.el._cachedIsSVG.value;
   }
+  /**
+   * offset rect 를 생성
+   *
+   * svg 나 isClientRect 가 true 인 경우 clientRect 를 기준으로 생성
+   *
+   * @param {boolean} isClientRect
+   * @returns
+   */
   offsetRect() {
     if (this.isSVG()) {
       const parentBox = this.parent().rect();
@@ -5267,6 +5818,7 @@ function WebComponent(CustomUIElement) {
       this._comp = new CustomUIElement();
       this._comp.on("customEvent", (eventName, ...args) => {
         this.dispatchEvent(
+          // eslint-disable-next-line no-undef
           new CustomEvent(eventName, {
             bubbles: true,
             detail: args
@@ -5320,6 +5872,7 @@ function createVNodeByDom(el) {
   }
   return createVNode({
     tag: el.tagName,
+    // tag 이름 그대로 넣어야함. 예를들어 <div> 이면 div 를 넣어야 함.
     props: getProps(el.attributes),
     children: children$1(el).map((it) => {
       return createVNodeByDom(it);

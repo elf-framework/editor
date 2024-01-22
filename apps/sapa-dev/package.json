@@ -16,12 +16,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elf-framework/sapa": "*"
+    "@elf-framework/sapa": "workspace:*"
   },
   "devDependencies": {
-    "@elf-framework/config": "*",
-    "vite": "^4.0.4",
-    "vite-plugin-sapa": "*",
-    "vitest": "0.26.3"
+    "@elf-framework/config": "workspace:*",
+    "vite": "^5.0.12",
+    "vite-plugin-sapa": "workspace:*",
+    "vitest": "1.2.1"
   }
 }
