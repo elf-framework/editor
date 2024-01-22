@@ -232,86 +232,6 @@
       }
     }
   },
-  "alert": {
-    "color": {
-      "title": {
-        "default": "#f8f8f8",
-        "primary": "#e8f3ff",
-        "secondary": "#ffffff",
-        "danger": "#ffcfd1",
-        "warning": "#e3ad0b",
-        "success": "#b5f5e0",
-        "info": "#78b6ff",
-        "weak": {
-          "default": "#888888",
-          "primary": "#429bff",
-          "secondary": "#888888",
-          "danger": "#ff5760",
-          "warning": "#bc4c00",
-          "success": "#28bd8b",
-          "info": "#429bff"
-        }
-      },
-      "content": {
-        "default": "#f8f8f8",
-        "dark": "#ffffff",
-        "primary": "#ffffff",
-        "secondary": "#282828",
-        "danger": "#80252a",
-        "warning": "#ffffff",
-        "success": "#ffffff",
-        "info": "#ffffff",
-        "weak": {
-          "default": "#686868",
-          "primary": "#1273e6",
-          "secondary": "#686868",
-          "danger": "#d9363e",
-          "warning": "#953800",
-          "success": "#009f6a",
-          "info": "#78b6ff"
-        }
-      },
-      "background": {
-        "default": "#181818",
-        "dark": "#181818",
-        "primary": "#429bff",
-        "secondary": "#484848",
-        "success": "#009f6a",
-        "info": "#1273e6",
-        "warning": "#e16f24",
-        "danger": "#d9363e",
-        "weak": {
-          "default": "#282828",
-          "primary": "#1a497d",
-          "secondary": "#282828",
-          "danger": "#80252a",
-          "warning": "#5c2200",
-          "success": "#1b5441",
-          "info": "#e2f4ff"
-        }
-      }
-    }
-  },
-  "avatar": {
-    "size": {
-      "30": "16px",
-      "50": "20px",
-      "100": "30px",
-      "200": "35px",
-      "300": "40px",
-      "400": "45px",
-      "500": "50px",
-      "600": "55px",
-      "700": "60px"
-    }
-  },
-  "blank": {
-    "color": {
-      "background": {
-        "default": "transparent"
-      }
-    }
-  },
   "button": {
     "default": {
       "background": {
@@ -527,6 +447,86 @@
         "small": "5px 6px",
         "medium": "8px 10px",
         "large": "14px 20px"
+      }
+    }
+  },
+  "alert": {
+    "color": {
+      "title": {
+        "default": "#f8f8f8",
+        "primary": "#e8f3ff",
+        "secondary": "#ffffff",
+        "danger": "#ffcfd1",
+        "warning": "#e3ad0b",
+        "success": "#b5f5e0",
+        "info": "#78b6ff",
+        "weak": {
+          "default": "#888888",
+          "primary": "#429bff",
+          "secondary": "#888888",
+          "danger": "#ff5760",
+          "warning": "#bc4c00",
+          "success": "#28bd8b",
+          "info": "#429bff"
+        }
+      },
+      "content": {
+        "default": "#f8f8f8",
+        "dark": "#ffffff",
+        "primary": "#ffffff",
+        "secondary": "#282828",
+        "danger": "#80252a",
+        "warning": "#ffffff",
+        "success": "#ffffff",
+        "info": "#ffffff",
+        "weak": {
+          "default": "#686868",
+          "primary": "#1273e6",
+          "secondary": "#686868",
+          "danger": "#d9363e",
+          "warning": "#953800",
+          "success": "#009f6a",
+          "info": "#78b6ff"
+        }
+      },
+      "background": {
+        "default": "#181818",
+        "dark": "#181818",
+        "primary": "#429bff",
+        "secondary": "#484848",
+        "success": "#009f6a",
+        "info": "#1273e6",
+        "warning": "#e16f24",
+        "danger": "#d9363e",
+        "weak": {
+          "default": "#282828",
+          "primary": "#1a497d",
+          "secondary": "#282828",
+          "danger": "#80252a",
+          "warning": "#5c2200",
+          "success": "#1b5441",
+          "info": "#e2f4ff"
+        }
+      }
+    }
+  },
+  "avatar": {
+    "size": {
+      "30": "16px",
+      "50": "20px",
+      "100": "30px",
+      "200": "35px",
+      "300": "40px",
+      "400": "45px",
+      "500": "50px",
+      "600": "55px",
+      "700": "60px"
+    }
+  },
+  "blank": {
+    "color": {
+      "background": {
+        "default": "transparent"
       }
     }
   },

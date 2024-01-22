@@ -1,4 +1,7 @@
-var __defProp = Object.defineProperty;
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("@elf-framework/sapa"), require("@elf-framework/color")) : typeof define === "function" && define.amd ? define(["exports", "@elf-framework/sapa", "@elf-framework/color"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global.sapa, global.color));
+})(this, function(exports2, sapa, color) {
+  "use strict";var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
@@ -26,12 +29,8 @@ var __privateMethod = (obj, member, method) => {
   __accessCheck(obj, member, "access private method");
   return method;
 };
-(function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("@elf-framework/sapa"), require("@elf-framework/color")) : typeof define === "function" && define.amd ? define(["exports", "@elf-framework/sapa", "@elf-framework/color"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ui = {}, global.sapa, global.color));
-})(this, function(exports2, sapa, color) {
+
   var _idMap, _items, _parentList, _initialize, initialize_fn, _traverse, traverse_fn;
-  "use strict";
-  const style = "";
   function usePointerStart(...args) {
     let [selector, downAction, moveAction, upAction] = args;
     if (sapa.isFunction(selector)) {
@@ -81,12 +80,20 @@ var __privateMethod = (obj, member, method) => {
     }
     removeParent(targetId) {
     }
+    /**
+     *
+     * @param {*} parentId
+     * @param {*} obj
+     */
     appendChild(parentId, obj) {
     }
     getParentId(childId) {
     }
     deleteInfo(childObj) {
     }
+    /**
+     * parent 에서 child 를 삭제
+     */
     removeChild(parentId, childId) {
     }
     insertChild(targetParentId, targetIndex, currentObject) {
@@ -95,10 +102,13 @@ var __privateMethod = (obj, member, method) => {
     }
     insertItem(targetId, currentId, type = "before") {
     }
+    // target 의 앞으로 객체를 추가하기
     insertBefore(targetId, currentId) {
     }
+    // target 의 앞으로 객체를 추가하기
     insertAfter(targetId, currentId) {
     }
+    // parent 의 마지막에 child 객체를 추가하기
     insertLast(parentId, childId) {
     }
   }
@@ -144,6 +154,11 @@ var __privateMethod = (obj, member, method) => {
     removeParent(targetId) {
       delete __privateGet(this, _parentList)[targetId];
     }
+    /**
+     *
+     * @param {*} parentId
+     * @param {*} obj
+     */
     appendChild(parentId, obj) {
       const parent = this.get(parentId);
       if (!parent)
@@ -169,6 +184,9 @@ var __privateMethod = (obj, member, method) => {
         return childObj;
       }
     }
+    /**
+     * parent 에서 child 를 삭제
+     */
     removeChild(parentId, childId) {
       var _a;
       const parent = this.get(parentId);
@@ -213,12 +231,15 @@ var __privateMethod = (obj, member, method) => {
         currentObject
       );
     }
+    // target 의 앞으로 객체를 추가하기
     insertBefore(targetId, currentId) {
       return this.insertItem(targetId, currentId, "before");
     }
+    // target 의 앞으로 객체를 추가하기
     insertAfter(targetId, currentId) {
       return this.insertItem(targetId, currentId, "after");
     }
+    // parent 의 마지막에 child 객체를 추가하기
     insertLast(parentId, childId) {
       const lastParentId = this.getParentId(childId);
       const childObj = this.removeChild(lastParentId, childId);
@@ -300,6 +321,7 @@ var __privateMethod = (obj, member, method) => {
     columnEnd: "gridColumnEnd",
     columnGap: "columnGap",
     columnSpan: "gridColumn",
+    // Will set gridColumn if no `row` prop given
     columnStart: "gridColumnStart",
     direction: "flexDirection",
     display: "display",
@@ -353,6 +375,7 @@ var __privateMethod = (obj, member, method) => {
     rowEnd: "gridRowEnd",
     rowGap: "rowGap",
     rowSpan: "gridRow",
+    // Will set gridRow if no `row` prop given
     rowStart: "gridRowStart",
     shrink: "flexShrink",
     templateAreas: "gridTemplateAreas",
@@ -387,18 +410,18 @@ var __privateMethod = (obj, member, method) => {
     return newObj;
   }
   function splitStyleKeyAndNoneStyleKey(properties) {
-    const style2 = {};
+    const style = {};
     const noneStyle = {};
     Object.keys(properties).forEach((key) => {
       const value = properties[key];
       const styleKey = ComponentPropsToStylePropsMap[key];
       if (styleKey) {
-        style2[styleKey] = value;
+        style[styleKey] = value;
       } else {
         noneStyle[key] = value;
       }
     });
-    return { style: style2, noneStyle };
+    return { style, noneStyle };
   }
   function convertNumberStyleValue(key, value) {
     if (typeof value === "number") {
@@ -463,7 +486,7 @@ var __privateMethod = (obj, member, method) => {
         title = "",
         content = "",
         shape = "rect",
-        style: style2 = {},
+        style = {},
         closable = false,
         dismissable = false,
         delay = 0,
@@ -493,7 +516,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$U),
+          ...propertyMap(style, cssProperties$U),
           ...{
             transition: `opacity ${localDelay}ms ease-in-out`,
             opacity: hide ? 0 : 1
@@ -559,7 +582,7 @@ var __privateMethod = (obj, member, method) => {
         iterationCount,
         timingFunction,
         duration = "1s",
-        style: style2 = {},
+        style = {},
         content,
         play = false,
         onEnd: onAnimationEnd,
@@ -571,7 +594,7 @@ var __privateMethod = (obj, member, method) => {
         class: "elf--animation",
         style: propertyMap(
           {
-            ...style2,
+            ...style,
             duration,
             name,
             iterationCount,
@@ -651,7 +674,7 @@ var __privateMethod = (obj, member, method) => {
         value = min,
         variant = "default",
         size = "medium",
-        style: style2 = {},
+        style = {},
         indeterminate = false,
         animated = false,
         animationType = "normal"
@@ -670,7 +693,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2,
+            ...style,
             offset: percentValue
           },
           cssProperties$S
@@ -709,7 +732,7 @@ var __privateMethod = (obj, member, method) => {
         thin = false,
         closable = false,
         place = "",
-        style: style2 = {},
+        style = {},
         href = "",
         target = "_blank",
         content,
@@ -764,7 +787,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         disabled: disabled ? "disabled" : void 0,
-        style: propertyMap(style2, cssProperties$R),
+        style: propertyMap(style, cssProperties$R),
         ...extraProps
       };
       const buttonContent = /* @__PURE__ */ sapa.createElementJsx("span", null, pending ? /* @__PURE__ */ sapa.createElementJsx(Animation.spin, { play }, /* @__PURE__ */ sapa.createElementJsx(ProgressCircle, { value: 80, size, variant })) : content || "");
@@ -815,7 +838,7 @@ var __privateMethod = (obj, member, method) => {
     }
     template() {
       const {
-        style: style2 = {},
+        style = {},
         message = "",
         content,
         placement = "bottom",
@@ -836,7 +859,7 @@ var __privateMethod = (obj, member, method) => {
       }, [placement, animated, variant, position]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$Q)
+        style: propertyMap(style, cssProperties$Q)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "content" }, content), show || this.props.show ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "message" }, hideArrow ? void 0 : /* @__PURE__ */ sapa.createElementJsx("div", { class: "arrow" }), icon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "message-content" }, /* @__PURE__ */ sapa.createElementJsx("div", null, message))) : void 0);
     }
@@ -895,7 +918,7 @@ var __privateMethod = (obj, member, method) => {
     position = "fixed",
     placement = "top",
     options = {},
-    style: style2,
+    style,
     variant = "default"
   }) {
     const tooltipInstance = sapa.potal(
@@ -907,7 +930,7 @@ var __privateMethod = (obj, member, method) => {
           position,
           placement,
           message,
-          style: style2,
+          style,
           show: true
         },
         content || /* @__PURE__ */ sapa.createElementJsx("span", null, " ")
@@ -930,7 +953,7 @@ var __privateMethod = (obj, member, method) => {
         collapsed = false,
         moreIcon = null,
         boundary = 50,
-        style: style2 = {},
+        style = {},
         content,
         shape = "normal",
         ...extraStyle
@@ -993,7 +1016,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2,
+            ...style,
             ...styleProperties
           },
           cssProperties$P
@@ -1043,12 +1066,12 @@ var __privateMethod = (obj, member, method) => {
   });
   class LinkButton extends sapa.UIElement {
     template() {
-      const { disabled, style: style2 = {}, content, onClick, href } = this.props;
+      const { disabled, style = {}, content, onClick, href } = this.props;
       const styleObject = {
         class: "elf--link-button",
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$O)
+          ...propertyMap(style, cssProperties$O)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("a", { ...styleObject, onClick, href: href || "#" }, /* @__PURE__ */ sapa.createElementJsx("span", null, content || ""));
@@ -1072,7 +1095,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         disabled,
-        style: style2 = {},
+        style = {},
         value,
         content,
         name,
@@ -1093,7 +1116,7 @@ var __privateMethod = (obj, member, method) => {
       }, [disabled, size, variant]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$N)
+        style: propertyMap(style, cssProperties$N)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("label", null, /* @__PURE__ */ sapa.createElementJsx(
         "input",
@@ -1128,7 +1151,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         disabled,
-        style: style2 = {},
+        style = {},
         name,
         value,
         options = [],
@@ -1145,7 +1168,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         disabled: disabled ? "disabled" : void 0,
-        style: propertyMap(style2, cssProperties$M)
+        style: propertyMap(style, cssProperties$M)
       };
       const radioName = name || "name-" + this.id;
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, options.map((it, index) => {
@@ -1194,7 +1217,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         disabled,
-        style: style2 = {},
+        style = {},
         value,
         content,
         name,
@@ -1214,7 +1237,7 @@ var __privateMethod = (obj, member, method) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$L)
+          ...propertyMap(style, cssProperties$L)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("label", null, /* @__PURE__ */ sapa.createElementJsx(
@@ -1262,7 +1285,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         disabled,
-        style: style2 = {},
+        style = {},
         value = [],
         options = [],
         onChange,
@@ -1279,7 +1302,7 @@ var __privateMethod = (obj, member, method) => {
         ]),
         disabled: disabled ? "disabled" : void 0,
         style: {
-          ...propertyMap(style2, cssProperties$K)
+          ...propertyMap(style, cssProperties$K)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, options.map((it, index) => {
@@ -1332,7 +1355,7 @@ var __privateMethod = (obj, member, method) => {
   class Divider extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         variant = "default",
         size = "small",
         margin = "10px",
@@ -1350,7 +1373,7 @@ var __privateMethod = (obj, member, method) => {
         style: {
           ...propertyMap(
             {
-              ...style2,
+              ...style,
               margin
             },
             cssProperties$J
@@ -1552,7 +1575,7 @@ var __privateMethod = (obj, member, method) => {
   class Menu extends sapa.UIElement {
     template() {
       let {
-        style: style2 = {},
+        style = {},
         type = "menu",
         x = 0,
         y = 0,
@@ -1563,7 +1586,7 @@ var __privateMethod = (obj, member, method) => {
         variant = "light",
         compact = false
       } = this.props;
-      let itemStyle = { ...style2 };
+      let itemStyle = { ...style };
       if (x !== 0)
         itemStyle = { ...itemStyle, left: x };
       if (y !== 0)
@@ -1636,7 +1659,7 @@ var __privateMethod = (obj, member, method) => {
         menuStyle = {},
         disabled = void 0,
         autoPosition = false,
-        style: style2
+        style
       } = this.props;
       const { isOpen } = this.state;
       const showMenu = isOpen && items;
@@ -1648,7 +1671,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         disabled,
-        style: propertyMap(style2, cssProperties$H)
+        style: propertyMap(style, cssProperties$H)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx(
         "div",
@@ -1715,10 +1738,10 @@ var __privateMethod = (obj, member, method) => {
   });
   class Dialog extends sapa.UIElement {
     initState() {
-      const { visible = false, style: style2 = {}, center } = this.props;
+      const { visible = false, style = {}, center } = this.props;
       return {
         visible,
-        style: style2,
+        style,
         center
       };
     }
@@ -1766,7 +1789,7 @@ var __privateMethod = (obj, member, method) => {
       return "";
     }
     template() {
-      const { style: style2 = {}, visible, center } = this.state;
+      const { style = {}, visible, center } = this.state;
       const { noBorder, title, closable = true, footer } = this.props;
       const styleObject = {
         class: sapa.classnames("elf--dialog", {
@@ -1775,7 +1798,7 @@ var __privateMethod = (obj, member, method) => {
           "no-border": noBorder
         }),
         style: {
-          ...propertyMap(style2, cssProperties$G)
+          ...propertyMap(style, cssProperties$G)
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-title" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-title-text" }, title), this.props.tools ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--dialog-title-tools", ref: "$tools" }, this.props.tools) : void 0, closable ? /* @__PURE__ */ sapa.createElementJsx(
@@ -1794,7 +1817,7 @@ var __privateMethod = (obj, member, method) => {
   class Flex extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         class: className = "",
         content,
         stack,
@@ -1811,7 +1834,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, {})
+          ...propertyMap(style, {})
         }
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, content);
@@ -1842,7 +1865,7 @@ var __privateMethod = (obj, member, method) => {
       const {
         title = "",
         icon,
-        style: style2 = {},
+        style = {},
         tooltip: tooltip2,
         hoverable = true
       } = this.props;
@@ -1871,7 +1894,7 @@ var __privateMethod = (obj, member, method) => {
           class: localClass,
           "data-selected-type": this.state.selectedType,
           onClick: this.props.onClick,
-          style: style2
+          style
         },
         localTooltip ? /* @__PURE__ */ sapa.createElementJsx(Tooltip, { ...localTooltip, style: { height: "100%" } }, buttonComponent) : buttonComponent
       );
@@ -1897,13 +1920,13 @@ var __privateMethod = (obj, member, method) => {
   class ToolsCustomItem extends ToolsItem {
     template() {
       var _a, _b;
-      const { hoverable = true, style: style2 = {} } = this.props;
+      const { hoverable = true, style = {} } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--tools-item custom", {
           hoverable
         });
       }, [hoverable]);
-      return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass, style: style2 }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a, this));
+      return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass, style }, (_b = (_a = this.props).render) == null ? void 0 : _b.call(_a, this));
     }
   }
   registerComponent("tools-custom-item", ToolsCustomItem);
@@ -1927,7 +1950,7 @@ var __privateMethod = (obj, member, method) => {
         title = "",
         icon,
         disabled,
-        style: style2 = {},
+        style = {},
         items,
         class: className,
         hoverable = true,
@@ -1946,7 +1969,7 @@ var __privateMethod = (obj, member, method) => {
           className
         );
       }, [isSelected, hasItems, className, hoverable]);
-      return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass, disabled, style: style2 }, /* @__PURE__ */ sapa.createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ sapa.createElementJsx(Flex, { style: { columnGap: 4 } }, [
+      return /* @__PURE__ */ sapa.createElementJsx("div", { class: localClass, disabled, style }, /* @__PURE__ */ sapa.createElementJsx("button", { type: "button", class: "tools-button" }, /* @__PURE__ */ sapa.createElementJsx(Flex, { style: { columnGap: 4 } }, [
         icon ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "icon" }, sapa.isFunction(icon) ? icon() : icon) : void 0,
         title ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "menu-title" }, sapa.isFunction(title) ? title() : title) : void 0
       ].filter(Boolean)), hasItems && !noArrow ? /* @__PURE__ */ sapa.createElementJsx("span", { class: sapa.classnames("arrow", { opened }) }, /* @__PURE__ */ sapa.createElementJsx(ArrowIcon, null)) : void 0), opened && !disabled ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "menu-area" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "background", "data-direction": direction }), /* @__PURE__ */ sapa.createElementJsx(
@@ -2102,7 +2125,7 @@ var __privateMethod = (obj, member, method) => {
   class Tools extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         vertical = false,
         emphasized = false,
         moreIcon
@@ -2175,7 +2198,7 @@ var __privateMethod = (obj, member, method) => {
       }, [vertical, emphasized]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$F)
+        style: propertyMap(style, cssProperties$F)
       };
       const items = makeToolsItem(this.props.items, {
         visibleTargetList,
@@ -2216,12 +2239,12 @@ var __privateMethod = (obj, member, method) => {
   }
   class ToolbarItem extends sapa.UIElement {
     template() {
-      const { items, style: style2, emphasized, moreIcon } = this.props;
+      const { items, style, emphasized, moreIcon } = this.props;
       return /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--toolbar-item" }, /* @__PURE__ */ sapa.createElementJsx(
         Tools,
         {
           items,
-          style: style2,
+          style,
           emphasized,
           moreIcon
         }
@@ -2237,7 +2260,7 @@ var __privateMethod = (obj, member, method) => {
   class Toolbar extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         align = "space-between",
         variant = "default",
         rounded = false,
@@ -2259,7 +2282,7 @@ var __privateMethod = (obj, member, method) => {
       }, [align, variant, rounded, emphasized, className]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$E)
+        style: propertyMap(style, cssProperties$E)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, makeToolbarItem(items, {
         emphasized
@@ -2282,7 +2305,7 @@ var __privateMethod = (obj, member, method) => {
   class Notification extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         icon,
         content,
         tools = [],
@@ -2296,7 +2319,7 @@ var __privateMethod = (obj, member, method) => {
       }, [direction, icon]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$D)
+        style: propertyMap(style, cssProperties$D)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject, onContextMenu: (e) => e.preventDefault() }, icon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "icon" }, icon) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "content" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "text" }, content)), (tools == null ? void 0 : tools.length) ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "tools" }, tools) : void 0);
     }
@@ -2317,7 +2340,7 @@ var __privateMethod = (obj, member, method) => {
   class Toast extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         delay = 0,
         animationDelay = 300,
@@ -2345,7 +2368,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$C),
+          ...propertyMap(style, cssProperties$C),
           transition: `opacity ${animationDelay}ms ease-in-out, transform  ${animationDelay}ms ease-in-out`,
           opacity: hide ? 0 : 1,
           transform: hide ? "translateY(10px)" : "translateY(0px)",
@@ -2481,7 +2504,7 @@ var __privateMethod = (obj, member, method) => {
     }
     template() {
       const {
-        style: style2 = {},
+        style = {},
         body = "",
         content,
         placement = "bottom",
@@ -2492,7 +2515,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: sapa.classnames("elf--popover", { [placement]: true, animated }),
         style: {
-          ...propertyMap(style2, cssProperties$B)
+          ...propertyMap(style, cssProperties$B)
         }
       };
       const isPopoverShow = show || this.props.show;
@@ -2562,7 +2585,7 @@ var __privateMethod = (obj, member, method) => {
   class Panel extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         theme,
         title = "",
@@ -2576,7 +2599,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         "data-theme": theme,
-        style: propertyMap(style2, cssProperties$A)
+        style: propertyMap(style, cssProperties$A)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, title ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--panel-title" }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--panel-title-text" }, title), tools ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--panel-title-tools" }, tools || []) : void 0) : void 0, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--panel-content" }, content), footer ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--panel-footer" }, footer) : void 0);
     }
@@ -2596,7 +2619,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       var _a;
       const {
-        style: style2 = {},
+        style = {},
         items = [],
         fitted = false,
         align = "left",
@@ -2642,7 +2665,7 @@ var __privateMethod = (obj, member, method) => {
       }, [activeKey, setIndicatorInfo, orientation, showIndicator, stripType]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$z)
+        style: propertyMap(style, cssProperties$z)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx(
         "div",
@@ -2655,7 +2678,7 @@ var __privateMethod = (obj, member, method) => {
           const isSelected = sapa.isUndefined(it.selected) ? activeKey === it.key : !!it.selected;
           const isDisabled = !!it.disabled;
           const selectedStyle = it.selectedStyle || {};
-          const style22 = it.style || {};
+          const style2 = it.style || {};
           const zIndex = it.zIndex || void 0;
           return /* @__PURE__ */ sapa.createElementJsx(
             "div",
@@ -2665,7 +2688,7 @@ var __privateMethod = (obj, member, method) => {
                 disabled: isDisabled,
                 zIndex
               }),
-              style: isSelected ? selectedStyle : style22
+              style: isSelected ? selectedStyle : style2
             },
             /* @__PURE__ */ sapa.createElementJsx("div", { ref: `tab-${it.key}`, onClick: it.onClick }, it.title)
           );
@@ -2713,7 +2736,7 @@ var __privateMethod = (obj, member, method) => {
     }
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         full,
         fitted,
@@ -2735,7 +2758,7 @@ var __privateMethod = (obj, member, method) => {
       }, [full]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$y)
+        style: propertyMap(style, cssProperties$y)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--tab-header" }, /* @__PURE__ */ sapa.createElementJsx(
         TabStrip,
@@ -2752,11 +2775,11 @@ var __privateMethod = (obj, member, method) => {
           compact,
           style: stripStyle,
           items: content.map((it) => {
-            const { title, key, onClick, disabled, style: style22, selectedStyle } = it.props;
+            const { title, key, onClick, disabled, style: style2, selectedStyle } = it.props;
             const selected = activeKey === key;
             return {
               title,
-              style: style22,
+              style: style2,
               disabled,
               selectedStyle,
               key,
@@ -2782,14 +2805,14 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("tabitem", TabItem);
   class Layout extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, content, wrap = false } = this.props;
+      const { style = {}, content, wrap = false } = this.props;
       const styleObject = {
         class: sapa.classnames("elf--layout", {
           stack: this.props.stack,
           wrap
         }),
         style: {
-          ...propertyMap(style2, {
+          ...propertyMap(style, {
             backgroundColor: "--elf--layout-background-color",
             gap: "--elf--layout-gap"
           })
@@ -2802,8 +2825,8 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("Layout", Layout);
   class VBox extends Flex {
     template() {
-      const { style: style2 = {}, content } = this.props;
-      return /* @__PURE__ */ sapa.createElementJsx(Flex, { stack: true, style: style2 }, content);
+      const { style = {}, content } = this.props;
+      return /* @__PURE__ */ sapa.createElementJsx(Flex, { stack: true, style }, content);
     }
   }
   registerComponent("vbox", VBox);
@@ -2823,7 +2846,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         class: className = "",
-        style: style2 = {},
+        style = {},
         columns = [],
         rows = [],
         gap,
@@ -2841,7 +2864,7 @@ var __privateMethod = (obj, member, method) => {
           gap,
           columnGap,
           rowGap,
-          ...propertyMap({ ...style2, ...styleProperties }, {})
+          ...propertyMap({ ...style, ...styleProperties }, {})
         },
         ...noneStyle
       };
@@ -2855,14 +2878,14 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("grid", Grid);
   registerComponent("Grid", Grid);
-  function Column({ content, span = 1, style: style2, ...extraProps }) {
+  function Column({ content, span = 1, style, ...extraProps }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       "div",
       {
         class: "elf--column",
         ...extraProps,
         style: {
-          ...style2,
+          ...style,
           gridColumn: `span ${span}`
         }
       },
@@ -2900,7 +2923,7 @@ var __privateMethod = (obj, member, method) => {
         size = "medium",
         readOnly = false,
         invalid,
-        style: style2,
+        style,
         value,
         min,
         max,
@@ -2926,7 +2949,7 @@ var __privateMethod = (obj, member, method) => {
       }, [focused, hover, disabled, icon, invalid, size, readOnly]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$x)
+        style: propertyMap(style, cssProperties$x)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -3071,7 +3094,7 @@ var __privateMethod = (obj, member, method) => {
         value,
         sync = false
       } = this.props;
-      const { style: style2 = {}, focused = false, hover = false } = this.state;
+      const { style = {}, focused = false, hover = false } = this.state;
       if (!this.state.parsedColor || sync) {
         this.state.parsedColor = color.parse(value);
       }
@@ -3088,7 +3111,7 @@ var __privateMethod = (obj, member, method) => {
       }, [focused, hover, disabled, icon]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$w)
+        style: propertyMap(style, cssProperties$w)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -3293,7 +3316,7 @@ var __privateMethod = (obj, member, method) => {
     }
     initState() {
       const {
-        style: style2 = {},
+        style = {},
         autoFocus = false,
         focused,
         hover = false,
@@ -3304,7 +3327,7 @@ var __privateMethod = (obj, member, method) => {
       } = this.props;
       const parsedColor = color.parse(value);
       return {
-        style: style2,
+        style,
         autoFocus,
         hover: hover || false,
         focused: focused || false,
@@ -3318,7 +3341,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const { icon, value } = this.props;
       const {
-        style: style2 = {},
+        style = {},
         focused = false,
         hover = false,
         placeholder,
@@ -3340,7 +3363,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$v)
+          ...propertyMap(style, cssProperties$v)
         }
       };
       const inputEvents = {
@@ -3554,7 +3577,7 @@ var __privateMethod = (obj, member, method) => {
     }
     initState() {
       const {
-        style: style2 = {},
+        style = {},
         autoFocus = false,
         focused,
         hover = false,
@@ -3563,7 +3586,7 @@ var __privateMethod = (obj, member, method) => {
         hasOpacity = true
       } = this.props;
       return {
-        style: style2,
+        style,
         autoFocus,
         hover: hover || false,
         focused: focused || false,
@@ -3575,7 +3598,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const { icon, value } = this.props;
       const {
-        style: style2 = {},
+        style = {},
         focused = false,
         hover = false,
         placeholder,
@@ -3592,7 +3615,7 @@ var __privateMethod = (obj, member, method) => {
           }
         ]),
         style: {
-          ...propertyMap(style2, cssProperties$u)
+          ...propertyMap(style, cssProperties$u)
         }
       };
       const { r, g, b, a } = color.parse(value);
@@ -3781,7 +3804,7 @@ var __privateMethod = (obj, member, method) => {
         readOnly = false,
         invalid,
         rows,
-        style: style2,
+        style,
         resizable
       } = this.props;
       const {
@@ -3808,7 +3831,7 @@ var __privateMethod = (obj, member, method) => {
       }, [focused, hover, disabled, icon, invalid, size, readOnly, resizable]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$t)
+        style: propertyMap(style, cssProperties$t)
       };
       const inputEvents = {
         onInput: this.props.onInput,
@@ -3886,7 +3909,7 @@ var __privateMethod = (obj, member, method) => {
     invalid,
     invalidIcon,
     invalidMessage,
-    style: style2 = {}
+    style = {}
   }) {
     const localClass = sapa.useMemo(() => {
       return sapa.classnames("elf--field", {
@@ -3898,7 +3921,7 @@ var __privateMethod = (obj, member, method) => {
     const styleObject = {
       class: localClass,
       style: {
-        ...propertyMap(style2, cssProperties$s)
+        ...propertyMap(style, cssProperties$s)
       }
     };
     return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, label ? /* @__PURE__ */ sapa.createElementJsx("label", { class: "label" }, label, required ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "required" }, requiredText) : null, optional ? /* @__PURE__ */ sapa.createElementJsx("span", { class: "optional" }, optionalText) : null) : void 0, (content == null ? void 0 : content.length) ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "field-area" }, (content == null ? void 0 : content.length) ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "field-area-content" }, content, !invalid && validIcon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "valid-icon" }, validIcon) : null, invalid && invalidIcon ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "invalid-icon" }, invalidIcon) : null) : void 0, help ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "help" }, help) : void 0, invalid ? /* @__PURE__ */ sapa.createElementJsx("div", { class: "invalid" }, invalidMessage) : void 0) : void 0);
@@ -3907,7 +3930,7 @@ var __privateMethod = (obj, member, method) => {
     help,
     label,
     size,
-    style: style2,
+    style,
     disabled,
     required,
     requiredText,
@@ -3926,7 +3949,7 @@ var __privateMethod = (obj, member, method) => {
       label,
       help,
       size,
-      style: style2,
+      style,
       disabled,
       required,
       requiredText,
@@ -3962,7 +3985,7 @@ var __privateMethod = (obj, member, method) => {
     help,
     label,
     size,
-    style: style2,
+    style,
     disabled,
     required,
     requiredText,
@@ -3980,7 +4003,7 @@ var __privateMethod = (obj, member, method) => {
       label,
       help,
       size,
-      style: style2,
+      style,
       disabled,
       required,
       requiredText,
@@ -4033,7 +4056,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         class: className,
-        style: style2 = {},
+        style = {},
         itemHeight = DEFAULT_SCROLL_HEIGHT,
         items = [],
         hideScrollbar = false
@@ -4047,7 +4070,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$r),
+          ...propertyMap(style, cssProperties$r),
           "--elf--virtual-scroll-item-width": "100%",
           "--elf--virtual-scroll-item-height": `${itemHeight}px`,
           "--elf--virtual-scroll-item-count": totalCount,
@@ -4192,12 +4215,12 @@ var __privateMethod = (obj, member, method) => {
   registerComponent("VirtualScroll", VirtualScroll);
   registerComponent("virtual-scroll", VirtualScroll);
   registerComponent("virtualscroll", VirtualScroll);
-  function VirtualScrollItem({ top, style: style2, content }) {
+  function VirtualScrollItem({ top, style, content }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       "div",
       {
         class: "elf--virtual-scroll-item",
-        style: { ...style2, "--elf--virtual-scroll-item-top": top + "px" }
+        style: { ...style, "--elf--virtual-scroll-item-top": top + "px" }
       },
       content
     );
@@ -4327,7 +4350,7 @@ var __privateMethod = (obj, member, method) => {
     }
     initState() {
       const {
-        style: style2 = {},
+        style = {},
         autoFocus = false,
         focused,
         hover = false,
@@ -4336,7 +4359,7 @@ var __privateMethod = (obj, member, method) => {
         hasOpacity = true
       } = this.props;
       return {
-        style: style2,
+        style,
         autoFocus,
         hover: hover || false,
         focused: focused || false,
@@ -4348,7 +4371,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const { icon, value } = this.props;
       const {
-        style: style2 = {},
+        style = {},
         focused = false,
         hover = false,
         placeholder,
@@ -4370,7 +4393,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$q)
+          ...propertyMap(style, cssProperties$q)
         }
       };
       const properties = {
@@ -4801,7 +4824,7 @@ var __privateMethod = (obj, member, method) => {
         hideSlide = false,
         hideInput = false,
         shadow,
-        style: style2 = {},
+        style = {},
         disabled
       } = this.props;
       const x = width * s;
@@ -4817,7 +4840,7 @@ var __privateMethod = (obj, member, method) => {
         style: {
           ...propertyMap(
             {
-              ...style2,
+              ...style,
               width,
               height
             },
@@ -5028,7 +5051,7 @@ var __privateMethod = (obj, member, method) => {
         as = "div",
         id,
         class: className = "",
-        style: style2 = {},
+        style = {},
         content,
         ...extraStyle
       } = this.props;
@@ -5036,7 +5059,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: sapa.classnames(className),
         id,
-        style: propertyMap({ ...style2, ...styleProperties }, {}),
+        style: propertyMap({ ...style, ...styleProperties }, {}),
         ...noneStyle
       };
       Object.keys(styleObject).forEach((key) => {
@@ -5049,21 +5072,21 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("view", View);
   registerComponent("View", View);
-  function TextInputItem({ key, value, style: style2, item, onChange }) {
+  function TextInputItem({ key, value, style, item, onChange }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       InputEditor,
       {
         type: "text",
         value,
         width: "100%",
-        style: style2,
+        style,
         onInput: (e) => {
           onChange && onChange(e.target.value, item, key);
         }
       }
     );
   }
-  function NumberInputItem({ value, item, style: style2, onChange, onInput }) {
+  function NumberInputItem({ value, item, style, onChange, onInput }) {
     const { min = 0, max = 100, step = 1 } = item;
     return /* @__PURE__ */ sapa.createElementJsx(
       InputEditor,
@@ -5074,7 +5097,7 @@ var __privateMethod = (obj, member, method) => {
         max,
         step,
         width: "100%",
-        style: style2,
+        style,
         onInput: (e) => {
           onInput && onInput(e.target.value, item, e);
           if (e.target.value === "" && e.target.value === "-")
@@ -5090,7 +5113,7 @@ var __privateMethod = (obj, member, method) => {
     return /* @__PURE__ */ sapa.createElementJsx(View, { as: "div", key }, value);
   }
   function GridItem({
-    item: { gap, rowGap, columnGap, style: style2, columns = [], items = [] },
+    item: { gap, rowGap, columnGap, style, columns = [], items = [] },
     root,
     onChange
   }) {
@@ -5101,20 +5124,19 @@ var __privateMethod = (obj, member, method) => {
         gap,
         rowGap,
         columnGap,
-        style: style2
+        style
       },
       items.map((item, index) => root.makeEditorItem(item, index, onChange))
     );
   }
-  const ButtonItem$1 = "";
-  function ButtonItem({ style: style2, item }) {
+  function ButtonItem({ style, item }) {
     const { onClick, justified, iconOnly, shape, variant, title } = item;
     return /* @__PURE__ */ sapa.createElementJsx(
       Button,
       {
         onClick,
         style: {
-          ...style2,
+          ...style,
           height: 26
         },
         justified,
@@ -5156,7 +5178,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         disabled,
-        style: style2 = {},
+        style = {},
         value,
         options = [],
         onChange,
@@ -5175,7 +5197,7 @@ var __privateMethod = (obj, member, method) => {
       }, [disabled, size, variant]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$o)
+        style: propertyMap(style, cssProperties$o)
       };
       sapa.useEffect(() => {
         this.refs.$select.value = value;
@@ -5194,23 +5216,23 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("select", Select);
   registerComponent("Select", Select);
-  function SelectItem({ value, item, style: style2, onChange }) {
+  function SelectItem({ value, item, style, onChange }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       Select,
       {
         value,
-        style: style2,
+        style,
         onChange: (v) => onChange(v, item),
         options: item.options
       }
     );
   }
-  function BooleanItem({ value, item, onChange, style: style2 }) {
+  function BooleanItem({ value, item, onChange, style }) {
     return /* @__PURE__ */ sapa.createElementJsx(
       Checkbox,
       {
         checked: value,
-        style: style2,
+        style,
         onChange: (e) => {
           onChange && onChange(e.target.checked, item);
         }
@@ -5235,7 +5257,7 @@ var __privateMethod = (obj, member, method) => {
         disabled = false,
         variant = "default",
         size = "medium",
-        style: style2 = {},
+        style = {},
         content,
         withLabel = false,
         labels = void 0,
@@ -5254,7 +5276,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, size, disabled, readOnly, withLabel]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$n)
+        style: propertyMap(style, cssProperties$n)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx(
         "input",
@@ -5277,13 +5299,13 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("switch", Switch);
   registerComponent("Switch", Switch);
-  function SwitchItem({ item, value, onChange, style: style2 }) {
+  function SwitchItem({ item, value, onChange, style }) {
     const { variant } = item;
     return /* @__PURE__ */ sapa.createElementJsx(
       Switch,
       {
         checked: value,
-        style: style2,
+        style,
         variant,
         onChange: (e) => {
           onChange && onChange(e.target.checked, item);
@@ -5292,11 +5314,11 @@ var __privateMethod = (obj, member, method) => {
     );
   }
   function TabContainerItem({ item, root }) {
-    const { style: style2, stripType, activeKey, fitted, compact, onChange } = item;
+    const { style, stripType, activeKey, fitted, compact, onChange } = item;
     return /* @__PURE__ */ sapa.createElementJsx(
       Tab,
       {
-        style: style2,
+        style,
         compact,
         activeKey,
         fitted,
@@ -5370,7 +5392,7 @@ var __privateMethod = (obj, member, method) => {
         fillOffset = 0,
         disabled = false,
         readOnly = false,
-        style: style2 = {},
+        style = {},
         valueFunc = initValue,
         onInput,
         fitted = false
@@ -5434,7 +5456,7 @@ var __privateMethod = (obj, member, method) => {
       ]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$m)
+        style: propertyMap(style, cssProperties$m)
       };
       const currentValue = Math.max(min, Math.min(max, value));
       const currenValueOffset = (currentValue - min) / (max - min) * 100;
@@ -5475,7 +5497,7 @@ var __privateMethod = (obj, member, method) => {
   }
   registerComponent("slider", Slider);
   registerComponent("Slider", Slider);
-  function SliderItem({ value, item, style: style2, onChange }) {
+  function SliderItem({ value, item, style, onChange }) {
     const { min = 0, max = 100, step = 1, fitted = true } = item;
     return /* @__PURE__ */ sapa.createElementJsx(
       Slider,
@@ -5484,7 +5506,7 @@ var __privateMethod = (obj, member, method) => {
         max,
         step,
         value,
-        style: style2,
+        style,
         size: "small",
         fitted,
         onInput: (v) => {
@@ -5495,11 +5517,11 @@ var __privateMethod = (obj, member, method) => {
     );
   }
   function DividerItem({ item }) {
-    const { margin = 10, style: style2 } = item;
-    return /* @__PURE__ */ sapa.createElementJsx(Divider, { style: style2, margin });
+    const { margin = 10, style } = item;
+    return /* @__PURE__ */ sapa.createElementJsx(Divider, { style, margin });
   }
-  function LabelItem({ style: style2, label }) {
-    return /* @__PURE__ */ sapa.createElementJsx(View, { style: style2 }, label);
+  function LabelItem({ style, label }) {
+    return /* @__PURE__ */ sapa.createElementJsx(View, { style }, label);
   }
   const cssProperties$l = makeCssVariablePrefixMap("--elf--property-editor", {
     backgroundColor: true,
@@ -5620,11 +5642,11 @@ var __privateMethod = (obj, member, method) => {
         oldLabel = label(this.state.value);
       }
       if (type === "tab") {
-        const { style: style2, stripType, activeKey, fitted, compact } = item;
+        const { style, stripType, activeKey, fitted, compact } = item;
         return /* @__PURE__ */ sapa.createElementJsx(
           Tab,
           {
-            style: style2,
+            style,
             compact,
             activeKey,
             fitted,
@@ -5720,7 +5742,7 @@ var __privateMethod = (obj, member, method) => {
       );
     }
     template() {
-      const { style: style2 = {}, value, sync, direction = "horizontal" } = this.props;
+      const { style = {}, value, sync, direction = "horizontal" } = this.props;
       const { oldValue } = this.state;
       if (oldValue != value) {
         this.setState(
@@ -5769,7 +5791,7 @@ var __privateMethod = (obj, member, method) => {
       }, [this.props.inspector, onChange, this.state.value]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$l)
+        style: propertyMap(style, cssProperties$l)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, inspectorList);
     }
@@ -5923,10 +5945,10 @@ var __privateMethod = (obj, member, method) => {
       return this.props.content.find((it) => it.props.direction === direction);
     }
     template() {
-      const { style: style2 = {} } = this.props;
+      const { style = {} } = this.props;
       const styleObject = {
         class: "elf--app-layout",
-        style: propertyMap(style2, cssProperties$k)
+        style: propertyMap(style, cssProperties$k)
       };
       const topLayoutItem = this.getItem("top");
       const bottomLayoutItem = this.getItem("bottom");
@@ -5991,7 +6013,7 @@ var __privateMethod = (obj, member, method) => {
     maxHeight = 500,
     minHeight = 0,
     resizable = false,
-    style: style2,
+    style,
     onResize,
     onResizeEnd
   }) {
@@ -6058,7 +6080,7 @@ var __privateMethod = (obj, member, method) => {
         class: "elf--app-layout-item",
         "data-direction": direction,
         "data-resizable": resizable,
-        style: { ...style2, width: itemWidth, height: itemHeight }
+        style: { ...style, width: itemWidth, height: itemHeight }
       },
       content,
       resizable ? /* @__PURE__ */ sapa.createElementJsx(
@@ -6083,7 +6105,7 @@ var __privateMethod = (obj, member, method) => {
         size = "medium",
         content = "",
         icon,
-        style: style2 = {},
+        style = {},
         disabled = false,
         ...extrProps
       } = this.props;
@@ -6097,7 +6119,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$j)
+          ...propertyMap(style, cssProperties$j)
         },
         ...extrProps
       };
@@ -6115,7 +6137,7 @@ var __privateMethod = (obj, member, method) => {
     title,
     selected = false,
     multiline,
-    style: style2 = {},
+    style = {},
     href = "#",
     onClick,
     tooltip: tooltip2
@@ -6132,7 +6154,7 @@ var __privateMethod = (obj, member, method) => {
     const localClass = sapa.useMemo(() => {
       return sapa.classnames("elf--breadcrumbs-item", { selected, multiline });
     }, [selected, multiline]);
-    return /* @__PURE__ */ sapa.createElementJsx("span", { class: localClass, style: propertyMap(style2, itemCssProperties) }, tooltip2 ? /* @__PURE__ */ sapa.createElementJsx(Tooltip, { ref: "$tooltip", ...tooltip2 }, /* @__PURE__ */ sapa.createElementJsx(
+    return /* @__PURE__ */ sapa.createElementJsx("span", { class: localClass, style: propertyMap(style, itemCssProperties) }, tooltip2 ? /* @__PURE__ */ sapa.createElementJsx(Tooltip, { ref: "$tooltip", ...tooltip2 }, /* @__PURE__ */ sapa.createElementJsx(
       "a",
       {
         href,
@@ -6151,15 +6173,15 @@ var __privateMethod = (obj, member, method) => {
       title
     )) : /* @__PURE__ */ sapa.createElementJsx("a", { href, onClick }, title));
   }
-  function BreadcrumbsTitleItem({ title, style: style2 = {} }) {
-    return /* @__PURE__ */ sapa.createElementJsx("span", { class: "elf--breadcrumbs-title-item", style: style2 }, title);
+  function BreadcrumbsTitleItem({ title, style = {} }) {
+    return /* @__PURE__ */ sapa.createElementJsx("span", { class: "elf--breadcrumbs-title-item", style }, title);
   }
   class Breadcrumbs extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, items = [], separator = "〉" } = this.props;
+      const { style = {}, items = [], separator = "〉" } = this.props;
       const styleObject = {
         class: "elf--breadcrumbs",
-        style: propertyMap(style2, cssProperties$i)
+        style: propertyMap(style, cssProperties$i)
       };
       const renderItems = items.filter((it) => !((it == null ? void 0 : it.selected) && (it == null ? void 0 : it.multiline)));
       const renderMultiItems = items.filter(
@@ -6188,7 +6210,7 @@ var __privateMethod = (obj, member, method) => {
   });
   class Ghost extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, animated = false, content } = this.props;
+      const { style = {}, animated = false, content } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--ghost", {
           animated
@@ -6199,7 +6221,7 @@ var __privateMethod = (obj, member, method) => {
         style: {
           ...propertyMap(
             {
-              ...style2
+              ...style
             },
             cssProperties$h
           )
@@ -6221,7 +6243,7 @@ var __privateMethod = (obj, member, method) => {
   class Avatar extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         size = "medium",
         shape = "circle",
@@ -6240,7 +6262,7 @@ var __privateMethod = (obj, member, method) => {
       }, [shape, size, variant, disabled]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$g),
+        style: propertyMap(style, cssProperties$g),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--avatar-inner" }, ghost ? /* @__PURE__ */ sapa.createElementJsx(Ghost, { animated: true }) : content));
@@ -6260,7 +6282,7 @@ var __privateMethod = (obj, member, method) => {
   class Tag extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         removable = false,
         variant = "default",
@@ -6278,19 +6300,19 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, filled, disabled, readOnly]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$f)
+        style: propertyMap(style, cssProperties$f)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("label", null, content), removable && /* @__PURE__ */ sapa.createElementJsx("span", { class: "close", title: "Close", onClick: this.props.onClose }, "×"));
     }
   }
   class TagGroup extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, content, gap } = this.props;
+      const { style = {}, content, gap } = this.props;
       const styleObject = {
         class: "elf--tag-group",
         style: propertyMap(
           {
-            ...style2,
+            ...style,
             gap
           },
           groupCssProperties
@@ -6312,7 +6334,7 @@ var __privateMethod = (obj, member, method) => {
   class Badge extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         variant = "default",
         filled = false,
@@ -6339,7 +6361,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, filled, disabled, readOnly, size, fixed, placement]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$e)
+        style: propertyMap(style, cssProperties$e)
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("label", null, content));
     }
@@ -6368,7 +6390,7 @@ var __privateMethod = (obj, member, method) => {
         title,
         variant = "default",
         size = "medium",
-        style: style2 = {},
+        style = {},
         shape = "round",
         indeterminate = false
       } = this.props;
@@ -6382,7 +6404,7 @@ var __privateMethod = (obj, member, method) => {
       }, [variant, size, indeterminate, shape]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$d)
+        style: propertyMap(style, cssProperties$d)
       };
       const localValue = (value - min) / (max - min);
       const percentValue = Math.round(localValue * PERCENT_NUMBER);
@@ -6596,7 +6618,7 @@ var __privateMethod = (obj, member, method) => {
     }
     template() {
       const {
-        style: style2,
+        style,
         variant = "default",
         itemHeight = 32,
         overscanRowCount = 30,
@@ -6622,7 +6644,7 @@ var __privateMethod = (obj, member, method) => {
       const localClass = "elf--treeview";
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$c)
+        style: propertyMap(style, cssProperties$c)
       };
       const itemRendererProps = {
         onDoubleClick: sapa.useCallback(
@@ -6632,8 +6654,8 @@ var __privateMethod = (obj, member, method) => {
           [onDoubleClickNode]
         ),
         onSelect: sapa.useCallback(
-          (item, style22, e) => {
-            if (style22 === selectionStyle) {
+          (item, style2, e) => {
+            if (style2 === selectionStyle) {
               onClickNode == null ? void 0 : onClickNode(item, e);
             }
           },
@@ -6875,7 +6897,7 @@ var __privateMethod = (obj, member, method) => {
         quiet = false,
         columns = [],
         data = [],
-        style: style2 = {},
+        style = {},
         selectionStyle = "highlight",
         selectionType = "multiple"
       } = this.props;
@@ -6888,7 +6910,7 @@ var __privateMethod = (obj, member, method) => {
       }, [quiet, selectionStyle, selectionType]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$b)
+        style: propertyMap(style, cssProperties$b)
       };
       let allChecked = false;
       let indeterminate = false;
@@ -6968,7 +6990,7 @@ var __privateMethod = (obj, member, method) => {
     template() {
       const {
         orientation = "vertical",
-        style: style2 = {},
+        style = {},
         size = "medium",
         shape = "round",
         content,
@@ -7010,7 +7032,7 @@ var __privateMethod = (obj, member, method) => {
       const styleObject = {
         class: localClass,
         style: {
-          ...propertyMap(style2, cssProperties$a)
+          ...propertyMap(style, cssProperties$a)
         },
         ...extraProps
       };
@@ -7026,7 +7048,7 @@ var __privateMethod = (obj, member, method) => {
   class CardPreview extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         content,
         ghost = false,
         ratio = "1:1",
@@ -7042,7 +7064,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2,
+            ...style,
             ratio: p / l
           },
           cssProperties$9
@@ -7058,7 +7080,7 @@ var __privateMethod = (obj, member, method) => {
   class CardHeader extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         nowrap = false,
         title,
         actions = [],
@@ -7076,7 +7098,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2
+            ...style
           },
           cssProperties$8
         ),
@@ -7098,7 +7120,7 @@ var __privateMethod = (obj, member, method) => {
   });
   class CardContainer extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, content, ...extraProps } = this.props;
+      const { style = {}, content, ...extraProps } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--card-container", {});
       }, []);
@@ -7106,7 +7128,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2
+            ...style
           },
           cssProperties$7
         ),
@@ -7122,7 +7144,7 @@ var __privateMethod = (obj, member, method) => {
   class CardFooter extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         ghost = false,
         noDivider = false,
         content,
@@ -7137,7 +7159,7 @@ var __privateMethod = (obj, member, method) => {
       }, [ghost, compact]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$6),
+        style: propertyMap(style, cssProperties$6),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, noDivider ? void 0 : /* @__PURE__ */ sapa.createElementJsx(Divider, null), /* @__PURE__ */ sapa.createElementJsx("div", { class: "content-area" }, ghost ? /* @__PURE__ */ sapa.createElementJsx("div", { style: { display: "flex", gap: 10 } }, /* @__PURE__ */ sapa.createElementJsx(Ghost, { animated: true }), /* @__PURE__ */ sapa.createElementJsx(Ghost, { animated: true })) : content));
@@ -7149,7 +7171,7 @@ var __privateMethod = (obj, member, method) => {
   class CardBody extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         compact = false,
         ghost = false,
         content,
@@ -7164,7 +7186,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2
+            ...style
           },
           cssProperties$5
         ),
@@ -7181,7 +7203,7 @@ var __privateMethod = (obj, member, method) => {
   });
   class CardAvatar extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, content, ghost = false, ...extraProps } = this.props;
+      const { style = {}, content, ghost = false, ...extraProps } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--card-avatar", {
           ghost
@@ -7189,7 +7211,7 @@ var __privateMethod = (obj, member, method) => {
       }, [ghost]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$4),
+        style: propertyMap(style, cssProperties$4),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, /* @__PURE__ */ sapa.createElementJsx("div", { class: "elf--card-avatar-inner" }, ghost ? /* @__PURE__ */ sapa.createElementJsx(Ghost, { animated: true }) : content));
@@ -7203,7 +7225,7 @@ var __privateMethod = (obj, member, method) => {
   });
   class CardActions extends sapa.UIElement {
     template() {
-      const { style: style2 = {}, align = "right", content, ...extraProps } = this.props;
+      const { style = {}, align = "right", content, ...extraProps } = this.props;
       const localClass = sapa.useMemo(() => {
         return sapa.classnames("elf--card-actions", {
           [align]: true
@@ -7211,7 +7233,7 @@ var __privateMethod = (obj, member, method) => {
       }, [align]);
       const styleObject = {
         class: localClass,
-        style: propertyMap(style2, cssProperties$3),
+        style: propertyMap(style, cssProperties$3),
         ...extraProps
       };
       return /* @__PURE__ */ sapa.createElementJsx("div", { ...styleObject }, content);
@@ -7225,7 +7247,7 @@ var __privateMethod = (obj, member, method) => {
   class Blank extends sapa.UIElement {
     template() {
       const {
-        style: style2 = {},
+        style = {},
         stripe = "none",
         color: color2 = "transparent",
         content,
@@ -7240,7 +7262,7 @@ var __privateMethod = (obj, member, method) => {
         class: localClass,
         style: propertyMap(
           {
-            ...style2,
+            ...style,
             backgroundColor: color2
           },
           cssProperties$2
@@ -7358,7 +7380,7 @@ var __privateMethod = (obj, member, method) => {
   }
   function BaseSidebar(props) {
     let {
-      style: style2 = {},
+      style = {},
       direction = "left",
       variant = "light",
       compact = false,
@@ -7367,7 +7389,7 @@ var __privateMethod = (obj, member, method) => {
       footer,
       hasSelected
     } = props;
-    let itemStyle = { ...style2 };
+    let itemStyle = { ...style };
     const localClass = sapa.useMemo(() => {
       return sapa.classnames("elf--sidebar base-sidebar", {
         [variant]: true,
@@ -7468,7 +7490,7 @@ var __privateMethod = (obj, member, method) => {
   }
   function CompactSidebar(props) {
     let {
-      style: style2 = {},
+      style = {},
       direction = "left",
       variant = "light",
       compact = false,
@@ -7477,7 +7499,7 @@ var __privateMethod = (obj, member, method) => {
       footer,
       hasSelected
     } = props;
-    let itemStyle = { ...style2 };
+    let itemStyle = { ...style };
     const localClass = sapa.useMemo(() => {
       return sapa.classnames("elf--sidebar compact-sidebar", {
         [variant]: true,

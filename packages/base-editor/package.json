@@ -1,22 +1,27 @@
 {
   "name": "@elf-framework/base-editor",
-  "version": "0.0.270",
+  "version": "0.1.0",
   "description": "Fantastic Editor library",
+  "main": "./src/index.js",
+  "sideEffects": false,
   "types": "./index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "main": "./dist/base-editor.umd.js",
+    "module": "./dist/base-editor.es.js",
+    "exports": {
+      "./package.json": "./package.json",
+      "./style.css": "./dist/index.css",
+      ".": {
+        "import": "./dist/base-editor.es.js",
+        "require": "./dist/base-editor.umd.js"
+      }
+    }
+  },
   "files": [
     "dist",
     "index.d.ts"
   ],
-  "main": "./dist/base-editor.umd.js",
-  "module": "./dist/base-editor.es.js",
-  "exports": {
-    "./package.json": "./package.json",
-    "./style.css": "./dist/index.css",
-    ".": {
-      "import": "./dist/base-editor.es.js",
-      "require": "./dist/base-editor.umd.js"
-    }
-  },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
     "cssnano": "^5.1.13",
@@ -24,9 +29,9 @@
     "prettier": "2.7.1",
     "recast": "^0.21.2",
     "sass": "^1.54.4",
-    "vite": "^3.0.8",
-    "vite-plugin-sapa": "*",
-    "vitest": "0.22.1"
+    "vite": "^5.0.12",
+    "vite-plugin-sapa": "workspace:^",
+    "vitest": "1.2.1"
   },
   "peerDependencies": {
     "@elf-framework/color": "*",

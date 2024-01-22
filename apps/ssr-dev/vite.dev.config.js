@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import sapa from "vite-plugin-sapa";
-import ssr from "vite-plugin-ssr/plugin";
+import vike from 'vike/plugin'
 export default defineConfig({
   server: {
     watch: { usePolling: true },
@@ -10,13 +10,5 @@ export default defineConfig({
     jsxFragment: "FragmentInstance",
     jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
   },
-  optimizeDeps: {
-    exclude: [
-      "@elf-framework/sapa",
-      "@elf-framework/ui",
-      "@elf-framework/sapa-router",
-      "@elf-framework/design-system",
-    ],
-  },
-  plugins: [sapa(), ssr()],
+  plugins: [sapa(), vike()],
 });

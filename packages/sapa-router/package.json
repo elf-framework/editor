@@ -1,6 +1,6 @@
 {
   "name": "@elf-framework/sapa-router",
-  "version": "0.0.239",
+  "version": "0.1.0",
   "description": "Fantastic Router library",
   "types": "./index.d.ts",
   "files": [
@@ -16,14 +16,11 @@
     }
   },
   "devDependencies": {
-    "vite": "^3.0.8",
-    "vitest": "0.22.1"
-  },
-  "peerDependencies": {
-    "@elf-framework/sapa": "*"
+    "vite": "^5.0.12",
+    "vitest": "1.2.1"
   },
   "dependencies": {
-    "@elf-framework/sapa": "*"
+    "@elf-framework/sapa": "workspace:*"
   },
   "scripts": {
     "vite:dist": "vite build --config=vite.dist.config.js",
@@ -37,13 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/easylogic/editor.git"
   },
-  "keywords": [
-    "CSS",
-    "CODE",
-    "Editor",
-    "Path",
-    "SVG"
-  ],
+  "keywords": [],
   "author": "easylogic",
   "license": "MIT",
   "bugs": {

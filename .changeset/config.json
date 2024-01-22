@@ -1,23 +1,26 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.1/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "elf-framework/editor" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "elf-framework/editor" }
+  ],
   "commit": false,
   "linked": [
     [
       "@elf-framework/base-editor",
-      "@elf-framework/ui",      
+      "@elf-framework/ui",
       "@elf-framework/color",
       "@elf-framework/sapa-router",
       "vite-plugin-sapa",
-      "@elf-framework/sapa",      
+      "@elf-framework/sapa",
       "@elf-framework/design-system",
-      "@elf-framework/design-tokens"            
+      "@elf-framework/design-tokens"
     ]
   ],
   "access": "public",
   "baseBranch": "develop",
   "updateInternalDependencies": "patch",
-  "ignore": [],
+  "ignore": ["editor-dev", "ssr-dev", "sapa-dev", "ui-dev"],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   }

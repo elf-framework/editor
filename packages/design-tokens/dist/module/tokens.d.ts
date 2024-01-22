@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 25 Nov 2023 12:09:08 GMT
+ * Generated on Mon, 22 Jan 2024 16:24:49 GMT
  */
 
 export default tokens;
@@ -252,86 +252,6 @@ declare const tokens: {
       "disabled": DesignToken
     }
   },
-  "alert": {
-    "color": {
-      "title": {
-        "default": DesignToken,
-        "primary": DesignToken,
-        "secondary": DesignToken,
-        "danger": DesignToken,
-        "warning": DesignToken,
-        "success": DesignToken,
-        "info": DesignToken,
-        "weak": {
-          "default": DesignToken,
-          "primary": DesignToken,
-          "secondary": DesignToken,
-          "danger": DesignToken,
-          "warning": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken
-        }
-      },
-      "content": {
-        "default": DesignToken,
-        "dark": DesignToken,
-        "primary": DesignToken,
-        "secondary": DesignToken,
-        "danger": DesignToken,
-        "warning": DesignToken,
-        "success": DesignToken,
-        "info": DesignToken,
-        "weak": {
-          "default": DesignToken,
-          "primary": DesignToken,
-          "secondary": DesignToken,
-          "danger": DesignToken,
-          "warning": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken
-        }
-      },
-      "background": {
-        "default": DesignToken,
-        "dark": DesignToken,
-        "primary": DesignToken,
-        "secondary": DesignToken,
-        "success": DesignToken,
-        "info": DesignToken,
-        "warning": DesignToken,
-        "danger": DesignToken,
-        "weak": {
-          "default": DesignToken,
-          "primary": DesignToken,
-          "secondary": DesignToken,
-          "danger": DesignToken,
-          "warning": DesignToken,
-          "success": DesignToken,
-          "info": DesignToken
-        }
-      }
-    }
-  },
-  "avatar": {
-    "size": {
-      "30": DesignToken,
-      "50": DesignToken,
-      "100": DesignToken,
-      "200": DesignToken,
-      "300": DesignToken,
-      "400": DesignToken,
-      "500": DesignToken,
-      "600": DesignToken,
-      "700": DesignToken
-    }
-  },
-  "blank": {
-    "color": {
-      "background": {
-        "default": DesignToken
-      }
-    }
-  },
   "button": {
     "default": {
       "background": {
@@ -547,6 +467,86 @@ declare const tokens: {
         "small": DesignToken,
         "medium": DesignToken,
         "large": DesignToken
+      }
+    }
+  },
+  "alert": {
+    "color": {
+      "title": {
+        "default": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "danger": DesignToken,
+        "warning": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "weak": {
+          "default": DesignToken,
+          "primary": DesignToken,
+          "secondary": DesignToken,
+          "danger": DesignToken,
+          "warning": DesignToken,
+          "success": DesignToken,
+          "info": DesignToken
+        }
+      },
+      "content": {
+        "default": DesignToken,
+        "dark": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "danger": DesignToken,
+        "warning": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "weak": {
+          "default": DesignToken,
+          "primary": DesignToken,
+          "secondary": DesignToken,
+          "danger": DesignToken,
+          "warning": DesignToken,
+          "success": DesignToken,
+          "info": DesignToken
+        }
+      },
+      "background": {
+        "default": DesignToken,
+        "dark": DesignToken,
+        "primary": DesignToken,
+        "secondary": DesignToken,
+        "success": DesignToken,
+        "info": DesignToken,
+        "warning": DesignToken,
+        "danger": DesignToken,
+        "weak": {
+          "default": DesignToken,
+          "primary": DesignToken,
+          "secondary": DesignToken,
+          "danger": DesignToken,
+          "warning": DesignToken,
+          "success": DesignToken,
+          "info": DesignToken
+        }
+      }
+    }
+  },
+  "avatar": {
+    "size": {
+      "30": DesignToken,
+      "50": DesignToken,
+      "100": DesignToken,
+      "200": DesignToken,
+      "300": DesignToken,
+      "400": DesignToken,
+      "500": DesignToken,
+      "600": DesignToken,
+      "700": DesignToken
+    }
+  },
+  "blank": {
+    "color": {
+      "background": {
+        "default": DesignToken
       }
     }
   },

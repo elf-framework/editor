@@ -1,25 +1,39 @@
 /**
  * Do not edit directly
- * Generated on Sat, 25 Nov 2023 12:09:08 GMT
+ * Generated on Mon, 22 Jan 2024 16:24:49 GMT
  */
 
 export const ImageLogo : string;
 export const ImageEmpty : string;
 export const ImageFiles : string;
-export const ColorBackgroundDefault : string; // Background color that will match the current color scheme
-export const ColorBackgroundPrimary : string; // Base color for the primary color
-export const ColorBackgroundSecondary : string; // Base color for the secondary color
-export const ColorBackgroundDanger : string; // Base color for the danger color
-export const ColorBackgroundWarning : string; // Base color for the warning color
-export const ColorBackgroundSuccess : string; // Base color for the success color
-export const ColorBackgroundInfo : string; // Base color for the info color
-export const ColorBackgroundWeakDefault : string; // Background color that will match the current color scheme
-export const ColorBackgroundWeakPrimary : string; // Weak color for the primary color
-export const ColorBackgroundWeakSecondary : string; // Weak color for the secondary color
-export const ColorBackgroundWeakDanger : string; // Weak color for the danger color
-export const ColorBackgroundWeakWarning : string; // Weak color for the warning color
-export const ColorBackgroundWeakSuccess : string; // Weak color for the success color
-export const ColorBackgroundWeakInfo : string; // Weak color for the info color
+/** Background color that will match the current color scheme */
+export const ColorBackgroundDefault : string;
+/** Base color for the primary color */
+export const ColorBackgroundPrimary : string;
+/** Base color for the secondary color */
+export const ColorBackgroundSecondary : string;
+/** Base color for the danger color */
+export const ColorBackgroundDanger : string;
+/** Base color for the warning color */
+export const ColorBackgroundWarning : string;
+/** Base color for the success color */
+export const ColorBackgroundSuccess : string;
+/** Base color for the info color */
+export const ColorBackgroundInfo : string;
+/** Background color that will match the current color scheme */
+export const ColorBackgroundWeakDefault : string;
+/** Weak color for the primary color */
+export const ColorBackgroundWeakPrimary : string;
+/** Weak color for the secondary color */
+export const ColorBackgroundWeakSecondary : string;
+/** Weak color for the danger color */
+export const ColorBackgroundWeakDanger : string;
+/** Weak color for the warning color */
+export const ColorBackgroundWeakWarning : string;
+/** Weak color for the success color */
+export const ColorBackgroundWeakSuccess : string;
+/** Weak color for the info color */
+export const ColorBackgroundWeakInfo : string;
 export const ColorBorder : string;
 export const ColorDefault : string;
 export const ColorPrimary : string;
@@ -44,11 +58,16 @@ export const ColorDownSuccess : string;
 export const ColorDownDanger : string;
 export const ColorDownWarning : string;
 export const ColorDownInfo : string;
-export const ColorStatusInformative : string; // e.g., active, in use, live, published
-export const ColorStatusNeutral : string; // e.g., archived, deleted, paused, draft, not started, ended
-export const ColorStatusPositive : string; // e.g., completed, finished, success, approved, verified, active, in use, live, published
-export const ColorStatusNotice : string; // e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing
-export const ColorStatusNegative : string; // e.g., error, failed, denied, blocked, inactive, not in use, unpublished
+/** e.g., active, in use, live, published */
+export const ColorStatusInformative : string;
+/** e.g., archived, deleted, paused, draft, not started, ended */
+export const ColorStatusNeutral : string;
+/** e.g., completed, finished, success, approved, verified, active, in use, live, published */
+export const ColorStatusPositive : string;
+/** e.g., in progress, pending, warning, in review, needs approval, scheduled, syncing, indexing */
+export const ColorStatusNotice : string;
+/** e.g., error, failed, denied, blocked, inactive, not in use, unpublished */
+export const ColorStatusNegative : string;
 export const ColorStatusIndigo : string;
 export const ColorStatusCelery : string;
 export const ColorStatusYellow : string;
@@ -191,60 +210,6 @@ export const ColorTextTitle : string;
 export const ColorTextSubtitle : string;
 export const ColorTextLink : string;
 export const ColorTextDisabled : string;
-export const AlertColorTitleDefault : string;
-export const AlertColorTitlePrimary : string;
-export const AlertColorTitleSecondary : string;
-export const AlertColorTitleDanger : string; // Base color for the danger color
-export const AlertColorTitleWarning : string; // Base color for the warning color
-export const AlertColorTitleSuccess : string; // Base color for the success color
-export const AlertColorTitleInfo : string; // Base color for the info color
-export const AlertColorTitleWeakDefault : string;
-export const AlertColorTitleWeakPrimary : string;
-export const AlertColorTitleWeakSecondary : string;
-export const AlertColorTitleWeakDanger : string; // Base color for the danger color
-export const AlertColorTitleWeakWarning : string; // Base color for the warning color
-export const AlertColorTitleWeakSuccess : string; // Base color for the success color
-export const AlertColorTitleWeakInfo : string; // Base color for the info color
-export const AlertColorContentDefault : string;
-export const AlertColorContentDark : string;
-export const AlertColorContentPrimary : string;
-export const AlertColorContentSecondary : string;
-export const AlertColorContentDanger : string; // Base color for the danger color
-export const AlertColorContentWarning : string; // Base color for the warning color
-export const AlertColorContentSuccess : string; // Base color for the success color
-export const AlertColorContentInfo : string; // Base color for the info color
-export const AlertColorContentWeakDefault : string;
-export const AlertColorContentWeakPrimary : string;
-export const AlertColorContentWeakSecondary : string;
-export const AlertColorContentWeakDanger : string; // Base color for the danger color
-export const AlertColorContentWeakWarning : string; // Base color for the warning color
-export const AlertColorContentWeakSuccess : string; // Base color for the success color
-export const AlertColorContentWeakInfo : string; // Base color for the info color
-export const AlertColorBackgroundDefault : string;
-export const AlertColorBackgroundDark : string;
-export const AlertColorBackgroundPrimary : string;
-export const AlertColorBackgroundSecondary : string;
-export const AlertColorBackgroundSuccess : string;
-export const AlertColorBackgroundInfo : string;
-export const AlertColorBackgroundWarning : string;
-export const AlertColorBackgroundDanger : string;
-export const AlertColorBackgroundWeakDefault : string;
-export const AlertColorBackgroundWeakPrimary : string;
-export const AlertColorBackgroundWeakSecondary : string;
-export const AlertColorBackgroundWeakDanger : string; // Base color for the danger color
-export const AlertColorBackgroundWeakWarning : string; // Base color for the warning color
-export const AlertColorBackgroundWeakSuccess : string; // Base color for the success color
-export const AlertColorBackgroundWeakInfo : string; // Base color for the info color
-export const AvatarSize30 : string;
-export const AvatarSize50 : string;
-export const AvatarSize100 : string;
-export const AvatarSize200 : string;
-export const AvatarSize300 : string;
-export const AvatarSize400 : string;
-export const AvatarSize500 : string;
-export const AvatarSize600 : string;
-export const AvatarSize700 : string;
-export const BlankColorBackgroundDefault : string;
 export const ButtonDefaultBackgroundDark : string;
 export const ButtonDefaultBackgroundDanger : string;
 export const ButtonDefaultBackgroundInfo : string;
@@ -393,6 +358,80 @@ export const ButtonDisabledTextDefault : string;
 export const ButtonSizePaddingSmall : string;
 export const ButtonSizePaddingMedium : string;
 export const ButtonSizePaddingLarge : string;
+export const AlertColorTitleDefault : string;
+export const AlertColorTitlePrimary : string;
+export const AlertColorTitleSecondary : string;
+/** Base color for the danger color */
+export const AlertColorTitleDanger : string;
+/** Base color for the warning color */
+export const AlertColorTitleWarning : string;
+/** Base color for the success color */
+export const AlertColorTitleSuccess : string;
+/** Base color for the info color */
+export const AlertColorTitleInfo : string;
+export const AlertColorTitleWeakDefault : string;
+export const AlertColorTitleWeakPrimary : string;
+export const AlertColorTitleWeakSecondary : string;
+/** Base color for the danger color */
+export const AlertColorTitleWeakDanger : string;
+/** Base color for the warning color */
+export const AlertColorTitleWeakWarning : string;
+/** Base color for the success color */
+export const AlertColorTitleWeakSuccess : string;
+/** Base color for the info color */
+export const AlertColorTitleWeakInfo : string;
+export const AlertColorContentDefault : string;
+export const AlertColorContentDark : string;
+export const AlertColorContentPrimary : string;
+export const AlertColorContentSecondary : string;
+/** Base color for the danger color */
+export const AlertColorContentDanger : string;
+/** Base color for the warning color */
+export const AlertColorContentWarning : string;
+/** Base color for the success color */
+export const AlertColorContentSuccess : string;
+/** Base color for the info color */
+export const AlertColorContentInfo : string;
+export const AlertColorContentWeakDefault : string;
+export const AlertColorContentWeakPrimary : string;
+export const AlertColorContentWeakSecondary : string;
+/** Base color for the danger color */
+export const AlertColorContentWeakDanger : string;
+/** Base color for the warning color */
+export const AlertColorContentWeakWarning : string;
+/** Base color for the success color */
+export const AlertColorContentWeakSuccess : string;
+/** Base color for the info color */
+export const AlertColorContentWeakInfo : string;
+export const AlertColorBackgroundDefault : string;
+export const AlertColorBackgroundDark : string;
+export const AlertColorBackgroundPrimary : string;
+export const AlertColorBackgroundSecondary : string;
+export const AlertColorBackgroundSuccess : string;
+export const AlertColorBackgroundInfo : string;
+export const AlertColorBackgroundWarning : string;
+export const AlertColorBackgroundDanger : string;
+export const AlertColorBackgroundWeakDefault : string;
+export const AlertColorBackgroundWeakPrimary : string;
+export const AlertColorBackgroundWeakSecondary : string;
+/** Base color for the danger color */
+export const AlertColorBackgroundWeakDanger : string;
+/** Base color for the warning color */
+export const AlertColorBackgroundWeakWarning : string;
+/** Base color for the success color */
+export const AlertColorBackgroundWeakSuccess : string;
+/** Base color for the info color */
+export const AlertColorBackgroundWeakInfo : string;
+export const AvatarSize30 : string;
+export const AvatarSize50 : string;
+export const AvatarSize100 : string;
+export const AvatarSize200 : string;
+export const AvatarSize300 : string;
+export const AvatarSize400 : string;
+export const AvatarSize500 : string;
+export const AvatarSize600 : string;
+export const AvatarSize700 : string;
+export const BlankColorBackgroundDefault : string;
 export const CardColorBackgroundDefault : string;
 export const CardColorBackgroundSelected : string;
 export const CardColorTextDefault : string;
@@ -510,9 +549,11 @@ export const Spacing0 : string;
 export const Spacing1 : string;
 export const Spacing2 : string;
 export const Spacing3 : string;
-export const Spacing4 : string; // base size
+/** base size */
+export const Spacing4 : string;
 export const Spacing5 : string;
-export const Spacing6 : string; // base size
+/** base size */
+export const Spacing6 : string;
 export const Spacing7 : string;
 export const Spacing8 : string;
 export const SpacingSizeXxxs : string;
@@ -557,7 +598,8 @@ export const SizeBase50 : string;
 export const SizeBase65 : string;
 export const SizeBase75 : string;
 export const SizeBase85 : string;
-export const SizeBase100 : string; // base size
+/** base size */
+export const SizeBase100 : string;
 export const SizeBase115 : string;
 export const SizeBase125 : string;
 export const SizeBase130 : string;
@@ -576,7 +618,8 @@ export const SizeBorderRadiusLarge : string;
 export const FontSize50 : string;
 export const FontSize75 : string;
 export const FontSize85 : string;
-export const FontSize100 : string; // base size
+/** base size */
+export const FontSize100 : string;
 export const FontSize200 : string;
 export const FontSize300 : string;
 export const FontSize400 : string;
